@@ -49,12 +49,12 @@ namespace Alis.Extension.Payment.Stripe
         /// <summary>
         ///     Gets or sets the value of the success url
         /// </summary>
-        public Uri SuccessUrl { get; set; } = new Uri("https://example.com/payment/success");
+        public Uri SuccessUrl { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the cancel url
         /// </summary>
-        public Uri CancelUrl { get; set; } = new Uri("https://example.com/payment/cancel");
+        public Uri CancelUrl { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the enable automatic payment methods
