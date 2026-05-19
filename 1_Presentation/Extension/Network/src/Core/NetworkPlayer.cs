@@ -87,9 +87,7 @@ namespace Alis.Extension.Network.Core
         /// </summary>
         /// <param name="unixTimeStamp">The unix time stamp</param>
         /// <returns>The date time</returns>
-        private static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-
         private static DateTime UnixTimeStampToDateTime(long unixTimeStamp) =>
-            UnixEpoch.AddSeconds(unixTimeStamp).ToLocalTime();
+            DateTime.UnixEpoch.AddSeconds(unixTimeStamp).ToLocalTime();
     }
 }
