@@ -158,7 +158,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
                         return fileMetadata.Id ?? "unknown";
                     }
 
-                    throw new Exception($"Upload failed with status: {response.Status}");
+                    throw new InvalidOperationException($"Upload failed with status: {response.Status}");
                 }
             }
             catch (Exception ex)
