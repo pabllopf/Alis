@@ -226,13 +226,6 @@ namespace Alis.Core.Graphic.Platforms.Web
                     if (context.IsKeyDown(ConsoleKey.D))
                         moveX += 1.0f;
 
-                    // Gamepad support for WASD
-                    if (context.TryGetGamepadState(0, out GamepadInputState gamepadState))
-                    {
-                        moveX += gamepadState.CurrentState.LeftStickX;
-                        moveY += gamepadState.CurrentState.LeftStickY;
-                    }
-
                 });
             }
         }
@@ -527,13 +520,6 @@ namespace Alis.Core.Graphic.Platforms.Web
                     if (context.IsActionJustPressed("Menu"))
                     {
                         // Show menu or pause
-                    }
-
-                    // Gamepad analog stick movement
-                    if (context.TryGetGamepadState(0, out GamepadInputState gamepadState))
-                    {
-                        moveX += gamepadState.CurrentState.LeftStickX;
-                        moveY += gamepadState.CurrentState.LeftStickY;
                     }
 
                     // Normalize movement
