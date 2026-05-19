@@ -81,8 +81,6 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The zero
         /// </summary>
-        private IntPtr _eglConfig = IntPtr.Zero;
-
         // Input state
         /// <summary>
         /// The key states
@@ -233,21 +231,19 @@ namespace Alis.Core.Graphic.Platforms.Web
                 throw new InvalidOperationException("Failed to choose EGL config");
             }
 
-            _eglConfig = config;
-
             int[] contextAttributes = new int[]
             {
                 EGL.EGL_CONTEXT_CLIENT_VERSION, 3,
                 EGL.EGL_NONE
             };
 
-            _eglContext = EGL.CreateContext(_eglDisplay, _eglConfig, IntPtr.Zero, contextAttributes);
+            _eglContext = EGL.CreateContext(_eglDisplay, config, IntPtr.Zero, contextAttributes);
             if (_eglContext == IntPtr.Zero)
             {
                 throw new InvalidOperationException("Failed to create EGL context");
             }
 
-            _eglSurface = EGL.CreateWindowSurface(_eglDisplay, _eglConfig, IntPtr.Zero, IntPtr.Zero);
+            _eglSurface = EGL.CreateWindowSurface(_eglDisplay, config, IntPtr.Zero, IntPtr.Zero);
             if (_eglSurface == IntPtr.Zero)
             {
                 throw new InvalidOperationException("Failed to create EGL window surface");
