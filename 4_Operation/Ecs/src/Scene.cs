@@ -282,26 +282,44 @@ namespace Alis.Core.Ecs
         /// </summary>
         public bool AllowStructualChanges => _allowStructuralChanges == -1;
 
+        private bool _disposed;
+
         /// <summary>
         ///     Disposes of the <see cref="Scene" />.
         /// </summary>
         public void Dispose()
         {
-            GlobalWorldTables.Worlds[Id] = null!;
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
-            foreach (ref WorldArchetypeTableItem item in WorldArchetypeTable.AsSpan())
+        /// <summary>
+        ///     Releases the unmanaged resources used by the <see cref="Scene"/> and optionally releases the managed resources.
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+                return;
+
+            if (disposing)
             {
-                if (item.Archetype is not null)
+                GlobalWorldTables.Worlds[Id] = null!;
+
+                foreach (ref WorldArchetypeTableItem item in WorldArchetypeTable.AsSpan())
                 {
-                    item.Archetype.ReleaseArrays();
-                    item.DeferredCreationArchetype.ReleaseArrays();
+                    if (item.Archetype is not null)
+                    {
+                        item.Archetype.ReleaseArrays();
+                        item.DeferredCreationArchetype.ReleaseArrays();
+                    }
                 }
+
+                _sharedCountdown.Dispose();
+                RecycledEntityIds.Dispose();
             }
 
-            _sharedCountdown.Dispose();
-            RecycledEntityIds.Dispose();
-
-            GC.SuppressFinalize(this);
+            _disposed = true;
         }
 
         /// <summary>
