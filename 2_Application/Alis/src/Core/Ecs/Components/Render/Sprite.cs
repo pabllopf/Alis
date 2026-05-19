@@ -226,7 +226,7 @@ namespace Alis.Core.Ecs.Components.Render
             {
                 string log = Gl.GetShaderInfoLog(vertexShader);
                 Logger.Error($"Vertex shader compilation failed: {log}");
-                throw new Exception($"Vertex shader compilation failed: {log}");
+                throw new InvalidOperationException($"Vertex shader compilation failed: {log}");
             }
 
             uint fragmentShader = Gl.GlCreateShader(ShaderType.FragmentShader);
@@ -236,7 +236,7 @@ namespace Alis.Core.Ecs.Components.Render
             {
                 string log = Gl.GetShaderInfoLog(fragmentShader);
                 Logger.Error($"Fragment shader compilation failed: {log}");
-                throw new Exception($"Fragment shader compilation failed: {log}");
+                throw new InvalidOperationException($"Fragment shader compilation failed: {log}");
             }
 
             SharedShaderProgram = Gl.GlCreateProgram();
@@ -251,7 +251,7 @@ namespace Alis.Core.Ecs.Components.Render
             {
                 string log = Gl.GetProgramInfoLog(SharedShaderProgram);
                 Logger.Error($"Shader program link failed: {log}");
-                throw new Exception($"Shader program link failed: {log}");
+                throw new InvalidOperationException($"Shader program link failed: {log}");
             }
 
             Gl.GlDeleteShader(vertexShader);
