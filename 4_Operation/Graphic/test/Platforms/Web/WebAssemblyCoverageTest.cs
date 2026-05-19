@@ -780,7 +780,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void SystemInfo_GetPlatformName_ReturnsWebAssembly()
         {
-            Assert.Equal("WebAssembly", SystemInfo.GetPlatformName());
+            Assert.Equal("WebAssembly", SystemInfo.PlatformName);
         }
 
         [Fact]
