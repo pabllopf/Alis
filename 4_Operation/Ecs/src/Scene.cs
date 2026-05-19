@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The next scene id
         /// </summary>
-        internal static ushort _nextWorldId = 1;
+        private static ushort _nextWorldId = 1;
 
         /// <summary>
         ///     The shared countdown
