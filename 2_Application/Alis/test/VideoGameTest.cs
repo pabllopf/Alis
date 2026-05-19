@@ -68,7 +68,8 @@ namespace Alis.Test
         [Fact]
         public void VideoGame_SettingConstructor_ShouldCreateContextWithProvidedSetting()
         {
-            GeneralSetting general = new GeneralSetting(name: "TestGame");
+            GeneralSetting general = new GeneralSetting(false, "TestGame", "Default Description", "0.0.0",
+                "Pablo Perdomo Falcón", "GPL-3.0 license", "app.ico");
             Setting customSetting = new Setting(general, new AudioSetting(), new GraphicSetting(), new InputSetting(), new NetworkSetting(), new PhysicSetting());
 
             VideoGame game = new VideoGame(customSetting);
