@@ -201,7 +201,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Builds the arguments for the file dialog command.
         /// </summary>
-        private string BuildFileDialogArguments(string tool, FilePickerOptions options, bool allowMultiple)
+        private static string BuildFileDialogArguments(string tool, FilePickerOptions options, bool allowMultiple)
         {
             Logger.Trace($"Building file dialog arguments for {tool}.");
 
@@ -275,7 +275,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Builds the arguments for the folder dialog command.
         /// </summary>
-        private string BuildFolderDialogArguments(string tool, FilePickerOptions options)
+        private static string BuildFolderDialogArguments(string tool, FilePickerOptions options)
         {
             Logger.Trace($"Building folder dialog arguments for {tool}.");
 
