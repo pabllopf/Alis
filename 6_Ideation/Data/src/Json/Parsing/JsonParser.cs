@@ -288,7 +288,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// <param name="json">The full JSON string being parsed.</param>
         /// <param name="position">The current position within the JSON string. Advanced past the end of the primitive value on return.</param>
         /// <returns>The trimmed string representation of the primitive value, with surrounding whitespace removed.</returns>
-        private string ReadPrimitive(string json, ref int position)
+        private static string ReadPrimitive(string json, ref int position)
         {
             int start = position;
 
@@ -306,7 +306,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// </summary>
         /// <param name="json">The full JSON string being parsed.</param>
         /// <param name="position">The current position. Updated to the first non-whitespace character or to the end of the string.</param>
-        private void SkipWhitespace(string json, ref int position)
+        private static void SkipWhitespace(string json, ref int position)
         {
             while ((position < json.Length) && char.IsWhiteSpace(json[position]))
             {
