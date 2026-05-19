@@ -72,7 +72,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// <param name="board">The 2D array representing the dungeon board.</param>
         /// <param name="rooms">The list of rooms in the dungeon.</param>
         /// <param name="corridors">The list of corridors connecting the rooms.</param>
-        public DungeonData(BoardSquare[,] board, List<RoomData> rooms, List<CorridorData> corridors)
+        internal DungeonData(BoardSquare[,] board, List<RoomData> rooms, List<CorridorData> corridors)
         {
             Board = board ?? throw new ArgumentNullException(nameof(board));
             Rooms = rooms ?? throw new ArgumentNullException(nameof(rooms));
