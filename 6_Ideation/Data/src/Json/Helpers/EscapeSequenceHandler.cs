@@ -185,30 +185,6 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
 
                 i++;
             }
-                                else
-                                {
-                                    result.Append(nextChar);
-                                    i++;
-                                }
-                            }
-                            else
-                            {
-                                result.Append(nextChar);
-                                i++;
-                            }
-
-                            break;
-                        default:
-                            result.Append(nextChar);
-                            i++;
-                            break;
-                    }
-                }
-                else
-                {
-                    result.Append(escapedString[i]);
-                }
-            }
 
             return result.ToString();
         }
