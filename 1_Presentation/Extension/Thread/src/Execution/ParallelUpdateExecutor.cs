@@ -41,11 +41,6 @@ namespace Alis.Extension.Thread.Execution
     public sealed class ParallelUpdateExecutor
     {
         /// <summary>
-        ///     The execution context
-        /// </summary>
-        private readonly ParallelExecutionContext context;
-
-        /// <summary>
         ///     The scheduler
         /// </summary>
         private readonly ParallelExecutionScheduler scheduler;
@@ -62,7 +57,7 @@ namespace Alis.Extension.Thread.Execution
         /// <param name="strategy">The execution strategy</param>
         public ParallelUpdateExecutor(ParallelExecutionContext context, IParallelExecutionStrategy strategy)
         {
-            this.context = context ?? throw new ArgumentNullException(nameof(context));
+            _ = context ?? throw new ArgumentNullException(nameof(context));
             this.strategy = strategy ?? throw new ArgumentNullException(nameof(strategy));
             scheduler = new ParallelExecutionScheduler(context);
         }
