@@ -64,7 +64,7 @@ namespace Alis.Extension.Io.FileDialog
                 string script = BuildOpenFileScript(options, false);
                 string result = ExecuteAppleScript(script);
 
-                return ParseResult(result, options, false);
+                return ParseResult(result);
             }
             catch (Exception ex)
             {
@@ -95,7 +95,7 @@ namespace Alis.Extension.Io.FileDialog
                 string script = BuildOpenFileScript(options, true);
                 string result = ExecuteAppleScript(script);
 
-                return ParseResult(result, options, true);
+                return ParseResult(result);
             }
             catch (Exception ex)
             {
@@ -124,7 +124,7 @@ namespace Alis.Extension.Io.FileDialog
                 string script = BuildFolderSelectScript(options);
                 string result = ExecuteAppleScript(script);
 
-                return ParseResult(result, options, false);
+                return ParseResult(result);
             }
             catch (Exception ex)
             {
@@ -254,7 +254,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Parses the dialog result.
         /// </summary>
-        private FilePickerResult ParseResult(string output, FilePickerOptions options, bool allowMultiple)
+        private FilePickerResult ParseResult(string output)
         {
             Logger.Trace($"Parsing result from AppleScript output: {output ?? "(null)"}");
 

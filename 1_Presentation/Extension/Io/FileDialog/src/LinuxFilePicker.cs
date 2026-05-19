@@ -72,7 +72,7 @@ namespace Alis.Extension.Io.FileDialog
                 options.AllowMultiple = false;
 
                 string result = ExecuteFileDialog(options, false);
-                return ParseResult(result, options, false);
+                return ParseResult(result, false);
             }
             catch (Exception ex)
             {
@@ -101,7 +101,7 @@ namespace Alis.Extension.Io.FileDialog
                 options.AllowMultiple = true;
 
                 string result = ExecuteFileDialog(options, true);
-                return ParseResult(result, options, true);
+                return ParseResult(result, true);
             }
             catch (Exception ex)
             {
@@ -128,7 +128,7 @@ namespace Alis.Extension.Io.FileDialog
                 }
 
                 string result = ExecuteFolderDialog(options);
-                return ParseResult(result, options, false);
+                return ParseResult(result, false);
             }
             catch (Exception ex)
             {
@@ -321,7 +321,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Parses the dialog result.
         /// </summary>
-        private FilePickerResult ParseResult(string output, FilePickerOptions options, bool allowMultiple)
+        private FilePickerResult ParseResult(string output, bool allowMultiple)
         {
             Logger.Trace($"Parsing result from dialog output: {output ?? "(null)"}");
 
