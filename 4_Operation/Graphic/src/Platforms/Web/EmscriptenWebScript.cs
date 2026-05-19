@@ -40,10 +40,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the complete JavaScript bridge code as a string
         /// </summary>
-        [ExcludeFromCodeCoverage]
-        public static string GetBridgeScript()
-        {
-            return @"
+        public const string BridgeScript = @"
 var EmscriptenWebBridge = {
     keyboardCallbacks: { onKeyDown: null, onKeyUp: null, onCharInput: null },
     mouseCallbacks: { onMouseMove: null, onMouseDown: null, onMouseUp: null, onMouseWheel: null },
@@ -522,14 +519,11 @@ if (document.readyState === 'loading') {
     EmscriptenWebBridge.init();
 }
 ";
-        }
 
         /// <summary>
         ///     Gets an HTML template for embedding the WebAssembly module
         /// </summary>
-        public static string GetHtmlTemplate()
-        {
-            return @"<!DOCTYPE html>
+        public const string HtmlTemplate = @"<!DOCTYPE html>
 <html lang='en'>
 <head>
     <meta charset='UTF-8'>
@@ -560,7 +554,6 @@ if (document.readyState === 'loading') {
     </script>
 </body>
 </html>";
-        }
     }
 }
 

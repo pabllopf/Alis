@@ -11,7 +11,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GetBridgeScript_IncludesCoreSections()
         {
-            string script = EmscriptenWebScript.GetBridgeScript();
+            string script = EmscriptenWebScript.BridgeScript;
             Assert.False(string.IsNullOrWhiteSpace(script));
             Assert.Contains("EmscriptenWebBridge", script);
             Assert.Contains("registerKeyboardListeners", script);
@@ -23,7 +23,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GetBridgeScript_ReturnsNonEmptyString()
         {
-            string script = EmscriptenWebScript.GetBridgeScript();
+            string script = EmscriptenWebScript.BridgeScript;
             Assert.NotNull(script);
             Assert.NotEmpty(script);
         }
@@ -31,7 +31,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GetBridgeScript_ContainsKeyFunctions()
         {
-            string script = EmscriptenWebScript.GetBridgeScript();
+            string script = EmscriptenWebScript.BridgeScript;
             Assert.Contains("registerKeyboardCallbacks", script);
             Assert.Contains("registerMouseCallbacks", script);
             Assert.Contains("registerGamepadCallbacks", script);
@@ -64,7 +64,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GetBridgeScript_ContainsEmscriptenWebBridge()
         {
-            string script = EmscriptenWebScript.GetBridgeScript();
+            string script = EmscriptenWebScript.BridgeScript;
             Assert.Contains("EmscriptenWebBridge", script);
             Assert.Contains("keyboardCallbacks", script);
             Assert.Contains("mouseCallbacks", script);
@@ -75,7 +75,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GetBridgeScript_ContainsArrayHelpers()
         {
-            string script = EmscriptenWebScript.GetBridgeScript();
+            string script = EmscriptenWebScript.BridgeScript;
             Assert.Contains("createIntArray", script);
             Assert.Contains("createFloatArray", script);
             Assert.Contains("createBoolArray", script);
@@ -85,7 +85,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GetBridgeScript_ContainsInitFunction()
         {
-            string script = EmscriptenWebScript.GetBridgeScript();
+            string script = EmscriptenWebScript.BridgeScript;
             Assert.Contains("init: function", script);
             Assert.Contains("registerKeyboardListeners", script);
             Assert.Contains("registerMouseListeners", script);
@@ -96,7 +96,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GetHtmlTemplate_ReturnsNonEmptyString()
         {
-            string html = EmscriptenWebScript.GetHtmlTemplate();
+            string html = EmscriptenWebScript.HtmlTemplate;
             Assert.NotNull(html);
             Assert.NotEmpty(html);
         }
@@ -104,7 +104,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GetHtmlTemplate_ContainsRequiredElements()
         {
-            string html = EmscriptenWebScript.GetHtmlTemplate();
+            string html = EmscriptenWebScript.HtmlTemplate;
             Assert.Contains("<!DOCTYPE html>", html);
             Assert.Contains("<html", html);
             Assert.Contains("<head>", html);
