@@ -240,23 +240,23 @@ namespace Alis.Core.Graphic.Platforms.Web
             {
                 // Log system information
                 WebAssemblyGameContext.ConsoleLog($"Device Language: {WebAssemblyGameContext.GetDeviceLanguage()}");
-                WebAssemblyGameContext.ConsoleLog($"Is Online: {gameContext.IsOnline()}");
-                WebAssemblyGameContext.ConsoleLog($"Battery Level: {gameContext.GetBatteryLevel():P}");
-                WebAssemblyGameContext.ConsoleLog($"Is Charging: {gameContext.IsCharging()}");
-                WebAssemblyGameContext.ConsoleLog($"Screen Refresh Rate: {gameContext.GetRefreshRate()} Hz");
+                WebAssemblyGameContext.ConsoleLog($"Is Online: {WebAssemblyGameContext.IsOnline()}");
+                WebAssemblyGameContext.ConsoleLog($"Battery Level: {WebAssemblyGameContext.GetBatteryLevel():P}");
+                WebAssemblyGameContext.ConsoleLog($"Is Charging: {WebAssemblyGameContext.IsCharging()}");
+                WebAssemblyGameContext.ConsoleLog($"Screen Refresh Rate: {WebAssemblyGameContext.GetRefreshRate()} Hz");
 
                 gameContext.Run((context) =>
                 {
                     // Check connection status periodically
-                    if (!context.IsOnline())
+                    if (!WebAssemblyGameContext.IsOnline())
                     {
                         WebAssemblyGameContext.ConsoleWarn("Lost internet connection");
                         // Pause gameplay or show offline message
                     }
 
                     // Monitor battery for mobile devices
-                    float batteryLevel = context.GetBatteryLevel();
-                    if (batteryLevel < 0.2f && !context.IsCharging())
+                    float batteryLevel = WebAssemblyGameContext.GetBatteryLevel();
+                    if (batteryLevel < 0.2f && !WebAssemblyGameContext.IsCharging())
                     {
                         WebAssemblyGameContext.ConsoleWarn("Low battery warning");
                     }
