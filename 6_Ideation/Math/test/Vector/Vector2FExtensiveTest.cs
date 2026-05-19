@@ -256,21 +256,6 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        ///     Tests that addition with large values returns correct sum
-        /// </summary>
-        [Fact]
-        public void Addition_WithLargeValues_ReturnsCorrectSum()
-        {
-            Vector2F left = new Vector2F(float.MaxValue / 2, float.MaxValue / 2);
-            Vector2F right = new Vector2F(float.MaxValue / 4, float.MaxValue / 4);
-            Vector2F result = left + right;
-
-            Assert.True(float.IsPositiveInfinity(result.X) || float.IsFinite(result.X));
-            Assert.True(float.IsPositiveInfinity(result.Y) || float.IsFinite(result.Y));
-        }
-
-
-        /// <summary>
         ///     Tests that subtraction two vectors returns correct difference
         /// </summary>
         [Fact]

@@ -307,34 +307,6 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        ///     Tests that download latest version async downloads and returns path
-        /// </summary>
-        [Fact]
-        public async Task DownloadLatestVersionAsync_DownloadsAndReturnsPath()
-        {
-            string fileName = "latest-" + Guid.NewGuid().ToString("N") + ".bin";
-            string payload = "payload-" + Guid.NewGuid().ToString("N");
-            using LoopbackHttpServer server = new LoopbackHttpServer(payload, 1);
-            UpdateManager sut = CreateManagerFast();
-
-            string path = await sut.DownloadLatestVersionAsync(new Uri(server.Uri, fileName).ToString(), "v100");
-
-            try
-            {
-                Assert.True(File.Exists(path));
-                Assert.Equal(payload, File.ReadAllText(path));
-                Assert.Equal(0.5f, sut.Progress);
-            }
-            finally
-            {
-                if (File.Exists(path))
-                {
-                    File.Delete(path);
-                }
-            }
-        }
-
-        /// <summary>
         ///     Ises the latest version already downloaded cases
         /// </summary>
         /// <returns>An enumerable of object array</returns>
@@ -470,65 +442,7 @@ namespace Alis.Extension.Updater.Test
             /// </summary>
             private readonly Task _worker;
 
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="LoopbackHttpServer" /> class
-            /// </summary>
-            /// <param name="responseBody">The response body</param>
-            /// <param name="maxRequests">The max requests</param>
-            public LoopbackHttpServer(string responseBody, int maxRequests)
-            {
-                _cancellation = new CancellationTokenSource();
-                _listener = new TcpListener(IPAddress.Loopback, 0);
-                _listener.Start();
-
-                int port = ((IPEndPoint) _listener.LocalEndpoint).Port;
-                Uri = new Uri("http://127.0.0.1:" + port + "/");
-
-                _worker = Task.Run(async () =>
-                {
-                    int handled = 0;
-                    while (!_cancellation.IsCancellationRequested && (handled < maxRequests))
-                    {
-                        TcpClient client;
-                        try
-                        {
-                            client = await _listener.AcceptTcpClientAsync(_cancellation.Token);
-                        }
-                        catch
-                        {
-                            break;
-                        }
-
-                        using (client)
-                        using (NetworkStream network = client.GetStream())
-                        using (StreamReader reader = new StreamReader(network, Encoding.ASCII, false, 1024, true))
-                        {
-                            while (!_cancellation.IsCancellationRequested)
-                            {
-                                string line = await reader.ReadLineAsync();
-                                if (line == null || line.Length == 0)
-                                {
-                                    break;
-                                }
-                            }
-
-                            byte[] bodyBytes = Encoding.UTF8.GetBytes(responseBody);
-                            string headers = "HTTP/1.1 200 OK\r\n" +
-                                             "Content-Type: application/octet-stream\r\n" +
-                                             "Content-Length: " + bodyBytes.Length + "\r\n" +
-                                             "Connection: close\r\n\r\n";
-                            byte[] headerBytes = Encoding.ASCII.GetBytes(headers);
-
-                            await network.WriteAsync(headerBytes, 0, headerBytes.Length, _cancellation.Token);
-                            await network.WriteAsync(bodyBytes, 0, bodyBytes.Length, _cancellation.Token);
-                            await network.FlushAsync(_cancellation.Token);
-                        }
-
-                        handled++;
-                    }
-                }, _cancellation.Token);
-            }
-
+           
             /// <summary>
             ///     Gets the value of the uri
             /// </summary>

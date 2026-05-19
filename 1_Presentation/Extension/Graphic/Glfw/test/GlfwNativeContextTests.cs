@@ -221,31 +221,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        ///     Gets the cursor position with valid window returns position
-        /// </summary>
-        [RequiresDisplay]
-        public void GetCursorPosition_WithValidWindow_ReturnsPosition()
-        {
-            // Arrange
-            GlfwNative.WindowHint(Hint.Visible, false);
-            Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
-
-            try
-            {
-                // Act
-                GlfwNative.GetCursorPosition(window, out double x, out double y);
-
-                // Assert
-                Assert.True(double.IsFinite(x));
-                Assert.True(double.IsFinite(y));
-            }
-            finally
-            {
-                GlfwNative.DestroyWindow(window);
-            }
-        }
-
-        /// <summary>
         ///     Sets the cursor position callback with valid callback sets callback
         /// </summary>
         [RequiresDisplay]

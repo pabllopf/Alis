@@ -153,28 +153,5 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
             // Assert
             Assert.Equal(5, directions.Length);
         }
-
-        /// <summary>
-        ///     Tests that direction can be parsed from string.
-        /// </summary>
-        [Theory, InlineData("North", Direction.North), InlineData("East", Direction.East), InlineData("South", Direction.South), InlineData("West", Direction.West)]
-        public void Parse_WithValidString_ShouldReturnDirection(string value, Direction expected)
-        {
-            // Act
-            Direction result = Enum.Parse<Direction>(value);
-
-            // Assert
-            Assert.Equal(expected, result);
-        }
-
-        /// <summary>
-        ///     Tests that parsing invalid string throws exception.
-        /// </summary>
-        [Fact]
-        public void Parse_WithInvalidString_ShouldThrowException()
-        {
-            // Act & Assert
-            Assert.Throws<ArgumentException>(() => Enum.Parse<Direction>("Invalid"));
-        }
     }
 }

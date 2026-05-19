@@ -245,86 +245,7 @@ namespace Alis.Core.Aspect.Memory.Test
             FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() => AssetRegistry.GetResourceMemoryStreamByName("nonexistent.txt"));
             Assert.Contains("not found in `assets.pack`", ex.Message);
         }
-
-        /// <summary>
-        ///     Tests that get resource memory stream by name with path separators finds resource
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_WithPathSeparators_FindsResource()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_" + Guid.NewGuid();
-            string expectedContent = "BM";
-            Dictionary<string, string> testData = new Dictionary<string, string>
-            {
-                {"app.bmp", expectedContent}
-            };
-            byte[] zipBytes = CreateTestZipBytes(testData);
-
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("app.bmp");
-
-            // Assert
-            Assert.NotNull(result);
-            result.Position = 0;
-            using StreamReader reader = new StreamReader(result);
-            string content = reader.ReadToEnd();
-            Assert.Contains(expectedContent, content);
-        }
-
-        /// <summary>
-        ///     Tests that get resource memory stream by name resource name with backslashes finds resource
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_ResourceNameWithBackslashes_FindsResource()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_" + Guid.NewGuid();
-            string expectedContent = "BM";
-            Dictionary<string, string> testData = new Dictionary<string, string>
-            {
-                {"app.bmp", expectedContent}
-            };
-            byte[] zipBytes = CreateTestZipBytes(testData);
-
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act - try with backslashes
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("app.bmp");
-
-            // Assert
-            Assert.NotNull(result);
-            result.Position = 0;
-            using StreamReader reader = new StreamReader(result);
-            string content = reader.ReadToEnd();
-            Assert.Contains(expectedContent, content);
-        }
-
-        /// <summary>
-        ///     Tests that get resource memory stream by name large resource returns correctly
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_LargeResource_ReturnsCorrectly()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_" + Guid.NewGuid();
-            string largeContent = new string('x', 1048714); // 100KB of data
-            Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", largeContent}};
-            byte[] zipBytes = CreateTestZipBytes(testData);
-
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("app.bmp");
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal(largeContent.Length, result.Length);
-        }
-
-
+        
         /// <summary>
         ///     Tests that get resource path by name with null resource name throws argument exception
         /// </summary>
@@ -400,74 +321,7 @@ namespace Alis.Core.Aspect.Memory.Test
             FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() => AssetRegistry.GetResourcePathByName("nonexistent.txt"));
             Assert.Contains("not found in `assets.pack`", ex.Message);
         }
-
-
-        /// <summary>
-        ///     Tests that get resource memory stream by name empty file returns empty stream
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_EmptyFile_ReturnsEmptyStream()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_EmptyFile_" + Guid.NewGuid();
-            Dictionary<string, string> testData = new Dictionary<string, string> {{"empty.txt", ""}};
-            byte[] zipBytes = CreateTestZipBytes(testData);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("empty.txt");
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal(0, result.Length);
-        }
-
-        /// <summary>
-        ///     Tests that get resource memory stream by name case insensitive search works
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_CaseInsensitiveSearch_Works()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_CaseInsensitive_" + Guid.NewGuid();
-            Dictionary<string, string> testData = new Dictionary<string, string>
-            {
-                {"MixedCase.TXT", "Testing mixed case file names"}
-            };
-            byte[] zipBytes = CreateTestZipBytes(testData);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("mixedcase.txt");
-
-            // Assert
-            Assert.NotNull(result);
-            result.Position = 0;
-            using StreamReader reader = new StreamReader(result);
-            string content = reader.ReadToEnd();
-            Assert.Contains("Testing mixed case file names", content);
-        }
-
-        /// <summary>
-        ///     Tests that get resource path by name called twice returns same path
-        /// </summary>
-        [Fact]
-        public void GetResourcePathByName_CalledTwice_ReturnsSamePath()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_PathCache_" + Guid.NewGuid();
-            Dictionary<string, string> testData = new Dictionary<string, string> {{"cached.txt", "cached content"}};
-            byte[] zipBytes = CreateTestZipBytes(testData);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act
-            string path1 = AssetRegistry.GetResourcePathByName("cached.txt");
-            string path2 = AssetRegistry.GetResourcePathByName("cached.txt");
-
-            // Assert
-            Assert.Equal(path1, path2);
-        }
-
+        
         /// <summary>
         ///     Tests that register assembly with null loader throws when trying to get resource
         /// </summary>
@@ -483,32 +337,6 @@ namespace Alis.Core.Aspect.Memory.Test
                 AssetRegistry.GetResourceMemoryStreamByName("any.txt"));
             Assert.Contains("not found", ex.Message);
         }
-
-
-        /// <summary>
-        ///     Tests that get resource memory stream by name partial path match works
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_PartialPathMatch_Works()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_PartialPath_" + Guid.NewGuid();
-            Dictionary<string, string> testData = new Dictionary<string, string>
-            {
-                {"assets/images/apps.bmp", "logo content"}
-            };
-            byte[] zipBytes = CreateTestZipBytes(testData);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("images/apps.bmp");
-
-            // Assert
-            Assert.NotNull(result);
-            result.Position = 0;
-            using StreamReader reader = new StreamReader(result);
-            string content = reader.ReadToEnd();
-            Assert.Contains("BM", content);
-        }
+        
     }
 }

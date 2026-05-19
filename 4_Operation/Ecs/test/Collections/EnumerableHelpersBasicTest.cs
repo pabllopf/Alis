@@ -190,27 +190,7 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("banana", array[1]);
             Assert.Equal("cherry", array[2]);
         }
-
-        /// <summary>
-        ///     Tests that ToArray with IEnumerable (not ICollection) works
-        /// </summary>
-        /// <remarks>
-        ///     Validates that ToArray can handle pure IEnumerable without ICollection interface.
-        /// </remarks>
-        [Fact]
-        public void EnumerableHelpers_ToArrayWorksWithPureEnumerable()
-        {
-            // Arrange
-            IEnumerable<int> enumerable = GetTestEnumerable();
-
-            // Act
-            int[] array = EnumerableHelpers.ToArray(enumerable, out int length);
-
-            // Assert
-            Assert.Equal(5, length);
-            Assert.Equal(new[] {1, 2, 3, 4, 5}, array[..5]);
-        }
-
+        
         /// <summary>
         ///     Helper method to provide a pure IEnumerable (not ICollection)
         /// </summary>

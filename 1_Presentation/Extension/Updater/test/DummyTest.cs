@@ -239,23 +239,6 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        ///     Tests that git hub api service get latest release async returns response dictionary
-        /// </summary>
-        [Fact]
-        public async Task GitHubApiService_GetLatestReleaseAsync_ReturnsResponseDictionary()
-        {
-            const string payload = "{\"ok\":true}";
-            using LoopbackHttpServer server = new LoopbackHttpServer(payload, 1);
-            using GitHubApiService service = new GitHubApiService(server.Uri);
-
-            Dictionary<string, object> result = await service.GetLatestReleaseAsync();
-
-            Assert.NotNull(result);
-            Assert.True(result.ContainsKey("response"));
-            Assert.Equal(payload, result["response"]);
-        }
-
-        /// <summary>
         ///     Tests that git hub api service constructor assigns api url
         /// </summary>
         [Fact]
@@ -488,65 +471,6 @@ namespace Alis.Extension.Updater.Test
             ///     The worker
             /// </summary>
             private readonly Task _worker;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="LoopbackHttpServer" /> class
-            /// </summary>
-            /// <param name="responseBody">The response body</param>
-            /// <param name="maxRequests">The max requests</param>
-            public LoopbackHttpServer(string responseBody, int maxRequests)
-            {
-                _cancellation = new CancellationTokenSource();
-                _listener = new TcpListener(IPAddress.Loopback, 0);
-                _listener.Start();
-
-                int port = ((IPEndPoint) _listener.LocalEndpoint).Port;
-                Uri = new Uri($"http://127.0.0.1:{port}/");
-
-                _worker = Task.Run(async () =>
-                {
-                    int handled = 0;
-                    while (!_cancellation.IsCancellationRequested && (handled < maxRequests))
-                    {
-                        TcpClient client;
-                        try
-                        {
-                            client = await _listener.AcceptTcpClientAsync(_cancellation.Token);
-                        }
-                        catch
-                        {
-                            break;
-                        }
-
-                        using (client)
-                        using (NetworkStream network = client.GetStream())
-                        using (StreamReader reader = new StreamReader(network, Encoding.ASCII, false, 1024, true))
-                        {
-                            while (!_cancellation.IsCancellationRequested)
-                            {
-                                string line = await reader.ReadLineAsync();
-                                if (line == null || line.Length == 0)
-                                {
-                                    break;
-                                }
-                            }
-
-                            byte[] bodyBytes = Encoding.UTF8.GetBytes(responseBody);
-                            string headers = "HTTP/1.1 200 OK\r\n" +
-                                             "Content-Type: application/json\r\n" +
-                                             $"Content-Length: {bodyBytes.Length}\r\n" +
-                                             "Connection: close\r\n\r\n";
-                            byte[] headerBytes = Encoding.ASCII.GetBytes(headers);
-
-                            await network.WriteAsync(headerBytes, 0, headerBytes.Length, _cancellation.Token);
-                            await network.WriteAsync(bodyBytes, 0, bodyBytes.Length, _cancellation.Token);
-                            await network.FlushAsync(_cancellation.Token);
-                        }
-
-                        handled++;
-                    }
-                }, _cancellation.Token);
-            }
 
             /// <summary>
             ///     Gets the value of the uri

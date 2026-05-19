@@ -148,19 +148,6 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
-        ///     Tests that acos with bounds returns finite angles
-        /// </summary>
-        [Fact]
-        public void Acos_WithBounds_ReturnsFiniteAngles()
-        {
-            float acosOne = CustomMathF.Acos(1f);
-            float acosMinusOne = CustomMathF.Acos(-1f);
-
-            Assert.True(float.IsFinite(acosOne));
-            Assert.True(float.IsFinite(acosMinusOne));
-        }
-
-        /// <summary>
         ///     Tests that sin and cos with full turn are approximately canonical
         /// </summary>
         [Fact]

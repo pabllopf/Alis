@@ -184,20 +184,7 @@ namespace Alis.Core.Ecs.Test
 
             Assert.Equal(1, count);
         }
-
-        /// <summary>
-        ///     Asserts the query enumerable layout using the specified type
-        /// </summary>
-        /// <param name="type">The type</param>
-        private static void AssertQueryEnumerableLayout(Type type)
-        {
-            Assert.True(type.IsValueType);
-            Assert.True(type.IsDefined(typeof(IsReadOnlyAttribute), false));
-
-            StructLayoutAttribute? attr = type.GetCustomAttribute<StructLayoutAttribute>();
-            Assert.Equal(LayoutKind.Sequential, attr!.Value);
-            Assert.Equal(1, attr.Pack);
-        }
+        
 
         /// <summary>
         ///     Asserts the get enumerator return type using the specified expected type

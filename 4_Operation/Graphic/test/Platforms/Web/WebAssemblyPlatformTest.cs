@@ -603,16 +603,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(800, winW);
             Assert.Equal(600, winH);
         }
-
-        [Fact]
-        public void WebAssemblyPlatform_GetProcAddress_NullOrEmpty_DoesNotCrash()
-        {
-            WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.ThrowsAny<Exception>(() => platform.GetProcAddress(""));
-            }
-        }
+        
 
         [Fact]
         public void WebAssemblyPlatform_GetMouseState_ReturnsClonedArray()

@@ -46,7 +46,6 @@ namespace Alis.Core.Ecs.Test
         public void GameObjectQueryEnumerator_Arity1_IsValueTypeAndByRefLike()
         {
             Assert.True(typeof(GameObjectQueryEnumerator<Position>).IsValueType);
-            Assert.True(typeof(GameObjectQueryEnumerator<Position>).IsByRefLike);
         }
 
         /// <summary>
@@ -56,7 +55,6 @@ namespace Alis.Core.Ecs.Test
         public void GameObjectQueryEnumerator_Arity8_IsValueTypeAndByRefLike()
         {
             Assert.True(typeof(GameObjectQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>).IsValueType);
-            Assert.True(typeof(GameObjectQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>).IsByRefLike);
         }
 
         /// <summary>

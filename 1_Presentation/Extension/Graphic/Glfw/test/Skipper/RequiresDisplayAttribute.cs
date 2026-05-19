@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Skipper
@@ -49,6 +50,34 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
                 Skip = "Test requires a graphical display environment, but none was detected.";
             }
         }
+        
+        
+#if NET5_0_OR_GREATER
+
+        private static bool IsWindows() => OperatingSystem.IsWindows();
+
+        private static bool IsLinux() => OperatingSystem.IsLinux();
+
+        private static bool IsMacOS() => OperatingSystem.IsMacOS();
+
+#else
+
+        private static bool IsWindows()
+        {
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+        }
+
+        private static bool IsLinux()
+        {
+            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+        }
+
+        private static bool IsMacOS()
+        {
+            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+        }
+
+#endif
 
         /// <summary>
         ///     Hases the display
@@ -58,14 +87,14 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
         {
             try
             {
-                if (OperatingSystem.IsWindows())
+                if (IsWindows())
                 {
                     // Windows puede fallar en ambientes CI/CD sin GPU (WGL: The driver does not appear to support OpenGL)
                     // Omitir tests en Windows por defecto
                     return false;
                 }
 
-                if (OperatingSystem.IsLinux())
+                if (IsLinux())
                 {
                     // Verificar X11
                     string display = Environment.GetEnvironmentVariable("DISPLAY");
@@ -91,7 +120,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
                     return false;
                 }
 
-                if (OperatingSystem.IsMacOS())
+                if (IsMacOS())
                 {
                     // En macOS, verificar si hay WindowServer activo
                     // WindowServer es el proceso que gestiona el entorno gráfico

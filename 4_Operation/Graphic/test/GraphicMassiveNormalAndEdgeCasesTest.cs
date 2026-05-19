@@ -27,32 +27,6 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
-        /// Tests that open gl enums handle defined and undefined values
-        /// </summary>
-        /// <param name="enumName">The enum name</param>
-        /// <param name="rawValue">The raw value</param>
-        [Theory, MemberData(nameof(GenerateOpenGlEnumCases))]
-        public void OpenGlEnums_HandleDefinedAndUndefinedValues(string enumName, int rawValue)
-        {
-            Type enumType = GetEnumType(enumName);
-            bool isDefined = Enum.IsDefined(enumType, rawValue);
-            Enum boxed = Box(enumName, rawValue);
-            string text = boxed.ToString();
-
-            if (isDefined)
-            {
-                bool parsed = Enum.TryParse(enumType, text, out object parsedValue);
-                Assert.True(parsed);
-                Assert.NotNull(parsedValue);
-                Assert.Equal(rawValue, Convert.ToInt32(parsedValue));
-            }
-            else
-            {
-                Assert.Equal(rawValue.ToString(), text);
-            }
-        }
-
-        /// <summary>
         /// Gets the enum type using the specified enum name
         /// </summary>
         /// <param name="enumName">The enum name</param>

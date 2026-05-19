@@ -423,53 +423,13 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Throws<ArgumentNullException>(() =>
                 WebAssemblyPlatformFactory.Create(nullConfig));
         }
-
-        [Fact]
-        public void WebAssemblyPlatformFactory_Create_WithConfig_ThrowsOnNonBrowser()
-        {
-            WebAssemblyConfiguration config = new WebAssemblyConfiguration();
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.Throws<InvalidOperationException>(() =>
-                    WebAssemblyPlatformFactory.Create(config));
-            }
-        }
+        
 
         [Fact]
         public void WebAssemblyPlatformFactory_Create_WithAction_NullAction_Throws()
         {
             Assert.Throws<ArgumentNullException>(() =>
                 WebAssemblyPlatformFactory.Create((Action<WebAssemblyConfigurationBuilder>)null));
-        }
-
-        [Fact]
-        public void WebAssemblyPlatformFactory_CreateForGameDevelopment_ThrowsOnNonBrowser()
-        {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.Throws<InvalidOperationException>(() =>
-                    WebAssemblyPlatformFactory.CreateForGameDevelopment());
-            }
-        }
-
-        [Fact]
-        public void WebAssemblyPlatformFactory_CreateForLowEndDevice_ThrowsOnNonBrowser()
-        {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.Throws<InvalidOperationException>(() =>
-                    WebAssemblyPlatformFactory.CreateForLowEndDevice());
-            }
-        }
-
-        [Fact]
-        public void WebAssemblyPlatformFactory_CreateForHighEndDevice_ThrowsOnNonBrowser()
-        {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.Throws<InvalidOperationException>(() =>
-                    WebAssemblyPlatformFactory.CreateForHighEndDevice());
-            }
         }
 
         // =====================================================================

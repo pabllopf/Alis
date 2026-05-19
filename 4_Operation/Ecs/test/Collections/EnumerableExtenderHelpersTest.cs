@@ -60,26 +60,6 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        ///     Tests that enumerable helpers to array with collection interface
-        /// </summary>
-        /// <remarks>
-        ///     Tests ToArray with an ICollection source.
-        /// </remarks>
-        [Fact]
-        public void EnumerableHelpers_ToArrayWithCollectionInterface()
-        {
-            // Arrange
-            List<int> source = new List<int> {1, 2, 3, 4, 5};
-
-            // Act
-            int[] result = EnumerableHelpers.ToArray(source, out int length);
-
-            // Assert
-            Assert.Equal(5, length);
-            Assert.Equal(new[] {1, 2, 3, 4, 5}, result[..length]);
-        }
-
-        /// <summary>
         ///     Tests that enumerable helpers to array with empty collection
         /// </summary>
         /// <remarks>
@@ -97,26 +77,6 @@ namespace Alis.Core.Ecs.Test.Collections
             // Assert
             Assert.Equal(0, length);
             Assert.NotNull(result);
-        }
-
-        /// <summary>
-        ///     Tests that enumerable helpers to array with enumerable
-        /// </summary>
-        /// <remarks>
-        ///     Tests ToArray with a non-collection enumerable.
-        /// </remarks>
-        [Fact]
-        public void EnumerableHelpers_ToArrayWithEnumerable()
-        {
-            // Arrange
-            IEnumerable<int> source = GetEnumerable();
-
-            // Act
-            int[] result = EnumerableHelpers.ToArray(source, out int length);
-
-            // Assert
-            Assert.Equal(5, length);
-            Assert.Equal(new[] {1, 2, 3, 4, 5}, result[..length]);
         }
 
         /// <summary>

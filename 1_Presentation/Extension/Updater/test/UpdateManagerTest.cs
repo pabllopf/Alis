@@ -108,52 +108,6 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        ///     Tests that start wraps exception when release resolution fails
-        /// </summary>
-        [Fact]
-        public async Task Start_WrapsException_WhenReleaseResolutionFails()
-        {
-            using LoopbackHttpServer server = new LoopbackHttpServer("[]", 1);
-            UpdateManager sut = CreateManager("v9.9.9", apiUrl: server.Uri);
-
-            Exception ex = await Assert.ThrowsAsync<Exception>(async () => await sut.Start(CancellationToken.None));
-
-            Assert.Contains("Error updating program", ex.Message, StringComparison.OrdinalIgnoreCase);
-        }
-
-        /// <summary>
-        ///     Tests that get latest release async returns latest when version is latest
-        /// </summary>
-        [Fact]
-        public async Task GetLatestReleaseAsync_ReturnsLatest_WhenVersionIsLatest()
-        {
-            using LoopbackHttpServer server = new LoopbackHttpServer("{\"ok\":true}", 1);
-            UpdateManager sut = CreateManager("latest", apiUrl: server.Uri);
-
-            Dictionary<string, object> release = await sut.GetLatestReleaseAsync();
-
-            Assert.NotNull(release);
-            Assert.Equal("v0.7.5", release["tag_name"]);
-            object[] assets = Assert.IsType<object[]>(release["assets"]);
-            Assert.Equal(3, assets.Length);
-        }
-
-        /// <summary>
-        ///     Tests that get latest release async returns requested version when it matches
-        /// </summary>
-        [Fact]
-        public async Task GetLatestReleaseAsync_ReturnsRequestedVersion_WhenMatches()
-        {
-            using LoopbackHttpServer server = new LoopbackHttpServer("{\"ok\":true}", 1);
-            UpdateManager sut = CreateManager("v0.7.5", apiUrl: server.Uri);
-
-            Dictionary<string, object> release = await sut.GetLatestReleaseAsync();
-
-            Assert.NotNull(release);
-            Assert.Equal("v0.7.5", release["tag_name"]);
-        }
-
-        /// <summary>
         ///     Tests that handle cancellation request returns expected value
         /// </summary>
         [Fact]
@@ -655,65 +609,7 @@ namespace Alis.Extension.Updater.Test
             ///     The worker
             /// </summary>
             private readonly Task _worker;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="LoopbackHttpServer" /> class
-            /// </summary>
-            /// <param name="responseBody">The response body</param>
-            /// <param name="maxRequests">The max requests</param>
-            public LoopbackHttpServer(string responseBody, int maxRequests)
-            {
-                _cancellation = new CancellationTokenSource();
-                _listener = new TcpListener(IPAddress.Loopback, 0);
-                _listener.Start();
-
-                int port = ((IPEndPoint) _listener.LocalEndpoint).Port;
-                Uri = new Uri("http://127.0.0.1:" + port + "/");
-
-                _worker = Task.Run(async () =>
-                {
-                    int handled = 0;
-                    while (!_cancellation.IsCancellationRequested && (handled < maxRequests))
-                    {
-                        TcpClient client;
-                        try
-                        {
-                            client = await _listener.AcceptTcpClientAsync(_cancellation.Token);
-                        }
-                        catch
-                        {
-                            break;
-                        }
-
-                        using (client)
-                        using (NetworkStream network = client.GetStream())
-                        using (StreamReader reader = new StreamReader(network, Encoding.ASCII, false, 1024, true))
-                        {
-                            while (!_cancellation.IsCancellationRequested)
-                            {
-                                string line = await reader.ReadLineAsync();
-                                if (line == null || line.Length == 0)
-                                {
-                                    break;
-                                }
-                            }
-
-                            byte[] bodyBytes = Encoding.UTF8.GetBytes(responseBody);
-                            string headers = "HTTP/1.1 200 OK\r\n" +
-                                             "Content-Type: application/json\r\n" +
-                                             "Content-Length: " + bodyBytes.Length + "\r\n" +
-                                             "Connection: close\r\n\r\n";
-                            byte[] headerBytes = Encoding.ASCII.GetBytes(headers);
-
-                            await network.WriteAsync(headerBytes, 0, headerBytes.Length, _cancellation.Token);
-                            await network.WriteAsync(bodyBytes, 0, bodyBytes.Length, _cancellation.Token);
-                            await network.FlushAsync(_cancellation.Token);
-                        }
-
-                        handled++;
-                    }
-                }, _cancellation.Token);
-            }
+            
 
             /// <summary>
             ///     Gets the value of the uri

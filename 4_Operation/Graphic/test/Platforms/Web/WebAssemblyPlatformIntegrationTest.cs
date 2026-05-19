@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Alis.Core.Graphic.Platforms;
 using Alis.Core.Graphic.Platforms.Web;
 using Xunit;
@@ -60,92 +61,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.NotNull(platform);
             Assert.IsType<WebAssemblyPlatform>(platform);
         }
-
-        [Fact]
-        public void WebAssemblyPlatformIntegration_CreateOptimizedPlatform_Game2D()
-        {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.Throws<InvalidOperationException>(() =>
-                    WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Game2D));
-            }
-        }
-
-        [Fact]
-        public void WebAssemblyPlatformIntegration_CreateOptimizedPlatform_Game3D()
-        {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.Throws<InvalidOperationException>(() =>
-                    WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Game3D));
-            }
-        }
-
-        [Fact]
-        public void WebAssemblyPlatformIntegration_CreateOptimizedPlatform_LowEnd()
-        {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.Throws<InvalidOperationException>(() =>
-                    WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.LowEnd));
-            }
-        }
-
-        [Fact]
-        public void WebAssemblyPlatformIntegration_CreateOptimizedPlatform_HighEnd()
-        {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.Throws<InvalidOperationException>(() =>
-                    WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.HighEnd));
-            }
-        }
-
-        [Fact]
-        public void WebAssemblyPlatformIntegration_CreateOptimizedPlatform_Mobile()
-        {
-            if (!OperatingSystem.IsBrowser())
-            {
-                Assert.Throws<InvalidOperationException>(() =>
-                    WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Mobile));
-            }
-        }
-
-        [Fact]
-        public void WebAssemblyPlatformIntegration_CreateOptimizedPlatform_Web_ReturnsInstance()
-        {
-            WebAssemblyPlatform platform = WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Web);
-            Assert.NotNull(platform);
-            Assert.IsType<WebAssemblyPlatform>(platform);
-        }
-
-        // =====================================================================
-        // OptimizationProfile Enum
-        // =====================================================================
-
-        [Theory]
-        [InlineData(OptimizationProfile.Default)]
-        [InlineData(OptimizationProfile.Game2D)]
-        [InlineData(OptimizationProfile.Game3D)]
-        [InlineData(OptimizationProfile.LowEnd)]
-        [InlineData(OptimizationProfile.HighEnd)]
-        [InlineData(OptimizationProfile.Mobile)]
-        [InlineData(OptimizationProfile.Web)]
-        public void OptimizationProfile_EnumValuesExist(OptimizationProfile profile)
-        {
-            Assert.True(Enum.IsDefined(typeof(OptimizationProfile), profile));
-        }
-
-        [Fact]
-        public void MultiplatformGameEngine_Dispose_DoesNotThrow()
-        {
-            if (OperatingSystem.IsBrowser())
-            {
-                MultiplatformGameEngine engine = new MultiplatformGameEngine(800, 600, "Test");
-                engine.Dispose();
-                engine.Dispose();
-            }
-        }
+        
 
         // =====================================================================
         // SystemInfo

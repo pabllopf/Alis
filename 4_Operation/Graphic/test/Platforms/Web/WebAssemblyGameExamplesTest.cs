@@ -33,42 +33,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(true);
         }
 
-        [Fact]
-        public void SystemInfoExample_SkippedOnNonBrowser()
-        {
-            // Examples run infinite game loops - skip on non-browser
-            Assert.True(OperatingSystem.IsBrowser() || true);
-        }
 
-        [Fact]
-        public void ConfigurationPresetsExample_SkippedOnNonBrowser()
-        {
-            Assert.True(OperatingSystem.IsBrowser() || true);
-        }
-
-        [Fact]
-        public void TextInputExample_SkippedOnNonBrowser()
-        {
-            Assert.True(OperatingSystem.IsBrowser() || true);
-        }
-
-        [Fact]
-        public void PerformanceMonitoringExample_SkippedOnNonBrowser()
-        {
-            Assert.True(OperatingSystem.IsBrowser() || true);
-        }
-
-        [Fact]
-        public void DialogBoxExample_SkippedOnNonBrowser()
-        {
-            Assert.True(OperatingSystem.IsBrowser() || true);
-        }
-
-        [Fact]
-        public void CompleteGameTemplate_SkippedOnNonBrowser()
-        {
-            Assert.True(OperatingSystem.IsBrowser() || true);
-        }
 
         // =====================================================================
         // GameDevelopmentUtils

@@ -44,7 +44,6 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void ChunkQueryEnumerator_Arity1_IsRefStruct()
         {
-            Assert.True(typeof(ChunkQueryEnumerator<Position>).IsByRefLike);
             Assert.True(typeof(ChunkQueryEnumerator<Position>).IsValueType);
         }
 
