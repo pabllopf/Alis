@@ -53,10 +53,6 @@ namespace Alis.Core.Aspect.Logging.Core
         /// </summary>
         private readonly List<ILogFilter> _filters;
 
-        /// <summary>
-        ///     The formatter
-        /// </summary>
-        private readonly ILogFormatter _formatter;
 
         /// <summary>
         ///     The minimum level
@@ -101,7 +97,6 @@ namespace Alis.Core.Aspect.Logging.Core
             Name = name ?? string.Empty;
             _outputs = outputs ?? new List<ILogOutput>();
             _filters = filters ?? new List<ILogFilter>();
-            _formatter = formatter;
             _minimumLevel = minimumLevel;
             _scopeStack = new Stack<object>();
         }
