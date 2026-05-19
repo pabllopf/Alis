@@ -91,3 +91,4 @@ Debug/
 live_issues.json
 maintainability_issues.json
 live_issues_full.json
+sonar_issues.json
