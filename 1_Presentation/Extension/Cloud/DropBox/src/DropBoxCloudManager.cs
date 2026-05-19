@@ -49,6 +49,11 @@ namespace Alis.Extension.Cloud.DropBox
     public class DropBoxCloudManager : AManager, ICloudManager, IDisposable
     {
         /// <summary>
+        ///     Error message for not initialized state
+        /// </summary>
+        private const string NotInitializedError = "DropBox manager is not initialized. Call InitializeAsync first.";
+
+        /// <summary>
         ///     The access token
         /// </summary>
         private string _accessToken;
@@ -125,7 +130,7 @@ namespace Alis.Extension.Cloud.DropBox
         {
             if (!IsInitialized)
             {
-                throw new InvalidOperationException("DropBox manager is not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedError);
             }
 
             if (!File.Exists(localFilePath))
@@ -168,7 +173,7 @@ namespace Alis.Extension.Cloud.DropBox
         {
             if (!IsInitialized)
             {
-                throw new InvalidOperationException("DropBox manager is not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedError);
             }
 
             if (!dropboxPath.StartsWith("/"))
@@ -213,7 +218,7 @@ namespace Alis.Extension.Cloud.DropBox
         {
             if (!IsInitialized)
             {
-                throw new InvalidOperationException("DropBox manager is not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedError);
             }
 
             if (string.IsNullOrEmpty(folderPath))
@@ -248,7 +253,7 @@ namespace Alis.Extension.Cloud.DropBox
         {
             if (!IsInitialized)
             {
-                throw new InvalidOperationException("DropBox manager is not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedError);
             }
 
             if (!dropboxPath.StartsWith("/"))
@@ -277,7 +282,7 @@ namespace Alis.Extension.Cloud.DropBox
         {
             if (!IsInitialized)
             {
-                throw new InvalidOperationException("DropBox manager is not initialized. Call InitializeAsync first.");
+                throw new InvalidOperationException(NotInitializedError);
             }
 
             if (!dropboxPath.StartsWith("/"))
