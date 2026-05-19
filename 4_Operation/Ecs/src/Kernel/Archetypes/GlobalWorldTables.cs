@@ -48,15 +48,16 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// </summary>
         public const int Mod16Mask = 0xF;
 
+        //we accsess by archetype first because i think we access different comps from the same archetype more
         /// <summary>
         ///     The component tag location table
         /// </summary>
-        internal static byte[ /*archetype id*/][ /*component id*/] ComponentTagLocationTable = [];
+        public static byte[ /*archetype id*/][ /*component id*/] ComponentTagLocationTable = [];
 
         /// <summary>
         ///     The scene
         /// </summary>
-        internal static readonly FastestTable<Scene> Worlds = new FastestTable<Scene>(2);
+        internal static FastestTable<Scene> Worlds = new FastestTable<Scene>(2);
 
         /// <summary>
         ///     The buffer change lock

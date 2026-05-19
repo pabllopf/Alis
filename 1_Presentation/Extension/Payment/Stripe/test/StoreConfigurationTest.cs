@@ -48,8 +48,8 @@ namespace Alis.Extension.Payment.Stripe.Test
 
             // Assert
             Assert.Equal("usd", config.DefaultCurrency);
-            Assert.Equal("https://example.com/payment/success", config.SuccessUrl.ToString());
-            Assert.Equal("https://example.com/payment/cancel", config.CancelUrl.ToString());
+            Assert.Null(config.SuccessUrl);
+            Assert.Null(config.CancelUrl);
             Assert.True(config.EnableAutomaticPaymentMethods);
         }
 

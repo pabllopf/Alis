@@ -40,9 +40,9 @@ namespace Alis.Core.Ecs.Redifinition
     public sealed class Gen2GcCallback : CriticalFinalizerObject
     {
         /// <summary>
-        ///     Gets or sets the gen collection occurred event
+        ///     The gen collection occured
         /// </summary>
-        public static Action Gen2CollectionOccured { get; set; }
+        public static Action Gen2CollectionOccured;
 
         /// <summary>
         ///     The callback
@@ -95,7 +95,7 @@ namespace Alis.Core.Ecs.Redifinition
         public static void Register(Func<bool> callback)
         {
             // Create a unreachable object that remembers the callback function and target object.
-            _ = new Gen2GcCallback(callback);
+            new Gen2GcCallback(callback);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Redifinition
         public static void Register(Func<object, bool> callback, object targetObj)
         {
             // Create a unreachable object that remembers the callback function and target object.
-            _ = new Gen2GcCallback(callback, targetObj);
+            new Gen2GcCallback(callback, targetObj);
         }
 
         /// <summary>

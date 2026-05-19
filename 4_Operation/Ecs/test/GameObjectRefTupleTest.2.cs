@@ -201,6 +201,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.Equal(entity, tuple.GameObject);
             Assert.Equal(42, tuple.Item1.Value.X);
+            Assert.Equal(1.5f, tuple.Item2.Value.X);
 
             world.Dispose();
         }

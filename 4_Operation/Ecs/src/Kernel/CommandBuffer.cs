@@ -73,6 +73,7 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         internal bool IsInactive;
 
+        //-1 indicates normal state
         /// <summary>
         ///     The last create gameObject components buffer index
         /// </summary>
@@ -263,7 +264,7 @@ namespace Alis.Core.Ecs.Kernel
                             ArchetypeEdgeType.AddComponent);
                     }
 
-                    Scene.MoveEntityToArchetypeAdd(runners, concrete, ref lookup, out _,
+                    Scene.MoveEntityToArchetypeAdd(runners, concrete, ref lookup, out GameObjectLocation _,
                         id.Archetype(Scene)!);
                 }
 

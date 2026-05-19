@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The none component runner table
         /// </summary>
-        internal static readonly Dictionary<Type, IComponentStorageBaseFactory> NoneComponentRunnerTable = [];
+        internal static Dictionary<Type, IComponentStorageBaseFactory> NoneComponentRunnerTable = [];
 
         /// <summary>
         ///     The existing component ds
@@ -146,6 +146,7 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         private static int _nextComponentId = -1;
 
+        //initalize default(ComponentID) to point to void
         /// <summary>
         ///     Initializes a new instance of the <see cref="Component" /> class
         /// </summary>
@@ -237,8 +238,8 @@ namespace Alis.Core.Ecs.Kernel
 
                 IdTable<T> stack = new IdTable<T>();
                 ComponentTable.Push(new ComponentData(type, stack,
-                    initDelegate ?? null,
-                    destroyDelegate ?? null));
+                    GenerationServices.TypeIniters.TryGetValue(type, out Delegate _) ? initDelegate : null,
+                    GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate _) ? destroyDelegate : null));
 
                 return (id, stack, initDelegate, destroyDelegate);
             }

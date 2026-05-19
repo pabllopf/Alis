@@ -1663,7 +1663,7 @@ namespace Alis.Core.Ecs
             //Total: 4x lookup
 
             //1x
-            ref GameObjectLocation lookup = ref AssertIsAlive(out _);
+            ref GameObjectLocation lookup = ref AssertIsAlive(out Scene _);
 
             //1x
             //other lookup is optimized into indirect pointer addressing
@@ -1909,7 +1909,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GenericEvent OnComponentAddedGeneric
         {
-            set => InitalizeEventRecord(value, GameObjectFlags.AddGenericComp);
+            readonly set => _ = value;
             get
             {
                 if (!InternalIsAlive(out Scene world, out _))
@@ -1927,7 +1927,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GenericEvent OnComponentRemovedGeneric
         {
-            set => InitalizeEventRecord(value, GameObjectFlags.RemoveGenericComp);
+            readonly set => _ = value;
             get
             {
                 if (!InternalIsAlive(out Scene world, out _))

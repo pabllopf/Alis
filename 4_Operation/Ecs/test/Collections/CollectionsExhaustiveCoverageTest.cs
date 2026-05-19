@@ -282,7 +282,7 @@ namespace Alis.Core.Ecs.Test.Collections
             ComponentId componentId = Component<Position>.Id;
 
             lookup.SetArchetype(componentId.RawIndex, from, destination);
-            uint storedKey = lookup.GetKey(componentId.RawIndex, from);
+            uint storedKey = FastLookup.GetKey(componentId.RawIndex, from);
             int storedIndex = lookup.LookupIndex(storedKey);
             Assert.True(storedIndex is >= 0 and < 8);
             Assert.Same(destination, lookup.Archetypes[storedIndex]);
@@ -291,12 +291,12 @@ namespace Alis.Core.Ecs.Test.Collections
             {
                 ushort id = (ushort) (100 + i);
                 lookup.SetArchetype(id, from, destination);
-                uint key = lookup.GetKey(id, from);
+                uint key = FastLookup.GetKey(id, from);
                 lookup.LookupIndex(key);
             }
 
             lookup.SetArchetype(200, from, destination);
-            Assert.Equal(1, lookup.LookupIndex(lookup.GetKey(200, from)));
+            Assert.Equal(1, lookup.LookupIndex(FastLookup.GetKey(200, from)));
             Assert.Equal(32, lookup.LookupIndex(123456789u));
 
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.AddComponent;
