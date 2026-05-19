@@ -668,7 +668,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public bool IsKeyDown(ConsoleKey key) => pressedKeys.Contains(key);
+        public bool IsKeyDown(ConsoleKey consoleKey) => pressedKeys.Contains(consoleKey);
 
         /// <summary>
         /// </summary>

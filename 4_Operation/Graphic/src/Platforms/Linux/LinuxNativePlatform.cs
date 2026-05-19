@@ -1052,9 +1052,9 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// </summary>
         /// <param name="key">The key to check.</param>
         /// <returns>True if the key is down, false otherwise.</returns>
-        public bool IsKeyDown(ConsoleKey key)
+        public bool IsKeyDown(ConsoleKey consoleKey)
         {
-            return pressedKeys.Contains(key);
+            return pressedKeys.Contains(consoleKey);
         }
 
         /// <summary>
