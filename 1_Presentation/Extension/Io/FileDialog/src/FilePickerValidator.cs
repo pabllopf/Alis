@@ -60,13 +60,12 @@ namespace Alis.Extension.Io.FileDialog
             if (string.IsNullOrWhiteSpace(options.Title))
             {
                 Logger.Warning("FilePickerOptions Title is null or empty.");
-                throw new ArgumentException("Title cannot be null or empty.", nameof(options.Title));
-            }
+                throw new ArgumentException("Title cannot be null or empty.", nameof(options));
 
             if (!string.IsNullOrWhiteSpace(options.DefaultPath) && !Directory.Exists(options.DefaultPath))
             {
                 Logger.Warning($"Default path does not exist: {options.DefaultPath}");
-                throw new ArgumentException($"Default path does not exist: {options.DefaultPath}", nameof(options.DefaultPath));
+                throw new ArgumentException($"Default path does not exist: {options.DefaultPath}", nameof(options));
             }
 
             if ((options.DialogType == FileDialogType.SaveFile) && options.AllowMultiple)
