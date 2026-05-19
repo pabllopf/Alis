@@ -298,7 +298,7 @@ namespace Alis.Extension.Payment.Stripe
                 throw new ArgumentOutOfRangeException(nameof(request), "Quantity must be greater than zero.");
             }
 
-            if (string.IsNullOrWhiteSpace(request.SuccessUrl.ToString()) || string.IsNullOrWhiteSpace(request.CancelUrl.ToString()))
+            if (request.SuccessUrl == null || request.CancelUrl == null || string.IsNullOrWhiteSpace(request.SuccessUrl.ToString()) || string.IsNullOrWhiteSpace(request.CancelUrl.ToString()))
             {
                 throw new ArgumentException("SuccessUrl and CancelUrl are required.", nameof(request));
             }
