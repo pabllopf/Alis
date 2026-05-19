@@ -228,7 +228,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         {
             string escaped = "text\\uZZZZmore";
             string result = _handler.Unescape(escaped);
-            Assert.Equal("textuZZZZmore", result);
+            Assert.Equal("text\\uZZZZmore", result);
         }
     }
 }
