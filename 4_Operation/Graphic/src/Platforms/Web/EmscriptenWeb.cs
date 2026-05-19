@@ -38,6 +38,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///     Handles communication with JavaScript functions for DOM manipulation,
     ///     input event handling, and browser APIs
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class EmscriptenWeb
     {
         /// <summary>

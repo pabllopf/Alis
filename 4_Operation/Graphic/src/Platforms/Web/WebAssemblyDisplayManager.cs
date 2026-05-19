@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Graphic.Platforms.Web
 {
@@ -36,6 +37,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///     Manages display and window-related functionality for WebAssembly
     ///     Handles resolution, orientation, fullscreen, and display events
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class WebAssemblyDisplayManager
     {
         /// <summary>

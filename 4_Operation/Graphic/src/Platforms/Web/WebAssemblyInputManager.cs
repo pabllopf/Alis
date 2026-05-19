@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Alis.Core.Graphic.Platforms.Web
@@ -37,6 +38,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///     Advanced input manager for WebAssembly applications
     ///     Provides high-level input handling for keyboards, mice, gamepads, and touch
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class WebAssemblyInputManager
     {
         /// <summary>

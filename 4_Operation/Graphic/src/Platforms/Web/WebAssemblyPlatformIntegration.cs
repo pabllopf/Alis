@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Graphic.Platforms.Web
 {
@@ -96,6 +97,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///             context.Platform.SwapBuffers();
     ///         });
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class WebAssemblyPlatformIntegration
     {
         /// <summary>

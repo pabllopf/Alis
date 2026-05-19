@@ -35,6 +35,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///     Contains the JavaScript code for WebAssembly bridge functionality.
     ///     This script should be included in the HTML page that hosts the WebAssembly module.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class EmscriptenWebScript
     {
         /// <summary>

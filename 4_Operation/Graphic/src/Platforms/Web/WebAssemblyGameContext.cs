@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Graphic.Platforms.Web
 {
@@ -35,6 +36,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///     Complete WebAssembly game context providing unified access to all platform features
     ///     This is the main entry point for game development on WebAssembly
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class WebAssemblyGameContext : IDisposable
     {
         /// <summary>
