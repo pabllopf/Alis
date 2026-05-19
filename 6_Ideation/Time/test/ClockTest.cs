@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that start should start stopwatch
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Start_ShouldStartStopwatch()
         {
             // Arrange
@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that stop should stop stopwatch
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Stop_ShouldStopStopwatch()
         {
             // Arrange
@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that reset should reset stopwatch
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Reset_ShouldResetStopwatch()
         {
             // Arrange
@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that elapsed should return elapsed time
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Elapsed_ShouldReturnElapsedTime()
         {
             // Arrange
@@ -109,7 +109,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that elapsed milliseconds should return elapsed milliseconds
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void ElapsedMilliseconds_ShouldReturnElapsedMilliseconds()
         {
             // Arrange
@@ -127,7 +127,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that elapsed ticks should return elapsed ticks
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void ElapsedTicks_ShouldReturnElapsedTicks()
         {
             // Arrange
@@ -145,7 +145,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that elapsed seconds should return elapsed seconds
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void ElapsedSeconds_ShouldReturnElapsedSeconds()
         {
             // Arrange
@@ -163,7 +163,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that constructor should initialize clock in reset state
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Constructor_ShouldInitializeClockInResetState()
         {
             // Act
@@ -178,7 +178,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that is running should return false when clock is not running
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void IsRunning_ShouldReturnFalseWhenClockIsNotRunning()
         {
             // Arrange
@@ -191,7 +191,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that is running should return true when clock is running
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void IsRunning_ShouldReturnTrueWhenClockIsRunning()
         {
             // Arrange
@@ -207,7 +207,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that create should return a running clock instance
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Create_ShouldReturnRunningClockInstance()
         {
             // Act
@@ -222,7 +222,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that restart should reset and start the clock
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Restart_ShouldResetAndStartClock()
         {
             // Arrange
@@ -243,7 +243,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that to string should return elapsed time as string
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void ToString_ShouldReturnElapsedTimeAsString()
         {
             // Arrange
@@ -263,7 +263,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that start on running clock should be no-op
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Start_OnRunningClock_ShouldBeNoOp()
         {
             // Arrange
@@ -285,7 +285,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that stop on stopped clock should be no-op
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Stop_OnStoppedClock_ShouldBeNoOp()
         {
             // Arrange
@@ -307,7 +307,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that elapsed property should update while clock is running
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Elapsed_ShouldUpdateWhileClockIsRunning()
         {
             // Arrange
@@ -326,7 +326,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that elapsed property should not update while clock is stopped
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Elapsed_ShouldNotUpdateWhileClockIsStopped()
         {
             // Arrange
@@ -347,7 +347,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that multiple start stop cycles should accumulate elapsed time
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void MultipleCycles_ShouldAccumulateElapsedTime()
         {
             // Arrange
@@ -372,7 +372,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that reset should clear elapsed time
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Reset_ShouldClearElapsedTime()
         {
             // Arrange
@@ -394,7 +394,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that elapsed milliseconds should be zero for new clock
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void ElapsedMilliseconds_ShouldBeZeroForNewClock()
         {
             // Act
@@ -407,7 +407,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that elapsed ticks should be zero for new clock
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void ElapsedTicks_ShouldBeZeroForNewClock()
         {
             // Act

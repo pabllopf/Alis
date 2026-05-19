@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that test
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Test()
         {
             Assert.True(true);

@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that clock creation succeeds
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Clock_Creation_Succeeds()
         {
             Clock clock = new Clock();
@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that clock creation with multiple instances
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Clock_Creation_WithMultipleInstances()
         {
             Clock clock1 = new Clock();
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that delta time after initialization is zero or small
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void DeltaTime_AfterInitialization_IsZeroOrSmall()
         {
             Clock clock = new Clock();
@@ -80,7 +80,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that delta time after delay increases with time
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void DeltaTime_AfterDelay_IncreasesWith_Time()
         {
             Clock clock = new Clock();
@@ -94,7 +94,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that elapsed increments over time
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Elapsed_IncrementsOverTime()
         {
             Clock clock = new Clock();
@@ -111,7 +111,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that start can be called
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Start_CanBeCalled()
         {
             Clock clock = new Clock();
@@ -123,7 +123,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that stop can be called
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Stop_CanBeCalled()
         {
             Clock clock = new Clock();
@@ -137,7 +137,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that start stop start works
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Start_Stop_Start_Works()
         {
             Clock clock = new Clock();
@@ -160,7 +160,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that reset clears time
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Reset_ClearsTime()
         {
             Clock clock = new Clock();
@@ -174,7 +174,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that reset multiple timer works
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Reset_MultipleTimer_Works()
         {
             Clock clock = new Clock();
@@ -194,7 +194,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that multiple clocks are independent
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Multiple_Clocks_AreIndependent()
         {
             Clock clock1 = new Clock();
@@ -216,7 +216,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that precision millisecond accuracy
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Precision_MillisecondAccuracy()
         {
             Clock clock = new Clock();
@@ -234,7 +234,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that precision sub millisecond can be measured
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void Precision_SubMillisecond_CanBeMeasured()
         {
             Clock clock = new Clock();
@@ -251,7 +251,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that extreme long duration stays positive
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void ExtremeLongDuration_StaysPositive()
         {
             Clock clock = new Clock();
@@ -267,7 +267,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that is running after start is true
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void IsRunning_AfterStart_IsTrue()
         {
             Clock clock = new Clock();
@@ -279,7 +279,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that is running after stop is false
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void IsRunning_AfterStop_IsFalse()
         {
             Clock clock = new Clock();
@@ -293,7 +293,7 @@ namespace Alis.Core.Aspect.Time.Test
         /// <summary>
         ///     Tests that elapsed timespan returns valid timespan
         /// </summary>
-        [Fact]
+        [CrossPlatformFact]
         public void ElapsedTimespan_ReturnsValidTimespan()
         {
             Clock clock = new Clock();
