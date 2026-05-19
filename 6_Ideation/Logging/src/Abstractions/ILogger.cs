@@ -76,17 +76,17 @@ namespace Alis.Core.Aspect.Logging.Abstractions
         void LogError(string message);
 
         /// <summary>
-        ///     Logs a message with Critical severity.
-        /// </summary>
-        /// <param name="message">The message to log.</param>
-        void LogCritical(string message);
-
-        /// <summary>
         ///     Logs a message with an associated exception at Error level.
         /// </summary>
         /// <param name="message">The message to log.</param>
         /// <param name="exception">The exception to include in the log.</param>
         void LogError(string message, Exception exception);
+
+        /// <summary>
+        ///     Logs a message with Critical severity.
+        /// </summary>
+        /// <param name="message">The message to log.</param>
+        void LogCritical(string message);
 
         /// <summary>
         ///     Logs a message with an associated exception at Critical level.
