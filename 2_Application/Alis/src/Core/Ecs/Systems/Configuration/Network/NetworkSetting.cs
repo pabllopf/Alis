@@ -36,15 +36,15 @@ namespace Alis.Core.Ecs.Systems.Configuration.Network
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct NetworkSetting(
-        int port = 8080,
-        string ip = "127.0.0.1",
-        string host = "localhost",
-        string protocol = "http") : INetworkSetting
+        int port,
+        string ip,
+        string host,
+        string protocol) : INetworkSetting
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="NetworkSetting" /> class
+        ///     Initializes a new instance of the <see cref="NetworkSetting" /> class.
         /// </summary>
-        public NetworkSetting() : this(8080)
+        public NetworkSetting() : this(8080, "127.0.0.1", "localhost", "http")
         {
         }
 
