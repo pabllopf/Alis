@@ -459,8 +459,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// Gets the platform name
         /// </summary>
-        /// <returns>The string</returns>
-        public static string GetPlatformName() => "WebAssembly";
+        public const string PlatformName = "WebAssembly";
 
         /// <summary>
         /// Ises the online
@@ -552,7 +551,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void LogPlatformInfo()
         {
-            WebAssemblyGameContext.ConsoleLog($"Platform: {SystemInfo.GetPlatformName()}");
+            WebAssemblyGameContext.ConsoleLog($"Platform: {SystemInfo.PlatformName}");
             WebAssemblyGameContext.ConsoleLog($"Language: {SystemInfo.GetLanguage()}");
             WebAssemblyGameContext.ConsoleLog($"Online: {SystemInfo.IsOnline()}");
             WebAssemblyGameContext.ConsoleLog($"DPI: {SystemInfo.GetDevicePixelRatio()}");
