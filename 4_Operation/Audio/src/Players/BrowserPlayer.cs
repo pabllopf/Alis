@@ -76,9 +76,9 @@ namespace Alis.Core.Audio.Players
         /// <summary>
         ///     Initializes a new instance of the <see cref="BrowserPlayer" /> class
         /// </summary>
-        /// <exception cref="Exception">No se pudo abrir el dispositivo OpenAL</exception>
-        /// <exception cref="Exception">No se pudo activar el contexto OpenAL</exception>
-        /// <exception cref="Exception">No se pudo crear el contexto OpenAL</exception>
+        /// <exception cref="InvalidOperationException">No se pudo abrir el dispositivo OpenAL</exception>
+        /// <exception cref="InvalidOperationException">No se pudo activar el contexto OpenAL</exception>
+        /// <exception cref="InvalidOperationException">No se pudo crear el contexto OpenAL</exception>
         public BrowserPlayer()
         {
             Console.WriteLine("[BrowserPlayer] Inicializando OpenAL...");
@@ -86,19 +86,19 @@ namespace Alis.Core.Audio.Players
             Console.WriteLine($"[BrowserPlayer] Dispositivo OpenAL: {_device}");
             if (_device == IntPtr.Zero)
             {
-                throw new Exception("No se pudo abrir el dispositivo OpenAL");
+                throw new InvalidOperationException("No se pudo abrir el dispositivo OpenAL");
             }
 
             _context = OpenAl.alcCreateContext(_device, IntPtr.Zero);
             Console.WriteLine($"[BrowserPlayer] Contexto OpenAL: {_context}");
             if (_context == IntPtr.Zero)
             {
-                throw new Exception("No se pudo crear el contexto OpenAL");
+                throw new InvalidOperationException("No se pudo crear el contexto OpenAL");
             }
 
             if (!OpenAl.alcMakeContextCurrent(_context))
             {
-                throw new Exception("No se pudo activar el contexto OpenAL");
+                throw new InvalidOperationException("No se pudo activar el contexto OpenAL");
             }
 
             OpenAl.alGenSources(1, out _source);
@@ -162,7 +162,7 @@ namespace Alis.Core.Audio.Players
             if (!TryParseWav(wavData, out dataOffset, out dataSize, out freq, out format))
             {
                 Console.WriteLine("[BrowserPlayer] Formato WAV no soportado");
-                throw new Exception("Formato WAV no soportado");
+                throw new InvalidOperationException("Formato WAV no soportado");
             }
 
             Console.WriteLine($"[BrowserPlayer] WAV: offset={dataOffset}, size={dataSize}, freq={freq}, format={format}");
