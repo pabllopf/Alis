@@ -223,12 +223,5 @@ namespace Alis.Core.Ecs.Updating
         /// </summary>
         /// <returns>La referencia al componente</returns>
         public ref TComponent GetComponentStorageDataReference() => ref TypedBuffer[0];
-
-        /// <summary>
-        ///     Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-        }
     }
 }
