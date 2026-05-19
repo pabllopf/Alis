@@ -40,18 +40,18 @@ namespace Alis.Core.Aspect.Fluent
         /// <summary>
         ///     The console key associated with this event.
         /// </summary>
-        public ConsoleKey Key;
+        public readonly ConsoleKey Key;
 
         /// <summary>
         ///     The UTC timestamp when the keyboard event occurred.
         /// </summary>
-        public DateTime Timestamp;
+        public readonly DateTime Timestamp;
 
         /// <summary>
         ///     The duration the key was held down, measured from press to release.
         ///     Zero <see cref="TimeSpan" /> if the key was simply pressed or released without a hold.
         /// </summary>
-        public TimeSpan HoldDuration;
+        public readonly TimeSpan HoldDuration;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="KeyEventInfo" /> struct.
