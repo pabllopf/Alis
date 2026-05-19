@@ -131,7 +131,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Checks the os
         /// </summary>
-        /// <exception cref="Exception">No implementation exist for the current OS</exception>
+        /// <exception cref="PlatformNotSupportedException">No implementation exist for the current OS</exception>
         /// <returns>The player instance for the current operating system.</returns>
         internal static IPlayer CheckOs()
         {
@@ -146,7 +146,7 @@ namespace Alis.Core.Audio
 #else
             return null;
 #endif
-            throw new Exception("No implementation exist for the current OS");
+            throw new PlatformNotSupportedException("No implementation exist for the current OS");
         }
 
         /// <summary>
