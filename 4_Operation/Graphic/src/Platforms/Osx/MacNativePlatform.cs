@@ -770,7 +770,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
         // Estructura para la posición
 
-        private CGPoint GetMouseLocation()
+        private static CGPoint GetMouseLocation()
         {
             IntPtr eventRef = ObjectiveCInterop.CGEventCreate(IntPtr.Zero);
             CGPoint point = ObjectiveCInterop.CGEventGetLocation(eventRef);
