@@ -161,6 +161,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
             if (BoardWidth <= 0)
             {
                 throw new ArgumentException("Board width must be greater than 0.");
+            }
 
             if (BoardHeight <= 0)
             {
