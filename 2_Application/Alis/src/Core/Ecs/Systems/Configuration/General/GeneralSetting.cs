@@ -39,22 +39,14 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
     /// <seealso cref="IGeneralSetting" />
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GeneralSetting(
-        bool debug,
-        string name,
-        string description,
-        string version,
-        string author,
-        string license,
-        string icon) : IGeneralSetting, IJsonSerializable, IJsonDesSerializable<GeneralSetting>
+        bool debug = false,
+        string name = "Default Name",
+        string description = "Default Description",
+        string version = "0.0.0",
+        string author = "Pablo Perdomo Falcón",
+        string license = "GPL-3.0 license",
+        string icon = "app.ico") : IGeneralSetting, IJsonSerializable, IJsonDesSerializable<GeneralSetting>
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="GeneralSetting" /> class.
-        /// </summary>
-        public GeneralSetting() : this(false, "Default Name", "Default Description", "0.0.0",
-            "Pablo Perdomo Falcón", "GPL-3.0 license", "app.ico")
-        {
-        }
-
         /// <summary>
         ///     Gets or sets the value of the debug
         /// </summary>
