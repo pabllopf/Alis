@@ -88,3 +88,5 @@ Debug/
 /.sonarqube
 
 *.txt
+live_issues.json
+maintainability_issues.json
