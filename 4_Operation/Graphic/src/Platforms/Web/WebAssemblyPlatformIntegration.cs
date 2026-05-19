@@ -420,7 +420,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// Ises the fullscreen
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsFullscreen() => WebAssemblyGameContext.IsFullscreen();
+        public static bool IsFullscreen() => WebAssemblyGameContext.IsFullscreen();
 
         /// <summary>
         /// Sets the fullscreen using the specified enabled
