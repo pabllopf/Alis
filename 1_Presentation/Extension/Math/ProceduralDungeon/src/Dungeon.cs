@@ -172,12 +172,9 @@ namespace Alis.Extension.Math.ProceduralDungeon
         {
             if (!_disposed)
             {
-                if (disposing)
+                if (disposing && _randomNumberGenerator is IDisposable disposable)
                 {
-                    if (_randomNumberGenerator is IDisposable disposable)
-                    {
-                        disposable.Dispose();
-                    }
+                    disposable.Dispose();
                 }
 
                 _disposed = true;
