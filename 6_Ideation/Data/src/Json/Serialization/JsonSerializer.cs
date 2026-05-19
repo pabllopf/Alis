@@ -131,7 +131,11 @@ namespace Alis.Core.Aspect.Data.Json.Serialization
             }
 
             string trimmed = value.TrimStart();
+            #if NET5_0_OR_GREATER
             return trimmed.StartsWith('{') || trimmed.StartsWith('[');
+            #else
+            return trimmed.StartsWith("{") || trimmed.StartsWith("[");
+            #endif
         }
     }
 }
