@@ -359,7 +359,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void DisplayManager_GetRefreshRate_Returns60()
         {
-            Assert.Equal(60, WebAssemblyDisplayManager.GetRefreshRate());
+            Assert.Equal(60, WebAssemblyDisplayManager.RefreshRate);
         }
 
         [Fact]
