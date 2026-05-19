@@ -148,15 +148,15 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        ///     Logs an exception message at Critical severity and throws an <see cref="Exception"/>.
+        ///     Logs an exception message at Critical severity and throws an <see cref="InvalidOperationException"/>.
         /// </summary>
         /// <param name="toString">The exception message to log and throw.</param>
-        /// <exception cref="Exception">Thrown after logging to propagate the error.</exception>
+        /// <exception cref="InvalidOperationException">Thrown after logging to propagate the error.</exception>
         public static void Exception(string toString)
         {
             EnsureInitialized();
             _defaultLogger?.LogCritical(toString);
-            throw new Exception(toString);
+            throw new InvalidOperationException(toString);
         }
     }
 }
