@@ -168,6 +168,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public override void OnStart()
         {
+            // Intentionally empty: no initialization required for this manager
         }
 
         /// <summary>
@@ -175,6 +176,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public override void OnBeforeDraw()
         {
+            // Intentionally empty: no pre-draw processing required for this manager
         }
 
         /// <summary>
