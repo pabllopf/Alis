@@ -40,18 +40,9 @@ namespace Alis.Core.Ecs.Redifinition
     public sealed class Gen2GcCallback : CriticalFinalizerObject
     {
         /// <summary>
-        ///     The gen collection occured
-        /// </summary>
-        private static Action gen2CollectionOccured;
-
-        /// <summary>
         ///     Gets or sets the gen collection occurred event
         /// </summary>
-        public static Action Gen2CollectionOccured
-        {
-            get => gen2CollectionOccured;
-            set => gen2CollectionOccured = value;
-        }
+        public static Action Gen2CollectionOccured { get; set; }
 
         /// <summary>
         ///     The callback
