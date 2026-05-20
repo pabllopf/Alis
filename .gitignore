@@ -51,6 +51,7 @@ Debug/
 **/.log
 **/**/**/**/.xsd
 
+._*
 *.log
 *.html
 *.css
