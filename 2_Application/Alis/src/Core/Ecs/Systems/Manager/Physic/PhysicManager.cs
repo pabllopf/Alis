@@ -167,6 +167,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// </summary>
         public override void OnExit()
         {
+            // No cleanup needed for physics manager
         }
 
 
