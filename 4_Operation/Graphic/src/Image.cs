@@ -112,34 +112,7 @@ namespace Alis.Core.Graphic
                 byte[] rawData = new byte[height * width * 4];
 
                 // Leer paleta si existe
-                int paletteSize = 0;
-                byte[][] palette = null;
-                if (bitsPerPixel == 8)
-                {
-                    paletteSize = 256;
-                }
-                else if (bitsPerPixel == 4)
-                {
-                    paletteSize = 16;
-                }
-                else if (bitsPerPixel == 1)
-                {
-                    paletteSize = 2;
-                }
-
-                if (paletteSize > 0)
-                {
-                    reader.BaseStream.Seek(headerSize + 14, SeekOrigin.Begin);
-                    palette = new byte[paletteSize][];
-                    for (int i = 0; i < paletteSize; i++)
-                    {
-                        byte blue = reader.ReadByte();
-                        byte green = reader.ReadByte();
-                        byte red = reader.ReadByte();
-                        reader.ReadByte();
-                        palette[i] = new byte[] {red, green, blue, 255};
-                    }
-                }
+                byte[][] palette = LoadPalette(reader, headerSize, bitsPerPixel);
 
                 int[] bitfieldsMasks = null;
                 if (compression == 3)
@@ -193,6 +166,41 @@ namespace Alis.Core.Graphic
             {
                 return LoadFromStream(stream);
             }
+        }
+
+        private static byte[][] LoadPalette(BinaryReader reader, int headerSize, short bitsPerPixel)
+        {
+            int paletteSize = 0;
+            if (bitsPerPixel == 8)
+            {
+                paletteSize = 256;
+            }
+            else if (bitsPerPixel == 4)
+            {
+                paletteSize = 16;
+            }
+            else if (bitsPerPixel == 1)
+            {
+                paletteSize = 2;
+            }
+
+            if (paletteSize == 0)
+            {
+                return null;
+            }
+
+            reader.BaseStream.Seek(headerSize + 14, SeekOrigin.Begin);
+            byte[][] palette = new byte[paletteSize][];
+            for (int i = 0; i < paletteSize; i++)
+            {
+                byte blue = reader.ReadByte();
+                byte green = reader.ReadByte();
+                byte red = reader.ReadByte();
+                reader.ReadByte();
+                palette[i] = new byte[] {red, green, blue, 255};
+            }
+
+            return palette;
         }
 
         /// <summary>
