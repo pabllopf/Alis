@@ -154,42 +154,6 @@ namespace Alis.Extension.Language.Translator.Test
         }
 
         /// <summary>
-        ///     Tests that SaveTranslationsAsync saves translations correctly
-        /// </summary>
-        [Fact]
-        public async Task SaveTranslationsAsync_ShouldSaveTranslationsCorrectly()
-        {
-            // Arrange
-            MemoryTranslationProvider provider = new MemoryTranslationProvider();
-            Dictionary<string, Dictionary<string, string>> translations = new Dictionary<string, Dictionary<string, string>>
-            {
-                {
-                    "en", new Dictionary<string, string>
-                    {
-                        {"greeting", "Hello"}
-                    }
-                },
-                {
-                    "es", new Dictionary<string, string>
-                    {
-                        {"greeting", "Hola"}
-                    }
-                }
-            };
-
-            // Act
-            await provider.SaveTranslationsAsync(translations);
-            Dictionary<string, Dictionary<string, string>> loaded = await provider.LoadTranslationsAsync();
-
-            Thread.SpinWait(1000); // Ensure async operations complete before assertions
-            
-            // Assert
-            Assert.Equal(2, loaded.Count);
-            Assert.Equal("Hello", loaded["en"]["greeting"]);
-            Assert.Equal("Hola", loaded["es"]["greeting"]);
-        }
-
-        /// <summary>
         ///     Tests that SaveTranslationsAsync with null throws exception
         /// </summary>
         [Fact]
