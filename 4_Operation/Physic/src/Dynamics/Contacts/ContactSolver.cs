@@ -786,98 +786,108 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 ContactPositionConstraint pc = PositionConstraints[i];
 
+                (int orderedIndexA, int orderedIndexB) = GetOrderedIndices(pc);
+                LockBodies(orderedIndexA, orderedIndexB);
 
-                // Find lower order item.
-                int orderedIndexA = pc.IndexA;
-                int orderedIndexB = pc.IndexB;
-                if (orderedIndexB < orderedIndexA)
-                {
-                    orderedIndexA = pc.IndexB;
-                    orderedIndexB = pc.IndexA;
-                }
+                minSeparation = SolveContactPositionConstraint(pc);
 
-                // Lock bodies.
-                for (;;)
-                {
-                    if (Interlocked.CompareExchange(ref Locks[orderedIndexA], 1, 0) == 0)
-                    {
-                        if (Interlocked.CompareExchange(ref Locks[orderedIndexB], 1, 0) == 0)
-                        {
-                            break;
-                        }
-
-                        Interlocked.Exchange(ref Locks[orderedIndexA], 0);
-                    }
-
-                    Thread.Sleep(0);
-                }
-
-
-                int indexA = pc.IndexA;
-                int indexB = pc.IndexB;
-                Vector2F localCenterA = pc.LocalCenterA;
-                float mA = pc.InvMassA;
-                float iA = pc.InvIa;
-                Vector2F localCenterB = pc.LocalCenterB;
-                float mB = pc.InvMassB;
-                float iB = pc.InvIb;
-                int pointCount = pc.PointCount;
-
-                Vector2F cA = Positions[indexA].C;
-                float aA = Positions[indexA].A;
-                Vector2F cB = Positions[indexB].C;
-                float aB = Positions[indexB].A;
-
-                // Solve normal constraints
-                for (int j = 0; j < pointCount; ++j)
-                {
-                    ControllerTransform xfA = new ControllerTransform(Vector2F.Zero, aA);
-                    ControllerTransform xfB = new ControllerTransform(Vector2F.Zero, aB);
-                    xfA.Position = cA - Complex.Multiply(ref localCenterA, ref xfA.Rotation);
-                    xfB.Position = cB - Complex.Multiply(ref localCenterB, ref xfB.Rotation);
-
-                    PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2F normal, out Vector2F point, out float separation);
-
-                    Vector2F rA = point - cA;
-                    Vector2F rB = point - cB;
-
-                    // Track max constraint error.
-                    minSeparation = Math.Min(minSeparation, separation);
-
-                    // Prevent large corrections and allow slop.
-                    float c = MathUtils.Clamp(SettingEnv.Baumgarte * (separation + SettingEnv.LinearSlop), -SettingEnv.MaxLinearCorrection, 0.0f);
-
-                    // Compute the effective mass.
-                    float rnA = MathUtils.Cross(ref rA, ref normal);
-                    float rnB = MathUtils.Cross(ref rB, ref normal);
-                    float k = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
-
-                    // Compute normal impulse
-                    float impulse = k > 0.0f ? -c / k : 0.0f;
-
-                    Vector2F p = impulse * normal;
-
-                    cA -= mA * p;
-                    aA -= iA * MathUtils.Cross(ref rA, ref p);
-
-                    cB += mB * p;
-                    aB += iB * MathUtils.Cross(ref rB, ref p);
-                }
-
-                Positions[indexA].C = cA;
-                Positions[indexA].A = aA;
-                Positions[indexB].C = cB;
-                Positions[indexB].A = aB;
-
-
-                // Unlock bodies.
-                Interlocked.Exchange(ref Locks[orderedIndexB], 0);
-                Interlocked.Exchange(ref Locks[orderedIndexA], 0);
+                UnlockBodies(orderedIndexA, orderedIndexB);
             }
 
-            // We can't expect minSpeparation >= -b2_linearSlop because we don't
-            // push the separation above -b2_linearSlop.
             return minSeparation >= -3.0f * SettingEnv.LinearSlop;
+        }
+
+        private static (int, int) GetOrderedIndices(ContactPositionConstraint pc)
+        {
+            int orderedIndexA = pc.IndexA;
+            int orderedIndexB = pc.IndexB;
+            if (orderedIndexB < orderedIndexA)
+            {
+                orderedIndexA = pc.IndexB;
+                orderedIndexB = pc.IndexA;
+            }
+            return (orderedIndexA, orderedIndexB);
+        }
+
+        private void LockBodies(int orderedIndexA, int orderedIndexB)
+        {
+            for (;;)
+            {
+                if (Interlocked.CompareExchange(ref Locks[orderedIndexA], 1, 0) == 0)
+                {
+                    if (Interlocked.CompareExchange(ref Locks[orderedIndexB], 1, 0) == 0)
+                    {
+                        break;
+                    }
+
+                    Interlocked.Exchange(ref Locks[orderedIndexA], 0);
+                }
+
+                Thread.Sleep(0);
+            }
+        }
+
+        private void UnlockBodies(int orderedIndexA, int orderedIndexB)
+        {
+            Interlocked.Exchange(ref Locks[orderedIndexB], 0);
+            Interlocked.Exchange(ref Locks[orderedIndexA], 0);
+        }
+
+        private float SolveContactPositionConstraint(ContactPositionConstraint pc)
+        {
+            float minSeparation = 0.0f;
+            int indexA = pc.IndexA;
+            int indexB = pc.IndexB;
+            Vector2F localCenterA = pc.LocalCenterA;
+            float mA = pc.InvMassA;
+            float iA = pc.InvIa;
+            Vector2F localCenterB = pc.LocalCenterB;
+            float mB = pc.InvMassB;
+            float iB = pc.InvIb;
+            int pointCount = pc.PointCount;
+
+            Vector2F cA = Positions[indexA].C;
+            float aA = Positions[indexA].A;
+            Vector2F cB = Positions[indexB].C;
+            float aB = Positions[indexB].A;
+
+            for (int j = 0; j < pointCount; ++j)
+            {
+                ControllerTransform xfA = new ControllerTransform(Vector2F.Zero, aA);
+                ControllerTransform xfB = new ControllerTransform(Vector2F.Zero, aB);
+                xfA.Position = cA - Complex.Multiply(ref localCenterA, ref xfA.Rotation);
+                xfB.Position = cB - Complex.Multiply(ref localCenterB, ref xfB.Rotation);
+
+                PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2F normal, out Vector2F point, out float separation);
+
+                Vector2F rA = point - cA;
+                Vector2F rB = point - cB;
+
+                minSeparation = Math.Min(minSeparation, separation);
+
+                float c = MathUtils.Clamp(SettingEnv.Baumgarte * (separation + SettingEnv.LinearSlop), -SettingEnv.MaxLinearCorrection, 0.0f);
+
+                float rnA = MathUtils.Cross(ref rA, ref normal);
+                float rnB = MathUtils.Cross(ref rB, ref normal);
+                float k = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
+
+                float impulse = k > 0.0f ? -c / k : 0.0f;
+
+                Vector2F p = impulse * normal;
+
+                cA -= mA * p;
+                aA -= iA * MathUtils.Cross(ref rA, ref p);
+
+                cB += mB * p;
+                aB += iB * MathUtils.Cross(ref rB, ref p);
+            }
+
+            Positions[indexA].C = cA;
+            Positions[indexA].A = aA;
+            Positions[indexB].C = cB;
+            Positions[indexB].A = aB;
+
+            return minSeparation;
         }
 
         /// <summary>
