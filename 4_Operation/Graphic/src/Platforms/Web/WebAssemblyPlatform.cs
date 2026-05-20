@@ -535,38 +535,43 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                 foreach (int index in gamepadIndices)
                 {
-                    GamepadState state;
-                    if (!_gamepadStates.TryGetValue(index, out state))
-                    {
-                        state = new GamepadState();
-                        _gamepadStates[index] = state;
-                    }
-
-                    float[] axes = EmscriptenWeb.GetGamepadAxes(index);
-                    bool[] buttons = EmscriptenWeb.GetGamepadButtons(index);
-
-                    if (axes.Length > 0)
-                    {
-                        state.LeftStickX = axes[0];
-                        state.LeftStickY = axes.Length > 1 ? axes[1] : 0.0f;
-                        state.RightStickX = axes.Length > 2 ? axes[2] : 0.0f;
-                        state.RightStickY = axes.Length > 3 ? axes[3] : 0.0f;
-                        state.LeftTrigger = axes.Length > 4 ? axes[4] : 0.0f;
-                        state.RightTrigger = axes.Length > 5 ? axes[5] : 0.0f;
-                    }
-
-                    if (buttons.Length > 0)
-                    {
-                        for (int i = 0; i < Math.Min(buttons.Length, state.Buttons.Length); i++)
-                        {
-                            state.Buttons[i] = buttons[i];
-                        }
-                    }
+                    UpdateSingleGamepadState(index);
                 }
             }
             catch
             {
                 // Graceful fallback if gamepad API is not available
+            }
+        }
+
+        private void UpdateSingleGamepadState(int index)
+        {
+            GamepadState state;
+            if (!_gamepadStates.TryGetValue(index, out state))
+            {
+                state = new GamepadState();
+                _gamepadStates[index] = state;
+            }
+
+            float[] axes = EmscriptenWeb.GetGamepadAxes(index);
+            bool[] buttons = EmscriptenWeb.GetGamepadButtons(index);
+
+            if (axes.Length > 0)
+            {
+                state.LeftStickX = axes[0];
+                state.LeftStickY = axes.Length > 1 ? axes[1] : 0.0f;
+                state.RightStickX = axes.Length > 2 ? axes[2] : 0.0f;
+                state.RightStickY = axes.Length > 3 ? axes[3] : 0.0f;
+                state.LeftTrigger = axes.Length > 4 ? axes[4] : 0.0f;
+                state.RightTrigger = axes.Length > 5 ? axes[5] : 0.0f;
+            }
+
+            if (buttons.Length > 0)
+            {
+                for (int i = 0; i < Math.Min(buttons.Length, state.Buttons.Length); i++)
+                {
+                    state.Buttons[i] = buttons[i];
+                }
             }
         }
 
