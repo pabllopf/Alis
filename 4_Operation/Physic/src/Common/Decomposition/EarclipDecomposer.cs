@@ -229,53 +229,60 @@ namespace Alis.Core.Physic.Common.Decomposition
                 return false;
             }
 
-            bool hasPinchPoint = false;
+            (int pinchIndexA, int pinchIndexB, bool hasPinchPoint) = FindPinchPoints(pin, tolerance);
+
+            if (hasPinchPoint)
+            {
+                SplitPolygonAtPinch(pin, pinchIndexA, pinchIndexB, out poutA, out poutB);
+            }
+
+            return hasPinchPoint;
+        }
+
+        private static (int, int, bool) FindPinchPoints(Vertices pin, float tolerance)
+        {
             int pinchIndexA = -1;
             int pinchIndexB = -1;
+
             for (int i = 0; i < pin.Count; ++i)
             {
                 for (int j = i + 1; j < pin.Count; ++j)
                 {
-                    //Don't worry about pinch points where the points
-                    //are actually just dupe neighbors
                     if ((Math.Abs(pin[i].X - pin[j].X) < tolerance) && (Math.Abs(pin[i].Y - pin[j].Y) < tolerance) && (j != i + 1))
                     {
                         pinchIndexA = i;
                         pinchIndexB = j;
-                        hasPinchPoint = true;
-                        break;
+                        return (pinchIndexA, pinchIndexB, true);
                     }
                 }
-
-                if (hasPinchPoint)
-                {
-                    break;
-                }
             }
 
-            if (hasPinchPoint)
+            return (-1, -1, false);
+        }
+
+        private static void SplitPolygonAtPinch(Vertices pin, int pinchIndexA, int pinchIndexB, out Vertices poutA, out Vertices poutB)
+        {
+            poutA = new Vertices();
+            poutB = new Vertices();
+
+            int sizeA = pinchIndexB - pinchIndexA;
+            if (sizeA == pin.Count)
             {
-                int sizeA = pinchIndexB - pinchIndexA;
-                if (sizeA == pin.Count)
-                {
-                    return false; //has dupe points at wraparound, not a problem here
-                }
-
-                for (int i = 0; i < sizeA; ++i)
-                {
-                    int ind = Remainder(pinchIndexA + i, pin.Count); // is this right
-                    poutA.Add(pin[ind]);
-                }
-
-                int sizeB = pin.Count - sizeA;
-                for (int i = 0; i < sizeB; ++i)
-                {
-                    int ind = Remainder(pinchIndexB + i, pin.Count); // is this right    
-                    poutB.Add(pin[ind]);
-                }
+                return; //has dupe points at wraparound, not a problem here
             }
 
-            return hasPinchPoint;
+            for (int i = 0; i < sizeA; ++i)
+            {
+                int ind = Remainder(pinchIndexA + i, pin.Count);
+                poutA.Add(pin[ind]);
+            }
+
+            int sizeB = pin.Count - sizeA;
+            for (int i = 0; i < sizeB; ++i)
+            {
+                int ind = Remainder(pinchIndexB + i, pin.Count);
+                poutB.Add(pin[ind]);
+            }
         }
 
         /// <summary>
