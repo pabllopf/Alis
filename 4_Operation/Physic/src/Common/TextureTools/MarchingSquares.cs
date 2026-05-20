@@ -507,6 +507,8 @@ namespace Alis.Core.Physic.Common.TextureTools
             _ => throw new InvalidOperationException()
         };
 
+        private static bool IsParallel(Vector2F u, Vector2F v) => VecCross(u, v) * VecCross(u, v) < SettingEnv.Epsilon;
+
         /// <summary>
         ///     Combs the left using the specified polya
         /// </summary>
@@ -534,8 +536,7 @@ namespace Alis.Core.Physic.Common.TextureTools
 
                         Vector2F u = a - a0;
                         Vector2F v = b - a;
-                        float dot = VecCross(u, v);
-                        if (dot * dot < SettingEnv.Epsilon)
+                        if (IsParallel(u, v))
                         {
                             ap.Erase(prea, ai);
                             polya.Length--;
@@ -575,8 +576,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                         Vector2F a00 = preb.GetElem();
                         Vector2F uu = a1 - a00;
                         Vector2F vv = a2 - a1;
-                        float dot1 = VecCross(uu, vv);
-                        if (dot1 * dot1 < SettingEnv.Epsilon)
+                        if (IsParallel(uu, vv))
                         {
                             ap.Erase(preb, preb.NextPos());
                             polya.Length--;
