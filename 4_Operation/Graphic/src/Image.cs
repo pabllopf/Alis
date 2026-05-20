@@ -186,7 +186,7 @@ namespace Alis.Core.Graphic
 
             if (paletteSize == 0)
             {
-                return null;
+                return Array.Empty<byte[]>();
             }
 
             reader.BaseStream.Seek(headerSize + 14, SeekOrigin.Begin);
