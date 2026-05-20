@@ -262,13 +262,13 @@ namespace Alis.Extension.Graphic.Sfml.Render
             states.Transform *= Transform;
             RenderStates.MarshalData marshaledStates = states.Marshal();
 
-            if (target is RenderWindow)
+            if (target is RenderWindow rw)
             {
-                sfRenderWindow_drawText(((RenderWindow) target).CPointer, CPointer, ref marshaledStates);
+                sfRenderWindow_drawText(rw.CPointer, CPointer, ref marshaledStates);
             }
-            else if (target is RenderTexture)
+            else if (target is RenderTexture rt)
             {
-                sfRenderTexture_drawText(((RenderTexture) target).CPointer, CPointer, ref marshaledStates);
+                sfRenderTexture_drawText(rt.CPointer, CPointer, ref marshaledStates);
             }
         }
 

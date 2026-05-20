@@ -142,13 +142,13 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             RenderStates.MarshalData marshaledStates = states.Marshal();
 
-            if (target is RenderWindow)
+            if (target is RenderWindow rw)
             {
-                sfRenderWindow_drawVertexArray(((RenderWindow) target).CPointer, CPointer, ref marshaledStates);
+                sfRenderWindow_drawVertexArray(rw.CPointer, CPointer, ref marshaledStates);
             }
-            else if (target is RenderTexture)
+            else if (target is RenderTexture rt)
             {
-                sfRenderTexture_drawVertexArray(((RenderTexture) target).CPointer, CPointer, ref marshaledStates);
+                sfRenderTexture_drawVertexArray(rt.CPointer, CPointer, ref marshaledStates);
             }
         }
 
