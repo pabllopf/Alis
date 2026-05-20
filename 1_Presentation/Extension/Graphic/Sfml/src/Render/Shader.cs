@@ -1140,6 +1140,8 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         public class CurrentTextureType
         {
+            // Marker class used to represent the texture of the object being drawn
+            private CurrentTextureType() { }
         }
     }
 }

@@ -183,7 +183,6 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The ret</returns>
         public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport)
         {
-            ;
             ImGuiDockNodeFlags flags = 0;
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
             uint ret = ImGuiNative.igDockSpaceOverViewport(viewport.NativePtr, flags, windowClass);

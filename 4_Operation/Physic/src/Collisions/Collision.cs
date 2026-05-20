@@ -285,7 +285,6 @@ namespace Alis.Core.Physic.Collisions
         {
             Vector2F faceCenter = 0.5f * (v1 + v2);
             Vector2F value1 = cLocal - faceCenter;
-            Vector2F value2 = polygonA.Normals[0]; // Will be set correctly below
             int vertIndex1 = Array.IndexOf(polygonA.Vertices.ToArray(), v1);
             float separation2 = value1.X * polygonA.Normals[vertIndex1].X + value1.Y * polygonA.Normals[vertIndex1].Y;
             if (separation2 > radius)

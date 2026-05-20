@@ -34,5 +34,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
     /// </summary>
     public class ImNodesMiniMapNodeHoveringCallback
     {
+        // Placeholder class for mini map node hovering callback functionality
+        private ImNodesMiniMapNodeHoveringCallback() { }
     }
 }

@@ -126,7 +126,7 @@ namespace Alis.Core.Ecs
                 {
                     return false;
                 }
-            } while (!(_componentIndex < _currentSpan1.Length));
+            } while (_componentIndex >= _currentSpan1.Length);
 
             return true;
         }
@@ -236,7 +236,7 @@ namespace Alis.Core.Ecs
                 {
                     return false;
                 }
-            } while (!(_componentIndex < _currentSpan1.Length));
+            } while (_componentIndex >= _currentSpan1.Length);
 
             return true;
         }
@@ -347,7 +347,7 @@ namespace Alis.Core.Ecs
                 {
                     return false;
                 }
-            } while (!(_componentIndex < _currentSpan1.Length));
+            } while (_componentIndex >= _currentSpan1.Length);
 
             return true;
         }
@@ -465,7 +465,7 @@ namespace Alis.Core.Ecs
                 {
                     return false;
                 }
-            } while (!(_componentIndex < _currentSpan1.Length));
+            } while (_componentIndex >= _currentSpan1.Length);
 
             return true;
         }
@@ -590,7 +590,7 @@ namespace Alis.Core.Ecs
                 {
                     return false;
                 }
-            } while (!(_componentIndex < _currentSpan1.Length));
+            } while (_componentIndex >= _currentSpan1.Length);
 
             return true;
         }
@@ -722,7 +722,7 @@ namespace Alis.Core.Ecs
                 {
                     return false;
                 }
-            } while (!(_componentIndex < _currentSpan1.Length));
+            } while (_componentIndex >= _currentSpan1.Length);
 
             return true;
         }
@@ -861,7 +861,7 @@ namespace Alis.Core.Ecs
                 {
                     return false;
                 }
-            } while (!(_componentIndex < _currentSpan1.Length));
+            } while (_componentIndex >= _currentSpan1.Length);
 
             return true;
         }
@@ -1013,7 +1013,7 @@ namespace Alis.Core.Ecs
                 {
                     return false;
                 }
-            } while (!(_componentIndex < _currentSpan1.Length));
+            } while (_componentIndex >= _currentSpan1.Length);
 
             return true;
         }

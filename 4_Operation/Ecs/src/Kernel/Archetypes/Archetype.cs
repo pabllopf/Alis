@@ -269,7 +269,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 -(_entities.Length - (NextComponentIndex + deferredCreationArchetype.DeferredEntityCount));
             int previousComponentCount = NextComponentIndex;
 
-            if (!(deltaFromMaxDeferredInPlace <= 0))
+            if (deltaFromMaxDeferredInPlace > 0)
             {
                 //components overflowed into temp storage
 

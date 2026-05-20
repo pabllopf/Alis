@@ -105,7 +105,7 @@ namespace Alis.Core.Ecs.Collections
         public ref T Get(ushort id)
         {
             ushort[] localSparse = _sparse;
-            if (!(id < localSparse.Length))
+            if (id >= localSparse.Length)
                 //out of range
             {
                 throw new ArgumentOutOfRangeException(InvalidId);
@@ -114,7 +114,7 @@ namespace Alis.Core.Ecs.Collections
             ushort index = localSparse[id];
 
             T[] localDense = _dense;
-            if (!(index < localDense.Length))
+            if (index >= localDense.Length)
             {
                 throw new ArgumentOutOfRangeException(InvalidId);
             }
@@ -131,7 +131,7 @@ namespace Alis.Core.Ecs.Collections
         public bool TryGet(ushort id, out T value)
         {
             ushort[] localSparse = _sparse;
-            if (!(id < localSparse.Length))
+            if (id >= localSparse.Length)
             {
                 goto doesntExist;
             }
@@ -139,7 +139,7 @@ namespace Alis.Core.Ecs.Collections
             ushort index = localSparse[id];
 
             T[] localDense = _dense;
-            if (!(index < localDense.Length))
+            if (index >= localDense.Length)
             {
                 goto doesntExist;
             }
@@ -164,7 +164,7 @@ namespace Alis.Core.Ecs.Collections
 
             ushort[] localSparse = _sparse;
 
-            if (!(id < localSparse.Length))
+            if (id >= localSparse.Length)
             {
                 return false;
             }
@@ -172,7 +172,7 @@ namespace Alis.Core.Ecs.Collections
             int moveIntoIndex = localSparse[id];
 
             T[] localDense = _dense;
-            if (!(moveIntoIndex < localDense.Length))
+            if (moveIntoIndex >= localDense.Length)
             {
                 return
                     false; //here, moveIntoIndex should really only ever be ushort.MaxValue. We check against len to elide bounds check
