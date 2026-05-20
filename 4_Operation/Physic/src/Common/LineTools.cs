@@ -194,48 +194,44 @@ namespace Alis.Core.Physic.Common
         {
             point = new Vector2F();
 
-            // these are reused later.
-            // each lettered sub-calculation is used twice, except
-            // for b and d, which are used 3 times
             float a = point4.Y - point3.Y;
             float b = point2.X - point1.X;
             float c = point4.X - point3.X;
             float d = point2.Y - point1.Y;
 
-            // denominator to solution of linear system
             float denom = a * b - c * d;
 
-            // if denominator is 0, then lines are parallel
             if (!((denom >= -SettingEnv.Epsilon) && (denom <= SettingEnv.Epsilon)))
             {
-                float e = point1.Y - point3.Y;
-                float f = point1.X - point3.X;
-                float oneOverDenom = 1.0f / denom;
+                return TryCalculateIntersection(ref point1, ref point2, ref point3, a, b, c, d, denom, firstIsSegment, secondIsSegment, out point);
+            }
 
-                // numerator of first equation
-                float ua = c * e - a * f;
-                ua *= oneOverDenom;
+            return false;
+        }
 
-                // check if intersection point of the two lines is on line segment 1
-                if (!firstIsSegment || ((ua >= 0.0f) && (ua <= 1.0f)))
+        private static bool TryCalculateIntersection(ref Vector2F point1, ref Vector2F point2, ref Vector2F point3, float a, float b, float c, float d, float denom, bool firstIsSegment, bool secondIsSegment, out Vector2F point)
+        {
+            point = new Vector2F();
+
+            float e = point1.Y - point3.Y;
+            float f = point1.X - point3.X;
+            float oneOverDenom = 1.0f / denom;
+
+            float ua = c * e - a * f;
+            ua *= oneOverDenom;
+
+            if (!firstIsSegment || ((ua >= 0.0f) && (ua <= 1.0f)))
+            {
+                float ub = b * e - d * f;
+                ub *= oneOverDenom;
+
+                if (!secondIsSegment || ((ub >= 0.0f) && (ub <= 1.0f)))
                 {
-                    // numerator of second equation
-                    float ub = b * e - d * f;
-                    ub *= oneOverDenom;
-
-                    // check if intersection point of the two lines is on line segment 2
-                    // means the line segments intersect, since we know it is on
-                    // segment 1 as well.
-                    if (!secondIsSegment || ((ub >= 0.0f) && (ub <= 1.0f)))
+                    if ((Math.Abs(ua) > SettingEnv.Epsilon) && (Math.Abs(ub) > SettingEnv.Epsilon))
                     {
-                        // check if they are coincident (no collision in this case)
-                        if ((Math.Abs(ua) > SettingEnv.Epsilon) && (Math.Abs(ub) > SettingEnv.Epsilon))
-                        {
-                            //There is an intersection
-                            point.X = point1.X + ua * b;
-                            point.Y = point1.Y + ua * d;
-                            return true;
-                        }
+                        point.X = point1.X + ua * b;
+                        point.Y = point1.Y + ua * d;
+                        return true;
                     }
                 }
             }
