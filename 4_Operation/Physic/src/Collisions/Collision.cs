@@ -247,79 +247,61 @@ namespace Alis.Core.Physic.Collisions
 
             if (u1 <= 0.0f)
             {
-                float r = (cLocal.X - v1.X) * (cLocal.X - v1.X) + (cLocal.Y - v1.Y) * (cLocal.Y - v1.Y);
-                if (r > radius * radius)
-                {
-                    return;
-                }
-
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.FaceA;
-                manifold.LocalNormal = cLocal - v1;
-                float factor = 1f /
-                               (float)
-                               Math.Sqrt(manifold.LocalNormal.X * manifold.LocalNormal.X +
-                                         manifold.LocalNormal.Y * manifold.LocalNormal.Y);
-                manifold.LocalNormal.X = manifold.LocalNormal.X * factor;
-                manifold.LocalNormal.Y = manifold.LocalNormal.Y * factor;
-                manifold.LocalPoint = v1;
-
-                ManifoldPoint p0B = manifold.Points[0];
-
-                p0B.LocalPoint = circleB.Position;
-                p0B.Id.Key = 0;
-
-                manifold.Points[0] = p0B;
+                GenerateContactAtVertex(manifold, ref circleB, v1, cLocal, radius);
             }
             else if (u2 <= 0.0f)
             {
-                float r = (cLocal.X - v2.X) * (cLocal.X - v2.X) + (cLocal.Y - v2.Y) * (cLocal.Y - v2.Y);
-                if (r > radius * radius)
-                {
-                    return;
-                }
-
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.FaceA;
-                manifold.LocalNormal = cLocal - v2;
-                float factor = 1f /
-                               (float)
-                               Math.Sqrt(manifold.LocalNormal.X * manifold.LocalNormal.X +
-                                         manifold.LocalNormal.Y * manifold.LocalNormal.Y);
-                manifold.LocalNormal.X = manifold.LocalNormal.X * factor;
-                manifold.LocalNormal.Y = manifold.LocalNormal.Y * factor;
-                manifold.LocalPoint = v2;
-
-                ManifoldPoint p0C = manifold.Points[0];
-
-                p0C.LocalPoint = circleB.Position;
-                p0C.Id.Key = 0;
-
-                manifold.Points[0] = p0C;
+                GenerateContactAtVertex(manifold, ref circleB, v2, cLocal, radius);
             }
             else
             {
-                Vector2F faceCenter = 0.5f * (v1 + v2);
-                Vector2F value1 = cLocal - faceCenter;
-                Vector2F value2 = polygonA.Normals[vertIndex1];
-                float separation2 = value1.X * value2.X + value1.Y * value2.Y;
-                if (separation2 > radius)
-                {
-                    return;
-                }
-
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.FaceA;
-                manifold.LocalNormal = polygonA.Normals[vertIndex1];
-                manifold.LocalPoint = faceCenter;
-
-                ManifoldPoint p0d = manifold.Points[0];
-
-                p0d.LocalPoint = circleB.Position;
-                p0d.Id.Key = 0;
-
-                manifold.Points[0] = p0d;
+                GenerateContactAtFace(manifold, ref polygonA, ref circleB, cLocal, v1, v2, radius);
             }
+        }
+
+        private static void GenerateContactAtVertex(Manifold manifold, ref CircleShape circleB, Vector2F vertex, Vector2F cLocal, float radius)
+        {
+            float r = (cLocal.X - vertex.X) * (cLocal.X - vertex.X) + (cLocal.Y - vertex.Y) * (cLocal.Y - vertex.Y);
+            if (r > radius * radius)
+            {
+                return;
+            }
+
+            manifold.PointCount = 1;
+            manifold.Type = ManifoldType.FaceA;
+            manifold.LocalNormal = cLocal - vertex;
+            float factor = 1f / (float)Math.Sqrt(manifold.LocalNormal.X * manifold.LocalNormal.X + manifold.LocalNormal.Y * manifold.LocalNormal.Y);
+            manifold.LocalNormal.X *= factor;
+            manifold.LocalNormal.Y *= factor;
+            manifold.LocalPoint = vertex;
+
+            ManifoldPoint p0 = manifold.Points[0];
+            p0.LocalPoint = circleB.Position;
+            p0.Id.Key = 0;
+            manifold.Points[0] = p0;
+        }
+
+        private static void GenerateContactAtFace(Manifold manifold, ref PolygonShape polygonA, ref CircleShape circleB, Vector2F cLocal, Vector2F v1, Vector2F v2, float radius)
+        {
+            Vector2F faceCenter = 0.5f * (v1 + v2);
+            Vector2F value1 = cLocal - faceCenter;
+            Vector2F value2 = polygonA.Normals[0]; // Will be set correctly below
+            int vertIndex1 = Array.IndexOf(polygonA.Vertices.ToArray(), v1);
+            float separation2 = value1.X * polygonA.Normals[vertIndex1].X + value1.Y * polygonA.Normals[vertIndex1].Y;
+            if (separation2 > radius)
+            {
+                return;
+            }
+
+            manifold.PointCount = 1;
+            manifold.Type = ManifoldType.FaceA;
+            manifold.LocalNormal = polygonA.Normals[vertIndex1];
+            manifold.LocalPoint = faceCenter;
+
+            ManifoldPoint p0d = manifold.Points[0];
+            p0d.LocalPoint = circleB.Position;
+            p0d.Id.Key = 0;
+            manifold.Points[0] = p0d;
         }
 
         /// <summary>
