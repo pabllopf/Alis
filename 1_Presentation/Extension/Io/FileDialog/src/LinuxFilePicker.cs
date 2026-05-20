@@ -159,7 +159,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Executes the folder dialog using zenity or kdialog.
         /// </summary>
-        private string ExecuteFolderDialog(FilePickerOptions options)
+        private static string ExecuteFolderDialog(FilePickerOptions options)
         {
             Logger.Trace("Executing folder dialog.");
 
