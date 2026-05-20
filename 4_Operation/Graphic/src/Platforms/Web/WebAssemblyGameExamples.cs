@@ -99,41 +99,41 @@ namespace Alis.Core.Graphic.Platforms.Web
             {
                 gameContext.Run((context) =>
                 {
-                    // Get all connected gamepads
                     int[] connectedGamepads = context.GetConnectedGamepadIndices();
 
                     foreach (int gamepadIndex in connectedGamepads)
                     {
-                        // Get gamepad state
-                        if (context.TryGetGamepadState(gamepadIndex, out GamepadInputState gamepadState))
-                        {
-                            GamepadState state = gamepadState.CurrentState;
-
-                            // Check buttons
-                            if (state.ButtonA)
-                            {
-                                // Handle A button press
-                            }
-
-                            if (state.ButtonB)
-                            {
-                                // Handle B button press
-                            }
-
-                            // Check for button state changes
-                            if (context.InputManager.IsGamepadButtonJustPressed(gamepadIndex, 0)) // A button
-                            {
-                                // A button was just pressed
-                            }
-
-                            // Trigger vibration feedback
-                            if (state.ButtonLb)
-                            {
-                                WebAssemblyGameContext.VibrateGamepad(gamepadIndex, 1.0f, 0.5f, 0.1f);
-                            }
-                        }
+                        HandleSingleGamepadInput(context, gamepadIndex);
                     }
                 });
+            }
+        }
+
+        private static void HandleSingleGamepadInput(WebAssemblyGameContext context, int gamepadIndex)
+        {
+            if (context.TryGetGamepadState(gamepadIndex, out GamepadInputState gamepadState))
+            {
+                GamepadState state = gamepadState.CurrentState;
+
+                if (state.ButtonA)
+                {
+                    // Handle A button press
+                }
+
+                if (state.ButtonB)
+                {
+                    // Handle B button press
+                }
+
+                if (context.InputManager.IsGamepadButtonJustPressed(gamepadIndex, 0)) // A button
+                {
+                    // A button was just pressed
+                }
+
+                if (state.ButtonLb)
+                {
+                    WebAssemblyGameContext.VibrateGamepad(gamepadIndex, 1.0f, 0.5f, 0.1f);
+                }
             }
         }
 
@@ -197,43 +197,49 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                 gameContext.Run((context) =>
                 {
-                    // Click to lock pointer (typical FPS behavior)
-                    if (context.IsMouseButtonDown(0) && !pointerLocked)
-                    {
-                        pointerLocked = WebAssemblyGameContext.LockPointer();
-                    }
-
-                    // Escape to unlock pointer
-                    if (context.IsKeyDown(ConsoleKey.Escape) && pointerLocked)
-                    {
-                        pointerLocked = WebAssemblyGameContext.UnlockPointer();
-                    }
-
-                    // Get mouse movement for camera control
-                    if (pointerLocked)
-                    {
-                        context.GetMousePosition(out _, out _);
-                    }
-
-                    // Keyboard movement
-                    if (context.IsKeyDown(ConsoleKey.W))
-                    {
-                        // Handle forward movement
-                    }
-                    if (context.IsKeyDown(ConsoleKey.S))
-                    {
-                        // Handle backward movement
-                    }
-                    if (context.IsKeyDown(ConsoleKey.A))
-                    {
-                        // Handle left movement
-                    }
-                    if (context.IsKeyDown(ConsoleKey.D))
-                    {
-                        // Handle right movement
-                    }
-
+                    pointerLocked = HandlePointerLock(context, pointerLocked);
+                    HandleKeyboardMovement(context);
                 });
+            }
+        }
+
+        private static bool HandlePointerLock(WebAssemblyGameContext context, bool pointerLocked)
+        {
+            if (context.IsMouseButtonDown(0) && !pointerLocked)
+            {
+                pointerLocked = WebAssemblyGameContext.LockPointer();
+            }
+
+            if (context.IsKeyDown(ConsoleKey.Escape) && pointerLocked)
+            {
+                pointerLocked = WebAssemblyGameContext.UnlockPointer();
+            }
+
+            if (pointerLocked)
+            {
+                context.GetMousePosition(out _, out _);
+            }
+
+            return pointerLocked;
+        }
+
+        private static void HandleKeyboardMovement(WebAssemblyGameContext context)
+        {
+            if (context.IsKeyDown(ConsoleKey.W))
+            {
+                // Handle forward movement
+            }
+            if (context.IsKeyDown(ConsoleKey.S))
+            {
+                // Handle backward movement
+            }
+            if (context.IsKeyDown(ConsoleKey.A))
+            {
+                // Handle left movement
+            }
+            if (context.IsKeyDown(ConsoleKey.D))
+            {
+                // Handle right movement
             }
         }
 
