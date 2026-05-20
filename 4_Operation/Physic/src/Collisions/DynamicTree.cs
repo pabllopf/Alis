@@ -366,7 +366,6 @@ namespace Alis.Core.Physic.Collisions
             r.Normalize();
 
             // v is perpendicular to the segment.
-            Vector2F absV = MathUtils.Abs(new Vector2F(-r.Y, r.X)); //FPE: Inlined the 'v' variable
 
             // Separating axis for segment (Gino, p80).
             // |dot(v, p1 - c)| > dot(|v|, h)
@@ -420,7 +419,7 @@ namespace Alis.Core.Physic.Collisions
             return separation > 0.0f;
         }
 
-        private void ProcessRaycastLeaf(BroadPhaseRayCastCallback callback, ref RayCastInput input, ref float maxFraction, ref Vector2F p1, ref Vector2F p2, ref Aabb segmentAabb, int nodeId)
+        private static void ProcessRaycastLeaf(BroadPhaseRayCastCallback callback, ref RayCastInput input, ref float maxFraction, ref Vector2F p1, ref Vector2F p2, ref Aabb segmentAabb, int nodeId)
         {
             RayCastInput subInput;
             subInput.Point1 = input.Point1;
