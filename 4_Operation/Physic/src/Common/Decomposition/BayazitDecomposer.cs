@@ -64,117 +64,150 @@ namespace Alis.Core.Physic.Common.Decomposition
             Vector2F lowerInt = new Vector2F();
             Vector2F upperInt = new Vector2F(); // intersection points
             int lowerIndex = 0, upperIndex = 0;
-            Vertices lowerPoly, upperPoly;
 
             for (int i = 0; i < vertices.Count; ++i)
             {
                 if (Reflex(i, vertices))
                 {
-                    float upperDist;
-                    float lowerDist = upperDist = float.MaxValue;
-                    for (int j = 0; j < vertices.Count; ++j)
-                    {
-                        // if line intersects with an edge
-                        float d;
-                        Vector2F p;
-                        if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) && RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
-                        {
-                            // find the point of intersection
-                            p = LineTools.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices), At(j - 1, vertices));
-
-                            if (Right(At(i + 1, vertices), At(i, vertices), p))
-                            {
-                                // make sure it's inside the poly
-                                d = SquareDist(At(i, vertices), p);
-                                if (d < lowerDist)
-                                {
-                                    // keep only the closest intersection
-                                    lowerDist = d;
-                                    lowerInt = p;
-                                    lowerIndex = j;
-                                }
-                            }
-                        }
-
-                        if (Left(At(i + 1, vertices), At(i, vertices), At(j + 1, vertices)) && RightOn(At(i + 1, vertices), At(i, vertices), At(j, vertices)))
-                        {
-                            p = LineTools.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices), At(j + 1, vertices));
-
-                            if (Left(At(i - 1, vertices), At(i, vertices), p))
-                            {
-                                d = SquareDist(At(i, vertices), p);
-                                if (d < upperDist)
-                                {
-                                    upperDist = d;
-                                    upperIndex = j;
-                                    upperInt = p;
-                                }
-                            }
-                        }
-                    }
+                    FindIntersectionPoints(i, vertices, ref lowerInt, ref upperInt, ref lowerIndex, ref upperIndex);
 
                     // if there are no vertices to connect to, choose a point in the middle
                     if (lowerIndex == (upperIndex + 1) % vertices.Count)
                     {
-                        Vector2F p = (lowerInt + upperInt) / 2;
-
-                        lowerPoly = Copy(i, upperIndex, vertices);
-                        lowerPoly.Add(p);
-                        upperPoly = Copy(lowerIndex, i, vertices);
-                        upperPoly.Add(p);
+                        SplitAtMidpoint(lowerInt, upperInt, i, upperIndex, lowerIndex, vertices, list);
                     }
                     else
                     {
-                        double highestScore = 0, bestIndex = lowerIndex;
-                        while (upperIndex < lowerIndex)
-                        {
-                            upperIndex += vertices.Count;
-                        }
-
-                        for (int j = lowerIndex; j <= upperIndex; ++j)
-                        {
-                            if (CanSee(i, j, vertices))
-                            {
-                                double score = 1 / (SquareDist(At(i, vertices), At(j, vertices)) + 1);
-                                if (Reflex(j, vertices))
-                                {
-                                    if (RightOn(At(j - 1, vertices), At(j, vertices), At(i, vertices)) && LeftOn(At(j + 1, vertices), At(j, vertices), At(i, vertices)))
-                                    {
-                                        score += 3;
-                                    }
-                                    else
-                                    {
-                                        score += 2;
-                                    }
-                                }
-                                else
-                                {
-                                    score += 1;
-                                }
-
-                                if (score > highestScore)
-                                {
-                                    bestIndex = j;
-                                    highestScore = score;
-                                }
-                            }
-                        }
-
-                        lowerPoly = Copy(i, (int) bestIndex, vertices);
-                        upperPoly = Copy((int) bestIndex, i, vertices);
+                        SplitAtBestVertex(i, vertices, lowerIndex, upperIndex, list);
                     }
 
-                    list.AddRange(TriangulatePolygon(lowerPoly));
-                    list.AddRange(TriangulatePolygon(upperPoly));
                     return list;
                 }
             }
 
             // polygon is already convex
+            SplitConvexPolygon(vertices, list);
+
+            return list;
+        }
+
+        private static void FindIntersectionPoints(int i, Vertices vertices, ref Vector2F lowerInt, ref Vector2F upperInt, ref int lowerIndex, ref int upperIndex)
+        {
+            float upperDist;
+            float lowerDist = upperDist = float.MaxValue;
+
+            for (int j = 0; j < vertices.Count; ++j)
+            {
+                // if line intersects with an edge
+                float d;
+                Vector2F p;
+                if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) && RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
+                {
+                    // find the point of intersection
+                    p = LineTools.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices), At(j - 1, vertices));
+
+                    if (Right(At(i + 1, vertices), At(i, vertices), p))
+                    {
+                        // make sure it's inside the poly
+                        d = SquareDist(At(i, vertices), p);
+                        if (d < lowerDist)
+                        {
+                            // keep only the closest intersection
+                            lowerDist = d;
+                            lowerInt = p;
+                            lowerIndex = j;
+                        }
+                    }
+                }
+
+                if (Left(At(i + 1, vertices), At(i, vertices), At(j + 1, vertices)) && RightOn(At(i + 1, vertices), At(i, vertices), At(j, vertices)))
+                {
+                    p = LineTools.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices), At(j + 1, vertices));
+
+                    if (Left(At(i - 1, vertices), At(i, vertices), p))
+                    {
+                        d = SquareDist(At(i, vertices), p);
+                        if (d < upperDist)
+                        {
+                            upperDist = d;
+                            upperIndex = j;
+                            upperInt = p;
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void SplitAtMidpoint(Vector2F lowerInt, Vector2F upperInt, int i, int upperIndex, int lowerIndex, Vertices vertices, List<Vertices> list)
+        {
+            Vector2F p = (lowerInt + upperInt) / 2;
+
+            Vertices lowerPoly = Copy(i, upperIndex, vertices);
+            lowerPoly.Add(p);
+            Vertices upperPoly = Copy(lowerIndex, i, vertices);
+            upperPoly.Add(p);
+
+            list.AddRange(TriangulatePolygon(lowerPoly));
+            list.AddRange(TriangulatePolygon(upperPoly));
+        }
+
+        private static void SplitAtBestVertex(int i, Vertices vertices, int lowerIndex, int upperIndex, List<Vertices> list)
+        {
+            double highestScore = 0, bestIndex = lowerIndex;
+
+            while (upperIndex < lowerIndex)
+            {
+                upperIndex += vertices.Count;
+            }
+
+            for (int j = lowerIndex; j <= upperIndex; ++j)
+            {
+                if (CanSee(i, j, vertices))
+                {
+                    double score = CalculateVertexScore(i, j, vertices);
+                    if (score > highestScore)
+                    {
+                        bestIndex = j;
+                        highestScore = score;
+                    }
+                }
+            }
+
+            Vertices lowerPoly = Copy(i, (int) bestIndex, vertices);
+            Vertices upperPoly = Copy((int) bestIndex, i, vertices);
+
+            list.AddRange(TriangulatePolygon(lowerPoly));
+            list.AddRange(TriangulatePolygon(upperPoly));
+        }
+
+        private static double CalculateVertexScore(int i, int j, Vertices vertices)
+        {
+            double score = 1 / (SquareDist(At(i, vertices), At(j, vertices)) + 1);
+            if (Reflex(j, vertices))
+            {
+                if (RightOn(At(j - 1, vertices), At(j, vertices), At(i, vertices)) && LeftOn(At(j + 1, vertices), At(j, vertices), At(i, vertices)))
+                {
+                    score += 3;
+                }
+                else
+                {
+                    score += 2;
+                }
+            }
+            else
+            {
+                score += 1;
+            }
+
+            return score;
+        }
+
+        private static void SplitConvexPolygon(Vertices vertices, List<Vertices> list)
+        {
             if (vertices.Count > SettingEnv.MaxPolygonVertices)
             {
-                lowerPoly = Copy(0, vertices.Count / 2, vertices);
-                upperPoly = Copy(vertices.Count / 2, 0, vertices);
+                Vertices lowerPoly = Copy(0, vertices.Count / 2, vertices);
+                Vertices upperPoly = Copy(vertices.Count / 2, 0, vertices);
                 list.AddRange(TriangulatePolygon(lowerPoly));
                 list.AddRange(TriangulatePolygon(upperPoly));
             }
@@ -182,8 +215,6 @@ namespace Alis.Core.Physic.Common.Decomposition
             {
                 list.Add(vertices);
             }
-
-            return list;
         }
 
         /// <summary>
