@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 return results;
             }
 
-            Vertices[] buffer = new Vertices[vertices.Count - 2];
+            Triangle[] buffer = new Triangle[vertices.Count - 2];
             int bufferSize = 0;
             float[] xrem = new float[vertices.Count];
             float[] yrem = new float[vertices.Count];
@@ -114,45 +114,8 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             while (vNum > 3)
             {
-                // Find an ear
-                int earIndex = -1;
-                float earMaxMinCross = -10.0f;
-                for (int i = 0; i < vNum; ++i)
-                {
-                    if (IsEar(i, xrem, yrem, vNum))
-                    {
-                        int lower = Remainder(i - 1, vNum);
-                        int upper = Remainder(i + 1, vNum);
-                        Vector2F d1 = new Vector2F(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
-                        Vector2F d2 = new Vector2F(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
-                        Vector2F d3 = new Vector2F(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
+                int earIndex = FindBestEarIndex(xrem, yrem, vNum, out _);
 
-                        d1.Normalize();
-                        d2.Normalize();
-                        d3.Normalize();
-                        MathUtils.Cross(ref d1, ref d2, out float cross12);
-                        cross12 = Math.Abs(cross12);
-
-                        MathUtils.Cross(ref d2, ref d3, out float cross23);
-                        cross23 = Math.Abs(cross23);
-
-                        MathUtils.Cross(ref d3, ref d1, out float cross31);
-                        cross31 = Math.Abs(cross31);
-
-                        //Find the maximum minimum angle
-                        float minCross = Math.Min(cross12, Math.Min(cross23, cross31));
-                        if (minCross > earMaxMinCross)
-                        {
-                            earIndex = i;
-                            earMaxMinCross = minCross;
-                        }
-                    }
-                }
-
-                // If we still haven't found an ear, we're screwed.
-                // Note: sometimes this is happening because the
-                // remaining points are collinear.  Really these
-                // should just be thrown out without halting triangulation.
                 if (earIndex == -1)
                 {
                     for (int i = 0; i < bufferSize; i++)
@@ -163,36 +126,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     return results;
                 }
 
-                // Clip off the ear:
-                // - remove the ear tip from the list
-
-                --vNum;
-                float[] newx = new float[vNum];
-                float[] newy = new float[vNum];
-                int currDest = 0;
-                for (int i = 0; i < vNum; ++i)
-                {
-                    if (currDest == earIndex)
-                    {
-                        ++currDest;
-                    }
-
-                    newx[i] = xrem[currDest];
-                    newy[i] = yrem[currDest];
-                    ++currDest;
-                }
-
-                // - add the clipped triangle to the triangle list
-                int under = earIndex == 0 ? vNum : earIndex - 1;
-                int over = earIndex == vNum ? 0 : earIndex + 1;
-                Triangle toAdd = new Triangle(xrem[earIndex], yrem[earIndex], xrem[over], yrem[over], xrem[under],
-                    yrem[under]);
-                buffer[bufferSize] = toAdd;
-                ++bufferSize;
-
-                // - replace the old list with the new one
-                xrem = newx;
-                yrem = newy;
+                (xrem, yrem, vNum) = ClipEar(xrem, yrem, vNum, earIndex, buffer, ref bufferSize);
             }
 
             Triangle tooAdd = new Triangle(xrem[1], yrem[1], xrem[2], yrem[2], xrem[0], yrem[0]);
@@ -205,6 +139,71 @@ namespace Alis.Core.Physic.Common.Decomposition
             }
 
             return results;
+        }
+
+        private static int FindBestEarIndex(float[] xrem, float[] yrem, int vNum, out float earMaxMinCross)
+        {
+            earMaxMinCross = -10.0f;
+            int earIndex = -1;
+            for (int i = 0; i < vNum; ++i)
+            {
+                if (!IsEar(i, xrem, yrem, vNum))
+                {
+                    continue;
+                }
+
+                int lower = Remainder(i - 1, vNum);
+                int upper = Remainder(i + 1, vNum);
+                float minCross = CalculateMinimumCrossAngle(xrem, yrem, i, lower, upper);
+                if (minCross > earMaxMinCross)
+                {
+                    earIndex = i;
+                    earMaxMinCross = minCross;
+                }
+            }
+            return earIndex;
+        }
+
+        private static float CalculateMinimumCrossAngle(float[] xrem, float[] yrem, int i, int lower, int upper)
+        {
+            Vector2F d1 = new Vector2F(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
+            Vector2F d2 = new Vector2F(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
+            Vector2F d3 = new Vector2F(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
+
+            d1.Normalize();
+            d2.Normalize();
+            d3.Normalize();
+            MathUtils.Cross(ref d1, ref d2, out float cross12);
+            MathUtils.Cross(ref d2, ref d3, out float cross23);
+            MathUtils.Cross(ref d3, ref d1, out float cross31);
+
+            return Math.Min(Math.Abs(cross12), Math.Min(Math.Abs(cross23), Math.Abs(cross31)));
+        }
+
+        private static (float[] xrem, float[] yrem, int vNum) ClipEar(float[] xrem, float[] yrem, int vNum, int earIndex, Triangle[] buffer, ref int bufferSize)
+        {
+            --vNum;
+            float[] newx = new float[vNum];
+            float[] newy = new float[vNum];
+            int currDest = 0;
+            for (int i = 0; i < vNum; ++i)
+            {
+                if (currDest == earIndex)
+                {
+                    ++currDest;
+                }
+                newx[i] = xrem[currDest];
+                newy[i] = yrem[currDest];
+                ++currDest;
+            }
+
+            int under = earIndex == 0 ? vNum : earIndex - 1;
+            int over = earIndex == vNum ? 0 : earIndex + 1;
+            Triangle toAdd = new Triangle(xrem[earIndex], yrem[earIndex], xrem[over], yrem[over], xrem[under], yrem[under]);
+            buffer[bufferSize] = toAdd;
+            ++bufferSize;
+
+            return (newx, newy, vNum);
         }
 
         /// <summary>
