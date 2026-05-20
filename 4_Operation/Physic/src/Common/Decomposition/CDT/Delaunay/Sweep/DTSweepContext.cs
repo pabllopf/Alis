@@ -66,7 +66,8 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// </summary>
         public DtSweepContext()
         {
-            Clear();
+            base.Clear();
+            Triangles.Clear();
         }
 
         /// <summary>
