@@ -262,36 +262,33 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <returns>The bool</returns>
         internal static bool CanSee(int i, int j, Vertices vertices)
         {
+            if (!IsVertexVisibleFrom(i, j, vertices))
+            {
+                return false;
+            }
+
+            if (!IsVertexVisibleFrom(j, i, vertices))
+            {
+                return false;
+            }
+
+            return !IntersectsAnyEdge(i, j, vertices);
+        }
+
+        private static bool IsVertexVisibleFrom(int i, int j, Vertices vertices)
+        {
             if (Reflex(i, vertices))
             {
-                if (LeftOn(At(i, vertices), At(i - 1, vertices), At(j, vertices)) && RightOn(At(i, vertices), At(i + 1, vertices), At(j, vertices)))
-                {
-                    return false;
-                }
+                return !(LeftOn(At(i, vertices), At(i - 1, vertices), At(j, vertices)) && RightOn(At(i, vertices), At(i + 1, vertices), At(j, vertices)));
             }
             else
             {
-                if (RightOn(At(i, vertices), At(i + 1, vertices), At(j, vertices)) || LeftOn(At(i, vertices), At(i - 1, vertices), At(j, vertices)))
-                {
-                    return false;
-                }
+                return !(RightOn(At(i, vertices), At(i + 1, vertices), At(j, vertices)) || LeftOn(At(i, vertices), At(i - 1, vertices), At(j, vertices)));
             }
+        }
 
-            if (Reflex(j, vertices))
-            {
-                if (LeftOn(At(j, vertices), At(j - 1, vertices), At(i, vertices)) && RightOn(At(j, vertices), At(j + 1, vertices), At(i, vertices)))
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                if (RightOn(At(j, vertices), At(j + 1, vertices), At(i, vertices)) || LeftOn(At(j, vertices), At(j - 1, vertices), At(i, vertices)))
-                {
-                    return false;
-                }
-            }
-
+        private static bool IntersectsAnyEdge(int i, int j, Vertices vertices)
+        {
             for (int k = 0; k < vertices.Count; ++k)
             {
                 if ((k + 1) % vertices.Count == i || k == i || (k + 1) % vertices.Count == j || k == j)
@@ -301,11 +298,11 @@ namespace Alis.Core.Physic.Common.Decomposition
 
                 if (LineTools.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices), out Vector2F _))
                 {
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         }
 
         /// <summary>
