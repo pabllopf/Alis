@@ -138,10 +138,18 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new FileNotFoundException($"Local file not found: {localFilePath}");
             }
 
-            if (!dropboxPath.StartsWith('/'))
+#if  NET5_0_OR_GREATER
+              if (!dropboxPath.StartsWith('/'))
             {
                 dropboxPath = "/" + dropboxPath;
             }
+#else
+            if (!dropboxPath.StartsWith("/"))
+            {
+                dropboxPath = "/" + dropboxPath;
+            }
+#endif
+          
 
             try
             {
@@ -176,10 +184,17 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new InvalidOperationException(NotInitializedError);
             }
 
-            if (!dropboxPath.StartsWith('/'))
+#if  NET5_0_OR_GREATER
+              if (!dropboxPath.StartsWith('/'))
             {
                 dropboxPath = "/" + dropboxPath;
             }
+#else
+            if (!dropboxPath.StartsWith("/"))
+            {
+                dropboxPath = "/" + dropboxPath;
+            }
+#endif
 
             try
             {
@@ -256,10 +271,17 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new InvalidOperationException(NotInitializedError);
             }
 
-            if (!dropboxPath.StartsWith('/'))
+#if  NET5_0_OR_GREATER
+              if (!dropboxPath.StartsWith('/'))
             {
                 dropboxPath = "/" + dropboxPath;
             }
+#else
+            if (!dropboxPath.StartsWith("/"))
+            {
+                dropboxPath = "/" + dropboxPath;
+            }
+#endif
 
             try
             {
@@ -285,10 +307,17 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new InvalidOperationException(NotInitializedError);
             }
 
-            if (!dropboxPath.StartsWith('/'))
+#if  NET5_0_OR_GREATER
+              if (!dropboxPath.StartsWith('/'))
             {
                 dropboxPath = "/" + dropboxPath;
             }
+#else
+            if (!dropboxPath.StartsWith("/"))
+            {
+                dropboxPath = "/" + dropboxPath;
+            }
+#endif
 
             try
             {
