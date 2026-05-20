@@ -100,46 +100,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
                     return result;
                 }
 
-                int position = 0;
-                int length = json.Length;
-
-                SkipWhitespace(json, ref position);
-
-                if ((position < length) && (json[position] == '{'))
-                {
-                    position++;
-                }
-
-                while (position < length)
-                {
-                    SkipWhitespace(json, ref position);
-
-                    if (position >= length || json[position] == '}')
-                    {
-                        break;
-                    }
-
-                    string key = ReadJsonString(json, ref position);
-                    SkipWhitespace(json, ref position);
-
-                    if (position >= length || json[position] != ':')
-                    {
-                        throw new JsonParsingException($"Expected ':' at position {position}");
-                    }
-
-                    position++;
-                    SkipWhitespace(json, ref position);
-
-                    string value = ReadJsonValue(json, ref position);
-                    result[key] = value;
-
-                    SkipWhitespace(json, ref position);
-
-                    if ((position < length) && (json[position] == ','))
-                    {
-                        position++;
-                    }
-                }
+                ParseJsonObject(json, ref result);
 
                 return result;
             }
@@ -150,6 +111,50 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
             catch (Exception ex)
             {
                 throw new JsonParsingException($"Failed to parse JSON: {ex.Message}", ex);
+            }
+        }
+
+        private void ParseJsonObject(string json, ref Dictionary<string, string> result)
+        {
+            int position = 0;
+            int length = json.Length;
+
+            SkipWhitespace(json, ref position);
+
+            if ((position < length) && (json[position] == '{'))
+            {
+                position++;
+            }
+
+            while (position < length)
+            {
+                SkipWhitespace(json, ref position);
+
+                if (position >= length || json[position] == '}')
+                {
+                    break;
+                }
+
+                string key = ReadJsonString(json, ref position);
+                SkipWhitespace(json, ref position);
+
+                if (position >= length || json[position] != ':')
+                {
+                    throw new JsonParsingException($"Expected ':' at position {position}");
+                }
+
+                position++;
+                SkipWhitespace(json, ref position);
+
+                string value = ReadJsonValue(json, ref position);
+                result[key] = value;
+
+                SkipWhitespace(json, ref position);
+
+                if ((position < length) && (json[position] == ','))
+                {
+                    position++;
+                }
             }
         }
 
