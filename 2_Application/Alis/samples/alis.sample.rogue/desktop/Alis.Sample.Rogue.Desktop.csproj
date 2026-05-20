@@ -219,13 +219,13 @@
        </ItemGroup>
 
 
-    <ItemGroup>
+   <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
                           Include="
-          $(SolutionDir)3_Structuration/**/**/generator/**/*Generator.csproj;               
-          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
+          $(SolutionDir)3_Structuration/**/**/generator/**/Alis.*Generator.csproj;               
+          $(SolutionDir)4_Operation/**/**/generator/**/Alis.*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/**/generator/**/Alis.*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/Alis.*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
@@ -236,9 +236,9 @@
 
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
                           Include="          
-          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
+          $(SolutionDir)4_Operation/**/**/generator/**/Alis.*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/**/generator/**/Alis.*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/Alis.*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
@@ -249,8 +249,8 @@
 
         <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
                           Include="          
-          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
+          $(SolutionDir)5_Declaration/**/**/generator/**/Alis.*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/Alis.*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
@@ -261,7 +261,7 @@
 
         <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
                           Include="          
-          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
+          $(SolutionDir)6_Ideation/**/**/generator/**/Alis.*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
