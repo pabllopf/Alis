@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Alis.Core.Aspect.Logging.Abstractions;
 
 namespace Alis.Core.Aspect.Logging.Filters
@@ -82,27 +83,11 @@ namespace Alis.Core.Aspect.Logging.Filters
             if (_requireAll)
             {
                 // AND logic: all must pass
-                foreach (ILogFilter filter in _filters)
-                {
-                    if (!filter.ShouldLog(entry))
-                    {
-                        return false;
-                    }
-                }
-
-                return true;
+                return _filters.All(filter => filter.ShouldLog(entry));
             }
 
             // OR logic: at least one must pass
-            foreach (ILogFilter filter in _filters)
-            {
-                if (filter.ShouldLog(entry))
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return _filters.Any(filter => filter.ShouldLog(entry));
         }
     }
 }

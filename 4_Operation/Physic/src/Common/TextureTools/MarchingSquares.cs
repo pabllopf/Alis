@@ -507,17 +507,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             _ => throw new InvalidOperationException()
         };
 
-        private static int CalculateMarchingKeyPlaceholder(sbyte v0, sbyte v1, sbyte v2, sbyte v3)
-        {
-            int key = 0;
-            if (v0 < 0) key |= 8;
-            if (v1 < 0) key |= 4;
-            if (v2 < 0) key |= 2;
-            if (v3 < 0) key |= 1;
-            return key;
-        }
-
-
         /// <summary>
         ///     Combs the left using the specified polya
         /// </summary>

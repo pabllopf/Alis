@@ -245,12 +245,9 @@ namespace Alis.Extension.Io.FileDialog
             }
             else if (options.DialogType == FileDialogType.SelectFolder)
             {
-                foreach (string path in result.SelectedPaths)
+                if (!result.SelectedPaths.All(IsValidDirectoryPath))
                 {
-                    if (!IsValidDirectoryPath(path))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
 

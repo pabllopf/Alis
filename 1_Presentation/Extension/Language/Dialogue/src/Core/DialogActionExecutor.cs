@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Alis.Extension.Language.Dialogue.Core
 {
@@ -86,16 +87,7 @@ namespace Alis.Extension.Language.Dialogue.Core
                 throw new ArgumentNullException(nameof(context));
             }
 
-            int executedCount = 0;
-            foreach (IDialogAction action in actions)
-            {
-                if (ExecuteAction(action, context))
-                {
-                    executedCount++;
-                }
-            }
-
-            return executedCount;
+            return actions.Count(action => ExecuteAction(action, context));
         }
     }
 }

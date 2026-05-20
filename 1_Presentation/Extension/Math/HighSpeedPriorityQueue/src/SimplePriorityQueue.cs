@@ -31,6 +31,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
@@ -484,24 +485,15 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             lock (_queue)
             {
                 // Check all items in cache are in the queue
-                foreach (IList<SimpleNode> nodes in _itemToNodesCache.Values)
+                if (!_itemToNodesCache.Values.SelectMany(nodes => nodes).All(_queue.Contains))
                 {
-                    foreach (SimpleNode node in nodes)
-                    {
-                        if (!_queue.Contains(node))
-                        {
-                            return false;
-                        }
-                    }
+                    return false;
                 }
 
                 // Check all items in queue are in cache
-                foreach (SimpleNode node in _queue)
+                if (!_queue.All(node => GetExistingNode(node.Data) != null))
                 {
-                    if (GetExistingNode(node.Data) == null)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
 
                 // Check queue structure itself

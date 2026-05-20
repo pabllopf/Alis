@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Alis.Extension.Media.FFmpeg
@@ -253,16 +254,11 @@ namespace Alis.Extension.Media.FFmpeg
         /// <returns>The data</returns>
         public static Dictionary<string, (string Description, MediaType Type)> GetEncoders(string ffmpegExecutable = "ffmpeg")
         {
-            Dictionary<string, (string Description, MediaType Type)> data = new Dictionary<string, (string Description, MediaType Type)>();
             (string output, _) = RunCommand(ffmpegExecutable, "-encoders -v quiet");
             MatchCollection mtc = CodecRegex.Matches(output);
-            foreach (Match m in mtc)
-            {
-                char t = m.Groups["type"].Value[0];
-                data.Add(m.Groups["codec"].Value, (m.Groups["description"].Value, t == 'A' ? MediaType.Audio : t == 'V' ? MediaType.Video : MediaType.Subtitle));
-            }
-
-            return data;
+            return mtc.Cast<Match>().ToDictionary(
+                m => m.Groups["codec"].Value,
+                m => (m.Groups["description"].Value, m.Groups["type"].Value[0] == 'A' ? MediaType.Audio : m.Groups["type"].Value[0] == 'V' ? MediaType.Video : MediaType.Subtitle));
         }
 
         /// <summary>
@@ -272,16 +268,11 @@ namespace Alis.Extension.Media.FFmpeg
         /// <returns>The data</returns>
         public static Dictionary<string, (string Description, MediaType Type)> GetDecoders(string ffmpegExecutable = "ffmpeg")
         {
-            Dictionary<string, (string Description, MediaType Type)> data = new Dictionary<string, (string Description, MediaType Type)>();
             (string output, _) = RunCommand(ffmpegExecutable, "-decoders -v quiet");
             MatchCollection mtc = CodecRegex.Matches(output);
-            foreach (Match m in mtc)
-            {
-                char t = m.Groups["type"].Value[0];
-                data.Add(m.Groups["codec"].Value, (m.Groups["description"].Value, t == 'A' ? MediaType.Audio : t == 'V' ? MediaType.Video : MediaType.Subtitle));
-            }
-
-            return data;
+            return mtc.Cast<Match>().ToDictionary(
+                m => m.Groups["codec"].Value,
+                m => (m.Groups["description"].Value, m.Groups["type"].Value[0] == 'A' ? MediaType.Audio : m.Groups["type"].Value[0] == 'V' ? MediaType.Video : MediaType.Subtitle));
         }
 
         /// <summary>
@@ -291,17 +282,12 @@ namespace Alis.Extension.Media.FFmpeg
         /// <returns>The data</returns>
         public static Dictionary<string, (string Description, MuxingSupport Support)> GetFormats(string ffmpegExecutable = "ffmpeg")
         {
-            Dictionary<string, (string Description, MuxingSupport Support)> data = new Dictionary<string, (string Description, MuxingSupport Support)>();
             (string output, _) = RunCommand(ffmpegExecutable, "-formats -v quiet -loglevel silent");
             MatchCollection mtc = FormatRegex.Matches(output);
-            foreach (Match m in mtc)
-            {
-                string t = m.Groups["type"].Value.Trim();
-                data.Add(m.Groups["format"].Value, (m.Groups["description"].Value,
-                    t == "DE" ? MuxingSupport.MuxDemux : t == "D" ? MuxingSupport.Demux : MuxingSupport.Mux));
-            }
-
-            return data;
+            return mtc.Cast<Match>().ToDictionary(
+                m => m.Groups["format"].Value,
+                m => (m.Groups["description"].Value,
+                    m.Groups["type"].Value.Trim() == "DE" ? MuxingSupport.MuxDemux : m.Groups["type"].Value.Trim() == "D" ? MuxingSupport.Demux : MuxingSupport.Mux));
         }
 
         /// <summary>

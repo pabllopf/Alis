@@ -555,7 +555,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Solve limit constraint.
             if (_enableLimit && (_limitState != LimitState.Inactive) && !fixedRotation)
             {
-                SolveLimitConstraint(ref data, ref vA, ref wA, ref vB, ref wB, mA, mB, iA, iB);
+                SolveLimitConstraint(ref vA, ref wA, ref vB, ref wB, mA, mB, iA, iB);
             }
             else
             {
@@ -568,7 +568,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Velocities[_indexB].W = wB;
         }
 
-        private void SolveLimitConstraint(ref SolverData data, ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB)
+        private void SolveLimitConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB)
         {
             Vector2F cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
             float cdot2 = wB - wA;
