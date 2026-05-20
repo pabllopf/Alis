@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Alis.Extension.Language.Translator.Providers;
 using Xunit;
@@ -180,6 +181,8 @@ namespace Alis.Extension.Language.Translator.Test
             await provider.SaveTranslationsAsync(translations);
             Dictionary<string, Dictionary<string, string>> loaded = await provider.LoadTranslationsAsync();
 
+            Thread.SpinWait(1000); // Ensure async operations complete before assertions
+            
             // Assert
             Assert.Equal(2, loaded.Count);
             Assert.Equal("Hello", loaded["en"]["greeting"]);
