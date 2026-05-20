@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
+     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
@@ -10,6 +10,11 @@
         <SonarQubeExclude>true</SonarQubeExclude>
         <ApplicationIcon Condition="Exists('$(ProjectDir)Assets/app.ico')">Assets/app.ico</ApplicationIcon>
     </PropertyGroup>
+    
+    <ItemGroup>
+        <None Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
+        <Compile Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
+    </ItemGroup>
 
      <PropertyGroup>
         <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
@@ -58,7 +63,7 @@
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
 
-     <ItemGroup>
+      <ItemGroup Condition="$(NameTest.StartsWith('Alis'))">
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)../src/$(NameTest).csproj"/>

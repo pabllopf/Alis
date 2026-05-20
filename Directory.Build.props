@@ -19,9 +19,4 @@
     <PropertyGroup>
         <AssemblyVersion>1.0.6</AssemblyVersion>
     </PropertyGroup>
-
-    <ItemGroup>
-        <None Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
-        <Compile Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
-    </ItemGroup>
 </Project>

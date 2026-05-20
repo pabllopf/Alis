@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
+   <PropertyGroup>
         <TargetFrameworks>netstandard2.0;net8.0;net10.0</TargetFrameworks>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <LangVersion>13</LangVersion>
@@ -12,6 +12,11 @@
     </PropertyGroup>
     <ItemGroup>
         <None Condition="Exists('$(ProjectDir).docs/')" Include="$(ProjectDir).docs/**/*.md" Pack="false" Visible="true"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
+        <Compile Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
     </ItemGroup>
 
     <ItemGroup>

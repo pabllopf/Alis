@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
+     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <LangVersion>13</LangVersion>
         <OutputType>Exe</OutputType>
@@ -9,6 +9,11 @@
         <WasmAllowUndefinedSymbols>true</WasmAllowUndefinedSymbols>
         <EmscriptenLinkingFlags>-sWASM_ASYNC_COMPILATION=0 -sALLOW_UNIMPLEMENTED_SYSCALLS=1</EmscriptenLinkingFlags>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
+        <Compile Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
+    </ItemGroup>
 
     <PropertyGroup>
         <IsBrowserWasm Condition="'$(RuntimeIdentifier)' == 'browser-wasm'">true</IsBrowserWasm>

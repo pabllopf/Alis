@@ -237,11 +237,12 @@
     <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
                           Include="
-          $(SolutionDir)2_Application/**/generator/**/*.Generator.csproj;
-          $(SolutionDir)3_Structuration/**/generator/**/*.Generator.csproj;
-          $(SolutionDir)4_Operation/**/**/generator/**/*.Generator.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/*.Generator.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/*.Generator.csproj;"
+          $(SolutionDir)2_Application/**/generator/**/Alis.*.Generator.csproj;
+          $(SolutionDir)3_Structuration/**/generator/**/Alis.*.Generator.csproj;
+          $(SolutionDir)4_Operation/**/**/generator/**/Alis.*.Generator.csproj;
+          $(SolutionDir)5_Declaration/**/**/generator/**/Alis.*.Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/Alis.*.Generator.csproj;"
+                          Exclude="._*.Generator.csproj;**/._*.Generator.csproj"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false" >
@@ -253,10 +254,11 @@
 
         <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
                           Include="
-          $(SolutionDir)3_Structuration/**/generator/**/*.Generator.csproj;
-          $(SolutionDir)4_Operation/**/generator/**/*.Generator.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*.Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*.Generator.csproj;"
+          $(SolutionDir)3_Structuration/**/generator/**/Alis.*.Generator.csproj;
+          $(SolutionDir)4_Operation/**/generator/**/Alis.*.Generator.csproj;
+          $(SolutionDir)5_Declaration/**/generator/**/Alis.*.Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/Alis.*.Generator.csproj;"
+                          Exclude="._*.Generator.csproj;**/._*.Generator.csproj"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
@@ -268,9 +270,10 @@
 
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
                           Include="
-          $(SolutionDir)4_Operation/**/generator/**/*.Generator.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*.Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*.Generator.csproj;"
+          $(SolutionDir)4_Operation/**/generator/**/Alis.*.Generator.csproj;
+          $(SolutionDir)5_Declaration/**/generator/**/Alis.*.Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/Alis.*.Generator.csproj;"
+                          Exclude="._*.Generator.csproj;**/._*.Generator.csproj"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
@@ -282,8 +285,9 @@
 
         <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
                           Include="   
-          $(SolutionDir)5_Declaration/**/generator/**/*.Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*.Generator.csproj;"
+          $(SolutionDir)5_Declaration/**/generator/**/Alis.*.Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/Alis.*.Generator.csproj;"
+                          Exclude="._*.Generator.csproj;**/._*.Generator.csproj"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
@@ -295,7 +299,8 @@
 
         <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
                           Include="
-          $(SolutionDir)6_Ideation/**/generator/**/*.Generator.csproj;"
+          $(SolutionDir)6_Ideation/**/generator/**/Alis.*.Generator.csproj;"
+                          Exclude="._*.Generator.csproj;**/._*.Generator.csproj"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
@@ -329,6 +334,7 @@
                           $(SolutionDir)2_Application/**/src/**/Alis.csproj;
                           $(SolutionDir)1_Presentation/**/Extension/**/src/**/*.csproj;"
                           Exclude="
+                          _*.csproj;**/._*.csproj;
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
                           $(SolutionDir)**/**/*generator*/**/*.cs;
                           $(SolutionDir)**/**/*benchmark*/**/*.cs;  
@@ -342,6 +348,7 @@
                           Include="
                           $(SolutionDir)2_Application/**/src/**/Alis.csproj;"
                           Exclude="
+                          _*.csproj;**/._*.csproj;
                           $(SolutionDir)3_Structuration/**/*.csproj;
                           $(SolutionDir)4_Operation/**/*.csproj;
                           $(SolutionDir)5_Declaration/**/*.csproj;
@@ -360,7 +367,8 @@
         $(ProjectDir.Contains('Extension')) == True AND
         $(ProjectDir.Contains('Benchmark')) == False"
                           Include="
-                          $(SolutionDir)2_Application/**/src/**/Alis.csproj;"/>
+                          $(SolutionDir)2_Application/**/src/**/Alis.csproj;"
+                            Exclude="_*.csproj;**/._*.csproj;"/>
 
         <Compile Condition="$(ProjectDir.Contains('2_Application'))"
                  Include="
@@ -731,4 +739,9 @@
     </ItemGroup>
 
 
+    <ItemGroup>
+        <None Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
+        <Compile Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
+    </ItemGroup>
+    
 </Project>
