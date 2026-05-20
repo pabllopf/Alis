@@ -269,55 +269,20 @@ namespace Alis.Core.Physic.Collisions.Shapes
         {
             output = new RayCastOutput();
 
-            // Put the ray into the polygon's frame of reference.
             Vector2F p1 = Complex.Divide(input.Point1 - controllerTransform.Position, ref controllerTransform.Rotation);
             Vector2F p2 = Complex.Divide(input.Point2 - controllerTransform.Position, ref controllerTransform.Rotation);
             Vector2F d = p2 - p1;
 
             float lower = 0.0f, upper = input.MaxFraction;
-
             int index = -1;
 
             for (int i = 0; i < Vertices.Count; ++i)
             {
-                // p = p1 + a * d
-                // dot(normal, p - v) = 0
-                // dot(normal, p1 - v) + a * dot(normal, d) = 0
-                float numerator = Vector2F.Dot(Normals[i], Vertices[i] - p1);
-                float denominator = Vector2F.Dot(Normals[i], d);
-
-                if (Math.Abs(denominator) < SettingEnv.Epsilon)
+                if (!ProcessHalfSpace(ref p1, ref d, i, ref lower, ref upper, ref index))
                 {
-                    if (numerator < 0.0f)
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    // Note: we want this predicate without division:
-                    // lower < numerator / denominator, where denominator < 0
-                    // Since denominator < 0, we have to flip the inequality:
-                    // lower < numerator / denominator <==> denominator * lower > numerator.
-                    if ((denominator < 0.0f) && (numerator < lower * denominator))
-                    {
-                        // Increase lower.
-                        // The segment enters this half-space.
-                        lower = numerator / denominator;
-                        index = i;
-                    }
-                    else if ((denominator > 0.0f) && (numerator < upper * denominator))
-                    {
-                        // Decrease upper.
-                        // The segment exits this half-space.
-                        upper = numerator / denominator;
-                    }
+                    return false;
                 }
 
-                // The use of epsilon here causes the assert on lower to trip
-                // in some cases. Apparently the use of epsilon was to make edge
-                // shapes work, but now those are handled separately.
-                //if (upper < lower - b2_epsilon)
                 if (upper < lower)
                 {
                     return false;
@@ -332,6 +297,29 @@ namespace Alis.Core.Physic.Collisions.Shapes
             }
 
             return false;
+        }
+
+        private bool ProcessHalfSpace(ref Vector2F p1, ref Vector2F d, int i, ref float lower, ref float upper, ref int index)
+        {
+            float numerator = Vector2F.Dot(Normals[i], Vertices[i] - p1);
+            float denominator = Vector2F.Dot(Normals[i], d);
+
+            if (Math.Abs(denominator) < SettingEnv.Epsilon)
+            {
+                return numerator >= 0.0f;
+            }
+
+            if ((denominator < 0.0f) && (numerator < lower * denominator))
+            {
+                lower = numerator / denominator;
+                index = i;
+            }
+            else if ((denominator > 0.0f) && (numerator < upper * denominator))
+            {
+                upper = numerator / denominator;
+            }
+
+            return true;
         }
 
         /// <summary>
