@@ -4,10 +4,10 @@
     "file": "1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
     "line": 143,
     "severity": "MINOR",
-    "status": "in_progress",
-    "assignedWorker": "worker-macbookpro-001",
+    "status": "fixed",
+    "assignedWorker": null,
     "lockedAt": "2026-05-20T16:06:48.933006Z",
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:10:12.732165Z",
     "attemptCount": 0
   },
   "AZ5Fv7zAIO9wjLUiAz1t": {
@@ -15,10 +15,10 @@
     "file": "1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
     "line": 162,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "lockedAt": "2026-05-20T16:10:41.559432+00:00",
+    "completedAt": "2026-05-20T16:11:03.774952+00:00",
     "attemptCount": 0
   },
   "AZ5Fv7xSIO9wjLUiAz1p": {
@@ -26,10 +26,10 @@
     "file": "1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
     "line": 167,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-20T16:10:45.127Z",
+    "completedAt": "2026-05-20T16:10:57.216Z",
     "attemptCount": 0
   },
   "AZ5Fv7xSIO9wjLUiAz1q": {
@@ -37,10 +37,10 @@
     "file": "1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
     "line": 203,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-20T16:11:03.449Z",
+    "completedAt": "2026-05-20T16:11:17.146Z",
     "attemptCount": 0
   },
   "AZ5Fv7xSIO9wjLUiAz1r": {
@@ -48,10 +48,10 @@
     "file": "1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
     "line": 261,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-20T16:11:17.146Z",
+    "completedAt": "2026-05-20T16:11:50.359Z",
     "attemptCount": 0
   },
   "AZ5Fv6ePIO9wjLUiAz1o": {
@@ -62,7 +62,7 @@
     "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:10:38.586Z",
     "attemptCount": 0
   },
   "AZ5Fv8o4IO9wjLUiAz15": {
@@ -70,10 +70,10 @@
     "file": "4_Operation/Graphic/src/Image.cs",
     "line": 189,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "lockedAt": "2026-05-20T16:11:17.833115+00:00",
+    "completedAt": "2026-05-20T16:13:33.334544+00:00",
     "attemptCount": 0
   },
   "AZ5Fv8OMIO9wjLUiAz14": {
@@ -81,10 +81,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 288,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-20T16:11:50.360Z",
+    "completedAt": "2026-05-20T16:12:36.977Z",
     "attemptCount": 0
   },
   "AZ5Fv8NyIO9wjLUiAz12": {
@@ -92,10 +92,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 369,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-20T16:12:36.977Z",
+    "completedAt": "2026-05-20T16:13:12.312Z",
     "attemptCount": 0
   },
   "AZ5Fv8NyIO9wjLUiAz13": {
@@ -103,10 +103,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 423,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-20T16:13:12.313Z",
+    "completedAt": "2026-05-20T16:15:28.632Z",
     "attemptCount": 0
   },
   "AZ5Fv8HCIO9wjLUiAz10": {
@@ -114,10 +114,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs",
     "line": 94,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "lockedAt": "2026-05-20T16:13:51.906564+00:00",
+    "completedAt": "2026-05-20T16:17:43.933196+00:00",
     "attemptCount": 0
   },
   "AZ5Fv8HCIO9wjLUiAz11": {
@@ -125,9 +125,9 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs",
     "line": 270,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
+    "status": "in_progress",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-20T16:17:57.647816+00:00",
     "completedAt": null,
     "attemptCount": 0
   },
@@ -2721,10 +2721,10 @@
     "file": "4_Operation/Ecs/src/GameObjectQueryEnumerator.cs",
     "line": 239,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346770+00:00",
     "attemptCount": 0
   },
   "AZ1dvNgCMbZ4NfML324i": {
@@ -2743,10 +2743,10 @@
     "file": "4_Operation/Ecs/src/GameObjectQueryEnumerator.cs",
     "line": 350,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346795+00:00",
     "attemptCount": 0
   },
   "AZ1dvNgCMbZ4NfML324j": {
@@ -2765,10 +2765,10 @@
     "file": "4_Operation/Ecs/src/GameObjectQueryEnumerator.cs",
     "line": 468,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346808+00:00",
     "attemptCount": 0
   },
   "AZ1dvNgCMbZ4NfML324k": {
@@ -2787,10 +2787,10 @@
     "file": "4_Operation/Ecs/src/GameObjectQueryEnumerator.cs",
     "line": 593,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346810+00:00",
     "attemptCount": 0
   },
   "AZ1dvNgCMbZ4NfML324l": {
@@ -2809,10 +2809,10 @@
     "file": "4_Operation/Ecs/src/GameObjectQueryEnumerator.cs",
     "line": 725,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346811+00:00",
     "attemptCount": 0
   },
   "AZ1dvNgCMbZ4NfML324m": {
@@ -2831,10 +2831,10 @@
     "file": "4_Operation/Ecs/src/GameObjectQueryEnumerator.cs",
     "line": 864,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346813+00:00",
     "attemptCount": 0
   },
   "AZ1dvNgCMbZ4NfML324n": {
@@ -2853,10 +2853,10 @@
     "file": "4_Operation/Ecs/src/GameObjectQueryEnumerator.cs",
     "line": 1016,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346814+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328I": {
@@ -3260,10 +3260,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 692,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504723+00:00",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321W": {
@@ -3282,10 +3282,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 969,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504854+00:00",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321R": {
@@ -4580,10 +4580,10 @@
     "file": "1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs",
     "line": 1141,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346917+00:00",
     "attemptCount": 0
   },
   "AZ1dvM65MbZ4NfML32c9": {
@@ -5207,10 +5207,10 @@
     "file": "4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs",
     "line": 567,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504868+00:00",
     "attemptCount": 0
   },
   "AZ1dvNj8MbZ4NfML329e": {
@@ -5559,10 +5559,10 @@
     "file": "4_Operation/Graphic/src/Ui/Font.cs",
     "line": 459,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504872+00:00",
     "attemptCount": 0
   },
   "AZ1dvNkIMbZ4NfML32-A": {
@@ -5856,10 +5856,10 @@
     "file": "2_Application/Alis/src/Core/Ecs/Systems/Manager/Scene/SceneManager.cs",
     "line": 214,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504875+00:00",
     "attemptCount": 0
   },
   "AZ1dvNkIMbZ4NfML3297": {
@@ -5867,10 +5867,10 @@
     "file": "4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs",
     "line": 332,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504876+00:00",
     "attemptCount": 0
   },
   "AZ1dvNkIMbZ4NfML3298": {
@@ -5878,10 +5878,10 @@
     "file": "4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs",
     "line": 337,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504877+00:00",
     "attemptCount": 0
   },
   "AZ1dvNkIMbZ4NfML3299": {
@@ -5889,10 +5889,10 @@
     "file": "4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs",
     "line": 482,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504879+00:00",
     "attemptCount": 0
   },
   "AZ1dvNkIMbZ4NfML329-": {
@@ -5900,10 +5900,10 @@
     "file": "4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs",
     "line": 484,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504880+00:00",
     "attemptCount": 0
   },
   "AZ1dvMetMbZ4NfML32AC": {
@@ -6109,10 +6109,10 @@
     "file": "1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs",
     "line": 157,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:05:30.924427+00:00",
     "attemptCount": 0
   },
   "AZ1dvM9DMbZ4NfML32gY": {
@@ -6120,10 +6120,10 @@
     "file": "1_Presentation/Extension/Graphic/Sfml/src/Render/VertexBuffer.cs",
     "line": 161,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:05:30.924608+00:00",
     "attemptCount": 0
   },
   "AZ1dvM--MbZ4NfML32kH": {
@@ -6417,10 +6417,10 @@
     "file": "4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
     "line": 117,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346834+00:00",
     "attemptCount": 0
   },
   "AZ1dvNcqMbZ4NfML322O": {
@@ -6439,10 +6439,10 @@
     "file": "4_Operation/Ecs/src/GameObjectQueryEnumerator.cs",
     "line": 129,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346835+00:00",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321o": {
@@ -6923,10 +6923,10 @@
     "file": "1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs",
     "line": 265,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:05:30.924616+00:00",
     "attemptCount": 0
   },
   "AZ1dvM9fMbZ4NfML32hX": {
@@ -6934,10 +6934,10 @@
     "file": "1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs",
     "line": 269,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:05:30.924617+00:00",
     "attemptCount": 0
   },
   "AZ1dvM9pMbZ4NfML32h3": {
@@ -6945,10 +6945,10 @@
     "file": "1_Presentation/Extension/Graphic/Sfml/src/Render/Shape.cs",
     "line": 163,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:05:30.924619+00:00",
     "attemptCount": 0
   },
   "AZ1dvM9pMbZ4NfML32h4": {
@@ -6956,10 +6956,10 @@
     "file": "1_Presentation/Extension/Graphic/Sfml/src/Render/Shape.cs",
     "line": 167,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:05:30.924620+00:00",
     "attemptCount": 0
   },
   "AZ1dvM85MbZ4NfML32gK": {
@@ -6967,10 +6967,10 @@
     "file": "1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs",
     "line": 145,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:05:30.924621+00:00",
     "attemptCount": 0
   },
   "AZ1dvM85MbZ4NfML32gL": {
@@ -6978,10 +6978,10 @@
     "file": "1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs",
     "line": 149,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:05:30.924623+00:00",
     "attemptCount": 0
   },
   "AZ1dvM7PMbZ4NfML32dQ": {
@@ -7011,10 +7011,10 @@
     "file": "1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs",
     "line": 145,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:05:30.924624+00:00",
     "attemptCount": 0
   },
   "AZ1dvM7mMbZ4NfML32eJ": {
@@ -7022,10 +7022,10 @@
     "file": "1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs",
     "line": 149,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:05:30.924625+00:00",
     "attemptCount": 0
   },
   "AZ1dvM_QMbZ4NfML32kU": {
@@ -8430,10 +8430,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/DelaunayTriangle.cs",
     "line": 194,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504895+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSfMbZ4NfML32xs": {
@@ -8639,10 +8639,10 @@
     "file": "1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs",
     "line": 75,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504898+00:00",
     "attemptCount": 0
   },
   "AZ1dvNcEMbZ4NfML3217": {
@@ -8650,10 +8650,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Component.cs",
     "line": 215,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504900+00:00",
     "attemptCount": 0
   },
   "AZ1dvNcEMbZ4NfML3218": {
@@ -8661,10 +8661,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Component.cs",
     "line": 262,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504901+00:00",
     "attemptCount": 0
   },
   "AZ1dvNgiMbZ4NfML324_": {
@@ -8936,10 +8936,10 @@
     "file": "4_Operation/Ecs/src/Collections/FastestStack.cs",
     "line": 350,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504904+00:00",
     "attemptCount": 0
   },
   "AZ1dvNcqMbZ4NfML322N": {
@@ -9090,10 +9090,10 @@
     "file": "4_Operation/Ecs/src/Scene.cs",
     "line": 648,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:01:26.424958+00:00",
     "attemptCount": 0
   },
   "AZ1dvNgiMbZ4NfML325R": {
@@ -9112,10 +9112,10 @@
     "file": "4_Operation/Ecs/src/Systems/GameObjectQueryEnumerator.1.cs",
     "line": 129,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346850+00:00",
     "attemptCount": 0
   },
   "AZ1dvNdQMbZ4NfML322e": {
@@ -9211,10 +9211,10 @@
     "file": "4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
     "line": 108,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346852+00:00",
     "attemptCount": 0
   },
   "AZ1dvNcqMbZ4NfML322P": {
@@ -9222,10 +9222,10 @@
     "file": "4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
     "line": 134,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346853+00:00",
     "attemptCount": 0
   },
   "AZ1dvNcqMbZ4NfML322U": {
@@ -9244,10 +9244,10 @@
     "file": "4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
     "line": 142,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346854+00:00",
     "attemptCount": 0
   },
   "AZ1dvNcqMbZ4NfML322V": {
@@ -9266,10 +9266,10 @@
     "file": "4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
     "line": 167,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346855+00:00",
     "attemptCount": 0
   },
   "AZ1dvNcqMbZ4NfML322S": {
@@ -9277,10 +9277,10 @@
     "file": "4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
     "line": 175,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346857+00:00",
     "attemptCount": 0
   },
   "AZ1dvNcqMbZ4NfML322T": {
@@ -9288,10 +9288,10 @@
     "file": "4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
     "line": 200,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346858+00:00",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321l": {
@@ -9299,10 +9299,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 272,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346859+00:00",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321p": {
@@ -9420,10 +9420,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/GlobalWorldTables.cs",
     "line": 91,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504908+00:00",
     "attemptCount": 0
   },
   "AZ1dvNcEMbZ4NfML321_": {
@@ -9574,10 +9574,10 @@
     "file": "2_Application/Alis/src/Core/Ecs/Systems/Configuration/Setting.cs",
     "line": 120,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504910+00:00",
     "attemptCount": 0
   },
   "AZ1dvMh6MbZ4NfML32AU": {
@@ -9585,10 +9585,10 @@
     "file": "2_Application/Alis/src/Core/Ecs/Systems/Configuration/Setting.cs",
     "line": 195,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504911+00:00",
     "attemptCount": 0
   },
   "AZ1dvMicMbZ4NfML32Aa": {
@@ -9618,10 +9618,10 @@
     "file": "2_Application/Alis/src/Core/Ecs/Systems/Manager/Scene/ScenesMap.cs",
     "line": 68,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504913+00:00",
     "attemptCount": 0
   },
   "AZ1dvMeaMbZ4NfML31_3": {
@@ -9629,10 +9629,10 @@
     "file": "2_Application/Alis/src/Core/Ecs/Systems/Manager/Scene/ScenesMap.cs",
     "line": 100,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504914+00:00",
     "attemptCount": 0
   },
   "AZ1dvMiLMbZ4NfML32AW": {
@@ -9684,10 +9684,10 @@
     "file": "4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
     "line": 1799,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504915+00:00",
     "attemptCount": 0
   },
   "AZ1dvNQeMbZ4NfML32wb": {
@@ -9695,10 +9695,10 @@
     "file": "4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
     "line": 1898,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504916+00:00",
     "attemptCount": 0
   },
   "AZ1dvNJSMbZ4NfML32tF": {
@@ -9904,10 +9904,10 @@
     "file": "1_Presentation/Extension/Network/src/Internal/WebSocketImplementation.cs",
     "line": 693,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:01:26.425095+00:00",
     "attemptCount": 0
   },
   "AZ1dvNRnMbZ4NfML32xY": {
@@ -10839,10 +10839,10 @@
     "file": "1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs",
     "line": 248,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:01:26.425103+00:00",
     "attemptCount": 0
   },
   "AZ1dvNCzMbZ4NfML32rL": {
@@ -10872,10 +10872,10 @@
     "file": "1_Presentation/Extension/Media/FFmpeg/src/Video/VideoWriter.cs",
     "line": 249,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:01:26.425105+00:00",
     "attemptCount": 0
   },
   "AZ1dvNS6MbZ4NfML32x2": {
@@ -10905,10 +10905,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepContext.cs",
     "line": 145,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504925+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSuMbZ4NfML32xw": {
@@ -10916,10 +10916,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepContext.cs",
     "line": 156,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504926+00:00",
     "attemptCount": 0
   },
   "AZ1dvMzHMbZ4NfML32NM": {
@@ -11015,10 +11015,10 @@
     "file": "4_Operation/Physic/src/Collisions/Distance.cs",
     "line": 161,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504928+00:00",
     "attemptCount": 0
   },
   "AZ1dvNXQMbZ4NfML32zN": {
@@ -11081,10 +11081,10 @@
     "file": "4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs",
     "line": 161,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504929+00:00",
     "attemptCount": 0
   },
   "AZ1dvNYXMbZ4NfML32zv": {
@@ -11092,10 +11092,10 @@
     "file": "4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs",
     "line": 165,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504930+00:00",
     "attemptCount": 0
   },
   "AZ1dvNXxMbZ4NfML32zd": {
@@ -11103,10 +11103,10 @@
     "file": "4_Operation/Physic/src/Collisions/Shapes/EdgeShape.cs",
     "line": 236,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504932+00:00",
     "attemptCount": 0
   },
   "AZ1dvNXxMbZ4NfML32ze": {
@@ -11114,10 +11114,10 @@
     "file": "4_Operation/Physic/src/Collisions/Shapes/EdgeShape.cs",
     "line": 239,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504933+00:00",
     "attemptCount": 0
   },
   "AZ1dvNXxMbZ4NfML32zf": {
@@ -11125,10 +11125,10 @@
     "file": "4_Operation/Physic/src/Collisions/Shapes/EdgeShape.cs",
     "line": 243,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504934+00:00",
     "attemptCount": 0
   },
   "AZ1dvNXxMbZ4NfML32zg": {
@@ -11136,10 +11136,10 @@
     "file": "4_Operation/Physic/src/Collisions/Shapes/EdgeShape.cs",
     "line": 267,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504935+00:00",
     "attemptCount": 0
   },
   "AZ1dvNYFMbZ4NfML32zl": {
@@ -11147,10 +11147,10 @@
     "file": "4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs",
     "line": 343,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504936+00:00",
     "attemptCount": 0
   },
   "AZ1dvNYFMbZ4NfML32zm": {
@@ -11158,10 +11158,10 @@
     "file": "4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs",
     "line": 348,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504938+00:00",
     "attemptCount": 0
   },
   "AZ1dvNYFMbZ4NfML32zn": {
@@ -11169,10 +11169,10 @@
     "file": "4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs",
     "line": 369,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504939+00:00",
     "attemptCount": 0
   },
   "AZ1dvNXHMbZ4NfML32zK": {
@@ -11246,10 +11246,10 @@
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 249,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504940+00:00",
     "attemptCount": 0
   },
   "AZ1dvNQ_MbZ4NfML32xJ": {
@@ -11829,10 +11829,10 @@
     "file": "1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallback.cs",
     "line": 35,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346955+00:00",
     "attemptCount": 0
   },
   "AZ1dvMt7MbZ4NfML32MJ": {
@@ -11840,10 +11840,10 @@
     "file": "1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesMiniMapNodeHoveringCallbackUserData.cs",
     "line": 35,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346957+00:00",
     "attemptCount": 0
   },
   "AZ1dvMtVMbZ4NfML32ME": {
@@ -12313,10 +12313,10 @@
     "file": "1_Presentation/Extension/Graphic/Ui/src/ImGuiP1.cs",
     "line": 186,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T16:15:15.346451+00:00",
     "attemptCount": 0
   },
   "AZ1dvMwOMbZ4NfML32Mv": {
@@ -13292,10 +13292,10 @@
     "file": "4_Operation/Audio/src/Players/WindowsPlayer.cs",
     "line": 109,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504954+00:00",
     "attemptCount": 0
   },
   "AZ1dvNksMbZ4NfML32-x": {
@@ -13369,10 +13369,10 @@
     "file": "4_Operation/Physic/src/Collisions/AABB.cs",
     "line": 261,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:01:26.425121+00:00",
     "attemptCount": 0
   },
   "AZ1dvNZMMbZ4NfML320W": {
@@ -13435,10 +13435,10 @@
     "file": "4_Operation/Physic/src/Collisions/Distance.cs",
     "line": 127,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504956+00:00",
     "attemptCount": 0
   },
   "AZ1dvNaJMbZ4NfML320w": {
@@ -13501,10 +13501,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 139,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504957+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML32z9": {
@@ -13512,10 +13512,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 145,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504959+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML32z-": {
@@ -13523,10 +13523,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 170,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504960+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML32z_": {
@@ -13534,10 +13534,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 331,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504961+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML320N": {
@@ -13556,10 +13556,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 635,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504962+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML320C": {
@@ -13567,10 +13567,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 699,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504964+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML320D": {
@@ -13578,10 +13578,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 709,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504965+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML320E": {
@@ -13589,10 +13589,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 717,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504966+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML320F": {
@@ -13600,10 +13600,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 728,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504967+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML320G": {
@@ -13611,10 +13611,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 786,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504968+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML320H": {
@@ -13622,10 +13622,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 848,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504969+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML320Q": {
@@ -13644,10 +13644,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 885,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504970+00:00",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML320J": {
@@ -13655,10 +13655,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 910,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504972+00:00",
     "attemptCount": 0
   },
   "AZ1dvNYfMbZ4NfML32zw": {
@@ -13765,10 +13765,10 @@
     "file": "4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs",
     "line": 122,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504973+00:00",
     "attemptCount": 0
   },
   "AZ1dvNYFMbZ4NfML32zk": {
@@ -13776,10 +13776,10 @@
     "file": "4_Operation/Physic/src/Collisions/Shapes/PolygonShape.cs",
     "line": 335,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504974+00:00",
     "attemptCount": 0
   },
   "AZ1dvNYFMbZ4NfML32zq": {
@@ -13963,10 +13963,10 @@
     "file": "4_Operation/Physic/src/Common/ConvexHull/Melkman.cs",
     "line": 126,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504977+00:00",
     "attemptCount": 0
   },
   "AZ1dvNWoMbZ4NfML32y5": {
@@ -13974,10 +13974,10 @@
     "file": "4_Operation/Physic/src/Common/ConvexHull/Melkman.cs",
     "line": 127,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504978+00:00",
     "attemptCount": 0
   },
   "AZ1dvNWoMbZ4NfML32y6": {
@@ -13985,10 +13985,10 @@
     "file": "4_Operation/Physic/src/Common/ConvexHull/Melkman.cs",
     "line": 131,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504979+00:00",
     "attemptCount": 0
   },
   "AZ1dvNWoMbZ4NfML32y7": {
@@ -13996,10 +13996,10 @@
     "file": "4_Operation/Physic/src/Common/ConvexHull/Melkman.cs",
     "line": 132,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504980+00:00",
     "attemptCount": 0
   },
   "AZ1dvNWoMbZ4NfML32y8": {
@@ -14007,10 +14007,10 @@
     "file": "4_Operation/Physic/src/Common/ConvexHull/Melkman.cs",
     "line": 139,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504982+00:00",
     "attemptCount": 0
   },
   "AZ1dvNWoMbZ4NfML32y9": {
@@ -14018,10 +14018,10 @@
     "file": "4_Operation/Physic/src/Common/ConvexHull/Melkman.cs",
     "line": 140,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504983+00:00",
     "attemptCount": 0
   },
   "AZ1dvNWoMbZ4NfML32y-": {
@@ -14029,10 +14029,10 @@
     "file": "4_Operation/Physic/src/Common/ConvexHull/Melkman.cs",
     "line": 144,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504984+00:00",
     "attemptCount": 0
   },
   "AZ1dvNWoMbZ4NfML32y_": {
@@ -14040,10 +14040,10 @@
     "file": "4_Operation/Physic/src/Common/ConvexHull/Melkman.cs",
     "line": 145,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504985+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSfMbZ4NfML32xn": {
@@ -14051,10 +14051,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/AdvancingFront.cs",
     "line": 75,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504987+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSfMbZ4NfML32xo": {
@@ -14062,10 +14062,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/AdvancingFront.cs",
     "line": 84,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504988+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSfMbZ4NfML32xq": {
@@ -14095,10 +14095,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/AdvancingFront.cs",
     "line": 177,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504989+00:00",
     "attemptCount": 0
   },
   "AZ1dvNS6MbZ4NfML32x1": {
@@ -14128,10 +14128,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs",
     "line": 938,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504991+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSmMbZ4NfML32xt": {
@@ -14139,10 +14139,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepConstraint.cs",
     "line": 62,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504992+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSuMbZ4NfML32xu": {
@@ -14150,10 +14150,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepContext.cs",
     "line": 91,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504993+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSuMbZ4NfML32xx": {
@@ -14161,10 +14161,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepContext.cs",
     "line": 261,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504994+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSuMbZ4NfML32xy": {
@@ -14172,10 +14172,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweepContext.cs",
     "line": 264,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504995+00:00",
     "attemptCount": 0
   },
   "AZ1dvNTNMbZ4NfML32yA": {
@@ -14205,10 +14205,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationUtil.cs",
     "line": 79,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504997+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSIMbZ4NfML32xi": {
@@ -14216,10 +14216,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationUtil.cs",
     "line": 91,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504998+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSIMbZ4NfML32xj": {
@@ -14227,10 +14227,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/TriangulationUtil.cs",
     "line": 111,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.504999+00:00",
     "attemptCount": 0
   },
   "AZ1dvNSXMbZ4NfML32xm": {
@@ -14348,10 +14348,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/Seidel/Triangulator.cs",
     "line": 122,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:01:26.425128+00:00",
     "attemptCount": 0
   },
   "AZ1dvNUNMbZ4NfML32yM": {
@@ -14359,10 +14359,10 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/Seidel/Triangulator.cs",
     "line": 127,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T18:01:26.425129+00:00",
     "attemptCount": 0
   },
   "AZ1dvNUNMbZ4NfML32yO": {
@@ -14689,10 +14689,10 @@
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 294,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505003+00:00",
     "attemptCount": 0
   },
   "AZ1dvNQ1MbZ4NfML32w4": {
@@ -14700,10 +14700,10 @@
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 328,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505004+00:00",
     "attemptCount": 0
   },
   "AZ1dvNQ1MbZ4NfML32w6": {
@@ -14711,10 +14711,10 @@
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 551,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505005+00:00",
     "attemptCount": 0
   },
   "AZ1dvNQ1MbZ4NfML32w7": {
@@ -14722,10 +14722,10 @@
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 553,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505007+00:00",
     "attemptCount": 0
   },
   "AZ1dvNQ1MbZ4NfML32w8": {
@@ -14733,10 +14733,10 @@
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 594,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505008+00:00",
     "attemptCount": 0
   },
   "AZ1dvNQ1MbZ4NfML32w9": {
@@ -14744,10 +14744,10 @@
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 596,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505010+00:00",
     "attemptCount": 0
   },
   "AZ1dvNQ_MbZ4NfML32xI": {
@@ -15008,10 +15008,10 @@
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
     "line": 550,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505013+00:00",
     "attemptCount": 0
   },
   "AZ1dvNPOMbZ4NfML32vg": {
@@ -15019,10 +15019,10 @@
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
     "line": 571,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505014+00:00",
     "attemptCount": 0
   },
   "AZ1dvNPOMbZ4NfML32vv": {
@@ -15063,10 +15063,10 @@
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
     "line": 676,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505016+00:00",
     "attemptCount": 0
   },
   "AZ1dvNPOMbZ4NfML32vx": {
@@ -15129,10 +15129,10 @@
     "file": "4_Operation/Physic/src/Dynamics/ControllerTransform.cs",
     "line": 121,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505018+00:00",
     "attemptCount": 0
   },
   "AZ1dvNP-MbZ4NfML32wD": {
@@ -15140,10 +15140,10 @@
     "file": "4_Operation/Physic/src/Dynamics/ControllerTransform.cs",
     "line": 142,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505019+00:00",
     "attemptCount": 0
   },
   "AZ1dvNP-MbZ4NfML32wE": {
@@ -15151,10 +15151,10 @@
     "file": "4_Operation/Physic/src/Dynamics/ControllerTransform.cs",
     "line": 158,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505020+00:00",
     "attemptCount": 0
   },
   "AZ1dvNPZMbZ4NfML32vy": {
@@ -15888,10 +15888,10 @@
     "file": "6_Ideation/Math/src/Matrix/Matrix2X2.cs",
     "line": 123,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505026+00:00",
     "attemptCount": 0
   },
   "AZ1dvNpCMbZ4NfML32_y": {
@@ -15899,10 +15899,10 @@
     "file": "6_Ideation/Math/src/Matrix/Matrix2X2.cs",
     "line": 148,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-20T17:56:27.505027+00:00",
     "attemptCount": 0
   },
   "AZ1dvNo6MbZ4NfML32_w": {
