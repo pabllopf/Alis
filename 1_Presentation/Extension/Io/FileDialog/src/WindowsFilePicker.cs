@@ -200,7 +200,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Builds the PowerShell script for selecting a folder.
         /// </summary>
-        private string BuildFolderSelectScript(FilePickerOptions options)
+        private static string BuildFolderSelectScript(FilePickerOptions options)
         {
             Logger.Trace("Building FolderSelect PowerShell script.");
 
