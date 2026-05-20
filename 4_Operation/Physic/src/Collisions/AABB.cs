@@ -257,12 +257,10 @@ namespace Alis.Core.Physic.Collisions
         /// </returns>
         public bool Contains(ref Aabb aabb)
         {
-            bool result = true;
-            result = result && (LowerBound.X <= aabb.LowerBound.X);
-            result = result && (LowerBound.Y <= aabb.LowerBound.Y);
-            result = result && (aabb.UpperBound.X <= UpperBound.X);
-            result = result && (aabb.UpperBound.Y <= UpperBound.Y);
-            return result;
+            return LowerBound.X <= aabb.LowerBound.X
+                   && LowerBound.Y <= aabb.LowerBound.Y
+                   && aabb.UpperBound.X <= UpperBound.X
+                   && aabb.UpperBound.Y <= UpperBound.Y;
         }
 
         /// <summary>

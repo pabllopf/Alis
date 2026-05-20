@@ -645,7 +645,7 @@ namespace Alis.Core.Ecs
 
                 if (filterUsed is not null)
                 {
-                    filterUsed?.UpdateSubset(resolveArchetypes);
+                    filterUsed.UpdateSubset(resolveArchetypes);
                 }
                 else
                 {

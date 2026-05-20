@@ -245,7 +245,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
 
                 try
                 {
-                    if (Ffmpegp?.HasExited == false)
+                    if (Ffmpegp is { HasExited: false })
                     {
                         Ffmpegp.Kill();
                     }

@@ -690,7 +690,7 @@ namespace Alis.Extension.Network.Internal
             {
                 if (!TryGetBufferFailureLogged)
                 {
-                    Events.Log.TryGetBufferNotSupported(Guid, stream?.GetType()?.ToString());
+                    Events.Log.TryGetBufferNotSupported(Guid, stream.GetType().ToString());
                     TryGetBufferFailureLogged = true;
                 }
 

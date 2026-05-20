@@ -246,7 +246,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
 
                 try
                 {
-                    if (Ffmpegp?.HasExited == false)
+                    if (Ffmpegp is { HasExited: false })
                     {
                         Ffmpegp.Kill();
                     }
