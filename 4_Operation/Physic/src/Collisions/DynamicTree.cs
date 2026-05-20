@@ -392,52 +392,54 @@ namespace Alis.Core.Physic.Collisions
                     continue;
                 }
 
-                //TreeNode<T>* node = &_nodes[nodeId];
-
                 if (!Aabb.TestOverlap(ref _nodes[nodeId].Aabb, ref segmentAabb))
                 {
                     continue;
                 }
 
-                // Separating axis for segment (Gino, p80).
-                // |dot(v, p1 - c)| > dot(|v|, h)
-                Vector2F c = _nodes[nodeId].Aabb.Center;
-                Vector2F h = _nodes[nodeId].Aabb.Extents;
-                float separation = Math.Abs(Vector2F.Dot(new Vector2F(-r.Y, r.X), p1 - c)) - Vector2F.Dot(absV, h);
-                if (separation > 0.0f)
+                if (!IsNodeSeparating(ref r, p1, _nodes[nodeId].Aabb))
                 {
-                    continue;
-                }
-
-                if (_nodes[nodeId].IsLeaf())
-                {
-                    RayCastInput subInput;
-                    subInput.Point1 = input.Point1;
-                    subInput.Point2 = input.Point2;
-                    subInput.MaxFraction = maxFraction;
-
-                    float value = callback(ref subInput, nodeId);
-
-                    if (Math.Abs(value) < MathUtils.Epsilon)
+                    if (_nodes[nodeId].IsLeaf())
                     {
-                        // the client has terminated the raycast.
-                        return;
+                        ProcessRaycastLeaf(callback, ref input, ref maxFraction, ref p1, ref p2, ref segmentAabb, nodeId);
                     }
-
-                    if (value > 0.0f)
+                    else
                     {
-                        // Update segment bounding box.
-                        maxFraction = value;
-                        Vector2F t = p1 + maxFraction * (p2 - p1);
-                        Vector2F.Min(ref p1, ref t, out segmentAabb.LowerBound);
-                        Vector2F.Max(ref p1, ref t, out segmentAabb.UpperBound);
+                        _raycastStack.Push(_nodes[nodeId].Child1);
+                        _raycastStack.Push(_nodes[nodeId].Child2);
                     }
                 }
-                else
-                {
-                    _raycastStack.Push(_nodes[nodeId].Child1);
-                    _raycastStack.Push(_nodes[nodeId].Child2);
-                }
+            }
+        }
+
+        private static bool IsNodeSeparating(ref Vector2F r, Vector2F p1, Aabb aabb)
+        {
+            Vector2F c = aabb.Center;
+            Vector2F h = aabb.Extents;
+            float separation = Math.Abs(Vector2F.Dot(new Vector2F(-r.Y, r.X), p1 - c)) - Vector2F.Dot(MathUtils.Abs(new Vector2F(-r.Y, r.X)), h);
+            return separation > 0.0f;
+        }
+
+        private void ProcessRaycastLeaf(BroadPhaseRayCastCallback callback, ref RayCastInput input, ref float maxFraction, ref Vector2F p1, ref Vector2F p2, ref Aabb segmentAabb, int nodeId)
+        {
+            RayCastInput subInput;
+            subInput.Point1 = input.Point1;
+            subInput.Point2 = input.Point2;
+            subInput.MaxFraction = maxFraction;
+
+            float value = callback(ref subInput, nodeId);
+
+            if (Math.Abs(value) < MathUtils.Epsilon)
+            {
+                return;
+            }
+
+            if (value > 0.0f)
+            {
+                maxFraction = value;
+                Vector2F t = p1 + maxFraction * (p2 - p1);
+                Vector2F.Min(ref p1, ref t, out segmentAabb.LowerBound);
+                Vector2F.Max(ref p1, ref t, out segmentAabb.UpperBound);
             }
         }
 
