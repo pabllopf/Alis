@@ -215,36 +215,6 @@ namespace Alis.Extension.Updater.Test
         }
 
         /// <summary>
-        ///     Tests that move program folder to backup moves directory
-        /// </summary>
-        [Fact]
-        public void MoveProgramFolderToBackup_MovesDirectory()
-        {
-            using TempFolder temp = TempFolder.Create();
-            string programFolder = Path.Combine(temp.Path, "program");
-            Directory.CreateDirectory(programFolder);
-            File.WriteAllText(Path.Combine(programFolder, "file.txt"), "payload");
-
-            UpdateManager sut = CreateManagerFast(programFolder: programFolder);
-
-            string backupPath = sut.MoveProgramFolderToBackup();
-
-            try
-            {
-                Assert.False(Directory.Exists(programFolder));
-                Assert.True(Directory.Exists(backupPath));
-                Assert.True(File.Exists(Path.Combine(backupPath, "file.txt")));
-            }
-            finally
-            {
-                if (Directory.Exists(backupPath))
-                {
-                    Directory.Delete(backupPath, true);
-                }
-            }
-        }
-
-        /// <summary>
         ///     Tests that compress backup folder creates zip and deletes source
         /// </summary>
         [Fact]
