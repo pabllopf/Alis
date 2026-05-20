@@ -93,7 +93,7 @@ namespace Alis.Extension.Language.Translator
         /// <summary>
         ///     Error message for null or empty language code
         /// </summary>
-        private const string LanguageCodeNullError = LanguageCodeNullError;
+        private const string LanguageCodeNullError = "Language code cannot be null or empty";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="TranslationManager" /> class with default providers
