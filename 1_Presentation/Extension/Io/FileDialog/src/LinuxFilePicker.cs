@@ -140,7 +140,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Executes the file dialog using zenity or kdialog.
         /// </summary>
-        private string ExecuteFileDialog(FilePickerOptions options, bool allowMultiple)
+        private static string ExecuteFileDialog(FilePickerOptions options, bool allowMultiple)
         {
             Logger.Trace($"Executing file dialog (allowMultiple: {allowMultiple}).");
 
