@@ -98,44 +98,57 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             for (int j = 0; j < vertices.Count; ++j)
             {
-                // if line intersects with an edge
-                float d;
-                Vector2F p;
-                if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) && RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
-                {
-                    // find the point of intersection
-                    p = LineTools.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices), At(j - 1, vertices));
-
-                    if (Right(At(i + 1, vertices), At(i, vertices), p))
-                    {
-                        // make sure it's inside the poly
-                        d = SquareDist(At(i, vertices), p);
-                        if (d < lowerDist)
-                        {
-                            // keep only the closest intersection
-                            lowerDist = d;
-                            lowerInt = p;
-                            lowerIndex = j;
-                        }
-                    }
-                }
-
-                if (Left(At(i + 1, vertices), At(i, vertices), At(j + 1, vertices)) && RightOn(At(i + 1, vertices), At(i, vertices), At(j, vertices)))
-                {
-                    p = LineTools.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices), At(j + 1, vertices));
-
-                    if (Left(At(i - 1, vertices), At(i, vertices), p))
-                    {
-                        d = SquareDist(At(i, vertices), p);
-                        if (d < upperDist)
-                        {
-                            upperDist = d;
-                            upperIndex = j;
-                            upperInt = p;
-                        }
-                    }
-                }
+                UpdateLowerIntersection(i, vertices, j, ref lowerDist, ref lowerInt, ref lowerIndex);
+                UpdateUpperIntersection(i, vertices, j, ref upperDist, ref upperInt, ref upperIndex);
             }
+        }
+
+        private static void UpdateLowerIntersection(int i, Vertices vertices, int j, ref float lowerDist, ref Vector2F lowerInt, ref int lowerIndex)
+        {
+            if (!Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) || !RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
+            {
+                return;
+            }
+
+            Vector2F p = LineTools.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices), At(j - 1, vertices));
+            if (!Right(At(i + 1, vertices), At(i, vertices), p))
+            {
+                return;
+            }
+
+            float d = SquareDist(At(i, vertices), p);
+            if (d >= lowerDist)
+            {
+                return;
+            }
+
+            lowerDist = d;
+            lowerInt = p;
+            lowerIndex = j;
+        }
+
+        private static void UpdateUpperIntersection(int i, Vertices vertices, int j, ref float upperDist, ref Vector2F upperInt, ref int upperIndex)
+        {
+            if (!Left(At(i + 1, vertices), At(i, vertices), At(j + 1, vertices)) || !RightOn(At(i + 1, vertices), At(i, vertices), At(j, vertices)))
+            {
+                return;
+            }
+
+            Vector2F p = LineTools.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices), At(j + 1, vertices));
+            if (!Left(At(i - 1, vertices), At(i, vertices), p))
+            {
+                return;
+            }
+
+            float d = SquareDist(At(i, vertices), p);
+            if (d >= upperDist)
+            {
+                return;
+            }
+
+            upperDist = d;
+            upperIndex = j;
+            upperInt = p;
         }
 
         private static void SplitAtMidpoint(Vector2F lowerInt, Vector2F upperInt, int i, int upperIndex, int lowerIndex, Vertices vertices, List<Vertices> list)
