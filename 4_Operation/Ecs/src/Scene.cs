@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The next scene id
         /// </summary>
-        private static ushort _nextWorldId = 1;
+        internal static ushort _nextWorldId = 1;
 
         /// <summary>
         ///     The shared countdown
@@ -140,6 +140,7 @@ namespace Alis.Core.Ecs
 
         // -1: normal state
         // 0: some kind of transition in End/Enter
+        // n: n systems/updates active
         /// <summary>
         ///     The allow structural changes
         /// </summary>
@@ -156,7 +157,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The add component lookup
         /// </summary>
-        public FastLookup AddComponentLookup = new FastLookup();
+        internal FastLookup AddComponentLookup = new FastLookup();
 
         /// <summary>
         ///     The add tag lookup
@@ -199,6 +200,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectOnlyEvent EntityDeletedEvent = new GameObjectOnlyEvent();
 
+        //entityID -> gameObject metadata
         /// <summary>
         ///     The gameObject location
         /// </summary>
@@ -234,6 +236,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public FastLookup RemoveTagLookup = new FastLookup();
 
+        //archetype ID -> Archetype?
         /// <summary>
         ///     The scene archetype table
         /// </summary>
@@ -250,17 +253,12 @@ namespace Alis.Core.Ecs
         /// </summary>
         public CommandBuffer WorldUpdateCommandBuffer;
 
-        private static readonly object _idLock = new object();
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
         public Scene()
         {
-            lock (_idLock)
-            {
-                Id = _nextWorldId++;
-            }
+            Id = _nextWorldId++;
 
             GlobalWorldTables.Worlds[Id] = this;
 
@@ -287,44 +285,26 @@ namespace Alis.Core.Ecs
         /// </summary>
         public bool AllowStructualChanges => _allowStructuralChanges == -1;
 
-        private bool _disposed;
-
         /// <summary>
         ///     Disposes of the <see cref="Scene" />.
         /// </summary>
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+            GlobalWorldTables.Worlds[Id] = null!;
 
-        /// <summary>
-        ///     Releases the unmanaged resources used by the <see cref="Scene"/> and optionally releases the managed resources.
-        /// </summary>
-        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_disposed)
-                return;
-
-            if (disposing)
+            foreach (ref WorldArchetypeTableItem item in WorldArchetypeTable.AsSpan())
             {
-                GlobalWorldTables.Worlds[Id] = null!;
-
-                foreach (ref WorldArchetypeTableItem item in WorldArchetypeTable.AsSpan())
+                if (item.Archetype is not null)
                 {
-                    if (item.Archetype is not null)
-                    {
-                        item.Archetype.ReleaseArrays();
-                        item.DeferredCreationArchetype.ReleaseArrays();
-                    }
+                    item.Archetype.ReleaseArrays();
+                    item.DeferredCreationArchetype.ReleaseArrays();
                 }
-
-                _sharedCountdown.Dispose();
-                RecycledEntityIds.Dispose();
             }
 
-            _disposed = true;
+            _sharedCountdown.Dispose();
+            RecycledEntityIds.Dispose();
+
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -1936,6 +1916,7 @@ namespace Alis.Core.Ecs
         }
 
 
+        //Delete
         /// <summary>
         ///     Deletes the gameObject using the specified gameObject
         /// </summary>

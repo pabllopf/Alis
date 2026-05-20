@@ -260,6 +260,7 @@ namespace Alis.Core.Ecs.Redifinition
         }
 
 
+        // catch bugs with Unsafe.SkipInit
         /// <summary>
         ///     Poisons the item
         /// </summary>

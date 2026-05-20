@@ -66,9 +66,9 @@ namespace Alis.Core.Ecs.Updating
         ///     Trims the index
         /// </summary>
         /// <param name="index">The index</param>
-        internal override void Trim(int chunkIndex)
+        internal override void Trim(int index)
         {
-            Resize((int) BitOperations.RoundUpToPowerOf2((uint) chunkIndex));
+            Resize((int) BitOperations.RoundUpToPowerOf2((uint) index));
         }
 
         /// <summary>
@@ -104,9 +104,9 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="action">The action</param>
         /// <param name="e">The </param>
         /// <param name="index">The index</param>
-        internal override void InvokeGenericActionWith(GenericEvent action, GameObject gameObject, int index)
+        internal override void InvokeGenericActionWith(GenericEvent action, GameObject e, int index)
         {
-            action?.Invoke(gameObject, ref this[index]);
+            action?.Invoke(e, ref this[index]);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="other">The other</param>
         /// <param name="otherRemoveIndex">The other remove index</param>
         internal override void PullComponentFromAndClear(ComponentStorageBase otherRunner, int me, int other,
-            int otherRemove)
+            int otherRemoveIndex)
         {
             ComponentStorage<TComponent> componentRunner =
                 Unsafe.As<ComponentStorage<TComponent>>(otherRunner);
@@ -136,7 +136,7 @@ namespace Alis.Core.Ecs.Updating
             ref TComponent item = ref componentRunner[other];
             this[me] = item;
 
-            ref TComponent downItem = ref componentRunner[otherRemove];
+            ref TComponent downItem = ref componentRunner[otherRemoveIndex];
             item = downItem;
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -166,11 +166,11 @@ namespace Alis.Core.Ecs.Updating
         ///     Deletes the data
         /// </summary>
         /// <param name="data">The data</param>
-        internal override void Delete(DeleteComponentData deleteComponentData)
+        internal override void Delete(DeleteComponentData data)
         {
-            ref TComponent from = ref this[deleteComponentData.FromIndex];
+            ref TComponent from = ref this[data.FromIndex];
             Component<TComponent>.Destroyer?.Invoke(ref from);
-            this[deleteComponentData.ToIndex] = from;
+            this[data.ToIndex] = from;
 
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
@@ -184,9 +184,9 @@ namespace Alis.Core.Ecs.Updating
         /// </summary>
         /// <param name="componentIndex">The component index</param>
         /// <returns>The component handle</returns>
-        internal override ComponentHandle Store(int index)
+        internal override ComponentHandle Store(int componentIndex)
         {
-            ref TComponent item = ref this[index];
+            ref TComponent item = ref this[componentIndex];
 
             //we can't just copy to stack and run the destroyer on it
             //it is stored
@@ -223,5 +223,12 @@ namespace Alis.Core.Ecs.Updating
         /// </summary>
         /// <returns>La referencia al componente</returns>
         public ref TComponent GetComponentStorageDataReference() => ref TypedBuffer[0];
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+        }
     }
 }

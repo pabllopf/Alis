@@ -179,7 +179,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -191,7 +191,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -203,7 +203,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -215,7 +215,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -227,7 +227,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -239,7 +239,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -251,7 +251,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -263,7 +263,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -275,7 +275,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -287,7 +287,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -299,7 +299,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -311,7 +311,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -323,7 +323,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -335,7 +335,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -347,7 +347,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
@@ -359,7 +359,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The lookup
         /// </summary>
-#pragma warning disable CA1000, S2223
+#pragma warning disable CA1000
         // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
