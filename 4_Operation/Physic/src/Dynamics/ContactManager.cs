@@ -360,7 +360,7 @@ namespace Alis.Core.Physic.Dynamics
             ContactCount--;
         }
 
-        private void RemoveContactFromBody(Contact contact, Body body)
+        private static void RemoveContactFromBody(Contact contact, Body body)
         {
             if (contact.NodeA == body.ContactList)
             {
