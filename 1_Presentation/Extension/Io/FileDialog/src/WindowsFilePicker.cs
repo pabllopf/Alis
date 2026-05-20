@@ -92,7 +92,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
                 string script = BuildOpenFileScript(options);
                 string result = ExecuteScript(script);
 
-                return ParseResult(result, options, false);
+                return ParseResult(result, false);
             }
             catch (Exception ex)
             {
@@ -123,7 +123,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
                 string script = BuildOpenFileScript(options);
                 string result = ExecuteScript(script);
 
-                return ParseResult(result, options, true);
+                return ParseResult(result, true);
             }
             catch (Exception ex)
             {
@@ -152,7 +152,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
                 string script = BuildFolderSelectScript(options);
                 string result = ExecuteScript(script);
 
-                return ParseResult(result, options, false);
+                return ParseResult(result, false);
             }
             catch (Exception ex)
             {
@@ -258,7 +258,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Parses the dialog result.
         /// </summary>
-        private static FilePickerResult ParseResult(string output, FilePickerOptions options, bool allowMultiple)
+        private static FilePickerResult ParseResult(string output, bool allowMultiple)
         {
             Logger.Trace($"Parsing result from dialog output: {output ?? "(null)"}");
 
