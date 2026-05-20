@@ -1,11 +1,9 @@
 {
   "projectKey": "pabllopf-official_alis",
-  "status": "running",
-  "lastProcessedIssueKey": "AZ4_zYfeFW163agrspik",
-  "currentIssueKey": "AZ4_zYlXFW163agrspil",
-  "processedCount": 5,
-  "remainingCount": 1553,
-  "lastUpdated": "2026-05-20T12:56:44Z",
-  "current_issue_index": 0,
-  "total_issues": 3420
+  "status": "idle",
+  "lastProcessedIssueKey": null,
+  "currentIssueKey": null,
+  "processedCount": 0,
+  "remainingCount": 4545,
+  "lastUpdated": "2026-05-20T14:11:20.112283Z"
 }
