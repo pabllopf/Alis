@@ -154,7 +154,7 @@
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Test[^*]*', ''))</NameTest>
     </PropertyGroup>
 
-   <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
+   <ItemGroup Condition="$(AssemblyName.Contains('Test')) AND $(NameTest.StartsWith('Alis'))">
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)../src/$(NameTest).csproj"/>
