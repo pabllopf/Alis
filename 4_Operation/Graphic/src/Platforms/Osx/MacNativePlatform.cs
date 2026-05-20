@@ -563,9 +563,6 @@ namespace Alis.Core.Graphic.Platforms.Osx
             // Obtener la posición global del mouse
             CGPoint mouseLocation = GetMouseLocation();
 
-            // Si tienes acceso a la ventana, deberías convertir a coordenadas relativas a la ventana aquí
-            // Por ejemplo: mouseLocation = ConvertirAGlobal(mouseLocation);
-
             x = (int) mouseLocation.X;
             y = (int) mouseLocation.Y;
             buttons = (bool[]) mouseButtons.Clone();

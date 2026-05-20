@@ -136,13 +136,11 @@ namespace Alis.Core.Physic.Collisions
                     return 0.0f;
                 }
 
-                //TreeNode<T>* root = &_nodes[_root];
                 float rootArea = _nodes[_root].Aabb.Perimeter;
 
                 float totalArea = 0.0f;
                 for (int i = 0; i < _nodeCapacity; ++i)
                 {
-                    //TreeNode<T>* node = &_nodes[i];
                     if (_nodes[i].Height < 0)
                     {
                         // Free node in pool
@@ -167,7 +165,6 @@ namespace Alis.Core.Physic.Collisions
                 int maxBalance = 0;
                 for (int i = 0; i < _nodeCapacity; ++i)
                 {
-                    //TreeNode<T>* node = &_nodes[i];
                     if (_nodes[i].Height <= 1)
                     {
                         continue;
@@ -327,8 +324,6 @@ namespace Alis.Core.Physic.Collisions
                 {
                     continue;
                 }
-
-                //TreeNode<T>* node = &_nodes[nodeId];
 
                 if (Aabb.TestOverlap(ref _nodes[nodeId].Aabb, ref aabb))
                 {
@@ -630,8 +625,6 @@ namespace Alis.Core.Physic.Collisions
 
                 index = _nodes[index].Parent;
             }
-
-            //Validate();
         }
 
         /// <summary>
@@ -705,7 +698,6 @@ namespace Alis.Core.Physic.Collisions
         /// <returns>the new root index.</returns>
         private int Balance(int iN)
         {
-            //TreeNode<T>* N = &_nodes[iN];
             if (_nodes[iN].IsLeaf() || _nodes[iN].Height < 2)
             {
                 return iN;
@@ -713,8 +705,6 @@ namespace Alis.Core.Physic.Collisions
 
             int iA = _nodes[iN].Child1;
             int iB = _nodes[iN].Child2;
-            //TreeNode<T>* A = &_nodes[iA];
-            //TreeNode<T>* B = &_nodes[iB];
 
             int balance = _nodes[iB].Height - _nodes[iA].Height;
 
@@ -724,9 +714,6 @@ namespace Alis.Core.Physic.Collisions
                 int iP = _nodes[iN].Parent;
                 int iBa = _nodes[iB].Child1;
                 int iBb = _nodes[iB].Child2;
-                //TreeNode<T>* P  = &_nodes[iN->Parent];
-                //TreeNode<T>* BA = &_nodes[iBA];
-                //TreeNode<T>* BB = &_nodes[iBB];
                 // Swap N and B
                 _nodes[iB].Child1 = iN;
                 _nodes[iB].Parent = _nodes[iN].Parent;
@@ -782,9 +769,6 @@ namespace Alis.Core.Physic.Collisions
                 int iP = _nodes[iN].Parent;
                 int iAa = _nodes[iA].Child1;
                 int iAb = _nodes[iA].Child2;
-                //TreeNode<T>* P  = &_nodes[iN->Parent];
-                //TreeNode<T>* AA = &_nodes[iAA];
-                //TreeNode<T>* AB = &_nodes[iAB];
                 // Swap N and A
                 _nodes[iA].Child1 = iN;
                 _nodes[iA].Parent = _nodes[iN].Parent;
@@ -844,8 +828,6 @@ namespace Alis.Core.Physic.Collisions
         /// <returns>The height of the tree.</returns>
         public int ComputeHeight(int nodeId)
         {
-            //TreeNode<T>* node = &_nodes[nodeId];
-
             if (_nodes[nodeId].IsLeaf())
             {
                 return 0;

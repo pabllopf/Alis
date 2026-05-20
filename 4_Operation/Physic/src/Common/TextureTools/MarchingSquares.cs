@@ -245,8 +245,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                         bi = bi.NextPos();
                     }
 
-                    //NOTE: Unused
-                    //Vector2F b0 = bi.elem();
                     Vector2F b1 = bi.NextPos().GetElem();
                     if (Square(b1.Y - ay) > SettingEnv.Epsilon)
                     {
@@ -291,8 +289,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                         u.GeomP.Length++;
                     }
 
-                    //u.p.simplify(float.Epsilon,float.Epsilon);
-                    //
                     ax = x + 1;
                     while (ax < xn)
                     {
@@ -548,9 +544,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                         b = bi.NextPos().GetElem();
 
                         Vector2F u = a - a0;
-                        //vec_new(u); vec_sub(a.p.p, a0.p.p, u);
                         Vector2F v = b - a;
-                        //vec_new(v); vec_sub(b.p.p, a.p.p, v);
                         float dot = VecCross(u, v);
                         if (dot * dot < SettingEnv.Epsilon)
                         {
@@ -591,9 +585,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     {
                         Vector2F a00 = preb.GetElem();
                         Vector2F uu = a1 - a00;
-                        //vec_new(u); vec_sub(a1.p, a0.p, u);
                         Vector2F vv = a2 - a1;
-                        //vec_new(v); vec_sub(a2.p, a1.p, v);
                         float dot1 = VecCross(uu, vv);
                         if (dot1 * dot1 < SettingEnv.Epsilon)
                         {

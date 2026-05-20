@@ -455,12 +455,6 @@ namespace Alis.Core.Graphic.Ui
                     continue;
                 }
 
-                // Coordenadas de textura (UV)
-                /*float u0 = (float)srcRect.X / Size.X;
-                float v0 = (float)srcRect.Y / Size.Y;
-                float u1 = (float)(srcRect.X + srcRect.W) / Size.X;
-                float v1 = (float)(srcRect.Y + srcRect.H) / Size.Y;*/
-
                 int posXx = srcRect.X;
                 int posYy = srcRect.Y;
 

@@ -122,27 +122,27 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 //Pop front until convex
                 while (!(MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0))
                 {
-                    //Pop the front element from the queue
-                    qf = qfm1; //qf--;
-                    qfm1 = qf == 0 ? deque.Length - 1 : qf - 1; //qfm1 = qf - 1;
+                    //Pop the back element from the queue
+                    qf = qfm1;
+                    qfm1 = qf == 0 ? deque.Length - 1 : qf - 1;
                 }
 
                 //Add vertex to the front of the queue
-                qf = qf == deque.Length - 1 ? 0 : qf + 1; //qf++;
-                qfm1 = qf == 0 ? deque.Length - 1 : qf - 1; //qfm1 = qf - 1;
+                qf = qf == deque.Length - 1 ? 0 : qf + 1;
+                qfm1 = qf == 0 ? deque.Length - 1 : qf - 1;
                 deque[qf] = nextPt;
 
                 //Pop back until convex
                 while (!(MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0))
                 {
                     //Pop the back element from the queue
-                    qb = qbm1; //qb++;
-                    qbm1 = qb == deque.Length - 1 ? 0 : qb + 1; //qbm1 = qb + 1;
+                    qb = qbm1;
+                    qbm1 = qb == deque.Length - 1 ? 0 : qb + 1;
                 }
 
                 //Add vertex to the back of the queue
-                qb = qb == 0 ? deque.Length - 1 : qb - 1; //qb--;
-                qbm1 = qb == deque.Length - 1 ? 0 : qb + 1; //qbm1 = qb + 1;
+                qb = qb == 0 ? deque.Length - 1 : qb - 1;
+                qbm1 = qb == deque.Length - 1 ? 0 : qb + 1;
                 deque[qb] = nextPt;
             }
 

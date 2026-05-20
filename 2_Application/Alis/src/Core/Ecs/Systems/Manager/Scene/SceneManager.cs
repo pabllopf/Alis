@@ -210,24 +210,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         public override void OnSave()
         {
-            /*
-            Logger.Info($"Saving scene: {CurrentWorld.EntityCount}");
-
-            string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Game");
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-
-            string fileWorld = Path.Combine(directory, "CurrentWorld.json");
-            File.WriteAllText(fileWorld, JsonSerializer.Serialize(CurrentWorld, new JsonOptions
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            }));
-
-            Logger.Info($"Scene saved to: {fileWorld}");
-*/
+            // Serialization logic disabled - to be implemented
         }
 
         /// <summary>
