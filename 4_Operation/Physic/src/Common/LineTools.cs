@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Common
 
             if (!((denom >= -SettingEnv.Epsilon) && (denom <= SettingEnv.Epsilon)))
             {
-                return TryCalculateIntersection(ref point1, ref point2, ref point3, a, b, c, d, denom, firstIsSegment, secondIsSegment, out point);
+                return TryCalculateIntersection(ref point1, ref point3, a, b, c, d, denom, firstIsSegment, secondIsSegment, out point);
             }
 
             return false;
@@ -277,7 +277,7 @@ namespace Alis.Core.Physic.Common
         /// <returns>True if an intersection is detected, false otherwise.</returns>
         public static bool LineIntersect(Vector2F point1, Vector2F point2, Vector2F point3, Vector2F point4, out Vector2F intersectionPoint) => LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true, out intersectionPoint);
 
-        private static bool TryCalculateIntersection(ref Vector2F point1, ref Vector2F point2, ref Vector2F point3, float a, float b, float c, float d, float denom, bool firstIsSegment, bool secondIsSegment, out Vector2F point)
+        private static bool TryCalculateIntersection(ref Vector2F point1, ref Vector2F point3, float a, float b, float c, float d, float denom, bool firstIsSegment, bool secondIsSegment, out Vector2F point)
         {
             point = new Vector2F();
 
