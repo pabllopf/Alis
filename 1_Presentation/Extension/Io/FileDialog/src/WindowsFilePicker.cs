@@ -164,7 +164,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Builds the PowerShell script for opening a file.
         /// </summary>
-        private string BuildOpenFileScript(FilePickerOptions options)
+        private static string BuildOpenFileScript(FilePickerOptions options)
         {
             Logger.Trace("Building OpenFile PowerShell script.");
 
