@@ -1,0 +1,4877 @@
+{
+  "total": 4394,
+  "p": 1,
+  "ps": 100,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 100,
+    "total": 4394
+  },
+  "effortTotal": 27414,
+  "debtTotal": 27414,
+  "issues": [
+    {
+      "key": "AZ4_zYlXFW163agrspil",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
+      "project": "pabllopf-official_alis",
+      "line": 204,
+      "hash": "2e77a7b0f5aa3ebad26c104a227d48f5",
+      "textRange": {
+        "startLine": 204,
+        "endLine": 204,
+        "startOffset": 23,
+        "endOffset": 47
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Make 'BuildFileDialogArguments' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "raul.lozano.ponce@hotmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-19T10:33:30+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4_zYlXFW163agrspim",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
+      "project": "pabllopf-official_alis",
+      "line": 278,
+      "hash": "74771da12ccb872c08dd39284bcdad92",
+      "textRange": {
+        "startLine": 278,
+        "endLine": 278,
+        "startOffset": 23,
+        "endOffset": 49
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Make 'BuildFolderDialogArguments' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "raul.lozano.ponce@hotmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-19T10:33:30+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4_zYnGFW163agrspin",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
+      "project": "pabllopf-official_alis",
+      "line": 139,
+      "hash": "81889c9317b0d21ecb8b09fae211c931",
+      "textRange": {
+        "startLine": 139,
+        "endLine": 139,
+        "startOffset": 23,
+        "endOffset": 42
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Make 'BuildOpenFileScript' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "raul.lozano.ponce@hotmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-19T10:33:30+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4_zYnGFW163agrspio",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
+      "project": "pabllopf-official_alis",
+      "line": 185,
+      "hash": "b14670da02eae3e08ea57c5c379bd6db",
+      "textRange": {
+        "startLine": 185,
+        "endLine": 185,
+        "startOffset": 23,
+        "endOffset": 46
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Make 'BuildFolderSelectScript' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "raul.lozano.ponce@hotmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-19T10:33:30+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4_zYfeFW163agrspik",
+      "rule": "csharpsquid:S6588",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkPlayer.cs",
+      "project": "pabllopf-official_alis",
+      "line": 90,
+      "hash": "6baa4286879b8f0618ad893269e9883e",
+      "textRange": {
+        "startLine": 90,
+        "endLine": 90,
+        "startOffset": 53,
+        "endOffset": 107
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use \"DateTime.UnixEpoch\" instead of creating DateTime instances that point to the unix epoch time",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-19T10:33:30+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4_zYdTFW163agrspij",
+      "rule": "csharpsquid:S6588",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkSession.cs",
+      "project": "pabllopf-official_alis",
+      "line": 95,
+      "hash": "6baa4286879b8f0618ad893269e9883e",
+      "textRange": {
+        "startLine": 95,
+        "endLine": 95,
+        "startOffset": 53,
+        "endOffset": 107
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use \"DateTime.UnixEpoch\" instead of creating DateTime instances that point to the unix epoch time",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-19T10:33:30+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ465azUbgdyH0emzMpQ",
+      "rule": "csharpsquid:S1135",
+      "severity": "INFO",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "eabf4c33ab41d2b27b56c37b319869f4",
+      "textRange": {
+        "startLine": 54,
+        "endLine": 54,
+        "startOffset": 11,
+        "endOffset": 15
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Complete the task associated to this 'TODO' comment.",
+      "effort": "0min",
+      "debt": "0min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "cwe"
+      ],
+      "creationDate": "2026-05-18T11:41:51+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "INFO"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ465awYbgdyH0emzMpP",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "b7c0f1d5927eadf57330f412a2132f54",
+      "textRange": {
+        "startLine": 423,
+        "endLine": 423,
+        "startOffset": 20,
+        "endOffset": 32
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'IsFullscreen' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-18T11:41:51+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tFqYmJyaFL6eeKuA",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextFilter.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "5c82d11a07be707162d85e4a85320f48",
+      "textRange": {
+        "startLine": 67,
+        "endLine": 67,
+        "startOffset": 24,
+        "endOffset": 31
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tFqYmJyaFL6eeKuB",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextFilter.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "614c926ecd74d1003ef90c1cb5fe8dce",
+      "textRange": {
+        "startLine": 76,
+        "endLine": 76,
+        "startOffset": 19,
+        "endOffset": 28
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tFm_mJyaFL6eeKt9",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImVector.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "52b35d4de61639e21eda2fdb3dd86947",
+      "textRange": {
+        "startLine": 58,
+        "endLine": 58,
+        "startOffset": 19,
+        "endOffset": 23
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tFm_mJyaFL6eeKt-",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImVector.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "7d10c991d77f60e28667e643e74b740a",
+      "textRange": {
+        "startLine": 67,
+        "endLine": 67,
+        "startOffset": 19,
+        "endOffset": 27
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tFm_mJyaFL6eeKt_",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImVector.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "538cc12e9baf22e12d69327e6755db62",
+      "textRange": {
+        "startLine": 76,
+        "endLine": 76,
+        "startOffset": 22,
+        "endOffset": 26
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tGWVmJyaFL6eeKuC",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "76903f42ec0d6c0817d3e160e92258ee",
+      "textRange": {
+        "startLine": 240,
+        "endLine": 240,
+        "startOffset": 44,
+        "endOffset": 60
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'GetSelectedAsset' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tGWVmJyaFL6eeKuD",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "5208d63d5299aaef1ce89d37b00bbba0",
+      "textRange": {
+        "startLine": 604,
+        "endLine": 604,
+        "startOffset": 24,
+        "endOffset": 38
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'GetPackageType' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tFOKmJyaFL6eeKt8",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "749703a1c1824761c7dc3292676bd20c",
+      "textRange": {
+        "startLine": 60,
+        "endLine": 60,
+        "startOffset": 27,
+        "endOffset": 38
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tG5FmJyaFL6eeKuE",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "46715f9e78b52be7ffb3b22077636aad",
+      "textRange": {
+        "startLine": 50,
+        "endLine": 50,
+        "startOffset": 29,
+        "endOffset": 50
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHHemJyaFL6eeKuK",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "c569f8090b96a388d8e52647b4a354c1",
+      "textRange": {
+        "startLine": 375,
+        "endLine": 375,
+        "startOffset": 20,
+        "endOffset": 34
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'VibrateGamepad' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHHemJyaFL6eeKuL",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "d4dbc2c8a3d61253d340447237d4c10e",
+      "textRange": {
+        "startLine": 407,
+        "endLine": 407,
+        "startOffset": 20,
+        "endOffset": 32
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'IsFullscreen' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHHemJyaFL6eeKuM",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "9d09066aef23c04951b1a137c3aac580",
+      "textRange": {
+        "startLine": 415,
+        "endLine": 415,
+        "startOffset": 20,
+        "endOffset": 31
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'LockPointer' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHHemJyaFL6eeKuN",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "3d4c003c398494a16ed29be6f79eaa50",
+      "textRange": {
+        "startLine": 423,
+        "endLine": 423,
+        "startOffset": 20,
+        "endOffset": 33
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'UnlockPointer' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHHemJyaFL6eeKuO",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "61ef5327f57d051739c642fe10be27b1",
+      "textRange": {
+        "startLine": 431,
+        "endLine": 431,
+        "startOffset": 20,
+        "endOffset": 35
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'IsPointerLocked' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHHemJyaFL6eeKuP",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "a1d4e200fade7155b9e89ffce6e504c2",
+      "textRange": {
+        "startLine": 487,
+        "endLine": 487,
+        "startOffset": 22,
+        "endOffset": 39
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'GetDeviceLanguage' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHHemJyaFL6eeKuR",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "61bb0fd8eec643884b46c8d395aa598b",
+      "textRange": {
+        "startLine": 495,
+        "endLine": 495,
+        "startOffset": 21,
+        "endOffset": 36
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'GetBatteryLevel' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHHemJyaFL6eeKuQ",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "4c44597c53b20904ae1efe5951102e14",
+      "textRange": {
+        "startLine": 503,
+        "endLine": 503,
+        "startOffset": 20,
+        "endOffset": 30
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'IsCharging' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHHemJyaFL6eeKuS",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "4724e6bfe7605fa89cf96e9b8d0d27a5",
+      "textRange": {
+        "startLine": 511,
+        "endLine": 511,
+        "startOffset": 20,
+        "endOffset": 28
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'IsOnline' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHHemJyaFL6eeKuT",
+      "rule": "csharpsquid:S2325",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "4dded58a84c86077840b392c535a1a86",
+      "textRange": {
+        "startLine": 519,
+        "endLine": 519,
+        "startOffset": 19,
+        "endOffset": 33
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make 'GetRefreshRate' a static method.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHGpmJyaFL6eeKuH",
+      "rule": "csharpsquid:S1481",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "0462999b480b8b8a47e6b7885f7b17eb",
+      "textRange": {
+        "startLine": 177,
+        "endLine": 177,
+        "startOffset": 26,
+        "endOffset": 42
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove the unused local variable 'devicePixelRatio'.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHGpmJyaFL6eeKuG",
+      "rule": "csharpsquid:S1854",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "c227817674fd068d320cffb9b8cf5c6c",
+      "textRange": {
+        "startLine": 232,
+        "endLine": 232,
+        "startOffset": 24,
+        "endOffset": 69
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove this useless assignment to local variable 'moveX'.",
+      "effort": "1min",
+      "debt": "1min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "cwe",
+        "unused"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHGpmJyaFL6eeKuF",
+      "rule": "csharpsquid:S1854",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "7d219deaf48d53b7fd583dff85894f02",
+      "textRange": {
+        "startLine": 233,
+        "endLine": 233,
+        "startOffset": 24,
+        "endOffset": 69
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove this useless assignment to local variable 'moveY'.",
+      "effort": "1min",
+      "debt": "1min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "cwe",
+        "unused"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHGpmJyaFL6eeKuJ",
+      "rule": "csharpsquid:S1854",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "c227817674fd068d320cffb9b8cf5c6c",
+      "textRange": {
+        "startLine": 535,
+        "endLine": 535,
+        "startOffset": 24,
+        "endOffset": 69
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove this useless assignment to local variable 'moveX'.",
+      "effort": "1min",
+      "debt": "1min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "cwe",
+        "unused"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43tHGpmJyaFL6eeKuI",
+      "rule": "csharpsquid:S1854",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "7d219deaf48d53b7fd583dff85894f02",
+      "textRange": {
+        "startLine": 536,
+        "endLine": 536,
+        "startOffset": 24,
+        "endOffset": 69
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove this useless assignment to local variable 'moveY'.",
+      "effort": "1min",
+      "debt": "1min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "cwe",
+        "unused"
+      ],
+      "creationDate": "2026-05-17T20:49:11+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTQXwWSCt-IKw_h7",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/ImgAnimation.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "dfd0f256e3d5837dec457c0c5140aa2e",
+      "textRange": {
+        "startLine": 62,
+        "endLine": 62,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTQXwWSCt-IKw_h8",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/ImgAnimation.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "e5fcb0615742b2d85941b2d33e376d6d",
+      "textRange": {
+        "startLine": 71,
+        "endLine": 71,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTQXwWSCt-IKw_h9",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/ImgAnimation.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "eb7d618e457972f1b8c3eb563a65e769",
+      "textRange": {
+        "startLine": 80,
+        "endLine": 80,
+        "startOffset": 22,
+        "endOffset": 28
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTQXwWSCt-IKw_h-",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/ImgAnimation.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "8fdf90cadc9505de26db4badedb7a8cf",
+      "textRange": {
+        "startLine": 89,
+        "endLine": 89,
+        "startOffset": 22,
+        "endOffset": 28
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTKTwWSCt-IKw_h6",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "a18035c3db06ab862d8c036ea5ab4b44",
+      "textRange": {
+        "startLine": 336,
+        "endLine": 336,
+        "startOffset": 26,
+        "endOffset": 32
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTKDwWSCt-IKw_h2",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "84ef299e0c5eea170de1bc60f88d3616",
+      "textRange": {
+        "startLine": 128,
+        "endLine": 128,
+        "startOffset": 25,
+        "endOffset": 34
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTKDwWSCt-IKw_h3",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "10afa3bdd4fd1ce600eab448c60cf80d",
+      "textRange": {
+        "startLine": 137,
+        "endLine": 137,
+        "startOffset": 25,
+        "endOffset": 34
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTKDwWSCt-IKw_h4",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "f2ccaec3a7862f5bec85093ef3ddf848",
+      "textRange": {
+        "startLine": 146,
+        "endLine": 146,
+        "startOffset": 23,
+        "endOffset": 30
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTKDwWSCt-IKw_h5",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "6d482787bed9ab57a41588338237809a",
+      "textRange": {
+        "startLine": 155,
+        "endLine": 155,
+        "startOffset": 22,
+        "endOffset": 28
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTGkwWSCt-IKw_hf",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "89be475a3022db360808ce64cc27048e",
+      "textRange": {
+        "startLine": 48,
+        "endLine": 48,
+        "startOffset": 20,
+        "endOffset": 26
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTGlwWSCt-IKw_hg",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "285cec76743dfaf0881a626bfe51200c",
+      "textRange": {
+        "startLine": 57,
+        "endLine": 57,
+        "startOffset": 20,
+        "endOffset": 30
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTITwWSCt-IKw_h0",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickConnectEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "285cec76743dfaf0881a626bfe51200c",
+      "textRange": {
+        "startLine": 45,
+        "endLine": 45,
+        "startOffset": 20,
+        "endOffset": 30
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTFWwWSCt-IKw_hX",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickMoveEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "9c3f1b56f2af80e20ec6b398f332b6eb",
+      "textRange": {
+        "startLine": 51,
+        "endLine": 51,
+        "startOffset": 29,
+        "endOffset": 33
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTFWwWSCt-IKw_hY",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickMoveEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "285cec76743dfaf0881a626bfe51200c",
+      "textRange": {
+        "startLine": 60,
+        "endLine": 60,
+        "startOffset": 20,
+        "endOffset": 30
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTFWwWSCt-IKw_hZ",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickMoveEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "c90b22bbbce70edaf6295f532eba159f",
+      "textRange": {
+        "startLine": 69,
+        "endLine": 69,
+        "startOffset": 21,
+        "endOffset": 29
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTHCwWSCt-IKw_hk",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "e1ae7936b18e2fd908f810a19a93e2be",
+      "textRange": {
+        "startLine": 57,
+        "endLine": 57,
+        "startOffset": 20,
+        "endOffset": 23
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTHCwWSCt-IKw_hl",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "de31ed805c0b1aac2e31523dc44bccea",
+      "textRange": {
+        "startLine": 66,
+        "endLine": 66,
+        "startOffset": 28,
+        "endOffset": 32
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTHCwWSCt-IKw_hm",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "d98e4f44cec5e03156e90216df1e398c",
+      "textRange": {
+        "startLine": 75,
+        "endLine": 75,
+        "startOffset": 20,
+        "endOffset": 27
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTHCwWSCt-IKw_hn",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "77d2a3a373e35ea20f1f22eba02c4880",
+      "textRange": {
+        "startLine": 84,
+        "endLine": 84,
+        "startOffset": 20,
+        "endOffset": 25
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTHCwWSCt-IKw_ho",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "7f5ea4fa7c107dee23790ce569c9c7fe",
+      "textRange": {
+        "startLine": 93,
+        "endLine": 93,
+        "startOffset": 20,
+        "endOffset": 26
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTFtwWSCt-IKw_ha",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseButtonEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "c66c791347e82fafbe42fa4f5cec6162",
+      "textRange": {
+        "startLine": 51,
+        "endLine": 51,
+        "startOffset": 28,
+        "endOffset": 34
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTFtwWSCt-IKw_hb",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseButtonEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "3b5ff8a59d8b6bab9477c1eb3080221f",
+      "textRange": {
+        "startLine": 60,
+        "endLine": 60,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTFtwWSCt-IKw_hc",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseButtonEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "dd7c3ba5a629bc2c2f354197550eb48a",
+      "textRange": {
+        "startLine": 69,
+        "endLine": 69,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTGWwWSCt-IKw_hd",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "3b5ff8a59d8b6bab9477c1eb3080221f",
+      "textRange": {
+        "startLine": 48,
+        "endLine": 48,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTGWwWSCt-IKw_he",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "dd7c3ba5a629bc2c2f354197550eb48a",
+      "textRange": {
+        "startLine": 57,
+        "endLine": 57,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTIDwWSCt-IKw_hx",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "182cf295b677766abf064d46b807eb2c",
+      "textRange": {
+        "startLine": 51,
+        "endLine": 51,
+        "startOffset": 19,
+        "endOffset": 24
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTIDwWSCt-IKw_hz",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "3b5ff8a59d8b6bab9477c1eb3080221f",
+      "textRange": {
+        "startLine": 60,
+        "endLine": 60,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTIDwWSCt-IKw_hy",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "dd7c3ba5a629bc2c2f354197550eb48a",
+      "textRange": {
+        "startLine": 69,
+        "endLine": 69,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTH1wWSCt-IKw_ht",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "d8a2f0f78329b9403d777c30d5518ed6",
+      "textRange": {
+        "startLine": 54,
+        "endLine": 54,
+        "startOffset": 21,
+        "endOffset": 26
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTH1wWSCt-IKw_hu",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "fe6c6d315f28cb35ce2ab4f45269d9e6",
+      "textRange": {
+        "startLine": 63,
+        "endLine": 63,
+        "startOffset": 27,
+        "endOffset": 32
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTH1wWSCt-IKw_hv",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "3b5ff8a59d8b6bab9477c1eb3080221f",
+      "textRange": {
+        "startLine": 72,
+        "endLine": 72,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTH1wWSCt-IKw_hw",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "dd7c3ba5a629bc2c2f354197550eb48a",
+      "textRange": {
+        "startLine": 81,
+        "endLine": 81,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTHdwWSCt-IKw_hp",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "e2d7835710a52d1ce782df4e724ca02a",
+      "textRange": {
+        "startLine": 54,
+        "endLine": 54,
+        "startOffset": 27,
+        "endOffset": 31
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTHdwWSCt-IKw_hq",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "abc055ca22db30dc281c747e64f6f272",
+      "textRange": {
+        "startLine": 63,
+        "endLine": 63,
+        "startOffset": 21,
+        "endOffset": 22
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTHdwWSCt-IKw_hr",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "9dbe1fb1089b7ebfa97641d987cb4776",
+      "textRange": {
+        "startLine": 72,
+        "endLine": 72,
+        "startOffset": 21,
+        "endOffset": 22
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTHdwWSCt-IKw_hs",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "a6f1a5ec1606e0179d644e19d6973c32",
+      "textRange": {
+        "startLine": 81,
+        "endLine": 81,
+        "startOffset": 21,
+        "endOffset": 22
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTFJwWSCt-IKw_hV",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "018c1c786494f243f0d4b74ad12e60be",
+      "textRange": {
+        "startLine": 48,
+        "endLine": 48,
+        "startOffset": 20,
+        "endOffset": 26
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTFJwWSCt-IKw_hW",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "f69f268603ba6fddb14e3ba6946ab558",
+      "textRange": {
+        "startLine": 57,
+        "endLine": 57,
+        "startOffset": 20,
+        "endOffset": 25
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTIfwWSCt-IKw_h1",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TextEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "c814c07b1a100cd856065be2789ed061",
+      "textRange": {
+        "startLine": 45,
+        "endLine": 45,
+        "startOffset": 22,
+        "endOffset": 29
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTG0wWSCt-IKw_hh",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TouchEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "4cd69055a88c4828a8b9733825481262",
+      "textRange": {
+        "startLine": 51,
+        "endLine": 51,
+        "startOffset": 20,
+        "endOffset": 26
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTG0wWSCt-IKw_hi",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TouchEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "3b5ff8a59d8b6bab9477c1eb3080221f",
+      "textRange": {
+        "startLine": 60,
+        "endLine": 60,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gTG0wWSCt-IKw_hj",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TouchEventArgs.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "dd7c3ba5a629bc2c2f354197550eb48a",
+      "textRange": {
+        "startLine": 69,
+        "endLine": 69,
+        "startOffset": 19,
+        "endOffset": 20
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gS8EwWSCt-IKw_hU",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesStyle.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "b4b9c18e9cd84e83872e0bfd9d820f23",
+      "textRange": {
+        "startLine": 127,
+        "endLine": 127,
+        "startOffset": 22,
+        "endOffset": 28
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gS5gwWSCt-IKw_hS",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/LinkDetachWithModifierClick.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "d2fb56f2f943e77704664e1dc4ba6868",
+      "textRange": {
+        "startLine": 45,
+        "endLine": 45,
+        "startOffset": 22,
+        "endOffset": 30
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43gS7WwWSCt-IKw_hT",
+      "rule": "csharpsquid:S2292",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/MultipleSelectModifier.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "d2fb56f2f943e77704664e1dc4ba6868",
+      "textRange": {
+        "startLine": 45,
+        "endLine": 45,
+        "startOffset": 22,
+        "endOffset": 30
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this an auto-implemented property and remove its backing field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T19:52:37+0000",
+      "updateDate": "2026-05-18T11:41:51+0000",
+      "closeDate": "2026-05-18T11:41:51+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbb31d73-977a-43dc-9e14-a478f5ccc54d",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43R1s3brWrxHmeyzKq",
+      "rule": "csharpsquid:S1066",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "22ea5259bf7c702a7aa1d7cf830a143b",
+      "textRange": {
+        "startLine": 459,
+        "endLine": 459,
+        "startOffset": 16,
+        "endOffset": 18
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs",
+              "textRange": {
+                "startLine": 457,
+                "endLine": 457,
+                "startOffset": 12,
+                "endOffset": 14
+              },
+              "msg": "Merge this if statement with its nested one."
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Merge this if statement with the enclosing one.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T18:41:52+0000",
+      "updateDate": "2026-05-17T20:49:11+0000",
+      "closeDate": "2026-05-17T20:49:11+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "50c7e939-9c23-423f-b3bd-b52b1d7efb84",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43R1qjbrWrxHmeyzKp",
+      "rule": "csharpsquid:S1066",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "402c3d3febd51aa676391e9452909fd1",
+      "textRange": {
+        "startLine": 318,
+        "endLine": 318,
+        "startOffset": 16,
+        "endOffset": 18
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
+              "textRange": {
+                "startLine": 316,
+                "endLine": 316,
+                "startOffset": 12,
+                "endOffset": 14
+              },
+              "msg": "Merge this if statement with its nested one."
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Merge this if statement with the enclosing one.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T18:37:06+0000",
+      "updateDate": "2026-05-17T20:49:11+0000",
+      "closeDate": "2026-05-17T20:49:11+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "50c7e939-9c23-423f-b3bd-b52b1d7efb84",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43MKAZbrWrxHmex9Ed",
+      "rule": "csharpsquid:S1144",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "aa816ad5a93a3d91dc12147c9202a5de",
+      "textRange": {
+        "startLine": 138,
+        "endLine": 138,
+        "startOffset": 16,
+        "endOffset": 21
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove the unused private constructor 'Image'.",
+      "effort": "2min",
+      "debt": "2min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-05-17T18:24:59+0000",
+      "updateDate": "2026-05-17T20:49:11+0000",
+      "closeDate": "2026-05-17T20:49:11+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "50c7e939-9c23-423f-b3bd-b52b1d7efb84",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43MKgobrWrxHmex9Eh",
+      "rule": "csharpsquid:S3776",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "c831c258f473c6152cdf831a17d5d671",
+      "textRange": {
+        "startLine": 792,
+        "endLine": 792,
+        "startOffset": 22,
+        "endOffset": 32
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+              "textRange": {
+                "startLine": 804,
+                "endLine": 804,
+                "startOffset": 16,
+                "endOffset": 23
+              },
+              "msg": "+1"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+              "textRange": {
+                "startLine": 808,
+                "endLine": 808,
+                "startOffset": 20,
+                "endOffset": 22
+              },
+              "msg": "+2 (incl 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+              "textRange": {
+                "startLine": 815,
+                "endLine": 815,
+                "startOffset": 20,
+                "endOffset": 22
+              },
+              "msg": "+2 (incl 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+              "textRange": {
+                "startLine": 827,
+                "endLine": 827,
+                "startOffset": 24,
+                "endOffset": 29
+              },
+              "msg": "+2 (incl 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+              "textRange": {
+                "startLine": 833,
+                "endLine": 833,
+                "startOffset": 32,
+                "endOffset": 33
+              },
+              "msg": "+3 (incl 2 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+              "textRange": {
+                "startLine": 836,
+                "endLine": 836,
+                "startOffset": 28,
+                "endOffset": 30
+              },
+              "msg": "+3 (incl 2 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+              "textRange": {
+                "startLine": 842,
+                "endLine": 842,
+                "startOffset": 24,
+                "endOffset": 26
+              },
+              "msg": "+2 (incl 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+              "textRange": {
+                "startLine": 849,
+                "endLine": 849,
+                "startOffset": 20,
+                "endOffset": 22
+              },
+              "msg": "+2 (incl 1 for nesting)"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+              "textRange": {
+                "startLine": 854,
+                "endLine": 854,
+                "startOffset": 20,
+                "endOffset": 24
+              },
+              "msg": "+1"
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Refactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.",
+      "effort": "6min",
+      "debt": "6min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-05-17T18:24:59+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43MKtKbrWrxHmex9Ek",
+      "rule": "csharpsquid:S1066",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBody.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "ecfb2b43930062d47b2c29fab5836551",
+      "textRange": {
+        "startLine": 192,
+        "endLine": 192,
+        "startOffset": 20,
+        "endOffset": 22
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBody.cs",
+              "textRange": {
+                "startLine": 190,
+                "endLine": 190,
+                "startOffset": 12,
+                "endOffset": 14
+              },
+              "msg": "Merge this if statement with its nested one."
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Merge this if statement with the enclosing one.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "clumsy"
+      ],
+      "creationDate": "2026-05-17T18:24:59+0000",
+      "updateDate": "2026-05-19T10:33:30+0000",
+      "closeDate": "2026-05-19T10:33:30+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ43MKgobrWrxHmex9Ej",
+      "rule": "external_roslyn:CA5389",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "fd0013facb27aea1ebdc7b9cb6c12427",
+      "textRange": {
+        "startLine": 832,
+        "endLine": 832,
+        "startOffset": 24,
+        "endOffset": 77
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+              "textRange": {
+                "startLine": 821,
+                "endLine": 821,
+                "startOffset": 75,
+                "endOffset": 89
+              }
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "When creating path for 'void ZipFileExtensions.ExtractToFile(ZipArchiveEntry source, string destinationFileName, bool overwrite) in method void UpdateManager.ExtractZip(string fileAsync)' from relative archive item path to extract file and the source is an untrusted zip archive, make sure to sanitize relative archive item path 'string ZipArchiveEntry.FullName in method void UpdateManager.ExtractZip(string fileAsync)'",
+      "effort": "0min",
+      "debt": "0min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-17T16:55:30+0000",
+      "updateDate": "2026-05-17T18:50:14+0000",
+      "closeDate": "2026-05-17T18:50:14+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "externalRuleEngine": "roslyn",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "9d229f30-076c-49b2-aeca-399a6ff94748",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4mIhelhUm3UEh_U6SL",
+      "rule": "csharpsquid:S1481",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "5d78a549073574a49566d70ca1f6350b",
+      "textRange": {
+        "startLine": 112,
+        "endLine": 112,
+        "startOffset": 34,
+        "endOffset": 44
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove the unused local variable 'leftStickX'.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-05-14T10:55:38+0000",
+      "updateDate": "2026-05-16T14:23:04+0000",
+      "closeDate": "2026-05-16T14:23:04+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbca26aa-a87d-4e03-b4bb-3cb5a9d6ce0e",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4mIhelhUm3UEh_U6SM",
+      "rule": "csharpsquid:S1481",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "0462999b480b8b8a47e6b7885f7b17eb",
+      "textRange": {
+        "startLine": 190,
+        "endLine": 190,
+        "startOffset": 26,
+        "endOffset": 42
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove the unused local variable 'devicePixelRatio'.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-05-14T10:55:38+0000",
+      "updateDate": "2026-05-16T14:23:04+0000",
+      "closeDate": "2026-05-16T14:23:04+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbca26aa-a87d-4e03-b4bb-3cb5a9d6ce0e",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4mIhiihUm3UEh_U6SN",
+      "rule": "csharpsquid:S1481",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "fc5a33adfbbbac4e2e7fb862a454d30a",
+      "textRange": {
+        "startLine": 188,
+        "endLine": 188,
+        "startOffset": 71,
+        "endOffset": 78
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove the unused local variable 'buttons'.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-05-14T10:55:38+0000",
+      "updateDate": "2026-05-16T14:23:04+0000",
+      "closeDate": "2026-05-16T14:23:04+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "cbca26aa-a87d-4e03-b4bb-3cb5a9d6ce0e",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKH2fGwM4KE86fxN",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/Systems/Query.cs",
+      "project": "pabllopf-official_alis",
+      "line": 313,
+      "hash": "a020ab921a07434d50fb882b99153bb4",
+      "textRange": {
+        "startLine": 313,
+        "endLine": 313,
+        "startOffset": 59,
+        "endOffset": 80
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'Query.EnumerateWithEntities' method to no more than the 3 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-05-13T13:14:24+0000",
+      "updateDate": "2026-05-13T14:39:39+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "eb7f1b10-ed1e-47ef-a377-624e9cedc3fd",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fxO",
+      "rule": "csharpsquid:S4200",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "d50e4f6f66d0d0c02f91eb4d410b1827",
+      "textRange": {
+        "startLine": 53,
+        "endLine": 53,
+        "startOffset": 34,
+        "endOffset": 59
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this native method private and provide a wrapper.",
+      "effort": "30min",
+      "debt": "30min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T20:49:11+0000",
+      "closeDate": "2026-05-17T20:49:11+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "50c7e939-9c23-423f-b3bd-b52b1d7efb84",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fxy",
+      "rule": "external_roslyn:SYSLIB1054",
+      "severity": "INFO",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "d50e4f6f66d0d0c02f91eb4d410b1827",
+      "textRange": {
+        "startLine": 53,
+        "endLine": 53,
+        "startOffset": 34,
+        "endOffset": 59
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the method 'RegisterKeyboardCallbacks' with 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time",
+      "effort": "0min",
+      "debt": "0min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T18:24:59+0000",
+      "closeDate": "2026-05-17T18:24:59+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "externalRuleEngine": "roslyn",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "83c744d2-fbe5-48dc-b831-8e34dffbdfd9",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fx0",
+      "rule": "external_roslyn:SYSLIB1054",
+      "severity": "INFO",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "1d547f44eda120fc617b49ecee797872",
+      "textRange": {
+        "startLine": 63,
+        "endLine": 63,
+        "startOffset": 34,
+        "endOffset": 56
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the method 'RegisterMouseCallbacks' with 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time",
+      "effort": "0min",
+      "debt": "0min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T18:24:59+0000",
+      "closeDate": "2026-05-17T18:24:59+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "externalRuleEngine": "roslyn",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "83c744d2-fbe5-48dc-b831-8e34dffbdfd9",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fxP",
+      "rule": "csharpsquid:S4200",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "1d547f44eda120fc617b49ecee797872",
+      "textRange": {
+        "startLine": 63,
+        "endLine": 63,
+        "startOffset": 34,
+        "endOffset": 56
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this native method private and provide a wrapper.",
+      "effort": "30min",
+      "debt": "30min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T20:49:11+0000",
+      "closeDate": "2026-05-17T20:49:11+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "50c7e939-9c23-423f-b3bd-b52b1d7efb84",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fxQ",
+      "rule": "csharpsquid:S4200",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "812fd40e33725790a652675733fcc7a3",
+      "textRange": {
+        "startLine": 74,
+        "endLine": 74,
+        "startOffset": 34,
+        "endOffset": 58
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this native method private and provide a wrapper.",
+      "effort": "30min",
+      "debt": "30min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T20:49:11+0000",
+      "closeDate": "2026-05-17T20:49:11+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "50c7e939-9c23-423f-b3bd-b52b1d7efb84",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fxz",
+      "rule": "external_roslyn:SYSLIB1054",
+      "severity": "INFO",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "812fd40e33725790a652675733fcc7a3",
+      "textRange": {
+        "startLine": 74,
+        "endLine": 74,
+        "startOffset": 34,
+        "endOffset": 58
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the method 'RegisterGamepadCallbacks' with 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time",
+      "effort": "0min",
+      "debt": "0min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T18:24:59+0000",
+      "closeDate": "2026-05-17T18:24:59+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "externalRuleEngine": "roslyn",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "83c744d2-fbe5-48dc-b831-8e34dffbdfd9",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fx1",
+      "rule": "external_roslyn:SYSLIB1054",
+      "severity": "INFO",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "c05c6e236aed7fa5834ae9417f2b35be",
+      "textRange": {
+        "startLine": 83,
+        "endLine": 83,
+        "startOffset": 34,
+        "endOffset": 57
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the method 'RegisterWindowCallbacks' with 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time",
+      "effort": "0min",
+      "debt": "0min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T18:24:59+0000",
+      "closeDate": "2026-05-17T18:24:59+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "externalRuleEngine": "roslyn",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "83c744d2-fbe5-48dc-b831-8e34dffbdfd9",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fxR",
+      "rule": "csharpsquid:S4200",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "c05c6e236aed7fa5834ae9417f2b35be",
+      "textRange": {
+        "startLine": 83,
+        "endLine": 83,
+        "startOffset": 34,
+        "endOffset": 57
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make this native method private and provide a wrapper.",
+      "effort": "30min",
+      "debt": "30min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T20:49:11+0000",
+      "closeDate": "2026-05-17T20:49:11+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "50c7e939-9c23-423f-b3bd-b52b1d7efb84",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fx2",
+      "rule": "external_roslyn:SYSLIB1054",
+      "severity": "INFO",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "e2d8bfcb0161b3454de5d434d2b431b3",
+      "textRange": {
+        "startLine": 93,
+        "endLine": 93,
+        "startOffset": 37,
+        "endOffset": 63
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the method 'GetConnectedGamepadsNative' with 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time",
+      "effort": "0min",
+      "debt": "0min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T18:24:59+0000",
+      "closeDate": "2026-05-17T18:24:59+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "externalRuleEngine": "roslyn",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "83c744d2-fbe5-48dc-b831-8e34dffbdfd9",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fx3",
+      "rule": "external_roslyn:SYSLIB1054",
+      "severity": "INFO",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "8d92311949c901c7d18654df3922c6ad",
+      "textRange": {
+        "startLine": 100,
+        "endLine": 100,
+        "startOffset": 37,
+        "endOffset": 57
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the method 'GetGamepadAxesNative' with 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time",
+      "effort": "0min",
+      "debt": "0min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T18:24:59+0000",
+      "closeDate": "2026-05-17T18:24:59+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "externalRuleEngine": "roslyn",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "83c744d2-fbe5-48dc-b831-8e34dffbdfd9",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fx4",
+      "rule": "external_roslyn:SYSLIB1054",
+      "severity": "INFO",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "13ddb56f569bca0f17f1dfb890fc2650",
+      "textRange": {
+        "startLine": 107,
+        "endLine": 107,
+        "startOffset": 37,
+        "endOffset": 60
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the method 'GetGamepadButtonsNative' with 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time",
+      "effort": "0min",
+      "debt": "0min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T18:24:59+0000",
+      "closeDate": "2026-05-17T18:24:59+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "externalRuleEngine": "roslyn",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "83c744d2-fbe5-48dc-b831-8e34dffbdfd9",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fx5",
+      "rule": "external_roslyn:SYSLIB1054",
+      "severity": "INFO",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "8b5c076e9511955552f9ed3935470444",
+      "textRange": {
+        "startLine": 114,
+        "endLine": 114,
+        "startOffset": 34,
+        "endOffset": 48
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the method 'GetArrayLength' with 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time",
+      "effort": "0min",
+      "debt": "0min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T18:24:59+0000",
+      "closeDate": "2026-05-17T18:24:59+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "externalRuleEngine": "roslyn",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "83c744d2-fbe5-48dc-b831-8e34dffbdfd9",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ4hyKYgfGwM4KE86fx6",
+      "rule": "external_roslyn:SYSLIB1054",
+      "severity": "INFO",
+      "component": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "project": "pabllopf-official_alis",
+      "hash": "5dd19371272c3f4ddf139ebaf4b2eb46",
+      "textRange": {
+        "startLine": 121,
+        "endLine": 121,
+        "startOffset": 34,
+        "endOffset": 52
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the method 'GetArrayIntElement' with 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time",
+      "effort": "0min",
+      "debt": "0min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-05-09T10:38:13+0000",
+      "updateDate": "2026-05-17T18:24:59+0000",
+      "closeDate": "2026-05-17T18:24:59+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "externalRuleEngine": "roslyn",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "83c744d2-fbe5-48dc-b831-8e34dffbdfd9",
+      "lastChangeSource": "ANALYSIS"
+    }
+  ],
+  "components": [
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs",
+      "uuid": "AZ4hyIIdfGwM4KE86fxM",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "WebAssemblyInputManager.cs",
+      "longName": "4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs",
+      "path": "4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs",
+      "uuid": "AZ4hyIIdfGwM4KE86fxK",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "WebAssemblyPlatform.cs",
+      "longName": "4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs",
+      "path": "4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatform.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs",
+      "uuid": "AZ1dvMFSMbZ4NfML314t",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Gen2GcCallback.cs",
+      "longName": "4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs",
+      "path": "4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "uuid": "AZ4hyIIdfGwM4KE86fxJ",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "WebAssemblyGameContext.cs",
+      "longName": "4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs",
+      "path": "4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameContext.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
+      "uuid": "AZ4hyIIdfGwM4KE86fxG",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "WebAssemblyGameExamples.cs",
+      "longName": "4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
+      "path": "4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseButtonEventArgs.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31sK",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "MouseButtonEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseButtonEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseButtonEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "uuid": "AZ4hyIIdfGwM4KE86fxE",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "EmscriptenWeb.cs",
+      "longName": "4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
+      "path": "4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs",
+      "uuid": "AZ4hyIIdfGwM4KE86fxF",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "WebAssemblyPlatformIntegration.cs",
+      "longName": "4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs",
+      "path": "4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickMoveEventArgs.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31sF",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "JoystickMoveEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickMoveEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickMoveEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31sE",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "SizeEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/SizeEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/ImgAnimation.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31vg",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "ImgAnimation.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/ImgAnimation.cs",
+      "path": "1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Image/ImgAnimation.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:4_Operation/Ecs/src/Systems/Query.cs",
+      "uuid": "AZ1dvMFSMbZ4NfML314e",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Query.cs",
+      "longName": "4_Operation/Ecs/src/Systems/Query.cs",
+      "path": "4_Operation/Ecs/src/Systems/Query.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs",
+      "uuid": "AZ1dvMFOMbZ4NfML31ly",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "PhysicManager.cs",
+      "longName": "2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs",
+      "path": "2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31sY",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "KeyEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/KeyEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TouchEventArgs.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31sW",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "TouchEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/TouchEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/TouchEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31sT",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "MouseMoveEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseMoveEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31sU",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "JoystickButtonEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickButtonEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImVector.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31qP",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "ImVector.cs",
+      "longName": "1_Presentation/Extension/Graphic/Ui/src/ImVector.cs",
+      "path": "1_Presentation/Extension/Graphic/Ui/src/ImVector.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
+      "uuid": "AZ1dvMFRMbZ4NfML310Q",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "MacFilePicker.cs",
+      "longName": "1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
+      "path": "1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31s5",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Image.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+      "uuid": "AZ1dvMFRMbZ4NfML31zX",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "UpdateManager.cs",
+      "longName": "1_Presentation/Extension/Updater/src/UpdateManager.cs",
+      "path": "1_Presentation/Extension/Updater/src/UpdateManager.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31s8",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "RenderStates.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Render/RenderStates.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31s9",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Font.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesStyle.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31o_",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "ImNodesStyle.cs",
+      "longName": "1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesStyle.cs",
+      "path": "1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImNodesStyle.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBody.cs",
+      "uuid": "AZ1dvMFRMbZ4NfML311b",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "BreakableBody.cs",
+      "longName": "4_Operation/Physic/src/Common/Logic/BreakableBody.cs",
+      "path": "4_Operation/Physic/src/Common/Logic/BreakableBody.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31sc",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "SensorEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/SensorEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/LinkDetachWithModifierClick.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31ox",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "LinkDetachWithModifierClick.cs",
+      "longName": "1_Presentation/Extension/Graphic/Ui/src/Extras/Node/LinkDetachWithModifierClick.cs",
+      "path": "1_Presentation/Extension/Graphic/Ui/src/Extras/Node/LinkDetachWithModifierClick.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelEventArgs.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31sf",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "MouseWheelEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31se",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "MouseWheelScrollEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/MouseWheelScrollEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickConnectEventArgs.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31sj",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "JoystickConnectEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickConnectEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/JoystickConnectEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkSession.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31xO",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "NetworkSession.cs",
+      "longName": "1_Presentation/Extension/Network/src/Core/NetworkSession.cs",
+      "path": "1_Presentation/Extension/Network/src/Core/NetworkSession.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31wm",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "DropBoxCloudManager.cs",
+      "longName": "1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
+      "path": "1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis",
+      "uuid": "AZ1dr0tGe6OZJxlmhqNc",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "Alis",
+      "longName": "Alis"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/MultipleSelectModifier.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31o2",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "MultipleSelectModifier.cs",
+      "longName": "1_Presentation/Extension/Graphic/Ui/src/Extras/Node/MultipleSelectModifier.cs",
+      "path": "1_Presentation/Extension/Graphic/Ui/src/Extras/Node/MultipleSelectModifier.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31wp",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "GoogleDriveCloudManager.cs",
+      "longName": "1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs",
+      "path": "1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/NetworkPlayer.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31xQ",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "NetworkPlayer.cs",
+      "longName": "1_Presentation/Extension/Network/src/Core/NetworkPlayer.cs",
+      "path": "1_Presentation/Extension/Network/src/Core/NetworkPlayer.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/TextEventArgs.cs",
+      "uuid": "AZ1dvMFQMbZ4NfML31sk",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "TextEventArgs.cs",
+      "longName": "1_Presentation/Extension/Graphic/Sfml/src/Windows/TextEventArgs.cs",
+      "path": "1_Presentation/Extension/Graphic/Sfml/src/Windows/TextEventArgs.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiTextFilter.cs",
+      "uuid": "AZ1dvMFPMbZ4NfML31q3",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "ImGuiTextFilter.cs",
+      "longName": "1_Presentation/Extension/Graphic/Ui/src/ImGuiTextFilter.cs",
+      "path": "1_Presentation/Extension/Graphic/Ui/src/ImGuiTextFilter.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
+      "uuid": "AZ1dvMFRMbZ4NfML310H",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "LinuxFilePicker.cs",
+      "longName": "1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
+      "path": "1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs"
+    }
+  ],
+  "organizations": [
+    {
+      "key": "pabllopf-official",
+      "name": "Pablo Perdomo Falcón"
+    }
+  ],
+  "facets": []
+}

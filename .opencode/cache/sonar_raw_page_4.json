@@ -1,0 +1,4216 @@
+{
+  "total": 4394,
+  "p": 4,
+  "ps": 100,
+  "paging": {
+    "pageIndex": 4,
+    "pageSize": 100,
+    "total": 4394
+  },
+  "effortTotal": 27414,
+  "debtTotal": 27414,
+  "issues": [
+    {
+      "key": "AZ1dvNg_MbZ4NfML3252",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 225,
+      "hash": "e143797ac9909b316ddb8beeb12d1359",
+      "textRange": {
+        "startLine": 225,
+        "endLine": 225,
+        "startOffset": 26,
+        "endOffset": 42
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheAdd' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML325y",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 225,
+      "hash": "e143797ac9909b316ddb8beeb12d1359",
+      "textRange": {
+        "startLine": 225,
+        "endLine": 225,
+        "startOffset": 43,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML325z",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 225,
+      "hash": "e143797ac9909b316ddb8beeb12d1359",
+      "textRange": {
+        "startLine": 225,
+        "endLine": 225,
+        "startOffset": 47,
+        "endOffset": 49
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3251",
+      "rule": "csharpsquid:S2743",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 232,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 232,
+        "endLine": 232,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "A static field in a generic type is not shared among instances of different close constructed types.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3253",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 232,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 232,
+        "endLine": 232,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3254",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 237,
+      "hash": "f65514aabacfba2a85a55ac8e80ac5b3",
+      "textRange": {
+        "startLine": 237,
+        "endLine": 237,
+        "startOffset": 46,
+        "endOffset": 48
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3255",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 237,
+      "hash": "f65514aabacfba2a85a55ac8e80ac5b3",
+      "textRange": {
+        "startLine": 237,
+        "endLine": 237,
+        "startOffset": 50,
+        "endOffset": 52
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3256",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 237,
+      "hash": "f65514aabacfba2a85a55ac8e80ac5b3",
+      "textRange": {
+        "startLine": 237,
+        "endLine": 237,
+        "startOffset": 54,
+        "endOffset": 56
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T3' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3258",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 237,
+      "hash": "f65514aabacfba2a85a55ac8e80ac5b3",
+      "textRange": {
+        "startLine": 237,
+        "endLine": 237,
+        "startOffset": 26,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheRemove' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3257",
+      "rule": "csharpsquid:S2743",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 244,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 244,
+        "endLine": 244,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "A static field in a generic type is not shared among instances of different close constructed types.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3259",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 244,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 244,
+        "endLine": 244,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML325-",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 249,
+      "hash": "a04494537405a5dc826359037dfb818c",
+      "textRange": {
+        "startLine": 249,
+        "endLine": 249,
+        "startOffset": 43,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML325_",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 249,
+      "hash": "a04494537405a5dc826359037dfb818c",
+      "textRange": {
+        "startLine": 249,
+        "endLine": 249,
+        "startOffset": 47,
+        "endOffset": 49
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326A",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 249,
+      "hash": "a04494537405a5dc826359037dfb818c",
+      "textRange": {
+        "startLine": 249,
+        "endLine": 249,
+        "startOffset": 51,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T3' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326B",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 249,
+      "hash": "a04494537405a5dc826359037dfb818c",
+      "textRange": {
+        "startLine": 249,
+        "endLine": 249,
+        "startOffset": 55,
+        "endOffset": 57
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T4' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326D",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 249,
+      "hash": "a04494537405a5dc826359037dfb818c",
+      "textRange": {
+        "startLine": 249,
+        "endLine": 249,
+        "startOffset": 26,
+        "endOffset": 42
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheAdd' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326C",
+      "rule": "csharpsquid:S2743",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 256,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 256,
+        "endLine": 256,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "A static field in a generic type is not shared among instances of different close constructed types.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326E",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 256,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 256,
+        "endLine": 256,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326F",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 261,
+      "hash": "411404b125dc73e8eccdbaeff9c0a095",
+      "textRange": {
+        "startLine": 261,
+        "endLine": 261,
+        "startOffset": 46,
+        "endOffset": 48
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326G",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 261,
+      "hash": "411404b125dc73e8eccdbaeff9c0a095",
+      "textRange": {
+        "startLine": 261,
+        "endLine": 261,
+        "startOffset": 50,
+        "endOffset": 52
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326H",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 261,
+      "hash": "411404b125dc73e8eccdbaeff9c0a095",
+      "textRange": {
+        "startLine": 261,
+        "endLine": 261,
+        "startOffset": 54,
+        "endOffset": 56
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T3' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326I",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 261,
+      "hash": "411404b125dc73e8eccdbaeff9c0a095",
+      "textRange": {
+        "startLine": 261,
+        "endLine": 261,
+        "startOffset": 58,
+        "endOffset": 60
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T4' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326K",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 261,
+      "hash": "411404b125dc73e8eccdbaeff9c0a095",
+      "textRange": {
+        "startLine": 261,
+        "endLine": 261,
+        "startOffset": 26,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheRemove' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326J",
+      "rule": "csharpsquid:S2743",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 268,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 268,
+        "endLine": 268,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "A static field in a generic type is not shared among instances of different close constructed types.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326L",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 268,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 268,
+        "endLine": 268,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326N",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 273,
+      "hash": "fac1ad915313ad1da723f81c60b27c92",
+      "textRange": {
+        "startLine": 273,
+        "endLine": 273,
+        "startOffset": 43,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326O",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 273,
+      "hash": "fac1ad915313ad1da723f81c60b27c92",
+      "textRange": {
+        "startLine": 273,
+        "endLine": 273,
+        "startOffset": 47,
+        "endOffset": 49
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326P",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 273,
+      "hash": "fac1ad915313ad1da723f81c60b27c92",
+      "textRange": {
+        "startLine": 273,
+        "endLine": 273,
+        "startOffset": 51,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T3' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326Q",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 273,
+      "hash": "fac1ad915313ad1da723f81c60b27c92",
+      "textRange": {
+        "startLine": 273,
+        "endLine": 273,
+        "startOffset": 55,
+        "endOffset": 57
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T4' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326R",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 273,
+      "hash": "fac1ad915313ad1da723f81c60b27c92",
+      "textRange": {
+        "startLine": 273,
+        "endLine": 273,
+        "startOffset": 59,
+        "endOffset": 61
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T5' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326T",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 273,
+      "hash": "fac1ad915313ad1da723f81c60b27c92",
+      "textRange": {
+        "startLine": 273,
+        "endLine": 273,
+        "startOffset": 26,
+        "endOffset": 42
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheAdd' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326S",
+      "rule": "csharpsquid:S2743",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 280,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 280,
+        "endLine": 280,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "A static field in a generic type is not shared among instances of different close constructed types.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326U",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 280,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 280,
+        "endLine": 280,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326W",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 285,
+      "hash": "7e1787657b6d37b4f024938d6643e620",
+      "textRange": {
+        "startLine": 285,
+        "endLine": 285,
+        "startOffset": 46,
+        "endOffset": 48
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326X",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 285,
+      "hash": "7e1787657b6d37b4f024938d6643e620",
+      "textRange": {
+        "startLine": 285,
+        "endLine": 285,
+        "startOffset": 50,
+        "endOffset": 52
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326Y",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 285,
+      "hash": "7e1787657b6d37b4f024938d6643e620",
+      "textRange": {
+        "startLine": 285,
+        "endLine": 285,
+        "startOffset": 54,
+        "endOffset": 56
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T3' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326Z",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 285,
+      "hash": "7e1787657b6d37b4f024938d6643e620",
+      "textRange": {
+        "startLine": 285,
+        "endLine": 285,
+        "startOffset": 58,
+        "endOffset": 60
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T4' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326a",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 285,
+      "hash": "7e1787657b6d37b4f024938d6643e620",
+      "textRange": {
+        "startLine": 285,
+        "endLine": 285,
+        "startOffset": 62,
+        "endOffset": 64
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T5' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326c",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 285,
+      "hash": "7e1787657b6d37b4f024938d6643e620",
+      "textRange": {
+        "startLine": 285,
+        "endLine": 285,
+        "startOffset": 26,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheRemove' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326b",
+      "rule": "csharpsquid:S2743",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 292,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 292,
+        "endLine": 292,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "A static field in a generic type is not shared among instances of different close constructed types.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326d",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 292,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 292,
+        "endLine": 292,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326e",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 297,
+      "hash": "004c3cf34417d098117421ea7661dd82",
+      "textRange": {
+        "startLine": 297,
+        "endLine": 297,
+        "startOffset": 43,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326f",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 297,
+      "hash": "004c3cf34417d098117421ea7661dd82",
+      "textRange": {
+        "startLine": 297,
+        "endLine": 297,
+        "startOffset": 47,
+        "endOffset": 49
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326g",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 297,
+      "hash": "004c3cf34417d098117421ea7661dd82",
+      "textRange": {
+        "startLine": 297,
+        "endLine": 297,
+        "startOffset": 51,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T3' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326h",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 297,
+      "hash": "004c3cf34417d098117421ea7661dd82",
+      "textRange": {
+        "startLine": 297,
+        "endLine": 297,
+        "startOffset": 55,
+        "endOffset": 57
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T4' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326i",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 297,
+      "hash": "004c3cf34417d098117421ea7661dd82",
+      "textRange": {
+        "startLine": 297,
+        "endLine": 297,
+        "startOffset": 59,
+        "endOffset": 61
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T5' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326j",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 297,
+      "hash": "004c3cf34417d098117421ea7661dd82",
+      "textRange": {
+        "startLine": 297,
+        "endLine": 297,
+        "startOffset": 63,
+        "endOffset": 65
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T6' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326l",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 297,
+      "hash": "004c3cf34417d098117421ea7661dd82",
+      "textRange": {
+        "startLine": 297,
+        "endLine": 297,
+        "startOffset": 26,
+        "endOffset": 42
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheAdd' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326k",
+      "rule": "csharpsquid:S2743",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 304,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 304,
+        "endLine": 304,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "A static field in a generic type is not shared among instances of different close constructed types.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": []
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326m",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 304,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 304,
+        "endLine": 304,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": []
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326p",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 309,
+      "hash": "6260bd3e6e2309e606bd54f8aeb8dba0",
+      "textRange": {
+        "startLine": 309,
+        "endLine": 309,
+        "startOffset": 46,
+        "endOffset": 48
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326q",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 309,
+      "hash": "6260bd3e6e2309e606bd54f8aeb8dba0",
+      "textRange": {
+        "startLine": 309,
+        "endLine": 309,
+        "startOffset": 50,
+        "endOffset": 52
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326r",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 309,
+      "hash": "6260bd3e6e2309e606bd54f8aeb8dba0",
+      "textRange": {
+        "startLine": 309,
+        "endLine": 309,
+        "startOffset": 54,
+        "endOffset": 56
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T3' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326s",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 309,
+      "hash": "6260bd3e6e2309e606bd54f8aeb8dba0",
+      "textRange": {
+        "startLine": 309,
+        "endLine": 309,
+        "startOffset": 58,
+        "endOffset": 60
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T4' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326t",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 309,
+      "hash": "6260bd3e6e2309e606bd54f8aeb8dba0",
+      "textRange": {
+        "startLine": 309,
+        "endLine": 309,
+        "startOffset": 62,
+        "endOffset": 64
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T5' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326u",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 309,
+      "hash": "6260bd3e6e2309e606bd54f8aeb8dba0",
+      "textRange": {
+        "startLine": 309,
+        "endLine": 309,
+        "startOffset": 66,
+        "endOffset": 68
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T6' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326w",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 309,
+      "hash": "6260bd3e6e2309e606bd54f8aeb8dba0",
+      "textRange": {
+        "startLine": 309,
+        "endLine": 309,
+        "startOffset": 26,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheRemove' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326o",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 316,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 316,
+        "endLine": 316,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326v",
+      "rule": "csharpsquid:S2743",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 316,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 316,
+        "endLine": 316,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "A static field in a generic type is not shared among instances of different close constructed types.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3260",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 321,
+      "hash": "841d074689c3a7f5e255d7051ee9fbca",
+      "textRange": {
+        "startLine": 321,
+        "endLine": 321,
+        "startOffset": 47,
+        "endOffset": 49
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3261",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 321,
+      "hash": "841d074689c3a7f5e255d7051ee9fbca",
+      "textRange": {
+        "startLine": 321,
+        "endLine": 321,
+        "startOffset": 51,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T3' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3262",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 321,
+      "hash": "841d074689c3a7f5e255d7051ee9fbca",
+      "textRange": {
+        "startLine": 321,
+        "endLine": 321,
+        "startOffset": 55,
+        "endOffset": 57
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T4' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3263",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 321,
+      "hash": "841d074689c3a7f5e255d7051ee9fbca",
+      "textRange": {
+        "startLine": 321,
+        "endLine": 321,
+        "startOffset": 59,
+        "endOffset": 61
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T5' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3264",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 321,
+      "hash": "841d074689c3a7f5e255d7051ee9fbca",
+      "textRange": {
+        "startLine": 321,
+        "endLine": 321,
+        "startOffset": 63,
+        "endOffset": 65
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T6' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3265",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 321,
+      "hash": "841d074689c3a7f5e255d7051ee9fbca",
+      "textRange": {
+        "startLine": 321,
+        "endLine": 321,
+        "startOffset": 67,
+        "endOffset": 69
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T7' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3267",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 321,
+      "hash": "841d074689c3a7f5e255d7051ee9fbca",
+      "textRange": {
+        "startLine": 321,
+        "endLine": 321,
+        "startOffset": 26,
+        "endOffset": 42
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheAdd' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326z",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 321,
+      "hash": "841d074689c3a7f5e255d7051ee9fbca",
+      "textRange": {
+        "startLine": 321,
+        "endLine": 321,
+        "startOffset": 43,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3266",
+      "rule": "csharpsquid:S2743",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 328,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 328,
+        "endLine": 328,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "A static field in a generic type is not shared among instances of different close constructed types.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3268",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 328,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 328,
+        "endLine": 328,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326-",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 333,
+      "hash": "d6c9c577f4e2d9294c1c9fd32246a63f",
+      "textRange": {
+        "startLine": 333,
+        "endLine": 333,
+        "startOffset": 46,
+        "endOffset": 48
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML326_",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 333,
+      "hash": "d6c9c577f4e2d9294c1c9fd32246a63f",
+      "textRange": {
+        "startLine": 333,
+        "endLine": 333,
+        "startOffset": 50,
+        "endOffset": 52
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327A",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 333,
+      "hash": "d6c9c577f4e2d9294c1c9fd32246a63f",
+      "textRange": {
+        "startLine": 333,
+        "endLine": 333,
+        "startOffset": 54,
+        "endOffset": 56
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T3' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327B",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 333,
+      "hash": "d6c9c577f4e2d9294c1c9fd32246a63f",
+      "textRange": {
+        "startLine": 333,
+        "endLine": 333,
+        "startOffset": 58,
+        "endOffset": 60
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T4' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327C",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 333,
+      "hash": "d6c9c577f4e2d9294c1c9fd32246a63f",
+      "textRange": {
+        "startLine": 333,
+        "endLine": 333,
+        "startOffset": 62,
+        "endOffset": 64
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T5' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327D",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 333,
+      "hash": "d6c9c577f4e2d9294c1c9fd32246a63f",
+      "textRange": {
+        "startLine": 333,
+        "endLine": 333,
+        "startOffset": 66,
+        "endOffset": 68
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T6' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327E",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 333,
+      "hash": "d6c9c577f4e2d9294c1c9fd32246a63f",
+      "textRange": {
+        "startLine": 333,
+        "endLine": 333,
+        "startOffset": 70,
+        "endOffset": 72
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T7' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327G",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 333,
+      "hash": "d6c9c577f4e2d9294c1c9fd32246a63f",
+      "textRange": {
+        "startLine": 333,
+        "endLine": 333,
+        "startOffset": 26,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheRemove' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML3269",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 340,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 340,
+        "endLine": 340,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327F",
+      "rule": "csharpsquid:S2743",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 340,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 340,
+        "endLine": 340,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "A static field in a generic type is not shared among instances of different close constructed types.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327I",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 345,
+      "hash": "daf500ec6c36630c5c1465627383f03b",
+      "textRange": {
+        "startLine": 345,
+        "endLine": 345,
+        "startOffset": 43,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327J",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 345,
+      "hash": "daf500ec6c36630c5c1465627383f03b",
+      "textRange": {
+        "startLine": 345,
+        "endLine": 345,
+        "startOffset": 47,
+        "endOffset": 49
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327K",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 345,
+      "hash": "daf500ec6c36630c5c1465627383f03b",
+      "textRange": {
+        "startLine": 345,
+        "endLine": 345,
+        "startOffset": 51,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T3' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327L",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 345,
+      "hash": "daf500ec6c36630c5c1465627383f03b",
+      "textRange": {
+        "startLine": 345,
+        "endLine": 345,
+        "startOffset": 55,
+        "endOffset": 57
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T4' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327M",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 345,
+      "hash": "daf500ec6c36630c5c1465627383f03b",
+      "textRange": {
+        "startLine": 345,
+        "endLine": 345,
+        "startOffset": 59,
+        "endOffset": 61
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T5' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327N",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 345,
+      "hash": "daf500ec6c36630c5c1465627383f03b",
+      "textRange": {
+        "startLine": 345,
+        "endLine": 345,
+        "startOffset": 63,
+        "endOffset": 65
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T6' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327O",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 345,
+      "hash": "daf500ec6c36630c5c1465627383f03b",
+      "textRange": {
+        "startLine": 345,
+        "endLine": 345,
+        "startOffset": 67,
+        "endOffset": 69
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T7' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327P",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 345,
+      "hash": "daf500ec6c36630c5c1465627383f03b",
+      "textRange": {
+        "startLine": 345,
+        "endLine": 345,
+        "startOffset": 71,
+        "endOffset": 73
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T8' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327R",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 345,
+      "hash": "daf500ec6c36630c5c1465627383f03b",
+      "textRange": {
+        "startLine": 345,
+        "endLine": 345,
+        "startOffset": 26,
+        "endOffset": 42
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheAdd' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327H",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 352,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 352,
+        "endLine": 352,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327Q",
+      "rule": "csharpsquid:S2743",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 352,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 352,
+        "endLine": 352,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "A static field in a generic type is not shared among instances of different close constructed types.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327T",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 357,
+      "hash": "80502100c98b3efd2975b11f4d89e2fb",
+      "textRange": {
+        "startLine": 357,
+        "endLine": 357,
+        "startOffset": 46,
+        "endOffset": 48
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T1' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327U",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 357,
+      "hash": "80502100c98b3efd2975b11f4d89e2fb",
+      "textRange": {
+        "startLine": 357,
+        "endLine": 357,
+        "startOffset": 50,
+        "endOffset": 52
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T2' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327V",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 357,
+      "hash": "80502100c98b3efd2975b11f4d89e2fb",
+      "textRange": {
+        "startLine": 357,
+        "endLine": 357,
+        "startOffset": 54,
+        "endOffset": 56
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T3' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327W",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 357,
+      "hash": "80502100c98b3efd2975b11f4d89e2fb",
+      "textRange": {
+        "startLine": 357,
+        "endLine": 357,
+        "startOffset": 58,
+        "endOffset": 60
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T4' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327X",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 357,
+      "hash": "80502100c98b3efd2975b11f4d89e2fb",
+      "textRange": {
+        "startLine": 357,
+        "endLine": 357,
+        "startOffset": 62,
+        "endOffset": 64
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T5' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327Y",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 357,
+      "hash": "80502100c98b3efd2975b11f4d89e2fb",
+      "textRange": {
+        "startLine": 357,
+        "endLine": 357,
+        "startOffset": 66,
+        "endOffset": 68
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T6' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327Z",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 357,
+      "hash": "80502100c98b3efd2975b11f4d89e2fb",
+      "textRange": {
+        "startLine": 357,
+        "endLine": 357,
+        "startOffset": 70,
+        "endOffset": 72
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T7' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327a",
+      "rule": "csharpsquid:S2326",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 357,
+      "hash": "80502100c98b3efd2975b11f4d89e2fb",
+      "textRange": {
+        "startLine": 357,
+        "endLine": 357,
+        "startOffset": 74,
+        "endOffset": 76
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'T8' is not used in the class.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327c",
+      "rule": "csharpsquid:S2436",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 357,
+      "hash": "80502100c98b3efd2975b11f4d89e2fb",
+      "textRange": {
+        "startLine": 357,
+        "endLine": 357,
+        "startOffset": 26,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Reduce the number of generic parameters in the 'NeighborCacheRemove' class to no more than the 2 authorized.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNg_MbZ4NfML327S",
+      "rule": "csharpsquid:S2223",
+      "severity": "CRITICAL",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "project": "pabllopf-official_alis",
+      "line": 364,
+      "hash": "f2fb63214a24c2d548310463045058bc",
+      "textRange": {
+        "startLine": 364,
+        "endLine": 364,
+        "startOffset": 47,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Change the visibility of 'Lookup' or make it 'const' or 'readonly'.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2026-03-11T21:30:11+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "CODE_SMELL",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "623b6dda-3027-4eb2-9c98-ac75b6cebe63",
+      "lastChangeSource": "ANALYSIS"
+    }
+  ],
+  "components": [
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:4_Operation/Ecs/src/NeighborCache.cs",
+      "uuid": "AZ1dvMFSMbZ4NfML315X",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "NeighborCache.cs",
+      "longName": "4_Operation/Ecs/src/NeighborCache.cs",
+      "path": "4_Operation/Ecs/src/NeighborCache.cs"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis",
+      "uuid": "AZ1dr0tGe6OZJxlmhqNc",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "Alis",
+      "longName": "Alis"
+    }
+  ],
+  "organizations": [
+    {
+      "key": "pabllopf-official",
+      "name": "Pablo Perdomo Falcón"
+    }
+  ],
+  "facets": []
+}

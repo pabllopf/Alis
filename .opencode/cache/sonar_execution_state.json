@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "lastProcessedIssueKey": null,
+  "processedCount": 3400,
+  "remainingCount": 0,
+  "phase": 1,
+  "snapshotBuilt": true,
+  "indexBuilt": true,
+  "nextPhase": 2
+}
