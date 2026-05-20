@@ -278,11 +278,24 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Releases the managed and unmanaged resources used by the <see cref="MultiplatformGameEngine" />
+        /// </summary>
+        /// <param name="disposing">Whether to release managed resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
             if (!_disposed)
             {
-                _gameContext?.Dispose();
+                if (disposing)
+                {
+                    _gameContext?.Dispose();
+                }
+
                 _disposed = true;
-                GC.SuppressFinalize(this);
             }
         }
     }
