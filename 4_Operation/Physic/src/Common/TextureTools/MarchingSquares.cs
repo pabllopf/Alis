@@ -444,91 +444,80 @@ namespace Alis.Core.Physic.Common.TextureTools
         internal static int MarchSquare(sbyte[,] f, sbyte[,] fs, ref GeomPoly poly, int ax, int ay, float x0, float y0,
             float x1, float y1, int bin)
         {
-            //key lookup
-            int key = 0;
             sbyte v0 = fs[ax, ay];
-            if (v0 < 0)
-            {
-                key |= 8;
-            }
-
             sbyte v1 = fs[ax + 1, ay];
-            if (v1 < 0)
-            {
-                key |= 4;
-            }
-
             sbyte v2 = fs[ax + 1, ay + 1];
-            if (v2 < 0)
-            {
-                key |= 2;
-            }
-
             sbyte v3 = fs[ax, ay + 1];
-            if (v3 < 0)
-            {
-                key |= 1;
-            }
+
+            int key = CalculateMarchingKey(fs, ax, ay);
 
             int val = LookMarch[key];
             if (val != 0)
             {
-                CxFastListNode<Vector2F> pi = null;
-                for (int i = 0; i < 8; i++)
-                {
-                    Vector2F p;
-                    if ((val & (1 << i)) != 0)
-                    {
-                        if ((i == 7) && ((val & 1) == 0))
-                        {
-                            poly.Points.Add(p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin)));
-                        }
-                        else
-                        {
-                            if (i == 0)
-                            {
-                                p = new Vector2F(x0, y0);
-                            }
-                            else if (i == 2)
-                            {
-                                p = new Vector2F(x1, y0);
-                            }
-                            else if (i == 4)
-                            {
-                                p = new Vector2F(x1, y1);
-                            }
-                            else if (i == 6)
-                            {
-                                p = new Vector2F(x0, y1);
-                            }
-
-                            else if (i == 1)
-                            {
-                                p = new Vector2F(Xlerp(x0, x1, y0, v0, v1, f, bin), y0);
-                            }
-                            else if (i == 5)
-                            {
-                                p = new Vector2F(Xlerp(x0, x1, y1, v3, v2, f, bin), y1);
-                            }
-
-                            else if (i == 3)
-                            {
-                                p = new Vector2F(x1, Ylerp(y0, y1, x1, v1, v2, f, bin));
-                            }
-                            else
-                            {
-                                p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin));
-                            }
-
-                            pi = poly.Points.Insert(pi, p);
-                        }
-
-                        poly.Length++;
-                    }
-                }
-                //poly.simplify(float.Epsilon,float.Epsilon);
+                InsertInterpolatedPoints(ref poly, val, x0, y0, x1, y1, v0, v1, v2, v3, f, bin);
             }
 
+            return key;
+        }
+
+        private static int CalculateMarchingKey(sbyte[,] fs, int ax, int ay)
+        {
+            int key = 0;
+            if (fs[ax, ay] < 0) key |= 8;
+            if (fs[ax + 1, ay] < 0) key |= 4;
+            if (fs[ax + 1, ay + 1] < 0) key |= 2;
+            if (fs[ax, ay + 1] < 0) key |= 1;
+            return key;
+        }
+
+        private static void InsertInterpolatedPoints(ref GeomPoly poly, int val, float x0, float y0, float x1, float y1, sbyte v0, sbyte v1, sbyte v2, sbyte v3, sbyte[,] f, int bin)
+        {
+            CxFastListNode<Vector2F> pi = null;
+
+            for (int i = 0; i < 8; i++)
+            {
+                if ((val & (1 << i)) != 0)
+                {
+                    Vector2F p = CalculateIntersectionPoint(i, val, x0, y0, x1, y1, v0, v1, v2, v3, f, bin);
+                    pi = poly.Points.Insert(pi, p);
+                    poly.Length++;
+                }
+            }
+        }
+
+        private static Vector2F CalculateIntersectionPoint(int i, int val, float x0, float y0, float x1, float y1, sbyte v0, sbyte v1, sbyte v2, sbyte v3, sbyte[,] f, int bin)
+        {
+            if (i == 7 && (val & 1) == 0)
+            {
+                return new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin));
+            }
+
+            return i switch
+            {
+                0 or 2 or 4 or 6 => GetCornerPoint(i, x0, y0, x1, y1),
+                1 => new Vector2F(Xlerp(x0, x1, y0, v0, v1, f, bin), y0),
+                5 => new Vector2F(Xlerp(x0, x1, y1, v3, v2, f, bin), y1),
+                3 => new Vector2F(x1, Ylerp(y0, y1, x1, v1, v2, f, bin)),
+                _ => new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin))
+            };
+        }
+
+        private static Vector2F GetCornerPoint(int i, float x0, float y0, float x1, float y1) => i switch
+        {
+            0 => new Vector2F(x0, y0),
+            2 => new Vector2F(x1, y0),
+            4 => new Vector2F(x1, y1),
+            6 => new Vector2F(x0, y1),
+            _ => throw new InvalidOperationException()
+        };
+
+        private static int CalculateMarchingKeyPlaceholder(sbyte v0, sbyte v1, sbyte v2, sbyte v3)
+        {
+            int key = 0;
+            if (v0 < 0) key |= 8;
+            if (v1 < 0) key |= 4;
+            if (v2 < 0) key |= 2;
+            if (v3 < 0) key |= 1;
             return key;
         }
 
