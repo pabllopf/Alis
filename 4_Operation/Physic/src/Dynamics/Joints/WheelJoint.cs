@@ -414,7 +414,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
 
             // Spring constraint
-            CalculateSpringConstraints(ref qA, ref qB, ref d1, ref rA, ref rB, mA, mB, iA, iB, data.Step.Dt);
+            CalculateSpringConstraints(ref qA, ref d1, ref rA, ref rB, mA, mB, iA, iB, data.Step.Dt);
 
             // Rotational motor
             if (_enableMotor)
@@ -448,7 +448,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Velocities[_indexB].W = wB;
         }
 
-        private void CalculateSpringConstraints(ref Complex qA, ref Complex qB, ref Vector2F d1, ref Vector2F rA, ref Vector2F rB, float mA, float mB, float iA, float iB, float dt)
+        private void CalculateSpringConstraints(ref Complex qA, ref Vector2F d1, ref Vector2F rA, ref Vector2F rB, float mA, float mB, float iA, float iB, float dt)
         {
             _springMass = 0.0f;
             _bias = 0.0f;
