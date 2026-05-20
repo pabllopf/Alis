@@ -606,42 +606,51 @@ public Vertices(IEnumerable<Vector2F> vertices)
         /// </returns>
         public int PointInPolygon(ref Vector2F point)
         {
-            // Winding number
             int wn = 0;
 
-            // Iterate through polygon's edges
             for (int i = 0; i < Count; i++)
             {
-                // Get points
                 Vector2F p1 = this[i];
                 Vector2F p2 = this[NextIndex(i)];
 
-                // Test if a point is directly on the edge
-                Vector2F edge = p2 - p1;
-                float area = MathUtils.Area(ref p1, ref p2, ref point);
-                if ((Math.Abs(area) < float.Epsilon) && (Vector2F.Dot(point - p1, edge) >= 0f) && (Vector2F.Dot(point - p2, edge) <= 0f))
+                if (IsPointOnEdge(ref p1, ref p2, ref point))
                 {
                     return 0;
                 }
 
-                // Test edge for intersection with ray from point
-                if (p1.Y <= point.Y)
-                {
-                    if ((p2.Y > point.Y) && (area > 0f))
-                    {
-                        ++wn;
-                    }
-                }
-                else
-                {
-                    if ((p2.Y <= point.Y) && (area < 0f))
-                    {
-                        --wn;
-                    }
-                }
+                wn = UpdateWindingNumber(ref p1, ref p2, ref point, wn);
             }
 
             return wn == 0 ? -1 : 1;
+        }
+
+        private static bool IsPointOnEdge(ref Vector2F p1, ref Vector2F p2, ref Vector2F point)
+        {
+            Vector2F edge = p2 - p1;
+            float area = MathUtils.Area(ref p1, ref p2, ref point);
+            return (Math.Abs(area) < float.Epsilon) && (Vector2F.Dot(point - p1, edge) >= 0f) && (Vector2F.Dot(point - p2, edge) <= 0f);
+        }
+
+        private static int UpdateWindingNumber(ref Vector2F p1, ref Vector2F p2, ref Vector2F point, int wn)
+        {
+            float area = MathUtils.Area(ref p1, ref p2, ref point);
+
+            if (p1.Y <= point.Y)
+            {
+                if ((p2.Y > point.Y) && (area > 0f))
+                {
+                    ++wn;
+                }
+            }
+            else
+            {
+                if ((p2.Y <= point.Y) && (area < 0f))
+                {
+                    --wn;
+                }
+            }
+
+            return wn;
         }
 
         /// <summary>
