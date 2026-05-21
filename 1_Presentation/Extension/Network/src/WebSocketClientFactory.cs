@@ -376,7 +376,7 @@ namespace Alis.Extension.Network
         ///     Generates the sec web socket key
         /// </summary>
         /// <returns>The string</returns>
-        internal string GenerateSecWebSocketKey()
+        internal static string GenerateSecWebSocketKey()
         {
             RandomNumberGenerator rand = RandomNumberGenerator.Create();
             byte[] keyAsBytes = new byte[16];
