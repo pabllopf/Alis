@@ -182,7 +182,7 @@ namespace Alis.Extension.Network
         /// </summary>
         /// <param name="response">The response</param>
         /// <returns>The string</returns>
-        internal string GetSubProtocolFromHeader(string response)
+        internal static string GetSubProtocolFromHeader(string response)
         {
             // make sure we escape the accept string which could contain special regex characters
             string regexPattern = "Sec-WebSocket-Protocol: (.*)";
