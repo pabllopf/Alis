@@ -207,69 +207,79 @@ namespace Alis.Extension.Io.FileDialog
 
             List<string> args = new List<string>();
 
-            if (tool == DefaultDialogTool) // zenity
+            if (tool == DefaultDialogTool)
             {
-                args.Add("--file-selection");
-
-                if (!string.IsNullOrEmpty(options.Title))
-                {
-                    args.Add($"--title=\"{EscapeShellString(options.Title)}\"");
-                }
-
-                if (!string.IsNullOrEmpty(options.DefaultPath))
-                {
-                    args.Add($"--filename=\"{EscapeShellString(options.DefaultPath)}\"");
-                }
-
-                if (allowMultiple)
-                {
-                    args.Add("--multiple");
-                    args.Add("--separator=|");
-                }
-
-                if ((options.Filters != null) && (options.Filters.Count > 0))
-                {
-                    foreach (FilePickerFilter filter in options.Filters)
-                    {
-                        args.Add($"--file-filter=\"{EscapeShellString(filter.DisplayName)} | {filter.GetFormattedExtensions()}\"");
-                    }
-
-                    args.Add("--file-filter=\"All files | *\"");
-                }
+                BuildZenityFileDialogArguments(args, options, allowMultiple);
             }
-            else if (tool == FallbackDialogTool) // kdialog
+            else if (tool == FallbackDialogTool)
             {
-                if (allowMultiple)
-                {
-                    args.Add("--getopenfilenames");
-                }
-                else
-                {
-                    args.Add("--getopenfilename");
-                }
-
-                if (!string.IsNullOrEmpty(options.DefaultPath))
-                {
-                    args.Add(EscapeShellString(options.DefaultPath));
-                }
-                else
-                {
-                    args.Add("~/");
-                }
-
-                if ((options.Filters != null) && (options.Filters.Count > 0))
-                {
-                    string filterStr = string.Join(" ", options.Filters.Select(f => $"{f.DisplayName} ({f.GetFormattedExtensions()})"));
-                    args.Add($"\"{EscapeShellString(filterStr)}\"");
-                }
-
-                if (!string.IsNullOrEmpty(options.Title))
-                {
-                    args.Add($"--title \"{EscapeShellString(options.Title)}\"");
-                }
+                BuildKdialogFileDialogArguments(args, options, allowMultiple);
             }
 
             return string.Join(" ", args);
+        }
+
+        private static void BuildZenityFileDialogArguments(List<string> args, FilePickerOptions options, bool allowMultiple)
+        {
+            args.Add("--file-selection");
+
+            if (!string.IsNullOrEmpty(options.Title))
+            {
+                args.Add($"--title=\"{EscapeShellString(options.Title)}\"");
+            }
+
+            if (!string.IsNullOrEmpty(options.DefaultPath))
+            {
+                args.Add($"--filename=\"{EscapeShellString(options.DefaultPath)}\"");
+            }
+
+            if (allowMultiple)
+            {
+                args.Add("--multiple");
+                args.Add("--separator=|");
+            }
+
+            if ((options.Filters != null) && (options.Filters.Count > 0))
+            {
+                foreach (FilePickerFilter filter in options.Filters)
+                {
+                    args.Add($"--file-filter=\"{EscapeShellString(filter.DisplayName)} | {filter.GetFormattedExtensions()}\"");
+                }
+
+                args.Add("--file-filter=\"All files | *\"");
+            }
+        }
+
+        private static void BuildKdialogFileDialogArguments(List<string> args, FilePickerOptions options, bool allowMultiple)
+        {
+            if (allowMultiple)
+            {
+                args.Add("--getopenfilenames");
+            }
+            else
+            {
+                args.Add("--getopenfilename");
+            }
+
+            if (!string.IsNullOrEmpty(options.DefaultPath))
+            {
+                args.Add(EscapeShellString(options.DefaultPath));
+            }
+            else
+            {
+                args.Add("~/");
+            }
+
+            if ((options.Filters != null) && (options.Filters.Count > 0))
+            {
+                string filterStr = string.Join(" ", options.Filters.Select(f => $"{f.DisplayName} ({f.GetFormattedExtensions()})"));
+                args.Add($"\"{EscapeShellString(filterStr)}\"");
+            }
+
+            if (!string.IsNullOrEmpty(options.Title))
+            {
+                args.Add($"--title \"{EscapeShellString(options.Title)}\"");
+            }
         }
 
         /// <summary>
