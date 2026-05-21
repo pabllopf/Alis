@@ -128,7 +128,7 @@ namespace Alis.Sample.Asteroid.Android
         public void OnSurfaceCreated(Object gl, Object config)
         {
             // Inicializar Gl con el puntero de funciones de EGL
-            Gl.Initialize(EGLDroid.GetProcAddress);
+            Gl.Initialize(EglDroid.GetProcAddress);
             Log.Debug("AlisGL", "OnSurfaceCreated llamado");
             int size = TriangleCoords.Length * sizeof(float);
             IntPtr vertexPtr = Marshal.AllocHGlobal(size);

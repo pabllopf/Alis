@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.Platforms.Android
     /// <summary>
     ///     The egl droid class
     /// </summary>
-    public static class EGLDroid
+    public static class EglDroid
     {
         /// <summary>
         ///     Retrieves the address of the specified EGL or GLES function from the native library.
