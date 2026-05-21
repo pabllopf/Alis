@@ -383,39 +383,22 @@ namespace Alis.Core.Physic.Dynamics
                 Body bodyA = fixtureA.GetBody;
                 Body bodyB = fixtureB.GetBody;
 
-                if (!bodyA.Enabled || !bodyB.Enabled)
+                if (ShouldSkipContact(bodyA, bodyB))
                 {
                     c = c.Next;
                     continue;
                 }
 
+                if (c.FilterFlag && ShouldDestroyContact(bodyA, bodyB, fixtureA, fixtureB))
+                {
+                    Contact cNuke = c;
+                    c = c.Next;
+                    Destroy(cNuke);
+                    continue;
+                }
+
                 if (c.FilterFlag)
                 {
-                    if (!bodyB.ShouldCollide(bodyA))
-                    {
-                        Contact cNuke = c;
-                        c = c.Next;
-                        Destroy(cNuke);
-                        continue;
-                    }
-
-                    if (!ShouldCollide(fixtureA, fixtureB))
-                    {
-                        Contact cNuke = c;
-                        c = c.Next;
-                        Destroy(cNuke);
-                        continue;
-                    }
-
-                    CollisionFilterDelegate contactFilterHandler = ContactFilter;
-                    if ((contactFilterHandler != null) && !contactFilterHandler(fixtureA, fixtureB))
-                    {
-                        Contact cNuke = c;
-                        c = c.Next;
-                        Destroy(cNuke);
-                        continue;
-                    }
-
                     c.FilterFlag = false;
                 }
 
@@ -447,6 +430,32 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        private static bool ShouldSkipContact(Body bodyA, Body bodyB)
+        {
+            return !bodyA.Enabled || !bodyB.Enabled;
+        }
+
+        private bool ShouldDestroyContact(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB)
+        {
+            if (!bodyB.ShouldCollide(bodyA))
+            {
+                return true;
+            }
+
+            if (!ShouldCollide(fixtureA, fixtureB))
+            {
+                return true;
+            }
+
+            CollisionFilterDelegate contactFilterHandler = ContactFilter;
+            if (contactFilterHandler != null && !contactFilterHandler(fixtureA, fixtureB))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
         /// <summary>
         ///     Collides the multi core
@@ -465,39 +474,22 @@ namespace Alis.Core.Physic.Dynamics
                 Body bodyA = fixtureA.GetBody;
                 Body bodyB = fixtureB.GetBody;
 
-                if (!bodyA.Enabled || !bodyB.Enabled)
+                if (ShouldSkipContact(bodyA, bodyB))
                 {
                     c = c.Next;
                     continue;
                 }
 
+                if (c.FilterFlag && ShouldDestroyContact(bodyA, bodyB, fixtureA, fixtureB))
+                {
+                    Contact cNuke = c;
+                    c = c.Next;
+                    Destroy(cNuke);
+                    continue;
+                }
+
                 if (c.FilterFlag)
                 {
-                    if (!bodyB.ShouldCollide(bodyA))
-                    {
-                        Contact cNuke = c;
-                        c = c.Next;
-                        Destroy(cNuke);
-                        continue;
-                    }
-
-                    if (!ShouldCollide(fixtureA, fixtureB))
-                    {
-                        Contact cNuke = c;
-                        c = c.Next;
-                        Destroy(cNuke);
-                        continue;
-                    }
-
-                    CollisionFilterDelegate contactFilterHandler = ContactFilter;
-                    if ((contactFilterHandler != null) && !contactFilterHandler(fixtureA, fixtureB))
-                    {
-                        Contact cNuke = c;
-                        c = c.Next;
-                        Destroy(cNuke);
-                        continue;
-                    }
-
                     c.FilterFlag = false;
                 }
 
