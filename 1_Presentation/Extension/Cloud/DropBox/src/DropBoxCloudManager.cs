@@ -228,12 +228,12 @@ namespace Alis.Extension.Cloud.DropBox
 
             if (string.IsNullOrEmpty(folderPath))
             {
-                folderPath = "/";
+                folderPath = PathDelimiter;
             }
 
-            if (!folderPath.StartsWith("/"))
+            if (!folderPath.StartsWith(PathDelimiter))
             {
-                folderPath = "/" + folderPath;
+                folderPath = PathDelimiter + folderPath;
             }
 
             try
@@ -261,17 +261,10 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new InvalidOperationException(NotInitializedError);
             }
 
-#if  NET5_0_OR_GREATER
-              if (!dropboxPath.StartsWith('/'))
+            if (!dropboxPath.StartsWith(PathDelimiter))
             {
-                dropboxPath = "/" + dropboxPath;
+                dropboxPath = PathDelimiter + dropboxPath;
             }
-#else
-            if (!dropboxPath.StartsWith("/"))
-            {
-                dropboxPath = "/" + dropboxPath;
-            }
-#endif
 
             try
             {
@@ -297,17 +290,10 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new InvalidOperationException(NotInitializedError);
             }
 
-#if  NET5_0_OR_GREATER
-              if (!dropboxPath.StartsWith('/'))
+            if (!dropboxPath.StartsWith(PathDelimiter))
             {
-                dropboxPath = "/" + dropboxPath;
+                dropboxPath = PathDelimiter + dropboxPath;
             }
-#else
-            if (!dropboxPath.StartsWith("/"))
-            {
-                dropboxPath = "/" + dropboxPath;
-            }
-#endif
 
             try
             {
