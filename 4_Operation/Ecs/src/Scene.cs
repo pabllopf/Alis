@@ -229,7 +229,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The remove component lookup
         /// </summary>
-        public FastLookup RemoveComponentLookup = new FastLookup();
+        internal FastLookup RemoveComponentLookup = new FastLookup();
 
         /// <summary>
         ///     The remove tag lookup
