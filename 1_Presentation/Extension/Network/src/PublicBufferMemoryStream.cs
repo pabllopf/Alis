@@ -304,7 +304,7 @@ namespace Alis.Extension.Network
         ///     Tried to create a buffer ({requiredSize:#,##0} bytes) that was
         ///     larger than the max allowed size ({int.MaxValue:#,##0})
         /// </exception>
-        internal void ValidateRequiredSize(long requiredSize)
+        internal static void ValidateRequiredSize(long requiredSize)
         {
             if (requiredSize > int.MaxValue)
             {
