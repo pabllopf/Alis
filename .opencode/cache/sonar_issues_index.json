@@ -4107,196 +4107,196 @@
     "file": "4_Operation/Ecs/src/Systems/Query.cs",
     "line": 249,
     "severity": "MAJOR",
-    "status": "in_progress",
-    "assignedWorker": "worker-macbook-pro-de-pablo.local-6192",
-    "lockedAt": "2026-05-21T09:10:41.729Z",
+    "status": "failed",
+    "assignedWorker": null,
+    "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNd5MbZ4NfML3223": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Systems/Query.cs",
     "line": 261,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNd5MbZ4NfML3224": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Systems/Query.cs",
     "line": 274,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNd5MbZ4NfML3225": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Systems/Query.cs",
     "line": 286,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNd5MbZ4NfML3226": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Systems/Query.cs",
     "line": 299,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNd5MbZ4NfML3228": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Systems/Query.cs",
     "line": 329,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNd5MbZ4NfML3229": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Systems/Query.cs",
     "line": 344,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNd5MbZ4NfML322-": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Systems/Query.cs",
     "line": 359,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNd5MbZ4NfML322_": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Systems/Query.cs",
     "line": 375,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfRMbZ4NfML324D": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/Update.cs",
     "line": 414,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfRMbZ4NfML324E": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/Update.cs",
     "line": 456,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfRMbZ4NfML324F": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/Update.cs",
     "line": 504,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfRMbZ4NfML324G": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/Update.cs",
     "line": 554,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfRMbZ4NfML324H": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/Update.cs",
     "line": 609,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfRMbZ4NfML324I": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/Update.cs",
     "line": 666,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfaMbZ4NfML324S": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 98,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfaMbZ4NfML324T": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 128,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfaMbZ4NfML324U": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 158,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
+    "status": "in_progress",
+    "assignedWorker": "worker-macbook-pro-de-pablo.local-6192",
+    "lockedAt": "2026-05-21T09:10:43.114Z",
     "completedAt": null,
     "attemptCount": 0
   },
