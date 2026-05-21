@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Test.Common
             float xRadius = 10.0f; // Too large
             float yRadius = 1.0f;
 
-            Assert.Throws<Exception>(() => PolygonTools.CreateRoundedRectangle(width, height, xRadius, yRadius, 2));
+            Assert.Throws<ArgumentOutOfRangeException>(() => PolygonTools.CreateRoundedRectangle(width, height, xRadius, yRadius, 2));
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void CreateRoundedRectangle_ShouldThrowException_WhenNegativeSegments()
         {
-            Assert.Throws<Exception>(() => PolygonTools.CreateRoundedRectangle(10.0f, 6.0f, 1.0f, 1.0f, -1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => PolygonTools.CreateRoundedRectangle(10.0f, 6.0f, 1.0f, 1.0f, -1));
         }
 
         /// <summary>
