@@ -4294,286 +4294,286 @@
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 158,
     "severity": "MAJOR",
-    "status": "in_progress",
-    "assignedWorker": "worker-macbook-pro-de-pablo.local-6192",
-    "lockedAt": "2026-05-21T09:10:43.114Z",
+    "status": "failed",
+    "assignedWorker": null,
+    "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfaMbZ4NfML324V": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 188,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfaMbZ4NfML324W": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 218,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfaMbZ4NfML324X": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 248,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNfaMbZ4NfML324Y": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 278,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNHTMbZ4NfML32sp": {
     "ruleKey": "csharpsquid:S6966",
     "file": "1_Presentation/Extension/Network/src/Client/NetworkClientManager.cs",
     "line": 306,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNF4MbZ4NfML32sQ": {
     "ruleKey": "csharpsquid:S6966",
     "file": "1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs",
     "line": 305,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNETMbZ4NfML32r1": {
     "ruleKey": "csharpsquid:S1075",
     "file": "1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
     "line": 144,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNETMbZ4NfML32r2": {
     "ruleKey": "csharpsquid:S1075",
     "file": "1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
     "line": 190,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNETMbZ4NfML32r-": {
     "ruleKey": "csharpsquid:S6610",
     "file": "1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
     "line": 244,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNETMbZ4NfML32r9": {
     "ruleKey": "csharpsquid:S1075",
     "file": "1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
     "line": 246,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNETMbZ4NfML32r7": {
     "ruleKey": "csharpsquid:S1075",
     "file": "1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
     "line": 277,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNETMbZ4NfML32r5": {
     "ruleKey": "csharpsquid:S1075",
     "file": "1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
     "line": 313,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNEcMbZ4NfML32sC": {
     "ruleKey": "csharpsquid:S1192",
     "file": "1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs",
     "line": 235,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNEcMbZ4NfML32sD": {
     "ruleKey": "csharpsquid:S1192",
     "file": "1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs",
     "line": 336,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNLoMbZ4NfML32ty": {
     "ruleKey": "csharpsquid:S3776",
     "file": "1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs",
     "line": 203,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNLfMbZ4NfML32ts": {
     "ruleKey": "csharpsquid:S3776",
     "file": "1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
     "line": 204,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNqZMbZ4NfML33AX": {
     "ruleKey": "csharpsquid:S3776",
     "file": "6_Ideation/Data/src/Json/Helpers/EscapeSequenceHandler.cs",
     "line": 101,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNnqMbZ4NfML32_g": {
     "ruleKey": "csharpsquid:S3267",
     "file": "6_Ideation/Logging/src/Filters/CompositeLogFilter.cs",
     "line": 85,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNnqMbZ4NfML32_h": {
     "ruleKey": "csharpsquid:S3267",
     "file": "6_Ideation/Logging/src/Filters/CompositeLogFilter.cs",
     "line": 97,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNOwMbZ4NfML32vW": {
     "ruleKey": "csharpsquid:S2234",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/Contact.cs",
     "line": 556,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNLoMbZ4NfML32tz": {
     "ruleKey": "csharpsquid:S3267",
     "file": "1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs",
     "line": 248,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNKWMbZ4NfML32tc": {
     "ruleKey": "csharpsquid:S3267",
     "file": "1_Presentation/Extension/Language/Dialogue/src/Core/DialogActionExecutor.cs",
     "line": 90,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNKeMbZ4NfML32td": {
     "ruleKey": "csharpsquid:S2325",
     "file": "1_Presentation/Extension/Language/Dialogue/src/Core/DialogConditionEvaluator.cs",
     "line": 49,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNLNMbZ4NfML32ti": {
     "ruleKey": "csharpsquid:S4136",
     "file": "1_Presentation/Extension/Language/Translator/src/TranslationManager.cs",
     "line": 272,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvM3bMbZ4NfML32XH": {
     "ruleKey": "csharpsquid:S4136",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
     "line": 591,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvM9SMbZ4NfML32gp": {
     "ruleKey": "csharpsquid:S2094",
