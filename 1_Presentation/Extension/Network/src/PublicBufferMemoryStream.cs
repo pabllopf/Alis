@@ -319,7 +319,7 @@ namespace Alis.Extension.Network
         /// <param name="newSize">The new size</param>
         /// <param name="requiredSize">The required size</param>
         /// <returns>The bool</returns>
-        internal bool IsNewSizeLessThanRequiredSize(long newSize, long requiredSize) => requiredSize > newSize;
+        internal static bool IsNewSizeLessThanRequiredSize(long newSize, long requiredSize) => requiredSize > newSize;
 
         /// <summary>
         ///     Computes the candidate size using the specified required size
