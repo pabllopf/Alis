@@ -57,6 +57,11 @@ namespace Alis.Extension.Cloud.GoogleDrive
         private const string NotInitializedError = "Google Drive manager is not initialized. Call InitializeAsync first.";
 
         /// <summary>
+        ///     The Google Drive space identifier for file operations
+        /// </summary>
+        private const string DriveSpace = DriveSpace;
+
+        /// <summary>
         ///     The Google Drive service
         /// </summary>
         private DriveService _driveService;
@@ -232,7 +237,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
 
                 FilesResource.ListRequest request = _driveService.Files.List();
                 request.Q = $"'{folderId}' in parents and trashed = false";
-                request.Spaces = "drive";
+                request.Spaces = DriveSpace;
                 request.Fields = "files(id, name)";
 
                 FileList result = await request.ExecuteAsync();
@@ -332,7 +337,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
             {
                 FilesResource.ListRequest request = _driveService.Files.List();
                 request.Q = $"'{currentFolderId}' in parents and name = '{parts[i]}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false";
-                request.Spaces = "drive";
+                request.Spaces = DriveSpace;
                 request.Fields = "files(id)";
 
                 FileList result = await request.ExecuteAsync();
@@ -346,7 +351,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
 
             FilesResource.ListRequest fileRequest = _driveService.Files.List();
             fileRequest.Q = $"'{currentFolderId}' in parents and name = '{parts[parts.Length - 1]}' and trashed = false";
-            fileRequest.Spaces = "drive";
+            fileRequest.Spaces = DriveSpace;
             fileRequest.Fields = "files(id)";
 
             FileList fileResult = await fileRequest.ExecuteAsync();
@@ -370,7 +375,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
             {
                 FilesResource.ListRequest request = _driveService.Files.List();
                 request.Q = $"'{currentFolderId}' in parents and name = '{part}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false";
-                request.Spaces = "drive";
+                request.Spaces = DriveSpace;
                 request.Fields = "files(id)";
 
                 FileList result = await request.ExecuteAsync();
@@ -402,7 +407,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
             {
                 FilesResource.ListRequest request = _driveService.Files.List();
                 request.Q = $"'{currentFolderId}' in parents and name = '{part}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false";
-                request.Spaces = "drive";
+                request.Spaces = DriveSpace;
                 request.Fields = "files(id)";
 
                 FileList result = await request.ExecuteAsync();
