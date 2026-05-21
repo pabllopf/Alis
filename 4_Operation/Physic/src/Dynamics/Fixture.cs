@@ -111,6 +111,7 @@ namespace Alis.Core.Physic.Dynamics
             CollidesWith = Category.All;
             CollisionGroup = 0;
 
+            //Fixture defaults
             GetFriction = 0.2f;
             GetRestitution = 0f;
         }
@@ -123,6 +124,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             GetShape = shape.Clone();
 
+            // Reserve proxy space
             Proxies = new FixtureProxy[GetShape.ChildCount];
             ProxyCount = 0;
         }
@@ -259,6 +261,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         private void Refilter()
         {
+            // Flag associated contacts for filtering.
             ContactEdge edge = GetBody.ContactList;
             while (edge != null)
             {
@@ -280,19 +283,20 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            IBroadPhaseFixture broadPhaseFixtureNode = worldPhysic.ContactManager.BroadPhaseFixtureNode;
-            TouchProxies(broadPhaseFixtureNode);
+            // Touch each proxy so that new pairs may be created
+            IBroadPhase broadPhase = worldPhysic.ContactManager.BroadPhase;
+            TouchProxies(broadPhase);
         }
 
         /// <summary>
         ///     Touch each proxy so that new pairs may be created
         /// </summary>
-        /// <param name="broadPhaseFixtureNode"></param>
-        internal void TouchProxies(IBroadPhaseFixture broadPhaseFixtureNode)
+        /// <param name="broadPhase"></param>
+        internal void TouchProxies(IBroadPhase broadPhase)
         {
             for (int i = 0; i < ProxyCount; ++i)
             {
-                broadPhaseFixtureNode.TouchProxy(Proxies[i].ProxyId);
+                broadPhase.TouchProxy(Proxies[i].ProxyId);
             }
         }
 
@@ -324,19 +328,21 @@ namespace Alis.Core.Physic.Dynamics
             aabb = Proxies[childIndex].Aabb;
         }
 
+        // These support body activation/deactivation.
         /// <summary>
         ///     Creates the proxies using the specified broad phase
         /// </summary>
-        /// <param name="broadPhaseFixtureNode">The broad phase</param>
+        /// <param name="broadPhase">The broad phase</param>
         /// <param name="xf">The xf</param>
         /// <exception cref="InvalidOperationException">Proxies allready created for this Fixture.</exception>
-        internal void CreateProxies(IBroadPhaseFixture broadPhaseFixtureNode, ref ControllerTransform xf)
+        internal void CreateProxies(IBroadPhase broadPhase, ref ControllerTransform xf)
         {
             if (ProxyCount != 0)
             {
                 throw new InvalidOperationException("Proxies allready created for this Fixture.");
             }
 
+            // Create proxies in the broad-phase.
             ProxyCount = GetShape.ChildCount;
 
             for (int i = 0; i < ProxyCount; ++i)
@@ -345,8 +351,8 @@ namespace Alis.Core.Physic.Dynamics
                 proxy.Fixture = this;
                 proxy.ChildIndex = i;
                 GetShape.ComputeAabb(out proxy.Aabb, ref xf, i);
-                proxy.ProxyId = broadPhaseFixtureNode.AddProxy(ref proxy.Aabb);
-                broadPhaseFixtureNode.SetProxy(proxy.ProxyId, ref proxy);
+                proxy.ProxyId = broadPhase.AddProxy(ref proxy.Aabb);
+                broadPhase.SetProxy(proxy.ProxyId, ref proxy);
 
                 Proxies[i] = proxy;
             }
@@ -355,12 +361,13 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Destroys the proxies using the specified broad phase
         /// </summary>
-        /// <param name="broadPhaseFixtureNode">The broad phase</param>
-        internal void DestroyProxies(IBroadPhaseFixture broadPhaseFixtureNode)
+        /// <param name="broadPhase">The broad phase</param>
+        internal void DestroyProxies(IBroadPhase broadPhase)
         {
+            // OnDestroy proxies in the broad-phase.
             for (int i = 0; i < ProxyCount; ++i)
             {
-                broadPhaseFixtureNode.RemoveProxy(Proxies[i].ProxyId);
+                broadPhase.RemoveProxy(Proxies[i].ProxyId);
                 Proxies[i].ProxyId = -1;
             }
 
@@ -370,15 +377,16 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Synchronizes the broad phase
         /// </summary>
-        /// <param name="broadPhaseFixtureNode">The broad phase</param>
+        /// <param name="broadPhase">The broad phase</param>
         /// <param name="transform1">The transform</param>
         /// <param name="transform2">The transform</param>
-        internal void Synchronize(IBroadPhaseFixture broadPhaseFixtureNode, ref ControllerTransform transform1, ref ControllerTransform transform2)
+        internal void Synchronize(IBroadPhase broadPhase, ref ControllerTransform transform1, ref ControllerTransform transform2)
         {
             for (int i = 0; i < ProxyCount; ++i)
             {
                 FixtureProxy proxy = Proxies[i];
 
+                // Compute an AABB that covers the swept Shape (may miss some rotation effect).
                 GetShape.ComputeAabb(out Aabb aabb1, ref transform1, proxy.ChildIndex);
                 GetShape.ComputeAabb(out Aabb aabb2, ref transform2, proxy.ChildIndex);
 
@@ -386,7 +394,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 Vector2F displacement = transform2.Position - transform1.Position;
 
-                broadPhaseFixtureNode.MoveProxy(proxy.ProxyId, ref proxy.Aabb, displacement);
+                broadPhase.MoveProxy(proxy.ProxyId, ref proxy.Aabb, displacement);
             }
         }
 

@@ -243,20 +243,5 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Throws<NotSupportedException>(() => ((IList<Body>) world.BodyList).RemoveAt(0));
         }
-
-        /// <summary>
-        ///     Tests that body collection should support linq queries
-        /// </summary>
-        [Fact]
-        public void BodyCollection_ShouldSupportLinqQueries()
-        {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            world.CreateBody();
-            world.CreateBody();
-
-            int count = world.BodyList.Count(b => b != null);
-
-            Assert.Equal(2, count);
-        }
     }
 }

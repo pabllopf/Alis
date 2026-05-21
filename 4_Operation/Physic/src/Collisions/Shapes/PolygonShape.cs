@@ -444,7 +444,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
             }
         }
 
-        private static Vector2F InterpolateVertex(float[] depths, int index1, int index2, float lambda)
+        private Vector2F InterpolateVertex(float[] depths, int index1, int index2, float lambda)
         {
             return new Vector2F(
                 Vertices[index1].X * (1 - lambda) + Vertices[index2].X * lambda,

@@ -59,15 +59,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private float _beta;
 
         /// <summary>
+        ///     The damping ratio
+        /// </summary>
+        private float _dampingRatio;
+
+        /// <summary>
+        ///     The frequency
+        /// </summary>
+        private float _frequency;
+
+        /// <summary>
         ///     The gamma
         /// </summary>
         private float _gamma;
 
+        // Solver shared
         /// <summary>
         ///     The impulse
         /// </summary>
         private Vector2F _impulse;
 
+        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>
@@ -89,6 +101,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private Mat22 _mass;
 
         /// <summary>
+        ///     The max force
+        /// </summary>
+        private float _maxForce;
+
+        /// <summary>
         ///     The
         /// </summary>
         private Vector2F _rA;
@@ -97,21 +114,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The world anchor
         /// </summary>
         private Vector2F _worldAnchor;
-
-        /// <summary>
-        ///     The maximum force
-        /// </summary>
-        private float _maxForce;
-
-        /// <summary>
-        ///     The frequency
-        /// </summary>
-        private float _frequency;
-
-        /// <summary>
-        ///     The damping ratio
-        /// </summary>
-        private float _dampingRatio;
 
         /// <summary>
         ///     The
@@ -231,12 +233,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float mass = BodyA.Mass;
 
+            // Frequency
             float omega = Constant.Tau * Frequency;
 
+            // Damping coefficient
             float d = 2.0f * mass * DampingRatio * omega;
 
+            // Spring stiffness
             float kKk = mass * (omega * omega);
 
+            // magic formulas
+            // gamma has units of inverse mass.
+            // beta has units of inverse time.
             float h = data.Step.Dt;
             _gamma = h * (d + h * kKk);
             if (Math.Abs(_gamma) > SettingEnv.Epsilon)
@@ -246,7 +254,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             _beta = h * kKk * _gamma;
 
+            // Compute the effective mass matrix.
             _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
+            // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
+            //      = [1/m1+1/m2     0    ] + invI1 * [r1.Y*r1.Y -r1.X*r1.Y] + invI2 * [r1.Y*r1.Y -r1.X*r1.Y]
+            //        [    0     1/m1+1/m2]           [-r1.X*r1.Y r1.X*r1.X]           [-r1.X*r1.Y r1.X*r1.X]
             Mat22 k = new Mat22();
             k.Ex.X = _invMassA + invIa * _rA.Y * _rA.Y + _gamma;
             k.Ex.Y = -invIa * _rA.X * _rA.Y;
@@ -258,6 +270,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             c = cA + _rA - _worldAnchor;
             c *= _beta;
 
+            // Cheat with some damping
             wA *= 0.98f;
 
             if (data.Step.WarmStarting)
@@ -284,6 +297,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2F vA = data.Velocities[_indexA].V;
             float wA = data.Velocities[_indexA].W;
 
+            // Cdot = v + cross(w, r)
             Vector2F cdot = vA + MathUtils.Cross(wA, ref _rA);
             Vector2F impulse = MathUtils.Mul(ref _mass, -(cdot + c + _gamma * _impulse));
 

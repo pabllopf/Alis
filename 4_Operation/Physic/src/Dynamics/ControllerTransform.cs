@@ -118,6 +118,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="right">The right</param>
         /// <returns>The vector</returns>
         public static Vector2F Multiply(ref Vector2F left, ref ControllerTransform right) =>
+            // Opt: var result = Complex.Multiply(left, right.q) + right.p;
             new Vector2F(
                 left.X * right.Rotation.R - left.Y * right.Rotation.I + right.Position.X,
                 left.Y * right.Rotation.R + left.X * right.Rotation.I + right.Position.Y);
@@ -138,6 +139,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The vector</returns>
         public static Vector2F Divide(ref Vector2F left, ref ControllerTransform right)
         {
+            // Opt: var result = Complex.Divide(left - right.p, right);
             float px = left.X - right.Position.X;
             float py = left.Y - right.Position.Y;
             return new Vector2F(
@@ -153,6 +155,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="result">The result</param>
         public static void Divide(Vector2F left, ref ControllerTransform right, out Vector2F result)
         {
+            // Opt: var result = Complex.Divide(left - right.p, right);
             float px = left.X - right.Position.X;
             float py = left.Y - right.Position.Y;
             result = new Vector2F(
@@ -169,19 +172,6 @@ namespace Alis.Core.Physic.Dynamics
         public static ControllerTransform Multiply(ref ControllerTransform left, ref ControllerTransform right) => new ControllerTransform(
             Complex.Multiply(ref left.Position, ref right.Rotation) + right.Position,
             Complex.Multiply(ref left.Rotation, ref right.Rotation));
-
-        /// <summary>
-        ///     Multiplies the left
-        /// </summary>
-        /// <param name="left">The left</param>
-        /// <param name="right">The right</param>
-        /// <param name="result">The result</param>
-        public static void Multiply(ref ControllerTransform left, Complex right, out ControllerTransform result)
-        {
-            result.Position = Complex.Multiply(ref left.Position, ref right);
-            result.Rotation = Complex.Multiply(ref left.Rotation, ref right);
-            result.Scale = Complex.Multiply(ref left.Scale, ref right);
-        }
 
         /// <summary>
         ///     Divides the left
@@ -204,6 +194,19 @@ namespace Alis.Core.Physic.Dynamics
             Complex.Divide(left.Position - right.Position, ref right.Rotation, out result.Position);
             Complex.Divide(ref left.Rotation, ref right.Rotation, out result.Rotation);
             result.Scale = left.Scale / right.Scale;
+        }
+
+        /// <summary>
+        ///     Multiplies the left
+        /// </summary>
+        /// <param name="left">The left</param>
+        /// <param name="right">The right</param>
+        /// <param name="result">The result</param>
+        public static void Multiply(ref ControllerTransform left, Complex right, out ControllerTransform result)
+        {
+            result.Position = Complex.Multiply(ref left.Position, ref right);
+            result.Rotation = Complex.Multiply(ref left.Rotation, ref right);
+            result.Scale = Complex.Multiply(ref left.Scale, ref right);
         }
 
         /// <summary>

@@ -65,13 +65,14 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="lerpCount"></param>
         /// <param name="combine"></param>
         /// <returns></returns>
-        internal static List<Vertices> DetectSquares(Aabb domain, float cellWidth, float cellHeight, sbyte[,] f,
+        public static List<Vertices> DetectSquares(Aabb domain, float cellWidth, float cellHeight, sbyte[,] f,
             int lerpCount, bool combine)
         {
             CxFastList<GeomPoly> ret = new CxFastList<GeomPoly>();
 
             List<Vertices> verticesList = new List<Vertices>();
 
+            //NOTE: removed assignments as they were not used.
             List<GeomPoly> polyList;
             GeomPoly gp;
 
@@ -92,6 +93,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             sbyte[,] fs = new sbyte[xn + 1, yn + 1];
             GeomPolyVal[,] ps = new GeomPolyVal[xn + 1, yn + 1];
 
+            //populate shared function lookups.
             for (int x = 0; x < xn + 1; x++)
             {
                 int x0;
@@ -120,6 +122,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                 }
             }
 
+            //generate sub-polys and combine to scan lines
             for (int y = 0; y < yn; y++)
             {
                 float y0 = y * cellHeight + domain.LowerBound.Y;
@@ -185,6 +188,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                 return verticesList;
             }
 
+            //combine scan lines together
             for (int y = 1; y < yn; y++)
             {
                 int x = 0;
@@ -192,18 +196,21 @@ namespace Alis.Core.Physic.Common.TextureTools
                 {
                     GeomPolyVal p = ps[x, y];
 
+                    //skip along scan line if no polygon exists at this point
                     if (p == null)
                     {
                         x++;
                         continue;
                     }
 
+                    //skip along if current polygon cannot be combined above.
                     if ((p.Key & 12) == 0)
                     {
                         x++;
                         continue;
                     }
 
+                    //skip along if no polygon exists above.
                     GeomPolyVal u = ps[x, y - 1];
                     if (u == null)
                     {
@@ -211,6 +218,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                         continue;
                     }
 
+                    //skip along if polygon above cannot be combined with.
                     if ((u.Key & 3) == 0)
                     {
                         x++;
@@ -223,18 +231,22 @@ namespace Alis.Core.Physic.Common.TextureTools
                     CxFastList<Vector2F> bp = p.GeomP.Points;
                     CxFastList<Vector2F> ap = u.GeomP.Points;
 
+                    //skip if it's already been combined with above polygon
                     if (u.GeomP == p.GeomP)
                     {
                         x++;
                         continue;
                     }
 
+                    //combine above (but disallow the hole thingies
                     CxFastListNode<Vector2F> bi = bp.Begin();
                     while (Square(bi.GetElem().Y - ay) > SettingEnv.Epsilon || bi.GetElem().X < ax)
                     {
                         bi = bi.NextPos();
                     }
 
+                    //NOTE: Unused
+                    //Vector2F b0 = bi.elem();
                     Vector2F b1 = bi.NextPos().GetElem();
                     if (Square(b1.Y - ay) > SettingEnv.Epsilon)
                     {
@@ -279,6 +291,8 @@ namespace Alis.Core.Physic.Common.TextureTools
                         u.GeomP.Length++;
                     }
 
+                    //u.p.simplify(float.Epsilon,float.Epsilon);
+                    //
                     ax = x + 1;
                     while (ax < xn)
                     {
@@ -311,6 +325,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     p.GeomP = u.GeomP;
 
                     x = (int) ((bi.NextPos().GetElem().X - domain.LowerBound.X) / cellWidth) + 1;
+                    //x++; this was already commented out!
                 }
             }
 
@@ -429,74 +444,94 @@ namespace Alis.Core.Physic.Common.TextureTools
         internal static int MarchSquare(sbyte[,] f, sbyte[,] fs, ref GeomPoly poly, int ax, int ay, float x0, float y0,
             float x1, float y1, int bin)
         {
+            //key lookup
+            int key = 0;
             sbyte v0 = fs[ax, ay];
-            sbyte v1 = fs[ax + 1, ay];
-            sbyte v2 = fs[ax + 1, ay + 1];
-            sbyte v3 = fs[ax, ay + 1];
+            if (v0 < 0)
+            {
+                key |= 8;
+            }
 
-            int key = CalculateMarchingKey(fs, ax, ay);
+            sbyte v1 = fs[ax + 1, ay];
+            if (v1 < 0)
+            {
+                key |= 4;
+            }
+
+            sbyte v2 = fs[ax + 1, ay + 1];
+            if (v2 < 0)
+            {
+                key |= 2;
+            }
+
+            sbyte v3 = fs[ax, ay + 1];
+            if (v3 < 0)
+            {
+                key |= 1;
+            }
 
             int val = LookMarch[key];
             if (val != 0)
             {
-                InsertInterpolatedPoints(ref poly, val, x0, y0, x1, y1, v0, v1, v2, v3, f, bin);
-            }
-
-            return key;
-        }
-
-        private static int CalculateMarchingKey(sbyte[,] fs, int ax, int ay)
-        {
-            int key = 0;
-            if (fs[ax, ay] < 0) key |= 8;
-            if (fs[ax + 1, ay] < 0) key |= 4;
-            if (fs[ax + 1, ay + 1] < 0) key |= 2;
-            if (fs[ax, ay + 1] < 0) key |= 1;
-            return key;
-        }
-
-        private static void InsertInterpolatedPoints(ref GeomPoly poly, int val, float x0, float y0, float x1, float y1, sbyte v0, sbyte v1, sbyte v2, sbyte v3, sbyte[,] f, int bin)
-        {
-            CxFastListNode<Vector2F> pi = null;
-
-            for (int i = 0; i < 8; i++)
-            {
-                if ((val & (1 << i)) != 0)
+                CxFastListNode<Vector2F> pi = null;
+                for (int i = 0; i < 8; i++)
                 {
-                    Vector2F p = CalculateIntersectionPoint(i, val, x0, y0, x1, y1, v0, v1, v2, v3, f, bin);
-                    pi = poly.Points.Insert(pi, p);
-                    poly.Length++;
+                    Vector2F p;
+                    if ((val & (1 << i)) != 0)
+                    {
+                        if ((i == 7) && ((val & 1) == 0))
+                        {
+                            poly.Points.Add(p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin)));
+                        }
+                        else
+                        {
+                            if (i == 0)
+                            {
+                                p = new Vector2F(x0, y0);
+                            }
+                            else if (i == 2)
+                            {
+                                p = new Vector2F(x1, y0);
+                            }
+                            else if (i == 4)
+                            {
+                                p = new Vector2F(x1, y1);
+                            }
+                            else if (i == 6)
+                            {
+                                p = new Vector2F(x0, y1);
+                            }
+
+                            else if (i == 1)
+                            {
+                                p = new Vector2F(Xlerp(x0, x1, y0, v0, v1, f, bin), y0);
+                            }
+                            else if (i == 5)
+                            {
+                                p = new Vector2F(Xlerp(x0, x1, y1, v3, v2, f, bin), y1);
+                            }
+
+                            else if (i == 3)
+                            {
+                                p = new Vector2F(x1, Ylerp(y0, y1, x1, v1, v2, f, bin));
+                            }
+                            else
+                            {
+                                p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin));
+                            }
+
+                            pi = poly.Points.Insert(pi, p);
+                        }
+
+                        poly.Length++;
+                    }
                 }
-            }
-        }
-
-        private static Vector2F CalculateIntersectionPoint(int i, int val, float x0, float y0, float x1, float y1, sbyte v0, sbyte v1, sbyte v2, sbyte v3, sbyte[,] f, int bin)
-        {
-            if ((i == 7) && ((val & 1) == 0))
-            {
-                return new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin));
+                //poly.simplify(float.Epsilon,float.Epsilon);
             }
 
-            return i switch
-            {
-                0 or 2 or 4 or 6 => GetCornerPoint(i, x0, y0, x1, y1),
-                1 => new Vector2F(Xlerp(x0, x1, y0, v0, v1, f, bin), y0),
-                5 => new Vector2F(Xlerp(x0, x1, y1, v3, v2, f, bin), y1),
-                3 => new Vector2F(x1, Ylerp(y0, y1, x1, v1, v2, f, bin)),
-                _ => new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin))
-            };
+            return key;
         }
 
-        private static Vector2F GetCornerPoint(int i, float x0, float y0, float x1, float y1) => i switch
-        {
-            0 => new Vector2F(x0, y0),
-            2 => new Vector2F(x1, y0),
-            4 => new Vector2F(x1, y1),
-            6 => new Vector2F(x0, y1),
-            _ => throw new InvalidOperationException()
-        };
-
-        private static bool IsParallel(Vector2F u, Vector2F v) => VecCross(u, v) * VecCross(u, v) < SettingEnv.Epsilon;
 
         /// <summary>
         ///     Combs the left using the specified polya
@@ -517,71 +552,76 @@ namespace Alis.Core.Physic.Common.TextureTools
                 Vector2F a = ai.GetElem();
                 if (VecDsq(a, b) < SettingEnv.Epsilon)
                 {
-                    RemoveParallelVertexBefore(ai, prea, ap, ref ai);
-                    InsertPolygonVertices(ref ai, ref polya, bp, ap);
-                    RemoveParallelVertexAfter(ai, out CxFastListNode<Vector2F> preb, ap, polya);
+                    //ignore shared vertex if parallel
+                    if (prea != null)
+                    {
+                        Vector2F a0 = prea.GetElem();
+                        b = bi.NextPos().GetElem();
+
+                        Vector2F u = a - a0;
+                        //vec_new(u); vec_sub(a.p.p, a0.p.p, u);
+                        Vector2F v = b - a;
+                        //vec_new(v); vec_sub(b.p.p, a.p.p, v);
+                        float dot = VecCross(u, v);
+                        if (dot * dot < SettingEnv.Epsilon)
+                        {
+                            ap.Erase(prea, ai);
+                            polya.Length--;
+                            ai = prea;
+                        }
+                    }
+
+                    //insert polyb into polya
+                    bool fst = true;
+                    CxFastListNode<Vector2F> preb = null;
+                    while (!bp.Empty())
+                    {
+                        Vector2F bb = bp.Front();
+                        bp.Pop();
+                        if (!fst && !bp.Empty())
+                        {
+                            ai = ap.Insert(ai, bb);
+                            polya.Length++;
+                            preb = ai;
+                        }
+
+                        fst = false;
+                    }
+
+                    //ignore shared vertex if parallel
+                    ai = ai.NextPos();
+                    Vector2F a1 = ai.GetElem();
+                    ai = ai.NextPos();
+                    if (ai == ap.End())
+                    {
+                        ai = ap.Begin();
+                    }
+
+                    Vector2F a2 = ai.GetElem();
+                    if (preb != null)
+                    {
+                        Vector2F a00 = preb.GetElem();
+                        Vector2F uu = a1 - a00;
+                        //vec_new(u); vec_sub(a1.p, a0.p, u);
+                        Vector2F vv = a2 - a1;
+                        //vec_new(v); vec_sub(a2.p, a1.p, v);
+                        float dot1 = VecCross(uu, vv);
+                        if (dot1 * dot1 < SettingEnv.Epsilon)
+                        {
+                            ap.Erase(preb, preb.NextPos());
+                            polya.Length--;
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("preb is null");
+                    }
+
                     return;
                 }
 
                 prea = ai;
                 ai = ai.NextPos();
-            }
-        }
-
-        private static void RemoveParallelVertexBefore(CxFastListNode<Vector2F> ai, CxFastListNode<Vector2F> prea, CxFastList<Vector2F> ap, ref CxFastListNode<Vector2F> current)
-        {
-            if (prea == null) return;
-
-            Vector2F a0 = prea.GetElem();
-            Vector2F a = ai.GetElem();
-            Vector2F b = ai.NextPos().GetElem();
-
-            if (IsParallel(a - a0, b - a))
-            {
-                ap.Erase(prea, ai);
-                current = prea;
-            }
-        }
-
-        private static void InsertPolygonVertices(ref CxFastListNode<Vector2F> ai, ref GeomPoly polya, CxFastList<Vector2F> bp, CxFastList<Vector2F> ap)
-        {
-            bool fst = true;
-            CxFastListNode<Vector2F> preb = null;
-            while (!bp.Empty())
-            {
-                Vector2F bb = bp.Front();
-                bp.Pop();
-                if (!fst && !bp.Empty())
-                {
-                    ai = ap.Insert(ai, bb);
-                    polya.Length++;
-                    preb = ai;
-                }
-
-                fst = false;
-            }
-        }
-
-        private static void RemoveParallelVertexAfter(CxFastListNode<Vector2F> ai, out CxFastListNode<Vector2F> preb, CxFastList<Vector2F> ap, GeomPoly polya)
-        {
-            preb = null;
-            ai = ai.NextPos();
-            Vector2F a1 = ai.GetElem();
-            ai = ai.NextPos();
-            if (ai == ap.End())
-            {
-                ai = ap.Begin();
-            }
-
-            Vector2F a2 = ai.GetElem();
-            if (preb != null)
-            {
-                Vector2F a00 = preb.GetElem();
-                if (IsParallel(a1 - a00, a2 - a1))
-                {
-                    ap.Erase(preb, preb.NextPos());
-                    polya.Length--;
-                }
             }
         }
 
@@ -596,6 +636,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             /// </summary>
             internal int _count;
 
+            // first node in the list
             /// <summary>
             ///     The head
             /// </summary>
@@ -654,8 +695,11 @@ namespace Alis.Core.Physic.Common.TextureTools
                     {
                         do
                         {
+                            // if we are on the value to be removed
                             if (comparer.Equals(head.Elt, value))
                             {
+                                // then we need to patch the list
+                                // check to see if we are removing the _head
                                 if (head == _head)
                                 {
                                     _head = head.Next;
@@ -663,11 +707,13 @@ namespace Alis.Core.Physic.Common.TextureTools
                                     return true;
                                 }
 
+                                // were not at the head
                                 prev.Next = head.Next;
                                 _count--;
                                 return true;
                             }
 
+                            // cache the current as the previous for the next go around
                             prev = head;
                             head = head.Next;
                         } while (head != null);
@@ -712,6 +758,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             /// </summary>
             public CxFastListNode<T> Erase(CxFastListNode<T> prev, CxFastListNode<T> node)
             {
+                // cache the node after the node to be removed
                 CxFastListNode<T> nextNode = node.Next;
                 if (prev != null)
                 {
@@ -781,6 +828,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             /// </summary>
             public bool Has(T value) => Find(value) != null;
 
+            // Non CxFastList Methods 
             /// <summary>
             ///     Finds the value
             /// </summary>
@@ -788,6 +836,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             /// <returns>A cx fast list node of t</returns>
             public CxFastListNode<T> Find(T value)
             {
+                // start at head
                 CxFastListNode<T> head = _head;
                 EqualityComparer<T> comparer = EqualityComparer<T>.Default;
                 if (head != null)

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:BroadPhaseFixtureTest.cs
+//  File:IBroadPhaseTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Test.Collisions
     /// <summary>
     ///     The i broad phase test class
     /// </summary>
-    public class BroadPhaseFixtureTest
+    public class IBroadPhaseTest
     {
         /// <summary>
         ///     Tests that i broad phase should be interface
@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void IBroadPhase_ShouldBeInterface()
         {
-            Type type = typeof(IBroadPhaseFixture);
+            Type type = typeof(IBroadPhase);
 
             Assert.True(type.IsInterface);
         }
@@ -57,9 +57,9 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void TestBroadPhase_ShouldImplementIBroadPhase()
         {
-            TestBroadPhaseFixtureNode broadPhaseFixtureNode = new TestBroadPhaseFixtureNode();
+            TestBroadPhase broadPhase = new TestBroadPhase();
 
-            Assert.IsAssignableFrom<IBroadPhaseFixture>(broadPhaseFixtureNode);
+            Assert.IsAssignableFrom<IBroadPhase>(broadPhase);
         }
 
         /// <summary>
@@ -68,12 +68,12 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void AddProxy_ShouldIncreaseProxyCount()
         {
-            TestBroadPhaseFixtureNode broadPhaseFixtureNode = new TestBroadPhaseFixtureNode();
+            TestBroadPhase broadPhase = new TestBroadPhase();
             Aabb aabb = new Aabb(Vector2F.Zero, new Vector2F(10, 10));
 
-            broadPhaseFixtureNode.AddProxy(ref aabb);
+            broadPhase.AddProxy(ref aabb);
 
-            Assert.Equal(1, broadPhaseFixtureNode.ProxyCount);
+            Assert.Equal(1, broadPhase.ProxyCount);
         }
 
         /// <summary>
@@ -82,13 +82,13 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void RemoveProxy_ShouldDecreaseProxyCount()
         {
-            TestBroadPhaseFixtureNode broadPhaseFixtureNode = new TestBroadPhaseFixtureNode();
+            TestBroadPhase broadPhase = new TestBroadPhase();
             Aabb aabb = new Aabb(Vector2F.Zero, new Vector2F(10, 10));
-            int proxyId = broadPhaseFixtureNode.AddProxy(ref aabb);
+            int proxyId = broadPhase.AddProxy(ref aabb);
 
-            broadPhaseFixtureNode.RemoveProxy(proxyId);
+            broadPhase.RemoveProxy(proxyId);
 
-            Assert.Equal(0, broadPhaseFixtureNode.ProxyCount);
+            Assert.Equal(0, broadPhase.ProxyCount);
         }
 
         /// <summary>
@@ -97,9 +97,9 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void TestOverlap_ShouldBeCallable()
         {
-            TestBroadPhaseFixtureNode broadPhaseFixtureNode = new TestBroadPhaseFixtureNode();
+            TestBroadPhase broadPhase = new TestBroadPhase();
 
-            bool result = broadPhaseFixtureNode.TestOverlap(0, 1);
+            bool result = broadPhase.TestOverlap(0, 1);
 
             Assert.False(result);
         }
@@ -110,13 +110,13 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void MoveProxy_ShouldBeCallable()
         {
-            TestBroadPhaseFixtureNode broadPhaseFixtureNode = new TestBroadPhaseFixtureNode();
+            TestBroadPhase broadPhase = new TestBroadPhase();
             Aabb aabb = new Aabb(Vector2F.Zero, new Vector2F(10, 10));
             Vector2F displacement = new Vector2F(1, 1);
 
-            broadPhaseFixtureNode.MoveProxy(0, ref aabb, displacement);
+            broadPhase.MoveProxy(0, ref aabb, displacement);
 
-            Assert.NotNull(broadPhaseFixtureNode);
+            Assert.NotNull(broadPhase);
         }
 
         /// <summary>
@@ -125,9 +125,9 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void GetFatAabb_ShouldBeCallable()
         {
-            TestBroadPhaseFixtureNode broadPhaseFixtureNode = new TestBroadPhaseFixtureNode();
+            TestBroadPhase broadPhase = new TestBroadPhase();
 
-            broadPhaseFixtureNode.GetFatAabb(0, out Aabb aabb);
+            broadPhase.GetFatAabb(0, out Aabb aabb);
 
             Assert.NotNull(aabb);
         }
@@ -138,12 +138,12 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void ShiftOrigin_ShouldBeCallable()
         {
-            TestBroadPhaseFixtureNode broadPhaseFixtureNode = new TestBroadPhaseFixtureNode();
+            TestBroadPhase broadPhase = new TestBroadPhase();
             Vector2F newOrigin = new Vector2F(100, 100);
 
-            broadPhaseFixtureNode.ShiftOrigin(newOrigin);
+            broadPhase.ShiftOrigin(newOrigin);
 
-            Assert.NotNull(broadPhaseFixtureNode);
+            Assert.NotNull(broadPhase);
         }
 
         /// <summary>
@@ -152,9 +152,9 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void GetTreeHeight_ShouldReturnValue()
         {
-            TestBroadPhaseFixtureNode broadPhaseFixtureNode = new TestBroadPhaseFixtureNode();
+            TestBroadPhase broadPhase = new TestBroadPhase();
 
-            int height = broadPhaseFixtureNode.GetTreeHeight();
+            int height = broadPhase.GetTreeHeight();
 
             Assert.Equal(0, height);
         }
@@ -165,9 +165,9 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void GetTreeBalance_ShouldReturnValue()
         {
-            TestBroadPhaseFixtureNode broadPhaseFixtureNode = new TestBroadPhaseFixtureNode();
+            TestBroadPhase broadPhase = new TestBroadPhase();
 
-            int balance = broadPhaseFixtureNode.GetTreeBalance();
+            int balance = broadPhase.GetTreeBalance();
 
             Assert.Equal(0, balance);
         }
@@ -178,9 +178,9 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void GetTreeQuality_ShouldReturnValue()
         {
-            TestBroadPhaseFixtureNode broadPhaseFixtureNode = new TestBroadPhaseFixtureNode();
+            TestBroadPhase broadPhase = new TestBroadPhase();
 
-            float quality = broadPhaseFixtureNode.GetTreeQuality();
+            float quality = broadPhase.GetTreeQuality();
 
             Assert.Equal(1.0f, quality);
         }
@@ -188,8 +188,8 @@ namespace Alis.Core.Physic.Test.Collisions
         /// <summary>
         ///     The test broad phase class
         /// </summary>
-        /// <seealso cref="IBroadPhaseFixtureNode" />
-        private class TestBroadPhaseFixtureNode : IBroadPhaseFixture
+        /// <seealso cref="IBroadPhase" />
+        private class TestBroadPhase : IBroadPhase
         {
             /// <summary>
             ///     Gets the value of the proxy count

@@ -30,6 +30,7 @@
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Logging;
+using Alis.Extension.Thread.Attributes;
 using Alis.Extension.Thread.Builder;
 using Alis.Extension.Thread.Configuration;
 using Alis.Extension.Thread.Integration;

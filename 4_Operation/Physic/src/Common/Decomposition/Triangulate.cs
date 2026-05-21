@@ -59,7 +59,10 @@ namespace Alis.Core.Physic.Common.Decomposition
             switch (algorithm)
             {
                 case TriangulationAlgorithm.Earclip:
-                    if (!skipSanityChecks && vertices.IsCounterClockWise())
+                    if (skipSanityChecks)
+                    {
+                    }
+                    else if (vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
                         temp.Reverse();
@@ -69,7 +72,10 @@ namespace Alis.Core.Physic.Common.Decomposition
                     results = EarclipDecomposer.ConvexPartition(vertices, tolerance);
                     break;
                 case TriangulationAlgorithm.Bayazit:
-                    if (!skipSanityChecks && !vertices.IsCounterClockWise())
+                    if (skipSanityChecks)
+                    {
+                    }
+                    else if (!vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
                         temp.Reverse();
@@ -79,7 +85,10 @@ namespace Alis.Core.Physic.Common.Decomposition
                     results = BayazitDecomposer.ConvexPartition(vertices);
                     break;
                 case TriangulationAlgorithm.Flipcode:
-                    if (!skipSanityChecks && !vertices.IsCounterClockWise())
+                    if (skipSanityChecks)
+                    {
+                    }
+                    else if (!vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
                         temp.Reverse();

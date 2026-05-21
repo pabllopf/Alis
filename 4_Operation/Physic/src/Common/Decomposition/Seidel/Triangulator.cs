@@ -37,6 +37,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
     /// </summary>
     internal class Triangulator
     {
+        // Initialize trapezoidal map and query structure
         /// <summary>
         ///     The bounding box
         /// </summary>
@@ -67,6 +68,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         private readonly List<MonotoneMountain> _xMonoPoly;
 
+        // Trapezoid decomposition list
         /// <summary>
         ///     The trapezoids
         /// </summary>
@@ -96,6 +98,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Process();
         }
 
+        // Build the trapezoidal map and query graph
         /// <summary>
         ///     Processes this instance
         /// </summary>
@@ -116,15 +119,15 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
                     if (cp && cq)
                     {
-                        tList = TrapezoidalMap.Case1(t, edge);
+                        tList = _trapezoidalMap.Case1(t, edge);
                         _queryGraph.Case1(t.Sink, edge, tList);
                     }
-                    else if (cp)
+                    else if (cp && !cq)
                     {
                         tList = _trapezoidalMap.Case2(t, edge);
                         _queryGraph.Case2(t.Sink, edge, tList);
                     }
-                    else if (!cq)
+                    else if (!cp && !cq)
                     {
                         tList = _trapezoidalMap.Case3(t, edge);
                         _queryGraph.Case3(t.Sink, edge, tList);
@@ -165,6 +168,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             CreateMountains();
         }
 
+        // Build a list of x-monotone mountains
         /// <summary>
         ///     Creates the mountains
         /// </summary>
@@ -205,6 +209,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             }
         }
 
+        // Mark the outside trapezoids surrounding the polygon
         /// <summary>
         ///     Marks the outside using the specified t
         /// </summary>
@@ -217,6 +222,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             }
         }
 
+        // Create segments and connect end points; update edge event pointer
         /// <summary>
         ///     Inits the edges using the specified points
         /// </summary>
@@ -289,6 +295,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         }
 
         // Prevents any two distinct endpoints from lying on a common vertical line, and avoiding
+        // the degenerate case. See Mark de Berg et al, Chapter 6.3
         /// <summary>
         ///     Shears the transform using the specified point
         /// </summary>

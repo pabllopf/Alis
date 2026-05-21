@@ -249,6 +249,7 @@ namespace Alis.Core.Physic.Dynamics
                 Force = Vector2F.Zero;
                 Torque = 0.0f;
 
+                // Delete the attached contacts.
                 ContactEdge ce = ContactList;
                 while (ce != null)
                 {
@@ -261,10 +262,11 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (GetWorldPhysic != null)
                 {
-                    IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
+                    // Touch the proxies so that new contacts will be created (when appropriate)
+                    IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
                     foreach (Fixture fixture in FixtureList)
                     {
-                        fixture.TouchProxies(broadPhaseFixtureNode);
+                        fixture.TouchProxies(broadPhase);
                     }
                 }
             }
@@ -431,6 +433,7 @@ namespace Alis.Core.Physic.Dynamics
                         CreateProxies();
                     }
 
+                    // Contacts are created the next time step.
                 }
                 else
                 {
@@ -553,10 +556,12 @@ namespace Alis.Core.Physic.Dynamics
                     return;
                 }
 
+                // Move center of mass.
                 Vector2F oldCenter = Sweep.C;
                 Sweep.LocalCenter = value;
                 Sweep.C0 = Sweep.C = ControllerTransform.Multiply(ref Sweep.LocalCenter, ref Xf);
 
+                // Update center of mass velocity.
                 Vector2F a = Sweep.C - oldCenter;
                 LinearVelocityInternal += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
             }
@@ -633,10 +638,10 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void CreateProxies()
         {
-            IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
+            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList.List[i].CreateProxies(broadPhaseFixtureNode, ref Xf);
+                FixtureList.List[i].CreateProxies(broadPhase, ref Xf);
             }
         }
 
@@ -645,10 +650,10 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void DestroyProxies()
         {
-            IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
+            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList.List[i].DestroyProxies(broadPhaseFixtureNode);
+                FixtureList.List[i].DestroyProxies(broadPhase);
             }
         }
 
@@ -717,6 +722,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 #endif
 
+            // Adjust mass properties if needed.
             if (fixture.GetShape.Density > 0.0f)
             {
                 ResetMassData();
@@ -726,10 +732,12 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if (Enabled)
                 {
-                    IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
-                    fixture.CreateProxies(broadPhaseFixtureNode, ref Xf);
+                    IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
+                    fixture.CreateProxies(broadPhase, ref Xf);
                 }
 
+                // Let the world know we have a new fixture. This will cause new contacts
+                // to be created at the beginning of the next time step.
                 GetWorldPhysic.WorldHasNewFixture = true;
 
                 FixtureDelegate fixtureAddedHandler = GetWorldPhysic.FixtureAdded;
@@ -767,6 +775,7 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentException("You are removing a fixture that does not belong to this Body.", "fixture");
             }
 
+            // OnDestroy any contacts associated with the fixture.
             ContactEdge edge = ContactList;
             while (edge != null)
             {
@@ -778,14 +787,16 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (fixture == fixtureA || fixture == fixtureB)
                 {
+                    // This destroys the contact and removes it from
+                    // this body's contact list.
                     GetWorldPhysic.ContactManager.Destroy(c);
                 }
             }
 
             if (Enabled)
             {
-                IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
-                fixture.DestroyProxies(broadPhaseFixtureNode);
+                IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
+                fixture.DestroyProxies(broadPhase);
             }
 
             fixture.GetBody = null;
@@ -860,10 +871,10 @@ namespace Alis.Core.Physic.Dynamics
             Sweep.C0 = Sweep.C;
             Sweep.A0 = angle;
 
-            IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
+            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList.List[i].Synchronize(broadPhaseFixtureNode, ref Xf, ref Xf);
+                FixtureList.List[i].Synchronize(broadPhase, ref Xf, ref Xf);
             }
         }
 
@@ -1044,12 +1055,14 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void ResetMassData()
         {
+            // Compute mass data from shapes. Each shape has its own density.
             _mass = 0.0f;
             InvMass = 0.0f;
             _inertia = 0.0f;
             InvI = 0.0f;
             Sweep.LocalCenter = Vector2F.Zero;
 
+            // Kinematic bodies have zero mass.
             if (GetBodyType == BodyType.Kinematic)
             {
                 Sweep.C0 = Xf.Position;
@@ -1058,6 +1071,7 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
+            // Accumulate mass over all fixtures.
             Vector2F localCenter = Vector2F.Zero;
             foreach (Fixture f in FixtureList)
             {
@@ -1072,12 +1086,14 @@ namespace Alis.Core.Physic.Dynamics
                 _inertia += massData.Inertia;
             }
 
+            //FPE: Static bodies only have mass, they don't have other properties. A little hacky tho...
             if (GetBodyType == BodyType.Static)
             {
                 Sweep.C0 = Sweep.C = Xf.Position;
                 return;
             }
 
+            // Compute center of mass.
             if (_mass > 0.0f)
             {
                 InvMass = 1.0f / _mass;
@@ -1085,12 +1101,14 @@ namespace Alis.Core.Physic.Dynamics
             }
             else
             {
+                // Force all dynamic bodies to have a positive mass.
                 _mass = 1.0f;
                 InvMass = 1.0f;
             }
 
             if ((_inertia > 0.0f) && !_fixedRotation)
             {
+                // Center the inertia about the center of mass.
                 _inertia -= _mass * Vector2F.Dot(localCenter, localCenter);
 
                 InvI = 1.0f / _inertia;
@@ -1101,10 +1119,12 @@ namespace Alis.Core.Physic.Dynamics
                 InvI = 0.0f;
             }
 
+            // Move center of mass.
             Vector2F oldCenter = Sweep.C;
             Sweep.LocalCenter = localCenter;
             Sweep.C0 = Sweep.C = ControllerTransform.Multiply(ref Sweep.LocalCenter, ref Xf);
 
+            // Update center of mass velocity.
             Vector2F a = Sweep.C - oldCenter;
             LinearVelocityInternal += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
         }
@@ -1207,10 +1227,10 @@ namespace Alis.Core.Physic.Dynamics
             ControllerTransform xf1 = new ControllerTransform(Vector2F.Zero, Sweep.A0);
             xf1.Position = Sweep.C0 - Complex.Multiply(ref Sweep.LocalCenter, ref xf1.Rotation);
 
-            IBroadPhaseFixture broadPhaseFixtureNode = GetWorldPhysic.ContactManager.BroadPhaseFixtureNode;
+            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
-                FixtureList.List[i].Synchronize(broadPhaseFixtureNode, ref xf1, ref Xf);
+                FixtureList.List[i].Synchronize(broadPhase, ref xf1, ref Xf);
             }
         }
 
@@ -1231,11 +1251,13 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         internal bool ShouldCollide(Body other)
         {
+            // At least one body should be dynamic.
             if ((_bodyType != BodyType.Dynamic) && (other._bodyType != BodyType.Dynamic))
             {
                 return false;
             }
 
+            // Does a joint prevent collision?
             for (JointEdge jn = JointList; jn != null; jn = jn.Next)
             {
                 if (jn.Other == other)
@@ -1256,6 +1278,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="alpha">The alpha</param>
         internal void Advance(float alpha)
         {
+            // Advance to the new safe time. This doesn't sync the broad-phase.
             Sweep.Advance(alpha);
             Sweep.C = Sweep.C0;
             Sweep.A = Sweep.A0;

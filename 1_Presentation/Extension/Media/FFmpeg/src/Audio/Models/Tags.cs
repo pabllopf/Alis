@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Extension.Media.FFmpeg.Audio.Models
 {

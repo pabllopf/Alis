@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorA
         {
             get => BodyA.Position;
-            set => _ = value; // Intentionally ignored for AngleJoint
+            set { }
         }
 
         /// <summary>
@@ -179,6 +179,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>
         internal override bool SolvePositionConstraints(ref SolverData data) =>
+            //no position solving for this joint
             true;
     }
 }

@@ -47,17 +47,17 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2F _tmpA;
+        internal static Vector2F _tmpA;
 
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2F _tmpB;
+        internal static Vector2F _tmpB;
 
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2F _tmpC;
+        internal static Vector2F _tmpC;
 
         /// <summary>
         ///     Decompose the polygon into triangles.
@@ -76,17 +76,21 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             int nv = vertices.Count;
 
+            // Remove nv-2 Vertices, creating 1 triangle every time
             int count = 2 * nv; /* error detection */
 
             List<Vertices> result = new List<Vertices>();
 
             for (int v = nv - 1; nv > 2;)
             {
+                // If we loop, it is probably a non-simple polygon 
                 if (0 >= count--)
                 {
+                    // Triangulate: ERROR - probable bad polygon!
                     return new List<Vertices>();
                 }
 
+                // Three consecutive vertices in current polygon, <u,v,w>
                 int u = v;
                 if (nv <= u)
                 {
@@ -113,12 +117,14 @@ namespace Alis.Core.Physic.Common.Decomposition
                 {
                     int s, t;
 
+                    // Output Triangle
                     Vertices triangle = new Vertices(3);
                     triangle.Add(_tmpA);
                     triangle.Add(_tmpB);
                     triangle.Add(_tmpC);
                     result.Add(triangle);
 
+                    // Remove v from remaining polygon 
                     for (s = v, t = v + 1; t < nv; s++, t++)
                     {
                         polygon[s] = polygon[t];
@@ -126,6 +132,7 @@ namespace Alis.Core.Physic.Common.Decomposition
 
                     nv--;
 
+                    // Reset error detection counter
                     count = 2 * nv;
                 }
             }
@@ -144,10 +151,13 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <returns>True if the point is inside the triangle</returns>
         internal static bool InsideTriangle(ref Vector2F a, ref Vector2F b, ref Vector2F c, ref Vector2F p)
         {
+            //A cross bp
             float abp = (c.X - b.X) * (p.Y - b.Y) - (c.Y - b.Y) * (p.X - b.X);
 
+            //A cross ap
             float aap = (b.X - a.X) * (p.Y - a.Y) - (b.Y - a.Y) * (p.X - a.X);
 
+            //b cross cp
             float bcp = (a.X - c.X) * (p.Y - c.Y) - (a.Y - c.Y) * (p.X - c.X);
 
             return (abp >= 0.0f) && (bcp >= 0.0f) && (aap >= 0.0f);

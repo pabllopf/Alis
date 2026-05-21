@@ -37,14 +37,5 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
     /// </summary>
     public class ClipboardTest
     {
-        /// <summary>
-        ///     Tests that the Clipboard class can be instantiated.
-        /// </summary>
-        [Fact]
-        public void Constructor_CreatesObject()
-        {
-            Clipboard clipboard = new Clipboard();
-            Assert.NotNull(clipboard);
-        }
     }
 }

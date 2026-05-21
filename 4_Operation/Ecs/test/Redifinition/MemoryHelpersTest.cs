@@ -250,7 +250,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block2_HasCorrectSize()
         {
-            int size = Marshal.SizeOf<Block2>();
+            int size = Marshal.SizeOf<MemoryHelpers.Block2>();
 
             Assert.Equal(2, size);
         }
@@ -264,7 +264,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block4_HasCorrectSize()
         {
-            int size = Marshal.SizeOf<Block4>();
+            int size = Marshal.SizeOf<MemoryHelpers.Block4>();
 
             Assert.Equal(4, size);
         }
@@ -278,7 +278,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block8_HasCorrectSize()
         {
-            int size = Marshal.SizeOf<Block8>();
+            int size = Marshal.SizeOf<MemoryHelpers.Block8>();
 
             Assert.Equal(8, size);
         }
@@ -292,7 +292,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block16_HasCorrectSize()
         {
-            int size = Marshal.SizeOf<Block16>();
+            int size = Marshal.SizeOf<MemoryHelpers.Block16>();
 
             Assert.Equal(16, size);
         }

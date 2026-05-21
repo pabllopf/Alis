@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Data.Json;
 using HashCode = Alis.Core.Aspect.Math.HashCode;
 
 namespace Alis.Extension.Math.ProceduralDungeon.Models

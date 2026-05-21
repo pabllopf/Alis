@@ -29,6 +29,7 @@
 
 using System;
 using System.Threading;
+using Alis.Extension.Thread.Attributes;
 using Alis.Extension.Thread.Core;
 using Alis.Extension.Thread.Execution;
 using Alis.Extension.Thread.Interfaces;

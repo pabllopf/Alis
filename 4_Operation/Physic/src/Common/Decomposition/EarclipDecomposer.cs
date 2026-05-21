@@ -72,18 +72,21 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// </remarks>
         internal static List<Vertices> TriangulatePolygon(Vertices vertices, float tolerance)
         {
+            //FPE note: Check is needed as invalid triangles can be returned in recursive calls.
             if (vertices.Count < 3)
             {
                 return new List<Vertices>();
             }
 
+            List<Vertices> results = new List<Vertices>();
+
+            //Recurse and split on pinch points
             Vertices pin = new Vertices(vertices);
             if (ResolvePinchPoint(pin, out Vertices pA, out Vertices pB, tolerance))
             {
                 List<Vertices> mergeA = TriangulatePolygon(pA, tolerance);
                 List<Vertices> mergeB = TriangulatePolygon(pB, tolerance);
 
-                List<Vertices> results = new List<Vertices>();
                 for (int i = 0; i < mergeA.Count; ++i)
                 {
                     results.Add(new Vertices(mergeA[i]));
@@ -97,13 +100,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 return results;
             }
 
-            return EarClip(vertices);
-        }
-
-        private static List<Vertices> EarClip(Vertices vertices)
-        {
-            List<Vertices> results = new List<Vertices>();
-            Triangle[] buffer = new Triangle[vertices.Count - 2];
+            Vertices[] buffer = new Vertices[vertices.Count - 2];
             int bufferSize = 0;
             float[] xrem = new float[vertices.Count];
             float[] yrem = new float[vertices.Count];
@@ -117,8 +114,45 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             while (vNum > 3)
             {
-                int earIndex = FindBestEarIndex(xrem, yrem, vNum, out _);
+                // Find an ear
+                int earIndex = -1;
+                float earMaxMinCross = -10.0f;
+                for (int i = 0; i < vNum; ++i)
+                {
+                    if (IsEar(i, xrem, yrem, vNum))
+                    {
+                        int lower = Remainder(i - 1, vNum);
+                        int upper = Remainder(i + 1, vNum);
+                        Vector2F d1 = new Vector2F(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
+                        Vector2F d2 = new Vector2F(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
+                        Vector2F d3 = new Vector2F(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
 
+                        d1.Normalize();
+                        d2.Normalize();
+                        d3.Normalize();
+                        MathUtils.Cross(ref d1, ref d2, out float cross12);
+                        cross12 = Math.Abs(cross12);
+
+                        MathUtils.Cross(ref d2, ref d3, out float cross23);
+                        cross23 = Math.Abs(cross23);
+
+                        MathUtils.Cross(ref d3, ref d1, out float cross31);
+                        cross31 = Math.Abs(cross31);
+
+                        //Find the maximum minimum angle
+                        float minCross = Math.Min(cross12, Math.Min(cross23, cross31));
+                        if (minCross > earMaxMinCross)
+                        {
+                            earIndex = i;
+                            earMaxMinCross = minCross;
+                        }
+                    }
+                }
+
+                // If we still haven't found an ear, we're screwed.
+                // Note: sometimes this is happening because the
+                // remaining points are collinear.  Really these
+                // should just be thrown out without halting triangulation.
                 if (earIndex == -1)
                 {
                     for (int i = 0; i < bufferSize; i++)
@@ -129,7 +163,36 @@ namespace Alis.Core.Physic.Common.Decomposition
                     return results;
                 }
 
-                (xrem, yrem, vNum) = ClipEar(xrem, yrem, vNum, earIndex, buffer, ref bufferSize);
+                // Clip off the ear:
+                // - remove the ear tip from the list
+
+                --vNum;
+                float[] newx = new float[vNum];
+                float[] newy = new float[vNum];
+                int currDest = 0;
+                for (int i = 0; i < vNum; ++i)
+                {
+                    if (currDest == earIndex)
+                    {
+                        ++currDest;
+                    }
+
+                    newx[i] = xrem[currDest];
+                    newy[i] = yrem[currDest];
+                    ++currDest;
+                }
+
+                // - add the clipped triangle to the triangle list
+                int under = earIndex == 0 ? vNum : earIndex - 1;
+                int over = earIndex == vNum ? 0 : earIndex + 1;
+                Triangle toAdd = new Triangle(xrem[earIndex], yrem[earIndex], xrem[over], yrem[over], xrem[under],
+                    yrem[under]);
+                buffer[bufferSize] = toAdd;
+                ++bufferSize;
+
+                // - replace the old list with the new one
+                xrem = newx;
+                yrem = newy;
             }
 
             Triangle tooAdd = new Triangle(xrem[1], yrem[1], xrem[2], yrem[2], xrem[0], yrem[0]);
@@ -142,71 +205,6 @@ namespace Alis.Core.Physic.Common.Decomposition
             }
 
             return results;
-        }
-
-        private static int FindBestEarIndex(float[] xrem, float[] yrem, int vNum, out float earMaxMinCross)
-        {
-            earMaxMinCross = -10.0f;
-            int earIndex = -1;
-            for (int i = 0; i < vNum; ++i)
-            {
-                if (!IsEar(i, xrem, yrem, vNum))
-                {
-                    continue;
-                }
-
-                int lower = Remainder(i - 1, vNum);
-                int upper = Remainder(i + 1, vNum);
-                float minCross = CalculateMinimumCrossAngle(xrem, yrem, i, lower, upper);
-                if (minCross > earMaxMinCross)
-                {
-                    earIndex = i;
-                    earMaxMinCross = minCross;
-                }
-            }
-            return earIndex;
-        }
-
-        private static float CalculateMinimumCrossAngle(float[] xrem, float[] yrem, int i, int lower, int upper)
-        {
-            Vector2F d1 = new Vector2F(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
-            Vector2F d2 = new Vector2F(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
-            Vector2F d3 = new Vector2F(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
-
-            d1.Normalize();
-            d2.Normalize();
-            d3.Normalize();
-            MathUtils.Cross(ref d1, ref d2, out float cross12);
-            MathUtils.Cross(ref d2, ref d3, out float cross23);
-            MathUtils.Cross(ref d3, ref d1, out float cross31);
-
-            return Math.Min(Math.Abs(cross12), Math.Min(Math.Abs(cross23), Math.Abs(cross31)));
-        }
-
-        private static (float[] xrem, float[] yrem, int vNum) ClipEar(float[] xrem, float[] yrem, int vNum, int earIndex, Triangle[] buffer, ref int bufferSize)
-        {
-            --vNum;
-            float[] newx = new float[vNum];
-            float[] newy = new float[vNum];
-            int currDest = 0;
-            for (int i = 0; i < vNum; ++i)
-            {
-                if (currDest == earIndex)
-                {
-                    ++currDest;
-                }
-                newx[i] = xrem[currDest];
-                newy[i] = yrem[currDest];
-                ++currDest;
-            }
-
-            int under = earIndex == 0 ? vNum : earIndex - 1;
-            int over = earIndex == vNum ? 0 : earIndex + 1;
-            Triangle toAdd = new Triangle(xrem[earIndex], yrem[earIndex], xrem[over], yrem[over], xrem[under], yrem[under]);
-            buffer[bufferSize] = toAdd;
-            ++bufferSize;
-
-            return (newx, newy, vNum);
         }
 
         /// <summary>
@@ -231,60 +229,53 @@ namespace Alis.Core.Physic.Common.Decomposition
                 return false;
             }
 
-            (int pinchIndexA, int pinchIndexB, bool hasPinchPoint) = FindPinchPoints(pin, tolerance);
-
-            if (hasPinchPoint)
-            {
-                SplitPolygonAtPinch(pin, pinchIndexA, pinchIndexB, out poutA, out poutB);
-            }
-
-            return hasPinchPoint;
-        }
-
-        private static (int, int, bool) FindPinchPoints(Vertices pin, float tolerance)
-        {
+            bool hasPinchPoint = false;
             int pinchIndexA = -1;
             int pinchIndexB = -1;
-
             for (int i = 0; i < pin.Count; ++i)
             {
                 for (int j = i + 1; j < pin.Count; ++j)
                 {
+                    //Don't worry about pinch points where the points
+                    //are actually just dupe neighbors
                     if ((Math.Abs(pin[i].X - pin[j].X) < tolerance) && (Math.Abs(pin[i].Y - pin[j].Y) < tolerance) && (j != i + 1))
                     {
                         pinchIndexA = i;
                         pinchIndexB = j;
-                        return (pinchIndexA, pinchIndexB, true);
+                        hasPinchPoint = true;
+                        break;
                     }
+                }
+
+                if (hasPinchPoint)
+                {
+                    break;
                 }
             }
 
-            return (-1, -1, false);
-        }
-
-        private static void SplitPolygonAtPinch(Vertices pin, int pinchIndexA, int pinchIndexB, out Vertices poutA, out Vertices poutB)
-        {
-            poutA = new Vertices();
-            poutB = new Vertices();
-
-            int sizeA = pinchIndexB - pinchIndexA;
-            if (sizeA == pin.Count)
+            if (hasPinchPoint)
             {
-                return; //has dupe points at wraparound, not a problem here
+                int sizeA = pinchIndexB - pinchIndexA;
+                if (sizeA == pin.Count)
+                {
+                    return false; //has dupe points at wraparound, not a problem here
+                }
+
+                for (int i = 0; i < sizeA; ++i)
+                {
+                    int ind = Remainder(pinchIndexA + i, pin.Count); // is this right
+                    poutA.Add(pin[ind]);
+                }
+
+                int sizeB = pin.Count - sizeA;
+                for (int i = 0; i < sizeB; ++i)
+                {
+                    int ind = Remainder(pinchIndexB + i, pin.Count); // is this right    
+                    poutB.Add(pin[ind]);
+                }
             }
 
-            for (int i = 0; i < sizeA; ++i)
-            {
-                int ind = Remainder(pinchIndexA + i, pin.Count);
-                poutA.Add(pin[ind]);
-            }
-
-            int sizeB = pin.Count - sizeA;
-            for (int i = 0; i < sizeB; ++i)
-            {
-                int ind = Remainder(pinchIndexB + i, pin.Count);
-                poutB.Add(pin[ind]);
-            }
+            return hasPinchPoint;
         }
 
         /// <summary>
@@ -382,6 +373,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <seealso cref="Vertices" />
         private class Triangle : Vertices
         {
+            //Constructor automatically fixes orientation to ccw
             /// <summary>
             ///     Initializes a new instance of the <see cref="Triangle" /> class
             /// </summary>

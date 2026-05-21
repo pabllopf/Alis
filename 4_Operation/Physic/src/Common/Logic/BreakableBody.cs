@@ -64,16 +64,11 @@ namespace Alis.Core.Physic.Common.Logic
     public class BreakableBody
     {
 /// <summary>
-///     The backing field for <see cref="Parts" />.
-/// </summary>
-        private readonly List<Fixture> _parts = new List<Fixture>(8);
-
-/// <summary>
 ///     Gets the list of fixtures that make up this breakable body.
 ///     Each fixture represents a separate part that can break away from the main body
 ///     when sufficient force is applied. The list is initialized with a capacity of 8.
 /// </summary>
-        public IReadOnlyList<Fixture> Parts => _parts;
+        public readonly List<Fixture> Parts = new List<Fixture>(8);
 
 /// <summary>
 ///     Gets the force threshold required to break the body apart.
@@ -120,7 +115,7 @@ namespace Alis.Core.Physic.Common.Logic
             {
                 PolygonShape polygonShape = new PolygonShape(part, density);
                 Fixture fixture = MainBody.CreateFixture(polygonShape);
-                _parts.Add(fixture);
+                Parts.Add(fixture);
             }
         }
 
@@ -138,7 +133,7 @@ namespace Alis.Core.Physic.Common.Logic
             foreach (Shape part in shapes)
             {
                 Fixture fixture = MainBody.CreateFixture(part);
-                _parts.Add(fixture);
+                Parts.Add(fixture);
             }
         }
 
@@ -161,7 +156,7 @@ namespace Alis.Core.Physic.Common.Logic
             {
                 PolygonShape polygonShape = new PolygonShape(part, density);
                 Fixture fixture = MainBody.CreateFixture(polygonShape);
-                _parts.Add(fixture);
+                Parts.Add(fixture);
             }
         }
 
@@ -187,20 +182,23 @@ namespace Alis.Core.Physic.Common.Logic
         /// <param name="impulse">The impulse</param>
         internal void PostSolve(Contact contact, ContactVelocityConstraint impulse)
         {
-            if ((State != BreakableBodyState.Broken) &&
-                (_parts.Contains(contact.FixtureA) || _parts.Contains(contact.FixtureB)))
+            if (State != BreakableBodyState.Broken)
             {
-                float maxImpulse = 0.0f;
-                int count = contact.Manifold.PointCount;
-
-                for (int i = 0; i < count; ++i)
+                if (Parts.Contains(contact.FixtureA) || Parts.Contains(contact.FixtureB))
                 {
-                    maxImpulse = Math.Max(maxImpulse, impulse.Points[i].NormalImpulse);
-                }
+                    float maxImpulse = 0.0f;
+                    int count = contact.Manifold.PointCount;
 
-                if (maxImpulse > Strength)
-                {
-                    State = BreakableBodyState.ShouldBreak;
+                    for (int i = 0; i < count; ++i)
+                    {
+                        maxImpulse = Math.Max(maxImpulse, impulse.Points[i].NormalImpulse);
+                    }
+
+                    if (maxImpulse > Strength)
+                    {
+                        // Flag the body for breaking.
+                        State = BreakableBodyState.ShouldBreak;
+                    }
                 }
             }
         }
@@ -221,21 +219,24 @@ namespace Alis.Core.Physic.Common.Logic
             }
         }
 
+        // Cache velocities to improve movement on breakage.
         /// <summary>
         ///     Caches the velocities
         /// </summary>
         internal void CacheVelocities()
         {
-            if (_parts.Count > _angularVelocitiesCache.Length)
+            //Enlarge the cache if needed
+            if (Parts.Count > _angularVelocitiesCache.Length)
             {
-                _velocitiesCache = new Vector2F[_parts.Count];
-                _angularVelocitiesCache = new float[_parts.Count];
+                _velocitiesCache = new Vector2F[Parts.Count];
+                _angularVelocitiesCache = new float[Parts.Count];
             }
 
-            for (int i = 0; i < _parts.Count; i++)
+            //Cache the linear and angular velocities.
+            for (int i = 0; i < Parts.Count; i++)
             {
-                _velocitiesCache[i] = _parts[i].GetBody.LinearVelocity;
-                _angularVelocitiesCache[i] = _parts[i].GetBody.AngularVelocity;
+                _velocitiesCache[i] = Parts[i].GetBody.LinearVelocity;
+                _angularVelocitiesCache[i] = Parts[i].GetBody.AngularVelocity;
             }
         }
 
@@ -250,11 +251,12 @@ namespace Alis.Core.Physic.Common.Logic
                 throw new InvalidOperationException("BreakableBody is allready broken");
             }
 
+            //Unsubsribe from the PostSolve delegate
             WorldPhysic.ContactManager.PostSolve -= PostSolve;
 
-            for (int i = 0; i < _parts.Count; i++)
+            for (int i = 0; i < Parts.Count; i++)
             {
-                Fixture oldFixture = _parts[i];
+                Fixture oldFixture = Parts[i];
 
                 Shape shape = oldFixture.GetShape.Clone();
                 object fixtureTag = oldFixture.Tag;
@@ -266,7 +268,7 @@ namespace Alis.Core.Physic.Common.Logic
 
                 Fixture newFixture = body.CreateFixture(shape);
                 newFixture.Tag = fixtureTag;
-                _parts[i] = newFixture;
+                Parts[i] = newFixture;
 
                 body.AngularVelocity = _angularVelocitiesCache[i];
                 body.LinearVelocity = _velocitiesCache[i];

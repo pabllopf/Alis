@@ -74,6 +74,7 @@ namespace Alis.Core.Physic.Common
             return Vector2F.Distance(point, pointOnLine);
         }
 
+        // From Eric Jordan's convex decomposition library
         /// <summary>
         ///     Check if the lines a0->a1 and b0->b1 cross.
         ///     If they do, intersectionPoint will be filled
@@ -98,6 +99,7 @@ namespace Alis.Core.Physic.Common
             float x4 = b1.X;
             float y4 = b1.Y;
 
+            //AABB early exit
             if (Math.Max(x1, x2) < Math.Min(x3, x4) || Math.Max(x3, x4) < Math.Min(x1, x2))
             {
                 return false;
@@ -113,6 +115,7 @@ namespace Alis.Core.Physic.Common
             float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
             if (Math.Abs(denom) < SettingEnv.Epsilon)
             {
+                //Lines are too close to parallel to call
                 return false;
             }
 
@@ -127,6 +130,36 @@ namespace Alis.Core.Physic.Common
             }
 
             return false;
+        }
+
+        //From Mark Bayazit's convex decomposition algorithm
+        /// <summary>
+        ///     Lines the intersect using the specified p 1
+        /// </summary>
+        /// <param name="p1">The first point of the first line.</param>
+        /// <param name="p2">The second point of the first line.</param>
+        /// <param name="q1">The first point of the second line.</param>
+        /// <param name="q2">The second point of the second line.</param>
+        /// <returns>The intersection point of the two lines.</returns>
+        public static Vector2F LineIntersect(Vector2F p1, Vector2F p2, Vector2F q1, Vector2F q2)
+        {
+            Vector2F i = Vector2F.Zero;
+            float a1 = p2.Y - p1.Y;
+            float b1 = p1.X - p2.X;
+            float c1 = a1 * p1.X + b1 * p1.Y;
+            float a2 = q2.Y - q1.Y;
+            float b2 = q1.X - q2.X;
+            float c2 = a2 * q1.X + b2 * q1.Y;
+            float det = a1 * b2 - a2 * b1;
+
+            if (!MathUtils.FloatEquals(det, 0))
+            {
+                // lines are not parallel
+                i.X = (b2 * c1 - b1 * c2) / det;
+                i.Y = (a1 * c2 - a2 * c1) / det;
+            }
+
+            return i;
         }
 
         /// <summary>
@@ -163,16 +196,50 @@ namespace Alis.Core.Physic.Common
         {
             point = new Vector2F();
 
+            // these are reused later.
+            // each lettered sub-calculation is used twice, except
+            // for b and d, which are used 3 times
             float a = point4.Y - point3.Y;
             float b = point2.X - point1.X;
             float c = point4.X - point3.X;
             float d = point2.Y - point1.Y;
 
+            // denominator to solution of linear system
             float denom = a * b - c * d;
 
+            // if denominator is 0, then lines are parallel
             if (!((denom >= -SettingEnv.Epsilon) && (denom <= SettingEnv.Epsilon)))
             {
-                return TryCalculateIntersection(ref point1, ref point3, a, b, c, d, denom, firstIsSegment, secondIsSegment, out point);
+                float e = point1.Y - point3.Y;
+                float f = point1.X - point3.X;
+                float oneOverDenom = 1.0f / denom;
+
+                // numerator of first equation
+                float ua = c * e - a * f;
+                ua *= oneOverDenom;
+
+                // check if intersection point of the two lines is on line segment 1
+                if (!firstIsSegment || ((ua >= 0.0f) && (ua <= 1.0f)))
+                {
+                    // numerator of second equation
+                    float ub = b * e - d * f;
+                    ub *= oneOverDenom;
+
+                    // check if intersection point of the two lines is on line segment 2
+                    // means the line segments intersect, since we know it is on
+                    // segment 1 as well.
+                    if (!secondIsSegment || ((ub >= 0.0f) && (ub <= 1.0f)))
+                    {
+                        // check if they are coincident (no collision in this case)
+                        if ((Math.Abs(ua) > SettingEnv.Epsilon) && (Math.Abs(ub) > SettingEnv.Epsilon))
+                        {
+                            //There is an intersection
+                            point.X = point1.X + ua * b;
+                            point.Y = point1.Y + ua * d;
+                            return true;
+                        }
+                    }
+                }
             }
 
             return false;
@@ -245,64 +312,6 @@ namespace Alis.Core.Physic.Common
         /// </param>
         /// <returns>True if an intersection is detected, false otherwise.</returns>
         public static bool LineIntersect(Vector2F point1, Vector2F point2, Vector2F point3, Vector2F point4, out Vector2F intersectionPoint) => LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true, out intersectionPoint);
-
-        /// <summary>
-        ///     Lines the intersect using the specified p 1
-        /// </summary>
-        /// <param name="p1">The first point of the first line.</param>
-        /// <param name="p2">The second point of the first line.</param>
-        /// <param name="q1">The first point of the second line.</param>
-        /// <param name="q2">The second point of the second line.</param>
-        /// <returns>The intersection point of the two lines.</returns>
-        public static Vector2F LineIntersect(Vector2F p1, Vector2F p2, Vector2F q1, Vector2F q2)
-        {
-            Vector2F i = Vector2F.Zero;
-            float a1 = p2.Y - p1.Y;
-            float b1 = p1.X - p2.X;
-            float c1 = a1 * p1.X + b1 * p1.Y;
-            float a2 = q2.Y - q1.Y;
-            float b2 = q1.X - q2.X;
-            float c2 = a2 * q1.X + b2 * q1.Y;
-            float det = a1 * b2 - a2 * b1;
-
-            if (!MathUtils.FloatEquals(det, 0))
-            {
-                i.X = (b2 * c1 - b1 * c2) / det;
-                i.Y = (a1 * c2 - a2 * c1) / det;
-            }
-
-            return i;
-        }
-
-        private static bool TryCalculateIntersection(ref Vector2F point1, ref Vector2F point3, float a, float b, float c, float d, float denom, bool firstIsSegment, bool secondIsSegment, out Vector2F point)
-        {
-            point = new Vector2F();
-
-            float e = point1.Y - point3.Y;
-            float f = point1.X - point3.X;
-            float oneOverDenom = 1.0f / denom;
-
-            float ua = c * e - a * f;
-            ua *= oneOverDenom;
-
-            if (!firstIsSegment || ((ua >= 0.0f) && (ua <= 1.0f)))
-            {
-                float ub = b * e - d * f;
-                ub *= oneOverDenom;
-
-                if (!secondIsSegment || ((ub >= 0.0f) && (ub <= 1.0f)))
-                {
-                    if ((Math.Abs(ua) > SettingEnv.Epsilon) && (Math.Abs(ub) > SettingEnv.Epsilon))
-                    {
-                        point.X = point1.X + ua * b;
-                        point.Y = point1.Y + ua * d;
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
 
         /// <summary>
         ///     Get all intersections between a line segment and a list of vertices

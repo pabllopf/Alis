@@ -87,6 +87,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float _impulse;
 
+        // Solver temp
         /// <summary>
         ///     The index
         /// </summary>
@@ -117,6 +118,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private Vector2F _localCenterB;
 
+        // Solver shared
         /// <summary>
         ///     The local axis
         /// </summary>
@@ -394,10 +396,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
 
+            // Compute the effective masses.
             Vector2F rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             Vector2F rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
             Vector2F d1 = cB + rB - cA - rA;
 
+            // Point to line constraint
             {
                 _ay = Complex.Multiply(ref _localYAxis, ref qA);
                 _sAy = MathUtils.Cross(d1 + rA, _ay);
@@ -411,8 +415,56 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 }
             }
 
-            CalculateSpringConstraints(ref qA, ref d1, ref rA, ref rB, mA, mB, iA, iB, data.Step.Dt);
+            // Spring constraint
+            _springMass = 0.0f;
+            _bias = 0.0f;
+            _gamma = 0.0f;
+            if (Frequency > 0.0f)
+            {
+                _ax = Complex.Multiply(ref _localXAxis, ref qA);
+                _sAx = MathUtils.Cross(d1 + rA, _ax);
+                _sBx = MathUtils.Cross(ref rB, ref _ax);
 
+                float invMass = mA + mB + iA * _sAx * _sAx + iB * _sBx * _sBx;
+
+                if (invMass > 0.0f)
+                {
+                    _springMass = 1.0f / invMass;
+
+                    float c = Vector2F.Dot(d1, _ax);
+
+                    // Frequency
+                    float omega = Constant.Tau * Frequency;
+
+                    // Damping coefficient
+                    float d = 2.0f * _springMass * DampingRatio * omega;
+
+                    // Spring stiffness
+                    float k = _springMass * omega * omega;
+
+                    // magic formulas
+                    float h = data.Step.Dt;
+                    _gamma = h * (d + h * k);
+                    if (_gamma > 0.0f)
+                    {
+                        _gamma = 1.0f / _gamma;
+                    }
+
+                    _bias = c * h * k * _gamma;
+
+                    _springMass = invMass + _gamma;
+                    if (_springMass > 0.0f)
+                    {
+                        _springMass = 1.0f / _springMass;
+                    }
+                }
+            }
+            else
+            {
+                _springImpulse = 0.0f;
+            }
+
+            // Rotational motor
             if (_enableMotor)
             {
                 _motorMass = iA + iB;
@@ -429,7 +481,20 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.Step.WarmStarting)
             {
-                WarmStartImpulses(ref data, ref vA, ref wA, ref vB, ref wB);
+                // Account for variable time step.
+                _impulse *= data.Step.DtRatio;
+                _springImpulse *= data.Step.DtRatio;
+                _motorImpulse *= data.Step.DtRatio;
+
+                Vector2F p = _impulse * _ay + _springImpulse * _ax;
+                float la = _impulse * _sAy + _springImpulse * _sAx + _motorImpulse;
+                float lb = _impulse * _sBy + _springImpulse * _sBx + _motorImpulse;
+
+                vA -= _invMassA * p;
+                wA -= invIa * la;
+
+                vB += _invMassB * p;
+                wB += invIb * lb;
             }
             else
             {
@@ -442,68 +507,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Velocities[_indexA].W = wA;
             data.Velocities[_indexB].V = vB;
             data.Velocities[_indexB].W = wB;
-        }
-
-        private void CalculateSpringConstraints(ref Complex qA, ref Vector2F d1, ref Vector2F rA, ref Vector2F rB, float mA, float mB, float iA, float iB, float dt)
-        {
-            _springMass = 0.0f;
-            _bias = 0.0f;
-            _gamma = 0.0f;
-
-            if (Frequency > 0.0f)
-            {
-                _ax = Complex.Multiply(ref _localXAxis, ref qA);
-                _sAx = MathUtils.Cross(d1 + rA, _ax);
-                _sBx = MathUtils.Cross(ref rB, ref _ax);
-
-                float invMass = mA + mB + iA * _sAx * _sAx + iB * _sBx * _sBx;
-
-                if (invMass > 0.0f)
-                {
-                    _springMass = 1.0f / invMass;
-
-                    float c = Vector2F.Dot(d1, _ax);
-
-                    float omega = Constant.Tau * Frequency;
-                    float d = 2.0f * _springMass * DampingRatio * omega;
-                    float k = _springMass * omega * omega;
-
-                    _gamma = dt * (d + dt * k);
-                    if (_gamma > 0.0f)
-                    {
-                        _gamma = 1.0f / _gamma;
-                    }
-
-                    _bias = c * dt * k * _gamma;
-
-                    _springMass = invMass + _gamma;
-                    if (_springMass > 0.0f)
-                    {
-                        _springMass = 1.0f / _springMass;
-                    }
-                }
-            }
-            else
-            {
-                _springImpulse = 0.0f;
-            }
-        }
-
-        private void WarmStartImpulses(ref SolverData data, ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB)
-        {
-            _impulse *= data.Step.DtRatio;
-            _springImpulse *= data.Step.DtRatio;
-            _motorImpulse *= data.Step.DtRatio;
-
-            Vector2F p = _impulse * _ay + _springImpulse * _ax;
-            float la = _impulse * _sAy + _springImpulse * _sAx + _motorImpulse;
-            float lb = _impulse * _sBy + _springImpulse * _sBx + _motorImpulse;
-
-            vA -= _invMassA * p;
-            wA -= invIa * la;
-
-            vB += _invMassB * p;
-            wB += invIb * lb;
         }
 
         /// <summary>
@@ -520,6 +523,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2F vB = data.Velocities[_indexB].V;
             float wB = data.Velocities[_indexB].W;
 
+            // Solve spring constraint
             {
                 float cdot = Vector2F.Dot(_ax, vB - vA) + _sBx * wB - _sAx * wA;
                 float impulse = -_springMass * (cdot + _bias + _gamma * _springImpulse);
@@ -536,6 +540,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 wB += iB * lb;
             }
 
+            // Solve rotational motor constraint
             {
                 float cdot = wB - wA - _motorSpeed;
                 float impulse = -_motorMass * cdot;
@@ -549,6 +554,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 wB += iB * impulse;
             }
 
+            // Solve point to line constraint
             {
                 float cdot = Vector2F.Dot(_ay, vB - vA) + _sBy * wB - _sAy * wA;
                 float impulse = -_mass * cdot;

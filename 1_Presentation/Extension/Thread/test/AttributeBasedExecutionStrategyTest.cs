@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Thread.Attributes;
 using Alis.Extension.Thread.Interfaces;
 using Alis.Extension.Thread.Strategies;
 using Xunit;

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Physic.Common.Decomposition.CDT.Util;
 using Xunit;

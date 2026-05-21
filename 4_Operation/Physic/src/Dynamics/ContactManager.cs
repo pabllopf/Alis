@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The broad phase
         /// </summary>
-        public readonly IBroadPhaseFixture BroadPhaseFixtureNode;
+        public readonly IBroadPhase BroadPhase;
 
         /// <summary>
         ///     A threshold for activating multiple cores to solve Collide.
@@ -121,14 +121,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManager" /> class
         /// </summary>
-        /// <param name="broadPhaseFixtureNode">The broad phase</param>
-        internal ContactManager(IBroadPhaseFixture broadPhaseFixtureNode)
+        /// <param name="broadPhase">The broad phase</param>
+        internal ContactManager(IBroadPhase broadPhase)
         {
             ContactList = new ContactListHead();
             ContactCount = 0;
             ContactPoolList = new ContactListHead();
 
-            BroadPhaseFixtureNode = broadPhaseFixtureNode;
+            BroadPhase = broadPhase;
             OnBroadphaseCollision += AddPair;
         }
 
@@ -137,6 +137,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public int ContactCount { get; private set; }
 
+        // Broad-phase callback.
         /// <summary>
         ///     Adds the pair using the specified proxy id a
         /// </summary>
@@ -144,8 +145,8 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="proxyIdB">The proxy id</param>
         private void AddPair(int proxyIdA, int proxyIdB)
         {
-            FixtureProxy proxyA = BroadPhaseFixtureNode.GetProxy(proxyIdA);
-            FixtureProxy proxyB = BroadPhaseFixtureNode.GetProxy(proxyIdB);
+            FixtureProxy proxyA = BroadPhase.GetProxy(proxyIdA);
+            FixtureProxy proxyB = BroadPhase.GetProxy(proxyIdB);
 
             Fixture fixtureA = proxyA.Fixture;
             Fixture fixtureB = proxyB.Fixture;
@@ -156,51 +157,13 @@ namespace Alis.Core.Physic.Dynamics
             Body bodyA = fixtureA.GetBody;
             Body bodyB = fixtureB.GetBody;
 
+            // Are the fixtures on the same body?
             if (bodyA == bodyB)
             {
                 return;
             }
 
-            if (HasExistingContact(bodyA, bodyB, fixtureA, fixtureB, indexA, indexB))
-            {
-                return;
-            }
-
-            if (!ShouldCreateContact(bodyA, bodyB, fixtureA, fixtureB))
-            {
-                return;
-            }
-
-            Contact c = Contact.Create(this, fixtureA, indexA, fixtureB, indexB);
-
-            if (c == null)
-            {
-                return;
-            }
-
-            fixtureA = c.FixtureA;
-            fixtureB = c.FixtureB;
-            bodyA = fixtureA.GetBody;
-            bodyB = fixtureB.GetBody;
-
-            c.Prev = ContactList;
-            c.Next = c.Prev.Next;
-            c.Prev.Next = c;
-            c.Next.Prev = c;
-            ContactCount++;
-
-            ConnectContactToBody(c, bodyB);
-            ConnectContactToBody(c, bodyA);
-
-            if (!fixtureA.GetIsSensor && !fixtureB.GetIsSensor)
-            {
-                bodyA.Awake = true;
-                bodyB.Awake = true;
-            }
-        }
-
-        private bool HasExistingContact(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB, int indexA, int indexB)
-        {
+            // Does a contact already exist?
             for (ContactEdge ceB = bodyB.ContactList; ceB != null; ceB = ceB.Next)
             {
                 if (ceB.Other == bodyA)
@@ -210,63 +173,117 @@ namespace Alis.Core.Physic.Dynamics
                     int iA = ceB.Contact.ChildIndexA;
                     int iB = ceB.Contact.ChildIndexB;
 
-                    if ((fA == fixtureA && fB == fixtureB && iA == indexA && iB == indexB) ||
-                        (fA == fixtureB && fB == fixtureA && iA == indexB && iB == indexA))
+                    if ((fA == fixtureA) && (fB == fixtureB) && (iA == indexA) && (iB == indexB))
                     {
-                        return true;
+                        // A contact already exists.
+                        return;
+                    }
+
+                    if ((fA == fixtureB) && (fB == fixtureA) && (iA == indexB) && (iB == indexA))
+                    {
+                        // A contact already exists.
+                        return;
                     }
                 }
             }
 
-            return false;
-        }
-
-        private bool ShouldCreateContact(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB)
-        {
+            // Does a joint override collision? Is at least one body dynamic?
             if (!bodyB.ShouldCollide(bodyA))
             {
-                return false;
+                return;
             }
 
+            //Check default filter
             if (!ShouldCollide(fixtureA, fixtureB))
             {
-                return false;
+                return;
             }
 
+            // Check user filtering.
             CollisionFilterDelegate contactFilterHandler = ContactFilter;
-            if (contactFilterHandler != null && !contactFilterHandler(fixtureA, fixtureB))
+            if (contactFilterHandler != null)
             {
-                return false;
+                if (!contactFilterHandler(fixtureA, fixtureB))
+                {
+                    return;
+                }
             }
 
+            //FPE feature: BeforeCollision delegate
             BeforeCollisionEventHandler beforeCollisionHandlerA = fixtureA.BeforeCollision;
-            if (beforeCollisionHandlerA != null && !beforeCollisionHandlerA(fixtureA, fixtureB))
+            if (beforeCollisionHandlerA != null)
             {
-                return false;
+                if (!beforeCollisionHandlerA(fixtureA, fixtureB))
+                {
+                    return;
+                }
             }
 
             BeforeCollisionEventHandler beforeCollisionHandlerB = fixtureB.BeforeCollision;
-            if (beforeCollisionHandlerB != null && !beforeCollisionHandlerB(fixtureB, fixtureA))
+            if (beforeCollisionHandlerB != null)
             {
-                return false;
+                if (!beforeCollisionHandlerB(fixtureB, fixtureA))
+                {
+                    return;
+                }
             }
 
-            return true;
-        }
+            // Call the factory.
+            Contact c = Contact.Create(this, fixtureA, indexA, fixtureB, indexB);
 
-        private void ConnectContactToBody(Contact c, Body body)
-        {
+            if (c == null)
+            {
+                return;
+            }
+
+            // Contact creation may swap fixtures.
+            fixtureA = c.FixtureA;
+            fixtureB = c.FixtureB;
+            bodyA = fixtureA.GetBody;
+            bodyB = fixtureB.GetBody;
+
+            // Insert into the world.
+            c.Prev = ContactList;
+            c.Next = c.Prev.Next;
+            c.Prev.Next = c;
+            c.Next.Prev = c;
+            ContactCount++;
+
+
+            // Connect to island graph.
+
+            // Connect to body A
+            c.NodeA.Contact = c;
+            c.NodeA.Other = bodyB;
+
+            c.NodeA.Prev = null;
+            c.NodeA.Next = bodyA.ContactList;
+            if (bodyA.ContactList != null)
+            {
+                bodyA.ContactList.Prev = c.NodeA;
+            }
+
+            bodyA.ContactList = c.NodeA;
+
+            // Connect to body B
             c.NodeB.Contact = c;
-            c.NodeB.Other = body;
+            c.NodeB.Other = bodyA;
 
             c.NodeB.Prev = null;
-            c.NodeB.Next = body.ContactList;
-            if (body.ContactList != null)
+            c.NodeB.Next = bodyB.ContactList;
+            if (bodyB.ContactList != null)
             {
-                body.ContactList.Prev = c.NodeB;
+                bodyB.ContactList.Prev = c.NodeB;
             }
 
-            body.ContactList = c.NodeB;
+            bodyB.ContactList = c.NodeB;
+
+            // Wake up the bodies
+            if (!fixtureA.GetIsSensor && !fixtureB.GetIsSensor)
+            {
+                bodyA.Awake = true;
+                bodyB.Awake = true;
+            }
         }
 
         /// <summary>
@@ -274,7 +291,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void FindNewContacts()
         {
-            BroadPhaseFixtureNode.UpdatePairs(OnBroadphaseCollision);
+            BroadPhase.UpdatePairs(OnBroadphaseCollision);
         }
 
         /// <summary>
@@ -290,65 +307,54 @@ namespace Alis.Core.Physic.Dynamics
 
             if (contact.IsTouching)
             {
-                ReportSeparation(fixtureA, fixtureB, contact, bodyA, bodyB);
+                //Report the separation to both participants:
+                OnSeparationEventHandler onFixtureSeparationHandlerA = fixtureA.OnSeparation;
+                if (onFixtureSeparationHandlerA != null)
+                {
+                    onFixtureSeparationHandlerA(fixtureA, fixtureB, contact);
+                }
+
+                //Reverse the order of the reported fixtures. The first fixture is always the one that the
+                //user subscribed to.
+                OnSeparationEventHandler onFixtureSeparationHandlerB = fixtureB.OnSeparation;
+                if (onFixtureSeparationHandlerB != null)
+                {
+                    onFixtureSeparationHandlerB(fixtureB, fixtureA, contact);
+                }
+
+                //Report the separation to both bodies:
+                OnSeparationEventHandler onBodySeparationHandlerA = bodyA.OnSeparationEventHandler;
+                if (onBodySeparationHandlerA != null)
+                {
+                    onBodySeparationHandlerA(fixtureA, fixtureB, contact);
+                }
+
+                //Reverse the order of the reported fixtures. The first fixture is always the one that the
+                //user subscribed to.
+                OnSeparationEventHandler onBodySeparationHandlerB = bodyB.OnSeparationEventHandler;
+                if (onBodySeparationHandlerB != null)
+                {
+                    onBodySeparationHandlerB(fixtureB, fixtureA, contact);
+                }
+
+                EndContactDelegate endContactHandler = EndContact;
+                if (endContactHandler != null)
+                {
+                    endContactHandler(contact);
+                }
             }
 
-            RemoveContactFromWorld(contact);
-            RemoveContactFromBody(contact, bodyA);
-            RemoveContactFromBody(contact, bodyB);
-
-            contact.Destroy();
-
-            ContactPoolList.Next = contact;
-        }
-
-        private void ReportSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact, Body bodyA, Body bodyB)
-        {
-            OnSeparationEventHandler onFixtureSeparationHandlerA = fixtureA.OnSeparation;
-            if (onFixtureSeparationHandlerA != null)
-            {
-                onFixtureSeparationHandlerA(fixtureA, fixtureB, contact);
-            }
-
-            OnSeparationEventHandler onFixtureSeparationHandlerB = fixtureB.OnSeparation;
-            if (onFixtureSeparationHandlerB != null)
-            {
-                onFixtureSeparationHandlerB(fixtureB, fixtureA, contact);
-            }
-
-            OnSeparationEventHandler onBodySeparationHandlerA = bodyA.OnSeparationEventHandler;
-            if (onBodySeparationHandlerA != null)
-            {
-                onBodySeparationHandlerA(fixtureA, fixtureB, contact);
-            }
-
-            OnSeparationEventHandler onBodySeparationHandlerB = bodyB.OnSeparationEventHandler;
-            if (onBodySeparationHandlerB != null)
-            {
-                onBodySeparationHandlerB(fixtureB, fixtureA, contact);
-            }
-
-            EndContactDelegate endContactHandler = EndContact;
-            if (endContactHandler != null)
-            {
-                endContactHandler(contact);
-            }
-        }
-
-        private void RemoveContactFromWorld(Contact contact)
-        {
+            // Remove from the world.
             contact.Prev.Next = contact.Next;
             contact.Next.Prev = contact.Prev;
             contact.Next = null;
             contact.Prev = null;
             ContactCount--;
-        }
 
-        private static void RemoveContactFromBody(Contact contact, Body body)
-        {
-            if (contact.NodeA == body.ContactList)
+            // Remove from body 1
+            if (contact.NodeA == bodyA.ContactList)
             {
-                body.ContactList = contact.NodeA.Next;
+                bodyA.ContactList = contact.NodeA.Next;
             }
 
             if (contact.NodeA.Prev != null)
@@ -360,7 +366,30 @@ namespace Alis.Core.Physic.Dynamics
             {
                 contact.NodeA.Next.Prev = contact.NodeA.Prev;
             }
+
+            // Remove from body 2
+            if (contact.NodeB == bodyB.ContactList)
+            {
+                bodyB.ContactList = contact.NodeB.Next;
+            }
+
+            if (contact.NodeB.Prev != null)
+            {
+                contact.NodeB.Prev.Next = contact.NodeB.Next;
+            }
+
+            if (contact.NodeB.Next != null)
+            {
+                contact.NodeB.Next.Prev = contact.NodeB.Prev;
+            }
+
+            contact.Destroy();
+
+            // Insert into the pool.
+            contact.Next = ContactPoolList.Next;
+            ContactPoolList.Next = contact;
         }
+
         /// <summary>
         ///     Collides this instance
         /// </summary>
@@ -383,28 +412,55 @@ namespace Alis.Core.Physic.Dynamics
                 Body bodyA = fixtureA.GetBody;
                 Body bodyB = fixtureB.GetBody;
 
-                if (ShouldSkipContact(bodyA, bodyB))
+                //Do no try to collide disabled bodies
+                if (!bodyA.Enabled || !bodyB.Enabled)
                 {
                     c = c.Next;
                     continue;
                 }
 
-                if (c.FilterFlag && ShouldDestroyContact(bodyA, bodyB, fixtureA, fixtureB))
-                {
-                    Contact cNuke = c;
-                    c = c.Next;
-                    Destroy(cNuke);
-                    continue;
-                }
-
+                // Is this contact flagged for filtering?
                 if (c.FilterFlag)
                 {
+                    // Should these bodies collide?
+                    if (!bodyB.ShouldCollide(bodyA))
+                    {
+                        Contact cNuke = c;
+                        c = c.Next;
+                        Destroy(cNuke);
+                        continue;
+                    }
+
+                    // Check default filtering
+                    if (!ShouldCollide(fixtureA, fixtureB))
+                    {
+                        Contact cNuke = c;
+                        c = c.Next;
+                        Destroy(cNuke);
+                        continue;
+                    }
+
+                    // Check user filtering.
+                    CollisionFilterDelegate contactFilterHandler = ContactFilter;
+                    if (contactFilterHandler != null)
+                    {
+                        if (!contactFilterHandler(fixtureA, fixtureB))
+                        {
+                            Contact cNuke = c;
+                            c = c.Next;
+                            Destroy(cNuke);
+                            continue;
+                        }
+                    }
+
+                    // Clear the filtering flag.
                     c.FilterFlag = false;
                 }
 
                 bool activeA = bodyA.Awake && (bodyA.GetBodyType != BodyType.Static);
                 bool activeB = bodyB.Awake && (bodyB.GetBodyType != BodyType.Static);
 
+                // At least one body must be awake and it must be dynamic or kinematic.
                 if (!activeA && !activeB)
                 {
                     c = c.Next;
@@ -414,8 +470,9 @@ namespace Alis.Core.Physic.Dynamics
                 int proxyIdA = fixtureA.Proxies[indexA].ProxyId;
                 int proxyIdB = fixtureB.Proxies[indexB].ProxyId;
 
-                bool overlap = BroadPhaseFixtureNode.TestOverlap(proxyIdA, proxyIdB);
+                bool overlap = BroadPhase.TestOverlap(proxyIdA, proxyIdB);
 
+                // Here we destroy contacts that cease to overlap in the broad-phase.
                 if (!overlap)
                 {
                     Contact cNuke = c;
@@ -424,36 +481,11 @@ namespace Alis.Core.Physic.Dynamics
                     continue;
                 }
 
+                // The contact persists.
                 c.Update(this);
 
                 c = c.Next;
             }
-        }
-
-        private static bool ShouldSkipContact(Body bodyA, Body bodyB)
-        {
-            return !bodyA.Enabled || !bodyB.Enabled;
-        }
-
-        private bool ShouldDestroyContact(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB)
-        {
-            if (!bodyB.ShouldCollide(bodyA))
-            {
-                return true;
-            }
-
-            if (!ShouldCollide(fixtureA, fixtureB))
-            {
-                return true;
-            }
-
-            CollisionFilterDelegate contactFilterHandler = ContactFilter;
-            if (contactFilterHandler != null && !contactFilterHandler(fixtureA, fixtureB))
-            {
-                return true;
-            }
-
-            return false;
         }
 
 
@@ -465,6 +497,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             int lockOrder = 0;
 
+            // Update awake contacts.
             for (Contact c = ContactList.Next; c != ContactList;)
             {
                 Fixture fixtureA = c.FixtureA;
@@ -474,28 +507,55 @@ namespace Alis.Core.Physic.Dynamics
                 Body bodyA = fixtureA.GetBody;
                 Body bodyB = fixtureB.GetBody;
 
-                if (ShouldSkipContact(bodyA, bodyB))
+                //Do no try to collide disabled bodies
+                if (!bodyA.Enabled || !bodyB.Enabled)
                 {
                     c = c.Next;
                     continue;
                 }
 
-                if (c.FilterFlag && ShouldDestroyContact(bodyA, bodyB, fixtureA, fixtureB))
-                {
-                    Contact cNuke = c;
-                    c = c.Next;
-                    Destroy(cNuke);
-                    continue;
-                }
-
+                // Is this contact flagged for filtering?
                 if (c.FilterFlag)
                 {
+                    // Should these bodies collide?
+                    if (!bodyB.ShouldCollide(bodyA))
+                    {
+                        Contact cNuke = c;
+                        c = c.Next;
+                        Destroy(cNuke);
+                        continue;
+                    }
+
+                    // Check default filtering
+                    if (!ShouldCollide(fixtureA, fixtureB))
+                    {
+                        Contact cNuke = c;
+                        c = c.Next;
+                        Destroy(cNuke);
+                        continue;
+                    }
+
+                    // Check user filtering.
+                    CollisionFilterDelegate contactFilterHandler = ContactFilter;
+                    if (contactFilterHandler != null)
+                    {
+                        if (!contactFilterHandler(fixtureA, fixtureB))
+                        {
+                            Contact cNuke = c;
+                            c = c.Next;
+                            Destroy(cNuke);
+                            continue;
+                        }
+                    }
+
+                    // Clear the filtering flag.
                     c.FilterFlag = false;
                 }
 
                 bool activeA = bodyA.Awake && (bodyA.GetBodyType != BodyType.Static);
                 bool activeB = bodyB.Awake && (bodyB.GetBodyType != BodyType.Static);
 
+                // At least one body must be awake and it must be dynamic or kinematic.
                 if (!activeA && !activeB)
                 {
                     c = c.Next;
@@ -505,8 +565,9 @@ namespace Alis.Core.Physic.Dynamics
                 int proxyIdA = fixtureA.Proxies[indexA].ProxyId;
                 int proxyIdB = fixtureB.Proxies[indexB].ProxyId;
 
-                bool overlap = BroadPhaseFixtureNode.TestOverlap(proxyIdA, proxyIdB);
+                bool overlap = BroadPhase.TestOverlap(proxyIdA, proxyIdB);
 
+                // Here we destroy contacts that cease to overlap in the broad-phase.
                 if (!overlap)
                 {
                     Contact cNuke = c;
@@ -515,7 +576,9 @@ namespace Alis.Core.Physic.Dynamics
                     continue;
                 }
 
+                // The contact persists.
                 updateList.Add(c);
+                // Assign a unique id for lock order
                 bodyA.LockOrder = lockOrder++;
                 bodyB.LockOrder = lockOrder++;
 
@@ -523,18 +586,15 @@ namespace Alis.Core.Physic.Dynamics
                 c = c.Next;
             }
 
-            ProcessParallelContacts();
 
-            updateList.Clear();
-        }
-
-        private void ProcessParallelContacts()
-        {
+            // update contacts
             Parallel.ForEach(updateList, c =>
             {
+                // find lower order item
                 Fixture fixtureA = c.FixtureA;
                 Fixture fixtureB = c.FixtureB;
 
+                // find lower order item
                 Body orderedBodyA = fixtureA.GetBody;
                 Body orderedBodyB = fixtureB.GetBody;
                 int idA = orderedBodyA.LockOrder;
@@ -550,6 +610,7 @@ namespace Alis.Core.Physic.Dynamics
                     orderedBodyB = fixtureA.GetBody;
                 }
 
+                // obtain lock
                 for (;;)
                 {
                     if (Interlocked.CompareExchange(ref orderedBodyA.Lock, 1, 0) == 0)
@@ -570,6 +631,8 @@ namespace Alis.Core.Physic.Dynamics
                 Interlocked.Exchange(ref orderedBodyB.Lock, 0);
                 Interlocked.Exchange(ref orderedBodyA.Lock, 0);
             });
+
+            updateList.Clear();
         }
 
 
