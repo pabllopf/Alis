@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:PhysicMassiveNormalAndEdgeCasesTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
@@ -19,10 +48,10 @@ namespace Alis.Core.Physic.Test
         {
             for (int i = 0; i < 100; i++)
             {
-                float minX = (i % 100) - 50f;
-                float minY = ((i / 100f) % 25f) - 12f;
-                float width = (i % 17 == 0) ? 0f : (i % 31) + 0.5f;
-                float height = (i % 19 == 0) ? 0f : ((i * 3) % 29) + 0.25f;
+                float minX = i % 100 - 50f;
+                float minY = i / 100f % 25f - 12f;
+                float width = i % 17 == 0 ? 0f : i % 31 + 0.5f;
+                float height = i % 19 == 0 ? 0f : i * 3 % 29 + 0.25f;
                 float maxX = minX + width;
                 float maxY = minY + height;
                 yield return new object[] {minX, minY, maxX, maxY};
@@ -51,7 +80,7 @@ namespace Alis.Core.Physic.Test
             Assert.True(aabb.Contains(ref self));
             Assert.True(Aabb.TestOverlap(ref aabb, ref self));
 
-            if (aabb.Width > 0f && aabb.Height > 0f)
+            if ((aabb.Width > 0f) && (aabb.Height > 0f))
             {
                 Vector2F center = aabb.Center;
                 Assert.True(aabb.Contains(ref center));

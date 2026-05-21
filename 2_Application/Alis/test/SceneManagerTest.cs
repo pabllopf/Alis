@@ -1,7 +1,34 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SceneManagerTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 
-using System;
-using Alis.Core.Ecs;
+using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Manager;
 using Alis.Core.Ecs.Systems.Manager.Scene;
 using Alis.Core.Ecs.Systems.Scope;
@@ -20,7 +47,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         [Fact]
         public void Constructor_CreatesSceneManager_WithContext()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
 
             SceneManager sceneManager = new SceneManager(context);
 
@@ -34,7 +61,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         [Fact]
         public void SceneManager_InheritsFromAManager()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             SceneManager sceneManager = new SceneManager(context);
 
             Assert.IsAssignableFrom<AManager>(sceneManager);
@@ -46,7 +73,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         [Fact]
         public void SceneManager_HasLoadedScenesList()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             SceneManager sceneManager = new SceneManager(context);
 
             Assert.NotNull(sceneManager.LoadedScenes);
@@ -59,7 +86,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         [Fact]
         public void SceneManager_HasCurrentWorldProperty()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             SceneManager sceneManager = new SceneManager(context);
 
             Assert.Null(sceneManager.CurrentWorld);
@@ -71,7 +98,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         [Fact]
         public void SceneManager_Context_IsSetCorrectly()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
 
             SceneManager sceneManager = new SceneManager(context);
 
@@ -85,7 +112,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         [Fact]
         public void SceneManager_ImplementsIManagerInterface()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             SceneManager sceneManager = new SceneManager(context);
 
             Assert.IsAssignableFrom<IManager>(sceneManager);
@@ -97,7 +124,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         [Fact]
         public void SceneManager_DefaultState_IsValid()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             SceneManager sceneManager = new SceneManager(context);
 
             Assert.NotNull(sceneManager.Id);
@@ -113,7 +140,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         [Fact]
         public void SceneManager_Properties_AreAccessible()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
 
             SceneManager sceneManager = new SceneManager(context);
             sceneManager.Name = "Scene";
@@ -131,7 +158,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         [Fact]
         public void Constructor_WithScenes_InitializesList()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             Alis.Core.Ecs.Scene scene1 = new Alis.Core.Ecs.Scene();
             Alis.Core.Ecs.Scene scene2 = new Alis.Core.Ecs.Scene();
 
@@ -150,7 +177,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         [Fact]
         public void AddScene_AddsSceneToList()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             SceneManager sceneManager = new SceneManager(context);
             Alis.Core.Ecs.Scene newScene = new Alis.Core.Ecs.Scene();
 
@@ -166,7 +193,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         [Fact]
         public void LoadScene_SwitchesCurrentWorld()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             Alis.Core.Ecs.Scene scene1 = new Alis.Core.Ecs.Scene();
             Alis.Core.Ecs.Scene scene2 = new Alis.Core.Ecs.Scene();
             SceneManager sceneManager = new SceneManager(context, scene1, scene2);

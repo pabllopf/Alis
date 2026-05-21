@@ -1,3 +1,16 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Program.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
 // 
 //  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -12,7 +25,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
-
+//  --------------------------------------------------------------------------
 
 using System;
 using System.IO;

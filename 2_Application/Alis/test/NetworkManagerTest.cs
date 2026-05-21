@@ -4,6 +4,28 @@
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
+//  --------------------------------------------------------------------------
+//  File:NetworkManagerTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 //  File:NetworkManagerTest.cs
 // 
@@ -27,6 +49,7 @@
 // 
 
 
+using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Manager;
 using Alis.Core.Ecs.Systems.Manager.Network;
 using Alis.Core.Ecs.Systems.Scope;
@@ -46,7 +69,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Network
         public void Constructor_CreatesNetworkManager_WithContext()
         {
             // Arrange
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
 
             // Act
             NetworkManager networkManager = new NetworkManager(context);
@@ -63,7 +86,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Network
         public void NetworkManager_InheritsFromAManager()
         {
             // Arrange & Act
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             NetworkManager networkManager = new NetworkManager(context);
 
             // Assert
@@ -77,7 +100,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Network
         public void NetworkManager_HasExpectedProperties()
         {
             // Arrange & Act
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             NetworkManager networkManager = new NetworkManager(context);
 
             // Assert
@@ -94,7 +117,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Network
         public void NetworkManager_Context_IsSetCorrectly()
         {
             // Arrange
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
 
             // Act
             NetworkManager networkManager = new NetworkManager(context);
@@ -111,7 +134,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Network
         public void NetworkManager_ImplementsIManagerInterface()
         {
             // Arrange & Act
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             NetworkManager networkManager = new NetworkManager(context);
 
             // Assert
@@ -125,7 +148,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Network
         public void NetworkManager_DefaultState_IsValid()
         {
             // Arrange & Act
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             NetworkManager networkManager = new NetworkManager(context);
 
             // Assert
@@ -143,7 +166,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Network
         public void NetworkManager_Properties_AreAccessible()
         {
             // Arrange
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
 
             // Act
             NetworkManager networkManager = new NetworkManager(context);
@@ -166,7 +189,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Network
         public void FullConstructor_SetsAllProperties(string id, string name, string tag, bool isEnable)
         {
             // Arrange
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
 
             // Act
             NetworkManager networkManager = new NetworkManager(id, name, tag, isEnable, context);

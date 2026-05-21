@@ -1,4 +1,31 @@
-
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MemoryHelpersTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -223,7 +250,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block2_HasCorrectSize()
         {
-            int size = Marshal.SizeOf<MemoryHelpers.Block2>();
+            int size = Marshal.SizeOf<Block2>();
 
             Assert.Equal(2, size);
         }
@@ -237,7 +264,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block4_HasCorrectSize()
         {
-            int size = Marshal.SizeOf<MemoryHelpers.Block4>();
+            int size = Marshal.SizeOf<Block4>();
 
             Assert.Equal(4, size);
         }
@@ -251,7 +278,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block8_HasCorrectSize()
         {
-            int size = Marshal.SizeOf<MemoryHelpers.Block8>();
+            int size = Marshal.SizeOf<Block8>();
 
             Assert.Equal(8, size);
         }
@@ -265,7 +292,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block16_HasCorrectSize()
         {
-            int size = Marshal.SizeOf<MemoryHelpers.Block16>();
+            int size = Marshal.SizeOf<Block16>();
 
             Assert.Equal(16, size);
         }

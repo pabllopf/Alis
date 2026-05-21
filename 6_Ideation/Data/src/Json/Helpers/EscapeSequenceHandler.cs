@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -102,49 +101,75 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
         public string Unescape(string escapedString)
         {
             if (escapedString == null)
+            {
                 throw new ArgumentNullException(nameof(escapedString));
+            }
 
             if (!escapedString.Contains("\\"))
+            {
                 return escapedString;
+            }
 
             StringBuilder result = new StringBuilder(escapedString.Length);
 
             int i = 0;
             while (i < escapedString.Length)
             {
-                if (escapedString[i] == '\\' && i + 1 < escapedString.Length)
+                if ((escapedString[i] == '\\') && (i + 1 < escapedString.Length))
                 {
-                    i = AppendEscapeSequence(escapedString, i, result);
+                    char nextChar = escapedString[i + 1];
+
+                    switch (nextChar)
+                    {
+                        case '"':
+                            result.Append('"');
+                            i++;
+                            break;
+                        case '\\':
+                            result.Append('\\');
+                            i++;
+                            break;
+                        case '/':
+                            result.Append('/');
+                            i++;
+                            break;
+                        case 'b':
+                            result.Append('\b');
+                            i++;
+                            break;
+                        case 'f':
+                            result.Append('\f');
+                            i++;
+                            break;
+                        case 'n':
+                            result.Append('\n');
+                            i++;
+                            break;
+                        case 'r':
+                            result.Append('\r');
+                            i++;
+                            break;
+                        case 't':
+                            result.Append('\t');
+                            i++;
+                            break;
+                        case 'u':
+                            i = AppendUnicodeEscape(escapedString, i, result);
+                            break;
+                        default:
+                            result.Append(escapedString[i]);
+                            break;
+                    }
                 }
                 else
                 {
                     result.Append(escapedString[i]);
-                    i++;
                 }
+
+                i++;
             }
 
             return result.ToString();
-        }
-
-        private static int AppendEscapeSequence(string escapedString, int index, StringBuilder result)
-        {
-            char nextChar = escapedString[index + 1];
-
-            switch (nextChar)
-            {
-                case '"': result.Append('"'); break;
-                case '\\': result.Append('\\'); break;
-                case '/': result.Append('/'); break;
-                case 'b': result.Append('\b'); break;
-                case 'f': result.Append('\f'); break;
-                case 'n': result.Append('\n'); break;
-                case 'r': result.Append('\r'); break;
-                case 't': result.Append('\t'); break;
-                case 'u': return AppendUnicodeEscape(escapedString, index, result);
-                default: result.Append(escapedString[index]); break;
-            }
-
-            return index + 2;
         }
 
         /// <summary>

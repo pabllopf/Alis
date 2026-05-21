@@ -1,4 +1,31 @@
-
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:WebAssemblyPlatform.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
@@ -122,10 +149,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Initializes the window and EGL context with specified dimensions and title
         /// </summary>
-        public bool Initialize(int width, int height, string title)
-        {
-            return Initialize(width, height, title, null);
-        }
+        public bool Initialize(int width, int height, string title) => Initialize(width, height, title, null);
 
         /// <summary>
         ///     Initializes the window and EGL context with dimensions, title, and icon
@@ -356,7 +380,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void OnMouseDown(int button, int x, int y, int clientX, int clientY)
         {
-            if (button >= 0 && button < _mouseButtons.Length)
+            if ((button >= 0) && (button < _mouseButtons.Length))
             {
                 _mouseButtons[button] = true;
             }
@@ -369,7 +393,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void OnMouseUp(int button, int x, int y, int clientX, int clientY)
         {
-            if (button >= 0 && button < _mouseButtons.Length)
+            if ((button >= 0) && (button < _mouseButtons.Length))
             {
                 _mouseButtons[button] = false;
             }
@@ -575,7 +599,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public void MakeContextCurrent()
         {
-            if (_eglDisplay != IntPtr.Zero && _eglSurface != IntPtr.Zero && _eglContext != IntPtr.Zero)
+            if ((_eglDisplay != IntPtr.Zero) && (_eglSurface != IntPtr.Zero) && (_eglContext != IntPtr.Zero))
             {
                 EGL.MakeCurrent(_eglDisplay, _eglSurface, _eglSurface, _eglContext);
             }
@@ -586,7 +610,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public void SwapBuffers()
         {
-            if (_eglDisplay != IntPtr.Zero && _eglSurface != IntPtr.Zero)
+            if ((_eglDisplay != IntPtr.Zero) && (_eglSurface != IntPtr.Zero))
             {
                 EGL.SwapBuffers(_eglDisplay, _eglSurface);
             }
@@ -596,10 +620,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// Ises the window visible
         /// </summary>
         /// <returns>The is window visible</returns>
-        public bool IsWindowVisible()
-        {
-            return _isWindowVisible;
-        }
+        public bool IsWindowVisible() => _isWindowVisible;
 
         /// <summary>
         /// Polls the events
@@ -651,29 +672,20 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// Gets the window width
         /// </summary>
         /// <returns>The window width</returns>
-        public int GetWindowWidth()
-        {
-            return _windowWidth;
-        }
+        public int GetWindowWidth() => _windowWidth;
 
         /// <summary>
         /// Gets the window height
         /// </summary>
         /// <returns>The window height</returns>
-        public int GetWindowHeight()
-        {
-            return _windowHeight;
-        }
+        public int GetWindowHeight() => _windowHeight;
 
         /// <summary>
         /// Gets the proc address using the specified proc name
         /// </summary>
         /// <param name="procName">The proc name</param>
         /// <returns>The int ptr</returns>
-        public IntPtr GetProcAddress(string procName)
-        {
-            return EGL.GetProcAddress(procName);
-        }
+        public IntPtr GetProcAddress(string procName) => EGL.GetProcAddress(procName);
 
         /// <summary>
         /// Tries the get last key pressed using the specified key
@@ -739,10 +751,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// Gets the mouse wheel
         /// </summary>
         /// <returns>The mouse wheel delta</returns>
-        public float GetMouseWheel()
-        {
-            return _mouseWheelDelta;
-        }
+        public float GetMouseWheel() => _mouseWheelDelta;
 
         /// <summary>
         /// Tries the get last input characters using the specified chars
@@ -766,19 +775,13 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// Gets the window position x
         /// </summary>
         /// <returns>The int</returns>
-        public int GetWindowPositionX()
-        {
-            return EmscriptenWeb.GetWindowPositionX();
-        }
+        public int GetWindowPositionX() => EmscriptenWeb.GetWindowPositionX();
 
         /// <summary>
         /// Gets the window position y
         /// </summary>
         /// <returns>The int</returns>
-        public int GetWindowPositionY()
-        {
-            return EmscriptenWeb.GetWindowPositionY();
-        }
+        public int GetWindowPositionY() => EmscriptenWeb.GetWindowPositionY();
 
         /// <summary>
         /// Gets the window metrics using the specified win x
@@ -814,10 +817,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the gamepad state for a specific gamepad index
         /// </summary>
-        public bool TryGetGamepadState(int gamepadIndex, out GamepadState state)
-        {
-            return _gamepadStates.TryGetValue(gamepadIndex, out state);
-        }
+        public bool TryGetGamepadState(int gamepadIndex, out GamepadState state) => _gamepadStates.TryGetValue(gamepadIndex, out state);
 
         /// <summary>
         ///     Gets all connected gamepad indices
@@ -959,7 +959,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public bool GetButton(int index)
         {
-            if (index >= 0 && index < Buttons.Length)
+            if ((index >= 0) && (index < Buttons.Length))
             {
                 return Buttons[index];
             }

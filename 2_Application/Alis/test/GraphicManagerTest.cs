@@ -1,6 +1,34 @@
-
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GraphicManagerTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Manager;
 using Alis.Core.Ecs.Systems.Manager.Graphic;
 using Alis.Core.Ecs.Systems.Scope;
@@ -19,7 +47,7 @@ namespace Alis.Test
         [Fact]
         public void Constructor_CreatesGraphicManager_WithContext()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
 
             GraphicManager graphicManager = new GraphicManager(context);
 
@@ -33,7 +61,7 @@ namespace Alis.Test
         [Fact]
         public void GraphicManager_InheritsFromAManager()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             GraphicManager graphicManager = new GraphicManager(context);
 
             Assert.IsAssignableFrom<AManager>(graphicManager);
@@ -45,7 +73,7 @@ namespace Alis.Test
         [Fact]
         public void GraphicManager_HasExpectedProperties()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             GraphicManager graphicManager = new GraphicManager(context);
 
             Assert.NotNull(graphicManager.Id);
@@ -60,7 +88,7 @@ namespace Alis.Test
         [Fact]
         public void GraphicManager_Context_IsSetCorrectly()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
 
             GraphicManager graphicManager = new GraphicManager(context);
 
@@ -74,7 +102,7 @@ namespace Alis.Test
         [Fact]
         public void GraphicManager_ImplementsIManagerInterface()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             GraphicManager graphicManager = new GraphicManager(context);
 
             Assert.IsAssignableFrom<IManager>(graphicManager);
@@ -86,7 +114,7 @@ namespace Alis.Test
         [Fact]
         public void GraphicManager_DefaultState_IsValid()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             GraphicManager graphicManager = new GraphicManager(context);
 
             Assert.NotNull(graphicManager.Id);
@@ -102,7 +130,7 @@ namespace Alis.Test
         [Fact]
         public void GraphicManager_Properties_AreAccessible()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
 
             GraphicManager graphicManager = new GraphicManager(context);
             graphicManager.Name = "Graphic";
@@ -120,7 +148,7 @@ namespace Alis.Test
         [Fact]
         public void GraphicManager_RendererProperty_IsAccessible()
         {
-            Context context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context context = new Context(new Setting());
             GraphicManager graphicManager = new GraphicManager(context);
 
             IntPtr renderer = new IntPtr(1234);
