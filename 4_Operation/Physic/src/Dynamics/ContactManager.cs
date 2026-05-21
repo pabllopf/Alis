@@ -161,62 +161,14 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            for (ContactEdge ceB = bodyB.ContactList; ceB != null; ceB = ceB.Next)
-            {
-                if (ceB.Other == bodyA)
-                {
-                    Fixture fA = ceB.Contact.FixtureA;
-                    Fixture fB = ceB.Contact.FixtureB;
-                    int iA = ceB.Contact.ChildIndexA;
-                    int iB = ceB.Contact.ChildIndexB;
-
-                    if ((fA == fixtureA) && (fB == fixtureB) && (iA == indexA) && (iB == indexB))
-                    {
-                        return;
-                    }
-
-                    if ((fA == fixtureB) && (fB == fixtureA) && (iA == indexB) && (iB == indexA))
-                    {
-                        return;
-                    }
-                }
-            }
-
-            if (!bodyB.ShouldCollide(bodyA))
+            if (HasExistingContact(bodyA, bodyB, fixtureA, fixtureB, indexA, indexB))
             {
                 return;
             }
 
-            if (!ShouldCollide(fixtureA, fixtureB))
+            if (!ShouldCreateContact(bodyA, bodyB, fixtureA, fixtureB))
             {
                 return;
-            }
-
-            CollisionFilterDelegate contactFilterHandler = ContactFilter;
-            if (contactFilterHandler != null)
-            {
-                if (!contactFilterHandler(fixtureA, fixtureB))
-                {
-                    return;
-                }
-            }
-
-            BeforeCollisionEventHandler beforeCollisionHandlerA = fixtureA.BeforeCollision;
-            if (beforeCollisionHandlerA != null)
-            {
-                if (!beforeCollisionHandlerA(fixtureA, fixtureB))
-                {
-                    return;
-                }
-            }
-
-            BeforeCollisionEventHandler beforeCollisionHandlerB = fixtureB.BeforeCollision;
-            if (beforeCollisionHandlerB != null)
-            {
-                if (!beforeCollisionHandlerB(fixtureB, fixtureA))
-                {
-                    return;
-                }
             }
 
             Contact c = Contact.Create(this, fixtureA, indexA, fixtureB, indexB);
@@ -237,38 +189,88 @@ namespace Alis.Core.Physic.Dynamics
             c.Next.Prev = c;
             ContactCount++;
 
-
-            // Connect to island graph.
-
-            c.NodeA.Contact = c;
-            c.NodeA.Other = bodyB;
-
-            c.NodeA.Prev = null;
-            c.NodeA.Next = bodyA.ContactList;
-            if (bodyA.ContactList != null)
-            {
-                bodyA.ContactList.Prev = c.NodeA;
-            }
-
-            bodyA.ContactList = c.NodeA;
-
-            c.NodeB.Contact = c;
-            c.NodeB.Other = bodyA;
-
-            c.NodeB.Prev = null;
-            c.NodeB.Next = bodyB.ContactList;
-            if (bodyB.ContactList != null)
-            {
-                bodyB.ContactList.Prev = c.NodeB;
-            }
-
-            bodyB.ContactList = c.NodeB;
+            ConnectContactToBody(c, bodyB);
+            ConnectContactToBody(c, bodyA);
 
             if (!fixtureA.GetIsSensor && !fixtureB.GetIsSensor)
             {
                 bodyA.Awake = true;
                 bodyB.Awake = true;
             }
+        }
+
+        private bool HasExistingContact(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB, int indexA, int indexB)
+        {
+            for (ContactEdge ceB = bodyB.ContactList; ceB != null; ceB = ceB.Next)
+            {
+                if (ceB.Other == bodyA)
+                {
+                    Fixture fA = ceB.Contact.FixtureA;
+                    Fixture fB = ceB.Contact.FixtureB;
+                    int iA = ceB.Contact.ChildIndexA;
+                    int iB = ceB.Contact.ChildIndexB;
+
+                    if ((fA == fixtureA) && (fB == fixtureB) && (iA == indexA) && (iB == indexB))
+                    {
+                        return true;
+                    }
+
+                    if ((fA == fixtureB) && (fB == fixtureA) && (iA == indexB) && (iB == indexA))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool ShouldCreateContact(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB)
+        {
+            if (!bodyB.ShouldCollide(bodyA))
+            {
+                return false;
+            }
+
+            if (!ShouldCollide(fixtureA, fixtureB))
+            {
+                return false;
+            }
+
+            CollisionFilterDelegate contactFilterHandler = ContactFilter;
+            if (contactFilterHandler != null && !contactFilterHandler(fixtureA, fixtureB))
+            {
+                return false;
+            }
+
+            BeforeCollisionEventHandler beforeCollisionHandlerA = fixtureA.BeforeCollision;
+            if (beforeCollisionHandlerA != null && !beforeCollisionHandlerA(fixtureA, fixtureB))
+            {
+                return false;
+            }
+
+            BeforeCollisionEventHandler beforeCollisionHandlerB = fixtureB.BeforeCollision;
+            if (beforeCollisionHandlerB != null && !beforeCollisionHandlerB(fixtureB, fixtureA))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private void ConnectContactToBody(Contact c, Body body)
+        {
+            c.NodeB.Contact = c;
+            c.NodeB.Other = body;
+
+            c.NodeB.Prev = null;
+            c.NodeB.Next = body.ContactList;
+            if (body.ContactList != null)
+            {
+                body.ContactList.Prev = c.NodeB;
+            }
+
+            body.ContactList = c.NodeB;
         }
 
         /// <summary>
