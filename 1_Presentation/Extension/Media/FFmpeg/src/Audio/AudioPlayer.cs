@@ -83,6 +83,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 }
                 catch
                 {
+                    // Ignore process kill failure during dispose
                 }
             }
 
@@ -167,6 +168,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
             }
             catch
             {
+                // Ignore process kill failure during open write
             }
 
             InputDataStream = FfMpegWrapper.OpenInput(ffplay, $"{extraInputParameters} -f s{bitDepth}le -channels {channels} -sample_rate {sampleRate} -i -"
@@ -197,6 +199,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 }
                 catch
                 {
+                    // Ignore process kill failure during close write
                 }
 
                 InputDataStream.Dispose();
