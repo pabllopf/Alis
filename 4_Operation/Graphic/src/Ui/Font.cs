@@ -274,46 +274,6 @@ namespace Alis.Core.Graphic.Ui
         ///     Initializes the character rects using the specified char width
         /// </summary>
         /// <summary>
-        ///     Initializes the character rects custom using the specified char width
-        /// </summary>
-        /// <param name="charWidth">The char width</param>
-        /// <param name="charHeight">The char height</param>
-        /// <param name="charsPerRow">The chars per row</param>
-        /// <param name="xSpacing">The spacing</param>
-        /// <param name="ySpacing">The spacing</param>
-        private void InitializeCharacterRectsCustom(int charWidth, int charHeight, int charsPerRow, int xSpacing, int ySpacing)
-        {
-            CharacterRects.Clear();
-            string lowercase = "abcdefghijklmnopqrstuvwxyz";
-            string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string special = "0123456789";
-
-            for (int i = 0; i < lowercase.Length; i++)
-            {
-                char c = lowercase[i];
-                int x = i % charsPerRow * (charWidth + xSpacing);
-                int y = i / charsPerRow * (charHeight + ySpacing);
-                CharacterRects[c] = new RectangleI {X = x, Y = y, W = charWidth, H = charHeight};
-            }
-
-            for (int i = 0; i < uppercase.Length; i++)
-            {
-                char c = uppercase[i];
-                int x = i % charsPerRow * (charWidth + xSpacing);
-                int y = (i / charsPerRow + 1) * (charHeight + ySpacing); // Siguiente fila
-                CharacterRects[c] = new RectangleI {X = x, Y = y, W = charWidth, H = charHeight};
-            }
-
-            for (int i = 0; i < special.Length; i++)
-            {
-                char c = special[i];
-                int x = i % charsPerRow * (charWidth + xSpacing);
-                int y = (i / charsPerRow + 2) * (charHeight + ySpacing); // Siguiente fila
-                CharacterRects[c] = new RectangleI {X = x, Y = y, W = charWidth, H = charHeight};
-            }
-        }
-
-        /// <summary>
         ///     Initializes the character rects from atlas using the specified char width
         /// </summary>
         /// <param name="charWidth">The char width</param>
