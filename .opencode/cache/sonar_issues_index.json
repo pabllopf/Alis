@@ -2193,10 +2193,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 272,
     "severity": "MINOR",
-    "status": "in_progress",
+    "status": "blocked",
     "assignedWorker": "worker-opencode-001",
     "lockedAt": "2026-05-21T06:52:10.785Z",
-    "completedAt": null,
+    "completedAt": "2026-05-21T06:52:37.094Z",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323b": {
@@ -2204,10 +2204,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 277,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T06:52:37.094Z",
+    "completedAt": "2026-05-21T06:53:11.447Z",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323c": {
@@ -2215,10 +2215,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 282,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T06:53:11.447Z",
+    "completedAt": "2026-05-21T06:53:59.122Z",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323d": {
@@ -2226,10 +2226,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 287,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T06:53:59.122Z",
+    "completedAt": "2026-05-21T06:54:34.956Z",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323e": {
@@ -2237,10 +2237,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 314,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T06:54:34.956Z",
+    "completedAt": "2026-05-21T06:55:10.677Z",
     "attemptCount": 0
   },
   "AZ1dvNePMbZ4NfML323g": {
@@ -2248,10 +2248,10 @@
     "file": "4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs",
     "line": 46,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T06:55:10.677Z",
+    "completedAt": "2026-05-21T06:55:50.322Z",
     "attemptCount": 0
   },
   "AZ1dvNePMbZ4NfML323h": {
@@ -2259,10 +2259,10 @@
     "file": "4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs",
     "line": 68,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T06:55:50.322Z",
+    "completedAt": "2026-05-21T06:56:16.380Z",
     "attemptCount": 0
   },
   "AZ1dvNePMbZ4NfML323i": {
@@ -2270,10 +2270,10 @@
     "file": "4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs",
     "line": 167,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T06:56:16.380Z",
+    "completedAt": "2026-05-21T06:57:48.416Z",
     "attemptCount": 0
   },
   "AZ1dvNePMbZ4NfML323j": {
@@ -2281,10 +2281,10 @@
     "file": "4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs",
     "line": 194,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T06:57:48.416Z",
+    "completedAt": "2026-05-21T06:59:08.162Z",
     "attemptCount": 0
   },
   "AZ1dvNePMbZ4NfML323k": {
@@ -2292,10 +2292,10 @@
     "file": "4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs",
     "line": 223,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T06:59:08.162Z",
+    "completedAt": "2026-05-21T06:59:29.410Z",
     "attemptCount": 0
   },
   "AZ1dvNePMbZ4NfML323l": {
@@ -2303,9 +2303,9 @@
     "file": "4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs",
     "line": 252,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
+    "status": "in_progress",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T06:59:29.410Z",
     "completedAt": null,
     "attemptCount": 0
   },
