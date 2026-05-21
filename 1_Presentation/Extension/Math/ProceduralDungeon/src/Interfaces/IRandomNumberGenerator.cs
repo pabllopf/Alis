@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
 {
     /// <summary>

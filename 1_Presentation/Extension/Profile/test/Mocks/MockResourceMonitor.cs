@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Extension.Profile.Interfaces;
 
 namespace Alis.Extension.Profile.Test.Mocks

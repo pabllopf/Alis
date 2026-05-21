@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Core.Graphic.OpenGL.Constructs
 {
     /// <summary>

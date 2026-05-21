@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Core.Physic.Collisions.Shapes
 {
     /// <summary>

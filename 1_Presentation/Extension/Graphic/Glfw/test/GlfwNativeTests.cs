@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using Alis.Extension.Math.ProceduralDungeon.Models;
 

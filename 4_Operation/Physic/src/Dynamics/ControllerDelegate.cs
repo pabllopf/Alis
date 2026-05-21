@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Physic.Controllers;
 
 namespace Alis.Core.Physic.Dynamics

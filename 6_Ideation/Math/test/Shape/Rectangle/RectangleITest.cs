@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Runtime.Serialization;
 using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Xunit;

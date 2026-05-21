@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Ecs.Sample.Components;
 
 namespace Alis.Core.Ecs.Sample.Samples

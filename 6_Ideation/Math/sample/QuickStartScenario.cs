@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Sample
@@ -46,7 +45,7 @@ namespace Alis.Core.Aspect.Math.Sample
         internal static float DistanceSquared(Vector2F from, Vector2F to)
         {
             Vector2F delta = to - from;
-            return (delta.X * delta.X) + (delta.Y * delta.Y);
+            return delta.X * delta.X + delta.Y * delta.Y;
         }
     }
 }

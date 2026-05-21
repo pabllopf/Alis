@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Immutable;
 using System.Linq;
 using Alis.Core.Ecs.Generator.Collections;

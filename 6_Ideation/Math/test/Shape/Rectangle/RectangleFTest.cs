@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;

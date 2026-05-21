@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Logging;

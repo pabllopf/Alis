@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Core.Aspect.Data.Json.Exceptions;
 using Xunit;

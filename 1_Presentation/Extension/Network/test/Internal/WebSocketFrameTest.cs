@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Net.WebSockets;
 using Alis.Extension.Network.Internal;

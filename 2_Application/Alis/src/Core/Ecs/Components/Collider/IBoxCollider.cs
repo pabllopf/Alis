@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Systems.Scope;

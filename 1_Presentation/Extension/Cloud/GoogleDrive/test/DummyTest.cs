@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Xunit;
 
 namespace Alis.Extension.Cloud.GoogleDrive.Test

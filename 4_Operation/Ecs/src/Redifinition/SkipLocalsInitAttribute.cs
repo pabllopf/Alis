@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Diagnostics.CodeAnalysis;
 
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
 namespace System.Runtime.CompilerServices
 {
     /// <summary>

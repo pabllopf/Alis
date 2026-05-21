@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Builder.Core.Ecs.Components.Audio;
 using Alis.Builder.Core.Ecs.Components.Collider;

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Filters;
 

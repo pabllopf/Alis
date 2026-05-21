@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Mapping;

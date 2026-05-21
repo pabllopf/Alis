@@ -298,9 +298,6 @@ namespace Alis.Extension.Io.FileDialog
         /// </summary>
         /// <param name="paths">The directory paths to validate</param>
         /// <returns>True if all directory paths are valid, false otherwise</returns>
-        private static bool ValidateFolderPaths(IList<string> paths)
-        {
-            return paths.All(IsValidDirectoryPath);
-        }
+        private static bool ValidateFolderPaths(IList<string> paths) => paths.All(IsValidDirectoryPath);
     }
 }

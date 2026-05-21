@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Ecs.Systems.Execution;
 using Alis.Core.Ecs.Systems.Scope;
 

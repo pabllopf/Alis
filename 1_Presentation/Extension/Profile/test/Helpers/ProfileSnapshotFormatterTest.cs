@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Extension.Profile.Helpers;
 using Alis.Extension.Profile.Models;

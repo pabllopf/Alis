@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Thread.Core;

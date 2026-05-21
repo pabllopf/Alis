@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Core.Aspect.Fluent.Test.Components
 {
     /// <summary>

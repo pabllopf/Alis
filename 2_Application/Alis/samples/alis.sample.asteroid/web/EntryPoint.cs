@@ -1,40 +1,11 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EntryPoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
 using System;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using Alis.Core.Ecs.Systems;
-using Alis.Core.Graphic.OpenGL;
-using Alis.Core.Graphic.Platforms.Web;
-
-namespace Alis.Sample.Asteroid.Web
+                using System.Runtime.InteropServices;
+                using System.Threading.Tasks;
+                using Alis.Core.Ecs.Systems;
+                using Alis.Core.Graphic.OpenGL;
+                using Alis.Core.Graphic.Platforms.Web;
+                
+                namespace Alis.Sample.Asteroid.Web
                 {
                     /// <summary>
                     /// The entry point class
@@ -127,7 +98,7 @@ namespace Alis.Sample.Asteroid.Web
                         /// <exception cref="Exception">CreateContext() failed</exception>
                         /// <exception cref="Exception">CreateWindowSurface() failed</exception>
                         /// <exception cref="Exception">MakeCurrent() failed</exception>
-                        public static async Task Main(string[] args)
+                        public async static Task Main(string[] args)
                         {
                             Console.WriteLine($"Hello from dotnet!");
                 

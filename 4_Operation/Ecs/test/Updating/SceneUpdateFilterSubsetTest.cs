@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Core.Ecs.Test.Models;
 using Alis.Core.Ecs.Test.Updating.Runners;

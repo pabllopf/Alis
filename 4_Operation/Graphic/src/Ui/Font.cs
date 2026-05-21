@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Ui
     /// <summary>
     ///     The font class
     /// </summary>
-    public class Font(string NameFile, int Depth, int size, string fullPath)
+    public class Font(string NameFile, int Depth, int size)
     {
         /// <summary>
         ///     The size

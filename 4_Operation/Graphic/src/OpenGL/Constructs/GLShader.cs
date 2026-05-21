@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Core.Graphic.OpenGL.Enums;
 using static Alis.Core.Graphic.OpenGL.Gl;

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Extension.Network.Core

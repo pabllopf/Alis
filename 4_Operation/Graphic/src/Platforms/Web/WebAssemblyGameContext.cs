@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Diagnostics.CodeAnalysis;
 
@@ -250,42 +249,27 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if an action is currently active
         /// </summary>
-        public bool IsActionActive(string actionName)
-        {
-            return _inputManager.IsActionActive(actionName);
-        }
+        public bool IsActionActive(string actionName) => _inputManager.IsActionActive(actionName);
 
         /// <summary>
         ///     Checks if an action was just pressed this frame
         /// </summary>
-        public bool IsActionJustPressed(string actionName)
-        {
-            return _inputManager.IsActionJustPressed(actionName);
-        }
+        public bool IsActionJustPressed(string actionName) => _inputManager.IsActionJustPressed(actionName);
 
         /// <summary>
         ///     Gets the current width of the game window
         /// </summary>
-        public int GetWidth()
-        {
-            return _platform.GetWindowWidth();
-        }
+        public int GetWidth() => _platform.GetWindowWidth();
 
         /// <summary>
         ///     Gets the current height of the game window
         /// </summary>
-        public int GetHeight()
-        {
-            return _platform.GetWindowHeight();
-        }
+        public int GetHeight() => _platform.GetWindowHeight();
 
         /// <summary>
         ///     Gets the current aspect ratio
         /// </summary>
-        public float GetAspectRatio()
-        {
-            return (float)GetWidth() / GetHeight();
-        }
+        public float GetAspectRatio() => (float)GetWidth() / GetHeight();
 
         /// <summary>
         ///     Sets the window size
@@ -314,122 +298,77 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if a mouse button is currently pressed
         /// </summary>
-        public bool IsMouseButtonDown(int button)
-        {
-            return _inputManager.IsMouseButtonDown(button);
-        }
+        public bool IsMouseButtonDown(int button) => _inputManager.IsMouseButtonDown(button);
 
         /// <summary>
         ///     Gets the mouse wheel delta
         /// </summary>
-        public float GetMouseWheelDelta()
-        {
-            return _inputManager.GetMouseWheelDelta();
-        }
+        public float GetMouseWheelDelta() => _inputManager.GetMouseWheelDelta();
 
         /// <summary>
         ///     Checks if a keyboard key is currently pressed
         /// </summary>
-        public bool IsKeyDown(ConsoleKey key)
-        {
-            return _platform.IsKeyDown(key);
-        }
+        public bool IsKeyDown(ConsoleKey key) => _platform.IsKeyDown(key);
 
         /// <summary>
         ///     Gets the last key that was pressed
         /// </summary>
-        public bool TryGetKeyPressed(out ConsoleKey key)
-        {
-            return _platform.TryGetLastKeyPressed(out key);
-        }
+        public bool TryGetKeyPressed(out ConsoleKey key) => _platform.TryGetLastKeyPressed(out key);
 
         /// <summary>
         ///     Gets input characters/text
         /// </summary>
-        public bool TryGetInputText(out string text)
-        {
-            return _platform.TryGetLastInputCharacters(out text);
-        }
+        public bool TryGetInputText(out string text) => _platform.TryGetLastInputCharacters(out text);
 
         /// <summary>
         ///     Gets all connected gamepad indices
         /// </summary>
-        public int[] GetConnectedGamepadIndices()
-        {
-            return _inputManager.GetConnectedGamepadIndices();
-        }
+        public int[] GetConnectedGamepadIndices() => _inputManager.GetConnectedGamepadIndices();
 
         /// <summary>
         ///     Gets the state of a gamepad
         /// </summary>
-        public bool TryGetGamepadState(int gamepadIndex, out GamepadInputState state)
-        {
-            return _inputManager.TryGetGamepadState(gamepadIndex, out state);
-        }
+        public bool TryGetGamepadState(int gamepadIndex, out GamepadInputState state) => _inputManager.TryGetGamepadState(gamepadIndex, out state);
 
         /// <summary>
         ///     Vibrates a gamepad
         /// </summary>
-        public static bool VibrateGamepad(int gamepadIndex, float leftMotor = 1.0f, float rightMotor = 1.0f, float duration = 0.1f)
-        {
-            return WebAssemblyInputManager.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
-        }
+        public static bool VibrateGamepad(int gamepadIndex, float leftMotor = 1.0f, float rightMotor = 1.0f, float duration = 0.1f) => WebAssemblyInputManager.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
 
         /// <summary>
         ///     Toggles fullscreen mode
         /// </summary>
-        public bool ToggleFullscreen()
-        {
-            return _displayManager.ToggleFullscreen();
-        }
+        public bool ToggleFullscreen() => _displayManager.ToggleFullscreen();
 
         /// <summary>
         ///     Enters fullscreen mode
         /// </summary>
-        public bool EnterFullscreen()
-        {
-            return _displayManager.EnterFullscreen();
-        }
+        public bool EnterFullscreen() => _displayManager.EnterFullscreen();
 
         /// <summary>
         ///     Exits fullscreen mode
         /// </summary>
-        public bool ExitFullscreen()
-        {
-            return _displayManager.ExitFullscreen();
-        }
+        public bool ExitFullscreen() => _displayManager.ExitFullscreen();
 
         /// <summary>
         ///     Checks if currently in fullscreen
         /// </summary>
-        public static bool IsFullscreen()
-        {
-            return WebAssemblyDisplayManager.IsFullscreen();
-        }
+        public static bool IsFullscreen() => WebAssemblyDisplayManager.IsFullscreen();
 
         /// <summary>
         ///     Locks the pointer for FPS games
         /// </summary>
-        public static bool LockPointer()
-        {
-            return WebAssemblyInputContext.LockPointer();
-        }
+        public static bool LockPointer() => WebAssemblyInputContext.LockPointer();
 
         /// <summary>
         ///     Unlocks the pointer
         /// </summary>
-        public static bool UnlockPointer()
-        {
-            return WebAssemblyInputContext.UnlockPointer();
-        }
+        public static bool UnlockPointer() => WebAssemblyInputContext.UnlockPointer();
 
         /// <summary>
         ///     Checks if the pointer is locked
         /// </summary>
-        public static bool IsPointerLocked()
-        {
-            return WebAssemblyInputContext.IsPointerLocked();
-        }
+        public static bool IsPointerLocked() => WebAssemblyInputContext.IsPointerLocked();
 
         /// <summary>
         ///     Stops the game loop and shuts down the context
@@ -474,50 +413,32 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Shows a confirmation dialog
         /// </summary>
-        public static bool ShowConfirm(string message)
-        {
-            return EmscriptenWeb.ShowConfirm(message);
-        }
+        public static bool ShowConfirm(string message) => EmscriptenWeb.ShowConfirm(message);
 
         /// <summary>
         ///     Gets the device language
         /// </summary>
-        public static string GetDeviceLanguage()
-        {
-            return WebAssemblyDisplayManager.GetSystemLanguage();
-        }
+        public static string GetDeviceLanguage() => WebAssemblyDisplayManager.GetSystemLanguage();
 
         /// <summary>
         ///     Gets the device battery level
         /// </summary>
-        public static float GetBatteryLevel()
-        {
-            return WebAssemblyDisplayManager.GetBatteryLevel();
-        }
+        public static float GetBatteryLevel() => WebAssemblyDisplayManager.GetBatteryLevel();
 
         /// <summary>
         ///     Checks if the device is charging
         /// </summary>
-        public static bool IsCharging()
-        {
-            return WebAssemblyDisplayManager.IsCharging();
-        }
+        public static bool IsCharging() => WebAssemblyDisplayManager.IsCharging();
 
         /// <summary>
         ///     Checks if the browser is online
         /// </summary>
-        public static bool IsOnline()
-        {
-            return WebAssemblyDisplayManager.IsOnline();
-        }
+        public static bool IsOnline() => WebAssemblyDisplayManager.IsOnline();
 
         /// <summary>
         ///     Gets the screen refresh rate
         /// </summary>
-        public static int GetRefreshRate()
-        {
-            return WebAssemblyDisplayManager.RefreshRate;
-        }
+        public static int GetRefreshRate() => WebAssemblyDisplayManager.RefreshRate;
 
         /// <summary>
         ///     Disposes the game context
@@ -542,85 +463,73 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Configuration for a 2D game
         /// </summary>
-        public static WebAssemblyConfiguration Game2D()
+        public static WebAssemblyConfiguration Game2D() => new WebAssemblyConfiguration
         {
-            return new WebAssemblyConfiguration
-            {
-                WindowWidth = 1280,
-                WindowHeight = 720,
-                WindowTitle = "2D Game",
-                VSync = true,
-                TargetFrameRate = 60,
-                MultisamplingEnabled = true,
-                MultisampleCount = 4,
-                DisplayQuality = DisplayQuality.High,
-                GamepadInputEnabled = true,
-                KeyboardInputEnabled = true,
-                MouseInputEnabled = true
-            };
-        }
+            WindowWidth = 1280,
+            WindowHeight = 720,
+            WindowTitle = "2D Game",
+            VSync = true,
+            TargetFrameRate = 60,
+            MultisamplingEnabled = true,
+            MultisampleCount = 4,
+            DisplayQuality = DisplayQuality.High,
+            GamepadInputEnabled = true,
+            KeyboardInputEnabled = true,
+            MouseInputEnabled = true
+        };
 
         /// <summary>
         ///     Configuration for a 3D game
         /// </summary>
-        public static WebAssemblyConfiguration Game3D()
+        public static WebAssemblyConfiguration Game3D() => new WebAssemblyConfiguration
         {
-            return new WebAssemblyConfiguration
-            {
-                WindowWidth = 1920,
-                WindowHeight = 1080,
-                WindowTitle = "3D Game",
-                VSync = true,
-                TargetFrameRate = 60,
-                MultisamplingEnabled = true,
-                MultisampleCount = 8,
-                DisplayQuality = DisplayQuality.VeryHigh,
-                GamepadInputEnabled = true,
-                KeyboardInputEnabled = true,
-                MouseInputEnabled = true
-            };
-        }
+            WindowWidth = 1920,
+            WindowHeight = 1080,
+            WindowTitle = "3D Game",
+            VSync = true,
+            TargetFrameRate = 60,
+            MultisamplingEnabled = true,
+            MultisampleCount = 8,
+            DisplayQuality = DisplayQuality.VeryHigh,
+            GamepadInputEnabled = true,
+            KeyboardInputEnabled = true,
+            MouseInputEnabled = true
+        };
 
         /// <summary>
         ///     Configuration for a puzzle game
         /// </summary>
-        public static WebAssemblyConfiguration PuzzleGame()
+        public static WebAssemblyConfiguration PuzzleGame() => new WebAssemblyConfiguration
         {
-            return new WebAssemblyConfiguration
-            {
-                WindowWidth = 800,
-                WindowHeight = 600,
-                WindowTitle = "Puzzle Game",
-                VSync = false,
-                TargetFrameRate = 30,
-                MultisamplingEnabled = false,
-                DisplayQuality = DisplayQuality.Medium,
-                GamepadInputEnabled = false,
-                KeyboardInputEnabled = true,
-                MouseInputEnabled = true
-            };
-        }
+            WindowWidth = 800,
+            WindowHeight = 600,
+            WindowTitle = "Puzzle Game",
+            VSync = false,
+            TargetFrameRate = 30,
+            MultisamplingEnabled = false,
+            DisplayQuality = DisplayQuality.Medium,
+            GamepadInputEnabled = false,
+            KeyboardInputEnabled = true,
+            MouseInputEnabled = true
+        };
 
         /// <summary>
         ///     Configuration for a mobile game
         /// </summary>
-        public static WebAssemblyConfiguration MobileGame()
+        public static WebAssemblyConfiguration MobileGame() => new WebAssemblyConfiguration
         {
-            return new WebAssemblyConfiguration
-            {
-                WindowWidth = 720,
-                WindowHeight = 1280,
-                WindowTitle = "Mobile Game",
-                VSync = true,
-                TargetFrameRate = 60,
-                MultisamplingEnabled = false,
-                DisplayQuality = DisplayQuality.Medium,
-                GamepadInputEnabled = true,
-                KeyboardInputEnabled = true,
-                MouseInputEnabled = true,
-                TouchInputEnabled = true
-            };
-        }
+            WindowWidth = 720,
+            WindowHeight = 1280,
+            WindowTitle = "Mobile Game",
+            VSync = true,
+            TargetFrameRate = 60,
+            MultisamplingEnabled = false,
+            DisplayQuality = DisplayQuality.Medium,
+            GamepadInputEnabled = true,
+            KeyboardInputEnabled = true,
+            MouseInputEnabled = true,
+            TouchInputEnabled = true
+        };
     }
 }
 

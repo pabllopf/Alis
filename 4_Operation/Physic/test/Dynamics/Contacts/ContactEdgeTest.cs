@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;
 

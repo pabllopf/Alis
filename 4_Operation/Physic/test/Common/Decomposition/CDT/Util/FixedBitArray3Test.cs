@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Physic.Common.Decomposition.CDT.Util;

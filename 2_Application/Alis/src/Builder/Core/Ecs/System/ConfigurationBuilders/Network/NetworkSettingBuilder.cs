@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Systems.Configuration.Network;
 

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Ecs.Systems.Manager.Time;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;

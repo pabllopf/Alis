@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Ecs.Kernel;
 
 namespace Alis.Core.Ecs.Systems

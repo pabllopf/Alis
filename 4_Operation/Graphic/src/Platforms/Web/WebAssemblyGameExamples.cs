@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
@@ -245,7 +244,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     }
 
                     float batteryLevel = WebAssemblyGameContext.GetBatteryLevel();
-                    if (batteryLevel < 0.2f && !WebAssemblyGameContext.IsCharging())
+                    if ((batteryLevel < 0.2f) && !WebAssemblyGameContext.IsCharging())
                     {
                         WebAssemblyGameContext.ConsoleWarn("Low battery warning");
                     }
@@ -317,7 +316,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                         userInput += text;
                     }
 
-                    if (context.IsKeyDown(ConsoleKey.Backspace) && userInput.Length > 0)
+                    if (context.IsKeyDown(ConsoleKey.Backspace) && (userInput.Length > 0))
                     {
                         userInput = userInput.Substring(0, userInput.Length - 1);
                     }
@@ -511,8 +510,8 @@ namespace Alis.Core.Graphic.Platforms.Web
             else
             {
                 float normalizedMagnitude = (magnitude - deadzone) / (1.0f - deadzone);
-                x = (x / magnitude) * normalizedMagnitude;
-                y = (y / magnitude) * normalizedMagnitude;
+                x = x / magnitude * normalizedMagnitude;
+                y = y / magnitude * normalizedMagnitude;
             }
         }
 
@@ -556,10 +555,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Converts a platform key to a human-readable name
         /// </summary>
-        public static string GetKeyName(ConsoleKey key)
-        {
-            return WebAssemblyInputManager.GetKeyName(key);
-        }
+        public static string GetKeyName(ConsoleKey key) => WebAssemblyInputManager.GetKeyName(key);
     }
 }
 

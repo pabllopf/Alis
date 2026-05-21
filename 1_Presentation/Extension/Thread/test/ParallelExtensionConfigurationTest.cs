@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Extension.Thread.Configuration;
 using Alis.Extension.Thread.Core;

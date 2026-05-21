@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;

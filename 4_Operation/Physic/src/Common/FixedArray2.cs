@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Matrix;
 
 namespace Alis.Core.Physic.Common

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Extension.Ads.GoogleAds.Sample
 {
     /// <summary>

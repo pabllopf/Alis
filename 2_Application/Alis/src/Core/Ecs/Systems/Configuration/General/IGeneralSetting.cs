@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Core.Ecs.Systems.Configuration.General
 {
     /// <summary>

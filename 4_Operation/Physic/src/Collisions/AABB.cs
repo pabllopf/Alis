@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -256,13 +255,10 @@ namespace Alis.Core.Physic.Collisions
         /// <returns>
         ///     <c>true</c> if it contains the specified aabb; otherwise, <c>false</c>.
         /// </returns>
-        public bool Contains(ref Aabb aabb)
-        {
-            return LowerBound.X <= aabb.LowerBound.X
-                   && LowerBound.Y <= aabb.LowerBound.Y
-                   && aabb.UpperBound.X <= UpperBound.X
-                   && aabb.UpperBound.Y <= UpperBound.Y;
-        }
+        public bool Contains(ref Aabb aabb) => (LowerBound.X <= aabb.LowerBound.X)
+                                               && (LowerBound.Y <= aabb.LowerBound.Y)
+                                               && (aabb.UpperBound.X <= UpperBound.X)
+                                               && (aabb.UpperBound.Y <= UpperBound.Y);
 
         /// <summary>
         ///     Determines whether the AAABB contains the specified point.

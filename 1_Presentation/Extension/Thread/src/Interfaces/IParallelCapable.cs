@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Extension.Thread.Interfaces
 {
     /// <summary>

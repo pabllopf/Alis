@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic.OpenGL;

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Threading;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;

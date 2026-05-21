@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 

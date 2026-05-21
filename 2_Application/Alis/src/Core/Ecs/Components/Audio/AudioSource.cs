@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Runtime.InteropServices;
 using System.Threading;
 using Alis.Core.Aspect.Fluent.Components;

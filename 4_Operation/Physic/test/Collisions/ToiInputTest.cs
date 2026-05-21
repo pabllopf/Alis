@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Common;
 using Xunit;

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.BaseClasses;

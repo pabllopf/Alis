@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Extension.Profile.Factories;
 using Alis.Extension.Profile.Implementations;
 using Alis.Extension.Profile.Interfaces;

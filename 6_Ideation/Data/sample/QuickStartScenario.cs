@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Core.Aspect.Data.Sample
 {
     /// <summary>
@@ -39,15 +38,12 @@ namespace Alis.Core.Aspect.Data.Sample
         ///     Creates a sample music album payload.
         /// </summary>
         /// <returns>A ready-to-serialize album instance.</returns>
-        internal static Album CreateAlbum()
+        internal static Album CreateAlbum() => new Album
         {
-            return new Album
-            {
-                Name = "Alis Demo Album",
-                TrackCount = 12,
-                DurationSeconds = 2640,
-                IsAvailable = true
-            };
-        }
+            Name = "Alis Demo Album",
+            TrackCount = 12,
+            DurationSeconds = 2640,
+            IsAvailable = true
+        };
     }
 }

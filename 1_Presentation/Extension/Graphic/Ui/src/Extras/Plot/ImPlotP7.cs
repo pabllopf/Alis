@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Text;
 
 namespace Alis.Extension.Graphic.Ui.Extras.Plot

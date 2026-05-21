@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -155,42 +154,27 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the current display width
         /// </summary>
-        public int GetWidth()
-        {
-            return _currentWidth;
-        }
+        public int GetWidth() => _currentWidth;
 
         /// <summary>
         ///     Gets the current display height
         /// </summary>
-        public int GetHeight()
-        {
-            return _currentHeight;
-        }
+        public int GetHeight() => _currentHeight;
 
         /// <summary>
         ///     Gets the current aspect ratio
         /// </summary>
-        public float GetAspectRatio()
-        {
-            return (float)_currentWidth / _currentHeight;
-        }
+        public float GetAspectRatio() => (float)_currentWidth / _currentHeight;
 
         /// <summary>
         ///     Gets the current screen orientation
         /// </summary>
-        public ScreenOrientation GetOrientation()
-        {
-            return _currentOrientation;
-        }
+        public ScreenOrientation GetOrientation() => _currentOrientation;
 
         /// <summary>
         ///     Gets the device pixel ratio (for high DPI displays)
         /// </summary>
-        public static float GetDevicePixelRatio()
-        {
-            return EmscriptenWeb.GetDevicePixelRatio();
-        }
+        public static float GetDevicePixelRatio() => EmscriptenWeb.GetDevicePixelRatio();
 
         /// <summary>
         ///     Sets the window resolution
@@ -270,18 +254,12 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Checks if currently in fullscreen
         /// </summary>
-        public static bool IsFullscreen()
-        {
-            return EmscriptenWeb.IsFullscreenEnabled();
-        }
+        public static bool IsFullscreen() => EmscriptenWeb.IsFullscreenEnabled();
 
         /// <summary>
         ///     Gets all supported display modes
         /// </summary>
-        public DisplayMode[] GetSupportedModes()
-        {
-            return _supportedModes.ToArray();
-        }
+        public DisplayMode[] GetSupportedModes() => _supportedModes.ToArray();
 
         /// <summary>
         ///     Finds a supported display mode matching the given dimensions
@@ -290,7 +268,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         {
             foreach (DisplayMode mode in _supportedModes)
             {
-                if (mode.Width == width && mode.Height == height)
+                if ((mode.Width == width) && (mode.Height == height))
                 {
                     return mode;
                 }
@@ -309,10 +287,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the current display quality level
         /// </summary>
-        public DisplayQuality GetDisplayQuality()
-        {
-            return _displayQuality;
-        }
+        public DisplayQuality GetDisplayQuality() => _displayQuality;
 
         /// <summary>
         ///     Gets the rendering scale based on display quality
@@ -334,34 +309,22 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the browser's preferred language
         /// </summary>
-        public static string GetSystemLanguage()
-        {
-            return EmscriptenWeb.GetLanguage();
-        }
+        public static string GetSystemLanguage() => EmscriptenWeb.GetLanguage();
 
         /// <summary>
         ///     Checks if the browser is currently online
         /// </summary>
-        public static bool IsOnline()
-        {
-            return EmscriptenWeb.IsOnline();
-        }
+        public static bool IsOnline() => EmscriptenWeb.IsOnline();
 
         /// <summary>
         ///     Gets the device battery level (if available)
         /// </summary>
-        public static float GetBatteryLevel()
-        {
-            return EmscriptenWeb.GetBatteryLevel();
-        }
+        public static float GetBatteryLevel() => EmscriptenWeb.GetBatteryLevel();
 
         /// <summary>
         ///     Checks if the device is charging
         /// </summary>
-        public static bool IsCharging()
-        {
-            return EmscriptenWeb.IsCharging();
-        }
+        public static bool IsCharging() => EmscriptenWeb.IsCharging();
 
         /// <summary>
         ///     Gets the screen refresh rate
@@ -445,10 +408,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// Returns the string
         /// </summary>
         /// <returns>The string</returns>
-        public override string ToString()
-        {
-            return $"{Width}x{Height}@{RefreshRate}Hz";
-        }
+        public override string ToString() => $"{Width}x{Height}@{RefreshRate}Hz";
     }
 
     /// <summary>

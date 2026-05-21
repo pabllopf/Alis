@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Graphic.OpenGL.Enums;

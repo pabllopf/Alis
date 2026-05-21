@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Data.Json;
@@ -108,14 +107,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
             /// </summary>
             /// <param name="properties">The serialized properties.</param>
             /// <returns>The created model.</returns>
-            public DemoJsonModel CreateFromProperties(Dictionary<string, string> properties)
+            public DemoJsonModel CreateFromProperties(Dictionary<string, string> properties) => new DemoJsonModel
             {
-                return new DemoJsonModel
-                {
-                    Name = properties["Name"],
-                    Score = int.Parse(properties["Score"])
-                };
-            }
+                Name = properties["Name"],
+                Score = int.Parse(properties["Score"])
+            };
         }
     }
 }

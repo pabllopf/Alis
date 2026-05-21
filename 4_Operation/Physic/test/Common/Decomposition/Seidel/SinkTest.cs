@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Physic.Common.Decomposition.Seidel;
 using Xunit;
 

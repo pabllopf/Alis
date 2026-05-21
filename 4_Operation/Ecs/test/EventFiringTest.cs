@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;

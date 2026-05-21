@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Diagnostics.CodeAnalysis;
 
@@ -48,10 +47,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Initializes a new instance of the WebAssemblyConfigurationBuilder
         /// </summary>
-        public WebAssemblyConfigurationBuilder()
-        {
-            _configuration = new WebAssemblyConfiguration();
-        }
+        public WebAssemblyConfigurationBuilder() => _configuration = new WebAssemblyConfiguration();
 
         /// <summary>
         ///     Sets the window width and height
@@ -115,7 +111,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public WebAssemblyConfigurationBuilder WithMultisampleCount(int count)
         {
-            if (count != 2 && count != 4 && count != 8 && count != 16)
+            if ((count != 2) && (count != 4) && (count != 8) && (count != 16))
                 throw new ArgumentException("Multisample count must be 2, 4, 8, or 16", nameof(count));
             _configuration.MultisampleCount = count;
             return this;
@@ -218,10 +214,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Builds and returns the configuration
         /// </summary>
-        public WebAssemblyConfiguration Build()
-        {
-            return _configuration;
-        }
+        public WebAssemblyConfiguration Build() => _configuration;
     }
 
     /// <summary>
@@ -328,10 +321,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Creates a new WebAssemblyPlatform instance with default configuration
         /// </summary>
-        public static WebAssemblyPlatform CreateDefault()
-        {
-            return new WebAssemblyPlatform();
-        }
+        public static WebAssemblyPlatform CreateDefault() => new WebAssemblyPlatform();
 
         /// <summary>
         ///     Creates a new WebAssemblyPlatform instance with the specified configuration

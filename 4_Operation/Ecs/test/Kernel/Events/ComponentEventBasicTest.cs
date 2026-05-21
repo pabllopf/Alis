@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Ecs.Kernel.Events;
 
 namespace Alis.Core.Ecs.Test.Kernel.Events

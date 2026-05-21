@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 #if winx64 || winx86 || winarm64 || winarm || win
 using System;
 using System.Diagnostics.CodeAnalysis;

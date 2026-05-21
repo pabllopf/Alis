@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Math.Shapes.Square

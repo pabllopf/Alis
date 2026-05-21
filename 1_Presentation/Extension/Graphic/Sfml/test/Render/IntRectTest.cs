@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Extension.Graphic.Sfml.Render;
 using Xunit;
 

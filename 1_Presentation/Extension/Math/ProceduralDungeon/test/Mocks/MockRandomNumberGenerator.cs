@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Extension.Math.ProceduralDungeon.Interfaces;
 
 namespace Alis.Extension.Math.ProceduralDungeon.Test.Mocks

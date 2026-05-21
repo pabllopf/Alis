@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Physic.Dynamics.Contacts;

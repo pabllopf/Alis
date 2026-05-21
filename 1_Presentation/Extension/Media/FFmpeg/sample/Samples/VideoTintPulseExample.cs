@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Graphic.OpenGL;
 
 namespace Alis.Extension.Media.FFmpeg.Sample.Samples
@@ -46,9 +45,7 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
         /// Gets the fragment shader source
         /// </summary>
         /// <returns>The string</returns>
-        protected override string GetFragmentShaderSource()
-        {
-            return @"
+        protected override string GetFragmentShaderSource() => @"
 #version 150 core
 in vec2 TexCoord;
 out vec4 FragColor;
@@ -60,7 +57,6 @@ void main() {
     vec3 tint = vec3(0.5 + pulse * 0.5, 0.8, 1.0);
     FragColor = vec4(c.rgb * tint, c.a);
 }";
-        }
 
         /// <summary>
         /// Sets the per frame uniforms using the specified elapsed seconds

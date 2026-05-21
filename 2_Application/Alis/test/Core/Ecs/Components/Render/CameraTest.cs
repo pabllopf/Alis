@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems.Scope;

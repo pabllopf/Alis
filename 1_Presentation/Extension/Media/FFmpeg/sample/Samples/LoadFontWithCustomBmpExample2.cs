@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;

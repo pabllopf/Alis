@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Immutable;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using Alis.Core.Ecs.Generator.Models;

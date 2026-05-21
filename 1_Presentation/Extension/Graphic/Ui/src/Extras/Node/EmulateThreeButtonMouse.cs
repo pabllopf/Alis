@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Extension.Graphic.Ui.Extras.Node
 {
     /// <summary>

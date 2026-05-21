@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Extension.Graphic.Glfw.Structs;
 
 namespace Alis.Extension.Graphic.Glfw

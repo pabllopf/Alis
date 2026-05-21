@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Extension.Graphic.Glfw.Test.Skipper;
 using Xunit;
 

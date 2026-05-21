@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
 {
     /// <summary>

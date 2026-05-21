@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Shapes;
 using Alis.Core.Aspect.Math.Shapes.Circle;
 using Alis.Core.Aspect.Math.Shapes.Line;

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Shortcut;
 using Alis.Core.Aspect.Math.Vector;

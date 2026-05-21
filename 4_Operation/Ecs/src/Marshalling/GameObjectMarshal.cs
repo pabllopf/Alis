@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Ecs.Kernel.Archetypes;
 
 namespace Alis.Core.Ecs.Marshalling

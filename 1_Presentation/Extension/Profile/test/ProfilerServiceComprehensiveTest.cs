@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Threading;
 using Alis.Extension.Profile.Factories;

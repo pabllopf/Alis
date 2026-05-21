@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Alis.Core.Aspect.Logging.Abstractions;

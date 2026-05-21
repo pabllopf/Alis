@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Test.Models;
 using Alis.Core.Ecs.Updating.Runners;

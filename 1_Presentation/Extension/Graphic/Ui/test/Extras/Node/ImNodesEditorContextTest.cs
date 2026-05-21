@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Extras.Node;
 using Xunit;

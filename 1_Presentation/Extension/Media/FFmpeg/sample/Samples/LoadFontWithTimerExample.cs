@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Graphic.OpenGL;

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;

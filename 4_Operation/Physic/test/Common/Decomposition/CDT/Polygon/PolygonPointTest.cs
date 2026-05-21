@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
 using Xunit;

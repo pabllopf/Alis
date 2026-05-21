@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Extension.Media.FFmpeg.BaseClasses;
 using Xunit;
 

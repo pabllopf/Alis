@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Security.Cryptography;
 using Alis.Core.Physic.Common.Decomposition.CDT.Polygon;

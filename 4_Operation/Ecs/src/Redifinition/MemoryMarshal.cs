@@ -33,7 +33,7 @@ namespace System.Runtime.InteropServices
     /// <summary>
     ///     Provides methods for accessing and manipulating memory in a low-level manner.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class MemoryMarshal
     {
         /// <summary>

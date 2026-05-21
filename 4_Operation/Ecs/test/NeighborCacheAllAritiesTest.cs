@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;

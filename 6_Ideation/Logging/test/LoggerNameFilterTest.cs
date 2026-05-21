@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;

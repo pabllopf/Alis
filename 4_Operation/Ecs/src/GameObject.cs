@@ -37,6 +37,7 @@ using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Kernel.Events;
+using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs

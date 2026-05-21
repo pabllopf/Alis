@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Extension.Media.FFmpeg.Sample.Samples
 {
     /// <summary>
@@ -39,9 +38,7 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
         /// Gets the fragment shader source
         /// </summary>
         /// <returns>The string</returns>
-        protected override string GetFragmentShaderSource()
-        {
-            return @"
+        protected override string GetFragmentShaderSource() => @"
 #version 150 core
 in vec2 TexCoord;
 out vec4 FragColor;
@@ -51,7 +48,6 @@ void main() {
     float luma = dot(c.rgb, vec3(0.2126, 0.7152, 0.0722));
     FragColor = vec4(vec3(luma), c.a);
 }";
-        }
     }
 }
 

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;
 using Alis.Core.Ecs.Test.Models;
