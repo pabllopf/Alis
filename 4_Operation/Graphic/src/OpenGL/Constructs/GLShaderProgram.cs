@@ -197,7 +197,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <param name="type">The type</param>
         /// <exception cref="Exception"></exception>
         /// <returns>The type</returns>
-        private Type TypeFromUniformType(ActiveUniformType type)
+        private static Type TypeFromUniformType(ActiveUniformType type)
         {
             switch (type)
             {
