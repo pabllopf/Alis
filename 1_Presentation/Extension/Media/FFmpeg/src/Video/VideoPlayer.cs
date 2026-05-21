@@ -83,6 +83,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 }
                 catch
                 {
+                    // Ignore process kill failure during dispose
                 }
             }
 
@@ -159,6 +160,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
             }
             catch
             {
+                // Ignore process kill failure during open write
             }
 
             InputDataStream = FfMpegWrapper.OpenInput(ffplay, $"-f rawvideo -video_size {width}:{height} -framerate {framerateFrequency} -pixel_format rgb24 -i -",
@@ -188,6 +190,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 }
                 catch
                 {
+                    // Ignore process kill failure during close write
                 }
 
                 InputDataStream.Dispose();
