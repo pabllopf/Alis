@@ -1,9 +1,9 @@
 {
   "workerId": "worker-macbookpro-001",
   "startedAt": "2026-05-20T16:05:45.259482Z",
-  "lastHeartbeat": "2026-05-20T16:17:43.933196+00:00",
-  "issuesProcessed": 4,
-  "issuesFixed": 4,
+  "lastHeartbeat": "2026-05-20T18:44:30.482327+00:00",
+  "issuesProcessed": 6,
+  "issuesFixed": 6,
   "issuesFailed": 0,
   "status": "active"
 }
