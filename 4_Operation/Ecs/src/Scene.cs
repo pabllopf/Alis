@@ -182,7 +182,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The create
         /// </summary>
-        public FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes =
+        public FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes { get; set; } =
             FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
 
         /// <summary>
