@@ -1796,6 +1796,21 @@ namespace Alis.Core.Ecs
 
             GameObjectIdOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
 
+            ProcessComponentTransfer(from, destination, componentHandles, ref currentLookup, nextLocation, deletedIndex);
+
+            ref GameObjectLocation displacedGameObjectLocation = ref EntityTable.UnsafeIndexNoResize(movedDown.ID);
+            displacedGameObjectLocation.Archetype = currentLookup.Archetype;
+            displacedGameObjectLocation.Index = currentLookup.Index;
+
+            currentLookup.Archetype = nextLocation.Archetype;
+            currentLookup.Index = nextLocation.Index;
+
+            InvokeRemoveEvents(componentHandles, gameObject, currentLookup.Flags, deletedIndex);
+        }
+
+        private void ProcessComponentTransfer(Archetype from, Archetype destination, Span<ComponentHandle> componentHandles,
+            ref GameObjectLocation currentLookup, GameObjectLocation nextLocation, int deletedIndex)
+        {
             ComponentStorageBase[] fromRunners = from.Components;
             ComponentStorageBase[] destRunners = destination.Components;
             byte[] destMap = destination.ComponentTagTable;
@@ -1805,7 +1820,6 @@ namespace Alis.Core.Ecs
             bool hasGenericRemoveEvent = GameObjectLocation.HasEventFlag(currentLookup.Flags, GameObjectFlags.RemoveGenericComp);
 
             int writeToIndex = 0;
-
             DeleteComponentData deleteData = new DeleteComponentData(currentLookup.Index, deletedIndex);
 
             for (int i = 0; i < fromComponents.Length;)
@@ -1823,7 +1837,7 @@ namespace Alis.Core.Ecs
                     {
                         writeTo = runner.Store(currentLookup.Index);
                     }
-                    else //kinda illegal but whatever
+                    else
                     {
                         writeTo = new ComponentHandle(0, componentToMoveFromFromToTo);
                     }
@@ -1836,47 +1850,41 @@ namespace Alis.Core.Ecs
                         Unsafe.Add(ref fromRunners[0], i), nextLocation.Index, currentLookup.Index, deletedIndex);
                 }
             }
+        }
 
-            //copy everything but 
-            ref GameObjectLocation displacedGameObjectLocation = ref EntityTable.UnsafeIndexNoResize(movedDown.ID);
-            displacedGameObjectLocation.Archetype = currentLookup.Archetype;
-            displacedGameObjectLocation.Index = currentLookup.Index;
+        private void InvokeRemoveEvents(Span<ComponentHandle> componentHandles, GameObject gameObject,
+            GameObjectFlags flags, int deletedIndex)
+        {
+            if (!GameObjectLocation.HasEventFlag(flags | WorldEventFlags, GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
+                return;
 
-            currentLookup.Archetype = nextLocation.Archetype;
-            currentLookup.Index = nextLocation.Index;
-
-            if (GameObjectLocation.HasEventFlag(currentLookup.Flags | WorldEventFlags,
-                    GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
+            if (ComponentRemovedEvent.HasListeners)
             {
-                if (ComponentRemovedEvent.HasListeners)
+                foreach (ComponentHandle handle in componentHandles)
                 {
-                    foreach (ComponentHandle handle in componentHandles)
-                    {
-                        ComponentRemovedEvent.Invoke(gameObject, handle.ComponentId);
-                    }
+                    ComponentRemovedEvent.Invoke(gameObject, handle.ComponentId);
                 }
+            }
 
-                if (GameObjectLocation.HasEventFlag(currentLookup.Flags,
-                        GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
+            if (!GameObjectLocation.HasEventFlag(flags, GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
+                return;
+
+            EventRecord lookup = EventLookup[gameObject.EntityIdOnly];
+            bool hasGenericRemoveEvent = GameObjectLocation.HasEventFlag(flags, GameObjectFlags.RemoveGenericComp);
+
+            if (hasGenericRemoveEvent)
+            {
+                foreach (ComponentHandle handle in componentHandles)
                 {
-                    EventRecord lookup = EventLookup[gameObject.EntityIdOnly];
-
-                    if (hasGenericRemoveEvent)
-                    {
-                        foreach (ComponentHandle handle in componentHandles)
-                        {
-                            lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
-                            handle.InvokeComponentEventAndConsume(gameObject, lookup.Remove.GenericEvent);
-                        }
-                    }
-                    else
-                        //no need to dispose here, as they were never created
-                    {
-                        foreach (ComponentHandle handle in componentHandles)
-                        {
-                            lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
-                        }
-                    }
+                    lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
+                    handle.InvokeComponentEventAndConsume(gameObject, lookup.Remove.GenericEvent);
+                }
+            }
+            else
+            {
+                foreach (ComponentHandle handle in componentHandles)
+                {
+                    lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
                 }
             }
         }
