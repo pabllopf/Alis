@@ -44,6 +44,8 @@ namespace Alis.Extension.Graphic.Sfml.Render
     /// </summary>
     public class Texture : ObjectBase
     {
+        private const string _resourceName = "texture";
+
         /// <summary>
         ///     The my external
         /// </summary>
@@ -60,7 +62,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("texture");
+                throw new LoadingFailedException(_resourceName);
             }
         }
 
@@ -87,7 +89,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("texture", filename);
+                throw new LoadingFailedException(_resourceName, filename);
             }
         }
 
@@ -119,7 +121,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
 
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("texture");
+                throw new LoadingFailedException(_resourceName);
             }
         }
 
@@ -146,7 +148,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("texture");
+                throw new LoadingFailedException(_resourceName);
             }
         }
 
@@ -172,7 +174,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
 
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("texture");
+                throw new LoadingFailedException(_resourceName);
             }
         }
 
