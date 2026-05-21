@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         ///     OnDestroy the object
         /// </summary>
         /// <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
-        private void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (myCPointer != IntPtr.Zero)
             {
