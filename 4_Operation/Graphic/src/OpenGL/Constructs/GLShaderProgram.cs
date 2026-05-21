@@ -176,7 +176,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <param name="type">The type</param>
         /// <exception cref="Exception"></exception>
         /// <returns>The type</returns>
-        private Type TypeFromAttributeType(ActiveAttribType type)
+        private static Type TypeFromAttributeType(ActiveAttribType type)
         {
             switch (type)
             {
