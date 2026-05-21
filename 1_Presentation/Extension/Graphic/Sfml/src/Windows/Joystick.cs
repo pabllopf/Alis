@@ -222,13 +222,13 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         public struct Identification
         {
             /// <summary>Name of the joystick</summary>
-            public string Name;
+            public string Name { get; set; }
 
             /// <summary>Manufacturer identifier</summary>
-            public uint VendorId;
+            public uint VendorId { get; set; }
 
             /// <summary>Product identifier</summary>
-            public uint ProductId;
+            public uint ProductId { get; set; }
         }
 
 
