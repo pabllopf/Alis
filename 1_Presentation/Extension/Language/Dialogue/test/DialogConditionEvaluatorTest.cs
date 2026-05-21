@@ -49,7 +49,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             DialogContext context = new DialogContext("testDialog");
             IDialogCondition condition = new LambdaDialogCondition(ctx => true);
 
-            Assert.True(evaluator.EvaluateCondition(condition, context));
+            Assert.True(DialogConditionEvaluator.EvaluateCondition(condition, context));
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             DialogContext context = new DialogContext("testDialog");
             IDialogCondition condition = new LambdaDialogCondition(ctx => false);
 
-            Assert.False(evaluator.EvaluateCondition(condition, context));
+            Assert.False(DialogConditionEvaluator.EvaluateCondition(condition, context));
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             DialogConditionEvaluator evaluator = new DialogConditionEvaluator();
             DialogContext context = new DialogContext("testDialog");
 
-            Assert.Throws<ArgumentNullException>(() => evaluator.EvaluateCondition(null, context));
+            Assert.Throws<ArgumentNullException>(() => DialogConditionEvaluator.EvaluateCondition(null, context));
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             DialogConditionEvaluator evaluator = new DialogConditionEvaluator();
             IDialogCondition condition = new LambdaDialogCondition(ctx => true);
 
-            Assert.Throws<ArgumentNullException>(() => evaluator.EvaluateCondition(condition, null));
+            Assert.Throws<ArgumentNullException>(() => DialogConditionEvaluator.EvaluateCondition(condition, null));
         }
 
         /// <summary>
