@@ -970,20 +970,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Remove(Joint joint)
         {
-            if (GetIsLocked)
-            {
-                throw new InvalidOperationException("The World is locked.");
-            }
-
-            if (joint == null)
-            {
-                throw new ArgumentNullException("joint");
-            }
-
-            if (joint.WorldPhysic != this)
-            {
-                throw new ArgumentException("You are removing a joint that is not in the simulation.", "joint");
-            }
+            ValidateJointForRemoval(joint);
 
             bool collideConnected = joint.CollideConnected;
 
@@ -1001,59 +988,15 @@ namespace Alis.Core.Physic.Dynamics
                 bodyB.Awake = true;
             }
 
-            if (joint.EdgeA.Prev != null)
-            {
-                joint.EdgeA.Prev.Next = joint.EdgeA.Next;
-            }
-
-            if (joint.EdgeA.Next != null)
-            {
-                joint.EdgeA.Next.Prev = joint.EdgeA.Prev;
-            }
-
-            if (joint.EdgeA == bodyA.JointList)
-            {
-                bodyA.JointList = joint.EdgeA.Next;
-            }
-
-            joint.EdgeA.Prev = null;
-            joint.EdgeA.Next = null;
+            RemoveJointEdge(bodyA, joint.EdgeA);
 
             if (!joint.IsFixedType())
             {
-                if (joint.EdgeB.Prev != null)
-                {
-                    joint.EdgeB.Prev.Next = joint.EdgeB.Next;
-                }
+                RemoveJointEdge(bodyB, joint.EdgeB);
 
-                if (joint.EdgeB.Next != null)
-                {
-                    joint.EdgeB.Next.Prev = joint.EdgeB.Prev;
-                }
-
-                if (joint.EdgeB == bodyB.JointList)
-                {
-                    bodyB.JointList = joint.EdgeB.Next;
-                }
-
-                joint.EdgeB.Prev = null;
-                joint.EdgeB.Next = null;
-            }
-
-            if (!joint.IsFixedType())
-            {
                 if (!collideConnected)
                 {
-                    ContactEdge edge = bodyB.ContactList;
-                    while (edge != null)
-                    {
-                        if (edge.Other == bodyA)
-                        {
-                            edge.Contact.FilterFlag = true;
-                        }
-
-                        edge = edge.Next;
-                    }
+                    MarkContactsForFiltering(bodyA, bodyB);
                 }
             }
 
@@ -1061,6 +1004,59 @@ namespace Alis.Core.Physic.Dynamics
             if (jointRemovedHandler != null)
             {
                 jointRemovedHandler(this, joint);
+            }
+        }
+
+        private void ValidateJointForRemoval(Joint joint)
+        {
+            if (GetIsLocked)
+            {
+                throw new InvalidOperationException("The World is locked.");
+            }
+
+            if (joint == null)
+            {
+                throw new ArgumentNullException("joint");
+            }
+
+            if (joint.WorldPhysic != this)
+            {
+                throw new ArgumentException("You are removing a joint that is not in the simulation.", "joint");
+            }
+        }
+
+        private void RemoveJointEdge(Body body, JointEdge edge)
+        {
+            if (edge.Prev != null)
+            {
+                edge.Prev.Next = edge.Next;
+            }
+
+            if (edge.Next != null)
+            {
+                edge.Next.Prev = edge.Prev;
+            }
+
+            if (edge == body.JointList)
+            {
+                body.JointList = edge.Next;
+            }
+
+            edge.Prev = null;
+            edge.Next = null;
+        }
+
+        private void MarkContactsForFiltering(Body bodyA, Body bodyB)
+        {
+            ContactEdge edge = bodyB.ContactList;
+            while (edge != null)
+            {
+                if (edge.Other == bodyA)
+                {
+                    edge.Contact.FilterFlag = true;
+                }
+
+                edge = edge.Next;
             }
         }
 
