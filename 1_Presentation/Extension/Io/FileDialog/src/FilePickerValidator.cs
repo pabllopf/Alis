@@ -228,31 +228,68 @@ namespace Alis.Extension.Io.FileDialog
                 return false;
             }
 
+            bool isValid = ValidateSelectedPaths(result.SelectedPaths, options);
+            if (isValid)
+            {
+                Logger.Trace("FilePickerResult validation passed.");
+            }
+
+            return isValid;
+        }
+
+        /// <summary>
+        ///     Validates the selected paths based on the dialog type and options.
+        /// </summary>
+        /// <param name="selectedPaths">The paths to validate</param>
+        /// <param name="options">The picker options</param>
+        /// <returns>True if all paths are valid, false otherwise</returns>
+        private static bool ValidateSelectedPaths(IList<string> selectedPaths, FilePickerOptions options)
+        {
             if (options.DialogType == FileDialogType.OpenFile)
             {
-                foreach (string path in result.SelectedPaths)
-                {
-                    if (!IsValidFilePath(path))
-                    {
-                        return false;
-                    }
-
-                    if (!IsFileExtensionAllowed(path, options))
-                    {
-                        return false;
-                    }
-                }
+                return ValidateOpenFilePaths(selectedPaths, options);
             }
-            else if (options.DialogType == FileDialogType.SelectFolder)
+
+            if (options.DialogType == FileDialogType.SelectFolder)
             {
-                if (!result.SelectedPaths.All(IsValidDirectoryPath))
+                return ValidateFolderPaths(selectedPaths);
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        ///     Validates that all paths are valid file paths with allowed extensions.
+        /// </summary>
+        /// <param name="paths">The file paths to validate</param>
+        /// <param name="options">The picker options with filters</param>
+        /// <returns>True if all file paths are valid, false otherwise</returns>
+        private static bool ValidateOpenFilePaths(IList<string> paths, FilePickerOptions options)
+        {
+            foreach (string path in paths)
+            {
+                if (!IsValidFilePath(path))
+                {
+                    return false;
+                }
+
+                if (!IsFileExtensionAllowed(path, options))
                 {
                     return false;
                 }
             }
 
-            Logger.Trace("FilePickerResult validation passed.");
             return true;
+        }
+
+        /// <summary>
+        ///     Validates that all paths are valid directory paths.
+        /// </summary>
+        /// <param name="paths">The directory paths to validate</param>
+        /// <returns>True if all directory paths are valid, false otherwise</returns>
+        private static bool ValidateFolderPaths(IList<string> paths)
+        {
+            return paths.All(IsValidDirectoryPath);
         }
     }
 }
