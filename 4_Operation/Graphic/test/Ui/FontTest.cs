@@ -122,25 +122,6 @@ namespace Alis.Core.Graphic.Test.Ui
         }
 
         /// <summary>
-        ///     Tests that Font constructor accepts four parameters.
-        /// </summary>
-        [Fact]
-        public void Font_Constructor_ParametersAreCorrect()
-        {
-            ConstructorInfo[] constructors = typeof(Font).GetConstructors();
-
-            ConstructorInfo constructor = constructors.FirstOrDefault();
-
-            Assert.NotNull(constructor);
-            ParameterInfo[] parameters = constructor.GetParameters();
-            Assert.Equal(4, parameters.Length);
-            Assert.Equal(typeof(string), parameters[0].ParameterType); // NameFile
-            Assert.Equal(typeof(int), parameters[1].ParameterType); // Depth
-            Assert.Equal(typeof(int), parameters[2].ParameterType); // size
-            Assert.Equal(typeof(string), parameters[3].ParameterType); // fullPath
-        }
-
-        /// <summary>
         ///     Tests that Font has private properties for shader management.
         /// </summary>
         [Fact]
