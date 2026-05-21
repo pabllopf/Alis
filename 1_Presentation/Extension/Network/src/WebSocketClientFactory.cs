@@ -392,7 +392,7 @@ namespace Alis.Extension.Network
         /// <param name="secWebSocketProtocol">The sec web socket protocol</param>
         /// <param name="additionalHeaders">The additional headers</param>
         /// <returns>The string</returns>
-        internal string BuildHandshakeRequest(Uri uri, string secWebSocketKey, string secWebSocketProtocol, string additionalHeaders) => $"GET {uri.PathAndQuery} HTTP/1.1\r\n" +
+        internal static string BuildHandshakeRequest(Uri uri, string secWebSocketKey, string secWebSocketProtocol, string additionalHeaders) => $"GET {uri.PathAndQuery} HTTP/1.1\r\n" +
                                                                                                                                          $"Host: {uri.Host}:{uri.Port}\r\n" +
                                                                                                                                          "Upgrade: websocket\r\n" +
                                                                                                                                          "Connection: Upgrade\r\n" +
