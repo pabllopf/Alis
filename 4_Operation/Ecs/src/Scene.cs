@@ -162,7 +162,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The add tag lookup
         /// </summary>
-        public FastLookup AddTagLookup = new FastLookup();
+        internal FastLookup AddTagLookup = new FastLookup();
 
         /// <summary>
         ///     The archetype graph edges
