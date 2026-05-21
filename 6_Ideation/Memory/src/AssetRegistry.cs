@@ -362,6 +362,7 @@ namespace Alis.Core.Aspect.Memory
                 }
                 catch
                 {
+                    // Ignore failure to set last write time
                 }
 
                 string compositeKey2 = ActiveAssemblyName.ToLowerInvariant() + "|" + NormalizeResourceKey(resourceName);
