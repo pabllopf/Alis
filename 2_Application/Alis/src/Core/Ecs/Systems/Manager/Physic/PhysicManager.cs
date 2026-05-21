@@ -157,9 +157,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// </summary>
         public override void OnUpdate()
         {
-            if (Context is null)
-            {
-            }
         }
 
         /// <summary>
