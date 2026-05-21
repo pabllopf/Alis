@@ -326,7 +326,7 @@ namespace Alis.Extension.Network
         /// </summary>
         /// <param name="requiredSize">The required size</param>
         /// <returns>The long</returns>
-        internal long ComputeCandidateSize(long requiredSize)
+        internal static long ComputeCandidateSize(long requiredSize)
         {
             long candidateSize = (long) Math.Pow(2, Math.Ceiling(Math.Log(requiredSize) / Math.Log(2)));
             return candidateSize > int.MaxValue ? requiredSize : candidateSize;
