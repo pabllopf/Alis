@@ -330,7 +330,7 @@ namespace Alis.Core.Graphic
         /// <param name="palette">The color palette for indexed formats</param>
         /// <param name="rowPadded">The padded row size in bytes</param>
         /// <param name="bytesPerPixel">The number of bytes per pixel</param>
-        private static void LoadBmpRle8(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel)
+        private static void LoadBmpRle8(BinaryReader reader, int width, int height, short _bitsPerPixel, byte[] rawData, byte[][] palette, int _rowPadded, int _bytesPerPixel)
         {
             int x = 0, y = 0; // Corregido: empezar desde la primera fila
             while ((reader.BaseStream.Position < reader.BaseStream.Length) && (y < height))
@@ -413,7 +413,7 @@ namespace Alis.Core.Graphic
         /// <param name="palette">The color palette for indexed formats</param>
         /// <param name="rowPadded">The padded row size in bytes</param>
         /// <param name="bytesPerPixel">The number of bytes per pixel</param>
-        private static void LoadBmpRle4(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel)
+        private static void LoadBmpRle4(BinaryReader reader, int width, int height, short _bitsPerPixel, byte[] rawData, byte[][] palette, int _rowPadded, int _bytesPerPixel)
         {
             if (height < 0)
             {

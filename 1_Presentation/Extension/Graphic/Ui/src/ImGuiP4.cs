@@ -891,8 +891,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The ret</returns>
         private static Vector2F CalcTextSizeImpl(
             string text,
-            int start = 0,
-            int? length = null,
+            int _ = 0,
+            int? __ = null,
             bool hideTextAfterDoubleHash = false,
             float wrapWidth = -1.0f)
         {

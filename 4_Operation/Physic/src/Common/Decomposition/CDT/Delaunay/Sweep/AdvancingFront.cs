@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         ///     near x
         ///     Removed an overload that depended on this being exact
         /// </summary>
-        private AdvancingFrontNode FindSearchNode(double x) =>
+        private AdvancingFrontNode FindSearchNode(double _) =>
             Search;
 
         /// <summary>

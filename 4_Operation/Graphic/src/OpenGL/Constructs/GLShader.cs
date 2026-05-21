@@ -92,7 +92,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         ///     Disposes the disposing
         /// </summary>
         /// <param name="disposing">The disposing</param>
-        private void Dispose(bool disposing)
+        private void Dispose(bool _)
         {
             if (ShaderId != 0)
             {
