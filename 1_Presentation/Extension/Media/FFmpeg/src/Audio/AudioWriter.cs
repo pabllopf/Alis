@@ -252,6 +252,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 }
                 catch
                 {
+                    // Ignore process kill failure
                 }
             }
             finally
