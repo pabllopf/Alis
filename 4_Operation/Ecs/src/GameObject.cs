@@ -388,6 +388,147 @@ namespace Alis.Core.Ecs
             e.InvokeInternal(gameObject, Component<T>.Id);
         }
 
+
+
+        /// <summary>
+        ///     Invokes the component scene events using the specified event
+        /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        public static void InvokeComponentWorldEvents<T1, T2>(ref Event<ComponentId> e, GameObject gameObject)
+        {
+            e.InvokeInternal(gameObject, Component<T1>.Id);
+            e.InvokeInternal(gameObject, Component<T2>.Id);
+        }
+
+        /// <summary>
+        ///     Invokes the component scene events using the specified event
+        /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        public static void InvokeComponentWorldEvents<T1, T2, T3>(ref Event<ComponentId> e, GameObject gameObject)
+        {
+            e.InvokeInternal(gameObject, Component<T1>.Id);
+            e.InvokeInternal(gameObject, Component<T2>.Id);
+            e.InvokeInternal(gameObject, Component<T3>.Id);
+        }
+
+
+        /// <summary>
+        ///     Invokes the component scene events using the specified event
+        /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        public static void InvokeComponentWorldEvents<T1, T2, T3, T4>(ref Event<ComponentId> e, GameObject gameObject)
+        {
+            e.InvokeInternal(gameObject, Component<T1>.Id);
+            e.InvokeInternal(gameObject, Component<T2>.Id);
+            e.InvokeInternal(gameObject, Component<T3>.Id);
+            e.InvokeInternal(gameObject, Component<T4>.Id);
+        }
+
+
+        /// <summary>
+        ///     Invokes the component scene events using the specified event
+        /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5>(ref Event<ComponentId> e, GameObject gameObject)
+        {
+            e.InvokeInternal(gameObject, Component<T1>.Id);
+            e.InvokeInternal(gameObject, Component<T2>.Id);
+            e.InvokeInternal(gameObject, Component<T3>.Id);
+            e.InvokeInternal(gameObject, Component<T4>.Id);
+            e.InvokeInternal(gameObject, Component<T5>.Id);
+        }
+
+
+        /// <summary>
+        ///     Invokes the component scene events using the specified event
+        /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6>(ref Event<ComponentId> e, GameObject gameObject)
+        {
+            e.InvokeInternal(gameObject, Component<T1>.Id);
+            e.InvokeInternal(gameObject, Component<T2>.Id);
+            e.InvokeInternal(gameObject, Component<T3>.Id);
+            e.InvokeInternal(gameObject, Component<T4>.Id);
+            e.InvokeInternal(gameObject, Component<T5>.Id);
+            e.InvokeInternal(gameObject, Component<T6>.Id);
+        }
+
+        /// <summary>
+        ///     Invokes the component scene events using the specified event
+        /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref Event<ComponentId> e,
+            GameObject gameObject)
+        {
+            e.InvokeInternal(gameObject, Component<T1>.Id);
+            e.InvokeInternal(gameObject, Component<T2>.Id);
+            e.InvokeInternal(gameObject, Component<T3>.Id);
+            e.InvokeInternal(gameObject, Component<T4>.Id);
+            e.InvokeInternal(gameObject, Component<T5>.Id);
+            e.InvokeInternal(gameObject, Component<T6>.Id);
+            e.InvokeInternal(gameObject, Component<T7>.Id);
+        }
+
+
+        /// <summary>
+        ///     Invokes the component scene events using the specified event
+        /// </summary>
+        /// <typeparam name="T1">The first component type</typeparam>
+        /// <typeparam name="T2">The second component type</typeparam>
+        /// <typeparam name="T3">The third component type</typeparam>
+        /// <typeparam name="T4">The fourth component type</typeparam>
+        /// <typeparam name="T5">The fifth component type</typeparam>
+        /// <typeparam name="T6">The sixth component type</typeparam>
+        /// <typeparam name="T7">The seventh component type</typeparam>
+        /// <typeparam name="T8">The eighth component type</typeparam>
+        /// <param name="e">The event to invoke</param>
+        /// <param name="gameObject">The gameObject raising the event</param>
+        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7, T8>(ref Event<ComponentId> e,
+            GameObject gameObject)
+        {
+            e.InvokeInternal(gameObject, Component<T1>.Id);
+            e.InvokeInternal(gameObject, Component<T2>.Id);
+            e.InvokeInternal(gameObject, Component<T3>.Id);
+            e.InvokeInternal(gameObject, Component<T4>.Id);
+            e.InvokeInternal(gameObject, Component<T5>.Id);
+            e.InvokeInternal(gameObject, Component<T6>.Id);
+            e.InvokeInternal(gameObject, Component<T7>.Id);
+            e.InvokeInternal(gameObject, Component<T8>.Id);
+        }
+
         /// <summary>
         ///     Invokes the per gameObject events using the specified gameObject
         /// </summary>
@@ -539,20 +680,6 @@ namespace Alis.Core.Ecs
             //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
-
-        /// <summary>
-        ///     Invokes the component scene events using the specified event
-        /// </summary>
-        /// <typeparam name="T1">The first component type</typeparam>
-        /// <typeparam name="T2">The second component type</typeparam>
-        /// <param name="e">The event to invoke</param>
-        /// <param name="gameObject">The gameObject raising the event</param>
-        public static void InvokeComponentWorldEvents<T1, T2>(ref Event<ComponentId> e, GameObject gameObject)
-        {
-            e.InvokeInternal(gameObject, Component<T1>.Id);
-            e.InvokeInternal(gameObject, Component<T2>.Id);
-        }
-
         /// <summary>
         ///     Invokes the per gameObject events using the specified gameObject
         /// </summary>
@@ -667,21 +794,6 @@ namespace Alis.Core.Ecs
             Span<ComponentHandle> runners = stackalloc ComponentHandle[3];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
             //scene.MoveEntityToArchetypeRemove invokes the events for us
-        }
-
-        /// <summary>
-        ///     Invokes the component scene events using the specified event
-        /// </summary>
-        /// <typeparam name="T1">The first component type</typeparam>
-        /// <typeparam name="T2">The second component type</typeparam>
-        /// <typeparam name="T3">The third component type</typeparam>
-        /// <param name="e">The event to invoke</param>
-        /// <param name="gameObject">The gameObject raising the event</param>
-        public static void InvokeComponentWorldEvents<T1, T2, T3>(ref Event<ComponentId> e, GameObject gameObject)
-        {
-            e.InvokeInternal(gameObject, Component<T1>.Id);
-            e.InvokeInternal(gameObject, Component<T2>.Id);
-            e.InvokeInternal(gameObject, Component<T3>.Id);
         }
 
         /// <summary>
@@ -807,24 +919,6 @@ namespace Alis.Core.Ecs
             Span<ComponentHandle> runners = stackalloc ComponentHandle[4];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
             //scene.MoveEntityToArchetypeRemove invokes the events for us
-        }
-
-
-        /// <summary>
-        ///     Invokes the component scene events using the specified event
-        /// </summary>
-        /// <typeparam name="T1">The first component type</typeparam>
-        /// <typeparam name="T2">The second component type</typeparam>
-        /// <typeparam name="T3">The third component type</typeparam>
-        /// <typeparam name="T4">The fourth component type</typeparam>
-        /// <param name="e">The event to invoke</param>
-        /// <param name="gameObject">The gameObject raising the event</param>
-        public static void InvokeComponentWorldEvents<T1, T2, T3, T4>(ref Event<ComponentId> e, GameObject gameObject)
-        {
-            e.InvokeInternal(gameObject, Component<T1>.Id);
-            e.InvokeInternal(gameObject, Component<T2>.Id);
-            e.InvokeInternal(gameObject, Component<T3>.Id);
-            e.InvokeInternal(gameObject, Component<T4>.Id);
         }
 
         /// <summary>
@@ -960,26 +1054,6 @@ namespace Alis.Core.Ecs
             Span<ComponentHandle> runners = stackalloc ComponentHandle[5];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
             //scene.MoveEntityToArchetypeRemove invokes the events for us
-        }
-
-
-        /// <summary>
-        ///     Invokes the component scene events using the specified event
-        /// </summary>
-        /// <typeparam name="T1">The first component type</typeparam>
-        /// <typeparam name="T2">The second component type</typeparam>
-        /// <typeparam name="T3">The third component type</typeparam>
-        /// <typeparam name="T4">The fourth component type</typeparam>
-        /// <typeparam name="T5">The fifth component type</typeparam>
-        /// <param name="e">The event to invoke</param>
-        /// <param name="gameObject">The gameObject raising the event</param>
-        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5>(ref Event<ComponentId> e, GameObject gameObject)
-        {
-            e.InvokeInternal(gameObject, Component<T1>.Id);
-            e.InvokeInternal(gameObject, Component<T2>.Id);
-            e.InvokeInternal(gameObject, Component<T3>.Id);
-            e.InvokeInternal(gameObject, Component<T4>.Id);
-            e.InvokeInternal(gameObject, Component<T5>.Id);
         }
 
         /// <summary>
@@ -1126,28 +1200,6 @@ namespace Alis.Core.Ecs
             Span<ComponentHandle> runners = stackalloc ComponentHandle[6];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
             //scene.MoveEntityToArchetypeRemove invokes the events for us
-        }
-
-
-        /// <summary>
-        ///     Invokes the component scene events using the specified event
-        /// </summary>
-        /// <typeparam name="T1">The first component type</typeparam>
-        /// <typeparam name="T2">The second component type</typeparam>
-        /// <typeparam name="T3">The third component type</typeparam>
-        /// <typeparam name="T4">The fourth component type</typeparam>
-        /// <typeparam name="T5">The fifth component type</typeparam>
-        /// <typeparam name="T6">The sixth component type</typeparam>
-        /// <param name="e">The event to invoke</param>
-        /// <param name="gameObject">The gameObject raising the event</param>
-        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6>(ref Event<ComponentId> e, GameObject gameObject)
-        {
-            e.InvokeInternal(gameObject, Component<T1>.Id);
-            e.InvokeInternal(gameObject, Component<T2>.Id);
-            e.InvokeInternal(gameObject, Component<T3>.Id);
-            e.InvokeInternal(gameObject, Component<T4>.Id);
-            e.InvokeInternal(gameObject, Component<T5>.Id);
-            e.InvokeInternal(gameObject, Component<T6>.Id);
         }
 
         /// <summary>
@@ -1304,30 +1356,6 @@ namespace Alis.Core.Ecs
             Span<ComponentHandle> runners = stackalloc ComponentHandle[7];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
             //scene.MoveEntityToArchetypeRemove invokes the events for us
-        }
-
-        /// <summary>
-        ///     Invokes the component scene events using the specified event
-        /// </summary>
-        /// <typeparam name="T1">The first component type</typeparam>
-        /// <typeparam name="T2">The second component type</typeparam>
-        /// <typeparam name="T3">The third component type</typeparam>
-        /// <typeparam name="T4">The fourth component type</typeparam>
-        /// <typeparam name="T5">The fifth component type</typeparam>
-        /// <typeparam name="T6">The sixth component type</typeparam>
-        /// <typeparam name="T7">The seventh component type</typeparam>
-        /// <param name="e">The event to invoke</param>
-        /// <param name="gameObject">The gameObject raising the event</param>
-        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref Event<ComponentId> e,
-            GameObject gameObject)
-        {
-            e.InvokeInternal(gameObject, Component<T1>.Id);
-            e.InvokeInternal(gameObject, Component<T2>.Id);
-            e.InvokeInternal(gameObject, Component<T3>.Id);
-            e.InvokeInternal(gameObject, Component<T4>.Id);
-            e.InvokeInternal(gameObject, Component<T5>.Id);
-            e.InvokeInternal(gameObject, Component<T6>.Id);
-            e.InvokeInternal(gameObject, Component<T7>.Id);
         }
 
         /// <summary>
@@ -1495,33 +1523,6 @@ namespace Alis.Core.Ecs
             Span<ComponentHandle> runners = stackalloc ComponentHandle[8];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
             //scene.MoveEntityToArchetypeRemove invokes the events for us
-        }
-
-
-        /// <summary>
-        ///     Invokes the component scene events using the specified event
-        /// </summary>
-        /// <typeparam name="T1">The first component type</typeparam>
-        /// <typeparam name="T2">The second component type</typeparam>
-        /// <typeparam name="T3">The third component type</typeparam>
-        /// <typeparam name="T4">The fourth component type</typeparam>
-        /// <typeparam name="T5">The fifth component type</typeparam>
-        /// <typeparam name="T6">The sixth component type</typeparam>
-        /// <typeparam name="T7">The seventh component type</typeparam>
-        /// <typeparam name="T8">The eighth component type</typeparam>
-        /// <param name="e">The event to invoke</param>
-        /// <param name="gameObject">The gameObject raising the event</param>
-        public static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7, T8>(ref Event<ComponentId> e,
-            GameObject gameObject)
-        {
-            e.InvokeInternal(gameObject, Component<T1>.Id);
-            e.InvokeInternal(gameObject, Component<T2>.Id);
-            e.InvokeInternal(gameObject, Component<T3>.Id);
-            e.InvokeInternal(gameObject, Component<T4>.Id);
-            e.InvokeInternal(gameObject, Component<T5>.Id);
-            e.InvokeInternal(gameObject, Component<T6>.Id);
-            e.InvokeInternal(gameObject, Component<T7>.Id);
-            e.InvokeInternal(gameObject, Component<T8>.Id);
         }
 
         /// <summary>
