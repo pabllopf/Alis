@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -55,11 +54,6 @@ namespace Alis.Core.Graphic.Ui
         ///     The character rects
         /// </summary>
         private Dictionary<char, RectangleI> CharacterRects = new();
-
-        /// <summary>
-        ///     The full path
-        /// </summary>
-        private readonly string fullPathFont = fullPath;
 
         /// <summary>
         ///     The image handle
