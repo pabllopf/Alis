@@ -613,10 +613,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 225,
     "severity": "MAJOR",
-    "status": "in_progress",
+    "status": "fixed",
     "assignedWorker": "worker-opencode-001",
     "lockedAt": "2026-05-21T10:39:41.302Z",
-    "completedAt": null,
+    "completedAt": "2026-05-21T10:49:13.558Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3251": {
@@ -624,10 +624,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 232,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:49:25.774Z",
+    "completedAt": "2026-05-21T10:49:37.190Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3253": {
@@ -635,10 +635,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 232,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:49:48.126Z",
+    "completedAt": "2026-05-21T10:49:58.256Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3254": {
@@ -646,10 +646,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 237,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:50:10.255Z",
+    "completedAt": "2026-05-21T10:50:21.586Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3255": {
@@ -657,10 +657,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 237,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:50:35.100Z",
+    "completedAt": "2026-05-21T10:50:44.928Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3256": {
@@ -668,10 +668,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 237,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:50:56.856Z",
+    "completedAt": "2026-05-21T10:51:08.023Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3258": {
@@ -690,10 +690,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 244,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:51:21.461Z",
+    "completedAt": "2026-05-21T10:51:31.825Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3259": {
@@ -701,10 +701,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 244,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:51:43.794Z",
+    "completedAt": "2026-05-21T10:51:55.259Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML325-": {
@@ -712,10 +712,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 249,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:52:08.758Z",
+    "completedAt": "2026-05-21T10:52:21.556Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML325_": {
@@ -723,10 +723,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 249,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:52:34.271Z",
+    "completedAt": "2026-05-21T10:52:45.288Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326A": {
@@ -734,10 +734,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 249,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:52:59.228Z",
+    "completedAt": "2026-05-21T10:53:11.828Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326B": {
@@ -745,10 +745,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 249,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:53:23.687Z",
+    "completedAt": "2026-05-21T10:53:34.511Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326D": {
@@ -767,10 +767,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 256,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:53:47.637Z",
+    "completedAt": "2026-05-21T10:54:00.247Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326E": {
@@ -778,10 +778,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 256,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:54:11.793Z",
+    "completedAt": "2026-05-21T10:54:22.754Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326F": {
@@ -789,10 +789,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 261,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:54:35.754Z",
+    "completedAt": "2026-05-21T10:54:48.118Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326G": {
@@ -800,10 +800,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 261,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:55:02.821Z",
+    "completedAt": "2026-05-21T10:55:13.301Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326H": {
@@ -811,10 +811,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 261,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:55:26.324Z",
+    "completedAt": "2026-05-21T10:55:38.344Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326I": {
@@ -822,10 +822,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 261,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:55:52.864Z",
+    "completedAt": "2026-05-21T10:56:03.194Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326K": {
@@ -844,10 +844,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 268,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:56:15.843Z",
+    "completedAt": "2026-05-21T10:56:28.073Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326L": {
@@ -855,10 +855,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 268,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:56:42.459Z",
+    "completedAt": "2026-05-21T10:56:56.479Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326N": {
@@ -866,10 +866,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 273,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:57:09.137Z",
+    "completedAt": "2026-05-21T10:57:21.085Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326O": {
@@ -877,10 +877,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 273,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:57:35.451Z",
+    "completedAt": "2026-05-21T10:57:49.071Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326P": {
@@ -888,10 +888,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 273,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:58:02.008Z",
+    "completedAt": "2026-05-21T10:58:13.614Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326Q": {
@@ -899,10 +899,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 273,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:58:27.814Z",
+    "completedAt": "2026-05-21T10:58:41.266Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326R": {
@@ -910,10 +910,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 273,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:58:53.592Z",
+    "completedAt": "2026-05-21T10:59:05.155Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326T": {
@@ -932,10 +932,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 280,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:59:19.269Z",
+    "completedAt": "2026-05-21T10:59:32.869Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326U": {
@@ -943,10 +943,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 280,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T10:59:48.946Z",
+    "completedAt": "2026-05-21T11:00:00.639Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326W": {
@@ -954,10 +954,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 285,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:00:14.525Z",
+    "completedAt": "2026-05-21T11:00:27.825Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326X": {
@@ -965,10 +965,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 285,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:00:43.664Z",
+    "completedAt": "2026-05-21T11:00:54.772Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326Y": {
@@ -976,10 +976,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 285,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:01:08.468Z",
+    "completedAt": "2026-05-21T11:01:21.480Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326Z": {
@@ -987,10 +987,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 285,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:01:37.289Z",
+    "completedAt": "2026-05-21T11:01:52.291Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326a": {
@@ -998,10 +998,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 285,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:02:05.959Z",
+    "completedAt": "2026-05-21T11:02:18.751Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326c": {
@@ -1020,10 +1020,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 292,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:02:34.339Z",
+    "completedAt": "2026-05-21T11:02:49.582Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326d": {
@@ -1031,10 +1031,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 292,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:03:03.702Z",
+    "completedAt": "2026-05-21T11:03:16.646Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326e": {
@@ -1042,10 +1042,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 297,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:03:32.016Z",
+    "completedAt": "2026-05-21T11:03:46.861Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326f": {
@@ -1053,10 +1053,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 297,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:04:00.151Z",
+    "completedAt": "2026-05-21T11:04:12.476Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326g": {
@@ -1064,10 +1064,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 297,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:04:27.566Z",
+    "completedAt": "2026-05-21T11:04:41.997Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326h": {
@@ -1075,10 +1075,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 297,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:04:59.423Z",
+    "completedAt": "2026-05-21T11:05:11.601Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326i": {
@@ -1086,10 +1086,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 297,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:05:26.488Z",
+    "completedAt": "2026-05-21T11:05:40.602Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326j": {
@@ -1097,10 +1097,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 297,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:05:57.680Z",
+    "completedAt": "2026-05-21T11:06:09.625Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326l": {
@@ -1119,10 +1119,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 304,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:06:24.261Z",
+    "completedAt": "2026-05-21T11:06:38.509Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326m": {
@@ -1130,10 +1130,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 304,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:06:55.453Z",
+    "completedAt": "2026-05-21T11:07:12.098Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326p": {
@@ -1141,10 +1141,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 309,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:07:26.972Z",
+    "completedAt": "2026-05-21T11:07:40.933Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326q": {
@@ -1152,10 +1152,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 309,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:07:58.342Z",
+    "completedAt": "2026-05-21T11:08:14.534Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326r": {
@@ -1163,10 +1163,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 309,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:08:29.017Z",
+    "completedAt": "2026-05-21T11:08:42.568Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326s": {
@@ -1174,10 +1174,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 309,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:08:59.120Z",
+    "completedAt": "2026-05-21T11:09:15.250Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326t": {
@@ -1185,10 +1185,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 309,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:09:29.223Z",
+    "completedAt": "2026-05-21T11:09:42.378Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326u": {
@@ -1196,10 +1196,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 309,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:09:58.584Z",
+    "completedAt": "2026-05-21T11:10:14.104Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326w": {
@@ -1218,10 +1218,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 316,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:10:32.891Z",
+    "completedAt": "2026-05-21T11:10:46.243Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326v": {
@@ -1229,10 +1229,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 316,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:11:02.119Z",
+    "completedAt": "2026-05-21T11:11:17.615Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3260": {
@@ -1240,10 +1240,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 321,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:11:36.274Z",
+    "completedAt": "2026-05-21T11:11:49.115Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3261": {
@@ -1251,10 +1251,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 321,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:12:04.592Z",
+    "completedAt": "2026-05-21T11:12:19.461Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3262": {
@@ -1262,10 +1262,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 321,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:12:37.392Z",
+    "completedAt": "2026-05-21T11:12:54.988Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3263": {
@@ -1273,10 +1273,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 321,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:13:10.925Z",
+    "completedAt": "2026-05-21T11:13:25.487Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3264": {
@@ -1284,10 +1284,10 @@
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 321,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T11:13:43.328Z",
+    "completedAt": "2026-05-21T11:14:01.030Z",
     "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML3265": {
