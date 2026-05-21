@@ -273,25 +273,6 @@ namespace Alis.Core.Graphic.Ui
         /// <summary>
         ///     Initializes the character rects using the specified char width
         /// </summary>
-        /// <param name="charWidth">The char width</param>
-        /// <param name="charHeight">The char height</param>
-        private void InitializeCharacterRects(int charWidth, int charHeight)
-        {
-            int atlasCols = (int) (Size.X / charWidth);
-            for (int i = 0; i < 256; i++) // ASCII básico
-            {
-                int col = i % atlasCols;
-                int row = i / atlasCols;
-                CharacterRects[(char) i] = new RectangleI
-                {
-                    X = col * charWidth,
-                    Y = row * charHeight,
-                    W = charWidth,
-                    H = charHeight
-                };
-            }
-        }
-
         /// <summary>
         ///     Initializes the character rects custom using the specified char width
         /// </summary>
