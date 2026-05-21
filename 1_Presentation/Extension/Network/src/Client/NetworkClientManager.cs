@@ -303,7 +303,10 @@ namespace Alis.Extension.Network.Client
 
             try
             {
-                _cancellationTokenSource?.Cancel();
+                if (_cancellationTokenSource != null)
+                {
+                    await _cancellationTokenSource.CancelAsync();
+                }
 
                 if ((_serverSocket != null) && (_serverSocket.State == WebSocketState.Open))
                 {
