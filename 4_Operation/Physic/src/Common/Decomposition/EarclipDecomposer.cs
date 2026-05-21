@@ -78,8 +78,6 @@ namespace Alis.Core.Physic.Common.Decomposition
                 return new List<Vertices>();
             }
 
-            List<Vertices> results = new List<Vertices>();
-
             //Recurse and split on pinch points
             Vertices pin = new Vertices(vertices);
             if (ResolvePinchPoint(pin, out Vertices pA, out Vertices pB, tolerance))
@@ -87,6 +85,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 List<Vertices> mergeA = TriangulatePolygon(pA, tolerance);
                 List<Vertices> mergeB = TriangulatePolygon(pB, tolerance);
 
+                List<Vertices> results = new List<Vertices>();
                 for (int i = 0; i < mergeA.Count; ++i)
                 {
                     results.Add(new Vertices(mergeA[i]));
@@ -100,6 +99,12 @@ namespace Alis.Core.Physic.Common.Decomposition
                 return results;
             }
 
+            return EarClip(vertices);
+        }
+
+        private static List<Vertices> EarClip(Vertices vertices)
+        {
+            List<Vertices> results = new List<Vertices>();
             Triangle[] buffer = new Triangle[vertices.Count - 2];
             int bufferSize = 0;
             float[] xrem = new float[vertices.Count];
