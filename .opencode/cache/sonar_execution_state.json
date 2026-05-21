@@ -1,9 +1,9 @@
 {
   "workerId": "worker-macbook-pro-de-pablo.local-6192",
   "startedAt": "2026-05-21T09:09:12.351Z",
-  "lastHeartbeat": "2026-05-21T09:10:30.522Z",
-  "issuesProcessed": 185,
+  "lastHeartbeat": "2026-05-21T09:10:52.840Z",
+  "issuesProcessed": 460,
   "issuesFixed": 0,
-  "issuesFailed": 185,
+  "issuesFailed": 460,
   "status": "active"
 }
