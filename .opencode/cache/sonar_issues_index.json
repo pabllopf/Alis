@@ -1775,10 +1775,9 @@
     "file": "4_Operation/Ecs/src/GameObject.cs",
     "line": 386,
     "severity": "MINOR",
-    "status": "in_progress",
-    "assignedWorker": "worker-macbookpro-pablo",
+    "status": "fixed",
     "lockedAt": "2026-05-21T09:01:00.450397+00:00",
-    "completedAt": "2026-05-21T04:23:24.137Z",
+    "completedAt": "2026-05-21T09:03:40.913407+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhRMbZ4NfML327n": {
@@ -1786,10 +1785,10 @@
     "file": "4_Operation/Ecs/src/GameObject.cs",
     "line": 399,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T04:38:59.754Z",
+    "completedAt": "2026-05-21T09:03:40.913785+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhRMbZ4NfML327s": {
@@ -1928,10 +1927,9 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 97,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": "2026-05-21T06:28:21.393Z",
+    "status": "fixed",
+    "lockedAt": "2026-05-21T09:03:40.914146+00:00",
+    "completedAt": "2026-05-21T09:04:29.059829+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323D": {
@@ -1939,10 +1937,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 102,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": "2026-05-21T06:38:07.035Z",
+    "lockedAt": "2026-05-21T09:04:29.059829+00:00",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323E": {
@@ -1961,10 +1959,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 124,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:38:30.347Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323G": {
@@ -1972,10 +1970,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 129,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:38:42.236Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323H": {
@@ -1983,10 +1981,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 134,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:38:54.655Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323I": {
@@ -1994,10 +1992,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 139,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:47:10.179Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323L": {
@@ -2016,10 +2014,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 162,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:47:35.051Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323K": {
@@ -2027,10 +2025,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 167,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:47:46.242Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323N": {
@@ -2038,10 +2036,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 172,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:48:19.833Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323M": {
@@ -2049,10 +2047,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 177,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:48:32.946Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323O": {
@@ -2060,10 +2058,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 182,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:48:44.502Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323V": {
@@ -2082,10 +2080,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 206,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:49:17.568Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323Q": {
@@ -2093,10 +2091,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 211,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:49:32.771Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323R": {
@@ -2104,10 +2102,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 216,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:49:48.537Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323S": {
@@ -2115,10 +2113,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 221,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:50:06.644Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323T": {
@@ -2126,10 +2124,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 226,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:50:21.197Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323U": {
@@ -2137,10 +2135,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 231,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:50:38.497Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323W": {
@@ -2159,10 +2157,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 257,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:51:20.326Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323Y": {
@@ -2170,10 +2168,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 262,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:51:43.665Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323Z": {
@@ -2181,10 +2179,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 267,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:52:10.785Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323a": {
@@ -2192,10 +2190,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 272,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:52:37.094Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323b": {
@@ -2203,10 +2201,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 277,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:53:11.447Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323c": {
@@ -2214,10 +2212,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 282,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:53:59.122Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323d": {
@@ -2225,10 +2223,10 @@
     "file": "4_Operation/Ecs/src/Systems/RefTuple.cs",
     "line": 287,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T06:54:34.956Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNeEMbZ4NfML323e": {
@@ -2247,9 +2245,9 @@
     "file": "4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs",
     "line": 46,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
+    "status": "in_progress",
+    "assignedWorker": "worker-macbookpro-pablo",
+    "lockedAt": "2026-05-21T09:04:40.098006+00:00",
     "completedAt": "2026-05-21T06:55:50.322Z",
     "attemptCount": 0
   },
@@ -2533,10 +2531,10 @@
     "file": "4_Operation/Ecs/src/GameObject.cs",
     "line": 313,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:09:33.888Z",
+    "completedAt": "2026-05-21T09:03:40.913815+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhRMbZ4NfML327l": {
@@ -2544,10 +2542,10 @@
     "file": "4_Operation/Ecs/src/GameObject.cs",
     "line": 360,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:09:56.928Z",
+    "completedAt": "2026-05-21T09:03:40.913822+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhRMbZ4NfML327q": {
@@ -2874,10 +2872,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 115,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:18:47.874Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328H": {
@@ -2885,10 +2883,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 120,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:19:15.232Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328J": {
@@ -2896,10 +2894,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 125,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:19:38.108Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328V": {
@@ -2907,10 +2905,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 130,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:20:03.735Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328N": {
@@ -2929,10 +2927,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 161,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:20:55.404Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328M": {
@@ -2940,10 +2938,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 166,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:21:21.884Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328O": {
@@ -2951,10 +2949,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 171,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:21:50.952Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328P": {
@@ -2962,10 +2960,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 176,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:22:15.245Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328W": {
@@ -2973,10 +2971,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 181,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:22:43.054Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328T": {
@@ -2995,10 +2993,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 215,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:23:29.344Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328Z": {
@@ -3006,10 +3004,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 220,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:23:56.578Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328b": {
@@ -3017,10 +3015,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 225,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:24:18.592Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328c": {
@@ -3028,10 +3026,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 230,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:24:43.315Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328d": {
@@ -3039,10 +3037,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 235,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:25:10.697Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328e": {
@@ -3050,10 +3048,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 240,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:25:32.849Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328a": {
@@ -3072,10 +3070,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 278,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:26:24.882Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328h": {
@@ -3083,10 +3081,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 283,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:26:47.315Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328j": {
@@ -3094,10 +3092,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 288,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:27:12.389Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328l": {
@@ -3105,10 +3103,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 293,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:27:40.839Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328k": {
@@ -3116,10 +3114,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 298,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:28:03.560Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328m": {
@@ -3127,10 +3125,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 303,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:28:29.151Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328n": {
@@ -3138,10 +3136,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 308,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:28:57.346Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328i": {
@@ -3160,10 +3158,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 349,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:29:46.095Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328S": {
@@ -3171,10 +3169,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 354,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:30:14.951Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328U": {
@@ -3182,10 +3180,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 359,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:30:38.526Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328K": {
@@ -3193,10 +3191,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 364,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:31:05.147Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328Q": {
@@ -3204,10 +3202,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 369,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:31:34.641Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328X": {
@@ -3215,10 +3213,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 374,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:31:58.692Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328f": {
@@ -3226,10 +3224,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 379,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:32:26.162Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328o": {
@@ -3237,10 +3235,10 @@
     "file": "4_Operation/Ecs/src/GameObjectRefTuple.cs",
     "line": 384,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": "2026-05-21T07:32:56.765Z",
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNhcMbZ4NfML328p": {
@@ -5419,10 +5417,10 @@
     "file": "6_Ideation/Memory/src/AssetRegistry.cs",
     "line": 364,
     "severity": "MAJOR",
-    "status": "in_progress",
+    "status": "fixed",
     "assignedWorker": "worker-opencode-001",
     "lockedAt": "2026-05-21T09:00:52.996Z",
-    "completedAt": null,
+    "completedAt": "2026-05-21T09:02:20.088Z",
     "attemptCount": 0
   },
   "AZ1dvMimMbZ4NfML32Ah": {
@@ -9115,10 +9113,10 @@
     "file": "4_Operation/Ecs/src/Systems/GameObjectRefTuple.cs",
     "line": 42,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNdQMbZ4NfML322f": {
@@ -9126,10 +9124,10 @@
     "file": "4_Operation/Ecs/src/Systems/GameObjectRefTuple.cs",
     "line": 47,
     "severity": "MINOR",
-    "status": "open",
+    "status": "fixed",
     "assignedWorker": null,
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-21T09:04:40.098006+00:00",
     "attemptCount": 0
   },
   "AZ1dvNd5MbZ4NfML322w": {
@@ -9599,10 +9597,10 @@
     "file": "2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs",
     "line": 161,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T09:02:39.456Z",
+    "completedAt": "2026-05-21T09:04:41.114Z",
     "attemptCount": 0
   },
   "AZ1dvMeaMbZ4NfML31_2": {
