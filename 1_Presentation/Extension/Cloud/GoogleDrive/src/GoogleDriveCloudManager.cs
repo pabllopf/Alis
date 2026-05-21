@@ -59,7 +59,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
         /// <summary>
         ///     The Google Drive space identifier for file operations
         /// </summary>
-        private const string DriveSpace = DriveSpace;
+        private const string DriveSpace = "drive";
 
         /// <summary>
         ///     The Google Drive service
