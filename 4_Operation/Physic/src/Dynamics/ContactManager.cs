@@ -523,7 +523,13 @@ namespace Alis.Core.Physic.Dynamics
                 c = c.Next;
             }
 
+            ProcessParallelContacts();
 
+            updateList.Clear();
+        }
+
+        private void ProcessParallelContacts()
+        {
             Parallel.ForEach(updateList, c =>
             {
                 Fixture fixtureA = c.FixtureA;
@@ -564,8 +570,6 @@ namespace Alis.Core.Physic.Dynamics
                 Interlocked.Exchange(ref orderedBodyB.Lock, 0);
                 Interlocked.Exchange(ref orderedBodyA.Lock, 0);
             });
-
-            updateList.Clear();
         }
 
 
