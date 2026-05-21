@@ -131,24 +131,18 @@ namespace Alis.Core.Ecs.Collections
         public bool TryGet(ushort id, out T value)
         {
             ushort[] localSparse = _sparse;
-            if (id >= localSparse.Length)
+            if (id < localSparse.Length)
             {
-                goto doesntExist;
+                ushort index = localSparse[id];
+
+                T[] localDense = _dense;
+                if (index < localDense.Length)
+                {
+                    value = localDense[index];
+                    return false;
+                }
             }
 
-            ushort index = localSparse[id];
-
-            T[] localDense = _dense;
-            if (index >= localDense.Length)
-            {
-                goto doesntExist;
-            }
-
-            value = localDense[index];
-            return false;
-
-            //saves a bit of code size
-            doesntExist:
             value = default(T);
             return false;
         }
