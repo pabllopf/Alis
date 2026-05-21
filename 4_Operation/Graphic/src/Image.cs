@@ -1,3 +1,31 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Image.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 
 using System;
@@ -305,69 +333,82 @@ namespace Alis.Core.Graphic
             {
                 byte count = reader.ReadByte();
                 byte value = reader.ReadByte();
+
                 if (count > 0)
                 {
-                    for (int i = 0; i < count; i++)
-                    {
-                        if (x >= width)
-                        {
-                            x = 0;
-                            y++;
-                        }
-
-                        int index = (y * width + x) * 4; // Corregido: filas de arriba hacia abajo
-                        rawData[index + 0] = palette[value][0];
-                        rawData[index + 1] = palette[value][1];
-                        rawData[index + 2] = palette[value][2];
-                        rawData[index + 3] = palette[value][3];
-                        x++;
-                    }
+                    ProcessRelativeMode(reader, count, value, width, height, ref x, ref y, rawData, palette);
                 }
                 else
                 {
-                    if (value == 0) // End of line
-                    {
-                        x = 0;
-                        y++;
-                    }
-                    else if (value == 1) // End of bitmap
-                    {
-                        break;
-                    }
-                    else if (value == 2) // Delta
-                    {
-                        byte dx = reader.ReadByte();
-                        byte dy = reader.ReadByte();
-                        x += dx;
-                        y += dy;
-                    }
-                    else // Absolute mode
-                    {
-                        int absCount = value;
-                        for (int i = 0; i < absCount; i++)
-                        {
-                            byte absValue = reader.ReadByte();
-                            if (x >= width)
-                            {
-                                x = 0;
-                                y++;
-                            }
-
-                            int index = (y * width + x) * 4;
-                            rawData[index + 0] = palette[absValue][0];
-                            rawData[index + 1] = palette[absValue][1];
-                            rawData[index + 2] = palette[absValue][2];
-                            rawData[index + 3] = palette[absValue][3];
-                            x++;
-                        }
-
-                        if ((absCount & 1) == 1)
-                        {
-                            reader.ReadByte(); // Padding
-                        }
-                    }
+                    ProcessEncodedLine(value, width, height, ref x, ref y, reader, rawData, palette);
                 }
             }
+        }
+
+        private static void ProcessRelativeMode(BinaryReader reader, byte count, byte value, int width, int height, ref int x, ref int y, byte[] rawData, byte[][] palette)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                WrapIfNeeded(width, ref x, ref y, height);
+                ApplyPixel(rawData, palette, value, y, width, x);
+                x++;
+            }
+        }
+
+        private static void ProcessEncodedLine(byte value, int width, int height, ref int x, ref int y, BinaryReader reader, byte[] rawData, byte[][] palette)
+        {
+            if (value == 0) // End of line
+            {
+                x = 0;
+                y++;
+            }
+            else if (value == 1) // End of bitmap
+            {
+                return;
+            }
+            else if (value == 2) // Delta
+            {
+                byte dx = reader.ReadByte();
+                byte dy = reader.ReadByte();
+                x += dx;
+                y += dy;
+            }
+            else // Absolute mode
+            {
+                ProcessAbsoluteMode(reader, value, width, height, ref x, ref y, rawData, palette);
+            }
+        }
+
+        private static void ProcessAbsoluteMode(BinaryReader reader, byte absCount, int width, int height, ref int x, ref int y, byte[] rawData, byte[][] palette)
+        {
+            for (int i = 0; i < absCount; i++)
+            {
+                byte absValue = reader.ReadByte();
+                WrapIfNeeded(width, ref x, ref y, height);
+                ApplyPixel(rawData, palette, absValue, y, width, x);
+                x++;
+            }
+
+            if ((absCount & 1) == 1)
+                reader.ReadByte(); // Padding
+        }
+
+        private static void WrapIfNeeded(int width, ref int x, ref int y, int height)
+        {
+            if (x >= width)
+            {
+                x = 0;
+                y++;
+            }
+        }
+
+        private static void ApplyPixel(byte[] rawData, byte[][] palette, int value, int y, int width, int x)
+        {
+            int index = (y * width + x) * 4; // Corregido: filas de arriba hacia abajo
+            rawData[index + 0] = palette[value][0];
+            rawData[index + 1] = palette[value][1];
+            rawData[index + 2] = palette[value][2];
+            rawData[index + 3] = palette[value][3];
         }
 
         /// <summary>
