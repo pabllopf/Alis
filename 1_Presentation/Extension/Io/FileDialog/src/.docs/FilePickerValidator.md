@@ -232,7 +232,6 @@ FilePickerResult result = picker.PickFile(options);
 
 if (FilePickerValidator.IsResultValid(result, options))
 {
-    // Result is consistent with options
 }
 else
 {
@@ -256,7 +255,6 @@ public FilePickerResult SelectFile()
     
     try
     {
-        // Validate before creating picker
         FilePickerValidator.ValidateOptions(options);
         
         IFilePicker picker = FilePickerFactory.CreateFilePicker();
@@ -280,8 +278,6 @@ public void ProcessSelectedFiles()
         .WithMultipleSelection();
     
     FilePickerResult result = picker.PickFiles(options);
-    
-    // Validate result matches options
     if (FilePickerValidator.IsResultValid(result, options))
     {
         Logger.Info("Result validation passed");
@@ -318,14 +314,11 @@ public void ValidatePaths(List<string> paths)
 ```csharp
 public bool IsFileAllowed(string filePath, FilePickerOptions options)
 {
-    // First check if file exists
     if (!FilePickerValidator.IsValidFilePath(filePath))
     {
         Logger.Warning($"File not found: {filePath}");
         return false;
     }
-    
-    // Then check extension
     if (!FilePickerValidator.IsFileExtensionAllowed(filePath, options))
     {
         Logger.Warning($"File extension not allowed: {filePath}");
@@ -351,15 +344,12 @@ public class FileImportService
     
     public bool ImportFiles()
     {
-        // Step 1: Configure options
         var options = new FilePickerOptions("Import Data", FileDialogType.OpenFile)
             .WithDefaultPath(
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments))
             .WithFilter(new FilePickerFilter("Data Files", "csv", "json", "xml"))
             .WithFilter(new FilePickerFilter("Excel", "xlsx", "xls"))
             .WithMultipleSelection();
-        
-        // Step 2: Validate options
         try
         {
             FilePickerValidator.ValidateOptions(options);
@@ -369,8 +359,6 @@ public class FileImportService
             Logger.Error($"Configuration error: {ex.Message}");
             return false;
         }
-        
-        // Step 3: Open dialog
         FilePickerResult result = _picker.PickFiles(options);
         
         if (!result.IsSuccess)
@@ -385,26 +373,19 @@ public class FileImportService
             }
             return false;
         }
-        
-        // Step 4: Validate result
         if (!FilePickerValidator.IsResultValid(result, options))
         {
             Logger.Error("Result validation failed");
             return false;
         }
-        
-        // Step 5: Process files
         int importedCount = 0;
         foreach (var filePath in result.SelectedPaths)
         {
-            // Double-check paths are still valid
             if (!FilePickerValidator.IsValidFilePath(filePath))
             {
                 Logger.Warning($"File no longer exists: {filePath}");
                 continue;
             }
-            
-            // Double-check extensions
             if (!FilePickerValidator.IsFileExtensionAllowed(filePath, options))
             {
                 Logger.Warning($"Extension no longer allowed: {filePath}");
@@ -425,7 +406,6 @@ public class FileImportService
     {
         try
         {
-            // Import logic here
             Logger.Info($"Imported: {filePath}");
             return true;
         }
@@ -450,7 +430,6 @@ public class FileImportService
    }
    catch (ArgumentException ex)
    {
-       // Handle configuration error
    }
    ```
 
@@ -458,7 +437,6 @@ public class FileImportService
    ```csharp
    if (FilePickerValidator.IsResultValid(result, options))
    {
-       // Safe to use result
    }
    ```
 
@@ -475,11 +453,8 @@ public class FileImportService
 
 4. **Use validators before business logic:**
    ```csharp
-   // Validate inputs
    if (!IsValidated(path, options))
        return false;
-   
-   // Then proceed with business logic
    ProcessFile(path);
    ```
 

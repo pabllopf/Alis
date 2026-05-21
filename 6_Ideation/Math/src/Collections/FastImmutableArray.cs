@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:FastImmutableArray.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections;
@@ -126,11 +99,8 @@ namespace Alis.Core.Aspect.Math.Collections
                 {
                     if (value < _count)
                     {
-                        // truncation mode
                         // Clear the elements of the elements that are effectively removed.
 
-                        // PERF: Array.Clear works well for big arrays,
-                        //       but may have too much overhead with small ones (which is the common case here)
                         if (_count - value > 64)
                         {
                             System.Array.Clear(_elements, value, _count - value);
@@ -145,7 +115,6 @@ namespace Alis.Core.Aspect.Math.Collections
                     }
                     else if (value > _count)
                     {
-                        // expansion
                         EnsureCapacity(value);
                     }
 
@@ -804,8 +773,6 @@ namespace Alis.Core.Aspect.Math.Collections
 #if NET || NETSTANDARD2_1_OR_GREATER
                 System.Array.Reverse(_elements, 0, _count);
 #else
-                // The non-generic Array.Reverse is not used because it does not perform
-                // well for non-primitive value types.
                 int i = 0;
                 int j = _count - 1;
                 T[] array = _elements;
@@ -839,14 +806,8 @@ namespace Alis.Core.Aspect.Math.Collections
                 if (Count > 1)
                 {
 #if NET
-                    // MemoryExtensions.Sort is not available in .NET Framework / Standard 2.0.
-                    // But the overload with a Comparison argument doesn't allocate.
                     _elements.AsSpan(0, _count).Sort(comparison);
 #else
-                    // Array.Sort does not have an overload that takes both bounds and a Comparison.
-                    // We could special case _count == _elements.Length in order to try to avoid
-                    // the IComparer allocation, but the Array.Sort overload that takes a Comparison
-                    // allocates such an IComparer internally, anyway.
                     System.Array.Sort(_elements, 0, _count, Comparer<T>.Create(comparison));
 #endif
                 }
@@ -872,7 +833,6 @@ namespace Alis.Core.Aspect.Math.Collections
             /// <param name="comparer">The comparer to use. If <c>null</c>, the default comparer is used.</param>
             public void Sort(int index, int count, IComparer<T> comparer)
             {
-                // Don't rely on Array.Sort's argument validation since our internal array may exceed
                 // the bounds of the publicly addressable region.
 
 
@@ -1059,11 +1019,6 @@ namespace Alis.Core.Aspect.Math.Collections
         /// <param name="index">The zero-based index of the element to get.</param>
         /// <returns>The element at the specified index.</returns>
         public T this[int index] =>
-            // We intentionally do not check this.array != null, and throw NullReferenceException
-            // if this is called while uninitialized.
-            // The reason for this is perf.
-            // Length and the indexer must be absolutely trivially implemented for the JIT optimization
-            // of removing array bounds checking to work.
             Array![index];
 
         /// <summary>
@@ -1072,11 +1027,6 @@ namespace Alis.Core.Aspect.Math.Collections
         /// <param name="index">The zero-based index of the element to get a reference to.</param>
         /// <returns>A read-only reference to the element at the specified index.</returns>
         public ref readonly T ItemRef(int index) =>
-            // We intentionally do not check this.array != null, and throw NullReferenceException
-            // if this is called while uninitialized.
-            // The reason for this is perf.
-            // Length and the indexer must be absolutely trivially implemented for the JIT optimization
-            // of removing array bounds checking to work.
             ref Array![index];
 
         /// <summary>
@@ -1090,11 +1040,6 @@ namespace Alis.Core.Aspect.Math.Collections
         /// </summary>
         /// <value>The total number of elements in the underlying array.</value>
         public int Length =>
-            // We intentionally do not check this.array != null, and throw NullReferenceException
-            // if this is called while uninitialized.
-            // The reason for this is perf.
-            // Length and the indexer must be absolutely trivially implemented for the JIT optimization
-            // of removing array bounds checking to work.
             Array!.Length;
 
         /// <summary>
@@ -1263,14 +1208,6 @@ namespace Alis.Core.Aspect.Math.Collections
         /// </summary>
         internal void ThrowNullRefIfNotInitialized()
         {
-            // Force NullReferenceException if array is null by touching its Length.
-            // This way of checking has a nice property of requiring very little code
-            // and not having any conditions/branches.
-            // In a faulting scenario we are relying on hardware to generate the fault.
-            // And in the non-faulting scenario (most common) the check is virtually free since
-            // if we are going to do anything with the array, we will need Length anyway
-            // so touching it, and potentially causing a cache miss, is not going to be an
-            // extra expense.
             _ = Array!.Length;
         }
 
@@ -1381,14 +1318,11 @@ namespace Alis.Core.Aspect.Math.Collections
             {
                 get
                 {
-                    // this.index >= 0 && this.index < this.array.Length
-                    // unsigned compare performs the range check above in one compare
                     if (unchecked((uint) _index) < (uint) _array.Length)
                     {
                         return _array[_index];
                     }
 
-                    // Before first or after last MoveNext.
                     throw new InvalidOperationException();
                 }
             }
@@ -1407,7 +1341,6 @@ namespace Alis.Core.Aspect.Math.Collections
                 int newIndex = _index + 1;
                 int length = _array.Length;
 
-                // unsigned math is used to prevent false positive if index + 1 overflows.
                 if ((uint) newIndex <= (uint) length)
                 {
                     _index = newIndex;
@@ -1430,8 +1363,6 @@ namespace Alis.Core.Aspect.Math.Collections
             /// </summary>
             public void Dispose()
             {
-                // we do not have any native or disposable resources.
-                // nothing to do here.
             }
 
             /// <summary>

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:TriangleSample.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Runtime.InteropServices;
@@ -74,16 +47,12 @@ namespace Alis.Extension.Graphic.Glfw.Sample
         /// </summary>
         public void Draw()
         {
-            // Create a rotation matrix
             Matrix4X4 transform = Matrix4X4.CreateRotationZ((float) DateTime.Now.TimeOfDay.TotalSeconds); // Rotate around Z-axis
 
-            // Get the location of the "transform" uniform variable
             int transformLocation = Gl.GlGetUniformLocation(shaderProgram, "transform");
 
-            // Set the value of the "transform" uniform variable
             Gl.UniformMatrix4Fv(transformLocation, transform);
 
-            // Draw the triangle
             Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3);
         }
 
@@ -92,8 +61,6 @@ namespace Alis.Extension.Graphic.Glfw.Sample
         /// </summary>
         public void Run()
         {
-            // Initialize GLFW
-            // Initialize GLFW
             if (!GlfwNative.Init())
             {
                 throw new Exception("Failed to initialize GLFW");
@@ -101,7 +68,6 @@ namespace Alis.Extension.Graphic.Glfw.Sample
 
             Gl.Initialize(GlfwNative.GetProcAddress);
 
-            // Set GLFW window hints for OpenGL context
             GlfwNative.WindowHint(Hint.ContextVersionMajor, 3);
             GlfwNative.WindowHint(Hint.ContextVersionMinor, 2);
             GlfwNative.WindowHint(Hint.OpenglProfile, GlfwProfile.Core);
@@ -111,23 +77,18 @@ namespace Alis.Extension.Graphic.Glfw.Sample
             GlfwNative.WindowHint(Hint.AlphaBits, 8);
             GlfwNative.WindowHint(Hint.StencilBits, 8);
 
-            // Create a GLFW window
             window = GlfwNative.CreateWindow(800, 600, "OpenGL Window", Monitor.None, Window.None);
             if (window == Window.None)
             {
                 throw new Exception("Failed to create GLFW window");
             }
 
-            // Make the OpenGL context current
             GlfwNative.MakeContextCurrent(window);
 
-            // Enable v-sync
             GlfwNative.SwapInterval(1);
 
-            // Log GLFW version
             Logger.Log($"GLFW VERSION {GlfwNative.GetVersionString()}");
 
-            // Define the vertices for the triangle
             float[] vertices =
             {
                 0.0f, 0.5f, 0.0f, // Top
@@ -135,11 +96,9 @@ namespace Alis.Extension.Graphic.Glfw.Sample
                 0.5f, -0.5f, 0.0f // Bottom Right
             };
 
-            // Create a vertex buffer object (VBO) and a vertex array object (VAO)
             vbo = Gl.GenBuffer();
             vao = Gl.GenVertexArray();
 
-            // Bind the VAO and VBO
             Gl.GlBindVertexArray(vao);
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
 
@@ -157,7 +116,6 @@ namespace Alis.Extension.Graphic.Glfw.Sample
                 }
             }
 
-            // Update vertex shader source code
             string vertexShaderSource = @"
                 #version 330 core
                 layout (location = 0) in vec3 aPos;
@@ -190,45 +148,35 @@ namespace Alis.Extension.Graphic.Glfw.Sample
             Gl.GlAttachShader(shaderProgram, fragmentShader);
             Gl.GlLinkProgram(shaderProgram);
 
-            // Bind the VAO and shader program
             Gl.GlBindVertexArray(vao);
             Gl.GlUseProgram(shaderProgram);
 
-            // Enable the vertex attribute array
             Gl.EnableVertexAttribArray(0);
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
 
-            // Print the OpenGL version
             Logger.Log(@$"OpenGL VERSION {Gl.GlGetString(StringName.Version)}");
 
-            // Print the OpenGL vendor
             Logger.Log(@$"OpenGL VENDOR {Gl.GlGetString(StringName.Vendor)}");
 
-            // Print the OpenGL renderer
             Logger.Log(@$"OpenGL RENDERER {Gl.GlGetString(StringName.Renderer)}");
 
-            // Print the OpenGL shading language version
             Logger.Log(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
 
             while (running)
             {
-                // Event handling
                 GlfwNative.PollEvents();
                 if (GlfwNative.WindowShouldClose(window))
                 {
                     running = false;
                 }
 
-                // Clear the screen
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
                 Draw();
 
-                // Swap the buffers to display the triangle
                 GlfwNative.SwapBuffers(window);
             }
 
-            // Cleanup
             Gl.DeleteVertexArray(vao);
             Gl.DeleteBuffer(vbo);
             Gl.GlDeleteProgram(shaderProgram);

@@ -706,11 +706,9 @@ Server-side Logging:
 ### Client-side Debugging
 
 ```csharp
-// Example: Log every message received
 private static async Task OnGameUpdate(string senderId, string payload)
 {
   Debug.WriteLine($"[Update] {DateTime.Now:HH:mm:ss.fff} - {payload.Substring(0, 100)}");
-  // ... process message
 }
 ```
 

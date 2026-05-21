@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:FixedMouseJoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -231,18 +204,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float mass = BodyA.Mass;
 
-            // Frequency
             float omega = Constant.Tau * Frequency;
 
-            // Damping coefficient
             float d = 2.0f * mass * DampingRatio * omega;
 
-            // Spring stiffness
             float kKk = mass * (omega * omega);
 
-            // magic formulas
-            // gamma has units of inverse mass.
-            // beta has units of inverse time.
             float h = data.Step.Dt;
             _gamma = h * (d + h * kKk);
             if (Math.Abs(_gamma) > SettingEnv.Epsilon)
@@ -252,11 +219,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             _beta = h * kKk * _gamma;
 
-            // Compute the effective mass matrix.
             _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
-            // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
-            //      = [1/m1+1/m2     0    ] + invI1 * [r1.Y*r1.Y -r1.X*r1.Y] + invI2 * [r1.Y*r1.Y -r1.X*r1.Y]
-            //        [    0     1/m1+1/m2]           [-r1.X*r1.Y r1.X*r1.X]           [-r1.X*r1.Y r1.X*r1.X]
             Mat22 k = new Mat22();
             k.Ex.X = _invMassA + invIa * _rA.Y * _rA.Y + _gamma;
             k.Ex.Y = -invIa * _rA.X * _rA.Y;
@@ -268,7 +231,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             c = cA + _rA - _worldAnchor;
             c *= _beta;
 
-            // Cheat with some damping
             wA *= 0.98f;
 
             if (data.Step.WarmStarting)
@@ -295,7 +257,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2F vA = data.Velocities[_indexA].V;
             float wA = data.Velocities[_indexA].W;
 
-            // Cdot = v + cross(w, r)
             Vector2F cdot = vA + MathUtils.Cross(wA, ref _rA);
             Vector2F impulse = MathUtils.Mul(ref _mass, -(cdot + c + _gamma * _impulse));
 

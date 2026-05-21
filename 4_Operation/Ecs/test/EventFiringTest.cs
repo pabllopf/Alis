@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EventFiringTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using Alis.Core.Ecs.Kernel;
@@ -49,7 +22,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EntityCreatedEventFires()
         {
-            // Arrange
             using Scene scene = new Scene();
             int eventCount = 0;
             GameObject createdEntity = default(GameObject);
@@ -60,10 +32,8 @@ namespace Alis.Core.Ecs.Test
                 createdEntity = entity;
             };
 
-            // Act
             GameObject entity = scene.Create(new Position());
 
-            // Assert
             Assert.Equal(1, eventCount);
             Assert.Equal(entity.EntityID, createdEntity.EntityID);
         }
@@ -74,17 +44,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EntityDeletedEventFires()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
             int eventCount = 0;
 
             scene.EntityDeleted += _ => eventCount++;
 
-            // Act
             entity.Delete();
 
-            // Assert
             Assert.Equal(1, eventCount);
         }
 
@@ -94,7 +61,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_ComponentAddedEventFires()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
             int eventCount = 0;
@@ -109,10 +75,8 @@ namespace Alis.Core.Ecs.Test
                 }
             };
 
-            // Act
             entity.Add(new Position {X = 10});
 
-            // Assert
             Assert.Equal(1, eventCount);
             Assert.Equal(Component<Position>.Id, firedComponentId);
         }
@@ -123,7 +87,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_ComponentRemovedEventFires()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10});
             int eventCount = 0;
@@ -138,10 +101,8 @@ namespace Alis.Core.Ecs.Test
                 }
             };
 
-            // Act
             entity.Remove<Position>();
 
-            // Assert
             Assert.Equal(1, eventCount);
             Assert.Equal(Component<Position>.Id, firedComponentId);
         }
@@ -152,7 +113,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_MultipleEventsAreTrackedCorrectly()
         {
-            // Arrange
             using Scene scene = new Scene();
             int createdCount = 0;
             int deletedCount = 0;
@@ -162,13 +122,11 @@ namespace Alis.Core.Ecs.Test
             scene.EntityDeleted += _ => deletedCount++;
             scene.ComponentAdded += (_, __) => componentAddedCount++;
 
-            // Act
             scene.Create();
             scene.Create(new Position());
             _ = scene.Create(); // Create first entity and discard
             _ = scene.Create(); // Create second entity and discard
 
-            // Assert
             Assert.Equal(4, createdCount);
             Assert.Equal(0, deletedCount);
             Assert.Equal(0, componentAddedCount); // entity2 created with Position, entity1 added Health
@@ -180,7 +138,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EventListenerCanBeRemoved()
         {
-            // Arrange
             using Scene scene = new Scene();
             int eventCount = 0;
 
@@ -190,11 +147,9 @@ namespace Alis.Core.Ecs.Test
             GameObject entity1 = scene.Create();
             Assert.Equal(1, eventCount);
 
-            // Act
             scene.EntityCreated -= Handler;
             GameObject entity2 = scene.Create();
 
-            // Assert
             Assert.Equal(1, eventCount); // Should still be 1
         }
 
@@ -204,7 +159,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_MultipleListenersReceiveSameEvent()
         {
-            // Arrange
             using Scene scene = new Scene();
             int listener1Count = 0;
             int listener2Count = 0;
@@ -212,10 +166,8 @@ namespace Alis.Core.Ecs.Test
             scene.EntityCreated += _ => listener1Count++;
             scene.EntityCreated += _ => listener2Count++;
 
-            // Act
             scene.Create();
 
-            // Assert
             Assert.Equal(1, listener1Count);
             Assert.Equal(1, listener2Count);
         }
@@ -226,19 +178,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_ComponentEventsIncludeCorrectComponentId()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
             List<ComponentId> addedComponentIds = new List<ComponentId>();
 
             scene.ComponentAdded += (_, componentId) => addedComponentIds.Add(componentId);
 
-            // Act
             entity.Add(new Position());
             entity.Add(new Health());
             entity.Add(new Velocity());
 
-            // Assert
             Assert.Equal(3, addedComponentIds.Count);
             Assert.Contains(Component<Position>.Id, addedComponentIds);
             Assert.Contains(Component<Health>.Id, addedComponentIds);

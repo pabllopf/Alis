@@ -12,8 +12,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     public class WebAssemblyInputManagerTest
     {
         // =====================================================================
-        // WebAssemblyInputManager - Key Bindings
-        // =====================================================================
 
         [Fact]
         public void InputManager_RegisterKeyBinding_SingleKey_Works()
@@ -140,8 +138,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // WebAssemblyInputManager - Mouse
-        // =====================================================================
 
         [Fact]
         public void InputManager_GetMousePosition_ReturnsDefaultCoords()
@@ -229,8 +225,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // WebAssemblyInputManager - Gamepad
-        // =====================================================================
 
         [Fact]
         public void InputManager_GetConnectedGamepadIndices_Empty_ReturnsEmpty()
@@ -269,8 +263,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // WebAssemblyInputManager - Update
-        // =====================================================================
 
         [Fact]
         public void InputManager_Update_DoesNotThrow()
@@ -301,8 +293,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // WebAssemblyInputManager - VibrateGamepad
-        // =====================================================================
 
         [Fact]
         public void InputManager_VibrateGamepad_ReturnsFalseOnNonBrowser()
@@ -313,8 +303,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // WebAssemblyInputManager - Constructor
-        // =====================================================================
 
         [Fact]
         public void InputManager_Constructor_NullPlatform_Throws()
@@ -323,8 +311,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 new WebAssemblyInputManager(null));
         }
 
-        // =====================================================================
-        // KeyBinding
         // =====================================================================
 
         [Fact]
@@ -392,8 +378,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(binding.ContainsKey(ConsoleKey.S));
         }
 
-        // =====================================================================
-        // WebAssemblyInputContext
         // =====================================================================
 
         [Fact]
@@ -479,8 +463,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // TouchPoint
-        // =====================================================================
 
         [Fact]
         public void TouchPoint_Default_IsActiveAndBegin()
@@ -508,8 +490,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(TouchState.Ended, touch.State);
         }
 
-        // =====================================================================
-        // WebAssemblyInputManager - GetKeyName
         // =====================================================================
 
         [Theory]

@@ -12,13 +12,10 @@ The Procedural Dungeon Generator 2D module provides a simple API for generating 
 using Alis.Extension.Math.ProceduralDungeon;
 using Alis.Extension.Math.ProceduralDungeon.Models;
 
-// Create a dungeon with default configuration
 using var dungeon = new Dungeon();
 
-// Generate the dungeon
 DungeonData data = dungeon.Generate();
 
-// Access dungeon information
 Console.WriteLine($"Dungeon size: {data.Width}x{data.Height}");
 Console.WriteLine($"Number of rooms: {data.Rooms.Count}");
 Console.WriteLine($"Number of corridors: {data.Corridors.Count}");
@@ -37,7 +34,6 @@ Default configuration creates:
 ### Creating a Custom Dungeon
 
 ```csharp
-// Create custom configuration
 var config = new DungeonConfiguration
 {
     BoardWidth = 200,
@@ -53,7 +49,6 @@ var config = new DungeonConfiguration
     CorridorHeight = 5
 };
 
-// Create dungeon with custom configuration
 using var dungeon = new Dungeon(config);
 DungeonData data = dungeon.Generate();
 ```
@@ -81,7 +76,6 @@ DungeonData data = dungeon.Generate();
 ```csharp
 DungeonData data = dungeon.Generate();
 
-// Iterate through rooms
 foreach (RoomData room in data.Rooms)
 {
     Console.WriteLine($"Room at ({room.XPos}, {room.YPos})");
@@ -90,14 +84,12 @@ foreach (RoomData room in data.Rooms)
     Console.WriteLine($"Is Boss Room: {room.IsBossRoom}");
 }
 
-// Find the boss room
 RoomData bossRoom = data.Rooms.Find(r => r.IsBossRoom);
 ```
 
 ### Accessing Corridors
 
 ```csharp
-// Iterate through corridors
 foreach (CorridorData corridor in data.Corridors)
 {
     Console.WriteLine($"Corridor at ({corridor.XPos}, {corridor.YPos})");
@@ -109,26 +101,20 @@ foreach (CorridorData corridor in data.Corridors)
 ### Accessing the Board
 
 ```csharp
-// Get board dimensions
 int width = data.Width;
 int height = data.Height;
 
-// Access individual squares
 for (int x = 0; x < width; x++)
 {
     for (int y = 0; y < height; y++)
     {
         BoardSquare square = data.Board[x, y];
         BoardSquareType type = square.Type;
-        
-        // Process square based on type
         if (type == BoardSquareType.Floor)
         {
-            // This is a walkable floor tile
         }
         else if (type == BoardSquareType.WallTop)
         {
-            // This is a wall
         }
     }
 }
@@ -162,12 +148,10 @@ The board contains different types of squares:
 ```csharp
 using Alis.Extension.Math.ProceduralDungeon.Helpers;
 
-// Working with directions
 Direction opposite = DirectionHelper.GetOpposite(Direction.North);
 bool isValid = DirectionHelper.IsValid(Direction.East);
 bool areOpposite = DirectionHelper.AreOpposite(Direction.North, Direction.South);
 
-// Working with board square types
 bool isWall = BoardSquareTypeHelper.IsWall(BoardSquareType.WallTop);
 bool isCorner = BoardSquareTypeHelper.IsCorner(BoardSquareType.CornerLeftUp);
 bool isWalkable = BoardSquareTypeHelper.IsWalkable(BoardSquareType.Floor);
@@ -179,7 +163,6 @@ char displayChar = BoardSquareTypeHelper.GetDisplayCharacter(BoardSquareType.Wal
 ```csharp
 public void VisualizeDungeon(DungeonData data)
 {
-    // Find bounds of actual dungeon content
     int minX = data.Width, maxX = 0, minY = data.Height, maxY = 0;
     
     for (int x = 0; x < data.Width; x++)
@@ -195,8 +178,6 @@ public void VisualizeDungeon(DungeonData data)
             }
         }
     }
-    
-    // Display the dungeon
     for (int y = minY; y <= maxY; y++)
     {
         for (int x = minX; x <= maxX; x++)
@@ -236,11 +217,9 @@ public List<DungeonData> GenerateMultipleDungeons(int count)
 Always dispose of the `Dungeon` instance when finished:
 
 ```csharp
-// Using statement (recommended)
 using var dungeon = new Dungeon();
 var data = dungeon.Generate();
 
-// Or explicit disposal
 var dungeon = new Dungeon();
 try
 {
@@ -278,7 +257,6 @@ Reuse the same `Dungeon` instance for multiple generations:
 ```csharp
 using var dungeon = new Dungeon();
 
-// Generate multiple different dungeons
 var dungeon1 = dungeon.Generate();
 var dungeon2 = dungeon.Generate();
 var dungeon3 = dungeon.Generate();
@@ -289,14 +267,12 @@ var dungeon3 = dungeon.Generate();
 For very large dungeons, consider memory constraints:
 
 ```csharp
-// Be careful with very large boards
 var config = new DungeonConfiguration
 {
     BoardWidth = 1000,  // Creates a 1000x1000 board
     BoardHeight = 1000
 };
 
-// This creates a 1,000,000 element array
 using var dungeon = new Dungeon(config);
 var data = dungeon.Generate();
 ```
@@ -333,17 +309,12 @@ public class DungeonLevel
     
     private void InitializeGameObjects()
     {
-        // Place player in first room
         RoomData firstRoom = _dungeonData.Rooms[0];
         PlacePlayer(firstRoom.XPos + firstRoom.Width / 2, 
                     firstRoom.YPos + firstRoom.Height / 2);
-        
-        // Place boss in boss room
         RoomData bossRoom = _dungeonData.Rooms.Find(r => r.IsBossRoom);
         PlaceBoss(bossRoom.XPos + bossRoom.Width / 2,
                   bossRoom.YPos + bossRoom.Height / 2);
-        
-        // Place enemies in other rooms
         foreach (var room in _dungeonData.Rooms)
         {
             if (!room.IsBossRoom && _dungeonData.Rooms.IndexOf(room) != 0)

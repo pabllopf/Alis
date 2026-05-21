@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AACEncoderTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
@@ -45,10 +18,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_Constructor_ShouldCreateInstanceWithDefaultCbr()
         {
-            // Arrange & Act
             AacEncoder encoder = new AacEncoder();
 
-            // Assert
             Assert.NotNull(encoder);
             Assert.Contains("-b:a", encoder.CurrentQualitySettings);
         }
@@ -59,13 +30,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_NameProperty_ShouldReturnAac()
         {
-            // Arrange
             AacEncoder encoder = new AacEncoder();
 
-            // Act
             string name = encoder.Name;
 
-            // Assert
             Assert.Equal("aac", name);
         }
 
@@ -75,10 +43,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_DefaultFormat_ShouldBeM4a()
         {
-            // Arrange & Act
             AacEncoder encoder = new AacEncoder();
 
-            // Assert
             Assert.Equal("m4a", encoder.Format);
         }
 
@@ -88,14 +54,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_FormatProperty_ShouldBeSettable()
         {
-            // Arrange
             AacEncoder encoder = new AacEncoder();
             string format = "mp4";
 
-            // Act
             encoder.Format = format;
 
-            // Assert
             Assert.Equal(format, encoder.Format);
         }
 
@@ -105,14 +68,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_ChannelCountProperty_ShouldBeSettable()
         {
-            // Arrange
             AacEncoder encoder = new AacEncoder();
             int channelCount = 2;
 
-            // Act
             encoder.ChannelCount = channelCount;
 
-            // Assert
             Assert.Equal(channelCount, encoder.ChannelCount);
         }
 
@@ -122,10 +82,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_DefaultChannelCount_ShouldBeNull()
         {
-            // Arrange & Act
             AacEncoder encoder = new AacEncoder();
 
-            // Assert
             Assert.Null(encoder.ChannelCount);
         }
 
@@ -135,14 +93,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_SampleRateProperty_ShouldBeSettable()
         {
-            // Arrange
             AacEncoder encoder = new AacEncoder();
             int sampleRate = 44100;
 
-            // Act
             encoder.SampleRate = sampleRate;
 
-            // Assert
             Assert.Equal(sampleRate, encoder.SampleRate);
         }
 
@@ -152,10 +107,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_DefaultSampleRate_ShouldBeNull()
         {
-            // Arrange & Act
             AacEncoder encoder = new AacEncoder();
 
-            // Assert
             Assert.Null(encoder.SampleRate);
         }
 
@@ -165,14 +118,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_SetCbrWithCustomBitrate_ShouldWork()
         {
-            // Arrange
             AacEncoder encoder = new AacEncoder();
             string bitrate = "256k";
 
-            // Act
             encoder.SetCbr(bitrate);
 
-            // Assert
             Assert.Contains("-b:a", encoder.CurrentQualitySettings);
             Assert.Contains("256k", encoder.CurrentQualitySettings);
         }
@@ -183,13 +133,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_SetCbrDefault_ShouldBe128k()
         {
-            // Arrange
             AacEncoder encoder = new AacEncoder();
 
-            // Act
             encoder.SetCbr();
 
-            // Assert
             Assert.Contains("128k", encoder.CurrentQualitySettings);
         }
 
@@ -199,13 +146,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_Create_ShouldReturnEncoderOptions()
         {
-            // Arrange
             AacEncoder encoder = new AacEncoder();
 
-            // Act
             EncoderOptions options = encoder.Create();
 
-            // Assert
             Assert.NotNull(options);
             Assert.Equal("m4a", options.Format);
             Assert.Equal("aac", options.EncoderName);
@@ -217,14 +161,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_Create_ShouldIncludeChannelCountWhenSet()
         {
-            // Arrange
             AacEncoder encoder = new AacEncoder();
             encoder.ChannelCount = 2;
 
-            // Act
             EncoderOptions options = encoder.Create();
 
-            // Assert
             Assert.Contains("-ac", options.EncoderArguments);
             Assert.Contains("2", options.EncoderArguments);
         }
@@ -235,14 +176,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_Create_ShouldIncludeSampleRateWhenSet()
         {
-            // Arrange
             AacEncoder encoder = new AacEncoder();
             encoder.SampleRate = 48000;
 
-            // Act
             EncoderOptions options = encoder.Create();
 
-            // Assert
             Assert.Contains("-ar", options.EncoderArguments);
             Assert.Contains("48000", options.EncoderArguments);
         }
@@ -253,10 +191,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_ShouldInheritFromEncoderOptionsBuilder()
         {
-            // Arrange & Act
             AacEncoder encoder = new AacEncoder();
 
-            // Assert
             Assert.IsAssignableFrom<EncoderOptionsBuilder>(encoder);
         }
 
@@ -266,7 +202,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void AacEncoder_SetCbrWithDifferentBitrates_ShouldWork()
         {
-            // Arrange & Act
             AacEncoder encoder64k = new AacEncoder();
             encoder64k.SetCbr("64k");
 
@@ -276,7 +211,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             AacEncoder encoder320k = new AacEncoder();
             encoder320k.SetCbr("320k");
 
-            // Assert
             Assert.Contains("64k", encoder64k.CurrentQualitySettings);
             Assert.Contains("192k", encoder192k.CurrentQualitySettings);
             Assert.Contains("320k", encoder320k.CurrentQualitySettings);

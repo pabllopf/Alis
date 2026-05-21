@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:QueryParametrizedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
@@ -45,7 +18,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(50), InlineData(100)]
         public void Query_SingleComponentFilter_ReturnsCorrectCount(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < entityCount; i++)
             {
@@ -59,14 +31,12 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Act
             int count = 0;
             foreach (GameObject entity in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal((entityCount + 1) / 2, count);
         }
 
@@ -77,7 +47,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(10), InlineData(25), InlineData(50)]
         public void Query_MultiComponentFilter_OnlyReturnsMatching(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < entityCount; i++)
             {
@@ -93,14 +62,12 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Act
             int countBoth = 0;
             foreach (GameObject go in scene.Query<With<Position>, With<Health>>().EnumerateWithEntities())
             {
                 countBoth++;
             }
 
-            // Assert
             Assert.True(countBoth >= 0);
         }
 
@@ -111,14 +78,12 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(10), InlineData(25), InlineData(50)]
         public void Query_ModifyComponentsWhileIterating_Works(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < entityCount; i++)
             {
                 scene.Create(new Position {X = i, Y = i});
             }
 
-            // Act
             foreach (GameObject entity in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 ref Position pos = ref entity.Get<Position>();
@@ -126,7 +91,6 @@ namespace Alis.Core.Ecs.Test
                 pos.Y += 1;
             }
 
-            // Assert - All entities should have updated positions
             int verifyCount = 0;
             foreach (GameObject entity in scene.Query<With<Position>>().EnumerateWithEntities())
             {
@@ -144,7 +108,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(5), InlineData(10), InlineData(20)]
         public void Query_AddComponentWhileNotQuerying_AppearsInNextQuery(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
@@ -152,27 +115,23 @@ namespace Alis.Core.Ecs.Test
                 entities[i] = scene.Create();
             }
 
-            // Act - First query without Position
             int count1 = 0;
             foreach (GameObject entity in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 count1++;
             }
 
-            // Add Position to all
             for (int i = 0; i < entityCount; i++)
             {
                 entities[i].Add(new Position {X = 1, Y = 1});
             }
 
-            // Query again
             int count2 = 0;
             foreach (GameObject entity in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 count2++;
             }
 
-            // Assert
             Assert.Equal(0, count1);
             Assert.Equal(entityCount, count2);
         }
@@ -184,7 +143,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(10), InlineData(25), InlineData(50)]
         public void Query_RemoveComponentWhileQuerying_EntityNotInFutureQueries(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
@@ -192,20 +150,17 @@ namespace Alis.Core.Ecs.Test
                 entities[i] = scene.Create(new Position {X = 1, Y = 1});
             }
 
-            // Act - Remove components
             for (int i = 0; i < entityCount / 2; i++)
             {
                 entities[i].Remove<Position>();
             }
 
-            // Query again
             int count = 0;
             foreach (GameObject entity in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(entityCount - entityCount / 2, count);
         }
 
@@ -216,7 +171,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(10), InlineData(25), InlineData(50)]
         public void Query_DeleteEntityWhileQuerying_DoesNotAppearInResults(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
@@ -224,13 +178,11 @@ namespace Alis.Core.Ecs.Test
                 entities[i] = scene.Create(new Position {X = 1, Y = 1});
             }
 
-            // Act - Delete half
             for (int i = 0; i < entityCount / 2; i++)
             {
                 entities[i].Delete();
             }
 
-            // Query
             int count = 0;
             foreach (GameObject entity in scene.Query<With<Position>>().EnumerateWithEntities())
             {
@@ -240,7 +192,6 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Assert
             Assert.True(count >= entityCount / 2);
         }
 
@@ -251,7 +202,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(5), InlineData(10), InlineData(20)]
         public void Query_ChainedQueries_WorkCorrectly(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < entityCount; i++)
             {
@@ -272,7 +222,6 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Act
             int posCount = 0;
             int healthCount = 0;
             int velCount = 0;
@@ -292,7 +241,6 @@ namespace Alis.Core.Ecs.Test
                 velCount++;
             }
 
-            // Assert
             Assert.True(posCount > 0);
             Assert.True(healthCount > 0);
             Assert.True(velCount > 0);
@@ -305,17 +253,14 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(10), InlineData(50), InlineData(100)]
         public void Query_EmptyScene_ReturnsNoEntities(int unused)
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             int count = 0;
             foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(0, count);
         }
 
@@ -327,7 +272,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(10, 1), InlineData(20, 2), InlineData(50, 5)]
         public void Query_PartialMatches_OnlyReturnsExact(int entityCount, int matchingCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < entityCount; i++)
             {
@@ -343,14 +287,12 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Act
             int count = 0;
             foreach (GameObject go in scene.Query<With<Position>, With<Health>>().EnumerateWithEntities())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(matchingCount, count);
         }
     }

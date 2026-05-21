@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Vector3FTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
@@ -43,15 +16,12 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void Constructor_ShouldSetValues()
         {
-            // Arrange
             float x = 1;
             float y = 2;
             float z = 3;
 
-            // Act
             Vector3F vector = new Vector3F(x, y, z);
 
-            // Assert
             Assert.Equal(x, vector.X);
             Assert.Equal(y, vector.Y);
             Assert.Equal(z, vector.Z);
@@ -64,14 +34,11 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void DotProduct_ShouldCalculateCorrectly()
         {
-            // Arrange
             Vector3F vector1 = new Vector3F(1, 2, 3);
             Vector3F vector2 = new Vector3F(4, 5, 6);
 
-            // Act
             float dotProduct = Vector3F.Dot(vector1, vector2);
 
-            // Assert
             Assert.Equal(32, dotProduct); // 1*4 + 2*5 + 3*6 = 32
         }
 
@@ -113,13 +80,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void Sqrt_ShouldCalculateCorrectly()
         {
-            // Arrange
             float x = 4;
 
-            // Act
             float result = (float) System.Math.Sqrt(x);
 
-            // Assert
             Assert.Equal(2, result);
         }
 
@@ -129,13 +93,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void Abs_ShouldReturnAbsoluteValue()
         {
-            // Arrange
             float value = -5;
 
-            // Act
             float result = System.Math.Abs(value);
 
-            // Assert
             Assert.Equal(5, result);
         }
 
@@ -145,13 +106,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void Cos_ShouldCalculateCorrectly()
         {
-            // Arrange
             float x = (float) (System.Math.PI / 2);
 
-            // Act
             float result = (float) System.Math.Cos(x);
 
-            // Assert
             Assert.Equal(0, result, 5);
         }
 
@@ -161,13 +119,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void Sin_ShouldCalculateCorrectly()
         {
-            // Arrange
             float x = (float) (System.Math.PI / 2);
 
-            // Act
             float result = (float) System.Math.Sin(x);
 
-            // Assert
             Assert.Equal(1, result, 5);
         }
 
@@ -177,14 +132,11 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void Max_ShouldReturnMaximumValue()
         {
-            // Arrange
             int val1 = 5;
             int val2 = 10;
 
-            // Act
             int result = System.Math.Max(val1, val2);
 
-            // Assert
             Assert.Equal(val2, result);
         }
 

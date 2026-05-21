@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EntityDataTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Xunit;
 
@@ -49,10 +22,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_CanBeCreatedWithDefaultValues()
         {
-            // Act
             EntityData entityData = default(EntityData);
 
-            // Assert
             Assert.Equal(0, entityData.EntityID);
             Assert.Equal((ushort) 0, entityData.EntityVersion);
             Assert.Equal((ushort) 0, entityData.WorldID);
@@ -67,7 +38,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_FieldsCanBeSetAndRetrieved()
         {
-            // Arrange
             EntityData entityData = new EntityData
             {
                 EntityID = 123,
@@ -75,7 +45,6 @@ namespace Alis.Core.Ecs.Test
                 WorldID = 10
             };
 
-            // Assert
             Assert.Equal(123, entityData.EntityID);
             Assert.Equal((ushort) 5, entityData.EntityVersion);
             Assert.Equal((ushort) 10, entityData.WorldID);
@@ -90,13 +59,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_EntityIdCanStoreNegativeValues()
         {
-            // Arrange
             EntityData entityData = new EntityData
             {
                 EntityID = -1
             };
 
-            // Assert
             Assert.Equal(-1, entityData.EntityID);
         }
 
@@ -109,13 +76,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_EntityVersionCanStoreMaxUShortValue()
         {
-            // Arrange
             EntityData entityData = new EntityData
             {
                 EntityVersion = ushort.MaxValue
             };
 
-            // Assert
             Assert.Equal(ushort.MaxValue, entityData.EntityVersion);
         }
 
@@ -128,13 +93,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_WorldIdCanStoreMaxUShortValue()
         {
-            // Arrange
             EntityData entityData = new EntityData
             {
                 WorldID = ushort.MaxValue
             };
 
-            // Assert
             Assert.Equal(ushort.MaxValue, entityData.WorldID);
         }
 
@@ -147,14 +110,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_IsValueType()
         {
-            // Arrange
             EntityData entityData1 = new EntityData {EntityID = 100};
             EntityData entityData2 = entityData1;
 
-            // Act
             entityData2.EntityID = 200;
 
-            // Assert - Changes to entityData2 should not affect entityData1
             Assert.Equal(100, entityData1.EntityID);
             Assert.Equal(200, entityData2.EntityID);
         }
@@ -168,7 +128,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_CanBeComparedForEquality()
         {
-            // Arrange
             EntityData entityData1 = new EntityData
             {
                 EntityID = 42,
@@ -183,7 +142,6 @@ namespace Alis.Core.Ecs.Test
                 WorldID = 7
             };
 
-            // Assert
             Assert.Equal(entityData1.EntityID, entityData2.EntityID);
             Assert.Equal(entityData1.EntityVersion, entityData2.EntityVersion);
             Assert.Equal(entityData1.WorldID, entityData2.WorldID);
@@ -198,11 +156,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_WithDifferentValuesAreNotEqual()
         {
-            // Arrange
             EntityData entityData1 = new EntityData {EntityID = 42};
             EntityData entityData2 = new EntityData {EntityID = 43};
 
-            // Assert
             Assert.NotEqual(entityData1.EntityID, entityData2.EntityID);
         }
 
@@ -215,7 +171,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_CanStoreBoundaryValues()
         {
-            // Arrange & Act
             EntityData entityData = new EntityData
             {
                 EntityID = int.MaxValue,
@@ -223,7 +178,6 @@ namespace Alis.Core.Ecs.Test
                 WorldID = ushort.MaxValue
             };
 
-            // Assert
             Assert.Equal(int.MaxValue, entityData.EntityID);
             Assert.Equal(ushort.MaxValue, entityData.EntityVersion);
             Assert.Equal(ushort.MaxValue, entityData.WorldID);
@@ -238,7 +192,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_CanStoreMinimumValues()
         {
-            // Arrange & Act
             EntityData entityData = new EntityData
             {
                 EntityID = int.MinValue,
@@ -246,7 +199,6 @@ namespace Alis.Core.Ecs.Test
                 WorldID = ushort.MinValue
             };
 
-            // Assert
             Assert.Equal(int.MinValue, entityData.EntityID);
             Assert.Equal(ushort.MinValue, entityData.EntityVersion);
             Assert.Equal(ushort.MinValue, entityData.WorldID);

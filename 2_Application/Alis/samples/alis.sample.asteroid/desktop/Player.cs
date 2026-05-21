@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Player.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Builder.Core.Ecs.Components.Collider;
@@ -173,7 +146,6 @@ namespace Alis.Sample.Asteroid.Desktop
             float targetRotationDegrees = CalculateRotationInDegrees(direction.X, direction.Y);
             boxCollider.Body.Rotation = targetRotationDegrees;
 
-            // Limit the maximum velocity
             float maxVelocity = 3.0f; // Set your desired maximum velocity
             Vector2F currentVelocity = boxCollider.Body.LinearVelocity;
             if (currentVelocity.Length() > maxVelocity)
@@ -229,25 +201,21 @@ namespace Alis.Sample.Asteroid.Desktop
                 if ((x > 0) && (y > 0))
                 {
                     angle = 315;
-                    //Console.WriteLine("angle: " + angle);
                 }
 
                 if ((x < 0) && (y > 0))
                 {
                     angle = 45;
-                    //Console.WriteLine("angle: " + angle);
                 }
 
                 if ((x < 0) && (y < 0))
                 {
                     angle = 135;
-                    //Console.WriteLine("angle: " + angle);
                 }
 
                 if ((x > 0) && (y < 0))
                 {
                     angle = 225;
-                    //Console.WriteLine("angle: " + angle);
                 }
             }
 

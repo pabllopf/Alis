@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:LoggerStaticTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -47,7 +20,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Trace_ShouldNotThrow()
         {
-            // Act & Assert - Should not throw
             Logger.Trace("Trace message");
         }
 
@@ -57,7 +29,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Debug_ShouldNotThrow()
         {
-            // Act & Assert - Should not throw
             Logger.Debug("Debug message");
         }
 
@@ -67,7 +38,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Info_ShouldNotThrow()
         {
-            // Act & Assert - Should not throw
             Logger.Info("Info message");
         }
 
@@ -77,7 +47,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Log_ShouldNotThrow()
         {
-            // Act & Assert - Should not throw
             Logger.Log("Log message");
         }
 
@@ -87,7 +56,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Warning_ShouldNotThrow()
         {
-            // Act & Assert - Should not throw
             Logger.Warning("Warning message");
         }
 
@@ -97,7 +65,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Error_ShouldNotThrow()
         {
-            // Act & Assert - Should not throw
             Logger.Error("Error message");
         }
 
@@ -108,17 +75,14 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_SetDefaultLogger_ShouldAcceptCustomLogger()
         {
-            // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
             LoggerFactory factory = new LoggerFactory();
             factory.AddOutput(memoryOutput);
             ILogger customLogger = factory.CreateLogger("CustomLogger");
 
-            // Act
             Logger.SetDefaultLogger(customLogger);
             customLogger.LogInfo("Test");
 
-            // Assert
             IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
         }
@@ -129,10 +93,8 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_SetDefaultLoggerNull_ShouldResetToDefault()
         {
-            // Act
             Logger.SetDefaultLogger(null);
 
-            // Assert - Should use default logger
             Logger.Info("Test"); // Should not throw
         }
 
@@ -142,7 +104,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_MultipleCallsSequential_ShouldNotThrow()
         {
-            // Act & Assert
             Logger.Trace("1");
             Logger.Debug("2");
             Logger.Info("3");
@@ -157,7 +118,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_EmptyMessage_ShouldNotThrow()
         {
-            // Act & Assert
             Logger.Info(string.Empty);
             Logger.Warning(string.Empty);
             Logger.Error(string.Empty);
@@ -169,10 +129,8 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_LongMessage_ShouldNotThrow()
         {
-            // Arrange
             string longMessage = new string('x', 10000);
 
-            // Act & Assert
             Logger.Info(longMessage);
         }
 
@@ -182,10 +140,8 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_SpecialCharacters_ShouldNotThrow()
         {
-            // Arrange
             string specialMessage = "Message with special chars: \n \t \r \" ' \\";
 
-            // Act & Assert
             Logger.Info(specialMessage);
         }
 
@@ -195,10 +151,8 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Exception_ShouldThrowExceptionWithCorrectMessage()
         {
-            // Arrange
             string exceptionMessage = "Test exception message";
 
-            // Act & Assert
             InvalidOperationException thrownException = Assert.Throws<InvalidOperationException>(() => Logger.Exception(exceptionMessage));
             Assert.Equal(exceptionMessage, thrownException.Message);
         }
@@ -209,7 +163,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Exception_ShouldLogCriticalBeforeThrowing()
         {
-            // Arrange
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
             LoggerFactory factory = new LoggerFactory();
             factory.AddOutput(memoryOutput);
@@ -217,10 +170,8 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.SetDefaultLogger(customLogger);
             string exceptionMessage = "Critical error occurred";
 
-            // Act & Assert
             Assert.Throws<InvalidOperationException>(() => Logger.Exception(exceptionMessage));
 
-            // Verify critical log was created
             IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(LogLevel.Critical, entries[0].Level);
@@ -233,10 +184,8 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Exception_WithEmptyMessage_ShouldThrow()
         {
-            // Arrange
             string emptyMessage = string.Empty;
 
-            // Act & Assert
             InvalidOperationException thrownException = Assert.Throws<InvalidOperationException>(() => Logger.Exception(emptyMessage));
             Assert.Equal(emptyMessage, thrownException.Message);
         }
@@ -247,10 +196,8 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Exception_WithNullMessage_ShouldThrow()
         {
-            // Arrange
             string nullMessage = null;
 
-            // Act & Assert
             Assert.Throws<InvalidOperationException>(() => Logger.Exception(nullMessage));
         }
 
@@ -260,10 +207,8 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Exception_WithLongMessage_ShouldThrowWithFullMessage()
         {
-            // Arrange
             string longMessage = new string('x', 1000);
 
-            // Act & Assert
             InvalidOperationException thrownException = Assert.Throws<InvalidOperationException>(() => Logger.Exception(longMessage));
             Assert.Equal(longMessage, thrownException.Message);
         }
@@ -274,10 +219,8 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Exception_WithSpecialCharacters_ShouldPreserveMessage()
         {
-            // Arrange
             string specialMessage = "Error: \n\t\"Value\" is 'invalid'\\path";
 
-            // Act & Assert
             InvalidOperationException thrownException = Assert.Throws<InvalidOperationException>(() => Logger.Exception(specialMessage));
             Assert.Equal(specialMessage, thrownException.Message);
         }

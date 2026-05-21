@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WeldJoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -271,16 +244,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
                 float c = aB - aA - ReferenceAngle;
 
-                // Frequency
                 float omega = Constant.Tau * FrequencyHz;
 
-                // Damping coefficient
                 float d = 2.0f * m * DampingRatio * omega;
 
-                // Spring stiffness
                 float kkk = m * omega * omega;
 
-                // magic formulas
                 float h = data.Step.Dt;
                 _gamma = h * (d + h * kkk);
                 _gamma = Math.Abs(_gamma) < float.Epsilon ? 1.0f / _gamma : 0.0f;
@@ -304,7 +273,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.Step.WarmStarting)
             {
-                // Scale impulses to support a variable time step.
                 _impulse *= data.Step.DtRatio;
 
                 Vector2F p = new Vector2F(_impulse.X, _impulse.Y);

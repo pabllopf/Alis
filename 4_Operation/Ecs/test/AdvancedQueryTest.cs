@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AdvancedQueryTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
@@ -48,7 +21,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_WorksWithLargeEntityCount()
         {
-            // Arrange
             using Scene scene = new Scene();
             const int entityCount = 100;
             for (int i = 0; i < entityCount; i++)
@@ -56,7 +28,6 @@ namespace Alis.Core.Ecs.Test
                 scene.Create(new Position {X = i, Y = i * 2});
             }
 
-            // Act
             Query query = scene.Query<With<Position>>();
             int count = 0;
             foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
@@ -64,7 +35,6 @@ namespace Alis.Core.Ecs.Test
                 count++;
             }
 
-            // Assert
             Assert.Equal(entityCount, count);
         }
 
@@ -74,14 +44,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_CorrectlyFiltersWithMixedComponents()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1});
             scene.Create(new Position {X = 2}, new Health {Value = 100});
             scene.Create(new Health {Value = 50});
             scene.Create(new Position {X = 3}, new Health {Value = 75}, new Velocity {X = 1, Y = 1});
 
-            // Act
             Query positionOnly = scene.Query<With<Position>>();
             Query positionAndHealth = scene.Query<With<Position>, With<Health>>();
             Query positionHealthVelocity = scene.Query<With<Position>, With<Health>, With<Velocity>>();
@@ -104,7 +72,6 @@ namespace Alis.Core.Ecs.Test
                 posHealthVel++;
             }
 
-            // Assert
             Assert.Equal(3, pos);
             Assert.Equal(2, posHealth);
             Assert.Equal(1, posHealthVel);
@@ -116,14 +83,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_StateReflectsEntityModifications()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1});
             GameObject entity2 = scene.Create(new Position {X = 2});
 
             Query query = scene.Query<With<Position>, With<Health>>();
 
-            // Act - Initially no entities with both
             int count1 = 0;
             foreach (GameObjectRefTuple<Position, Health> _ in query.EnumerateWithEntities<Position, Health>())
             {
@@ -132,7 +97,6 @@ namespace Alis.Core.Ecs.Test
 
             entity1.Add(new Health {Value = 100});
 
-            // Assert - Now one entity has both
             int count2 = 0;
             foreach (GameObjectRefTuple<Position, Health> _ in query.EnumerateWithEntities<Position, Health>())
             {
@@ -149,11 +113,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanCreateAndDeleteManyEntitiesInSequence()
         {
-            // Arrange
             using Scene scene = new Scene();
             const int operationCount = 50;
 
-            // Act
             GameObject[] entities = new GameObject[operationCount];
             for (int i = 0; i < operationCount; i++)
             {
@@ -165,7 +127,6 @@ namespace Alis.Core.Ecs.Test
                 entities[i].Delete();
             }
 
-            // Assert
             Query query = scene.Query<With<Position>>();
             int count = 0;
             foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
@@ -182,12 +143,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_CanAccessComponentData()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(new Position {X = 10, Y = 20});
             scene.Create(new Position {X = 30, Y = 40});
 
-            // Act
             Query query = scene.Query<With<Position>>();
             int count = 0;
 
@@ -196,7 +155,6 @@ namespace Alis.Core.Ecs.Test
                 count++;
             }
 
-            // Assert
             Assert.Equal(2, count);
         }
 
@@ -206,7 +164,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_RepeatedFilteringIsConsistent()
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < 50; i++)
             {
@@ -220,7 +177,6 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Act
             Query query = scene.Query<With<Position>>();
             int[] counts = new int[5];
 
@@ -235,7 +191,6 @@ namespace Alis.Core.Ecs.Test
                 counts[iteration] = count;
             }
 
-            // Assert - All iterations should have same count
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(25, counts[i]);

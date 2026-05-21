@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ImageLoader.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -77,7 +50,6 @@ namespace Alis.App.Hub.Utils
                 }
             }
 
-            // Si no está en caché, cargar la imagen y crear la textura GPU
             Image image = Image.LoadImageFromResources(key);
             if (image == null)
             {
@@ -104,7 +76,6 @@ namespace Alis.App.Hub.Utils
             }
             catch
             {
-                // en caso de error, intentar liberar la textura si fue creada
                 if (texture != 0)
                 {
                     try
@@ -138,10 +109,8 @@ namespace Alis.App.Hub.Utils
 
             lock (s_lock)
             {
-                // doble comprobación por si otro hilo la cargó al mismo tiempo
                 if (s_cache.TryGetValue(key, out CachedTexture existing))
                 {
-                    // liberar la textura recién creada y usar la existente
                     try
                     {
                         Gl.DeleteTexture(texture);

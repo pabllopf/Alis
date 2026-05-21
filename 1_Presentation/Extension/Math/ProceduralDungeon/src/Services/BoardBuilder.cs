@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:BoardBuilder.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -140,13 +113,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
             {
                 for (int y = 1; y < height - 1; y++)
                 {
-                    // Generate walls
                     GenerateWalls(board, x, y);
 
-                    // Generate outer corners
                     GenerateOuterCorners(board, x, y);
 
-                    // Generate inner corners
                     GenerateInnerCorners(board, x, y);
                 }
             }
@@ -194,8 +164,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
                 return;
             }
 
-            // Check and set walls in all four directions
-            // Priority: Down -> Left -> Right -> Top (to ensure consistent results)
             if (board[x, y - 1].Type == BoardSquareType.Empty)
             {
                 board[x, y].Type = BoardSquareType.WallDown;
@@ -231,7 +199,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
                 return;
             }
 
-            // Check and set outer corners with priority order
             if ((board[x - 1, y].Type == BoardSquareType.Empty) && (board[x, y - 1].Type == BoardSquareType.Empty))
             {
                 board[x, y].Type = BoardSquareType.CornerLeftDown;
@@ -268,7 +235,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
                 return;
             }
 
-            // Check and set inner corners with priority order
             if (board[x - 1, y - 1].Type == BoardSquareType.Empty)
             {
                 board[x, y].Type = BoardSquareType.CornerInternalLeftDown;

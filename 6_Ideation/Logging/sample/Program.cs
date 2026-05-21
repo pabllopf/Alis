@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -54,103 +27,78 @@ namespace Alis.Core.Aspect.Logging.Sample
             Console.WriteLine("=== Alis Logging Framework - Complete Sample Suite ===\n");
             Console.WriteLine($"Quick start filter: {QuickStartScenario.CreateInfoFilter().Name}");
 
-            // Example 1: Basic logging with default factory
             BasicLoggingExample();
             Console.WriteLine("\n---\n");
 
-            // Example 2: Structured logging
             StructuredLoggingExample();
             Console.WriteLine("\n---\n");
 
-            // Example 3: Multiple output destinations
             MultipleOutputsExample();
             Console.WriteLine("\n---\n");
 
-            // Example 4: Filtering and log levels
             FilteringExample();
             Console.WriteLine("\n---\n");
 
-            // Example 5: Scoped contexts
             ScopedContextExample();
             Console.WriteLine("\n---\n");
 
-            // Example 6: Correlation IDs for tracing
             CorrelationIdExample();
             Console.WriteLine("\n---\n");
 
-            // Example 7: Exception logging
             ExceptionLoggingExample();
             Console.WriteLine("\n---\n");
 
-            // Example 8: Different formatters
             FormattersExample();
             Console.WriteLine("\n---\n");
 
-            // Example 9: Game engine-like scenario
             GameEngineScenarioExample();
             Console.WriteLine("\n---\n");
 
-            // Example 10: Backward compatibility with static Logger
             BackwardCompatibilityExample();
             Console.WriteLine("\n---\n");
 
-            // Example 11: File logging with rotation
             FileLoggingExample();
             Console.WriteLine("\n---\n");
 
-            // Example 12: Async logging for performance
             AsyncLoggingExample();
             Console.WriteLine("\n---\n");
 
-            // Example 13: Debug output for IDE integration
             DebugOutputExample();
             Console.WriteLine("\n---\n");
 
-            // Example 14: Advanced filtering - Sampling
             SamplingFilterExample();
             Console.WriteLine("\n---\n");
 
-            // Example 15: Advanced filtering - Conditional
             ConditionalFilterExample();
             Console.WriteLine("\n---\n");
 
-            // Example 16: Advanced filtering - Composite
             CompositeFilterExample();
             Console.WriteLine("\n---\n");
 
-            // Example 17: IsEnabled performance optimization
             IsEnabledExample();
             Console.WriteLine("\n---\n");
 
-            // Example 18: Complex structured logging
             ComplexStructuredLoggingExample();
             Console.WriteLine("\n---\n");
 
-            // Example 19: Multi-level scopes
             MultiLevelScopesExample();
             Console.WriteLine("\n---\n");
 
-            // Example 20: Mixed log levels and filtering
             MixedLevelsFilteringExample();
             Console.WriteLine("\n---\n");
 
-            // Example 21: Performance testing scenario
             PerformanceTestingExample();
             Console.WriteLine("\n---\n");
 
-            // Example 22: Custom properties in log entries
             CustomPropertiesExample();
             Console.WriteLine("\n---\n");
 
-            // Example 23: All formatters comparison
             AllFormattersComparisonExample();
             Console.WriteLine("\n---\n");
 
-            // Example 24: Real-world game scenario
             RealWorldGameScenarioExample();
             Console.WriteLine("\n---\n");
 
-            // Example 25: Error handling and resilience
             ErrorHandlingExample();
 
             Console.WriteLine("\n=== All 25 Examples Completed Successfully ===");
@@ -165,7 +113,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
             using (LoggerFactory factory = new LoggerFactory())
             {
-                // Add console output
                 factory.AddOutput(new ConsoleLogOutput(new SimpleLogFormatter()));
 
                 ILogger logger = factory.CreateLogger("MyGame.Engine");
@@ -192,7 +139,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 ILogger logger = factory.CreateLogger("MyGame.Player");
 
-                // Log with structured data
                 Dictionary<string, object> playerProperties = new Dictionary<string, object>
                 {
                     {"PlayerId", 12345},
@@ -204,7 +150,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 logger.LogStructured(LogLevel.Info, "Player logged in", playerProperties);
 
-                // Another structured log
                 Dictionary<string, object> attackProperties = new Dictionary<string, object>
                 {
                     {"Attacker", "Hero"},
@@ -226,10 +171,8 @@ namespace Alis.Core.Aspect.Logging.Sample
 
             using (LoggerFactory factory = new LoggerFactory())
             {
-                // Add console output with color
                 factory.AddOutput(new ConsoleLogOutput(new SimpleLogFormatter()));
 
-                // Add memory output for inspection
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
 
@@ -239,7 +182,6 @@ namespace Alis.Core.Aspect.Logging.Sample
                 logger.LogInfo("Gravity: 9.81 m/s²");
                 logger.LogWarning("High physics object count detected");
 
-                // Inspect memory output
                 IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Console.WriteLine($"[MemoryOutput] Captured {entries.Count} log entries");
                 foreach (ILogEntry entry in entries)
@@ -260,10 +202,8 @@ namespace Alis.Core.Aspect.Logging.Sample
             {
                 factory.AddOutput(new ConsoleLogOutput(new CompactLogFormatter()));
 
-                // Only accept Warning and above
                 factory.AddFilter(new LogLevelFilter(LogLevel.Warning));
 
-                // Only allow specific loggers
                 factory.AddFilter(new LoggerNameFilter(
                     new[] {"MyGame.Critical", "MyGame.Security"}
                 ));
@@ -326,7 +266,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 ILogger logger = factory.CreateLogger("MyGame.Network");
 
-                // Simulate a game session with a unique correlation ID
                 string sessionId = Guid.NewGuid().ToString("N").Substring(0, 8);
                 logger.SetCorrelationId(sessionId);
 
@@ -334,7 +273,6 @@ namespace Alis.Core.Aspect.Logging.Sample
                 logger.LogInfo("Loading player data");
                 logger.LogInfo("Synchronizing with server");
 
-                // All messages now carry the same correlation ID for tracing
                 Console.WriteLine($"[Session ID: {logger.GetCorrelationId()}]");
             }
         }
@@ -354,7 +292,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 try
                 {
-                    // Simulate an error
                     int result = 10 / int.Parse("0");
                 }
                 catch (DivideByZeroException ex)
@@ -408,7 +345,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 engineLogger.LogInfo("Engine initialized");
 
-                // Simulate a few frames of a game loop
                 for (int frame = 1; frame <= 3; frame++)
                 {
                     using (engineLogger.BeginScope($"Frame:{frame}"))
@@ -436,7 +372,6 @@ namespace Alis.Core.Aspect.Logging.Sample
             Console.WriteLine("Example 10: Backward Compatibility");
 
 #pragma warning disable CS0618
-            // Static Logger class still works for legacy code
             Logger.Info("Using legacy static Logger API");
             Logger.Warning("This uses the default logger instance");
             Logger.Log("All static methods still function");
@@ -454,19 +389,15 @@ namespace Alis.Core.Aspect.Logging.Sample
 
             using (LoggerFactory factory = new LoggerFactory())
             {
-                // Create logs directory
                 string logsDir = Path.Combine(Directory.GetCurrentDirectory(), "logs");
                 string appLogPath = Path.Combine(logsDir, "application.log");
                 string errorLogPath = Path.Combine(logsDir, "errors.log");
 
-                // General application log
                 factory.AddOutput(new FileLogOutput(appLogPath, new SimpleLogFormatter()));
 
-                // Error-only log with JSON format
                 factory.AddOutput(new FileLogOutput(errorLogPath, new JsonLogFormatter()));
                 factory.AddFilter(new LogLevelFilter(LogLevel.Error));
 
-                // Also output to console
                 factory.AddOutput(new ConsoleLogOutput(new CompactLogFormatter()));
 
                 ILogger logger = factory.CreateLogger("FileLogging.App");
@@ -492,7 +423,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
             using (LoggerFactory factory = new LoggerFactory())
             {
-                // Wrap file output in async wrapper for better performance
                 string logPath = Path.Combine(Directory.GetCurrentDirectory(), "logs", "async.log");
                 FileLogOutput fileOutput = new FileLogOutput(logPath, new SimpleLogFormatter());
                 AsyncLogOutput asyncOutput = new AsyncLogOutput(fileOutput, 1000);
@@ -504,7 +434,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 logger.LogInfo("Starting high-frequency logging simulation");
 
-                // Simulate high-frequency logging (e.g., from game loop)
                 for (int i = 0; i < 50; i++)
                 {
                     logger.LogTrace($"Frame {i}: Update started");
@@ -518,7 +447,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 logger.LogInfo("High-frequency logging completed");
 
-                // Flush ensures all queued entries are written
                 asyncOutput.Flush();
                 Console.WriteLine("All async logs flushed to disk");
             }
@@ -533,7 +461,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
             using (LoggerFactory factory = new LoggerFactory())
             {
-                // Add debug output - only writes when debugger attached
                 factory.AddOutput(new DebugLogOutput(new SimpleLogFormatter()));
                 factory.AddOutput(new ConsoleLogOutput(new SimpleLogFormatter()));
 
@@ -565,14 +492,12 @@ namespace Alis.Core.Aspect.Logging.Sample
             {
                 factory.AddOutput(new ConsoleLogOutput(new CompactLogFormatter()));
 
-                // Only log 1 out of every 5 entries
                 factory.AddFilter(new SamplingLogFilter(5));
 
                 ILogger logger = factory.CreateLogger("Sampling.HighFrequency");
 
                 logger.LogInfo("Simulating high-frequency logging...");
 
-                // Log 25 messages, but only ~5 should appear
                 for (int i = 1; i <= 25; i++)
                 {
                     logger.LogDebug($"High-frequency event #{i}");
@@ -593,7 +518,6 @@ namespace Alis.Core.Aspect.Logging.Sample
             {
                 factory.AddOutput(new ConsoleLogOutput(new SimpleLogFormatter()));
 
-                // Only log messages containing "important" or "critical"
                 factory.AddFilter(new ConditionalLogFilter(
                     entry => entry.Message.Contains("important", StringComparison.OrdinalIgnoreCase) ||
                              entry.Message.Contains("critical", StringComparison.OrdinalIgnoreCase),
@@ -623,7 +547,6 @@ namespace Alis.Core.Aspect.Logging.Sample
             {
                 factory.AddOutput(new ConsoleLogOutput(new SimpleLogFormatter()));
 
-                // Combine multiple filters with AND logic
                 List<ILogFilter> filters = new List<ILogFilter>
                 {
                     new LogLevelFilter(LogLevel.Warning), // Must be Warning or above
@@ -649,7 +572,6 @@ namespace Alis.Core.Aspect.Logging.Sample
             {
                 factory.AddOutput(new ConsoleLogOutput(new SimpleLogFormatter()));
 
-                // Combine filters with OR logic
                 List<ILogFilter> filters = new List<ILogFilter>
                 {
                     new LogLevelFilter(LogLevel.Error), // Errors from anyone
@@ -683,10 +605,8 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 ILogger logger = factory.CreateLogger("Performance.Optimized");
 
-                // Check before doing expensive operations
                 if (logger.IsEnabled(LogLevel.Debug))
                 {
-                    // This expensive operation won't run
                     string expensiveDebugInfo = ComputeExpensiveDebugInfo();
                     logger.LogDebug(expensiveDebugInfo);
                 }
@@ -697,11 +617,9 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 if (logger.IsEnabled(LogLevel.Warning))
                 {
-                    // This will run
                     logger.LogWarning("Warning logging is enabled");
                 }
 
-                // Without IsEnabled check - string formatting happens regardless
                 logger.LogDebug($"Expensive: {ComputeExpensiveDebugInfo()}"); // String still formatted!
 
                 Console.WriteLine("IsEnabled helps avoid unnecessary work");
@@ -722,7 +640,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 ILogger logger = factory.CreateLogger("Game.Analytics");
 
-                // Complex game event with many properties
                 Dictionary<string, object> gameSessionData = new Dictionary<string, object>
                 {
                     {"SessionId", Guid.NewGuid()},
@@ -745,7 +662,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 logger.LogStructured(LogLevel.Info, "Game session snapshot", gameSessionData);
 
-                // Combat event
                 Dictionary<string, object> combatData = new Dictionary<string, object>
                 {
                     {"EventType", "Combat"},
@@ -839,12 +755,10 @@ namespace Alis.Core.Aspect.Logging.Sample
 
             using (LoggerFactory factory = new LoggerFactory())
             {
-                // Console gets everything at Info or above
                 ConsoleLogOutput consoleOutput = new ConsoleLogOutput(new CompactLogFormatter());
                 factory.AddOutput(consoleOutput);
                 factory.AddFilter(new LogLevelFilter(LogLevel.Info));
 
-                // Memory captures everything for debugging
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(100);
 
                 ILogger logger = factory.CreateLogger("Mixed.Levels");
@@ -856,7 +770,6 @@ namespace Alis.Core.Aspect.Logging.Sample
                 logger.LogError("Error - console and memory");
                 logger.LogCritical("Critical - console and memory");
 
-                // Now add memory output and re-test
                 factory.AddOutput(memoryOutput);
 
                 ILogger logger2 = factory.CreateLogger("Mixed.Levels2");
@@ -877,7 +790,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
             using (LoggerFactory factory = new LoggerFactory())
             {
-                // Use memory output to avoid I/O overhead
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(10000);
                 factory.AddOutput(memoryOutput);
 
@@ -887,7 +799,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
-                // Log 1000 messages
                 for (int i = 0; i < 1000; i++)
                 {
                     logger.LogInfo($"Performance test message #{i}");
@@ -903,7 +814,6 @@ namespace Alis.Core.Aspect.Logging.Sample
                 Console.WriteLine($"Memory contains {memoryOutput.GetEntries().Count} entries");
             }
 
-            // Test with sampling
             Console.WriteLine("\nWith sampling (1:10):");
 
             using (LoggerFactory factory = new LoggerFactory())
@@ -943,7 +853,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 ILogger logger = factory.CreateLogger("CustomProps.Demo");
 
-                // Log with custom properties for business logic
                 Dictionary<string, object> userActionProps = new Dictionary<string, object>
                 {
                     {"ActionType", "Login"},
@@ -960,7 +869,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 logger.LogStructured(LogLevel.Info, "User login event", userActionProps);
 
-                // E-commerce transaction
                 Dictionary<string, object> transactionProps = new Dictionary<string, object>
                 {
                     {"TransactionId", "TXN_67890"},
@@ -1032,38 +940,31 @@ namespace Alis.Core.Aspect.Logging.Sample
 
             using (LoggerFactory factory = new LoggerFactory())
             {
-                // Setup comprehensive logging for a game
                 string logsDir = Path.Combine(Directory.GetCurrentDirectory(), "logs");
 
-                // Console for development
                 factory.AddOutput(new ConsoleLogOutput(new CompactLogFormatter()));
 
-                // General game log
                 factory.AddOutput(new FileLogOutput(
                     Path.Combine(logsDir, "game.log"),
                     new SimpleLogFormatter()
                 ));
 
-                // Analytics in JSON
                 factory.AddOutput(new FileLogOutput(
                     Path.Combine(logsDir, "analytics.json"),
                     new JsonLogFormatter()
                 ));
 
-                // Memory for in-game debugging
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(500);
                 factory.AddOutput(memoryOutput);
 
                 factory.SetMinimumLevel(LogLevel.Debug);
 
-                // Create specialized loggers for different systems
                 ILogger engineLogger = factory.CreateLogger("Engine.Core");
                 ILogger renderLogger = factory.CreateLogger("Engine.Renderer");
                 ILogger physicsLogger = factory.CreateLogger("Engine.Physics");
                 ILogger gameplayLogger = factory.CreateLogger("Game.Gameplay");
                 ILogger networkLogger = factory.CreateLogger("Network.Multiplayer");
 
-                // Simulate game startup
                 string sessionId = Guid.NewGuid().ToString("N").Substring(0, 8);
                 engineLogger.SetCorrelationId(sessionId);
                 renderLogger.SetCorrelationId(sessionId);
@@ -1089,7 +990,6 @@ namespace Alis.Core.Aspect.Logging.Sample
                 {
                     gameplayLogger.LogInfo("Level loaded: Boss Arena");
 
-                    // Simulate combat
                     for (int turn = 1; turn <= 3; turn++)
                     {
                         Dictionary<string, object> combatData = new Dictionary<string, object>
@@ -1130,7 +1030,6 @@ namespace Alis.Core.Aspect.Logging.Sample
 
                 ILogger logger = factory.CreateLogger("ErrorHandling.Test");
 
-                // Test 1: Exception with context
                 try
                 {
                     ThrowExampleException();
@@ -1141,7 +1040,6 @@ namespace Alis.Core.Aspect.Logging.Sample
                     logger.LogInfo("Application continues after error");
                 }
 
-                // Test 2: Critical exception
                 try
                 {
                     ThrowCriticalException();
@@ -1150,7 +1048,6 @@ namespace Alis.Core.Aspect.Logging.Sample
                 {
                     logger.LogCritical("Critical system failure", ex);
 
-                    // Log recovery attempt
                     Dictionary<string, object> recoveryInfo = new Dictionary<string, object>
                     {
                         {"ErrorType", ex.GetType().Name},
@@ -1162,7 +1059,6 @@ namespace Alis.Core.Aspect.Logging.Sample
                     logger.LogStructured(LogLevel.Warning, "Attempting recovery", recoveryInfo);
                 }
 
-                // Test 3: Nested exceptions
                 try
                 {
                     ThrowNestedExceptions();
@@ -1192,7 +1088,6 @@ namespace Alis.Core.Aspect.Logging.Sample
         /// </summary>
         private static string ComputeExpensiveDebugInfo()
         {
-            // Simulate expensive operation
             Thread.Sleep(10);
             return $"Expensive debug data: {Guid.NewGuid()}";
         }

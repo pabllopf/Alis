@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:TrapezoidalMap.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -77,7 +50,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             _cross = null;
         }
 
-        // Case 1: segment completely enclosed by trapezoid
         /// <summary>
         ///     Cases the 1 using the specified t
         /// </summary>
@@ -100,7 +72,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             return trapezoids;
         }
 
-        // Case 2: Trapezoid contains point p, q lies outside
         /// <summary>
         ///     Cases the 2 using the specified t
         /// </summary>
@@ -200,7 +171,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             return trapezoids;
         }
 
-        // Case 4: Trapezoid contains point q, p lies outside
         /// <summary>
         ///     Cases the 4 using the specified t
         /// </summary>

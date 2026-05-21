@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:RevoluteJoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -425,13 +398,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             _rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
 
-            // J = [-I -r1_skew I r2_skew]
-            //     [ 0       -1 0       1]
             // r_skew = [-ry; rx]
 
-            // Matlab
-            // K = [ mA+r1y^2*iA+mB+r2y^2*iB,  -r1y*iA*r1x-r2y*iB*r2x,          -r1y*iA-r2y*iB]
-            //     [  -r1y*iA*r1x-r2y*iB*r2x, mA+r1x^2*iA+mB+r2x^2*iB,           r1x*iA+r2x*iB]
             //     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
 
             float mA = _invMassA, mB = _invMassB;
@@ -498,7 +466,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.Step.WarmStarting)
             {
-                // Scale impulses to support a variable time step.
                 _impulse *= data.Step.DtRatio;
                 _motorImpulse *= data.Step.DtRatio;
 
@@ -538,7 +505,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             bool fixedRotation = iA + Math.Abs(iB) < float.Epsilon;
 
-            // Solve motor constraint.
             if (_enableMotor && (_limitState != LimitState.Equal) && !fixedRotation)
             {
                 float cdot = wB - wA - _motorSpeed;
@@ -552,7 +518,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 wB += iB * impulse;
             }
 
-            // Solve limit constraint.
             if (_enableLimit && (_limitState != LimitState.Inactive) && !fixedRotation)
             {
                 SolveLimitConstraint(ref vA, ref wA, ref vB, ref wB, mA, mB, iA, iB);
@@ -660,7 +625,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             bool fixedRotation = invIa + Math.Abs(invIb) < float.Epsilon;
 
-            // Solve angular limit constraint.
             if (_enableLimit && (_limitState != LimitState.Inactive) && !fixedRotation)
             {
                 float angle = aB - aA - ReferenceAngle;
@@ -668,7 +632,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
                 if (_limitState == LimitState.Equal)
                 {
-                    // Prevent large angular corrections
                     float c = MathUtils.Clamp(angle - _lowerAngle, -SettingEnv.MaxAngularCorrection, SettingEnv.MaxAngularCorrection);
                     limitImpulse = -_motorMass * c;
                     angularError = Math.Abs(c);
@@ -678,7 +641,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     float c = angle - _lowerAngle;
                     angularError = -c;
 
-                    // Prevent large angular corrections and allow some slop.
                     c = MathUtils.Clamp(c + SettingEnv.AngularSlop, -SettingEnv.MaxAngularCorrection, 0.0f);
                     limitImpulse = -_motorMass * c;
                 }
@@ -687,7 +649,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     float c = angle - _upperAngle;
                     angularError = c;
 
-                    // Prevent large angular corrections and allow some slop.
                     c = MathUtils.Clamp(c - SettingEnv.AngularSlop, 0.0f, SettingEnv.MaxAngularCorrection);
                     limitImpulse = -_motorMass * c;
                 }
@@ -696,7 +657,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 aB += invIb * limitImpulse;
             }
 
-            // Solve point-to-point constraint.
             {
                 Complex qA = Complex.FromAngle(aA);
                 Complex qB = Complex.FromAngle(aB);

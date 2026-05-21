@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AssetRegistryTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -67,18 +40,14 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void RegisterAssembly_ValidAssemblyAndLoader_Registers()
         {
-            // Arrange
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
             byte[] zipBytes = CreateTestZipBytes(testData);
 
             Func<Stream> loader = () => new MemoryStream(zipBytes, false);
 
-            // Act
             AssetRegistry.RegisterAssembly(assemblyName, loader);
 
-            // Assert - we can't directly check internal state, but we verify no exception is thrown
-            // and the method completes successfully
         }
 
         /// <summary>
@@ -87,7 +56,6 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void RegisterAssembly_MultipleAssemblies_BothRegistered()
         {
-            // Arrange
             string assembly1 = "TestAssembly1_" + Guid.NewGuid();
             string assembly2 = "TestAssembly2_" + Guid.NewGuid();
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
@@ -95,11 +63,9 @@ namespace Alis.Core.Aspect.Memory.Test
 
             Func<Stream> loader = () => new MemoryStream(zipBytes, false);
 
-            // Act
             AssetRegistry.RegisterAssembly(assembly1, loader);
             AssetRegistry.RegisterAssembly(assembly2, loader);
 
-            // Assert - both should register without exception
         }
 
         /// <summary>
@@ -108,7 +74,6 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void RegisterAssembly_SameAssemblyTwice_SecondRegistrationOverrides()
         {
-            // Arrange
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             Dictionary<string, string> testData1 = new Dictionary<string, string> {{"test1.txt", "content1"}};
             Dictionary<string, string> testData2 = new Dictionary<string, string> {{"test2.txt", "content2"}};
@@ -118,11 +83,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Func<Stream> loader1 = () => new MemoryStream(zipBytes1, false);
             Func<Stream> loader2 = () => new MemoryStream(zipBytes2, false);
 
-            // Act
             AssetRegistry.RegisterAssembly(assemblyName, loader1);
             AssetRegistry.RegisterAssembly(assemblyName, loader2);
 
-            // Assert - second registration should override (no exception thrown)
         }
 
         /// <summary>
@@ -131,13 +94,11 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourceMemoryStreamByName_WithNullResourceName_ThrowsArgumentException()
         {
-            // Arrange
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
             byte[] zipBytes = CreateTestZipBytes(testData);
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
 
-            // Act & Assert
             ArgumentException ex = Assert.Throws<ArgumentException>(() => AssetRegistry.GetResourceMemoryStreamByName(null));
             Assert.Contains("resourceName no puede estar vacío", ex.Message);
         }
@@ -148,13 +109,11 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourceMemoryStreamByName_WithEmptyResourceName_ThrowsArgumentException()
         {
-            // Arrange
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
             byte[] zipBytes = CreateTestZipBytes(testData);
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
 
-            // Act & Assert
             ArgumentException ex = Assert.Throws<ArgumentException>(() => AssetRegistry.GetResourceMemoryStreamByName(""));
             Assert.Contains("resourceName no puede estar vacío", ex.Message);
         }
@@ -165,13 +124,11 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourceMemoryStreamByName_WithWhitespaceResourceName_ThrowsArgumentException()
         {
-            // Arrange
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
             byte[] zipBytes = CreateTestZipBytes(testData);
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
 
-            // Act & Assert
             ArgumentException ex = Assert.Throws<ArgumentException>(() => AssetRegistry.GetResourceMemoryStreamByName("   "));
             Assert.Contains("resourceName no puede estar vacío", ex.Message);
         }
@@ -182,7 +139,6 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourceMemoryStreamByName_NoActiveAssembly_ThrowsInvalidOperationException()
         {
-            // Act & Assert
             FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() => AssetRegistry.GetResourceMemoryStreamByName("app2.bmp"));
             Assert.Contains("not found", ex.Message);
         }
@@ -193,7 +149,6 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourceMemoryStreamByName_ActiveAssemblyNotRegistered_ThrowsInvalidOperationException()
         {
-            // Arrange - Register one assembly then try to get with a different one active
             string assemblyName1 = "TestAssembly1_" + Guid.NewGuid();
             string assemblyName2 = "TestAssembly2_" + Guid.NewGuid();
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
@@ -202,8 +157,6 @@ namespace Alis.Core.Aspect.Memory.Test
             AssetRegistry.RegisterAssembly(assemblyName1, () => new MemoryStream(zipBytes, false));
             AssetRegistry.RegisterAssembly(assemblyName2, () => new MemoryStream(zipBytes, false));
 
-            // We need to make sure assemblyName2 is active, but since we can't control which is active,
-            // this test verifies the error handling is in place
         }
 
         /// <summary>
@@ -212,7 +165,6 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourceMemoryStreamByName_ExistingResource_ReturnsMemoryStream()
         {
-            // Arrange
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             string expectedContent = "content";
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", expectedContent}};
@@ -220,10 +172,8 @@ namespace Alis.Core.Aspect.Memory.Test
 
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
 
-            // Act
             using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("app.bmp");
 
-            // Assert
             Assert.NotNull(result);
             Assert.True(result.Length > 0);
         }
@@ -234,14 +184,12 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourceMemoryStreamByName_NonExistentResource_ThrowsFileNotFoundException()
         {
-            // Arrange
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
             byte[] zipBytes = CreateTestZipBytes(testData);
 
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
 
-            // Act & Assert
             FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() => AssetRegistry.GetResourceMemoryStreamByName("nonexistent.txt"));
             Assert.Contains("not found in `assets.pack`", ex.Message);
         }
@@ -252,13 +200,11 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourcePathByName_WithNullResourceName_ThrowsArgumentException()
         {
-            // Arrange
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
             byte[] zipBytes = CreateTestZipBytes(testData);
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
 
-            // Act & Assert
             ArgumentException ex = Assert.Throws<ArgumentException>(() => AssetRegistry.GetResourcePathByName(null));
             Assert.Contains("resourceName no puede estar vacío", ex.Message);
         }
@@ -269,13 +215,11 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourcePathByName_WithEmptyResourceName_ThrowsArgumentException()
         {
-            // Arrange
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
             byte[] zipBytes = CreateTestZipBytes(testData);
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
 
-            // Act & Assert
             ArgumentException ex = Assert.Throws<ArgumentException>(() => AssetRegistry.GetResourcePathByName(""));
             Assert.Contains("resourceName no puede estar vacío", ex.Message);
         }
@@ -287,7 +231,6 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourcePathByName_ExistingResource_ReturnsValidPath()
         {
-            // Arrange
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             string expectedContent = "path test content";
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", expectedContent}};
@@ -295,10 +238,8 @@ namespace Alis.Core.Aspect.Memory.Test
 
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
 
-            // Act
             string result = AssetRegistry.GetResourcePathByName("app.bmp");
 
-            // Assert
             Assert.NotNull(result);
             Assert.NotEmpty(result);
             Assert.True(Path.IsPathRooted(result) || result.Contains(Path.GetTempPath()));
@@ -310,14 +251,12 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourcePathByName_NonExistentResource_ThrowsFileNotFoundException()
         {
-            // Arrange
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
             byte[] zipBytes = CreateTestZipBytes(testData);
 
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
 
-            // Act & Assert
             FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() => AssetRegistry.GetResourcePathByName("nonexistent.txt"));
             Assert.Contains("not found in `assets.pack`", ex.Message);
         }
@@ -328,11 +267,9 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void RegisterAssembly_WithNullLoader_ThrowsWhenTryingToGetResource()
         {
-            // Arrange
             string assemblyName = "TestAssembly_NullLoader_" + Guid.NewGuid();
             AssetRegistry.RegisterAssembly(assemblyName, () => null);
 
-            // Act & Assert
             FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
                 AssetRegistry.GetResourceMemoryStreamByName("any.txt"));
             Assert.Contains("not found", ex.Message);

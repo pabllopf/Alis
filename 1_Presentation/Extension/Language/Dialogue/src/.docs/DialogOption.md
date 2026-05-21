@@ -46,15 +46,12 @@ var option = new DialogOption(
     () => Console.WriteLine("¡Salud recuperada!")
 );
 
-// Añadir condición: solo disponible si tiene pociones
 option.AddCondition(new LambdaDialogCondition(ctx => 
     (ctx.GetVariable("potions") as int? ?? 0) > 0
 ));
 
-// Añadir acción: reducir cantidad de pociones
 option.AddDialogAction(new CallbackDialogAction("reducePotions", () => 
 {
-    // Lógica para reducir pociones
 }));
 ```
 

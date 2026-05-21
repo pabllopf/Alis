@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ArchetypeNeighborCacheExtendedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Collections;
 using Xunit;
@@ -44,10 +17,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Constructor_DefaultCreation_SuccessfulInitialization()
         {
-            // Arrange & Act
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
-            // Assert
             Assert.NotNull(cache);
         }
 
@@ -57,13 +28,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Traverse_NonExistentKey_ReturnsMaxIndex()
         {
-            // Arrange
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
-            // Act
             int result = cache.Traverse(42);
 
-            // Assert
             Assert.Equal(32, result);
         }
 
@@ -73,16 +41,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void SetAndLookup_StoreAndRetrieveValue()
         {
-            // Arrange
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             ushort key = 10;
             ushort value = 42;
 
-            // Act
             cache.Set(key, value);
             ushort storedValue = cache.Lookup(cache.Traverse(key));
 
-            // Assert
             Assert.Equal(value, storedValue);
         }
 
@@ -92,15 +57,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void SetAndLookup_MultipleKeys_Independent()
         {
-            // Arrange
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
-            // Act
             cache.Set(1, 100);
             cache.Set(2, 200);
             cache.Set(3, 300);
 
-            // Assert
             int index1 = cache.Traverse(1);
             int index2 = cache.Traverse(2);
             int index3 = cache.Traverse(3);
@@ -127,16 +89,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void SetAndLookup_MaxCapacity_WorksCorrectly()
         {
-            // Arrange
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
-            // Act - The cache has limited capacity (4 entries based on InlineArray8 size)
             cache.Set(1, 10);
             cache.Set(2, 20);
             cache.Set(3, 30);
             cache.Set(4, 40);
 
-            // Assert - Verify stored values
             int idx1 = cache.Traverse(1);
             if (idx1 != 32)
             {
@@ -150,16 +109,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Traverse_CacheHitRatio_IsReasonable()
         {
-            // Arrange
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             ushort testKey = 5;
             ushort testValue = 123;
             cache.Set(testKey, testValue);
 
-            // Act
             int result = cache.Traverse(testKey);
 
-            // Assert
             Assert.NotEqual(32, result);
         }
 
@@ -169,14 +125,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void SetAndLookup_BoundaryValues_WorksCorrectly()
         {
-            // Arrange
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
-            // Act
             cache.Set(ushort.MinValue, 1);
             cache.Set(ushort.MaxValue, 2);
 
-            // Assert
             int idx1 = cache.Traverse(ushort.MinValue);
             int idx2 = cache.Traverse(ushort.MaxValue);
 
@@ -192,16 +145,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void SetAndLookup_CircularOverwrite_UpdatesCorrectly()
         {
-            // Arrange
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
-            // Act - Fill capacity and overwrite
             for (int i = 0; i < 8; i++)
             {
                 cache.Set((ushort) i, (ushort) (i * 10));
             }
 
-            // Assert - Verify structure doesn't crash
             int result = cache.Traverse(0);
             Assert.True(result >= 0 || result == 32);
         }

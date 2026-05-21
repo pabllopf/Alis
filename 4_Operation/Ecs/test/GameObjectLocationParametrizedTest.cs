@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameObjectLocationParametrizedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using Alis.Core.Ecs.Systems;
@@ -46,19 +19,15 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(1), InlineData(5), InlineData(10), InlineData(50)]
         public void GameObjectLocation_CreatedEntities_HaveUniqueIds(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[entityCount];
             HashSet<int> ids = new HashSet<int>();
 
-            // Act
             for (int i = 0; i < entityCount; i++)
             {
                 entities[i] = scene.Create();
-                // Entity IDs should be unique (we can't directly access, but we can verify uniqueness by behavior)
             }
 
-            // Assert
             for (int i = 0; i < entityCount; i++)
             {
                 for (int j = i + 1; j < entityCount; j++)
@@ -75,23 +44,19 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void GameObjectLocation_DifferentScenes_CreateDifferentEntities(int entityCountPerScene)
         {
-            // Arrange
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
             GameObject[] entities1 = new GameObject[entityCountPerScene];
             GameObject[] entities2 = new GameObject[entityCountPerScene];
 
-            // Act
             for (int i = 0; i < entityCountPerScene; i++)
             {
                 entities1[i] = scene1.Create();
                 entities2[i] = scene2.Create();
             }
 
-            // Assert
             for (int i = 0; i < entityCountPerScene; i++)
             {
-                // Entities from different scenes should be different
                 Assert.NotEqual(entities1[i], entities2[i]);
             }
         }
@@ -103,7 +68,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(10), InlineData(50)]
         public void GameObjectLocation_QueryReturnsLocalEntities_OnlyFromScene(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < entityCount; i++)
             {
@@ -117,14 +81,12 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Act
             int queryCount = 0;
             foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
                 queryCount++;
             }
 
-            // Assert
             Assert.Equal((entityCount + 1) / 2, queryCount);
         }
 
@@ -134,11 +96,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObjectLocation_EntityIdentity_PersistsAcrossOperations()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            // Act
             GameObject id1 = entity;
             entity.Add(new Health {Value = 100});
             GameObject id2 = entity;
@@ -146,7 +106,6 @@ namespace Alis.Core.Ecs.Test
             pos.X = 50;
             GameObject id3 = entity;
 
-            // Assert
             Assert.Equal(id1, id2);
             Assert.Equal(id2, id3);
         }
@@ -158,24 +117,20 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(10), InlineData(50)]
         public void GameObjectLocation_EntityCanBeStoredAndRetrieved_Works(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject[] stored = new GameObject[entityCount];
 
-            // Act
             for (int i = 0; i < entityCount; i++)
             {
                 stored[i] = scene.Create(new Position {X = i, Y = i});
             }
 
-            // Retrieve and verify
             for (int i = 0; i < entityCount; i++)
             {
                 Assert.True(stored[i].IsAlive);
                 Assert.Equal(i, stored[i].Get<Position>().X);
             }
 
-            // Assert
             Assert.True(true);
         }
 
@@ -186,22 +141,18 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(10), InlineData(50)]
         public void GameObjectLocation_MultipleReferencesToSameEntity_AllValid(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject[] stored = new GameObject[entityCount];
 
-            // Act
             for (int i = 0; i < entityCount; i++)
             {
                 GameObject created = scene.Create(new Position {X = i, Y = i});
                 stored[i] = created;
                 GameObject sameRef = created;
 
-                // Verify they're the same
                 Assert.Equal(created, sameRef);
             }
 
-            // Assert
             Assert.True(true);
         }
 
@@ -211,13 +162,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObjectLocation_EntityLocationWithinScene_Accessible()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             GameObject entity = scene.Create(new Position {X = 100, Y = 200});
 
-            // Assert
             Assert.True(entity.IsAlive);
             Assert.True(entity.Has<Position>());
             Assert.Equal(100, entity.Get<Position>().X);
@@ -230,7 +178,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void GameObjectLocation_DeletedEntityLocationBecomesInvalid(int count)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[count];
             for (int i = 0; i < count; i++)
@@ -238,13 +185,11 @@ namespace Alis.Core.Ecs.Test
                 entities[i] = scene.Create();
             }
 
-            // Act
             for (int i = 0; i < count; i++)
             {
                 entities[i].Delete();
             }
 
-            // Assert
             for (int i = 0; i < count; i++)
             {
                 Assert.False(entities[i].IsAlive);

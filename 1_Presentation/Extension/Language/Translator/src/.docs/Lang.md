@@ -44,13 +44,10 @@ Returns a string representation in the format "{Code} - {Name}".
 ### Creating Languages
 
 ```csharp
-// Simple language with code and name
 var english = new Lang("en", "English");
 
-// Full language with culture code
 var english = new Lang("en", "English", "English", "en-US");
 
-// With default flag
 var defaultLanguage = new Lang("en", "English", "English", "en-US", true);
 ```
 
@@ -76,7 +73,6 @@ var spanish = new Lang("es", "Spanish", "Español", "es-ES");
 manager.AddLanguage(english);
 manager.AddLanguage(spanish);
 
-// Set and use the language
 manager.SetLanguage(english);
 string translation = manager.Translate("greeting");
 ```

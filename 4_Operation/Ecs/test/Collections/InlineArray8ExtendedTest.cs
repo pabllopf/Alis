@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:InlineArray8ExtendedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Collections;
@@ -45,14 +18,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Get_SetAndGet_StoresAndRetrievesCorrectly()
         {
-            // Arrange
             InlineArray8<int> array = new InlineArray8<int>();
 
-            // Act
             InlineArray8<int>.Get(ref array, 0) = 10;
             InlineArray8<int>.Get(ref array, 7) = 70;
 
-            // Assert
             Assert.Equal(10, InlineArray8<int>.Get(ref array, 0));
             Assert.Equal(70, InlineArray8<int>.Get(ref array, 7));
         }
@@ -63,16 +33,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Get_AllElements_CanBeAccessed()
         {
-            // Arrange
             InlineArray8<int> array = new InlineArray8<int>();
 
-            // Act
             for (int i = 0; i < 8; i++)
             {
                 InlineArray8<int>.Get(ref array, i) = i * 10;
             }
 
-            // Assert
             for (int i = 0; i < 8; i++)
             {
                 Assert.Equal(i * 10, InlineArray8<int>.Get(ref array, i));
@@ -85,16 +52,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Get_ReferenceType_StoresReferences()
         {
-            // Arrange
             InlineArray8<string> array = new InlineArray8<string>();
             string str1 = "Hello";
             string str2 = "World";
 
-            // Act
             InlineArray8<string>.Get(ref array, 0) = str1;
             InlineArray8<string>.Get(ref array, 1) = str2;
 
-            // Assert
             Assert.Equal("Hello", InlineArray8<string>.Get(ref array, 0));
             Assert.Equal("World", InlineArray8<string>.Get(ref array, 1));
         }
@@ -105,14 +69,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Get_Overwrite_NewValueReplacesPrevious()
         {
-            // Arrange
             InlineArray8<int> array = new InlineArray8<int>();
             InlineArray8<int>.Get(ref array, 3) = 30;
 
-            // Act
             InlineArray8<int>.Get(ref array, 3) = 300;
 
-            // Assert
             Assert.Equal(300, InlineArray8<int>.Get(ref array, 3));
         }
 
@@ -122,10 +83,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FixedSize_AlwaysEightElements_EnforcedByType()
         {
-            // This is a compile-time constraint, but we can verify the usage pattern
             InlineArray8<int> array = new InlineArray8<int>();
 
-            // All 8 indices should be accessible
             for (int i = 0; i < 8; i++)
             {
                 InlineArray8<int>.Get(ref array, i) = i;
@@ -140,13 +99,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Get_UninitializedAccess_HasDefaultValue()
         {
-            // Arrange
             InlineArray8<int> array = new InlineArray8<int>();
 
-            // Act - Don't initialize
             int value = InlineArray8<int>.Get(ref array, 5);
 
-            // Assert
             Assert.Equal(0, value);
         }
 
@@ -156,7 +112,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Get_InlineArrayField_Works()
         {
-            // This tests that InlineArray8 is compatible with struct layouts
             InlineArray8<byte> array = new InlineArray8<byte>();
             InlineArray8<byte>.Get(ref array, 0) = 255;
             InlineArray8<byte>.Get(ref array, 1) = 128;
@@ -171,14 +126,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Get_ValueTypeGuid_StoresAndRetrieves()
         {
-            // Arrange
             InlineArray8<Guid> array = new InlineArray8<Guid>();
             Guid guid = Guid.NewGuid();
 
-            // Act
             InlineArray8<Guid>.Get(ref array, 0) = guid;
 
-            // Assert
             Assert.Equal(guid, InlineArray8<Guid>.Get(ref array, 0));
         }
     }

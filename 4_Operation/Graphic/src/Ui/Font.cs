@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Font.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -212,7 +185,6 @@ namespace Alis.Core.Graphic.Ui
             }
             else
             {
-                // get name of resources from imagepath:
                 image = Image.LoadImageFromResources(NameFile);
             }
 
@@ -313,7 +285,6 @@ namespace Alis.Core.Graphic.Ui
             string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string special = "0123456789";
 
-            // Minúsculas
             for (int i = 0; i < lowercase.Length; i++)
             {
                 char c = lowercase[i];
@@ -322,7 +293,6 @@ namespace Alis.Core.Graphic.Ui
                 CharacterRects[c] = new RectangleI {X = x, Y = y, W = charWidth, H = charHeight};
             }
 
-            // Mayúsculas
             for (int i = 0; i < uppercase.Length; i++)
             {
                 char c = uppercase[i];
@@ -331,7 +301,6 @@ namespace Alis.Core.Graphic.Ui
                 CharacterRects[c] = new RectangleI {X = x, Y = y, W = charWidth, H = charHeight};
             }
 
-            // Números
             for (int i = 0; i < special.Length; i++)
             {
                 char c = special[i];
@@ -358,7 +327,6 @@ namespace Alis.Core.Graphic.Ui
             string special = "0123456789.:;,(*!?)^#$%{&-+@";
 
 
-            // Iterate over special characters
             for (int i = 0; i < special.Length; i++)
             {
                 char c = special[i];
@@ -368,7 +336,6 @@ namespace Alis.Core.Graphic.Ui
                     {X = x, Y = y, W = charWidth, H = charHeight};
             }
 
-            // Iterate over uppercase characters
             for (int i = 0; i < uppercase.Length; i++)
             {
                 char c = uppercase[i];
@@ -379,7 +346,6 @@ namespace Alis.Core.Graphic.Ui
             }
 
 
-            // Iterate over lowercase characters
             for (int i = 0; i < lowercase.Length; i++)
             {
                 char c = lowercase[i];
@@ -411,7 +377,6 @@ namespace Alis.Core.Graphic.Ui
                 SetupBuffers();
             }
 
-            // Parámetros personalizados del atlas
             int charWidth = 10; // ancho de cada carácter en la textura BMP
             int charHeight = 16; // alto de cada carácter en la textura BMP
             int charsPerRow = 28; // caracteres por fila
@@ -422,7 +387,6 @@ namespace Alis.Core.Graphic.Ui
                 InitializeCharacterRectsFromAtlas(charWidth, charHeight, charsPerRow, xSpacing, ySpacing);
             }
 
-            // Tamaño lógico de la fuente en pantalla
             float fontSize = sizeFont; // valor lógico de la fuente (por ejemplo, 1)
             float pixelsPerUnit = 32.0f; // 1 unidad lógica equivale a 32 píxeles en pantalla
             float screenCharWidth = fontSize * pixelsPerUnit;
@@ -463,18 +427,14 @@ namespace Alis.Core.Graphic.Ui
                 float u1 = (posXx + srcRect.W) / Size.X;
                 float v1 = (posYy + srcRect.H) / Size.Y;
 
-                // Posición en pantalla (en píxeles)
                 float positionXPixels = posX;
                 float positionYPixels = yPos;
 
-                // Normalizar a coordenadas OpenGL (-1 a 1)
                 float worldX = 2.0f * (positionXPixels - cameraPosition.X) / cameraResolution.X;
                 float worldY = 2.0f * (positionYPixels - cameraPosition.Y) / cameraResolution.Y;
 
-                // Escala lógica para cada carácter
                 Vector2F charScale = new Vector2F(screenCharWidth / cameraResolution.X, screenCharHeight / cameraResolution.Y);
 
-                // Enviar colores y parámetros al shader
                 Gl.GlUniform4F(colorFontLocation, colorFont.R / 255.0f, colorFont.G / 255.0f, colorFont.B / 255.0f, colorFont.A / 255.0f);
                 Gl.GlUniform4F(colorBackgroundLocation, colorBackgroundFont.R / 255.0f, colorBackgroundFont.G / 255.0f, colorBackgroundFont.B / 255.0f, colorBackgroundFont.A / 255.0f);
                 Gl.GlUniform2F(offsetLocation, worldX, worldY);

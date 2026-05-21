@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:SecureCharTests.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Xunit;
 
@@ -150,13 +123,10 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestValueSetGet()
         {
-            // Arrange
             SecureChar secureChar = new SecureChar('a');
 
-            // Act
             char value = secureChar;
 
-            // Assert
             Assert.Equal('a', value);
         }
 
@@ -166,11 +136,9 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestEquality()
         {
-            // Arrange
             SecureChar secureChar1 = new SecureChar('a');
             SecureChar secureChar2 = new SecureChar('a');
 
-            // Assert
             Assert.True(secureChar1 == secureChar2);
         }
 
@@ -180,11 +148,9 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestInequality()
         {
-            // Arrange
             SecureChar secureChar1 = new SecureChar('a');
             SecureChar secureChar2 = new SecureChar('b');
 
-            // Assert
             Assert.True(secureChar1 != secureChar2);
         }
 
@@ -194,14 +160,11 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestAddition()
         {
-            // Arrange
             SecureChar secureChar1 = new SecureChar('a');
             SecureChar secureChar2 = new SecureChar('b');
 
-            // Act
             SecureChar result = secureChar1 + secureChar2;
 
-            // Assert
             Assert.Equal('a' + 'b', (char) result);
         }
 
@@ -211,14 +174,11 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestSubtraction()
         {
-            // Arrange
             SecureChar secureChar1 = new SecureChar('b');
             SecureChar secureChar2 = new SecureChar('a');
 
-            // Act
             SecureChar result = secureChar1 - secureChar2;
 
-            // Assert
             Assert.Equal('b' - 'a', (char) result);
         }
 
@@ -228,14 +188,11 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestMultiplication()
         {
-            // Arrange
             SecureChar secureChar1 = new SecureChar('a');
             SecureChar secureChar2 = new SecureChar('b');
 
-            // Act
             SecureChar result = secureChar1 * secureChar2;
 
-            // Assert
             Assert.Equal('a' * 'b', (char) result);
         }
 
@@ -245,14 +202,11 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestDivision()
         {
-            // Arrange
             SecureChar secureChar1 = new SecureChar('b');
             SecureChar secureChar2 = new SecureChar('a');
 
-            // Act
             SecureChar result = secureChar1 / secureChar2;
 
-            // Assert
             Assert.Equal('b' / 'a', (char) result);
         }
     }

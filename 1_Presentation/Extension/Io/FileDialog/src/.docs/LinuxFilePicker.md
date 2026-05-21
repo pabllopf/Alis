@@ -366,7 +366,6 @@ if (result.IsSuccess)
 The implementation automatically detects and uses the appropriate tool:
 
 ```csharp
-// Checks in order:
 1. $XDG_CURRENT_DESKTOP environment variable
 2. Available commands (zenity, kdialog)
 3. GNOME vs KDE session detection
@@ -440,11 +439,9 @@ try
     
     if (result.IsSuccess)
     {
-        // Use result
     }
     else if (result.IsCancelled)
     {
-        // User cancelled
     }
     else
     {
@@ -488,7 +485,6 @@ The implementation automatically splits and normalizes these paths.
 
 1. **Check tool availability:**
    ```csharp
-   // Automatically handled, but you can check:
    if (FilePickerExecutor.CommandExists("zenity"))
    {
        Console.WriteLine("zenity is available");
@@ -497,7 +493,6 @@ The implementation automatically splits and normalizes these paths.
 
 2. **Use standard XDG directories:**
    ```csharp
-   // Common Linux paths
    string documents = Path.Combine(
        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
        "Documents");
@@ -513,7 +508,6 @@ The implementation automatically splits and normalizes these paths.
    ```csharp
    if (!result.IsSuccess && !result.IsCancelled)
    {
-       // Tool not available or execution error
        Logger.Error(result.ErrorMessage);
    }
    ```
@@ -523,7 +517,6 @@ The implementation automatically splits and normalizes these paths.
    if (result.IsSuccess &&
        FilePickerValidator.IsResultValid(result, options))
    {
-       // Use path
    }
    ```
 

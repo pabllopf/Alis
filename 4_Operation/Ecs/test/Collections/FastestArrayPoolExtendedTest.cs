@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:FastestArrayPoolExtendedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Collections;
 using Xunit;
@@ -44,16 +17,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void RentAndReturn_SingleArray_PoolReusesProperly()
         {
-            // Arrange
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
             int[] array1 = pool.Rent(100);
             int[] array2;
 
-            // Act
             pool.Return(array1);
             array2 = pool.Rent(100);
 
-            // Assert - Should get the same or compatible array back from pool
             Assert.NotNull(array2);
             Assert.True(array2.Length >= 100);
         }
@@ -64,13 +34,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Rent_BelowMinimumBucketSize_CreatesNewArray()
         {
-            // Arrange
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
 
-            // Act
             int[] smallArray = pool.Rent(8);
 
-            // Assert
             Assert.NotNull(smallArray);
             Assert.Equal(8, smallArray.Length);
         }
@@ -81,11 +48,9 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Rent_ProgressivelyLargerSizes_AllSuccessful()
         {
-            // Arrange
             FastestArrayPool<long> pool = FastestArrayPool<long>.Instance;
             int[] sizes = {16, 32, 64, 128, 256, 512, 1024};
 
-            // Act & Assert
             foreach (int size in sizes)
             {
                 long[] array = pool.Rent(size);
@@ -100,15 +65,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ResizeArrayFromPool_DataPreservation_ContentIntact()
         {
-            // Arrange
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
             int[] arr = {1, 2, 3, 4, 5};
             int[] originalCopy = (int[]) arr.Clone();
 
-            // Act
             FastestArrayPool<int>.ResizeArrayFromPool(ref arr, 200);
 
-            // Assert
             for (int i = 0; i < originalCopy.Length; i++)
             {
                 Assert.Equal(originalCopy[i], arr[i]);
@@ -123,15 +85,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Return_WithClearFlag_ReferencesCleared()
         {
-            // Arrange
             FastestArrayPool<string> pool = FastestArrayPool<string>.Instance;
             string[] array = pool.Rent(50);
             array[0] = "test";
 
-            // Act
             pool.Return(array, true);
 
-            // Assert - cleared array should have default values
             Assert.Null(array[0]);
         }
 
@@ -141,10 +100,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void MultipleCycles_RentReturnRentPattern_Consistent()
         {
-            // Arrange
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
 
-            // Act & Assert
             for (int cycle = 0; cycle < 5; cycle++)
             {
                 int[] arr = pool.Rent(100);
@@ -156,7 +113,6 @@ namespace Alis.Core.Ecs.Test.Collections
                 pool.Return(arr);
 
                 int[] arr2 = pool.Rent(100);
-                // First few values should potentially match if from same bucket
                 Assert.NotNull(arr2);
                 Assert.True(arr2.Length >= 100);
                 pool.Return(arr2);
@@ -169,14 +125,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Rent_OversizedRequest_FallbackArray()
         {
-            // Arrange
             FastestArrayPool<short> pool = FastestArrayPool<short>.Instance;
             int hugeSize = int.MaxValue / 2;
 
-            // Act
             short[] array = pool.Rent(hugeSize);
 
-            // Assert
             Assert.NotNull(array);
             Assert.True(array.Length >= hugeSize);
         }
@@ -187,17 +140,14 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Rent_ValueTypeArray_ProperlyPooled()
         {
-            // Arrange
             FastestArrayPool<byte> pool = FastestArrayPool<byte>.Instance;
 
-            // Act
             byte[] arr1 = pool.Rent(256);
             arr1[0] = 255;
             pool.Return(arr1);
 
             byte[] arr2 = pool.Rent(256);
 
-            // Assert
             Assert.NotNull(arr2);
             Assert.True(arr2.Length >= 256);
         }

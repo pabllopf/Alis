@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ProfilerServiceBuilderTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Profile.Builders;
@@ -47,13 +20,10 @@ namespace Alis.Extension.Profile.Test.Builders
         [Fact]
         public void Build_CreatesProfilerService_WithDefaultImplementations()
         {
-            // Arrange
             ProfilerServiceBuilder builder = new ProfilerServiceBuilder();
 
-            // Act
             IProfilerService service = builder.Build();
 
-            // Assert
             Assert.NotNull(service);
             Assert.False(service.IsActive);
         }
@@ -64,18 +34,15 @@ namespace Alis.Extension.Profile.Test.Builders
         [Fact]
         public void WithTimeTracker_SetsCustomTimeTracker()
         {
-            // Arrange
             ProfilerServiceBuilder builder = new ProfilerServiceBuilder();
             MockTimeTracker mockTracker = new MockTimeTracker();
 
-            // Act
             IProfilerService service = builder
                 .WithTimeTracker(mockTracker)
                 .Build();
 
             service.StartProfiling();
 
-            // Assert
             Assert.True(mockTracker.StartCalled);
         }
 
@@ -85,7 +52,6 @@ namespace Alis.Extension.Profile.Test.Builders
         [Fact]
         public void WithResourceMonitor_SetsCustomResourceMonitor()
         {
-            // Arrange
             ProfilerServiceBuilder builder = new ProfilerServiceBuilder();
             MockResourceMonitor mockMonitor = new MockResourceMonitor
             {
@@ -93,14 +59,12 @@ namespace Alis.Extension.Profile.Test.Builders
                 MemoryUsage = 2048
             };
 
-            // Act
             IProfilerService service = builder
                 .WithResourceMonitor(mockMonitor)
                 .Build();
 
             service.StartProfiling();
 
-            // Assert
             Assert.True(mockMonitor.GetCpuUsageCalled);
             Assert.True(mockMonitor.GetMemoryUsageCalled);
         }
@@ -111,17 +75,14 @@ namespace Alis.Extension.Profile.Test.Builders
         [Fact]
         public void Builder_SupportsMethodChaining()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker();
             MockResourceMonitor mockMonitor = new MockResourceMonitor();
 
-            // Act
             IProfilerService service = new ProfilerServiceBuilder()
                 .WithTimeTracker(mockTracker)
                 .WithResourceMonitor(mockMonitor)
                 .Build();
 
-            // Assert
             Assert.NotNull(service);
         }
 
@@ -131,10 +92,8 @@ namespace Alis.Extension.Profile.Test.Builders
         [Fact]
         public void CreateDefault_ReturnsConfiguredService()
         {
-            // Act
             IProfilerService service = ProfilerServiceBuilder.CreateDefault();
 
-            // Assert
             Assert.NotNull(service);
             Assert.False(service.IsActive);
         }
@@ -145,7 +104,6 @@ namespace Alis.Extension.Profile.Test.Builders
         [Fact]
         public void BuiltService_WithCustomComponents_WorksCorrectly()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker
             {
                 ElapsedTime = TimeSpan.FromMilliseconds(500)
@@ -156,7 +114,6 @@ namespace Alis.Extension.Profile.Test.Builders
                 MemoryUsage = 3072
             };
 
-            // Act
             IProfilerService service = new ProfilerServiceBuilder()
                 .WithTimeTracker(mockTracker)
                 .WithResourceMonitor(mockMonitor)
@@ -165,7 +122,6 @@ namespace Alis.Extension.Profile.Test.Builders
             service.StartProfiling();
             ProfileSnapshot snapshot = service.StopProfiling();
 
-            // Assert
             Assert.Equal(TimeSpan.FromMilliseconds(500), snapshot.ElapsedTime);
             Assert.Equal(150, snapshot.StartMetrics.CpuUsageMilliseconds);
             Assert.Equal(3072, snapshot.StartMetrics.MemoryUsageBytes);
@@ -177,16 +133,13 @@ namespace Alis.Extension.Profile.Test.Builders
         [Fact]
         public void MultipleBuild_CreatesIndependentServices()
         {
-            // Arrange
             ProfilerServiceBuilder builder = new ProfilerServiceBuilder();
 
-            // Act
             IProfilerService service1 = builder.Build();
             IProfilerService service2 = builder.Build();
 
             service1.StartProfiling();
 
-            // Assert
             Assert.True(service1.IsActive);
             Assert.False(service2.IsActive);
         }
@@ -197,19 +150,16 @@ namespace Alis.Extension.Profile.Test.Builders
         [Fact]
         public void Builder_CanBeReused_ForDifferentConfigurations()
         {
-            // Arrange
             ProfilerServiceBuilder builder = new ProfilerServiceBuilder();
             MockTimeTracker tracker1 = new MockTimeTracker();
             MockTimeTracker tracker2 = new MockTimeTracker();
 
-            // Act
             IProfilerService service1 = builder.WithTimeTracker(tracker1).Build();
             IProfilerService service2 = builder.WithTimeTracker(tracker2).Build();
 
             service1.StartProfiling();
             service2.StartProfiling();
 
-            // Assert
             Assert.True(tracker1.StartCalled);
             Assert.True(tracker2.StartCalled);
         }

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EventTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Kernel.Events;
@@ -48,10 +21,8 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Event_WhenCreated_ShouldHaveNoListeners()
         {
-            // Arrange & Act
             Event<int> @event = new();
 
-            // Assert
             Assert.False(@event.HasListeners);
         }
 
@@ -61,14 +32,11 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Add_WithAction_ShouldMarkEventAsHavingListeners()
         {
-            // Arrange
             Event<int> @event = new();
             Action<GameObject, int> action = (_, _) => { };
 
-            // Act
             @event.Add(action);
 
-            // Assert
             Assert.True(@event.HasListeners);
         }
 
@@ -78,7 +46,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Invoke_WithSingleListener_ShouldInvokeThatListener()
         {
-            // Arrange
             Event<int> @event = new();
             bool invoked = false;
             int passedValue = 0;
@@ -89,10 +56,8 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             };
             @event.Add(action);
 
-            // Act
             @event.Invoke(default(GameObject), 42);
 
-            // Assert
             Assert.True(invoked);
             Assert.Equal(42, passedValue);
         }
@@ -103,7 +68,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Invoke_WithMultipleListeners_ShouldInvokeAllListeners()
         {
-            // Arrange
             Event<int> @event = new();
             int callCount = 0;
             Action<GameObject, int> action1 = (_, _) => callCount++;
@@ -114,10 +78,8 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             @event.Add(action2);
             @event.Add(action3);
 
-            // Act
             @event.Invoke(default(GameObject), 0);
 
-            // Assert
             Assert.Equal(3, callCount);
         }
 
@@ -127,7 +89,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Remove_WithExistingListener_ShouldRemoveListener()
         {
-            // Arrange
             Event<int> @event = new();
             int callCount = 0;
             Action<GameObject, int> action1 = (_, _) => callCount++;
@@ -136,11 +97,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             @event.Add(action1);
             @event.Add(action2);
 
-            // Act
             @event.Remove(action1);
             @event.Invoke(default(GameObject), 0);
 
-            // Assert
             Assert.Equal(1, callCount);
         }
 
@@ -150,15 +109,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Remove_WithOnlyListener_ShouldMarkEventAsHavingNoListeners()
         {
-            // Arrange
             Event<int> @event = new();
             Action<GameObject, int> action = (_, _) => { };
             @event.Add(action);
 
-            // Act
             @event.Remove(action);
 
-            // Assert
             Assert.False(@event.HasListeners);
         }
 
@@ -168,7 +124,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Remove_WithFirstListenerFromMultiple_ShouldKeepOthers()
         {
-            // Arrange
             Event<int> @event = new();
             int callCount = 0;
             Action<GameObject, int> action1 = (_, _) => callCount++;
@@ -179,11 +134,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             @event.Add(action2);
             @event.Add(action3);
 
-            // Act
             @event.Remove(action1);
             @event.Invoke(default(GameObject), 0);
 
-            // Assert
             Assert.Equal(2, callCount);
         }
 
@@ -193,7 +146,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Remove_WithNonExistingListener_ShouldNotAffectEvent()
         {
-            // Arrange
             Event<int> @event = new();
             int callCount = 0;
             Action<GameObject, int> action1 = (_, _) => callCount++;
@@ -203,11 +155,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             @event.Add(action1);
             @event.Add(action2);
 
-            // Act
             @event.Remove(action3);
             @event.Invoke(default(GameObject), 0);
 
-            // Assert
             Assert.Equal(2, callCount);
         }
 
@@ -217,18 +167,15 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Add_WithSameListenerMultipleTimes_ShouldRegisterMultipleTimes()
         {
-            // Arrange
             Event<int> @event = new();
             int callCount = 0;
             Action<GameObject, int> action = (_, _) => callCount++;
 
-            // Act
             @event.Add(action);
             @event.Add(action);
             @event.Add(action);
             @event.Invoke(default(GameObject), 0);
 
-            // Assert
             Assert.Equal(3, callCount);
         }
 
@@ -238,7 +185,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Invoke_ShouldPassCorrectGameObjectToListener()
         {
-            // Arrange
             Scene scene = new();
             GameObject gameObject = scene.Create();
             Event<int> @event = new();
@@ -247,13 +193,10 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             Action<GameObject, int> action = (go, _) => { passedGameObject = go; };
             @event.Add(action);
 
-            // Act
             @event.Invoke(gameObject, 0);
 
-            // Assert
             Assert.Equal(gameObject, passedGameObject);
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -263,17 +206,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Invoke_WithDifferentArgumentTypes_ShouldPassArgumentCorrectly()
         {
-            // Arrange
             Event<string> @event = new();
             string passedValue = null;
 
             Action<GameObject, string> action = (_, value) => { passedValue = value; };
             @event.Add(action);
 
-            // Act
             @event.Invoke(default(GameObject), "test");
 
-            // Assert
             Assert.Equal("test", passedValue);
         }
 
@@ -283,7 +223,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void RemoveAndAdd_WithMultipleOperations_ShouldMaintainCorrectState()
         {
-            // Arrange
             Event<int> @event = new();
             int callCount = 0;
             Action<GameObject, int> action1 = (_, _) => callCount++;
@@ -293,11 +232,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             @event.Add(action2);
             @event.Remove(action1);
 
-            // Act
             @event.Add(action1);
             @event.Invoke(default(GameObject), 0);
 
-            // Assert
             Assert.Equal(2, callCount);
         }
     }

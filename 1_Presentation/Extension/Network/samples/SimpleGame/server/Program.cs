@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -82,7 +55,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                 Logger.Info("╚══════════════════════════════════════════════════════╝");
                 Logger.Info("");
 
-                // Ask if server is also a player
                 Logger.Log("Run as pure server or as player+server? (s/p): ");
                 string modeInput = Console.ReadLine()?.ToLower() ?? "s";
                 _serverIsPlayer = modeInput == "p";
@@ -92,7 +64,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                 _serverManager = new NetworkServerManager();
                 _gameState = new GameState();
 
-                // If server is also a player, add server as a player
                 if (_serverIsPlayer)
                 {
                     Logger.Log("Enter server player name: ");
@@ -122,7 +93,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
                 if (!_serverIsPlayer)
                 {
-                    // Dedicated mode: keep session/player counts client-only.
                     session.Players.RemoveAll(p => p.IsHost || p.PlayerId == _serverManager.LocalPlayer?.PlayerId);
                     session.PlayerCount = session.Players.Count;
                 }
@@ -150,10 +120,8 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
                 _gameRunning = true;
 
-                // Start game tick loop in background
                 _ = GameTickLoopAsync();
 
-                // Run command loop
                 await CommandLoopAsync();
 
                 _gameRunning = false;
@@ -184,18 +152,14 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     _gameState.CurrentTick = _tickCounter;
                     _gameState.UpdateTurn(_tickCounter);
 
-                    // Process any pending game events
                     List<GameEvent> events = _gameState.GetPendingEvents();
                     foreach (GameEvent evt in events)
                     {
                         if (!string.IsNullOrEmpty(evt.SourcePlayer))
                         {
-                            // Events are propagated via game.update, no need to broadcast individually
-                            // await BroadcastGameEventAsync(evt);
                         }
                     }
 
-                    // Send state updates to all players periodically (every 5 ticks)
                     if (_tickCounter % 5 == 0)
                     {
                         await BroadcastGameStateAsync();
@@ -245,11 +209,9 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                 segments.Add($"__meta__:turn_ticks:{turnTicksRemaining}");
                 segments.Add($"__meta__:tick:{_tickCounter}");
 
-                // Include recent events in state broadcast
                 List<GameEvent> recentEvents = _gameState.Events.ToList();
                 if (recentEvents.Count > 0)
                 {
-                    // Send last 5 events
                     for (int i = Math.Max(0, recentEvents.Count - 5); i < recentEvents.Count; i++)
                     {
                         GameEvent evt = recentEvents[i];
@@ -467,7 +429,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     return;
                 }
 
-                // Check if it's player's turn
                 if (!string.IsNullOrWhiteSpace(_gameState.CurrentTurnPlayerId) && (_gameState.CurrentTurnPlayerId != senderId))
                 {
                     string turnName = !string.IsNullOrEmpty(_gameState.CurrentTurnPlayerId)
@@ -486,7 +447,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     return;
                 }
 
-                // Find target by name
                 PlayerData target = null;
                 foreach (PlayerData player in _gameState.Players.Values)
                 {
@@ -510,7 +470,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     return;
                 }
 
-                // Check range
                 float distance = MoveSystem.GetDistance(attacker.X, attacker.Y, target.X, target.Y);
                 if (distance > CombatSystem.MaxAttackDistance)
                 {
@@ -525,7 +484,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     return;
                 }
 
-                // Calculate and apply damage
                 int damage = CombatSystem.CalculateDamage(attacker, target);
                 if (damage <= 0)
                 {
@@ -533,7 +491,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     return;
                 }
 
-                // Apply damage
                 target.Health = Math.Max(0, target.Health - damage);
                 attacker.Score += damage;
 
@@ -547,7 +504,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
 
                 Logger.Log($"[ATTACK] {attacker.PlayerName} -> {target.PlayerName}: {damage} damage! (HP: {target.Health}/{target.MaxHealth})");
 
-                // Check if target died
                 if (target.Health == 0)
                 {
                     target.IsAlive = false;
@@ -558,7 +514,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     int xp = CombatSystem.GetExperienceReward(target.Level);
                     attacker.Experience += xp;
 
-                    // Level up check
                     if (attacker.Experience >= attacker.Level * 100)
                     {
                         attacker.Level++;
@@ -584,10 +539,8 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Server
                     Logger.Log($"[DEATH] {target.PlayerName} killed by {attacker.PlayerName}!");
                 }
 
-                // Advance turn after attack
                 _gameState.AdvanceTurn(_tickCounter);
 
-                // Broadcast result to all clients
                 GameMessage result = new GameMessage
                 {
                     MessageType = "chat",

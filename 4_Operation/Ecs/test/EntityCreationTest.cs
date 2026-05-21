@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EntityCreationTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -47,13 +20,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanCreateEmptyEntity()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             GameObject entity = scene.Create();
 
-            // Assert
             Assert.NotNull(entity);
             Assert.True(entity.IsAlive);
             Assert.False(entity.IsNull);
@@ -65,14 +35,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanCreateEntityWithSingleComponent()
         {
-            // Arrange
             using Scene scene = new Scene();
             Position position = new Position {X = 10, Y = 20};
 
-            // Act
             GameObject entity = scene.Create(position);
 
-            // Assert
             Assert.True(entity.IsAlive);
             Assert.True(entity.Has<Position>());
             ref Position retrievedPos = ref entity.Get<Position>();
@@ -86,15 +53,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanCreateEntityWithTwoComponents()
         {
-            // Arrange
             using Scene scene = new Scene();
             Position position = new Position {X = 5, Y = 15};
             Health health = new Health {Value = 100};
 
-            // Act
             GameObject entity = scene.Create(position, health);
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Health>());
             Assert.Equal(5, entity.Get<Position>().X);
@@ -107,15 +71,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanCreateMultipleEntitiesWithSameComponents()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
             GameObject entity2 = scene.Create(new Position {X = 3, Y = 4});
             GameObject entity3 = scene.Create(new Position {X = 5, Y = 6});
 
-            // Assert
             Assert.True(entity1.IsAlive);
             Assert.True(entity2.IsAlive);
             Assert.True(entity3.IsAlive);
@@ -130,15 +91,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EntityIdsAreUnique()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             GameObject entity1 = scene.Create();
             GameObject entity2 = scene.Create();
             GameObject entity3 = scene.Create();
 
-            // Assert
             Assert.NotEqual(entity1.EntityID, entity2.EntityID);
             Assert.NotEqual(entity2.EntityID, entity3.EntityID);
             Assert.NotEqual(entity1.EntityID, entity3.EntityID);
@@ -150,11 +108,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EachSceneHasUniqueId()
         {
-            // Arrange & Act
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
 
-            // Assert
             Assert.NotEqual(scene1.Id, scene2.Id);
         }
 
@@ -164,16 +120,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanCreateEntityWithThreeComponents()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
                 new Health {Value = 50},
                 new Velocity {X = 3, Y = 4});
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Health>());
             Assert.True(entity.Has<Velocity>());
@@ -185,15 +138,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CreatedEntityBelongsToCorrectScene()
         {
-            // Arrange
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
 
-            // Act
             GameObject entity1 = scene1.Create(new Position());
             GameObject entity2 = scene2.Create(new Position());
 
-            // Assert
             Assert.Same(scene1, entity1.Scene);
             Assert.Same(scene2, entity2.Scene);
             Assert.NotSame(entity1.Scene, entity2.Scene);

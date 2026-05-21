@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
@@ -48,37 +21,31 @@ namespace Alis.Extension.Language.Dialogue.Sample
             Logger.Info("   DIALOG MANAGER - COMPREHENSIVE SAMPLE");
             Logger.Info("========================================\n");
 
-            // Example 1: Basic Functionality
             Logger.Info("[EXAMPLE 1] Basic Dialog Management");
             DemonstrateBasicDialogs();
 
             Logger.Info("\n========================================\n");
 
-            // Example 2: Advanced Features with State Management
             Logger.Info("[EXAMPLE 2] Advanced State Machine & Events");
             DemonstrateAdvancedStateManagement();
 
             Logger.Info("\n========================================\n");
 
-            // Example 3: Conditions and Available Options
             Logger.Info("[EXAMPLE 3] Conditional Options");
             DemonstrateConditionalOptions();
 
             Logger.Info("\n========================================\n");
 
-            // Example 4: Context Variables and Actions
             Logger.Info("[EXAMPLE 4] Context Variables & Actions");
             DemonstrateContextAndActions();
 
             Logger.Info("\n========================================\n");
 
-            // Example 5: Event Observation
             Logger.Info("[EXAMPLE 5] Event Observation Pattern");
             DemonstrateEventObservation();
 
             Logger.Info("\n========================================\n");
 
-            // Example 6: Complex Game Dialogue Tree
             Logger.Info("[EXAMPLE 6] Complex Game Dialogue Tree");
             DemonstrateComplexDialogueTree();
 
@@ -94,7 +61,6 @@ namespace Alis.Extension.Language.Dialogue.Sample
         {
             DialogManager manager = new DialogManager();
 
-            // Create first character dialog
             Dialog char1Dialog = new Dialog("char1Greeting", "Hello, adventurer! What brings you to these lands?");
             char1Dialog.AddOption(new DialogOption(
                 "I'm here to explore.",
@@ -106,7 +72,6 @@ namespace Alis.Extension.Language.Dialogue.Sample
             ));
             manager.AddDialog(char1Dialog);
 
-            // Create second character dialog
             Dialog char2Dialog = new Dialog("char2Greeting", "Did you see any monsters on your way here?");
             char2Dialog.AddOption(new DialogOption(
                 "Yes, I fought a few.",
@@ -170,14 +135,12 @@ namespace Alis.Extension.Language.Dialogue.Sample
 
             Dialog shopDialog = new Dialog("shop", "Welcome to my shop! What would you like?");
 
-            // Option 1: Always available
             DialogOption basicOption = new DialogOption(
                 "Show me basic items",
                 () => Logger.Info("   ✓ Here are my basic items: Sword, Shield, Potion")
             );
             shopDialog.AddOption(basicOption);
 
-            // Option 2: Only available if player has enough gold
             DialogOption expensiveOption = new DialogOption(
                 "Show me rare items (requires 500+ gold)",
                 () => Logger.Info("   ✓ Here are my rare items: Dragon Sword, Mithril Armor, Phoenix Feather")
@@ -189,7 +152,6 @@ namespace Alis.Extension.Language.Dialogue.Sample
             }));
             shopDialog.AddOption(expensiveOption);
 
-            // Option 3: Only available if player completed prerequisite quest
             DialogOption questOption = new DialogOption(
                 "Show me legend items (requires 'Dragon Quest' completed)",
                 () => Logger.Info("   ✓ Here are legendary items: Excalibur, Holy Grail, Dragon Stone")
@@ -201,7 +163,6 @@ namespace Alis.Extension.Language.Dialogue.Sample
 
             manager.AddDialog(shopDialog);
 
-            // Scenario 1: New player with low gold
             Logger.Info("   Scenario 1: New player (100 gold, no quest)");
             manager.StartDialog("shop");
             manager.SetContextVariable("gold", 100);
@@ -216,7 +177,6 @@ namespace Alis.Extension.Language.Dialogue.Sample
 
             manager.EndDialog();
 
-            // Scenario 2: Rich player with completed quest
             Logger.Info("\n   Scenario 2: Rich player (600 gold, quest completed)");
             manager.StartDialog("shop");
             manager.SetContextVariable("gold", 600);
@@ -242,7 +202,6 @@ namespace Alis.Extension.Language.Dialogue.Sample
             Dialog trainingDialog = new Dialog("training",
                 "Welcome to combat training! Choose your style:");
 
-            // Create options with actions that modify context
             DialogOption swordOption = new DialogOption("Train Sword Combat", () =>
                 Logger.Info("   ✓ You spend 2 hours training sword techniques!")
             );
@@ -280,7 +239,6 @@ namespace Alis.Extension.Language.Dialogue.Sample
         {
             DialogManager manager = new DialogManager();
 
-            // Create a custom observer
             DialogEventObserver observer = new DialogEventObserver();
             manager.RegisterObserver(observer);
 
@@ -312,7 +270,6 @@ namespace Alis.Extension.Language.Dialogue.Sample
         {
             DialogManager manager = new DialogManager();
 
-            // Main quest giver dialog
             Dialog questGiver = new Dialog("questGiver",
                 "Hail, hero! I have a task for you.");
 
@@ -336,14 +293,12 @@ namespace Alis.Extension.Language.Dialogue.Sample
             questGiver.AddOption(refuseOption);
             questGiver.AddOption(infoOption);
 
-            // Dialogue after quest completion
             Dialog questComplete = new Dialog("questComplete",
                 "You have completed my quest! Take this reward.");
 
             questComplete.AddOption(new DialogOption("Thank you!",
                 () => Logger.Info("   ✓ You received: 500 gold, Experience, Magic Amulet")));
 
-            // Add branch for quest completion
             questGiver.AddBranch("completed", questComplete);
 
             manager.AddDialog(questGiver);

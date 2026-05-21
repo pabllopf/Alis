@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:PluralizationEngine.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -75,7 +48,6 @@ namespace Alis.Extension.Language.Translator.Pluralization
                 throw new ArgumentException("Language code cannot be null or empty", nameof(languageCode));
             }
 
-            // Default English rule if not found
             if (!pluralRules.ContainsKey(languageCode))
             {
                 return quantity == 1 ? 0 : 1;
@@ -127,32 +99,25 @@ namespace Alis.Extension.Language.Translator.Pluralization
         [ExcludeFromCodeCoverage]
         private void InitializeDefaultRules()
         {
-            // English, German, Dutch, etc. - 2 forms (singular, plural)
             Func<int, int> englishRule = quantity => quantity == 1 ? 0 : 1;
             RegisterPluralizationRule("en", englishRule);
             pluralFormCounts["en"] = 2;
 
-            // Spanish - 2 forms (singular, plural)
             RegisterPluralizationRule("es", englishRule);
             pluralFormCounts["es"] = 2;
 
-            // French - 2 forms (singular, plural)
             RegisterPluralizationRule("fr", englishRule);
             pluralFormCounts["fr"] = 2;
 
-            // German - 2 forms (singular, plural)
             RegisterPluralizationRule("de", englishRule);
             pluralFormCounts["de"] = 2;
 
-            // Portuguese - 2 forms (singular, plural)
             RegisterPluralizationRule("pt", englishRule);
             pluralFormCounts["pt"] = 2;
 
-            // Italian - 2 forms (singular, plural)
             RegisterPluralizationRule("it", englishRule);
             pluralFormCounts["it"] = 2;
 
-            // Russian - 3 forms (1, 21, 101...), (2-4, 22-24...), (0, 5-20, 25-30...)
             Func<int, int> russianRule = quantity =>
             {
                 quantity = Math.Abs(quantity) % 100;
@@ -178,7 +143,6 @@ namespace Alis.Extension.Language.Translator.Pluralization
             RegisterPluralizationRule("ru", russianRule);
             pluralFormCounts["ru"] = 3;
 
-            // Polish - 3 forms
             Func<int, int> polishRule = quantity =>
             {
                 if (quantity == 1)
@@ -197,7 +161,6 @@ namespace Alis.Extension.Language.Translator.Pluralization
             RegisterPluralizationRule("pl", polishRule);
             pluralFormCounts["pl"] = 3;
 
-            // Japanese, Korean, Chinese - 1 form (no pluralization)
             Func<int, int> noPluralizationRule = quantity => 0;
             RegisterPluralizationRule("ja", noPluralizationRule);
             pluralFormCounts["ja"] = 1;

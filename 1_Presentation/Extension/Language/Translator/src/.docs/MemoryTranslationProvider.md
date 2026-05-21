@@ -20,7 +20,6 @@ var provider = new MemoryTranslationProvider();
 await provider.SetTranslationAsync("en", "hello", "Hello");
 
 var translations = await provider.LoadTranslationsAsync();
-// Returns: {"en": {"hello": "Hello"}}
 ```
 
 ### SaveTranslationsAsync(Dictionary<string, Dictionary<string, string>> translations) : Task
@@ -46,7 +45,6 @@ Retrieves a specific translation. Returns null if not found.
 ```csharp
 await provider.SetTranslationAsync("en", "hello", "Hello");
 string translation = await provider.GetTranslationAsync("en", "hello");
-// Returns: "Hello"
 ```
 
 ### SetTranslationAsync(string languageCode, string key, string value) : Task
@@ -69,7 +67,6 @@ Gets all translation keys for a specific language.
 
 ```csharp
 var keys = await provider.GetKeysAsync("en");
-// Returns: { "hello", "goodbye" }
 ```
 
 ## Usage Examples
@@ -79,26 +76,21 @@ var keys = await provider.GetKeysAsync("en");
 ```csharp
 var provider = new MemoryTranslationProvider();
 
-// Add translations
 await provider.SetTranslationAsync("en", "greeting", "Hello");
 await provider.SetTranslationAsync("en", "farewell", "Goodbye");
 await provider.SetTranslationAsync("es", "greeting", "Hola");
 
-// Get translation
 string greeting = await provider.GetTranslationAsync("en", "greeting");
 Console.WriteLine(greeting); // Output: Hello
 
-// Get all keys
 var keys = await provider.GetKeysAsync("en");
 foreach (var key in keys)
 {
     Console.WriteLine(key); // Output: greeting, farewell
 }
 
-// Remove translation
 await provider.RemoveTranslationAsync("en", "greeting");
 
-// Check if removed
 string result = await provider.GetTranslationAsync("en", "greeting");
 Console.WriteLine(result ?? "Not found"); // Output: Not found
 ```
@@ -108,7 +100,6 @@ Console.WriteLine(result ?? "Not found"); // Output: Not found
 ```csharp
 var provider = new MemoryTranslationProvider();
 
-// Add translations for multiple languages
 string[] languages = { "en", "es", "fr" };
 var translations = new Dictionary<string, Dictionary<string, string>>();
 
@@ -121,10 +112,8 @@ foreach (var lang in languages)
     };
 }
 
-// Save all at once
 await provider.SaveTranslationsAsync(translations);
 
-// Verify
 var loaded = await provider.LoadTranslationsAsync();
 Console.WriteLine($"Total languages: {loaded.Count}");
 ```
@@ -144,11 +133,9 @@ var manager = new TranslationManager(
     pluralizationEngine
 );
 
-// Add languages
 manager.AddLanguage("en", "English");
 manager.AddLanguage("es", "Spanish");
 
-// Use manager to add translations (internally uses provider)
 manager.SetLanguage("en");
 manager.AddTranslation("en", "hello", "Hello");
 manager.AddTranslation("en", "goodbye", "Goodbye");
@@ -157,7 +144,6 @@ manager.SetLanguage("es");
 manager.AddTranslation("es", "hello", "Hola");
 manager.AddTranslation("es", "goodbye", "Adiós");
 
-// Retrieve
 string greeting = manager.Translate("hello");
 ```
 
@@ -166,7 +152,6 @@ string greeting = manager.Translate("hello");
 ```csharp
 var provider = new MemoryTranslationProvider();
 
-// Create bulk data
 var bulkTranslations = new Dictionary<string, Dictionary<string, string>>();
 
 for (int i = 1; i <= 3; i++)
@@ -187,10 +172,8 @@ for (int i = 1; i <= 3; i++)
     };
 }
 
-// Load all at once
 await provider.SaveTranslationsAsync(bulkTranslations);
 
-// Process
 var allTranslations = await provider.LoadTranslationsAsync();
 foreach (var kvp in allTranslations)
 {
@@ -206,7 +189,6 @@ The `MemoryTranslationProvider` is thread-safe using internal locking mechanisms
 var provider = new MemoryTranslationProvider();
 var tasks = new List<Task>();
 
-// Safe concurrent access
 for (int i = 0; i < 10; i++)
 {
     int index = i;
@@ -221,7 +203,6 @@ await Task.WhenAll(tasks);
 ```csharp
 var provider = new MemoryTranslationProvider();
 
-// Null language code
 try
 {
     await provider.SetTranslationAsync(null, "key", "value");
@@ -231,7 +212,6 @@ catch (ArgumentException ex)
     Console.WriteLine($"Error: {ex.Message}");
 }
 
-// Null translations dictionary in SaveTranslationsAsync
 try
 {
     await provider.SaveTranslationsAsync(null);

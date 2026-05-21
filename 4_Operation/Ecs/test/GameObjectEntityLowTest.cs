@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameObjectEntityLowTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Xunit;
 
@@ -43,8 +16,6 @@ namespace Alis.Core.Ecs.Test
     public class GameObjectEntityLowTest
     {
         // ─────────────────────────────────────────────────────────────────────
-        // Helpers
-        // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
         ///     Computes the expected <c>EntityLow</c> value from its two component fields.
@@ -55,8 +26,6 @@ namespace Alis.Core.Ecs.Test
             => (int) (version | ((uint) worldId << 16));
 
         // ─────────────────────────────────────────────────────────────────────
-        // Default / zero state
-        // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
         ///     A default-constructed <see cref="GameObject" /> has EntityVersion = 0 and
@@ -65,13 +34,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_DefaultGameObject_ReturnsZero()
         {
-            // Arrange
             GameObject gameObject = new GameObject();
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(0, result);
         }
 
@@ -81,13 +47,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_DefaultKeyword_ReturnsZero()
         {
-            // Arrange
             GameObject gameObject = default(GameObject);
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(0, result);
         }
 
@@ -97,18 +60,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_NullGameObject_ReturnsZero()
         {
-            // Arrange
             GameObject gameObject = GameObject.Null;
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(0, result);
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-        // Only EntityVersion set
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -118,13 +76,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_VersionOne_WorldIdZero_ReturnsOne()
         {
-            // Arrange – worldId=0, version=1, entityId=0
             GameObject gameObject = new GameObject(0, 1, 0);
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(ExpectedEntityLow(1, 0), result);
         }
 
@@ -134,13 +89,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_VersionFortyTwo_WorldIdZero_ReturnsFortyTwo()
         {
-            // Arrange
             GameObject gameObject = new GameObject(0, 42, 0);
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(ExpectedEntityLow(42, 0), result);
         }
 
@@ -151,19 +103,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_MaxVersion_WorldIdZero_Returns65535()
         {
-            // Arrange
             GameObject gameObject = new GameObject(0, ushort.MaxValue, 0);
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(ExpectedEntityLow(ushort.MaxValue, 0), result);
             Assert.Equal(65535, result);
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-        // Only WorldID set
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -173,13 +120,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_VersionZero_WorldIdOne_Returns65536()
         {
-            // Arrange
             GameObject gameObject = new GameObject(1, 0, 0);
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(ExpectedEntityLow(0, 1), result);
             Assert.Equal(65536, result);
         }
@@ -190,13 +134,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_VersionZero_WorldIdTen_Returns655360()
         {
-            // Arrange
             GameObject gameObject = new GameObject(10, 0, 0);
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(ExpectedEntityLow(0, 10), result);
             Assert.Equal(10 * 65536, result);
         }
@@ -208,19 +149,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_VersionZero_MaxWorldId_ReturnsNegative65536()
         {
-            // Arrange
             GameObject gameObject = new GameObject(ushort.MaxValue, 0, 0);
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(ExpectedEntityLow(0, ushort.MaxValue), result);
             Assert.Equal(-65536, result); // unchecked((int)0xFFFF0000)
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-        // Both fields set
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -230,13 +166,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_Version5_WorldId3_Returns196613()
         {
-            // Arrange
             GameObject gameObject = new GameObject(3, 5, 0);
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(ExpectedEntityLow(5, 3), result);
             Assert.Equal(196613, result);
         }
@@ -248,13 +181,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_Version0x1234_WorldId0x5678_ReturnsCorrectPacked()
         {
-            // Arrange
             GameObject gameObject = new GameObject(0x5678, 0x1234, 0);
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(ExpectedEntityLow(0x1234, 0x5678), result);
             Assert.Equal(unchecked(0x56781234), result);
         }
@@ -266,19 +196,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_MaxVersionMaxWorldId_ReturnsNegativeOne()
         {
-            // Arrange
             GameObject gameObject = new GameObject(ushort.MaxValue, ushort.MaxValue, 0);
 
-            // Act
             int result = gameObject.EntityLow;
 
-            // Assert
             Assert.Equal(ExpectedEntityLow(ushort.MaxValue, ushort.MaxValue), result);
             Assert.Equal(-1, result); // unchecked((int)0xFFFFFFFF)
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-        // EntityID independence
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -289,12 +214,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_DifferentEntityIDs_SameVersionAndWorldId_ReturnsSameValue()
         {
-            // Arrange
             GameObject go1 = new GameObject(2, 7, 0);
             GameObject go2 = new GameObject(2, 7, 999);
             GameObject go3 = new GameObject(2, 7, int.MaxValue);
 
-            // Act & Assert
             Assert.Equal(go1.EntityLow, go2.EntityLow);
             Assert.Equal(go1.EntityLow, go3.EntityLow);
         }
@@ -306,12 +229,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_IsIndependentOf_EntityID()
         {
-            // Arrange
             const ushort version = 100;
             const ushort worldId = 50;
             int expected = ExpectedEntityLow(version, worldId);
 
-            // Act & Assert – EntityID varies while version and worldId stay constant
             foreach (int entityId in new[] {0, 1, 42, 1000, int.MaxValue})
             {
                 GameObject go = new GameObject(worldId, version, entityId);
@@ -319,8 +240,6 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-        // Consistency with EntityHighLow
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -331,7 +250,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_MatchesEntityHighLowField_SameBitPattern()
         {
-            // Arrange
             ushort version = 0xABCD;
             ushort worldId = 0x1234;
             GameObject go = new GameObject(worldId, version, 77);
@@ -340,12 +258,9 @@ namespace Alis.Core.Ecs.Test
             ehl.EntityID = go.EntityID; // same first 4 bytes
             ehl.EntityLow = ExpectedEntityLow(version, worldId); // manually packed
 
-            // Act & Assert
             Assert.Equal(ehl.EntityLow, go.EntityLow);
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-        // Distinct versions produce distinct EntityLow values (when WorldID = 0)
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -355,11 +270,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_DifferentVersions_ProduceDifferentValues_WhenWorldIdIsZero()
         {
-            // Arrange
             GameObject go1 = new GameObject(0, 10, 0);
             GameObject go2 = new GameObject(0, 20, 0);
 
-            // Act & Assert
             Assert.NotEqual(go1.EntityLow, go2.EntityLow);
         }
 
@@ -370,16 +283,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityLow_DifferentWorldIds_ProduceDifferentValues_WhenVersionIsZero()
         {
-            // Arrange
             GameObject go1 = new GameObject(1, 0, 0);
             GameObject go2 = new GameObject(2, 0, 0);
 
-            // Act & Assert
             Assert.NotEqual(go1.EntityLow, go2.EntityLow);
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-        // Parameterised round-trip
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -390,16 +299,13 @@ namespace Alis.Core.Ecs.Test
         public void EntityLow_Theory_VersionAndWorldId_ReturnExpected(
             int version, int worldId, int expected)
         {
-            // Arrange
             GameObject go = new GameObject(
                 (ushort) worldId,
                 (ushort) version,
                 0);
 
-            // Act
             int result = go.EntityLow;
 
-            // Assert
             Assert.Equal(expected, result);
         }
     }

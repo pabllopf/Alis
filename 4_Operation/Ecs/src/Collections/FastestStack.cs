@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:FastestStack.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections;
@@ -74,8 +47,6 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         public FastestStack() => _array = Array.Empty<T>();
 
-        // Create a stack with a specific initial capacity.  The initial capacity
-        // must be a non-negative number.
         /// <summary>
         ///     Initializes a new instance of the <see cref="FastestStack{T}" /> class
         /// </summary>
@@ -96,8 +67,6 @@ namespace Alis.Core.Ecs.Collections
             _array = new T[capacity];
         }
 
-        // Fills a Stack with the contents of a particular collection.  The items are
-        // pushed onto the stack in the same order they are read by the enumerator.
         /// <summary>
         ///     Initializes a new instance of the <see cref="FastestStack{T}" /> class
         /// </summary>
@@ -136,7 +105,6 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         public bool Any => _size > 0;
 
-        // Removes all Objects from the Stack.
         /// <summary>
         ///     Clears this instance
         /// </summary>
@@ -159,7 +127,6 @@ namespace Alis.Core.Ecs.Collections
         /// <returns>The bool</returns>
         public bool Contains(T item) => (_size != 0) && (Array.LastIndexOf(_array, item, _size - 1) != -1);
 
-        // Copies the stack into an array.
         /// <summary>
         ///     Copies the to using the specified array
         /// </summary>
@@ -240,7 +207,6 @@ namespace Alis.Core.Ecs.Collections
             }
         }
 
-        // Returns an IEnumerator for this Stack.
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
@@ -297,8 +263,6 @@ namespace Alis.Core.Ecs.Collections
             Array.Resize(ref _array, capacity);
         }
 
-        // Returns the top object on the stack without removing it.  If the stack
-        // is empty, Peek throws an InvalidOperationException.
         /// <summary>
         ///     Peeks this instance
         /// </summary>
@@ -336,8 +300,6 @@ namespace Alis.Core.Ecs.Collections
             return true;
         }
 
-        // Pops an item from the top of the stack.  If the stack is empty, Pop
-        // throws an InvalidOperationException.
         /// <summary>
         ///     Pops this instance
         /// </summary>
@@ -347,9 +309,6 @@ namespace Alis.Core.Ecs.Collections
             int size = _size - 1;
             T[] array = _array;
 
-            // if (_size == 0) is equivalent to if (size == -1), and this case
-            // is covered with (uint)size, thus allowing bounds check elimination
-            // https://github.com/dotnet/coreclr/pull/9773
             if ((uint) size >= (uint) array.Length)
             {
                 ThrowForEmptyStack();
@@ -393,7 +352,6 @@ namespace Alis.Core.Ecs.Collections
             return true;
         }
 
-        // Pushes an item to the top of the stack.
         /// <summary>
         ///     Pushes the item
         /// </summary>
@@ -415,7 +373,6 @@ namespace Alis.Core.Ecs.Collections
             }
         }
 
-        // Non-inline from Stack.Push to improve its code quality as uncommon path
         /// <summary>
         ///     Pushes the with resize using the specified item
         /// </summary>
@@ -478,15 +435,11 @@ namespace Alis.Core.Ecs.Collections
         {
             int newcapacity = _array.Length == 0 ? DefaultCapacity : 2 * _array.Length;
 
-            // Allow the list to grow to maximum possible capacity (~2G elements) before encountering overflow.
-            // Note that this check works even when _items.Length overflowed thanks to the (uint) cast.
             if ((uint) newcapacity > MaxArrayLength)
             {
                 newcapacity = MaxArrayLength;
             }
 
-            // If computed capacity is still less than specified, set to the original argument.
-            // Capacities exceeding MaxArrayLength will be surfaced as OutOfMemoryException by Array.Resize.
             if (newcapacity < capacity)
             {
                 newcapacity = capacity;
@@ -495,7 +448,6 @@ namespace Alis.Core.Ecs.Collections
             Array.Resize(ref _array, newcapacity);
         }
 
-        // Copies the Stack to an array, in the same order Pop would return the items.
         /// <summary>
         ///     Returns the array
         /// </summary>
@@ -593,7 +545,6 @@ namespace Alis.Core.Ecs.Collections
 
                 if (_index == -2)
                 {
-                    // First call to enumerator.
                     _index = _fastestStack._size - 1;
                     retval = _index >= 0;
                     if (retval)
@@ -605,7 +556,6 @@ namespace Alis.Core.Ecs.Collections
                 }
 
                 if (_index == -1)
-                    // End of enumeration.
                 {
                     return false;
                 }

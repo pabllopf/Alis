@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AttributeBasedExecutionStrategyTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Extension.Thread.Attributes;
 using Alis.Extension.Thread.Interfaces;
@@ -79,13 +52,10 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void CanExecuteInParallel_DetectsAttribute()
         {
-            // Arrange
             AttributeBasedExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
 
-            // Act
             bool result = strategy.CanExecuteInParallel(typeof(TestComponentWithAttribute));
 
-            // Assert
             Assert.True(result);
         }
 
@@ -95,13 +65,10 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void CanExecuteInParallel_DetectsInterface()
         {
-            // Arrange
             AttributeBasedExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
 
-            // Act
             bool result = strategy.CanExecuteInParallel(typeof(TestComponentWithInterface));
 
-            // Assert
             Assert.True(result);
         }
 
@@ -111,13 +78,10 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void CanExecuteInParallel_ReturnsFalseForUnmarkedComponent()
         {
-            // Arrange
             AttributeBasedExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
 
-            // Act
             bool result = strategy.CanExecuteInParallel(typeof(TestComponentWithoutMarkers));
 
-            // Assert
             Assert.False(result);
         }
 
@@ -127,13 +91,10 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void GetMinimumBatchSize_ReadsAttributeValue()
         {
-            // Arrange
             AttributeBasedExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
 
-            // Act
             int batchSize = strategy.GetMinimumBatchSize(typeof(TestComponentWithAttribute));
 
-            // Assert
             Assert.Equal(256, batchSize);
         }
 
@@ -143,13 +104,10 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void GetMinimumBatchSize_ReturnsDefaultForComponentWithoutAttribute()
         {
-            // Arrange
             AttributeBasedExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
 
-            // Act
             int batchSize = strategy.GetMinimumBatchSize(typeof(TestComponentWithInterface));
 
-            // Assert
             Assert.Equal(128, batchSize);
         }
 
@@ -159,15 +117,12 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void ClearCache_ClearsInternalCaches()
         {
-            // Arrange
             AttributeBasedExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
             strategy.CanExecuteInParallel(typeof(TestComponentWithAttribute));
             strategy.GetMinimumBatchSize(typeof(TestComponentWithAttribute));
 
-            // Act
             strategy.ClearCache();
 
-            // Assert - should not throw
             Assert.True(true);
         }
     }

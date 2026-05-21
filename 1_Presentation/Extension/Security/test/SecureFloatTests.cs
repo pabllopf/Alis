@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:SecureFloatTests.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Xunit;
 
@@ -159,13 +132,10 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestValueSetGet()
         {
-            // Arrange
             SecureFloat secureFloat = new SecureFloat(10f);
 
-            // Act
             float value = secureFloat;
 
-            // Assert
             Assert.Equal(10f, value);
         }
 
@@ -175,11 +145,9 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestEquality()
         {
-            // Arrange
             SecureFloat secureFloat1 = new SecureFloat(10f);
             SecureFloat secureFloat2 = new SecureFloat(10f);
 
-            // Assert
             Assert.True(secureFloat1 == secureFloat2);
         }
 
@@ -189,11 +157,9 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestInequality()
         {
-            // Arrange
             SecureFloat secureFloat1 = new SecureFloat(10f);
             SecureFloat secureFloat2 = new SecureFloat(20f);
 
-            // Assert
             Assert.True(secureFloat1 != secureFloat2);
         }
 
@@ -203,13 +169,10 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestIncrement()
         {
-            // Arrange
             SecureFloat secureFloat = new SecureFloat(10f);
 
-            // Act
             secureFloat++;
 
-            // Assert
             Assert.Equal(11f, (float) secureFloat);
         }
 
@@ -219,13 +182,10 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestDecrement()
         {
-            // Arrange
             SecureFloat secureFloat = new SecureFloat(10f);
 
-            // Act
             secureFloat--;
 
-            // Assert
             Assert.Equal(9f, (float) secureFloat);
         }
 
@@ -235,14 +195,11 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void TestSubtraction()
         {
-            // Arrange
             SecureFloat secureFloat1 = new SecureFloat(20f);
             SecureFloat secureFloat2 = new SecureFloat(10f);
 
-            // Act
             SecureFloat result = secureFloat1 - secureFloat2;
 
-            // Assert
             Assert.Equal(10f, (float) result);
         }
 

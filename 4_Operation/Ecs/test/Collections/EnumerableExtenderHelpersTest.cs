@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EnumerableExtenderHelpersTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using Alis.Core.Ecs.Collections;
@@ -51,10 +24,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_GetEmptyEnumeratorReturnsValidEnumerator()
         {
-            // Act
             IEnumerator<int> enumerator = EnumerableHelpers.GetEmptyEnumerator<int>();
 
-            // Assert
             Assert.NotNull(enumerator);
             Assert.False(enumerator.MoveNext());
         }
@@ -68,13 +39,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_ToArrayWithEmptyCollection()
         {
-            // Arrange
             List<int> source = new List<int>();
 
-            // Act
             int[] result = EnumerableHelpers.ToArray(source, out int length);
 
-            // Assert
             Assert.Equal(0, length);
             Assert.NotNull(result);
         }
@@ -88,13 +56,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_ToArrayWithSingleElement()
         {
-            // Arrange
             int[] source = new[] {42};
 
-            // Act
             int[] result = EnumerableHelpers.ToArray(source, out int length);
 
-            // Assert
             Assert.Equal(1, length);
             Assert.Equal(42, result[0]);
         }
@@ -108,13 +73,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_ToArrayWithLargeEnumerable()
         {
-            // Arrange
             IEnumerable<int> source = GetLargeEnumerable(100);
 
-            // Act
             int[] result = EnumerableHelpers.ToArray(source, out int length);
 
-            // Assert
             Assert.Equal(100, length);
             for (int i = 0; i < 100; i++)
             {
@@ -131,16 +93,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_ResetEnumerator()
         {
-            // Arrange
             List<int> source = new List<int> {1, 2, 3};
             IEnumerator<int> enumerator = source.GetEnumerator();
             enumerator.MoveNext();
             Assert.Equal(1, enumerator.Current);
 
-            // Act
             EnumerableHelpers.Reset(ref enumerator);
 
-            // Assert
             Assert.True(enumerator.MoveNext());
             Assert.Equal(1, enumerator.Current);
         }
@@ -154,13 +113,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_ToArrayPreservesOrder()
         {
-            // Arrange
             List<string> source = new List<string> {"a", "b", "c", "d"};
 
-            // Act
             string[] result = EnumerableHelpers.ToArray(source, out int length);
 
-            // Assert
             Assert.Equal(4, length);
             Assert.Equal("a", result[0]);
             Assert.Equal("b", result[1]);

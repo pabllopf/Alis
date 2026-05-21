@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ClientApiEnumTests.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Graphic.Glfw.Enums;
@@ -44,10 +17,8 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void ClientApi_OpenGl_IsDefined()
         {
-            // Act
             bool isDefined = Enum.IsDefined(typeof(ClientApi), ClientApi.OpenGl);
 
-            // Assert
             Assert.True(isDefined);
         }
 
@@ -57,10 +28,8 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void ClientApi_OpenGlEs_IsDefined()
         {
-            // Act
             bool isDefined = Enum.IsDefined(typeof(ClientApi), ClientApi.OpenGles);
 
-            // Assert
             Assert.True(isDefined);
         }
 
@@ -70,10 +39,8 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void ClientApi_None_IsDefined()
         {
-            // Act
             bool isDefined = Enum.IsDefined(typeof(ClientApi), ClientApi.None);
 
-            // Assert
             Assert.True(isDefined);
         }
 
@@ -83,13 +50,10 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void ClientApi_CanBeCastToInt()
         {
-            // Arrange
             ClientApi api = ClientApi.OpenGl;
 
-            // Act
             int value = (int) api;
 
-            // Assert
             Assert.True(value != 0);
         }
 
@@ -99,7 +63,6 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void ClientApi_AllApis_AreDifferent()
         {
-            // Assert
             Assert.NotEqual(ClientApi.OpenGl, ClientApi.OpenGles);
             Assert.NotEqual(ClientApi.OpenGl, ClientApi.None);
             Assert.NotEqual(ClientApi.OpenGles, ClientApi.None);

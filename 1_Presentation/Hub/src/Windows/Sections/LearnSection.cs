@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:LearnSection.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -95,14 +68,11 @@ namespace Alis.App.Hub.Windows.Sections
         /// </summary>
         public override void OnRender(float scaleFactor)
         {
-            // Header for the section
             ImGui.Text("Learn and Explore");
             ImGui.Separator();
 
-            // Create buttons as tabs for each section
             if (ImGui.Button("📚 Tutorials"))
             {
-                // Handle "Tutorials" tab logic
                 showTutorials = true;
                 showDocumentation = false;
                 showVideos = false;
@@ -113,7 +83,6 @@ namespace Alis.App.Hub.Windows.Sections
 
             if (ImGui.Button("📖 Documentation"))
             {
-                // Handle "Documentation" tab logic
                 showTutorials = false;
                 showDocumentation = true;
                 showVideos = false;
@@ -124,7 +93,6 @@ namespace Alis.App.Hub.Windows.Sections
 
             if (ImGui.Button("🎥 Videos"))
             {
-                // Handle "Videos" tab logic
                 showTutorials = false;
                 showDocumentation = false;
                 showVideos = true;
@@ -135,7 +103,6 @@ namespace Alis.App.Hub.Windows.Sections
 
             if (ImGui.Button("💡 Tips"))
             {
-                // Handle "Tips" tab logic
                 showTutorials = false;
                 showDocumentation = false;
                 showVideos = false;
@@ -144,10 +111,8 @@ namespace Alis.App.Hub.Windows.Sections
 
             //ImGui.PopStyleColor(3);  // Reset to default button styles
 
-            // Add a separator
             ImGui.Separator();
 
-            // Display content based on the selected "tab" (button)
             if (showTutorials)
             {
                 DisplayTutorials();

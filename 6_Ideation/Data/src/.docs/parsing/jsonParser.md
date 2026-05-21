@@ -151,12 +151,10 @@ string json = @"{
 
 var dict = parser.ParseToDictionary(json);
 
-// Complex values returned as raw JSON
 Console.WriteLine(dict["User"]);   
 // {\"Name\":\"Bob\",\"Email\":\"bob@example.com\"}
 
 Console.WriteLine(dict["Scores"]); 
-// [90, 85, 92]
 ```
 
 ### Error Handling
@@ -193,22 +191,16 @@ catch (JsonParsingException ex)
 Key test cases:
 
 ```csharp
-// Empty JSON
 ParseToDictionary("{}") → empty dictionary
 
-// Simple properties
 ParseToDictionary("{\"a\":\"1\",\"b\":\"2\"}") → {"a":"1","b":"2"}
 
-// Nested structures
 ParseToDictionary("{\"data\":{}}") → {"data":"{}"}
 
-// Arrays
 ParseToDictionary("{\"items\":[1,2]}") → {"items":"[1,2]"}
 
-// Escape sequences
 ParseToDictionary("{\"text\":\"a\\nb\"}") → {"text":"a\nb"}
 
-// Malformed JSON
 ParseToDictionary("{bad}") → throws JsonParsingException
 ```
 

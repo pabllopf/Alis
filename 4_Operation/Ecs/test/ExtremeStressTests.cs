@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ExtremeStressTests.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using Alis.Core.Ecs.Systems;
@@ -46,16 +19,13 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500), InlineData(1000), InlineData(2000), InlineData(5000)]
         public void ExtremeStress_CreateManyEntities_NoThrow(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             for (int i = 0; i < entityCount; i++)
             {
                 scene.Create();
             }
 
-            // Assert
             Assert.True(true); // No exception thrown
         }
 
@@ -66,10 +36,8 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500), InlineData(1000), InlineData(2000)]
         public void ExtremeStress_CreateWithMultipleComponentsLarge_NoThrow(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             for (int i = 0; i < entityCount; i++)
             {
                 scene.Create(
@@ -78,7 +46,6 @@ namespace Alis.Core.Ecs.Test
                 );
             }
 
-            // Assert
             int count = 0;
             foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
@@ -95,7 +62,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500), InlineData(1000)]
         public void ExtremeStress_DeleteAllCreated_NoThrow(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
@@ -103,13 +69,11 @@ namespace Alis.Core.Ecs.Test
                 entities[i] = scene.Create();
             }
 
-            // Act
             for (int i = 0; i < entityCount; i++)
             {
                 entities[i].Delete();
             }
 
-            // Assert
             Assert.True(true);
         }
 
@@ -120,17 +84,14 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500), InlineData(1000)]
         public void ExtremeStress_CreateDeleteCycle_Stable(int cycleCount)
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             for (int i = 0; i < cycleCount; i++)
             {
                 GameObject entity = scene.Create(new Position {X = 1, Y = 1});
                 entity.Delete();
             }
 
-            // Assert
             Assert.True(true);
         }
 
@@ -141,11 +102,9 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500)]
         public void ExtremeStress_ManyComponentOperations_Stable(int operationCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             for (int i = 0; i < operationCount; i++)
             {
                 if (i % 2 == 0)
@@ -158,7 +117,6 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Assert
             Assert.True(true);
         }
 
@@ -169,14 +127,12 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(10), InlineData(50), InlineData(100)]
         public void ExtremeStress_HeavyQuerying_Fast(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < entityCount; i++)
             {
                 scene.Create(new Position {X = i, Y = i});
             }
 
-            // Act
             for (int q = 0; q < 100; q++)
             {
                 int count = 0;
@@ -188,7 +144,6 @@ namespace Alis.Core.Ecs.Test
                 Assert.Equal(entityCount, count);
             }
 
-            // Assert
             Assert.True(true);
         }
 
@@ -199,11 +154,9 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500)]
         public void ExtremeStress_LargeComponentCounts_Stable(int componentCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             for (int i = 0; (i < componentCount) && (i < 10); i++)
             {
                 switch (i % 10)
@@ -281,7 +234,6 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Assert
             Assert.True(entity.IsAlive);
         }
 
@@ -292,11 +244,9 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500)]
         public void ExtremeStress_MixedMultiSceneOperations_Stable(int operationCount)
         {
-            // Arrange
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
 
-            // Act
             for (int i = 0; i < operationCount; i++)
             {
                 if (i % 2 == 0)
@@ -309,7 +259,6 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Assert
             int count1 = 0, count2 = 0;
             foreach (GameObject go in scene1.Query<With<Position>>().EnumerateWithEntities())
             {
@@ -331,15 +280,12 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500)]
         public void ExtremeStress_DeeplyNestedOperations_Stable(int depth)
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             for (int i = 0; i < depth; i++)
             {
                 GameObject go = scene.Create(new Position {X = i, Y = i});
 
-                // Deep operation chain
                 if (go.IsAlive)
                 {
                     if (go.Has<Position>())
@@ -355,7 +301,6 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Assert
             Assert.True(true);
         }
 
@@ -366,11 +311,9 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500)]
         public void ExtremeStress_AlternatingOperations_Stable(int iterations)
         {
-            // Arrange
             using Scene scene = new Scene();
             List<GameObject> entities = new List<GameObject>();
 
-            // Act
             for (int i = 0; i < iterations; i++)
             {
                 if (i % 3 == 0)
@@ -393,7 +336,6 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Assert
             Assert.True(true);
         }
     }

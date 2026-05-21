@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ContactManager.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -156,13 +129,11 @@ namespace Alis.Core.Physic.Dynamics
             Body bodyA = fixtureA.GetBody;
             Body bodyB = fixtureB.GetBody;
 
-            // Are the fixtures on the same body?
             if (bodyA == bodyB)
             {
                 return;
             }
 
-            // Does a contact already exist?
             for (ContactEdge ceB = bodyB.ContactList; ceB != null; ceB = ceB.Next)
             {
                 if (ceB.Other == bodyA)
@@ -174,31 +145,26 @@ namespace Alis.Core.Physic.Dynamics
 
                     if ((fA == fixtureA) && (fB == fixtureB) && (iA == indexA) && (iB == indexB))
                     {
-                        // A contact already exists.
                         return;
                     }
 
                     if ((fA == fixtureB) && (fB == fixtureA) && (iA == indexB) && (iB == indexA))
                     {
-                        // A contact already exists.
                         return;
                     }
                 }
             }
 
-            // Does a joint override collision? Is at least one body dynamic?
             if (!bodyB.ShouldCollide(bodyA))
             {
                 return;
             }
 
-            //Check default filter
             if (!ShouldCollide(fixtureA, fixtureB))
             {
                 return;
             }
 
-            // Check user filtering.
             CollisionFilterDelegate contactFilterHandler = ContactFilter;
             if (contactFilterHandler != null)
             {
@@ -208,7 +174,6 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            //FPE feature: BeforeCollision delegate
             BeforeCollisionEventHandler beforeCollisionHandlerA = fixtureA.BeforeCollision;
             if (beforeCollisionHandlerA != null)
             {
@@ -227,7 +192,6 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            // Call the factory.
             Contact c = Contact.Create(this, fixtureA, indexA, fixtureB, indexB);
 
             if (c == null)
@@ -235,13 +199,11 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            // Contact creation may swap fixtures.
             fixtureA = c.FixtureA;
             fixtureB = c.FixtureB;
             bodyA = fixtureA.GetBody;
             bodyB = fixtureB.GetBody;
 
-            // Insert into the world.
             c.Prev = ContactList;
             c.Next = c.Prev.Next;
             c.Prev.Next = c;
@@ -251,7 +213,6 @@ namespace Alis.Core.Physic.Dynamics
 
             // Connect to island graph.
 
-            // Connect to body A
             c.NodeA.Contact = c;
             c.NodeA.Other = bodyB;
 
@@ -264,7 +225,6 @@ namespace Alis.Core.Physic.Dynamics
 
             bodyA.ContactList = c.NodeA;
 
-            // Connect to body B
             c.NodeB.Contact = c;
             c.NodeB.Other = bodyA;
 
@@ -277,7 +237,6 @@ namespace Alis.Core.Physic.Dynamics
 
             bodyB.ContactList = c.NodeB;
 
-            // Wake up the bodies
             if (!fixtureA.GetIsSensor && !fixtureB.GetIsSensor)
             {
                 bodyA.Awake = true;
@@ -399,17 +358,14 @@ namespace Alis.Core.Physic.Dynamics
                 Body bodyA = fixtureA.GetBody;
                 Body bodyB = fixtureB.GetBody;
 
-                //Do no try to collide disabled bodies
                 if (!bodyA.Enabled || !bodyB.Enabled)
                 {
                     c = c.Next;
                     continue;
                 }
 
-                // Is this contact flagged for filtering?
                 if (c.FilterFlag)
                 {
-                    // Should these bodies collide?
                     if (!bodyB.ShouldCollide(bodyA))
                     {
                         Contact cNuke = c;
@@ -418,7 +374,6 @@ namespace Alis.Core.Physic.Dynamics
                         continue;
                     }
 
-                    // Check default filtering
                     if (!ShouldCollide(fixtureA, fixtureB))
                     {
                         Contact cNuke = c;
@@ -427,7 +382,6 @@ namespace Alis.Core.Physic.Dynamics
                         continue;
                     }
 
-                    // Check user filtering.
                     CollisionFilterDelegate contactFilterHandler = ContactFilter;
                     if (contactFilterHandler != null && !contactFilterHandler(fixtureA, fixtureB))
                     {
@@ -437,14 +391,12 @@ namespace Alis.Core.Physic.Dynamics
                         continue;
                     }
 
-                    // Clear the filtering flag.
                     c.FilterFlag = false;
                 }
 
                 bool activeA = bodyA.Awake && (bodyA.GetBodyType != BodyType.Static);
                 bool activeB = bodyB.Awake && (bodyB.GetBodyType != BodyType.Static);
 
-                // At least one body must be awake and it must be dynamic or kinematic.
                 if (!activeA && !activeB)
                 {
                     c = c.Next;
@@ -456,7 +408,6 @@ namespace Alis.Core.Physic.Dynamics
 
                 bool overlap = BroadPhaseFixtureNode.TestOverlap(proxyIdA, proxyIdB);
 
-                // Here we destroy contacts that cease to overlap in the broad-phase.
                 if (!overlap)
                 {
                     Contact cNuke = c;
@@ -465,7 +416,6 @@ namespace Alis.Core.Physic.Dynamics
                     continue;
                 }
 
-                // The contact persists.
                 c.Update(this);
 
                 c = c.Next;
@@ -481,7 +431,6 @@ namespace Alis.Core.Physic.Dynamics
         {
             int lockOrder = 0;
 
-            // Update awake contacts.
             for (Contact c = ContactList.Next; c != ContactList;)
             {
                 Fixture fixtureA = c.FixtureA;
@@ -491,17 +440,14 @@ namespace Alis.Core.Physic.Dynamics
                 Body bodyA = fixtureA.GetBody;
                 Body bodyB = fixtureB.GetBody;
 
-                //Do no try to collide disabled bodies
                 if (!bodyA.Enabled || !bodyB.Enabled)
                 {
                     c = c.Next;
                     continue;
                 }
 
-                // Is this contact flagged for filtering?
                 if (c.FilterFlag)
                 {
-                    // Should these bodies collide?
                     if (!bodyB.ShouldCollide(bodyA))
                     {
                         Contact cNuke = c;
@@ -510,7 +456,6 @@ namespace Alis.Core.Physic.Dynamics
                         continue;
                     }
 
-                    // Check default filtering
                     if (!ShouldCollide(fixtureA, fixtureB))
                     {
                         Contact cNuke = c;
@@ -519,7 +464,6 @@ namespace Alis.Core.Physic.Dynamics
                         continue;
                     }
 
-                    // Check user filtering.
                     CollisionFilterDelegate contactFilterHandler = ContactFilter;
                     if (contactFilterHandler != null && !contactFilterHandler(fixtureA, fixtureB))
                     {
@@ -529,14 +473,12 @@ namespace Alis.Core.Physic.Dynamics
                         continue;
                     }
 
-                    // Clear the filtering flag.
                     c.FilterFlag = false;
                 }
 
                 bool activeA = bodyA.Awake && (bodyA.GetBodyType != BodyType.Static);
                 bool activeB = bodyB.Awake && (bodyB.GetBodyType != BodyType.Static);
 
-                // At least one body must be awake and it must be dynamic or kinematic.
                 if (!activeA && !activeB)
                 {
                     c = c.Next;
@@ -548,7 +490,6 @@ namespace Alis.Core.Physic.Dynamics
 
                 bool overlap = BroadPhaseFixtureNode.TestOverlap(proxyIdA, proxyIdB);
 
-                // Here we destroy contacts that cease to overlap in the broad-phase.
                 if (!overlap)
                 {
                     Contact cNuke = c;
@@ -557,9 +498,7 @@ namespace Alis.Core.Physic.Dynamics
                     continue;
                 }
 
-                // The contact persists.
                 updateList.Add(c);
-                // Assign a unique id for lock order
                 bodyA.LockOrder = lockOrder++;
                 bodyB.LockOrder = lockOrder++;
 
@@ -568,14 +507,11 @@ namespace Alis.Core.Physic.Dynamics
             }
 
 
-            // update contacts
             Parallel.ForEach(updateList, c =>
             {
-                // find lower order item
                 Fixture fixtureA = c.FixtureA;
                 Fixture fixtureB = c.FixtureB;
 
-                // find lower order item
                 Body orderedBodyA = fixtureA.GetBody;
                 Body orderedBodyB = fixtureB.GetBody;
                 int idA = orderedBodyA.LockOrder;
@@ -591,7 +527,6 @@ namespace Alis.Core.Physic.Dynamics
                     orderedBodyB = fixtureA.GetBody;
                 }
 
-                // obtain lock
                 for (;;)
                 {
                     if (Interlocked.CompareExchange(ref orderedBodyA.Lock, 1, 0) == 0)

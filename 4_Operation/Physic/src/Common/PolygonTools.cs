@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:PolygonTools.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -73,7 +46,6 @@ namespace Alis.Core.Physic.Common
 
             ControllerTransform xf = new ControllerTransform(center, angle);
 
-            // Transform vertices
             for (int i = 0; i < 4; ++i)
             {
                 vertices[i] = ControllerTransform.Multiply(vertices[i], ref xf);
@@ -107,7 +79,6 @@ namespace Alis.Core.Physic.Common
                 throw new ArgumentOutOfRangeException(nameof(segments), "Segments must be zero or more.");
             }
 
-            //We need at least 8 vertices to create a rounded rectangle
             Vertices vertices = new Vertices();
             if (segments == 0)
             {
@@ -298,7 +269,6 @@ namespace Alis.Core.Physic.Common
 
             float newHeight = (height - topRadius - bottomRadius) * 0.5f;
 
-            // top
             vertices.Add(new Vector2F(topRadius, newHeight));
 
             float stepSize = Constant.Pi / topEdges;
@@ -310,7 +280,6 @@ namespace Alis.Core.Physic.Common
 
             vertices.Add(new Vector2F(-topRadius, newHeight));
 
-            // bottom
             vertices.Add(new Vector2F(-bottomRadius, -newHeight));
 
             stepSize = Constant.Pi / bottomEdges;

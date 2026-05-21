@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:SimplifyTools.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -60,7 +33,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 Vector2F current = vertices[i];
                 Vector2F next = vertices.NextVertex(i);
 
-                //If they collinear, continue
                 if (MathUtils.IsCollinear(ref prev, ref current, ref next, collinearityTolerance))
                 {
                     continue;
@@ -171,7 +143,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             bool[] mergeMe = new bool[vertices.Count];
             int newNVertices = vertices.Count;
 
-            //Gather points to process
             for (int i = 0; i < vertices.Count; ++i)
             {
                 int lower = i == 0 ? vertices.Count - 1 : i - 1;
@@ -187,7 +158,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
                 if (!((norm0 > 0.0f) && (norm1 > 0.0f)) && (newNVertices > 3))
                 {
-                    //Merge identical points
                     mergeMe[i] = true;
                     --newNVertices;
                 }
@@ -217,7 +187,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
             int currIndex = 0;
 
-            //Copy the vertices to a new list and clear the old
             Vertices newVertices = new Vertices(newNVertices);
 
             for (int i = 0; i < vertices.Count; ++i)
@@ -271,7 +240,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 Vector2F current = vertices[i];
                 Vector2F next = vertices.NextVertex(i);
 
-                //If they are closer than the distance, continue
                 if ((next - current).LengthSquared() <= distance2)
                 {
                     continue;

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ComponentDataTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Collections;
@@ -53,16 +26,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_CanBeCreated()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage = new IdTable<TestComponent>();
             Delegate initer = null;
             Delegate destroyer = null;
 
-            // Act
             ComponentData data = new ComponentData(type, storage, initer, destroyer);
 
-            // Assert
             Assert.Equal(type, data.Type);
             Assert.Equal(storage, data.Storage);
         }
@@ -76,14 +46,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_TypeFieldIsPreserved()
         {
-            // Arrange
             Type type = typeof(Position);
             IdTable storage = new IdTable<Position>();
 
-            // Act
             ComponentData data = new ComponentData(type, storage, null, null);
 
-            // Assert
             Assert.Equal(type, data.Type);
         }
 
@@ -96,14 +63,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_StorageFieldIsPreserved()
         {
-            // Arrange
             IdTable storage = new IdTable<Health>();
             Type type = typeof(Health);
 
-            // Act
             ComponentData data = new ComponentData(type, storage, null, null);
 
-            // Assert
             Assert.Equal(storage, data.Storage);
         }
 
@@ -116,15 +80,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_IniterDelegateIsPreserved()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage = new IdTable<TestComponent>();
             Action initer = () => { };
 
-            // Act
             ComponentData data = new ComponentData(type, storage, initer, null);
 
-            // Assert
             Assert.Equal(initer, data.Initer);
         }
 
@@ -137,15 +98,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_DestroyerDelegateIsPreserved()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage = new IdTable<TestComponent>();
             Action destroyer = () => { };
 
-            // Act
             ComponentData data = new ComponentData(type, storage, null, destroyer);
 
-            // Assert
             Assert.Equal(destroyer, data.Destroyer);
         }
 
@@ -158,15 +116,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_IsRecordStruct()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage = new IdTable<TestComponent>();
 
-            // Act
             ComponentData data1 = new ComponentData(type, storage, null, null);
             ComponentData data2 = new ComponentData(type, storage, null, null);
 
-            // Assert
             Assert.Equal(data1, data2);
         }
 
@@ -179,16 +134,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_WithDifferentTypesAreNotEqual()
         {
-            // Arrange
             IdTable storage = new IdTable<TestComponent>();
             Type type1 = typeof(TestComponent);
             Type type2 = typeof(Position);
 
-            // Act
             ComponentData data1 = new ComponentData(type1, storage, null, null);
             ComponentData data2 = new ComponentData(type2, storage, null, null);
 
-            // Assert
             Assert.NotEqual(data1, data2);
         }
 
@@ -201,14 +153,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_WithNullDelegates()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage = new IdTable<TestComponent>();
 
-            // Act
             ComponentData data = new ComponentData(type, storage, null, null);
 
-            // Assert
             Assert.Null(data.Initer);
             Assert.Null(data.Destroyer);
         }
@@ -222,15 +171,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_HashCodeConsistency()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage = new IdTable<TestComponent>();
 
-            // Act
             ComponentData data1 = new ComponentData(type, storage, null, null);
             ComponentData data2 = new ComponentData(type, storage, null, null);
 
-            // Assert
             Assert.Equal(data1.GetHashCode(), data2.GetHashCode());
         }
 
@@ -243,16 +189,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_WithDifferentStoragesAreNotEqual()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage1 = new IdTable<TestComponent>();
             IdTable storage2 = new IdTable<TestComponent>();
 
-            // Act
             ComponentData data1 = new ComponentData(type, storage1, null, null);
             ComponentData data2 = new ComponentData(type, storage2, null, null);
 
-            // Assert
             Assert.NotEqual(data1, data2);
         }
 
@@ -265,17 +208,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_WithDifferentInitersAreNotEqual()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage = new IdTable<TestComponent>();
             Action initer1 = () => { };
             Action initer2 = () => { };
 
-            // Act
             ComponentData data1 = new ComponentData(type, storage, initer1, null);
             ComponentData data2 = new ComponentData(type, storage, initer2, null);
 
-            // Assert
             Assert.NotEqual(data1, data2);
         }
 
@@ -288,17 +228,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_WithDifferentDestroyersAreNotEqual()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage = new IdTable<TestComponent>();
             Action destroyer1 = () => { };
             Action destroyer2 = () => { };
 
-            // Act
             ComponentData data1 = new ComponentData(type, storage, null, destroyer1);
             ComponentData data2 = new ComponentData(type, storage, null, destroyer2);
 
-            // Assert
             Assert.NotEqual(data1, data2);
         }
 
@@ -311,15 +248,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_ToStringWorks()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage = new IdTable<TestComponent>();
 
-            // Act
             ComponentData data = new ComponentData(type, storage, null, null);
             string result = data.ToString();
 
-            // Assert
             Assert.NotNull(result);
             Assert.IsType<string>(result);
         }
@@ -333,16 +267,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_WithBothDelegates()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage = new IdTable<TestComponent>();
             Action initer = () => { };
             Action destroyer = () => { };
 
-            // Act
             ComponentData data = new ComponentData(type, storage, initer, destroyer);
 
-            // Assert
             Assert.Equal(initer, data.Initer);
             Assert.Equal(destroyer, data.Destroyer);
             Assert.NotNull(data.Initer);
@@ -358,15 +289,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentData_Equality()
         {
-            // Arrange
             Type type = typeof(TestComponent);
             IdTable storage = new IdTable<TestComponent>();
 
-            // Act
             ComponentData data1 = new ComponentData(type, storage, null, null);
             ComponentData data2 = new ComponentData(type, storage, null, null);
 
-            // Assert
             Assert.Equal(data1, data2);
         }
     }

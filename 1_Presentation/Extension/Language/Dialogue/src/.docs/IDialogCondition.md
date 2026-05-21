@@ -63,7 +63,6 @@ public class ItemCondition : IDialogCondition
     }
 }
 
-// Uso
 var condition = new ItemCondition("sword", 1);
 option.AddCondition(condition);
 ```
@@ -71,14 +70,12 @@ option.AddCondition(condition);
 ### Ejemplo Completo con Múltiples Condiciones
 
 ```csharp
-// Condición: El jugador tiene nivel >= 5
 var levelCondition = new LambdaDialogCondition(ctx =>
 {
     int level = ctx.GetVariable<int>("playerLevel");
     return level >= 5;
 });
 
-// Condición: El jugador completó el tutorial
 var tutorialCondition = new LambdaDialogCondition(ctx =>
 {
     return ctx.GetVariable<bool>("completedTutorial");
@@ -92,7 +89,6 @@ var option = new DialogOption("Misión avanzada", () =>
 option.AddCondition(levelCondition);
 option.AddCondition(tutorialCondition);
 
-// La opción solo estará disponible si AMBAS condiciones son verdaderas
 ```
 
 ## Evaluación en DialogManager
@@ -104,9 +100,7 @@ dialog.AddOption(optionWithConditions);
 manager.AddDialog(dialog);
 manager.StartDialog("quest");
 
-// Obtener solo opciones disponibles
 var availableOptions = manager.GetAvailableOptions();
-// Solo mostrará opciones cuyas condiciones se cumplan
 ```
 
 ## Patrón Strategy

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AdsManager.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Threading.Tasks;
@@ -251,7 +224,6 @@ namespace Alis.Extension.Ads.GoogleAds
             Logger.Info("Interstitial ad shown");
             OnAdClicked?.Invoke("interstitial");
 
-            // Reset the loaded state after showing
             _isInterstitialAdLoaded = false;
         }
 
@@ -285,10 +257,8 @@ namespace Alis.Extension.Ads.GoogleAds
             Logger.Info("Rewarded video ad shown");
             OnAdClicked?.Invoke("rewarded_video");
 
-            // Simulate reward
             OnAdRewarded?.Invoke(new AdRewardEventArgs("coins", 10, "rewarded_video_unit"));
 
-            // Reset the loaded state after showing
             _isRewardedVideoAdLoaded = false;
         }
 
@@ -362,7 +332,6 @@ namespace Alis.Extension.Ads.GoogleAds
 
             try
             {
-                // Simulate ad loading
                 Logger.Info($"Loading banner ad with unit ID: {adUnitId}");
                 _isBannerAdLoaded = true;
                 OnBannerAdLoaded?.Invoke(adUnitId);
@@ -399,7 +368,6 @@ namespace Alis.Extension.Ads.GoogleAds
 
             try
             {
-                // Simulate ad loading
                 Logger.Info($"Loading interstitial ad with unit ID: {adUnitId}");
                 _isInterstitialAdLoaded = true;
                 OnInterstitialAdLoaded?.Invoke(adUnitId);
@@ -436,7 +404,6 @@ namespace Alis.Extension.Ads.GoogleAds
 
             try
             {
-                // Simulate ad loading
                 Logger.Info($"Loading rewarded video ad with unit ID: {adUnitId}");
                 _isRewardedVideoAdLoaded = true;
                 OnRewardedVideoAdLoaded?.Invoke(adUnitId);

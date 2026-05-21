@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Vertices.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -150,7 +123,6 @@ public Vertices(IEnumerable<Vector2F> vertices)
         /// </remarks>
         public float GetSignedArea()
         {
-            //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
             {
                 return 0;
@@ -206,31 +178,26 @@ public Vertices(IEnumerable<Vector2F> vertices)
         /// </remarks>
         public Vector2F GetCentroid()
         {
-            //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
             {
                 return new Vector2F(float.NaN, float.NaN);
             }
 
-            // Same algorithm is used by Box2D
             Vector2F c = Vector2F.Zero;
             float area = 0.0f;
             const float inv3 = 1.0f / 3.0f;
 
             for (int i = 0; i < Count; ++i)
             {
-                // Triangle vertices.
                 Vector2F current = this[i];
                 Vector2F next = i + 1 < Count ? this[i + 1] : this[0];
 
                 float triangleArea = 0.5f * (current.X * next.Y - current.Y * next.X);
                 area += triangleArea;
 
-                // Area weighted centroid
                 c += triangleArea * inv3 * (current + next);
             }
 
-            // Centroid
             c *= 1.0f / area;
             return c;
         }
@@ -385,19 +352,16 @@ public Vertices(IEnumerable<Vector2F> vertices)
         /// <exception cref="InvalidOperationException">Thrown if the polygon has fewer than 3 vertices.</exception>
         public bool IsConvex()
         {
-            //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
             {
                 return false;
             }
 
-            //Triangles are always convex
             if (Count == 3)
             {
                 return true;
             }
 
-            // Checks the polygon is convex and the interior is to the left of each edge.
             for (int i = 0; i < Count; ++i)
             {
                 int next = i + 1 < Count ? i + 1 : 0;
@@ -405,7 +369,6 @@ public Vertices(IEnumerable<Vector2F> vertices)
 
                 for (int j = 0; j < Count; ++j)
                 {
-                    // Don't check vertices on the current edge.
                     if (j == i || j == next)
                     {
                         continue;
@@ -445,7 +408,6 @@ public Vertices(IEnumerable<Vector2F> vertices)
         /// </warning>
         public bool IsCounterClockWise()
         {
-            //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
             {
                 return false;
@@ -463,7 +425,6 @@ public Vertices(IEnumerable<Vector2F> vertices)
         /// </remarks>
         public void ForceCounterClockWise()
         {
-            //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
             {
                 return;
@@ -487,7 +448,6 @@ public Vertices(IEnumerable<Vector2F> vertices)
         /// </remarks>
         public bool IsSimple()
         {
-            //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
             {
                 return false;
@@ -541,7 +501,6 @@ public Vertices(IEnumerable<Vector2F> vertices)
                 return PolygonError.NotConvex;
             }
 
-            //Check if the sides are of adequate length.
             for (int i = 0; i < Count; ++i)
             {
                 int next = i + 1 < Count ? i + 1 : 0;
@@ -572,7 +531,6 @@ public Vertices(IEnumerable<Vector2F> vertices)
         /// </remarks>
         public void ProjectToAxis(ref Vector2F axis, out float min, out float max)
         {
-            // To project a point on an axis use the dot product
             float dotProduct = Vector2F.Dot(axis, this[0]);
             min = dotProduct;
             max = dotProduct;
@@ -662,10 +620,8 @@ public Vertices(IEnumerable<Vector2F> vertices)
         {
             double angle = 0;
 
-            // Iterate through polygon's edges
             for (int i = 0; i < Count; i++)
             {
-                // Get points
                 Vector2F p1 = this[i] - point;
                 Vector2F p2 = this[NextIndex(i)] - point;
 

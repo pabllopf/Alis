@@ -53,7 +53,6 @@ public struct PositionComponent : IParallelCapable
 using Alis.Extension.Thread.Builder;
 using Alis.Extension.Thread.Integration;
 
-// Simple setup with auto-detection
 ComponentUpdateParallelizer parallelizer = ParallelExtensionBuilder.Create()
     .EnableParallelExecution()
     .WithAutoThreadCount()
@@ -67,7 +66,6 @@ const int entityCount = 10000;
 Span<VelocityComponent> velocities = GetVelocities();
 Span<PositionComponent> positions = GetPositions();
 
-// Update velocities in parallel
 parallelizer.ExecuteComponentUpdate<VelocityComponent>(velocities, index =>
 {
     velocities[index].X *= 1.01f;
@@ -75,7 +73,6 @@ parallelizer.ExecuteComponentUpdate<VelocityComponent>(velocities, index =>
     velocities[index].Z *= 1.01f;
 });
 
-// Update positions in parallel using range action
 parallelizer.ExecuteRangeUpdate<PositionComponent>(entityCount, (start, length) =>
 {
     for (int i = start; i < start + length; i++)
@@ -103,7 +100,6 @@ ParallelExtensionConfiguration config = new ParallelExtensionConfigurationBuilde
 
 using (ThreadManager manager = new ThreadManager(config))
 {
-    // Use manager.ParallelExecutor for updates
 }
 ```
 
@@ -127,18 +123,15 @@ public class CustomStrategy : IParallelExecutionStrategy
 {
     public bool CanExecuteInParallel(Type componentType)
     {
-        // Custom logic to determine parallelizability
         return componentType.GetCustomAttribute<ParallelSafeAttribute>() != null;
     }
 
     public int GetMinimumBatchSize(Type componentType)
     {
-        // Custom batch size logic
         return 256;
     }
 }
 
-// Use custom strategy
 var config = new ParallelExtensionConfigurationBuilder()
     .WithExecutionStrategy(new CustomStrategy())
     .Build();
@@ -165,11 +158,9 @@ var config = new ParallelExtensionConfigurationBuilder()
 ### 1. Batch Size Tuning
 
 ```csharp
-// For small components (< 32 bytes)
 [ParallelSafe(minBatchSize: 256)]
 public struct SmallComponent { }
 
-// For large components or expensive operations
 [ParallelSafe(minBatchSize: 64)]
 public struct ExpensiveComponent { }
 ```
@@ -177,14 +168,12 @@ public struct ExpensiveComponent { }
 ### 2. Avoid Shared State
 
 ```csharp
-// ❌ BAD: Race condition
 int sharedCounter = 0;
 parallelizer.ExecuteComponentUpdate<MyComponent>(components, index =>
 {
     sharedCounter++; // Race condition!
 });
 
-// ✅ GOOD: Thread-local state
 parallelizer.ExecuteRangeUpdate<MyComponent>(count, (start, length) =>
 {
     int localCounter = 0;
@@ -192,14 +181,12 @@ parallelizer.ExecuteRangeUpdate<MyComponent>(count, (start, length) =>
     {
         localCounter++;
     }
-    // Aggregate results safely outside parallel region
 });
 ```
 
 ### 3. Use Span<T> for Zero-Copy
 
 ```csharp
-// ✅ GOOD: Zero-copy access
 Span<VelocityComponent> velocities = archetypeData.GetComponentSpan<VelocityComponent>();
 parallelizer.ExecuteComponentUpdate<VelocityComponent>(velocities, index =>
 {
@@ -215,14 +202,12 @@ Not all updates benefit from parallelization. Profile your code:
 ```csharp
 Stopwatch sw = Stopwatch.StartNew();
 
-// Sequential baseline
 for (int i = 0; i < count; i++)
 {
     ProcessComponent(i);
 }
 long sequentialTime = sw.ElapsedMilliseconds;
 
-// Parallel version
 sw.Restart();
 parallelizer.ExecuteUpdate(count, (start, length) =>
 {
@@ -248,14 +233,11 @@ using (ThreadManager manager = new ThreadManager())
     {
         while (!token.IsCancellationRequested)
         {
-            // Do work
             Thread.Sleep(100);
         }
     }, cts.Token);
 
     manager.StartThread(task);
-    
-    // Later...
     manager.StopThread(task);
 }
 ```
@@ -279,7 +261,6 @@ using (ThreadManager manager = new ThreadManager())
 ### Enable Sequential Mode for Debugging
 
 ```csharp
-// Disable parallelism during development
 ThreadManager manager = ParallelExtensionBuilder.Create()
     .DisableParallelExecution()
     .BuildManager();

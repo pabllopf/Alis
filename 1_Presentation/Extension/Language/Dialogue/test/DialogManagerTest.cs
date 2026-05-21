@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:DialogManagerTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -374,7 +347,6 @@ namespace Alis.Extension.Language.Dialogue.Test
 
             manager.RegisterObserver(observer);
 
-            // Should not throw exception
         }
 
         /// <summary>
@@ -399,7 +371,6 @@ namespace Alis.Extension.Language.Dialogue.Test
 
             manager.UnregisterObserver(observer);
 
-            // Should not throw exception
         }
 
         /// <summary>
@@ -455,11 +426,9 @@ namespace Alis.Extension.Language.Dialogue.Test
             manager.AddDialog(dialog);
             manager.StartDialog("testDialog");
 
-            // Should not execute because condition is false
             manager.SelectOption(0);
             Assert.Empty(manager.GetAvailableOptions());
 
-            // Set condition to true
             manager.SetContextVariable("canSelect", true);
             Assert.Equal(1, manager.GetAvailableOptions().Count);
         }
@@ -516,22 +485,17 @@ namespace Alis.Extension.Language.Dialogue.Test
             Dialog dialog = new Dialog("testDialog", "Test Dialog");
             manager.AddDialog(dialog);
 
-            // Initial state
             Assert.Equal(DialogStateType.Idle, manager.CurrentState);
 
-            // Start dialog
             manager.StartDialog("testDialog");
             Assert.Equal(DialogStateType.Running, manager.CurrentState);
 
-            // Pause dialog
             manager.PauseDialog();
             Assert.Equal(DialogStateType.Paused, manager.CurrentState);
 
-            // Resume dialog
             manager.ResumeDialog();
             Assert.Equal(DialogStateType.Running, manager.CurrentState);
 
-            // End dialog
             manager.EndDialog();
             Assert.Equal(DialogStateType.Completed, manager.CurrentState);
         }

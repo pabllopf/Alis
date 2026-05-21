@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:QueryEnumerableTest.2.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
@@ -51,14 +24,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithTwoComponents_CanBeCreated()
         {
-            // Arrange
             using Scene scene = new Scene();
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            // Act
             QueryEnumerator<Position, Velocity>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity>();
 
-            // Assert
             Assert.NotEqual(default(QueryEnumerator<Position, Velocity>.QueryEnumerable), enumerable);
         }
 
@@ -71,20 +41,17 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithTwoComponents_CanBeUsedInForeach()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 0.5f, Y = 1.0f});
             scene.Create(new Position {X = 3, Y = 4}, new Velocity {X = 1.5f, Y = 2.0f});
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            // Act
             int count = 0;
             foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(2, count);
         }
 
@@ -97,12 +64,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithTwoComponents_ProvidesAccessToBoth()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(new Position {X = 10, Y = 20}, new Velocity {X = 5, Y = 10});
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            // Act & Assert
             foreach ((Ref<Position> pos, Ref<Velocity> vel) in query.Enumerate<Position, Velocity>())
             {
                 Assert.Equal(10, pos.Value.X);
@@ -121,20 +86,17 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithTwoComponents_FiltersCorrectly()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1});
             scene.Create(new Position {X = 2, Y = 2}); // Missing Velocity
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            // Act
             int count = 0;
             foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(1, count);
         }
 
@@ -147,12 +109,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithTwoComponents_AllowsModification()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 0, Y = 0}, new Velocity {X = 0, Y = 0});
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            // Act
             foreach ((Ref<Position> pos, Ref<Velocity> vel) in query.Enumerate<Position, Velocity>())
             {
                 Position p = pos.Value;
@@ -164,7 +124,6 @@ namespace Alis.Core.Ecs.Test
                 vel.Value = v;
             }
 
-            // Assert
             Assert.Equal(100, entity.Get<Position>().X);
             Assert.Equal(50, entity.Get<Velocity>().X);
         }
@@ -178,7 +137,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithTwoComponents_WorksWithMultipleEntities()
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < 5; i++)
             {
@@ -187,14 +145,12 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            // Act
             int count = 0;
             foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(5, count);
         }
 
@@ -207,18 +163,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithTwoComponents_WorksWithEmptyQuery()
         {
-            // Arrange
             using Scene scene = new Scene();
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            // Act
             int count = 0;
             foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(0, count);
         }
 
@@ -231,12 +184,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithTwoComponents_ProvidesEntityAccess()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(new Position {X = 5, Y = 10}, new Velocity {X = 2, Y = 3});
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
-            // Act & Assert
             foreach ((GameObject entity, Ref<Position> pos, Ref<Velocity> vel) in query.EnumerateWithEntities<Position, Velocity>())
             {
                 Assert.False(entity.IsNull);

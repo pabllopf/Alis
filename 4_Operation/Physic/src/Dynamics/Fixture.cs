@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Fixture.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -111,7 +84,6 @@ namespace Alis.Core.Physic.Dynamics
             CollidesWith = Category.All;
             CollisionGroup = 0;
 
-            //Fixture defaults
             GetFriction = 0.2f;
             GetRestitution = 0f;
         }
@@ -124,7 +96,6 @@ namespace Alis.Core.Physic.Dynamics
         {
             GetShape = shape.Clone();
 
-            // Reserve proxy space
             Proxies = new FixtureProxy[GetShape.ChildCount];
             ProxyCount = 0;
         }
@@ -261,7 +232,6 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         private void Refilter()
         {
-            // Flag associated contacts for filtering.
             ContactEdge edge = GetBody.ContactList;
             while (edge != null)
             {
@@ -283,7 +253,6 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            // Touch each proxy so that new pairs may be created
             IBroadPhaseFixture broadPhaseFixtureNode = worldPhysic.ContactManager.BroadPhaseFixtureNode;
             TouchProxies(broadPhaseFixtureNode);
         }
@@ -341,7 +310,6 @@ namespace Alis.Core.Physic.Dynamics
                 throw new InvalidOperationException("Proxies allready created for this Fixture.");
             }
 
-            // Create proxies in the broad-phase.
             ProxyCount = GetShape.ChildCount;
 
             for (int i = 0; i < ProxyCount; ++i)
@@ -363,7 +331,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="broadPhaseFixtureNode">The broad phase</param>
         internal void DestroyProxies(IBroadPhaseFixture broadPhaseFixtureNode)
         {
-            // OnDestroy proxies in the broad-phase.
             for (int i = 0; i < ProxyCount; ++i)
             {
                 broadPhaseFixtureNode.RemoveProxy(Proxies[i].ProxyId);
@@ -385,7 +352,6 @@ namespace Alis.Core.Physic.Dynamics
             {
                 FixtureProxy proxy = Proxies[i];
 
-                // Compute an AABB that covers the swept Shape (may miss some rotation effect).
                 GetShape.ComputeAabb(out Aabb aabb1, ref transform1, proxy.ChildIndex);
                 GetShape.ComputeAabb(out Aabb aabb2, ref transform2, proxy.ChildIndex);
 

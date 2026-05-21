@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WinNativePlatform.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 #if winx64 || winx86 || winarm64 || winarm || win
 using System;
@@ -72,9 +45,6 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// </summary>
         private IntPtr hGlrc;
 
-        // ------------------------------------------------------------------
-        // FIELDS
-        // ------------------------------------------------------------------
         /// <summary>
         /// </summary>
         private IntPtr hInstance;
@@ -111,8 +81,6 @@ namespace Alis.Core.Graphic.Platforms.Win
 
 
         // ------------------------------------------------------------------
-        // PUBLIC METHODS
-        // ------------------------------------------------------------------
 
         /// <summary>
         /// </summary>
@@ -128,7 +96,6 @@ namespace Alis.Core.Graphic.Platforms.Win
             hInstance = GetModuleHandle(null);
             wndProcDelegate = WindowProc;
             wndProcPtr = Marshal.GetFunctionPointerForDelegate(wndProcDelegate);
-            // Usa un nombre de clase único para evitar conflictos y asegurar el registro correcto
             string className = WindowClassName + "_" + Guid.NewGuid().ToString("N");
             Wndclass wc = new Wndclass
             {
@@ -152,22 +119,12 @@ namespace Alis.Core.Graphic.Platforms.Win
                 return false;
             }
 
-            // Try all combinations for maximum compatibility
             var styleCombos = new[]
             {
                 WindowStyles.OverlappedWindow | WindowStyles.Visible
-                //(WindowStyles.OverlappedWindow),
-                //(WindowStyles.Visible),
-                //(WindowStyles.Popup | WindowStyles.Visible),
-                //(WindowStyles.Popup),
-                //(WindowStyles.Child | WindowStyles.Visible),
-                //(WindowStyles.Child),
-                //(WindowStyles.Border | WindowStyles.Visible),
-                //(WindowStyles.Border),
             };
             var exStyles = new[]
             {
-                //(int)WindowExStyles.None,
                 (int) WindowExStyles.AppWindow
                 /*(int)WindowExStyles.Topmost,
                 (int)WindowExStyles.ToolWindow,
@@ -187,10 +144,7 @@ namespace Alis.Core.Graphic.Platforms.Win
             };
             var sizes = new[]
             {
-                //(width, height),
                 (w, h)
-                //(1024, 768),
-                //(640, 480),
             };
             hWnd = IntPtr.Zero;
             bool windowCreated = false;
@@ -199,7 +153,6 @@ namespace Alis.Core.Graphic.Platforms.Win
             {
                 foreach (var style in styleCombos)
                 {
-                    // Avoid invalid combinations: WS_CHILD with WS_EX_APPWINDOW
                     if ((style & WindowStyles.Child) != 0 && exStyle == (int) WindowExStyles.AppWindow)
                     {
                         continue;
@@ -249,7 +202,6 @@ namespace Alis.Core.Graphic.Platforms.Win
                 return false;
             }
 
-            // Lista de configuraciones a probar
             Pixelformatdescriptor[] configs = new[]
             {
                 new Pixelformatdescriptor
@@ -325,7 +277,6 @@ namespace Alis.Core.Graphic.Platforms.Win
                     continue;
                 }
 
-                // Intentar contexto moderno
                 IntPtr procAttribs = Opengl32.wglGetProcAddress("wglCreateContextAttribsARB");
                 if (procAttribs != IntPtr.Zero)
                 {
@@ -354,7 +305,6 @@ namespace Alis.Core.Graphic.Platforms.Win
                     }
                 }
 
-                // Si no hay contexto moderno, usar dummy
                 hGlrc = dummyContext;
                 contextOk = true;
                 break;
@@ -518,7 +468,6 @@ namespace Alis.Core.Graphic.Platforms.Win
                     return clientRect.Right - clientRect.Left;
                 }
 
-                // Fallback to window rect
                 Rect rect;
                 User32.GetWindowRect(hWnd, out rect);
                 return rect.Right - rect.Left;
@@ -540,7 +489,6 @@ namespace Alis.Core.Graphic.Platforms.Win
                     return clientRect.Bottom - clientRect.Top;
                 }
 
-                // Fallback to window rect
                 Rect rect;
                 User32.GetWindowRect(hWnd, out rect);
                 return rect.Bottom - rect.Top;
@@ -582,8 +530,6 @@ namespace Alis.Core.Graphic.Platforms.Win
 
         public bool IsKeyDown(ConsoleKey consoleKey)
         {
-            // Comprueba si la tecla está marcada como presionada por los mensajes de la ventana.
-            // Esto asegura que solo se consideren las pulsaciones relacionadas con la ventana creada.
             return pressedKeys.Contains(consoleKey);
         }
 
@@ -595,7 +541,6 @@ namespace Alis.Core.Graphic.Platforms.Win
             POINT p;
             if (GetCursorPos(out p))
             {
-                // Convert screen coordinates to client coordinates relative to our window
                 if (hWnd != IntPtr.Zero)
                 {
                     POINT cp = p;
@@ -606,7 +551,6 @@ namespace Alis.Core.Graphic.Platforms.Win
                     }
                     else
                     {
-                        // Fallback to screen coords if ScreenToClient fails
                         x = p.X;
                         y = p.Y;
                     }
@@ -649,13 +593,11 @@ namespace Alis.Core.Graphic.Platforms.Win
 
             try
             {
-                // Cargar el icono usando Win32 API
                 const uint IMAGE_ICON = 1;
                 const uint LR_LOADFROMFILE = 0x00000010;
                 IntPtr hIcon = LoadImage(IntPtr.Zero, iconPath, IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
                 if (hIcon != IntPtr.Zero)
                 {
-                    // Asignar el icono a la ventana
                     const int WM_SETICON = 0x0080;
                     SendMessage(hWnd, WM_SETICON, new IntPtr(0), hIcon); // ICON_SMALL
                     SendMessage(hWnd, WM_SETICON, new IntPtr(1), hIcon); // ICON_BIG
@@ -685,7 +627,6 @@ namespace Alis.Core.Graphic.Platforms.Win
             if (hIcon != IntPtr.Zero)
             {
                 const int WM_SETICON = 0x0080;
-                // Libera el icono anterior si existe
                 IntPtr oldSmallIcon = SendMessage(hWnd, WM_SETICON, new IntPtr(0), hIcon);
                 IntPtr oldBigIcon = SendMessage(hWnd, WM_SETICON, new IntPtr(1), hIcon);
                 if (oldSmallIcon != IntPtr.Zero)
@@ -775,9 +716,6 @@ namespace Alis.Core.Graphic.Platforms.Win
         private const int VK_XBUTTON1 = 0x05;
         private const int VK_XBUTTON2 = 0x06;
 
-        // ------------------------------------------------------------------
-        // PRIVATE METHODS
-        // ------------------------------------------------------------------
         /// <summary>
         ///     Window procedure callback for handling window messages.
         /// </summary>
@@ -798,7 +736,6 @@ namespace Alis.Core.Graphic.Platforms.Win
                     pressedKeys.Remove((ConsoleKey) wParam.ToInt32());
                     break;
                 case (WindowMessage) 0x0102: // WM_CHAR
-                    // wParam contiene el caracter Unicode (WPARAM is UINT)
                     char c = (char) wParam.ToInt32();
                     if (!char.IsControl(c))
                     {
@@ -848,9 +785,6 @@ namespace Alis.Core.Graphic.Platforms.Win
         [ExcludeFromCodeCoverage]
         private static extern bool DestroyIcon(IntPtr hIcon);
 
-        // ------------------------------------------------------------------
-        // DELEGATES
-        // ------------------------------------------------------------------
         /// <summary>
         ///     Delegate for window procedure callback.
         /// </summary>

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameObject.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Runtime.CompilerServices;
@@ -104,8 +77,6 @@ namespace Alis.Core.Ecs
             EntityID = entityId;
         }
 
-        //WARNING
-        //DO NOT CHANGE STRUCT LAYOUT
         /// <summary>
         ///     Gets or sets the unique identifier for this entity within its scene.
         /// </summary>
@@ -180,7 +151,6 @@ namespace Alis.Core.Ecs
         internal ref GameObjectLocation AssertIsAlive(out Scene scene)
         {
             scene = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
-            //hardware trap
             ref GameObjectLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(EntityID);
             if (lookup.Version != EntityVersion)
             {
@@ -536,7 +506,6 @@ namespace Alis.Core.Ecs
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[2];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
-            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
 
@@ -666,7 +635,6 @@ namespace Alis.Core.Ecs
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[3];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
-            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
         /// <summary>
@@ -806,7 +774,6 @@ namespace Alis.Core.Ecs
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[4];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
-            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
 
@@ -959,7 +926,6 @@ namespace Alis.Core.Ecs
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[5];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
-            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
 
@@ -1125,7 +1091,6 @@ namespace Alis.Core.Ecs
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[6];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
-            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
 
@@ -1303,7 +1268,6 @@ namespace Alis.Core.Ecs
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[7];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
-            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
         /// <summary>
@@ -1494,7 +1458,6 @@ namespace Alis.Core.Ecs
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[8];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
-            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
 
@@ -1662,17 +1625,12 @@ namespace Alis.Core.Ecs
         {
             //Total: 4x lookup
 
-            //1x
             ref GameObjectLocation lookup = ref AssertIsAlive(out Scene _);
 
-            //1x
-            //other lookup is optimized into indirect pointer addressing
             Archetype archetype = lookup.Archetype;
 
             int compIndex = archetype.GetComponentIndex<T>();
 
-            //2x
-            //hardware trap
             ComponentStorage<T> storage =
                 Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref archetype.Components[0], compIndex));
             return ref storage[lookup.Index];
@@ -1728,7 +1686,6 @@ namespace Alis.Core.Ecs
         {
             ref GameObjectLocation lookup = ref AssertIsAlive(out _);
 
-            //2x
             int compIndex = lookup.Archetype.GetComponentIndex(id);
 
             if (compIndex == 0)
@@ -1736,7 +1693,6 @@ namespace Alis.Core.Ecs
                 throw new ComponentNotFoundException(id.Type);
             }
 
-            //3x
             lookup.Archetype.Components[compIndex].SetAt(obj, lookup.Index);
         }
 
@@ -2038,7 +1994,6 @@ namespace Alis.Core.Ecs
         public void Delete()
         {
             Scene scene = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
-            //hardware trap
             ref GameObjectLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(EntityID);
 
             if (lookup.Version != EntityVersion)

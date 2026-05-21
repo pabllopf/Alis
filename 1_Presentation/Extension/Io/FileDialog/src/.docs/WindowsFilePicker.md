@@ -224,7 +224,6 @@ Windows filters use the standard format: `Description (*.ext1;*.ext2)|*.ext1;*.e
 **Example Filter:**
 ```csharp
 var filter = new FilePickerFilter("Office Documents", "doc", "docx", "xls", "xlsx", "ppt", "pptx");
-// Format: "Office Documents (*.doc;*.docx;*.xls;*.xlsx;*.ppt;*.pptx)|*.doc;*.docx;*.xls;*.xlsx;*.ppt;*.pptx"
 ```
 
 **Multiple Filters:**
@@ -356,11 +355,9 @@ try
     
     if (result.IsSuccess)
     {
-        // Use result
     }
     else if (result.IsCancelled)
     {
-        // User cancelled
     }
     else
     {
@@ -401,10 +398,7 @@ catch (Exception ex)
 
 3. **Use descriptive filter names:**
    ```csharp
-   // Good
    new FilePickerFilter("Microsoft Word Documents", "doc", "docx")
-   
-   // Avoid
    new FilePickerFilter("Files", "doc", "docx")
    ```
 
@@ -412,13 +406,11 @@ catch (Exception ex)
    ```csharp
    if (result.IsSuccess)
    {
-       // Safe to use result.SelectedPath
    }
    ```
 
 5. **Handle paths with spaces:**
    ```csharp
-   // Paths with spaces are handled automatically
    string path = result.SelectedPath; // e.g., "C:\My Documents\File.txt"
    ```
 

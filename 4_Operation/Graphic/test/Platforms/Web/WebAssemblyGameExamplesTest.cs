@@ -36,8 +36,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
 
         // =====================================================================
-        // GameDevelopmentUtils
-        // =====================================================================
 
         [Fact]
         public void GameDevelopmentUtils_ApplyDeadzone_WithinDeadzone_ZeroesOutput()

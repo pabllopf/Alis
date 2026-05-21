@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ComponentUpdateTypeRegistryGenerator.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Immutable;
@@ -166,7 +139,6 @@ namespace Alis.Core.Ecs.Generator
                 }
             }
 
-            //this path is still hot!
             if (!needsRegistering || @interface is null)
             {
                 return ComponentUpdateItemModel.Default;
@@ -174,7 +146,6 @@ namespace Alis.Core.Ecs.Generator
 
             //only components here
 
-            //since inline array doesn't exist, [null!, ...] allocates -_-
             Stack<string> attributes = new Stack<string>(1);
             PushUpdateTypeAttributes(ref attributes, gsc.Node, gsc.SemanticModel);
 
@@ -368,7 +339,6 @@ namespace Alis.Core.Ecs.Generator
                 cb.Append(", ").Append(item);
             }
 
-            //sb.Append(">(), ").Append(model.UpdateOrder).AppendLine(");");
             cb.AppendLine(">());");
             foreach (string attrType in model.Attributes)
             {
@@ -408,7 +378,6 @@ namespace Alis.Core.Ecs.Generator
         /// <returns>The source output</returns>
         private static SourceOutput GenerateRegisterGenericType(ComponentUpdateItemModel model, CancellationToken ct)
         {
-            //NOTE:
             //this needs to support older lang versions because unity
 
             CodeBuilder cb = CodeBuilder.ThreadShared;

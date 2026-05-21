@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EnumerableHelpersBasicTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using Alis.Core.Ecs.Collections;
@@ -52,10 +25,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_CanGetEmptyEnumerator()
         {
-            // Act
             IEnumerator<int> emptyEnumerator = EnumerableHelpers.GetEmptyEnumerator<int>();
 
-            // Assert
             Assert.NotNull(emptyEnumerator);
             Assert.False(emptyEnumerator.MoveNext());
         }
@@ -69,12 +40,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_EmptyEnumeratorWorksWithDifferentTypes()
         {
-            // Act
             IEnumerator<int> intEnumerator = EnumerableHelpers.GetEmptyEnumerator<int>();
             IEnumerator<string> stringEnumerator = EnumerableHelpers.GetEmptyEnumerator<string>();
             IEnumerator<double> doubleEnumerator = EnumerableHelpers.GetEmptyEnumerator<double>();
 
-            // Assert
             Assert.False(intEnumerator.MoveNext());
             Assert.False(stringEnumerator.MoveNext());
             Assert.False(doubleEnumerator.MoveNext());
@@ -89,13 +58,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_CanConvertEnumerableToArray()
         {
-            // Arrange
             List<int> list = new List<int> {1, 2, 3, 4, 5};
 
-            // Act
             int[] array = EnumerableHelpers.ToArray(list, out int length);
 
-            // Assert
             Assert.NotNull(array);
             Assert.Equal(5, length);
             Assert.Equal(5, array.Length);
@@ -110,13 +76,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_EmptyEnumerableConvertsToEmptyArray()
         {
-            // Arrange
             List<string> emptyList = new List<string>();
 
-            // Act
             string[] array = EnumerableHelpers.ToArray(emptyList, out int length);
 
-            // Assert
             Assert.NotNull(array);
             Assert.Equal(0, length);
         }
@@ -130,13 +93,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_ToArrayPreservesElementOrder()
         {
-            // Arrange
             List<int> list = new List<int> {10, 20, 30, 40, 50};
 
-            // Act
             int[] array = EnumerableHelpers.ToArray(list, out int length);
 
-            // Assert
             Assert.Equal(10, array[0]);
             Assert.Equal(20, array[1]);
             Assert.Equal(30, array[2]);
@@ -153,17 +113,14 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_ToArrayWorksWithLargeCollections()
         {
-            // Arrange
             List<int> list = new List<int>();
             for (int i = 0; i < 10000; i++)
             {
                 list.Add(i);
             }
 
-            // Act
             int[] array = EnumerableHelpers.ToArray(list, out int length);
 
-            // Assert
             Assert.Equal(10000, length);
             Assert.Equal(0, array[0]);
             Assert.Equal(9999, array[9999]);
@@ -178,13 +135,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnumerableHelpers_ToArrayWorksWithReferenceTypes()
         {
-            // Arrange
             List<string> strings = new List<string> {"apple", "banana", "cherry"};
 
-            // Act
             string[] array = EnumerableHelpers.ToArray(strings, out int length);
 
-            // Assert
             Assert.Equal(3, length);
             Assert.Equal("apple", array[0]);
             Assert.Equal("banana", array[1]);

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Threading.Tasks;
@@ -47,22 +20,18 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             Logger.Info("Google Ads Sample Application");
             Logger.Info("==============================\n");
 
-            // Sample 1: Basic initialization and banner ads
             await Sample1_BasicBannerAds();
 
             Logger.Info("\n");
 
-            // Sample 2: Interstitial ads
             await Sample2_InterstitialAds();
 
             Logger.Info("\n");
 
-            // Sample 3: Rewarded video ads
             await Sample3_RewardedVideoAds();
 
             Logger.Info("\n");
 
-            // Sample 4: Complete game integration example
             await Sample4_GameIntegration();
 
             Logger.Info("\nEnd program.");
@@ -76,13 +45,10 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             Logger.Info("Sample 1: Basic Banner Ads Setup");
             Logger.Info("--------------------------------");
 
-            // Create a mock context (in real usage, you'd use your actual game engine context)
             Context mockContext = new Context();
 
-            // Initialize the ads manager
             AdsManager adsManager = new AdsManager(mockContext);
 
-            // Create configuration
             AdConfiguration config = new AdConfiguration(
                 "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
                 "ca-app-pub-3940256099942544/6300978111",
@@ -94,7 +60,6 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
                 IsEnabled = true
             };
 
-            // Initialize the manager
             try
             {
                 await adsManager.InitializeAsync(config);
@@ -106,22 +71,18 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
                 return;
             }
 
-            // Subscribe to banner ad events
             adsManager.OnBannerAdLoaded += unitId => { Logger.Info($"✓ Banner ad loaded: {unitId}"); };
 
             adsManager.OnBannerAdFailedToLoad += unitId => { Logger.Warning($"✗ Banner ad failed to load: {unitId}"); };
 
-            // Load banner ad
             Logger.Info("Loading banner ad...");
             try
             {
                 await adsManager.LoadBannerAdAsync(config.DefaultBannerAdUnitId);
 
-                // Show the banner ad
                 adsManager.ShowBannerAd();
                 Logger.Info("✓ Banner ad displayed");
 
-                // Later in the game, you can hide it
                 adsManager.HideBannerAd();
                 Logger.Info("✓ Banner ad hidden");
             }
@@ -155,7 +116,6 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
 
             await adsManager.InitializeAsync(config);
 
-            // Subscribe to interstitial ad events
             adsManager.OnInterstitialAdLoaded += unitId => { Logger.Info($"✓ Interstitial ad loaded: {unitId}"); };
 
             adsManager.OnInterstitialAdFailedToLoad += unitId => { Logger.Warning($"✗ Interstitial ad failed to load: {unitId}"); };
@@ -164,13 +124,11 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
 
             adsManager.OnAdClosed += adType => { Logger.Info($"✓ Ad closed: {adType}"); };
 
-            // Load interstitial ad (typically shown between game levels)
             Logger.Info("Loading interstitial ad...");
             try
             {
                 await adsManager.LoadInterstitialAdAsync(config.DefaultInterstitialAdUnitId);
 
-                // Show the ad when appropriate (e.g., between levels)
                 if (adsManager.IsInterstitialAdLoaded)
                 {
                     Logger.Info("Showing interstitial ad...");
@@ -207,12 +165,10 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
 
             await adsManager.InitializeAsync(config);
 
-            // Subscribe to rewarded video events
             adsManager.OnRewardedVideoAdLoaded += unitId => { Logger.Info($"✓ Rewarded video ad loaded: {unitId}"); };
 
             adsManager.OnRewardedVideoAdFailedToLoad += unitId => { Logger.Warning($"✗ Rewarded video ad failed to load: {unitId}"); };
 
-            // This is the key event - when the user completes watching the ad
             adsManager.OnAdRewarded += rewardArgs =>
             {
                 Logger.Info("✓ User earned reward!");
@@ -220,11 +176,8 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
                 Logger.Info($"  Reward Amount: {rewardArgs.RewardAmount}");
                 Logger.Info($"  Ad Unit: {rewardArgs.AdUnitId}");
 
-                // Give the player their reward here
-                // player.AddCoins(rewardArgs.RewardAmount);
             };
 
-            // Load rewarded video ad (shown when player opts-in)
             Logger.Info("Loading rewarded video ad...");
             try
             {
@@ -254,7 +207,6 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             GameStateExample gameState = new GameStateExample();
             AdsManager adsManager = new AdsManager(mockContext);
 
-            // Configure ads based on game settings
             AdConfiguration config = new AdConfiguration(
                 "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
                 "ca-app-pub-3940256099942544/6300978111",
@@ -268,7 +220,6 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
 
             await adsManager.InitializeAsync(config);
 
-            // Setup event handlers that integrate with game
             adsManager.OnAdRewarded += rewardArgs =>
             {
                 gameState.AddCoins(rewardArgs.RewardAmount);
@@ -277,23 +228,18 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
 
             adsManager.OnInterstitialAdLoaded += unitId => { Logger.Info("Ready to show interstitial between levels"); };
 
-            // Simulate game flow
             Logger.Info($"Game started - Player is Premium: {gameState.IsPremium}");
             Logger.Info($"Ads enabled: {config.IsEnabled}");
 
-            // Load different ads at different game points
             if (config.IsEnabled)
             {
-                // Load banner ad to display during gameplay
                 Logger.Info("Loading persistent banner ad...");
                 await adsManager.LoadBannerAdAsync(config.DefaultBannerAdUnitId);
                 adsManager.ShowBannerAd();
 
-                // Simulate level completion
                 gameState.CurrentLevel++;
                 Logger.Info($"Level {gameState.CurrentLevel} completed!");
 
-                // Show interstitial between levels
                 if (gameState.CurrentLevel % 3 == 0) // Every 3 levels
                 {
                     Logger.Info("Loading interstitial between levels...");
@@ -304,7 +250,6 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
                     }
                 }
 
-                // Offer rewarded video for bonus coins
                 Logger.Info("Offering bonus coins via rewarded video...");
                 await adsManager.LoadRewardedVideoAdAsync(config.DefaultRewardedVideoAdUnitId);
                 if (adsManager.IsRewardedVideoAdLoaded)

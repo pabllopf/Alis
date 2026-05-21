@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GlfwNativeContextTests.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Graphic.Glfw.Enums;
@@ -46,13 +19,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void MakeContextCurrent_WithValidWindow_DoesNotThrow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act & Assert
                 GlfwNative.MakeContextCurrent(window);
             }
             finally
@@ -67,7 +38,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SwapBuffers_WithValidWindow_DoesNotThrow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
@@ -75,7 +45,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             {
                 GlfwNative.MakeContextCurrent(window);
 
-                // Act & Assert
                 GlfwNative.SwapBuffers(window);
             }
             finally
@@ -90,7 +59,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SwapInterval_WithValidValue_DoesNotThrow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
@@ -98,7 +66,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             {
                 GlfwNative.MakeContextCurrent(window);
 
-                // Act & Assert
                 GlfwNative.SwapInterval(1);
             }
             finally
@@ -113,7 +80,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void DefaultWindowHints_DoesNotThrow()
         {
-            // Act & Assert
             GlfwNative.DefaultWindowHints();
         }
 
@@ -124,8 +90,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void WaitEvents_DoesNotThrow()
         {
-            // This test can't wait indefinitely, so we'll just verify it exists
-            // Act & Assert - Would need to run in background to test properly
             Assert.NotNull((Action) GlfwNative.WaitEvents);
         }
 
@@ -135,7 +99,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void PostEmptyEvent_DoesNotThrow()
         {
-            // Act & Assert
             GlfwNative.PostEmptyEvent();
         }
 
@@ -145,7 +108,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void WaitEventsTimeout_WithValidTimeout_DoesNotThrow()
         {
-            // Act & Assert
             GlfwNative.WaitEventsTimeout(0.001);
         }
 
@@ -155,7 +117,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetCloseCallback_WithValidCallback_SetsCallback()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
@@ -163,10 +124,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             try
             {
-                // Act
                 WindowCallback previousCallback = GlfwNative.SetCloseCallback(window, callback);
 
-                // Assert
                 Assert.Null(previousCallback);
             }
             finally
@@ -181,16 +140,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GetWindowMonitor_WithWindowedWindow_ReturnsNone()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act
                 Monitor monitor = GlfwNative.GetWindowMonitor(window);
 
-                // Assert
                 Assert.Equal(Monitor.None, monitor);
             }
             finally
@@ -205,13 +161,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetCursorPosition_WithValidWindow_DoesNotThrow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act & Assert
                 GlfwNative.SetCursorPosition(window, 100.0, 100.0);
             }
             finally
@@ -226,7 +180,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetCursorPositionCallback_WithValidCallback_SetsCallback()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
@@ -234,10 +187,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             try
             {
-                // Act
                 MouseCallback previousCallback = GlfwNative.SetCursorPositionCallback(window, callback);
 
-                // Assert
                 Assert.Null(previousCallback);
             }
             finally
@@ -252,12 +203,10 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void CreateStandardCursor_WithArrowType_CreatesCursor()
         {
-            // Act
             Cursor cursor = GlfwNative.CreateStandardCursor(CursorType.Arrow);
 
             try
             {
-                // Assert
                 Assert.NotEqual(Cursor.None, cursor);
             }
             finally
@@ -275,10 +224,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void DestroyCursor_WithValidCursor_DoesNotThrow()
         {
-            // Arrange
             Cursor cursor = GlfwNative.CreateStandardCursor(CursorType.Arrow);
 
-            // Act & Assert
             if (cursor != Cursor.None)
             {
                 GlfwNative.DestroyCursor(cursor);
@@ -291,7 +238,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetDropCallback_WithValidCallback_SetsCallback()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
@@ -299,10 +245,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             try
             {
-                // Act
                 FileDropCallback previousCallback = GlfwNative.SetDropCallback(window, callback);
 
-                // Assert
                 Assert.Null(previousCallback);
             }
             finally
@@ -317,14 +261,12 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetGamma_WithValidMonitor_DoesNotThrow()
         {
-            // Arrange
             Monitor monitor = GlfwNative.PrimaryMonitor;
             if (monitor == Monitor.None)
             {
                 return;
             }
 
-            // Act & Assert
             GlfwNative.SetGamma(monitor, 1.0f);
         }
     }

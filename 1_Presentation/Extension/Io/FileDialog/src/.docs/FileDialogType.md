@@ -152,13 +152,10 @@ if (result.IsSuccess)
 The dialog type is specified when creating `FilePickerOptions`:
 
 ```csharp
-// Open file dialog
 var openOptions = new FilePickerOptions("Open", FileDialogType.OpenFile);
 
-// Save file dialog
 var saveOptions = new FilePickerOptions("Save", FileDialogType.SaveFile);
 
-// Select folder dialog
 var folderOptions = new FilePickerOptions("Select", FileDialogType.SelectFolder);
 ```
 
@@ -269,7 +266,6 @@ private void SaveDocument()
     if (result.IsSuccess)
     {
         string savePath = result.SelectedPath;
-        // Ensure correct extension
         if (!Path.HasExtension(savePath))
         {
             savePath += ".docx";
@@ -384,7 +380,6 @@ public class SelectFolderDialog : DialogConfigBase
     public SelectFolderDialog(string title) : base(title, FileDialogType.SelectFolder) { }
 }
 
-// Usage:
 var openOptions = new OpenFileDialog("Open Document")
     .WithFilter(new FilePickerFilter("All Documents", "doc", "docx", "pdf"))
     .Build();
@@ -430,21 +425,15 @@ var folderOptions = new SelectFolderDialog("Select Project").Build();
 
 1. **Match dialog type to operation:**
    ```csharp
-   // Good - dialog type matches operation
    var openOptions = new FilePickerOptions("Open", FileDialogType.OpenFile);
-   
-   // Avoid - confusing mismatch
    var openOptions = new FilePickerOptions("Save File", FileDialogType.OpenFile);
    ```
 
 2. **Provide default paths matching dialog type:**
    ```csharp
-   // For opening files, default to Documents
    var openOptions = new FilePickerOptions("Open", FileDialogType.OpenFile)
        .WithDefaultPath(
            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
-   
-   // For saving, default to same location
    var saveOptions = new FilePickerOptions("Save", FileDialogType.SaveFile)
        .WithDefaultPath(
            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
@@ -452,22 +441,15 @@ var folderOptions = new SelectFolderDialog("Select Project").Build();
 
 3. **Use filters only for file dialogs:**
    ```csharp
-   // Good - filters only with file dialogs
    var openOptions = new FilePickerOptions("Open", FileDialogType.OpenFile)
        .WithFilter(new FilePickerFilter("Documents", "doc", "docx"));
-   
-   // Avoid - filters with folder dialog (they're ignored anyway)
    var folderOptions = new FilePickerOptions("Folder", FileDialogType.SelectFolder)
        .WithFilter(new FilePickerFilter("Documents", "doc"));
    ```
 
 4. **Check allowed options based on type:**
    ```csharp
-   // Good - appropriate for SaveFile
    var saveOptions = new FilePickerOptions("Save", FileDialogType.SaveFile);
-   // AllowMultiple would be false anyway
-   
-   // Avoid - SaveFile with multiple selection doesn't make sense
    var saveOptions = new FilePickerOptions("Save", FileDialogType.SaveFile)
        .WithMultipleSelection(); // This will fail validation
    ```

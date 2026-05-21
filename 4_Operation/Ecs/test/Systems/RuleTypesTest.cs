@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:RuleTypesTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -52,7 +25,6 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleTypes_HasExpectedValues()
         {
-            // Assert
             Assert.Equal(0, (int) RuleTypes.Have);
             Assert.Equal(1, (int) RuleTypes.DoesNotHave);
         }
@@ -66,7 +38,6 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleTypes_AllValuesAreDistinct()
         {
-            // Assert
             Assert.NotEqual(RuleTypes.Have, RuleTypes.DoesNotHave);
         }
 
@@ -80,11 +51,9 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleTypes_CanBeAssigned()
         {
-            // Act
             RuleTypes have = RuleTypes.Have;
             RuleTypes doesNotHave = RuleTypes.DoesNotHave;
 
-            // Assert
             Assert.Equal(RuleTypes.Have, have);
             Assert.Equal(RuleTypes.DoesNotHave, doesNotHave);
         }
@@ -98,11 +67,9 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleTypes_CanBeConvertedToString()
         {
-            // Act
             string haveString = RuleTypes.Have.ToString();
             string doesNotHaveString = RuleTypes.DoesNotHave.ToString();
 
-            // Assert
             Assert.Equal("Have", haveString);
             Assert.Equal("DoesNotHave", doesNotHaveString);
         }
@@ -116,11 +83,9 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleTypes_CanBeCastFromInt()
         {
-            // Act
             RuleTypes have = 0;
             RuleTypes doesNotHave = (RuleTypes) 1;
 
-            // Assert
             Assert.Equal(RuleTypes.Have, have);
             Assert.Equal(RuleTypes.DoesNotHave, doesNotHave);
         }
@@ -134,11 +99,9 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleTypes_WorksInSwitchStatements()
         {
-            // Arrange
             int haveResult = 0;
             int doesNotHaveResult = 0;
 
-            // Act
             switch (RuleTypes.Have)
             {
                 case RuleTypes.Have:
@@ -159,7 +122,6 @@ namespace Alis.Core.Ecs.Test.Systems
                     break;
             }
 
-            // Assert
             Assert.Equal(1, haveResult);
             Assert.Equal(2, doesNotHaveResult);
         }
@@ -173,10 +135,8 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleTypes_DefaultValueIsHave()
         {
-            // Act
             RuleTypes defaultValue = default(RuleTypes);
 
-            // Assert
             Assert.Equal(RuleTypes.Have, defaultValue);
             Assert.Equal(0, (int) defaultValue);
         }
@@ -190,14 +150,12 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleTypes_CanBeUsedInCollections()
         {
-            // Arrange
             List<RuleTypes> list = new List<RuleTypes>
             {
                 RuleTypes.Have,
                 RuleTypes.DoesNotHave
             };
 
-            // Assert
             Assert.Equal(2, list.Count);
             Assert.Contains(RuleTypes.Have, list);
             Assert.Contains(RuleTypes.DoesNotHave, list);
@@ -212,14 +170,12 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void RuleTypes_CanBeUsedAsDictionaryKey()
         {
-            // Arrange
             Dictionary<RuleTypes, string> dict = new Dictionary<RuleTypes, string>
             {
                 {RuleTypes.Have, "Must have component"},
                 {RuleTypes.DoesNotHave, "Must not have component"}
             };
 
-            // Assert
             Assert.Equal(2, dict.Count);
             Assert.Equal("Must have component", dict[RuleTypes.Have]);
             Assert.Equal("Must not have component", dict[RuleTypes.DoesNotHave]);

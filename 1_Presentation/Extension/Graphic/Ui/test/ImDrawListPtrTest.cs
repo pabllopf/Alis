@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ImDrawListPtrTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -246,7 +219,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F pMin = new Vector2F(0, 0);
             Vector2F pMax = new Vector2F(1, 1);
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -261,7 +233,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F pMax = new Vector2F(1, 1);
             Vector2F uvMin = new Vector2F(0, 0);
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -277,7 +248,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F uvMin = new Vector2F(0, 0);
             Vector2F uvMax = new Vector2F(1, 1);
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -294,7 +264,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F uvMax = new Vector2F(1, 1);
             uint col = 4294967295;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -310,7 +279,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F p3 = new Vector2F(1, 1);
             Vector2F p4 = new Vector2F(0, 1);
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -327,7 +295,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F p4 = new Vector2F(0, 1);
             Vector2F uv1 = new Vector2F(0, 0);
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -345,7 +312,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F uv1 = new Vector2F(0, 0);
             Vector2F uv2 = new Vector2F(1, 0);
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -364,7 +330,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F uv2 = new Vector2F(1, 0);
             Vector2F uv3 = new Vector2F(1, 1);
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -384,7 +349,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F uv3 = new Vector2F(1, 1);
             Vector2F uv4 = new Vector2F(0, 1);
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -405,7 +369,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F uv4 = new Vector2F(0, 1);
             uint col = 4294967295;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -423,7 +386,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             uint col = 4294967295;
             float rounding = 0.5f;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -442,7 +404,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             float rounding = 0.5f;
             ImDrawFlags flags = 0;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -456,7 +417,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F p2 = new Vector2F(1, 1);
             uint col = 4294967295;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -471,7 +431,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             uint col = 4294967295;
             float thickness = 2.0f;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -486,7 +445,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             uint col = 4294967295;
             int numSegments = 6;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -502,7 +460,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             int numSegments = 6;
             float thickness = 2.0f;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -517,7 +474,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             uint col = 4294967295;
             int numSegments = 6;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -533,7 +489,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImDrawFlags flags = 0;
             float thickness = 2.0f;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -549,7 +504,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F p4 = new Vector2F(0, 1);
             uint col = 4294967295;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -566,7 +520,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             uint col = 4294967295;
             float thickness = 2.0f;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -582,7 +535,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F p4 = new Vector2F(0, 1);
             uint col = 4294967295;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -596,7 +548,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F pMax = new Vector2F(1, 1);
             uint col = 4294967295;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -611,7 +562,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             uint col = 4294967295;
             float rounding = 0.5f;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -627,7 +577,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             float rounding = 0.5f;
             ImDrawFlags flags = 0;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -644,7 +593,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImDrawFlags flags = 0;
             float thickness = 2.0f;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -658,7 +606,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F pMax = new Vector2F(1, 1);
             uint col = 4294967295;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -673,7 +620,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             uint col = 4294967295;
             float rounding = 0.5f;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -689,7 +635,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             float rounding = 0.5f;
             ImDrawFlags flags = 0;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -707,7 +652,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             uint colBotRight = 4294967295;
             uint colBotLeft = 4294967295;
 
-            // Assert logic here
         }
 
         /// <summary>
@@ -722,7 +666,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F p3 = new Vector2F(0.5f, 1);
             uint col = 4294967295;
 
-            // Assert logic here
         }
 
         /// <summary>

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:FastestStackTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Collections;
@@ -52,10 +25,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FastestStack_CanBeCreatedWithDefaultConstructor()
         {
-            // Act
             FastestStack<int> stack = new FastestStack<int>();
 
-            // Assert
             Assert.Equal(0, stack.Count);
         }
 
@@ -68,10 +39,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FastestStack_CanBeCreatedWithCapacity()
         {
-            // Act
             FastestStack<int> stack = new FastestStack<int>(10);
 
-            // Assert
             Assert.Equal(0, stack.Count);
             Assert.Equal(10, stack.Capacity);
         }
@@ -85,13 +54,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FastestStack_CanBeCreatedFromEnumerable()
         {
-            // Arrange
             int[] items = {1, 2, 3, 4, 5};
 
-            // Act
             FastestStack<int> stack = new FastestStack<int>(items);
 
-            // Assert
             Assert.Equal(5, stack.Count);
         }
 
@@ -104,13 +70,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Push_AddsItemToStack()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
 
-            // Act
             stack.Push(42);
 
-            // Assert
             Assert.Equal(1, stack.Count);
         }
 
@@ -123,15 +86,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Pop_RemovesAndReturnsTopItem()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(10);
             stack.Push(20);
 
-            // Act
             int result = stack.Pop();
 
-            // Assert
             Assert.Equal(20, result);
             Assert.Equal(1, stack.Count);
         }
@@ -145,14 +105,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Peek_ReturnsTopItemWithoutRemoving()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(15);
 
-            // Act
             int result = stack.Peek();
 
-            // Assert
             Assert.Equal(15, result);
             Assert.Equal(1, stack.Count);
         }
@@ -166,16 +123,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Clear_RemovesAllItems()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);
 
-            // Act
             stack.Clear();
 
-            // Assert
             Assert.Equal(0, stack.Count);
         }
 
@@ -188,11 +142,9 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Any_ReturnsTrueWhenStackHasItems()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(1);
 
-            // Assert
             Assert.True(stack.Any);
         }
 
@@ -205,10 +157,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Any_ReturnsFalseWhenStackIsEmpty()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
 
-            // Assert
             Assert.False(stack.Any);
         }
 
@@ -221,11 +171,9 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void CanPop_ReturnsTrueWhenStackHasItems()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(10);
 
-            // Assert
             Assert.True(stack.CanPop());
         }
 
@@ -238,10 +186,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void CanPop_ReturnsFalseWhenStackIsEmpty()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
 
-            // Assert
             Assert.False(stack.CanPop());
         }
 
@@ -254,14 +200,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void TryPeek_ReturnsTrueAndValueWhenStackHasItems()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(25);
 
-            // Act
             bool result = stack.TryPeek(out int value);
 
-            // Assert
             Assert.True(result);
             Assert.Equal(25, value);
         }
@@ -275,13 +218,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void TryPeek_ReturnsFalseWhenStackIsEmpty()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
 
-            // Act
             bool result = stack.TryPeek(out int value);
 
-            // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
@@ -295,14 +235,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void TryPop_ReturnsTrueAndRemovesItemWhenStackHasItems()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(30);
 
-            // Act
             bool result = stack.TryPop(out int value);
 
-            // Assert
             Assert.True(result);
             Assert.Equal(30, value);
             Assert.Equal(0, stack.Count);
@@ -317,13 +254,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void TryPop_ReturnsFalseWhenStackIsEmpty()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
 
-            // Act
             bool result = stack.TryPop(out int value);
 
-            // Assert
             Assert.False(result);
             Assert.Equal(0, value);
         }
@@ -337,13 +271,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Contains_ReturnsTrueWhenItemExists()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(5);
             stack.Push(10);
             stack.Push(15);
 
-            // Assert
             Assert.True(stack.Contains(10));
         }
 
@@ -356,11 +288,9 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Contains_ReturnsFalseWhenItemDoesNotExist()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(5);
 
-            // Assert
             Assert.False(stack.Contains(10));
         }
 
@@ -373,13 +303,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Stack_MaintainsLifoOrder()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);
 
-            // Act & Assert
             Assert.Equal(3, stack.Pop());
             Assert.Equal(2, stack.Pop());
             Assert.Equal(1, stack.Pop());
@@ -394,16 +322,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ToArray_ReturnsCorrectElements()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);
 
-            // Act
             int[] array = stack.ToArray();
 
-            // Assert
             Assert.Equal(3, array.Length);
             Assert.Contains(1, array);
             Assert.Contains(2, array);
@@ -419,13 +344,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void EnsureCapacity_IncreasesCapacity()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>(5);
 
-            // Act
             stack.EnsureCapacity(20);
 
-            // Assert
             Assert.True(stack.Capacity >= 20);
         }
 
@@ -438,15 +360,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void TrimExcess_ReducesCapacity()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>(100);
             stack.Push(1);
             stack.Push(2);
 
-            // Act
             stack.TrimExcess();
 
-            // Assert
             Assert.True(stack.Capacity <= 10); // Some threshold based on implementation
         }
 
@@ -459,15 +378,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Stack_CanHandleReferenceTypes()
         {
-            // Arrange
             FastestStack<string> stack = new FastestStack<string>();
             stack.Push("Hello");
             stack.Push("World");
 
-            // Act
             string result = stack.Pop();
 
-            // Assert
             Assert.Equal("World", result);
             Assert.Equal(1, stack.Count);
         }
@@ -481,14 +397,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Stack_CanHandleNullValues()
         {
-            // Arrange
             FastestStack<string> stack = new FastestStack<string>();
             stack.Push(null);
 
-            // Act
             string result = stack.Pop();
 
-            // Assert
             Assert.Null(result);
         }
 
@@ -501,10 +414,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Create_StaticMethodCreatesStackWithCapacity()
         {
-            // Act
             FastestStack<int> stack = FastestStack<int>.Create(15);
 
-            // Assert
             Assert.Equal(0, stack.Count);
             Assert.Equal(15, stack.Capacity);
         }
@@ -518,17 +429,14 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Stack_HandlesLargeNumberOfItems()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             const int itemCount = 10000;
 
-            // Act
             for (int i = 0; i < itemCount; i++)
             {
                 stack.Push(i);
             }
 
-            // Assert
             Assert.Equal(itemCount, stack.Count);
 
             for (int i = itemCount - 1; i >= 0; i--)
@@ -546,7 +454,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Constructor_WithNegativeCapacity_ThrowsException()
         {
-            // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => new FastestStack<int>(-1));
         }
 
@@ -559,7 +466,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Constructor_WithNullEnumerable_ThrowsException()
         {
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => new FastestStack<int>(null));
         }
 
@@ -572,16 +478,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void AsSpan_ReturnsCorrectSpan()
         {
-            // Arrange
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(10);
             stack.Push(20);
             stack.Push(30);
 
-            // Act
             Span<int> span = stack.AsSpan();
 
-            // Assert
             Assert.Equal(3, span.Length);
         }
     }

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Diagnostics;
@@ -149,23 +122,18 @@ namespace Alis.Extension.Thread.Sample
             Logger.Info("║        ALIS THREAD EXTENSION - PARALLEL ECS DEMO             ║");
             Logger.Info("╚═══════════════════════════════════════════════════════════════╝\n");
 
-            // Demo 1: Basic parallel execution
             DemoBasicParallelExecution();
             WaitForKey("\nPress any key for configuration demo...");
 
-            // Demo 2: Custom configuration
             DemoCustomConfiguration();
             WaitForKey("\nPress any key for ECS integration demo...");
 
-            // Demo 3: ECS component parallelization
             DemoEcsIntegration();
             WaitForKey("\nPress any key for performance comparison...");
 
-            // Demo 4: Performance benchmarks
             DemoPerformanceComparison();
             WaitForKey("\nPress any key for advanced scenarios...");
 
-            // Demo 5: Advanced scenarios
             DemoAdvancedScenarios();
 
             Logger.Info("\n╔═══════════════════════════════════════════════════════════════╗");
@@ -213,7 +181,6 @@ namespace Alis.Extension.Thread.Sample
         {
             Logger.Info("\n─── 2. CUSTOM CONFIGURATION ───\n");
 
-            // Configuration with builder
             ParallelExtensionConfiguration config = new ParallelExtensionConfigurationBuilder()
                 .WithParallelExecution(true)
                 .WithMaxDegreeOfParallelism(4)
@@ -258,7 +225,6 @@ namespace Alis.Extension.Thread.Sample
             PositionComponent[] positions = new PositionComponent[entityCount];
             PhysicsComponent[] physics = new PhysicsComponent[entityCount];
 
-            // Initialize components
             for (int i = 0; i < entityCount; i++)
             {
                 velocities[i] = new VelocityComponent {X = i * 0.1f, Y = i * 0.2f, Z = i * 0.3f};
@@ -271,7 +237,6 @@ namespace Alis.Extension.Thread.Sample
 
             const float deltaTime = 0.016f; // 60 FPS
 
-            // Update physics (parallel)
             Span<PhysicsComponent> physicsSpan = physics.AsSpan();
             parallelizer.ExecuteComponentUpdate(physicsSpan, index =>
             {
@@ -279,11 +244,9 @@ namespace Alis.Extension.Thread.Sample
                 velocities[index].Y += force / physics[index].Mass * deltaTime;
             });
 
-            // Apply damping to velocities (parallel)
             Span<VelocityComponent> velocitySpan = velocities.AsSpan();
             parallelizer.ExecuteComponentUpdate(velocitySpan, index => { velocities[index].ApplyDamping(0.99f); });
 
-            // Update positions (parallel with range action)
             parallelizer.ExecuteRangeUpdate<PositionComponent>(entityCount, (start, length) =>
             {
                 for (int i = start; i < start + length; i++)
@@ -308,7 +271,6 @@ namespace Alis.Extension.Thread.Sample
             const int iterations = 3;
             const int dataSize = 20000;
 
-            // Sequential baseline
             Logger.Info("Running sequential baseline...");
             long sequentialTime = 0;
             for (int iter = 0; iter < iterations; iter++)
@@ -327,7 +289,6 @@ namespace Alis.Extension.Thread.Sample
             sequentialTime /= iterations;
             Logger.Info($"  Average: {sequentialTime}ms");
 
-            // Parallel execution
             Logger.Info("\nRunning parallel execution...");
             long parallelTime = 0;
             using (ThreadManager manager = ParallelExtensionBuilder.Create()
@@ -366,7 +327,6 @@ namespace Alis.Extension.Thread.Sample
         {
             Logger.Info("\n─── 5. ADVANCED SCENARIOS ───\n");
 
-            // Scenario 1: Adaptive batch sizing
             Logger.Info("Scenario 1: Adaptive batch sizing");
             using (ThreadManager manager = ParallelExtensionBuilder.Create()
                        .WithMinBatchSize(32)
@@ -380,16 +340,13 @@ namespace Alis.Extension.Thread.Sample
 
                 ComponentUpdateParallelizer parallelizer = new ComponentUpdateParallelizer(manager.ParallelExecutor);
 
-                // Small dataset - likely sequential
                 parallelizer.ExecuteComponentUpdate(smallSpan, i => smallDataset[i].X = i);
                 Logger.Info($"  ✓ Small dataset ({smallDataset.Length} items) processed");
 
-                // Large dataset - parallel
                 parallelizer.ExecuteComponentUpdate(largeSpan, i => largeDataset[i].X = i);
                 Logger.Info($"  ✓ Large dataset ({largeDataset.Length} items) processed");
             }
 
-            // Scenario 2: Mixed component updates
             Logger.Info("\nScenario 2: Mixed sequential and parallel updates");
             using (ThreadManager manager = new ThreadManager())
             {
@@ -397,13 +354,11 @@ namespace Alis.Extension.Thread.Sample
                 float[] criticalData = new float[count]; // Sequential
                 int[] normalData = new int[count]; // Parallel
 
-                // Critical section - sequential
                 for (int i = 0; i < count; i++)
                 {
                     criticalData[i] = (float) Math.Sin(i * 0.01);
                 }
 
-                // Normal processing - parallel
                 manager.ParallelExecutor.ExecuteUpdate(count, (start, length) =>
                 {
                     for (int i = start; i < start + length; i++)
@@ -415,7 +370,6 @@ namespace Alis.Extension.Thread.Sample
                 Logger.Info("  ✓ Mixed update completed");
             }
 
-            // Scenario 3: Disabled parallelism for debugging
             Logger.Info("\nScenario 3: Debugging mode (parallel disabled)");
             using (ThreadManager manager = ParallelExtensionBuilder.Create()
                        .DisableParallelExecution()

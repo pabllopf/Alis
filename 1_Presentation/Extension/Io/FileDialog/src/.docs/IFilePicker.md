@@ -212,8 +212,6 @@ if (result.IsSuccess)
 {
     string folderPath = result.SelectedPath;
     Console.WriteLine($"Selected folder: {folderPath}");
-    
-    // Example: List files in selected folder
     string[] files = Directory.GetFiles(folderPath);
     Console.WriteLine($"Contains {files.Length} files");
 }
@@ -242,13 +240,8 @@ The interface is implemented by three platform-specific classes:
 Use `FilePickerFactory` to create the appropriate implementation:
 
 ```csharp
-// Automatic platform detection
 IFilePicker picker = FilePickerFactory.CreateFilePicker();
 
-// This will return:
-// - WindowsFilePicker on Windows
-// - MacFilePicker on macOS
-// - LinuxFilePicker on Linux
 ```
 
 ## Error Handling Pattern
@@ -261,11 +254,9 @@ try
     
     if (result.IsSuccess)
     {
-        // Use result.SelectedPath
     }
     else if (result.IsCancelled)
     {
-        // Handle user cancellation
     }
     else
     {
@@ -294,21 +285,14 @@ public class FileSelectionExample
     {
         try
         {
-            // Create picker
             IFilePicker picker = FilePickerFactory.CreateFilePicker();
-            
-            // Configure options with fluent API
             var options = new FilePickerOptions("Select Images to Process")
                 .WithDefaultPath(Environment.GetFolderPath(Environment.SpecialFolder.Pictures))
                 .WithFilter(new FilePickerFilter("JPEG Images", "jpg", "jpeg"))
                 .WithFilter(new FilePickerFilter("PNG Images", "png"))
                 .WithFilter(new FilePickerFilter("All Images", "jpg", "jpeg", "png", "gif", "bmp", "tiff"))
                 .WithFilter(new FilePickerFilter("All Files", "*"));
-            
-            // Execute dialog - automatically handles platform differences
             FilePickerResult result = picker.PickFiles(options);
-            
-            // Handle result
             if (result.IsSuccess)
             {
                 Logger.Info($"Processing {result.SelectedPaths.Count} images...");
@@ -335,7 +319,6 @@ public class FileSelectionExample
     
     private static void ProcessImage(string imagePath)
     {
-        // Process image file
         Logger.Info($"Processing image: {imagePath}");
     }
 }

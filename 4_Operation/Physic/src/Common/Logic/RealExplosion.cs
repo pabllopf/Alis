@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:RealExplosion.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -36,7 +9,6 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Common.Logic
 {
-    // Original Code by Steven Lu - see http://www.box2d.org/forum/viewtopic.php?f=3&t=1688
     // Ported to Farseer 3.0 by Nicol�s Hormaz�bal
 
     /* Methodology:
@@ -133,14 +105,12 @@ namespace Alis.Core.Physic.Common.Logic
             aabb.UpperBound = pos + new Vector2F(radius, radius);
             Fixture[] shapes = new Fixture[MaxShapes];
 
-            // More than 5 shapes in an explosion could be possible, but still strange.
             Fixture[] containedShapes = new Fixture[5];
             bool exit = false;
 
             int shapeCount = 0;
             int containedShapeCount = 0;
 
-            // Query the world for overlapping shapes.
             WorldPhysic.QueryAabb(
                 fixture =>
                 {
@@ -159,7 +129,6 @@ namespace Alis.Core.Physic.Common.Logic
                         shapes[shapeCount++] = fixture;
                     }
 
-                    // Continue the query.
                     return true;
                 }, ref aabb);
 
@@ -170,7 +139,6 @@ namespace Alis.Core.Physic.Common.Logic
 
             Dictionary<Fixture, Vector2F> exploded = new Dictionary<Fixture, Vector2F>(shapeCount + containedShapeCount);
 
-            // Per shape max/min angles for now.
             float[] vals = new float[shapeCount * 2];
             int valIndex = 0;
             for (int i = 0; i < shapeCount; ++i)
@@ -178,7 +146,6 @@ namespace Alis.Core.Physic.Common.Logic
                 PolygonShape ps;
                 if (shapes[i].GetShape is CircleShape cs)
                 {
-                    // We create a "diamond" approximation of the circle
                     Vertices v = new Vertices();
                     Vector2F vec = Vector2F.Zero + new Vector2F(cs.GetRadius, 0);
                     v.Add(vec);
@@ -262,7 +229,6 @@ namespace Alis.Core.Physic.Common.Logic
 
                 if (i == valIndex - 1)
                 {
-                    // the single edgecase
                     midpt = vals[0] + Constant.Pi * 2 + vals[i];
                 }
                 else
@@ -275,7 +241,6 @@ namespace Alis.Core.Physic.Common.Logic
                 Vector2F p1 = pos;
                 Vector2F p2 = radius * new Vector2F((float) Math.Cos(midpt), (float) Math.Sin(midpt)) + pos;
 
-                // RaycastOne
                 bool hitClosest = false;
                 WorldPhysic.RayCast((f, p, n, fr) =>
                 {
@@ -291,7 +256,6 @@ namespace Alis.Core.Physic.Common.Logic
                     return fr;
                 }, p1, p2);
 
-                // Sustituye el bloque seleccionado así:
                 if (hitClosest && (fixture.GetBody.GetBodyType == BodyType.Dynamic))
                 {
                     if (ListAny(_data) && (ListLast(_data).Body == fixture.GetBody) && !rayMissed)
@@ -303,7 +267,6 @@ namespace Alis.Core.Physic.Common.Logic
                     }
                     else
                     {
-                        // make new
                         ShapeData d;
                         d.Body = fixture.GetBody;
                         d.Min = vals[i];
@@ -363,8 +326,6 @@ namespace Alis.Core.Physic.Common.Logic
 
                 float offset = (arclen - first * 2.0f) / ((float) MinRays + insertedRays - 1);
 
-                //Note: This loop can go into infinite as it operates on floats.
-                //Added FloatEquals with a large epsilon.
                 for (float j = _data[i].Min + first;
                      j < _data[i].Max || MathUtils.FloatEquals(j, _data[i].Max, 0.0001f);
                      j += offset)
@@ -390,15 +351,11 @@ namespace Alis.Core.Physic.Common.Logic
                             }
                         }
 
-                        // the force that is to be applied for this particular ray.
-                        // offset is angular coverage. lambda*length of segment is distance.
                         float impulse = arclen / (MinRays + insertedRays) * maxForce * 180.0f / Constant.Pi * (1.0f - Math.Min(1.0f, minlambda));
 
-                        // We Apply the impulse!!!
                         Vector2F vectImp = Vector2F.Dot(impulse * new Vector2F((float) Math.Cos(j), (float) Math.Sin(j)), -ro.Normal) * new Vector2F((float) Math.Cos(j), (float) Math.Sin(j));
                         _data[i].Body.ApplyLinearImpulse(ref vectImp, ref hitpoint);
 
-                        // We gather the fixtures for returning them
                         if (exploded.ContainsKey(f))
                         {
                             exploded[f] += vectImp;
@@ -416,7 +373,6 @@ namespace Alis.Core.Physic.Common.Logic
                 }
             }
 
-            // We check contained shapes
             for (int i = 0; i < containedShapeCount; ++i)
             {
                 Fixture fix = containedShapes[i];

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameObjectRefTupleTest.8.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
@@ -44,7 +17,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void RefTuple8_Initialize_ShouldSetAllComponents()
         {
-            // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 10, Y = 20};
@@ -64,7 +36,6 @@ namespace Alis.Core.Ecs.Test
             entity.Add(testStruct);
             entity.Add(another);
 
-            // Act
             GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct, AnotherComponent> tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct, AnotherComponent>
             {
                 GameObject = entity,
@@ -78,7 +49,6 @@ namespace Alis.Core.Ecs.Test
                 Item8 = new Ref<AnotherComponent>(new[] {another}, 0)
             };
 
-            // Assert
             Assert.Equal(entity, tuple.GameObject);
             Assert.Equal(10, tuple.Item1.Value.X);
             Assert.Equal(100, tuple.Item3.Value.Value);
@@ -93,7 +63,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void RefTuple8_Deconstruct_ShouldReturnAllRefs()
         {
-            // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 5, Y = 10};
@@ -126,10 +95,8 @@ namespace Alis.Core.Ecs.Test
                 Item8 = new Ref<AnotherComponent>(new[] {another}, 0)
             };
 
-            // Act
             (GameObject go, Ref<Position> posRef, Ref<Velocity> velRef, Ref<Health> healthRef, Ref<Armor> armorRef, Ref<TestComponent> testRef, Ref<TestComponent2> test2Ref, Ref<TestStruct> structRef, Ref<AnotherComponent> anotherRef) = tuple;
 
-            // Assert
             Assert.Equal(entity, go);
             Assert.Equal(5, posRef.Value.X);
             Assert.Equal(100, anotherRef.Value.Data);
@@ -143,7 +110,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void RefTuple8_ModifyAllComponents_ShouldUpdateAll()
         {
-            // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 1, Y = 2};
@@ -176,10 +142,8 @@ namespace Alis.Core.Ecs.Test
                 Item8 = new Ref<AnotherComponent>(new[] {another}, 0)
             };
 
-            // Act
             tuple.Item8.Value.Data = 999;
 
-            // Assert
             Assert.Equal(50, entity.Get<AnotherComponent>().Data);
 
             world.Dispose();
@@ -191,7 +155,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void RefTuple8_AllFields_ShouldBeAccessible()
         {
-            // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 8, Y = 16};
@@ -211,7 +174,6 @@ namespace Alis.Core.Ecs.Test
             entity.Add(testStruct);
             entity.Add(another);
 
-            // Act
             GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct, AnotherComponent> tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct, AnotherComponent>
             {
                 GameObject = entity,
@@ -225,7 +187,6 @@ namespace Alis.Core.Ecs.Test
                 Item8 = new Ref<AnotherComponent>(new[] {another}, 0)
             };
 
-            // Assert
             Assert.Equal(entity, tuple.GameObject);
             Assert.Equal(8, tuple.Item1.Value.X);
             Assert.Equal(24, tuple.Item7.Value.X);
@@ -240,7 +201,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void RefTuple8_MultipleTuples_ShouldMaintainSeparateState()
         {
-            // Arrange
             Scene world = new Scene();
             GameObject entity1 = world.Create();
             GameObject entity2 = world.Create();
@@ -279,7 +239,6 @@ namespace Alis.Core.Ecs.Test
             entity2.Add(struct2);
             entity2.Add(another2);
 
-            // Act
             GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct, AnotherComponent> tuple1 = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct, AnotherComponent>
             {
                 GameObject = entity1,
@@ -306,7 +265,6 @@ namespace Alis.Core.Ecs.Test
                 Item8 = new Ref<AnotherComponent>(new[] {another2}, 0)
             };
 
-            // Assert
             Assert.NotEqual(tuple1.GameObject, tuple2.GameObject);
             Assert.Equal(250, tuple1.Item8.Value.Data);
             Assert.Equal(350, tuple2.Item8.Value.Data);

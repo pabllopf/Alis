@@ -63,16 +63,13 @@ if (provider.LanguageExists("es"))
 ```csharp
 var provider = new LanguageProvider();
 
-// Add languages
 provider.AddLanguage(new Lang("en", "English", "English", "en-US"));
 provider.AddLanguage(new Lang("es", "Spanish", "Español", "es-ES"));
 provider.AddLanguage(new Lang("fr", "French", "Français", "fr-FR"));
 
-// Get available languages
 var languages = provider.GetAvailableLanguages();
 Console.WriteLine($"Total languages: {languages.Count}");
 
-// Get specific language
 var english = provider.GetLanguageByCode("en");
 if (english != null)
 {
@@ -104,16 +101,11 @@ manager.SetLanguage("en");
 ```csharp
 var provider = new LanguageProvider();
 
-// Add
 provider.AddLanguage(new Lang("en", "English"));
 
-// Check existence
 if (provider.LanguageExists("en"))
 {
-    // Get it
     var language = provider.GetLanguageByCode("en");
-    
-    // Remove it
     provider.RemoveLanguage("en");
 }
 ```

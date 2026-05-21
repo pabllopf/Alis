@@ -47,7 +47,6 @@ namespace Alis.Core.Audio.Test
                 Assert.StartsWith("./assets/", fileName);
             }
 
-            // Player.CheckOs is the module entry point that binds to platform-specific implementations.
             IPlayer selected = Player.CheckOs();
             if (selected != null)
             {

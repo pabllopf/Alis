@@ -91,7 +91,6 @@ public class ChangeVariableAction : IDialogAction
     }
 }
 
-// Uso
 var action = new ChangeVariableAction("increaseHealth", "playerHealth", 100);
 option.AddDialogAction(action);
 ```

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Installer.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Diagnostics;
@@ -63,7 +36,6 @@ namespace Alis.App.Installer
         /// </summary>
         public void Run(string[] args)
         {
-            // Frame limiter: 60 FPS target
             const double targetFrameTime = 1.0 / 60.0;
             Stopwatch frameTimer = Stopwatch.StartNew();
             double lastTime = frameTimer.Elapsed.TotalSeconds;
@@ -71,7 +43,6 @@ namespace Alis.App.Installer
             _platform = GetPlatform();
             Debug.Assert(_platform != null, "Platform implementation must be provided for the current OS.");
 
-            // Initialize native window and GL context
             if (!InitializePlatform(_platform, 800, 600, "C# + OpenGL Platform"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
@@ -79,24 +50,20 @@ namespace Alis.App.Installer
                 return;
             }
 
-            // Ensure GL API is loaded and viewport configured
             _platform.MakeContextCurrent();
             Gl.Initialize(_platform.GetProcAddress);
             Gl.GlViewport(0, 0, _platform.GetWindowWidth(), _platform.GetWindowHeight());
             Gl.GlEnable(EnableCap.DepthTest);
 
-            // Create ImGui context and configure backends
             IntPtr imguiContext = ImGui.CreateContext();
             ImGui.SetCurrentContext(imguiContext);
 
-            // Create the example instance after GL and ImGui are ready
             IExample example = new ImguiSample(_platform);
             example.Initialize();
 
             _platform.ShowWindow();
             _platform.SetTitle("C# + OpenGL Platform - ImGui");
 
-            // Configure IO and features
             ImGuiIoPtr io = ImGui.GetIo();
             io.DisplaySize = new Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
 
@@ -113,16 +80,13 @@ namespace Alis.App.Installer
                               | ImGuiConfigFlags.DockingEnable
                               | ImGuiConfigFlags.ViewportsEnable;
 
-            // Initialize optional ImGui extensions
             ImNodes.CreateContext();
             ImPlot.CreateContext();
             ImGuizMo.SetImGuiContext(imguiContext);
             ImGui.SetCurrentContext(imguiContext);
 
-            // Load fonts and create font texture
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
-            // Primary font (JetBrainsMono)
             const int fontSize = 14;
             Stream jetBrainsStream = AssetRegistry.GetResourceMemoryStreamByName("JetBrainsMono-Bold.ttf");
             Debug.Assert((jetBrainsStream != null) && (jetBrainsStream.Length > 0), "Primary font resource not found.");
@@ -130,14 +94,12 @@ namespace Alis.App.Installer
 
             fonts.AddFontFromMemoryTtf(primaryFontPtr, fontSize, fontSize);
 
-            // Icon font (FontAwesome) - only if resource exists
             const int iconFontSize = 18;
             Stream faStream = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameLight);
             if ((faStream != null) && (faStream.Length > 0))
             {
                 IntPtr iconsPtr = LoadFontFromResource(faStream);
 
-                // Prepare glyph ranges for FontAwesome
                 ushort[] iconRanges = new ushort[3];
                 iconRanges[0] = FontAwesome5.IconMin;
                 iconRanges[1] = FontAwesome5.IconMax;
@@ -153,27 +115,22 @@ namespace Alis.App.Installer
 
                 fonts.AddFontFromMemoryTtf(iconsPtr, iconFontSize, iconFontSize, iconsConfig, rangePtr);
 
-                // Free the pinned ranges handle immediately; AddFontFromMemoryTtf typically copies the needed data.
                 iconRangesHandle.Free();
             }
 
-            // Build font atlas and upload to GL
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int texWidth, out int texHeight, out int _);
             uint fontTexId = LoadTexture(pixelData, texWidth, texHeight);
             fonts.TexId = (IntPtr) fontTexId;
             fonts.ClearTexData();
 
-            // Configure style
             ImGuiStyle style = ImGui.GetStyle();
             ImGui.StyleColorsDark();
             style.WindowRounding = 0.0f;
             style.Colors2 = new Vector4F(0.00f, 0.00f, 0.00f, 1.00f);
 
-            // Main loop
             bool running = true;
             while (running)
             {
-                // Update delta time for ImGui using high-resolution timer
                 double now = frameTimer.Elapsed.TotalSeconds;
                 double delta = now - lastTime;
                 lastTime = now;
@@ -191,10 +148,8 @@ namespace Alis.App.Installer
 
                 running = _platform.PollEvents();
 
-                // Process key states for ImGui every frame (send down/up)
                 ProcessKeyWithImgui();
 
-                // If platform provides text input (characters), forward them to ImGui
                 if (_platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
                 {
                     ImGui.GetIo().AddInputCharactersUtf8(pendingChars);
@@ -209,7 +164,6 @@ namespace Alis.App.Installer
                     Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
                 }
 
-                // Frame pacing: sleep / spin until target frame time reached
                 double frameEnd = frameTimer.Elapsed.TotalSeconds;
                 double frameElapsed = frameEnd - now;
                 double sleepTime = targetFrameTime - frameElapsed;
@@ -218,11 +172,9 @@ namespace Alis.App.Installer
                     int sleepMs = (int) (sleepTime * 1000.0);
                     if (sleepMs > 0)
                     {
-                        // Sleep most of the remaining time (leave small margin for precision)
                         Thread.Sleep(sleepMs);
                     }
 
-                    // Busy-wait the rest for better precision
                     while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
                     {
                         Thread.SpinWait(10);
@@ -230,7 +182,6 @@ namespace Alis.App.Installer
                 }
             }
 
-            // Cleanup
             example.Cleanup();
             _platform.Cleanup();
         }
@@ -242,7 +193,6 @@ namespace Alis.App.Installer
         {
             ImGuiIoPtr io = ImGui.GetIo();
 
-            // Control y edición
             if (_platform.IsKeyDown(ConsoleKey.Backspace))
             {
                 io.AddKeyEvent(ImGuiKey.Backspace, true);
@@ -360,7 +310,6 @@ namespace Alis.App.Installer
                 io.AddKeyEvent(ImGuiKey.Delete, false);
             }
 
-            // Flechas
             if (_platform.IsKeyDown(ConsoleKey.LeftArrow))
             {
                 io.AddKeyEvent(ImGuiKey.LeftArrow, true);
@@ -397,7 +346,6 @@ namespace Alis.App.Installer
                 io.AddKeyEvent(ImGuiKey.DownArrow, false);
             }
 
-            // Números fila superior
             if (_platform.IsKeyDown(ConsoleKey.D0))
             {
                 io.AddKeyEvent(ImGuiKey._0, true);
@@ -488,7 +436,6 @@ namespace Alis.App.Installer
                 io.AddKeyEvent(ImGuiKey._9, false);
             }
 
-            // Letras A-Z
             if (_platform.IsKeyDown(ConsoleKey.A))
             {
                 io.AddKeyEvent(ImGuiKey.A, true);
@@ -723,7 +670,6 @@ namespace Alis.App.Installer
                 io.AddKeyEvent(ImGuiKey.Z, false);
             }
 
-            // Teclas de función
             if (_platform.IsKeyDown(ConsoleKey.F1))
             {
                 io.AddKeyEvent(ImGuiKey.F1, true);
@@ -832,7 +778,6 @@ namespace Alis.App.Installer
                 io.AddKeyEvent(ImGuiKey.F12, false);
             }
 
-            // Teclado numérico
             if (_platform.IsKeyDown(ConsoleKey.NumPad0))
             {
                 io.AddKeyEvent(ImGuiKey.Keypad0, true);
@@ -968,7 +913,6 @@ namespace Alis.App.Installer
                 io.AddKeyEvent(ImGuiKey.KeypadDivide, false);
             }
 
-            // Puntuación / OEM
             if (_platform.IsKeyDown(ConsoleKey.Oem1))
             {
                 io.AddKeyEvent(ImGuiKey.Semicolon, true);
@@ -1111,8 +1055,6 @@ namespace Alis.App.Installer
             return true;
         }
 
-        // Loads a font from an input stream into unmanaged memory and returns the IntPtr to the data buffer.
-        // Note: The caller is responsible for memory lifetime if the native API expects it to remain valid.
         /// <summary>
         ///     Loads the font from resource using the specified stream
         /// </summary>

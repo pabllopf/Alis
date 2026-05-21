@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WebServer.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -92,7 +65,6 @@ namespace Alis.Extension.Network.Test.Samples
             {
                 _isDisposed = true;
 
-                // safely attempt to shut down the listener
                 try
                 {
                     if (_listener != null)
@@ -132,7 +104,6 @@ namespace Alis.Extension.Network.Test.Samples
         {
             foreach (string subProtocol in requestedSubProtocols)
             {
-                // match the first sub protocol that we support (the client should pass the most preferable sub protocols first)
                 if (_supportedSubProtocols.Contains(subProtocol))
                 {
                     Logger.Info($"Http header has requested sub protocol {subProtocol} which is supported");
@@ -164,13 +135,8 @@ namespace Alis.Extension.Network.Test.Samples
                     return;
                 }
 
-                // this worker thread stays alive until either of the following happens:
-                // Client sends a close conection request OR
-                // An unhandled exception is thrown OR
-                // The server is disposed
                 Logger.Info("Server: Connection opened. Reading Http header from stream");
 
-                // get a secure or insecure stream
                 Stream stream = tcpClient.GetStream();
                 WebSocketHttpContext context = await _webSocketServerFactory.ReadHttpHeaderFromStreamAsync(stream);
                 if (context.IsWebSocketRequest)
@@ -240,7 +206,6 @@ namespace Alis.Extension.Network.Test.Samples
                     break;
                 }
 
-                // just echo the message back to the client
                 ArraySegment<byte> toSend = new ArraySegment<byte>(buffer.Array, buffer.Offset, result.Count);
                 await webSocket.SendAsync(toSend, WebSocketMessageType.Binary, true, token);
             }

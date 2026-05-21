@@ -263,7 +263,6 @@ The Factory pattern is used to encapsulate the creation logic for rooms and corr
 - Better testability
 
 ```csharp
-// Example usage
 IRoomFactory roomFactory = new RoomFactory();
 RoomData firstRoom = roomFactory.CreateFirstRoom(75, 75, 8, 8);
 ```
@@ -277,7 +276,6 @@ The Builder pattern constructs complex board structures step by step:
 - Generates walls and corners
 
 ```csharp
-// Example usage
 IBoardBuilder boardBuilder = new BoardBuilder();
 BoardSquare[,] board = boardBuilder.CreateEmptyBoard(150, 150);
 boardBuilder.PlaceRooms(board, rooms);
@@ -290,7 +288,6 @@ boardBuilder.GenerateWallsAndCorners(board);
 The Facade pattern provides a simple interface to the complex dungeon generation subsystem:
 
 ```csharp
-// Simple interface hides complexity
 IDungeonGenerator generator = new DungeonGenerator(config, roomFactory, corridorFactory, boardBuilder);
 DungeonData dungeon = generator.Generate();
 ```
@@ -408,7 +405,6 @@ byte NextByte()
 ### Basic Usage
 
 ```csharp
-// 1. Create configuration
 var config = new DungeonConfiguration
 {
     BoardWidth = 150,
@@ -424,23 +420,19 @@ var config = new DungeonConfiguration
     CorridorHeight = 4
 };
 
-// 2. Create dependencies
 IRandomNumberGenerator rng = new CryptoRandomNumberGenerator();
 IRoomFactory roomFactory = new RoomFactory();
 ICorridorFactory corridorFactory = new CorridorFactory(rng);
 IBoardBuilder boardBuilder = new BoardBuilder();
 
-// 3. Create generator
 IDungeonGenerator generator = new DungeonGenerator(
     config, 
     roomFactory, 
     corridorFactory, 
     boardBuilder);
 
-// 4. Generate dungeon
 DungeonData dungeon = generator.Generate();
 
-// 5. Use the dungeon
 Console.WriteLine($"Generated dungeon: {dungeon.Width}x{dungeon.Height}");
 Console.WriteLine($"Rooms: {dungeon.Rooms.Count}");
 Console.WriteLine($"Corridors: {dungeon.Corridors.Count}");
@@ -449,7 +441,6 @@ Console.WriteLine($"Corridors: {dungeon.Corridors.Count}");
 ### Custom Configuration
 
 ```csharp
-// Create a larger dungeon with more rooms
 var customConfig = new DungeonConfiguration(
     boardWidth: 200,
     boardHeight: 200,
@@ -471,7 +462,6 @@ var dungeon = new DungeonGenerator(customConfig, roomFactory, corridorFactory, b
 ### Testing with Mock Random Generator
 
 ```csharp
-// Create a predictable random generator for testing
 public class MockRandomGenerator : IRandomNumberGenerator
 {
     private int _value;
@@ -483,7 +473,6 @@ public class MockRandomGenerator : IRandomNumberGenerator
     public void SetValue(int value) => _value = value;
 }
 
-// Use in tests
 var mockRng = new MockRandomGenerator();
 mockRng.SetValue(1); // Always return Direction.North
 var corridorFactory = new CorridorFactory(mockRng);

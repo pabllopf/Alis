@@ -1,54 +1,10 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GearJoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // Gear Joint:
-    // C0 = (coordinate1 + ratio * coordinate2)_initial
-    // C = (coordinate1 + ratio * coordinate2) - C0 = 0
-    // J = [J1 ratio * J2]
-    // K = J * invM * JT
-    //   = J1 * invM1 * J1T + ratio * ratio * J2 * invM2 * J2T
-    //
-    // Revolute:
-    // coordinate = rotation
-    // Cdot = angularVelocity
-    // J = [0 0 1]
-    // K = J * invM * JT = invI
-    //
-    // Prismatic:
-    // coordinate = dot(p - pg, ug)
-    // Cdot = dot(v + cross(w, r), ug)
-    // J = [ug cross(r, ug)]
     // K = J * invM * JT = invMass + invI * cross(r, ug)^2
 
     /// <summary>
@@ -230,7 +186,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _bodyC = JointA.BodyA;
             _bodyA = JointA.BodyB;
 
-            // Get geometry of joint1
             ControllerTransform xfA = _bodyA.Xf;
             float aA = _bodyA.Sweep.A;
             ControllerTransform xfC = _bodyC.Xf;
@@ -262,7 +217,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _bodyD = JointB.BodyA;
             _bodyB = JointB.BodyB;
 
-            // Get geometry of joint2
             ControllerTransform xfB = _bodyB.Xf;
             float aB = _bodyB.Sweep.A;
             ControllerTransform xfD = _bodyD.Xf;
@@ -437,7 +391,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _mass += _ratio * _ratio * (_mD + _mB) + _iD * jwD * jwD + _iB * jwB * jwB;
             }
 
-            // Compute effective mass.
             _mass = _mass > 0.0f ? 1.0f / _mass : 0.0f;
 
             if (data.Step.WarmStarting)

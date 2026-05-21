@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:PrimitiveTypeTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -45,10 +18,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void Points_HasCorrectValue_EqualsGlPoints()
         {
-            // Arrange & Act
             const int expectedValue = 0x0000;
 
-            // Assert
             Assert.Equal(expectedValue, (int) PrimitiveType.Points);
         }
 
@@ -58,10 +29,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void Lines_HasCorrectValue_EqualsGlLines()
         {
-            // Arrange & Act
             const int expectedValue = 0x0001;
 
-            // Assert
             Assert.Equal(expectedValue, (int) PrimitiveType.Lines);
         }
 
@@ -71,10 +40,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void LineLoop_HasCorrectValue_EqualsGlLineLoop()
         {
-            // Arrange & Act
             const int expectedValue = 0x0002;
 
-            // Assert
             Assert.Equal(expectedValue, (int) PrimitiveType.LineLoop);
         }
 
@@ -84,10 +51,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void LineStrip_HasCorrectValue_EqualsGlLineStrip()
         {
-            // Arrange & Act
             const int expectedValue = 0x0003;
 
-            // Assert
             Assert.Equal(expectedValue, (int) PrimitiveType.LineStrip);
         }
 
@@ -97,10 +62,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void Triangles_HasCorrectValue_EqualsGlTriangles()
         {
-            // Arrange & Act
             const int expectedValue = 0x0004;
 
-            // Assert
             Assert.Equal(expectedValue, (int) PrimitiveType.Triangles);
         }
 
@@ -110,10 +73,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void TriangleStrip_HasCorrectValue_EqualsGlTriangleStrip()
         {
-            // Arrange & Act
             const int expectedValue = 0x0005;
 
-            // Assert
             Assert.Equal(expectedValue, (int) PrimitiveType.TriangleStrip);
         }
 
@@ -123,10 +84,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void TriangleFan_HasCorrectValue_EqualsGlTriangleFan()
         {
-            // Arrange & Act
             const int expectedValue = 0x0006;
 
-            // Assert
             Assert.Equal(expectedValue, (int) PrimitiveType.TriangleFan);
         }
 
@@ -136,10 +95,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void Quads_HasCorrectValue_EqualsGlQuads()
         {
-            // Arrange & Act
             const int expectedValue = 0x0007;
 
-            // Assert
             Assert.Equal(expectedValue, (int) PrimitiveType.Quads);
         }
 
@@ -149,7 +106,6 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void AllValues_AreUnique_NoConflicts()
         {
-            // Arrange
             int[] values = new[]
             {
                 (int) PrimitiveType.Points,
@@ -162,10 +118,8 @@ namespace Alis.Core.Graphic.Test
                 (int) PrimitiveType.Quads
             };
 
-            // Act
             int uniqueCount = new HashSet<int>(values).Count;
 
-            // Assert
             Assert.Equal(values.Length, uniqueCount);
         }
 
@@ -175,10 +129,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void PrimitiveType_IsEnum_TypeIsCorrect()
         {
-            // Arrange & Act
             Type enumType = typeof(PrimitiveType);
 
-            // Assert
             Assert.True(enumType.IsEnum);
         }
 
@@ -188,10 +140,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void PrimitiveType_IsPublic_CanBeAccessed()
         {
-            // Arrange & Act
             Type enumType = typeof(PrimitiveType);
 
-            // Assert
             Assert.True(enumType.IsPublic);
         }
 
@@ -201,10 +151,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void PrimitiveType_HasEightValues_CountIsCorrect()
         {
-            // Arrange
             Array enumValues = Enum.GetValues(typeof(PrimitiveType));
 
-            // Act & Assert
             Assert.Equal(8, enumValues.Length);
         }
 
@@ -214,10 +162,8 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void PrimitiveType_CanCastToInt_ConversionIsValid()
         {
-            // Arrange & Act
             int value = (int) PrimitiveType.Triangles;
 
-            // Assert
             Assert.IsType<int>(value);
             Assert.Equal(0x0004, value);
         }
@@ -228,11 +174,9 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void PrimitiveType_CanCompareValues_EqualityWorks()
         {
-            // Arrange & Act
             PrimitiveType triangles1 = PrimitiveType.Triangles;
             PrimitiveType triangles2 = PrimitiveType.Triangles;
 
-            // Assert
             Assert.Equal(triangles1, triangles2);
         }
 
@@ -242,11 +186,9 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void PrimitiveType_DifferentValues_AreNotEqual()
         {
-            // Arrange & Act
             PrimitiveType lines = PrimitiveType.Lines;
             PrimitiveType triangles = PrimitiveType.Triangles;
 
-            // Assert
             Assert.NotEqual(lines, triangles);
         }
     }

@@ -91,7 +91,6 @@ T CreateFromProperties(Dictionary<string, string> properties);
 ```csharp
 if (properties.TryGetValue("PropertyName", out var value))
 {
-    // Use value
 }
 ```
 
@@ -107,28 +106,23 @@ if (properties.TryGetValue("Age", out var ageStr) &&
 
 3. **Handle type conversions**:
 ```csharp
-// String
 var name = properties.TryGetValue("Name", out var n) ? n : null;
 
-// Integer
 int age = 0;
 if (properties.TryGetValue("Age", out var ageStr) && 
     int.TryParse(ageStr, out var ageValue))
     age = ageValue;
 
-// Boolean
 bool active = false;
 if (properties.TryGetValue("Active", out var activeStr) && 
     bool.TryParse(activeStr, out var activeValue))
     active = activeValue;
 
-// DateTime
 DateTime date = DateTime.MinValue;
 if (properties.TryGetValue("Date", out var dateStr) && 
     DateTime.TryParse(dateStr, out var dateValue))
     date = dateValue;
 
-// Guid
 Guid id = Guid.Empty;
 if (properties.TryGetValue("Id", out var idStr) && 
     Guid.TryParse(idStr, out var idValue))
@@ -140,8 +134,6 @@ if (properties.TryGetValue("Id", out var idStr) &&
 var tags = new List<string>();
 if (properties.TryGetValue("Tags", out var tagsJson))
 {
-    // Parse the raw JSON array
-    // Implementation depends on format
 }
 ```
 
@@ -242,8 +234,6 @@ public class User : IJsonSerializable, IJsonDesSerializable<User>
 
         if (properties.TryGetValue("Roles", out var rolesJson))
         {
-            // Parse JSON array
-            // Implementation: extract role names from rolesJson
             user.Roles = ParseRolesFromJson(rolesJson);
         }
 
@@ -253,7 +243,6 @@ public class User : IJsonSerializable, IJsonDesSerializable<User>
     private static List<string> ParseRolesFromJson(string json)
     {
         var roles = new List<string>();
-        // Simple extraction - in production use proper JSON parsing
         var items = json.Trim('[', ']').Split(',');
         foreach (var item in items)
         {

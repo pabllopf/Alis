@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WindowsPlayerTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Runtime.InteropServices;
@@ -53,10 +26,8 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange & Act
             WindowsPlayer player = new WindowsPlayer();
 
-            // Assert
             Assert.NotNull(player);
             Assert.False(player.Playing);
             Assert.False(player.Paused);
@@ -73,13 +44,10 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             bool playing = player.Playing;
 
-            // Assert
             Assert.False(playing);
         }
 
@@ -94,13 +62,10 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             bool paused = player.Paused;
 
-            // Assert
             Assert.False(paused);
         }
 
@@ -115,11 +80,9 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             string nonExistentFile = "nonexistent_file_12345.wav";
 
-            // Act & Assert
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(nonExistentFile));
         }
 
@@ -134,13 +97,10 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             await player.Pause();
 
-            // Assert
             Assert.False(player.Paused);
         }
 
@@ -155,13 +115,10 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             await player.Resume();
 
-            // Assert
             Assert.False(player.Paused);
             Assert.False(player.Playing);
         }
@@ -177,13 +134,10 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             await player.Stop();
 
-            // Assert
             Assert.False(player.Playing);
             Assert.False(player.Paused);
         }
@@ -199,14 +153,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             byte volume = 50;
 
-            // Act
             await player.SetVolume(volume);
 
-            // Assert - No exception thrown
             Assert.NotNull(player);
         }
 
@@ -221,14 +172,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             byte volume = 0;
 
-            // Act
             await player.SetVolume(volume);
 
-            // Assert - No exception thrown
             Assert.NotNull(player);
         }
 
@@ -243,14 +191,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             byte volume = 100;
 
-            // Act
             await player.SetVolume(volume);
 
-            // Assert - No exception thrown
             Assert.NotNull(player);
         }
 
@@ -265,15 +210,12 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             await player.Pause();
             await player.Pause();
             await player.Pause();
 
-            // Assert - No exception thrown
             Assert.False(player.Paused);
         }
 
@@ -288,15 +230,12 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             await player.Stop();
             await player.Stop();
             await player.Stop();
 
-            // Assert
             Assert.False(player.Playing);
             Assert.False(player.Paused);
         }
@@ -312,14 +251,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             bool eventAttached = false;
 
-            // Act
             player.PlaybackFinished += (sender, e) => { eventAttached = true; };
 
-            // Assert - Event handler attached without exception
             Assert.NotNull(player);
         }
 
@@ -334,13 +270,10 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             player.Dispose();
 
-            // Assert - No exception thrown
             Assert.NotNull(player);
         }
 
@@ -355,15 +288,12 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             player.Dispose();
             player.Dispose();
             player.Dispose();
 
-            // Assert - No exception thrown
             Assert.NotNull(player);
         }
 
@@ -378,12 +308,10 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             string nonExistentFile = "nonexistent_file_12345.wav";
             bool loop = true;
 
-            // Act & Assert
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop(nonExistentFile, loop));
         }
 
@@ -398,12 +326,10 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             string nonExistentFile = "nonexistent_file_12345.wav";
             bool loop = false;
 
-            // Act & Assert
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop(nonExistentFile, loop));
         }
 
@@ -418,10 +344,8 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act & Assert
             await player.SetVolume(25);
             await player.SetVolume(50);
             await player.SetVolume(75);
@@ -440,13 +364,10 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             await player.Resume();
 
-            // Assert
             Assert.False(player.Playing);
             Assert.False(player.Paused);
         }
@@ -462,10 +383,8 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange & Act
             WindowsPlayer player = new WindowsPlayer();
 
-            // Assert
             Assert.IsAssignableFrom<IPlayer>(player);
         }
 
@@ -480,10 +399,8 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange & Act
             WindowsPlayer player = new WindowsPlayer();
 
-            // Assert
             Assert.IsAssignableFrom<IDisposable>(player);
         }
 
@@ -498,14 +415,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             byte volume = 255; // Max byte value
 
-            // Act
             await player.SetVolume(volume);
 
-            // Assert - No exception thrown
             Assert.NotNull(player);
         }
 
@@ -520,10 +434,8 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act & Assert
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(null));
         }
 
@@ -538,10 +450,8 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act & Assert
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop(null, true));
         }
 
@@ -556,10 +466,8 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act & Assert
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(string.Empty));
         }
 
@@ -574,14 +482,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             player.Dispose();
 
-            // Act
             await player.Stop();
 
-            // Assert - No exception thrown
             Assert.False(player.Playing);
         }
 
@@ -596,14 +501,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange & Act
             using (WindowsPlayer player = new WindowsPlayer())
             {
-                // Assert
                 Assert.NotNull(player);
             }
 
-            // Assert - No exception thrown after disposal
             Assert.True(true);
         }
 
@@ -618,11 +520,9 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             string nonExistentFile = "nonexistent.wav";
 
-            // Act & Assert
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop(nonExistentFile, false));
         }
 
@@ -637,14 +537,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             player.Dispose();
 
-            // Act
             await player.SetVolume(50);
 
-            // Assert - No exception thrown
             Assert.NotNull(player);
         }
 
@@ -659,14 +556,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             player.Dispose();
 
-            // Act
             await player.Pause();
 
-            // Assert - No exception thrown
             Assert.False(player.Paused);
         }
 
@@ -681,14 +575,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             player.Dispose();
 
-            // Act
             await player.Resume();
 
-            // Assert - No exception thrown
             Assert.False(player.Playing);
         }
 
@@ -703,14 +594,12 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             bool eventRaised = false;
             player.PlaybackFinished += (sender, e) => eventRaised = true;
 
             // Act - Event would be raised internally
 
-            // Assert - Handler attached successfully
             Assert.NotNull(player);
         }
 
@@ -725,15 +614,12 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             EventHandler handler = (sender, e) => { };
 
-            // Act
             player.PlaybackFinished += handler;
             player.PlaybackFinished -= handler;
 
-            // Assert - No exception thrown
             Assert.NotNull(player);
         }
 
@@ -748,16 +634,13 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             int count1 = 0;
             int count2 = 0;
 
-            // Act
             player.PlaybackFinished += (sender, e) => count1++;
             player.PlaybackFinished += (sender, e) => count2++;
 
-            // Assert - Multiple handlers attached successfully
             Assert.NotNull(player);
         }
 
@@ -772,10 +655,8 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act & Assert - Test boundary and mid-range values
             for (byte i = 0; i <= 100; i += 10)
             {
                 await player.SetVolume(i);
@@ -795,14 +676,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             await player.Pause();
             await player.Stop();
 
-            // Assert
             Assert.False(player.Playing);
             Assert.False(player.Paused);
         }
@@ -818,14 +696,11 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             await player.Resume();
             await player.Stop();
 
-            // Assert
             Assert.False(player.Playing);
             Assert.False(player.Paused);
         }
@@ -841,15 +716,12 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act
             player.Dispose();
             player.Dispose();
             player.Dispose();
 
-            // Assert - Dispose can be called multiple times safely
             Assert.NotNull(player);
         }
 
@@ -864,10 +736,8 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act & Assert
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play("   "));
         }
 
@@ -882,10 +752,8 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
 
-            // Act & Assert
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop("   ", true));
         }
 
@@ -900,11 +768,9 @@ namespace Alis.Core.Audio.Test.Players
                 return;
             }
 
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
             string invalidPath = "invalid<>path.wav";
 
-            // Act & Assert
             await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(invalidPath));
         }
     }

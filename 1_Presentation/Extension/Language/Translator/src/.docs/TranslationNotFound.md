@@ -15,8 +15,6 @@ Here is an example of how to use the `TranslationNotFound` class:
 ```csharp
 try
 {
-    // Attempt to find a translation
-    // If the translation is not found, throw a TranslationNotFound exception
     throw new TranslationNotFound("hello");
 }
 catch (TranslationNotFound ex)

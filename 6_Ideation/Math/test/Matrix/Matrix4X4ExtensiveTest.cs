@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Matrix4X4ExtensiveTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Matrix;
@@ -46,10 +19,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GetMatrixCreationCases()
         {
-            // Identity matrices
             yield return new object[] {"Identity"};
 
-            // Zero matrices
             yield return new object[] {"Zero"};
         }
 
@@ -71,7 +42,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix4X4 matrix = Matrix4X4.Identity;
 
-            // Main diagonal should be 1
             Assert.Equal(1f, matrix.M11);
             Assert.Equal(1f, matrix.M22);
             Assert.Equal(1f, matrix.M33);
@@ -86,7 +56,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix4X4 matrix = Matrix4X4.Identity;
 
-            // Off-diagonal elements should be 0
             Assert.Equal(0f, matrix.M12);
             Assert.Equal(0f, matrix.M13);
             Assert.Equal(0f, matrix.M14);
@@ -100,7 +69,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Theory, InlineData(1f), InlineData(2f), InlineData(0.5f), InlineData(-1f)]
         public void CreateScale_WithValue_CreatesScaleMatrix(float scale)
         {
-            // Test would be implemented based on actual API
             Assert.NotNull(Matrix4X4.Identity);
         }
 
@@ -114,7 +82,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix4X4 matrix = Matrix4X4.Identity;
             Vector4F vector = new Vector4F(1f, 2f, 3f, 4f);
 
-            // Vector * Matrix operations would be tested here
             Assert.NotNull(matrix);
             Assert.Equal(1f, vector.X);
         }
@@ -129,7 +96,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix4X4 matrix1 = Matrix4X4.Identity;
             Matrix4X4 matrix2 = Matrix4X4.Identity;
 
-            // Product should be identity
             Assert.NotNull(matrix1);
             Assert.NotNull(matrix2);
         }

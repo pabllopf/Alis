@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WebAssemblyGameExamples.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -45,10 +18,8 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void BasicGameLoopExample()
         {
-            // Create a game context with specific dimensions
             using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(1280, 720, "My Game"))
             {
-                // Register keyboard controls
                 gameContext.RegisterAction("Move_Up", ConsoleKey.W, ConsoleKey.UpArrow);
                 gameContext.RegisterAction("Move_Down", ConsoleKey.S, ConsoleKey.DownArrow);
                 gameContext.RegisterAction("Move_Left", ConsoleKey.A, ConsoleKey.LeftArrow);
@@ -56,13 +27,10 @@ namespace Alis.Core.Graphic.Platforms.Web
                 gameContext.RegisterAction("Jump", ConsoleKey.Spacebar);
                 gameContext.RegisterAction("MenuToggle", ConsoleKey.Escape);
 
-                // Subscribe to frame events
                 gameContext.OnUpdate += (sender, e) =>
                 {
-                    // Your game update logic here
                     if (gameContext.IsActionActive("Move_Up"))
                     {
-                        // Handle up movement
                     }
 
                     if (gameContext.IsMouseButtonDown(0)) // Left mouse button
@@ -73,17 +41,13 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                 gameContext.OnFrame += (sender, e) =>
                 {
-                    // Your game rendering logic here
                 };
 
-                // Run the game with custom update logic
                 gameContext.Run((context) =>
                 {
-                    // Per-frame update
                     float wheelDelta = context.InputManager.GetMouseWheelDelta();
                     if (wheelDelta != 0)
                     {
-                        // Handle mouse wheel zoom
                     }
                 });
             }
@@ -117,17 +81,14 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                 if (state.ButtonA)
                 {
-                    // Handle A button press
                 }
 
                 if (state.ButtonB)
                 {
-                    // Handle B button press
                 }
 
                 if (context.InputManager.IsGamepadButtonJustPressed(gamepadIndex, 0)) // A button
                 {
-                    // A button was just pressed
                 }
 
                 if (state.ButtonLb)
@@ -148,13 +109,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 gameContext.DisplayManager.OnDisplayResized += (sender, args) =>
                 {
                     WebAssemblyGameContext.ConsoleLog($"Window resized to {args.Width}x{args.Height}");
-                    // Update your game camera/UI layout here
                 };
 
                 gameContext.DisplayManager.OnOrientationChanged += (sender, args) =>
                 {
                     WebAssemblyGameContext.ConsoleLog($"Orientation changed to: {args.Orientation}");
-                    // Adjust game layout for portrait/landscape
                 };
 
                 gameContext.DisplayManager.OnFullscreenChanged += (sender, args) =>
@@ -164,22 +123,18 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                 gameContext.Run((context) =>
                 {
-                    // Toggle fullscreen with F key
                     if (context.IsKeyDown(ConsoleKey.F))
                     {
                         System.Threading.Thread.Sleep(100); // Debounce
                         context.ToggleFullscreen();
                     }
 
-                    // Check orientation for responsive layout
                     ScreenOrientation orientation = context.DisplayManager.GetOrientation();
                     if (orientation == ScreenOrientation.Portrait)
                     {
-                        // Use portrait layout
                     }
                     else
                     {
-                        // Use landscape layout
                     }
                 });
             }
@@ -227,19 +182,15 @@ namespace Alis.Core.Graphic.Platforms.Web
         {
             if (context.IsKeyDown(ConsoleKey.W))
             {
-                // Handle forward movement
             }
             if (context.IsKeyDown(ConsoleKey.S))
             {
-                // Handle backward movement
             }
             if (context.IsKeyDown(ConsoleKey.A))
             {
-                // Handle left movement
             }
             if (context.IsKeyDown(ConsoleKey.D))
             {
-                // Handle right movement
             }
         }
 
@@ -251,7 +202,6 @@ namespace Alis.Core.Graphic.Platforms.Web
         {
             using (WebAssemblyGameContext gameContext = WebAssemblyGameContext.Create(1280, 720, "System Info"))
             {
-                // Log system information
                 WebAssemblyGameContext.ConsoleLog($"Device Language: {WebAssemblyGameContext.GetDeviceLanguage()}");
                 WebAssemblyGameContext.ConsoleLog($"Is Online: {WebAssemblyGameContext.IsOnline()}");
                 WebAssemblyGameContext.ConsoleLog($"Battery Level: {WebAssemblyGameContext.GetBatteryLevel():P}");
@@ -260,14 +210,11 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                 gameContext.Run((context) =>
                 {
-                    // Check connection status periodically
                     if (!WebAssemblyGameContext.IsOnline())
                     {
                         WebAssemblyGameContext.ConsoleWarn("Lost internet connection");
-                        // Pause gameplay or show offline message
                     }
 
-                    // Monitor battery for mobile devices
                     float batteryLevel = WebAssemblyGameContext.GetBatteryLevel();
                     if (batteryLevel < 0.2f && !WebAssemblyGameContext.IsCharging())
                     {
@@ -283,34 +230,27 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         public static void ConfigurationPresetsExample()
         {
-            // Create a 2D game with optimized settings
             using (WebAssemblyGameContext game2D = new WebAssemblyGameContext(GameContextPresets.Game2D()))
             {
                 game2D.Run((context) =>
                 {
-                    // 2D game logic
                 });
             }
 
-            // Create a 3D game with high-quality settings
             using (WebAssemblyGameContext game3D = new WebAssemblyGameContext(GameContextPresets.Game3D()))
             {
                 game3D.Run((context) =>
                 {
-                    // 3D game logic
                 });
             }
 
-            // Create a mobile game with touch support
             using (WebAssemblyGameContext mobileGame = new WebAssemblyGameContext(GameContextPresets.MobileGame()))
             {
                 mobileGame.Run((context) =>
                 {
-                    // Mobile game logic with touch input
                 });
             }
 
-            // Create a custom configuration with builder pattern
             using (WebAssemblyGameContext customGame = WebAssemblyGameContext.Create(config =>
             {
                 config
@@ -327,7 +267,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             {
                 customGame.Run((context) =>
                 {
-                    // Custom game logic
                 });
             }
         }
@@ -344,25 +283,21 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                 gameContext.Run((context) =>
                 {
-                    // Collect text input
                     if (context.TryGetInputText(out string text))
                     {
                         userInput += text;
                     }
 
-                    // Handle backspace
                     if (context.IsKeyDown(ConsoleKey.Backspace) && userInput.Length > 0)
                     {
                         userInput = userInput.Substring(0, userInput.Length - 1);
                     }
 
-                    // Handle maximum input length
                     if (userInput.Length > 50)
                     {
                         userInput = userInput.Substring(0, 50);
                     }
 
-                    // Clear input with Ctrl+A then Delete
                     if (context.IsKeyDown(ConsoleKey.Delete))
                     {
                         userInput = "";
@@ -394,13 +329,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                         elapsedTime += deltaTime;
                         frameCount++;
 
-                        // Calculate FPS every second
                         if (elapsedTime >= 1.0)
                         {
                             fps = frameCount / elapsedTime;
                             WebAssemblyGameContext.ConsoleLog($"FPS: {fps:F2}");
 
-                            // Adjust quality if FPS is too low
                             if (fps < 30)
                             {
                                 context.DisplayManager.SetDisplayQuality(DisplayQuality.Low);
@@ -431,7 +364,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             {
                 gameContext.Run((context) =>
                 {
-                    // Show debug information in console
                     if (context.IsKeyDown(ConsoleKey.D1))
                     {
                         WebAssemblyGameContext.ConsoleLog("Debug message");
@@ -439,13 +371,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                         WebAssemblyGameContext.ConsoleError("Error message");
                     }
 
-                    // Show alert dialog
                     if (context.IsKeyDown(ConsoleKey.D2))
                     {
                         WebAssemblyGameContext.ShowAlert("This is an alert!");
                     }
 
-                    // Show confirmation dialog
                     if (context.IsKeyDown(ConsoleKey.D3) && WebAssemblyGameContext.ShowConfirm("Do you want to quit?"))
                     {
                         context.Stop(); // Exit the game
@@ -474,7 +404,6 @@ namespace Alis.Core.Graphic.Platforms.Web
                     .WithDisplayQuality(DisplayQuality.High);
             }))
             {
-                // Setup game actions
                 gameContext.RegisterAction("Move_Forward", ConsoleKey.W);
                 gameContext.RegisterAction("Move_Backward", ConsoleKey.S);
                 gameContext.RegisterAction("Move_Left", ConsoleKey.A);
@@ -483,15 +412,12 @@ namespace Alis.Core.Graphic.Platforms.Web
                 gameContext.RegisterAction("Attack", ConsoleKey.E);
                 gameContext.RegisterAction("Menu", ConsoleKey.Escape);
 
-                // Setup event handlers
                 gameContext.OnUpdate += (s, e) =>
                 {
-                    // Physics update, logic, etc.
                 };
 
                 gameContext.OnFrame += (s, e) =>
                 {
-                    // Rendering
                 };
 
                 gameContext.OnShutdown += (s, e) =>
@@ -499,51 +425,38 @@ namespace Alis.Core.Graphic.Platforms.Web
                     WebAssemblyGameContext.ConsoleLog("Game shutting down...");
                 };
 
-                // Display events
                 gameContext.DisplayManager.OnDisplayResized += (s, e) =>
                 {
                     WebAssemblyGameContext.ConsoleLog($"Resized to {e.Width}x{e.Height}");
                 };
 
-                // Run main game loop
                 gameContext.Run((context) =>
                 {
-                    // Input handling
                     if (context.IsActionActive("Move_Forward"))
                     {
-                        // Handle forward movement
                     }
                     if (context.IsActionActive("Move_Backward"))
                     {
-                        // Handle backward movement
                     }
                     if (context.IsActionActive("Move_Left"))
                     {
-                        // Handle left movement
                     }
                     if (context.IsActionActive("Move_Right"))
                     {
-                        // Handle right movement
                     }
 
                     if (context.IsActionJustPressed("Jump"))
                     {
-                        // Jump logic
                     }
 
                     if (context.IsActionJustPressed("Attack"))
                     {
-                        // Attack logic
                     }
 
                     if (context.IsActionJustPressed("Menu"))
                     {
-                        // Show menu or pause
                     }
 
-                    // Normalize movement
-                    // Update game state with movement
-                    // ... your game logic here ...
                 });
             }
         }

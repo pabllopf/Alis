@@ -63,13 +63,11 @@ cache.Clear(); // Empties the entire cache
 ```csharp
 var cache = new MemoryTranslationCache();
 
-// Cache translations
 cache.Set("en", "hello", "Hello");
 cache.Set("en", "goodbye", "Goodbye");
 cache.Set("es", "hello", "Hola");
 cache.Set("es", "goodbye", "Adiós");
 
-// Retrieve
 if (cache.TryGetTranslation("en", "hello", out string english))
 {
     Console.WriteLine(english); // Output: Hello
@@ -86,16 +84,13 @@ if (cache.TryGetTranslation("es", "hello", out string spanish))
 ```csharp
 var cache = new MemoryTranslationCache();
 
-// Add translations for multiple languages
 cache.Set("en", "key1", "value1");
 cache.Set("en", "key2", "value2");
 cache.Set("es", "key1", "valor1");
 cache.Set("es", "key2", "valor2");
 
-// Invalidate English only
 cache.InvalidateLanguage("en");
 
-// English keys are cleared, Spanish keys remain
 bool enFound = cache.TryGetTranslation("en", "key1", out _); // false
 bool esFound = cache.TryGetTranslation("es", "key1", out _); // true
 ```
@@ -105,7 +100,6 @@ bool esFound = cache.TryGetTranslation("es", "key1", out _); // true
 ```csharp
 var cache = new MemoryTranslationCache();
 
-// Cache for multiple languages independently
 string[] languages = { "en", "es", "fr", "de", "it" };
 string[] keys = { "greeting", "farewell", "welcome" };
 
@@ -117,7 +111,6 @@ foreach (var lang in languages)
     }
 }
 
-// Each language maintains independent translations
 for (int i = 0; i < languages.Length; i++)
 {
     if (cache.TryGetTranslation(languages[i], "greeting", out string greeting))
@@ -142,17 +135,13 @@ var manager = new TranslationManager(
     pluralizationEngine
 );
 
-// The manager will automatically cache translations
 manager.SetLanguage("en");
 manager.AddTranslation("en", "greeting", "Hello");
 
-// First call loads from provider and caches
 string text1 = manager.Translate("greeting"); // Cached
 
-// Second call retrieves from cache
 string text2 = manager.Translate("greeting"); // From cache
 
-// Clear cache when needed
 manager.ClearCache();
 ```
 
@@ -193,7 +182,6 @@ catch (ArgumentException ex)
 ```csharp
 var cache = new MemoryTranslationCache();
 
-// Safe for concurrent access from multiple threads
 var tasks = new List<Task>();
 
 for (int i = 0; i < 10; i++)

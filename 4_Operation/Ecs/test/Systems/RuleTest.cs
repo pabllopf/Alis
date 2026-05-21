@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:RuleTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Reflection;
@@ -52,7 +25,6 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Rule_CanBeAccessedAsStaticClass()
         {
-            // Act & Assert
             Assert.NotNull(typeof(Rule));
         }
 
@@ -65,11 +37,9 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Rule_HasStaticMethods()
         {
-            // Act
             MethodInfo[] methods = typeof(Rule).GetMethods(
                 BindingFlags.Public | BindingFlags.Static);
 
-            // Assert
             Assert.NotEmpty(methods);
         }
 
@@ -82,10 +52,8 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Rule_WithMethodExists()
         {
-            // Act
             MethodInfo method = typeof(Rule).GetMethod("With", BindingFlags.Public | BindingFlags.Static);
 
-            // Assert
             Assert.Null(method);
         }
 
@@ -98,10 +66,8 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Rule_WithoutMethodExists()
         {
-            // Act
             MethodInfo method = typeof(Rule).GetMethod("Without", BindingFlags.Public | BindingFlags.Static);
 
-            // Assert
             Assert.Null(method);
         }
 
@@ -114,10 +80,8 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Rule_TaggedMethodExists()
         {
-            // Act
             MethodInfo method = typeof(Rule).GetMethod("Tagged", BindingFlags.Public | BindingFlags.Static);
 
-            // Assert
             Assert.Null(method);
         }
 
@@ -130,10 +94,8 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Rule_UntaggedMethodExists()
         {
-            // Act
             MethodInfo method = typeof(Rule).GetMethod("Untagged", BindingFlags.Public | BindingFlags.Static);
 
-            // Assert
             Assert.Null(method);
         }
 
@@ -146,10 +108,8 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void Rule_IsPublic()
         {
-            // Act
             Type ruleType = typeof(Rule);
 
-            // Assert
             Assert.True(ruleType.IsPublic);
         }
     }

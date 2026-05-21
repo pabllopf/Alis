@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GlfwNativeTests.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Graphic.Glfw.Enums;
@@ -46,10 +19,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_Version_ReturnsValidVersion()
         {
-            // Act
             Version version = GlfwNative.Version;
 
-            // Assert
             Assert.NotNull(version);
             Assert.True(version.Major >= 3);
         }
@@ -60,10 +31,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_VersionString_ReturnsNonEmptyString()
         {
-            // Act
             string versionString = GlfwNative.VersionString;
 
-            // Assert
             Assert.False(string.IsNullOrEmpty(versionString));
         }
 
@@ -73,11 +42,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_GetError_WithNoError_ReturnsNone()
         {
-            // Act
             ErrorCode error = GlfwNative.GetError(out string description);
 
-            // Assert
-            // Note: May not always be None if there are pending errors
             Assert.True(error == ErrorCode.None || error != ErrorCode.None);
         }
 
@@ -87,15 +53,12 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_Time_CanGetAndSet()
         {
-            // Arrange
             double initialTime = GlfwNative.Time;
             double newTime = 5.0;
 
-            // Act
             GlfwNative.Time = newTime;
             double retrievedTime = GlfwNative.Time;
 
-            // Assert
             Assert.True(retrievedTime >= newTime);
         }
 
@@ -105,10 +68,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_TimerFrequency_ReturnsPositiveValue()
         {
-            // Act
             ulong frequency = GlfwNative.TimerFrequency;
 
-            // Assert
             Assert.True(frequency > 0);
         }
 
@@ -118,10 +79,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_TimerValue_ReturnsPositiveValue()
         {
-            // Act
             ulong timerValue = GlfwNative.TimerValue;
 
-            // Assert
             Assert.True(timerValue >= 0);
         }
 
@@ -131,10 +90,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_Monitors_ReturnsMonitorArray()
         {
-            // Act
             Monitor[] monitors = GlfwNative.Monitors;
 
-            // Assert
             Assert.NotNull(monitors);
         }
 
@@ -144,11 +101,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_PrimaryMonitor_ReturnsValidMonitor()
         {
-            // Act
             Monitor primaryMonitor = GlfwNative.PrimaryMonitor;
 
-            // Assert
-            // Monitor may be None if no monitors are connected
             Assert.NotNull(primaryMonitor);
         }
 
@@ -158,11 +112,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_CurrentContext_ReturnsWindowOrNone()
         {
-            // Act
             Window currentContext = GlfwNative.CurrentContext;
 
-            // Assert
-            // Should return None if no context is current
             Assert.NotNull(currentContext);
         }
 
@@ -172,17 +123,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_GetClipboardString_ReturnsString()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(100, 100, "Test", Monitor.None, Window.None);
 
             try
             {
-                // Act
                 string clipboard = GlfwNative.GetClipboardString(window);
 
-                // Assert
-                // Clipboard may be empty or contain data
                 Assert.NotNull(clipboard);
             }
             finally
@@ -197,15 +144,12 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_CreateWindow_WithValidParameters_CreatesWindow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
 
-            // Act
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Assert
                 Assert.NotEqual(Window.None, window);
             }
             finally
@@ -220,11 +164,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_DestroyWindow_WithValidWindow_DoesNotThrow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
-            // Act & Assert
             GlfwNative.DestroyWindow(window);
         }
 
@@ -234,16 +176,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_GetWindowSize_WithValidWindow_ReturnsSize()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act
                 GlfwNative.GetWindowSize(window, out int width, out int height);
 
-                // Assert
                 Assert.True(width > 0);
                 Assert.True(height > 0);
             }
@@ -260,16 +199,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_WindowShouldClose_WithNewWindow_ReturnsFalse()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act
                 bool shouldClose = GlfwNative.WindowShouldClose(window);
 
-                // Assert
                 Assert.False(shouldClose);
             }
             finally
@@ -284,16 +220,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_SetWindowTitle_WithValidWindow_ChangesTitle()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Initial Title", Monitor.None, Window.None);
 
             try
             {
-                // Act - No exception should be thrown
                 GlfwNative.SetWindowTitle(window, "New Title");
 
-                // Assert - If no exception thrown, test passes
                 Assert.True(true);
             }
             finally
@@ -308,7 +241,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_PollEvents_DoesNotThrow()
         {
-            // Act & Assert
             GlfwNative.PollEvents();
         }
 
@@ -318,7 +250,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_WindowHint_WithValidHint_DoesNotThrow()
         {
-            // Act & Assert
             GlfwNative.WindowHint(Hint.Visible, false);
             GlfwNative.WindowHint(Hint.Resizable, true);
         }
@@ -329,16 +260,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_GetKey_WithValidWindow_ReturnsState()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act
                 InputState state = GlfwNative.GetKey(window, Keys.A);
 
-                // Assert
                 Assert.True(state == InputState.Press || state == InputState.Release);
             }
             finally
@@ -353,16 +281,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_GetMouseButton_WithValidWindow_ReturnsState()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act
                 InputState state = GlfwNative.GetMouseButton(window, MouseButton.Left);
 
-                // Assert
                 Assert.True(state == InputState.Press || state == InputState.Release);
             }
             finally
@@ -377,13 +302,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_ShowWindow_WithValidWindow_DoesNotThrow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act & Assert
                 GlfwNative.ShowWindow(window);
                 GlfwNative.HideWindow(window);
             }
@@ -399,13 +322,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_IconifyWindow_WithValidWindow_DoesNotThrow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act & Assert
                 GlfwNative.IconifyWindow(window);
             }
             finally
@@ -420,13 +341,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GlfwNative_RestoreWindow_WithValidWindow_DoesNotThrow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act & Assert
                 GlfwNative.RestoreWindow(window);
             }
             finally

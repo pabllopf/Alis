@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:InternalRuntimeTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Systems.Execution;
@@ -135,10 +108,8 @@ namespace Alis.Test
         [Fact]
         public void Constructor_EmptyArray_ShouldCreateEmptyRuntime()
         {
-            // Arrange & Act
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>();
 
-            // Assert - should not throw, just be empty
             Assert.NotNull(runtime);
         }
 
@@ -148,14 +119,11 @@ namespace Alis.Test
         [Fact]
         public void Constructor_SingleItem_ShouldStoreIt()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime testRuntime = new TestRuntime(context);
 
-            // Act
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(testRuntime);
 
-            // Assert
             TestRuntime retrieved = runtime.Get<TestRuntime>();
             Assert.Same(testRuntime, retrieved);
         }
@@ -167,15 +135,12 @@ namespace Alis.Test
         [Fact]
         public void Get_ReturnsCorrectType_WhenPresent()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime testRuntime = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(testRuntime);
 
-            // Act
             TestRuntime result = runtime.Get<TestRuntime>();
 
-            // Assert
             Assert.NotNull(result);
             Assert.Same(testRuntime, result);
         }
@@ -186,11 +151,9 @@ namespace Alis.Test
         [Fact]
         public void Get_ThrowsInvalidOperationException_WhenTypeNotFound()
         {
-            // Arrange
             Context context = new Context();
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>();
 
-            // Act & Assert
             InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => runtime.Get<TestRuntime>());
             Assert.Contains("TestRuntime", exception.Message);
         }
@@ -201,16 +164,13 @@ namespace Alis.Test
         [Fact]
         public void OnInit_CallsOnInitOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnInit();
 
-            // Assert
             Assert.True(runtime1.OnInitCalled);
             Assert.True(runtime2.OnInitCalled);
         }
@@ -221,16 +181,13 @@ namespace Alis.Test
         [Fact]
         public void OnAwake_CallsOnAwakeOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnAwake();
 
-            // Assert
             Assert.True(runtime1.OnAwakeCalled);
             Assert.True(runtime2.OnAwakeCalled);
         }
@@ -241,16 +198,13 @@ namespace Alis.Test
         [Fact]
         public void OnStart_CallsOnStartOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnStart();
 
-            // Assert
             Assert.True(runtime1.OnStartCalled);
             Assert.True(runtime2.OnStartCalled);
         }
@@ -261,16 +215,13 @@ namespace Alis.Test
         [Fact]
         public void OnUpdate_CallsOnUpdateOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnUpdate();
 
-            // Assert
             Assert.True(runtime1.OnUpdateCalled);
             Assert.True(runtime2.OnUpdateCalled);
         }
@@ -281,16 +232,13 @@ namespace Alis.Test
         [Fact]
         public void OnDraw_CallsOnDrawOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnDraw();
 
-            // Assert
             Assert.True(runtime1.OnDrawCalled);
             Assert.True(runtime2.OnDrawCalled);
         }
@@ -301,16 +249,13 @@ namespace Alis.Test
         [Fact]
         public void OnExit_CallsOnExitOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnExit();
 
-            // Assert
             Assert.True(runtime1.OnExitCalled);
             Assert.True(runtime2.OnExitCalled);
         }
@@ -321,16 +266,13 @@ namespace Alis.Test
         [Fact]
         public void OnSave_CallsOnSaveOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnSave();
 
-            // Assert
             Assert.True(runtime1.OnSaveCalled);
             Assert.True(runtime2.OnSaveCalled);
         }
@@ -341,16 +283,13 @@ namespace Alis.Test
         [Fact]
         public void OnLoad_CallsOnLoadOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnLoad();
 
-            // Assert
             Assert.True(runtime1.OnLoadCalled);
             Assert.True(runtime2.OnLoadCalled);
         }
@@ -361,16 +300,13 @@ namespace Alis.Test
         [Fact]
         public void OnSave_WithPath_CallsOnSavePathOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnSave("/test/path");
 
-            // Assert - should not throw
             Assert.NotNull(runtime);
         }
 
@@ -380,16 +316,13 @@ namespace Alis.Test
         [Fact]
         public void OnLoad_WithPath_CallsOnLoadPathOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnLoad("/test/path");
 
-            // Assert - should not throw
             Assert.NotNull(runtime);
         }
 
@@ -399,16 +332,13 @@ namespace Alis.Test
         [Fact]
         public void Get_CachesItemsByType()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime testRuntime = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(testRuntime);
 
-            // Act - call Get multiple times
             TestRuntime result1 = runtime.Get<TestRuntime>();
             TestRuntime result2 = runtime.Get<TestRuntime>();
 
-            // Assert
             Assert.Same(result1, result2);
         }
 
@@ -418,16 +348,13 @@ namespace Alis.Test
         [Fact]
         public void OnStop_CallsOnStopOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnStop();
 
-            // Assert
             Assert.True(runtime1.OnStopCalled);
             Assert.True(runtime2.OnStopCalled);
         }
@@ -438,16 +365,13 @@ namespace Alis.Test
         [Fact]
         public void OnBeforeUpdate_CallsOnBeforeUpdateOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnBeforeUpdate();
 
-            // Assert
             Assert.True(runtime1.OnBeforeUpdateCalled);
             Assert.True(runtime2.OnBeforeUpdateCalled);
         }
@@ -458,16 +382,13 @@ namespace Alis.Test
         [Fact]
         public void OnAfterUpdate_CallsOnAfterUpdateOnAllRuntimes()
         {
-            // Arrange
             Context context = new Context();
             TestRuntime runtime1 = new TestRuntime(context);
             TestRuntime runtime2 = new TestRuntime(context);
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
 
-            // Act
             runtime.OnAfterUpdate();
 
-            // Assert
             Assert.True(runtime1.OnAfterUpdateCalled);
             Assert.True(runtime2.OnAfterUpdateCalled);
         }

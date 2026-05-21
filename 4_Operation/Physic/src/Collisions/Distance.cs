@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Distance.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -115,22 +88,17 @@ namespace Alis.Core.Physic.Collisions
                 ++GjkCalls;
             }
 
-            // Initialize the simplex.
             Simplex simplex = new Simplex();
             simplex.ReadCache(ref cache, ref input.ProxyA, ref input.ControllerTransformA, ref input.ProxyB, ref input.ControllerTransformB);
 
-            // These store the vertices of the last simplex so that we
-            // can check for duplicates and prevent cycling.
             FixedArray3<int> saveA = new FixedArray3<int>();
             FixedArray3<int> saveB = new FixedArray3<int>();
 
             //float distanceSqr1 = Settings.MaxFloat;
 
-            // Main iteration loop.
             int iter = 0;
             while (iter < SettingEnv.MaxGjkIterations)
             {
-                // Copy simplex so we can identify duplicates.
                 int saveCount = simplex.Count;
                 for (int i = 0; i < saveCount; ++i)
                 {
@@ -150,40 +118,24 @@ namespace Alis.Core.Physic.Collisions
                         break;
                 }
 
-                // If we have 3 points, then the origin is in the corresponding triangle.
                 if (simplex.Count == 3)
                 {
                     break;
                 }
 
-                //FPE: This code was not used anyway.
-                // Compute closest point.
-                //Vector2F p = simplex.GetClosestPoint();
                 //float distanceSqr2 = p.LengthSquared();
 
-                // Ensure progress
-                //if (distanceSqr2 >= distanceSqr1)
-                //{
-                //break;
-                //}
                 //distanceSqr1 = distanceSqr2;
 
-                // Get search direction.
                 Vector2F d = simplex.GetSearchDirection();
 
-                // Ensure the search direction is numerically fit.
                 if (d.LengthSquared() < SettingEnv.Epsilon * SettingEnv.Epsilon)
                 {
-                    // The origin is probably contained by a line segment
                     // or triangle. Thus the shapes are overlapped.
 
-                    // We can't return zero here even though there may be overlap.
-                    // In case the simplex is a point, segment, or triangle it is difficult
-                    // to determine if the origin is contained in the CSO or very close to it.
                     break;
                 }
 
-                // Compute a tentative new simplex vertex using support points.
                 SimplexVertex vertex = simplex.V[simplex.Count];
                 vertex.IndexA = input.ProxyA.GetSupport(-Complex.Divide(ref d, ref input.ControllerTransformA.Rotation));
                 vertex.Wa = ControllerTransform.Multiply(input.ProxyA.Vertices[vertex.IndexA], ref input.ControllerTransformA);
@@ -193,7 +145,6 @@ namespace Alis.Core.Physic.Collisions
                 vertex.W = vertex.Wb - vertex.Wa;
                 simplex.V[simplex.Count] = vertex;
 
-                // Iteration count is equated to the number of support point calls.
                 ++iter;
 
                 if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
@@ -201,7 +152,6 @@ namespace Alis.Core.Physic.Collisions
                     ++GjkIters;
                 }
 
-                // Check for duplicate support points. This is the main termination criteria.
                 bool duplicate = false;
                 for (int i = 0; i < saveCount; ++i)
                 {
@@ -212,13 +162,11 @@ namespace Alis.Core.Physic.Collisions
                     }
                 }
 
-                // If we found a duplicate support point we must exit to avoid cycling.
                 if (duplicate)
                 {
                     break;
                 }
 
-                // New vertex is ok and needed.
                 ++simplex.Count;
             }
 
@@ -227,15 +175,12 @@ namespace Alis.Core.Physic.Collisions
                 GjkMaxIters = Math.Max(GjkMaxIters, iter);
             }
 
-            // Prepare output.
             simplex.GetWitnessPoints(out output.PointA, out output.PointB);
             output.Distance = (output.PointA - output.PointB).Length();
             output.Iterations = iter;
 
-            // Cache the simplex.
             simplex.WriteCache(ref cache);
 
-            // Apply radii if requested.
             if (input.UseRadii)
             {
                 float rA = input.ProxyA.Radius;
@@ -243,8 +188,6 @@ namespace Alis.Core.Physic.Collisions
 
                 if ((output.Distance > rA + rB) && (output.Distance > SettingEnv.Epsilon))
                 {
-                    // Shapes are still no overlapped.
-                    // Move the witness points to the outer surface.
                     output.Distance -= rA + rB;
                     Vector2F normal = output.PointB - output.PointA;
                     normal.Normalize();
@@ -253,8 +196,6 @@ namespace Alis.Core.Physic.Collisions
                 }
                 else
                 {
-                    // Shapes are overlapped when radii are considered.
-                    // Move the witness points to the middle.
                     Vector2F p = 0.5f * (output.PointA + output.PointB);
                     output.PointA = p;
                     output.PointB = p;

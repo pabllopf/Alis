@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:DockSpaceMenu.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Logging;
@@ -79,29 +52,20 @@ namespace Alis.App.Engine.Menus
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
 
 
-            // quit border:
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
 
-            // Crear barra de menú
             if (ImGui.BeginMenuBar())
             {
-                // Elementos centrados dinámicamente
-                //float contentHeight = ImGui.GetContentRegionAvail().Y;  // Obtiene el espacio disponible en la ventana
                 //float centerOffsetY = contentHeight * 0.5f;  // Calcula el centro vertical
 
 
-                // Establece la posición de la ventana de manera que se centre verticalmente
-                //ImGui.SetCursorPosY(2.5f); // Ajuste para alinear mejor el contenido
                 //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 5f)); // Ajustar el espaciado si es necesario
 
-                // Establecer el color de fondo de los botones
                 ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
                 ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
-                // quit border:
                 //ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
 
-                // Primer conjunto de botones: izquierda
                 if (ImGui.Button($"{FontAwesome5.Bars}"))
                 {
                     Logger.Info("Show normal menu...");
@@ -124,7 +88,6 @@ namespace Alis.App.Engine.Menus
                 ImGui.SameLine();
 
 
-                // Selector de solución
                 ImGui.SetNextItemWidth(100);
                 if (ImGui.BeginCombo("##Solution Name", $"{FontAwesome5.Font} Sample", ImGuiComboFlags.HeightLarge))
                 {
@@ -153,7 +116,6 @@ namespace Alis.App.Engine.Menus
 
                 ImGui.SameLine();
 
-                // Botones de control: Play, Pause, Stop
                 float controlOffset = ImGui.GetWindowWidth() * 0.5f - 65;
                 ImGui.SameLine(controlOffset);
                 if (ImGui.Button($"{FontAwesome5.Play}"))
@@ -175,7 +137,6 @@ namespace Alis.App.Engine.Menus
 
                 ImGui.SameLine();
 
-                // Botón de compilación
                 float compileOffset = ImGui.GetWindowWidth() - 495;
                 ImGui.SameLine(compileOffset);
                 if (ImGui.Button($"{FontAwesome5.Hammer}"))
@@ -183,7 +144,6 @@ namespace Alis.App.Engine.Menus
                     Logger.Info("Compilando proyecto...");
                 }
 
-                // Selector de plataforma y modo de compilación
                 ImGui.SetNextItemWidth(170);
                 if (ImGui.BeginCombo("##Build Mode", $"{FontAwesome5.Edit} Release | Any CPU", ImGuiComboFlags.HeightSmall))
                 {

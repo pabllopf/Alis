@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Archetype.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -65,7 +38,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// </summary>
         private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
 
-        //2
         /// <summary>
         ///     The archetype id
         /// </summary>
@@ -78,15 +50,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         internal readonly ComponentStorageBase[] Components = components;
 
 
-        //we include version
-        //this is so we dont need to lookup
-        //the scene table every time
         /// <summary>
         ///     The gameObject id only
         /// </summary>
         private GameObjectIdOnly[] _entities = isTempCreateArchetype ? Array.Empty<GameObjectIdOnly>() : new GameObjectIdOnly[1];
 
-        //4
         /// <summary>
         ///     The next component index or deferred gameObject count
         /// </summary>
@@ -100,9 +68,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         private int _nextComponentIndexOrDeferredEntityCount;
 
 
-        //information for tag existence & component index per id
-        //updated by static methods
-        //saves a lookup on hot paths
         /// <summary>
         ///     The raw index
         /// </summary>
@@ -197,7 +162,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             gameObjectLocation.Index = NextComponentIndex;
             gameObjectLocation.Flags = flags;
             Unsafe.SkipInit(out gameObjectLocation.Version);
-            //poison prolly isnt needed since archetype forces clear anyways
             MemoryHelpers.Poison(ref gameObjectLocation.Version);
 
             return ref Unsafe.Add(ref _entities[0], NextComponentIndex++);
@@ -219,7 +183,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             if (futureSlot < _entities.Length)
             {
-                //hot path: we have space and can directly place into existing array
                 writeStorage = Components;
                 gameObjectLocation.Index = futureSlot;
                 gameObjectLocation.Archetype = this;
@@ -230,8 +193,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 out writeStorage);
         }
 
-        // Only to be called by CreateDeferredEntityLocation
-        // Allow the jit to inline that method more easily
         /// <summary>
         ///     Creates the deferred gameObject location temp buffers using the specified deferred creation archetype
         /// </summary>
@@ -243,7 +204,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         private ref GameObjectIdOnly CreateDeferredEntityLocationTempBuffers(Archetype deferredCreationArchetype,
             int futureSlot, scoped ref GameObjectLocation gameObjectLocation, out ComponentStorageBase[] writeStorage)
         {
-            //we need to place into temp buffers
             gameObjectLocation.Index = futureSlot - _entities.Length;
             gameObjectLocation.Archetype = deferredCreationArchetype;
 
@@ -276,7 +236,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 int oldEntitiesLen = _entities.Length;
                 int totalCapacityRequired = previousComponentCount + deferredCreationArchetype.DeferredEntityCount;
 
-                //we should always have to resize here - after all, no space is left
                 Resize((int) BitOperations.RoundUpToPowerOf2((uint) totalCapacityRequired));
                 ComponentStorageBase[] destination = Components;
                 ComponentStorageBase[] source = deferredCreationArchetype.Components;
@@ -356,7 +315,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         private void ResizeCreateComponentBuffers()
         {
             int newLen = checked(Math.Max(1, _entities.Length) * 2);
-            //we only need to resize the EntityIDOnly array when future total gameObject count is greater than capacity
             Array.Resize(ref _entities, newLen);
             ComponentStorageBase[] runners = Components;
             for (int i = 1; i < runners.Length; i++)
@@ -693,7 +651,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             componentTable = new byte[GlobalWorldTables.ComponentTagTableBufferSize];
 
             for (int i = 0; i < archetypeTypes.Length; i++)
-                //add 1 so zero is null always
             {
                 componentTable[archetypeTypes[i].RawIndex] = (byte) (i + 1);
             }
@@ -737,7 +694,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
             new FastImmutableArray<ComponentId>(new[] {Component<T>.Id});
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -785,7 +741,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -965,7 +920,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             componentTable = new byte[GlobalWorldTables.ComponentTagTableBufferSize];
 
             for (int i = 0; i < archetypeTypes.Length; i++)
-                //add 1 so zero is null always
             {
                 componentTable[archetypeTypes[i].RawIndex] = (byte) (i + 1);
             }
@@ -1021,7 +975,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
             new FastImmutableArray<ComponentId>(new[] {Component<T1>.Id, Component<T2>.Id});
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1043,7 +996,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1081,7 +1033,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
             new FastImmutableArray<ComponentId>(new[] {Component<T1>.Id, Component<T2>.Id, Component<T3>.Id});
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1103,7 +1054,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1145,7 +1095,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             new FastImmutableArray<ComponentId>(new[]
                 {Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id});
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1167,7 +1116,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1212,7 +1160,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             new FastImmutableArray<ComponentId>(new[]
                 {Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id});
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1234,7 +1181,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1284,7 +1230,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id, Component<T6>.Id
             });
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1306,7 +1251,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1360,7 +1304,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 Component<T7>.Id
             });
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1382,7 +1325,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1439,7 +1381,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 Component<T7>.Id, Component<T8>.Id
             });
 
-        //ArchetypeTypes init first, then ID
         /// <summary>
         ///     The empty
         /// </summary>
@@ -1461,7 +1402,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {

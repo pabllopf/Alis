@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:PrismaticJoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -544,7 +517,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
 
-            // Compute the effective masses.
             Vector2F rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             Vector2F rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
             Vector2F d = cB - cA + rB - rA;
@@ -552,7 +524,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = _invMassA, mB = _invMassB;
             float iA = invIa, iB = invIb;
 
-            // Compute motor Jacobian and effective mass.
             {
                 _axis = Complex.Multiply(ref _localXAxis, ref qA);
                 _a1 = MathUtils.Cross(d + rA, _axis);
@@ -565,7 +536,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 }
             }
 
-            // Prismatic constraint.
             {
                 _perp = Complex.Multiply(ref _localYAxisA, ref qA);
 
@@ -578,7 +548,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k22 = iA + iB;
                 if (Math.Abs(k22) < float.Epsilon)
                 {
-                    // For bodies with fixed rotation.
                     k22 = 1.0f;
                 }
 
@@ -590,7 +559,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 k.Ez = new Vector3F(k13, k23, k33);
             }
 
-            // Compute motor and limit terms.
             if (_enableLimit)
             {
                 float jointTranslation = Vector2F.Dot(_axis, d);
@@ -633,7 +601,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.Step.WarmStarting)
             {
-                // Account for variable time step.
                 _impulse *= data.Step.DtRatio;
                 MotorImpulse *= data.Step.DtRatio;
 
@@ -673,7 +640,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = _invMassA, mB = _invMassB;
             float iA = invIa, iB = invIb;
 
-            // Solve linear motor constraint.
             if (_enableMotor && (_limitState != LimitState.Equal))
             {
                 float cdot = Vector2F.Dot(_axis, vB - vA) + _a2 * wB - _a1 * wA;
@@ -700,7 +666,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (_enableLimit && (_limitState != LimitState.Inactive))
             {
-                // Solve prismatic and limit constraint in block form.
                 float cdot2;
                 cdot2 = Vector2F.Dot(_axis, vB - vA) + _a2 * wB - _a1 * wA;
                 Vector3F cdot = new Vector3F(cdot1.X, cdot1.Y, cdot2);
@@ -718,7 +683,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     _impulse.Z = Math.Min(_impulse.Z, 0.0f);
                 }
 
-                // f2(1:2) = invK(1:2,1:2) * (-Cdot(1:2) - K(1:2,3) * (f2(3) - f1(3))) + f1(1:2)
                 Vector2F b = -cdot1 - (_impulse.Z - f1.Z) * new Vector2F(k.Ez.X, k.Ez.Y);
                 Vector2F f2R = k.Solve22(b) + new Vector2F(f1.X, f1.Y);
                 _impulse.X = f2R.X;
@@ -738,7 +702,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                // Limit is inactive, just solve the prismatic constraint in block form.
                 Vector2F df = k.Solve22(-cdot1);
                 _impulse.X += df.X;
                 _impulse.Y += df.Y;
@@ -778,7 +741,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = _invMassA, mB = _invMassB;
             float iA = invIa, iB = invIb;
 
-            // Compute fresh Jacobians
             Vector2F rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             Vector2F rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
             Vector2F d = cB + rB - cA - rA;
@@ -806,21 +768,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float translation = Vector2F.Dot(axis, d);
                 if (Math.Abs(_upperTranslation - _lowerTranslation) < 2.0f * SettingEnv.LinearSlop)
                 {
-                    // Prevent large angular corrections
                     c2 = MathUtils.Clamp(translation, -SettingEnv.MaxLinearCorrection, SettingEnv.MaxLinearCorrection);
                     linearError = Math.Max(linearError, Math.Abs(translation));
                     active = true;
                 }
                 else if (translation <= _lowerTranslation)
                 {
-                    // Prevent large linear corrections and allow some slop.
                     c2 = MathUtils.Clamp(translation - _lowerTranslation + SettingEnv.LinearSlop, -SettingEnv.MaxLinearCorrection, 0.0f);
                     linearError = Math.Max(linearError, _lowerTranslation - translation);
                     active = true;
                 }
                 else if (translation >= _upperTranslation)
                 {
-                    // Prevent large linear corrections and allow some slop.
                     c2 = MathUtils.Clamp(translation - _upperTranslation - SettingEnv.LinearSlop, 0.0f, SettingEnv.MaxLinearCorrection);
                     linearError = Math.Max(linearError, translation - _upperTranslation);
                     active = true;
@@ -835,7 +794,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k22 = iA + iB;
                 if (Math.Abs(k22) < float.Epsilon)
                 {
-                    // For fixed rotation
                     k22 = 1.0f;
                 }
 

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WebSocketFrameReader.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.IO;
@@ -52,7 +25,6 @@ namespace Alis.Extension.Network.Internal
         {
             if (bufferSize < numBytesLetfToRead)
             {
-                // the count needs to be a multiple of the mask key
                 return bufferSize - bufferSize % 4;
             }
 
@@ -95,20 +67,17 @@ namespace Alis.Extension.Network.Internal
         public static async Task<WebSocketReadCursor> ReadAsync(Stream fromStream, ArraySegment<byte> intoBuffer,
             CancellationToken cancellationToken)
         {
-            // allocate a small buffer to read small chunks of data from the stream
             ArraySegment<byte> smallBuffer = new ArraySegment<byte>(new byte[8]);
 
             await BinaryReaderWriter.ReadExactly(2, fromStream, smallBuffer, cancellationToken);
             byte byte1 = smallBuffer.Array[0];
             byte byte2 = smallBuffer.Array[1];
 
-            // process first byte
             byte finBitFlag = 0x80;
             byte opCodeFlag = 0x0F;
             bool isFinBitSet = (byte1 & finBitFlag) == finBitFlag;
             WebSocketOpCode opCode = (WebSocketOpCode) (byte1 & opCodeFlag);
 
-            // read and process second byte
             byte maskFlag = 0x80;
             bool isMaskBitSet = (byte2 & maskFlag) == maskFlag;
             uint len = await ReadLength(byte2, smallBuffer, fromStream, cancellationToken);
@@ -118,7 +87,6 @@ namespace Alis.Extension.Network.Internal
 
             try
             {
-                // use the masking key to decode the data if needed
                 if (isMaskBitSet)
                 {
                     maskKey = new ArraySegment<byte>(smallBuffer.Array, 0, WebSocketFrameCommon.MaskKeyLength);
@@ -147,7 +115,6 @@ namespace Alis.Extension.Network.Internal
             }
             else
             {
-                // note that by this point the payload will be populated
                 frame = new WebSocketFrame(isFinBitSet, opCode, count, maskKey);
             }
 

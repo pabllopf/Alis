@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Threading.Tasks;
@@ -85,7 +58,6 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
 
                 await _clientManager.StartAsync();
 
-                // Get player name
                 Logger.Log("Enter your player name: ");
                 _playerName = Console.ReadLine();
                 if (string.IsNullOrEmpty(_playerName))
@@ -93,7 +65,6 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
                     _playerName = $"Player_{Guid.NewGuid().ToString().Substring(0, 8)}";
                 }
 
-                // Connect to server
                 Uri serverUri = new Uri("ws://127.0.0.1:8888/");
                 Logger.Info($"Connecting to {serverUri} as '{_playerName}'...");
 
@@ -211,10 +182,8 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
         {
             try
             {
-                // Try to parse JSON to extract message details
                 // Format: {"SenderName":"name","Content":"message","Timestamp":"HH:mm:ss"}
 
-                // Simple JSON parsing to extract fields
                 string senderName = ExtractJsonField(payload, "SenderName");
                 string content = ExtractJsonField(payload, "Content");
                 string timestamp = ExtractJsonField(payload, "Timestamp");
@@ -225,13 +194,11 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Client
                 }
                 else
                 {
-                    // Fallback if parsing fails
                     Logger.Log($"[MESSAGE] {payload}");
                 }
             }
             catch
             {
-                // Fallback display
                 Logger.Log($"[MESSAGE] {payload}");
             }
 

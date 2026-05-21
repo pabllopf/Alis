@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -50,40 +23,30 @@ namespace Alis.Extension.Cloud.DropBox.Sample
             Logger.Info("===== DropBox Integration Sample =====");
             Logger.Info("");
 
-            // Create a new context for the game engine
             Context context = new Context();
 
-            // Create the DropBox cloud manager
             DropBoxCloudManager dropBoxManager = new DropBoxCloudManager(context);
             Logger.Info($"DropBox Manager created: {dropBoxManager.Name} ({dropBoxManager.Tag})");
             Logger.Info("");
 
             try
             {
-                // Example 1: Initialize with access token
                 await InitializeExample(dropBoxManager);
 
-                // Note: The following examples would require a valid Dropbox API token
-                // and would interact with real Dropbox API. For demonstration purposes,
                 // we show the usage patterns only.
 
-                // Example 2: Upload a file
                 Logger.Info("===== Upload Example =====");
                 await UploadExample(dropBoxManager);
 
-                // Example 3: Download a file
                 Logger.Info("===== Download Example =====");
                 await DownloadExample(dropBoxManager);
 
-                // Example 4: List files
                 Logger.Info("===== List Files Example =====");
                 await ListFilesExample(dropBoxManager);
 
-                // Example 5: Get metadata
                 Logger.Info("===== Get Metadata Example =====");
                 await GetMetadataExample(dropBoxManager);
 
-                // Example 6: Delete a file
                 Logger.Info("===== Delete Example =====");
                 await DeleteExample(dropBoxManager);
             }
@@ -93,7 +56,6 @@ namespace Alis.Extension.Cloud.DropBox.Sample
             }
             finally
             {
-                // Clean up resources
                 dropBoxManager.OnDestroy();
                 Logger.Info("");
                 Logger.Info("Sample completed. Resources cleaned up.");
@@ -116,8 +78,6 @@ namespace Alis.Extension.Cloud.DropBox.Sample
 
             try
             {
-                // This would be how you initialize with a real token:
-                // await manager.InitializeAsync("your-dropbox-api-token-here");
                 // Logger.Info($"Successfully initialized DropBox manager. IsInitialized: {manager.IsInitialized}");
 
                 Logger.Info("Note: Replace 'your-dropbox-api-token-here' with a valid Dropbox API token");
@@ -156,14 +116,11 @@ namespace Alis.Extension.Cloud.DropBox.Sample
                     return;
                 }
 
-                // Example: Upload a file
                 string localFile = Path.GetTempFileName();
                 try
                 {
-                    // Create a sample file
                     File.WriteAllText(localFile, "Sample content for Dropbox upload");
 
-                    // Upload the file
                     FileMetadata metadata = await manager.UploadFileAsync(localFile, "/sample-upload.txt");
                     Logger.Info($"Successfully uploaded file: {metadata.Name}");
                     Logger.Info($"File path: {metadata.PathDisplay}");
@@ -209,7 +166,6 @@ namespace Alis.Extension.Cloud.DropBox.Sample
                     return;
                 }
 
-                // Example: Download a file
                 string downloadPath = Path.Combine(Path.GetTempPath(), "downloaded-file.txt");
                 await manager.DownloadFileAsync("/sample-upload.txt", downloadPath);
 
@@ -253,7 +209,6 @@ namespace Alis.Extension.Cloud.DropBox.Sample
                     return;
                 }
 
-                // Example: List files in root directory
                 IList<Metadata> files = await manager.ListFilesAsync("/");
 
                 Logger.Info($"Found {files.Count} items in Dropbox:");
@@ -295,7 +250,6 @@ namespace Alis.Extension.Cloud.DropBox.Sample
                     return;
                 }
 
-                // Example: Get metadata for a specific file
                 Metadata metadata = await manager.GetMetadataAsync("/sample-upload.txt");
                 Logger.Info("File metadata retrieved:");
                 Logger.Info($"  - Name: {metadata.Name}");
@@ -333,7 +287,6 @@ namespace Alis.Extension.Cloud.DropBox.Sample
                     return;
                 }
 
-                // Example: Delete a file
                 await manager.DeleteAsync("/sample-upload.txt");
                 Logger.Info("Successfully deleted file from Dropbox");
             }

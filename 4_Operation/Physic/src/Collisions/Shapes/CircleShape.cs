@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:CircleShape.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -109,9 +82,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <returns>The bool</returns>
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref ControllerTransform controllerTransform, int childIndex)
         {
-            // Collision Detection in Interactive 3D Environments by Gino van den Bergen
-            // From Section 3.1.2
-            // x = s + a * r
             // norm(x) = radius
 
             output = new RayCastOutput();
@@ -120,22 +90,18 @@ namespace Alis.Core.Physic.Collisions.Shapes
             Vector2F s = input.Point1 - position;
             float b = Vector2F.Dot(s, s) - _2radius;
 
-            // Solve quadratic equation.
             Vector2F r = input.Point2 - input.Point1;
             float c = Vector2F.Dot(s, r);
             float rr = Vector2F.Dot(r, r);
             float sigma = c * c - rr * b;
 
-            // Check for negative discriminant and short segment.
             if (sigma < 0.0f || rr < SettingEnv.Epsilon)
             {
                 return false;
             }
 
-            // Find the point of intersection of the line with the circle.
             float a = -(c + (float) Math.Sqrt(sigma));
 
-            // Is the intersection point on the segment?
             if ((0.0f <= a) && (a <= input.MaxFraction * rr))
             {
                 a /= rr;
@@ -158,12 +124,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <param name="childIndex">The child index</param>
         public override void ComputeAabb(out Aabb aabb, ref ControllerTransform controllerTransform, int childIndex)
         {
-            // OPT: Vector2F p = transform.p + Complex.Multiply(ref _position, ref transform.q);
             float pX = PositionInternal.X * controllerTransform.Rotation.R - PositionInternal.Y * controllerTransform.Rotation.I + controllerTransform.Position.X;
             float pY = PositionInternal.Y * controllerTransform.Rotation.R + PositionInternal.X * controllerTransform.Rotation.I + controllerTransform.Position.Y;
 
-            // OPT: aabb.LowerBound = new Vector2F(p.X - Radius, p.Y - Radius);
-            // OPT: aabb.UpperBound = new Vector2F(p.X + Radius, p.Y + Radius);
             aabb.LowerBound = new Vector2F(pX - GetRadius, pY - GetRadius);
 
             aabb.UpperBound = new Vector2F(pX + GetRadius, pY + GetRadius);
@@ -179,7 +142,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
             MassData.Mass = GetDensity * area;
             MassData.Centroid = Position;
 
-            // inertia about the local origin
             MassData.Inertia = MassData.Mass * (0.5f * _2radius + Vector2F.Dot(Position, Position));
         }
 
@@ -199,18 +161,15 @@ namespace Alis.Core.Physic.Collisions.Shapes
             float l = -(Vector2F.Dot(normal, p) - offset);
             if (l < -GetRadius + SettingEnv.Epsilon)
             {
-                //Completely dry
                 return 0;
             }
 
             if (l > GetRadius)
             {
-                //Completely wet
                 sc = p;
                 return Constant.Pi * _2radius;
             }
 
-            //Magic
             float l2 = l * l;
             float area = _2radius * (float) (Math.Asin(l / GetRadius) + Constant.Pi / 2 + l * Math.Sqrt(_2radius - l2));
             float com = -2.0f / 3.0f * (float) Math.Pow(_2radius - l2, 1.5f) / area;

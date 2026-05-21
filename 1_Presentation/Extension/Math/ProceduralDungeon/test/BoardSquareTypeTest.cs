@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:BoardSquareTypeTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Xunit;
@@ -43,7 +16,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Empty_ShouldHaveValue0()
         {
-            // Assert
             Assert.Equal(0, (int) BoardSquareType.Empty);
         }
 
@@ -53,7 +25,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Floor_ShouldHaveValue1()
         {
-            // Assert
             Assert.Equal(1, (int) BoardSquareType.Floor);
         }
 
@@ -63,7 +34,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void WallTypes_ShouldHaveDistinctValues()
         {
-            // Arrange
             BoardSquareType[] wallTypes = new[]
             {
                 BoardSquareType.WallTop,
@@ -72,7 +42,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
                 BoardSquareType.WallRight
             };
 
-            // Act & Assert
             for (int i = 0; i < wallTypes.Length; i++)
             {
                 for (int j = i + 1; j < wallTypes.Length; j++)
@@ -88,7 +57,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void CornerTypes_ShouldHaveDistinctValues()
         {
-            // Arrange
             BoardSquareType[] cornerTypes = new[]
             {
                 BoardSquareType.CornerLeftUp,
@@ -101,7 +69,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
                 BoardSquareType.CornerInternalRightDown
             };
 
-            // Act & Assert
             for (int i = 0; i < cornerTypes.Length; i++)
             {
                 for (int j = i + 1; j < cornerTypes.Length; j++)
@@ -118,7 +85,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
          InlineData(BoardSquareType.CornerRightDown), InlineData(BoardSquareType.CornerInternalLeftUp), InlineData(BoardSquareType.CornerInternalLeftDown), InlineData(BoardSquareType.CornerInternalRightUp), InlineData(BoardSquareType.CornerInternalRightDown)]
         public void EnumValue_ShouldBeDefined(BoardSquareType type)
         {
-            // Assert
             Assert.True(Enum.IsDefined(typeof(BoardSquareType), type));
         }
 
@@ -128,13 +94,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void ToString_ShouldReturnName()
         {
-            // Arrange
             BoardSquareType type = BoardSquareType.Floor;
 
-            // Act
             string result = type.ToString();
 
-            // Assert
             Assert.Equal("Floor", result);
         }
 
@@ -144,11 +107,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Comparison_ShouldWork()
         {
-            // Arrange
             BoardSquareType empty = BoardSquareType.Empty;
             BoardSquareType floor = BoardSquareType.Floor;
 
-            // Act & Assert
             Assert.True(empty == BoardSquareType.Empty);
             Assert.True(floor == BoardSquareType.Floor);
             Assert.False(empty == floor);
@@ -160,7 +121,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Theory, InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.WallDown), InlineData(BoardSquareType.WallLeft), InlineData(BoardSquareType.WallRight)]
         public void WallTypes_ShouldBeDistinctFromFloorAndEmpty(BoardSquareType wallType)
         {
-            // Assert
             Assert.NotEqual(BoardSquareType.Empty, wallType);
             Assert.NotEqual(BoardSquareType.Floor, wallType);
         }
@@ -171,7 +131,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Theory, InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerLeftDown), InlineData(BoardSquareType.CornerRightUp), InlineData(BoardSquareType.CornerRightDown)]
         public void OuterCornerTypes_ShouldBeDistinctFromFloorAndEmpty(BoardSquareType cornerType)
         {
-            // Assert
             Assert.NotEqual(BoardSquareType.Empty, cornerType);
             Assert.NotEqual(BoardSquareType.Floor, cornerType);
         }
@@ -182,7 +141,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Theory, InlineData(BoardSquareType.CornerInternalLeftUp), InlineData(BoardSquareType.CornerInternalLeftDown), InlineData(BoardSquareType.CornerInternalRightUp), InlineData(BoardSquareType.CornerInternalRightDown)]
         public void InternalCornerTypes_ShouldBeDistinctFromFloorAndEmpty(BoardSquareType cornerType)
         {
-            // Assert
             Assert.NotEqual(BoardSquareType.Empty, cornerType);
             Assert.NotEqual(BoardSquareType.Floor, cornerType);
         }

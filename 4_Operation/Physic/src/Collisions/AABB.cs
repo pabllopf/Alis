@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AABB.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -271,7 +244,6 @@ namespace Alis.Core.Physic.Collisions
         ///     <c>true</c> if it contains the specified point; otherwise, <c>false</c>.
         /// </returns>
         public bool Contains(ref Vector2F point) =>
-            //using epsilon to try and gaurd against float rounding errors.
             (point.X > LowerBound.X + SettingEnv.Epsilon) && (point.X < UpperBound.X - SettingEnv.Epsilon) &&
             (point.Y > LowerBound.Y + SettingEnv.Epsilon) && (point.Y < UpperBound.Y - SettingEnv.Epsilon);
 
@@ -339,7 +311,6 @@ namespace Alis.Core.Physic.Collisions
 
                 if (absDi < SettingEnv.Epsilon)
                 {
-                    // Parallel.
                     if (pI < lowerBoundI || upperBoundI < pI)
                     {
                         return false;
@@ -353,7 +324,6 @@ namespace Alis.Core.Physic.Collisions
                     float t1 = (lowerBoundI - pI) * invD;
                     float t2 = (upperBoundI - pI) * invD;
 
-                    // Sign of the normal vector.
                     float s = -1.0f;
 
                     if (t1 > t2)
@@ -362,7 +332,6 @@ namespace Alis.Core.Physic.Collisions
                         s = 1.0f;
                     }
 
-                    // Push the min up
                     if (t1 > tmin)
                     {
                         if (i == 0)
@@ -377,7 +346,6 @@ namespace Alis.Core.Physic.Collisions
                         tmin = t1;
                     }
 
-                    // Pull the max down
                     tmax = Math.Min(tmax, t2);
 
                     if (tmin > tmax)
@@ -387,14 +355,11 @@ namespace Alis.Core.Physic.Collisions
                 }
             }
 
-            // Does the ray start inside the box?
-            // Does the ray intersect beyond the max fraction?
             if (doInteriorCheck && (tmin < 0.0f || input.MaxFraction < tmin))
             {
                 return false;
             }
 
-            // Intersection.
             output.Fraction = tmin;
             output.Normal = normal;
             return true;

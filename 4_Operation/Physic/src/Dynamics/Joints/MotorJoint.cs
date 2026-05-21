@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MotorJoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -160,7 +133,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             _linearOffset = useWorldCoordinates ? BodyA.GetLocalPoint(xB) : xB;
 
-            //Defaults
             _angularOffset = 0.0f;
             _maxForce = 1.0f;
             _maxTorque = 1.0f;
@@ -237,7 +209,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _angularOffset;
         }
 
-        //FPE note: Used for serialization.
         /// <summary>
         ///     Gets or sets the value of the correction factor
         /// </summary>
@@ -285,17 +256,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
 
-            // Compute the effective mass matrix.
             _rA = -Complex.Multiply(ref _localCenterA, ref qA);
             _rB = -Complex.Multiply(ref _localCenterB, ref qB);
 
-            // J = [-I -r1_skew I r2_skew]
-            //     [ 0       -1 0       1]
             // r_skew = [-ry; rx]
 
-            // Matlab
-            // K = [ mA+r1y^2*iA+mB+r2y^2*iB,  -r1y*iA*r1x-r2y*iB*r2x,          -r1y*iA-r2y*iB]
-            //     [  -r1y*iA*r1x-r2y*iB*r2x, mA+r1x^2*iA+mB+r2x^2*iB,           r1x*iA+r2x*iB]
             //     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
 
             float mA = _invMassA, mB = _invMassB;
@@ -320,7 +285,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.Step.WarmStarting)
             {
-                // Scale impulses to support a variable time step.
                 _linearImpulse *= data.Step.DtRatio;
                 _angularImpulse *= data.Step.DtRatio;
 
@@ -360,7 +324,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float h = data.Step.Dt;
             float invH = data.Step.InvDt;
 
-            // Solve angular friction
             {
                 float cdot = wB - wA + invH * CorrectionFactor * _angularError;
                 float impulse = -_angularMass * cdot;
@@ -374,7 +337,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 wB += iB * impulse;
             }
 
-            // Solve linear friction
             {
                 Vector2F cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA) + invH * CorrectionFactor * _linearError;
 

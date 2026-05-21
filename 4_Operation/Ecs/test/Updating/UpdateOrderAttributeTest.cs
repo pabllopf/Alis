@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:UpdateOrderAttributeTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Updating;
@@ -51,10 +24,8 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void UpdateOrderAttribute_CanBeCreated()
         {
-            // Act
             UpdateOrderAttribute attribute = new UpdateOrderAttribute(0);
 
-            // Assert
             Assert.NotNull(attribute);
             Assert.IsAssignableFrom<Attribute>(attribute);
         }
@@ -68,10 +39,8 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void UpdateOrderAttribute_InheritsFromAttribute()
         {
-            // Act
             UpdateOrderAttribute attribute = new UpdateOrderAttribute(0);
 
-            // Assert
             Assert.IsAssignableFrom<Attribute>(attribute);
         }
 
@@ -84,11 +53,9 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void UpdateOrderAttribute_IsApplicableToMethods()
         {
-            // Act
             AttributeUsageAttribute attrUsage = typeof(UpdateOrderAttribute).GetCustomAttributes(
                 typeof(AttributeUsageAttribute), false)[0] as AttributeUsageAttribute;
 
-            // Assert
             Assert.NotNull(attrUsage);
             Assert.True((attrUsage.ValidOn & AttributeTargets.Method) != 0);
         }
@@ -102,10 +69,8 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void UpdateOrderAttribute_WithPositiveOrder()
         {
-            // Act
             UpdateOrderAttribute attribute = new UpdateOrderAttribute(100);
 
-            // Assert
             Assert.NotNull(attribute);
         }
 
@@ -118,10 +83,8 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void UpdateOrderAttribute_WithNegativeOrder()
         {
-            // Act
             UpdateOrderAttribute attribute = new UpdateOrderAttribute(-100);
 
-            // Assert
             Assert.NotNull(attribute);
         }
 
@@ -134,10 +97,8 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void UpdateOrderAttribute_WithZeroOrder()
         {
-            // Act
             UpdateOrderAttribute attribute = new UpdateOrderAttribute(0);
 
-            // Assert
             Assert.NotNull(attribute);
         }
 
@@ -150,12 +111,10 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void UpdateOrderAttribute_MultipleInstancesAreIndependent()
         {
-            // Act
             UpdateOrderAttribute attr1 = new UpdateOrderAttribute(1);
             UpdateOrderAttribute attr2 = new UpdateOrderAttribute(2);
             UpdateOrderAttribute attr3 = new UpdateOrderAttribute(1);
 
-            // Assert
             Assert.NotNull(attr1);
             Assert.NotNull(attr2);
             Assert.NotNull(attr3);

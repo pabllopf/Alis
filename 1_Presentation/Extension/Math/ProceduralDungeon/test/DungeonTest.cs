@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:DungeonTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Math.ProceduralDungeon.Models;
@@ -45,10 +18,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Constructor_Default_CreatesValidInstance()
         {
-            // Act
             using Dungeon dungeon = new Dungeon();
 
-            // Assert
             Assert.NotNull(dungeon);
         }
 
@@ -58,7 +29,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Constructor_WithConfiguration_CreatesValidInstance()
         {
-            // Arrange
             DungeonConfiguration config = new DungeonConfiguration
             {
                 BoardWidth = 100,
@@ -66,10 +36,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
                 NumberOfRooms = 5
             };
 
-            // Act
             using Dungeon dungeon = new Dungeon(config);
 
-            // Assert
             Assert.NotNull(dungeon);
         }
 
@@ -79,10 +47,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Constructor_WithNullConfiguration_ThrowsArgumentNullException()
         {
-            // Arrange
             DungeonConfiguration config = null;
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => new Dungeon(config));
         }
 
@@ -92,14 +58,12 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Constructor_WithInvalidConfiguration_ThrowsArgumentException()
         {
-            // Arrange
             DungeonConfiguration config = new DungeonConfiguration
             {
                 BoardWidth = -100,
                 BoardHeight = 100
             };
 
-            // Act & Assert
             Assert.Throws<ArgumentException>(() => new Dungeon(config));
         }
 
@@ -109,13 +73,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Generate_ReturnsValidDungeonData()
         {
-            // Arrange
             using Dungeon dungeon = new Dungeon();
 
-            // Act
             DungeonData data = dungeon.Generate();
 
-            // Assert
             Assert.NotNull(data);
             Assert.NotNull(data.Board);
             Assert.NotNull(data.Rooms);
@@ -130,17 +91,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Generate_CreatesExpectedNumberOfRooms()
         {
-            // Arrange
             DungeonConfiguration config = new DungeonConfiguration
             {
                 NumberOfRooms = 5
             };
             using Dungeon dungeon = new Dungeon(config);
 
-            // Act
             DungeonData data = dungeon.Generate();
 
-            // Assert
             Assert.Equal(5, data.Rooms.Count);
         }
 
@@ -150,17 +108,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Generate_CreatesExpectedNumberOfCorridors()
         {
-            // Arrange
             DungeonConfiguration config = new DungeonConfiguration
             {
                 NumberOfRooms = 5
             };
             using Dungeon dungeon = new Dungeon(config);
 
-            // Act
             DungeonData data = dungeon.Generate();
 
-            // Assert
             Assert.Equal(5, data.Corridors.Count); // Number of rooms = number of corridors
         }
 
@@ -170,13 +125,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Generate_CreatesBossRoom()
         {
-            // Arrange
             using Dungeon dungeon = new Dungeon();
 
-            // Act
             DungeonData data = dungeon.Generate();
 
-            // Assert
             bool hasBossRoom = false;
             foreach (RoomData room in data.Rooms)
             {
@@ -196,14 +148,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Generate_CalledMultipleTimes_ReturnsNewDungeons()
         {
-            // Arrange
             using Dungeon dungeon = new Dungeon();
 
-            // Act
             DungeonData data1 = dungeon.Generate();
             DungeonData data2 = dungeon.Generate();
 
-            // Assert
             Assert.NotSame(data1, data2);
             Assert.NotSame(data1.Rooms, data2.Rooms);
             Assert.NotSame(data1.Corridors, data2.Corridors);
@@ -216,10 +165,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Dispose_CalledMultipleTimes_DoesNotThrow()
         {
-            // Arrange
             Dungeon dungeon = new Dungeon();
 
-            // Act & Assert
             dungeon.Dispose();
             dungeon.Dispose(); // Should not throw
         }
@@ -230,7 +177,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Generate_RespectsConfiguredBoardSize()
         {
-            // Arrange
             int width = 200;
             int height = 250;
             DungeonConfiguration config = new DungeonConfiguration
@@ -240,10 +186,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
             };
             using Dungeon dungeon = new Dungeon(config);
 
-            // Act
             DungeonData data = dungeon.Generate();
 
-            // Assert
             Assert.Equal(width, data.Width);
             Assert.Equal(height, data.Height);
         }
@@ -254,13 +198,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Generate_CreatesValidBoardWithInitializedSquares()
         {
-            // Arrange
             using Dungeon dungeon = new Dungeon();
 
-            // Act
             DungeonData data = dungeon.Generate();
 
-            // Assert
             for (int x = 0; x < data.Width; x++)
             {
                 for (int y = 0; y < data.Height; y++)
@@ -276,13 +217,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         [Fact]
         public void Generate_CreatesAtLeastOneFloorTile()
         {
-            // Arrange
             using Dungeon dungeon = new Dungeon();
 
-            // Act
             DungeonData data = dungeon.Generate();
 
-            // Assert
             bool hasFloor = false;
             for (int x = 0; x < data.Width; x++)
             {

@@ -46,18 +46,15 @@ action.SetCallback(() => Console.WriteLine("Nueva acción"));
 ## Ejemplo Completo
 
 ```csharp
-// Crear una acción para reproducir sonido
 var soundAction = new CallbackDialogAction("playSound");
 soundAction.SetCallback(() => 
 {
     Console.WriteLine("🔊 Sonido reproducido");
 });
 
-// Crear una opción con la acción
 var option = new DialogOption("Aceptar", () => Console.WriteLine("Aceptado"));
 option.AddDialogAction(soundAction);
 
-// Cuando se selecciona la opción, se ejecuta la acción
 ```
 
 ## Caso de Uso

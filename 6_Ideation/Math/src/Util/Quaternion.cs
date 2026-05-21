@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Quaternion.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Runtime.InteropServices;
 
@@ -114,8 +87,6 @@ namespace Alis.Core.Aspect.Math.Util
             float q1Z = value1.Z;
             float q1W = value1.W;
 
-            //-------------------------------------
-            // Inverse part.
             float ls = value2.X * value2.X + value2.Y * value2.Y +
                        value2.Z * value2.Z + value2.W * value2.W;
             float invNorm = 1.0f / ls;
@@ -125,10 +96,8 @@ namespace Alis.Core.Aspect.Math.Util
             float q2Z = -value2.Z * invNorm;
             float q2W = value2.W * invNorm;
 
-            //-------------------------------------
             // Multiply part.
 
-            // cross(av, bv)
             float cx = q1Y * q2Z - q1Z * q2Y;
             float cy = q1Z * q2X - q1X * q2Z;
             float cz = q1X * q2Y - q1Y * q2X;
@@ -176,7 +145,6 @@ namespace Alis.Core.Aspect.Math.Util
             float q2Z = value2.Z;
             float q2W = value2.W;
 
-            // cross(av, bv)
             float cx = q1Y * q2Z - q1Z * q2Y;
             float cy = q1Z * q2X - q1X * q2Z;
             float cz = q1X * q2Y - q1Y * q2X;

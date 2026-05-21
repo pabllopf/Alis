@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:TopMenuAction.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -63,7 +36,6 @@ namespace Alis.App.Engine.Menus
                 return;
             }
 
-            // Inicializando el diccionario con las acciones del menú usando Add
             MenuActions.Add("About Alis", AboutAlis);
             MenuActions.Add("Preferences", Preferences);
             MenuActions.Add("Quit Alis", QuitAlis);
@@ -155,7 +127,6 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Save()
         {
-            //_spaceWork.VideoGame.Save();
             string file = AppDomain.CurrentDomain.BaseDirectory + "settings.ini";
             if (File.Exists(file))
             {
@@ -273,7 +244,6 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void SaveProject()
         {
-            //_spaceWork.VideoGame.Save();
             ImGui.SaveIniSettingsToDisk(AppDomain.CurrentDomain.BaseDirectory + "settings.ini");
         }
 
@@ -781,8 +751,6 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ApiReference()
         {
-            // open url on browser:
-            // https://www.alisengine.com/en/v0.4.0/api/Alis.html
             OpenUrl("https://www.alisengine.com/en/v0.4.0/api/Alis.html");
         }
 
@@ -798,7 +766,6 @@ namespace Alis.App.Engine.Menus
             }
             catch
             {
-                // hack because of this: https://github.com/dotnet/corefx/issues/10361
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     url = url.Replace("&", "^&");

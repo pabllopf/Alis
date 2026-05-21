@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EcsStressAndPerformanceTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -47,11 +20,9 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500), InlineData(1000), InlineData(5000)]
         public void StressTest_CreateManyEntities_Succeeds(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             Stopwatch stopwatch = Stopwatch.StartNew();
 
-            // Act
             for (int i = 0; i < entityCount; i++)
             {
                 scene.Create();
@@ -59,7 +30,6 @@ namespace Alis.Core.Ecs.Test
 
             stopwatch.Stop();
 
-            // Assert
             Assert.True(stopwatch.ElapsedMilliseconds < entityCount * 100); // Reasonable time
         }
 
@@ -70,10 +40,8 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500), InlineData(1000)]
         public void StressTest_CreateManyEntitiesWithComponents_Succeeds(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             for (int i = 0; i < entityCount; i++)
             {
                 scene.Create(
@@ -83,7 +51,6 @@ namespace Alis.Core.Ecs.Test
                 );
             }
 
-            // Assert
             int count = 0;
             foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
@@ -100,14 +67,12 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500), InlineData(1000)]
         public void StressTest_QueryManyTimes_Stable(int queryCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < 100; i++)
             {
                 scene.Create(new Position {X = 1, Y = 1});
             }
 
-            // Act
             for (int i = 0; i < queryCount; i++)
             {
                 int count = 0;
@@ -119,7 +84,6 @@ namespace Alis.Core.Ecs.Test
                 Assert.Equal(100, count);
             }
 
-            // Assert - No crashes
             Assert.True(true);
         }
 
@@ -130,11 +94,9 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500), InlineData(1000)]
         public void StressTest_AddRemoveComponentsManyTimes_Stable(int operationCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             for (int i = 0; i < operationCount; i++)
             {
                 entity.Add(new Position {X = 1, Y = 1});
@@ -143,7 +105,6 @@ namespace Alis.Core.Ecs.Test
                 Assert.False(entity.Has<Position>());
             }
 
-            // Assert
             Assert.True(entity.IsAlive);
         }
 
@@ -154,7 +115,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500), InlineData(1000)]
         public void StressTest_DeleteManyEntities_Succeeds(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
@@ -162,13 +122,11 @@ namespace Alis.Core.Ecs.Test
                 entities[i] = scene.Create();
             }
 
-            // Act
             for (int i = 0; i < entityCount; i++)
             {
                 entities[i].Delete();
             }
 
-            // Assert
             for (int i = 0; i < entityCount; i++)
             {
                 Assert.False(entities[i].IsAlive);
@@ -182,10 +140,8 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500), InlineData(1000)]
         public void StressTest_CreateDeleteCyclic_Stable(int cycleCount)
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             for (int i = 0; i < cycleCount; i++)
             {
                 GameObject entity = scene.Create(new Position {X = 1, Y = 1});
@@ -194,7 +150,6 @@ namespace Alis.Core.Ecs.Test
                 Assert.False(entity.IsAlive);
             }
 
-            // Assert
             Assert.True(true);
         }
 
@@ -205,11 +160,9 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500), InlineData(1000)]
         public void StressTest_MixedOperations_Stable(int operationCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             List<GameObject> entities = new List<GameObject>();
 
-            // Act
             for (int i = 0; i < operationCount; i++)
             {
                 if (i % 3 == 0)
@@ -228,7 +181,6 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Assert
             Assert.True(entities.Count >= 0);
         }
 
@@ -239,11 +191,9 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(10), InlineData(50), InlineData(100)]
         public void StressTest_LargeComponentSet_Handles(int componentCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             for (int i = 0; (i < componentCount) && (i < 10); i++)
             {
                 switch (i)
@@ -281,7 +231,6 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Assert
             Assert.True(entity.IsAlive);
         }
 
@@ -292,7 +241,6 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500)]
         public void StressTest_MultipleQueriesOnLargeSet_Fast(int entityCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < entityCount; i++)
             {
@@ -306,7 +254,6 @@ namespace Alis.Core.Ecs.Test
                 }
             }
 
-            // Act
             Stopwatch stopwatch = Stopwatch.StartNew();
             for (int q = 0; q < 10; q++)
             {
@@ -319,7 +266,6 @@ namespace Alis.Core.Ecs.Test
 
             stopwatch.Stop();
 
-            // Assert
             Assert.True(stopwatch.ElapsedMilliseconds < 1000); // Should be fast
         }
 
@@ -330,11 +276,9 @@ namespace Alis.Core.Ecs.Test
         [Theory, InlineData(100), InlineData(500)]
         public void StressTest_DeepComponentChain_Works(int chainLength)
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             for (int i = 0; (i < chainLength) && (i < 10); i++)
             {
                 int type = i % 10;
@@ -373,11 +317,9 @@ namespace Alis.Core.Ecs.Test
                 }
                 catch
                 {
-                    // Component already exists
                 }
             }
 
-            // Assert
             Assert.True(entity.IsAlive);
         }
     }

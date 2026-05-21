@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:StructValidationTests.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Graphic.Glfw.Structs;
@@ -44,10 +17,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void MonitorStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type monitorType = typeof(Monitor);
 
-            // Assert
             Assert.True(monitorType.IsValueType);
         }
 
@@ -57,10 +28,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void MonitorNoneStruct_ShouldHaveValidValue()
         {
-            // Arrange & Act
             Monitor none = Monitor.None;
 
-            // Assert
             Assert.NotNull(none);
         }
 
@@ -70,11 +39,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void MonitorStructEquality_ShouldWork()
         {
-            // Arrange
             Monitor monitor1 = Monitor.None;
             Monitor monitor2 = Monitor.None;
 
-            // Act & Assert
             Assert.Equal(monitor1, monitor2);
         }
 
@@ -84,10 +51,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void VideoModeStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type videoModeType = typeof(VideoMode);
 
-            // Assert
             Assert.True(videoModeType.IsValueType);
         }
 
@@ -97,10 +62,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void WindowStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type windowType = typeof(Window);
 
-            // Assert
             Assert.True(windowType.IsValueType);
         }
 
@@ -110,10 +73,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void WindowNoneStruct_ShouldHaveValidValue()
         {
-            // Arrange & Act
             Window none = Window.None;
 
-            // Assert
             Assert.NotNull(none);
         }
 
@@ -123,11 +84,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void WindowStructEquality_ShouldWork()
         {
-            // Arrange
             Window window1 = Window.None;
             Window window2 = Window.None;
 
-            // Act & Assert
             Assert.Equal(window1, window2);
         }
 
@@ -137,10 +96,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void CursorStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type cursorType = typeof(Cursor);
 
-            // Assert
             Assert.True(cursorType.IsValueType);
         }
 
@@ -150,10 +107,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void CursorNoneStruct_ShouldHaveValidValue()
         {
-            // Arrange & Act
             Cursor none = Cursor.None;
 
-            // Assert
             Assert.NotNull(none);
         }
 
@@ -163,10 +118,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void GamePadStateStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type gamepadType = typeof(GamePadState);
 
-            // Assert
             Assert.True(gamepadType.IsValueType);
         }
 
@@ -176,10 +129,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void GammaRampStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type gammaRampType = typeof(GammaRamp);
 
-            // Assert
             Assert.True(gammaRampType.IsValueType);
         }
 
@@ -189,10 +140,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void EGLContextStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type eglContextType = typeof(EGLContext);
 
-            // Assert
             Assert.True(eglContextType.IsValueType);
         }
 
@@ -202,10 +151,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void EGLDisplayStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type eglDisplayType = typeof(EglDisplay);
 
-            // Assert
             Assert.True(eglDisplayType.IsValueType);
         }
 
@@ -215,10 +162,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void EGLSurfaceStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type eglSurfaceType = typeof(EglSurface);
 
-            // Assert
             Assert.True(eglSurfaceType.IsValueType);
         }
 
@@ -228,10 +173,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void GLXContextStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type glxContextType = typeof(GLXContext);
 
-            // Assert
             Assert.True(glxContextType.IsValueType);
         }
 
@@ -241,10 +184,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void HGLRCStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type hglrcType = typeof(Hglrc);
 
-            // Assert
             Assert.True(hglrcType.IsValueType);
         }
 
@@ -254,10 +195,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void NSOpenGLContextStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type nsOpenGLContextType = typeof(NSOpenGLContext);
 
-            // Assert
             Assert.True(nsOpenGLContextType.IsValueType);
         }
 
@@ -267,10 +206,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void OSMesaContextStructIsValueType_ShouldBeTrue()
         {
-            // Arrange & Act
             Type osMesaContextType = typeof(OSMesaContext);
 
-            // Assert
             Assert.True(osMesaContextType.IsValueType);
         }
 
@@ -280,12 +217,10 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void StructDefaultInitialization_ShouldWork()
         {
-            // Arrange & Act
             Monitor monitor = default(Monitor);
             Window window = default(Window);
             Cursor cursor = default(Cursor);
 
-            // Assert
             Assert.NotNull(monitor);
             Assert.NotNull(window);
             Assert.NotNull(cursor);
@@ -297,14 +232,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void MonitorStructIEquatable_ShouldBeImplemented()
         {
-            // Arrange
             Monitor monitor1 = Monitor.None;
             Monitor monitor2 = Monitor.None;
 
-            // Act
             bool equals = monitor1.Equals(monitor2);
 
-            // Assert
             Assert.True(equals);
         }
 
@@ -314,14 +246,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void WindowStructIEquatable_ShouldBeImplemented()
         {
-            // Arrange
             Window window1 = Window.None;
             Window window2 = Window.None;
 
-            // Act
             bool equals = window1.Equals(window2);
 
-            // Assert
             Assert.True(equals);
         }
 
@@ -331,14 +260,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [Fact]
         public void StructGetHashCodeConsistency_ShouldWork()
         {
-            // Arrange
             Monitor monitor = Monitor.None;
 
-            // Act
             int hash1 = monitor.GetHashCode();
             int hash2 = monitor.GetHashCode();
 
-            // Assert
             Assert.Equal(hash1, hash2);
         }
     }

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameObjectTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -54,10 +27,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanBeCreatedWithDefaultConstructor()
         {
-            // Act
             GameObject gameObject = new GameObject();
 
-            // Assert
             Assert.True(gameObject.IsNull);
         }
 
@@ -70,10 +41,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void DefaultGameObject_IsNull()
         {
-            // Arrange
             GameObject gameObject = default(GameObject);
 
-            // Assert
             Assert.True(gameObject.IsNull);
         }
 
@@ -86,11 +55,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_NullEqualsDefault()
         {
-            // Arrange
             GameObject nullGameObject = GameObject.Null;
             GameObject defaultGameObject = default(GameObject);
 
-            // Assert
             Assert.Equal(nullGameObject, defaultGameObject);
         }
 
@@ -103,14 +70,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CreatedInScene_IsNotNull()
         {
-            // Arrange
             using Scene scene = new Scene();
             TestComponent component = new TestComponent {Value = 42, Name = "Test"};
 
-            // Act
             GameObject gameObject = scene.Create(component);
 
-            // Assert
             Assert.False(gameObject.IsNull);
         }
 
@@ -123,14 +87,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_IsAliveAfterCreation()
         {
-            // Arrange
             using Scene scene = new Scene();
             TestComponent component = new TestComponent {Value = 10};
 
-            // Act
             GameObject gameObject = scene.Create(component);
 
-            // Assert
             Assert.True(gameObject.IsAlive);
         }
 
@@ -144,11 +105,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanCheckIfHasComponent()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 30});
 
-            // Assert
             Assert.True(gameObject.Has<TestComponent>());
         }
 
@@ -161,11 +120,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_ReturnsFalseForComponentItDoesNotHave()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 40});
 
-            // Assert
             Assert.False(gameObject.Has<AnotherComponent>());
         }
 
@@ -178,15 +135,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanGetComponent()
         {
-            // Arrange
             using Scene scene = new Scene();
             TestComponent original = new TestComponent {Value = 100, Name = "Original"};
             GameObject gameObject = scene.Create(original);
 
-            // Act
             ref TestComponent retrieved = ref gameObject.Get<TestComponent>();
 
-            // Assert
             Assert.Equal(100, retrieved.Value);
             Assert.Equal("Original", retrieved.Name);
         }
@@ -200,15 +154,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanModifyComponentThroughReference()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 50});
 
-            // Act
             ref TestComponent component = ref gameObject.Get<TestComponent>();
             component.Value = 200;
 
-            // Assert
             Assert.Equal(200, gameObject.Get<TestComponent>().Value);
         }
 
@@ -221,12 +172,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_EqualsComparesCorrectly()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new TestComponent {Value = 1});
             GameObject entity2 = scene.Create(new TestComponent {Value = 2});
 
-            // Assert
             Assert.True(entity1.Equals(entity1));
             Assert.False(entity1.Equals(entity2));
         }
@@ -240,13 +189,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_EqualityOperatorWorksCorrectly()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new TestComponent {Value = 10});
             GameObject entity2 = entity1;
             GameObject entity3 = scene.Create(new TestComponent {Value = 20});
 
-            // Assert
             Assert.True(entity1 == entity2);
             Assert.False(entity1 == entity3);
         }
@@ -260,12 +207,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_InequalityOperatorWorksCorrectly()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new TestComponent {Value = 15});
             GameObject entity2 = scene.Create(new TestComponent {Value = 25});
 
-            // Assert
             Assert.True(entity1 != entity2);
         }
 
@@ -278,15 +223,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_GetHashCodeReturnsConsistentValue()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 99});
 
-            // Act
             int hashCode1 = gameObject.GetHashCode();
             int hashCode2 = gameObject.GetHashCode();
 
-            // Assert
             Assert.Equal(hashCode1, hashCode2);
         }
 
@@ -299,12 +241,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_EqualsHandlesNullCorrectly()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 5});
             GameObject nullGameObject = GameObject.Null;
 
-            // Assert
             Assert.False(gameObject.Equals(nullGameObject));
         }
 
@@ -317,11 +257,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void TwoNullGameObjects_AreEqual()
         {
-            // Arrange
             GameObject null1 = GameObject.Null;
             GameObject null2 = GameObject.Null;
 
-            // Assert
             Assert.True(null1 == null2);
         }
 
@@ -334,11 +272,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_TryHasReturnsTrueWhenComponentExists()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 77});
 
-            // Assert
             Assert.True(gameObject.TryHas<TestComponent>());
         }
 
@@ -351,11 +287,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_TryHasReturnsFalseWhenComponentDoesNotExist()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 88});
 
-            // Assert
             Assert.False(gameObject.TryHas<AnotherComponent>());
         }
 
@@ -369,12 +303,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_IsValueType()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new TestComponent {Value = 1});
             GameObject entity2 = entity1;
 
-            // Assert - Both should refer to the same entity (value equality)
             Assert.Equal(entity1, entity2);
         }
 
@@ -387,17 +319,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanBeUsedInCollections()
         {
-            // Arrange
             using Scene scene = new Scene();
             List<GameObject> entities = new List<GameObject>();
 
-            // Act
             for (int i = 0; i < 5; i++)
             {
                 entities.Add(scene.Create(new TestComponent {Value = i}));
             }
 
-            // Assert
             Assert.Equal(5, entities.Count);
             foreach (GameObject entity in entities)
             {
@@ -414,12 +343,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_EqualsObjectHandlesDifferentTypes()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 100});
             object differentType = "not a GameObject";
 
-            // Assert
             Assert.False(gameObject.Equals(differentType));
         }
 
@@ -432,14 +359,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanAddAfterCreation()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 50});
 
-            // Act
             gameObject.Add(new AnotherComponent {Data = 1.0f, Y = 2.0f});
 
-            // Assert
             Assert.True(gameObject.Has<TestComponent>());
             Assert.True(gameObject.Has<AnotherComponent>());
         }
@@ -453,14 +377,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanRemoveComponent()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 60});
 
-            // Act
             gameObject.Remove<TestComponent>();
 
-            // Assert
             Assert.False(gameObject.Has<TestComponent>());
         }
 
@@ -473,15 +394,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_WithMultipleComponents_CanBeQueried()
         {
-            // Arrange
             using Scene scene = new Scene();
             TestComponent comp1 = new TestComponent {Value = 123};
             AnotherComponent comp2 = new AnotherComponent {Data = 4.5f, Y = 6.7f};
 
-            // Act
             GameObject gameObject = scene.Create(comp1, comp2);
 
-            // Assert
             Assert.True(gameObject.Has<TestComponent>());
             Assert.True(gameObject.Has<AnotherComponent>());
         }

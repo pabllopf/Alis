@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MonotoneMountain.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -104,7 +77,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             }
             else if (_size == 1)
             {
-                // Keep repeat points out of the list
                 _tail = point;
                 _tail.Prev = _head;
                 _head.Next = _tail;
@@ -112,7 +84,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             }
             else
             {
-                // Keep repeat points out of the list
                 _tail.Next = point;
                 point.Prev = _tail;
                 _tail = point;
@@ -133,24 +104,18 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             _size -= 1;
         }
 
-        // Partition a x-monotone mountain into triangles O(n)
         /// <summary>
         ///     Processes this instance
         /// </summary>
         public void Process()
         {
-            // Establish the proper sign
             _positive = AngleSign();
-            // create monotone polygon - for dubug purposes
             GenMonoPoly();
 
-            // Initialize internal angles at each nonbase vertex
-            // Link strictly convex vertices into a list, ignore reflex vertices
             Point p = _head.Next;
             while (p.Neq(_tail))
             {
                 float a = Angle(p);
-                // If the point is almost colinear with it's neighbor, remove it!
                 if (a >= PiSlop || a <= -PiSlop || Math.Abs(a) < float.Epsilon)
                 {
                     Remove(p);
@@ -188,7 +153,6 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
                 Triangles.Add(triangle);
 
-                // Remove ear, update angles and convex list
                 Remove(ear);
                 if (Valid(a))
                 {

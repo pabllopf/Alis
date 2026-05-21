@@ -56,13 +56,10 @@ Counts backslashes immediately before the position. If odd number of backslashes
 ```csharp
 var handler = new EscapeSequenceHandler();
 
-// Escaped quote
 handler.IsEscaped("say \\\"hello\\\"", 5); // true
 
-// Unescaped quote
 handler.IsEscaped("say \"hello\"", 4); // false
 
-// Double backslash
 handler.IsEscaped("path\\\\file", 5); // true
 ```
 
@@ -91,15 +88,12 @@ Iterates through the string, converting escape sequences to their character equi
 ```csharp
 var handler = new EscapeSequenceHandler();
 
-// Basic escapes
 handler.Unescape("line1\\nline2");      // "line1\nline2"
 handler.Unescape("tab\\tseparated");    // "tab\tseparated"
 handler.Unescape("quote\\\"text");      // "quote\"text"
 
-// Unicode escape
 handler.Unescape("hello\\u0041");       // "helloA"
 
-// Multiple escapes
 handler.Unescape("a\\tb\\nc\\ud");      // "a\tb\nc\ud"
 ```
 
@@ -110,7 +104,6 @@ handler.Unescape("a\\tb\\nc\\ud");      // "a\tb\nc\ud"
 The escape detection uses a counter approach:
 
 ```csharp
-// Count backslashes before position
 int count = 0;
 while (position > 0 && text[position - 1] == '\\')
 {
@@ -118,7 +111,6 @@ while (position > 0 && text[position - 1] == '\\')
     position--;
 }
 
-// Odd count = escaped
 return count % 2 == 1;
 ```
 
@@ -181,32 +173,24 @@ var parser = new JsonParser(escapeHandler);
 ### Handled Correctly
 
 ```csharp
-// Empty string
 Unescape("")  // ""
 
-// No escapes
 Unescape("plain text")  // "plain text"
 
-// Multiple consecutive escapes
 Unescape("\\\\\\\\")  // "\\\\" → "\\"
 
-// Mixed escapes
 Unescape("a\\nb\\tc")  // "a\nb\tc"
 
-// Unicode with other escapes
 Unescape("\\n\\u0041")  // "\nA"
 ```
 
 ### Boundary Conditions
 
 ```csharp
-// Backslash at end
 Unescape("text\\")  // "text\"
 
-// Multiple backslashes
 Unescape("\\\\")  // "\\"
 
-// Invalid hex
 Unescape("\\uXXXX")  // Kept as-is
 ```
 

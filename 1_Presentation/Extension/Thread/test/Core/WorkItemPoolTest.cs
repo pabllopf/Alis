@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WorkItemPoolTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -45,10 +18,8 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void WorkItemPool_CanBeInstantiated()
         {
-            // Act
             WorkItemPool pool = new WorkItemPool();
 
-            // Assert
             Assert.NotNull(pool);
         }
 
@@ -58,13 +29,10 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void Rent_WhenPoolIsEmpty_CreatesNewWorkItem()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
 
-            // Act
             WorkItem item = pool.Rent();
 
-            // Assert
             Assert.NotNull(item);
             Assert.Null(item.Action);
             Assert.Equal(0, item.StartIndex);
@@ -77,17 +45,14 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void Return_AddsWorkItemToPool()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
             WorkItem item = pool.Rent();
             item.Action = (s, l) => { };
             item.StartIndex = 10;
             item.Length = 20;
 
-            // Act
             pool.Return(item);
 
-            // Assert - should be able to rent a reset item
             WorkItem rentedItem = pool.Rent();
             Assert.NotNull(rentedItem);
             Assert.Null(rentedItem.Action);
@@ -101,15 +66,12 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void Pool_ReusesReturnedItems()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
             WorkItem original = pool.Rent();
 
-            // Act
             pool.Return(original);
             WorkItem reused = pool.Rent();
 
-            // Assert
             Assert.Same(original, reused);
         }
 
@@ -119,17 +81,14 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void Clear_RemovesAllItemsFromPool()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
             WorkItem item1 = pool.Rent();
             WorkItem item2 = pool.Rent();
             pool.Return(item1);
             pool.Return(item2);
 
-            // Act
             pool.Clear();
 
-            // Assert - renting after clear should not reuse old items
             WorkItem newItem1 = pool.Rent();
             WorkItem newItem2 = pool.Rent();
             Assert.NotNull(newItem1);
@@ -142,10 +101,8 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void RentAndReturnCycle_WorksCorrectlyMultipleTimes()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
 
-            // Act & Assert
             for (int i = 0; i < 20; i++)
             {
                 WorkItem item = pool.Rent();
@@ -158,7 +115,6 @@ namespace Alis.Extension.Thread.Test.Core
                 pool.Return(item);
             }
 
-            // Final verification
             WorkItem finalItem = pool.Rent();
             Assert.NotNull(finalItem);
             Assert.Null(finalItem.Action);
@@ -172,15 +128,12 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void Rent_MultipleItems_Simultaneously()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
 
-            // Act
             WorkItem item1 = pool.Rent();
             WorkItem item2 = pool.Rent();
             WorkItem item3 = pool.Rent();
 
-            // Assert
             Assert.NotNull(item1);
             Assert.NotNull(item2);
             Assert.NotNull(item3);
@@ -195,18 +148,15 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void Return_WithModifiedItem_ResetsProperties()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
             WorkItem item = pool.Rent();
             item.Action = (s, l) => { };
             item.StartIndex = 999;
             item.Length = 888;
 
-            // Act
             pool.Return(item);
             WorkItem rentedAgain = pool.Rent();
 
-            // Assert
             Assert.Null(rentedAgain.Action);
             Assert.Equal(0, rentedAgain.StartIndex);
             Assert.Equal(0, rentedAgain.Length);
@@ -218,10 +168,8 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void Pool_WorksCorrectlyWithMixedOperations()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
 
-            // Act & Assert
             WorkItem item1 = pool.Rent();
             WorkItem item2 = pool.Rent();
             pool.Return(item1);
@@ -242,12 +190,10 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void Pool_IsThreadSafe()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
             List<WorkItem> rentedItems = new List<WorkItem>();
             object lockObj = new object();
 
-            // Act
             Parallel.For(0, 100, i =>
             {
                 WorkItem item = pool.Rent();
@@ -261,10 +207,8 @@ namespace Alis.Extension.Thread.Test.Core
                 pool.Return(item);
             });
 
-            // Assert
             Assert.Equal(100, rentedItems.Count);
 
-            // Verify pool still works
             WorkItem finalItem = pool.Rent();
             Assert.NotNull(finalItem);
         }
@@ -275,13 +219,10 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void Clear_OnEmptyPool_DoesNotThrow()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
 
-            // Act & Assert
             pool.Clear();
 
-            // Should still work after clear
             WorkItem item = pool.Rent();
             Assert.NotNull(item);
         }
@@ -292,18 +233,15 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void Pool_MaintainsLifoOrder()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
             WorkItem item1 = pool.Rent();
             WorkItem item2 = pool.Rent();
             WorkItem item3 = pool.Rent();
 
-            // Act
             pool.Return(item1);
             pool.Return(item2);
             pool.Return(item3);
 
-            // Assert - ConcurrentBag uses LIFO, so last returned is first retrieved
             WorkItem retrieved1 = pool.Rent();
             WorkItem retrieved2 = pool.Rent();
             WorkItem retrieved3 = pool.Rent();
@@ -319,11 +257,9 @@ namespace Alis.Extension.Thread.Test.Core
         [Fact]
         public void Pool_HandlesLargeNumberOfOperations()
         {
-            // Arrange
             WorkItemPool pool = new WorkItemPool();
             const int operationCount = 1000;
 
-            // Act
             for (int i = 0; i < operationCount; i++)
             {
                 WorkItem item = pool.Rent();
@@ -331,7 +267,6 @@ namespace Alis.Extension.Thread.Test.Core
                 pool.Return(item);
             }
 
-            // Assert
             WorkItem finalItem = pool.Rent();
             Assert.NotNull(finalItem);
             Assert.Equal(0, finalItem.StartIndex);

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ResourceMetricsTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Profile.Models;
@@ -44,14 +17,12 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_InitializesAllProperties_Correctly()
         {
-            // Arrange
             double expectedCpu = 123.45;
             long expectedMemory = 1024000;
             int expectedGc = 10;
             int expectedThreads = 5;
             DateTime expectedTimestamp = DateTime.Now;
 
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(
                 expectedCpu,
                 expectedMemory,
@@ -59,7 +30,6 @@ namespace Alis.Extension.Profile.Test.Models
                 expectedThreads,
                 expectedTimestamp);
 
-            // Assert
             Assert.Equal(expectedCpu, metrics.CpuUsageMilliseconds);
             Assert.Equal(expectedMemory, metrics.MemoryUsageBytes);
             Assert.Equal(expectedGc, metrics.GarbageCollectionCount);
@@ -73,7 +43,6 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_ThrowsException_WhenCpuUsageIsNegative()
         {
-            // Arrange & Act & Assert
             Assert.Throws<ArgumentException>(() =>
                 new ResourceMetrics(-1, 1024, 0, 1, DateTime.Now));
         }
@@ -84,7 +53,6 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_ThrowsException_WhenMemoryUsageIsNegative()
         {
-            // Arrange & Act & Assert
             Assert.Throws<ArgumentException>(() =>
                 new ResourceMetrics(100, -1, 0, 1, DateTime.Now));
         }
@@ -95,10 +63,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Empty_ReturnsMetrics_WithZeroValues()
         {
-            // Act
             ResourceMetrics empty = ResourceMetrics.Empty;
 
-            // Assert
             Assert.Equal(0, empty.CpuUsageMilliseconds);
             Assert.Equal(0, empty.MemoryUsageBytes);
             Assert.Equal(0, empty.GarbageCollectionCount);
@@ -112,12 +78,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsTrue_ForIdenticalMetrics()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.True(metrics1.Equals(metrics2));
             Assert.True(metrics1 == metrics2);
             Assert.False(metrics1 != metrics2);
@@ -129,12 +93,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalse_ForDifferentMetrics()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(200, 2048, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.False(metrics1.Equals(metrics2));
             Assert.False(metrics1 == metrics2);
             Assert.True(metrics1 != metrics2);
@@ -146,12 +108,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void GetHashCode_ReturnsSameValue_ForIdenticalMetrics()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.Equal(metrics1.GetHashCode(), metrics2.GetHashCode());
         }
 
@@ -162,10 +122,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalse_WhenComparingWithNull()
         {
-            // Arrange
             ResourceMetrics metrics = new ResourceMetrics(100, 2048, 5, 3, DateTime.Now);
 
-            // Act & Assert
             Assert.False(metrics.Equals(null));
         }
 
@@ -175,11 +133,9 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalse_WhenComparingWithDifferentType()
         {
-            // Arrange
             ResourceMetrics metrics = new ResourceMetrics(100, 2048, 5, 3, DateTime.Now);
             object other = "not a ResourceMetrics";
 
-            // Act & Assert
             Assert.False(metrics.Equals(other));
         }
 
@@ -189,14 +145,11 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void ToString_ReturnsFormattedString_WithAllValues()
         {
-            // Arrange
             DateTime timestamp = new DateTime(2026, 3, 7, 14, 30, 45, 123);
             ResourceMetrics metrics = new ResourceMetrics(123.456, 2048576, 10, 5, timestamp);
 
-            // Act
             string result = metrics.ToString();
 
-            // Assert
             Assert.Contains("CPU:", result);
             Assert.Contains("123", result); // CPU value
             Assert.Contains("ms", result); // milliseconds unit
@@ -215,7 +168,6 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_ThrowsException_WithCorrectParameterName_ForNegativeCpu()
         {
-            // Act & Assert
             ArgumentException exception = Assert.Throws<ArgumentException>(() =>
                 new ResourceMetrics(-0.1, 1024, 0, 1, DateTime.Now));
             Assert.Equal("cpuUsageMilliseconds", exception.ParamName);
@@ -227,7 +179,6 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_ThrowsException_WithCorrectParameterName_ForNegativeMemory()
         {
-            // Act & Assert
             ArgumentException exception = Assert.Throws<ArgumentException>(() =>
                 new ResourceMetrics(100, -1, 0, 1, DateTime.Now));
             Assert.Equal("memoryUsageBytes", exception.ParamName);
@@ -239,10 +190,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_WithZeroCpuUsage_Succeeds()
         {
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(0, 1024, 5, 3, DateTime.Now);
 
-            // Assert
             Assert.Equal(0, metrics.CpuUsageMilliseconds);
         }
 
@@ -252,10 +201,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_WithZeroMemoryUsage_Succeeds()
         {
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(100, 0, 5, 3, DateTime.Now);
 
-            // Assert
             Assert.Equal(0, metrics.MemoryUsageBytes);
         }
 
@@ -265,10 +212,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_WithNegativeGarbageCollectionCount_Succeeds()
         {
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(100, 1024, -5, 3, DateTime.Now);
 
-            // Assert
             Assert.Equal(-5, metrics.GarbageCollectionCount);
         }
 
@@ -278,10 +223,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_WithNegativeThreadCount_Succeeds()
         {
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(100, 1024, 5, -3, DateTime.Now);
 
-            // Assert
             Assert.Equal(-3, metrics.ThreadCount);
         }
 
@@ -291,10 +234,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_WithLargeCpuUsageValues_Succeeds()
         {
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(double.MaxValue, 1024, 5, 3, DateTime.Now);
 
-            // Assert
             Assert.Equal(double.MaxValue, metrics.CpuUsageMilliseconds);
         }
 
@@ -304,10 +245,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_WithLargeMemoryUsageValues_Succeeds()
         {
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(100, long.MaxValue, 5, 3, DateTime.Now);
 
-            // Assert
             Assert.Equal(long.MaxValue, metrics.MemoryUsageBytes);
         }
 
@@ -317,12 +256,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_HandlesCpuUsageWithFloatingPointDifferences()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100.0, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100.0, 2048, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.True(metrics1.Equals(metrics2));
         }
 
@@ -332,12 +269,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalse_WhenCpuDiffers()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100.0, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100.1, 2048, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.False(metrics1.Equals(metrics2));
         }
 
@@ -347,12 +282,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalse_WhenMemoryDiffers()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2049, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.False(metrics1.Equals(metrics2));
         }
 
@@ -362,12 +295,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalse_WhenGarbageCollectionCountDiffers()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2048, 6, 3, timestamp);
 
-            // Act & Assert
             Assert.False(metrics1.Equals(metrics2));
         }
 
@@ -377,12 +308,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalse_WhenThreadCountDiffers()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2048, 5, 4, timestamp);
 
-            // Act & Assert
             Assert.False(metrics1.Equals(metrics2));
         }
 
@@ -392,13 +321,11 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalse_WhenTimestampDiffers()
         {
-            // Arrange
             DateTime timestamp1 = new DateTime(2026, 3, 7, 14, 30, 45);
             DateTime timestamp2 = new DateTime(2026, 3, 7, 14, 30, 46);
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp1);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2048, 5, 3, timestamp2);
 
-            // Act & Assert
             Assert.False(metrics1.Equals(metrics2));
         }
 
@@ -408,12 +335,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void EqualityOperator_ReturnsTrue_ForIdenticalMetrics()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.True(metrics1 == metrics2);
         }
 
@@ -423,12 +348,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void InequalityOperator_ReturnsTrue_ForDifferentMetrics()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(200, 2048, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.True(metrics1 != metrics2);
         }
 
@@ -438,12 +361,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void GetHashCode_ReturnsDifferentValues_ForDifferentMetrics()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(200, 2048, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.NotEqual(metrics1.GetHashCode(), metrics2.GetHashCode());
         }
 
@@ -453,12 +374,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void ObjectEquals_WithResourceMetrics_WorksCorrectly()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             object metrics2 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.True(metrics1.Equals(metrics2));
         }
 
@@ -468,11 +387,9 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void GetHashCode_WithZeroValues_ReturnsHashCode()
         {
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(0, 0, 0, 0, DateTime.MinValue);
             int hashCode = metrics.GetHashCode();
 
-            // Assert
             Assert.NotEqual(0, hashCode);
         }
 
@@ -482,11 +399,9 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void GetHashCode_WithMaximumValues_ReturnsHashCode()
         {
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(double.MaxValue, long.MaxValue, int.MaxValue, int.MaxValue, DateTime.MaxValue);
             int hashCode = metrics.GetHashCode();
 
-            // Assert
             Assert.NotEqual(0, hashCode);
         }
 
@@ -496,11 +411,9 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Empty_IsReadonly_Instance()
         {
-            // Arrange
             ResourceMetrics empty1 = ResourceMetrics.Empty;
             ResourceMetrics empty2 = ResourceMetrics.Empty;
 
-            // Act & Assert
             Assert.Equal(empty1, empty2);
         }
 
@@ -510,13 +423,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void ToString_WithZeroMetrics_ReturnsFormattedString()
         {
-            // Arrange
             ResourceMetrics metrics = new ResourceMetrics(0, 0, 0, 0, DateTime.MinValue);
 
-            // Act
             string result = metrics.ToString();
 
-            // Assert
             Assert.Contains("CPU:", result);
             Assert.Contains("0", result);
             Assert.Contains("ms", result);
@@ -532,13 +442,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void ToString_WithLargeValues_ReturnsFormattedString()
         {
-            // Arrange
             ResourceMetrics metrics = new ResourceMetrics(999999.99, 1000000000, 9999, 9999, DateTime.Now);
 
-            // Act
             string result = metrics.ToString();
 
-            // Assert
             Assert.Contains("CPU:", result);
             Assert.Contains("Memory:", result);
             Assert.Contains("GC:", result);
@@ -552,18 +459,15 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void MultipleEqualInstances_HaveSameHashCode()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics3 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
 
-            // Act
             int hash1 = metrics1.GetHashCode();
             int hash2 = metrics2.GetHashCode();
             int hash3 = metrics3.GetHashCode();
 
-            // Assert
             Assert.Equal(hash1, hash2);
             Assert.Equal(hash2, hash3);
         }
@@ -574,10 +478,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equality_IsReflexive()
         {
-            // Arrange
             ResourceMetrics metrics = new ResourceMetrics(100, 2048, 5, 3, DateTime.Now);
 
-            // Act & Assert
             Assert.True(metrics.Equals(metrics));
             Assert.True(metrics == metrics);
         }
@@ -588,12 +490,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equality_IsSymmetric()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.Equal(metrics1.Equals(metrics2), metrics2.Equals(metrics1));
         }
 
@@ -603,13 +503,11 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equality_IsTransitive()
         {
-            // Arrange
             DateTime timestamp = DateTime.Now;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
             ResourceMetrics metrics3 = new ResourceMetrics(100, 2048, 5, 3, timestamp);
 
-            // Act & Assert
             Assert.True(metrics1.Equals(metrics2));
             Assert.True(metrics2.Equals(metrics3));
             Assert.True(metrics1.Equals(metrics3));
@@ -621,10 +519,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_WithMinimumDateTime_Succeeds()
         {
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(100, 1024, 5, 3, DateTime.MinValue);
 
-            // Assert
             Assert.Equal(DateTime.MinValue, metrics.Timestamp);
         }
 
@@ -634,10 +530,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_WithMaximumDateTime_Succeeds()
         {
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(100, 1024, 5, 3, DateTime.MaxValue);
 
-            // Assert
             Assert.Equal(DateTime.MaxValue, metrics.Timestamp);
         }
 
@@ -647,11 +541,9 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_DifferentiatesByTimestamp()
         {
-            // Arrange
             ResourceMetrics metrics1 = new ResourceMetrics(100, 2048, 5, 3, new DateTime(2026, 1, 1));
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2048, 5, 3, new DateTime(2026, 1, 2));
 
-            // Act & Assert
             Assert.False(metrics1.Equals(metrics2));
         }
 
@@ -661,11 +553,9 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void AllProperties_AreAccessible()
         {
-            // Arrange
             DateTime timestamp = new DateTime(2026, 3, 7, 14, 30, 45, 123);
             ResourceMetrics metrics = new ResourceMetrics(123.456, 2048576, 10, 5, timestamp);
 
-            // Act & Assert
             Assert.Equal(123.456, metrics.CpuUsageMilliseconds);
             Assert.Equal(2048576, metrics.MemoryUsageBytes);
             Assert.Equal(10, metrics.GarbageCollectionCount);
@@ -679,10 +569,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_WithVerySmallCpuValue_Succeeds()
         {
-            // Act
             ResourceMetrics metrics = new ResourceMetrics(0.0001, 1024, 5, 3, DateTime.Now);
 
-            // Assert
             Assert.Equal(0.0001, metrics.CpuUsageMilliseconds);
         }
 
@@ -692,13 +580,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void ToString_UsesTwoDecimalPlaces_ForCpuUsage()
         {
-            // Arrange
             ResourceMetrics metrics = new ResourceMetrics(123.456789, 2048, 5, 3, DateTime.Now);
 
-            // Act
             string result = metrics.ToString();
 
-            // Assert
             Assert.Contains("CPU:", result);
             Assert.Contains("123", result);
             Assert.Contains("ms", result);
@@ -710,15 +595,11 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void ToString_FormatsMemoryValue()
         {
-            // Arrange
             ResourceMetrics metrics = new ResourceMetrics(100, 1234567, 5, 3, DateTime.Now);
 
-            // Act
             string result = metrics.ToString();
 
-            // Assert
             Assert.Contains("Memory:", result);
-            // The exact formatting depends on locale, but should contain digits and thousands separator or just digits
             Assert.Matches(@"Memory:\s+[\d.,]+\s+bytes", result);
         }
     }

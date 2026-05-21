@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Sprite.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.IO;
@@ -163,7 +136,6 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void OnExit(IGameObject self)
         {
-            // free per-instance texture
             try
             {
                 if (Texture != 0)
@@ -244,7 +216,6 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlAttachShader(SharedShaderProgram, fragmentShader);
             Gl.GlLinkProgram(SharedShaderProgram);
 
-            // Validar enlace del programa
             int[] linkStatus = new int[1];
             Gl.GlGetProgramiv(SharedShaderProgram, ProgramParameter.LinkStatus, linkStatus);
             if (linkStatus[0] == 0)
@@ -257,7 +228,6 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlDeleteShader(vertexShader);
             Gl.GlDeleteShader(fragmentShader);
 
-            // cache uniform locations after linking
             OffsetLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "offset");
             ScaleLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "scale");
             RotationLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "rotation");
@@ -265,7 +235,6 @@ namespace Alis.Core.Ecs.Components.Render
             TextureLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "texture1");
             Gl.GlUniform1I(TextureLocation, 0);
 
-            // create a shared unit quad (vertices not pre-scaled)
             float[] vertices =
             {
                 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
@@ -283,7 +252,6 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlBindVertexArray(SharedVao);
 
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, SharedVbo);
-            // pin vertex data briefly for buffer upload
             GCHandle vHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
             Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), vHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             vHandle.Free();
@@ -299,7 +267,6 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), new IntPtr(3 * sizeof(float)));
             Gl.EnableVertexAttribArray(1);
 
-            // unbind to be safe
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, 0);
             Gl.GlBindVertexArray(0);
 
@@ -327,7 +294,6 @@ namespace Alis.Core.Ecs.Components.Render
                     NameFile = imagePath;
                 }
 
-                // get name of resources from imagepath:
                 image = Image.LoadImageFromResources(nameToLoadFile);
             }
 
@@ -358,7 +324,6 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="pixelsPerMeter">The pixels per meter</param>
         public void Render(GameObject gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
-            // Inicialización de recursos compartidos y textura si es necesario
             if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))
             {
                 Path = "";
@@ -370,17 +335,14 @@ namespace Alis.Core.Ecs.Components.Render
             float spriteRotation = gameobject.Get<Transform>().Rotation;
             Vector2F transformScale = gameobject.Get<Transform>().Scale;
 
-            // Insertar en Render(...) después de obtener position y spriteRotation
             if (!IsSpriteVisible(position, Size, transformScale, spriteRotation, cameraPosition, cameraResolution, pixelsPerMeter))
             {
                 return;
             }
 
-            // Escalado físico: tamaño del sprite en metros = (pixeles de la textura / pixelsPerMeter) * escala
             float worldWidth = Size.X / pixelsPerMeter * transformScale.X;
             float worldHeight = Size.Y / pixelsPerMeter * transformScale.Y;
 
-            // Convertir a NDC (de -1 a 1)
             Vector2F ndcOffset = new Vector2F(
                 (position.X - cameraPosition.X) / (cameraResolution.X / pixelsPerMeter) * 2.0f,
                 (position.Y - cameraPosition.Y) / (cameraResolution.Y / pixelsPerMeter) * 2.0f
@@ -391,18 +353,15 @@ namespace Alis.Core.Ecs.Components.Render
                 worldHeight / (cameraResolution.Y / pixelsPerMeter)
             );
 
-            // Usar shader y VAO compartidos
             Gl.GlUseProgram(SharedShaderProgram);
             Gl.GlBindVertexArray(SharedVao);
 
-            // Uniforms
             Gl.GlUniform2F(OffsetLocation, ndcOffset.X, ndcOffset.Y);
             Gl.GlUniform2F(ScaleLocation, ndcScale.X, ndcScale.Y);
             Gl.GlUniform1F(RotationLocation, spriteRotation);
             Gl.GlUniform1I(FlipLocation, Flip ? 1 : 0);
             Gl.GlUniform1I(TextureLocation, 0); // textura en unidad 0
 
-            // Enlazar textura solo si es diferente a la última
             if (Texture != LastBoundTexture)
             {
                 Gl.GlActiveTexture(TextureUnit.Texture0);
@@ -410,13 +369,11 @@ namespace Alis.Core.Ecs.Components.Render
                 LastBoundTexture = Texture;
             }
 
-            // Dibujar quad
             Gl.GlEnable(EnableCap.Blend);
             Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
             Gl.GlDisable(EnableCap.Blend);
 
-            // Desenlazar VAO y shader por seguridad
             Gl.GlBindVertexArray(0);
             Gl.GlUseProgram(0);
         }
@@ -435,15 +392,12 @@ namespace Alis.Core.Ecs.Components.Render
         /// <returns>The bool</returns>
         private static bool IsSpriteVisible(Vector2F spriteWorldPosition, Vector2F spriteSizePixels, Vector2F spriteScale, float rotationDegrees, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
-            // posición del sprite relativa a la cámara en píxeles (centro de cámara)
             float px = (spriteWorldPosition.X - cameraPosition.X) * pixelsPerMeter;
             float py = (spriteWorldPosition.Y - cameraPosition.Y) * pixelsPerMeter;
 
-            // medias en píxeles
             float halfW = spriteSizePixels.X * spriteScale.X * 0.5f;
             float halfH = spriteSizePixels.Y * spriteScale.Y * 0.5f;
 
-            // ampliar AABB si hay rotación (aprox usando |cos| y |sin|)
             if (CustomMathF.Abs(rotationDegrees) > 0.0001f)
             {
                 float rad = rotationDegrees * (CustomMathF.Pi / 180f);
@@ -458,7 +412,6 @@ namespace Alis.Core.Ecs.Components.Render
             float camHalfW = cameraResolution.X * 0.5f;
             float camHalfH = cameraResolution.Y * 0.5f;
 
-            // overlap check (AABB centrado en la cámara)
             return !(CustomMathF.Abs(px) > camHalfW + halfW || CustomMathF.Abs(py) > camHalfH + halfH);
         }
     }

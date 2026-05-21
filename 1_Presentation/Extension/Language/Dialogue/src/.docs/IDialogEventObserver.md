@@ -45,7 +45,6 @@ public class SimpleDialogObserver : IDialogEventObserver
     }
 }
 
-// Uso
 var observer = new SimpleDialogObserver();
 var manager = new DialogManager();
 manager.RegisterObserver(observer);
@@ -88,7 +87,6 @@ public class LoggingDialogObserver : IDialogEventObserver
     }
 }
 
-// Uso
 var logger = new Logger("dialog.log");
 var observer = new LoggingDialogObserver(logger);
 manager.RegisterObserver(observer);
@@ -127,10 +125,8 @@ public class StatisticsDialogObserver : IDialogEventObserver
     }
 }
 
-// Uso
 var stats = new StatisticsDialogObserver();
 manager.RegisterObserver(stats);
-// ... usar el manager ...
 stats.PrintStatistics();
 ```
 

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:FilePickerImplementationTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -44,14 +17,10 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void WindowsFilePicker_ShouldImplementIFilePicker()
         {
-            // This test only verifies the interface implementation without calling methods.
-            // We cannot test actual behavior on non-Windows platforms.
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                // Act
                 WindowsFilePicker picker = new WindowsFilePicker();
 
-                // Assert
                 Assert.IsAssignableFrom<IFilePicker>(picker);
             }
         }
@@ -62,14 +31,10 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void MacFilePicker_ShouldImplementIFilePicker()
         {
-            // This test only verifies the interface implementation without calling methods.
-            // We cannot test actual behavior on non-Mac platforms.
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                // Act
                 MacFilePicker picker = new MacFilePicker();
 
-                // Assert
                 Assert.IsAssignableFrom<IFilePicker>(picker);
             }
         }
@@ -80,14 +45,10 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void LinuxFilePicker_ShouldImplementIFilePicker()
         {
-            // This test only verifies the interface implementation without calling methods.
-            // We cannot test actual behavior on non-Linux platforms.
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                // Act
                 LinuxFilePicker picker = new LinuxFilePicker();
 
-                // Assert
                 Assert.IsAssignableFrom<IFilePicker>(picker);
             }
         }
@@ -98,14 +59,11 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void WindowsFilePicker_PickFile_WithInvalidOptions_ShouldReturnError()
         {
-            // Arrange
             MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
-            // Act
             FilePickerResult result = picker.PickFile(options);
 
-            // Assert
             Assert.False(result.IsSuccess);
             Assert.NotNull(result.ErrorMessage);
         }
@@ -116,14 +74,11 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void MacFilePicker_PickFile_WithInvalidOptions_ShouldReturnError()
         {
-            // Arrange
             MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
-            // Act
             FilePickerResult result = picker.PickFile(options);
 
-            // Assert
             Assert.False(result.IsSuccess);
             Assert.NotNull(result.ErrorMessage);
         }
@@ -134,14 +89,11 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void LinuxFilePicker_PickFile_WithInvalidOptions_ShouldReturnError()
         {
-            // Arrange
             MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
-            // Act
             FilePickerResult result = picker.PickFile(options);
 
-            // Assert
             Assert.False(result.IsSuccess);
             Assert.NotNull(result.ErrorMessage);
         }
@@ -152,14 +104,11 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void WindowsFilePicker_PickFolder_WithInvalidOptions_ShouldReturnError()
         {
-            // Arrange
             MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
-            // Act
             FilePickerResult result = picker.PickFolder(options);
 
-            // Assert
             Assert.False(result.IsSuccess);
             Assert.NotNull(result.ErrorMessage);
         }
@@ -170,14 +119,11 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void MacFilePicker_PickFolder_WithInvalidOptions_ShouldReturnError()
         {
-            // Arrange
             MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
-            // Act
             FilePickerResult result = picker.PickFolder(options);
 
-            // Assert
             Assert.False(result.IsSuccess);
             Assert.NotNull(result.ErrorMessage);
         }
@@ -188,14 +134,11 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void LinuxFilePicker_PickFolder_WithInvalidOptions_ShouldReturnError()
         {
-            // Arrange
             MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions options = new FilePickerOptions {Title = ""}; // Invalid: empty title
 
-            // Act
             FilePickerResult result = picker.PickFolder(options);
 
-            // Assert
             Assert.False(result.IsSuccess);
             Assert.NotNull(result.ErrorMessage);
         }
@@ -206,17 +149,14 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void WindowsFilePicker_PickFiles_WithInvalidOptions_ShouldReturnError()
         {
-            // Arrange
             MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions invalidOptions = new FilePickerOptions("Save", FileDialogType.SaveFile)
             {
                 AllowMultiple = true // Invalid: SaveFile cannot allow multiple
             };
 
-            // Act
             FilePickerResult result = picker.PickFiles(invalidOptions);
 
-            // Assert
             Assert.False(result.IsSuccess);
             Assert.NotNull(result.ErrorMessage);
         }
@@ -227,17 +167,14 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void MacFilePicker_PickFiles_WithInvalidOptions_ShouldReturnError()
         {
-            // Arrange
             MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions invalidOptions = new FilePickerOptions("Save", FileDialogType.SaveFile)
             {
                 AllowMultiple = true // Invalid: SaveFile cannot allow multiple
             };
 
-            // Act
             FilePickerResult result = picker.PickFiles(invalidOptions);
 
-            // Assert
             Assert.False(result.IsSuccess);
             Assert.NotNull(result.ErrorMessage);
         }
@@ -248,17 +185,14 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void LinuxFilePicker_PickFiles_WithInvalidOptions_ShouldReturnError()
         {
-            // Arrange
             MockFilePicker picker = new MockFilePicker(false);
             FilePickerOptions invalidOptions = new FilePickerOptions("Save", FileDialogType.SaveFile)
             {
                 AllowMultiple = true // Invalid: SaveFile cannot allow multiple
             };
 
-            // Act
             FilePickerResult result = picker.PickFiles(invalidOptions);
 
-            // Assert
             Assert.False(result.IsSuccess);
             Assert.NotNull(result.ErrorMessage);
         }
@@ -269,11 +203,9 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void AllPickers_PickFile_ShouldReturnNonNullResult()
         {
-            // Arrange
             FilePickerOptions options = new FilePickerOptions("Test");
             IFilePicker[] pickers = new IFilePicker[] {new MockFilePicker(), new MockFilePicker(), new MockFilePicker()};
 
-            // Act & Assert
             foreach (IFilePicker picker in pickers)
             {
                 FilePickerResult result = picker.PickFile(options);
@@ -287,11 +219,9 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void AllPickers_PickFiles_ShouldReturnNonNullResult()
         {
-            // Arrange
             FilePickerOptions options = new FilePickerOptions("Test");
             IFilePicker[] pickers = new IFilePicker[] {new MockFilePicker(), new MockFilePicker(), new MockFilePicker()};
 
-            // Act & Assert
             foreach (IFilePicker picker in pickers)
             {
                 FilePickerResult result = picker.PickFiles(options);
@@ -305,11 +235,9 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void AllPickers_PickFolder_ShouldReturnNonNullResult()
         {
-            // Arrange
             FilePickerOptions options = new FilePickerOptions("Test", FileDialogType.SelectFolder);
             IFilePicker[] pickers = new IFilePicker[] {new MockFilePicker(), new MockFilePicker(), new MockFilePicker()};
 
-            // Act & Assert
             foreach (IFilePicker picker in pickers)
             {
                 FilePickerResult result = picker.PickFolder(options);

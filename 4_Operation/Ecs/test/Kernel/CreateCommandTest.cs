@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:CreateCommandTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Xunit;
@@ -50,13 +23,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CreateCommand_CanBeCreated()
         {
-            // Arrange
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
 
-            // Act
             CreateCommand command = new CreateCommand(entity, 0, 10);
 
-            // Assert
             Assert.NotNull(command);
         }
 
@@ -69,15 +39,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CreateCommand_ParametersArePreserved()
         {
-            // Arrange
             GameObjectIdOnly entity = new GameObjectIdOnly(42, 5);
             int bufferIndex = 10;
             int bufferLength = 50;
 
-            // Act
             CreateCommand command = new CreateCommand(entity, bufferIndex, bufferLength);
 
-            // Assert
             Assert.NotNull(command);
         }
 
@@ -90,14 +57,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CreateCommand_IsRecordStruct()
         {
-            // Arrange
             GameObjectIdOnly entity = new GameObjectIdOnly(10, 0);
 
-            // Act
             CreateCommand command1 = new CreateCommand(entity, 5, 20);
             CreateCommand command2 = new CreateCommand(entity, 5, 20);
 
-            // Assert
             Assert.Equal(command1, command2);
         }
 
@@ -110,14 +74,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CreateCommand_WithDifferentBufferIndicesAreNotEqual()
         {
-            // Arrange
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
 
-            // Act
             CreateCommand command1 = new CreateCommand(entity, 1, 20);
             CreateCommand command2 = new CreateCommand(entity, 2, 20);
 
-            // Assert
             Assert.NotEqual(command1, command2);
         }
 
@@ -130,10 +91,8 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CreateCommand_WithZeroIndices()
         {
-            // Act
             CreateCommand command = new CreateCommand(new GameObjectIdOnly(0, 0), 0, 0);
 
-            // Assert
             Assert.NotNull(command);
         }
 
@@ -146,10 +105,8 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CreateCommand_WithMaxValues()
         {
-            // Act
             CreateCommand command = new CreateCommand(new GameObjectIdOnly(int.MaxValue, ushort.MaxValue), int.MaxValue, int.MaxValue);
 
-            // Assert
             Assert.NotNull(command);
         }
     }

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -69,13 +42,11 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 Logger.Info("╚══════════════════════════════════════════════════════╝");
                 Logger.Info("");
 
-                // Ask if server should participate as a client
                 Logger.Log("Should the server also participate in chat? (y/n) [default: n]: ");
                 string answer = Console.ReadLine()?.ToLower() ?? "n";
                 _serverIsClient = answer.Equals("y") || answer.Equals("yes");
                 Logger.Info("");
 
-                // If server is client, ask for player name
                 if (_serverIsClient)
                 {
                     Logger.Log("Enter server player name: ");
@@ -105,13 +76,11 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
 
                 if (_serverIsClient)
                 {
-                    // Change server name to the player name
                     _serverManager.LocalPlayer.PlayerName = _serverPlayerName;
                     Logger.Info($"📡 Server mode: SERVER + CLIENT (Server nickname: '{_serverPlayerName}')");
                 }
                 else
                 {
-                    // Remove server from session if it's not participating as a client
                     session.Players.RemoveAll(p => p.IsHost);
                     session.PlayerCount = session.Players.Count;
                     Logger.Info("📡 Server mode: SERVER ONLY (pure dedicated server)");
@@ -148,7 +117,6 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                 Logger.Info("═══════════════════════════════════════════════════════");
                 Logger.Info("");
 
-                // Interactive server loop
                 while (true)
                 {
                     Logger.Log(_serverIsClient ? $"[{_serverPlayerName}]: " : "> ");
@@ -184,7 +152,6 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                         continue;
                     }
 
-                    // If server is in client mode and input is a message, broadcast it
                     if (_serverIsClient && !string.IsNullOrEmpty(input) && !input.StartsWith("/"))
                     {
                         try
@@ -255,12 +222,9 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
             {
                 Logger.Log($"[CHAT] {payload}");
 
-                // Get the sender player
                 NetworkPlayer sender = _serverManager.GetPlayer(senderId);
                 if (sender != null)
                 {
-                    // We need to create a new envelope with the sender's info
-                    // Since we're receiving raw payload, we need to reconstruct the message
                     ChatMessage chatMessage = new ChatMessage
                     {
                         SenderName = sender.PlayerName,
@@ -268,7 +232,6 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
                         Timestamp = DateTime.Now.ToString("HH:mm:ss")
                     };
 
-                    // Broadcast to all connected players
                     await _serverManager.BroadcastMessageAsync("chat.message", chatMessage);
                 }
             }
@@ -285,7 +248,6 @@ namespace Alis.Extension.Network.Sample.SimpleChat.Server
         {
             try
             {
-                // Extract player ID and name from handshake payload
                 string playerId = ExtractJsonField(payload, "playerId");
                 string playerName = ExtractJsonField(payload, "playerName");
 

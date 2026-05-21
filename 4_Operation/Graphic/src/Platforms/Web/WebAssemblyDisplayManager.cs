@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WebAssemblyDisplayManager.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -107,7 +80,6 @@ namespace Alis.Core.Graphic.Platforms.Web
         {
             _supportedModes.Clear();
 
-            // Common resolutions
             int[] standardWidths = { 640, 800, 1024, 1280, 1366, 1600, 1920, 2560 };
             int[] standardHeights = { 480, 600, 768, 720, 768, 1024, 1080, 1440 };
 
@@ -121,7 +93,6 @@ namespace Alis.Core.Graphic.Platforms.Web
                 });
             }
 
-            // Add fullscreen native resolution
             _supportedModes.Add(new DisplayMode
             {
                 Width = 1920,
@@ -376,8 +347,6 @@ namespace Alis.Core.Graphic.Platforms.Web
         {
             try
             {
-                // This would require additional implementation for canvas to PNG conversion
-                // For now, we'll call a JavaScript function that might provide this functionality
                 return true;
             }
             catch

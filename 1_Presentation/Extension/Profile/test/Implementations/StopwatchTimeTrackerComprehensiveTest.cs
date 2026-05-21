@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:StopwatchTimeTrackerComprehensiveTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Threading;
@@ -47,10 +20,8 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void Constructor_InitializesTrackerInStoppedState()
         {
-            // Act
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
 
-            // Assert
             Assert.False(tracker.IsRunning);
             Assert.Equal(TimeSpan.Zero, tracker.GetElapsedTime());
             Assert.Equal(DateTime.MinValue, tracker.GetStartTime());
@@ -62,13 +33,10 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void Start_SetsIsRunningToTrue()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
 
-            // Act
             tracker.Start();
 
-            // Assert
             Assert.True(tracker.IsRunning);
         }
 
@@ -78,15 +46,12 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void Start_RecordsStartTime()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
             DateTime beforeStart = DateTime.Now;
 
-            // Act
             tracker.Start();
             DateTime afterStart = DateTime.Now;
 
-            // Assert
             DateTime startTime = tracker.GetStartTime();
             Assert.True(startTime >= beforeStart);
             Assert.True(startTime <= afterStart);
@@ -98,14 +63,11 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void Stop_SetsIsRunningToFalse()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
             tracker.Start();
 
-            // Act
             tracker.Stop();
 
-            // Assert
             Assert.False(tracker.IsRunning);
         }
 
@@ -115,10 +77,8 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void Stop_HasNoEffect_IfNotRunning()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
 
-            // Act & Assert - Should not throw exception
             tracker.Stop();
             Assert.False(tracker.IsRunning);
         }
@@ -129,13 +89,10 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void GetElapsedTime_ReturnsZero_Initially()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
 
-            // Act
             TimeSpan elapsed = tracker.GetElapsedTime();
 
-            // Assert
             Assert.Equal(TimeSpan.Zero, elapsed);
         }
 
@@ -145,16 +102,13 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void GetElapsedTime_IncreasesAfterStart()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
             tracker.Start();
             TimeSpan elapsed1 = tracker.GetElapsedTime();
 
-            // Act
             Thread.Sleep(50);
             TimeSpan elapsed2 = tracker.GetElapsedTime();
 
-            // Assert
             Assert.True(elapsed2 > elapsed1);
         }
 
@@ -164,18 +118,15 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void GetElapsedTime_StopsIncreasing_AfterStop()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
             tracker.Start();
             Thread.Sleep(50);
             tracker.Stop();
             TimeSpan elapsedAfterStop = tracker.GetElapsedTime();
 
-            // Act
             Thread.Sleep(50);
             TimeSpan elapsedAfterWait = tracker.GetElapsedTime();
 
-            // Assert
             Assert.Equal(elapsedAfterStop, elapsedAfterWait);
         }
 
@@ -185,16 +136,13 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void Reset_ClearsAllTrackingData()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
             tracker.Start();
             Thread.Sleep(50);
             tracker.Stop();
 
-            // Act
             tracker.Reset();
 
-            // Assert
             Assert.False(tracker.IsRunning);
             Assert.Equal(TimeSpan.Zero, tracker.GetElapsedTime());
             Assert.Equal(DateTime.MinValue, tracker.GetStartTime());
@@ -206,10 +154,8 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void Start_CanBeCalledMultipleTimes()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
 
-            // Act
             tracker.Start();
             Thread.Sleep(50);
             DateTime firstStartTime = tracker.GetStartTime();
@@ -219,7 +165,6 @@ namespace Alis.Extension.Profile.Test.Implementations
             DateTime secondStartTime = tracker.GetStartTime();
             TimeSpan secondElapsed = tracker.GetElapsedTime();
 
-            // Assert - Second start should reset the elapsed time
             Assert.NotEqual(firstStartTime, secondStartTime);
             Assert.True(secondElapsed < firstElapsed);
         }
@@ -230,13 +175,10 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void GetStartTime_ReturnsMinValue_BeforeStart()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
 
-            // Act
             DateTime startTime = tracker.GetStartTime();
 
-            // Assert
             Assert.Equal(DateTime.MinValue, startTime);
         }
 
@@ -246,21 +188,16 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void IsRunning_ReflectsAccurateState()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
 
-            // Assert - Initial state
             Assert.False(tracker.IsRunning);
 
-            // Act & Assert - After start
             tracker.Start();
             Assert.True(tracker.IsRunning);
 
-            // Act & Assert - After stop
             tracker.Stop();
             Assert.False(tracker.IsRunning);
 
-            // Act & Assert - After reset
             tracker.Reset();
             Assert.False(tracker.IsRunning);
         }
@@ -271,10 +208,8 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void StartStop_WorkCorrectlyInSequence()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
 
-            // Act & Assert - Sequence of operations
             tracker.Start();
             Assert.True(tracker.IsRunning);
 
@@ -301,15 +236,12 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void Reset_WorksWhileRunning()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
             tracker.Start();
             Thread.Sleep(50);
 
-            // Act
             tracker.Reset();
 
-            // Assert
             Assert.False(tracker.IsRunning);
             Assert.Equal(TimeSpan.Zero, tracker.GetElapsedTime());
         }
@@ -320,16 +252,13 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void GetElapsedTime_HasSufficientPrecision()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
 
-            // Act
             tracker.Start();
             Thread.Sleep(100);
             tracker.Stop();
             TimeSpan elapsed = tracker.GetElapsedTime();
 
-            // Assert - Elapsed should be approximately 100ms or more
             Assert.True(elapsed.TotalMilliseconds >= 90); // Allow for timing variation
         }
 
@@ -339,11 +268,9 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void MultipleTrackers_AreIndependent()
         {
-            // Arrange
             StopwatchTimeTracker tracker1 = new StopwatchTimeTracker();
             StopwatchTimeTracker tracker2 = new StopwatchTimeTracker();
 
-            // Act
             tracker1.Start();
             Thread.Sleep(50);
             tracker1.Stop();
@@ -355,7 +282,6 @@ namespace Alis.Extension.Profile.Test.Implementations
             TimeSpan elapsed1 = tracker1.GetElapsedTime();
             TimeSpan elapsed2 = tracker2.GetElapsedTime();
 
-            // Assert
             Assert.True(elapsed2 > elapsed1);
         }
 
@@ -365,10 +291,8 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void RepeatedResetCycles_WorkCorrectly()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
 
-            // Act & Assert - Cycle through reset multiple times
             for (int i = 0; i < 3; i++)
             {
                 tracker.Start();
@@ -388,16 +312,13 @@ namespace Alis.Extension.Profile.Test.Implementations
         [Fact]
         public void GetStartTime_IsAccurateAfterStart()
         {
-            // Arrange
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
             DateTime beforeStart = DateTime.Now;
 
-            // Act
             tracker.Start();
             DateTime recordedStartTime = tracker.GetStartTime();
             DateTime afterStart = DateTime.Now;
 
-            // Assert
             Assert.True(recordedStartTime >= beforeStart);
             Assert.True(recordedStartTime <= afterStart);
         }

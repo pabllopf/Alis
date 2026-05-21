@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:CollectionsAdvancedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Collections;
@@ -53,10 +26,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ShortSparseSet_CanBeCreated()
         {
-            // Act
             ShortSparseSet<int> shortSet = new ShortSparseSet<int>();
 
-            // Assert
             Assert.NotNull(shortSet);
         }
 
@@ -71,10 +42,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Chunk_CanBeCreatedWithCapacity()
         {
-            // Act
             Chunk<int> chunk = new Chunk<int>(100);
 
-            // Assert
             Assert.NotNull(chunk.Buffer);
         }
 
@@ -88,14 +57,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Chunk_SupportsElementAccess()
         {
-            // Arrange
             Chunk<int> chunk = new Chunk<int>(10);
 
-            // Act
             chunk[0] = 100;
             chunk[5] = 500;
 
-            // Assert
             Assert.Equal(100, chunk[0]);
             Assert.Equal(500, chunk[5]);
         }
@@ -110,15 +76,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Chunk_CanBeConvertedToSpan()
         {
-            // Arrange
             Chunk<int> chunk = new Chunk<int>(5);
             chunk[0] = 10;
             chunk[1] = 20;
 
-            // Act
             Span<int> span = chunk.AsSpan();
 
-            // Assert
             Assert.Equal(10, span[0]);
             Assert.Equal(20, span[1]);
         }
@@ -133,10 +96,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ArchetypeNeighborCache_CachesTransitions()
         {
-            // Act
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
-            // Assert
             Assert.NotNull(cache);
         }
 
@@ -149,11 +110,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ArchetypeNeighborCache_HasProperStructure()
         {
-            // Act
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
-            // Assert - just verify it can be instantiated
-            // ArchetypeNeighborCache is a value type
         }
 
         /// <summary>
@@ -166,11 +124,9 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Chunk_CanBeReturnedToPool()
         {
-            // Arrange
             Chunk<int> chunk = new Chunk<int>(10);
             chunk[0] = 100;
 
-            // Act & Assert (no exception should be thrown)
             chunk.Return();
         }
 
@@ -184,17 +140,14 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Chunk_SupportsPartialSpan()
         {
-            // Arrange
             Chunk<int> chunk = new Chunk<int>(10);
             for (int i = 0; i < 10; i++)
             {
                 chunk[i] = i * 10;
             }
 
-            // Act
             Span<int> partialSpan = chunk.AsSpan(2, 3);
 
-            // Assert
             Assert.Equal(20, partialSpan[0]);
             Assert.Equal(30, partialSpan[1]);
             Assert.Equal(40, partialSpan[2]);

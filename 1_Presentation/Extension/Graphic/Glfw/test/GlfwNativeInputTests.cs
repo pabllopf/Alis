@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GlfwNativeInputTests.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Graphic.Glfw.Enums;
@@ -46,7 +19,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetCursorEnterCallback_WithValidCallback_SetsCallback()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
@@ -54,10 +26,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             try
             {
-                // Act
                 MouseEnterCallback previousCallback = GlfwNative.SetCursorEnterCallback(window, callback);
 
-                // Assert
                 Assert.Null(previousCallback);
             }
             finally
@@ -72,7 +42,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetMouseButtonCallback_WithValidCallback_SetsCallback()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
@@ -80,10 +49,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             try
             {
-                // Act
                 MouseButtonCallback previousCallback = GlfwNative.SetMouseButtonCallback(window, callback);
 
-                // Assert
                 Assert.Null(previousCallback);
             }
             finally
@@ -98,7 +65,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetScrollCallback_WithValidCallback_SetsCallback()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
@@ -106,10 +72,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             try
             {
-                // Act
                 MouseCallback previousCallback = GlfwNative.SetScrollCallback(window, callback);
 
-                // Assert
                 Assert.Null(previousCallback);
             }
             finally
@@ -124,18 +88,15 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetWindowUserPointer_WithValidPointer_SetsPointer()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             IntPtr testPointer = new IntPtr(12345);
 
             try
             {
-                // Act
                 GlfwNative.SetWindowUserPointer(window, testPointer);
                 IntPtr retrievedPointer = GlfwNative.GetWindowUserPointer(window);
 
-                // Assert
                 Assert.Equal(testPointer, retrievedPointer);
             }
             finally
@@ -150,16 +111,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GetWindowUserPointer_WithNoPointerSet_ReturnsZero()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act
                 IntPtr pointer = GlfwNative.GetWindowUserPointer(window);
 
-                // Assert
                 Assert.Equal(IntPtr.Zero, pointer);
             }
             finally
@@ -174,13 +132,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetWindowSizeLimits_WithValidLimits_DoesNotThrow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act & Assert
                 GlfwNative.SetWindowSizeLimits(window, 400, 300, 1920, 1080);
             }
             finally
@@ -195,13 +151,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetWindowAspectRatio_WithValidRatio_DoesNotThrow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act & Assert
                 GlfwNative.SetWindowAspectRatio(window, 16, 9);
             }
             finally
@@ -216,7 +170,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetCharCallback_WithValidCallback_SetsCallback()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
@@ -224,10 +177,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             try
             {
-                // Act
                 CharCallback previousCallback = GlfwNative.SetCharCallback(window, callback);
 
-                // Assert
                 Assert.Null(previousCallback);
             }
             finally
@@ -242,7 +193,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetCharModsCallback_WithValidCallback_SetsCallback()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
@@ -250,10 +200,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             try
             {
-                // Act
                 CharModsCallback previousCallback = GlfwNative.SetCharModsCallback(window, callback);
 
-                // Assert
                 Assert.Null(previousCallback);
             }
             finally
@@ -268,7 +216,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetFramebufferSizeCallback_WithValidCallback_SetsCallback()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
@@ -276,10 +223,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             try
             {
-                // Act
                 SizeCallback previousCallback = GlfwNative.SetFramebufferSizeCallback(window, callback);
 
-                // Assert
                 Assert.Null(previousCallback);
             }
             finally
@@ -294,7 +239,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetWindowRefreshCallback_WithValidCallback_SetsCallback()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
@@ -302,10 +246,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             try
             {
-                // Act
                 WindowCallback previousCallback = GlfwNative.SetWindowRefreshCallback(window, callback);
 
-                // Assert
                 Assert.Null(previousCallback);
             }
             finally
@@ -320,7 +262,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetWindowIconifyCallback_WithValidCallback_SetsCallback()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
             bool callbackInvoked = false;
@@ -328,10 +269,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             try
             {
-                // Act
                 IconifyCallback previousCallback = GlfwNative.SetWindowIconifyCallback(window, callback);
 
-                // Assert
                 Assert.Null(previousCallback);
             }
             finally
@@ -346,13 +285,11 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetInputMode_WithValidMode_DoesNotThrow()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act & Assert
                 GlfwNative.SetInputMode(window, InputMode.Cursor, (int) CursorMode.Normal);
             }
             finally
@@ -367,16 +304,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GetInputMode_WithValidMode_ReturnsValue()
         {
-            // Arrange
             GlfwNative.WindowHint(Hint.Visible, false);
             Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
 
             try
             {
-                // Act
                 int cursorMode = GlfwNative.GetInputMode(window, InputMode.Cursor);
 
-                // Assert
                 Assert.True(cursorMode >= 0);
             }
             finally
@@ -391,10 +325,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void JoystickPresent_WithValidJoystick_ReturnsBoolean()
         {
-            // Act
             bool present = GlfwNative.JoystickPresent(Joystick.Joystick1);
 
-            // Assert
             Assert.True(present || !present); // Just verify it doesn't throw
         }
 
@@ -404,17 +336,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetJoystickCallback_WithValidCallback_ReturnsNull()
         {
-            // Arrange
             bool callbackInvoked = false;
             JoystickCallback callback = (joystick, state) => { callbackInvoked = true; };
 
-            // Act
             JoystickCallback previousCallback = GlfwNative.SetJoystickCallback(callback);
 
-            // Assert - First time setting should return null
             Assert.Null(previousCallback);
 
-            // Cleanup - Reset callback
             GlfwNative.SetJoystickCallback(null);
         }
 
@@ -424,17 +352,13 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void SetMonitorCallback_WithValidCallback_ReturnsNull()
         {
-            // Arrange
             bool callbackInvoked = false;
             MonitorCallback callback = (monitor, state) => { callbackInvoked = true; };
 
-            // Act
             MonitorCallback previousCallback = GlfwNative.SetMonitorCallback(callback);
 
-            // Assert - First time setting should return null or previous callback
             Assert.True(previousCallback == null || previousCallback != null);
 
-            // Cleanup - Reset callback
             GlfwNative.SetMonitorCallback(null);
         }
 
@@ -444,17 +368,14 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GetMonitorPhysicalSize_WithValidMonitor_ReturnsSize()
         {
-            // Arrange
             Monitor monitor = GlfwNative.PrimaryMonitor;
             if (monitor == Monitor.None)
             {
                 return;
             }
 
-            // Act
             GlfwNative.GetMonitorPhysicalSize(monitor, out int width, out int height);
 
-            // Assert
             Assert.True(width > 0);
             Assert.True(height > 0);
         }
@@ -465,17 +386,14 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GetMonitorPosition_WithValidMonitor_ReturnsPosition()
         {
-            // Arrange
             Monitor monitor = GlfwNative.PrimaryMonitor;
             if (monitor == Monitor.None)
             {
                 return;
             }
 
-            // Act
             GlfwNative.GetMonitorPosition(monitor, out int x, out int y);
 
-            // Assert - Position values should be retrievable
             Assert.True(x != int.MinValue);
             Assert.True(y != int.MinValue);
         }
@@ -486,17 +404,14 @@ namespace Alis.Extension.Graphic.Glfw.Test
         [RequiresDisplay]
         public void GetMonitorWorkArea_WithValidMonitor_ReturnsWorkArea()
         {
-            // Arrange
             Monitor monitor = GlfwNative.PrimaryMonitor;
             if (monitor == Monitor.None)
             {
                 return;
             }
 
-            // Act
             GlfwNative.GetMonitorWorkArea(monitor, out int x, out int y, out int width, out int height);
 
-            // Assert
             Assert.True(width > 0);
             Assert.True(height > 0);
         }

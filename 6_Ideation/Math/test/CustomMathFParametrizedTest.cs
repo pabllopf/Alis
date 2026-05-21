@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:CustomMathFParametrizedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using Xunit;
@@ -143,32 +116,26 @@ namespace Alis.Core.Aspect.Math.Test
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GetClampTestCases()
         {
-            // Value within range
             yield return new object[] {5f, 0f, 10f, 5f};
             yield return new object[] {0f, 0f, 10f, 0f};
             yield return new object[] {10f, 0f, 10f, 10f};
 
-            // Value below range
             yield return new object[] {-1f, 0f, 10f, 0f};
             yield return new object[] {-100f, 0f, 10f, 0f};
             yield return new object[] {-0.5f, 0f, 1f, 0f};
 
-            // Value above range
             yield return new object[] {11f, 0f, 10f, 10f};
             yield return new object[] {100f, 0f, 10f, 10f};
             yield return new object[] {1.5f, 0f, 1f, 1f};
 
-            // Negative ranges
             yield return new object[] {-5f, -10f, 0f, -5f};
             yield return new object[] {-15f, -10f, 0f, -10f};
             yield return new object[] {5f, -10f, 0f, 0f};
 
-            // Single point ranges
             yield return new object[] {5f, 5f, 5f, 5f};
             yield return new object[] {0f, 0f, 0f, 0f};
             yield return new object[] {100f, 50f, 50f, 50f};
 
-            // Float precision
             yield return new object[] {0.5f, 0f, 1f, 0.5f};
             yield return new object[] {0.1f, 0f, 1f, 0.1f};
             yield return new object[] {0.9f, 0f, 1f, 0.9f};
@@ -263,19 +230,16 @@ namespace Alis.Core.Aspect.Math.Test
         /// <returns>An enumerable of object array</returns>
         public static IEnumerable<object[]> GetTrigonometricTestCases()
         {
-            // Common angles in radians
             float pi = CustomMathF.Pi;
             float tau = CustomMathF.Tau;
             float halfPi = pi / 2f;
 
-            // Sin tests
             yield return new object[] {"Sin", 0f, 0f};
             yield return new object[] {"Sin", halfPi, 1f};
             yield return new object[] {"Sin", pi, 0f};
             yield return new object[] {"Sin", 3f * halfPi, -1f};
             yield return new object[] {"Sin", tau, 0f};
 
-            // Cos tests
             yield return new object[] {"Cos", 0f, 1f};
             yield return new object[] {"Cos", halfPi, 0f};
             yield return new object[] {"Cos", pi, -1f};
@@ -340,7 +304,6 @@ namespace Alis.Core.Aspect.Math.Test
         [Theory, InlineData(1, 2, 3), InlineData(10, 20, 30), InlineData(100, 200, 300), InlineData(-1, -2, -3), InlineData(-10, 0, 10)]
         public void MultiOperation_Combinations(float a, float b, float c)
         {
-            // Test mathematical properties
             float absA = CustomMathF.Abs(a);
             float absB = CustomMathF.Abs(b);
             float maxAB = CustomMathF.Max((int) a, (int) b);

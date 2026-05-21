@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ThreadManagerTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Thread.Configuration;
@@ -45,10 +18,8 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void Constructor_WithDefaultConfiguration_CreatesValidManager()
         {
-            // Act
             using (ThreadManager manager = new ThreadManager())
             {
-                // Assert
                 Assert.NotNull(manager);
                 Assert.NotNull(manager.ParallelExecutor);
             }
@@ -60,16 +31,13 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void Constructor_WithCustomConfiguration_CreatesValidManager()
         {
-            // Arrange
             ParallelExtensionConfiguration config = new ParallelExtensionConfigurationBuilder()
                 .WithParallelExecution(true)
                 .WithMaxDegreeOfParallelism(4)
                 .Build();
 
-            // Act
             using (ThreadManager manager = new ThreadManager(config))
             {
-                // Assert
                 Assert.NotNull(manager);
                 Assert.NotNull(manager.ParallelExecutor);
             }
@@ -81,7 +49,6 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void Constructor_WithNullConfiguration_ThrowsArgumentNullException()
         {
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => new ThreadManager(null));
         }
 
@@ -91,13 +58,10 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void ParallelExecutor_ReturnsValidExecutor()
         {
-            // Arrange
             using (ThreadManager manager = new ThreadManager())
             {
-                // Act
                 ParallelUpdateExecutor executor = manager.ParallelExecutor;
 
-                // Assert
                 Assert.NotNull(executor);
             }
         }
@@ -109,15 +73,12 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void Dispose_CalledMultipleTimes_DoesNotThrow()
         {
-            // Arrange
             ThreadManager manager = new ThreadManager();
 
-            // Act
             manager.Dispose();
             manager.Dispose();
             manager.Dispose();
 
-            // Assert - no exception thrown
             Assert.True(true);
         }
 
@@ -127,12 +88,10 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void ThreadManager_CanExecuteParallelWork()
         {
-            // Arrange
             using (ThreadManager manager = new ThreadManager())
             {
                 int[] data = new int[1000];
 
-                // Act
                 manager.ParallelExecutor.ExecuteUpdate(data.Length, (start, length) =>
                 {
                     for (int i = start; i < start + length; i++)
@@ -141,7 +100,6 @@ namespace Alis.Extension.Thread.Test
                     }
                 }, true, 64);
 
-                // Assert
                 for (int i = 0; i < data.Length; i++)
                 {
                     Assert.Equal(i * 2, data[i]);
@@ -155,7 +113,6 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void ThreadManager_WithDisabledParallelism_ExecutesSequentially()
         {
-            // Arrange
             ParallelExtensionConfiguration config = new ParallelExtensionConfigurationBuilder()
                 .WithParallelExecution(false)
                 .Build();
@@ -164,7 +121,6 @@ namespace Alis.Extension.Thread.Test
             {
                 int[] data = new int[100];
 
-                // Act
                 manager.ParallelExecutor.ExecuteUpdate(data.Length, (start, length) =>
                 {
                     for (int i = start; i < start + length; i++)
@@ -173,7 +129,6 @@ namespace Alis.Extension.Thread.Test
                     }
                 });
 
-                // Assert
                 for (int i = 0; i < data.Length; i++)
                 {
                     Assert.Equal(i, data[i]);

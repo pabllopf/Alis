@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:QueryIterationExtensions.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Fluent.Components;
@@ -48,10 +21,8 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T c1 = ref archetype.GetComponentDataReference<T>();
 
-                //downcounting is faster
                 for (nint i = archetype.EntityCount - 1; i >= 0; i--)
                 {
                     action(ref c1);
@@ -71,12 +42,10 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
 
 
-                //downcounting is faster
                 for (nint i = archetype.EntityCount - 1; i >= 0; i--)
                 {
                     action(ref c1, ref c2);
@@ -97,13 +66,11 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();
 
 
-                //downcounting is faster
                 for (nint i = archetype.EntityCount - 1; i >= 0; i--)
                 {
                     action(ref c1, ref c2, ref c3);
@@ -125,14 +92,12 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();
                 ref T4 c4 = ref archetype.GetComponentDataReference<T4>();
 
 
-                //downcounting is faster
                 for (nint i = archetype.EntityCount - 1; i >= 0; i--)
                 {
                     action(ref c1, ref c2, ref c3, ref c4);
@@ -155,7 +120,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();
@@ -163,7 +127,6 @@ namespace Alis.Core.Ecs.Systems
                 ref T5 c5 = ref archetype.GetComponentDataReference<T5>();
 
 
-                //downcounting is faster
                 for (nint i = archetype.EntityCount - 1; i >= 0; i--)
                 {
                     action(ref c1, ref c2, ref c3, ref c4, ref c5);
@@ -187,7 +150,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();
@@ -196,7 +158,6 @@ namespace Alis.Core.Ecs.Systems
                 ref T6 c6 = ref archetype.GetComponentDataReference<T6>();
 
 
-                //downcounting is faster
                 for (nint i = archetype.EntityCount - 1; i >= 0; i--)
                 {
                     action(ref c1, ref c2, ref c3, ref c4, ref c5, ref c6);
@@ -221,7 +182,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();
@@ -231,7 +191,6 @@ namespace Alis.Core.Ecs.Systems
                 ref T7 c7 = ref archetype.GetComponentDataReference<T7>();
 
 
-                //downcounting is faster
                 for (nint i = archetype.EntityCount - 1; i >= 0; i--)
                 {
                     action(ref c1, ref c2, ref c3, ref c4, ref c5, ref c6, ref c7);
@@ -257,7 +216,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();
@@ -268,7 +226,6 @@ namespace Alis.Core.Ecs.Systems
                 ref T8 c8 = ref archetype.GetComponentDataReference<T8>();
 
 
-                //downcounting is faster
                 for (nint i = archetype.EntityCount - 1; i >= 0; i--)
                 {
                     action(ref c1, ref c2, ref c3, ref c4, ref c5, ref c6, ref c7, ref c8);
@@ -296,7 +253,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T c1 = ref archetype.GetComponentDataReference<T>();
 
                 for (nint i = archetype.EntityCount - 1; i >= 0; i--)
@@ -319,7 +275,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
 
@@ -345,7 +300,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();
@@ -373,7 +327,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();
@@ -403,7 +356,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();
@@ -435,7 +387,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();
@@ -469,7 +420,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();
@@ -505,7 +455,6 @@ namespace Alis.Core.Ecs.Systems
         {
             foreach (Archetype archetype in query.AsSpan())
             {
-                //use ref instead of span to avoid extra locals
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
                 ref T3 c3 = ref archetype.GetComponentDataReference<T3>();

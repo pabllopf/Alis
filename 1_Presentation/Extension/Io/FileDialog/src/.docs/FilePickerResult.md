@@ -49,7 +49,6 @@ Indicates whether the file picker operation completed successfully.
 ```csharp
 if (result.IsSuccess)
 {
-    // Safe to use result.SelectedPath or result.SelectedPaths
 }
 ```
 
@@ -193,8 +192,6 @@ var paths = new List<string>
 };
 var result = new FilePickerResult(paths);
 
-// result.IsSuccess == true
-// result.SelectedPaths.Count == 2
 ```
 
 ---
@@ -226,9 +223,6 @@ Creates a successful result with a single selected path.
 ```csharp
 var result = new FilePickerResult("/path/to/file.txt");
 
-// result.IsSuccess == true
-// result.SelectedPath == "/path/to/file.txt"
-// result.SelectedPaths.Count == 1
 ```
 
 ---
@@ -256,13 +250,11 @@ Creates a result representing user cancellation of the dialog.
 
 **Example:**
 ```csharp
-// In a picker implementation when user clicks Cancel
 if (userCancelledDialog)
 {
     return FilePickerResult.CreateCancelled();
 }
 
-// Handling the cancelled result
 if (result.IsCancelled)
 {
     Console.WriteLine("User cancelled the dialog");
@@ -298,10 +290,8 @@ Creates a result representing an error during the dialog operation.
 
 **Example:**
 ```csharp
-// In a picker implementation when an error occurs
 try
 {
-    // Execute dialog
 }
 catch (Exception ex)
 {
@@ -309,7 +299,6 @@ catch (Exception ex)
         $"Failed to open dialog: {ex.Message}");
 }
 
-// Handling the error result
 if (!result.IsSuccess && !result.IsCancelled)
 {
     Logger.Error($"Dialog error: {result.ErrorMessage}");
@@ -327,7 +316,6 @@ FilePickerResult result = picker.PickFile(options);
 
 if (result.IsSuccess)
 {
-    // Safe to use SelectedPath or SelectedPaths
     ProcessFile(result.SelectedPath);
 }
 else if (result.IsCancelled)
@@ -343,7 +331,6 @@ else
 ### Pattern 2: Null Check
 
 ```csharp
-// Using SelectedPath for single selection
 if (!string.IsNullOrEmpty(result.SelectedPath))
 {
     ProcessFile(result.SelectedPath);
@@ -353,7 +340,6 @@ if (!string.IsNullOrEmpty(result.SelectedPath))
 ### Pattern 3: Collection Iteration
 
 ```csharp
-// Using SelectedPaths for multiple selection
 foreach (var path in result.SelectedPaths)
 {
     ProcessFile(path);
@@ -474,8 +460,6 @@ public async Task<bool> ImportFilesAsync()
     {
         return result.IsCancelled; // false if error, true if cancelled
     }
-    
-    // Process files asynchronously
     var tasks = result.SelectedPaths
         .Select(path => ImportFileAsync(path))
         .ToList();
@@ -496,13 +480,9 @@ public void SelectAndValidateFile()
 {
     var options = new FilePickerOptions("Open Configuration");
     FilePickerResult result = picker.PickFile(options);
-    
-    // Log the result
     if (result.IsSuccess)
     {
         Logger.Info($"File selected: {result.SelectedPath}");
-        
-        // Validate the result
         bool isValid = FilePickerValidator.IsResultValid(result, options);
         Logger.Info($"Validation: {(isValid ? "PASSED" : "FAILED")}");
     }
@@ -525,7 +505,6 @@ public void SelectAndValidateFile()
    ```csharp
    if (result.IsSuccess)
    {
-       // Safe to use result.SelectedPath
    }
    ```
 
@@ -533,7 +512,6 @@ public void SelectAndValidateFile()
    ```csharp
    if (result.IsCancelled)
    {
-       // User cancelled - not an error condition
    }
    ```
 
@@ -542,21 +520,17 @@ public void SelectAndValidateFile()
    if (!result.IsSuccess)
    {
        if (result.IsCancelled)
-           // Handle cancellation
        else
-           // Handle error
    }
    ```
 
 4. **Use SelectedPath for single selection:**
    ```csharp
-   // For single file selection
    string file = result.SelectedPath;
    ```
 
 5. **Use SelectedPaths for multiple selection:**
    ```csharp
-   // For multiple file selection
    foreach (var file in result.SelectedPaths)
    ```
 

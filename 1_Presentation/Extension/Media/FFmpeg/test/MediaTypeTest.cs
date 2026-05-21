@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MediaTypeTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Xunit;
@@ -44,10 +17,8 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_Video_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             MediaType mediaType = MediaType.Video;
 
-            // Assert
             Assert.Equal(0, (int) mediaType);
         }
 
@@ -57,10 +28,8 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_Audio_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             MediaType mediaType = MediaType.Audio;
 
-            // Assert
             Assert.Equal(1, (int) mediaType);
         }
 
@@ -70,10 +39,8 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_Subtitle_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             MediaType mediaType = MediaType.Subtitle;
 
-            // Assert
             Assert.Equal(2, (int) mediaType);
         }
 
@@ -83,10 +50,8 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_Enum_ShouldHaveThreeValues()
         {
-            // Arrange & Act
             MediaType[] values = (MediaType[]) Enum.GetValues(typeof(MediaType));
 
-            // Assert
             Assert.Equal(3, values.Length);
         }
 
@@ -96,12 +61,10 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_Enum_ShouldContainVideoAudioAndSubtitle()
         {
-            // Arrange & Act
             bool hasVideo = Enum.IsDefined(typeof(MediaType), MediaType.Video);
             bool hasAudio = Enum.IsDefined(typeof(MediaType), MediaType.Audio);
             bool hasSubtitle = Enum.IsDefined(typeof(MediaType), MediaType.Subtitle);
 
-            // Assert
             Assert.True(hasVideo);
             Assert.True(hasAudio);
             Assert.True(hasSubtitle);
@@ -113,17 +76,14 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_ShouldBeConvertibleToString()
         {
-            // Arrange
             MediaType video = MediaType.Video;
             MediaType audio = MediaType.Audio;
             MediaType subtitle = MediaType.Subtitle;
 
-            // Act
             string videoStr = video.ToString();
             string audioStr = audio.ToString();
             string subtitleStr = subtitle.ToString();
 
-            // Assert
             Assert.Equal("Video", videoStr);
             Assert.Equal("Audio", audioStr);
             Assert.Equal("Subtitle", subtitleStr);
@@ -135,12 +95,10 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_ShouldBeParseableFromString()
         {
-            // Arrange & Act
             MediaType video = (MediaType) Enum.Parse(typeof(MediaType), "Video");
             MediaType audio = (MediaType) Enum.Parse(typeof(MediaType), "Audio");
             MediaType subtitle = (MediaType) Enum.Parse(typeof(MediaType), "Subtitle");
 
-            // Assert
             Assert.Equal(MediaType.Video, video);
             Assert.Equal(MediaType.Audio, audio);
             Assert.Equal(MediaType.Subtitle, subtitle);
@@ -152,12 +110,10 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_ShouldSupportEqualityComparison()
         {
-            // Arrange
             MediaType video1 = MediaType.Video;
             MediaType video2 = MediaType.Video;
             MediaType audio = MediaType.Audio;
 
-            // Act & Assert
             Assert.Equal(video1, video2);
             Assert.NotEqual(video1, audio);
         }
@@ -168,11 +124,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_ShouldBeUsableInSwitchStatement()
         {
-            // Arrange
             MediaType mediaType = MediaType.Audio;
             string result = string.Empty;
 
-            // Act
             switch (mediaType)
             {
                 case MediaType.Video:
@@ -186,7 +140,6 @@ namespace Alis.Extension.Media.FFmpeg.Test
                     break;
             }
 
-            // Assert
             Assert.Equal("Audio", result);
         }
 
@@ -196,12 +149,10 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_ShouldHaveUniqueValues()
         {
-            // Arrange
             int videoValue = (int) MediaType.Video;
             int audioValue = (int) MediaType.Audio;
             int subtitleValue = (int) MediaType.Subtitle;
 
-            // Act & Assert
             Assert.NotEqual(videoValue, audioValue);
             Assert.NotEqual(audioValue, subtitleValue);
             Assert.NotEqual(videoValue, subtitleValue);
@@ -213,13 +164,10 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_ShouldBeCastableToInt()
         {
-            // Arrange
             MediaType mediaType = MediaType.Video;
 
-            // Act
             int value = (int) mediaType;
 
-            // Assert
             Assert.Equal(0, value);
         }
 
@@ -229,13 +177,10 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void MediaType_ShouldBeCastableFromInt()
         {
-            // Arrange
             int value = 1;
 
-            // Act
             MediaType mediaType = (MediaType) value;
 
-            // Assert
             Assert.Equal(MediaType.Audio, mediaType);
         }
     }

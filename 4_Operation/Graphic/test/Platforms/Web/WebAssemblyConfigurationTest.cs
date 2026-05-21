@@ -11,8 +11,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     public class WebAssemblyConfigurationTest
     {
         // =====================================================================
-        // WebAssemblyConfiguration - Default Values
-        // =====================================================================
 
         [Fact]
         public void WebAssemblyConfiguration_DefaultValues_AreCorrect()
@@ -39,8 +37,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(config.DebugMode);
         }
 
-        // =====================================================================
-        // WebAssemblyConfigurationBuilder
         // =====================================================================
 
         [Fact]
@@ -405,8 +401,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // WebAssemblyPlatformFactory
-        // =====================================================================
 
         [Fact]
         public void WebAssemblyPlatformFactory_CreateDefault_ReturnsInstance()
@@ -432,8 +426,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 WebAssemblyPlatformFactory.Create((Action<WebAssemblyConfigurationBuilder>)null));
         }
 
-        // =====================================================================
-        // GameContextPresets
         // =====================================================================
 
         [Fact]

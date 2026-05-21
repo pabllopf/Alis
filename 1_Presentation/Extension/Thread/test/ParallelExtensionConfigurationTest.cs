@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ParallelExtensionConfigurationTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Thread.Configuration;
@@ -47,10 +20,8 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void DefaultConfiguration_HasCorrectValues()
         {
-            // Arrange & Act
             ParallelExtensionConfiguration config = new ParallelExtensionConfiguration();
 
-            // Assert
             Assert.True(config.EnableParallelExecution);
             Assert.Null(config.MaxDegreeOfParallelism);
             Assert.Equal(64, config.MinBatchSizePerThread);
@@ -64,7 +35,6 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void CreateContext_CreatesValidContext()
         {
-            // Arrange
             ParallelExtensionConfiguration config = new ParallelExtensionConfiguration
             {
                 EnableParallelExecution = true,
@@ -72,10 +42,8 @@ namespace Alis.Extension.Thread.Test
                 MinBatchSizePerThread = 32
             };
 
-            // Act
             ParallelExecutionContext context = config.CreateContext();
 
-            // Assert
             Assert.NotNull(context);
             Assert.True(context.EnableParallelExecution);
             Assert.Equal(4, context.MaxDegreeOfParallelism);
@@ -88,13 +56,10 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void CreateExecutor_CreatesValidExecutor()
         {
-            // Arrange
             ParallelExtensionConfiguration config = new ParallelExtensionConfiguration();
 
-            // Act
             ParallelUpdateExecutor executor = config.CreateExecutor();
 
-            // Assert
             Assert.NotNull(executor);
         }
 
@@ -104,16 +69,13 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void CreateExecutor_WithCustomStrategy_UsesCustomStrategy()
         {
-            // Arrange
             ParallelExtensionConfiguration config = new ParallelExtensionConfiguration
             {
                 ExecutionStrategy = new AttributeBasedExecutionStrategy()
             };
 
-            // Act
             ParallelUpdateExecutor executor = config.CreateExecutor();
 
-            // Assert
             Assert.NotNull(executor);
         }
     }
@@ -129,15 +91,12 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void WithParallelExecution_SetsPropertyCorrectly()
         {
-            // Arrange
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
-            // Act
             ParallelExtensionConfiguration config = builder
                 .WithParallelExecution(false)
                 .Build();
 
-            // Assert
             Assert.False(config.EnableParallelExecution);
         }
 
@@ -147,15 +106,12 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void WithMaxDegreeOfParallelism_SetsPropertyCorrectly()
         {
-            // Arrange
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
-            // Act
             ParallelExtensionConfiguration config = builder
                 .WithMaxDegreeOfParallelism(8)
                 .Build();
 
-            // Assert
             Assert.Equal(8, config.MaxDegreeOfParallelism);
         }
 
@@ -165,10 +121,8 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void WithMaxDegreeOfParallelism_WithInvalidValue_ThrowsException()
         {
-            // Arrange
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
-            // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() =>
                 builder.WithMaxDegreeOfParallelism(0));
         }
@@ -179,15 +133,12 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void WithMinBatchSizePerThread_SetsPropertyCorrectly()
         {
-            // Arrange
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
-            // Act
             ParallelExtensionConfiguration config = builder
                 .WithMinBatchSizePerThread(128)
                 .Build();
 
-            // Assert
             Assert.Equal(128, config.MinBatchSizePerThread);
         }
 
@@ -197,10 +148,8 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void WithMinBatchSizePerThread_WithInvalidValue_ThrowsException()
         {
-            // Arrange
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
-            // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() =>
                 builder.WithMinBatchSizePerThread(0));
         }
@@ -211,15 +160,12 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void WithDefaultMinBatchSize_SetsPropertyCorrectly()
         {
-            // Arrange
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
-            // Act
             ParallelExtensionConfiguration config = builder
                 .WithDefaultMinBatchSize(256)
                 .Build();
 
-            // Assert
             Assert.Equal(256, config.DefaultMinBatchSize);
         }
 
@@ -229,10 +175,8 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void WithDefaultMinBatchSize_WithInvalidValue_ThrowsException()
         {
-            // Arrange
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
-            // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() =>
                 builder.WithDefaultMinBatchSize(-1));
         }
@@ -243,16 +187,13 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void WithExecutionStrategy_SetsPropertyCorrectly()
         {
-            // Arrange
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
             AttributeBasedExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
 
-            // Act
             ParallelExtensionConfiguration config = builder
                 .WithExecutionStrategy(strategy)
                 .Build();
 
-            // Assert
             Assert.Same(strategy, config.ExecutionStrategy);
         }
 
@@ -262,10 +203,8 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void WithExecutionStrategy_WithNullValue_ThrowsException()
         {
-            // Arrange
             ParallelExtensionConfigurationBuilder builder = new ParallelExtensionConfigurationBuilder();
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() =>
                 builder.WithExecutionStrategy(null));
         }
@@ -276,7 +215,6 @@ namespace Alis.Extension.Thread.Test
         [Fact]
         public void FluentInterface_WorksCorrectly()
         {
-            // Arrange & Act
             ParallelExtensionConfiguration config = new ParallelExtensionConfigurationBuilder()
                 .WithParallelExecution(true)
                 .WithMaxDegreeOfParallelism(4)
@@ -284,7 +222,6 @@ namespace Alis.Extension.Thread.Test
                 .WithDefaultMinBatchSize(64)
                 .Build();
 
-            // Assert
             Assert.True(config.EnableParallelExecution);
             Assert.Equal(4, config.MaxDegreeOfParallelism);
             Assert.Equal(32, config.MinBatchSizePerThread);

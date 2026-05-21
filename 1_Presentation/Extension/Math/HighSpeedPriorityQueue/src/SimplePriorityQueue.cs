@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:SimplePriorityQueue.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections;
@@ -310,7 +283,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             List<TItem> queueData = new List<TItem>();
             lock (_queue)
             {
-                //Copy to a separate list because we don't want to 'yield return' inside a lock
                 foreach (SimpleNode node in _queue)
                 {
                     queueData.Add(node.Data);
@@ -484,19 +456,16 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         {
             lock (_queue)
             {
-                // Check all items in cache are in the queue
                 if (!_itemToNodesCache.Values.SelectMany(nodes => nodes).All(_queue.Contains))
                 {
                     return false;
                 }
 
-                // Check all items in queue are in cache
                 if (!_queue.All(node => GetExistingNode(node.Data) != null))
                 {
                     return false;
                 }
 
-                // Check queue structure itself
                 return _queue.IsValidQueue();
             }
         }

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameObjectIdOnlyExtendedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Xunit;
@@ -50,10 +23,8 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void GameObjectIdOnly_CanBeCreatedWithValues()
         {
-            // Arrange & Act
             GameObjectIdOnly entityIdOnly = new GameObjectIdOnly(42, 5);
 
-            // Assert
             Assert.Equal(42, entityIdOnly.ID);
             Assert.Equal((ushort) 5, entityIdOnly.Version);
         }
@@ -67,10 +38,8 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void GameObjectIdOnly_CanBeCreatedWithDefault()
         {
-            // Act
             GameObjectIdOnly entityIdOnly = default(GameObjectIdOnly);
 
-            // Assert
             Assert.Equal(0, entityIdOnly.ID);
             Assert.Equal((ushort) 0, entityIdOnly.Version);
         }
@@ -84,12 +53,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void GameObjectIdOnly_FieldsCanBeSetIndependently()
         {
-            // Arrange & Act
             GameObjectIdOnly entityIdOnly = new GameObjectIdOnly(100, 10);
             entityIdOnly.ID = 200;
             entityIdOnly.Version = 20;
 
-            // Assert
             Assert.Equal(200, entityIdOnly.ID);
             Assert.Equal((ushort) 20, entityIdOnly.Version);
         }
@@ -103,10 +70,8 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void GameObjectIdOnly_CanStoreNegativeId()
         {
-            // Arrange & Act
             GameObjectIdOnly entityIdOnly = new GameObjectIdOnly(-1, 0);
 
-            // Assert
             Assert.Equal(-1, entityIdOnly.ID);
         }
 
@@ -119,10 +84,8 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void GameObjectIdOnly_CanStoreMaxVersion()
         {
-            // Arrange & Act
             GameObjectIdOnly entityIdOnly = new GameObjectIdOnly(1, ushort.MaxValue);
 
-            // Assert
             Assert.Equal(ushort.MaxValue, entityIdOnly.Version);
         }
 
@@ -135,13 +98,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void GameObjectIdOnly_CanDeconstruct()
         {
-            // Arrange
             GameObjectIdOnly entityIdOnly = new GameObjectIdOnly(42, 5);
 
-            // Act
             entityIdOnly.Deconstruct(out int id, out ushort version);
 
-            // Assert
             Assert.Equal(42, id);
             Assert.Equal((ushort) 5, version);
         }
@@ -155,12 +115,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void GameObjectIdOnly_IsValueType()
         {
-            // Arrange
             GameObjectIdOnly entity1 = new GameObjectIdOnly(1, 0);
             GameObjectIdOnly entity2 = entity1;
             entity2.ID = 999;
 
-            // Assert
             Assert.NotEqual(entity1.ID, entity2.ID);
             Assert.Equal(1, entity1.ID);
             Assert.Equal(999, entity2.ID);
@@ -175,12 +133,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void GameObjectIdOnly_WithMultipleVersions()
         {
-            // Arrange & Act
             GameObjectIdOnly entity1 = new GameObjectIdOnly(1, 0);
             GameObjectIdOnly entity2 = new GameObjectIdOnly(1, 1);
             GameObjectIdOnly entity3 = new GameObjectIdOnly(1, 100);
 
-            // Assert
             Assert.Equal(1, entity1.ID);
             Assert.Equal((ushort) 0, entity1.Version);
             Assert.Equal(1, entity2.ID);

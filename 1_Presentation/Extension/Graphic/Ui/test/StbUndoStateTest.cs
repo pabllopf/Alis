@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:StbUndoStateTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using Xunit;
@@ -45,7 +18,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -56,7 +28,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -67,7 +38,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -78,7 +48,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -89,7 +58,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -100,7 +68,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -111,7 +78,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -122,7 +88,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -133,7 +98,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -144,7 +108,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -155,7 +118,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -166,7 +128,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -177,7 +138,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -188,7 +148,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -199,7 +158,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -210,7 +168,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -221,7 +178,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -232,7 +188,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -243,7 +198,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -254,7 +208,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -265,7 +218,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -276,7 +228,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -287,7 +238,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -298,7 +248,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -309,7 +258,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -320,7 +268,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -331,7 +278,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -342,7 +288,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
             ;
         }
 
@@ -354,7 +299,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -365,7 +309,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -376,7 +319,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -385,13 +327,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec31_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec31 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec31 = undoState.UndoRec31;
 
-            // Assert
             Assert.True(undoRec31.DeleteLength >= 0);
         }
 
@@ -401,13 +340,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec32_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec32 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec32 = undoState.UndoRec32;
 
-            // Assert
             Assert.True(undoRec32.DeleteLength >= 0);
         }
 
@@ -417,13 +353,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec33_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec33 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec33 = undoState.UndoRec33;
 
-            // Assert
             Assert.True(undoRec33.DeleteLength >= 0);
         }
 
@@ -433,13 +366,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec34_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec34 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec34 = undoState.UndoRec34;
 
-            // Assert
             Assert.True(undoRec34.DeleteLength >= 0);
         }
 
@@ -449,13 +379,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec35_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec35 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec35 = undoState.UndoRec35;
 
-            // Assert
             Assert.True(undoRec35.DeleteLength >= 0);
         }
 
@@ -465,13 +392,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec36_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec36 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec36 = undoState.UndoRec36;
 
-            // Assert
             Assert.True(undoRec36.DeleteLength >= 0);
         }
 
@@ -481,13 +405,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec37_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec37 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec37 = undoState.UndoRec37;
 
-            // Assert
             Assert.True(undoRec37.DeleteLength >= 0);
         }
 
@@ -497,13 +418,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec38_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec38 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec38 = undoState.UndoRec38;
 
-            // Assert
             Assert.True(undoRec38.DeleteLength >= 0);
         }
 
@@ -513,13 +431,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec39_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec39 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec39 = undoState.UndoRec39;
 
-            // Assert
             Assert.True(undoRec39.DeleteLength >= 0);
         }
 
@@ -529,13 +444,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec40_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec40 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec40 = undoState.UndoRec40;
 
-            // Assert
             Assert.True(undoRec40.DeleteLength >= 0);
         }
 
@@ -545,13 +457,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec41_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec41 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec41 = undoState.UndoRec41;
 
-            // Assert
             Assert.True(undoRec41.DeleteLength >= 0);
         }
 
@@ -561,13 +470,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec42_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec42 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec42 = undoState.UndoRec42;
 
-            // Assert
             Assert.True(undoRec42.DeleteLength >= 0);
         }
 
@@ -577,13 +483,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec43_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec43 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec43 = undoState.UndoRec43;
 
-            // Assert
             Assert.True(undoRec43.DeleteLength >= 0);
         }
 
@@ -593,13 +496,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec44_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec44 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec44 = undoState.UndoRec44;
 
-            // Assert
             Assert.True(undoRec44.DeleteLength >= 0);
         }
 
@@ -609,13 +509,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec45_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec45 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec45 = undoState.UndoRec45;
 
-            // Assert
             Assert.True(undoRec45.DeleteLength >= 0);
         }
 
@@ -625,13 +522,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec46_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec46 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec46 = undoState.UndoRec46;
 
-            // Assert
             Assert.True(undoRec46.DeleteLength >= 0);
         }
 
@@ -641,13 +535,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec47_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec47 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec47 = undoState.UndoRec47;
 
-            // Assert
             Assert.True(undoRec47.DeleteLength >= 0);
         }
 
@@ -657,13 +548,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec48_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec48 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec48 = undoState.UndoRec48;
 
-            // Assert
             Assert.True(undoRec48.DeleteLength >= 0);
         }
 
@@ -673,13 +561,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec49_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec49 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec49 = undoState.UndoRec49;
 
-            // Assert
             Assert.True(undoRec49.DeleteLength >= 0);
         }
 
@@ -689,13 +574,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec50_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec50 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec50 = undoState.UndoRec50;
 
-            // Assert
             Assert.True(undoRec50.DeleteLength >= 0);
         }
 
@@ -705,13 +587,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec51_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec51 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec51 = undoState.UndoRec51;
 
-            // Assert
             Assert.True(undoRec51.DeleteLength >= 0);
         }
 
@@ -721,13 +600,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void UndoRec52_ShouldBeInitializedCorrectly()
         {
-            // Arrange
             StbUndoState undoState = new StbUndoState {UndoRec52 = new StbUndoRecord()};
 
-            // Act
             StbUndoRecord undoRec52 = undoState.UndoRec52;
 
-            // Assert
             Assert.True(undoRec52.DeleteLength >= 0);
         }
 
@@ -739,7 +615,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -750,7 +625,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>
@@ -761,7 +635,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
 
-            // Act
         }
 
         /// <summary>

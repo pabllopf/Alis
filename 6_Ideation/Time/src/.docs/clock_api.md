@@ -97,7 +97,6 @@ using Alis.Core.Aspect.Time;
 
 Clock clock = Clock.Create();
 
-// Do work...
 clock.Stop();
 
 long ms = clock.ElapsedMilliseconds;

@@ -60,8 +60,6 @@ using System;
                          {
                              return;
                          }
-                         
-                         // Resolución original del juego
                          int gameWidth = (int)GameAlis.Context.Setting.Graphic.WindowSize.X;
                          int gameHeight = (int)GameAlis.Context.Setting.Graphic.WindowSize.Y;
                      
@@ -72,7 +70,6 @@ using System;
                      
                          if (aspectCanvas > aspectGame)
                          {
-                             // Canvas más ancho, barras laterales
                              viewportHeight = height;
                              viewportWidth = (int)(height * aspectGame);
                              viewportX = (width - viewportWidth) / 2;
@@ -80,7 +77,6 @@ using System;
                          }
                          else
                          {
-                             // Canvas más alto, barras arriba y abajo
                              viewportWidth = width;
                              viewportHeight = (int)(width / aspectGame);
                              viewportX = 0;
@@ -184,7 +180,6 @@ using System;
                      
                             if (aspectCanvas > aspectGame)
                             {
-                                // Canvas más ancho, barras laterales
                                 viewportHeight = CanvasHeight;
                                 viewportWidth = (int)(CanvasHeight * aspectGame);
                                 viewportX = (CanvasWidth - viewportWidth) / 2;
@@ -192,7 +187,6 @@ using System;
                             }
                             else
                             {
-                                // Canvas más alto, barras arriba y abajo
                                 viewportWidth = CanvasWidth;
                                 viewportHeight = (int)(CanvasWidth / aspectGame);
                                 viewportX = 0;

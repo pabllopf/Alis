@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Game.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs;
@@ -74,7 +47,6 @@ namespace Alis.Sample.Asteroid.Web
                     .Add<Scene>(gameScene => gameScene
                         .Name("Main Scene")
 
-                        // CAMERA
                         .Add<GameObject>(mainCamera => mainCamera
                             .Name("Camera")
                             .Tag("Camera")
@@ -84,7 +56,6 @@ namespace Alis.Sample.Asteroid.Web
                             )
                         )
 
-                        // SPAWN POINT ASTEROID
                         .Add<GameObject>(spawnPointAsteroid => spawnPointAsteroid
                             .Name("Spawn Point Asteroid")
                             .Transform(transform => transform
@@ -102,7 +73,6 @@ namespace Alis.Sample.Asteroid.Web
                             .Tag("HealthController")
                         )
 
-                        // SOUNDTRACK
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .Tag("Soundtrack")
@@ -114,7 +84,6 @@ namespace Alis.Sample.Asteroid.Web
                             )
                         )
 
-                        // PLAYER
                         .Add<GameObject>(player => player
                             .Name("Player")
                             .Tag("Player")
@@ -154,7 +123,6 @@ namespace Alis.Sample.Asteroid.Web
                             )
                         )
 
-                        // ASTEROID
                         .Add<GameObject>(asteroid => asteroid
                             .Name("Asteroid")
                             .Tag("Asteroid")
@@ -184,7 +152,6 @@ namespace Alis.Sample.Asteroid.Web
                             )
                         )
 
-                        // ASTEROID
                         .Add<GameObject>(asteroid => asteroid
                             .Name("Asteroid")
                             .Tag("Asteroid")
@@ -214,7 +181,6 @@ namespace Alis.Sample.Asteroid.Web
                             )
                         )
 
-                        // WALLS
                         .Add<GameObject>(downWall => downWall
                             .Name("downWall")
                             .Tag("Wall")

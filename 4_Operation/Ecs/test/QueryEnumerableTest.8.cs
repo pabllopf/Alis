@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:QueryEnumerableTest.8.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
@@ -51,7 +24,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithEightComponents_ProvidesAccessToAll()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 10, Y = 20},
@@ -66,7 +38,6 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
             new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(query);
 
-            // Act & Assert
             foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test, Ref<AnotherComponent> another, Ref<Damage> damage, Ref<Armor> armor) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
             {
                 Assert.Equal(10, pos.Value.X);
@@ -89,7 +60,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithEightComponents_FiltersCorrectly()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 1, Y = 1},
@@ -113,14 +83,12 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
             new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(query);
 
-            // Act
             int count = 0;
             foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(1, count);
         }
 
@@ -133,7 +101,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithEightComponents_AllowsModification()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 0, Y = 0},
@@ -148,7 +115,6 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
             new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(query);
 
-            // Act
             foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test, Ref<AnotherComponent> another, Ref<Damage> damage, Ref<Armor> armor) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
             {
                 Position p = pos.Value;
@@ -168,7 +134,6 @@ namespace Alis.Core.Ecs.Test
                 armor.Value = a;
             }
 
-            // Assert
             Assert.Equal(100, entity.Get<Position>().X);
             Assert.Equal(500, entity.Get<Health>().Value);
             Assert.Equal(75, entity.Get<Damage>().Value);
@@ -184,7 +149,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithEightComponents_IsStructType()
         {
-            // Assert
             Assert.True(typeof(QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>).IsValueType);
         }
 
@@ -197,19 +161,16 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithEightComponents_WorksWithEmptyQuery()
         {
-            // Arrange
             using Scene scene = new Scene();
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
             new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(query);
 
-            // Act
             int count = 0;
             foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(0, count);
         }
 
@@ -222,7 +183,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithEightComponents_RepresentsMaximumComplexity()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 1, Y = 1},
@@ -237,14 +197,12 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
             new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(query);
 
-            // Act
             bool found = false;
             foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
             {
                 found = true;
             }
 
-            // Assert
             Assert.True(found, "Entity with 8 components should be found");
         }
     }

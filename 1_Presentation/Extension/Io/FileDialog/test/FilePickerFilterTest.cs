@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:FilePickerFilterTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Xunit;
@@ -43,10 +16,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void Constructor_WithValidParameters_ShouldCreateInstance()
         {
-            // Act
             FilePickerFilter filter = new FilePickerFilter("Text Files", "txt", "doc");
 
-            // Assert
             Assert.NotNull(filter);
             Assert.Equal("Text Files", filter.DisplayName);
             Assert.Contains("txt", filter.Extensions);
@@ -59,10 +30,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void Constructor_WithDotsInExtensions_ShouldRemoveDots()
         {
-            // Act
             FilePickerFilter filter = new FilePickerFilter("Text Files", ".txt", ".doc");
 
-            // Assert
             Assert.Equal("txt", filter.Extensions[0]);
             Assert.Equal("doc", filter.Extensions[1]);
         }
@@ -73,7 +42,6 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void Constructor_WithNullDisplayName_ShouldThrowArgumentNullException()
         {
-            // Act & Assert
             Assert.Throws<ArgumentException>(() => new FilePickerFilter(null, "txt"));
         }
 
@@ -83,7 +51,6 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void Constructor_WithEmptyDisplayName_ShouldThrowArgumentException()
         {
-            // Act & Assert
             Assert.Throws<ArgumentException>(() => new FilePickerFilter("", "txt"));
         }
 
@@ -93,7 +60,6 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void Constructor_WithNullExtensions_ShouldThrowArgumentException()
         {
-            // Act & Assert
             Assert.Throws<ArgumentException>(() => new FilePickerFilter("Text Files", null));
         }
 
@@ -103,7 +69,6 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void Constructor_WithEmptyExtensionsArray_ShouldThrowArgumentException()
         {
-            // Act & Assert
             Assert.Throws<ArgumentException>(() => new FilePickerFilter("Text Files"));
         }
 
@@ -113,13 +78,10 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void GetFormattedExtensions_ShouldReturnCorrectFormat()
         {
-            // Arrange
             FilePickerFilter filter = new FilePickerFilter("Text Files", "txt", "doc");
 
-            // Act
             string formatted = filter.GetFormattedExtensions();
 
-            // Assert
             Assert.Equal("*.txt;*.doc", formatted);
         }
 
@@ -129,13 +91,10 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void GetUtiFormat_ShouldReturnCorrectFormat()
         {
-            // Arrange
             FilePickerFilter filter = new FilePickerFilter("Text Files", "txt", "doc");
 
-            // Act
             string utiFormat = filter.GetUtiFormat();
 
-            // Assert
             Assert.Equal("txt,doc", utiFormat);
         }
 
@@ -145,10 +104,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void Constructor_WithMixedCaseExtensions_ShouldPreserveLowerCase()
         {
-            // Act
             FilePickerFilter filter = new FilePickerFilter("Text Files", "TXT", "Doc");
 
-            // Assert
             Assert.Equal("TXT", filter.Extensions[0]); // Original case preserved
             Assert.Equal("Doc", filter.Extensions[1]);
         }
@@ -159,10 +116,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void Constructor_WithSingleExtension_ShouldWork()
         {
-            // Act
             FilePickerFilter filter = new FilePickerFilter("PDF Files", "pdf");
 
-            // Assert
             Assert.Single(filter.Extensions);
             Assert.Equal("pdf", filter.Extensions[0]);
         }
@@ -173,13 +128,10 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void Constructor_WithManyExtensions_ShouldWork()
         {
-            // Arrange
             string[] extensions = new[] {"jpg", "png", "gif", "bmp", "ico"};
 
-            // Act
             FilePickerFilter filter = new FilePickerFilter("Image Files", extensions);
 
-            // Assert
             Assert.Equal(5, filter.Extensions.Count);
             foreach (string ext in extensions)
             {

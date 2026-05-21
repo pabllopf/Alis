@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:PingPongManagerTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.IO;
@@ -64,7 +37,6 @@ namespace Alis.Extension.Network.Test
             ArraySegment<byte> payload = new ArraySegment<byte>(Encoding.UTF8.GetBytes("Test message"));
             await pingPongManager.SendPing(payload, CancellationToken.None);
 
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
 
         /// <summary>
@@ -88,10 +60,8 @@ namespace Alis.Extension.Network.Test
 
             pingPongManager.Pong += (sender, e) =>
             {
-                // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
             };
 
-            // Trigger the Pong event
             typeof(PingPongManager).GetMethod("OnPong", BindingFlags.NonPublic | BindingFlags.Instance)?.Invoke(pingPongManager, new object[] {pongEventArgs});
         }
 
@@ -115,8 +85,6 @@ namespace Alis.Extension.Network.Test
 
             pingPongManager.WebSocketImplPong(this, pongEventArgs);
 
-            // Here you would assert that the properties of wheelJoint have been set correctly.
-            // As the method does not return a value or modify any accessible state, there's nothing to assert.
         }
 
         /// <summary>
@@ -162,8 +130,6 @@ namespace Alis.Extension.Network.Test
 
             PingPongManager pingPongManager = new PingPongManager(guid, webSocket, keepAliveInterval, cancellationToken);
 
-            // Here you would assert that the properties of wheelJoint have been set correctly.
-            // As the method does not return a value or modify any accessible state, there's nothing to assert.
         }
 
         /// <summary>
@@ -294,8 +260,6 @@ namespace Alis.Extension.Network.Test
 
             pingPongManager.LogPingPongManagerEnd();
 
-            // Here you would assert that the properties of wheelJoint have been set correctly.
-            // As the method does not return a value or modify any accessible state, there's nothing to assert.
         }
     }
 }

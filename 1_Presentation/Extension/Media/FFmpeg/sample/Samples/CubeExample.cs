@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:CubeExample.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Numerics;
@@ -86,7 +59,6 @@ void main()
         /// </summary>
         private readonly float[] vertices =
         {
-            // positions          // colors
             -0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f,
             0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
             0.5f, 0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
@@ -163,13 +135,11 @@ void main()
             Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             Gl.GlBindVertexArray(vao);
             Gl.GlUseProgram(shaderProgram);
-            // Matriz de rotación animada
             float time = (float) DateTime.Now.TimeOfDay.TotalSeconds;
             Matrix4x4 rotZ = Matrix4x4.CreateRotationZ(time);
             Matrix4x4 rotX = Matrix4x4.CreateRotationX(time);
             Matrix4x4 transform = rotZ * rotX;
             int transformLocation = Gl.GlGetUniformLocation(shaderProgram, "transform");
-            // Enviar la matriz al shader
             float[] mat = new float[16];
             mat[0] = transform.M11;
             mat[1] = transform.M12;

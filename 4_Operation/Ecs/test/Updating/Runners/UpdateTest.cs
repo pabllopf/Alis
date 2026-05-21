@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:UpdateTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Test.Models;
@@ -47,11 +20,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Update_Arity8_Constructor_CreatesInstanceWithCapacity()
         {
-            // Act
             Update<Update8Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent> update =
                 new Update<Update8Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>(10);
 
-            // Assert
             Assert.NotNull(update);
         }
 
@@ -65,10 +36,8 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Update_Arity0_Constructor_CreatesInstanceWithCapacity()
         {
-            // Act
             Update<UpdateComponent> update = new Update<UpdateComponent>(10);
 
-            // Assert
             Assert.NotNull(update);
         }
 
@@ -101,7 +70,6 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
             scene.Update();
 
-            // All entities should be updated
             Assert.Equal(1, entity1.Get<UpdateComponent>().CallCount);
             Assert.Equal(1, entity2.Get<UpdateComponent>().CallCount);
             Assert.Equal(1, entity3.Get<UpdateComponent>().CallCount);
@@ -117,10 +85,8 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Update_Arity2_Constructor_CreatesInstanceWithCapacity()
         {
-            // Act
             Update<Update2Component, Position, Velocity> update = new Update<Update2Component, Position, Velocity>(10);
 
-            // Assert
             Assert.NotNull(update);
         }
 
@@ -157,7 +123,6 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
             scene.Update();
 
-            // After update, position should have moved by velocity
             Assert.Equal(6, entity.Get<Position>().X);
             Assert.Equal(12, entity.Get<Position>().Y);
         }
@@ -172,11 +137,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Update_Arity3_Constructor_CreatesInstanceWithCapacity()
         {
-            // Act
             Update<Update3Component, Position, Velocity, Health> update =
                 new Update<Update3Component, Position, Velocity, Health>(10);
 
-            // Assert
             Assert.NotNull(update);
         }
 
@@ -230,11 +193,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Update_Arity4_Constructor_CreatesInstanceWithCapacity()
         {
-            // Act
             Update<Update4Component, Position, Velocity, Health, Armor> update =
                 new Update<Update4Component, Position, Velocity, Health, Armor>(10);
 
-            // Assert
             Assert.NotNull(update);
         }
 
@@ -268,11 +229,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Update_Arity6_Constructor_CreatesInstanceWithCapacity()
         {
-            // Act
             Update<Update6Component, Position, Velocity, Health, Armor, Damage, Transform> update =
                 new Update<Update6Component, Position, Velocity, Health, Armor, Damage, Transform>(10);
 
-            // Assert
             Assert.NotNull(update);
         }
 
@@ -314,11 +273,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         [Fact]
         public void Update_Arity7_Constructor_CreatesInstanceWithCapacity()
         {
-            // Act
             Update<Update7Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent> update =
                 new Update<Update7Component, Position, Velocity, Health, Armor, Damage, Transform, TestComponent>(10);
 
-            // Assert
             Assert.NotNull(update);
         }
 
@@ -387,7 +344,6 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
             scene.Update();
 
-            // The loop processes from EntityCount-1 to 0, so reverse order
             Assert.True(entity1.Get<OrderTrackingComponent>().Order >= 0);
         }
 
@@ -613,7 +569,6 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
-            // Track order
         }
     }
 

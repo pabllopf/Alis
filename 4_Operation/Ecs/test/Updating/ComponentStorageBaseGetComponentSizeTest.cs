@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ComponentStorageBaseGetComponentSizeTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Runtime.InteropServices;
@@ -48,8 +21,6 @@ namespace Alis.Core.Ecs.Test.Updating
     /// </summary>
     public class ComponentStorageBaseGetComponentSizeTest
     {
-        // ─────────────────────────────────────────────────────────────────────
-        // BRANCH 1 – Valid sizes: 2, 4, 8, 16
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary><c>short</c> is 2 bytes → returns 2.</summary>
@@ -165,8 +136,6 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         // ─────────────────────────────────────────────────────────────────────
-        // BRANCH 2 – Reference types → -1
-        // ─────────────────────────────────────────────────────────────────────
 
         /// <summary><c>string</c> is a reference type → returns -1.</summary>
         [Fact]
@@ -192,8 +161,6 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(-1, result);
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-        // BRANCH 3 – Size < 2 → -1
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary><c>byte</c> is 1 byte (size &lt; 2) → returns -1.</summary>
@@ -221,8 +188,6 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         // ─────────────────────────────────────────────────────────────────────
-        // BRANCH 4 – Size > 16 → -1
-        // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>32-byte struct (2 × decimal, power of two but &gt; 16) → returns -1.</summary>
         [Fact]
@@ -232,8 +197,6 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(-1, result);
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-        // BRANCH 5 – Size is not a power of two → -1
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>3-byte struct (Pack=1) is not a power of two → returns -1.</summary>
@@ -253,22 +216,14 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         // ─────────────────────────────────────────────────────────────────────
-        // BRANCH 6 – Result is never 0 (guard: valid range is 2-16)
-        // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>The method must never return 0 for any primitive numeric type.</summary>
         [Theory, InlineData(typeof(byte)), InlineData(typeof(sbyte)), InlineData(typeof(short)), InlineData(typeof(ushort)), InlineData(typeof(int)), InlineData(typeof(uint)), InlineData(typeof(long)), InlineData(typeof(ulong)), InlineData(typeof(float)), InlineData(typeof(double)), InlineData(typeof(decimal)), InlineData(typeof(char)), InlineData(typeof(bool))]
         public void GetComponentSize_PrimitiveTypes_NeverReturnsZero(Type _)
         {
-            // We cannot call the generic method via reflection easily in a parameterised
-            // theory, so we assert the full set individually and use this theory just to
-            // document the invariant symbolically. The real assertions live in the Fact
-            // methods above.
             Assert.True(true);
         }
 
-        // ─────────────────────────────────────────────────────────────────────
-        // BRANCH 7 – Result is -1 or a valid power-of-two in [2, 16]
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -309,8 +264,6 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         // ─────────────────────────────────────────────────────────────────────
-        // BRANCH 8 – Idempotency (calling twice yields the same result)
-        // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>Calling the method twice for the same type must return the same value.</summary>
         [Fact]
@@ -330,8 +283,6 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         // ─────────────────────────────────────────────────────────────────────
-        // BRANCH 9 – Power-of-two boundary checks
-        // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
         ///     Size 2 is the inclusive lower boundary; everything smaller must return -1.
@@ -340,7 +291,6 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void GetComponentSize_Size1_IsBelow_LowerBoundary_ReturnsMinusOne()
         {
-            // byte/sbyte/bool are all exactly 1 byte
             Assert.Equal(-1, ComponentStorageBase.GetComponentSize<byte>());
         }
 
@@ -351,7 +301,6 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact]
         public void GetComponentSize_Size32_IsAbove_UpperBoundary_ReturnsMinusOne()
         {
-            // TwoDecimalsStruct is 32 bytes – power of two but above the limit
             Assert.Equal(-1, ComponentStorageBase.GetComponentSize<TwoDecimalsStruct>());
         }
 
@@ -372,8 +321,6 @@ namespace Alis.Core.Ecs.Test.Updating
         {
             Assert.Equal(16, ComponentStorageBase.GetComponentSize<decimal>());
         }
-        // ─────────────────────────────────────────────────────────────────────
-        // Helper types used only in this test class
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>3-byte struct (not a power of two → must return -1).</summary>

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:InvokePerEntityEventsTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -48,8 +21,6 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class InvokePerEntityEventsTest
     {
-        // ───────────────────────────────────────────────────────────────────
-        // Arity 1 — InvokePerEntityEvents<T>
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -294,8 +265,6 @@ namespace Alis.Core.Ecs.Test
         }
 
         // ───────────────────────────────────────────────────────────────────
-        // Arity 2 — InvokePerEntityEvents<T1, T2>
-        // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
         ///     Tests that arity 2 normal event fired for both components
@@ -468,12 +437,9 @@ namespace Alis.Core.Ecs.Test
             Health health = new Health {Value = 100};
             GameObject.InvokePerEntityEvents(entity, false, ref events, ref pos, ref health);
 
-            // 2 listeners × 2 components = 4
             Assert.Equal(4, count);
         }
 
-        // ───────────────────────────────────────────────────────────────────
-        // Arity 3 — InvokePerEntityEvents<T1, T2, T3>
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -619,8 +585,6 @@ namespace Alis.Core.Ecs.Test
         }
 
         // ───────────────────────────────────────────────────────────────────
-        // Arity 4 — InvokePerEntityEvents<T1, T2, T3, T4>
-        // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
         ///     Tests that arity 4 normal event fired for all four components
@@ -746,8 +710,6 @@ namespace Alis.Core.Ecs.Test
             Assert.All(entities, e => Assert.Equal(entity, e));
         }
 
-        // ───────────────────────────────────────────────────────────────────
-        // Arity 5 — InvokePerEntityEvents<T1, T2, T3, T4, T5>
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -887,8 +849,6 @@ namespace Alis.Core.Ecs.Test
         }
 
         // ───────────────────────────────────────────────────────────────────
-        // Arity 6 — InvokePerEntityEvents<T1, T2, T3, T4, T5, T6>
-        // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
         ///     Tests that arity 6 normal event fired for all six components
@@ -1003,8 +963,6 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
-        // ───────────────────────────────────────────────────────────────────
-        // Arity 7 — InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7>
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -1124,8 +1082,6 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
-        // ───────────────────────────────────────────────────────────────────
-        // Arity 8 — InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7, T8>
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>
@@ -1310,7 +1266,6 @@ namespace Alis.Core.Ecs.Test
             GameObject.InvokePerEntityEvents(entity, false, ref events,
                 ref pos, ref health, ref vel, ref transform, ref damage, ref another, ref another2, ref armor);
 
-            // 2 listeners × 8 components = 16
             Assert.Equal(16, count);
         }
 

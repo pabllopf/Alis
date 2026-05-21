@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:PhysicSettingBuilderTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Physic;
 using Alis.Core.Aspect.Fluent;
@@ -46,10 +19,8 @@ namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
         [Fact]
         public void DefaultConstructor_CreatesBuilder()
         {
-            // Arrange & Act
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
 
-            // Assert
             Assert.NotNull(builder);
         }
 
@@ -59,11 +30,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
         [Fact]
         public void Build_ReturnsPhysicSettingInstance()
         {
-            // Arrange & Act
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
             PhysicSetting setting = builder.Build();
 
-            // Assert
             Assert.NotNull(setting);
             Assert.IsType<PhysicSetting>(setting);
         }
@@ -74,11 +43,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
         [Fact]
         public void Build_ReturnsNonNullPhysicSetting()
         {
-            // Arrange & Act
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
             PhysicSetting setting = builder.Build();
 
-            // Assert
             Assert.NotNull(setting);
         }
 
@@ -88,13 +55,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
         [Fact]
         public void PhysicSettingCanBeConfiguredViaBuilder()
         {
-            // Arrange
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
 
-            // Act
             PhysicSetting setting = builder.Gravity(0f, -9.81f).Debug(true).Build();
 
-            // Assert
             Assert.NotNull(setting);
         }
 
@@ -104,13 +68,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
         [Fact]
         public void BuilderCreatesValidPhysicSettingObject()
         {
-            // Arrange
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
 
-            // Act
             PhysicSetting setting = builder.Build();
 
-            // Assert
             Assert.NotNull(setting);
         }
 
@@ -120,10 +81,8 @@ namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
         [Fact]
         public void BuilderImplementsExpectedInterfaces()
         {
-            // Arrange & Act
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
 
-            // Assert
             Assert.IsAssignableFrom<IBuild<PhysicSetting>>(builder);
             Assert.IsAssignableFrom<IGravity<PhysicSettingBuilder, float>>(builder);
         }
@@ -134,13 +93,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
         [Fact]
         public void GravityCanBeSetViaBuilder()
         {
-            // Arrange
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
 
-            // Act
             PhysicSetting setting = builder.Gravity(0f, -15f).Build();
 
-            // Assert
             Assert.NotNull(setting);
         }
 
@@ -150,13 +106,10 @@ namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
         [Fact]
         public void DebugCanBeSetViaBuilder()
         {
-            // Arrange
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
 
-            // Act
             PhysicSetting setting = builder.Debug(true).Build();
 
-            // Assert
             Assert.NotNull(setting);
         }
     }

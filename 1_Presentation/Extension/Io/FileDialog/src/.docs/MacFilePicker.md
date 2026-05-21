@@ -242,7 +242,6 @@ macOS uses UTI (Uniform Type Identifier) for file filtering:
 **Filter Example:**
 ```csharp
 var filter = new FilePickerFilter("Images", "jpg", "jpeg", "png", "gif");
-// UTI Format: "jpg,jpeg,png,gif"
 ```
 
 **Common UTI Types:**
@@ -403,11 +402,9 @@ try
     
     if (result.IsSuccess)
     {
-        // Use result
     }
     else if (result.IsCancelled)
     {
-        // User cancelled
     }
     else
     {
@@ -447,7 +444,6 @@ catch (Exception ex)
 
 3. **Handle spaces in filenames:**
    ```csharp
-   // Automatically handled
    string path = result.SelectedPath; // e.g., "/Users/John Doe/My File.txt"
    ```
 
@@ -460,7 +456,6 @@ catch (Exception ex)
    ```csharp
    if (result.IsSuccess)
    {
-       // Safe to use path
    }
    ```
 

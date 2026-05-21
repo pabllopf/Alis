@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MarchingSquares.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -72,7 +45,6 @@ namespace Alis.Core.Physic.Common.TextureTools
 
             List<Vertices> verticesList = new List<Vertices>();
 
-            //NOTE: removed assignments as they were not used.
             List<GeomPoly> polyList;
             GeomPoly gp;
 
@@ -93,7 +65,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             sbyte[,] fs = new sbyte[xn + 1, yn + 1];
             GeomPolyVal[,] ps = new GeomPolyVal[xn + 1, yn + 1];
 
-            //populate shared function lookups.
             for (int x = 0; x < xn + 1; x++)
             {
                 int x0;
@@ -122,7 +93,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                 }
             }
 
-            //generate sub-polys and combine to scan lines
             for (int y = 0; y < yn; y++)
             {
                 float y0 = y * cellHeight + domain.LowerBound.Y;
@@ -188,7 +158,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                 return verticesList;
             }
 
-            //combine scan lines together
             for (int y = 1; y < yn; y++)
             {
                 int x = 0;
@@ -196,21 +165,18 @@ namespace Alis.Core.Physic.Common.TextureTools
                 {
                     GeomPolyVal p = ps[x, y];
 
-                    //skip along scan line if no polygon exists at this point
                     if (p == null)
                     {
                         x++;
                         continue;
                     }
 
-                    //skip along if current polygon cannot be combined above.
                     if ((p.Key & 12) == 0)
                     {
                         x++;
                         continue;
                     }
 
-                    //skip along if no polygon exists above.
                     GeomPolyVal u = ps[x, y - 1];
                     if (u == null)
                     {
@@ -218,7 +184,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                         continue;
                     }
 
-                    //skip along if polygon above cannot be combined with.
                     if ((u.Key & 3) == 0)
                     {
                         x++;
@@ -231,14 +196,12 @@ namespace Alis.Core.Physic.Common.TextureTools
                     CxFastList<Vector2F> bp = p.GeomP.Points;
                     CxFastList<Vector2F> ap = u.GeomP.Points;
 
-                    //skip if it's already been combined with above polygon
                     if (u.GeomP == p.GeomP)
                     {
                         x++;
                         continue;
                     }
 
-                    //combine above (but disallow the hole thingies
                     CxFastListNode<Vector2F> bi = bp.Begin();
                     while (Square(bi.GetElem().Y - ay) > SettingEnv.Epsilon || bi.GetElem().X < ax)
                     {
@@ -321,7 +284,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                     p.GeomP = u.GeomP;
 
                     x = (int) ((bi.NextPos().GetElem().X - domain.LowerBound.X) / cellWidth) + 1;
-                    //x++; this was already commented out!
                 }
             }
 
@@ -665,11 +627,8 @@ namespace Alis.Core.Physic.Common.TextureTools
                     {
                         do
                         {
-                            // if we are on the value to be removed
                             if (comparer.Equals(head.Elt, value))
                             {
-                                // then we need to patch the list
-                                // check to see if we are removing the _head
                                 if (head == _head)
                                 {
                                     _head = head.Next;
@@ -677,13 +636,11 @@ namespace Alis.Core.Physic.Common.TextureTools
                                     return true;
                                 }
 
-                                // were not at the head
                                 prev.Next = head.Next;
                                 _count--;
                                 return true;
                             }
 
-                            // cache the current as the previous for the next go around
                             prev = head;
                             head = head.Next;
                         } while (head != null);
@@ -728,7 +685,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             /// </summary>
             public CxFastListNode<T> Erase(CxFastListNode<T> prev, CxFastListNode<T> node)
             {
-                // cache the node after the node to be removed
                 CxFastListNode<T> nextNode = node.Next;
                 if (prev != null)
                 {
@@ -805,7 +761,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             /// <returns>A cx fast list node of t</returns>
             public CxFastListNode<T> Find(T value)
             {
-                // start at head
                 CxFastListNode<T> head = _head;
                 EqualityComparer<T> comparer = EqualityComparer<T>.Default;
                 if (head != null)

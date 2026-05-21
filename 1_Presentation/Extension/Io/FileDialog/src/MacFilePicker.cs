@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MacFilePicker.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -143,22 +116,18 @@ namespace Alis.Extension.Io.FileDialog
             StringBuilder script = new StringBuilder();
             script.AppendLine("on run");
 
-            // Build the choose file command with proper syntax
             StringBuilder chooseCmd = new StringBuilder("choose file");
 
-            // Add prompt if title is provided
             if (!string.IsNullOrEmpty(options.Title))
             {
                 chooseCmd.Append($" with prompt \"{EscapeAppleScript(options.Title)}\"");
             }
 
-            // Add default location if provided
             if (!string.IsNullOrEmpty(options.DefaultPath))
             {
                 chooseCmd.Append($" default location POSIX file \"{EscapeAppleScript(options.DefaultPath)}\"");
             }
 
-            // Add multiple selections if needed
             if (allowMultiple)
             {
                 chooseCmd.Append(" multiple selections allowed true");
@@ -189,16 +158,13 @@ namespace Alis.Extension.Io.FileDialog
             StringBuilder script = new StringBuilder();
             script.AppendLine("on run");
 
-            // Build the choose folder command with proper syntax
             StringBuilder chooseCmd = new StringBuilder("choose folder");
 
-            // Add prompt if title is provided
             if (!string.IsNullOrEmpty(options.Title))
             {
                 chooseCmd.Append($" with prompt \"{EscapeAppleScript(options.Title)}\"");
             }
 
-            // Add default location if provided
             if (!string.IsNullOrEmpty(options.DefaultPath))
             {
                 chooseCmd.Append($" default location POSIX file \"{EscapeAppleScript(options.DefaultPath)}\"");
@@ -220,7 +186,6 @@ namespace Alis.Extension.Io.FileDialog
 
             try
             {
-                // Create temporary file for the script securely
                 string tmpFile = Path.Combine(
                     Path.GetTempPath(),
                     Path.GetRandomFileName() + ".applescript");
@@ -240,7 +205,6 @@ namespace Alis.Extension.Io.FileDialog
                     }
                     catch
                     {
-                        // Ignore cleanup errors
                     }
                 }
             }
@@ -296,7 +260,6 @@ namespace Alis.Extension.Io.FileDialog
                 return input;
             }
 
-            // Escape backslashes first, then quotes
             return input.Replace("\\", "\\\\").Replace("\"", "\\\"");
         }
     }

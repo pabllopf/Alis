@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:TopMenu.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Shortcut;
@@ -66,22 +39,16 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Render()
         {
-            // Establecer el color de fondo de los botones
-            //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
-            //ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
-            //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.133f, 0.145f, 0.153f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
 
 
-            // quit border:
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
 
             ImGui.BeginMainMenuBar();
 
-            // Menú "File"
             if (ImGui.BeginMenu("File"))
             {
                 if (ImGui.MenuItem("New Scene", Shortcuts.NewScene))
@@ -141,7 +108,6 @@ namespace Alis.App.Engine.Menus
                 ImGui.EndMenu();
             }
 
-            // Menú "Edit"
             if (ImGui.BeginMenu("Edit"))
             {
                 if (ImGui.MenuItem("Undo", Shortcuts.Undo))
@@ -295,7 +261,6 @@ namespace Alis.App.Engine.Menus
                 ImGui.EndMenu();
             }
 
-            // Menú "Assets"
             if (ImGui.BeginMenu("Assets"))
             {
                 if (ImGui.MenuItem("Create"))
@@ -354,7 +319,6 @@ namespace Alis.App.Engine.Menus
                 ImGui.EndMenu();
             }
 
-            // Menú "GameObject"
             if (ImGui.BeginMenu("GameObject"))
             {
                 if (ImGui.MenuItem("Create Empty\tCmd+Shift+N"))
@@ -429,7 +393,6 @@ namespace Alis.App.Engine.Menus
                 ImGui.EndMenu();
             }
 
-            // Menú "Component"
             if (ImGui.BeginMenu("Component"))
             {
                 if (ImGui.MenuItem("Add Component"))
@@ -466,7 +429,6 @@ namespace Alis.App.Engine.Menus
                 ImGui.EndMenu();
             }
 
-            // Menú "Tools"
             if (ImGui.BeginMenu("Tools"))
             {
                 if (ImGui.MenuItem("Sprite Editor"))
@@ -493,7 +455,6 @@ namespace Alis.App.Engine.Menus
                 ImGui.EndMenu();
             }
 
-            // Menú "Window"
             if (ImGui.BeginMenu("Window"))
             {
                 if (ImGui.MenuItem("General"))
@@ -529,7 +490,6 @@ namespace Alis.App.Engine.Menus
                 ImGui.EndMenu();
             }
 
-            // Menú "Help"
             if (ImGui.BeginMenu("Help"))
             {
                 if (ImGui.MenuItem("About Alis", Shortcuts.AboutAlis))

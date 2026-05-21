@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Linq;
@@ -140,7 +113,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                     _connected = true;
                     _playerId = _clientManager.LocalPlayer?.PlayerId ?? _playerName;
 
-                    // Initialize local player
                     _gameState.LocalPlayerId = _playerId;
                     _gameState.Players[_playerId] = new PlayerData
                     {
@@ -225,7 +197,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             {
                 try
                 {
-                    // Non-blocking input: check if key is available
                     if (Console.KeyAvailable)
                     {
                         ConsoleKeyInfo keyInfo = Console.ReadKey(true);
@@ -236,7 +207,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                             _currentInput = "";
                             TriggerRender();
 
-                            // Process command
                             await ProcessCommandAsync(input);
                         }
                         else if (keyInfo.Key == ConsoleKey.Backspace)
@@ -381,7 +351,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
 
             if (input.Equals("/stats", StringComparison.OrdinalIgnoreCase))
             {
-                // Stats are already displayed in the UI, no need for separate command
                 Logger.Info("Stats are displayed at the top of the screen!");
                 return;
             }
@@ -511,7 +480,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                         }
                         else if (field.StartsWith("event_") && !field.Equals("event_count"))
                         {
-                            // Parse event: "eventType|sourceId|targetId|description"
                             string[] eventParts = value.Split('|');
                             if (eventParts.Length >= 4)
                             {
@@ -520,20 +488,17 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                                 string targetId = eventParts[2];
                                 string description = eventParts[3];
 
-                                // Try to get player names
                                 string sourceName = sourceId;
                                 if (!string.IsNullOrEmpty(sourceId) && _gameState.Players.TryGetValue(sourceId, out PlayerData sourcePlayer))
                                 {
                                     sourceName = sourcePlayer.PlayerName;
                                 }
 
-                                // Clean description if it contains IDs
                                 if (!string.IsNullOrEmpty(sourceId) && description.Contains(sourceId))
                                 {
                                     description = description.Replace(sourceId, sourceName);
                                 }
 
-                                // Add event if not already present
                                 if (!_gameState.EventLog.Any(e => e.Description == description))
                                 {
                                     _gameState.AddEvent(new GameEvent
@@ -636,7 +601,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             {
                 string content = ExtractGameMessageContent(payload);
 
-                // Events are formatted as: "eventType|sourcePlayerId|targetPlayerId|description"
                 string[] parts = content.Split('|');
 
                 if (parts.Length >= 4)
@@ -646,7 +610,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                     string targetId = parts[2];
                     string description = parts[3];
 
-                    // Try to get player names from game state instead of using IDs
                     string sourceName = sourceId;
                     string targetName = targetId;
 
@@ -660,7 +623,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                         targetName = targetPlayer.PlayerName;
                     }
 
-                    // Clean description and replace IDs with names if needed
                     string cleanDescription = description;
                     if (description.Contains(sourceId))
                     {
@@ -680,7 +642,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                 }
                 else
                 {
-                    // Fallback for chat and other messages
                     _gameState.AddEvent(new GameEvent
                     {
                         EventType = "event",
@@ -709,7 +670,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
             {
                 string content = ExtractGameMessageContent(payload);
 
-                // Server messages are formatted as "Server: message"
                 string playerName = "Unknown";
                 string message = content;
 
@@ -722,7 +682,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                 }
                 else
                 {
-                    // Regular player chat: "PlayerName:message" (NOT UUID:message)
                     string[] parts = content.Split(':', 2);
                     if (parts.Length >= 2)
                     {
@@ -731,7 +690,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                     }
                     else
                     {
-                        // If format is unexpected, try to extract from current game state
                         if (_gameState.Players.TryGetValue(senderId, out PlayerData player))
                         {
                             playerName = player.PlayerName;
@@ -740,7 +698,6 @@ namespace Alis.Extension.Network.Sample.SimpleGame.Client
                     }
                 }
 
-                // Add event with clean name
                 _gameState.AddEvent(new GameEvent
                 {
                     EventType = "chat",

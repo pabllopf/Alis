@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MemoryTrimmingTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -53,7 +26,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_HasExpectedValues()
         {
-            // Assert
             Assert.Equal(0, (int) MemoryTrimming.Always);
             Assert.Equal(1, (int) MemoryTrimming.Normal);
             Assert.Equal(2, (int) MemoryTrimming.Never);
@@ -69,12 +41,10 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_CanBeAssigned()
         {
-            // Act
             MemoryTrimming always = MemoryTrimming.Always;
             MemoryTrimming normal = MemoryTrimming.Normal;
             MemoryTrimming never = MemoryTrimming.Never;
 
-            // Assert
             Assert.Equal(MemoryTrimming.Always, always);
             Assert.Equal(MemoryTrimming.Normal, normal);
             Assert.Equal(MemoryTrimming.Never, never);
@@ -89,7 +59,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_AllValuesAreDistinct()
         {
-            // Assert
             Assert.NotEqual(MemoryTrimming.Always, MemoryTrimming.Normal);
             Assert.NotEqual(MemoryTrimming.Always, MemoryTrimming.Never);
             Assert.NotEqual(MemoryTrimming.Normal, MemoryTrimming.Never);
@@ -104,12 +73,10 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_CanBeConvertedToString()
         {
-            // Act
             string alwaysString = MemoryTrimming.Always.ToString();
             string normalString = MemoryTrimming.Normal.ToString();
             string neverString = MemoryTrimming.Never.ToString();
 
-            // Assert
             Assert.Equal("Always", alwaysString);
             Assert.Equal("Normal", normalString);
             Assert.Equal("Never", neverString);
@@ -124,12 +91,10 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_CanBeCastFromInt()
         {
-            // Act
             MemoryTrimming always = 0;
             MemoryTrimming normal = (MemoryTrimming) 1;
             MemoryTrimming never = (MemoryTrimming) 2;
 
-            // Assert
             Assert.Equal(MemoryTrimming.Always, always);
             Assert.Equal(MemoryTrimming.Normal, normal);
             Assert.Equal(MemoryTrimming.Never, never);
@@ -144,12 +109,10 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_WorksInSwitchStatements()
         {
-            // Arrange
             int alwaysResult = 0;
             int normalResult = 0;
             int neverResult = 0;
 
-            // Act
             switch (MemoryTrimming.Always)
             {
                 case MemoryTrimming.Always:
@@ -171,7 +134,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
                     break;
             }
 
-            // Assert
             Assert.Equal(1, alwaysResult);
             Assert.Equal(1, normalResult);
             Assert.Equal(1, neverResult);
@@ -186,7 +148,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_ComparisonWorksCorrectly()
         {
-            // Assert
             Assert.True(MemoryTrimming.Always < MemoryTrimming.Normal);
             Assert.True(MemoryTrimming.Normal < MemoryTrimming.Never);
             Assert.True(MemoryTrimming.Always < MemoryTrimming.Never);
@@ -202,10 +163,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_DefaultValueIsAlways()
         {
-            // Act
             MemoryTrimming defaultValue = default(MemoryTrimming);
 
-            // Assert
             Assert.Equal(MemoryTrimming.Always, defaultValue);
             Assert.Equal(0, (int) defaultValue);
         }
@@ -219,7 +178,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_CanBeUsedInCollections()
         {
-            // Arrange
             List<MemoryTrimming> list = new List<MemoryTrimming>
             {
                 MemoryTrimming.Always,
@@ -227,7 +185,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
                 MemoryTrimming.Never
             };
 
-            // Assert
             Assert.Equal(3, list.Count);
             Assert.Contains(MemoryTrimming.Always, list);
             Assert.Contains(MemoryTrimming.Normal, list);
@@ -243,7 +200,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_CanBeUsedAsDictionaryKey()
         {
-            // Arrange
             Dictionary<MemoryTrimming, string> dict = new Dictionary<MemoryTrimming, string>
             {
                 {MemoryTrimming.Always, "Always trim"},
@@ -251,7 +207,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
                 {MemoryTrimming.Never, "Never trim"}
             };
 
-            // Assert
             Assert.Equal(3, dict.Count);
             Assert.Equal("Always trim", dict[MemoryTrimming.Always]);
             Assert.Equal("Normal trim", dict[MemoryTrimming.Normal]);
@@ -267,10 +222,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_HasExactlyThreeValues()
         {
-            // Act
             Array values = Enum.GetValues(typeof(MemoryTrimming));
 
-            // Assert
             Assert.Equal(3, values.Length);
         }
 
@@ -283,10 +236,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_IsPublic()
         {
-            // Act
             Type type = typeof(MemoryTrimming);
 
-            // Assert
             Assert.True(type.IsPublic);
             Assert.True(type.IsEnum);
         }
@@ -300,12 +251,10 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MemoryTrimming_EqualityComparisonWorks()
         {
-            // Arrange
             MemoryTrimming value1 = MemoryTrimming.Normal;
             MemoryTrimming value2 = MemoryTrimming.Normal;
             MemoryTrimming value3 = MemoryTrimming.Always;
 
-            // Assert
             Assert.True(value1 == value2);
             Assert.False(value1 == value3);
             Assert.True(value1 != value3);

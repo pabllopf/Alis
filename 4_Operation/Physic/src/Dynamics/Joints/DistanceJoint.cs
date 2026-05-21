@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:DistanceJoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -262,7 +235,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
             _u = cB + _rB - cA - _rA;
 
-            // Handle singularity.
             float length = _u.Length();
             if (length > SettingEnv.LinearSlop)
             {
@@ -277,23 +249,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float crBu = MathUtils.Cross(ref _rB, ref _u);
             float invMass = _invMassA + invIa * crAu * crAu + _invMassB + invIb * crBu * crBu;
 
-            // Compute the effective mass matrix.
             _mass = Math.Abs(invMass) > float.Epsilon ? 1.0f / invMass : 0.0f;
 
             if (Frequency > 0.0f)
             {
                 float c = length - Length;
 
-                // Frequency
                 float omega = Constant.Tau * Frequency;
 
-                // Damping coefficient
                 float d = 2.0f * _mass * DampingRatio * omega;
 
-                // Spring stiffness
                 float k = _mass * omega * omega;
 
-                // magic formulas
                 float h = data.Step.Dt;
                 _gamma = h * (d + h * k);
                 _gamma = Math.Abs(_gamma) > float.Epsilon ? 1.0f / _gamma : 0.0f;
@@ -310,7 +277,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.Step.WarmStarting)
             {
-                // Scale the impulse to support a variable time step.
                 _impulse *= data.Step.DtRatio;
 
                 Vector2F p = _impulse * _u;
@@ -341,7 +307,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2F vB = data.Velocities[_indexB].V;
             float wB = data.Velocities[_indexB].W;
 
-            // Cdot = dot(u, v + cross(w, r))
             Vector2F vpA = vA + MathUtils.Cross(wA, ref _rA);
             Vector2F vpB = vB + MathUtils.Cross(wB, ref _rB);
             float cdot = Vector2F.Dot(_u, vpB - vpA);
@@ -370,7 +335,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             if (Frequency > 0.0f)
             {
-                // There is no position correction for soft distance constraints.
                 return true;
             }
 

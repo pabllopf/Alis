@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:InspectorWindow.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -149,7 +122,6 @@ namespace Alis.App.Engine.Windows
                 ShowAddComponentPopup();
             }
 
-            // Obtener todos los tipos de componentes en el namespace Alis.xxx
             /*Assembly assembly = Assembly.GetAssembly(typeof(AComponent))!;
             Type[] allTypes = assembly.GetTypes();
             IEnumerable<Type> componentSubclasses = allTypes.Where(t => t.IsSubclassOf(typeof(AComponent)));
@@ -157,7 +129,6 @@ namespace Alis.App.Engine.Windows
                 .Where(t => (t.Namespace != null) && t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("Alis"))
                 .ToList();
 
-            // Agrupar componentes por namespace
             IOrderedEnumerable<IGrouping<string, Type>> groupedComponents = componentTypes
                 .GroupBy(t => t.Namespace)
                 .OrderBy(g => g.Key);
@@ -172,7 +143,6 @@ namespace Alis.App.Engine.Windows
                 ImGui.InputText($"{FontAwesome5.Search}##Search components", searchQueryComand, 256);
                 searchQuery = Marshal.PtrToStringAnsi(searchQueryComand);
 
-                // Filtrar componentes según la búsqueda
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
                     componentTypes = componentTypes
@@ -237,7 +207,6 @@ namespace Alis.App.Engine.Windows
 
             if (ImGui.BeginChild("##Header", new Vector2F(ImGui.GetContentRegionAvail().X, 80), true, ImGuiWindowFlags.NoCollapse))
             {
-                // Icon of the object:
                 ImGui.PushFont(SpaceWork.FontLoaded30Bold);
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 5); // Adjust the Y position
                 ImGui.Text($"{FontAwesome5.Cube}");
@@ -246,7 +215,6 @@ namespace Alis.App.Engine.Windows
                 ImGui.SameLine();
 
                 /*
-                // check if iseneable:
                 bool isEnable = _selectedGameObject.IsEnable;
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
                 ImGui.Checkbox($"##{_selectedGameObject.Name} isEnable", ref isEnable);
@@ -254,7 +222,6 @@ namespace Alis.App.Engine.Windows
 
                 ImGui.SameLine();
 
-                // name of the object
                 commandBufferName = Marshal.StringToHGlobalAnsi(_selectedGameObject.Name);
                 ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
@@ -266,7 +233,6 @@ namespace Alis.App.Engine.Windows
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
                 ImGui.Separator();
 
-                // Show Tag and Layer of the object
                 ImGui.AlignTextToFramePadding();
                 ImGui.Text("Tag:");
                 ImGui.SameLine();
@@ -303,7 +269,6 @@ namespace Alis.App.Engine.Windows
             /// </summary>
             /*private void RenderTransform()
             {
-                // Transform
                 if (ImGui.CollapsingHeader($"{FontAwesome5.Compass} Transform", ImGuiTreeNodeFlags.DefaultOpen))
                 {
                     if (ImGui.BeginChild("##Transform", new Vector2F(ImGui.GetContentRegionAvail().X, 105), true, ImGuiWindowFlags.NoCollapse))
@@ -341,7 +306,6 @@ namespace Alis.App.Engine.Windows
             /// </summary>
             private void RenderComponents()
             {
-                // Show the components of the selected game object
                 foreach (AComponent component in _selectedGameObject.Components)
                 {
                     string icon = _componentIcons.TryGetValue(component.GetType(), out string value) ? value : FontAwesome5.File;
@@ -391,7 +355,6 @@ namespace Alis.App.Engine.Windows
                 PropertyInfo[] properties = typeP.GetProperties();
                 foreach (PropertyInfo property in properties)
                 {
-                    // omit propertie name, id and tag:
                     if (property.PropertyType == typeof(IntPtr) || property.Name == "Name" || property.Name == "Id" || property.Name == "Tag" || property.Name == "GameObject" || property.Name == "Context" || property.Name == "IsEnable")
                     {
                         continue;
@@ -451,7 +414,6 @@ namespace Alis.App.Engine.Windows
                             case Enum enumValue:
                                 string[] enumNames = Enum.GetNames(property.PropertyType);
                                 int currentEnumIndex = Array.IndexOf(enumNames, enumValue.ToString());
-                                // enumNames separated by zeros:
                                 string itemsSeparatedByZeros = string.Join("\0", enumNames);
                                 if (ImGui.Combo(propertyId, ref currentEnumIndex, itemsSeparatedByZeros))
                                 {

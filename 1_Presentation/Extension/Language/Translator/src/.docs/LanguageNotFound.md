@@ -15,8 +15,6 @@ Here is an example of how to use the `LanguageNotFound` class:
 ```csharp
 try
 {
-    // Attempt to find a language
-    // If the language is not found, throw a LanguageNotFound exception
     throw new LanguageNotFound("Language not found");
 }
 catch (LanguageNotFound ex)

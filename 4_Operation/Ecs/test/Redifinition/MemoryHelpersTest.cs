@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MemoryHelpersTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -54,7 +27,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundDownToPowerOfTwo_WithVariousValues_RoundsCorrectly()
         {
-            // Arrange & Act & Assert
             Assert.Equal(1u, MemoryHelpers.RoundDownToPowerOfTwo(1));
         }
 
@@ -68,7 +40,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundUpToNextMultipleOf16_WithVariousValues_RoundsCorrectly()
         {
-            // Arrange & Act & Assert
             Assert.Equal(0, MemoryHelpers.RoundUpToNextMultipleOf16(0));
             Assert.Equal(16, MemoryHelpers.RoundUpToNextMultipleOf16(1));
             Assert.Equal(16, MemoryHelpers.RoundUpToNextMultipleOf16(15));
@@ -89,7 +60,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundDownToNextMultipleOf16_WithVariousValues_RoundsCorrectly()
         {
-            // Arrange & Act & Assert
             Assert.Equal(0, MemoryHelpers.RoundDownToNextMultipleOf16(0));
             Assert.Equal(0, MemoryHelpers.RoundDownToNextMultipleOf16(1));
             Assert.Equal(0, MemoryHelpers.RoundDownToNextMultipleOf16(15));
@@ -110,11 +80,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void BoolToByte_WithTrueAndFalse_ConvertsCorrectly()
         {
-            // Arrange & Act
             byte trueResult = MemoryHelpers.BoolToByte(true);
             byte falseResult = MemoryHelpers.BoolToByte(false);
 
-            // Assert
             Assert.Equal(1, trueResult);
             Assert.Equal(0, falseResult);
         }
@@ -129,10 +97,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundUpToNextMultipleOf16_WithMultiples_IsIdempotent()
         {
-            // Arrange
             int[] multiples = {0, 16, 32, 48, 64, 128, 256, 512};
 
-            // Act & Assert
             foreach (int value in multiples)
             {
                 int result = MemoryHelpers.RoundUpToNextMultipleOf16(value);
@@ -150,10 +116,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundDownToNextMultipleOf16_WithMultiples_IsIdempotent()
         {
-            // Arrange
             int[] multiples = {0, 16, 32, 48, 64, 128, 256, 512};
 
-            // Act & Assert
             foreach (int value in multiples)
             {
                 int result = MemoryHelpers.RoundDownToNextMultipleOf16(value);
@@ -171,7 +135,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundingFunctions_AreConsistent()
         {
-            // Arrange & Act & Assert
             for (int i = 0; i < 100; i++)
             {
                 int roundedDown = MemoryHelpers.RoundDownToNextMultipleOf16(i);
@@ -194,7 +157,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MaxComponentCount_HasExpectedValue()
         {
-            // Assert
             Assert.Equal(127, MemoryHelpers.MaxComponentCount);
         }
 
@@ -208,7 +170,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundDownToPowerOfTwo_WithLargeValues_HandlesCorrectly()
         {
-            // Arrange & Act & Assert
             Assert.Equal(1073741824u, MemoryHelpers.RoundDownToPowerOfTwo(1073741824)); // 2^30
             Assert.Equal(1073741824u, MemoryHelpers.RoundDownToPowerOfTwo(2000000000));
         }
@@ -223,16 +184,12 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundingFunctions_WithBoundaryValues_WorkCorrectly()
         {
-            // Arrange & Act & Assert
-            // Just before multiple of 16
             Assert.Equal(0, MemoryHelpers.RoundDownToNextMultipleOf16(15));
             Assert.Equal(16, MemoryHelpers.RoundUpToNextMultipleOf16(15));
 
-            // Exactly at multiple of 16
             Assert.Equal(16, MemoryHelpers.RoundDownToNextMultipleOf16(16));
             Assert.Equal(16, MemoryHelpers.RoundUpToNextMultipleOf16(16));
 
-            // Just after multiple of 16
             Assert.Equal(16, MemoryHelpers.RoundDownToNextMultipleOf16(17));
             Assert.Equal(32, MemoryHelpers.RoundUpToNextMultipleOf16(17));
         }
@@ -247,13 +204,11 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void BoolToByte_IsConsistent()
         {
-            // Arrange & Act
             byte true1 = MemoryHelpers.BoolToByte(true);
             byte true2 = MemoryHelpers.BoolToByte(true);
             byte false1 = MemoryHelpers.BoolToByte(false);
             byte false2 = MemoryHelpers.BoolToByte(false);
 
-            // Assert
             Assert.Equal(true1, true2);
             Assert.Equal(false1, false2);
             Assert.NotEqual(true1, false1);
@@ -268,10 +223,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block2_HasCorrectSize()
         {
-            // Arrange & Act
             int size = Marshal.SizeOf<MemoryHelpers.Block2>();
 
-            // Assert
             Assert.Equal(2, size);
         }
 
@@ -284,10 +237,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block4_HasCorrectSize()
         {
-            // Arrange & Act
             int size = Marshal.SizeOf<MemoryHelpers.Block4>();
 
-            // Assert
             Assert.Equal(4, size);
         }
 
@@ -300,10 +251,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block8_HasCorrectSize()
         {
-            // Arrange & Act
             int size = Marshal.SizeOf<MemoryHelpers.Block8>();
 
-            // Assert
             Assert.Equal(8, size);
         }
 
@@ -316,10 +265,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void Block16_HasCorrectSize()
         {
-            // Arrange & Act
             int size = Marshal.SizeOf<MemoryHelpers.Block16>();
 
-            // Assert
             Assert.Equal(16, size);
         }
 
@@ -333,13 +280,10 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void GetOrAddNew_WithNewKey_CreatesNewValue()
         {
-            // Arrange
             Dictionary<int, TestClass> dict = new Dictionary<int, TestClass>();
 
-            // Act
             TestClass value = dict.GetOrAddNew(1);
 
-            // Assert
             Assert.NotNull(value);
             Assert.True(dict.ContainsKey(1));
             Assert.Same(value, dict[1]);
@@ -355,15 +299,12 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void GetOrAddNew_WithExistingKey_ReturnsExistingValue()
         {
-            // Arrange
             Dictionary<int, TestClass> dict = new Dictionary<int, TestClass>();
             TestClass original = new TestClass();
             dict[1] = original;
 
-            // Act
             TestClass retrieved = dict.GetOrAddNew(1);
 
-            // Assert
             Assert.Same(original, retrieved);
         }
 
@@ -377,16 +318,13 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void GetOrAddNew_WithMultipleKeys_WorksCorrectly()
         {
-            // Arrange
             Dictionary<string, TestClass> dict = new Dictionary<string, TestClass>();
 
-            // Act
             TestClass value1 = dict.GetOrAddNew("key1");
             TestClass value2 = dict.GetOrAddNew("key2");
             TestClass value3 = dict.GetOrAddNew("key3");
             TestClass value1Again = dict.GetOrAddNew("key1");
 
-            // Assert
             Assert.NotNull(value1);
             Assert.NotNull(value2);
             Assert.NotNull(value3);
@@ -405,10 +343,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundUpToNextMultipleOf16_WithNegativeValues_HandlesCorrectly()
         {
-            // Arrange & Act
             int result = MemoryHelpers.RoundUpToNextMultipleOf16(-5);
 
-            // Assert - Should handle negative values (implementation defined)
             Assert.True(result % 16 == 0 || result == 0);
         }
 
@@ -421,10 +357,8 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundDownToNextMultipleOf16_WithNegativeValues_HandlesCorrectly()
         {
-            // Arrange & Act
             int result = MemoryHelpers.RoundDownToNextMultipleOf16(-5);
 
-            // Assert - Should handle negative values (implementation defined)
             Assert.True(result % 16 == 0);
         }
 
@@ -438,11 +372,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundingFunctions_WithZero_HandleCorrectly()
         {
-            // Act
             int roundUp = MemoryHelpers.RoundUpToNextMultipleOf16(0);
             int roundDown = MemoryHelpers.RoundDownToNextMultipleOf16(0);
 
-            // Assert
             Assert.Equal(0, roundUp);
             Assert.Equal(0, roundDown);
         }
@@ -457,7 +389,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundingFunctions_MaintainConsistency()
         {
-            // Arrange & Act & Assert
             for (int i = 1; i <= 1000; i++)
             {
                 int roundedUp = MemoryHelpers.RoundUpToNextMultipleOf16(i);
@@ -479,16 +410,13 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void RoundDownToPowerOfTwo_WithSequentialValues_IsMonotonic()
         {
-            // Arrange
             uint previousResult = 0;
 
-            // Act & Assert
             for (uint i = 1; i <= 256; i++)
             {
                 uint result = MemoryHelpers.RoundDownToPowerOfTwo(i);
                 Assert.True(result >= previousResult);
 
-                // Result should be power of 2
                 Assert.True((result & (result - 1)) == 0 || result == 0);
 
                 previousResult = result;
@@ -505,17 +433,14 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void GetOrAddNew_WithRapidCalls_WorksCorrectly()
         {
-            // Arrange
             Dictionary<int, TestClass> dict = new Dictionary<int, TestClass>();
 
-            // Act
             for (int i = 0; i < 100; i++)
             {
                 TestClass value = dict.GetOrAddNew(i % 10);
                 Assert.NotNull(value);
             }
 
-            // Assert
             Assert.Equal(10, dict.Count);
         }
 
@@ -529,7 +454,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         [Fact]
         public void MaxComponentCount_IsWithinValidRange()
         {
-            // Assert
             Assert.True(MemoryHelpers.MaxComponentCount > 0);
             Assert.True(MemoryHelpers.MaxComponentCount < 256);
             Assert.Equal(127, MemoryHelpers.MaxComponentCount);

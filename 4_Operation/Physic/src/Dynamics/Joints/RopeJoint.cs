@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:RopeJoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -145,7 +118,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 LocalAnchorB = anchorB;
             }
 
-            //FPE feature: Setting default MaxLength
             Vector2F d = WorldAnchorB - WorldAnchorA;
             MaxLength = d.Length();
         }
@@ -259,7 +231,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 return;
             }
 
-            // Compute effective mass.
             float crA = MathUtils.Cross(ref _rA, ref _u);
             float crB = MathUtils.Cross(ref _rB, ref _u);
             float invMass = _invMassA + invIa * crA * crA + _invMassB + invIb * crB * crB;
@@ -268,7 +239,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.Step.WarmStarting)
             {
-                // Scale the impulse to support a variable time step.
                 _impulse *= data.Step.DtRatio;
 
                 Vector2F p = _impulse * _u;
@@ -299,13 +269,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2F vB = data.Velocities[_indexB].V;
             float wB = data.Velocities[_indexB].W;
 
-            // Cdot = dot(u, v + cross(w, r))
             Vector2F vpA = vA + MathUtils.Cross(wA, ref _rA);
             Vector2F vpB = vB + MathUtils.Cross(wB, ref _rB);
             float c = _length - MaxLength;
             float cdot = Vector2F.Dot(_u, vpB - vpA);
 
-            // Predictive constraint.
             if (c < 0.0f)
             {
                 cdot += data.Step.InvDt * c;

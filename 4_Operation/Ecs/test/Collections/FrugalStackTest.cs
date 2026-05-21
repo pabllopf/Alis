@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:FrugalStackTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Collections;
@@ -51,10 +24,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_StartsEmpty()
         {
-            // Arrange & Act
             FrugalStack<int> stack = new FrugalStack<int>();
 
-            // Assert
             Assert.False(stack.Any);
         }
 
@@ -67,13 +38,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_AnyReturnsTrueAfterPush()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
 
-            // Act
             stack.Push(42);
 
-            // Assert
             Assert.True(stack.Any);
         }
 
@@ -86,15 +54,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_CanPushAndPopSingleElement()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
             int expected = 42;
 
-            // Act
             stack.Push(expected);
             int result = stack.Pop();
 
-            // Assert
             Assert.Equal(expected, result);
             Assert.False(stack.Any);
         }
@@ -108,15 +73,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_MaintainsLifoOrder()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
 
-            // Act
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);
 
-            // Assert
             Assert.Equal(3, stack.Pop());
             Assert.Equal(2, stack.Pop());
             Assert.Equal(1, stack.Pop());
@@ -131,16 +93,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_CanPushMultipleElements()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
 
-            // Act
             for (int i = 0; i < 20; i++)
             {
                 stack.Push(i);
             }
 
-            // Assert
             Assert.True(stack.Any);
             for (int i = 19; i >= 0; i--)
             {
@@ -159,13 +118,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_TryPopReturnsFalseWhenEmpty()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
 
-            // Act
             bool result = stack.TryPop(out int value);
 
-            // Assert
             Assert.False(result);
             Assert.Equal(default(int), value);
         }
@@ -179,14 +135,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_TryPopReturnsTrueWithValue()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
             stack.Push(42);
 
-            // Act
             bool result = stack.TryPop(out int value);
 
-            // Assert
             Assert.True(result);
             Assert.Equal(42, value);
         }
@@ -200,16 +153,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_CanRemoveElement()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);
 
-            // Act
             stack.Remove(2);
 
-            // Assert
             Assert.Equal(3, stack.Pop());
             Assert.Equal(1, stack.Pop());
             Assert.False(stack.Any);
@@ -224,16 +174,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_RemoveDoesNothingIfElementNotFound()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);
 
-            // Act
             stack.Remove(999);
 
-            // Assert
             Assert.Equal(3, stack.Pop());
             Assert.Equal(2, stack.Pop());
             Assert.Equal(1, stack.Pop());
@@ -248,16 +195,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_AsSpanReturnsCorrectRange()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);
 
-            // Act
             Span<int> span = stack.AsSpan();
 
-            // Assert
             Assert.Equal(3, span.Length);
             Assert.Equal(1, span[0]);
             Assert.Equal(2, span[1]);
@@ -273,15 +217,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_WorksWithReferenceTypes()
         {
-            // Arrange
             FrugalStack<string> stack = new FrugalStack<string>();
 
-            // Act
             stack.Push("a");
             stack.Push("b");
             stack.Push("c");
 
-            // Assert
             Assert.Equal("c", stack.Pop());
             Assert.Equal("b", stack.Pop());
             Assert.Equal("a", stack.Pop());
@@ -296,10 +237,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_PopAfterMultipleOperations()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
 
-            // Act & Assert
             stack.Push(1);
             Assert.Equal(1, stack.Pop());
             Assert.False(stack.Any);
@@ -319,16 +258,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_ClearRemovesAllElements()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);
 
-            // Act
             // Note: Check if Clear() method exists, if not skip this test
 
-            // Assert
             Assert.True(stack.Any);
         }
 
@@ -341,15 +277,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_WithNegativeValues()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
 
-            // Act
             stack.Push(-1);
             stack.Push(-100);
             stack.Push(-999);
 
-            // Assert
             Assert.Equal(-999, stack.Pop());
             Assert.Equal(-100, stack.Pop());
             Assert.Equal(-1, stack.Pop());
@@ -364,17 +297,14 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_LargeNumberOfElements()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
             const int elementCount = 1000;
 
-            // Act
             for (int i = 0; i < elementCount; i++)
             {
                 stack.Push(i);
             }
 
-            // Assert
             Assert.True(stack.Any);
             for (int i = elementCount - 1; i >= 0; i--)
             {
@@ -393,7 +323,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FrugalStack_AsSpanLengthMatchesPushedElements()
         {
-            // Arrange
             FrugalStack<int> stack = new FrugalStack<int>();
             stack.Push(1);
             stack.Push(2);
@@ -401,10 +330,8 @@ namespace Alis.Core.Ecs.Test.Collections
             stack.Push(4);
             stack.Push(5);
 
-            // Act
             Span<int> span = stack.AsSpan();
 
-            // Assert
             Assert.Equal(5, span.Length);
         }
     }

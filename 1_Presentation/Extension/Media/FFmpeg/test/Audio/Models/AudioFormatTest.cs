@@ -1,10 +1,6 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
-//  --------------------------------------------------------------------------
+
 //  File:AudioFormatTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
@@ -25,7 +21,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Extension.Media.FFmpeg.Audio.Models;
 using Xunit;

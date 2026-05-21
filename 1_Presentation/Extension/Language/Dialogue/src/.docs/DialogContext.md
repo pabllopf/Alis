@@ -73,23 +73,18 @@ context.Clear();
 ```csharp
 var context = new DialogContext("mainDialog");
 
-// Almacenar variables
 context.SetVariable("playerName", "Héroe");
 context.SetVariable("experience", 100);
 context.SetVariable("inventory", new List<string> { "poción", "antorcha" });
 
-// Recuperar variables
 var name = context.GetVariable<string>("playerName");
 var exp = context.GetVariable<int>("experience");
 
-// Registrar visitas
 context.RecordVisit("intro");
 context.RecordVisit("shop");
 
-// Verificar última visita
 Console.WriteLine($"Último diálogo: {context.GetLastVisitedDialog()}");
 
-// Cambiar estado
 context.State = DialogStateType.Paused;
 ```
 

@@ -8,7 +8,6 @@ using Alis.Core.Aspect.Time;
 Clock clock = new Clock();
 clock.Start();
 
-// Work to measure...
 clock.Stop();
 
 Console.WriteLine($"Elapsed: {clock.ElapsedMilliseconds} ms");
@@ -21,7 +20,6 @@ using Alis.Core.Aspect.Time;
 
 Clock clock = Clock.Create();
 
-// Work...
 clock.Stop();
 Console.WriteLine(clock.Elapsed);
 ```
@@ -34,11 +32,9 @@ using Alis.Core.Aspect.Time;
 Clock clock = new Clock();
 
 clock.Start();
-// Phase 1
 clock.Stop();
 
 clock.Start();
-// Phase 2
 clock.Stop();
 
 Console.WriteLine($"Total ms: {clock.ElapsedMilliseconds}");
@@ -51,10 +47,8 @@ using Alis.Core.Aspect.Time;
 
 Clock clock = Clock.Create();
 
-// Warm-up logic...
 clock.Restart();
 
-// Actual run...
 clock.Stop();
 Console.WriteLine($"Run seconds: {clock.ElapsedSeconds}");
 ```

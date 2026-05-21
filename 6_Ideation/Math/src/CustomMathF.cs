@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:CustomMathF.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Diagnostics.CodeAnalysis;
 
@@ -105,7 +78,6 @@ namespace Alis.Core.Aspect.Math
                 return float.NaN;
             }
 
-            // Normalize the angle to the range [0, 2π]
             x %= 2 * Pi;
 
             float result = 1.0f;
@@ -136,10 +108,8 @@ namespace Alis.Core.Aspect.Math
                 return float.NaN;
             }
 
-            // Normalize the angle to the range [-π, π]
             x %= 2 * Pi;
 
-            // Reduce the angle to the range [-π/2, π/2] by using sin(x) = sin(π - x) for x > π/2
             if (x > Pi / 2)
             {
                 x = Pi - x;
@@ -266,10 +236,8 @@ namespace Alis.Core.Aspect.Math
                 return float.NaN;
             }
 
-            // Normalize the angle to the range [-π/2, π/2]
             pi %= Pi;
 
-            // Handle the case where pi is close to ±π/2
             if (System.Math.Abs(pi - Pi / 2) < 0.01f || System.Math.Abs(pi - -Pi / 2) < 0.01f)
             {
                 return float.PositiveInfinity; // or float.NaN, depending on your preference

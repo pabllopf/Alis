@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AdvancedEcsIntegrationTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -51,16 +24,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AdvancedEcs_ArchetypeMigrationWithMultipleComponents()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act - Add components one by one, causing archetype transitions
             entity.Add(new Position());
             entity.Add(new Velocity());
             entity.Add(new Health());
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
             Assert.True(entity.Has<Health>());
@@ -76,11 +46,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AdvancedEcs_BulkEntityCreationWithSameArchetype()
         {
-            // Arrange
             using Scene scene = new Scene();
             const int entityCount = 100;
 
-            // Act
             GameObject[] entities = new GameObject[entityCount];
             for (int i = 0; i < entityCount; i++)
             {
@@ -89,7 +57,6 @@ namespace Alis.Core.Ecs.Test
                 entities[i].Add(new Velocity());
             }
 
-            // Assert
             for (int i = 0; i < entityCount; i++)
             {
                 Assert.True(entities[i].Has<Position>());
@@ -107,10 +74,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AdvancedEcs_ComplexArchetypeTopology()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act - Create entities with different component combinations
             GameObject e1 = scene.Create();
             e1.Add(new Position());
 
@@ -126,7 +91,6 @@ namespace Alis.Core.Ecs.Test
             GameObject e4 = scene.Create();
             e4.Add(new Health());
 
-            // Assert
             Assert.True(e1.Has<Position>());
             Assert.True(e2.Has<Position>() && e2.Has<Velocity>());
             Assert.True(e3.Has<Position>() && e3.Has<Velocity>() && e3.Has<Health>());
@@ -143,18 +107,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AdvancedEcs_ComponentRemovalAndArchetypeDowngrade()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
             entity.Add(new Position());
             entity.Add(new Velocity());
             entity.Add(new Health());
 
-            // Act
             entity.Remove<Health>();
             entity.Remove<Velocity>();
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.False(entity.Has<Velocity>());
             Assert.False(entity.Has<Health>());
@@ -170,18 +131,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AdvancedEcs_DeferredOperationsDoNotBreakState()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject e1 = scene.Create();
             GameObject e2 = scene.Create();
             e1.Add(new Position());
             e2.Add(new Position());
 
-            // Act
             e1.Add(new Velocity());
             e2.Add(new Health());
 
-            // Assert
             Assert.True(e1.Has<Position>());
             Assert.True(e1.Has<Velocity>());
             Assert.True(e2.Has<Position>());
@@ -198,11 +156,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AdvancedEcs_ComponentDataPreservedAcrossArchetypeChanges()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             entity.Add(new Position());
             ref Position pos1 = ref entity.Get<Position>();
             pos1.X = 100;
@@ -211,7 +167,6 @@ namespace Alis.Core.Ecs.Test
             entity.Add(new Velocity());
             ref Position pos2 = ref entity.Get<Position>();
 
-            // Assert
             Assert.Equal(100, pos2.X);
             Assert.Equal(200, pos2.Y);
         }
@@ -226,11 +181,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AdvancedEcs_RapidAddRemoveCyclesDoNotCorruptState()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             for (int i = 0; i < 10; i++)
             {
                 entity.Add(new Position());
@@ -239,7 +192,6 @@ namespace Alis.Core.Ecs.Test
                 entity.Remove<Velocity>();
             }
 
-            // Assert
             Assert.False(entity.Has<Position>());
             Assert.False(entity.Has<Velocity>());
         }
@@ -254,17 +206,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AdvancedEcs_MultipleScenesCoexistIndependently()
         {
-            // Arrange
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
 
-            // Act
             GameObject e1 = scene1.Create();
             GameObject e2 = scene2.Create();
             e1.Add(new Position());
             e2.Add(new Health());
 
-            // Assert
             Assert.True(e1.Has<Position>());
             Assert.False(e1.Has<Health>());
             Assert.True(e2.Has<Health>());
@@ -281,18 +230,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AdvancedEcs_ComponentAccessConsistencyAcrossUpdates()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
             entity.Add(new Position());
             ref Position pos1 = ref entity.Get<Position>();
             pos1.X = 42;
 
-            // Act
             ref Position pos2 = ref entity.Get<Position>();
             pos2.Y = 84;
 
-            // Assert
             Assert.Equal(42, entity.Get<Position>().X);
             Assert.Equal(84, entity.Get<Position>().Y);
         }

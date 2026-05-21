@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameState.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -183,7 +156,6 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 return 0;
             }
 
-            // Find target by name
             PlayerData target = null;
             foreach (PlayerData player in Players.Values)
             {
@@ -199,14 +171,12 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 return 0;
             }
 
-            // Calculate damage
             int damage = CombatSystem.CalculateDamage(attacker, target);
             if (damage <= 0)
             {
                 return 0;
             }
 
-            // Apply damage
             target.Health = Math.Max(0, target.Health - damage);
             attacker.Score += damage;
 
@@ -225,11 +195,9 @@ namespace Alis.Extension.Network.Sample.ConsoleGame.Server
                 attacker.Kills++;
                 attacker.Score += 50;
 
-                // Award experience
                 int xp = CombatSystem.GetExperienceReward(target.Level);
                 attacker.Experience += xp;
 
-                // Level up
                 if (attacker.Experience >= attacker.Level * 100)
                 {
                     attacker.Level++;

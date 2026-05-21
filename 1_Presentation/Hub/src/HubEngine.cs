@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:HubEngine.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Diagnostics;
@@ -176,7 +149,6 @@ namespace Alis.App.Hub
         /// </summary>
         public void Run()
         {
-            // Frame limiter: 60 FPS target
             const double targetFrameTime = 1.0 / 60.0;
             Stopwatch frameTimer = Stopwatch.StartNew();
             double lastTime = frameTimer.Elapsed.TotalSeconds;
@@ -185,7 +157,6 @@ namespace Alis.App.Hub
             platform = GetPlatform();
             Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
 
-            // Initialize native window and GL context
             if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
@@ -193,21 +164,17 @@ namespace Alis.App.Hub
                 return;
             }
 
-            // Ensure GL API is loaded and viewport configured
             platform.MakeContextCurrent();
             Gl.Initialize(platform.GetProcAddress);
             Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
             Gl.GlEnable(EnableCap.DepthTest);
 
-            // Create ImGui context and configure backends
             IntPtr imguiContext = ImGui.CreateContext();
             ImGui.SetCurrentContext(imguiContext);
 
-            // Ensure the native GL context is current before creating GL resources.
             Debug.Assert(platform != null, "Platform must be provided before Initialize is called.");
             platform?.MakeContextCurrent();
 
-            // Create or reuse ImGui context
             IntPtr currentCtx = ImGui.GetCurrentContext();
             if (currentCtx == IntPtr.Zero)
             {
@@ -225,7 +192,6 @@ namespace Alis.App.Hub
 
             // Backend capabilities
 
-            // active plot renders
             _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
                                           ImGuiBackendFlags.PlatformHasViewports |
                                           ImGuiBackendFlags.HasGamepad |
@@ -233,11 +199,9 @@ namespace Alis.App.Hub
                                           ImGuiBackendFlags.HasMouseCursors;
 
 
-            // Enable Keyboard Controls
             _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
                                          ImGuiConfigFlags.NavEnableGamepad;
 
-            // CONFIG DOCKSPACE 
             _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
                                          ImGuiConfigFlags.ViewportsEnable;
 
@@ -245,7 +209,6 @@ namespace Alis.App.Hub
             _spaceWork.io = ImGui.GetIo();
             _spaceWork.io.WantSaveIniSettings = false;
 
-            // Create simple shader program
             const string vertexShaderSource = "#version 330 core\n" +
                                               "layout (location = 0) in vec2 Position;\n" +
                                               "layout (location = 1) in vec2 UV;\n" +
@@ -290,7 +253,6 @@ namespace Alis.App.Hub
             Gl.GlDeleteShader(vert);
             Gl.GlDeleteShader(frag);
 
-            // Create VAO/VBO/EBO and configure vertex attributes
             _vao = Gl.GenVertexArray();
             _vbo = Gl.GenBuffer();
             _ebo = Gl.GenBuffer();
@@ -314,7 +276,6 @@ namespace Alis.App.Hub
             platform.ShowWindow();
             platform.SetTitle("Alis Hub - by @pabllopf");
 
-            // Configure _spaceWork.io and features
             _spaceWork.io = ImGui.GetIo();
             _spaceWork.io.DisplaySize = new Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
 
@@ -331,22 +292,18 @@ namespace Alis.App.Hub
                                          | ImGuiConfigFlags.DockingEnable
                                          | ImGuiConfigFlags.ViewportsEnable;
 
-            // Initialize optional ImGui extensions
             ImNodes.CreateContext();
             ImPlot.CreateContext();
             ImGuizMo.SetImGuiContext(imguiContext);
             ImGui.SetCurrentContext(imguiContext);
 
-            // Load fonts:
             LoadFonts();
 
-            // Configure style
             SetStyle();
 
             _spaceWork.OnInit();
             _spaceWork.OnStart();
 
-            // Inicializar estado del ratón para evitar tiempos a 0 que ImGui interpretaría como clicks recientes
             for (int i = 0; i < 5; i++)
             {
                 _mouseClicked[i] = false;
@@ -362,7 +319,6 @@ namespace Alis.App.Hub
 
             while (_spaceWork.IsRunning)
             {
-                // Update delta time for ImGui using high-resolution timer
                 double now = frameTimer.Elapsed.TotalSeconds;
                 double delta = now - lastTime;
                 lastTime = now;
@@ -384,7 +340,6 @@ namespace Alis.App.Hub
 
                 UpdateMousePosAndButtons();
 
-                // Forward text input characters from the native platform to ImGui (e.g. WM_CHAR on Windows)
                 if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
                 {
                     _spaceWork.io.AddInputCharactersUtf8(pendingChars);
@@ -400,7 +355,6 @@ namespace Alis.App.Hub
                     Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
                 }
 
-                // Frame pacing: sleep / spin until target frame time reached
                 double frameEnd = frameTimer.Elapsed.TotalSeconds;
                 double frameElapsed = frameEnd - now;
                 double sleepTime = targetFrameTime - frameElapsed;
@@ -409,11 +363,9 @@ namespace Alis.App.Hub
                     int sleepMs = (int) (sleepTime * 1000.0);
                     if (sleepMs > 0)
                     {
-                        // Sleep most of the remaining time (leave small margin for precision)
                         Thread.Sleep(sleepMs);
                     }
 
-                    // Busy-wait the rest for better precision
                     while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
                     {
                         Thread.SpinWait(10);
@@ -421,7 +373,6 @@ namespace Alis.App.Hub
                 }
             }
 
-            // Cleanup
             if (_vbo != 0)
             {
                 Gl.DeleteBuffer(_vbo);
@@ -460,7 +411,6 @@ namespace Alis.App.Hub
             ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
 
-            // Obtener estado del mouse desde la plataforma
             platform.GetMouseState(out int mouseX, out int mouseY, out bool[] mouseButtons);
             Debug.Assert((mouseButtons != null) && (mouseButtons.Length >= 3), "mouseButtons debe tener al menos 3 elementos");
 
@@ -473,7 +423,6 @@ namespace Alis.App.Hub
 
             //my = fbH - my; // Invertir coordenada Y para ImGui
 
-            // GL_VIEWPORT
             int[] viewport = new int[4];
             Gl.GlGetIntegerv(0x0BA2, viewport);
             glViewportWidth = viewport[2];
@@ -487,10 +436,8 @@ namespace Alis.App.Hub
             mx *= scaleX;
             my *= scaleY;
 
-            //Console.WriteLine($"Mouse Pos in windows: X={mx}, Y={my} | Display Framebuffer Size: W={glViewportWidth}, H={glViewportHeight} | Window Size: W={winW}, H={winH} | Window Pos: X={winX}, Y={winY} | Windows Space Windows {fbW}, {fbH} | Scale Factor: {scaleFactor} | Resolution Program: W={resolutionProgramX}, H={resolutionProgramY} ");
             io.AddMousePosEvent(mx, my);
 
-            // Actualizar estado de los botones (máximo 5 botones)
             for (int i = 0; i < 5; i++)
             {
                 bool isDown = (mouseButtons != null) && (i < mouseButtons.Length) ? mouseButtons[i] : false;
@@ -502,7 +449,6 @@ namespace Alis.App.Hub
                 }
             }
 
-            // Actualizar la rueda del mouse (vertical)
             float wheel = platform.GetMouseWheel();
             if (Math.Abs(wheel) > float.Epsilon)
             {
@@ -510,7 +456,6 @@ namespace Alis.App.Hub
                 Logger.Trace($"Rueda ratón: {wheel}");
             }
 
-            // Validación extra: ¿algún botón presionado?
             if (ImGui.IsAnyMouseDown())
             {
                 Logger.Trace("Algún botón de ratón está presionado.");
@@ -522,7 +467,6 @@ namespace Alis.App.Hub
         /// </summary>
         private void ProcessKeyWithImgui()
         {
-            // Control y edición
             if (platform.IsKeyDown(ConsoleKey.Backspace))
             {
                 _spaceWork.io.AddKeyEvent(ImGuiKey.Backspace, true);
@@ -640,7 +584,6 @@ namespace Alis.App.Hub
                 _spaceWork.io.AddKeyEvent(ImGuiKey.Delete, false);
             }
 
-            // Flechas
             if (platform.IsKeyDown(ConsoleKey.LeftArrow))
             {
                 _spaceWork.io.AddKeyEvent(ImGuiKey.LeftArrow, true);
@@ -677,7 +620,6 @@ namespace Alis.App.Hub
                 _spaceWork.io.AddKeyEvent(ImGuiKey.DownArrow, false);
             }
 
-            // Números fila superior
             if (platform.IsKeyDown(ConsoleKey.D0))
             {
                 _spaceWork.io.AddKeyEvent(ImGuiKey._0, true);
@@ -768,7 +710,6 @@ namespace Alis.App.Hub
                 _spaceWork.io.AddKeyEvent(ImGuiKey._9, false);
             }
 
-            // Letras A-Z
             if (platform.IsKeyDown(ConsoleKey.A))
             {
                 _spaceWork.io.AddKeyEvent(ImGuiKey.A, true);
@@ -1003,7 +944,6 @@ namespace Alis.App.Hub
                 _spaceWork.io.AddKeyEvent(ImGuiKey.Z, false);
             }
 
-            // Teclas de función
             if (platform.IsKeyDown(ConsoleKey.F1))
             {
                 _spaceWork.io.AddKeyEvent(ImGuiKey.F1, true);
@@ -1112,7 +1052,6 @@ namespace Alis.App.Hub
                 _spaceWork.io.AddKeyEvent(ImGuiKey.F12, false);
             }
 
-            // Teclado numérico
             if (platform.IsKeyDown(ConsoleKey.NumPad0))
             {
                 _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad0, true);
@@ -1248,7 +1187,6 @@ namespace Alis.App.Hub
                 _spaceWork.io.AddKeyEvent(ImGuiKey.KeypadDivide, false);
             }
 
-            // Puntuación / OEM
             if (platform.IsKeyDown(ConsoleKey.Oem1))
             {
                 _spaceWork.io.AddKeyEvent(ImGuiKey.Semicolon, true);
@@ -1379,7 +1317,6 @@ namespace Alis.App.Hub
                 iconRanges[1] = FontAwesome5.IconMax;
                 iconRanges[2] = 0;
 
-                // Allocate GCHandle to pin IconRanges in memory
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
@@ -1417,7 +1354,6 @@ namespace Alis.App.Hub
                 iconRanges[1] = FontAwesome5.IconMax;
                 iconRanges[2] = 0;
 
-                // Allocate GCHandle to pin IconRanges in memory
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
@@ -1454,7 +1390,6 @@ namespace Alis.App.Hub
                 iconRanges[1] = FontAwesome5.IconMax;
                 iconRanges[2] = 0;
 
-                // Allocate GCHandle to pin IconRanges in memory
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
@@ -1490,7 +1425,6 @@ namespace Alis.App.Hub
                 iconRanges[1] = FontAwesome5.IconMax;
                 iconRanges[2] = 0;
 
-                // Allocate GCHandle to pin IconRanges in memory
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
@@ -1527,7 +1461,6 @@ namespace Alis.App.Hub
                 iconRanges[1] = FontAwesome5.IconMax;
                 iconRanges[2] = 0;
 
-                // Allocate GCHandle to pin IconRanges in memory
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
@@ -1546,7 +1479,6 @@ namespace Alis.App.Hub
                 return;
             }
 
-            // Build font atlas and upload to GL
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int texWidth, out int texHeight, out int _);
             _spaceWork.FontTextureId = LoadTexture(pixelData, texWidth, texHeight);
             fonts.TexId = (IntPtr) _spaceWork.FontTextureId;
@@ -1560,248 +1492,166 @@ namespace Alis.App.Hub
         {
             ref ImGuiStyle style = ref ImGui.GetStyle();
 
-            // Main text color:
             style[(int) ImGuiCol.Text] = new Vector4F(1.0f, 1.0f, 1.0f, 1.0f);
 
-            // Disabled text color:
             style[(int) ImGuiCol.TextDisabled] = new Vector4F(0.5f, 0.5f, 0.5f, 1.0f);
 
-            // Main background color for windows
             style[(int) ImGuiCol.WindowBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
 
-            // Background color for child windows
             style[(int) ImGuiCol.ChildBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
 
-            // Background color for tooltips
             style[(int) ImGuiCol.PopupBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
 
-            // Border colors
             style[(int) ImGuiCol.Border] = new Vector4F(0.25f, 0.25f, 0.25f, 1.0f);
 
-            // Border shadow color
             style[(int) ImGuiCol.BorderShadow] = new Vector4F(0.0f, 0.0f, 0.0f, 0.0f);
 
-            // Frame background color
             style[(int) ImGuiCol.FrameBg] = new Vector4F(0.2f, 0.2f, 0.2f, 1.0f);
 
-            // Frame background color when hovered
             style[(int) ImGuiCol.FrameBgHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
-            // Frame background color when active
             style[(int) ImGuiCol.FrameBgActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
-            // Title bar background color
             style[(int) ImGuiCol.TitleBg] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
-            // Title bar background color when active
             style[(int) ImGuiCol.TitleBgActive] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
-            // Title bar background color when collapsed
             style[(int) ImGuiCol.TitleBgCollapsed] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
-            // Menu bar background color
             style[(int) ImGuiCol.MenuBarBg] = new Vector4F(0.15f, 0.15f, 0.15f, 1.0f);
 
-            // Scrollbar background color
             style[(int) ImGuiCol.ScrollbarBg] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
-            // Scrollbar grab color
             style[(int) ImGuiCol.ScrollbarGrab] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
-            // Scrollbar grab color when hovered
             style[(int) ImGuiCol.ScrollbarGrabHovered] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
-            // Scrollbar grab color when active
             style[(int) ImGuiCol.ScrollbarGrabActive] = new Vector4F(0.5f, 0.5f, 0.5f, 1.0f);
 
-            // Checkmark color
             style[(int) ImGuiCol.CheckMark] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
-            // Slider grab color
             style[(int) ImGuiCol.SliderGrab] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
-            // Slider grab color when active
             style[(int) ImGuiCol.SliderGrabActive] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
-            // Button color
             style[(int) ImGuiCol.Button] = new Vector4F(0.2f, 0.2f, 0.2f, 1.0f);
 
-            // Button color when hovered
             style[(int) ImGuiCol.ButtonHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
-            // Button color when active
             style[(int) ImGuiCol.ButtonActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
-            // Header color
             style[(int) ImGuiCol.Header] = new Vector4F(0.2f, 0.2f, 0.2f, 1.0f);
 
-            // Header color when hovered
             style[(int) ImGuiCol.HeaderHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
-            // Header color when active
             style[(int) ImGuiCol.HeaderActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
-            // Separator color
             style[(int) ImGuiCol.Separator] = new Vector4F(0.25f, 0.25f, 0.25f, 1.0f);
 
-            // Separator color when hovered
             style[(int) ImGuiCol.SeparatorHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
-            // Separator color when active
             style[(int) ImGuiCol.SeparatorActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
-            // Resize grip color
             style[(int) ImGuiCol.ResizeGrip] = new Vector4F(0.2f, 0.2f, 0.2f, 1.0f);
 
-            // Resize grip color when hovered
             style[(int) ImGuiCol.ResizeGripHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
-            // Resize grip color when active
             style[(int) ImGuiCol.ResizeGripActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
-            // Tab color
             style[(int) ImGuiCol.Tab] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
-            // Tab color when hovered
             style[(int) ImGuiCol.TabHovered] = new Vector4F(0.3f, 0.3f, 0.3f, 1.0f);
 
-            // Tab color when active
             style[(int) ImGuiCol.TabActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
-            // Tab color when active
             style[(int) ImGuiCol.TabUnfocused] = new Vector4F(0.1f, 0.1f, 0.1f, 1.0f);
 
-            // Tab color when active
             style[(int) ImGuiCol.TabUnfocusedActive] = new Vector4F(0.4f, 0.4f, 0.4f, 1.0f);
 
-            // Plot lines color
             style[(int) ImGuiCol.PlotLines] = new Vector4F(0.61f, 0.61f, 0.61f, 1.0f);
 
-            // Plot lines color when hovered
             style[(int) ImGuiCol.PlotLinesHovered] = new Vector4F(0.7f, 0.7f, 0.7f, 1.0f);
 
-            // Plot histogram color
             style[(int) ImGuiCol.PlotHistogram] = new Vector4F(0.61f, 0.61f, 0.61f, 1.0f);
 
-            // Plot histogram color when hovered
             style[(int) ImGuiCol.PlotHistogramHovered] = new Vector4F(0.7f, 0.7f, 0.7f, 1.0f);
 
-            // Text selected color
             style[(int) ImGuiCol.TextSelectedBg] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
-            // Drag and drop target color
             style[(int) ImGuiCol.DragDropTarget] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
-            // Nav highlight color
             style[(int) ImGuiCol.NavHighlight] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
-            // Nav windowing highlight color
             style[(int) ImGuiCol.NavWindowingHighlight] = new Vector4F(0.26f, 0.59f, 0.98f, 1.0f);
 
-            // Nav windowing dim background color
             style[(int) ImGuiCol.NavWindowingDimBg] = new Vector4F(0.2f, 0.2f, 0.2f, 0.6f);
 
-            // Modal window dim background color
             style[(int) ImGuiCol.ModalWindowDimBg] = new Vector4F(0.2f, 0.2f, 0.2f, 0.6f);
 
-            // SETTING STYLE
-            // WindowRounding
             style.WindowRounding = 0.0f;
 
-            // ChildRounding
             style.ChildRounding = 3.0f;
 
-            // FrameRounding
             style.FrameRounding = 3.0f;
 
-            // PopupRounding
             style.PopupRounding = 1.0f;
 
-            // ScrollbarRounding
             style.ScrollbarRounding = 2.0f;
 
-            // GrabRounding
             style.GrabRounding = 1.0f;
 
-            // logSliderDeadzone
             style.LogSliderDeadzone = 4.0f;
 
-            // TabRounding
             style.TabRounding = 3.0f;
 
-            // Window border size
             style.WindowBorderSize = 1.0f;
 
-            // Child window border size
             style.ChildBorderSize = 1.0f;
 
-            // Popup border size
             style.PopupBorderSize = 1.0f;
 
-            // Frame border size
             style.FrameBorderSize = 0.0f;
 
-            // Tab border size
             style.TabBorderSize = 0.0f;
 
-            // Window padding
             style.WindowPadding = new Vector2F(4, 4);
 
-            // Frame padding
             style.FramePadding = new Vector2F(7, 7);
 
-            // Item spacing
             style.ItemSpacing = new Vector2F(6, 6);
 
-            // Inner item spacing
             style.ItemInnerSpacing = new Vector2F(6, 6);
 
-            // Cell padding
             style.CellPadding = new Vector2F(10, 10);
 
-            // Touch extra padding
             style.TouchExtraPadding = new Vector2F(0, 0);
 
-            // Indent spacing
             style.IndentSpacing = 21;
 
-            // Scrollbar size
             style.ScrollbarSize = 13;
 
-            // Minimum grab size
             style.GrabMinSize = 13;
 
-            // Window title alignment
             style.WindowTitleAlign = new Vector2F(0.5f, 0.5f);
 
-            // Window menu button position
             style.WindowMenuButtonPosition = ImGuiDir.None;
 
-            // Color button position
             style.ColorButtonPosition = 0;
 
-            // Button text alignment
             style.ButtonTextAlign = new Vector2F(0.5f, 0.5f);
 
-            // Display window padding
             style.DisplayWindowPadding = new Vector2F(19, 19);
 
-            // Display safe area padding
             style.DisplaySafeAreaPadding = new Vector2F(3, 3);
 
-            // Enable anti-aliased lines
             style.AntiAliasedLines = 1;
 
-            // Enable anti-aliased fill
             style.AntiAliasedFill = 1;
 
-            // Curve tessellation tolerance
             style.CurveTessellationTol = 1.25f;
 
-            // Circle tessellation max error
             style.CircleTessellationMaxError = 0.2f;
 
-            // Circle tessellation max error
             style.Alpha = 1.0f;
 
             style.DisabledAlpha = 0.6f;
@@ -1820,7 +1670,6 @@ namespace Alis.App.Hub
 
             ImGui.NewFrame();
 
-            // Only call DockSpaceOverViewport if docking is enabled in ImGui config flags
             if ((_spaceWork.io.ConfigFlags & ImGuiConfigFlags.DockingEnable) != 0)
             {
                 ImGui.DockSpaceOverViewport();
@@ -1836,7 +1685,6 @@ namespace Alis.App.Hub
             ImDrawData drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
 
-            // No exception-handling here; platform may reset wheel internally if needed.
         }
 
         /// <summary>
@@ -1857,7 +1705,6 @@ namespace Alis.App.Hub
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
 
-            // Obtener el viewport real del framebuffer
             int[] viewport = new int[4];
             Gl.GlGetIntegerv(0x0BA2, viewport); // 0x0BA2 = GL_VIEWPORT
             int fbWidth = viewport[2];
@@ -1917,7 +1764,6 @@ namespace Alis.App.Hub
                     ImDrawCmd pcmd = cmdList.CmdBuffer[cmdi];
                     if (pcmd.UserCallback != IntPtr.Zero)
                     {
-                        // User callbacks are not handled in this sample
                     }
                     else
                     {
@@ -1989,8 +1835,6 @@ namespace Alis.App.Hub
             return true;
         }
 
-        // Loads a font from an input stream into unmanaged memory and returns the IntPtr to the data buffer.
-        // Note: The caller is responsible for memory lifetime if the native API expects it to remain valid.
         /// <summary>
         ///     Loads the font from resource using the specified stream
         /// </summary>

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:CommandBufferAdvancedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
@@ -53,10 +26,8 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_CanBeCreated()
         {
-            // Act
             CommandBuffer buffer = new CommandBuffer(new Scene());
 
-            // Assert
             Assert.NotNull(buffer);
         }
 
@@ -70,21 +41,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_CanBatchEntityCreation()
         {
-            // Arrange
             Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(new Scene());
 
-            // Act
             for (int i = 0; i < 10; i++)
             {
-                // In a real scenario, you'd queue entity creation through the buffer
                 scene.Create();
             }
 
-            // Assert
             Assert.NotNull(buffer);
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -98,18 +64,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_CanDeferComponentAdditions()
         {
-            // Arrange
             Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(new Scene());
             GameObject entity = scene.Create();
 
-            // Act
             entity.Add(new Position());
 
-            // Assert
             Assert.True(entity.Has<Position>());
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -123,12 +85,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_DoesNotBreakQueriesDuringDeferredOps()
         {
-            // Arrange
             Scene scene = new Scene();
             GameObject e1 = scene.Create();
             e1.Add(new Position());
 
-            // Act
             e1.Add(new Velocity());
             Query query = scene.Query<With<Position>>();
 
@@ -138,10 +98,8 @@ namespace Alis.Core.Ecs.Test.Kernel
                 count++;
             }
 
-            // Assert
             Assert.Equal(1, count);
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -155,11 +113,9 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_CanBeClearedIfNeeded()
         {
-            // Arrange
             CommandBuffer buffer1 = new CommandBuffer(new Scene());
             CommandBuffer buffer2 = new CommandBuffer(new Scene());
 
-            // Assert
             Assert.NotNull(buffer1);
             Assert.NotNull(buffer2);
         }
@@ -174,23 +130,19 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_MultipleBuffersCanCoexist()
         {
-            // Arrange
             Scene scene = new Scene();
             CommandBuffer buffer1 = new CommandBuffer(new Scene());
             CommandBuffer buffer2 = new CommandBuffer(new Scene());
             CommandBuffer buffer3 = new CommandBuffer(new Scene());
 
-            // Act
             GameObject e1 = scene.Create();
             GameObject e2 = scene.Create();
             GameObject e3 = scene.Create();
 
-            // Assert
             Assert.NotNull(buffer1);
             Assert.NotNull(buffer2);
             Assert.NotNull(buffer3);
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -205,10 +157,8 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_HandlesMixedOperations()
         {
-            // Arrange
             Scene scene = new Scene();
 
-            // Act
             GameObject e1 = scene.Create();
             e1.Add(new Position());
 
@@ -217,12 +167,10 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             e1.Add(new Velocity());
 
-            // Assert
             Assert.True(e1.Has<Position>());
             Assert.True(e1.Has<Velocity>());
             Assert.True(e2.Has<Health>());
 
-            // Cleanup
             scene.Dispose();
         }
     }

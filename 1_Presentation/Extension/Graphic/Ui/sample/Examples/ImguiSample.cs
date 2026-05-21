@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ImguiSample.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Diagnostics;
@@ -110,7 +83,6 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         /// <param name="platform">The platform</param>
         public ImguiSample(INativePlatform platform) => _platform = platform;
 
-        // Parameterless constructor to allow alternate build contexts
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImguiSample" /> class
         /// </summary>
@@ -122,11 +94,9 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         /// </summary>
         public void Initialize()
         {
-            // Ensure the native GL context is current before creating GL resources.
             Debug.Assert(_platform != null, "Platform must be provided before Initialize is called.");
             _platform?.MakeContextCurrent();
 
-            // Create or reuse ImGui context
             IntPtr currentCtx = ImGui.GetCurrentContext();
             if (currentCtx == IntPtr.Zero)
             {
@@ -142,21 +112,18 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO must be valid after creating or setting context.");
 
-            // Backend capabilities
             io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors | ImGuiBackendFlags.HasSetMousePos;
             io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
             ImGui.StyleColorsDark();
 
             style = ImGui.GetStyle();
 
-            // Build and upload font atlas to GL
             ImFontAtlasPtr fonts = io.Fonts;
             fonts.GetTexDataAsRgba32(out IntPtr pixelPtr, out int widthPtr, out int heightPtr);
 
             if ((pixelPtr != IntPtr.Zero) && (widthPtr > 0) && (heightPtr > 0))
             {
                 Debug.Assert(_platform != null, "Platform required to upload font texture.");
-                // Ensure context is current (best-effort). MakeContextCurrent is void; assume host handles errors.
                 _platform.MakeContextCurrent();
 
                 _fontTexture = Gl.GenTexture();
@@ -175,11 +142,9 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
                     Logger.Info($"GL error after TexImage2D: 0x{errPtr:X}");
                 }
 
-                // Inform ImGui about the texture id
                 fonts.SetTexId((IntPtr) _fontTexture);
             }
 
-            // Create simple shader program
             const string vertexShaderSource = "#version 330 core\n" +
                                               "layout (location = 0) in vec2 Position;\n" +
                                               "layout (location = 1) in vec2 UV;\n" +
@@ -224,7 +189,6 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             Gl.GlDeleteShader(vert);
             Gl.GlDeleteShader(frag);
 
-            // Create VAO/VBO/EBO and configure vertex attributes
             _vao = Gl.GenVertexArray();
             _vbo = Gl.GenBuffer();
             _ebo = Gl.GenBuffer();
@@ -255,7 +219,6 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
 
             ImGui.NewFrame();
 
-            // Only call DockSpaceOverViewport if docking is enabled in ImGui config flags
             if ((io.ConfigFlags & ImGuiConfigFlags.DockingEnable) != 0)
             {
                 ImGui.DockSpaceOverViewport();
@@ -283,7 +246,6 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             ImDrawData drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
 
-            // No exception-handling here; platform may reset wheel internally if needed.
         }
 
         /// <summary>
@@ -337,15 +299,12 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
 
-            // Obtener el viewport real del framebuffer
             int[] viewport = new int[4];
             Gl.GlGetIntegerv(0x0BA2, viewport); // 0x0BA2 = GL_VIEWPORT
             int fbWidth = viewport[2];
             int fbHeight = viewport[3];
             ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
             imGuiIoPtr.DisplaySize = new Vector2F(fbWidth, fbHeight);
-            //imGuiIoPtr.DisplayFramebufferScale = new Alis.Core.Aspect.Math.Vector.Vector2F(
-            //    fbWidth / imGuiIoPtr.DisplaySize.X,
             //    fbHeight / imGuiIoPtr.DisplaySize.Y);
 
             if (firsttime)
@@ -403,7 +362,6 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
                     ImDrawCmd pcmd = cmdList.CmdBuffer[cmdi];
                     if (pcmd.UserCallback != IntPtr.Zero)
                     {
-                        // User callbacks are not handled in this sample
                     }
                     else
                     {

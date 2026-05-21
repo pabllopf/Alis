@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:BoxCollider.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Runtime.InteropServices;
@@ -441,7 +414,6 @@ namespace Alis.Core.Ecs.Components.Collider
         }";
 
 
-            // Crear y compilar shaders
             shaderProgram = Gl.GlCreateProgram();
             uint vert = Gl.GlCreateShader(ShaderType.VertexShader);
             Gl.ShaderSource(vert, VertexShaderSource);
@@ -457,7 +429,6 @@ namespace Alis.Core.Ecs.Components.Collider
             Gl.GlLinkProgram(shaderProgram);
 
 
-            // Crear VAO y VBO
             vao = Gl.GenVertexArray();
             Gl.GlBindVertexArray(vao);
             uint[] vbos = new uint[1];
@@ -535,13 +506,11 @@ namespace Alis.Core.Ecs.Components.Collider
             float rectangleW = (int) width;
             float rectangleH = (int) height;
 
-            // Calcular los vértices en NDC usando rectangleX, rectangleY, rectangleW, rectangleH
             float left = rectangleX / cameraResolution.X * 2.0f - 1.0f;
             float right = (rectangleX + rectangleW) / cameraResolution.X * 2.0f - 1.0f;
             float top = rectangleY / cameraResolution.Y * 2.0f - 1.0f;
             float bottom = (rectangleY + rectangleH) / cameraResolution.Y * 2.0f - 1.0f;
 
-            // Vértices del rectángulo (en sentido antihorario: bottom-left, top-left, top-right, bottom-right)
             float[] rectVertices = new[]
             {
                 left, bottom, // bottom-left
@@ -553,7 +522,6 @@ namespace Alis.Core.Ecs.Components.Collider
             Gl.GlUseProgram(shaderProgram);
             Gl.GlBindVertexArray(vao);
 
-            // Actualizar VBO dinámicamente (sin unsafe)
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
             GCHandle handle = GCHandle.Alloc(rectVertices, GCHandleType.Pinned);
             try
@@ -569,7 +537,6 @@ namespace Alis.Core.Ecs.Components.Collider
                 }
             }
 
-            // Dibujar solo los bordes del rectángulo
             Gl.GlDrawArrays(PrimitiveType.LineLoop, 0, 4);
             Gl.GlBindVertexArray(0);
         }

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:TuneTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -46,10 +19,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_Auto_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             Tune tune = Tune.Auto;
 
-            // Assert
             Assert.Equal(0, (int) tune);
         }
 
@@ -59,10 +30,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_Film_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             Tune tune = Tune.Film;
 
-            // Assert
             Assert.Equal(1, (int) tune);
         }
 
@@ -72,10 +41,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_Animation_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             Tune tune = Tune.Animation;
 
-            // Assert
             Assert.Equal(2, (int) tune);
         }
 
@@ -85,10 +52,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_Grain_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             Tune tune = Tune.Grain;
 
-            // Assert
             Assert.Equal(3, (int) tune);
         }
 
@@ -98,10 +63,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_StillImage_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             Tune tune = Tune.StillImage;
 
-            // Assert
             Assert.Equal(4, (int) tune);
         }
 
@@ -111,10 +74,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_FastDecode_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             Tune tune = Tune.FastDecode;
 
-            // Assert
             Assert.Equal(5, (int) tune);
         }
 
@@ -124,10 +85,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_ZeroLatency_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             Tune tune = Tune.ZeroLatency;
 
-            // Assert
             Assert.Equal(6, (int) tune);
         }
 
@@ -137,10 +96,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_Enum_ShouldHaveSevenValues()
         {
-            // Arrange & Act
             Tune[] values = (Tune[]) Enum.GetValues(typeof(Tune));
 
-            // Assert
             Assert.Equal(7, values.Length);
         }
 
@@ -150,17 +107,14 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_ShouldBeConvertibleToString()
         {
-            // Arrange
             Tune auto = Tune.Auto;
             Tune film = Tune.Film;
             Tune animation = Tune.Animation;
 
-            // Act
             string autoStr = auto.ToString();
             string filmStr = film.ToString();
             string animationStr = animation.ToString();
 
-            // Assert
             Assert.Equal("Auto", autoStr);
             Assert.Equal("Film", filmStr);
             Assert.Equal("Animation", animationStr);
@@ -172,11 +126,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_ShouldBeParseableFromString()
         {
-            // Arrange & Act
             Tune grain = (Tune) Enum.Parse(typeof(Tune), "Grain");
             Tune zeroLatency = (Tune) Enum.Parse(typeof(Tune), "ZeroLatency");
 
-            // Assert
             Assert.Equal(Tune.Grain, grain);
             Assert.Equal(Tune.ZeroLatency, zeroLatency);
         }
@@ -187,12 +139,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_ShouldSupportEqualityComparison()
         {
-            // Arrange
             Tune film1 = Tune.Film;
             Tune film2 = Tune.Film;
             Tune grain = Tune.Grain;
 
-            // Act & Assert
             Assert.Equal(film1, film2);
             Assert.NotEqual(film1, grain);
         }
@@ -203,17 +153,14 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_ToLowerInvariant_ShouldWorkCorrectly()
         {
-            // Arrange
             Tune auto = Tune.Auto;
             Tune stillImage = Tune.StillImage;
             Tune fastDecode = Tune.FastDecode;
 
-            // Act
             string autoLower = auto.ToString().ToLowerInvariant();
             string stillImageLower = stillImage.ToString().ToLowerInvariant();
             string fastDecodeLower = fastDecode.ToString().ToLowerInvariant();
 
-            // Assert
             Assert.Equal("auto", autoLower);
             Assert.Equal("stillimage", stillImageLower);
             Assert.Equal("fastdecode", fastDecodeLower);
@@ -225,7 +172,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_AllValues_ShouldBeDefined()
         {
-            // Arrange & Act & Assert
             Assert.True(Enum.IsDefined(typeof(Tune), Tune.Auto));
             Assert.True(Enum.IsDefined(typeof(Tune), Tune.Film));
             Assert.True(Enum.IsDefined(typeof(Tune), Tune.Animation));
@@ -241,7 +187,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_ShouldHaveUniqueValues()
         {
-            // Arrange
             int[] values = new[]
             {
                 (int) Tune.Auto,
@@ -253,7 +198,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
                 (int) Tune.ZeroLatency
             };
 
-            // Act & Assert
             Assert.Equal(values.Length, new HashSet<int>(values).Count);
         }
 
@@ -263,13 +207,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_ShouldBeCastableToInt()
         {
-            // Arrange
             Tune tune = Tune.Animation;
 
-            // Act
             int value = (int) tune;
 
-            // Assert
             Assert.Equal(2, value);
         }
 
@@ -279,13 +220,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_ShouldBeCastableFromInt()
         {
-            // Arrange
             int value = 5;
 
-            // Act
             Tune tune = (Tune) value;
 
-            // Assert
             Assert.Equal(Tune.FastDecode, tune);
         }
 
@@ -295,11 +233,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Tune_ShouldBeUsableInSwitchStatement()
         {
-            // Arrange
             Tune tune = Tune.Film;
             string result = string.Empty;
 
-            // Act
             switch (tune)
             {
                 case Tune.Auto:
@@ -325,7 +261,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
                     break;
             }
 
-            // Assert
             Assert.Equal("Film", result);
         }
     }

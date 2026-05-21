@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:OpenAlTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Runtime.InteropServices;
@@ -48,13 +21,10 @@ namespace Alis.Core.Audio.Test.Players
         {
             try
             {
-                // Arrange & Act
                 IntPtr device = OpenAl.alcOpenDevice(null);
 
-                // Assert - Method callable without exception
                 Assert.True(true);
 
-                // Cleanup if device was opened
                 if (device != IntPtr.Zero)
                 {
                     OpenAl.alcCloseDevice(device);
@@ -62,7 +32,6 @@ namespace Alis.Core.Audio.Test.Players
             }
             catch (Exception ex)
             {
-                // OpenAL not available in test environment
                 Assert.Contains("openal", ex.Message.ToLower());
             }
         }
@@ -75,16 +44,12 @@ namespace Alis.Core.Audio.Test.Players
         {
             try
             {
-                // Arrange
                 string deviceName = "TestDevice";
 
-                // Act
                 IntPtr device = OpenAl.alcOpenDevice(deviceName);
 
-                // Assert - Method callable with parameter
                 Assert.True(true);
 
-                // Cleanup if device was opened
                 if (device != IntPtr.Zero)
                 {
                     OpenAl.alcCloseDevice(device);
@@ -92,7 +57,6 @@ namespace Alis.Core.Audio.Test.Players
             }
             catch (Exception ex)
             {
-                // OpenAL not available or device not found
                 Assert.True(true);
             }
         }
@@ -105,24 +69,19 @@ namespace Alis.Core.Audio.Test.Players
         {
             try
             {
-                // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
 
                 if (device != IntPtr.Zero)
                 {
-                    // Act
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
 
-                    // Assert - Method callable
                     Assert.True(true);
 
-                    // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
             }
             catch (Exception ex)
             {
-                // OpenAL not available
                 Assert.True(true);
             }
         }
@@ -135,26 +94,21 @@ namespace Alis.Core.Audio.Test.Players
         {
             try
             {
-                // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
 
                 if (device != IntPtr.Zero)
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
 
-                    // Act
                     bool result = OpenAl.alcMakeContextCurrent(context);
 
-                    // Assert - Method callable
                     Assert.True(true);
 
-                    // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
             }
             catch (Exception ex)
             {
-                // OpenAL not available
                 Assert.True(true);
             }
         }
@@ -167,21 +121,17 @@ namespace Alis.Core.Audio.Test.Players
         {
             try
             {
-                // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
 
                 if (device != IntPtr.Zero)
                 {
-                    // Act
                     bool result = OpenAl.alcCloseDevice(device);
 
-                    // Assert - Method callable
                     Assert.True(true);
                 }
             }
             catch (Exception ex)
             {
-                // OpenAL not available
                 Assert.True(true);
             }
         }
@@ -194,7 +144,6 @@ namespace Alis.Core.Audio.Test.Players
         {
             try
             {
-                // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
 
                 if (device != IntPtr.Zero)
@@ -202,13 +151,10 @@ namespace Alis.Core.Audio.Test.Players
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
 
-                    // Act
                     OpenAl.alGenSources(1, out uint source);
 
-                    // Assert - Method callable and generates source
                     Assert.True(true);
 
-                    // Cleanup
                     if (source != 0)
                     {
                         OpenAl.alDeleteSources(1, ref source);
@@ -219,7 +165,6 @@ namespace Alis.Core.Audio.Test.Players
             }
             catch (Exception ex)
             {
-                // OpenAL not available
                 Assert.True(true);
             }
         }
@@ -232,7 +177,6 @@ namespace Alis.Core.Audio.Test.Players
         {
             try
             {
-                // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
 
                 if (device != IntPtr.Zero)
@@ -241,19 +185,15 @@ namespace Alis.Core.Audio.Test.Players
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
 
-                    // Act
                     OpenAl.alDeleteSources(1, ref source);
 
-                    // Assert - Method callable
                     Assert.True(true);
 
-                    // Cleanup
                     OpenAl.alcCloseDevice(device);
                 }
             }
             catch (Exception ex)
             {
-                // OpenAL not available
                 Assert.True(true);
             }
         }
@@ -266,7 +206,6 @@ namespace Alis.Core.Audio.Test.Players
         {
             try
             {
-                // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
 
                 if (device != IntPtr.Zero)
@@ -275,20 +214,16 @@ namespace Alis.Core.Audio.Test.Players
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
 
-                    // Act
                     OpenAl.alSourcePlay(source);
 
-                    // Assert - Method callable
                     Assert.True(true);
 
-                    // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alcCloseDevice(device);
                 }
             }
             catch (Exception ex)
             {
-                // OpenAL not available
                 Assert.True(true);
             }
         }
@@ -301,7 +236,6 @@ namespace Alis.Core.Audio.Test.Players
         {
             try
             {
-                // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
 
                 if (device != IntPtr.Zero)
@@ -310,20 +244,16 @@ namespace Alis.Core.Audio.Test.Players
                     OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
 
-                    // Act
                     OpenAl.alSourceStop(source);
 
-                    // Assert - Method callable
                     Assert.True(true);
 
-                    // Cleanup
                     OpenAl.alDeleteSources(1, ref source);
                     OpenAl.alcCloseDevice(device);
                 }
             }
             catch (Exception ex)
             {
-                // OpenAL not available
                 Assert.True(true);
             }
         }
@@ -336,7 +266,6 @@ namespace Alis.Core.Audio.Test.Players
         {
             try
             {
-                // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
 
                 if (device != IntPtr.Zero)
@@ -344,13 +273,10 @@ namespace Alis.Core.Audio.Test.Players
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
                     OpenAl.alcMakeContextCurrent(context);
 
-                    // Act
                     OpenAl.alGenBuffers(1, out uint buffer);
 
-                    // Assert - Method callable and generates buffer
                     Assert.True(true);
 
-                    // Cleanup
                     if (buffer != 0)
                     {
                         OpenAl.alDeleteBuffers(1, ref buffer);
@@ -361,7 +287,6 @@ namespace Alis.Core.Audio.Test.Players
             }
             catch (Exception ex)
             {
-                // OpenAL not available
                 Assert.True(true);
             }
         }
@@ -374,7 +299,6 @@ namespace Alis.Core.Audio.Test.Players
         {
             try
             {
-                // Arrange
                 IntPtr device = OpenAl.alcOpenDevice(null);
 
                 if (device != IntPtr.Zero)

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WheelJoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -394,12 +367,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
 
-            // Compute the effective masses.
             Vector2F rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             Vector2F rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
             Vector2F d1 = cB + rB - cA - rA;
 
-            // Point to line constraint
             {
                 _ay = Complex.Multiply(ref _localYAxis, ref qA);
                 _sAy = MathUtils.Cross(d1 + rA, _ay);
@@ -413,10 +384,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 }
             }
 
-            // Spring constraint
             CalculateSpringConstraints(ref qA, ref d1, ref rA, ref rB, mA, mB, iA, iB, data.Step.Dt);
 
-            // Rotational motor
             if (_enableMotor)
             {
                 _motorMass = iA + iB;
@@ -524,7 +493,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2F vB = data.Velocities[_indexB].V;
             float wB = data.Velocities[_indexB].W;
 
-            // Solve spring constraint
             {
                 float cdot = Vector2F.Dot(_ax, vB - vA) + _sBx * wB - _sAx * wA;
                 float impulse = -_springMass * (cdot + _bias + _gamma * _springImpulse);
@@ -541,7 +509,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 wB += iB * lb;
             }
 
-            // Solve rotational motor constraint
             {
                 float cdot = wB - wA - _motorSpeed;
                 float impulse = -_motorMass * cdot;
@@ -555,7 +522,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 wB += iB * impulse;
             }
 
-            // Solve point to line constraint
             {
                 float cdot = Vector2F.Dot(_ay, vB - vA) + _sBy * wB - _sAy * wA;
                 float impulse = -_mass * cdot;

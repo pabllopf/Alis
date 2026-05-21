@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ProfileSnapshotTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Profile.Models;
@@ -44,14 +17,12 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_InitializesAllProperties_Correctly()
         {
-            // Arrange
             TimeSpan expectedElapsed = TimeSpan.FromMilliseconds(500);
             ResourceMetrics startMetrics = new ResourceMetrics(100, 1024, 5, 2, DateTime.Now);
             ResourceMetrics endMetrics = new ResourceMetrics(200, 2048, 7, 3, DateTime.Now);
             DateTime startTime = DateTime.Now.AddSeconds(-1);
             DateTime endTime = DateTime.Now;
 
-            // Act
             ProfileSnapshot snapshot = new ProfileSnapshot(
                 expectedElapsed,
                 startMetrics,
@@ -59,7 +30,6 @@ namespace Alis.Extension.Profile.Test.Models
                 startTime,
                 endTime);
 
-            // Assert
             Assert.Equal(expectedElapsed, snapshot.ElapsedTime);
             Assert.Equal(startMetrics, snapshot.StartMetrics);
             Assert.Equal(endMetrics, snapshot.EndMetrics);
@@ -73,12 +43,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_ThrowsException_WhenElapsedTimeIsNegative()
         {
-            // Arrange
             TimeSpan negativeTime = TimeSpan.FromMilliseconds(-100);
             ResourceMetrics metrics = ResourceMetrics.Empty;
             DateTime now = DateTime.Now;
 
-            // Act & Assert
             Assert.Throws<ArgumentException>(() =>
                 new ProfileSnapshot(negativeTime, metrics, metrics, now, now));
         }
@@ -89,13 +57,11 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_ThrowsException_WhenEndTimeIsBeforeStartTime()
         {
-            // Arrange
             TimeSpan elapsed = TimeSpan.FromMilliseconds(100);
             ResourceMetrics metrics = ResourceMetrics.Empty;
             DateTime startTime = DateTime.Now;
             DateTime endTime = startTime.AddSeconds(-1); // End before start
 
-            // Act & Assert
             Assert.Throws<ArgumentException>(() =>
                 new ProfileSnapshot(elapsed, metrics, metrics, startTime, endTime));
         }
@@ -106,12 +72,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void CpuUsageDelta_CalculatesCorrectly()
         {
-            // Arrange
             ResourceMetrics startMetrics = new ResourceMetrics(100, 1024, 5, 2, DateTime.Now);
             ResourceMetrics endMetrics = new ResourceMetrics(250, 2048, 7, 3, DateTime.Now);
             DateTime now = DateTime.Now;
 
-            // Act
             ProfileSnapshot snapshot = new ProfileSnapshot(
                 TimeSpan.FromMilliseconds(100),
                 startMetrics,
@@ -119,7 +83,6 @@ namespace Alis.Extension.Profile.Test.Models
                 now,
                 now);
 
-            // Assert
             Assert.Equal(150, snapshot.CpuUsageDelta);
         }
 
@@ -129,12 +92,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void MemoryUsageDelta_CalculatesCorrectly()
         {
-            // Arrange
             ResourceMetrics startMetrics = new ResourceMetrics(100, 1024, 5, 2, DateTime.Now);
             ResourceMetrics endMetrics = new ResourceMetrics(100, 3072, 5, 2, DateTime.Now);
             DateTime now = DateTime.Now;
 
-            // Act
             ProfileSnapshot snapshot = new ProfileSnapshot(
                 TimeSpan.FromMilliseconds(100),
                 startMetrics,
@@ -142,7 +103,6 @@ namespace Alis.Extension.Profile.Test.Models
                 now,
                 now);
 
-            // Assert
             Assert.Equal(2048, snapshot.MemoryUsageDelta);
         }
 
@@ -152,12 +112,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void GarbageCollectionsDuringProfiling_CalculatesCorrectly()
         {
-            // Arrange
             ResourceMetrics startMetrics = new ResourceMetrics(100, 1024, 5, 2, DateTime.Now);
             ResourceMetrics endMetrics = new ResourceMetrics(100, 1024, 12, 2, DateTime.Now);
             DateTime now = DateTime.Now;
 
-            // Act
             ProfileSnapshot snapshot = new ProfileSnapshot(
                 TimeSpan.FromMilliseconds(100),
                 startMetrics,
@@ -165,7 +123,6 @@ namespace Alis.Extension.Profile.Test.Models
                 now,
                 now);
 
-            // Assert
             Assert.Equal(7, snapshot.GarbageCollectionsDuringProfiling);
         }
 
@@ -175,10 +132,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Empty_ReturnsSnapshot_WithDefaultValues()
         {
-            // Act
             ProfileSnapshot empty = ProfileSnapshot.Empty;
 
-            // Assert
             Assert.Equal(TimeSpan.Zero, empty.ElapsedTime);
             Assert.Equal(ResourceMetrics.Empty, empty.StartMetrics);
             Assert.Equal(ResourceMetrics.Empty, empty.EndMetrics);
@@ -192,7 +147,6 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsTrue_ForIdenticalSnapshots()
         {
-            // Arrange
             TimeSpan elapsed = TimeSpan.FromMilliseconds(500);
             ResourceMetrics startMetrics = new ResourceMetrics(100, 1024, 5, 2, DateTime.Now);
             ResourceMetrics endMetrics = new ResourceMetrics(200, 2048, 7, 3, DateTime.Now);
@@ -202,7 +156,6 @@ namespace Alis.Extension.Profile.Test.Models
             ProfileSnapshot snapshot1 = new ProfileSnapshot(elapsed, startMetrics, endMetrics, startTime, endTime);
             ProfileSnapshot snapshot2 = new ProfileSnapshot(elapsed, startMetrics, endMetrics, startTime, endTime);
 
-            // Act & Assert
             Assert.True(snapshot1.Equals(snapshot2));
             Assert.True(snapshot1 == snapshot2);
             Assert.False(snapshot1 != snapshot2);
@@ -214,7 +167,6 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalse_ForDifferentSnapshots()
         {
-            // Arrange
             ResourceMetrics metrics = ResourceMetrics.Empty;
             DateTime now = DateTime.Now;
 
@@ -223,7 +175,6 @@ namespace Alis.Extension.Profile.Test.Models
             ProfileSnapshot snapshot2 = new ProfileSnapshot(
                 TimeSpan.FromMilliseconds(200), metrics, metrics, now, now);
 
-            // Act & Assert
             Assert.False(snapshot1.Equals(snapshot2));
             Assert.False(snapshot1 == snapshot2);
             Assert.True(snapshot1 != snapshot2);
@@ -235,7 +186,6 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void GetHashCode_ReturnsSameValue_ForIdenticalSnapshots()
         {
-            // Arrange
             TimeSpan elapsed = TimeSpan.FromMilliseconds(500);
             ResourceMetrics startMetrics = new ResourceMetrics(100, 1024, 5, 2, DateTime.Now);
             ResourceMetrics endMetrics = new ResourceMetrics(200, 2048, 7, 3, DateTime.Now);
@@ -245,7 +195,6 @@ namespace Alis.Extension.Profile.Test.Models
             ProfileSnapshot snapshot1 = new ProfileSnapshot(elapsed, startMetrics, endMetrics, startTime, endTime);
             ProfileSnapshot snapshot2 = new ProfileSnapshot(elapsed, startMetrics, endMetrics, startTime, endTime);
 
-            // Act & Assert
             Assert.Equal(snapshot1.GetHashCode(), snapshot2.GetHashCode());
         }
 
@@ -255,7 +204,6 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void ToString_ReturnsFormattedString()
         {
-            // Arrange
             DateTime startTime = new DateTime(2026, 2, 25, 10, 30, 45, 0);
             DateTime endTime = startTime.AddMilliseconds(500);
             ResourceMetrics startMetrics = new ResourceMetrics(100, 1024, 5, 2, startTime);
@@ -268,10 +216,8 @@ namespace Alis.Extension.Profile.Test.Models
                 startTime,
                 endTime);
 
-            // Act
             string result = snapshot.ToString();
 
-            // Assert
             Assert.Contains("500", result);
             Assert.Contains("ProfileSnapshot", result);
         }
@@ -282,10 +228,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalse_WhenComparingWithNull()
         {
-            // Arrange
             ProfileSnapshot snapshot = ProfileSnapshot.Empty;
 
-            // Act & Assert
             Assert.False(snapshot.Equals(null));
         }
 
@@ -295,12 +239,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void CpuUsageDelta_CanBeNegative_WhenEndIsLessThanStart()
         {
-            // Arrange
             ResourceMetrics startMetrics = new ResourceMetrics(200, 1024, 5, 2, DateTime.Now);
             ResourceMetrics endMetrics = new ResourceMetrics(100, 1024, 5, 2, DateTime.Now);
             DateTime now = DateTime.Now;
 
-            // Act
             ProfileSnapshot snapshot = new ProfileSnapshot(
                 TimeSpan.FromMilliseconds(100),
                 startMetrics,
@@ -308,7 +250,6 @@ namespace Alis.Extension.Profile.Test.Models
                 now,
                 now);
 
-            // Assert
             Assert.Equal(-100, snapshot.CpuUsageDelta);
         }
 
@@ -318,12 +259,10 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void MemoryUsageDelta_CanBeNegative_WhenEndIsLessThanStart()
         {
-            // Arrange
             ResourceMetrics startMetrics = new ResourceMetrics(100, 3072, 5, 2, DateTime.Now);
             ResourceMetrics endMetrics = new ResourceMetrics(100, 1024, 5, 2, DateTime.Now);
             DateTime now = DateTime.Now;
 
-            // Act
             ProfileSnapshot snapshot = new ProfileSnapshot(
                 TimeSpan.FromMilliseconds(100),
                 startMetrics,
@@ -331,7 +270,6 @@ namespace Alis.Extension.Profile.Test.Models
                 now,
                 now);
 
-            // Assert
             Assert.Equal(-2048, snapshot.MemoryUsageDelta);
         }
     }

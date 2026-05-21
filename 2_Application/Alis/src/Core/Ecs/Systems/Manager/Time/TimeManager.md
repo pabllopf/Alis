@@ -56,7 +56,6 @@ Here is an example of how to use the `TimeManager` class:
 
 ```csharp
 TimeManager timeManager = new TimeManager();
-// Do some work
 Logger.Info($"Elapsed time: {timeManager.Clock.ElapsedMilliseconds} ms");
 ```
 

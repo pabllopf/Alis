@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:QualityTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
@@ -45,10 +18,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_Good_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             Quality quality = Quality.Good;
 
-            // Assert
             Assert.Equal(0, (int) quality);
         }
 
@@ -58,10 +29,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_Best_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             Quality quality = Quality.Best;
 
-            // Assert
             Assert.Equal(1, (int) quality);
         }
 
@@ -71,10 +40,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_RealTime_ShouldHaveCorrectValue()
         {
-            // Arrange & Act
             Quality quality = Quality.RealTime;
 
-            // Assert
             Assert.Equal(2, (int) quality);
         }
 
@@ -84,10 +51,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_Enum_ShouldHaveThreeValues()
         {
-            // Arrange & Act
             Quality[] values = (Quality[]) Enum.GetValues(typeof(Quality));
 
-            // Assert
             Assert.Equal(3, values.Length);
         }
 
@@ -97,17 +62,14 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_ShouldBeConvertibleToString()
         {
-            // Arrange
             Quality good = Quality.Good;
             Quality best = Quality.Best;
             Quality realTime = Quality.RealTime;
 
-            // Act
             string goodStr = good.ToString();
             string bestStr = best.ToString();
             string realTimeStr = realTime.ToString();
 
-            // Assert
             Assert.Equal("Good", goodStr);
             Assert.Equal("Best", bestStr);
             Assert.Equal("RealTime", realTimeStr);
@@ -119,11 +81,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_ShouldBeParseableFromString()
         {
-            // Arrange & Act
             Quality good = (Quality) Enum.Parse(typeof(Quality), "Good");
             Quality best = (Quality) Enum.Parse(typeof(Quality), "Best");
 
-            // Assert
             Assert.Equal(Quality.Good, good);
             Assert.Equal(Quality.Best, best);
         }
@@ -134,12 +94,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_ShouldSupportEqualityComparison()
         {
-            // Arrange
             Quality good1 = Quality.Good;
             Quality good2 = Quality.Good;
             Quality best = Quality.Best;
 
-            // Act & Assert
             Assert.Equal(good1, good2);
             Assert.NotEqual(good1, best);
         }
@@ -150,17 +108,14 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_ToLowerInvariant_ShouldWorkCorrectly()
         {
-            // Arrange
             Quality good = Quality.Good;
             Quality best = Quality.Best;
             Quality realTime = Quality.RealTime;
 
-            // Act
             string goodLower = good.ToString().ToLowerInvariant();
             string bestLower = best.ToString().ToLowerInvariant();
             string realTimeLower = realTime.ToString().ToLowerInvariant();
 
-            // Assert
             Assert.Equal("good", goodLower);
             Assert.Equal("best", bestLower);
             Assert.Equal("realtime", realTimeLower);
@@ -172,11 +127,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_ShouldBeUsableInSwitchStatement()
         {
-            // Arrange
             Quality quality = Quality.Best;
             string result = string.Empty;
 
-            // Act
             switch (quality)
             {
                 case Quality.Good:
@@ -190,7 +143,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
                     break;
             }
 
-            // Assert
             Assert.Equal("Best", result);
         }
 
@@ -200,7 +152,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_AllValues_ShouldBeDefined()
         {
-            // Arrange & Act & Assert
             Assert.True(Enum.IsDefined(typeof(Quality), Quality.Good));
             Assert.True(Enum.IsDefined(typeof(Quality), Quality.Best));
             Assert.True(Enum.IsDefined(typeof(Quality), Quality.RealTime));
@@ -212,12 +163,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_ShouldHaveUniqueValues()
         {
-            // Arrange
             int goodValue = (int) Quality.Good;
             int bestValue = (int) Quality.Best;
             int realTimeValue = (int) Quality.RealTime;
 
-            // Act & Assert
             Assert.NotEqual(goodValue, bestValue);
             Assert.NotEqual(bestValue, realTimeValue);
             Assert.NotEqual(goodValue, realTimeValue);
@@ -229,13 +178,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_ShouldBeCastableToInt()
         {
-            // Arrange
             Quality quality = Quality.Best;
 
-            // Act
             int value = (int) quality;
 
-            // Assert
             Assert.Equal(1, value);
         }
 
@@ -245,13 +191,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void Quality_ShouldBeCastableFromInt()
         {
-            // Arrange
             int value = 2;
 
-            // Act
             Quality quality = (Quality) value;
 
-            // Assert
             Assert.Equal(Quality.RealTime, quality);
         }
     }

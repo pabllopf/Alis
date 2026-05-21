@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ComponentLifecycleTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Kernel;
@@ -52,14 +25,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Component_CanBeAddedAfterCreation()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
-            // Act
             entity.Add(new Health {Value = 100});
 
-            // Assert
             Assert.True(entity.Has<Health>());
             Assert.Equal(100, entity.Get<Health>().Value);
         }
@@ -73,14 +43,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Component_CanBeRemoved()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 0, Y = 0}, new Health {Value = 100});
 
-            // Act
             entity.Remove<Health>();
 
-            // Assert
             Assert.False(entity.Has<Health>());
             Assert.True(entity.Has<Position>());
         }
@@ -94,14 +61,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Component_DataCanBeAccessed()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            // Act
             Position pos = entity.Get<Position>();
 
-            // Assert
             Assert.Equal(10, pos.X);
             Assert.Equal(20, pos.Y);
         }
@@ -116,15 +80,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Component_TryGetWorks()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 5, Y = 10});
 
-            // Act
             bool hasPos = entity.TryGet(out Ref<Position> posRef);
             bool hasHealth = entity.TryGet(out Ref<Health> healthRef);
 
-            // Assert
             Assert.True(hasPos);
             Assert.Equal(5, posRef.Value.X);
             Assert.False(hasHealth);
@@ -139,7 +100,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Component_MultipleComponentsCanCoexist()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1, Y = 2},
@@ -147,7 +107,6 @@ namespace Alis.Core.Ecs.Test
                 new Velocity {X = 1.5f, Y = 2.5f}
             );
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Health>());
             Assert.True(entity.Has<Velocity>());
@@ -162,14 +121,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Component_DeadEntityThrowsOnAccess()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 0, Y = 0});
 
-            // Act
             entity.Delete();
 
-            // Assert
             Assert.ThrowsAny<InvalidOperationException>(() => entity.Get<Position>());
         }
     }

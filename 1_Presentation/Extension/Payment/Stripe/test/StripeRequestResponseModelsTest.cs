@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:StripeRequestResponseModelsTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -44,7 +17,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void StripeCheckoutSessionRequest_PropertiesInitializeCorrectly()
         {
-            // Arrange & Act
             StripeCheckoutSessionRequest request = new StripeCheckoutSessionRequest
             {
                 ProductId = "prod_123",
@@ -59,7 +31,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Metadata = new Dictionary<string, string> {{"key", "value"}}
             };
 
-            // Assert
             Assert.Equal("prod_123", request.ProductId);
             Assert.Equal("Test Product", request.ProductName);
             Assert.Equal("Test Description", request.ProductDescription);
@@ -79,7 +50,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void StripeCheckoutSessionRequest_MetadataCanBeNull()
         {
-            // Arrange & Act
             StripeCheckoutSessionRequest request = new StripeCheckoutSessionRequest
             {
                 ProductId = "prod_123",
@@ -92,7 +62,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Metadata = null
             };
 
-            // Assert
             Assert.Null(request.Metadata);
         }
 
@@ -103,7 +72,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void StripeCheckoutSessionResponse_PropertiesInitializeCorrectly()
         {
-            // Arrange & Act
             StripeCheckoutSessionResponse response = new StripeCheckoutSessionResponse
             {
                 SessionId = "cs_test_123",
@@ -111,7 +79,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 PaymentIntentId = "pi_test_456"
             };
 
-            // Assert
             Assert.Equal("cs_test_123", response.SessionId);
             Assert.Equal("https://checkout.stripe.com/", response.Url.ToString());
             Assert.Equal("pi_test_456", response.PaymentIntentId);
@@ -123,7 +90,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void StripeCheckoutSessionResponse_SupportsNullProperties()
         {
-            // Arrange & Act
             StripeCheckoutSessionResponse response = new StripeCheckoutSessionResponse
             {
                 SessionId = null,
@@ -131,7 +97,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 PaymentIntentId = null
             };
 
-            // Assert
             Assert.Null(response.SessionId);
             Assert.Null(response.Url);
             Assert.Null(response.PaymentIntentId);
@@ -144,7 +109,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void StripePaymentIntentRequest_PropertiesInitializeCorrectly()
         {
-            // Arrange & Act
             StripePaymentIntentRequest request = new StripePaymentIntentRequest
             {
                 ProductId = "prod_456",
@@ -156,7 +120,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 EnableAutomaticPaymentMethods = true
             };
 
-            // Assert
             Assert.Equal("prod_456", request.ProductId);
             Assert.Equal(5000, request.Amount);
             Assert.Equal("eur", request.Currency);
@@ -172,10 +135,8 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void StripePaymentIntentRequest_EnableAutomaticPaymentMethodsDefaultsToFalse()
         {
-            // Arrange & Act
             StripePaymentIntentRequest request = new StripePaymentIntentRequest();
 
-            // Assert
             Assert.False(request.EnableAutomaticPaymentMethods);
         }
 
@@ -186,7 +147,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void StripePaymentIntentResponse_PropertiesInitializeCorrectly()
         {
-            // Arrange & Act
             StripePaymentIntentResponse response = new StripePaymentIntentResponse
             {
                 PaymentIntentId = "pi_test_789",
@@ -194,7 +154,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Status = "succeeded"
             };
 
-            // Assert
             Assert.Equal("pi_test_789", response.PaymentIntentId);
             Assert.Equal("pi_test_789_secret", response.ClientSecret);
             Assert.Equal("succeeded", response.Status);
@@ -207,7 +166,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Theory, InlineData("requires_payment_method"), InlineData("requires_confirmation"), InlineData("requires_action"), InlineData("processing"), InlineData("requires_capture"), InlineData("canceled"), InlineData("succeeded")]
         public void StripePaymentIntentResponse_StatusCanBeAnyValidStatus(string status)
         {
-            // Arrange & Act
             StripePaymentIntentResponse response = new StripePaymentIntentResponse
             {
                 PaymentIntentId = "pi_test",
@@ -215,7 +173,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Status = status
             };
 
-            // Assert
             Assert.Equal(status, response.Status);
         }
 
@@ -226,7 +183,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void StripeRefundRequest_PropertiesInitializeCorrectly()
         {
-            // Arrange & Act
             StripeRefundRequest request = new StripeRefundRequest
             {
                 PaymentIntentId = "pi_refund_123",
@@ -234,7 +190,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Reason = "requested_by_customer"
             };
 
-            // Assert
             Assert.Equal("pi_refund_123", request.PaymentIntentId);
             Assert.Equal(1000, request.Amount);
             Assert.Equal("requested_by_customer", request.Reason);
@@ -246,7 +201,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void StripeRefundRequest_AmountCanBeNull()
         {
-            // Arrange & Act
             StripeRefundRequest request = new StripeRefundRequest
             {
                 PaymentIntentId = "pi_full_refund",
@@ -254,7 +208,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Reason = "duplicate"
             };
 
-            // Assert
             Assert.Equal("pi_full_refund", request.PaymentIntentId);
             Assert.Null(request.Amount);
             Assert.Equal("duplicate", request.Reason);
@@ -267,7 +220,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Theory, InlineData("requested_by_customer"), InlineData("duplicate"), InlineData("fraudulent"), InlineData(null)]
         public void StripeRefundRequest_ReasonCanBeVariousValues(string reason)
         {
-            // Arrange & Act
             StripeRefundRequest request = new StripeRefundRequest
             {
                 PaymentIntentId = "pi_test",
@@ -275,7 +227,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Reason = reason
             };
 
-            // Assert
             Assert.Equal(reason, request.Reason);
         }
 
@@ -286,7 +237,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void StripeRefundResponse_PropertiesInitializeCorrectly()
         {
-            // Arrange & Act
             StripeRefundResponse response = new StripeRefundResponse
             {
                 RefundId = "re_refund_123",
@@ -295,7 +245,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Status = "succeeded"
             };
 
-            // Assert
             Assert.Equal("re_refund_123", response.RefundId);
             Assert.Equal(2000, response.AmountRefunded);
             Assert.Equal("gbp", response.Currency);
@@ -308,12 +257,10 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void StripeRefundResponse_SupportsVariousStatuses()
         {
-            // Arrange & Act
             StripeRefundResponse response1 = new StripeRefundResponse {Status = "succeeded"};
             StripeRefundResponse response2 = new StripeRefundResponse {Status = "pending"};
             StripeRefundResponse response3 = new StripeRefundResponse {Status = "failed"};
 
-            // Assert
             Assert.Equal("succeeded", response1.Status);
             Assert.Equal("pending", response2.Status);
             Assert.Equal("failed", response3.Status);
@@ -326,12 +273,10 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void AllRequestModels_CanBeInstantiatedEmpty()
         {
-            // Act
             StripeCheckoutSessionRequest checkoutRequest = new StripeCheckoutSessionRequest();
             StripePaymentIntentRequest paymentRequest = new StripePaymentIntentRequest();
             StripeRefundRequest refundRequest = new StripeRefundRequest();
 
-            // Assert
             Assert.NotNull(checkoutRequest);
             Assert.NotNull(paymentRequest);
             Assert.NotNull(refundRequest);
@@ -343,12 +288,10 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void AllResponseModels_CanBeInstantiatedEmpty()
         {
-            // Act
             StripeCheckoutSessionResponse checkoutResponse = new StripeCheckoutSessionResponse();
             StripePaymentIntentResponse paymentResponse = new StripePaymentIntentResponse();
             StripeRefundResponse refundResponse = new StripeRefundResponse();
 
-            // Assert
             Assert.NotNull(checkoutResponse);
             Assert.NotNull(paymentResponse);
             Assert.NotNull(refundResponse);
@@ -360,17 +303,14 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void MetadataDictionaries_AreIndependent()
         {
-            // Arrange
             Dictionary<string, string> metadata1 = new Dictionary<string, string> {{"key1", "value1"}};
             Dictionary<string, string> metadata2 = new Dictionary<string, string> {{"key2", "value2"}};
 
             StripeCheckoutSessionRequest request1 = new StripeCheckoutSessionRequest {Metadata = metadata1};
             StripePaymentIntentRequest request2 = new StripePaymentIntentRequest {Metadata = metadata2};
 
-            // Act
             metadata1["key1"] = "modified";
 
-            // Assert
             Assert.Equal("modified", metadata1["key1"]);
             Assert.Equal("value2", metadata2["key2"]);
             Assert.NotEqual(metadata1, metadata2);

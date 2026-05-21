@@ -166,8 +166,6 @@ namespace $(RootNamespace)
                          {
                              return%3b
                          }
-                         
-                         // Resolución original del juego
                          int gameWidth = (int)GameAlis.Context.Setting.Graphic.WindowSize.X%3b
                          int gameHeight = (int)GameAlis.Context.Setting.Graphic.WindowSize.Y%3b
                      
@@ -178,7 +176,6 @@ namespace $(RootNamespace)
                      
                          if (aspectCanvas > aspectGame)
                          {
-                             // Canvas más ancho, barras laterales
                              viewportHeight = height%3b
                              viewportWidth = (int)(height * aspectGame)%3b
                              viewportX = (width - viewportWidth) / 2%3b
@@ -186,7 +183,6 @@ namespace $(RootNamespace)
                          }
                          else
                          {
-                             // Canvas más alto, barras arriba y abajo
                              viewportWidth = width%3b
                              viewportHeight = (int)(width / aspectGame)%3b
                              viewportX = 0%3b
@@ -290,7 +286,6 @@ namespace $(RootNamespace)
                      
                             if (aspectCanvas > aspectGame)
                             {
-                                // Canvas más ancho, barras laterales
                                 viewportHeight = CanvasHeight%3b
                                 viewportWidth = (int)(CanvasHeight * aspectGame)%3b
                                 viewportX = (CanvasWidth - viewportWidth) / 2%3b
@@ -298,7 +293,6 @@ namespace $(RootNamespace)
                             }
                             else
                             {
-                                // Canvas más alto, barras arriba y abajo
                                 viewportWidth = CanvasWidth%3b
                                 viewportHeight = (int)(CanvasWidth / aspectGame)%3b
                                 viewportX = 0%3b
@@ -571,7 +565,6 @@ namespace $(RootNamespace)
     interop.OnMouseUp(shift, ctrl, alt, button)%3b
     }
 
-    //canvas.addEventListener("contextmenu", (e) =&gt; e.preventDefault(), false)%3b
     canvas.addEventListener("keydown", keyDown, false)%3b
     canvas.addEventListener("keyup", keyUp, false)%3b
     canvas.addEventListener("mousemove", mouseMove, false)%3b

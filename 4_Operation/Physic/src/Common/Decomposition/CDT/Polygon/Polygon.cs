@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Polygon.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -75,8 +48,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
                 throw new ArgumentException("List has fewer than 3 points", "points");
             }
 
-            // Lets do one sanity check that first and last point hasn't got same position
-            // Its something that often happen when importing polygon data from other formats
             if (points[0].Equals(points[points.Count - 1]))
             {
                 points.RemoveAt(points.Count - 1);
@@ -165,7 +136,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
                 Triangles.Clear();
             }
 
-            // Outer constraints
             for (int i = 0; i < Points.Count - 1; i++)
             {
                 tcx.NewConstraint(Points[i], Points[i + 1]);
@@ -174,7 +144,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
             tcx.NewConstraint(Points[0], Points[Points.Count - 1]);
             tcx.Points.AddRange(Points);
 
-            // Hole constraints
             if (Holes != null)
             {
                 foreach (Polygon p in Holes)
@@ -255,7 +224,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         /// <param name="newPoint">The point to insert into the polygon</param>
         public void InsertPointAfter(PolygonPoint point, PolygonPoint newPoint)
         {
-            // Validate that 
             int index = Points.IndexOf(point);
             if (index == -1)
             {

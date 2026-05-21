@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameObjectFlagsTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Xunit;
@@ -50,7 +23,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void None_Flag_HasZeroValue()
         {
-            // Assert
             Assert.Equal(0, (int) GameObjectFlags.None);
         }
 
@@ -64,7 +36,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void AddComp_Flag_HasCorrectBitPosition()
         {
-            // Assert
             Assert.Equal(4, (int) GameObjectFlags.AddComp);
         }
 
@@ -78,7 +49,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Events_Flag_CombinesMultipleFlags()
         {
-            // Arrange
             GameObjectFlags events = GameObjectFlags.Events;
 
             // Assert
@@ -98,10 +68,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Flags_CanBeCheckedWithHasFlag()
         {
-            // Arrange
             GameObjectFlags flags = GameObjectFlags.AddComp | GameObjectFlags.RemoveComp;
 
-            // Assert
             Assert.True(flags.HasFlag(GameObjectFlags.AddComp));
             Assert.True(flags.HasFlag(GameObjectFlags.RemoveComp));
         }
@@ -116,7 +84,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void WorldCreate_Flag_HasCorrectValue()
         {
-            // Assert
             Assert.Equal(128, (int) GameObjectFlags.WorldCreate);
         }
 
@@ -129,7 +96,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void HasWorldCommandBufferRemove_Flag_HasCorrectValue()
         {
-            // Assert
             Assert.Equal(256, (int) GameObjectFlags.HasWorldCommandBufferRemove);
         }
 
@@ -142,7 +108,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void HasWorldCommandBufferAdd_Flag_HasCorrectValue()
         {
-            // Assert
             Assert.Equal(512, (int) GameObjectFlags.HasWorldCommandBufferAdd);
         }
 
@@ -155,13 +120,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObjectFlags_HasFlagsAttribute()
         {
-            // Arrange
             Type flagsType = typeof(GameObjectFlags);
 
-            // Act
             bool hasFlagsAttribute = Attribute.IsDefined(flagsType, typeof(FlagsAttribute));
 
-            // Assert
             Assert.True(hasFlagsAttribute);
         }
 
@@ -174,10 +136,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void None_Flag_EqualsDefaultValue()
         {
-            // Arrange
             GameObjectFlags defaultValue = default(GameObjectFlags);
 
-            // Assert
             Assert.Equal(GameObjectFlags.None, defaultValue);
         }
     }

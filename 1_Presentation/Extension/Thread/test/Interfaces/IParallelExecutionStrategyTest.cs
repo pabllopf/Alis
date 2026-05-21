@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:IParallelExecutionStrategyTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Reflection;
@@ -151,13 +124,10 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_HasCanExecuteInParallelMethod()
         {
-            // Arrange
             Type interfaceType = typeof(IParallelExecutionStrategy);
 
-            // Act
             MethodInfo method = interfaceType.GetMethod(nameof(IParallelExecutionStrategy.CanExecuteInParallel));
 
-            // Assert
             Assert.NotNull(method);
             Assert.Equal(typeof(bool), method.ReturnType);
             ParameterInfo[] parameters = method.GetParameters();
@@ -171,13 +141,10 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_HasGetMinimumBatchSizeMethod()
         {
-            // Arrange
             Type interfaceType = typeof(IParallelExecutionStrategy);
 
-            // Act
             MethodInfo method = interfaceType.GetMethod(nameof(IParallelExecutionStrategy.GetMinimumBatchSize));
 
-            // Assert
             Assert.NotNull(method);
             Assert.Equal(typeof(int), method.ReturnType);
             ParameterInfo[] parameters = method.GetParameters();
@@ -191,13 +158,10 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void MockStrategy_CanExecuteInParallel_Works()
         {
-            // Arrange
             IParallelExecutionStrategy strategy = new MockParallelExecutionStrategy();
 
-            // Act
             bool result = strategy.CanExecuteInParallel(typeof(int));
 
-            // Assert
             Assert.True(result);
         }
 
@@ -207,13 +171,10 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void MockStrategy_GetMinimumBatchSize_Works()
         {
-            // Arrange
             IParallelExecutionStrategy strategy = new MockParallelExecutionStrategy(true, 512);
 
-            // Act
             int batchSize = strategy.GetMinimumBatchSize(typeof(int));
 
-            // Assert
             Assert.Equal(512, batchSize);
         }
 
@@ -223,15 +184,12 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void MockStrategy_TracksMethodCalls()
         {
-            // Arrange
             MockParallelExecutionStrategy strategy = new MockParallelExecutionStrategy();
 
-            // Act
             strategy.CanExecuteInParallel(typeof(string));
             strategy.CanExecuteInParallel(typeof(int));
             strategy.GetMinimumBatchSize(typeof(double));
 
-            // Assert
             Assert.Equal(2, strategy.CanExecuteCallCount);
             Assert.Equal(1, strategy.GetBatchSizeCallCount);
             Assert.Equal(typeof(double), strategy.LastCheckedType);
@@ -243,14 +201,11 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void AlwaysFalseStrategy_ReturnsFlase()
         {
-            // Arrange
             IParallelExecutionStrategy strategy = new AlwaysFalseStrategy();
 
-            // Act
             bool result1 = strategy.CanExecuteInParallel(typeof(int));
             bool result2 = strategy.CanExecuteInParallel(typeof(string));
 
-            // Assert
             Assert.False(result1);
             Assert.False(result2);
         }
@@ -261,14 +216,11 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void AlwaysTrueStrategy_ReturnsTrue()
         {
-            // Arrange
             IParallelExecutionStrategy strategy = new AlwaysTrueStrategy();
 
-            // Act
             bool result1 = strategy.CanExecuteInParallel(typeof(int));
             bool result2 = strategy.CanExecuteInParallel(typeof(string));
 
-            // Assert
             Assert.True(result1);
             Assert.True(result2);
         }
@@ -279,15 +231,12 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Strategies_CanReturnDifferentBatchSizes()
         {
-            // Arrange
             IParallelExecutionStrategy strategy1 = new AlwaysFalseStrategy();
             IParallelExecutionStrategy strategy2 = new AlwaysTrueStrategy();
 
-            // Act
             int size1 = strategy1.GetMinimumBatchSize(typeof(int));
             int size2 = strategy2.GetMinimumBatchSize(typeof(int));
 
-            // Assert
             Assert.Equal(1, size1);
             Assert.Equal(256, size2);
         }
@@ -298,10 +247,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_IsPublic()
         {
-            // Act
             bool isPublic = typeof(IParallelExecutionStrategy).IsPublic;
 
-            // Assert
             Assert.True(isPublic);
         }
 
@@ -311,10 +258,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_IsInterfaceType()
         {
-            // Act
             bool isInterface = typeof(IParallelExecutionStrategy).IsInterface;
 
-            // Assert
             Assert.True(isInterface);
         }
 
@@ -324,10 +269,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_NamespaceIsCorrect()
         {
-            // Act
             string namespaceName = typeof(IParallelExecutionStrategy).Namespace;
 
-            // Assert
             Assert.Equal("Alis.Extension.Thread.Interfaces", namespaceName);
         }
 
@@ -337,10 +280,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_NameIsCorrect()
         {
-            // Act
             string name = typeof(IParallelExecutionStrategy).Name;
 
-            // Assert
             Assert.Equal("IParallelExecutionStrategy", name);
         }
 
@@ -350,10 +291,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_HasExactlyTwoMethods()
         {
-            // Act
             MethodInfo[] methods = typeof(IParallelExecutionStrategy).GetMethods();
 
-            // Assert
             Assert.Equal(2, methods.Length);
         }
 
@@ -363,14 +302,11 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Strategy_CanHandleNullType()
         {
-            // Arrange
             MockParallelExecutionStrategy strategy = new MockParallelExecutionStrategy();
 
-            // Act
             bool result = strategy.CanExecuteInParallel(null);
             int batchSize = strategy.GetMinimumBatchSize(null);
 
-            // Assert - should not throw
             Assert.True(result);
             Assert.Equal(128, batchSize);
             Assert.Null(strategy.LastCheckedType);
@@ -382,7 +318,6 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Strategy_CanBeUsedPolymorphically()
         {
-            // Arrange
             IParallelExecutionStrategy[] strategies = new IParallelExecutionStrategy[]
             {
                 new AlwaysTrueStrategy(),
@@ -390,7 +325,6 @@ namespace Alis.Extension.Thread.Test.Interfaces
                 new MockParallelExecutionStrategy()
             };
 
-            // Act & Assert
             foreach (IParallelExecutionStrategy strategy in strategies)
             {
                 bool canExecute = strategy.CanExecuteInParallel(typeof(int));
@@ -407,17 +341,14 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void MultipleStrategyInstances_AreIndependent()
         {
-            // Arrange
             MockParallelExecutionStrategy strategy1 = new MockParallelExecutionStrategy(true, 64);
             MockParallelExecutionStrategy strategy2 = new MockParallelExecutionStrategy(false, 256);
 
-            // Act
             bool result1 = strategy1.CanExecuteInParallel(typeof(int));
             bool result2 = strategy2.CanExecuteInParallel(typeof(string));
             int size1 = strategy1.GetMinimumBatchSize(typeof(int));
             int size2 = strategy2.GetMinimumBatchSize(typeof(string));
 
-            // Assert
             Assert.True(result1);
             Assert.False(result2);
             Assert.Equal(64, size1);

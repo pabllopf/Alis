@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:BoardSquareTypeHelperTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Extension.Math.ProceduralDungeon.Helpers;
 using Xunit;
@@ -44,10 +17,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.WallDown), InlineData(BoardSquareType.WallLeft), InlineData(BoardSquareType.WallRight), InlineData(BoardSquareType.WallTop)]
         public void IsWall_WithWallType_ReturnsTrue(BoardSquareType type)
         {
-            // Act
             bool isWall = BoardSquareTypeHelper.IsWall(type);
 
-            // Assert
             Assert.True(isWall);
         }
 
@@ -57,10 +28,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.Floor), InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerInternalLeftUp)]
         public void IsWall_WithNonWallType_ReturnsFalse(BoardSquareType type)
         {
-            // Act
             bool isWall = BoardSquareTypeHelper.IsWall(type);
 
-            // Assert
             Assert.False(isWall);
         }
 
@@ -71,10 +40,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
          InlineData(BoardSquareType.CornerInternalRightDown)]
         public void IsCorner_WithCornerType_ReturnsTrue(BoardSquareType type)
         {
-            // Act
             bool isCorner = BoardSquareTypeHelper.IsCorner(type);
 
-            // Assert
             Assert.True(isCorner);
         }
 
@@ -84,10 +51,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.Floor), InlineData(BoardSquareType.WallTop)]
         public void IsCorner_WithNonCornerType_ReturnsFalse(BoardSquareType type)
         {
-            // Act
             bool isCorner = BoardSquareTypeHelper.IsCorner(type);
 
-            // Assert
             Assert.False(isCorner);
         }
 
@@ -97,10 +62,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerRightUp), InlineData(BoardSquareType.CornerLeftDown), InlineData(BoardSquareType.CornerRightDown)]
         public void IsOuterCorner_WithOuterCornerType_ReturnsTrue(BoardSquareType type)
         {
-            // Act
             bool isOuterCorner = BoardSquareTypeHelper.IsOuterCorner(type);
 
-            // Assert
             Assert.True(isOuterCorner);
         }
 
@@ -110,10 +73,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.Floor), InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.CornerInternalLeftUp)]
         public void IsOuterCorner_WithNonOuterCornerType_ReturnsFalse(BoardSquareType type)
         {
-            // Act
             bool isOuterCorner = BoardSquareTypeHelper.IsOuterCorner(type);
 
-            // Assert
             Assert.False(isOuterCorner);
         }
 
@@ -123,10 +84,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.CornerInternalLeftUp), InlineData(BoardSquareType.CornerInternalRightUp), InlineData(BoardSquareType.CornerInternalLeftDown), InlineData(BoardSquareType.CornerInternalRightDown)]
         public void IsInnerCorner_WithInnerCornerType_ReturnsTrue(BoardSquareType type)
         {
-            // Act
             bool isInnerCorner = BoardSquareTypeHelper.IsInnerCorner(type);
 
-            // Assert
             Assert.True(isInnerCorner);
         }
 
@@ -136,10 +95,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.Floor), InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.CornerLeftUp)]
         public void IsInnerCorner_WithNonInnerCornerType_ReturnsFalse(BoardSquareType type)
         {
-            // Act
             bool isInnerCorner = BoardSquareTypeHelper.IsInnerCorner(type);
 
-            // Assert
             Assert.False(isInnerCorner);
         }
 
@@ -149,13 +106,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void IsWalkable_WithFloor_ReturnsTrue()
         {
-            // Arrange
             BoardSquareType type = BoardSquareType.Floor;
 
-            // Act
             bool isWalkable = BoardSquareTypeHelper.IsWalkable(type);
 
-            // Assert
             Assert.True(isWalkable);
         }
 
@@ -165,10 +119,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.CornerLeftUp)]
         public void IsWalkable_WithNonFloorType_ReturnsFalse(BoardSquareType type)
         {
-            // Act
             bool isWalkable = BoardSquareTypeHelper.IsWalkable(type);
 
-            // Assert
             Assert.False(isWalkable);
         }
 
@@ -178,13 +130,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void IsEmpty_WithEmpty_ReturnsTrue()
         {
-            // Arrange
             BoardSquareType type = BoardSquareType.Empty;
 
-            // Act
             bool isEmpty = BoardSquareTypeHelper.IsEmpty(type);
 
-            // Assert
             Assert.True(isEmpty);
         }
 
@@ -194,10 +143,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.Floor), InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.CornerLeftUp)]
         public void IsEmpty_WithNonEmptyType_ReturnsFalse(BoardSquareType type)
         {
-            // Act
             bool isEmpty = BoardSquareTypeHelper.IsEmpty(type);
 
-            // Assert
             Assert.False(isEmpty);
         }
 
@@ -207,10 +154,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.WallTop), InlineData(BoardSquareType.WallDown), InlineData(BoardSquareType.WallLeft), InlineData(BoardSquareType.WallRight), InlineData(BoardSquareType.CornerLeftUp), InlineData(BoardSquareType.CornerInternalLeftUp)]
         public void IsSolid_WithSolidType_ReturnsTrue(BoardSquareType type)
         {
-            // Act
             bool isSolid = BoardSquareTypeHelper.IsSolid(type);
 
-            // Assert
             Assert.True(isSolid);
         }
 
@@ -220,10 +165,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.Empty), InlineData(BoardSquareType.Floor)]
         public void IsSolid_WithNonSolidType_ReturnsFalse(BoardSquareType type)
         {
-            // Act
             bool isSolid = BoardSquareTypeHelper.IsSolid(type);
 
-            // Assert
             Assert.False(isSolid);
         }
 
@@ -233,13 +176,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void GetDisplayCharacter_WithEmpty_ReturnsDot()
         {
-            // Arrange
             BoardSquareType type = BoardSquareType.Empty;
 
-            // Act
             char character = BoardSquareTypeHelper.GetDisplayCharacter(type);
 
-            // Assert
             Assert.Equal('.', character);
         }
 
@@ -249,13 +189,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void GetDisplayCharacter_WithFloor_ReturnsSpace()
         {
-            // Arrange
             BoardSquareType type = BoardSquareType.Floor;
 
-            // Act
             char character = BoardSquareTypeHelper.GetDisplayCharacter(type);
 
-            // Assert
             Assert.Equal(' ', character);
         }
 
@@ -265,10 +202,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(BoardSquareType.WallDown), InlineData(BoardSquareType.WallLeft), InlineData(BoardSquareType.WallRight), InlineData(BoardSquareType.WallTop)]
         public void GetDisplayCharacter_WithWall_ReturnsHash(BoardSquareType type)
         {
-            // Act
             char character = BoardSquareTypeHelper.GetDisplayCharacter(type);
 
-            // Assert
             Assert.Equal('#', character);
         }
 
@@ -279,10 +214,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
          InlineData(BoardSquareType.CornerInternalRightDown)]
         public void GetDisplayCharacter_WithCorner_ReturnsPlus(BoardSquareType type)
         {
-            // Act
             char character = BoardSquareTypeHelper.GetDisplayCharacter(type);
 
-            // Assert
             Assert.Equal('+', character);
         }
 
@@ -292,13 +225,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void GetDisplayCharacter_WithUnknownType_ReturnsQuestionMark()
         {
-            // Arrange
             BoardSquareType type = (BoardSquareType) 999;
 
-            // Act
             char character = BoardSquareTypeHelper.GetDisplayCharacter(type);
 
-            // Assert
             Assert.Equal('?', character);
         }
     }

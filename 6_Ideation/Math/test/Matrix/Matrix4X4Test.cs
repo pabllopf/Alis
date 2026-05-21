@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Matrix4X4Test.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
@@ -143,7 +116,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             float radians = (float) (System.Math.PI / 4); // 45 degrees
             Matrix4X4 matrix = Matrix4X4.CreateRotationZ(radians);
 
-            // Expected values were calculated manually
             Assert.Equal(System.Math.Cos(radians), matrix.M11, 5);
             Assert.Equal(System.Math.Sin(radians), matrix.M12, 5);
             Assert.Equal(-System.Math.Sin(radians), matrix.M21, 5);
@@ -249,13 +221,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void CreateRotationX_WithZeroRadians_ReturnsIdentityMatrix()
         {
-            // Arrange
             Matrix4X4 expected = Matrix4X4.Identity;
 
-            // Act
             Matrix4X4 result = Matrix4X4.CreateRotationX(0);
 
-            // Assert
             Assert.Equal(expected, result);
         }
 
@@ -265,7 +234,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void CreateRotationX_WithNonZeroRadians_ReturnsCorrectMatrix()
         {
-            // Arrange
             float radians = (float) (System.Math.PI / 4); // 45 degrees
             Matrix4X4 expected = new Matrix4X4(
                 1f, 0f, 0f, 0f,
@@ -273,10 +241,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 0f, (float) -System.Math.Sin(radians), (float) System.Math.Cos(radians), 0f,
                 0f, 0f, 0f, 1f);
 
-            // Act
             Matrix4X4 result = Matrix4X4.CreateRotationX(radians);
 
-            // Assert
             Assert.Equal(expected, result);
         }
 
@@ -286,7 +252,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void Multiply_WithIdentityMatrix_ReturnsSameMatrix()
         {
-            // Arrange
             Matrix4X4 matrix1 = new Matrix4X4(
                 1f, 2f, 3f, 4f,
                 5f, 6f, 7f, 8f,
@@ -295,10 +260,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             Matrix4X4 identityMatrix = Matrix4X4.Identity;
 
-            // Act
             Matrix4X4 result = Matrix4X4.Multiply(matrix1, identityMatrix);
 
-            // Assert
             Assert.Equal(matrix1, result);
         }
 
@@ -308,7 +271,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void Multiply_WithNonIdentityMatrix_ReturnsCorrectMatrix()
         {
-            // Arrange
             Matrix4X4 matrix1 = new Matrix4X4(
                 1f, 2f, 3f, 4f,
                 5f, 6f, 7f, 8f,
@@ -327,10 +289,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 986f, 1028f, 1070f, 1112f,
                 1354f, 1412f, 1470f, 1528f);
 
-            // Act
             Matrix4X4 result = Matrix4X4.Multiply(matrix1, matrix2);
 
-            // Assert
             Assert.Equal(expected, result);
         }
 

@@ -558,7 +558,6 @@ Spawn Validation
 The server could implement (future):
 
 ```csharp
-// Prevent spam
 private readonly Dictionary<string, long> _lastActionTime = new();
 
 bool CanPerformAction(string playerId)
@@ -569,8 +568,6 @@ bool CanPerformAction(string playerId)
   long now = DateTime.UtcNow.Ticks;
   long lastAction = _lastActionTime[playerId];
   long timeSinceLastAction = now - lastAction;
-  
-  // Require 500ms between actions
   return timeSinceLastAction > 500 * TimeSpan.TicksPerMillisecond;
 }
 ```

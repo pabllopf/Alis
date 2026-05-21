@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Terrain.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
@@ -161,10 +134,8 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// </summary>
         public void Initialize()
         {
-            // find top left of terrain in world space
             _topLeft = new Vector2F(Center.X - Width * 0.5f, Center.Y - -Height * 0.5f);
 
-            // convert the terrains size to a point cloud size
             _localWidth = Width * PointsPerUnit;
             _localHeight = Height * PointsPerUnit;
 
@@ -182,7 +153,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             _ynum = (int) (_localHeight / CellSize);
             _bodyMap = new List<Body>[_xnum, _ynum];
 
-            // make sure to mark the dirty area to an infinitely small box
             _dirtyArea = new Aabb(new Vector2F(float.MaxValue, float.MaxValue), new Vector2F(float.MinValue, float.MinValue));
         }
 
@@ -214,11 +184,8 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <param name="value">-1 = inside terrain, 1 = outside terrain</param>
         public void ModifyTerrain(Vector2F location, sbyte value)
         {
-            // find local position
-            // make position local to map space
             Vector2F p = location - _topLeft;
 
-            // find map position for each axis
             p.X = p.X * _localWidth / Width;
             p.Y = p.Y * -_localHeight / Height;
 
@@ -226,7 +193,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             {
                 _terrainMap[(int) p.X, (int) p.Y] = value;
 
-                // expand dirty area
                 if (p.X < _dirtyArea.LowerBound.X)
                 {
                     _dirtyArea.LowerBound.X = p.X;
@@ -254,7 +220,6 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// </summary>
         public void RegenerateTerrain()
         {
-            //iterate effected cells
             int xStart = (int) (_dirtyArea.LowerBound.X / CellSize);
             if (xStart < 0)
             {
@@ -297,7 +262,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             {
                 for (int y = yStart; y < yEnd; y++)
                 {
-                    //remove old terrain object at grid cell
                     if (_bodyMap[x, y] != null)
                     {
                         for (int i = 0; i < _bodyMap[x, y].Count; i++)
@@ -308,7 +272,6 @@ namespace Alis.Core.Physic.Common.TextureTools
 
                     _bodyMap[x, y] = null;
 
-                    //generate new one
                     GenerateTerrain(x, y);
                 }
             }
@@ -332,13 +295,10 @@ namespace Alis.Core.Physic.Common.TextureTools
 
             _bodyMap[gx, gy] = new List<Body>();
 
-            // create the scale vector
             Vector2F scale = new Vector2F(1f / PointsPerUnit, 1f / -PointsPerUnit);
 
-            // create physics object for this grid cell
             foreach (Vertices item in polys)
             {
-                // does this need to be negative?
                 item.Scale(ref scale);
                 item.Translate(ref _topLeft);
                 Vertices simplified = SimplifyTools.CollinearSimplify(item);

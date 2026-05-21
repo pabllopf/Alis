@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GenericPriorityQueue.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections;
@@ -150,7 +123,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         public TItem Dequeue()
         {
             TItem returnMe = _nodes[1];
-            //If the node is already the last node, we can remove it immediately
             if (_numNodes == 1)
             {
                 _nodes[1] = null;
@@ -158,14 +130,12 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 return returnMe;
             }
 
-            //Swap the node with the last node
             TItem formerLastNode = _nodes[_numNodes];
             _nodes[1] = formerLastNode;
             formerLastNode.QueueIndex = 1;
             _nodes[_numNodes] = null;
             _numNodes--;
 
-            //Now bubble formerLastNode (which is no longer the last node) down
             CascadeDown(formerLastNode);
             return returnMe;
         }
@@ -209,7 +179,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// </summary>
         public void Remove(TItem item)
         {
-            //If the node is already the last node, we can remove it immediately
             if (item.QueueIndex == _numNodes)
             {
                 _nodes[_numNodes] = null;
@@ -217,14 +186,12 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                 return;
             }
 
-            //Swap the node with the last node
             TItem formerLastNode = _nodes[_numNodes];
             _nodes[item.QueueIndex] = formerLastNode;
             formerLastNode.QueueIndex = item.QueueIndex;
             _nodes[_numNodes] = null;
             _numNodes--;
 
-            //Now bubble formerLastNode (which is no longer the last node) up or down as appropriate
             OnNodeUpdated(formerLastNode);
         }
 
@@ -266,7 +233,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         [ExcludeFromCodeCoverage]
         private void CascadeUp(TItem node)
         {
-            //aka Heapify-up
             int parent;
             if (node.QueueIndex > 1)
             {
@@ -277,7 +243,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     return;
                 }
 
-                //Node has lower priority value, so move parent down the heap to make room
                 _nodes[node.QueueIndex] = parentNode;
                 parentNode.QueueIndex = node.QueueIndex;
 
@@ -297,7 +262,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
                     break;
                 }
 
-                //Node has lower priority value, so move parent down the heap to make room
                 _nodes[node.QueueIndex] = parentNode;
                 parentNode.QueueIndex = node.QueueIndex;
 
@@ -330,10 +294,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
 
                 if (HasHigherPriority(_nodes[swapIndex], node))
                 {
-                    // Perform the swap
                     (_nodes[finalQueueIndex], _nodes[swapIndex]) = (_nodes[swapIndex], _nodes[finalQueueIndex]);
 
-                    // Update the QueueIndex for swapped nodes
                     _nodes[finalQueueIndex].QueueIndex = finalQueueIndex;
                     _nodes[swapIndex].QueueIndex = swapIndex;
 
@@ -366,7 +328,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         [ExcludeFromCodeCoverage]
         private void OnNodeUpdated(TItem node)
         {
-            //Bubble the updated node up or down as appropriate
             int parentIndex = node.QueueIndex >> 1;
 
             if ((parentIndex > 0) && HasHigherPriority(node, _nodes[parentIndex]))
@@ -375,7 +336,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             }
             else
             {
-                //Note that CascadeDown will be called if parentNode == node (that is, node is the root)
                 CascadeDown(node);
             }
         }

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:SparseSetSimpleTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Collections;
 using Xunit;
@@ -43,14 +16,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Index_SetAndGet_StoresAndRetrievesCorrectly()
         {
-            // Arrange
             SparseSet<int> set = new SparseSet<int>();
 
-            // Act
             ref int value = ref set[5];
             value = 42;
 
-            // Assert
             Assert.Equal(42, set[5]);
         }
 
@@ -60,17 +30,14 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Index_MultipleSequentialInserts_AllAccessible()
         {
-            // Arrange
             SparseSet<string> set = new SparseSet<string>();
 
-            // Act
             for (int i = 0; i < 50; i++)
             {
                 ref string str = ref set[i];
                 str = $"Value_{i}";
             }
 
-            // Assert
             for (int i = 0; i < 50; i++)
             {
                 Assert.Equal($"Value_{i}", set[i]);
@@ -83,18 +50,15 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Index_SparseAccess_AllIndexesAccessible()
         {
-            // Arrange
             SparseSet<long> set = new SparseSet<long>();
             int[] indices = {5, 50, 500, 5000};
 
-            // Act
             for (int i = 0; i < indices.Length; i++)
             {
                 ref long val = ref set[indices[i]];
                 val = (long) indices[i] * 100;
             }
 
-            // Assert
             for (int i = 0; i < indices.Length; i++)
             {
                 Assert.Equal((long) indices[i] * 100, set[indices[i]]);
@@ -107,14 +71,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Index_LargeIndex_BufferExpands()
         {
-            // Arrange
             SparseSet<int> set = new SparseSet<int>();
 
-            // Act
             ref int value = ref set[1000];
             value = 999;
 
-            // Assert
             Assert.Equal(999, set[1000]);
         }
 
@@ -124,18 +85,15 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Index_ReferenceType_MaintainsReferences()
         {
-            // Arrange
             SparseSet<object> set = new SparseSet<object>();
             var obj1 = new {ID = 1};
             var obj2 = new {ID = 2};
 
-            // Act
             ref object ref1 = ref set[0];
             ref1 = obj1;
             ref object ref2 = ref set[10];
             ref2 = obj2;
 
-            // Assert
             Assert.Same(obj1, set[0]);
             Assert.Same(obj2, set[10]);
         }
@@ -146,16 +104,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void MultipleAccesses_SameIndex_DataConsistent()
         {
-            // Arrange
             SparseSet<int> set = new SparseSet<int>();
             ref int value = ref set[5];
             value = 100;
 
-            // Act
             int read1 = set[5];
             int read2 = set[5];
 
-            // Assert
             Assert.Equal(100, read1);
             Assert.Equal(100, read2);
         }
@@ -166,10 +121,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void MixedAccess_SparseAndSequential_ConsistentState()
         {
-            // Arrange
             SparseSet<string> set = new SparseSet<string>();
 
-            // Act
             for (int i = 0; i < 5; i++)
             {
                 ref string str = ref set[i];
@@ -183,7 +136,6 @@ namespace Alis.Core.Ecs.Test.Collections
                 str = $"Sparse_{i}";
             }
 
-            // Assert
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal($"Seq_{i}", set[i]);

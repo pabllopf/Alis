@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AddComponentExtendedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Kernel;
@@ -53,11 +26,9 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_AddingSameComponentTwiceThrowsException()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            // Act & Assert
             Assert.Throws<InvalidOperationException>(() => { entity.Add(new Position {X = 3, Y = 4}); });
         }
 
@@ -70,12 +41,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_AddingComponentToDeadEntityThrows()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
             entity.Delete();
 
-            // Act & Assert
             Assert.Throws<InvalidOperationException>(() => { entity.Add(new Position {X = 1, Y = 2}); });
         }
 
@@ -88,16 +57,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_AddingMultipleDifferentComponentsWorks()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             entity.Add(new Position {X = 1, Y = 2});
             entity.Add(new Velocity {X = 3, Y = 4});
             entity.Add(new Health {Value = 100});
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
             Assert.True(entity.Has<Health>());
@@ -112,15 +78,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_AddedComponentDataIsAccessibleImmediately()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
             Position testPos = new Position {X = 42, Y = 84};
 
-            // Act
             entity.Add(testPos);
 
-            // Assert
             Assert.True(entity.TryGet(out Ref<Position> pos));
             Assert.Equal(42, pos.Value.X);
             Assert.Equal(84, pos.Value.Y);
@@ -135,7 +98,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_AddingComponentAffectsQueries()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
@@ -146,10 +108,8 @@ namespace Alis.Core.Ecs.Test.Kernel
                 countBefore++;
             }
 
-            // Act
             entity.Add(new Position {X = 1, Y = 2});
 
-            // Assert
             int countAfter = 0;
             foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
@@ -169,14 +129,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_AddingComponentToEntityWithExistingComponentsWorks()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            // Act
             entity.Add(new Velocity {X = 3, Y = 4});
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
             Assert.True(entity.TryGet(out Ref<Position> pos));
@@ -192,15 +149,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_PreservesExistingComponentData()
         {
-            // Arrange
             using Scene scene = new Scene();
             Position originalPos = new Position {X = 42, Y = 84};
             GameObject entity = scene.Create(originalPos);
 
-            // Act
             entity.Add(new Velocity {X = 10, Y = 20});
 
-            // Assert
             Assert.True(entity.TryGet(out Ref<Position> pos));
             Assert.Equal(42, pos.Value.X);
             Assert.Equal(84, pos.Value.Y);
@@ -215,7 +169,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_WorksWithManyEntities()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[100];
             for (int i = 0; i < 100; i++)
@@ -223,13 +176,11 @@ namespace Alis.Core.Ecs.Test.Kernel
                 entities[i] = scene.Create();
             }
 
-            // Act
             for (int i = 0; i < 50; i++)
             {
                 entities[i].Add(new Position {X = i, Y = i * 2});
             }
 
-            // Assert
             for (int i = 0; i < 50; i++)
             {
                 Assert.True(entities[i].Has<Position>());
@@ -250,14 +201,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_AddingDefaultComponentWorks()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             entity.Add(new Position());
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.True(entity.TryGet(out Ref<Position> pos));
             Assert.Equal(0, pos.Value.X);
@@ -273,15 +221,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_ReAddingComponentAfterRemovalWorks()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
 
-            // Act
             entity.Remove<Position>();
             entity.Add(new Position {X = 10, Y = 20});
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.True(entity.TryGet(out Ref<Position> pos));
             Assert.Equal(10, pos.Value.X);
@@ -297,17 +242,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_SequenceOfAdditionsWorks()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             entity.Add(new Position {X = 1, Y = 2});
             entity.Add(new Velocity {X = 3, Y = 4});
             entity.Add(new Health {Value = 100});
             entity.Add(new Transform {X = 5, Y = 6, Rotation = 45});
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
             Assert.True(entity.Has<Health>());
@@ -323,19 +265,16 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void AddComponent_CanBeUsedInMixedScenario()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
             GameObject entity2 = scene.Create(new Velocity {X = 3, Y = 4});
             GameObject entity3 = scene.Create();
 
-            // Act
             entity1.Add(new Velocity {X = 5, Y = 6});
             entity2.Add(new Position {X = 7, Y = 8});
             entity3.Add(new Position {X = 9, Y = 10});
             entity3.Add(new Velocity {X = 11, Y = 12});
 
-            // Assert
             Assert.True(entity1.Has<Position>());
             Assert.True(entity1.Has<Velocity>());
             Assert.True(entity2.Has<Position>());

@@ -14,8 +14,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     public class WebAssemblyPlatformIntegrationTest
     {
         // =====================================================================
-        // WebAssemblyPlatformIntegration
-        // =====================================================================
 
         [Theory]
         [InlineData("WebAssembly")]
@@ -61,10 +59,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.NotNull(platform);
             Assert.IsType<WebAssemblyPlatform>(platform);
         }
-        
-
-        // =====================================================================
-        // SystemInfo
         // =====================================================================
 
         [Fact]

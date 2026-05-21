@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:SceneWindow.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -147,10 +120,8 @@ namespace Alis.App.Engine.Windows
             Logger.Info($"Mouse Position Relative To Window: {mousePositionRelativeToWindow.X}, {mousePositionRelativeToWindow.Y}");
             Logger.Info($"Mouse Position Relative To Texture: {mousePositionRelativeToTexture.X}, {mousePositionRelativeToTexture.Y}");
             Logger.Info("--------------------");
-            // Adjust mouse position to center the texture
             Vector2F errorPosition = new Vector2F(0, 0);
 
-            // Check if the mouse position is outside the texture
             if (mousePositionRelativeToTexture.X >= textureSize.X)
             {
                 errorPosition.X = mousePositionRelativeToTexture.X - textureSize.X;
@@ -163,7 +134,6 @@ namespace Alis.App.Engine.Windows
                 Logger.Info($"Error Position X: {errorPosition.X}");
             }
 
-            // Check if the mouse position is outside the texture
             if (mousePositionRelativeToTexture.Y >= textureSize.Y)
             {
                 errorPosition.Y = mousePositionRelativeToTexture.Y - textureSize.Y;
@@ -178,13 +148,11 @@ namespace Alis.App.Engine.Windows
 
             Vector2F mousePositionRelativeToTextureAdjusted = mousePositionRelativeToTexture - errorPosition;
 
-            // Delete the decimal part of mousePositionRelativeToTextureAdjusted:
             mousePositionRelativeToTextureAdjusted.X = (float) Math.Floor(mousePositionRelativeToTextureAdjusted.X);
             mousePositionRelativeToTextureAdjusted.Y = (float) Math.Floor(mousePositionRelativeToTextureAdjusted.Y);
 
             Logger.Info($"Mouse Position Relative To Texture Adjusted: {mousePositionRelativeToTextureAdjusted.X}, {mousePositionRelativeToTextureAdjusted.Y}");
 
-            // Calculate the mouse position thinking that the center of the texture is the origin (0,0)
             Vector2F mousePositionRelativeToTextureCentered = new Vector2F(0, 0);
             mousePositionRelativeToTextureCentered.X = mousePositionRelativeToTextureAdjusted.X - textureSize.X / 2;
             mousePositionRelativeToTextureCentered.Y = mousePositionRelativeToTextureAdjusted.Y - textureSize.Y / 2;
@@ -205,7 +173,6 @@ namespace Alis.App.Engine.Windows
         /// <returns>The game object</returns>
         private GameObject FindGameObjectUnderMouse(Vector2F mousePos)
         {
-            // Iterar sobre todos los GameObjects en la escena y encontrar si el ratón está sobre alguno
             foreach (GameObject gameObject in SpaceWork.VideoGame.Context.SceneManager.CurrentScene.GameObjects)
             {
                 RectangleF bounds = GetGameObjectBounds(gameObject);
@@ -227,7 +194,6 @@ namespace Alis.App.Engine.Windows
         /// <returns>The rectangle</returns>
         private RectangleF GetGameObjectBounds(GameObject gameObject)
         {
-            // Calcular los límites del GameObject basado en su posición y escala
             Vector2F position = gameObject.Transform.Position;
             Vector2F scale = gameObject.Transform.Scale;
             return new RectangleF(
@@ -245,10 +211,8 @@ namespace Alis.App.Engine.Windows
         /// <param name="gameObject">The game object</param>
         private void DrawSelectionRectangle(GameObject gameObject)
         {
-            // CHECK IF OBJECT EXISTS
             if (!gameObject.Context.SceneManager.CurrentScene.GameObjects.Exists(x => x.Name == "Preview Selection"))
             {
-                // Create a new GameObject with a collider component of the same size as the selected GameObject
                 GameObject selectionRectangle = new GameObject().Builder()
                     .Name("Preview Selection")
                     .Transform(transform => transform
@@ -266,13 +230,11 @@ namespace Alis.App.Engine.Windows
                         .Build())
                     .Build();
 
-                // Add the GameObject to the scene
                 gameObject.Context.SceneManager.CurrentScene.Add(selectionRectangle);
                 gameObject.Context.SceneManager.CurrentScene.OnProcessPendingChanges();
             }
             else
             {
-                // Update the position and scale of the selection rectangle
                 GameObject selectionRectangle = gameObject.Context.SceneManager.CurrentScene.GameObjects.Find(x => x.Name == "Preview Selection");
                 selectionRectangle.Get<BoxCollider>().Body.Position = gameObject.Transform.Position;
                 selectionRectangle.Get<BoxCollider>().Body.Rotation = gameObject.Transform.Rotation;
@@ -297,7 +259,6 @@ namespace Alis.App.Engine.Windows
                 selectedGameObject.Transform = transform;
             }
 
-            // Agregar lógica para rotación o redimensionado según inputs adicionales
         }*/
     }
 }

@@ -128,7 +128,6 @@ Indicates whether the user can select multiple files in a single dialog operatio
 var options = new FilePickerOptions("Select Images")
     .WithMultipleSelection();
 
-// options.AllowMultiple is now true
 ```
 
 ---
@@ -151,7 +150,6 @@ Indicates whether the dialog should allow selecting directories/folders.
 ```csharp
 var options = new FilePickerOptions("Select Folder", FileDialogType.SelectFolder)
     .WithDefaultPath("/home");
-// AllowDirectories is true for SelectFolder dialogs
 ```
 
 ---
@@ -177,13 +175,10 @@ Specifies the type of dialog to display.
 
 **Example:**
 ```csharp
-// Open existing file
 var openOptions = new FilePickerOptions("Open File", FileDialogType.OpenFile);
 
-// Save new file
 var saveOptions = new FilePickerOptions("Save File", FileDialogType.SaveFile);
 
-// Select folder
 var folderOptions = new FilePickerOptions("Select Folder", FileDialogType.SelectFolder);
 ```
 
@@ -351,7 +346,6 @@ var options = new FilePickerOptions("Select Multiple Files")
     .WithMultipleSelection()
     .WithFilter(new FilePickerFilter("All Files", "*"));
 
-// User can now select multiple files at once
 ```
 
 ---
@@ -400,7 +394,6 @@ var options = new FilePickerOptions("Complex Configuration")
     .WithFilter(new FilePickerFilter("All Files", "*"))
     .WithMultipleSelection();
 
-// All configuration is fluently set in one statement
 ```
 
 ## Complete Usage Examples
@@ -497,7 +490,6 @@ public static class FilePickerOptionsBuilder
     }
 }
 
-// Usage:
 var imageOptions = FilePickerOptionsBuilder.ForImageImport();
 var codeOptions = FilePickerOptionsBuilder.ForSourceCodeOpen();
 var projectOptions = FilePickerOptionsBuilder.ForProjectOpen();
@@ -509,10 +501,7 @@ var projectOptions = FilePickerOptionsBuilder.ForProjectOpen();
 
 1. **Always set a meaningful title:**
    ```csharp
-   // Good
    new FilePickerOptions("Select Image to Import")
-   
-   // Avoid
    new FilePickerOptions("Choose File")
    ```
 
@@ -530,10 +519,7 @@ var projectOptions = FilePickerOptionsBuilder.ForProjectOpen();
 
 4. **Be specific with file type filters:**
    ```csharp
-   // Good - specific filter names
    .WithFilter(new FilePickerFilter("Excel Spreadsheets", "xlsx", "xls"))
-   
-   // Avoid - vague names
    .WithFilter(new FilePickerFilter("Files", "xlsx", "xls"))
    ```
 

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Path.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -250,7 +223,6 @@ namespace Alis.Core.Physic.Common
 
                 int p = (int) (time / _deltaT);
 
-                // use a circular indexing system
                 int p0 = p - 1;
                 if (p0 < 0)
                 {
@@ -291,7 +263,6 @@ namespace Alis.Core.Physic.Common
                     p3 = p3 - (_controlPoints.Count - 1);
                 }
 
-                // relative time
                 float lt = (time - _deltaT * p) / _deltaT;
 
                 CalcCatmullRom(_controlPoints[p0], _controlPoints[p1], _controlPoints[p2], _controlPoints[p3], lt, out temp);
@@ -302,7 +273,6 @@ namespace Alis.Core.Physic.Common
             {
                 int p = (int) (time / _deltaT);
 
-                // 
                 int p0 = p - 1;
                 if (p0 < 0)
                 {
@@ -343,7 +313,6 @@ namespace Alis.Core.Physic.Common
                     p3 = _controlPoints.Count - 1;
                 }
 
-                // relative time
                 float lt = (time - _deltaT * p) / _deltaT;
 
                 CalcCatmullRom(_controlPoints[p0], _controlPoints[p1], _controlPoints[p2], _controlPoints[p3], lt, out temp);
@@ -471,11 +440,9 @@ namespace Alis.Core.Physic.Common
             float deltaLength = length / divisions + 0.001f;
             float t = 0.000f;
 
-            // we always start at the first control point
             Vector2F start = _controlPoints[0];
             Vector2F end = GetPosition(t);
 
-            // increment t until we are at half the distance
             while (deltaLength * 0.5f >= Vector2F.Distance(start, end))
             {
                 end = GetPosition(t);
@@ -489,7 +456,6 @@ namespace Alis.Core.Physic.Common
 
             start = end;
 
-            // for each box
             for (int i = 1; i < divisions; i++)
             {
                 Vector2F normal = GetPositionNormal(t);
@@ -497,7 +463,6 @@ namespace Alis.Core.Physic.Common
 
                 verts.Add(new Vector3F(end.X, end.Y, angle));
 
-                // until we reach the correct distance down the curve
                 while (deltaLength >= Vector2F.Distance(start, end))
                 {
                     end = GetPosition(t);

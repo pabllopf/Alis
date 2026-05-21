@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Math.ProceduralDungeon.Helpers;
@@ -46,25 +19,21 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
         {
             Console.WriteLine("=== Procedural Dungeon Generator 2D - Sample ===\n");
 
-            // Example 1: Generate a dungeon with default configuration
             Console.WriteLine("Example 1: Default Configuration");
             Console.WriteLine("----------------------------------");
             GenerateDefaultDungeon();
             Console.WriteLine();
 
-            // Example 2: Generate a dungeon with custom configuration
             Console.WriteLine("Example 2: Custom Configuration");
             Console.WriteLine("----------------------------------");
             GenerateCustomDungeon();
             Console.WriteLine();
 
-            // Example 3: Generate multiple dungeons
             Console.WriteLine("Example 3: Multiple Dungeons");
             Console.WriteLine("----------------------------------");
             GenerateMultipleDungeons(3);
             Console.WriteLine();
 
-            // Example 4: Visualize a dungeon
             Console.WriteLine("Example 4: Dungeon Visualization");
             Console.WriteLine("----------------------------------");
             VisualizeDungeon();
@@ -79,18 +48,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
         /// </summary>
         private static void GenerateDefaultDungeon()
         {
-            // Create dungeon with default settings using 'using' statement for proper disposal
             using Dungeon dungeon = new Dungeon();
 
-            // Generate the dungeon
             DungeonData data = dungeon.Generate();
 
-            // Display information
             Console.WriteLine($"Board Size: {data.Width}x{data.Height}");
             Console.WriteLine($"Total Rooms: {data.Rooms.Count}");
             Console.WriteLine($"Total Corridors: {data.Corridors.Count}");
 
-            // Display room information
             Console.WriteLine("\nRooms:");
             for (int i = 0; i < data.Rooms.Count; i++)
             {
@@ -107,7 +72,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
         /// </summary>
         private static void GenerateCustomDungeon()
         {
-            // Create custom configuration
             DungeonConfiguration config = new DungeonConfiguration
             {
                 BoardWidth = 200,
@@ -123,18 +87,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
                 CorridorHeight = 5
             };
 
-            // Create dungeon with custom configuration using 'using' statement
             using Dungeon dungeon = new Dungeon(config);
 
-            // Generate the dungeon
             DungeonData data = dungeon.Generate();
 
-            // Display information
             Console.WriteLine($"Board Size: {data.Width}x{data.Height}");
             Console.WriteLine($"Total Rooms: {data.Rooms.Count}");
             Console.WriteLine($"Total Corridors: {data.Corridors.Count}");
 
-            // Count different square types using helper methods
             int floorCount = 0;
             int wallCount = 0;
             int cornerCount = 0;
@@ -173,7 +133,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
         {
             Console.WriteLine($"Generating {count} dungeons...\n");
 
-            // Use a single dungeon instance for multiple generations
             using Dungeon dungeon = new Dungeon();
 
             for (int i = 0; i < count; i++)
@@ -194,7 +153,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
         /// </summary>
         private static void VisualizeDungeon()
         {
-            // Create a smaller dungeon for visualization
             DungeonConfiguration config = new DungeonConfiguration
             {
                 BoardWidth = 50,
@@ -216,7 +174,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
             Console.WriteLine($"Dungeon Map ({data.Width}x{data.Height}):");
             Console.WriteLine();
 
-            // Find min and max bounds to display only relevant area
             int minX = data.Width, maxX = 0, minY = data.Height, maxY = 0;
             for (int x = 0; x < data.Width; x++)
             {
@@ -232,13 +189,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
                 }
             }
 
-            // Add padding
             minX = System.Math.Max(0, minX - 2);
             maxX = System.Math.Min(data.Width - 1, maxX + 2);
             minY = System.Math.Max(0, minY - 2);
             maxY = System.Math.Min(data.Height - 1, maxY + 2);
 
-            // Display the dungeon
             for (int y = minY; y <= maxY; y++)
             {
                 for (int x = minX; x <= maxX; x++)

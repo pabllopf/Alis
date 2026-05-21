@@ -79,12 +79,10 @@ context.SetVariable("hasCompletedQuest", true);
 
 var option = new DialogOption("Opción avanzada", () => { });
 
-// Condición 1: Nivel >= 10
 var levelCondition = new LambdaDialogCondition(ctx => 
     (ctx.GetVariable<int>("playerLevel") >= 10)
 );
 
-// Condición 2: Completó la misión
 var questCondition = new LambdaDialogCondition(ctx => 
     ctx.GetVariable<bool>("hasCompletedQuest")
 );
@@ -92,7 +90,6 @@ var questCondition = new LambdaDialogCondition(ctx =>
 option.AddCondition(levelCondition);
 option.AddCondition(questCondition);
 
-// Verificar si todas las condiciones se cumplen
 bool isAvailable = evaluator.EvaluateAll(option.Conditions, context); // true
 ```
 

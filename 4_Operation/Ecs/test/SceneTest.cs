@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:SceneTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Systems;
@@ -52,10 +25,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanBeCreated()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert
             Assert.NotNull(scene);
         }
 
@@ -68,11 +39,9 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_HasUniqueId()
         {
-            // Act
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
 
-            // Assert
             Assert.NotEqual(scene1.Id, scene2.Id);
         }
 
@@ -85,10 +54,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_StartsWithZeroEntities()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert
             Assert.Equal(0, scene.EntityCount);
         }
 
@@ -101,14 +68,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanCreateEntityWithComponent()
         {
-            // Arrange
             using Scene scene = new Scene();
             TestComponent component = new TestComponent {Value = 42};
 
-            // Act
             GameObject entity = scene.Create(component);
 
-            // Assert
             Assert.Equal(1, scene.EntityCount);
             Assert.False(entity.IsNull);
         }
@@ -122,15 +86,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EntityCountIncreasesWhenCreatingEntities()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             scene.Create(new TestComponent {Value = 1});
             scene.Create(new TestComponent {Value = 2});
             scene.Create(new TestComponent {Value = 3});
 
-            // Assert
             Assert.Equal(3, scene.EntityCount);
         }
 
@@ -143,13 +104,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanCreateMultipleEntities()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             ChunkTuple<TestComponent> chunkTuple = scene.CreateMany<TestComponent>(5);
 
-            // Assert
             Assert.Equal(5, scene.EntityCount);
         }
 
@@ -163,10 +121,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_HasDefaultArchetype()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert
             Assert.NotNull(scene.DefaultArchetype);
         }
 
@@ -179,10 +135,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_HasDefaultWorldGameObject()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert
             Assert.False(scene.DefaultWorldGameObject.IsNull);
         }
 
@@ -195,10 +149,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_AllowStructuralChangesReturnsTrueByDefault()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert
             Assert.True(scene.AllowStructualChanges);
         }
 
@@ -211,10 +163,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanBeDisposed()
         {
-            // Arrange
             Scene scene = new Scene();
 
-            // Act & Assert
             scene.Dispose();
         }
 
@@ -227,15 +177,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EntityCreatedEventIsInvoked()
         {
-            // Arrange
             using Scene scene = new Scene();
             bool eventInvoked = false;
             scene.EntityCreated += entity => eventInvoked = true;
 
-            // Act
             scene.Create(new TestComponent {Value = 99});
 
-            // Assert
             Assert.True(eventInvoked);
         }
 
@@ -249,10 +196,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_RecycledEntityIdsStackExists()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert
             Assert.NotNull(scene.RecycledEntityIds);
         }
 
@@ -265,10 +210,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CommandBufferExists()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert
             Assert.NotNull(scene.WorldUpdateCommandBuffer);
         }
 
@@ -281,10 +224,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_EntityTableIsInitialized()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert
             Assert.NotNull(scene.EntityTable);
         }
 
@@ -297,10 +238,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_ArchetypeGraphEdgesIsInitialized()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert
             Assert.NotNull(scene.ArchetypeGraphEdges);
         }
 
@@ -313,10 +252,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_QueryCacheIsInitialized()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert
             Assert.NotNull(scene.QueryCache);
         }
 
@@ -329,10 +266,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_SharedCountdownIsInitialized()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert
             Assert.NotNull(scene.SharedCountdown);
         }
 
@@ -345,15 +280,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanCreateEntityWithMultipleComponents()
         {
-            // Arrange
             using Scene scene = new Scene();
             TestComponent comp1 = new TestComponent {Value = 100};
             AnotherComponent comp2 = new AnotherComponent {Name = "Test"};
 
-            // Act
             GameObject entity = scene.Create(comp1, comp2);
 
-            // Assert
             Assert.Equal(1, scene.EntityCount);
             Assert.False(entity.IsNull);
         }
@@ -367,10 +299,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_WithZeroCount_ThrowsException()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<TestComponent>(0));
         }
 
@@ -383,10 +313,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void CreateMany_WithNegativeCount_ThrowsException()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => scene.CreateMany<TestComponent>(-5));
         }
 
@@ -399,17 +327,14 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanHandleLargeNumberOfEntities()
         {
-            // Arrange
             using Scene scene = new Scene();
             const int entityCount = 1000;
 
-            // Act
             for (int i = 0; i < entityCount; i++)
             {
                 scene.Create(new TestComponent {Value = i});
             }
 
-            // Assert
             Assert.Equal(entityCount, scene.EntityCount);
         }
 
@@ -422,10 +347,8 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_WorldEventFlagsStartsAsNone()
         {
-            // Act
             using Scene scene = new Scene();
 
-            // Assert - The flags should be None or some default value
             Assert.True(scene.WorldEventFlags == GameObjectFlags.None ||
                         scene.WorldEventFlags != (GameObjectFlags) (-1));
         }

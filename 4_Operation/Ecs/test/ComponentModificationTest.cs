@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ComponentModificationTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
@@ -48,15 +21,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanAddComponent()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
             Assert.False(entity.Has<Position>());
 
-            // Act
             entity.Add(new Position {X = 10, Y = 20});
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.Equal(10, entity.Get<Position>().X);
         }
@@ -67,15 +37,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanRemoveComponent()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10}, new Health {Value = 100});
             Assert.True(entity.Has<Position>());
 
-            // Act
             entity.Remove<Position>();
 
-            // Assert
             Assert.False(entity.Has<Position>());
             Assert.True(entity.Has<Health>());
         }
@@ -86,15 +53,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_ReflectsComponentAddition()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
             Query query = scene.Query<With<Position>>();
 
-            // Act - Add component
             entity.Add(new Position {X = 5});
 
-            // Assert
             int count = 0;
             foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
             {
@@ -110,15 +74,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Query_ReflectsComponentRemoval()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 5});
             Query query = scene.Query<With<Position>>();
 
-            // Act - Remove component
             entity.Remove<Position>();
 
-            // Assert
             int count = 0;
             foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
             {
@@ -134,16 +95,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanAddMultipleComponentsSequentially()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             entity.Add(new Position {X = 1});
             entity.Add(new Health {Value = 100});
             entity.Add(new Velocity {X = 2});
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Health>());
             Assert.True(entity.Has<Velocity>());
@@ -155,18 +113,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_CanRemoveMultipleComponents()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 1},
                 new Health {Value = 100},
                 new Velocity {X = 2});
 
-            // Act
             entity.Remove<Position>();
             entity.Remove<Velocity>();
 
-            // Assert
             Assert.False(entity.Has<Position>());
             Assert.True(entity.Has<Health>());
             Assert.False(entity.Has<Velocity>());
@@ -178,14 +133,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void GameObject_ComponentDataPreservedWhenAddingOtherComponents()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10, Y = 20});
 
-            // Act
             entity.Add(new Health {Value = 100});
 
-            // Assert
             ref Position pos = ref entity.Get<Position>();
             Assert.Equal(10, pos.X);
             Assert.Equal(20, pos.Y);
@@ -199,16 +151,13 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void Scene_CanAddComponentToMultipleEntities()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create();
             GameObject entity2 = scene.Create();
 
-            // Act
             entity1.Add(new Position {X = 1});
             entity2.Add(new Position {X = 2});
 
-            // Assert
             Query query = scene.Query<With<Position>>();
             int count = 0;
             foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())

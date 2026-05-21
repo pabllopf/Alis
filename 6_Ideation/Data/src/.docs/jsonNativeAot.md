@@ -48,7 +48,6 @@ public static string Serialize<T>(T instance) where T : IJsonSerializable
 ```csharp
 var user = new User { Name = "John", Age = 30 };
 string json = JsonNativeAot.Serialize(user);
-// Output: {"Name":"John","Age":"30"}
 ```
 
 ### Deserialize<T>
@@ -79,7 +78,6 @@ public static T Deserialize<T>(string json)
 ```csharp
 string json = "{\"Name\":\"John\",\"Age\":\"30\"}";
 var user = JsonNativeAot.Deserialize<User>(json);
-// user.Name = "John", user.Age = 30
 ```
 
 ### SerializeToFile<T>
@@ -111,7 +109,6 @@ public static void SerializeToFile<T>(T instance, string fileName, string relati
 ```csharp
 var user = new User { Name = "John", Age = 30 };
 JsonNativeAot.SerializeToFile(user, "user", "data/users");
-// Creates: {CurrentDirectory}/data/users/user.json
 ```
 
 ### DeserializeFromFile<T>
@@ -140,7 +137,6 @@ public static T DeserializeFromFile<T>(string fileName, string relativePath)
 **Example**:
 ```csharp
 var user = JsonNativeAot.DeserializeFromFile<User>("user", "data/users");
-// Reads: {CurrentDirectory}/data/users/user.json
 ```
 
 ### ParseJsonToDictionary
@@ -173,9 +169,6 @@ public static Dictionary<string, string> ParseJsonToDictionary(string json)
 ```csharp
 string json = "{\"Name\":\"John\",\"Age\":\"30\",\"Tags\":[\"tag1\",\"tag2\"]}";
 var props = JsonNativeAot.ParseJsonToDictionary(json);
-// props["Name"] = "John"
-// props["Age"] = "30"
-// props["Tags"] = "[\"tag1\",\"tag2\"]"
 ```
 
 ## Internal Implementation
@@ -226,7 +219,6 @@ public class Person : IJsonSerializable
 
 var person = new Person { Name = "Alice", Age = 25 };
 string json = JsonNativeAot.Serialize(person);
-// Output: {"Name":"Alice","Age":"25"}
 ```
 
 ### Pattern 2: Bidirectional Serialization
@@ -261,11 +253,9 @@ var person = JsonNativeAot.Deserialize<Person>(json);
 ### Pattern 3: File Operations
 
 ```csharp
-// Save to file
 var person = new Person { Name = "Bob", Age = 30 };
 JsonNativeAot.SerializeToFile(person, "person", "data");
 
-// Load from file
 var loaded = JsonNativeAot.DeserializeFromFile<Person>("person", "data");
 ```
 
@@ -291,8 +281,6 @@ public class Company : IJsonSerializable, IJsonDesSerializable<Company>
         var employees = new List<Person>();
         if (properties.TryGetValue("Employees", out var empJson))
         {
-            // Parse array of JSON objects
-            // Implementation depends on specific format
         }
 
         return new Company

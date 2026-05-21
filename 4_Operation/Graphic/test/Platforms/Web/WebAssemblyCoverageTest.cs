@@ -14,11 +14,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     public class WebAssemblyCoverageTest
     {
         // =====================================================================
-        // WebAssemblyGameContext - Properties
-        // =====================================================================
 
-        // =====================================================================
-        // WebAssemblyGameContext - Console methods
         // =====================================================================
 
         [Fact]
@@ -40,8 +36,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // WebAssemblyGameContext - Dialog methods
-        // =====================================================================
 
         [Fact]
         public void GameContext_ShowAlert_DoesNotThrow()
@@ -57,8 +51,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // WebAssemblyGameContext - Dispose
-        // =====================================================================
 
       
 
@@ -66,29 +58,17 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void WebAssemblyPlatform_Initialize_AlreadyInitialized_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            // First call fails on non-browser, but sets _isInitialized via catch
-            // Actually Initialize catches exception and returns false without setting _isInitialized
-            // So we need to test the early return path differently
-            // The _isInitialized is only set to true if InitializeEglContext succeeds
-            // On non-browser, it always fails, so we can't test the early return path
         }
 
-        // =====================================================================
-        // WebAssemblyPlatform - Cleanup when initialized
         // =====================================================================
 
         [Fact]
         public void WebAssemblyPlatform_Cleanup_WhenInitialized_ClearsState()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            // On non-browser, _isInitialized is always false since Initialize fails
-            // So Cleanup returns early
             platform.Cleanup();
-            // Should not throw
         }
 
-        // =====================================================================
-        // WebAssemblyPlatform - ConvertKeyCode more coverage
         // =====================================================================
 
         [Theory]
@@ -212,10 +192,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NoName));
         }
 
-       
-
-        // =====================================================================
-        // WebAssemblyGameExamples - All examples throw on non-browser
         // =====================================================================
 
         [Fact]
@@ -245,7 +221,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact]
         public void GameExamples_SystemInfoExample_DoesNotThrow()
         {
-            // Examples run infinite game loops - skip on non-browser
             Assert.True(true);
         }
 
@@ -280,15 +255,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // MultiplatformGameEngine
-        // =====================================================================
 
-        
-
-       
-
-        // =====================================================================
-        // SystemInfo - All methods
         // =====================================================================
 
         [Fact]
@@ -363,8 +330,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // QuickStart
-        // =====================================================================
 
       
 
@@ -374,8 +339,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             QuickStart.LogPlatformInfo();
         }
 
-        // =====================================================================
-        // GameContextPresets
         // =====================================================================
 
         [Fact]
@@ -440,8 +403,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // EmscriptenWeb - Wrapper methods that catch exceptions
-        // =====================================================================
 
         [Fact]
         public void EmscriptenWeb_GetConnectedGamepads_ReturnsEmptyOnNonBrowser()
@@ -495,8 +456,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("en", lang);
         }
 
-        // =====================================================================
-        // Helper method
         // =====================================================================
 
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)

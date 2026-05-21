@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ConsoleWindow.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Concurrent;
@@ -146,7 +119,6 @@ namespace Alis.App.Engine.Windows
                 ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
 
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
-                // Barra superior con botones y filtro
                 ImGui.Button($"{FontAwesome5.TrashAlt}");
 
 
@@ -155,8 +127,6 @@ namespace Alis.App.Engine.Windows
 
                 ImGui.SameLine();
 
-                // Ajuste dinámico del ancho del filtro
-                // Calculamos el ancho disponible menos el espacio ocupado por los botones finales
                 float buttonWidth = 32 + ImGui.GetStyle().ItemSpacing.X;
                 float remainingButtonsWidth = buttonWidth * 4f; // 3 botones a la derecha
                 float filterWidth = ImGui.GetContentRegionAvail().X - remainingButtonsWidth;
@@ -180,7 +150,6 @@ namespace Alis.App.Engine.Windows
                 ImGui.SameLine();
                 ImGui.Button($"{FontAwesome5.Bug}");
 
-                // Espacio para el área de scroll
                 ImGui.Separator(); // Opcional: para separar visualmente las secciones
 
                 RenderConsoleOutput();
@@ -238,7 +207,6 @@ namespace Alis.App.Engine.Windows
                 {
                     if (ImGui.IsMouseDoubleClicked(0))
                     {
-                        // Handle double-click action here
                         Logger.Info($"Double-clicked on: {line}");
                     }
                 }

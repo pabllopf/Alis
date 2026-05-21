@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ArchetypeOperationsTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
@@ -54,16 +27,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_DefaultArchetypeIsAccessible()
         {
-            // Arrange
             Scene scene = new Scene();
 
-            // Act
             Archetype defaultArchetype = scene.DefaultArchetype;
 
-            // Assert
             Assert.NotNull(defaultArchetype);
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -77,17 +46,13 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_ChangesWhenComponentIsAdded()
         {
-            // Arrange
             Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             entity.Add(new Position());
 
-            // Assert
             Assert.True(entity.Has<Position>());
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -101,10 +66,8 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_SameComponentSetSharesArchetype()
         {
-            // Arrange
             Scene scene = new Scene();
 
-            // Act
             GameObject e1 = scene.Create();
             e1.Add(new Position());
             e1.Add(new Velocity());
@@ -113,12 +76,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             e2.Add(new Position());
             e2.Add(new Velocity());
 
-            // Both entities should be in efficient memory layout
-            // Assert
             Assert.True(e1.Has<Position>());
             Assert.True(e2.Has<Position>());
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -132,25 +92,21 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_TransitionsAreDeterministic()
         {
-            // Arrange
             Scene scene = new Scene();
             GameObject e1 = scene.Create();
             GameObject e2 = scene.Create();
 
-            // Act
             e1.Add(new Position());
             e1.Add(new Velocity());
 
             e2.Add(new Position());
             e2.Add(new Velocity());
 
-            // Assert
             Assert.True(e1.Has<Position>());
             Assert.True(e1.Has<Velocity>());
             Assert.True(e2.Has<Position>());
             Assert.True(e2.Has<Velocity>());
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -164,23 +120,19 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_TransitionsWhenComponentsRemoved()
         {
-            // Arrange
             Scene scene = new Scene();
             GameObject entity = scene.Create();
             entity.Add(new Position());
             entity.Add(new Velocity());
             entity.Add(new Health());
 
-            // Act
             entity.Remove<Health>();
             entity.Remove<Velocity>();
 
-            // Assert
             Assert.True(entity.Has<Position>());
             Assert.False(entity.Has<Velocity>());
             Assert.False(entity.Has<Health>());
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -194,10 +146,8 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_ManyArchetypesCanCoexistInScene()
         {
-            // Arrange
             Scene scene = new Scene();
 
-            // Act - Create entities with different component combinations
             for (int i = 0; i < 10; i++)
             {
                 GameObject entity = scene.Create();
@@ -217,7 +167,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
                 }
             }
 
-            // Assert - All entities should be created and properly configured
             int count = 0;
             Query query = scene.Query<With<Position>>();
             foreach (GameObject entity in query.EnumerateWithEntities())
@@ -227,7 +176,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 
             Assert.True(count > 0);
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -241,11 +189,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_ComponentAccessWorksAcrossTransitions()
         {
-            // Arrange
             Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            // Act
             entity.Add(new Position());
             ref Position pos1 = ref entity.Get<Position>();
             pos1.X = 100;
@@ -254,11 +200,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             entity.Add(new Velocity());
             ref Position pos2 = ref entity.Get<Position>();
 
-            // Assert
             Assert.Equal(100, pos2.X);
             Assert.Equal(200, pos2.Y);
 
-            // Cleanup
             scene.Dispose();
         }
 
@@ -272,7 +216,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_ComponentOrderDoesntAffectQueries()
         {
-            // Arrange
             Scene scene = new Scene();
 
             GameObject e1 = scene.Create();
@@ -283,7 +226,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             e2.Add(new Velocity());
             e2.Add(new Position());
 
-            // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
             int count = 0;
             foreach (GameObject entity in query.EnumerateWithEntities())
@@ -291,10 +233,8 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
                 count++;
             }
 
-            // Assert
             Assert.Equal(2, count);
 
-            // Cleanup
             scene.Dispose();
         }
     }

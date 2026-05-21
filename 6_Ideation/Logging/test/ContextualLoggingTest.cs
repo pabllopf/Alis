@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ContextualLoggingTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -48,17 +21,14 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void CorrelationId_SetAndGet_ShouldMatch()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 ILogger logger = factory.CreateLogger("TestLogger");
                 string correlationId = "CORR-" + Guid.NewGuid();
 
-                // Act
                 logger.SetCorrelationId(correlationId);
                 string retrieved = logger.GetCorrelationId();
 
-                // Assert
                 Assert.Equal(correlationId, retrieved);
             }
         }
@@ -69,7 +39,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void CorrelationId_InLogEntry_ShouldBePreserved()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
@@ -79,10 +48,8 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 logger.SetCorrelationId(correlationId);
 
-                // Act
                 logger.LogInfo("Test message");
 
-                // Assert
                 IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Single(entries);
                 Assert.Equal(correlationId, entries[0].CorrelationId);
@@ -95,14 +62,12 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Scope_BeginAndEnd_ShouldCaptureContext()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
                 ILogger logger = factory.CreateLogger("TestLogger");
 
-                // Act
                 using (logger.BeginScope("RequestScope"))
                 {
                     logger.LogInfo("Inside scope");
@@ -110,7 +75,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 logger.LogInfo("Outside scope");
 
-                // Assert
                 IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Equal(2, entries.Count);
                 Assert.Single(entries[0].Scopes);
@@ -124,14 +88,12 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Scope_NestedScopes_ShouldMaintainStack()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
                 ILogger logger = factory.CreateLogger("TestLogger");
 
-                // Act
                 using (logger.BeginScope("Level1"))
                 {
                     logger.LogInfo("At level 1");
@@ -147,7 +109,6 @@ namespace Alis.Core.Aspect.Logging.Test
                     }
                 }
 
-                // Assert
                 IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Equal(3, entries.Count);
 
@@ -171,17 +132,14 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Scope_OutsideScope_ShouldBeEmpty()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
                 ILogger logger = factory.CreateLogger("TestLogger");
 
-                // Act
                 logger.LogInfo("No scope");
 
-                // Assert
                 IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Single(entries);
                 Assert.Empty(entries[0].Scopes);
@@ -194,20 +152,17 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void CorrelationId_SeparateLoggers_ShouldHaveSeparateIds()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 ILogger logger1 = factory.CreateLogger("Logger1");
                 ILogger logger2 = factory.CreateLogger("Logger2");
 
-                // Act
                 logger1.SetCorrelationId("CORR-1");
                 logger2.SetCorrelationId("CORR-2");
 
                 string id1 = logger1.GetCorrelationId();
                 string id2 = logger2.GetCorrelationId();
 
-                // Assert
                 Assert.Equal("CORR-1", id1);
                 Assert.Equal("CORR-2", id2);
             }
@@ -219,7 +174,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Scope_WithProperties_ShouldMaintainProperties()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
@@ -232,13 +186,11 @@ namespace Alis.Core.Aspect.Logging.Test
                     {"Action", "Login"}
                 };
 
-                // Act
                 using (logger.BeginScope("RequestScope"))
                 {
                     logger.LogStructured(LogLevel.Info, "Login attempt", properties);
                 }
 
-                // Assert
                 IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Single(entries);
                 Assert.Single(entries[0].Scopes);
@@ -252,14 +204,12 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void CorrelationId_ChangingMultipleTimes()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
                 ILogger logger = factory.CreateLogger("TestLogger");
 
-                // Act
                 logger.SetCorrelationId("CORR-1");
                 logger.LogInfo("Message 1");
 
@@ -269,7 +219,6 @@ namespace Alis.Core.Aspect.Logging.Test
                 logger.SetCorrelationId("CORR-3");
                 logger.LogInfo("Message 3");
 
-                // Assert
                 IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Equal(3, entries.Count);
                 Assert.Equal("CORR-1", entries[0].CorrelationId);
@@ -284,7 +233,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Scope_WithFormattedOutput_ShouldIncludeInOutput()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
@@ -292,13 +240,11 @@ namespace Alis.Core.Aspect.Logging.Test
                     .SetFormatter(new SimpleLogFormatter());
                 ILogger logger = factory.CreateLogger("TestLogger");
 
-                // Act
                 using (logger.BeginScope("RequestScope"))
                 {
                     logger.LogInfo("Scoped message");
                 }
 
-                // Assert
                 IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Single(entries);
                 Assert.Single(entries[0].Scopes);
@@ -311,20 +257,17 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Scope_Disposal_ShouldRemoveScope()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
                 ILogger logger = factory.CreateLogger("TestLogger");
 
-                // Act
                 IDisposable scope1 = logger.BeginScope("Scope1");
                 logger.LogInfo("With scope");
                 scope1.Dispose();
                 logger.LogInfo("After dispose");
 
-                // Assert
                 IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Equal(2, entries.Count);
                 Assert.Single(entries[0].Scopes);
@@ -338,17 +281,14 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void CorrelationId_DefaultNull()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
                 ILogger logger = factory.CreateLogger("TestLogger");
 
-                // Act
                 logger.LogInfo("Without correlation ID");
 
-                // Assert
                 IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Single(entries);
                 Assert.Null(entries[0].CorrelationId);

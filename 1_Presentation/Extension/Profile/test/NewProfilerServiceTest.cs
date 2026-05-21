@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:NewProfilerServiceTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Profile.Factories;
@@ -46,11 +19,9 @@ namespace Alis.Extension.Profile.Test
         [Fact]
         public void Constructor_ThrowsException_WhenTimeTrackerIsNull()
         {
-            // Arrange
             MockResourceMonitor mockMonitor = new MockResourceMonitor();
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => new ProfilerService(null, factory));
         }
 
@@ -60,10 +31,8 @@ namespace Alis.Extension.Profile.Test
         [Fact]
         public void Constructor_ThrowsException_WhenMetricsFactoryIsNull()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker();
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => new ProfilerService(mockTracker, null));
         }
 
@@ -73,13 +42,11 @@ namespace Alis.Extension.Profile.Test
         [Fact]
         public void IsActive_ReturnsFalse_Initially()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker();
             MockResourceMonitor mockMonitor = new MockResourceMonitor();
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
             ProfilerService service = new ProfilerService(mockTracker, factory);
 
-            // Act & Assert
             Assert.False(service.IsActive);
         }
 
@@ -89,16 +56,13 @@ namespace Alis.Extension.Profile.Test
         [Fact]
         public void StartProfiling_ActivatesProfiling()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker();
             MockResourceMonitor mockMonitor = new MockResourceMonitor();
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
             ProfilerService service = new ProfilerService(mockTracker, factory);
 
-            // Act
             service.StartProfiling();
 
-            // Assert
             Assert.True(service.IsActive);
             Assert.True(mockTracker.StartCalled);
         }
@@ -109,7 +73,6 @@ namespace Alis.Extension.Profile.Test
         [Fact]
         public void StartProfiling_CapturesInitialMetrics()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker();
             MockResourceMonitor mockMonitor = new MockResourceMonitor
             {
@@ -119,10 +82,8 @@ namespace Alis.Extension.Profile.Test
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
             ProfilerService service = new ProfilerService(mockTracker, factory);
 
-            // Act
             service.StartProfiling();
 
-            // Assert
             Assert.True(mockMonitor.GetCpuUsageCalled);
             Assert.True(mockMonitor.GetMemoryUsageCalled);
         }
@@ -133,7 +94,6 @@ namespace Alis.Extension.Profile.Test
         [Fact]
         public void StopProfiling_ReturnsSnapshot()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker
             {
                 ElapsedTime = TimeSpan.FromMilliseconds(500)
@@ -148,10 +108,8 @@ namespace Alis.Extension.Profile.Test
 
             service.StartProfiling();
 
-            // Act
             ProfileSnapshot snapshot = service.StopProfiling();
 
-            // Assert
             Assert.NotNull(snapshot);
             Assert.Equal(TimeSpan.FromMilliseconds(500), snapshot.ElapsedTime);
             Assert.True(mockTracker.StopCalled);
@@ -163,13 +121,11 @@ namespace Alis.Extension.Profile.Test
         [Fact]
         public void StopProfiling_ThrowsException_WhenNotActive()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker();
             MockResourceMonitor mockMonitor = new MockResourceMonitor();
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
             ProfilerService service = new ProfilerService(mockTracker, factory);
 
-            // Act & Assert
             Assert.Throws<InvalidOperationException>(() => service.StopProfiling());
         }
 
@@ -179,7 +135,6 @@ namespace Alis.Extension.Profile.Test
         [Fact]
         public void GetCurrentSnapshot_ReturnsData_WithoutStopping()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker
             {
                 ElapsedTime = TimeSpan.FromMilliseconds(250)
@@ -194,10 +149,8 @@ namespace Alis.Extension.Profile.Test
 
             service.StartProfiling();
 
-            // Act
             ProfileSnapshot snapshot = service.GetCurrentSnapshot();
 
-            // Assert
             Assert.NotNull(snapshot);
             Assert.Equal(TimeSpan.FromMilliseconds(250), snapshot.ElapsedTime);
             Assert.True(service.IsActive); // Still active
@@ -210,7 +163,6 @@ namespace Alis.Extension.Profile.Test
         [Fact]
         public void Reset_ClearsAllData()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker();
             MockResourceMonitor mockMonitor = new MockResourceMonitor();
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
@@ -218,10 +170,8 @@ namespace Alis.Extension.Profile.Test
 
             service.StartProfiling();
 
-            // Act
             service.Reset();
 
-            // Assert
             Assert.True(mockTracker.ResetCalled);
         }
 
@@ -231,7 +181,6 @@ namespace Alis.Extension.Profile.Test
         [Fact]
         public void StopProfiling_CapturesEndMetrics()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker
             {
                 ElapsedTime = TimeSpan.FromMilliseconds(500)
@@ -247,10 +196,8 @@ namespace Alis.Extension.Profile.Test
             service.StartProfiling();
             mockMonitor.ResetCallTracking();
 
-            // Act
             ProfileSnapshot snapshot = service.StopProfiling();
 
-            // Assert
             Assert.True(mockMonitor.GetCpuUsageCalled);
             Assert.True(mockMonitor.GetMemoryUsageCalled);
             Assert.NotEqual(DateTime.MinValue, snapshot.EndTime);
@@ -263,13 +210,11 @@ namespace Alis.Extension.Profile.Test
         [Fact]
         public void IsActive_ReflectsTimeTrackerState()
         {
-            // Arrange
             MockTimeTracker mockTracker = new MockTimeTracker();
             MockResourceMonitor mockMonitor = new MockResourceMonitor();
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
             ProfilerService service = new ProfilerService(mockTracker, factory);
 
-            // Act & Assert
             Assert.False(service.IsActive);
 
             mockTracker.IsRunning = true;

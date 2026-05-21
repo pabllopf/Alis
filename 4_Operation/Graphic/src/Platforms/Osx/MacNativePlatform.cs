@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MacNativePlatform.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 #if osxarm64 || osxarm || osxx64 || osx
 using System;
@@ -59,7 +32,6 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
         private float mouseWheel;
 
-        // Mouse state
         private int mouseX;
         private int mouseY;
 
@@ -158,12 +130,9 @@ namespace Alis.Core.Graphic.Platforms.Osx
             {
                 IntPtr eventType = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("type"));
                 int type = eventType.ToInt32();
-                // Mouse event types (NSEventType): 1=LeftDown,2=LeftUp,3=RightDown,4=RightUp,5=MouseMoved,22=ScrollWheel
                 if (type == 1 || type == 2 || type == 3 || type == 4 || type == 5 || type == 22)
                 {
-                    // Get locationInWindow
                     IntPtr locationPtr = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("locationInWindow"));
-                    // Read two doubles (x,y)
                     long lx = Marshal.ReadInt64(locationPtr, 0);
                     long ly = Marshal.ReadInt64(locationPtr, 8);
                     double px = BitConverter.Int64BitsToDouble(lx);
@@ -194,13 +163,11 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
                     else if (type == 22)
                     {
-                        // scrollDeltaY
                         double deltaY = ObjectiveCInterop.objc_msgSend_double(evt, ObjectiveCInterop.Sel("deltaY"));
                         mouseWheel = (float) deltaY;
                         Console.WriteLine($"Scroll: {mouseWheel}");
                     }
 
-                    // forward event to app
                     ObjectiveCInterop.objc_msgSend_void_IntPtr(app, ObjectiveCInterop.Sel("sendEvent:"), evt);
                     ObjectiveCInterop.objc_msgSend_void(app, ObjectiveCInterop.Sel("updateWindows"));
                     return IsWindowVisible();
@@ -226,7 +193,6 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
                     Console.WriteLine($"Tecla presionada: keyCode={keyCode} char='{c}'");
 
-                    // Mapear por keyCode primero (teclas especiales y flechas)
                     switch (keyCode)
                     {
                         case 123:
@@ -329,19 +295,11 @@ namespace Alis.Core.Graphic.Platforms.Osx
                             lastKeyPressed = ConsoleKey.F12;
                             pressedKeys.Add(ConsoleKey.F12);
                             break;
-                        //case 57: lastKeyPressed = ConsoleKey.CapsLock; pressedKeys.Add(ConsoleKey.CapsLock); break;
                         case 55:
                             lastKeyPressed = ConsoleKey.LeftWindows;
                             pressedKeys.Add(ConsoleKey.LeftWindows);
                             break; // Command
-                        //case 56: lastKeyPressed = ConsoleKey.LeftShift; pressedKeys.Add(ConsoleKey.LeftShift); break;
-                        //case 60: lastKeyPressed = ConsoleKey.RightShift; pressedKeys.Add(ConsoleKey.RightShift); break;
-                        //case 59: lastKeyPressed = ConsoleKey.LeftCtrl; pressedKeys.Add(ConsoleKey.LeftCtrl); break;
-                        //case 62: lastKeyPressed = ConsoleKey.RightCtrl; pressedKeys.Add(ConsoleKey.RightCtrl); break;
-                        //case 58: lastKeyPressed = ConsoleKey.LeftAlt; pressedKeys.Add(ConsoleKey.LeftAlt); break; // Option
-                        //case 61: lastKeyPressed = ConsoleKey.RightAlt; pressedKeys.Add(ConsoleKey.RightAlt); break;
                         default:
-                            // Si es número, letra o símbolo
                             if ((c >= '0') && (c <= '9'))
                             {
                                 lastKeyPressed = (ConsoleKey) ((int) ConsoleKey.D0 + (c - '0'));
@@ -479,14 +437,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         case 109: pressedKeys.Remove(ConsoleKey.F10); break;
                         case 103: pressedKeys.Remove(ConsoleKey.F11); break;
                         case 111: pressedKeys.Remove(ConsoleKey.F12); break;
-                        //case 57: pressedKeys.Remove(ConsoleKey.CapsLock); break;
                         case 55: pressedKeys.Remove(ConsoleKey.LeftWindows); break;
-                        //case 56: pressedKeys.Remove(ConsoleKey.LeftShift); break;
-                        //case 60: pressedKeys.Remove(ConsoleKey.RightShift); break;
-                        //case 59: pressedKeys.Remove(ConsoleKey.LeftCtrl); break;
-                        //case 62: pressedKeys.Remove(ConsoleKey.RightCtrl); break;
-                        //case 58: pressedKeys.Remove(ConsoleKey.LeftAlt); break;
-                        //case 61: pressedKeys.Remove(ConsoleKey.RightAlt); break;
                         default:
                             if ((c >= '0') && (c <= '9'))
                             {
@@ -560,7 +511,6 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// </summary>
         public void GetMouseState(out int x, out int y, out bool[] buttons)
         {
-            // Obtener la posición global del mouse
             CGPoint mouseLocation = GetMouseLocation();
 
             x = (int) mouseLocation.X;
@@ -599,14 +549,12 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
         public void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH)
         {
-            // Obtener el frame real de la ventana usando P/Invoke directo
             NsRect frame = ObjectiveCInterop.GetWindowFrame(window.Handle);
             winX = (int) frame.x;
             winY = (int) frame.y;
             winW = (int) frame.width;
             winH = (int) frame.height;
 
-            // Obtener la vista OpenGL asociada a la ventana
             IntPtr contentView = ObjectiveCInterop.objc_msgSend(window.Handle, ObjectiveCInterop.Sel("contentView"));
             if (contentView != IntPtr.Zero)
             {
@@ -631,10 +579,8 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 return;
             }
 
-            // NSWindow*
             IntPtr nsWindow = window.Handle;
 
-            // NSView* (contentView real donde está el OpenGL)
             IntPtr nsView = ObjectiveCInterop.objc_msgSend(
                 nsWindow,
                 ObjectiveCInterop.Sel("contentView"));
@@ -644,11 +590,9 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 return;
             }
 
-            // NSPoint mouse = [window mouseLocationOutsideOfEventStream]
             NsPoint mouseScreen =
                 ObjectiveCInterop.objc_msgSend_NSPoint(nsWindow, ObjectiveCInterop.selMouseLocationOutside);
 
-            // NSPoint local = [view convertPoint:mouseScreen fromView:nil]
             NsPoint local =
                 ObjectiveCInterop.objc_msgSend_NSPoint_NSPoint_IntPtr(
                     nsView,
@@ -674,7 +618,6 @@ namespace Alis.Core.Graphic.Platforms.Osx
 #pragma warning disable S2696
         public IntPtr GetProcAddress(string procName)
         {
-            // OpenGL dynamic loading
             const string OpenGLPath = "/System/Library/Frameworks/OpenGL.framework/OpenGL";
             const int RtldDefault = 0;
             if (_openGlHandle == IntPtr.Zero)
@@ -742,7 +685,6 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 IntPtr nsStringClass = ObjectiveCInterop.objc_getClass("NSString");
                 IntPtr stringWithUTF8Sel = ObjectiveCInterop.sel_registerName("stringWithUTF8String:");
 
-                // Crear NSString desde el path
                 IntPtr iconPathUtf8 = Marshal.StringToHGlobalAnsi(iconPath);
                 IntPtr nsString = ObjectiveCInterop.objc_msgSend(nsStringClass, stringWithUTF8Sel, iconPathUtf8);
                 Marshal.FreeHGlobal(iconPathUtf8);

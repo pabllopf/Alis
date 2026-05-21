@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ArchetypeExtendedNeighborCacheTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Collections;
 using Xunit;
@@ -50,10 +23,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void v2_ArchetypeNeighborCache_CanBeCreated()
         {
-            // Act
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
-            // Assert
             Assert.NotNull(cache);
         }
 
@@ -66,11 +37,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ArchetypeNeighborCache_HasValidInitialState()
         {
-            // Act
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
-            // Assert
-            // The cache should be created successfully and usable
             Assert.NotNull(cache);
         }
 
@@ -83,12 +51,9 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ArchetypeNeighborCache_IsValueType()
         {
-            // Arrange
             ArchetypeNeighborCache cache1 = new ArchetypeNeighborCache();
             ArchetypeNeighborCache cache2 = cache1;
 
-            // Assert
-            // They should be separate instances since it's a struct
             Assert.NotNull(cache1);
             Assert.NotNull(cache2);
         }
@@ -102,10 +67,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ArchetypeNeighborCache_CanBeDefaultInitialized()
         {
-            // Act
             ArchetypeNeighborCache cache = default(ArchetypeNeighborCache);
 
-            // Assert
             Assert.NotNull(cache);
         }
 
@@ -118,11 +81,9 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ArchetypeNeighborCache_InstancesAreIndependent()
         {
-            // Act
             ArchetypeNeighborCache cache1 = new ArchetypeNeighborCache();
             ArchetypeNeighborCache cache2 = new ArchetypeNeighborCache();
 
-            // Assert
             Assert.NotNull(cache1);
             Assert.NotNull(cache2);
         }

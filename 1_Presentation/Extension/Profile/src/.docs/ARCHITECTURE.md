@@ -239,7 +239,6 @@ public class PlatformResourceMonitor : IResourceMonitor
 ### Best Practices
 
 ```csharp
-// Good: Profile at checkpoints
 void GameLoop()
 {
     while (running)
@@ -255,7 +254,6 @@ void GameLoop()
     }
 }
 
-// Avoid: Profile every iteration
 void GameLoop()
 {
     while (running)
@@ -283,12 +281,10 @@ void GameLoop()
 For multi-threaded profiling:
 
 ```csharp
-// Create separate profiler per thread
 ThreadLocal<IProfilerService> profiler = new ThreadLocal<IProfilerService>(
     () => ProfilerServiceBuilder.CreateDefault()
 );
 
-// Use in each thread
 using (new ProfilerScope(profiler.Value, LogSnapshot))
 {
     PerformThreadWork();

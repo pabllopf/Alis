@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WebSocketImplementationTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.IO;
@@ -62,7 +35,6 @@ namespace Alis.Extension.Network.Test.Internal
             ArraySegment<byte> buffer = new ArraySegment<byte>(Encoding.UTF8.GetBytes("Test message"));
             await webSocket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
 
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
         }
 
         /// <summary>
@@ -112,17 +84,13 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task SendAsync_ValidInput_7()
         {
-            // Arrange
             Guid guid = Guid.NewGuid();
             MemoryStream stream = new MemoryStream();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), stream, TimeSpan.FromSeconds(30), "permessage-deflate", true, true, "subProtocol");
             ArraySegment<byte> buffer = new ArraySegment<byte>(Encoding.UTF8.GetBytes("Test message"));
 
-            // Act
             await webSocket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
 
-            // Assert
-            // Add your asserts here
         }
 
         /// <summary>
@@ -131,17 +99,13 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task ReceiveAsync_ValidInput_6()
         {
-            // Arrange
             Guid guid = Guid.NewGuid();
             MemoryStream stream = new MemoryStream();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), stream, TimeSpan.FromSeconds(30), "permessage-deflate", true, true, "subProtocol");
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
 
-            // Act
             EndOfStreamException result = await Assert.ThrowsAsync<EndOfStreamException>(() => webSocket.ReceiveAsync(buffer, CancellationToken.None));
 
-            // Assert
-            // Add your asserts here
         }
 
         /// <summary>
@@ -150,15 +114,12 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task CloseAsync_ValidInput_v5()
         {
-            // Arrange
             Guid guid = Guid.NewGuid();
             MemoryStream stream = new MemoryStream();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), stream, TimeSpan.FromSeconds(30), "permessage-deflate", true, true, "subProtocol");
 
-            // Act
             await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Test close", CancellationToken.None);
 
-            // Assert
             Assert.Equal(WebSocketState.CloseSent, webSocket.State);
         }
 
@@ -168,15 +129,12 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void Abort_ValidInput()
         {
-            // Arrange
             Guid guid = Guid.NewGuid();
             MemoryStream stream = new MemoryStream();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), stream, TimeSpan.FromSeconds(30), "permessage-deflate", true, true, "subProtocol");
 
-            // Act
             webSocket.Abort();
 
-            // Assert
             Assert.Equal(WebSocketState.Aborted, webSocket.State);
         }
 
@@ -186,15 +144,12 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task CloseOutputAsync_ValidInput()
         {
-            // Arrange
             Guid guid = Guid.NewGuid();
             MemoryStream stream = new MemoryStream();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), stream, TimeSpan.FromSeconds(30), "permessage-deflate", true, true, "subProtocol");
 
-            // Act
             await webSocket.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "Test close", CancellationToken.None);
 
-            // Assert
             Assert.Equal(WebSocketState.Closed, webSocket.State);
         }
 
@@ -273,17 +228,14 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandleBinaryFrame_Test()
         {
-            // Arrange
             Guid guid = Guid.NewGuid();
             MemoryStream stream = new MemoryStream();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), stream, TimeSpan.FromSeconds(30), "permessage-deflate", true, true, "subProtocol");
             ArraySegment<byte> buffer = new ArraySegment<byte>(Encoding.UTF8.GetBytes("Test message"));
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.BinaryFrame, buffer.Count, buffer);
 
-            // Act
             WebSocketReceiveResult result = webSocket.HandleBinaryFrame(frame, true);
 
-            // Assert
             Assert.Equal(WebSocketMessageType.Binary, result.MessageType);
             Assert.True(result.EndOfMessage);
             Assert.Equal(0, result.Count);
@@ -295,17 +247,14 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandlePong_Test()
         {
-            // Arrange
             Guid guid = Guid.NewGuid();
             MemoryStream stream = new MemoryStream();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), stream, TimeSpan.FromSeconds(30), "permessage-deflate", true, true, "subProtocol");
             ArraySegment<byte> buffer = new ArraySegment<byte>(Encoding.UTF8.GetBytes("Test message"));
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.BinaryFrame, buffer.Count, buffer);
 
-            // Act
             WebSocketReceiveResult result = webSocket.HandlePong(frame, buffer);
 
-            // Assert
             Assert.Null(result);
         }
 
@@ -315,17 +264,14 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandleContinuationFrame_Test()
         {
-            // Arrange
             Guid guid = Guid.NewGuid();
             MemoryStream stream = new MemoryStream();
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), stream, TimeSpan.FromSeconds(30), "permessage-deflate", true, true, "subProtocol");
             ArraySegment<byte> buffer = new ArraySegment<byte>(Encoding.UTF8.GetBytes("Test message"));
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.BinaryFrame, buffer.Count, buffer);
 
-            // Act
             WebSocketReceiveResult result = webSocket.HandleContinuationFrame(frame, true);
 
-            // Assert
             Assert.Equal(WebSocketMessageType.Binary, result.MessageType);
             Assert.True(result.EndOfMessage);
             Assert.Equal(0, result.Count);

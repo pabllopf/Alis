@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WebSocketClientFactory.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -184,7 +157,6 @@ namespace Alis.Extension.Network
         /// <returns>The string</returns>
         internal static string GetSubProtocolFromHeader(string response)
         {
-            // make sure we escape the accept string which could contain special regex characters
             string regexPattern = "Sec-WebSocket-Protocol: (.*)";
             Regex regex = new Regex(regexPattern, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match match = regex.Match(response);
@@ -200,12 +172,10 @@ namespace Alis.Extension.Network
         /// <exception cref="WebSocketHandshakeFailedException"></exception>
         internal static void ThrowIfInvalidAcceptString(Guid guid, string response, string secWebSocketKey)
         {
-            // make sure we escape the accept string which could contain special regex characters
             string regexPattern = "Sec-WebSocket-Accept: (.*)";
             Regex regex = new Regex(regexPattern, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             string actualAcceptString = regex.Match(response).Groups[1].Value.Trim();
 
-            // check the accept string
             string expectedAcceptString = HttpHelper.ComputeSocketAcceptString(secWebSocketKey);
             if (expectedAcceptString != actualAcceptString)
             {
@@ -239,7 +209,6 @@ namespace Alis.Extension.Network
 
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    // if there is more to the message than just the header
                     if (string.IsNullOrWhiteSpace(lines[i]))
                     {
                         StringBuilder builder = new StringBuilder();
@@ -303,7 +272,6 @@ namespace Alis.Extension.Network
                 SslStream sslStream = new SslStream(stream, false, ValidateServerCertificate, null);
                 Events.Log.AttemtingToSecureSslConnection(loggingGuid);
 
-                // This will throw an AuthenticationException if the certificate is not valid
                 TlsAuthenticateAsClient(sslStream, host);
                 Events.Log.ConnectionSecured(loggingGuid);
                 return sslStream;
@@ -327,7 +295,6 @@ namespace Alis.Extension.Network
 
             Events.Log.SslCertificateError(sslPolicyErrors);
 
-            // Do not allow this client to communicate with unauthenticated servers.
             return false;
         }
 

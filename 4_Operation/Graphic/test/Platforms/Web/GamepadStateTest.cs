@@ -9,8 +9,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     public class GamepadStateTest
     {
         // =====================================================================
-        // GamepadState
-        // =====================================================================
 
         [Fact]
         public void GamepadState_DefaultValues_AreCorrect()
@@ -224,8 +222,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             state.Buttons[12] = true; Assert.True(state.ButtonGuide); state.Buttons[12] = false;
         }
 
-        // =====================================================================
-        // GamepadInputState
         // =====================================================================
 
         [Fact]

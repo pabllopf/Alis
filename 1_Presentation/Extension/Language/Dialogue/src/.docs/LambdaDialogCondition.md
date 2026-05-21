@@ -82,7 +82,6 @@ var complexCondition = new LambdaDialogCondition(ctx =>
 var manager = new DialogManager();
 var dialog = new Dialog("shop", "Tienda de armas");
 
-// Opción solo disponible si tiene oro suficiente
 var buyOption = new DialogOption("Comprar espada", () =>
 {
     Console.WriteLine("¡Espada comprada!");
@@ -97,7 +96,6 @@ dialog.AddOption(buyOption);
 manager.AddDialog(dialog);
 manager.StartDialog("shop");
 
-// Verificar disponibilidad
 var available = manager.GetAvailableOptions();
 ```
 

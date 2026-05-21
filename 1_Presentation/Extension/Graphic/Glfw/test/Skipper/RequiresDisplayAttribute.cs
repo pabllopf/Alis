@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:RequiresDisplayAttribute.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Diagnostics;
@@ -89,28 +62,23 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
             {
                 if (IsWindows())
                 {
-                    // Windows puede fallar en ambientes CI/CD sin GPU (WGL: The driver does not appear to support OpenGL)
-                    // Omitir tests en Windows por defecto
                     return false;
                 }
 
                 if (IsLinux())
                 {
-                    // Verificar X11
                     string display = Environment.GetEnvironmentVariable("DISPLAY");
                     if (!string.IsNullOrEmpty(display))
                     {
                         return true;
                     }
 
-                    // Verificar Wayland
                     string waylandDisplay = Environment.GetEnvironmentVariable("WAYLAND_DISPLAY");
                     if (!string.IsNullOrEmpty(waylandDisplay))
                     {
                         return true;
                     }
 
-                    // Verificar XDG_SESSION_TYPE
                     string sessionType = Environment.GetEnvironmentVariable("XDG_SESSION_TYPE");
                     if (sessionType == "x11" || sessionType == "wayland")
                     {
@@ -122,8 +90,6 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
 
                 if (IsMacOS())
                 {
-                    // En macOS, verificar si hay WindowServer activo
-                    // WindowServer es el proceso que gestiona el entorno gráfico
                     try
                     {
                         ProcessStartInfo processStartInfo = new ProcessStartInfo
@@ -144,7 +110,6 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
                     }
                     catch
                     {
-                        // Si falla, asumir que hay display en macOS por defecto
                         return false;
                     }
                 }

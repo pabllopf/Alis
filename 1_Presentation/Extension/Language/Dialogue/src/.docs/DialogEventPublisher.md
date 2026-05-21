@@ -59,7 +59,6 @@ publisher.ClearObservers();
 ## Ejemplo Completo
 
 ```csharp
-// Crear observador personalizado
 class MyDialogObserver : IDialogEventObserver
 {
     public void OnDialogEvent(DialogEvent dialogEvent)
@@ -79,7 +78,6 @@ class MyDialogObserver : IDialogEventObserver
     }
 }
 
-// Usar el publisher
 var publisher = new DialogEventPublisher();
 var observer1 = new MyDialogObserver();
 var observer2 = new MyDialogObserver();
@@ -87,7 +85,6 @@ var observer2 = new MyDialogObserver();
 publisher.Subscribe(observer1);
 publisher.Subscribe(observer2);
 
-// Publicar evento
 var @event = new DialogEvent(DialogEventType.OnDialogStart, "intro");
 publisher.Publish(@event); // Ambos observadores reciben la notificación
 

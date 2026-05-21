@@ -53,7 +53,6 @@ Normalizes a path by removing leading and trailing whitespace and newlines.
 ```csharp
 string dirty = "  /path/to/file.txt\n";
 string clean = FilePickerPathConverter.NormalizePath(dirty);
-// Result: "/path/to/file.txt"
 ```
 
 ---
@@ -85,7 +84,6 @@ Splits multiple file paths separated by newlines (common output from Linux/macOS
 ```csharp
 string multiPath = "/path/one.txt\n/path/two.txt\n/path/three.txt";
 string[] paths = FilePickerPathConverter.SplitMultiplePaths(multiPath);
-// Result: [ "/path/one.txt", "/path/two.txt", "/path/three.txt" ]
 ```
 
 ---
@@ -115,10 +113,8 @@ Converts path separators to the platform-specific separator.
 
 **Example:**
 ```csharp
-// On Unix/Linux/macOS:
 string converted = FilePickerPathConverter.ConvertPathSeparators(
     "C:\\Users\\user\\file.txt");
-// Result: "C:/Users/user/file.txt"
 ```
 
 ---
@@ -148,7 +144,6 @@ Extracts the directory path from a file path.
 **Example:**
 ```csharp
 string dir = FilePickerPathConverter.GetDirectoryName("/home/user/Documents/file.txt");
-// Result: "/home/user/Documents"
 ```
 
 ---
@@ -179,7 +174,6 @@ Extracts the filename (with extension) from a file path.
 **Example:**
 ```csharp
 string filename = FilePickerPathConverter.GetFileName("/home/user/Documents/file.txt");
-// Result: "file.txt"
 ```
 
 ---
@@ -211,13 +205,10 @@ Validates that a path is properly formatted and optionally that it exists.
 
 **Example:**
 ```csharp
-// Check format only
 bool isValid = FilePickerPathConverter.IsValidPath("/path/to/file.txt", mustExist: false);
 // Result: true (valid format)
 
-// Check format and existence
 bool exists = FilePickerPathConverter.IsValidPath("/path/to/file.txt", mustExist: true);
-// Result: depends on whether file exists
 ```
 
 ---
@@ -227,10 +218,8 @@ bool exists = FilePickerPathConverter.IsValidPath("/path/to/file.txt", mustExist
 ### Example 1: Processing Dialog Output
 
 ```csharp
-// macOS/Linux dialog returns concatenated paths
 string dialogOutput = "/Users/john/image1.jpg\n/Users/john/image2.jpg\n";
 
-// Normalize and split
 string[] paths = FilePickerPathConverter.SplitMultiplePaths(dialogOutput);
 
 foreach (var path in paths)
@@ -248,7 +237,6 @@ public class CrossPlatformPathHandler
 {
     public void ProcessPath(string windowsStylePath)
     {
-        // Convert Windows path to current platform format
         string platformPath = FilePickerPathConverter.ConvertPathSeparators(windowsStylePath);
         
         string directory = FilePickerPathConverter.GetDirectoryName(platformPath);
@@ -269,10 +257,7 @@ if (result.IsSuccess)
 {
     foreach (var rawPath in result.SelectedPaths)
     {
-        // Normalize the path
         string cleanPath = FilePickerPathConverter.NormalizePath(rawPath);
-        
-        // Validate it exists
         if (FilePickerPathConverter.IsValidPath(cleanPath, mustExist: true))
         {
             Console.WriteLine($"Valid: {cleanPath}");
@@ -292,14 +277,12 @@ public class PathOperations
 {
     public string GetRelativeFileName(string fullPath)
     {
-        // Safe extraction - handles null/invalid gracefully
         string filename = FilePickerPathConverter.GetFileName(fullPath);
         return filename ?? "UNKNOWN";
     }
     
     public string GetSafePath(string path)
     {
-        // Normalize and validate
         string normalized = FilePickerPathConverter.NormalizePath(path);
         
         if (normalized == null)
@@ -313,7 +296,6 @@ public class PathOperations
     
     public void ProcessMultipleSelections(string selectedPaths)
     {
-        // Split with safety
         string[] paths = FilePickerPathConverter.SplitMultiplePaths(selectedPaths);
         
         if (paths.Length == 0)
@@ -341,22 +323,17 @@ public class PathValidator
 {
     public bool IsValidAndAccessible(string path)
     {
-        // Step 1: Check format
         if (!FilePickerPathConverter.IsValidPath(path, mustExist: false))
         {
             Logger.Warning($"Invalid path format: {path}");
             return false;
         }
-        
-        // Step 2: Normalize
         string normalized = FilePickerPathConverter.NormalizePath(path);
         if (normalized == null)
         {
             Logger.Warning($"Cannot normalize path: {path}");
             return false;
         }
-        
-        // Step 3: Check existence
         if (!FilePickerPathConverter.IsValidPath(normalized, mustExist: true))
         {
             Logger.Warning($"Path does not exist: {normalized}");
@@ -392,7 +369,6 @@ public class PathValidator
    ```csharp
    if (FilePickerPathConverter.IsValidPath(path, mustExist: true))
    {
-       // Safe to use path
    }
    ```
 
@@ -401,7 +377,6 @@ public class PathValidator
    string dir = FilePickerPathConverter.GetDirectoryName(path);
    if (string.IsNullOrEmpty(dir))
    {
-       // Handle invalid path
    }
    ```
 

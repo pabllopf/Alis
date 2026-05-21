@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:FastLookupTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
@@ -51,10 +24,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FastLookup_CanBeCreated()
         {
-            // Act
             FastLookup lookup = new FastLookup();
 
-            // Assert
             Assert.NotNull(lookup.Archetypes);
         }
 
@@ -67,15 +38,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FastLookup_GetKeyCombinesIdAndArchetype()
         {
-            // Arrange
             FastLookup lookup = new FastLookup();
             ushort id = 5;
             GameObjectType archetypeId = new GameObjectType(10);
 
-            // Act
             uint key = FastLookup.GetKey(id, archetypeId);
 
-            // Assert
             Assert.NotEqual(0u, key);
             Assert.Equal((uint) ((id << 16) | archetypeId.RawIndex), key);
         }
@@ -89,15 +57,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FastLookup_GetKeyWithZeroValues()
         {
-            // Arrange
             FastLookup lookup = new FastLookup();
             ushort id = 0;
             GameObjectType archetypeId = new GameObjectType(0);
 
-            // Act
             uint key = FastLookup.GetKey(id, archetypeId);
 
-            // Assert
             Assert.Equal(0u, key);
         }
 
@@ -110,15 +75,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FastLookup_GetKeyWithMaxValues()
         {
-            // Arrange
             FastLookup lookup = new FastLookup();
             ushort id = ushort.MaxValue;
             GameObjectType archetypeId = new GameObjectType(ushort.MaxValue);
 
-            // Act
             uint key = FastLookup.GetKey(id, archetypeId);
 
-            // Assert
             Assert.NotEqual(0u, key);
         }
 
@@ -131,14 +93,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FastLookup_LookupIndexReturnsNotFoundForNonExistentKey()
         {
-            // Arrange
             FastLookup lookup = new FastLookup();
             uint key = 999u;
 
-            // Act
             int result = lookup.LookupIndex(key);
 
-            // Assert
             Assert.Equal(32, result);
         }
 
@@ -151,10 +110,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FastLookup_ArchetypesArrayIsInitialized()
         {
-            // Arrange & Act
             FastLookup lookup = new FastLookup();
 
-            // Assert
             Assert.NotNull(lookup.Archetypes);
             Assert.Equal(8, lookup.Archetypes.Length);
         }
@@ -168,15 +125,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FastLookup_DifferentKeysProduceDifferentValues()
         {
-            // Arrange
             FastLookup lookup = new FastLookup();
 
-            // Act
             uint key1 = FastLookup.GetKey(1, new GameObjectType(1));
             uint key2 = FastLookup.GetKey(2, new GameObjectType(2));
             uint key3 = FastLookup.GetKey(1, new GameObjectType(2));
 
-            // Assert
             Assert.NotEqual(key1, key2);
             Assert.NotEqual(key1, key3);
             Assert.NotEqual(key2, key3);
@@ -191,7 +145,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void FastLookup_IsValueType()
         {
-            // Arrange
             FastLookup lookup1 = new FastLookup();
             FastLookup lookup2 = lookup1;
             lookup2.Archetypes[0] = null;

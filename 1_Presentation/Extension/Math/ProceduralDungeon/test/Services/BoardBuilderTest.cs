@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:BoardBuilderTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -46,15 +19,12 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void CreateEmptyBoard_ShouldCreateBoardWithCorrectDimensions()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             int width = 10;
             int height = 15;
 
-            // Act
             BoardSquare[,] board = builder.CreateEmptyBoard(width, height);
 
-            // Assert
             Assert.Equal(width, board.GetLength(0));
             Assert.Equal(height, board.GetLength(1));
         }
@@ -65,15 +35,12 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void CreateEmptyBoard_ShouldInitializeAllSquaresToEmpty()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             int width = 5;
             int height = 5;
 
-            // Act
             BoardSquare[,] board = builder.CreateEmptyBoard(width, height);
 
-            // Assert
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
@@ -89,10 +56,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void CreateEmptyBoard_ShouldThrowException_WhenWidthIsZero()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
 
-            // Act & Assert
             Assert.Throws<ArgumentException>(() => builder.CreateEmptyBoard(0, 10));
         }
 
@@ -102,10 +67,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void CreateEmptyBoard_ShouldThrowException_WhenHeightIsNegative()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
 
-            // Act & Assert
             Assert.Throws<ArgumentException>(() => builder.CreateEmptyBoard(10, -5));
         }
 
@@ -115,7 +78,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void PlaceRooms_ShouldSetRoomSquaresToFloor()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             BoardSquare[,] board = builder.CreateEmptyBoard(20, 20);
             List<RoomData> rooms = new List<RoomData>
@@ -123,10 +85,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
                 new RoomData(5, 5, 3, 3, Direction.North)
             };
 
-            // Act
             builder.PlaceRooms(board, rooms);
 
-            // Assert
             for (int x = 5; x < 8; x++)
             {
                 for (int y = 5; y < 8; y++)
@@ -142,11 +102,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void PlaceRooms_ShouldThrowException_WhenBoardIsNull()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             List<RoomData> rooms = new List<RoomData>();
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => builder.PlaceRooms(null, rooms));
         }
 
@@ -156,11 +114,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void PlaceRooms_ShouldThrowException_WhenRoomsIsNull()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             BoardSquare[,] board = builder.CreateEmptyBoard(10, 10);
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => builder.PlaceRooms(board, null));
         }
 
@@ -170,7 +126,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void PlaceCorridors_ShouldSetCorridorSquaresToFloor()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             BoardSquare[,] board = builder.CreateEmptyBoard(20, 20);
             List<CorridorData> corridors = new List<CorridorData>
@@ -178,10 +133,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
                 new CorridorData(10, 10, 2, 2, Direction.North)
             };
 
-            // Act
             builder.PlaceCorridors(board, corridors);
 
-            // Assert
             for (int x = 10; x < 12; x++)
             {
                 for (int y = 10; y < 12; y++)
@@ -197,11 +150,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void PlaceCorridors_ShouldThrowException_WhenBoardIsNull()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             List<CorridorData> corridors = new List<CorridorData>();
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => builder.PlaceCorridors(null, corridors));
         }
 
@@ -211,11 +162,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void PlaceCorridors_ShouldThrowException_WhenCorridorsIsNull()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             BoardSquare[,] board = builder.CreateEmptyBoard(10, 10);
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => builder.PlaceCorridors(board, null));
         }
 
@@ -225,17 +174,13 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void GenerateWallsAndCorners_ShouldCreateWallsAroundFloor()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             BoardSquare[,] board = builder.CreateEmptyBoard(10, 10);
 
-            // Create a simple floor area
             board[5, 5].Type = BoardSquareType.Floor;
 
-            // Act
             builder.GenerateWallsAndCorners(board);
 
-            // Assert - The floor square should have a wall type if surrounded by empty
             Assert.NotEqual(BoardSquareType.Empty, board[5, 5].Type);
         }
 
@@ -245,10 +190,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void GenerateWallsAndCorners_ShouldThrowException_WhenBoardIsNull()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => builder.GenerateWallsAndCorners(null));
         }
 
@@ -258,7 +201,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void PlaceRooms_ShouldHandleMultipleRooms()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             BoardSquare[,] board = builder.CreateEmptyBoard(30, 30);
             List<RoomData> rooms = new List<RoomData>
@@ -267,15 +209,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
                 new RoomData(15, 15, 4, 4, Direction.South)
             };
 
-            // Act
             builder.PlaceRooms(board, rooms);
 
-            // Assert
-            // Check first room
             Assert.Equal(BoardSquareType.Floor, board[5, 5].Type);
             Assert.Equal(BoardSquareType.Floor, board[7, 7].Type);
 
-            // Check second room
             Assert.Equal(BoardSquareType.Floor, board[15, 15].Type);
             Assert.Equal(BoardSquareType.Floor, board[18, 18].Type);
         }
@@ -286,15 +224,12 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void PlaceRooms_ShouldHandleEmptyRoomList()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             BoardSquare[,] board = builder.CreateEmptyBoard(10, 10);
             List<RoomData> rooms = new List<RoomData>();
 
-            // Act
             Exception exception = Record.Exception(() => builder.PlaceRooms(board, rooms));
 
-            // Assert
             Assert.Null(exception);
         }
 
@@ -304,15 +239,12 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void PlaceCorridors_ShouldHandleEmptyCorridorList()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             BoardSquare[,] board = builder.CreateEmptyBoard(10, 10);
             List<CorridorData> corridors = new List<CorridorData>();
 
-            // Act
             Exception exception = Record.Exception(() => builder.PlaceCorridors(board, corridors));
 
-            // Assert
             Assert.Null(exception);
         }
 
@@ -322,7 +254,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void PlaceRooms_ShouldNotOverflowBoardBounds()
         {
-            // Arrange
             BoardBuilder builder = new BoardBuilder();
             BoardSquare[,] board = builder.CreateEmptyBoard(10, 10);
             List<RoomData> rooms = new List<RoomData>
@@ -330,10 +261,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
                 new RoomData(8, 8, 5, 5, Direction.North) // Would overflow
             };
 
-            // Act
             Exception exception = Record.Exception(() => builder.PlaceRooms(board, rooms));
 
-            // Assert - Should not throw
             Assert.Null(exception);
         }
     }

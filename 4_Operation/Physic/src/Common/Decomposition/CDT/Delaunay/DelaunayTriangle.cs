@@ -1,39 +1,5 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:DelaunayTriangle.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
 
-// Changes from the Java version
-//   attributification
-// Future possibilities
-//   Flattening out the number of indirections
-//     Replacing arrays of 3 with fixed-length arrays?
-//     Replacing bool[3] with a bit array of some sort?
-//     Bundling everything into an AoS mess?
+
 //     Hardcode them all as ABC ?
 
 using System;
@@ -191,7 +157,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             else
             {
                 Logger.Log("Neighbor error, please report!");
-                // throw new Exception("Neighbor error, please report!");
             }
         }
 
@@ -445,7 +410,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             int i1 = Points.IndexOf(p1);
             int i2 = Points.IndexOf(p2);
 
-            // Points of this triangle in the edge p1-p2
             bool a = i1 == 0 || i2 == 0;
             bool b = i1 == 1 || i2 == 1;
             bool c = i1 == 2 || i2 == 2;

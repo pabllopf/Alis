@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:FloatRect.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Runtime.InteropServices;
@@ -102,25 +75,21 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             // Rectangles with negative dimensions are allowed, so we must handle them correctly
 
-            // Compute the min and max of the first rectangle on both axes
             float r1MinX = Math.Min(Left, Left + Width);
             float r1MaxX = Math.Max(Left, Left + Width);
             float r1MinY = Math.Min(Top, Top + Height);
             float r1MaxY = Math.Max(Top, Top + Height);
 
-            // Compute the min and max of the second rectangle on both axes
             float r2MinX = Math.Min(rect.Left, rect.Left + rect.Width);
             float r2MaxX = Math.Max(rect.Left, rect.Left + rect.Width);
             float r2MinY = Math.Min(rect.Top, rect.Top + rect.Height);
             float r2MaxY = Math.Max(rect.Top, rect.Top + rect.Height);
 
-            // Compute the intersection boundaries
             float interLeft = Math.Max(r1MinX, r2MinX);
             float interTop = Math.Max(r1MinY, r2MinY);
             float interRight = Math.Min(r1MaxX, r2MaxX);
             float interBottom = Math.Min(r1MaxY, r2MaxY);
 
-            // If the intersection is valid (positive non zero area), then there is an intersection
             if ((interLeft < interRight) && (interTop < interBottom))
             {
                 overlap.Left = interLeft;

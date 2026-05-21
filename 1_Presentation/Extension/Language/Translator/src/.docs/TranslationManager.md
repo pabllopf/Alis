@@ -81,7 +81,6 @@ Translates a key and substitutes parameters.
 ```csharp
 var parameters = new Dictionary<string, object> { { "name", "John" } };
 string greeting = manager.Translate("greeting", parameters);
-// If "greeting" is "Hello {name}!", result is "Hello John!"
 ```
 
 #### TranslatePlural(string key, int quantity) : string
@@ -89,7 +88,6 @@ Gets the plural form of a translation based on quantity.
 
 ```csharp
 string result = manager.TranslatePlural("items", 5);
-// For English: quantity=1 returns singular form, quantity>1 returns plural form
 ```
 
 ### Translation Management
@@ -123,7 +121,6 @@ Sets up fallback languages for missing translations.
 
 ```csharp
 manager.SetFallbackLanguages("en-US", "en");
-// If translation not found in "en-US", tries "en"
 ```
 
 #### Subscribe(ITranslationObserver observer)
@@ -154,20 +151,16 @@ manager.ClearCache();
 ```csharp
 var manager = new TranslationManager();
 
-// Add languages
 manager.AddLanguage("English", "en");
 manager.AddLanguage("Spanish", "es");
 
-// Set current language
 manager.SetLanguage("en");
 
-// Add translations
 manager.AddTranslation("en", "greeting", "Hello");
 manager.AddTranslation("en", "farewell", "Goodbye");
 manager.AddTranslation("es", "greeting", "Hola");
 manager.AddTranslation("es", "farewell", "Adiós");
 
-// Translate
 Console.WriteLine(manager.Translate("greeting")); // Output: Hello
 manager.SetLanguage("es");
 Console.WriteLine(manager.Translate("greeting")); // Output: Hola
@@ -176,11 +169,9 @@ Console.WriteLine(manager.Translate("greeting")); // Output: Hola
 ### Pluralization
 
 ```csharp
-// Add plural translations
 manager.AddTranslation("en", "items[0]", "1 item");
 manager.AddTranslation("en", "items[1]", "{count} items");
 
-// Use pluralization
 Console.WriteLine(manager.TranslatePlural("items", 1));  // Output: 1 item
 Console.WriteLine(manager.TranslatePlural("items", 5));  // Output: {count} items
 ```
@@ -196,7 +187,6 @@ var parameters = new Dictionary<string, object>
 };
 
 Console.WriteLine(manager.Translate("welcome", parameters));
-// Output: Welcome John!
 ```
 
 ### Fallback Languages
@@ -208,10 +198,8 @@ manager.AddLanguage("English", "en");
 
 manager.SetLanguage("en-US");
 
-// Set fallback chain
 manager.SetFallbackLanguages("en-US", "en");
 
-// If translation not found in en-US, will try en
 ```
 
 ### Observer Pattern
@@ -242,7 +230,6 @@ manager.Subscribe(observer);
 ### Custom Providers
 
 ```csharp
-// Use custom providers for different scenarios
 var languageProvider = new LanguageProvider();
 var translationProvider = new MemoryTranslationProvider();
 var cache = new MemoryTranslationCache();

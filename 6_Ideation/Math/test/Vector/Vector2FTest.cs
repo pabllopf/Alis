@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Vector2FTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Globalization;
@@ -1086,12 +1059,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestEqualsMethod()
         {
-            // Arrange
             Vector2F vectorA = new Vector2F(1.0f, 2.0f);
             Vector2F vectorB = new Vector2F(1.0f, 2.0f);
             Vector2F vectorC = new Vector2F(2.0f, 3.0f);
 
-            // Act & Assert
             Assert.True(vectorA.Equals(vectorB)); // Vector A should be equal to Vector B
             Assert.False(vectorA.Equals(vectorC)); // Vector A should not be equal to Vector C
         }
@@ -1103,14 +1074,11 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestStaticAdditionMethod()
         {
-            // Arrange
             Vector2F vectorA = new Vector2F(1.0f, 2.0f);
             Vector2F vectorB = new Vector2F(3.0f, 4.0f);
 
-            // Act
             Vector2F result = Vector2F.Add(vectorA, vectorB);
 
-            // Assert
             Assert.Equal(new Vector2F(4.0f, 6.0f), result);
         }
 
@@ -1120,14 +1088,11 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestDotProductMethod()
         {
-            // Arrange
             Vector2F vectorA = new Vector2F(2.0f, 3.0f);
             Vector2F vectorB = new Vector2F(4.0f, 1.0f);
 
-            // Act
             float dotProduct = Vector2F.Dot(vectorA, vectorB);
 
-            // Assert
             Assert.Equal(11.0f, dotProduct); // (2 * 4) + (3 * 1) = 11
         }
 
@@ -1137,12 +1102,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestEqualsWithObjectMethod()
         {
-            // Arrange
             Vector2F vector1 = new Vector2F(10.0f, 20.0f);
             Vector2F vector2F = new Vector2F(10.0f, 20.0f);
             Vector2F vector3 = new Vector2F(5.0f, 10.0f);
 
-            // Act & Assert
             Assert.True(vector1.Equals(vector2F));
             Assert.False(vector1.Equals(vector3));
         }
@@ -1153,14 +1116,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestGetHashCodeMethod()
         {
-            // Arrange
             Vector2F vector = new Vector2F(10.0f, 20.0f);
 
-            // Act
             int hashCode = vector.GetHashCode();
 
-            // Assert
-            // You can add specific assertions based on your implementation
             Assert.NotEqual(0, hashCode);
         }
 
@@ -1170,13 +1129,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestLengthMethod()
         {
-            // Arrange
             Vector2F vector = new Vector2F(3.0f, 4.0f); // A 3-4-5 right triangle
 
-            // Act
             float length = vector.Length();
 
-            // Assert
             Assert.Equal(5.0f, length);
         }
 
@@ -1186,14 +1142,11 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestMinMethod()
         {
-            // Arrange
             Vector2F vector1 = new Vector2F(5.0f, 10.0f);
             Vector2F vector2F = new Vector2F(8.0f, 7.0f);
 
-            // Act
             Vector2F result = Vector2F.Min(vector1, vector2F);
 
-            // Assert
             Assert.Equal(5.0f, result.X);
             Assert.Equal(7.0f, result.Y);
         }
@@ -1205,14 +1158,11 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestDistanceMethod()
         {
-            // Arrange
             Vector2F point1 = new Vector2F(1.0f, 2.0f);
             Vector2F point2 = new Vector2F(4.0f, 6.0f);
 
-            // Act
             float distance = Vector2F.Distance(point1, point2);
 
-            // Assert
             Assert.Equal(5.0f, distance); // Distance between (1,2) and (4,6) is 5
         }
 
@@ -1222,13 +1172,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestEquals_SameInstance_ReturnsTrue()
         {
-            // Arrange
             Vector2F vector = new Vector2F(2.0f, 3.0f);
 
-            // Act
             bool result = vector.Equals(vector);
 
-            // Assert
             Assert.True(result);
         }
 
@@ -1238,14 +1185,11 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestEquals_EqualVectors_ReturnsTrue()
         {
-            // Arrange
             Vector2F vector1 = new Vector2F(2.0f, 3.0f);
             Vector2F vector2F = new Vector2F(2.0f, 3.0f);
 
-            // Act
             bool result = vector1.Equals(vector2F);
 
-            // Assert
             Assert.True(result);
         }
 
@@ -1255,13 +1199,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestEquals_NullObject_ReturnsFalse()
         {
-            // Arrange
             Vector2F vector = new Vector2F(2.0f, 3.0f);
 
-            // Act
             bool result = vector.Equals(null);
 
-            // Assert
             Assert.False(result);
         }
 
@@ -1271,14 +1212,11 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestEquals_DifferentVectors_ReturnsFalse()
         {
-            // Arrange
             Vector2F vector1 = new Vector2F(2.0f, 3.0f);
             Vector2F vector2F = new Vector2F(4.0f, 5.0f);
 
-            // Act
             bool result = vector1.Equals(vector2F);
 
-            // Assert
             Assert.False(result);
         }
 
@@ -1288,14 +1226,11 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestInequality_EqualVectors_ReturnsFalse()
         {
-            // Arrange
             Vector2F vector1 = new Vector2F(2.0f, 3.0f);
             Vector2F vector2F = new Vector2F(2.0f, 3.0f);
 
-            // Act
             bool result = vector1 != vector2F;
 
-            // Assert
             Assert.False(result);
         }
 
@@ -1305,14 +1240,11 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestInequality_DifferentVectors_ReturnsTrue()
         {
-            // Arrange
             Vector2F vector1 = new Vector2F(2.0f, 3.0f);
             Vector2F vector2F = new Vector2F(4.0f, 5.0f);
 
-            // Act
             bool result = vector1 != vector2F;
 
-            // Assert
             Assert.True(result);
         }
 
@@ -1322,14 +1254,11 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         [Fact]
         public void TestInequality_DifferentPrecisionVectors_ReturnsTrue()
         {
-            // Arrange
             Vector2F vector1 = new Vector2F(2.0f, 3.0f);
             Vector2F vector2F = new Vector2F(2.1f + float.Epsilon, 3.1f + float.Epsilon);
 
-            // Act
             bool result = vector1 != vector2F;
 
-            // Assert
             Assert.True(result);
         }
     }

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WorldPhysic.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -318,13 +291,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="step">The step</param>
         private void Solve(ref TimeStep step)
         {
-            // Size the island for the worst case.
             GetIsland.Reset(BodyList.Count,
                 ContactManager.ContactCount,
                 JointList.Count,
                 ContactManager);
 
-            // Clear all the island flags.
             foreach (Body b in BodyList)
             {
                 b.Island = false;
@@ -340,7 +311,6 @@ namespace Alis.Core.Physic.Dynamics
                 j.IslandFlag = false;
             }
 
-            // Build and simulate all awake islands.
             int stackSize = BodyList.Count;
             if (stackSize > _stack.Length)
             {
@@ -361,54 +331,43 @@ namespace Alis.Core.Physic.Dynamics
                     continue;
                 }
 
-                // The seed can be dynamic or kinematic.
                 if (seed.GetBodyType == BodyType.Static)
                 {
                     continue;
                 }
 
-                // Reset island and stack.
                 GetIsland.Clear();
                 int stackCount = 0;
                 _stack[stackCount++] = seed;
 
                 seed.Island = true;
 
-                // Perform a depth first search (DFS) on the constraint graph.
                 while (stackCount > 0)
                 {
-                    // Grab the next body off the stack and add it to the island.
                     Body b = _stack[--stackCount];
                     GetIsland.Add(b);
 
-                    // Make sure the body is awake.
                     b.Awake = true;
 
-                    // To keep islands as small as possible, we don't
-                    // propagate islands across static bodies.
                     if (b.GetBodyType == BodyType.Static)
                     {
                         continue;
                     }
 
-                    // Search all contacts connected to this body.
                     for (ContactEdge ce = b.ContactList; ce != null; ce = ce.Next)
                     {
                         Contact contact = ce.Contact;
 
-                        // Has this contact already been added to an island?
                         if (contact.IslandFlag)
                         {
                             continue;
                         }
 
-                        // Is this contact solid and touching?
                         if (!ce.Contact.Enabled || !ce.Contact.IsTouching)
                         {
                             continue;
                         }
 
-                        // Skip sensors.
                         bool sensorA = contact.FixtureA.GetIsSensor;
                         bool sensorB = contact.FixtureB.GetIsSensor;
                         if (sensorA || sensorB)
@@ -421,7 +380,6 @@ namespace Alis.Core.Physic.Dynamics
 
                         Body other = ce.Other;
 
-                        // Was the other body already added to this island?
                         if (other.Island)
                         {
                             continue;
@@ -433,7 +391,6 @@ namespace Alis.Core.Physic.Dynamics
                         other.Island = true;
                     }
 
-                    // Search all joints connect to this body.
                     for (JointEdge je = b.JointList; je != null; je = je.Next)
                     {
                         if (je.Joint.IslandFlag)
@@ -443,11 +400,8 @@ namespace Alis.Core.Physic.Dynamics
 
                         Body other = je.Other;
 
-                        // WIP David
-                        //Enter here when it's a non-fixed joint. Non-fixed joints have a other body.
                         if (other != null)
                         {
-                            // Don't simulate joints connected to inactive bodies.
                             if (!other.Enabled)
                             {
                                 continue;
@@ -476,10 +430,8 @@ namespace Alis.Core.Physic.Dynamics
 
                 GetIsland.Solve(ref step, ref _gravity);
 
-                // Post solve cleanup.
                 for (int i = 0; i < GetIsland.BodyCount; ++i)
                 {
-                    // Allow static bodies to participate in other islands.
                     Body b = GetIsland.Bodies[i];
                     if (b.GetBodyType == BodyType.Static)
                     {
@@ -490,7 +442,6 @@ namespace Alis.Core.Physic.Dynamics
 
             foreach (Body b in BodyList)
             {
-                // If a body was not in an island then it did not move.
                 if (!b.Island)
                 {
                     continue;
@@ -501,11 +452,9 @@ namespace Alis.Core.Physic.Dynamics
                     continue;
                 }
 
-                // Update fixtures (for broad-phase).
                 b.SynchronizeFixtures();
             }
 
-            // Look for new contacts.
             ContactManager.FindNewContacts();
         }
 
@@ -528,7 +477,6 @@ namespace Alis.Core.Physic.Dynamics
 
                 for (Contact c = ContactManager.ContactList.Next; c != ContactManager.ContactList; c = c.Next)
                 {
-                    // Invalidate TOI
                     c.IslandFlag = false;
                     c.ToiFlag = false;
                     c.ToiCount = 0;
@@ -536,23 +484,19 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            // Find TOI events and solve them.
             for (;;)
             {
-                // Find the first TOI.
                 Contact minContact = null;
                 float minAlpha = 1.0f;
 
 
                 for (Contact c = ContactManager.ContactList.Next; c != ContactManager.ContactList; c = c.Next)
                 {
-                    // Is this contact disabled?
                     if (!c.Enabled)
                     {
                         continue;
                     }
 
-                    // Prevent excessive sub-stepping.
                     if (c.ToiCount > SettingEnv.MaxSubSteps)
                     {
                         continue;
@@ -561,7 +505,6 @@ namespace Alis.Core.Physic.Dynamics
                     float alpha;
                     if (c.ToiFlag)
                     {
-                        // This contact has a valid cached TOI.
                         alpha = c.Toi;
                     }
                     else
@@ -569,7 +512,6 @@ namespace Alis.Core.Physic.Dynamics
                         Fixture fA = c.FixtureA;
                         Fixture fB = c.FixtureB;
 
-                        // Is there a sensor?
                         if (fA.GetIsSensor || fB.GetIsSensor)
                         {
                             continue;
@@ -584,7 +526,6 @@ namespace Alis.Core.Physic.Dynamics
                         bool activeA = bA.Awake && (typeA != BodyType.Static);
                         bool activeB = bB.Awake && (typeB != BodyType.Static);
 
-                        // Is at least one body active (awake and dynamic or kinematic)?
                         if (!activeA && !activeB)
                         {
                             continue;
@@ -593,14 +534,11 @@ namespace Alis.Core.Physic.Dynamics
                         bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) && !bA.IgnoreCcd;
                         bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) && !bB.IgnoreCcd;
 
-                        // Are these two non-bullet dynamic bodies?
                         if (!collideA && !collideB)
                         {
                             continue;
                         }
 
-                        // Compute the TOI for this contact.
-                        // Put the sweeps onto the same time interval.
                         float alpha0 = bA.Sweep.Alpha0;
 
                         if (bA.Sweep.Alpha0 < bB.Sweep.Alpha0)
@@ -614,7 +552,6 @@ namespace Alis.Core.Physic.Dynamics
                             bB.Sweep.Advance(alpha0);
                         }
 
-                        // Compute the time of impact in interval [0, minTOI]
                         _input.ProxyA = new DistanceProxy(fA.GetShape, c.ChildIndexA);
                         _input.ProxyB = new DistanceProxy(fB.GetShape, c.ChildIndexB);
                         _input.SweepA = bA.Sweep;
@@ -623,7 +560,6 @@ namespace Alis.Core.Physic.Dynamics
 
                         TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref _input);
 
-                        // Beta is the fraction of the remaining portion of the .
                         float beta = output.T;
                         if (output.State == ToiOutputState.Touching)
                         {
@@ -640,7 +576,6 @@ namespace Alis.Core.Physic.Dynamics
 
                     if (alpha < minAlpha)
                     {
-                        // This is the minimum TOI found so far.
                         minContact = c;
                         minAlpha = alpha;
                     }
@@ -648,12 +583,10 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (minContact == null || 1.0f - 10.0f * SettingEnv.Epsilon < minAlpha)
                 {
-                    // No more TOI events. Done!
                     _stepComplete = true;
                     break;
                 }
 
-                // Advance the bodies to the TOI.
                 Fixture fA1 = minContact.FixtureA;
                 Fixture fB1 = minContact.FixtureB;
                 Body bA0 = fA1.GetBody;
@@ -665,15 +598,12 @@ namespace Alis.Core.Physic.Dynamics
                 bA0.Advance(minAlpha);
                 bB0.Advance(minAlpha);
 
-                // The TOI contact likely has some new contact points.
                 minContact.Update(ContactManager);
                 minContact.ToiFlag = false;
                 ++minContact.ToiCount;
 
-                // Is the contact solid?
                 if (!minContact.Enabled || !minContact.IsTouching)
                 {
-                    // Restore the sweeps.
                     minContact.Enabled = false;
                     bA0.Sweep = backup1;
                     bB0.Sweep = backup2;
@@ -685,7 +615,6 @@ namespace Alis.Core.Physic.Dynamics
                 bA0.Awake = true;
                 bB0.Awake = true;
 
-                // Build the island
                 GetIsland.Clear();
                 GetIsland.Add(bA0);
                 GetIsland.Add(bB0);
@@ -695,7 +624,6 @@ namespace Alis.Core.Physic.Dynamics
                 bB0.Island = true;
                 minContact.IslandFlag = true;
 
-                // Get contacts on bodyA and bodyB.
                 Body[] bodies = {bA0, bB0};
                 for (int i = 0; i < 2; ++i)
                 {
@@ -716,13 +644,11 @@ namespace Alis.Core.Physic.Dynamics
                                 break;
                             }
 
-                            // Has this contact already been added to the island?
                             if (contact.IslandFlag)
                             {
                                 continue;
                             }
 
-                            // Only add static, kinematic, or bullet bodies.
                             Body other = ce.Other;
                             if ((other.GetBodyType == BodyType.Dynamic) &&
                                 !body.IsBullet && !other.IsBullet)
@@ -730,23 +656,19 @@ namespace Alis.Core.Physic.Dynamics
                                 continue;
                             }
 
-                            // Skip sensors.
                             if (contact.FixtureA.GetIsSensor || contact.FixtureB.GetIsSensor)
                             {
                                 continue;
                             }
 
-                            // Tentatively advance the body to the TOI.
                             Sweep backup = other.Sweep;
                             if (!other.Island)
                             {
                                 other.Advance(minAlpha);
                             }
 
-                            // Update the contact points
                             contact.Update(ContactManager);
 
-                            // Was the contact disabled by the user?
                             if (!contact.Enabled)
                             {
                                 other.Sweep = backup;
@@ -754,7 +676,6 @@ namespace Alis.Core.Physic.Dynamics
                                 continue;
                             }
 
-                            // Are there contact points?
                             if (!contact.IsTouching)
                             {
                                 other.Sweep = backup;
@@ -762,17 +683,14 @@ namespace Alis.Core.Physic.Dynamics
                                 continue;
                             }
 
-                            // Add the contact to the island
                             contact.IslandFlag = true;
                             GetIsland.Add(contact);
 
-                            // Has the other body already been added to the island?
                             if (other.Island)
                             {
                                 continue;
                             }
 
-                            // Add the other body to the island.
                             other.Island = true;
 
                             if (other.GetBodyType != BodyType.Static)
@@ -794,7 +712,6 @@ namespace Alis.Core.Physic.Dynamics
                 subStep.WarmStarting = false;
                 GetIsland.SolveToi(ref subStep, bA0.GetIslandIndex, bB0.GetIslandIndex);
 
-                // Reset island flags and synchronize broad-phase proxies.
                 for (int i = 0; i < GetIsland.BodyCount; ++i)
                 {
                     Body body = GetIsland.Bodies[i];
@@ -807,7 +724,6 @@ namespace Alis.Core.Physic.Dynamics
 
                     body.SynchronizeFixtures();
 
-                    // Invalidate all contact TOIs on this displaced body.
                     for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
                     {
                         ce.Contact.ToiFlag = false;
@@ -815,8 +731,6 @@ namespace Alis.Core.Physic.Dynamics
                     }
                 }
 
-                // Commit fixture proxy movements to the broad-phase so that new contacts are created.
-                // Also, some contacts can be destroyed.
                 ContactManager.FindNewContacts();
             }
         }
@@ -853,10 +767,8 @@ namespace Alis.Core.Physic.Dynamics
             BodyList.GenerationStamp++;
 
 
-            // Update transform
             body.SetTransformIgnoreContacts(ref body.Xf.Position, body.Rotation);
 
-            // Create proxies
             if (GetEnabled)
             {
                 body.CreateProxies();
@@ -907,7 +819,6 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentException("You are removing a body that is not in the simulation.", "body");
             }
 
-            // Delete the attached joints.
             JointEdge je = body.JointList;
             while (je != null)
             {
@@ -919,7 +830,6 @@ namespace Alis.Core.Physic.Dynamics
 
             body.JointList = null;
 
-            // Delete the attached contacts.
             ContactEdge ce = body.ContactList;
             while (ce != null)
             {
@@ -930,11 +840,9 @@ namespace Alis.Core.Physic.Dynamics
 
             body.ContactList = null;
 
-            // remove the attached contact callbacks
             body.OnCollisionEventHandler = null;
             body.OnSeparationEventHandler = null;
 
-            // Delete the attached fixtures. This destroys broad-phase proxies.
             body.DestroyProxies();
             FixtureDelegate fixtureRemovedHandler = FixtureRemoved;
             if (fixtureRemovedHandler != null)
@@ -984,12 +892,10 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentException("joint belongs to another world.", "joint");
             }
 
-            // Connect to the world list.
             joint.WorldPhysicInternal = this;
             JointList.List.Add(joint);
             JointList.GenerationStamp++;
 
-            // Connect to the bodies' doubly linked lists.
             joint.EdgeA.Joint = joint;
             joint.EdgeA.Other = joint.BodyB;
             joint.EdgeA.Prev = null;
@@ -1002,7 +908,6 @@ namespace Alis.Core.Physic.Dynamics
 
             joint.BodyA.JointList = joint.EdgeA;
 
-            // WIP David
             if (!joint.IsFixedType())
             {
                 joint.EdgeB.Joint = joint;
@@ -1020,7 +925,6 @@ namespace Alis.Core.Physic.Dynamics
                 Body bodyA = joint.BodyA;
                 Body bodyB = joint.BodyB;
 
-                // If the joint prevents collisions, then flag any contacts for filtering.
                 if (!joint.CollideConnected)
                 {
                     ContactEdge edge = bodyB.ContactList;
@@ -1028,8 +932,6 @@ namespace Alis.Core.Physic.Dynamics
                     {
                         if (edge.Other == bodyA)
                         {
-                            // Flag the contact for filtering at the next time step (where either
-                            // body is awake).
                             edge.Contact.FilterFlag = true;
                         }
 
@@ -1044,7 +946,6 @@ namespace Alis.Core.Physic.Dynamics
                 jointAddedHandler(this, joint);
             }
 
-            // Note: creating a joint doesn't wake the bodies.
         }
 
         /// <summary>
@@ -1072,25 +973,20 @@ namespace Alis.Core.Physic.Dynamics
 
             bool collideConnected = joint.CollideConnected;
 
-            // Remove from the world list.
             joint.WorldPhysicInternal = null;
             JointList.List.Remove(joint);
             JointList.GenerationStamp++;
 
-            // Disconnect from island graph.
             Body bodyA = joint.BodyA;
             Body bodyB = joint.BodyB;
 
-            // Wake up connected bodies.
             bodyA.Awake = true;
 
-            // WIP David
             if (!joint.IsFixedType())
             {
                 bodyB.Awake = true;
             }
 
-            // Remove from body 1.
             if (joint.EdgeA.Prev != null)
             {
                 joint.EdgeA.Prev.Next = joint.EdgeA.Next;
@@ -1109,10 +1005,8 @@ namespace Alis.Core.Physic.Dynamics
             joint.EdgeA.Prev = null;
             joint.EdgeA.Next = null;
 
-            // WIP David
             if (!joint.IsFixedType())
             {
-                // Remove from body 2
                 if (joint.EdgeB.Prev != null)
                 {
                     joint.EdgeB.Prev.Next = joint.EdgeB.Next;
@@ -1132,10 +1026,8 @@ namespace Alis.Core.Physic.Dynamics
                 joint.EdgeB.Next = null;
             }
 
-            // WIP David
             if (!joint.IsFixedType())
             {
-                // If the joint prevents collisions, then flag any contacts for filtering.
                 if (!collideConnected)
                 {
                     ContactEdge edge = bodyB.ContactList;
@@ -1143,8 +1035,6 @@ namespace Alis.Core.Physic.Dynamics
                     {
                         if (edge.Other == bodyA)
                         {
-                            // Flag the contact for filtering at the next time step (where either
-                            // body is awake).
                             edge.Contact.FilterFlag = true;
                         }
 
@@ -1223,7 +1113,6 @@ namespace Alis.Core.Physic.Dynamics
                 _watch.Start();
             }
 
-            // If new fixtures were added, we need to find the new contacts.
             if (WorldHasNewFixture)
             {
                 ContactManager.FindNewContacts();
@@ -1235,7 +1124,6 @@ namespace Alis.Core.Physic.Dynamics
                 NewContactsTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - AddRemoveTime;
             }
 
-            //FPE only: moved position and velocity iterations into Settings.cs
             TimeStep step;
             step.PositionIterations = iterations.PositionIterations;
             step.VelocityIterations = iterations.VelocityIterations;
@@ -1247,7 +1135,6 @@ namespace Alis.Core.Physic.Dynamics
             GetIsLocked = true;
             try
             {
-                //Update controllers
                 for (int i = 0; i < ControllerList.List.Count; i++)
                 {
                     ControllerList.List[i].Update(dt);
@@ -1258,14 +1145,12 @@ namespace Alis.Core.Physic.Dynamics
                     ControllersUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime);
                 }
 
-                // Update contacts. This is where some contacts are destroyed.
                 ContactManager.Collide();
                 if (SettingEnv.EnableDiagnostics)
                 {
                     ContactsUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime);
                 }
 
-                // Integrate velocities, solve velocity constraints, and integrate positions.
                 if (_stepComplete && (step.Dt > 0.0f))
                 {
                     Solve(ref step);
@@ -1276,7 +1161,6 @@ namespace Alis.Core.Physic.Dynamics
                     SolveUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime + ContactsUpdateTime);
                 }
 
-                // Handle TOI events.
                 if (SettingEnv.ContinuousPhysics && (step.Dt > 0.0f))
                 {
                     SolveToi(ref step, ref iterations);
@@ -1496,7 +1380,6 @@ namespace Alis.Core.Physic.Dynamics
             _testPointPointTmp = point;
             _testPointFixtureTmp = null;
 
-            // Query the world for overlapping shapes.
             QueryAabb(_testPointDelegateCache, ref aabb);
 
             return _testPointFixtureTmp;
@@ -1516,7 +1399,6 @@ namespace Alis.Core.Physic.Dynamics
                 return false;
             }
 
-            // Continue the query.
             return true;
         }
 
@@ -1712,7 +1594,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The body</returns>
         public Body CreateCompoundPolygon(List<Vertices> list, float density, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
-            //We create a single body
             Body body = CreateBody(position, rotation, bodyType);
             body.CreateCompoundPolygon(list, density);
             return body;
@@ -1734,10 +1615,8 @@ namespace Alis.Core.Physic.Dynamics
         {
             Vertices gearPolygon = PolygonTools.CreateGear(radius, numberOfTeeth, tipPercentage, toothHeight);
 
-            //Gears can in some cases be convex
             if (!gearPolygon.IsConvex())
             {
-                //Decompose the gear:
                 List<Vertices> list = Triangulate.ConvexPartition(gearPolygon, TriangulationAlgorithm.Earclip);
 
                 return CreateCompoundPolygon(list, density, position, rotation, bodyType);
@@ -1763,7 +1642,6 @@ namespace Alis.Core.Physic.Dynamics
         {
             Vertices verts = PolygonTools.CreateCapsule(height, topRadius, topEdges, bottomRadius, bottomEdges);
 
-            //There are too many vertices in the capsule. We decompose it.
             if (verts.Count >= SettingEnv.MaxPolygonVertices)
             {
                 List<Vertices> vertList = Triangulate.ConvexPartition(verts, TriangulationAlgorithm.Earclip);
@@ -1785,7 +1663,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The body</returns>
         public Body CreateCapsule(float height, float endRadius, float density, Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static)
         {
-            //Create the middle rectangle
             Vertices rectangle = PolygonTools.CreateRectangle(endRadius, height / 2);
 
             List<Vertices> list = new List<Vertices>();
@@ -1795,14 +1672,8 @@ namespace Alis.Core.Physic.Dynamics
             body.CreateCircle(endRadius, density, new Vector2F(0, height / 2));
             body.CreateCircle(endRadius, density, new Vector2F(0, -(height / 2)));
 
-            //Create the two circles
-            //CircleShape topCircle = new CircleShape(endRadius, density);
-            //topCircle.Position = new Vector2F(0, height / 2);
             //body.CreateFixture(topCircle);
 
-            //CircleShape bottomCircle = new CircleShape(endRadius, density);
-            //bottomCircle.Position = new Vector2F(0, -(height / 2));
-            //body.CreateFixture(bottomCircle);
             return body;
         }
 
@@ -1823,7 +1694,6 @@ namespace Alis.Core.Physic.Dynamics
         {
             Vertices verts = PolygonTools.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
 
-            //There are too many vertices in the capsule. We decompose it.
             if (verts.Count >= SettingEnv.MaxPolygonVertices)
             {
                 List<Vertices> vertList = Triangulate.ConvexPartition(verts, TriangulationAlgorithm.Earclip);
@@ -1882,34 +1752,19 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public Path CreateChain(Vector2F start, Vector2F end, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity, bool attachRopeJoint)
         {
-            //Chain start / end
             Path path = new Path();
             path.Add(start);
             path.Add(end);
 
-            //A single chainlink
             PolygonShape shape = new PolygonShape(PolygonTools.CreateRectangle(linkWidth, linkHeight), linkDensity);
 
-            //Use PathManager to create all the chainlinks based on the chainlink created before.
             List<Body> chainLinks = PathManager.EvenlyDistributeShapesAlongPath(this, path, shape, BodyType.Dynamic, numberOfLinks);
 
 
-            //if (fixStart)
-            //{
-            //    //Fix the first chainlink to the world
-            //    JointFactory.CreateFixedRevoluteJoint(this, chainLinks[0], new Vector2F(0, -(linkHeight / 2)),
-            //                                          chainLinks[0].Position);
             //}
 
-            //if (fixEnd)
-            //{
-            //    //Fix the last chainlink to the world
-            //    JointFactory.CreateFixedRevoluteJoint(this, chainLinks[chainLinks.Count - 1],
-            //                                          new Vector2F(0, (linkHeight / 2)),
-            //                                          chainLinks[chainLinks.Count - 1].Position);
             //}
 
-            //Attach all the chainlinks together with a revolute joint
             PathManager.AttachBodiesWithRevoluteJoint(this, chainLinks, new Vector2F(0, -linkHeight), new Vector2F(0, linkHeight), false, false);
 
             if (attachRopeJoint)

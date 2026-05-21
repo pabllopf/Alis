@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:CommandBufferParametrizedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
@@ -46,17 +19,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Theory, InlineData(5), InlineData(10), InlineData(20)]
         public void CommandBuffer_EnqueueAndPlayback_MultipleRounds(int rounds)
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             for (int r = 0; r < rounds; r++)
             {
                 CommandBuffer buffer = new(scene);
                 buffer.Playback();
             }
 
-            // Assert
             Assert.True(true);
         }
 
@@ -66,7 +36,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_CreateCommandWithComponent_Correct()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new(scene);
             Position pos = new Position {X = 10, Y = 20};
@@ -74,7 +43,6 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             buffer.Playback();
 
-            // Assert
             int count = 0;
             foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
@@ -91,13 +59,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Theory, InlineData(1), InlineData(5), InlineData(10)]
         public void CommandBuffer_MultipleCreateCommands_AllProcessed(int count)
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new(scene);
 
             buffer.Playback();
 
-            // Assert
             int queryCount = 0;
             foreach (GameObject go in scene.Query<With<Position>>().EnumerateWithEntities())
             {
@@ -113,11 +79,9 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_Dispose_Works()
         {
-            // Arrange & Act
             using Scene scene = new Scene();
             CommandBuffer buffer = new(scene);
 
-            // Assert
             Assert.True(true);
         }
 
@@ -128,13 +92,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Theory, InlineData(10), InlineData(50)]
         public void CommandBuffer_StressTest_ManyCommands(int commandCount)
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new(scene);
 
             buffer.Playback();
 
-            // Assert
             Assert.True(true);
         }
     }

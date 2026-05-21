@@ -12,8 +12,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     public class WebAssemblyDisplayManagerTest
     {
         // =====================================================================
-        // DisplayMode
-        // =====================================================================
 
         [Fact]
         public void DisplayMode_DefaultValues_AreZero()
@@ -74,8 +72,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // DisplayEventArgs
-        // =====================================================================
 
         [Fact]
         public void DisplayEventArgs_CanSetProperties()
@@ -86,8 +82,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // OrientationEventArgs
-        // =====================================================================
 
         [Fact]
         public void OrientationEventArgs_CanSetProperties()
@@ -96,8 +90,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ScreenOrientation.Landscape, args.Orientation);
         }
 
-        // =====================================================================
-        // FullscreenEventArgs
         // =====================================================================
 
         [Theory]
@@ -109,8 +101,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(value, args.IsFullscreen);
         }
 
-        // =====================================================================
-        // WebAssemblyDisplayManager - Basic Properties
         // =====================================================================
 
         [Fact]
@@ -189,9 +179,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Throws<ArgumentNullException>(() =>
                 new WebAssemblyDisplayManager(null));
         }
-        
-        // =====================================================================
-        // WebAssemblyDisplayManager - Fullscreen
         // =====================================================================
 
         [Fact]
@@ -224,8 +211,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(WebAssemblyDisplayManager.IsFullscreen());
         }
 
-        // =====================================================================
-        // WebAssemblyDisplayManager - Display Modes
         // =====================================================================
 
         [Fact]
@@ -291,8 +276,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-        // WebAssemblyDisplayManager - Display Quality
-        // =====================================================================
 
         [Theory]
         [InlineData(DisplayQuality.VeryLow, 0.5f)]
@@ -326,8 +309,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(DisplayQuality.Ultra, manager.GetDisplayQuality());
         }
 
-        // =====================================================================
-        // WebAssemblyDisplayManager - System Info
         // =====================================================================
 
         [Fact]

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:VorbisEncoderTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
@@ -45,10 +18,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void VorbisEncoder_Constructor_ShouldCreateInstanceWithDefaultCqp()
         {
-            // Arrange & Act
             VorbisEncoder encoder = new VorbisEncoder();
 
-            // Assert
             Assert.NotNull(encoder);
             Assert.Contains("-q:a", encoder.CurrentQualitySettings);
         }
@@ -59,13 +30,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void VorbisEncoder_NameProperty_ShouldReturnLibvorbis()
         {
-            // Arrange
             VorbisEncoder encoder = new VorbisEncoder();
 
-            // Act
             string name = encoder.Name;
 
-            // Assert
             Assert.Equal("libvorbis", name);
         }
 
@@ -75,10 +43,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void VorbisEncoder_DefaultFormat_ShouldBeOgg()
         {
-            // Arrange & Act
             VorbisEncoder encoder = new VorbisEncoder();
 
-            // Assert
             Assert.Equal("ogg", encoder.Format);
         }
 
@@ -88,14 +54,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void VorbisEncoder_ChannelCountProperty_ShouldBeSettable()
         {
-            // Arrange
             VorbisEncoder encoder = new VorbisEncoder();
             int channelCount = 2;
 
-            // Act
             encoder.ChannelCount = channelCount;
 
-            // Assert
             Assert.Equal(channelCount, encoder.ChannelCount);
         }
 
@@ -105,14 +68,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         [Fact]
         public void VorbisEncoder_SampleRateProperty_ShouldBeSettable()
         {
-            // Arrange
             VorbisEncoder encoder = new VorbisEncoder();
             int sampleRate = 48000;
 
-            // Act
             encoder.SampleRate = sampleRate;
 
-            // Assert
             Assert.Equal(sampleRate, encoder.SampleRate);
         }
 

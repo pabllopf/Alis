@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EditorInstallationSection.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -89,7 +62,6 @@ namespace Alis.App.Hub.Windows.Sections
         /// </summary>
         private void RenderInstallNewVersionPopup()
         {
-            // Set size of the popup: 
             ImGui.SetNextWindowSize(new Vector2F(500, 250));
             ImGui.SetNextWindowPos(new Vector2F(ImGui.GetIo().DisplaySize.X / 2 - 250, ImGui.GetIo().DisplaySize.Y / 2 - 125));
             if (ImGui.BeginPopupModal("Install_New_Version", ref IsVisible, ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
@@ -97,7 +69,6 @@ namespace Alis.App.Hub.Windows.Sections
                 ImGui.Text("Select the version to install:");
                 ImGui.Separator();
 
-                // Selector de solución
                 ImGui.SetNextItemWidth(100);
                 if (ImGui.BeginCombo("Version", $"{versions[selectedVersionIndex]}", ImGuiComboFlags.HeightLarge))
                 {
@@ -116,7 +87,6 @@ namespace Alis.App.Hub.Windows.Sections
 
                 if (ImGui.Button("Install"))
                 {
-                    // Implement the logic to handle the installation of the selected version
                     string selectedVersion = versions[selectedVersionIndex];
                     StartInstallation(selectedVersion);
                     ImGui.CloseCurrentPopup();
@@ -185,7 +155,6 @@ namespace Alis.App.Hub.Windows.Sections
         /// <param name="path">The path</param>
         private void RevealInFinder(string path)
         {
-            // Open the installation path in Finder
             Process.Start(new ProcessStartInfo("open", path) {UseShellExecute = true});
         }
 
@@ -195,7 +164,6 @@ namespace Alis.App.Hub.Windows.Sections
         /// <param name="path">The path</param>
         private void OpenInTerminal(string path)
         {
-            // Open the installation path in Terminal
             Process.Start(new ProcessStartInfo("open", "-a Terminal " + path) {UseShellExecute = true});
         }
 
@@ -205,7 +173,6 @@ namespace Alis.App.Hub.Windows.Sections
         /// <param name="path">The path</param>
         private void DeleteInstallation(string path)
         {
-            // Delete the installation path
             Directory.Delete(path, true);
         }
 
@@ -265,7 +232,6 @@ namespace Alis.App.Hub.Windows.Sections
             string dirProject = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Editor");
             string[] directories = Directory.GetDirectories(dirProject, "v*", SearchOption.TopDirectoryOnly);
 
-            // Order directories by name in descending order:
             Array.Sort(directories, (a, b) => string.Compare(b, a, StringComparison.Ordinal));
 
             foreach (string directory in directories)
@@ -297,10 +263,8 @@ namespace Alis.App.Hub.Windows.Sections
         {
             DetectInstalledVersions();
 
-            // Button to install new versions
             if (ImGui.Button("Install New Version"))
             {
-                // Implement the logic to handle new version installation
                 InstallNewVersion();
             }
 
@@ -308,32 +272,25 @@ namespace Alis.App.Hub.Windows.Sections
 
             ImGui.NewLine();
 
-            // Display a table for installed versions
             if (ImGui.BeginTable("InstallsTable", 3, ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg))
             {
-                // Setup table columns
                 ImGui.TableSetupColumn("Version", ImGuiTableColumnFlags.WidthFixed, 100);
                 ImGui.TableSetupColumn("Installation Date", ImGuiTableColumnFlags.WidthFixed, 150);
                 ImGui.TableSetupColumn("Actions", ImGuiTableColumnFlags.WidthStretch);
                 ImGui.TableHeadersRow();
 
-                // Iterate through each installed version and display in the table
                 foreach (InstalledVersion version in installedVersions)
                 {
                     ImGui.TableNextRow();
 
-                    // Version column
                     ImGui.TableSetColumnIndex(0);
                     ImGui.Text(version.Version);
 
-                    // Release date column
                     ImGui.TableSetColumnIndex(1);
                     ImGui.Text(version.ReleaseDate);
 
-                    // Actions column
                     ImGui.TableSetColumnIndex(2);
 
-                    // Context menu for actions
                     if (ImGui.Button($"Actions##{version.Version}"))
                     {
                         ImGui.OpenPopup($"ActionsPopup##{version.Version}");

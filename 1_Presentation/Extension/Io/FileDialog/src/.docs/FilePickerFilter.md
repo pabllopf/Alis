@@ -43,7 +43,6 @@ The user-friendly name displayed in the file picker dialog's filter dropdown.
 **Example:**
 ```csharp
 var filter = new FilePickerFilter("Word Documents", "doc", "docx");
-// DisplayName = "Word Documents"
 ```
 
 ---
@@ -64,7 +63,6 @@ A list of file extensions (without leading dots) that this filter matches.
 **Example:**
 ```csharp
 var filter = new FilePickerFilter("Images", "jpg", "png", "gif");
-// Extensions = { "jpg", "png", "gif" }
 ```
 
 ---
@@ -97,17 +95,13 @@ Creates a new file filter with specified display name and file extensions.
 
 **Example:**
 ```csharp
-// Single extension
 var textFilter = new FilePickerFilter("Text Files", "txt");
 
-// Multiple extensions
 var docFilter = new FilePickerFilter("Documents", "doc", "docx", "pdf", "txt");
 
-// Extensions with dots (dots are removed)
 var codeFilter = new FilePickerFilter("Code", ".cs", ".cpp", ".js");
 // Stored as: { "cs", "cpp", "js" }
 
-// All files filter
 var allFilter = new FilePickerFilter("All Files", "*");
 ```
 
@@ -139,7 +133,6 @@ Returns the extensions formatted for Windows file dialogs (e.g., "*.txt;*.doc").
 var filter = new FilePickerFilter("Documents", "doc", "docx", "pdf");
 
 string formatted = filter.GetFormattedExtensions();
-// Returns: "*.doc;*.docx;*.pdf"
 ```
 
 ---
@@ -169,7 +162,6 @@ Returns the extensions formatted for macOS UTI (Uniform Type Identifier) format.
 var filter = new FilePickerFilter("Images", "jpg", "jpeg", "png");
 
 string utiFormat = filter.GetUtiFormat();
-// Returns: "jpg,jpeg,png"
 ```
 
 ---
@@ -183,8 +175,6 @@ var filter = new FilePickerFilter("Audio Files", "mp3", "wav", "flac");
 string format = filter.GetFormattedExtensions();
 // Output: "*.mp3;*.wav;*.flac"
 
-// Used in OpenFileDialog like:
-// dialog.Filter = "Audio Files (*.mp3;*.wav;*.flac)|*.mp3;*.wav;*.flac";
 ```
 
 ### macOS Format (GetUtiFormat)
@@ -194,8 +184,6 @@ var filter = new FilePickerFilter("Video Files", "mp4", "mov", "avi");
 string format = filter.GetUtiFormat();
 // Output: "mp4,mov,avi"
 
-// Used in AppleScript like:
-// "choose file of type {"mp4", "mov", "avi"}"
 ```
 
 ---
@@ -205,25 +193,21 @@ string format = filter.GetUtiFormat();
 ### Example 1: Creating Common Filters
 
 ```csharp
-// Document formats
 var documentFilter = new FilePickerFilter(
     "Office Documents",
     "doc", "docx", "xls", "xlsx", "ppt", "pptx"
 );
 
-// Image formats
 var imageFilter = new FilePickerFilter(
     "Images",
     "jpg", "jpeg", "png", "gif", "bmp", "tiff", "webp"
 );
 
-// Source code files
 var codeFilter = new FilePickerFilter(
     "C# Source Files",
     "cs"
 );
 
-// All files (wildcard)
 var allFilter = new FilePickerFilter(
     "All Files",
     "*"
@@ -237,7 +221,6 @@ var options = new FilePickerOptions("Open File")
     .WithFilter(new FilePickerFilter("Text Files", "txt", "log", "ini", "cfg"))
     .WithFilter(new FilePickerFilter("All Files", "*"));
 
-// First filter is typically selected by default in the dialog
 ```
 
 ### Example 3: Building Custom Filter List
@@ -267,7 +250,6 @@ public static class FileFilters
         new FilePickerFilter("All Files", "*");
 }
 
-// Usage:
 var options = new FilePickerOptions("Select Media")
     .WithFilter(FileFilters.Images)
     .WithFilter(FileFilters.Video)
@@ -290,7 +272,6 @@ Console.WriteLine($"Windows Format: {filter.GetFormattedExtensions()}");
 // Output: Windows Format: *.html;*.css;*.js
 
 Console.WriteLine($"macOS Format: {filter.GetUtiFormat()}");
-// Output: macOS Format: html,css,js
 ```
 
 ### Example 5: Dynamic Filter Building
@@ -322,7 +303,6 @@ public static class FilterBuilder
     }
 }
 
-// Usage:
 var customFilter = FilterBuilder.CreateForExtensions("Configuration Files", "json", "yaml", "toml", "ini");
 var standardFilters = FilterBuilder.CreateStandardSet();
 ```
@@ -333,25 +313,18 @@ var standardFilters = FilterBuilder.CreateStandardSet();
 
 1. **Use descriptive display names:**
    ```csharp
-   // Good
    new FilePickerFilter("JPEG Images", "jpg", "jpeg")
-   
-   // Avoid
    new FilePickerFilter("jpg", "jpg", "jpeg")
    ```
 
 2. **Group related extensions:**
    ```csharp
-   // Good - related formats together
    new FilePickerFilter("Image Files", "jpg", "jpeg", "png", "gif", "bmp")
-   
-   // Avoid - unrelated formats together
    new FilePickerFilter("Files", "jpg", "doc", "mp3", "rar")
    ```
 
 3. **Order common formats first:**
    ```csharp
-   // When creating filters, order by likelihood of use
    .WithFilter(new FilePickerFilter("JPEG Images", "jpg", "jpeg"))  // Most common
    .WithFilter(new FilePickerFilter("PNG Images", "png"))            // Also common
    .WithFilter(new FilePickerFilter("Other Formats", "gif", "bmp"))  // Less common
@@ -360,21 +333,18 @@ var standardFilters = FilterBuilder.CreateStandardSet();
 
 4. **Consider standard file associations:**
    ```csharp
-   // Match OS file type associations
    var csharpFilter = new FilePickerFilter("C# Source Files", "cs");
    var pythonFilter = new FilePickerFilter("Python Files", "py", "pyw");
    ```
 
 5. **Support multiple related extensions:**
    ```csharp
-   // Include all variants
    new FilePickerFilter("Word Documents", "doc", "docx", "docm")
    new FilePickerFilter("JPEG Images", "jpg", "jpeg", "jpe")
    ```
 
 6. **Use wildcard for fallback:**
    ```csharp
-   // Always provide an "All Files" option
    .WithFilter(/* your specific filters */)
    .WithFilter(new FilePickerFilter("All Files", "*"))
    ```

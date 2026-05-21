@@ -69,11 +69,9 @@ int count = engine.GetPluralFormCount("ja");   // Returns 1
 ```csharp
 var engine = new PluralizationEngine();
 
-// Built-in English rules
 int form1 = engine.GetPluralForm("en", 1);  // 0 (singular)
 int form5 = engine.GetPluralForm("en", 5);  // 1 (plural)
 
-// Russian with 3 forms
 int ru1  = engine.GetPluralForm("ru", 1);   // 0
 int ru2  = engine.GetPluralForm("ru", 2);   // 1
 int ru5  = engine.GetPluralForm("ru", 5);   // 2
@@ -85,11 +83,9 @@ int ru5  = engine.GetPluralForm("ru", 5);   // 2
 var manager = new TranslationManager();
 manager.SetLanguage("en");
 
-// Add plural translations
 manager.AddTranslation("en", "items[0]", "1 item");
 manager.AddTranslation("en", "items[1]", "{count} items");
 
-// Use
 string one = manager.TranslatePlural("items", 1);    // "1 item"
 string many = manager.TranslatePlural("items", 10);  // "{count} items"
 ```
@@ -99,7 +95,6 @@ string many = manager.TranslatePlural("items", 10);  // "{count} items"
 ```csharp
 var engine = new PluralizationEngine();
 
-// Register custom rule (e.g., for a hypothetical language)
 engine.RegisterPluralizationRule("customLang", (quantity) =>
 {
     if (quantity == 0) return 0;

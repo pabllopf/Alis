@@ -42,7 +42,6 @@ Inicia un diálogo en modo avanzado con máquina de estados.
 
 ```csharp
 manager.StartDialog("intro");
-// CurrentState ahora es Running
 ```
 
 #### PauseDialog()
@@ -50,7 +49,6 @@ Pausa el diálogo actual.
 
 ```csharp
 manager.PauseDialog();
-// CurrentState ahora es Paused
 ```
 
 #### ResumeDialog()
@@ -58,7 +56,6 @@ Reanuda un diálogo pausado.
 
 ```csharp
 manager.ResumeDialog();
-// CurrentState vuelve a Running
 ```
 
 #### EndDialog()
@@ -66,7 +63,6 @@ Termina el diálogo actual.
 
 ```csharp
 manager.EndDialog();
-// CurrentState ahora es Completed
 ```
 
 ### Gestión de Opciones
@@ -135,23 +131,18 @@ manager.UnregisterObserver(observer);
 ```csharp
 var manager = new DialogManager();
 
-// Crear diálogos
 var intro = new Dialog("intro", "Bienvenido al juego");
 intro.AddOption(new DialogOption("Jugar", () => Console.WriteLine("¡Jugando!")));
 intro.AddOption(new DialogOption("Salir", () => Console.WriteLine("¡Adiós!")));
 
 manager.AddDialog(intro);
 
-// Registrar observador
 manager.RegisterObserver(new MyObserver());
 
-// Iniciar diálogo
 manager.StartDialog("intro");
 
-// Seleccionar opción
 manager.SelectOption(0);
 
-// Terminar diálogo
 manager.EndDialog();
 ```
 

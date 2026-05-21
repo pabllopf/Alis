@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GraphicManager.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -161,7 +134,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public override void OnStart()
         {
-            // Intentionally empty: no initialization required for this manager
         }
 
         /// <summary>
@@ -169,7 +141,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public override void OnBeforeDraw()
         {
-            // Intentionally empty: no pre-draw processing required for this manager
         }
 
         /// <summary>
@@ -193,7 +164,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>(allKeys.Where(platform.IsKeyDown));
             DateTime now = DateTime.UtcNow;
 
-            // Detectar eventos
             HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>(newKeys);
             pressedKeys.ExceptWith(currentKeys); // Press: nuevas pulsaciones
             HashSet<ConsoleKey> heldKeys = new HashSet<ConsoleKey>(newKeys);
@@ -201,7 +171,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             HashSet<ConsoleKey> releasedKeys = new HashSet<ConsoleKey>(currentKeys);
             releasedKeys.ExceptWith(newKeys); // Release: soltadas
 
-            // Actualizar timestamps y crear KeyEventInfo
             foreach (ConsoleKey k in pressedKeys)
             {
                 keyDownTimestamps[k] = now;
@@ -253,7 +222,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 }
             }
 
-            // Actualizar los estados para el siguiente frame
             currentKeys = newKeys;
 
 
@@ -263,10 +231,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             Color backgrounColor = contextSetting.Graphic.BackgroundColor;
 
 
-            // Set the clear color (convert from 0-255 range to 0.0-1.0 range)
             Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
 
-            // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
             GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.CurrentWorld
@@ -330,10 +296,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             Color backgrounColor = contextSetting.Graphic.BackgroundColor;
 
 
-            // Set the clear color (convert from 0-255 range to 0.0-1.0 range)
             Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
 
-            // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
             GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.CurrentWorld

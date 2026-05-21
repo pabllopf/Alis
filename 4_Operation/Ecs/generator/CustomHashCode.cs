@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:CustomHashCode.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Runtime.InteropServices;
@@ -104,11 +77,6 @@ namespace Alis.Core.Ecs.Generator
         /// <returns>The int</returns>
         public static int Combine<T1>(T1 value1)
         {
-            // Provide a way of diffusing bits from something with a limited
-            // input hash space. For example, many enums only have a few
-            // possible hashes, only using the bottom few bits of the code. Some
-            // collections are built on the assumption that hashes are spread
-            // over a larger space, so diffusing the bits may help the
             // collection work more efficiently.
 
             uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
@@ -468,31 +436,16 @@ namespace Alis.Core.Ecs.Generator
         /// <param name="value">The value</param>
         private void Add(int value)
         {
-            // The original xxHash works as follows:
-            // 0. Initialize immediately. We can't do this in a struct (no
-            //    default ctor).
-            // 1. Accumulate blocks of length 16 (4 uints) into 4 accumulators.
-            // 2. Accumulate remaining blocks of length 4 (1 uint) into the
-            //    hash.
             // 3. Accumulate remaining blocks of length 1 into the hash.
 
-            // There is no need for #3 as this type only accepts ints. _queue1,
-            // _queue2 and _queue3 are basically a buffer so that when
             // ToHashCode is called we can execute #2 correctly.
 
-            // We need to initialize the xxHash32 state (_v1 to _v4) lazily (see
-            // #0) nd the last place that can be done if you look at the
-            // original code is just before the first block of 16 bytes is mixed
-            // in. The xxHash32 state is never used for streams containing fewer
             // than 16 bytes.
 
-            // To see what's really going on here, have a look at the Combine
             // methods.
 
             uint val = (uint) value;
 
-            // Storing the value of _length locally shaves of quite a few bytes
-            // in the resulting machine code.
             uint previousLength = _length++;
             uint position = previousLength % 4;
 
@@ -530,30 +483,20 @@ namespace Alis.Core.Ecs.Generator
         /// <returns>The int</returns>
         public int ToHashCode()
         {
-            // Storing the value of _length locally shaves of quite a few bytes
-            // in the resulting machine code.
             uint length = _length;
 
-            // position refers to the *next* queue position in this method, so
-            // position == 1 means that _queue1 is populated; _queue2 would have
-            // been populated on the next call to Add.
             uint position = length % 4;
 
-            // If the length is less than 4, _v1 to _v4 don't contain anything
             // yet. xxHash32 treats this differently.
 
             uint hash = length < 4 ? MixEmptyState() : MixState(_v1, _v2, _v3, _v4);
 
-            // _length is incremented once per Add(Int32) and is therefore 4
             // times too small (xxHash length is in bytes, not ints).
 
             hash += length * 4;
 
             // Mix what remains in the queue
 
-            // Switch can't be inlined right now, so use as few branches as
-            // possible by manually excluding impossible scenarios (position > 1
-            // is always false if position is not > 0).
             if (position > 0)
             {
                 hash = QueueRound(hash, _queue1);

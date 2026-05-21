@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:BatchPartitionTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Reflection;
 using Alis.Extension.Thread.Scheduling;
@@ -44,10 +17,8 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void BatchPartition_CanBeInstantiated()
         {
-            // Act
             BatchPartition partition = new BatchPartition(10, 20);
 
-            // Assert
             Assert.Equal(10, partition.StartIndex);
             Assert.Equal(20, partition.Length);
         }
@@ -58,10 +29,8 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void StartIndex_IsStoredCorrectly()
         {
-            // Act
             BatchPartition partition = new BatchPartition(100, 50);
 
-            // Assert
             Assert.Equal(100, partition.StartIndex);
         }
 
@@ -71,10 +40,8 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Length_IsStoredCorrectly()
         {
-            // Act
             BatchPartition partition = new BatchPartition(100, 50);
 
-            // Assert
             Assert.Equal(50, partition.Length);
         }
 
@@ -84,10 +51,8 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void EndIndex_IsCalculatedCorrectly()
         {
-            // Act
             BatchPartition partition = new BatchPartition(10, 20);
 
-            // Assert
             Assert.Equal(30, partition.EndIndex);
         }
 
@@ -97,10 +62,8 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void EndIndex_WithZeroLength()
         {
-            // Act
             BatchPartition partition = new BatchPartition(10, 0);
 
-            // Assert
             Assert.Equal(10, partition.EndIndex);
         }
 
@@ -110,10 +73,8 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Partition_WithZeroStartIndex()
         {
-            // Act
             BatchPartition partition = new BatchPartition(0, 100);
 
-            // Assert
             Assert.Equal(0, partition.StartIndex);
             Assert.Equal(100, partition.Length);
             Assert.Equal(100, partition.EndIndex);
@@ -125,10 +86,8 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Partition_WithNegativeStartIndex()
         {
-            // Act
             BatchPartition partition = new BatchPartition(-5, 10);
 
-            // Assert
             Assert.Equal(-5, partition.StartIndex);
             Assert.Equal(10, partition.Length);
             Assert.Equal(5, partition.EndIndex);
@@ -140,10 +99,8 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Partition_WithNegativeLength()
         {
-            // Act
             BatchPartition partition = new BatchPartition(10, -5);
 
-            // Assert
             Assert.Equal(10, partition.StartIndex);
             Assert.Equal(-5, partition.Length);
             Assert.Equal(5, partition.EndIndex);
@@ -155,10 +112,8 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Partition_WithMaxIntegerValues()
         {
-            // Act
             BatchPartition partition = new BatchPartition(int.MaxValue, 0);
 
-            // Assert
             Assert.Equal(int.MaxValue, partition.StartIndex);
             Assert.Equal(0, partition.Length);
             Assert.Equal(int.MaxValue, partition.EndIndex);
@@ -170,11 +125,9 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Partition_IsReadonlyStruct()
         {
-            // Act
             BatchPartition partition1 = new BatchPartition(10, 20);
             BatchPartition partition2 = new BatchPartition(10, 20);
 
-            // Assert
             Assert.Equal(partition1.StartIndex, partition2.StartIndex);
             Assert.Equal(partition1.Length, partition2.Length);
             Assert.Equal(partition1.EndIndex, partition2.EndIndex);
@@ -186,12 +139,10 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void MultiplePartitions_AreIndependent()
         {
-            // Act
             BatchPartition partition1 = new BatchPartition(0, 10);
             BatchPartition partition2 = new BatchPartition(10, 10);
             BatchPartition partition3 = new BatchPartition(20, 10);
 
-            // Assert
             Assert.Equal(0, partition1.StartIndex);
             Assert.Equal(10, partition1.Length);
             Assert.Equal(10, partition1.EndIndex);
@@ -211,7 +162,6 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Partition_CanRepresentContinuousRanges()
         {
-            // Arrange & Act
             BatchPartition[] partitions = new[]
             {
                 new BatchPartition(0, 25),
@@ -220,7 +170,6 @@ namespace Alis.Extension.Thread.Test.Scheduling
                 new BatchPartition(75, 25)
             };
 
-            // Assert
             for (int i = 0; i < partitions.Length - 1; i++)
             {
                 Assert.Equal(partitions[i].EndIndex, partitions[i + 1].StartIndex);
@@ -233,11 +182,9 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Partition_CanRepresentOverlappingRanges()
         {
-            // Act
             BatchPartition partition1 = new BatchPartition(0, 20);
             BatchPartition partition2 = new BatchPartition(10, 20);
 
-            // Assert
             Assert.True(partition1.EndIndex > partition2.StartIndex);
         }
 
@@ -247,10 +194,8 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Partition_WithLargeValues()
         {
-            // Act
             BatchPartition partition = new BatchPartition(1000000, 500000);
 
-            // Assert
             Assert.Equal(1000000, partition.StartIndex);
             Assert.Equal(500000, partition.Length);
             Assert.Equal(1500000, partition.EndIndex);
@@ -262,15 +207,12 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Partition_PropertiesAreImmutable()
         {
-            // Arrange
             BatchPartition partition = new BatchPartition(10, 20);
 
-            // Act
             int startIndex = partition.StartIndex;
             int length = partition.Length;
             int endIndex = partition.EndIndex;
 
-            // Assert - properties should not have setters
             PropertyInfo startProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.StartIndex));
             PropertyInfo lengthProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.Length));
             PropertyInfo endProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.EndIndex));
@@ -289,13 +231,11 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Partition_CanBeUsedInCollections()
         {
-            // Act
             BatchPartition[] partitions = new BatchPartition[3];
             partitions[0] = new BatchPartition(0, 10);
             partitions[1] = new BatchPartition(10, 10);
             partitions[2] = new BatchPartition(20, 10);
 
-            // Assert
             Assert.Equal(3, partitions.Length);
             Assert.Equal(0, partitions[0].StartIndex);
             Assert.Equal(10, partitions[1].StartIndex);
@@ -308,7 +248,6 @@ namespace Alis.Extension.Thread.Test.Scheduling
         [Fact]
         public void Partition_CoversFullRangeCalculation()
         {
-            // Arrange
             const int totalItems = 100;
             BatchPartition[] partitions = new[]
             {
@@ -318,14 +257,12 @@ namespace Alis.Extension.Thread.Test.Scheduling
                 new BatchPartition(75, 25)
             };
 
-            // Act
             int coveredItems = 0;
             foreach (BatchPartition partition in partitions)
             {
                 coveredItems += partition.Length;
             }
 
-            // Assert
             Assert.Equal(totalItems, coveredItems);
             Assert.Equal(totalItems, partitions[partitions.Length - 1].EndIndex);
         }

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:QueryEnumerableTest.6.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
@@ -51,14 +24,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithSixComponents_CanBeCreated()
         {
-            // Arrange
             using Scene scene = new Scene();
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
-            // Act
             QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
 
-            // Assert
             Assert.NotEqual(default(QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>.QueryEnumerable), enumerable);
         }
 
@@ -71,7 +41,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithSixComponents_ProvidesAccessToAll()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 10, Y = 20},
@@ -83,7 +52,6 @@ namespace Alis.Core.Ecs.Test
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
-            // Act & Assert
             foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test, Ref<AnotherComponent> another) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 Assert.Equal(10, pos.Value.X);
@@ -106,7 +74,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithSixComponents_FiltersCorrectly()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 1, Y = 1},
@@ -125,14 +92,12 @@ namespace Alis.Core.Ecs.Test
             ); // Missing AnotherComponent
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
-            // Act
             int count = 0;
             foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(1, count);
         }
 
@@ -145,7 +110,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithSixComponents_AllowsModification()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 0, Y = 0},
@@ -157,7 +121,6 @@ namespace Alis.Core.Ecs.Test
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
-            // Act
             foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test, Ref<AnotherComponent> another) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 Position p = pos.Value;
@@ -177,7 +140,6 @@ namespace Alis.Core.Ecs.Test
                 another.Value = a;
             }
 
-            // Assert
             Assert.Equal(100, entity.Get<Position>().X);
             Assert.Equal(300, entity.Get<Health>().Value);
             Assert.Equal(180, entity.Get<Transform>().Rotation);
@@ -193,7 +155,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithSixComponents_WorksWithMultipleEntities()
         {
-            // Arrange
             using Scene scene = new Scene();
             for (int i = 0; i < 2; i++)
             {
@@ -209,14 +170,12 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
-            // Act
             int count = 0;
             foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(2, count);
         }
 
@@ -229,7 +188,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithSixComponents_IsStructType()
         {
-            // Assert
             Assert.True(typeof(QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>).IsValueType);
         }
 
@@ -242,18 +200,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithSixComponents_WorksWithEmptyQuery()
         {
-            // Arrange
             using Scene scene = new Scene();
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
-            // Act
             int count = 0;
             foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(0, count);
         }
     }

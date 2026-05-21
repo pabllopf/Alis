@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameObjectRefTupleTest.7.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
@@ -44,7 +17,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void RefTuple7_Initialize_ShouldSetAllComponents()
         {
-            // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 10, Y = 20};
@@ -62,7 +34,6 @@ namespace Alis.Core.Ecs.Test
             entity.Add(test2);
             entity.Add(testStruct);
 
-            // Act
             GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct> tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct>
             {
                 GameObject = entity,
@@ -75,7 +46,6 @@ namespace Alis.Core.Ecs.Test
                 Item7 = new Ref<TestStruct>(new[] {testStruct}, 0)
             };
 
-            // Assert
             Assert.Equal(entity, tuple.GameObject);
             Assert.Equal(10, tuple.Item1.Value.X);
             Assert.Equal(100, tuple.Item3.Value.Value);
@@ -89,7 +59,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void RefTuple7_Deconstruct_ShouldReturnAllRefs()
         {
-            // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 5, Y = 10};
@@ -119,10 +88,8 @@ namespace Alis.Core.Ecs.Test
                 Item7 = new Ref<TestStruct>(new[] {testStruct}, 0)
             };
 
-            // Act
             (GameObject go, Ref<Position> posRef, Ref<Velocity> velRef, Ref<Health> healthRef, Ref<Armor> armorRef, Ref<TestComponent> testRef, Ref<TestComponent2> test2Ref, Ref<TestStruct> structRef) = tuple;
 
-            // Assert
             Assert.Equal(entity, go);
             Assert.Equal(5, posRef.Value.X);
             Assert.Equal(9, structRef.Value.Y);
@@ -136,7 +103,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void RefTuple7_ModifyAllComponents_ShouldUpdateAll()
         {
-            // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 1, Y = 2};
@@ -166,10 +132,8 @@ namespace Alis.Core.Ecs.Test
                 Item7 = new Ref<TestStruct>(new[] {testStruct}, 0)
             };
 
-            // Act
             tuple.Item7.Value.X = 77;
 
-            // Assert
             Assert.Equal(3, entity.Get<TestStruct>().X);
 
             world.Dispose();
@@ -181,7 +145,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void RefTuple7_AllFields_ShouldBeAccessible()
         {
-            // Arrange
             Scene world = new Scene();
             GameObject entity = world.Create();
             Position pos = new Position {X = 7, Y = 14};
@@ -199,7 +162,6 @@ namespace Alis.Core.Ecs.Test
             entity.Add(test2);
             entity.Add(testStruct);
 
-            // Act
             GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct> tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct>
             {
                 GameObject = entity,
@@ -212,7 +174,6 @@ namespace Alis.Core.Ecs.Test
                 Item7 = new Ref<TestStruct>(new[] {testStruct}, 0)
             };
 
-            // Assert
             Assert.Equal(entity, tuple.GameObject);
             Assert.Equal(7, tuple.Item1.Value.X);
             Assert.Equal(21, tuple.Item7.Value.X);

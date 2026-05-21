@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:DungeonGenerator.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -88,20 +61,15 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <returns>A fully generated dungeon instance.</returns>
         public DungeonData Generate()
         {
-            // Step 1: Generate rooms and corridors
             (List<RoomData> rooms, List<CorridorData> corridors) = GenerateRoomsAndCorridors();
 
-            // Step 2: Create the board
             BoardSquare[,] board = _boardBuilder.CreateEmptyBoard(_configuration.BoardWidth, _configuration.BoardHeight);
 
-            // Step 3: Place rooms and corridors on the board
             _boardBuilder.PlaceRooms(board, rooms);
             _boardBuilder.PlaceCorridors(board, corridors);
 
-            // Step 4: Generate walls and corners
             _boardBuilder.GenerateWallsAndCorners(board);
 
-            // Step 5: Return the complete dungeon data
             return new DungeonData(board, rooms, corridors);
         }
 
@@ -114,7 +82,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
             List<RoomData> rooms = new List<RoomData>(_configuration.NumberOfRooms);
             List<CorridorData> corridors = new List<CorridorData>(_configuration.NumberOfRooms - 1);
 
-            // Create the first room at the center of the board
             RoomData firstRoom = _roomFactory.CreateFirstRoom(
                 _configuration.BoardWidth / 2,
                 _configuration.BoardHeight / 2,
@@ -122,14 +89,12 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
                 _configuration.FirstRoomHeight);
             rooms.Add(firstRoom);
 
-            // Create the first corridor
             CorridorData firstCorridor = _corridorFactory.CreateFirstCorridor(
                 _configuration.CorridorWidth,
                 _configuration.CorridorHeight,
                 firstRoom);
             corridors.Add(firstCorridor);
 
-            // Generate intermediate rooms and corridors
             for (int i = 1; i < _configuration.NumberOfRooms - 1; i++)
             {
                 RoomData room = _roomFactory.CreateRoom(
@@ -145,14 +110,12 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
                 corridors.Add(corridor);
             }
 
-            // Create the final corridor before the boss room
             CorridorData finalCorridor = _corridorFactory.CreateCorridor(
                 _configuration.CorridorWidth,
                 _configuration.CorridorHeight,
                 rooms[rooms.Count - 1]);
             corridors.Add(finalCorridor);
 
-            // Create the boss room
             RoomData bossRoom = _roomFactory.CreateBossRoom(
                 _configuration.BossRoomWidth,
                 _configuration.BossRoomHeight,

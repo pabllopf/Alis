@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AssetsWindow.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -212,7 +185,6 @@ namespace Alis.App.Engine.Windows
                 {
                     ImGui.Separator();
 
-                    // Opciones principales
                     if (ImGui.Selectable("Folder"))
                     {
                     }
@@ -229,10 +201,8 @@ namespace Alis.App.Engine.Windows
 
                     ImGui.Separator();
 
-                    // Submenús
                     if (ImGui.BeginMenu("2D"))
                     {
-                        // Agrega opciones específicas de 2D aquí si es necesario
                         ImGui.EndMenu();
                     }
 
@@ -313,7 +283,6 @@ namespace Alis.App.Engine.Windows
 
                     ImGui.Separator();
 
-                    // Opciones finales
                     if (ImGui.Selectable("Physics Material"))
                     {
                     }
@@ -335,7 +304,6 @@ namespace Alis.App.Engine.Windows
 
                 RenderAssets();
 
-                //ImGui.EndColumns(); // Finalizar las columnas
             }
 
             ImGui.End();
@@ -374,31 +342,24 @@ namespace Alis.App.Engine.Windows
         {
             string path = $"{SpaceWork.Project.Path}{currentPath}";
 
-            // Get all directories and files in the directory
             string[] directories = Directory.GetDirectories(path);
             string[] files = Directory.GetFiles(path);
 
-            // Filter out the files that match the ignore patterns
             files = files.Where(file => !ignorePatterns.Any(pattern => Path.GetFileName(file).Equals(pattern, StringComparison.OrdinalIgnoreCase))).ToArray();
 
-            // Filter directories and files based on search text
             directories = directories.Where(d => Path.GetFileName(d).Contains(text, StringComparison.OrdinalIgnoreCase)).ToArray();
             files = files.Where(f => Path.GetFileName(f).Contains(text, StringComparison.OrdinalIgnoreCase)).ToArray();
 
-            // Create a child window for scrolling
             ImGui.BeginChild("FilesAndFoldersRegion", ImGui.GetContentRegionAvail(), true, ImGuiWindowFlags.HorizontalScrollbar);
 
-            // Set the width and height of each item (button + icon)
             float itemWidth = 50.0f; // Width of each item
             float itemHeight = 50.0f; // Height of each item
             float itemPadding = 20.0f; // Padding between items
             int minColumns = 1; // Número mínimo de columnas
             int columns = Math.Max(minColumns, (int) (ImGui.GetContentRegionAvail().X / (itemWidth + itemPadding))); // Número de columnas
 
-            // Create a table to render items in multiple lines
             if (ImGui.BeginTable("FilesAndFoldersTable", columns, ImGuiTableFlags.SizingStretchProp))
             {
-                // Render directories
                 foreach (string directory in directories)
                 {
                     ImGui.TableNextColumn();
@@ -430,7 +391,6 @@ namespace Alis.App.Engine.Windows
                     ImGui.PopFont();
                 }
 
-                // Render files
                 foreach (string file in files)
                 {
                     ImGui.TableNextColumn();
@@ -447,7 +407,6 @@ namespace Alis.App.Engine.Windows
                     {
                         if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
                         {
-                            // Acción a realizar al hacer doble clic en el archivo
                         }
                     }
 
@@ -463,7 +422,6 @@ namespace Alis.App.Engine.Windows
                     ImGui.PopFont();
                 }
 
-                // Fill remaining columns with invisible items
                 int totalItems = directories.Length + files.Length;
                 int emptyItems = columns - totalItems % columns;
                 if (emptyItems < columns)
@@ -489,7 +447,6 @@ namespace Alis.App.Engine.Windows
         {
             ImGui.SameLine();
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
-            //ImGui.InputText($"{FontAwesome5.Search}", commandPtr, 256);
             RenderSearchBar();
 
             ImGui.Separator();
@@ -504,11 +461,9 @@ namespace Alis.App.Engine.Windows
 
             float currentWidth = ImGui.GetColumnWidth(0);
 
-            // Configurar límites de la columna
             float minWidth = 200.0f;
             float maxWidth = 350.0f;
 
-            // Ajustar el ancho dentro de los límites
             if (currentWidth < minWidth)
             {
                 ImGui.SetColumnWidth(0, minWidth);
@@ -523,7 +478,6 @@ namespace Alis.App.Engine.Windows
 
             ImGui.NextColumn();
 
-            // Contenido de la segunda columna
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
 
@@ -557,7 +511,6 @@ namespace Alis.App.Engine.Windows
         {
             string path = Path.Combine(SpaceWork.Project.Path, "Assets");
 
-            // Create a child window for scrolling
             ImGui.BeginChild("FoldersRegion", ImGui.GetContentRegionAvail(), true, ImGuiWindowFlags.HorizontalScrollbar);
 
             RenderDirectory(path, true);
@@ -636,10 +589,8 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private void RenderPathOfFolder()
         {
-            // Divide the path into folders:
             string[] folders = currentPath.Split(new[] {Path.DirectorySeparatorChar}, StringSplitOptions.RemoveEmptyEntries);
 
-            // If only the "Assets" folder is present, render a button with the name "Assets"
             if ((folders.Length == 1) && (folders[0] == "Assets"))
             {
                 if (ImGui.Button("Assets"))
@@ -676,27 +627,21 @@ namespace Alis.App.Engine.Windows
         {
             string path = $"{SpaceWork.Project.Path}{currentPath}";
 
-            // Get all directories and files in the directory
             string[] directories = Directory.GetDirectories(path);
             string[] files = Directory.GetFiles(path);
 
-            // Filter out the files that match the ignore patterns
             files = files.Where(file => !ignorePatterns.Any(pattern => Path.GetFileName(file).Equals(pattern, StringComparison.OrdinalIgnoreCase))).ToArray();
 
-            // Create a child window for scrolling
             if (ImGui.BeginChild("FilesAndFoldersRegion", ImGui.GetContentRegionAvail(), true, ImGuiWindowFlags.HorizontalScrollbar))
             {
-                // Set the width and height of each item (button + icon)
                 float itemWidth = 50.0f; // Width of each item
                 float itemHeight = 50.0f; // Height of each item
                 float itemPadding = 20.0f; // Padding between items
                 int minColumns = 1; // Número mínimo de columnas
                 int columns = Math.Max(minColumns, (int) (ImGui.GetContentRegionAvail().X / (itemWidth + itemPadding))); // Número de columnas
 
-                // Create a table to render items in multiple lines
                 if (ImGui.BeginTable("FilesAndFoldersTable", columns, ImGuiTableFlags.SizingStretchProp))
                 {
-                    // Render directories
                     foreach (string directory in directories)
                     {
                         ImGui.TableNextColumn();
@@ -728,7 +673,6 @@ namespace Alis.App.Engine.Windows
                         ImGui.PopFont();
                     }
 
-                    // Render files
                     foreach (string file in files)
                     {
                         ImGui.TableNextColumn();
@@ -745,7 +689,6 @@ namespace Alis.App.Engine.Windows
                         {
                             if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
                             {
-                                // Acción a realizar al hacer doble clic en el archivo
                             }
                         }
 
@@ -761,7 +704,6 @@ namespace Alis.App.Engine.Windows
                         ImGui.PopFont();
                     }
 
-                    // Fill remaining columns with invisible items
                     int totalItems = directories.Length + files.Length;
                     int emptyItems = columns - totalItems % columns;
                     if (emptyItems < columns)

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Image.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.IO;
@@ -111,13 +84,11 @@ namespace Alis.Core.Graphic
                 int rowPadded = (width * bitsPerPixel + 31) / 32 * 4;
                 byte[] rawData = new byte[height * width * 4];
 
-                // Leer paleta si existe
                 byte[][] palette = LoadPalette(reader, headerSize, bitsPerPixel);
 
                 int[] bitfieldsMasks = null;
                 if (compression == 3)
                 {
-                    // Las máscaras están justo después del header
                     reader.BaseStream.Seek(headerSize + 14, SeekOrigin.Begin);
                     bitfieldsMasks = new int[bitsPerPixel == 32 ? 4 : 3];
                     for (int i = 0; i < bitfieldsMasks.Length; i++)
@@ -128,22 +99,16 @@ namespace Alis.Core.Graphic
                     reader.BaseStream.Seek(pixelDataOffset, SeekOrigin.Begin);
                 }
 
-                // Soporte explícito para imágenes BMP de 24 bits (RGB)
-                // Si bitsPerPixel == 24, se procesa como imagen RGB sin canal alfa
-                // El canal alfa se establece en 255 por defecto
                 if (compression == 0 || compression == 3)
                 {
-                    // BI_RGB
                     LoadBmpRgb(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
                 }
                 else if ((compression == 1) && (bitsPerPixel == 8))
                 {
-                    // BI_RLE8
                     LoadBmpRle8(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
                 }
                 else if ((compression == 2) && (bitsPerPixel == 4))
                 {
-                    // BI_RLE4
                     LoadBmpRle4(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
                 }
                 else

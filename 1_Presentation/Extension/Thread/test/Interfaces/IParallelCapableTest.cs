@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:IParallelCapableTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Reflection;
@@ -97,10 +70,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_CanBeImplementedByStruct()
         {
-            // Act
             bool isAssignable = typeof(IParallelCapable).IsAssignableFrom(typeof(ComponentWithInterface));
 
-            // Assert
             Assert.True(isAssignable);
         }
 
@@ -110,10 +81,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_CanBeImplementedByClass()
         {
-            // Act
             bool isAssignable = typeof(IParallelCapable).IsAssignableFrom(typeof(ClassWithInterface));
 
-            // Assert
             Assert.True(isAssignable);
         }
 
@@ -123,10 +92,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Struct_ImplementingInterface_CanBeInstantiated()
         {
-            // Act
             ComponentWithInterface component = new ComponentWithInterface {Value = 42};
 
-            // Assert
             Assert.Equal(42, component.Value);
             Assert.IsAssignableFrom<IParallelCapable>(component);
         }
@@ -137,10 +104,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Class_ImplementingInterface_CanBeInstantiated()
         {
-            // Act
             ClassWithInterface component = new ClassWithInterface {Value = 42};
 
-            // Assert
             Assert.Equal(42, component.Value);
             Assert.IsAssignableFrom<IParallelCapable>(component);
         }
@@ -151,10 +116,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Component_WithoutInterface_IsNotAssignable()
         {
-            // Act
             bool isAssignable = typeof(IParallelCapable).IsAssignableFrom(typeof(ComponentWithoutInterface));
 
-            // Assert
             Assert.False(isAssignable);
         }
 
@@ -164,10 +127,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_IsMarkerInterfaceWithNoMethods()
         {
-            // Act
             MethodInfo[] methods = typeof(IParallelCapable).GetMethods();
 
-            // Assert
             Assert.Empty(methods);
         }
 
@@ -177,10 +138,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_IsMarkerInterfaceWithNoProperties()
         {
-            // Act
             PropertyInfo[] properties = typeof(IParallelCapable).GetProperties();
 
-            // Assert
             Assert.Empty(properties);
         }
 
@@ -190,11 +149,9 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_CanBeCombinedWithOtherInterfaces()
         {
-            // Act
             bool implementsParallelCapable = typeof(IParallelCapable).IsAssignableFrom(typeof(ComponentWithMultipleInterfaces));
             bool implementsDisposable = typeof(IDisposable).IsAssignableFrom(typeof(ComponentWithMultipleInterfaces));
 
-            // Assert
             Assert.True(implementsParallelCapable);
             Assert.True(implementsDisposable);
         }
@@ -205,13 +162,10 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_CanBeCheckedAtRuntime()
         {
-            // Arrange
             object component = new ComponentWithInterface {Value = 10};
 
-            // Act
             bool isParallelCapable = component is IParallelCapable;
 
-            // Assert
             Assert.True(isParallelCapable);
         }
 
@@ -221,13 +175,10 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_CanBeCast()
         {
-            // Arrange
             ComponentWithInterface component = new ComponentWithInterface {Value = 20};
 
-            // Act
             IParallelCapable parallelCapable = component;
 
-            // Assert
             Assert.NotNull(parallelCapable);
         }
 
@@ -237,13 +188,10 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void GetInterfaces_ReturnsCorrectInterface()
         {
-            // Arrange
             Type type = typeof(ComponentWithInterface);
 
-            // Act
             Type[] interfaces = type.GetInterfaces();
 
-            // Assert
             Assert.Contains(typeof(IParallelCapable), interfaces);
         }
 
@@ -253,10 +201,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_IsPublic()
         {
-            // Act
             bool isPublic = typeof(IParallelCapable).IsPublic;
 
-            // Assert
             Assert.True(isPublic);
         }
 
@@ -266,10 +212,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_IsInterfaceType()
         {
-            // Act
             bool isInterface = typeof(IParallelCapable).IsInterface;
 
-            // Assert
             Assert.True(isInterface);
         }
 
@@ -279,7 +223,6 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void MultipleTypes_CanImplementInterface()
         {
-            // Arrange
             Type[] types = new[]
             {
                 typeof(ComponentWithInterface),
@@ -287,7 +230,6 @@ namespace Alis.Extension.Thread.Test.Interfaces
                 typeof(ComponentWithMultipleInterfaces)
             };
 
-            // Act & Assert
             foreach (Type type in types)
             {
                 Assert.True(typeof(IParallelCapable).IsAssignableFrom(type));
@@ -300,10 +242,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_CanBeUsedAsTypeConstraint()
         {
-            // Act
             int result = ProcessParallelCapable(new ComponentWithInterface {Value = 100});
 
-            // Assert
             Assert.Equal(100, result);
         }
 
@@ -329,10 +269,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_NamespaceIsCorrect()
         {
-            // Act
             string namespaceName = typeof(IParallelCapable).Namespace;
 
-            // Assert
             Assert.Equal("Alis.Extension.Thread.Interfaces", namespaceName);
         }
 
@@ -342,10 +280,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_NameIsCorrect()
         {
-            // Act
             string name = typeof(IParallelCapable).Name;
 
-            // Assert
             Assert.Equal("IParallelCapable", name);
         }
 
@@ -355,10 +291,8 @@ namespace Alis.Extension.Thread.Test.Interfaces
         [Fact]
         public void Interface_HasNoBaseInterfaces()
         {
-            // Act
             Type[] baseInterfaces = typeof(IParallelCapable).GetInterfaces();
 
-            // Assert
             Assert.Empty(baseInterfaces);
         }
     }

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:CommandBufferTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
@@ -51,13 +24,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_CanBeCreatedWithScene()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             CommandBuffer buffer = new CommandBuffer(scene);
 
-            // Assert
             Assert.NotNull(buffer);
         }
 
@@ -70,13 +40,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_StartsInactive()
         {
-            // Arrange
             using Scene scene = new Scene();
 
-            // Act
             CommandBuffer buffer = new CommandBuffer(scene);
 
-            // Assert
             Assert.False(buffer.HasBufferItems);
         }
 
@@ -89,15 +56,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void DeleteEntity_AddsToBuffer()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 42});
 
-            // Act
             buffer.DeleteEntity(entity);
 
-            // Assert
             Assert.True(buffer.HasBufferItems);
         }
 
@@ -110,15 +74,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Add_AddsToBuffer()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 10});
 
-            // Act
             buffer.AddComponent(entity, new AnotherComponent {Name = "Test"});
 
-            // Assert
             Assert.True(buffer.HasBufferItems);
         }
 
@@ -131,15 +92,12 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void RemoveComponent_AddsToBuffer()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 20});
 
-            // Act
             buffer.RemoveComponent<TestComponent>(entity);
 
-            // Assert
             Assert.True(buffer.HasBufferItems);
         }
 
@@ -152,16 +110,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Clear_RemovesAllCommands()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 30});
             buffer.DeleteEntity(entity);
 
-            // Act
             buffer.Clear();
 
-            // Assert
             Assert.False(buffer.HasBufferItems);
         }
 
@@ -174,16 +129,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Playback_AppliesDeleteEntityCommand()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 40});
             buffer.DeleteEntity(entity);
 
-            // Act
             buffer.Playback();
 
-            // Assert
             Assert.False(entity.IsAlive);
         }
 
@@ -196,16 +148,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Playback_AppliesAddCommand()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 50});
             buffer.AddComponent(entity, new AnotherComponent {Name = "Added"});
 
-            // Act
             buffer.Playback();
 
-            // Assert
             Assert.True(entity.Has<AnotherComponent>());
         }
 
@@ -218,16 +167,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Playback_AppliesRemoveComponentCommand()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 60}, new AnotherComponent {Name = "ToRemove"});
             buffer.RemoveComponent<AnotherComponent>(entity);
 
-            // Act
             buffer.Playback();
 
-            // Assert
             Assert.False(entity.Has<AnotherComponent>());
         }
 
@@ -240,16 +186,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Playback_ReturnsTrueWhenCommandsWereApplied()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 70});
             buffer.DeleteEntity(entity);
 
-            // Act
             bool result = buffer.Playback();
 
-            // Assert
             Assert.True(result);
         }
 
@@ -262,14 +205,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Playback_ReturnsFalseWhenBufferIsEmpty()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
 
-            // Act
             bool result = buffer.Playback();
 
-            // Assert
             Assert.False(result);
         }
 
@@ -282,18 +222,15 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_CanHandleMultipleCommands()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity1 = scene.Create(new TestComponent {Value = 1});
             GameObject entity2 = scene.Create(new TestComponent {Value = 2});
 
-            // Act
             buffer.DeleteEntity(entity1);
             buffer.AddComponent(entity2, new AnotherComponent {Name = "Test"});
             buffer.Playback();
 
-            // Assert
             Assert.False(entity1.IsAlive);
             Assert.True(entity2.Has<AnotherComponent>());
         }
@@ -307,16 +244,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_ClearsAfterPlayback()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 80});
             buffer.DeleteEntity(entity);
 
-            // Act
             buffer.Playback();
 
-            // Assert
             Assert.False(buffer.HasBufferItems);
         }
 
@@ -329,16 +263,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void RemoveComponent_WithComponentId_Works()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 90});
 
-            // Act
             buffer.RemoveComponent(entity, Component<TestComponent>.Id);
             buffer.Playback();
 
-            // Assert
             Assert.False(entity.Has<TestComponent>());
         }
 
@@ -351,17 +282,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_CanQueueMultipleOperationsOnSameEntity()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 100});
 
-            // Act
             buffer.AddComponent(entity, new AnotherComponent {Name = "First"});
             buffer.RemoveComponent<TestComponent>(entity);
             buffer.Playback();
 
-            // Assert
             Assert.True(entity.Has<AnotherComponent>());
             Assert.False(entity.Has<TestComponent>());
         }
@@ -375,17 +303,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CommandBuffer_HandlesEntityLifecycleCorrectly()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 110});
             int initialCount = scene.EntityCount;
 
-            // Act
             buffer.DeleteEntity(entity);
             buffer.Playback();
 
-            // Assert
             Assert.Equal(initialCount - 1, scene.EntityCount);
         }
 
@@ -398,17 +323,14 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Add_WithTypeParameter_Works()
         {
-            // Arrange
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
             GameObject entity = scene.Create(new TestComponent {Value = 120});
             AnotherComponent component2 = new AnotherComponent {Name = "TypeTest"};
 
-            // Act
             buffer.AddComponent(entity, typeof(AnotherComponent), component2);
             buffer.Playback();
 
-            // Assert
             Assert.True(entity.Has<AnotherComponent>());
         }
     }

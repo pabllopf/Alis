@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:BrowserPlayer.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.IO;
@@ -187,7 +160,6 @@ namespace Alis.Core.Audio.Players
         /// <param name="fileName">The file name</param>
         /// <param name="loop">The loop</param>
         public Task PlayLoop(string fileName, bool loop) =>
-            // No implementado: se puede usar alSourcei(_source, AL_LOOPING, 1)
             Play(fileName);
 
         /// <summary>
@@ -228,7 +200,6 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="percent">The percent</param>
         public Task SetVolume(byte percent) =>
-            // No implementado: se puede usar alSourcef(_source, AL_GAIN, percent/100f)
             Task.CompletedTask;
 
         /// <summary>
@@ -242,7 +213,6 @@ namespace Alis.Core.Audio.Players
         /// <returns>The bool</returns>
         private static bool TryParseWav(byte[] wav, out int dataOffset, out int dataSize, out int freq, out int format)
         {
-            // Parser WAV extendido: muestra todos los campos fmt, chunks, y sugiere conversión si es comprimido
             dataOffset = 0;
             dataSize = 0;
             freq = 0;
@@ -265,7 +235,6 @@ namespace Alis.Core.Audio.Players
                 return false;
             }
 
-            // Buscar chunk 'fmt '
             int fmtPos = 12;
             int fmtSize = 0;
             while (fmtPos < wav.Length - 8)
@@ -302,7 +271,6 @@ namespace Alis.Core.Audio.Players
                 return false;
             }
 
-            // Buscar chunk 'data', ignorando chunks extra
             int pos = fmtPos + 8 + fmtSize;
             while (pos < wav.Length - 8)
             {

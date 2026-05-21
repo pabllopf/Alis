@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AotReflectionAnalyzer.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Immutable;
@@ -216,11 +189,9 @@ namespace Alis.Core.Aspect.Fluent.Generator
         /// <param name="context">The context</param>
         public override void Initialize(AnalysisContext context)
         {
-            // Performance
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.ReportDiagnostics);
             context.EnableConcurrentExecution();
 
-            // Register operations-based actions to reliably catch semantic usage
             context.RegisterOperationAction(AnalyzeInvocation, OperationKind.Invocation);
             context.RegisterOperationAction(AnalyzeObjectCreation, OperationKind.ObjectCreation);
             context.RegisterOperationAction(AnalyzeFieldReference, OperationKind.FieldReference);
@@ -228,10 +199,8 @@ namespace Alis.Core.Aspect.Fluent.Generator
             context.RegisterOperationAction(AnalyzeMethodReference, OperationKind.MethodReference);
             context.RegisterOperationAction(AnalyzeConversion, OperationKind.Conversion);
 
-            // Syntax node checks for dynamic keyword and nameof patterns
             context.RegisterSyntaxNodeAction(AnalyzeDynamicUsage, SyntaxKind.IdentifierName);
 
-            // Also inspect Using directives and member access for fully-qualified names
             context.RegisterSyntaxNodeAction(AnalyzeMemberAccess, SyntaxKind.SimpleMemberAccessExpression);
         }
 
@@ -246,10 +215,8 @@ namespace Alis.Core.Aspect.Fluent.Generator
 
             string fullName = method.ContainingType?.ToDisplayString() + "." + method.Name;
 
-            // Reflection API calls
             if (IsReflectionType(method.ContainingType))
             {
-                // Distinguish emits, invoke, activator, etc.
                 if (IsEmitApi(method))
                 {
                     Report(context, invocation.Syntax.GetLocation(), EmitApiRule, fullName);
@@ -274,26 +241,22 @@ namespace Alis.Core.Aspect.Fluent.Generator
                     return;
                 }
 
-                // Generic reflection usage
                 Report(context, invocation.Syntax.GetLocation(), ReflectionApiRule, fullName);
                 return;
             }
 
-            // Expression.Compile
             if ((method.ContainingType?.ToDisplayString() == "System.Linq.Expressions.Expression") && (method.Name == "Compile"))
             {
                 Report(context, invocation.Syntax.GetLocation(), ExpressionCompileRule, fullName);
                 return;
             }
 
-            // BinaryFormatter / Json serializer detection by method
             if (IsKnownSerializer(method))
             {
                 Report(context, invocation.Syntax.GetLocation(), SerializationRule, fullName);
                 return;
             }
 
-            // RuntimeHelpers
             if (method.ContainingType?.ToDisplayString() == "System.Runtime.CompilerServices.RuntimeHelpers")
             {
                 Report(context, invocation.Syntax.GetLocation(), RuntimeHelpersRule, fullName);
@@ -314,14 +277,12 @@ namespace Alis.Core.Aspect.Fluent.Generator
                 return;
             }
 
-            // new System.Reflection.Emit.DynamicMethod(...) or other emit types
             if (fullName.StartsWith("System.Reflection.Emit") || fullName.Contains("DynamicMethod") || fullName.Contains("AssemblyBuilder"))
             {
                 Report(context, creation.Syntax.GetLocation(), EmitApiRule, fullName);
                 return;
             }
 
-            // Serialization types like BinaryFormatter
             if (fullName == "System.Runtime.Serialization.Formatters.Binary.BinaryFormatter")
             {
                 Report(context, creation.Syntax.GetLocation(), SerializationRule, fullName);
@@ -381,7 +342,6 @@ namespace Alis.Core.Aspect.Fluent.Generator
         /// <param name="context">The context</param>
         private static void AnalyzeConversion(OperationAnalysisContext context)
         {
-            // detect casts to dynamic-related interfaces
             IConversionOperation conv = (IConversionOperation) context.Operation;
             ITypeSymbol target = conv.Type;
             if (target == null)
@@ -404,14 +364,12 @@ namespace Alis.Core.Aspect.Fluent.Generator
         {
             IdentifierNameSyntax id = (IdentifierNameSyntax) context.Node;
 
-            // Detecta la palabra clave `dynamic` comparando el texto del token en vez de usar SyntaxKind.DynamicKeyword
             if (string.Equals(id.Identifier.ValueText, "dynamic", StringComparison.Ordinal))
             {
                 Report(context, id.GetLocation(), DynamicRule, "dynamic keyword");
                 return;
             }
 
-            // Heurística para nameof/GetType/GetMethod
             if (id.Identifier.Text.Equals("GetType", StringComparison.Ordinal) || id.Identifier.Text.Equals("GetMethod", StringComparison.Ordinal))
             {
                 Report(context, id.GetLocation(), UnknownReflectionRule, id.Identifier.Text);
@@ -426,7 +384,6 @@ namespace Alis.Core.Aspect.Fluent.Generator
         {
             MemberAccessExpressionSyntax member = (MemberAccessExpressionSyntax) context.Node;
             string text = member.ToString();
-            // heurística para detectar cadenas que contengan reflection APIs usadas por nombre
             if (text.Contains("GetMethod(") || text.Contains("GetType(") || text.Contains("GetProperty("))
             {
                 Report(context, member.GetLocation(), UnknownReflectionRule, text);
@@ -473,13 +430,11 @@ namespace Alis.Core.Aspect.Fluent.Generator
             }
 
             string name = type.ToDisplayString();
-            // Cubre System.Reflection y subniveles
             if (name.StartsWith("System.Reflection", StringComparison.Ordinal))
             {
                 return true;
             }
 
-            // Common reflection/emit related types
             if (name.Contains("System.Type") || name.Contains("System.Reflection.Emit") || name.Contains("System.Reflection.TypeInfo"))
             {
                 return true;
@@ -567,7 +522,6 @@ namespace Alis.Core.Aspect.Fluent.Generator
         private static bool IsKnownSerializer(IMethodSymbol method)
         {
             string t = method.ContainingType?.ToDisplayString() ?? string.Empty;
-            // heurísticas para detectar uso de serializadores comunes que dependen de reflexión por defecto
             if (t.StartsWith("System.Runtime.Serialization.Formatters.Binary.BinaryFormatter", StringComparison.Ordinal))
             {
                 return true;

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:TranslationManagerTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -45,14 +18,11 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void SetLanguage_WithValidLanguage_ShouldSetCurrentLanguage()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             Lang lang = new Lang("en", "English");
 
-            // Act
             translationManager.SetLanguage(lang);
 
-            // Assert
             Assert.Equal(lang, translationManager.Lang);
         }
 
@@ -62,10 +32,8 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void SetLanguage_WithNullLanguage_ShouldThrowException()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => translationManager.SetLanguage((ILanguage) null));
         }
 
@@ -75,13 +43,10 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void SetLanguage_WithNameAndCode_ShouldSetLanguage()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
 
-            // Act
             translationManager.SetLanguage("English", "en");
 
-            // Assert
             Assert.NotNull(translationManager.Lang);
             Assert.Equal("en", translationManager.Lang.Code);
             Assert.Equal("English", translationManager.Lang.Name);
@@ -93,14 +58,11 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void AddLanguage_WithValidLanguage_ShouldAddLanguage()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             Lang lang = new Lang("es", "Spanish");
 
-            // Act
             translationManager.AddLanguage(lang);
 
-            // Assert
             Assert.Contains(lang, translationManager.GetAvailableLanguages());
         }
 
@@ -110,10 +72,8 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void AddLanguage_WithNullLanguage_ShouldThrowException()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => translationManager.AddLanguage(null));
         }
 
@@ -123,14 +83,11 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void AddTranslation_ShouldAddTranslationForCurrentLanguage()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             translationManager.SetLanguage("English", "en");
 
-            // Act
             translationManager.AddTranslation("en", "greeting", "Hello");
 
-            // Assert
             Assert.Equal("Hello", translationManager.Translate("greeting"));
         }
 
@@ -140,10 +97,8 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void Translate_WithoutLanguageSet_ShouldThrowException()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
 
-            // Act & Assert
             Assert.Throws<InvalidOperationException>(() => translationManager.Translate("greeting"));
         }
 
@@ -153,14 +108,11 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void Translate_WithDefaultValue_ShouldReturnDefaultValue()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             translationManager.SetLanguage("English", "en");
 
-            // Act
             string result = translationManager.Translate("nonexistent", "Default Value");
 
-            // Assert
             Assert.Equal("Default Value", result);
         }
 
@@ -170,11 +122,9 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void Translate_WithNonExistentKey_ShouldThrowTranslationNotFound()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             translationManager.SetLanguage("English", "en");
 
-            // Act & Assert
             Assert.Throws<TranslationNotFound>(() => translationManager.Translate("nonexistent"));
         }
 
@@ -184,16 +134,13 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void TranslatePlural_WithOne_ShouldReturnSingularForm()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             translationManager.SetLanguage("English", "en");
             translationManager.AddTranslation("en", "item[0]", "1 item");
             translationManager.AddTranslation("en", "item[1]", "{count} items");
 
-            // Act
             string result = translationManager.TranslatePlural("item", 1);
 
-            // Assert
             Assert.Equal("1 item", result);
         }
 
@@ -203,16 +150,13 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void TranslatePlural_WithMultiple_ShouldReturnPluralForm()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             translationManager.SetLanguage("English", "en");
             translationManager.AddTranslation("en", "item[0]", "1 item");
             translationManager.AddTranslation("en", "item[1]", "{count} items");
 
-            // Act
             string result = translationManager.TranslatePlural("item", 5);
 
-            // Assert
             Assert.Equal($"{5} items", result);
         }
 
@@ -222,16 +166,13 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void Translate_WithParameters_ShouldSubstituteParameters()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             translationManager.SetLanguage("English", "en");
             translationManager.AddTranslation("en", "greeting", "Hello {name}!");
             Dictionary<string, object> parameters = new Dictionary<string, object> {{"name", "John"}};
 
-            // Act
             string result = translationManager.Translate("greeting", parameters);
 
-            // Assert
             Assert.Equal("Hello John!", result);
         }
 
@@ -241,15 +182,12 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void RemoveTranslation_ShouldRemoveTranslation()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             translationManager.SetLanguage("English", "en");
             translationManager.AddTranslation("en", "greeting", "Hello");
 
-            // Act
             translationManager.RemoveTranslation("en", "greeting");
 
-            // Assert
             Assert.Throws<TranslationNotFound>(() => translationManager.Translate("greeting"));
         }
 
@@ -259,17 +197,14 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void GetAvailableLanguages_ShouldReturnAllAddedLanguages()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             Lang english = new Lang("en", "English");
             Lang spanish = new Lang("es", "Spanish");
 
-            // Act
             translationManager.AddLanguage(english);
             translationManager.AddLanguage(spanish);
             IReadOnlyList<ILanguage> languages = translationManager.GetAvailableLanguages();
 
-            // Assert
             Assert.Equal(2, languages.Count);
             Assert.Contains(english, languages);
             Assert.Contains(spanish, languages);
@@ -281,7 +216,6 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void SetFallbackLanguages_ShouldUseFallbackLanguage()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             translationManager.AddLanguage("English", "en");
             translationManager.AddLanguage("Spanish", "es");
@@ -289,10 +223,8 @@ namespace Alis.Extension.Language.Translator.Test
             translationManager.AddTranslation("en", "greeting", "Hello");
             translationManager.SetFallbackLanguages("en");
 
-            // Act
             string result = translationManager.Translate("greeting");
 
-            // Assert
             Assert.Equal("Hello", result);
         }
 
@@ -302,17 +234,14 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void ClearCache_ShouldClearCache()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             translationManager.SetLanguage("English", "en");
             translationManager.AddTranslation("en", "greeting", "Hello");
 
-            // Act
             translationManager.Translate("greeting"); // Cache the translation
             translationManager.ClearCache();
             string result = translationManager.Translate("greeting");
 
-            // Assert
             Assert.Equal("Hello", result);
         }
 
@@ -322,15 +251,12 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void Subscribe_ShouldAddObserver()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             TestTranslationObserver observer = new TestTranslationObserver();
 
-            // Act
             translationManager.Subscribe(observer);
             translationManager.SetLanguage("English", "en");
 
-            // Assert
             Assert.True(observer.LanguageChangedCalled);
         }
 
@@ -340,16 +266,13 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void Unsubscribe_ShouldRemoveObserver()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             TestTranslationObserver observer = new TestTranslationObserver();
             translationManager.Subscribe(observer);
 
-            // Act
             translationManager.Unsubscribe(observer);
             translationManager.SetLanguage("English", "en");
 
-            // Assert
             Assert.False(observer.LanguageChangedCalled);
         }
 
@@ -359,23 +282,19 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void Translate_WithObserver_ShouldNotifyWhenTranslationNotFound()
         {
-            // Arrange
             TranslationManager translationManager = new TranslationManager();
             TestTranslationObserver observer = new TestTranslationObserver();
             translationManager.Subscribe(observer);
             translationManager.SetLanguage("English", "en");
 
-            // Act
             try
             {
                 translationManager.Translate("nonexistent");
             }
             catch (TranslationNotFound)
             {
-                // Expected
             }
 
-            // Assert
             Assert.True(observer.TranslationNotFoundCalled);
         }
 

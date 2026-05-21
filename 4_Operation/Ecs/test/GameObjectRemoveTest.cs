@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameObjectRemoveTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
@@ -363,7 +336,6 @@ namespace Alis.Core.Ecs.Test
                 new Transform {X = 0, Y = 0, Rotation = 0}
             );
 
-            // Remove in different order
             entity.Remove<Transform>();
             entity.Remove<Armor>();
             entity.Remove<Velocity>();
@@ -508,7 +480,6 @@ namespace Alis.Core.Ecs.Test
             entity.Add(new AnotherComponent {Data = 1, Y = 1});
             entity.Add(new AnotherComponent2 {Name = "test"});
 
-            // Remove every other component
             entity.Remove<Velocity>();
             entity.Remove<Armor>();
             entity.Remove<Transform>();
@@ -709,16 +680,13 @@ namespace Alis.Core.Ecs.Test
                 new Health {Value = 100}
             );
 
-            // Generic remove
             entity.Remove<Velocity>();
             Assert.False(entity.Has<Velocity>());
 
-            // ComponentId remove
             entity.Add(new Velocity {X = 5, Y = 5});
             entity.Remove(Component<Velocity>.Id);
             Assert.False(entity.Has<Velocity>());
 
-            // Type remove
             entity.Remove(typeof(Health));
             Assert.False(entity.Has<Health>());
 

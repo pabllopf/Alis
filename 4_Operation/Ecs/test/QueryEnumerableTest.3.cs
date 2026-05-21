@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:QueryEnumerableTest.3.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
@@ -48,14 +21,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_CanBeCreated()
         {
-            // Arrange
             using Scene scene = new Scene();
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            // Act
             QueryEnumerator<Position, Velocity, Health>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health>();
 
-            // Assert
             Assert.NotEqual(default(QueryEnumerator<Position, Velocity, Health>.QueryEnumerable), enumerable);
         }
 
@@ -65,7 +35,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_ProvidesAccessToAll()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(
                 new Position {X = 10, Y = 20},
@@ -74,7 +43,6 @@ namespace Alis.Core.Ecs.Test
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            // Act & Assert
             foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.Enumerate<Position, Velocity, Health>())
             {
                 Assert.Equal(10, pos.Value.X);
@@ -89,20 +57,17 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_FiltersCorrectly()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1}, new Health {Value = 100});
             scene.Create(new Position {X = 2, Y = 2}, new Velocity {X = 2, Y = 2}); // Missing Health
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            // Act
             int count = 0;
             foreach (RefTuple<Position, Velocity, Health> _ in query.Enumerate<Position, Velocity, Health>())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(1, count);
         }
 
@@ -112,7 +77,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_AllowsModification()
         {
-            // Arrange
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position {X = 0, Y = 0},
@@ -121,7 +85,6 @@ namespace Alis.Core.Ecs.Test
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            // Act
             foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.Enumerate<Position, Velocity, Health>())
             {
                 Position p = pos.Value;
@@ -137,7 +100,6 @@ namespace Alis.Core.Ecs.Test
                 health.Value = h;
             }
 
-            // Assert
             Assert.Equal(100, entity.Get<Position>().X);
             Assert.Equal(50, entity.Get<Velocity>().Y);
             Assert.Equal(75, entity.Get<Health>().Value);
@@ -149,18 +111,15 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_WorksWithEmptyQuery()
         {
-            // Arrange
             using Scene scene = new Scene();
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            // Act
             int count = 0;
             foreach (RefTuple<Position, Velocity, Health> _ in query.Enumerate<Position, Velocity, Health>())
             {
                 count++;
             }
 
-            // Assert
             Assert.Equal(0, count);
         }
 
@@ -170,12 +129,10 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_ProvidesEntityAccess()
         {
-            // Arrange
             using Scene scene = new Scene();
             scene.Create(new Position {X = 11, Y = 22}, new Velocity {X = 33, Y = 44}, new Health {Value = 55});
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
 
-            // Act
             int count = 0;
             foreach ((GameObject entity, Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health) in query.EnumerateWithEntities<Position, Velocity, Health>())
             {
@@ -186,7 +143,6 @@ namespace Alis.Core.Ecs.Test
                 count++;
             }
 
-            // Assert
             Assert.Equal(1, count);
         }
 
@@ -196,7 +152,6 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void QueryEnumerable_WithThreeComponents_IsStructType()
         {
-            // Assert
             Assert.True(typeof(QueryEnumerable<Position, Velocity, Health>).IsValueType);
         }
     }

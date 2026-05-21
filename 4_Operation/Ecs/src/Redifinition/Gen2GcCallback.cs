@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Gen2GcCallback.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Runtime.ConstrainedExecution;
@@ -94,7 +67,6 @@ namespace Alis.Core.Ecs.Redifinition
         /// </summary>
         public static void Register(Func<bool> callback)
         {
-            // Create a unreachable object that remembers the callback function and target object.
             new Gen2GcCallback(callback);
         }
 
@@ -106,7 +78,6 @@ namespace Alis.Core.Ecs.Redifinition
         /// </summary>
         public static void Register(Func<object, bool> callback, object targetObj)
         {
-            // Create a unreachable object that remembers the callback function and target object.
             new Gen2GcCallback(callback, targetObj);
         }
 
@@ -116,34 +87,27 @@ namespace Alis.Core.Ecs.Redifinition
         {
             if (_weakTargetObj.IsAllocated)
             {
-                // Check to see if the target object is still alive.
                 object targetObj = _weakTargetObj.Target;
                 if (targetObj == null)
                 {
-                    // The target object is dead, so this callback object is no longer needed.
                     _weakTargetObj.Free();
                     return;
                 }
 
-                // Execute the callback method.
                 if (!_callback1(targetObj))
                 {
-                    // If the callback returns false, this callback object is no longer needed.
                     _weakTargetObj.Free();
                     return;
                 }
             }
             else
             {
-                // Execute the callback method.
                 if (!_callback0())
-                    // If the callback returns false, this callback object is no longer needed.
                 {
                     return;
                 }
             }
 
-            // Resurrect ourselves by re-registering for finalization.
             GC.ReRegisterForFinalize(this);
         }
     }

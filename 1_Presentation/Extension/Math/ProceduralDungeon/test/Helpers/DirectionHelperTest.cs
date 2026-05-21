@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:DirectionHelperTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Extension.Math.ProceduralDungeon.Helpers;
@@ -45,13 +18,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void GetOpposite_WithNorth_ReturnsSouth()
         {
-            // Arrange
             Direction direction = Direction.North;
 
-            // Act
             Direction opposite = DirectionHelper.GetOpposite(direction);
 
-            // Assert
             Assert.Equal(Direction.South, opposite);
         }
 
@@ -61,13 +31,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void GetOpposite_WithSouth_ReturnsNorth()
         {
-            // Arrange
             Direction direction = Direction.South;
 
-            // Act
             Direction opposite = DirectionHelper.GetOpposite(direction);
 
-            // Assert
             Assert.Equal(Direction.North, opposite);
         }
 
@@ -77,13 +44,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void GetOpposite_WithEast_ReturnsWest()
         {
-            // Arrange
             Direction direction = Direction.East;
 
-            // Act
             Direction opposite = DirectionHelper.GetOpposite(direction);
 
-            // Assert
             Assert.Equal(Direction.West, opposite);
         }
 
@@ -93,13 +57,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void GetOpposite_WithWest_ReturnsEast()
         {
-            // Arrange
             Direction direction = Direction.West;
 
-            // Act
             Direction opposite = DirectionHelper.GetOpposite(direction);
 
-            // Assert
             Assert.Equal(Direction.East, opposite);
         }
 
@@ -109,10 +70,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void GetOpposite_WithNone_ThrowsArgumentOutOfRangeException()
         {
-            // Arrange
             Direction direction = Direction.None;
 
-            // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => DirectionHelper.GetOpposite(direction));
         }
 
@@ -122,10 +81,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(Direction.North), InlineData(Direction.South), InlineData(Direction.East), InlineData(Direction.West)]
         public void IsValid_WithValidDirection_ReturnsTrue(Direction direction)
         {
-            // Act
             bool isValid = DirectionHelper.IsValid(direction);
 
-            // Assert
             Assert.True(isValid);
         }
 
@@ -135,13 +92,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void IsValid_WithNone_ReturnsFalse()
         {
-            // Arrange
             Direction direction = Direction.None;
 
-            // Act
             bool isValid = DirectionHelper.IsValid(direction);
 
-            // Assert
             Assert.False(isValid);
         }
 
@@ -151,13 +105,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void IsValid_WithInvalidValue_ReturnsFalse()
         {
-            // Arrange
             Direction direction = (Direction) 999;
 
-            // Act
             bool isValid = DirectionHelper.IsValid(direction);
 
-            // Assert
             Assert.False(isValid);
         }
 
@@ -167,14 +118,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void AreOpposite_WithNorthAndSouth_ReturnsTrue()
         {
-            // Arrange
             Direction first = Direction.North;
             Direction second = Direction.South;
 
-            // Act
             bool areOpposite = DirectionHelper.AreOpposite(first, second);
 
-            // Assert
             Assert.True(areOpposite);
         }
 
@@ -184,14 +132,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void AreOpposite_WithSouthAndNorth_ReturnsTrue()
         {
-            // Arrange
             Direction first = Direction.South;
             Direction second = Direction.North;
 
-            // Act
             bool areOpposite = DirectionHelper.AreOpposite(first, second);
 
-            // Assert
             Assert.True(areOpposite);
         }
 
@@ -201,14 +146,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void AreOpposite_WithEastAndWest_ReturnsTrue()
         {
-            // Arrange
             Direction first = Direction.East;
             Direction second = Direction.West;
 
-            // Act
             bool areOpposite = DirectionHelper.AreOpposite(first, second);
 
-            // Assert
             Assert.True(areOpposite);
         }
 
@@ -218,10 +160,8 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Theory, InlineData(Direction.North, Direction.East), InlineData(Direction.North, Direction.West), InlineData(Direction.South, Direction.East), InlineData(Direction.South, Direction.West)]
         public void AreOpposite_WithNonOppositeDirections_ReturnsFalse(Direction first, Direction second)
         {
-            // Act
             bool areOpposite = DirectionHelper.AreOpposite(first, second);
 
-            // Assert
             Assert.False(areOpposite);
         }
 
@@ -231,11 +171,9 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Helpers
         [Fact]
         public void AreOpposite_WithFirstNone_ThrowsArgumentOutOfRangeException()
         {
-            // Arrange
             Direction first = Direction.None;
             Direction second = Direction.North;
 
-            // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => DirectionHelper.AreOpposite(first, second));
         }
 

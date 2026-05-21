@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Scene.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -138,9 +111,6 @@ namespace Alis.Core.Ecs
         /// </value>
         public readonly ushort Id;
 
-        // -1: normal state
-        // 0: some kind of transition in End/Enter
-        // n: n systems/updates active
         /// <summary>
         ///     The allow structural changes
         /// </summary>
@@ -152,8 +122,6 @@ namespace Alis.Core.Ecs
         internal FastestStack<ArchetypeDeferredUpdateRecord> _altDeferredCreationArchetypes =
             FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
 
-        //these lookups exists for programmical api optimization
-        //normal <T1, T2...> methods use a shared global static cache
         /// <summary>
         ///     The add component lookup
         /// </summary>
@@ -200,7 +168,6 @@ namespace Alis.Core.Ecs
         /// </summary>
         public GameObjectOnlyEvent EntityDeletedEvent = new GameObjectOnlyEvent();
 
-        //entityID -> gameObject metadata
         /// <summary>
         ///     The gameObject location
         /// </summary>
@@ -236,7 +203,6 @@ namespace Alis.Core.Ecs
         /// </summary>
         public FastLookup RemoveTagLookup = new FastLookup();
 
-        //archetype ID -> Archetype?
         /// <summary>
         ///     The scene archetype table
         /// </summary>
@@ -795,20 +761,15 @@ namespace Alis.Core.Ecs
             }
             else
             {
-                // we don't need to manually set flags, they are already zeroed
                 entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
                     ref eloc, out components);
             }
 
-            //manually inlined from Scene.CreateEntityFromLocation
-            //The jit likes to inline the outer create function and not inline
-            //the inner functions - benchmarked to improve perf by 10-20%
             (int id, ushort version) =
                 entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
-            //1x array lookup per component
             ref T1 ref1 =
                 ref Unsafe.As<ComponentStorage<T1>>(
                     Unsafe.Add(ref components[0], OfComponent<T1, T2, T1>.Index))[eloc.Index];
@@ -850,10 +811,8 @@ namespace Alis.Core.Ecs
 
             EntityTable.EnsureCapacity(EntityCount + count);
 
-            // Create gameObject locations directly in a Span
             Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
 
-            // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
             {
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
@@ -862,7 +821,6 @@ namespace Alis.Core.Ecs
                 }
             }
 
-            // Return the result with calculated spans
             return new ChunkTuple<T1, T2>
             {
                 Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
@@ -892,20 +850,15 @@ namespace Alis.Core.Ecs
             }
             else
             {
-                // we don't need to manually set flags, they are already zeroed
                 entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
                     ref eloc, out components);
             }
 
-            //manually inlined from Scene.CreateEntityFromLocation
-            //The jit likes to inline the outer create function and not inline
-            //the inner functions - benchmarked to improve perf by 10-20%
             (int id, ushort version) =
                 entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
-            //1x array lookup per component
             ref T1 ref1 =
                 ref Unsafe.As<ComponentStorage<T1>>(
                     Unsafe.Add(ref components[0], OfComponent<T1, T2, T3, T1>.Index))[eloc.Index];
@@ -948,10 +901,8 @@ namespace Alis.Core.Ecs
 
             EntityTable.EnsureCapacity(EntityCount + count);
 
-            // Create gameObject locations directly in a Span
             Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
 
-            // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
             {
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
@@ -960,7 +911,6 @@ namespace Alis.Core.Ecs
                 }
             }
 
-            // Return the result with calculated spans
             return new ChunkTuple<T1, T2, T3>
             {
                 Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
@@ -990,20 +940,15 @@ namespace Alis.Core.Ecs
             }
             else
             {
-                // we don't need to manually set flags, they are already zeroed
                 entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
                     ref eloc, out components);
             }
 
-            //manually inlined from Scene.CreateEntityFromLocation
-            //The jit likes to inline the outer create function and not inline
-            //the inner functions - benchmarked to improve perf by 10-20%
             (int id, ushort version) =
                 entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
-            //1x array lookup per component
             ref T1 ref1 =
                 ref Unsafe.As<ComponentStorage<T1>>(
                     Unsafe.Add(ref components[0], OfComponent<T1, T2, T3, T4, T1>.Index))[eloc.Index];
@@ -1051,10 +996,8 @@ namespace Alis.Core.Ecs
 
             EntityTable.EnsureCapacity(EntityCount + count);
 
-            // Create gameObject locations directly in a Span
             Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
 
-            // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
             {
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
@@ -1063,7 +1006,6 @@ namespace Alis.Core.Ecs
                 }
             }
 
-            // Return the result with calculated spans
             return new ChunkTuple<T1, T2, T3, T4>
             {
                 Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
@@ -1095,20 +1037,15 @@ namespace Alis.Core.Ecs
             }
             else
             {
-                // we don't need to manually set flags, they are already zeroed
                 entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
                     ref eloc, out components);
             }
 
-            //manually inlined from Scene.CreateEntityFromLocation
-            //The jit likes to inline the outer create function and not inline
-            //the inner functions - benchmarked to improve perf by 10-20%
             (int id, ushort version) =
                 entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
-            //1x array lookup per component
             ref T1 ref1 =
                 ref Unsafe.As<ComponentStorage<T1>>(
                     Unsafe.Add(ref components[0], OfComponent<T1, T2, T3, T4, T5, T1>.Index))[eloc.Index];
@@ -1168,10 +1105,8 @@ namespace Alis.Core.Ecs
 
             EntityTable.EnsureCapacity(EntityCount + count);
 
-            // Create gameObject locations directly in a Span
             Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
 
-            // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
             {
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
@@ -1180,7 +1115,6 @@ namespace Alis.Core.Ecs
                 }
             }
 
-            // Return the result with calculated spans
             return new ChunkTuple<T1, T2, T3, T4, T5>
             {
                 Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
@@ -1213,20 +1147,15 @@ namespace Alis.Core.Ecs
             }
             else
             {
-                // we don't need to manually set flags, they are already zeroed
                 entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
                     ref eloc, out components);
             }
 
-            //manually inlined from Scene.CreateEntityFromLocation
-            //The jit likes to inline the outer create function and not inline
-            //the inner functions - benchmarked to improve perf by 10-20%
             (int id, ushort version) =
                 entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
-            //1x array lookup per component
             ref T1 ref1 =
                 ref Unsafe.As<ComponentStorage<T1>>(
                     Unsafe.Add(ref components[0], OfComponent<T1, T2, T3, T4, T5, T6, T1>.Index))[eloc.Index];
@@ -1292,10 +1221,8 @@ namespace Alis.Core.Ecs
 
             EntityTable.EnsureCapacity(EntityCount + count);
 
-            // Create gameObject locations directly in a Span
             Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
 
-            // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
             {
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
@@ -1304,7 +1231,6 @@ namespace Alis.Core.Ecs
                 }
             }
 
-            // Return the result with calculated spans
             return new ChunkTuple<T1, T2, T3, T4, T5, T6>
             {
                 Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
@@ -1339,20 +1265,15 @@ namespace Alis.Core.Ecs
             }
             else
             {
-                // we don't need to manually set flags, they are already zeroed
                 entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
                     ref eloc, out components);
             }
 
-            //manually inlined from Scene.CreateEntityFromLocation
-            //The jit likes to inline the outer create function and not inline
-            //the inner functions - benchmarked to improve perf by 10-20%
             (int id, ushort version) =
                 entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
-            //1x array lookup per component
             ref T1 ref1 =
                 ref Unsafe.As<ComponentStorage<T1>>(
                     Unsafe.Add(ref components[0], OfComponent<T1, T2, T3, T4, T5, T6, T7, T1>.Index))[eloc.Index];
@@ -1425,10 +1346,8 @@ namespace Alis.Core.Ecs
 
             EntityTable.EnsureCapacity(EntityCount + count);
 
-            // Create gameObject locations directly in a Span
             Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
 
-            // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
             {
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
@@ -1437,7 +1356,6 @@ namespace Alis.Core.Ecs
                 }
             }
 
-            // Return the result with calculated spans
             return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7>
             {
                 Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
@@ -1473,20 +1391,15 @@ namespace Alis.Core.Ecs
             }
             else
             {
-                // we don't need to manually set flags, they are already zeroed
                 entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
                     ref eloc, out components);
             }
 
-            //manually inlined from Scene.CreateEntityFromLocation
-            //The jit likes to inline the outer create function and not inline
-            //the inner functions - benchmarked to improve perf by 10-20%
             (int id, ushort version) =
                 entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
-            //1x array lookup per component
             ref T1 ref1 =
                 ref Unsafe.As<ComponentStorage<T1>>(
                     Unsafe.Add(ref components[0], OfComponent<T1, T2, T3, T4, T5, T6, T7, T8, T1>.Index))[
@@ -1573,10 +1486,8 @@ namespace Alis.Core.Ecs
 
             EntityTable.EnsureCapacity(EntityCount + count);
 
-            // Create gameObject locations directly in a Span
             Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
 
-            // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
             {
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
@@ -1585,7 +1496,6 @@ namespace Alis.Core.Ecs
                 }
             }
 
-            // Return the result with calculated spans
             return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8>
             {
                 Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
@@ -1620,20 +1530,15 @@ namespace Alis.Core.Ecs
             }
             else
             {
-                // we don't need to manually set flags, they are already zeroed
                 entity = ref archetypes.Archetype.CreateDeferredEntityLocation(this, archetypes.DeferredCreationArchetype,
                     ref eloc, out components);
             }
 
-            //manually inlined from Scene.CreateEntityFromLocation
-            //The jit likes to inline the outer create function and not inline
-            //the inner functions - benchmarked to improve perf by 10-20%
             (int id, ushort version) =
                 entity = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new GameObjectIdOnly(NextEntityId++, 0);
             eloc.Version = version;
             EntityTable[id] = eloc;
 
-            //1x array lookup per component
             ref T ref1 = ref Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref components[0], Archetype<T>.OfComponent<T>.Index))[eloc.Index];
 
             ref1 = comp;
@@ -1666,10 +1571,8 @@ namespace Alis.Core.Ecs
 
             EntityTable.EnsureCapacity(EntityCount + count);
 
-            // Create gameObject locations directly in a Span
             Span<GameObjectIdOnly> entityLocations = archetype.Archetype.CreateEntityLocations(count, this);
 
-            // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
             {
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
@@ -1678,7 +1581,6 @@ namespace Alis.Core.Ecs
                 }
             }
 
-            // Return the result with calculated spans
             return new ChunkTuple<T>
             {
                 Entities = new GameObjectEnumerator.EntityEnumerable(this, entityLocations),
@@ -1750,7 +1652,6 @@ namespace Alis.Core.Ecs
                 ComponentId componentToMove = destinationComponents[i];
                 int fromIndex = Unsafe.Add(ref fromMap[0], componentToMove.RawIndex) & GlobalWorldTables.IndexBits;
 
-                //index for dest is offset by one for hardware trap
                 i++;
 
                 if (fromIndex == 0)
@@ -1782,7 +1683,6 @@ namespace Alis.Core.Ecs
         internal void MoveEntityToArchetypeRemove(Span<ComponentHandle> componentHandles, GameObject gameObject,
             ref GameObjectLocation currentLookup, Archetype destination)
         {
-            //NOTE: when moving GameObjectLocation between archetypes, version and flags cannot change
             Archetype from = currentLookup.Archetype;
 
             destination.CreateEntityLocation(currentLookup.Flags, out GameObjectLocation nextLocation).Init(gameObject);
@@ -1831,7 +1731,6 @@ namespace Alis.Core.Ecs
                 }
             }
 
-            //copy everything but 
             ref GameObjectLocation displacedGameObjectLocation = ref EntityTable.UnsafeIndexNoResize(movedDown.ID);
             displacedGameObjectLocation.Archetype = currentLookup.Archetype;
             displacedGameObjectLocation.Index = currentLookup.Index;
@@ -1911,7 +1810,6 @@ namespace Alis.Core.Ecs
         }
 
 
-        //Delete
         /// <summary>
         ///     Deletes the gameObject using the specified gameObject
         /// </summary>
@@ -1929,7 +1827,6 @@ namespace Alis.Core.Ecs
             DeleteEntityWithoutEvents(gameObject, ref gameObjectLocation);
         }
 
-        //let the jit decide whether or not to inline
         /// <summary>
         ///     Invokes the delete events using the specified gameObject
         /// </summary>
@@ -1957,7 +1854,6 @@ namespace Alis.Core.Ecs
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void DeleteEntityWithoutEvents(GameObject gameObject, ref GameObjectLocation currentLookup)
         {
-            //gameObject is guaranteed to be alive here
             GameObjectIdOnly replacedEntity = currentLookup.Archetype.DeleteEntity(currentLookup.Index);
 
             ref GameObjectLocation replaced = ref EntityTable.UnsafeIndexNoResize(replacedEntity.ID);
@@ -1967,7 +1863,6 @@ namespace Alis.Core.Ecs
 
             if (gameObject.EntityVersion != ushort.MaxValue - 1)
             {
-                // can't use max value as an ID, as it is used as a default value
                 GameObjectIdOnly id = gameObject.EntityIdOnly;
                 id.Version++;
                 RecycledEntityIds.Push(id);

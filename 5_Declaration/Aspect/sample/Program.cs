@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Threading;
 using Alis.Core.Aspect.Logging;
@@ -46,7 +19,6 @@ namespace Alis.Core.Aspect.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            // SAMPLE ASPECT FLUENT 
             Logger.Info("--------------------------");
             Logger.Info("Fluent sample");
             Logger.Info("--------------------------\n");
@@ -60,20 +32,17 @@ namespace Alis.Core.Aspect.Sample
 
             Logger.Info($"Car: Name={sampleCar.Name} Model={sampleCar.Model} Color={sampleCar.Color}");
 
-            // SAMPLE ASPECT DATA
             Logger.Info("--------------------------");
             Logger.Info("Data sample");
             Logger.Info("--------------------------\n");
 
 
-            // SAMPLE ASPECT MATH
             Logger.Info("--------------------------");
             Logger.Info("Math sample");
             Logger.Info("--------------------------\n");
 
             Logger.Info(new Vector2F(3.0f, 2.0f).ToString());
 
-            // SAMPLE ASPECT TIME
             Logger.Info("--------------------------");
             Logger.Info("Time sample");
             Logger.Info("--------------------------\n");
@@ -87,16 +56,13 @@ namespace Alis.Core.Aspect.Sample
                 i++;
             }
 
-            // Stop the clock and print the elapsed time
             clock.Stop();
             Logger.Info($"Elapsed time: {clock.ElapsedMilliseconds} ms");
 
-            // SAMPLE ASPECT MEMORY
             Logger.Info("--------------------------");
             Logger.Info("Memory sample");
             Logger.Info("--------------------------\n");
 
-            // SAMPLE ASPECT LOGGING
             Logger.Info("--------------------------");
             Logger.Info("Logging sample");
             Logger.Info("--------------------------\n");

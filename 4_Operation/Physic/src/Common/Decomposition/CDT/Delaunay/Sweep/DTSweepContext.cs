@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:DTSweepContext.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
@@ -35,7 +8,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
     /// <seealso cref="TriangulationContext" />
     internal class DtSweepContext : TriangulationContext
     {
-        // Inital triangle factor, seed triangle will extend 30% of 
         /// <summary>
         ///     The alpha
         /// </summary>
@@ -88,14 +60,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             Triangles.Remove(triangle);
 
-            //        for( int i=0; i<3; i++ )
-            //        {
-            //            if( triangle.neighbors[i] != null )
-            //            {
-            //                triangle.neighbors[i].clearNeighbor( triangle );
-            //            }
-            //        }
-            //        triangle.clearNeighbors();
         }
 
         /// <summary>
@@ -142,8 +106,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="node">The node</param>
         public void AddNode(AdvancingFrontNode node)
         {
-            //       Logger.Info( "add:" + node.key + ":" + System.identityHashCode(node.key));
-            //        m_nodeTree.put( node.getKey(), node );
             AFront.AddNode(node);
         }
 
@@ -153,8 +115,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="node">The node</param>
         public void RemoveNode(AdvancingFrontNode node)
         {
-            //       Logger.Info( "remove:" + node.key + ":" + System.identityHashCode(node.key));
-            //        m_nodeTree.delete( node.getKey() );
             AFront.RemoveNode(node);
         }
 
@@ -171,7 +131,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         public void CreateAdvancingFront()
         {
             AdvancingFrontNode head, tail, middle;
-            // Initial triangle
             DelaunayTriangle iTriangle = new DelaunayTriangle(Points[0], Tail, Head);
             Triangles.Add(iTriangle);
 
@@ -185,7 +144,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             AFront.AddNode(middle);
 
 
-            //       so swap head and tail
             AFront.Head.Next = middle;
             middle.Next = AFront.Tail;
             middle.Prev = AFront.Head;
@@ -226,7 +184,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             xmax = xmin = Points[0].X;
             ymax = ymin = Points[0].Y;
 
-            // Calculate bounds. Should be combined with the sorting
             foreach (TriangulationPoint p in Points)
             {
                 if (p.X > xmax)
@@ -258,10 +215,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             Head = p1;
             Tail = p2;
 
-            //        long time = System.nanoTime();
-            // Sort the points along y-axis
             Points.Sort(_comparator);
-            //        logger.info( "Triangulation setup [{}ms]", ( System.nanoTime() - time ) / 1e6 );
         }
 
 

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MacWindow.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 #if osxarm64 || osxarm || osxx64 || osx
 using System;
@@ -116,7 +89,6 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         {
             Width = width;
             Height = height;
-            // Cambiar tamaño de la ventana
             ObjectiveCInterop.objc_msgSend_void_IntPtr(Handle, ObjectiveCInterop.Sel("setContentSize:"), Marshal.AllocHGlobal(sizeof(double) * 2));
         }
 
@@ -126,7 +98,6 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <returns>The bool</returns>
         public bool IsVisible() => ObjectiveCInterop.objc_msgSend(Handle, ObjectiveCInterop.Sel("isVisible")) != IntPtr.Zero;
 
-        // csharp
         /// <summary>
         ///     Gets the frame
         /// </summary>
@@ -135,7 +106,6 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         {
             IntPtr framePtr = ObjectiveCInterop.objc_msgSend(Handle, ObjectiveCInterop.Sel("frame"));
 
-            // Leer cuatro doubles (8 bytes cada uno) desde la estructura nativa (x, y, width, height)
             long v0 = Marshal.ReadInt64(framePtr, 0);
             long v1 = Marshal.ReadInt64(framePtr, 8);
             long v2 = Marshal.ReadInt64(framePtr, 16);

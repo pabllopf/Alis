@@ -1,47 +1,10 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:PulleyJoint.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // Pulley:
-    // length1 = norm(p1 - s1)
-    // length2 = norm(p2 - s2)
-    // C0 = (length1 + ratio * length2)_initial
-    // C = C0 - (length1 + ratio * length2)
-    // u1 = (p1 - s1) / norm(p1 - s1)
-    // u2 = (p2 - s2) / norm(p2 - s2)
-    // Cdot = -dot(u1, v1 + cross(w1, r1)) - ratio * dot(u2, v2 + cross(w2, r2))
-    // J = -[u1 cross(r1, u1) ratio * u2  ratio * cross(r2, u2)]
-    // K = J * invM * JT
     //   = invMass1 + invI1 * cross(r1, u1)^2 + ratio^2 * (invMass2 + invI2 * cross(r2, u2)^2)
 
     /// <summary>
@@ -243,7 +206,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <value></value>
         public float Ratio { get; set; }
 
-        //FPE note: Only used for serialization.
         /// <summary>
         ///     Gets or sets the value of the constant
         /// </summary>
@@ -298,7 +260,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             _rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
 
-            // Get the pulley axes.
             _uA = cA + _rA - WorldAnchorA;
             _uB = cB + _rB - WorldAnchorB;
 
@@ -323,7 +284,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _uB = Vector2F.Zero;
             }
 
-            // Compute effective mass.
             float ruA = MathUtils.Cross(ref _rA, ref _uA);
             float ruB = MathUtils.Cross(ref _rB, ref _uB);
 
@@ -339,10 +299,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.Step.WarmStarting)
             {
-                // Scale impulses to support variable time steps.
                 _impulse *= data.Step.DtRatio;
 
-                // Warm starting.
                 Vector2F pa = -_impulse * _uA;
                 Vector2F pb = -Ratio * _impulse * _uB;
 
@@ -411,7 +369,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2F rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             Vector2F rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
 
-            // Get the pulley axes.
             Vector2F uA = cA + rA - WorldAnchorA;
             Vector2F uB = cB + rB - WorldAnchorB;
 
@@ -436,7 +393,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 uB = Vector2F.Zero;
             }
 
-            // Compute effective mass.
             float ruA = MathUtils.Cross(ref rA, ref uA);
             float ruB = MathUtils.Cross(ref rB, ref uB);
 

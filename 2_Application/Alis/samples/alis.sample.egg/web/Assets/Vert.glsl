@@ -5,7 +5,6 @@ layout(location = 1) in highp vec3 in_rgb;
 
 out highp vec3 color;
 
-// GLSL uses the reverse order to a System.Numerics.Matrix3x2
 uniform mat2x3 viewprojection;
 
 void main()

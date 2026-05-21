@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WebSocketImplementation.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.IO;
@@ -208,7 +181,6 @@ namespace Alis.Extension.Network.Internal
         {
             try
             {
-                // allow this operation to be cancelled from inside OR outside this instance
                 using CancellationTokenSource linkedCts =
                     CancellationTokenSource.CreateLinkedTokenSource(InternalReadCts.Token, cancellationToken);
                 WebSocketFrame frame = await ReadWebSocketFrame(buffer, linkedCts.Token);
@@ -516,7 +488,6 @@ namespace Alis.Extension.Network.Internal
                 Events.Log.InvalidStateBeforeCloseOutput(Guid, StateInternal);
             }
 
-            // cancel pending reads
             InternalReadCts.Cancel();
         }
 
@@ -539,19 +510,16 @@ namespace Alis.Extension.Network.Internal
                     }
                     catch (OperationCanceledException)
                     {
-                        // log don't throw
                         Events.Log.WebSocketDisposeCloseTimeout(Guid, StateInternal);
                     }
                 }
 
-                // cancel pending reads - usually does nothing
                 InternalReadCts.Cancel();
                 Stream.Close();
                 InternalReadCts.Dispose();
             }
             catch (Exception ex)
             {
-                // log dont throw
                 Events.Log.WebSocketDisposeError(Guid, StateInternal, ex.ToString());
             }
         }
@@ -649,14 +617,11 @@ namespace Alis.Extension.Network.Internal
 
             if (StateInternal == WebSocketState.CloseSent)
             {
-                // this is a response to close handshake initiated by this instance
                 StateInternal = WebSocketState.Closed;
                 Events.Log.CloseHandshakeComplete(Guid);
             }
             else if (StateInternal == WebSocketState.Open)
             {
-                // do not echo the close payload back to the client, there is no requirement for it in the spec. 
-                // However, the same CloseStatus as recieved should be sent back.
                 ArraySegment<byte> closePayload = new ArraySegment<byte>(new byte[0], 0, 0);
                 StateInternal = WebSocketState.CloseReceived;
                 Events.Log.CloseHandshakeRespond(Guid, frame.CloseStatus, frame.CloseStatusDescription);
@@ -683,9 +648,6 @@ namespace Alis.Extension.Network.Internal
         /// </summary>
         internal ArraySegment<byte> GetBuffer(MemoryStream stream)
         {
-            // Avoid calling ToArray on the MemoryStream because it allocates a new byte array on tha heap
-            // We avaoid this by attempting to access the internal memory stream buffer
-            // This works with supported streams like the recyclable memory stream and writable memory streams
             if (!stream.TryGetBuffer(out ArraySegment<byte> buffer))
             {
                 if (!TryGetBufferFailureLogged)
@@ -694,7 +656,6 @@ namespace Alis.Extension.Network.Internal
                     TryGetBufferFailureLogged = true;
                 }
 
-                // internal buffer not suppoted, fall back to ToArray()
                 byte[] array = stream.ToArray();
                 buffer = new ArraySegment<byte>(array, 0, array.Length);
             }
@@ -761,7 +722,6 @@ namespace Alis.Extension.Network.Internal
 
             try
             {
-                // we may not want to send sensitive information to the client / server
                 if (IncludeExceptionInCloseResponse)
                 {
                     statusDescription = statusDescription + "\r\n\r\n" + ex;
@@ -772,13 +732,11 @@ namespace Alis.Extension.Network.Internal
             }
             catch (OperationCanceledException)
             {
-                // do not throw an exception because that will mask the original exception
                 Events.Log.CloseOutputAutoTimeoutCancelled(Guid, (int) timeSpan.TotalSeconds, closeStatus,
                     statusDescription, ex.ToString());
             }
             catch (Exception closeException)
             {
-                // do not throw an exception because that will mask the original exception
                 Events.Log.CloseOutputAutoTimeoutError(Guid, closeException.ToString(), closeStatus, statusDescription,
                     ex.ToString());
             }

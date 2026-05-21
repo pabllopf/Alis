@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ImguiSample.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -128,11 +101,9 @@ namespace Alis.App.Installer
         /// </summary>
         public void Initialize()
         {
-            // Ensure the native GL context is current before creating GL resources.
             Debug.Assert(_platform != null, "Platform must be provided before Initialize is called.");
             _platform?.MakeContextCurrent();
 
-            // Create or reuse ImGui context
             IntPtr currentCtx = ImGui.GetCurrentContext();
             if (currentCtx == IntPtr.Zero)
             {
@@ -148,19 +119,16 @@ namespace Alis.App.Installer
             ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO must be valid after creating or setting context.");
 
-            // Backend capabilities
             io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors | ImGuiBackendFlags.HasSetMousePos;
             io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
             ImGui.StyleColorsDark();
 
-            // Build and upload font atlas to GL
             ImFontAtlasPtr fonts = io.Fonts;
             fonts.GetTexDataAsRgba32(out IntPtr pixelPtr, out int widthPtr, out int heightPtr);
 
             if ((pixelPtr != IntPtr.Zero) && (widthPtr > 0) && (heightPtr > 0))
             {
                 Debug.Assert(_platform != null, "Platform required to upload font texture.");
-                // Ensure context is current (best-effort). MakeContextCurrent is void; assume host handles errors.
                 _platform.MakeContextCurrent();
 
                 _fontTexture = Gl.GenTexture();
@@ -179,11 +147,9 @@ namespace Alis.App.Installer
                     Logger.Info($"GL error after TexImage2D: 0x{errPtr:X}");
                 }
 
-                // Inform ImGui about the texture id
                 fonts.SetTexId((IntPtr) _fontTexture);
             }
 
-            // Create simple shader program
             const string vertexShaderSource = "#version 330 core\n" +
                                               "layout (location = 0) in vec2 Position;\n" +
                                               "layout (location = 1) in vec2 UV;\n" +
@@ -228,7 +194,6 @@ namespace Alis.App.Installer
             Gl.GlDeleteShader(vert);
             Gl.GlDeleteShader(frag);
 
-            // Create VAO/VBO/EBO and configure vertex attributes
             _vao = Gl.GenVertexArray();
             _vbo = Gl.GenBuffer();
             _ebo = Gl.GenBuffer();
@@ -257,10 +222,8 @@ namespace Alis.App.Installer
         {
             ImGuiIoPtr io = ImGui.GetIo();
 
-            // Update display size each frame (handles window resize)
             io.DisplaySize = new Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
 
-            // Feed mouse state from platform using guarded checks (no try/catch)
             if (_platform != null)
             {
                 _platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
@@ -272,28 +235,23 @@ namespace Alis.App.Installer
                     mouseDownList.Add(i < mButtons.Length ? mButtons[i] : false);
                 }
 
-                // We'll compute MouseClicked / MouseDoubleClicked / MouseClickedTime / MouseClickedCount below
-                // Prepare default click-related lists (cleared each frame)
                 List<bool> mouseClicked = new List<bool> {false, false, false, false, false};
                 List<bool> mouseDoubleClicked = new List<bool> {false, false, false, false, false};
                 List<double> mouseClickedTime = new List<double> {0, 0, 0, 0, 0};
                 List<ushort> mouseClickedCount = new List<ushort> {0, 0, 0, 0, 0};
 
-                // Detect transitions and fill click info
                 double now = (double) Stopwatch.GetTimestamp() / Stopwatch.Frequency;
                 for (int i = 0; i < 5; i++)
                 {
                     bool down = i < mButtons.Length ? mButtons[i] : false;
                     bool prev = _prevMouseDown[i];
 
-                    // On press (was up, now down) -> register click
                     if (down && !prev)
                     {
                         mouseClicked[i] = true;
                         mouseClickedTime[i] = now;
                         mouseClickedCount[i] = (ushort) (mouseClickedCount[i] + 1);
 
-                        // Double click detection: compare with last click time and position
                         double dt = now - _lastClickTime[i];
                         float maxDist = io.MouseDoubleClickMaxDist;
                         float dx = io.MousePos.X - _lastClickPos[i].X;
@@ -302,20 +260,16 @@ namespace Alis.App.Installer
                         if ((dt <= io.MouseDoubleClickTime) && (dist2 <= maxDist * maxDist))
                         {
                             mouseDoubleClicked[i] = true;
-                            // Mark clicked count as a double-click (2)
                             mouseClickedCount[i] = 2;
                         }
 
-                        // Update last click info
                         _lastClickTime[i] = now;
                         _lastClickPos[i] = io.MousePos;
                     }
 
-                    // Update prev state for next frame
                     _prevMouseDown[i] = down;
                 }
 
-                // Finally set mouse down and click lists into io
                 io.MouseDown = mouseDownList;
                 io.MouseClicked = mouseClicked;
                 io.MouseClickedTime = mouseClickedTime;
@@ -325,7 +279,6 @@ namespace Alis.App.Installer
             }
             else
             {
-                // No platform: ensure sane defaults
                 io.MousePos = new Vector2F(0, 0);
                 io.MouseDown = new List<bool> {false, false, false, false, false};
                 io.MouseWheel = 0.0f;
@@ -333,7 +286,6 @@ namespace Alis.App.Installer
 
             ImGui.NewFrame();
 
-            // Only call DockSpaceOverViewport if docking is enabled in ImGui config flags
             if ((io.ConfigFlags & ImGuiConfigFlags.DockingEnable) != 0)
             {
                 ImGui.DockSpaceOverViewport();
@@ -361,7 +313,6 @@ namespace Alis.App.Installer
             ImDrawData drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
 
-            // No exception-handling here; platform may reset wheel internally if needed.
         }
 
         /// <summary>
@@ -455,7 +406,6 @@ namespace Alis.App.Installer
                     ImDrawCmd pcmd = cmdList.CmdBuffer[cmdi];
                     if (pcmd.UserCallback != IntPtr.Zero)
                     {
-                        // User callbacks are not handled in this sample
                     }
                     else
                     {

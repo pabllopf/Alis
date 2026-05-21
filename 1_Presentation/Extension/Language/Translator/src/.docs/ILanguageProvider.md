@@ -40,7 +40,6 @@ Determines whether a language with the specified code exists.
 ```csharp
 if (provider.LanguageExists("en"))
 {
-    // Language exists
 }
 ```
 

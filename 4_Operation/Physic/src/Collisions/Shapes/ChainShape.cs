@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ChainShape.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -100,7 +73,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
 
             for (int i = 1; i < vertices.Count; ++i)
             {
-                // If the code crashes here, it means your vertices are too close together.
             }
 
             Vertices = new Vertices(vertices);
@@ -117,7 +89,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
         ///     Gets the value of the child count
         /// </summary>
         public override int ChildCount =>
-            // edge count = vertex count - 1
             Vertices.Count - 1;
 
         /// <summary>
@@ -253,7 +224,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// </summary>
         protected override void ComputeProperties()
         {
-            //Does nothing. Chain shapes don't have properties.
         }
 
         /// <summary>

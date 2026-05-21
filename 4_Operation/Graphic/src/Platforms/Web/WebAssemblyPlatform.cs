@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:WebAssemblyPlatform.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -43,7 +16,6 @@ namespace Alis.Core.Graphic.Platforms.Web
     [ExcludeFromCodeCoverage]
     public class WebAssemblyPlatform : INativePlatform
     {
-        // Window and rendering state
         /// <summary>
         /// The window width
         /// </summary>
@@ -62,7 +34,6 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private bool _windowShouldClose;
 
-        // EGL context state
         /// <summary>
         /// The zero
         /// </summary>
@@ -78,7 +49,6 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The zero
         /// </summary>
-        // Input state
         /// <summary>
         /// The key states
         /// </summary>
@@ -276,7 +246,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
-                // Graceful fallback if JavaScript interop is not available
             }
         }
 
@@ -296,7 +265,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
-                // Graceful fallback if JavaScript interop is not available
             }
         }
 
@@ -314,7 +282,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
-                // Graceful fallback if JavaScript interop is not available
             }
         }
 
@@ -333,7 +300,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
-                // Graceful fallback if JavaScript interop is not available
             }
         }
 
@@ -373,7 +339,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
-                // Invalid character code
             }
         }
 
@@ -475,7 +440,6 @@ namespace Alis.Core.Graphic.Platforms.Web
         {
             return keyCode switch
             {
-                // Alphabet keys
                 65 => ConsoleKey.A, 66 => ConsoleKey.B, 67 => ConsoleKey.C, 68 => ConsoleKey.D,
                 69 => ConsoleKey.E, 70 => ConsoleKey.F, 71 => ConsoleKey.G, 72 => ConsoleKey.H,
                 73 => ConsoleKey.I, 74 => ConsoleKey.J, 75 => ConsoleKey.K, 76 => ConsoleKey.L,
@@ -484,32 +448,25 @@ namespace Alis.Core.Graphic.Platforms.Web
                 85 => ConsoleKey.U, 86 => ConsoleKey.V, 87 => ConsoleKey.W, 88 => ConsoleKey.X,
                 89 => ConsoleKey.Y, 90 => ConsoleKey.Z,
 
-                // Number keys (top row)
                 48 => ConsoleKey.D0, 49 => ConsoleKey.D1, 50 => ConsoleKey.D2, 51 => ConsoleKey.D3,
                 52 => ConsoleKey.D4, 53 => ConsoleKey.D5, 54 => ConsoleKey.D6, 55 => ConsoleKey.D7,
                 56 => ConsoleKey.D8, 57 => ConsoleKey.D9,
 
-                // Special keys
                 13 => ConsoleKey.Enter, 9 => ConsoleKey.Tab, 32 => ConsoleKey.Spacebar,
                 8 => ConsoleKey.Backspace, 27 => ConsoleKey.Escape, 46 => ConsoleKey.Delete,
 
-                // Arrow keys
                 37 => ConsoleKey.LeftArrow, 38 => ConsoleKey.UpArrow,
                 39 => ConsoleKey.RightArrow, 40 => ConsoleKey.DownArrow,
 
-                // Function keys
                 112 => ConsoleKey.F1, 113 => ConsoleKey.F2, 114 => ConsoleKey.F3, 115 => ConsoleKey.F4,
                 116 => ConsoleKey.F5, 117 => ConsoleKey.F6, 118 => ConsoleKey.F7, 119 => ConsoleKey.F8,
                 120 => ConsoleKey.F9, 121 => ConsoleKey.F10, 122 => ConsoleKey.F11, 123 => ConsoleKey.F12,
 
-                // Modifier keys
                 16 => ConsoleKey.LeftArrow, 17 => ConsoleKey.Escape,
 
-                // Other keys
                 36 => ConsoleKey.Home, 35 => ConsoleKey.End, 33 => ConsoleKey.PageUp, 34 => ConsoleKey.PageDown,
                 45 => ConsoleKey.Insert, 19 => ConsoleKey.Pause,
 
-                // Numpad
                 96 => ConsoleKey.NumPad0, 97 => ConsoleKey.NumPad1, 98 => ConsoleKey.NumPad2,
                 99 => ConsoleKey.NumPad3, 100 => ConsoleKey.NumPad4, 101 => ConsoleKey.NumPad5,
                 102 => ConsoleKey.NumPad6, 103 => ConsoleKey.NumPad7, 104 => ConsoleKey.NumPad8,
@@ -540,7 +497,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
-                // Graceful fallback if gamepad API is not available
             }
         }
 
@@ -757,15 +713,12 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="iconPath">The icon path</param>
         public void SetWindowIcon(string iconPath)
         {
-            // WebAssembly context typically doesn't support traditional file system access
-            // This can be implemented using data URIs or web-based resources
             try
             {
                 EmscriptenWeb.SetWindowIcon(iconPath);
             }
             catch
             {
-                // Icon setting not available in WebAssembly context
             }
         }
 
@@ -842,8 +795,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             winY = GetWindowPositionY();
             winW = _windowWidth;
             winH = _windowHeight;
-            
-            // In WebAssembly, framebuffer size may differ from window size based on device pixel ratio
             float devicePixelRatio = EmscriptenWeb.GetDevicePixelRatio();
             fbW = (int)(_windowWidth * devicePixelRatio);
             fbH = (int)(_windowHeight * devicePixelRatio);
@@ -884,7 +835,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             return connectedIndices.ToArray();
         }
 
-        // Delegates for JavaScript callbacks
         /// <summary>
         /// The key event delegate
         /// </summary>

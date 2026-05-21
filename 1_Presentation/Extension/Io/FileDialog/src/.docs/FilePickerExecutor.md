@@ -129,7 +129,6 @@ These methods are used internally by platform-specific implementations:
 
 ### Windows Implementation
 ```csharp
-// Executes PowerShell for Windows dialogs
 string output = FilePickerExecutor.ExecuteCommand(
     "powershell",
     "-NoProfile -NonInteractive -Command \"...script...\""
@@ -138,7 +137,6 @@ string output = FilePickerExecutor.ExecuteCommand(
 
 ### macOS Implementation
 ```csharp
-// Executes osascript for macOS dialogs
 string output = FilePickerExecutor.ExecuteCommand(
     "osascript",
     "/path/to/script.applescript"
@@ -147,7 +145,6 @@ string output = FilePickerExecutor.ExecuteCommand(
 
 ### Linux Implementation
 ```csharp
-// Executes zenity for Linux dialogs (with kdialog fallback)
 if (FilePickerExecutor.CommandExists("zenity"))
 {
     string output = FilePickerExecutor.ExecuteCommand(
@@ -231,7 +228,6 @@ public class SystemChecker
 ```csharp
 try
 {
-    // Short timeout for testing
     string output = FilePickerExecutor.ExecuteCommand(
         "sleep",  // On Unix
         "10",     // Sleep 10 seconds
@@ -251,7 +247,6 @@ public class CustomFilePicker
 {
     public FilePickerResult SelectFile(string dialogScript)
     {
-        // Check if required tool exists
         if (!FilePickerExecutor.CommandExists("zenity"))
         {
             Logger.Error("zenity is not installed");
@@ -261,13 +256,11 @@ public class CustomFilePicker
         
         try
         {
-            // Write script to temporary file
             string scriptFile = Path.GetTempFileName();
             File.WriteAllText(scriptFile, dialogScript);
             
             try
             {
-                // Execute the script
                 string output = FilePickerExecutor.ExecuteCommand(
                     "zenity",
                     $"--file-selection",
@@ -283,7 +276,6 @@ public class CustomFilePicker
             }
             finally
             {
-                // Clean up temp file
                 try { File.Delete(scriptFile); }
                 catch { /* ignore cleanup errors */ }
             }
@@ -305,7 +297,6 @@ public class CustomFilePicker
    ```csharp
    if (FilePickerExecutor.CommandExists("zenity"))
    {
-       // Safe to execute
    }
    ```
 
@@ -323,7 +314,6 @@ public class CustomFilePicker
 
 3. **Set reasonable timeouts:**
    ```csharp
-   // 30 seconds is good for user interaction
    const int dialogTimeoutMs = 30000;
    ```
 
@@ -332,7 +322,6 @@ public class CustomFilePicker
    string output = FilePickerExecutor.ExecuteCommand(...);
    if (string.IsNullOrWhiteSpace(output))
    {
-       // User cancelled or no selection
    }
    ```
 

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:AudioReader.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Globalization;
@@ -145,7 +118,6 @@ namespace Alis.Extension.Media.FFmpeg.Audio
 
                         if (metadata.BitDepth == 0)
                         {
-                            // try to parse it from format
                             if (metadata.SampleFormat.Contains("64"))
                             {
                                 metadata.BitDepth = 64;
@@ -171,7 +143,6 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 }
                 catch (Exception ex)
                 {
-                    // failed to interpret video stream settings
                     if (!ignoreStreamErrors)
                     {
                         throw new InvalidDataException("Failed to parse audio stream data! " + ex.Message);
@@ -208,7 +179,6 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 throw new InvalidOperationException("Please load the audio metadata first!");
             }
 
-            // we will be reading audio in S16LE format (for best accuracy, could use S32LE)
             DataStream = FfMpegWrapper.OpenOutput(ffmpeg, $"-i \"{Filename}\" -f s{bitDepth}le -");
             loadedBitDepth = bitDepth;
             OpenedForReading = true;

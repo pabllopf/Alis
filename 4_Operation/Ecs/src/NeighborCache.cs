@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:NeighborCache.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Runtime.CompilerServices;
@@ -71,8 +44,6 @@ namespace Alis.Core.Ecs
                 : MemoryHelpers.Remove(components, id);
     }
 
-    // ---------------------------------------------------------------------------
-    // Static component-ID arrays (one per arity) – no generic-type static warning
     // ---------------------------------------------------------------------------
 
     /// <summary>
@@ -167,10 +138,6 @@ namespace Alis.Core.Ecs
     }
 
     // ---------------------------------------------------------------------------
-    // Top-level Add / Remove cache holders (one per arity).
-    // Explicit generic classes avoid the "Static field in generic type" warning
-    // because each instantiation is intentionally a separate cache entry.
-    // ---------------------------------------------------------------------------
 
 
     /// <summary>Add-edge neighbor cache for arity 1.</summary>
@@ -180,7 +147,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -192,7 +158,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -204,7 +169,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -216,7 +180,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -228,7 +191,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -240,7 +202,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -252,7 +213,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -264,7 +224,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -276,7 +235,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -288,7 +246,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -300,7 +257,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -312,7 +268,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -324,7 +279,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -336,7 +290,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -348,7 +301,6 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
@@ -360,13 +312,10 @@ namespace Alis.Core.Ecs
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        // ReSharper disable once StaticMemberInGenericType
         internal static ArchetypeNeighborCache Lookup;
 #pragma warning restore CA1000
     }
 
-    // ---------------------------------------------------------------------------
-    // IArchetypeGraphEdge implementations (lean structs – no nested classes)
     // ---------------------------------------------------------------------------
 
     /// <summary>The neighbor cache (arity 8).</summary>

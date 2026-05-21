@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:DynamicTreeBroadPhase.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -261,10 +234,8 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="callback">The callback to invoke for each detected pair.</param>
         public void UpdatePairs(BroadphaseDelegate callback)
         {
-            // Reset pair buffer
             _pairCount = 0;
 
-            // Perform tree queries for all moving proxies.
             for (int j = 0; j < _moveCount; ++j)
             {
                 _queryProxyId = _moveBuffer[j];
@@ -273,21 +244,15 @@ namespace Alis.Core.Physic.Collisions
                     continue;
                 }
 
-                // We have to query the tree with the fat AABB so that
-                // we don't fail to create a pair that may touch later.
                 Aabb fatAabb = _tree.GetFatAabb(_queryProxyId);
 
-                // Query tree, create pairs and add them pair buffer.
                 _tree.Query(_queryCallbackCache, ref fatAabb);
             }
 
-            // Reset move buffer
             _moveCount = 0;
 
-            // Sort the pair buffer to expose duplicates.
             Array.Sort(_pairBuffer, 0, _pairCount);
 
-            // Send the pairs back to the client.
             int i = 0;
             if (_pairCount <= 0)
             {
@@ -301,7 +266,6 @@ namespace Alis.Core.Physic.Collisions
                 callback(primaryPair.ProxyIdA, primaryPair.ProxyIdB);
                 ++i;
 
-                // Skip any duplicate pairs.
                 while (i < _pairCount)
                 {
                     Pair pair = _pairBuffer[i];
@@ -400,13 +364,11 @@ namespace Alis.Core.Physic.Collisions
         /// </remarks>
         private bool QueryCallback(int proxyId)
         {
-            // A proxy cannot form a pair with itself.
             if (proxyId == _queryProxyId)
             {
                 return true;
             }
 
-            // Grow the pair buffer as needed.
             if (_pairCount == _pairCapacity)
             {
                 Pair[] oldBuffer = _pairBuffer;

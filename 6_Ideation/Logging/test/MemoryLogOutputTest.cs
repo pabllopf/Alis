@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MemoryLogOutputTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -48,10 +21,8 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void MemoryLogOutput_Constructor_DefaultMaxEntries()
         {
-            // Act
             MemoryLogOutput output = new MemoryLogOutput();
 
-            // Assert
             Assert.Equal(0, output.Count);
         }
 
@@ -61,14 +32,11 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void MemoryLogOutput_Write_ShouldStoreEntry()
         {
-            // Arrange
             MemoryLogOutput output = new MemoryLogOutput();
             LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
-            // Act
             output.Write(entry);
 
-            // Assert
             Assert.Single(output.GetEntries());
             Assert.Equal("Test", output.GetEntries()[0].Message);
         }
@@ -79,16 +47,13 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void MemoryLogOutput_MultipleWrites_ShouldStoreAll()
         {
-            // Arrange
             MemoryLogOutput output = new MemoryLogOutput();
 
-            // Act
             for (int i = 0; i < 100; i++)
             {
                 output.Write(new LogEntry(LogLevel.Info, $"Message {i}", "Logger"));
             }
 
-            // Assert
             Assert.Equal(100, output.Count);
         }
 
@@ -98,18 +63,14 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void MemoryLogOutput_MaxEntries_ShouldEnforceLimit()
         {
-            // Arrange
             MemoryLogOutput output = new MemoryLogOutput(10);
 
-            // Act
             for (int i = 0; i < 20; i++)
             {
                 output.Write(new LogEntry(LogLevel.Info, $"Message {i}", "Logger"));
             }
 
-            // Assert
             Assert.Equal(10, output.Count);
-            // Oldest entries should be removed, keeping the last 10
             IReadOnlyList<ILogEntry> entries = output.GetEntries();
             Assert.Equal("Message 10", entries[0].Message);
             Assert.Equal("Message 19", entries[9].Message);
@@ -121,16 +82,13 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void MemoryLogOutput_UnlimitedMaxEntries_ShouldAllowAny()
         {
-            // Arrange
             MemoryLogOutput output = new MemoryLogOutput(0);
 
-            // Act
             for (int i = 0; i < 1000; i++)
             {
                 output.Write(new LogEntry(LogLevel.Info, $"Message {i}", "Logger"));
             }
 
-            // Assert
             Assert.Equal(1000, output.Count);
         }
 
@@ -140,16 +98,13 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void MemoryLogOutput_GetEntries_ShouldReturnSnapshot()
         {
-            // Arrange
             MemoryLogOutput output = new MemoryLogOutput();
             output.Write(new LogEntry(LogLevel.Info, "Message 1", "Logger"));
             IReadOnlyList<ILogEntry> entries1 = output.GetEntries();
 
-            // Act
             output.Write(new LogEntry(LogLevel.Info, "Message 2", "Logger"));
             IReadOnlyList<ILogEntry> entries2 = output.GetEntries();
 
-            // Assert
             Assert.Single(entries1);
             Assert.Equal(2, entries2.Count);
         }
@@ -160,16 +115,13 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void MemoryLogOutput_Clear_ShouldRemoveAllEntries()
         {
-            // Arrange
             MemoryLogOutput output = new MemoryLogOutput();
             output.Write(new LogEntry(LogLevel.Info, "Message 1", "Logger"));
             output.Write(new LogEntry(LogLevel.Info, "Message 2", "Logger"));
             Assert.Equal(2, output.Count);
 
-            // Act
             output.Clear();
 
-            // Assert
             Assert.Equal(0, output.Count);
         }
 
@@ -179,13 +131,10 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void MemoryLogOutput_NullEntry_ShouldNotStore()
         {
-            // Arrange
             MemoryLogOutput output = new MemoryLogOutput();
 
-            // Act
             output.Write(null);
 
-            // Assert
             Assert.Equal(0, output.Count);
         }
 
@@ -195,11 +144,9 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void MemoryLogOutput_DisabledOutput_ShouldNotStore()
         {
-            // Arrange
             MemoryLogOutput output = new MemoryLogOutput();
             output.IsEnabled = false;
 
-            // Act
             output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
 
             // Assert

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ContactSolver.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Concurrent;
@@ -124,7 +97,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             _velocityConstraintsMultithreadThreshold = velocityConstraintsMultithreadThreshold;
             _positionConstraintsMultithreadThreshold = positionConstraintsMultithreadThreshold;
 
-            // grow the array
             if (VelocityConstraints == null || VelocityConstraints.Length < count)
             {
                 int newBufferCount = Math.Max(count, 32);
@@ -141,7 +113,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 }
             }
 
-            // Initialize position independent portions of the constraints.
             for (int i = 0; i < Count; ++i)
             {
                 Contact contact = contacts[i];
@@ -282,7 +253,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     vcp.TangentMass = kTangent > 0.0f ? 1.0f / kTangent : 0.0f;
 
-                    // Setup a velocity bias for restitution.
                     vcp.VelocityBias = 0.0f;
                     float vRel = Vector2F.Dot(vc.Normal, vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra));
                     if (vRel < -SettingEnv.VelocityThreshold)
@@ -291,7 +261,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     }
                 }
 
-                // If we have two points, then prepare the block solver.
                 if (vc.PointCount == 2)
                 {
                     VelocityConstraintPoint vcp1 = vc.Points[0];
@@ -306,11 +275,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     float k22 = mA + mB + iA * rn2A * rn2A + iB * rn2B * rn2B;
                     float k12 = mA + mB + iA * rn1A * rn2A + iB * rn1B * rn2B;
 
-                    // Ensure a reasonable condition number.
                     const float kMaxConditionNumber = 1000.0f;
                     if (k11 * k11 < kMaxConditionNumber * (k11 * k22 - k12 * k12))
                     {
-                        // K is safe to invert.
                         vc.K.Ex = new Vector2F(k11, k12);
                         vc.K.Ey = new Vector2F(k12, k22);
                         vc.NormalMass = vc.K.Inverse;
@@ -330,7 +297,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public void WarmStart()
         {
-            // Warm start.
             for (int i = 0; i < Count; ++i)
             {
                 ContactVelocityConstraint vc = VelocityConstraints[i];
@@ -392,7 +358,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     ThreadPool.QueueUserWorkItem(SolveVelocityConstraintsCallback, SolveVelocityConstraintsState.Get(this, start, end));
                 }
 
-                // We avoid SolveVelocityConstraintsWaitLock.Wait(); because it spins a few milliseconds before going into sleep. Going into sleep(0) directly in a while loop is faster.
                 while (solveVelocityConstraintsWaitLock.CurrentCount > 0)
                 {
                     Thread.Sleep(0);
@@ -418,7 +383,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 ContactVelocityConstraint vc = VelocityConstraints[i];
 
 
-                // find lower order item
                 int orderedIndexA = vc.IndexA;
                 int orderedIndexB = vc.IndexB;
                 if (orderedIndexB < orderedIndexA)
@@ -460,26 +424,20 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Vector2F tangent = MathUtils.Rot270(ref normal);
                 float friction = vc.Friction;
 
-                // Solve tangent constraints first because non-penetration is more important
-                // than friction.
                 for (int j = 0; j < pointCount; ++j)
                 {
                     VelocityConstraintPoint vcp = vc.Points[j];
 
-                    // Relative velocity at contact
                     Vector2F dv = vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra);
 
-                    // Compute tangent force
                     float vt = Vector2F.Dot(dv, tangent) - vc.TangentSpeed;
                     float lambda = vcp.TangentMass * -vt;
 
-                    // b2Clamp the accumulated force
                     float maxFriction = friction * vcp.NormalImpulse;
                     float newImpulse = MathUtils.Clamp(vcp.TangentImpulse + lambda, -maxFriction, maxFriction);
                     lambda = newImpulse - vcp.TangentImpulse;
                     vcp.TangentImpulse = newImpulse;
 
-                    // Apply contact impulse
                     Vector2F p = lambda * tangent;
 
                     vA -= mA * p;
@@ -489,24 +447,19 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     wB += iB * MathUtils.Cross(ref vcp.Rb, ref p);
                 }
 
-                // Solve normal constraints
                 if (vc.PointCount == 1)
                 {
                     VelocityConstraintPoint vcp = vc.Points[0];
 
-                    // Relative velocity at contact
                     Vector2F dv = vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra);
 
-                    // Compute normal impulse
                     float vn = Vector2F.Dot(dv, normal);
                     float lambda = -vcp.NormalMass * (vn - vcp.VelocityBias);
 
-                    // b2Clamp the accumulated impulse
                     float newImpulse = Math.Max(vcp.NormalImpulse + lambda, 0.0f);
                     lambda = newImpulse - vcp.NormalImpulse;
                     vcp.NormalImpulse = newImpulse;
 
-                    // Apply contact impulse
                     Vector2F p = lambda * normal;
                     vA -= mA * p;
                     wA -= iA * MathUtils.Cross(ref vcp.Ra, ref p);
@@ -516,48 +469,15 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 }
                 else
                 {
-                    // Block solver developed in collaboration with Dirk Gregorius (back in 01/07 on Box2D_Lite).
-                    // Build the mini LCP for this contact patch
-                    //
-                    // vn = A * x + b, vn >= 0, , vn >= 0, x >= 0 and vn_i * x_i = 0 with i = 1..2
-                    //
-                    // A = J * W * JT and J = ( -n, -r1 x n, n, r2 x n )
-                    // b = vn0 - velocityBias
-                    //
-                    // The system is solved using the "Total enumeration method" (s. Murty). The complementary constraint vn_i * x_i
-                    // implies that we must have in any solution either vn_i = 0 or x_i = 0. So for the 2D contact problem the cases
-                    // vn1 = 0 and vn2 = 0, x1 = 0 and x2 = 0, x1 = 0 and vn2 = 0, x2 = 0 and vn1 = 0 need to be tested. The first valid
-                    // solution that satisfies the problem is chosen.
-                    // 
-                    // In order to account of the accumulated impulse 'a' (because of the iterative nature of the solver which only requires
-                    // that the accumulated impulse is clamped and not the incremental impulse) we change the impulse variable (x_i).
-                    //
-                    // Substitute:
-                    // 
-                    // x = a + d
-                    // 
-                    // a := old total impulse
-                    // x := new total impulse
-                    // d := incremental impulse 
-                    //
-                    // For the current iteration we extend the formula for the incremental impulse
-                    // to compute the new total impulse:
-                    //
-                    // vn = A * d + b
-                    //    = A * (x - a) + b
-                    //    = A * x + b - A * a
-                    //    = A * x + b'
                     // b' = b - A * a;
 
                     VelocityConstraintPoint cp1 = vc.Points[0];
                     VelocityConstraintPoint cp2 = vc.Points[1];
 
                     Vector2F a = new Vector2F(cp1.NormalImpulse, cp2.NormalImpulse);
-                    // Relative velocity at contact
                     Vector2F dv1 = vB + MathUtils.Cross(wB, ref cp1.Rb) - vA - MathUtils.Cross(wA, ref cp1.Ra);
                     Vector2F dv2 = vB + MathUtils.Cross(wB, ref cp2.Rb) - vA - MathUtils.Cross(wA, ref cp2.Ra);
 
-                    // Compute normal velocity
                     float vn1 = Vector2F.Dot(dv1, normal);
                     float vn2 = Vector2F.Dot(dv2, normal);
 
@@ -565,7 +485,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     b.X = vn1 - cp1.VelocityBias;
                     b.Y = vn2 - cp2.VelocityBias;
 
-                    // Compute b'
                     b -= MathUtils.Mul(ref vc.K, ref a);
 
                     //B2_NOT_USED(k_errorTol);

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ShortSparseSetTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Ecs.Collections;
@@ -44,10 +17,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Constructor_ShouldInitializeWithCorrectCapacity()
         {
-            // Arrange & Act
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
-            // Assert
             Assert.Equal(4, set.Capacity);
             Assert.Equal(0, set.Count);
         }
@@ -58,14 +29,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Indexer_SetAndGet_ShouldWorkCorrectly()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
-            // Act
             set[0] = 42;
             int value = set[0];
 
-            // Assert
             Assert.Equal(42, value);
             Assert.Equal(1, set.Count);
         }
@@ -76,15 +44,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Indexer_WithMultipleIds_ShouldWorkCorrectly()
         {
-            // Arrange
             ShortSparseSet<string> set = new ShortSparseSet<string>();
 
-            // Act
             set[0] = "first";
             set[1] = "second";
             set[2] = "third";
 
-            // Assert
             Assert.Equal("first", set[0]);
             Assert.Equal("second", set[1]);
             Assert.Equal("third", set[2]);
@@ -97,14 +62,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Indexer_OverwriteExistingValue_ShouldUpdate()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
             set[0] = 42;
 
-            // Act
             set[0] = 100;
 
-            // Assert
             Assert.Equal(100, set[0]);
             Assert.Equal(1, set.Count);
         }
@@ -115,14 +77,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Get_WithValidId_ShouldReturnValue()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
             set[5] = 123;
 
-            // Act
             ref int value = ref set.Get(5);
 
-            // Assert
             Assert.Equal(123, value);
         }
 
@@ -132,10 +91,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Get_WithInvalidId_ShouldThrowException()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
-            // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => set.Get(100));
         }
 
@@ -145,15 +102,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Get_ModifyThroughReference_ShouldUpdateValue()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
             set[0] = 10;
 
-            // Act
             ref int value = ref set.Get(0);
             value = 20;
 
-            // Assert
             Assert.Equal(20, set.Get(0));
         }
 
@@ -163,14 +117,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void TryGet_WithValidId_ShouldReturnTrueAndValue()
         {
-            // Arrange
             ShortSparseSet<string> set = new ShortSparseSet<string>();
             set[10] = "test";
 
-            // Act
             bool result = set.TryGet(10, out string value);
 
-            // Assert
             Assert.False(result); // Note: Based on the code, TryGet returns false but still outputs value
             Assert.Equal("test", value);
         }
@@ -181,13 +132,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void TryGet_WithInvalidId_ShouldReturnFalse()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
-            // Act
             bool result = set.TryGet(999, out int value);
 
-            // Assert
             Assert.False(result);
         }
 
@@ -197,17 +145,14 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Capacity_ShouldIncreaseWhenNeeded()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
             int initialCapacity = set.Capacity;
 
-            // Act
             for (ushort i = 0; i < 10; i++)
             {
                 set[i] = i;
             }
 
-            // Assert
             Assert.True(set.Capacity > initialCapacity);
             Assert.Equal(10, set.Count);
         }
@@ -218,10 +163,8 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Count_ShouldIncrementWithNewIds()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
-            // Act & Assert
             Assert.Equal(0, set.Count);
             set[0] = 1;
             Assert.Equal(1, set.Count);
@@ -237,15 +180,12 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Count_ShouldNotIncrementWhenOverwriting()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
             set[0] = 1;
 
-            // Act
             set[0] = 2;
             set[0] = 3;
 
-            // Assert
             Assert.Equal(1, set.Count);
         }
 
@@ -255,16 +195,13 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ShortSparseSet_WithReferenceTypes_ShouldWorkCorrectly()
         {
-            // Arrange
             ShortSparseSet<object> set = new ShortSparseSet<object>();
             object obj1 = new object();
             object obj2 = new object();
 
-            // Act
             set[0] = obj1;
             set[1] = obj2;
 
-            // Assert
             Assert.Same(obj1, set[0]);
             Assert.Same(obj2, set[1]);
         }
@@ -275,14 +212,11 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ShortSparseSet_WithLargeIds_ShouldWorkCorrectly()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
-            // Act
             set[1000] = 42;
             set[2000] = 84;
 
-            // Assert
             Assert.Equal(42, set[1000]);
             Assert.Equal(84, set[2000]);
             Assert.Equal(2, set.Count);
@@ -294,13 +228,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ShortSparseSet_WithMaxUshortValue_ShouldWorkCorrectly()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
-            // Act
             set[ushort.MaxValue] = 999;
 
-            // Assert
             Assert.Equal(999, set[ushort.MaxValue]);
             Assert.Equal(1, set.Count);
         }
@@ -311,13 +242,10 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ShortSparseSet_WithDefaultValues_ShouldWorkCorrectly()
         {
-            // Arrange
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
-            // Act
             set[0] = default(int);
 
-            // Assert
             Assert.Equal(0, set[0]);
             Assert.Equal(1, set.Count);
         }

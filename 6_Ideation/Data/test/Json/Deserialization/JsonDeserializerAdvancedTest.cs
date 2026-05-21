@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:JsonDeserializerAdvancedTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -67,13 +40,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Theory, InlineData("true", true), InlineData("false", false), InlineData("True", true), InlineData("False", false)]
         public void Deserialize_BooleanValue_ParsesCorrectly(string jsonValue, bool expected)
         {
-            // Arrange
             string json = $"{{\"Flag\":\"{jsonValue}\"}}";
 
-            // Act
             TestBoolObject obj = _deserializer.Deserialize<TestBoolObject>(json);
 
-            // Assert
             Assert.Equal(expected, obj.Flag);
         }
 
@@ -86,13 +56,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Theory, InlineData("0.0", 0.0), InlineData("1.5", 1.5), InlineData("-3.14", -3.14), InlineData("99.99", 99.99)]
         public void Deserialize_DoubleValue_ParsesCorrectly(string jsonValue, double expected)
         {
-            // Arrange
             string json = $"{{\"Number\":\"{jsonValue}\"}}";
 
-            // Act
             TestDoubleObject obj = _deserializer.Deserialize<TestDoubleObject>(json);
 
-            // Assert
             Assert.Equal(expected, obj.Number, 0.001);
         }
 
@@ -105,13 +72,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Theory, InlineData("0", 0), InlineData("1", 1), InlineData("-1", -1), InlineData("100", 100), InlineData("2147483647", int.MaxValue)]
         public void Deserialize_IntegerValue_ParsesCorrectly(string jsonValue, int expected)
         {
-            // Arrange
             string json = $"{{\"Value\":\"{jsonValue}\"}}";
 
-            // Act
             TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
-            // Assert
             Assert.Equal(expected, obj.Value);
         }
 
@@ -121,13 +85,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_IntegerAsString_ConvertsCorrectly()
         {
-            // Arrange
             string json = "{\"Value\":\"42\"}";
 
-            // Act
             TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
-            // Assert
             Assert.Equal(42, obj.Value);
         }
 
@@ -139,13 +100,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Theory, InlineData(""), InlineData("simple"), InlineData("with spaces"), InlineData("special!@#$%")]
         public void Deserialize_StringValue_ParsesCorrectly(string value)
         {
-            // Arrange
             string json = $"{{\"Text\":\"{value}\"}}";
 
-            // Act
             TestStringObject obj = _deserializer.Deserialize<TestStringObject>(json);
 
-            // Assert
             Assert.Equal(value, obj.Text);
         }
 
@@ -155,13 +113,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_UnicodeString_ParsesCorrectly()
         {
-            // Arrange
             string json = "{\"Text\":\"こんにちは\"}";
 
-            // Act
             TestStringObject obj = _deserializer.Deserialize<TestStringObject>(json);
 
-            // Assert
             Assert.Equal("こんにちは", obj.Text);
         }
 
@@ -172,14 +127,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_DateTimeValue_ParsesCorrectly()
         {
-            // Arrange
             DateTime expected = new DateTime(2023, 6, 15, 10, 30, 0);
             string json = $"{{\"Timestamp\":\"{expected:O}\"}}";
 
-            // Act
             TestDateTimeObject obj = _deserializer.Deserialize<TestDateTimeObject>(json);
 
-            // Assert
             Assert.Equal(expected.Year, obj.Timestamp.Year);
             Assert.Equal(expected.Month, obj.Timestamp.Month);
             Assert.Equal(expected.Day, obj.Timestamp.Day);
@@ -191,14 +143,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_GuidValue_ParsesCorrectly()
         {
-            // Arrange
             Guid expected = Guid.NewGuid();
             string json = $"{{\"Id\":\"{expected}\"}}";
 
-            // Act
             TestGuidObject obj = _deserializer.Deserialize<TestGuidObject>(json);
 
-            // Assert
             Assert.Equal(expected, obj.Id);
         }
 
@@ -209,13 +158,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_MissingIntProperty_UsesDefaultValue()
         {
-            // Arrange
             string json = "{}";
 
-            // Act
             TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
-            // Assert
             Assert.Equal(0, obj.Value);
         }
 
@@ -225,13 +171,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_MissingStringProperty_UsesNull()
         {
-            // Arrange
             string json = "{}";
 
-            // Act
             TestStringObject obj = _deserializer.Deserialize<TestStringObject>(json);
 
-            // Assert
             Assert.Null(obj.Text);
         }
 
@@ -241,13 +184,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_MissingBoolProperty_UsesDefaultValue()
         {
-            // Arrange
             string json = "{}";
 
-            // Act
             TestBoolObject obj = _deserializer.Deserialize<TestBoolObject>(json);
 
-            // Assert
             Assert.False(obj.Flag);
         }
 
@@ -258,13 +198,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_InvalidIntegerValue_UsesDefaultValue()
         {
-            // Arrange
             string json = "{\"Value\":\"not_a_number\"}";
 
-            // Act
             TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
-            // Assert
             Assert.Equal(0, obj.Value);
         }
 
@@ -274,13 +211,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_InvalidBooleanValue_UsesDefaultValue()
         {
-            // Arrange
             string json = "{\"Flag\":\"not_a_bool\"}";
 
-            // Act
             TestBoolObject obj = _deserializer.Deserialize<TestBoolObject>(json);
 
-            // Assert
             Assert.False(obj.Flag);
         }
 
@@ -290,13 +224,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_InvalidGuidValue_UsesEmptyGuid()
         {
-            // Arrange
             string json = "{\"Id\":\"not_a_guid\"}";
 
-            // Act
             TestGuidObject obj = _deserializer.Deserialize<TestGuidObject>(json);
 
-            // Assert
             Assert.Equal(Guid.Empty, obj.Id);
         }
 
@@ -307,13 +238,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_WithExtraProperties_IgnoresExtra()
         {
-            // Arrange
             string json = "{\"Value\":\"42\",\"ExtraProp\":\"ignored\"}";
 
-            // Act
             TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
-            // Assert
             Assert.Equal(42, obj.Value);
         }
 
@@ -323,13 +251,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         [Fact]
         public void Deserialize_WithManyExtraProperties_IgnoresAll()
         {
-            // Arrange
             string json = "{\"Value\":\"42\",\"Extra1\":\"a\",\"Extra2\":\"b\",\"Extra3\":\"c\"}";
 
-            // Act
             TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
-            // Assert
             Assert.Equal(42, obj.Value);
         }
 

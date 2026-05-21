@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ResultModelsTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Xunit;
@@ -43,10 +16,8 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void CheckoutSessionResult_CanBeInstantiated()
         {
-            // Act
             CheckoutSessionResult result = new CheckoutSessionResult();
 
-            // Assert
             Assert.NotNull(result);
         }
 
@@ -56,7 +27,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void CheckoutSessionResult_AllPropertiesCanBeSet()
         {
-            // Arrange & Act
             CheckoutSessionResult result = new CheckoutSessionResult
             {
                 SessionId = "cs_test_123",
@@ -68,7 +38,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Currency = "usd"
             };
 
-            // Assert
             Assert.Equal("cs_test_123", result.SessionId);
             Assert.Equal("https://checkout.stripe.com/c/pay/cs_test_123", result.Url.ToString());
             Assert.Equal("pi_test_456", result.PaymentIntentId);
@@ -85,10 +54,8 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void PaymentIntentResult_CanBeInstantiated()
         {
-            // Act
             PaymentIntentResult result = new PaymentIntentResult();
 
-            // Assert
             Assert.NotNull(result);
         }
 
@@ -98,7 +65,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void PaymentIntentResult_AllPropertiesCanBeSet()
         {
-            // Arrange & Act
             PaymentIntentResult result = new PaymentIntentResult
             {
                 PaymentIntentId = "pi_test_789",
@@ -109,7 +75,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Status = PaymentStatus.Succeeded
             };
 
-            // Assert
             Assert.Equal("pi_test_789", result.PaymentIntentId);
             Assert.Equal("pi_test_789_secret_abc123", result.ClientSecret);
             Assert.Equal("prod_002", result.ProductId);
@@ -124,10 +89,8 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void PaymentIntentResult_StatusDefaultsToUnknown()
         {
-            // Arrange & Act
             PaymentIntentResult result = new PaymentIntentResult();
 
-            // Assert
             Assert.Equal(PaymentStatus.Unknown, result.Status);
         }
 
@@ -138,10 +101,8 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void RefundResult_CanBeInstantiated()
         {
-            // Act
             RefundResult result = new RefundResult();
 
-            // Assert
             Assert.NotNull(result);
         }
 
@@ -151,7 +112,6 @@ namespace Alis.Extension.Payment.Stripe.Test
         [Fact]
         public void RefundResult_AllPropertiesCanBeSet()
         {
-            // Arrange & Act
             RefundResult result = new RefundResult
             {
                 RefundId = "re_test_001",
@@ -161,7 +121,6 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Status = "succeeded"
             };
 
-            // Assert
             Assert.Equal("re_test_001", result.RefundId);
             Assert.Equal("pi_test_123", result.PaymentIntentId);
             Assert.Equal(1500, result.AmountRefunded);

@@ -301,19 +301,15 @@ Comprehensive test coverage:
 ```csharp
 using Alis.Extension.Io.FileDialog;
 
-// Create picker
 IFilePicker picker = FilePickerFactory.CreateFilePicker();
 
-// Configure options
 var options = new FilePickerOptions("Select a file")
     .WithDefaultPath("/home/user")
     .WithFilter(new FilePickerFilter("Text Files", "txt"))
     .WithMultipleSelection();
 
-// Execute dialog
 FilePickerResult result = picker.PickFiles(options);
 
-// Handle result
 if (result.IsSuccess)
 {
     foreach (var path in result.SelectedPaths)

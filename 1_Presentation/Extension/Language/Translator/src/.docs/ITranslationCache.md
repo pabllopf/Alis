@@ -53,23 +53,18 @@ cache.Clear();
 ```csharp
 ITranslationCache cache = new MemoryTranslationCache();
 
-// Add translations to cache
 cache.Set("en", "greeting", "Hello");
 cache.Set("en", "farewell", "Goodbye");
 
-// Retrieve from cache
 if (cache.TryGetTranslation("en", "greeting", out string greeting))
 {
     Console.WriteLine(greeting); // Output: Hello
 }
 
-// Remove specific translation
 cache.Remove("en", "greeting");
 
-// Invalidate all for a language
 cache.InvalidateLanguage("en");
 
-// Clear everything
 cache.Clear();
 ```
 

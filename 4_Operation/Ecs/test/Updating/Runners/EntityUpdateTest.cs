@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EntityUpdateTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent.Components;
@@ -197,7 +170,6 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
             scene.Update();
 
-            // Existing entities run once in the main loop and are not included in deferred subset range.
             Assert.Equal(1, existingSpawner.Get<EntityUpdate5SpawnerComponent>().CallCount);
             Assert.Equal(1, existingPassive.Get<EntityUpdate5SpawnerComponent>().CallCount);
 
@@ -210,7 +182,6 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
                 EntityUpdate5SpawnerComponent component = spawned.Get<EntityUpdate5SpawnerComponent>();
                 Assert.Equal(1, component.CallCount);
 
-                // Spawned entity was created with these values and then updated once in deferred subset.
                 Assert.Equal(7, spawned.Get<Position>().X);
                 Assert.Equal(8, spawned.Get<Position>().Y);
                 Assert.Equal(49, spawned.Get<Health>().Value);

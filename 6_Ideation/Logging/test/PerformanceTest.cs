@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:PerformanceTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Diagnostics;
@@ -50,7 +23,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Performance_SimpleLogging_10KMessages_UnderXSeconds()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
@@ -59,7 +31,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
-                // Act
                 for (int i = 0; i < 10000; i++)
                 {
                     logger.LogInfo($"Message {i}");
@@ -67,7 +38,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 stopwatch.Stop();
 
-                // Assert
                 Assert.Equal(10000, memoryOutput.Count);
                 Assert.True(stopwatch.Elapsed.TotalSeconds < 5,
                     $"10K messages took {stopwatch.Elapsed.TotalSeconds}s, expected < 5s");
@@ -80,7 +50,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Performance_FormattedLogging_1KMessages_UnderYSeconds()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
@@ -90,7 +59,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
-                // Act
                 for (int i = 0; i < 1000; i++)
                 {
                     logger.LogInfo($"Formatted message {i}");
@@ -98,7 +66,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 stopwatch.Stop();
 
-                // Assert
                 Assert.Equal(1000, memoryOutput.Count);
                 Assert.True(stopwatch.Elapsed.TotalSeconds < 3,
                     $"1K formatted messages took {stopwatch.Elapsed.TotalSeconds}s, expected < 3s");
@@ -111,7 +78,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Performance_JsonFormattedLogging_1KMessages_UnderYSeconds()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
@@ -121,7 +87,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
-                // Act
                 for (int i = 0; i < 1000; i++)
                 {
                     logger.LogInfo($"JSON message {i}");
@@ -129,7 +94,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 stopwatch.Stop();
 
-                // Assert
                 Assert.Equal(1000, memoryOutput.Count);
                 Assert.True(stopwatch.Elapsed.TotalSeconds < 3,
                     $"1K JSON formatted messages took {stopwatch.Elapsed.TotalSeconds}s, expected < 3s");
@@ -142,7 +106,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Performance_CompactFormattedLogging_1KMessages_UnderYSeconds()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
@@ -152,7 +115,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
-                // Act
                 for (int i = 0; i < 1000; i++)
                 {
                     logger.LogInfo($"Compact message {i}");
@@ -160,7 +122,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 stopwatch.Stop();
 
-                // Assert
                 Assert.Equal(1000, memoryOutput.Count);
                 Assert.True(stopwatch.Elapsed.TotalSeconds < 3,
                     $"1K compact formatted messages took {stopwatch.Elapsed.TotalSeconds}s, expected < 3s");
@@ -173,7 +134,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Performance_WithFiltering_10KMessages_UnderXSeconds()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
@@ -183,7 +143,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
-                // Act
                 for (int i = 0; i < 10000; i++)
                 {
                     logger.LogInfo($"Message {i}");
@@ -191,7 +150,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 stopwatch.Stop();
 
-                // Assert
                 Assert.Equal(10000, memoryOutput.Count);
                 Assert.True(stopwatch.Elapsed.TotalSeconds < 5,
                     $"10K filtered messages took {stopwatch.Elapsed.TotalSeconds}s, expected < 5s");
@@ -204,7 +162,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Performance_WithScopesLogging_1KMessages_UnderYSeconds()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
@@ -213,7 +170,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
-                // Act
                 for (int i = 0; i < 1000; i++)
                 {
                     using (logger.BeginScope($"Request{i}"))
@@ -224,7 +180,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 stopwatch.Stop();
 
-                // Assert
                 Assert.Equal(1000, memoryOutput.Count);
                 Assert.True(stopwatch.Elapsed.TotalSeconds < 5,
                     $"1K scoped messages took {stopwatch.Elapsed.TotalSeconds}s, expected < 5s");
@@ -238,7 +193,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Performance_ExceptionLogging_1KMessages_UnderYSeconds()
         {
-            // Arrange
             using (LoggerFactory factory = new LoggerFactory())
             {
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
@@ -247,7 +201,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
-                // Act
                 for (int i = 0; i < 1000; i++)
                 {
                     try
@@ -262,7 +215,6 @@ namespace Alis.Core.Aspect.Logging.Test
 
                 stopwatch.Stop();
 
-                // Assert
                 Assert.Equal(1000, memoryOutput.Count);
                 Assert.True(stopwatch.Elapsed.TotalSeconds < 10,
                     $"1K exception messages took {stopwatch.Elapsed.TotalSeconds}s, expected < 10s");
@@ -275,16 +227,13 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Performance_MemoryOutputStorage_Limits()
         {
-            // Arrange
             MemoryLogOutput output = new MemoryLogOutput(100);
 
-            // Act
             for (int i = 0; i < 1000; i++)
             {
                 output.Write(new LogEntry(LogLevel.Info, $"Message {i}", "Logger"));
             }
 
-            // Assert
             Assert.Equal(100, output.Count);
         }
     }

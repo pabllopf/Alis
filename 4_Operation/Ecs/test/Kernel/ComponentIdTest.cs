@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:ComponentIdTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -53,10 +26,8 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentId_CanBeRetrievedForType()
         {
-            // Act
             ComponentId id = Component<Position>.Id;
 
-            // Assert
             Assert.NotEqual(default(ComponentId), id);
         }
 
@@ -69,11 +40,9 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentId_IsConsistentAcrossCalls()
         {
-            // Act
             ComponentId id1 = Component<Position>.Id;
             ComponentId id2 = Component<Position>.Id;
 
-            // Assert
             Assert.Equal(id1, id2);
         }
 
@@ -86,11 +55,9 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void DifferentComponents_HaveDifferentIds()
         {
-            // Act
             ComponentId posId = Component<Position>.Id;
             ComponentId velId = Component<Velocity>.Id;
 
-            // Assert
             Assert.NotEqual(posId, velId);
         }
 
@@ -103,12 +70,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentId_EqualityWorksCorrectly()
         {
-            // Arrange
             ComponentId id1 = Component<Position>.Id;
             ComponentId id2 = Component<Position>.Id;
             ComponentId id3 = Component<Velocity>.Id;
 
-            // Assert
             Assert.True(id1.Equals(id2));
             Assert.False(id1.Equals(id3));
         }
@@ -122,12 +87,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentId_EqualityOperatorWorks()
         {
-            // Arrange
             ComponentId id1 = Component<Position>.Id;
             ComponentId id2 = Component<Position>.Id;
             ComponentId id3 = Component<Velocity>.Id;
 
-            // Assert
             Assert.True(id1 == id2);
             Assert.False(id1 == id3);
             Assert.True(id1 != id3);
@@ -143,14 +106,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentId_GetHashCodeReturnsConsistentValues()
         {
-            // Arrange
             ComponentId id = Component<Position>.Id;
 
-            // Act
             int hash1 = id.GetHashCode();
             int hash2 = id.GetHashCode();
 
-            // Assert
             Assert.Equal(hash1, hash2);
         }
 
@@ -163,13 +123,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentId_HasTypeProperty()
         {
-            // Arrange
             ComponentId id = Component<Position>.Id;
 
-            // Act
             Type type = id.Type;
 
-            // Assert
             Assert.NotNull(type);
             Assert.Equal(typeof(Position), type);
         }
@@ -183,16 +140,13 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentId_CanBeUsedInDictionary()
         {
-            // Arrange
             Dictionary<ComponentId, string> dict = new Dictionary<ComponentId, string>();
             ComponentId posId = Component<Position>.Id;
             ComponentId velId = Component<Velocity>.Id;
 
-            // Act
             dict[posId] = "Position";
             dict[velId] = "Velocity";
 
-            // Assert
             Assert.Equal("Position", dict[posId]);
             Assert.Equal("Velocity", dict[velId]);
             Assert.Equal(2, dict.Count);
@@ -207,13 +161,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentId_EqualsNullReturnsFalse()
         {
-            // Arrange
             ComponentId id = Component<Position>.Id;
 
-            // Act
             bool result = id.Equals(null);
 
-            // Assert
             Assert.False(result);
         }
 
@@ -226,13 +177,10 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentId_EqualsWrongTypeReturnsFalse()
         {
-            // Arrange
             ComponentId id = Component<Position>.Id;
 
-            // Act
             bool result = id.Equals("string");
 
-            // Assert
             Assert.False(result);
         }
 
@@ -245,11 +193,9 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentId_WorksWithValueTypes()
         {
-            // Act
             ComponentId intId = Component<int>.Id;
             ComponentId doubleId = Component<double>.Id;
 
-            // Assert
             Assert.NotEqual(intId, doubleId);
             Assert.NotEqual(default(ComponentId), intId);
         }
@@ -263,10 +209,8 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void ComponentId_WorksWithReferenceTypes()
         {
-            // Act
             ComponentId stringId = Component<string>.Id;
 
-            // Assert
             Assert.NotEqual(default(ComponentId), stringId);
             Assert.Equal(typeof(string), stringId.Type);
         }

@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:OutputsTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -51,7 +24,6 @@ namespace Alis.Core.Aspect.Logging.Test
             ConsoleLogOutput output = new ConsoleLogOutput();
             LogEntry entry = new LogEntry(LogLevel.Info, "Test message", "TestLogger");
 
-            // Should not throw
             output.Write(entry);
             output.Dispose();
         }
@@ -69,7 +41,6 @@ namespace Alis.Core.Aspect.Logging.Test
             LogEntry entry = new LogEntry(LogLevel.Info, "Test message", "TestLogger");
             consoleOutput.Write(entry);
 
-            // If disabled, we should verify behavior (console writes are hard to test)
             Assert.False(consoleOutput.IsEnabled);
         }
 
@@ -111,14 +82,12 @@ namespace Alis.Core.Aspect.Logging.Test
             string tempFile = Path.Combine(Path.GetTempPath(), $"test_log_{Guid.NewGuid()}.txt");
             try
             {
-                // First write
                 using (FileLogOutput output = new FileLogOutput(tempFile, append: true))
                 {
                     LogEntry entry = new LogEntry(LogLevel.Info, "First message", "TestLogger");
                     output.Write(entry);
                 }
 
-                // Second write
                 using (FileLogOutput output = new FileLogOutput(tempFile, append: true))
                 {
                     LogEntry entry = new LogEntry(LogLevel.Info, "Second message", "TestLogger");
@@ -147,14 +116,12 @@ namespace Alis.Core.Aspect.Logging.Test
             string tempFile = Path.Combine(Path.GetTempPath(), $"test_log_{Guid.NewGuid()}.txt");
             try
             {
-                // First write
                 using (FileLogOutput output = new FileLogOutput(tempFile, append: false))
                 {
                     LogEntry entry = new LogEntry(LogLevel.Info, "First message", "TestLogger");
                     output.Write(entry);
                 }
 
-                // Second write with overwrite
                 using (FileLogOutput output = new FileLogOutput(tempFile, append: false))
                 {
                     LogEntry entry = new LogEntry(LogLevel.Info, "Second message", "TestLogger");
@@ -210,7 +177,6 @@ namespace Alis.Core.Aspect.Logging.Test
             DebugLogOutput output = new DebugLogOutput();
             LogEntry entry = new LogEntry(LogLevel.Info, "Test message", "TestLogger");
 
-            // Should not throw regardless of debugger state
             output.Write(entry);
             output.Dispose();
         }

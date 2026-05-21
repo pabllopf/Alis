@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:SimpleCombiner.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -62,7 +35,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             {
                 covered[i] = false;
 
-                //Check here for degenerate triangles
                 Vertices triangle = triangles[i];
                 Vector2F a = triangle[0];
                 Vector2F b = triangle[1];
@@ -131,20 +103,15 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
                         if (newP.IsConvex())
                         {
-                            //Or should it be IsUsable?  Maybe re-write IsConvex to apply the angle threshold from Box2d
                             poly = new Vertices(newP);
                             covered[index] = true;
                         }
                     }
 
-                    //We have a maximum of polygons that we need to keep under.
                     if (polyIndex < maxPolys)
                     {
                         SimplifyTools.MergeParallelEdges(poly, tolerance);
 
-                        //If identical points are present, a triangle gets
-                        //borked by the MergeParallelEdges function, hence
-                        //the vertex number check
                         if (poly.Count >= 3)
                         {
                             polys.Add(new Vertices(poly));
@@ -163,7 +130,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
 
 
-            //Remove empty vertice collections
             for (int i = polys.Count - 1; i >= 0; i--)
             {
                 if (polys[i].Count == 0)
@@ -183,7 +149,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <returns>The result</returns>
         private static Vertices AddTriangle(Vertices t, Vertices vertices)
         {
-            // First, find vertices that connect
             int firstP = -1;
             int firstT = -1;
             int secondP = -1;
@@ -231,20 +196,17 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 }
             }
 
-            // Fix ordering if first should be last vertex of poly
             if ((firstP == 0) && (secondP == vertices.Count - 1))
             {
                 firstP = vertices.Count - 1;
                 secondP = 0;
             }
 
-            // Didn't find it
             if (secondP == -1)
             {
                 return null;
             }
 
-            // Find tip index on triangle
             int tipT = 0;
             if (tipT == firstT || tipT == secondT)
             {

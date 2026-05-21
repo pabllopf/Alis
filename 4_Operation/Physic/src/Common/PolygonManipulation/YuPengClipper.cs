@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:YuPengClipper.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -97,13 +70,8 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// </returns>
         private static List<Vertices> Execute(Vertices subject, Vertices clip, PolyClipType clipType, out PolyClipError error)
         {
-            // Copy polygons
-            // Calculate the intersection and touch points between
-            // subject and clip and add them to both
             CalculateIntersections(subject, clip, out Vertices slicedSubject, out Vertices slicedClip);
 
-            // Translate polygons into upper right quadrant
-            // as the algorithm depends on it
             Vector2F lbSubject = subject.GetAabb().LowerBound;
             Vector2F lbClip = clip.GetAabb().LowerBound;
             Vector2F.Min(ref lbSubject, ref lbClip, out Vector2F translate);
@@ -114,26 +82,17 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 slicedClip.Translate(ref translate);
             }
 
-            // Enforce counterclockwise contours
             slicedSubject.ForceCounterClockWise();
             slicedClip.ForceCounterClockWise();
 
-            // Build simplical chains from the polygons and calculate the
-            // the corresponding coefficients
             CalculateSimplicalChain(slicedSubject, out List<float> subjectCoeff, out List<Edge> subjectSimplices);
             CalculateSimplicalChain(slicedClip, out List<float> clipCoeff, out List<Edge> clipSimplices);
 
-            // Determine the characteristics function for all non-original edges
-            // in subject and clip simplical chain and combine the edges contributing
-            // to the result, depending on the clipType
             CalculateResultChain(subjectCoeff, subjectSimplices, clipCoeff, clipSimplices, clipType,
                 out List<Edge> resultSimplices);
 
-            // Convert result chain back to polygon(s)
             error = BuildPolygonsFromChain(resultSimplices, out List<Vertices> result);
 
-            // Reverse the polygon translation from the beginning
-            // and remove collinear points from output
             translate *= -1f;
             for (int i = 0; i < result.Count; ++i)
             {
@@ -157,25 +116,19 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             slicedPoly1 = new Vertices(polygon1);
             slicedPoly2 = new Vertices(polygon2);
 
-            // Iterate through polygon1's edges
             for (int i = 0; i < polygon1.Count; i++)
             {
-                // Get edge vertices
                 Vector2F a = polygon1[i];
                 Vector2F b = polygon1[polygon1.NextIndex(i)];
 
-                // Get intersections between this edge and polygon2
                 for (int j = 0; j < polygon2.Count; j++)
                 {
                     Vector2F c = polygon2[j];
                     Vector2F d = polygon2[polygon2.NextIndex(j)];
 
-                    // Check if the edges intersect
                     if (LineTools.LineIntersect(a, b, c, d, out Vector2F intersectionPoint))
                     {
-                        // calculate alpha values for sorting multiple intersections points on a edge
                         float alpha;
-                        // Insert intersection point into first polygon
                         alpha = GetAlpha(a, b, intersectionPoint);
                         if ((alpha > 0f) && (alpha < 1f))
                         {
@@ -189,7 +142,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                             slicedPoly1.Insert(index, intersectionPoint);
                         }
 
-                        // Insert intersection point into second polygon
                         alpha = GetAlpha(c, d, intersectionPoint);
                         if ((alpha > 0f) && (alpha < 1f))
                         {
@@ -206,11 +158,9 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 }
             }
 
-            // Check for very small edges
             for (int i = 0; i < slicedPoly1.Count; ++i)
             {
                 int iNext = slicedPoly1.NextIndex(i);
-                //If they are closer than the distance remove vertex
                 if ((slicedPoly1[iNext] - slicedPoly1[i]).LengthSquared() <= ClipperEpsilonSquared)
                 {
                     slicedPoly1.RemoveAt(i);
@@ -221,7 +171,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             for (int i = 0; i < slicedPoly2.Count; ++i)
             {
                 int iNext = slicedPoly2.NextIndex(i);
-                //If they are closer than the distance remove vertex
                 if ((slicedPoly2[iNext] - slicedPoly2[i]).LengthSquared() <= ClipperEpsilonSquared)
                 {
                     slicedPoly2.RemoveAt(i);
@@ -543,13 +492,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             /// <returns>The bool</returns>
             public override bool Equals(object obj)
             {
-                // If parameter is null return false.
                 if (obj == null)
                 {
                     return false;
                 }
 
-                // If parameter cannot be cast to Point return false.
                 return Equals(obj as Edge);
             }
 
@@ -560,13 +507,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             /// <returns>The bool</returns>
             public bool Equals(Edge e)
             {
-                // If parameter is null return false:
                 if (e == null)
                 {
                     return false;
                 }
 
-                // Return true if the fields match
                 return VectorEqual(EdgeStart, e.EdgeStart) && VectorEqual(EdgeEnd, e.EdgeEnd);
             }
 

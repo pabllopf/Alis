@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:MacPlayerTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Threading.Tasks;
@@ -48,10 +21,8 @@ namespace Alis.Core.Audio.Test.Players
         [MacOsOnly]
         public void MacPlayer_Constructor_ShouldInitializeProperly()
         {
-            // Arrange & Act
             MacPlayer player = new MacPlayer();
 
-            // Assert
             Assert.NotNull(player);
             Assert.False(player.Playing);
             Assert.False(player.Paused);
@@ -63,13 +34,10 @@ namespace Alis.Core.Audio.Test.Players
         [MacOsOnly]
         public void Playing_Property_ShouldReturnFalseInitially()
         {
-            // Arrange
             MacPlayer player = new MacPlayer();
 
-            // Act
             bool playing = player.Playing;
 
-            // Assert
             Assert.False(playing);
         }
 
@@ -79,13 +47,10 @@ namespace Alis.Core.Audio.Test.Players
         [MacOsOnly]
         public void Paused_Property_ShouldReturnFalseInitially()
         {
-            // Arrange
             MacPlayer player = new MacPlayer();
 
-            // Act
             bool paused = player.Paused;
 
-            // Assert
             Assert.False(paused);
         }
 
@@ -95,14 +60,11 @@ namespace Alis.Core.Audio.Test.Players
         [MacOsOnly]
         public async Task SetVolume_WithValidInput_ShouldWork()
         {
-            // Arrange
             MacPlayer player = new MacPlayer();
             byte volume = 50;
 
-            // Act
             await player.SetVolume(volume);
 
-            // Assert - No exception thrown
             Assert.NotNull(player);
         }
 
@@ -112,11 +74,9 @@ namespace Alis.Core.Audio.Test.Players
         [MacOsOnly]
         public async Task SetVolume_WithInvalidInput_ShouldThrowException()
         {
-            // Arrange
             MacPlayer player = new MacPlayer();
             byte volume = 101;
 
-            // Act & Assert
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => player.SetVolume(volume));
         }
 
@@ -126,14 +86,11 @@ namespace Alis.Core.Audio.Test.Players
         [MacOsOnly]
         public async Task SetVolume_WithZero_ShouldWork()
         {
-            // Arrange
             MacPlayer player = new MacPlayer();
             byte volume = 0;
 
-            // Act
             await player.SetVolume(volume);
 
-            // Assert - No exception thrown
             Assert.NotNull(player);
         }
 
@@ -143,7 +100,6 @@ namespace Alis.Core.Audio.Test.Players
         [MacOsOnly]
         public async Task SetVolume_WithMaxValue_ShouldWork()
         {
-            // Arrange
             MacPlayer player = new MacPlayer();
             byte volume = 100;
 

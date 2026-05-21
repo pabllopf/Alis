@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:BreakableBody.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Collections.Generic;
@@ -200,7 +173,6 @@ namespace Alis.Core.Physic.Common.Logic
 
                 if (maxImpulse > Strength)
                 {
-                    // Flag the body for breaking.
                     State = BreakableBodyState.ShouldBreak;
                 }
             }
@@ -222,20 +194,17 @@ namespace Alis.Core.Physic.Common.Logic
             }
         }
 
-        // Cache velocities to improve movement on breakage.
         /// <summary>
         ///     Caches the velocities
         /// </summary>
         internal void CacheVelocities()
         {
-            //Enlarge the cache if needed
             if (_parts.Count > _angularVelocitiesCache.Length)
             {
                 _velocitiesCache = new Vector2F[_parts.Count];
                 _angularVelocitiesCache = new float[_parts.Count];
             }
 
-            //Cache the linear and angular velocities.
             for (int i = 0; i < _parts.Count; i++)
             {
                 _velocitiesCache[i] = _parts[i].GetBody.LinearVelocity;
@@ -254,7 +223,6 @@ namespace Alis.Core.Physic.Common.Logic
                 throw new InvalidOperationException("BreakableBody is allready broken");
             }
 
-            //Unsubsribe from the PostSolve delegate
             WorldPhysic.ContactManager.PostSolve -= PostSolve;
 
             for (int i = 0; i < _parts.Count; i++)

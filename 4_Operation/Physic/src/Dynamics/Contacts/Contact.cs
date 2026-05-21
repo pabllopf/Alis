@@ -1,31 +1,4 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Contact.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
@@ -61,10 +34,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 ContactType.EdgeAndCircle,
                 ContactType.NotSupported,
-                // 1,1 is invalid (no ContactType.Edge)
                 ContactType.EdgeAndPolygon,
                 ContactType.NotSupported
-                // 1,3 is invalid (no ContactType.EdgeAndLoop)
             },
             {
                 ContactType.PolygonAndCircle,
@@ -75,10 +46,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 ContactType.ChainAndCircle,
                 ContactType.NotSupported,
-                // 3,1 is invalid (no ContactType.EdgeAndLoop)
                 ContactType.ChainAndPolygon,
                 ContactType.NotSupported
-                // 3,3 is invalid (no ContactType.Loop)
             }
         };
 
@@ -270,7 +239,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             ToiCount = 0;
 
-            //FPE: We only set the friction and restitution if we are not destroying the contact
             if ((FixtureA != null) && (FixtureB != null))
             {
                 Friction = SettingEnv.MixFriction(FixtureA.GetFriction, FixtureB.GetFriction);
@@ -292,7 +260,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             Manifold oldManifold = Manifold;
 
-            // Re-enable this contact.
             Enabled = true;
 
             bool touching;
@@ -300,14 +267,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             bool sensor = FixtureA.GetIsSensor || FixtureB.GetIsSensor;
 
-            // Is this contact a sensor?
             if (sensor)
             {
                 Shape shapeA = FixtureA.GetShape;
                 Shape shapeB = FixtureB.GetShape;
                 touching = Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref bodyA.Xf, ref bodyB.Xf);
 
-                // Sensors don't generate manifolds.
                 Manifold.PointCount = 0;
             }
             else
@@ -315,8 +280,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Evaluate(ref Manifold, ref bodyA.Xf, ref bodyB.Xf);
                 touching = Manifold.PointCount > 0;
 
-                // Match old contact ids to new contact ids and copy the
-                // stored impulses to warm start the solver.
                 for (int i = 0; i < Manifold.PointCount; ++i)
                 {
                     ManifoldPoint mp2 = Manifold.Points[i];
@@ -354,8 +317,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 {
                     bool enabledA = true, enabledB = true;
 
-                    // Report the collision to both participants. Track which ones returned true so we can
-                    // later call OnSeparation if the contact is disabled for a different reason.
                     OnCollisionEventHandler onFixtureCollisionHandlerA = FixtureA.OnCollision;
                     if (onFixtureCollisionHandlerA != null)
                     {
@@ -366,8 +327,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         }
                     }
 
-                    // Reverse the order of the reported fixtures. The first fixture is always the one that the
-                    // user subscribed to.
                     OnCollisionEventHandler onFixtureCollisionHandlerB = FixtureB.OnCollision;
                     if (onFixtureCollisionHandlerB != null)
                     {
@@ -378,7 +337,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         }
                     }
 
-                    // Report the collision to both bodies:
                     OnCollisionEventHandler onBodyCollisionHandlerA = bodyA.OnCollisionEventHandler;
                     if (onBodyCollisionHandlerA != null)
                     {
@@ -389,8 +347,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         }
                     }
 
-                    // Reverse the order of the reported fixtures. The first fixture is always the one that the
-                    // user subscribed to.
                     OnCollisionEventHandler onBodyCollisionHandlerB = bodyB.OnCollisionEventHandler;
                     if (onBodyCollisionHandlerB != null)
                     {
@@ -404,16 +360,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     Enabled = enabledA && enabledB;
 
-                    // BeginContact can also return false and disable the contact
                     BeginContactDelegate beginContactHandler = contactManager.BeginContact;
                     if (enabledA && enabledB && (beginContactHandler != null))
                     {
                         Enabled = beginContactHandler(this);
                     }
 
-                    // If the user disabled the contact (needed to exclude it in TOI solver) at any point by
-                    // any of the callbacks, we need to mark it as not touching and call any separation
-                    // callbacks for fixtures that didn't explicitly disable the collision.
                     if (!Enabled)
                     {
                         IsTouching = false;
@@ -424,30 +376,24 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 if (!touching)
                 {
-                    //Report the separation to both participants:
                     OnSeparationEventHandler onFixtureSeparationHandlerA = FixtureA.OnSeparation;
                     if (onFixtureSeparationHandlerA != null)
                     {
                         onFixtureSeparationHandlerA(FixtureA, FixtureB, this);
                     }
 
-                    //Reverse the order of the reported fixtures. The first fixture is always the one that the
-                    //user subscribed to.
                     OnSeparationEventHandler onFixtureSeparationHandlerB = FixtureB.OnSeparation;
                     if (onFixtureSeparationHandlerB != null)
                     {
                         onFixtureSeparationHandlerB(FixtureB, FixtureA, this);
                     }
 
-                    //Report the separation to both bodies:
                     OnSeparationEventHandler onBodySeparationHandlerA = bodyA.OnSeparationEventHandler;
                     if (onBodySeparationHandlerA != null)
                     {
                         onBodySeparationHandlerA(FixtureA, FixtureB, this);
                     }
 
-                    //Reverse the order of the reported fixtures. The first fixture is always the one that the
-                    //user subscribed to.
                     OnSeparationEventHandler onBodySeparationHandlerB = bodyB.OnSeparationEventHandler;
                     if (onBodySeparationHandlerB != null)
                     {
@@ -530,14 +476,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             ContactListHead contactPoolList = contactManager.ContactPoolList;
             if (contactPoolList.Next != contactPoolList)
             {
-                // get first item in the pool.
                 c = contactPoolList.Next;
-                // Remove from the pool.
                 contactPoolList.Next = c.Next;
                 c.Next = null;
             }
 
-            // Edge+Polygon is non-symetrical due to the way Erin handles collision type registration.
             if ((type1 >= type2 || ((type1 == ShapeType.Edge) && (type2 == ShapeType.Polygon))) && !((type2 == ShapeType.Edge) && (type1 == ShapeType.Polygon)))
             {
                 if (c == null)
