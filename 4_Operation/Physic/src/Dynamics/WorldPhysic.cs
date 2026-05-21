@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
@@ -319,10 +318,22 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="step">The step</param>
         private void Solve(ref TimeStep step)
         {
-            GetIsland.Reset(BodyList.Count,
-                ContactManager.ContactCount,
-                JointList.Count,
-                ContactManager);
+            ResetFlags();
+
+            int stackSize = BodyList.Count;
+            if (stackSize > _stack.Length)
+            {
+                _stack = new Body[Math.Max(_stack.Length * 2, stackSize)];
+            }
+
+            BuildIslands(ref step);
+
+            ContactManager.FindNewContacts();
+        }
+
+        private void ResetFlags()
+        {
+            GetIsland.Reset(BodyList.Count, ContactManager.ContactCount, JointList.Count, ContactManager);
 
             foreach (Body b in BodyList)
             {
@@ -338,28 +349,15 @@ namespace Alis.Core.Physic.Dynamics
             {
                 j.IslandFlag = false;
             }
+        }
 
-            int stackSize = BodyList.Count;
-            if (stackSize > _stack.Length)
-            {
-                _stack = new Body[Math.Max(_stack.Length * 2, stackSize)];
-            }
-
+        private void BuildIslands(ref TimeStep step)
+        {
             for (int index = BodyList.List.Count - 1; index >= 0; index--)
             {
                 Body seed = BodyList.List[index];
 
-                if (seed.Island)
-                {
-                    continue;
-                }
-
-                if (!seed.Awake || !seed.Enabled)
-                {
-                    continue;
-                }
-
-                if (seed.GetBodyType == BodyType.Static)
+                if (seed.Island || !seed.Awake || !seed.Enabled || seed.GetBodyType == BodyType.Static)
                 {
                     continue;
                 }
@@ -367,14 +365,12 @@ namespace Alis.Core.Physic.Dynamics
                 GetIsland.Clear();
                 int stackCount = 0;
                 _stack[stackCount++] = seed;
-
                 seed.Island = true;
 
                 while (stackCount > 0)
                 {
                     Body b = _stack[--stackCount];
                     GetIsland.Add(b);
-
                     b.Awake = true;
 
                     if (b.GetBodyType == BodyType.Static)
@@ -382,78 +378,8 @@ namespace Alis.Core.Physic.Dynamics
                         continue;
                     }
 
-                    for (ContactEdge ce = b.ContactList; ce != null; ce = ce.Next)
-                    {
-                        Contact contact = ce.Contact;
-
-                        if (contact.IslandFlag)
-                        {
-                            continue;
-                        }
-
-                        if (!ce.Contact.Enabled || !ce.Contact.IsTouching)
-                        {
-                            continue;
-                        }
-
-                        bool sensorA = contact.FixtureA.GetIsSensor;
-                        bool sensorB = contact.FixtureB.GetIsSensor;
-                        if (sensorA || sensorB)
-                        {
-                            continue;
-                        }
-
-                        GetIsland.Add(contact);
-                        contact.IslandFlag = true;
-
-                        Body other = ce.Other;
-
-                        if (other.Island)
-                        {
-                            continue;
-                        }
-
-
-                        _stack[stackCount++] = other;
-
-                        other.Island = true;
-                    }
-
-                    for (JointEdge je = b.JointList; je != null; je = je.Next)
-                    {
-                        if (je.Joint.IslandFlag)
-                        {
-                            continue;
-                        }
-
-                        Body other = je.Other;
-
-                        if (other != null)
-                        {
-                            if (!other.Enabled)
-                            {
-                                continue;
-                            }
-
-                            GetIsland.Add(je.Joint);
-                            je.Joint.IslandFlag = true;
-
-                            if (other.Island)
-                            {
-                                continue;
-                            }
-
-
-                            _stack[stackCount++] = other;
-
-                            other.Island = true;
-                        }
-                        else
-                        {
-                            GetIsland.Add(je.Joint);
-                            je.Joint.IslandFlag = true;
-                        }
-                    }
+                    ProcessContactEdges(b, ref stackCount);
+                    ProcessJointEdges(b, ref stackCount);
                 }
 
                 GetIsland.Solve(ref step, ref _gravity);
@@ -470,20 +396,79 @@ namespace Alis.Core.Physic.Dynamics
 
             foreach (Body b in BodyList)
             {
-                if (!b.Island)
-                {
-                    continue;
-                }
-
-                if (b.GetBodyType == BodyType.Static)
+                if (!b.Island || b.GetBodyType == BodyType.Static)
                 {
                     continue;
                 }
 
                 b.SynchronizeFixtures();
             }
+        }
 
-            ContactManager.FindNewContacts();
+        private void ProcessContactEdges(Body b, ref int stackCount)
+        {
+            for (ContactEdge ce = b.ContactList; ce != null; ce = ce.Next)
+            {
+                Contact contact = ce.Contact;
+
+                if (contact.IslandFlag || !ce.Contact.Enabled || !ce.Contact.IsTouching)
+                {
+                    continue;
+                }
+
+                if (contact.FixtureA.GetIsSensor || contact.FixtureB.GetIsSensor)
+                {
+                    continue;
+                }
+
+                GetIsland.Add(contact);
+                contact.IslandFlag = true;
+
+                Body other = ce.Other;
+                if (other.Island)
+                {
+                    continue;
+                }
+
+                _stack[stackCount++] = other;
+                other.Island = true;
+            }
+        }
+
+        private void ProcessJointEdges(Body b, ref int stackCount)
+        {
+            for (JointEdge je = b.JointList; je != null; je = je.Next)
+            {
+                if (je.Joint.IslandFlag)
+                {
+                    continue;
+                }
+
+                Body other = je.Other;
+                if (other != null)
+                {
+                    if (!other.Enabled)
+                    {
+                        continue;
+                    }
+
+                    GetIsland.Add(je.Joint);
+                    je.Joint.IslandFlag = true;
+
+                    if (other.Island)
+                    {
+                        continue;
+                    }
+
+                    _stack[stackCount++] = other;
+                    other.Island = true;
+                }
+                else
+                {
+                    GetIsland.Add(je.Joint);
+                    je.Joint.IslandFlag = true;
+                }
+            }
         }
 
         /// <summary>
