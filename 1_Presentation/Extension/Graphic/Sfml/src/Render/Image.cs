@@ -44,6 +44,8 @@ namespace Alis.Extension.Graphic.Sfml.Render
     /// </summary>
     public class Image : ObjectBase
     {
+        private const string _resourceName = "image";
+
         /// <summary>
         ///     Construct the image with black color
         /// </summary>
@@ -66,7 +68,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("image");
+                throw new LoadingFailedException(_resourceName);
             }
         }
 
@@ -80,7 +82,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("image", filename);
+                throw new LoadingFailedException(_resourceName, filename);
             }
         }
 
@@ -100,7 +102,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
 
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("image");
+                throw new LoadingFailedException(_resourceName);
             }
         }
 
@@ -125,7 +127,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
 
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("image");
+                throw new LoadingFailedException(_resourceName);
             }
         }
 
@@ -146,7 +148,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
 
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("image");
+                throw new LoadingFailedException(_resourceName);
             }
         }
 
