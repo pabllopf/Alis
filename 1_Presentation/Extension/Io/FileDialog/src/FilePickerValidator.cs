@@ -201,25 +201,35 @@ namespace Alis.Extension.Io.FileDialog
                 return true;
             }
 
+            if (!HasSelectedPaths(result))
+                return false;
+
+            if (HasTooManyPaths(result, options))
+                return false;
+
+            return ValidateSelectedPaths(result.SelectedPaths, options);
+        }
+
+        private static bool HasSelectedPaths(FilePickerResult result)
+        {
             if (result.SelectedPaths == null || result.SelectedPaths.Count == 0)
             {
                 Logger.Warning("Result has no selected paths.");
                 return false;
             }
 
+            return true;
+        }
+
+        private static bool HasTooManyPaths(FilePickerResult result, FilePickerOptions options)
+        {
             if (!options.AllowMultiple && (result.SelectedPaths.Count > 1))
             {
                 Logger.Warning("Result has multiple paths but AllowMultiple is false.");
-                return false;
+                return true;
             }
 
-            bool isValid = ValidateSelectedPaths(result.SelectedPaths, options);
-            if (isValid)
-            {
-                Logger.Trace("FilePickerResult validation passed.");
-            }
-
-            return isValid;
+            return false;
         }
 
         /// <summary>
