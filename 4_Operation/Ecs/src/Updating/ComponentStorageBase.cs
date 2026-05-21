@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     The inital buffer
         /// </summary>
-        public Array Buffer { get; set; } = initalBuffer;
+        public Array Buffer = initalBuffer;
 
         /// <summary>
         ///     Gets the value of the component id
