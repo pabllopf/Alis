@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Kernel.Events;
@@ -76,8 +75,20 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         public void Dispose()
         {
-            Recycled.Dispose();
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Disposes the instance
+        /// </summary>
+        /// <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Recycled.Dispose();
+            }
         }
 
         /// <summary>
