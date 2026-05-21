@@ -210,12 +210,8 @@ namespace Alis.Core.Physic.Dynamics
                     int iA = ceB.Contact.ChildIndexA;
                     int iB = ceB.Contact.ChildIndexB;
 
-                    if ((fA == fixtureA) && (fB == fixtureB) && (iA == indexA) && (iB == indexB))
-                    {
-                        return true;
-                    }
-
-                    if ((fA == fixtureB) && (fB == fixtureA) && (iA == indexB) && (iB == indexA))
+                    if ((fA == fixtureA && fB == fixtureB && iA == indexA && iB == indexB) ||
+                        (fA == fixtureB && fB == fixtureA && iA == indexB && iB == indexA))
                     {
                         return true;
                     }
