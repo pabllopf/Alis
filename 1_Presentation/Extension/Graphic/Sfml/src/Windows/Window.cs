@@ -481,190 +481,102 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             switch (e.Type)
             {
                 case EventType.Closed:
-                    if (Closed != null)
-                    {
-                        Closed(this, EventArgs.Empty);
-                    }
-
+                    InvokeEventHandler(Closed);
                     break;
 
                 case EventType.GainedFocus:
-                    if (GainedFocus != null)
-                    {
-                        GainedFocus(this, EventArgs.Empty);
-                    }
-
+                    InvokeEventHandler(GainedFocus);
                     break;
 
                 case EventType.JoystickButtonPressed:
-                    if (JoystickButtonPressed != null)
-                    {
-                        JoystickButtonPressed(this, new JoystickButtonEventArgs(e.JoystickButton));
-                    }
-
+                    InvokeEventHandler(JoystickButtonPressed, new JoystickButtonEventArgs(e.JoystickButton));
                     break;
 
                 case EventType.JoystickButtonReleased:
-                    if (JoystickButtonReleased != null)
-                    {
-                        JoystickButtonReleased(this, new JoystickButtonEventArgs(e.JoystickButton));
-                    }
-
+                    InvokeEventHandler(JoystickButtonReleased, new JoystickButtonEventArgs(e.JoystickButton));
                     break;
 
                 case EventType.JoystickMoved:
-                    if (JoystickMoved != null)
-                    {
-                        JoystickMoved(this, new JoystickMoveEventArgs(e.JoystickMove));
-                    }
-
+                    InvokeEventHandler(JoystickMoved, new JoystickMoveEventArgs(e.JoystickMove));
                     break;
 
                 case EventType.JoystickConnected:
-                    if (JoystickConnected != null)
-                    {
-                        JoystickConnected(this, new JoystickConnectEventArgs(e.JoystickConnect));
-                    }
-
+                    InvokeEventHandler(JoystickConnected, new JoystickConnectEventArgs(e.JoystickConnect));
                     break;
 
                 case EventType.JoystickDisconnected:
-                    if (JoystickDisconnected != null)
-                    {
-                        JoystickDisconnected(this, new JoystickConnectEventArgs(e.JoystickConnect));
-                    }
-
+                    InvokeEventHandler(JoystickDisconnected, new JoystickConnectEventArgs(e.JoystickConnect));
                     break;
 
                 case EventType.KeyPressed:
-                    if (KeyPressed != null)
-                    {
-                        KeyPressed(this, new KeyEventArgs(e.Key));
-                    }
-
+                    InvokeEventHandler(KeyPressed, new KeyEventArgs(e.Key));
                     break;
 
                 case EventType.KeyReleased:
-                    if (KeyReleased != null)
-                    {
-                        KeyReleased(this, new KeyEventArgs(e.Key));
-                    }
-
+                    InvokeEventHandler(KeyReleased, new KeyEventArgs(e.Key));
                     break;
 
                 case EventType.LostFocus:
-                    if (LostFocus != null)
-                    {
-                        LostFocus(this, EventArgs.Empty);
-                    }
-
+                    InvokeEventHandler(LostFocus);
                     break;
 
                 case EventType.MouseButtonPressed:
-                    if (MouseButtonPressed != null)
-                    {
-                        MouseButtonPressed(this, new MouseButtonEventArgs(e.MouseButton));
-                    }
-
+                    InvokeEventHandler(MouseButtonPressed, new MouseButtonEventArgs(e.MouseButton));
                     break;
 
                 case EventType.MouseButtonReleased:
-                    if (MouseButtonReleased != null)
-                    {
-                        MouseButtonReleased(this, new MouseButtonEventArgs(e.MouseButton));
-                    }
-
+                    InvokeEventHandler(MouseButtonReleased, new MouseButtonEventArgs(e.MouseButton));
                     break;
 
                 case EventType.MouseEntered:
-                    if (MouseEntered != null)
-                    {
-                        MouseEntered(this, EventArgs.Empty);
-                    }
-
+                    InvokeEventHandler(MouseEntered);
                     break;
 
                 case EventType.MouseLeft:
-                    if (MouseLeft != null)
-                    {
-                        MouseLeft(this, EventArgs.Empty);
-                    }
-
+                    InvokeEventHandler(MouseLeft);
                     break;
 
                 case EventType.MouseMoved:
-                    if (MouseMoved != null)
-                    {
-                        MouseMoved(this, new MouseMoveEventArgs(e.MouseMove));
-                    }
-
+                    InvokeEventHandler(MouseMoved, new MouseMoveEventArgs(e.MouseMove));
                     break;
 
                 case EventType.MouseWheelMoved:
-                    if (MouseWheelMoved != null)
-                    {
-                        MouseWheelMoved(this, new MouseWheelEventArgs(e.MouseWheel));
-                    }
-
+                    InvokeEventHandler(MouseWheelMoved, new MouseWheelEventArgs(e.MouseWheel));
                     break;
 
                 case EventType.MouseWheelScrolled:
-                    if (MouseWheelScrolled != null)
-                    {
-                        MouseWheelScrolled(this, new MouseWheelScrollEventArgs(e.MouseWheelScroll));
-                    }
-
+                    InvokeEventHandler(MouseWheelScrolled, new MouseWheelScrollEventArgs(e.MouseWheelScroll));
                     break;
 
                 case EventType.Resized:
-                    if (Resized != null)
-                    {
-                        Resized(this, new SizeEventArgs(e.Size));
-                    }
-
+                    InvokeEventHandler(Resized, new SizeEventArgs(e.Size));
                     break;
 
                 case EventType.TextEntered:
-                    if (TextEntered != null)
-                    {
-                        TextEntered(this, new TextEventArgs(e.Text));
-                    }
-
+                    InvokeEventHandler(TextEntered, new TextEventArgs(e.Text));
                     break;
 
                 case EventType.TouchBegan:
-                    if (TouchBegan != null)
-                    {
-                        TouchBegan(this, new TouchEventArgs(e.Touch));
-                    }
-
+                    InvokeEventHandler(TouchBegan, new TouchEventArgs(e.Touch));
                     break;
 
                 case EventType.TouchMoved:
-                    if (TouchMoved != null)
-                    {
-                        TouchMoved(this, new TouchEventArgs(e.Touch));
-                    }
-
+                    InvokeEventHandler(TouchMoved, new TouchEventArgs(e.Touch));
                     break;
 
                 case EventType.TouchEnded:
-                    if (TouchEnded != null)
-                    {
-                        TouchEnded(this, new TouchEventArgs(e.Touch));
-                    }
-
+                    InvokeEventHandler(TouchEnded, new TouchEventArgs(e.Touch));
                     break;
 
                 case EventType.SensorChanged:
-                    if (SensorChanged != null)
-                    {
-                        SensorChanged(this, new SensorEventArgs(e.Sensor));
-                    }
-
+                    InvokeEventHandler(SensorChanged, new SensorEventArgs(e.Sensor));
                     break;
             }
         }
+
+        private void InvokeEventHandler(EventHandler handler) => handler?.Invoke(this, EventArgs.Empty);
+
+        private void InvokeEventHandler<TEventArgs>(EventHandler<TEventArgs> handler, TEventArgs args) where TEventArgs : EventArgs => handler?.Invoke(this, args);
 
         /// <summary>Event handler for the Closed event</summary>
         public event EventHandler Closed;
