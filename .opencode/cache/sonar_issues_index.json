@@ -7862,253 +7862,253 @@
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1271,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32ZU": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1288,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32ZV": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1309,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32ZW": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1325,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32ZX": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1334,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32ZY": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1364,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32ZZ": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1382,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Za": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1400,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zb": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1420,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zc": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1435,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zd": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1461,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Ze": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1470,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zf": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1506,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zg": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1516,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zh": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1527,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zi": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1536,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zj": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1545,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zk": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1562,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zl": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1580,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32YN": {
     "ruleKey": "csharpsquid:S4136",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1604,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zm": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 1604,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM30MbZ4NfML32Zn": {
     "ruleKey": "csharpsquid:S112",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs",
     "line": 2005,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM3bMbZ4NfML32XG": {
     "ruleKey": "csharpsquid:S4035",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
     "line": 47,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM3bMbZ4NfML32XI": {
     "ruleKey": "csharpsquid:S1450",
@@ -8280,143 +8280,143 @@
     "file": "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
     "line": 228,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM3cMbZ4NfML32Xb": {
     "ruleKey": "csharpsquid:S112",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
     "line": 251,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM2zMbZ4NfML32W8": {
     "ruleKey": "csharpsquid:S101",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/Structs/EGLContext.cs",
     "line": 39,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM2YMbZ4NfML32W4": {
     "ruleKey": "csharpsquid:S101",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/Structs/GLXContext.cs",
     "line": 39,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM3MMbZ4NfML32W_": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs",
     "line": 65,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvM3MMbZ4NfML32XA": {
     "ruleKey": "csharpsquid:S4200",
     "file": "1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs",
     "line": 77,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNKBMbZ4NfML32tN": {
     "ruleKey": "csharpsquid:S112",
     "file": "1_Presentation/Extension/Updater/src/UpdateManager.cs",
     "line": 148,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNRwMbZ4NfML32xZ": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
     "line": 129,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNksMbZ4NfML32-z": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Audio/src/Players/WindowsPlayer.cs",
     "line": 299,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNj8MbZ4NfML329f": {
     "ruleKey": "csharpsquid:S4200",
     "file": "4_Operation/Graphic/src/Platforms/Osx/Native/ObjectiveCInterop.cs",
     "line": 227,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNj8MbZ4NfML329g": {
     "ruleKey": "csharpsquid:S4200",
     "file": "4_Operation/Graphic/src/Platforms/Osx/Native/ObjectiveCInterop.cs",
     "line": 234,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNakMbZ4NfML3207": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Physic/src/Collisions/Simplex.cs",
     "line": 245,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNTEMbZ4NfML32x_": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/DelaunayTriangle.cs",
     "line": 103,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNTEMbZ4NfML32x-": {
     "ruleKey": "csharpsquid:S125",
@@ -8434,198 +8434,198 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/AdvancingFront.cs",
     "line": 176,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNS6MbZ4NfML32x7": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs",
     "line": 649,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNWQMbZ4NfML32yz": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Physic/src/Common/Path.cs",
     "line": 242,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNWZMbZ4NfML32y1": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Physic/src/Common/PathManager.cs",
     "line": 101,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNVgMbZ4NfML32yh": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Physic/src/Common/PolygonTools.cs",
     "line": 102,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNVgMbZ4NfML32yi": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Physic/src/Common/PolygonTools.cs",
     "line": 107,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNQ1MbZ4NfML32xF": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 606,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNQMMbZ4NfML32wY": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Physic/src/Dynamics/ContactManager.cs",
     "line": 591,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNDhMbZ4NfML32rY": {
     "ruleKey": "csharpsquid:S107",
     "file": "1_Presentation/Extension/Media/FFmpeg/src/Video/Models/VideoMetadata.cs",
     "line": 66,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNFDMbZ4NfML32sI": {
     "ruleKey": "csharpsquid:S3925",
     "file": "1_Presentation/Extension/Network/src/Exceptions/EntityTooLargeException.cs",
     "line": 39,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNFcMbZ4NfML32sL": {
     "ruleKey": "csharpsquid:S3925",
     "file": "1_Presentation/Extension/Network/src/Exceptions/InvalidHttpResponseCodeException.cs",
     "line": 39,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNFlMbZ4NfML32sM": {
     "ruleKey": "csharpsquid:S3925",
     "file": "1_Presentation/Extension/Network/src/Exceptions/MaskKeyLengthException.cs",
     "line": 39,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNEzMbZ4NfML32sG": {
     "ruleKey": "csharpsquid:S3925",
     "file": "1_Presentation/Extension/Network/src/Exceptions/SecWebSocketKeyMissingException.cs",
     "line": 39,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNFUMbZ4NfML32sK": {
     "ruleKey": "csharpsquid:S3925",
     "file": "1_Presentation/Extension/Network/src/Exceptions/ServerListenerSocketException.cs",
     "line": 39,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNFtMbZ4NfML32sN": {
     "ruleKey": "csharpsquid:S3925",
     "file": "1_Presentation/Extension/Network/src/Exceptions/WebSocketBufferOverflowException.cs",
     "line": 39,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNE7MbZ4NfML32sH": {
     "ruleKey": "csharpsquid:S3925",
     "file": "1_Presentation/Extension/Network/src/Exceptions/WebSocketHandshakeFailedException.cs",
     "line": 39,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNFLMbZ4NfML32sJ": {
     "ruleKey": "csharpsquid:S3925",
     "file": "1_Presentation/Extension/Network/src/Exceptions/WebSocketVersionNotSupportedException.cs",
     "line": 39,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNCrMbZ4NfML32rJ": {
     "ruleKey": "csharpsquid:S3776",
     "file": "1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs",
     "line": 113,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNJ0MbZ4NfML32tK": {
     "ruleKey": "csharpsquid:S125",
@@ -8665,264 +8665,264 @@
     "file": "4_Operation/Ecs/src/Scene.cs",
     "line": 175,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNgiMbZ4NfML325A": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Ecs/src/Scene.cs",
     "line": 180,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNgiMbZ4NfML325N": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Ecs/src/Scene.cs",
     "line": 249,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNezMbZ4NfML3237": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs",
     "line": 45,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNezMbZ4NfML3238": {
     "ruleKey": "csharpsquid:S2223",
     "file": "4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs",
     "line": 45,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNcgMbZ4NfML322K": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Ecs/src/Collections/EnumerableHelpers.cs",
     "line": 58,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNoUMbZ4NfML32_q": {
     "ruleKey": "csharpsquid:S4136",
     "file": "6_Ideation/Math/src/CustomMathF.cs",
     "line": 205,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNoUMbZ4NfML32_r": {
     "ruleKey": "csharpsquid:S4136",
     "file": "6_Ideation/Math/src/CustomMathF.cs",
     "line": 213,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNiyMbZ4NfML3285": {
     "ruleKey": "csharpsquid:S1144",
     "file": "4_Operation/Graphic/src/OpenGL/Gl.cs",
     "line": 302,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNiyMbZ4NfML3286": {
     "ruleKey": "csharpsquid:S1144",
     "file": "4_Operation/Graphic/src/OpenGL/Gl.cs",
     "line": 323,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNp9MbZ4NfML33AI": {
     "ruleKey": "csharpsquid:S2326",
     "file": "6_Ideation/Math/src/Collections/FastImmutableArray.cs",
     "line": 964,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNp9MbZ4NfML33AJ": {
     "ruleKey": "csharpsquid:S2326",
     "file": "6_Ideation/Math/src/Collections/FastImmutableArray.cs",
     "line": 979,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNp9MbZ4NfML33AK": {
     "ruleKey": "csharpsquid:S2326",
     "file": "6_Ideation/Math/src/Collections/FastImmutableArray.cs",
     "line": 989,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNp9MbZ4NfML33AF": {
     "ruleKey": "csharpsquid:S4136",
     "file": "6_Ideation/Math/src/Collections/FastImmutableArray.cs",
     "line": 237,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNp9MbZ4NfML33AG": {
     "ruleKey": "csharpsquid:S4136",
     "file": "6_Ideation/Math/src/Collections/FastImmutableArray.cs",
     "line": 275,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNp9MbZ4NfML33AH": {
     "ruleKey": "csharpsquid:S4136",
     "file": "6_Ideation/Math/src/Collections/FastImmutableArray.cs",
     "line": 285,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNp9MbZ4NfML33AN": {
     "ruleKey": "csharpsquid:S112",
     "file": "6_Ideation/Math/src/Collections/FastImmutableArray.cs",
     "line": 302,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNqIMbZ4NfML33AO": {
     "ruleKey": "csharpsquid:S2436",
     "file": "6_Ideation/Math/src/HashCode.cs",
     "line": 188,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNqIMbZ4NfML33AP": {
     "ruleKey": "csharpsquid:S2436",
     "file": "6_Ideation/Math/src/HashCode.cs",
     "line": 223,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNqIMbZ4NfML33AR": {
     "ruleKey": "csharpsquid:S2436",
     "file": "6_Ideation/Math/src/HashCode.cs",
     "line": 263,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNqIMbZ4NfML33AQ": {
     "ruleKey": "csharpsquid:S2436",
     "file": "6_Ideation/Math/src/HashCode.cs",
     "line": 307,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNqIMbZ4NfML33AS": {
     "ruleKey": "csharpsquid:S2436",
     "file": "6_Ideation/Math/src/HashCode.cs",
     "line": 355,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvMkuMbZ4NfML32BF": {
     "ruleKey": "csharpsquid:S2326",
     "file": "2_Application/Alis/src/Builder/Core/Ecs/System/ManagerBuilders/Scenes/SceneManagerBuilder.cs",
     "line": 68,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNdHMbZ4NfML322c": {
     "ruleKey": "csharpsquid:S927",
     "file": "4_Operation/Ecs/src/Collections/FastestStack.cs",
     "line": 205,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNdHMbZ4NfML322a": {
     "ruleKey": "csharpsquid:S125",
@@ -8940,143 +8940,143 @@
     "file": "4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
     "line": 111,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNgrMbZ4NfML325e": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/EntityUpdate.cs",
     "line": 48,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNhRMbZ4NfML327o": {
     "ruleKey": "csharpsquid:S907",
     "file": "4_Operation/Ecs/src/GameObject.cs",
     "line": 223,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNhRMbZ4NfML327p": {
     "ruleKey": "csharpsquid:S907",
     "file": "4_Operation/Ecs/src/GameObject.cs",
     "line": 230,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNgSMbZ4NfML3243": {
     "ruleKey": "csharpsquid:S2344",
     "file": "4_Operation/Ecs/src/GameObjectFlags.cs",
     "line": 50,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbcMbZ4NfML321k": {
     "ruleKey": "csharpsquid:S1117",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 157,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbNMbZ4NfML321J": {
     "ruleKey": "csharpsquid:S2223",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/GlobalWorldTables.cs",
     "line": 55,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbNMbZ4NfML321K": {
     "ruleKey": "csharpsquid:S2223",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/GlobalWorldTables.cs",
     "line": 60,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNb6MbZ4NfML3214": {
     "ruleKey": "csharpsquid:S2178",
     "file": "4_Operation/Ecs/src/Kernel/CommandBuffer.cs",
     "line": 241,
     "severity": "BLOCKER",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNb6MbZ4NfML3215": {
     "ruleKey": "csharpsquid:S2178",
     "file": "4_Operation/Ecs/src/Kernel/CommandBuffer.cs",
     "line": 241,
     "severity": "BLOCKER",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNb6MbZ4NfML3213": {
     "ruleKey": "csharpsquid:S2178",
     "file": "4_Operation/Ecs/src/Kernel/CommandBuffer.cs",
     "line": 242,
     "severity": "BLOCKER",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNcEMbZ4NfML3219": {
     "ruleKey": "csharpsquid:S2743",
     "file": "4_Operation/Ecs/src/Kernel/Component.cs",
     "line": 49,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNcEMbZ4NfML322C": {
     "ruleKey": "csharpsquid:S3877",
     "file": "4_Operation/Ecs/src/Kernel/Component.cs",
     "line": 98,
     "severity": "BLOCKER",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNgiMbZ4NfML325Q": {
     "ruleKey": "csharpsquid:S2589",
@@ -9094,11 +9094,11 @@
     "file": "4_Operation/Ecs/src/Scene.cs",
     "line": 770,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNeYMbZ4NfML323t": {
     "ruleKey": "csharpsquid:S1940",
@@ -9116,22 +9116,22 @@
     "file": "4_Operation/Ecs/src/Systems/GameObjectRefTuple.cs",
     "line": 42,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNdQMbZ4NfML322f": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Ecs/src/Systems/GameObjectRefTuple.cs",
     "line": 47,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNd5MbZ4NfML322w": {
     "ruleKey": "csharpsquid:S3267",
@@ -9149,55 +9149,55 @@
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 69,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNftMbZ4NfML324c": {
     "ruleKey": "csharpsquid:S927",
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 107,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNftMbZ4NfML324d": {
     "ruleKey": "csharpsquid:S927",
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 130,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNf1MbZ4NfML324h": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Ecs/src/Updating/ComponentStorageBase.cs",
     "line": 47,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNfjMbZ4NfML324Z": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Ecs/src/Updating/GenerationServices.cs",
     "line": 96,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNcqMbZ4NfML322L": {
     "ruleKey": "csharpsquid:S1940",
@@ -9226,11 +9226,11 @@
     "file": "4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
     "line": 136,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNcqMbZ4NfML322Q": {
     "ruleKey": "csharpsquid:S1940",
@@ -9248,11 +9248,11 @@
     "file": "4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
     "line": 144,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNcqMbZ4NfML322R": {
     "ruleKey": "csharpsquid:S1940",
@@ -9303,110 +9303,110 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 411,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbcMbZ4NfML321q": {
     "ruleKey": "csharpsquid:S907",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 412,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbcMbZ4NfML321r": {
     "ruleKey": "csharpsquid:S907",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 413,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbcMbZ4NfML321s": {
     "ruleKey": "csharpsquid:S907",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 414,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbcMbZ4NfML321t": {
     "ruleKey": "csharpsquid:S907",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 415,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbcMbZ4NfML321u": {
     "ruleKey": "csharpsquid:S907",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 416,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbcMbZ4NfML321v": {
     "ruleKey": "csharpsquid:S907",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 417,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbcMbZ4NfML321w": {
     "ruleKey": "csharpsquid:S907",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 418,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbcMbZ4NfML321x": {
     "ruleKey": "csharpsquid:S907",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 419,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbcMbZ4NfML321y": {
     "ruleKey": "csharpsquid:S907",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 420,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbNMbZ4NfML321I": {
     "ruleKey": "csharpsquid:S125",
@@ -9424,143 +9424,143 @@
     "file": "4_Operation/Ecs/src/Kernel/Component.cs",
     "line": 137,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbwMbZ4NfML3211": {
     "ruleKey": "csharpsquid:S4050",
     "file": "4_Operation/Ecs/src/Kernel/Events/GenericEvent.cs",
     "line": 37,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNbmMbZ4NfML3210": {
     "ruleKey": "csharpsquid:S3246",
     "file": "4_Operation/Ecs/src/Kernel/Events/IGenericAction.cs",
     "line": 63,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvMjfMbZ4NfML32Az": {
     "ruleKey": "csharpsquid:S107",
     "file": "2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs",
     "line": 114,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvMjfMbZ4NfML32Ay": {
     "ruleKey": "csharpsquid:S1144",
     "file": "2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs",
     "line": 245,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNP-MbZ4NfML32wF": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/ControllerTransform.cs",
     "line": 43,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNP-MbZ4NfML32wG": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/ControllerTransform.cs",
     "line": 48,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNP-MbZ4NfML32wJ": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/ControllerTransform.cs",
     "line": 53,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvMkjMbZ4NfML32BE": {
     "ruleKey": "csharpsquid:S2326",
     "file": "2_Application/Alis/src/Builder/Core/Ecs/Entity/SceneBuilder.cs",
     "line": 73,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNnWMbZ4NfML32_c": {
     "ruleKey": "csharpsquid:S3246",
     "file": "6_Ideation/Fluent/src/IBuild.cs",
     "line": 37,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvMkaMbZ4NfML32BD": {
     "ruleKey": "csharpsquid:S4136",
     "file": "2_Application/Alis/src/Builder/Core/Ecs/Entity/TransformBuilder.cs",
     "line": 74,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNR3MbZ4NfML32xe": {
     "ruleKey": "csharpsquid:S3442",
     "file": "4_Operation/Physic/src/Common/Logic/PhysicsLogic.cs",
     "line": 49,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNa9MbZ4NfML321A": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Controllers/GravityController.cs",
     "line": 196,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvMh6MbZ4NfML32AT": {
     "ruleKey": "csharpsquid:S125",
@@ -9589,22 +9589,22 @@
     "file": "2_Application/Alis/src/Core/Ecs/Systems/Execution/InternalRuntime.cs",
     "line": 183,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvMejMbZ4NfML31_6": {
     "ruleKey": "csharpsquid:S108",
     "file": "2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs",
     "line": 161,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvMeaMbZ4NfML31_2": {
     "ruleKey": "csharpsquid:S125",
@@ -9633,44 +9633,44 @@
     "file": "2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs",
     "line": 204,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvMiDMbZ4NfML32AV": {
     "ruleKey": "csharpsquid:S3246",
     "file": "2_Application/Alis/src/Core/Ecs/Systems/Scope/IContextHandler.cs",
     "line": 35,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNe7MbZ4NfML323_": {
     "ruleKey": "csharpsquid:S3376",
     "file": "4_Operation/Ecs/src/Redifinition/IsExternalInit.cs",
     "line": 39,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNe7MbZ4NfML324A": {
     "ruleKey": "csharpsquid:S3993",
     "file": "4_Operation/Ecs/src/Redifinition/IsExternalInit.cs",
     "line": 39,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNQeMbZ4NfML32wa": {
     "ruleKey": "csharpsquid:S125",
@@ -9699,198 +9699,198 @@
     "file": "1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/SimplePriorityQueue.cs",
     "line": 664,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNczMbZ4NfML322X": {
     "ruleKey": "csharpsquid:S1117",
     "file": "4_Operation/Ecs/src/Collections/FastLookup.cs",
     "line": 83,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNftMbZ4NfML324e": {
     "ruleKey": "csharpsquid:S927",
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 169,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNftMbZ4NfML324f": {
     "ruleKey": "csharpsquid:S927",
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 187,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNftMbZ4NfML324a": {
     "ruleKey": "csharpsquid:S2953",
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 230,
     "severity": "BLOCKER",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNftMbZ4NfML324g": {
     "ruleKey": "csharpsquid:S1186",
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 230,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNTfMbZ4NfML32yE": {
     "ruleKey": "csharpsquid:S3267",
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Polygon/Polygon.cs",
     "line": 180,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNQ1MbZ4NfML32xG": {
     "ruleKey": "csharpsquid:S1066",
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 682,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNQ1MbZ4NfML32xH": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 824,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNhpMbZ4NfML328s": {
     "ruleKey": "csharpsquid:S2344",
     "file": "4_Operation/Graphic/src/OpenGL/Enums/PolygonModeEnum.cs",
     "line": 35,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNB3MbZ4NfML32lk": {
     "ruleKey": "csharpsquid:S4136",
     "file": "1_Presentation/Extension/Graphic/Sdl2/src/NativeSdl.cs",
     "line": 2555,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNArMbZ4NfML32kZ": {
     "ruleKey": "csharpsquid:S4136",
     "file": "1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs",
     "line": 1729,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNimMbZ4NfML3283": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Graphic/src/OpenGL/Constructs/GLShader.cs",
     "line": 58,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNiVMbZ4NfML328v": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs",
     "line": 87,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNiVMbZ4NfML328x": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs",
     "line": 185,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNiVMbZ4NfML328z": {
     "ruleKey": "csharpsquid:S112",
     "file": "4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs",
     "line": 217,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNNsMbZ4NfML32uu": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Dynamics/Island.cs",
     "line": 202,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNGzMbZ4NfML32se": {
     "ruleKey": "csharpsquid:S6966",
     "file": "1_Presentation/Extension/Network/src/Internal/WebSocketImplementation.cs",
     "line": 520,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNGzMbZ4NfML32sf": {
     "ruleKey": "csharpsquid:S2589",
@@ -9908,924 +9908,924 @@
     "file": "4_Operation/Physic/src/Common/Logic/FilterData.cs",
     "line": 65,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNRXMbZ4NfML32xQ": {
     "ruleKey": "csharpsquid:S1066",
     "file": "4_Operation/Physic/src/Common/Logic/SimpleExplosion.cs",
     "line": 76,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNWhMbZ4NfML32y2": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Common/Mat22.cs",
     "line": 55,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNWhMbZ4NfML32y3": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Common/Mat22.cs",
     "line": 64,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNWGMbZ4NfML32yv": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Common/PolygonManipulation/CuttingTools.cs",
     "line": 50,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOTMbZ4NfML32u4": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Body.cs",
     "line": 105,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOTMbZ4NfML32u5": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Body.cs",
     "line": 151,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPZMbZ4NfML32v3": {
     "ruleKey": "csharpsquid:S2292",
     "file": "4_Operation/Physic/src/Dynamics/Fixture.cs",
     "line": 239,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPZMbZ4NfML32v4": {
     "ruleKey": "csharpsquid:S2292",
     "file": "4_Operation/Physic/src/Dynamics/Fixture.cs",
     "line": 250,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPjMbZ4NfML32v6": {
     "ruleKey": "csharpsquid:S4136",
     "file": "4_Operation/Physic/src/Dynamics/MathUtils.cs",
     "line": 110,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNQeMbZ4NfML32ww": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
     "line": 1209,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNaaMbZ4NfML3206": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Collisions/AABB.cs",
     "line": 320,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNY-MbZ4NfML320P": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 707,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNYfMbZ4NfML32zy": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/EPAxis.cs",
     "line": 67,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNXpMbZ4NfML32zZ": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/ManifoldPoint.cs",
     "line": 74,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNaAMbZ4NfML320p": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/ReferenceFace.cs",
     "line": 50,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNaBMbZ4NfML320q": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/ReferenceFace.cs",
     "line": 58,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNaBMbZ4NfML320r": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/ReferenceFace.cs",
     "line": 66,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNaBMbZ4NfML320s": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/ReferenceFace.cs",
     "line": 74,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNaBMbZ4NfML320t": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/ReferenceFace.cs",
     "line": 82,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNaBMbZ4NfML320u": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/ReferenceFace.cs",
     "line": 90,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNaBMbZ4NfML320v": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/ReferenceFace.cs",
     "line": 98,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNaRMbZ4NfML3201": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/TOIOutput.cs",
     "line": 49,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNXYMbZ4NfML32zP": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
     "line": 59,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNXYMbZ4NfML32zQ": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
     "line": 67,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNXYMbZ4NfML32zR": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
     "line": 75,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNXYMbZ4NfML32zS": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
     "line": 83,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNXYMbZ4NfML32zT": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
     "line": 91,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNXYMbZ4NfML32zU": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
     "line": 104,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNS6MbZ4NfML32x3": {
     "ruleKey": "csharpsquid:S1066",
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs",
     "line": 334,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNS6MbZ4NfML32x4": {
     "ruleKey": "csharpsquid:S1066",
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs",
     "line": 337,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNS6MbZ4NfML32x5": {
     "ruleKey": "csharpsquid:S1066",
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs",
     "line": 463,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNS6MbZ4NfML32x6": {
     "ruleKey": "csharpsquid:S1066",
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs",
     "line": 466,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNQ1MbZ4NfML32w-": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 68,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNN1MbZ4NfML32uy": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Complex.cs",
     "line": 48,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNN1MbZ4NfML32uv": {
     "ruleKey": "csharpsquid:S4136",
     "file": "4_Operation/Physic/src/Dynamics/Complex.cs",
     "line": 171,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNN1MbZ4NfML32uw": {
     "ruleKey": "csharpsquid:S4136",
     "file": "4_Operation/Physic/src/Dynamics/Complex.cs",
     "line": 180,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPAMbZ4NfML32va": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/VelocityConstraintPoint.cs",
     "line": 52,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPAMbZ4NfML32vb": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/VelocityConstraintPoint.cs",
     "line": 57,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNZVMbZ4NfML320a": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/Distance.cs",
     "line": 66,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNZVMbZ4NfML320b": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/Distance.cs",
     "line": 78,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNZVMbZ4NfML320c": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/Distance.cs",
     "line": 90,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNZVMbZ4NfML320d": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Collisions/Distance.cs",
     "line": 109,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNObMbZ4NfML32u-": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
     "line": 48,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNObMbZ4NfML32u_": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
     "line": 53,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNObMbZ4NfML32vA": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
     "line": 58,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNObMbZ4NfML32vB": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
     "line": 63,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNObMbZ4NfML32vC": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
     "line": 68,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNObMbZ4NfML32vD": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
     "line": 73,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNObMbZ4NfML32vE": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
     "line": 78,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNObMbZ4NfML32vF": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
     "line": 83,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNObMbZ4NfML32vG": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
     "line": 88,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNObMbZ4NfML32vH": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactPositionConstraint.cs",
     "line": 93,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPOMbZ4NfML32vj": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
     "line": 64,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPOMbZ4NfML32vk": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
     "line": 69,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPOMbZ4NfML32vl": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
     "line": 79,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPOMbZ4NfML32vm": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
     "line": 94,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPOMbZ4NfML32vp": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
     "line": 221,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPOMbZ4NfML32vq": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
     "line": 414,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOkMbZ4NfML32vI": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "line": 48,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOkMbZ4NfML32vJ": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "line": 53,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOkMbZ4NfML32vK": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "line": 58,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOkMbZ4NfML32vL": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "line": 63,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOkMbZ4NfML32vM": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "line": 68,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOkMbZ4NfML32vN": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "line": 73,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOkMbZ4NfML32vP": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "line": 83,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOkMbZ4NfML32vQ": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "line": 88,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOkMbZ4NfML32vR": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "line": 93,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOkMbZ4NfML32vS": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "line": 98,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNOkMbZ4NfML32vT": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactVelocityConstraint.cs",
     "line": 103,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPAMbZ4NfML32vY": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/VelocityConstraintPoint.cs",
     "line": 42,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPAMbZ4NfML32vZ": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/VelocityConstraintPoint.cs",
     "line": 47,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPAMbZ4NfML32vc": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/VelocityConstraintPoint.cs",
     "line": 62,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPAMbZ4NfML32vd": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/VelocityConstraintPoint.cs",
     "line": 67,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPAMbZ4NfML32ve": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/VelocityConstraintPoint.cs",
     "line": 72,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNMCMbZ4NfML32t_": {
     "ruleKey": "csharpsquid:S1117",
     "file": "4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs",
     "line": 534,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNMCMbZ4NfML32uA": {
     "ruleKey": "csharpsquid:S1117",
     "file": "4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs",
     "line": 534,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNMCMbZ4NfML32uB": {
     "ruleKey": "csharpsquid:S1117",
     "file": "4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs",
     "line": 535,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNMCMbZ4NfML32uC": {
     "ruleKey": "csharpsquid:S1117",
     "file": "4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs",
     "line": 535,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNMCMbZ4NfML32uD": {
     "ruleKey": "csharpsquid:S1117",
     "file": "4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs",
     "line": 535,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNMCMbZ4NfML32uE": {
     "ruleKey": "csharpsquid:S1117",
     "file": "4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs",
     "line": 535,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNP0MbZ4NfML32wA": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/SolverIterations.cs",
     "line": 44,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNP0MbZ4NfML32wB": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Dynamics/SolverIterations.cs",
     "line": 47,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNQeMbZ4NfML32wc": {
     "ruleKey": "csharpsquid:S1144",
     "file": "4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
     "line": 54,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNCYMbZ4NfML32rA": {
     "ruleKey": "csharpsquid:S2589",
@@ -10843,11 +10843,11 @@
     "file": "1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaReader.cs",
     "line": 39,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNDZMbZ4NfML32rX": {
     "ruleKey": "csharpsquid:S2325",
@@ -10876,22 +10876,22 @@
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs",
     "line": 278,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNS6MbZ4NfML32x9": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/DTSweep.cs",
     "line": 1120,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNSuMbZ4NfML32xv": {
     "ruleKey": "csharpsquid:S125",
@@ -10920,77 +10920,77 @@
     "file": "1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs",
     "line": 524,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNJ0MbZ4NfML32tL": {
     "ruleKey": "csharpsquid:S3881",
     "file": "1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs",
     "line": 41,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNksMbZ4NfML32-y": {
     "ruleKey": "csharpsquid:S3881",
     "file": "4_Operation/Audio/src/Players/WindowsPlayer.cs",
     "line": 47,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNVqMbZ4NfML32yj": {
     "ruleKey": "csharpsquid:S3776",
     "file": "4_Operation/Physic/src/Common/PolygonManipulation/SimpleCombiner.cs",
     "line": 51,
     "severity": "CRITICAL",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNPOMbZ4NfML32vn": {
     "ruleKey": "csharpsquid:S3881",
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
     "line": 44,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNNsMbZ4NfML32ul": {
     "ruleKey": "csharpsquid:S3881",
     "file": "4_Operation/Physic/src/Dynamics/Island.cs",
     "line": 41,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNaaMbZ4NfML3203": {
     "ruleKey": "csharpsquid:S1104",
     "file": "4_Operation/Physic/src/Collisions/AABB.cs",
     "line": 64,
     "severity": "MINOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 1
+    "attemptCount": 2
   },
   "AZ1dvNaaMbZ4NfML3204": {
     "ruleKey": "csharpsquid:S1104",
