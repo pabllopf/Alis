@@ -53,12 +53,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The create
         /// </summary>
-        internal static readonly FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
+        internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
 
         /// <summary>
         ///     The next archetype id
         /// </summary>
-        private static int NextArchetypeId = -1;
+        internal static int NextArchetypeId = -1;
 
         /// <summary>
         ///     The existing archetypes
@@ -269,7 +269,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 -(_entities.Length - (NextComponentIndex + deferredCreationArchetype.DeferredEntityCount));
             int previousComponentCount = NextComponentIndex;
 
-            if (deltaFromMaxDeferredInPlace > 0)
+            if (!(deltaFromMaxDeferredInPlace <= 0))
             {
                 //components overflowed into temp storage
 
@@ -406,10 +406,47 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             ref ComponentStorageBase first = ref Components[0];
 
-            for (int i = Components.Length - 1; i >= 1; i--)
+            switch (Components.Length)
             {
-                Unsafe.Add(ref first, i).Delete(args);
+                case 1: goto end;
+                case 2: goto len2;
+                case 3: goto len3;
+                case 4: goto len4;
+                case 5: goto len5;
+                case 6: goto len6;
+                case 7: goto len7;
+                case 8: goto len8;
+                case 9: goto len9;
+                default: goto @long;
             }
+
+            @long:
+            ComponentStorageBase[] comps = Components;
+            for (int i = 9; i < comps.Length; i++)
+            {
+                comps[i].Delete(args);
+            }
+
+
+            len9:
+            Unsafe.Add(ref first, 8).Delete(args);
+            len8:
+            Unsafe.Add(ref first, 7).Delete(args);
+            len7:
+            Unsafe.Add(ref first, 6).Delete(args);
+            len6:
+            Unsafe.Add(ref first, 5).Delete(args);
+            len5:
+            Unsafe.Add(ref first, 4).Delete(args);
+            len4:
+            Unsafe.Add(ref first, 3).Delete(args);
+            len3:
+            Unsafe.Add(ref first, 2).Delete(args);
+            len2:
+            Unsafe.Add(ref first, 1).Delete(args);
+
+
+            end:
 
             return Unsafe.Add(ref _entities[0], args.ToIndex) = Unsafe.Add(ref _entities[0], args.FromIndex);
         }
@@ -652,6 +689,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 }
             }
 
+            //for (int i = 0; i < archetypeTypes.Length; i++)
+            //{
+            //    _ = Component.GetComponentID(archetypeTypes[i].Type);
+            //}
+
             ref byte[] componentTable = ref GlobalWorldTables.ComponentTagLocationTable[id];
             componentTable = new byte[GlobalWorldTables.ComponentTagTableBufferSize];
 
@@ -715,12 +757,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The create
         /// </summary>
-        internal static readonly FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
+        internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
 
         /// <summary>
         ///     The next archetype id
         /// </summary>
-        private static int NextArchetypeId = -1;
+        internal static int NextArchetypeId = -1;
 
         /// <summary>
         ///     The existing archetypes
@@ -923,6 +965,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                     }
                 }
             }
+
+            //for (int i = 0; i < archetypeTypes.Length; i++)
+            //{
+            //    _ = Component.GetComponentID(archetypeTypes[i].Type);
+            //}
 
             ref byte[] componentTable = ref GlobalWorldTables.ComponentTagLocationTable[id];
             componentTable = new byte[GlobalWorldTables.ComponentTagTableBufferSize];
