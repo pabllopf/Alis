@@ -1,3 +1,31 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:EscapeSequenceHandler.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 
 using System;
@@ -74,75 +102,49 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
         public string Unescape(string escapedString)
         {
             if (escapedString == null)
-            {
                 throw new ArgumentNullException(nameof(escapedString));
-            }
 
             if (!escapedString.Contains("\\"))
-            {
                 return escapedString;
-            }
 
             StringBuilder result = new StringBuilder(escapedString.Length);
 
             int i = 0;
             while (i < escapedString.Length)
             {
-                if ((escapedString[i] == '\\') && (i + 1 < escapedString.Length))
+                if (escapedString[i] == '\\' && i + 1 < escapedString.Length)
                 {
-                    char nextChar = escapedString[i + 1];
-
-                    switch (nextChar)
-                    {
-                        case '"':
-                            result.Append('"');
-                            i++;
-                            break;
-                        case '\\':
-                            result.Append('\\');
-                            i++;
-                            break;
-                        case '/':
-                            result.Append('/');
-                            i++;
-                            break;
-                        case 'b':
-                            result.Append('\b');
-                            i++;
-                            break;
-                        case 'f':
-                            result.Append('\f');
-                            i++;
-                            break;
-                        case 'n':
-                            result.Append('\n');
-                            i++;
-                            break;
-                        case 'r':
-                            result.Append('\r');
-                            i++;
-                            break;
-                        case 't':
-                            result.Append('\t');
-                            i++;
-                            break;
-                        case 'u':
-                            i = AppendUnicodeEscape(escapedString, i, result);
-                            break;
-                        default:
-                            result.Append(escapedString[i]);
-                            break;
-                    }
+                    i = AppendEscapeSequence(escapedString, i, result);
                 }
                 else
                 {
                     result.Append(escapedString[i]);
+                    i++;
                 }
-
-                i++;
             }
 
             return result.ToString();
+        }
+
+        private static int AppendEscapeSequence(string escapedString, int index, StringBuilder result)
+        {
+            char nextChar = escapedString[index + 1];
+
+            switch (nextChar)
+            {
+                case '"': result.Append('"'); break;
+                case '\\': result.Append('\\'); break;
+                case '/': result.Append('/'); break;
+                case 'b': result.Append('\b'); break;
+                case 'f': result.Append('\f'); break;
+                case 'n': result.Append('\n'); break;
+                case 'r': result.Append('\r'); break;
+                case 't': result.Append('\t'); break;
+                case 'u': return AppendUnicodeEscape(escapedString, index, result);
+                default: result.Append(escapedString[index]); break;
+            }
+
+            return index + 2;
         }
 
         /// <summary>
