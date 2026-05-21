@@ -237,7 +237,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
         /// </summary>
         /// <param name="pixFmt">The pix fmt</param>
         /// <returns>The int</returns>
-        private int TryParseBitDepth(string pixFmt)
+        private static int TryParseBitDepth(string pixFmt)
         {
             Match match = BitRateSimpleRgx.Match(pixFmt);
             if (match.Success)
