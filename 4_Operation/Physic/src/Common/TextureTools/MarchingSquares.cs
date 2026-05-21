@@ -528,70 +528,71 @@ namespace Alis.Core.Physic.Common.TextureTools
                 Vector2F a = ai.GetElem();
                 if (VecDsq(a, b) < SettingEnv.Epsilon)
                 {
-                    //ignore shared vertex if parallel
-                    if (prea != null)
-                    {
-                        Vector2F a0 = prea.GetElem();
-                        b = bi.NextPos().GetElem();
-
-                        Vector2F u = a - a0;
-                        Vector2F v = b - a;
-                        if (IsParallel(u, v))
-                        {
-                            ap.Erase(prea, ai);
-                            polya.Length--;
-                            ai = prea;
-                        }
-                    }
-
-                    //insert polyb into polya
-                    bool fst = true;
-                    CxFastListNode<Vector2F> preb = null;
-                    while (!bp.Empty())
-                    {
-                        Vector2F bb = bp.Front();
-                        bp.Pop();
-                        if (!fst && !bp.Empty())
-                        {
-                            ai = ap.Insert(ai, bb);
-                            polya.Length++;
-                            preb = ai;
-                        }
-
-                        fst = false;
-                    }
-
-                    //ignore shared vertex if parallel
-                    ai = ai.NextPos();
-                    Vector2F a1 = ai.GetElem();
-                    ai = ai.NextPos();
-                    if (ai == ap.End())
-                    {
-                        ai = ap.Begin();
-                    }
-
-                    Vector2F a2 = ai.GetElem();
-                    if (preb != null)
-                    {
-                        Vector2F a00 = preb.GetElem();
-                        Vector2F uu = a1 - a00;
-                        Vector2F vv = a2 - a1;
-                        if (IsParallel(uu, vv))
-                        {
-                            ap.Erase(preb, preb.NextPos());
-                            polya.Length--;
-                        }
-                    }
-                    else
-                    {
-                        throw new Exception("preb is null");
-                    }
-
+                    RemoveParallelVertexBefore(ai, prea, ap, ref ai);
+                    InsertPolygonVertices(ref ai, ref polya, bp, ap);
+                    RemoveParallelVertexAfter(ai, out CxFastListNode<Vector2F> preb, ap, polya);
                     return;
                 }
 
                 prea = ai;
                 ai = ai.NextPos();
+            }
+        }
+
+        private static void RemoveParallelVertexBefore(CxFastListNode<Vector2F> ai, CxFastListNode<Vector2F> prea, CxFastList<Vector2F> ap, ref CxFastListNode<Vector2F> current)
+        {
+            if (prea == null) return;
+
+            Vector2F a0 = prea.GetElem();
+            Vector2F a = ai.GetElem();
+            Vector2F b = ai.NextPos().GetElem();
+
+            if (IsParallel(a - a0, b - a))
+            {
+                ap.Erase(prea, ai);
+                current = prea;
+            }
+        }
+
+        private static void InsertPolygonVertices(ref CxFastListNode<Vector2F> ai, ref GeomPoly polya, CxFastList<Vector2F> bp, CxFastList<Vector2F> ap)
+        {
+            bool fst = true;
+            CxFastListNode<Vector2F> preb = null;
+            while (!bp.Empty())
+            {
+                Vector2F bb = bp.Front();
+                bp.Pop();
+                if (!fst && !bp.Empty())
+                {
+                    ai = ap.Insert(ai, bb);
+                    polya.Length++;
+                    preb = ai;
+                }
+
+                fst = false;
+            }
+        }
+
+        private static void RemoveParallelVertexAfter(CxFastListNode<Vector2F> ai, out CxFastListNode<Vector2F> preb, CxFastList<Vector2F> ap, GeomPoly polya)
+        {
+            preb = null;
+            ai = ai.NextPos();
+            Vector2F a1 = ai.GetElem();
+            ai = ai.NextPos();
+            if (ai == ap.End())
+            {
+                ai = ap.Begin();
+            }
+
+            Vector2F a2 = ai.GetElem();
+            if (preb != null)
+            {
+                Vector2F a00 = preb.GetElem();
+                if (IsParallel(a1 - a00, a2 - a1))
+                {
+                    ap.Erase(preb, preb.NextPos());
+                    polya.Length--;
+                }
             }
         }
 
