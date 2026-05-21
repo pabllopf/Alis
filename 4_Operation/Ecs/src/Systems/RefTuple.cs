@@ -89,17 +89,17 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The item
         /// </summary>
-        public Ref<T1> Item1;
+        public Ref<T1> Item1 { get; set; }
 
         /// <summary>
         ///     The item
         /// </summary>
-        public Ref<T2> Item2;
+        public Ref<T2> Item2 { get; set; }
 
         /// <summary>
         ///     The item
         /// </summary>
-        public Ref<T3> Item3;
+        public Ref<T3> Item3 { get; set; }
 
 
         /// <summary>
