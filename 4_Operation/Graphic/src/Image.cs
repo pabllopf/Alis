@@ -225,97 +225,100 @@ namespace Alis.Core.Graphic
             for (int y = 0; y < height; y++)
             {
                 int row = y; // Corregido: siempre cargar de arriba hacia abajo
-                if (bitsPerPixel == 24 || bitsPerPixel == 32)
+                switch (bitsPerPixel)
                 {
-                    for (int x = 0; x < width; x++)
-                    {
-                        byte blue = reader.ReadByte();
-                        byte green = reader.ReadByte();
-                        byte red = reader.ReadByte();
-                        byte alpha = bitsPerPixel == 32 ? reader.ReadByte() : (byte) 255;
-                        int index = (row * width + x) * 4;
-                        rawData[index + 0] = red;
-                        rawData[index + 1] = green;
-                        rawData[index + 2] = blue;
-                        rawData[index + 3] = alpha;
-                    }
+                    case 24:
+                    case 32:
+                        LoadRgbRow(reader, width, row, bitsPerPixel == 32, rawData);
+                        SkipPadding(reader, rowPadded, width * bytesPerPixel);
+                        break;
+                    case 8 when palette != null:
+                        LoadIndexedRow(reader, width, row, palette, rawData);
+                        SkipPadding(reader, rowPadded, width);
+                        break;
+                    case 4 when palette != null:
+                        Load4BitRow(reader, width, row, palette, rawData);
+                        SkipPadding(reader, rowPadded, (width + 1) / 2);
+                        break;
+                    case 1 when palette != null:
+                        Load1BitRow(reader, width, row, palette, rawData);
+                        SkipPadding(reader, rowPadded, (width + 7) / 8);
+                        break;
+                    default:
+                        throw new NotSupportedException($"Unsupported bits per pixel: {bitsPerPixel}");
+                }
+            }
+        }
 
-                    int padding = rowPadded - width * bytesPerPixel;
-                    if (padding > 0)
-                    {
-                        reader.BaseStream.Seek(padding, SeekOrigin.Current);
-                    }
-                }
-                else if ((bitsPerPixel == 8) && (palette != null))
-                {
-                    for (int x = 0; x < width; x++)
-                    {
-                        byte colorIndex = reader.ReadByte();
-                        int index = (row * width + x) * 4;
-                        rawData[index + 0] = palette[colorIndex][0];
-                        rawData[index + 1] = palette[colorIndex][1];
-                        rawData[index + 2] = palette[colorIndex][2];
-                        rawData[index + 3] = palette[colorIndex][3];
-                    }
+        private static void LoadRgbRow(BinaryReader reader, int width, int row, bool hasAlpha, byte[] rawData)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                byte blue = reader.ReadByte();
+                byte green = reader.ReadByte();
+                byte red = reader.ReadByte();
+                byte alpha = hasAlpha ? reader.ReadByte() : (byte) 255;
+                int index = (row * width + x) * 4;
+                rawData[index + 0] = red;
+                rawData[index + 1] = green;
+                rawData[index + 2] = blue;
+                rawData[index + 3] = alpha;
+            }
+        }
 
-                    int padding = rowPadded - width;
-                    if (padding > 0)
-                    {
-                        reader.BaseStream.Seek(padding, SeekOrigin.Current);
-                    }
-                }
-                else if ((bitsPerPixel == 4) && (palette != null))
-                {
-                    int pixels = 0;
-                    for (int x = 0; x < width; x += 2)
-                    {
-                        byte b = reader.ReadByte();
-                        for (int i = 0; (i < 2) && (x + i < width); i++)
-                        {
-                            byte colorIndex = (byte) (i == 0 ? b >> 4 : b & 0x0F);
-                            int index = (row * width + x + i) * 4;
-                            rawData[index + 0] = palette[colorIndex][0];
-                            rawData[index + 1] = palette[colorIndex][1];
-                            rawData[index + 2] = palette[colorIndex][2];
-                            rawData[index + 3] = palette[colorIndex][3];
-                            pixels++;
-                        }
-                    }
+        private static void LoadIndexedRow(BinaryReader reader, int width, int row, byte[][] palette, byte[] rawData)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                byte colorIndex = reader.ReadByte();
+                int index = (row * width + x) * 4;
+                rawData[index + 0] = palette[colorIndex][0];
+                rawData[index + 1] = palette[colorIndex][1];
+                rawData[index + 2] = palette[colorIndex][2];
+                rawData[index + 3] = palette[colorIndex][3];
+            }
+        }
 
-                    int padding = rowPadded - (width + 1) / 2;
-                    if (padding > 0)
-                    {
-                        reader.BaseStream.Seek(padding, SeekOrigin.Current);
-                    }
-                }
-                else if ((bitsPerPixel == 1) && (palette != null))
+        private static void Load4BitRow(BinaryReader reader, int width, int row, byte[][] palette, byte[] rawData)
+        {
+            for (int x = 0; x < width; x += 2)
+            {
+                byte b = reader.ReadByte();
+                for (int i = 0; i < 2 && x + i < width; i++)
                 {
-                    int pixels = 0;
-                    for (int x = 0; x < width; x += 8)
-                    {
-                        byte b = reader.ReadByte();
-                        for (int i = 0; (i < 8) && (x + i < width); i++)
-                        {
-                            byte colorIndex = (byte) ((b >> (7 - i)) & 0x01);
-                            int index = (row * width + x + i) * 4;
-                            rawData[index + 0] = palette[colorIndex][0];
-                            rawData[index + 1] = palette[colorIndex][1];
-                            rawData[index + 2] = palette[colorIndex][2];
-                            rawData[index + 3] = palette[colorIndex][3];
-                            pixels++;
-                        }
-                    }
+                    byte colorIndex = (byte) (i == 0 ? b >> 4 : b & 0x0F);
+                    int index = (row * width + x + i) * 4;
+                    rawData[index + 0] = palette[colorIndex][0];
+                    rawData[index + 1] = palette[colorIndex][1];
+                    rawData[index + 2] = palette[colorIndex][2];
+                    rawData[index + 3] = palette[colorIndex][3];
+                }
+            }
+        }
 
-                    int padding = rowPadded - (width + 7) / 8;
-                    if (padding > 0)
-                    {
-                        reader.BaseStream.Seek(padding, SeekOrigin.Current);
-                    }
-                }
-                else
+        private static void Load1BitRow(BinaryReader reader, int width, int row, byte[][] palette, byte[] rawData)
+        {
+            for (int x = 0; x < width; x += 8)
+            {
+                byte b = reader.ReadByte();
+                for (int i = 0; i < 8 && x + i < width; i++)
                 {
-                    throw new NotSupportedException($"Unsupported bits per pixel: {bitsPerPixel}");
+                    byte colorIndex = (byte) ((b >> (7 - i)) & 0x01);
+                    int index = (row * width + x + i) * 4;
+                    rawData[index + 0] = palette[colorIndex][0];
+                    rawData[index + 1] = palette[colorIndex][1];
+                    rawData[index + 2] = palette[colorIndex][2];
+                    rawData[index + 3] = palette[colorIndex][3];
                 }
+            }
+        }
+
+        private static void SkipPadding(BinaryReader reader, int rowPadded, int rowSize)
+        {
+            int padding = rowPadded - rowSize;
+            if (padding > 0)
+            {
+                reader.BaseStream.Seek(padding, SeekOrigin.Current);
             }
         }
 
