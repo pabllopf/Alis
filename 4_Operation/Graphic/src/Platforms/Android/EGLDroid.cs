@@ -39,11 +39,11 @@ namespace Alis.Core.Graphic.Platforms.Android
     public class EGLDroid
     {
         /// <summary>
-        ///     Gets the proc address using the specified proc
+        ///     Retrieves the address of the specified EGL or GLES function from the native library.
         /// </summary>
-        /// <param name="proc">The proc</param>
-        /// <returns>The int ptr</returns>
-        [DllImport("libEGL", EntryPoint = "eglGetProcAddress", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
+        /// <param name="proc">The name of the function to retrieve the address for.</param>
+        /// <returns>A pointer to the function, or <see cref="IntPtr.Zero"/> if the function was not found.</returns>
+        [DllImport("libEGL", EntryPoint = "eglGetProcAddress", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPaths.SafeDirectories), ExcludeFromCodeCoverage]
         public static extern IntPtr GetProcAddress(string proc);
     }
 }
