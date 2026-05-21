@@ -253,6 +253,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 }
                 catch
                 {
+                    // Ignore process kill failure
                 }
             }
             finally
