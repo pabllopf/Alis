@@ -4294,10 +4294,10 @@
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 158,
     "severity": "MAJOR",
-    "status": "in_progress",
+    "status": "blocked",
     "assignedWorker": "worker-opencode-001",
     "lockedAt": "2026-05-21T08:26:15.629Z",
-    "completedAt": null,
+    "completedAt": "2026-05-21T08:26:53.467Z",
     "attemptCount": 0
   },
   "AZ1dvNfaMbZ4NfML324V": {
@@ -4305,10 +4305,10 @@
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 188,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T08:26:53.467Z",
+    "completedAt": "2026-05-21T08:27:32.988Z",
     "attemptCount": 0
   },
   "AZ1dvNfaMbZ4NfML324W": {
@@ -4316,10 +4316,10 @@
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 218,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T08:27:32.988Z",
+    "completedAt": "2026-05-21T08:28:09.833Z",
     "attemptCount": 0
   },
   "AZ1dvNfaMbZ4NfML324X": {
@@ -4327,9 +4327,9 @@
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 248,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
+    "status": "in_progress",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T08:28:09.833Z",
     "completedAt": null,
     "attemptCount": 0
   },
