@@ -42,6 +42,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
     /// </summary>
     public class SoundBuffer : ObjectBase
     {
+        private const string _resourceName = "sound buffer";
+
         /// <summary>
         ///     Construct a sound buffer from a file
         ///     Here is a complete list of all the supported audio formats:
@@ -55,7 +57,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         {
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("sound buffer", filename);
+                throw new LoadingFailedException(_resourceName, filename);
             }
         }
 
@@ -78,7 +80,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
 
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("sound buffer");
+                throw new LoadingFailedException(_resourceName);
             }
         }
 
@@ -106,7 +108,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
 
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("sound buffer");
+                throw new LoadingFailedException(_resourceName);
             }
         }
 
@@ -134,7 +136,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
 
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("sound buffer");
+                throw new LoadingFailedException(_resourceName);
             }
         }
 
