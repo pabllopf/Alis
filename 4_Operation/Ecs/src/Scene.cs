@@ -1839,39 +1839,34 @@ namespace Alis.Core.Ecs
             currentLookup.Archetype = nextLocation.Archetype;
             currentLookup.Index = nextLocation.Index;
 
-            if (GameObjectLocation.HasEventFlag(currentLookup.Flags | WorldEventFlags,
+            InvokeComponentRemovalEvents(componentHandles, gameObject, ref currentLookup, hasGenericRemoveEvent);
+        }
+
+        private void InvokeComponentRemovalEvents(Span<ComponentHandle> componentHandles, GameObject gameObject,
+            ref GameObjectLocation currentLookup, bool hasGenericRemoveEvent)
+        {
+            if (!GameObjectLocation.HasEventFlag(currentLookup.Flags | WorldEventFlags,
                     GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
+                return;
+
+            if (ComponentRemovedEvent.HasListeners)
             {
-                if (ComponentRemovedEvent.HasListeners)
-                {
-                    foreach (ComponentHandle handle in componentHandles)
-                    {
-                        ComponentRemovedEvent.Invoke(gameObject, handle.ComponentId);
-                    }
-                }
+                foreach (ComponentHandle handle in componentHandles)
+                    ComponentRemovedEvent.Invoke(gameObject, handle.ComponentId);
+            }
 
-                if (GameObjectLocation.HasEventFlag(currentLookup.Flags,
-                        GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
-                {
-                    EventRecord lookup = EventLookup[gameObject.EntityIdOnly];
+            if (!GameObjectLocation.HasEventFlag(currentLookup.Flags,
+                    GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
+                return;
 
-                    if (hasGenericRemoveEvent)
-                    {
-                        foreach (ComponentHandle handle in componentHandles)
-                        {
-                            lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
-                            handle.InvokeComponentEventAndConsume(gameObject, lookup.Remove.GenericEvent);
-                        }
-                    }
-                    else
-                        //no need to dispose here, as they were never created
-                    {
-                        foreach (ComponentHandle handle in componentHandles)
-                        {
-                            lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
-                        }
-                    }
-                }
+            EventRecord lookup = EventLookup[gameObject.EntityIdOnly];
+
+            foreach (ComponentHandle handle in componentHandles)
+            {
+                lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
+
+                if (hasGenericRemoveEvent)
+                    handle.InvokeComponentEventAndConsume(gameObject, lookup.Remove.GenericEvent);
             }
         }
 
