@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Collisions

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Globalization;
 
 namespace Alis.Extension.Media.FFmpeg.Encoding.Builders

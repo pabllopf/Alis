@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Runtime.InteropServices;
 
 namespace Alis.Extension.Graphic.Sfml.Windows

@@ -127,7 +127,7 @@ namespace Alis.Sample.Rogue.Web
                         /// <exception cref="Exception">CreateContext() failed</exception>
                         /// <exception cref="Exception">CreateWindowSurface() failed</exception>
                         /// <exception cref="Exception">MakeCurrent() failed</exception>
-                        public async static Task Main(string[] args)
+                        public static async Task Main(string[] args)
                         {
                             Console.WriteLine($"Hello from dotnet!");
                 

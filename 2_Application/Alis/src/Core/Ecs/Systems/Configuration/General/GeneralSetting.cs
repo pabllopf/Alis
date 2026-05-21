@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Json;

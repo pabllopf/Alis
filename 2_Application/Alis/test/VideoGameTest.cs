@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Ecs.Systems;

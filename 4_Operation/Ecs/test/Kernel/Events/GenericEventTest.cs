@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Reflection;
 using Alis.Core.Ecs.Kernel.Events;

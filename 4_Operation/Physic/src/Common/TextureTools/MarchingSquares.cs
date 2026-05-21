@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
@@ -473,7 +472,7 @@ namespace Alis.Core.Physic.Common.TextureTools
 
         private static Vector2F CalculateIntersectionPoint(int i, int val, float x0, float y0, float x1, float y1, sbyte v0, sbyte v1, sbyte v2, sbyte v3, sbyte[,] f, int bin)
         {
-            if (i == 7 && (val & 1) == 0)
+            if ((i == 7) && ((val & 1) == 0))
             {
                 return new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin));
             }

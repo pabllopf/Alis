@@ -4716,10 +4716,10 @@
     "file": "4_Operation/Graphic/src/Platforms/Android/EGLDroid.cs",
     "line": 39,
     "severity": "MINOR",
-    "status": "in_progress",
+    "status": "fixed",
     "assignedWorker": "worker-opencode-001",
     "lockedAt": "2026-05-21T13:58:45.328Z",
-    "completedAt": null,
+    "completedAt": "2026-05-21T14:03:00.274Z",
     "attemptCount": 1
   },
   "AZ1dvNkRMbZ4NfML32-P": {
@@ -4727,10 +4727,10 @@
     "file": "4_Operation/Graphic/src/Platforms/Android/EGLDroid.cs",
     "line": 47,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T14:03:42.028Z",
+    "completedAt": "2026-05-21T14:04:32.681Z",
     "attemptCount": 1
   },
   "AZ1dvM3cMbZ4NfML32Xh": {
@@ -4738,10 +4738,10 @@
     "file": "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
     "line": 607,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T14:05:09.895Z",
+    "completedAt": "2026-05-21T14:06:56.882Z",
     "attemptCount": 1
   },
   "AZ1dvM3cMbZ4NfML32Xi": {
@@ -4749,10 +4749,10 @@
     "file": "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
     "line": 615,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T14:07:36.537Z",
+    "completedAt": "2026-05-21T14:08:15.755Z",
     "attemptCount": 1
   },
   "AZ1dvM3cMbZ4NfML32Xj": {
@@ -4760,10 +4760,10 @@
     "file": "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
     "line": 624,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T14:08:48.480Z",
+    "completedAt": "2026-05-21T14:09:20.672Z",
     "attemptCount": 1
   },
   "AZ1dvM3cMbZ4NfML32Xl": {
@@ -4771,10 +4771,10 @@
     "file": "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
     "line": 633,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T14:10:00.131Z",
+    "completedAt": "2026-05-21T14:10:26.182Z",
     "attemptCount": 1
   },
   "AZ1dvM3cMbZ4NfML32Xk": {
@@ -4782,10 +4782,10 @@
     "file": "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
     "line": 641,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T14:10:58.476Z",
+    "completedAt": "2026-05-21T14:11:30.350Z",
     "attemptCount": 1
   },
   "AZ1dvM3cMbZ4NfML32Xm": {
@@ -4793,10 +4793,10 @@
     "file": "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
     "line": 649,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T14:12:09.044Z",
+    "completedAt": "2026-05-21T14:12:48.072Z",
     "attemptCount": 1
   },
   "AZ1dvM3cMbZ4NfML32Xn": {
@@ -4804,10 +4804,10 @@
     "file": "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs",
     "line": 657,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "blocked",
+    "assignedWorker": "worker-opencode-001",
+    "lockedAt": "2026-05-21T14:13:19.610Z",
+    "completedAt": "2026-05-21T14:14:25.672Z",
     "attemptCount": 1
   },
   "AZ1dvM3cMbZ4NfML32Xo": {

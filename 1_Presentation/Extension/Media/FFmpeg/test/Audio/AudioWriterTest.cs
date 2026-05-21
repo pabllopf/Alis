@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Extension.Media.FFmpeg.Audio;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio

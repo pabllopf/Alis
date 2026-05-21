@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 
 namespace Alis.Core.Aspect.Data.Json.Parsing

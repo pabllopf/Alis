@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Ecs.Systems;

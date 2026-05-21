@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Ecs.Components.Collider;
 
 namespace Alis.Builder.Core.Ecs.Components.Collider

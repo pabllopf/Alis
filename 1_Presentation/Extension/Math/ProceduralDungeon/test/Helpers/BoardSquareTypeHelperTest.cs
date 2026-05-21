@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Extension.Math.ProceduralDungeon.Helpers;
 using Xunit;
 

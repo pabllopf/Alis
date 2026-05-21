@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Audio;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Systems.Configuration.Audio;

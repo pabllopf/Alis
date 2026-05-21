@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -192,10 +191,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets the mouse wheel delta (vertical scroll)
         /// </summary>
-        public float GetMouseWheelDelta()
-        {
-            return _lastMouseWheelDelta;
-        }
+        public float GetMouseWheelDelta() => _lastMouseWheelDelta;
 
         /// <summary>
         ///     Checks if a mouse button is currently pressed
@@ -203,7 +199,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         public bool IsMouseButtonDown(int button)
         {
             _platform.GetMouseState(out _, out _, out bool[] buttons);
-            return button >= 0 && button < buttons.Length && buttons[button];
+            return (button >= 0) && (button < buttons.Length) && buttons[button];
         }
 
         /// <summary>
@@ -232,10 +228,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets all connected gamepad indices
         /// </summary>
-        public int[] GetConnectedGamepadIndices()
-        {
-            return _platform.GetConnectedGamepadIndices();
-        }
+        public int[] GetConnectedGamepadIndices() => _platform.GetConnectedGamepadIndices();
 
         /// <summary>
         ///     Checks if a gamepad button was just pressed
@@ -276,10 +269,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Vibrates a gamepad (rumble support)
         /// </summary>
-        public static bool VibrateGamepad(int gamepadIndex, float leftMotor, float rightMotor, float duration = 0.1f)
-        {
-            return EmscriptenWeb.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
-        }
+        public static bool VibrateGamepad(int gamepadIndex, float leftMotor, float rightMotor, float duration = 0.1f) => EmscriptenWeb.VibrateGamepad(gamepadIndex, leftMotor, rightMotor, duration);
 
         /// <summary>
         ///     Gets a human-readable name for a console key
@@ -337,10 +327,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyBinding"/> class
         /// </summary>
-        public KeyBinding()
-        {
-            _keys = new HashSet<ConsoleKey>();
-        }
+        public KeyBinding() => _keys = new HashSet<ConsoleKey>();
 
         /// <summary>
         /// Adds the key using the specified key
@@ -365,10 +352,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The bool</returns>
-        public bool ContainsKey(ConsoleKey key)
-        {
-            return _keys.Contains(key);
-        }
+        public bool ContainsKey(ConsoleKey key) => _keys.Contains(key);
 
         /// <summary>
         /// Clears this instance
@@ -383,10 +367,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         /// <param name="platform">The platform</param>
         /// <returns>The bool</returns>
-        public bool IsActive(WebAssemblyPlatform platform)
-        {
-            return _keys.Any(platform.IsKeyDown);
-        }
+        public bool IsActive(WebAssemblyPlatform platform) => _keys.Any(platform.IsKeyDown);
     }
 
     /// <summary>
@@ -515,10 +496,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Polls for text input from the platform
         /// </summary>
-        public bool TryGetTextInput(out string text)
-        {
-            return _platform.TryGetLastInputCharacters(out text);
-        }
+        public bool TryGetTextInput(out string text) => _platform.TryGetLastInputCharacters(out text);
 
         /// <summary>
         ///     Updates the input context (should be called every frame)
@@ -531,50 +509,32 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Locks the pointer to the window (for FPS games)
         /// </summary>
-        public static bool LockPointer()
-        {
-            return EmscriptenWeb.LockPointer();
-        }
+        public static bool LockPointer() => EmscriptenWeb.LockPointer();
 
         /// <summary>
         ///     Unlocks the pointer
         /// </summary>
-        public static bool UnlockPointer()
-        {
-            return EmscriptenWeb.UnlockPointer();
-        }
+        public static bool UnlockPointer() => EmscriptenWeb.UnlockPointer();
 
         /// <summary>
         ///     Checks if the pointer is locked
         /// </summary>
-        public static bool IsPointerLocked()
-        {
-            return EmscriptenWeb.IsPointerLocked();
-        }
+        public static bool IsPointerLocked() => EmscriptenWeb.IsPointerLocked();
 
         /// <summary>
         ///     Enters fullscreen mode
         /// </summary>
-        public static bool RequestFullscreen()
-        {
-            return EmscriptenWeb.RequestFullscreen();
-        }
+        public static bool RequestFullscreen() => EmscriptenWeb.RequestFullscreen();
 
         /// <summary>
         ///     Exits fullscreen mode
         /// </summary>
-        public static bool ExitFullscreen()
-        {
-            return EmscriptenWeb.ExitFullscreen();
-        }
+        public static bool ExitFullscreen() => EmscriptenWeb.ExitFullscreen();
 
         /// <summary>
         ///     Checks if currently in fullscreen
         /// </summary>
-        public static bool IsFullscreen()
-        {
-            return EmscriptenWeb.IsFullscreenEnabled();
-        }
+        public static bool IsFullscreen() => EmscriptenWeb.IsFullscreenEnabled();
     }
 }
 

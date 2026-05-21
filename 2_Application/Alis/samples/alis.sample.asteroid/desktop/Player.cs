@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Builder.Core.Ecs.Components.Collider;
 using Alis.Builder.Core.Ecs.Components.Render;

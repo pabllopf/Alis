@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Windows.Sections;

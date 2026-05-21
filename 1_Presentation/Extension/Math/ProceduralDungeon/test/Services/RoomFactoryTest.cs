@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Extension.Math.ProceduralDungeon.Models;
 using Alis.Extension.Math.ProceduralDungeon.Services;

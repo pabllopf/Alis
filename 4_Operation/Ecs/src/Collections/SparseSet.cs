@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Numerics;
 using Alis.Core.Ecs.Redifinition;

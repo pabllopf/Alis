@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
 

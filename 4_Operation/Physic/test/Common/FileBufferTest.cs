@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.IO;
 using System.Text;
 using Alis.Core.Physic.Common;

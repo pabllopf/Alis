@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Globalization;
 using System.Runtime.Serialization;
 using Alis.Core.Aspect.Math.Vector;

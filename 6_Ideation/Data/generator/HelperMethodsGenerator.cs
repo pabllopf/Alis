@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Text;
 
 namespace Alis.Core.Aspect.Data.Generator

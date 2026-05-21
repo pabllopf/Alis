@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -128,10 +127,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Creates a complete game context for WebAssembly with all features enabled
         /// </summary>
-        public static WebAssemblyGameContext CreateGameContext(string title, int width = 1280, int height = 720)
-        {
-            return WebAssemblyGameContext.Create(width, height, title);
-        }
+        public static WebAssemblyGameContext CreateGameContext(string title, int width = 1280, int height = 720) => WebAssemblyGameContext.Create(width, height, title);
 
         /// <summary>
         ///     Creates a platform optimized for specific use case
@@ -169,10 +165,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Gets all supported platform names
         /// </summary>
-        public static string[] GetSupportedPlatforms()
-        {
-            return new List<string>(_registeredPlatforms.Keys).ToArray();
-        }
+        public static string[] GetSupportedPlatforms() => new List<string>(_registeredPlatforms.Keys).ToArray();
     }
 
     /// <summary>
@@ -315,10 +308,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// Initializes a new instance of the <see cref="InputManager"/> class
         /// </summary>
         /// <param name="gameContext">The game context</param>
-        public InputManager(WebAssemblyGameContext gameContext)
-        {
-            _gameContext = gameContext;
-        }
+        public InputManager(WebAssemblyGameContext gameContext) => _gameContext = gameContext;
 
         /// <summary>
         /// Gets the movement input using the specified x
@@ -412,10 +402,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// Initializes a new instance of the <see cref="DisplayManager"/> class
         /// </summary>
         /// <param name="gameContext">The game context</param>
-        public DisplayManager(WebAssemblyGameContext gameContext)
-        {
-            _gameContext = gameContext;
-        }
+        public DisplayManager(WebAssemblyGameContext gameContext) => _gameContext = gameContext;
 
         /// <summary>
         /// Gets the width

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Definition;
 
 namespace Alis.Core.Graphic.Ui

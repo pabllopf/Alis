@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -155,9 +154,7 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
         /// Gets the fragment shader source
         /// </summary>
         /// <returns>The string</returns>
-        protected virtual string GetFragmentShaderSource()
-        {
-            return @"
+        protected virtual string GetFragmentShaderSource() => @"
 #version 150 core
 in vec2 TexCoord;
 out vec4 FragColor;
@@ -165,7 +162,6 @@ uniform sampler2D uTexture;
 void main() {
     FragColor = texture(uTexture, TexCoord);
 }";
-        }
 
         /// <summary>
         /// Sets the per frame uniforms using the specified elapsed seconds
@@ -264,7 +260,7 @@ void main() {
         /// <exception cref="InvalidDataException">No se pudo obtener metadata valida para '{VideoAssetName}'. Asegura que ffprobe este instalado y que el asset de video sea valido.</exception>
         private void EnsureMetadataHasDimensions()
         {
-            if (reader?.Metadata != null && reader.Metadata.Width > 0 && reader.Metadata.Height > 0)
+            if ((reader?.Metadata != null) && (reader.Metadata.Width > 0) && (reader.Metadata.Height > 0))
             {
                 return;
             }
@@ -362,7 +358,7 @@ void main() {
                         fps = ParseFps(avg);
                     }
 
-                    if (width > 0 && height > 0)
+                    if ((width > 0) && (height > 0))
                     {
                         return true;
                     }
@@ -389,10 +385,10 @@ void main() {
             }
 
             string[] parts = value.Split('/');
-            if (parts.Length == 2 &&
+            if ((parts.Length == 2) &&
                 double.TryParse(parts[0], NumberStyles.Float, CultureInfo.InvariantCulture, out double num) &&
                 double.TryParse(parts[1], NumberStyles.Float, CultureInfo.InvariantCulture, out double den) &&
-                den > 0)
+                (den > 0))
             {
                 return num / den;
             }

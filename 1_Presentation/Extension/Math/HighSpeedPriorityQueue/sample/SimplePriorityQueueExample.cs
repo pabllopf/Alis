@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample

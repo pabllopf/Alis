@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Reflection;
 using Alis.Extension.Thread.Scheduling;
 using Xunit;

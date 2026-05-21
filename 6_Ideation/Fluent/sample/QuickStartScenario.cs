@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Core.Aspect.Fluent.Sample
 {
     /// <summary>
@@ -39,14 +38,11 @@ namespace Alis.Core.Aspect.Fluent.Sample
         ///     Creates a configured sports car using fluent API.
         /// </summary>
         /// <returns>A configured <see cref="Car"/> instance.</returns>
-        internal static Car CreateSportsCar()
-        {
-            return Car
-                .Create()
-                .WithName("Alis Racer")
-                .WithModel("X1")
-                .WithColor("Blue")
-                .Build();
-        }
+        internal static Car CreateSportsCar() => Car
+            .Create()
+            .WithName("Alis Racer")
+            .WithModel("X1")
+            .WithColor("Blue")
+            .Build();
     }
 }

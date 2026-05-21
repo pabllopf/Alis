@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Extension.Network.Sample.SimpleGame.Client
 {
     /// <summary>

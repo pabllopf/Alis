@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.IO;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;

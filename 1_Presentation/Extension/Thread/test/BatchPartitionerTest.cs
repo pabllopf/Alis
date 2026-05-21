@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Linq;
 using Alis.Extension.Thread.Scheduling;
 using Xunit;

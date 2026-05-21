@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
@@ -66,7 +65,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Sample
                 return;
             }
 
-            if (int.TryParse(input, out int selectedIndex) && selectedIndex >= 1 && selectedIndex <= Examples.Count)
+            if (int.TryParse(input, out int selectedIndex) && (selectedIndex >= 1) && (selectedIndex <= Examples.Count))
             {
                 RunSingleExample(selectedIndex - 1);
                 Logger.Trace("End Program...");
