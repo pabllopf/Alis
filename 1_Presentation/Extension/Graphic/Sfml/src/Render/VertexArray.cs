@@ -101,8 +101,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             get
             {
-                IntPtr vertexPtr = Marshal.AllocHGlobal(Marshal.SizeOf<Vertex>());
-                vertexPtr = sfVertexArray_getVertex_v2(CPointer, index);
+                IntPtr vertexPtr = sfVertexArray_getVertex_v2(CPointer, index);
                 return Marshal.PtrToStructure<Vertex>(vertexPtr);
             }
             set
