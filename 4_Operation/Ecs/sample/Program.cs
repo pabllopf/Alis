@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Linq;
 using Alis.Core.Ecs.Sample.Samples;
 
 namespace Alis.Core.Ecs.Sample

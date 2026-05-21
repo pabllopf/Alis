@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Test.Models
 {

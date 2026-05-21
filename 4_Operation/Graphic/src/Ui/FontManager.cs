@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.Ui
         /// <summary>
         ///     Gets the value of the default font
         /// </summary>
-        public static Font DefaultFont { get; } = new Font("mono.bmp", 1, 1, "");
+        public static Font DefaultFont { get; } = new Font("mono.bmp", 1, 1);
 
         /// <summary>
         ///     Renders the text using the specified text
