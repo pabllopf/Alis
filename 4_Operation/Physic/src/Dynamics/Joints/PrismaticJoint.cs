@@ -551,75 +551,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = _invMassA, mB = _invMassB;
             float iA = invIa, iB = invIb;
 
-            {
-                _axis = Complex.Multiply(ref _localXAxis, ref qA);
-                _a1 = MathUtils.Cross(d + rA, _axis);
-                _a2 = MathUtils.Cross(ref rB, ref _axis);
-
-                _motorMass = mA + mB + iA * _a1 * _a1 + iB * _a2 * _a2;
-                if (_motorMass > 0.0f)
-                {
-                    _motorMass = 1.0f / _motorMass;
-                }
-            }
-
-            {
-                _perp = Complex.Multiply(ref _localYAxisA, ref qA);
-
-                _s1 = MathUtils.Cross(d + rA, _perp);
-                _s2 = MathUtils.Cross(ref rB, ref _perp);
-
-                float k11 = mA + mB + iA * _s1 * _s1 + iB * _s2 * _s2;
-                float k12 = iA * _s1 + iB * _s2;
-                float k13 = iA * _s1 * _a1 + iB * _s2 * _a2;
-                float k22 = iA + iB;
-                if (Math.Abs(k22) < float.Epsilon)
-                {
-                    k22 = 1.0f;
-                }
-
-                float k23 = iA * _a1 + iB * _a2;
-                float k33 = mA + mB + iA * _a1 * _a1 + iB * _a2 * _a2;
-
-                k.Ex = new Vector3F(k11, k12, k13);
-                k.Ey = new Vector3F(k12, k22, k23);
-                k.Ez = new Vector3F(k13, k23, k33);
-            }
-
-            if (_enableLimit)
-            {
-                float jointTranslation = Vector2F.Dot(_axis, d);
-                if (Math.Abs(_upperTranslation - _lowerTranslation) < 2.0f * SettingEnv.LinearSlop)
-                {
-                    _limitState = LimitState.Equal;
-                }
-                else if (jointTranslation <= _lowerTranslation)
-                {
-                    if (_limitState != LimitState.AtLower)
-                    {
-                        _limitState = LimitState.AtLower;
-                        _impulse.Z = 0.0f;
-                    }
-                }
-                else if (jointTranslation >= _upperTranslation)
-                {
-                    if (_limitState != LimitState.AtUpper)
-                    {
-                        _limitState = LimitState.AtUpper;
-                        _impulse.Z = 0.0f;
-                    }
-                }
-                else
-                {
-                    _limitState = LimitState.Inactive;
-                    _impulse.Z = 0.0f;
-                }
-            }
-            else
-            {
-                _limitState = LimitState.Inactive;
-                _impulse.Z = 0.0f;
-            }
+            CalculateMotor(ref qA, ref d, ref rA, ref rB, mA, mB, iA, iB);
+            CalculatePerpMatrix(ref qA, ref d, ref rA, ref rB, mA, mB, iA, iB);
+            UpdateLimitState(cA, cB, d);
 
             if (!_enableMotor)
             {
@@ -628,18 +562,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.Step.WarmStarting)
             {
-                _impulse *= data.Step.DtRatio;
-                MotorImpulse *= data.Step.DtRatio;
-
-                Vector2F p = _impulse.X * _perp + (MotorImpulse + _impulse.Z) * _axis;
-                float la = _impulse.X * _s1 + _impulse.Y + (MotorImpulse + _impulse.Z) * _a1;
-                float lb = _impulse.X * _s2 + _impulse.Y + (MotorImpulse + _impulse.Z) * _a2;
-
-                vA -= mA * p;
-                wA -= iA * la;
-
-                vB += mB * p;
-                wB += iB * lb;
+                WarmStart(ref vA, ref wA, ref vB, ref wB, mA, mB, iA, iB, data.Step.DtRatio);
             }
             else
             {
@@ -651,6 +574,96 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Velocities[_indexA].W = wA;
             data.Velocities[_indexB].V = vB;
             data.Velocities[_indexB].W = wB;
+        }
+
+        private void CalculateMotor(ref Complex qA, ref Vector2F d, ref Vector2F rA, ref Vector2F rB, float mA, float mB, float iA, float iB)
+        {
+            _axis = Complex.Multiply(ref _localXAxis, ref qA);
+            _a1 = MathUtils.Cross(d + rA, _axis);
+            _a2 = MathUtils.Cross(ref rB, ref _axis);
+
+            _motorMass = mA + mB + iA * _a1 * _a1 + iB * _a2 * _a2;
+            if (_motorMass > 0.0f)
+            {
+                _motorMass = 1.0f / _motorMass;
+            }
+        }
+
+        private void CalculatePerpMatrix(ref Complex qA, ref Vector2F d, ref Vector2F rA, ref Vector2F rB, float mA, float mB, float iA, float iB)
+        {
+            _perp = Complex.Multiply(ref _localYAxisA, ref qA);
+
+            _s1 = MathUtils.Cross(d + rA, _perp);
+            _s2 = MathUtils.Cross(ref rB, ref _perp);
+
+            float k11 = mA + mB + iA * _s1 * _s1 + iB * _s2 * _s2;
+            float k12 = iA * _s1 + iB * _s2;
+            float k13 = iA * _s1 * _a1 + iB * _s2 * _a2;
+            float k22 = iA + iB;
+            if (Math.Abs(k22) < float.Epsilon)
+            {
+                k22 = 1.0f;
+            }
+
+            float k23 = iA * _a1 + iB * _a2;
+            float k33 = mA + mB + iA * _a1 * _a1 + iB * _a2 * _a2;
+
+            k.Ex = new Vector3F(k11, k12, k13);
+            k.Ey = new Vector3F(k12, k22, k23);
+            k.Ez = new Vector3F(k13, k23, k33);
+        }
+
+        private void UpdateLimitState(Vector2F cA, Vector2F cB, Vector2F d)
+        {
+            if (!_enableLimit)
+            {
+                _limitState = LimitState.Inactive;
+                _impulse.Z = 0.0f;
+                return;
+            }
+
+            float jointTranslation = Vector2F.Dot(_axis, d);
+            if (Math.Abs(_upperTranslation - _lowerTranslation) < 2.0f * SettingEnv.LinearSlop)
+            {
+                _limitState = LimitState.Equal;
+            }
+            else if (jointTranslation <= _lowerTranslation)
+            {
+                if (_limitState != LimitState.AtLower)
+                {
+                    _limitState = LimitState.AtLower;
+                    _impulse.Z = 0.0f;
+                }
+            }
+            else if (jointTranslation >= _upperTranslation)
+            {
+                if (_limitState != LimitState.AtUpper)
+                {
+                    _limitState = LimitState.AtUpper;
+                    _impulse.Z = 0.0f;
+                }
+            }
+            else
+            {
+                _limitState = LimitState.Inactive;
+                _impulse.Z = 0.0f;
+            }
+        }
+
+        private void WarmStart(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB, float dtRatio)
+        {
+            _impulse *= dtRatio;
+            MotorImpulse *= dtRatio;
+
+            Vector2F p = _impulse.X * _perp + (MotorImpulse + _impulse.Z) * _axis;
+            float la = _impulse.X * _s1 + _impulse.Y + (MotorImpulse + _impulse.Z) * _a1;
+            float lb = _impulse.X * _s2 + _impulse.Y + (MotorImpulse + _impulse.Z) * _a2;
+
+            vA -= mA * p;
+            wA -= iA * la;
+
+            vB += mB * p;
+            wB += iB * lb;
         }
 
         /// <summary>
