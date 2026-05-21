@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
@@ -40,7 +39,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     /// <summary>
     ///     The clipboard class
     /// </summary>
-    public class Clipboard
+    public static class Clipboard
     {
         /// <summary>
         ///     The contents of the Clipboard as a UTF-32 string
