@@ -305,7 +305,7 @@ namespace Alis.Extension.Network.Client
             {
                 if (_cancellationTokenSource != null)
                 {
-                    #if NET5_0_OR_GREATER
+                    #if NET6_0_OR_GREATER
                     await _cancellationTokenSource.CancelAsync();
                     #else
                     _cancellationTokenSource.Cancel();
