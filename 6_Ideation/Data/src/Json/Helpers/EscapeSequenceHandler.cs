@@ -154,24 +154,7 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
                             i++;
                             break;
                         case 'u':
-                            if (i + 5 < escapedString.Length)
-                            {
-                                string hexCode = escapedString.Substring(i + 2, 4);
-                                if (int.TryParse(hexCode, NumberStyles.HexNumber, null, out int codePoint))
-                                {
-                                    result.Append((char) codePoint);
-                                    i += 5;
-                                }
-                                else
-                                {
-                                    result.Append(escapedString[i]);
-                                }
-                            }
-                            else
-                            {
-                                result.Append(escapedString[i]);
-                            }
-
+                            i = AppendUnicodeEscape(escapedString, i, result);
                             break;
                         default:
                             result.Append(escapedString[i]);
@@ -187,6 +170,36 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
             }
 
             return result.ToString();
+        }
+
+        /// <summary>
+        ///     Appends the Unicode escape sequence at the current position to the result builder.
+        /// </summary>
+        /// <param name="escapedString">The escaped string being processed.</param>
+        /// <param name="currentIndex">The current index in the escaped string (pointing to 'u').</param>
+        /// <param name="result">The StringBuilder to append the unescaped character to.</param>
+        /// <returns>The updated index after processing the escape sequence.</returns>
+        private static int AppendUnicodeEscape(string escapedString, int currentIndex, StringBuilder result)
+        {
+            if (currentIndex + 5 < escapedString.Length)
+            {
+                string hexCode = escapedString.Substring(currentIndex + 2, 4);
+                if (int.TryParse(hexCode, NumberStyles.HexNumber, null, out int codePoint))
+                {
+                    result.Append((char) codePoint);
+                    return currentIndex + 5;
+                }
+                else
+                {
+                    result.Append(escapedString[currentIndex]);
+                }
+            }
+            else
+            {
+                result.Append(escapedString[currentIndex]);
+            }
+
+            return currentIndex;
         }
     }
 }
