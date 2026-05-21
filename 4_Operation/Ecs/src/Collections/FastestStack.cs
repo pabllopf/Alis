@@ -70,6 +70,11 @@ namespace Alis.Core.Ecs.Collections
         private const int MaxArrayLength = 0X7FEFFFFF;
 
         /// <summary>
+        ///     Argument out of range exception message key
+        /// </summary>
+        private const string ArgOutOfRangeNeedNonNegNum = "ArgumentOutOfRange_NeedNonNegNum";
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="FastestStack{T}" /> class
         /// </summary>
         public FastestStack() => _array = Array.Empty<T>();
@@ -82,7 +87,7 @@ namespace Alis.Core.Ecs.Collections
         {
             if (capacity < 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(capacity), "ArgumentOutOfRange_NeedNonNegNum");
+                throw new ArgumentOutOfRangeException(nameof(capacity), capacity, ArgOutOfRangeNeedNonNegNum);
             }
 
             if (capacity == 0)
@@ -170,7 +175,7 @@ namespace Alis.Core.Ecs.Collections
 
             if (arrayIndex < 0 || arrayIndex > array.Length)
             {
-                throw new ArgumentOutOfRangeException(nameof(arrayIndex), arrayIndex, "ArgumentOutOfRange_NeedNonNegNum");
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex), arrayIndex, ArgOutOfRangeNeedNonNegNum);
             }
 
             if (array.Length - arrayIndex < _size)
@@ -215,7 +220,7 @@ namespace Alis.Core.Ecs.Collections
 
             if (arrayIndex < 0 || arrayIndex > array.Length)
             {
-                throw new ArgumentOutOfRangeException(nameof(arrayIndex), arrayIndex, "ArgumentOutOfRange_NeedNonNegNum");
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex), arrayIndex, ArgOutOfRangeNeedNonNegNum);
             }
 
             if (array.Length - arrayIndex < _size)
@@ -274,7 +279,7 @@ namespace Alis.Core.Ecs.Collections
         {
             if (capacity < 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(capacity), "Dont use negative values");
+                throw new ArgumentOutOfRangeException(nameof(capacity), capacity, ArgOutOfRangeNeedNonNegNum);
             }
 
             if (capacity < _size)
@@ -443,7 +448,7 @@ namespace Alis.Core.Ecs.Collections
         {
             if (capacity < 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(capacity), "ArgumentOutOfRange_NeedNonNegNum");
+                throw new ArgumentOutOfRangeException(nameof(capacity), capacity, ArgOutOfRangeNeedNonNegNum);
             }
 
             if (_array.Length < capacity)
