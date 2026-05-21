@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Globalization;
 using System.Runtime.InteropServices;
@@ -240,18 +239,6 @@ namespace Alis.Core.Aspect.Math.Vector
         public readonly override string ToString() => ToString("G", CultureInfo.CurrentCulture);
 
         /// <summary>
-        ///     Populates a <see cref="SerializationInfo" /> with the vector's component data.
-        /// </summary>
-        /// <param name="info">The <see cref="SerializationInfo" /> to populate.</param>
-        /// <param name="context">The streaming context.</param>
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("x", X);
-            info.AddValue("y", Y);
-            info.AddValue("z", Z);
-        }
-
-        /// <summary>
         ///     Returns the string representation using the specified format and format provider.
         /// </summary>
         /// <param name="format">A standard or custom numeric format string.</param>
@@ -264,5 +251,17 @@ namespace Alis.Core.Aspect.Math.Vector
             Y.ToString(format, formatProvider),
             Z.ToString(format, formatProvider)
         );
+
+        /// <summary>
+        ///     Populates a <see cref="SerializationInfo" /> with the vector's component data.
+        /// </summary>
+        /// <param name="info">The <see cref="SerializationInfo" /> to populate.</param>
+        /// <param name="context">The streaming context.</param>
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("x", X);
+            info.AddValue("y", Y);
+            info.AddValue("z", Z);
+        }
     }
 }
