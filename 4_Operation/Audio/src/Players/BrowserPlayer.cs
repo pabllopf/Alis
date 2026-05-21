@@ -1,3 +1,31 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:BrowserPlayer.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 
 using System;
@@ -217,6 +245,53 @@ namespace Alis.Core.Audio.Players
             dataSize = 0;
             freq = 0;
             format = 0;
+
+            if (!ValidateWavHeader(wav))
+                return false;
+
+            int fmtPos = FindFmtChunk(wav);
+            if (fmtPos < 0)
+            {
+                Console.WriteLine("[WAV] No se encontró chunk 'fmt '");
+                return false;
+            }
+
+            freq = BitConverter.ToInt32(wav, fmtPos + 12);
+            int audioFormat = BitConverter.ToInt16(wav, fmtPos + 8);
+            int channels = BitConverter.ToInt16(wav, fmtPos + 10);
+            int bits = BitConverter.ToInt16(wav, fmtPos + 22);
+            int byteRate = BitConverter.ToInt32(wav, fmtPos + 16);
+            int blockAlign = BitConverter.ToInt16(wav, fmtPos + 20);
+            int fmtSize = BitConverter.ToInt32(wav, fmtPos + 4);
+            int extraSize = fmtSize > 16 ? BitConverter.ToInt16(wav, fmtPos + 24) : 0;
+            Console.WriteLine($"[WAV] audioFormat: {audioFormat}, Canales: {channels}, Frecuencia: {freq}, Bits: {bits}, ByteRate: {byteRate}, BlockAlign: {blockAlign}, ExtraSize: {extraSize}");
+
+            if (audioFormat != 1)
+            {
+                Console.WriteLine($"[WAV] Formato comprimido no soportado: {audioFormat} (solo PCM=1)");
+                Console.WriteLine("[WAV] SUGERENCIA: Convierte el archivo WAV a PCM 16 bits usando Audacity, ffmpeg o sox.");
+                return false;
+            }
+
+            int dataChunkPos = FindDataChunk(wav, fmtPos + 8 + fmtSize);
+            if (dataChunkPos < 0)
+            {
+                Console.WriteLine("[WAV] No se encontró chunk 'data'");
+                return false;
+            }
+
+            dataOffset = dataChunkPos + 8;
+            dataSize = BitConverter.ToInt32(wav, dataChunkPos + 4);
+
+            if (!TryGetFormat(bits, channels, out format))
+                return false;
+
+            Console.WriteLine($"[WAV] dataOffset={dataOffset}, dataSize={dataSize}, format={format}");
+            return true;
+        }
+
+        private static bool ValidateWavHeader(byte[] wav)
+        {
             if (wav.Length < 44)
             {
                 Console.WriteLine($"[WAV] Archivo demasiado pequeño: {wav.Length} bytes");
@@ -235,71 +310,36 @@ namespace Alis.Core.Audio.Players
                 return false;
             }
 
+            return true;
+        }
+
+        private static int FindFmtChunk(byte[] wav)
+        {
             int fmtPos = 12;
-            int fmtSize = 0;
             while (fmtPos < wav.Length - 8)
             {
                 string chunkId = Encoding.ASCII.GetString(wav, fmtPos, 4);
                 int chunkSize = BitConverter.ToInt32(wav, fmtPos + 4);
                 if (chunkId == "fmt ")
-                {
-                    fmtSize = chunkSize;
-                    break;
-                }
-
+                    return fmtPos;
                 fmtPos += 8 + chunkSize;
             }
+            return -1;
+        }
 
-            if (fmtSize == 0)
-            {
-                Console.WriteLine("[WAV] No se encontró chunk 'fmt '");
-                return false;
-            }
-
-            int audioFormat = BitConverter.ToInt16(wav, fmtPos + 8);
-            int channels = BitConverter.ToInt16(wav, fmtPos + 10);
-            freq = BitConverter.ToInt32(wav, fmtPos + 12);
-            int byteRate = BitConverter.ToInt32(wav, fmtPos + 16);
-            int blockAlign = BitConverter.ToInt16(wav, fmtPos + 20);
-            int bits = BitConverter.ToInt16(wav, fmtPos + 22);
-            int extraSize = fmtSize > 16 ? BitConverter.ToInt16(wav, fmtPos + 24) : 0;
-            Console.WriteLine($"[WAV] audioFormat: {audioFormat}, Canales: {channels}, Frecuencia: {freq}, Bits: {bits}, ByteRate: {byteRate}, BlockAlign: {blockAlign}, ExtraSize: {extraSize}");
-            if (audioFormat != 1)
-            {
-                Console.WriteLine($"[WAV] Formato comprimido no soportado: {audioFormat} (solo PCM=1)");
-                Console.WriteLine("[WAV] SUGERENCIA: Convierte el archivo WAV a PCM 16 bits usando Audacity, ffmpeg o sox.");
-                return false;
-            }
-
-            int pos = fmtPos + 8 + fmtSize;
+        private static int FindDataChunk(byte[] wav, int startPos)
+        {
+            int pos = startPos;
             while (pos < wav.Length - 8)
             {
                 string chunkId = Encoding.ASCII.GetString(wav, pos, 4);
                 int chunkSize = BitConverter.ToInt32(wav, pos + 4);
                 Console.WriteLine($"[WAV] Chunk: {chunkId}, Size: {chunkSize}, Pos: {pos}");
                 if (chunkId == "data")
-                {
-                    dataOffset = pos + 8;
-                    dataSize = chunkSize;
-                    break;
-                }
-
+                    return pos;
                 pos += 8 + chunkSize;
             }
-
-            if (dataOffset == 0 || dataSize == 0)
-            {
-                Console.WriteLine("[WAV] No se encontró chunk 'data'");
-                return false;
-            }
-
-            if (!TryGetFormat(bits, channels, out format))
-            {
-                return false;
-            }
-
-            Console.WriteLine($"[WAV] dataOffset={dataOffset}, dataSize={dataSize}, format={format}");
-            return true;
+            return -1;
         }
 
         /// <summary>
