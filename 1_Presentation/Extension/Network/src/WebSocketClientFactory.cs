@@ -198,7 +198,7 @@ namespace Alis.Extension.Network
         /// <param name="response">The response</param>
         /// <param name="secWebSocketKey">The sec web socket key</param>
         /// <exception cref="WebSocketHandshakeFailedException"></exception>
-        internal void ThrowIfInvalidAcceptString(Guid guid, string response, string secWebSocketKey)
+        internal static void ThrowIfInvalidAcceptString(Guid guid, string response, string secWebSocketKey)
         {
             // make sure we escape the accept string which could contain special regex characters
             string regexPattern = "Sec-WebSocket-Accept: (.*)";
