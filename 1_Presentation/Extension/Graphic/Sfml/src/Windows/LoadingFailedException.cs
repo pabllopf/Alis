@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 
 namespace Alis.Extension.Graphic.Sfml.Windows
@@ -37,6 +36,8 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     /// </summary>
     public class LoadingFailedException : Exception
     {
+        private const string FailedPrefix = "Failed to load ";
+
         /// <summary>
         ///     Default constructor (unknown error)
         /// </summary>
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         /// <param name="resourceName">Name of the resource</param>
         public LoadingFailedException(string resourceName) :
-            base("Failed to load " + resourceName + " from memory")
+            base(FailedPrefix + resourceName + " from memory")
         {
         }
 
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="resourceName">Name of the resource</param>
         /// <param name="innerException">Exception which is the cause ofthe current exception</param>
         public LoadingFailedException(string resourceName, Exception innerException) :
-            base("Failed to load " + resourceName + " from memory", innerException)
+            base(FailedPrefix + resourceName + " from memory", innerException)
         {
         }
 
@@ -73,7 +74,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="resourceName">Name of the resource</param>
         /// <param name="filename">Path of the file</param>
         public LoadingFailedException(string resourceName, string filename) :
-            base("Failed to load " + resourceName + " from file " + filename)
+            base(FailedPrefix + resourceName + " from file " + filename)
         {
         }
 
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="filename">Path of the file</param>
         /// <param name="innerException">Exception which is the cause ofthe current exception</param>
         public LoadingFailedException(string resourceName, string filename, Exception innerException) :
-            base("Failed to load " + resourceName + " from file " + filename, innerException)
+            base(FailedPrefix + resourceName + " from file " + filename, innerException)
         {
         }
     }
