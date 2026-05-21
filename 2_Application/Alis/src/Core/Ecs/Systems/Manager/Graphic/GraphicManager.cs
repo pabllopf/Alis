@@ -187,15 +187,35 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 Context.Exit();
             }
 
+            HashSet<ConsoleKey> pressedKeys = ProcessKeyState();
+
+            ProcessKeyEventDispatch(pressedKeys);
+
+            RenderScene(Context.Setting, PixelsPerMeter);
+
+            platform.SwapBuffers();
+            CheckGlError();
+        }
+
+        /// <summary>
+        ///     Renders the preview
+        /// </summary>
+        private void RenderPreview()
+        {
+            RenderScene(Context.Setting, PixelsPerMeter);
+        }
+
+        private HashSet<ConsoleKey> ProcessKeyState()
+        {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>(allKeys.Where(platform.IsKeyDown));
             DateTime now = DateTime.UtcNow;
 
             HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>(newKeys);
-            pressedKeys.ExceptWith(currentKeys); // Press: nuevas pulsaciones
+            pressedKeys.ExceptWith(currentKeys);
             HashSet<ConsoleKey> heldKeys = new HashSet<ConsoleKey>(newKeys);
-            heldKeys.IntersectWith(currentKeys); // Hold: mantenidas
+            heldKeys.IntersectWith(currentKeys);
             HashSet<ConsoleKey> releasedKeys = new HashSet<ConsoleKey>(currentKeys);
-            releasedKeys.ExceptWith(newKeys); // Release: soltadas
+            releasedKeys.ExceptWith(newKeys);
 
             foreach (ConsoleKey k in pressedKeys)
             {
@@ -207,6 +227,19 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 keyDownTimestamps.TryGetValue(k, out DateTime _);
                 keyDownTimestamps.Remove(k);
             }
+
+            currentKeys = newKeys;
+            return pressedKeys;
+        }
+
+        private void ProcessKeyEventDispatch(HashSet<ConsoleKey> pressedKeys)
+        {
+            HashSet<ConsoleKey> heldKeys = new HashSet<ConsoleKey>(currentKeys);
+            heldKeys.IntersectWith(pressedKeys);
+            HashSet<ConsoleKey> releasedKeys = new HashSet<ConsoleKey>(currentKeys);
+            releasedKeys.ExceptWith(pressedKeys);
+
+            DateTime now = DateTime.UtcNow;
 
             GameObjectQueryEnumerator.QueryEnumerable result = Context.SceneManager.CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
             foreach (GameObject gameObject in result)
@@ -247,31 +280,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                     }
                 }
             }
+        }
 
-            currentKeys = newKeys;
-
-
-            float pixelsPerMeter = PixelsPerMeter;
-            Setting contextSetting = Context.Setting;
+        private void RenderBoxColliders(HashSet<GameObject> boxColliderGameObjects, Setting contextSetting, float pixelsPerMeter)
+        {
             PhysicSetting physicSettings = contextSetting.Physic;
-            Color backgrounColor = contextSetting.Graphic.BackgroundColor;
 
-
-            Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
-
-            Gl.GlClear(ClearBufferMask.ColorBufferBit);
-
-            GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.CurrentWorld
-                .Query<With<Sprite>>()
-                .EnumerateWithEntities();
-
-            GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects = Context.SceneManager.CurrentWorld
-                .Query<With<BoxCollider>>()
-                .EnumerateWithEntities();
-
-            foreach (RefTuple<Camera> camera in Context.SceneManager.CurrentWorld
-                         .Query<With<Camera>>()
-                         .Enumerate<Camera>())
+            foreach (RefTuple<Camera> camera in Context.SceneManager.CurrentWorld.Query<With<Camera>>().Enumerate<Camera>())
             {
                 foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
                 {
@@ -284,8 +299,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                         }
                     }
                 }
+            }
+        }
 
-
+        private void RenderSprites(HashSet<GameObject> spriteGameObjects, Setting contextSetting, float pixelsPerMeter)
+        {
+            foreach (RefTuple<Camera> camera in Context.SceneManager.CurrentWorld.Query<With<Camera>>().Enumerate<Camera>())
+            {
                 foreach (GameObject spriteGameobject in spriteGameObjects)
                 {
                     if (spriteGameobject.Has<Animator>() && spriteGameobject.Has<Sprite>())
@@ -302,70 +322,26 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                     }
                 }
             }
+        }
 
-            platform.SwapBuffers();
+        private void RenderScene(Setting contextSetting, float pixelsPerMeter)
+        {
+            Gl.GlClearColor(contextSetting.Graphic.BackgroundColor.R / 255.0f, contextSetting.Graphic.BackgroundColor.G / 255.0f, contextSetting.Graphic.BackgroundColor.B / 255.0f, contextSetting.Graphic.BackgroundColor.A / 255.0f);
+            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+
+            HashSet<GameObject> spriteGameObjects = Context.SceneManager.CurrentWorld.Query<With<Sprite>>().EnumerateWithEntities().ToHashSet();
+            HashSet<GameObject> boxColliderGameObjects = Context.SceneManager.CurrentWorld.Query<With<BoxCollider>>().EnumerateWithEntities().ToHashSet();
+
+            RenderBoxColliders(boxColliderGameObjects, contextSetting, pixelsPerMeter);
+            RenderSprites(spriteGameObjects, contextSetting, pixelsPerMeter);
+        }
+
+        private void CheckGlError()
+        {
             int glError = Gl.GlGetError();
             if (glError != 0)
             {
                 Logger.Info($"OpenGL error tras flushBuffer: 0x{glError:X}");
-            }
-        }
-
-        /// <summary>
-        ///     Renders the preview
-        /// </summary>
-        private void RenderPreview()
-        {
-            float pixelsPerMeter = PixelsPerMeter;
-            Setting contextSetting = Context.Setting;
-            PhysicSetting physicSettings = contextSetting.Physic;
-            Color backgrounColor = contextSetting.Graphic.BackgroundColor;
-
-
-            Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
-
-            Gl.GlClear(ClearBufferMask.ColorBufferBit);
-
-            GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.CurrentWorld
-                .Query<With<Sprite>>()
-                .EnumerateWithEntities();
-
-            GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects = Context.SceneManager.CurrentWorld
-                .Query<With<BoxCollider>>()
-                .EnumerateWithEntities();
-
-            foreach (RefTuple<Camera> camera in Context.SceneManager.CurrentWorld
-                         .Query<With<Camera>>()
-                         .Enumerate<Camera>())
-            {
-                foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
-                {
-                    if (boxColliderGameobject.Has<BoxCollider>())
-                    {
-                        ref BoxCollider boxCollider = ref boxColliderGameobject.Get<BoxCollider>();
-                        if (physicSettings.Debug)
-                        {
-                            boxCollider.Render(boxColliderGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
-                        }
-                    }
-                }
-
-
-                foreach (GameObject spriteGameobject in spriteGameObjects)
-                {
-                    if (spriteGameobject.Has<Animator>() && spriteGameobject.Has<Sprite>())
-                    {
-                        ref Animator animator = ref spriteGameobject.Get<Animator>();
-                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
-                        animator.DrawAnimation(ref sprite);
-                    }
-
-                    if (spriteGameobject.Has<Sprite>())
-                    {
-                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
-                        sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
-                    }
-                }
             }
         }
     }
