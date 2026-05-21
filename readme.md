@@ -10,7 +10,6 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=pabllopf-official_alis&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=pabllopf-official_alis)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pabllopf-official_alis&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pabllopf-official_alis)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=pabllopf-official_alis&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=pabllopf-official_alis)
-![GitHub issues](https://img.shields.io/github/issues/pabllopf/alis?label=Open%20Tickets&color=green)
 [![License](https://img.shields.io/badge/license-GPL%20v3.0-blue)](https://github.com/pabllopf/Alis/blob/main/LICENSE)
 [![Web](https://img.shields.io/website?down_color=red&down_message=failed&up_color=blue&up_message=active&url=https%3A%2F%2Fpabllopf.github.io%2FAlis.Web%2F)](https://pabllopf.github.io/Alis.Web/index.html)
 ![Nuget](https://img.shields.io/nuget/v/alis?label=latest%20version&color=green)
