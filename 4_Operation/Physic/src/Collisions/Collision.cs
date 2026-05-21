@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
@@ -472,30 +471,14 @@ namespace Alis.Core.Physic.Collisions
                     return;
                 }
 
-                if (edgeA.HasVertex0)
+                if (!IsNearVertexA(edgeA, q))
                 {
-                    Vector2F a1 = edgeA.Vertex0;
-                    Vector2F b1 = a;
-                    Vector2F e1 = b1 - a1;
-                    float u1 = Vector2F.Dot(e1, b1 - q);
-
-                    if (u1 > 0.0f)
-                    {
-                        return;
-                    }
+                    return;
                 }
 
                 cf.IndexA = 0;
                 cf.TypeA = (byte) ContactFeatureType.Vertex;
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.Circles;
-                manifold.LocalNormal = Vector2F.Zero;
-                manifold.LocalPoint = p;
-                ManifoldPoint mp = new ManifoldPoint();
-                mp.Id.Key = 0;
-                mp.Id.Features = cf;
-                mp.LocalPoint = circleB.Position;
-                manifold.Points[0] = mp;
+                SetupCircleManifold(ref manifold, cf, p, circleB.Position);
                 return;
             }
 
@@ -509,30 +492,14 @@ namespace Alis.Core.Physic.Collisions
                     return;
                 }
 
-                if (edgeA.HasVertex3)
+                if (!IsNearVertexB(edgeA, q))
                 {
-                    Vector2F b2 = edgeA.Vertex3;
-                    Vector2F a2 = b;
-                    Vector2F e2 = b2 - a2;
-                    float v2 = Vector2F.Dot(e2, q - a2);
-
-                    if (v2 > 0.0f)
-                    {
-                        return;
-                    }
+                    return;
                 }
 
                 cf.IndexA = 1;
                 cf.TypeA = (byte) ContactFeatureType.Vertex;
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.Circles;
-                manifold.LocalNormal = Vector2F.Zero;
-                manifold.LocalPoint = p;
-                ManifoldPoint mp = new ManifoldPoint();
-                mp.Id.Key = 0;
-                mp.Id.Features = cf;
-                mp.LocalPoint = circleB.Position;
-                manifold.Points[0] = mp;
+                SetupCircleManifold(ref manifold, cf, p, circleB.Position);
                 return;
             }
 
@@ -564,6 +531,49 @@ namespace Alis.Core.Physic.Collisions
             mp2.Id.Features = cf;
             mp2.LocalPoint = circleB.Position;
             manifold.Points[0] = mp2;
+        }
+
+        private static bool IsNearVertexA(EdgeShape edgeA, Vector2F q)
+        {
+            if (!edgeA.HasVertex0)
+            {
+                return true;
+            }
+
+            Vector2F a1 = edgeA.Vertex0;
+            Vector2F b1 = edgeA.Vertex1;
+            Vector2F e1 = b1 - a1;
+            float u1 = Vector2F.Dot(e1, b1 - q);
+
+            return u1 <= 0.0f;
+        }
+
+        private static bool IsNearVertexB(EdgeShape edgeA, Vector2F q)
+        {
+            if (!edgeA.HasVertex3)
+            {
+                return true;
+            }
+
+            Vector2F b2 = edgeA.Vertex3;
+            Vector2F a2 = edgeA.Vertex2;
+            Vector2F e2 = b2 - a2;
+            float v2 = Vector2F.Dot(e2, q - a2);
+
+            return v2 <= 0.0f;
+        }
+
+        private static void SetupCircleManifold(ref Manifold manifold, ContactFeature cf, Vector2F localPoint, Vector2F circleLocalPoint)
+        {
+            manifold.PointCount = 1;
+            manifold.Type = ManifoldType.Circles;
+            manifold.LocalNormal = Vector2F.Zero;
+            manifold.LocalPoint = localPoint;
+            ManifoldPoint mp = new ManifoldPoint();
+            mp.Id.Key = 0;
+            mp.Id.Features = cf;
+            mp.LocalPoint = circleLocalPoint;
+            manifold.Points[0] = mp;
         }
 
         /// <summary>
