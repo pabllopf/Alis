@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
@@ -504,40 +503,10 @@ namespace Alis.Core.Physic.Collisions
                 float combinedArea = combinedAabb.Perimeter;
 
                 float cost = 2.0f * combinedArea;
-
                 float inheritanceCost = 2.0f * (combinedArea - area);
 
-                float cost1;
-                if (_nodes[child1].IsLeaf())
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref _nodes[child1].Aabb);
-                    cost1 = aabb.Perimeter + inheritanceCost;
-                }
-                else
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref _nodes[child1].Aabb);
-                    float oldArea = _nodes[child1].Aabb.Perimeter;
-                    float newArea = aabb.Perimeter;
-                    cost1 = newArea - oldArea + inheritanceCost;
-                }
-
-                float cost2;
-                if (_nodes[child2].IsLeaf())
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref _nodes[child2].Aabb);
-                    cost2 = aabb.Perimeter + inheritanceCost;
-                }
-                else
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref _nodes[child2].Aabb);
-                    float oldArea = _nodes[child2].Aabb.Perimeter;
-                    float newArea = aabb.Perimeter;
-                    cost2 = newArea - oldArea + inheritanceCost;
-                }
+                float cost1 = CalculateNodeCost(child1, leafAabb, inheritanceCost);
+                float cost2 = CalculateNodeCost(child2, leafAabb, inheritanceCost);
 
                 if ((cost < cost1) && (cost1 < cost2))
                 {
@@ -563,6 +532,41 @@ namespace Alis.Core.Physic.Collisions
             _nodes[newParent].Aabb.Combine(ref leafAabb, ref _nodes[sibling].Aabb);
             _nodes[newParent].Height = _nodes[sibling].Height + 1;
 
+            AttachNewParent(oldParent, sibling, leaf, newParent);
+
+            index = _nodes[leaf].Parent;
+            while (index != NullNode)
+            {
+                index = Balance(index);
+
+                int child1 = _nodes[index].Child1;
+                int child2 = _nodes[index].Child2;
+
+                _nodes[index].Height = 1 + Math.Max(_nodes[child1].Height, _nodes[child2].Height);
+                _nodes[index].Aabb.Combine(ref _nodes[child1].Aabb, ref _nodes[child2].Aabb);
+
+                index = _nodes[index].Parent;
+            }
+        }
+
+        private float CalculateNodeCost(int child, Aabb leafAabb, float inheritanceCost)
+        {
+            if (_nodes[child].IsLeaf())
+            {
+                Aabb aabb = new Aabb();
+                aabb.Combine(ref leafAabb, ref _nodes[child].Aabb);
+                return aabb.Perimeter + inheritanceCost;
+            }
+
+            Aabb aabb = new Aabb();
+            aabb.Combine(ref leafAabb, ref _nodes[child].Aabb);
+            float oldArea = _nodes[child].Aabb.Perimeter;
+            float newArea = aabb.Perimeter;
+            return newArea - oldArea + inheritanceCost;
+        }
+
+        private void AttachNewParent(int oldParent, int sibling, int leaf, int newParent)
+        {
             if (oldParent != NullNode)
             {
                 if (_nodes[oldParent].Child1 == sibling)
@@ -586,20 +590,6 @@ namespace Alis.Core.Physic.Collisions
                 _nodes[sibling].Parent = newParent;
                 _nodes[leaf].Parent = newParent;
                 _root = newParent;
-            }
-
-            index = _nodes[leaf].Parent;
-            while (index != NullNode)
-            {
-                index = Balance(index);
-
-                int child1 = _nodes[index].Child1;
-                int child2 = _nodes[index].Child2;
-
-                _nodes[index].Height = 1 + Math.Max(_nodes[child1].Height, _nodes[child2].Height);
-                _nodes[index].Aabb.Combine(ref _nodes[child1].Aabb, ref _nodes[child2].Aabb);
-
-                index = _nodes[index].Parent;
             }
         }
 
