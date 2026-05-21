@@ -49,11 +49,6 @@ namespace Alis.Core.Audio.Players
         private readonly uint _buffer;
 
         /// <summary>
-        ///     The context
-        /// </summary>
-        private readonly IntPtr _context;
-
-        /// <summary>
         ///     The device
         /// </summary>
         private readonly IntPtr _device;
@@ -89,14 +84,14 @@ namespace Alis.Core.Audio.Players
                 throw new InvalidOperationException("No se pudo abrir el dispositivo OpenAL");
             }
 
-            _context = OpenAl.alcCreateContext(_device, IntPtr.Zero);
-            Console.WriteLine($"[BrowserPlayer] Contexto OpenAL: {_context}");
-            if (_context == IntPtr.Zero)
+            IntPtr context = OpenAl.alcCreateContext(_device, IntPtr.Zero);
+            Console.WriteLine($"[BrowserPlayer] Contexto OpenAL: {context}");
+            if (context == IntPtr.Zero)
             {
                 throw new InvalidOperationException("No se pudo crear el contexto OpenAL");
             }
 
-            if (!OpenAl.alcMakeContextCurrent(_context))
+            if (!OpenAl.alcMakeContextCurrent(context))
             {
                 throw new InvalidOperationException("No se pudo activar el contexto OpenAL");
             }
@@ -330,48 +325,60 @@ namespace Alis.Core.Audio.Players
                 return false;
             }
 
-            // Soportar PCM 8/16 bits
-            if (bits == 16)
+            if (!TryGetFormat(bits, channels, out format))
             {
-                if (channels == 1)
-                {
-                    format = 0x1101; // AL_FORMAT_MONO16
-                }
-                else if (channels == 2)
-                {
-                    format = 0x1103; // AL_FORMAT_STEREO16
-                }
-                else
-                {
-                    Console.WriteLine($"[WAV] Canales no soportados: {channels}");
-                    return false;
-                }
-            }
-            else if (bits == 8)
-            {
-                if (channels == 1)
-                {
-                    format = 0x1100; // AL_FORMAT_MONO8
-                }
-                else if (channels == 2)
-                {
-                    format = 0x1102; // AL_FORMAT_STEREO8
-                }
-                else
-                {
-                    Console.WriteLine($"[WAV] Canales no soportados: {channels}");
-                    return false;
-                }
-            }
-            else
-            {
-                Console.WriteLine($"[WAV] Bits no soportados: {bits}");
-                Console.WriteLine("[WAV] SUGERENCIA: Convierte el archivo WAV a PCM 16 bits usando Audacity, ffmpeg o sox.");
                 return false;
             }
 
             Console.WriteLine($"[WAV] dataOffset={dataOffset}, dataSize={dataSize}, format={format}");
             return true;
+        }
+
+        /// <summary>
+        ///     Determines the OpenAL format based on bits per sample and channel count.
+        /// </summary>
+        private static bool TryGetFormat(int bits, int channels, out int format)
+        {
+            format = 0;
+            if (bits == 16)
+            {
+                if (channels == 1)
+                {
+                    format = 0x1101; // AL_FORMAT_MONO16
+                    return true;
+                }
+
+                if (channels == 2)
+                {
+                    format = 0x1103; // AL_FORMAT_STEREO16
+                    return true;
+                }
+
+                Console.WriteLine($"[WAV] Canales no soportados: {channels}");
+                return false;
+            }
+
+            if (bits == 8)
+            {
+                if (channels == 1)
+                {
+                    format = 0x1100; // AL_FORMAT_MONO8
+                    return true;
+                }
+
+                if (channels == 2)
+                {
+                    format = 0x1102; // AL_FORMAT_STEREO8
+                    return true;
+                }
+
+                Console.WriteLine($"[WAV] Canales no soportados: {channels}");
+                return false;
+            }
+
+            Console.WriteLine($"[WAV] Bits no soportados: {bits}");
+            Console.WriteLine("[WAV] SUGERENCIA: Convierte el archivo WAV a PCM 16 bits usando Audacity, ffmpeg o sox.");
+            return false;
         }
     }
 }
