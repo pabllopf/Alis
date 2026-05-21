@@ -225,7 +225,7 @@ namespace Alis.Extension.Network
         /// <param name="responseHeader">The response header</param>
         /// <exception cref="InvalidHttpResponseCodeException"></exception>
         /// <exception cref="InvalidHttpResponseCodeException">null null </exception>
-        internal void ThrowIfInvalidResponseCode(string responseHeader)
+        internal static void ThrowIfInvalidResponseCode(string responseHeader)
         {
             string responseCode = HttpHelper.ReadHttpResponseCode(responseHeader);
             if (responseCode == null)
