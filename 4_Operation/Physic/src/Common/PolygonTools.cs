@@ -93,18 +93,18 @@ namespace Alis.Core.Physic.Common
         /// <param name="yRadius">The corner rounding radius along the Y axis.</param>
         /// <param name="segments">The number of segments per corner. Use 0 for a simple 8-vertex rounded rectangle.</param>
         /// <returns>A <see cref="Vertices"/> collection representing the rounded rectangle.</returns>
-        /// <exception cref="Exception">Thrown when rounding exceeds half the width/height or segments is negative.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when rounding exceeds half the width/height or segments is negative.</exception>
         public static Vertices CreateRoundedRectangle(float width, float height, float xRadius, float yRadius,
             int segments)
         {
             if (yRadius > height / 2 || xRadius > width / 2)
             {
-                throw new Exception("Rounding amount can't be more than half the height and width respectively.");
+                throw new ArgumentOutOfRangeException("Rounding amount can't be more than half the height and width respectively.");
             }
 
             if (segments < 0)
             {
-                throw new Exception("Segments must be zero or more.");
+                throw new ArgumentOutOfRangeException(nameof(segments), "Segments must be zero or more.");
             }
 
             //We need at least 8 vertices to create a rounded rectangle
