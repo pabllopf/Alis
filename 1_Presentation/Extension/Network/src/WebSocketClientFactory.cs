@@ -408,7 +408,7 @@ namespace Alis.Extension.Network
         /// <param name="stream">The stream</param>
         /// <param name="handshakeHttpRequest">The handshake http request</param>
         /// <param name="guid">The guid</param>
-        internal async Task SendHandshakeRequest(Stream stream, string handshakeHttpRequest, Guid guid)
+        internal static async Task SendHandshakeRequest(Stream stream, string handshakeHttpRequest, Guid guid)
         {
             byte[] httpRequest = Encoding.UTF8.GetBytes(handshakeHttpRequest);
             await stream.WriteAsync(httpRequest, 0, httpRequest.Length);
