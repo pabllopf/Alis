@@ -608,7 +608,7 @@ namespace Alis.Extension.Network.Internal
         /// </summary>
         /// <param name="payload">The payload</param>
         /// <exception cref="InvalidOperationException">Max ping message size {PingPongPayloadLen} exceeded: {payload.Count}</exception>
-        internal void ValidatePayloadSize(ArraySegment<byte> payload)
+        internal static void ValidatePayloadSize(ArraySegment<byte> payload)
         {
             if (payload.Count > PingPongPayloadLen)
             {
