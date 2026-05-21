@@ -502,90 +502,14 @@ namespace Alis.Core.Physic.Dynamics
                 Contact minContact = null;
                 float minAlpha = 1.0f;
 
-
                 for (Contact c = ContactManager.ContactList.Next; c != ContactManager.ContactList; c = c.Next)
                 {
-                    if (!c.Enabled)
+                    if (!c.Enabled || c.ToiCount > SettingEnv.MaxSubSteps)
                     {
                         continue;
                     }
 
-                    if (c.ToiCount > SettingEnv.MaxSubSteps)
-                    {
-                        continue;
-                    }
-
-                    float alpha;
-                    if (c.ToiFlag)
-                    {
-                        alpha = c.Toi;
-                    }
-                    else
-                    {
-                        Fixture fA = c.FixtureA;
-                        Fixture fB = c.FixtureB;
-
-                        if (fA.GetIsSensor || fB.GetIsSensor)
-                        {
-                            continue;
-                        }
-
-                        Body bA = fA.GetBody;
-                        Body bB = fB.GetBody;
-
-                        BodyType typeA = bA.GetBodyType;
-                        BodyType typeB = bB.GetBodyType;
-
-                        bool activeA = bA.Awake && (typeA != BodyType.Static);
-                        bool activeB = bB.Awake && (typeB != BodyType.Static);
-
-                        if (!activeA && !activeB)
-                        {
-                            continue;
-                        }
-
-                        bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) && !bA.IgnoreCcd;
-                        bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) && !bB.IgnoreCcd;
-
-                        if (!collideA && !collideB)
-                        {
-                            continue;
-                        }
-
-                        float alpha0 = bA.Sweep.Alpha0;
-
-                        if (bA.Sweep.Alpha0 < bB.Sweep.Alpha0)
-                        {
-                            alpha0 = bB.Sweep.Alpha0;
-                            bA.Sweep.Advance(alpha0);
-                        }
-                        else if (bB.Sweep.Alpha0 < bA.Sweep.Alpha0)
-                        {
-                            alpha0 = bA.Sweep.Alpha0;
-                            bB.Sweep.Advance(alpha0);
-                        }
-
-                        _input.ProxyA = new DistanceProxy(fA.GetShape, c.ChildIndexA);
-                        _input.ProxyB = new DistanceProxy(fB.GetShape, c.ChildIndexB);
-                        _input.SweepA = bA.Sweep;
-                        _input.SweepB = bB.Sweep;
-                        _input.TMax = 1.0f;
-
-                        TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref _input);
-
-                        float beta = output.T;
-                        if (output.State == ToiOutputState.Touching)
-                        {
-                            alpha = Math.Min(alpha0 + (1.0f - alpha0) * beta, 1.0f);
-                        }
-                        else
-                        {
-                            alpha = 1.0f;
-                        }
-
-                        c.Toi = alpha;
-                        c.ToiFlag = true;
-                    }
+                    float alpha = CalculateToiForContact(c);
 
                     if (alpha < minAlpha)
                     {
@@ -600,130 +524,7 @@ namespace Alis.Core.Physic.Dynamics
                     break;
                 }
 
-                Fixture fA1 = minContact.FixtureA;
-                Fixture fB1 = minContact.FixtureB;
-                Body bA0 = fA1.GetBody;
-                Body bB0 = fB1.GetBody;
-
-                Sweep backup1 = bA0.Sweep;
-                Sweep backup2 = bB0.Sweep;
-
-                bA0.Advance(minAlpha);
-                bB0.Advance(minAlpha);
-
-                minContact.Update(ContactManager);
-                minContact.ToiFlag = false;
-                ++minContact.ToiCount;
-
-                if (!minContact.Enabled || !minContact.IsTouching)
-                {
-                    minContact.Enabled = false;
-                    bA0.Sweep = backup1;
-                    bB0.Sweep = backup2;
-                    bA0.SynchronizeTransform();
-                    bB0.SynchronizeTransform();
-                    continue;
-                }
-
-                bA0.Awake = true;
-                bB0.Awake = true;
-
-                GetIsland.Clear();
-                GetIsland.Add(bA0);
-                GetIsland.Add(bB0);
-                GetIsland.Add(minContact);
-
-                bA0.Island = true;
-                bB0.Island = true;
-                minContact.IslandFlag = true;
-
-                Body[] bodies = {bA0, bB0};
-                for (int i = 0; i < 2; ++i)
-                {
-                    Body body = bodies[i];
-                    if (body.GetBodyType == BodyType.Dynamic)
-                    {
-                        for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
-                        {
-                            Contact contact = ce.Contact;
-
-                            if (GetIsland.BodyCount == GetIsland.BodyCapacity)
-                            {
-                                break;
-                            }
-
-                            if (GetIsland.ContactCount == GetIsland.ContactCapacity)
-                            {
-                                break;
-                            }
-
-                            if (contact.IslandFlag)
-                            {
-                                continue;
-                            }
-
-                            Body other = ce.Other;
-                            if ((other.GetBodyType == BodyType.Dynamic) &&
-                                !body.IsBullet && !other.IsBullet)
-                            {
-                                continue;
-                            }
-
-                            if (contact.FixtureA.GetIsSensor || contact.FixtureB.GetIsSensor)
-                            {
-                                continue;
-                            }
-
-                            Sweep backup = other.Sweep;
-                            if (!other.Island)
-                            {
-                                other.Advance(minAlpha);
-                            }
-
-                            contact.Update(ContactManager);
-
-                            if (!contact.Enabled)
-                            {
-                                other.Sweep = backup;
-                                other.SynchronizeTransform();
-                                continue;
-                            }
-
-                            if (!contact.IsTouching)
-                            {
-                                other.Sweep = backup;
-                                other.SynchronizeTransform();
-                                continue;
-                            }
-
-                            contact.IslandFlag = true;
-                            GetIsland.Add(contact);
-
-                            if (other.Island)
-                            {
-                                continue;
-                            }
-
-                            other.Island = true;
-
-                            if (other.GetBodyType != BodyType.Static)
-                            {
-                                other.Awake = true;
-                            }
-
-                            GetIsland.Add(other);
-                        }
-                    }
-                }
-
-                TimeStep subStep;
-                subStep.PositionIterations = iterations.ToiPositionIterations;
-                subStep.VelocityIterations = iterations.ToiVelocityIterations;
-                subStep.Dt = (1.0f - minAlpha) * step.Dt;
-                subStep.InvDt = 1.0f / subStep.Dt;
-                subStep.DtRatio = 1.0f;
-                subStep.WarmStarting = false;
-                GetIsland.SolveToi(ref subStep, bA0.GetIslandIndex, bB0.GetIslandIndex);
+                ResolveToi(minContact, minAlpha);
 
                 for (int i = 0; i < GetIsland.BodyCount; ++i)
                 {
@@ -745,6 +546,206 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 ContactManager.FindNewContacts();
+            }
+        }
+
+        private float CalculateToiForContact(Contact c)
+        {
+            if (c.ToiFlag)
+            {
+                return c.Toi;
+            }
+
+            Fixture fA = c.FixtureA;
+            Fixture fB = c.FixtureB;
+
+            if (fA.GetIsSensor || fB.GetIsSensor)
+            {
+                return 1.0f;
+            }
+
+            Body bA = fA.GetBody;
+            Body bB = fB.GetBody;
+
+            BodyType typeA = bA.GetBodyType;
+            BodyType typeB = bB.GetBodyType;
+
+            bool activeA = bA.Awake && (typeA != BodyType.Static);
+            bool activeB = bB.Awake && (typeB != BodyType.Static);
+
+            if (!activeA && !activeB)
+            {
+                return 1.0f;
+            }
+
+            bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) && !bA.IgnoreCcd;
+            bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) && !bB.IgnoreCcd;
+
+            if (!collideA && !collideB)
+            {
+                return 1.0f;
+            }
+
+            float alpha0 = bA.Sweep.Alpha0;
+
+            if (bA.Sweep.Alpha0 < bB.Sweep.Alpha0)
+            {
+                alpha0 = bB.Sweep.Alpha0;
+                bA.Sweep.Advance(alpha0);
+            }
+            else if (bB.Sweep.Alpha0 < bA.Sweep.Alpha0)
+            {
+                alpha0 = bA.Sweep.Alpha0;
+                bB.Sweep.Advance(alpha0);
+            }
+
+            _input.ProxyA = new DistanceProxy(fA.GetShape, c.ChildIndexA);
+            _input.ProxyB = new DistanceProxy(fB.GetShape, c.ChildIndexB);
+            _input.SweepA = bA.Sweep;
+            _input.SweepB = bB.Sweep;
+            _input.TMax = 1.0f;
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref _input);
+
+            float beta = output.T;
+            float alpha;
+            if (output.State == ToiOutputState.Touching)
+            {
+                alpha = Math.Min(alpha0 + (1.0f - alpha0) * beta, 1.0f);
+            }
+            else
+            {
+                alpha = 1.0f;
+            }
+
+            c.Toi = alpha;
+            c.ToiFlag = true;
+            return alpha;
+        }
+
+        private void ResolveToi(Contact minContact)
+        {
+            Fixture fA1 = minContact.FixtureA;
+            Fixture fB1 = minContact.FixtureB;
+            Body bA0 = fA1.GetBody;
+            Body bB0 = fB1.GetBody;
+
+            Sweep backup1 = bA0.Sweep;
+            Sweep backup2 = bB0.Sweep;
+
+            bA0.Advance(minContact.Toi);
+            bB0.Advance(minContact.Toi);
+
+            minContact.Update(ContactManager);
+            minContact.ToiFlag = false;
+            ++minContact.ToiCount;
+
+            if (!minContact.Enabled || !minContact.IsTouching)
+            {
+                minContact.Enabled = false;
+                bA0.Sweep = backup1;
+                bB0.Sweep = backup2;
+                bA0.SynchronizeTransform();
+                bB0.SynchronizeTransform();
+                return;
+            }
+
+            bA0.Awake = true;
+            bB0.Awake = true;
+
+            BuildToiIsolation(bA0, bB0);
+
+            TimeStep subStep;
+            subStep.PositionIterations = iterations.ToiPositionIterations;
+            subStep.VelocityIterations = iterations.ToiVelocityIterations;
+            subStep.Dt = (1.0f - minContact.Toi) * _step.Dt;
+            subStep.InvDt = 1.0f / subStep.Dt;
+            subStep.DtRatio = 1.0f;
+            subStep.WarmStarting = false;
+            GetIsland.SolveToi(ref subStep, bA0.GetIslandIndex, bB0.GetIslandIndex);
+        }
+
+        private void BuildToiIsolation(Body bA0, Body bB0)
+        {
+            GetIsland.Clear();
+            GetIsland.Add(bA0);
+            GetIsland.Add(bB0);
+            GetIsland.Add(minContact);
+
+            bA0.Island = true;
+            bB0.Island = true;
+            minContact.IslandFlag = true;
+
+            Body[] bodies = {bA0, bB0};
+            for (int i = 0; i < 2; ++i)
+            {
+                Body body = bodies[i];
+                if (body.GetBodyType == BodyType.Dynamic)
+                {
+                    for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
+                    {
+                        Contact contact = ce.Contact;
+
+                        if (GetIsland.BodyCount == GetIsland.BodyCapacity)
+                        {
+                            break;
+                        }
+
+                        if (GetIsland.ContactCount == GetIsland.ContactCapacity)
+                        {
+                            break;
+                        }
+
+                        if (contact.IslandFlag)
+                        {
+                            continue;
+                        }
+
+                        Body other = ce.Other;
+                        if ((other.GetBodyType == BodyType.Dynamic) &&
+                            !body.IsBullet && !other.IsBullet)
+                        {
+                            continue;
+                        }
+
+                        if (contact.FixtureA.GetIsSensor || contact.FixtureB.GetIsSensor)
+                        {
+                            continue;
+                        }
+
+                        Sweep backup = other.Sweep;
+                        if (!other.Island)
+                        {
+                            other.Advance(minContact.Toi);
+                        }
+
+                        contact.Update(ContactManager);
+
+                        if (!contact.Enabled || !contact.IsTouching)
+                        {
+                            other.Sweep = backup;
+                            other.SynchronizeTransform();
+                            continue;
+                        }
+
+                        contact.IslandFlag = true;
+                        GetIsland.Add(contact);
+
+                        if (other.Island)
+                        {
+                            continue;
+                        }
+
+                        other.Island = true;
+
+                        if (other.GetBodyType != BodyType.Static)
+                        {
+                            other.Awake = true;
+                        }
+
+                        GetIsland.Add(other);
+                    }
+                }
             }
         }
 
