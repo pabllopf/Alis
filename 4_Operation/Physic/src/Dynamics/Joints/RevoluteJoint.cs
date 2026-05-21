@@ -425,25 +425,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
             _rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
 
-            // r_skew = [-ry; rx]
-
-            //     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
-
             float mA = _invMassA, mB = _invMassB;
             float iA = invIa, iB = invIb;
 
             bool fixedRotation = iA + Math.Abs(iB) < float.Epsilon;
 
-            _mass.Ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
-            _mass.Ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
-            _mass.Ez.X = -_rA.Y * iA - _rB.Y * iB;
-            _mass.Ex.Y = _mass.Ey.X;
-            _mass.Ey.Y = mA + mB + _rA.X * _rA.X * iA + _rB.X * _rB.X * iB;
-            _mass.Ez.Y = _rA.X * iA + _rB.X * iB;
-            _mass.Ex.Z = _mass.Ez.X;
-            _mass.Ey.Z = _mass.Ez.Y;
-            _mass.Ez.Z = iA + iB;
-
+            CalculateMassMatrix(mA, mB, iA, iB);
             _motorMass = iA + iB;
             if (_motorMass > 0.0f)
             {
@@ -455,6 +442,39 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _motorImpulse = 0.0f;
             }
 
+            UpdateLimitState(aA, aB, fixedRotation);
+
+            if (data.Step.WarmStarting)
+            {
+                WarmStart(ref vA, ref wA, ref vB, ref wB, mA, mB, iA, iB, data.Step.DtRatio);
+            }
+            else
+            {
+                _impulse = Vector3F.Zero;
+                _motorImpulse = 0.0f;
+            }
+
+            data.Velocities[_indexA].V = vA;
+            data.Velocities[_indexA].W = wA;
+            data.Velocities[_indexB].V = vB;
+            data.Velocities[_indexB].W = wB;
+        }
+
+        private void CalculateMassMatrix(float mA, float mB, float iA, float iB)
+        {
+            _mass.Ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
+            _mass.Ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
+            _mass.Ez.X = -_rA.Y * iA - _rB.Y * iB;
+            _mass.Ex.Y = _mass.Ey.X;
+            _mass.Ey.Y = mA + mB + _rA.X * _rA.X * iA + _rB.X * _rB.X * iB;
+            _mass.Ez.Y = _rA.X * iA + _rB.X * iB;
+            _mass.Ex.Z = _mass.Ez.X;
+            _mass.Ey.Z = _mass.Ez.Y;
+            _mass.Ez.Z = iA + iB;
+        }
+
+        private void UpdateLimitState(float aA, float aB, bool fixedRotation)
+        {
             if (_enableLimit && !fixedRotation)
             {
                 float jointAngle = aB - aA - ReferenceAngle;
@@ -490,30 +510,20 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 _limitState = LimitState.Inactive;
             }
+        }
 
-            if (data.Step.WarmStarting)
-            {
-                _impulse *= data.Step.DtRatio;
-                _motorImpulse *= data.Step.DtRatio;
+        private void WarmStart(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB, float dtRatio)
+        {
+            _impulse *= dtRatio;
+            _motorImpulse *= dtRatio;
 
-                Vector2F p = new Vector2F(_impulse.X, _impulse.Y);
+            Vector2F p = new Vector2F(_impulse.X, _impulse.Y);
 
-                vA -= mA * p;
-                wA -= iA * (MathUtils.Cross(ref _rA, ref p) + MotorImpulse + _impulse.Z);
+            vA -= mA * p;
+            wA -= iA * (MathUtils.Cross(ref _rA, ref p) + MotorImpulse + _impulse.Z);
 
-                vB += mB * p;
-                wB += iB * (MathUtils.Cross(ref _rB, ref p) + MotorImpulse + _impulse.Z);
-            }
-            else
-            {
-                _impulse = Vector3F.Zero;
-                _motorImpulse = 0.0f;
-            }
-
-            data.Velocities[_indexA].V = vA;
-            data.Velocities[_indexA].W = wA;
-            data.Velocities[_indexB].V = vB;
-            data.Velocities[_indexB].W = wB;
+            vB += mB * p;
+            wB += iB * (MathUtils.Cross(ref _rB, ref p) + MotorImpulse + _impulse.Z);
         }
 
         /// <summary>
