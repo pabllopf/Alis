@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
     ///     The audio listener is the point in the scene
     ///     from where all the sounds are heard
     /// </summary>
-    public class Listener
+    public static class Listener
     {
         /// <summary>
         ///     The volume is a number between 0 and 100; it is combined with
