@@ -303,6 +303,31 @@ namespace Alis.Extension.Language.Translator
         }
 
         /// <summary>
+        ///     Translates a key with parameter substitution
+        /// </summary>
+        /// <param name="key">The translation key</param>
+        /// <param name="parameters">Parameters to substitute (name -> value)</param>
+        /// <returns>The translated and substituted string</returns>
+        [ExcludeFromCodeCoverage]
+        public string Translate(string key, IDictionary<string, object> parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+
+            string translated = Translate(key);
+
+            foreach (KeyValuePair<string, object> kvp in parameters)
+            {
+                string placeholder = $"{{{kvp.Key}}}";
+                translated = translated.Replace(placeholder, kvp.Value?.ToString() ?? string.Empty);
+            }
+
+            return translated;
+        }
+
+        /// <summary>
         ///     Translates a key with pluralization
         /// </summary>
         /// <param name="key">The translation key</param>
@@ -335,31 +360,6 @@ namespace Alis.Extension.Language.Translator
                 string translated = TranslateForLanguage(currentLanguage.Code, key);
                 return translated.Replace("{count}", quantity.ToString());
             }
-        }
-
-        /// <summary>
-        ///     Translates a key with parameter substitution
-        /// </summary>
-        /// <param name="key">The translation key</param>
-        /// <param name="parameters">Parameters to substitute (name -> value)</param>
-        /// <returns>The translated and substituted string</returns>
-        [ExcludeFromCodeCoverage]
-        public string Translate(string key, IDictionary<string, object> parameters)
-        {
-            if (parameters == null)
-            {
-                throw new ArgumentNullException(nameof(parameters));
-            }
-
-            string translated = Translate(key);
-
-            foreach (KeyValuePair<string, object> kvp in parameters)
-            {
-                string placeholder = $"{{{kvp.Key}}}";
-                translated = translated.Replace(placeholder, kvp.Value?.ToString() ?? string.Empty);
-            }
-
-            return translated;
         }
 
         /// <summary>
