@@ -234,7 +234,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The remove tag lookup
         /// </summary>
-        public FastLookup RemoveTagLookup = new FastLookup();
+        internal FastLookup RemoveTagLookup = new FastLookup();
 
         //archetype ID -> Archetype?
         /// <summary>
