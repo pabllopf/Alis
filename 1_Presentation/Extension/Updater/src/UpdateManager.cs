@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -65,6 +64,12 @@ namespace Alis.Extension.Updater
         ///     The threshold ratio
         /// </summary>
         private const double ThresholdRatio = 70.0; // Compression ratio threshold
+
+        /// <summary>
+        ///     GitHub API JSON property names
+        /// </summary>
+        private const string JsonTagName = "tag_name";
+        private const string JsonBrowserDownloadUrl = "browser_download_url";
 
         /// <summary>
         ///     The file service
@@ -179,8 +184,8 @@ namespace Alis.Extension.Updater
                 return HandleMissingCompatiblePackage(platform, architecture);
             }
 
-            string downloadUrl = selectedAsset["browser_download_url"]?.ToString();
-            string version = latestRelease["tag_name"]?.ToString();
+            string downloadUrl = selectedAsset[JsonBrowserDownloadUrl]?.ToString();
+            string version = latestRelease[JsonTagName]?.ToString();
             ReportDownloadPreparation(platform, architecture, version);
 
             if (IsLatestVersionAlreadyDownloaded(downloadUrl))
@@ -509,24 +514,24 @@ namespace Alis.Extension.Updater
             {
                 new Dictionary<string, object>
                 {
-                    {"tag_name", "v0.7.5"},
+                    {JsonTagName, "v0.7.5"},
                     {
                         "assets", new object[]
                         {
                             new Dictionary<string, object>
                             {
                                 {"name", "app-win-x64.zip"},
-                                {"browser_download_url", "https://example.com/app-win-x64.zip"}
+                                {JsonBrowserDownloadUrl, "https://example.com/app-win-x64.zip"}
                             },
                             new Dictionary<string, object>
                             {
                                 {"name", "app-linux-x64.zip"},
-                                {"browser_download_url", "https://example.com/app-linux-x64.zip"}
+                                {JsonBrowserDownloadUrl, "https://example.com/app-linux-x64.zip"}
                             },
                             new Dictionary<string, object>
                             {
                                 {"name", "app-osx-x64.dmg"},
-                                {"browser_download_url", "https://example.com/app-osx-x64.dmg"}
+                                {JsonBrowserDownloadUrl, "https://example.com/app-osx-x64.dmg"}
                             }
                         }
                     }
@@ -535,7 +540,7 @@ namespace Alis.Extension.Updater
 
             foreach (Dictionary<string, object> release in releases)
             {
-                string version = release["tag_name"]?.ToString();
+                string version = release[JsonTagName]?.ToString();
                 if (version == VersionToInstall)
                 {
                     Logger.Info($"Matched requested version '{VersionToInstall}'.");
@@ -884,7 +889,7 @@ namespace Alis.Extension.Updater
             else
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(entryFullPath));
-                entry.ExtractToFile(entryFullPath, overwrite: true);
+                entry.ExtractToFile(entryFullPath, true);
             }
         }
 
