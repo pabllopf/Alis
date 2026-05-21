@@ -707,24 +707,14 @@ namespace Alis.Core.Physic.Collisions
             Vector2F c2Local = ControllerTransform.Divide(poly2.MassData.Centroid, ref xf1To2);
             Vector2F dLocal1 = c2Local - poly1.MassData.Centroid;
 
-            int edge = 0;
-            float maxDot = -SettingEnv.MaxFloat;
-            for (int i = 0; i < count1; ++i)
-            {
-                float dot = MathUtils.Dot(normals1[i], ref dLocal1);
-                if (dot > maxDot)
-                {
-                    maxDot = dot;
-                    edge = i;
-                }
-            }
+            int edge = FindInitialEdge(normals1, ref dLocal1, count1);
 
             float s = EdgeSeparation(poly1, ref xf1To2, edge, poly2);
 
-            int prevEdge = edge - 1 >= 0 ? edge - 1 : count1 - 1;
+            int prevEdge = GetAdjacentEdge(edge, -1, count1);
             float sPrev = EdgeSeparation(poly1, ref xf1To2, prevEdge, poly2);
 
-            int nextEdge = edge + 1 < count1 ? edge + 1 : 0;
+            int nextEdge = GetAdjacentEdge(edge, 1, count1);
             float sNext = EdgeSeparation(poly1, ref xf1To2, nextEdge, poly2);
 
             int bestEdge;
@@ -748,22 +738,50 @@ namespace Alis.Core.Physic.Collisions
                 return s;
             }
 
+            edgeIndex = SearchBestEdge(poly1, ref xf1To2, bestEdge, increment, count1, ref bestSeparation);
+            return bestSeparation;
+        }
+
+        private static int FindInitialEdge(List<Vector2F> normals1, ref Vector2F dLocal1, int count1)
+        {
+            int edge = 0;
+            float maxDot = -SettingEnv.MaxFloat;
+            for (int i = 0; i < count1; ++i)
+            {
+                float dot = MathUtils.Dot(normals1[i], ref dLocal1);
+                if (dot > maxDot)
+                {
+                    maxDot = dot;
+                    edge = i;
+                }
+            }
+
+            return edge;
+        }
+
+        private static int GetAdjacentEdge(int edge, int offset, int count)
+        {
+            int result = edge + offset;
+            return result >= 0 && result < count ? result : (result < 0 ? count - 1 : 0);
+        }
+
+        private static int SearchBestEdge(PolygonShape poly1, ref ControllerTransform xf1To2, int bestEdge, int increment, int count1, ref float bestSeparation)
+        {
             for (;;)
             {
                 if (increment == -1)
                 {
-                    edge = bestEdge - 1 >= 0 ? bestEdge - 1 : count1 - 1;
+                    bestEdge = GetAdjacentEdge(bestEdge, -1, count1);
                 }
                 else
                 {
-                    edge = bestEdge + 1 < count1 ? bestEdge + 1 : 0;
+                    bestEdge = GetAdjacentEdge(bestEdge, 1, count1);
                 }
 
-                s = EdgeSeparation(poly1, ref xf1To2, edge, poly2);
+                float s = EdgeSeparation(poly1, ref xf1To2, bestEdge, poly2);
 
                 if (s > bestSeparation)
                 {
-                    bestEdge = edge;
                     bestSeparation = s;
                 }
                 else
@@ -772,8 +790,7 @@ namespace Alis.Core.Physic.Collisions
                 }
             }
 
-            edgeIndex = bestEdge;
-            return bestSeparation;
+            return bestEdge;
         }
 
         /// <summary>
@@ -918,159 +935,11 @@ namespace Alis.Core.Physic.Collisions
                     offset2 = Vector2F.Dot(normal2, centroidB - v2);
                 }
 
-                if (hasVertex0 && hasVertex3)
-                {
-                    if (convex1 && convex2)
-                    {
-                        front = offset0 >= 0.0f || offset1 >= 0.0f || offset2 >= 0.0f;
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal0;
-                            upperLimit = normal2;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal1;
-                            upperLimit = -normal1;
-                        }
-                    }
-                    else if (convex1)
-                    {
-                        front = offset0 >= 0.0f || ((offset1 >= 0.0f) && (offset2 >= 0.0f));
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal0;
-                            upperLimit = normal1;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal2;
-                            upperLimit = -normal1;
-                        }
-                    }
-                    else if (convex2)
-                    {
-                        front = offset2 >= 0.0f || ((offset0 >= 0.0f) && (offset1 >= 0.0f));
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal1;
-                            upperLimit = normal2;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal1;
-                            upperLimit = -normal0;
-                        }
-                    }
-                    else
-                    {
-                        front = (offset0 >= 0.0f) && (offset1 >= 0.0f) && (offset2 >= 0.0f);
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal1;
-                            upperLimit = normal1;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal2;
-                            upperLimit = -normal0;
-                        }
-                    }
-                }
-                else if (hasVertex0)
-                {
-                    if (convex1)
-                    {
-                        front = offset0 >= 0.0f || offset1 >= 0.0f;
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal0;
-                            upperLimit = -normal1;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = normal1;
-                            upperLimit = -normal1;
-                        }
-                    }
-                    else
-                    {
-                        front = (offset0 >= 0.0f) && (offset1 >= 0.0f);
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal1;
-                            upperLimit = -normal1;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = normal1;
-                            upperLimit = -normal0;
-                        }
-                    }
-                }
-                else if (hasVertex3)
-                {
-                    if (convex2)
-                    {
-                        front = offset1 >= 0.0f || offset2 >= 0.0f;
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = -normal1;
-                            upperLimit = normal2;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal1;
-                            upperLimit = normal1;
-                        }
-                    }
-                    else
-                    {
-                        front = (offset1 >= 0.0f) && (offset2 >= 0.0f);
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = -normal1;
-                            upperLimit = normal1;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal2;
-                            upperLimit = normal1;
-                        }
-                    }
-                }
-                else
-                {
-                    front = offset1 >= 0.0f;
-                    if (front)
-                    {
-                        normal = normal1;
-                        lowerLimit = -normal1;
-                        upperLimit = -normal1;
-                    }
-                    else
-                    {
-                        normal = -normal1;
-                        lowerLimit = normal1;
-                        upperLimit = normal1;
-                    }
-                }
+                EdgeConfiguration config = DetermineContactConfiguration(hasVertex0, hasVertex3, convex1, convex2, offset0, offset1, offset2, ref normal0, ref normal1, ref normal2);
+                front = config.Front;
+                normal = config.Normal;
+                lowerLimit = config.LowerLimit;
+                upperLimit = config.UpperLimit;
 
                 tempPolygonB.Count = polygonB.Vertices.Count;
                 for (int i = 0; i < polygonB.Vertices.Count; ++i)
@@ -1101,34 +970,219 @@ namespace Alis.Core.Physic.Collisions
                     return;
                 }
 
-                const float kRelativeTol = 0.98f;
-                const float kAbsoluteTol = 0.001f;
+                EpAxis primaryAxis = SelectPrimaryAxis(edgeAxis, polygonAxis);
 
-                EpAxis primaryAxis;
-                if (polygonAxis.Type == EpAxisType.Unknown)
+                FixedArray2<ClipVertex> ie = new FixedArray2<ClipVertex>();
+                ReferenceFace rf = SetupReferenceFace(primaryAxis, ref tempPolygonB, ref normal1, front, v1, v2);
+
+                rf.SideNormal1 = new Vector2F(rf.Normal.Y, -rf.Normal.X);
+                rf.SideNormal2 = -rf.SideNormal1;
+                rf.SideOffset1 = Vector2F.Dot(rf.SideNormal1, rf.V1);
+                rf.SideOffset2 = Vector2F.Dot(rf.SideNormal2, rf.V2);
+
+                int np;
+
+                np = ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints1, ref ie, rf.SideNormal1, rf.SideOffset1, rf.I1);
+
+                if (np < SettingEnv.MaxManifoldPoints)
                 {
-                    primaryAxis = edgeAxis;
+                    return;
                 }
-                else if (polygonAxis.Separation > kRelativeTol * edgeAxis.Separation + kAbsoluteTol)
+
+                np = ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints2, ref clipPoints1, rf.SideNormal2, rf.SideOffset2, rf.I2);
+
+                if (np < SettingEnv.MaxManifoldPoints)
                 {
-                    primaryAxis = polygonAxis;
+                    return;
+                }
+
+                if (primaryAxis.Type == EpAxisType.EdgeA)
+                {
+                    manifold.LocalNormal = rf.Normal;
+                    manifold.LocalPoint = rf.V1;
                 }
                 else
                 {
-                    primaryAxis = edgeAxis;
+                    manifold.LocalNormal = polygonB.Normals[rf.I1];
+                    manifold.LocalPoint = polygonB.Vertices[rf.I1];
                 }
 
+                int pointCount = 0;
+                for (int i = 0; i < SettingEnv.MaxManifoldPoints; ++i)
+                {
+                    float separation = Vector2F.Dot(rf.Normal, clipPoints2[i].V - rf.V1);
+
+                    if (separation <= radius)
+                    {
+                        ManifoldPoint cp = manifold.Points[pointCount];
+
+                        if (primaryAxis.Type == EpAxisType.EdgeA)
+                        {
+                            ControllerTransform.Divide(clipPoints2[i].V, ref xf, out cp.LocalPoint);
+                            cp.Id = clipPoints2[i].Id;
+                        }
+                        else
+                        {
+                            cp.LocalPoint = clipPoints2[i].V;
+                            cp.Id.Features.TypeA = clipPoints2[i].Id.Features.TypeB;
+                            cp.Id.Features.TypeB = clipPoints2[i].Id.Features.TypeA;
+                            cp.Id.Features.IndexA = clipPoints2[i].Id.Features.IndexB;
+                            cp.Id.Features.IndexB = clipPoints2[i].Id.Features.IndexA;
+                        }
+
+                        manifold.Points[pointCount] = cp;
+                        ++pointCount;
+                    }
+                }
+
+                manifold.PointCount = pointCount;
+            }
+
+            private struct EdgeConfiguration
+            {
+                public bool Front;
+                public Vector2F Normal;
+                public Vector2F LowerLimit;
+                public Vector2F UpperLimit;
+
+                public EdgeConfiguration(bool front, Vector2F normal, Vector2F lowerLimit, Vector2F upperLimit)
+                {
+                    Front = front;
+                    Normal = normal;
+                    LowerLimit = lowerLimit;
+                    UpperLimit = upperLimit;
+                }
+            }
+
+            private static EdgeConfiguration DetermineContactConfiguration(bool hasVertex0, bool hasVertex3, bool convex1, bool convex2, float offset0, float offset1, float offset2, ref Vector2F normal0, ref Vector2F normal1, ref Vector2F normal2)
+            {
+                if (hasVertex0 && hasVertex3)
+                {
+                    if (convex1 && convex2)
+                    {
+                        bool front = offset0 >= 0.0f || offset1 >= 0.0f || offset2 >= 0.0f;
+                        if (front)
+                        {
+                            return new EdgeConfiguration(true, normal1, normal0, normal2);
+                        }
+
+                        return new EdgeConfiguration(false, -normal1, -normal1, -normal1);
+                    }
+
+                    if (convex1)
+                    {
+                        bool front = offset0 >= 0.0f || ((offset1 >= 0.0f) && (offset2 >= 0.0f));
+                        if (front)
+                        {
+                            return new EdgeConfiguration(true, normal1, normal0, normal1);
+                        }
+
+                        return new EdgeConfiguration(false, -normal1, -normal2, -normal1);
+                    }
+
+                    if (convex2)
+                    {
+                        bool front = offset2 >= 0.0f || ((offset0 >= 0.0f) && (offset1 >= 0.0f));
+                        if (front)
+                        {
+                            return new EdgeConfiguration(true, normal1, normal1, normal2);
+                        }
+
+                        return new EdgeConfiguration(false, -normal1, -normal1, -normal0);
+                    }
+
+                    bool front = (offset0 >= 0.0f) && (offset1 >= 0.0f) && (offset2 >= 0.0f);
+                    if (front)
+                    {
+                        return new EdgeConfiguration(true, normal1, normal1, normal1);
+                    }
+
+                    return new EdgeConfiguration(false, -normal1, -normal2, -normal0);
+                }
+
+                if (hasVertex0)
+                {
+                    if (convex1)
+                    {
+                        bool front = offset0 >= 0.0f || offset1 >= 0.0f;
+                        if (front)
+                        {
+                            return new EdgeConfiguration(true, normal1, normal0, -normal1);
+                        }
+
+                        return new EdgeConfiguration(false, -normal1, normal1, -normal1);
+                    }
+
+                    bool front = (offset0 >= 0.0f) && (offset1 >= 0.0f);
+                    if (front)
+                    {
+                        return new EdgeConfiguration(true, normal1, normal1, -normal1);
+                    }
+
+                    return new EdgeConfiguration(false, -normal1, normal1, -normal0);
+                }
+
+                if (hasVertex3)
+                {
+                    if (convex2)
+                    {
+                        bool front = offset1 >= 0.0f || offset2 >= 0.0f;
+                        if (front)
+                        {
+                            return new EdgeConfiguration(true, normal1, -normal1, normal2);
+                        }
+
+                        return new EdgeConfiguration(false, -normal1, -normal1, normal1);
+                    }
+
+                    bool front = (offset1 >= 0.0f) && (offset2 >= 0.0f);
+                    if (front)
+                    {
+                        return new EdgeConfiguration(true, normal1, -normal1, normal1);
+                    }
+
+                    return new EdgeConfiguration(false, -normal1, -normal2, normal1);
+                }
+
+                bool front = offset1 >= 0.0f;
+                if (front)
+                {
+                    return new EdgeConfiguration(true, normal1, -normal1, -normal1);
+                }
+
+                return new EdgeConfiguration(false, -normal1, normal1, normal1);
+            }
+
+            private static EpAxis SelectPrimaryAxis(EpAxis edgeAxis, EpAxis polygonAxis)
+            {
+                const float kRelativeTol = 0.98f;
+                const float kAbsoluteTol = 0.001f;
+
+                if (polygonAxis.Type == EpAxisType.Unknown)
+                {
+                    return edgeAxis;
+                }
+
+                if (polygonAxis.Separation > kRelativeTol * edgeAxis.Separation + kAbsoluteTol)
+                {
+                    return polygonAxis;
+                }
+
+                return edgeAxis;
+            }
+
+            private static ReferenceFace SetupReferenceFace(EpAxis primaryAxis, ref TempPolygon tempPolygonB, ref Vector2F normal1, bool front, Vector2F v1, Vector2F v2)
+            {
                 FixedArray2<ClipVertex> ie = new FixedArray2<ClipVertex>();
                 ReferenceFace rf;
+
                 if (primaryAxis.Type == EpAxisType.EdgeA)
                 {
-                    manifold.Type = ManifoldType.FaceA;
-
                     int bestIndex = 0;
-                    float bestValue = Vector2F.Dot(normal, tempPolygonB.Normals[0]);
+                    float bestValue = Vector2F.Dot(normal1, tempPolygonB.Normals[0]);
                     for (int i = 1; i < tempPolygonB.Count; ++i)
                     {
-                        float value = Vector2F.Dot(normal, tempPolygonB.Normals[i]);
+                        float value = Vector2F.Dot(normal1, tempPolygonB.Normals[i]);
                         if (value < bestValue)
                         {
                             bestValue = value;
@@ -1174,7 +1228,6 @@ namespace Alis.Core.Physic.Collisions
                 }
                 else
                 {
-                    manifold.Type = ManifoldType.FaceB;
                     ClipVertex c0 = ie[0];
                     c0.V = v1;
                     c0.Id.Features.IndexA = 0;
@@ -1198,25 +1251,8 @@ namespace Alis.Core.Physic.Collisions
                     rf.Normal = tempPolygonB.Normals[rf.I1];
                 }
 
-                rf.SideNormal1 = new Vector2F(rf.Normal.Y, -rf.Normal.X);
-                rf.SideNormal2 = -rf.SideNormal1;
-                rf.SideOffset1 = Vector2F.Dot(rf.SideNormal1, rf.V1);
-                rf.SideOffset2 = Vector2F.Dot(rf.SideNormal2, rf.V2);
-
-                int np;
-
-                np = ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints1, ref ie, rf.SideNormal1, rf.SideOffset1, rf.I1);
-
-                if (np < SettingEnv.MaxManifoldPoints)
-                {
-                    return;
-                }
-
-                np = ClipSegmentToLine(out FixedArray2<ClipVertex> clipPoints2, ref clipPoints1, rf.SideNormal2, rf.SideOffset2, rf.I2);
-
-                if (np < SettingEnv.MaxManifoldPoints)
-                {
-                    return;
+                return rf;
+            }
                 }
 
                 if (primaryAxis.Type == EpAxisType.EdgeA)
