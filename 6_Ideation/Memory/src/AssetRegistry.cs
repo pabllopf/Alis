@@ -1,3 +1,31 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:AssetRegistry.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 
 using System;
@@ -238,113 +266,110 @@ namespace Alis.Core.Aspect.Memory
         public static string GetResourcePathByName(string resourceName)
         {
             if (string.IsNullOrWhiteSpace(resourceName))
-            {
                 throw new ArgumentException("resourceName no puede estar vacío.", nameof(resourceName));
-            }
 
             if (ActiveAssemblyName == null)
-            {
                 throw new InvalidOperationException("No hay una asamblea activa configurada.");
-            }
 
             if (!RegisteredAssetLoaders.ContainsKey(ActiveAssemblyName))
-            {
                 throw new InvalidOperationException($"La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.");
-            }
 
             string normalizedKey = NormalizeResourceKey(resourceName);
             ZipEntryInfo entryInfo;
             ZipCacheEntry cacheEntry;
 
+            string cachedPath = null;
             lock (GetAssemblyLock(ActiveAssemblyName))
             {
                 EnsureZipCachedForActiveAssembly();
 
                 if (!_zipCache.TryGetValue(ActiveAssemblyName, out cacheEntry))
-                {
                     throw new FileNotFoundException("Cache del assets.pack no disponible.");
-                }
-
-                string compositeKey = ActiveAssemblyName.ToLowerInvariant() + "|" + normalizedKey;
-                if (_extractedPathCache.TryGetValue(compositeKey, out string cachedPath) && File.Exists(cachedPath))
-                {
-                    ZipEntryInfo entryCandidate = FindZipEntryInfo(cacheEntry, resourceName);
-                    if (entryCandidate != null)
-                    {
-                        FileInfo fi = new FileInfo(cachedPath);
-                        if ((fi.Length == entryCandidate.Length) && (File.GetLastWriteTimeUtc(cachedPath) == entryCandidate.LastWriteTimeUtc.UtcDateTime))
-                        {
-                            return cachedPath;
-                        }
-
-                        _extractedPathCache.Remove(compositeKey);
-                    }
-                    else
-                    {
-                        _extractedPathCache.Remove(compositeKey);
-                    }
-                }
 
                 entryInfo = FindZipEntryInfo(cacheEntry, resourceName);
                 if (entryInfo == null)
-                {
                     throw new FileNotFoundException($"Resource '{resourceName}' not found in `assets.pack`.");
-                }
+
+                cachedPath = TryGetCachedPath(cacheEntry, normalizedKey, resourceName);
             }
 
+            if (cachedPath != null)
+                return cachedPath;
+
+            string tempFilePath = ExtractResourceToTemp(cacheEntry, entryInfo, normalizedKey);
+            return tempFilePath;
+        }
+
+        private static string TryGetCachedPath(ZipCacheEntry cacheEntry, string normalizedKey, string resourceName)
+        {
+            string compositeKey = ActiveAssemblyName.ToLowerInvariant() + "|" + normalizedKey;
+            if (_extractedPathCache.TryGetValue(compositeKey, out string cachedPath) && File.Exists(cachedPath))
+            {
+                ZipEntryInfo entryCandidate = FindZipEntryInfo(cacheEntry, resourceName);
+                if (entryCandidate != null)
+                {
+                    FileInfo fi = new FileInfo(cachedPath);
+                    if (fi.Length == entryCandidate.Length && File.GetLastWriteTimeUtc(cachedPath) == entryCandidate.LastWriteTimeUtc.UtcDateTime)
+                        return cachedPath;
+
+                    _extractedPathCache.Remove(compositeKey);
+                }
+                else
+                {
+                    _extractedPathCache.Remove(compositeKey);
+                }
+            }
+            return null;
+        }
+
+        private static string ExtractResourceToTemp(ZipCacheEntry cacheEntry, ZipEntryInfo entryInfo, string normalizedKey)
+        {
             string safeName = MakeSafeTempName(ActiveAssemblyName, normalizedKey);
             string tempFilePath = Path.Combine(Path.GetTempPath(), safeName);
 
             if (File.Exists(tempFilePath))
             {
                 FileInfo fi = new FileInfo(tempFilePath);
-                if ((fi.Length == entryInfo.Length) && (File.GetLastWriteTimeUtc(tempFilePath) == entryInfo.LastWriteTimeUtc.UtcDateTime))
+                if (fi.Length == entryInfo.Length && File.GetLastWriteTimeUtc(tempFilePath) == entryInfo.LastWriteTimeUtc.UtcDateTime)
                 {
-                    string compositeKey = ActiveAssemblyName.ToLowerInvariant() + "|" + NormalizeResourceKey(resourceName);
+                    string compositeKey = ActiveAssemblyName.ToLowerInvariant() + "|" + normalizedKey;
                     _extractedPathCache[compositeKey] = tempFilePath;
                     return tempFilePath;
                 }
             }
 
-            ArrayPool<byte> pool2 = ArrayPool<byte>.Shared;
-            byte[] buffer2 = pool2.Rent(81920);
+            ArrayPool<byte> pool = ArrayPool<byte>.Shared;
+            byte[] buffer = pool.Rent(81920);
             try
             {
                 using MemoryStream packStream = new MemoryStream(cacheEntry.PackBytes, false);
                 using ZipArchive zip = new ZipArchive(packStream, ZipArchiveMode.Read, true);
                 ZipArchiveEntry zipEntry = zip.GetEntry(entryInfo.FullName);
                 if (zipEntry == null)
-                {
-                    throw new FileNotFoundException($"Resource '{resourceName}' not found in `assets.pack` (race).");
-                }
+                    throw new FileNotFoundException($"Resource '{normalizedKey}' not found in `assets.pack` (race).");
 
                 Directory.CreateDirectory(Path.GetDirectoryName(tempFilePath) ?? Path.GetTempPath());
                 using (Stream entryStream = zipEntry.Open())
                 using (FileStream outFs = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     int read;
-                    while ((read = entryStream.Read(buffer2, 0, buffer2.Length)) > 0)
-                    {
-                        outFs.Write(buffer2, 0, read);
-                    }
+                    while ((read = entryStream.Read(buffer, 0, buffer.Length)) > 0)
+                        outFs.Write(buffer, 0, read);
                 }
 
                 try
                 {
                     File.SetLastWriteTimeUtc(tempFilePath, entryInfo.LastWriteTimeUtc.UtcDateTime);
                 }
-                catch
-                {
-                }
+                catch { }
 
-                string compositeKey2 = ActiveAssemblyName.ToLowerInvariant() + "|" + NormalizeResourceKey(resourceName);
+                string compositeKey2 = ActiveAssemblyName.ToLowerInvariant() + "|" + normalizedKey;
                 _extractedPathCache[compositeKey2] = tempFilePath;
-
                 return tempFilePath;
             }
             finally
             {
-                pool2.Return(buffer2);
+                pool.Return(buffer);
             }
         }
 
