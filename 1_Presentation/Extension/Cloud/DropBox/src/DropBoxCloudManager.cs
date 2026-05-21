@@ -48,10 +48,15 @@ namespace Alis.Extension.Cloud.DropBox
     /// <seealso cref="ICloudManager" />
     public class DropBoxCloudManager : AManager, ICloudManager, IDisposable
     {
-        /// <summary>
-        ///     Error message for not initialized state
-        /// </summary>
-        private const string NotInitializedError = "DropBox manager is not initialized. Call InitializeAsync first.";
+    /// <summary>
+    ///     Error message for not initialized state
+    /// </summary>
+    private const string NotInitializedError = "DropBox manager is not initialized. Call InitializeAsync first.";
+
+    /// <summary>
+    ///     The path delimiter used for Dropbox paths (always forward slash)
+    /// </summary>
+    private const string PathDelimiter = "/";
 
         /// <summary>
         ///     The access token
@@ -138,18 +143,10 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new FileNotFoundException($"Local file not found: {localFilePath}");
             }
 
-#if  NET5_0_OR_GREATER
-              if (!dropboxPath.StartsWith('/'))
+            if (!dropboxPath.StartsWith(PathDelimiter))
             {
-                dropboxPath = "/" + dropboxPath;
+                dropboxPath = PathDelimiter + dropboxPath;
             }
-#else
-            if (!dropboxPath.StartsWith("/"))
-            {
-                dropboxPath = "/" + dropboxPath;
-            }
-#endif
-          
 
             try
             {
@@ -184,17 +181,10 @@ namespace Alis.Extension.Cloud.DropBox
                 throw new InvalidOperationException(NotInitializedError);
             }
 
-#if  NET5_0_OR_GREATER
-              if (!dropboxPath.StartsWith('/'))
+            if (!dropboxPath.StartsWith(PathDelimiter))
             {
-                dropboxPath = "/" + dropboxPath;
+                dropboxPath = PathDelimiter + dropboxPath;
             }
-#else
-            if (!dropboxPath.StartsWith("/"))
-            {
-                dropboxPath = "/" + dropboxPath;
-            }
-#endif
 
             try
             {
