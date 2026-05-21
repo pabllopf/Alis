@@ -3315,308 +3315,308 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 1098,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbcMbZ4NfML321V": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 1149,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbcMbZ4NfML321U": {
     "ruleKey": "csharpsquid:S2743",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 1162,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbcMbZ4NfML321c": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 1216,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbcMbZ4NfML321b": {
     "ruleKey": "csharpsquid:S2743",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 1229,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbcMbZ4NfML321e": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 1286,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbcMbZ4NfML321d": {
     "ruleKey": "csharpsquid:S2743",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 1301,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbcMbZ4NfML321i": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 1361,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbcMbZ4NfML321h": {
     "ruleKey": "csharpsquid:S2743",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 1377,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbcMbZ4NfML321g": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 1440,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbcMbZ4NfML321f": {
     "ruleKey": "csharpsquid:S2743",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 1456,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbGMbZ4NfML321B": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/OfComponent.cs",
     "line": 35,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbGMbZ4NfML321C": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/OfComponent.cs",
     "line": 46,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbGMbZ4NfML321D": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/OfComponent.cs",
     "line": 57,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbGMbZ4NfML321E": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/OfComponent.cs",
     "line": 68,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbGMbZ4NfML321F": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/OfComponent.cs",
     "line": 79,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbGMbZ4NfML321G": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/OfComponent.cs",
     "line": 90,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNbGMbZ4NfML321H": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/OfComponent.cs",
     "line": 101,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML327d": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 374,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML325t": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 384,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326M": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 394,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326n": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 404,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326x": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 414,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNg_MbZ4NfML326y": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/NeighborCache.cs",
     "line": 424,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNcPMbZ4NfML322D": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/QueryEnumerable.cs",
     "line": 78,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNcPMbZ4NfML322E": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/QueryEnumerable.cs",
     "line": 95,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNcPMbZ4NfML322F": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/QueryEnumerable.cs",
     "line": 112,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNcPMbZ4NfML322G": {
     "ruleKey": "csharpsquid:S2436",
     "file": "4_Operation/Ecs/src/QueryEnumerable.cs",
     "line": 129,
     "severity": "MAJOR",
-    "status": "open",
+    "status": "failed",
     "assignedWorker": null,
     "lockedAt": null,
     "completedAt": null,
-    "attemptCount": 0
+    "attemptCount": 1
   },
   "AZ1dvNcPMbZ4NfML322H": {
     "ruleKey": "csharpsquid:S2436",
