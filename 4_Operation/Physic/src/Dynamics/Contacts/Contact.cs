@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
@@ -308,27 +307,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Evaluate(ref Manifold, ref bodyA.Xf, ref bodyB.Xf);
                 touching = Manifold.PointCount > 0;
 
-                for (int i = 0; i < Manifold.PointCount; ++i)
-                {
-                    ManifoldPoint mp2 = Manifold.Points[i];
-                    mp2.NormalImpulse = 0.0f;
-                    mp2.TangentImpulse = 0.0f;
-                    ContactId id2 = mp2.Id;
-
-                    for (int j = 0; j < oldManifold.PointCount; ++j)
-                    {
-                        ManifoldPoint mp1 = oldManifold.Points[j];
-
-                        if (mp1.Id.Key == id2.Key)
-                        {
-                            mp2.NormalImpulse = mp1.NormalImpulse;
-                            mp2.TangentImpulse = mp1.TangentImpulse;
-                            break;
-                        }
-                    }
-
-                    Manifold.Points[i] = mp2;
-                }
+                PreserveImpulses(oldManifold);
 
                 if (touching != wasTouching)
                 {
@@ -339,101 +318,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             IsTouching = touching;
 
-            if (!wasTouching)
+            if (!wasTouching && touching)
             {
-                if (touching)
-                {
-                    bool enabledA = true, enabledB = true;
-
-                    OnCollisionEventHandler onFixtureCollisionHandlerA = FixtureA.OnCollision;
-                    if (onFixtureCollisionHandlerA != null)
-                    {
-                        foreach (Delegate d in onFixtureCollisionHandlerA.GetInvocationList())
-                        {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler) d;
-                            enabledA = handler(FixtureA, FixtureB, this) && enabledA;
-                        }
-                    }
-
-                    OnCollisionEventHandler onFixtureCollisionHandlerB = FixtureB.OnCollision;
-                    if (onFixtureCollisionHandlerB != null)
-                    {
-                        foreach (Delegate d in onFixtureCollisionHandlerB.GetInvocationList())
-                        {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler) d;
-                            enabledB = handler(FixtureB, FixtureA, this) && enabledB;
-                        }
-                    }
-
-                    OnCollisionEventHandler onBodyCollisionHandlerA = bodyA.OnCollisionEventHandler;
-                    if (onBodyCollisionHandlerA != null)
-                    {
-                        foreach (Delegate d in onBodyCollisionHandlerA.GetInvocationList())
-                        {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler) d;
-                            enabledA = handler(FixtureA, FixtureB, this) && enabledA;
-                        }
-                    }
-
-                    OnCollisionEventHandler onBodyCollisionHandlerB = bodyB.OnCollisionEventHandler;
-                    if (onBodyCollisionHandlerB != null)
-                    {
-                        foreach (Delegate d in onBodyCollisionHandlerB.GetInvocationList())
-                        {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler) d;
-                            enabledB = handler(FixtureB, FixtureA, this) && enabledB;
-                        }
-                    }
-
-
-                    Enabled = enabledA && enabledB;
-
-                    BeginContactDelegate beginContactHandler = contactManager.BeginContact;
-                    if (enabledA && enabledB && (beginContactHandler != null))
-                    {
-                        Enabled = beginContactHandler(this);
-                    }
-
-                    if (!Enabled)
-                    {
-                        IsTouching = false;
-                    }
-                }
+                ProcessBeginContact(contactManager);
             }
-            else
+            else if (wasTouching && !touching)
             {
-                if (!touching)
-                {
-                    OnSeparationEventHandler onFixtureSeparationHandlerA = FixtureA.OnSeparation;
-                    if (onFixtureSeparationHandlerA != null)
-                    {
-                        onFixtureSeparationHandlerA(FixtureA, FixtureB, this);
-                    }
-
-                    OnSeparationEventHandler onFixtureSeparationHandlerB = FixtureB.OnSeparation;
-                    if (onFixtureSeparationHandlerB != null)
-                    {
-                        onFixtureSeparationHandlerB(FixtureB, FixtureA, this);
-                    }
-
-                    OnSeparationEventHandler onBodySeparationHandlerA = bodyA.OnSeparationEventHandler;
-                    if (onBodySeparationHandlerA != null)
-                    {
-                        onBodySeparationHandlerA(FixtureA, FixtureB, this);
-                    }
-
-                    OnSeparationEventHandler onBodySeparationHandlerB = bodyB.OnSeparationEventHandler;
-                    if (onBodySeparationHandlerB != null)
-                    {
-                        onBodySeparationHandlerB(FixtureB, FixtureA, this);
-                    }
-
-                    EndContactDelegate endContactHandler = contactManager.EndContact;
-                    if (endContactHandler != null)
-                    {
-                        endContactHandler(this);
-                    }
-                }
+                ProcessEndContact(contactManager);
             }
 
             if (sensor)
@@ -445,6 +336,115 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             if (preSolveHandler != null)
             {
                 preSolveHandler(this, ref oldManifold);
+            }
+        }
+
+        private void PreserveImpulses(Manifold oldManifold)
+        {
+            for (int i = 0; i < Manifold.PointCount; ++i)
+            {
+                ManifoldPoint mp2 = Manifold.Points[i];
+                mp2.NormalImpulse = 0.0f;
+                mp2.TangentImpulse = 0.0f;
+                ContactId id2 = mp2.Id;
+
+                for (int j = 0; j < oldManifold.PointCount; ++j)
+                {
+                    ManifoldPoint mp1 = oldManifold.Points[j];
+
+                    if (mp1.Id.Key == id2.Key)
+                    {
+                        mp2.NormalImpulse = mp1.NormalImpulse;
+                        mp2.TangentImpulse = mp1.TangentImpulse;
+                        break;
+                    }
+                }
+
+                Manifold.Points[i] = mp2;
+            }
+        }
+
+        private void ProcessBeginContact(ContactManager contactManager)
+        {
+            bool enabledA = true, enabledB = true;
+
+            enabledA = InvokeCollisionHandlers(FixtureA.OnCollision, FixtureA, FixtureB);
+            enabledB = InvokeCollisionHandlers(FixtureB.OnCollision, FixtureB, FixtureA);
+
+            enabledA = InvokeBodyCollisionHandlers(bodyA.OnCollisionEventHandler, FixtureA, FixtureB) && enabledA;
+            enabledB = InvokeBodyCollisionHandlers(bodyB.OnCollisionEventHandler, FixtureB, FixtureA) && enabledB;
+
+            Enabled = enabledA && enabledB;
+
+            BeginContactDelegate beginContactHandler = contactManager.BeginContact;
+            if (enabledA && enabledB && (beginContactHandler != null))
+            {
+                Enabled = beginContactHandler(this);
+            }
+
+            if (!Enabled)
+            {
+                IsTouching = false;
+            }
+        }
+
+        private void ProcessEndContact(ContactManager contactManager)
+        {
+            InvokeSeparationHandler(FixtureA.OnSeparation, FixtureA, FixtureB);
+            InvokeSeparationHandler(FixtureB.OnSeparation, FixtureB, FixtureA);
+            InvokeBodySeparationHandler(bodyA.OnSeparationEventHandler, FixtureA, FixtureB);
+            InvokeBodySeparationHandler(bodyB.OnSeparationEventHandler, FixtureB, FixtureA);
+
+            EndContactDelegate endContactHandler = contactManager.EndContact;
+            if (endContactHandler != null)
+            {
+                endContactHandler(this);
+            }
+        }
+
+        private bool InvokeCollisionHandlers(OnCollisionEventHandler handler, Fixture fixtureA, Fixture fixtureB)
+        {
+            bool enabled = true;
+            if (handler != null)
+            {
+                foreach (Delegate d in handler.GetInvocationList())
+                {
+                    OnCollisionEventHandler h = (OnCollisionEventHandler)d;
+                    enabled = h(fixtureA, fixtureB, this) && enabled;
+                }
+            }
+
+            return enabled;
+        }
+
+        private bool InvokeBodyCollisionHandlers(OnCollisionEventHandler handler, Fixture fixtureA, Fixture fixtureB)
+        {
+            bool enabled = true;
+            if (handler != null)
+            {
+                foreach (Delegate d in handler.GetInvocationList())
+                {
+                    OnCollisionEventHandler h = (OnCollisionEventHandler)d;
+                    enabled = h(fixtureA, fixtureB, this) && enabled;
+                }
+            }
+
+            return enabled;
+        }
+
+        private void InvokeSeparationHandler(OnSeparationEventHandler handler, Fixture fixtureA, Fixture fixtureB)
+        {
+            if (handler != null)
+            {
+                handler(fixtureA, fixtureB, this);
+            }
+        }
+
+        private void InvokeBodySeparationHandler(OnSeparationEventHandler handler, Fixture fixtureA, Fixture fixtureB)
+        {
+            if (handler != null)
+            {
+                handler(fixtureA, fixtureB, this);
             }
         }
 
