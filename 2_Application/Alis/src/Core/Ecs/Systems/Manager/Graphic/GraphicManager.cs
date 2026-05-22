@@ -91,12 +91,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         private INativePlatform platform;
 
-        // Estado anterior de teclas presionadas
-        /// <summary>
-        ///     The console key
-        /// </summary>
-        private HashSet<ConsoleKey> previousKeys = new HashSet<ConsoleKey>();
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
@@ -154,12 +148,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
 
 
-            if (!string.IsNullOrEmpty(Context.Setting.General.Icon))
+            if (!string.IsNullOrEmpty(Context.Setting.General.Icon) && AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon) != null)
             {
-                if (AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon) != null)
-                {
-                    platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));
-                }
+                platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));
             }
 
             platform.ShowWindow();
@@ -269,7 +260,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
 
             // Actualizar los estados para el siguiente frame
-            previousKeys = new HashSet<ConsoleKey>(currentKeys);
             currentKeys = newKeys;
 
 
