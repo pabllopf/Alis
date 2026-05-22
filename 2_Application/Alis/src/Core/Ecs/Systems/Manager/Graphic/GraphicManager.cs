@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
@@ -189,15 +190,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 Context.Exit();
             }
 
-            HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>();
             DateTime now = DateTime.UtcNow;
-            foreach (ConsoleKey k in allKeys)
-            {
-                if (platform.IsKeyDown(k))
-                {
-                    newKeys.Add(k);
-                }
-            }
+            HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>(allKeys.Where(k => platform.IsKeyDown(k)));
 
             // Detectar eventos
             HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>(newKeys);
