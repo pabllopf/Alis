@@ -351,7 +351,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
 
             for (int i = 1; i < Vertices.Count; ++i)
             {
-                // OPT: Vector2F v = Transform.Multiply(Vertices[i], ref transform);
                 vert = Vertices[i];
                 float vX = vert.X * controllerTransform.Rotation.R - vert.Y * controllerTransform.Rotation.I + controllerTransform.Position.X;
                 float vY = vert.Y * controllerTransform.Rotation.R + vert.X * controllerTransform.Rotation.I + controllerTransform.Position.Y;
