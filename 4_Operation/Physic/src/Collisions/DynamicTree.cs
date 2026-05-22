@@ -773,9 +773,6 @@ namespace Alis.Core.Physic.Collisions
                 int iP = _nodes[iN].Parent;
                 int iAa = _nodes[iA].Child1;
                 int iAb = _nodes[iA].Child2;
-                //TreeNode<T>* P  = &_nodes[iN->Parent];
-                //TreeNode<T>* AA = &_nodes[iAA];
-                //TreeNode<T>* AB = &_nodes[iAB];
                 // Swap N and A
                 _nodes[iA].Child1 = iN;
                 _nodes[iA].Parent = _nodes[iN].Parent;
