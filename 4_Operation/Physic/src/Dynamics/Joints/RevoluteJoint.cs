@@ -540,94 +540,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             bool fixedRotation = iA + Math.Abs(iB) < float.Epsilon;
 
-            // Solve motor constraint.
-            if (_enableMotor && (_limitState != LimitState.Equal) && !fixedRotation)
+            if (!fixedRotation)
             {
-                float cdot = wB - wA - _motorSpeed;
-                float impulse = _motorMass * -cdot;
-                float oldImpulse = _motorImpulse;
-                float maxImpulse = data.Step.Dt * _maxMotorTorque;
-                _motorImpulse = MathUtils.Clamp(_motorImpulse + impulse, -maxImpulse, maxImpulse);
-                impulse = _motorImpulse - oldImpulse;
-
-                wA -= iA * impulse;
-                wB += iB * impulse;
-            }
-
-            // Solve limit constraint.
-            if (_enableLimit && (_limitState != LimitState.Inactive) && !fixedRotation)
-            {
-                Vector2F cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
-                float cdot2 = wB - wA;
-                Vector3F cdot = new Vector3F(cdot1.X, cdot1.Y, cdot2);
-
-                Vector3F impulse = -_mass.Solve33(cdot);
-
-                if (_limitState == LimitState.Equal)
-                {
-                    _impulse += impulse;
-                }
-                else if (_limitState == LimitState.AtLower)
-                {
-                    float newImpulse = _impulse.Z + impulse.Z;
-                    if (newImpulse < 0.0f)
-                    {
-                        Vector2F rhs = -cdot1 + _impulse.Z * new Vector2F(_mass.Ez.X, _mass.Ez.Y);
-                        Vector2F reduced = _mass.Solve22(rhs);
-                        impulse.X = reduced.X;
-                        impulse.Y = reduced.Y;
-                        impulse.Z = -_impulse.Z;
-                        _impulse.X += reduced.X;
-                        _impulse.Y += reduced.Y;
-                        _impulse.Z = 0.0f;
-                    }
-                    else
-                    {
-                        _impulse += impulse;
-                    }
-                }
-                else if (_limitState == LimitState.AtUpper)
-                {
-                    float newImpulse = _impulse.Z + impulse.Z;
-                    if (newImpulse > 0.0f)
-                    {
-                        Vector2F rhs = -cdot1 + _impulse.Z * new Vector2F(_mass.Ez.X, _mass.Ez.Y);
-                        Vector2F reduced = _mass.Solve22(rhs);
-                        impulse.X = reduced.X;
-                        impulse.Y = reduced.Y;
-                        impulse.Z = -_impulse.Z;
-                        _impulse.X += reduced.X;
-                        _impulse.Y += reduced.Y;
-                        _impulse.Z = 0.0f;
-                    }
-                    else
-                    {
-                        _impulse += impulse;
-                    }
-                }
-
-                Vector2F p = new Vector2F(impulse.X, impulse.Y);
-
-                vA -= mA * p;
-                wA -= iA * (MathUtils.Cross(ref _rA, ref p) + impulse.Z);
-
-                vB += mB * p;
-                wB += iB * (MathUtils.Cross(ref _rB, ref p) + impulse.Z);
+                SolveMotorConstraint(ref wA, ref wB, iA, iB, data);
+                SolveLimitConstraint(ref vA, ref wA, ref vB, ref wB, mA, mB, iA, iB);
             }
             else
             {
-                // Solve point-to-point constraint
-                Vector2F cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
-                Vector2F impulse = _mass.Solve22(-cdot);
-
-                _impulse.X += impulse.X;
-                _impulse.Y += impulse.Y;
-
-                vA -= mA * impulse;
-                wA -= iA * MathUtils.Cross(ref _rA, ref impulse);
-
-                vB += mB * impulse;
-                wB += iB * MathUtils.Cross(ref _rB, ref impulse);
+                SolvePointToPointConstraint(ref vA, ref wA, ref vB, ref wB, mA, mB, iA, iB);
             }
 
             data.Velocities[_indexA].V = vA;
@@ -724,6 +644,106 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Positions[_indexB].A = aB;
 
             return (positionError <= SettingEnv.LinearSlop) && (angularError <= SettingEnv.AngularSlop);
+        }
+
+        private void SolveMotorConstraint(ref float wA, ref float wB, float iA, float iB, SolverData data)
+        {
+            if (!_enableMotor || _limitState == LimitState.Equal) return;
+
+            float cdot = wB - wA - _motorSpeed;
+            float impulse = _motorMass * -cdot;
+            float oldImpulse = _motorImpulse;
+            float maxImpulse = data.Step.Dt * _maxMotorTorque;
+            _motorImpulse = MathUtils.Clamp(_motorImpulse + impulse, -maxImpulse, maxImpulse);
+            impulse = _motorImpulse - oldImpulse;
+
+            wA -= iA * impulse;
+            wB += iB * impulse;
+        }
+
+        private void SolveLimitConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
+            float mA, float mB, float iA, float iB)
+        {
+            if (!_enableLimit || _limitState == LimitState.Inactive) return;
+
+            Vector2F cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
+            float cdot2 = wB - wA;
+            Vector3F impulse = -_mass.Solve33(new Vector3F(cdot1.X, cdot1.Y, cdot2));
+
+            switch (_limitState)
+            {
+                case LimitState.Equal:
+                    _impulse += impulse;
+                    break;
+                case LimitState.AtLower:
+                    SolveAtLower(ref impulse, ref cdot1, mA, iA, iB);
+                    break;
+                case LimitState.AtUpper:
+                    SolveAtUpper(ref impulse, ref cdot1, mA, iA, iB);
+                    break;
+            }
+
+            Vector2F p = new Vector2F(impulse.X, impulse.Y);
+            vA -= mA * p;
+            wA -= iA * (MathUtils.Cross(ref _rA, ref p) + impulse.Z);
+            vB += mB * p;
+            wB += iB * (MathUtils.Cross(ref _rB, ref p) + impulse.Z);
+        }
+
+        private void SolveAtLower(ref Vector3F impulse, ref Vector2F cdot1, float mA, float iA, float iB)
+        {
+            float newImpulse = _impulse.Z + impulse.Z;
+            if (newImpulse < 0.0f)
+            {
+                Vector2F rhs = -cdot1 + _impulse.Z * new Vector2F(_mass.Ez.X, _mass.Ez.Y);
+                Vector2F reduced = _mass.Solve22(rhs);
+                impulse.X = reduced.X;
+                impulse.Y = reduced.Y;
+                impulse.Z = -_impulse.Z;
+                _impulse.X += reduced.X;
+                _impulse.Y += reduced.Y;
+                _impulse.Z = 0.0f;
+            }
+            else
+            {
+                _impulse += impulse;
+            }
+        }
+
+        private void SolveAtUpper(ref Vector3F impulse, ref Vector2F cdot1, float mA, float iA, float iB)
+        {
+            float newImpulse = _impulse.Z + impulse.Z;
+            if (newImpulse > 0.0f)
+            {
+                Vector2F rhs = -cdot1 + _impulse.Z * new Vector2F(_mass.Ez.X, _mass.Ez.Y);
+                Vector2F reduced = _mass.Solve22(rhs);
+                impulse.X = reduced.X;
+                impulse.Y = reduced.Y;
+                impulse.Z = -_impulse.Z;
+                _impulse.X += reduced.X;
+                _impulse.Y += reduced.Y;
+                _impulse.Z = 0.0f;
+            }
+            else
+            {
+                _impulse += impulse;
+            }
+        }
+
+        private void SolvePointToPointConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
+            float mA, float mB, float iA, float iB)
+        {
+            Vector2F cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
+            Vector2F impulse = _mass.Solve22(-cdot);
+
+            _impulse.X += impulse.X;
+            _impulse.Y += impulse.Y;
+
+            vA -= mA * impulse;
+            wA -= iA * MathUtils.Cross(ref _rA, ref impulse);
+
+            vB += mB * impulse;
+            wB += iB * MathUtils.Cross(ref _rB, ref impulse);
         }
     }
 }
