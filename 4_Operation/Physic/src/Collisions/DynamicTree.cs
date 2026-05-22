@@ -902,11 +902,6 @@ namespace Alis.Core.Physic.Collisions
                 return;
             }
 
-            int height1 = _nodes[child1].Height;
-            int height2 = _nodes[child2].Height;
-            Aabb aabb = new Aabb();
-            aabb.Combine(ref _nodes[child1].Aabb, ref _nodes[child2].Aabb);
-
             ValidateMetrics(child1);
             ValidateMetrics(child2);
         }
