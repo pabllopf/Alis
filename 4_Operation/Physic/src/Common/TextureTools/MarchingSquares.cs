@@ -559,7 +559,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                         b = bi.NextPos().GetElem();
 
                         Vector2F u = a - a0;
-                        //vec_new(u); vec_sub(a.p.p, a0.p.p, u);
                         Vector2F v = b - a;
                         //vec_new(v); vec_sub(b.p.p, a.p.p, v);
                         float dot = VecCross(u, v);
