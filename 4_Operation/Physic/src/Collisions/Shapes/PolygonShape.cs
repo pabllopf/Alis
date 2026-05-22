@@ -360,8 +360,8 @@ namespace Alis.Core.Physic.Collisions.Shapes
             float intoLambda = (0 - depths[intoIndex]) / (depths[intoIndex2] - depths[intoIndex]);
             float outoLambda = (0 - depths[outoIndex]) / (depths[outoIndex2] - depths[outoIndex]);
 
-            Vector2F intoVec = InterpolateVertex(depths, intoIndex, intoIndex2, intoLambda);
-            Vector2F outoVec = InterpolateVertex(depths, outoIndex, outoIndex2, outoLambda);
+            Vector2F intoVec = InterpolateVertex(intoIndex, intoIndex2, intoLambda);
+            Vector2F outoVec = InterpolateVertex(outoIndex, outoIndex2, outoLambda);
 
             (float area, Vector2F center) = ComputeSubmergedPolygonArea(ref intoVec, ref outoVec, intoIndex2, outoIndex2);
             sc = ControllerTransform.Multiply(ref center, ref xf);
