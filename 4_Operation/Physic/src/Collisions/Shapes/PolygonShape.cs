@@ -344,7 +344,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
         {
             aabb = new Aabb();
 
-            // OPT: aabb.LowerBound = Transform.Multiply(Vertices[0], ref transform);
             Vector2F vert = Vertices[0];
             aabb.LowerBound.X = vert.X * controllerTransform.Rotation.R - vert.Y * controllerTransform.Rotation.I + controllerTransform.Position.X;
             aabb.LowerBound.Y = vert.Y * controllerTransform.Rotation.R + vert.X * controllerTransform.Rotation.I + controllerTransform.Position.Y;
