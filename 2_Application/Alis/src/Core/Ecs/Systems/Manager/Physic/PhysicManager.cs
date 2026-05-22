@@ -157,6 +157,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// </summary>
         public override void OnUpdate()
         {
+            // Method intentionally left empty.
         }
 
         /// <summary>
@@ -164,6 +165,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// </summary>
         public override void OnExit()
         {
+            // Method intentionally left empty.
         }
 
 

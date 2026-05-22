@@ -163,6 +163,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public override void OnStart()
         {
+            // Method intentionally left empty.
         }
 
         /// <summary>
@@ -170,6 +171,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public override void OnBeforeDraw()
         {
+            // Method intentionally left empty.
         }
 
         /// <summary>
