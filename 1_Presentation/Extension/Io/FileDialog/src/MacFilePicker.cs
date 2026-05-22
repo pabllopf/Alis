@@ -232,6 +232,7 @@ namespace Alis.Extension.Io.FileDialog
                     }
                     catch
                     {
+                        // File deletion is best-effort.
                     }
                 }
             }
