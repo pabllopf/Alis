@@ -42,11 +42,6 @@ namespace Alis.Extension.Graphic.Sfml.Audios
     public abstract class SoundStream : ObjectBase
     {
         /// <summary>
-        ///     The my get data callback
-        /// </summary>
-        private GetDataCallbackType myGetDataCallback;
-
-        /// <summary>
         ///     The my seek callback
         /// </summary>
         private SeekCallbackType mySeekCallback;
@@ -273,7 +268,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="sampleRate">Sample rate, in samples per second</param>
         protected void Initialize(uint channelCount, uint sampleRate)
         {
-            myGetDataCallback = GetData;
+            GetDataCallbackType myGetDataCallback = GetData;
             mySeekCallback = Seek;
             CPointer = sfSoundStream_create(myGetDataCallback, mySeekCallback, channelCount, sampleRate, IntPtr.Zero);
         }
