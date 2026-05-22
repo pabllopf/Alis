@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         ///     Construct the object from a pointer to the C library object
         /// </summary>
         /// <param name="cPointer">Internal pointer to the object in the C libraries</param>
-        public ObjectBase(IntPtr cPointer) => myCPointer = cPointer;
+        protected ObjectBase(IntPtr cPointer) => myCPointer = cPointer;
 
 
         /// <summary>
