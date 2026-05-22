@@ -101,6 +101,13 @@ namespace Alis.Core.Ecs.Components.Render
         /// </summary>
         private static uint LastBoundTexture = 0;
 
+        private static void BindTexture(uint texture)
+        {
+            Gl.GlActiveTexture(TextureUnit.Texture0);
+            Gl.GlBindTexture(TextureTarget.Texture2D, texture);
+            LastBoundTexture = texture;
+        }
+
         /// <summary>
         ///     The image handle
         /// </summary>
@@ -391,9 +398,7 @@ namespace Alis.Core.Ecs.Components.Render
 
             if (Texture != LastBoundTexture)
             {
-                Gl.GlActiveTexture(TextureUnit.Texture0);
-                Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
-                LastBoundTexture = Texture;
+                BindTexture(Texture);
             }
 
             Gl.GlEnable(EnableCap.Blend);
