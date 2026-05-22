@@ -832,8 +832,6 @@ namespace Alis.Core.Physic.Collisions
         /// <returns>The height of the tree.</returns>
         public int ComputeHeight(int nodeId)
         {
-            //TreeNode<T>* node = &_nodes[nodeId];
-
             if (_nodes[nodeId].IsLeaf())
             {
                 return 0;
