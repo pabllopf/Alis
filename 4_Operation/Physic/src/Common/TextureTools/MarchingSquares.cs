@@ -560,7 +560,6 @@ namespace Alis.Core.Physic.Common.TextureTools
 
                         Vector2F u = a - a0;
                         Vector2F v = b - a;
-                        //vec_new(v); vec_sub(b.p.p, a.p.p, v);
                         float dot = VecCross(u, v);
                         if (dot * dot < SettingEnv.Epsilon)
                         {
