@@ -977,11 +977,8 @@ namespace Alis.Core.Physic.Collisions
 
                 int index1 = nodes[iMin];
                 int index2 = nodes[jMin];
-                //TreeNode<T>* child1 = &_nodes[index1];
-                //TreeNode<T>* child2 = &_nodes[index2];
 
                 int parentIndex = AllocateNode();
-                //TreeNode<T>* parent = &_nodes[parentIndex];
                 _nodes[parentIndex].Child1 = index1;
                 _nodes[parentIndex].Child2 = index2;
                 _nodes[parentIndex].Height = 1 + Math.Max(_nodes[index1].Height, _nodes[index2].Height);
