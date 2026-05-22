@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                         tList = _trapezoidalMap.Case2(t, edge);
                         _queryGraph.Case2(t.Sink, edge, tList);
                     }
-                    else if (!cp && !cq)
+                    else if (!cq)
                     {
                         tList = _trapezoidalMap.Case3(t, edge);
                         _queryGraph.Case3(t.Sink, edge, tList);
