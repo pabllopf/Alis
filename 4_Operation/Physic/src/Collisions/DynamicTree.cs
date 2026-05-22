@@ -712,9 +712,6 @@ namespace Alis.Core.Physic.Collisions
 
             int iA = _nodes[iN].Child1;
             int iB = _nodes[iN].Child2;
-            //TreeNode<T>* A = &_nodes[iA];
-            //TreeNode<T>* B = &_nodes[iB];
-
             int balance = _nodes[iB].Height - _nodes[iA].Height;
 
             // Rotate B up
