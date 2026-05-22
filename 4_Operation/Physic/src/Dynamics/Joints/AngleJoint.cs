@@ -78,7 +78,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
-        public override Vector2F WorldAnchorA => BodyA.Position;
+        public override Vector2F WorldAnchorA
+        {
+            get => BodyA.Position;
+            set => BodyA.Position = value;
+        }
 
         /// <summary>
         ///     Gets or sets the value of the world anchor b

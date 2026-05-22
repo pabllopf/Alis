@@ -100,6 +100,8 @@ namespace Alis.Core.Physic.Collisions.Shapes
 
                 if (SettingEnv.UseConvexHullPolygons)
                 {
+                    //FPE note: This check is required as the GiftWrap algorithm early exits on triangles
+                    //So instead of giftwrapping a triangle, we just force it to be clock wise.
                     if (_vertices.Count <= 3)
                     {
                         _vertices.ForceCounterClockWise();
@@ -112,15 +114,18 @@ namespace Alis.Core.Physic.Collisions.Shapes
 
                 Normals = new Vertices(_vertices.Count);
 
+                // Compute normals. Ensure the edges have non-zero length.
                 for (int i = 0; i < _vertices.Count; ++i)
                 {
                     int next = i + 1 < _vertices.Count ? i + 1 : 0;
                     Vector2F edge = _vertices[next] - _vertices[i];
+                    //FPE optimization: Normals.Add(MathUtils.Cross(edge, 1.0f));
                     Vector2F temp = new Vector2F(edge.Y, -edge.X);
                     temp.Normalize();
                     Normals.Add(temp);
                 }
 
+                // Compute the polygon mass data
                 ComputeProperties();
             }
         }
@@ -140,19 +145,46 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// </summary>
         protected override void ComputeProperties()
         {
+            // Polygon mass, centroid, and inertia.
+            // Let rho be the polygon density in mass per unit area.
+            // Then:
+            // mass = rho * int(dA)
+            // centroid.X = (1/mass) * rho * int(x * dA)
+            // centroid.Y = (1/mass) * rho * int(y * dA)
+            // I = rho * int((x*x + y*y) * dA)
+            //
+            // We can compute these integrals by summing all the integrals
+            // for each triangle of the polygon. To evaluate the integral
+            // for a single triangle, we make a change of variables to
+            // the (u,v) coordinates of the triangle:
+            // x = x0 + e1x * u + e2x * v
+            // y = y0 + e1y * u + e2y * v
+            // where 0 <= u && 0 <= v && u + v <= 1.
+            //
+            // We integrate u from [0,1-v] and then v from [0,1].
+            // We also need to use the Jacobian of the transformation:
+            // D = cross(e1, e2)
+            //
+            // Simplification: triangle centroid = (1/3) * (p1 + p2 + p3)
+            //
             // The rest of the derivation is handled by computer algebra.
 
+            //FPE optimization: Early exit as polygons with 0 density does not have any properties.
             if (Density <= 0)
             {
                 return;
             }
 
+            //FPE optimization: Consolidated the calculate centroid and mass code to a single method.
             Vector2F center = Vector2F.Zero;
             float area = 0.0f;
             float inv3 = 0.0f;
 
+            // pRef is the reference point for forming triangles.
+            // It's location doesn't change the result (except for rounding error).
             Vector2F s = Vector2F.Zero;
 
+            // This code would put the reference point inside the polygon.
             for (int i = 0; i < Vertices.Count; ++i)
             {
                 s += Vertices[i];
@@ -164,6 +196,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
 
             for (int i = 0; i < Vertices.Count; ++i)
             {
+                // Triangle vertices.
                 Vector2F e1 = Vertices[i] - s;
                 Vector2F e2 = i + 1 < Vertices.Count ? Vertices[i + 1] - s : Vertices[0] - s;
 
@@ -172,6 +205,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 float triangleArea = 0.5f * d;
                 area += triangleArea;
 
+                // Area weighted centroid
                 center += triangleArea * kInv3 * (e1 + e2);
 
                 float ex1 = e1.X, ey1 = e1.Y;
@@ -183,15 +217,21 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 inv3 += 0.25f * kInv3 * d * (intx2 + inty2);
             }
 
+            //The area is too small for the engine to handle.
+            // We save the area
             MassData.Area = area;
 
+            // Total mass
             MassData.Mass = Density * area;
 
+            // Center of mass
             center *= 1.0f / area;
             MassData.Centroid = center + s;
 
+            // Inertia tensor relative to the local origin (point s).
             MassData.Inertia = Density * inv3;
 
+            // Shift to center of mass then to original body origin.
             MassData.Inertia += MassData.Mass * (Vector2F.Dot(MassData.Centroid, MassData.Centroid) - Vector2F.Dot(center, center));
         }
 
@@ -229,20 +269,55 @@ namespace Alis.Core.Physic.Collisions.Shapes
         {
             output = new RayCastOutput();
 
+            // Put the ray into the polygon's frame of reference.
             Vector2F p1 = Complex.Divide(input.Point1 - controllerTransform.Position, ref controllerTransform.Rotation);
             Vector2F p2 = Complex.Divide(input.Point2 - controllerTransform.Position, ref controllerTransform.Rotation);
             Vector2F d = p2 - p1;
 
             float lower = 0.0f, upper = input.MaxFraction;
+
             int index = -1;
 
             for (int i = 0; i < Vertices.Count; ++i)
             {
-                if (!ProcessHalfSpace(ref p1, ref d, i, ref lower, ref upper, ref index))
+                // p = p1 + a * d
+                // dot(normal, p - v) = 0
+                // dot(normal, p1 - v) + a * dot(normal, d) = 0
+                float numerator = Vector2F.Dot(Normals[i], Vertices[i] - p1);
+                float denominator = Vector2F.Dot(Normals[i], d);
+
+                if (Math.Abs(denominator) < SettingEnv.Epsilon)
                 {
-                    return false;
+                    if (numerator < 0.0f)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    // Note: we want this predicate without division:
+                    // lower < numerator / denominator, where denominator < 0
+                    // Since denominator < 0, we have to flip the inequality:
+                    // lower < numerator / denominator <==> denominator * lower > numerator.
+                    if ((denominator < 0.0f) && (numerator < lower * denominator))
+                    {
+                        // Increase lower.
+                        // The segment enters this half-space.
+                        lower = numerator / denominator;
+                        index = i;
+                    }
+                    else if ((denominator > 0.0f) && (numerator < upper * denominator))
+                    {
+                        // Decrease upper.
+                        // The segment exits this half-space.
+                        upper = numerator / denominator;
+                    }
                 }
 
+                // The use of epsilon here causes the assert on lower to trip
+                // in some cases. Apparently the use of epsilon was to make edge
+                // shapes work, but now those are handled separately.
+                //if (upper < lower - b2_epsilon)
                 if (upper < lower)
                 {
                     return false;
@@ -259,29 +334,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
             return false;
         }
 
-        private bool ProcessHalfSpace(ref Vector2F p1, ref Vector2F d, int i, ref float lower, ref float upper, ref int index)
-        {
-            float numerator = Vector2F.Dot(Normals[i], Vertices[i] - p1);
-            float denominator = Vector2F.Dot(Normals[i], d);
-
-            if (Math.Abs(denominator) < SettingEnv.Epsilon)
-            {
-                return numerator >= 0.0f;
-            }
-
-            if ((denominator < 0.0f) && (numerator < lower * denominator))
-            {
-                lower = numerator / denominator;
-                index = i;
-            }
-            else if ((denominator > 0.0f) && (numerator < upper * denominator))
-            {
-                upper = numerator / denominator;
-            }
-
-            return true;
-        }
-
         /// <summary>
         ///     Given a transform, compute the associated axis aligned bounding box for a child shape.
         /// </summary>
@@ -292,6 +344,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         {
             aabb = new Aabb();
 
+            // OPT: aabb.LowerBound = Transform.Multiply(Vertices[0], ref transform);
             Vector2F vert = Vertices[0];
             aabb.LowerBound.X = vert.X * controllerTransform.Rotation.R - vert.Y * controllerTransform.Rotation.I + controllerTransform.Position.X;
             aabb.LowerBound.Y = vert.Y * controllerTransform.Rotation.R + vert.X * controllerTransform.Rotation.I + controllerTransform.Position.Y;
@@ -299,10 +352,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
 
             for (int i = 1; i < Vertices.Count; ++i)
             {
+                // OPT: Vector2F v = Transform.Multiply(Vertices[i], ref transform);
                 vert = Vertices[i];
                 float vX = vert.X * controllerTransform.Rotation.R - vert.Y * controllerTransform.Rotation.I + controllerTransform.Position.X;
                 float vY = vert.Y * controllerTransform.Rotation.R + vert.X * controllerTransform.Rotation.I + controllerTransform.Position.Y;
 
+                // OPT: Vector2F.Min(ref aabb.LowerBound, ref v, out aabb.LowerBound);
+                // OPT: Vector2F.Max(ref aabb.UpperBound, ref v, out aabb.UpperBound);
                 if (vX < aabb.LowerBound.X)
                 {
                     aabb.LowerBound.X = vX;
@@ -322,6 +378,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 }
             }
 
+            // OPT: Vector2F r = new Vector2F(Radius, Radius);
+            // OPT: aabb.LowerBound = aabb.LowerBound - r;
+            // OPT: aabb.UpperBound = aabb.UpperBound + r;
             aabb.LowerBound.X -= GetRadius;
             aabb.LowerBound.Y -= GetRadius;
             aabb.UpperBound.X += GetRadius;
@@ -340,44 +399,18 @@ namespace Alis.Core.Physic.Collisions.Shapes
         {
             sc = Vector2F.Zero;
 
+            //Transform plane into shape co-ordinates
             Vector2F normalL = Complex.Divide(ref normal, ref xf.Rotation);
             float offsetL = offset - Vector2F.Dot(normal, xf.Position);
 
-            (float[] depths, int diveCount, int intoIndex, int outoIndex) = ComputeVertexDepths(normalL, offsetL);
-
-            switch (diveCount)
-            {
-                case 0:
-                    return HandleZeroDiveCount(diveCount, normalL, offsetL, ref xf, out sc);
-                case 1:
-                    AdjustIndicesForSingleDive(ref intoIndex, ref outoIndex);
-                    break;
-            }
-
-            int intoIndex2 = (intoIndex + 1) % Vertices.Count;
-            int outoIndex2 = (outoIndex + 1) % Vertices.Count;
-
-            float intoLambda = (0 - depths[intoIndex]) / (depths[intoIndex2] - depths[intoIndex]);
-            float outoLambda = (0 - depths[outoIndex]) / (depths[outoIndex2] - depths[outoIndex]);
-
-            Vector2F intoVec = InterpolateVertex(intoIndex, intoIndex2, intoLambda);
-            Vector2F outoVec = InterpolateVertex(outoIndex, outoIndex2, outoLambda);
-
-            (float area, Vector2F center) = ComputeSubmergedPolygonArea(ref intoVec, ref outoVec, intoIndex2, outoIndex2);
-            sc = ControllerTransform.Multiply(ref center, ref xf);
-
-            return area;
-        }
-
-        private (float[] depths, int diveCount, int intoIndex, int outoIndex) ComputeVertexDepths(Vector2F normalL, float offsetL)
-        {
             float[] depths = new float[SettingEnv.MaxPolygonVertices];
             int diveCount = 0;
             int intoIndex = -1;
             int outoIndex = -1;
 
             bool lastSubmerged = false;
-            for (int i = 0; i < Vertices.Count; i++)
+            int i;
+            for (i = 0; i < Vertices.Count; i++)
             {
                 depths[i] = Vector2F.Dot(normalL, Vertices[i]) - offsetL;
                 bool isSubmerged = depths[i] < -SettingEnv.Epsilon;
@@ -404,83 +437,86 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 lastSubmerged = isSubmerged;
             }
 
-            return (depths, diveCount, intoIndex, outoIndex);
-        }
-
-        private float HandleZeroDiveCount(int diveCount, Vector2F normalL, float offsetL, ref ControllerTransform xf, out Vector2F sc)
-        {
-            sc = Vector2F.Zero;
-
-            if (diveCount == 0)
+            switch (diveCount)
             {
-                bool lastSubmerged = false;
-                for (int i = 0; i < Vertices.Count; i++)
-                {
-                    float depth = Vector2F.Dot(normalL, Vertices[i]) - offsetL;
-                    lastSubmerged = depth < -SettingEnv.Epsilon;
+                case 0:
                     if (lastSubmerged)
-                        break;
-                }
+                    {
+                        //Completely submerged
+                        sc = ControllerTransform.Multiply(MassData.Centroid, ref xf);
+                        return MassData.Mass / GetDensity;
+                    }
 
-                if (lastSubmerged)
-                {
-                    sc = ControllerTransform.Multiply(MassData.Centroid, ref xf);
-                    return MassData.Mass / GetDensity;
-                }
+                    //Completely dry
+                    return 0;
+                case 1:
+                    if (intoIndex == -1)
+                    {
+                        intoIndex = Vertices.Count - 1;
+                    }
+                    else
+                    {
+                        outoIndex = Vertices.Count - 1;
+                    }
+
+                    break;
             }
 
-            return 0;
-        }
+            int intoIndex2 = (intoIndex + 1) % Vertices.Count;
+            int outoIndex2 = (outoIndex + 1) % Vertices.Count;
 
-        private void AdjustIndicesForSingleDive(ref int intoIndex, ref int outoIndex)
-        {
-            if (intoIndex == -1)
-            {
-                intoIndex = Vertices.Count - 1;
-            }
-            else
-            {
-                outoIndex = Vertices.Count - 1;
-            }
-        }
+            float intoLambda = (0 - depths[intoIndex]) / (depths[intoIndex2] - depths[intoIndex]);
+            float outoLambda = (0 - depths[outoIndex]) / (depths[outoIndex2] - depths[outoIndex]);
 
-        private Vector2F InterpolateVertex(float[] depths, int index1, int index2, float lambda)
-        {
-            return new Vector2F(
-                Vertices[index1].X * (1 - lambda) + Vertices[index2].X * lambda,
-                Vertices[index1].Y * (1 - lambda) + Vertices[index2].Y * lambda
-            );
-        }
+            Vector2F intoVec = new Vector2F(Vertices[intoIndex].X * (1 - intoLambda) + Vertices[intoIndex2].X * intoLambda, Vertices[intoIndex].Y * (1 - intoLambda) + Vertices[intoIndex2].Y * intoLambda);
+            Vector2F outoVec = new Vector2F(Vertices[outoIndex].X * (1 - outoLambda) + Vertices[outoIndex2].X * outoLambda, Vertices[outoIndex].Y * (1 - outoLambda) + Vertices[outoIndex2].Y * outoLambda);
 
-        private (float area, Vector2F center) ComputeSubmergedPolygonArea(ref Vector2F intoVec, ref Vector2F outoVec, int intoIndex2, int outoIndex2)
-        {
+            //Initialize accumulator
             float area = 0;
             Vector2F center = new Vector2F(0, 0);
             Vector2F p2 = Vertices[intoIndex2];
 
             const float kInv3 = 1.0f / 3.0f;
 
-            int i = intoIndex2;
+            //An awkward loop from intoIndex2+1 to outIndex2
+            i = intoIndex2;
             while (i != outoIndex2)
             {
                 i = (i + 1) % Vertices.Count;
-                Vector2F p3 = i == outoIndex2 ? outoVec : Vertices[i];
+                Vector2F p3;
+                if (i == outoIndex2)
+                {
+                    p3 = outoVec;
+                }
+                else
+                {
+                    p3 = Vertices[i];
+                }
 
-                Vector2F e1 = p2 - intoVec;
-                Vector2F e2 = p3 - intoVec;
+                //Add the triangle formed by intoVec,p2,p3
+                {
+                    Vector2F e1 = p2 - intoVec;
+                    Vector2F e2 = p3 - intoVec;
 
-                float d = MathUtils.Cross(ref e1, ref e2);
-                float triangleArea = 0.5f * d;
+                    float d = MathUtils.Cross(ref e1, ref e2);
 
-                area += triangleArea;
-                center += triangleArea * kInv3 * (intoVec + p2 + p3);
+                    float triangleArea = 0.5f * d;
+
+                    area += triangleArea;
+
+                    // Area weighted centroid
+                    center += triangleArea * kInv3 * (intoVec + p2 + p3);
+                }
 
                 p2 = p3;
             }
 
+            //Normalize and transform centroid
             center *= 1.0f / area;
 
-            return (area, center);
+            sc = ControllerTransform.Multiply(ref center, ref xf);
+
+            return area;
         }
 
         /// <summary>

@@ -307,8 +307,41 @@ namespace Alis.Core.Physic.Dynamics
 
             if (contact.IsTouching)
             {
-                ReportSeparation(fixtureA, fixtureB, contact);
-                EndContact?.Invoke(contact);
+                //Report the separation to both participants:
+                OnSeparationEventHandler onFixtureSeparationHandlerA = fixtureA.OnSeparation;
+                if (onFixtureSeparationHandlerA != null)
+                {
+                    onFixtureSeparationHandlerA(fixtureA, fixtureB, contact);
+                }
+
+                //Reverse the order of the reported fixtures. The first fixture is always the one that the
+                //user subscribed to.
+                OnSeparationEventHandler onFixtureSeparationHandlerB = fixtureB.OnSeparation;
+                if (onFixtureSeparationHandlerB != null)
+                {
+                    onFixtureSeparationHandlerB(fixtureB, fixtureA, contact);
+                }
+
+                //Report the separation to both bodies:
+                OnSeparationEventHandler onBodySeparationHandlerA = bodyA.OnSeparationEventHandler;
+                if (onBodySeparationHandlerA != null)
+                {
+                    onBodySeparationHandlerA(fixtureA, fixtureB, contact);
+                }
+
+                //Reverse the order of the reported fixtures. The first fixture is always the one that the
+                //user subscribed to.
+                OnSeparationEventHandler onBodySeparationHandlerB = bodyB.OnSeparationEventHandler;
+                if (onBodySeparationHandlerB != null)
+                {
+                    onBodySeparationHandlerB(fixtureB, fixtureA, contact);
+                }
+
+                EndContactDelegate endContactHandler = EndContact;
+                if (endContactHandler != null)
+                {
+                    endContactHandler(contact);
+                }
             }
 
             // Remove from the world.
@@ -318,42 +351,43 @@ namespace Alis.Core.Physic.Dynamics
             contact.Prev = null;
             ContactCount--;
 
-            // Remove from bodies.
-            RemoveFromBody(contact, bodyA);
-            RemoveFromBody(contact, bodyB);
+            // Remove from body 1
+            if (contact.NodeA == bodyA.ContactList)
+            {
+                bodyA.ContactList = contact.NodeA.Next;
+            }
+
+            if (contact.NodeA.Prev != null)
+            {
+                contact.NodeA.Prev.Next = contact.NodeA.Next;
+            }
+
+            if (contact.NodeA.Next != null)
+            {
+                contact.NodeA.Next.Prev = contact.NodeA.Prev;
+            }
+
+            // Remove from body 2
+            if (contact.NodeB == bodyB.ContactList)
+            {
+                bodyB.ContactList = contact.NodeB.Next;
+            }
+
+            if (contact.NodeB.Prev != null)
+            {
+                contact.NodeB.Prev.Next = contact.NodeB.Next;
+            }
+
+            if (contact.NodeB.Next != null)
+            {
+                contact.NodeB.Next.Prev = contact.NodeB.Prev;
+            }
 
             contact.Destroy();
 
             // Insert into the pool.
             contact.Next = ContactPoolList.Next;
             ContactPoolList.Next = contact;
-        }
-
-        private void ReportSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
-        {
-            OnSeparationEventHandler handlerA = fixtureA.OnSeparation;
-            if (handlerA != null) handlerA(fixtureA, fixtureB, contact);
-
-            OnSeparationEventHandler handlerB = fixtureB.OnSeparation;
-            if (handlerB != null) handlerB(fixtureB, fixtureA, contact);
-
-            OnSeparationEventHandler bodyHandlerA = bodyA.OnSeparationEventHandler;
-            if (bodyHandlerA != null) bodyHandlerA(fixtureA, fixtureB, contact);
-
-            OnSeparationEventHandler bodyHandlerB = bodyB.OnSeparationEventHandler;
-            if (bodyHandlerB != null) bodyHandlerB(fixtureB, fixtureA, contact);
-        }
-
-        private void RemoveFromBody(Contact contact, Body body)
-        {
-            if (contact.NodeA == body.ContactList)
-                body.ContactList = contact.NodeA.Next;
-
-            if (contact.NodeA.Prev != null)
-                contact.NodeA.Prev.Next = contact.NodeA.Next;
-
-            if (contact.NodeA.Next != null)
-                contact.NodeA.Next.Prev = contact.NodeA.Prev;
         }
 
         /// <summary>
