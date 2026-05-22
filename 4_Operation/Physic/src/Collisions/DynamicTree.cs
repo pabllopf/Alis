@@ -703,7 +703,6 @@ namespace Alis.Core.Physic.Collisions
         /// <returns>the new root index.</returns>
         private int Balance(int iN)
         {
-            //TreeNode<T>* N = &_nodes[iN];
             if (_nodes[iN].IsLeaf() || _nodes[iN].Height < 2)
             {
                 return iN;
