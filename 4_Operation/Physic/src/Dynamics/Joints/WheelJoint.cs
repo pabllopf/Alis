@@ -415,69 +415,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 }
             }
 
-            // Spring constraint
-            _springMass = 0.0f;
-            _bias = 0.0f;
-            _gamma = 0.0f;
-            if (Frequency > 0.0f)
-            {
-                _ax = Complex.Multiply(ref _localXAxis, ref qA);
-                _sAx = MathUtils.Cross(d1 + rA, _ax);
-                _sBx = MathUtils.Cross(ref rB, ref _ax);
-
-                float invMass = mA + mB + iA * _sAx * _sAx + iB * _sBx * _sBx;
-
-                if (invMass > 0.0f)
-                {
-                    _springMass = 1.0f / invMass;
-
-                    float c = Vector2F.Dot(d1, _ax);
-
-                    // Frequency
-                    float omega = Constant.Tau * Frequency;
-
-                    // Damping coefficient
-                    float d = 2.0f * _springMass * DampingRatio * omega;
-
-                    // Spring stiffness
-                    float k = _springMass * omega * omega;
-
-                    // magic formulas
-                    float h = data.Step.Dt;
-                    _gamma = h * (d + h * k);
-                    if (_gamma > 0.0f)
-                    {
-                        _gamma = 1.0f / _gamma;
-                    }
-
-                    _bias = c * h * k * _gamma;
-
-                    _springMass = invMass + _gamma;
-                    if (_springMass > 0.0f)
-                    {
-                        _springMass = 1.0f / _springMass;
-                    }
-                }
-            }
-            else
-            {
-                _springImpulse = 0.0f;
-            }
-
-            // Rotational motor
-            if (_enableMotor)
-            {
-                _motorMass = iA + iB;
-                if (_motorMass > 0.0f)
-                {
-                    _motorMass = 1.0f / _motorMass;
-                }
-            }
-            else
-            {
-                _motorMass = 0.0f;
-                _motorImpulse = 0.0f;
-            }
+            InitSpringConstraint(data, mA, mB, iA, iB, d1, qA, rA, rB);
+            InitRotationalMotor(iA, iB);
 
             if (data.Step.WarmStarting)
             {
@@ -507,6 +446,66 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Velocities[_indexA].W = wA;
             data.Velocities[_indexB].V = vB;
             data.Velocities[_indexB].W = wB;
+        }
+
+        private void InitSpringConstraint(SolverData data, float mA, float mB, float iA, float iB, Vector2F d1, Complex qA, Vector2F rA, Vector2F rB)
+        {
+            _springMass = 0.0f;
+            _bias = 0.0f;
+            _gamma = 0.0f;
+            if (Frequency > 0.0f)
+            {
+                _ax = Complex.Multiply(ref _localXAxis, ref qA);
+                _sAx = MathUtils.Cross(d1 + rA, _ax);
+                _sBx = MathUtils.Cross(ref rB, ref _ax);
+
+                float invMass = mA + mB + iA * _sAx * _sAx + iB * _sBx * _sBx;
+
+                if (invMass > 0.0f)
+                {
+                    _springMass = 1.0f / invMass;
+
+                    float c = Vector2F.Dot(d1, _ax);
+                    float omega = Constant.Tau * Frequency;
+                    float d = 2.0f * _springMass * DampingRatio * omega;
+                    float k = _springMass * omega * omega;
+                    float h = data.Step.Dt;
+                    _gamma = h * (d + h * k);
+                    if (_gamma > 0.0f)
+                    {
+                        _gamma = 1.0f / _gamma;
+                    }
+
+                    _bias = c * h * k * _gamma;
+
+                    _springMass = invMass + _gamma;
+                    if (_springMass > 0.0f)
+                    {
+                        _springMass = 1.0f / _springMass;
+                    }
+                }
+            }
+            else
+            {
+                _springImpulse = 0.0f;
+            }
+        }
+
+        private void InitRotationalMotor(float iA, float iB)
+        {
+            if (_enableMotor)
+            {
+                _motorMass = iA + iB;
+                if (_motorMass > 0.0f)
+                {
+                    _motorMass = 1.0f / _motorMass;
+                }
+            }
+            else
+            {
+                _motorMass = 0.0f;
+                _motorImpulse = 0.0f;
+            }
         }
 
         /// <summary>
