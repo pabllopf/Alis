@@ -630,7 +630,6 @@ namespace Alis.Core.Physic.Collisions
                 index = _nodes[index].Parent;
             }
 
-            //Validate();
         }
 
         /// <summary>
