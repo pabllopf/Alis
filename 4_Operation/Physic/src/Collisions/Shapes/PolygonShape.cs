@@ -408,114 +408,90 @@ namespace Alis.Core.Physic.Collisions.Shapes
             int outoIndex = -1;
 
             bool lastSubmerged = false;
-            int i;
-            for (i = 0; i < Vertices.Count; i++)
+            for (int i = 0; i < Vertices.Count; i++)
             {
                 depths[i] = Vector2F.Dot(normalL, Vertices[i]) - offsetL;
                 bool isSubmerged = depths[i] < -SettingEnv.Epsilon;
                 if (i > 0)
-                {
-                    if (isSubmerged)
-                    {
-                        if (!lastSubmerged)
-                        {
-                            intoIndex = i - 1;
-                            diveCount++;
-                        }
-                    }
-                    else
-                    {
-                        if (lastSubmerged)
-                        {
-                            outoIndex = i - 1;
-                            diveCount++;
-                        }
-                    }
-                }
+                    TrackDiveTransition(isSubmerged, lastSubmerged, i, ref diveCount, ref intoIndex, ref outoIndex);
 
                 lastSubmerged = isSubmerged;
             }
 
-            switch (diveCount)
+            if (diveCount == 0)
             {
-                case 0:
-                    if (lastSubmerged)
-                    {
-                        //Completely submerged
-                        sc = ControllerTransform.Multiply(MassData.Centroid, ref xf);
-                        return MassData.Mass / GetDensity;
-                    }
-
-                    //Completely dry
-                    return 0;
-                case 1:
-                    if (intoIndex == -1)
-                    {
-                        intoIndex = Vertices.Count - 1;
-                    }
-                    else
-                    {
-                        outoIndex = Vertices.Count - 1;
-                    }
-
-                    break;
+                sc = ControllerTransform.Multiply(MassData.Centroid, ref xf);
+                return lastSubmerged ? MassData.Mass / GetDensity : 0;
             }
+
+            if (diveCount == 1)
+                AdjustSingleDiveIndices(ref intoIndex, ref outoIndex);
 
             int intoIndex2 = (intoIndex + 1) % Vertices.Count;
             int outoIndex2 = (outoIndex + 1) % Vertices.Count;
 
-            float intoLambda = (0 - depths[intoIndex]) / (depths[intoIndex2] - depths[intoIndex]);
-            float outoLambda = (0 - depths[outoIndex]) / (depths[outoIndex2] - depths[outoIndex]);
+            float intoLambda = -depths[intoIndex] / (depths[intoIndex2] - depths[intoIndex]);
+            float outoLambda = -depths[outoIndex] / (depths[outoIndex2] - depths[outoIndex]);
 
-            Vector2F intoVec = new Vector2F(Vertices[intoIndex].X * (1 - intoLambda) + Vertices[intoIndex2].X * intoLambda, Vertices[intoIndex].Y * (1 - intoLambda) + Vertices[intoIndex2].Y * intoLambda);
-            Vector2F outoVec = new Vector2F(Vertices[outoIndex].X * (1 - outoLambda) + Vertices[outoIndex2].X * outoLambda, Vertices[outoIndex].Y * (1 - outoLambda) + Vertices[outoIndex2].Y * outoLambda);
+            Vector2F intoVec = InterpolateVertex(intoIndex, intoIndex2, intoLambda);
+            Vector2F outoVec = InterpolateVertex(outoIndex, outoIndex2, outoLambda);
 
-            //Initialize accumulator
             float area = 0;
-            Vector2F center = new Vector2F(0, 0);
+            Vector2F center = Vector2F.Zero;
             Vector2F p2 = Vertices[intoIndex2];
-
             const float kInv3 = 1.0f / 3.0f;
 
-            //An awkward loop from intoIndex2+1 to outIndex2
-            i = intoIndex2;
-            while (i != outoIndex2)
+            for (int i = intoIndex2; i != outoIndex2; i = (i + 1) % Vertices.Count)
             {
-                i = (i + 1) % Vertices.Count;
-                Vector2F p3;
-                if (i == outoIndex2)
-                {
-                    p3 = outoVec;
-                }
-                else
-                {
-                    p3 = Vertices[i];
-                }
-
-                //Add the triangle formed by intoVec,p2,p3
-                {
-                    Vector2F e1 = p2 - intoVec;
-                    Vector2F e2 = p3 - intoVec;
-
-                    float d = MathUtils.Cross(ref e1, ref e2);
-
-                    float triangleArea = 0.5f * d;
-
-                    area += triangleArea;
-
-                    // Area weighted centroid
-                    center += triangleArea * kInv3 * (intoVec + p2 + p3);
-                }
-
+                Vector2F p3 = i == outoIndex2 ? outoVec : Vertices[i];
+                AddTriangle(ref area, ref center, intoVec, p2, p3, kInv3);
                 p2 = p3;
             }
 
-            //Normalize and transform centroid
             center *= 1.0f / area;
-
             sc = ControllerTransform.Multiply(ref center, ref xf);
 
             return area;
+        }
+
+        private void TrackDiveTransition(bool isSubmerged, bool lastSubmerged, int i, ref int diveCount, ref int intoIndex, ref int outoIndex)
+        {
+            if (isSubmerged && !lastSubmerged)
+            {
+                intoIndex = i - 1;
+                diveCount++;
+            }
+            else if (!isSubmerged && lastSubmerged)
+            {
+                outoIndex = i - 1;
+                diveCount++;
+            }
+        }
+
+        private void AdjustSingleDiveIndices(ref int intoIndex, ref int outoIndex)
+        {
+            if (intoIndex == -1)
+                intoIndex = Vertices.Count - 1;
+            else
+                outoIndex = Vertices.Count - 1;
+        }
+
+        private Vector2F InterpolateVertex(int i1, int i2, float lambda)
+        {
+            return new Vector2F(
+                Vertices[i1].X * (1 - lambda) + Vertices[i2].X * lambda,
+                Vertices[i1].Y * (1 - lambda) + Vertices[i2].Y * lambda);
+        }
+
+        private void AddTriangle(ref float area, ref Vector2F center, Vector2F intoVec, Vector2F p2, Vector2F p3, float kInv3)
+        {
+            Vector2F e1 = p2 - intoVec;
+            Vector2F e2 = p3 - intoVec;
+            float d = MathUtils.Cross(ref e1, ref e2);
+            float triangleArea = 0.5f * d;
+
+            area += triangleArea;
+            center += triangleArea * kInv3 * (intoVec + p2 + p3);
         }
 
         /// <summary>
