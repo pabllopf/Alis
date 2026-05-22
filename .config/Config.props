@@ -111,8 +111,6 @@
     </PropertyGroup>
 
     
-    
-    
     <ItemGroup>
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
     </ItemGroup>
