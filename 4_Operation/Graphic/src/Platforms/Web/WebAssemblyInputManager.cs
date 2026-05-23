@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///     Advanced input manager for WebAssembly applications
     ///     Provides high-level input handling for keyboards, mice, gamepads, and touch
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class WebAssemblyInputManager
     {
         /// <summary>

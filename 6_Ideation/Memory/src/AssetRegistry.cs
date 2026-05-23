@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Memory
         /// <exception cref="ArgumentNullException">
         ///     Thrown if <paramref name="assemblyName" /> is null or <paramref name="assetLoader" /> is null.
         /// </exception>
-        [ExcludeFromCodeCoverage]
+        
         public static void RegisterAssembly(string assemblyName, Func<Stream> assetLoader)
         {
             lock (_globalLock)
@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Memory
         ///     or when the specified <paramref name="resourceName" /> does not exist in the
         ///     archive, or when the zip entry is unexpectedly missing (race condition).
         /// </exception>
-        [ExcludeFromCodeCoverage]
+        
         public static MemoryStream GetResourceMemoryStreamByName(string resourceName)
         {
             if (string.IsNullOrWhiteSpace(resourceName))
@@ -261,7 +261,7 @@ namespace Alis.Core.Aspect.Memory
         ///     or when the specified <paramref name="resourceName" /> does not exist in the
         ///     archive, or when the zip entry is unexpectedly missing (race condition).
         /// </exception>
-        [ExcludeFromCodeCoverage]
+        
         public static string GetResourcePathByName(string resourceName)
         {
             if (string.IsNullOrWhiteSpace(resourceName))
@@ -402,7 +402,7 @@ namespace Alis.Core.Aspect.Memory
         ///     A string in the format <c>{assemblyName}_{hash}{extension}</c> suitable for
         ///     use as a temporary file name.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         private static string MakeSafeTempName(string assemblyName, string normalizedResourceKey)
         {
             string extension = Path.GetExtension(normalizedResourceKey) ?? string.Empty;
@@ -436,7 +436,7 @@ namespace Alis.Core.Aspect.Memory
         ///     hex characters, or <see cref="string.Empty" /> if the input is null or
         ///     empty.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         private static string ToLowerHex(byte[] bytes)
         {
             if (bytes == null || bytes.Length == 0)
@@ -470,7 +470,7 @@ namespace Alis.Core.Aspect.Memory
         ///     Thrown when the stream returned by the registered loader is null, indicating
         ///     that the assets.pack resource file was not found in the embedded resources.
         /// </exception>
-        [ExcludeFromCodeCoverage]
+        
         private static void EnsureZipCachedForActiveAssembly()
         {
             if (_zipCache.ContainsKey(ActiveAssemblyName))
@@ -542,7 +542,7 @@ namespace Alis.Core.Aspect.Memory
         ///     The matching <see cref="ZipEntryInfo" /> if found; otherwise,
         ///     <c>null</c>.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         private static ZipEntryInfo FindZipEntryInfo(ZipCacheEntry cacheEntry, string resourceName)
         {
             string normalized = NormalizeResourceKey(resourceName);

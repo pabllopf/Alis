@@ -35,7 +35,7 @@ namespace System.Numerics
     /// <summary>
     ///     Provides bitwise utility operations for integer types
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public static class BitOperations
     {
         /// <summary>

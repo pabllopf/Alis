@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Attributes
     ///     The browser only attribute class
     /// </summary>
     /// <seealso cref="FactAttribute" />
-    [ExcludeFromCodeCoverage]
+    
     public class BrowserOnlyAttribute : FactAttribute
     {
         /// <summary>

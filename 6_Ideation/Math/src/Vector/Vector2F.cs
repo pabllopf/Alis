@@ -443,7 +443,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="format">A standard or custom numeric format string.</param>
         /// <param name="formatProvider">A format provider for culture-specific formatting.</param>
         /// <returns>The formatted string.</returns>
-        [ExcludeFromCodeCoverage]
+        
         public string ToString(string format, IFormatProvider formatProvider)
         {
             StringBuilder sb = new StringBuilder();

@@ -127,7 +127,7 @@ namespace Alis.Core.Aspect.Math
         ///     The sine of <paramref name="x" />. Returns <see cref="float.NaN" /> if <paramref name="x" /> is
         ///     <see cref="float.NaN" /> or <see cref="float.PositiveInfinity" /> or <see cref="float.NegativeInfinity" />.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         public static float Sin(float x)
         {
             if (float.IsNaN(x) || float.IsInfinity(x))
@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Math
         ///     The arccosine of <paramref name="x" /> in radians. Returns <see cref="float.NaN" /> if <paramref name="x" />
         ///     is outside the interval [-1, 1] or is <see cref="float.NaN" />.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         public static float Acos(float x)
         {
             if (x < -1f || x > 1f || float.IsNaN(x))

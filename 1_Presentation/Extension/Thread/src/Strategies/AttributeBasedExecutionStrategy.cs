@@ -82,7 +82,7 @@ namespace Alis.Extension.Thread.Strategies
         /// </summary>
         /// <param name="componentType">The component type</param>
         /// <returns>True if the component can be executed in parallel</returns>
-        [ExcludeFromCodeCoverage]
+        
         public bool CanExecuteInParallel(Type componentType)
         {
             if (componentType == null)
@@ -113,7 +113,7 @@ namespace Alis.Extension.Thread.Strategies
         /// </summary>
         /// <param name="componentType">The component type</param>
         /// <returns>The minimum batch size</returns>
-        [ExcludeFromCodeCoverage]
+        
         public int GetMinimumBatchSize(Type componentType)
         {
             if (componentType == null)

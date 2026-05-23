@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Data.Json.Helpers
         ///     If no escape sequences are present, the original string is returned unchanged.
         /// </returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="escapedString" /> is null.</exception>
-        [ExcludeFromCodeCoverage]
+        
         public string Unescape(string escapedString)
         {
             if (escapedString == null)

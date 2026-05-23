@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Logging.Test.Attributes
     ///     The mac os only attribute class
     /// </summary>
     /// <seealso cref="FactAttribute" />
-    [ExcludeFromCodeCoverage]
+    
     public class MacOsOnlyAttribute : FactAttribute
     {
         /// <summary>

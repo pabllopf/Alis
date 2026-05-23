@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Assets
     /// <summary>
     ///     The res class
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public static class ResTest
     {
         /// <summary>

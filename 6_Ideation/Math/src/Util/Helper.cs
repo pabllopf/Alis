@@ -160,7 +160,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <summary>Reduces a given angle to a value between π and -π.</summary>
         /// <param name="angle">The angle to reduce, in radians.</param>
         /// <returns>The wrapped angle in radians within the range [-π, π].</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static float WrapAngle(float angle)
         {
             if ((angle > -Constant.Pi) && (angle <= Constant.Pi))

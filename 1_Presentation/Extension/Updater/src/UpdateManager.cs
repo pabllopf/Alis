@@ -141,7 +141,7 @@ namespace Alis.Extension.Updater
         /// <param name="ctsToken">The cts token</param>
         /// <exception cref="Exception">Error updating program: {ex.Message}</exception>
         /// <returns>A task containing the bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         public async Task<bool> Start(CancellationToken ctsToken)
         {
             Logger.Info("Starting update process.");
@@ -369,7 +369,7 @@ namespace Alis.Extension.Updater
         /// <summary>
         ///     Backups this instance
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         internal void Backup()
         {
             Logger.Info($"Backup process started for '{ProgramFolder}'.");
@@ -451,7 +451,7 @@ namespace Alis.Extension.Updater
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Platform not supported.</exception>
         /// <returns>The string</returns>
-        [ExcludeFromCodeCoverage]
+        
         private string GetPlatform()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -642,7 +642,7 @@ namespace Alis.Extension.Updater
         /// <param name="fileAsync">The file</param>
         /// <param name="packageType">The package type</param>
         /// <exception cref="InvalidOperationException">The file has an invalid extension.</exception>
-        [ExcludeFromCodeCoverage]
+        
         internal void ExecutePackageExtraction(string fileAsync, string packageType)
         {
             if (packageType == "zip")
@@ -794,7 +794,7 @@ namespace Alis.Extension.Updater
         /// <exception cref="InvalidOperationException">Exceeded the maximum number of entries threshold.</exception>
         /// <exception cref="InvalidOperationException">Exceeded the maximum uncompressed size threshold.</exception>
         /// <exception cref="InvalidOperationException">The entry name contains path traversal characters.</exception>
-        [ExcludeFromCodeCoverage]
+        
         internal void ExtractZip(string fileAsync)
         {
             int totalSizeArchive = 0;

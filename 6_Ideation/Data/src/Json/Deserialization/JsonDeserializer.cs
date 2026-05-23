@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Data.Json.Deserialization
         /// <returns>A new instance of <typeparamref name="T" /> with its properties populated from the JSON data.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="json" /> is null.</exception>
         /// <exception cref="JsonDeserializationException">Thrown when deserialization fails due to parsing errors or property population failures.</exception>
-        [ExcludeFromCodeCoverage]
+        
         public T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
         {
             if (json == null)

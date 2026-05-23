@@ -119,7 +119,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <remarks>
         ///     This constructor is primarily used for testing purposes, allowing dependency injection.
         /// </remarks>
-        [ExcludeFromCodeCoverage]
+        
         internal Dungeon(IDungeonGenerator generator, IRandomNumberGenerator randomNumberGenerator)
         {
             _generator = generator ?? throw new ArgumentNullException(nameof(generator));

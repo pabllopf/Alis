@@ -44,7 +44,7 @@ namespace Alis.Extension.Network.Test.Samples
     ///     The web server class
     /// </summary>
     /// <seealso cref="IDisposable" />
-    [ExcludeFromCodeCoverage]
+    
     public class WebServer : IDisposable
     {
         /// <summary>

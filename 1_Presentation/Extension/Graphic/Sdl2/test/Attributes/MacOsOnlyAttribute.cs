@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
     ///     The mac os only attribute class
     /// </summary>
     /// <seealso cref="FactAttribute" />
-    [ExcludeFromCodeCoverage]
+    
     public class MacOsOnlyAttribute : FactAttribute
     {
         /// <summary>

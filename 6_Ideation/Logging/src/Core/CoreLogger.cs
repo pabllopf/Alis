@@ -211,7 +211,7 @@ namespace Alis.Core.Aspect.Logging.Core
         /// <param name="level">The level</param>
         /// <param name="message">The message</param>
         /// <param name="properties">The properties</param>
-        [ExcludeFromCodeCoverage]
+        
         public void LogStructured(LogLevel level, string message, IReadOnlyDictionary<string, object> properties)
         {
             if (!IsEnabled(level))
@@ -313,7 +313,7 @@ namespace Alis.Core.Aspect.Logging.Core
         /// <summary>
         ///     Processes a log entry through filters and outputs.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         private void ProcessEntry(ILogEntry entry)
         {
             try

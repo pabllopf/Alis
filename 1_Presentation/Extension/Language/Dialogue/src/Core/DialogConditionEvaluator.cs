@@ -68,7 +68,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// <param name="context">The dialog context</param>
         /// <returns>True if all conditions are satisfied</returns>
         /// <exception cref="ArgumentNullException">Thrown when conditions or context is null</exception>
-        [ExcludeFromCodeCoverage]
+        
         public bool EvaluateAll(IEnumerable<IDialogCondition> conditions, DialogContext context)
         {
             if (conditions == null)
@@ -91,7 +91,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// <param name="context">The dialog context</param>
         /// <returns>True if at least one condition is satisfied</returns>
         /// <exception cref="ArgumentNullException">Thrown when conditions or context is null</exception>
-        [ExcludeFromCodeCoverage]
+        
         public bool EvaluateAny(IEnumerable<IDialogCondition> conditions, DialogContext context)
         {
             if (conditions == null)

@@ -88,7 +88,7 @@ namespace Alis.Extension.Language.Dialogue
         ///     Adds a dialog action to this option
         /// </summary>
         /// <param name="action">The action to add</param>
-        [ExcludeFromCodeCoverage]
+        
         public void AddDialogAction(IDialogAction action)
         {
             if (action != null)

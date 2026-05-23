@@ -138,7 +138,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Returns the precomputed hash code for this matrix.
         /// </summary>
         /// <returns>The hash code of this matrix.</returns>
-        [ExcludeFromCodeCoverage]
+        
         public override int GetHashCode() => hashCode;
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         /// <param name="other">The other matrix to compare.</param>
         /// <returns><c>true</c> if all corresponding elements are equal; otherwise, <c>false</c>.</returns>
-        [ExcludeFromCodeCoverage]
+        
         private bool Equals(Matrix3X2 other) => M11.Equals(other.M11) && M12.Equals(other.M12) && M21.Equals(other.M21) && M22.Equals(other.M22) && M31.Equals(other.M31) && M32.Equals(other.M32);
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         /// <param name="obj">The object to compare.</param>
         /// <returns><c>true</c> if the object is a <see cref="Matrix3X2" /> with equal elements; otherwise, <c>false</c>.</returns>
-        [ExcludeFromCodeCoverage]
+        
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj))
@@ -299,7 +299,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>Creates a scaling matrix from the specified vector scale.</summary>
         /// <param name="scales">The scale factors for X and Y axes.</param>
         /// <returns>The scaling matrix.</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static Matrix3X2 CreateScale(Vector2F scales)
         {
             Matrix3X2 result = Identity;
@@ -314,7 +314,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="xScale">The value to scale by on the X axis.</param>
         /// <param name="yScale">The value to scale by on the Y axis.</param>
         /// <returns>The scaling matrix.</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static Matrix3X2 CreateScale(float xScale, float yScale)
         {
             Matrix3X2 result = Identity;

@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// </returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="json" /> is null.</exception>
         /// <exception cref="JsonParsingException">Thrown when the JSON is malformed (e.g., missing delimiters, unterminated strings, or unexpected characters).</exception>
-        [ExcludeFromCodeCoverage]
+        
         public Dictionary<string, string> ParseToDictionary(string json)
         {
             if (json == null)
@@ -171,7 +171,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         ///     delimiters. For primitives, the result is the trimmed token.
         ///     Returns null if the position is at or past the end of the string.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         private string ReadJsonValue(string json, ref int position)
         {
             SkipWhitespace(json, ref position);
@@ -239,7 +239,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// <param name="position">The current position, expected to point at '{' or '['. Advanced past the matching closing delimiter on success.</param>
         /// <returns>The raw JSON substring from the opening to the matching closing delimiter, inclusive.</returns>
         /// <exception cref="JsonParsingException">Thrown if the JSON structure is unterminated (no matching closing delimiter found before end of input).</exception>
-        [ExcludeFromCodeCoverage]
+        
         private string ReadRawJsonValue(string json, ref int position)
         {
             char openChar = json[position];

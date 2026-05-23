@@ -120,189 +120,189 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <param name="display"></param>
         /// <returns></returns>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr XOpenDisplay(IntPtr display);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern int XDefaultScreen(IntPtr display);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr XRootWindow(IntPtr display, int screen);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr XCreateSimpleWindow(IntPtr display, IntPtr parent, int x, int y, uint width, uint height, uint border_width, ulong border, ulong background);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern void XMapWindow(IntPtr display, IntPtr window);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern void XUnmapWindow(IntPtr display, IntPtr window);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern void XStoreName(IntPtr display, IntPtr window, string name);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern void XResizeWindow(IntPtr display, IntPtr window, uint width, uint height);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern void XDestroyWindow(IntPtr display, IntPtr window);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern void XCloseDisplay(IntPtr display);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern void XSelectInput(IntPtr display, IntPtr window, long eventMask);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern int XPending(IntPtr display);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern int XNextEvent(IntPtr display, ref XEvent xevent);
 
         /// <summary>
         /// Gets the keyboard translation for the specified key event.
         /// </summary>
         [DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern int XLookupString(ref XKeyEvent keyEvent, byte[] buffer, int bytesBuffer, out IntPtr keysymReturn, IntPtr statusInOut);
 
         /// <summary>
         /// Gets the geometry for the specified drawable.
         /// </summary>
         [DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern int XGetGeometry(IntPtr display, IntPtr drawable, out IntPtr rootReturn, out int xReturn, out int yReturn, out uint widthReturn, out uint heightReturn, out uint borderWidthReturn, out uint depthReturn);
 
         /// <summary>
         /// Translates window coordinates into the destination coordinate space.
         /// </summary>
         [DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern int XTranslateCoordinates(IntPtr display, IntPtr srcWindow, IntPtr destWindow, int srcX, int srcY, out int destX, out int destY, out IntPtr childReturn);
 
         /// <summary>
         /// Interns the specified X11 atom name.
         /// </summary>
         [DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr XInternAtom(IntPtr display, string atomName, bool onlyIfExists);
 
         /// <summary>
         /// Registers the WM protocols for the specified window.
         /// </summary>
         [DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern int XSetWMProtocols(IntPtr display, IntPtr window, IntPtr[] protocols, int count);
 
         /// <summary>
         /// Flushes pending X11 requests.
         /// </summary>
         [DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern int XFlush(IntPtr display);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr glXChooseVisual(IntPtr display, int screen, int[] attribList);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr glXCreateContext(IntPtr display, IntPtr visual, IntPtr shareList, int direct);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern void glXMakeCurrent(IntPtr display, IntPtr drawable, IntPtr ctx);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern void glXSwapBuffers(IntPtr display, IntPtr drawable);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern void glXDestroyContext(IntPtr display, IntPtr ctx);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr glXGetProcAddress(byte[] name);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr glXChooseFBConfig(IntPtr display, int screen, int[] attribList, out int nitems);
 
         /// <summary>
         /// 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr glXGetVisualFromFBConfig(IntPtr display, IntPtr fbConfig);
 
         // Estructuras X11
@@ -372,7 +372,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <param name="alloc">The alloc</param>
         /// <returns>The int ptr</returns>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr XCreateColormap(IntPtr display, IntPtr window, IntPtr visual, int alloc);
 
         /// <summary>
@@ -392,7 +392,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <param name="attributes">The attributes</param>
         /// <returns>The int ptr</returns>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr XCreateWindow(IntPtr display, IntPtr parent, int x, int y, uint width, uint height, uint border_width, int depth, uint class_, IntPtr visual, ulong valuemask, ref XSetWindowAttributes attributes);
 
         /// <summary>
@@ -486,7 +486,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <param name="nitems">The nitems</param>
         /// <returns>The int ptr</returns>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr XGetVisualInfo(IntPtr display, long vinfo_mask, ref XVisualInfo vinfo_template, ref int nitems);
 
         /// <summary>
@@ -1339,7 +1339,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <param name="window">The window</param>
         /// <param name="hints">The hints</param>
         [DllImport("libX11.so")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern void XSetWMHints(IntPtr display, IntPtr window, ref XWMHints hints);
 
         /// <summary>
@@ -1352,7 +1352,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <param name="height">The height</param>
         /// <returns>The int ptr</returns>
         [DllImport("libX11.so")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern IntPtr XCreatePixmapFromBitmapData(IntPtr display, IntPtr window, byte[] data, int width, int height);
 
         /// <summary>
@@ -1379,7 +1379,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         }
 
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
-        [ExcludeFromCodeCoverage]
+        
         private static extern bool XQueryPointer(IntPtr display, IntPtr w, out IntPtr root_return, out IntPtr child_return,
             out int root_x_return, out int root_y_return, out int win_x_return, out int win_y_return, out uint mask_return);
 

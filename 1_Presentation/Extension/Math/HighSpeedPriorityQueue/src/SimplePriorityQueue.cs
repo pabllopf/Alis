@@ -144,7 +144,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Throws an exception when the queue is empty.
         ///     O(1)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public TItem First
         {
             get
@@ -192,7 +192,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     If queue is empty, throws an exception
         ///     O(log n)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public TItem Dequeue()
         {
             lock (_queue)
@@ -214,7 +214,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Duplicates and null-values are allowed.
         ///     O(log n)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Enqueue(TItem item, TPriority priority)
         {
             lock (_queue)
@@ -241,7 +241,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     If multiple copies of the item are enqueued, only the first one is removed.
         ///     O(log n)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Remove(TItem item)
         {
             lock (_queue)
@@ -285,7 +285,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     to update all of them, please wrap your items in a wrapper class so they can be distinguished).
         ///     O(log n)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void UpdatePriority(TItem item, TPriority priority)
         {
             lock (_queue)
@@ -304,7 +304,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of t item</returns>
-        [ExcludeFromCodeCoverage]
+        
         public IEnumerator<TItem> GetEnumerator()
         {
             List<TItem> queueData = new List<TItem>();
@@ -323,13 +323,13 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        [ExcludeFromCodeCoverage]
+        
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <summary>
         ///     Given an item of type T, returns the existing SimpleNode in the queue
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         private SimpleNode GetExistingNode(TItem item)
         {
             if (EqualityComparer<TItem>.Default.Equals(item, default(TItem)))
@@ -349,7 +349,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <summary>
         ///     Adds an item to the Node-cache to allow for many methods to be O(1) or O(log n)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         private void AddToNodeCache(SimpleNode node)
         {
             if (EqualityComparer<TItem>.Default.Equals(node.Data, default(TItem)))
@@ -371,7 +371,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <summary>
         ///     Removes an item to the Node-cache to allow for many methods to be O(1) or O(log n) (assuming no duplicates)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         private void RemoveFromNodeCache(SimpleNode node)
         {
             if (EqualityComparer<TItem>.Default.Equals(node.Data, default(TItem)))
@@ -399,7 +399,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="item"></param>
         /// <param name="priority"></param>
         /// <returns></returns>
-        [ExcludeFromCodeCoverage]
+        
         private SimpleNode EnqueueNoLockOrCache(TItem item, TPriority priority)
         {
             SimpleNode node = new SimpleNode(item);
@@ -420,7 +420,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Returns true if the node was successfully enqueued; false if it already exists.
         ///     O(log n)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public bool EnqueueWithoutDuplicates(TItem item, TPriority priority)
         {
             lock (_queue)
@@ -459,7 +459,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     to query all their priorities, please wrap your items in a wrapper class so they can be distinguished).
         ///     O(1)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public TPriority GetPriority(TItem item)
         {
             lock (_queue)
@@ -478,7 +478,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Describes whether this instance is valid queue
         /// </summary>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         public bool IsValidQueue()
         {
             lock (_queue)
@@ -503,7 +503,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// </summary>
         /// <param name="first">The first</param>
         /// <returns>The bool</returns>
-        [ExcludeFromCodeCoverage]
+        
         public bool TryFirst(out TItem first)
         {
             if (_queue.Count > 0)
@@ -529,7 +529,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Returns true if successful; false if queue was empty
         ///     O(log n)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public bool TryDequeue(out TItem first)
         {
             if (_queue.Count > 0)
@@ -557,7 +557,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     If multiple copies of the item are enqueued, only the first one is removed.
         ///     O(log n)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public bool TryRemove(TItem item)
         {
             lock (_queue)
@@ -603,7 +603,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Returns true if the item priority was updated, false otherwise.
         ///     O(log n)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public bool TryUpdatePriority(TItem item, TPriority priority)
         {
             lock (_queue)
@@ -628,7 +628,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Returns true if the item was found in the queue, false otherwise
         ///     O(1)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public bool TryGetPriority(TItem item, out TPriority priority)
         {
             lock (_queue)
@@ -672,7 +672,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
     ///     TPriority&gt;
     /// </summary>
     /// <typeparam name="TItem">The type to enqueue</typeparam>
-    [ExcludeFromCodeCoverage]
+    
     public class SimplePriorityQueue<TItem> : SimplePriorityQueue<TItem, float>
     {
         /// <summary>

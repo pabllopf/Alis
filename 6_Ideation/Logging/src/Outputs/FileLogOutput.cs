@@ -123,7 +123,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
         ///     Writes the specified log entry to the file.
         /// </summary>
         /// <param name="entry">The log entry to write.</param>
-        [ExcludeFromCodeCoverage]
+        
         public void Write(ILogEntry entry)
         {
             if (entry == null || _disposed || _writer == null)
@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
         /// <summary>
         ///     Flushes any buffered data to the file.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Flush()
         {
             if (_disposed || _writer == null)
@@ -180,7 +180,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
         /// <summary>
         ///     Releases all resources used by the file output.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Dispose()
         {
             if (_disposed)

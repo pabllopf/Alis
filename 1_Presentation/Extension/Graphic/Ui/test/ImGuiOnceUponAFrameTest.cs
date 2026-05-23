@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.Ui.Test
     /// <summary>
     ///     The im gui once upon frame tets class
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class ImGuiOnceUponAFrameTest
     {
         /// <summary>

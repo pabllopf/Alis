@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Logging.Test.Attributes
     ///     The runnable in debug only attribute class
     /// </summary>
     /// <seealso cref="FactAttribute" />
-    [ExcludeFromCodeCoverage]
+    
     public class WindowsOnlyAttribute : FactAttribute
     {
         /// <summary>

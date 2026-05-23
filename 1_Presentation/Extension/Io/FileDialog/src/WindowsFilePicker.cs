@@ -39,7 +39,7 @@ namespace Alis.Extension.Io.FileDialog
     /// <summary>
     ///     FilePicker implementation for Windows using PowerShell.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class WindowsFilePicker : IFilePicker
     {
         /// <summary>

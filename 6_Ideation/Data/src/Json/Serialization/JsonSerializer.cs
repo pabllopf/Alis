@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Data.Json.Serialization
         /// </returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="instance" /> is null.</exception>
         /// <exception cref="JsonSerializationException">Thrown when serialization fails due to an underlying error.</exception>
-        [ExcludeFromCodeCoverage]
+        
         public string Serialize<T>(T instance) where T :  IJsonSerializable
         {
             if (instance is null)

@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Logging.Formatters
         /// </summary>
         /// <param name="entry">The log entry to format.</param>
         /// <returns>A compact string representation of the log entry.</returns>
-        [ExcludeFromCodeCoverage]
+        
         public string Format(ILogEntry entry)
         {
             StringBuilder sb = new StringBuilder(128);

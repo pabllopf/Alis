@@ -100,7 +100,7 @@ namespace Alis.Extension.Thread.Execution
         /// <param name="updateAction">The update action to execute</param>
         /// <param name="forceParallel">Force parallel execution</param>
         /// <param name="minBatchSize">The minimum batch size</param>
-        [ExcludeFromCodeCoverage]
+        
         public void ExecuteUpdate(int entityCount, Action<int, int> updateAction, bool forceParallel = false, int minBatchSize = 128)
         {
             if (updateAction == null)

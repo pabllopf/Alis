@@ -131,7 +131,7 @@ namespace Alis.Extension.Language.Translator
         ///     Sets the current language using a language object
         /// </summary>
         /// <param name="language">The language to set</param>
-        [ExcludeFromCodeCoverage]
+        
         public void SetLanguage(ILanguage language)
         {
             if (language == null)
@@ -159,7 +159,7 @@ namespace Alis.Extension.Language.Translator
         ///     Sets the current language using language code
         /// </summary>
         /// <param name="languageCode">The language code (e.g., 'en', 'es')</param>
-        [ExcludeFromCodeCoverage]
+        
         public void SetLanguage(string languageCode)
         {
             if (string.IsNullOrWhiteSpace(languageCode))
@@ -186,7 +186,7 @@ namespace Alis.Extension.Language.Translator
         /// </summary>
         /// <param name="name">The language name</param>
         /// <param name="code">The language code</param>
-        [ExcludeFromCodeCoverage]
+        
         public void SetLanguage(string name, string code)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -246,7 +246,7 @@ namespace Alis.Extension.Language.Translator
         /// </summary>
         /// <param name="name">The language name</param>
         /// <param name="code">The language code</param>
-        [ExcludeFromCodeCoverage]
+        
         public void AddLanguage(string name, string code)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -268,7 +268,7 @@ namespace Alis.Extension.Language.Translator
         /// </summary>
         /// <param name="key">The translation key</param>
         /// <returns>The translated string</returns>
-        [ExcludeFromCodeCoverage]
+        
         public string Translate(string key)
         {
             if (string.IsNullOrWhiteSpace(key))
@@ -308,7 +308,7 @@ namespace Alis.Extension.Language.Translator
         /// <param name="key">The translation key</param>
         /// <param name="parameters">Parameters to substitute (name -> value)</param>
         /// <returns>The translated and substituted string</returns>
-        [ExcludeFromCodeCoverage]
+        
         public string Translate(string key, IDictionary<string, object> parameters)
         {
             if (parameters == null)
@@ -333,7 +333,7 @@ namespace Alis.Extension.Language.Translator
         /// <param name="key">The translation key</param>
         /// <param name="quantity">The quantity for pluralization</param>
         /// <returns>The translated string in the appropriate plural form</returns>
-        [ExcludeFromCodeCoverage]
+        
         public string TranslatePlural(string key, int quantity)
         {
             if (string.IsNullOrWhiteSpace(key))
@@ -367,7 +367,7 @@ namespace Alis.Extension.Language.Translator
         /// <param name="language">The language</param>
         /// <param name="key">The translation key</param>
         /// <param name="value">The translated text</param>
-        [ExcludeFromCodeCoverage]
+        
         public void AddTranslation(ILanguage language, string key, string value)
         {
             if (language == null)
@@ -384,7 +384,7 @@ namespace Alis.Extension.Language.Translator
         /// <param name="languageCode">The language code</param>
         /// <param name="key">The translation key</param>
         /// <param name="value">The translated text</param>
-        [ExcludeFromCodeCoverage]
+        
         public void AddTranslation(string languageCode, string key, string value)
         {
             if (string.IsNullOrWhiteSpace(languageCode))
@@ -420,7 +420,7 @@ namespace Alis.Extension.Language.Translator
         /// </summary>
         /// <param name="languageCode">The language code</param>
         /// <param name="key">The translation key</param>
-        [ExcludeFromCodeCoverage]
+        
         public void RemoveTranslation(string languageCode, string key)
         {
             if (string.IsNullOrWhiteSpace(languageCode) || string.IsNullOrWhiteSpace(key))
@@ -446,7 +446,7 @@ namespace Alis.Extension.Language.Translator
         ///     Sets up fallback languages for missing translations
         /// </summary>
         /// <param name="fallbackCodes">Language codes to try in order</param>
-        [ExcludeFromCodeCoverage]
+        
         public void SetFallbackLanguages(params string[] fallbackCodes)
         {
             if (fallbackCodes == null || fallbackCodes.Length == 0)
@@ -465,7 +465,7 @@ namespace Alis.Extension.Language.Translator
         ///     Subscribes an observer to translation events
         /// </summary>
         /// <param name="observer">The observer to subscribe</param>
-        [ExcludeFromCodeCoverage]
+        
         public void Subscribe(ITranslationObserver observer)
         {
             if (observer == null)
@@ -486,7 +486,7 @@ namespace Alis.Extension.Language.Translator
         ///     Unsubscribes an observer from translation events
         /// </summary>
         /// <param name="observer">The observer to unsubscribe</param>
-        [ExcludeFromCodeCoverage]
+        
         public void Unsubscribe(ITranslationObserver observer)
         {
             if (observer == null)
@@ -514,7 +514,7 @@ namespace Alis.Extension.Language.Translator
         /// <param name="languageCode">The language code</param>
         /// <param name="key">The translation key</param>
         /// <returns>The translated string</returns>
-        [ExcludeFromCodeCoverage]
+        
         private string TranslateForLanguage(string languageCode, string key)
         {
             if (cache.TryGetTranslation(languageCode, key, out string cachedValue))
@@ -570,7 +570,7 @@ namespace Alis.Extension.Language.Translator
         ///     Notifies observers that translations have been updated
         /// </summary>
         /// <param name="languageCode">The language code that was updated</param>
-        [ExcludeFromCodeCoverage]
+        
         private void NotifyTranslationsUpdated(string languageCode)
         {
             List<ITranslationObserver> observersCopy = new List<ITranslationObserver>(observers);

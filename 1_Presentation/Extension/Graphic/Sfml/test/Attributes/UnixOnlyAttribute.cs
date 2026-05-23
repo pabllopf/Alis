@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Attributes
     ///     The unix only attribute class
     /// </summary>
     /// <seealso cref="FactAttribute" />
-    [ExcludeFromCodeCoverage]
+    
     public class UnixOnlyAttribute : FactAttribute
     {
         /// <summary>

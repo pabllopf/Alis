@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Data.Json.FileOperations
         /// <param name="relativePath">The relative directory path (relative to the current working directory) for the output file. Must not be null.</param>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="instance" />, <paramref name="fileName" />, or <paramref name="relativePath" /> is null.</exception>
         /// <exception cref="System.IO.IOException">Thrown when the file cannot be written due to an I/O error.</exception>
-        [ExcludeFromCodeCoverage]
+        
         public void SerializeToFile<T>(T instance, string fileName, string relativePath) where T : IJsonSerializable
         {
             if (instance is null)
@@ -137,7 +137,7 @@ namespace Alis.Core.Aspect.Data.Json.FileOperations
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="fileName" /> or <paramref name="relativePath" /> is null.</exception>
         /// <exception cref="System.IO.FileNotFoundException">Thrown when the specified file does not exist at the constructed path.</exception>
         /// <exception cref="System.IO.IOException">Thrown when the file cannot be read due to an I/O error.</exception>
-        [ExcludeFromCodeCoverage]
+        
         public T DeserializeFromFile<T>(string fileName, string relativePath) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
         {
             if (fileName == null)

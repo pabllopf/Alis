@@ -36,7 +36,7 @@ namespace Alis.Extension.Language.Translator
     ///     The language not found class
     /// </summary>
     /// <seealso cref="Exception" />
-    [ExcludeFromCodeCoverage]
+    
     public class LanguageNotFound : Exception
     {
         /// <summary>

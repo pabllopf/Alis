@@ -78,7 +78,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
         ///     Warning=Yellow, Error=Red, Critical=Magenta.
         /// </summary>
         /// <param name="entry">The log entry to format and write to the console. Null entries are silently ignored.</param>
-        [ExcludeFromCodeCoverage]
+        
         public void Write(ILogEntry entry)
         {
             if (entry == null || _disposed)

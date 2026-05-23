@@ -69,7 +69,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <param name="request">The request</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>A task containing the stripe checkout session response</returns>
-        [ExcludeFromCodeCoverage]
+        
         public async Task<StripeCheckoutSessionResponse> CreateCheckoutSessionAsync(
             StripeCheckoutSessionRequest request,
             CancellationToken cancellationToken = default(CancellationToken))
@@ -120,7 +120,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <param name="request">The request</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>A task containing the stripe payment intent response</returns>
-        [ExcludeFromCodeCoverage]
+        
         public async Task<StripePaymentIntentResponse> CreatePaymentIntentAsync(
             StripePaymentIntentRequest request,
             CancellationToken cancellationToken = default(CancellationToken))
@@ -163,7 +163,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <param name="cancellationToken">The cancellation token</param>
         /// <exception cref="ArgumentException">Payment intent id cannot be null or empty. </exception>
         /// <returns>A task containing the stripe payment intent response</returns>
-        [ExcludeFromCodeCoverage]
+        
         public async Task<StripePaymentIntentResponse> GetPaymentIntentAsync(string paymentIntentId, CancellationToken cancellationToken = default(CancellationToken))
         {
             EnsureConfigured();
@@ -192,7 +192,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException">Payment intent id cannot be null or empty. </exception>
         /// <returns>A task containing the stripe refund response</returns>
-        [ExcludeFromCodeCoverage]
+        
         public async Task<StripeRefundResponse> CreateRefundAsync(StripeRefundRequest request, CancellationToken cancellationToken = default(CancellationToken))
         {
             EnsureConfigured();
@@ -231,7 +231,7 @@ namespace Alis.Extension.Payment.Stripe
         /// </summary>
         /// <param name="reason">The reason</param>
         /// <returns>The string</returns>
-        [ExcludeFromCodeCoverage]
+        
         private static string MapRefundReason(string reason)
         {
             if (string.IsNullOrWhiteSpace(reason))
@@ -270,7 +270,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <exception cref="ArgumentOutOfRangeException">Quantity must be greater than zero.</exception>
         /// <exception cref="ArgumentException">SuccessUrl and CancelUrl are required. </exception>
         /// <exception cref="ArgumentOutOfRangeException">UnitAmount must be greater than zero.</exception>
-        [ExcludeFromCodeCoverage]
+        
         private static void ValidateCheckoutRequest(StripeCheckoutSessionRequest request)
         {
             if (request == null)
@@ -311,7 +311,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentOutOfRangeException">Amount must be greater than zero.</exception>
         /// <exception cref="ArgumentException">Currency cannot be null or empty. </exception>
-        [ExcludeFromCodeCoverage]
+        
         private static void ValidatePaymentIntentRequest(StripePaymentIntentRequest request)
         {
             if (request == null)

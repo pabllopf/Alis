@@ -146,7 +146,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     If queue is empty, result is undefined
         ///     O(log n)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public T Dequeue()
         {
             T returnMe = _nodes[1];
@@ -207,7 +207,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     If the node is not in the queue, the result is undefined.  If unsure, check Contains() first
         ///     O(log n)
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Remove(T item)
         {
             //If the node is already the last node, we can remove it immediately
@@ -233,7 +233,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     By default, nodes that have been previously added to one queue cannot be added to another queue.
         ///     If you need to do this, please call originalQueue.ResetNode(node) before attempting to add it in the new queue
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void ResetNode(T node)
         {
             node.QueueIndex = 0;
@@ -244,7 +244,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of t</returns>
-        [ExcludeFromCodeCoverage]
+        
         public IEnumerator<T> GetEnumerator()
         {
             for (int i = 1; i <= _numNodes; i++)
@@ -257,14 +257,14 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        [ExcludeFromCodeCoverage]
+        
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <summary>
         ///     Cascades the up using the specified node
         /// </summary>
         /// <param name="node">The node</param>
-        [ExcludeFromCodeCoverage]
+        
         private void CascadeUp(T node)
         {
             int parent;
@@ -311,7 +311,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Cascades the down using the specified node
         /// </summary>
         /// <param name="node">The node</param>
-        [ExcludeFromCodeCoverage]
+        
         private void CascadeDown(T node)
         {
             int finalQueueIndex = node.QueueIndex;
@@ -359,7 +359,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="childLeftIndex">The child left index</param>
         /// <param name="childRightIndex">The child right index</param>
         /// <returns>The int</returns>
-        [ExcludeFromCodeCoverage]
+        
         private int GetHigherPriorityChildIndex(T childLeft, T childRight, int childLeftIndex, int childRightIndex)
         {
             if (childRight == null)
@@ -377,7 +377,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="child">The child</param>
         /// <param name="nodeIndex">The node index</param>
         /// <param name="childIndex">The child index</param>
-        [ExcludeFromCodeCoverage]
+        
         private void Swap(T node, T child, int nodeIndex, int childIndex)
         {
             _nodes[nodeIndex] = child;
@@ -397,7 +397,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Ons the node updated using the specified node
         /// </summary>
         /// <param name="node">The node</param>
-        [ExcludeFromCodeCoverage]
+        
         private void OnNodeUpdated(T node)
         {
             //Bubble the updated node up or down as appropriate
@@ -418,7 +418,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     <b>Should not be called in production code.</b>
         ///     Checks to make sure the queue is still in a valid state.  Used for testing/debugging the queue.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public bool IsValidQueue()
         {
             for (int i = 1; i < _nodes.Length; i++)

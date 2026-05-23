@@ -82,7 +82,7 @@ namespace Alis.Core.Aspect.Logging
         ///     Safe to call multiple times. Errors from individual outputs are caught
         ///     to prevent one failure from affecting others.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Dispose()
         {
             if (_disposed)
@@ -187,7 +187,7 @@ namespace Alis.Core.Aspect.Logging
         /// <summary>
         ///     Flushes all outputs to ensure all entries are written.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public void Flush()
         {
             if (_disposed)

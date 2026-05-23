@@ -39,7 +39,7 @@ namespace Alis.Extension.Io.FileDialog
     /// <summary>
     ///     Provides methods for executing system commands related to file dialogs.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public static class FilePickerExecutor
     {
         /// <summary>

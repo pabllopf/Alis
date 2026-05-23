@@ -103,7 +103,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         /// <param name="b">The right-hand side vector.</param>
         /// <returns>The solution vector x computed via Cramer's rule using the determinant.</returns>
-        [ExcludeFromCodeCoverage]
+        
         public Vector3F Solve33(Vector3F b)
         {
             float det = Vector3F.Dot(Ex, Vector3F.Cross(Ey, Ez));
@@ -140,7 +140,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Computes the inverse of the upper-left 2x2 submatrix and stores it in the provided output matrix.
         /// </summary>
         /// <param name="m">The output matrix that will receive the inverse of the 2x2 submatrix.</param>
-        [ExcludeFromCodeCoverage]
+        
         public void GetInverse22(ref Matrix3X3 m)
         {
             float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
@@ -174,7 +174,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Computes the symmetric inverse of the full 3x3 matrix and stores it in the provided output matrix.
         /// </summary>
         /// <param name="m">The output matrix that will receive the symmetric inverse.</param>
-        [ExcludeFromCodeCoverage]
+        
         public void GetSymInverse33(ref Matrix3X3 m)
         {
             float det = Dot(Ex, Cross(Ey, Ez));

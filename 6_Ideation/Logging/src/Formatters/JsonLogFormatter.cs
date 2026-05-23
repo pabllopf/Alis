@@ -133,7 +133,7 @@ namespace Alis.Core.Aspect.Logging.Formatters
         /// <summary>
         ///     Escapes special characters for JSON string values.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         private static void EscapeJsonString(StringBuilder sb, string value)
         {
             if (string.IsNullOrEmpty(value))

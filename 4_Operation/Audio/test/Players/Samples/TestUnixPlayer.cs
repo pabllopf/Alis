@@ -37,7 +37,7 @@ namespace Alis.Core.Audio.Test.Players.Samples
     ///     The test unix player class
     /// </summary>
     /// <seealso cref="UnixPlayerBase" />
-    [ExcludeFromCodeCoverage]
+    
     public class TestUnixPlayer : UnixPlayerBase
     {
         /// <summary>

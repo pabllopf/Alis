@@ -39,7 +39,7 @@ namespace Alis.Extension.Io.FileDialog
     /// <summary>
     ///     Provides validation methods for file picker operations.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public static class FilePickerValidator
     {
         /// <summary>

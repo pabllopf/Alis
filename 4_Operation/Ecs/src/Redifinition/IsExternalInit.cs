@@ -35,6 +35,6 @@ namespace System.Runtime.CompilerServices
 {
     /// <summary>
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class IsExternalInit : Attribute;
 }

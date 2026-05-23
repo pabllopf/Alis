@@ -39,13 +39,13 @@ namespace Alis.Core.Aspect.Math.Collections
     ///     A readonly array with O(1) indexable lookup time, wrapping a <typeparamref name="T" /> array without defensive copying.
     /// </summary>
     /// <typeparam name="T">The type of element stored by the array.</typeparam>
-    [ExcludeFromCodeCoverage]
+    
     public readonly struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableArray<T>>, IFastImmutableArray
     {
         /// <summary>
         ///     A writable array accessor that can be converted into an <see cref="FastImmutableArray{T}" /> instance without allocating memory.
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         public sealed class Builder : IList<T>, IReadOnlyList<T>
         {
             /// <summary>
@@ -1306,7 +1306,7 @@ namespace Alis.Core.Aspect.Math.Collections
         /// <summary>
         ///     An array enumerator that implements the <see cref="IEnumerator{T}" /> pattern (including <see cref="IDisposable" />).
         /// </summary>
-        [ExcludeFromCodeCoverage]
+        
         private sealed class EnumeratorObject : IEnumerator<T>
         {
             /// <summary>

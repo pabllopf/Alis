@@ -75,7 +75,7 @@ namespace Alis.Extension.Thread.Scheduling
         /// <param name="totalCount">The total number of items</param>
         /// <param name="partitionCount">The desired number of partitions</param>
         /// <returns>A span of batch partitions</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static BatchPartition[] CreatePartitions(int totalCount, int partitionCount)
         {
             if (totalCount <= 0)

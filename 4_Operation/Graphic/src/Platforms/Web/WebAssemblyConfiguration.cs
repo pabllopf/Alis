@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///     Configuration builder for WebAssembly platform
     ///     Provides a fluent interface to configure platform settings
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class WebAssemblyConfigurationBuilder
     {
         /// <summary>

@@ -38,7 +38,7 @@ namespace Alis.Extension.Io.FileDialog
     /// <summary>
     ///     FilePicker implementation for Linux using zenity/kdialog.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class LinuxFilePicker : IFilePicker
     {
         /// <summary>

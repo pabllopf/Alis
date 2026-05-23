@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///     Complete WebAssembly game context providing unified access to all platform features
     ///     This is the main entry point for game development on WebAssembly
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public sealed class WebAssemblyGameContext : IDisposable
     {
         /// <summary>

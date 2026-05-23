@@ -90,7 +90,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </summary>
         /// <param name="info">The <see cref="SerializationInfo" /> to populate.</param>
         /// <param name="context">The streaming context.</param>
-        [ExcludeFromCodeCoverage]
+        
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("x", X);

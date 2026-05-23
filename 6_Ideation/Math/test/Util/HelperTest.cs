@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
     /// <summary>
     ///     The helper test class
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class HelperTest
     {
         /// <summary>

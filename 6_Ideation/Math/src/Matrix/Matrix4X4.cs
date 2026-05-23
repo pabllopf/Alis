@@ -175,7 +175,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="column">The zero-based column index (0-3).</param>
         /// <returns>The element at the specified position.</returns>
         /// <exception cref="CustomIndexOutOfRangeException">Thrown when <paramref name="row" /> or <paramref name="column" /> is outside the valid range [0, 3].</exception>
-        [ExcludeFromCodeCoverage]
+        
         public float this[int row, int column]
         {
             get
@@ -326,7 +326,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="a">The first matrix.</param>
         /// <param name="b">The second matrix.</param>
         /// <returns>The product matrix.</returns>
-        [ExcludeFromCodeCoverage]
+        
         public static Matrix4X4 operator *(Matrix4X4 a, Matrix4X4 b)
         {
             Matrix4X4 result = new Matrix4X4();

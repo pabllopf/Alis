@@ -40,7 +40,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///     Provides full support for graphics, input handling, and window management
     ///     in WebAssembly environments for cross-platform game development.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class WebAssemblyPlatform : INativePlatform
     {
         /// <summary>

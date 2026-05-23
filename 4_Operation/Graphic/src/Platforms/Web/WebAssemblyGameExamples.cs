@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     ///     Examples and utilities for developing games with WebAssembly
     ///     This class provides practical examples and helper methods for common game development tasks
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public static class WebAssemblyGameExamples
     {
         /// <summary>

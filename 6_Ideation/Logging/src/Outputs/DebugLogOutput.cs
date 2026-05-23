@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
         ///     Writes the specified log entry to the debugger output.
         /// </summary>
         /// <param name="entry">The log entry to write.</param>
-        [ExcludeFromCodeCoverage]
+        
         public void Write(ILogEntry entry)
         {
             if (entry == null || _disposed || !Debugger.IsAttached)

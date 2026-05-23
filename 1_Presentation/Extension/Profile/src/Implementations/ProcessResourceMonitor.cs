@@ -71,7 +71,7 @@ namespace Alis.Extension.Profile.Implementations
         /// <returns>
         ///     A <see cref="double" /> representing the CPU time in milliseconds.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         public double GetCpuUsage()
         {
             try
@@ -91,7 +91,7 @@ namespace Alis.Extension.Profile.Implementations
         /// <returns>
         ///     A <see cref="long" /> representing the memory usage in bytes.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         public long GetMemoryUsage()
         {
             try
@@ -111,7 +111,7 @@ namespace Alis.Extension.Profile.Implementations
         /// <returns>
         ///     An <see cref="int" /> representing the total garbage collection count.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         public int GetGarbageCollectionCount()
         {
             int gen0 = GC.CollectionCount(0);
@@ -126,7 +126,7 @@ namespace Alis.Extension.Profile.Implementations
         /// <returns>
         ///     An <see cref="int" /> representing the thread count.
         /// </returns>
-        [ExcludeFromCodeCoverage]
+        
         public int GetThreadCount()
         {
             try

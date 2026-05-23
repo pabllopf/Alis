@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Fluent.Test
     /// <summary>
     ///     The test builder class
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     internal class TestHasBuilder : IHasBuilder<string>
     {
         /// <summary>

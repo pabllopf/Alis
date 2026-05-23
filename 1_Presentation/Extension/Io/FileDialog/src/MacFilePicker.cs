@@ -39,7 +39,7 @@ namespace Alis.Extension.Io.FileDialog
     /// <summary>
     ///     FilePicker implementation for macOS.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public class MacFilePicker : IFilePicker
     {
         /// <summary>

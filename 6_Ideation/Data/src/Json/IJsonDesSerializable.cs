@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     Thrown when the property dictionary contains invalid or unexpected keys,
         ///     or when a value cannot be converted to the expected target type.
         /// </exception>
-        [ExcludeFromCodeCoverage]
+        
         T CreateFromProperties(Dictionary<string, string> properties);
     }
 }

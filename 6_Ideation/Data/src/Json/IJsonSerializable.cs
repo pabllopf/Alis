@@ -90,7 +90,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     </code>
         ///     </para>
         /// </remarks>
-        [ExcludeFromCodeCoverage]
+        
         IEnumerable<(string PropertyName, string Value)> GetSerializableProperties();
     }
 }
