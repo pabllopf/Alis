@@ -189,6 +189,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 }
                 catch
                 {
+                    // Ignore exception during close
                 }
 
                 InputDataStream.Dispose();
