@@ -512,7 +512,7 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                     {
 
-                        // TODO: handle menu action
+                        // Menu action placeholder
 
                     }
 
