@@ -86,8 +86,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                     ref byte[] componentsForArchetype = ref table[i];
                     Array.Resize(ref componentsForArchetype, ComponentTagTableBufferSize);
 
-                    //componentsForArchetype.AsSpan(tableSize).Fill(DefaultNoTag);
-
                     foreach (Scene world in worlds)
                     {
                         if (world is not null)
