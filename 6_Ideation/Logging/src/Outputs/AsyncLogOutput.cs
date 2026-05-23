@@ -135,7 +135,11 @@ namespace Alis.Core.Aspect.Logging.Outputs
                         _innerOutput.Write(entry);
                     }
                     catch
+
                     {
+
+                        // Swallow exception
+
                     }
                 }
             }

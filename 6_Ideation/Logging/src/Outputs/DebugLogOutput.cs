@@ -89,7 +89,11 @@ namespace Alis.Core.Aspect.Logging.Outputs
                 Debug.WriteLine(formatted);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 

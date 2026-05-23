@@ -139,7 +139,11 @@ namespace Alis.Core.Aspect.Logging.Outputs
                     _writer.WriteLine(formatted);
                 }
                 catch
+
                 {
+
+                    // Swallow exception
+
                 }
             }
         }
@@ -163,7 +167,11 @@ namespace Alis.Core.Aspect.Logging.Outputs
                     _writer.Flush();
                 }
                 catch
+
                 {
+
+                    // Swallow exception
+
                 }
             }
         }
@@ -191,7 +199,11 @@ namespace Alis.Core.Aspect.Logging.Outputs
                     _writer = null;
                 }
                 catch
+
                 {
+
+                    // Swallow exception
+
                 }
             }
         }

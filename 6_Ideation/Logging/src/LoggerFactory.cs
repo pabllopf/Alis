@@ -100,7 +100,11 @@ namespace Alis.Core.Aspect.Logging
                     output.Dispose();
                 }
                 catch
+
                 {
+
+                    // Swallow exception
+
                 }
             }
 
@@ -198,7 +202,11 @@ namespace Alis.Core.Aspect.Logging
                     output.Flush();
                 }
                 catch
+
                 {
+
+                    // Swallow exception
+
                 }
             }
         }

@@ -332,13 +332,21 @@ namespace Alis.Core.Aspect.Logging.Core
                             output.Write(entry);
                         }
                         catch
+
                         {
+
+                            // Swallow exception
+
                         }
                     }
                 }
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
     }

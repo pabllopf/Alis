@@ -105,7 +105,11 @@ namespace Alis.Core.Aspect.Logging.Outputs
                 Console.WriteLine(formatted);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
             finally
             {
@@ -114,7 +118,11 @@ namespace Alis.Core.Aspect.Logging.Outputs
                     Console.ForegroundColor = originalColor;
                 }
                 catch
+
                 {
+
+                    // Swallow exception
+
                 }
             }
         }
