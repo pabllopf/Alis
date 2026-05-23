@@ -59,6 +59,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                 {
                     if (gameContext.IsActionActive("Move_Up"))
                     {
+                        // TODO: handle move up action
                     }
 
                     if (gameContext.IsMouseButtonDown(0)) // Left mouse button
@@ -76,6 +77,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     float wheelDelta = context.InputManager.GetMouseWheelDelta();
                     if (wheelDelta != 0)
                     {
+                        // TODO: implement
                     }
                 });
             }
@@ -108,11 +110,19 @@ namespace Alis.Core.Graphic.Platforms.Web
                 GamepadState state = gamepadState.CurrentState;
 
                 if (state.ButtonA)
+
                 {
+
+                    // TODO: implement
+
                 }
 
                 if (state.ButtonB)
+
                 {
+
+                    // TODO: implement
+
                 }
 
                 if (context.InputManager.IsGamepadButtonJustPressed(gamepadIndex, 0)) // A button
@@ -160,6 +170,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     ScreenOrientation orientation = context.DisplayManager.GetOrientation();
                     if (orientation == ScreenOrientation.Portrait)
                     {
+                        // TODO: implement
                     }
                     else
                     {
@@ -210,15 +221,19 @@ namespace Alis.Core.Graphic.Platforms.Web
         {
             if (context.IsKeyDown(ConsoleKey.W))
             {
+                // TODO: implement
             }
             if (context.IsKeyDown(ConsoleKey.S))
             {
+                // TODO: implement
             }
             if (context.IsKeyDown(ConsoleKey.A))
             {
+                // TODO: implement
             }
             if (context.IsKeyDown(ConsoleKey.D))
             {
+                // TODO: implement
             }
         }
 
@@ -462,27 +477,43 @@ namespace Alis.Core.Graphic.Platforms.Web
                 {
                     if (context.IsActionActive("Move_Forward"))
                     {
+                        // TODO: handle move forward action
                     }
                     if (context.IsActionActive("Move_Backward"))
                     {
+                        // TODO: handle move backward action
                     }
                     if (context.IsActionActive("Move_Left"))
                     {
+                        // TODO: handle move left action
                     }
                     if (context.IsActionActive("Move_Right"))
                     {
+                        // TODO: handle move right action
                     }
 
                     if (context.IsActionJustPressed("Jump"))
+
                     {
+
+                        // TODO: handle jump action
+
                     }
 
                     if (context.IsActionJustPressed("Attack"))
+
                     {
+
+                        // TODO: handle attack action
+
                     }
 
                     if (context.IsActionJustPressed("Menu"))
+
                     {
+
+                        // TODO: handle menu action
+
                     }
 
                 });
