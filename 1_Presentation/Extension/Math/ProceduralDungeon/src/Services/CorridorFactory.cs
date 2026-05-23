@@ -97,7 +97,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <param name="direction">The direction of the corridor.</param>
         /// <returns>A corridor data instance.</returns>
         
-        private CorridorData CreateCorridorFromRoom(int width, int height, RoomData room, Direction direction)
+        private static CorridorData CreateCorridorFromRoom(int width, int height, RoomData room, Direction direction)
         {
             int xPos, yPos, corridorWidth, corridorHeight;
 
