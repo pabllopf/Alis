@@ -481,7 +481,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     }
                     if (context.IsActionActive("Move_Backward"))
                     {
-                        // TODO: handle move backward action
+                        // Backward movement placeholder
                     }
                     if (context.IsActionActive("Move_Left"))
                     {
