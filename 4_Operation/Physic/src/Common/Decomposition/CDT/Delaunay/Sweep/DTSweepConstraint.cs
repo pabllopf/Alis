@@ -50,13 +50,10 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                 Q = p1;
                 P = p2;
             }
-            else if (Math.Abs(p1.Y - p2.Y) < float.Epsilon)
+            else if (Math.Abs(p1.Y - p2.Y) < float.Epsilon && p1.X > p2.X)
             {
-                if (p1.X > p2.X)
-                {
-                    Q = p1;
-                    P = p2;
-                }
+                Q = p1;
+                P = p2;
             }
 
             Q.AddEdge(this);
