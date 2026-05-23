@@ -485,7 +485,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     }
                     if (context.IsActionActive("Move_Left"))
                     {
-                        // TODO: handle move left action
+                        // Left movement placeholder
                     }
                     if (context.IsActionActive("Move_Right"))
                     {
