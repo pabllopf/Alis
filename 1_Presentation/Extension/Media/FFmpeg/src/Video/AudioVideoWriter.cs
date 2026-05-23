@@ -100,7 +100,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
 
             if (string.IsNullOrEmpty(filename))
             {
-                throw new NullReferenceException("Filename can't be null or empty!");
+                throw new ArgumentException("Filename can't be null or empty!", nameof(filename));
             }
 
             if (audioChannels <= 0 || audioSampleRate <= 0)
