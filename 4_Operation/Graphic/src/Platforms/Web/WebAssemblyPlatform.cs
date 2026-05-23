@@ -173,8 +173,10 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
-                return false;
+                // Swallow exception during gamepad state update
             }
+
+            return false;
         }
 
         /// <summary>
@@ -270,6 +272,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
+                // Swallow exception during gamepad state update
             }
         }
 
@@ -289,6 +292,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             catch
             {
+                // Swallow exception during gamepad state update
             }
         }
 
