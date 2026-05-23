@@ -1133,23 +1133,20 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // WIP David
-            if (!joint.IsFixedType())
+            if (!joint.IsFixedType() && !collideConnected)
             {
                 // If the joint prevents collisions, then flag any contacts for filtering.
-                if (!collideConnected)
+                ContactEdge edge = bodyB.ContactList;
+                while (edge != null)
                 {
-                    ContactEdge edge = bodyB.ContactList;
-                    while (edge != null)
+                    if (edge.Other == bodyA)
                     {
-                        if (edge.Other == bodyA)
-                        {
-                            // Flag the contact for filtering at the next time step (where either
-                            // body is awake).
-                            edge.Contact.FilterFlag = true;
-                        }
-
-                        edge = edge.Next;
+                        // Flag the contact for filtering at the next time step (where either
+                        // body is awake).
+                        edge.Contact.FilterFlag = true;
                     }
+
+                    edge = edge.Next;
                 }
             }
 

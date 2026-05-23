@@ -201,31 +201,22 @@ namespace Alis.Core.Physic.Dynamics
 
             // Check user filtering.
             CollisionFilterDelegate contactFilterHandler = ContactFilter;
-            if (contactFilterHandler != null)
+            if (contactFilterHandler != null && !contactFilterHandler(fixtureA, fixtureB))
             {
-                if (!contactFilterHandler(fixtureA, fixtureB))
-                {
-                    return;
-                }
+                return;
             }
 
             //FPE feature: BeforeCollision delegate
             BeforeCollisionEventHandler beforeCollisionHandlerA = fixtureA.BeforeCollision;
-            if (beforeCollisionHandlerA != null)
+            if (beforeCollisionHandlerA != null && !beforeCollisionHandlerA(fixtureA, fixtureB))
             {
-                if (!beforeCollisionHandlerA(fixtureA, fixtureB))
-                {
-                    return;
-                }
+                return;
             }
 
             BeforeCollisionEventHandler beforeCollisionHandlerB = fixtureB.BeforeCollision;
-            if (beforeCollisionHandlerB != null)
+            if (beforeCollisionHandlerB != null && !beforeCollisionHandlerB(fixtureB, fixtureA))
             {
-                if (!beforeCollisionHandlerB(fixtureB, fixtureA))
-                {
-                    return;
-                }
+                return;
             }
 
             // Call the factory.
@@ -442,15 +433,12 @@ namespace Alis.Core.Physic.Dynamics
 
                     // Check user filtering.
                     CollisionFilterDelegate contactFilterHandler = ContactFilter;
-                    if (contactFilterHandler != null)
+                    if (contactFilterHandler != null && !contactFilterHandler(fixtureA, fixtureB))
                     {
-                        if (!contactFilterHandler(fixtureA, fixtureB))
-                        {
-                            Contact cNuke = c;
-                            c = c.Next;
-                            Destroy(cNuke);
-                            continue;
-                        }
+                        Contact cNuke = c;
+                        c = c.Next;
+                        Destroy(cNuke);
+                        continue;
                     }
 
                     // Clear the filtering flag.
@@ -537,15 +525,12 @@ namespace Alis.Core.Physic.Dynamics
 
                     // Check user filtering.
                     CollisionFilterDelegate contactFilterHandler = ContactFilter;
-                    if (contactFilterHandler != null)
+                    if (contactFilterHandler != null && !contactFilterHandler(fixtureA, fixtureB))
                     {
-                        if (!contactFilterHandler(fixtureA, fixtureB))
-                        {
-                            Contact cNuke = c;
-                            c = c.Next;
-                            Destroy(cNuke);
-                            continue;
-                        }
+                        Contact cNuke = c;
+                        c = c.Next;
+                        Destroy(cNuke);
+                        continue;
                     }
 
                     // Clear the filtering flag.

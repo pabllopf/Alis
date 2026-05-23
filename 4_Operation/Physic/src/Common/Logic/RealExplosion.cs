@@ -369,13 +369,10 @@ namespace Alis.Core.Physic.Common.Logic
                         ri.Point2 = p2;
                         ri.MaxFraction = 50f;
 
-                        if (f.RayCast(out RayCastOutput ro, ref ri, 0))
+                        if (f.RayCast(out RayCastOutput ro, ref ri, 0) && minlambda > ro.Fraction)
                         {
-                            if (minlambda > ro.Fraction)
-                            {
-                                minlambda = ro.Fraction;
-                                hitpoint = ro.Fraction * p2 + (1 - ro.Fraction) * p1;
-                            }
+                            minlambda = ro.Fraction;
+                            hitpoint = ro.Fraction * p2 + (1 - ro.Fraction) * p1;
                         }
 
                         float impulse = arclen / (MinRays + insertedRays) * maxForce * 180.0f / Constant.Pi * (1.0f - Math.Min(1.0f, minlambda));

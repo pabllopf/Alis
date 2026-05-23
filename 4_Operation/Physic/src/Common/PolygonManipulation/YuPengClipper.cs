@@ -362,20 +362,17 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         --index;
                     }
 
-                    if (!closed)
+                    if (!closed && ++index == simplicies.Count)
                     {
-                        if (++index == simplicies.Count)
+                        if (count == simplicies.Count)
                         {
-                            if (count == simplicies.Count)
-                            {
-                                result = new List<Vertices>();
-                                Logger.Log("Undefined error while building result polygon(s).");
-                                return PolyClipError.BrokenResult;
-                            }
-
-                            index = 0;
-                            count = simplicies.Count;
+                            result = new List<Vertices>();
+                            Logger.Log("Undefined error while building result polygon(s).");
+                            return PolyClipError.BrokenResult;
                         }
+
+                        index = 0;
+                        count = simplicies.Count;
                     }
                 }
 

@@ -1260,12 +1260,9 @@ namespace Alis.Core.Physic.Dynamics
             // Does a joint prevent collision?
             for (JointEdge jn = JointList; jn != null; jn = jn.Next)
             {
-                if (jn.Other == other)
+                if (jn.Other == other && !jn.Joint.CollideConnected)
                 {
-                    if (!jn.Joint.CollideConnected)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
 
