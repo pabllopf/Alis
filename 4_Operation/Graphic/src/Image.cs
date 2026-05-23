@@ -334,66 +334,80 @@ namespace Alis.Core.Graphic
                 byte value = reader.ReadByte();
                 if (count > 0)
                 {
-                    for (int i = 0; i < count; i++)
-                    {
-                        if (x >= width)
-                        {
-                            x = 0;
-                            y++;
-                        }
-
-                        int index = (y * width + x) * 4; // Corregido: filas de arriba hacia abajo
-                        rawData[index + 0] = palette[value][0];
-                        rawData[index + 1] = palette[value][1];
-                        rawData[index + 2] = palette[value][2];
-                        rawData[index + 3] = palette[value][3];
-                        x++;
-                    }
+                    WriteEncodedPixels(reader, palette, rawData, width, ref x, y, count);
                 }
                 else
                 {
-                    if (value == 0) // End of line
-                    {
-                        x = 0;
-                        y++;
-                    }
-                    else if (value == 1) // End of bitmap
-                    {
-                        break;
-                    }
-                    else if (value == 2) // Delta
-                    {
-                        byte dx = reader.ReadByte();
-                        byte dy = reader.ReadByte();
-                        x += dx;
-                        y += dy;
-                    }
-                    else // Absolute mode
-                    {
-                        int absCount = value;
-                        for (int i = 0; i < absCount; i++)
-                        {
-                            byte absValue = reader.ReadByte();
-                            if (x >= width)
-                            {
-                                x = 0;
-                                y++;
-                            }
-
-                            int index = (y * width + x) * 4;
-                            rawData[index + 0] = palette[absValue][0];
-                            rawData[index + 1] = palette[absValue][1];
-                            rawData[index + 2] = palette[absValue][2];
-                            rawData[index + 3] = palette[absValue][3];
-                            x++;
-                        }
-
-                        if ((absCount & 1) == 1)
-                        {
-                            reader.ReadByte(); // Padding
-                        }
-                    }
+                    HandleEscapeCode(reader, palette, rawData, width, ref x, ref y, value);
                 }
+            }
+        }
+
+        private static void WriteEncodedPixels(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, int y, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (x >= width)
+                {
+                    x = 0;
+                    y++;
+                }
+
+                int index = (y * width + x) * 4;
+                rawData[index + 0] = palette[reader.ReadByte()][0];
+                rawData[index + 1] = palette[reader.ReadByte()][1];
+                rawData[index + 2] = palette[reader.ReadByte()][2];
+                rawData[index + 3] = palette[reader.ReadByte()][3];
+                x++;
+            }
+        }
+
+        private static void HandleEscapeCode(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, ref int y, byte value)
+        {
+            if (value == 0) // End of line
+            {
+                x = 0;
+                y++;
+            }
+            else if (value == 1) // End of bitmap
+            {
+                return;
+            }
+            else if (value == 2) // Delta
+            {
+                byte dx = reader.ReadByte();
+                byte dy = reader.ReadByte();
+                x += dx;
+                y += dy;
+            }
+            else // Absolute mode
+            {
+                int absCount = value;
+                WriteAbsolutePixels(reader, palette, rawData, width, ref x, y, absCount);
+                if ((absCount & 1) == 1)
+                {
+                    reader.ReadByte(); // Padding
+                }
+            }
+        }
+
+        private static void WriteAbsolutePixels(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, int y, int absCount)
+        {
+            for (int i = 0; i < absCount; i++)
+            {
+                if (x >= width)
+                {
+                    x = 0;
+                    y++;
+                }
+
+                int index = (y * width + x) * 4;
+                byte absValue = reader.ReadByte();
+                rawData[index + 0] = palette[absValue][0];
+                rawData[index + 1] = palette[absValue][1];
+                rawData[index + 2] = palette[absValue][2];
+                rawData[index + 3] = palette[absValue][3];
+                x++;
             }
         }
 
