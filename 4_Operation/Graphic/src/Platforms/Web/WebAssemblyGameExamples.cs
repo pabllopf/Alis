@@ -121,7 +121,7 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                 {
 
-                    // TODO: implement
+                    // Button B action placeholder
 
                 }
 
