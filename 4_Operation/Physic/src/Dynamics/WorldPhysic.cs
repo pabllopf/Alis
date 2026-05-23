@@ -1795,14 +1795,6 @@ namespace Alis.Core.Physic.Dynamics
             body.CreateCircle(endRadius, density, new Vector2F(0, height / 2));
             body.CreateCircle(endRadius, density, new Vector2F(0, -(height / 2)));
 
-            //Create the two circles
-            //CircleShape topCircle = new CircleShape(endRadius, density);
-            //topCircle.Position = new Vector2F(0, height / 2);
-            //body.CreateFixture(topCircle);
-
-            //CircleShape bottomCircle = new CircleShape(endRadius, density);
-            //bottomCircle.Position = new Vector2F(0, -(height / 2));
-            //body.CreateFixture(bottomCircle);
             return body;
         }
 
@@ -1898,17 +1890,6 @@ namespace Alis.Core.Physic.Dynamics
             //{
             //    //Fix the first chainlink to the world
             //    JointFactory.CreateFixedRevoluteJoint(this, chainLinks[0], new Vector2F(0, -(linkHeight / 2)),
-            //                                          chainLinks[0].Position);
-            //}
-
-            //if (fixEnd)
-            //{
-            //    //Fix the last chainlink to the world
-            //    JointFactory.CreateFixedRevoluteJoint(this, chainLinks[chainLinks.Count - 1],
-            //                                          new Vector2F(0, (linkHeight / 2)),
-            //                                          chainLinks[chainLinks.Count - 1].Position);
-            //}
-
             //Attach all the chainlinks together with a revolute joint
             PathManager.AttachBodiesWithRevoluteJoint(this, chainLinks, new Vector2F(0, -linkHeight), new Vector2F(0, linkHeight), false, false);
 
