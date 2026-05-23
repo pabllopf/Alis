@@ -51,7 +51,7 @@ namespace Alis.Extension.Language.Dialogue.Test
 
             IDialogAction action = new CallbackDialogAction("testAction", () => executed = true);
 
-            bool result = executor.ExecuteAction(action, context);
+            bool result = DialogActionExecutor.ExecuteAction(action, context);
 
             Assert.True(result);
             Assert.True(executed);
@@ -66,7 +66,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             DialogActionExecutor executor = new DialogActionExecutor();
             DialogContext context = new DialogContext("testDialog");
 
-            Assert.Throws<ArgumentNullException>(() => executor.ExecuteAction(null, context));
+            Assert.Throws<ArgumentNullException>(() => DialogActionExecutor.ExecuteAction(null, context));
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             DialogActionExecutor executor = new DialogActionExecutor();
             IDialogAction action = new CallbackDialogAction("testAction");
 
-            Assert.Throws<ArgumentNullException>(() => executor.ExecuteAction(action, null));
+            Assert.Throws<ArgumentNullException>(() => DialogActionExecutor.ExecuteAction(action, null));
         }
 
         /// <summary>

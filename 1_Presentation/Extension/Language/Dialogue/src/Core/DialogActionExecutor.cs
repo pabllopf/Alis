@@ -47,7 +47,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// <returns>True if the action was executed successfully</returns>
         /// <exception cref="ArgumentNullException">Thrown when action or context is null</exception>
         
-        public bool ExecuteAction(IDialogAction action, DialogContext context)
+        public static bool ExecuteAction(IDialogAction action, DialogContext context)
         {
             if (action == null)
             {
