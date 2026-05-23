@@ -484,14 +484,31 @@ namespace XmlDocProcessor
             return sb.ToString().Trim();
         }
 
+        /// <summary>
+        ///     Represents a cache entry for tracking processed file documentation status.
+        /// </summary>
         private class CacheEntry
         {
+            /// <summary>
+            ///     Gets or sets the processing status of the file.
+            /// </summary>
             public string Status { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the timestamp of when the file was last processed.
+            /// </summary>
             public string Timestamp { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the number of XML documentation comments added to the file.
+            /// </summary>
             public int DocsAdded { get; set; }
         }
     }
 
+    /// <summary>
+    ///     Provides extension methods for string manipulation used by the XML documentation processor.
+    /// </summary>
     internal static class StringExtensions
     {
         /// <summary>Sanitizes string for XML doc content (removes problematic characters).</summary>
