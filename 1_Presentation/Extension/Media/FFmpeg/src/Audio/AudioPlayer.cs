@@ -165,9 +165,10 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                     ffplayp.Kill();
                 }
             }
-            catch
-            {
-            }
+                catch
+                {
+                    // Ignore exception during cleanup
+                }
 
             InputDataStream = FfMpegWrapper.OpenInput(ffplay, $"{extraInputParameters} -f s{bitDepth}le -channels {channels} -sample_rate {sampleRate} -i -"
                                                               + (showWindow ? "" : " -nodisp"),
