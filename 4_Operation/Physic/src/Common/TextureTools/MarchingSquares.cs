@@ -245,8 +245,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                         bi = bi.NextPos();
                     }
 
-                    //NOTE: Unused
-                    //Vector2F b0 = bi.elem();
                     Vector2F b1 = bi.NextPos().GetElem();
                     if (Square(b1.Y - ay) > SettingEnv.Epsilon)
                     {
