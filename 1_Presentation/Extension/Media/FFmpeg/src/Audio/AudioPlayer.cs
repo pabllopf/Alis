@@ -198,6 +198,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 }
                 catch
                 {
+                    // Ignore exception during close
                 }
 
                 InputDataStream.Dispose();
