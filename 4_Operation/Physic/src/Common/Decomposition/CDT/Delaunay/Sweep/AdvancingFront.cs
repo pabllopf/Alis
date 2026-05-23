@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         ///     near x
         ///     Removed an overload that depended on this being exact
         /// </summary>
-        private AdvancingFrontNode FindSearchNode(double _) =>
+        private AdvancingFrontNode FindSearchNode() =>
             Search;
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <returns>The advancing front node</returns>
         private AdvancingFrontNode LocateNode(double x)
         {
-            AdvancingFrontNode node = FindSearchNode(x);
+            AdvancingFrontNode node = FindSearchNode();
             if (x < node.Value)
             {
                 while ((node = node.Prev) != null)
@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         public AdvancingFrontNode LocatePoint(TriangulationPoint point)
         {
             double px = point.X;
-            AdvancingFrontNode node = FindSearchNode(px);
+            AdvancingFrontNode node = FindSearchNode();
             double nx = node.Point.X;
 
             if (Math.Abs(px - nx) < float.Epsilon)
