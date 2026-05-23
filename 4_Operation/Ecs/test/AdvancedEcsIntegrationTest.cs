@@ -32,6 +32,7 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    
     /// <summary>
     ///     The advanced ECS integration test class
     /// </summary>
