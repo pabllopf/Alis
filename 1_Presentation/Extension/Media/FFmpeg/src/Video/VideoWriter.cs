@@ -84,7 +84,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
 
             if (string.IsNullOrEmpty(filename))
             {
-                throw new NullReferenceException("Filename can't be null or empty!");
+                throw new ArgumentNullException(nameof(filename), "Filename can't be null or empty!");
             }
 
             UseFilename = true;
@@ -128,7 +128,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
             Width = width;
             Height = height;
             Framerate = framerate;
-            DestinationStream = destinationStream ?? throw new NullReferenceException("Stream can't be null!");
+            DestinationStream = destinationStream ?? throw new ArgumentNullException(nameof(destinationStream), "Stream can't be null!");
             EncoderOptions = encoderOptions ?? new H264Encoder().Create();
         }
 
