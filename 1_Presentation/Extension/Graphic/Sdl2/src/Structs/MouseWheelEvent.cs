@@ -59,12 +59,12 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
         public readonly uint which;
 
         /// <summary>
-        ///     The
+        ///     The x coordinate
         /// </summary>
         public readonly int x;
 
         /// <summary>
-        ///     The
+        ///     The y coordinate
         /// </summary>
         public readonly int y;
 
@@ -74,12 +74,12 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
         public readonly uint direction;
 
         /// <summary>
-        ///     The precise
+        ///     The precise x coordinate
         /// </summary>
         public readonly float preciseX;
 
         /// <summary>
-        ///     The precise
+        ///     The precise y coordinate
         /// </summary>
         public readonly float preciseY;
     }

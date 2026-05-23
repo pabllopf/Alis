@@ -74,12 +74,12 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
         public readonly byte clicks;
 
         /// <summary>
-        ///     The
+        ///     The x coordinate
         /// </summary>
         public readonly int x;
 
         /// <summary>
-        ///     The
+        ///     The y coordinate
         /// </summary>
         public readonly int y;
     }

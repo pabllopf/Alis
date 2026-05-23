@@ -63,12 +63,12 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
         public readonly float dDist;
 
         /// <summary>
-        ///     The
+        ///     The x coordinate
         /// </summary>
         public readonly float x;
 
         /// <summary>
-        ///     The
+        ///     The y coordinate
         /// </summary>
         public readonly float y;
 
