@@ -127,6 +127,7 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                 if (context.InputManager.IsGamepadButtonJustPressed(gamepadIndex, 0)) // A button
                 {
+                    // TODO: Implement A button action placeholder
                 }
 
                 if (state.ButtonLb)
