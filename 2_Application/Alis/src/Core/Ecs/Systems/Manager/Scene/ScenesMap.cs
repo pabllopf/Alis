@@ -71,21 +71,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         public void Save()
         {
-            /*
-            string pathFile = Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
-
-            if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Data")))
-            {
-                Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Data"));
-            }
-
-            string json = JsonSerializer.Serialize(this, new JsonOptions
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            });
-
-            File.WriteAllText(pathFile, json);*/
         }
     }
 }
