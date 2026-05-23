@@ -123,7 +123,7 @@ namespace Alis.Core.Graphic.Ui
         ///     Gets or sets the value of the flip
         /// </summary>
 
-        private bool Flip { get; }
+        private bool Flip { get; } = false;
 
         /// <summary>
         ///     Initializes the shaders
