@@ -251,6 +251,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 }
                 catch
                 {
+                    // Ignore exception during dispose
                 }
             }
             finally
