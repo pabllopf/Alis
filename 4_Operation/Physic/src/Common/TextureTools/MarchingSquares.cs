@@ -439,91 +439,86 @@ namespace Alis.Core.Physic.Common.TextureTools
         internal static int MarchSquare(sbyte[,] f, sbyte[,] fs, ref GeomPoly poly, int ax, int ay, float x0, float y0,
             float x1, float y1, int bin)
         {
-            //key lookup
-            int key = 0;
-            sbyte v0 = fs[ax, ay];
-            if (v0 < 0)
-            {
-                key |= 8;
-            }
-
-            sbyte v1 = fs[ax + 1, ay];
-            if (v1 < 0)
-            {
-                key |= 4;
-            }
-
-            sbyte v2 = fs[ax + 1, ay + 1];
-            if (v2 < 0)
-            {
-                key |= 2;
-            }
-
-            sbyte v3 = fs[ax, ay + 1];
-            if (v3 < 0)
-            {
-                key |= 1;
-            }
-
+            int key = BuildKey(fs, ax, ay);
             int val = LookMarch[key];
+
             if (val != 0)
             {
-                CxFastListNode<Vector2F> pi = null;
-                for (int i = 0; i < 8; i++)
-                {
-                    Vector2F p;
-                    if ((val & (1 << i)) != 0)
-                    {
-                        if ((i == 7) && ((val & 1) == 0))
-                        {
-                            poly.Points.Add(p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin)));
-                        }
-                        else
-                        {
-                            if (i == 0)
-                            {
-                                p = new Vector2F(x0, y0);
-                            }
-                            else if (i == 2)
-                            {
-                                p = new Vector2F(x1, y0);
-                            }
-                            else if (i == 4)
-                            {
-                                p = new Vector2F(x1, y1);
-                            }
-                            else if (i == 6)
-                            {
-                                p = new Vector2F(x0, y1);
-                            }
-
-                            else if (i == 1)
-                            {
-                                p = new Vector2F(Xlerp(x0, x1, y0, v0, v1, f, bin), y0);
-                            }
-                            else if (i == 5)
-                            {
-                                p = new Vector2F(Xlerp(x0, x1, y1, v3, v2, f, bin), y1);
-                            }
-
-                            else if (i == 3)
-                            {
-                                p = new Vector2F(x1, Ylerp(y0, y1, x1, v1, v2, f, bin));
-                            }
-                            else
-                            {
-                                p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin));
-                            }
-
-                            pi = poly.Points.Insert(pi, p);
-                        }
-
-                        poly.Length++;
-                    }
-                }
+                ProcessKey(val, x0, y0, x1, y1, ax, ay, f, fs, bin, ref poly);
             }
 
             return key;
+        }
+
+        /// <summary>
+        ///     Builds the lookup key from vertex values
+        /// </summary>
+        private static int BuildKey(sbyte[,] fs, int ax, int ay)
+        {
+            int key = 0;
+
+            if (fs[ax, ay] < 0)
+                key |= 8;
+
+            if (fs[ax + 1, ay] < 0)
+                key |= 4;
+
+            if (fs[ax + 1, ay + 1] < 0)
+                key |= 2;
+
+            if (fs[ax, ay + 1] < 0)
+                key |= 1;
+
+            return key;
+        }
+
+        /// <summary>
+        ///     Processes the lookup value and inserts points into the polygon
+        /// </summary>
+        private static void ProcessKey(int val, float x0, float y0, float x1, float y1, int ax, int ay, sbyte[,] f, sbyte[,] fs, int bin, ref GeomPoly poly)
+        {
+            CxFastListNode<Vector2F> pi = null;
+            sbyte v0 = fs[ax, ay];
+            sbyte v1 = fs[ax + 1, ay];
+            sbyte v2 = fs[ax + 1, ay + 1];
+            sbyte v3 = fs[ax, ay + 1];
+
+            for (int i = 0; i < 8; i++)
+            {
+                if ((val & (1 << i)) != 0)
+                {
+                    Vector2F p = GetVertexPosition(i, x0, y0, x1, y1, v0, v1, v2, v3, f, bin);
+
+                    if (i != 7 || (val & 1) != 0)
+                    {
+                        pi = poly.Points.Insert(pi, p);
+                    }
+                    else
+                    {
+                        poly.Points.Add(p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin)));
+                    }
+
+                    poly.Length++;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Gets the vertex position for a given index
+        /// </summary>
+        private static Vector2F GetVertexPosition(int i, float x0, float y0, float x1, float y1, sbyte v0, sbyte v1, sbyte v2, sbyte v3, sbyte[,] f, int bin)
+        {
+            return i switch
+            {
+                0 => new Vector2F(x0, y0),
+                2 => new Vector2F(x1, y0),
+                4 => new Vector2F(x1, y1),
+                6 => new Vector2F(x0, y1),
+                1 => new Vector2F(Xlerp(x0, x1, y0, v0, v1, f, bin), y0),
+                5 => new Vector2F(Xlerp(x0, x1, y1, v3, v2, f, bin), y1),
+                3 => new Vector2F(x1, Ylerp(y0, y1, x1, v1, v2, f, bin)),
+                _ => new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin))
+            };
         }
 
 
