@@ -29,8 +29,6 @@
 
 namespace Alis.Benchmark.InterfaceVsAbstract.Instancies
 {
-// Interface definition
-
     /// <summary>
     ///     The shape class
     /// </summary>
@@ -42,6 +40,4 @@ namespace Alis.Benchmark.InterfaceVsAbstract.Instancies
         /// <returns>The float</returns>
         public abstract float GetArea();
     }
-
-// Concrete implementations
 }
