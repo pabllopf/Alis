@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <summary>
         ///     Gets or sets the width of the client area of the window, in screen coordinates.
         /// </summary>
-        /// <exception cref="Exception">Thrown when specified value is less than 1.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when specified value is less than 1.</exception>
         public int ClientWidth
         {
             get
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.Glfw
             {
                 if (value < 1)
                 {
-                    throw new Exception("Window width muts be greater than 0.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "Window width must be greater than 0.");
                 }
 
                 GlfwNative.GetWindowSize(Window, out _, out int height);
