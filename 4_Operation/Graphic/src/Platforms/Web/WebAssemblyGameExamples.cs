@@ -225,7 +225,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             if (context.IsKeyDown(ConsoleKey.S))
             {
-                // TODO: implement
+                // Move backward placeholder
             }
             if (context.IsKeyDown(ConsoleKey.A))
             {
