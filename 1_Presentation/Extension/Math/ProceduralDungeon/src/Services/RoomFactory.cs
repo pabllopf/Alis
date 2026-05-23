@@ -97,7 +97,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <param name="isBossRoom">Indicates whether this is a boss room.</param>
         /// <returns>A room data instance.</returns>
         
-        private RoomData CreateRoomFromCorridor(int width, int height, CorridorData corridor, bool isBossRoom)
+        private static RoomData CreateRoomFromCorridor(int width, int height, CorridorData corridor, bool isBossRoom)
         {
             int xPos, yPos, roomWidth, roomHeight;
             Direction direction = corridor.Direction;
