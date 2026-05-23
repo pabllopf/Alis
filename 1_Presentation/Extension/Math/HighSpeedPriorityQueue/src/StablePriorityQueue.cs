@@ -360,7 +360,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="childRightIndex">The child right index</param>
         /// <returns>The int</returns>
         
-        private int GetHigherPriorityChildIndex(T childLeft, T childRight, int childLeftIndex, int childRightIndex)
+        private static int GetHigherPriorityChildIndex(T childLeft, T childRight, int childLeftIndex, int childRightIndex)
         {
             if (childRight == null)
             {
