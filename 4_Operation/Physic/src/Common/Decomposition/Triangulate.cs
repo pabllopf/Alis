@@ -59,10 +59,7 @@ namespace Alis.Core.Physic.Common.Decomposition
             switch (algorithm)
             {
                 case TriangulationAlgorithm.Earclip:
-                    if (skipSanityChecks)
-                    {
-                    }
-                    else if (vertices.IsCounterClockWise())
+                    if (!skipSanityChecks && vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
                         temp.Reverse();
