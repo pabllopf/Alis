@@ -37,8 +37,10 @@ using Alis.Core.Ecs.Collections;
 namespace Alis.Benchmark.CustomCollections.Stacks.Elements
 {
     /// <summary>
-    ///     The fastest stack class
+    ///     A high-performance stack implementation supporting generic types, enumeration, and memory management.
     /// </summary>
+    /// <seealso cref="ICollection" />
+    /// <seealso cref="IReadOnlyCollection{T}" />
     /// <seealso cref="ICollection" />
     /// <seealso cref="IReadOnlyCollection{T}" />
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -46,41 +48,41 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         IReadOnlyCollection<T>, IDisposable
     {
         /// <summary>
-        ///     The array
+        ///     The underlying array used to store stack elements.
         /// </summary>
         private T[] _array;
 
         /// <summary>
-        ///     The size
+        ///     The number of elements currently in the stack.
         /// </summary>
         private int _size;
 
         /// <summary>
-        ///     The version
+        ///     The version number for enumerator invalidation support.
         /// </summary>
         private int _version;
 
         /// <summary>
-        ///     The default capacity
+        ///     The default initial capacity of the stack.
         /// </summary>
         private const int DefaultCapacity = 32;
 
         /// <summary>
-        ///     The max array length
+        ///     The maximum allowable array length to prevent overflow.
         /// </summary>
         private const int MaxArrayLength = 0X7FEFFFFF;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FastestStack{T}" /> class
+        ///     Initializes a new instance of the <see cref="FastestStack{T}" /> struct with an empty array.
         /// </summary>
         public FastestStack() => _array = Array.Empty<T>();
 
         // Create a stack with a specific initial capacity.  The initial capacity
         // must be a non-negative number.
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FastestStack{T}" /> class
+        ///     Initializes a new instance of the <see cref="FastestStack{T}" /> struct with the specified initial capacity.
         /// </summary>
-        /// <param name="capacity">The capacity</param>
+        /// <param name="capacity">The initial number of elements the stack can hold.</param>
         public FastestStack(int capacity)
         {
             if (capacity < 0)
@@ -100,9 +102,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         // Fills a Stack with the contents of a particular collection.  The items are
         // pushed onto the stack in the same order they are read by the enumerator.
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FastestStack{T}" /> class
+        ///     Initializes a new instance of the <see cref="FastestStack{T}" /> struct containing elements from the specified collection.
         /// </summary>
-        /// <param name="collection">The collection</param>
+        /// <param name="collection">The collection whose elements are added to the new stack.</param>
         public FastestStack(IEnumerable<T> collection)
         {
             if (collection == null)
@@ -114,13 +116,13 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         }
 
         /// <summary>
-        ///     Gets the value of the count
+        ///     Gets the number of elements contained in the stack.
         /// </summary>
         public int Count => _size;
 
 
         /// <summary>
-        ///     Gets the total numbers of elements the internal data structure can hold without resizing.
+        ///     Gets the total number of elements the internal data structure can hold without resizing.
         /// </summary>
         public int Capacity => _array.Length;
 
@@ -128,18 +130,18 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         bool ICollection.IsSynchronized => false;
 
         /// <summary>
-        ///     Gets the value of the sync root
+        ///     Gets an object that can be used to synchronize access to the stack.
         /// </summary>
         object ICollection.SyncRoot => this;
 
         /// <summary>
-        ///     Gets the value of the any
+        ///     Gets a value indicating whether the stack contains any elements.
         /// </summary>
         public bool Any => _size > 0;
 
         // Removes all Objects from the Stack.
         /// <summary>
-        ///     Clears this instance
+        ///     Removes all elements from the stack.
         /// </summary>
         public void Clear()
         {
@@ -154,20 +156,20 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         }
 
         /// <summary>
-        ///     Containses the item
+        ///     Determines whether the stack contains a specific element.
         /// </summary>
-        /// <param name="item">The item</param>
-        /// <returns>The bool</returns>
+        /// <param name="item">The element to locate in the stack.</param>
+        /// <returns>true if the stack contains the element; otherwise, false.</returns>
         public bool Contains(T item) => (_size != 0) && (Array.LastIndexOf(_array, item, _size - 1) != -1);
 
         // Copies the stack into an array.
         /// <summary>
-        ///     Copies the to using the specified array
+        ///     Copies the stack elements to a one-dimensional <see cref="Array"/> instance at the specified index.
         /// </summary>
-        /// <param name="array">The array</param>
-        /// <param name="arrayIndex">The array index</param>
-        /// <exception cref="ArgumentOutOfRangeException">ArgumentOutOfRange_NeedNonNegNum</exception>
-        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
+        /// <param name="array">The one-dimensional <see cref="Array"/> that is the destination of the <see cref="ValueTuple{T1, T2}"/> values copied from the stack.</param>
+        /// <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="arrayIndex"/> is negative or beyond the end of the array.</exception>
+        /// <exception cref="ArgumentException">Thrown when there are more elements in the stack than the available space from <paramref name="arrayIndex"/> to the end of the destination array.</exception>
         public void CopyTo(T[] array, int arrayIndex)
         {
             if (array == null)
@@ -194,15 +196,13 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         }
 
         /// <summary>
-        ///     Copies the to using the specified array
+        ///     Copies the stack elements to a one-dimensional <see cref="Array"/> at the specified index.
         /// </summary>
-        /// <param name="array">The array</param>
-        /// <param name="arrayIndex">The array index</param>
-        /// <exception cref="ArgumentException">Arg_NonZeroLowerBound </exception>
-        /// <exception cref="ArgumentException">Arg_RankMultiDimNotSupported </exception>
-        /// <exception cref="ArgumentOutOfRangeException">ArgumentOutOfRange_NeedNonNegNum</exception>
-        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
-        /// <exception cref="ArgumentException">Invalid array type</exception>
+        /// <param name="array">The one-dimensional <see cref="Array"/> that is the destination of the values copied from the stack.</param>
+        /// <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
+        /// <exception cref="ArgumentException">Thrown when the destination array has more than one dimension or has a lower bound other than zero.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="arrayIndex"/> is negative or beyond the end of the destination array.</exception>
+        /// <exception cref="ArgumentException">Thrown when there are more elements in the stack than the available space, or when the element type is incompatible with the destination array.</exception>
         void ICollection.CopyTo(Array array, int arrayIndex)
         {
             if (array == null)
@@ -243,26 +243,26 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
 
         // Returns an IEnumerator for this Stack.
         /// <summary>
-        ///     Gets the enumerator
+        ///     Returns an enumerator that iterates through the stack.
         /// </summary>
-        /// <returns>The enumerator</returns>
+        /// <returns>An enumerator for the stack.</returns>
         public Enumerator GetEnumerator() => new Enumerator(this);
 
 
         /// <summary>
-        ///     Gets the enumerator
+        ///     Returns an enumerator that iterates through the stack.
         /// </summary>
-        /// <returns>An enumerator of t</returns>
+        /// <returns>An enumerator for the stack.</returns>
         IEnumerator<T> IEnumerable<T>.GetEnumerator() => Count == 0 ? EnumerableHelpers.GetEmptyEnumerator<T>() : GetEnumerator();
 
         /// <summary>
-        ///     Gets the enumerator
+        ///     Returns an enumerator that iterates through the stack.
         /// </summary>
-        /// <returns>The enumerator</returns>
+        /// <returns>An enumerator for the stack.</returns>
         IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable<T>) this).GetEnumerator();
 
         /// <summary>
-        ///     Trims the excess
+        ///     Sets the capacity to the actual number of elements in the stack, if that number is less than a threshold value.
         /// </summary>
         public void TrimExcess()
         {
@@ -301,9 +301,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         // Returns the top object on the stack without removing it.  If the stack
         // is empty, Peek throws an InvalidOperationException.
         /// <summary>
-        ///     Peeks this instance
+        ///     Returns the top element of the stack without removing it.
         /// </summary>
-        /// <returns>The</returns>
+        /// <returns>The element at the top of the stack.</returns>
         public T Peek()
         {
             int size = _size - 1;
@@ -318,10 +318,10 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         }
 
         /// <summary>
-        ///     Tries the peek using the specified result
+        ///     Returns the top element of the stack without removing it.
         /// </summary>
-        /// <param name="result">The result</param>
-        /// <returns>The bool</returns>
+        /// <param name="result">When this method returns, contains the object at the top of the stack, or the default value of the return type if the stack is empty.</param>
+        /// <returns>true if the element was successfully retrieved; false if the stack is empty.</returns>
         public bool TryPeek(out T result)
         {
             int size = _size - 1;
@@ -340,9 +340,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         // Pops an item from the top of the stack.  If the stack is empty, Pop
         // throws an InvalidOperationException.
         /// <summary>
-        ///     Pops this instance
+        ///     Removes and returns the top element from the stack.
         /// </summary>
-        /// <returns>The item</returns>
+        /// <returns>The element at the top of the stack.</returns>
         public T Pop()
         {
             int size = _size - 1;
@@ -368,10 +368,10 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         }
 
         /// <summary>
-        ///     Tries the pop using the specified result
+        ///     Removes and returns the top element from the stack.
         /// </summary>
-        /// <param name="result">The result</param>
-        /// <returns>The bool</returns>
+        /// <param name="result">When this method returns, contains the object at the top of the stack, or the default value of the return type if the stack is empty.</param>
+        /// <returns>true if the element was successfully removed and retrieved; false if the stack is empty.</returns>
         public bool TryPop(out T result)
         {
             int size = _size - 1;
@@ -396,9 +396,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
 
         // Pushes an item to the top of the stack.
         /// <summary>
-        ///     Pushes the item
+        ///     Inserts an element at the top of the stack.
         /// </summary>
-        /// <param name="item">The item</param>
+        /// <param name="item">The element to push onto the stack.</param>
         public void Push(T item)
         {
             int size = _size;
@@ -418,9 +418,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
 
         // Non-inline from Stack.Push to improve its code quality as uncommon path
         /// <summary>
-        ///     Pushes the with resize using the specified item
+        ///     Pushes an item onto the stack, resizing if necessary.
         /// </summary>
-        /// <param name="item">The item</param>
+        /// <param name="item">The item to push onto the stack.</param>
         [MethodImpl(MethodImplOptions.NoInlining)]
         private void PushWithResize(T item)
         {
