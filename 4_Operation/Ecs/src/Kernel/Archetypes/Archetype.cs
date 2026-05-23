@@ -726,7 +726,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The null
         /// </summary>
-        internal static readonly GameObjectType Null;
+        internal static readonly GameObjectType Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
 
         /// <summary>
         ///     The create
@@ -742,11 +742,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     The existing archetypes
         /// </summary>
         private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Archetype" /> class
-        /// </summary>
-        static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
 
         /// <summary>
         ///     Creates the new or get existing archetypes using the specified scene
