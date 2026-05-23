@@ -30,14 +30,13 @@
 namespace Alis.App.Hub
 {
     /// <summary>
-    ///     The program class
+    ///     Entry point for the Hub application. Initializes and runs the <see cref="HubEngine" /> host.
     /// </summary>
     internal static class Program
     {
         /// <summary>
-        ///     Main the args
+        ///     Application entry point. Creates and runs the Hub engine host application.
         /// </summary>
-        /// <param name="args">The args</param>
         public static void Main() => new HubEngine().Run();
     }
 }
