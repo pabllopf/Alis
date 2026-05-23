@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Common
         {
             if (yRadius > height / 2 || xRadius > width / 2)
             {
-                throw new ArgumentOutOfRangeException("Rounding amount can't be more than half the height and width respectively.");
+                throw new ArgumentOutOfRangeException(nameof(xRadius), "Rounding amount can't be more than half the height and width respectively.");
             }
 
             if (segments < 0)
