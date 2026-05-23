@@ -355,8 +355,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 float vX = vert.X * controllerTransform.Rotation.R - vert.Y * controllerTransform.Rotation.I + controllerTransform.Position.X;
                 float vY = vert.Y * controllerTransform.Rotation.R + vert.X * controllerTransform.Rotation.I + controllerTransform.Position.Y;
 
-                // OPT: Vector2F.Min(ref aabb.LowerBound, ref v, out aabb.LowerBound);
-                // OPT: Vector2F.Max(ref aabb.UpperBound, ref v, out aabb.UpperBound);
                 if (vX < aabb.LowerBound.X)
                 {
                     aabb.LowerBound.X = vX;
