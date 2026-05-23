@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <summary>
         ///     Gets the client height
         /// </summary>
-        /// <exception cref="Exception">Thrown when specified value is less than 1.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when specified value is less than 1.</exception>
         public int ClientHeight
         {
             get
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.Glfw
             {
                 if (value < 1)
                 {
-                    throw new Exception("Window height muts be greater than 0.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "Window height must be greater than 0.");
                 }
 
                 GlfwNative.GetWindowSize(Window, out int width, out _);
