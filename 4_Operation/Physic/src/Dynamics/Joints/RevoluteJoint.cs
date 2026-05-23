@@ -679,7 +679,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     SolveAtLower(ref impulse, ref cdot1, iA);
                     break;
                 case LimitState.AtUpper:
-                    SolveAtUpper(ref impulse, ref cdot1, iB);
+                    SolveAtUpper(ref impulse, ref cdot1);
                     break;
             }
 
@@ -710,7 +710,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
         }
 
-        private void SolveAtUpper(ref Vector3F impulse, ref Vector2F cdot1, float iB)
+        private void SolveAtUpper(ref Vector3F impulse, ref Vector2F cdot1)
         {
             float newImpulse = _impulse.Z + impulse.Z;
             if (newImpulse > 0.0f)
