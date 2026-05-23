@@ -71,6 +71,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         public void Save()
         {
+            // ScenesMap is an in-memory collection; persistence is handled by the engine's scene system.
         }
     }
 }
