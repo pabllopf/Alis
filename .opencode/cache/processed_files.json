@@ -1,0 +1,1022 @@
+{
+  "1_Presentation/Benchmark/src/ClassVsStruct/ClassVsStructBenchmark.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:00:00Z",
+    "last_processed_at": "2026-05-23T12:00:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/ClassVsStruct/Instancies/ClassPoint.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T10:23:54Z",
+    "last_processed_at": "2026-05-23T10:23:54Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/ClassVsStruct/Instancies/RecordPoint.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T10:24:34Z",
+    "last_processed_at": "2026-05-23T10:24:34Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/ClassVsStruct/Instancies/SealedClassPoint.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T10:24:34Z",
+    "last_processed_at": "2026-05-23T10:24:34Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/ClassVsStruct/Instancies/StructPoint.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T10:24:34Z",
+    "last_processed_at": "2026-05-23T10:24:34Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/ClassVsStruct/Instancies/StructRefPoint.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T10:24:34Z",
+    "last_processed_at": "2026-05-23T10:24:34Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomCollections/Arrays/FastArraySafe.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T10:24:34Z",
+    "last_processed_at": "2026-05-23T10:24:34Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  ".opencode/tools/XmlDocProcessor/Program.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:01:00Z",
+    "last_processed_at": "2026-05-23T12:01:00Z",
+    "modified": true,
+    "xml_added": 5,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: Program.cs add XML documentation for CacheEntry class and StringExtensions class"
+  },
+  "1_Presentation/Benchmark/src/CustomCollections/Arrays/FastestArray.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomCollections/Arrays/NativeArray.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomCollections/Arrays/NativeArrayUnsafeVsNativeArraySafe.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomCollections/Lists/ListsBenchmarks.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomCollections/Stacks/Elements/FastestStack.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomCollections/Stacks/Elements/PooledStack.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomCollections/Stacks/StacksBenchmarks.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomConfig.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/AlisEcsBenchmark.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component1.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component10.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component11.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component12.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component13.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component14.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component15.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component16.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component2.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component3.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component4.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component5.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component6.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component7.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component8.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Components/Component9.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/FrentEcsBenchmark.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomEcs/Setup.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomNeighborCache/AlisNeighborCacheBenchmark.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomNeighborCache/FrentNeighborCacheBenchmark.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/CustomNeighborCache/Setup.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/BenchmarkOperations.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Categories.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/ContextAttribute.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/AlisBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/ArchBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/DefaultEcsBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/FennecsBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/FlecsNetBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/FrentBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/FrifloEngineEcsContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/HypEcsBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/LeopotamEcsBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/LeopotamEcsLiteBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/MonoGameExtendedBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/MorpehBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/MyriadBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/RelEcsBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/Contexts/SveltoECSBaseContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/_CreateEntityWithOneComponent.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/AlisEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/Arch.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/DefaultEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/Fennecs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/FlecsNet.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/Frent.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/FrifloEngineEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/HypEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/LeopotamEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/LeopotamEcsLite.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/MonoGameExtended.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/Morpeh.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/Myriad.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/RelEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithOneComponent/SveltoECS.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/_CreateEntityWithThreeComponents.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/AlisEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/Arch.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/DefaultEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/Fennecs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/FlecsNet.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/Frent.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/FrifloEngineEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/HypEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/LeopotamEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/LeopotamEcsLite.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/MonoGameExtended.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/Morpeh.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/Myriad.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/RelEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithThreeComponents/SveltoECS.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/_CreateEntityWithTwoComponents.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/AlisEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/Arch.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/DefaultEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/Fennecs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/FlecsNet.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/Frent.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/FrifloEngineEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/HypEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/LeopotamEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/LeopotamEcsLite.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/MonoGameExtended.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/Morpeh.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/CreateEntityWithTwoComponents/Myriad.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  }
+}
