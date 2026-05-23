@@ -175,6 +175,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     }
                     else
                     {
+                        // TODO: Implement landscape orientation action placeholder
                     }
                 });
             }
