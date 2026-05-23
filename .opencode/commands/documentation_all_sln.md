@@ -270,3 +270,67 @@ Produce a fully documented enterprise-grade .NET repository with:
 - deterministic incremental commits
 - resumable cache-based execution
 - zero functional changes
+
+
+# GIT COMMIT RULE (HARD ENFORCED OUTPUT CONTRACT)
+
+If and ONLY if the file is modified == true, you MUST create exactly one git commit.
+
+The commit message is NOT optional and MUST strictly follow this format:
+
+docs: <exact_file_name>.cs <concise_technical_description>
+
+---
+
+## STRICT COMMIT FORMAT RULE
+
+You MUST NOT:
+
+- omit the filename
+- shorten or alias filename
+- change extension
+- remove ".cs"
+- reorder words before filename
+- add punctuation at start
+- add emojis or symbols
+- output multiple commits
+- add explanations
+- wrap commit in markdown unless explicitly required by tool
+
+---
+
+## VALID EXAMPLE
+
+docs: UserService.cs add XML documentation for authentication methods
+
+docs: InvoiceRepository.cs document query methods and return types
+
+---
+
+## INVALID EXAMPLES (FORBIDDEN)
+
+- docs: add XML docs to UserService
+- UserService.cs: docs added
+- docs: UserService add docs
+- commit: docs UserService.cs updated
+- any multiline commit message
+
+---
+
+# COMMIT EXECUTION CONTRACT (CRITICAL)
+
+When a file is modified:
+
+1. Cache MUST be updated first
+2. Then git commit MUST be executed
+3. Then execution MUST immediately continue
+
+Failure to produce a commit in correct format is a HARD FAILURE and invalidates the run.
+
+---
+
+# OUTPUT IS NOT FREE TEXT
+
+The commit message is a deterministic machine instruction, NOT a natural language summary.
+
+It must be treated as a structured output field.
