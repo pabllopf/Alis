@@ -477,7 +477,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 Vertices[i1].Y * (1 - lambda) + Vertices[i2].Y * lambda);
         }
 
-        private void AddTriangle(ref float area, ref Vector2F center, Vector2F intoVec, Vector2F p2, Vector2F p3, float kInv3)
+        private static void AddTriangle(ref float area, ref Vector2F center, Vector2F intoVec, Vector2F p2, Vector2F p3, float kInv3)
         {
             Vector2F e1 = p2 - intoVec;
             Vector2F e2 = p3 - intoVec;
