@@ -233,7 +233,7 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
             if (context.IsKeyDown(ConsoleKey.D))
             {
-                // TODO: implement
+                // Move right placeholder
             }
         }
 
