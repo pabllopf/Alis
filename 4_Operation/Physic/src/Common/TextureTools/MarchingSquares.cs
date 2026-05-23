@@ -289,8 +289,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                         u.GeomP.Length++;
                     }
 
-                    //u.p.simplify(float.Epsilon,float.Epsilon);
-                    //
                     ax = x + 1;
                     while (ax < xn)
                     {
@@ -323,7 +321,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                     p.GeomP = u.GeomP;
 
                     x = (int) ((bi.NextPos().GetElem().X - domain.LowerBound.X) / cellWidth) + 1;
-                    //x++; this was already commented out!
                 }
             }
 
@@ -524,7 +521,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                         poly.Length++;
                     }
                 }
-                //poly.simplify(float.Epsilon,float.Epsilon);
             }
 
             return key;
@@ -598,9 +594,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     {
                         Vector2F a00 = preb.GetElem();
                         Vector2F uu = a1 - a00;
-                        //vec_new(u); vec_sub(a1.p, a0.p, u);
                         Vector2F vv = a2 - a1;
-                        //vec_new(v); vec_sub(a2.p, a1.p, v);
                         float dot1 = VecCross(uu, vv);
                         if (dot1 * dot1 < SettingEnv.Epsilon)
                         {
@@ -610,7 +604,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     }
                     else
                     {
-                        throw new Exception("preb is null");
+                        throw new InvalidOperationException("preb is null");
                     }
 
                     return;
