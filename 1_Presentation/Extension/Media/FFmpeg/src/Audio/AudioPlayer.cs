@@ -83,6 +83,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 }
                 catch
                 {
+                    // Swallow exception during cleanup; Kill() may throw if process already exited.
                 }
             }
 
