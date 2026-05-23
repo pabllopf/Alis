@@ -251,7 +251,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 RegisterKeyboardCallbacksNative(onKeyDownCallback, onKeyUpCallback, onCharInputCallback);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -269,7 +273,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 RegisterMouseCallbacksNative(onMouseMoveCallback, onMouseDownCallback, onMouseUpCallback, onMouseWheelCallback);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -285,7 +293,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 RegisterGamepadCallbacksNative(onGamepadConnectCallback, onGamepadDisconnectCallback);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -302,7 +314,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 RegisterWindowCallbacksNative(onWindowResizeCallback, onWindowCloseCallback, onWindowFocusCallback);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -406,7 +422,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 ShowCanvasNative();
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -420,7 +440,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 HideCanvasNative();
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -434,7 +458,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 SetWindowTitleNative(title);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -448,7 +476,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 SetCanvasSizeNative(width, height);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -462,7 +494,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 SetWindowIconNative(iconPath);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -713,7 +749,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 ShowAlertNative(message);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -854,7 +894,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 ConsoleLogNative(message);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -868,7 +912,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 ConsoleWarnNative(message);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -882,7 +930,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 ConsoleErrorNative(message);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
     }
