@@ -114,97 +114,125 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             while (vNum > 3)
             {
-                // Find an ear
-                int earIndex = -1;
-                float earMaxMinCross = -10.0f;
-                for (int i = 0; i < vNum; ++i)
-                {
-                    if (IsEar(i, xrem, yrem, vNum))
-                    {
-                        int lower = Remainder(i - 1, vNum);
-                        int upper = Remainder(i + 1, vNum);
-                        Vector2F d1 = new Vector2F(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
-                        Vector2F d2 = new Vector2F(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
-                        Vector2F d3 = new Vector2F(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
+                int earIndex = FindEar(vNum, xrem, yrem);
 
-                        d1.Normalize();
-                        d2.Normalize();
-                        d3.Normalize();
-                        MathUtils.Cross(ref d1, ref d2, out float cross12);
-                        cross12 = Math.Abs(cross12);
-
-                        MathUtils.Cross(ref d2, ref d3, out float cross23);
-                        cross23 = Math.Abs(cross23);
-
-                        MathUtils.Cross(ref d3, ref d1, out float cross31);
-                        cross31 = Math.Abs(cross31);
-
-                        //Find the maximum minimum angle
-                        float minCross = Math.Min(cross12, Math.Min(cross23, cross31));
-                        if (minCross > earMaxMinCross)
-                        {
-                            earIndex = i;
-                            earMaxMinCross = minCross;
-                        }
-                    }
-                }
-
-                // If we still haven't found an ear, we're screwed.
-                // Note: sometimes this is happening because the
-                // remaining points are collinear.  Really these
-                // should just be thrown out without halting triangulation.
                 if (earIndex == -1)
                 {
-                    for (int i = 0; i < bufferSize; i++)
-                    {
-                        results.Add(buffer[i]);
-                    }
-
+                    AddBufferToResults(buffer, bufferSize, results);
                     return results;
                 }
 
-                // Clip off the ear:
-                // - remove the ear tip from the list
+                vNum = ClipEar(earIndex, ref vNum, ref xrem, ref yrem, buffer, ref bufferSize);
+            }
 
-                --vNum;
-                float[] newx = new float[vNum];
-                float[] newy = new float[vNum];
-                int currDest = 0;
-                for (int i = 0; i < vNum; ++i)
+            AddFinalTriangle(xrem, yrem, buffer, ref bufferSize);
+            AddBufferToResults(buffer, bufferSize, results);
+
+            return results;
+        }
+
+        /// <summary>
+        ///     Finds the best ear vertex in the polygon
+        /// </summary>
+        private static int FindEar(int vNum, float[] xrem, float[] yrem)
+        {
+            int earIndex = -1;
+            float earMaxMinCross = -10.0f;
+
+            for (int i = 0; i < vNum; ++i)
+            {
+                if (IsEar(i, xrem, yrem, vNum))
                 {
-                    if (currDest == earIndex)
+                    float score = CalculateEarScore(i, xrem, yrem, vNum);
+                    if (score > earMaxMinCross)
                     {
-                        ++currDest;
+                        earIndex = i;
+                        earMaxMinCross = score;
                     }
+                }
+            }
 
-                    newx[i] = xrem[currDest];
-                    newy[i] = yrem[currDest];
+            return earIndex;
+        }
+
+        /// <summary>
+        ///     Calculates the score for an ear candidate based on minimum angle
+        /// </summary>
+        private static float CalculateEarScore(int i, float[] xrem, float[] yrem, int vNum)
+        {
+            int lower = Remainder(i - 1, vNum);
+            int upper = Remainder(i + 1, vNum);
+            Vector2F d1 = new Vector2F(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
+            Vector2F d2 = new Vector2F(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
+            Vector2F d3 = new Vector2F(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
+
+            d1.Normalize();
+            d2.Normalize();
+            d3.Normalize();
+            MathUtils.Cross(ref d1, ref d2, out float cross12);
+            cross12 = Math.Abs(cross12);
+
+            MathUtils.Cross(ref d2, ref d3, out float cross23);
+            cross23 = Math.Abs(cross23);
+
+            MathUtils.Cross(ref d3, ref d1, out float cross31);
+            cross31 = Math.Abs(cross31);
+
+            return Math.Min(cross12, Math.Min(cross23, cross31));
+        }
+
+        /// <summary>
+        ///     Clips off an ear and updates the vertex arrays
+        /// </summary>
+        private static int ClipEar(int earIndex, ref int vNum, ref float[] xrem, ref float[] yrem, Vertices[] buffer, ref int bufferSize)
+        {
+            --vNum;
+            float[] newx = new float[vNum];
+            float[] newy = new float[vNum];
+            int currDest = 0;
+            for (int i = 0; i < vNum; ++i)
+            {
+                if (currDest == earIndex)
+                {
                     ++currDest;
                 }
 
-                // - add the clipped triangle to the triangle list
-                int under = earIndex == 0 ? vNum : earIndex - 1;
-                int over = earIndex == vNum ? 0 : earIndex + 1;
-                Triangle toAdd = new Triangle(xrem[earIndex], yrem[earIndex], xrem[over], yrem[over], xrem[under],
-                    yrem[under]);
-                buffer[bufferSize] = toAdd;
-                ++bufferSize;
-
-                // - replace the old list with the new one
-                xrem = newx;
-                yrem = newy;
+                newx[i] = xrem[currDest];
+                newy[i] = yrem[currDest];
+                ++currDest;
             }
 
+            int under = earIndex == 0 ? vNum : earIndex - 1;
+            int over = earIndex == vNum ? 0 : earIndex + 1;
+            Triangle toAdd = new Triangle(xrem[earIndex], yrem[earIndex], xrem[over], yrem[over], xrem[under], yrem[under]);
+            buffer[bufferSize] = toAdd;
+            ++bufferSize;
+
+            xrem = newx;
+            yrem = newy;
+
+            return vNum;
+        }
+
+        /// <summary>
+        ///     Adds the buffer contents to results
+        /// </summary>
+        private static void AddBufferToResults(Vertices[] buffer, int bufferSize, List<Vertices> results)
+        {
+            for (int i = 0; i < bufferSize; i++)
+            {
+                results.Add(buffer[i]);
+            }
+        }
+
+        /// <summary>
+        ///     Adds the final triangle to the buffer
+        /// </summary>
+        private static void AddFinalTriangle(float[] xrem, float[] yrem, Vertices[] buffer, ref int bufferSize)
+        {
             Triangle tooAdd = new Triangle(xrem[1], yrem[1], xrem[2], yrem[2], xrem[0], yrem[0]);
             buffer[bufferSize] = tooAdd;
             ++bufferSize;
-
-            for (int i = 0; i < bufferSize; i++)
-            {
-                results.Add(new Vertices(buffer[i]));
-            }
-
-            return results;
         }
 
         /// <summary>
