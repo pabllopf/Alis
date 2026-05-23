@@ -50,12 +50,12 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
         public IntPtr Format { get; set; }
 
         /// <summary>
-        ///     The
+        ///     The width
         /// </summary>
         public readonly int w;
 
         /// <summary>
-        ///     The
+        ///     The height
         /// </summary>
         public readonly int h;
 
