@@ -1880,5 +1880,1185 @@
     "xml_updated": 0,
     "comments_removed": 0,
     "commit": null
+  },
+  "1_Presentation/Engine/src/Demos/IconDemo.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Demos/IDemo.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Demos/ImGuiDemo.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Demos/ImGuizmoDemo.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Demos/ImNodeDemo.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Demos/ImPlotDemo.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Engine.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Entity/Project.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Fonts/HackFont.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Fonts/IFont.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Fonts/JetbrainFont.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Fonts/SegoeIcon.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Icons/FolderIcon.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Icons/IIcon.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Menus/BottomMenu.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Menus/DockSpaceMenu.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Menus/IMenu.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Menus/TopMenu.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Menus/TopMenuAction.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Menus/TopMenuMac.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Program.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Shaders/FragmentShader.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Shaders/IShader.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Shaders/VertexShader.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Shortcut/Shortcuts.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Windows/ActiveButton.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Windows/AssetsWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Windows/AudioPlayerWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Windows/ConsoleWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Windows/GameWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Windows/InspectorWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Windows/IWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Windows/ProjectWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Windows/SceneWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Windows/Settings/SettingsWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/src/Windows/SolutionWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/test/DefaultTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/test/EngineMenuComprehensiveTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Engine/test/EngineSurfaceComprehensiveTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Ads/GoogleAds/sample/GameStateExample.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Ads/GoogleAds/sample/Program.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Ads/GoogleAds/src/AdConfiguration.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Ads/GoogleAds/src/AdRewardEventArgs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Ads/GoogleAds/src/AdsManager.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Ads/GoogleAds/src/IAdsManager.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Ads/GoogleAds/test/AdvancedAdsManagerTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Ads/GoogleAds/test/DummyTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/DropBox/sample/Program.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/DropBox/src/ICloudManager.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/DropBox/test/DropBoxCloudManagerIntegrationTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/DropBox/test/DropBoxCloudManagerTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/GoogleDrive/sample/Program.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/GoogleDrive/src/ICloudManager.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/GoogleDrive/test/CloudFileMetadataTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/GoogleDrive/test/DummyTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/GoogleDrive/test/GoogleDriveCloudManagerIntegrationTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Cloud/GoogleDrive/test/GoogleDriveCloudManagerTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/sample/CubeSample.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/sample/Program.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/sample/RenderSquareUnfilled.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/sample/TextureSampleCustomBmp.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/sample/TriangleSample.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/CharCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/CharEventArgs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/CharModsCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/ContentScaleEventArgs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": true,
+    "xml_added": 0,
+    "xml_updated": 1,
+    "comments_removed": 0,
+    "commit": "d742e1f48"
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/ClientApi.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/ConnectionStatus.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/Constants.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/ContextApi.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/ContextAttributes.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/CursorMode.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/CursorType.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/ErrorCode.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/GamePadAxis.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/GamePadButton.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/GlfwProfile.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/Hat.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/Hint.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/InputMode.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/InputState.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/Joystick.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/Keys.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/ModifierKeys.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": true,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 1,
+    "commit": "f5711dac0"
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/MouseButton.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/ReleaseBehavior.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/Robustness.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Enums/WindowAttribute.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/ErrorCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/FileDropCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/FileDropEventArgs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/FocusCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/IconifyCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/JoystickCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/KeyCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/KeyEventArgs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/MaximizeEventArgs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/MonitorCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/MouseButtonCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/MouseButtonEventArgs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/MouseCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/MouseEnterCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/MouseMoveEventArgs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/PositionCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/SizeCallback.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/SizeChangeEventArgs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Structs/Cursor.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Structs/EGLContext.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Structs/EGLDisplay.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": true,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 1,
+    "commit": "26ea2e697"
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Structs/EGLSurface.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Structs/GamePadState.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Structs/GammaRamp.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "1_Presentation/Extension/Graphic/Glfw/src/Structs/GammaRampInternal.cs": {
+    "status": "completed",
+    "first_read_at": "2026-05-23T12:02:00Z",
+    "last_processed_at": "2026-05-23T12:02:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
   }
 }
