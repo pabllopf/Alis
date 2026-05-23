@@ -84,7 +84,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
 
             if (string.IsNullOrEmpty(filename))
             {
-                throw new NullReferenceException("Filename can't be null or empty!");
+                throw new ArgumentException("Filename can't be null or empty!", nameof(filename));
             }
 
             UseFilename = true;
@@ -127,7 +127,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
             BitDepth = bitDepth;
             SampleRate = sampleRate;
 
-            DestinationStream = destinationStream ?? throw new NullReferenceException("Stream can't be null!");
+            DestinationStream = destinationStream ?? throw new ArgumentNullException(nameof(destinationStream), "Stream can't be null!");
             EncoderOptions = encoderOptions ?? new Mp3Encoder().Create();
         }
 
