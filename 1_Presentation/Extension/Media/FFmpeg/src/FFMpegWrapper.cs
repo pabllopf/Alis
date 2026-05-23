@@ -277,7 +277,7 @@ namespace Alis.Extension.Media.FFmpeg
             MatchCollection mtc = CodecRegex.Matches(output);
             return mtc.Cast<Match>().ToDictionary(
                 m => m.Groups["codec"].Value,
-                m => (m.Groups["description"].Value, m.Groups["type"].Value[0] == 'A' ? MediaType.Audio : m.Groups["type"].Value[0] == 'V' ? MediaType.Video : MediaType.Subtitle));
+                m => (m.Groups["description"].Value, GetMediaTypeFromTypeChar(m.Groups["type"].Value[0])));
         }
 
         /// <summary>
