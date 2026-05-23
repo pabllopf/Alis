@@ -30,32 +30,34 @@
 namespace Alis.App.Hub.Core
 {
     /// <summary>
-    ///     The runtime interface
+    ///     Defines the lifecycle contract for runtime components within the Hub application.
+    ///     Implementors must manage initialization, rendering, and cleanup of UI or engine resources.
     /// </summary>
     public interface IRuntime
     {
         /// <summary>
-        ///     Ons the init
+        ///     Performs one-time resource allocation and setup before the main loop begins.
         /// </summary>
         void OnInit();
 
         /// <summary>
-        ///     Ons the start
+        ///     Activates the component and prepares it for interaction after initialization completes.
         /// </summary>
         void OnStart();
 
         /// <summary>
-        ///     Ons the update
+        ///     Updates component state each frame, handling logic independent of rendering.
         /// </summary>
         void OnUpdate();
 
         /// <summary>
-        ///     Ons the render
+        ///     Renders the component's visual representation at the given scale factor.
         /// </summary>
+        /// <param name="scale">The DPI-aware scale factor for rendering.</param>
         void OnRender(float scale);
 
         /// <summary>
-        ///     Ons the destroy
+        ///     Releases all resources and performs cleanup when the component is destroyed.
         /// </summary>
         void OnDestroy();
     }
