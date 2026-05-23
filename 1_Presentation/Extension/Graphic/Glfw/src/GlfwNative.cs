@@ -1997,10 +1997,10 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="code">The code</param>
         /// <param name="message">The message</param>
-        /// <exception cref="Exception"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
         private static void GlfwError(ErrorCode code, IntPtr message)
         {
-            throw new Exception(Util.PtrToStringUTF8(message));
+            throw new InvalidOperationException(Util.PtrToStringUTF8(message));
         }
     }
 }
