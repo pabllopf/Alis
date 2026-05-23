@@ -239,7 +239,7 @@ namespace Alis.Extension.Language.Dialogue
 
             DialogOption option = dialog.Options[optionIndex];
 
-            if ((option.Conditions.Count > 0) && !_conditionEvaluator.EvaluateAll(option.Conditions, _currentContext))
+            if ((option.Conditions.Count > 0) && !DialogConditionEvaluator.EvaluateAll(option.Conditions, _currentContext))
             {
                 return;
             }
@@ -276,7 +276,7 @@ namespace Alis.Extension.Language.Dialogue
             List<DialogOption> availableOptions = new List<DialogOption>();
             foreach (DialogOption option in dialog.Options)
             {
-                if (option.Conditions.Count == 0 || _conditionEvaluator.EvaluateAll(option.Conditions, _currentContext))
+                if (option.Conditions.Count == 0 || DialogConditionEvaluator.EvaluateAll(option.Conditions, _currentContext))
                 {
                     availableOptions.Add(option);
                 }
