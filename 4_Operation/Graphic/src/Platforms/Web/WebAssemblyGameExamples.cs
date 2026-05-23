@@ -504,7 +504,7 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                     {
 
-                        // TODO: handle attack action
+                        // Attack action placeholder
 
                     }
 
