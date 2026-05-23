@@ -44,12 +44,12 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
         public uint format;
 
         /// <summary>
-        ///     The
+        ///     The width
         /// </summary>
         public int w;
 
         /// <summary>
-        ///     The
+        ///     The height
         /// </summary>
         public int h;
 

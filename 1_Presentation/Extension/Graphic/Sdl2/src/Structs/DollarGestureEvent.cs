@@ -68,12 +68,12 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
         public float error;
 
         /// <summary>
-        ///     The
+        ///     The x coordinate
         /// </summary>
         public float x;
 
         /// <summary>
-        ///     The
+        ///     The y coordinate
         /// </summary>
         public float y;
     }
