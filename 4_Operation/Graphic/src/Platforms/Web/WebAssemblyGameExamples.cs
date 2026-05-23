@@ -77,7 +77,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     float wheelDelta = context.InputManager.GetMouseWheelDelta();
                     if (wheelDelta != 0)
                     {
-                        // TODO: implement
+                        // Zoom handling placeholder
                     }
                 });
             }
