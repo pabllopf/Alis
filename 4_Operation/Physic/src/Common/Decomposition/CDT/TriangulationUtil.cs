@@ -103,39 +103,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
 
             return det > 0;
         }
-        /*
-        public static bool InScanArea(TriangulationPoint pa, TriangulationPoint pb, TriangulationPoint pc,
-                                      TriangulationPoint pd)
-        {
-            double pdx = pd.X;
-            double pdy = pd.Y;
-            double adx = pa.X - pdx;
-            double ady = pa.Y - pdy;
-            double bdx = pb.X - pdx;
-            double bdy = pb.Y - pdy;
-
-            double adxbdy = adx*bdy;
-            double bdxady = bdx*ady;
-            double oabd = adxbdy - bdxady;
-            if (oabd <= 0)
-            {
-                return false;
-            }
-
-            double cdx = pc.X - pdx;
-            double cdy = pc.Y - pdy;
-
-            double cdxady = cdx*ady;
-            double adxcdy = adx*cdy;
-            double ocad = cdxady - adxcdy;
-            if (ocad <= 0)
-            {
-                return false;
-            }
-            return true;
-        }
-        */
-
         /// <summary>
         ///     Describes whether in scan area
         /// </summary>
