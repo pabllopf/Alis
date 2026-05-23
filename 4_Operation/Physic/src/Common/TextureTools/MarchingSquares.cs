@@ -536,77 +536,84 @@ namespace Alis.Core.Physic.Common.TextureTools
 
             Vector2F b = bi.GetElem();
             CxFastListNode<Vector2F> prea = null;
+
             while (ai != ap.End())
             {
                 Vector2F a = ai.GetElem();
                 if (VecDsq(a, b) < SettingEnv.Epsilon)
                 {
-                    //ignore shared vertex if parallel
-                    if (prea != null)
-                    {
-                        Vector2F a0 = prea.GetElem();
-                        b = bi.NextPos().GetElem();
-
-                        Vector2F u = a - a0;
-                        Vector2F v = b - a;
-                        float dot = VecCross(u, v);
-                        if (dot * dot < SettingEnv.Epsilon)
-                        {
-                            ap.Erase(prea, ai);
-                            polya.Length--;
-                            ai = prea;
-                        }
-                    }
-
-                    //insert polyb into polya
-                    bool fst = true;
-                    CxFastListNode<Vector2F> preb = null;
-                    while (!bp.Empty())
-                    {
-                        Vector2F bb = bp.Front();
-                        bp.Pop();
-                        if (!fst && !bp.Empty())
-                        {
-                            ai = ap.Insert(ai, bb);
-                            polya.Length++;
-                            preb = ai;
-                        }
-
-                        fst = false;
-                    }
-
-                    //ignore shared vertex if parallel
-                    ai = ai.NextPos();
-                    Vector2F a1 = ai.GetElem();
-                    ai = ai.NextPos();
-                    if (ai == ap.End())
-                    {
-                        ai = ap.Begin();
-                    }
-
-                    Vector2F a2 = ai.GetElem();
-                    if (preb != null)
-                    {
-                        Vector2F a00 = preb.GetElem();
-                        Vector2F uu = a1 - a00;
-                        Vector2F vv = a2 - a1;
-                        float dot1 = VecCross(uu, vv);
-                        if (dot1 * dot1 < SettingEnv.Epsilon)
-                        {
-                            ap.Erase(preb, preb.NextPos());
-                            polya.Length--;
-                        }
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("preb is null");
-                    }
-
+                    InsertPolyIntoPoly(ref ap, ref polya, ref bp, ref ai);
+                    RemoveParallelVerticesAfterInsertion(ref ap, ref polya, ai);
                     return;
                 }
 
                 prea = ai;
                 ai = ai.NextPos();
+            }
+        }
+
+        /// <summary>
+        ///     Inserts polyb into polya at the current position
+        /// </summary>
+        private static void InsertPolyIntoPoly(ref CxFastList<Vector2F> ap, ref GeomPoly polya, ref CxFastList<Vector2F> bp, ref CxFastListNode<Vector2F> ai)
+        {
+            bool fst = true;
+            CxFastListNode<Vector2F> preb = null;
+
+            while (!bp.Empty())
+            {
+                Vector2F bb = bp.Front();
+                bp.Pop();
+                if (!fst && !bp.Empty())
+                {
+                    ai = ap.Insert(ai, bb);
+                    polya.Length++;
+                    preb = ai;
+                }
+
+                fst = false;
+            }
+        }
+
+        /// <summary>
+        ///     Removes parallel vertices after insertion
+        /// </summary>
+        private static void RemoveParallelVerticesAfterInsertion(ref CxFastList<Vector2F> ap, ref GeomPoly polya, CxFastListNode<Vector2F> ai)
+        {
+            Vector2F a1 = ai.GetElem();
+            ai = ai.NextPos();
+            if (ai == ap.End())
+            {
+                ai = ap.Begin();
+            }
+
+            Vector2F a2 = ai.GetElem();
+            CxFastListNode<Vector2F> preb = null;
+
+            // We need to find preb - the last inserted node
+            // For simplicity, we search backwards from ai
+            CxFastListNode<Vector2F> current = ap.Begin();
+            while (current != ap.End())
+            {
+                if (current.NextPos() == ai)
+                {
+                    preb = current;
+                    break;
+                }
+                current = current.NextPos();
+            }
+
+            if (preb != null)
+            {
+                Vector2F a00 = preb.GetElem();
+                Vector2F uu = a1 - a00;
+                Vector2F vv = a2 - a1;
+                float dot1 = VecCross(uu, vv);
+                if (dot1 * dot1 < SettingEnv.Epsilon)
+                {
+                    ap.Erase(preb, preb.NextPos());
+                    polya.Length--;
+                }
             }
         }
 
