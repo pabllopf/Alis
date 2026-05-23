@@ -863,10 +863,6 @@ namespace Alis.Core.Physic.Collisions
                 return;
             }
 
-            if (index == _root)
-            {
-            }
-
             //TreeNode<T>* node = &_nodes[index];
 
             int child1 = _nodes[index].Child1;
