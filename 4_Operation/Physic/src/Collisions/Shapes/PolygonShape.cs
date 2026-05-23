@@ -374,9 +374,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 }
             }
 
-            // OPT: Vector2F r = new Vector2F(Radius, Radius);
-            // OPT: aabb.LowerBound = aabb.LowerBound - r;
-            // OPT: aabb.UpperBound = aabb.UpperBound + r;
             aabb.LowerBound.X -= GetRadius;
             aabb.LowerBound.Y -= GetRadius;
             aabb.UpperBound.X += GetRadius;
