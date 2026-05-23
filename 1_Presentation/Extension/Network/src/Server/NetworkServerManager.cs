@@ -488,7 +488,7 @@ namespace Alis.Extension.Network.Server
             }
             catch (Exception)
             {
-
+                // Swallow exception during dispose
             }
 
             _cancellationTokenSource?.Dispose();
