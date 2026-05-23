@@ -44,8 +44,6 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <summary>
         ///     The my seek callback
         /// </summary>
-        private SeekCallbackType mySeekCallback;
-
         /// <summary>
         ///     The my temp buffer
         /// </summary>
@@ -269,7 +267,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         protected void Initialize(uint channelCount, uint sampleRate)
         {
             GetDataCallbackType myGetDataCallback = GetData;
-            mySeekCallback = Seek;
+            SeekCallbackType mySeekCallback = Seek;
             CPointer = sfSoundStream_create(myGetDataCallback, mySeekCallback, channelCount, sampleRate, IntPtr.Zero);
         }
 
