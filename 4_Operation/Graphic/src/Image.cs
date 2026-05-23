@@ -132,7 +132,7 @@ namespace Alis.Core.Graphic
                 }
                 else if ((compression == 1) && (bitsPerPixel == 8))
                 {
-                    LoadBmpRle8(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
+                    LoadBmpRle8(reader, width, height, rawData, palette);
                 }
                 else if ((compression == 2) && (bitsPerPixel == 4))
                 {
@@ -325,7 +325,7 @@ namespace Alis.Core.Graphic
         /// <param name="palette">The color palette for indexed formats</param>
         /// <param name="rowPadded">The padded row size in bytes</param>
         /// <param name="bytesPerPixel">The number of bytes per pixel</param>
-        private static void LoadBmpRle8(BinaryReader reader, int width, int height, short _bitsPerPixel, byte[] rawData, byte[][] palette, int _rowPadded, int _bytesPerPixel)
+        private static void LoadBmpRle8(BinaryReader reader, int width, int height, byte[] rawData, byte[][] palette)
         {
             int x = 0, y = 0; // Corregido: empezar desde la primera fila
             while ((reader.BaseStream.Position < reader.BaseStream.Length) && (y < height))
