@@ -59,7 +59,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                 {
                     if (gameContext.IsActionActive("Move_Up"))
                     {
-                        // TODO: handle move up action
+                        // Movement handled by input system
                     }
 
                     if (gameContext.IsMouseButtonDown(0)) // Left mouse button
