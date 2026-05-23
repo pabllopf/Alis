@@ -61,112 +61,35 @@ namespace Alis.Core.Physic.Common.Decomposition
         internal static List<Vertices> TriangulatePolygon(Vertices vertices)
         {
             List<Vertices> list = new List<Vertices>();
-            Vector2F lowerInt = new Vector2F();
-            Vector2F upperInt = new Vector2F(); // intersection points
-            int lowerIndex = 0, upperIndex = 0;
             Vertices lowerPoly, upperPoly;
 
             for (int i = 0; i < vertices.Count; ++i)
             {
                 if (Reflex(i, vertices))
                 {
-                    float upperDist;
-                    float lowerDist = upperDist = float.MaxValue;
-                    for (int j = 0; j < vertices.Count; ++j)
+                    if (TryFindSplit(i, vertices, out Vector2F lowerInt, out int lowerIndex, out Vector2F upperInt, out int upperIndex))
                     {
-                        // if line intersects with an edge
-                        float d;
-                        Vector2F p;
-                        if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) && RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
+                        if (lowerIndex == (upperIndex + 1) % vertices.Count)
                         {
-                            // find the point of intersection
-                            p = LineTools.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices), At(j - 1, vertices));
+                            Vector2F p = (lowerInt + upperInt) / 2;
 
-                            if (Right(At(i + 1, vertices), At(i, vertices), p))
-                            {
-                                // make sure it's inside the poly
-                                d = SquareDist(At(i, vertices), p);
-                                if (d < lowerDist)
-                                {
-                                    // keep only the closest intersection
-                                    lowerDist = d;
-                                    lowerInt = p;
-                                    lowerIndex = j;
-                                }
-                            }
+                            lowerPoly = Copy(i, upperIndex, vertices);
+                            lowerPoly.Add(p);
+                            upperPoly = Copy(lowerIndex, i, vertices);
+                            upperPoly.Add(p);
+                        }
+                        else
+                        {
+                            int bestIndex = FindBestSplitIndex(i, lowerIndex, upperIndex, vertices);
+
+                            lowerPoly = Copy(i, bestIndex, vertices);
+                            upperPoly = Copy(bestIndex, i, vertices);
                         }
 
-                        if (Left(At(i + 1, vertices), At(i, vertices), At(j + 1, vertices)) && RightOn(At(i + 1, vertices), At(i, vertices), At(j, vertices)))
-                        {
-                            p = LineTools.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices), At(j + 1, vertices));
-
-                            if (Left(At(i - 1, vertices), At(i, vertices), p))
-                            {
-                                d = SquareDist(At(i, vertices), p);
-                                if (d < upperDist)
-                                {
-                                    upperDist = d;
-                                    upperIndex = j;
-                                    upperInt = p;
-                                }
-                            }
-                        }
+                        list.AddRange(TriangulatePolygon(lowerPoly));
+                        list.AddRange(TriangulatePolygon(upperPoly));
+                        return list;
                     }
-
-                    // if there are no vertices to connect to, choose a point in the middle
-                    if (lowerIndex == (upperIndex + 1) % vertices.Count)
-                    {
-                        Vector2F p = (lowerInt + upperInt) / 2;
-
-                        lowerPoly = Copy(i, upperIndex, vertices);
-                        lowerPoly.Add(p);
-                        upperPoly = Copy(lowerIndex, i, vertices);
-                        upperPoly.Add(p);
-                    }
-                    else
-                    {
-                        double highestScore = 0, bestIndex = lowerIndex;
-                        while (upperIndex < lowerIndex)
-                        {
-                            upperIndex += vertices.Count;
-                        }
-
-                        for (int j = lowerIndex; j <= upperIndex; ++j)
-                        {
-                            if (CanSee(i, j, vertices))
-                            {
-                                double score = 1 / (SquareDist(At(i, vertices), At(j, vertices)) + 1);
-                                if (Reflex(j, vertices))
-                                {
-                                    if (RightOn(At(j - 1, vertices), At(j, vertices), At(i, vertices)) && LeftOn(At(j + 1, vertices), At(j, vertices), At(i, vertices)))
-                                    {
-                                        score += 3;
-                                    }
-                                    else
-                                    {
-                                        score += 2;
-                                    }
-                                }
-                                else
-                                {
-                                    score += 1;
-                                }
-
-                                if (score > highestScore)
-                                {
-                                    bestIndex = j;
-                                    highestScore = score;
-                                }
-                            }
-                        }
-
-                        lowerPoly = Copy(i, (int) bestIndex, vertices);
-                        upperPoly = Copy((int) bestIndex, i, vertices);
-                    }
-
-                    list.AddRange(TriangulatePolygon(lowerPoly));
-                    list.AddRange(TriangulatePolygon(upperPoly));
-                    return list;
                 }
             }
 
@@ -184,6 +107,126 @@ namespace Alis.Core.Physic.Common.Decomposition
             }
 
             return list;
+        }
+
+        /// <summary>
+        ///     Tries to find a valid split line from a reflex vertex
+        /// </summary>
+        private static bool TryFindSplit(int i, Vertices vertices, out Vector2F lowerInt, out int lowerIndex, out Vector2F upperInt, out int upperIndex)
+        {
+            float upperDist;
+            float lowerDist = upperDist = float.MaxValue;
+            lowerInt = new Vector2F();
+            upperInt = new Vector2F();
+            lowerIndex = 0;
+            upperIndex = 0;
+
+            for (int j = 0; j < vertices.Count; ++j)
+            {
+                FindLowerIntersection(i, j, vertices, ref lowerDist, ref lowerInt, ref lowerIndex);
+                FindUpperIntersection(i, j, vertices, ref upperDist, ref upperInt, ref upperIndex);
+            }
+
+            return lowerDist < float.MaxValue || upperDist < float.MaxValue;
+        }
+
+        /// <summary>
+        ///     Finds the lower intersection point for a reflex vertex
+        /// </summary>
+        private static void FindLowerIntersection(int i, int j, Vertices vertices, ref float lowerDist, ref Vector2F lowerInt, ref int lowerIndex)
+        {
+            if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) && RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
+            {
+                Vector2F p = LineTools.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices), At(j - 1, vertices));
+
+                if (Right(At(i + 1, vertices), At(i, vertices), p))
+                {
+                    float d = SquareDist(At(i, vertices), p);
+                    if (d < lowerDist)
+                    {
+                        lowerDist = d;
+                        lowerInt = p;
+                        lowerIndex = j;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Finds the upper intersection point for a reflex vertex
+        /// </summary>
+        private static void FindUpperIntersection(int i, int j, Vertices vertices, ref float upperDist, ref Vector2F upperInt, ref int upperIndex)
+        {
+            if (Left(At(i + 1, vertices), At(i, vertices), At(j + 1, vertices)) && RightOn(At(i + 1, vertices), At(i, vertices), At(j, vertices)))
+            {
+                Vector2F p = LineTools.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices), At(j + 1, vertices));
+
+                if (Left(At(i - 1, vertices), At(i, vertices), p))
+                {
+                    float d = SquareDist(At(i, vertices), p);
+                    if (d < upperDist)
+                    {
+                        upperDist = d;
+                        upperIndex = j;
+                        upperInt = p;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Finds the best index to split the polygon
+        /// </summary>
+        private static int FindBestSplitIndex(int reflexVertex, int lowerIndex, int upperIndex, Vertices vertices)
+        {
+            while (upperIndex < lowerIndex)
+            {
+                upperIndex += vertices.Count;
+            }
+
+            double highestScore = 0;
+            int bestIndex = lowerIndex;
+
+            for (int j = lowerIndex; j <= upperIndex; ++j)
+            {
+                if (CanSee(reflexVertex, j, vertices))
+                {
+                    double score = CalculateVertexScore(reflexVertex, j, vertices);
+                    if (score > highestScore)
+                    {
+                        bestIndex = j;
+                        highestScore = score;
+                    }
+                }
+            }
+
+            return bestIndex;
+        }
+
+        /// <summary>
+        ///     Calculates the score for a potential split vertex
+        /// </summary>
+        private static double CalculateVertexScore(int reflexVertex, int candidate, Vertices vertices)
+        {
+            double score = 1 / (SquareDist(At(reflexVertex, vertices), At(candidate, vertices)) + 1);
+
+            if (Reflex(candidate, vertices))
+            {
+                if (RightOn(At(candidate - 1, vertices), At(candidate, vertices), At(reflexVertex, vertices)) && LeftOn(At(candidate + 1, vertices), At(candidate, vertices), At(reflexVertex, vertices)))
+                {
+                    score += 3;
+                }
+                else
+                {
+                    score += 2;
+                }
+            }
+            else
+            {
+                score += 1;
+            }
+
+            return score;
         }
 
         /// <summary>
