@@ -136,7 +136,7 @@ namespace Alis.Core.Graphic
                 }
                 else if ((compression == 2) && (bitsPerPixel == 4))
                 {
-                    LoadBmpRle4(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
+                    LoadBmpRle4(reader, width, height, rawData, palette);
                 }
                 else
                 {
@@ -422,7 +422,7 @@ namespace Alis.Core.Graphic
         /// <param name="palette">The color palette for indexed formats</param>
         /// <param name="rowPadded">The padded row size in bytes</param>
         /// <param name="bytesPerPixel">The number of bytes per pixel</param>
-        private static void LoadBmpRle4(BinaryReader reader, int width, int height, short _bitsPerPixel, byte[] rawData, byte[][] palette, int _rowPadded, int _bytesPerPixel)
+        private static void LoadBmpRle4(BinaryReader reader, int width, int height, byte[] rawData, byte[][] palette)
         {
             if (height < 0)
             {
@@ -436,75 +436,89 @@ namespace Alis.Core.Graphic
                 byte value = reader.ReadByte();
                 if (count > 0)
                 {
-                    byte first = (byte) (value >> 4);
-                    byte second = (byte) (value & 0x0F);
-                    for (int i = 0; i < count; i++)
-                    {
-                        byte colorIndex = i % 2 == 0 ? first : second;
-                        if (x >= width)
-                        {
-                            x = 0;
-                            y++;
-                        }
-
-                        int index = (y * width + x) * 4; // Corregido: filas de arriba hacia abajo
-                        rawData[index + 0] = palette[colorIndex][0];
-                        rawData[index + 1] = palette[colorIndex][1];
-                        rawData[index + 2] = palette[colorIndex][2];
-                        rawData[index + 3] = palette[colorIndex][3];
-                        x++;
-                    }
+                    WriteRle4Pixels(reader, palette, rawData, width, ref x, y, count, value);
                 }
                 else
                 {
-                    if (value == 0) // End of line
+                    HandleRle4EscapeCode(reader, palette, rawData, width, ref x, ref y, value);
+                }
+            }
+        }
+
+        private static void WriteRle4Pixels(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, int y, int count, byte value)
+        {
+            byte first = (byte)(value >> 4);
+            byte second = (byte)(value & 0x0F);
+            for (int i = 0; i < count; i++)
+            {
+                byte colorIndex = i % 2 == 0 ? first : second;
+                if (x >= width)
+                {
+                    x = 0;
+                    y++;
+                }
+
+                int index = (y * width + x) * 4;
+                rawData[index + 0] = palette[colorIndex][0];
+                rawData[index + 1] = palette[colorIndex][1];
+                rawData[index + 2] = palette[colorIndex][2];
+                rawData[index + 3] = palette[colorIndex][3];
+                x++;
+            }
+        }
+
+        private static void HandleRle4EscapeCode(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, ref int y, byte value)
+        {
+            if (value == 0) // End of line
+            {
+                x = 0;
+                y++;
+            }
+            else if (value == 1) // End of bitmap
+            {
+                return;
+            }
+            else if (value == 2) // Delta
+            {
+                byte dx = reader.ReadByte();
+                byte dy = reader.ReadByte();
+                x += dx;
+                y += dy;
+            }
+            else // Absolute mode
+            {
+                int absCount = value;
+                WriteRle4AbsolutePixels(reader, palette, rawData, width, ref x, y, absCount);
+                if ((absCount & 3) == 1 || (absCount & 3) == 2)
+                {
+                    reader.ReadByte(); // Padding
+                }
+            }
+        }
+
+        private static void WriteRle4AbsolutePixels(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, int y, int absCount)
+        {
+            int pairs = (absCount + 1) / 2;
+            for (int i = 0; i < pairs; i++)
+            {
+                byte absValue = reader.ReadByte();
+                byte first = (byte)(absValue >> 4);
+                byte second = (byte)(absValue & 0x0F);
+                for (int j = 0; j < 2 && i * 2 + j < absCount; j++)
+                {
+                    byte colorIndex = j == 0 ? first : second;
+                    if (x >= width)
                     {
                         x = 0;
                         y++;
                     }
-                    else if (value == 1) // End of bitmap
-                    {
-                        break;
-                    }
-                    else if (value == 2) // Delta
-                    {
-                        byte dx = reader.ReadByte();
-                        byte dy = reader.ReadByte();
-                        x += dx;
-                        y += dy;
-                    }
-                    else // Absolute mode
-                    {
-                        int absCount = value;
-                        int pairs = (absCount + 1) / 2;
-                        for (int i = 0; i < pairs; i++)
-                        {
-                            byte absValue = reader.ReadByte();
-                            byte first = (byte) (absValue >> 4);
-                            byte second = (byte) (absValue & 0x0F);
-                            for (int j = 0; (j < 2) && (i * 2 + j < absCount); j++)
-                            {
-                                byte colorIndex = j == 0 ? first : second;
-                                if (x >= width)
-                                {
-                                    x = 0;
-                                    y++;
-                                }
 
-                                int index = (y * width + x) * 4;
-                                rawData[index + 0] = palette[colorIndex][0];
-                                rawData[index + 1] = palette[colorIndex][1];
-                                rawData[index + 2] = palette[colorIndex][2];
-                                rawData[index + 3] = palette[colorIndex][3];
-                                x++;
-                            }
-                        }
-
-                        if ((absCount & 3) == 1 || (absCount & 3) == 2)
-                        {
-                            reader.ReadByte(); // Padding
-                        }
-                    }
+                    int index = (y * width + x) * 4;
+                    rawData[index + 0] = palette[colorIndex][0];
+                    rawData[index + 1] = palette[colorIndex][1];
+                    rawData[index + 2] = palette[colorIndex][2];
+                    rawData[index + 3] = palette[colorIndex][3];
+                    x++;
                 }
             }
         }
