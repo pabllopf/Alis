@@ -235,7 +235,7 @@ namespace Alis.Core.Physic.Collisions
                     break;
 
                 default:
-                    throw new Exception("Invalid simplex count");
+                    throw new InvalidOperationException("Invalid simplex count");
             }
         }
 

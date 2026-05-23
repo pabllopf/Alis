@@ -239,7 +239,7 @@ namespace Alis.Core.Physic.Common
 
             if (_controlPoints.Count < 2)
             {
-                throw new Exception("You need at least 2 control points to calculate a position.");
+                throw new InvalidOperationException("You need at least 2 control points to calculate a position.");
             }
 
             if (Closed)

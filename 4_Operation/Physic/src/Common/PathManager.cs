@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Common
         {
             if (!path.Closed)
             {
-                throw new Exception("The path must be closed to convert to a polygon.");
+                throw new InvalidOperationException("The path must be closed to convert to a polygon.");
             }
 
             List<Vector2F> verts = path.GetVertices(subdivisions);
