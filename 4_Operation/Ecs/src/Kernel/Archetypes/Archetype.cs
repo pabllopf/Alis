@@ -710,6 +710,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// </summary>
     internal static class Archetype<T>
     {
+        // S2743: Static fields are intentionally per-type. Each Archetype<T> has its own table, id counter, and existing archetypes.
         /// <summary>
         ///     The to immutable array
         /// </summary>
