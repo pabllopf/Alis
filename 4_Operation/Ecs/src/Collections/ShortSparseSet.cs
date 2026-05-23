@@ -115,7 +115,7 @@ namespace Alis.Core.Ecs.Collections
             T[] localDense = _dense;
             if (index >= localDense.Length)
             {
-                throw new ArgumentOutOfRangeException(nameof(index), InvalidId);
+                throw new ArgumentOutOfRangeException(nameof(id), InvalidId);
             }
 
             return ref localDense[index];
