@@ -291,8 +291,12 @@ namespace Alis.Extension.Media.FFmpeg
             MatchCollection mtc = FormatRegex.Matches(output);
             return mtc.Cast<Match>().ToDictionary(
                 m => m.Groups["format"].Value,
-                m => (m.Groups["description"].Value,
-                    m.Groups["type"].Value.Trim() == "DE" ? MuxingSupport.MuxDemux : m.Groups["type"].Value.Trim() == "D" ? MuxingSupport.Demux : MuxingSupport.Mux));
+                m => (m.Groups["description"].Value, GetMuxingSupportFromType(m.Groups["type"].Value.Trim())));
+        }
+
+        private static MuxingSupport GetMuxingSupportFromType(string type)
+        {
+            return type == "DE" ? MuxingSupport.MuxDemux : type == "D" ? MuxingSupport.Demux : MuxingSupport.Mux;
         }
 
         /// <summary>
