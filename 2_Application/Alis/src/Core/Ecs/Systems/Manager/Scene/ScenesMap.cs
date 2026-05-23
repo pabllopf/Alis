@@ -64,31 +64,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         /// <returns>The scenes map</returns>
         public static ScenesMap Load() =>
-            /*
-            string pathFile = Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
-            if (!File.Exists(pathFile))
-            {
-                string json = JsonSerializer.Serialize(this, new JsonOptions
-                {
-                    DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                    SerializationOptions = JsonSerializationOptions.Default
-                });
-
-                if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Data")))
-                {
-                    Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, "Data"));
-                }
-
-                File.WriteAllText(pathFile, json);
-
-                return this;
-            }
-
-            return JsonSerializer.Deserialize<ScenesMap>(File.ReadAllText(pathFile), new JsonOptions
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            });*/
             new ScenesMap();
 
         /// <summary>
