@@ -119,8 +119,45 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// </summary>
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            if (ProgramId != 0)
+            {
+                Gl.GlUseProgram(0);
+
+                Gl.GlDetachShader(ProgramId, VertexShader.ShaderId);
+                Gl.GlDetachShader(ProgramId, FragmentShader.ShaderId);
+                Gl.GlDeleteProgram(ProgramId);
+
+                if (DisposeChildren)
+                {
+                    VertexShader.Dispose();
+                    FragmentShader.Dispose();
+                }
+
+                ProgramId = 0;
+            }
+        }
+
+        /// <summary>
+        ///     Finalizer
+        /// </summary>
+        ~GlShaderProgram()
+        {
+            if (ProgramId != 0)
+            {
+                Gl.GlUseProgram(0);
+
+                Gl.GlDetachShader(ProgramId, VertexShader.ShaderId);
+                Gl.GlDetachShader(ProgramId, FragmentShader.ShaderId);
+                Gl.GlDeleteProgram(ProgramId);
+
+                if (DisposeChildren)
+                {
+                    VertexShader.Dispose();
+                    FragmentShader.Dispose();
+                }
+
+                ProgramId = 0;
+            }
         }
 
         /// <summary>
@@ -288,34 +325,6 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         {
             Use();
             return Gl.GlGetAttribLocation(ProgramId, name);
-        }
-
-        /// <summary>
-        /// </summary>
-        ~GlShaderProgram() => Dispose(false);
-
-        /// <summary>
-        ///     Disposes the disposing
-        /// </summary>
-        /// <param name="disposing">The disposing</param>
-        private void Dispose(bool _)
-        {
-            if (ProgramId != 0)
-            {
-                Gl.GlUseProgram(0);
-
-                Gl.GlDetachShader(ProgramId, VertexShader.ShaderId);
-                Gl.GlDetachShader(ProgramId, FragmentShader.ShaderId);
-                Gl.GlDeleteProgram(ProgramId);
-
-                if (DisposeChildren)
-                {
-                    VertexShader.Dispose();
-                    FragmentShader.Dispose();
-                }
-
-                ProgramId = 0;
-            }
         }
     }
 }
