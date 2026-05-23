@@ -496,7 +496,7 @@ namespace Alis.Core.Graphic.Platforms.Web
 
                     {
 
-                        // TODO: handle jump action
+                        // Jump action placeholder
 
                     }
 
