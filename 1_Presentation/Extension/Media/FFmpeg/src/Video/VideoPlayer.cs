@@ -160,6 +160,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
             }
             catch
             {
+                // Swallow exception; Kill() may throw if process already exited.
             }
 
             InputDataStream = FfMpegWrapper.OpenInput(ffplay, $"-f rawvideo -video_size {width}:{height} -framerate {framerateFrequency} -pixel_format rgb24 -i -",
