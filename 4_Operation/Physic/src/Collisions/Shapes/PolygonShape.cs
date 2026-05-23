@@ -448,7 +448,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
             return area;
         }
 
-        private void TrackDiveTransition(bool isSubmerged, bool lastSubmerged, int i, ref int diveCount, ref int intoIndex, ref int outoIndex)
+        private static void TrackDiveTransition(bool isSubmerged, bool lastSubmerged, int i, ref int diveCount, ref int intoIndex, ref int outoIndex)
         {
             if (isSubmerged && !lastSubmerged)
             {
