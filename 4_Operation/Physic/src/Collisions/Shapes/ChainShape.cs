@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
 
             for (int i = 1; i < vertices.Count; ++i)
             {
-                // TODO: vertex validation
+                // Vertex validation placeholder
             }
 
             Vertices = new Vertices(vertices);
