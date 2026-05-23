@@ -47,17 +47,17 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2F _tmpA;
+        internal static Vector2F _tmpA;
 
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2F _tmpB;
+        internal static Vector2F _tmpB;
 
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2F _tmpC;
+        internal static Vector2F _tmpC;
 
         /// <summary>
         ///     Decompose the polygon into triangles.

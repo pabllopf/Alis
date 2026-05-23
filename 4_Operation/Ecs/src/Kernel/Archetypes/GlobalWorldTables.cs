@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The component tag location table
         /// </summary>
-        internal static byte[ /*archetype id*/][ /*component id*/] ComponentTagLocationTable = [];
+        public static byte[ /*archetype id*/][ /*component id*/] ComponentTagLocationTable = [];
 
         /// <summary>
         ///     The scene
