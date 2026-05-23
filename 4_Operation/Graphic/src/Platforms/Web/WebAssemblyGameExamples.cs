@@ -477,7 +477,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                 {
                     if (context.IsActionActive("Move_Forward"))
                     {
-                        // TODO: handle move forward action
+                        // Forward movement placeholder
                     }
                     if (context.IsActionActive("Move_Backward"))
                     {
