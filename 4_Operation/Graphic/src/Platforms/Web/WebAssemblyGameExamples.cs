@@ -170,7 +170,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                     ScreenOrientation orientation = context.DisplayManager.GetOrientation();
                     if (orientation == ScreenOrientation.Portrait)
                     {
-                        // TODO: implement
+                    // Button A action placeholder
                     }
                     else
                     {
