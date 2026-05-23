@@ -168,7 +168,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 throw new InvalidOperationException("Acceptable bit depths are 16, 24 and 32");
             }
 
-            DestinationStream = outputStream ?? throw new NullReferenceException("Stream can't be null!");
+            DestinationStream = outputStream ?? throw new ArgumentNullException(nameof(outputStream), "Stream can't be null!");
             UseFilename = false;
 
             VideoWidth = videoWidth;
