@@ -309,7 +309,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 );
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -327,7 +331,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 );
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -366,7 +374,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 _inputCharacterBuilder.Append(char.ConvertFromUtf32((int)charCode));
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -524,7 +536,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 }
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
@@ -734,7 +750,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                 EmscriptenWeb.SetWindowIcon(iconPath);
             }
             catch
+
             {
+
+                // Swallow exception
+
             }
         }
 
