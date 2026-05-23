@@ -151,7 +151,7 @@ namespace Alis.Extension.Updater
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error updating program: {ex.Message}");
+                throw new InvalidOperationException($"Error updating program: {ex.Message}", ex);
             }
         }
 
