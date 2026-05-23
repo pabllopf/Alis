@@ -55,7 +55,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
 
             if (!GetShaderCompileStatus(ShaderId))
             {
-                throw new Exception(ShaderLog);
+                throw new InvalidOperationException(ShaderLog);
             }
         }
 

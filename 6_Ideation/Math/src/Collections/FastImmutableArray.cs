@@ -295,7 +295,7 @@ namespace Alis.Core.Aspect.Math.Collections
             /// <summary>
             ///     Throws an <see cref="IndexOutOfRangeException" /> indicating that the index is out of valid range.
             /// </summary>
-            private static void ThrowIndexOutOfRangeException() => throw new IndexOutOfRangeException();
+            private static void ThrowIndexOutOfRangeException() => throw new ArgumentOutOfRangeException("index");
 
             /// <summary>
             ///     Gets a read-only reference to the element at the specified index.

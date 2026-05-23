@@ -317,7 +317,7 @@ namespace Alis.Core.Audio.Players
                 mciGetErrorString(result, sb2, 128);
                 errorSb.Append($" Message: {sb2}");
 
-                throw new Exception(errorSb.ToString());
+                throw new InvalidOperationException(errorSb.ToString());
             }
 
             if (commandString.ToLower().StartsWith("status") && int.TryParse(sb.ToString(), out int length))

@@ -383,7 +383,7 @@ namespace Alis.Core.Aspect.Math.Vector
         {
             if (array is null)
             {
-                throw new NullReferenceException();
+                throw new ArgumentNullException(nameof(array));
             }
 
             if (index < 0 || index >= array.Length)

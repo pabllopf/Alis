@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
 
             if (!Gl.GetProgramLinkStatus(ProgramId))
             {
-                throw new Exception(ProgramLog);
+                throw new InvalidOperationException(ProgramLog);
             }
 
             GetParams();

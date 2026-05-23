@@ -93,8 +93,8 @@ namespace Alis.Core.Ecs.Updating
             {
                 if (val.Factory.GetType() != value.GetType())
                 {
-                    throw new Exception(
-                        $"Attempted to initalize {type.FullName} with {val.GetType().FullName} and {value.GetType().FullName}");
+                    throw new ArgumentException(
+                        $"Attempted to initalize {type.FullName} with {val.GetType().FullName} and {value.GetType().FullName}", nameof(value));
                 }
             }
             else
