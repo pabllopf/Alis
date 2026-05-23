@@ -121,8 +121,6 @@ namespace Alis.Core.Physic.Collisions
             FixedArray3<int> saveA = new FixedArray3<int>();
             FixedArray3<int> saveB = new FixedArray3<int>();
 
-            //float distanceSqr1 = Settings.MaxFloat;
-
             int iter = 0;
             while (iter < SettingEnv.MaxGjkIterations)
             {
@@ -149,10 +147,6 @@ namespace Alis.Core.Physic.Collisions
                 {
                     break;
                 }
-
-                //float distanceSqr2 = p.LengthSquared();
-
-                //distanceSqr1 = distanceSqr2;
 
                 Vector2F d = simplex.GetSearchDirection();
 
