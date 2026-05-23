@@ -371,7 +371,11 @@ namespace Alis.Extension.Media.FFmpeg.Video
                     }
                 }
                 catch
+
                 {
+
+                    // Swallow exception
+
                 }
             }
             finally

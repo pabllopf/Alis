@@ -442,8 +442,12 @@ namespace Alis.Extension.Network.Client
             {
                 DisconnectAsync().Wait(TimeSpan.FromSeconds(5));
             }
-            catch (Exception)
+            catch(Exception)
+
             {
+
+                // Swallow exception
+
             }
 
             _cancellationTokenSource?.Dispose();

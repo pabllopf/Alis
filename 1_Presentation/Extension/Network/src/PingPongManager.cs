@@ -144,8 +144,12 @@ namespace Alis.Extension.Network
             {
                 await PingLoop();
             }
-            catch (OperationCanceledException)
+            catch(OperationCanceledException)
+
             {
+
+                // Swallow exception
+
             }
 
             LogPingPongManagerEnd();

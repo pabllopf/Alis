@@ -265,8 +265,12 @@ namespace Alis.Extension.Network.Core
             {
                 StopAsync().Wait(TimeSpan.FromSeconds(5));
             }
-            catch (Exception)
+            catch(Exception)
+
             {
+
+                // Swallow exception
+
             }
 
             _tcpListener?.Stop();
@@ -348,8 +352,12 @@ namespace Alis.Extension.Network.Core
                     _messageQueue.Enqueue((clientId, envelope));
                 }
             }
-            catch (Exception)
+            catch(Exception)
+
             {
+
+                // Swallow exception
+
             }
             finally
             {
