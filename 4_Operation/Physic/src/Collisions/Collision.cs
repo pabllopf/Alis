@@ -193,18 +193,7 @@ namespace Alis.Core.Physic.Collisions
             // If the center is inside the polygon ...
             if (separation < SettingEnv.Epsilon)
             {
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.FaceA;
-                manifold.LocalNormal = polygonA.Normals[normalIndex];
-                manifold.LocalPoint = 0.5f * (v1 + v2);
-
-                ManifoldPoint p0 = manifold.Points[0];
-
-                p0.LocalPoint = circleB.Position;
-                p0.Id.Key = 0;
-
-                manifold.Points[0] = p0;
-
+                SetupFaceAManifold(ref manifold, polygonA.Normals[normalIndex], 0.5f * (v1 + v2), circleB.Position);
                 return;
             }
 
@@ -220,23 +209,7 @@ namespace Alis.Core.Physic.Collisions
                     return;
                 }
 
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.FaceA;
-                manifold.LocalNormal = cLocal - v1;
-                float factor = 1f /
-                               (float)
-                               Math.Sqrt(manifold.LocalNormal.X * manifold.LocalNormal.X +
-                                         manifold.LocalNormal.Y * manifold.LocalNormal.Y);
-                manifold.LocalNormal.X = manifold.LocalNormal.X * factor;
-                manifold.LocalNormal.Y = manifold.LocalNormal.Y * factor;
-                manifold.LocalPoint = v1;
-
-                ManifoldPoint p0B = manifold.Points[0];
-
-                p0B.LocalPoint = circleB.Position;
-                p0B.Id.Key = 0;
-
-                manifold.Points[0] = p0B;
+                SetupVertexAManifold(ref manifold, cLocal - v1, v1, circleB.Position);
             }
             else if (u2 <= 0.0f)
             {
@@ -246,23 +219,7 @@ namespace Alis.Core.Physic.Collisions
                     return;
                 }
 
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.FaceA;
-                manifold.LocalNormal = cLocal - v2;
-                float factor = 1f /
-                               (float)
-                               Math.Sqrt(manifold.LocalNormal.X * manifold.LocalNormal.X +
-                                         manifold.LocalNormal.Y * manifold.LocalNormal.Y);
-                manifold.LocalNormal.X = manifold.LocalNormal.X * factor;
-                manifold.LocalNormal.Y = manifold.LocalNormal.Y * factor;
-                manifold.LocalPoint = v2;
-
-                ManifoldPoint p0C = manifold.Points[0];
-
-                p0C.LocalPoint = circleB.Position;
-                p0C.Id.Key = 0;
-
-                manifold.Points[0] = p0C;
+                SetupVertexAManifold(ref manifold, cLocal - v2, v2, circleB.Position);
             }
             else
             {
@@ -275,18 +232,37 @@ namespace Alis.Core.Physic.Collisions
                     return;
                 }
 
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.FaceA;
-                manifold.LocalNormal = polygonA.Normals[vertIndex1];
-                manifold.LocalPoint = faceCenter;
-
-                ManifoldPoint p0d = manifold.Points[0];
-
-                p0d.LocalPoint = circleB.Position;
-                p0d.Id.Key = 0;
-
-                manifold.Points[0] = p0d;
+                SetupFaceAManifold(ref manifold, polygonA.Normals[vertIndex1], faceCenter, circleB.Position);
             }
+        }
+
+        private static void SetupFaceAManifold(ref Manifold manifold, Vector2F normal, Vector2F localPoint, Vector2F circlePosition)
+        {
+            manifold.PointCount = 1;
+            manifold.Type = ManifoldType.FaceA;
+            manifold.LocalNormal = normal;
+            manifold.LocalPoint = localPoint;
+
+            ManifoldPoint p0 = manifold.Points[0];
+            p0.LocalPoint = circlePosition;
+            p0.Id.Key = 0;
+            manifold.Points[0] = p0;
+        }
+
+        private static void SetupVertexAManifold(ref Manifold manifold, Vector2F rawNormal, Vector2F localPoint, Vector2F circlePosition)
+        {
+            manifold.PointCount = 1;
+            manifold.Type = ManifoldType.FaceA;
+            manifold.LocalNormal = rawNormal;
+            float factor = 1f / (float)Math.Sqrt(manifold.LocalNormal.X * manifold.LocalNormal.X + manifold.LocalNormal.Y * manifold.LocalNormal.Y);
+            manifold.LocalNormal.X *= factor;
+            manifold.LocalNormal.Y *= factor;
+            manifold.LocalPoint = localPoint;
+
+            ManifoldPoint p0 = manifold.Points[0];
+            p0.LocalPoint = circlePosition;
+            p0.Id.Key = 0;
+            manifold.Points[0] = p0;
         }
 
         /// <summary>
