@@ -257,53 +257,63 @@ namespace Alis.Core.Physic.Common.Decomposition
                 return false;
             }
 
-            bool hasPinchPoint = false;
-            int pinchIndexA = -1;
-            int pinchIndexB = -1;
+            if (!FindPinchPoint(pin, tolerance, out int pinchIndexA, out int pinchIndexB))
+            {
+                return false;
+            }
+
+            SplitPolygonAtPinchPoint(pin, pinchIndexA, pinchIndexB, out poutA, out poutB);
+            return true;
+        }
+
+        /// <summary>
+        ///     Finds a pinch point in the polygon
+        /// </summary>
+        private static bool FindPinchPoint(Vertices pin, float tolerance, out int pinchIndexA, out int pinchIndexB)
+        {
+            pinchIndexA = -1;
+            pinchIndexB = -1;
+
             for (int i = 0; i < pin.Count; ++i)
             {
                 for (int j = i + 1; j < pin.Count; ++j)
                 {
-                    //Don't worry about pinch points where the points
-                    //are actually just dupe neighbors
-                    if ((Math.Abs(pin[i].X - pin[j].X) < tolerance) && (Math.Abs(pin[i].Y - pin[j].Y) < tolerance) && (j != i + 1))
+                    if (Math.Abs(pin[i].X - pin[j].X) < tolerance && Math.Abs(pin[i].Y - pin[j].Y) < tolerance && j != i + 1)
                     {
                         pinchIndexA = i;
                         pinchIndexB = j;
-                        hasPinchPoint = true;
-                        break;
+                        return true;
                     }
                 }
-
-                if (hasPinchPoint)
-                {
-                    break;
-                }
             }
 
-            if (hasPinchPoint)
+            return false;
+        }
+
+        /// <summary>
+        ///     Splits the polygon at a pinch point into two parts
+        /// </summary>
+        private static void SplitPolygonAtPinchPoint(Vertices pin, int pinchIndexA, int pinchIndexB, out Vertices poutA, out Vertices poutB)
+        {
+            poutA = new Vertices();
+            poutB = new Vertices();
+
+            int sizeA = pinchIndexB - pinchIndexA;
+            if (sizeA == pin.Count)
             {
-                int sizeA = pinchIndexB - pinchIndexA;
-                if (sizeA == pin.Count)
-                {
-                    return false; //has dupe points at wraparound, not a problem here
-                }
-
-                for (int i = 0; i < sizeA; ++i)
-                {
-                    int ind = Remainder(pinchIndexA + i, pin.Count); // is this right
-                    poutA.Add(pin[ind]);
-                }
-
-                int sizeB = pin.Count - sizeA;
-                for (int i = 0; i < sizeB; ++i)
-                {
-                    int ind = Remainder(pinchIndexB + i, pin.Count); // is this right    
-                    poutB.Add(pin[ind]);
-                }
+                return; //has dupe points at wraparound, not a problem here
             }
 
-            return hasPinchPoint;
+            for (int i = 0; i < sizeA; ++i)
+            {
+                poutA.Add(pin[Remainder(pinchIndexA + i, pin.Count)]);
+            }
+
+            int sizeB = pin.Count - sizeA;
+            for (int i = 0; i < sizeB; ++i)
+            {
+                poutB.Add(pin[Remainder(pinchIndexB + i, pin.Count)]);
+            }
         }
 
         /// <summary>
