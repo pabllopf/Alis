@@ -496,8 +496,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 }
                 else
                 {
-                    // b' = b - A * a;
-
                     VelocityConstraintPoint cp1 = vc.Points[0];
                     VelocityConstraintPoint cp2 = vc.Points[1];
 
