@@ -140,7 +140,7 @@ namespace Alis.Extension.Language.Dialogue.Test
                 new LambdaDialogCondition(ctx => true)
             };
 
-            Assert.True(evaluator.EvaluateAny(conditions, context));
+            Assert.True(DialogConditionEvaluator.EvaluateAny(conditions, context));
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Alis.Extension.Language.Dialogue.Test
                 new LambdaDialogCondition(ctx => false)
             };
 
-            Assert.False(evaluator.EvaluateAny(conditions, context));
+            Assert.False(DialogConditionEvaluator.EvaluateAny(conditions, context));
         }
     }
 }
