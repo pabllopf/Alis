@@ -158,8 +158,8 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(1);
             builder.Add(5);
 
-            Assert.Throws<IndexOutOfRangeException>(() => _ = builder[1]);
-            Assert.Throws<IndexOutOfRangeException>(() => builder[1] = 9);
+            Assert.Throws<ArgumentOutOfRangeException>(() => _ = builder[1]);
+            Assert.Throws<ArgumentOutOfRangeException>(() => builder[1] = 9);
         }
 
         /// <summary>

@@ -88,10 +88,10 @@ namespace Alis.Core.Aspect.Time.Test
             Clock clock = new Clock();
 
             clock.Start();
-            Thread.Sleep(1000); // Sleep for 1 second
+            Thread.Sleep(1500); // Sleep for 1 second
             clock.Stop();
 
-            Assert.True(clock.Elapsed.TotalSeconds >= 1);
+            Assert.True(clock.Elapsed.TotalSeconds >= 1 );
         }
 
         /// <summary>

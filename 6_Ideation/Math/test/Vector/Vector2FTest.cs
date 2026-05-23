@@ -687,7 +687,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2F v = new Vector2F(1, 2);
 
-            Assert.Throws<NullReferenceException>(() => v.CopyTo(null));
+            Assert.Throws<ArgumentNullException>(() => v.CopyTo(null));
         }
 
         /// <summary>

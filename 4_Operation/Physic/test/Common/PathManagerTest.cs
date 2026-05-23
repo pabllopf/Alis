@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Test.Common
             Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(5, 0)});
             path.Closed = false;
 
-            Assert.Throws<Exception>(() => PathManager.ConvertPathToPolygon(path, body, 1.0f, 2));
+            Assert.Throws<InvalidOperationException>(() => PathManager.ConvertPathToPolygon(path, body, 1.0f, 2));
         }
 
         /// <summary>

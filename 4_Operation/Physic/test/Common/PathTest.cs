@@ -254,7 +254,7 @@ namespace Alis.Core.Physic.Test.Common
             Path path = new Path();
             path.Add(new Vector2F(0, 0));
 
-            Assert.Throws<Exception>(() => path.GetPosition(0.5f));
+            Assert.Throws<InvalidOperationException>(() => path.GetPosition(0.5f));
         }
 
         /// <summary>
