@@ -346,27 +346,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
             return nodes[0];
         }
 
-        /// <summary>
-        ///     Adds an item to the Node-cache to allow for many methods to be O(1) or O(log n)
-        /// </summary>
-        
-        private void AddToNodeCache(SimpleNode node)
-        {
-            if (EqualityComparer<TItem>.Default.Equals(node.Data, default(TItem)))
-            {
-                _nullNodesCache.Add(node);
-                return;
-            }
-
-            IList<SimpleNode> nodes;
-            if (!_itemToNodesCache.TryGetValue(node.Data, out nodes))
-            {
-                nodes = new List<SimpleNode>();
-                _itemToNodesCache[node.Data] = nodes;
-            }
-
-            nodes.Add(node);
-        }
 
         /// <summary>
         ///     Removes an item to the Node-cache to allow for many methods to be O(1) or O(log n) (assuming no duplicates)
