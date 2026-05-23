@@ -147,6 +147,7 @@ namespace Alis.Extension.Language.Translator
                 }
                 catch (InvalidOperationException)
                 {
+                    // Language already added
                 }
 
                 currentLanguage = language;
