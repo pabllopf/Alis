@@ -171,10 +171,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -182,10 +187,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -193,10 +203,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -204,10 +219,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -215,10 +235,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -226,10 +251,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -237,10 +267,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3, T4>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -248,10 +283,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3, T4>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -259,10 +299,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -270,10 +315,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -281,10 +331,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -292,10 +347,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -303,10 +363,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -314,10 +379,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -325,10 +395,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
@@ -336,10 +411,15 @@ namespace Alis.Core.Ecs
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7, T8>
     {
         /// <summary>
+        ///     The lookup backing field
+        /// </summary>
+        private static ArchetypeNeighborCache _lookup;
+
+        /// <summary>
         ///     The lookup
         /// </summary>
 #pragma warning disable CA1000
-        internal static ArchetypeNeighborCache Lookup;
+        internal static ref ArchetypeNeighborCache Lookup => ref _lookup;
 #pragma warning restore CA1000
     }
 
