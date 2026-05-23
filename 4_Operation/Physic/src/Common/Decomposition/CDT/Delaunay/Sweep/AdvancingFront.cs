@@ -170,7 +170,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     }
                     else
                     {
-                        throw new Exception("Failed to find Node for given afront point");
+                        throw new InvalidOperationException("Failed to find Node for given afront point");
                     }
                 }
             }

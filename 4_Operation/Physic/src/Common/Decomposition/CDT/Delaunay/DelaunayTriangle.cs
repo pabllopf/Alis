@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             int i = Points.IndexOf(p);
             if (i == -1)
             {
-                throw new Exception("Calling index with a point that doesn't exist in triangle");
+                throw new ArgumentException("Calling index with a point that doesn't exist in triangle", nameof(p));
             }
 
             return i;

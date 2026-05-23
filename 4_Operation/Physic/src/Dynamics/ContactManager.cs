@@ -601,7 +601,7 @@ namespace Alis.Core.Physic.Dynamics
                 int idB = orderedBodyB.LockOrder;
                 if (idA == idB)
                 {
-                    throw new Exception();
+                    throw new InvalidOperationException("Bodies cannot have the same lock order.");
                 }
 
                 if (idA > idB)

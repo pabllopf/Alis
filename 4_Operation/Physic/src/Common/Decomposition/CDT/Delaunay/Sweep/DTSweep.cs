@@ -595,7 +595,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
             if (t.GetConstrainedEdgeAcross(p))
             {
-                throw new Exception("Intersecting Constraints");
+                throw new InvalidOperationException("Intersecting Constraints");
             }
 
             bool inScanArea = TriangulationUtil.InScanArea(p, t.PointCcw(p), t.PointCw(p), op);
