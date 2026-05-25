@@ -512,8 +512,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     b -= MathUtils.Mul(ref vc.K, ref a);
 
-                    //B2_NOT_USED(k_errorTol);
-
                     for (;;)
                     {
                         //
