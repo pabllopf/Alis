@@ -40,8 +40,7 @@ namespace Alis.Core.Physic.Dynamics
     /// <seealso cref="IEnumerable{Fixture}" />
     /// <seealso cref="ICollection{Fixture}" />
     /// <seealso cref="IList{Fixture}" />
-    public class FixtureCollection : IEnumerable<Fixture>
-        , ICollection<Fixture>, IList<Fixture>
+    public class FixtureCollection : IList<Fixture>
     {
         /// <summary>
         ///     The body
