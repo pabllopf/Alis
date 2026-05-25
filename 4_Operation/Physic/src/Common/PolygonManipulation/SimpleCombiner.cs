@@ -118,9 +118,9 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         }
 
                         Vertices newP = AddTriangle(triangles[index], poly);
-                        if (newP == null)
+                        if (newP.Count == 0)
                         {
-                            continue; // is this right
+                            continue; // triangle points not found in vertices
                         }
 
                         if (newP.Count > SettingEnv.MaxPolygonVertices)
@@ -231,7 +231,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
             if (secondP == -1)
             {
-                return null;
+                return new Vertices();
             }
 
             int tipT = 0;
