@@ -79,10 +79,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     results = BayazitDecomposer.ConvexPartition(vertices);
                     break;
                 case TriangulationAlgorithm.Flipcode:
-                    if (skipSanityChecks)
-                    {
-                    }
-                    else if (!vertices.IsCounterClockWise())
+                    if (!vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
                         temp.Reverse();
