@@ -163,12 +163,12 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     Deletes the data
         /// </summary>
-        /// <param name="data">The data</param>
-        internal override void Delete(DeleteComponentData data)
+        /// <param name="deleteComponentData">The data</param>
+        internal override void Delete(DeleteComponentData deleteComponentData)
         {
-            ref TComponent from = ref this[data.FromIndex];
+            ref TComponent from = ref this[deleteComponentData.FromIndex];
             Component<TComponent>.Destroyer?.Invoke(ref from);
-            this[data.ToIndex] = from;
+            this[deleteComponentData.ToIndex] = from;
 
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
