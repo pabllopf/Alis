@@ -123,56 +123,6 @@ namespace Alis.Core.Ecs.Systems.Configuration
         public void OnSave()
         {
             General.OnSave();
-
-            /*
-            string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Setting");
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-
-            string fileGeneral = Path.Combine(directory, "General.json");
-            File.WriteAllText(fileGeneral, JsonSerializer.Serialize(General, new JsonOptions
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            }));
-
-            string fileAudio = Path.Combine(directory, "Audio.json");
-            File.WriteAllText(fileAudio, JsonSerializer.Serialize(Audio, new JsonOptions
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            }));
-
-            string fileGraphic = Path.Combine(directory, "Graphic.json");
-            File.WriteAllText(fileGraphic, JsonSerializer.Serialize(Graphic, new JsonOptions
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            }));
-
-            string fileInput = Path.Combine(directory, "Input.json");
-            File.WriteAllText(fileInput, JsonSerializer.Serialize(Input, new JsonOptions
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            }));
-
-            string fileNetwork = Path.Combine(directory, "Network.json");
-            File.WriteAllText(fileNetwork, JsonSerializer.Serialize(Network, new JsonOptions
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            }));
-
-            string filePhysic = Path.Combine(directory, "Physic.json");
-            File.WriteAllText(filePhysic, JsonSerializer.Serialize(Physic, new JsonOptions
-            {
-                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
-                SerializationOptions = JsonSerializationOptions.Default
-            }));
-            */
         }
     }
 }
