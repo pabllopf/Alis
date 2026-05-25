@@ -310,7 +310,7 @@ namespace Alis.Core.Physic.Dynamics
             ContactPoolList.Next = contact;
         }
 
-        private void NotifySeparation(Fixture fixtureA, Fixture fixtureB, Body bodyA, Body bodyB, Contact contact)
+        private static void NotifySeparation(Fixture fixtureA, Fixture fixtureB, Body bodyA, Body bodyB, Contact contact)
         {
             OnSeparationEventHandler onFixtureSeparationHandlerA = fixtureA.OnSeparation;
             if (onFixtureSeparationHandlerA != null)
