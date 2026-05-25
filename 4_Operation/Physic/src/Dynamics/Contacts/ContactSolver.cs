@@ -1087,7 +1087,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The solve velocity constraints state class
         /// </summary>
-        private class SolveVelocityConstraintsState
+        private sealed class SolveVelocityConstraintsState
         {
             /// <summary>
             ///     The solve velocity constraints state
