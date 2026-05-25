@@ -36,7 +36,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
     /// <summary>
     ///     The polygon generator class
     /// </summary>
-    internal class PolygonGenerator
+    internal static class PolygonGenerator
     {
         /// <summary>
         ///     The random
