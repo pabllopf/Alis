@@ -684,10 +684,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 }
             }
 
-            //for (int i = 0; i < archetypeTypes.Length; i++)
-            //{
-            //    _ = Component.GetComponentID(archetypeTypes[i].Type);
-            //}
 
             ref byte[] componentTable = ref GlobalWorldTables.ComponentTagLocationTable[id];
             componentTable = new byte[GlobalWorldTables.ComponentTagTableBufferSize];
