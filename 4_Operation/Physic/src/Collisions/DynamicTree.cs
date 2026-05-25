@@ -385,7 +385,6 @@ namespace Alis.Core.Physic.Collisions
                     continue;
                 }
 
-                //TreeNode<T>* node = &_nodes[nodeId];
 
                 if (!Aabb.TestOverlap(ref _nodes[nodeId].Aabb, ref segmentAabb))
                 {
@@ -856,7 +855,6 @@ namespace Alis.Core.Physic.Collisions
                 return;
             }
 
-            //TreeNode<T>* node = &_nodes[index];
 
             int child1 = _nodes[index].Child1;
             int child2 = _nodes[index].Child2;
@@ -881,7 +879,6 @@ namespace Alis.Core.Physic.Collisions
                 return;
             }
 
-            //TreeNode<T>* node = &_nodes[index];
 
             int child1 = _nodes[index].Child1;
             int child2 = _nodes[index].Child2;
