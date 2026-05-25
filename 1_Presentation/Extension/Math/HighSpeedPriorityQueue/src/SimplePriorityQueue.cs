@@ -628,7 +628,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     The simple node class
         /// </summary>
         /// <seealso cref="GenericPriorityQueueNode{TPriority}" />
-        private class SimpleNode : GenericPriorityQueueNode<TPriority>
+        private sealed class SimpleNode : GenericPriorityQueueNode<TPriority>
         {
             /// <summary>
             ///     Initializes a new instance of the <see cref="SimpleNode" /> class
