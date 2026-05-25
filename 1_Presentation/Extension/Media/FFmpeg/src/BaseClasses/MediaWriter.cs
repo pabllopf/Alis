@@ -39,6 +39,8 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
     /// </summary>
     public abstract class MediaWriter<TFrame> where TFrame : IMediaFrame
     {
+        private const string FFmpegExecutableName = "ffmpeg";
+
         /// <summary>
         ///     Output filename
         /// </summary>
@@ -80,7 +82,7 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
         /// <param name="showOutput">Show output to terminal. Error stream will not be redirected if this is set to true.</param>
         /// <param name="ffmpegExecutable">Name or path to the ffmpeg executable</param>
         public static void FileToFile(string inputFilename, string outputFilename, EncoderOptions options, out Process process,
-            string inputArguments = "", bool showOutput = false, string ffmpegExecutable = "ffmpeg")
+            string inputArguments = "", bool showOutput = false, string ffmpegExecutable = FFmpegExecutableName)
         {
             Process output = FfMpegWrapper.ExecuteCommand(ffmpegExecutable, $"{inputArguments} -i \"{inputFilename}\" " +
                                                                             $"-c:v {options.EncoderName} {options.EncoderArguments} -f {options.Format} \"{outputFilename}\"", showOutput);
@@ -98,7 +100,7 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
         /// <param name="showOutput">Show output to terminal. Error stream will not be redirected if this is set to true.</param>
         /// <param name="ffmpegExecutable">Name or path to the ffmpeg executable</param>
         public static Stream StreamToFile(string outputFilename, EncoderOptions options, out Process process,
-            string inputArguments = "", bool showOutput = false, string ffmpegExecutable = "ffmpeg")
+            string inputArguments = "", bool showOutput = false, string ffmpegExecutable = FFmpegExecutableName)
         {
             Stream input = FfMpegWrapper.OpenInput(ffmpegExecutable, $"{inputArguments} -i - " +
                                                                      $"-c:v {options.EncoderName} {options.EncoderArguments} -f {options.Format} \"{outputFilename}\"", out process, showOutput);
@@ -116,7 +118,7 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
         /// <param name="showOutput">Show output to terminal. Error stream will not be redirected if this is set to true.</param>
         /// <param name="ffmpegExecutable">Name or path to the ffmpeg executable</param>
         public static Stream FileToStream(string inputFilename, EncoderOptions options, out Process process,
-            string inputArguments = "", bool showOutput = false, string ffmpegExecutable = "ffmpeg")
+            string inputArguments = "", bool showOutput = false, string ffmpegExecutable = FFmpegExecutableName)
         {
             Stream output = FfMpegWrapper.OpenOutput(ffmpegExecutable, $"{inputArguments} -i \"{inputFilename}\" " +
                                                                        $"-c:v {options.EncoderName} {options.EncoderArguments} -f {options.Format} -", out process, showOutput);
@@ -134,7 +136,7 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
         /// <param name="showOutput">Show output to terminal. Error stream will not be redirected if this is set to true.</param>
         /// <param name="ffmpegExecutable">Name or path to the ffmpeg executable</param>
         public static (Stream Input, Stream Output) StreamToStream(EncoderOptions options, out Process process,
-            string inputArguments = "", bool showOutput = false, string ffmpegExecutable = "ffmpeg")
+            string inputArguments = "", bool showOutput = false, string ffmpegExecutable = FFmpegExecutableName)
         {
             (Stream input, Stream output) = FfMpegWrapper.Open(ffmpegExecutable, $"{inputArguments} -i - " +
                                                                                  $"-c:v {options.EncoderName} {options.EncoderArguments} -f {options.Format} -", out process, showOutput);
