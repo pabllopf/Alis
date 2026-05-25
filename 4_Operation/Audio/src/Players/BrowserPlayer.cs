@@ -49,11 +49,6 @@ namespace Alis.Core.Audio.Players
         private readonly uint _buffer;
 
         /// <summary>
-        ///     The device
-        /// </summary>
-        private readonly IntPtr _device;
-
-        /// <summary>
         ///     The source
         /// </summary>
         private readonly uint _source;
@@ -77,14 +72,14 @@ namespace Alis.Core.Audio.Players
         public BrowserPlayer()
         {
             Console.WriteLine("[BrowserPlayer] Inicializando OpenAL...");
-            _device = OpenAl.alcOpenDevice(null);
-            Console.WriteLine($"[BrowserPlayer] Dispositivo OpenAL: {_device}");
-            if (_device == IntPtr.Zero)
+            IntPtr device = OpenAl.alcOpenDevice(null);
+            Console.WriteLine($"[BrowserPlayer] Dispositivo OpenAL: {device}");
+            if (device == IntPtr.Zero)
             {
                 throw new InvalidOperationException("No se pudo abrir el dispositivo OpenAL");
             }
 
-            IntPtr context = OpenAl.alcCreateContext(_device, IntPtr.Zero);
+            IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
             Console.WriteLine($"[BrowserPlayer] Contexto OpenAL: {context}");
             if (context == IntPtr.Zero)
             {
