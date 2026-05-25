@@ -81,6 +81,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="node">The node</param>
         public void RemoveNode(AdvancingFrontNode node)
         {
+            // No-op: node removal is handled by the context's advancing front reference
         }
 
         /// <summary>
