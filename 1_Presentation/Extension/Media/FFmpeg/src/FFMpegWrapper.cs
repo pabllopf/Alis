@@ -263,7 +263,12 @@ namespace Alis.Extension.Media.FFmpeg
 
         private static MediaType GetMediaTypeFromTypeChar(char typeChar)
         {
-            return typeChar == 'A' ? MediaType.Audio : typeChar == 'V' ? MediaType.Video : MediaType.Subtitle;
+            return typeChar switch
+            {
+                'A' => MediaType.Audio,
+                'V' => MediaType.Video,
+                _ => MediaType.Subtitle
+            };
         }
 
         /// <summary>
