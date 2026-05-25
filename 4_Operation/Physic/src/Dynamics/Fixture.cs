@@ -45,7 +45,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The friction
         /// </summary>
-        private float _friction;
 
         /// <summary>
         ///     The is sensor
@@ -55,7 +54,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The restitution
         /// </summary>
-        private float _restitution;
 
         /// <summary>
         ///     Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.
@@ -236,22 +234,14 @@ namespace Alis.Core.Physic.Dynamics
         ///     existing contacts.
         /// </summary>
         /// <value>The friction.</value>
-        public float GetFriction
-        {
-            get => _friction;
-            set => _friction = value;
-        }
+        public float GetFriction { get; set; }
 
         /// <summary>
         ///     Set the coefficient of restitution. This will not change the restitution of
         ///     existing contacts.
         /// </summary>
         /// <value>The restitution.</value>
-        public float GetRestitution
-        {
-            get => _restitution;
-            set => _restitution = value;
-        }
+        public float GetRestitution { get; set; }
 
 
         /// <summary>
