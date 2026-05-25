@@ -750,7 +750,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
         private void LockBodies(int orderedIndexA, int orderedIndexB)
         {
-            for (;;)
+            while (true)
             {
                 if (Interlocked.CompareExchange(ref Locks[orderedIndexA], 1, 0) == 0)
                 {
