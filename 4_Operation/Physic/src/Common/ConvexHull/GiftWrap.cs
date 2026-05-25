@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             int m = 0;
             int ih = i0;
 
-            for (;;)
+            while (true)
             {
                 hull[m] = ih;
 
