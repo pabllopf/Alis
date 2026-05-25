@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         ///     Construct the shape from another shape
         /// </summary>
         /// <param name="copy">Shape to copy</param>
-        public Shape(Shape copy) :
+        protected Shape(Shape copy) :
             base(IntPtr.Zero)
         {
             myGetPointCountCallback = InternalGetPointCount;
