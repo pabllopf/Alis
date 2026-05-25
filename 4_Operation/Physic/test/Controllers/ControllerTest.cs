@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             TestController controller = new TestController();
 
-            Assert.Equal(ControllerCategory.Cat01, controller.ControllerCategory);
+            Assert.Equal(ControllerCategories.Cat01, controller.ControllerCategories);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Test.Controllers
             TestController controller = new TestController();
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
-            body.ControllerFilter.IgnoreController(controller.ControllerCategory);
+            body.ControllerFilter.IgnoreController(controller.ControllerCategories);
 
             bool isActive = controller.IsActiveOn(body);
 

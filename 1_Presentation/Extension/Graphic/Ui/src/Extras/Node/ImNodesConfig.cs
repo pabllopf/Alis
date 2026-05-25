@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImNodesConfig.cs
+//  File:ImNodesConfigs.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
     ///     The im nodes attribute flags enum
     /// </summary>
     [Flags]
-    public enum ImNodesConfig
+    public enum ImNodesConfigs
     {
         /// <summary>
         ///     The none im nodes attribute flags

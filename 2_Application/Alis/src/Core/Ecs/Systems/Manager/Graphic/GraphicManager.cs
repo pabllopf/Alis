@@ -269,7 +269,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
 
             // Clear the screen
-            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            Gl.GlClear(ClearBufferMasks.ColorBufferBit);
 
             GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.CurrentWorld
                 .Query<With<Sprite>>()
@@ -337,7 +337,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
 
             // Clear the screen
-            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            Gl.GlClear(ClearBufferMasks.ColorBufferBit);
 
             GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.CurrentWorld
                 .Query<With<Sprite>>()

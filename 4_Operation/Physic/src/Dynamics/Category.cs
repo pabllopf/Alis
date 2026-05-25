@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Category.cs
+//  File:Categories.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Dynamics
     ///     The category enum
     /// </summary>
     [Flags]
-    public enum Category
+    public enum Categories
     {
         /// <summary>
         ///     The none category

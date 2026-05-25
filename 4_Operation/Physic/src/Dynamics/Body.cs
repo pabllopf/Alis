@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The all
         /// </summary>
-        public ControllerFilter ControllerFilter = new ControllerFilter(ControllerCategory.All);
+        public ControllerFilter ControllerFilter = new ControllerFilter(ControllerCategories.All);
 
         /// <summary>
         ///     The island
@@ -1326,7 +1326,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Warning: This method applies the value on existing Fixtures. It's not a property of Body.
         /// </summary>
         /// <remarks>Deprecated in version 1.6</remarks>
-        public void SetCollisionCategories(Category category)
+        public void SetCollisionCategories(Categories category)
         {
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
@@ -1338,7 +1338,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Warning: This method applies the value on existing Fixtures. It's not a property of Body.
         /// </summary>
         /// <remarks>Deprecated in version 1.6</remarks>
-        public void SetCollidesWith(Category category)
+        public void SetCollidesWith(Categories category)
         {
             for (int i = 0; i < FixtureList.List.Count; i++)
             {

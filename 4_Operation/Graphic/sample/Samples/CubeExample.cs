@@ -159,7 +159,7 @@ void main()
         public void Draw()
         {
             Gl.GlClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-            Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            Gl.GlClear(ClearBufferMasks.ColorBufferBit | ClearBufferMasks.DepthBufferBit);
             Gl.GlBindVertexArray(vao);
             Gl.GlUseProgram(shaderProgram);
             float time = (float) DateTime.Now.TimeOfDay.TotalSeconds;

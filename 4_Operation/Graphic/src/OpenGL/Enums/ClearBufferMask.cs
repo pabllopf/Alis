@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ClearBufferMask.cs
+//  File:ClearBufferMasks.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.OpenGL.Enums
     ///     The clear buffer mask enum
     /// </summary>
     [Flags]
-    public enum ClearBufferMask
+    public enum ClearBufferMasks
     {
         /// <summary>
         ///     The depth buffer bit clear buffer mask

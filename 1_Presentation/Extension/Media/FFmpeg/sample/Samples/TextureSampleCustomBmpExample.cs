@@ -171,7 +171,7 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
         public void Draw()
         {
             Gl.GlClearColor(0f, 0f, 0f, 1f);
-            Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            Gl.GlClear(ClearBufferMasks.ColorBufferBit | ClearBufferMasks.DepthBufferBit);
             Gl.GlUseProgram(shaderProgram);
             Gl.GlBindVertexArray(vao);
             Gl.GlActiveTexture(TextureUnit.Texture0); // Activar unidad de textura 0

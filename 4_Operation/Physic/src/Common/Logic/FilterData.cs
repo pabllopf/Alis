@@ -38,9 +38,9 @@ namespace Alis.Core.Physic.Common.Logic
     {
         /// <summary>
         ///     Disable the logic on specific categories.
-        ///     Category.None by default.
+        ///     Categories.None by default.
         /// </summary>
-        public Category DisabledOnCategories = Category.None;
+        public Categories DisabledOnCategories = Categories.None;
 
         /// <summary>
         ///     Disable the logic on specific groups
@@ -49,9 +49,9 @@ namespace Alis.Core.Physic.Common.Logic
 
         /// <summary>
         ///     Enable the logic on specific categories
-        ///     Category.All by default.
+        ///     Categories.All by default.
         /// </summary>
-        public Category EnabledOnCategories = Category.All;
+        public Categories EnabledOnCategories = Categories.All;
 
         /// <summary>
         ///     Enable the logic on specific groups.
@@ -76,20 +76,20 @@ namespace Alis.Core.Physic.Common.Logic
                     return false;
                 }
 
-                if ((fixture.GetCollisionCategories & DisabledOnCategories) != Category.None)
+                if ((fixture.GetCollisionCategories & DisabledOnCategories) != Categories.None)
                 {
                     return false;
                 }
 
-                if (EnabledOnGroup != 0 || EnabledOnCategories != Category.All)
+                if (EnabledOnGroup != 0 || EnabledOnCategories != Categories.All)
                 {
                     if ((fixture.GetCollisionGroup == EnabledOnGroup) && (fixture.GetCollisionGroup != 0) && (EnabledOnGroup != 0))
                     {
                         return true;
                     }
 
-                    if (((fixture.GetCollisionCategories & EnabledOnCategories) != Category.None) &&
-                        (EnabledOnCategories != Category.All))
+                    if (((fixture.GetCollisionCategories & EnabledOnCategories) != Categories.None) &&
+                        (EnabledOnCategories != Categories.All))
                     {
                         return true;
                     }
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Common.Logic
         ///     Adds the category.
         /// </summary>
         /// <param name="category">The category.</param>
-        public void AddDisabledCategory(Category category)
+        public void AddDisabledCategory(Categories category)
         {
             DisabledOnCategories |= category;
         }
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Common.Logic
         ///     Removes the category.
         /// </summary>
         /// <param name="category">The category.</param>
-        public void RemoveDisabledCategory(Category category)
+        public void RemoveDisabledCategory(Categories category)
         {
             DisabledOnCategories &= ~category;
         }
@@ -128,13 +128,13 @@ namespace Alis.Core.Physic.Common.Logic
         /// <returns>
         ///     <c>true</c> if the object has the specified category; otherwise, <c>false</c>.
         /// </returns>
-        public bool IsInDisabledCategory(Category category) => (DisabledOnCategories & category) == category;
+        public bool IsInDisabledCategory(Categories category) => (DisabledOnCategories & category) == category;
 
         /// <summary>
         ///     Adds the category.
         /// </summary>
         /// <param name="category">The category.</param>
-        public void AddEnabledCategory(Category category)
+        public void AddEnabledCategory(Categories category)
         {
             EnabledOnCategories |= category;
         }
@@ -143,7 +143,7 @@ namespace Alis.Core.Physic.Common.Logic
         ///     Removes the category.
         /// </summary>
         /// <param name="category">The category.</param>
-        public void RemoveEnabledCategory(Category category)
+        public void RemoveEnabledCategory(Categories category)
         {
             EnabledOnCategories &= ~category;
         }
@@ -155,6 +155,6 @@ namespace Alis.Core.Physic.Common.Logic
         /// <returns>
         ///     <c>true</c> if the object has the specified category; otherwise, <c>false</c>.
         /// </returns>
-        public bool IsInEnabledInCategory(Category category) => (EnabledOnCategories & category) == category;
+        public bool IsInEnabledInCategory(Categories category) => (EnabledOnCategories & category) == category;
     }
 }

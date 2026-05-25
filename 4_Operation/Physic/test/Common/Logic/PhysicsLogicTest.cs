@@ -51,7 +51,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             TestPhysicsLogic logic = new TestPhysicsLogic(world);
 
             Assert.Equal(world, logic.WorldPhysic);
-            Assert.Equal(ControllerCategory.Cat01, logic.ControllerCategory);
+            Assert.Equal(ControllerCategories.Cat01, logic.ControllerCategories);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             TestPhysicsLogic logic = new TestPhysicsLogic(world);
 
-            Assert.Equal(ControllerCategory.Cat01, logic.ControllerCategory);
+            Assert.Equal(ControllerCategories.Cat01, logic.ControllerCategories);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             TestPhysicsLogic logic = new TestPhysicsLogic(world);
             Body body = world.CreateBody();
 
-            body.ControllerFilter.IgnoreController(ControllerCategory.Cat01);
+            body.ControllerFilter.IgnoreController(ControllerCategories.Cat01);
 
             bool isActive = logic.IsActiveOn(body);
 

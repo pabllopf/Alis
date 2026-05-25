@@ -60,7 +60,7 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
         public void Draw()
         {
             Gl.GlClearColor(0f, 0f, 0f, 1f);
-            Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            Gl.GlClear(ClearBufferMasks.ColorBufferBit | ClearBufferMasks.DepthBufferBit);
 
             int elapsed = (int) clock.ElapsedMilliseconds;
             elapsed /= 1000;

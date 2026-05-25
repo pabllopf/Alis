@@ -133,7 +133,7 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
         {
             Gl.GlDisable(EnableCap.DepthTest); // Desactiva el buffer de profundidad
             Gl.GlClearColor(0f, 0f, 0f, 1f); // Fondo negro
-            Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit); // Limpia color y profundidad
+            Gl.GlClear(ClearBufferMasks.ColorBufferBit | ClearBufferMasks.DepthBufferBit); // Limpia color y profundidad
             Gl.GlBindVertexArray(vao);
             Gl.GlUseProgram(shaderProgram);
             Gl.GlLineWidth(1.0f); // Usar el valor seguro para Core Profile

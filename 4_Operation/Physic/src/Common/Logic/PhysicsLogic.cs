@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     The cat 01
         /// </summary>
-        public readonly ControllerCategory ControllerCategory = ControllerCategory.Cat01;
+        public readonly ControllerCategories ControllerCategories = ControllerCategories.Cat01;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicsLogic" /> class
@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <returns>The bool</returns>
         public override bool IsActiveOn(Body body)
         {
-            if (body.ControllerFilter.IsControllerIgnored(ControllerCategory))
+            if (body.ControllerFilter.IsControllerIgnored(ControllerCategories))
             {
                 return false;
             }

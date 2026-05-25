@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.Glfw.Sample
                 }
 
                 // Clear the screen
-                Gl.GlClear(ClearBufferMask.ColorBufferBit);
+                Gl.GlClear(ClearBufferMasks.ColorBufferBit);
 
                 Draw();
 

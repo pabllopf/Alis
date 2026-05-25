@@ -37,19 +37,19 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     The controller categories
         /// </summary>
-        public ControllerCategory ControllerCategories;
+        public ControllerCategories ControllerCategories;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ControllerFilter" /> class
         /// </summary>
         /// <param name="controllerCategory">The controller category</param>
-        public ControllerFilter(ControllerCategory controllerCategory) => ControllerCategories = controllerCategory;
+        public ControllerFilter(ControllerCategories controllerCategory) => ControllerCategories = controllerCategory;
 
         /// <summary>
         ///     Ignores the controller. The controller has no effect on this body.
         /// </summary>
         /// <param name="category"></param>
-        public void IgnoreController(ControllerCategory category)
+        public void IgnoreController(ControllerCategories category)
         {
             ControllerCategories &= ~category;
         }
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Common.Logic
         ///     Restore the controller. The controller affects this body.
         /// </summary>
         /// <param name="category">The logic type.</param>
-        public void RestoreController(ControllerCategory category)
+        public void RestoreController(ControllerCategories category)
         {
             ControllerCategories |= category;
         }
@@ -70,6 +70,6 @@ namespace Alis.Core.Physic.Common.Logic
         /// <returns>
         ///     <c>true</c> if the body has the specified flag; otherwise, <c>false</c>.
         /// </returns>
-        public bool IsControllerIgnored(ControllerCategory category) => (ControllerCategories & category) != category;
+        public bool IsControllerIgnored(ControllerCategories category) => (ControllerCategories & category) != category;
     }
 }

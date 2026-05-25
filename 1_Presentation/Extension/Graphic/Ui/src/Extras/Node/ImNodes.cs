@@ -787,7 +787,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         ///     Pushes the attribute flag using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
-        public static void PushAttributeFlag(ImNodesConfig flag)
+        public static void PushAttributeFlag(ImNodesConfigs flag)
         {
             ImNodesNative.ImNodes_PushAttributeFlag(flag);
         }

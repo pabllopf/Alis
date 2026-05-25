@@ -36,5 +36,5 @@ namespace Alis.Core.Graphic.OpenGL.Delegates
     ///     The clear
     /// </summary>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void Clear(ClearBufferMask mask);
+    public delegate void Clear(ClearBufferMasks mask);
 }

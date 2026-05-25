@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TextureModulate.cs
+//  File:TextureModulates.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
     ///     The sdl texture modulate enum
     /// </summary>
     [Flags]
-    public enum TextureModulate
+    public enum TextureModulates
     {
         /// <summary>
         ///     The sdl texture modulate none sdl texture modulate

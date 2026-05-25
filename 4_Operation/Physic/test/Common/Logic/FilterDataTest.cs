@@ -49,9 +49,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             TestFilterData filter = new TestFilterData();
 
-            Assert.Equal(Category.None, filter.DisabledOnCategories);
+            Assert.Equal(Categories.None, filter.DisabledOnCategories);
             Assert.Equal(0, filter.DisabledOnGroup);
-            Assert.Equal(Category.All, filter.EnabledOnCategories);
+            Assert.Equal(Categories.All, filter.EnabledOnCategories);
             Assert.Equal(0, filter.EnabledOnGroup);
         }
 
@@ -123,9 +123,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             TestFilterData filter = new TestFilterData();
 
-            filter.AddDisabledCategory(Category.Cat1);
+            filter.AddDisabledCategory(Categories.Cat1);
 
-            Assert.True((filter.DisabledOnCategories & Category.Cat1) == Category.Cat1);
+            Assert.True((filter.DisabledOnCategories & Categories.Cat1) == Categories.Cat1);
         }
 
         /// <summary>
@@ -135,11 +135,11 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void RemoveDisabledCategory_ShouldRemoveCategory()
         {
             TestFilterData filter = new TestFilterData();
-            filter.AddDisabledCategory(Category.Cat1);
+            filter.AddDisabledCategory(Categories.Cat1);
 
-            filter.RemoveDisabledCategory(Category.Cat1);
+            filter.RemoveDisabledCategory(Categories.Cat1);
 
-            Assert.False((filter.DisabledOnCategories & Category.Cat1) == Category.Cat1);
+            Assert.False((filter.DisabledOnCategories & Categories.Cat1) == Categories.Cat1);
         }
 
         /// <summary>
@@ -149,9 +149,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void IsInDisabledCategory_ShouldReturnTrue_ForDisabledCategory()
         {
             TestFilterData filter = new TestFilterData();
-            filter.AddDisabledCategory(Category.Cat2);
+            filter.AddDisabledCategory(Categories.Cat2);
 
-            bool result = filter.IsInDisabledCategory(Category.Cat2);
+            bool result = filter.IsInDisabledCategory(Categories.Cat2);
 
             Assert.True(result);
         }
@@ -164,7 +164,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             TestFilterData filter = new TestFilterData();
 
-            bool result = filter.IsInDisabledCategory(Category.Cat1);
+            bool result = filter.IsInDisabledCategory(Categories.Cat1);
 
             Assert.False(result);
         }
@@ -176,11 +176,11 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void AddEnabledCategory_ShouldAddCategory()
         {
             TestFilterData filter = new TestFilterData();
-            filter.EnabledOnCategories = Category.None;
+            filter.EnabledOnCategories = Categories.None;
 
-            filter.AddEnabledCategory(Category.Cat3);
+            filter.AddEnabledCategory(Categories.Cat3);
 
-            Assert.True((filter.EnabledOnCategories & Category.Cat3) == Category.Cat3);
+            Assert.True((filter.EnabledOnCategories & Categories.Cat3) == Categories.Cat3);
         }
 
         /// <summary>
@@ -190,11 +190,11 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void RemoveEnabledCategory_ShouldRemoveCategory()
         {
             TestFilterData filter = new TestFilterData();
-            filter.AddEnabledCategory(Category.Cat4);
+            filter.AddEnabledCategory(Categories.Cat4);
 
-            filter.RemoveEnabledCategory(Category.Cat4);
+            filter.RemoveEnabledCategory(Categories.Cat4);
 
-            Assert.False((filter.EnabledOnCategories & Category.Cat4) == Category.Cat4);
+            Assert.False((filter.EnabledOnCategories & Categories.Cat4) == Categories.Cat4);
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             TestFilterData filter = new TestFilterData();
 
-            bool result = filter.IsInEnabledInCategory(Category.Cat1);
+            bool result = filter.IsInEnabledInCategory(Categories.Cat1);
 
             Assert.True(result);
         }

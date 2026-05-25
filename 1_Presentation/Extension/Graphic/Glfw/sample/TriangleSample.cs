@@ -197,7 +197,7 @@ namespace Alis.Extension.Graphic.Glfw.Sample
                     running = false;
                 }
 
-                Gl.GlClear(ClearBufferMask.ColorBufferBit);
+                Gl.GlClear(ClearBufferMasks.ColorBufferBit);
 
                 Draw();
 

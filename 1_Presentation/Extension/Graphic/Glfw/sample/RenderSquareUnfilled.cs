@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Glfw.Sample
                     running = false;
                 }
 
-                Gl.GlClear(ClearBufferMask.ColorBufferBit);
+                Gl.GlClear(ClearBufferMasks.ColorBufferBit);
 
                 Draw(new Vector2F(0.0f, 0.0f), new Vector2F(0.5f, 0.5f));
                 Draw(new Vector2F(0.5f, 0.5f), new Vector2F(0.25f, 0.25f));

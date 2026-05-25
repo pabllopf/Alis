@@ -204,7 +204,7 @@ void main() {
         public void Draw()
         {
             Gl.GlClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            Gl.GlClear(ClearBufferMasks.ColorBufferBit | ClearBufferMasks.DepthBufferBit);
 
             TryAdvanceVideoFrame();
 

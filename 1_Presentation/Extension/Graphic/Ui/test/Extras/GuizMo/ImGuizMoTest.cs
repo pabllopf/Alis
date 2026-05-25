@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             AssertMethod("AllowAxisFlip", typeof(void), typeof(bool));
             AssertMethod("BeginFrame", typeof(void));
             AssertMethod("IsOver", typeof(bool));
-            AssertMethod("IsOver", typeof(bool), typeof(Operation));
+            AssertMethod("IsOver", typeof(bool), typeof(Operations));
             AssertMethod("IsUsing", typeof(bool));
             AssertMethod("SetDrawList", typeof(void));
             AssertMethod("SetDrawList", typeof(void), typeof(ImDrawList));
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
                 "Manipulate",
                 BindingFlags.Public | BindingFlags.Static,
                 null,
-                new[] {typeof(float[]), typeof(float[]), typeof(Operation), typeof(Mode), typeof(float[])},
+                new[] {typeof(float[]), typeof(float[]), typeof(Operations), typeof(Mode), typeof(float[])},
                 null);
 
             Assert.NotNull(method);

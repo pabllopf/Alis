@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EnableLink.cs
+//  File:EnableLinks.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
     ///     The attribute flags enum
     /// </summary>
     [Flags]
-    public enum EnableLink
+    public enum EnableLinks
     {
         /// <summary>
         ///     The none attribute flags

@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Sample.Samples
         /// <param name="runtime">The runtime</param>
         private static void RunCategoryFilteringScenario(SampleRuntime runtime)
         {
-            Console.WriteLine("Category filtering scenario");
+            Console.WriteLine("Categories filtering scenario");
             WorldPhysic world = runtime.CreateWorld(Vector2F.Zero);
 
             Body left = world.CreateBody(new Vector2F(-6.0f, 0.0f), 0.0f, BodyType.Dynamic);
@@ -108,10 +108,10 @@ namespace Alis.Core.Physic.Sample.Samples
             Fixture leftFixture = left.CreateCircle(0.8f, 1.0f);
             Fixture rightFixture = right.CreateCircle(0.8f, 1.0f);
 
-            leftFixture.GetCollisionCategories = Category.Cat2;
-            leftFixture.GetCollidesWith = Category.Cat3;
-            rightFixture.GetCollisionCategories = Category.Cat4;
-            rightFixture.GetCollidesWith = Category.Cat1;
+            leftFixture.GetCollisionCategories = Categories.Cat2;
+            leftFixture.GetCollidesWith = Categories.Cat3;
+            rightFixture.GetCollisionCategories = Categories.Cat4;
+            rightFixture.GetCollidesWith = Categories.Cat1;
 
             int collisions = 0;
             leftFixture.OnCollision = (sender, other, contact) =>

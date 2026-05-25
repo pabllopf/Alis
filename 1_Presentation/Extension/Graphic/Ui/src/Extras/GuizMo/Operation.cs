@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Operation.cs
+//  File:Operations.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
     ///     The operation enum
     /// </summary>
     [Flags]
-    public enum Operation
+    public enum Operations
     {
         /// <summary>
         ///     The translate operation

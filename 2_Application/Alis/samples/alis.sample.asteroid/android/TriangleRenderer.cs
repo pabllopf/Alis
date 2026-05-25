@@ -166,7 +166,7 @@ namespace Alis.Sample.Asteroid.Android
             }
 
             Gl.GlClearColor(1f, 0f, 0f, 1f); // Fondo rojo
-            Gl.GlClear(ClearBufferMask.ColorBufferBit); // Limpiar buffer de color
+            Gl.GlClear(ClearBufferMasks.ColorBufferBit); // Limpiar buffer de color
             Gl.GlUseProgram(program);
             Gl.EnableVertexAttribArray(positionHandle);
             Gl.VertexAttribPointer(

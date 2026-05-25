@@ -53,7 +53,7 @@ namespace Alis.Extension.Media.FFmpeg.Sample.Samples
         public void Draw()
         {
             Gl.GlClearColor(0f, 0f, 0f, 1f);
-            Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            Gl.GlClear(ClearBufferMasks.ColorBufferBit | ClearBufferMasks.DepthBufferBit);
 
 
             FontManager.RenderText("Hola", 0, 0, Color.Red, Color.Green);

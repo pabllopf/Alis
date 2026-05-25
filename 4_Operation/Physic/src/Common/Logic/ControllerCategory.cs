@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ControllerCategory.cs
+//  File:ControllerCategories.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Common.Logic
     ///     The controller category enum
     /// </summary>
     [Flags]
-    public enum ControllerCategory
+    public enum ControllerCategories
     {
         /// <summary>
         ///     The none controller category

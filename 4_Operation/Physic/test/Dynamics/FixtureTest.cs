@@ -82,12 +82,12 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture fixture = body.CreateCircle(0.5f, 1.0f);
 
             fixture.GetCollisionGroup = 2;
-            fixture.GetCollisionCategories = Category.Cat4;
-            fixture.GetCollidesWith = Category.Cat2 | Category.Cat3;
+            fixture.GetCollisionCategories = Categories.Cat4;
+            fixture.GetCollidesWith = Categories.Cat2 | Categories.Cat3;
 
             Assert.Equal((short)2, fixture.GetCollisionGroup);
-            Assert.Equal(Category.Cat4, fixture.GetCollisionCategories);
-            Assert.Equal(Category.Cat2 | Category.Cat3, fixture.GetCollidesWith);
+            Assert.Equal(Categories.Cat4, fixture.GetCollisionCategories);
+            Assert.Equal(Categories.Cat2 | Categories.Cat3, fixture.GetCollidesWith);
         }
 
         /// <summary>

@@ -69,12 +69,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The collides with
         /// </summary>
-        internal Category CollidesWith;
+        internal Categories CollidesWith;
 
         /// <summary>
         ///     The collision categories
         /// </summary>
-        internal Category CollisionCategories;
+        internal Categories CollisionCategories;
 
         /// <summary>
         ///     The collision group
@@ -105,8 +105,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal Fixture() // Note: This is internal because it's used by Deserialization.
         {
-            CollisionCategories = Category.Cat1;
-            CollidesWith = Category.All;
+            CollisionCategories = Categories.Cat1;
+            CollidesWith = Categories.All;
             CollisionGroup = 0;
 
             //Fixture defaults
@@ -159,11 +159,11 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        ///     Defaults to Category.All
+        ///     Defaults to Categories.All
         ///     The collision mask bits. This states the categories that this
         ///     fixture would accept for collision.
         /// </summary>
-        public Category GetCollidesWith
+        public Categories GetCollidesWith
         {
             get => CollidesWith;
 
@@ -181,9 +181,9 @@ namespace Alis.Core.Physic.Dynamics
 
         /// <summary>
         ///     The collision categories this fixture is a part of.
-        ///     Defaults to Category.Cat1
+        ///     Defaults to Categories.Cat1
         /// </summary>
-        public Category GetCollisionCategories
+        public Categories GetCollisionCategories
         {
             get => CollisionCategories;
 

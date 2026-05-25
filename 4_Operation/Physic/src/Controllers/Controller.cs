@@ -68,14 +68,14 @@ namespace Alis.Core.Physic.Controllers
         ///     Gets the category this controller belongs to.
         /// </summary>
         /// <value>
-        ///     A <see cref="ControllerCategory"/> value determining which bodies ignore this controller.
+        ///     A <see cref="ControllerCategories"/> value determining which bodies ignore this controller.
         /// </value>
         /// <remarks>
         ///     Bodies can be configured to ignore controllers from specific categories
         ///     using their <see cref="ControllerFilter"/>. This allows fine-grained control
         ///     over which controllers affect which bodies.
         /// </remarks>
-        public readonly ControllerCategory ControllerCategory = ControllerCategory.Cat01;
+        public readonly ControllerCategories ControllerCategories = ControllerCategories.Cat01;
 
         /// <summary>
         ///     Gets or sets whether this controller is enabled.
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Controllers
         /// </remarks>
         public override bool IsActiveOn(Body body)
         {
-            if (body.ControllerFilter.IsControllerIgnored(ControllerCategory))
+            if (body.ControllerFilter.IsControllerIgnored(ControllerCategories))
             {
                 return false;
             }

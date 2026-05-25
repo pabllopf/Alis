@@ -127,7 +127,7 @@ void main() {
         public void Draw()
         {
             Gl.GlClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-            Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            Gl.GlClear(ClearBufferMasks.ColorBufferBit | ClearBufferMasks.DepthBufferBit);
             Gl.GlBindVertexArray(vao);
             Gl.GlUseProgram(shaderProgram);
             Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3);
