@@ -597,7 +597,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 // obtain lock
-                for (;;)
+                while (true)
                 {
                     if (Interlocked.CompareExchange(ref orderedBodyA.Lock, 1, 0) == 0)
                     {
