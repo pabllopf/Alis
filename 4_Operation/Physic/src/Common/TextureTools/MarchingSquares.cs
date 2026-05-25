@@ -535,8 +535,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             CxFastListNode<Vector2F> bi = bp.Begin();
 
             Vector2F b = bi.GetElem();
-            CxFastListNode<Vector2F> prea = null;
-
             while (ai != ap.End())
             {
                 Vector2F a = ai.GetElem();
@@ -547,7 +545,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                     return;
                 }
 
-                prea = ai;
                 ai = ai.NextPos();
             }
         }
