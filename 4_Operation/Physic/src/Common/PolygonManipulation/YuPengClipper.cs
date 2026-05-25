@@ -483,7 +483,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
 
         /// <summary>Specifies an Edge. Edges are used to represent simplicies in simplical chains</summary>
-        private sealed class Edge
+        private sealed class Edge : IEquatable<Edge>
         {
             /// <summary>
             ///     Initializes a new instance of the <see cref="Edge" /> class
