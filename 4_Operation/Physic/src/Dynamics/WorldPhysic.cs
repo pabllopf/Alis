@@ -1883,10 +1883,6 @@ namespace Alis.Core.Physic.Dynamics
             List<Body> chainLinks = PathManager.EvenlyDistributeShapesAlongPath(this, path, shape, BodyType.Dynamic, numberOfLinks);
 
 
-            //if (fixStart)
-            //{
-            //    //Fix the first chainlink to the world
-            //    JointFactory.CreateFixedRevoluteJoint(this, chainLinks[0], new Vector2F(0, -(linkHeight / 2)),
             //Attach all the chainlinks together with a revolute joint
             PathManager.AttachBodiesWithRevoluteJoint(this, chainLinks, new Vector2F(0, -linkHeight), new Vector2F(0, linkHeight), false, false);
 
