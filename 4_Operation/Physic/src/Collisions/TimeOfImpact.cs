@@ -197,7 +197,7 @@ namespace Alis.Core.Physic.Collisions
 
                     int rootIterCount = 0;
                     float a1 = t1, a2 = t2;
-                    for (;;)
+                    while (true)
                     {
                         float t;
                         if ((rootIterCount & 1) != 0)
