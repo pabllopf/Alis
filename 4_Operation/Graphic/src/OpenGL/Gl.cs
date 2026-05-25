@@ -297,11 +297,6 @@ namespace Alis.Core.Graphic.OpenGL
         public static Uniform1I GlUniform1I => GetCommand<Uniform1I>("glUniform1i");
 
         /// <summary>
-        ///     The uniform 3fv
-        /// </summary>
-        private static Uniform3Fv GlUniform3Fv => GetCommand<Uniform3Fv>("glUniform3fv");
-
-        /// <summary>
         ///     Gets the value of the gl read pixels
         /// </summary>
         public static ReadPixels GlReadPixels => GetCommand<ReadPixels>("glReadPixels");
