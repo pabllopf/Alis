@@ -388,7 +388,7 @@ namespace Alis.Core.Aspect.Math.Vector
 
             if (index < 0 || index >= array.Length)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(index), "Index must be within the bounds of the array.");
             }
 
             if (array.Length - index < 2)
