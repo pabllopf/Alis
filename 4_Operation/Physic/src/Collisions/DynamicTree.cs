@@ -391,8 +391,6 @@ namespace Alis.Core.Physic.Collisions
                     continue;
                 }
 
-                // Separating axis for segment (Gino, p80).
-                // |dot(v, p1 - c)| > dot(|v|, h)
                 Vector2F c = _nodes[nodeId].Aabb.Center;
                 Vector2F h = _nodes[nodeId].Aabb.Extents;
                 float separation = Math.Abs(Vector2F.Dot(new Vector2F(-r.Y, r.X), p1 - c)) - Vector2F.Dot(absV, h);

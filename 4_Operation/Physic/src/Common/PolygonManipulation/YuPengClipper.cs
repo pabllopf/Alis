@@ -282,10 +282,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
             for (int i = 0; i < poly2Simplicies.Count; ++i)
             {
-                float edgeCharacter = 0f;
                 if (!resultSimplices.Contains(poly2Simplicies[i]) &&
                     !resultSimplices.Contains(-poly2Simplicies[i]))
                 {
+                    float edgeCharacter;
                     if (poly1Simplicies.Contains(-poly2Simplicies[i]) && (clipType == PolyClipType.Union))
                     {
                         edgeCharacter = 1f;

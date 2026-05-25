@@ -539,7 +539,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Find TOI events and solve them.
-            for (;;)
+            while (true)
             {
                 // Find the first TOI.
                 Contact minContact = null;

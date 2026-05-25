@@ -119,7 +119,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 {
                     int next = i + 1 < _vertices.Count ? i + 1 : 0;
                     Vector2F edge = _vertices[next] - _vertices[i];
-                    //FPE optimization: Normals.Add(MathUtils.Cross(edge, 1.0f));
                     Vector2F temp = new Vector2F(edge.Y, -edge.X);
                     temp.Normalize();
                     Normals.Add(temp);
