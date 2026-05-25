@@ -610,33 +610,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 aB += invIb * limitImpulse;
             }
 
-            // Solve point-to-point constraint.
-            {
-                Complex qA = Complex.FromAngle(aA);
-                Complex qB = Complex.FromAngle(aB);
-                Vector2F rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
-                Vector2F rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
-
-                Vector2F c = cB + rB - cA - rA;
-                positionError = c.Length();
-
-                float mA = _invMassA, mB = _invMassB;
-                float iA = invIa, iB = invIb;
-
-                Mat22 k = new Mat22();
-                k.Ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
-                k.Ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
-                k.Ey.X = k.Ex.Y;
-                k.Ey.Y = mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X;
-
-                Vector2F impulse = -k.Solve(c);
-
-                cA -= mA * impulse;
-                aA -= iA * MathUtils.Cross(ref rA, ref impulse);
-
-                cB += mB * impulse;
-                aB += iB * MathUtils.Cross(ref rB, ref impulse);
-            }
+            SolvePositionPointToPointConstraint(ref cA, out positionError, ref aA, ref cB, ref aB);
 
             data.Positions[_indexA].C = cA;
             data.Positions[_indexA].A = aA;
@@ -744,6 +718,34 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             vB += mB * impulse;
             wB += iB * MathUtils.Cross(ref _rB, ref impulse);
+        }
+
+        private void SolvePositionPointToPointConstraint(ref Vector2F cA, out float positionError, ref float aA, ref Vector2F cB, ref float aB)
+        {
+            Complex qA = Complex.FromAngle(aA);
+            Complex qB = Complex.FromAngle(aB);
+            Vector2F rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
+            Vector2F rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
+
+            Vector2F c = cB + rB - cA - rA;
+            positionError = c.Length();
+
+            float mA = _invMassA, mB = _invMassB;
+            float iA = invIa, iB = invIb;
+
+            Mat22 k = new Mat22();
+            k.Ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
+            k.Ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
+            k.Ey.X = k.Ex.Y;
+            k.Ey.Y = mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X;
+
+            Vector2F impulse = -k.Solve(c);
+
+            cA -= mA * impulse;
+            aA -= iA * MathUtils.Cross(ref rA, ref impulse);
+
+            cB += mB * impulse;
+            aB += iB * MathUtils.Cross(ref rB, ref impulse);
         }
     }
 }

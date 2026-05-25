@@ -553,43 +553,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = _invMassA, mB = _invMassB;
             float iA = invIa, iB = invIb;
 
-            // Compute motor Jacobian and effective mass.
-            {
-                _axis = Complex.Multiply(ref _localXAxis, ref qA);
-                _a1 = MathUtils.Cross(d + rA, _axis);
-                _a2 = MathUtils.Cross(ref rB, ref _axis);
-
-                _motorMass = mA + mB + iA * _a1 * _a1 + iB * _a2 * _a2;
-                if (_motorMass > 0.0f)
-                {
-                    _motorMass = 1.0f / _motorMass;
-                }
-            }
-
-            // Prismatic constraint.
-            {
-                _perp = Complex.Multiply(ref _localYAxisA, ref qA);
-
-                _s1 = MathUtils.Cross(d + rA, _perp);
-                _s2 = MathUtils.Cross(ref rB, ref _perp);
-
-                float k11 = mA + mB + iA * _s1 * _s1 + iB * _s2 * _s2;
-                float k12 = iA * _s1 + iB * _s2;
-                float k13 = iA * _s1 * _a1 + iB * _s2 * _a2;
-                float k22 = iA + iB;
-                if (Math.Abs(k22) < float.Epsilon)
-                {
-                    // For bodies with fixed rotation.
-                    k22 = 1.0f;
-                }
-
-                float k23 = iA * _a1 + iB * _a2;
-                float k33 = mA + mB + iA * _a1 * _a1 + iB * _a2 * _a2;
-
-                k.Ex = new Vector3F(k11, k12, k13);
-                k.Ey = new Vector3F(k12, k22, k23);
-                k.Ez = new Vector3F(k13, k23, k33);
-            }
+            ComputeMotorJacobian(ref qA, d, rA, rB, mA, mB, iA, iB);
+            ComputePrismaticConstraint(ref qA, d, rA, rB, mA, mB, iA, iB);
 
             // Compute motor and limit terms.
             if (_enableLimit)
@@ -891,6 +856,44 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Positions[_indexB].A = aB;
 
             return (linearError <= SettingEnv.LinearSlop) && (angularError <= SettingEnv.AngularSlop);
+        }
+
+        private void ComputeMotorJacobian(ref Complex qA, Vector2F d, Vector2F rA, Vector2F rB, float mA, float mB, float iA, float iB)
+        {
+            _axis = Complex.Multiply(ref _localXAxis, ref qA);
+            _a1 = MathUtils.Cross(d + rA, _axis);
+            _a2 = MathUtils.Cross(ref rB, ref _axis);
+
+            _motorMass = mA + mB + iA * _a1 * _a1 + iB * _a2 * _a2;
+            if (_motorMass > 0.0f)
+            {
+                _motorMass = 1.0f / _motorMass;
+            }
+        }
+
+        private void ComputePrismaticConstraint(ref Complex qA, Vector2F d, Vector2F rA, Vector2F rB, float mA, float mB, float iA, float iB)
+        {
+            _perp = Complex.Multiply(ref _localYAxisA, ref qA);
+
+            _s1 = MathUtils.Cross(d + rA, _perp);
+            _s2 = MathUtils.Cross(ref rB, ref _perp);
+
+            float k11 = mA + mB + iA * _s1 * _s1 + iB * _s2 * _s2;
+            float k12 = iA * _s1 + iB * _s2;
+            float k13 = iA * _s1 * _a1 + iB * _s2 * _a2;
+            float k22 = iA + iB;
+            if (Math.Abs(k22) < float.Epsilon)
+            {
+                // For bodies with fixed rotation.
+                k22 = 1.0f;
+            }
+
+            float k23 = iA * _a1 + iB * _a2;
+            float k33 = mA + mB + iA * _a1 * _a1 + iB * _a2 * _a2;
+
+            k.Ex = new Vector3F(k11, k12, k13);
+            k.Ey = new Vector3F(k12, k22, k23);
+            k.Ez = new Vector3F(k13, k23, k33);
         }
     }
 }

@@ -522,53 +522,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2F vB = data.Velocities[_indexB].V;
             float wB = data.Velocities[_indexB].W;
 
-            // Solve spring constraint
-            {
-                float cdot = Vector2F.Dot(_ax, vB - vA) + _sBx * wB - _sAx * wA;
-                float impulse = -_springMass * (cdot + _bias + _gamma * _springImpulse);
-                _springImpulse += impulse;
-
-                Vector2F p = impulse * _ax;
-                float la = impulse * _sAx;
-                float lb = impulse * _sBx;
-
-                vA -= mA * p;
-                wA -= iA * la;
-
-                vB += mB * p;
-                wB += iB * lb;
-            }
-
-            // Solve rotational motor constraint
-            {
-                float cdot = wB - wA - _motorSpeed;
-                float impulse = -_motorMass * cdot;
-
-                float oldImpulse = _motorImpulse;
-                float maxImpulse = data.Step.Dt * _maxMotorTorque;
-                _motorImpulse = MathUtils.Clamp(_motorImpulse + impulse, -maxImpulse, maxImpulse);
-                impulse = _motorImpulse - oldImpulse;
-
-                wA -= iA * impulse;
-                wB += iB * impulse;
-            }
-
-            // Solve point to line constraint
-            {
-                float cdot = Vector2F.Dot(_ay, vB - vA) + _sBy * wB - _sAy * wA;
-                float impulse = -_mass * cdot;
-                _impulse += impulse;
-
-                Vector2F p = impulse * _ay;
-                float la = impulse * _sAy;
-                float lb = impulse * _sBy;
-
-                vA -= mA * p;
-                wA -= iA * la;
-
-                vB += mB * p;
-                wB += iB * lb;
-            }
+            SolveSpringConstraint(ref vA, ref wA, ref vB, ref wB, mA, mB, iA, iB);
+            SolveRotationalMotorConstraint(ref wA, ref wB, iA, iB, data);
+            SolvePointToLineConstraint(ref vA, ref wA, ref vB, ref wB, mA, mB, iA, iB);
 
             data.Velocities[_indexA].V = vA;
             data.Velocities[_indexA].W = wA;
@@ -629,6 +585,54 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Positions[_indexB].A = aB;
 
             return Math.Abs(c) <= SettingEnv.LinearSlop;
+        }
+
+        private void SolveSpringConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB)
+        {
+            float cdot = Vector2F.Dot(_ax, vB - vA) + _sBx * wB - _sAx * wA;
+            float impulse = -_springMass * (cdot + _bias + _gamma * _springImpulse);
+            _springImpulse += impulse;
+
+            Vector2F p = impulse * _ax;
+            float la = impulse * _sAx;
+            float lb = impulse * _sBx;
+
+            vA -= mA * p;
+            wA -= iA * la;
+
+            vB += mB * p;
+            wB += iB * lb;
+        }
+
+        private void SolveRotationalMotorConstraint(ref float wA, ref float wB, float iA, float iB, SolverData data)
+        {
+            float cdot = wB - wA - _motorSpeed;
+            float impulse = -_motorMass * cdot;
+
+            float oldImpulse = _motorImpulse;
+            float maxImpulse = data.Step.Dt * _maxMotorTorque;
+            _motorImpulse = MathUtils.Clamp(_motorImpulse + impulse, -maxImpulse, maxImpulse);
+            impulse = _motorImpulse - oldImpulse;
+
+            wA -= iA * impulse;
+            wB += iB * impulse;
+        }
+
+        private void SolvePointToLineConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB)
+        {
+            float cdot = Vector2F.Dot(_ay, vB - vA) + _sBy * wB - _sAy * wA;
+            float impulse = -_mass * cdot;
+            _impulse += impulse;
+
+            Vector2F p = impulse * _ay;
+            float la = impulse * _sAy;
+            float lb = impulse * _sBy;
+
+            vA -= mA * p;
+            wA -= iA * la;
+
+            vB += mB * p;
+            wB += iB * lb;
         }
     }
 }
