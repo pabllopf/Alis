@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <summary>
         ///     Default constructor
         /// </summary>
-        public SoundStream() :
+        protected SoundStream() :
             base(IntPtr.Zero)
         {
         }
