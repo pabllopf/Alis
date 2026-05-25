@@ -46,11 +46,6 @@ namespace Alis.Extension.Language.Dialogue
         private readonly DialogActionExecutor _actionExecutor = new DialogActionExecutor();
 
         /// <summary>
-        ///     The condition evaluator
-        /// </summary>
-        private readonly DialogConditionEvaluator _conditionEvaluator = new DialogConditionEvaluator();
-
-        /// <summary>
         ///     The event publisher
         /// </summary>
         private readonly DialogEventPublisher _eventPublisher = new DialogEventPublisher();

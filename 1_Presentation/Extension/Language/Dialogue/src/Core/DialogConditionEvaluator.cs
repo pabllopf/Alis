@@ -37,7 +37,7 @@ namespace Alis.Extension.Language.Dialogue.Core
     /// <summary>
     ///     Evaluates dialog conditions using AND/OR logic
     /// </summary>
-    public class DialogConditionEvaluator
+    public static class DialogConditionEvaluator
     {
         /// <summary>
         ///     Evaluates a single condition against the context
