@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The create
         /// </summary>
-        internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
+        internal static readonly FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
 
         /// <summary>
         ///     The next archetype id
@@ -757,7 +757,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The create
         /// </summary>
-        internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
+        internal static readonly FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
 
         /// <summary>
         ///     The next archetype id
