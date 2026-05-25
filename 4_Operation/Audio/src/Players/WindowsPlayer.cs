@@ -303,7 +303,7 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="commandString">The command string</param>
         /// <exception cref="Exception"></exception>
-        private Task ExecuteMsiCommand(string commandString)
+        private void ExecuteMsiCommand(string commandString)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -324,8 +324,6 @@ namespace Alis.Core.Audio.Players
             {
                 _playbackTimer.Interval = length;
             }
-
-            return Task.CompletedTask;
         }
     }
 }
