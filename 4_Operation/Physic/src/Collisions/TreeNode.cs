@@ -84,22 +84,6 @@ namespace Alis.Core.Physic.Collisions
         internal int Parent;
 
         /// <summary>
-        ///     Gets or sets the next free node index in the free-list.
-        /// </summary>
-        /// <value>
-        ///     An <see cref="int"/> representing the index of the next free node, or <see cref="DynamicTree{TNode}.NullNode"/> if this is the last free node.
-        /// </value>
-        /// <remarks>
-        ///     This property provides a named interface to the <see cref="Parent"/> field when the node is free.
-        ///     For non-free nodes, this returns/sets the parent index.
-        /// </remarks>
-        internal int Next
-        {
-            get => Parent;
-            set => Parent = value;
-        }
-
-        /// <summary>
         ///     Gets or sets the user data associated with this node.
         /// </summary>
         /// <value>

@@ -98,12 +98,12 @@ namespace Alis.Core.Physic.Collisions
             // Build a linked list for the free list.
             for (int i = 0; i < _nodeCapacity - 1; ++i)
             {
-                _nodes[i].Next = i + 1;
+                _nodes[i].Parent = i + 1;
                 _nodes[i].Height = -1;
             }
 
             // build last node
-            _nodes[_nodeCapacity - 1].Next = NullNode;
+            _nodes[_nodeCapacity - 1].Parent = NullNode;
             _nodes[_nodeCapacity - 1].Height = -1;
             _freeList = 0;
         }
@@ -451,19 +451,19 @@ namespace Alis.Core.Physic.Collisions
                 // Build a linked list for the free list.
                 for (int i = _nodeCount; i < _nodeCapacity - 1; ++i)
                 {
-                    _nodes[i].Next = i + 1;
+                    _nodes[i].Parent = i + 1;
                     _nodes[i].Height = -1;
                 }
 
                 // build last node
-                _nodes[_nodeCapacity - 1].Next = NullNode;
+                _nodes[_nodeCapacity - 1].Parent = NullNode;
                 _nodes[_nodeCapacity - 1].Height = -1;
                 _freeList = _nodeCount;
             }
 
             // Peel a node off the free list.
             int nodeId = _freeList;
-            _freeList = _nodes[nodeId].Next;
+            _freeList = _nodes[nodeId].Parent;
             // reinitialize node
             _nodes[nodeId].Parent = NullNode;
             _nodes[nodeId].Child1 = NullNode;
@@ -480,7 +480,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="nodeId">The node id</param>
         private void FreeNode(int nodeId)
         {
-            _nodes[nodeId].Next = _freeList;
+            _nodes[nodeId].Parent = _freeList;
             _nodes[nodeId].Height = -1;
             _freeList = nodeId;
             --_nodeCount;
@@ -902,7 +902,7 @@ namespace Alis.Core.Physic.Collisions
             int freeIndex = _freeList;
             while (freeIndex != NullNode)
             {
-                freeIndex = _nodes[freeIndex].Next;
+                freeIndex = _nodes[freeIndex].Parent;
                 ++freeCount;
             }
         }
