@@ -32,7 +32,7 @@ namespace Alis.Core.Ecs.Systems.Scope
     /// <summary>
     ///     The runner interface
     /// </summary>
-    public interface IContextHandler<T>
+    public interface IContextHandler<out T>
     {
         /// <summary>
         ///     Gets the value of the context

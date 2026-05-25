@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Fluent
     ///     <typeparamref name="TOrigin"/>.
     /// </summary>
     /// <typeparam name="TOrigin">The type of the object produced by the build operation.</typeparam>
-    public interface IBuild<TOrigin>
+    public interface IBuild<out TOrigin>
     {
         /// <summary>
         ///     Constructs and returns the final <typeparamref name="TOrigin"/> instance.

@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.Kernel.Events
 ///     action.Invoke("hello", ref number); // T is inferred as int
 ///     </code>
 /// </remarks>
-    public interface IGenericAction<TParam>
+    public interface IGenericAction<in TParam>
     {
         /// <summary>
         ///     Runs the arbitrary generic method that this <see cref="IGenericAction{TParam}" /> represents
