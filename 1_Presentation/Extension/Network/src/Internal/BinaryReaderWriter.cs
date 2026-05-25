@@ -37,7 +37,7 @@ namespace Alis.Extension.Network.Internal
     /// <summary>
     ///     The binary reader writer class
     /// </summary>
-    internal class BinaryReaderWriter
+    internal static class BinaryReaderWriter
     {
         /// <summary>
         ///     Reads the exactly using the specified length
