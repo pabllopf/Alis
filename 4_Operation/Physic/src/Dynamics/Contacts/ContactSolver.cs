@@ -613,7 +613,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         // Case 4: x1 = 0 and x2 = 0
                         // 
                         // vn1 = b1
-                        // vn2 = b2;
                         x.X = 0.0f;
                         x.Y = 0.0f;
                         vn1 = b.X;
