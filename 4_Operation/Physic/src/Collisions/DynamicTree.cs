@@ -143,7 +143,6 @@ namespace Alis.Core.Physic.Collisions
                 {
                     if (_nodes[i].Height < 0)
                     {
-                        // Free node in pool
                         continue;
                     }
 
