@@ -840,7 +840,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             double by = pb.Y - py;
             double x = ax * by - ay * bx;
             double y = ax * bx + ay * by;
-            double angle = Math.Atan2(x, y);
+            double angle = Math.Atan2(y, x);
             return angle;
         }
 
