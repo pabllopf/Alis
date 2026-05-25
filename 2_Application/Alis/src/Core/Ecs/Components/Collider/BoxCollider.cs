@@ -237,12 +237,6 @@ namespace Alis.Core.Ecs.Components.Collider
         private bool IsInit { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the shader program
-        /// </summary>
-
-        public uint ShaderProgram { get; private set; }
-
-        /// <summary>
         ///     Gets or sets the value of the size
         /// </summary>
 
