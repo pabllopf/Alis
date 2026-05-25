@@ -418,7 +418,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     orderedIndexB = vc.IndexA;
                 }
 
-                for (;;)
+                while (true)
                 {
                     if (Interlocked.CompareExchange(ref Locks[orderedIndexA], 1, 0) == 0)
                     {
