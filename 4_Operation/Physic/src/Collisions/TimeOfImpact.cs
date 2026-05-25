@@ -159,7 +159,7 @@ namespace Alis.Core.Physic.Collisions
                 bool done = false;
                 float t2 = tMax;
                 int pushBackIter = 0;
-                for (;;)
+                while (true)
                 {
                     float s2 = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, t2);
 
