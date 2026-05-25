@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <summary>
         ///     Default constructor
         /// </summary>
-        public SoundRecorder() :
+        protected SoundRecorder() :
             base(IntPtr.Zero)
         {
             myStartCallback = OnStart;
