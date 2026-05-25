@@ -51,6 +51,11 @@ namespace Alis.Core.Physic.Dynamics
         private const bool WarmStarting = true;
 
         /// <summary>
+        ///     The world locked message
+        /// </summary>
+        private const string WorldLockedMessage = "The World is locked.";
+
+        /// <summary>
         ///     The query callback cache
         /// </summary>
         private readonly BroadPhaseQueryCallback _queryCallbackCache;
@@ -278,7 +283,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if (GetIsLocked)
                 {
-                    throw new InvalidOperationException("The World is locked.");
+                    throw new InvalidOperationException(WorldLockedMessage);
                 }
 
                 _gravity = value;
@@ -827,7 +832,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (GetIsLocked)
             {
-                throw new InvalidOperationException("The World is locked.");
+                throw new InvalidOperationException(WorldLockedMessage);
             }
 
             if (body == null)
@@ -891,7 +896,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (GetIsLocked)
             {
-                throw new InvalidOperationException("The World is locked.");
+                throw new InvalidOperationException(WorldLockedMessage);
             }
 
             if (body == null)
@@ -963,7 +968,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (GetIsLocked)
             {
-                throw new InvalidOperationException("The World is locked.");
+                throw new InvalidOperationException(WorldLockedMessage);
             }
 
             if (joint == null)
@@ -1054,7 +1059,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (GetIsLocked)
             {
-                throw new InvalidOperationException("The World is locked.");
+                throw new InvalidOperationException(WorldLockedMessage);
             }
 
             if (joint == null)
@@ -1204,7 +1209,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (GetIsLocked)
             {
-                throw new InvalidOperationException("The World is locked.");
+                throw new InvalidOperationException(WorldLockedMessage);
             }
 
             if (!GetEnabled)
@@ -1414,7 +1419,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (GetIsLocked)
             {
-                throw new InvalidOperationException("The World is locked.");
+                throw new InvalidOperationException(WorldLockedMessage);
             }
 
             if (controller == null)
@@ -1451,7 +1456,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (GetIsLocked)
             {
-                throw new InvalidOperationException("The World is locked.");
+                throw new InvalidOperationException(WorldLockedMessage);
             }
 
             if (controller == null)
@@ -1538,7 +1543,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (GetIsLocked)
             {
-                throw new InvalidOperationException("The World is locked.");
+                throw new InvalidOperationException(WorldLockedMessage);
             }
 
             for (int i = BodyList.List.Count - 1; i >= 0; i--)
