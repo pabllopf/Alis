@@ -376,14 +376,14 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="joystickId">The joystick to query.</param>
         /// <returns>A bitmask enumeration containing the state of the joystick hats.</returns>
-        public static Hat GetJoystickHats(int joystickId)
+        public static Hats GetJoystickHats(int joystickId)
         {
-            Hat hat = Hat.None;
+            Hats hat = Hats.None;
             IntPtr ptr = GetJoystickHats(joystickId, out int count);
             for (int i = 0; i < count; i++)
             {
                 byte value = Marshal.ReadByte(ptr, i);
-                hat |= (Hat) value;
+                hat |= (Hats) value;
             }
 
             return hat;

@@ -34,7 +34,7 @@ using Xunit;
 namespace Alis.Extension.Graphic.Glfw.Test.Enums
 {
     /// <summary>
-    ///     Tests for Hat enum
+    ///     Tests for Hats enum
     /// </summary>
     public class HatEnumTests
     {
@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_Centered_IsDefined()
         {
-            Assert.True(Enum.IsDefined(typeof(Hat), Hat.None));
+            Assert.True(Enum.IsDefined(typeof(Hats), Hats.None));
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_Up_IsDefined()
         {
-            Assert.True(Enum.IsDefined(typeof(Hat), Hat.Up));
+            Assert.True(Enum.IsDefined(typeof(Hats), Hats.Up));
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_Right_IsDefined()
         {
-            Assert.True(Enum.IsDefined(typeof(Hat), Hat.Right));
+            Assert.True(Enum.IsDefined(typeof(Hats), Hats.Right));
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_Down_IsDefined()
         {
-            Assert.True(Enum.IsDefined(typeof(Hat), Hat.Down));
+            Assert.True(Enum.IsDefined(typeof(Hats), Hats.Down));
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_Left_IsDefined()
         {
-            Assert.True(Enum.IsDefined(typeof(Hat), Hat.Left));
+            Assert.True(Enum.IsDefined(typeof(Hats), Hats.Left));
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_RightUp_IsDefined()
         {
-            Assert.True(Enum.IsDefined(typeof(Hat), Hat.RightUp));
+            Assert.True(Enum.IsDefined(typeof(Hats), Hats.RightUp));
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_RightDown_IsDefined()
         {
-            Assert.True(Enum.IsDefined(typeof(Hat), Hat.RightDown));
+            Assert.True(Enum.IsDefined(typeof(Hats), Hats.RightDown));
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_LeftUp_IsDefined()
         {
-            Assert.True(Enum.IsDefined(typeof(Hat), Hat.LeftUp));
+            Assert.True(Enum.IsDefined(typeof(Hats), Hats.LeftUp));
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_LeftDown_IsDefined()
         {
-            Assert.True(Enum.IsDefined(typeof(Hat), Hat.LeftDown));
+            Assert.True(Enum.IsDefined(typeof(Hats), Hats.LeftDown));
         }
 
         /// <summary>
@@ -125,10 +125,10 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_CanBeCombinedWithBitwiseOr()
         {
-            Hat combined = Hat.Up | Hat.Right;
-            Assert.NotEqual(Hat.None, combined);
-            Assert.True((combined & Hat.Up) == Hat.Up);
-            Assert.True((combined & Hat.Right) == Hat.Right);
+            Hats combined = Hats.Up | Hats.Right;
+            Assert.NotEqual(Hats.None, combined);
+            Assert.True((combined & Hats.Up) == Hats.Up);
+            Assert.True((combined & Hats.Right) == Hats.Right);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_Centered_HasZeroValue()
         {
-            Assert.Equal(0, (int) Hat.None);
+            Assert.Equal(0, (int) Hats.None);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
         [Fact]
         public void Hat_CanBeCastToInt()
         {
-            Hat hat = Hat.Up;
+            Hats hat = Hats.Up;
             int value = (int) hat;
             Assert.True(value > 0);
         }

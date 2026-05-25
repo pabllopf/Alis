@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.Glfw.Enums
     ///     Describes joystick hat states.
     /// </summary>
     [Flags]
-    public enum Hat
+    public enum Hats
     {
         /// <summary>
         ///     Centered
