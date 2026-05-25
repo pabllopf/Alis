@@ -32,8 +32,8 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
     /// <summary>
     ///     The opus encoder class
     /// </summary>
-    /// <seealso cref="EncoderOptionsBuilder" />
-    public class OpusEncoder : EncoderOptionsBuilder
+    /// <seealso cref="IEncoderOptionsBuilder" />
+    public class OpusEncoder : IEncoderOptionsBuilder
     {
         /// <summary>
         ///     The application enum
@@ -87,12 +87,12 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         /// <summary>
         ///     Gets or sets the value of the format
         /// </summary>
-        public override string Format { get; set; } = "ogg";
+        public string Format { get; set; } = "ogg";
 
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
-        public override string Name => "libopus";
+        public string Name => "libopus";
 
         /// <summary>
         ///     Gets or sets the value of the current quality settings
@@ -130,7 +130,7 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         ///     Creates this instance
         /// </summary>
         /// <returns>The encoder options</returns>
-        public override EncoderOptions Create() => new EncoderOptions
+        public EncoderOptions Create() => new EncoderOptions
         {
             Format = Format,
             EncoderName = Name,

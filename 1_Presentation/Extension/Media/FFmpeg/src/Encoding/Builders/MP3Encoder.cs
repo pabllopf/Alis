@@ -32,8 +32,8 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
     /// <summary>
     ///     The mp encoder class
     /// </summary>
-    /// <seealso cref="EncoderOptionsBuilder" />
-    public class Mp3Encoder : EncoderOptionsBuilder
+    /// <seealso cref="IEncoderOptionsBuilder" />
+    public class Mp3Encoder : IEncoderOptionsBuilder
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Mp3Encoder" /> class
@@ -56,12 +56,12 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         /// <summary>
         ///     Gets or sets the value of the format
         /// </summary>
-        public override string Format { get; set; } = "mp3";
+        public string Format { get; set; } = "mp3";
 
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
-        public override string Name => "libmp3lame";
+        public string Name => "libmp3lame";
 
         /// <summary>
         ///     Gets or sets the value of the current quality settings
@@ -99,7 +99,7 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         ///     Creates this instance
         /// </summary>
         /// <returns>The encoder options</returns>
-        public override EncoderOptions Create() => new EncoderOptions
+        public EncoderOptions Create() => new EncoderOptions
         {
             Format = Format,
             EncoderName = Name,

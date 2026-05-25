@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EncoderOptionsBuilder.cs
+//  File:IEncoderOptionsBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,23 +30,23 @@
 namespace Alis.Extension.Media.FFmpeg.Encoding
 {
     /// <summary>
-    ///     Base class for EncoderOptions builders. Implement this for separate encoders.
+    ///     Base interface for EncoderOptions builders. Implement this for separate encoders.
     /// </summary>
-    public abstract class EncoderOptionsBuilder
+    public interface IEncoderOptionsBuilder
     {
         /// <summary>
         ///     FFmpeg format name (container format)
         /// </summary>
-        public abstract string Format { get; set; }
+        string Format { get; set; }
 
         /// <summary>
         ///     FFmpeg encoder name
         /// </summary>
-        public abstract string Name { get; }
+        string Name { get; }
 
         /// <summary>
         ///     Create an EncoderOptions object from FFmpeg based on the configuration
         /// </summary>
-        public abstract EncoderOptions Create();
+        EncoderOptions Create();
     }
 }

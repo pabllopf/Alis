@@ -34,8 +34,8 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
     /// <summary>
     ///     The 264 encoder class
     /// </summary>
-    /// <seealso cref="EncoderOptionsBuilder" />
-    public class H264Encoder : EncoderOptionsBuilder
+    /// <seealso cref="IEncoderOptionsBuilder" />
+    public class H264Encoder : IEncoderOptionsBuilder
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="H264Encoder" /> class
@@ -64,12 +64,12 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         /// <summary>
         ///     Gets or sets the value of the format
         /// </summary>
-        public override string Format { get; set; } = "mp4";
+        public string Format { get; set; } = "mp4";
 
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
-        public override string Name => "libx264";
+        public string Name => "libx264";
 
         /// <summary>
         ///     Gets or sets the value of the current quality settings
@@ -130,7 +130,7 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         ///     Creates this instance
         /// </summary>
         /// <returns>The encoder options</returns>
-        public override EncoderOptions Create() => new EncoderOptions
+        public EncoderOptions Create() => new EncoderOptions
         {
             Format = Format,
             EncoderName = Name,

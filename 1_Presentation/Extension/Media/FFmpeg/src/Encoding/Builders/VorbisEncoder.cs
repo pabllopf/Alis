@@ -34,8 +34,8 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
     /// <summary>
     ///     The vorbis encoder class
     /// </summary>
-    /// <seealso cref="EncoderOptionsBuilder" />
-    public class VorbisEncoder : EncoderOptionsBuilder
+    /// <seealso cref="IEncoderOptionsBuilder" />
+    public class VorbisEncoder : IEncoderOptionsBuilder
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="VorbisEncoder" /> class
@@ -58,12 +58,12 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         /// <summary>
         ///     Gets or sets the value of the format
         /// </summary>
-        public override string Format { get; set; } = "ogg";
+        public string Format { get; set; } = "ogg";
 
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
-        public override string Name => "libvorbis";
+        public string Name => "libvorbis";
 
         /// <summary>
         ///     Gets or sets the value of the current quality settings
@@ -92,7 +92,7 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         ///     Creates this instance
         /// </summary>
         /// <returns>The encoder options</returns>
-        public override EncoderOptions Create() => new EncoderOptions
+        public EncoderOptions Create() => new EncoderOptions
         {
             Format = Format,
             EncoderName = Name,

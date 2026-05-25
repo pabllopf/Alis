@@ -32,8 +32,8 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
     /// <summary>
     ///     The vp encoder class
     /// </summary>
-    /// <seealso cref="EncoderOptionsBuilder" />
-    public class Vp9Encoder : EncoderOptionsBuilder
+    /// <seealso cref="IEncoderOptionsBuilder" />
+    public class Vp9Encoder : IEncoderOptionsBuilder
     {
         /// <summary>
         ///     The tune enum
@@ -88,12 +88,12 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         /// <summary>
         ///     Gets or sets the value of the format
         /// </summary>
-        public override string Format { get; set; } = "webm";
+        public string Format { get; set; } = "webm";
 
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
-        public override string Name => "libvpx-vp9";
+        public string Name => "libvpx-vp9";
 
         /// <summary>
         ///     Gets or sets the value of the current quality settings
@@ -162,7 +162,7 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         ///     Creates this instance
         /// </summary>
         /// <returns>The encoder options</returns>
-        public override EncoderOptions Create() => new EncoderOptions
+        public EncoderOptions Create() => new EncoderOptions
         {
             Format = Format,
             EncoderName = Name,

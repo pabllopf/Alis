@@ -32,8 +32,8 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
     /// <summary>
     ///     The aac encoder class
     /// </summary>
-    /// <seealso cref="EncoderOptionsBuilder" />
-    public class AacEncoder : EncoderOptionsBuilder
+    /// <seealso cref="IEncoderOptionsBuilder" />
+    public class AacEncoder : IEncoderOptionsBuilder
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="AacEncoder" /> class
@@ -56,12 +56,12 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         /// <summary>
         ///     Gets or sets the value of the format
         /// </summary>
-        public override string Format { get; set; } = "m4a";
+        public string Format { get; set; } = "m4a";
 
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
-        public override string Name => "aac";
+        public string Name => "aac";
 
         /// <summary>
         ///     Gets or sets the value of the current quality settings
@@ -81,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         ///     Creates this instance
         /// </summary>
         /// <returns>The encoder options</returns>
-        public override EncoderOptions Create() => new EncoderOptions
+        public EncoderOptions Create() => new EncoderOptions
         {
             Format = Format,
             EncoderName = Name,
