@@ -149,14 +149,14 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <returns>A span of t</returns>
         internal Span<T> GetComponentSpan<T>()
         {
-            ComponentStorageBase[] components = Components;
+            ComponentStorageBase[] localComponents = Components;
             int index = GetComponentIndex<T>();
             if (index == 0)
             {
                 throw new ComponentNotFoundException(typeof(T));
             }
 
-            return Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref components[0], index))
+            return Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref localComponents[0], index))
                 .AsSpanLength(NextComponentIndex);
         }
 
