@@ -115,10 +115,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float _maxForce;
 
-        /// <summary>
-        ///     The max torque
-        /// </summary>
-        private float _maxTorque;
 
         /// <summary>
         ///     The
@@ -162,7 +158,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             _angularOffset = 0.0f;
             _maxForce = 1.0f;
-            _maxTorque = 1.0f;
+            MaxTorque = 1.0f;
             CorrectionFactor = 0.3f;
 
             _angularOffset = BodyB.Rotation - BodyA.Rotation;
@@ -198,11 +194,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The maximum amount of torque that can be applied to BodyA
         /// </summary>
-        public float MaxTorque
-        {
-            set => _maxTorque = value;
-            get => _maxTorque;
-        }
+        public float MaxTorque { get; set; }
 
         /// <summary>
         ///     The linear (translation) offset.
@@ -356,7 +348,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float impulse = -_angularMass * cdot;
 
                 float oldImpulse = _angularImpulse;
-                float maxImpulse = h * _maxTorque;
+                float maxImpulse = h * MaxTorque;
                 _angularImpulse = MathUtils.Clamp(_angularImpulse + impulse, -maxImpulse, maxImpulse);
                 impulse = _angularImpulse - oldImpulse;
 
