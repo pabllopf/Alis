@@ -343,47 +343,52 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float h = data.Step.Dt;
             float invH = data.Step.InvDt;
 
-            {
-                float cdot = wB - wA + invH * CorrectionFactor * _angularError;
-                float impulse = -_angularMass * cdot;
-
-                float oldImpulse = _angularImpulse;
-                float maxImpulse = h * MaxTorque;
-                _angularImpulse = MathUtils.Clamp(_angularImpulse + impulse, -maxImpulse, maxImpulse);
-                impulse = _angularImpulse - oldImpulse;
-
-                wA -= iA * impulse;
-                wB += iB * impulse;
-            }
-
-            {
-                Vector2F cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA) + invH * CorrectionFactor * _linearError;
-
-                Vector2F impulse = -MathUtils.Mul(ref _linearMass, ref cdot);
-                Vector2F oldImpulse = _linearImpulse;
-                _linearImpulse += impulse;
-
-                float maxImpulse = h * _maxForce;
-
-                if (_linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
-                {
-                    _linearImpulse.Normalize();
-                    _linearImpulse *= maxImpulse;
-                }
-
-                impulse = _linearImpulse - oldImpulse;
-
-                vA -= mA * impulse;
-                wA -= iA * MathUtils.Cross(ref _rA, ref impulse);
-
-                vB += mB * impulse;
-                wB += iB * MathUtils.Cross(ref _rB, ref impulse);
-            }
+            SolveAngularFriction(ref wA, ref wB, iA, iB, h, invH);
+            SolveLinearFriction(ref vA, ref wA, ref vB, ref wB, mA, mB, iA, iB, h, invH);
 
             data.Velocities[_indexA].V = vA;
             data.Velocities[_indexA].W = wA;
             data.Velocities[_indexB].V = vB;
             data.Velocities[_indexB].W = wB;
+        }
+
+        private void SolveAngularFriction(ref float wA, ref float wB, float iA, float iB, float h, float invH)
+        {
+            float cdot = wB - wA + invH * CorrectionFactor * _angularError;
+            float impulse = -_angularMass * cdot;
+
+            float oldImpulse = _angularImpulse;
+            float maxImpulse = h * MaxTorque;
+            _angularImpulse = MathUtils.Clamp(_angularImpulse + impulse, -maxImpulse, maxImpulse);
+            impulse = _angularImpulse - oldImpulse;
+
+            wA -= iA * impulse;
+            wB += iB * impulse;
+        }
+
+        private void SolveLinearFriction(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB, float h, float invH)
+        {
+            Vector2F cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA) + invH * CorrectionFactor * _linearError;
+
+            Vector2F impulse = -MathUtils.Mul(ref _linearMass, ref cdot);
+            Vector2F oldImpulse = _linearImpulse;
+            _linearImpulse += impulse;
+
+            float maxImpulse = h * _maxForce;
+
+            if (_linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
+            {
+                _linearImpulse.Normalize();
+                _linearImpulse *= maxImpulse;
+            }
+
+            impulse = _linearImpulse - oldImpulse;
+
+            vA -= mA * impulse;
+            wA -= iA * MathUtils.Cross(ref _rA, ref impulse);
+
+            vB += mB * impulse;
+            wB += iB * MathUtils.Cross(ref _rB, ref impulse);
         }
 
         /// <summary>
