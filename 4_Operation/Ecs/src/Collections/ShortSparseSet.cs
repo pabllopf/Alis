@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Collections
             ushort[] localSparse = _sparse;
             if (id >= localSparse.Length)
             {
-                throw new ArgumentOutOfRangeException(InvalidId);
+                throw new ArgumentOutOfRangeException(nameof(id), InvalidId);
             }
 
             ushort index = localSparse[id];

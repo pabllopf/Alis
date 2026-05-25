@@ -147,6 +147,31 @@ namespace Alis.Core.Aspect.Math.Matrix
             hashCode = hash.ToHashCode();
         }
 
+        /// <summary>Creates a 4x4 matrix from the specified components.</summary>
+        /// <param name="m11">The value to assign to the first element in the first row.</param>
+        /// <param name="m12">The value to assign to the second element in the first row.</param>
+        /// <param name="m13">The value to assign to the third element in the first row.</param>
+        /// <param name="m14">The value to assign to the fourth element in the first row.</param>
+        /// <param name="m21">The value to assign to the first element in the second row.</param>
+        /// <param name="m22">The value to assign to the second element in the second row.</param>
+        /// <param name="m23">The value to assign to the third element in the second row.</param>
+        /// <param name="m24">The value to assign to the fourth element in the second row.</param>
+        /// <param name="m31">The value to assign to the first element in the third row.</param>
+        /// <param name="m32">The value to assign to the second element in the third row.</param>
+        /// <param name="m33">The value to assign to the third element in the third row.</param>
+        /// <param name="m34">The value to assign to the fourth element in the third row.</param>
+        /// <param name="m41">The value to assign to the first element in the fourth row.</param>
+        /// <param name="m42">The value to assign to the second element in the fourth row.</param>
+        /// <param name="m43">The value to assign to the third element in the fourth row.</param>
+        /// <param name="m44">The value to assign to the fourth element in the fourth row.</param>
+        public Matrix4X4(float m11, float m12, float m13, float m14,
+            float m21, float m22, float m23, float m24,
+            float m31, float m32, float m33, float m34,
+            float m41, float m42, float m43, float m44)
+            : this((m11, m12, m13, m14), (m21, m22, m23, m24), (m31, m32, m33, m34), (m41, m42, m43, m44))
+        {
+        }
+
         /// <summary>Gets the multiplicative identity matrix.</summary>
         /// <value>The identity matrix with ones on the diagonal and zeros elsewhere.</value>
         public static Matrix4X4 Identity => new Matrix4X4
