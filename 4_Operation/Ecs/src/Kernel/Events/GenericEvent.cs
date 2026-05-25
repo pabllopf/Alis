@@ -154,5 +154,21 @@ namespace Alis.Core.Ecs.Kernel.Events
             left.Remove(right);
             return left;
         }
+
+        /// <inheritdoc />
+        public override bool Equals(object obj) => ReferenceEquals(this, obj);
+
+        /// <inheritdoc />
+        public override int GetHashCode() => base.GetHashCode();
+
+        /// <summary>
+        ///     Determines whether two <see cref="GenericEvent" /> instances are equal.
+        /// </summary>
+        public static bool operator ==(GenericEvent left, GenericEvent right) => ReferenceEquals(left, right);
+
+        /// <summary>
+        ///     Determines whether two <see cref="GenericEvent" /> instances are not equal.
+        /// </summary>
+        public static bool operator !=(GenericEvent left, GenericEvent right) => !ReferenceEquals(left, right);
     }
 }
