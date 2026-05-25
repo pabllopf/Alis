@@ -210,6 +210,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         public override void OnSave()
         {
+            // TODO: Implement scene serialization when JSON persistence is re-enabled
         }
 
         /// <summary>
