@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Collisions
             distanceInput.ProxyB = input.ProxyB;
             distanceInput.UseRadii = false;
 
-            for (;;)
+            while (true)
             {
                 sweepA.GetTransform(out ControllerTransform xfA, t1);
                 sweepB.GetTransform(out ControllerTransform xfB, t1);
