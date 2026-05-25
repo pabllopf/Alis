@@ -101,11 +101,11 @@ namespace Alis.Core.Ecs.Updating
         ///     Invokes the generic action with using the specified action
         /// </summary>
         /// <param name="action">The action</param>
-        /// <param name="e">The </param>
+        /// <param name="gameObject">The game object</param>
         /// <param name="index">The index</param>
-        internal override void InvokeGenericActionWith(GenericEvent action, GameObject e, int index)
+        internal override void InvokeGenericActionWith(GenericEvent action, GameObject gameObject, int index)
         {
-            action?.Invoke(e, ref this[index]);
+            action?.Invoke(gameObject, ref this[index]);
         }
 
         /// <summary>
