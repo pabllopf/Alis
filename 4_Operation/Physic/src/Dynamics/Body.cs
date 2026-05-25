@@ -43,6 +43,8 @@ namespace Alis.Core.Physic.Dynamics
     /// </summary>
     public partial class Body
     {
+        private const string WorldLockedMessage = "The World is locked.";
+
         /// <summary>
         ///     Gets all the fixtures attached to this body.
         /// </summary>
@@ -223,7 +225,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
                 {
-                    throw new InvalidOperationException("The World is locked.");
+                    throw new InvalidOperationException(WorldLockedMessage);
                 }
 
                 if (_bodyType == value)
@@ -416,7 +418,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
                 {
-                    throw new InvalidOperationException("The World is locked.");
+                    throw new InvalidOperationException(WorldLockedMessage);
                 }
 
                 if (value == _enabled)
@@ -548,7 +550,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
                 {
-                    throw new InvalidOperationException("The World is locked.");
+                    throw new InvalidOperationException(WorldLockedMessage);
                 }
 
                 if (_bodyType != BodyType.Dynamic)
@@ -580,7 +582,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
                 {
-                    throw new InvalidOperationException("The World is locked.");
+                    throw new InvalidOperationException(WorldLockedMessage);
                 }
 
                 if (_bodyType != BodyType.Dynamic) //Make an assert
@@ -612,7 +614,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
                 {
-                    throw new InvalidOperationException("The World is locked.");
+                    throw new InvalidOperationException(WorldLockedMessage);
                 }
 
                 if (_bodyType != BodyType.Dynamic) //Make an assert
@@ -694,7 +696,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
             {
-                throw new InvalidOperationException("The World is locked.");
+                throw new InvalidOperationException(WorldLockedMessage);
             }
 
             if (fixture == null)
@@ -762,7 +764,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
             {
-                throw new InvalidOperationException("The World is locked.");
+                throw new InvalidOperationException(WorldLockedMessage);
             }
 
             if (fixture == null)
@@ -859,7 +861,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (GetWorldPhysic.GetIsLocked)
             {
-                throw new InvalidOperationException("The World is locked.");
+                throw new InvalidOperationException(WorldLockedMessage);
             }
 
             Xf.Rotation.Phase = angle;
