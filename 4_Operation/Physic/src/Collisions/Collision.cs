@@ -197,7 +197,12 @@ namespace Alis.Core.Physic.Collisions
                 return;
             }
 
-            // Compute barycentric coordinates
+            // Compute barycentric coordinates and contact
+            ResolveBarycentricContact(ref manifold, cLocal, v1, v2, radius, polygonA, vertIndex1, circleB);
+        }
+
+        private static void ResolveBarycentricContact(ref Manifold manifold, Vector2F cLocal, Vector2F v1, Vector2F v2, float radius, PolygonShape polygonA, int vertIndex1, CircleShape circleB)
+        {
             float u1 = (cLocal.X - v1.X) * (v2.X - v1.X) + (cLocal.Y - v1.Y) * (v2.Y - v1.Y);
             float u2 = (cLocal.X - v2.X) * (v1.X - v2.X) + (cLocal.Y - v2.Y) * (v1.Y - v2.Y);
 
