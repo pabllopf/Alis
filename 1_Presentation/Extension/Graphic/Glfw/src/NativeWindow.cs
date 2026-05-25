@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Glfw
     ///     Provides a simplified interface for creating and using a GLFW window with properties, events, etc.
     /// </summary>
     /// <seealso cref="Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid" />
-    public class NativeWindow : SafeHandleZeroOrMinusOneIsInvalid, IEquatable<NativeWindow>
+    public class NativeWindow : SafeHandleZeroOrMinusOneIsInvalid
     {
         /// <summary>
         ///     The window instance this object wraps.
