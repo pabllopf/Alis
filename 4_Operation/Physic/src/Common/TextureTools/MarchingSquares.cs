@@ -495,7 +495,8 @@ namespace Alis.Core.Physic.Common.TextureTools
                     }
                     else
                     {
-                        poly.Points.Add(p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin)));
+                        p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin));
+                        poly.Points.Add(p);
                     }
 
                     poly.Length++;
