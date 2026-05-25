@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
         /// <summary>
         ///     Initializes a new instance of the <see cref="TriangulationContext" /> class
         /// </summary>
-        public TriangulationContext() => Terminated = false;
+        protected TriangulationContext() => Terminated = false;
 
         /// <summary>
         ///     Gets or sets the value of the triangulation mode
