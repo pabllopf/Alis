@@ -180,11 +180,11 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     Stores the component index
         /// </summary>
-        /// <param name="componentIndex">The component index</param>
+        /// <param name="index">The component index</param>
         /// <returns>The component handle</returns>
-        internal override ComponentHandle Store(int componentIndex)
+        internal override ComponentHandle Store(int index)
         {
-            ref TComponent item = ref this[componentIndex];
+            ref TComponent item = ref this[index];
 
             Component<TComponent>.Destroyer?.Invoke(ref item);
 
