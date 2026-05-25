@@ -558,7 +558,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 }
                 else
                 {
-                    c.Reset(fixtureB, indexB, fixtureA, indexA);
+                    c.Reset(fA: fixtureB, indexA: indexB, fB: fixtureA, indexB: indexA);
                 }
             }
 
