@@ -53,16 +53,16 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     Locates the edge
         /// </summary>
-        /// <param name="edge">The edge</param>
+        /// <param name="s">The edge</param>
         /// <returns>The sink</returns>
-        public override Sink Locate(Edge edge)
+        public override Sink Locate(Edge s)
         {
-            if (edge.P.X >= _point.X)
+            if (s.P.X >= _point.X)
             {
-                return RightChild.Locate(edge); // Move to the right in the graph
+                return RightChild.Locate(s); // Move to the right in the graph
             }
 
-            return LeftChild.Locate(edge); // Move to the left in the graph
+            return LeftChild.Locate(s); // Move to the left in the graph
         }
     }
 }
