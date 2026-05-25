@@ -124,9 +124,9 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="otherRunner">The other runner</param>
         /// <param name="me">The me</param>
         /// <param name="other">The other</param>
-        /// <param name="otherRemoveIndex">The other remove index</param>
+        /// <param name="otherRemove">The other remove</param>
         internal override void PullComponentFromAndClear(ComponentStorageBase otherRunner, int me, int other,
-            int otherRemoveIndex)
+            int otherRemove)
         {
             ComponentStorage<TComponent> componentRunner =
                 Unsafe.As<ComponentStorage<TComponent>>(otherRunner);
@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.Updating
             ref TComponent item = ref componentRunner[other];
             this[me] = item;
 
-            ref TComponent downItem = ref componentRunner[otherRemoveIndex];
+            ref TComponent downItem = ref componentRunner[otherRemove];
             item = downItem;
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
