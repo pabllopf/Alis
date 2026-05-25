@@ -201,7 +201,7 @@ namespace Alis.Core.Ecs.Collections
         /// <exception cref="ArgumentOutOfRangeException">ArgumentOutOfRange_NeedNonNegNum</exception>
         /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
         /// <exception cref="ArgumentException">Invalid array type</exception>
-        void ICollection.CopyTo(Array array, int arrayIndex)
+        void ICollection.CopyTo(Array array, int index)
         {
             if (array == null)
             {
@@ -218,20 +218,20 @@ namespace Alis.Core.Ecs.Collections
                 throw new ArgumentException("Arg_NonZeroLowerBound", nameof(array));
             }
 
-            if (arrayIndex < 0 || arrayIndex > array.Length)
+            if (index < 0 || index > array.Length)
             {
-                throw new ArgumentOutOfRangeException(nameof(arrayIndex), arrayIndex, ArgOutOfRangeNeedNonNegNum);
+                throw new ArgumentOutOfRangeException(nameof(index), index, ArgOutOfRangeNeedNonNegNum);
             }
 
-            if (array.Length - arrayIndex < _size)
+            if (array.Length - index < _size)
             {
                 throw new ArgumentException("Argument_InvalidOffLen");
             }
 
             try
             {
-                Array.Copy(_array, 0, array, arrayIndex, _size);
-                Array.Reverse(array, arrayIndex, _size);
+                Array.Copy(_array, 0, array, index, _size);
+                Array.Reverse(array, index, _size);
             }
             catch (ArrayTypeMismatchException)
             {
