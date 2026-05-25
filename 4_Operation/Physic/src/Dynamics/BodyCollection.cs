@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Dynamics
     /// </summary>
     /// <seealso cref="ICollection{Body}" />
     /// <seealso cref="IList{Body}" />
-    public class BodyCollection : ICollection<Body>, IList<Body>
+    public class BodyCollection : IList<Body>
     {
         /// <summary>
         ///     The body
