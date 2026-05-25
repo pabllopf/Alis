@@ -164,7 +164,6 @@ namespace Alis.Core.Physic.Collisions
                 int maxBalance = 0;
                 for (int i = 0; i < _nodeCapacity; ++i)
                 {
-                    //TreeNode<T>* node = &_nodes[i];
                     if (_nodes[i].Height <= 1)
                     {
                         continue;
