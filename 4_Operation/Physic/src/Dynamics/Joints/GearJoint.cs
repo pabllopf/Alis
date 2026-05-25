@@ -151,10 +151,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float _mass;
 
-        /// <summary>
-        ///     The ratio
-        /// </summary>
-        private float _ratio;
 
         /// <summary>
         ///     The jv bd
@@ -298,11 +294,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The gear ratio.
         /// </summary>
-        public float Ratio
-        {
-            get => _ratio;
-            set => _ratio = value;
-        }
+        public float Ratio { get; set; }
 
         /// <summary>
         ///     The first revolute/prismatic joint attached to the gear joint.
