@@ -124,11 +124,11 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
         GeneralSetting IJsonDesSerializable<GeneralSetting>.CreateFromProperties(Dictionary<string, string> properties) => new GeneralSetting(
             properties.TryGetValue(nameof(Debug), out string debugValue) && bool.TryParse(debugValue, out bool debugValueLocal) && debugValueLocal,
             properties.TryGetValue(nameof(Name), out string nameValue) ? nameValue : "Default Name",
-            properties.TryGetValue(nameof(Description), out string description) ? description : "Default Description",
-            properties.TryGetValue(nameof(Version), out string version) ? version : "0.0.0",
-            properties.TryGetValue(nameof(Author), out string author) ? author : "Pablo Perdomo Falcón",
-            properties.TryGetValue(nameof(License), out string license) ? license : "GPL-3.0 license",
-            properties.TryGetValue(nameof(Icon), out string icon) ? icon : "app.jpeg"
+            properties.TryGetValue(nameof(Description), out string descriptionValue) ? descriptionValue : "Default Description",
+            properties.TryGetValue(nameof(Version), out string versionValue) ? versionValue : "0.0.0",
+            properties.TryGetValue(nameof(Author), out string authorValue) ? authorValue : "Pablo Perdomo Falcón",
+            properties.TryGetValue(nameof(License), out string licenseValue) ? licenseValue : "GPL-3.0 license",
+            properties.TryGetValue(nameof(Icon), out string iconValue) ? iconValue : "app.jpeg"
         );
     }
 }
