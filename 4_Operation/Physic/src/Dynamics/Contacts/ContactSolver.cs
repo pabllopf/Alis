@@ -512,7 +512,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     b -= MathUtils.Mul(ref vc.K, ref a);
 
-                    for (;;)
+                    while (true)
                     {
                         //
                         // Case 1: vn = 0
