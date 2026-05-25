@@ -135,8 +135,7 @@ namespace Alis.Core.Aspect.Logging
         /// <param name="message">The message to log.</param>
         public static void Log(string message)
         {
-            EnsureInitialized();
-            _defaultLogger?.LogInfo(message);
+            Info(message);
         }
 
         /// <summary>
