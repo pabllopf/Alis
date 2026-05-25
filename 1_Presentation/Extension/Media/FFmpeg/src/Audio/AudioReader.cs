@@ -126,7 +126,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
 
                 try
                 {
-                    MediaStream audioStream = metadata.Streams.Where(x => x.CodecType.ToLower().Trim() == "audio").FirstOrDefault();
+                    MediaStream audioStream = metadata.Streams.FirstOrDefault(x => x.CodecType.ToLower().Trim() == "audio");
                     if (audioStream != null)
                     {
                         metadata.Channels = audioStream.Channels;
