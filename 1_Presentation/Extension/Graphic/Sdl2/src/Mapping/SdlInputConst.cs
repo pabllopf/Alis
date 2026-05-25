@@ -55,16 +55,6 @@ namespace Alis.Extension.Graphic.Sdl2.Mapping
         public const uint ButtonRight = 3;
 
         /// <summary>
-        ///     The sdl button x1
-        /// </summary>
-        private const uint ButtonX1 = 4;
-
-        /// <summary>
-        ///     The sdl button x2
-        /// </summary>
-        private const uint ButtonX2 = 5;
-
-        /// <summary>
         ///     The max value
         /// </summary>
         public const uint TouchMouseId = uint.MaxValue;
