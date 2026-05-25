@@ -435,7 +435,7 @@ namespace Alis.Core.Graphic
                 byte value = reader.ReadByte();
                 if (count > 0)
                 {
-                    WriteRle4Pixels(reader, palette, rawData, width, ref x, y, count, value);
+                    WriteRle4Pixels(palette, rawData, width, ref x, y, count, value);
                 }
                 else
                 {
@@ -444,7 +444,7 @@ namespace Alis.Core.Graphic
             }
         }
 
-        private static void WriteRle4Pixels(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, int y, int count, byte value)
+        private static void WriteRle4Pixels(byte[][] palette, byte[] rawData, int width, ref int x, int y, int count, byte value)
         {
             byte first = (byte)(value >> 4);
             byte second = (byte)(value & 0x0F);
