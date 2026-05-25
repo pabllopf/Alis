@@ -511,7 +511,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float coordinateA, coordinateB;
 
-            Vector2F localJvAc, jvBd;
+            Vector2F localJvAc, localJvBd;
             float jwA, jwB, jwC, jwD;
             float mass = 0.0f;
 
@@ -541,7 +541,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (_typeB == JointType.Revolute)
             {
-                jvBd = Vector2F.Zero;
+                localJvBd = Vector2F.Zero;
                 jwB = _ratio;
                 jwD = _ratio;
                 mass += _ratio * _ratio * (_iB + _iD);
@@ -553,7 +553,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2F u = Complex.Multiply(ref _localAxisD, ref qD);
                 Vector2F rD = Complex.Multiply(_localAnchorD - _lcD, ref qD);
                 Vector2F rB = Complex.Multiply(_localAnchorB - _lcB, ref qB);
-                jvBd = _ratio * u;
+                localJvBd = _ratio * u;
                 jwD = _ratio * MathUtils.Cross(ref rD, ref u);
                 jwB = _ratio * MathUtils.Cross(ref rB, ref u);
                 mass += _ratio * _ratio * (_mD + _mB) + _iD * jwD * jwD + _iB * jwB * jwB;
@@ -573,11 +573,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             cA += _mA * impulse * localJvAc;
             aA += _iA * impulse * jwA;
-            cB += _mB * impulse * jvBd;
+            cB += _mB * impulse * localJvBd;
             aB += _iB * impulse * jwB;
             cC -= _mC * impulse * localJvAc;
             aC -= _iC * impulse * jwC;
-            cD -= _mD * impulse * jvBd;
+            cD -= _mD * impulse * localJvBd;
             aD -= _iD * impulse * jwD;
 
             data.Positions[_indexA].C = cA;
