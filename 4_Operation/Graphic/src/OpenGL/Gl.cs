@@ -313,11 +313,6 @@ namespace Alis.Core.Graphic.OpenGL
         public static FramebufferTexture2D GlFramebufferTexture2D => GetCommand<FramebufferTexture2D>("glFramebufferTexture2D");
 
         /// <summary>
-        ///     The uniform 4fv
-        /// </summary>
-        private static Uniform4Fv GlUniform4Fv => GetCommand<Uniform4Fv>("glUniform4fv");
-
-        /// <summary>
         ///     The uniform matrix 3fv del
         /// </summary>
         public static UniformMatrix3FvDel GlUniformMatrix3Fv => GetCommand<UniformMatrix3FvDel>("glUniformMatrix3fv");
