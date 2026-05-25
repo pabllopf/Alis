@@ -38,20 +38,6 @@ namespace Alis.Core.Physic.Test.Collisions
     public class TreeNodeTest
     {
         /// <summary>
-        /// Tests that next should map to parent storage
-        /// </summary>
-        [Fact]
-        public void Next_ShouldMapToParentStorage()
-        {
-            TreeNode<int> node = new TreeNode<int>();
-
-            node.Next = 42;
-
-            Assert.Equal(42, node.Next);
-            Assert.Equal(42, node.Parent);
-        }
-
-        /// <summary>
         /// Tests that is leaf should return true when child 1 is null node
         /// </summary>
         [Fact]

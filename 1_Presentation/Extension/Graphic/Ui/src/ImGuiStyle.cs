@@ -37,7 +37,7 @@ namespace Alis.Extension.Graphic.Ui
     /// </summary>
     public struct ImGuiStyle
     {
-        private const string IndexOutOfRangeMessage = IndexOutOfRangeMessage;
+        private const string IndexOutOfRangeMessage = "Index out of range. Valid range is [0, 54].";
 
         /// <summary>
         ///     The alpha

@@ -45,7 +45,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void EvaluateCondition_ReturnsTrueWhenConditionIsSatisfied()
         {
-            DialogConditionEvaluator evaluator = new DialogConditionEvaluator();
+            
             DialogContext context = new DialogContext("testDialog");
             IDialogCondition condition = new LambdaDialogCondition(ctx => true);
 
@@ -58,7 +58,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void EvaluateCondition_ReturnsFalseWhenConditionIsNotSatisfied()
         {
-            DialogConditionEvaluator evaluator = new DialogConditionEvaluator();
+            
             DialogContext context = new DialogContext("testDialog");
             IDialogCondition condition = new LambdaDialogCondition(ctx => false);
 
@@ -71,7 +71,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void EvaluateCondition_WithNullCondition_ThrowsException()
         {
-            DialogConditionEvaluator evaluator = new DialogConditionEvaluator();
+            
             DialogContext context = new DialogContext("testDialog");
 
             Assert.Throws<ArgumentNullException>(() => DialogConditionEvaluator.EvaluateCondition(null, context));
@@ -83,7 +83,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void EvaluateCondition_WithNullContext_ThrowsException()
         {
-            DialogConditionEvaluator evaluator = new DialogConditionEvaluator();
+            
             IDialogCondition condition = new LambdaDialogCondition(ctx => true);
 
             Assert.Throws<ArgumentNullException>(() => DialogConditionEvaluator.EvaluateCondition(condition, null));
@@ -95,7 +95,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void EvaluateAll_ReturnsTrueWhenAllConditionsAreSatisfied()
         {
-            DialogConditionEvaluator evaluator = new DialogConditionEvaluator();
+            
             DialogContext context = new DialogContext("testDialog");
 
             List<IDialogCondition> conditions = new List<IDialogCondition>
@@ -113,7 +113,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void EvaluateAll_ReturnsFalseWhenOneConditionIsNotSatisfied()
         {
-            DialogConditionEvaluator evaluator = new DialogConditionEvaluator();
+            
             DialogContext context = new DialogContext("testDialog");
 
             List<IDialogCondition> conditions = new List<IDialogCondition>
@@ -131,7 +131,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void EvaluateAny_ReturnsTrueWhenAtLeastOneConditionIsSatisfied()
         {
-            DialogConditionEvaluator evaluator = new DialogConditionEvaluator();
+            
             DialogContext context = new DialogContext("testDialog");
 
             List<IDialogCondition> conditions = new List<IDialogCondition>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void EvaluateAny_ReturnsFalseWhenNoConditionIsSatisfied()
         {
-            DialogConditionEvaluator evaluator = new DialogConditionEvaluator();
+            
             DialogContext context = new DialogContext("testDialog");
 
             List<IDialogCondition> conditions = new List<IDialogCondition>
