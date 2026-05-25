@@ -136,13 +136,11 @@ namespace Alis.Core.Physic.Collisions
                     return 0.0f;
                 }
 
-                //TreeNode<T>* root = &_nodes[_root];
                 float rootArea = _nodes[_root].Aabb.Perimeter;
 
                 float totalArea = 0.0f;
                 for (int i = 0; i < _nodeCapacity; ++i)
                 {
-                    //TreeNode<T>* node = &_nodes[i];
                     if (_nodes[i].Height < 0)
                     {
                         // Free node in pool
