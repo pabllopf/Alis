@@ -72,6 +72,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <param name="node">The node</param>
         public void AddNode(AdvancingFrontNode node)
         {
+            // No-op: node management is handled by the context's advancing front reference
         }
 
         /// <summary>
