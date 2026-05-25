@@ -587,7 +587,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                         x.X = 0.0f;
                         x.Y = -cp2.NormalMass * b.Y;
                         vn1 = vc.K.Ey.X * x.Y + b.X;
-                        vn2 = 0.0f;
 
                         if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
                         {
