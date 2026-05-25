@@ -117,11 +117,11 @@ namespace Alis.Extension.Media.FFmpeg.Audio.Models
         /// <summary>
         ///     Get first video stream
         /// </summary>
-        public MediaStream GetFirstVideoStream() => Streams.Where(x => x.IsVideo).FirstOrDefault();
+        public MediaStream GetFirstVideoStream() => Streams.FirstOrDefault(x => x.IsVideo);
 
         /// <summary>
         ///     Get first audio stream
         /// </summary>
-        public MediaStream GetFirstAudioStream() => Streams.Where(x => x.IsAudio).FirstOrDefault();
+        public MediaStream GetFirstAudioStream() => Streams.FirstOrDefault(x => x.IsAudio);
     }
 }

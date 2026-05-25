@@ -127,7 +127,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
 
                 try
                 {
-                    MediaStream videoStream = metadata.Streams.Where(x => x.CodecType.ToLower().Trim() == "video").FirstOrDefault();
+                    MediaStream videoStream = metadata.Streams.FirstOrDefault(x => x.CodecType.ToLower().Trim() == "video");
                     if (videoStream != null)
                     {
                         metadata.Width = videoStream.Width;
