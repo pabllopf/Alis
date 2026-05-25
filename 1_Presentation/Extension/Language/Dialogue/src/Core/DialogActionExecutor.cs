@@ -75,7 +75,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// <param name="context">The dialog context</param>
         /// <returns>The count of actions successfully executed</returns>
         /// <exception cref="ArgumentNullException">Thrown when actions or context is null</exception>
-        public int ExecuteActions(IEnumerable<IDialogAction> actions, DialogContext context)
+        public static int ExecuteActions(IEnumerable<IDialogAction> actions, DialogContext context)
         {
             if (actions == null)
             {

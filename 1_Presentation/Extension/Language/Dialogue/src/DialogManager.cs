@@ -244,7 +244,7 @@ namespace Alis.Extension.Language.Dialogue
                 return;
             }
 
-            _actionExecutor.ExecuteActions(option.DialogActions, _currentContext);
+            DialogActionExecutor.ExecuteActions(option.DialogActions, _currentContext);
 
             DialogEvent @event = new DialogEvent(DialogEventType.OnOptionSelected, _currentContext.DialogId)
             {
