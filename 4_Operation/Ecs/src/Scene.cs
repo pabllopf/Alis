@@ -283,6 +283,21 @@ namespace Alis.Core.Ecs
         /// </summary>
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases the managed resources used by the <see cref="Scene" />.
+        /// </summary>
+        /// <param name="disposing">Whether to release managed resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposing)
+            {
+                return;
+            }
+
             GlobalWorldTables.Worlds[Id] = null!;
 
             foreach (ref WorldArchetypeTableItem item in WorldArchetypeTable.AsSpan())
@@ -296,8 +311,6 @@ namespace Alis.Core.Ecs
 
             _sharedCountdown.Dispose();
             RecycledEntityIds.Dispose();
-
-            GC.SuppressFinalize(this);
         }
 
         /// <summary>
