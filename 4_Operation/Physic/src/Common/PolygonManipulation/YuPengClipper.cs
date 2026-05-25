@@ -195,13 +195,17 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 }
             }
 
-            for (int i = 0; i < slicedPoly2.Count; ++i)
+            int i2 = 0;
+            while (i2 < slicedPoly2.Count)
             {
-                int iNext = slicedPoly2.NextIndex(i);
-                if ((slicedPoly2[iNext] - slicedPoly2[i]).LengthSquared() <= ClipperEpsilonSquared)
+                int iNext = slicedPoly2.NextIndex(i2);
+                if ((slicedPoly2[iNext] - slicedPoly2[i2]).LengthSquared() <= ClipperEpsilonSquared)
                 {
-                    slicedPoly2.RemoveAt(i);
-                    --i;
+                    slicedPoly2.RemoveAt(i2);
+                }
+                else
+                {
+                    ++i2;
                 }
             }
         }
