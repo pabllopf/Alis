@@ -58,15 +58,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float _beta;
 
-        /// <summary>
-        ///     The damping ratio
-        /// </summary>
-        private float _dampingRatio;
-
-        /// <summary>
-        ///     The frequency
-        /// </summary>
-        private float _frequency;
 
         /// <summary>
         ///     The gamma
@@ -179,20 +170,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The response speed.
         /// </summary>
-        public float Frequency
-        {
-            get => _frequency;
-            set => _frequency = value;
-        }
+        public float Frequency { get; set; }
 
         /// <summary>
         ///     The damping ratio. 0 = no damping, 1 = critical damping.
         /// </summary>
-        public float DampingRatio
-        {
-            get => _dampingRatio;
-            set => _dampingRatio = value;
-        }
+        public float DampingRatio { get; set; }
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
