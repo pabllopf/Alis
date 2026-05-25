@@ -179,7 +179,7 @@ namespace Alis.Extension.Updater
             ReportPlatformDetection(platform, architecture);
 
             Dictionary<string, object> selectedAsset = GetSelectedAsset(latestRelease, platform, architecture);
-            if (selectedAsset == null)
+            if (selectedAsset == null || selectedAsset.Count == 0)
             {
                 return HandleMissingCompatiblePackage(platform, architecture);
             }
@@ -495,7 +495,7 @@ namespace Alis.Extension.Updater
                 }
             }
 
-            return null;
+            return new Dictionary<string, object>();
         }
 
         /// <summary>
