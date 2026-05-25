@@ -32,7 +32,7 @@ namespace Alis.Extension.Graphic.Sdl2.Mapping
     /// <summary>
     ///     The sdl input const class
     /// </summary>
-    public class SdlInputConst
+    public static class SdlInputConst
     {
         /// <summary>
         ///     The sdl scancode mask
