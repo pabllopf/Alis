@@ -1,0 +1,13 @@
+{
+  "project": "pabllopf-official_alis",
+  "phase": "snapshot_ready",
+  "snapshotCreatedAt": "2026-05-25T09:13:38.484339+00:00",
+  "totalIssues": 372,
+  "openIssues": 372,
+  "fixedIssues": 0,
+  "failedIssues": 0,
+  "inProgressIssues": 0,
+  "lastUpdated": "2026-05-25T09:13:50.917543+00:00",
+  "activeWorkers": [],
+  "executionLog": "/Volumes/d/repositorios/Alis/.opencode/cache/sonar_execution_log.jsonl"
+}
