@@ -103,7 +103,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The max force
         /// </summary>
-        private float _maxForce;
 
         /// <summary>
         ///     The
@@ -175,11 +174,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     to move the candidate body. Usually you will express
         ///     as some multiple of the weight (multiplier * mass * gravity).
         /// </summary>
-        public float MaxForce
-        {
-            get => _maxForce;
-            set => _maxForce = value;
-        }
+        public float MaxForce { get; set; }
 
         /// <summary>
         ///     The response speed.
