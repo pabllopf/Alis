@@ -215,25 +215,20 @@ namespace Alis.Core.Ecs
         /// </example>
         public Ref<T> TryGetCore<T>(out bool exists)
         {
-            if (!InternalIsAlive(out Scene _, out GameObjectLocation entityLocation))
+            if (InternalIsAlive(out Scene _, out GameObjectLocation entityLocation))
             {
-                goto doesntExist;
+                int compIndex = GlobalWorldTables.ComponentIndex(entityLocation.ArchetypeId, Component<T>.Id);
+
+                if (compIndex != 0)
+                {
+                    exists = true;
+                    ComponentStorage<T> storage = Unsafe.As<ComponentStorage<T>>(
+                        Unsafe.Add(ref entityLocation.Archetype.Components[0], compIndex));
+
+                    return new Ref<T>(storage, entityLocation.Index);
+                }
             }
 
-            int compIndex = GlobalWorldTables.ComponentIndex(entityLocation.ArchetypeId, Component<T>.Id);
-
-            if (compIndex == 0)
-            {
-                goto doesntExist;
-            }
-
-            exists = true;
-            ComponentStorage<T> storage = Unsafe.As<ComponentStorage<T>>(
-                Unsafe.Add(ref entityLocation.Archetype.Components[0], compIndex));
-
-            return new Ref<T>(storage, entityLocation.Index);
-
-            doesntExist:
             exists = false;
             return default(Ref<T>);
         }
