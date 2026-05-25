@@ -65,9 +65,7 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             for (int i = 0; i < vertices.Count; ++i)
             {
-                if (Reflex(i, vertices))
-                {
-                    if (TryFindSplit(i, vertices, out Vector2F lowerInt, out int lowerIndex, out Vector2F upperInt, out int upperIndex))
+                if (Reflex(i, vertices) && TryFindSplit(i, vertices, out Vector2F lowerInt, out int lowerIndex, out Vector2F upperInt, out int upperIndex))
                     {
                         if (lowerIndex == (upperIndex + 1) % vertices.Count)
                         {
@@ -90,7 +88,6 @@ namespace Alis.Core.Physic.Common.Decomposition
                         list.AddRange(TriangulatePolygon(upperPoly));
                         return list;
                     }
-                }
             }
 
             // polygon is already convex
