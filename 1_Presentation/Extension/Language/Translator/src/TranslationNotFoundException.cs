@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TranslationNotFound.cs
+//  File:TranslationNotFoundException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,13 +35,13 @@ namespace Alis.Extension.Language.Translator
     ///     The translation not found class
     /// </summary>
     /// <seealso cref="Exception" />
-    public class TranslationNotFound : Exception
+    public class TranslationNotFoundException : Exception
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TranslationNotFound" /> class
+        ///     Initializes a new instance of the <see cref="TranslationNotFoundException" /> class
         /// </summary>
         /// <param name="key">The key</param>
-        public TranslationNotFound(string key) : base($"Translation not found for key: {key}")
+        public TranslationNotFoundException(string key) : base($"Translation not found for key: {key}")
         {
         }
     }

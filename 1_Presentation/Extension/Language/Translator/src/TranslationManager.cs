@@ -173,7 +173,7 @@ namespace Alis.Extension.Language.Translator
 
                 if (language == null)
                 {
-                    throw new LanguageNotFound($"Language not found for code: {languageCode}");
+                    throw new LanguageNotFoundException($"Language not found for code: {languageCode}");
                 }
 
                 currentLanguage = language;
@@ -296,7 +296,7 @@ namespace Alis.Extension.Language.Translator
             {
                 return Translate(key);
             }
-            catch (TranslationNotFound)
+            catch (TranslationNotFoundException)
             {
                 return defaultValue;
             }
@@ -354,7 +354,7 @@ namespace Alis.Extension.Language.Translator
                 string translated = TranslateForLanguage(currentLanguage.Code, pluralKey);
                 return translated.Replace("{count}", quantity.ToString());
             }
-            catch (TranslationNotFound)
+            catch (TranslationNotFoundException)
             {
                 string translated = TranslateForLanguage(currentLanguage.Code, key);
                 return translated.Replace("{count}", quantity.ToString());
@@ -404,7 +404,7 @@ namespace Alis.Extension.Language.Translator
 
             if (!languageProvider.LanguageExists(languageCode))
             {
-                throw new LanguageNotFound($"Language not found for code: {languageCode}");
+                throw new LanguageNotFoundException($"Language not found for code: {languageCode}");
             }
 
             lock (syncLock)
@@ -550,7 +550,7 @@ namespace Alis.Extension.Language.Translator
             }
 
             NotifyTranslationNotFound(languageCode, key);
-            throw new TranslationNotFound(key);
+            throw new TranslationNotFoundException(key);
         }
 
         /// <summary>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LanguageNotFound.cs
+//  File:LanguageNotFoundException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,13 +37,13 @@ namespace Alis.Extension.Language.Translator
     /// </summary>
     /// <seealso cref="Exception" />
     
-    public class LanguageNotFound : Exception
+    public class LanguageNotFoundException : Exception
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="LanguageNotFound" /> class
+        ///     Initializes a new instance of the <see cref="LanguageNotFoundException" /> class
         /// </summary>
         /// <param name="message">The message</param>
-        public LanguageNotFound(string message) : base(message)
+        public LanguageNotFoundException(string message) : base(message)
         {
         }
     }
