@@ -43,7 +43,7 @@ namespace Alis.Extension.Media.FFmpeg.Video.Models
         /// <summary>
         ///     Initializes a new instance of the <see cref="VideoMetadata" /> class
         /// </summary>
-        public VideoMetadata() : this(string.Empty, string.Empty, string.Empty, 0, 0, 0.0, 0.0, 0, 0, string.Empty, 0, Array.Empty<MediaStream>(), new VideoFormat())
+        public VideoMetadata() : this(string.Empty, string.Empty, string.Empty, (0, 0), 0.0, 0.0, 0, 0, string.Empty, 0, Array.Empty<MediaStream>(), new VideoFormat())
         {
         }
 
@@ -53,8 +53,7 @@ namespace Alis.Extension.Media.FFmpeg.Video.Models
         /// <param name="pixelFormat">The pixel format</param>
         /// <param name="codecLongName">The codec long name</param>
         /// <param name="codec">The codec</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
+        /// <param name="size">The (width, height) tuple</param>
         /// <param name="duration">The duration</param>
         /// <param name="avgFramerate">The avg framerate</param>
         /// <param name="bitRate">The bit rate</param>
@@ -63,13 +62,13 @@ namespace Alis.Extension.Media.FFmpeg.Video.Models
         /// <param name="predictedFrameCount">The predicted frame count</param>
         /// <param name="streams">The streams</param>
         /// <param name="format">The format</param>
-        public VideoMetadata(string pixelFormat, string codecLongName, string codec, int width, int height, double duration, double avgFramerate, int bitRate, int bitDepth, string sampleAspectRatio, int predictedFrameCount, MediaStream[] streams, VideoFormat format)
+        public VideoMetadata(string pixelFormat, string codecLongName, string codec, (int width, int height) size, double duration, double avgFramerate, int bitRate, int bitDepth, string sampleAspectRatio, int predictedFrameCount, MediaStream[] streams, VideoFormat format)
         {
             PixelFormat = pixelFormat;
             CodecLongName = codecLongName;
             Codec = codec;
-            Width = width;
-            Height = height;
+            Width = size.width;
+            Height = size.height;
             Duration = duration;
             AvgFramerate = avgFramerate;
             BitRate = bitRate;
