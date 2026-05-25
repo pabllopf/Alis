@@ -190,7 +190,7 @@ namespace Alis.Core.Ecs.Collections
         public bool Has(int id)
         {
             ushort[] sparse = _sparse;
-            if (!((uint) id < (uint) sparse.Length))
+            if ((uint) id >= (uint) sparse.Length)
             {
                 return false;
             }
