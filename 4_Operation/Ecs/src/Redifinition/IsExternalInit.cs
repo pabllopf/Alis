@@ -35,6 +35,6 @@ namespace System.Runtime.CompilerServices
 {
     /// <summary>
     /// </summary>
-    
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Event, Inherited = false)]
     public class IsExternalInit : Attribute;
 }
