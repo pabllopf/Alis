@@ -41,6 +41,8 @@ namespace Alis.Extension.Media.FFmpeg
     /// </summary>
     public static class FfMpegWrapper
     {
+        private const string HideBannerArg = "-hide_banner";
+
         /// <summary>
         ///     The regex
         /// </summary>
@@ -79,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg
                 CreateNoWindow = true,
                 Arguments =
                     $"-loglevel {LogLevel.ToString().ToLowerInvariant()} " +
-                    $"{(HideFFmpegBanner ? "-hide_banner" : "")} " +
+                    $"{(HideFFmpegBanner ? HideBannerArg : "")} " +
                     $"{command}"
             });
 
@@ -110,7 +112,7 @@ namespace Alis.Extension.Media.FFmpeg
                 CreateNoWindow = !showOutput,
                 Arguments =
                     $"-loglevel {LogLevel.ToString().ToLowerInvariant()} " +
-                    $"{(HideFFmpegBanner ? "-hide_banner" : "")} " +
+                    $"{(HideFFmpegBanner ? HideBannerArg : "")} " +
                     $"{command}"
             });
 
@@ -141,7 +143,7 @@ namespace Alis.Extension.Media.FFmpeg
                 CreateNoWindow = !showOutput,
                 Arguments =
                     $"-loglevel {LogLevel.ToString().ToLowerInvariant()} " +
-                    $"{(HideFFmpegBanner ? "-hide_banner" : "")} " +
+                    $"{(HideFFmpegBanner ? HideBannerArg : "")} " +
                     $"{command}"
             });
 
@@ -182,7 +184,7 @@ namespace Alis.Extension.Media.FFmpeg
                 CreateNoWindow = !showOutput,
                 Arguments =
                     $"-loglevel {LogLevel.ToString().ToLowerInvariant()} " +
-                    $"{(HideFFmpegBanner ? "-hide_banner" : "")} " +
+                    $"{(HideFFmpegBanner ? HideBannerArg : "")} " +
                     $"{command}"
             });
 
@@ -224,7 +226,7 @@ namespace Alis.Extension.Media.FFmpeg
                 CreateNoWindow = !showOutput,
                 Arguments =
                     $"-loglevel {LogLevel.ToString().ToLowerInvariant()} " +
-                    $"{(HideFFmpegBanner ? "-hide_banner" : "")} " +
+                    $"{(HideFFmpegBanner ? HideBannerArg : "")} " +
                     $"{command}"
             });
 
