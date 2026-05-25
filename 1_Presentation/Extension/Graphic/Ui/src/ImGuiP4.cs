@@ -836,7 +836,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="length">The length</param>
         /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, int length)
-            => CalcTextSizeImpl(text, length);
+            => CalcTextSizeImpl(text);
 
         /// <summary>
         ///     Calcs the text size using the specified text
@@ -877,7 +877,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash)
-            => CalcTextSizeImpl(text, length, hideTextAfterDoubleHash);
+            => CalcTextSizeImpl(text, hideTextAfterDoubleHash);
 
         /// <summary>
         ///     Calcs the text size using the specified text
@@ -888,7 +888,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, int length, float wrapWidth)
-            => CalcTextSizeImpl(text, length, wrapWidth: wrapWidth);
+            => CalcTextSizeImpl(text, wrapWidth: wrapWidth);
 
         /// <summary>
         ///     Calcs the text size using the specified text
@@ -900,19 +900,17 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, int length, bool hideTextAfterDoubleHash, float wrapWidth)
-            => CalcTextSizeImpl(text, length, hideTextAfterDoubleHash, wrapWidth);
+            => CalcTextSizeImpl(text, hideTextAfterDoubleHash, wrapWidth);
 
         /// <summary>
         ///     Calcs the text size impl using the specified text
         /// </summary>
         /// <param name="text">The text</param>
-        /// <param name="length">The length</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The ret</returns>
         private static Vector2F CalcTextSizeImpl(
             string text,
-            int? length = null,
             bool hideTextAfterDoubleHash = false,
             float wrapWidth = -1.0f)
         {
