@@ -555,7 +555,6 @@ namespace Alis.Core.Physic.Common.TextureTools
         private static void InsertPolyIntoPoly(ref CxFastList<Vector2F> ap, ref GeomPoly polya, ref CxFastList<Vector2F> bp, ref CxFastListNode<Vector2F> ai)
         {
             bool fst = true;
-            CxFastListNode<Vector2F> preb = null;
 
             while (!bp.Empty())
             {
@@ -565,7 +564,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                 {
                     ai = ap.Insert(ai, bb);
                     polya.Length++;
-                    preb = ai;
                 }
 
                 fst = false;
