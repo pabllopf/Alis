@@ -124,7 +124,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The create
         /// </summary>
-        internal static readonly FastestStack<ComponentData> ComponentTable = FastestStack<ComponentData>.Create(16);
+        internal static FastestStack<ComponentData> ComponentTable = FastestStack<ComponentData>.Create(16);
 
         /// <summary>
         ///     The none component runner table
