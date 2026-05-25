@@ -730,7 +730,7 @@ namespace Alis.Core.Physic.Collisions
             }
 
             // Perform a local search for the best edge normal.
-            for (;;)
+            while (true)
             {
                 if (increment == -1)
                 {
