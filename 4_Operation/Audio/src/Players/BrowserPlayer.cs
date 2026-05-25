@@ -258,20 +258,7 @@ namespace Alis.Core.Audio.Players
             }
 
             int fmtPos = 12;
-            int fmtSize = 0;
-            while (fmtPos < wav.Length - 8)
-            {
-                string chunkId = Encoding.ASCII.GetString(wav, fmtPos, 4);
-                int chunkSize = BitConverter.ToInt32(wav, fmtPos + 4);
-                if (chunkId == "fmt ")
-                {
-                    fmtSize = chunkSize;
-                    break;
-                }
-
-                fmtPos += 8 + chunkSize;
-            }
-
+            int fmtSize = FindFmtChunk(wav, ref fmtPos);
             if (fmtSize == 0)
             {
                 Console.WriteLine("[WAV] No se encontró chunk 'fmt '");
@@ -294,21 +281,7 @@ namespace Alis.Core.Audio.Players
             }
 
             int pos = fmtPos + 8 + fmtSize;
-            while (pos < wav.Length - 8)
-            {
-                string chunkId = Encoding.ASCII.GetString(wav, pos, 4);
-                int chunkSize = BitConverter.ToInt32(wav, pos + 4);
-                Console.WriteLine($"[WAV] Chunk: {chunkId}, Size: {chunkSize}, Pos: {pos}");
-                if (chunkId == "data")
-                {
-                    dataOffset = pos + 8;
-                    dataSize = chunkSize;
-                    break;
-                }
-
-                pos += 8 + chunkSize;
-            }
-
+            FindDataChunk(wav, ref pos, out dataOffset, out dataSize);
             if (dataOffset == 0 || dataSize == 0)
             {
                 Console.WriteLine("[WAV] No se encontró chunk 'data'");
@@ -327,6 +300,43 @@ namespace Alis.Core.Audio.Players
         /// <summary>
         ///     Determines the OpenAL format based on bits per sample and channel count.
         /// </summary>
+        private static int FindFmtChunk(byte[] wav, ref int fmtPos)
+        {
+            while (fmtPos < wav.Length - 8)
+            {
+                string chunkId = Encoding.ASCII.GetString(wav, fmtPos, 4);
+                int chunkSize = BitConverter.ToInt32(wav, fmtPos + 4);
+                if (chunkId == "fmt ")
+                {
+                    return chunkSize;
+                }
+
+                fmtPos += 8 + chunkSize;
+            }
+
+            return 0;
+        }
+
+        private static void FindDataChunk(byte[] wav, ref int pos, out int dataOffset, out int dataSize)
+        {
+            dataOffset = 0;
+            dataSize = 0;
+            while (pos < wav.Length - 8)
+            {
+                string chunkId = Encoding.ASCII.GetString(wav, pos, 4);
+                int chunkSize = BitConverter.ToInt32(wav, pos + 4);
+                Console.WriteLine($"[WAV] Chunk: {chunkId}, Size: {chunkSize}, Pos: {pos}");
+                if (chunkId == "data")
+                {
+                    dataOffset = pos + 8;
+                    dataSize = chunkSize;
+                    break;
+                }
+
+                pos += 8 + chunkSize;
+            }
+        }
+
         private static bool TryGetFormat(int bits, int channels, out int format)
         {
             format = 0;
