@@ -69,10 +69,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                     results = EarclipDecomposer.ConvexPartition(vertices, tolerance);
                     break;
                 case TriangulationAlgorithm.Bayazit:
-                    if (skipSanityChecks)
-                    {
-                    }
-                    else if (!vertices.IsCounterClockWise())
+                    if (!vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
                         temp.Reverse();
