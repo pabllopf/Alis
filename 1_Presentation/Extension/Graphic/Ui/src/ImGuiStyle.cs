@@ -37,6 +37,8 @@ namespace Alis.Extension.Graphic.Ui
     /// </summary>
     public struct ImGuiStyle
     {
+        private const string IndexOutOfRangeMessage = IndexOutOfRangeMessage;
+
         /// <summary>
         ///     The alpha
         /// </summary>
@@ -521,7 +523,7 @@ namespace Alis.Extension.Graphic.Ui
             {
                 if (index < 0 || index >= 55)
                 {
-                    throw new CustomIndexOutOfRangeException("Index out of range");
+                    throw new CustomIndexOutOfRangeException(IndexOutOfRangeMessage);
                 }
 
                 return index switch
@@ -581,14 +583,14 @@ namespace Alis.Extension.Graphic.Ui
                     52 => Colors52,
                     53 => Colors53,
                     54 => Colors54,
-                    _ => throw new CustomIndexOutOfRangeException("Index out of range")
+                    _ => throw new CustomIndexOutOfRangeException(IndexOutOfRangeMessage)
                 };
             }
             set
             {
                 if (index < 0 || index >= 55)
                 {
-                    throw new CustomIndexOutOfRangeException("Index out of range");
+                    throw new CustomIndexOutOfRangeException(IndexOutOfRangeMessage);
                 }
 
                 switch (index)
@@ -648,7 +650,7 @@ namespace Alis.Extension.Graphic.Ui
                     case 52: Colors52 = value; break;
                     case 53: Colors53 = value; break;
                     case 54: Colors54 = value; break;
-                    default: throw new CustomIndexOutOfRangeException("Index out of range");
+                    default: throw new CustomIndexOutOfRangeException(IndexOutOfRangeMessage);
                 }
             }
         }
