@@ -36,11 +36,9 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The body collection class
     /// </summary>
-    /// <seealso cref="IEnumerable{Body}" />
     /// <seealso cref="ICollection{Body}" />
     /// <seealso cref="IList{Body}" />
-    public class BodyCollection : IEnumerable<Body>
-        , ICollection<Body>, IList<Body>
+    public class BodyCollection : ICollection<Body>, IList<Body>
     {
         /// <summary>
         ///     The body
