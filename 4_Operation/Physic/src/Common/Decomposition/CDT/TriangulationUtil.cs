@@ -32,7 +32,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT
     /// <summary>
     ///     The triangulation util class
     /// </summary>
-    internal class TriangulationUtil
+    internal static class TriangulationUtil
     {
         /// <summary>
         ///     The epsilon
