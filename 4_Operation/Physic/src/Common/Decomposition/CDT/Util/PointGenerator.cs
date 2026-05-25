@@ -36,7 +36,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
     /// <summary>
     ///     The point generator class
     /// </summary>
-    internal class PointGenerator
+    internal static class PointGenerator
     {
         /// <summary>
         ///     The random
