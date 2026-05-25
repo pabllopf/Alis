@@ -89,7 +89,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The linear damping
         /// </summary>
-        private float _linearDamping;
 
         /// <summary>
         ///     The mass
@@ -325,11 +324,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets or sets the linear damping.
         /// </summary>
         /// <value>The linear damping.</value>
-        public float LinearDamping
-        {
-            get => _linearDamping;
-            set => _linearDamping = value;
-        }
+        public float LinearDamping { get; set; }
 
         /// <summary>
         ///     Gets or sets the angular damping.
@@ -1397,7 +1392,7 @@ namespace Alis.Core.Physic.Dynamics
             body.Enabled = Enabled;
             body._fixedRotation = _fixedRotation;
             body._sleepingAllowed = _sleepingAllowed;
-            body._linearDamping = _linearDamping;
+            body.LinearDamping = LinearDamping;
             body._angularDamping = _angularDamping;
             body._awake = _awake;
             body.IsBullet = IsBullet;
