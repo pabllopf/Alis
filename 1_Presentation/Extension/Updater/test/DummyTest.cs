@@ -404,9 +404,9 @@ namespace Alis.Extension.Updater.Test
         /// <returns>The object</returns>
         private static object InvokeNonPublic(UpdateManager manager, string methodName, params object[] args)
         {
-            MethodInfo method = typeof(UpdateManager).GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);
+            MethodInfo method = typeof(UpdateManager).GetMethod(methodName, BindingFlags.Instance | BindingFlags.Static | BindingFlags.NonPublic);
             Assert.NotNull(method);
-            return method.Invoke(manager, args);
+            return method.Invoke(method.IsStatic ? null : manager, args);
         }
 
         /// <summary>

@@ -452,7 +452,7 @@ namespace Alis.Extension.Updater
         /// <exception cref="PlatformNotSupportedException">Platform not supported.</exception>
         /// <returns>The string</returns>
         
-        private string GetPlatform()
+        private static string GetPlatform()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
