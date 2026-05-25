@@ -80,10 +80,10 @@ namespace Alis.Core.Ecs.Collections
         {
             uint key = GetKey(id.Value, archetype);
             ArchetypeEdgeKey edgeKey;
-            int index = LookupIndex(key);
-            if (index != 32)
+            int lookupIdx = LookupIndex(key);
+            if (lookupIdx != 32)
             {
-                return new GameObjectType(InlineArray8<ushort>.Get(ref _ids, index));
+                return new GameObjectType(InlineArray8<ushort>.Get(ref _ids, lookupIdx));
             }
 
             edgeKey = ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType);
