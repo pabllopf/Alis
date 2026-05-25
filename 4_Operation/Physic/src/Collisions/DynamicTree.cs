@@ -324,7 +324,6 @@ namespace Alis.Core.Physic.Collisions
                     continue;
                 }
 
-                //TreeNode<T>* node = &_nodes[nodeId];
 
                 if (Aabb.TestOverlap(ref _nodes[nodeId].Aabb, ref aabb))
                 {
