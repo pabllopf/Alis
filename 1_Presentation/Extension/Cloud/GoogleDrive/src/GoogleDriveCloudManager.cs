@@ -62,6 +62,11 @@ namespace Alis.Extension.Cloud.GoogleDrive
         private const string DriveSpace = "drive";
 
         /// <summary>
+        ///     The fields to request for file ID operations
+        /// </summary>
+        private const string FileIdFields = "files(id)";
+
+        /// <summary>
         ///     The Google Drive service
         /// </summary>
         private DriveService _driveService;
@@ -338,7 +343,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
                 FilesResource.ListRequest request = _driveService.Files.List();
                 request.Q = $"'{currentFolderId}' in parents and name = '{parts[i]}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false";
                 request.Spaces = DriveSpace;
-                request.Fields = "files(id)";
+                request.Fields = FileIdFields;
 
                 FileList result = await request.ExecuteAsync();
                 if (result.Files.Count == 0)
@@ -376,7 +381,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
                 FilesResource.ListRequest request = _driveService.Files.List();
                 request.Q = $"'{currentFolderId}' in parents and name = '{part}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false";
                 request.Spaces = DriveSpace;
-                request.Fields = "files(id)";
+                request.Fields = FileIdFields;
 
                 FileList result = await request.ExecuteAsync();
                 if (result.Files.Count == 0)
@@ -408,7 +413,7 @@ namespace Alis.Extension.Cloud.GoogleDrive
                 FilesResource.ListRequest request = _driveService.Files.List();
                 request.Q = $"'{currentFolderId}' in parents and name = '{part}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false";
                 request.Spaces = DriveSpace;
-                request.Fields = "files(id)";
+                request.Fields = FileIdFields;
 
                 FileList result = await request.ExecuteAsync();
                 if (result.Files.Count > 0)
