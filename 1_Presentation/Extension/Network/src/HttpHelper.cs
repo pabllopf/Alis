@@ -42,7 +42,7 @@ namespace Alis.Extension.Network
     /// <summary>
     ///     The http helper class
     /// </summary>
-    public class HttpHelper
+    public static class HttpHelper
     {
         /// <summary>
         ///     The http get header regex
