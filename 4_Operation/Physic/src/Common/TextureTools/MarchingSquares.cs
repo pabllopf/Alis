@@ -676,35 +676,32 @@ namespace Alis.Core.Physic.Common.TextureTools
 
                 EqualityComparer<T> comparer = EqualityComparer<T>.Default;
 
-                if (head != null)
+                if (head != null && !EqualityComparer<T>.Default.Equals(value, default(T)))
                 {
-                    if (!EqualityComparer<T>.Default.Equals(value, default(T)))
+                    do
                     {
-                        do
+                        // if we are on the value to be removed
+                        if (comparer.Equals(head.Elt, value))
                         {
-                            // if we are on the value to be removed
-                            if (comparer.Equals(head.Elt, value))
+                            // then we need to patch the list
+                            // check to see if we are removing the _head
+                            if (head == _head)
                             {
-                                // then we need to patch the list
-                                // check to see if we are removing the _head
-                                if (head == _head)
-                                {
-                                    _head = head.Next;
-                                    _count--;
-                                    return true;
-                                }
-
-                                // were not at the head
-                                prev.Next = head.Next;
+                                _head = head.Next;
                                 _count--;
                                 return true;
                             }
 
-                            // cache the current as the previous for the next go around
-                            prev = head;
-                            head = head.Next;
-                        } while (head != null);
-                    }
+                            // were not at the head
+                            prev.Next = head.Next;
+                            _count--;
+                            return true;
+                        }
+
+                        // cache the current as the previous for the next go around
+                        prev = head;
+                        head = head.Next;
+                    } while (head != null);
                 }
 
                 return false;
