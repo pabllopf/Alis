@@ -109,8 +109,7 @@ namespace Alis.Core.Ecs.Components.Collider
         /// <param name="fixedRotation">The fixed rotation</param>
         /// <param name="mass">The mass</param>
         /// <param name="ignoreGravity">The ignore gravity</param>
-        /// <param name="linearVelocity">The linear velocity</param>
-        /// <param name="angularVelocity">The angular velocity</param>
+        /// <param name="velocity">The (linear velocity, angular velocity) tuple</param>
         public BoxCollider(
             bool isTrigger,
             float width,
@@ -124,8 +123,7 @@ namespace Alis.Core.Ecs.Components.Collider
             bool fixedRotation,
             float mass,
             bool ignoreGravity,
-            Vector2F linearVelocity,
-            float angularVelocity)
+            (Vector2F linear, float angular) velocity)
         {
             IsTrigger = isTrigger;
             Width = width;
@@ -139,8 +137,8 @@ namespace Alis.Core.Ecs.Components.Collider
             FixedRotation = fixedRotation;
             Mass = mass;
             IgnoreGravity = ignoreGravity;
-            LinearVelocity = linearVelocity;
-            AngularVelocity = angularVelocity;
+            LinearVelocity = velocity.linear;
+            AngularVelocity = velocity.angular;
         }
 
         /// <summary>
