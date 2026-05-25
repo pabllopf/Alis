@@ -50,9 +50,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>This is only for debugging the solver</summary>
         private const bool WarmStarting = true;
 
-        /// <summary>This is only for debugging the solver</summary>
-        private const bool SubStepping = false;
-
         /// <summary>
         ///     The query callback cache
         /// </summary>
