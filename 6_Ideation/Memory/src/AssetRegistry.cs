@@ -264,21 +264,7 @@ namespace Alis.Core.Aspect.Memory
         
         public static string GetResourcePathByName(string resourceName)
         {
-            if (string.IsNullOrWhiteSpace(resourceName))
-            {
-                throw new ArgumentException("resourceName no puede estar vacío.", nameof(resourceName));
-            }
-
-            if (ActiveAssemblyName == null)
-            {
-                throw new InvalidOperationException("No hay una asamblea activa configurada.");
-            }
-
-            if (!RegisteredAssetLoaders.ContainsKey(ActiveAssemblyName))
-            {
-                throw new InvalidOperationException($"La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.");
-            }
-
+            ValidateActiveAssembly(resourceName);
             string normalizedKey = NormalizeResourceKey(resourceName);
             ZipEntryInfo entryInfo;
             ZipCacheEntry cacheEntry;
@@ -565,6 +551,24 @@ namespace Alis.Core.Aspect.Memory
                                      e.FullName.Replace('\\', '/').IndexOf(resourceName, StringComparison.OrdinalIgnoreCase) >= 0);
 
             return match;
+        }
+
+        private static void ValidateActiveAssembly(string resourceName)
+        {
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentException("resourceName no puede estar vacío.", nameof(resourceName));
+            }
+
+            if (ActiveAssemblyName == null)
+            {
+                throw new InvalidOperationException("No hay una asamblea activa configurada.");
+            }
+
+            if (!RegisteredAssetLoaders.ContainsKey(ActiveAssemblyName))
+            {
+                throw new InvalidOperationException($"La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.");
+            }
         }
     }
 }
