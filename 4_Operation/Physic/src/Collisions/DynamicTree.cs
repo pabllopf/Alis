@@ -684,8 +684,6 @@ namespace Alis.Core.Physic.Collisions
                 _nodes[sibling].Parent = NullNode;
                 FreeNode(parent);
             }
-
-            //Validate();
         }
 
         /// <summary>
