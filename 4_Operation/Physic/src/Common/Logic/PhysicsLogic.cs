@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Common.Logic
         ///     Initializes a new instance of the <see cref="PhysicsLogic" /> class
         /// </summary>
         /// <param name="worldPhysic">The world</param>
-        public PhysicsLogic(WorldPhysic worldPhysic) => WorldPhysic = worldPhysic;
+        protected PhysicsLogic(WorldPhysic worldPhysic) => WorldPhysic = worldPhysic;
 
         /// <summary>
         ///     Gets or sets the value of the world
