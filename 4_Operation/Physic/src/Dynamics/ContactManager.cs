@@ -349,7 +349,7 @@ namespace Alis.Core.Physic.Dynamics
             RemoveFromBody(contact.NodeA, contact.NodeB, bodyA, bodyB);
         }
 
-        private void RemoveFromBody(ContactEdge nodeA, ContactEdge nodeB, Body bodyA, Body bodyB)
+        private static void RemoveFromBody(ContactEdge nodeA, ContactEdge nodeB, Body bodyA, Body bodyB)
         {
             if (nodeA == bodyA.ContactList)
             {
