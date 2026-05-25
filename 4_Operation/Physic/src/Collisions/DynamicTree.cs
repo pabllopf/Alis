@@ -369,12 +369,10 @@ namespace Alis.Core.Physic.Collisions
             float maxFraction = input.MaxFraction;
 
             // Build a bounding box for the segment.
+            Vector2F t = p1 + maxFraction * (p2 - p1);
             Aabb segmentAabb = new Aabb();
-            {
-                Vector2F t = p1 + maxFraction * (p2 - p1);
-                Vector2F.Min(ref p1, ref t, out segmentAabb.LowerBound);
-                Vector2F.Max(ref p1, ref t, out segmentAabb.UpperBound);
-            }
+            Vector2F.Min(ref p1, ref t, out segmentAabb.LowerBound);
+            Vector2F.Max(ref p1, ref t, out segmentAabb.UpperBound);
 
             _raycastStack.Clear();
             _raycastStack.Push(_root);
@@ -423,9 +421,9 @@ namespace Alis.Core.Physic.Collisions
                     {
                         // Update segment bounding box.
                         maxFraction = value;
-                        Vector2F t = p1 + maxFraction * (p2 - p1);
-                        Vector2F.Min(ref p1, ref t, out segmentAabb.LowerBound);
-                        Vector2F.Max(ref p1, ref t, out segmentAabb.UpperBound);
+                        Vector2F t2 = p1 + maxFraction * (p2 - p1);
+                        Vector2F.Min(ref p1, ref t2, out segmentAabb.LowerBound);
+                        Vector2F.Max(ref p1, ref t2, out segmentAabb.UpperBound);
                     }
                 }
                 else
