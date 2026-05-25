@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Sfml.Sample
         public void Run()
         {
             VideoMode mode = new VideoMode(800, 600);
-            ContextSettings settings = new ContextSettings(0, 0, 0, 2, 1, ContextSettings.Attribute.None, false);
+            ContextSettings settings = new ContextSettings(0, 0, 0, 2, 1, ContextSettings.Attributes.None, false);
             RenderWindow window = new RenderWindow(mode, "SFML works!", Styles.Default, settings);
             window.KeyPressed += Window_KeyPressed;
 

@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         ///     Enumeration of the context attribute flags
         /// </summary>
         [Flags]
-        public enum Attribute
+        public enum Attributes
         {
             /// <summary>Non-debug, compatibility context (this and the core attribute are mutually exclusive)</summary>
             None = 0,
@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="stencilBits">Stencil buffer bits</param>
         /// <param name="antialiasingLevel">Antialiasing level</param>
         public ContextSettings(uint depthBits, uint stencilBits, uint antialiasingLevel) :
-            this(depthBits, stencilBits, antialiasingLevel, 2, 0, Attribute.None, false)
+            this(depthBits, stencilBits, antialiasingLevel, 2, 0, Attributes.None, false)
         {
         }
 
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="minorVersion">Minor number of the context version</param>
         /// <param name="attributes">Attribute flags of the context</param>
         /// <param name="sRgbCapable">sRGB capability of the context</param>
-        public ContextSettings(uint depthBits, uint stencilBits, uint antialiasingLevel, uint majorVersion, uint minorVersion, Attribute attributes, bool sRgbCapable)
+        public ContextSettings(uint depthBits, uint stencilBits, uint antialiasingLevel, uint majorVersion, uint minorVersion, Attributes attributes, bool sRgbCapable)
         {
             DepthBits = depthBits;
             StencilBits = stencilBits;
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         public uint MinorVersion;
 
         /// <summary>The attribute flags to create the context with</summary>
-        public Attribute AttributeFlags;
+        public Attributes AttributeFlags;
 
         /// <summary>Whether the context framebuffer is sRGB capable</summary>
         public bool SRgbCapable;
