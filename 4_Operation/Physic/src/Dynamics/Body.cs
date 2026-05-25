@@ -54,7 +54,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The angular damping
         /// </summary>
-        private float _angularDamping;
 
         /// <summary>
         ///     The angular velocity
@@ -330,11 +329,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets or sets the angular damping.
         /// </summary>
         /// <value>The angular damping.</value>
-        public float AngularDamping
-        {
-            get => _angularDamping;
-            set => _angularDamping = value;
-        }
+        public float AngularDamping { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether this body should be included in the CCD solver.
@@ -1393,7 +1388,7 @@ namespace Alis.Core.Physic.Dynamics
             body._fixedRotation = _fixedRotation;
             body._sleepingAllowed = _sleepingAllowed;
             body.LinearDamping = LinearDamping;
-            body._angularDamping = _angularDamping;
+            body.AngularDamping = AngularDamping;
             body._awake = _awake;
             body.IsBullet = IsBullet;
             body.IgnoreCcd = IgnoreCcd;
