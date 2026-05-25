@@ -217,7 +217,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
             {
                 case ActiveAttribType.Float: return typeof(float);
                 case ActiveAttribType.FloatMat2: return typeof(float[]);
-                case ActiveAttribType.FloatMat3: throw new Exception();
+                case ActiveAttribType.FloatMat3: throw new InvalidOperationException($"ActiveAttribType {type} is not supported.");
                 case ActiveAttribType.FloatMat4: return typeof(Matrix4X4);
                 case ActiveAttribType.FloatVec2: return typeof(Vector2F);
                 case ActiveAttribType.FloatVec3: return typeof(Vector3F);
@@ -249,7 +249,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
                 case ActiveUniformType.BoolVec3: return typeof(bool[]);
                 case ActiveUniformType.BoolVec4: return typeof(bool[]);
                 case ActiveUniformType.FloatMat2: return typeof(float[]);
-                case ActiveUniformType.FloatMat3: throw new Exception();
+                case ActiveUniformType.FloatMat3: throw new InvalidOperationException($"ActiveUniformType {type} is not supported.");
                 case ActiveUniformType.FloatMat4: return typeof(Matrix4X4);
                 case ActiveUniformType.Sampler1D:
                 case ActiveUniformType.Sampler2D:
