@@ -40,8 +40,7 @@ namespace Alis.Core.Physic.Dynamics
     /// <seealso cref="IEnumerable{Joint}" />
     /// <seealso cref="ICollection{Joint}" />
     /// <seealso cref="IList{Joint}" />
-    public class JointCollection : IEnumerable<Joint>
-        , ICollection<Joint>, IList<Joint>
+    public class JointCollection : IList<Joint>
     {
         /// <summary>
         ///     The joint
