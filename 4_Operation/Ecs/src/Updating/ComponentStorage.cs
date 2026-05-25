@@ -65,10 +65,10 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     Trims the index
         /// </summary>
-        /// <param name="index">The index</param>
-        internal override void Trim(int index)
+        /// <param name="chunkIndex">The chunk index</param>
+        internal override void Trim(int chunkIndex)
         {
-            Resize((int) BitOperations.RoundUpToPowerOf2((uint) index));
+            Resize((int) BitOperations.RoundUpToPowerOf2((uint) chunkIndex));
         }
 
         /// <summary>
