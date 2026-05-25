@@ -301,7 +301,12 @@ namespace Alis.Extension.Media.FFmpeg
 
         private static MuxingSupport GetMuxingSupportFromType(string type)
         {
-            return type == "DE" ? MuxingSupport.MuxDemux : type == "D" ? MuxingSupport.Demux : MuxingSupport.Mux;
+            return type switch
+            {
+                "DE" => MuxingSupport.MuxDemux,
+                "D" => MuxingSupport.Demux,
+                _ => MuxingSupport.Mux
+            };
         }
 
         /// <summary>
