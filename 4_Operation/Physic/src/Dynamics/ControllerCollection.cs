@@ -40,8 +40,7 @@ namespace Alis.Core.Physic.Dynamics
     /// <seealso cref="IEnumerable{Controller}" />
     /// <seealso cref="ICollection{Controller}" />
     /// <seealso cref="IList{Controller}" />
-    public class ControllerCollection : IEnumerable<Controller>
-        , ICollection<Controller>, IList<Controller>
+    public class ControllerCollection : ICollection<Controller>, IList<Controller>
     {
         /// <summary>
         ///     The controller
