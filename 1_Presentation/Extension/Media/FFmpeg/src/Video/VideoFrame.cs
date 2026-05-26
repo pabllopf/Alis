@@ -50,11 +50,6 @@ namespace Alis.Extension.Media.FFmpeg.Video
         private byte[] frameBuffer;
 
         /// <summary>
-        ///     The offset
-        /// </summary>
-        private int offset;
-
-        /// <summary>
         ///     Creates an empty video frame with given dimensions using the RGB24 pixel format.
         /// </summary>
         /// <param name="w">Width in pixels</param>
@@ -104,14 +99,14 @@ namespace Alis.Extension.Media.FFmpeg.Video
         /// <param name="str">Stream containing raw frame data in RGB24 format</param>
         public bool Load(Stream stream)
         {
-            offset = 0;
+            int totalRead = 0;
 
-            while (offset < size)
+            while (totalRead < size)
             {
-                int r = stream.Read(frameBuffer, offset, size - offset);
+                int r = stream.Read(frameBuffer, totalRead, size - totalRead);
                 if (r <= 0)
                 {
-                    if (offset == 0)
+                    if (totalRead == 0)
                     {
                         return false;
                     }
@@ -119,13 +114,13 @@ namespace Alis.Extension.Media.FFmpeg.Video
                     break;
                 }
 
-                offset += r;
+                totalRead += r;
             }
 
-            if (RawData.Length != offset)
+            if (RawData.Length != totalRead)
             {
-                byte[] newRawData = new byte[offset];
-                Array.Copy(frameBuffer, 0, newRawData, 0, offset);
+                byte[] newRawData = new byte[totalRead];
+                Array.Copy(frameBuffer, 0, newRawData, 0, totalRead);
                 RawData = newRawData;
             }
 

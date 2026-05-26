@@ -44,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         private readonly int size;
 
         /// <summary>
-        ///     The frame buffer
+        ///     The raw data
         /// </summary>
         private byte[] frameBuffer;
 
@@ -125,14 +125,14 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         /// <param name="str">Stream containing raw audio samples in signed PCM format</param>
         public bool Load(Stream stream)
         {
-            offset = 0;
+            int totalRead = 0;
 
-            while (offset < size)
+            while (totalRead < size)
             {
-                int r = stream.Read(frameBuffer, offset, size - offset);
+                int r = stream.Read(frameBuffer, totalRead, size - totalRead);
                 if (r <= 0)
                 {
-                    if (offset == 0)
+                    if (totalRead == 0)
                     {
                         return false;
                     }
@@ -140,15 +140,15 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                     break;
                 }
 
-                offset += r;
+                totalRead += r;
             }
 
-            LoadedSamples = offset / (BytesPerSample * Channels);
+            LoadedSamples = totalRead / (BytesPerSample * Channels);
 
-            if (RawData.Length != offset)
+            if (RawData.Length != totalRead)
             {
-                byte[] newRawData = new byte[offset];
-                Array.Copy(frameBuffer, 0, newRawData, 0, offset);
+                byte[] newRawData = new byte[totalRead];
+                Array.Copy(frameBuffer, 0, newRawData, 0, totalRead);
                 RawData = newRawData;
             }
 
