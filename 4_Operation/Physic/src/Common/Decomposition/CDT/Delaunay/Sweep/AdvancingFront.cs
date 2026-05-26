@@ -160,44 +160,64 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 
             if (Math.Abs(px - nx) < float.Epsilon)
             {
-                if (point != node.Point)
-                {
-                    if (point == node.Prev.Point)
-                    {
-                        node = node.Prev;
-                    }
-                    else if (point == node.Next.Point)
-                    {
-                        node = node.Next;
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("Failed to find Node for given afront point");
-                    }
-                }
+                node = LocateExactPoint(point, node);
             }
             else if (px < nx)
             {
-                while ((node = node.Prev) != null)
-                {
-                    if (point == node.Point)
-                    {
-                        break;
-                    }
-                }
+                node = SearchPrevDirection(point, node);
             }
             else
             {
-                while ((node = node.Next) != null)
-                {
-                    if (point == node.Point)
-                    {
-                        break;
-                    }
-                }
+                node = SearchNextDirection(point, node);
             }
 
             Search = node;
+            return node;
+        }
+
+        private static AdvancingFrontNode LocateExactPoint(TriangulationPoint point, AdvancingFrontNode node)
+        {
+            if (point == node.Point)
+            {
+                return node;
+            }
+
+            if (point == node.Prev.Point)
+            {
+                return node.Prev;
+            }
+
+            if (point == node.Next.Point)
+            {
+                return node.Next;
+            }
+
+            throw new InvalidOperationException("Failed to find Node for given afront point");
+        }
+
+        private static AdvancingFrontNode SearchPrevDirection(TriangulationPoint point, AdvancingFrontNode node)
+        {
+            while ((node = node.Prev) != null)
+            {
+                if (point == node.Point)
+                {
+                    break;
+                }
+            }
+
+            return node;
+        }
+
+        private static AdvancingFrontNode SearchNextDirection(TriangulationPoint point, AdvancingFrontNode node)
+        {
+            while ((node = node.Next) != null)
+            {
+                if (point == node.Point)
+                {
+                    break;
+                }
+            }
+
             return node;
         }
     }

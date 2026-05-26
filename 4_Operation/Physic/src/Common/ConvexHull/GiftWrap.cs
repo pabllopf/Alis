@@ -73,28 +73,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             {
                 hull[m] = ih;
 
-                int ie = 0;
-                for (int j = 1; j < vertices.Count; ++j)
-                {
-                    if (ie == ih)
-                    {
-                        ie = j;
-                        continue;
-                    }
-
-                    Vector2F r = vertices[ie] - vertices[hull[m]];
-                    Vector2F v = vertices[j] - vertices[hull[m]];
-                    float c = MathUtils.Cross(ref r, ref v);
-                    if (c < 0.0f)
-                    {
-                        ie = j;
-                    }
-
-                    if ((Math.Abs(c) < float.Epsilon) && (v.LengthSquared() > r.LengthSquared()))
-                    {
-                        ie = j;
-                    }
-                }
+                int ie = FindNextHullIndex(vertices, hull[m], ih);
 
                 ++m;
                 ih = ie;
@@ -113,6 +92,34 @@ namespace Alis.Core.Physic.Common.ConvexHull
             }
 
             return result;
+        }
+
+        private static int FindNextHullIndex(Vertices vertices, int currentHull, int ih)
+        {
+            int ie = 0;
+            for (int j = 1; j < vertices.Count; ++j)
+            {
+                if (ie == ih)
+                {
+                    ie = j;
+                    continue;
+                }
+
+                Vector2F r = vertices[ie] - vertices[currentHull];
+                Vector2F v = vertices[j] - vertices[currentHull];
+                float c = MathUtils.Cross(ref r, ref v);
+                if (c < 0.0f)
+                {
+                    ie = j;
+                }
+
+                if ((Math.Abs(c) < float.Epsilon) && (v.LengthSquared() > r.LengthSquared()))
+                {
+                    ie = j;
+                }
+            }
+
+            return ie;
         }
     }
 }

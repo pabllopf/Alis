@@ -1004,41 +1004,7 @@ namespace Alis.Core.Physic.Dynamics
 
             joint.BodyA.JointList = joint.EdgeA;
 
-            // WIP David
-            if (!joint.IsFixedType())
-            {
-                joint.EdgeB.Joint = joint;
-                joint.EdgeB.Other = joint.BodyA;
-                joint.EdgeB.Prev = null;
-                joint.EdgeB.Next = joint.BodyB.JointList;
-
-                if (joint.BodyB.JointList != null)
-                {
-                    joint.BodyB.JointList.Prev = joint.EdgeB;
-                }
-
-                joint.BodyB.JointList = joint.EdgeB;
-
-                Body bodyA = joint.BodyA;
-                Body bodyB = joint.BodyB;
-
-                // If the joint prevents collisions, then flag any contacts for filtering.
-                if (!joint.CollideConnected)
-                {
-                    ContactEdge edge = bodyB.ContactList;
-                    while (edge != null)
-                    {
-                        if (edge.Other == bodyA)
-                        {
-                            // Flag the contact for filtering at the next time step (where either
-                            // body is awake).
-                            edge.Contact.FilterFlag = true;
-                        }
-
-                        edge = edge.Next;
-                    }
-                }
-            }
+            ConnectJointNonFixed(joint);
 
             JointDelegate jointAddedHandler = JointAdded;
             if (jointAddedHandler != null)
@@ -1092,65 +1058,9 @@ namespace Alis.Core.Physic.Dynamics
                 bodyB.Awake = true;
             }
 
-            // Remove from body 1.
-            if (joint.EdgeA.Prev != null)
-            {
-                joint.EdgeA.Prev.Next = joint.EdgeA.Next;
-            }
-
-            if (joint.EdgeA.Next != null)
-            {
-                joint.EdgeA.Next.Prev = joint.EdgeA.Prev;
-            }
-
-            if (joint.EdgeA == bodyA.JointList)
-            {
-                bodyA.JointList = joint.EdgeA.Next;
-            }
-
-            joint.EdgeA.Prev = null;
-            joint.EdgeA.Next = null;
-
-            // WIP David
-            if (!joint.IsFixedType())
-            {
-                // Remove from body 2
-                if (joint.EdgeB.Prev != null)
-                {
-                    joint.EdgeB.Prev.Next = joint.EdgeB.Next;
-                }
-
-                if (joint.EdgeB.Next != null)
-                {
-                    joint.EdgeB.Next.Prev = joint.EdgeB.Prev;
-                }
-
-                if (joint.EdgeB == bodyB.JointList)
-                {
-                    bodyB.JointList = joint.EdgeB.Next;
-                }
-
-                joint.EdgeB.Prev = null;
-                joint.EdgeB.Next = null;
-            }
-
-            // WIP David
-            if (!joint.IsFixedType() && !collideConnected)
-            {
-                // If the joint prevents collisions, then flag any contacts for filtering.
-                ContactEdge edge = bodyB.ContactList;
-                while (edge != null)
-                {
-                    if (edge.Other == bodyA)
-                    {
-                        // Flag the contact for filtering at the next time step (where either
-                        // body is awake).
-                        edge.Contact.FilterFlag = true;
-                    }
-
-                    edge = edge.Next;
-                }
-            }
+            RemoveJointEdgeA(joint, bodyA);
+            RemoveJointEdgeB(joint, bodyB);
+            FlagContactsForJointRemoval(joint, bodyA, bodyB, collideConnected);
 
             JointDelegate jointRemovedHandler = JointRemoved;
             if (jointRemovedHandler != null)
@@ -1246,50 +1156,7 @@ namespace Alis.Core.Physic.Dynamics
             GetIsLocked = true;
             try
             {
-                //Update controllers
-                for (int i = 0; i < ControllerList.List.Count; i++)
-                {
-                    ControllerList.List[i].Update(dt);
-                }
-
-                if (SettingEnv.EnableDiagnostics)
-                {
-                    ControllersUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime);
-                }
-
-                // Update contacts. This is where some contacts are destroyed.
-                ContactManager.Collide();
-                if (SettingEnv.EnableDiagnostics)
-                {
-                    ContactsUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime);
-                }
-
-                // Integrate velocities, solve velocity constraints, and integrate positions.
-                if (_stepComplete && (step.Dt > 0.0f))
-                {
-                    Solve(ref step);
-                }
-
-                if (SettingEnv.EnableDiagnostics)
-                {
-                    SolveUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime + ContactsUpdateTime);
-                }
-
-                // Handle TOI events.
-                if (SettingEnv.ContinuousPhysics && (step.Dt > 0.0f))
-                {
-                    SolveToi(ref step, ref iterations);
-                }
-
-                if (SettingEnv.EnableDiagnostics)
-                {
-                    ContinuousPhysicsTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime + ContactsUpdateTime + SolveUpdateTime);
-                }
-
-                if (SettingEnv.AutoClearForces)
-                {
-                    ClearForces();
-                }
+                ExecuteStepPhysics(dt, ref step, ref iterations);
             }
             finally
             {
@@ -1903,6 +1770,159 @@ namespace Alis.Core.Physic.Dynamics
         public void SetGravity(Vector2F physicGravity)
         {
             _gravity = physicGravity;
+        }
+
+        private void ConnectJointNonFixed(Joint joint)
+        {
+            if (joint.IsFixedType())
+            {
+                return;
+            }
+
+            joint.EdgeB.Joint = joint;
+            joint.EdgeB.Other = joint.BodyA;
+            joint.EdgeB.Prev = null;
+            joint.EdgeB.Next = joint.BodyB.JointList;
+
+            if (joint.BodyB.JointList != null)
+            {
+                joint.BodyB.JointList.Prev = joint.EdgeB;
+            }
+
+            joint.BodyB.JointList = joint.EdgeB;
+
+            FlagContactsForJointFiltering(joint);
+        }
+
+        private static void FlagContactsForJointFiltering(Joint joint)
+        {
+            if (joint.CollideConnected)
+            {
+                return;
+            }
+
+            Body bodyA = joint.BodyA;
+            Body bodyB = joint.BodyB;
+            ContactEdge edge = bodyB.ContactList;
+            while (edge != null)
+            {
+                if (edge.Other == bodyA)
+                {
+                    edge.Contact.FilterFlag = true;
+                }
+
+                edge = edge.Next;
+            }
+        }
+
+        private static void RemoveJointEdgeA(Joint joint, Body bodyA)
+        {
+            if (joint.EdgeA.Prev != null)
+            {
+                joint.EdgeA.Prev.Next = joint.EdgeA.Next;
+            }
+
+            if (joint.EdgeA.Next != null)
+            {
+                joint.EdgeA.Next.Prev = joint.EdgeA.Prev;
+            }
+
+            if (joint.EdgeA == bodyA.JointList)
+            {
+                bodyA.JointList = joint.EdgeA.Next;
+            }
+
+            joint.EdgeA.Prev = null;
+            joint.EdgeA.Next = null;
+        }
+
+        private static void RemoveJointEdgeB(Joint joint, Body bodyB)
+        {
+            if (joint.IsFixedType())
+            {
+                return;
+            }
+
+            if (joint.EdgeB.Prev != null)
+            {
+                joint.EdgeB.Prev.Next = joint.EdgeB.Next;
+            }
+
+            if (joint.EdgeB.Next != null)
+            {
+                joint.EdgeB.Next.Prev = joint.EdgeB.Prev;
+            }
+
+            if (joint.EdgeB == bodyB.JointList)
+            {
+                bodyB.JointList = joint.EdgeB.Next;
+            }
+
+            joint.EdgeB.Prev = null;
+            joint.EdgeB.Next = null;
+        }
+
+        private static void FlagContactsForJointRemoval(Joint joint, Body bodyA, Body bodyB, bool collideConnected)
+        {
+            if (joint.IsFixedType() || collideConnected)
+            {
+                return;
+            }
+
+            ContactEdge edge = bodyB.ContactList;
+            while (edge != null)
+            {
+                if (edge.Other == bodyA)
+                {
+                    edge.Contact.FilterFlag = true;
+                }
+
+                edge = edge.Next;
+            }
+        }
+
+        private void ExecuteStepPhysics(float dt, ref TimeStep step, ref SolverIterations iterations)
+        {
+            for (int i = 0; i < ControllerList.List.Count; i++)
+            {
+                ControllerList.List[i].Update(dt);
+            }
+
+            if (SettingEnv.EnableDiagnostics)
+            {
+                ControllersUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime);
+            }
+
+            ContactManager.Collide();
+            if (SettingEnv.EnableDiagnostics)
+            {
+                ContactsUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime);
+            }
+
+            if (_stepComplete && (step.Dt > 0.0f))
+            {
+                Solve(ref step);
+            }
+
+            if (SettingEnv.EnableDiagnostics)
+            {
+                SolveUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime + ContactsUpdateTime);
+            }
+
+            if (SettingEnv.ContinuousPhysics && (step.Dt > 0.0f))
+            {
+                SolveToi(ref step, ref iterations);
+            }
+
+            if (SettingEnv.EnableDiagnostics)
+            {
+                ContinuousPhysicsTime = TimeSpan.FromTicks(_watch.ElapsedTicks) - (AddRemoveTime + NewContactsTime + ControllersUpdateTime + ContactsUpdateTime + SolveUpdateTime);
+            }
+
+            if (SettingEnv.AutoClearForces)
+            {
+                ClearForces();
+            }
         }
     }
 }

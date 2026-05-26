@@ -235,117 +235,66 @@ namespace Alis.Core.Physic.Common
         /// <returns>The temp</returns>
         public Vector2F GetPosition(float time)
         {
-            Vector2F temp;
-
             if (_controlPoints.Count < 2)
             {
                 throw new InvalidOperationException("You need at least 2 control points to calculate a position.");
             }
 
-            if (Closed)
-            {
-                Add(_controlPoints[0]);
+            return Closed ? GetClosedPosition(time) : GetOpenPosition(time);
+        }
 
-                _deltaT = 1f / (_controlPoints.Count - 1);
+        private Vector2F GetClosedPosition(float time)
+        {
+            Add(_controlPoints[0]);
 
-                int p = (int) (time / _deltaT);
+            _deltaT = 1f / (_controlPoints.Count - 1);
 
-                int p0 = p - 1;
-                if (p0 < 0)
-                {
-                    p0 = p0 + (_controlPoints.Count - 1);
-                }
-                else if (p0 >= _controlPoints.Count - 1)
-                {
-                    p0 = p0 - (_controlPoints.Count - 1);
-                }
+            int p = (int) (time / _deltaT);
 
-                int p1 = p;
-                if (p1 < 0)
-                {
-                    p1 = p1 + (_controlPoints.Count - 1);
-                }
-                else if (p1 >= _controlPoints.Count - 1)
-                {
-                    p1 = p1 - (_controlPoints.Count - 1);
-                }
+            int p0 = WrapIndex(p - 1);
+            int p1 = WrapIndex(p);
+            int p2 = WrapIndex(p + 1);
+            int p3 = WrapIndex(p + 2);
 
-                int p2 = p + 1;
-                if (p2 < 0)
-                {
-                    p2 = p2 + (_controlPoints.Count - 1);
-                }
-                else if (p2 >= _controlPoints.Count - 1)
-                {
-                    p2 = p2 - (_controlPoints.Count - 1);
-                }
+            float lt = (time - _deltaT * p) / _deltaT;
 
-                int p3 = p + 2;
-                if (p3 < 0)
-                {
-                    p3 = p3 + (_controlPoints.Count - 1);
-                }
-                else if (p3 >= _controlPoints.Count - 1)
-                {
-                    p3 = p3 - (_controlPoints.Count - 1);
-                }
+            CalcCatmullRom(_controlPoints[p0], _controlPoints[p1], _controlPoints[p2], _controlPoints[p3], lt, out Vector2F temp);
 
-                float lt = (time - _deltaT * p) / _deltaT;
-
-                CalcCatmullRom(_controlPoints[p0], _controlPoints[p1], _controlPoints[p2], _controlPoints[p3], lt, out temp);
-
-                RemoveAt(_controlPoints.Count - 1);
-            }
-            else
-            {
-                int p = (int) (time / _deltaT);
-
-                int p0 = p - 1;
-                if (p0 < 0)
-                {
-                    p0 = 0;
-                }
-                else if (p0 >= _controlPoints.Count - 1)
-                {
-                    p0 = _controlPoints.Count - 1;
-                }
-
-                int p1 = p;
-                if (p1 < 0)
-                {
-                    p1 = 0;
-                }
-                else if (p1 >= _controlPoints.Count - 1)
-                {
-                    p1 = _controlPoints.Count - 1;
-                }
-
-                int p2 = p + 1;
-                if (p2 < 0)
-                {
-                    p2 = 0;
-                }
-                else if (p2 >= _controlPoints.Count - 1)
-                {
-                    p2 = _controlPoints.Count - 1;
-                }
-
-                int p3 = p + 2;
-                if (p3 < 0)
-                {
-                    p3 = 0;
-                }
-                else if (p3 >= _controlPoints.Count - 1)
-                {
-                    p3 = _controlPoints.Count - 1;
-                }
-
-                float lt = (time - _deltaT * p) / _deltaT;
-
-                CalcCatmullRom(_controlPoints[p0], _controlPoints[p1], _controlPoints[p2], _controlPoints[p3], lt, out temp);
-            }
+            RemoveAt(_controlPoints.Count - 1);
 
             return temp;
+        }
+
+        private Vector2F GetOpenPosition(float time)
+        {
+            int p = (int) (time / _deltaT);
+
+            int p0 = ClampIndex(p - 1);
+            int p1 = ClampIndex(p);
+            int p2 = ClampIndex(p + 1);
+            int p3 = ClampIndex(p + 2);
+
+            float lt = (time - _deltaT * p) / _deltaT;
+
+            CalcCatmullRom(_controlPoints[p0], _controlPoints[p1], _controlPoints[p2], _controlPoints[p3], lt, out Vector2F temp);
+
+            return temp;
+        }
+
+        private int WrapIndex(int index)
+        {
+            int max = _controlPoints.Count - 1;
+            if (index < 0) return index + max;
+            if (index >= max) return index - max;
+            return index;
+        }
+
+        private int ClampIndex(int index)
+        {
+            int max = _controlPoints.Count - 1;
+            if (index < 0) return 0;
+            if (index >= max) return max;
+            return index;
         }
 
         /// <summary>
