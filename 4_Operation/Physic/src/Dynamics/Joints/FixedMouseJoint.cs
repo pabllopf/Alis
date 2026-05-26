@@ -103,8 +103,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The world anchor
         /// </summary>
-        private Vector2F _worldAnchor;
-
         /// <summary>
         ///     The
         /// </summary>
@@ -129,7 +127,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             DampingRatio = 0.7f;
             MaxForce = 1000 * body.Mass;
 
-            _worldAnchor = worldAnchor;
+            WorldAnchorB = worldAnchor;
             LocalAnchorA = ControllerTransform.Divide(ref worldAnchor, ref BodyA.Xf);
         }
 
@@ -150,15 +148,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the world anchor b
         /// </summary>
-        public override Vector2F WorldAnchorB
-        {
-            get => _worldAnchor;
-            set
-            {
-                WakeBodies();
-                _worldAnchor = value;
-            }
-        }
+        public override Vector2F WorldAnchorB { get; set; }
 
         /// <summary>
         ///     The maximum constraint force that can be exerted
@@ -245,7 +235,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             _mass = k.Inverse;
 
-            c = cA + _rA - _worldAnchor;
+            c = cA + _rA - WorldAnchorB;
             c *= _beta;
 
             // Cheat with some damping
