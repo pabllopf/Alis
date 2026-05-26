@@ -68,26 +68,37 @@ namespace Alis.Extension.Media.FFmpeg.Video
         /// </summary>
         public void Dispose()
         {
-            if (OpenedForWriting)
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases managed and unmanaged resources
+        /// </summary>
+        /// <param name="disposing">Whether to release managed resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                CloseWrite();
-            }
-            else
-            {
-                try
+                if (OpenedForWriting)
                 {
-                    if ((ffplayp != null) && !ffplayp.HasExited)
+                    CloseWrite();
+                }
+                else
+                {
+                    try
                     {
-                        ffplayp.Kill();
+                        if ((ffplayp != null) && !ffplayp.HasExited)
+                        {
+                            ffplayp.Kill();
+                        }
+                    }
+                    catch
+                    {
+                        // Ignore exception during cleanup
                     }
                 }
-                catch
-                {
-                    // Ignore exception during cleanup
-                }
             }
-
-            GC.SuppressFinalize(this);
         }
 
         /// <summary>
