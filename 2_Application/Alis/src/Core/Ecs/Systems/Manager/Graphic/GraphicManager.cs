@@ -195,67 +195,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             DateTime now = DateTime.UtcNow;
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>(allKeys.Where(k => platform.IsKeyDown(k)));
 
-            // Detectar eventos
-            HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>(newKeys);
-            pressedKeys.ExceptWith(currentKeys); // Press: nuevas pulsaciones
-            HashSet<ConsoleKey> heldKeys = new HashSet<ConsoleKey>(newKeys);
-            heldKeys.IntersectWith(currentKeys); // Hold: mantenidas
-            HashSet<ConsoleKey> releasedKeys = new HashSet<ConsoleKey>(currentKeys);
-            releasedKeys.ExceptWith(newKeys); // Release: soltadas
+            HashSet<ConsoleKey> pressedKeys = ComputePressedKeys(newKeys, currentKeys);
+            HashSet<ConsoleKey> heldKeys = ComputeHeldKeys(newKeys, currentKeys);
+            HashSet<ConsoleKey> releasedKeys = ComputeReleasedKeys(currentKeys, newKeys);
 
-            // Actualizar timestamps y crear KeyEventInfo
-            foreach (ConsoleKey k in pressedKeys)
-            {
-                keyDownTimestamps[k] = now;
-            }
+            UpdateKeyTimestamps(pressedKeys, releasedKeys, now);
+            ProcessKeyEventComponents(pressedKeys, heldKeys, releasedKeys, now);
 
-            foreach (ConsoleKey k in releasedKeys)
-            {
-                keyDownTimestamps.TryGetValue(k, out DateTime _);
-                keyDownTimestamps.Remove(k);
-            }
-
-            GameObjectQueryEnumerator.QueryEnumerable result = Context.SceneManager.CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
-            foreach (GameObject gameObject in result)
-            {
-                foreach (ComponentId component in gameObject.ComponentTypes)
-                {
-                    Type componentType = component.Type;
-                    if (typeof(IOnPressKey).IsAssignableFrom(componentType))
-                    {
-                        IOnPressKey onPressKey = (IOnPressKey) gameObject.Get(componentType);
-                        foreach (ConsoleKey k in pressedKeys)
-                        {
-                            KeyEventInfo info = new KeyEventInfo(k, now, TimeSpan.Zero);
-                            onPressKey.OnPressKey(info);
-                        }
-                    }
-
-                    if (typeof(IOnHoldKey).IsAssignableFrom(componentType))
-                    {
-                        IOnHoldKey onHoldKey = (IOnHoldKey) gameObject.Get(componentType);
-                        foreach (ConsoleKey k in heldKeys)
-                        {
-                            keyDownTimestamps.TryGetValue(k, out DateTime downTime);
-                            KeyEventInfo info = new KeyEventInfo(k, now, now - downTime);
-                            onHoldKey.OnHoldKey(info);
-                        }
-                    }
-
-                    if (typeof(IOnReleaseKey).IsAssignableFrom(componentType))
-                    {
-                        IOnReleaseKey onReleaseKey = (IOnReleaseKey) gameObject.Get(componentType);
-                        foreach (ConsoleKey k in releasedKeys)
-                        {
-                            keyDownTimestamps.TryGetValue(k, out DateTime downTime);
-                            KeyEventInfo info = new KeyEventInfo(k, now, now - downTime);
-                            onReleaseKey.OnReleaseKey(info);
-                        }
-                    }
-                }
-            }
-
-            // Actualizar los estados para el siguiente frame
             currentKeys = newKeys;
 
 
