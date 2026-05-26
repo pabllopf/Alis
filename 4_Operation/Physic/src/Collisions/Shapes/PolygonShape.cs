@@ -285,12 +285,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 float numerator = Vector2F.Dot(Normals[i], Vertices[i] - p1);
                 float denominator = Vector2F.Dot(Normals[i], d);
 
-                if (Math.Abs(denominator) < SettingEnv.Epsilon)
+                if (Math.Abs(denominator) < SettingEnv.Epsilon && numerator < 0.0f)
                 {
-                    if (numerator < 0.0f)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
                 else
                 {

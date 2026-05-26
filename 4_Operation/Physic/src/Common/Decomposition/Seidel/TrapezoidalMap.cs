@@ -270,45 +270,8 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
             foreach (Edge e in edges)
             {
-                if (e.P.X > max.X)
-                {
-                    max = new Point(e.P.X + _margin, max.Y);
-                }
-
-                if (e.P.Y > max.Y)
-                {
-                    max = new Point(max.X, e.P.Y + _margin);
-                }
-
-                if (e.Q.X > max.X)
-                {
-                    max = new Point(e.Q.X + _margin, max.Y);
-                }
-
-                if (e.Q.Y > max.Y)
-                {
-                    max = new Point(max.X, e.Q.Y + _margin);
-                }
-
-                if (e.P.X < min.X)
-                {
-                    min = new Point(e.P.X - _margin, min.Y);
-                }
-
-                if (e.P.Y < min.Y)
-                {
-                    min = new Point(min.X, e.P.Y - _margin);
-                }
-
-                if (e.Q.X < min.X)
-                {
-                    min = new Point(e.Q.X - _margin, min.Y);
-                }
-
-                if (e.Q.Y < min.Y)
-                {
-                    min = new Point(min.X, e.Q.Y - _margin);
-                }
+                UpdateMax(e, ref max, _margin);
+                UpdateMin(e, ref min, _margin);
             }
 
             Edge top = new Edge(new Point(min.X, max.Y), new Point(max.X, max.Y));
@@ -317,6 +280,52 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             Point right = top.Q;
 
             return new Trapezoid(left, right, top, bottom);
+        }
+
+        private static void UpdateMax(Edge e, ref Point max, float margin)
+        {
+            if (e.P.X > max.X)
+            {
+                max = new Point(e.P.X + margin, max.Y);
+            }
+
+            if (e.P.Y > max.Y)
+            {
+                max = new Point(max.X, e.P.Y + margin);
+            }
+
+            if (e.Q.X > max.X)
+            {
+                max = new Point(e.Q.X + margin, max.Y);
+            }
+
+            if (e.Q.Y > max.Y)
+            {
+                max = new Point(max.X, e.Q.Y + margin);
+            }
+        }
+
+        private static void UpdateMin(Edge e, ref Point min, float margin)
+        {
+            if (e.P.X < min.X)
+            {
+                min = new Point(e.P.X - margin, min.Y);
+            }
+
+            if (e.P.Y < min.Y)
+            {
+                min = new Point(min.X, e.P.Y - margin);
+            }
+
+            if (e.Q.X < min.X)
+            {
+                min = new Point(e.Q.X - margin, min.Y);
+            }
+
+            if (e.Q.Y < min.Y)
+            {
+                min = new Point(min.X, e.Q.Y - margin);
+            }
         }
     }
 }

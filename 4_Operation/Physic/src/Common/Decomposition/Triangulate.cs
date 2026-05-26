@@ -59,33 +59,15 @@ namespace Alis.Core.Physic.Common.Decomposition
             switch (algorithm)
             {
                 case TriangulationAlgorithm.Earclip:
-                    if (!skipSanityChecks && vertices.IsCounterClockWise())
-                    {
-                        Vertices temp = new Vertices(vertices);
-                        temp.Reverse();
-                        vertices = temp;
-                    }
-
+                    vertices = EnsureClockwise(vertices, skipSanityChecks);
                     results = EarclipDecomposer.ConvexPartition(vertices, tolerance);
                     break;
                 case TriangulationAlgorithm.Bayazit:
-                    if (!vertices.IsCounterClockWise())
-                    {
-                        Vertices temp = new Vertices(vertices);
-                        temp.Reverse();
-                        vertices = temp;
-                    }
-
+                    vertices = EnsureCounterClockWise(vertices);
                     results = BayazitDecomposer.ConvexPartition(vertices);
                     break;
                 case TriangulationAlgorithm.Flipcode:
-                    if (!vertices.IsCounterClockWise())
-                    {
-                        Vertices temp = new Vertices(vertices);
-                        temp.Reverse();
-                        vertices = temp;
-                    }
-
+                    vertices = EnsureCounterClockWise(vertices);
                     results = FlipcodeDecomposer.ConvexPartition(vertices);
                     break;
                 case TriangulationAlgorithm.Seidel:
@@ -115,6 +97,41 @@ namespace Alis.Core.Physic.Common.Decomposition
             }
 
             return results;
+        }
+
+        /// <summary>
+        ///     Ensure the vertices are wound clockwise for algorithms that expect clockwise ordering
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="skipSanityChecks">Whether to skip sanity checks</param>
+        /// <returns>The vertices</returns>
+        private static Vertices EnsureClockwise(Vertices vertices, bool skipSanityChecks)
+        {
+            if (!skipSanityChecks && vertices.IsCounterClockWise())
+            {
+                Vertices temp = new Vertices(vertices);
+                temp.Reverse();
+                return temp;
+            }
+
+            return vertices;
+        }
+
+        /// <summary>
+        ///     Ensure the vertices are wound counter-clockwise
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The vertices</returns>
+        private static Vertices EnsureCounterClockWise(Vertices vertices)
+        {
+            if (!vertices.IsCounterClockWise())
+            {
+                Vertices temp = new Vertices(vertices);
+                temp.Reverse();
+                return temp;
+            }
+
+            return vertices;
         }
 
         /// <summary>

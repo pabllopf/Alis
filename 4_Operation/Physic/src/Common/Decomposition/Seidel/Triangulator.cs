@@ -108,41 +108,9 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             {
                 List<Trapezoid> traps = _queryGraph.FollowEdge(edge);
 
-                // Remove trapezoids from trapezoidal Map
                 foreach (Trapezoid t in traps)
                 {
-                    _trapezoidalMap.Map.Remove(t);
-
-                    bool cp = t.Contains(edge.P);
-                    bool cq = t.Contains(edge.Q);
-                    Trapezoid[] tList;
-
-                    if (cp && cq)
-                    {
-                        tList = TrapezoidalMap.Case1(t, edge);
-                        _queryGraph.Case1(t.Sink, edge, tList);
-                    }
-                    else if (cp)
-                    {
-                        tList = _trapezoidalMap.Case2(t, edge);
-                        _queryGraph.Case2(t.Sink, edge, tList);
-                    }
-                    else if (!cq)
-                    {
-                        tList = _trapezoidalMap.Case3(t, edge);
-                        _queryGraph.Case3(t.Sink, edge, tList);
-                    }
-                    else
-                    {
-                        tList = _trapezoidalMap.Case4(t, edge);
-                        _queryGraph.Case4(t.Sink, edge, tList);
-                    }
-
-                    // Add new trapezoids to map
-                    foreach (Trapezoid y in tList)
-                    {
-                        _trapezoidalMap.Map.Add(y);
-                    }
+                    ProcessTrapezoid(t, edge);
                 }
 
                 _trapezoidalMap.Clear();
@@ -166,6 +134,41 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
 
             // Generate the triangles
             CreateMountains();
+        }
+
+        private void ProcessTrapezoid(Trapezoid t, Edge edge)
+        {
+            _trapezoidalMap.Map.Remove(t);
+
+            bool cp = t.Contains(edge.P);
+            bool cq = t.Contains(edge.Q);
+            Trapezoid[] tList;
+
+            if (cp && cq)
+            {
+                tList = TrapezoidalMap.Case1(t, edge);
+                _queryGraph.Case1(t.Sink, edge, tList);
+            }
+            else if (cp)
+            {
+                tList = _trapezoidalMap.Case2(t, edge);
+                _queryGraph.Case2(t.Sink, edge, tList);
+            }
+            else if (!cq)
+            {
+                tList = _trapezoidalMap.Case3(t, edge);
+                _queryGraph.Case3(t.Sink, edge, tList);
+            }
+            else
+            {
+                tList = _trapezoidalMap.Case4(t, edge);
+                _queryGraph.Case4(t.Sink, edge, tList);
+            }
+
+            foreach (Trapezoid y in tList)
+            {
+                _trapezoidalMap.Map.Add(y);
+            }
         }
 
         // Build a list of x-monotone mountains
