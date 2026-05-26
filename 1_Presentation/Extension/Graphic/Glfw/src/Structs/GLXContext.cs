@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GLXContext.cs
+//  File:GlxContext.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -36,12 +36,12 @@ namespace Alis.Extension.Graphic.Glfw.Structs
     ///     Wrapper around a GLX context pointer.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct GLXContext : IEquatable<GLXContext>
+    public struct GlxContext : IEquatable<GlxContext>
     {
         /// <summary>
         ///     Describes a default/null instance.
         /// </summary>
-        public static readonly GLXContext None;
+        public static readonly GlxContext None;
 
         /// <summary>
         ///     Internal pointer.
@@ -49,13 +49,13 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         private readonly IntPtr handle;
 
         /// <summary>
-        ///     Performs an implicit conversion from <see cref="GLXContext" /> to <see cref="IntPtr" />.
+        ///     Performs an implicit conversion from <see cref="GlxContext" /> to <see cref="IntPtr" />.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>
         ///     The result of the conversion.
         /// </returns>
-        public static implicit operator IntPtr(GLXContext context) => context.handle;
+        public static implicit operator IntPtr(GlxContext context) => context.handle;
 
         /// <summary>
         ///     Returns a <see cref="string" /> that represents this instance.
@@ -66,13 +66,13 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         public override string ToString() => handle.ToString();
 
         /// <summary>
-        ///     Determines whether the specified <see cref="GLXContext" />, is equal to this instance.
+        ///     Determines whether the specified <see cref="GlxContext" />, is equal to this instance.
         /// </summary>
-        /// <param name="other">The <see cref="GLXContext" /> to compare with this instance.</param>
+        /// <param name="other">The <see cref="GlxContext" /> to compare with this instance.</param>
         /// <returns>
-        ///     <c>true</c> if the specified <see cref="GLXContext" /> is equal to this instance; otherwise, <c>false</c>.
+        ///     <c>true</c> if the specified <see cref="GlxContext" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public bool Equals(GLXContext other) => handle.Equals(other.handle);
+        public bool Equals(GlxContext other) => handle.Equals(other.handle);
 
         /// <summary>
         ///     Determines whether the specified <see cref="object" />, is equal to this instance.
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is GLXContext context)
+            if (obj is GlxContext context)
             {
                 return Equals(context);
             }
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// <returns>
         ///     The result of the operator.
         /// </returns>
-        public static bool operator ==(GLXContext left, GLXContext right) => left.Equals(right);
+        public static bool operator ==(GlxContext left, GlxContext right) => left.Equals(right);
 
         /// <summary>
         ///     Implements the operator !=.
@@ -117,6 +117,6 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// <returns>
         ///     The result of the operator.
         /// </returns>
-        public static bool operator !=(GLXContext left, GLXContext right) => !left.Equals(right);
+        public static bool operator !=(GlxContext left, GlxContext right) => !left.Equals(right);
     }
 }

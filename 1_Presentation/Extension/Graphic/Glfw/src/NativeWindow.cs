@@ -699,9 +699,9 @@ namespace Alis.Extension.Graphic.Glfw
         ///     Returns the GlxContext of the specified window.
         /// </summary>
         /// <param name="window">A window instance.</param>
-        /// <returns>The GLXContext of the specified window, or <see cref="GLXContext.None" /> if an error occurred.</returns>
+        /// <returns>The GlxContext of the specified window, or <see cref="GlxContext.None" /> if an error occurred.</returns>
         [DllImport(GlfwNative.Library, EntryPoint = "glfwGetGLXContext", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
-        public static extern GLXContext GetGLXContext(Window window);
+        public static extern GlxContext GetGLXContext(Window window);
 
         /// <summary>
         ///     Returns the EglContext of the specified window.

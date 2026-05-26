@@ -195,12 +195,12 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        ///     Test GLXContext struct is a value type
+        ///     Test GlxContext struct is a value type
         /// </summary>
         [Fact]
-        public void GLXContextStructIsValueType_ShouldBeTrue()
+        public void GlxContextStructIsValueType_ShouldBeTrue()
         {
-            Type glxContextType = typeof(GLXContext);
+            Type glxContextType = typeof(GlxContext);
 
             Assert.True(glxContextType.IsValueType);
         }
