@@ -257,36 +257,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 vc.Normal = normal;
                 Vector2F tangent = MathUtils.Rot270(ref vc.Normal);
 
-                int pointCount = vc.PointCount;
-                for (int j = 0; j < pointCount; ++j)
-                {
-                    VelocityConstraintPoint vcp = vc.Points[j];
-
-                    vcp.Ra = points[j] - cA;
-                    vcp.Rb = points[j] - cB;
-
-                    float rnA = MathUtils.Cross(ref vcp.Ra, ref vc.Normal);
-                    float rnB = MathUtils.Cross(ref vcp.Rb, ref vc.Normal);
-
-                    float kNormal = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
-
-                    vcp.NormalMass = kNormal > 0.0f ? 1.0f / kNormal : 0.0f;
-
-
-                    float rtA = MathUtils.Cross(ref vcp.Ra, ref tangent);
-                    float rtB = MathUtils.Cross(ref vcp.Rb, ref tangent);
-
-                    float kTangent = mA + mB + iA * rtA * rtA + iB * rtB * rtB;
-
-                    vcp.TangentMass = kTangent > 0.0f ? 1.0f / kTangent : 0.0f;
-
-                    vcp.VelocityBias = 0.0f;
-                    float vRel = Vector2F.Dot(vc.Normal, vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra));
-                    if (vRel < -SettingEnv.VelocityThreshold)
-                    {
-                        vcp.VelocityBias = -vc.Restitution * vRel;
-                    }
-                }
+                InitializeVelocityConstraintPoints(vc, points, cA, cB, mA, mB, iA, iB, tangent, vA, wA, vB, wB);
 
                 if (vc.PointCount == 2)
                 {
@@ -315,6 +286,40 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                         vc.PointCount = 1;
                     }
+                }
+            }
+        }
+
+        private void InitializeVelocityConstraintPoints(ContactVelocityConstraint vc, FixedArray2<Vector2F> points, Vector2F cA, Vector2F cB, float mA, float mB, float iA, float iB, Vector2F tangent, Vector2F vA, float wA, Vector2F vB, float wB)
+        {
+            int pointCount = vc.PointCount;
+            for (int j = 0; j < pointCount; ++j)
+            {
+                VelocityConstraintPoint vcp = vc.Points[j];
+
+                vcp.Ra = points[j] - cA;
+                vcp.Rb = points[j] - cB;
+
+                float rnA = MathUtils.Cross(ref vcp.Ra, ref vc.Normal);
+                float rnB = MathUtils.Cross(ref vcp.Rb, ref vc.Normal);
+
+                float kNormal = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
+
+                vcp.NormalMass = kNormal > 0.0f ? 1.0f / kNormal : 0.0f;
+
+
+                float rtA = MathUtils.Cross(ref vcp.Ra, ref tangent);
+                float rtB = MathUtils.Cross(ref vcp.Rb, ref tangent);
+
+                float kTangent = mA + mB + iA * rtA * rtA + iB * rtB * rtB;
+
+                vcp.TangentMass = kTangent > 0.0f ? 1.0f / kTangent : 0.0f;
+
+                vcp.VelocityBias = 0.0f;
+                float vRel = Vector2F.Dot(vc.Normal, vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra));
+                if (vRel < -SettingEnv.VelocityThreshold)
+                {
+                    vcp.VelocityBias = -vc.Restitution * vRel;
                 }
             }
         }

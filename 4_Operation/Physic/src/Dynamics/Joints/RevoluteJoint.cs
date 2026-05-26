@@ -462,6 +462,36 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _motorImpulse = 0.0f;
             }
 
+            UpdateLimitState(fixedRotation, aA, aB);
+
+            if (data.Step.WarmStarting)
+            {
+                // Scale impulses to support a variable time step.
+                _impulse *= data.Step.DtRatio;
+                _motorImpulse *= data.Step.DtRatio;
+
+                Vector2F p = new Vector2F(_impulse.X, _impulse.Y);
+
+                vA -= mA * p;
+                wA -= iA * (MathUtils.Cross(ref _rA, ref p) + MotorImpulse + _impulse.Z);
+
+                vB += mB * p;
+                wB += iB * (MathUtils.Cross(ref _rB, ref p) + MotorImpulse + _impulse.Z);
+            }
+            else
+            {
+                _impulse = Vector3F.Zero;
+                _motorImpulse = 0.0f;
+            }
+
+            data.Velocities[_indexA].V = vA;
+            data.Velocities[_indexA].W = wA;
+            data.Velocities[_indexB].V = vB;
+            data.Velocities[_indexB].W = wB;
+        }
+
+        private void UpdateLimitState(bool fixedRotation, float aA, float aB)
+        {
             if (_enableLimit && !fixedRotation)
             {
                 float jointAngle = aB - aA - ReferenceAngle;
@@ -497,31 +527,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 _limitState = LimitState.Inactive;
             }
-
-            if (data.Step.WarmStarting)
-            {
-                // Scale impulses to support a variable time step.
-                _impulse *= data.Step.DtRatio;
-                _motorImpulse *= data.Step.DtRatio;
-
-                Vector2F p = new Vector2F(_impulse.X, _impulse.Y);
-
-                vA -= mA * p;
-                wA -= iA * (MathUtils.Cross(ref _rA, ref p) + MotorImpulse + _impulse.Z);
-
-                vB += mB * p;
-                wB += iB * (MathUtils.Cross(ref _rB, ref p) + MotorImpulse + _impulse.Z);
-            }
-            else
-            {
-                _impulse = Vector3F.Zero;
-                _motorImpulse = 0.0f;
-            }
-
-            data.Velocities[_indexA].V = vA;
-            data.Velocities[_indexA].W = wA;
-            data.Velocities[_indexB].V = vB;
-            data.Velocities[_indexB].W = wB;
         }
 
         /// <summary>

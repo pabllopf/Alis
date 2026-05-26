@@ -955,27 +955,7 @@ namespace Alis.Core.Physic.Collisions
 
             while (count > 1)
             {
-                float minCost = SettingEnv.MaxFloat;
-                int iMin = -1, jMin = -1;
-                for (int i = 0; i < count; ++i)
-                {
-                    Aabb aabBi = _nodes[nodes[i]].Aabb;
-
-                    for (int j = i + 1; j < count; ++j)
-                    {
-                        Aabb aabBj = _nodes[nodes[j]].Aabb;
-                        Aabb b = new Aabb();
-                        b.Combine(ref aabBi, ref aabBj);
-                        float cost = b.Perimeter;
-                        if (cost < minCost)
-                        {
-                            iMin = i;
-                            jMin = j;
-                            minCost = cost;
-                        }
-                    }
-                }
-
+                FindBestPair(nodes, count, out int iMin, out int jMin);
                 int index1 = nodes[iMin];
                 int index2 = nodes[jMin];
 
@@ -997,6 +977,31 @@ namespace Alis.Core.Physic.Collisions
             _root = nodes[0];
 
             Validate();
+        }
+
+        private void FindBestPair(int[] nodes, int count, out int iMin, out int jMin)
+        {
+            float minCost = SettingEnv.MaxFloat;
+            iMin = -1;
+            jMin = -1;
+            for (int i = 0; i < count; ++i)
+            {
+                Aabb aabBi = _nodes[nodes[i]].Aabb;
+
+                for (int j = i + 1; j < count; ++j)
+                {
+                    Aabb aabBj = _nodes[nodes[j]].Aabb;
+                    Aabb b = new Aabb();
+                    b.Combine(ref aabBi, ref aabBj);
+                    float cost = b.Perimeter;
+                    if (cost < minCost)
+                    {
+                        iMin = i;
+                        jMin = j;
+                        minCost = cost;
+                    }
+                }
+            }
         }
 
         /// <summary>

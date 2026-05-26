@@ -71,25 +71,14 @@ namespace Alis.Core.Physic.Common.Logic
 
             foreach (Fixture fixture in body.FixtureList)
             {
-                if ((fixture.GetCollisionGroup == DisabledOnGroup) && (fixture.GetCollisionGroup != 0) && (DisabledOnGroup != 0))
+                if (IsDisabledOnGroup(fixture) || IsDisabledOnCategory(fixture))
                 {
                     return false;
                 }
 
-                if ((fixture.GetCollisionCategories & DisabledOnCategories) != Categories.None)
+                if (HasEnabledFilter())
                 {
-                    return false;
-                }
-
-                if (EnabledOnGroup != 0 || EnabledOnCategories != Categories.All)
-                {
-                    if ((fixture.GetCollisionGroup == EnabledOnGroup) && (fixture.GetCollisionGroup != 0) && (EnabledOnGroup != 0))
-                    {
-                        return true;
-                    }
-
-                    if (((fixture.GetCollisionCategories & EnabledOnCategories) != Categories.None) &&
-                        (EnabledOnCategories != Categories.All))
+                    if (IsEnabledOnGroup(fixture) || IsEnabledOnCategory(fixture))
                     {
                         return true;
                     }
@@ -102,6 +91,21 @@ namespace Alis.Core.Physic.Common.Logic
 
             return false;
         }
+
+        private bool IsDisabledOnGroup(Fixture fixture) =>
+            (fixture.GetCollisionGroup == DisabledOnGroup) && (fixture.GetCollisionGroup != 0) && (DisabledOnGroup != 0);
+
+        private bool IsDisabledOnCategory(Fixture fixture) =>
+            (fixture.GetCollisionCategories & DisabledOnCategories) != Categories.None;
+
+        private bool HasEnabledFilter() =>
+            EnabledOnGroup != 0 || EnabledOnCategories != Categories.All;
+
+        private bool IsEnabledOnGroup(Fixture fixture) =>
+            (fixture.GetCollisionGroup == EnabledOnGroup) && (fixture.GetCollisionGroup != 0) && (EnabledOnGroup != 0);
+
+        private bool IsEnabledOnCategory(Fixture fixture) =>
+            ((fixture.GetCollisionCategories & EnabledOnCategories) != Categories.None) && (EnabledOnCategories != Categories.All);
 
         /// <summary>
         ///     Adds the category.

@@ -821,36 +821,48 @@ namespace Alis.Core.Physic.Common.TextureTools
             /// <returns>A cx fast list node of t</returns>
             public CxFastListNode<T> Find(T value)
             {
-                // start at head
-                CxFastListNode<T> head = _head;
-                EqualityComparer<T> comparer = EqualityComparer<T>.Default;
-                if (head != null)
+                if (_head != null)
                 {
                     if (!EqualityComparer<T>.Default.Equals(value, default(T)))
                     {
-                        do
-                        {
-                            if (comparer.Equals(head.Elt, value))
-                            {
-                                return head;
-                            }
-
-                            head = head.Next;
-                        } while (head != _head);
+                        return FindNonDefault(value);
                     }
-                    else
-                    {
-                        do
-                        {
-                            if (EqualityComparer<T>.Default.Equals(head.Elt, default(T)))
-                            {
-                                return head;
-                            }
 
-                            head = head.Next;
-                        } while (head != _head);
-                    }
+                    return FindDefault();
                 }
+
+                return null;
+            }
+
+            private CxFastListNode<T> FindNonDefault(T value)
+            {
+                CxFastListNode<T> head = _head;
+                EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+                do
+                {
+                    if (comparer.Equals(head.Elt, value))
+                    {
+                        return head;
+                    }
+
+                    head = head.Next;
+                } while (head != _head);
+
+                return null;
+            }
+
+            private CxFastListNode<T> FindDefault()
+            {
+                CxFastListNode<T> head = _head;
+                do
+                {
+                    if (EqualityComparer<T>.Default.Equals(head.Elt, default(T)))
+                    {
+                        return head;
+                    }
+
+                    head = head.Next;
+                } while (head != _head);
 
                 return null;
             }

@@ -450,19 +450,9 @@ namespace Alis.Core.Physic.Collisions
                     return;
                 }
 
-                // Is there an edge connected to A?
-                if (edgeA.HasVertex0)
+                if (IsCircleInPreviousEdgeRegion(edgeA, q, a))
                 {
-                    Vector2F a1 = edgeA.Vertex0;
-                    Vector2F b1 = a;
-                    Vector2F e1 = b1 - a1;
-                    float u1 = Vector2F.Dot(e1, b1 - q);
-
-                    // Is the circle in Region AB of the previous edge?
-                    if (u1 > 0.0f)
-                    {
-                        return;
-                    }
+                    return;
                 }
 
                 cf.IndexA = 0;
@@ -490,19 +480,9 @@ namespace Alis.Core.Physic.Collisions
                     return;
                 }
 
-                // Is there an edge connected to B?
-                if (edgeA.HasVertex3)
+                if (IsCircleInNextEdgeRegion(edgeA, q, b))
                 {
-                    Vector2F b2 = edgeA.Vertex3;
-                    Vector2F a2 = b;
-                    Vector2F e2 = b2 - a2;
-                    float v2 = Vector2F.Dot(e2, q - a2);
-
-                    // Is the circle in Region AB of the next edge?
-                    if (v2 > 0.0f)
-                    {
-                        return;
-                    }
+                    return;
                 }
 
                 cf.IndexA = 1;
@@ -548,6 +528,36 @@ namespace Alis.Core.Physic.Collisions
             mp2.Id.Features = cf;
             mp2.LocalPoint = circleB.Position;
             manifold.Points[0] = mp2;
+        }
+
+        private static bool IsCircleInPreviousEdgeRegion(EdgeShape edgeA, Vector2F q, Vector2F a)
+        {
+            if (!edgeA.HasVertex0)
+            {
+                return false;
+            }
+
+            Vector2F a1 = edgeA.Vertex0;
+            Vector2F b1 = a;
+            Vector2F e1 = b1 - a1;
+            float u1 = Vector2F.Dot(e1, b1 - q);
+
+            return u1 > 0.0f;
+        }
+
+        private static bool IsCircleInNextEdgeRegion(EdgeShape edgeA, Vector2F q, Vector2F b)
+        {
+            if (!edgeA.HasVertex3)
+            {
+                return false;
+            }
+
+            Vector2F b2 = edgeA.Vertex3;
+            Vector2F a2 = b;
+            Vector2F e2 = b2 - a2;
+            float v2 = Vector2F.Dot(e2, q - a2);
+
+            return v2 > 0.0f;
         }
 
         /// <summary>

@@ -103,6 +103,39 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         }
 
         /// <summary>
+        ///     Resolves the bit depth from the sample format if not already set.
+        /// </summary>
+        /// <param name="metadata">The audio metadata to update.</param>
+        private static void ResolveBitDepth(AudioMetadata metadata)
+        {
+            if (metadata.BitDepth != 0)
+            {
+                return;
+            }
+
+            if (metadata.SampleFormat.Contains("64"))
+            {
+                metadata.BitDepth = 64;
+            }
+            else if (metadata.SampleFormat.Contains("32"))
+            {
+                metadata.BitDepth = 32;
+            }
+            else if (metadata.SampleFormat.Contains("24"))
+            {
+                metadata.BitDepth = 24;
+            }
+            else if (metadata.SampleFormat.Contains("16"))
+            {
+                metadata.BitDepth = 16;
+            }
+            else if (metadata.SampleFormat.Contains("8"))
+            {
+                metadata.BitDepth = 8;
+            }
+        }
+
+        /// <summary>
         ///     Load audio metadata into memory.
         /// </summary>
         public void LoadMetadata(bool ignoreStreamErrors = false) => LoadMetadataAsync(ignoreStreamErrors).Wait();
@@ -143,29 +176,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                         metadata.BitDepth = audioStream.BitsPerSample;
                         metadata.PredictedSampleCount = (int) Math.Round(metadata.Duration * metadata.SampleRate);
 
-                        if (metadata.BitDepth == 0)
-                        {
-                            if (metadata.SampleFormat.Contains("64"))
-                            {
-                                metadata.BitDepth = 64;
-                            }
-                            else if (metadata.SampleFormat.Contains("32"))
-                            {
-                                metadata.BitDepth = 32;
-                            }
-                            else if (metadata.SampleFormat.Contains("24"))
-                            {
-                                metadata.BitDepth = 24;
-                            }
-                            else if (metadata.SampleFormat.Contains("16"))
-                            {
-                                metadata.BitDepth = 16;
-                            }
-                            else if (metadata.SampleFormat.Contains("8"))
-                            {
-                                metadata.BitDepth = 8;
-                            }
-                        }
+                        ResolveBitDepth(metadata);
                     }
                 }
                 catch (Exception ex)

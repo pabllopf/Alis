@@ -559,32 +559,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Compute motor and limit terms.
             if (_enableLimit)
             {
-                float jointTranslation = Vector2F.Dot(_axis, d);
-                if (Math.Abs(_upperTranslation - _lowerTranslation) < 2.0f * SettingEnv.LinearSlop)
-                {
-                    _limitState = LimitState.Equal;
-                }
-                else if (jointTranslation <= _lowerTranslation)
-                {
-                    if (_limitState != LimitState.AtLower)
-                    {
-                        _limitState = LimitState.AtLower;
-                        _impulse.Z = 0.0f;
-                    }
-                }
-                else if (jointTranslation >= _upperTranslation)
-                {
-                    if (_limitState != LimitState.AtUpper)
-                    {
-                        _limitState = LimitState.AtUpper;
-                        _impulse.Z = 0.0f;
-                    }
-                }
-                else
-                {
-                    _limitState = LimitState.Inactive;
-                    _impulse.Z = 0.0f;
-                }
+                ApplyLimitState(d);
             }
             else
             {
@@ -894,6 +869,36 @@ namespace Alis.Core.Physic.Dynamics.Joints
             k.Ex = new Vector3F(k11, k12, k13);
             k.Ey = new Vector3F(k12, k22, k23);
             k.Ez = new Vector3F(k13, k23, k33);
+        }
+
+        private void ApplyLimitState(Vector2F d)
+        {
+            float jointTranslation = Vector2F.Dot(_axis, d);
+            if (Math.Abs(_upperTranslation - _lowerTranslation) < 2.0f * SettingEnv.LinearSlop)
+            {
+                _limitState = LimitState.Equal;
+            }
+            else if (jointTranslation <= _lowerTranslation)
+            {
+                if (_limitState != LimitState.AtLower)
+                {
+                    _limitState = LimitState.AtLower;
+                    _impulse.Z = 0.0f;
+                }
+            }
+            else if (jointTranslation >= _upperTranslation)
+            {
+                if (_limitState != LimitState.AtUpper)
+                {
+                    _limitState = LimitState.AtUpper;
+                    _impulse.Z = 0.0f;
+                }
+            }
+            else
+            {
+                _limitState = LimitState.Inactive;
+                _impulse.Z = 0.0f;
+            }
         }
     }
 }

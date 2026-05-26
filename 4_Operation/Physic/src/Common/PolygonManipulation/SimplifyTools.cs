@@ -172,39 +172,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
             for (int i = 0; i < vertices.Count; ++i)
             {
-                int lower = i == 0 ? vertices.Count - 1 : i - 1;
-                int middle = i;
-                int upper = i == vertices.Count - 1 ? 0 : i + 1;
-
-                float dx0 = vertices[middle].X - vertices[lower].X;
-                float dy0 = vertices[middle].Y - vertices[lower].Y;
-                float dx1 = vertices[upper].Y - vertices[middle].X;
-                float dy1 = vertices[upper].Y - vertices[middle].Y;
-                float norm0 = (float) Math.Sqrt(dx0 * dx0 + dy0 * dy0);
-                float norm1 = (float) Math.Sqrt(dx1 * dx1 + dy1 * dy1);
-
-                if (!((norm0 > 0.0f) && (norm1 > 0.0f)) && (newNVertices > 3))
-                {
-                    mergeMe[i] = true;
-                    --newNVertices;
-                }
-
-                dx0 /= norm0;
-                dy0 /= norm0;
-                dx1 /= norm1;
-                dy1 /= norm1;
-                float cross = dx0 * dy1 - dx1 * dy0;
-                float dot = dx0 * dx1 + dy0 * dy1;
-
-                if ((Math.Abs(cross) < tolerance) && (dot > 0) && (newNVertices > 3))
-                {
-                    mergeMe[i] = true;
-                    --newNVertices;
-                }
-                else
-                {
-                    mergeMe[i] = false;
-                }
+                mergeMe[i] = ShouldMergeEdge(vertices, i, tolerance, ref newNVertices);
             }
 
             if (newNVertices == vertices.Count || newNVertices == 0)
@@ -228,6 +196,42 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
 
             return newVertices;
+        }
+
+        /// <summary>
+        ///     Determines whether the edge at index <paramref name="i" /> should be merged based on parallelism.
+        /// </summary>
+        private static bool ShouldMergeEdge(Vertices vertices, int i, float tolerance, ref int newNVertices)
+        {
+            int lower = i == 0 ? vertices.Count - 1 : i - 1;
+            int upper = i == vertices.Count - 1 ? 0 : i + 1;
+
+            float dx0 = vertices[i].X - vertices[lower].X;
+            float dy0 = vertices[i].Y - vertices[lower].Y;
+            float dx1 = vertices[upper].Y - vertices[i].X;
+            float dy1 = vertices[upper].Y - vertices[i].Y;
+            float norm0 = (float) Math.Sqrt(dx0 * dx0 + dy0 * dy0);
+            float norm1 = (float) Math.Sqrt(dx1 * dx1 + dy1 * dy1);
+
+            if (!((norm0 > 0.0f) && (norm1 > 0.0f)) && (newNVertices > 3))
+            {
+                --newNVertices;
+            }
+
+            dx0 /= norm0;
+            dy0 /= norm0;
+            dx1 /= norm1;
+            dy1 /= norm1;
+            float cross = dx0 * dy1 - dx1 * dy0;
+            float dot = dx0 * dx1 + dy0 * dy1;
+
+            if ((Math.Abs(cross) < tolerance) && (dot > 0) && (newNVertices > 3))
+            {
+                --newNVertices;
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
