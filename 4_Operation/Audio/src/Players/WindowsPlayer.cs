@@ -88,8 +88,21 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         public void Dispose()
         {
-            _playbackTimer?.Dispose();
-            _playbackTimer = null;
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases managed and unmanaged resources
+        /// </summary>
+        /// <param name="disposing">Whether to release managed resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _playbackTimer?.Dispose();
+                _playbackTimer = null;
+            }
         }
 
         public event EventHandler PlaybackFinished;
