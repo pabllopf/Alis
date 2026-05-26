@@ -35,6 +35,7 @@ using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory;
+using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Body;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
@@ -273,6 +274,86 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             {
                 RenderBoxColliders(boxColliderGameObjects, physicSettings, camera, pixelsPerMeter);
                 RenderSprites(spriteGameObjects, camera, pixelsPerMeter);
+            }
+        }
+
+        private static HashSet<ConsoleKey> ComputePressedKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys)
+        {
+            HashSet<ConsoleKey> pressed = new HashSet<ConsoleKey>(newKeys);
+            pressed.ExceptWith(currentKeys);
+            return pressed;
+        }
+
+        private static HashSet<ConsoleKey> ComputeHeldKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys)
+        {
+            HashSet<ConsoleKey> held = new HashSet<ConsoleKey>(newKeys);
+            held.IntersectWith(currentKeys);
+            return held;
+        }
+
+        private static HashSet<ConsoleKey> ComputeReleasedKeys(HashSet<ConsoleKey> currentKeys, HashSet<ConsoleKey> newKeys)
+        {
+            HashSet<ConsoleKey> released = new HashSet<ConsoleKey>(currentKeys);
+            released.ExceptWith(newKeys);
+            return released;
+        }
+
+        private void UpdateKeyTimestamps(HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
+        {
+            foreach (ConsoleKey key in pressedKeys)
+            {
+                keyDownTimestamps[key] = now;
+            }
+
+            foreach (ConsoleKey key in releasedKeys)
+            {
+                keyDownTimestamps.Remove(key);
+            }
+        }
+
+        private void ProcessKeyEventComponents(HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> heldKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
+        {
+            foreach (GameObject gameObject in Context.SceneManager.CurrentWorld
+                         .Query<With<Info>>()
+                         .EnumerateWithEntities())
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    ProcessKeyEventForComponent(componentType, gameObject, pressedKeys, heldKeys, releasedKeys, now);
+                }
+            }
+        }
+
+        private void ProcessKeyEventForComponent(Type componentType, GameObject gameObject, HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> heldKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
+        {
+            if (typeof(IOnPressKey).IsAssignableFrom(componentType))
+            {
+                IOnPressKey onPressKey = (IOnPressKey)gameObject.Get(componentType);
+                foreach (ConsoleKey k in pressedKeys)
+                {
+                    onPressKey.OnPressKey(new KeyEventInfo(k, now, TimeSpan.Zero));
+                }
+            }
+
+            if (typeof(IOnHoldKey).IsAssignableFrom(componentType))
+            {
+                IOnHoldKey onHoldKey = (IOnHoldKey)gameObject.Get(componentType);
+                foreach (ConsoleKey k in heldKeys)
+                {
+                    TimeSpan holdDuration = keyDownTimestamps.TryGetValue(k, out DateTime downTime) ? now - downTime : TimeSpan.Zero;
+                    onHoldKey.OnHoldKey(new KeyEventInfo(k, now, holdDuration));
+                }
+            }
+
+            if (typeof(IOnReleaseKey).IsAssignableFrom(componentType))
+            {
+                IOnReleaseKey onReleaseKey = (IOnReleaseKey)gameObject.Get(componentType);
+                foreach (ConsoleKey k in releasedKeys)
+                {
+                    TimeSpan holdDuration = keyDownTimestamps.TryGetValue(k, out DateTime downTime) ? now - downTime : TimeSpan.Zero;
+                    onReleaseKey.OnReleaseKey(new KeyEventInfo(k, now, holdDuration));
+                }
             }
         }
 
