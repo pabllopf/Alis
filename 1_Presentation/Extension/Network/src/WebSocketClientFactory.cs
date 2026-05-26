@@ -89,8 +89,20 @@ namespace Alis.Extension.Network
         /// </summary>
         public void Dispose()
         {
-            TcpClient?.Dispose();
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases managed and unmanaged resources
+        /// </summary>
+        /// <param name="disposing">Whether to release managed resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                TcpClient?.Dispose();
+            }
         }
 
         /// <summary>
