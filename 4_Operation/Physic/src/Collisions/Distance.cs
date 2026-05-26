@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Collisions
         {
             cache = new SimplexCache();
 
-            if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            if (SettingEnv.EnableDiagnostics)
             {
                 ++GjkCalls;
             }
@@ -125,23 +125,9 @@ namespace Alis.Core.Physic.Collisions
             while (iter < SettingEnv.MaxGjkIterations)
             {
                 int saveCount = simplex.Count;
-                for (int i = 0; i < saveCount; ++i)
-                {
-                    saveA[i] = simplex.V[i].IndexA;
-                    saveB[i] = simplex.V[i].IndexB;
-                }
+                SaveSimplexIndices(simplex, saveA, saveB, saveCount);
 
-                switch (simplex.Count)
-                {
-                    case 1:
-                        break;
-                    case 2:
-                        simplex.Solve2();
-                        break;
-                    case 3:
-                        simplex.Solve3();
-                        break;
-                }
+                SolveSimplex(simplex);
 
                 if (simplex.Count == 3)
                 {
@@ -152,8 +138,6 @@ namespace Alis.Core.Physic.Collisions
 
                 if (d.LengthSquared() < SettingEnv.Epsilon * SettingEnv.Epsilon)
                 {
-                    // or triangle. Thus the shapes are overlapped.
-
                     break;
                 }
 
@@ -168,22 +152,12 @@ namespace Alis.Core.Physic.Collisions
 
                 ++iter;
 
-                if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+                if (SettingEnv.EnableDiagnostics)
                 {
                     ++GjkIters;
                 }
 
-                bool duplicate = false;
-                for (int i = 0; i < saveCount; ++i)
-                {
-                    if ((vertex.IndexA == saveA[i]) && (vertex.IndexB == saveB[i]))
-                    {
-                        duplicate = true;
-                        break;
-                    }
-                }
-
-                if (duplicate)
+                if (IsDuplicateVertex(vertex, saveA, saveB, saveCount))
                 {
                     break;
                 }
@@ -191,7 +165,7 @@ namespace Alis.Core.Physic.Collisions
                 ++simplex.Count;
             }
 
-            if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            if (SettingEnv.EnableDiagnostics)
             {
                 GjkMaxIters = Math.Max(GjkMaxIters, iter);
             }
@@ -202,26 +176,68 @@ namespace Alis.Core.Physic.Collisions
 
             simplex.WriteCache(ref cache);
 
-            if (input.UseRadii)
-            {
-                float rA = input.ProxyA.Radius;
-                float rB = input.ProxyB.Radius;
+            ApplyRadii(input, ref output);
+        }
 
-                if ((output.Distance > rA + rB) && (output.Distance > SettingEnv.Epsilon))
+        private static void SaveSimplexIndices(Simplex simplex, FixedArray3<int> saveA, FixedArray3<int> saveB, int saveCount)
+        {
+            for (int i = 0; i < saveCount; ++i)
+            {
+                saveA[i] = simplex.V[i].IndexA;
+                saveB[i] = simplex.V[i].IndexB;
+            }
+        }
+
+        private static void SolveSimplex(Simplex simplex)
+        {
+            switch (simplex.Count)
+            {
+                case 2:
+                    simplex.Solve2();
+                    break;
+                case 3:
+                    simplex.Solve3();
+                    break;
+            }
+        }
+
+        private static bool IsDuplicateVertex(SimplexVertex vertex, FixedArray3<int> saveA, FixedArray3<int> saveB, int saveCount)
+        {
+            for (int i = 0; i < saveCount; ++i)
+            {
+                if ((vertex.IndexA == saveA[i]) && (vertex.IndexB == saveB[i]))
                 {
-                    output.Distance -= rA + rB;
-                    Vector2F normal = output.PointB - output.PointA;
-                    normal.Normalize();
-                    output.PointA += rA * normal;
-                    output.PointB -= rB * normal;
+                    return true;
                 }
-                else
-                {
-                    Vector2F p = 0.5f * (output.PointA + output.PointB);
-                    output.PointA = p;
-                    output.PointB = p;
-                    output.Distance = 0.0f;
-                }
+            }
+
+            return false;
+        }
+
+        private static void ApplyRadii(DistanceInput input, ref DistanceOutput output)
+        {
+            if (!input.UseRadii)
+            {
+                return;
+            }
+
+            float rA = input.ProxyA.Radius;
+            float rB = input.ProxyB.Radius;
+
+            if ((output.Distance > rA + rB) && (output.Distance > SettingEnv.Epsilon))
+            {
+                output.Distance -= rA + rB;
+                Vector2F normal = output.PointB - output.PointA;
+                normal.Normalize();
+                output.PointA += rA * normal;
+                output.PointB -= rB * normal;
+            }
+            else
+            {
+                Vector2F p = 0.5f * (output.PointA + output.PointB);
+                output.PointA = p;
+                output.PointB = p;
+                output.Distance = 0.0f;
             }
         }
     }

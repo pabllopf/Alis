@@ -153,367 +153,234 @@ namespace Alis.Core.Graphic.Platforms.Osx
             IntPtr evt = ObjectiveCInterop.objc_msgSend_UL_IntPtr_IntPtr_Bool(app,
                 ObjectiveCInterop.Sel("nextEventMatchingMask:untilDate:inMode:dequeue:"),
                 ulong.MaxValue, distantPast, runLoopMode, true);
-            if (evt != IntPtr.Zero)
+            if (evt == IntPtr.Zero)
             {
-                IntPtr eventType = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("type"));
-                int type = eventType.ToInt32();
-                if (type == 1 || type == 2 || type == 3 || type == 4 || type == 5 || type == 22)
-                {
-                    IntPtr locationPtr = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("locationInWindow"));
-                    long lx = Marshal.ReadInt64(locationPtr, 0);
-                    long ly = Marshal.ReadInt64(locationPtr, 8);
-                    double px = BitConverter.Int64BitsToDouble(lx);
-                    double py = BitConverter.Int64BitsToDouble(ly);
-                    mouseX = (int) Math.Round(px);
-                    mouseY = (int) Math.Round(py);
-
-                    if (type == 1)
-                    {
-                        mouseButtons[0] = true;
-                        Console.WriteLine($"Mouse izquierdo presionado en ({mouseX},{mouseY})");
-                    }
-                    else if (type == 2)
-                    {
-                        mouseButtons[0] = false;
-                        Console.WriteLine($"Mouse izquierdo soltado en ({mouseX},{mouseY})");
-                    }
-                    else if (type == 3)
-                    {
-                        mouseButtons[1] = true;
-                        Console.WriteLine($"Mouse derecho presionado en ({mouseX},{mouseY})");
-                    }
-                    else if (type == 4)
-                    {
-                        mouseButtons[1] = false;
-                        Console.WriteLine($"Mouse derecho soltado en ({mouseX},{mouseY})");
-                    }
-
-                    else if (type == 22)
-                    {
-                        double deltaY = ObjectiveCInterop.objc_msgSend_double(evt, ObjectiveCInterop.Sel("deltaY"));
-                        mouseWheel = (float) deltaY;
-                        Console.WriteLine($"Scroll: {mouseWheel}");
-                    }
-
-                    ObjectiveCInterop.objc_msgSend_void_IntPtr(app, ObjectiveCInterop.Sel("sendEvent:"), evt);
-                    ObjectiveCInterop.objc_msgSend_void(app, ObjectiveCInterop.Sel("updateWindows"));
-                    return IsWindowVisible();
-                }
-
-                if (type == 10) // NSKeyDown
-                {
-                    int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
-                    IntPtr nsString = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("characters"));
-                    char c = '\0';
-                    if (nsString != IntPtr.Zero)
-                    {
-                        IntPtr utf8Ptr = ObjectiveCInterop.objc_msgSend(nsString, ObjectiveCInterop.Sel("UTF8String"));
-                        if (utf8Ptr != IntPtr.Zero)
-                        {
-                            string chars = Marshal.PtrToStringAuto(utf8Ptr);
-                            if (!string.IsNullOrEmpty(chars))
-                            {
-                                c = chars[0];
-                            }
-                        }
-                    }
-
-                    Console.WriteLine($"Tecla presionada: keyCode={keyCode} char='{c}'");
-
-                    switch (keyCode)
-                    {
-                        case 123:
-                            lastKeyPressed = ConsoleKey.LeftArrow;
-                            pressedKeys.Add(ConsoleKey.LeftArrow);
-                            break;
-                        case 124:
-                            lastKeyPressed = ConsoleKey.RightArrow;
-                            pressedKeys.Add(ConsoleKey.RightArrow);
-                            break;
-                        case 125:
-                            lastKeyPressed = ConsoleKey.DownArrow;
-                            pressedKeys.Add(ConsoleKey.DownArrow);
-                            break;
-                        case 126:
-                            lastKeyPressed = ConsoleKey.UpArrow;
-                            pressedKeys.Add(ConsoleKey.UpArrow);
-                            break;
-                        case 115:
-                            lastKeyPressed = ConsoleKey.Home;
-                            pressedKeys.Add(ConsoleKey.Home);
-                            break;
-                        case 119:
-                            lastKeyPressed = ConsoleKey.End;
-                            pressedKeys.Add(ConsoleKey.End);
-                            break;
-                        case 116:
-                            lastKeyPressed = ConsoleKey.PageUp;
-                            pressedKeys.Add(ConsoleKey.PageUp);
-                            break;
-                        case 121:
-                            lastKeyPressed = ConsoleKey.PageDown;
-                            pressedKeys.Add(ConsoleKey.PageDown);
-                            break;
-                        case 51:
-                            lastKeyPressed = ConsoleKey.Backspace;
-                            pressedKeys.Add(ConsoleKey.Backspace);
-                            break;
-                        case 117:
-                            lastKeyPressed = ConsoleKey.Delete;
-                            pressedKeys.Add(ConsoleKey.Delete);
-                            break;
-                        case 36:
-                            lastKeyPressed = ConsoleKey.Enter;
-                            pressedKeys.Add(ConsoleKey.Enter);
-                            break;
-                        case 48:
-                            lastKeyPressed = ConsoleKey.Tab;
-                            pressedKeys.Add(ConsoleKey.Tab);
-                            break;
-                        case 53:
-                            lastKeyPressed = ConsoleKey.Escape;
-                            pressedKeys.Add(ConsoleKey.Escape);
-                            break;
-                        case 122:
-                            lastKeyPressed = ConsoleKey.F1;
-                            pressedKeys.Add(ConsoleKey.F1);
-                            break;
-                        case 120:
-                            lastKeyPressed = ConsoleKey.F2;
-                            pressedKeys.Add(ConsoleKey.F2);
-                            break;
-                        case 99:
-                            lastKeyPressed = ConsoleKey.F3;
-                            pressedKeys.Add(ConsoleKey.F3);
-                            break;
-                        case 118:
-                            lastKeyPressed = ConsoleKey.F4;
-                            pressedKeys.Add(ConsoleKey.F4);
-                            break;
-                        case 96:
-                            lastKeyPressed = ConsoleKey.F5;
-                            pressedKeys.Add(ConsoleKey.F5);
-                            break;
-                        case 97:
-                            lastKeyPressed = ConsoleKey.F6;
-                            pressedKeys.Add(ConsoleKey.F6);
-                            break;
-                        case 98:
-                            lastKeyPressed = ConsoleKey.F7;
-                            pressedKeys.Add(ConsoleKey.F7);
-                            break;
-                        case 100:
-                            lastKeyPressed = ConsoleKey.F8;
-                            pressedKeys.Add(ConsoleKey.F8);
-                            break;
-                        case 101:
-                            lastKeyPressed = ConsoleKey.F9;
-                            pressedKeys.Add(ConsoleKey.F9);
-                            break;
-                        case 109:
-                            lastKeyPressed = ConsoleKey.F10;
-                            pressedKeys.Add(ConsoleKey.F10);
-                            break;
-                        case 103:
-                            lastKeyPressed = ConsoleKey.F11;
-                            pressedKeys.Add(ConsoleKey.F11);
-                            break;
-                        case 111:
-                            lastKeyPressed = ConsoleKey.F12;
-                            pressedKeys.Add(ConsoleKey.F12);
-                            break;
-                        case 55:
-                            lastKeyPressed = ConsoleKey.LeftWindows;
-                            pressedKeys.Add(ConsoleKey.LeftWindows);
-                            break; // Command
-                        default:
-                            if ((c >= '0') && (c <= '9'))
-                            {
-                                lastKeyPressed = (ConsoleKey) ((int) ConsoleKey.D0 + (c - '0'));
-                                pressedKeys.Add(lastKeyPressed.Value);
-                            }
-                            else if ((c >= 'A') && (c <= 'Z'))
-                            {
-                                lastKeyPressed = (ConsoleKey) ((int) ConsoleKey.A + (c - 'A'));
-                                pressedKeys.Add(lastKeyPressed.Value);
-                            }
-                            else if ((c >= 'a') && (c <= 'z'))
-                            {
-                                lastKeyPressed = (ConsoleKey) ((int) ConsoleKey.A + (c - 'a'));
-                                pressedKeys.Add(lastKeyPressed.Value);
-                            }
-                            else
-                            {
-                                switch (c)
-                                {
-                                    case ' ':
-                                        lastKeyPressed = ConsoleKey.Spacebar;
-                                        pressedKeys.Add(ConsoleKey.Spacebar);
-                                        break;
-                                    case '\n':
-                                    case '\r':
-                                        lastKeyPressed = ConsoleKey.Enter;
-                                        pressedKeys.Add(ConsoleKey.Enter);
-                                        break;
-                                    case '\t':
-                                        lastKeyPressed = ConsoleKey.Tab;
-                                        pressedKeys.Add(ConsoleKey.Tab);
-                                        break;
-                                    case (char) 27:
-                                        lastKeyPressed = ConsoleKey.Escape;
-                                        pressedKeys.Add(ConsoleKey.Escape);
-                                        break;
-                                    case (char) 8:
-                                        lastKeyPressed = ConsoleKey.Backspace;
-                                        pressedKeys.Add(ConsoleKey.Backspace);
-                                        break;
-                                    case (char) 127:
-                                        lastKeyPressed = ConsoleKey.Delete;
-                                        pressedKeys.Add(ConsoleKey.Delete);
-                                        break;
-                                    case '-':
-                                        lastKeyPressed = ConsoleKey.OemMinus;
-                                        pressedKeys.Add(ConsoleKey.OemMinus);
-                                        break;
-                                    case '+':
-                                        lastKeyPressed = ConsoleKey.OemPlus;
-                                        pressedKeys.Add(ConsoleKey.OemPlus);
-                                        break;
-                                    case ',':
-                                        lastKeyPressed = ConsoleKey.OemComma;
-                                        pressedKeys.Add(ConsoleKey.OemComma);
-                                        break;
-                                    case '.':
-                                        lastKeyPressed = ConsoleKey.OemPeriod;
-                                        pressedKeys.Add(ConsoleKey.OemPeriod);
-                                        break;
-                                    case '/':
-                                        lastKeyPressed = ConsoleKey.Oem2;
-                                        pressedKeys.Add(ConsoleKey.Oem2);
-                                        break;
-                                    case ';':
-                                        lastKeyPressed = ConsoleKey.Oem1;
-                                        pressedKeys.Add(ConsoleKey.Oem1);
-                                        break;
-                                    case '\\':
-                                        lastKeyPressed = ConsoleKey.Oem5;
-                                        pressedKeys.Add(ConsoleKey.Oem5);
-                                        break;
-                                    case '[':
-                                        lastKeyPressed = ConsoleKey.Oem4;
-                                        pressedKeys.Add(ConsoleKey.Oem4);
-                                        break;
-                                    case ']':
-                                        lastKeyPressed = ConsoleKey.Oem6;
-                                        pressedKeys.Add(ConsoleKey.Oem6);
-                                        break;
-                                    case '`':
-                                        lastKeyPressed = ConsoleKey.Oem3;
-                                        pressedKeys.Add(ConsoleKey.Oem3);
-                                        break;
-                                }
-                            }
-
-                            break;
-                    }
-                }
-                else if (type == 11) // NSKeyUp
-                {
-                    int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
-                    IntPtr nsString = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("characters"));
-                    char c = '\0';
-                    if (nsString != IntPtr.Zero)
-                    {
-                        IntPtr utf8Ptr = ObjectiveCInterop.objc_msgSend(nsString, ObjectiveCInterop.Sel("UTF8String"));
-                        if (utf8Ptr != IntPtr.Zero)
-                        {
-                            string chars = Marshal.PtrToStringAuto(utf8Ptr);
-                            if (!string.IsNullOrEmpty(chars))
-                            {
-                                c = chars[0];
-                            }
-                        }
-                    }
-
-                    Console.WriteLine($"Tecla soltada: keyCode={keyCode} char='{c}'");
-
-                    switch (keyCode)
-                    {
-                        case 123: pressedKeys.Remove(ConsoleKey.LeftArrow); break;
-                        case 124: pressedKeys.Remove(ConsoleKey.RightArrow); break;
-                        case 125: pressedKeys.Remove(ConsoleKey.DownArrow); break;
-                        case 126: pressedKeys.Remove(ConsoleKey.UpArrow); break;
-                        case 115: pressedKeys.Remove(ConsoleKey.Home); break;
-                        case 119: pressedKeys.Remove(ConsoleKey.End); break;
-                        case 116: pressedKeys.Remove(ConsoleKey.PageUp); break;
-                        case 121: pressedKeys.Remove(ConsoleKey.PageDown); break;
-                        case 51: pressedKeys.Remove(ConsoleKey.Backspace); break;
-                        case 117: pressedKeys.Remove(ConsoleKey.Delete); break;
-                        case 36: pressedKeys.Remove(ConsoleKey.Enter); break;
-                        case 48: pressedKeys.Remove(ConsoleKey.Tab); break;
-                        case 53: pressedKeys.Remove(ConsoleKey.Escape); break;
-                        case 122: pressedKeys.Remove(ConsoleKey.F1); break;
-                        case 120: pressedKeys.Remove(ConsoleKey.F2); break;
-                        case 99: pressedKeys.Remove(ConsoleKey.F3); break;
-                        case 118: pressedKeys.Remove(ConsoleKey.F4); break;
-                        case 96: pressedKeys.Remove(ConsoleKey.F5); break;
-                        case 97: pressedKeys.Remove(ConsoleKey.F6); break;
-                        case 98: pressedKeys.Remove(ConsoleKey.F7); break;
-                        case 100: pressedKeys.Remove(ConsoleKey.F8); break;
-                        case 101: pressedKeys.Remove(ConsoleKey.F9); break;
-                        case 109: pressedKeys.Remove(ConsoleKey.F10); break;
-                        case 103: pressedKeys.Remove(ConsoleKey.F11); break;
-                        case 111: pressedKeys.Remove(ConsoleKey.F12); break;
-                        case 55: pressedKeys.Remove(ConsoleKey.LeftWindows); break;
-                        default:
-                            if ((c >= '0') && (c <= '9'))
-                            {
-                                pressedKeys.Remove((ConsoleKey) ((int) ConsoleKey.D0 + (c - '0')));
-                            }
-                            else if ((c >= 'A') && (c <= 'Z'))
-                            {
-                                pressedKeys.Remove((ConsoleKey) ((int) ConsoleKey.A + (c - 'A')));
-                            }
-                            else if ((c >= 'a') && (c <= 'z'))
-                            {
-                                pressedKeys.Remove((ConsoleKey) ((int) ConsoleKey.A + (c - 'a')));
-                            }
-                            else
-                            {
-                                switch (c)
-                                {
-                                    case ' ': pressedKeys.Remove(ConsoleKey.Spacebar); break;
-                                    case '\n':
-                                    case '\r': pressedKeys.Remove(ConsoleKey.Enter); break;
-                                    case '\t': pressedKeys.Remove(ConsoleKey.Tab); break;
-                                    case (char) 27: pressedKeys.Remove(ConsoleKey.Escape); break;
-                                    case (char) 8: pressedKeys.Remove(ConsoleKey.Backspace); break;
-                                    case (char) 127: pressedKeys.Remove(ConsoleKey.Delete); break;
-                                    case '-': pressedKeys.Remove(ConsoleKey.OemMinus); break;
-                                    case '+': pressedKeys.Remove(ConsoleKey.OemPlus); break;
-                                    case ',': pressedKeys.Remove(ConsoleKey.OemComma); break;
-                                    case '.': pressedKeys.Remove(ConsoleKey.OemPeriod); break;
-                                    case '/': pressedKeys.Remove(ConsoleKey.Oem2); break;
-                                    case ';': pressedKeys.Remove(ConsoleKey.Oem1); break;
-                                    case '\\': pressedKeys.Remove(ConsoleKey.Oem5); break;
-                                    case '[': pressedKeys.Remove(ConsoleKey.Oem4); break;
-                                    case ']': pressedKeys.Remove(ConsoleKey.Oem6); break;
-                                    case '`': pressedKeys.Remove(ConsoleKey.Oem3); break;
-                                }
-                            }
-
-                            break;
-                    }
-                }
-                else
-                {
-                    ObjectiveCInterop.objc_msgSend_void_IntPtr(app, ObjectiveCInterop.Sel("sendEvent:"), evt);
-                }
-
-                ObjectiveCInterop.objc_msgSend_void(app, ObjectiveCInterop.Sel("updateWindows"));
+                return IsWindowVisible();
             }
 
+            IntPtr eventType = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("type"));
+            int type = eventType.ToInt32();
+
+            if (IsMouseEvent(type))
+            {
+                return HandleMouseEvent(evt, type);
+            }
+
+            if (type == 10)
+            {
+                HandleKeyDownEvent(evt);
+            }
+            else if (type == 11)
+            {
+                HandleKeyUpEvent(evt);
+            }
+            else
+            {
+                ObjectiveCInterop.objc_msgSend_void_IntPtr(app, ObjectiveCInterop.Sel("sendEvent:"), evt);
+            }
+
+            ObjectiveCInterop.objc_msgSend_void(app, ObjectiveCInterop.Sel("updateWindows"));
             return IsWindowVisible();
+        }
+
+        private static bool IsMouseEvent(int type)
+        {
+            return type == 1 || type == 2 || type == 3 || type == 4 || type == 5 || type == 22;
+        }
+
+        private bool HandleMouseEvent(IntPtr evt, int type)
+        {
+            UpdateMousePosition(evt);
+
+            switch (type)
+            {
+                case 1:
+                    mouseButtons[0] = true;
+                    Console.WriteLine($"Mouse izquierdo presionado en ({mouseX},{mouseY})");
+                    break;
+                case 2:
+                    mouseButtons[0] = false;
+                    Console.WriteLine($"Mouse izquierdo soltado en ({mouseX},{mouseY})");
+                    break;
+                case 3:
+                    mouseButtons[1] = true;
+                    Console.WriteLine($"Mouse derecho presionado en ({mouseX},{mouseY})");
+                    break;
+                case 4:
+                    mouseButtons[1] = false;
+                    Console.WriteLine($"Mouse derecho soltado en ({mouseX},{mouseY})");
+                    break;
+                case 22:
+                    double deltaY = ObjectiveCInterop.objc_msgSend_double(evt, ObjectiveCInterop.Sel("deltaY"));
+                    mouseWheel = (float) deltaY;
+                    Console.WriteLine($"Scroll: {mouseWheel}");
+                    break;
+            }
+
+            ObjectiveCInterop.objc_msgSend_void_IntPtr(app, ObjectiveCInterop.Sel("sendEvent:"), evt);
+            ObjectiveCInterop.objc_msgSend_void(app, ObjectiveCInterop.Sel("updateWindows"));
+            return IsWindowVisible();
+        }
+
+        private void UpdateMousePosition(IntPtr evt)
+        {
+            IntPtr locationPtr = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("locationInWindow"));
+            long lx = Marshal.ReadInt64(locationPtr, 0);
+            long ly = Marshal.ReadInt64(locationPtr, 8);
+            double px = BitConverter.Int64BitsToDouble(lx);
+            double py = BitConverter.Int64BitsToDouble(ly);
+            mouseX = (int) Math.Round(px);
+            mouseY = (int) Math.Round(py);
+        }
+
+        private void HandleKeyDownEvent(IntPtr evt)
+        {
+            int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
+            char c = ExtractCharacterFromEvent(evt);
+            Console.WriteLine($"Tecla presionada: keyCode={keyCode} char='{c}'");
+
+            if (!TryMapSpecialKey(keyCode, out ConsoleKey mappedKey))
+            {
+                MapCharacterKey(c, true);
+                return;
+            }
+
+            lastKeyPressed = mappedKey;
+            pressedKeys.Add(mappedKey);
+        }
+
+        private void HandleKeyUpEvent(IntPtr evt)
+        {
+            int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
+            char c = ExtractCharacterFromEvent(evt);
+            Console.WriteLine($"Tecla soltada: keyCode={keyCode} char='{c}'");
+
+            if (!TryMapSpecialKey(keyCode, out ConsoleKey mappedKey))
+            {
+                MapCharacterKey(c, false);
+                return;
+            }
+
+            pressedKeys.Remove(mappedKey);
+        }
+
+        private static char ExtractCharacterFromEvent(IntPtr evt)
+        {
+            IntPtr nsString = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("characters"));
+            if (nsString == IntPtr.Zero)
+            {
+                return '\0';
+            }
+
+            IntPtr utf8Ptr = ObjectiveCInterop.objc_msgSend(nsString, ObjectiveCInterop.Sel("UTF8String"));
+            if (utf8Ptr == IntPtr.Zero)
+            {
+                return '\0';
+            }
+
+            string chars = Marshal.PtrToStringAuto(utf8Ptr);
+            if (string.IsNullOrEmpty(chars))
+            {
+                return '\0';
+            }
+
+            return chars[0];
+        }
+
+        private static bool TryMapSpecialKey(int keyCode, out ConsoleKey mappedKey)
+        {
+            switch (keyCode)
+            {
+                case 123: mappedKey = ConsoleKey.LeftArrow; return true;
+                case 124: mappedKey = ConsoleKey.RightArrow; return true;
+                case 125: mappedKey = ConsoleKey.DownArrow; return true;
+                case 126: mappedKey = ConsoleKey.UpArrow; return true;
+                case 115: mappedKey = ConsoleKey.Home; return true;
+                case 119: mappedKey = ConsoleKey.End; return true;
+                case 116: mappedKey = ConsoleKey.PageUp; return true;
+                case 121: mappedKey = ConsoleKey.PageDown; return true;
+                case 51: mappedKey = ConsoleKey.Backspace; return true;
+                case 117: mappedKey = ConsoleKey.Delete; return true;
+                case 36: mappedKey = ConsoleKey.Enter; return true;
+                case 48: mappedKey = ConsoleKey.Tab; return true;
+                case 53: mappedKey = ConsoleKey.Escape; return true;
+                case 122: mappedKey = ConsoleKey.F1; return true;
+                case 120: mappedKey = ConsoleKey.F2; return true;
+                case 99: mappedKey = ConsoleKey.F3; return true;
+                case 118: mappedKey = ConsoleKey.F4; return true;
+                case 96: mappedKey = ConsoleKey.F5; return true;
+                case 97: mappedKey = ConsoleKey.F6; return true;
+                case 98: mappedKey = ConsoleKey.F7; return true;
+                case 100: mappedKey = ConsoleKey.F8; return true;
+                case 101: mappedKey = ConsoleKey.F9; return true;
+                case 109: mappedKey = ConsoleKey.F10; return true;
+                case 103: mappedKey = ConsoleKey.F11; return true;
+                case 111: mappedKey = ConsoleKey.F12; return true;
+                case 55: mappedKey = ConsoleKey.LeftWindows; return true;
+                default: mappedKey = default; return false;
+            }
+        }
+
+        private void MapCharacterKey(char c, bool isKeyDown)
+        {
+            ConsoleKey? mapped = null;
+
+            if (c >= '0' && c <= '9')
+            {
+                mapped = (ConsoleKey) ((int) ConsoleKey.D0 + (c - '0'));
+            }
+            else if (c >= 'A' && c <= 'Z')
+            {
+                mapped = (ConsoleKey) ((int) ConsoleKey.A + (c - 'A'));
+            }
+            else if (c >= 'a' && c <= 'z')
+            {
+                mapped = (ConsoleKey) ((int) ConsoleKey.A + (c - 'a'));
+            }
+            else
+            {
+                mapped = MapSymbolKey(c);
+            }
+
+            if (!mapped.HasValue)
+            {
+                return;
+            }
+
+            if (isKeyDown)
+            {
+                lastKeyPressed = mapped.Value;
+                pressedKeys.Add(mapped.Value);
+            }
+            else
+            {
+                pressedKeys.Remove(mapped.Value);
+            }
+        }
+
+        private static ConsoleKey? MapSymbolKey(char c)
+        {
+            switch (c)
+            {
+                case ' ': return ConsoleKey.Spacebar;
+                case '\n':
+                case '\r': return ConsoleKey.Enter;
+                case '\t': return ConsoleKey.Tab;
+                case (char) 27: return ConsoleKey.Escape;
+                case (char) 8: return ConsoleKey.Backspace;
+                case (char) 127: return ConsoleKey.Delete;
+                case '-': return ConsoleKey.OemMinus;
+                case '+': return ConsoleKey.OemPlus;
+                case ',': return ConsoleKey.OemComma;
+                case '.': return ConsoleKey.OemPeriod;
+                case '/': return ConsoleKey.Oem2;
+                case ';': return ConsoleKey.Oem1;
+                case '\\': return ConsoleKey.Oem5;
+                case '[': return ConsoleKey.Oem4;
+                case ']': return ConsoleKey.Oem6;
+                case '`': return ConsoleKey.Oem3;
+                default: return null;
+            }
         }
 
         /// <summary>

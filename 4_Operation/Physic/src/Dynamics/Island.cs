@@ -203,6 +203,24 @@ namespace Alis.Core.Physic.Dynamics
         {
             float h = step.Dt;
 
+            IntegrateVelocities(h, ref gravity);
+            InitializeSolverData(step);
+            SolveVelocityConstraints(step);
+
+            _contactSolver.StoreImpulses();
+
+            IntegratePositions(h);
+
+            bool positionSolved = SolvePositionConstraints(step);
+
+            RecordJointUpdateTime();
+            SynchronizeBodyStates();
+            Report(_contactSolver.VelocityConstraints);
+            UpdateSleepState(h, positionSolved);
+        }
+
+        private void IntegrateVelocities(float h, ref Vector2F gravity)
+        {
             for (int i = 0; i < BodyCount; ++i)
             {
                 Body b = Bodies[i];
@@ -217,8 +235,6 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (b.GetBodyType == BodyType.Dynamic)
                 {
-                    // Integrate velocities.
-
                     if (b.IgnoreGravity)
                     {
                         v += h * (b.InvMass * b.Force);
@@ -239,7 +255,10 @@ namespace Alis.Core.Physic.Dynamics
                 Velocities[i].V = v;
                 Velocities[i].W = w;
             }
+        }
 
+        private void InitializeSolverData(TimeStep step)
+        {
             SolverData solverData = new SolverData();
             solverData.Step = step;
             solverData.Positions = Positions;
@@ -272,6 +291,15 @@ namespace Alis.Core.Physic.Dynamics
             {
                 _watch.Stop();
             }
+        }
+
+        private void SolveVelocityConstraints(TimeStep step)
+        {
+            SolverData solverData = new SolverData();
+            solverData.Step = step;
+            solverData.Positions = Positions;
+            solverData.Velocities = Velocities;
+            solverData.Locks = Locks;
 
             for (int i = 0; i < step.VelocityIterations; ++i)
             {
@@ -300,9 +328,10 @@ namespace Alis.Core.Physic.Dynamics
 
                 _contactSolver.SolveVelocityConstraints();
             }
+        }
 
-            _contactSolver.StoreImpulses();
-
+        private void IntegratePositions(float h)
+        {
             for (int i = 0; i < BodyCount; ++i)
             {
                 Vector2F c = Positions[i].C;
@@ -332,9 +361,16 @@ namespace Alis.Core.Physic.Dynamics
                 Velocities[i].V = v;
                 Velocities[i].W = w;
             }
+        }
 
+        private bool SolvePositionConstraints(TimeStep step)
+        {
+            SolverData solverData = new SolverData();
+            solverData.Step = step;
+            solverData.Positions = Positions;
+            solverData.Velocities = Velocities;
+            solverData.Locks = Locks;
 
-            bool positionSolved = false;
             for (int i = 0; i < step.PositionIterations; ++i)
             {
                 bool contactsOkay = _contactSolver.SolvePositionConstraints();
@@ -366,17 +402,24 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (contactsOkay && jointsOkay)
                 {
-                    positionSolved = true;
-                    break;
+                    return true;
                 }
             }
 
+            return false;
+        }
+
+        private void RecordJointUpdateTime()
+        {
             if (SettingEnv.EnableDiagnostics)
             {
                 JointUpdateTime = TimeSpan.FromTicks(_watch.ElapsedTicks);
                 _watch.Reset();
             }
+        }
 
+        private void SynchronizeBodyStates()
+        {
             for (int i = 0; i < BodyCount; ++i)
             {
                 Body body = Bodies[i];
@@ -386,41 +429,44 @@ namespace Alis.Core.Physic.Dynamics
                 body.AngularVelocity = Velocities[i].W;
                 body.SynchronizeTransform();
             }
+        }
 
-            Report(_contactSolver.VelocityConstraints);
-
-            if (SettingEnv.AllowSleep)
+        private void UpdateSleepState(float h, bool positionSolved)
+        {
+            if (!SettingEnv.AllowSleep)
             {
-                float minSleepTime = SettingEnv.MaxFloat;
+                return;
+            }
 
+            float minSleepTime = SettingEnv.MaxFloat;
+
+            for (int i = 0; i < BodyCount; ++i)
+            {
+                Body b = Bodies[i];
+
+                if (b.GetBodyType == BodyType.Static)
+                {
+                    continue;
+                }
+
+                if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > AngTolSqr || Vector2F.Dot(b.LinearVelocityInternal, b.LinearVelocityInternal) > LinTolSqr)
+                {
+                    b.SleepTime = 0.0f;
+                    minSleepTime = 0.0f;
+                }
+                else
+                {
+                    b.SleepTime += h;
+                    minSleepTime = Math.Min(minSleepTime, b.SleepTime);
+                }
+            }
+
+            if ((minSleepTime >= SettingEnv.TimeToSleep) && positionSolved)
+            {
                 for (int i = 0; i < BodyCount; ++i)
                 {
                     Body b = Bodies[i];
-
-                    if (b.GetBodyType == BodyType.Static)
-                    {
-                        continue;
-                    }
-
-                    if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > AngTolSqr || Vector2F.Dot(b.LinearVelocityInternal, b.LinearVelocityInternal) > LinTolSqr)
-                    {
-                        b.SleepTime = 0.0f;
-                        minSleepTime = 0.0f;
-                    }
-                    else
-                    {
-                        b.SleepTime += h;
-                        minSleepTime = Math.Min(minSleepTime, b.SleepTime);
-                    }
-                }
-
-                if ((minSleepTime >= SettingEnv.TimeToSleep) && positionSolved)
-                {
-                    for (int i = 0; i < BodyCount; ++i)
-                    {
-                        Body b = Bodies[i];
-                        b.Awake = false;
-                    }
+                    b.Awake = false;
                 }
             }
         }

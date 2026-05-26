@@ -1038,51 +1038,60 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     continue;
                 }
 
-                DelaunayTriangle ot = t.Neighbors[i];
-                if (ot != null)
+                if (LegalizeEdge(tcx, t, i))
                 {
-                    TriangulationPoint p = t.Points[i];
-                    TriangulationPoint op = ot.OppositePoint(t, p);
-                    int oi = ot.IndexOf(op);
-                    if (ot.EdgeIsConstrained[oi] || ot.EdgeIsDelaunay[oi])
-                    {
-                        t.EdgeIsConstrained[i] = ot.EdgeIsConstrained[oi];
-                        continue;
-                    }
-
-                    bool inside = TriangulationUtil.SmartIncircle(p, t.PointCcw(p), t.PointCw(p), op);
-
-                    if (inside)
-                    {
-                        t.EdgeIsDelaunay[i] = true;
-                        ot.EdgeIsDelaunay[oi] = true;
-
-                        RotateTrianglePair(t, p, ot, op);
-
-                        // This gives us 4 new edges to check for Delaunay
-
-                        bool notLegalized = !Legalize(tcx, t);
-
-                        if (notLegalized)
-                        {
-                            tcx.MapTriangleToNodes(t);
-                        }
-
-                        notLegalized = !Legalize(tcx, ot);
-                        if (notLegalized)
-                        {
-                            tcx.MapTriangleToNodes(ot);
-                        }
-
-                        t.EdgeIsDelaunay[i] = false;
-                        ot.EdgeIsDelaunay[oi] = false;
-
-                        return true;
-                    }
+                    return true;
                 }
             }
 
             return false;
+        }
+
+        private static bool LegalizeEdge(DtSweepContext tcx, DelaunayTriangle t, int i)
+        {
+            DelaunayTriangle ot = t.Neighbors[i];
+            if (ot == null)
+            {
+                return false;
+            }
+
+            TriangulationPoint p = t.Points[i];
+            TriangulationPoint op = ot.OppositePoint(t, p);
+            int oi = ot.IndexOf(op);
+            if (ot.EdgeIsConstrained[oi] || ot.EdgeIsDelaunay[oi])
+            {
+                t.EdgeIsConstrained[i] = ot.EdgeIsConstrained[oi];
+                return false;
+            }
+
+            bool inside = TriangulationUtil.SmartIncircle(p, t.PointCcw(p), t.PointCw(p), op);
+
+            if (!inside)
+            {
+                return false;
+            }
+
+            t.EdgeIsDelaunay[i] = true;
+            ot.EdgeIsDelaunay[oi] = true;
+
+            RotateTrianglePair(t, p, ot, op);
+
+            bool notLegalized = !Legalize(tcx, t);
+            if (notLegalized)
+            {
+                tcx.MapTriangleToNodes(t);
+            }
+
+            notLegalized = !Legalize(tcx, ot);
+            if (notLegalized)
+            {
+                tcx.MapTriangleToNodes(ot);
+            }
+
+            t.EdgeIsDelaunay[i] = false;
+            ot.EdgeIsDelaunay[oi] = false;
+
+            return true;
         }
 
         /// <summary>

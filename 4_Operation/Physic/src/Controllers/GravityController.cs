@@ -195,8 +195,6 @@ namespace Alis.Core.Physic.Controllers
         /// </param>
         public override void Update(float dt)
         {
-            Vector2F f = Vector2F.Zero;
-
             foreach (Body worldBody in WorldPhysic.BodyList)
             {
                 if (!IsActiveOn(worldBody))
@@ -204,56 +202,69 @@ namespace Alis.Core.Physic.Controllers
                     continue;
                 }
 
-                foreach (Body controllerBody in Bodies)
+                ApplyBodyGravity(worldBody);
+                ApplyPointGravity(worldBody);
+            }
+        }
+
+        private void ApplyBodyGravity(Body worldBody)
+        {
+            Vector2F f = Vector2F.Zero;
+
+            foreach (Body controllerBody in Bodies)
+            {
+                if (worldBody == controllerBody || ((worldBody.GetBodyType == BodyType.Static) && (controllerBody.GetBodyType == BodyType.Static)) || !controllerBody.Enabled)
                 {
-                    if (worldBody == controllerBody || ((worldBody.GetBodyType == BodyType.Static) && (controllerBody.GetBodyType == BodyType.Static)) || !controllerBody.Enabled)
-                    {
-                        continue;
-                    }
-
-                    Vector2F d = controllerBody.Position - worldBody.Position;
-                    float r2 = d.LengthSquared();
-
-                    if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
-                    {
-                        continue;
-                    }
-
-                    switch (GravityType)
-                    {
-                        case GravityType.DistanceSquared:
-                            f = Strength / r2 * worldBody.Mass * controllerBody.Mass * d;
-                            break;
-                        case GravityType.Linear:
-                            f = Strength / (float) Math.Sqrt(r2) * worldBody.Mass * controllerBody.Mass * d;
-                            break;
-                    }
-
-                    worldBody.ApplyForce(ref f);
+                    continue;
                 }
 
-                foreach (Vector2F point in Points)
+                Vector2F d = controllerBody.Position - worldBody.Position;
+                float r2 = d.LengthSquared();
+
+                if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
                 {
-                    Vector2F d = point - worldBody.Position;
-                    float r2 = d.LengthSquared();
-
-                    if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
-                    {
-                        continue;
-                    }
-
-                    switch (GravityType)
-                    {
-                        case GravityType.DistanceSquared:
-                            f = Strength / r2 * worldBody.Mass * d;
-                            break;
-                        case GravityType.Linear:
-                            f = Strength / (float) Math.Sqrt(r2) * worldBody.Mass * d;
-                            break;
-                    }
-
-                    worldBody.ApplyForce(ref f);
+                    continue;
                 }
+
+                switch (GravityType)
+                {
+                    case GravityType.DistanceSquared:
+                        f = Strength / r2 * worldBody.Mass * controllerBody.Mass * d;
+                        break;
+                    case GravityType.Linear:
+                        f = Strength / (float) Math.Sqrt(r2) * worldBody.Mass * controllerBody.Mass * d;
+                        break;
+                }
+
+                worldBody.ApplyForce(ref f);
+            }
+        }
+
+        private void ApplyPointGravity(Body worldBody)
+        {
+            Vector2F f = Vector2F.Zero;
+
+            foreach (Vector2F point in Points)
+            {
+                Vector2F d = point - worldBody.Position;
+                float r2 = d.LengthSquared();
+
+                if (r2 <= SettingEnv.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
+                {
+                    continue;
+                }
+
+                switch (GravityType)
+                {
+                    case GravityType.DistanceSquared:
+                        f = Strength / r2 * worldBody.Mass * d;
+                        break;
+                    case GravityType.Linear:
+                        f = Strength / (float) Math.Sqrt(r2) * worldBody.Mass * d;
+                        break;
+                }
+
+                worldBody.ApplyForce(ref f);
             }
         }
 

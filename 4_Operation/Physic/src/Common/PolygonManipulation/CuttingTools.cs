@@ -59,6 +59,26 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 return;
             }
 
+            AdjustPointsNearVertices(shape, ref localEntryPoint, ref localExitPoint);
+
+            Vertices vertices = new Vertices(shape.Vertices);
+            Vertices[] newPolygon = new Vertices[2];
+
+            for (int i = 0; i < newPolygon.Length; i++)
+            {
+                newPolygon[i] = new Vertices(vertices.Count);
+            }
+
+            int[] cutAdded = SplitVertices(vertices, localEntryPoint, localExitPoint, newPolygon);
+            EnsureCutPointsAdded(newPolygon, cutAdded, localEntryPoint, localExitPoint);
+            AdjustCutPointOffsets(newPolygon, cutAdded);
+
+            first = newPolygon[0];
+            second = newPolygon[1];
+        }
+
+        private static void AdjustPointsNearVertices(PolygonShape shape, ref Vector2F localEntryPoint, ref Vector2F localExitPoint)
+        {
             foreach (Vector2F vertex in shape.Vertices)
             {
                 if (vertex.Equals(localEntryPoint))
@@ -71,42 +91,52 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     localExitPoint += new Vector2F(0, SettingEnv.Epsilon);
                 }
             }
+        }
 
-            Vertices vertices = new Vertices(shape.Vertices);
-            Vertices[] newPolygon = new Vertices[2];
-
-            for (int i = 0; i < newPolygon.Length; i++)
-            {
-                newPolygon[i] = new Vertices(vertices.Count);
-            }
-
+        private static int[] SplitVertices(Vertices vertices, Vector2F localEntryPoint, Vector2F localExitPoint, Vertices[] newPolygon)
+        {
             int[] cutAdded = {-1, -1};
             int last = -1;
             for (int i = 0; i < vertices.Count; i++)
             {
-                int n = Vector2F.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertices[i] - localEntryPoint) > SettingEnv.Epsilon ? 0 : 1;
+                int n = ClassifyVertex(vertices[i], localEntryPoint, localExitPoint);
 
                 if (last != n)
                 {
-                    if (last == 0)
-                    {
-                        cutAdded[0] = newPolygon[last].Count;
-                        newPolygon[last].Add(localExitPoint);
-                        newPolygon[last].Add(localEntryPoint);
-                    }
-
-                    if (last == 1)
-                    {
-                        cutAdded[last] = newPolygon[last].Count;
-                        newPolygon[last].Add(localEntryPoint);
-                        newPolygon[last].Add(localExitPoint);
-                    }
+                    AddCutPoints(newPolygon, cutAdded, last, localEntryPoint, localExitPoint);
                 }
 
                 newPolygon[n].Add(vertices[i]);
                 last = n;
             }
 
+            return cutAdded;
+        }
+
+        private static int ClassifyVertex(Vector2F vertex, Vector2F localEntryPoint, Vector2F localExitPoint)
+        {
+            return Vector2F.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertex - localEntryPoint) > SettingEnv.Epsilon ? 0 : 1;
+        }
+
+        private static void AddCutPoints(Vertices[] newPolygon, int[] cutAdded, int last, Vector2F localEntryPoint, Vector2F localExitPoint)
+        {
+            if (last == 0)
+            {
+                cutAdded[0] = newPolygon[last].Count;
+                newPolygon[last].Add(localExitPoint);
+                newPolygon[last].Add(localEntryPoint);
+            }
+
+            if (last == 1)
+            {
+                cutAdded[last] = newPolygon[last].Count;
+                newPolygon[last].Add(localEntryPoint);
+                newPolygon[last].Add(localExitPoint);
+            }
+        }
+
+        private static void EnsureCutPointsAdded(Vertices[] newPolygon, int[] cutAdded, Vector2F localEntryPoint, Vector2F localExitPoint)
+        {
             if (cutAdded[0] == -1)
             {
                 cutAdded[0] = newPolygon[0].Count;
@@ -120,49 +150,62 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 newPolygon[1].Add(localEntryPoint);
                 newPolygon[1].Add(localExitPoint);
             }
+        }
 
+        private static void AdjustCutPointOffsets(Vertices[] newPolygon, int[] cutAdded)
+        {
             for (int n = 0; n < 2; n++)
             {
-                Vector2F offset;
-                if (cutAdded[n] > 0)
-                {
-                    offset = newPolygon[n][cutAdded[n] - 1] - newPolygon[n][cutAdded[n]];
-                }
-                else
-                {
-                    offset = newPolygon[n][newPolygon[n].Count - 1] - newPolygon[n][0];
-                }
-
-                offset.Normalize();
-
-                if (!offset.IsValid())
-                {
-                    offset = Vector2F.One;
-                }
-
+                Vector2F offset = ComputeOffsetBeforeCut(newPolygon, n, cutAdded);
                 newPolygon[n][cutAdded[n]] += SettingEnv.Epsilon * offset;
 
-                if (cutAdded[n] < newPolygon[n].Count - 2)
-                {
-                    offset = newPolygon[n][cutAdded[n] + 2] - newPolygon[n][cutAdded[n] + 1];
-                }
-                else
-                {
-                    offset = newPolygon[n][0] - newPolygon[n][newPolygon[n].Count - 1];
-                }
-
-                offset.Normalize();
-
-                if (!offset.IsValid())
-                {
-                    offset = Vector2F.One;
-                }
-
+                offset = ComputeOffsetAfterCut(newPolygon, n, cutAdded);
                 newPolygon[n][cutAdded[n] + 1] += SettingEnv.Epsilon * offset;
             }
+        }
 
-            first = newPolygon[0];
-            second = newPolygon[1];
+        private static Vector2F ComputeOffsetBeforeCut(Vertices[] newPolygon, int n, int[] cutAdded)
+        {
+            Vector2F offset;
+            if (cutAdded[n] > 0)
+            {
+                offset = newPolygon[n][cutAdded[n] - 1] - newPolygon[n][cutAdded[n]];
+            }
+            else
+            {
+                offset = newPolygon[n][newPolygon[n].Count - 1] - newPolygon[n][0];
+            }
+
+            offset.Normalize();
+
+            if (!offset.IsValid())
+            {
+                offset = Vector2F.One;
+            }
+
+            return offset;
+        }
+
+        private static Vector2F ComputeOffsetAfterCut(Vertices[] newPolygon, int n, int[] cutAdded)
+        {
+            Vector2F offset;
+            if (cutAdded[n] < newPolygon[n].Count - 2)
+            {
+                offset = newPolygon[n][cutAdded[n] + 2] - newPolygon[n][cutAdded[n] + 1];
+            }
+            else
+            {
+                offset = newPolygon[n][0] - newPolygon[n][newPolygon[n].Count - 1];
+            }
+
+            offset.Normalize();
+
+            if (!offset.IsValid())
+            {
+                offset = Vector2F.One;
+            }
+
+            return offset;
         }
 
         /// <summary>

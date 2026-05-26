@@ -332,50 +332,11 @@ namespace Alis.Core.Physic.Collisions
                 float lowerBoundI = i == 0 ? LowerBound.X : LowerBound.Y;
                 float upperBoundI = i == 0 ? UpperBound.X : UpperBound.Y;
                 float pI = i == 0 ? p.X : p.Y;
+                float dI = i == 0 ? d.X : d.Y;
 
-                if (absDi < SettingEnv.Epsilon)
+                if (!ProcessAxis(ref tmin, ref tmax, ref normal, absDi, lowerBoundI, upperBoundI, pI, dI, i))
                 {
-                    if (pI < lowerBoundI || upperBoundI < pI)
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    float dI = i == 0 ? d.X : d.Y;
-
-                    float invD = 1.0f / dI;
-                    float t1 = (lowerBoundI - pI) * invD;
-                    float t2 = (upperBoundI - pI) * invD;
-
-                    float s = -1.0f;
-
-                    if (t1 > t2)
-                    {
-                        MathUtils.Swap(ref t1, ref t2);
-                        s = 1.0f;
-                    }
-
-                    if (t1 > tmin)
-                    {
-                        if (i == 0)
-                        {
-                            normal.X = s;
-                        }
-                        else
-                        {
-                            normal.Y = s;
-                        }
-
-                        tmin = t1;
-                    }
-
-                    tmax = Math.Min(tmax, t2);
-
-                    if (tmin > tmax)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
 
@@ -387,6 +348,49 @@ namespace Alis.Core.Physic.Collisions
             output.Fraction = tmin;
             output.Normal = normal;
             return true;
+        }
+
+        private static bool ProcessAxis(ref float tmin, ref float tmax, ref Vector2F normal, float absDi, float lowerBoundI, float upperBoundI, float pI, float dI, int i)
+        {
+            if (absDi < SettingEnv.Epsilon)
+            {
+                if (pI < lowerBoundI || upperBoundI < pI)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+
+            float invD = 1.0f / dI;
+            float t1 = (lowerBoundI - pI) * invD;
+            float t2 = (upperBoundI - pI) * invD;
+
+            float s = -1.0f;
+
+            if (t1 > t2)
+            {
+                MathUtils.Swap(ref t1, ref t2);
+                s = 1.0f;
+            }
+
+            if (t1 > tmin)
+            {
+                if (i == 0)
+                {
+                    normal.X = s;
+                }
+                else
+                {
+                    normal.Y = s;
+                }
+
+                tmin = t1;
+            }
+
+            tmax = Math.Min(tmax, t2);
+
+            return !(tmin > tmax);
         }
     }
 }

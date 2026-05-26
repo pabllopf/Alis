@@ -57,83 +57,23 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
             List<Vertices> polys = new List<Vertices>();
 
-            bool[] covered = new bool[triangles.Count];
-            for (int i = 0; i < triangles.Count; ++i)
-            {
-                covered[i] = false;
-
-                Vertices triangle = triangles[i];
-                Vector2F a = triangle[0];
-                Vector2F b = triangle[1];
-                Vector2F c = triangle[2];
-
-                if (((Math.Abs(a.X - b.X) < float.Epsilon) && (Math.Abs(a.Y - b.Y) < float.Epsilon)) || ((Math.Abs(b.X - c.X) < float.Epsilon) && (Math.Abs(b.Y - c.Y) < float.Epsilon)) || ((Math.Abs(a.X - c.X) < float.Epsilon) && (Math.Abs(a.Y - c.Y) < float.Epsilon)))
-                {
-                    covered[i] = true;
-                }
-            }
+            bool[] covered = MarkDegenerateTriangles(triangles);
 
             int polyIndex = 0;
 
             bool notDone = true;
             while (notDone)
             {
-                int currTri = -1;
-                for (int i = 0; i < triangles.Count; ++i)
-                {
-                    if (covered[i])
-                    {
-                        continue;
-                    }
-
-                    currTri = i;
-                    break;
-                }
-
+                int currTri = FindNextUncoveredTriangle(triangles, covered);
                 if (currTri == -1)
                 {
                     notDone = false;
                 }
                 else
                 {
-                    Vertices poly = new Vertices(3);
+                    Vertices poly = BuildInitialPoly(currTri, triangles, covered);
 
-                    for (int i = 0; i < 3; i++)
-                    {
-                        poly.Add(triangles[currTri][i]);
-                    }
-
-                    covered[currTri] = true;
-                    int index = 0;
-                    for (int i = 0; i < 2 * triangles.Count; ++i, ++index)
-                    {
-                        while (index >= triangles.Count)
-                        {
-                            index -= triangles.Count;
-                        }
-
-                        if (covered[index])
-                        {
-                            continue;
-                        }
-
-                        Vertices newP = AddTriangle(triangles[index], poly);
-                        if (newP.Count == 0)
-                        {
-                            continue; // triangle points not found in vertices
-                        }
-
-                        if (newP.Count > SettingEnv.MaxPolygonVertices)
-                        {
-                            continue;
-                        }
-
-                        if (newP.IsConvex())
-                        {
-                            poly = new Vertices(newP);
-                            covered[index] = true;
-                        }
-                    }
+                    TryAddNeighboringTriangles(poly, triangles, covered);
 
                     if (polyIndex < maxPolys)
                     {
@@ -151,12 +91,116 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
                     if (poly.Count >= 3)
                     {
-                        polyIndex++; //Must be outside (polyIndex < polysLength) test
+                        polyIndex++;
                     }
                 }
             }
 
+            RemoveEmptyPolygons(polys);
 
+            return polys;
+        }
+
+        private static bool[] MarkDegenerateTriangles(List<Vertices> triangles)
+        {
+            bool[] covered = new bool[triangles.Count];
+            for (int i = 0; i < triangles.Count; ++i)
+            {
+                Vertices triangle = triangles[i];
+                Vector2F a = triangle[0];
+                Vector2F b = triangle[1];
+                Vector2F c = triangle[2];
+
+                if (IsDegenerateTriangle(a, b, c))
+                {
+                    covered[i] = true;
+                }
+            }
+
+            return covered;
+        }
+
+        private static bool IsDegenerateTriangle(Vector2F a, Vector2F b, Vector2F c)
+        {
+            if ((Math.Abs(a.X - b.X) < float.Epsilon) && (Math.Abs(a.Y - b.Y) < float.Epsilon))
+            {
+                return true;
+            }
+
+            if ((Math.Abs(b.X - c.X) < float.Epsilon) && (Math.Abs(b.Y - c.Y) < float.Epsilon))
+            {
+                return true;
+            }
+
+            if ((Math.Abs(a.X - c.X) < float.Epsilon) && (Math.Abs(a.Y - c.Y) < float.Epsilon))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private static int FindNextUncoveredTriangle(List<Vertices> triangles, bool[] covered)
+        {
+            for (int i = 0; i < triangles.Count; ++i)
+            {
+                if (!covered[i])
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        private static Vertices BuildInitialPoly(int currTri, List<Vertices> triangles, bool[] covered)
+        {
+            Vertices poly = new Vertices(3);
+            for (int i = 0; i < 3; i++)
+            {
+                poly.Add(triangles[currTri][i]);
+            }
+
+            covered[currTri] = true;
+            return poly;
+        }
+
+        private static void TryAddNeighboringTriangles(Vertices poly, List<Vertices> triangles, bool[] covered)
+        {
+            int index = 0;
+            for (int i = 0; i < 2 * triangles.Count; ++i, ++index)
+            {
+                while (index >= triangles.Count)
+                {
+                    index -= triangles.Count;
+                }
+
+                if (covered[index])
+                {
+                    continue;
+                }
+
+                Vertices newP = AddTriangle(triangles[index], poly);
+                if (newP.Count == 0)
+                {
+                    continue;
+                }
+
+                if (newP.Count > SettingEnv.MaxPolygonVertices)
+                {
+                    continue;
+                }
+
+                if (newP.IsConvex())
+                {
+                    poly = new Vertices(newP);
+                    covered[index] = true;
+                }
+            }
+        }
+
+        private static void RemoveEmptyPolygons(List<Vertices> polys)
+        {
             for (int i = polys.Count - 1; i >= 0; i--)
             {
                 if (polys[i].Count == 0)
@@ -164,8 +208,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     polys.RemoveAt(i);
                 }
             }
-
-            return polys;
         }
 
         /// <summary>
@@ -180,48 +222,8 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             int firstT = -1;
             int secondP = -1;
             int secondT = -1;
-            for (int i = 0; i < vertices.Count; i++)
-            {
-                if ((Math.Abs(t[0].X - vertices[i].X) < float.Epsilon) && (Math.Abs(t[0].Y - vertices[i].Y) < float.Epsilon))
-                {
-                    if (firstP == -1)
-                    {
-                        firstP = i;
-                        firstT = 0;
-                    }
-                    else
-                    {
-                        secondP = i;
-                        secondT = 0;
-                    }
-                }
-                else if ((Math.Abs(t[1].X - vertices[i].X) < float.Epsilon) && (Math.Abs(t[1].Y - vertices[i].Y) < float.Epsilon))
-                {
-                    if (firstP == -1)
-                    {
-                        firstP = i;
-                        firstT = 1;
-                    }
-                    else
-                    {
-                        secondP = i;
-                        secondT = 1;
-                    }
-                }
-                else if ((Math.Abs(t[2].X - vertices[i].X) < float.Epsilon) && (Math.Abs(t[2].Y - vertices[i].Y) < float.Epsilon))
-                {
-                    if (firstP == -1)
-                    {
-                        firstP = i;
-                        firstT = 2;
-                    }
-                    else
-                    {
-                        secondP = i;
-                        secondT = 2;
-                    }
-                }
-            }
+
+            FindMatchingVertices(t, vertices, ref firstP, ref firstT, ref secondP, ref secondT);
 
             if ((firstP == 0) && (secondP == vertices.Count - 1))
             {
@@ -234,16 +236,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 return new Vertices();
             }
 
-            int tipT = 0;
-            if (tipT == firstT || tipT == secondT)
-            {
-                tipT = 1;
-            }
-
-            if (tipT == firstT || tipT == secondT)
-            {
-                tipT = 2;
-            }
+            int tipT = FindTipIndex(firstT, secondT);
 
             Vertices result = new Vertices(vertices.Count + 1);
             for (int i = 0; i < vertices.Count; i++)
@@ -257,6 +250,60 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
 
             return result;
+        }
+
+        private static void FindMatchingVertices(Vertices t, Vertices vertices, ref int firstP, ref int firstT, ref int secondP, ref int secondT)
+        {
+            for (int i = 0; i < vertices.Count; i++)
+            {
+                if (VertexMatches(t[0], vertices[i]))
+                {
+                    RecordMatch(ref firstP, ref firstT, ref secondP, ref secondT, i, 0);
+                }
+                else if (VertexMatches(t[1], vertices[i]))
+                {
+                    RecordMatch(ref firstP, ref firstT, ref secondP, ref secondT, i, 1);
+                }
+                else if (VertexMatches(t[2], vertices[i]))
+                {
+                    RecordMatch(ref firstP, ref firstT, ref secondP, ref secondT, i, 2);
+                }
+            }
+        }
+
+        private static bool VertexMatches(Vector2F a, Vector2F b)
+        {
+            return (Math.Abs(a.X - b.X) < float.Epsilon) && (Math.Abs(a.Y - b.Y) < float.Epsilon);
+        }
+
+        private static void RecordMatch(ref int firstP, ref int firstT, ref int secondP, ref int secondT, int vertexIndex, int triangleIndex)
+        {
+            if (firstP == -1)
+            {
+                firstP = vertexIndex;
+                firstT = triangleIndex;
+            }
+            else
+            {
+                secondP = vertexIndex;
+                secondT = triangleIndex;
+            }
+        }
+
+        private static int FindTipIndex(int firstT, int secondT)
+        {
+            int tipT = 0;
+            if (tipT == firstT || tipT == secondT)
+            {
+                tipT = 1;
+            }
+
+            if (tipT == firstT || tipT == secondT)
+            {
+                tipT = 2;
+            }
+
+            return tipT;
         }
     }
 }

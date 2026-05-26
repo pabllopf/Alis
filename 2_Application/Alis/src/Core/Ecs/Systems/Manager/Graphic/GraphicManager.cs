@@ -229,34 +229,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                          .Query<With<Camera>>()
                          .Enumerate<Camera>())
             {
-                foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
-                {
-                    if (boxColliderGameobject.Has<BoxCollider>())
-                    {
-                        ref BoxCollider boxCollider = ref boxColliderGameobject.Get<BoxCollider>();
-                        if (physicSettings.Debug)
-                        {
-                            boxCollider.Render(boxColliderGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
-                        }
-                    }
-                }
-
-
-                foreach (GameObject spriteGameobject in spriteGameObjects)
-                {
-                    if (spriteGameobject.Has<Animator>() && spriteGameobject.Has<Sprite>())
-                    {
-                        ref Animator animator = ref spriteGameobject.Get<Animator>();
-                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
-                        animator.DrawAnimation(ref sprite);
-                    }
-
-                    if (spriteGameobject.Has<Sprite>())
-                    {
-                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
-                        sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
-                    }
-                }
+                RenderBoxColliders(boxColliderGameObjects, physicSettings, camera, pixelsPerMeter);
+                RenderSprites(spriteGameObjects, camera, pixelsPerMeter);
             }
 
             // Swap the buffers to display the triangle
@@ -297,33 +271,41 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                          .Query<With<Camera>>()
                          .Enumerate<Camera>())
             {
-                foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
+                RenderBoxColliders(boxColliderGameObjects, physicSettings, camera, pixelsPerMeter);
+                RenderSprites(spriteGameObjects, camera, pixelsPerMeter);
+            }
+        }
+
+        private void RenderBoxColliders(GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects, PhysicSetting physicSettings, RefTuple<Camera> camera, float pixelsPerMeter)
+        {
+            foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
+            {
+                if (boxColliderGameobject.Has<BoxCollider>())
                 {
-                    if (boxColliderGameobject.Has<BoxCollider>())
+                    ref BoxCollider boxCollider = ref boxColliderGameobject.Get<BoxCollider>();
+                    if (physicSettings.Debug)
                     {
-                        ref BoxCollider boxCollider = ref boxColliderGameobject.Get<BoxCollider>();
-                        if (physicSettings.Debug)
-                        {
-                            boxCollider.Render(boxColliderGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
-                        }
+                        boxCollider.Render(boxColliderGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
                     }
                 }
+            }
+        }
 
-
-                foreach (GameObject spriteGameobject in spriteGameObjects)
+        private void RenderSprites(GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects, RefTuple<Camera> camera, float pixelsPerMeter)
+        {
+            foreach (GameObject spriteGameobject in spriteGameObjects)
+            {
+                if (spriteGameobject.Has<Animator>() && spriteGameobject.Has<Sprite>())
                 {
-                    if (spriteGameobject.Has<Animator>() && spriteGameobject.Has<Sprite>())
-                    {
-                        ref Animator animator = ref spriteGameobject.Get<Animator>();
-                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
-                        animator.DrawAnimation(ref sprite);
-                    }
+                    ref Animator animator = ref spriteGameobject.Get<Animator>();
+                    ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
+                    animator.DrawAnimation(ref sprite);
+                }
 
-                    if (spriteGameobject.Has<Sprite>())
-                    {
-                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
-                        sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
-                    }
+                if (spriteGameobject.Has<Sprite>())
+                {
+                    ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
+                    sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
                 }
             }
         }

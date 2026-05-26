@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Collisions
         /// </remarks>
         public static void CalculateTimeOfImpact(out ToiOutput output, ref ToiInput input)
         {
-            if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            if (SettingEnv.EnableDiagnostics)
             {
                 ++ToiCalls;
             }
@@ -140,130 +140,24 @@ namespace Alis.Core.Physic.Collisions
                 distanceInput.ControllerTransformB = xfB;
                 Distance.ComputeDistance(out DistanceOutput distanceOutput, out SimplexCache cache, distanceInput);
 
-                if (distanceOutput.Distance <= 0.0f)
+                if (TryHandleDistanceResult(distanceOutput, target, tolerance, ref output, ref t1))
                 {
-                    output.State = ToiOutputState.Overlapped;
-                    output.T = 0.0f;
-                    break;
-                }
-
-                if (distanceOutput.Distance < target + tolerance)
-                {
-                    output.State = ToiOutputState.Touching;
-                    output.T = t1;
                     break;
                 }
 
                 SeparationFunction.Set(ref cache, ref input.ProxyA, ref sweepA, ref input.ProxyB, ref sweepB, t1);
 
-                bool done = false;
-                float t2 = tMax;
-                int pushBackIter = 0;
-                while (true)
+                bool done = TryPushBackIterations(ref input, ref sweepA, ref sweepB, tMax, target, tolerance, ref t1, ref output);
+                if (done)
                 {
-                    float s2 = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, t2);
-
-                    if (s2 > target + tolerance)
-                    {
-                        output.State = ToiOutputState.Seperated;
-                        output.T = tMax;
-                        done = true;
-                        break;
-                    }
-
-                    if (s2 > target - tolerance)
-                    {
-                        t1 = t2;
-                        break;
-                    }
-
-                    float s1 = SeparationFunction.Evaluate(indexA, indexB, t1);
-
-                    if (s1 < target - tolerance)
-                    {
-                        output.State = ToiOutputState.Failed;
-                        output.T = t1;
-                        done = true;
-                        break;
-                    }
-
-                    if (s1 <= target + tolerance)
-                    {
-                        output.State = ToiOutputState.Touching;
-                        output.T = t1;
-                        done = true;
-                        break;
-                    }
-
-                    int rootIterCount = 0;
-                    float a1 = t1, a2 = t2;
-                    while (true)
-                    {
-                        float t;
-                        if ((rootIterCount & 1) != 0)
-                        {
-                            t = a1 + (target - s1) * (a2 - a1) / (s2 - s1);
-                        }
-                        else
-                        {
-                            t = 0.5f * (a1 + a2);
-                        }
-
-                        ++rootIterCount;
-
-                        if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
-                        {
-                            ++ToiRootIters;
-                        }
-
-                        float s = SeparationFunction.Evaluate(indexA, indexB, t);
-
-                        if (Math.Abs(s - target) < tolerance)
-                        {
-                            t2 = t;
-                            break;
-                        }
-
-                        if (s > target)
-                        {
-                            a1 = t;
-                            s1 = s;
-                        }
-                        else
-                        {
-                            a2 = t;
-                            s2 = s;
-                        }
-
-                        if (rootIterCount == 50)
-                        {
-                            break;
-                        }
-                    }
-
-                    if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
-                    {
-                        ToiMaxRootIters = Math.Max(ToiMaxRootIters, rootIterCount);
-                    }
-
-                    ++pushBackIter;
-
-                    if (pushBackIter == SettingEnv.MaxPolygonVertices)
-                    {
-                        break;
-                    }
+                    break;
                 }
 
                 ++iter;
 
-                if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+                if (SettingEnv.EnableDiagnostics)
                 {
                     ++ToiIters;
-                }
-
-                if (done)
-                {
-                    break;
                 }
 
                 if (iter == kMaxIterations)
@@ -274,10 +168,141 @@ namespace Alis.Core.Physic.Collisions
                 }
             }
 
-            if (SettingEnv.EnableDiagnostics) //FPE: We only gather diagnostics when enabled
+            if (SettingEnv.EnableDiagnostics)
             {
                 ToiMaxIters = Math.Max(ToiMaxIters, iter);
             }
+        }
+
+        private static bool TryHandleDistanceResult(DistanceOutput distanceOutput, float target, float tolerance, ref ToiOutput output, ref float t1)
+        {
+            if (distanceOutput.Distance <= 0.0f)
+            {
+                output.State = ToiOutputState.Overlapped;
+                output.T = 0.0f;
+                return true;
+            }
+
+            if (distanceOutput.Distance < target + tolerance)
+            {
+                output.State = ToiOutputState.Touching;
+                output.T = t1;
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool TryPushBackIterations(ref ToiInput input, ref Sweep sweepA, ref Sweep sweepB, float tMax, float target, float tolerance, ref float t1, ref ToiOutput output)
+        {
+            bool done = false;
+            float t2 = tMax;
+            int pushBackIter = 0;
+            while (true)
+            {
+                float s2 = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, t2);
+
+                if (s2 > target + tolerance)
+                {
+                    output.State = ToiOutputState.Seperated;
+                    output.T = tMax;
+                    return true;
+                }
+
+                if (s2 > target - tolerance)
+                {
+                    t1 = t2;
+                    break;
+                }
+
+                float s1 = SeparationFunction.Evaluate(indexA, indexB, t1);
+
+                if (s1 < target - tolerance)
+                {
+                    output.State = ToiOutputState.Failed;
+                    output.T = t1;
+                    return true;
+                }
+
+                if (s1 <= target + tolerance)
+                {
+                    output.State = ToiOutputState.Touching;
+                    output.T = t1;
+                    return true;
+                }
+
+                t2 = PerformRootFind(indexA, indexB, t1, t2, s1, s2, target, tolerance);
+
+                ++pushBackIter;
+
+                if (pushBackIter == SettingEnv.MaxPolygonVertices)
+                {
+                    break;
+                }
+            }
+
+            return done;
+        }
+
+        private static float PerformRootFind(int indexA, int indexB, float t1, float t2, float s1, float s2, float target, float tolerance)
+        {
+            int rootIterCount = 0;
+            float a1 = t1, a2 = t2;
+
+            while (true)
+            {
+                float t;
+                if ((rootIterCount & 1) != 0)
+                {
+                    t = a1 + (target - s1) * (a2 - a1) / (s2 - s1);
+                }
+                else
+                {
+                    t = 0.5f * (a1 + a2);
+                }
+
+                ++rootIterCount;
+
+                if (SettingEnv.EnableDiagnostics)
+                {
+                    ++ToiRootIters;
+                }
+
+                float s = SeparationFunction.Evaluate(indexA, indexB, t);
+
+                if (Math.Abs(s - target) < tolerance)
+                {
+                    if (SettingEnv.EnableDiagnostics)
+                    {
+                        ToiMaxRootIters = Math.Max(ToiMaxRootIters, rootIterCount);
+                    }
+
+                    return t;
+                }
+
+                if (s > target)
+                {
+                    a1 = t;
+                    s1 = s;
+                }
+                else
+                {
+                    a2 = t;
+                    s2 = s;
+                }
+
+                if (rootIterCount == 50)
+                {
+                    break;
+                }
+            }
+
+            if (SettingEnv.EnableDiagnostics)
+            {
+                ToiMaxRootIters = Math.Max(ToiMaxRootIters, rootIterCount);
+            }
+
+            return t2;
         }
     }
 }

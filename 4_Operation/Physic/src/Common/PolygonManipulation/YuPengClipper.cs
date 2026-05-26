@@ -155,61 +155,45 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
                     if (LineTools.LineIntersect(a, b, c, d, out Vector2F intersectionPoint))
                     {
-                        float alpha;
-                        alpha = GetAlpha(a, b, intersectionPoint);
-                        if ((alpha > 0f) && (alpha < 1f))
-                        {
-                            int index = slicedPoly1.IndexOf(a) + 1;
-                            while ((index < slicedPoly1.Count) &&
-                                   (GetAlpha(a, b, slicedPoly1[index]) <= alpha))
-                            {
-                                ++index;
-                            }
-
-                            slicedPoly1.Insert(index, intersectionPoint);
-                        }
-
-                        alpha = GetAlpha(c, d, intersectionPoint);
-                        if ((alpha > 0f) && (alpha < 1f))
-                        {
-                            int index = slicedPoly2.IndexOf(c) + 1;
-                            while ((index < slicedPoly2.Count) &&
-                                   (GetAlpha(c, d, slicedPoly2[index]) <= alpha))
-                            {
-                                ++index;
-                            }
-
-                            slicedPoly2.Insert(index, intersectionPoint);
-                        }
+                        InsertIntersectionPoint(slicedPoly1, a, b, intersectionPoint);
+                        InsertIntersectionPoint(slicedPoly2, c, d, intersectionPoint);
                     }
                 }
             }
 
-            int idx = 0;
-            while (idx < slicedPoly1.Count)
+            RemoveCoincidentVertices(slicedPoly1);
+            RemoveCoincidentVertices(slicedPoly2);
+        }
+
+        private static void InsertIntersectionPoint(Vertices slicedPoly, Vector2F start, Vector2F end, Vector2F intersectionPoint)
+        {
+            float alpha = GetAlpha(start, end, intersectionPoint);
+            if ((alpha > 0f) && (alpha < 1f))
             {
-                int iNext = slicedPoly1.NextIndex(idx);
-                if ((slicedPoly1[iNext] - slicedPoly1[idx]).LengthSquared() <= ClipperEpsilonSquared)
+                int index = slicedPoly.IndexOf(start) + 1;
+                while ((index < slicedPoly.Count) &&
+                       (GetAlpha(start, end, slicedPoly[index]) <= alpha))
                 {
-                    slicedPoly1.RemoveAt(idx);
+                    ++index;
+                }
+
+                slicedPoly.Insert(index, intersectionPoint);
+            }
+        }
+
+        private static void RemoveCoincidentVertices(Vertices vertices)
+        {
+            int idx = 0;
+            while (idx < vertices.Count)
+            {
+                int iNext = vertices.NextIndex(idx);
+                if ((vertices[iNext] - vertices[idx]).LengthSquared() <= ClipperEpsilonSquared)
+                {
+                    vertices.RemoveAt(idx);
                 }
                 else
                 {
                     ++idx;
-                }
-            }
-
-            int i2 = 0;
-            while (i2 < slicedPoly2.Count)
-            {
-                int iNext = slicedPoly2.NextIndex(i2);
-                if ((slicedPoly2[iNext] - slicedPoly2[i2]).LengthSquared() <= ClipperEpsilonSquared)
-                {
-                    slicedPoly2.RemoveAt(i2);
-                }
-                else
-                {
-                    ++i2;
                 }
             }
         }
@@ -241,28 +225,17 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         {
             resultSimplices = new List<Edge>();
 
+            ProcessPoly1Edges(poly1Coeff, poly1Simplicies, poly2Coeff, poly2Simplicies, clipType, resultSimplices);
+            ProcessPoly2Edges(poly1Coeff, poly1Simplicies, poly2Coeff, poly2Simplicies, clipType, resultSimplices);
+        }
+
+        private static void ProcessPoly1Edges(List<float> poly1Coeff, List<Edge> poly1Simplicies,
+            List<float> poly2Coeff, List<Edge> poly2Simplicies,
+            PolyClipType clipType, List<Edge> resultSimplices)
+        {
             for (int i = 0; i < poly1Simplicies.Count; ++i)
             {
-                float edgeCharacter = 0;
-                if (poly2Simplicies.Contains(poly1Simplicies[i]))
-                {
-                    edgeCharacter = 1f;
-                }
-                else if (poly2Simplicies.Contains(-poly1Simplicies[i]) && (clipType == PolyClipType.Union))
-                {
-                    edgeCharacter = 1f;
-                }
-                else
-                {
-                    for (int j = 0; j < poly2Simplicies.Count; ++j)
-                    {
-                        if (!poly2Simplicies.Contains(-poly1Simplicies[i]))
-                        {
-                            edgeCharacter += CalculateBeta(poly1Simplicies[i].GetCenter(),
-                                poly2Simplicies[j], poly2Coeff[j]);
-                        }
-                    }
-                }
+                float edgeCharacter = ComputePoly1EdgeCharacter(poly1Simplicies, poly2Simplicies, poly2Coeff, i);
 
                 if (clipType == PolyClipType.Intersect)
                 {
@@ -279,46 +252,82 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     }
                 }
             }
+        }
 
+        private static void ProcessPoly2Edges(List<float> poly1Coeff, List<Edge> poly1Simplicies,
+            List<float> poly2Coeff, List<Edge> poly2Simplicies,
+            PolyClipType clipType, List<Edge> resultSimplices)
+        {
             for (int i = 0; i < poly2Simplicies.Count; ++i)
             {
-                if (!resultSimplices.Contains(poly2Simplicies[i]) &&
-                    !resultSimplices.Contains(-poly2Simplicies[i]))
+                if (resultSimplices.Contains(poly2Simplicies[i]) ||
+                    resultSimplices.Contains(-poly2Simplicies[i]))
                 {
-                    float edgeCharacter;
-                    if (poly1Simplicies.Contains(-poly2Simplicies[i]) && (clipType == PolyClipType.Union))
-                    {
-                        edgeCharacter = 1f;
-                    }
-                    else
-                    {
-                        edgeCharacter = 0f;
-                        for (int j = 0; j < poly1Simplicies.Count; ++j)
-                        {
-                            if (!poly1Simplicies.Contains(poly2Simplicies[i]) && !poly1Simplicies.Contains(-poly2Simplicies[i]))
-                            {
-                                edgeCharacter += CalculateBeta(poly2Simplicies[i].GetCenter(),
-                                    poly1Simplicies[j], poly1Coeff[j]);
-                            }
-                        }
+                    continue;
+                }
 
-                        if (clipType == PolyClipType.Intersect || clipType == PolyClipType.Difference)
-                        {
-                            if (Math.Abs(edgeCharacter - 1f) < float.Epsilon)
-                            {
-                                resultSimplices.Add(-poly2Simplicies[i]);
-                            }
-                        }
-                        else
-                        {
-                            if (Math.Abs(edgeCharacter) < float.Epsilon)
-                            {
-                                resultSimplices.Add(poly2Simplicies[i]);
-                            }
-                        }
+                float edgeCharacter = ComputePoly2EdgeCharacter(poly1Simplicies, poly2Simplicies, poly1Coeff, clipType, i);
+
+                if (clipType == PolyClipType.Intersect || clipType == PolyClipType.Difference)
+                {
+                    if (Math.Abs(edgeCharacter - 1f) < float.Epsilon)
+                    {
+                        resultSimplices.Add(-poly2Simplicies[i]);
+                    }
+                }
+                else
+                {
+                    if (Math.Abs(edgeCharacter) < float.Epsilon)
+                    {
+                        resultSimplices.Add(poly2Simplicies[i]);
                     }
                 }
             }
+        }
+
+        private static float ComputePoly1EdgeCharacter(List<Edge> poly1Simplicies, List<Edge> poly2Simplicies, List<float> poly2Coeff, int i)
+        {
+            if (poly2Simplicies.Contains(poly1Simplicies[i]))
+            {
+                return 1f;
+            }
+
+            if (poly2Simplicies.Contains(-poly1Simplicies[i]))
+            {
+                return 1f;
+            }
+
+            float edgeCharacter = 0f;
+            for (int j = 0; j < poly2Simplicies.Count; ++j)
+            {
+                if (!poly2Simplicies.Contains(-poly1Simplicies[i]))
+                {
+                    edgeCharacter += CalculateBeta(poly1Simplicies[i].GetCenter(),
+                        poly2Simplicies[j], poly2Coeff[j]);
+                }
+            }
+
+            return edgeCharacter;
+        }
+
+        private static float ComputePoly2EdgeCharacter(List<Edge> poly1Simplicies, List<Edge> poly2Simplicies, List<float> poly1Coeff, PolyClipType clipType, int i)
+        {
+            if (poly1Simplicies.Contains(-poly2Simplicies[i]) && (clipType == PolyClipType.Union))
+            {
+                return 1f;
+            }
+
+            float edgeCharacter = 0f;
+            for (int j = 0; j < poly1Simplicies.Count; ++j)
+            {
+                if (!poly1Simplicies.Contains(poly2Simplicies[i]) && !poly1Simplicies.Contains(-poly2Simplicies[i]))
+                {
+                    edgeCharacter += CalculateBeta(poly2Simplicies[i].GetCenter(),
+                        poly1Simplicies[j], poly1Coeff[j]);
+                }
+            }
+
+            return edgeCharacter;
         }
 
         /// <summary>
@@ -332,56 +341,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
             while (simplicies.Count > 0)
             {
-                Vertices output = new Vertices();
-                output.Add(simplicies[0].EdgeStart);
-                output.Add(simplicies[0].EdgeEnd);
-                simplicies.RemoveAt(0);
-                bool closed = false;
-                int index = 0;
-                int count = simplicies.Count; // Needed to catch infinite loops
-                while (!closed && (simplicies.Count > 0))
+                Vertices output = BuildSinglePolygon(simplicies, out bool error);
+                if (error)
                 {
-                    if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeStart))
-                    {
-                        if (VectorEqual(simplicies[index].EdgeEnd, output[0]))
-                        {
-                            closed = true;
-                        }
-                        else
-                        {
-                            output.Add(simplicies[index].EdgeEnd);
-                        }
-
-                        simplicies.RemoveAt(index);
-                        --index;
-                    }
-                    else if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeEnd))
-                    {
-                        if (VectorEqual(simplicies[index].EdgeStart, output[0]))
-                        {
-                            closed = true;
-                        }
-                        else
-                        {
-                            output.Add(simplicies[index].EdgeStart);
-                        }
-
-                        simplicies.RemoveAt(index);
-                        --index;
-                    }
-
-                    if (!closed && ++index == simplicies.Count)
-                    {
-                        if (count == simplicies.Count)
-                        {
-                            result = new List<Vertices>();
-                            Logger.Log("Undefined error while building result polygon(s).");
-                            return PolyClipError.BrokenResult;
-                        }
-
-                        index = 0;
-                        count = simplicies.Count;
-                    }
+                    result = new List<Vertices>();
+                    return PolyClipError.BrokenResult;
                 }
 
                 if (output.Count < 3)
@@ -394,6 +358,87 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
 
             return errVal;
+        }
+
+        private static Vertices BuildSinglePolygon(List<Edge> simplicies, out bool error)
+        {
+            error = false;
+            Vertices output = new Vertices();
+            output.Add(simplicies[0].EdgeStart);
+            output.Add(simplicies[0].EdgeEnd);
+            simplicies.RemoveAt(0);
+            bool closed = false;
+            int index = 0;
+            int count = simplicies.Count;
+
+            while (!closed && (simplicies.Count > 0))
+            {
+                if (TryMatchEdgeStart(output, simplicies, ref index, out closed))
+                {
+                    simplicies.RemoveAt(index);
+                    --index;
+                }
+                else if (TryMatchEdgeEnd(output, simplicies, ref index, out closed))
+                {
+                    simplicies.RemoveAt(index);
+                    --index;
+                }
+
+                if (!closed && ++index == simplicies.Count)
+                {
+                    if (count == simplicies.Count)
+                    {
+                        error = true;
+                        Logger.Log("Undefined error while building result polygon(s).");
+                        return output;
+                    }
+
+                    index = 0;
+                    count = simplicies.Count;
+                }
+            }
+
+            return output;
+        }
+
+        private static bool TryMatchEdgeStart(Vertices output, List<Edge> simplicies, ref int index, out bool closed)
+        {
+            closed = false;
+            if (!VectorEqual(output[output.Count - 1], simplicies[index].EdgeStart))
+            {
+                return false;
+            }
+
+            if (VectorEqual(simplicies[index].EdgeEnd, output[0]))
+            {
+                closed = true;
+            }
+            else
+            {
+                output.Add(simplicies[index].EdgeEnd);
+            }
+
+            return true;
+        }
+
+        private static bool TryMatchEdgeEnd(Vertices output, List<Edge> simplicies, ref int index, out bool closed)
+        {
+            closed = false;
+            if (!VectorEqual(output[output.Count - 1], simplicies[index].EdgeEnd))
+            {
+                return false;
+            }
+
+            if (VectorEqual(simplicies[index].EdgeStart, output[0]))
+            {
+                closed = true;
+            }
+            else
+            {
+                output.Add(simplicies[index].EdgeStart);
+            }
+
+            return true;
         }
 
         /// <summary>

@@ -61,50 +61,61 @@ namespace Alis.Core.Ecs.Collections
 
             if (source is ICollection<T> ic)
             {
-                int count = ic.Count;
-                if (count != 0)
-                {
-                    T[] arr = new T[count];
-                    ic.CopyTo(arr, 0);
-                    length = count;
-                    return arr;
-                }
+                return ToArrayFromCollection(ic, out length);
             }
-            else
+
+            using (IEnumerator<T> en = source.GetEnumerator())
             {
-                using (IEnumerator<T> en = source.GetEnumerator())
+                if (en.MoveNext())
                 {
-                    if (en.MoveNext())
-                    {
-                        const int defaultCapacity = 4;
-                        T[] arr = new T[defaultCapacity];
-                        arr[0] = en.Current;
-                        int count = 1;
-
-                        while (en.MoveNext())
-                        {
-                            if (count == arr.Length)
-                            {
-                                int newLength = count << 1;
-                                if ((uint) newLength > arrayMaxLength)
-                                {
-                                    newLength = arrayMaxLength <= count ? count + 1 : arrayMaxLength;
-                                }
-
-                                Array.Resize(ref arr, newLength);
-                            }
-
-                            arr[count++] = en.Current;
-                        }
-
-                        length = count;
-                        return arr;
-                    }
+                    return ToArrayFromEnumerator(en, arrayMaxLength, out length);
                 }
             }
 
             length = 0;
             return Array.Empty<T>();
+        }
+
+        private static T[] ToArrayFromCollection<T>(ICollection<T> collection, out int length)
+        {
+            int count = collection.Count;
+            if (count != 0)
+            {
+                T[] arr = new T[count];
+                collection.CopyTo(arr, 0);
+                length = count;
+                return arr;
+            }
+
+            length = 0;
+            return Array.Empty<T>();
+        }
+
+        private static T[] ToArrayFromEnumerator<T>(IEnumerator<T> enumerator, int arrayMaxLength, out int length)
+        {
+            const int defaultCapacity = 4;
+            T[] arr = new T[defaultCapacity];
+            arr[0] = enumerator.Current;
+            int count = 1;
+
+            while (enumerator.MoveNext())
+            {
+                if (count == arr.Length)
+                {
+                    int newLength = count << 1;
+                    if ((uint) newLength > arrayMaxLength)
+                    {
+                        newLength = arrayMaxLength <= count ? count + 1 : arrayMaxLength;
+                    }
+
+                    Array.Resize(ref arr, newLength);
+                }
+
+                arr[count++] = enumerator.Current;
+            }
+
+            length = count;
+            return arr;
         }
     }
 }

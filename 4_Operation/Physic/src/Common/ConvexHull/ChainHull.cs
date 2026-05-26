@@ -60,13 +60,24 @@ namespace Alis.Core.Physic.Common.ConvexHull
             pointSet.Sort(PointComparer);
 
             Vector2F[] h = new Vector2F[pointSet.Count];
-            Vertices res;
 
-            int top = -1; // indices for bottom and top of the stack
-            int i; // array scan index
+            int minmax = FindMinmax(pointSet);
+            if (minmax == pointSet.Count - 1)
+            {
+                return BuildVerticalLineHull(pointSet, h, minmax);
+            }
 
-            const int minmin = 0;
+            int maxmin = FindMaxmin(pointSet);
+            int top = BuildLowerChain(pointSet, h, minmax, maxmin);
+            top = BuildUpperChain(pointSet, h, minmax, maxmin, top);
+
+            return BuildResultFromHull(h, top);
+        }
+
+        private static int FindMinmax(Vertices pointSet)
+        {
             float xmin = pointSet[0].X;
+            int i;
             for (i = 1; i < pointSet.Count; i++)
             {
                 if (Math.Abs(pointSet[i].X - xmin) > float.Epsilon)
@@ -75,31 +86,13 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 }
             }
 
-            int minmax = i - 1;
-            if (minmax == pointSet.Count - 1)
-            {
-                h[++top] = pointSet[minmin];
+            return i - 1;
+        }
 
-                if (Math.Abs(pointSet[minmax].Y - pointSet[minmin].Y) > float.Epsilon) // a nontrivial segment
-                {
-                    h[++top] = pointSet[minmax];
-                }
-
-                h[++top] = pointSet[minmin]; // add polygon endpoint
-
-                res = new Vertices(top + 1);
-                for (int j = 0; j < top + 1; j++)
-                {
-                    res.Add(h[j]);
-                }
-
-                return res;
-            }
-
-            top = -1;
-
-            int maxmax = pointSet.Count - 1;
+        private static int FindMaxmin(Vertices pointSet)
+        {
             float xmax = pointSet[pointSet.Count - 1].X;
+            int i;
             for (i = pointSet.Count - 2; i >= 0; i--)
             {
                 if (Math.Abs(pointSet[i].X - xmax) > float.Epsilon)
@@ -108,64 +101,95 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 }
             }
 
-            int maxmin = i + 1;
+            return i + 1;
+        }
 
-            h[++top] = pointSet[minmin]; // push minmin point onto stack
-            i = minmax;
-            while (++i <= maxmin)
+        private static Vertices BuildVerticalLineHull(Vertices pointSet, Vector2F[] h, int minmax)
+        {
+            const int minmin = 0;
+            int top = -1;
+            h[++top] = pointSet[minmin];
+
+            if (Math.Abs(pointSet[minmax].Y - pointSet[minmin].Y) > float.Epsilon)
             {
-                if ((MathUtils.Area(pointSet[minmin], pointSet[maxmin], pointSet[i]) >= 0) && (i < maxmin))
-                {
-                    continue; // ignore P[i] above or on the lower line
-                }
-
-                while (top > 0) // there are at least 2 points on the stack
-                {
-                    if (MathUtils.Area(h[top - 1], h[top], pointSet[i]) > 0)
-                    {
-                        break; // P[i] is a new hull vertex
-                    }
-
-                    top--; // pop top point off stack
-                }
-
-                h[++top] = pointSet[i]; // push P[i] onto stack
+                h[++top] = pointSet[minmax];
             }
 
-            if (maxmax != maxmin) // if distinct xmax points
+            h[++top] = pointSet[minmin];
+
+            return BuildResultFromHull(h, top);
+        }
+
+        private static int BuildLowerChain(Vertices pointSet, Vector2F[] h, int minmax, int maxmin)
+        {
+            const int minmin = 0;
+            int top = -1;
+            h[++top] = pointSet[minmin];
+            int i = minmax;
+            while (++i <= maxmin)
             {
-                h[++top] = pointSet[maxmax]; // push maxmax point onto stack
+                if (ShouldSkipLowerPoint(pointSet, minmin, maxmin, i))
+                {
+                    continue;
+                }
+
+                PopNonHullVertices(h, ref top, pointSet[i]);
+                h[++top] = pointSet[i];
+            }
+
+            return top;
+        }
+
+        private static bool ShouldSkipLowerPoint(Vertices pointSet, int minmin, int maxmin, int i)
+        {
+            return (MathUtils.Area(pointSet[minmin], pointSet[maxmin], pointSet[i]) >= 0) && (i < maxmin);
+        }
+
+        private static void PopNonHullVertices(Vector2F[] hull, ref int top, Vector2F candidate, int minTop = 0)
+        {
+            while (top > minTop && MathUtils.Area(hull[top - 1], hull[top], candidate) <= 0)
+            {
+                top--;
+            }
+        }
+
+        private static int BuildUpperChain(Vertices pointSet, Vector2F[] h, int minmax, int maxmin, int top)
+        {
+            int maxmax = pointSet.Count - 1;
+            if (maxmax != maxmin)
+            {
+                h[++top] = pointSet[maxmax];
             }
 
             int bot = top;
-            i = maxmin;
+            int i = maxmin;
             while (--i >= minmax)
             {
-                if ((MathUtils.Area(pointSet[maxmax], pointSet[minmax], pointSet[i]) >= 0) && (i > minmax))
+                if (ShouldSkipUpperPoint(pointSet, maxmax, maxmin, minmax, i))
                 {
-                    continue; // ignore P[i] below or on the upper line
+                    continue;
                 }
 
-                while (top > bot) // at least 2 points on the upper stack
-                {
-                    if (MathUtils.Area(h[top - 1], h[top], pointSet[i]) > 0)
-                    {
-                        break; // P[i] is a new hull vertex
-                    }
-
-                    top--; // pop top point off stack
-                }
-
-                h[++top] = pointSet[i]; // push P[i] onto stack
+                PopNonHullVertices(h, ref top, pointSet[i], bot);
+                h[++top] = pointSet[i];
             }
 
-            if (minmax != minmin)
+            if (minmax != 0)
             {
-                h[++top] = pointSet[minmin]; // push joining endpoint onto stack
+                h[++top] = pointSet[0];
             }
 
-            res = new Vertices(top + 1);
+            return top;
+        }
 
+        private static bool ShouldSkipUpperPoint(Vertices pointSet, int maxmax, int maxmin, int minmax, int i)
+        {
+            return (MathUtils.Area(pointSet[maxmax], pointSet[minmax], pointSet[i]) >= 0) && (i > minmax);
+        }
+
+        private static Vertices BuildResultFromHull(Vector2F[] h, int top)
+        {
+            Vertices res = new Vertices(top + 1);
             for (int j = 0; j < top + 1; j++)
             {
                 res.Add(h[j]);

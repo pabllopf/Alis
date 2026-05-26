@@ -59,45 +59,68 @@ namespace Alis.Core.Physic.Common.ConvexHull
             }
 
             Vector2F[] deque = new Vector2F[vertices.Count + 1];
-            int qf = 3, qb = 0; //Queue front index, queue back index
+            int qf = 3, qb = 0;
 
+            int startIndex = InitializeDeque(vertices, deque, ref qf, ref qb);
+            ProcessDeque(vertices, deque, ref qf, ref qb, startIndex);
+
+            return BuildConvexHullResult(deque, qf, qb);
+        }
+
+        private static int InitializeDeque(Vertices vertices, Vector2F[] deque, ref int qf, ref int qb)
+        {
             int startIndex = 3;
             float k = MathUtils.Area(vertices[0], vertices[1], vertices[2]);
             if (Math.Abs(k) < float.Epsilon)
             {
-                deque[0] = vertices[0];
-                deque[1] = vertices[2]; //We can skip vertex 1 because it should be between 0 and 2
-                deque[2] = vertices[0];
-                qf = 2;
-
-                for (startIndex = 3; startIndex < vertices.Count; startIndex++)
-                {
-                    Vector2F tmp = vertices[startIndex];
-                    if (Math.Abs(MathUtils.Area(ref deque[0], ref deque[1], ref tmp)) < float.Epsilon) //This point is also collinear
-                    {
-                        deque[1] = vertices[startIndex];
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
+                InitCollinear(vertices, deque, ref qf, ref startIndex);
             }
             else
             {
-                deque[0] = deque[3] = vertices[2];
-                if (k > 0)
+                InitNonCollinear(vertices, deque, k);
+            }
+
+            return startIndex;
+        }
+
+        private static void InitCollinear(Vertices vertices, Vector2F[] deque, ref int qf, ref int startIndex)
+        {
+            deque[0] = vertices[0];
+            deque[1] = vertices[2];
+            deque[2] = vertices[0];
+            qf = 2;
+
+            for (startIndex = 3; startIndex < vertices.Count; startIndex++)
+            {
+                Vector2F tmp = vertices[startIndex];
+                if (Math.Abs(MathUtils.Area(ref deque[0], ref deque[1], ref tmp)) < float.Epsilon)
                 {
-                    deque[1] = vertices[0];
-                    deque[2] = vertices[1];
+                    deque[1] = vertices[startIndex];
                 }
                 else
                 {
-                    deque[1] = vertices[1];
-                    deque[2] = vertices[0];
+                    break;
                 }
             }
+        }
 
+        private static void InitNonCollinear(Vertices vertices, Vector2F[] deque, float k)
+        {
+            deque[0] = deque[3] = vertices[2];
+            if (k > 0)
+            {
+                deque[1] = vertices[0];
+                deque[2] = vertices[1];
+            }
+            else
+            {
+                deque[1] = vertices[1];
+                deque[2] = vertices[0];
+            }
+        }
+
+        private static void ProcessDeque(Vertices vertices, Vector2F[] deque, ref int qf, ref int qb, int startIndex)
+        {
             int qfm1 = qf - 1;
             int qbm1 = qb == deque.Length - 1 ? 0 : qb + 1;
 
@@ -105,36 +128,61 @@ namespace Alis.Core.Physic.Common.ConvexHull
             {
                 Vector2F nextPt = vertices[i];
 
-                if ((MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0) && (MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0))
+                if (IsInsideDeque(deque, qf, qb, qfm1, qbm1, nextPt))
                 {
                     continue;
                 }
 
-                while (!(MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0))
-                {
-                    qf = qfm1;
-                    qfm1 = qf == 0 ? deque.Length - 1 : qf - 1;
-                }
+                PopDequeFront(deque, ref qf, ref qfm1, nextPt);
+                PushDequeFront(deque, ref qf, ref qfm1, nextPt);
 
-                qf = qf == deque.Length - 1 ? 0 : qf + 1;
-                qfm1 = qf == 0 ? deque.Length - 1 : qf - 1;
-                deque[qf] = nextPt;
-
-                while (!(MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0))
-                {
-                    qb = qbm1;
-                    qbm1 = qb == deque.Length - 1 ? 0 : qb + 1;
-                }
-
-                qb = qb == 0 ? deque.Length - 1 : qb - 1;
-                qbm1 = qb == deque.Length - 1 ? 0 : qb + 1;
-                deque[qb] = nextPt;
+                PopDequeBack(deque, ref qb, ref qbm1, nextPt);
+                PushDequeBack(deque, ref qb, ref qbm1, nextPt);
             }
+        }
 
+        private static bool IsInsideDeque(Vector2F[] deque, int qf, int qb, int qfm1, int qbm1, Vector2F nextPt)
+        {
+            return (MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0) && (MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0);
+        }
+
+        private static void PopDequeFront(Vector2F[] deque, ref int qf, ref int qfm1, Vector2F nextPt)
+        {
+            while (!(MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0))
+            {
+                qf = qfm1;
+                qfm1 = qf == 0 ? deque.Length - 1 : qf - 1;
+            }
+        }
+
+        private static void PushDequeFront(Vector2F[] deque, ref int qf, ref int qfm1, Vector2F nextPt)
+        {
+            qf = qf == deque.Length - 1 ? 0 : qf + 1;
+            qfm1 = qf == 0 ? deque.Length - 1 : qf - 1;
+            deque[qf] = nextPt;
+        }
+
+        private static void PopDequeBack(Vector2F[] deque, ref int qb, ref int qbm1, Vector2F nextPt)
+        {
+            while (!(MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0))
+            {
+                qb = qbm1;
+                qbm1 = qb == deque.Length - 1 ? 0 : qb + 1;
+            }
+        }
+
+        private static void PushDequeBack(Vector2F[] deque, ref int qb, ref int qbm1, Vector2F nextPt)
+        {
+            qb = qb == 0 ? deque.Length - 1 : qb - 1;
+            qbm1 = qb == deque.Length - 1 ? 0 : qb + 1;
+            deque[qb] = nextPt;
+        }
+
+        private static Vertices BuildConvexHullResult(Vector2F[] deque, int qf, int qb)
+        {
             if (qb < qf)
             {
                 Vertices convexHull = new Vertices(qf);
-
                 for (int i = qb; i < qf; i++)
                 {
                     convexHull.Add(deque[i]);
@@ -142,22 +190,19 @@ namespace Alis.Core.Physic.Common.ConvexHull
 
                 return convexHull;
             }
-            else
+
+            Vertices result = new Vertices(qf + deque.Length);
+            for (int i = 0; i < qf; i++)
             {
-                Vertices convexHull = new Vertices(qf + deque.Length);
-
-                for (int i = 0; i < qf; i++)
-                {
-                    convexHull.Add(deque[i]);
-                }
-
-                for (int i = qb; i < deque.Length; i++)
-                {
-                    convexHull.Add(deque[i]);
-                }
-
-                return convexHull;
+                result.Add(deque[i]);
             }
+
+            for (int i = qb; i < deque.Length; i++)
+            {
+                result.Add(deque[i]);
+            }
+
+            return result;
         }
     }
 }
