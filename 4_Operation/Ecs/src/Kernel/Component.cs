@@ -129,7 +129,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The none component runner table
         /// </summary>
-        internal static Dictionary<Type, IComponentStorageBaseFactory> NoneComponentRunnerTable = [];
+        internal static readonly Dictionary<Type, IComponentStorageBaseFactory> NoneComponentRunnerTable = [];
 
         /// <summary>
         ///     The existing component ds
