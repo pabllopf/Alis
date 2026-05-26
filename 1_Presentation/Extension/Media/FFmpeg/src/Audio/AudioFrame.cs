@@ -49,11 +49,6 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         private byte[] frameBuffer;
 
         /// <summary>
-        ///     The offset
-        /// </summary>
-        private int offset;
-
-        /// <summary>
         ///     Creates an empty audio frame with fixed sample count and given bit depth using signed PCM format.
         /// </summary>
         /// <param name="channels">Number of channels</param>
