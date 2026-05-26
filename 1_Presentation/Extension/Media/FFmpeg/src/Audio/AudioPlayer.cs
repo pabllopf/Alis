@@ -68,26 +68,37 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         /// </summary>
         public void Dispose()
         {
-            if (OpenedForWriting)
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases managed and unmanaged resources
+        /// </summary>
+        /// <param name="disposing">Whether to release managed resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                CloseWrite();
-            }
-            else
-            {
-                try
+                if (OpenedForWriting)
                 {
-                    if ((ffplayp != null) && !ffplayp.HasExited)
+                    CloseWrite();
+                }
+                else
+                {
+                    try
                     {
-                        ffplayp.Kill();
+                        if ((ffplayp != null) && !ffplayp.HasExited)
+                        {
+                            ffplayp.Kill();
+                        }
+                    }
+                    catch
+                    {
+                        // Swallow exception during cleanup; Kill() may throw if process already exited.
                     }
                 }
-                catch
-                {
-                    // Swallow exception during cleanup; Kill() may throw if process already exited.
-                }
             }
-
-            GC.SuppressFinalize(this);
         }
 
         /// <summary>
