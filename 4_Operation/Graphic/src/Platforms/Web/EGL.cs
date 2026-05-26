@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// <summary>
     ///     The egl class
     /// </summary>
-    public static class EGL
+    public static class Egl
     {
         /// <summary>
         ///     The lib egl
