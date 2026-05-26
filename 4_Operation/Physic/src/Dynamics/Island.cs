@@ -136,8 +136,20 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void Dispose()
         {
-            _contactSolver?.Dispose();
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases managed and unmanaged resources
+        /// </summary>
+        /// <param name="disposing">Whether to release managed resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _contactSolver?.Dispose();
+            }
         }
 
         /// <summary>
