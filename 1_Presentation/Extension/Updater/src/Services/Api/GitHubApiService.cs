@@ -60,8 +60,20 @@ namespace Alis.Extension.Updater.Services.Api
         /// </summary>
         public void Dispose()
         {
-            _httpClient?.Dispose();
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases managed and unmanaged resources
+        /// </summary>
+        /// <param name="disposing">Whether to release managed resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _httpClient?.Dispose();
+            }
         }
 
         /// <summary>
