@@ -111,12 +111,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private Vector2F _localCenterB;
 
         /// <summary>
-        ///     The max force
-        /// </summary>
-        private float _maxForce;
-
-
-        /// <summary>
         ///     The
         /// </summary>
         private Vector2F _rA;
@@ -157,7 +151,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _linearOffset = useWorldCoordinates ? BodyA.GetLocalPoint(xB) : xB;
 
             _angularOffset = 0.0f;
-            _maxForce = 1.0f;
+            MaxForce = 1.0f;
             MaxTorque = 1.0f;
             CorrectionFactor = 0.3f;
 
@@ -185,11 +179,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The maximum amount of force that can be applied to BodyA
         /// </summary>
-        public float MaxForce
-        {
-            set => _maxForce = value;
-            get => _maxForce;
-        }
+        public float MaxForce { get; set; }
 
         /// <summary>
         ///     The maximum amount of torque that can be applied to BodyA
@@ -374,7 +364,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2F oldImpulse = _linearImpulse;
             _linearImpulse += impulse;
 
-            float maxImpulse = h * _maxForce;
+            float maxImpulse = h * MaxForce;
 
             if (_linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
             {
