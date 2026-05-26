@@ -696,7 +696,7 @@ namespace Alis.Extension.Graphic.Glfw
         public static extern OSMesaContext GetOSMesaContext(Window window);
 
         /// <summary>
-        ///     Returns the GLXContext of the specified window.
+        ///     Returns the GlxContext of the specified window.
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The GLXContext of the specified window, or <see cref="GLXContext.None" /> if an error occurred.</returns>
@@ -704,12 +704,12 @@ namespace Alis.Extension.Graphic.Glfw
         public static extern GLXContext GetGLXContext(Window window);
 
         /// <summary>
-        ///     Returns the EGLContext of the specified window.
+        ///     Returns the EglContext of the specified window.
         /// </summary>
         /// <param name="window">A window instance.</param>
-        /// <returns>The EGLContext of the specified window, or <see cref="EGLContext.None" /> if an error occurred.</returns>
+        /// <returns>The EglContext of the specified window, or <see cref="EglContext.None" /> if an error occurred.</returns>
         [DllImport(GlfwNative.Library, EntryPoint = "glfwGetEGLContext", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
-        public static extern EGLContext GetEglContext(Window window);
+        public static extern EglContext GetEglContext(Window window);
 
         /// <summary>
         ///     Returns the EGLDisplay used by GLFW.
@@ -730,7 +730,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     Returns the WGL context of the specified window.
         /// </summary>
         /// <param name="window">A window instance.</param>
-        /// <returns>The WGL context of the specified window, or <see cref="EGLContext.None" /> if an error occurred.</returns>
+        /// <returns>The WGL context of the specified window, or <see cref="EglContext.None" /> if an error occurred.</returns>
         [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWGLContext", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
         public static extern Hglrc GetWglContext(Window window);
 

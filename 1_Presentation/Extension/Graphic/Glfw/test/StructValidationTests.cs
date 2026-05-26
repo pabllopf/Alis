@@ -162,12 +162,12 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        ///     Test EGLContext struct is a value type
+        ///     Test EglContext struct is a value type
         /// </summary>
         [Fact]
-        public void EGLContextStructIsValueType_ShouldBeTrue()
+        public void EglContextStructIsValueType_ShouldBeTrue()
         {
-            Type eglContextType = typeof(EGLContext);
+            Type eglContextType = typeof(EglContext);
 
             Assert.True(eglContextType.IsValueType);
         }
