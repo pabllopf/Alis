@@ -84,8 +84,20 @@ namespace Alis.Extension.Media.FFmpeg.Video
         /// </summary>
         public void Dispose()
         {
-            frameBuffer = null;
+            Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases managed and unmanaged resources
+        /// </summary>
+        /// <param name="disposing">Whether to release managed resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                frameBuffer = null;
+            }
         }
 
         /// <summary>
