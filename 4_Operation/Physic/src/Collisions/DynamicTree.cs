@@ -399,36 +399,55 @@ namespace Alis.Core.Physic.Collisions
                     continue;
                 }
 
-                if (_nodes[nodeId].IsLeaf())
-                {
-                    RayCastInput subInput;
-                    subInput.Point1 = input.Point1;
-                    subInput.Point2 = input.Point2;
-                    subInput.MaxFraction = maxFraction;
-
-                    float value = callback(ref subInput, nodeId);
-
-                    if (Math.Abs(value) < MathUtils.Epsilon)
-                    {
-                        // the client has terminated the raycast.
-                        return;
-                    }
-
-                    if (value > 0.0f)
-                    {
-                        // Update segment bounding box.
-                        maxFraction = value;
-                        Vector2F t2 = p1 + maxFraction * (p2 - p1);
-                        Vector2F.Min(ref p1, ref t2, out segmentAabb.LowerBound);
-                        Vector2F.Max(ref p1, ref t2, out segmentAabb.UpperBound);
-                    }
-                }
-                else
+                if (!ProcessRayCastNode(nodeId, ref input, ref maxFraction, ref segmentAabb, callback, p1, p2))
                 {
                     _raycastStack.Push(_nodes[nodeId].Child1);
                     _raycastStack.Push(_nodes[nodeId].Child2);
                 }
             }
+        }
+
+        /// <summary>
+        ///     Processes a ray cast node
+        /// </summary>
+        /// <param name="nodeId">The node id</param>
+        /// <param name="input">The ray-cast input data</param>
+        /// <param name="maxFraction">The max fraction</param>
+        /// <param name="segmentAabb">The segment AABB</param>
+        /// <param name="callback">The callback</param>
+        /// <param name="p1">The start point</param>
+        /// <param name="p2">The end point</param>
+        /// <returns>True if the node is a leaf and was processed, false if it should push children</returns>
+        private bool ProcessRayCastNode(int nodeId, ref RayCastInput input, ref float maxFraction, ref Aabb segmentAabb, BroadPhaseRayCastCallback callback, Vector2F p1, Vector2F p2)
+        {
+            if (!_nodes[nodeId].IsLeaf())
+            {
+                return false;
+            }
+
+            RayCastInput subInput;
+            subInput.Point1 = input.Point1;
+            subInput.Point2 = input.Point2;
+            subInput.MaxFraction = maxFraction;
+
+            float value = callback(ref subInput, nodeId);
+
+            if (Math.Abs(value) < MathUtils.Epsilon)
+            {
+                // the client has terminated the raycast.
+                return true;
+            }
+
+            if (value > 0.0f)
+            {
+                // Update segment bounding box.
+                maxFraction = value;
+                Vector2F t2 = p1 + maxFraction * (p2 - p1);
+                Vector2F.Min(ref p1, ref t2, out segmentAabb.LowerBound);
+                Vector2F.Max(ref p1, ref t2, out segmentAabb.UpperBound);
+            }
+
+            return true;
         }
 
         /// <summary>
