@@ -4,7 +4,11 @@
     </PropertyGroup>
     
     <PropertyGroup>
-        <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+        <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <AnalysisLevel>latest-All</AnalysisLevel>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <WarningsAsErrors>null</WarningsAsErrors>
     </PropertyGroup>
 
     <PropertyGroup>
