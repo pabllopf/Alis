@@ -10,6 +10,7 @@
         <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
     
+    
     <ItemGroup>
         <None Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
         <Compile Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
