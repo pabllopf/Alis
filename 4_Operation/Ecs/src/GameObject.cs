@@ -314,7 +314,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T>>(
                 world,
-                ref NeighborCacheAdd<T>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheAdd<T>.Lookup),
                 ref thisLookup,
                 true);
 
@@ -361,7 +361,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T>>(
                 world,
-                ref NeighborCacheRemove<T>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheRemove<T>.Lookup),
                 ref thisLookup,
                 false);
 
@@ -466,7 +466,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2>>(
                 world,
-                ref NeighborCacheAdd<T1, T2>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheAdd<T1, T2>.Lookup),
                 ref thisLookup,
                 true);
 
@@ -522,7 +522,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2>>(
                 world,
-                ref NeighborCacheRemove<T1, T2>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheRemove<T1, T2>.Lookup),
                 ref thisLookup,
                 false);
 
@@ -590,7 +590,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheAdd<T1, T2, T3>.Lookup),
                 ref thisLookup,
                 true);
 
@@ -651,7 +651,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheRemove<T1, T2, T3>.Lookup),
                 ref thisLookup,
                 false);
 
@@ -724,7 +724,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3, T4>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheAdd<T1, T2, T3, T4>.Lookup),
                 ref thisLookup,
                 true);
 
@@ -790,7 +790,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3, T4>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheRemove<T1, T2, T3, T4>.Lookup),
                 ref thisLookup,
                 false);
 
@@ -872,7 +872,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3, T4, T5>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheAdd<T1, T2, T3, T4, T5>.Lookup),
                 ref thisLookup,
                 true);
 
@@ -942,7 +942,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3, T4, T5>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheRemove<T1, T2, T3, T4, T5>.Lookup),
                 ref thisLookup,
                 false);
 
@@ -1032,7 +1032,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3, T4, T5, T6>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheAdd<T1, T2, T3, T4, T5, T6>.Lookup),
                 ref thisLookup,
                 true);
 
@@ -1107,7 +1107,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3, T4, T5, T6>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheRemove<T1, T2, T3, T4, T5, T6>.Lookup),
                 ref thisLookup,
                 false);
 
@@ -1204,7 +1204,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7>.Lookup),
                 ref thisLookup,
                 true);
 
@@ -1284,7 +1284,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7>.Lookup),
                 ref thisLookup,
                 false);
 
@@ -1389,7 +1389,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7, T8>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7, T8>.Lookup),
                 ref thisLookup,
                 true);
 
@@ -1474,7 +1474,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7, T8>.Lookup,
+                ref Unsafe.AsRef(in NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7, T8>.Lookup),
                 ref thisLookup,
                 false);
 
