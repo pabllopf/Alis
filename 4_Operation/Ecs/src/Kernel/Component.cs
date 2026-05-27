@@ -122,9 +122,14 @@ namespace Alis.Core.Ecs.Kernel
     public static class Component
     {
         /// <summary>
+        ///     The backing field for <see cref="ComponentTable"/>
+        /// </summary>
+        private static FastestStack<ComponentData> _componentTable = FastestStack<ComponentData>.Create(16);
+
+        /// <summary>
         ///     The create
         /// </summary>
-        internal static FastestStack<ComponentData> ComponentTable = FastestStack<ComponentData>.Create(16);
+        internal static FastestStack<ComponentData> ComponentTable => _componentTable;
 
         /// <summary>
         ///     The none component runner table
@@ -329,7 +334,7 @@ namespace Alis.Core.Ecs.Kernel
                 NoneComponentRunnerTable.Clear();
                 _existingComponentIDs.Clear();
                 _nextComponentId = -1;
-                ComponentTable = FastestStack<ComponentData>.Create(16);
+                _componentTable = FastestStack<ComponentData>.Create(16);
                 GetComponentId(typeof(void));
             }
         }
