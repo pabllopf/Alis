@@ -54,12 +54,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public class FixedMouseJoint : Joint
     {
         /// <summary>
-        ///     The beta
-        /// </summary>
-        private float _beta;
-
-
-        /// <summary>
         ///     The gamma
         /// </summary>
         private float _gamma;
@@ -80,11 +74,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The inv mass
         /// </summary>
         private float _invMassA;
-
-        /// <summary>
-        ///     The local center
-        /// </summary>
-        private Vector2F _localCenterA;
 
         /// <summary>
         ///     The mass
@@ -188,7 +177,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         internal override void InitVelocityConstraints(ref SolverData data)
         {
             _indexA = BodyA.GetIslandIndex;
-            _localCenterA = BodyA.Sweep.LocalCenter;
+            Vector2F localCenterA = BodyA.Sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             invIa = BodyA.InvI;
 
@@ -220,10 +209,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _gamma = 1.0f / _gamma;
             }
 
-            _beta = h * kKk * _gamma;
+            float beta = h * kKk * _gamma;
 
             // Compute the effective mass matrix.
-            _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
+            _rA = Complex.Multiply(LocalAnchorA - localCenterA, ref qA);
             // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
             //      = [1/m1+1/m2     0    ] + invI1 * [r1.Y*r1.Y -r1.X*r1.Y] + invI2 * [r1.Y*r1.Y -r1.X*r1.Y]
             //        [    0     1/m1+1/m2]           [-r1.X*r1.Y r1.X*r1.X]           [-r1.X*r1.Y r1.X*r1.X]
@@ -236,7 +225,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _mass = k.Inverse;
 
             c = cA + _rA - WorldAnchorB;
-            c *= _beta;
+            c *= beta;
 
             // Cheat with some damping
             wA *= 0.98f;
