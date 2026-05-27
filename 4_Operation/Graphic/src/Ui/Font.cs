@@ -56,16 +56,6 @@ namespace Alis.Core.Graphic.Ui
         private Dictionary<char, RectangleI> CharacterRects = new();
 
         /// <summary>
-        ///     The image handle
-        /// </summary>
-        private GCHandle imageHandle;
-
-        /// <summary>
-        ///     The indices handle
-        /// </summary>
-        private GCHandle indicesHandle;
-
-        /// <summary>
         ///     The vertices handle
         /// </summary>
         private GCHandle verticesHandle;
@@ -219,9 +209,9 @@ namespace Alis.Core.Graphic.Ui
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Nearest);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Nearest);
 
-            imageHandle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
-            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.Width, image.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, imageHandle.AddrOfPinnedObject());
-            imageHandle.Free();
+            GCHandle localImageHandle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
+            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.Width, image.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, localImageHandle.AddrOfPinnedObject());
+            localImageHandle.Free();
 
             Gl.GenerateMipmap(TextureTarget.Texture2D);
         }
@@ -259,9 +249,9 @@ namespace Alis.Core.Graphic.Ui
             verticesHandle.Free();
 
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
-            indicesHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
-            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Length * sizeof(uint)), indicesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
-            indicesHandle.Free();
+            GCHandle localIndicesHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
+            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Length * sizeof(uint)), localIndicesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            localIndicesHandle.Free();
 
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), IntPtr.Zero);
             Gl.EnableVertexAttribArray(0);
