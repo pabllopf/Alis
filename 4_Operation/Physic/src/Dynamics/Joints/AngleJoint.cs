@@ -43,11 +43,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private float _bias;
 
         /// <summary>
-        ///     The joint error
-        /// </summary>
-        private float _jointError;
-
-        /// <summary>
         ///     The mass factor
         /// </summary>
         private float _massFactor;
@@ -153,8 +148,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float aW = data.Positions[indexA].A;
             float bW = data.Positions[indexB].A;
 
-            _jointError = bW - aW - TargetAngle;
-            _bias = -BiasFactor * data.Step.InvDt * _jointError;
+            float jointError = bW - aW - TargetAngle;
+            _bias = -BiasFactor * data.Step.InvDt * jointError;
             _massFactor = (1 - Softness) / (BodyA.InvI + BodyB.InvI);
         }
 
