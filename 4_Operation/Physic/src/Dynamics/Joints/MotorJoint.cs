@@ -101,16 +101,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private Vector2F _linearOffset;
 
         /// <summary>
-        ///     The local center
-        /// </summary>
-        private Vector2F _localCenterA;
-
-        /// <summary>
-        ///     The local center
-        /// </summary>
-        private Vector2F _localCenterB;
-
-        /// <summary>
         ///     The
         /// </summary>
         private Vector2F _rA;
@@ -245,8 +235,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             _indexA = BodyA.GetIslandIndex;
             _indexB = BodyB.GetIslandIndex;
-            _localCenterA = BodyA.Sweep.LocalCenter;
-            _localCenterB = BodyB.Sweep.LocalCenter;
+            Vector2F localCenterA = BodyA.Sweep.LocalCenter;
+            Vector2F localCenterB = BodyB.Sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             _invMassB = BodyB.InvMass;
             invIa = BodyA.InvI;
@@ -265,8 +255,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);
 
-            _rA = -Complex.Multiply(ref _localCenterA, ref qA);
-            _rB = -Complex.Multiply(ref _localCenterB, ref qB);
+            _rA = -Complex.Multiply(ref localCenterA, ref qA);
+            _rB = -Complex.Multiply(ref localCenterB, ref qB);
 
             // r_skew = [-ry; rx]
 
