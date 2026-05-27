@@ -146,7 +146,6 @@ namespace Alis.Core.Audio
 #else
             return null;
 #endif
-            throw new PlatformNotSupportedException("No implementation exist for the current OS");
         }
 
         /// <summary>

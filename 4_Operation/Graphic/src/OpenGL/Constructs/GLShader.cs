@@ -79,6 +79,16 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// </summary>
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases the resources used by this instance.
+        /// </summary>
+        /// <param name="disposing">Whether this is called from Dispose() (true) or the finalizer (false).</param>
+        private void Dispose(bool disposing)
+        {
             if (ShaderId != 0)
             {
                 GlDeleteShader(ShaderId);
@@ -91,11 +101,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// </summary>
         ~GlShader()
         {
-            if (ShaderId != 0)
-            {
-                GlDeleteShader(ShaderId);
-                ShaderId = 0;
-            }
+            Dispose(false);
         }
     }
 }

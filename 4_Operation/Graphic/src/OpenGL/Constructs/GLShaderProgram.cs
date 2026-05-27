@@ -119,6 +119,16 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// </summary>
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases the resources used by this instance.
+        /// </summary>
+        /// <param name="disposing">Whether this is called from Dispose() (true) or the finalizer (false).</param>
+        private void Dispose(bool disposing)
+        {
             if (ProgramId != 0)
             {
                 Gl.GlUseProgram(0);
@@ -127,7 +137,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
                 Gl.GlDetachShader(ProgramId, FragmentShader.ShaderId);
                 Gl.GlDeleteProgram(ProgramId);
 
-                if (DisposeChildren)
+                if (disposing && DisposeChildren)
                 {
                     VertexShader.Dispose();
                     FragmentShader.Dispose();
@@ -142,22 +152,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// </summary>
         ~GlShaderProgram()
         {
-            if (ProgramId != 0)
-            {
-                Gl.GlUseProgram(0);
-
-                Gl.GlDetachShader(ProgramId, VertexShader.ShaderId);
-                Gl.GlDetachShader(ProgramId, FragmentShader.ShaderId);
-                Gl.GlDeleteProgram(ProgramId);
-
-                if (DisposeChildren)
-                {
-                    VertexShader.Dispose();
-                    FragmentShader.Dispose();
-                }
-
-                ProgramId = 0;
-            }
+            Dispose(false);
         }
 
         /// <summary>

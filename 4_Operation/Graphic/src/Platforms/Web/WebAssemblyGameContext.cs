@@ -451,7 +451,6 @@ namespace Alis.Core.Graphic.Platforms.Web
             _isRunning = false;
             _platform?.Cleanup();
             _disposed = true;
-            GC.SuppressFinalize(this);
         }
     }
 
