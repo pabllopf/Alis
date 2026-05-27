@@ -112,15 +112,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private Mat22 _linearMass;
 
-        /// <summary>
-        ///     The local center
-        /// </summary>
-        private Vector2F _localCenterA;
 
-        /// <summary>
-        ///     The local center
-        /// </summary>
-        private Vector2F _localCenterB;
 
         /// <summary>
         ///     The
@@ -231,8 +223,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             _indexA = BodyA.GetIslandIndex;
             _indexB = BodyB.GetIslandIndex;
-            _localCenterA = BodyA.Sweep.LocalCenter;
-            _localCenterB = BodyB.Sweep.LocalCenter;
+            Vector2F localCenterA = BodyA.Sweep.LocalCenter;
+            Vector2F localCenterB = BodyB.Sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             _invMassB = BodyB.InvMass;
             invIa = BodyA.InvI;
@@ -250,8 +242,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Complex qB = Complex.FromAngle(aB);
 
             // Compute the effective mass matrix.
-            _rA = Complex.Multiply(LocalAnchorA - _localCenterA, ref qA);
-            _rB = Complex.Multiply(LocalAnchorB - _localCenterB, ref qB);
+            _rA = Complex.Multiply(LocalAnchorA - localCenterA, ref qA);
+            _rB = Complex.Multiply(LocalAnchorB - localCenterB, ref qB);
 
             // J = [-I -r1_skew I r2_skew]
             //     [ 0       -1 0       1]
