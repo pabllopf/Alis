@@ -56,15 +56,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// </summary>
         private static uint SharedVao;
 
-        /// <summary>
-        ///     The shared vbo
-        /// </summary>
-        private static uint SharedVbo;
 
-        /// <summary>
-        ///     The shared ebo
-        /// </summary>
-        private static uint SharedEbo;
 
         /// <summary>
         ///     The shared initialized
@@ -107,11 +99,6 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlBindTexture(TextureTarget.Texture2D, texture);
             LastBoundTexture = texture;
         }
-
-        /// <summary>
-        ///     The image handle
-        /// </summary>
-        private GCHandle imageHandle;
 
         /// <summary>
         ///     Gets or sets the value of the depth
@@ -280,17 +267,17 @@ namespace Alis.Core.Ecs.Components.Render
             uint[] indices = {0, 1, 3, 1, 2, 3};
 
             SharedVao = Gl.GenVertexArray();
-            SharedVbo = Gl.GenBuffer();
-            SharedEbo = Gl.GenBuffer();
+            uint sharedVbo = Gl.GenBuffer();
+            uint sharedEbo = Gl.GenBuffer();
 
             Gl.GlBindVertexArray(SharedVao);
 
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, SharedVbo);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, sharedVbo);
             GCHandle vHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
             Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), vHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             vHandle.Free();
 
-            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, SharedEbo);
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, sharedEbo);
             GCHandle iHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
             Gl.GlBufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Length * sizeof(uint)), iHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             iHandle.Free();
@@ -341,9 +328,9 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Nearest);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Nearest);
 
-            imageHandle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
-            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.Width, image.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, imageHandle.AddrOfPinnedObject());
-            imageHandle.Free();
+            GCHandle localImageHandle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
+            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.Width, image.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, localImageHandle.AddrOfPinnedObject());
+            localImageHandle.Free();
 
             Gl.GenerateMipmap(TextureTarget.Texture2D);
         }
