@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -42,14 +43,9 @@ namespace Alis.Extension.Graphic.Sfml.Render
     public abstract class Shape : Transformable, IDrawable
     {
         /// <summary>
-        ///     The my get point callback
+        ///     Roots callback delegates to prevent GC collection while registered with unmanaged SFML code.
         /// </summary>
-        private readonly GetPointCallbackType myGetPointCallback;
-
-        /// <summary>
-        ///     The my get point count callback
-        /// </summary>
-        private readonly GetPointCountCallbackType myGetPointCountCallback;
+        private readonly List<Delegate> _pinnedCallbacks = new(2);
 
         /// <summary>
         ///     The my texture
@@ -62,8 +58,10 @@ namespace Alis.Extension.Graphic.Sfml.Render
         protected Shape() :
             base(IntPtr.Zero)
         {
-            myGetPointCountCallback = InternalGetPointCount;
-            myGetPointCallback = InternalGetPoint;
+            GetPointCountCallbackType myGetPointCountCallback = InternalGetPointCount;
+            _pinnedCallbacks.Add(myGetPointCountCallback);
+            GetPointCallbackType myGetPointCallback = InternalGetPoint;
+            _pinnedCallbacks.Add(myGetPointCallback);
             CPointer = sfShape_create(myGetPointCountCallback, myGetPointCallback, IntPtr.Zero);
         }
 
@@ -75,8 +73,10 @@ namespace Alis.Extension.Graphic.Sfml.Render
         protected Shape(Shape copy) :
             base(IntPtr.Zero)
         {
-            myGetPointCountCallback = InternalGetPointCount;
-            myGetPointCallback = InternalGetPoint;
+            GetPointCountCallbackType myGetPointCountCallback = InternalGetPointCount;
+            _pinnedCallbacks.Add(myGetPointCountCallback);
+            GetPointCallbackType myGetPointCallback = InternalGetPoint;
+            _pinnedCallbacks.Add(myGetPointCallback);
             CPointer = sfShape_create(myGetPointCountCallback, myGetPointCallback, IntPtr.Zero);
 
             Origin = copy.Origin;
@@ -235,6 +235,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         public override void Destroy(bool disposing)
         {
             sfShape_destroy(CPointer);
+            _pinnedCallbacks.Clear();
         }
 
 

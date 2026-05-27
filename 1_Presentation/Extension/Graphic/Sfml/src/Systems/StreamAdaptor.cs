@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 
@@ -39,9 +40,9 @@ namespace Alis.Extension.Graphic.Sfml.Systems
     public class StreamAdaptor : IDisposable
     {
         /// <summary>
-        ///     The my input stream
+        ///     Roots InputStream delegate fields to prevent GC collection.
         /// </summary>
-        private readonly InputStream myInputStream;
+        private readonly List<Delegate> _pinnedCallbacks = new(4);
 
         /// <summary>
         ///     The my input stream ptr
@@ -61,13 +62,17 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         {
             myStream = stream;
 
-            myInputStream = new InputStream
+            InputStream myInputStream = new InputStream
             {
                 Read = Read,
                 Seek = Seek,
                 Tell = Tell,
                 GetSize = GetSize
             };
+            _pinnedCallbacks.Add(myInputStream.Read!);
+            _pinnedCallbacks.Add(myInputStream.Seek!);
+            _pinnedCallbacks.Add(myInputStream.Tell!);
+            _pinnedCallbacks.Add(myInputStream.GetSize!);
 
             myInputStreamPtr = Marshal.AllocHGlobal(Marshal.SizeOf(myInputStream));
             Marshal.StructureToPtr(myInputStream, myInputStreamPtr, false);
@@ -104,8 +109,13 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         ///     OnDestroy the object
         /// </summary>
         /// <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
-        protected virtual void Dispose(bool _)
+        protected virtual void Dispose(bool disposing)
         {
+            if (disposing)
+            {
+                _pinnedCallbacks.Clear();
+            }
+
             Marshal.FreeHGlobal(myInputStreamPtr);
         }
 

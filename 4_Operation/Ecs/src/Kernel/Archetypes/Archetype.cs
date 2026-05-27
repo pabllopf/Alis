@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -684,42 +685,110 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     }
 
     /// <summary>
-    ///     The archetype class
+    ///     Non-generic slot for per-archetype data. Avoids S2743 by not having static fields in generic types.
+    /// </summary>
+    internal sealed class ArchetypeSlot
+    {
+        /// <summary>The component IDs for this archetype.</summary>
+        internal FastImmutableArray<ComponentId> ComponentIDs;
+
+        /// <summary>The archetype's <c>GameObjectType</c> ID.</summary>
+        internal GameObjectType Id;
+    }
+
+    /// <summary>Non-generic registry for single-type Archetype&lt;T&gt; data.</summary>
+    internal static class ArchetypeSingleRegistry
+    {
+        private static readonly ConcurrentDictionary<RuntimeTypeHandle, ArchetypeSlot> Slots = new();
+        internal static ArchetypeSlot GetOrCreate<T>(Func<ArchetypeSlot> factory) =>
+            Slots.GetOrAdd(typeof(T).TypeHandle, _ => factory());
+    }
+
+    /// <summary>Non-generic registry for dual-type Archetype&lt;T1, T2&gt; data.</summary>
+    internal static class ArchetypeDualRegistry
+    {
+        private static readonly ConcurrentDictionary<(RuntimeTypeHandle, RuntimeTypeHandle), ArchetypeSlot> Slots = new();
+        internal static ArchetypeSlot GetOrCreate<T1, T2>(Func<ArchetypeSlot> factory) =>
+            Slots.GetOrAdd((typeof(T1).TypeHandle, typeof(T2).TypeHandle), _ => factory());
+    }
+
+    /// <summary>Non-generic registry for triple-type Archetype&lt;T1, T2, T3&gt; data.</summary>
+    internal static class ArchetypeTripleRegistry
+    {
+        private static readonly ConcurrentDictionary<(RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle), ArchetypeSlot> Slots = new();
+        internal static ArchetypeSlot GetOrCreate<T1, T2, T3>(Func<ArchetypeSlot> factory) =>
+            Slots.GetOrAdd((typeof(T1).TypeHandle, typeof(T2).TypeHandle, typeof(T3).TypeHandle), _ => factory());
+    }
+
+    /// <summary>Non-generic registry for 4-type Archetype data.</summary>
+    internal static class ArchetypeQuadRegistry
+    {
+        private static readonly ConcurrentDictionary<(RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle), ArchetypeSlot> Slots = new();
+        internal static ArchetypeSlot GetOrCreate<T1, T2, T3, T4>(Func<ArchetypeSlot> factory) =>
+            Slots.GetOrAdd((typeof(T1).TypeHandle, typeof(T2).TypeHandle, typeof(T3).TypeHandle, typeof(T4).TypeHandle), _ => factory());
+    }
+
+    /// <summary>Non-generic registry for 5-type Archetype data.</summary>
+    internal static class ArchetypeQuintRegistry
+    {
+        private static readonly ConcurrentDictionary<(RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle), ArchetypeSlot> Slots = new();
+        internal static ArchetypeSlot GetOrCreate<T1, T2, T3, T4, T5>(Func<ArchetypeSlot> factory) =>
+            Slots.GetOrAdd((typeof(T1).TypeHandle, typeof(T2).TypeHandle, typeof(T3).TypeHandle, typeof(T4).TypeHandle, typeof(T5).TypeHandle), _ => factory());
+    }
+
+    /// <summary>Non-generic registry for 6-type Archetype data.</summary>
+    internal static class ArchetypeHexRegistry
+    {
+        private static readonly ConcurrentDictionary<(RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle), ArchetypeSlot> Slots = new();
+        internal static ArchetypeSlot GetOrCreate<T1, T2, T3, T4, T5, T6>(Func<ArchetypeSlot> factory) =>
+            Slots.GetOrAdd((typeof(T1).TypeHandle, typeof(T2).TypeHandle, typeof(T3).TypeHandle, typeof(T4).TypeHandle, typeof(T5).TypeHandle, typeof(T6).TypeHandle), _ => factory());
+    }
+
+    /// <summary>Non-generic registry for 7-type Archetype data.</summary>
+    internal static class ArchetypeSeptRegistry
+    {
+        private static readonly ConcurrentDictionary<(RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle), ArchetypeSlot> Slots = new();
+        internal static ArchetypeSlot GetOrCreate<T1, T2, T3, T4, T5, T6, T7>(Func<ArchetypeSlot> factory) =>
+            Slots.GetOrAdd((typeof(T1).TypeHandle, typeof(T2).TypeHandle, typeof(T3).TypeHandle, typeof(T4).TypeHandle, typeof(T5).TypeHandle, typeof(T6).TypeHandle, typeof(T7).TypeHandle), _ => factory());
+    }
+
+    /// <summary>Non-generic registry for 8-type Archetype data.</summary>
+    internal static class ArchetypeOctRegistry
+    {
+        private static readonly ConcurrentDictionary<(RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle, RuntimeTypeHandle), ArchetypeSlot> Slots = new();
+        internal static ArchetypeSlot GetOrCreate<T1, T2, T3, T4, T5, T6, T7, T8>(Func<ArchetypeSlot> factory) =>
+            Slots.GetOrAdd((typeof(T1).TypeHandle, typeof(T2).TypeHandle, typeof(T3).TypeHandle, typeof(T4).TypeHandle, typeof(T5).TypeHandle, typeof(T6).TypeHandle, typeof(T7).TypeHandle, typeof(T8).TypeHandle), _ => factory());
+    }
+
+    /// <summary>Non-generic registry for OfComponent Index values.</summary>
+    internal static class OfComponentIndexRegistry
+    {
+        private static readonly ConcurrentDictionary<(RuntimeTypeHandle, RuntimeTypeHandle), int> Indices = new();
+        internal static int GetOrCreate<T, TC>() =>
+            Indices.GetOrAdd((typeof(T).TypeHandle, typeof(TC).TypeHandle), _ =>
+                GlobalWorldTables.ComponentIndex(Archetype<T>.Id, Component<TC>.Id));
+    }
+
+    /// <summary>
+    ///     The archetype class. No static fields — data is held in non-generic registries.
     /// </summary>
     internal static class Archetype<T>
     {
-        /// <summary>
-        ///     The to immutable array
-        /// </summary>
-        public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
-            new FastImmutableArray<ComponentId>(new[] {Component<T>.Id});
+        private static ArchetypeSlot GetSlot() => ArchetypeSingleRegistry.GetOrCreate<T>(static () =>
+        {
+            var componentIDs = new FastImmutableArray<ComponentId>(new[] { Component<T>.Id });
+            return new ArchetypeSlot
+            {
+                ComponentIDs = componentIDs,
+                Id = Archetype.GetArchetypeId(componentIDs.AsSpan(), componentIDs)
+            };
+        });
 
-        //ArchetypeTypes init first, then ID
-        /// <summary>
-        ///     The empty
-        /// </summary>
-        public static readonly GameObjectType Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), ArchetypeComponentIDs);
+        /// <summary>The component IDs for this archetype.</summary>
+        public static FastImmutableArray<ComponentId> ArchetypeComponentIDs => GetSlot().ComponentIDs;
 
-
-        /// <summary>
-        ///     The null
-        /// </summary>
-        internal static readonly GameObjectType Null = GetArchetypeId([Component.GetComponentId(typeof(void))]);
-
-        /// <summary>
-        ///     The create
-        /// </summary>
-        internal static readonly FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
-
-        /// <summary>
-        ///     The next archetype id
-        /// </summary>
-        private static int NextArchetypeId = -1;
-
-        /// <summary>
-        ///     The existing archetypes
-        /// </summary>
-        private static readonly Dictionary<long, ArchetypeData> ExistingArchetypes = [];
+        /// <summary>The archetype's <c>GameObjectType</c> ID.</summary>
+        public static GameObjectType Id => GetSlot().Id;
 
         /// <summary>
         ///     Creates the new or get existing archetypes using the specified scene
@@ -759,232 +828,37 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             }
         }
 
-        /// <summary>
-        ///     Creates the or get existing archetype using the specified types
-        /// </summary>
-        /// <param name="types">The types</param>
-        /// <param name="scene">The scene</param>
-        /// <param name="typeArray">The type array</param>
-        /// <returns>The archetype</returns>
-        internal static Archetype CreateOrGetExistingArchetype(ReadOnlySpan<ComponentId> types, Scene scene, FastImmutableArray<ComponentId>? typeArray = null)
-        {
-            GameObjectType id = GetArchetypeId(types, typeArray);
-            return CreateOrGetExistingArchetype(id, scene);
-        }
-
-        /// <summary>
-        ///     Creates the or get existing archetype using the specified id
-        /// </summary>
-        /// <param name="id">The id</param>
-        /// <param name="scene">The scene</param>
-        /// <returns>The archetype</returns>
-        internal static Archetype CreateOrGetExistingArchetype(GameObjectType id, Scene scene)
-        {
-            ref WorldArchetypeTableItem archetype = ref scene.WorldArchetypeTable[id.RawIndex];
-            if (archetype.Archetype is not null)
-            {
-                return archetype.Archetype;
-            }
-
-            FastImmutableArray<ComponentId> types = id.Types;
-            ComponentStorageBase[] componentRunners = new ComponentStorageBase[types.Length + 1];
-            ComponentStorageBase[] tmpRunners = new ComponentStorageBase[types.Length + 1];
-            for (int i = 1; i < componentRunners.Length; i++)
-            {
-                IComponentStorageBaseFactory fact = Component.GetComponentFactoryFromType(types[i - 1].Type);
-                componentRunners[i] = fact.Create(1);
-                tmpRunners[i] = fact.Create(0);
-            }
-
-            Archetype normal = new Archetype(id, componentRunners, false);
-            Archetype tmpCreateArchetype = new Archetype(id, tmpRunners, true);
-
-            archetype = new WorldArchetypeTableItem(normal, tmpCreateArchetype);
-            scene.ArchetypeAdded(normal, tmpCreateArchetype);
-
-            return archetype.Archetype;
-        }
-
-        /// <summary>
-        ///     Gets the adjacent archetype lookup using the specified scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <param name="edge">The edge</param>
-        /// <returns>The archetype</returns>
-        internal static Archetype GetAdjacentArchetypeLookup(Scene scene, ArchetypeEdgeKey edge)
-        {
-            if (scene.ArchetypeGraphEdges.TryGetValue(edge, out Archetype archetype))
-            {
-                return archetype;
-            }
-
-            return GetAdjacentArchetypeCold(scene, edge);
-        }
-
-        /// <summary>
-        ///     Gets the adjacent archetype cold using the specified scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <param name="edge">The edge</param>
-        /// <returns>The archetype</returns>
-        internal static Archetype GetAdjacentArchetypeCold(Scene scene, ArchetypeEdgeKey edge)
-        {
-            //this scene doesn't have the archetype, or it doesnt even exist
-
-            FastImmutableArray<ComponentId> fromComponents = edge.ArchetypeFrom.Types;
-
-            switch (edge.EdgeType)
-            {
-                case ArchetypeEdgeType.AddComponent:
-                    fromComponents = MemoryHelpers.Concat(fromComponents, edge.ComponentID);
-                    break;
-                case ArchetypeEdgeType.RemoveComponent:
-                    fromComponents = MemoryHelpers.Remove(fromComponents, edge.ComponentID);
-                    break;
-            }
-
-            Archetype archetype = CreateOrGetExistingArchetype(fromComponents.AsSpan(), scene, fromComponents);
-
-            return archetype;
-        }
-
-
-        /// <summary>
-        ///     Gets the archetype id using the specified types
-        /// </summary>
-        /// <param name="types">The types</param>
-        /// <param name="typesArray">The types array</param>
-        /// <exception cref="InvalidOperationException">Entities can have a max of 127 components!</exception>
-        /// <exception cref="InvalidOperationException">Exceeded maximum unique archetype count of 65535</exception>
-        /// <returns>The game object type</returns>
-        internal static GameObjectType GetArchetypeId(ReadOnlySpan<ComponentId> types, FastImmutableArray<ComponentId>? typesArray = null)
-        {
-            if (types.Length > MemoryHelpers.MaxComponentCount)
-            {
-                throw new InvalidOperationException("Entities can have a max of 127 components!");
-            }
-
-            lock (GlobalWorldTables.BufferChangeLock)
-            {
-                long key = GetHash(types);
-                if (ExistingArchetypes.TryGetValue(key, out ArchetypeData value))
-                {
-                    return value.Id;
-                }
-
-                int nextIdInt = ++NextArchetypeId;
-                if (nextIdInt == ushort.MaxValue)
-                {
-                    throw new InvalidOperationException("Exceeded maximum unique archetype count of 65535");
-                }
-
-                ArchetypeID finalId = new ArchetypeID((ushort) nextIdInt);
-
-                FastImmutableArray<ComponentId> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
-
-                ArchetypeData slot = new ArchetypeData(finalId, arr);
-                ArchetypeTable.Push(slot);
-                ModifyComponentLocationTable(arr, finalId.RawIndex);
-
-                ExistingArchetypes[key] = slot;
-
-                return finalId;
-            }
-        }
-
-
-        /// <summary>
-        ///     Modifies the component location table using the specified archetype types
-        /// </summary>
-        /// <param name="archetypeTypes">The archetype types</param>
-        /// <param name="id">The id</param>
-        private static void ModifyComponentLocationTable(FastImmutableArray<ComponentId> archetypeTypes, int id)
-        {
-            if (GlobalWorldTables.ComponentTagLocationTable.Length == id)
-            {
-                int size = Math.Max(id << 1, 1);
-                Array.Resize(ref GlobalWorldTables.ComponentTagLocationTable, size);
-                foreach (Scene world in GlobalWorldTables.Worlds.AsSpan())
-                {
-                    if (world is Scene w)
-                    {
-                        w.UpdateArchetypeTable(size);
-                    }
-                }
-            }
-
-
-            ref byte[] componentTable = ref GlobalWorldTables.ComponentTagLocationTable[id];
-            componentTable = new byte[GlobalWorldTables.ComponentTagTableBufferSize];
-
-            for (int i = 0; i < archetypeTypes.Length; i++)
-                //add 1 so zero is null always
-            {
-                componentTable[archetypeTypes[i].RawIndex] = (byte) (i + 1);
-            }
-        }
-
-        /// <summary>
-        ///     Gets the hash using the specified types
-        /// </summary>
-        /// <param name="types">The types</param>
-        /// <returns>The hash</returns>
-        private static long GetHash(ReadOnlySpan<ComponentId> types)
-        {
-            HashCode h1 = new HashCode();
-            HashCode h2 = new HashCode();
-
-            int i;
-            for (i = 0; i < types.Length >> 1; i++)
-            {
-                h1.Add(types[i]);
-            }
-
-            for (; i < types.Length; i++)
-            {
-                h2.Add(types[i]);
-            }
-
-            long hash = (long) h1.ToHashCode() * 1610612741 + h2.ToHashCode();
-
-            return hash;
-        }
-
-        /// <summary>
-        ///     The of component class
-        /// </summary>
+        /// <summary>The of component class.</summary>
         internal static class OfComponent<TC>
         {
-            /// <summary>
-            ///     The id
-            /// </summary>
-            public static readonly int Index = GlobalWorldTables.ComponentIndex(Id, Component<TC>.Id);
+            /// <summary>The component index within this archetype.</summary>
+            public static int Index => OfComponentIndexRegistry.GetOrCreate<T, TC>();
         }
     }
 
 
     /// <summary>
-    ///     The archetype class
+    ///     The archetype class. No static fields — data is held in non-generic registries.
     /// </summary>
     public static class Archetype<T1, T2>
     {
-        /// <summary>
-        ///     The to immutable array
-        /// </summary>
-        public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
-            new FastImmutableArray<ComponentId>(new[] {Component<T1>.Id, Component<T2>.Id});
+        private static ArchetypeSlot GetSlot() => ArchetypeDualRegistry.GetOrCreate<T1, T2>(static () =>
+        {
+            var componentIDs = new FastImmutableArray<ComponentId>(new[] { Component<T1>.Id, Component<T2>.Id });
+            return new ArchetypeSlot
+            {
+                ComponentIDs = componentIDs,
+                Id = Archetype.GetArchetypeId(componentIDs.AsSpan(), componentIDs)
+            };
+        });
 
-        //ArchetypeTypes init first, then ID
-        /// <summary>
-        ///     The empty
-        /// </summary>
-        public static readonly GameObjectType Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), ArchetypeComponentIDs);
+        /// <summary>The component IDs for this archetype.</summary>
+        public static FastImmutableArray<ComponentId> ArchetypeComponentIDs => GetSlot().ComponentIDs;
 
-        /// <summary>
-        ///     Creates the new or get existing archetypes using the specified scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <returns>The archetypes</returns>
+        /// <summary>The archetype's <c>GameObjectType</c> ID.</summary>
+        public static GameObjectType Id => GetSlot().Id;
+
+        /// <summary>Creates the new or get existing archetypes using the specified scene.</summary>
         internal static WorldArchetypeTableItem CreateNewOrGetExistingArchetypes(Scene scene)
         {
             ushort index = Id.RawIndex;
@@ -996,7 +870,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1013,7 +886,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 runners[i] = Component<T2>.CreateInstance(1);
                 tmpStorages[i] = Component<T2>.CreateInstance(0);
 
-
                 Archetype archetype = new Archetype(Id, runners, false);
                 Archetype tempCreateArchetype = new Archetype(Id, tmpStorages, true);
 
@@ -1024,27 +896,27 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     }
 
     /// <summary>
-    ///     The archetype class
+    ///     The archetype class. No static fields — data is held in non-generic registries.
     /// </summary>
     internal static class Archetype<T1, T2, T3>
     {
-        /// <summary>
-        ///     The to immutable array
-        /// </summary>
-        public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
-            new FastImmutableArray<ComponentId>(new[] {Component<T1>.Id, Component<T2>.Id, Component<T3>.Id});
+        private static ArchetypeSlot GetSlot() => ArchetypeTripleRegistry.GetOrCreate<T1, T2, T3>(static () =>
+        {
+            var componentIDs = new FastImmutableArray<ComponentId>(new[] { Component<T1>.Id, Component<T2>.Id, Component<T3>.Id });
+            return new ArchetypeSlot
+            {
+                ComponentIDs = componentIDs,
+                Id = Archetype.GetArchetypeId(componentIDs.AsSpan(), componentIDs)
+            };
+        });
 
-        //ArchetypeTypes init first, then ID
-        /// <summary>
-        ///     The empty
-        /// </summary>
-        public static readonly GameObjectType Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), ArchetypeComponentIDs);
+        /// <summary>The component IDs for this archetype.</summary>
+        public static FastImmutableArray<ComponentId> ArchetypeComponentIDs => GetSlot().ComponentIDs;
 
-        /// <summary>
-        ///     Creates the new or get existing archetypes using the specified scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <returns>The archetypes</returns>
+        /// <summary>The archetype's <c>GameObjectType</c> ID.</summary>
+        public static GameObjectType Id => GetSlot().Id;
+
+        /// <summary>Creates the new or get existing archetypes using the specified scene.</summary>
         internal static WorldArchetypeTableItem CreateNewOrGetExistingArchetypes(Scene scene)
         {
             ushort index = Id.RawIndex;
@@ -1056,7 +928,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1076,7 +947,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 runners[i] = Component<T3>.CreateInstance(1);
                 tmpStorages[i] = Component<T3>.CreateInstance(0);
 
-
                 Archetype archetype = new Archetype(Id, runners, false);
                 Archetype tempCreateArchetype = new Archetype(Id, tmpStorages, true);
 
@@ -1087,28 +957,27 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     }
 
     /// <summary>
-    ///     The archetype class
+    ///     The archetype class. No static fields — data is held in non-generic registries.
     /// </summary>
     internal static class Archetype<T1, T2, T3, T4>
     {
-        /// <summary>
-        ///     The to immutable array
-        /// </summary>
-        public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
-            new FastImmutableArray<ComponentId>(new[]
-                {Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id});
+        private static ArchetypeSlot GetSlot() => ArchetypeQuadRegistry.GetOrCreate<T1, T2, T3, T4>(static () =>
+        {
+            var componentIDs = new FastImmutableArray<ComponentId>(new[] { Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id });
+            return new ArchetypeSlot
+            {
+                ComponentIDs = componentIDs,
+                Id = Archetype.GetArchetypeId(componentIDs.AsSpan(), componentIDs)
+            };
+        });
 
-        //ArchetypeTypes init first, then ID
-        /// <summary>
-        ///     The empty
-        /// </summary>
-        public static readonly GameObjectType Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), ArchetypeComponentIDs);
+        /// <summary>The component IDs for this archetype.</summary>
+        public static FastImmutableArray<ComponentId> ArchetypeComponentIDs => GetSlot().ComponentIDs;
 
-        /// <summary>
-        ///     Creates the new or get existing archetypes using the specified scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <returns>The archetypes</returns>
+        /// <summary>The archetype's <c>GameObjectType</c> ID.</summary>
+        public static GameObjectType Id => GetSlot().Id;
+
+        /// <summary>Creates the new or get existing archetypes using the specified scene.</summary>
         internal static WorldArchetypeTableItem CreateNewOrGetExistingArchetypes(Scene scene)
         {
             ushort index = Id.RawIndex;
@@ -1120,7 +989,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1143,7 +1011,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 runners[i] = Component<T4>.CreateInstance(1);
                 tmpStorages[i] = Component<T4>.CreateInstance(0);
 
-
                 Archetype archetype = new Archetype(Id, runners, false);
                 Archetype tempCreateArchetype = new Archetype(Id, tmpStorages, true);
 
@@ -1154,28 +1021,27 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     }
 
     /// <summary>
-    ///     The archetype class
+    ///     The archetype class. No static fields — data is held in non-generic registries.
     /// </summary>
     internal static class Archetype<T1, T2, T3, T4, T5>
     {
-        /// <summary>
-        ///     The to immutable array
-        /// </summary>
-        public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
-            new FastImmutableArray<ComponentId>(new[]
-                {Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id});
+        private static ArchetypeSlot GetSlot() => ArchetypeQuintRegistry.GetOrCreate<T1, T2, T3, T4, T5>(static () =>
+        {
+            var componentIDs = new FastImmutableArray<ComponentId>(new[] { Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id });
+            return new ArchetypeSlot
+            {
+                ComponentIDs = componentIDs,
+                Id = Archetype.GetArchetypeId(componentIDs.AsSpan(), componentIDs)
+            };
+        });
 
-        //ArchetypeTypes init first, then ID
-        /// <summary>
-        ///     The empty
-        /// </summary>
-        public static readonly GameObjectType Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), ArchetypeComponentIDs);
+        /// <summary>The component IDs for this archetype.</summary>
+        public static FastImmutableArray<ComponentId> ArchetypeComponentIDs => GetSlot().ComponentIDs;
 
-        /// <summary>
-        ///     Creates the new or get existing archetypes using the specified scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <returns>The archetypes</returns>
+        /// <summary>The archetype's <c>GameObjectType</c> ID.</summary>
+        public static GameObjectType Id => GetSlot().Id;
+
+        /// <summary>Creates the new or get existing archetypes using the specified scene.</summary>
         internal static WorldArchetypeTableItem CreateNewOrGetExistingArchetypes(Scene scene)
         {
             ushort index = Id.RawIndex;
@@ -1187,7 +1053,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1213,7 +1078,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 runners[i] = Component<T5>.CreateInstance(1);
                 tmpStorages[i] = Component<T5>.CreateInstance(0);
 
-
                 Archetype archetype = new Archetype(Id, runners, false);
                 Archetype tempCreateArchetype = new Archetype(Id, tmpStorages, true);
 
@@ -1224,30 +1088,30 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     }
 
     /// <summary>
-    ///     The archetype class
+    ///     The archetype class. No static fields — data is held in non-generic registries.
     /// </summary>
     internal static class Archetype<T1, T2, T3, T4, T5, T6>
     {
-        /// <summary>
-        ///     The to immutable array
-        /// </summary>
-        public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
-            new FastImmutableArray<ComponentId>(new[]
+        private static ArchetypeSlot GetSlot() => ArchetypeHexRegistry.GetOrCreate<T1, T2, T3, T4, T5, T6>(static () =>
+        {
+            var componentIDs = new FastImmutableArray<ComponentId>(new[]
             {
                 Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id, Component<T6>.Id
             });
+            return new ArchetypeSlot
+            {
+                ComponentIDs = componentIDs,
+                Id = Archetype.GetArchetypeId(componentIDs.AsSpan(), componentIDs)
+            };
+        });
 
-        //ArchetypeTypes init first, then ID
-        /// <summary>
-        ///     The empty
-        /// </summary>
-        public static readonly GameObjectType Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), ArchetypeComponentIDs);
+        /// <summary>The component IDs for this archetype.</summary>
+        public static FastImmutableArray<ComponentId> ArchetypeComponentIDs => GetSlot().ComponentIDs;
 
-        /// <summary>
-        ///     Creates the new or get existing archetypes using the specified scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <returns>The archetypes</returns>
+        /// <summary>The archetype's <c>GameObjectType</c> ID.</summary>
+        public static GameObjectType Id => GetSlot().Id;
+
+        /// <summary>Creates the new or get existing archetypes using the specified scene.</summary>
         internal static WorldArchetypeTableItem CreateNewOrGetExistingArchetypes(Scene scene)
         {
             ushort index = Id.RawIndex;
@@ -1259,7 +1123,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1288,7 +1151,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 runners[i] = Component<T6>.CreateInstance(1);
                 tmpStorages[i] = Component<T6>.CreateInstance(0);
 
-
                 Archetype archetype = new Archetype(Id, runners, false);
                 Archetype tempCreateArchetype = new Archetype(Id, tmpStorages, true);
 
@@ -1299,31 +1161,31 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     }
 
     /// <summary>
-    ///     The archetype class
+    ///     The archetype class. No static fields — data is held in non-generic registries.
     /// </summary>
     internal static class Archetype<T1, T2, T3, T4, T5, T6, T7>
     {
-        /// <summary>
-        ///     The to immutable array
-        /// </summary>
-        public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
-            new FastImmutableArray<ComponentId>(new[]
+        private static ArchetypeSlot GetSlot() => ArchetypeSeptRegistry.GetOrCreate<T1, T2, T3, T4, T5, T6, T7>(static () =>
+        {
+            var componentIDs = new FastImmutableArray<ComponentId>(new[]
             {
                 Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id, Component<T6>.Id,
                 Component<T7>.Id
             });
+            return new ArchetypeSlot
+            {
+                ComponentIDs = componentIDs,
+                Id = Archetype.GetArchetypeId(componentIDs.AsSpan(), componentIDs)
+            };
+        });
 
-        //ArchetypeTypes init first, then ID
-        /// <summary>
-        ///     The empty
-        /// </summary>
-        public static readonly GameObjectType Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), ArchetypeComponentIDs);
+        /// <summary>The component IDs for this archetype.</summary>
+        public static FastImmutableArray<ComponentId> ArchetypeComponentIDs => GetSlot().ComponentIDs;
 
-        /// <summary>
-        ///     Creates the new or get existing archetypes using the specified scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <returns>The archetypes</returns>
+        /// <summary>The archetype's <c>GameObjectType</c> ID.</summary>
+        public static GameObjectType Id => GetSlot().Id;
+
+        /// <summary>Creates the new or get existing archetypes using the specified scene.</summary>
         internal static WorldArchetypeTableItem CreateNewOrGetExistingArchetypes(Scene scene)
         {
             ushort index = Id.RawIndex;
@@ -1335,7 +1197,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1367,7 +1228,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 runners[i] = Component<T7>.CreateInstance(1);
                 tmpStorages[i] = Component<T7>.CreateInstance(0);
 
-
                 Archetype archetype = new Archetype(Id, runners, false);
                 Archetype tempCreateArchetype = new Archetype(Id, tmpStorages, true);
 
@@ -1378,31 +1238,31 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     }
 
     /// <summary>
-    ///     The archetype class
+    ///     The archetype class. No static fields — data is held in non-generic registries.
     /// </summary>
     internal static class Archetype<T1, T2, T3, T4, T5, T6, T7, T8>
     {
-        /// <summary>
-        ///     The to immutable array
-        /// </summary>
-        public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
-            new FastImmutableArray<ComponentId>(new[]
+        private static ArchetypeSlot GetSlot() => ArchetypeOctRegistry.GetOrCreate<T1, T2, T3, T4, T5, T6, T7, T8>(static () =>
+        {
+            var componentIDs = new FastImmutableArray<ComponentId>(new[]
             {
                 Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id, Component<T6>.Id,
                 Component<T7>.Id, Component<T8>.Id
             });
+            return new ArchetypeSlot
+            {
+                ComponentIDs = componentIDs,
+                Id = Archetype.GetArchetypeId(componentIDs.AsSpan(), componentIDs)
+            };
+        });
 
-        //ArchetypeTypes init first, then ID
-        /// <summary>
-        ///     The empty
-        /// </summary>
-        public static readonly GameObjectType Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), ArchetypeComponentIDs);
+        /// <summary>The component IDs for this archetype.</summary>
+        public static FastImmutableArray<ComponentId> ArchetypeComponentIDs => GetSlot().ComponentIDs;
 
-        /// <summary>
-        ///     Creates the new or get existing archetypes using the specified scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <returns>The archetypes</returns>
+        /// <summary>The archetype's <c>GameObjectType</c> ID.</summary>
+        public static GameObjectType Id => GetSlot().Id;
+
+        /// <summary>Creates the new or get existing archetypes using the specified scene.</summary>
         internal static WorldArchetypeTableItem CreateNewOrGetExistingArchetypes(Scene scene)
         {
             ushort index = Id.RawIndex;
@@ -1414,7 +1274,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             return archetypes;
 
-            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
             static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
@@ -1448,7 +1307,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 i = Unsafe.Add(ref map[0], Component<T8>.Id.RawIndex) & GlobalWorldTables.IndexBits;
                 runners[i] = Component<T8>.CreateInstance(1);
                 tmpStorages[i] = Component<T8>.CreateInstance(0);
-
 
                 Archetype archetype = new Archetype(Id, runners, false);
                 Archetype tempCreateArchetype = new Archetype(Id, tmpStorages, true);

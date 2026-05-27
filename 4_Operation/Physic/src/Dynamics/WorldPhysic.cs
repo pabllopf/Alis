@@ -65,10 +65,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         private readonly BroadPhaseRayCastCallback _rayCastCallbackCache;
 
-        /// <summary>
-        ///     The test point delegate cache
-        /// </summary>
-        private readonly QueryReportFixtureDelegate _testPointDelegateCache;
+
 
         /// <summary>
         ///     The stopwatch
@@ -133,15 +130,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         private bool _stepComplete = true;
 
-        /// <summary>
-        ///     The test point fixture tmp
-        /// </summary>
-        private Fixture _testPointFixtureTmp;
 
-        /// <summary>
-        ///     The test point point tmp
-        /// </summary>
-        private Vector2F _testPointPointTmp;
 
         /// <summary>
         ///     Fires whenever a body has been added
@@ -207,7 +196,6 @@ namespace Alis.Core.Physic.Dynamics
 
             _queryCallbackCache = QueryAabbCallback;
             _rayCastCallbackCache = RayCastCallback;
-            _testPointDelegateCache = TestPointCallback;
 
 
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
@@ -1359,31 +1347,22 @@ namespace Alis.Core.Physic.Dynamics
             aabb.LowerBound = point - d;
             aabb.UpperBound = point + d;
 
-            _testPointPointTmp = point;
-            _testPointFixtureTmp = null;
+            Fixture result = null;
 
             // Query the world for overlapping shapes.
-            QueryAabb(_testPointDelegateCache, ref aabb);
-
-            return _testPointFixtureTmp;
-        }
-
-        /// <summary>
-        ///     Describes whether this instance test point callback
-        /// </summary>
-        /// <param name="fixture">The fixture</param>
-        /// <returns>The bool</returns>
-        private bool TestPointCallback(Fixture fixture)
-        {
-            bool inside = fixture.TestPoint(ref _testPointPointTmp);
-            if (inside)
+            QueryAabb(fixture =>
             {
-                _testPointFixtureTmp = fixture;
-                return false;
-            }
+                bool inside = fixture.TestPoint(ref point);
+                if (inside)
+                {
+                    result = fixture;
+                    return false;
+                }
 
-            // Continue the query.
-            return true;
+                return true;
+            }, ref aabb);
+
+            return result;
         }
 
         /// Shift the world origin. Useful for large worlds.

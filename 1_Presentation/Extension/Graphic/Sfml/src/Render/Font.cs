@@ -47,9 +47,9 @@ namespace Alis.Extension.Graphic.Sfml.Render
     public class Font : ObjectBase
     {
         /// <summary>
-        ///     The my stream
+        ///     Roots the StreamAdaptor to prevent GC collection while referenced by unmanaged SFML code.
         /// </summary>
-        private readonly StreamAdaptor myStream;
+        private readonly List<object> _pinnedObjects = new(1);
 
         /// <summary>
         ///     The texture
@@ -77,7 +77,8 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <exception cref="LoadingFailedException" />
         public Font(Stream stream) : base(IntPtr.Zero)
         {
-            myStream = new StreamAdaptor(stream);
+            StreamAdaptor myStream = new StreamAdaptor(stream);
+            _pinnedObjects.Add(myStream);
             CPointer = sfFont_createFromStream(myStream.InputStreamPtr);
 
             if (CPointer == IntPtr.Zero)
@@ -210,6 +211,11 @@ namespace Alis.Extension.Graphic.Sfml.Render
             if (!disposing)
             {
                 Context.Global.SetActive(false);
+            }
+
+            if (disposing)
+            {
+                _pinnedObjects.Clear();
             }
         }
 

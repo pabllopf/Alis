@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel.Archetypes;
@@ -38,65 +40,134 @@ using Alis.Core.Ecs.Updating.Runners;
 namespace Alis.Core.Ecs.Kernel
 {
     /// <summary>
-    ///     Used to quickly get the component ID of a given type
+    ///     Non-generic container for per-type component data, used to avoid static fields in generic types (S2743).
+    /// </summary>
+    internal sealed class ComponentSlot
+    {
+        /// <summary>
+        ///     The component id.
+        /// </summary>
+        internal ComponentId Id;
+
+        /// <summary>
+        ///     Boxed <c>IComponentStorageBaseFactory{T}</c> instance.
+        /// </summary>
+        internal object RunnerInstance;
+
+        /// <summary>
+        ///     The per-type <c>IdTable</c> (base class reference).
+        /// </summary>
+        internal IdTable GeneralComponentStorage;
+
+        /// <summary>
+        ///     The init delegate (boxed to <c>Delegate</c>).
+        /// </summary>
+        internal Delegate Initer;
+
+        /// <summary>
+        ///     The destroy delegate (boxed to <c>Delegate</c>).
+        /// </summary>
+        internal Delegate Destroyer;
+
+        /// <summary>
+        ///     Whether the component type implements <c>IOnDestroy</c>.
+        /// </summary>
+        internal bool IsDestroyable;
+    }
+
+    /// <summary>
+    ///     Non-generic registry mapping <c>RuntimeTypeHandle</c> to <c>ComponentSlot</c>.
+    ///     Avoids static fields in generic types (S2743) while preserving O(1) per-type lookup.
+    /// </summary>
+    internal static class ComponentRegistry
+    {
+        /// <summary>
+        ///     The underlying concurrent store.
+        /// </summary>
+        private static readonly ConcurrentDictionary<RuntimeTypeHandle, ComponentSlot> Store = new();
+
+        /// <summary>
+        ///     Gets the slot for <typeparamref name="T"/>, creating it if necessary.
+        /// </summary>
+        internal static ComponentSlot GetOrCreate<T>() =>
+            Store.GetOrAdd(typeof(T).TypeHandle, _ => Component<T>.CreateSlot());
+
+        /// <summary>
+        ///     Clears all cached slots. Intended for test cleanup.
+        /// </summary>
+        internal static void Clear() => Store.Clear();
+    }
+
+    /// <summary>
+    ///     Used to quickly get the component ID of a given type.
+    ///     No static fields — data is held in the non-generic <see cref="ComponentRegistry"/>.
     /// </summary>
     /// <typeparam name="T">The type of component</typeparam>
     public static class Component<T>
     {
         /// <summary>
-        ///     The id
+        ///     Gets the component id for <typeparamref name="T"/>.
         /// </summary>
-        public static readonly ComponentId Id;
+        public static ComponentId Id => ComponentRegistry.GetOrCreate<T>().Id;
 
         /// <summary>
-        ///     The runner instance
+        ///     Gets the general component storage for <typeparamref name="T"/>.
         /// </summary>
-        private static readonly IComponentStorageBaseFactory<T> RunnerInstance;
+        internal static IdTable<T> GeneralComponentStorage =>
+            (IdTable<T>)ComponentRegistry.GetOrCreate<T>().GeneralComponentStorage!;
 
         /// <summary>
-        ///     The general component storage
+        ///     Gets the init delegate for <typeparamref name="T"/>.
         /// </summary>
-        internal static readonly IdTable<T> GeneralComponentStorage;
+        internal static ComponentDelegates<T>.InitDelegate Initer =>
+            (ComponentDelegates<T>.InitDelegate)ComponentRegistry.GetOrCreate<T>().Initer!;
 
         /// <summary>
-        ///     The initer
+        ///     Gets the destroy delegate for <typeparamref name="T"/>.
         /// </summary>
-        internal static readonly ComponentDelegates<T>.InitDelegate Initer;
+        internal static ComponentDelegates<T>.DestroyDelegate Destroyer =>
+            (ComponentDelegates<T>.DestroyDelegate)ComponentRegistry.GetOrCreate<T>().Destroyer!;
 
         /// <summary>
-        ///     The destroyer
+        ///     Gets whether <typeparamref name="T"/> implements <c>IOnDestroy</c>.
         /// </summary>
-        internal static readonly ComponentDelegates<T>.DestroyDelegate Destroyer;
+        internal static bool IsDestroyable => ComponentRegistry.GetOrCreate<T>().IsDestroyable;
 
         /// <summary>
-        ///     The
+        ///     Creates the slot for <typeparamref name="T"/>. Called once per type by <see cref="ComponentRegistry"/>.
         /// </summary>
-        internal static readonly bool IsDestroyable = typeof(T).IsValueType
-            ? default(T) is IOnDestroy
-            : typeof(IOnDestroy).IsAssignableFrom(typeof(T));
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Component{T}" /> class
-        /// </summary>
-        /// <exception cref="InvalidOperationException">
-        ///     {typeof(T).FullName} is not initalized correctly. (Is the source generator
-        ///     working?)
-        /// </exception>
-        static Component()
+        internal static ComponentSlot CreateSlot()
         {
-            (Id, GeneralComponentStorage, Initer, Destroyer) = Component.GetExistingOrSetupNewComponent<T>();
+            (ComponentId id, IdTable<T> stack, ComponentDelegates<T>.InitDelegate initer,
+                ComponentDelegates<T>.DestroyDelegate destroyer) = Component.GetExistingOrSetupNewComponent<T>();
 
+            object runnerInstance;
             if (GenerationServices.UserGeneratedTypeMap.TryGetValue(typeof(T),
                     out (IComponentStorageBaseFactory Factory, int UpdateOrder) type)
                 && type.Factory is IComponentStorageBaseFactory<T> casted)
             {
-                RunnerInstance = casted;
-                return;
+                runnerInstance = casted;
+            }
+            else
+            {
+                NoneUpdateRunnerFactory<T> fac = new NoneUpdateRunnerFactory<T>();
+                Component.NoneComponentRunnerTable[typeof(T)] = fac;
+                runnerInstance = fac;
             }
 
-            NoneUpdateRunnerFactory<T> fac = new NoneUpdateRunnerFactory<T>();
-            Component.NoneComponentRunnerTable[typeof(T)] = fac;
-            RunnerInstance = fac;
+            bool isDestroyable = typeof(T).IsValueType
+                ? default(T) is IOnDestroy
+                : typeof(IOnDestroy).IsAssignableFrom(typeof(T));
+
+            return new ComponentSlot
+            {
+                Id = id,
+                RunnerInstance = runnerInstance,
+                GeneralComponentStorage = stack,
+                Initer = initer,
+                Destroyer = destroyer,
+                IsDestroyable = isDestroyable
+            };
         }
 
         /// <summary>
@@ -104,8 +175,10 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         public static ComponentHandle StoreComponent(in T component)
         {
-            GeneralComponentStorage.Create(out int index) = component;
-            return new ComponentHandle(index, Id);
+            ComponentSlot slot = ComponentRegistry.GetOrCreate<T>();
+            IdTable<T> storage = (IdTable<T>)slot.GeneralComponentStorage!;
+            storage.Create(out int index) = component;
+            return new ComponentHandle(index, slot.Id);
         }
 
         /// <summary>
@@ -113,7 +186,11 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         /// <param name="cap">The cap</param>
         /// <returns>A component storage of t</returns>
-        internal static ComponentStorage<T> CreateInstance(int cap) => RunnerInstance.CreateStronglyTyped(cap);
+        internal static ComponentStorage<T> CreateInstance(int cap)
+        {
+            object runner = ComponentRegistry.GetOrCreate<T>().RunnerInstance;
+            return Unsafe.As<IComponentStorageBaseFactory<T>>(runner).CreateStronglyTyped(cap);
+        }
     }
 
     /// <summary>
@@ -335,6 +412,7 @@ namespace Alis.Core.Ecs.Kernel
                 _existingComponentIDs.Clear();
                 _nextComponentId = -1;
                 _componentTable = FastestStack<ComponentData>.Create(16);
+                ComponentRegistry.Clear();
                 GetComponentId(typeof(void));
             }
         }

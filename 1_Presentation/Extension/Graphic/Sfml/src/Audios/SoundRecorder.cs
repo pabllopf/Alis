@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -41,19 +42,9 @@ namespace Alis.Extension.Graphic.Sfml.Audios
     public abstract class SoundRecorder : ObjectBase
     {
         /// <summary>
-        ///     The my process callback
+        ///     Roots callback delegates to prevent GC collection while registered with unmanaged SFML code.
         /// </summary>
-        private readonly ProcessCallback myProcessCallback;
-
-        /// <summary>
-        ///     The my start callback
-        /// </summary>
-        private readonly StartCallback myStartCallback;
-
-        /// <summary>
-        ///     The my stop callback
-        /// </summary>
-        private readonly StopCallback myStopCallback;
+        private readonly List<Delegate> _pinnedCallbacks = new(3);
 
         /// <summary>
         ///     Default constructor
@@ -61,9 +52,12 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         protected SoundRecorder() :
             base(IntPtr.Zero)
         {
-            myStartCallback = OnStart;
-            myProcessCallback = ProcessSamples;
-            myStopCallback = OnStop;
+            StartCallback myStartCallback = OnStart;
+            _pinnedCallbacks.Add(myStartCallback);
+            ProcessCallback myProcessCallback = ProcessSamples;
+            _pinnedCallbacks.Add(myProcessCallback);
+            StopCallback myStopCallback = OnStop;
+            _pinnedCallbacks.Add(myStopCallback);
 
             CPointer = sfSoundRecorder_create(myStartCallback, myProcessCallback, myStopCallback, IntPtr.Zero);
         }
@@ -249,6 +243,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         public override void Destroy(bool disposing)
         {
             sfSoundRecorder_destroy(CPointer);
+            _pinnedCallbacks.Clear();
         }
 
 

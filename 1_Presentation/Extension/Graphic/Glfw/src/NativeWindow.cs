@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
@@ -52,69 +53,14 @@ namespace Alis.Extension.Graphic.Glfw
         protected readonly Window Window;
 
         /// <summary>
-        ///     The char mods callback
+        ///     Roots GLFW callback delegates to prevent GC collection while they are registered with unmanaged code.
         /// </summary>
-        private CharModsCallback charModsCallback;
-
-        /// <summary>
-        ///     The window refresh callback
-        /// </summary>
-        private WindowCallback closeCallback, windowRefreshCallback;
-
-        /// <summary>
-        ///     The cursor enter callback
-        /// </summary>
-        private MouseEnterCallback cursorEnterCallback;
-
-        /// <summary>
-        ///     The scroll callback
-        /// </summary>
-        private MouseCallback cursorPositionCallback, scrollCallback;
-
-        /// <summary>
-        ///     The drop callback
-        /// </summary>
-        private FileDropCallback dropCallback;
-
-        /// <summary>
-        ///     The key callback
-        /// </summary>
-        private KeyCallback keyCallback;
-
-        /// <summary>
-        ///     The mouse button callback
-        /// </summary>
-        private MouseButtonCallback mouseButtonCallback;
+        private readonly List<Delegate> _pinnedCallbacks = new(16);
 
         /// <summary>
         ///     The title
         /// </summary>
         private string title;
-
-        /// <summary>
-        ///     The window content scale callback
-        /// </summary>
-        private WindowContentsScaleCallback windowContentScaleCallback;
-
-        /// <summary>
-        ///     The window focus callback
-        /// </summary>
-        private FocusCallback windowFocusCallback;
-
-        /// <summary>
-        ///     The window maximize callback
-        /// </summary>
-        private WindowMaximizedCallback windowMaximizeCallback;
-
-        /// <summary>
-        ///     The window position callback
-        /// </summary>
-        private PositionCallback windowPositionCallback;
-
-        /// <summary>
-        ///     The framebuffer size callback
-        /// </summary>
-        private SizeCallback windowSizeCallback, framebufferSizeCallback;
 
 
         /// <summary>
@@ -1087,6 +1033,7 @@ namespace Alis.Extension.Graphic.Glfw
         {
             base.Dispose(disposing);
             Disposed?.Invoke(this, EventArgs.Empty);
+            _pinnedCallbacks.Clear();
         }
 
         /// <summary>
@@ -1111,21 +1058,36 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         private void BindCallbacks()
         {
-            windowPositionCallback = (_, x, y) => OnPositionChanged(x, y);
-            windowSizeCallback = (_, w, h) => OnSizeChanged(w, h);
-            windowFocusCallback = (_, focusing) => OnFocusChanged(focusing);
-            closeCallback = _ => OnClosing();
-            dropCallback = (_, count, arrayPtr) => OnFileDrop(count, arrayPtr);
-            cursorPositionCallback = (_, x, y) => OnMouseMove(x, y);
-            cursorEnterCallback = (_, entering) => OnMouseEnter(entering);
-            mouseButtonCallback = (_, button, state, mod) => OnMouseButton(button, state, mod);
-            scrollCallback = (_, x, y) => OnMouseScroll(x, y);
-            charModsCallback = (_, cp, mods) => OnCharacterInput(cp, mods);
-            framebufferSizeCallback = (_, w, h) => OnFramebufferSizeChanged(w, h);
-            windowRefreshCallback = _ => Refreshed?.Invoke(this, EventArgs.Empty);
-            keyCallback = (_, key, code, state, mods) => OnKey(key, code, state, mods);
-            windowMaximizeCallback = (_, maximized) => OnMaximizeChanged(maximized);
-            windowContentScaleCallback = (_, x, y) => OnContentScaleChanged(x, y);
+            PositionCallback windowPositionCallback = (_, x, y) => OnPositionChanged(x, y);
+            _pinnedCallbacks.Add(windowPositionCallback);
+            SizeCallback windowSizeCallback = (_, w, h) => OnSizeChanged(w, h);
+            _pinnedCallbacks.Add(windowSizeCallback);
+            FocusCallback windowFocusCallback = (_, focusing) => OnFocusChanged(focusing);
+            _pinnedCallbacks.Add(windowFocusCallback);
+            WindowCallback closeCallback = _ => OnClosing();
+            _pinnedCallbacks.Add(closeCallback);
+            FileDropCallback dropCallback = (_, count, arrayPtr) => OnFileDrop(count, arrayPtr);
+            _pinnedCallbacks.Add(dropCallback);
+            MouseCallback cursorPositionCallback = (_, x, y) => OnMouseMove(x, y);
+            _pinnedCallbacks.Add(cursorPositionCallback);
+            MouseEnterCallback cursorEnterCallback = (_, entering) => OnMouseEnter(entering);
+            _pinnedCallbacks.Add(cursorEnterCallback);
+            MouseButtonCallback mouseButtonCallback = (_, button, state, mod) => OnMouseButton(button, state, mod);
+            _pinnedCallbacks.Add(mouseButtonCallback);
+            MouseCallback scrollCallback = (_, x, y) => OnMouseScroll(x, y);
+            _pinnedCallbacks.Add(scrollCallback);
+            CharModsCallback charModsCallback = (_, cp, mods) => OnCharacterInput(cp, mods);
+            _pinnedCallbacks.Add(charModsCallback);
+            SizeCallback framebufferSizeCallback = (_, w, h) => OnFramebufferSizeChanged(w, h);
+            _pinnedCallbacks.Add(framebufferSizeCallback);
+            WindowCallback windowRefreshCallback = _ => Refreshed?.Invoke(this, EventArgs.Empty);
+            _pinnedCallbacks.Add(windowRefreshCallback);
+            KeyCallback keyCallback = (_, key, code, state, mods) => OnKey(key, code, state, mods);
+            _pinnedCallbacks.Add(keyCallback);
+            WindowMaximizedCallback windowMaximizeCallback = (_, maximized) => OnMaximizeChanged(maximized);
+            _pinnedCallbacks.Add(windowMaximizeCallback);
+            WindowContentsScaleCallback windowContentScaleCallback = (_, x, y) => OnContentScaleChanged(x, y);
+            _pinnedCallbacks.Add(windowContentScaleCallback);
 
             GlfwNative.SetWindowPositionCallback(Window, windowPositionCallback);
             GlfwNative.SetWindowSizeCallback(Window, windowSizeCallback);

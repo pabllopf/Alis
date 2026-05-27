@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Ui
         /// <summary>
         ///     The vertices handle
         /// </summary>
-        private GCHandle verticesHandle;
+
 
         /// <summary>
         ///     Gets or sets the value of the depth
@@ -244,9 +244,9 @@ namespace Alis.Core.Graphic.Ui
             Gl.GlBindVertexArray(Vao);
 
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-            verticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
-            Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
-            verticesHandle.Free();
+            GCHandle localVerticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), localVerticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            localVerticesHandle.Free();
 
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
             GCHandle localIndicesHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
@@ -402,9 +402,9 @@ namespace Alis.Core.Graphic.Ui
                     -1, -1, 0.0f, u0, v0
                 };
                 Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-                verticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
-                verticesHandle.Free();
+                GCHandle localVerticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), localVerticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+                localVerticesHandle.Free();
                 Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
 
                 posX += screenCharWidth + xSpacing; // avanzar según el tamaño lógico en pantalla

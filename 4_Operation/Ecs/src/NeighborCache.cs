@@ -28,8 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
@@ -69,6 +71,42 @@ namespace Alis.Core.Ecs
             => add
                 ? MemoryHelpers.Concat(components, id)
                 : MemoryHelpers.Remove(components, id);
+    }
+
+    /// <summary>
+    ///     Non-generic registry for <c>ArchetypeNeighborCache</c> values keyed by closed generic type handle.
+    ///     Avoids S2743 (static fields in generic types) by storing all caches in a flat array.
+    /// </summary>
+    internal static class NeighborCacheRegistry
+    {
+        private static readonly ConcurrentDictionary<RuntimeTypeHandle, int> Indices = new();
+        private static ArchetypeNeighborCache[] Caches = new ArchetypeNeighborCache[256];
+        private static int Count;
+        private static readonly object ResizeLock = new();
+
+        /// <summary>
+        ///     Gets or creates the <c>ArchetypeNeighborCache</c> for the given closed generic type handle.
+        ///     Returns a <see cref="ref"/> to the cache, allowing mutation via <c>TraverseThroughCacheOrCreate</c>.
+        /// </summary>
+        internal static ref ArchetypeNeighborCache GetOrCreate(RuntimeTypeHandle handle)
+        {
+            int index = Indices.GetOrAdd(handle, _ =>
+            {
+                int idx = Interlocked.Increment(ref Count) - 1;
+                if (idx >= Caches.Length)
+                {
+                    lock (ResizeLock)
+                    {
+                        if (idx >= Caches.Length)
+                        {
+                            Array.Resize(ref Caches, Caches.Length * 2);
+                        }
+                    }
+                }
+                return idx;
+            });
+            return ref Caches[index];
+        }
     }
 
     // ---------------------------------------------------------------------------
@@ -170,177 +208,129 @@ namespace Alis.Core.Ecs
     /// <summary>Add-edge neighbor cache for arity 1.</summary>
     internal static class NeighborCacheAdd<T1>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheAdd<T1>).TypeHandle);
     }
 
     /// <summary>Remove-edge neighbor cache for arity 1.</summary>
     internal static class NeighborCacheRemove<T1>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheRemove<T1>).TypeHandle);
     }
 
     /// <summary>Add-edge neighbor cache for arity 2.</summary>
     internal static class NeighborCacheAdd<T1, T2>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheAdd<T1, T2>).TypeHandle);
     }
 
     /// <summary>Remove-edge neighbor cache for arity 2.</summary>
     internal static class NeighborCacheRemove<T1, T2>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheRemove<T1, T2>).TypeHandle);
     }
 
     /// <summary>Add-edge neighbor cache for arity 3.</summary>
     internal static class NeighborCacheAdd<T1, T2, T3>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheAdd<T1, T2, T3>).TypeHandle);
     }
 
     /// <summary>Remove-edge neighbor cache for arity 3.</summary>
     internal static class NeighborCacheRemove<T1, T2, T3>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheRemove<T1, T2, T3>).TypeHandle);
     }
 
     /// <summary>Add-edge neighbor cache for arity 4.</summary>
     internal static class NeighborCacheAdd<T1, T2, T3, T4>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheAdd<T1, T2, T3, T4>).TypeHandle);
     }
 
     /// <summary>Remove-edge neighbor cache for arity 4.</summary>
     internal static class NeighborCacheRemove<T1, T2, T3, T4>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheRemove<T1, T2, T3, T4>).TypeHandle);
     }
 
     /// <summary>Add-edge neighbor cache for arity 5.</summary>
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheAdd<T1, T2, T3, T4, T5>).TypeHandle);
     }
 
     /// <summary>Remove-edge neighbor cache for arity 5.</summary>
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheRemove<T1, T2, T3, T4, T5>).TypeHandle);
     }
 
     /// <summary>Add-edge neighbor cache for arity 6.</summary>
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheAdd<T1, T2, T3, T4, T5, T6>).TypeHandle);
     }
 
     /// <summary>Remove-edge neighbor cache for arity 6.</summary>
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheRemove<T1, T2, T3, T4, T5, T6>).TypeHandle);
     }
 
     /// <summary>Add-edge neighbor cache for arity 7.</summary>
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7>).TypeHandle);
     }
 
     /// <summary>Remove-edge neighbor cache for arity 7.</summary>
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7>).TypeHandle);
     }
 
     /// <summary>Add-edge neighbor cache for arity 8.</summary>
     internal static class NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7, T8>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7, T8>).TypeHandle);
     }
 
     /// <summary>Remove-edge neighbor cache for arity 8.</summary>
     internal static class NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7, T8>
     {
-        /// <summary>
-        ///     The lookup
-        /// </summary>
-#pragma warning disable CA1000
-        internal static readonly ArchetypeNeighborCache Lookup;
-#pragma warning restore CA1000
+        /// <summary>Returns a mutable reference to the cache for this closed generic type.</summary>
+        internal static ref ArchetypeNeighborCache GetRef() =>
+            ref NeighborCacheRegistry.GetOrCreate(typeof(NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7, T8>).TypeHandle);
     }
 
     // ---------------------------------------------------------------------------

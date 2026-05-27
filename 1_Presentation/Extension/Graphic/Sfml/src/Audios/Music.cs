@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -44,9 +45,9 @@ namespace Alis.Extension.Graphic.Sfml.Audios
     public class Music : ObjectBase
     {
         /// <summary>
-        ///     The my stream
+        ///     Roots the StreamAdaptor to prevent GC collection while referenced by unmanaged SFML code.
         /// </summary>
-        private readonly StreamAdaptor myStream;
+        private readonly List<object> _pinnedObjects = new(1);
 
         /// <summary>
         ///     Constructs a music from an audio file
@@ -69,7 +70,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         public Music(Stream stream) :
             base(IntPtr.Zero)
         {
-            myStream = new StreamAdaptor(stream);
+            StreamAdaptor myStream = new StreamAdaptor(stream);
+            _pinnedObjects.Add(myStream);
             CPointer = sfMusic_createFromStream(myStream.InputStreamPtr);
 
             if (CPointer == IntPtr.Zero)
@@ -338,6 +340,10 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         public override void Destroy(bool disposing)
         {
             sfMusic_destroy(CPointer);
+            if (disposing)
+            {
+                _pinnedObjects.Clear();
+            }
         }
 
 
