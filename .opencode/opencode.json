@@ -6,30 +6,147 @@
 
   "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
 
-  "provider": {
-    "omlx": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "oMLX",
-      "options": {
-        "baseURL": "http://127.0.0.1:8000/v1",
-        "apiKey": "1234"
+ "provider": {
+  "omlx": {
+    "npm": "@ai-sdk/openai-compatible",
+    "name": "oMLX",
+    "options": {
+      "baseURL": "http://127.0.0.1:8000/v1",
+      "apiKey": "1234"
+    },
+    "models": {
+      "Qwen3.6-35B-A3B-UD-MLX-4bit": {
+        "name": "Qwen3.6-35B-A3B-UD-MLX-4bit",
+        "modalities": {
+          "input": ["text", "image"],
+          "output": ["text"]
+        },
+        "attachment": true,
+        "limit": {
+          "context": 131072,
+          "output": 8192
+        }
       },
-      "models": {
-        "Qwen3.6-35B-A3B-UD-MLX-4bit": {
-          "name": "Qwen3.6-35B-A3B-UD-MLX-4bit",
-          "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
-          },
-          "attachment": true,
-          "limit": {
-            "context": 131072,
-            "output": 8192
-          }
+
+      "Devstral-Small-2-24B-Instruct-2512-4bit": {
+        "name": "Devstral-Small-2-24B-Instruct-2512-4bit",
+        "modalities": {
+          "input": ["text"],
+          "output": ["text"]
+        },
+        "attachment": false,
+        "limit": {
+          "context": 32768,
+          "output": 8192
+        }
+      },
+
+      "Llama-3.1-8B-Instruct-4bit": {
+        "name": "Llama-3.1-8B-Instruct-4bit",
+        "modalities": {
+          "input": ["text"],
+          "output": ["text"]
+        },
+        "attachment": false,
+        "limit": {
+          "context": 131072,
+          "output": 8192
+        }
+      },
+
+      "Meta-Llama-3-8B-Instruct-4bit": {
+        "name": "Meta-Llama-3-8B-Instruct-4bit",
+        "modalities": {
+          "input": ["text"],
+          "output": ["text"]
+        },
+        "attachment": false,
+        "limit": {
+          "context": 8192,
+          "output": 4096
+        }
+      },
+
+      "Qwen2.5-Coder-7B-Instruct-MLX-4bit": {
+        "name": "Qwen2.5-Coder-7B-Instruct-MLX-4bit",
+        "modalities": {
+          "input": ["text"],
+          "output": ["text"]
+        },
+        "attachment": false,
+        "limit": {
+          "context": 32768,
+          "output": 8192
+        }
+      },
+
+      "Qwen3-Coder-30B-A3B-Instruct-MLX-4bit": {
+        "name": "Qwen3-Coder-30B-A3B-Instruct-MLX-4bit",
+        "modalities": {
+          "input": ["text"],
+          "output": ["text"]
+        },
+        "attachment": false,
+        "limit": {
+          "context": 131072,
+          "output": 8192
+        }
+      },
+
+      "Qwen3-Coder-Next-8bit": {
+        "name": "Qwen3-Coder-Next-8bit",
+        "modalities": {
+          "input": ["text"],
+          "output": ["text"]
+        },
+        "attachment": false,
+        "limit": {
+          "context": 262144,
+          "output": 16384
+        }
+      },
+
+      "Qwen3.6-35B-A3B-nvfp4": {
+        "name": "Qwen3.6-35B-A3B-nvfp4",
+        "modalities": {
+          "input": ["text", "image"],
+          "output": ["text"]
+        },
+        "attachment": true,
+        "limit": {
+          "context": 131072,
+          "output": 8192
+        }
+      },
+
+      "gemma-4-e2b-it-4bit": {
+        "name": "gemma-4-e2b-it-4bit",
+        "modalities": {
+          "input": ["text"],
+          "output": ["text"]
+        },
+        "attachment": false,
+        "limit": {
+          "context": 32768,
+          "output": 8192
+        }
+      },
+
+      "gpt-oss-20b-MXFP4-Q8": {
+        "name": "gpt-oss-20b-MXFP4-Q8",
+        "modalities": {
+          "input": ["text"],
+          "output": ["text"]
+        },
+        "attachment": false,
+        "limit": {
+          "context": 131072,
+          "output": 8192
         }
       }
     }
-  },
+  }
+},
 
   "compaction": {
     "auto": true,
