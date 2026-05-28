@@ -27,13 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if (NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+
+#if (NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+// ReSharper disable once CheckNamespace
 namespace System.Runtime.InteropServices
 {
     /// <summary>
     ///     Provides methods for accessing and manipulating memory in a low-level manner.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
     public static class MemoryMarshal
     {
         /// <summary>
