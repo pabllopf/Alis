@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
@@ -36,7 +36,7 @@ namespace System.Runtime.CompilerServices
 {
     /// <summary>
     /// </summary>
-    
+    [ExcludeFromCodeCoverage]
     public static class RuntimeHelpers
     {
         /// <summary>
