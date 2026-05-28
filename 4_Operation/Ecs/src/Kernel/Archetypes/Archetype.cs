@@ -39,6 +39,9 @@ using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Updating;
 using HashCode = Alis.Core.Aspect.Math.HashCode;
 
+// S3963: Static constructor required for ECS null archetype initialization
+[assembly: SuppressMessage("SonarAnalyzer.CSharp", "S3963", Justification = "Static constructor required for ECS null archetype lazy initialization")]
+
 namespace Alis.Core.Ecs.Kernel.Archetypes
 {
     /// <summary>
