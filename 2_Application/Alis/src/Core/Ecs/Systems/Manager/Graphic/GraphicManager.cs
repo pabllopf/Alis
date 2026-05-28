@@ -372,7 +372,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
         }
 
-        private void RenderSprites(GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects, RefTuple<Camera> camera, float pixelsPerMeter)
+        private static void RenderSprites(GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects, RefTuple<Camera> camera, float pixelsPerMeter)
         {
             foreach (GameObject spriteGameobject in spriteGameObjects)
             {
