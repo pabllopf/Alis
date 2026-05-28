@@ -48,15 +48,16 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// </summary>
         public const int Mod16Mask = 0xF;
 
+        //we accsess by archetype first because i think we access different comps from the same archetype more
         /// <summary>
         ///     The component tag location table
         /// </summary>
-        internal static byte[ /*archetype id*/][ /*component id*/] ComponentTagLocationTable = [];
+        public static byte[ /*archetype id*/][ /*component id*/] ComponentTagLocationTable = [];
 
         /// <summary>
         ///     The scene
         /// </summary>
-        internal static readonly FastestTable<Scene> Worlds = new FastestTable<Scene>(2);
+        internal static FastestTable<Scene> Worlds = new FastestTable<Scene>(2);
 
         /// <summary>
         ///     The buffer change lock
@@ -78,6 +79,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             int tableSize = ComponentTagTableBufferSize;
             Span<Scene> worlds = Worlds.AsSpan();
 
+            //when adding a component, we only care about changing the length
             if (tableSize == idValue)
             {
                 ComponentTagTableBufferSize = Math.Max(tableSize << 1, 1);
@@ -86,6 +88,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                     ref byte[] componentsForArchetype = ref table[i];
                     Array.Resize(ref componentsForArchetype, ComponentTagTableBufferSize);
 
+                    //componentsForArchetype.AsSpan(tableSize).Fill(DefaultNoTag);
+
+                    //update scene archetypes
                     foreach (Scene world in worlds)
                     {
                         if (world is not null)

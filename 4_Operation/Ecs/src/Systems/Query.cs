@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel.Archetypes;
@@ -91,7 +90,15 @@ namespace Alis.Core.Ecs.Systems
         /// <returns>The bool</returns>
         private bool ArchetypeSatisfiesQuery(ArchetypeID id)
         {
-            return _rules.All(rule => rule.RuleApplies(id));
+            foreach (Rule rule in _rules)
+            {
+                if (!rule.RuleApplies(id))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         /// <summary>

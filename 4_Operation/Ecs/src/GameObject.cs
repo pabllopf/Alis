@@ -104,6 +104,8 @@ namespace Alis.Core.Ecs
             EntityID = entityId;
         }
 
+        //WARNING
+        //DO NOT CHANGE STRUCT LAYOUT
         /// <summary>
         ///     Gets or sets the unique identifier for this entity within its scene.
         /// </summary>
@@ -178,6 +180,7 @@ namespace Alis.Core.Ecs
         internal ref GameObjectLocation AssertIsAlive(out Scene scene)
         {
             scene = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
+            //hardware trap
             ref GameObjectLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(EntityID);
             if (lookup.Version != EntityVersion)
             {
@@ -215,20 +218,25 @@ namespace Alis.Core.Ecs
         /// </example>
         public Ref<T> TryGetCore<T>(out bool exists)
         {
-            if (InternalIsAlive(out Scene _, out GameObjectLocation entityLocation))
+            if (!InternalIsAlive(out Scene _, out GameObjectLocation entityLocation))
             {
-                int compIndex = GlobalWorldTables.ComponentIndex(entityLocation.ArchetypeId, Component<T>.Id);
-
-                if (compIndex != 0)
-                {
-                    exists = true;
-                    ComponentStorage<T> storage = Unsafe.As<ComponentStorage<T>>(
-                        Unsafe.Add(ref entityLocation.Archetype.Components[0], compIndex));
-
-                    return new Ref<T>(storage, entityLocation.Index);
-                }
+                goto doesntExist;
             }
 
+            int compIndex = GlobalWorldTables.ComponentIndex(entityLocation.ArchetypeId, Component<T>.Id);
+
+            if (compIndex == 0)
+            {
+                goto doesntExist;
+            }
+
+            exists = true;
+            ComponentStorage<T> storage = Unsafe.As<ComponentStorage<T>>(
+                Unsafe.Add(ref entityLocation.Archetype.Components[0], compIndex));
+
+            return new Ref<T>(storage, entityLocation.Index);
+
+            doesntExist:
             exists = false;
             return default(Ref<T>);
         }
@@ -314,7 +322,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T>>(
                 world,
-                ref NeighborCacheAdd<T>.GetRef(),
+                ref NeighborCacheAdd<T>.Lookup,
                 ref thisLookup,
                 true);
 
@@ -361,7 +369,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T>>(
                 world,
-                ref NeighborCacheRemove<T>.GetRef(),
+                ref NeighborCacheRemove<T>.Lookup,
                 ref thisLookup,
                 false);
 
@@ -466,7 +474,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2>>(
                 world,
-                ref NeighborCacheAdd<T1, T2>.GetRef(),
+                ref NeighborCacheAdd<T1, T2>.Lookup,
                 ref thisLookup,
                 true);
 
@@ -522,12 +530,13 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2>>(
                 world,
-                ref NeighborCacheRemove<T1, T2>.GetRef(),
+                ref NeighborCacheRemove<T1, T2>.Lookup,
                 ref thisLookup,
                 false);
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[2];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
+            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
 
@@ -590,7 +599,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3>.GetRef(),
+                ref NeighborCacheAdd<T1, T2, T3>.Lookup,
                 ref thisLookup,
                 true);
 
@@ -651,12 +660,13 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3>.GetRef(),
+                ref NeighborCacheRemove<T1, T2, T3>.Lookup,
                 ref thisLookup,
                 false);
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[3];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
+            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
         /// <summary>
@@ -724,7 +734,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3, T4>.GetRef(),
+                ref NeighborCacheAdd<T1, T2, T3, T4>.Lookup,
                 ref thisLookup,
                 true);
 
@@ -790,12 +800,13 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3, T4>.GetRef(),
+                ref NeighborCacheRemove<T1, T2, T3, T4>.Lookup,
                 ref thisLookup,
                 false);
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[4];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
+            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
 
@@ -872,7 +883,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3, T4, T5>.GetRef(),
+                ref NeighborCacheAdd<T1, T2, T3, T4, T5>.Lookup,
                 ref thisLookup,
                 true);
 
@@ -942,12 +953,13 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3, T4, T5>.GetRef(),
+                ref NeighborCacheRemove<T1, T2, T3, T4, T5>.Lookup,
                 ref thisLookup,
                 false);
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[5];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
+            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
 
@@ -1032,7 +1044,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3, T4, T5, T6>.GetRef(),
+                ref NeighborCacheAdd<T1, T2, T3, T4, T5, T6>.Lookup,
                 ref thisLookup,
                 true);
 
@@ -1107,12 +1119,13 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3, T4, T5, T6>.GetRef(),
+                ref NeighborCacheRemove<T1, T2, T3, T4, T5, T6>.Lookup,
                 ref thisLookup,
                 false);
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[6];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
+            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
 
@@ -1204,7 +1217,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7>.GetRef(),
+                ref NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7>.Lookup,
                 ref thisLookup,
                 true);
 
@@ -1284,12 +1297,13 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7>.GetRef(),
+                ref NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7>.Lookup,
                 ref thisLookup,
                 false);
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[7];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
+            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
         /// <summary>
@@ -1389,7 +1403,7 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8>>(
                 world,
-                ref NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7, T8>.GetRef(),
+                ref NeighborCacheAdd<T1, T2, T3, T4, T5, T6, T7, T8>.Lookup,
                 ref thisLookup,
                 true);
 
@@ -1474,12 +1488,13 @@ namespace Alis.Core.Ecs
 
             Archetype to = TraverseThroughCacheOrCreate<NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8>>(
                 world,
-                ref NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7, T8>.GetRef(),
+                ref NeighborCacheRemove<T1, T2, T3, T4, T5, T6, T7, T8>.Lookup,
                 ref thisLookup,
                 false);
 
             Span<ComponentHandle> runners = stackalloc ComponentHandle[8];
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
+            //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
 
 
@@ -1647,12 +1662,17 @@ namespace Alis.Core.Ecs
         {
             //Total: 4x lookup
 
+            //1x
             ref GameObjectLocation lookup = ref AssertIsAlive(out Scene _);
 
+            //1x
+            //other lookup is optimized into indirect pointer addressing
             Archetype archetype = lookup.Archetype;
 
             int compIndex = archetype.GetComponentIndex<T>();
 
+            //2x
+            //hardware trap
             ComponentStorage<T> storage =
                 Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref archetype.Components[0], compIndex));
             return ref storage[lookup.Index];
@@ -1708,6 +1728,7 @@ namespace Alis.Core.Ecs
         {
             ref GameObjectLocation lookup = ref AssertIsAlive(out _);
 
+            //2x
             int compIndex = lookup.Archetype.GetComponentIndex(id);
 
             if (compIndex == 0)
@@ -1715,6 +1736,7 @@ namespace Alis.Core.Ecs
                 throw new ComponentNotFoundException(id.Type);
             }
 
+            //3x
             lookup.Archetype.Components[compIndex].SetAt(obj, lookup.Index);
         }
 
@@ -2016,6 +2038,7 @@ namespace Alis.Core.Ecs
         public void Delete()
         {
             Scene scene = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
+            //hardware trap
             ref GameObjectLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(EntityID);
 
             if (lookup.Version != EntityVersion)

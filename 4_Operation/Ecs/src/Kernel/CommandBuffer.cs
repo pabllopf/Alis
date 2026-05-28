@@ -73,6 +73,7 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         internal bool IsInactive;
 
+        //-1 indicates normal state
         /// <summary>
         ///     The last create gameObject components buffer index
         /// </summary>
@@ -237,26 +238,14 @@ namespace Alis.Core.Ecs.Kernel
         /// <returns>The has items</returns>
         internal bool PlaybackInternal()
         {
-            bool hasItems = (DeleteEntityBuffer.Count > 0) || (CreateEntityBuffer.Count > 0) ||
-                            (RemoveComponentBuffer.Count > 0) || (AddComponentBuffer.Count > 0);
+            bool hasItems = (DeleteEntityBuffer.Count > 0) | (CreateEntityBuffer.Count > 0) |
+                            (RemoveComponentBuffer.Count > 0) | (AddComponentBuffer.Count > 0);
 
             if (!hasItems)
             {
                 return hasItems;
             }
 
-            ProcessCreateEntities();
-            ProcessDeleteEntities();
-            ProcessRemoveComponents();
-            ProcessAddComponents();
-
-            IsInactive = true;
-
-            return hasItems;
-        }
-
-        private void ProcessCreateEntities()
-        {
             while (CreateEntityBuffer.TryPop(out CreateCommand createCommand))
             {
                 GameObject concrete = createCommand.Entity.ToEntity(Scene);
@@ -281,22 +270,17 @@ namespace Alis.Core.Ecs.Kernel
 
                 Scene.InvokeEntityCreated(concrete);
             }
-        }
 
-        private void ProcessDeleteEntities()
-        {
             while (DeleteEntityBuffer.TryPop(out GameObjectIdOnly item))
             {
+                //double check that its alive
                 ref GameObjectLocation record = ref Scene.EntityTable[item.ID];
                 if (record.Version == item.Version)
                 {
                     Scene.DeleteEntity(item.ToEntity(Scene), ref record);
                 }
             }
-        }
 
-        private void ProcessRemoveComponents()
-        {
             while (RemoveComponentBuffer.TryPop(out DeleteComponent item))
             {
                 int id = item.Entity.ID;
@@ -306,10 +290,7 @@ namespace Alis.Core.Ecs.Kernel
                     Scene.RemoveComponent(item.Entity.ToEntity(Scene), ref record, item.ComponentId);
                 }
             }
-        }
 
-        private void ProcessAddComponents()
-        {
             while (AddComponentBuffer.TryPop(out AddComponent command))
             {
                 int id = command.Entity.ID;
@@ -335,6 +316,10 @@ namespace Alis.Core.Ecs.Kernel
                     command.ComponentHandle.Dispose();
                 }
             }
+
+            IsInactive = true;
+
+            return hasItems;
         }
 
         /// <summary>
@@ -402,6 +387,7 @@ namespace Alis.Core.Ecs.Kernel
         public CommandBuffer WithBoxed(ComponentId componentId, object component)
         {
             AssertCreatingEntity();
+            //we don't check IsAssignableTo - reason is perf - InvalidCastException anyways
             int index = Component.ComponentTable[componentId.RawIndex].Storage.CreateBoxed(component);
             CreateEntityComponents.Push(new ComponentHandle(index, componentId));
             return this;
@@ -430,6 +416,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <returns>The created gameObject ID</returns>
         public GameObject End()
         {
+            //CreateCommand points to a segment of the _createEntityComponents stack
             GameObject e = Scene.CreateEntityWithoutEvent();
             CreateEntityBuffer.Push(new CreateCommand(
                 e.EntityIdOnly,
