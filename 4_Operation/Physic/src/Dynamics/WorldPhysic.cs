@@ -1751,7 +1751,7 @@ namespace Alis.Core.Physic.Dynamics
             _gravity = physicGravity;
         }
 
-        private void ConnectJointNonFixed(Joint joint)
+        private static void ConnectJointNonFixed(Joint joint)
         {
             if (joint.IsFixedType())
             {
