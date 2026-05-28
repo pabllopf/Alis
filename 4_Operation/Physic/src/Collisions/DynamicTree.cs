@@ -517,7 +517,21 @@ namespace Alis.Core.Physic.Collisions
             }
 
             // Find the best sibling for this node
-            Aabb leafAabb = _nodes[leaf].Aabb;
+            int sibling = FindBestSibling(_nodes[leaf].Aabb);
+
+            // Create a new parent and attach the leaf
+            AttachNewParent(leaf, sibling, _nodes[leaf].Aabb);
+
+            // Walk back up the tree fixing heights and AABBs
+            UpdateUpward(leaf);
+
+        }
+
+        /// <summary>
+        ///     Finds the best sibling for the leaf by traversing the tree.
+        /// </summary>
+        private int FindBestSibling(Aabb leafAabb)
+        {
             int index = _root;
             while (!_nodes[index].IsLeaf())
             {
@@ -537,38 +551,10 @@ namespace Alis.Core.Physic.Collisions
                 float inheritanceCost = 2.0f * (combinedArea - area);
 
                 // Cost of descending into child1
-                float cost1;
-                if (_nodes[child1].IsLeaf())
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref _nodes[child1].Aabb);
-                    cost1 = aabb.Perimeter + inheritanceCost;
-                }
-                else
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref _nodes[child1].Aabb);
-                    float oldArea = _nodes[child1].Aabb.Perimeter;
-                    float newArea = aabb.Perimeter;
-                    cost1 = newArea - oldArea + inheritanceCost;
-                }
+                float cost1 = ComputeChildCost(child1, leafAabb, inheritanceCost);
 
                 // Cost of descending into child2
-                float cost2;
-                if (_nodes[child2].IsLeaf())
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref _nodes[child2].Aabb);
-                    cost2 = aabb.Perimeter + inheritanceCost;
-                }
-                else
-                {
-                    Aabb aabb = new Aabb();
-                    aabb.Combine(ref leafAabb, ref _nodes[child2].Aabb);
-                    float oldArea = _nodes[child2].Aabb.Perimeter;
-                    float newArea = aabb.Perimeter;
-                    cost2 = newArea - oldArea + inheritanceCost;
-                }
+                float cost2 = ComputeChildCost(child2, leafAabb, inheritanceCost);
 
                 // Descend according to the minimum cost.
                 if ((cost < cost1) && (cost1 < cost2))
@@ -587,8 +573,32 @@ namespace Alis.Core.Physic.Collisions
                 }
             }
 
-            int sibling = index;
+            return index;
+        }
 
+        /// <summary>
+        ///     Computes the cost of descending into a child node.
+        /// </summary>
+        private float ComputeChildCost(int childIndex, Aabb leafAabb, float inheritanceCost)
+        {
+            Aabb combined = new Aabb();
+            combined.Combine(ref leafAabb, ref _nodes[childIndex].Aabb);
+            
+            if (_nodes[childIndex].IsLeaf())
+            {
+                return combined.Perimeter + inheritanceCost;
+            }
+
+            float oldArea = _nodes[childIndex].Aabb.Perimeter;
+            float newArea = combined.Perimeter;
+            return newArea - oldArea + inheritanceCost;
+        }
+
+        /// <summary>
+        ///     Creates a new parent node and attaches the leaf to the sibling.
+        /// </summary>
+        private void AttachNewParent(int leaf, int sibling, Aabb leafAabb)
+        {
             // Create a new parent.
             int oldParent = _nodes[sibling].Parent;
             int newParent = AllocateNode();
@@ -623,9 +633,14 @@ namespace Alis.Core.Physic.Collisions
                 _nodes[leaf].Parent = newParent;
                 _root = newParent;
             }
+        }
 
-            // Walk back up the tree fixing heights and AABBs
-            index = _nodes[leaf].Parent;
+        /// <summary>
+        ///     Walks back up the tree fixing heights and AABBs.
+        /// </summary>
+        private void UpdateUpward(int leaf)
+        {
+            int index = _nodes[leaf].Parent;
             while (index != NullNode)
             {
                 index = Balance(index);
@@ -638,7 +653,6 @@ namespace Alis.Core.Physic.Collisions
 
                 index = _nodes[index].Parent;
             }
-
         }
 
         /// <summary>
