@@ -357,7 +357,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
         }
 
-        private void RenderBoxColliders(GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects, PhysicSetting physicSettings, RefTuple<Camera> camera, float pixelsPerMeter)
+        private static void RenderBoxColliders(GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects, PhysicSetting physicSettings, RefTuple<Camera> camera, float pixelsPerMeter)
         {
             foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
             {
