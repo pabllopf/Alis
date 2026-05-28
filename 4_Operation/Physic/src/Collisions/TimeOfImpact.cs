@@ -147,7 +147,7 @@ namespace Alis.Core.Physic.Collisions
 
                 SeparationFunction.Set(ref cache, ref input.ProxyA, ref sweepA, ref input.ProxyB, ref sweepB, t1);
 
-                bool done = TryPushBackIterations(ref input, ref sweepA, ref sweepB, tMax, target, tolerance, ref t1, ref output);
+                bool done = TryPushBackIterations(tMax, target, tolerance, ref t1, ref output);
                 if (done)
                 {
                     break;
@@ -193,7 +193,7 @@ namespace Alis.Core.Physic.Collisions
             return false;
         }
 
-        private static bool TryPushBackIterations(ref ToiInput input, ref Sweep sweepA, ref Sweep sweepB, float tMax, float target, float tolerance, ref float t1, ref ToiOutput output)
+        private static bool TryPushBackIterations(float tMax, float target, float tolerance, ref float t1, ref ToiOutput output)
         {
             bool done = false;
             float t2 = tMax;
