@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Collections;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {
@@ -275,6 +276,8 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// </summary>
     /// <seealso cref="IComponentStorageBaseFactory" />
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
+    // S2436: 9 generic parameters required for ECS update runner factory with up to 8 arguments
+    [SuppressMessage("SonarAnalyzer.CSharp", "S2436", Justification = "9 generic parameters required for ECS update runner factory with up to 8 arguments")]
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> :
         IComponentStorageBaseFactory,
         IComponentStorageBaseFactory<TComp>
