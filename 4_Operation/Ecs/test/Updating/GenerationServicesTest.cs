@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Test.Updating
             Type componentType = typeof(GenerationServicesProbeComponent);
             GenerationServices.RegisterType(componentType, new UpdateRunnerFactory<UpdateComponent>());
 
-            Exception ex = Assert.Throws<ArgumentException>(() =>
+            ArgumentException ex = Assert.Throws<ArgumentException>(() =>
                 GenerationServices.RegisterType(componentType, new UpdateRunnerFactory<Update2Component, Position, Velocity>()));
 
             Assert.Contains(componentType.FullName, ex.Message);
