@@ -1,13 +1,6 @@
 {
-  "project": "pabllopf-official_alis",
-  "phase": "issues_fixed",
-  "snapshotCreatedAt": "2026-05-25T09:13:38.484339+00:00",
-  "totalIssues": 372,
-  "openIssues": 6,
-  "fixedIssues": 366,
-  "failedIssues": 0,
-  "inProgressIssues": 0,
-  "lastUpdated": "2026-05-27T12:00:00+00:00",
-  "activeWorkers": [],
-  "executionLog": "/Volumes/d/repositorios/Alis/.opencode/cache/sonar_execution_log.jsonl"
+  "workerId": "worker-MacBook-Pro-de-Pablo-001",
+  "currentIssue": "AZ5vyq6eSgPjiLhZ5n1f",
+  "startedAt": "2026-05-28T18:59:36.351141+00:00",
+  "status": "running"
 }
