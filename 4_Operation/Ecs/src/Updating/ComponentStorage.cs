@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Updating
     /// </summary>
     /// <seealso cref="ComponentStorageBase" />
     public abstract class ComponentStorage<TComponent>(int length)
-        : ComponentStorageBase(length == 0 ? [] : new TComponent[length])
+        : ComponentStorageBase(length == 0 ? [] : new TComponent[length]), IDisposable
     {
         /// <summary>
         ///     Gets the value of the component id
