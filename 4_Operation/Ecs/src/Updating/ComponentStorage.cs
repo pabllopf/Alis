@@ -229,6 +229,7 @@ namespace Alis.Core.Ecs.Updating
         /// </summary>
         public void Dispose()
         {
+            GC.SuppressFinalize(this);
         }
     }
 }
