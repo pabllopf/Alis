@@ -46,7 +46,9 @@ namespace Alis.Extension.Graphic.Glfw
     /// </summary>
     /// <seealso cref="Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid" />
     // S3897: Static fields are inherited from SafeHandle base class; ISerializable is not applicable for native handles
+    // S4035: No unsafe methods in this class; base SafeHandle inherits from unsafe contexts
     [SuppressMessage("SonarAnalyzer.CSharp", "S3897", Justification = "Inherited static fields from SafeHandle base class")]
+    [SuppressMessage("SonarAnalyzer.CSharp", "S4035", Justification = "No unsafe methods in this class")]
     public class NativeWindow : SafeHandleZeroOrMinusOneIsInvalid
     {
         /// <summary>
