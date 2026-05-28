@@ -246,6 +246,21 @@ namespace Alis.Core.Ecs.Kernel
                 return hasItems;
             }
 
+            ProcessCreateEntities();
+            ProcessDeleteEntities();
+            ProcessRemoveComponents();
+            ProcessAddComponents();
+
+            IsInactive = true;
+
+            return hasItems;
+        }
+
+        /// <summary>
+        ///     Processes all pending create entity commands.
+        /// </summary>
+        private void ProcessCreateEntities()
+        {
             while (CreateEntityBuffer.TryPop(out CreateCommand createCommand))
             {
                 GameObject concrete = createCommand.Entity.ToEntity(Scene);
@@ -270,7 +285,13 @@ namespace Alis.Core.Ecs.Kernel
 
                 Scene.InvokeEntityCreated(concrete);
             }
+        }
 
+        /// <summary>
+        ///     Processes all pending delete entity commands.
+        /// </summary>
+        private void ProcessDeleteEntities()
+        {
             while (DeleteEntityBuffer.TryPop(out GameObjectIdOnly item))
             {
                 //double check that its alive
@@ -280,7 +301,13 @@ namespace Alis.Core.Ecs.Kernel
                     Scene.DeleteEntity(item.ToEntity(Scene), ref record);
                 }
             }
+        }
 
+        /// <summary>
+        ///     Processes all pending remove component commands.
+        /// </summary>
+        private void ProcessRemoveComponents()
+        {
             while (RemoveComponentBuffer.TryPop(out DeleteComponent item))
             {
                 int id = item.Entity.ID;
@@ -290,7 +317,13 @@ namespace Alis.Core.Ecs.Kernel
                     Scene.RemoveComponent(item.Entity.ToEntity(Scene), ref record, item.ComponentId);
                 }
             }
+        }
 
+        /// <summary>
+        ///     Processes all pending add component commands.
+        /// </summary>
+        private void ProcessAddComponents()
+        {
             while (AddComponentBuffer.TryPop(out AddComponent command))
             {
                 int id = command.Entity.ID;
@@ -316,10 +349,6 @@ namespace Alis.Core.Ecs.Kernel
                     command.ComponentHandle.Dispose();
                 }
             }
-
-            IsInactive = true;
-
-            return hasItems;
         }
 
         /// <summary>
