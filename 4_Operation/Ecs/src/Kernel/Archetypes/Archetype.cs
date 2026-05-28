@@ -406,6 +406,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The gameObject id only</returns>
+        // S3776: Goto-based unrolled switch for performance-critical ECS entity deletion
+        [SuppressMessage("Design", "S3776:Cognitive complexity", Justification = "Goto-based unrolled switch required for high-performance ECS entity deletion")]
         internal GameObjectIdOnly DeleteEntity(int index)
         {
             NextComponentIndex--;
