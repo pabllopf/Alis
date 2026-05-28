@@ -315,31 +315,33 @@ namespace Alis.Core.Physic.Dynamics
 
             for (int i = 0; i < step.VelocityIterations; ++i)
             {
-                for (int j = 0; j < JointCount; ++j)
-                {
-                    Joint joint = _joints[j];
-
-                    if (!joint.Enabled)
-                    {
-                        continue;
-                    }
-
-                    if (SettingEnv.EnableDiagnostics)
-                    {
-                        _watch.Start();
-                    }
-
-                    joint.SolveVelocityConstraints(ref solverData);
-                    joint.Validate(step.InvDt);
-
-                    if (SettingEnv.EnableDiagnostics)
-                    {
-                        _watch.Stop();
-                    }
-                }
-
+                SolveJointVelocityConstraints(ref solverData);
                 _contactSolver.SolveVelocityConstraints();
             }
+        }
+
+        private void SolveJointVelocityConstraints(ref SolverData solverData)
+        {
+            for (int j = 0; j < JointCount; ++j)
+            {
+                Joint joint = _joints[j];
+                if (!joint.Enabled)
+                    continue;
+
+                SolveEnabledJointVelocity(joint, ref solverData);
+            }
+        }
+
+        private void SolveEnabledJointVelocity(Joint joint, ref SolverData solverData)
+        {
+            if (SettingEnv.EnableDiagnostics)
+                _watch.Start();
+
+            joint.SolveVelocityConstraints(ref solverData);
+            joint.Validate(solverData.Step.InvDt);
+
+            if (SettingEnv.EnableDiagnostics)
+                _watch.Stop();
         }
 
         private void IntegratePositions(float h)
@@ -386,31 +388,7 @@ namespace Alis.Core.Physic.Dynamics
             for (int i = 0; i < step.PositionIterations; ++i)
             {
                 bool contactsOkay = _contactSolver.SolvePositionConstraints();
-
-                bool jointsOkay = true;
-                for (int j = 0; j < JointCount; ++j)
-                {
-                    Joint joint = _joints[j];
-
-                    if (!joint.Enabled)
-                    {
-                        continue;
-                    }
-
-                    if (SettingEnv.EnableDiagnostics)
-                    {
-                        _watch.Start();
-                    }
-
-                    bool jointOkay = joint.SolvePositionConstraints(ref solverData);
-
-                    if (SettingEnv.EnableDiagnostics)
-                    {
-                        _watch.Stop();
-                    }
-
-                    jointsOkay = jointsOkay && jointOkay;
-                }
+                bool jointsOkay = SolveJointPositionConstraints(ref solverData);
 
                 if (contactsOkay && jointsOkay)
                 {
@@ -419,6 +397,34 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             return false;
+        }
+
+        private bool SolveJointPositionConstraints(ref SolverData solverData)
+        {
+            bool jointsOkay = true;
+            for (int j = 0; j < JointCount; ++j)
+            {
+                Joint joint = _joints[j];
+                if (!joint.Enabled)
+                    continue;
+
+                bool jointOkay = SolveEnabledJointPosition(joint, ref solverData);
+                jointsOkay = jointsOkay && jointOkay;
+            }
+            return jointsOkay;
+        }
+
+        private bool SolveEnabledJointPosition(Joint joint, ref SolverData solverData)
+        {
+            if (SettingEnv.EnableDiagnostics)
+                _watch.Start();
+
+            bool result = joint.SolvePositionConstraints(ref solverData);
+
+            if (SettingEnv.EnableDiagnostics)
+                _watch.Stop();
+
+            return result;
         }
 
         private void RecordJointUpdateTime()
