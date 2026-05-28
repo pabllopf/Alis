@@ -371,6 +371,7 @@ namespace Alis.Core.Graphic
             }
             else if (value == 1) // End of bitmap
             {
+                // Intentionally empty: bitmap end requires no action
             }
             else if (value == 2) // Delta
             {
@@ -475,6 +476,7 @@ namespace Alis.Core.Graphic
             }
             else if (value == 1) // End of bitmap
             {
+                // Intentionally empty: bitmap end requires no action
             }
             else if (value == 2) // Delta
             {
