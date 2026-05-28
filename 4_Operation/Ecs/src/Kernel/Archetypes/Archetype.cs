@@ -742,6 +742,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
     /// <summary>
     ///     The archetype class
     /// </summary>
+    // S2743: Static fields required for ECS per-type archetype caching
+    [SuppressMessage("SonarAnalyzer.CSharp", "S2743", Justification = "Static fields required for ECS per-type archetype caching")]
     internal static class Archetype<T>
     {
         /// <summary>
