@@ -36,7 +36,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
     /// <summary>
     ///     The encoder options builder test class
     /// </summary>
-    /// <seealso cref="EncoderOptionsBuilder" />
+    /// <seealso cref="EncoderOptions" />
     public class EncoderOptionsBuilderTest
     {
         /// <summary>

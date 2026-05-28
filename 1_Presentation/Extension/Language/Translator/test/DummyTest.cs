@@ -58,7 +58,7 @@ namespace Alis.Extension.Language.Translator.Test
         [Fact]
         public void TranslationNotFound_Constructor_ShouldBuildExpectedMessage()
         {
-            TranslationNotFound exception = new TranslationNotFound("menu.play");
+            TranslationNotFoundException exception = new TranslationNotFoundException("menu.play");
 
             Assert.Contains("menu.play", exception.Message);
         }

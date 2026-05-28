@@ -33,7 +33,7 @@ using Xunit;
 namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
 {
     /// <summary>
-    ///     Provides unit coverage for <see cref="Operations" /> flag composition.
+    ///     Provides unit coverage for <see cref="Operation" /> flag composition.
     /// </summary>
     public class OperationTest
     {
@@ -43,9 +43,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void Translate_ShouldCombineTranslateAxes()
         {
-            Operations expected = Operations.TranslateX | Operations.TranslateY | Operations.TranslateZ;
+            Operation expected = Operation.TranslateX | Operation.TranslateY | Operation.TranslateZ;
 
-            Assert.Equal(expected, Operations.Translate);
+            Assert.Equal(expected, Operation.Translate);
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void Rotate_ShouldCombineRotateAxes()
         {
-            Operations expected = Operations.RotateX | Operations.RotateY | Operations.RotateZ | Operations.RotateScreen;
+            Operation expected = Operation.RotateX | Operation.RotateY | Operation.RotateZ | Operation.RotateScreen;
 
-            Assert.Equal(expected, Operations.Rotate);
+            Assert.Equal(expected, Operation.Rotate);
         }
 
         /// <summary>
@@ -65,9 +65,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void Scale_ShouldCombineScaleAxes()
         {
-            Operations expected = Operations.ScaleX | Operations.ScaleY | Operations.ScaleZ;
+            Operation expected = Operation.ScaleX | Operation.ScaleY | Operation.ScaleZ;
 
-            Assert.Equal(expected, Operations.Scale);
+            Assert.Equal(expected, Operation.Scale);
         }
     }
 }

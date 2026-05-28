@@ -152,7 +152,7 @@ namespace Alis.Extension.Language.Translator.Test
             TranslationManager translationManager = new TranslationManager();
             translationManager.SetLanguage("English", "en");
 
-            Assert.Throws<TranslationNotFound>(() => translationManager.Translate("nonexistent"));
+            Assert.Throws<TranslationNotFoundException>(() => translationManager.Translate("nonexistent"));
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Alis.Extension.Language.Translator.Test
 
             translationManager.RemoveTranslation("en", "greeting");
 
-            Assert.Throws<TranslationNotFound>(() => translationManager.Translate("greeting"));
+            Assert.Throws<TranslationNotFoundException>(() => translationManager.Translate("greeting"));
         }
 
         /// <summary>
@@ -318,7 +318,7 @@ namespace Alis.Extension.Language.Translator.Test
             {
                 translationManager.Translate("nonexistent");
             }
-            catch (TranslationNotFound)
+            catch (TranslationNotFoundException)
             {
             }
 

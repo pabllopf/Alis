@@ -322,7 +322,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         {
             Vp9Encoder encoder = new Vp9Encoder();
 
-            Assert.IsAssignableFrom<EncoderOptionsBuilder>(encoder);
+            Assert.IsAssignableFrom<EncoderOptions>(encoder);
         }
     }
 }

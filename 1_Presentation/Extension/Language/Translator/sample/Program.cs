@@ -207,7 +207,7 @@ namespace Alis.Extension.Language.Translator.Sample
             {
                 manager.Translate("another_missing_key");
             }
-            catch (TranslationNotFound ex)
+            catch (TranslationNotFoundException ex)
             {
                 Console.WriteLine($"Caught exception: {ex.Message}");
             }
