@@ -28,12 +28,16 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Redifinition;
+
+// S2743: Static fields required for ECS neighbor cache per-type entries
+[assembly: SuppressMessage("SonarAnalyzer.CSharp", "S2743", Justification = "Static fields required for ECS neighbor cache per-type entries")]
 
 namespace Alis.Core.Ecs
 {
