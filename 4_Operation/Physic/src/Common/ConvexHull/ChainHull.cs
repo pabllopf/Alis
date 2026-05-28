@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             int i = maxmin;
             while (--i >= minmax)
             {
-                if (ShouldSkipUpperPoint(pointSet, maxmax, maxmin, minmax, i))
+                if (ShouldSkipUpperPoint(pointSet, maxmax, minmax, i))
                 {
                     continue;
                 }
@@ -182,7 +182,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
             return top;
         }
 
-        private static bool ShouldSkipUpperPoint(Vertices pointSet, int maxmax, int maxmin, int minmax, int i)
+        private static bool ShouldSkipUpperPoint(Vertices pointSet, int maxmax, int minmax, int i)
         {
             return (MathUtils.Area(pointSet[maxmax], pointSet[minmax], pointSet[i]) >= 0) && (i > minmax);
         }
