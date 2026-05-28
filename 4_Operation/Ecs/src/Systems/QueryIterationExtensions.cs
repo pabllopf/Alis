@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Kernel.Archetypes;
@@ -484,6 +485,8 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <param name="query">The query to iterate over.</param>
         /// <param name="action">The struct behavior to execute on every component set.</param>
+        // S2436: 9 generic parameters required for ECS query iteration with up to 8 components
+        [SuppressMessage("SonarAnalyzer.CSharp", "S2436", Justification = "9 generic parameters required for ECS query iteration with up to 8 components")]
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8>
         {
