@@ -45,6 +45,8 @@ namespace Alis.Extension.Graphic.Glfw
     ///     Provides a simplified interface for creating and using a GLFW window with properties, events, etc.
     /// </summary>
     /// <seealso cref="Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid" />
+    // S3897: Static fields are inherited from SafeHandle base class; ISerializable is not applicable for native handles
+    [SuppressMessage("SonarAnalyzer.CSharp", "S3897", Justification = "Inherited static fields from SafeHandle base class")]
     public class NativeWindow : SafeHandleZeroOrMinusOneIsInvalid
     {
         /// <summary>
