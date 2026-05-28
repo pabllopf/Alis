@@ -39,6 +39,14 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
     /// <summary>
+    ///     Initialization data for velocity constraint points
+    /// </summary>
+    internal readonly record struct VelocityConstraintInitData(
+        Vector2F cA, Vector2F cB,
+        float mA, float mB, float iA, float iB,
+        Vector2F tangent,
+        Vector2F vA, float wA, Vector2F vB, float wB);
+    /// <summary>
     ///     The contact solver class
     /// </summary>
     public class ContactSolver : IDisposable
@@ -269,7 +277,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 vc.Normal = normal;
                 Vector2F tangent = MathUtils.Rot270(ref vc.Normal);
 
-                InitializeVelocityConstraintPoints(vc, points, cA, cB, mA, mB, iA, iB, tangent, vA, wA, vB, wB);
+                InitializeVelocityConstraintPoints(vc, points, new VelocityConstraintInitData(cA, cB, mA, mB, iA, iB, tangent, vA, wA, vB, wB));
 
                 if (vc.PointCount == 2)
                 {
@@ -302,8 +310,14 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
-        private static void InitializeVelocityConstraintPoints(ContactVelocityConstraint vc, FixedArray2<Vector2F> points, Vector2F cA, Vector2F cB, float mA, float mB, float iA, float iB, Vector2F tangent, Vector2F vA, float wA, Vector2F vB, float wB)
+        private static void InitializeVelocityConstraintPoints(ContactVelocityConstraint vc, FixedArray2<Vector2F> points, VelocityConstraintInitData data)
         {
+            Vector2F cA = data.cA, cB = data.cB;
+            float mA = data.mA, mB = data.mB, iA = data.iA, iB = data.iB;
+            Vector2F tangent = data.tangent;
+            Vector2F vA = data.vA, vB = data.vB;
+            float wA = data.wA, wB = data.wB;
+
             int pointCount = vc.PointCount;
             for (int j = 0; j < pointCount; ++j)
             {
