@@ -1,6 +1,6 @@
 {
   "workerId": "worker-MacBook-Pro-de-Pablo-001",
-  "currentIssue": "AZ5vyq6eSgPjiLhZ5n1f",
-  "startedAt": "2026-05-28T18:59:36.351141+00:00",
-  "status": "running"
+  "lastFixedIssue": "AZ1dvNg_MbZ4NfML326k",
+  "completedAt": "2026-05-28T20:31:53.265112+00:00",
+  "status": "idle"
 }
