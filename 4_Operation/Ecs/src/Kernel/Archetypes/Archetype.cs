@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Collections;
@@ -53,11 +54,15 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The create
         /// </summary>
+        // S2223: Required for ECS archetype table access from GameObjectType
+        [SuppressMessage("SonarAnalyzer.CSharp", "S2223", Justification = "Internal access required for ECS archetype table lookup")]
         internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
 
         /// <summary>
         ///     The next archetype id
         /// </summary>
+        // S2223: Required for ECS archetype ID generation
+        [SuppressMessage("SonarAnalyzer.CSharp", "S2223", Justification = "Internal access required for ECS archetype ID generation")]
         internal static int NextArchetypeId = -1;
 
         /// <summary>
@@ -757,11 +762,15 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The create
         /// </summary>
+        // S2223: Required for ECS archetype table access from GameObjectType
+        [SuppressMessage("SonarAnalyzer.CSharp", "S2223", Justification = "Internal access required for ECS archetype table lookup")]
         internal static FastestStack<ArchetypeData> ArchetypeTable = FastestStack<ArchetypeData>.Create(16);
 
         /// <summary>
         ///     The next archetype id
         /// </summary>
+        // S2223: Required for ECS archetype ID generation
+        [SuppressMessage("SonarAnalyzer.CSharp", "S2223", Justification = "Internal access required for ECS archetype ID generation")]
         internal static int NextArchetypeId = -1;
 
         /// <summary>
