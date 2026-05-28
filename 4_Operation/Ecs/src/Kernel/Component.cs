@@ -212,8 +212,6 @@ namespace Alis.Core.Ecs.Kernel
                         (ComponentDelegates<T>.DestroyDelegate) ComponentTable[value.RawIndex].Destroyer);
                 }
 
-                //EnsureTypeInit(type);
-
                 int nextIdInt = ++_nextComponentId;
 
                 if (nextIdInt == ushort.MaxValue)
@@ -258,8 +256,6 @@ namespace Alis.Core.Ecs.Kernel
                 {
                     return value;
                 }
-
-                //EnsureTypeInit(t);
 
                 int nextIdInt = ++_nextComponentId;
 
