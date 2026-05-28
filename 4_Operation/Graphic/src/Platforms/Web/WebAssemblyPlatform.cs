@@ -184,63 +184,63 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         private void InitializeEglContext()
         {
-            _eglDisplay = Egl.GetDisplay(IntPtr.Zero);
+            _eglDisplay = EGL.GetDisplay(IntPtr.Zero);
             if (_eglDisplay == IntPtr.Zero)
             {
                 throw new InvalidOperationException("Failed to get EGL display");
             }
 
-            if (!Egl.Initialize(_eglDisplay, out _, out _))
+            if (!EGL.Initialize(_eglDisplay, out _, out _))
             {
                 throw new InvalidOperationException("Failed to initialize EGL");
             }
 
-            if (!Egl.BindApi(Egl.EGL_OPENGL_ES_API))
+            if (!EGL.BindApi(EGL.EGL_OPENGL_ES_API))
             {
                 throw new InvalidOperationException("Failed to bind OpenGL ES API");
             }
 
             int[] configAttributes = new int[]
             {
-                Egl.EGL_RED_SIZE, 8,
-                Egl.EGL_GREEN_SIZE, 8,
-                Egl.EGL_BLUE_SIZE, 8,
-                Egl.EGL_DEPTH_SIZE, 24,
-                Egl.EGL_STENCIL_SIZE, 8,
-                Egl.EGL_SURFACE_TYPE, Egl.EGL_WINDOW_BIT,
-                Egl.EGL_RENDERABLE_TYPE, Egl.EGL_OPENGL_ES3_BIT,
-                Egl.EGL_SAMPLES, 4,
-                Egl.EGL_NONE
+                EGL.EGL_RED_SIZE, 8,
+                EGL.EGL_GREEN_SIZE, 8,
+                EGL.EGL_BLUE_SIZE, 8,
+                EGL.EGL_DEPTH_SIZE, 24,
+                EGL.EGL_STENCIL_SIZE, 8,
+                EGL.EGL_SURFACE_TYPE, EGL.EGL_WINDOW_BIT,
+                EGL.EGL_RENDERABLE_TYPE, EGL.EGL_OPENGL_ES3_BIT,
+                EGL.EGL_SAMPLES, 4,
+                EGL.EGL_NONE
             };
 
             IntPtr config = IntPtr.Zero;
             IntPtr configSize = new IntPtr(1);
             IntPtr numConfig = IntPtr.Zero;
 
-            if (!Egl.ChooseConfig(_eglDisplay, configAttributes, ref config, configSize, ref numConfig))
+            if (!EGL.ChooseConfig(_eglDisplay, configAttributes, ref config, configSize, ref numConfig))
             {
                 throw new InvalidOperationException("Failed to choose EGL config");
             }
 
             int[] contextAttributes = new int[]
             {
-                Egl.EGL_CONTEXT_CLIENT_VERSION, 3,
-                Egl.EGL_NONE
+                EGL.EGL_CONTEXT_CLIENT_VERSION, 3,
+                EGL.EGL_NONE
             };
 
-            _eglContext = Egl.CreateContext(_eglDisplay, config, IntPtr.Zero, contextAttributes);
+            _eglContext = EGL.CreateContext(_eglDisplay, config, IntPtr.Zero, contextAttributes);
             if (_eglContext == IntPtr.Zero)
             {
                 throw new InvalidOperationException("Failed to create EGL context");
             }
 
-            _eglSurface = Egl.CreateWindowSurface(_eglDisplay, config, IntPtr.Zero, IntPtr.Zero);
+            _eglSurface = EGL.CreateWindowSurface(_eglDisplay, config, IntPtr.Zero, IntPtr.Zero);
             if (_eglSurface == IntPtr.Zero)
             {
                 throw new InvalidOperationException("Failed to create EGL window surface");
             }
 
-            if (!Egl.MakeCurrent(_eglDisplay, _eglSurface, _eglSurface, _eglContext))
+            if (!EGL.MakeCurrent(_eglDisplay, _eglSurface, _eglSurface, _eglContext))
             {
                 throw new InvalidOperationException("Failed to make EGL context current");
             }
@@ -621,7 +621,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         {
             if ((_eglDisplay != IntPtr.Zero) && (_eglSurface != IntPtr.Zero) && (_eglContext != IntPtr.Zero))
             {
-                Egl.MakeCurrent(_eglDisplay, _eglSurface, _eglSurface, _eglContext);
+                EGL.MakeCurrent(_eglDisplay, _eglSurface, _eglSurface, _eglContext);
             }
         }
 
@@ -632,7 +632,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         {
             if ((_eglDisplay != IntPtr.Zero) && (_eglSurface != IntPtr.Zero))
             {
-                Egl.SwapBuffers(_eglDisplay, _eglSurface);
+                EGL.SwapBuffers(_eglDisplay, _eglSurface);
             }
         }
 
@@ -667,17 +667,17 @@ namespace Alis.Core.Graphic.Platforms.Web
             {
                 if (_eglContext != IntPtr.Zero)
                 {
-                    Egl.DestroyContext(_eglDisplay, _eglContext);
+                    EGL.DestroyContext(_eglDisplay, _eglContext);
                     _eglContext = IntPtr.Zero;
                 }
 
                 if (_eglSurface != IntPtr.Zero)
                 {
-                    Egl.DestroySurface(_eglDisplay, _eglSurface);
+                    EGL.DestroySurface(_eglDisplay, _eglSurface);
                     _eglSurface = IntPtr.Zero;
                 }
 
-                Egl.Terminate(_eglDisplay);
+                EGL.Terminate(_eglDisplay);
                 _eglDisplay = IntPtr.Zero;
             }
 
@@ -705,7 +705,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// </summary>
         /// <param name="procName">The proc name</param>
         /// <returns>The int ptr</returns>
-        public IntPtr GetProcAddress(string procName) => Egl.GetProcAddress(procName);
+        public IntPtr GetProcAddress(string procName) => EGL.GetProcAddress(procName);
 
         /// <summary>
         /// Tries the get last key pressed using the specified key
