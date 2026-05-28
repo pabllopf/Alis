@@ -37,7 +37,7 @@ namespace Alis.Extension.Language.Dialogue.Core
     /// <summary>
     ///     Executes dialog actions with validation
     /// </summary>
-    public class DialogActionExecutor
+    public static class DialogActionExecutor
     {
         /// <summary>
         ///     Executes a single action if valid

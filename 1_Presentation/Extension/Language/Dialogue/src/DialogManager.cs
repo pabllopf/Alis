@@ -41,11 +41,6 @@ namespace Alis.Extension.Language.Dialogue
     public class DialogManager
     {
         /// <summary>
-        ///     The action executor
-        /// </summary>
-        private readonly DialogActionExecutor _actionExecutor = new DialogActionExecutor();
-
-        /// <summary>
         ///     The event publisher
         /// </summary>
         private readonly DialogEventPublisher _eventPublisher = new DialogEventPublisher();
