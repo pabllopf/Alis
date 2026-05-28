@@ -302,7 +302,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
-        private void InitializeVelocityConstraintPoints(ContactVelocityConstraint vc, FixedArray2<Vector2F> points, Vector2F cA, Vector2F cB, float mA, float mB, float iA, float iB, Vector2F tangent, Vector2F vA, float wA, Vector2F vB, float wB)
+        private static void InitializeVelocityConstraintPoints(ContactVelocityConstraint vc, FixedArray2<Vector2F> points, Vector2F cA, Vector2F cB, float mA, float mB, float iA, float iB, Vector2F tangent, Vector2F vA, float wA, Vector2F vB, float wB)
         {
             int pointCount = vc.PointCount;
             for (int j = 0; j < pointCount; ++j)
