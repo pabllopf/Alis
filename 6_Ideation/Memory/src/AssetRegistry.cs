@@ -279,23 +279,9 @@ namespace Alis.Core.Aspect.Memory
                 }
 
                 string compositeKey = ActiveAssemblyName.ToLowerInvariant() + "|" + normalizedKey;
-                if (_extractedPathCache.TryGetValue(compositeKey, out string cachedPath) && File.Exists(cachedPath))
+                if (TryGetCachedPath(cacheEntry, compositeKey, resourceName, out string cachedPath))
                 {
-                    ZipEntryInfo entryCandidate = FindZipEntryInfo(cacheEntry, resourceName);
-                    if (entryCandidate != null)
-                    {
-                        FileInfo fi = new FileInfo(cachedPath);
-                        if ((fi.Length == entryCandidate.Length) && (File.GetLastWriteTimeUtc(cachedPath) == entryCandidate.LastWriteTimeUtc.UtcDateTime))
-                        {
-                            return cachedPath;
-                        }
-
-                        _extractedPathCache.Remove(compositeKey);
-                    }
-                    else
-                    {
-                        _extractedPathCache.Remove(compositeKey);
-                    }
+                    return cachedPath;
                 }
 
                 entryInfo = FindZipEntryInfo(cacheEntry, resourceName);
@@ -308,19 +294,74 @@ namespace Alis.Core.Aspect.Memory
             string safeName = MakeSafeTempName(ActiveAssemblyName, normalizedKey);
             string tempFilePath = Path.Combine(Path.GetTempPath(), safeName);
 
+            if (TryGetValidatedTempPath(tempFilePath, entryInfo, ActiveAssemblyName, normalizedKey, resourceName, out string validatedPath))
+            {
+                return validatedPath;
+            }
+
+            return ExtractResourceToTemp(cacheEntry, entryInfo, tempFilePath);
+        }
+
+        /// <summary>
+        ///     Attempts to retrieve a valid cached path for the resource.
+        /// </summary>
+        private static bool TryGetCachedPath(ZipCacheEntry cacheEntry, string compositeKey, string resourceName,
+            out string cachedPath)
+        {
+            if (_extractedPathCache.TryGetValue(compositeKey, out string path) && File.Exists(path))
+            {
+                ZipEntryInfo entryCandidate = FindZipEntryInfo(cacheEntry, resourceName);
+                if (entryCandidate != null)
+                {
+                    FileInfo fi = new FileInfo(path);
+                    if ((fi.Length == entryCandidate.Length) && (File.GetLastWriteTimeUtc(path) == entryCandidate.LastWriteTimeUtc.UtcDateTime))
+                    {
+                        cachedPath = path;
+                        return true;
+                    }
+
+                    _extractedPathCache.Remove(compositeKey);
+                }
+                else
+                {
+                    _extractedPathCache.Remove(compositeKey);
+                }
+            }
+
+            cachedPath = string.Empty;
+            return false;
+        }
+
+        /// <summary>
+        ///     Attempts to validate an existing temp file against the entry info.
+        /// </summary>
+        private static bool TryGetValidatedTempPath(string tempFilePath, ZipEntryInfo entryInfo,
+            string assemblyName, string normalizedKey, string resourceName,
+            out string validatedPath)
+        {
             if (File.Exists(tempFilePath))
             {
                 FileInfo fi = new FileInfo(tempFilePath);
                 if ((fi.Length == entryInfo.Length) && (File.GetLastWriteTimeUtc(tempFilePath) == entryInfo.LastWriteTimeUtc.UtcDateTime))
                 {
-                    string compositeKey = ActiveAssemblyName.ToLowerInvariant() + "|" + NormalizeResourceKey(resourceName);
+                    string compositeKey = assemblyName.ToLowerInvariant() + "|" + NormalizeResourceKey(resourceName);
                     _extractedPathCache[compositeKey] = tempFilePath;
-                    return tempFilePath;
+                    validatedPath = tempFilePath;
+                    return true;
                 }
             }
 
-            ArrayPool<byte> pool2 = ArrayPool<byte>.Shared;
-            byte[] buffer2 = pool2.Rent(81920);
+            validatedPath = string.Empty;
+            return false;
+        }
+
+        /// <summary>
+        ///     Extracts a resource from the zip archive to a temporary file.
+        /// </summary>
+        private static string ExtractResourceToTemp(ZipCacheEntry cacheEntry, ZipEntryInfo entryInfo, string tempFilePath)
+        {
+            ArrayPool<byte> pool = ArrayPool<byte>.Shared;
+            byte[] buffer = pool.Rent(81920);
             try
             {
                 using MemoryStream packStream = new MemoryStream(cacheEntry.PackBytes, false);
@@ -328,7 +369,7 @@ namespace Alis.Core.Aspect.Memory
                 ZipArchiveEntry zipEntry = zip.GetEntry(entryInfo.FullName);
                 if (zipEntry == null)
                 {
-                    throw new FileNotFoundException($"Resource '{resourceName}' not found in `assets.pack` (race).");
+                    throw new FileNotFoundException($"Resource '{Path.GetFileName(entryInfo.FullName)}' not found in `assets.pack` (race).");
                 }
 
                 Directory.CreateDirectory(Path.GetDirectoryName(tempFilePath) ?? Path.GetTempPath());
@@ -336,9 +377,9 @@ namespace Alis.Core.Aspect.Memory
                 using (FileStream outFs = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     int read;
-                    while ((read = entryStream.Read(buffer2, 0, buffer2.Length)) > 0)
+                    while ((read = entryStream.Read(buffer, 0, buffer.Length)) > 0)
                     {
-                        outFs.Write(buffer2, 0, read);
+                        outFs.Write(buffer, 0, read);
                     }
                 }
 
@@ -351,14 +392,11 @@ namespace Alis.Core.Aspect.Memory
                     // File metadata setting is non-critical; ignore failures
                 }
 
-                string compositeKey2 = ActiveAssemblyName.ToLowerInvariant() + "|" + NormalizeResourceKey(resourceName);
-                _extractedPathCache[compositeKey2] = tempFilePath;
-
                 return tempFilePath;
             }
             finally
             {
-                pool2.Return(buffer2);
+                pool.Return(buffer);
             }
         }
 
