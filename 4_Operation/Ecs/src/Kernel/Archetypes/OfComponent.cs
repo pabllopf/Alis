@@ -27,11 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
+// S2436: 9 generic parameters required for ECS of-component type combinations
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alis.Core.Ecs.Kernel.Archetypes
 {
     /// <summary>
     ///     The of component class
     /// </summary>
+    // S2436: 9 generic parameters required for ECS of-component type combinations
+    [SuppressMessage("SonarAnalyzer.CSharp", "S2436", Justification = "9 generic parameters required for ECS of-component type combinations")]
     internal static class OfComponent<T1, T2, T3, T4, T5, T6, T7, T8, TC>
     {
         /// <summary>
