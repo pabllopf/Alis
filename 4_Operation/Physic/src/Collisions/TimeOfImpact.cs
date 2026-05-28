@@ -251,45 +251,20 @@ namespace Alis.Core.Physic.Collisions
 
             while (true)
             {
-                float t;
-                if ((rootIterCount & 1) != 0)
-                {
-                    t = a1 + (target - s1) * (a2 - a1) / (s2 - s1);
-                }
-                else
-                {
-                    t = 0.5f * (a1 + a2);
-                }
-
+                float t = ComputeRootStep(rootIterCount, a1, a2, s1, s2, target);
                 ++rootIterCount;
 
-                if (SettingEnv.EnableDiagnostics)
-                {
-                    ++ToiRootIters;
-                }
+                RecordRootIteration(rootIterCount);
 
                 float s = SeparationFunction.Evaluate(indexA, indexB, t);
 
                 if (Math.Abs(s - target) < tolerance)
                 {
-                    if (SettingEnv.EnableDiagnostics)
-                    {
-                        ToiMaxRootIters = Math.Max(ToiMaxRootIters, rootIterCount);
-                    }
-
+                    RecordMaxRootIters(rootIterCount);
                     return t;
                 }
 
-                if (s > target)
-                {
-                    a1 = t;
-                    s1 = s;
-                }
-                else
-                {
-                    a2 = t;
-                    s2 = s;
-                }
+                UpdateBisectionBounds(ref a1, ref s1, ref a2, ref s2, t, s, target);
 
                 if (rootIterCount == 50)
                 {
@@ -297,12 +272,45 @@ namespace Alis.Core.Physic.Collisions
                 }
             }
 
+            RecordMaxRootIters(rootIterCount);
+            return t2;
+        }
+
+        private static float ComputeRootStep(int rootIterCount, float a1, float a2, float s1, float s2, float target)
+        {
+            return (rootIterCount & 1) != 0
+                ? a1 + (target - s1) * (a2 - a1) / (s2 - s1)
+                : 0.5f * (a1 + a2);
+        }
+
+        private static void RecordRootIteration(int rootIterCount)
+        {
+            if (SettingEnv.EnableDiagnostics)
+            {
+                ++ToiRootIters;
+            }
+        }
+
+        private static void RecordMaxRootIters(int rootIterCount)
+        {
             if (SettingEnv.EnableDiagnostics)
             {
                 ToiMaxRootIters = Math.Max(ToiMaxRootIters, rootIterCount);
             }
+        }
 
-            return t2;
+        private static void UpdateBisectionBounds(ref float a1, ref float s1, ref float a2, ref float s2, float t, float s, float target)
+        {
+            if (s > target)
+            {
+                a1 = t;
+                s1 = s;
+            }
+            else
+            {
+                a2 = t;
+                s2 = s;
+            }
         }
     }
 }
