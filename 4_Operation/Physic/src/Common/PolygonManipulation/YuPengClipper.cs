@@ -226,7 +226,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             resultSimplices = new List<Edge>();
 
             ProcessPoly1Edges(poly1Simplicies, poly2Coeff, poly2Simplicies, clipType, resultSimplices);
-            ProcessPoly2Edges(poly1Coeff, poly1Simplicies, poly2Coeff, poly2Simplicies, clipType, resultSimplices);
+            ProcessPoly2Edges(poly1Coeff, poly1Simplicies, poly2Simplicies, clipType, resultSimplices);
         }
 
         private static void ProcessPoly1Edges(List<Edge> poly1Simplicies,
@@ -255,7 +255,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         }
 
         private static void ProcessPoly2Edges(List<float> poly1Coeff, List<Edge> poly1Simplicies,
-            List<float> poly2Coeff, List<Edge> poly2Simplicies,
+            List<Edge> poly2Simplicies,
             PolyClipType clipType, List<Edge> resultSimplices)
         {
             for (int i = 0; i < poly2Simplicies.Count; ++i)
