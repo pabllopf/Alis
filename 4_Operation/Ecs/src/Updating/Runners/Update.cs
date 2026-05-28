@@ -666,6 +666,8 @@ namespace Alis.Core.Ecs.Updating.Runners
     ///     The update class
     /// </summary>
     /// <seealso cref="ComponentStorage{TComp}" />
+    // S2436: 9 generic parameters required for ECS update class with up to 8 arguments
+    [SuppressMessage("SonarAnalyzer.CSharp", "S2436", Justification = "9 generic parameters required for ECS update class with up to 8 arguments")]
     public class Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(int capacity)
         : ComponentStorage<TComp>(capacity)
         where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
