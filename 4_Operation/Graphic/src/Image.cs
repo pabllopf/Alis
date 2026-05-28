@@ -369,10 +369,6 @@ namespace Alis.Core.Graphic
                 x = 0;
                 y++;
             }
-            else if (value == 1) // End of bitmap
-            {
-                // Intentionally empty: bitmap end requires no action
-            }
             else if (value == 2) // Delta
             {
                 byte dx = reader.ReadByte();
@@ -473,10 +469,6 @@ namespace Alis.Core.Graphic
             {
                 x = 0;
                 y++;
-            }
-            else if (value == 1) // End of bitmap
-            {
-                // Intentionally empty: bitmap end requires no action
             }
             else if (value == 2) // Delta
             {
