@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -94,6 +95,8 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The next scene id
         /// </summary>
+        // S2223: Required for Interlocked.Increment usage in Scene constructor
+        [SuppressMessage("SonarAnalyzer.CSharp", "S2223", Justification = "Non-readonly field required for Interlocked.Increment usage")]
         private static int _nextWorldIdCounter = 0;
 
         /// <summary>
