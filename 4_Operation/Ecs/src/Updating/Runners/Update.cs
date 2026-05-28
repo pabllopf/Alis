@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Kernel;
@@ -333,6 +334,8 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <param name="arg8">The arg</param>
         /// <param name="length">The length</param>
         /// <param name="gameObject">The game object</param>
+        // S2436: 9 generic parameters required for ECS update loop with up to 8 arguments
+        [SuppressMessage("SonarAnalyzer.CSharp", "S2436", Justification = "9 generic parameters required for ECS update loop with up to 8 arguments")]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static void Run<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(
             ref GameObjectIdOnly entityIds,
