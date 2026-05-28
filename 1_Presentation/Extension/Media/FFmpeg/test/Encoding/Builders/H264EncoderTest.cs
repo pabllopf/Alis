@@ -385,7 +385,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         {
             H264Encoder encoder = new H264Encoder();
 
-            Assert.IsAssignableFrom<EncoderOptions>(encoder);
+            Assert.IsAssignableFrom<H264Encoder>(encoder);
         }
     }
 }

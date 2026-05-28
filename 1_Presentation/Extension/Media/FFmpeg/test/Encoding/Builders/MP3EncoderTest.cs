@@ -237,7 +237,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         {
             Mp3Encoder encoder = new Mp3Encoder();
 
-            Assert.IsAssignableFrom<EncoderOptions>(encoder);
+            Assert.IsAssignableFrom<Mp3Encoder>(encoder);
         }
 
         /// <summary>

@@ -282,7 +282,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         {
             OpusEncoder encoder = new OpusEncoder();
 
-            Assert.IsAssignableFrom<EncoderOptions>(encoder);
+            Assert.IsAssignableFrom<OpusEncoder>(encoder);
         }
 
         /// <summary>

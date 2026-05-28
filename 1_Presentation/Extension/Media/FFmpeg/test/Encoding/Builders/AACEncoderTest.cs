@@ -220,7 +220,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         {
             AacEncoder encoder = new AacEncoder();
 
-            Assert.IsAssignableFrom<EncoderOptions>(encoder);
+            Assert.IsAssignableFrom<AacEncoder>(encoder);
         }
 
         /// <summary>

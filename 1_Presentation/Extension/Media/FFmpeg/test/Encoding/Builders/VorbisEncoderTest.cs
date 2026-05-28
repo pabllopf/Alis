@@ -220,7 +220,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             VorbisEncoder encoder = new VorbisEncoder();
 
             // Assert
-            Assert.IsAssignableFrom<EncoderOptions>(encoder);
+            Assert.IsAssignableFrom<VorbisEncoder>(encoder);
         }
     }
 }
