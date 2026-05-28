@@ -373,12 +373,8 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
             while (!closed && (simplicies.Count > 0))
             {
-                if (TryMatchEdgeStart(output, simplicies, ref index, out closed))
-                {
-                    simplicies.RemoveAt(index);
-                    --index;
-                }
-                else if (TryMatchEdgeEnd(output, simplicies, ref index, out closed))
+                if (TryMatchEdgeStart(output, simplicies, ref index, out closed) ||
+                    TryMatchEdgeEnd(output, simplicies, ref index, out closed))
                 {
                     simplicies.RemoveAt(index);
                     --index;
