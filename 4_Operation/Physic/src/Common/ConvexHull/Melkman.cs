@@ -61,13 +61,13 @@ namespace Alis.Core.Physic.Common.ConvexHull
             Vector2F[] deque = new Vector2F[vertices.Count + 1];
             int qf = 3, qb = 0;
 
-            int startIndex = InitializeDeque(vertices, deque, ref qf, ref qb);
+            int startIndex = InitializeDeque(vertices, deque, ref qf);
             ProcessDeque(vertices, deque, ref qf, ref qb, startIndex);
 
             return BuildConvexHullResult(deque, qf, qb);
         }
 
-        private static int InitializeDeque(Vertices vertices, Vector2F[] deque, ref int qf, ref int qb)
+        private static int InitializeDeque(Vertices vertices, Vector2F[] deque, ref int qf)
         {
             int startIndex = 3;
             float k = MathUtils.Area(vertices[0], vertices[1], vertices[2]);
