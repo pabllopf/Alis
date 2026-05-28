@@ -1760,21 +1760,8 @@ namespace Alis.Core.Ecs
             int writeToIndex = 0;
             for (int i = 0; i < destinationComponents.Length;)
             {
-                ComponentId componentToMove = destinationComponents[i];
-                int fromIndex = Unsafe.Add(ref fromMap[0], componentToMove.RawIndex) & GlobalWorldTables.IndexBits;
-
-                //index for dest is offset by one for hardware trap
-                i++;
-
-                if (fromIndex == 0)
-                {
-                    Unsafe.Add(ref MemoryMarshal.GetReference(writeTo), writeToIndex++) = destRunners[i];
-                }
-                else
-                {
-                    Unsafe.Add(ref destRunners[0], i).PullComponentFromAndClearTryDevirt(
-                        Unsafe.Add(ref fromRunners[0], fromIndex), nextLocation.Index, currentLookup.Index, deletedIndex);
-                }
+                MoveComponentIfNeeded(destinationComponents, i, fromRunners, destRunners, fromMap, writeTo, ref writeToIndex,
+                    nextLocation.Index, currentLookup.Index, deletedIndex);
             }
 
             ref GameObjectLocation displacedGameObjectLocation = ref EntityTable.UnsafeIndexNoResize(movedDown.ID);
@@ -1783,6 +1770,29 @@ namespace Alis.Core.Ecs
 
             currentLookup.Archetype = nextLocation.Archetype;
             currentLookup.Index = nextLocation.Index;
+        }
+
+        /// <summary>
+        ///     Moves a single component from source to destination storage.
+        /// </summary>
+        private void MoveComponentIfNeeded(FastImmutableArray<ComponentId> destinationComponents, int i,
+            ComponentStorageBase[] fromRunners, ComponentStorageBase[] destRunners, byte[] fromMap,
+            Span<ComponentStorageBase> writeTo, ref int writeToIndex, int nextIndex, int currentIndex, int deletedIndex)
+        {
+            ComponentId componentToMove = destinationComponents[i];
+            int fromIndex = Unsafe.Add(ref fromMap[0], componentToMove.RawIndex) & GlobalWorldTables.IndexBits;
+
+            i++;
+
+            if (fromIndex == 0)
+            {
+                Unsafe.Add(ref MemoryMarshal.GetReference(writeTo), writeToIndex++) = destRunners[i];
+            }
+            else
+            {
+                Unsafe.Add(ref destRunners[0], i).PullComponentFromAndClearTryDevirt(
+                    Unsafe.Add(ref fromRunners[0], fromIndex), nextIndex, currentIndex, deletedIndex);
+            }
         }
 
         /// <summary>
