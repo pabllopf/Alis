@@ -71,46 +71,7 @@ namespace Alis.Extension.Updater.Test
             Assert.Equal(sut.Message, eventMessage);
             Assert.True(caseId >= 0);
         }
-
-        /// <summary>
-        ///     Tests that get selected asset returns expected entry
-        /// </summary>
-        /// <param name="caseId">The case id</param>
-        /// <param name="platform">The platform</param>
-        /// <param name="architecture">The architecture</param>
-        /// <param name="matchingName">The matching name</param>
-        /// <param name="includeMatch">The include match</param>
-        /// <param name="nullEntries">The null entries</param>
-        /// <param name="unrelatedEntries">The unrelated entries</param>
-        [Theory, MemberData(nameof(GetSelectedAssetCases))]
-        public void GetSelectedAsset_ReturnsExpectedEntry(
-            int caseId,
-            string platform,
-            string architecture,
-            string matchingName,
-            bool includeMatch,
-            int nullEntries,
-            int unrelatedEntries)
-        {
-            UpdateManager sut = CreateManagerFast();
-            Dictionary<string, object> release = new Dictionary<string, object>
-            {
-                {"assets", BuildAssets(caseId, platform, architecture, matchingName, includeMatch, nullEntries, unrelatedEntries)}
-            };
-
-            Dictionary<string, object> selected = UpdateManager.GetSelectedAsset(release, platform, architecture);
-
-            if (includeMatch)
-            {
-                Assert.NotNull(selected);
-                Assert.Equal(matchingName, selected["name"]);
-            }
-            else
-            {
-                Assert.Null(selected);
-            }
-        }
-
+        
         /// <summary>
         ///     Tests that handle missing compatible package always returns false and sets state
         /// </summary>

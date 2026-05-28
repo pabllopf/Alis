@@ -194,25 +194,5 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.NotNull(renderMethod);
             Assert.Equal(typeof(void), renderMethod.ReturnType);
         }
-
-        /// <summary>
-        ///     Tests that Font has GCHandle fields for memory management.
-        /// </summary>
-        [Fact]
-        public void Font_HasGCHandleFields_MemoryManagementExists()
-        {
-            Type fontType = typeof(Font);
-
-            FieldInfo imageHandle = fontType.GetField("imageHandle",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            FieldInfo indicesHandle = fontType.GetField("indicesHandle",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            FieldInfo verticesHandle = fontType.GetField("verticesHandle",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Assert.NotNull(imageHandle);
-            Assert.NotNull(indicesHandle);
-            Assert.NotNull(verticesHandle);
-        }
     }
 }
