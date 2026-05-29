@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
     ///     The operation enum
     /// </summary>
     [Flags]
-    public enum Operations
+    public enum Operation
     {
         /// <summary>
         ///     The translate operation
