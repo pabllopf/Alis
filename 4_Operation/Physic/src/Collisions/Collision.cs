@@ -1202,69 +1202,96 @@ namespace Alis.Core.Physic.Collisions
                 Vector2F normal1, Vector2F normal0, Vector2F normal2,
                 out bool front, out Vector2F normal, out Vector2F lowerLimit, out Vector2F upperLimit)
             {
+                front = CalculateFrontState(hasVertex0, hasVertex3, convex1, convex2, offset0, offset1, offset2);
+                var sign = front ? 1.0f : -1.0f;
+                normal = normal1 * sign;
+
+                (lowerLimit, upperLimit) = ComputeLimits(hasVertex0, hasVertex3, convex1, convex2, front, normal0, normal1, normal2);
+            }
+
+            /// <summary>
+            ///     Calculates whether the collision is on the front side based on vertex presence, convexity, and offsets.
+            /// </summary>
+            private static bool CalculateFrontState(
+                bool hasVertex0, bool hasVertex3,
+                bool convex1, bool convex2,
+                float offset0, float offset1, float offset2)
+            {
                 if (hasVertex0 && hasVertex3)
-                {
-                    if (convex1 && convex2)
-                    {
-                        front = offset0 >= 0.0f || offset1 >= 0.0f || offset2 >= 0.0f;
-                        if (front) { normal = normal1; lowerLimit = normal0; upperLimit = normal2; }
-                        else { normal = -normal1; lowerLimit = -normal1; upperLimit = -normal1; }
-                    }
-                    else if (convex1)
-                    {
-                        front = offset0 >= 0.0f || ((offset1 >= 0.0f) && (offset2 >= 0.0f));
-                        if (front) { normal = normal1; lowerLimit = normal0; upperLimit = normal1; }
-                        else { normal = -normal1; lowerLimit = -normal2; upperLimit = -normal1; }
-                    }
-                    else if (convex2)
-                    {
-                        front = offset2 >= 0.0f || ((offset0 >= 0.0f) && (offset1 >= 0.0f));
-                        if (front) { normal = normal1; lowerLimit = normal1; upperLimit = normal2; }
-                        else { normal = -normal1; lowerLimit = -normal1; upperLimit = -normal0; }
-                    }
-                    else
-                    {
-                        front = (offset0 >= 0.0f) && (offset1 >= 0.0f) && (offset2 >= 0.0f);
-                        if (front) { normal = normal1; lowerLimit = normal1; upperLimit = normal1; }
-                        else { normal = -normal1; lowerLimit = -normal2; upperLimit = -normal0; }
-                    }
-                }
-                else if (hasVertex0)
-                {
-                    if (convex1)
-                    {
-                        front = offset0 >= 0.0f || offset1 >= 0.0f;
-                        if (front) { normal = normal1; lowerLimit = normal0; upperLimit = -normal1; }
-                        else { normal = -normal1; lowerLimit = normal1; upperLimit = -normal1; }
-                    }
-                    else
-                    {
-                        front = (offset0 >= 0.0f) && (offset1 >= 0.0f);
-                        if (front) { normal = normal1; lowerLimit = normal1; upperLimit = -normal1; }
-                        else { normal = -normal1; lowerLimit = normal1; upperLimit = -normal0; }
-                    }
-                }
-                else if (hasVertex3)
-                {
-                    if (convex2)
-                    {
-                        front = offset1 >= 0.0f || offset2 >= 0.0f;
-                        if (front) { normal = normal1; lowerLimit = -normal1; upperLimit = normal2; }
-                        else { normal = -normal1; lowerLimit = -normal1; upperLimit = normal1; }
-                    }
-                    else
-                    {
-                        front = (offset1 >= 0.0f) && (offset2 >= 0.0f);
-                        if (front) { normal = normal1; lowerLimit = -normal1; upperLimit = normal1; }
-                        else { normal = -normal1; lowerLimit = -normal2; upperLimit = normal1; }
-                    }
-                }
-                else
-                {
-                    front = offset1 >= 0.0f;
-                    if (front) { normal = normal1; lowerLimit = -normal1; upperLimit = -normal1; }
-                    else { normal = -normal1; lowerLimit = normal1; upperLimit = normal1; }
-                }
+                    return convex1 && convex2 ? IsFrontAny(offset0, offset1, offset2)
+                        : convex1 ? IsFrontFirstOrBoth(offset0, offset1, offset2)
+                        : convex2 ? IsFrontLastOrBoth(offset0, offset1, offset2)
+                        : IsFrontAll(offset0, offset1, offset2);
+
+                if (hasVertex0)
+                    return convex1 ? IsFrontAny(offset0, offset1, float.NaN)
+                        : IsFrontBoth(offset0, offset1);
+
+                if (hasVertex3)
+                    return convex2 ? IsFrontAny(float.NaN, offset1, offset2)
+                        : IsFrontBoth(offset1, offset2);
+
+                return offset1 >= 0.0f;
+            }
+
+            /// <summary>
+            ///     Computes the lower and upper limits based on collision state.
+            /// </summary>
+            private static (Vector2F lower, Vector2F upper) ComputeLimits(
+                bool hasVertex0, bool hasVertex3,
+                bool convex1, bool convex2,
+                bool front, Vector2F normal0, Vector2F normal1, Vector2F normal2)
+            {
+                if (front)
+                    return (SelectFrontLowerLimit(hasVertex0, hasVertex3, convex1, convex2, normal0, normal1),
+                            SelectFrontUpperLimit(hasVertex0, hasVertex3, convex1, convex2, normal1, normal2));
+
+                var neg = -normal1;
+                return (SelectBackLowerLimit(hasVertex0, hasVertex3, convex1, convex2, neg, normal1, normal2),
+                        SelectBackUpperLimit(hasVertex0, hasVertex3, convex1, convex2, neg, normal1, normal0));
+            }
+
+            private static bool IsFrontAny(float a, float b, float c) =>
+                (a >= 0.0f) || (b >= 0.0f) || (c >= 0.0f);
+
+            private static bool IsFrontFirstOrBoth(float a, float b, float c) =>
+                (a >= 0.0f) || ((b >= 0.0f) && (c >= 0.0f));
+
+            private static bool IsFrontLastOrBoth(float a, float b, float c) =>
+                (c >= 0.0f) || ((a >= 0.0f) && (b >= 0.0f));
+
+            private static bool IsFrontAll(float a, float b, float c) =>
+                (a >= 0.0f) && (b >= 0.0f) && (c >= 0.0f);
+
+            private static bool IsFrontBoth(float a, float b) =>
+                (a >= 0.0f) && (b >= 0.0f);
+
+            private static Vector2F SelectFrontLowerLimit(bool hasVertex0, bool hasVertex3, bool convex1, bool convex2, Vector2F normal0, Vector2F normal1)
+            {
+                if (hasVertex0 && hasVertex3) return convex1 && convex2 ? normal0 : convex1 ? normal0 : normal1;
+                if (hasVertex0) return convex1 ? normal0 : normal1;
+                return normal1;
+            }
+
+            private static Vector2F SelectFrontUpperLimit(bool hasVertex0, bool hasVertex3, bool convex1, bool convex2, Vector2F normal1, Vector2F normal2)
+            {
+                if (hasVertex0 && hasVertex3) return convex1 && convex2 ? normal2 : convex1 ? normal1 : normal2;
+                if (hasVertex0) return convex1 ? -normal1 : -normal1;
+                return normal2;
+            }
+
+            private static Vector2F SelectBackLowerLimit(bool hasVertex0, bool hasVertex3, bool convex1, bool convex2, Vector2F neg, Vector2F normal1, Vector2F normal2)
+            {
+                if (hasVertex0 && hasVertex3) return convex1 && convex2 ? neg : convex1 ? -normal2 : neg;
+                if (hasVertex0) return convex1 ? -neg : -neg;
+                return -normal2;
+            }
+
+            private static Vector2F SelectBackUpperLimit(bool hasVertex0, bool hasVertex3, bool convex1, bool convex2, Vector2F neg, Vector2F normal1, Vector2F normal0)
+            {
+                if (hasVertex0 && hasVertex3) return convex1 && convex2 ? neg : convex1 ? neg : -normal0;
+                if (hasVertex0) return convex1 ? neg : -normal0;
+                return normal1;
             }
 
             /// <summary>
