@@ -299,7 +299,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             StopwatchTimeTracker tracker2 = new StopwatchTimeTracker();
 
             tracker1.Start();
-            Thread.Sleep(50);
+            Thread.Sleep(1);
             tracker1.Stop();
 
             tracker2.Start();
