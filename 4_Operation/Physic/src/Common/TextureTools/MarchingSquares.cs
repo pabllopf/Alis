@@ -195,16 +195,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                 int x = 0;
                 while (x < xn)
                 {
-                    GeomPolyVal p = ps[x, y];
-
-                    if (p == null || (p.Key & 12) == 0)
-                    {
-                        x++;
-                        continue;
-                    }
-
-                    GeomPolyVal u = ps[x, y - 1];
-                    if (u == null || (u.Key & 3) == 0 || u.GeomP == p.GeomP)
+                    if (!CanCombine(ps, x, y))
                     {
                         x++;
                         continue;
@@ -213,82 +204,124 @@ namespace Alis.Core.Physic.Common.TextureTools
                     float ax = x * cellWidth + domain.LowerBound.X;
                     float ay = y * cellHeight + domain.LowerBound.Y;
 
-                    CxFastList<Vector2F> bp = p.GeomP.Points;
-                    CxFastList<Vector2F> ap = u.GeomP.Points;
+                    GeomPolyVal p = ps[x, y];
+                    GeomPolyVal u = ps[x, y - 1];
 
-                    CxFastListNode<Vector2F> bi = bp.Begin();
-                    while (Square(bi.GetElem().Y - ay) > SettingEnv.Epsilon || bi.GetElem().X < ax)
-                    {
-                        bi = bi.NextPos();
-                    }
-
-                    Vector2F b1 = bi.NextPos().GetElem();
-                    if (Square(b1.Y - ay) > SettingEnv.Epsilon)
+                    CxFastListNode<Vector2F> bi = FindStartingPoint(p.GeomP.Points, ay, ax);
+                    if (!HasValidStart(bi, ay))
                     {
                         x++;
                         continue;
                     }
 
-                    bool brk = true;
-                    CxFastListNode<Vector2F> ai = ap.Begin();
-                    while (ai != ap.End())
-                    {
-                        if (VecDsq(ai.GetElem(), b1) < SettingEnv.Epsilon)
-                        {
-                            brk = false;
-                            break;
-                        }
-
-                        ai = ai.NextPos();
-                    }
-
-                    if (brk)
+                    if (!HasMatchingVertex(u.GeomP.Points, bi.NextPos().GetElem()))
                     {
                         x++;
                         continue;
                     }
 
-                    CxFastListNode<Vector2F> bj = bi.NextPos().NextPos();
-                    if (bj == bp.End())
-                    {
-                        bj = bp.Begin();
-                    }
-
-                    while (bj != bi)
-                    {
-                        ai = ap.Insert(ai, bj.GetElem());
-                        bj = bj.NextPos();
-                        if (bj == bp.End())
-                        {
-                            bj = bp.Begin();
-                        }
-
-                        u.GeomP.Length++;
-                    }
-
-                    // Update references to merged polygon
-                    for (int ax2 = x + 1; ax2 < xn; ax2++)
-                    {
-                        GeomPolyVal p2 = ps[ax2, y];
-                        if (p2 != null && p2.GeomP == p.GeomP)
-                        {
-                            p2.GeomP = u.GeomP;
-                        }
-                    }
-
-                    for (int ax2 = x - 1; ax2 >= 0; ax2--)
-                    {
-                        GeomPolyVal p2 = ps[ax2, y];
-                        if (p2 != null && p2.GeomP == p.GeomP)
-                        {
-                            p2.GeomP = u.GeomP;
-                        }
-                    }
-
+                    MergePolygons(u, p, bi);
+                    UpdatePolygonReferences(ps, x, xn, y, p.GeomP, u.GeomP);
                     ret.Remove(p.GeomP);
                     p.GeomP = u.GeomP;
 
                     x = (int)((bi.NextPos().GetElem().X - domain.LowerBound.X) / cellWidth) + 1;
+                }
+            }
+        }
+
+        private static bool CanCombine(GeomPolyVal[,] ps, int x, int y)
+        {
+            GeomPolyVal p = ps[x, y];
+            if (p == null || (p.Key & 12) == 0)
+            {
+                return false;
+            }
+
+            GeomPolyVal u = ps[x, y - 1];
+            if (u == null || (u.Key & 3) == 0 || u.GeomP == p.GeomP)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private static CxFastListNode<Vector2F> FindStartingPoint(CxFastList<Vector2F> bp, float ay, float ax)
+        {
+            CxFastListNode<Vector2F> bi = bp.Begin();
+            while (Square(bi.GetElem().Y - ay) > SettingEnv.Epsilon || bi.GetElem().X < ax)
+            {
+                bi = bi.NextPos();
+            }
+
+            return bi;
+        }
+
+        private static bool HasValidStart(CxFastListNode<Vector2F> bi, float ay)
+        {
+            Vector2F b1 = bi.NextPos().GetElem();
+            return Square(b1.Y - ay) <= SettingEnv.Epsilon;
+        }
+
+        private static bool HasMatchingVertex(CxFastList<Vector2F> ap, Vector2F b1)
+        {
+            CxFastListNode<Vector2F> ai = ap.Begin();
+            while (ai != ap.End())
+            {
+                if (VecDsq(ai.GetElem(), b1) < SettingEnv.Epsilon)
+                {
+                    return true;
+                }
+
+                ai = ai.NextPos();
+            }
+
+            return false;
+        }
+
+        private static void MergePolygons(GeomPolyVal u, GeomPolyVal p, CxFastListNode<Vector2F> bi)
+        {
+            CxFastList<Vector2F> bp = p.GeomP.Points;
+            CxFastList<Vector2F> ap = u.GeomP.Points;
+
+            CxFastListNode<Vector2F> bj = bi.NextPos().NextPos();
+            if (bj == bp.End())
+            {
+                bj = bp.Begin();
+            }
+
+            CxFastListNode<Vector2F> ai = ap.Begin();
+            while (bj != bi)
+            {
+                ai = ap.Insert(ai, bj.GetElem());
+                bj = bj.NextPos();
+                if (bj == bp.End())
+                {
+                    bj = bp.Begin();
+                }
+
+                u.GeomP.Length++;
+            }
+        }
+
+        private static void UpdatePolygonReferences(GeomPolyVal[,] ps, int x, int xn, int y, GeomPoly oldPoly, GeomPoly newPoly)
+        {
+            for (int ax2 = x + 1; ax2 < xn; ax2++)
+            {
+                GeomPolyVal p2 = ps[ax2, y];
+                if (p2 != null && p2.GeomP == oldPoly)
+                {
+                    p2.GeomP = newPoly;
+                }
+            }
+
+            for (int ax2 = x - 1; ax2 >= 0; ax2--)
+            {
+                GeomPolyVal p2 = ps[ax2, y];
+                if (p2 != null && p2.GeomP == oldPoly)
+                {
+                    p2.GeomP = newPoly;
                 }
             }
         }
