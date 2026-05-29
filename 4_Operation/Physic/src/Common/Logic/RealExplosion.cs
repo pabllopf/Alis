@@ -381,64 +381,74 @@ namespace Alis.Core.Physic.Common.Logic
         {
             for (int i = 0; i < _data.Count; ++i)
             {
-                if (!IsActiveOn(_data[i].Body))
-                {
-                    continue;
-                }
+                if (!IsActiveOn(_data[i].Body)) continue;
 
                 float arclen = _data[i].Max - _data[i].Min;
                 float first = Math.Min(MaxEdgeOffset, EdgeRatio * arclen);
-                int insertedRays = (int)Math.Ceiling((arclen - 2.0f * first - (MinRays - 1) * MaxAngle) / MaxAngle);
+                int insertedRays = ComputeInsertedRays(arclen, first, MinRays, MaxAngle);
+                float offset = ComputeRayOffset(arclen, first, insertedRays, MinRays);
 
-                if (insertedRays < 0)
-                {
-                    insertedRays = 0;
-                }
-
-                float offset = (arclen - first * 2.0f) / ((float)MinRays + insertedRays - 1);
-
-                for (float j = _data[i].Min + first;
-                     j < _data[i].Max || MathUtils.FloatEquals(j, _data[i].Max, 0.0001f);
-                     j += offset)
-                {
-                    Vector2F p1 = pos;
-                    Vector2F p2 = pos + radius * new Vector2F((float)Math.Cos(j), (float)Math.Sin(j));
-                    Vector2F hitpoint = Vector2F.Zero;
-                    float minlambda = float.MaxValue;
-
-                    foreach (Fixture f in _data[i].Body.FixtureList)
-                    {
-                        RayCastInput ri;
-                        ri.Point1 = p1;
-                        ri.Point2 = p2;
-                        ri.MaxFraction = 50f;
-
-                        if (f.RayCast(out RayCastOutput ro, ref ri, 0) && minlambda > ro.Fraction)
-                        {
-                            minlambda = ro.Fraction;
-                            hitpoint = ro.Fraction * p2 + (1 - ro.Fraction) * p1;
-                        }
-
-                        float impulse = arclen / (MinRays + insertedRays) * maxForce * 180.0f / Constant.Pi * (1.0f - Math.Min(1.0f, minlambda));
-                        Vector2F vectImp = Vector2F.Dot(impulse * new Vector2F((float)Math.Cos(j), (float)Math.Sin(j)), -ro.Normal) * new Vector2F((float)Math.Cos(j), (float)Math.Sin(j));
-                        _data[i].Body.ApplyLinearImpulse(ref vectImp, ref hitpoint);
-
-                        if (exploded.ContainsKey(f))
-                        {
-                            exploded[f] += vectImp;
-                        }
-                        else
-                        {
-                            exploded.Add(f, vectImp);
-                        }
-
-                        if (minlambda > 1.0f)
-                        {
-                            hitpoint = p2;
-                        }
-                    }
-                }
+                ApplyImpulsesForArc(i, pos, radius, arclen, first, offset, insertedRays, maxForce, exploded);
             }
+        }
+
+        private static int ComputeInsertedRays(float arclen, float first, int minRays, float maxAngle)
+        {
+            int insertedRays = (int)Math.Ceiling((arclen - 2.0f * first - (minRays - 1) * maxAngle) / maxAngle);
+            return insertedRays < 0 ? 0 : insertedRays;
+        }
+
+        private static float ComputeRayOffset(float arclen, float first, int insertedRays, int minRays) =>
+            (arclen - first * 2.0f) / ((float)minRays + insertedRays - 1);
+
+        private void ApplyImpulsesForArc(int i, Vector2F pos, float radius, float arclen, float first, float offset, int insertedRays, float maxForce, Dictionary<Fixture, Vector2F> exploded)
+        {
+            for (float j = _data[i].Min + first;
+                 j < _data[i].Max || MathUtils.FloatEquals(j, _data[i].Max, 0.0001f);
+                 j += offset)
+            {
+                ApplyRayImpulses(i, pos, radius, j, arclen, insertedRays, maxForce, exploded);
+            }
+        }
+
+        private void ApplyRayImpulses(int i, Vector2F pos, float radius, float angle, float arclen, int insertedRays, float maxForce, Dictionary<Fixture, Vector2F> exploded)
+        {
+            Vector2F p1 = pos;
+            Vector2F p2 = pos + radius * new Vector2F((float)Math.Cos(angle), (float)Math.Sin(angle));
+            Vector2F hitpoint = Vector2F.Zero;
+            float minlambda = float.MaxValue;
+            RayCastOutput ro = default;
+
+            foreach (Fixture f in _data[i].Body.FixtureList)
+            {
+                RayCastInput ri = new() { Point1 = p1, Point2 = p2, MaxFraction = 50f };
+                if (f.RayCast(out ro, ref ri, 0) && minlambda > ro.Fraction)
+                {
+                    minlambda = ro.Fraction;
+                    hitpoint = ro.Fraction * p2 + (1 - ro.Fraction) * p1;
+                }
+
+                Vector2F vectImp = ComputeImpulseVector(angle, minlambda, arclen, insertedRays, maxForce, ro, MinRays);
+                _data[i].Body.ApplyLinearImpulse(ref vectImp, ref hitpoint);
+                UpdateExplodedDictionary(exploded, f, vectImp);
+
+                if (minlambda > 1.0f) hitpoint = p2;
+            }
+        }
+
+        private static Vector2F ComputeImpulseVector(float angle, float minlambda, float arclen, int insertedRays, float maxForce, RayCastOutput ro, int minRays)
+        {
+            float impulse = arclen / (minRays + insertedRays) * maxForce * 180.0f / Constant.Pi * (1.0f - Math.Min(1.0f, minlambda));
+            Vector2F dir = new((float)Math.Cos(angle), (float)Math.Sin(angle));
+            return Vector2F.Dot(impulse * dir, -ro.Normal) * dir;
+        }
+
+        private static void UpdateExplodedDictionary(Dictionary<Fixture, Vector2F> exploded, Fixture f, Vector2F vectImp)
+        {
+            if (exploded.ContainsKey(f))
+                exploded[f] += vectImp;
+            else
+                exploded.Add(f, vectImp);
         }
 
         /// <summary>
