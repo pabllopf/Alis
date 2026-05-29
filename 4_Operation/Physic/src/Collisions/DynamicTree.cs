@@ -743,23 +743,7 @@ namespace Alis.Core.Physic.Collisions
                 _nodes[iB].Child1 = iN;
                 _nodes[iB].Parent = _nodes[iN].Parent;
                 _nodes[iN].Parent = iB;
-
-                // N's old parent should point to B
-                if (iP != NullNode)
-                {
-                    if (_nodes[iP].Child1 == iN)
-                    {
-                        _nodes[iP].Child1 = iB;
-                    }
-                    else
-                    {
-                        _nodes[iP].Child2 = iB;
-                    }
-                }
-                else
-                {
-                    _root = iB;
-                }
+                UpdateParentPointer(iP, iN, iB);
 
                 // Rotate
                 if (_nodes[iBa].Height > _nodes[iBb].Height)
@@ -798,23 +782,7 @@ namespace Alis.Core.Physic.Collisions
                 _nodes[iA].Child1 = iN;
                 _nodes[iA].Parent = _nodes[iN].Parent;
                 _nodes[iN].Parent = iA;
-
-                // N's old parent should point to A
-                if (iP != NullNode)
-                {
-                    if (_nodes[iP].Child1 == iN)
-                    {
-                        _nodes[iP].Child1 = iA;
-                    }
-                    else
-                    {
-                        _nodes[iP].Child2 = iA;
-                    }
-                }
-                else
-                {
-                    _root = iA;
-                }
+                UpdateParentPointer(iP, iN, iA);
 
                 // Rotate
                 if (_nodes[iAa].Height > _nodes[iAb].Height)
@@ -844,6 +812,25 @@ namespace Alis.Core.Physic.Collisions
             }
 
             return iN;
+        }
+
+        private void UpdateParentPointer(int parentIndex, int oldChild, int newChild)
+        {
+            if (parentIndex != NullNode)
+            {
+                if (_nodes[parentIndex].Child1 == oldChild)
+                {
+                    _nodes[parentIndex].Child1 = newChild;
+                }
+                else
+                {
+                    _nodes[parentIndex].Child2 = newChild;
+                }
+            }
+            else
+            {
+                _root = newChild;
+            }
         }
 
         /// <summary>
