@@ -594,11 +594,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 if (c == null)
                 {
-                    c = new Contact(fixtureA, indexA, fixtureB, indexB);
+                    c = new Contact(fixtureB, indexB, fixtureA, indexA);
                 }
                 else
                 {
-                    c.Reset(fA: fixtureB, indexA: indexB, fB: fixtureA, indexB: indexA);
+                    (fixtureA, fixtureB) = (fixtureB, fixtureA);
+                    (indexA, indexB) = (indexB, indexA);
+                    c.Reset(fixtureA, indexA, fixtureB, indexB);
                 }
             }
 
