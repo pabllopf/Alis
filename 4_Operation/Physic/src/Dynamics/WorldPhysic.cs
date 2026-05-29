@@ -633,94 +633,85 @@ namespace Alis.Core.Physic.Dynamics
         {
             for (Contact c = ContactManager.ContactList.Next; c != ContactManager.ContactList; c = c.Next)
             {
-                if (!c.Enabled)
+                if (!c.Enabled || c.ToiCount > SettingEnv.MaxSubSteps)
                 {
                     continue;
                 }
 
-                if (c.ToiCount > SettingEnv.MaxSubSteps)
-                {
-                    continue;
-                }
-
-                float alpha;
-                if (c.ToiFlag)
-                {
-                    alpha = c.Toi;
-                }
-                else
-                {
-                    Fixture fA = c.FixtureA;
-                    Fixture fB = c.FixtureB;
-
-                    if (fA.GetIsSensor || fB.GetIsSensor)
-                    {
-                        continue;
-                    }
-
-                    Body bA = fA.GetBody;
-                    Body bB = fB.GetBody;
-
-                    BodyType typeA = bA.GetBodyType;
-                    BodyType typeB = bB.GetBodyType;
-
-                    bool activeA = bA.Awake && (typeA != BodyType.Static);
-                    bool activeB = bB.Awake && (typeB != BodyType.Static);
-
-                    if (!activeA && !activeB)
-                    {
-                        continue;
-                    }
-
-                    bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) && !bA.IgnoreCcd;
-                    bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) && !bB.IgnoreCcd;
-
-                    if (!collideA && !collideB)
-                    {
-                        continue;
-                    }
-
-                    float alpha0 = bA.Sweep.Alpha0;
-
-                    if (bA.Sweep.Alpha0 < bB.Sweep.Alpha0)
-                    {
-                        alpha0 = bB.Sweep.Alpha0;
-                        bA.Sweep.Advance(alpha0);
-                    }
-                    else if (bB.Sweep.Alpha0 < bA.Sweep.Alpha0)
-                    {
-                        alpha0 = bA.Sweep.Alpha0;
-                        bB.Sweep.Advance(alpha0);
-                    }
-
-                    _input.ProxyA = new DistanceProxy(fA.GetShape, c.ChildIndexA);
-                    _input.ProxyB = new DistanceProxy(fB.GetShape, c.ChildIndexB);
-                    _input.SweepA = bA.Sweep;
-                    _input.SweepB = bB.Sweep;
-                    _input.TMax = 1.0f;
-
-                    TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref _input);
-
-                    float beta = output.T;
-                    if (output.State == ToiOutputState.Touching)
-                    {
-                        alpha = Math.Min(alpha0 + (1.0f - alpha0) * beta, 1.0f);
-                    }
-                    else
-                    {
-                        alpha = 1.0f;
-                    }
-
-                    c.Toi = alpha;
-                    c.ToiFlag = true;
-                }
-
+                float alpha = CalculateContactAlpha(c);
                 if (alpha < minAlpha)
                 {
                     minContact = c;
                     minAlpha = alpha;
                 }
             }
+        }
+
+        private float CalculateContactAlpha(Contact c)
+        {
+            if (c.ToiFlag)
+            {
+                return c.Toi;
+            }
+
+            Fixture fA = c.FixtureA;
+            Fixture fB = c.FixtureB;
+
+            if (fA.GetIsSensor || fB.GetIsSensor)
+            {
+                return 1.0f;
+            }
+
+            Body bA = fA.GetBody;
+            Body bB = fB.GetBody;
+
+            BodyType typeA = bA.GetBodyType;
+            BodyType typeB = bB.GetBodyType;
+
+            bool activeA = bA.Awake && (typeA != BodyType.Static);
+            bool activeB = bB.Awake && (typeB != BodyType.Static);
+
+            if (!activeA && !activeB)
+            {
+                return 1.0f;
+            }
+
+            bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) && !bA.IgnoreCcd;
+            bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) && !bB.IgnoreCcd;
+
+            if (!collideA && !collideB)
+            {
+                return 1.0f;
+            }
+
+            float alpha0 = bA.Sweep.Alpha0;
+
+            if (bA.Sweep.Alpha0 < bB.Sweep.Alpha0)
+            {
+                alpha0 = bB.Sweep.Alpha0;
+                bA.Sweep.Advance(alpha0);
+            }
+            else if (bB.Sweep.Alpha0 < bA.Sweep.Alpha0)
+            {
+                alpha0 = bA.Sweep.Alpha0;
+                bB.Sweep.Advance(alpha0);
+            }
+
+            _input.ProxyA = new DistanceProxy(fA.GetShape, c.ChildIndexA);
+            _input.ProxyB = new DistanceProxy(fB.GetShape, c.ChildIndexB);
+            _input.SweepA = bA.Sweep;
+            _input.SweepB = bB.Sweep;
+            _input.TMax = 1.0f;
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref _input);
+
+            float beta = output.T;
+            if (output.State == ToiOutputState.Touching)
+            {
+                return Math.Min(alpha0 + (1.0f - alpha0) * beta, 1.0f);
+            }
+
+            return 1.0f;
         }
 
         /// <summary>
