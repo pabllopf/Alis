@@ -61,22 +61,9 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
             int polyIndex = 0;
 
-            bool notDone = true;
-            while (notDone)
+            while (ProcessNextPolygon(ref polyIndex, triangles, covered, maxPolys, tolerance, polys))
             {
-                int currTri = FindNextUncoveredTriangle(triangles, covered);
-                if (currTri == -1)
-                {
-                    notDone = false;
-                }
-                else
-                {
-                    Vertices poly = BuildInitialPoly(currTri, triangles, covered);
-
-                    TryAddNeighboringTriangles(poly, triangles, covered);
-
-                    ProcessValidPolygon(poly, ref polyIndex, maxPolys, tolerance, polys);
-                }
+                // Continue until no more uncovered triangles
             }
 
             RemoveEmptyPolygons(polys);
@@ -102,6 +89,20 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             {
                 Logger.Log("Skipping corrupt poly.");
             }
+        }
+
+        private static bool ProcessNextPolygon(ref int polyIndex, List<Vertices> triangles, bool[] covered, int maxPolys, float tolerance, List<Vertices> polys)
+        {
+            int currTri = FindNextUncoveredTriangle(triangles, covered);
+            if (currTri == -1)
+            {
+                return false;
+            }
+
+            Vertices poly = BuildInitialPoly(currTri, triangles, covered);
+            TryAddNeighboringTriangles(poly, triangles, covered);
+            ProcessValidPolygon(poly, ref polyIndex, maxPolys, tolerance, polys);
+            return true;
         }
 
         private static void AddPolygonToList(Vertices poly, List<Vertices> polys)
