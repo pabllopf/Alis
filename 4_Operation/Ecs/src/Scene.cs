@@ -780,7 +780,7 @@ namespace Alis.Core.Ecs
         {
             if (count < 1)
             {
-                throw new ArgumentOutOfRangeException("Count must be positive", nameof(count));
+                throw new ArgumentOutOfRangeException(nameof(count), "Count must be positive");
             }
 
             archetype.EnsureCapacity(count);
