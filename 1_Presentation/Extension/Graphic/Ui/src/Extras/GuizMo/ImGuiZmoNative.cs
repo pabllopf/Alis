@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="op">The op</param>
         /// <returns>The byte</returns>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_IsOverOPERATION", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte InternalIsOverOPERATION(Operation op);
+        internal static extern byte InternalIsOverOPERATION(Operations op);
 
         /// <summary>
         ///     Ims the guizmo is using
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="boundsSnap">The bounds snap</param>
         /// <returns>The byte</returns>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_Manipulate", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte InternalManipulate(IntPtr view, IntPtr projection, Operation operation, Mode mode, IntPtr matrix, IntPtr deltaMatrix, IntPtr snap, IntPtr localBounds, IntPtr boundsSnap);
+        internal static extern byte InternalManipulate(IntPtr view, IntPtr projection, Operations operation, Mode mode, IntPtr matrix, IntPtr deltaMatrix, IntPtr snap, IntPtr localBounds, IntPtr boundsSnap);
 
         /// <summary>
         ///     Ims the guizmo recompose matrix from components using the specified translation

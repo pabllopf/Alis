@@ -104,7 +104,7 @@ After each completed test increment:
 
 ```
 
-ponta test: <short description of what is covered>
+test: <short description of what is covered>
 
 ```
 

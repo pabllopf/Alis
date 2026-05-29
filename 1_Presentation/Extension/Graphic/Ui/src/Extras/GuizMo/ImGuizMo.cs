@@ -192,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// </summary>
         /// <param name="op">The op</param>
         /// <returns>The bool</returns>
-        public static bool IsOver(Operation op) => ImGuiZmoNative.InternalIsOverOPERATION(op) != 0;
+        public static bool IsOver(Operations op) => ImGuiZmoNative.InternalIsOverOPERATION(op) != 0;
 
         /// <summary>
         ///     Describes whether is using
@@ -209,7 +209,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="mode">The mode</param>
         /// <param name="matrix">The matrix</param>
         /// <returns>The byte</returns>
-        public static byte Manipulate(float[] view, float[] projection, Operation operation, Mode mode, float[] matrix)
+        public static byte Manipulate(float[] view, float[] projection, Operations operation, Mode mode, float[] matrix)
         {
             GCHandle viewHandle = GCHandle.Alloc(view, GCHandleType.Pinned);
             GCHandle projectionHandle = GCHandle.Alloc(projection, GCHandleType.Pinned);
@@ -387,7 +387,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
                 SetRect(0, 0, ImGui.GetIo().DisplaySize.X, ImGui.GetIo().DisplaySize.Y);
 
                 DrawGrid(ref cameraView, ref cameraProjection, ref identityMatrix, 10.0f);
-                Manipulate(cameraView, cameraProjection, Operation.Translate | Operation.Rotate | Operation.Scale, Mode.Local, matrix);
+                Manipulate(cameraView, cameraProjection, Operations.Translate | Operations.Rotate | Operations.Scale, Mode.Local, matrix);
 
                 ViewManipulate(ref cameraView, 2.5f, new Vector2F(ImGui.GetWindowPos().X, ImGui.GetWindowPos().Y), new Vector2F(ImGui.GetWindowWidth(), ImGui.GetWindowHeight()), 0x10101010);
             }
