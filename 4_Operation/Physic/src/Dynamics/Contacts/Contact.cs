@@ -396,52 +396,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             bool enabledA = true, enabledB = true;
 
-            // Report the collision to both participants. Track which ones returned true so we can
-            // later call OnSeparation if the contact is disabled for a different reason.
-            OnCollisionEventHandler onFixtureCollisionHandlerA = FixtureA.OnCollision;
-            if (onFixtureCollisionHandlerA != null)
-            {
-                foreach (Delegate d in onFixtureCollisionHandlerA.GetInvocationList())
-                {
-                    OnCollisionEventHandler handler = (OnCollisionEventHandler)d;
-                    enabledA = handler(FixtureA, FixtureB, this) && enabledA;
-                }
-            }
-
-            // Reverse the order of the reported fixtures. The first fixture is always the one that the
-            // user subscribed to.
-            OnCollisionEventHandler onFixtureCollisionHandlerB = FixtureB.OnCollision;
-            if (onFixtureCollisionHandlerB != null)
-            {
-                foreach (Delegate d in onFixtureCollisionHandlerB.GetInvocationList())
-                {
-                    OnCollisionEventHandler handler = (OnCollisionEventHandler)d;
-                    enabledB = handler(FixtureB, FixtureA, this) && enabledB;
-                }
-            }
-
-            // Report the collision to both bodies:
-            OnCollisionEventHandler onBodyCollisionHandlerA = bodyA.OnCollisionEventHandler;
-            if (onBodyCollisionHandlerA != null)
-            {
-                foreach (Delegate d in onBodyCollisionHandlerA.GetInvocationList())
-                {
-                    OnCollisionEventHandler handler = (OnCollisionEventHandler)d;
-                    enabledA = handler(FixtureA, FixtureB, this) && enabledA;
-                }
-            }
-
-            // Reverse the order of the reported fixtures. The first fixture is always the one that the
-            // user subscribed to.
-            OnCollisionEventHandler onBodyCollisionHandlerB = bodyB.OnCollisionEventHandler;
-            if (onBodyCollisionHandlerB != null)
-            {
-                foreach (Delegate d in onBodyCollisionHandlerB.GetInvocationList())
-                {
-                    OnCollisionEventHandler handler = (OnCollisionEventHandler)d;
-                    enabledB = handler(FixtureB, FixtureA, this) && enabledB;
-                }
-            }
+            enabledA = InvokeHandlers(FixtureA.OnCollision, FixtureA, FixtureB, this, enabledA);
+            enabledB = InvokeHandlers(FixtureB.OnCollision, FixtureB, FixtureA, this, enabledB);
+            enabledA = InvokeHandlers(bodyA.OnCollisionEventHandler, FixtureA, FixtureB, this, enabledA);
+            enabledB = InvokeHandlers(bodyB.OnCollisionEventHandler, FixtureB, FixtureA, this, enabledB);
 
             Enabled = enabledA && enabledB;
 
@@ -459,6 +417,22 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 IsTouching = false;
             }
+        }
+
+        private static bool InvokeHandlers(OnCollisionEventHandler handlers, Fixture fixtureA, Fixture fixtureB, Contact contact, bool currentEnabled)
+        {
+            if (handlers == null)
+            {
+                return currentEnabled;
+            }
+
+            foreach (Delegate d in handlers.GetInvocationList())
+            {
+                OnCollisionEventHandler handler = (OnCollisionEventHandler)d;
+                currentEnabled = handler(fixtureA, fixtureB, contact) && currentEnabled;
+            }
+
+            return currentEnabled;
         }
 
         /// <summary>
