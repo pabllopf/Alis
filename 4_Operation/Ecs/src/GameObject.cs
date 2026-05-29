@@ -220,14 +220,16 @@ namespace Alis.Core.Ecs
         {
             if (!InternalIsAlive(out Scene _, out GameObjectLocation entityLocation))
             {
-                goto doesntExist;
+                exists = false;
+                return default(Ref<T>);
             }
 
             int compIndex = GlobalWorldTables.ComponentIndex(entityLocation.ArchetypeId, Component<T>.Id);
 
             if (compIndex == 0)
             {
-                goto doesntExist;
+                exists = false;
+                return default(Ref<T>);
             }
 
             exists = true;
@@ -235,10 +237,6 @@ namespace Alis.Core.Ecs
                 Unsafe.Add(ref entityLocation.Archetype.Components[0], compIndex));
 
             return new Ref<T>(storage, entityLocation.Index);
-
-            doesntExist:
-            exists = false;
-            return default(Ref<T>);
         }
 
         /// <summary>
