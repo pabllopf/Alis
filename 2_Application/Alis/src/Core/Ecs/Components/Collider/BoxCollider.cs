@@ -95,50 +95,25 @@ namespace Alis.Core.Ecs.Components.Collider
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="BoxCollider" /> class
+        ///     Initializes a new instance of the <see cref="BoxCollider" /> class using a settings object
         /// </summary>
-        /// <param name="isTrigger">The is trigger</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="rotation">The rotation</param>
-        /// <param name="relativePosition">The relative position</param>
-        /// <param name="autoTilling">The auto tilling</param>
-        /// <param name="bodyType">The body type</param>
-        /// <param name="restitution">The restitution</param>
-        /// <param name="friction">The friction</param>
-        /// <param name="fixedRotation">The fixed rotation</param>
-        /// <param name="mass">The mass</param>
-        /// <param name="ignoreGravity">The ignore gravity</param>
-        /// <param name="velocity">The (linear velocity, angular velocity) tuple</param>
-        public BoxCollider(
-            bool isTrigger,
-            float width,
-            float height,
-            float rotation,
-            Vector2F relativePosition,
-            bool autoTilling,
-            BodyType bodyType,
-            float restitution,
-            float friction,
-            bool fixedRotation,
-            float mass,
-            bool ignoreGravity,
-            (Vector2F linear, float angular) velocity)
+        /// <param name="settings">The settings</param>
+        public BoxCollider(BoxColliderSettings settings)
         {
-            IsTrigger = isTrigger;
-            Width = width;
-            Height = height;
-            Rotation = rotation;
-            RelativePosition = relativePosition;
-            AutoTilling = autoTilling;
-            BodyType = bodyType;
-            Restitution = restitution;
-            Friction = friction;
-            FixedRotation = fixedRotation;
-            Mass = mass;
-            IgnoreGravity = ignoreGravity;
-            LinearVelocity = velocity.linear;
-            AngularVelocity = velocity.angular;
+            IsTrigger = settings.IsTrigger;
+            Width = settings.Width;
+            Height = settings.Height;
+            Rotation = settings.Rotation;
+            RelativePosition = settings.RelativePosition;
+            AutoTilling = settings.AutoTilling;
+            BodyType = settings.BodyType;
+            Restitution = settings.Restitution;
+            Friction = settings.Friction;
+            FixedRotation = settings.FixedRotation;
+            Mass = settings.Mass;
+            IgnoreGravity = settings.IgnoreGravity;
+            LinearVelocity = settings.LinearVelocity;
+            AngularVelocity = settings.AngularVelocity;
         }
 
         /// <summary>
@@ -559,5 +534,26 @@ namespace Alis.Core.Ecs.Components.Collider
             Gl.GlDrawArrays(PrimitiveType.LineLoop, 0, 4);
             Gl.GlBindVertexArray(0);
         }
+
+        /// <summary>
+        ///     Settings for configuring a <see cref="BoxCollider" /> instance.
+        /// </summary>
+        public record BoxColliderSettings
+        (
+            bool IsTrigger,
+            float Width,
+            float Height,
+            float Rotation,
+            Vector2F RelativePosition,
+            bool AutoTilling,
+            BodyType BodyType,
+            float Restitution,
+            float Friction,
+            bool FixedRotation,
+            float Mass,
+            bool IgnoreGravity,
+            Vector2F LinearVelocity,
+            float AngularVelocity
+        );
     }
 }
