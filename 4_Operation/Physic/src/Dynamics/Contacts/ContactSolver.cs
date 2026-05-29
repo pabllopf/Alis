@@ -431,7 +431,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 ContactVelocityConstraint vc = VelocityConstraints[i];
 
-
                 int orderedIndexA = vc.IndexA;
                 int orderedIndexB = vc.IndexB;
                 if (orderedIndexB < orderedIndexA)
@@ -440,21 +439,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     orderedIndexB = vc.IndexA;
                 }
 
-                while (true)
-                {
-                    if (Interlocked.CompareExchange(ref Locks[orderedIndexA], 1, 0) == 0)
-                    {
-                        if (Interlocked.CompareExchange(ref Locks[orderedIndexB], 1, 0) == 0)
-                        {
-                            break;
-                        }
-
-                        Interlocked.Exchange(ref Locks[orderedIndexA], 0);
-                    }
-
-                    Thread.Sleep(0);
-                }
-
+                AcquireContactLocks(orderedIndexA, orderedIndexB);
 
                 int indexA = vc.IndexA;
                 int indexB = vc.IndexB;
@@ -462,7 +447,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 float iA = vc.InvIa;
                 float mB = vc.InvMassB;
                 float iB = vc.InvIb;
-                int pointCount = vc.PointCount;
 
                 Vector2F vA = Velocities[indexA].V;
                 float wA = Velocities[indexA].W;
@@ -470,197 +454,17 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 float wB = Velocities[indexB].W;
 
                 Vector2F normal = vc.Normal;
-                Vector2F tangent = MathUtils.Rot270(ref normal);
                 float friction = vc.Friction;
 
-                for (int j = 0; j < pointCount; ++j)
-                {
-                    VelocityConstraintPoint vcp = vc.Points[j];
-
-                    Vector2F dv = vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra);
-
-                    float vt = Vector2F.Dot(dv, tangent) - vc.TangentSpeed;
-                    float lambda = vcp.TangentMass * -vt;
-
-                    float maxFriction = friction * vcp.NormalImpulse;
-                    float newImpulse = MathUtils.Clamp(vcp.TangentImpulse + lambda, -maxFriction, maxFriction);
-                    lambda = newImpulse - vcp.TangentImpulse;
-                    vcp.TangentImpulse = newImpulse;
-
-                    Vector2F p = lambda * tangent;
-
-                    vA -= mA * p;
-                    wA -= iA * MathUtils.Cross(ref vcp.Ra, ref p);
-
-                    vB += mB * p;
-                    wB += iB * MathUtils.Cross(ref vcp.Rb, ref p);
-                }
+                SolveFrictionImpulse(vc, ref vA, ref wA, ref vB, ref wB, ref normal, friction, mA, iA, mB, iB);
 
                 if (vc.PointCount == 1)
                 {
-                    VelocityConstraintPoint vcp = vc.Points[0];
-
-                    Vector2F dv = vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra);
-
-                    float vn = Vector2F.Dot(dv, normal);
-                    float lambda = -vcp.NormalMass * (vn - vcp.VelocityBias);
-
-                    float newImpulse = Math.Max(vcp.NormalImpulse + lambda, 0.0f);
-                    lambda = newImpulse - vcp.NormalImpulse;
-                    vcp.NormalImpulse = newImpulse;
-
-                    Vector2F p = lambda * normal;
-                    vA -= mA * p;
-                    wA -= iA * MathUtils.Cross(ref vcp.Ra, ref p);
-
-                    vB += mB * p;
-                    wB += iB * MathUtils.Cross(ref vcp.Rb, ref p);
+                    SolveSinglePointNormal(ref vA, ref wA, ref vB, ref wB, vc, ref normal, mA, iA, mB, iB);
                 }
                 else
                 {
-                    VelocityConstraintPoint cp1 = vc.Points[0];
-                    VelocityConstraintPoint cp2 = vc.Points[1];
-
-                    Vector2F a = new Vector2F(cp1.NormalImpulse, cp2.NormalImpulse);
-                    Vector2F dv1 = vB + MathUtils.Cross(wB, ref cp1.Rb) - vA - MathUtils.Cross(wA, ref cp1.Ra);
-                    Vector2F dv2 = vB + MathUtils.Cross(wB, ref cp2.Rb) - vA - MathUtils.Cross(wA, ref cp2.Ra);
-
-                    float vn1 = Vector2F.Dot(dv1, normal);
-                    float vn2 = Vector2F.Dot(dv2, normal);
-
-                    Vector2F b = new Vector2F();
-                    b.X = vn1 - cp1.VelocityBias;
-                    b.Y = vn2 - cp2.VelocityBias;
-
-                    b -= MathUtils.Mul(ref vc.K, ref a);
-
-                    while (true)
-                    {
-                        //
-                        // Case 1: vn = 0
-                        //
-                        // 0 = A * x + b'
-                        //
-                        // Solve for x:
-                        //
-                        // x = - inv(A) * b'
-                        //
-                        Vector2F x = -MathUtils.Mul(ref vc.NormalMass, ref b);
-
-                        if ((x.X >= 0.0f) && (x.Y >= 0.0f))
-                        {
-                            // Get the incremental impulse
-                            Vector2F d = x - a;
-
-                            // Apply incremental impulse
-                            Vector2F p1 = d.X * normal;
-                            Vector2F p2 = d.Y * normal;
-                            vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(ref cp1.Ra, ref p1) + MathUtils.Cross(ref cp2.Ra, ref p2));
-
-                            vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(ref cp1.Rb, ref p1) + MathUtils.Cross(ref cp2.Rb, ref p2));
-
-                            // Accumulate
-                            cp1.NormalImpulse = x.X;
-                            cp2.NormalImpulse = x.Y;
-
-                            break;
-                        }
-
-                        //
-                        // Case 2: vn1 = 0 and x2 = 0
-                        //
-                        //   0 = a11 * x1 + a12 * 0 + b1' 
-                        // vn2 = a21 * x1 + a22 * 0 + b2'
-                        //
-                        x.X = -cp1.NormalMass * b.X;
-                        x.Y = 0.0f;
-                        vn2 = vc.K.Ex.Y * x.X + b.Y;
-
-                        if ((x.X >= 0.0f) && (vn2 >= 0.0f))
-                        {
-                            // Get the incremental impulse
-                            Vector2F d = x - a;
-
-                            // Apply incremental impulse
-                            Vector2F p1 = d.X * normal;
-                            Vector2F p2 = d.Y * normal;
-                            vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(ref cp1.Ra, ref p1) + MathUtils.Cross(ref cp2.Ra, ref p2));
-
-                            vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(ref cp1.Rb, ref p1) + MathUtils.Cross(ref cp2.Rb, ref p2));
-
-                            // Accumulate
-                            cp1.NormalImpulse = x.X;
-                            cp2.NormalImpulse = x.Y;
-
-                            break;
-                        }
-
-
-                        //
-                        // Case 3: vn2 = 0 and x1 = 0
-                        //
-                        // vn1 = a11 * 0 + a12 * x2 + b1' 
-                        //   0 = a21 * 0 + a22 * x2 + b2'
-                        //
-                        x.X = 0.0f;
-                        x.Y = -cp2.NormalMass * b.Y;
-                        vn1 = vc.K.Ey.X * x.Y + b.X;
-
-                        if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
-                        {
-                            // Resubstitute for the incremental impulse
-                            Vector2F d = x - a;
-
-                            // Apply incremental impulse
-                            Vector2F p1 = d.X * normal;
-                            Vector2F p2 = d.Y * normal;
-                            vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(ref cp1.Ra, ref p1) + MathUtils.Cross(ref cp2.Ra, ref p2));
-
-                            vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(ref cp1.Rb, ref p1) + MathUtils.Cross(ref cp2.Rb, ref p2));
-
-                            // Accumulate
-                            cp1.NormalImpulse = x.X;
-                            cp2.NormalImpulse = x.Y;
-
-                            break;
-                        }
-
-                        //
-                        // Case 4: x1 = 0 and x2 = 0
-                        // 
-                        // vn1 = b1
-                        x.X = 0.0f;
-                        x.Y = 0.0f;
-                        vn1 = b.X;
-                        vn2 = b.Y;
-
-                        if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
-                        {
-                            // Resubstitute for the incremental impulse
-                            Vector2F d = x - a;
-
-                            // Apply incremental impulse
-                            Vector2F p1 = d.X * normal;
-                            Vector2F p2 = d.Y * normal;
-                            vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(ref cp1.Ra, ref p1) + MathUtils.Cross(ref cp2.Ra, ref p2));
-
-                            vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(ref cp1.Rb, ref p1) + MathUtils.Cross(ref cp2.Rb, ref p2));
-
-                            // Accumulate
-                            cp1.NormalImpulse = x.X;
-                            cp2.NormalImpulse = x.Y;
-                        }
-
-                        break;
-                    }
+                    SolveTwoPointNormal(ref vA, ref wA, ref vB, ref wB, vc, ref normal, mA, iA, mB, iB);
                 }
 
                 Velocities[indexA].V = vA;
@@ -668,10 +472,173 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Velocities[indexB].V = vB;
                 Velocities[indexB].W = wB;
 
-
-                Interlocked.Exchange(ref Locks[orderedIndexB], 0);
-                Interlocked.Exchange(ref Locks[orderedIndexA], 0);
+                ReleaseContactLocks(orderedIndexB, orderedIndexA);
             }
+        }
+
+        private void AcquireContactLocks(int indexA, int indexB)
+        {
+            while (true)
+            {
+                if (Interlocked.CompareExchange(ref Locks[indexA], 1, 0) == 0)
+                {
+                    if (Interlocked.CompareExchange(ref Locks[indexB], 1, 0) == 0)
+                    {
+                        break;
+                    }
+
+                    Interlocked.Exchange(ref Locks[indexA], 0);
+                }
+
+                Thread.Sleep(0);
+            }
+        }
+
+        private void ReleaseContactLocks(int indexB, int indexA)
+        {
+            Interlocked.Exchange(ref Locks[indexB], 0);
+            Interlocked.Exchange(ref Locks[indexA], 0);
+        }
+
+        private static void SolveFrictionImpulse(
+            ContactVelocityConstraint vc,
+            ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
+            ref Vector2F normal, float friction,
+            float mA, float iA, float mB, float iB)
+        {
+            Vector2F tangent = MathUtils.Rot270(ref normal);
+
+            for (int j = 0; j < vc.PointCount; ++j)
+            {
+                VelocityConstraintPoint vcp = vc.Points[j];
+
+                Vector2F dv = vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra);
+
+                float vt = Vector2F.Dot(dv, tangent) - vc.TangentSpeed;
+                float lambda = vcp.TangentMass * -vt;
+
+                float maxFriction = friction * vcp.NormalImpulse;
+                float newImpulse = MathUtils.Clamp(vcp.TangentImpulse + lambda, -maxFriction, maxFriction);
+                lambda = newImpulse - vcp.TangentImpulse;
+                vcp.TangentImpulse = newImpulse;
+
+                Vector2F p = lambda * tangent;
+
+                vA -= mA * p;
+                wA -= iA * MathUtils.Cross(ref vcp.Ra, ref p);
+
+                vB += mB * p;
+                wB += iB * MathUtils.Cross(ref vcp.Rb, ref p);
+            }
+        }
+
+        private static void SolveSinglePointNormal(
+            ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
+            ContactVelocityConstraint vc, ref Vector2F normal,
+            float mA, float iA, float mB, float iB)
+        {
+            VelocityConstraintPoint vcp = vc.Points[0];
+
+            Vector2F dv = vB + MathUtils.Cross(wB, ref vcp.Rb) - vA - MathUtils.Cross(wA, ref vcp.Ra);
+
+            float vn = Vector2F.Dot(dv, normal);
+            float lambda = -vcp.NormalMass * (vn - vcp.VelocityBias);
+
+            float newImpulse = Math.Max(vcp.NormalImpulse + lambda, 0.0f);
+            lambda = newImpulse - vcp.NormalImpulse;
+            vcp.NormalImpulse = newImpulse;
+
+            Vector2F p = lambda * normal;
+            vA -= mA * p;
+            wA -= iA * MathUtils.Cross(ref vcp.Ra, ref p);
+
+            vB += mB * p;
+            wB += iB * MathUtils.Cross(ref vcp.Rb, ref p);
+        }
+
+        private static void SolveTwoPointNormal(
+            ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
+            ContactVelocityConstraint vc, ref Vector2F normal,
+            float mA, float iA, float mB, float iB)
+        {
+            VelocityConstraintPoint cp1 = vc.Points[0];
+            VelocityConstraintPoint cp2 = vc.Points[1];
+
+            Vector2F a = new Vector2F(cp1.NormalImpulse, cp2.NormalImpulse);
+            Vector2F dv1 = vB + MathUtils.Cross(wB, ref cp1.Rb) - vA - MathUtils.Cross(wA, ref cp1.Ra);
+            Vector2F dv2 = vB + MathUtils.Cross(wB, ref cp2.Rb) - vA - MathUtils.Cross(wA, ref cp2.Ra);
+
+            float vn1 = Vector2F.Dot(dv1, normal);
+            float vn2 = Vector2F.Dot(dv2, normal);
+
+            Vector2F b = new Vector2F();
+            b.X = vn1 - cp1.VelocityBias;
+            b.Y = vn2 - cp2.VelocityBias;
+
+            b -= MathUtils.Mul(ref vc.K, ref a);
+
+            while (true)
+            {
+                Vector2F x = -MathUtils.Mul(ref vc.NormalMass, ref b);
+
+                if ((x.X >= 0.0f) && (x.Y >= 0.0f))
+                {
+                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, cp1, cp2, normal, mA, iA, mB, iB);
+                    break;
+                }
+
+                x.X = -cp1.NormalMass * b.X;
+                x.Y = 0.0f;
+                vn2 = vc.K.Ex.Y * x.X + b.Y;
+
+                if ((x.X >= 0.0f) && (vn2 >= 0.0f))
+                {
+                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, cp1, cp2, normal, mA, iA, mB, iB);
+                    break;
+                }
+
+                x.X = 0.0f;
+                x.Y = -cp2.NormalMass * b.Y;
+                vn1 = vc.K.Ey.X * x.Y + b.X;
+
+                if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
+                {
+                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, cp1, cp2, normal, mA, iA, mB, iB);
+                    break;
+                }
+
+                x.X = 0.0f;
+                x.Y = 0.0f;
+                vn1 = b.X;
+                vn2 = b.Y;
+
+                if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
+                {
+                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, cp1, cp2, normal, mA, iA, mB, iB);
+                }
+
+                break;
+            }
+        }
+
+        private static void ApplyBlockImpulse(
+            ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
+            Vector2F x, Vector2F a,
+            VelocityConstraintPoint cp1, VelocityConstraintPoint cp2, Vector2F normal,
+            float mA, float iA, float mB, float iB)
+        {
+            Vector2F d = x - a;
+
+            Vector2F p1 = d.X * normal;
+            Vector2F p2 = d.Y * normal;
+            vA -= mA * (p1 + p2);
+            wA -= iA * (MathUtils.Cross(ref cp1.Ra, ref p1) + MathUtils.Cross(ref cp2.Ra, ref p2));
+
+            vB += mB * (p1 + p2);
+            wB += iB * (MathUtils.Cross(ref cp1.Rb, ref p1) + MathUtils.Cross(ref cp2.Rb, ref p2));
+
+            cp1.NormalImpulse = x.X;
+            cp2.NormalImpulse = x.Y;
         }
 
         /// <summary>
