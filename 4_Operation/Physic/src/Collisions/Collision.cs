@@ -710,14 +710,23 @@ namespace Alis.Core.Physic.Collisions
             float s = EdgeSeparation(poly1, ref xf1To2, edge, poly2);
 
             // Check the separation for the previous edge normal.
-            int prevEdge = edge - 1 >= 0 ? edge - 1 : count1 - 1;
+            int prevEdge = GetPrevEdge(edge, count1);
             float sPrev = EdgeSeparation(poly1, ref xf1To2, prevEdge, poly2);
 
             // Check the separation for the next edge normal.
-            int nextEdge = edge + 1 < count1 ? edge + 1 : 0;
+            int nextEdge = GetNextEdge(edge, count1);
             float sNext = EdgeSeparation(poly1, ref xf1To2, nextEdge, poly2);
 
-            // Find the best edge and the search direction.
+            // Find the best edge and perform local search.
+            return FindBestEdge(poly1, ref xf1To2, edge, s, poly2, prevEdge, sPrev, nextEdge, sNext, count1, out edgeIndex);
+        }
+
+        private static int GetPrevEdge(int edge, int count) => edge - 1 >= 0 ? edge - 1 : count - 1;
+        private static int GetNextEdge(int edge, int count) => edge + 1 < count ? edge + 1 : 0;
+
+        private static float FindBestEdge(PolygonShape poly1, ref ControllerTransform xf1To2, int edge, float s,
+            PolygonShape poly2, int prevEdge, float sPrev, int nextEdge, float sNext, int count1, out int edgeIndex)
+        {
             int bestEdge;
             float bestSeparation;
             int increment;
