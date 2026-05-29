@@ -325,17 +325,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Body seed = BodyList.List[index];
 
-                if (seed.Island)
-                {
-                    continue;
-                }
-
-                if (!seed.Awake || !seed.Enabled)
-                {
-                    continue;
-                }
-
-                if (seed.GetBodyType == BodyType.Static)
+                if (!ShouldProcessBody(seed))
                 {
                     continue;
                 }
@@ -344,37 +334,58 @@ namespace Alis.Core.Physic.Dynamics
                 BuildIslandDFS(seed);
                 GetIsland.Solve(ref step, ref _gravity);
 
-                // Post solve cleanup.
-                for (int i = 0; i < GetIsland.BodyCount; ++i)
-                {
-                    // Allow static bodies to participate in other islands.
-                    Body b = GetIsland.Bodies[i];
-                    if (b.GetBodyType == BodyType.Static)
-                    {
-                        b.Island = false;
-                    }
-                }
+                ClearIslandFlagsForStaticBodies();
             }
 
-            foreach (Body b in BodyList)
-            {
-                // If a body was not in an island then it did not move.
-                if (!b.Island)
-                {
-                    continue;
-                }
-
-                if (b.GetBodyType == BodyType.Static)
-                {
-                    continue;
-                }
-
-                // Update fixtures (for broad-phase).
-                b.SynchronizeFixtures();
-            }
+            SynchronizeNonStaticIslandBodies();
 
             // Look for new contacts.
             ContactManager.FindNewContacts();
+        }
+
+        private bool ShouldProcessBody(Body body)
+        {
+            if (body.Island)
+            {
+                return false;
+            }
+
+            if (!body.Awake || !body.Enabled)
+            {
+                return false;
+            }
+
+            if (body.GetBodyType == BodyType.Static)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private void ClearIslandFlagsForStaticBodies()
+        {
+            for (int i = 0; i < GetIsland.BodyCount; ++i)
+            {
+                Body b = GetIsland.Bodies[i];
+                if (b.GetBodyType == BodyType.Static)
+                {
+                    b.Island = false;
+                }
+            }
+        }
+
+        private void SynchronizeNonStaticIslandBodies()
+        {
+            foreach (Body b in BodyList)
+            {
+                if (!b.Island || b.GetBodyType == BodyType.Static)
+                {
+                    continue;
+                }
+
+                b.SynchronizeFixtures();
+            }
         }
 
         private void ClearIslandFlags()
