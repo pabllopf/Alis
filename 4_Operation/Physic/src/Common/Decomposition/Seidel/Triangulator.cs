@@ -262,9 +262,10 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 // Point p must be to the left of point q
                 if (p.X > q.X)
                 {
-                    edges.Add(new Edge(q, p));
+                    (q, p) = (p, q);
                 }
-                else if (p.X < q.X)
+
+                if (p.X < q.X)
                 {
                     edges.Add(new Edge(p, q));
                 }
