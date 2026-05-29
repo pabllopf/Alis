@@ -128,6 +128,12 @@ class Program
 
 ---
 
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/chart?repos=pabllopf/alis&type=date&legend=top-left)](https://www.star-history.com/?repos=pabllopf%2Falis&type=date&legend=top-left)
+
+---
+
 ## 📦 NuGet Packages Overview
 
 The ALIS framework is built with a modular architecture to provide flexibility, scalability, and performance
