@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Common.Logic
             Array.Sort(vals, 0, valIndex, _rdc);
             _data.Clear();
 
-            ProcessRayCastResults(vals, valIndex, pos, radius, exploded);
+            ProcessRayCastResults(vals, valIndex, pos, radius);
 
             ApplyExplosionImpulses(pos, radius, maxForce, exploded);
 
@@ -255,7 +255,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     Processes ray cast results to populate the internal shape data list.
         /// </summary>
-        private void ProcessRayCastResults(float[] vals, int valIndex, Vector2F pos, float radius, Dictionary<Fixture, Vector2F> exploded)
+        private void ProcessRayCastResults(float[] vals, int valIndex, Vector2F pos, float radius)
         {
             bool rayMissed = true;
 
