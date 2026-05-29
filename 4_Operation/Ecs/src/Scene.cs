@@ -1815,33 +1815,11 @@ namespace Alis.Core.Ecs
 
             DeleteComponentData deleteData = new DeleteComponentData(currentLookup.Index, deletedIndex);
 
-            for (int i = 0; i < fromComponents.Length;)
+            for (int i = 0; i < fromComponents.Length; i++)
             {
-                ComponentId componentToMoveFromFromToTo = fromComponents[i];
-                int toIndex = Unsafe.Add(ref destMap[0], componentToMoveFromFromToTo.RawIndex);
-
-                i++;
-
-                if (toIndex == 0)
-                {
-                    ComponentStorageBase runner = Unsafe.Add(ref fromRunners[0], i);
-                    ref ComponentHandle writeTo = ref Unsafe.Add(ref MemoryMarshal.GetReference(componentHandles), writeToIndex++);
-                    if (hasGenericRemoveEvent)
-                    {
-                        writeTo = runner.Store(currentLookup.Index);
-                    }
-                    else //kinda illegal but whatever
-                    {
-                        writeTo = new ComponentHandle(0, componentToMoveFromFromToTo);
-                    }
-
-                    runner.Delete(deleteData);
-                }
-                else
-                {
-                    Unsafe.Add(ref destRunners[0], toIndex).PullComponentFromAndClearTryDevirt(
-                        Unsafe.Add(ref fromRunners[0], i), nextLocation.Index, currentLookup.Index, deletedIndex);
-                }
+                TransferComponent(fromRunners, destRunners, destMap, i + 1, fromComponents[i],
+                    nextLocation.Index, currentLookup.Index, deletedIndex,
+                    componentHandles, ref writeToIndex, hasGenericRemoveEvent, deleteData);
             }
 
             //copy everything but 
@@ -1855,35 +1833,75 @@ namespace Alis.Core.Ecs
             if (GameObjectLocation.HasEventFlag(currentLookup.Flags | WorldEventFlags,
                     GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
             {
-                if (ComponentRemovedEvent.HasListeners)
-                {
-                    foreach (ComponentHandle handle in componentHandles)
-                    {
-                        ComponentRemovedEvent.Invoke(gameObject, handle.ComponentId);
-                    }
-                }
+                FireComponentRemovedEvent(ComponentRemovedEvent, gameObject, componentHandles);
 
                 if (GameObjectLocation.HasEventFlag(currentLookup.Flags,
                         GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
                 {
-                    EventRecord lookup = EventLookup[gameObject.EntityIdOnly];
+                    FireComponentRemovedGenericEvent(gameObject, componentHandles, hasGenericRemoveEvent);
+                }
+            }
+        }
 
-                    if (hasGenericRemoveEvent)
-                    {
-                        foreach (ComponentHandle handle in componentHandles)
-                        {
-                            lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
-                            handle.InvokeComponentEventAndConsume(gameObject, lookup.Remove.GenericEvent);
-                        }
-                    }
-                    else
-                        //no need to dispose here, as they were never created
-                    {
-                        foreach (ComponentHandle handle in componentHandles)
-                        {
-                            lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
-                        }
-                    }
+        private static void TransferComponent(
+            ComponentStorageBase[] fromRunners, ComponentStorageBase[] destRunners,
+            byte[] destMap, int runnerIndex, ComponentId componentId,
+            int nextIndex, int currentIndex, int deletedIndex,
+            Span<ComponentHandle> componentHandles, ref int writeToIndex,
+            bool hasGenericRemoveEvent, DeleteComponentData deleteData)
+        {
+            int toIndex = Unsafe.Add(ref destMap[0], componentId.RawIndex);
+
+            if (toIndex == 0)
+            {
+                ComponentStorageBase runner = Unsafe.Add(ref fromRunners[0], runnerIndex);
+                ref ComponentHandle writeTo = ref Unsafe.Add(ref MemoryMarshal.GetReference(componentHandles), writeToIndex++);
+                if (hasGenericRemoveEvent)
+                {
+                    writeTo = runner.Store(currentIndex);
+                }
+                else //kinda illegal but whatever
+                {
+                    writeTo = new ComponentHandle(0, componentId);
+                }
+
+                runner.Delete(deleteData);
+            }
+            else
+            {
+                Unsafe.Add(ref destRunners[0], toIndex).PullComponentFromAndClearTryDevirt(
+                    Unsafe.Add(ref fromRunners[0], runnerIndex), nextIndex, currentIndex, deletedIndex);
+            }
+        }
+
+        private static void FireComponentRemovedEvent(
+            Event<ComponentId> componentRemovedEvent, GameObject gameObject,
+            Span<ComponentHandle> componentHandles)
+        {
+            if (!componentRemovedEvent.HasListeners)
+            {
+                return;
+            }
+
+            foreach (ComponentHandle handle in componentHandles)
+            {
+                componentRemovedEvent.Invoke(gameObject, handle.ComponentId);
+            }
+        }
+
+        private void FireComponentRemovedGenericEvent(
+            GameObject gameObject, Span<ComponentHandle> componentHandles,
+            bool hasGenericRemoveEvent)
+        {
+            EventRecord lookup = EventLookup[gameObject.EntityIdOnly];
+
+            foreach (ComponentHandle handle in componentHandles)
+            {
+                lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
+
+                if (hasGenericRemoveEvent)
+                {
+                    handle.InvokeComponentEventAndConsume(gameObject, lookup.Remove.GenericEvent);
                 }
             }
         }
