@@ -901,7 +901,8 @@ namespace Alis.Core.Physic.Collisions
                     offset2 = Vector2F.Dot(normal2, centroidB - v2);
                 }
 
-                DetermineCollisionNormals(hasVertex0, hasVertex3, convex1, convex2, offset0, offset1, offset2, normal1, normal0, normal2,
+                DetermineCollisionNormals(
+                    new CollisionNormalInputs(hasVertex0, hasVertex3, convex1, convex2, offset0, offset1, offset2, normal1, normal0, normal2),
                     out front, out normal, out lowerLimit, out upperLimit);
 
                 // Get polygonB in frameA
@@ -1193,62 +1194,60 @@ namespace Alis.Core.Physic.Collisions
             }
 
             /// <summary>
+            ///     Input data for collision normal calculation.
+            /// </summary>
+            private record struct CollisionNormalInputs(
+                bool HasVertex0, bool HasVertex3,
+                bool Convex1, bool Convex2,
+                float Offset0, float Offset1, float Offset2,
+                Vector2F Normal1, Vector2F Normal0, Vector2F Normal2);
+
+            /// <summary>
             ///     Determines the collision front/back state and normal limits.
             /// </summary>
             private static void DetermineCollisionNormals(
-                bool hasVertex0, bool hasVertex3,
-                bool convex1, bool convex2,
-                float offset0, float offset1, float offset2,
-                Vector2F normal1, Vector2F normal0, Vector2F normal2,
+                CollisionNormalInputs inputs,
                 out bool front, out Vector2F normal, out Vector2F lowerLimit, out Vector2F upperLimit)
             {
-                front = CalculateFrontState(hasVertex0, hasVertex3, convex1, convex2, offset0, offset1, offset2);
+                front = CalculateFrontState(inputs);
                 var sign = front ? 1.0f : -1.0f;
-                normal = normal1 * sign;
+                normal = inputs.Normal1 * sign;
 
-                (lowerLimit, upperLimit) = ComputeLimits(hasVertex0, hasVertex3, convex1, convex2, front, normal0, normal1, normal2);
+                (lowerLimit, upperLimit) = ComputeLimits(inputs, front);
             }
 
             /// <summary>
             ///     Calculates whether the collision is on the front side based on vertex presence, convexity, and offsets.
             /// </summary>
-            private static bool CalculateFrontState(
-                bool hasVertex0, bool hasVertex3,
-                bool convex1, bool convex2,
-                float offset0, float offset1, float offset2)
+            private static bool CalculateFrontState(CollisionNormalInputs i)
             {
-                if (hasVertex0 && hasVertex3)
-                    return convex1 && convex2 ? IsFrontAny(offset0, offset1, offset2)
-                        : convex1 ? IsFrontFirstOrBoth(offset0, offset1, offset2)
-                        : convex2 ? IsFrontLastOrBoth(offset0, offset1, offset2)
-                        : IsFrontAll(offset0, offset1, offset2);
+                if (i.HasVertex0 && i.HasVertex3)
+                    return i.Convex1 && i.Convex2 ? IsFrontAny(i.Offset0, i.Offset1, i.Offset2)
+                        : i.Convex1 ? IsFrontFirstOrBoth(i.Offset0, i.Offset1, i.Offset2)
+                        : i.Convex2 ? IsFrontLastOrBoth(i.Offset0, i.Offset1, i.Offset2)
+                        : IsFrontAll(i.Offset0, i.Offset1, i.Offset2);
 
-                if (hasVertex0)
-                    return convex1 ? IsFrontAny(offset0, offset1, float.NaN)
-                        : IsFrontBoth(offset0, offset1);
+                if (i.HasVertex0)
+                    return i.Convex1 ? IsFrontAny(i.Offset0, i.Offset1, float.NaN)
+                        : IsFrontBoth(i.Offset0, i.Offset1);
 
-                if (hasVertex3)
-                    return convex2 ? IsFrontAny(float.NaN, offset1, offset2)
-                        : IsFrontBoth(offset1, offset2);
+                if (i.HasVertex3)
+                    return i.Convex2 ? IsFrontAny(float.NaN, i.Offset1, i.Offset2)
+                        : IsFrontBoth(i.Offset1, i.Offset2);
 
-                return offset1 >= 0.0f;
+                return i.Offset1 >= 0.0f;
             }
 
             /// <summary>
             ///     Computes the lower and upper limits based on collision state.
             /// </summary>
-            private static (Vector2F lower, Vector2F upper) ComputeLimits(
-                bool hasVertex0, bool hasVertex3,
-                bool convex1, bool convex2,
-                bool front, Vector2F normal0, Vector2F normal1, Vector2F normal2)
+            private static (Vector2F lower, Vector2F upper) ComputeLimits(CollisionNormalInputs i, bool front)
             {
                 if (front)
-                    return (SelectFrontLowerLimit(hasVertex0, hasVertex3, convex1, convex2, normal0, normal1),
-                            SelectFrontUpperLimit(hasVertex0, hasVertex3, convex1, convex2, normal1, normal2));
+                    return (SelectFrontLowerLimit(i), SelectFrontUpperLimit(i));
 
-                var neg = -normal1;
-                return (SelectBackLowerLimit(hasVertex0, hasVertex3, convex1, convex2, neg, normal1, normal2),
-                        SelectBackUpperLimit(hasVertex0, hasVertex3, convex1, convex2, neg, normal1, normal0));
+                var neg = -i.Normal1;
+                return (SelectBackLowerLimit(i, neg), SelectBackUpperLimit(i, neg));
             }
 
             private static bool IsFrontAny(float a, float b, float c) =>
@@ -1266,32 +1265,32 @@ namespace Alis.Core.Physic.Collisions
             private static bool IsFrontBoth(float a, float b) =>
                 (a >= 0.0f) && (b >= 0.0f);
 
-            private static Vector2F SelectFrontLowerLimit(bool hasVertex0, bool hasVertex3, bool convex1, bool convex2, Vector2F normal0, Vector2F normal1)
+            private static Vector2F SelectFrontLowerLimit(CollisionNormalInputs i)
             {
-                if (hasVertex0 && hasVertex3) return convex1 && convex2 ? normal0 : convex1 ? normal0 : normal1;
-                if (hasVertex0) return convex1 ? normal0 : normal1;
-                return normal1;
+                if (i.HasVertex0 && i.HasVertex3) return i.Convex1 && i.Convex2 ? i.Normal0 : i.Convex1 ? i.Normal0 : i.Normal1;
+                if (i.HasVertex0) return i.Convex1 ? i.Normal0 : i.Normal1;
+                return i.Normal1;
             }
 
-            private static Vector2F SelectFrontUpperLimit(bool hasVertex0, bool hasVertex3, bool convex1, bool convex2, Vector2F normal1, Vector2F normal2)
+            private static Vector2F SelectFrontUpperLimit(CollisionNormalInputs i)
             {
-                if (hasVertex0 && hasVertex3) return convex1 && convex2 ? normal2 : convex1 ? normal1 : normal2;
-                if (hasVertex0) return convex1 ? -normal1 : -normal1;
-                return normal2;
+                if (i.HasVertex0 && i.HasVertex3) return i.Convex1 && i.Convex2 ? i.Normal2 : i.Convex1 ? i.Normal1 : i.Normal2;
+                if (i.HasVertex0) return i.Convex1 ? -i.Normal1 : -i.Normal1;
+                return i.Normal2;
             }
 
-            private static Vector2F SelectBackLowerLimit(bool hasVertex0, bool hasVertex3, bool convex1, bool convex2, Vector2F neg, Vector2F normal1, Vector2F normal2)
+            private static Vector2F SelectBackLowerLimit(CollisionNormalInputs i, Vector2F neg)
             {
-                if (hasVertex0 && hasVertex3) return convex1 && convex2 ? neg : convex1 ? -normal2 : neg;
-                if (hasVertex0) return convex1 ? -neg : -neg;
-                return -normal2;
+                if (i.HasVertex0 && i.HasVertex3) return i.Convex1 && i.Convex2 ? neg : i.Convex1 ? -i.Normal2 : neg;
+                if (i.HasVertex0) return i.Convex1 ? -neg : -neg;
+                return -i.Normal2;
             }
 
-            private static Vector2F SelectBackUpperLimit(bool hasVertex0, bool hasVertex3, bool convex1, bool convex2, Vector2F neg, Vector2F normal1, Vector2F normal0)
+            private static Vector2F SelectBackUpperLimit(CollisionNormalInputs i, Vector2F neg)
             {
-                if (hasVertex0 && hasVertex3) return convex1 && convex2 ? neg : convex1 ? neg : -normal0;
-                if (hasVertex0) return convex1 ? neg : -normal0;
-                return normal1;
+                if (i.HasVertex0 && i.HasVertex3) return i.Convex1 && i.Convex2 ? neg : i.Convex1 ? neg : -i.Normal0;
+                if (i.HasVertex0) return i.Convex1 ? neg : -i.Normal0;
+                return i.Normal1;
             }
 
             /// <summary>
