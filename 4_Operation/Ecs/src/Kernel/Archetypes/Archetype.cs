@@ -413,49 +413,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             DeleteComponentData args = new DeleteComponentData(index, NextComponentIndex);
 
-            ref ComponentStorageBase first = ref Components[0];
-
-            switch (Components.Length)
-            {
-                case 1: goto end;
-                case 2: goto len2;
-                case 3: goto len3;
-                case 4: goto len4;
-                case 5: goto len5;
-                case 6: goto len6;
-                case 7: goto len7;
-                case 8: goto len8;
-                case 9: goto len9;
-                default: goto @long;
-            }
-
-            @long:
             ComponentStorageBase[] comps = Components;
-            for (int i = 9; i < comps.Length; i++)
+
+            for (int i = 1; i < comps.Length; i++)
             {
                 comps[i].Delete(args);
             }
-
-
-            len9:
-            Unsafe.Add(ref first, 8).Delete(args);
-            len8:
-            Unsafe.Add(ref first, 7).Delete(args);
-            len7:
-            Unsafe.Add(ref first, 6).Delete(args);
-            len6:
-            Unsafe.Add(ref first, 5).Delete(args);
-            len5:
-            Unsafe.Add(ref first, 4).Delete(args);
-            len4:
-            Unsafe.Add(ref first, 3).Delete(args);
-            len3:
-            Unsafe.Add(ref first, 2).Delete(args);
-            len2:
-            Unsafe.Add(ref first, 1).Delete(args);
-
-
-            end:
 
             return Unsafe.Add(ref _entities[0], args.ToIndex) = Unsafe.Add(ref _entities[0], args.FromIndex);
         }
