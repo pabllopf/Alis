@@ -324,7 +324,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 if (!touching)
                 {
-                    ReportSeparation(bodyA, bodyB);
+                    ReportSeparation(bodyA, bodyB, contactManager);
                 }
             }
 
@@ -464,7 +464,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     Reports separation to both participants.
         /// </summary>
-        private void ReportSeparation(Body bodyA, Body bodyB)
+        private void ReportSeparation(Body bodyA, Body bodyB, ContactManager contactManager)
         {
             //Report the separation to both participants:
             OnSeparationEventHandler onFixtureSeparationHandlerA = FixtureA.OnSeparation;
@@ -496,7 +496,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 onBodySeparationHandlerB(FixtureB, FixtureA, this);
             }
 
-            EndContactDelegate endContactHandler = _contactManager.EndContact;
+            EndContactDelegate endContactHandler = contactManager.EndContact;
             if (endContactHandler != null)
             {
                 endContactHandler(this);

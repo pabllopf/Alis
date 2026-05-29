@@ -45,7 +45,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void ExecuteAction_ExecutesActionIfValid()
         {
-            DialogActionExecutor executor = new DialogActionExecutor();
+            
             DialogContext context = new DialogContext("testDialog");
             bool executed = false;
 
@@ -63,7 +63,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void ExecuteAction_WithNullAction_ThrowsException()
         {
-            DialogActionExecutor executor = new DialogActionExecutor();
+            
             DialogContext context = new DialogContext("testDialog");
 
             Assert.Throws<ArgumentNullException>(() => DialogActionExecutor.ExecuteAction(null, context));
@@ -75,7 +75,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         [Fact]
         public void ExecuteAction_WithNullContext_ThrowsException()
         {
-            DialogActionExecutor executor = new DialogActionExecutor();
+            
             IDialogAction action = new CallbackDialogAction("testAction");
 
             Assert.Throws<ArgumentNullException>(() => DialogActionExecutor.ExecuteAction(action, null));
