@@ -949,19 +949,7 @@ namespace Alis.Core.Physic.Collisions
                 const float kRelativeTol = 0.98f;
                 const float kAbsoluteTol = 0.001f;
 
-                EpAxis primaryAxis;
-                if (polygonAxis.Type == EpAxisType.Unknown)
-                {
-                    primaryAxis = edgeAxis;
-                }
-                else if (polygonAxis.Separation > kRelativeTol * edgeAxis.Separation + kAbsoluteTol)
-                {
-                    primaryAxis = polygonAxis;
-                }
-                else
-                {
-                    primaryAxis = edgeAxis;
-                }
+                EpAxis primaryAxis = SelectPrimaryAxis(polygonAxis, edgeAxis, kRelativeTol, kAbsoluteTol);
 
                 FixedArray2<ClipVertex> ie = new FixedArray2<ClipVertex>();
                 ReferenceFace rf;
@@ -1332,6 +1320,21 @@ namespace Alis.Core.Physic.Collisions
                     Normals = new Vector2F[maxPolygonVertices];
                     Count = 0;
                 }
+            }
+
+            private static EpAxis SelectPrimaryAxis(EpAxis polygonAxis, EpAxis edgeAxis, float kRelativeTol, float kAbsoluteTol)
+            {
+                if (polygonAxis.Type == EpAxisType.Unknown)
+                {
+                    return edgeAxis;
+                }
+
+                if (polygonAxis.Separation > kRelativeTol * edgeAxis.Separation + kAbsoluteTol)
+                {
+                    return polygonAxis;
+                }
+
+                return edgeAxis;
             }
         }
     }
