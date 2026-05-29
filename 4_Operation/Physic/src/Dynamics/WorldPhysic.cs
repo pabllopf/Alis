@@ -727,76 +727,75 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
                     {
-                        Contact contact = ce.Contact;
-
-                        if (GetIsland.BodyCount == GetIsland.BodyCapacity)
-                        {
-                            break;
-                        }
-
-                        if (GetIsland.ContactCount == GetIsland.ContactCapacity)
-                        {
-                            break;
-                        }
-
-                        if (contact.IslandFlag)
-                        {
-                            continue;
-                        }
-
-                        Body other = ce.Other;
-                        if ((other.GetBodyType == BodyType.Dynamic) &&
-                            !body.IsBullet && !other.IsBullet)
-                        {
-                            continue;
-                        }
-
-                        if (contact.FixtureA.GetIsSensor || contact.FixtureB.GetIsSensor)
-                        {
-                            continue;
-                        }
-
-                        Sweep backup = other.Sweep;
-                        if (!other.Island)
-                        {
-                            other.Advance(minAlpha);
-                        }
-
-                        contact.Update(ContactManager);
-
-                        if (!contact.Enabled)
-                        {
-                            other.Sweep = backup;
-                            other.SynchronizeTransform();
-                            continue;
-                        }
-
-                        if (!contact.IsTouching)
-                        {
-                            other.Sweep = backup;
-                            other.SynchronizeTransform();
-                            continue;
-                        }
-
-                        contact.IslandFlag = true;
-                        GetIsland.Add(contact);
-
-                        if (other.Island)
-                        {
-                            continue;
-                        }
-
-                        other.Island = true;
-
-                        if (other.GetBodyType != BodyType.Static)
-                        {
-                            other.Awake = true;
-                        }
-
-                        GetIsland.Add(other);
+                        ProcessToiContact(ce, body, minAlpha);
                     }
                 }
             }
+        }
+
+        private void ProcessToiContact(ContactEdge ce, Body body, float minAlpha)
+        {
+            Contact contact = ce.Contact;
+
+            if (GetIsland.BodyCount == GetIsland.BodyCapacity || GetIsland.ContactCount == GetIsland.ContactCapacity)
+            {
+                return;
+            }
+
+            if (contact.IslandFlag)
+            {
+                return;
+            }
+
+            Body other = ce.Other;
+            if ((other.GetBodyType == BodyType.Dynamic) && !body.IsBullet && !other.IsBullet)
+            {
+                return;
+            }
+
+            if (contact.FixtureA.GetIsSensor || contact.FixtureB.GetIsSensor)
+            {
+                return;
+            }
+
+            Sweep backup = other.Sweep;
+            if (!other.Island)
+            {
+                other.Advance(minAlpha);
+            }
+
+            contact.Update(ContactManager);
+
+            if (!contact.Enabled)
+            {
+                other.Sweep = backup;
+                other.SynchronizeTransform();
+                return;
+            }
+
+            if (!contact.IsTouching)
+            {
+                other.Sweep = backup;
+                other.SynchronizeTransform();
+                return;
+            }
+
+            contact.IslandFlag = true;
+            GetIsland.Add(contact);
+
+            if (other.Island)
+            {
+                return;
+            }
+
+            other.Island = true;
+
+            if (other.GetBodyType != BodyType.Static)
+            {
+                other.Awake = true;
+            }
+
+            GetIsland.Add(other);
         }
 
         /// <summary>
