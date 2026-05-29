@@ -323,18 +323,7 @@ namespace Alis.Core.Physic.Dynamics
 
             for (int index = BodyList.List.Count - 1; index >= 0; index--)
             {
-                Body seed = BodyList.List[index];
-
-                if (!ShouldProcessBody(seed))
-                {
-                    continue;
-                }
-
-                GetIsland.Clear();
-                BuildIslandDFS(seed);
-                GetIsland.Solve(ref step, ref _gravity);
-
-                ClearIslandFlagsForStaticBodies();
+                ProcessBodyAt(index, ref step);
             }
 
             SynchronizeNonStaticIslandBodies();
@@ -361,6 +350,21 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             return true;
+        }
+
+        private void ProcessBodyAt(int index, ref TimeStep step)
+        {
+            Body seed = BodyList.List[index];
+
+            if (!ShouldProcessBody(seed))
+            {
+                return;
+            }
+
+            GetIsland.Clear();
+            BuildIslandDFS(seed);
+            GetIsland.Solve(ref step, ref _gravity);
+            ClearIslandFlagsForStaticBodies();
         }
 
         private void ClearIslandFlagsForStaticBodies()
