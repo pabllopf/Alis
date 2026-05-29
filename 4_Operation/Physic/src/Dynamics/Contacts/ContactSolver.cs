@@ -43,6 +43,22 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     public class ContactSolver : IDisposable
     {
         /// <summary>
+        ///     Bundles contact constraint data for impulse application.
+        /// </summary>
+        private readonly struct ContactConstraintData
+        {
+            public readonly VelocityConstraintPoint Cp1;
+            public readonly VelocityConstraintPoint Cp2;
+            public readonly Vector2F Normal;
+
+            public ContactConstraintData(VelocityConstraintPoint cp1, VelocityConstraintPoint cp2, Vector2F normal)
+            {
+                Cp1 = cp1;
+                Cp2 = cp2;
+                Normal = normal;
+            }
+        }
+        /// <summary>
         ///     The countdown event
         /// </summary>
         private readonly CountdownEvent solveVelocityConstraintsWaitLock = new CountdownEvent(0);
@@ -577,13 +593,15 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             b -= MathUtils.Mul(ref vc.K, ref a);
 
+            ContactConstraintData constraint = new ContactConstraintData(cp1, cp2, normal);
+
             while (true)
             {
                 Vector2F x = -MathUtils.Mul(ref vc.NormalMass, ref b);
 
                 if ((x.X >= 0.0f) && (x.Y >= 0.0f))
                 {
-                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, cp1, cp2, normal, mA, iA, mB, iB);
+                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
                     break;
                 }
 
@@ -593,7 +611,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                 if ((x.X >= 0.0f) && (vn2 >= 0.0f))
                 {
-                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, cp1, cp2, normal, mA, iA, mB, iB);
+                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
                     break;
                 }
 
@@ -603,7 +621,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                 if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
                 {
-                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, cp1, cp2, normal, mA, iA, mB, iB);
+                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
                     break;
                 }
 
@@ -614,7 +632,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                 if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
                 {
-                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, cp1, cp2, normal, mA, iA, mB, iB);
+                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
                 }
 
                 break;
@@ -623,22 +641,21 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
         private static void ApplyBlockImpulse(
             ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
-            Vector2F x, Vector2F a,
-            VelocityConstraintPoint cp1, VelocityConstraintPoint cp2, Vector2F normal,
+            Vector2F x, Vector2F a, ContactConstraintData constraint,
             float mA, float iA, float mB, float iB)
         {
             Vector2F d = x - a;
 
-            Vector2F p1 = d.X * normal;
-            Vector2F p2 = d.Y * normal;
+            Vector2F p1 = d.X * constraint.Normal;
+            Vector2F p2 = d.Y * constraint.Normal;
             vA -= mA * (p1 + p2);
-            wA -= iA * (MathUtils.Cross(ref cp1.Ra, ref p1) + MathUtils.Cross(ref cp2.Ra, ref p2));
+            wA -= iA * (MathUtils.Cross(ref constraint.Cp1.Ra, ref p1) + MathUtils.Cross(ref constraint.Cp2.Ra, ref p2));
 
             vB += mB * (p1 + p2);
-            wB += iB * (MathUtils.Cross(ref cp1.Rb, ref p1) + MathUtils.Cross(ref cp2.Rb, ref p2));
+            wB += iB * (MathUtils.Cross(ref constraint.Cp1.Rb, ref p1) + MathUtils.Cross(ref constraint.Cp2.Rb, ref p2));
 
-            cp1.NormalImpulse = x.X;
-            cp2.NormalImpulse = x.Y;
+            constraint.Cp1.NormalImpulse = x.X;
+            constraint.Cp2.NormalImpulse = x.Y;
         }
 
         /// <summary>
