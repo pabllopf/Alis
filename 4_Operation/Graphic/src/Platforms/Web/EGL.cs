@@ -36,8 +36,7 @@ namespace Alis.Core.Graphic.Platforms.Web
     /// <summary>
     ///     The egl class
     /// </summary>
-    // S101: Static utility class with platform constants — expected to be long
-    [SuppressMessage("Design", "S101:Types should have at least one member", Justification = "Static utility class with platform constants")]
+#pragma warning disable S101 // Type name 'EGL' matches native C library naming convention
     public static class EGL
     {
         /// <summary>
