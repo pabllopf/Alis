@@ -37,10 +37,10 @@
     "file": "4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs",
     "line": 487,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:32:57Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321L": {
@@ -48,10 +48,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 700,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:29:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321M": {
@@ -59,10 +59,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 983,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:29:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbGMbZ4NfML321B": {
@@ -70,10 +70,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/OfComponent.cs",
     "line": 35,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:32:10Z",
+    "completedAt": "2026-05-29T09:32:57Z",
     "attemptCount": 0
   },
   "AZ1dvNgiMbZ4NfML3244": {
@@ -81,10 +81,10 @@
     "file": "4_Operation/Ecs/src/Scene.cs",
     "line": 88,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:29:40Z",
     "attemptCount": 0
   },
   "AZ1dvNgiMbZ4NfML325d": {
@@ -92,10 +92,10 @@
     "file": "4_Operation/Ecs/src/Scene.cs",
     "line": 1785,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:23:40Z",
+    "completedAt": "2026-05-29T09:27:17Z",
     "attemptCount": 0
   },
   "AZ1dvNfRMbZ4NfML324I": {
@@ -103,10 +103,10 @@
     "file": "4_Operation/Ecs/src/Updating/Runners/Update.cs",
     "line": 669,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:32:57Z",
     "attemptCount": 0
   },
   "AZ1dvNfaMbZ4NfML324Y": {
@@ -114,10 +114,10 @@
     "file": "4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
     "line": 278,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:32:57Z",
     "attemptCount": 0
   },
   "AZ5vyqzWSgPjiLhZ5n1Z": {
@@ -125,10 +125,10 @@
     "file": "1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs",
     "line": 46,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:29:40Z",
     "attemptCount": 0
   },
   "AZ5vyqy_SgPjiLhZ5n1Y": {
@@ -136,10 +136,10 @@
     "file": "1_Presentation/Extension/Language/Dialogue/src/Core/DialogActionExecutor.cs",
     "line": 40,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:29:40Z",
     "attemptCount": 0
   },
   "AZ1dvNq_MbZ4NfML33Ar": {
@@ -147,10 +147,10 @@
     "file": "6_Ideation/Memory/src/AssetRegistry.cs",
     "line": 265,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:27:17Z",
+    "completedAt": "2026-05-29T09:29:40Z",
     "attemptCount": 0
   },
   "AZ1dvNkbMbZ4NfML32-R": {
@@ -158,10 +158,10 @@
     "file": "4_Operation/Graphic/src/Platforms/Web/EGL.cs",
     "line": 39,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:17:18Z",
+    "completedAt": "2026-05-29T09:18:27Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321o": {
@@ -169,10 +169,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 409,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:36:19Z",
     "attemptCount": 0
   },
   "AZ1dvNb6MbZ4NfML3212": {
@@ -180,10 +180,10 @@
     "file": "4_Operation/Ecs/src/Kernel/CommandBuffer.cs",
     "line": 239,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:36:19Z",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML320O": {
@@ -191,10 +191,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 510,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:36:19Z",
     "attemptCount": 0
   },
   "AZ1dvNOwMbZ4NfML32vV": {
@@ -202,10 +202,10 @@
     "file": "4_Operation/Physic/src/Dynamics/Contacts/Contact.cs",
     "line": 289,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:32:57Z",
+    "completedAt": "2026-05-29T09:36:19Z",
     "attemptCount": 0
   },
   "AZ1dvNQeMbZ4NfML32wq": {
@@ -213,9 +213,9 @@
     "file": "4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
     "line": 309,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
+    "status": "in_progress",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:38:07Z",
     "completedAt": null,
     "attemptCount": 0
   },
@@ -235,10 +235,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 685,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:36:19Z",
     "attemptCount": 0
   },
   "AZ1dvNZMMbZ4NfML320X": {
@@ -279,10 +279,10 @@
     "file": "4_Operation/Ecs/src/GameObject.cs",
     "line": 223,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:21:40Z",
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvNhRMbZ4NfML327p": {
@@ -290,10 +290,10 @@
     "file": "4_Operation/Ecs/src/GameObject.cs",
     "line": 230,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321k": {
@@ -301,10 +301,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 165,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:19:54Z",
+    "completedAt": "2026-05-29T09:21:40Z",
     "attemptCount": 0
   },
   "AZ1dvNcEMbZ4NfML322C": {
@@ -323,10 +323,10 @@
     "file": "4_Operation/Ecs/src/Scene.cs",
     "line": 651,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:13:51Z",
+    "completedAt": "2026-05-29T09:14:46Z",
     "attemptCount": 0
   },
   "AZ1dvNgiMbZ4NfML325R": {
@@ -334,10 +334,10 @@
     "file": "4_Operation/Ecs/src/Scene.cs",
     "line": 773,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:14:46Z",
+    "completedAt": "2026-05-29T09:15:29Z",
     "attemptCount": 0
   },
   "AZ1dvNftMbZ4NfML324b": {
@@ -345,10 +345,10 @@
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 69,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:18:27Z",
+    "completedAt": "2026-05-29T09:19:54Z",
     "attemptCount": 0
   },
   "AZ1dvNftMbZ4NfML324c": {
@@ -356,10 +356,10 @@
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 107,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:19:54Z",
     "attemptCount": 0
   },
   "AZ1dvNftMbZ4NfML324d": {
@@ -367,10 +367,10 @@
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 130,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:19:54Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321l": {
@@ -389,10 +389,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 419,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321q": {
@@ -400,10 +400,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 420,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321r": {
@@ -411,10 +411,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 421,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321s": {
@@ -422,10 +422,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 422,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321t": {
@@ -433,10 +433,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 423,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321u": {
@@ -444,10 +444,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 424,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321v": {
@@ -455,10 +455,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 425,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321w": {
@@ -466,10 +466,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 426,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321x": {
@@ -477,10 +477,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 427,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvNbcMbZ4NfML321y": {
@@ -488,10 +488,10 @@
     "file": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "line": 428,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:23:40Z",
     "attemptCount": 0
   },
   "AZ1dvMjfMbZ4NfML32Az": {
@@ -499,10 +499,10 @@
     "file": "2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs",
     "line": 113,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:29:40Z",
+    "completedAt": "2026-05-29T09:32:10Z",
     "attemptCount": 0
   },
   "AZ1dvNe7MbZ4NfML323_": {
@@ -510,10 +510,10 @@
     "file": "4_Operation/Ecs/src/Redifinition/IsExternalInit.cs",
     "line": 39,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:13:05Z",
+    "completedAt": "2026-05-29T09:13:51Z",
     "attemptCount": 0
   },
   "AZ1dvNftMbZ4NfML324e": {
@@ -521,10 +521,10 @@
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 169,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:19:54Z",
     "attemptCount": 0
   },
   "AZ1dvNftMbZ4NfML324f": {
@@ -532,10 +532,10 @@
     "file": "4_Operation/Ecs/src/Updating/ComponentStorage.cs",
     "line": 187,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:19:54Z",
     "attemptCount": 0
   },
   "AZ1dvNaaMbZ4NfML3206": {
@@ -543,10 +543,10 @@
     "file": "4_Operation/Physic/src/Collisions/AABB.cs",
     "line": 314,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:36:19Z",
     "attemptCount": 0
   },
   "AZ1dvNY-MbZ4NfML320P": {
@@ -554,10 +554,10 @@
     "file": "4_Operation/Physic/src/Collisions/DynamicTree.cs",
     "line": 711,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:36:19Z",
     "attemptCount": 0
   },
   "AZ1dvNQ1MbZ4NfML32w-": {
@@ -576,10 +576,10 @@
     "file": "4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs",
     "line": 428,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:36:19Z",
+    "completedAt": "2026-05-29T09:38:07Z",
     "attemptCount": 0
   },
   "AZ1dvNMCMbZ4NfML32uB": {
@@ -587,10 +587,10 @@
     "file": "4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs",
     "line": 507,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:21:40Z",
     "attemptCount": 0
   },
   "AZ1dvNMCMbZ4NfML32uC": {
@@ -598,10 +598,10 @@
     "file": "4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs",
     "line": 507,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:21:40Z",
     "attemptCount": 0
   },
   "AZ1dvNMCMbZ4NfML32uD": {
@@ -609,10 +609,10 @@
     "file": "4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs",
     "line": 507,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:21:40Z",
     "attemptCount": 0
   },
   "AZ1dvNMCMbZ4NfML32uE": {
@@ -620,10 +620,10 @@
     "file": "4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs",
     "line": 507,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:21:40Z",
     "attemptCount": 0
   },
   "AZ1dvNVqMbZ4NfML32yj": {
@@ -631,10 +631,10 @@
     "file": "4_Operation/Physic/src/Common/PolygonManipulation/SimpleCombiner.cs",
     "line": 51,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:36:19Z",
     "attemptCount": 0
   },
   "AZ1dvMucMbZ4NfML32Mg": {
@@ -642,10 +642,10 @@
     "file": "1_Presentation/Extension/Graphic/Ui/src/Extras/GuizMo/Operation.cs",
     "line": 38,
     "severity": "MINOR",
-    "status": "in_progress",
+    "status": "fixed",
     "assignedWorker": "worker-macbookpro-001",
     "lockedAt": "2026-05-29T09:10:56Z",
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:13:05Z",
     "attemptCount": 0
   },
   "AZ1dvNOwMbZ4NfML32vX": {
@@ -653,10 +653,10 @@
     "file": "4_Operation/Physic/src/Dynamics/Contacts/Contact.cs",
     "line": 561,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-29T09:15:54Z",
+    "completedAt": "2026-05-29T09:16:58Z",
     "attemptCount": 0
   },
   "AZ1dvNMqMbZ4NfML32uT": {
