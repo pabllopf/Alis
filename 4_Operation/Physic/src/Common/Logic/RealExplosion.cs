@@ -189,75 +189,67 @@ namespace Alis.Core.Physic.Common.Logic
             int valIndex = 0;
             for (int i = 0; i < shapeCount; ++i)
             {
-                PolygonShape ps;
-                if (shapes[i].GetShape is CircleShape cs)
-                {
-                    Vertices v = new Vertices();
-                    Vector2F vec = Vector2F.Zero + new Vector2F(cs.GetRadius, 0);
-                    v.Add(vec);
-                    vec = Vector2F.Zero + new Vector2F(0, cs.GetRadius);
-                    v.Add(vec);
-                    vec = Vector2F.Zero + new Vector2F(-cs.GetRadius, cs.GetRadius);
-                    v.Add(vec);
-                    vec = Vector2F.Zero + new Vector2F(0, -cs.GetRadius);
-                    v.Add(vec);
-                    ps = new PolygonShape(v, 0);
-                }
-                else
-                {
-                    ps = shapes[i].GetShape as PolygonShape;
-                }
+                PolygonShape ps = ConvertToPolygonShape(shapes[i]);
+                if (ps == null) continue;
 
-                if ((shapes[i].GetBody.GetBodyType == BodyType.Dynamic) && (ps != null))
-                {
-                    Vector2F toCentroid = shapes[i].GetBody.GetWorldPoint(ps.MassData.Centroid) - pos;
-                    float angleToCentroid = (float)Math.Atan2(toCentroid.Y, toCentroid.X);
-                    float min = float.MaxValue;
-                    float max = float.MinValue;
-                    float minAbsolute = 0.0f;
-                    float maxAbsolute = 0.0f;
+                var body = shapes[i].GetBody;
+                if (body.GetBodyType != BodyType.Dynamic) continue;
 
-                    for (int j = 0; j < ps.Vertices.Count; ++j)
-                    {
-                        Vector2F toVertex = shapes[i].GetBody.GetWorldPoint(ps.Vertices[j]) - pos;
-                        float newAngle = (float)Math.Atan2(toVertex.Y, toVertex.X);
-                        float diff = newAngle - angleToCentroid;
-
-                        diff = (diff - Constant.Pi) % (2 * Constant.Pi);
-
-                        if (diff < 0.0f)
-                        {
-                            diff += 2 * Constant.Pi;
-                        }
-
-                        diff -= Constant.Pi;
-
-                        if (Math.Abs(diff) > Constant.Pi)
-                        {
-                            continue;
-                        }
-
-                        if (diff > max)
-                        {
-                            max = diff;
-                            maxAbsolute = newAngle;
-                        }
-
-                        if (diff < min)
-                        {
-                            min = diff;
-                            minAbsolute = newAngle;
-                        }
-                    }
-
-                    vals[valIndex] = minAbsolute;
-                    ++valIndex;
-                    vals[valIndex] = maxAbsolute;
-                    ++valIndex;
-                }
+                ComputeAngleBoundsForShape(ps, body, pos, vals, ref valIndex);
             }
 
             return valIndex;
+        }
+
+        private static PolygonShape ConvertToPolygonShape(Fixture fixture)
+        {
+            if (fixture.GetShape is CircleShape cs)
+                return CreatePolygonFromCircle(cs);
+
+            return fixture.GetShape as PolygonShape;
+        }
+
+        private static PolygonShape CreatePolygonFromCircle(CircleShape cs)
+        {
+            var v = new Vertices();
+            float r = cs.GetRadius;
+            v.Add(new Vector2F(r, 0));
+            v.Add(new Vector2F(0, r));
+            v.Add(new Vector2F(-r, r));
+            v.Add(new Vector2F(0, -r));
+            return new PolygonShape(v, 0);
+        }
+
+        private static void ComputeAngleBoundsForShape(PolygonShape ps, Body body, Vector2F pos, float[] vals, ref int valIndex)
+        {
+            Vector2F toCentroid = body.GetWorldPoint(ps.MassData.Centroid) - pos;
+            float angleToCentroid = (float)Math.Atan2(toCentroid.Y, toCentroid.X);
+
+            float min = float.MaxValue, max = float.MinValue;
+            float minAbsolute = 0.0f, maxAbsolute = 0.0f;
+
+            for (int j = 0; j < ps.Vertices.Count; ++j)
+            {
+                Vector2F toVertex = body.GetWorldPoint(ps.Vertices[j]) - pos;
+                float newAngle = (float)Math.Atan2(toVertex.Y, toVertex.X);
+                float diff = NormalizeAngleDifference(newAngle - angleToCentroid);
+
+                if (Math.Abs(diff) > Constant.Pi) continue;
+
+                if (diff > max) { max = diff; maxAbsolute = newAngle; }
+                if (diff < min) { min = diff; minAbsolute = newAngle; }
+            }
+
+            vals[valIndex++] = minAbsolute;
+            vals[valIndex++] = maxAbsolute;
+        }
+
+        private static float NormalizeAngleDifference(float diff)
+        {
+            diff = (diff - Constant.Pi) % (2 * Constant.Pi);
+            if (diff < 0.0f) diff += 2 * Constant.Pi;
+            diff -= Constant.Pi;
+            return diff;
         }
 
         /// <summary>
