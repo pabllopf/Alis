@@ -213,10 +213,10 @@
     "file": "4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
     "line": 309,
     "severity": "CRITICAL",
-    "status": "in_progress",
+    "status": "fixed",
     "assignedWorker": "worker-macbookpro-001",
     "lockedAt": "2026-05-29T09:38:07Z",
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:52:29Z",
     "attemptCount": 0
   },
   "AZ1dvNQeMbZ4NfML32wr": {
@@ -224,10 +224,10 @@
     "file": "4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
     "line": 507,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:52:29Z",
     "attemptCount": 0
   },
   "AZ1dvNZMMbZ4NfML320V": {
@@ -246,10 +246,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 843,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:56:39Z",
     "attemptCount": 0
   },
   "AZ5vyqpdSgPjiLhZ5n1X": {
@@ -268,10 +268,10 @@
     "file": "4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
     "line": 128,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:56:39Z",
     "attemptCount": 0
   },
   "AZ1dvNhRMbZ4NfML327o": {
@@ -565,10 +565,10 @@
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 68,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-29T09:56:39Z",
     "attemptCount": 0
   },
   "AZ1dvNPOMbZ4NfML32vq": {
