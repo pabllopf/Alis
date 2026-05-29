@@ -592,15 +592,18 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
             else
             {
+                Fixture swappedA = fixtureB;
+                int swappedIndexA = indexB;
+                Fixture swappedB = fixtureA;
+                int swappedIndexB = indexA;
+
                 if (c == null)
                 {
-                    c = new Contact(fixtureB, indexB, fixtureA, indexA);
+                    c = new Contact(swappedA, swappedIndexA, swappedB, swappedIndexB);
                 }
                 else
                 {
-                    (fixtureA, fixtureB) = (fixtureB, fixtureA);
-                    (indexA, indexB) = (indexB, indexA);
-                    c.Reset(fixtureA, indexA, fixtureB, indexB);
+                    c.Reset(swappedA, swappedIndexA, swappedB, swappedIndexB);
                 }
             }
 
