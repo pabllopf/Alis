@@ -87,16 +87,11 @@ namespace Alis.Core.Ecs.Kernel
             (Id, GeneralComponentStorage, Initer, Destroyer) = Component.GetExistingOrSetupNewComponent<T>();
 
             if (GenerationServices.UserGeneratedTypeMap.TryGetValue(typeof(T),
-                    out (IComponentStorageBaseFactory Factory, int UpdateOrder) type))
+                    out (IComponentStorageBaseFactory Factory, int UpdateOrder) type)
+                && type.Factory is IComponentStorageBaseFactory<T> casted)
             {
-                if (type.Factory is IComponentStorageBaseFactory<T> casted)
-                {
-                    RunnerInstance = casted;
-                    return;
-                }
-
-                throw new InvalidOperationException(
-                    $"{typeof(T).FullName} is not initalized correctly. (Is the source generator working?)");
+                RunnerInstance = casted;
+                return;
             }
 
             NoneUpdateRunnerFactory<T> fac = new NoneUpdateRunnerFactory<T>();
