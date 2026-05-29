@@ -818,22 +818,6 @@ namespace Alis.Extension.Graphic.Glfw
         public override int GetHashCode() => Window.GetHashCode();
 
         /// <summary>
-        ///     Determines whether the specified window is equal to this instance.
-        /// </summary>
-        /// <param name="left">This instance.</param>
-        /// <param name="right">A <see cref="NativeWindow" /> instance to compare for equality.</param>
-        /// <returns><c>true</c> if objects represent the same window, otherwise <c>false</c>.</returns>
-        public static bool operator ==(NativeWindow left, NativeWindow right) => Equals(left, right);
-
-        /// <summary>
-        ///     Determines whether the specified window is not equal to this instance.
-        /// </summary>
-        /// <param name="left">This instance.</param>
-        /// <param name="right">A <see cref="NativeWindow" /> instance to compare for equality.</param>
-        /// <returns><c>true</c> if objects do not represent the same window, otherwise <c>false</c>.</returns>
-        public static bool operator !=(NativeWindow left, NativeWindow right) => !Equals(left, right);
-
-        /// <summary>
         ///     Requests user-attention to this window on platforms that support it,
         ///     <para>
         ///         Once the user has given attention, usually by focusing the window or application, the system will end the
