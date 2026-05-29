@@ -402,17 +402,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2F d1 = cB + rB - cA - rA;
 
             // Point to line constraint
+            _ay = Complex.Multiply(ref _localYAxis, ref qA);
+            _sAy = MathUtils.Cross(d1 + rA, _ay);
+            _sBy = MathUtils.Cross(ref rB, ref _ay);
+
+            _mass = mA + mB + iA * _sAy * _sAy + iB * _sBy * _sBy;
+
+            if (_mass > 0.0f)
             {
-                _ay = Complex.Multiply(ref _localYAxis, ref qA);
-                _sAy = MathUtils.Cross(d1 + rA, _ay);
-                _sBy = MathUtils.Cross(ref rB, ref _ay);
-
-                _mass = mA + mB + iA * _sAy * _sAy + iB * _sBy * _sBy;
-
-                if (_mass > 0.0f)
-                {
-                    _mass = 1.0f / _mass;
-                }
+                _mass = 1.0f / _mass;
             }
 
             InitSpringConstraint(data, mA, mB, iA, iB, d1, qA, rA, rB);
