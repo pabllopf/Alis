@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     Computes the angular bounds for each shape relative to the explosion position.
         /// </summary>
-        private int ComputeShapeAngleBounds(Fixture[] shapes, int shapeCount, Vector2F pos, float[] vals)
+        private static int ComputeShapeAngleBounds(Fixture[] shapes, int shapeCount, Vector2F pos, float[] vals)
         {
             int valIndex = 0;
             for (int i = 0; i < shapeCount; ++i)
