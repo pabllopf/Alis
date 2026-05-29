@@ -261,93 +261,116 @@ namespace Alis.Core.Physic.Common.Logic
 
             for (int i = 0; i < valIndex; ++i)
             {
-                Fixture fixture = null;
-                float midpt;
+                if (ShouldSkipAnglePair(vals, i, valIndex)) continue;
 
-                int iplus = i == valIndex - 1 ? 0 : i + 1;
-                if (Math.Abs(vals[i] - vals[iplus]) < float.Epsilon)
-                {
-                    continue;
-                }
-
-                if (i == valIndex - 1)
-                {
-                    midpt = vals[0] + Constant.Pi * 2 + vals[i];
-                }
-                else
-                {
-                    midpt = vals[i + 1] + vals[i];
-                }
-
-                midpt = midpt / 2;
-
+                float midpt = ComputeMidpoint(vals, i, valIndex);
                 Vector2F p1 = pos;
                 Vector2F p2 = radius * new Vector2F((float)Math.Cos(midpt), (float)Math.Sin(midpt)) + pos;
 
+                Fixture fixture = null;
                 bool hitClosest = false;
+
                 WorldPhysic.RayCast((f, p, n, fr) =>
                 {
                     Body body = f.GetBody;
-
-                    if (!IsActiveOn(body))
-                    {
-                        return 0;
-                    }
-
+                    if (!IsActiveOn(body)) return 0;
                     hitClosest = true;
                     fixture = f;
                     return fr;
                 }, p1, p2);
 
-                if (hitClosest && (fixture.GetBody.GetBodyType == BodyType.Dynamic))
+                if (hitClosest && fixture.GetBody.GetBodyType == BodyType.Dynamic)
                 {
-                    if (ListAny(_data) && (ListLast(_data).Body == fixture.GetBody) && !rayMissed)
-                    {
-                        int laPos = _data.Count - 1;
-                        ShapeData la = _data[laPos];
-                        la.Max = vals[iplus];
-                        _data[laPos] = la;
-                    }
-                    else
-                    {
-                        ShapeData d;
-                        d.Body = fixture.GetBody;
-                        d.Min = vals[i];
-                        d.Max = vals[iplus];
-                        _data.Add(d);
-                    }
-
-                    if ((_data.Count > 1)
-                        && (i == valIndex - 1)
-                        && (ListLast(_data).Body == ListFirst(_data).Body)
-                        && (Math.Abs(ListLast(_data).Max - ListFirst(_data).Min) < float.Epsilon))
-                    {
-                        ShapeData fi = _data[0];
-                        fi.Min = ListLast(_data).Min;
-                        _data.RemoveAt(_data.Count - 1);
-                        _data[0] = fi;
-                        while (ListFirst(_data).Min >= ListFirst(_data).Max)
-                        {
-                            fi.Min -= Constant.Pi * 2;
-                            _data[0] = fi;
-                        }
-                    }
-
-                    int lastPos = _data.Count - 1;
-                    ShapeData last = _data[lastPos];
-                    while ((_data.Count > 0)
-                           && (ListLast(_data).Min >= ListLast(_data).Max))
-                    {
-                        last.Min = ListLast(_data).Min - 2 * Constant.Pi;
-                        _data[lastPos] = last;
-                    }
-
+                    ProcessRayHit(vals, i, valIndex, fixture.GetBody, ref rayMissed);
                     rayMissed = false;
                 }
                 else
                 {
                     rayMissed = true;
                 }
+            }
+        }
+
+        private static bool ShouldSkipAnglePair(float[] vals, int i, int valIndex) =>
+            Math.Abs(vals[i] - vals[i == valIndex - 1 ? 0 : i + 1]) < float.Epsilon;
+
+        private static float ComputeMidpoint(float[] vals, int i, int valIndex)
+        {
+            float midpt = i == valIndex - 1
+                ? vals[0] + Constant.Pi * 2 + vals[i]
+                : vals[i + 1] + vals[i];
+            return midpt / 2;
+        }
+
+        private void ProcessRayHit(float[] vals, int i, int valIndex, Body body, ref bool rayMissed)
+        {
+            int iplus = i == valIndex - 1 ? 0 : i + 1;
+
+            if (ListAny(_data) && ListLast(_data).Body == body && !rayMissed)
+                UpdateLastShapeData(iplus);
+            else
+                AddNewShapeData(body, vals[i], vals[iplus]);
+
+            if (i == valIndex - 1)
+            {
+                MergeCircularData();
+                AdjustWrappedData();
+            }
+
+            AdjustOverlappingData();
+        }
+
+        private void UpdateLastShapeData(float max)
+        {
+            int laPos = _data.Count - 1;
+            ShapeData la = _data[laPos];
+            la.Max = max;
+            _data[laPos] = la;
+        }
+
+        private void AddNewShapeData(Body body, float min, float max)
+        {
+            ShapeData d = new() { Body = body, Min = min, Max = max };
+            _data.Add(d);
+        }
+
+        private void MergeCircularData()
+        {
+            if (_data.Count <= 1) return;
+            if (ListLast(_data).Body != ListFirst(_data).Body) return;
+            if (Math.Abs(ListLast(_data).Max - ListFirst(_data).Min) >= float.Epsilon) return;
+
+            ShapeData fi = _data[0];
+            fi.Min = ListLast(_data).Min;
+            _data.RemoveAt(_data.Count - 1);
+            _data[0] = fi;
+
+            while (ListFirst(_data).Min >= ListFirst(_data).Max)
+            {
+                fi.Min -= Constant.Pi * 2;
+                _data[0] = fi;
+            }
+        }
+
+        private void AdjustWrappedData()
+        {
+            int lastPos = _data.Count - 1;
+            ShapeData last = _data[lastPos];
+            while ((_data.Count > 0) && (ListLast(_data).Min >= ListLast(_data).Max))
+            {
+                last.Min = ListLast(_data).Min - 2 * Constant.Pi;
+                _data[lastPos] = last;
+            }
+        }
+
+        private void AdjustOverlappingData()
+        {
+            int lastPos = _data.Count - 1;
+            ShapeData last = _data[lastPos];
+            while ((_data.Count > 0) && (ListLast(_data).Min >= ListLast(_data).Max))
+            {
+                last.Min = ListLast(_data).Min - 2 * Constant.Pi;
+                _data[lastPos] = last;
             }
         }
 
