@@ -294,7 +294,7 @@ namespace Alis.Core.Aspect.Memory
             string safeName = MakeSafeTempName(ActiveAssemblyName, normalizedKey);
             string tempFilePath = Path.Combine(Path.GetTempPath(), safeName);
 
-            if (TryGetValidatedTempPath(tempFilePath, entryInfo, ActiveAssemblyName, normalizedKey, resourceName, out string validatedPath))
+            if (TryGetValidatedTempPath(tempFilePath, entryInfo, ActiveAssemblyName, resourceName, out string validatedPath))
             {
                 return validatedPath;
             }
@@ -336,7 +336,7 @@ namespace Alis.Core.Aspect.Memory
         ///     Attempts to validate an existing temp file against the entry info.
         /// </summary>
         private static bool TryGetValidatedTempPath(string tempFilePath, ZipEntryInfo entryInfo,
-            string assemblyName, string normalizedKey, string resourceName,
+            string assemblyName, string resourceName,
             out string validatedPath)
         {
             if (File.Exists(tempFilePath))
