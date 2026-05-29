@@ -75,30 +75,38 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
                     TryAddNeighboringTriangles(poly, triangles, covered);
 
-                    if (polyIndex < maxPolys)
-                    {
-                        SimplifyTools.MergeParallelEdges(poly, tolerance);
-
-                        if (poly.Count >= 3)
-                        {
-                            polys.Add(new Vertices(poly));
-                        }
-                        else
-                        {
-                            Logger.Log("Skipping corrupt poly.");
-                        }
-                    }
-
-                    if (poly.Count >= 3)
-                    {
-                        polyIndex++;
-                    }
+                    ProcessValidPolygon(poly, ref polyIndex, maxPolys, tolerance, polys);
                 }
             }
 
             RemoveEmptyPolygons(polys);
 
             return polys;
+        }
+
+        private static void ProcessValidPolygon(Vertices poly, ref int polyIndex, int maxPolys, float tolerance, List<Vertices> polys)
+        {
+            if (polyIndex >= maxPolys)
+            {
+                return;
+            }
+
+            SimplifyTools.MergeParallelEdges(poly, tolerance);
+
+            if (poly.Count >= 3)
+            {
+                AddPolygonToList(poly, polys);
+                polyIndex++;
+            }
+            else
+            {
+                Logger.Log("Skipping corrupt poly.");
+            }
+        }
+
+        private static void AddPolygonToList(Vertices poly, List<Vertices> polys)
+        {
+            polys.Add(new Vertices(poly));
         }
 
         private static bool[] MarkDegenerateTriangles(List<Vertices> triangles)
