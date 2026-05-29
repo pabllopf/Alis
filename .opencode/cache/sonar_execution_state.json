@@ -1,10 +1,10 @@
 {
   "startedAt": "2026-05-29T10:16:22.145895+00:00",
-  "lastActivity": "2026-05-29T19:01:02.984086+00:00",
+  "lastActivity": "2026-05-29T21:38:18.825706+00:00",
   "totalIssues": 22,
-  "fixedCount": 7,
+  "fixedCount": 21,
   "failedCount": 0,
   "inProgressCount": 0,
-  "openCount": 15,
+  "openCount": 0,
   "workers": {}
 }
