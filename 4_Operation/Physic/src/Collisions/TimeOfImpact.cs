@@ -254,7 +254,7 @@ namespace Alis.Core.Physic.Collisions
                 float t = ComputeRootStep(rootIterCount, a1, a2, s1, s2, target);
                 ++rootIterCount;
 
-                RecordRootIteration(rootIterCount);
+                RecordRootIteration();
 
                 float s = SeparationFunction.Evaluate(indexA, indexB, t);
 
@@ -283,7 +283,7 @@ namespace Alis.Core.Physic.Collisions
                 : 0.5f * (a1 + a2);
         }
 
-        private static void RecordRootIteration(int rootIterCount)
+        private static void RecordRootIteration()
         {
             if (SettingEnv.EnableDiagnostics)
             {
