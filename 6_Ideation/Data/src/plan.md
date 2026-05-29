@@ -4,6 +4,7 @@
 
 JSON serialization/deserialization system with source generator support for AOT-compatible code generation. Part of the Aspect-oriented programming layer (5_Declaration/Aspect depends on this).
 
+
 ## Project Structure
 
 | Project | Path | Type | Files |
