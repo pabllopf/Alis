@@ -326,18 +326,9 @@ namespace Alis.Core.Physic.Collisions
 
             Vector2F normal = Vector2F.Zero;
 
-            for (int i = 0; i < 2; ++i)
+            if (!ProcessAABBAxes(ref tmin, ref tmax, ref normal, absD, LowerBound, UpperBound, p, d))
             {
-                float absDi = i == 0 ? absD.X : absD.Y;
-                float lowerBoundI = i == 0 ? LowerBound.X : LowerBound.Y;
-                float upperBoundI = i == 0 ? UpperBound.X : UpperBound.Y;
-                float pI = i == 0 ? p.X : p.Y;
-                float dI = i == 0 ? d.X : d.Y;
-
-                if (!ProcessAxis(ref tmin, ref tmax, ref normal, absDi, lowerBoundI, upperBoundI, pI, dI, i))
-                {
-                    return false;
-                }
+                return false;
             }
 
             if (doInteriorCheck && (tmin < 0.0f || input.MaxFraction < tmin))
@@ -347,6 +338,25 @@ namespace Alis.Core.Physic.Collisions
 
             output.Fraction = tmin;
             output.Normal = normal;
+            return true;
+        }
+
+        private static bool ProcessAABBAxes(ref float tmin, ref float tmax, ref Vector2F normal, Vector2F absD, Vector2F lowerBound, Vector2F upperBound, Vector2F p, Vector2F d)
+        {
+            for (int i = 0; i < 2; ++i)
+            {
+                float absDi = i == 0 ? absD.X : absD.Y;
+                float lowerBoundI = i == 0 ? lowerBound.X : lowerBound.Y;
+                float upperBoundI = i == 0 ? upperBound.X : upperBound.Y;
+                float pI = i == 0 ? p.X : p.Y;
+                float dI = i == 0 ? d.X : d.Y;
+
+                if (!ProcessAxis(ref tmin, ref tmax, ref normal, absDi, lowerBoundI, upperBoundI, pI, dI, i))
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
 
