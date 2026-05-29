@@ -68,91 +68,94 @@ namespace Alis.Core.Physic.Common.TextureTools
         internal static List<Vertices> DetectSquares(Aabb domain, float cellWidth, float cellHeight, sbyte[,] f,
             int lerpCount, bool combine)
         {
-            CxFastList<GeomPoly> ret = new CxFastList<GeomPoly>();
-
             List<Vertices> verticesList = new List<Vertices>();
 
-            //NOTE: removed assignments as they were not used.
-            List<GeomPoly> polyList;
-            GeomPoly gp;
-
-            int xn = (int) (domain.Extents.X * 2 / cellWidth);
-            bool xp = Math.Abs(xn - domain.Extents.X * 2 / cellWidth) < float.Epsilon;
-            int yn = (int) (domain.Extents.Y * 2 / cellHeight);
-            bool yp = Math.Abs(yn - domain.Extents.Y * 2 / cellHeight) < float.Epsilon;
-            if (!xp)
-            {
-                xn++;
-            }
-
-            if (!yp)
-            {
-                yn++;
-            }
+            int xn = ComputeGridDimension(domain.Extents.X, cellWidth);
+            int yn = ComputeGridDimension(domain.Extents.Y, cellHeight);
 
             sbyte[,] fs = new sbyte[xn + 1, yn + 1];
             GeomPolyVal[,] ps = new GeomPolyVal[xn + 1, yn + 1];
 
-            //populate shared function lookups.
+            InitializeFunctionGrid(f, fs, domain, xn, yn, cellWidth, cellHeight);
+
+            CxFastList<GeomPoly> ret = ProcessGridCells(f, fs, ps, domain, xn, yn, cellWidth, cellHeight, lerpCount, combine);
+
+            if (!combine)
+            {
+                List<GeomPoly> polyList = ret.GetListOfElements();
+                foreach (GeomPoly poly in polyList)
+                {
+                    verticesList.Add(new Vertices(poly.Points.GetListOfElements()));
+                }
+
+                return verticesList;
+            }
+
+            CombineScanLines(ps, ret, domain, xn, yn, cellWidth, cellHeight);
+
+            List<GeomPoly> finalPolyList = ret.GetListOfElements();
+            foreach (GeomPoly poly in finalPolyList)
+            {
+                verticesList.Add(new Vertices(poly.Points.GetListOfElements()));
+            }
+
+            return verticesList;
+        }
+
+        /// <summary>
+        ///     Computes the grid dimension from the extent and cell size.
+        /// </summary>
+        private static int ComputeGridDimension(float extent, float cellSize)
+        {
+            int n = (int)(extent * 2 / cellSize);
+            bool exact = Math.Abs(n - extent * 2 / cellSize) < float.Epsilon;
+            if (!exact)
+            {
+                n++;
+            }
+
+            return n;
+        }
+
+        /// <summary>
+        ///     Initializes the function lookup grid from the source data.
+        /// </summary>
+        private static void InitializeFunctionGrid(sbyte[,] f, sbyte[,] fs, Aabb domain, int xn, int yn, float cellWidth, float cellHeight)
+        {
             for (int x = 0; x < xn + 1; x++)
             {
-                int x0;
-                if (x == xn)
-                {
-                    x0 = (int) domain.UpperBound.X;
-                }
-                else
-                {
-                    x0 = (int) (x * cellWidth + domain.LowerBound.X);
-                }
+                int x0 = x == xn ? (int)domain.UpperBound.X : (int)(x * cellWidth + domain.LowerBound.X);
 
                 for (int y = 0; y < yn + 1; y++)
                 {
-                    int y0;
-                    if (y == yn)
-                    {
-                        y0 = (int) domain.UpperBound.Y;
-                    }
-                    else
-                    {
-                        y0 = (int) (y * cellHeight + domain.LowerBound.Y);
-                    }
-
+                    int y0 = y == yn ? (int)domain.UpperBound.Y : (int)(y * cellHeight + domain.LowerBound.Y);
                     fs[x, y] = f[x0, y0];
                 }
             }
+        }
 
-            //generate sub-polys and combine to scan lines
+        /// <summary>
+        ///     Processes grid cells and generates geometry polygons.
+        /// </summary>
+        private static CxFastList<GeomPoly> ProcessGridCells(sbyte[,] f, sbyte[,] fs, GeomPolyVal[,] ps, Aabb domain,
+            int xn, int yn, float cellWidth, float cellHeight, int lerpCount, bool combine)
+        {
+            CxFastList<GeomPoly> ret = new CxFastList<GeomPoly>();
+
             for (int y = 0; y < yn; y++)
             {
                 float y0 = y * cellHeight + domain.LowerBound.Y;
-                float y1;
-                if (y == yn - 1)
-                {
-                    y1 = domain.UpperBound.Y;
-                }
-                else
-                {
-                    y1 = y0 + cellHeight;
-                }
+                float y1 = y == yn - 1 ? domain.UpperBound.Y : y0 + cellHeight;
 
                 GeomPoly pre = null;
                 for (int x = 0; x < xn; x++)
                 {
                     float x0 = x * cellWidth + domain.LowerBound.X;
-                    float x1;
-                    if (x == xn - 1)
-                    {
-                        x1 = domain.UpperBound.X;
-                    }
-                    else
-                    {
-                        x1 = x0 + cellWidth;
-                    }
+                    float x1 = x == xn - 1 ? domain.UpperBound.X : x0 + cellWidth;
 
-                    gp = new GeomPoly();
-
+                    GeomPoly gp = new GeomPoly();
                     int key = MarchSquare(f, fs, ref gp, x, y, x0, y0, x1, y1, lerpCount);
+
                     if (gp.Length != 0)
                     {
                         if (combine && (pre != null) && ((key & 9) != 0))
@@ -167,28 +170,20 @@ namespace Alis.Core.Physic.Common.TextureTools
 
                         ps[x, y] = new GeomPolyVal(gp, key);
                     }
-                    else
-                    {
-                        gp = null;
-                    }
 
-                    pre = gp;
+                    pre = gp.Length != 0 ? gp : null;
                 }
             }
 
-            if (!combine)
-            {
-                polyList = ret.GetListOfElements();
+            return ret;
+        }
 
-                foreach (GeomPoly poly in polyList)
-                {
-                    verticesList.Add(new Vertices(poly.Points.GetListOfElements()));
-                }
-
-                return verticesList;
-            }
-
-            //combine scan lines together
+        /// <summary>
+        ///     Combines adjacent scan line polygons together.
+        /// </summary>
+        private static void CombineScanLines(GeomPolyVal[,] ps, CxFastList<GeomPoly> ret, Aabb domain,
+            int xn, int yn, float cellWidth, float cellHeight)
+        {
             for (int y = 1; y < yn; y++)
             {
                 int x = 0;
@@ -196,30 +191,14 @@ namespace Alis.Core.Physic.Common.TextureTools
                 {
                     GeomPolyVal p = ps[x, y];
 
-                    //skip along scan line if no polygon exists at this point
-                    if (p == null)
+                    if (p == null || (p.Key & 12) == 0)
                     {
                         x++;
                         continue;
                     }
 
-                    //skip along if current polygon cannot be combined above.
-                    if ((p.Key & 12) == 0)
-                    {
-                        x++;
-                        continue;
-                    }
-
-                    //skip along if no polygon exists above.
                     GeomPolyVal u = ps[x, y - 1];
-                    if (u == null)
-                    {
-                        x++;
-                        continue;
-                    }
-
-                    //skip along if polygon above cannot be combined with.
-                    if ((u.Key & 3) == 0)
+                    if (u == null || (u.Key & 3) == 0 || u.GeomP == p.GeomP)
                     {
                         x++;
                         continue;
@@ -231,14 +210,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                     CxFastList<Vector2F> bp = p.GeomP.Points;
                     CxFastList<Vector2F> ap = u.GeomP.Points;
 
-                    //skip if it's already been combined with above polygon
-                    if (u.GeomP == p.GeomP)
-                    {
-                        x++;
-                        continue;
-                    }
-
-                    //combine above (but disallow the hole thingies
                     CxFastListNode<Vector2F> bi = bp.Begin();
                     while (Square(bi.GetElem().Y - ay) > SettingEnv.Epsilon || bi.GetElem().X < ax)
                     {
@@ -279,7 +250,7 @@ namespace Alis.Core.Physic.Common.TextureTools
 
                     while (bj != bi)
                     {
-                        ai = ap.Insert(ai, bj.GetElem()); // .clone()
+                        ai = ap.Insert(ai, bj.GetElem());
                         bj = bj.NextPos();
                         if (bj == bp.End())
                         {
@@ -289,49 +260,31 @@ namespace Alis.Core.Physic.Common.TextureTools
                         u.GeomP.Length++;
                     }
 
-                    ax = x + 1;
-                    while (ax < xn)
+                    // Update references to merged polygon
+                    for (int ax2 = x + 1; ax2 < xn; ax2++)
                     {
-                        GeomPolyVal p2 = ps[(int) ax, y];
-                        if (p2 == null || p2.GeomP != p.GeomP)
+                        GeomPolyVal p2 = ps[ax2, y];
+                        if (p2 != null && p2.GeomP == p.GeomP)
                         {
-                            ax++;
-                            continue;
+                            p2.GeomP = u.GeomP;
                         }
-
-                        p2.GeomP = u.GeomP;
-                        ax++;
                     }
 
-                    ax = x - 1;
-                    while (ax >= 0)
+                    for (int ax2 = x - 1; ax2 >= 0; ax2--)
                     {
-                        GeomPolyVal p2 = ps[(int) ax, y];
-                        if (p2 == null || p2.GeomP != p.GeomP)
+                        GeomPolyVal p2 = ps[ax2, y];
+                        if (p2 != null && p2.GeomP == p.GeomP)
                         {
-                            ax--;
-                            continue;
+                            p2.GeomP = u.GeomP;
                         }
-
-                        p2.GeomP = u.GeomP;
-                        ax--;
                     }
 
                     ret.Remove(p.GeomP);
                     p.GeomP = u.GeomP;
 
-                    x = (int) ((bi.NextPos().GetElem().X - domain.LowerBound.X) / cellWidth) + 1;
+                    x = (int)((bi.NextPos().GetElem().X - domain.LowerBound.X) / cellWidth) + 1;
                 }
             }
-
-            polyList = ret.GetListOfElements();
-
-            foreach (GeomPoly poly in polyList)
-            {
-                verticesList.Add(new Vertices(poly.Points.GetListOfElements()));
-            }
-
-            return verticesList;
         }
 
         /// <summary>

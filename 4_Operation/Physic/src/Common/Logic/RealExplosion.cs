@@ -167,6 +167,25 @@ namespace Alis.Core.Physic.Common.Logic
             Dictionary<Fixture, Vector2F> exploded = new Dictionary<Fixture, Vector2F>(shapeCount + containedShapeCount);
 
             float[] vals = new float[shapeCount * 2];
+            int valIndex = ComputeShapeAngleBounds(shapes, shapeCount, pos, vals);
+
+            Array.Sort(vals, 0, valIndex, _rdc);
+            _data.Clear();
+
+            ProcessRayCastResults(vals, valIndex, pos, radius, exploded);
+
+            ApplyExplosionImpulses(pos, radius, maxForce, exploded);
+
+            ApplyContainedShapeImpulses(pos, maxForce, containedShapes, containedShapeCount, exploded);
+
+            return exploded;
+        }
+
+        /// <summary>
+        ///     Computes the angular bounds for each shape relative to the explosion position.
+        /// </summary>
+        private int ComputeShapeAngleBounds(Fixture[] shapes, int shapeCount, Vector2F pos, float[] vals)
+        {
             int valIndex = 0;
             for (int i = 0; i < shapeCount; ++i)
             {
@@ -192,7 +211,7 @@ namespace Alis.Core.Physic.Common.Logic
                 if ((shapes[i].GetBody.GetBodyType == BodyType.Dynamic) && (ps != null))
                 {
                     Vector2F toCentroid = shapes[i].GetBody.GetWorldPoint(ps.MassData.Centroid) - pos;
-                    float angleToCentroid = (float) Math.Atan2(toCentroid.Y, toCentroid.X);
+                    float angleToCentroid = (float)Math.Atan2(toCentroid.Y, toCentroid.X);
                     float min = float.MaxValue;
                     float max = float.MinValue;
                     float minAbsolute = 0.0f;
@@ -201,22 +220,21 @@ namespace Alis.Core.Physic.Common.Logic
                     for (int j = 0; j < ps.Vertices.Count; ++j)
                     {
                         Vector2F toVertex = shapes[i].GetBody.GetWorldPoint(ps.Vertices[j]) - pos;
-                        float newAngle = (float) Math.Atan2(toVertex.Y, toVertex.X);
+                        float newAngle = (float)Math.Atan2(toVertex.Y, toVertex.X);
                         float diff = newAngle - angleToCentroid;
 
                         diff = (diff - Constant.Pi) % (2 * Constant.Pi);
-                        // the minus pi is important. It means cutoff for going other direction is at 180 deg where it needs to be
 
                         if (diff < 0.0f)
                         {
-                            diff += 2 * Constant.Pi; // correction for not handling negs
+                            diff += 2 * Constant.Pi;
                         }
 
                         diff -= Constant.Pi;
 
                         if (Math.Abs(diff) > Constant.Pi)
                         {
-                            continue; // Something's wrong, point not in shape but exists angle diff > 180
+                            continue;
                         }
 
                         if (diff > max)
@@ -239,8 +257,14 @@ namespace Alis.Core.Physic.Common.Logic
                 }
             }
 
-            Array.Sort(vals, 0, valIndex, _rdc);
-            _data.Clear();
+            return valIndex;
+        }
+
+        /// <summary>
+        ///     Processes ray cast results to populate the internal shape data list.
+        /// </summary>
+        private void ProcessRayCastResults(float[] vals, int valIndex, Vector2F pos, float radius, Dictionary<Fixture, Vector2F> exploded)
+        {
             bool rayMissed = true;
 
             for (int i = 0; i < valIndex; ++i)
@@ -266,7 +290,7 @@ namespace Alis.Core.Physic.Common.Logic
                 midpt = midpt / 2;
 
                 Vector2F p1 = pos;
-                Vector2F p2 = radius * new Vector2F((float) Math.Cos(midpt), (float) Math.Sin(midpt)) + pos;
+                Vector2F p2 = radius * new Vector2F((float)Math.Cos(midpt), (float)Math.Sin(midpt)) + pos;
 
                 bool hitClosest = false;
                 WorldPhysic.RayCast((f, p, n, fr) =>
@@ -320,7 +344,7 @@ namespace Alis.Core.Physic.Common.Logic
                     int lastPos = _data.Count - 1;
                     ShapeData last = _data[lastPos];
                     while ((_data.Count > 0)
-                           && (ListLast(_data).Min >= ListLast(_data).Max)) // just making sure min<max
+                           && (ListLast(_data).Min >= ListLast(_data).Max))
                     {
                         last.Min = ListLast(_data).Min - 2 * Constant.Pi;
                         _data[lastPos] = last;
@@ -330,10 +354,16 @@ namespace Alis.Core.Physic.Common.Logic
                 }
                 else
                 {
-                    rayMissed = true; // raycast did not find a shape
+                    rayMissed = true;
                 }
             }
+        }
 
+        /// <summary>
+        ///     Applies explosion impulses to bodies hit by ray casts.
+        /// </summary>
+        private void ApplyExplosionImpulses(Vector2F pos, float radius, float maxForce, Dictionary<Fixture, Vector2F> exploded)
+        {
             for (int i = 0; i < _data.Count; ++i)
             {
                 if (!IsActiveOn(_data[i].Body))
@@ -342,23 +372,22 @@ namespace Alis.Core.Physic.Common.Logic
                 }
 
                 float arclen = _data[i].Max - _data[i].Min;
-
                 float first = Math.Min(MaxEdgeOffset, EdgeRatio * arclen);
-                int insertedRays = (int) Math.Ceiling((arclen - 2.0f * first - (MinRays - 1) * MaxAngle) / MaxAngle);
+                int insertedRays = (int)Math.Ceiling((arclen - 2.0f * first - (MinRays - 1) * MaxAngle) / MaxAngle);
 
                 if (insertedRays < 0)
                 {
                     insertedRays = 0;
                 }
 
-                float offset = (arclen - first * 2.0f) / ((float) MinRays + insertedRays - 1);
+                float offset = (arclen - first * 2.0f) / ((float)MinRays + insertedRays - 1);
 
                 for (float j = _data[i].Min + first;
                      j < _data[i].Max || MathUtils.FloatEquals(j, _data[i].Max, 0.0001f);
                      j += offset)
                 {
                     Vector2F p1 = pos;
-                    Vector2F p2 = pos + radius * new Vector2F((float) Math.Cos(j), (float) Math.Sin(j));
+                    Vector2F p2 = pos + radius * new Vector2F((float)Math.Cos(j), (float)Math.Sin(j));
                     Vector2F hitpoint = Vector2F.Zero;
                     float minlambda = float.MaxValue;
 
@@ -376,8 +405,7 @@ namespace Alis.Core.Physic.Common.Logic
                         }
 
                         float impulse = arclen / (MinRays + insertedRays) * maxForce * 180.0f / Constant.Pi * (1.0f - Math.Min(1.0f, minlambda));
-
-                        Vector2F vectImp = Vector2F.Dot(impulse * new Vector2F((float) Math.Cos(j), (float) Math.Sin(j)), -ro.Normal) * new Vector2F((float) Math.Cos(j), (float) Math.Sin(j));
+                        Vector2F vectImp = Vector2F.Dot(impulse * new Vector2F((float)Math.Cos(j), (float)Math.Sin(j)), -ro.Normal) * new Vector2F((float)Math.Cos(j), (float)Math.Sin(j));
                         _data[i].Body.ApplyLinearImpulse(ref vectImp, ref hitpoint);
 
                         if (exploded.ContainsKey(f))
@@ -396,7 +424,13 @@ namespace Alis.Core.Physic.Common.Logic
                     }
                 }
             }
+        }
 
+        /// <summary>
+        ///     Applies impulses to shapes that contain the explosion origin.
+        /// </summary>
+        private void ApplyContainedShapeImpulses(Vector2F pos, float maxForce, Fixture[] containedShapes, int containedShapeCount, Dictionary<Fixture, Vector2F> exploded)
+        {
             for (int i = 0; i < containedShapeCount; ++i)
             {
                 Fixture fix = containedShapes[i];
@@ -420,7 +454,6 @@ namespace Alis.Core.Physic.Common.Logic
                 }
 
                 Vector2F vectImp = impulse * (hitPoint - pos);
-
                 fix.GetBody.ApplyLinearImpulse(ref vectImp, ref hitPoint);
 
                 if (!exploded.ContainsKey(fix))
@@ -428,8 +461,6 @@ namespace Alis.Core.Physic.Common.Logic
                     exploded.Add(fix, vectImp);
                 }
             }
-
-            return exploded;
         }
 
         /// <summary>

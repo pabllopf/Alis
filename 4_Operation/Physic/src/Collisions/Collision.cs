@@ -901,160 +901,8 @@ namespace Alis.Core.Physic.Collisions
                     offset2 = Vector2F.Dot(normal2, centroidB - v2);
                 }
 
-                // Determine front or back collision. Determine collision normal limits.
-                if (hasVertex0 && hasVertex3)
-                {
-                    if (convex1 && convex2)
-                    {
-                        front = offset0 >= 0.0f || offset1 >= 0.0f || offset2 >= 0.0f;
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal0;
-                            upperLimit = normal2;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal1;
-                            upperLimit = -normal1;
-                        }
-                    }
-                    else if (convex1)
-                    {
-                        front = offset0 >= 0.0f || ((offset1 >= 0.0f) && (offset2 >= 0.0f));
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal0;
-                            upperLimit = normal1;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal2;
-                            upperLimit = -normal1;
-                        }
-                    }
-                    else if (convex2)
-                    {
-                        front = offset2 >= 0.0f || ((offset0 >= 0.0f) && (offset1 >= 0.0f));
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal1;
-                            upperLimit = normal2;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal1;
-                            upperLimit = -normal0;
-                        }
-                    }
-                    else
-                    {
-                        front = (offset0 >= 0.0f) && (offset1 >= 0.0f) && (offset2 >= 0.0f);
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal1;
-                            upperLimit = normal1;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal2;
-                            upperLimit = -normal0;
-                        }
-                    }
-                }
-                else if (hasVertex0)
-                {
-                    if (convex1)
-                    {
-                        front = offset0 >= 0.0f || offset1 >= 0.0f;
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal0;
-                            upperLimit = -normal1;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = normal1;
-                            upperLimit = -normal1;
-                        }
-                    }
-                    else
-                    {
-                        front = (offset0 >= 0.0f) && (offset1 >= 0.0f);
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = normal1;
-                            upperLimit = -normal1;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = normal1;
-                            upperLimit = -normal0;
-                        }
-                    }
-                }
-                else if (hasVertex3)
-                {
-                    if (convex2)
-                    {
-                        front = offset1 >= 0.0f || offset2 >= 0.0f;
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = -normal1;
-                            upperLimit = normal2;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal1;
-                            upperLimit = normal1;
-                        }
-                    }
-                    else
-                    {
-                        front = (offset1 >= 0.0f) && (offset2 >= 0.0f);
-                        if (front)
-                        {
-                            normal = normal1;
-                            lowerLimit = -normal1;
-                            upperLimit = normal1;
-                        }
-                        else
-                        {
-                            normal = -normal1;
-                            lowerLimit = -normal2;
-                            upperLimit = normal1;
-                        }
-                    }
-                }
-                else
-                {
-                    front = offset1 >= 0.0f;
-                    if (front)
-                    {
-                        normal = normal1;
-                        lowerLimit = -normal1;
-                        upperLimit = -normal1;
-                    }
-                    else
-                    {
-                        normal = -normal1;
-                        lowerLimit = normal1;
-                        upperLimit = normal1;
-                    }
-                }
+                DetermineCollisionNormals(hasVertex0, hasVertex3, convex1, convex2, offset0, offset1, offset2, normal1, normal0, normal2,
+                    out front, out normal, out lowerLimit, out upperLimit);
 
                 // Get polygonB in frameA
                 tempPolygonB.Count = polygonB.Vertices.Count;
@@ -1342,6 +1190,81 @@ namespace Alis.Core.Physic.Collisions
                 }
 
                 return axis;
+            }
+
+            /// <summary>
+            ///     Determines the collision front/back state and normal limits.
+            /// </summary>
+            private static void DetermineCollisionNormals(
+                bool hasVertex0, bool hasVertex3,
+                bool convex1, bool convex2,
+                float offset0, float offset1, float offset2,
+                Vector2F normal1, Vector2F normal0, Vector2F normal2,
+                out bool front, out Vector2F normal, out Vector2F lowerLimit, out Vector2F upperLimit)
+            {
+                if (hasVertex0 && hasVertex3)
+                {
+                    if (convex1 && convex2)
+                    {
+                        front = offset0 >= 0.0f || offset1 >= 0.0f || offset2 >= 0.0f;
+                        if (front) { normal = normal1; lowerLimit = normal0; upperLimit = normal2; }
+                        else { normal = -normal1; lowerLimit = -normal1; upperLimit = -normal1; }
+                    }
+                    else if (convex1)
+                    {
+                        front = offset0 >= 0.0f || ((offset1 >= 0.0f) && (offset2 >= 0.0f));
+                        if (front) { normal = normal1; lowerLimit = normal0; upperLimit = normal1; }
+                        else { normal = -normal1; lowerLimit = -normal2; upperLimit = -normal1; }
+                    }
+                    else if (convex2)
+                    {
+                        front = offset2 >= 0.0f || ((offset0 >= 0.0f) && (offset1 >= 0.0f));
+                        if (front) { normal = normal1; lowerLimit = normal1; upperLimit = normal2; }
+                        else { normal = -normal1; lowerLimit = -normal1; upperLimit = -normal0; }
+                    }
+                    else
+                    {
+                        front = (offset0 >= 0.0f) && (offset1 >= 0.0f) && (offset2 >= 0.0f);
+                        if (front) { normal = normal1; lowerLimit = normal1; upperLimit = normal1; }
+                        else { normal = -normal1; lowerLimit = -normal2; upperLimit = -normal0; }
+                    }
+                }
+                else if (hasVertex0)
+                {
+                    if (convex1)
+                    {
+                        front = offset0 >= 0.0f || offset1 >= 0.0f;
+                        if (front) { normal = normal1; lowerLimit = normal0; upperLimit = -normal1; }
+                        else { normal = -normal1; lowerLimit = normal1; upperLimit = -normal1; }
+                    }
+                    else
+                    {
+                        front = (offset0 >= 0.0f) && (offset1 >= 0.0f);
+                        if (front) { normal = normal1; lowerLimit = normal1; upperLimit = -normal1; }
+                        else { normal = -normal1; lowerLimit = normal1; upperLimit = -normal0; }
+                    }
+                }
+                else if (hasVertex3)
+                {
+                    if (convex2)
+                    {
+                        front = offset1 >= 0.0f || offset2 >= 0.0f;
+                        if (front) { normal = normal1; lowerLimit = -normal1; upperLimit = normal2; }
+                        else { normal = -normal1; lowerLimit = -normal1; upperLimit = normal1; }
+                    }
+                    else
+                    {
+                        front = (offset1 >= 0.0f) && (offset2 >= 0.0f);
+                        if (front) { normal = normal1; lowerLimit = -normal1; upperLimit = normal1; }
+                        else { normal = -normal1; lowerLimit = -normal2; upperLimit = normal1; }
+                    }
+                }
+                else
+                {
+                    front = offset1 >= 0.0f;
+                    if (front) { normal = normal1; lowerLimit = -normal1; upperLimit = -normal1; }
+                    else { normal = -normal1; lowerLimit = normal1; upperLimit = normal1; }
+                }
             }
 
             /// <summary>
