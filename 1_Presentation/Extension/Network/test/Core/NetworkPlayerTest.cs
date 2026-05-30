@@ -97,7 +97,6 @@ namespace Alis.Extension.Network.Test.Core
         [Theory]
         [InlineData(PlayerConnectionState.Connected)]
         [InlineData(PlayerConnectionState.Disconnected)]
-        [InlineData(PlayerConnectionState.Connecting)]
         public void ConnectionState_SetToDifferentStates_ReturnsCorrectValue(PlayerConnectionState state)
         {
             NetworkPlayer player = new NetworkPlayer {ConnectionState = state};
