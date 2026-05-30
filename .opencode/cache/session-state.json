@@ -1,7 +1,7 @@
 {
-  "current_project": "Alis.Extension.Graphic.Sdl2",
+  "current_project": "Alis.Extension.Graphic.Sfml",
   "current_layer": "1_Presentation/Extension",
-  "iteration": 4,
+  "iteration": 5,
   "components_covered": [
     {
       "module": "Ads/GoogleAds",
@@ -38,15 +38,18 @@
       "tests_added": 54,
       "total_tests": 133,
       "status": "complete (constants, utility methods, SdlImage/SdlTtf)"
+    },
+    {
+      "module": "Graphic/Sfml",
+      "source_files": 202,
+      "test_files_before": 35,
+      "test_files_after": 36,
+      "tests_added": 35,
+      "total_tests": 53,
+      "status": "complete (enums, BlendMode, Vertex)"
     }
   ],
   "remaining_uncovered": [
-    {
-      "module": "Graphic/Sfml",
-      "source_files": 184,
-      "test_files": 32,
-      "priority": "high"
-    },
     {
       "module": "Graphic/Ui",
       "source_files": 406,
@@ -102,23 +105,25 @@
       "priority": "medium"
     }
   ],
-  "latest_commit": "test: add Sdl2 constants, utility methods, and SdlImage/SdlTtf tests",
-  "tests_added_this_iteration": 54,
-  "coverage_status_estimate": "GoogleAds: ~95%, DropBox: ~85%, Glfw: ~90%, Sdl2: ~70% (constants + utilities)",
-  "next_planned_action": "Analyze and test Graphic/Sfml module (184 source files, 32 test files)",
+  "latest_commit": "test: add Sfml enums, BlendMode, and Vertex tests",
+  "tests_added_this_iteration": 35,
+  "coverage_status_estimate": "GoogleAds: ~95%, DropBox: ~85%, Glfw: ~90%, Sdl2: ~70%, Sfml: ~65% (enums + BlendMode + Vertex)",
+  "next_planned_action": "Analyze and test Graphic/Ui module (406 source files, 314 test files)",
   "completed_modules": [
     "Ads/GoogleAds",
     "Cloud/DropBox",
     "Graphic/Glfw",
-    "Graphic/Sdl2"
+    "Graphic/Sdl2",
+    "Graphic/Sfml"
   ],
-  "total_tests_passed": 289,
+  "total_tests_passed": 342,
   "files_created": [
     "1_Presentation/Extension/Ads/GoogleAds/test/AdConfigurationTest.cs",
     "1_Presentation/Extension/Ads/GoogleAds/test/AdRewardEventArgsTest.cs",
     "1_Presentation/Extension/Ads/GoogleAds/test/AdsManagerDisposeTest.cs",
     "1_Presentation/Extension/Cloud/DropBox/test/DropBoxCloudManagerDisposeTest.cs",
     "1_Presentation/Extension/Graphic/Glfw/test/UtilTests.cs",
-    "1_Presentation/Extension/Graphic/Sdl2/test/Sdl2AdditionalTests.cs"
+    "1_Presentation/Extension/Graphic/Sdl2/test/Sdl2AdditionalTests.cs",
+    "1_Presentation/Extension/Graphic/Sfml/test/SfmlAdditionalTests.cs"
   ]
 }
