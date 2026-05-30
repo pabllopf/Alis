@@ -1224,7 +1224,7 @@ namespace Alis.Core.Physic.Collisions
 
             private static Vector2F SelectBackUpperLimit(CollisionNormalInputs i, Vector2F neg)
             {
-                if (i.HasVertex0 && i.HasVertex3) return i.Convex1 && i.Convex2 ? neg : i.Convex1 ? neg : -i.Normal0;
+                if (i.HasVertex0 && i.HasVertex3) return i.Convex1 ? neg : -i.Normal0;
                 if (i.HasVertex0) return i.Convex1 ? neg : -i.Normal0;
                 return i.Normal1;
             }
