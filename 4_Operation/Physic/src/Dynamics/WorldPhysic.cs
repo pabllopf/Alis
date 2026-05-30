@@ -332,7 +332,7 @@ namespace Alis.Core.Physic.Dynamics
             ContactManager.FindNewContacts();
         }
 
-        private bool ShouldProcessBody(Body body)
+        private static bool ShouldProcessBody(Body body)
         {
             if (body.Island)
             {
