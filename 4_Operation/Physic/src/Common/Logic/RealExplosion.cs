@@ -365,13 +365,7 @@ namespace Alis.Core.Physic.Common.Logic
 
         private void AdjustOverlappingData()
         {
-            int lastPos = _data.Count - 1;
-            ShapeData last = _data[lastPos];
-            while (ListLast(_data).Min >= ListLast(_data).Max)
-            {
-                last.Min = ListLast(_data).Min - 2 * Constant.Pi;
-                _data[lastPos] = last;
-            }
+            AdjustWrappedData();
         }
 
         /// <summary>
