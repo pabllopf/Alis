@@ -487,5 +487,53 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.NotNull(result);
             Assert.NotEmpty(result);
         }
+
+        /// <summary>
+        ///     Forces a fresh extraction by deleting the temp file between calls, then calls
+        ///     GetResourcePathByName again. This should guarantee that ExtractResourceToTemp
+        ///     is executed (lines 302, 362-401), regardless of whether a prior test already
+        ///     extracted the resource.
+        /// </summary>
+        [Fact]
+        public void GetResourcePathByName_AfterDelete_ReExtractsToTemp()
+        {
+            // First call gets a valid path (may return cached or newly extracted)
+            string result1 = AssetRegistry.GetResourcePathByName("app.bmp");
+            Assert.NotNull(result1);
+            Assert.True(File.Exists(result1));
+
+            // Delete the temp file to force re-extraction
+            File.Delete(result1);
+            Assert.False(File.Exists(result1), "Temp file should be deleted");
+
+            // Second call must re-extract via ExtractResourceToTemp
+            string result2 = AssetRegistry.GetResourcePathByName("app.bmp");
+            Assert.NotNull(result2);
+            Assert.True(File.Exists(result2), "Re-extracted file should exist");
+
+            // Verify the content is correct
+            string content = File.ReadAllText(result2);
+            Assert.Equal("content", content);
+        }
+
+        /// <summary>
+        ///     Tests that calling GetResourcePathByName twice for the same resource returns
+        ///     the same path both times. The first call goes through the full extraction
+        ///     pipeline (ExtractResourceToTemp) while the second hits the temp file validation
+        ///     (TryGetValidatedTempPath) and then the cache (TryGetCachedPath) on subsequent calls.
+        /// </summary>
+        [Fact]
+        public void GetResourcePathByName_CalledTwice_ReturnsSamePath()
+        {
+            string result1 = AssetRegistry.GetResourcePathByName("app.bmp");
+            Assert.NotNull(result1);
+            Assert.NotEmpty(result1);
+            Assert.True(File.Exists(result1), "First call should extract file to temp");
+
+            string result2 = AssetRegistry.GetResourcePathByName("app.bmp");
+            Assert.NotNull(result2);
+            Assert.Equal(result1, result2);
+            Assert.True(File.Exists(result2), "Second call should return same file");
+        }
     }
 }

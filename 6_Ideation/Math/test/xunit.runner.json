@@ -1,0 +1,9 @@
+{
+  "parallelizeTestCollections": false,
+  "maxParallelThreads": 1,
+  "appDomain": "denied",
+  "$schema": "https://xunit.net/schema/current/xunit.runner.schema.json",
+  "shadowCopy": true,
+  "methodDisplay": "classAndMethod",
+  "diagnosticMessages": true
+}
