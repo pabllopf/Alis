@@ -647,19 +647,14 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
-        private float CalculateContactAlpha(Contact c)
+        private static bool ShouldSkipContactAlpha(Contact c)
         {
-            if (c.ToiFlag)
-            {
-                return c.Toi;
-            }
-
             Fixture fA = c.FixtureA;
             Fixture fB = c.FixtureB;
 
             if (fA.GetIsSensor || fB.GetIsSensor)
             {
-                return 1.0f;
+                return true;
             }
 
             Body bA = fA.GetBody;
@@ -673,16 +668,29 @@ namespace Alis.Core.Physic.Dynamics
 
             if (!activeA && !activeB)
             {
-                return 1.0f;
+                return true;
             }
 
             bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) && !bA.IgnoreCcd;
             bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) && !bB.IgnoreCcd;
 
-            if (!collideA && !collideB)
+            return !collideA && !collideB;
+        }
+
+        private float CalculateContactAlpha(Contact c)
+        {
+            if (c.ToiFlag)
+            {
+                return c.Toi;
+            }
+
+            if (ShouldSkipContactAlpha(c))
             {
                 return 1.0f;
             }
+
+            Body bA = c.FixtureA.GetBody;
+            Body bB = c.FixtureB.GetBody;
 
             float alpha0 = bA.Sweep.Alpha0;
 
@@ -697,8 +705,8 @@ namespace Alis.Core.Physic.Dynamics
                 bB.Sweep.Advance(alpha0);
             }
 
-            _input.ProxyA = new DistanceProxy(fA.GetShape, c.ChildIndexA);
-            _input.ProxyB = new DistanceProxy(fB.GetShape, c.ChildIndexB);
+            _input.ProxyA = new DistanceProxy(c.FixtureA.GetShape, c.ChildIndexA);
+            _input.ProxyB = new DistanceProxy(c.FixtureB.GetShape, c.ChildIndexB);
             _input.SweepA = bA.Sweep;
             _input.SweepB = bB.Sweep;
             _input.TMax = 1.0f;
