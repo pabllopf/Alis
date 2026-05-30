@@ -4,10 +4,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 727,
     "severity": "CRITICAL",
-    "status": "in_progress",
+    "status": "fixed",
     "assignedWorker": "worker-macbookpro-001",
     "lockedAt": "2026-05-30T12:14:26.075066+00:00",
-    "completedAt": null,
+    "completedAt": "2026-05-30T12:16:45.662838+00:00",
     "attemptCount": 0
   },
   "AZ513rmvQhsJmkYf-Qrd": {
@@ -15,10 +15,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 1219,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:17:02.867835+00:00",
+    "completedAt": "2026-05-30T12:17:53.136710+00:00",
     "attemptCount": 0
   },
   "AZ513rmvQhsJmkYf-Qre": {
@@ -26,10 +26,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 1223,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:29:58.145326+00:00",
+    "completedAt": "2026-05-30T12:31:18.874093+00:00",
     "attemptCount": 0
   },
   "AZ513rmvQhsJmkYf-Qrf": {
@@ -37,10 +37,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 1224,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:31:18.874093+00:00",
+    "completedAt": "2026-05-30T12:33:27.639428+00:00",
     "attemptCount": 0
   },
   "AZ513rmvQhsJmkYf-Qrg": {
@@ -48,10 +48,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 1267,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:33:27.639428+00:00",
+    "completedAt": "2026-05-30T12:34:11.238041+00:00",
     "attemptCount": 0
   },
   "AZ513rmvQhsJmkYf-Qri": {
@@ -59,10 +59,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 1274,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:34:11.238041+00:00",
+    "completedAt": "2026-05-30T12:34:51.854678+00:00",
     "attemptCount": 0
   },
   "AZ513rmvQhsJmkYf-Qrk": {
@@ -70,10 +70,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 1281,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:34:51.854678+00:00",
+    "completedAt": "2026-05-30T12:35:11.042220+00:00",
     "attemptCount": 0
   },
   "AZ513rmvQhsJmkYf-Qrl": {
@@ -81,10 +81,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 1288,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:35:11.042220+00:00",
+    "completedAt": "2026-05-30T12:35:17.441571+00:00",
     "attemptCount": 0
   },
   "AZ513rjKQhsJmkYf-Qrb": {
@@ -92,10 +92,10 @@
     "file": "4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
     "line": 359,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:21:59.671971+00:00",
+    "completedAt": "2026-05-30T12:22:37.857029+00:00",
     "attemptCount": 0
   },
   "AZ513rjKQhsJmkYf-QrY": {
@@ -103,10 +103,10 @@
     "file": "4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
     "line": 366,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:22:37.857029+00:00",
+    "completedAt": "2026-05-30T12:23:22.593302+00:00",
     "attemptCount": 0
   },
   "AZ513rjKQhsJmkYf-Qra": {
@@ -114,10 +114,10 @@
     "file": "4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
     "line": 370,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
     "lockedAt": null,
-    "completedAt": null,
+    "completedAt": "2026-05-30T12:22:37.857029+00:00",
     "attemptCount": 0
   },
   "AZ513riiQhsJmkYf-QrX": {
@@ -125,10 +125,10 @@
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 160,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:18:42.691041+00:00",
+    "completedAt": "2026-05-30T12:21:13.223776+00:00",
     "attemptCount": 0
   },
   "AZ513riiQhsJmkYf-QrW": {
@@ -136,10 +136,10 @@
     "file": "4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
     "line": 161,
     "severity": "MAJOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:21:13.223776+00:00",
+    "completedAt": "2026-05-30T12:21:27.273820+00:00",
     "attemptCount": 0
   },
   "AZ513rgkQhsJmkYf-QrV": {
@@ -147,10 +147,10 @@
     "file": "4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
     "line": 650,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:23:22.593302+00:00",
+    "completedAt": "2026-05-30T12:28:01.207403+00:00",
     "attemptCount": 0
   },
   "AZ5zvv_dq2fm5lfmeOvk": {
@@ -158,10 +158,10 @@
     "file": "4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
     "line": 335,
     "severity": "MINOR",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:21:27.273820+00:00",
+    "completedAt": "2026-05-30T12:21:59.671971+00:00",
     "attemptCount": 0
   },
   "AZ1dvNZMMbZ4NfML320X": {
@@ -169,10 +169,10 @@
     "file": "4_Operation/Physic/src/Collisions/Collision.cs",
     "line": 852,
     "severity": "CRITICAL",
-    "status": "open",
-    "assignedWorker": null,
-    "lockedAt": null,
-    "completedAt": null,
+    "status": "fixed",
+    "assignedWorker": "worker-macbookpro-001",
+    "lockedAt": "2026-05-30T12:28:01.207403+00:00",
+    "completedAt": "2026-05-30T12:29:58.145326+00:00",
     "attemptCount": 0
   }
 }
