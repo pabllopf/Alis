@@ -206,6 +206,32 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         }
 
         /// <summary>
+        ///     Tests that deserialize with throwing create from properties wraps exception
+        /// </summary>
+        [Fact]
+        public void Deserialize_WithThrowingCreateFromProperties_ThrowsJsonDeserializationException()
+        {
+            string json = "{\"Name\":\"John\"}";
+            Assert.Throws<JsonDeserializationException>(() => _deserializer.Deserialize<ThrowingTestObject>(json));
+        }
+
+        /// <summary>
+        ///     The throwing test object class that throws from CreateFromProperties
+        /// </summary>
+        private class ThrowingTestObject : IJsonSerializable, IJsonDesSerializable<ThrowingTestObject>
+        {
+            public ThrowingTestObject CreateFromProperties(Dictionary<string, string> properties)
+            {
+                throw new JsonDeserializationException("Intentional failure");
+            }
+
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+            {
+                yield break;
+            }
+        }
+
+        /// <summary>
         ///     The empty object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />

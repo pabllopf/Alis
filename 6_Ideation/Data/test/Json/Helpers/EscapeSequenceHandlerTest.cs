@@ -306,5 +306,27 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
             bool result = _handler.IsEscaped(text, 0);
             Assert.False(result);
         }
+
+        /// <summary>
+        ///     Tests that unescape with invalid escape character preserves it
+        /// </summary>
+        [Fact]
+        public void Unescape_WithInvalidEscapeCharacter_PreservesIt()
+        {
+            string escaped = "text\\xmore";
+            string result = _handler.Unescape(escaped);
+            Assert.Equal("text\\xmore", result);
+        }
+
+        /// <summary>
+        ///     Tests that unescape with unknown escape preserves it
+        /// </summary>
+        [Fact]
+        public void Unescape_WithUnknownEscape_PreservesIt()
+        {
+            string escaped = "test\\qother";
+            string result = _handler.Unescape(escaped);
+            Assert.Equal("test\\qother", result);
+        }
     }
 }

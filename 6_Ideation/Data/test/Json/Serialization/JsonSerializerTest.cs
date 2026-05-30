@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Json.Exceptions;
 using Alis.Core.Aspect.Data.Json.Serialization;
 using Xunit;
 
@@ -222,6 +223,26 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         }
 
         /// <summary>
+        ///     Tests that serialize with throwing get serializable properties wraps exception
+        /// </summary>
+        [Fact]
+        public void Serialize_WithThrowingGetSerializableProperties_ThrowsJsonSerializationException()
+        {
+            ThrowingPropertyObject obj = new ThrowingPropertyObject();
+            Assert.Throws<JsonSerializationException>(() => _serializer.Serialize(obj));
+        }
+
+        /// <summary>
+        ///     Tests that serialize with throwing json serialization exception rethrows
+        /// </summary>
+        [Fact]
+        public void Serialize_WithThrowingJsonSerializationException_Rethrows()
+        {
+            ThrowingSerializationExceptionObject obj = new ThrowingSerializationExceptionObject();
+            Assert.Throws<JsonSerializationException>(() => _serializer.Serialize(obj));
+        }
+
+        /// <summary>
         ///     The empty object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
@@ -234,6 +255,36 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield break;
+            }
+        }
+
+        /// <summary>
+        ///     The throwing property object class
+        /// </summary>
+        private class ThrowingPropertyObject : IJsonSerializable
+        {
+            /// <summary>
+            ///     Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+            {
+                throw new InvalidOperationException("Property enumeration failed");
+            }
+        }
+
+        /// <summary>
+        ///     The throwing serialization exception object class
+        /// </summary>
+        private class ThrowingSerializationExceptionObject : IJsonSerializable
+        {
+            /// <summary>
+            ///     Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+            {
+                throw new JsonSerializationException("Already wrapped");
             }
         }
     }

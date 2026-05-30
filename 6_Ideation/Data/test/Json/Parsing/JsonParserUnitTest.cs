@@ -1044,7 +1044,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         }
 
         /// <summary>
-        ///     Tests that parse to dictionary with comma after last property is tolerated
+        ///     Tests that parse to dictionary trailing comma tolerated
         /// </summary>
         [Fact]
         public void ParseToDictionary_TrailingComma_Tolerated()
@@ -1053,6 +1053,29 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Dictionary<string, string> result = _parser.ParseToDictionary(json);
             Assert.Equal("1", result["a"]);
             Assert.Equal("2", result["b"]);
+        }
+
+        // ========== EXCEPTION WRAPPING TESTS ==========
+
+        /// <summary>
+        ///     Tests that parse to dictionary with throwing handler wraps non-json exception
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_WithThrowingHandler_WrapsException()
+        {
+            IJsonParser parser = new JsonParser(new ThrowingEscapeSequenceHandler());
+            Assert.Throws<JsonParsingException>(() => parser.ParseToDictionary("{\"key\":\"value\"}"));
+        }
+
+        /// <summary>
+        ///     A throwing escape sequence handler for testing exception wrapping
+        /// </summary>
+        private class ThrowingEscapeSequenceHandler : IEscapeSequenceHandler
+        {
+            public bool IsEscaped(string text, int position) =>
+                throw new InvalidOperationException("Simulated escape handler failure");
+
+            public string Unescape(string escapedString) => escapedString;
         }
     }
 }
