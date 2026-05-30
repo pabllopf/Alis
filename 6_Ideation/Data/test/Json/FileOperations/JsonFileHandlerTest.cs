@@ -190,6 +190,46 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         }
 
         /// <summary>
+        ///     Tests that constructor with null serializer throws argument null exception
+        /// </summary>
+        [Fact]
+        public void Constructor_WithNullSerializer_ThrowsArgumentNullException()
+        {
+            EscapeSequenceHandler escapeHandler = new EscapeSequenceHandler();
+            JsonParser parser = new JsonParser(escapeHandler);
+            JsonDeserializer deserializer = new JsonDeserializer(parser);
+            Assert.Throws<ArgumentNullException>(() => new JsonFileHandler(null, deserializer));
+        }
+
+        /// <summary>
+        ///     Tests that constructor with null deserializer throws argument null exception
+        /// </summary>
+        [Fact]
+        public void Constructor_WithNullDeserializer_ThrowsArgumentNullException()
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            Assert.Throws<ArgumentNullException>(() => new JsonFileHandler(serializer, null));
+        }
+
+        /// <summary>
+        ///     Tests that deserialize from file with null file name throws argument null exception
+        /// </summary>
+        [Fact]
+        public void DeserializeFromFile_WithNullFileName_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => _fileHandler.DeserializeFromFile<TestObject>(null, "path"));
+        }
+
+        /// <summary>
+        ///     Tests that deserialize from file with null relative path throws argument null exception
+        /// </summary>
+        [Fact]
+        public void DeserializeFromFile_WithNullRelativePath_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => _fileHandler.DeserializeFromFile<TestObject>("test", null));
+        }
+
+        /// <summary>
         ///     Tests that serialize to file overwrites existing file
         /// </summary>
         [Fact]
