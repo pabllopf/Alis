@@ -59,6 +59,15 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         }
 
         /// <summary>
+        ///     Tests that the constructor throws argument null exception when json parser is null
+        /// </summary>
+        [Fact]
+        public void Constructor_WithNullParser_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => new JsonDeserializer(null));
+        }
+
+        /// <summary>
         ///     Tests that deserialize with valid json returns object
         /// </summary>
         [Fact]
