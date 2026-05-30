@@ -137,10 +137,41 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     Processes grid cells and generates geometry polygons.
         /// </summary>
+        private readonly struct MarchCellContext
+        {
+            public readonly sbyte[,] F;
+            public readonly sbyte[,] Fs;
+            public readonly GeomPolyVal[,] Ps;
+            public readonly Aabb Domain;
+            public readonly int Xn;
+            public readonly float CellWidth;
+            public readonly float CellHeight;
+            public readonly int LerpCount;
+            public readonly bool Combine;
+            public readonly CxFastList<GeomPoly> Ret;
+
+            public MarchCellContext(sbyte[,] f, sbyte[,] fs, GeomPolyVal[,] ps, Aabb domain,
+                int xn, float cellWidth, float cellHeight, int lerpCount, bool combine,
+                CxFastList<GeomPoly> ret)
+            {
+                F = f;
+                Fs = fs;
+                Ps = ps;
+                Domain = domain;
+                Xn = xn;
+                CellWidth = cellWidth;
+                CellHeight = cellHeight;
+                LerpCount = lerpCount;
+                Combine = combine;
+                Ret = ret;
+            }
+        }
+
         private static CxFastList<GeomPoly> ProcessGridCells(sbyte[,] f, sbyte[,] fs, GeomPolyVal[,] ps, Aabb domain,
             int xn, int yn, float cellWidth, float cellHeight, int lerpCount, bool combine)
         {
             CxFastList<GeomPoly> ret = new CxFastList<GeomPoly>();
+            var ctx = new MarchCellContext(f, fs, ps, domain, xn, cellWidth, cellHeight, lerpCount, combine, ret);
 
             for (int y = 0; y < yn; y++)
             {
@@ -150,35 +181,34 @@ namespace Alis.Core.Physic.Common.TextureTools
                 GeomPoly pre = null;
                 for (int x = 0; x < xn; x++)
                 {
-                    ProcessCell(x, xn, cellWidth, y0, y1, ref pre, f, fs, ps, domain, cellHeight, lerpCount, combine, ret);
+                    ProcessCell(x, y0, y1, ref pre, ctx);
                 }
             }
 
             return ret;
         }
 
-        private static void ProcessCell(int x, int xn, float cellWidth, float y0, float y1, ref GeomPoly pre, sbyte[,] f, sbyte[,] fs,
-            GeomPolyVal[,] ps, Aabb domain, float cellHeight, int lerpCount, bool combine, CxFastList<GeomPoly> ret)
+        private static void ProcessCell(int x, float y0, float y1, ref GeomPoly pre, MarchCellContext ctx)
         {
-            float x0 = x * cellWidth + domain.LowerBound.X;
-            float x1 = x == xn - 1 ? domain.UpperBound.X : x0 + cellWidth;
+            float x0 = x * ctx.CellWidth + ctx.Domain.LowerBound.X;
+            float x1 = x == ctx.Xn - 1 ? ctx.Domain.UpperBound.X : x0 + ctx.CellWidth;
 
             GeomPoly gp = new GeomPoly();
-            int key = MarchSquare(f, fs, ref gp, x, 0, x0, y0, x1, y1, lerpCount);
+            int key = MarchSquare(ctx.F, ctx.Fs, ref gp, x, 0, x0, y0, x1, y1, ctx.LerpCount);
 
             if (gp.Length != 0)
             {
-                if (combine && (pre != null) && ((key & 9) != 0))
+                if (ctx.Combine && (pre != null) && ((key & 9) != 0))
                 {
                     CombLeft(ref pre, ref gp);
                     gp = pre;
                 }
                 else
                 {
-                    ret.Add(gp);
+                    ctx.Ret.Add(gp);
                 }
 
-                ps[x, 0] = new GeomPolyVal(gp, key);
+                ctx.Ps[x, 0] = new GeomPolyVal(gp, key);
             }
 
             pre = gp.Length != 0 ? gp : null;
