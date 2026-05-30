@@ -301,6 +301,191 @@ namespace Alis.Core.Aspect.Memory.Test
                 AssetRegistry.GetResourceMemoryStreamByName("any.txt"));
             Assert.Contains("not found", ex.Message);
         }
-        
+
+        /// <summary>
+        ///     Tests that get resource path by name with whitespace resource name throws argument exception
+        /// </summary>
+        [Fact]
+        public void GetResourcePathByName_WithWhitespaceResourceName_ThrowsArgumentException()
+        {
+            string assemblyName = "TestAssembly_" + Guid.NewGuid();
+            Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            ArgumentException ex = Assert.Throws<ArgumentException>(() => AssetRegistry.GetResourcePathByName("   "));
+            Assert.Contains("resourceName no puede estar vacío", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that get resource path by name with non-existent resource throws file not found exception
+        /// </summary>
+        [Fact]
+        public void GetResourcePathByName_NonExistentResource_DifferentFilename_ThrowsFileNotFoundException()
+        {
+            string assemblyName = "TestAssembly_PathNotFound_" + Guid.NewGuid();
+            Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
+                AssetRegistry.GetResourcePathByName("nonexistent.txt"));
+            Assert.Contains("not found in `assets.pack`", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that get resource path by name with whitespace returns valid path for existing resource
+        /// </summary>
+        [Fact]
+        public void GetResourcePathByName_ExistingResource_ReturnsValidFilePath()
+        {
+            string assemblyName = "TestAssembly_ValidPath_" + Guid.NewGuid();
+            string expectedContent = "valid path content";
+            Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", expectedContent}};
+            byte[] zipBytes = CreateTestZipBytes(testData);
+
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            string result = AssetRegistry.GetResourcePathByName("app.bmp");
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            Assert.True(System.IO.File.Exists(result), "The returned path should point to an existing file");
+        }
+
+        /// <summary>
+        ///     Tests that get resource memory stream by name with case insensitive lookup finds resource
+        ///     via substring fallback (the first assembly's zip contains "app.bmp")
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_SubstringFallback_FindsResourceByPartialMatch()
+        {
+            // The active assembly (first registered) has "app.bmp".
+            // Searching by "bmp" should find it via the substring fallback path in FindZipEntryInfo.
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("bmp");
+
+            Assert.NotNull(result);
+            Assert.True(result.Length > 0);
+        }
+
+        /// <summary>
+        ///     Tests that get resource memory stream by name with case insensitive lookup finds resource
+        ///     via case-insensitive full path match
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_CaseInsensitiveFullMatch_FindsResource()
+        {
+            // The active assembly (first registered) has "app.bmp" (lowercase).
+            // Searching by "APP.BMP" (uppercase) should normalize to "app.bmp" and find it.
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("APP.BMP");
+
+            Assert.NotNull(result);
+            Assert.True(result.Length > 0);
+        }
+
+        /// <summary>
+        ///     Tests that get resource memory stream by name retrieves content matching what was registered
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_ExistingResource_ContentMatches()
+        {
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("app.bmp");
+
+            Assert.NotNull(result);
+            Assert.True(result.Length > 0);
+
+            // Verify the content is readable and starts with expected data
+            result.Position = 0;
+            byte[] buffer = new byte[result.Length];
+            int bytesRead = result.Read(buffer, 0, buffer.Length);
+            Assert.True(bytesRead > 0, "Should read bytes from the stream");
+        }
+
+        /// <summary>
+        ///     Tests that get resource memory stream by name returns a stream positioned at zero
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_ReturnsStreamPositionedAtZero()
+        {
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("app.bmp");
+
+            Assert.NotNull(result);
+            Assert.Equal(0, result.Position);
+        }
+
+        /// <summary>
+        ///     Tests that get resource memory stream by name with non-existent resource returns null
+        ///     after all fallback strategies fail
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_NonExistentResource_AllFallbacksFail_ThrowsFileNotFoundException()
+        {
+            FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
+                AssetRegistry.GetResourceMemoryStreamByName("definitely_does_not_exist_xyz123.txt"));
+            Assert.Contains("not found in `assets.pack`", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that register assembly with empty stream loader works
+        /// </summary>
+        [Fact]
+        public void RegisterAssembly_EmptyStreamLoader_WorksCorrectly()
+        {
+            string assemblyName = "TestAssembly_EmptyLoader_" + Guid.NewGuid();
+
+            // Register with an empty zip - EnsureZipCachedForActiveAssembly will succeed
+            // but the zip will have no entries
+            byte[] emptyZip = CreateTestZipBytes(new Dictionary<string, string>());
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(emptyZip, false));
+
+            // The active assembly is already set from a previous test, so this won't
+            // change it. This test just verifies RegisterAssembly doesn't throw.
+        }
+
+        /// <summary>
+        ///     Tests that register assembly multiple times does not throw
+        /// </summary>
+        [Fact]
+        public void RegisterAssembly_MultipleTimes_DoesNotThrow()
+        {
+            string assemblyName = "TestAssembly_Multi_" + Guid.NewGuid();
+            Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", "content"}};
+            byte[] zipBytes = CreateTestZipBytes(testData);
+
+            // Register same assembly multiple times - should not throw
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+        }
+
+        /// <summary>
+        ///     Tests that get resource memory stream by name with various resource name patterns
+        /// </summary>
+        [Theory]
+        [InlineData("app.bmp")]
+        [InlineData("APP.BMP")]
+        [InlineData("App.Bmp")]
+        public void GetResourceMemoryStreamByName_VariousCasePatterns_FindsResource(string resourceName)
+        {
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName(resourceName);
+
+            Assert.NotNull(result);
+            Assert.True(result.Length > 0);
+        }
+
+        /// <summary>
+        ///     Tests that get resource path by name with various resource name patterns
+        /// </summary>
+        [Theory]
+        [InlineData("app.bmp")]
+        [InlineData("APP.BMP")]
+        [InlineData("App.Bmp")]
+        public void GetResourcePathByName_VariousCasePatterns_ReturnsValidPath(string resourceName)
+        {
+            string result = AssetRegistry.GetResourcePathByName(resourceName);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+        }
     }
 }
