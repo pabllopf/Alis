@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Data.Json.Exceptions;
 using Alis.Core.Aspect.Data.Json.Helpers;
 using Alis.Core.Aspect.Data.Json.Parsing;
 using Xunit;
@@ -869,6 +870,189 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             // Assert
             Assert.Equal("2", result["a"]);
             Assert.Equal("4", result["b"]);
+        }
+
+
+        // ========== NON-QUOTED PRIMITIVE TESTS ==========
+
+        /// <summary>
+        ///     Tests that parse to dictionary with unquoted boolean true returns as string
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_UnquotedBooleanTrue_ReturnsAsString()
+        {
+            string json = "{\"flag\":true}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Equal("true", result["flag"]);
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with unquoted boolean false returns as string
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_UnquotedBooleanFalse_ReturnsAsString()
+        {
+            string json = "{\"flag\":false}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Equal("false", result["flag"]);
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with unquoted null returns as string
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_UnquotedNull_ReturnsAsString()
+        {
+            string json = "{\"value\":null}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Equal("null", result["value"]);
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with unquoted integer returns as string
+        /// </summary>
+        /// <param name="value">The value</param>
+        [Theory, InlineData("0"), InlineData("42"), InlineData("-100"), InlineData("2147483647")]
+        public void ParseToDictionary_UnquotedInteger_ReturnsAsString(string value)
+        {
+            string json = $"{{\"number\":{value}}}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Equal(value, result["number"]);
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with unquoted float returns as string
+        /// </summary>
+        /// <param name="value">The value</param>
+        [Theory, InlineData("0.0"), InlineData("3.14"), InlineData("-2.5"), InlineData("1e10")]
+        public void ParseToDictionary_UnquotedFloat_ReturnsAsString(string value)
+        {
+            string json = $"{{\"decimal\":{value}}}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Equal(value, result["decimal"]);
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with mixed quoted and unquoted values
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_MixedQuotedAndUnquoted_ParsesAll()
+        {
+            string json = "{\"name\":\"Alice\",\"age\":30,\"active\":true,\"score\":null}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Equal("Alice", result["name"]);
+            Assert.Equal("30", result["age"]);
+            Assert.Equal("true", result["active"]);
+            Assert.Equal("null", result["score"]);
+        }
+
+
+        // ========== ERROR PATH TESTS ==========
+
+        /// <summary>
+        ///     Tests that parse to dictionary with missing colon throws parsing exception
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_MissingColon_ThrowsJsonParsingException()
+        {
+            string json = "{\"key\" \"value\"}";
+            Assert.Throws<JsonParsingException>(() => _parser.ParseToDictionary(json));
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with unterminated string throws parsing exception
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_UnterminatedString_ThrowsJsonParsingException()
+        {
+            string json = "{\"key\":\"unterminated";
+            Assert.Throws<JsonParsingException>(() => _parser.ParseToDictionary(json));
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with unterminated nested object throws parsing exception
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_UnterminatedNestedObject_ThrowsJsonParsingException()
+        {
+            string json = "{\"key\":{\"nested\":\"value\"";
+            Assert.Throws<JsonParsingException>(() => _parser.ParseToDictionary(json));
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with unterminated nested array throws parsing exception
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_UnterminatedNestedArray_ThrowsJsonParsingException()
+        {
+            string json = "{\"items\":[\"a\",\"b\"";
+            Assert.Throws<JsonParsingException>(() => _parser.ParseToDictionary(json));
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with unexpected end after key parses available data
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_UnexpectedEndAfterKey_ParsesAvailableData()
+        {
+            string json = "{\"key\":";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Single(result);
+            Assert.Null(result["key"]);
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with empty input string returns empty dictionary
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_EmptyInput_ReturnsEmptyDictionary()
+        {
+            Dictionary<string, string> result = _parser.ParseToDictionary("");
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with whitespace only input returns empty dictionary
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_WhitespaceInput_ReturnsEmptyDictionary()
+        {
+            Dictionary<string, string> result = _parser.ParseToDictionary("   ");
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with negative number returns as string
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_NegativeNumber_ReturnsAsString()
+        {
+            string json = "{\"temp\":-15}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Equal("-15", result["temp"]);
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with scientific notation returns as string
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_ScientificNotation_ReturnsAsString()
+        {
+            string json = "{\"value\":1.5e10}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Equal("1.5e10", result["value"]);
+        }
+
+        /// <summary>
+        ///     Tests that parse to dictionary with comma after last property is tolerated
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_TrailingComma_Tolerated()
+        {
+            string json = "{\"a\":\"1\",\"b\":\"2\",}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Equal("1", result["a"]);
+            Assert.Equal("2", result["b"]);
         }
     }
 }

@@ -230,5 +230,81 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
             string result = _handler.Unescape(escaped);
             Assert.Equal("text\\uZZZZmore", result);
         }
+
+        /// <summary>
+        ///     Tests that unescape with solidus escape unescapes correctly
+        /// </summary>
+        [Fact]
+        public void Unescape_WithSolidusEscape_UnescapesCorrectly()
+        {
+            string escaped = "path\\/to\\/resource";
+            string result = _handler.Unescape(escaped);
+            Assert.Equal("path/to/resource", result);
+        }
+
+        /// <summary>
+        ///     Tests that unescape with empty string returns empty
+        /// </summary>
+        [Fact]
+        public void Unescape_WithEmptyString_ReturnsEmpty()
+        {
+            string result = _handler.Unescape(string.Empty);
+            Assert.Equal(string.Empty, result);
+        }
+
+        /// <summary>
+        ///     Tests that unescape with unicode at end of string keeps escape
+        /// </summary>
+        [Fact]
+        public void Unescape_WithUnicodeAtEndOfString_KeepsEscape()
+        {
+            string escaped = "text\\u";
+            string result = _handler.Unescape(escaped);
+            Assert.Equal("text\\u", result);
+        }
+
+        /// <summary>
+        ///     Tests that unescape with unicode with less than four hex digits keeps escape
+        /// </summary>
+        [Fact]
+        public void Unescape_WithUnicodeLessThanFourHexDigits_KeepsEscape()
+        {
+            string escaped = "text\\u12";
+            string result = _handler.Unescape(escaped);
+            Assert.Equal("text\\u12", result);
+        }
+
+        /// <summary>
+        ///     Tests that unescape with unicode invalid hex digits keeps escape
+        /// </summary>
+        [Fact]
+        public void Unescape_WithUnicodeInvalidHex_KeepsEscape()
+        {
+            string escaped = "text\\uGGGGmore";
+            string result = _handler.Unescape(escaped);
+            Assert.Equal("text\\uGGGGmore", result);
+        }
+
+        /// <summary>
+        ///     Tests that is escaped with double escaped returns false
+        /// </summary>
+        [Fact]
+        public void IsEscaped_WithDoubleEscaped_ReturnsFalse()
+        {
+            string text = "test\\\\\"quote";
+            bool result = _handler.IsEscaped(text, 6);
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that is escaped with backslash at start returns false
+        /// </summary>
+        [Fact]
+        public void IsEscaped_WithBackslashAtStart_ReturnsFalse()
+        {
+            string text = "\\test";
+            bool result = _handler.IsEscaped(text, 0);
+            Assert.False(result);
+        }
     }
 }
