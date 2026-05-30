@@ -964,81 +964,11 @@ namespace Alis.Core.Physic.Collisions
                 ReferenceFace rf;
                 if (primaryAxis.Type == EpAxisType.EdgeA)
                 {
-                    manifold.Type = ManifoldType.FaceA;
-
-                    // Search for the polygon normal that is most anti-parallel to the edge normal.
-                    int bestIndex = 0;
-                    float bestValue = Vector2F.Dot(normal, tempPolygonB.Normals[0]);
-                    for (int i = 1; i < tempPolygonB.Count; ++i)
-                    {
-                        float value = Vector2F.Dot(normal, tempPolygonB.Normals[i]);
-                        if (value < bestValue)
-                        {
-                            bestValue = value;
-                            bestIndex = i;
-                        }
-                    }
-
-                    int i1 = bestIndex;
-                    int i2 = i1 + 1 < tempPolygonB.Count ? i1 + 1 : 0;
-
-                    ClipVertex c0 = ie[0];
-                    c0.V = tempPolygonB.Vertices[i1];
-                    c0.Id.Features.IndexA = 0;
-                    c0.Id.Features.IndexB = (byte) i1;
-                    c0.Id.Features.TypeA = (byte) ContactFeatureType.Face;
-                    c0.Id.Features.TypeB = (byte) ContactFeatureType.Vertex;
-                    ie[0] = c0;
-
-                    ClipVertex c1 = ie[1];
-                    c1.V = tempPolygonB.Vertices[i2];
-                    c1.Id.Features.IndexA = 0;
-                    c1.Id.Features.IndexB = (byte) i2;
-                    c1.Id.Features.TypeA = (byte) ContactFeatureType.Face;
-                    c1.Id.Features.TypeB = (byte) ContactFeatureType.Vertex;
-                    ie[1] = c1;
-
-                    if (front)
-                    {
-                        rf.I1 = 0;
-                        rf.I2 = 1;
-                        rf.V1 = v1;
-                        rf.V2 = v2;
-                        rf.Normal = normal1;
-                    }
-                    else
-                    {
-                        rf.I1 = 1;
-                        rf.I2 = 0;
-                        rf.V1 = v2;
-                        rf.V2 = v1;
-                        rf.Normal = -normal1;
-                    }
+                    BuildEdgeAManifold(ref manifold, ref ie, out rf, ref tempPolygonB, normal, normal1, v1, v2, front);
                 }
                 else
                 {
-                    manifold.Type = ManifoldType.FaceB;
-                    ClipVertex c0 = ie[0];
-                    c0.V = v1;
-                    c0.Id.Features.IndexA = 0;
-                    c0.Id.Features.IndexB = (byte) primaryAxis.Index;
-                    c0.Id.Features.TypeA = (byte) ContactFeatureType.Vertex;
-                    c0.Id.Features.TypeB = (byte) ContactFeatureType.Face;
-                    ie[0] = c0;
-
-                    ClipVertex c1 = ie[1];
-                    c1.V = v2;
-                    c1.Id.Features.IndexA = 0;
-                    c1.Id.Features.IndexB = (byte) primaryAxis.Index;
-                    c1.Id.Features.TypeA = (byte) ContactFeatureType.Vertex;
-                    c1.Id.Features.TypeB = (byte) ContactFeatureType.Face;
-                    ie[1] = c1;
-
-                    rf.I1 = primaryAxis.Index;
-                    rf.I2 = rf.I1 + 1 < tempPolygonB.Count ? rf.I1 + 1 : 0;
-                    rf.V1 = tempPolygonB.Vertices[rf.I1];
-                    rf.V2 = tempPolygonB.Vertices[rf.I2];
-                    rf.Normal = tempPolygonB.Normals[rf.I1];
+                    BuildFaceBManifold(ref manifold, ref ie, out rf, ref tempPolygonB, primaryAxis, v1, v2);
                 }
 
                 rf.SideNormal1 = new Vector2F(rf.Normal.Y, -rf.Normal.X);
@@ -1344,6 +1274,91 @@ namespace Alis.Core.Physic.Collisions
                 }
 
                 return edgeAxis;
+            }
+
+            private static void BuildEdgeAManifold(ref Manifold manifold, ref FixedArray2<ClipVertex> ie, out ReferenceFace rf,
+                ref TempPolygon tempPolygonB, Vector2F normal, Vector2F normal1, Vector2F v1, Vector2F v2, bool front)
+            {
+                manifold.Type = ManifoldType.FaceA;
+
+                // Search for the polygon normal that is most anti-parallel to the edge normal.
+                int bestIndex = 0;
+                float bestValue = Vector2F.Dot(normal, tempPolygonB.Normals[0]);
+                for (int i = 1; i < tempPolygonB.Count; ++i)
+                {
+                    float value = Vector2F.Dot(normal, tempPolygonB.Normals[i]);
+                    if (value < bestValue)
+                    {
+                        bestValue = value;
+                        bestIndex = i;
+                    }
+                }
+
+                int i1 = bestIndex;
+                int i2 = i1 + 1 < tempPolygonB.Count ? i1 + 1 : 0;
+
+                ClipVertex c0 = ie[0];
+                c0.V = tempPolygonB.Vertices[i1];
+                c0.Id.Features.IndexA = 0;
+                c0.Id.Features.IndexB = (byte) i1;
+                c0.Id.Features.TypeA = (byte) ContactFeatureType.Face;
+                c0.Id.Features.TypeB = (byte) ContactFeatureType.Vertex;
+                ie[0] = c0;
+
+                ClipVertex c1 = ie[1];
+                c1.V = tempPolygonB.Vertices[i2];
+                c1.Id.Features.IndexA = 0;
+                c1.Id.Features.IndexB = (byte) i2;
+                c1.Id.Features.TypeA = (byte) ContactFeatureType.Face;
+                c1.Id.Features.TypeB = (byte) ContactFeatureType.Vertex;
+                ie[1] = c1;
+
+                rf = default;
+                if (front)
+                {
+                    rf.I1 = 0;
+                    rf.I2 = 1;
+                    rf.V1 = v1;
+                    rf.V2 = v2;
+                    rf.Normal = normal1;
+                }
+                else
+                {
+                    rf.I1 = 1;
+                    rf.I2 = 0;
+                    rf.V1 = v2;
+                    rf.V2 = v1;
+                    rf.Normal = -normal1;
+                }
+            }
+
+            private static void BuildFaceBManifold(ref Manifold manifold, ref FixedArray2<ClipVertex> ie, out ReferenceFace rf,
+                ref TempPolygon tempPolygonB, EpAxis primaryAxis, Vector2F v1, Vector2F v2)
+            {
+                manifold.Type = ManifoldType.FaceB;
+
+                ClipVertex c0 = ie[0];
+                c0.V = v1;
+                c0.Id.Features.IndexA = 0;
+                c0.Id.Features.IndexB = (byte) primaryAxis.Index;
+                c0.Id.Features.TypeA = (byte) ContactFeatureType.Vertex;
+                c0.Id.Features.TypeB = (byte) ContactFeatureType.Face;
+                ie[0] = c0;
+
+                ClipVertex c1 = ie[1];
+                c1.V = v2;
+                c1.Id.Features.IndexA = 0;
+                c1.Id.Features.IndexB = (byte) primaryAxis.Index;
+                c1.Id.Features.TypeA = (byte) ContactFeatureType.Vertex;
+                c1.Id.Features.TypeB = (byte) ContactFeatureType.Face;
+                ie[1] = c1;
+
+                rf = default;
+                rf.I1 = primaryAxis.Index;
+                rf.I2 = rf.I1 + 1 < tempPolygonB.Count ? rf.I1 + 1 : 0;
+                rf.V1 = tempPolygonB.Vertices[rf.I1];
+                rf.V2 = tempPolygonB.Vertices[rf.I2];
+                rf.Normal = tempPolygonB.Normals[rf.I1];
             }
         }
     }
