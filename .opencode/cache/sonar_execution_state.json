@@ -1,10 +1,8 @@
 {
-  "startedAt": "2026-05-29T10:16:22.145895+00:00",
-  "lastActivity": "2026-05-29T21:38:18.825706+00:00",
-  "totalIssues": 22,
-  "fixedCount": 21,
-  "failedCount": 0,
-  "inProgressCount": 0,
-  "openCount": 0,
-  "workers": {}
+  "totalIssues": 16,
+  "open": 16,
+  "in_progress": 0,
+  "fixed": 0,
+  "failed": 0,
+  "blocked": 0
 }

@@ -749,6 +749,15 @@ namespace Alis.Core.Physic.Collisions
             }
 
             // Perform a local search for the best edge normal.
+            return LocalSearch(poly1, ref xf1To2, poly2, count1, bestEdge, bestSeparation, increment, out edgeIndex);
+        }
+
+        private static float LocalSearch(PolygonShape poly1, ref ControllerTransform xf1To2,
+            PolygonShape poly2, int count1, int bestEdge, float bestSeparation, int increment, out int edgeIndex)
+        {
+            int edge;
+            float s;
+
             while (true)
             {
                 if (increment == -1)
