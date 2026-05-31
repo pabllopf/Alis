@@ -145,7 +145,6 @@ namespace Alis.Core.Physic.Common.TextureTools
             public readonly Aabb Domain;
             public readonly int Xn;
             public readonly float CellWidth;
-            public readonly float CellHeight;
             public readonly int LerpCount;
             public readonly bool Combine;
             public readonly CxFastList<GeomPoly> Ret;
@@ -160,7 +159,6 @@ namespace Alis.Core.Physic.Common.TextureTools
                 Domain = domain;
                 Xn = xn;
                 CellWidth = cellWidth;
-                CellHeight = cellHeight;
                 LerpCount = lerpCount;
                 Combine = combine;
                 Ret = ret;
