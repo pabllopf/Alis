@@ -108,6 +108,11 @@
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 
+    <!-- Exclude macOS resource fork files -->
+    <ItemGroup>
+        <Compile Remove="._*.cs" />
+    </ItemGroup>
+
     <ItemGroup>
         <None Condition="Exists('$(ProjectDir).docs/')" Include="$(ProjectDir).docs/**/*.md" Pack="false" Visible="true"/>
     </ItemGroup>
