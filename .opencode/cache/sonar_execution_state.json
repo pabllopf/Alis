@@ -1,1 +1,13 @@
-{}
+{
+  "version": 1,
+  "createdAt": "2026-05-31T00:00:00Z",
+  "lastRunAt": null,
+  "totalIssues": 5,
+  "openCount": 5,
+  "inProgressCount": 0,
+  "fixedCount": 0,
+  "failedCount": 0,
+  "blockedCount": 0,
+  "workers": {},
+  "staleLockThresholdMinutes": 60
+}

@@ -1,82 +1,83 @@
 {
-  "fetchedAt": "2026-05-31T13:22:02Z",
-  "projectKey": "pabllopf-official_alis",
+  "project": "pabllopf-official_alis",
+  "fetchedAt": null,
   "totalIssues": 5,
   "issues": [
     {
       "key": "AZ548a5QEMqJBb_RZcep",
-      "ruleKey": "unknown",
-      "component": "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
-      "line": 148,
-      "message": "Remove this unread private class field 'CellHeight' or refactor the code to use its value.",
+      "rule": "csharpsquid:S4487",
+      "status": "OPEN",
       "severity": "CRITICAL",
-      "status": "open",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "cleanCodeAttribute": "CLEAR",
-      "effortTarget": null
+      "line": 148,
+      "file": "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
+      "message": "Remove this unread private class field 'CellHeight' or refactor the code to use its value.",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "cwe",
+        "unused"
+      ],
+      "effort": "5min",
+      "type": "CODE_SMELL"
     },
     {
       "key": "AZ513rmvQhsJmkYf-Qrd",
-      "ruleKey": "unknown",
-      "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Collision.cs",
-      "line": 1158,
-      "message": "Refactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.",
+      "rule": "csharpsquid:S3776",
+      "status": "OPEN",
       "severity": "CRITICAL",
-      "status": "open",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "cleanCodeAttribute": "FOCUSED",
-      "effortTarget": null
+      "line": 1158,
+      "file": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Collision.cs",
+      "message": "Refactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "effort": "6min",
+      "type": "CODE_SMELL"
     },
     {
       "key": "AZ513rmvQhsJmkYf-Qre",
-      "ruleKey": "unknown",
-      "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Collision.cs",
-      "line": 1162,
-      "message": "Extract this nested ternary operation into an independent statement.",
+      "rule": "csharpsquid:S3358",
+      "status": "OPEN",
       "severity": "MAJOR",
-      "status": "open",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "cleanCodeAttribute": "CLEAR",
-      "effortTarget": null
+      "line": 1162,
+      "file": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Collision.cs",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "confusing"
+      ],
+      "effort": "5min",
+      "type": "CODE_SMELL"
     },
     {
       "key": "AZ513rmvQhsJmkYf-Qrf",
-      "ruleKey": "unknown",
-      "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Collision.cs",
-      "line": 1163,
-      "message": "Extract this nested ternary operation into an independent statement.",
+      "rule": "csharpsquid:S3358",
+      "status": "OPEN",
       "severity": "MAJOR",
-      "status": "open",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "cleanCodeAttribute": "CLEAR",
-      "effortTarget": null
+      "line": 1163,
+      "file": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Collision.cs",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "confusing"
+      ],
+      "effort": "5min",
+      "type": "CODE_SMELL"
     },
     {
       "key": "AZ1dvNZMMbZ4NfML320X",
-      "ruleKey": "unknown",
-      "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Collision.cs",
-      "line": 861,
-      "message": "Refactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.",
+      "rule": "csharpsquid:S3776",
+      "status": "OPEN",
       "severity": "CRITICAL",
-      "status": "open",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "cleanCodeAttribute": "FOCUSED",
-      "effortTarget": null
+      "line": 861,
+      "file": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Collision.cs",
+      "message": "Refactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "brain-overload"
+      ],
+      "effort": "6min",
+      "type": "CODE_SMELL"
     }
   ]
 }
