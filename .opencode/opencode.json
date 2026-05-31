@@ -1,69 +1,48 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "default_agent": "build",
+
+  "default_agent": "senior-engineer",
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
+  "model": "omlx/Qwen3.5-35B-A3B-4bit",
 
- "provider": {
-  "ollama": {
+  "provider": {
+    "omlx": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "macafm (local)",
+      "name": "oMLX",
       "options": {
-        "baseURL": "http://localhost:9999/v1"
+        "baseURL": "http://127.0.0.1:8000/v1",
+        "apiKey": "1234"
       },
       "models": {
-          "Qwen3.6-35B-A3B-UD-MLX-4bit": {
-        "name": "Qwen3.6-35B-A3B-UD-MLX-4bit",
-        "modalities": {
-          "input": ["text", "image"],
-          "output": ["text"]
+        "Qwen3.5-35B-A3B-4bit": {
+          "name": "Qwen3.5-35B-A3B-4bit",
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          },
+          "attachment": true,
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
         },
-        "attachment": true,
-        "limit": {
-          "context": 131072,
-          "output": 8192
-        }
-      },
-      "Qwen3.5-35B-A3B-4bit": {
-        "name": "Qwen3.5-35B-A3B-4bit",
-        "modalities": {
-          "input": ["text", "image"],
-          "output": ["text"]
-        },
-        "attachment": true,
-        "limit": {
-          "context": 131072,
-          "output": 8192
-        }
-      }
-      }
-    },
-  
-  "omlx": {
-    "npm": "@ai-sdk/openai-compatible",
-    "name": "oMLX",
-    "options": {
-      "baseURL": "http://127.0.0.1:8000/v1",
-      "apiKey": "1234"
-    },
-    "models": {
-      "Qwen3.6-35B-A3B-UD-MLX-4bit": {
-        "name": "Qwen3.6-35B-A3B-UD-MLX-4bit",
-        "modalities": {
-          "input": ["text", "image"],
-          "output": ["text"]
-        },
-        "attachment": true,
-        "limit": {
-          "context": 131072,
-          "output": 8192
+        "Qwen2.5-Coder-7B-4bit": {
+          "name": "Qwen2.5-Coder-7B-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+          "limit": {
+            "context": 32768,
+            "output": 4096
+          }
         }
       }
     }
-  }
-},
+  },
 
   "compaction": {
     "auto": true,
@@ -73,79 +52,10 @@
 
   "watcher": {
     "ignore": [
-      ".vs/",
-      ".vscode/",
-      ".idea/",
-      ".test/",
-      ".temp/",
-      ".publish/",
-      ".nuget/",
-      ".venv/",
-      "Release/",
-      "Debug/",
-
-      "**/.vs/**",
-      "**/.vscode/**",
-      "**/.idea/**",
-      "**/.test/**",
-      "**/.temp/**",
-      "**/.publish/**",
-      "**/.nuget/**",
-
-      "**/bin/**",
-      "**/obj/**",
-      "**/lib/**",
-
-      "**/vs/**",
-      "**/vscode/**",
-      "**/idea/**",
-
-      "**/graphify-out/**",
-      "**/test/**",
-
-      "**/_/**",
-      "**/build/**",
-      "**/.build/**",
-
-      "**/.DS_Store",
-      "**/.log",
-
-      "**/.xsd",
-
-      "*.log",
-      "*.html",
-      "*.css",
-      "*.js",
-      "*.c",
-      "*.exe",
-      "*.template.json",
-      "*.nupkg",
-      "*.suo",
-      "*.user",
-      "*.userprefs",
-      "*.pidb",
-      "*.booproj",
-      "*.svd",
-      "*.pdb",
-      "*.deb",
-      "*.gitattributes",
-      "*.nojekyll",
-      "*.tar",
-      "*.mdb",
-      "*.opendb",
-      "*.collabignore",
-      "*.tmp",
-      "*.TMP",
-      "*.htm",
-      "*.txt",
-
-      "*StyleCop.Cache",
-      "*alis.sln.DotSettings.user",
-      "*DS_Store",
-      "*FodyWeavers.xml",
-      "*FodyWeavers.xsd",
-
-      ".sonarqube/"
+      ".vs/", ".vscode/", ".idea/", ".test/", ".temp/", ".publish/", ".nuget/",
+      ".venv/", "Release/", "Debug/",
+      "**/bin/**", "**/obj/**", "**/build/**",
+      "**/.DS_Store", "*.log", "*.tmp", "*.pdb", "*.exe"
     ]
   },
 
@@ -159,6 +69,7 @@
     "ripgrep": true,
     "fd": true,
     "write": true,
+    "edit": true,
     "bash": true
   },
 
@@ -172,58 +83,16 @@
   "autoupdate": false,
 
   "agent": {
-    "build": {
-      "description": "Primary autonomous build agent for large-scale software engineering tasks",
-      "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
-      "prompt": "You are a senior software architect responsible for building robust, scalable systems. Prioritize correctness, modular design, and performance.",
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": true
-      }
+    "senior-engineer": {
+      "model": "omlx/Qwen3.5-35B-A3B-4bit",
+      "prompt": "Use this agent for architecture, reasoning, design decisions, debugging and non-trivial implementation.",
+      "tools": { "write": true, "edit": true, "bash": true }
     },
 
-    "csharp-architect": {
-      "description": "Senior C# architect for large enterprise-grade systems",
-      "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
-      "prompt": "You design large-scale .NET systems using clean architecture, SOLID principles, and high maintainability patterns. You optimize for AOT readiness and low allocations.",
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": true
-      }
-    },
-
-    "csharp-performance": {
-      "description": "Performance specialist for .NET systems",
-      "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
-      "prompt": "You optimize .NET systems for throughput, memory efficiency, and low GC pressure using spans, pooling, and allocation-free patterns.",
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": true
-      }
-    },
-
-    "csharp-test-engineer": {
-      "description": "Senior test engineer for .NET systems",
-      "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
-      "prompt": "You design deterministic, isolated, high-quality test suites for .NET systems with strong edge-case coverage.",
-      "tools": {
-        "write": true,
-        "edit": true
-      }
-    },
-
-    "code-reviewer": {
-      "description": "Security and maintainability code reviewer",
-      "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
-      "prompt": "You review code strictly for security issues, performance regressions, and maintainability problems.",
-      "tools": {
-        "write": false,
-        "edit": false,
-        "bash": false
-      }
+    "worker": {
+      "model": "omlx/Qwen2.5-Coder-7B-4bit",
+      "prompt": "Use this agent for simple code generation, CLI commands, boilerplate, refactors, and small isolated tasks.",
+      "tools": { "write": true, "edit": true, "bash": true }
     }
   }
 }
