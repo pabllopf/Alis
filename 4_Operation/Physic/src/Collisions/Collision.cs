@@ -1158,10 +1158,27 @@ namespace Alis.Core.Physic.Collisions
             private static bool CalculateFrontState(CollisionNormalInputs i)
             {
                 if (i.HasVertex0 && i.HasVertex3)
-                    return i.Convex1 && i.Convex2 ? IsFrontAny(i.Offset0, i.Offset1, i.Offset2)
-                        : i.Convex1 ? IsFrontFirstOrBoth(i.Offset0, i.Offset1, i.Offset2)
-                        : i.Convex2 ? IsFrontLastOrBoth(i.Offset0, i.Offset1, i.Offset2)
-                        : IsFrontAll(i.Offset0, i.Offset1, i.Offset2);
+                {
+                    bool bothConvex = i.Convex1 && i.Convex2;
+                    if (bothConvex)
+                        return IsFrontAny(i.Offset0, i.Offset1, i.Offset2);
+                    if (i.Convex1)
+                        return IsFrontFirstOrBoth(i.Offset0, i.Offset1, i.Offset2);
+                    if (i.Convex2)
+                        return IsFrontLastOrBoth(i.Offset0, i.Offset1, i.Offset2);
+                    return IsFrontAll(i.Offset0, i.Offset1, i.Offset2);
+                }
+
+                if (i.HasVertex0)
+                    return i.Convex1 ? IsFrontAny(i.Offset0, i.Offset1, float.NaN)
+                        : IsFrontBoth(i.Offset0, i.Offset1);
+
+                if (i.HasVertex3)
+                    return i.Convex2 ? IsFrontAny(float.NaN, i.Offset1, i.Offset2)
+                        : IsFrontBoth(i.Offset1, i.Offset2);
+
+                return i.Offset1 >= 0.0f;
+            }
 
                 if (i.HasVertex0)
                     return i.Convex1 ? IsFrontAny(i.Offset0, i.Offset1, float.NaN)
