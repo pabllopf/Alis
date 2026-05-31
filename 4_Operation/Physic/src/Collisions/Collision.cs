@@ -1007,6 +1007,15 @@ namespace Alis.Core.Physic.Collisions
                     manifold.LocalPoint = polygonB.Vertices[rf.I1];
                 }
 
+                int pointCount = BuildManifoldPoints(ref manifold, ref clipPoints2, ref rf, ref xf, radius, primaryAxis);
+            }
+
+            /// <summary>
+            ///     Builds the manifold points from the clipped results.
+            /// </summary>
+            private static int BuildManifoldPoints(ref Manifold manifold, ref FixedArray2<ClipVertex> clipPoints2,
+                ref ReferenceFace rf, ref ControllerTransform xf, float radius, EpAxis primaryAxis)
+            {
                 int pointCount = 0;
                 for (int i = 0; i < SettingEnv.MaxManifoldPoints; ++i)
                 {
@@ -1036,6 +1045,7 @@ namespace Alis.Core.Physic.Collisions
                 }
 
                 manifold.PointCount = pointCount;
+                return pointCount;
             }
 
             /// <summary>
@@ -1168,17 +1178,6 @@ namespace Alis.Core.Physic.Collisions
                         return IsFrontLastOrBoth(i.Offset0, i.Offset1, i.Offset2);
                     return IsFrontAll(i.Offset0, i.Offset1, i.Offset2);
                 }
-
-                if (i.HasVertex0)
-                    return i.Convex1 ? IsFrontAny(i.Offset0, i.Offset1, float.NaN)
-                        : IsFrontBoth(i.Offset0, i.Offset1);
-
-                if (i.HasVertex3)
-                    return i.Convex2 ? IsFrontAny(float.NaN, i.Offset1, i.Offset2)
-                        : IsFrontBoth(i.Offset1, i.Offset2);
-
-                return i.Offset1 >= 0.0f;
-            }
 
                 if (i.HasVertex0)
                     return i.Convex1 ? IsFrontAny(i.Offset0, i.Offset1, float.NaN)
