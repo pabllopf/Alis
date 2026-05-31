@@ -150,7 +150,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             public readonly CxFastList<GeomPoly> Ret;
 
             public MarchCellContext(sbyte[,] f, sbyte[,] fs, GeomPolyVal[,] ps, Aabb domain,
-                int xn, float cellWidth, float cellHeight, int lerpCount, bool combine,
+                int xn, float cellWidth, int lerpCount, bool combine,
                 CxFastList<GeomPoly> ret)
             {
                 F = f;
@@ -169,7 +169,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             int xn, int yn, float cellWidth, float cellHeight, int lerpCount, bool combine)
         {
             CxFastList<GeomPoly> ret = new CxFastList<GeomPoly>();
-            var ctx = new MarchCellContext(f, fs, ps, domain, xn, cellWidth, cellHeight, lerpCount, combine, ret);
+            var ctx = new MarchCellContext(f, fs, ps, domain, xn, cellWidth, lerpCount, combine, ret);
 
             for (int y = 0; y < yn; y++)
             {
