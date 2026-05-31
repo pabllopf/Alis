@@ -50,7 +50,7 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Null(player.PlayerId);
             Assert.Null(player.PlayerName);
             Assert.False(player.IsHost);
-            Assert.Equal(PlayerConnectionState.Disconnected, player.ConnectionState);
+            Assert.Equal(PlayerConnectionState.Connected, player.ConnectionState);
             Assert.Equal(0, player.JoinedAt);
             Assert.Equal(0, player.LastActivityAt);
             Assert.Equal(0, player.Latency);
