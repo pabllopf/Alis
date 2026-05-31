@@ -307,7 +307,10 @@ namespace Alis.Extension.Ads.GoogleAds
             if (disposing)
             {
                 Logger.Info("AdsManager disposed");
-                OnAdClosed?.Invoke("all");
+                if (_isInitialized)
+                {
+                    OnAdClosed?.Invoke("all");
+                }
             }
         }
 
