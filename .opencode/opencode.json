@@ -28,6 +28,18 @@
             "output": 8192
           }
         },
+        "Qwen2.5-Coder-14B-4bit": {
+          "name": "Qwen2.5-Coder-14B-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+          "limit": {
+            "context": 32768,
+            "output": 4096
+          }
+        },
         "Qwen2.5-Coder-7B-4bit": {
           "name": "Qwen2.5-Coder-7B-4bit",
           "modalities": {
@@ -60,9 +72,7 @@
   },
 
   "instructions": [
-    "CONTRIBUTING.md",
-    "docs/guidelines.md",
-    ".cursor/rules/*.md"
+    "CONTRIBUTING.md"
   ],
 
   "tools": {
