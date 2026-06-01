@@ -145,6 +145,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             public readonly Aabb Domain;
             public readonly int Xn;
             public readonly float CellWidth;
+            public readonly float CellHeight;
             public readonly int LerpCount;
             public readonly bool Combine;
             public readonly CxFastList<GeomPoly> Ret;
@@ -163,13 +164,29 @@ namespace Alis.Core.Physic.Common.TextureTools
                 Combine = combine;
                 Ret = ret;
             }
+
+            public MarchCellContext(sbyte[,] f, sbyte[,] fs, GeomPolyVal[,] ps, Aabb domain,
+                int xn, float cellWidth, int lerpCount, bool combine,
+                CxFastList<GeomPoly> ret, float cellHeight)
+            {
+                F = f;
+                Fs = fs;
+                Ps = ps;
+                Domain = domain;
+                Xn = xn;
+                CellWidth = cellWidth;
+                CellHeight = cellHeight;
+                LerpCount = lerpCount;
+                Combine = combine;
+                Ret = ret;
+            }
         }
 
         private static CxFastList<GeomPoly> ProcessGridCells(sbyte[,] f, sbyte[,] fs, GeomPolyVal[,] ps, Aabb domain,
             int xn, int yn, float cellWidth, float cellHeight, int lerpCount, bool combine)
         {
             CxFastList<GeomPoly> ret = new CxFastList<GeomPoly>();
-            var ctx = new MarchCellContext(f, fs, ps, domain, xn, cellWidth, lerpCount, combine, ret);
+            var ctx = new MarchCellContext(f, fs, ps, domain, xn, cellWidth, lerpCount, combine, ret, cellHeight);
 
             for (int y = 0; y < yn; y++)
             {

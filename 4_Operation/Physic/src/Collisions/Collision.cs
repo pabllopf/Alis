@@ -1156,10 +1156,12 @@ namespace Alis.Core.Physic.Collisions
                 out bool front, out Vector2F normal, out Vector2F lowerLimit, out Vector2F upperLimit)
             {
                 front = CalculateFrontState(inputs);
-                var sign = front ? 1.0f : -1.0f;
+                float sign = front ? 1.0f : -1.0f;
                 normal = inputs.Normal1 * sign;
 
-                (lowerLimit, upperLimit) = ComputeLimits(inputs, front);
+                var limits = ComputeLimits(inputs, front);
+                lowerLimit = limits.lower;
+                upperLimit = limits.upper;
             }
 
             /// <summary>
