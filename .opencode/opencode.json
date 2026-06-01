@@ -5,7 +5,7 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/Qwen3.5-35B-A3B-4bit",
+  "model": "omlx/NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-MXFP4",
 
   "provider": {
     "omlx": {
@@ -16,55 +16,16 @@
         "apiKey": "1234"
       },
       "models": {
-        "Qwen3.5-35B-A3B-4bit": {
-          "name": "Qwen3.5-35B-A3B-4bit",
+        "NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-MXFP4": {
+          "name": "NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-MXFP4",
           "modalities": {
-            "input": ["text", "image"],
+            "input": ["text"],
             "output": ["text"]
           },
           "attachment": true,
           "limit": {
-            "context": 131072,
+            "context": 65792,
             "output": 16384
-          }
-        },
-
-        "Qwen3.6-35B-A3B-UD-MLX-4bit": {
-          "name": "Qwen3.6-35B-A3B-UD-MLX-4bit",
-          "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
-          },
-          "attachment": true,
-          "limit": {
-            "context": 65536,
-            "output": 8192
-          }
-        },
-
-        "Qwen2.5-Coder-3B-4bit": {
-          "name": "Qwen2.5-Coder-3B-4bit",
-          "modalities": {
-            "input": ["text"],
-            "output": ["text"]
-          },
-          "attachment": false,
-          "limit": {
-            "context": 16384,
-            "output": 2048
-          }
-        },
-
-        "Qwen2.5-Coder-1.5B-4bit": {
-          "name": "Qwen2.5-Coder-1.5B-4bit",
-          "modalities": {
-            "input": ["text"],
-            "output": ["text"]
-          },
-          "attachment": false,
-          "limit": {
-            "context": 8192,
-            "output": 1024
           }
         }
       }
@@ -110,46 +71,6 @@
   "agent": {
     "senior-engineer": {
       "path": ".opencode/agents/senior-engineer.md"
-    },
-
-    "deep-engineer": {
-      "path": ".opencode/agents/deep-engineer.md"
-    },
-
-    "micro-worker": {
-      "path": ".opencode/agents/micro-worker.md"
-    },
-
-    "fast-worker" : {
-      "path": ".opencode/agents/fast-worker.md"
-    },
-
-    "explorer": {
-      "path": ".opencode/agents/explorer.md"
-    },
-
-    "dotnet-architect": {
-      "path": ".opencode/agents/dotnet-architect.md"
-    },
-
-    "performance-engineer": {
-      "path": ".opencode/agents/performance-engineer.md"
-    },
-
-    "test-engineer": {
-      "path": ".opencode/agents/test-engineer.md"
-    },
-
-    "reviewer": {
-      "path": ".opencode/agents/reviewer.md"
-    },
-
-    "rendering-specialist": {
-      "path": ".opencode/agents/rendering-specialist.md"
-    },
-
-    "build-coordinator": {
-      "path": ".opencode/agents/build-coordinator.md"
     }
   }
 }
