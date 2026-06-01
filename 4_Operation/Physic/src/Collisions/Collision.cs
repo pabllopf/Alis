@@ -1180,12 +1180,20 @@ namespace Alis.Core.Physic.Collisions
                 }
 
                 if (i.HasVertex0)
-                    return i.Convex1 ? IsFrontAny(i.Offset0, i.Offset1, float.NaN)
+                {
+                    bool hasVertex0 = i.Convex1 
+                        ? IsFrontAny(i.Offset0, i.Offset1, float.NaN)
                         : IsFrontBoth(i.Offset0, i.Offset1);
+                    return hasVertex0;
+                }
 
                 if (i.HasVertex3)
-                    return i.Convex2 ? IsFrontAny(float.NaN, i.Offset1, i.Offset2)
+                {
+                    bool hasVertex3 = i.Convex2 
+                        ? IsFrontAny(float.NaN, i.Offset1, i.Offset2)
                         : IsFrontBoth(i.Offset1, i.Offset2);
+                    return hasVertex3;
+                }
 
                 return i.Offset1 >= 0.0f;
             }
