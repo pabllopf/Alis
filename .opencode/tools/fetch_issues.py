@@ -12,7 +12,7 @@ if not TOKEN:
 PROJECT = "pabllopf-official_alis"
 BASE_URL = "https://sonarcloud.io/api/issues/search"
 
-cache_dir = "/Volumes/d/repositorios/Alis/.opencode/cache"
+cache_dir = "./.opencode/cache/sonar"
 os.makedirs(cache_dir, exist_ok=True)
 
 page = 1
