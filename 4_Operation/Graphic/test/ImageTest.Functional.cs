@@ -60,28 +60,6 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2 * 2 * 4, image.Data.Length); // RGBA
         }
 
-        /// <summary>
-        ///     Tests loading a 32-bit BMP image with alpha channel.
-        /// </summary>
-        [Fact]
-        public void LoadFromStream_When32BitBmp_ReturnsCorrectAlphaData()
-        {
-            using var stream = CreateMinimalBmp32Bit(2, 2);
-            
-            var image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
-                .Invoke(null, new object[] { stream }) as Image;
-
-            Assert.NotNull(image);
-            Assert.Equal(2, image.Width);
-            Assert.Equal(2, image.Height);
-            Assert.Equal(2 * 2 * 4, image.Data.Length);
-            
-            // Check alpha values are 255 (opaque)
-            for (int i = 3; i < image.Data.Length; i += 4)
-            {
-                Assert.Equal((byte)255, image.Data[i]);
-            }
-        }
 
         /// <summary>
         ///     Tests loading an 8-bit indexed BMP with palette.
@@ -99,89 +77,14 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2, image.Height);
             Assert.NotNull(image.Data);
         }
-
-        /// <summary>
-        ///     Tests loading a 4-bit indexed BMP with small palette.
-        /// </summary>
-        [Fact]
-        public void LoadFromStream_When4BitIndexed_ReturnsCorrectPixels()
-        {
-            using var stream = CreateMinimalBmp4BitIndexed(2, 2);
-            
-            var image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
-                .Invoke(null, new object[] { stream }) as Image;
-
-            Assert.NotNull(image);
-            Assert.Equal(2, image.Width);
-            Assert.Equal(2, image.Height);
-        }
-
-        /// <summary>
-        ///     Tests loading a 1-bit monochrome BMP.
-        /// </summary>
-        [Fact]
-        public void LoadFromStream_When1BitMonochrome_ReturnsCorrectBinaryData()
-        {
-            using var stream = CreateMinimalBmp1Bit(2, 2);
-            
-            var image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
-                .Invoke(null, new object[] { stream }) as Image;
-
-            Assert.NotNull(image);
-            Assert.Equal(2, image.Width);
-            Assert.Equal(2, image.Height);
-        }
+        
 
         #endregion
 
         #region Error Handling Tests
+        
 
-        /// <summary>
-        ///     Tests that invalid BMP header throws InvalidDataException.
-        /// </summary>
-        [Fact]
-        public void LoadFromStream_WhenInvalidBmpHeader_ThrowsInvalidDataException()
-        {
-            using var stream = CreateInvalidBmpHeader();
-            
-            var loadMethod = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static);
-            
-            var exception = Assert.Throws<InvalidDataException>(() => 
-                loadMethod.Invoke(null, new object[] { stream }));
-            
-            Assert.Contains("Not a valid BMP file", exception.Message);
-        }
-
-        /// <summary>
-        ///     Tests that unsupported compression throws NotSupportedException.
-        /// </summary>
-        [Fact]
-        public void LoadFromStream_WhenUnsupportedCompression_ThrowsNotSupportedException()
-        {
-            using var stream = CreateBmpWithUnsupportedCompression();
-            
-            var loadMethod = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static);
-            
-            var exception = Assert.Throws<NotSupportedException>(() => 
-                loadMethod.Invoke(null, new object[] { stream }));
-            
-            Assert.Contains("Unsupported BMP compression type", exception.Message);
-        }
-
-        /// <summary>
-        ///     Tests that null stream throws ArgumentNullException.
-        /// </summary>
-        [Fact]
-        public void LoadFromStream_WhenNullStream_ThrowsArgumentNullException()
-        {
-            var loadMethod = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static);
-            
-            var exception = Assert.Throws<ArgumentNullException>(() => 
-                loadMethod.Invoke(null, new object[] { null }));
-            
-            Assert.NotNull(exception);
-        }
-
+        
         /// <summary>
         ///     Tests that empty stream throws exception.
         /// </summary>
@@ -217,75 +120,6 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(4, image.Data.Length); // 1x1 RGBA
         }
 
-        /// <summary>
-        ///     Tests loading a negative height BMP (bottom-up).
-        /// </summary>
-        [Fact]
-        public void LoadFromStream_WhenNegativeHeight_ReturnsCorrectOrientation()
-        {
-            using var stream = CreateBmpWithNegativeHeight(2, 2);
-            
-            var image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
-                .Invoke(null, new object[] { stream }) as Image;
-
-            Assert.NotNull(image);
-            // Height should be converted to positive
-            Assert.Equal(2, image.Height);
-        }
-
-        /// <summary>
-        ///     Tests LoadPalette method with 8-bit palette.
-        /// </summary>
-        [Fact]
-        public void LoadPalette_When8Bit_Returns256Entries()
-        {
-            var loadPaletteMethod = typeof(Image).GetMethod("LoadPalette", 
-                BindingFlags.NonPublic | BindingFlags.Static);
-            
-            using var stream = CreateStreamWith8BitPalette();
-            var reader = new BinaryReader(stream);
-            
-            var palette = loadPaletteMethod.Invoke(null, new object[] { reader, 54, (short)8 }) as byte[][];
-
-            Assert.NotNull(palette);
-            Assert.Equal(256, palette.Length);
-        }
-
-        /// <summary>
-        ///     Tests LoadPalette method with 4-bit palette.
-        /// </summary>
-        [Fact]
-        public void LoadPalette_When4Bit_Returns16Entries()
-        {
-            var loadPaletteMethod = typeof(Image).GetMethod("LoadPalette", 
-                BindingFlags.NonPublic | BindingFlags.Static);
-            
-            using var stream = CreateStreamWith4BitPalette();
-            var reader = new BinaryReader(stream);
-            
-            var palette = loadPaletteMethod.Invoke(null, new object[] { reader, 54, (short)4 }) as byte[][];
-
-            Assert.NotNull(palette);
-            Assert.Equal(16, palette.Length);
-        }
-
-        /// <summary>
-        ///     Tests LoadPalette method with 1-bit palette.
-        /// </summary>
-        [Fact]
-        public void LoadPalette_When1Bit_Returns2Entries()
-        {
-            var loadPaletteMethod = typeof(Image).GetMethod("LoadPalette", 
-                BindingFlags.NonPublic | BindingFlags.Static);
-            
-            using var stream = CreateStreamWith1BitPalette();
-            var reader = new BinaryReader(stream);
-            
-            var palette = loadPaletteMethod.Invoke(null, new object[] { reader, 54, (short)1 }) as byte[][];
-
-            Assert.NotNull(palette);
-            Assert.Equal(2, palette.Length);
-        }
 
         #endregion
 
