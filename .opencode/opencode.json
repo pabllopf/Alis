@@ -62,11 +62,5 @@
     ".opencode/plugins/file-summary-cache.js"
   ],
 
-  "autoupdate": false,
-
-  "agent": {
-    "senior-engineer": {
-      "path": ".opencode/agents/senior-engineer.md"
-    }
-  }
+  "autoupdate": false
 }
