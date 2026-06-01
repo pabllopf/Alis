@@ -9,7 +9,7 @@ import sys
 import os
 from datetime import datetime, timezone
 
-INDEX_PATH = "/Volumes/d/repositorios/Alis/.opencode/cache/sonar_issues_index.json"
+INDEX_PATH = "/Users/pabllopf/repositorios/Alis/.opencode/cache/sonar_issues_index.json"
 LOCK_PATH = "/Volumes/d/repositorios/Alis/.opencode/cache/sonar_worker_locks.json"
 
 def claim_issue(worker_id):
