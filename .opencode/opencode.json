@@ -112,6 +112,18 @@
       "path": ".opencode/agents/senior-engineer.md"
     },
 
+    "deep-engineer": {
+      "path": ".opencode/agents/deep-engineer.md"
+    },
+
+    "micro-worker": {
+      "path": ".opencode/agents/micro-worker.md"
+    },
+
+    "fast-worker" : {
+      "path": ".opencode/agents/fast-worker.md"
+    },
+
     "explorer": {
       "path": ".opencode/agents/explorer.md"
     },
