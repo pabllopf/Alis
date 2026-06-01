@@ -22,11 +22,7 @@
             "input": ["text"],
             "output": ["text"]
           },
-          "attachment": true,
-          "limit": {
-            "context": 65792,
-            "output": 16384
-          }
+          "attachment": false
         }
       }
     }
