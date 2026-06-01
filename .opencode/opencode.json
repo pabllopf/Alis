@@ -98,11 +98,26 @@
       "prompt": "Use this agent for architecture, reasoning, design decisions, debugging and non-trivial implementation.",
       "tools": { "write": true, "edit": true, "bash": true }
     },
-
-    "worker": {
-      "model": "omlx/Qwen2.5-Coder-7B-4bit",
-      "prompt": "Use this agent for simple code generation, CLI commands, boilerplate, refactors, and small isolated tasks.",
-      "tools": { "write": true, "edit": true, "bash": true }
+    "explorer": {
+      "path": ".opencode/agents/explorer.md"
+    },
+    "dotnet-architect": {
+      "path": ".opencode/agents/dotnet-architect.md"
+    },
+    "performance-engineer": {
+      "path": ".opencode/agents/performance-engineer.md"
+    },
+    "test-engineer": {
+      "path": ".opencode/agents/test-engineer.md"
+    },
+    "reviewer": {
+      "path": ".opencode/agents/reviewer.md"
+    },
+    "rendering-specialist": {
+      "path": ".opencode/agents/rendering-specialist.md"
+    },
+    "build-coordinator": {
+      "path": ".opencode/agents/build-coordinator.md"
     }
   }
 }

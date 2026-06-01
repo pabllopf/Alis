@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.Test
     /// <summary>
     ///     Tests for the Image class validating image loading, dimensions, and data handling.
     /// </summary>
-    public class ImageTest
+    public partial class ImageTest
     {
         /// <summary>
         ///     Tests that Width property is properly set during image creation.
