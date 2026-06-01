@@ -364,7 +364,6 @@ refactor(<scope>): fix sonar <ruleKey>
 
 * MUST use `.opencode/tools`
 * ELSE use Python
-* NEVER use external tooling
 
 ---
 
