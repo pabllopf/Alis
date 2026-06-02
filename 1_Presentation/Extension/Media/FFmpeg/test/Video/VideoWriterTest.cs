@@ -27,7 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
+using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Video;
+using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
@@ -37,5 +41,85 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
     /// <seealso cref="VideoWriter" />
     public class VideoWriterTest
     {
+        [Fact]
+        public void VideoWriter_FileCtor_ShouldThrowOnNullFilename()
+        {
+            Assert.Throws<ArgumentNullException>(() => new VideoWriter(null, 1920, 1080, 30));
+        }
+
+        [Fact]
+        public void VideoWriter_FileCtor_ShouldThrowOnEmptyFilename()
+        {
+            Assert.Throws<ArgumentNullException>(() => new VideoWriter("", 1920, 1080, 30));
+        }
+
+        [Fact]
+        public void VideoWriter_FileCtor_ShouldThrowOnZeroWidth()
+        {
+            Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 0, 1080, 30));
+        }
+
+        [Fact]
+        public void VideoWriter_FileCtor_ShouldThrowOnNegativeWidth()
+        {
+            Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", -1, 1080, 30));
+        }
+
+        [Fact]
+        public void VideoWriter_FileCtor_ShouldThrowOnZeroHeight()
+        {
+            Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, 0, 30));
+        }
+
+        [Fact]
+        public void VideoWriter_FileCtor_ShouldThrowOnNegativeHeight()
+        {
+            Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, -1, 30));
+        }
+
+        [Fact]
+        public void VideoWriter_FileCtor_ShouldThrowOnZeroFramerate()
+        {
+            Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, 1080, 0));
+        }
+
+        [Fact]
+        public void VideoWriter_FileCtor_ShouldThrowOnNegativeFramerate()
+        {
+            Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, 1080, -1));
+        }
+
+        [Fact]
+        public void VideoWriter_StreamCtor_ShouldThrowOnNullStream()
+        {
+            Assert.Throws<ArgumentNullException>(() => new VideoWriter((Stream)null, 1920, 1080, 30));
+        }
+
+        [Fact]
+        public void VideoWriter_StreamCtor_ShouldThrowOnZeroWidth()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 0, 1080, 30));
+            }
+        }
+
+        [Fact]
+        public void VideoWriter_StreamCtor_ShouldThrowOnZeroHeight()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 1920, 0, 30));
+            }
+        }
+
+        [Fact]
+        public void VideoWriter_StreamCtor_ShouldThrowOnZeroFramerate()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 1920, 1080, 0));
+            }
+        }
     }
 }
