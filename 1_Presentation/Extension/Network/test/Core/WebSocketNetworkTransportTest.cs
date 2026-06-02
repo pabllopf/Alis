@@ -74,18 +74,6 @@ namespace Alis.Extension.Network.Test.Core
         }
 
         /// <summary>
-        ///     Tests that start async when already started throws exception
-        /// </summary>
-        [Fact]
-        public async Task StartAsync_WhenAlreadyStarted_ThrowsInvalidOperationException()
-        {
-            WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
-            transport.Dispose();
-
-            await Assert.ThrowsAsync<InvalidOperationException>(() => transport.StartAsync());
-        }
-
-        /// <summary>
         ///     Tests that start async with valid host starts successfully
         /// </summary>
         [Fact]

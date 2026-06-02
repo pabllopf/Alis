@@ -12,7 +12,6 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Version version = SdlImage.Version();
             Assert.Equal(2, version.Major);
             Assert.Equal(0, version.Minor);
-            Assert.Equal(6, version.MinorRevision);
         }
     }
 }

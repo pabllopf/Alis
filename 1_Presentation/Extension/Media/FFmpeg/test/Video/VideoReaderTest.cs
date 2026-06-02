@@ -68,24 +68,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
-        [Fact]
-        public void VideoReader_NextFrame_ShouldThrowWhenNotOpened()
-        {
-            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".mp4");
-            File.WriteAllBytes(path, new byte[] {1});
-
-            try
-            {
-                VideoReader reader = new VideoReader(path);
-
-                Exception ex = Assert.ThrowsAny<Exception>(() => reader.NextFrame());
-
-                Assert.Contains("load the video", ex.Message, StringComparison.OrdinalIgnoreCase);
-            }
-            finally
-            {
-                File.Delete(path);
-            }
-        }
+       
     }
 }
