@@ -66,5 +66,19 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
 
             Assert.Throws<InvalidOperationException>(() => writer.WriteFrame(new TestFrame(new byte[1])));
         }
+
+        [Fact]
+        public void MediaWriter_WriteFrame_ShouldWriteToInputStream()
+        {
+            byte[] payload = {1, 2, 3, 4};
+            MemoryStream stream = new MemoryStream();
+            TestWriter writer = new TestWriter();
+            writer.SetStream(stream);
+            writer.SetOpened(true);
+
+            writer.WriteFrame(new TestFrame(payload));
+
+            Assert.Equal(payload, stream.ToArray());
+        }
     }
 }
