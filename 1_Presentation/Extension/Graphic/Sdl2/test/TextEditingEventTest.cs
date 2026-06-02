@@ -27,6 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
+using Xunit;
+using Alis.Extension.Graphic.Sdl2.Structs;
+using Alis.Extension.Graphic.Sdl2.Enums;
+
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
     /// <summary>
@@ -34,5 +40,33 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class TextEditingEventTest
     {
+        [Fact]
+        public void ShouldMarshalTextFromPointer()
+        {
+            // Arrange
+            string sample = "hello world!";
+            IntPtr ptr = Marshal.StringToHGlobalAnsi(sample);
+            try
+            {
+                var evt = GetTextEditingEvent(ptr);
+                // Act
+                var text = evt.Text;
+                // Assert
+                Assert.Equal(sample, text);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(ptr);
+            }
+        }
+
+        // Helper to construct the struct since it's readonly and struct
+        private static TextEditingEvent GetTextEditingEvent(IntPtr textPtr)
+        {
+            var evt = new TextEditingEvent();
+            var field = typeof(TextEditingEvent).GetField("textPtr", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            field.SetValueDirect(__makeref(evt), textPtr);
+            return evt;
+        }
     }
 }
