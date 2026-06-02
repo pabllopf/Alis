@@ -84,5 +84,103 @@ namespace Alis.Extension.Network.Test.Client
             Assert.NotNull(manager.Config);
             Assert.Equal(16, manager.Config.MaxPlayers);
         }
+
+        /// <summary>
+        ///     Tests that initialize async with null config uses default config
+        /// </summary>
+        [Fact]
+        public async Task InitializeAsync_NullConfig_UsesDefaults()
+        {
+            using NetworkClientManager manager = new NetworkClientManager();
+
+            await manager.InitializeAsync(null);
+
+            Assert.Equal(NetworkManagerState.Idle, manager.State);
+            Assert.NotNull(manager.Config);
+            Assert.Equal(32, manager.Config.MaxPlayers);
+        }
+
+        /// <summary>
+        ///     Tests that initialize async throws if already initialized
+        /// </summary>
+        [Fact]
+        public async Task InitializeAsync_AlreadyInitialized_Throws()
+        {
+            using NetworkClientManager manager = new NetworkClientManager();
+            await manager.InitializeAsync(new NetworkConfig());
+
+            InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(() => manager.InitializeAsync(new NetworkConfig()));
+            Assert.Contains("Already initialized", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that start async works in idle state
+        /// </summary>
+        [Fact]
+        public async Task StartAsync_InIdleState_Completes()
+        {
+            using NetworkClientManager manager = new NetworkClientManager();
+            await manager.InitializeAsync(new NetworkConfig());
+
+            await manager.StartAsync();
+
+            Assert.Equal(NetworkManagerState.Idle, manager.State);
+        }
+
+        /// <summary>
+        ///     Tests that start async throws in uninitialized state
+        /// </summary>
+        [Fact]
+        public async Task StartAsync_Uninitialized_Throws()
+        {
+            using NetworkClientManager manager = new NetworkClientManager();
+
+            InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(() => manager.StartAsync());
+            Assert.Contains("Cannot start", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that register and unregister message handler works
+        /// </summary>
+        [Fact]
+        public void RegisterAndUnregisterMessageHandler_WorkCorrectly()
+        {
+            using NetworkClientManager manager = new NetworkClientManager();
+            bool handlerCalled = false;
+            Func<string, string, Task> handler = (sender, payload) =>
+            {
+                handlerCalled = true;
+                return Task.CompletedTask;
+            };
+
+            manager.RegisterMessageHandler("chat", handler);
+            manager.UnregisterMessageHandler("chat");
+        }
+
+        /// <summary>
+        ///     Tests that get connected players returns empty list when no session
+        /// </summary>
+        [Fact]
+        public void GetConnectedPlayers_NoSession_ReturnsEmptyList()
+        {
+            using NetworkClientManager manager = new NetworkClientManager();
+
+            var players = manager.GetConnectedPlayers();
+
+            Assert.Empty(players);
+        }
+
+        /// <summary>
+        ///     Tests that get player returns null when no session
+        /// </summary>
+        [Fact]
+        public void GetPlayer_NoSession_ReturnsNull()
+        {
+            using NetworkClientManager manager = new NetworkClientManager();
+
+            NetworkPlayer player = manager.GetPlayer("any-id");
+
+            Assert.Null(player);
+        }
     }
 }
