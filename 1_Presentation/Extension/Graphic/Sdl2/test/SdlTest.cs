@@ -1,5 +1,6 @@
 using Xunit;
 using Alis.Extension.Graphic.Sdl2;
+using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
@@ -32,6 +33,52 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             uint result = Sdl.Fourcc((byte)'Y', (byte)'V', (byte)'1', (byte)'2');
             uint expected = (uint)('Y' | ('V' << 8) | ('1' << 16) | ('2' << 24));
             Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void ShouldReturnGlCompiledVersion()
+        {
+            int version = Sdl.GetGlCompiledVersion();
+            Assert.Equal(2 * 1000 + 0 * 100 + 18, version);
+        }
+
+        [Fact]
+        public void ShouldReturnGetVersion()
+        {
+            var version = Sdl.GetVersion();
+            Assert.Equal(2, version.major);
+            Assert.Equal(0, version.minor);
+            Assert.Equal(18, version.patch);
+        }
+
+        [Fact]
+        public void ShouldComputeWindowPosUndefinedDisplay()
+        {
+            int pos = Sdl.WindowPosUndefinedDisplay(1);
+            Assert.True((pos & unchecked((int)0xFFFF0000)) != 0);
+        }
+
+        [Fact]
+        public void ShouldDetectWindowPosIsUndefined()
+        {
+            int pos = Sdl.WindowPosUndefinedDisplay(2);
+            Assert.True(Sdl.WindowPosIsUndefined(pos));
+            Assert.False(Sdl.WindowPosIsUndefined(100));
+        }
+
+        [Fact]
+        public void ShouldComputeWindowPosCenteredDisplay()
+        {
+            int pos = Sdl.WindowPosCenteredDisplay(1);
+            Assert.True((pos & unchecked((int)0xFFFF0000)) != 0);
+        }
+
+        [Fact]
+        public void ShouldDetectWindowPosIsCentered()
+        {
+            int pos = Sdl.WindowPosCenteredDisplay(3);
+            Assert.True(Sdl.WindowPosIsCentered(pos));
+            Assert.False(Sdl.WindowPosIsCentered(200));
         }
     }
 }
