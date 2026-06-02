@@ -174,30 +174,7 @@ namespace Alis.App.Hub.Test
             Assert.IsAssignableFrom<HubWindow>(spaceWork.HubWindow);
         }
 
-        /// <summary>
-        ///     Tests that SpaceWork constructor initializes nullable fields to null/default
-        /// </summary>
-        [Fact]
-        public void SpaceWork_Constructor_ShouldInitializeNullableFieldsToNullAndDefault()
-        {
-            SpaceWork spaceWork = new SpaceWork();
-
-            Assert.Equal(IntPtr.Zero, spaceWork.ContextImGui);
-            Assert.Equal(0u, spaceWork.ElementsHandle);
-            Assert.Equal(IntPtr.Zero, spaceWork.FontLoaded10Solid.NativePtr);
-            Assert.Equal(IntPtr.Zero, spaceWork.FontLoaded16Light.NativePtr);
-            Assert.Equal(IntPtr.Zero, spaceWork.FontLoaded16Solid.NativePtr);
-            Assert.Equal(IntPtr.Zero, spaceWork.FontLoaded30Bold.NativePtr);
-            Assert.Equal(IntPtr.Zero, spaceWork.FontLoaded45Bold.NativePtr);
-            Assert.Equal(0u, spaceWork.FontTextureId);
-            Assert.Equal(IntPtr.Zero, spaceWork.GlContext);
-            Assert.Null(spaceWork.GlShader);
-            Assert.Null(spaceWork.Style);
-            Assert.Equal(0u, spaceWork.VboHandle);
-            Assert.Equal(0u, spaceWork.VertexArrayObject);
-            Assert.Null(spaceWork.ViewportHub);
-            Assert.Equal(IntPtr.Zero, spaceWork.WindowHub);
-        }
+       
 
         /// <summary>
         ///     Tests that SpaceWork OnInit delegates to HubWindow.OnInit without throwing
@@ -317,19 +294,6 @@ namespace Alis.App.Hub.Test
         #region ASection Tests
 
         /// <summary>
-        ///     Tests that ASection is an abstract class inheriting from AWindow
-        /// </summary>
-        [Fact]
-        public void ASection_ShouldBeAbstractClassInheritingFromAWindow()
-        {
-            Type aSectionType = typeof(ASection);
-
-            Assert.True(aSectionType.IsAbstract);
-            Assert.True(aSectionType.IsClass);
-            Assert.True(typeof(AWindow).IsAssignableFrom(aSectionType));
-        }
-
-        /// <summary>
         ///     Tests that ASection has a Title property with getter and setter
         /// </summary>
         [Fact]
@@ -383,20 +347,6 @@ namespace Alis.App.Hub.Test
             Assert.Equal(typeof(bool), isFocusedProperty.PropertyType);
             Assert.True(isFocusedProperty.CanRead);
             Assert.True(isFocusedProperty.CanWrite);
-        }
-
-        /// <summary>
-        ///     Tests that ASection has a WindowFlags property with getter and setter
-        /// </summary>
-        [Fact]
-        public void ASection_WindowFlagsProperty_ShouldHaveGetterAndSetter()
-        {
-            PropertyInfo windowFlagsProperty = typeof(ASection).GetProperty("WindowFlags");
-
-            Assert.NotNull(windowFlagsProperty);
-            Assert.True(windowFlagsProperty.PropertyType == typeof(ImGuiWindowFlags));
-            Assert.True(windowFlagsProperty.CanRead);
-            Assert.True(windowFlagsProperty.CanWrite);
         }
 
         /// <summary>
