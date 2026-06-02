@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
 {
@@ -37,5 +40,105 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// <seealso cref="AudioWriter" />
     public class AudioWriterTest
     {
+        [Fact]
+        public void AudioWriter_FileCtor_ShouldThrowOnZeroChannels()
+        {
+            Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", 0, 44100));
+        }
+
+        [Fact]
+        public void AudioWriter_FileCtor_ShouldThrowOnNegativeChannels()
+        {
+            Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", -1, 44100));
+        }
+
+        [Fact]
+        public void AudioWriter_FileCtor_ShouldThrowOnZeroSampleRate()
+        {
+            Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", 2, 0));
+        }
+
+        [Fact]
+        public void AudioWriter_FileCtor_ShouldThrowOnNegativeSampleRate()
+        {
+            Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", 2, -1));
+        }
+
+        [Fact]
+        public void AudioWriter_FileCtor_ShouldThrowOnInvalidBitDepth()
+        {
+            Assert.Throws<InvalidOperationException>(() => new AudioWriter("out.mp3", 2, 44100, 8));
+        }
+
+        [Fact]
+        public void AudioWriter_FileCtor_ShouldThrowOnNullFilename()
+        {
+            Assert.Throws<ArgumentException>(() => new AudioWriter(null, 2, 44100));
+        }
+
+        [Fact]
+        public void AudioWriter_FileCtor_ShouldThrowOnEmptyFilename()
+        {
+            Assert.Throws<ArgumentException>(() => new AudioWriter("", 2, 44100));
+        }
+
+        [Fact]
+        public void AudioWriter_StreamCtor_ShouldThrowOnNullStream()
+        {
+            Assert.Throws<ArgumentNullException>(() => new AudioWriter((Stream)null, 2, 44100));
+        }
+
+        [Fact]
+        public void AudioWriter_StreamCtor_ShouldThrowOnZeroChannels()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() => new AudioWriter(ms, 0, 44100));
+            }
+        }
+
+        [Fact]
+        public void AudioWriter_StreamCtor_ShouldThrowOnInvalidBitDepth()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidOperationException>(() => new AudioWriter(ms, 2, 44100, 8));
+            }
+        }
+
+        [Fact]
+        public void AudioWriter_CloseWrite_ShouldThrowWhenNotOpened()
+        {
+            AudioWriter writer = new AudioWriter("out.mp3", 2, 44100);
+
+            Assert.Throws<InvalidOperationException>(() => writer.CloseWrite());
+        }
+
+        [Fact]
+        public void AudioWriter_FileCtor_ShouldSetProperties()
+        {
+            AudioWriter writer = new AudioWriter("out.mp3", 2, 44100, 16);
+
+            Assert.Equal(2, writer.Channels);
+            Assert.Equal(44100, writer.SampleRate);
+            Assert.Equal(16, writer.BitDepth);
+            Assert.True(writer.UseFilename);
+            Assert.NotNull(writer.EncoderOptions);
+        }
+
+        [Fact]
+        public void AudioWriter_StreamCtor_ShouldSetProperties()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                AudioWriter writer = new AudioWriter(ms, 2, 44100, 16);
+
+                Assert.Equal(2, writer.Channels);
+                Assert.Equal(44100, writer.SampleRate);
+                Assert.Equal(16, writer.BitDepth);
+                Assert.False(writer.UseFilename);
+                Assert.Equal(ms, writer.DestinationStream);
+            }
+        }
     }
 }
