@@ -96,5 +96,22 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
 
             Assert.Contains("Writer is not opened for writing", ex.Message);
         }
+
+        [Fact]
+        public void MediaReader_CopyTo_ShouldCopyStreamToWriter()
+        {
+            byte[] payload = Encoding.UTF8.GetBytes("copy-me");
+            MemoryStream source = new MemoryStream(payload);
+            MemoryStream destination = new MemoryStream();
+            TestReader reader = new TestReader();
+            TestWriter writer = new TestWriter();
+            reader.SetStream(source);
+            writer.SetStream(destination);
+            writer.SetOpened(true);
+
+            reader.CopyTo(writer);
+
+            Assert.Equal(payload, destination.ToArray());
+        }
     }
 }
