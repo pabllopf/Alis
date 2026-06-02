@@ -217,44 +217,7 @@ namespace Alis.App.Hub.Test
             Assert.NotNull(spaceWork);
         }
 
-        /// <summary>
-        ///     Tests that SpaceWork OnRender delegates to HubWindow.OnRender for different scale factors
-        /// </summary>
-        [Fact]
-        public void SpaceWork_OnRender_ShouldHandleDifferentScaleFactors()
-        {
-            SpaceWork spaceWork = new SpaceWork();
-
-            try
-            {
-                spaceWork.OnRender(0.5f);
-            }
-            catch (Exception)
-            {
-                // HubWindow.OnRender may throw due to ImGui/OpenGL dependencies
-            }
-
-            try
-            {
-                spaceWork.OnRender(1.0f);
-            }
-            catch (Exception)
-            {
-                // HubWindow.OnRender may throw due to ImGui/OpenGL dependencies
-            }
-
-            try
-            {
-                spaceWork.OnRender(2.0f);
-            }
-            catch (Exception)
-            {
-                // HubWindow.OnRender may throw due to ImGui/OpenGL dependencies
-            }
-
-            Assert.NotNull(spaceWork);
-        }
-
+       
         /// <summary>
         ///     Tests that SpaceWork has all expected public fields
         /// </summary>
