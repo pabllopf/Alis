@@ -79,5 +79,28 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             field.SetValueDirect(__makeref(evt), textPtr);
             return evt;
         }
+
+        [Fact]
+        public void ShouldAssignAndRetrievePublicFields()
+        {
+            // Arrange
+            var evt = new TextEditingEvent();
+            var typeField = typeof(TextEditingEvent).GetField("type");
+            var timestampField = typeof(TextEditingEvent).GetField("timestamp");
+            var windowIDField = typeof(TextEditingEvent).GetField("windowID");
+            var startField = typeof(TextEditingEvent).GetField("start");
+            var lengthField = typeof(TextEditingEvent).GetField("length");
+            typeField.SetValueDirect(__makeref(evt), EventType.TextEditing);
+            timestampField.SetValueDirect(__makeref(evt), 999u);
+            windowIDField.SetValueDirect(__makeref(evt), 4u);
+            startField.SetValueDirect(__makeref(evt), 2);
+            lengthField.SetValueDirect(__makeref(evt), 7);
+            // Assert
+            Assert.Equal(EventType.TextEditing, (EventType)typeField.GetValue(evt));
+            Assert.Equal(999u, (uint)timestampField.GetValue(evt));
+            Assert.Equal(4u, (uint)windowIDField.GetValue(evt));
+            Assert.Equal(2, (int)startField.GetValue(evt));
+            Assert.Equal(7, (int)lengthField.GetValue(evt));
+        }
     }
 }
