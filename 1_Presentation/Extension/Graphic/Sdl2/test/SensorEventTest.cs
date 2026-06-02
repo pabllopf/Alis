@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Xunit;
+using Alis.Extension.Graphic.Sdl2.Structs;
+
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
     /// <summary>
@@ -34,5 +37,18 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class SensorEventTest
     {
+        [Fact]
+        public void ShouldDefaultToZero()
+        {
+            // Arrange
+            var evt = new SensorEvent();
+            // Assert
+            Assert.Equal(0f, evt.float0);
+            Assert.Equal(0f, evt.float1);
+            Assert.Equal(0f, evt.float2);
+            Assert.Equal(0f, evt.float3);
+            Assert.Equal(0f, evt.float4);
+            Assert.Equal(0f, evt.float5);
+        }
     }
 }
