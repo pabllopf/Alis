@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, evt.Data1);
             Assert.Equal(IntPtr.Zero, evt.Data2);
         }
-        
+
 
         [Fact]
         public void ShouldAllowModificationOfProperties()
@@ -86,5 +86,5 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(new IntPtr(0xDEAD), evt.Data1);
             Assert.Equal(new IntPtr(0xBEEF), evt.Data2);
         }
-
+    }
 }
