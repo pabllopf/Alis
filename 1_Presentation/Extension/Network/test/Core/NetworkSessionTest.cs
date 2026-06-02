@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Extension.Network.Core;
 using Xunit;
 
@@ -164,6 +165,53 @@ namespace Alis.Extension.Network.Test.Core
 
             DateTime expected = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(1609459200).ToLocalTime();
             Assert.Equal(expected, session.CreatedDateTime);
+        }
+
+        /// <summary>
+        ///     Tests that state finished returns correct value
+        /// </summary>
+        [Fact]
+        public void State_Finished_ReturnsCorrectValue()
+        {
+            NetworkSession session = new NetworkSession {State = SessionState.Finished};
+
+            Assert.Equal(SessionState.Finished, session.State);
+        }
+
+        /// <summary>
+        ///     Tests that state closed returns correct value
+        /// </summary>
+        [Fact]
+        public void State_Closed_ReturnsCorrectValue()
+        {
+            NetworkSession session = new NetworkSession {State = SessionState.Closed};
+
+            Assert.Equal(SessionState.Closed, session.State);
+        }
+
+        /// <summary>
+        ///     Tests that players remove player does not contain player
+        /// </summary>
+        [Fact]
+        public void Players_RemovePlayer_DoesNotContainPlayer()
+        {
+            NetworkSession session = new NetworkSession();
+            NetworkPlayer player = new NetworkPlayer {PlayerId = "p1", PlayerName = "Test"};
+            session.Players.Add(player);
+            session.Players.Remove(player);
+
+            Assert.DoesNotContain(player, session.Players);
+        }
+
+        /// <summary>
+        ///     Tests that custom data missing key throws key not found exception
+        /// </summary>
+        [Fact]
+        public void CustomData_MissingKey_ThrowsKeyNotFoundException()
+        {
+            NetworkSession session = new NetworkSession();
+
+            Assert.Throws<KeyNotFoundException>(() => { var _ = session.CustomData["missing-key"]; });
         }
     }
 }

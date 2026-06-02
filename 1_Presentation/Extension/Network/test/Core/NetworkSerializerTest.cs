@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Network.Core;
 using Xunit;
 
@@ -149,6 +150,32 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal("test-id", result.MessageId);
             Assert.Equal("test-type", result.MessageType);
             Assert.Equal("test-payload", result.Payload);
+        }
+
+        /// <summary>
+        ///     Tests that deserialize envelope invalid json throws exception
+        /// </summary>
+        [Fact]
+        public void DeserializeEnvelope_InvalidJson_ThrowsException()
+        {
+            NetworkSerializer serializer = new NetworkSerializer();
+
+            Assert.ThrowsAny<Exception>(() => serializer.DeserializeEnvelope("invalid json {"));
+        }
+
+        /// <summary>
+        ///     Tests that serialize envelope null payload returns json
+        /// </summary>
+        [Fact]
+        public void SerializeEnvelope_NullPayload_ReturnsJson()
+        {
+            NetworkSerializer serializer = new NetworkSerializer();
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope {Payload = null};
+
+            string json = serializer.SerializeEnvelope(envelope);
+
+            Assert.NotNull(json);
+            Assert.NotEmpty(json);
         }
     }
 }

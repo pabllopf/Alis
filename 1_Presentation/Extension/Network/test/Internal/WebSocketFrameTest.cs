@@ -80,5 +80,47 @@ namespace Alis.Extension.Network.Test.Internal
             Assert.Equal(closeStatusDescription, frame.CloseStatusDescription);
             Assert.Equal(maskKey, frame.MaskKey);
         }
+
+        /// <summary>
+        ///     Tests that web socket frame constructor with binary op code
+        /// </summary>
+        [Fact]
+        public void WebSocketFrame_Constructor_BinaryFrame()
+        {
+            WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.BinaryFrame, 100, new ArraySegment<byte>(new byte[4]));
+
+            Assert.True(frame.IsFinBitSet);
+            Assert.Equal(WebSocketOpCode.BinaryFrame, frame.OpCode);
+            Assert.Equal(100, frame.Count);
+            Assert.Null(frame.CloseStatus);
+            Assert.Null(frame.CloseStatusDescription);
+        }
+
+        /// <summary>
+        ///     Tests that web socket frame constructor with ping op code
+        /// </summary>
+        [Fact]
+        public void WebSocketFrame_Constructor_PingFrame()
+        {
+            WebSocketFrame frame = new WebSocketFrame(false, WebSocketOpCode.Ping, 5, new ArraySegment<byte>(new byte[4]));
+
+            Assert.False(frame.IsFinBitSet);
+            Assert.Equal(WebSocketOpCode.Ping, frame.OpCode);
+            Assert.Equal(5, frame.Count);
+        }
+
+        /// <summary>
+        ///     Tests that web socket frame constructor with pong op code
+        /// </summary>
+        [Fact]
+        public void WebSocketFrame_Constructor_PongFrame()
+        {
+            WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.Pong, 0, new ArraySegment<byte>());
+
+            Assert.True(frame.IsFinBitSet);
+            Assert.Equal(WebSocketOpCode.Pong, frame.OpCode);
+            Assert.Equal(0, frame.Count);
+            Assert.Equal(0, frame.MaskKey.Count);
+        }
     }
 }

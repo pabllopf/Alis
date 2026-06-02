@@ -48,5 +48,16 @@ namespace Alis.Extension.Network.Test.Core
 
             Assert.Equal("client-1", args.ClientId);
         }
+
+        /// <summary>
+        ///     Tests that constructor null client id returns null
+        /// </summary>
+        [Fact]
+        public void Constructor_NullClientId_ReturnsNull()
+        {
+            ClientConnectionEventArgs args = new ClientConnectionEventArgs(null);
+
+            Assert.Null(args.ClientId);
+        }
     }
 }

@@ -49,5 +49,27 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal("chat", args.Channel);
             Assert.Equal("hello", args.Message);
         }
+
+        /// <summary>
+        ///     Tests that constructor null channel returns null channel
+        /// </summary>
+        [Fact]
+        public void Constructor_NullChannel_ReturnsNullChannel()
+        {
+            ServerMessageEventArgs args = new ServerMessageEventArgs(null, "message");
+
+            Assert.Null(args.Channel);
+        }
+
+        /// <summary>
+        ///     Tests that constructor null message returns null message
+        /// </summary>
+        [Fact]
+        public void Constructor_NullMessage_ReturnsNullMessage()
+        {
+            ServerMessageEventArgs args = new ServerMessageEventArgs("chat", null);
+
+            Assert.Null(args.Message);
+        }
     }
 }

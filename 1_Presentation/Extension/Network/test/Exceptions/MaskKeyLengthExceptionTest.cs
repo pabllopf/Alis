@@ -47,5 +47,16 @@ namespace Alis.Extension.Network.Test.Exceptions
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);
         }
+
+        /// <summary>
+        ///     Tests that mask key length exception parameterless constructor
+        /// </summary>
+        [Fact]
+        public void MaskKeyLengthException_ParameterlessConstructor()
+        {
+            MaskKeyLengthException exception = new MaskKeyLengthException();
+            Assert.NotNull(exception);
+            Assert.Contains("Mask key length must be 4 bytes", exception.Message);
+        }
     }
 }

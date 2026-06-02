@@ -194,5 +194,40 @@ namespace Alis.Extension.Network.Test.Core
             Assert.NotEqual(player1.PlayerName, player2.PlayerName);
             Assert.NotEqual(player1.IsHost, player2.IsHost);
         }
+
+        /// <summary>
+        ///     Tests that connection state timeout returns correct value
+        /// </summary>
+        [Fact]
+        public void ConnectionState_Timeout_ReturnsCorrectValue()
+        {
+            NetworkPlayer player = new NetworkPlayer {ConnectionState = PlayerConnectionState.Timeout};
+
+            Assert.Equal(PlayerConnectionState.Timeout, player.ConnectionState);
+        }
+
+        /// <summary>
+        ///     Tests that custom data empty after clear returns empty
+        /// </summary>
+        [Fact]
+        public void CustomData_EmptyAfterClear_ReturnsEmpty()
+        {
+            NetworkPlayer player = new NetworkPlayer();
+            player.CustomData["test"] = "value";
+            player.CustomData.Clear();
+
+            Assert.Empty(player.CustomData);
+        }
+
+        /// <summary>
+        ///     Tests that player id null sets to null
+        /// </summary>
+        [Fact]
+        public void PlayerId_Null_SetsToNull()
+        {
+            NetworkPlayer player = new NetworkPlayer {PlayerId = null};
+
+            Assert.Null(player.PlayerId);
+        }
     }
 }

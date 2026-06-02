@@ -157,5 +157,27 @@ namespace Alis.Extension.Network.Test.Core
 
             Assert.Equal(1024 * 128, config.MaxMessageSize);
         }
+        
+        /// <summary>
+        ///     Tests that max players negative sets negative value
+        /// </summary>
+        [Fact]
+        public void MaxPlayers_Negative_SetsNegativeValue()
+        {
+            NetworkConfig config = new NetworkConfig {MaxPlayers = -1};
+
+            Assert.Equal(-1, config.MaxPlayers);
+        }
+
+        /// <summary>
+        ///     Tests that connection timeout zero returns zero timespan
+        /// </summary>
+        [Fact]
+        public void ConnectionTimeout_Zero_ReturnsZeroTimeSpan()
+        {
+            NetworkConfig config = new NetworkConfig {ConnectionTimeout = TimeSpan.Zero};
+
+            Assert.Equal(TimeSpan.Zero, config.ConnectionTimeout);
+        }
     }
 }

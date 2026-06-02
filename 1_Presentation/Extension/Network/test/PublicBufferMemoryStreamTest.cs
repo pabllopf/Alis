@@ -626,5 +626,216 @@ namespace Alis.Extension.Network.Test
 
             Assert.Throws<WebSocketBufferOverflowException>(() => PublicBufferMemoryStream.ValidateRequiredSize(requiredSize));
         }
+
+        /// <summary>
+        ///     Tests that is new buffer required returns true when count exceeds available space
+        /// </summary>
+        [Fact]
+        public void IsNewBufferRequired_WhenCountExceedsSpace_ReturnsTrue()
+        {
+            BufferPool bufferPool = new BufferPool();
+            byte[] buffer = new byte[4];
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, bufferPool);
+
+            stream.Write(new byte[] {0, 1}, 0, 2);
+            bool result = stream.IsNewBufferRequired(3);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that is new buffer required returns false when count fits in available space
+        /// </summary>
+        [Fact]
+        public void IsNewBufferRequired_WhenCountFits_ReturnsFalse()
+        {
+            BufferPool bufferPool = new BufferPool();
+            byte[] buffer = new byte[10];
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, bufferPool);
+
+            stream.Write(new byte[] {0, 1}, 0, 2);
+            bool result = stream.IsNewBufferRequired(3);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that calculate initial new size returns double the buffer length
+        /// </summary>
+        [Fact]
+        public void CalculateInitialNewSize_ReturnsDoubleBufferLength()
+        {
+            BufferPool bufferPool = new BufferPool();
+            byte[] buffer = new byte[100];
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, bufferPool);
+
+            long result = stream.CalculateInitialNewSize();
+
+            Assert.Equal(200, result);
+        }
+
+        /// <summary>
+        ///     Tests that calculate required size returns correct value
+        /// </summary>
+        [Fact]
+        public void CalculateRequiredSize_ReturnsCorrectValue()
+        {
+            BufferPool bufferPool = new BufferPool();
+            byte[] buffer = new byte[100];
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, bufferPool);
+
+            long result = stream.CalculateRequiredSize(10, 5);
+
+            Assert.Equal(105, result);
+        }
+
+        /// <summary>
+        ///     Tests that is new size less than required size returns true when required is larger
+        /// </summary>
+        [Fact]
+        public void IsNewSizeLessThanRequiredSize_WhenRequiredLarger_ReturnsTrue()
+        {
+            bool result = PublicBufferMemoryStream.IsNewSizeLessThanRequiredSize(100, 150);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that is new size less than required size returns false when new size is sufficient
+        /// </summary>
+        [Fact]
+        public void IsNewSizeLessThanRequiredSize_WhenNewSizeSufficient_ReturnsFalse()
+        {
+            bool result = PublicBufferMemoryStream.IsNewSizeLessThanRequiredSize(200, 150);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that compute candidate size returns exact power of two
+        /// </summary>
+        [Fact]
+        public void ComputeCandidateSize_PowerOfTwo_ReturnsExactValue()
+        {
+            long result = PublicBufferMemoryStream.ComputeCandidateSize(256);
+
+            Assert.Equal(256, result);
+        }
+
+        /// <summary>
+        ///     Tests that compute candidate size rounds up to next power of two
+        /// </summary>
+        [Fact]
+        public void ComputeCandidateSize_RoundsUpToPowerOfTwo()
+        {
+            long result = PublicBufferMemoryStream.ComputeCandidateSize(300);
+
+            Assert.Equal(512, result);
+        }
+
+        /// <summary>
+        ///     Tests that compute candidate size caps at required size when it exceeds int max
+        /// </summary>
+        [Fact]
+        public void ComputeCandidateSize_WhenExceedsIntMax_ReturnsRequiredSize()
+        {
+            long required = (long)int.MaxValue + 1;
+            long result = PublicBufferMemoryStream.ComputeCandidateSize(required);
+
+            Assert.Equal(required, result);
+        }
+
+        /// <summary>
+        ///     Tests that enlarge buffer if required creates new buffer when needed
+        /// </summary>
+        [Fact]
+        public void EnlargeBufferIfRequired_WhenFull_CreatesNewBuffer()
+        {
+            BufferPool bufferPool = new BufferPool();
+            byte[] buffer = new byte[4];
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, bufferPool);
+
+            stream.Write(new byte[] {1, 2, 3, 4}, 0, 4);
+            stream.EnlargeBufferIfRequired(1);
+
+            Assert.True(stream.Capacity >= 5);
+        }
+
+        /// <summary>
+        ///     Tests that enlarge buffer if required does not create new buffer when space available
+        /// </summary>
+        [Fact]
+        public void EnlargeBufferIfRequired_WhenSpaceAvailable_DoesNotCreateNewBuffer()
+        {
+            BufferPool bufferPool = new BufferPool();
+            byte[] buffer = new byte[4];
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, bufferPool);
+
+            int originalCapacity = stream.Capacity;
+            stream.EnlargeBufferIfRequired(1);
+
+            Assert.Equal(originalCapacity, stream.Capacity);
+        }
+
+        /// <summary>
+        ///     Tests that create new buffer replaces internal buffer with larger one
+        /// </summary>
+        [Fact]
+        public void CreateNewBuffer_ReplacesBufferWithLargerOne()
+        {
+            BufferPool bufferPool = new BufferPool();
+            byte[] buffer = new byte[4];
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, bufferPool);
+
+            stream.Write(new byte[] {1, 2}, 0, 2);
+            stream.CreateNewBuffer(10);
+
+            Assert.True(stream.Capacity > 4);
+        }
+
+        /// <summary>
+        ///     Tests that get buffer returns the internal buffer
+        /// </summary>
+        [Fact]
+        public void GetBuffer_ReturnsInternalBuffer()
+        {
+            BufferPool bufferPool = new BufferPool();
+            byte[] buffer = new byte[32];
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, bufferPool);
+
+            byte[] result = stream.GetBuffer();
+
+            Assert.Same(buffer, result);
+        }
+
+        /// <summary>
+        ///     Tests that calculate new size doubles when initial size is sufficient
+        /// </summary>
+        [Fact]
+        public void CalculateNewSize_WhenInitialDoubleIsSufficient_ReturnsDouble()
+        {
+            BufferPool bufferPool = new BufferPool();
+            byte[] buffer = new byte[100];
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, bufferPool);
+
+            long result = stream.CalculateNewSize(50, 0);
+
+            Assert.Equal(200, result);
+        }
+
+        /// <summary>
+        ///     Tests that calculate new size computes power of two when double is insufficient
+        /// </summary>
+        [Fact]
+        public void CalculateNewSize_WhenDoubleInsufficient_ComputesPowerOfTwo()
+        {
+            BufferPool bufferPool = new BufferPool();
+            byte[] buffer = new byte[100];
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, bufferPool);
+
+            long result = stream.CalculateNewSize(200, 0);
+
+            Assert.Equal(512, result);
+        }
     }
 }

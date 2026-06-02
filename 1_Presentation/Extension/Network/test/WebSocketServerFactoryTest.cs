@@ -429,5 +429,74 @@ namespace Alis.Extension.Network.Test
 
             await Assert.ThrowsAsync<WebSocketVersionNotSupportedException>(() => WebSocketServerFactory.PerformHandshakeAsync(guid, httpHeader, subProtocol, stream, token));
         }
+
+        /// <summary>
+        ///     Tests that send handshake response writes to stream
+        /// </summary>
+        [Fact]
+        public async Task SendHandshakeResponse_WritesToStream()
+        {
+            Guid guid = Guid.NewGuid();
+            string response = "HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\n\r\n";
+            MemoryStream stream = new MemoryStream();
+            CancellationToken token = new CancellationToken();
+
+            await WebSocketServerFactory.SendHandshakeResponse(guid, response, stream, token);
+
+            Assert.True(stream.Position > 0);
+        }
+
+        /// <summary>
+        ///     Tests that send handshake response writes correct content
+        /// </summary>
+        [Fact]
+        public async Task SendHandshakeResponse_WritesCorrectContent()
+        {
+            Guid guid = Guid.NewGuid();
+            string expected = "HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\n\r\n";
+            MemoryStream stream = new MemoryStream();
+            CancellationToken token = new CancellationToken();
+
+            await WebSocketServerFactory.SendHandshakeResponse(guid, expected, stream, token);
+
+            stream.Position = 0;
+            byte[] bytes = new byte[stream.Length];
+            await stream.ReadAsync(bytes, 0, bytes.Length, token);
+            string written = System.Text.Encoding.UTF8.GetString(bytes);
+
+            Assert.Equal(expected, written);
+        }
+
+        /// <summary>
+        ///     Tests that handle web socket version not supported writes response to stream
+        /// </summary>
+        [Fact]
+        public async Task HandleWebSocketVersionNotSupported_WritesResponse()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketVersionNotSupportedException ex = new WebSocketVersionNotSupportedException("Version 12 not supported");
+            MemoryStream stream = new MemoryStream();
+            CancellationToken token = new CancellationToken();
+
+            await WebSocketServerFactory.HandleWebSocketVersionNotSupported(guid, ex, stream, token);
+
+            Assert.True(stream.Position > 0);
+        }
+
+        /// <summary>
+        ///     Tests that handle bad request writes response to stream
+        /// </summary>
+        [Fact]
+        public async Task HandleBadRequest_WritesResponse()
+        {
+            Guid guid = Guid.NewGuid();
+            Exception ex = new InvalidOperationException("Bad request");
+            MemoryStream stream = new MemoryStream();
+            CancellationToken token = new CancellationToken();
+
+            await WebSocketServerFactory.HandleBadRequest(guid, ex, stream, token);
+
+            Assert.True(stream.Position > 0);
+        }
     }
 }

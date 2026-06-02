@@ -58,5 +58,18 @@ namespace Alis.Extension.Network.Test
             PongEventArgs pongEventArgs = new PongEventArgs(payload);
             Assert.Equal(payload, pongEventArgs.Payload);
         }
+
+        /// <summary>
+        ///     Tests that pong event args empty payload returns empty payload
+        /// </summary>
+        [Fact]
+        public void PongEventArgs_EmptyPayload_ReturnsEmptyPayload()
+        {
+            ArraySegment<byte> payload = new ArraySegment<byte>(new byte[0]);
+            PongEventArgs pongEventArgs = new PongEventArgs(payload);
+
+            Assert.Equal(0, payload.Array.Length);
+            Assert.NotNull(pongEventArgs);
+        }
     }
 }

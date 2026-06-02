@@ -520,5 +520,47 @@ namespace Alis.Extension.Network.Test
 
             await Assert.ThrowsAsync<InvalidHttpResponseCodeException>(() => webSocketClientFactory.PerformHandshake(guid, uri, stream, options, CancellationToken.None));
         }
+
+        /// <summary>
+        ///     Tests that throw if invalid response code with null response code throws
+        /// </summary>
+        [Fact]
+        public void ThrowIfInvalidResponseCode_NullResponseCode_Throws()
+        {
+            string responseHeader = "INVALID_RESPONSE";
+
+            InvalidHttpResponseCodeException ex = Assert.Throws<InvalidHttpResponseCodeException>(
+                () => WebSocketClientFactory.ThrowIfInvalidResponseCode(responseHeader));
+
+            Assert.Equal(responseHeader, ex.ResponseHeader);
+        }
+
+        /// <summary>
+        ///     Tests that throw if invalid response code with non101 code throws with details
+        /// </summary>
+        [Fact]
+        public void ThrowIfInvalidResponseCode_Non101Code_ThrowsWithDetails()
+        {
+            string responseHeader = "HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\nBody content here";
+
+            InvalidHttpResponseCodeException ex = Assert.Throws<InvalidHttpResponseCodeException>(
+                () => WebSocketClientFactory.ThrowIfInvalidResponseCode(responseHeader));
+
+            Assert.Contains("404", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that throw if invalid response code with valid101 code does not throw
+        /// </summary>
+        [Fact]
+        public void ThrowIfInvalidResponseCode_Valid101Code_DoesNotThrow()
+        {
+            string responseHeader = "HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n";
+
+            Exception ex = Record.Exception(
+                () => WebSocketClientFactory.ThrowIfInvalidResponseCode(responseHeader));
+
+            Assert.Null(ex);
+        }
     }
 }

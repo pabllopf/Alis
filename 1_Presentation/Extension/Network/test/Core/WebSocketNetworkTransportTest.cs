@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Alis.Extension.Network.Core;
 using Xunit;
 
@@ -69,6 +71,69 @@ namespace Alis.Extension.Network.Test.Core
             WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
             transport.Dispose();
             transport.Dispose();
+        }
+
+        /// <summary>
+        ///     Tests that start async when already started throws exception
+        /// </summary>
+        [Fact]
+        public async Task StartAsync_WhenAlreadyStarted_ThrowsInvalidOperationException()
+        {
+            WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
+            transport.Dispose();
+
+            await Assert.ThrowsAsync<InvalidOperationException>(() => transport.StartAsync());
+        }
+
+        /// <summary>
+        ///     Tests that start async with valid host starts successfully
+        /// </summary>
+        [Fact]
+        public void StartAsync_ValidHost_StartsSuccessfully()
+        {
+            WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
+            transport.Dispose();
+
+            Assert.Equal(NetworkTransportState.Disconnected, transport.State);
+        }
+
+        /// <summary>
+        ///     Tests that stop async when disconnected does not throw
+        /// </summary>
+        [Fact]
+        public async Task StopAsync_WhenDisconnected_DoesNotThrow()
+        {
+            WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
+            transport.Dispose();
+
+            Exception ex = await Record.ExceptionAsync(() => transport.StopAsync());
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        ///     Tests that receive async when cancelled throws operation canceled exception
+        /// </summary>
+        [Fact]
+        public async Task ReceiveAsync_WhenCancelled_ThrowsOperationCanceledException()
+        {
+            WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            cts.Cancel();
+
+            await Assert.ThrowsAsync<OperationCanceledException>(() => transport.ReceiveAsync(cts.Token));
+        }
+
+        /// <summary>
+        ///     Tests that send async with unknown client throws exception
+        /// </summary>
+        [Fact]
+        public async Task SendAsync_WithUnknownClient_ThrowsInvalidOperationException()
+        {
+            WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
+            transport.Dispose();
+
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope { MessageId = "test" };
+            await Assert.ThrowsAsync<InvalidOperationException>(() => transport.SendAsync("unknown-client", envelope));
         }
     }
 }

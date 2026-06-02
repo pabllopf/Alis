@@ -264,6 +264,26 @@ namespace Alis.Extension.Network.Test
         }
 
         /// <summary>
+        ///     Tests that constructor with zero keep alive interval does not start ping loop
+        /// </summary>
+        [Fact]
+        public void Constructor_ZeroKeepAliveInterval_DoesNotStartPingLoop()
+        {
+            PingPongManager pingPongManager = new PingPongManager(Guid.NewGuid(), new WebSocketImplementation(
+                Guid.NewGuid(),
+                () => new MemoryStream(),
+                new MemoryStream(),
+                TimeSpan.Zero,
+                "permessage-deflate",
+                true,
+                true,
+                "subProtocol"
+            ), TimeSpan.Zero, new CancellationToken());
+
+            Assert.False(pingPongManager.PingSentTicksExist());
+        }
+
+        /// <summary>
         ///     Tests that log ping pong manager end test
         /// </summary>
         [Fact]

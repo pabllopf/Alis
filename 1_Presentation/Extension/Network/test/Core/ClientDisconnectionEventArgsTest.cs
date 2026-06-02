@@ -61,5 +61,17 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal("client-1", args.ClientId);
             Assert.Equal("timeout", args.Reason);
         }
+
+        /// <summary>
+        ///     Tests that constructor with null reason sets client id and null reason
+        /// </summary>
+        [Fact]
+        public void Constructor_WithNullReason_SetsClientIdAndNullReason()
+        {
+            ClientDisconnectionEventArgs args = new ClientDisconnectionEventArgs("client-1", null);
+
+            Assert.Equal("client-1", args.ClientId);
+            Assert.Null(args.Reason);
+        }
     }
 }

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Net.WebSockets;
 using Alis.Extension.Network.Internal;
 using Xunit;
 
@@ -57,6 +58,36 @@ namespace Alis.Extension.Network.Test.Internal
             Assert.Equal(frame, cursor.WebSocketFrame);
             Assert.Equal(numBytesRead, cursor.NumBytesRead);
             Assert.Equal(numBytesLeftToRead, cursor.NumBytesLeftToRead);
+        }
+
+        /// <summary>
+        ///     Tests that web socket read cursor constructor with zero values
+        /// </summary>
+        [Fact]
+        public void WebSocketReadCursor_Constructor_ZeroValues()
+        {
+            WebSocketFrame frame = new WebSocketFrame(false, WebSocketOpCode.ContinuationFrame, 0, new ArraySegment<byte>());
+            WebSocketReadCursor cursor = new WebSocketReadCursor(frame, 0, 0);
+
+            Assert.NotNull(cursor);
+            Assert.Equal(0, cursor.NumBytesRead);
+            Assert.Equal(0, cursor.NumBytesLeftToRead);
+            Assert.Equal(WebSocketOpCode.ContinuationFrame, cursor.WebSocketFrame.OpCode);
+            Assert.False(cursor.WebSocketFrame.IsFinBitSet);
+        }
+
+        /// <summary>
+        ///     Tests that web socket read cursor constructor with close frame
+        /// </summary>
+        [Fact]
+        public void WebSocketReadCursor_Constructor_CloseFrame()
+        {
+            WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.ConnectionClose, 2, WebSocketCloseStatus.NormalClosure, "Closing", new ArraySegment<byte>(new byte[4]));
+            WebSocketReadCursor cursor = new WebSocketReadCursor(frame, 2, 0);
+
+            Assert.Equal(WebSocketOpCode.ConnectionClose, cursor.WebSocketFrame.OpCode);
+            Assert.Equal(WebSocketCloseStatus.NormalClosure, cursor.WebSocketFrame.CloseStatus);
+            Assert.Equal("Closing", cursor.WebSocketFrame.CloseStatusDescription);
         }
     }
 }

@@ -72,5 +72,16 @@ namespace Alis.Extension.Network.Test
             MemoryStream buffer2 = bufferPool.GetBuffer();
             Assert.Equal(buffer1.Length, buffer2.Length);
         }
+
+        /// <summary>
+        ///     Tests that get buffer returns writable stream
+        /// </summary>
+        [Fact]
+        public void GetBuffer_ReturnsWritableStream()
+        {
+            BufferPool bufferPool = new BufferPool();
+            MemoryStream buffer = bufferPool.GetBuffer();
+            Assert.True(buffer.CanWrite);
+        }
     }
 }

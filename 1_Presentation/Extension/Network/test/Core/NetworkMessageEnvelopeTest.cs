@@ -194,5 +194,57 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Contains(("IsReliable", "True"), properties);
             Assert.Contains(("IsOrdered", "True"), properties);
         }
+
+        /// <summary>
+        ///     Tests that create from properties invalid timestamp parses as zero
+        /// </summary>
+        [Fact]
+        public void CreateFromProperties_InvalidTimestamp_ParsesAsZero()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>
+            {
+                {"ServerTimestamp", "invalid"}
+            };
+
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope().CreateFromProperties(properties);
+
+            Assert.Equal(0, envelope.ServerTimestamp);
+        }
+
+        /// <summary>
+        ///     Tests that create from properties invalid sequence number parses as zero
+        /// </summary>
+        [Fact]
+        public void CreateFromProperties_InvalidSequenceNumber_ParsesAsZero()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>
+            {
+                {"SequenceNumber", "invalid"}
+            };
+
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope().CreateFromProperties(properties);
+
+            Assert.Equal((uint)0, envelope.SequenceNumber);
+        }
+
+        /// <summary>
+        ///     Tests that get serializable properties with null values returns null strings
+        /// </summary>
+        [Fact]
+        public void GetSerializableProperties_WithNullValues_ReturnsNullStrings()
+        {
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
+            {
+                MessageId = null,
+                MessageType = null,
+                Payload = null
+            };
+
+            var properties = envelope.GetSerializableProperties().ToList();
+
+            Assert.Contains(properties, p => p.Item1 == "MessageId" && p.Item2 == null);
+            Assert.Contains(properties, p => p.Item1 == "MessageType" && p.Item2 == null);
+            Assert.Contains(properties, p => p.Item1 == "Payload" && p.Item2 == null);
+        }
     }
 }

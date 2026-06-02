@@ -49,5 +49,16 @@ namespace Alis.Extension.Network.Test.Core
 
             Assert.Equal(player, args.Player);
         }
+
+        /// <summary>
+        ///     Tests that constructor null player sets null player
+        /// </summary>
+        [Fact]
+        public void Constructor_NullPlayer_SetsNullPlayer()
+        {
+            PlayerEventArgs args = new PlayerEventArgs(null);
+
+            Assert.Null(args.Player);
+        }
     }
 }
