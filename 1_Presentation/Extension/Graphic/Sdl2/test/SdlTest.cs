@@ -25,5 +25,13 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal((ushort)(1 << 12), Sdl.AudioMaskEndian);
             Assert.Equal((ushort)(1 << 15), Sdl.AudioMaskSigned);
         }
+
+        [Fact]
+        public void ShouldComputeFourcc()
+        {
+            uint result = Sdl.Fourcc((byte)'Y', (byte)'V', (byte)'1', (byte)'2');
+            uint expected = (uint)('Y' | ('V' << 8) | ('1' << 16) | ('2' << 24));
+            Assert.Equal(expected, result);
+        }
     }
 }
