@@ -74,5 +74,81 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(original.IsReliable, result.IsReliable);
             Assert.Equal(original.IsOrdered, result.IsOrdered);
         }
+
+        /// <summary>
+        ///     Tests that serialize and deserialize empty envelope round-trips correctly
+        /// </summary>
+        [Fact]
+        public void SerializeEnvelope_Empty_RoundTrips()
+        {
+            NetworkSerializer serializer = new NetworkSerializer();
+            NetworkMessageEnvelope original = new NetworkMessageEnvelope();
+
+            string json = serializer.SerializeEnvelope(original);
+            NetworkMessageEnvelope result = serializer.DeserializeEnvelope(json);
+
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        ///     Tests that serialize and deserialize envelope with null values round-trips correctly
+        /// </summary>
+        [Fact]
+        public void SerializeEnvelope_WithNullValues_RoundTrips()
+        {
+            NetworkSerializer serializer = new NetworkSerializer();
+            NetworkMessageEnvelope original = new NetworkMessageEnvelope
+            {
+                MessageId = null,
+                MessageType = null,
+                Payload = null
+            };
+
+            string json = serializer.SerializeEnvelope(original);
+            NetworkMessageEnvelope result = serializer.DeserializeEnvelope(json);
+
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        ///     Tests that serialize generic method works with envelope
+        /// </summary>
+        [Fact]
+        public void Serialize_Generic_WithEnvelope_ReturnsJson()
+        {
+            NetworkSerializer serializer = new NetworkSerializer();
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
+            {
+                MessageId = "test",
+                Payload = "data"
+            };
+
+            string json = serializer.Serialize(envelope);
+
+            Assert.NotNull(json);
+            Assert.NotEmpty(json);
+        }
+
+        /// <summary>
+        ///     Tests that deserialize generic method works with envelope
+        /// </summary>
+        [Fact]
+        public void Deserialize_Generic_WithEnvelope_ReturnsObject()
+        {
+            NetworkSerializer serializer = new NetworkSerializer();
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
+            {
+                MessageId = "test-id",
+                MessageType = "test-type",
+                Payload = "test-payload"
+            };
+
+            string json = serializer.Serialize(envelope);
+            NetworkMessageEnvelope result = serializer.Deserialize<NetworkMessageEnvelope>(json);
+
+            Assert.Equal("test-id", result.MessageId);
+            Assert.Equal("test-type", result.MessageType);
+            Assert.Equal("test-payload", result.Payload);
+        }
     }
 }
