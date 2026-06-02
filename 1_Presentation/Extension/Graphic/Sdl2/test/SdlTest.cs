@@ -80,5 +80,60 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.True(Sdl.WindowPosIsCentered(pos));
             Assert.False(Sdl.WindowPosIsCentered(200));
         }
+        [Fact]
+        public void ShouldComputeAudioBitSize()
+        {
+            Assert.Equal((ushort)0xFF, Sdl.SdlAudioBitSize(0x01FF));
+            Assert.Equal((ushort)0x08, Sdl.SdlAudioBitSize(0x0108));
+        }
+
+        [Fact]
+        public void ShouldDetectAudioIsFloat()
+        {
+            Assert.True(Sdl.SdlAudioIsFloat(0x0100));
+            Assert.False(Sdl.SdlAudioIsFloat(0x0000));
+        }
+
+        [Fact]
+        public void ShouldDetectAudioIsBigEndian()
+        {
+            Assert.True(Sdl.SdlAudioIsBigEndian(0x1000));
+            Assert.False(Sdl.SdlAudioIsBigEndian(0x0000));
+        }
+
+        [Fact]
+        public void ShouldDetectAudioIsSigned()
+        {
+            Assert.True(Sdl.SdlAudioIsSigned(0x8000));
+            Assert.False(Sdl.SdlAudioIsSigned(0x0000));
+        }
+
+        [Fact]
+        public void ShouldDetectAudioIsInt()
+        {
+            Assert.True(Sdl.SdlAudioIsInt(0x0000));
+            Assert.False(Sdl.SdlAudioIsInt(0x0100));
+        }
+
+        [Fact]
+        public void ShouldDetectAudioIsLittleEndian()
+        {
+            Assert.True(Sdl.SdlAudioIsLittleEndian(0x0000));
+            Assert.False(Sdl.SdlAudioIsLittleEndian(0x1000));
+        }
+
+        [Fact]
+        public void ShouldDetectAudioIsUnsigned()
+        {
+            Assert.True(Sdl.SdlAudioIsUnsigned(0x0000));
+            Assert.False(Sdl.SdlAudioIsUnsigned(0x8000));
+        }
+
+        [Fact]
+        public void ShouldDefinePixelFourcc()
+        {
+            uint result = Sdl.SdlDefinePixelFourcc((byte)'Y', (byte)'V', (byte)'1', (byte)'2');
+            Assert.Equal(Sdl.Fourcc((byte)'Y', (byte)'V', (byte)'1', (byte)'2'), result);
+        }
     }
 }
