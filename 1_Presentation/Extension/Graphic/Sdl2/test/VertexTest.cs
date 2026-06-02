@@ -50,5 +50,26 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0f, vertex.TexCoordinate.X);
             Assert.Equal(0f, vertex.TexCoordinate.Y);
         }
+
+        [Fact]
+        public void ShouldAssignAndRetrieveProperties()
+        {
+            // Arrange
+            var vertex = new Vertex
+            {
+                Position = new PointF(1.5f, 2.5f),
+                TexCoordinate = new PointF(0.5f, 0.5f),
+                Color = new Color(255, 128, 64, 255)
+            };
+            // Assert
+            Assert.Equal(1.5f, vertex.Position.X);
+            Assert.Equal(2.5f, vertex.Position.Y);
+            Assert.Equal(0.5f, vertex.TexCoordinate.X);
+            Assert.Equal(0.5f, vertex.TexCoordinate.Y);
+            Assert.Equal(255, vertex.Color.R);
+            Assert.Equal(128, vertex.Color.G);
+            Assert.Equal(64, vertex.Color.B);
+            Assert.Equal(255, vertex.Color.A);
+        }
     }
 }
