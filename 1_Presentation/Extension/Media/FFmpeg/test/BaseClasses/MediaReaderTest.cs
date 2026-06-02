@@ -27,7 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
 {
@@ -37,5 +42,47 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
     /// <seealso cref="MediaReader{TFrame,TWriter}" />
     public class MediaReaderTest
     {
+        private sealed class TestFrame : IMediaFrame
+        {
+            public TestFrame(byte[] rawData)
+            {
+                RawData = rawData;
+            }
+
+            public byte[] RawData { get; }
+
+            public bool Load(Stream stream) => true;
+        }
+
+        private sealed class TestWriter : MediaWriter<TestFrame>
+        {
+            public void SetOpened(bool value) => OpenedForWriting = value;
+
+            public void SetStream(Stream stream) => InputDataStream = stream;
+        }
+
+        private sealed class TestReader : MediaReader<TestFrame, TestWriter>
+        {
+            public void SetStream(Stream stream) => DataStream = stream;
+
+            public void SetOpened(bool value) => OpenedForReading = value;
+
+            public override TestFrame NextFrame() => null;
+
+            public override TestFrame NextFrame(TestFrame frame) => null;
+        }
+
+        [Fact]
+        public void MediaReader_CopyTo_ShouldThrowWhenReaderNotOpened()
+        {
+            TestReader reader = new TestReader();
+            TestWriter writer = new TestWriter();
+            writer.SetOpened(true);
+            writer.SetStream(new MemoryStream());
+
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.CopyTo(writer));
+
+            Assert.Contains("Reader is not opened for reading", ex.Message);
+        }
     }
 }
