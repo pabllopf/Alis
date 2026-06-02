@@ -27,8 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Graphic.Sdl2.Structs;
 using Xunit;
+using Alis.Extension.Graphic.Sdl2.Structs;
+using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Aspect.Math.Shapes.Point;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
@@ -37,16 +39,16 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class VertexTest
     {
-        /// <summary>
-        ///     Tests the Vertex struct default initialization.
-        /// </summary>
         [Fact]
-        public void Vertex_DefaultInitialization_CreatesValidStruct()
+        public void ShouldDefaultToZero()
         {
-            Vertex vertex = new Vertex();
-
-            Assert.Equal(0.0f, vertex.Position.X);
-            Assert.Equal(0.0f, vertex.Position.Y);
+            // Arrange
+            var vertex = new Vertex();
+            // Assert
+            Assert.Equal(0f, vertex.Position.X);
+            Assert.Equal(0f, vertex.Position.Y);
+            Assert.Equal(0f, vertex.TexCoordinate.X);
+            Assert.Equal(0f, vertex.TexCoordinate.Y);
         }
     }
 }
