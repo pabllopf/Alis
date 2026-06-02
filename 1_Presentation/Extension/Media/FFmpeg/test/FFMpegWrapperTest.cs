@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -247,6 +249,113 @@ namespace Alis.Extension.Media.FFmpeg.Test
 
             // Assert
             Assert.IsType<bool>(hideBanner);
+        }
+
+        [Fact]
+        public void FFMpegWrapper_RegisterProgressTracker_ShouldReportProgress()
+        {
+            double reportedProgress = 0;
+            string progressLine = "frame=  100 fps= 30 q=28.0 size=    1024kB time=00:00:03.33 bitrate= 2516.6kbits/s speed=1.0x";
+
+            Process p = new Process();
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                p.StartInfo = new ProcessStartInfo("cmd.exe", "/c echo " + progressLine)
+                {
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+            }
+            else
+            {
+                p.StartInfo = new ProcessStartInfo("/bin/sh", "-c \"printf '" + progressLine + "\\n' >&2\"")
+                {
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+            }
+
+            p.Start();
+            Progress<double> progress = FfMpegWrapper.RegisterProgressTracker(p, 10.0);
+            progress.ProgressChanged += (_, value) => reportedProgress = value;
+
+            p.WaitForExit();
+            System.Threading.Thread.Sleep(100);
+
+            Assert.InRange(reportedProgress, 33.0, 34.0);
+        }
+
+        [Fact]
+        public void FFMpegWrapper_RegisterProgressTracker_ShouldClampAt100()
+        {
+            double reportedProgress = 0;
+            string overflowLine = "frame=  100 fps= 30 q=28.0 size=    1024kB time=00:01:00.00 bitrate= 2516.6kbits/s speed=1.0x";
+
+            Process p = new Process();
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                p.StartInfo = new ProcessStartInfo("cmd.exe", "/c echo " + overflowLine)
+                {
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+            }
+            else
+            {
+                p.StartInfo = new ProcessStartInfo("/bin/sh", "-c \"printf '" + overflowLine + "\\n' >&2\"")
+                {
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+            }
+
+            p.Start();
+            Progress<double> progress = FfMpegWrapper.RegisterProgressTracker(p, 10.0);
+            progress.ProgressChanged += (_, value) => reportedProgress = value;
+
+            p.WaitForExit();
+            System.Threading.Thread.Sleep(100);
+
+            Assert.Equal(100, reportedProgress);
+        }
+
+        [Fact]
+        public void FFMpegWrapper_RegisterProgressTracker_ShouldIgnoreEmptyLines()
+        {
+            double reportedProgress = 0;
+
+            Process p = new Process();
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                p.StartInfo = new ProcessStartInfo("cmd.exe", "/c echo. && echo frame=  100 fps= 30 q=28.0 size=    1024kB time=00:00:02.00 bitrate= 2516.6kbits/s speed=1.0x")
+                {
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+            }
+            else
+            {
+                p.StartInfo = new ProcessStartInfo("/bin/sh", "-c \"printf '\\nframe=  100 fps= 30 q=28.0 size=    1024kB time=00:00:02.00 bitrate= 2516.6kbits/s speed=1.0x\\n' >&2\"")
+                {
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+            }
+
+            p.Start();
+            Progress<double> progress = FfMpegWrapper.RegisterProgressTracker(p, 10.0);
+            progress.ProgressChanged += (_, value) => reportedProgress = value;
+
+            p.WaitForExit();
+            System.Threading.Thread.Sleep(100);
+
+            Assert.Equal(20, reportedProgress);
         }
     }
 }
