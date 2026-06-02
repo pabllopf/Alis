@@ -21,5 +21,13 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, fmt.refCount);
             Assert.Equal(IntPtr.Zero, fmt.Next);
         }
+
+        [Fact]
+        public void ShouldAssignPalette()
+        {
+            var fmt = new PixelFormat();
+            fmt.Palette = new IntPtr(0xFADE);
+            Assert.Equal(new IntPtr(0xFADE), fmt.Palette);
+        }
     }
 }
