@@ -17,5 +17,31 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, info.maxTextureWidth);
             Assert.Equal(0, info.maxTextureHeight);
         }
+
+        [Fact]
+        public void ShouldAssignName()
+        {
+            var info = new RendererInfo();
+            info.Name = new IntPtr(0x1234);
+            Assert.Equal(new IntPtr(0x1234), info.Name);
+        }
+
+        [Fact]
+        public void ShouldGetNameFromPointer()
+        {
+            var info = new RendererInfo();
+            string expected = "test_renderer";
+            IntPtr ptr = Marshal.StringToHGlobalAnsi(expected);
+            info.Name = ptr;
+            try
+            {
+                string result = info.GetName();
+                Assert.Equal(expected, result);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(ptr);
+            }
+        }
     }
 }
