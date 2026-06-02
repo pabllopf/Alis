@@ -47,5 +47,16 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(2, version.minor);
             Assert.Equal(1, version.patch);
         }
+
+        [Fact]
+        public void ShouldDefaultToZero()
+        {
+            // Arrange
+            var version = new Version();
+            // Assert
+            Assert.Equal(0, version.major);
+            Assert.Equal(0, version.minor);
+            Assert.Equal(0, version.patch);
+        }
     }
 }
