@@ -46,6 +46,7 @@
         <Project Path="2_Application/Alis/samples/alis.sample.splitcamera/web/Alis.Sample.SplitCamera.Web.csproj" />
         <Project Path="2_Application/Alis/samples/alis.sample.splitcamera/desktop/Alis.Sample.SplitCamera.Desktop.csproj" />
     </Folder>
+    <Folder Name="/2_Application/Alis/samples/" />
 
     <Folder Name="/2_Application/Alis/samples/alis.sample.asteroid/">
         <Project Path="2_Application/Alis/samples/alis.sample.asteroid/web/Alis.Sample.Asteroid.Web.csproj" />
@@ -186,14 +187,17 @@
 
     <Folder Name="/1_Presentation/Installer/">
         <Project Path="1_Presentation/Installer/src/Alis.App.Installer.csproj" />
+        <Project Path="1_Presentation/Installer/test/Alis.App.Installer.Test.csproj" />
     </Folder>
 
     <Folder Name="/1_Presentation/Engine/">
         <Project Path="1_Presentation/Engine/src/Alis.App.Engine.csproj" />
+        <Project Path="1_Presentation/Engine/test/Alis.App.Engine.Test.csproj" />
     </Folder>
 
     <Folder Name="/1_Presentation/Hub/">
         <Project Path="1_Presentation/Hub/src/Alis.App.Hub.csproj" />
+        <Project Path="1_Presentation/Hub/test/Alis.App.Hub.Test.csproj" />
     </Folder>
     <Folder Name="/1_Presentation/Extension/" />
     <Folder Name="/1_Presentation/Extension/Ads/" />
