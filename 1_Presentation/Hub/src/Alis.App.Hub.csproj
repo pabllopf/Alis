@@ -7,7 +7,6 @@
         <LangVersion>13</LangVersion>
         <Nullable>disable</Nullable>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-        <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
     
     <ItemGroup>
@@ -65,10 +64,6 @@
         <DefineConstants>$(DefineConstants);WIN</DefineConstants>
         <IsWindows>true</IsWindows>
     </PropertyGroup>
-
-     <ItemGroup>
-        <AssemblyAttribute Condition="$(TargetFramework.Contains('net8'))" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
-    </ItemGroup>
 
     <ItemGroup>
         <None Condition="Exists('$(ProjectDir).docs/')" Include="$(ProjectDir).docs/**/*.md" Pack="false" Visible="true"/>
