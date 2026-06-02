@@ -68,5 +68,21 @@ namespace Alis.Extension.Network.Test.Client
 
             Assert.NotEqual(manager1.Id, manager2.Id);
         }
+
+        /// <summary>
+        ///     Tests that initialize async transitions to idle state
+        /// </summary>
+        [Fact]
+        public async Task InitializeAsync_WithConfig_TransitionsToIdle()
+        {
+            using NetworkClientManager manager = new NetworkClientManager();
+            NetworkConfig config = new NetworkConfig {MaxPlayers = 16};
+
+            await manager.InitializeAsync(config);
+
+            Assert.Equal(NetworkManagerState.Idle, manager.State);
+            Assert.NotNull(manager.Config);
+            Assert.Equal(16, manager.Config.MaxPlayers);
+        }
     }
 }
