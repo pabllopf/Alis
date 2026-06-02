@@ -9,9 +9,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldReturnCompiledVersion()
         {
             var version = SdlImage.Version();
-            Assert.Equal(2, version.major);
-            Assert.Equal(0, version.minor);
-            Assert.Equal(6, version.patch);
+            Assert.Equal(2, version.Major);
+            Assert.Equal(0, version.Minor);
+            Assert.Equal(6, version.MinorRevision);
         }
     }
 }
