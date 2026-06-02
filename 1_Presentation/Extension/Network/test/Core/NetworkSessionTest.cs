@@ -124,5 +124,46 @@ namespace Alis.Extension.Network.Test.Core
 
             Assert.Equal(SessionState.InProgress, session.State);
         }
+
+        /// <summary>
+        ///     Tests that custom data can store multiple entries
+        /// </summary>
+        [Fact]
+        public void CustomData_AddMultipleEntries_AllStored()
+        {
+            NetworkSession session = new NetworkSession();
+            session.CustomData["map"] = "arena";
+            session.CustomData["mode"] = "deathmatch";
+
+            Assert.Equal(2, session.CustomData.Count);
+            Assert.Equal("arena", session.CustomData["map"]);
+            Assert.Equal("deathmatch", session.CustomData["mode"]);
+        }
+
+        /// <summary>
+        ///     Tests that players list can be populated
+        /// </summary>
+        [Fact]
+        public void Players_AddPlayer_ContainsPlayer()
+        {
+            NetworkSession session = new NetworkSession();
+            NetworkPlayer player = new NetworkPlayer {PlayerId = "p1", PlayerName = "Test"};
+            session.Players.Add(player);
+
+            Assert.Single(session.Players);
+            Assert.Equal(player, session.Players[0]);
+        }
+
+        /// <summary>
+        ///     Tests that created date time converts unix timestamp correctly
+        /// </summary>
+        [Fact]
+        public void CreatedDateTime_ConvertsUnixTimestamp_ReturnsCorrectDateTime()
+        {
+            NetworkSession session = new NetworkSession {CreatedAt = 1609459200};
+
+            DateTime expected = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(1609459200).ToLocalTime();
+            Assert.Equal(expected, session.CreatedDateTime);
+        }
     }
 }
