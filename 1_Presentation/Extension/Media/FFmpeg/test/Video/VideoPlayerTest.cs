@@ -75,5 +75,39 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
             player.Dispose();
         }
+
+        [Fact]
+        public void VideoPlayer_Play_ShouldThrowWhenNoFilename()
+        {
+            VideoPlayer player = new VideoPlayer();
+
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => player.Play());
+
+            Assert.Contains("No filename was specified", ex.Message);
+        }
+
+        [Fact]
+        public void VideoPlayer_CloseWrite_ShouldThrowWhenNotOpened()
+        {
+            VideoPlayer player = new VideoPlayer();
+
+            Assert.Throws<InvalidOperationException>(() => player.CloseWrite());
+        }
+
+        [Fact]
+        public void VideoPlayer_Constructor_ShouldSetFilename()
+        {
+            VideoPlayer player = new VideoPlayer("test.mp4");
+
+            Assert.Equal("test.mp4", player.Filename);
+        }
+
+        [Fact]
+        public void VideoPlayer_Constructor_ShouldDefaultFilenameToNull()
+        {
+            VideoPlayer player = new VideoPlayer();
+
+            Assert.Null(player.Filename);
+        }
     }
 }
