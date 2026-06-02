@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Alis.Extension.Media.FFmpeg.Video;
+using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
@@ -37,5 +40,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
     /// <seealso cref="VideoReader" />
     public class VideoReaderTest
     {
+        [Fact]
+        public void VideoReader_Constructor_ShouldThrowWhenFileMissing()
+        {
+            string missing = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".mp4");
+
+            Assert.Throws<FileNotFoundException>(() => new VideoReader(missing));
+        }
     }
 }
