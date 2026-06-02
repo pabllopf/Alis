@@ -54,5 +54,35 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0f, evt.pressure);
             Assert.Equal(0u, evt.windowID);
         }
+
+        [Fact]
+        public void ShouldAssignAndRetrieveAllFields()
+        {
+            // Arrange
+            var evt = new TouchFingerEvent
+            {
+                type = 1u,
+                timestamp = 100u,
+                touchId = 42L,
+                fingerId = 99L,
+                x = 0.5f,
+                y = 0.25f,
+                dx = -0.1f,
+                dy = 0.3f,
+                pressure = 1.0f,
+                windowID = 7u
+            };
+            // Assert
+            Assert.Equal(1u, evt.type);
+            Assert.Equal(100u, evt.timestamp);
+            Assert.Equal(42L, evt.touchId);
+            Assert.Equal(99L, evt.fingerId);
+            Assert.Equal(0.5f, evt.x);
+            Assert.Equal(0.25f, evt.y);
+            Assert.Equal(-0.1f, evt.dx);
+            Assert.Equal(0.3f, evt.dy);
+            Assert.Equal(1.0f, evt.pressure);
+            Assert.Equal(7u, evt.windowID);
+        }
     }
 }
