@@ -58,5 +58,16 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, version.minor);
             Assert.Equal(0, version.patch);
         }
+
+        [Fact]
+        public void ShouldTruncateValuesExceedingByte()
+        {
+            // Arrange: values > 255 will be truncated to byte
+            var version = new Version(256, 512, 1024);
+            // Assert
+            Assert.Equal(0, version.major);   // 256 & 0xFF = 0
+            Assert.Equal(0, version.minor);   // 512 & 0xFF = 0
+            Assert.Equal(0, version.patch);   // 1024 & 0xFF = 0
+        }
     }
 }
