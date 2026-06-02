@@ -58,5 +58,16 @@ namespace Alis.Extension.Network.Test.Core
             Assert.NotNull(session.Players);
             Assert.Empty(session.Players);
         }
+
+        /// <summary>
+        ///     Tests that session id can be set and retrieved
+        /// </summary>
+        [Fact]
+        public void SessionId_SetAndGet_ReturnsCorrectValue()
+        {
+            NetworkSession session = new NetworkSession {SessionId = "session-1"};
+
+            Assert.Equal("session-1", session.SessionId);
+        }
     }
 }
