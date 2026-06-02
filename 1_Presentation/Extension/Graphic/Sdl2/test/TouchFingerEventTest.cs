@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Xunit;
+using Alis.Extension.Graphic.Sdl2.Structs;
+
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
     /// <summary>
@@ -34,5 +37,22 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class TouchFingerEventTest
     {
+        [Fact]
+        public void ShouldDefaultToZero()
+        {
+            // Arrange
+            var evt = new TouchFingerEvent();
+            // Assert
+            Assert.Equal(0u, evt.type);
+            Assert.Equal(0u, evt.timestamp);
+            Assert.Equal(0L, evt.touchId);
+            Assert.Equal(0L, evt.fingerId);
+            Assert.Equal(0f, evt.x);
+            Assert.Equal(0f, evt.y);
+            Assert.Equal(0f, evt.dx);
+            Assert.Equal(0f, evt.dy);
+            Assert.Equal(0f, evt.pressure);
+            Assert.Equal(0u, evt.windowID);
+        }
     }
 }
