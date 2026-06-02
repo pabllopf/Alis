@@ -59,5 +59,20 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(new IntPtr(0x1234), evt.Data1);
             Assert.Equal(new IntPtr(0xABCD), evt.Data2);
         }
+
+        [Fact]
+        public void ShouldSupportDefaultInitialization()
+        {
+            // Arrange
+            var evt = new UserEvent();
+            // Assert
+            Assert.Equal(0u, evt.type);
+            Assert.Equal(0u, evt.timestamp);
+            Assert.Equal(0u, evt.windowID);
+            Assert.Equal(0, evt.code);
+            Assert.Equal(IntPtr.Zero, evt.Data1);
+            Assert.Equal(IntPtr.Zero, evt.Data2);
+        }
+
     }
 }
