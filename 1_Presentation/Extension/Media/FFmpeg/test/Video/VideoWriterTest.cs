@@ -121,5 +121,38 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 1920, 1080, 0));
             }
         }
+
+        [Fact]
+        public void VideoWriter_CloseWrite_ShouldThrowWhenNotOpened()
+        {
+            VideoWriter writer = new VideoWriter("out.mp4", 1920, 1080, 30);
+
+            Assert.Throws<InvalidOperationException>(() => writer.CloseWrite());
+        }
+
+        [Fact]
+        public void VideoWriter_FileCtor_ShouldCreateWithDefaultEncoderOptions()
+        {
+            VideoWriter writer = new VideoWriter("out.mp4", 1920, 1080, 30);
+
+            Assert.NotNull(writer.EncoderOptions);
+            Assert.True(writer.UseFilename);
+            Assert.Equal(1920, writer.Width);
+            Assert.Equal(1080, writer.Height);
+            Assert.Equal(30, writer.Framerate);
+        }
+
+        [Fact]
+        public void VideoWriter_StreamCtor_ShouldCreateWithDefaultEncoderOptions()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                VideoWriter writer = new VideoWriter(ms, 1920, 1080, 30);
+
+                Assert.NotNull(writer.EncoderOptions);
+                Assert.False(writer.UseFilename);
+                Assert.Equal(ms, writer.DestinationStream);
+            }
+        }
     }
 }
