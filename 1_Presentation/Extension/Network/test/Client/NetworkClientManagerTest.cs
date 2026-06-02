@@ -182,5 +182,44 @@ namespace Alis.Extension.Network.Test.Client
 
             Assert.Null(player);
         }
+
+        /// <summary>
+        ///     Tests that stop async delegates to disconnect
+        /// </summary>
+        [Fact]
+        public async Task StopAsync_Disconnects()
+        {
+            using NetworkClientManager manager = new NetworkClientManager();
+            await manager.InitializeAsync(new NetworkConfig());
+
+            await manager.StopAsync();
+
+            Assert.Equal(NetworkManagerState.Disconnected, manager.State);
+        }
+
+        /// <summary>
+        ///     Tests that connect async throws in uninitialized state
+        /// </summary>
+        [Fact]
+        public async Task ConnectAsync_Uninitialized_Throws()
+        {
+            using NetworkClientManager manager = new NetworkClientManager();
+
+            InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(
+                () => manager.ConnectAsync(new Uri("ws://localhost:8888"), "player"));
+
+            Assert.Contains("Cannot connect", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that dispose can be called multiple times
+        /// </summary>
+        [Fact]
+        public void Dispose_MultipleTimes_DoesNotThrow()
+        {
+            NetworkClientManager manager = new NetworkClientManager();
+            manager.Dispose();
+            manager.Dispose();
+        }
     }
 }
