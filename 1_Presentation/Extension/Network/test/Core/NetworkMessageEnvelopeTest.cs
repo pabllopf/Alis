@@ -59,5 +59,39 @@ namespace Alis.Extension.Network.Test.Core
             Assert.True(envelope.IsReliable);
             Assert.True(envelope.IsOrdered);
         }
+
+        /// <summary>
+        ///     Tests that properties can be set and retrieved
+        /// </summary>
+        [Fact]
+        public void Properties_SetAndGet_ReturnCorrectValues()
+        {
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
+            {
+                MessageId = "msg-1",
+                MessageType = "chat",
+                SenderId = "sender-1",
+                TargetId = "target-1",
+                Channel = "global",
+                Payload = "hello",
+                ServerTimestamp = 1000,
+                ClientTimestamp = 500,
+                SequenceNumber = 42,
+                IsReliable = false,
+                IsOrdered = false
+            };
+
+            Assert.Equal("msg-1", envelope.MessageId);
+            Assert.Equal("chat", envelope.MessageType);
+            Assert.Equal("sender-1", envelope.SenderId);
+            Assert.Equal("target-1", envelope.TargetId);
+            Assert.Equal("global", envelope.Channel);
+            Assert.Equal("hello", envelope.Payload);
+            Assert.Equal(1000, envelope.ServerTimestamp);
+            Assert.Equal(500, envelope.ClientTimestamp);
+            Assert.Equal((uint)42, envelope.SequenceNumber);
+            Assert.False(envelope.IsReliable);
+            Assert.False(envelope.IsOrdered);
+        }
     }
 }
