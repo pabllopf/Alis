@@ -49,5 +49,14 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             // Assert
             Assert.Equal(new IntPtr(0xCAFE), evt.Msg);
         }
+
+        [Fact]
+        public void ShouldDefaultToZero()
+        {
+            // Arrange
+            var evt = new SysWmEvent();
+            // Assert
+            Assert.Equal(IntPtr.Zero, evt.Msg);
+        }
     }
 }
