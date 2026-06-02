@@ -60,6 +60,17 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
         }
 
+        [Fact]
+        public void ShouldReturnNullTextWhenPtrIsZero()
+        {
+            // Arrange -- default struct, textPtr is IntPtr.Zero
+            var evt = new TextEditingEvent();
+            // Act
+            var text = evt.Text;
+            // Assert
+            Assert.Null(text);
+        }
+
         // Helper to construct the struct since it's readonly and struct
         private static TextEditingEvent GetTextEditingEvent(IntPtr textPtr)
         {
