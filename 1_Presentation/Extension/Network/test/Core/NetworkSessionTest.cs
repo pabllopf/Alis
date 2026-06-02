@@ -69,5 +69,49 @@ namespace Alis.Extension.Network.Test.Core
 
             Assert.Equal("session-1", session.SessionId);
         }
+
+        /// <summary>
+        ///     Tests that session name can be set and retrieved
+        /// </summary>
+        [Fact]
+        public void SessionName_SetAndGet_ReturnsCorrectValue()
+        {
+            NetworkSession session = new NetworkSession {SessionName = "MyGame"};
+
+            Assert.Equal("MyGame", session.SessionName);
+        }
+
+        /// <summary>
+        ///     Tests that owner id can be set and retrieved
+        /// </summary>
+        [Fact]
+        public void OwnerId_SetAndGet_ReturnsCorrectValue()
+        {
+            NetworkSession session = new NetworkSession {OwnerId = "owner-1"};
+
+            Assert.Equal("owner-1", session.OwnerId);
+        }
+
+        /// <summary>
+        ///     Tests that player count can be set and retrieved
+        /// </summary>
+        [Fact]
+        public void PlayerCount_SetAndGet_ReturnsCorrectValue()
+        {
+            NetworkSession session = new NetworkSession {PlayerCount = 4};
+
+            Assert.Equal(4, session.PlayerCount);
+        }
+
+        /// <summary>
+        ///     Tests that max players can be set and retrieved
+        /// </summary>
+        [Fact]
+        public void MaxPlayers_SetAndGet_ReturnsCorrectValue()
+        {
+            NetworkSession session = new NetworkSession {MaxPlayers = 8};
+
+            Assert.Equal(8, session.MaxPlayers);
+        }
     }
 }
