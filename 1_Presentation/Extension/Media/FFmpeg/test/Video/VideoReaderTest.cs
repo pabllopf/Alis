@@ -47,5 +47,25 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
 
             Assert.Throws<FileNotFoundException>(() => new VideoReader(missing));
         }
+
+        [Fact]
+        public void VideoReader_Load_ShouldThrowWhenMetadataNotLoaded()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".mp4");
+            File.WriteAllBytes(path, new byte[] {1});
+
+            try
+            {
+                VideoReader reader = new VideoReader(path);
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load());
+
+                Assert.Contains("load the video metadata", ex.Message);
+            }
+            finally
+            {
+                File.Delete(path);
+            }
+        }
     }
 }
