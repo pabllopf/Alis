@@ -113,5 +113,22 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
 
             Assert.Equal(payload, destination.ToArray());
         }
+
+        [Fact]
+        public async Task MediaReader_CopyToAsync_ShouldCopyStreamToWriter()
+        {
+            byte[] payload = Encoding.UTF8.GetBytes("copy-async");
+            MemoryStream source = new MemoryStream(payload);
+            MemoryStream destination = new MemoryStream();
+            TestReader reader = new TestReader();
+            TestWriter writer = new TestWriter();
+            reader.SetStream(source);
+            writer.SetStream(destination);
+            writer.SetOpened(true);
+
+            await reader.CopyToAsync(writer);
+
+            Assert.Equal(payload, destination.ToArray());
+        }
     }
 }
