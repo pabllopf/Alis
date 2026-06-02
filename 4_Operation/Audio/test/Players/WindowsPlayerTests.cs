@@ -29,7 +29,7 @@ namespace Alis.Core.Audio.Test.Players
         public void Dispose_WithdisposingTrue_ShouldReleaseResources()
         {
             // Arrange
-            var player = new WindowsPlayer();
+            WindowsPlayer player = new WindowsPlayer();
 
             // Act
             player.Dispose();
@@ -42,7 +42,7 @@ namespace Alis.Core.Audio.Test.Players
         public void Dispose_WithdisposingFalse_ShouldNotReleaseManagedResources()
         {
             // Arrange
-            var player = new WindowsPlayer();
+            WindowsPlayer player = new WindowsPlayer();
 
             // Act
             player.Dispose();
@@ -55,7 +55,7 @@ namespace Alis.Core.Audio.Test.Players
         public void Dispose_MultipleCalls_ShouldNotThrow()
         {
             // Arrange
-            var player = new WindowsPlayer();
+            WindowsPlayer player = new WindowsPlayer();
 
             // Act & Assert
             player.Dispose();
@@ -68,8 +68,8 @@ namespace Alis.Core.Audio.Test.Players
         public void SetVolume_WithZero_ShouldCalculateMinVolume()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var setVolumeMethod = typeof(WindowsPlayer).GetMethod(
+            WindowsPlayer player = new WindowsPlayer();
+            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
                 "SetVolume",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -84,8 +84,8 @@ namespace Alis.Core.Audio.Test.Players
         public void SetVolume_WithFifty_ShouldCalculateMidVolume()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var setVolumeMethod = typeof(WindowsPlayer).GetMethod(
+            WindowsPlayer player = new WindowsPlayer();
+            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
                 "SetVolume",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -100,8 +100,8 @@ namespace Alis.Core.Audio.Test.Players
         public void SetVolume_WithHundred_ShouldCalculateMaxVolume()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var setVolumeMethod = typeof(WindowsPlayer).GetMethod(
+            WindowsPlayer player = new WindowsPlayer();
+            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
                 "SetVolume",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -116,8 +116,8 @@ namespace Alis.Core.Audio.Test.Players
         public void SetVolume_Calculation_ShouldProduceSymmetricChannels()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var setVolumeMethod = typeof(WindowsPlayer).GetMethod(
+            WindowsPlayer player = new WindowsPlayer();
+            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
                 "SetVolume",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -132,13 +132,13 @@ namespace Alis.Core.Audio.Test.Players
         public void SetVolume_WithNegativeValue_ShouldHandleGracefully()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var setVolumeMethod = typeof(WindowsPlayer).GetMethod(
+            WindowsPlayer player = new WindowsPlayer();
+            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
                 "SetVolume",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Act & Assert
-            var exception = Assert.Throws<TargetInvocationException>(() => setVolumeMethod.Invoke(player, new object[] { -1 }));
+            TargetInvocationException exception = Assert.Throws<TargetInvocationException>(() => setVolumeMethod.Invoke(player, new object[] { -1 }));
             Assert.NotNull(exception.InnerException);
         }
 
@@ -146,13 +146,13 @@ namespace Alis.Core.Audio.Test.Players
         public void SetVolume_WithValueOverHundred_ShouldHandleGracefully()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var setVolumeMethod = typeof(WindowsPlayer).GetMethod(
+            WindowsPlayer player = new WindowsPlayer();
+            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
                 "SetVolume",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Act & Assert
-            var exception = Assert.Throws<TargetInvocationException>(() => setVolumeMethod.Invoke(player, new object[] { 101 }));
+            TargetInvocationException exception = Assert.Throws<TargetInvocationException>(() => setVolumeMethod.Invoke(player, new object[] { 101 }));
             Assert.NotNull(exception.InnerException);
         }
 
@@ -160,8 +160,8 @@ namespace Alis.Core.Audio.Test.Players
         public void Playing_Property_ShouldBePublicGet()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var playingProperty = typeof(WindowsPlayer).GetProperty("Playing");
+            WindowsPlayer player = new WindowsPlayer();
+            PropertyInfo playingProperty = typeof(WindowsPlayer).GetProperty("Playing");
 
             // Assert
             Assert.NotNull(playingProperty);
@@ -172,8 +172,8 @@ namespace Alis.Core.Audio.Test.Players
         public void Paused_Property_ShouldBePublicGet()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var pausedProperty = typeof(WindowsPlayer).GetProperty("Paused");
+            WindowsPlayer player = new WindowsPlayer();
+            PropertyInfo pausedProperty = typeof(WindowsPlayer).GetProperty("Paused");
 
             // Assert
             Assert.NotNull(pausedProperty);
@@ -184,8 +184,8 @@ namespace Alis.Core.Audio.Test.Players
         public void IsPlaying_Property_ShouldBePublicGet()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var isPlayingProperty = typeof(WindowsPlayer).GetProperty("IsPlaying");
+            WindowsPlayer player = new WindowsPlayer();
+            PropertyInfo isPlayingProperty = typeof(WindowsPlayer).GetProperty("IsPlaying");
 
             // Assert
             Assert.NotNull(isPlayingProperty);
@@ -196,8 +196,8 @@ namespace Alis.Core.Audio.Test.Players
         public void IsPaused_Property_ShouldBePublicGet()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var isPausedProperty = typeof(WindowsPlayer).GetProperty("IsPaused");
+            WindowsPlayer player = new WindowsPlayer();
+            PropertyInfo isPausedProperty = typeof(WindowsPlayer).GetProperty("IsPaused");
 
             // Assert
             Assert.NotNull(isPausedProperty);
@@ -208,8 +208,8 @@ namespace Alis.Core.Audio.Test.Players
         public void PlaybackFinished_Event_ShouldExist()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var eventInfo = typeof(WindowsPlayer).GetEvent("PlaybackFinished");
+            WindowsPlayer player = new WindowsPlayer();
+            EventInfo eventInfo = typeof(WindowsPlayer).GetEvent("PlaybackFinished");
 
             // Assert
             Assert.NotNull(eventInfo);
@@ -219,8 +219,8 @@ namespace Alis.Core.Audio.Test.Players
         public void PlaybackPaused_Event_ShouldExist()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var eventInfo = typeof(WindowsPlayer).GetEvent("PlaybackPaused");
+            WindowsPlayer player = new WindowsPlayer();
+            EventInfo eventInfo = typeof(WindowsPlayer).GetEvent("PlaybackPaused");
 
             // Assert
             Assert.NotNull(eventInfo);
@@ -230,8 +230,8 @@ namespace Alis.Core.Audio.Test.Players
         public void PlaybackResumed_Event_ShouldExist()
         {
             // Arrange
-            var player = new WindowsPlayer();
-            var eventInfo = typeof(WindowsPlayer).GetEvent("PlaybackResumed");
+            WindowsPlayer player = new WindowsPlayer();
+            EventInfo eventInfo = typeof(WindowsPlayer).GetEvent("PlaybackResumed");
 
             // Assert
             Assert.NotNull(eventInfo);
@@ -241,7 +241,7 @@ namespace Alis.Core.Audio.Test.Players
         public void WaveOutSetVolume_ReturnType_ShouldBeInt()
         {
             // Arrange
-            var waveOutSetVolumeMethod = typeof(WindowsPlayer).GetMethod(
+            MethodInfo waveOutSetVolumeMethod = typeof(WindowsPlayer).GetMethod(
                 "WaveOutSetVolume",
                 BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -254,7 +254,7 @@ namespace Alis.Core.Audio.Test.Players
         public void WaveOutGetVolume_ReturnType_ShouldBeInt()
         {
             // Arrange
-            var waveOutGetVolumeMethod = typeof(WindowsPlayer).GetMethod(
+            MethodInfo waveOutGetVolumeMethod = typeof(WindowsPlayer).GetMethod(
                 "WaveOutGetVolume",
                 BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -267,7 +267,7 @@ namespace Alis.Core.Audio.Test.Players
         public void WaveOutReset_ReturnType_ShouldBeInt()
         {
             // Arrange
-            var waveOutResetMethod = typeof(WindowsPlayer).GetMethod(
+            MethodInfo waveOutResetMethod = typeof(WindowsPlayer).GetMethod(
                 "WaveOutReset",
                 BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -280,7 +280,7 @@ namespace Alis.Core.Audio.Test.Players
         public void WaveOutOpen_ReturnType_ShouldBeInt()
         {
             // Arrange
-            var waveOutOpenMethod = typeof(WindowsPlayer).GetMethod(
+            MethodInfo waveOutOpenMethod = typeof(WindowsPlayer).GetMethod(
                 "WaveOutOpen",
                 BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -293,7 +293,7 @@ namespace Alis.Core.Audio.Test.Players
         public void WaveOutClose_ReturnType_ShouldBeInt()
         {
             // Arrange
-            var waveOutCloseMethod = typeof(WindowsPlayer).GetMethod(
+            MethodInfo waveOutCloseMethod = typeof(WindowsPlayer).GetMethod(
                 "WaveOutClose",
                 BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -306,7 +306,7 @@ namespace Alis.Core.Audio.Test.Players
         public void WaveOutWrite_ReturnType_ShouldBeInt()
         {
             // Arrange
-            var waveOutWriteMethod = typeof(WindowsPlayer).GetMethod(
+            MethodInfo waveOutWriteMethod = typeof(WindowsPlayer).GetMethod(
                 "WaveOutWrite",
                 BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -319,7 +319,7 @@ namespace Alis.Core.Audio.Test.Players
         public void WaveHeaderStruct_Size_ShouldBeCorrect()
         {
             // Arrange
-            var waveHeaderType = typeof(WindowsPlayer).GetNestedType("WAVEHDR", BindingFlags.NonPublic);
+            Type waveHeaderType = typeof(WindowsPlayer).GetNestedType("WAVEHDR", BindingFlags.NonPublic);
 
             // Assert
             Assert.NotNull(waveHeaderType);
@@ -329,7 +329,7 @@ namespace Alis.Core.Audio.Test.Players
         public void WaveFormatStruct_Size_ShouldBeCorrect()
         {
             // Arrange
-            var waveFormatType = typeof(WindowsPlayer).GetNestedType("WAVEFORMATEX", BindingFlags.NonPublic);
+            Type waveFormatType = typeof(WindowsPlayer).GetNestedType("WAVEFORMATEX", BindingFlags.NonPublic);
 
             // Assert
             Assert.NotNull(waveFormatType);
@@ -339,7 +339,7 @@ namespace Alis.Core.Audio.Test.Players
         public void Constants_WaveOutConstants_ShouldBeDefined()
         {
             // Arrange
-            var waveOutConstantsField = typeof(WindowsPlayer).GetField(
+            FieldInfo waveOutConstantsField = typeof(WindowsPlayer).GetField(
                 "WAVE_FORMAT_1M08",
                 BindingFlags.NonPublic | BindingFlags.Static);
 

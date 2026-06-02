@@ -127,7 +127,7 @@ namespace Alis.Extension.Network.Test
              [Fact]
         public void ValidateWebSocketVersion_WithVersion12_ThrowsException()
         {
-            var exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
+            WebSocketVersionNotSupportedException exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
                 WebSocketServerFactory.ValidateWebSocketVersion(12));
 
             Assert.Contains("not suported", exception.Message);
@@ -137,7 +137,7 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public void ValidateWebSocketVersion_WithVersion10_ThrowsException()
         {
-            var exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
+            WebSocketVersionNotSupportedException exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
                 WebSocketServerFactory.ValidateWebSocketVersion(10));
 
             Assert.Contains("not suported", exception.Message);
@@ -173,7 +173,7 @@ namespace Alis.Extension.Network.Test
             string httpHeader = "HTTP/1.1 101 Switching Protocols\r\n" +
                                "\r\n";
 
-            var exception = Assert.Throws<SecWebSocketKeyMissingException>(() => 
+            SecWebSocketKeyMissingException exception = Assert.Throws<SecWebSocketKeyMissingException>(() => 
                 WebSocketServerFactory.ExtractWebSocketKey(httpHeader));
 
             Assert.Contains("Sec-WebSocket-Key", exception.Message);
@@ -232,7 +232,7 @@ namespace Alis.Extension.Network.Test
                                "Sec-WebSocket-Version: 12\r\n" +
                                "\r\n";
 
-            var exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
+            WebSocketVersionNotSupportedException exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
                 WebSocketServerFactory.CheckWebSocketVersion(httpHeader));
 
             Assert.Contains("not suported", exception.Message);
@@ -244,7 +244,7 @@ namespace Alis.Extension.Network.Test
             string httpHeader = "HTTP/1.1 101 Switching Protocols\r\n" +
                                "\r\n";
 
-            var exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
+            WebSocketVersionNotSupportedException exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
                 WebSocketServerFactory.CheckWebSocketVersion(httpHeader));
 
             Assert.Contains("Sec-WebSocket-Version", exception.Message);
@@ -280,7 +280,7 @@ namespace Alis.Extension.Network.Test
             string httpHeader = "HTTP/1.1 101 Switching Protocols\r\n" +
                                "\r\n";
 
-            var exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
+            WebSocketVersionNotSupportedException exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
                 WebSocketServerFactory.ExtractWebSocketVersion(httpHeader));
 
             Assert.Contains("Sec-WebSocket-Version", exception.Message);

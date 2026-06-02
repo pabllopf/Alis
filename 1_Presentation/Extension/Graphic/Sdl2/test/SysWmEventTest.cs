@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldAssignAndRetrieveMsg()
         {
             // Arrange
-            var evt = new SysWmEvent();
+            SysWmEvent evt = new SysWmEvent();
             // Act
             evt.Msg = new IntPtr(0xCAFE);
             // Assert
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldDefaultToZero()
         {
             // Arrange
-            var evt = new SysWmEvent();
+            SysWmEvent evt = new SysWmEvent();
             // Assert
             Assert.Equal(IntPtr.Zero, evt.Msg);
         }

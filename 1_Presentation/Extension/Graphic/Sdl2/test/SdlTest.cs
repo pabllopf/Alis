@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldReturnGetVersion()
         {
-            var version = Sdl.GetVersion();
+            Version version = Sdl.GetVersion();
             Assert.Equal(2, version.major);
             Assert.Equal(0, version.minor);
             Assert.Equal(18, version.patch);

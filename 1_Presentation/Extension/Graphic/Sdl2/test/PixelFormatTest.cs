@@ -9,7 +9,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldDefaultToZero()
         {
-            var fmt = new PixelFormat();
+            PixelFormat fmt = new PixelFormat();
             Assert.Equal(0u, fmt.format);
             Assert.Equal(IntPtr.Zero, fmt.Palette);
             Assert.Equal(0, fmt.BitsPerPixel);
@@ -25,7 +25,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldAssignPalette()
         {
-            var fmt = new PixelFormat();
+            PixelFormat fmt = new PixelFormat();
             fmt.Palette = new IntPtr(0xFADE);
             Assert.Equal(new IntPtr(0xFADE), fmt.Palette);
         }
@@ -33,7 +33,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldAssignNext()
         {
-            var fmt = new PixelFormat();
+            PixelFormat fmt = new PixelFormat();
             fmt.Next = new IntPtr(0xBEEF);
             Assert.Equal(new IntPtr(0xBEEF), fmt.Next);
         }

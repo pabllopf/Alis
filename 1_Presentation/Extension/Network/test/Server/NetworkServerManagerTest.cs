@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Alis.Extension.Network.Core;
 using Alis.Extension.Network.Server;
@@ -213,7 +214,7 @@ namespace Alis.Extension.Network.Test.Server
             NetworkSession session = await manager.CreateSessionAsync("Game", 4);
             await manager.CloseSessionAsync(session.SessionId);
 
-            var active = manager.GetActiveSessions();
+            IReadOnlyList<NetworkSession> active = manager.GetActiveSessions();
 
             Assert.DoesNotContain(session, active);
         }
@@ -254,7 +255,7 @@ namespace Alis.Extension.Network.Test.Server
         {
             using NetworkServerManager manager = new NetworkServerManager();
 
-            var players = manager.GetConnectedPlayers();
+            IReadOnlyList<NetworkPlayer> players = manager.GetConnectedPlayers();
 
             Assert.Empty(players);
         }

@@ -79,10 +79,10 @@ namespace Alis.Extension.Graphic.Sfml.Test
         public void PrimitiveType_HasCorrectNumberOfDistinctValues()
         {
             // 7 unique values + 3 aliases = 10 enum members but only 7 distinct integer values
-            var allValues = Enum.GetValues(typeof(PrimitiveType));
+            Array allValues = Enum.GetValues(typeof(PrimitiveType));
             Assert.Equal(10, allValues.Length);
 
-            var distinctValues = Enum.GetValues(typeof(PrimitiveType)).Cast<int>().Distinct().Count();
+            int distinctValues = Enum.GetValues(typeof(PrimitiveType)).Cast<int>().Distinct().Count();
             Assert.Equal(7, distinctValues);
         }
 
@@ -107,7 +107,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void SoundStatus_HasCorrectNumberOfValues()
         {
-            var values = Enum.GetValues(typeof(SoundStatus));
+            Array values = Enum.GetValues(typeof(SoundStatus));
             Assert.Equal(3, values.Length);
         }
 
@@ -157,10 +157,10 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void WindowsStyles_CanBeCombined()
         {
-            var combined = WindowStyles.Titlebar | WindowStyles.Resize;
+            WindowStyles combined = WindowStyles.Titlebar | WindowStyles.Resize;
             Assert.Equal(3, (int) combined);
 
-            var full = WindowStyles.Titlebar | WindowStyles.Resize | WindowStyles.Close;
+            WindowStyles full = WindowStyles.Titlebar | WindowStyles.Resize | WindowStyles.Close;
             Assert.Equal(7, (int) full);
         }
 
@@ -200,10 +200,10 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void RenderStyles_CanBeCombined()
         {
-            var boldItalic = RenderStyles.Bold | RenderStyles.Italic;
+            RenderStyles boldItalic = RenderStyles.Bold | RenderStyles.Italic;
             Assert.Equal(3, (int) boldItalic);
 
-            var all = RenderStyles.Bold | RenderStyles.Italic | RenderStyles.Underlined | RenderStyles.StrikeThrough;
+            RenderStyles all = RenderStyles.Bold | RenderStyles.Italic | RenderStyles.Underlined | RenderStyles.StrikeThrough;
             Assert.Equal(15, (int) all);
         }
 
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void BlendMode_Factor_HasExpectedValues()
         {
-            var values = Enum.GetValues(typeof(BlendMode.Factor));
+            Array values = Enum.GetValues(typeof(BlendMode.Factor));
             Assert.Equal(10, values.Length);
 
             Assert.Equal(0, (int) BlendMode.Factor.Zero);
@@ -238,7 +238,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void BlendMode_Equation_HasExpectedValues()
         {
-            var values = Enum.GetValues(typeof(BlendMode.Equation));
+            Array values = Enum.GetValues(typeof(BlendMode.Equation));
             Assert.Equal(3, values.Length);
 
             Assert.Equal(0, (int) BlendMode.Equation.Add);
@@ -329,9 +329,9 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void BlendMode_Equality_WorksCorrectly()
         {
-            var mode1 = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
-            var mode2 = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
-            var mode3 = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
+            BlendMode mode1 = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
+            BlendMode mode2 = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
+            BlendMode mode3 = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
 
             Assert.Equal(mode1, mode2);
             Assert.NotEqual(mode1, mode3);
@@ -345,8 +345,8 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void BlendMode_GetHashCode_IsConsistentWithEquals()
         {
-            var mode1 = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
-            var mode2 = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
+            BlendMode mode1 = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
+            BlendMode mode2 = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
 
             Assert.Equal(mode1.GetHashCode(), mode2.GetHashCode());
         }
@@ -361,7 +361,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void BlendMode_TwoFactorConstructor_SetsCorrectDefaults()
         {
-            var mode = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.One);
+            BlendMode mode = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.One);
 
             Assert.Equal(BlendMode.Factor.SrcAlpha, mode.ColorSrcFactor);
             Assert.Equal(BlendMode.Factor.One, mode.ColorDstFactor);
@@ -377,7 +377,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void BlendMode_ThreeFactorConstructor_SetsCorrectValues()
         {
-            var mode = new BlendMode(BlendMode.Factor.DstColor, BlendMode.Factor.Zero, BlendMode.Equation.Subtract);
+            BlendMode mode = new BlendMode(BlendMode.Factor.DstColor, BlendMode.Factor.Zero, BlendMode.Equation.Subtract);
 
             Assert.Equal(BlendMode.Factor.DstColor, mode.ColorSrcFactor);
             Assert.Equal(BlendMode.Factor.Zero, mode.ColorDstFactor);
@@ -393,7 +393,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void BlendMode_SixFactorConstructor_SetsAllValuesIndependently()
         {
-            var mode = new BlendMode(
+            BlendMode mode = new BlendMode(
                 BlendMode.Factor.One, BlendMode.Factor.Zero, BlendMode.Equation.Add,
                 BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha, BlendMode.Equation.Subtract);
 
@@ -415,8 +415,8 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void Vertex_PositionOnlyConstructor_SetsDefaults()
         {
-            var position = new Vector2F(1.0f, 2.0f);
-            var vertex = new Vertex(position);
+            Vector2F position = new Vector2F(1.0f, 2.0f);
+            Vertex vertex = new Vertex(position);
 
             Assert.Equal(position, vertex.Position);
             Assert.Equal(Color.White, vertex.Color);
@@ -429,9 +429,9 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void Vertex_PositionColorConstructor_SetsDefaultTexCoords()
         {
-            var position = new Vector2F(1.0f, 2.0f);
-            var color = Color.Red;
-            var vertex = new Vertex(position, color);
+            Vector2F position = new Vector2F(1.0f, 2.0f);
+            Color color = Color.Red;
+            Vertex vertex = new Vertex(position, color);
 
             Assert.Equal(position, vertex.Position);
             Assert.Equal(color, vertex.Color);
@@ -444,9 +444,9 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void Vertex_PositionTexCoordsConstructor_SetsDefaultColor()
         {
-            var position = new Vector2F(1.0f, 2.0f);
-            var texCoords = new Vector2F(0.5f, 0.75f);
-            var vertex = new Vertex(position, texCoords);
+            Vector2F position = new Vector2F(1.0f, 2.0f);
+            Vector2F texCoords = new Vector2F(0.5f, 0.75f);
+            Vertex vertex = new Vertex(position, texCoords);
 
             Assert.Equal(position, vertex.Position);
             Assert.Equal(Color.White, vertex.Color);
@@ -459,10 +459,10 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void Vertex_FullConstructor_SetsAllValues()
         {
-            var position = new Vector2F(1.0f, 2.0f);
-            var color = Color.Blue;
-            var texCoords = new Vector2F(0.5f, 0.75f);
-            var vertex = new Vertex(position, color, texCoords);
+            Vector2F position = new Vector2F(1.0f, 2.0f);
+            Color color = Color.Blue;
+            Vector2F texCoords = new Vector2F(0.5f, 0.75f);
+            Vertex vertex = new Vertex(position, color, texCoords);
 
             Assert.Equal(position, vertex.Position);
             Assert.Equal(color, vertex.Color);
@@ -475,10 +475,10 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void Vertex_ToString_IncludesAllComponents()
         {
-            var position = new Vector2F(1.0f, 2.0f);
-            var vertex = new Vertex(position);
+            Vector2F position = new Vector2F(1.0f, 2.0f);
+            Vertex vertex = new Vertex(position);
 
-            var str = vertex.ToString();
+            string str = vertex.ToString();
 
             Assert.StartsWith("[Vertex]", str);
             Assert.Contains("Position", str);

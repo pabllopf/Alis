@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldAssignAndRetrieveAllFields()
         {
             // Arrange
-            var evt = new UserEvent
+            UserEvent evt = new UserEvent
             {
                 type = 1u,
                 timestamp = 123u,
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldSupportDefaultInitialization()
         {
             // Arrange
-            var evt = new UserEvent();
+            UserEvent evt = new UserEvent();
             // Assert
             Assert.Equal(0u, evt.type);
             Assert.Equal(0u, evt.timestamp);
@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldAllowModificationOfProperties()
         {
             // Arrange
-            var evt = new UserEvent();
+            UserEvent evt = new UserEvent();
             evt.Data1 = new IntPtr(0xDEAD);
             evt.Data2 = new IntPtr(0xBEEF);
             // Assert

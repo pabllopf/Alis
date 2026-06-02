@@ -38,15 +38,15 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldDefaultToZero()
         {
-            var obj = new InternalCocoaWmInfo();
+            InternalCocoaWmInfo obj = new InternalCocoaWmInfo();
             Assert.Equal(IntPtr.Zero, obj.Window);
         }
 
         [Fact]
         public void ShouldAssignAndRetrieveProperties()
         {
-            var obj = new InternalCocoaWmInfo();
-            var testWindow = IntPtr.Zero + 1;
+            InternalCocoaWmInfo obj = new InternalCocoaWmInfo();
+            IntPtr testWindow = IntPtr.Zero + 1;
             obj.Window = testWindow;
             Assert.Equal(testWindow, obj.Window);
         }

@@ -1159,7 +1159,7 @@ namespace Alis.Core.Physic.Collisions
                 float sign = front ? 1.0f : -1.0f;
                 normal = inputs.Normal1 * sign;
 
-                var limits = ComputeLimits(inputs, front);
+                (Vector2F lower, Vector2F upper) limits = ComputeLimits(inputs, front);
                 lowerLimit = limits.lower;
                 upperLimit = limits.upper;
             }
@@ -1208,7 +1208,7 @@ namespace Alis.Core.Physic.Collisions
                 if (front)
                     return (SelectFrontLowerLimit(i), SelectFrontUpperLimit(i));
 
-                var neg = -i.Normal1;
+                Vector2F neg = -i.Normal1;
                 return (SelectBackLowerLimit(i, neg), SelectBackUpperLimit(i, neg));
             }
 

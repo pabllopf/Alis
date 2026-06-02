@@ -9,14 +9,14 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldDefaultToZero()
         {
-            var sym = new KeySym();
+            KeySym sym = new KeySym();
             Assert.Equal(0u, sym.unicode);
         }
 
         [Fact]
         public void ShouldAssignAndRetrieveFields()
         {
-            var sym = new KeySym
+            KeySym sym = new KeySym
             {
                 scancode = SdlScancode.SdlScancodeA,
                 sym = KeyCodes.Return,

@@ -186,7 +186,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             int xn, int yn, float cellWidth, float cellHeight, int lerpCount, bool combine)
         {
             CxFastList<GeomPoly> ret = new CxFastList<GeomPoly>();
-            var ctx = new MarchCellContext(f, fs, ps, domain, xn, cellWidth, lerpCount, combine, ret, cellHeight);
+            MarchCellContext ctx = new MarchCellContext(f, fs, ps, domain, xn, cellWidth, lerpCount, combine, ret, cellHeight);
 
             for (int y = 0; y < yn; y++)
             {

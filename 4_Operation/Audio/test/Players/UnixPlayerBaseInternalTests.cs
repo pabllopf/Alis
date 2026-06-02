@@ -30,12 +30,12 @@ namespace Alis.Core.Audio.Test.Players
         public void HandlePlaybackFinished_WithPlayingTrue_ShouldSetPlayingFalse()
         {
             // Arrange
-            var player = new MacPlayer();
-            var playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
+            MacPlayer player = new MacPlayer();
+            PropertyInfo playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
             playingProperty.SetValue(player, true, null);
 
             // Act
-            var handleMethod = typeof(UnixPlayerBase).GetMethod(
+            MethodInfo handleMethod = typeof(UnixPlayerBase).GetMethod(
                 "HandlePlaybackFinished",
                 BindingFlags.NonPublic | BindingFlags.Instance);
             handleMethod.Invoke(player, new object[] { null, EventArgs.Empty });
@@ -48,12 +48,12 @@ namespace Alis.Core.Audio.Test.Players
         public void HandlePlaybackFinished_WithPlayingFalse_ShouldNotChangeState()
         {
             // Arrange
-            var player = new MacPlayer();
-            var playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
+            MacPlayer player = new MacPlayer();
+            PropertyInfo playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
             playingProperty.SetValue(player, false, null);
 
             // Act
-            var handleMethod = typeof(UnixPlayerBase).GetMethod(
+            MethodInfo handleMethod = typeof(UnixPlayerBase).GetMethod(
                 "HandlePlaybackFinished",
                 BindingFlags.NonPublic | BindingFlags.Instance);
             handleMethod.Invoke(player, new object[] { null, EventArgs.Empty });
@@ -66,15 +66,15 @@ namespace Alis.Core.Audio.Test.Players
         public void HandlePlaybackFinished_ShouldInvokePlaybackFinishedEvent()
         {
             // Arrange
-            var player = new MacPlayer();
-            var playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
+            MacPlayer player = new MacPlayer();
+            PropertyInfo playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
             playingProperty.SetValue(player, true, null);
 
             bool eventRaised = false;
             player.PlaybackFinished += (sender, e) => eventRaised = true;
 
             // Act
-            var handleMethod = typeof(UnixPlayerBase).GetMethod(
+            MethodInfo handleMethod = typeof(UnixPlayerBase).GetMethod(
                 "HandlePlaybackFinished",
                 BindingFlags.NonPublic | BindingFlags.Instance);
             handleMethod.Invoke(player, new object[] { "test-sender", EventArgs.Empty });
@@ -87,12 +87,12 @@ namespace Alis.Core.Audio.Test.Players
         public void HandlePlaybackFinished_WithNullEventArgs_ShouldNotThrow()
         {
             // Arrange
-            var player = new MacPlayer();
-            var playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
+            MacPlayer player = new MacPlayer();
+            PropertyInfo playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
             playingProperty.SetValue(player, true, null);
 
             // Act & Assert
-            var handleMethod = typeof(UnixPlayerBase).GetMethod(
+            MethodInfo handleMethod = typeof(UnixPlayerBase).GetMethod(
                 "HandlePlaybackFinished",
                 BindingFlags.NonPublic | BindingFlags.Instance);
             handleMethod.Invoke(player, new object[] { null, null });
@@ -103,17 +103,17 @@ namespace Alis.Core.Audio.Test.Players
         public void HandlePlaybackFinished_WithCustomEventArgs_ShouldPassEventArgs()
         {
             // Arrange
-            var player = new MacPlayer();
-            var playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
+            MacPlayer player = new MacPlayer();
+            PropertyInfo playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
             playingProperty.SetValue(player, true, null);
 
             EventArgs receivedArgs = null;
             player.PlaybackFinished += (sender, e) => receivedArgs = e;
 
-            var customArgs = new EventArgs();
+            EventArgs customArgs = new EventArgs();
 
             // Act
-            var handleMethod = typeof(UnixPlayerBase).GetMethod(
+            MethodInfo handleMethod = typeof(UnixPlayerBase).GetMethod(
                 "HandlePlaybackFinished",
                 BindingFlags.NonPublic | BindingFlags.Instance);
             handleMethod.Invoke(player, new object[] { "sender", customArgs });
@@ -126,13 +126,13 @@ namespace Alis.Core.Audio.Test.Players
         public void HandlePlaybackFinished_MultipleInvocations_ShouldOnlyFireOncePerPlayingState()
         {
             // Arrange
-            var player = new MacPlayer();
-            var playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
+            MacPlayer player = new MacPlayer();
+            PropertyInfo playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
             int eventCount = 0;
             player.PlaybackFinished += (sender, e) => eventCount++;
 
             // Act
-            var handleMethod = typeof(UnixPlayerBase).GetMethod(
+            MethodInfo handleMethod = typeof(UnixPlayerBase).GetMethod(
                 "HandlePlaybackFinished",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -148,8 +148,8 @@ namespace Alis.Core.Audio.Test.Players
         public void Playing_Property_ShouldBePrivateSet()
         {
             // Arrange
-            var player = new MacPlayer();
-            var playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
+            MacPlayer player = new MacPlayer();
+            PropertyInfo playingProperty = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(playingProperty);
@@ -163,8 +163,8 @@ namespace Alis.Core.Audio.Test.Players
         public void Paused_Property_ShouldBePrivateSet()
         {
             // Arrange
-            var player = new MacPlayer();
-            var pausedProperty = typeof(UnixPlayerBase).GetProperty("Paused", BindingFlags.Public | BindingFlags.Instance);
+            MacPlayer player = new MacPlayer();
+            PropertyInfo pausedProperty = typeof(UnixPlayerBase).GetProperty("Paused", BindingFlags.Public | BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(pausedProperty);
@@ -178,7 +178,7 @@ namespace Alis.Core.Audio.Test.Players
         public void PauseProcessCommand_Constant_ShouldBeDefined()
         {
             // Arrange
-            var pauseCommandField = typeof(UnixPlayerBase).GetField(
+            FieldInfo pauseCommandField = typeof(UnixPlayerBase).GetField(
                 "PauseProcessCommand",
                 BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -190,7 +190,7 @@ namespace Alis.Core.Audio.Test.Players
         public void ResumeProcessCommand_Constant_ShouldBeDefined()
         {
             // Arrange
-            var resumeCommandField = typeof(UnixPlayerBase).GetField(
+            FieldInfo resumeCommandField = typeof(UnixPlayerBase).GetField(
                 "ResumeProcessCommand",
                 BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -206,8 +206,8 @@ namespace Alis.Core.Audio.Test.Players
         public void GetAudioDuration_WithValidFile_ShouldReturnPositiveValue()
         {
             // Arrange
-            var player = new MacPlayer();
-            var getDurationMethod = typeof(UnixPlayerBase).GetMethod(
+            MacPlayer player = new MacPlayer();
+            MethodInfo getDurationMethod = typeof(UnixPlayerBase).GetMethod(
                 "GetAudioDuration",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -218,7 +218,7 @@ namespace Alis.Core.Audio.Test.Players
             try
             {
                 // Act
-                var result = getDurationMethod.Invoke(player, new object[] { tempFile });
+                object result = getDurationMethod.Invoke(player, new object[] { tempFile });
 
                 // Assert
                 Assert.NotNull(result);
@@ -234,13 +234,13 @@ namespace Alis.Core.Audio.Test.Players
         public void GetAudioDuration_WithNullFile_ShouldThrowException()
         {
             // Arrange
-            var player = new MacPlayer();
-            var getDurationMethod = typeof(UnixPlayerBase).GetMethod(
+            MacPlayer player = new MacPlayer();
+            MethodInfo getDurationMethod = typeof(UnixPlayerBase).GetMethod(
                 "GetAudioDuration",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Act & Assert
-            var exception = Assert.Throws<TargetInvocationException>(() => getDurationMethod.Invoke(player, new object[] { null }));
+            TargetInvocationException exception = Assert.Throws<TargetInvocationException>(() => getDurationMethod.Invoke(player, new object[] { null }));
             Assert.NotNull(exception.InnerException);
         }
 
@@ -248,13 +248,13 @@ namespace Alis.Core.Audio.Test.Players
         public void ExtractWavFromResourcesAsync_WithNullFileName_ShouldThrowException()
         {
             // Arrange
-            var player = new MacPlayer();
-            var extractMethod = typeof(UnixPlayerBase).GetMethod(
+            MacPlayer player = new MacPlayer();
+            MethodInfo extractMethod = typeof(UnixPlayerBase).GetMethod(
                 "ExtractWavFromResourcesAsync",
                 BindingFlags.NonPublic | BindingFlags.Static);
 
             // Act & Assert
-            var exception = Assert.Throws<TargetInvocationException>(() => extractMethod.Invoke(null, new object[] { null }));
+            TargetInvocationException exception = Assert.Throws<TargetInvocationException>(() => extractMethod.Invoke(null, new object[] { null }));
             Assert.NotNull(exception.InnerException);
         }
 
@@ -262,13 +262,13 @@ namespace Alis.Core.Audio.Test.Players
         public void ExtractWavFromResourcesAsync_WithEmptyFileName_ShouldThrowException()
         {
             // Arrange
-            var player = new MacPlayer();
-            var extractMethod = typeof(UnixPlayerBase).GetMethod(
+            MacPlayer player = new MacPlayer();
+            MethodInfo extractMethod = typeof(UnixPlayerBase).GetMethod(
                 "ExtractWavFromResourcesAsync",
                 BindingFlags.NonPublic | BindingFlags.Static);
 
             // Act & Assert
-            var exception = Assert.Throws<TargetInvocationException>(() => extractMethod.Invoke(null, new object[] { "" }));
+            TargetInvocationException exception = Assert.Throws<TargetInvocationException>(() => extractMethod.Invoke(null, new object[] { "" }));
             Assert.NotNull(exception.InnerException);
         }
         

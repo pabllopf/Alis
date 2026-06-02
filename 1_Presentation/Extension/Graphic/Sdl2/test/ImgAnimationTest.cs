@@ -9,7 +9,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldDefaultToZero()
         {
-            var anim = new ImgAnimation();
+            ImgAnimation anim = new ImgAnimation();
             Assert.Equal(0, anim.W);
             Assert.Equal(0, anim.H);
             Assert.Equal(IntPtr.Zero, anim.Frames);

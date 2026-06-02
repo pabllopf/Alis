@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Alis.App.Hub.Entity;
 using Xunit;
 
@@ -179,9 +180,9 @@ namespace Alis.App.Hub.Test
         [Fact]
         public void InstalledVersion_Properties_ShouldBeReadOnly()
         {
-            var versionProperty = typeof(InstalledVersion).GetProperty(nameof(InstalledVersion.Version));
-            var releaseDateProperty = typeof(InstalledVersion).GetProperty(nameof(InstalledVersion.ReleaseDate));
-            var installPathProperty = typeof(InstalledVersion).GetProperty(nameof(InstalledVersion.InstallPath));
+            PropertyInfo versionProperty = typeof(InstalledVersion).GetProperty(nameof(InstalledVersion.Version));
+            PropertyInfo releaseDateProperty = typeof(InstalledVersion).GetProperty(nameof(InstalledVersion.ReleaseDate));
+            PropertyInfo installPathProperty = typeof(InstalledVersion).GetProperty(nameof(InstalledVersion.InstallPath));
 
             Assert.NotNull(versionProperty);
             Assert.NotNull(releaseDateProperty);
@@ -242,9 +243,9 @@ namespace Alis.App.Hub.Test
         [Fact]
         public void LearningResource_Properties_ShouldBeReadOnly()
         {
-            var titleProperty = typeof(LearningResource).GetProperty(nameof(LearningResource.Title));
-            var descProperty = typeof(LearningResource).GetProperty(nameof(LearningResource.Description));
-            var urlProperty = typeof(LearningResource).GetProperty(nameof(LearningResource.Url));
+            PropertyInfo titleProperty = typeof(LearningResource).GetProperty(nameof(LearningResource.Title));
+            PropertyInfo descProperty = typeof(LearningResource).GetProperty(nameof(LearningResource.Description));
+            PropertyInfo urlProperty = typeof(LearningResource).GetProperty(nameof(LearningResource.Url));
 
             Assert.NotNull(titleProperty);
             Assert.NotNull(descProperty);

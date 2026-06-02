@@ -152,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void EnumValues_ShouldBeDistinct()
         {
-            var values = (ImGuiDataType[])System.Enum.GetValues(typeof(ImGuiDataType));
+            ImGuiDataType[] values = (ImGuiDataType[])System.Enum.GetValues(typeof(ImGuiDataType));
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = i + 1; j < values.Length; j++)

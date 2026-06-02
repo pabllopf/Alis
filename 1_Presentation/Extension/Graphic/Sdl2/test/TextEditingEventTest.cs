@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using Xunit;
 using Alis.Extension.Graphic.Sdl2.Structs;
@@ -48,9 +49,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             IntPtr ptr = Marshal.StringToHGlobalAnsi(sample);
             try
             {
-                var evt = GetTextEditingEvent(ptr);
+                TextEditingEvent evt = GetTextEditingEvent(ptr);
                 // Act
-                var text = evt.Text;
+                string text = evt.Text;
                 // Assert
                 Assert.Equal(sample, text);
             }
@@ -64,9 +65,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldReturnNullTextWhenPtrIsZero()
         {
             // Arrange -- default struct, textPtr is IntPtr.Zero
-            var evt = new TextEditingEvent();
+            TextEditingEvent evt = new TextEditingEvent();
             // Act
-            var text = evt.Text;
+            string text = evt.Text;
             // Assert
             Assert.Null(text);
         }
@@ -74,8 +75,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         // Helper to construct the struct since it's readonly and struct
         private static TextEditingEvent GetTextEditingEvent(IntPtr textPtr)
         {
-            var evt = new TextEditingEvent();
-            var field = typeof(TextEditingEvent).GetField("textPtr", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            TextEditingEvent evt = new TextEditingEvent();
+            FieldInfo field = typeof(TextEditingEvent).GetField("textPtr", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             field.SetValueDirect(__makeref(evt), textPtr);
             return evt;
         }
@@ -84,12 +85,12 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldAssignAndRetrievePublicFields()
         {
             // Arrange
-            var evt = new TextEditingEvent();
-            var typeField = typeof(TextEditingEvent).GetField("type");
-            var timestampField = typeof(TextEditingEvent).GetField("timestamp");
-            var windowIDField = typeof(TextEditingEvent).GetField("windowID");
-            var startField = typeof(TextEditingEvent).GetField("start");
-            var lengthField = typeof(TextEditingEvent).GetField("length");
+            TextEditingEvent evt = new TextEditingEvent();
+            FieldInfo typeField = typeof(TextEditingEvent).GetField("type");
+            FieldInfo timestampField = typeof(TextEditingEvent).GetField("timestamp");
+            FieldInfo windowIDField = typeof(TextEditingEvent).GetField("windowID");
+            FieldInfo startField = typeof(TextEditingEvent).GetField("start");
+            FieldInfo lengthField = typeof(TextEditingEvent).GetField("length");
             typeField.SetValueDirect(__makeref(evt), EventType.TextEditing);
             timestampField.SetValueDirect(__makeref(evt), 999u);
             windowIDField.SetValueDirect(__makeref(evt), 4u);

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Alis.Extension.Network.Client;
 using Alis.Extension.Network.Core;
@@ -165,7 +166,7 @@ namespace Alis.Extension.Network.Test.Client
         {
             using NetworkClientManager manager = new NetworkClientManager();
 
-            var players = manager.GetConnectedPlayers();
+            IReadOnlyList<NetworkPlayer> players = manager.GetConnectedPlayers();
 
             Assert.Empty(players);
         }

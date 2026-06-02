@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldSetFieldsThroughConstructor()
         {
             // Arrange
-            var version = new Version(3, 2, 1);
+            Version version = new Version(3, 2, 1);
             // Assert
             Assert.Equal(3, version.major);
             Assert.Equal(2, version.minor);
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldDefaultToZero()
         {
             // Arrange
-            var version = new Version();
+            Version version = new Version();
             // Assert
             Assert.Equal(0, version.major);
             Assert.Equal(0, version.minor);
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldTruncateValuesExceedingByte()
         {
             // Arrange: values > 255 will be truncated to byte
-            var version = new Version(256, 512, 1024);
+            Version version = new Version(256, 512, 1024);
             // Assert
             Assert.Equal(0, version.major);   // 256 & 0xFF = 0
             Assert.Equal(0, version.minor);   // 512 & 0xFF = 0

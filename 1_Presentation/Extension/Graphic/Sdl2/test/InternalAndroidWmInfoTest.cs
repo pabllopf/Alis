@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldDefaultToZero()
         {
-            var obj = new InternalAndroidWmInfo();
+            InternalAndroidWmInfo obj = new InternalAndroidWmInfo();
             Assert.Equal(IntPtr.Zero, obj.Window);
             Assert.Equal(IntPtr.Zero, obj.Surface);
         }
@@ -46,9 +46,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldAssignAndRetrieveProperties()
         {
-            var obj = new InternalAndroidWmInfo();
-            var testWindow = IntPtr.Zero + 1;
-            var testSurface = IntPtr.Zero + 2;
+            InternalAndroidWmInfo obj = new InternalAndroidWmInfo();
+            IntPtr testWindow = IntPtr.Zero + 1;
+            IntPtr testSurface = IntPtr.Zero + 2;
             obj.Window = testWindow;
             obj.Surface = testSurface;
             Assert.Equal(testWindow, obj.Window);

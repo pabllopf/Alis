@@ -8,7 +8,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldDefaultToZero()
         {
-            var dir = new HapticDirection();
+            HapticDirection dir = new HapticDirection();
             Assert.Equal(0, dir.type);
             Assert.Null(dir.dir);
         }

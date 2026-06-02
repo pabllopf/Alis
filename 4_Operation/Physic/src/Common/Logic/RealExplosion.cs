@@ -192,7 +192,7 @@ namespace Alis.Core.Physic.Common.Logic
                 PolygonShape ps = ConvertToPolygonShape(shapes[i]);
                 if (ps == null) continue;
 
-                var body = shapes[i].GetBody;
+                Body body = shapes[i].GetBody;
                 if (body.GetBodyType != BodyType.Dynamic) continue;
 
                 ComputeAngleBoundsForShape(ps, body, pos, vals, ref valIndex);
@@ -211,7 +211,7 @@ namespace Alis.Core.Physic.Common.Logic
 
         private static PolygonShape CreatePolygonFromCircle(CircleShape cs)
         {
-            var v = new Vertices();
+            Vertices v = new Vertices();
             float r = cs.GetRadius;
             v.Add(new Vector2F(r, 0));
             v.Add(new Vector2F(0, r));

@@ -9,7 +9,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldReturnCompiledVersion()
         {
-            var version = NativeSdlTtf.InternalGetTtfVersion();
+            Version version = NativeSdlTtf.InternalGetTtfVersion();
             Assert.Equal(2, version.major);
             Assert.Equal(0, version.minor);
             Assert.Equal(16, version.patch);

@@ -9,7 +9,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldDefaultToZero()
         {
-            var mode = new DisplayMode();
+            DisplayMode mode = new DisplayMode();
             Assert.Equal(0u, mode.format);
             Assert.Equal(0, mode.w);
             Assert.Equal(0, mode.h);
@@ -20,7 +20,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldAssignAndRetrieveFields()
         {
-            var mode = new DisplayMode
+            DisplayMode mode = new DisplayMode
             {
                 format = 123u,
                 w = 1920,

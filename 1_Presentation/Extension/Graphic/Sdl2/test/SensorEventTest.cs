@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldDefaultToZero()
         {
             // Arrange
-            var evt = new SensorEvent();
+            SensorEvent evt = new SensorEvent();
             // Assert
             Assert.Equal(0f, evt.float0);
             Assert.Equal(0f, evt.float1);

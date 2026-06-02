@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void SdlImage_Version_ReturnsExpectedValue()
         {
             // Arrange & Act
-            var version = SdlImage.Version();
+            System.Version version = SdlImage.Version();
 
             // Assert
             Assert.Equal(2, version.Major);
@@ -496,7 +496,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void Sdl_GetVersion_ReturnsValidStructure()
         {
-            var version = Sdl.GetVersion();
+            Version version = Sdl.GetVersion();
 
             Assert.True(version.major >= 0);
             Assert.True(version.minor >= 0);
@@ -509,7 +509,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void Sdl_GetGlCompiledVersion_MatchesGetVersion()
         {
-            var version = Sdl.GetVersion();
+            Version version = Sdl.GetVersion();
             int compiledVersion = Sdl.GetGlCompiledVersion();
 
             // GetGlCompiledVersion returns major * 1000 + minor * 100 + patch

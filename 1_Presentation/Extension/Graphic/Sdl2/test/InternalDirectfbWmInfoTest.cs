@@ -38,7 +38,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldDefaultToZero()
         {
-            var obj = new InternalDirectfbWmInfo();
+            InternalDirectfbWmInfo obj = new InternalDirectfbWmInfo();
             Assert.Equal(IntPtr.Zero, obj.Dfb);
             Assert.Equal(IntPtr.Zero, obj.Window);
             Assert.Equal(IntPtr.Zero, obj.Surface);
@@ -47,10 +47,10 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldAssignAndRetrieveProperties()
         {
-            var obj = new InternalDirectfbWmInfo();
-            var testDfb = IntPtr.Zero + 1;
-            var testWindow = IntPtr.Zero + 2;
-            var testSurface = IntPtr.Zero + 3;
+            InternalDirectfbWmInfo obj = new InternalDirectfbWmInfo();
+            IntPtr testDfb = IntPtr.Zero + 1;
+            IntPtr testWindow = IntPtr.Zero + 2;
+            IntPtr testSurface = IntPtr.Zero + 3;
             obj.Dfb = testDfb;
             obj.Window = testWindow;
             obj.Surface = testSurface;

@@ -10,7 +10,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldDefaultToZero()
         {
-            var info = new RendererInfo();
+            RendererInfo info = new RendererInfo();
             Assert.Equal(IntPtr.Zero, info.Name);
             Assert.Equal(0u, info.flags);
             Assert.Equal(0u, info.num_texture_formats);
@@ -21,7 +21,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldAssignName()
         {
-            var info = new RendererInfo();
+            RendererInfo info = new RendererInfo();
             info.Name = new IntPtr(0x1234);
             Assert.Equal(new IntPtr(0x1234), info.Name);
         }
@@ -29,7 +29,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldGetNameFromPointer()
         {
-            var info = new RendererInfo();
+            RendererInfo info = new RendererInfo();
             string expected = "test_renderer";
             IntPtr ptr = Marshal.StringToHGlobalAnsi(expected);
             info.Name = ptr;

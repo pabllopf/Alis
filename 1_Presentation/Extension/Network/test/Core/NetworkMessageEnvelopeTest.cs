@@ -179,7 +179,7 @@ namespace Alis.Extension.Network.Test.Core
                 IsOrdered = true
             };
 
-            var properties = envelope.GetSerializableProperties().ToList();
+            List<(string, string)> properties = envelope.GetSerializableProperties().ToList();
 
             Assert.Equal(11, properties.Count);
             Assert.Contains(("MessageId", "msg-1"), properties);
@@ -240,7 +240,7 @@ namespace Alis.Extension.Network.Test.Core
                 Payload = null
             };
 
-            var properties = envelope.GetSerializableProperties().ToList();
+            List<(string, string)> properties = envelope.GetSerializableProperties().ToList();
 
             Assert.Contains(properties, p => p.Item1 == "MessageId" && p.Item2 == null);
             Assert.Contains(properties, p => p.Item1 == "MessageType" && p.Item2 == null);

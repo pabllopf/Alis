@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldDefaultToZero()
         {
             // Arrange
-            var evt = new TouchFingerEvent();
+            TouchFingerEvent evt = new TouchFingerEvent();
             // Assert
             Assert.Equal(0u, evt.type);
             Assert.Equal(0u, evt.timestamp);
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldAssignAndRetrieveAllFields()
         {
             // Arrange
-            var evt = new TouchFingerEvent
+            TouchFingerEvent evt = new TouchFingerEvent
             {
                 type = 1u,
                 timestamp = 100u,

@@ -211,7 +211,7 @@ namespace Alis.Extension.Network.Test.Core
         {
             NetworkSession session = new NetworkSession();
 
-            Assert.Throws<KeyNotFoundException>(() => { var _ = session.CustomData["missing-key"]; });
+            Assert.Throws<KeyNotFoundException>(() => { string _ = session.CustomData["missing-key"]; });
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldDefaultToZero()
         {
             // Arrange
-            var vertex = new Vertex();
+            Vertex vertex = new Vertex();
             // Assert
             Assert.Equal(0f, vertex.Position.X);
             Assert.Equal(0f, vertex.Position.Y);
@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldAssignAndRetrieveProperties()
         {
             // Arrange
-            var vertex = new Vertex
+            Vertex vertex = new Vertex
             {
                 Position = new PointF(1.5f, 2.5f),
                 TexCoordinate = new PointF(0.5f, 0.5f),

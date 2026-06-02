@@ -8,7 +8,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldDefaultToZero()
         {
-            var evt = new MultiGestureEvent();
+            MultiGestureEvent evt = new MultiGestureEvent();
             Assert.Equal(0u, evt.type);
             Assert.Equal(0u, evt.timestamp);
             Assert.Equal(0L, evt.touchId);

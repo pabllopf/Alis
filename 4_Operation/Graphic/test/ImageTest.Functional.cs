@@ -48,9 +48,9 @@ namespace Alis.Core.Graphic.Test
         public void LoadFromStream_When24BitBmp_ReturnsCorrectImage()
         {
             // Create minimal valid 24-bit BMP file in memory
-            using var stream = CreateMinimalBmp24Bit(2, 2);
+            using MemoryStream stream = CreateMinimalBmp24Bit(2, 2);
             
-            var image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
+            Image image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
                 .Invoke(null, new object[] { stream }) as Image;
 
             Assert.NotNull(image);
@@ -67,9 +67,9 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void LoadFromStream_When8BitIndexed_ReturnsCorrectPaletteColors()
         {
-            using var stream = CreateMinimalBmp8BitIndexed(2, 2);
+            using MemoryStream stream = CreateMinimalBmp8BitIndexed(2, 2);
             
-            var image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
+            Image image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
                 .Invoke(null, new object[] { stream }) as Image;
 
             Assert.NotNull(image);
@@ -91,9 +91,9 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void LoadFromStream_WhenEmptyStream_ThrowsException()
         {
-            using var stream = new MemoryStream(Array.Empty<byte>());
+            using MemoryStream stream = new MemoryStream(Array.Empty<byte>());
             
-            var loadMethod = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo loadMethod = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static);
             
             Assert.ThrowsAny<Exception>(() => 
                 loadMethod.Invoke(null, new object[] { stream }));
@@ -109,9 +109,9 @@ namespace Alis.Core.Graphic.Test
         [Fact]
         public void LoadFromStream_When1x1Image_ReturnsMinimalValidImage()
         {
-            using var stream = CreateMinimalBmp24Bit(1, 1);
+            using MemoryStream stream = CreateMinimalBmp24Bit(1, 1);
             
-            var image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
+            Image image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
                 .Invoke(null, new object[] { stream }) as Image;
 
             Assert.NotNull(image);
@@ -134,7 +134,7 @@ namespace Alis.Core.Graphic.Test
             int imageSize = rowSize * height;
             int fileSize = 54 + imageSize;
 
-            var bmp = new byte[fileSize];
+            byte[] bmp = new byte[fileSize];
             
             // BMP File Header (14 bytes)
             bmp[0] = (byte)'B';
@@ -185,7 +185,7 @@ namespace Alis.Core.Graphic.Test
             int imageSize = rowSize * height;
             int fileSize = 54 + imageSize;
 
-            var bmp = new byte[fileSize];
+            byte[] bmp = new byte[fileSize];
             
             // BMP File Header
             bmp[0] = (byte)'B';
@@ -233,7 +233,7 @@ namespace Alis.Core.Graphic.Test
             int imageSize = rowSize * height;
             int fileSize = 54 + paletteSize + imageSize;
 
-            var bmp = new byte[fileSize];
+            byte[] bmp = new byte[fileSize];
             
             // BMP File Header
             bmp[0] = (byte)'B';
@@ -293,7 +293,7 @@ namespace Alis.Core.Graphic.Test
             int imageSize = rowSize * height;
             int fileSize = 54 + paletteSize + imageSize;
 
-            var bmp = new byte[fileSize];
+            byte[] bmp = new byte[fileSize];
             
             // BMP File Header
             bmp[0] = (byte)'B';
@@ -355,7 +355,7 @@ namespace Alis.Core.Graphic.Test
             int imageSize = rowSize * height;
             int fileSize = 54 + paletteSize + imageSize;
 
-            var bmp = new byte[fileSize];
+            byte[] bmp = new byte[fileSize];
             
             // BMP File Header
             bmp[0] = (byte)'B';
@@ -413,7 +413,7 @@ namespace Alis.Core.Graphic.Test
         /// </summary>
         private static MemoryStream CreateInvalidBmpHeader()
         {
-            var bmp = new byte[54];
+            byte[] bmp = new byte[54];
             bmp[0] = (byte)'X'; // Wrong header - should be 'B'
             bmp[1] = (byte)'M';
             return new MemoryStream(bmp);
@@ -430,7 +430,7 @@ namespace Alis.Core.Graphic.Test
             int imageSize = rowSize * height;
             int fileSize = 54 + imageSize;
 
-            var bmp = new byte[fileSize];
+            byte[] bmp = new byte[fileSize];
             
             // BMP File Header
             bmp[0] = (byte)'B';
@@ -476,7 +476,7 @@ namespace Alis.Core.Graphic.Test
             int imageSize = rowSize * height;
             int fileSize = 54 + imageSize;
 
-            var bmp = new byte[fileSize];
+            byte[] bmp = new byte[fileSize];
             
             // BMP File Header
             bmp[0] = (byte)'B';
@@ -518,7 +518,7 @@ namespace Alis.Core.Graphic.Test
         /// </summary>
         private static MemoryStream CreateStreamWith8BitPalette()
         {
-            var data = new byte[256 * 4];
+            byte[] data = new byte[256 * 4];
             for (int i = 0; i < 256; i++)
             {
                 data[i * 4 + 0] = (byte)i;
@@ -534,7 +534,7 @@ namespace Alis.Core.Graphic.Test
         /// </summary>
         private static MemoryStream CreateStreamWith4BitPalette()
         {
-            var data = new byte[16 * 4];
+            byte[] data = new byte[16 * 4];
             for (int i = 0; i < 16; i++)
             {
                 data[i * 4 + 0] = (byte)(i * 16);
@@ -550,7 +550,7 @@ namespace Alis.Core.Graphic.Test
         /// </summary>
         private static MemoryStream CreateStreamWith1BitPalette()
         {
-            var data = new byte[2 * 4];
+            byte[] data = new byte[2 * 4];
             data[0] = 0; data[1] = 0; data[2] = 0; data[3] = 255; // Black
             data[4] = 255; data[5] = 255; data[6] = 255; data[7] = 255; // White
             return new MemoryStream(data);

@@ -60,7 +60,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             Action act = () => FilePickerExecutor.ExecuteCommand(string.Empty, string.Empty);
 
             // Assert
-            var exception = Assert.Throws<ArgumentException>(act);
+            ArgumentException exception = Assert.Throws<ArgumentException>(act);
             Assert.Equal("fileName", exception.ParamName);
         }
 
@@ -214,7 +214,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             Action act = () => FilePickerExecutor.ExecuteCommand("this_command_does_not_exist_abc123", string.Empty, 5000);
 
             // Assert
-            var exception = Assert.Throws<InvalidOperationException>(act);
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(act);
             Assert.Contains("this_command_does_not_exist_abc123", exception.Message);
         }
 
@@ -225,7 +225,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             Action act = () => FilePickerExecutor.ExecuteCommand("nonexistent_cmd_xyz789", string.Empty, 5000);
 
             // Assert
-            var exception = Assert.Throws<InvalidOperationException>(act);
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(act);
             Assert.NotNull(exception.InnerException);
         }
 

@@ -72,14 +72,14 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldReturnTextBytesFromStruct()
         {
             // Arrange: Fill each byte field with unique values
-            var evt = new TextInputEvent();
+            TextInputEvent evt = new TextInputEvent();
             for (int i = 0; i < 32; ++i)
             {
                 typeof(TextInputEvent).GetField($"byte{i}", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
                     .SetValueDirect(__makeref(evt), (byte)(i + 1));
             }
             // Act
-            var bytes = evt.Text;
+            byte[] bytes = evt.Text;
             // Assert
             Assert.Equal(32, bytes.Length);
             for (int i = 0; i < 32; ++i)
@@ -92,9 +92,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldReturnAllZerosWhenDefault()
         {
             // Arrange
-            var evt = new TextInputEvent(); // All internals are 0
+            TextInputEvent evt = new TextInputEvent(); // All internals are 0
             // Act
-            var bytes = evt.Text;
+            byte[] bytes = evt.Text;
             // Assert
             Assert.All(bytes, b => Assert.Equal(0, b));
         }
@@ -104,14 +104,14 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldHandleAllOnesInBytes()
         {
             // Arrange
-            var evt = new TextInputEvent();
+            TextInputEvent evt = new TextInputEvent();
             for (int i = 0; i < 32; ++i)
             {
                 typeof(TextInputEvent).GetField($"byte{i}", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
                     .SetValueDirect(__makeref(evt), (byte)255);
             }
             // Act
-            var bytes = evt.Text;
+            byte[] bytes = evt.Text;
             // Assert: all bytes should be 255
             Assert.All(bytes, b => Assert.Equal(255, b));
         }
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void ShouldSupportPatternBytes()
         {
             // Arrange -- alternate 0xAA, 0x55 pattern
-            var evt = new TextInputEvent();
+            TextInputEvent evt = new TextInputEvent();
             for (int i = 0; i < 32; ++i)
             {
                 byte value = (i % 2 == 0) ? (byte)0xAA : (byte)0x55;
@@ -128,7 +128,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
                     .SetValueDirect(__makeref(evt), value);
             }
             // Act
-            var bytes = evt.Text;
+            byte[] bytes = evt.Text;
             // Assert:
             for (int i = 0; i < 32; ++i)
             {

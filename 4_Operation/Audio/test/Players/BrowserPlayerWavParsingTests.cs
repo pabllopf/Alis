@@ -29,14 +29,14 @@ namespace Alis.Core.Audio.Test.Players
 
         public BrowserPlayerWavParsingTests()
         {
-            var assembly = typeof(Player).Assembly;
+            Assembly assembly = typeof(Player).Assembly;
             _browserPlayerType = assembly.GetType("Alis.Core.Audio.Players.BrowserPlayer");
             _browserPlayer = Activator.CreateInstance(_browserPlayerType, true);
         }
 
         private object InvokeMethod(string methodName, params object[] args)
         {
-            var method = _browserPlayerType.GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo method = _browserPlayerType.GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Static);
             Assert.NotNull(method);
             return method.Invoke(_browserPlayer, args);
         }
@@ -100,7 +100,7 @@ namespace Alis.Core.Audio.Test.Players
             byte[] wav = null;
 
             // Act & Assert
-            var exception = Assert.Throws<TargetInvocationException>(() => InvokeMethod("TryParseWav", wav, 0, 0, 0, 0));
+            TargetInvocationException exception = Assert.Throws<TargetInvocationException>(() => InvokeMethod("TryParseWav", wav, 0, 0, 0, 0));
             Assert.NotNull(exception.InnerException);
         }
 

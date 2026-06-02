@@ -8,7 +8,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldDefaultToZero()
         {
-            var evt = new MouseButtonEvent();
+            MouseButtonEvent evt = new MouseButtonEvent();
             Assert.Equal(0u, evt.timestamp);
             Assert.Equal(0u, evt.windowID);
             Assert.Equal(0u, evt.which);
