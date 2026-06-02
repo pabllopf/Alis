@@ -1,0 +1,78 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:NetworkSerializerTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using Alis.Extension.Network.Core;
+using Xunit;
+
+namespace Alis.Extension.Network.Test.Core
+{
+    /// <summary>
+    ///     The network serializer test class
+    /// </summary>
+    public class NetworkSerializerTest
+    {
+        /// <summary>
+        ///     Tests that serialize and deserialize envelope round-trips correctly
+        /// </summary>
+        [Fact]
+        public void SerializeEnvelope_DeserializeEnvelope_RoundTrips()
+        {
+            NetworkSerializer serializer = new NetworkSerializer();
+            NetworkMessageEnvelope original = new NetworkMessageEnvelope
+            {
+                MessageId = "msg-1",
+                MessageType = "chat",
+                SenderId = "sender-1",
+                TargetId = "target-1",
+                Channel = "global",
+                Payload = "hello",
+                ServerTimestamp = 1000,
+                ClientTimestamp = 500,
+                SequenceNumber = 42,
+                IsReliable = true,
+                IsOrdered = false
+            };
+
+            string json = serializer.SerializeEnvelope(original);
+            NetworkMessageEnvelope result = serializer.DeserializeEnvelope(json);
+
+            Assert.Equal(original.MessageId, result.MessageId);
+            Assert.Equal(original.MessageType, result.MessageType);
+            Assert.Equal(original.SenderId, result.SenderId);
+            Assert.Equal(original.TargetId, result.TargetId);
+            Assert.Equal(original.Channel, result.Channel);
+            Assert.Equal(original.Payload, result.Payload);
+            Assert.Equal(original.ServerTimestamp, result.ServerTimestamp);
+            Assert.Equal(original.ClientTimestamp, result.ClientTimestamp);
+            Assert.Equal(original.SequenceNumber, result.SequenceNumber);
+            Assert.Equal(original.IsReliable, result.IsReliable);
+            Assert.Equal(original.IsOrdered, result.IsOrdered);
+        }
+    }
+}
