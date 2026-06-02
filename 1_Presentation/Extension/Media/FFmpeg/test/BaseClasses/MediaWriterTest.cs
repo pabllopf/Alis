@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
 {
@@ -37,5 +40,31 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
     /// <seealso cref="MediaWriter{TFrame}" />
     public class MediaWriterTest
     {
+        private sealed class TestFrame : IMediaFrame
+        {
+            public TestFrame(byte[] rawData)
+            {
+                RawData = rawData;
+            }
+
+            public byte[] RawData { get; }
+
+            public bool Load(Stream stream) => true;
+        }
+
+        private sealed class TestWriter : MediaWriter<TestFrame>
+        {
+            public void SetOpened(bool value) => OpenedForWriting = value;
+
+            public void SetStream(Stream stream) => InputDataStream = stream;
+        }
+
+        [Fact]
+        public void MediaWriter_WriteFrame_ShouldThrowWhenNotOpened()
+        {
+            TestWriter writer = new TestWriter();
+
+            Assert.Throws<InvalidOperationException>(() => writer.WriteFrame(new TestFrame(new byte[1])));
+        }
     }
 }
