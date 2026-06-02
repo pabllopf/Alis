@@ -87,5 +87,25 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
                 File.Delete(path);
             }
         }
+
+        [Fact]
+        public void AudioReader_NextFrame_ShouldThrowWhenNotOpened()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".mp3");
+            File.WriteAllBytes(path, new byte[] {1});
+
+            try
+            {
+                AudioReader reader = new AudioReader(path);
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.NextFrame());
+
+                Assert.Contains("Please load the audio first", ex.Message);
+            }
+            finally
+            {
+                File.Delete(path);
+            }
+        }
     }
 }
