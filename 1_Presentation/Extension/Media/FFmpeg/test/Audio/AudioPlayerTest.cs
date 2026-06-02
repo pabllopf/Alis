@@ -73,5 +73,47 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             player.Dispose();
             player.Dispose();
         }
+
+        [Fact]
+        public void AudioPlayer_Play_ShouldThrowWhenNoFilename()
+        {
+            AudioPlayer player = new AudioPlayer();
+
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => player.Play());
+
+            Assert.Contains("No filename was specified", ex.Message);
+        }
+
+        [Fact]
+        public void AudioPlayer_CloseWrite_ShouldThrowWhenNotOpened()
+        {
+            AudioPlayer player = new AudioPlayer();
+
+            Assert.Throws<InvalidOperationException>(() => player.CloseWrite());
+        }
+
+        [Fact]
+        public void AudioPlayer_Constructor_ShouldSetFilename()
+        {
+            AudioPlayer player = new AudioPlayer("test.mp3");
+
+            Assert.Equal("test.mp3", player.Filename);
+        }
+
+        [Fact]
+        public void AudioPlayer_Constructor_ShouldDefaultFilenameToNull()
+        {
+            AudioPlayer player = new AudioPlayer();
+
+            Assert.Null(player.Filename);
+        }
+
+        [Fact]
+        public void AudioPlayer_OpenWrite_ShouldThrowOnInvalidBitDepth()
+        {
+            AudioPlayer player = new AudioPlayer();
+
+            Assert.Throws<InvalidOperationException>(() => player.OpenWrite(44100, 2, 8));
+        }
     }
 }
