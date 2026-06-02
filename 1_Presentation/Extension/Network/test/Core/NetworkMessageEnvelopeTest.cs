@@ -129,5 +129,70 @@ namespace Alis.Extension.Network.Test.Core
             Assert.False(envelope.IsReliable);
             Assert.False(envelope.IsOrdered);
         }
+
+        /// <summary>
+        ///     Tests that create from properties with null returns default envelope
+        /// </summary>
+        [Fact]
+        public void CreateFromProperties_WithNull_ReturnsDefaultEnvelope()
+        {
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope().CreateFromProperties(null);
+
+            Assert.NotNull(envelope);
+            Assert.Null(envelope.MessageId);
+        }
+
+        /// <summary>
+        ///     Tests that create from properties with empty returns default values
+        /// </summary>
+        [Fact]
+        public void CreateFromProperties_WithEmpty_ReturnsDefaults()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>();
+
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope().CreateFromProperties(properties);
+
+            Assert.Null(envelope.MessageId);
+            Assert.Equal((uint)0, envelope.SequenceNumber);
+            Assert.True(envelope.IsReliable);
+            Assert.True(envelope.IsOrdered);
+        }
+
+        /// <summary>
+        ///     Tests that get serializable properties returns all expected tuples
+        /// </summary>
+        [Fact]
+        public void GetSerializableProperties_ReturnsAllProperties()
+        {
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
+            {
+                MessageId = "msg-1",
+                MessageType = "chat",
+                SenderId = "sender-1",
+                TargetId = "target-1",
+                Channel = "global",
+                Payload = "hello",
+                ServerTimestamp = 1000,
+                ClientTimestamp = 500,
+                SequenceNumber = 42,
+                IsReliable = true,
+                IsOrdered = true
+            };
+
+            var properties = envelope.GetSerializableProperties().ToList();
+
+            Assert.Equal(11, properties.Count);
+            Assert.Contains(("MessageId", "msg-1"), properties);
+            Assert.Contains(("MessageType", "chat"), properties);
+            Assert.Contains(("SenderId", "sender-1"), properties);
+            Assert.Contains(("TargetId", "target-1"), properties);
+            Assert.Contains(("Channel", "global"), properties);
+            Assert.Contains(("Payload", "hello"), properties);
+            Assert.Contains(("ServerTimestamp", "1000"), properties);
+            Assert.Contains(("ClientTimestamp", "500"), properties);
+            Assert.Contains(("SequenceNumber", "42"), properties);
+            Assert.Contains(("IsReliable", "True"), properties);
+            Assert.Contains(("IsOrdered", "True"), properties);
+        }
     }
 }
