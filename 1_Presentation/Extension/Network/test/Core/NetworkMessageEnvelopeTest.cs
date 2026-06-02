@@ -93,5 +93,41 @@ namespace Alis.Extension.Network.Test.Core
             Assert.False(envelope.IsReliable);
             Assert.False(envelope.IsOrdered);
         }
+
+        /// <summary>
+        ///     Tests that create from properties returns envelope with correct values
+        /// </summary>
+        [Fact]
+        public void CreateFromProperties_WithValidData_ReturnsEnvelope()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>
+            {
+                {"MessageId", "msg-1"},
+                {"MessageType", "chat"},
+                {"SenderId", "sender-1"},
+                {"TargetId", "target-1"},
+                {"Channel", "global"},
+                {"Payload", "hello"},
+                {"ServerTimestamp", "1000"},
+                {"ClientTimestamp", "500"},
+                {"SequenceNumber", "42"},
+                {"IsReliable", "false"},
+                {"IsOrdered", "false"}
+            };
+
+            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope().CreateFromProperties(properties);
+
+            Assert.Equal("msg-1", envelope.MessageId);
+            Assert.Equal("chat", envelope.MessageType);
+            Assert.Equal("sender-1", envelope.SenderId);
+            Assert.Equal("target-1", envelope.TargetId);
+            Assert.Equal("global", envelope.Channel);
+            Assert.Equal("hello", envelope.Payload);
+            Assert.Equal(1000, envelope.ServerTimestamp);
+            Assert.Equal(500, envelope.ClientTimestamp);
+            Assert.Equal((uint)42, envelope.SequenceNumber);
+            Assert.False(envelope.IsReliable);
+            Assert.False(envelope.IsOrdered);
+        }
     }
 }
