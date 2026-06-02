@@ -73,7 +73,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         [Fact]
         public void AudioWriter_FileCtor_ShouldThrowOnNullFilename()
         {
-            Assert.Throws<ArgumentException>(() => new AudioWriter(null, 2, 44100));
+            Assert.Throws<ArgumentException>(() => new AudioWriter((string)null, 2, 44100));
         }
 
         [Fact]

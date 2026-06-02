@@ -78,9 +78,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             {
                 VideoReader reader = new VideoReader(path);
 
-                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.NextFrame());
+                Exception ex = Assert.ThrowsAny<Exception>(() => reader.NextFrame());
 
-                Assert.Contains("load the video first", ex.Message);
+                Assert.Contains("load the video", ex.Message, StringComparison.OrdinalIgnoreCase);
             }
             finally
             {

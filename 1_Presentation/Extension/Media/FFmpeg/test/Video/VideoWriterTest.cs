@@ -44,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         [Fact]
         public void VideoWriter_FileCtor_ShouldThrowOnNullFilename()
         {
-            Assert.Throws<ArgumentNullException>(() => new VideoWriter(null, 1920, 1080, 30));
+            Assert.Throws<ArgumentNullException>(() => new VideoWriter((string)null, 1920, 1080, 30));
         }
 
         [Fact]

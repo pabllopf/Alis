@@ -93,7 +93,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         public void AudioVideoWriter_FileCtor_ShouldThrowOnNullFilename()
         {
             Assert.Throws<ArgumentException>(() =>
-                new AudioVideoWriter(null, 1920, 1080, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+                new AudioVideoWriter((string)null, 1920, 1080, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
         [Fact]

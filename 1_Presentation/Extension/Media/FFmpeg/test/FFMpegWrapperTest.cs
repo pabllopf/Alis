@@ -280,6 +280,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             p.Start();
             Progress<double> progress = FfMpegWrapper.RegisterProgressTracker(p, 10.0);
             progress.ProgressChanged += (_, value) => reportedProgress = value;
+            p.BeginErrorReadLine();
 
             p.WaitForExit();
             System.Threading.Thread.Sleep(100);
@@ -316,6 +317,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             p.Start();
             Progress<double> progress = FfMpegWrapper.RegisterProgressTracker(p, 10.0);
             progress.ProgressChanged += (_, value) => reportedProgress = value;
+            p.BeginErrorReadLine();
 
             p.WaitForExit();
             System.Threading.Thread.Sleep(100);
@@ -351,6 +353,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             p.Start();
             Progress<double> progress = FfMpegWrapper.RegisterProgressTracker(p, 10.0);
             progress.ProgressChanged += (_, value) => reportedProgress = value;
+            p.BeginErrorReadLine();
 
             p.WaitForExit();
             System.Threading.Thread.Sleep(100);

@@ -90,7 +90,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         {
             TestReader reader = new TestReader();
             TestWriter writer = new TestWriter();
-            reader.SetStream(new MemoryStream(Encoding.UTF8.GetBytes("data")));
+            reader.SetStream(new MemoryStream(System.Text.Encoding.UTF8.GetBytes("data")));
 
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.CopyTo(writer));
 
@@ -100,7 +100,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         [Fact]
         public void MediaReader_CopyTo_ShouldCopyStreamToWriter()
         {
-            byte[] payload = Encoding.UTF8.GetBytes("copy-me");
+            byte[] payload = System.Text.Encoding.UTF8.GetBytes("copy-me");
             MemoryStream source = new MemoryStream(payload);
             MemoryStream destination = new MemoryStream();
             TestReader reader = new TestReader();
@@ -117,7 +117,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         [Fact]
         public async Task MediaReader_CopyToAsync_ShouldCopyStreamToWriter()
         {
-            byte[] payload = Encoding.UTF8.GetBytes("copy-async");
+            byte[] payload = System.Text.Encoding.UTF8.GetBytes("copy-async");
             MemoryStream source = new MemoryStream(payload);
             MemoryStream destination = new MemoryStream();
             TestReader reader = new TestReader();

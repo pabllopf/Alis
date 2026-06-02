@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void SliderFloat4_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderFloat4").ToArray();
-            Assert.Single(methods);
+            Assert.Equal(3, methods.Length);
         }
 
         /// <summary>
