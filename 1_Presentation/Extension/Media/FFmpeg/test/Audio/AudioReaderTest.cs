@@ -47,5 +47,25 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             Assert.Throws<FileNotFoundException>(() => new AudioReader(missing));
         }
+
+        [Fact]
+        public void AudioReader_Load_ShouldThrowForInvalidBitDepth()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".mp3");
+            File.WriteAllBytes(path, new byte[] {1});
+
+            try
+            {
+                AudioReader reader = new AudioReader(path);
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load(8));
+
+                Assert.Contains("Acceptable bit depths", ex.Message);
+            }
+            finally
+            {
+                File.Delete(path);
+            }
+        }
     }
 }
