@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -42,6 +43,279 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class HttpHelperTest
     {
+         [Fact]
+        public void CalculateWebSocketKey_ReturnsBase64String()
+        {
+            string key = HttpHelper.CalculateWebSocketKey();
+
+            Assert.NotNull(key);
+            byte[] decoded = Convert.FromBase64String(key);
+            Assert.Equal(16, decoded.Length);
+        }
+
+        [Fact]
+        public void CalculateWebSocketKey_GeneratesDifferentKeys()
+        {
+            string key1 = HttpHelper.CalculateWebSocketKey();
+            string key2 = HttpHelper.CalculateWebSocketKey();
+
+            Assert.NotEqual(key1, key2);
+        }
+
+        [Fact]
+        public void ComputeSocketAcceptString_WithValidKey_ReturnsAcceptString()
+        {
+            string key = "dGhlIHNhbXBsZSBub25jZQ==";
+            string accept = HttpHelper.ComputeSocketAcceptString(key);
+
+            Assert.NotNull(accept);
+            byte[] decoded = Convert.FromBase64String(accept);
+            Assert.NotEmpty(decoded);
+        }
+
+        [Fact]
+        public void ComputeSocketAcceptString_WithDifferentKey_ReturnsDifferentAccept()
+        {
+            string key1 = "dGhlIHNhbXBsZSBub25jZQ==";
+            string key2 = "anotherkey1234567890AB";
+
+            string accept1 = HttpHelper.ComputeSocketAcceptString(key1);
+            string accept2 = HttpHelper.ComputeSocketAcceptString(key2);
+
+            Assert.NotEqual(accept1, accept2);
+        }
+
+        [Fact]
+        public async Task ReadHttpHeaderAsync_WithCancellationToken_ThrowsOperationCanceledException()
+        {
+            MemoryStream stream = new MemoryStream();
+            CancellationTokenSource cts = new CancellationTokenSource();
+            cts.Cancel();
+
+            OperationCanceledException exception = await Assert.ThrowsAnyAsync<OperationCanceledException>(() => 
+                HttpHelper.ReadHttpHeaderAsync(stream, cts.Token));
+
+            Assert.NotNull(exception);
+        }
+
+        [Fact]
+        public void IsWebSocketUpgradeRequest_WithValidRequest_ReturnsTrue()
+        {
+            string header = "GET /chat HTTP/1.1\r\n" +
+                           "Host: example.com:8080\r\n" +
+                           "Upgrade: websocket\r\n" +
+                           "Connection: Upgrade\r\n" +
+                           "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n" +
+                           "Sec-WebSocket-Version: 13\r\n" +
+                           "\r\n";
+
+            bool result = HttpHelper.IsWebSocketUpgradeRequest(header);
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void IsWebSocketUpgradeRequest_WithoutUpgradeHeader_ReturnsFalse()
+        {
+            string header = "GET /api/data HTTP/1.1\r\n" +
+                           "Host: example.com:8080\r\n" +
+                           "Content-Type: application/json\r\n" +
+                           "\r\n";
+
+            bool result = HttpHelper.IsWebSocketUpgradeRequest(header);
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void IsWebSocketUpgradeRequest_CaseInsensitiveMatch_ReturnsTrue()
+        {
+            string header = "GET /chat HTTP/1.1\r\n" +
+                           "Host: example.com:8080\r\n" +
+                           "upgrade: WEBSOCKET\r\n" +
+                           "connection: upgrade\r\n" +
+                           "\r\n";
+
+            bool result = HttpHelper.IsWebSocketUpgradeRequest(header);
+
+            Assert.True(result);
+        }
+        [Fact]
+        public void GetPathFromHeader_WithValidHeader_ReturnsPath()
+        {
+            string header = "GET /chat/test HTTP/1.1\r\n" +
+                           "Host: example.com:8080\r\n" +
+                           "\r\n";
+
+            string path = HttpHelper.GetPathFromHeader(header);
+
+            Assert.Equal("/chat/test", path);
+        }
+
+        [Fact]
+        public void GetPathFromHeader_WithRootPath_ReturnsSlash()
+        {
+            string header = "GET / HTTP/1.1\r\n" +
+                           "Host: example.com:8080\r\n" +
+                           "\r\n";
+
+            string path = HttpHelper.GetPathFromHeader(header);
+
+            Assert.Equal("/", path);
+        }
+
+        [Fact]
+        public void GetPathFromHeader_WithoutGetRequest_ReturnsNull()
+        {
+            string header = "POST /api HTTP/1.1\r\n" +
+                           "Host: example.com:8080\r\n" +
+                           "\r\n";
+
+            string path = HttpHelper.GetPathFromHeader(header);
+
+            Assert.Null(path);
+        }
+        
+        [Fact]
+        public void GetSubProtocols_WithValidHeader_ReturnsList()
+        {
+            string header = "GET /chat HTTP/1.1\r\n" +
+                           "Host: example.com:8080\r\n" +
+                           "Sec-WebSocket-Protocol: chat, json\r\n" +
+                           "\r\n";
+
+            IList<string> protocols = HttpHelper.GetSubProtocols(header);
+
+            Assert.NotNull(protocols);
+            Assert.Equal(2, protocols.Count);
+            Assert.Contains("chat", protocols);
+            Assert.Contains("json", protocols);
+        }
+
+        [Fact]
+        public void GetSubProtocols_WithSingleProtocol_ReturnsListWithOneItem()
+        {
+            string header = "GET /chat HTTP/1.1\r\n" +
+                           "Host: example.com:8080\r\n" +
+                           "Sec-WebSocket-Protocol: myprotocol\r\n" +
+                           "\r\n";
+
+            IList<string> protocols = HttpHelper.GetSubProtocols(header);
+
+            Assert.NotNull(protocols);
+            Assert.Equal(1, protocols.Count);
+            Assert.Equal("myprotocol", protocols[0]);
+        }
+
+        [Fact]
+        public void GetSubProtocols_WithoutProtocolHeader_ReturnsEmptyList()
+        {
+            string header = "GET /chat HTTP/1.1\r\n" +
+                           "Host: example.com:8080\r\n" +
+                           "\r\n";
+
+            IList<string> protocols = HttpHelper.GetSubProtocols(header);
+
+            Assert.NotNull(protocols);
+            Assert.Empty(protocols);
+        }
+
+        [Fact]
+        public void GetSubProtocols_WithTrimmedProtocols_ReturnsTrimmedList()
+        {
+            string header = "GET /chat HTTP/1.1\r\n" +
+                           "Host: example.com:8080\r\n" +
+                           "Sec-WebSocket-Protocol:  chat  ,  json  \r\n" +
+                           "\r\n";
+
+            IList<string> protocols = HttpHelper.GetSubProtocols(header);
+
+            Assert.Equal("chat", protocols[0]);
+            Assert.Equal("json", protocols[1]);
+        }
+        
+        [Fact]
+        public void ReadHttpResponseCode_WithValidResponse_ReturnsCode()
+        {
+            string response = "HTTP/1.1 101 Switching Protocols\r\n" +
+                             "Date: Tue, 02 Jun 2026\r\n" +
+                             "\r\n";
+
+            string code = HttpHelper.ReadHttpResponseCode(response);
+
+            Assert.Equal("101 Switching Protocols", code);
+        }
+
+        [Fact]
+        public void ReadHttpResponseCode_With404Response_ReturnsCode()
+        {
+            string response = "HTTP/1.1 404 Not Found\r\n" +
+                             "Content-Type: text/plain\r\n" +
+                             "\r\n";
+
+            string code = HttpHelper.ReadHttpResponseCode(response);
+
+            Assert.Equal("404 Not Found", code);
+        }
+
+ 
+
+        [Fact]
+        public void ReadHttpResponseCode_WithInvalidResponse_ReturnsNull()
+        {
+            string response = "INVALID RESPONSE\r\n";
+
+            string code = HttpHelper.ReadHttpResponseCode(response);
+
+            Assert.Null(code);
+        }
+
+        [Fact]
+        public async Task WriteHttpHeaderAsync_WritesValidHeader()
+        {
+            string response = "HTTP/1.1 101 Switching Protocols";
+            MemoryStream stream = new MemoryStream();
+
+            await HttpHelper.WriteHttpHeaderAsync(response, stream, CancellationToken.None);
+
+            stream.Position = 0;
+            byte[] bytes = new byte[stream.Length];
+            stream.Read(bytes, 0, bytes.Length);
+
+            string written = Encoding.UTF8.GetString(bytes);
+            Assert.Contains("HTTP/1.1 101 Switching Protocols", written);
+            Assert.Contains("\r\n\r\n", written);
+        }
+
+        [Fact]
+        public async Task WriteHttpHeaderAsync_WithTrimmedResponse_AddsNewlines()
+        {
+            string response = "  HTTP/1.1 200 OK  ";
+            MemoryStream stream = new MemoryStream();
+
+            await HttpHelper.WriteHttpHeaderAsync(response, stream, CancellationToken.None);
+
+            stream.Position = 0;
+            byte[] bytes = new byte[stream.Length];
+            stream.Read(bytes, 0, bytes.Length);
+
+            string written = Encoding.UTF8.GetString(bytes);
+            Assert.Contains("HTTP/1.1 200 OK", written);
+            Assert.EndsWith("\r\n\r\n", written);
+        }
+
+        [Fact]
+        public async Task WriteHttpHeaderAsync_WithCancellationToken_WritesToStream()
+        {
+            string response = "HTTP/1.1 200 OK";
+            MemoryStream stream = new MemoryStream();
+            CancellationToken cts = CancellationToken.None;
+
+            await HttpHelper.WriteHttpHeaderAsync(response, stream, cts);
+
+            Assert.True(stream.Length > 0);
+        }
+        
         /// <summary>
         ///     Tests that calculate web socket key should return valid key
         /// </summary>

@@ -79,7 +79,7 @@ namespace Alis.Extension.Network
         ///     when an exception is encountered and the WebSocket connection is closed
         ///     The default is false
         /// </summary>
-        public bool IncludeExceptionInCloseResponse { get; }
+        public bool IncludeExceptionInCloseResponse { get; set; }
 
         /// <summary>
         ///     WebSocket Extensions as an HTTP header value

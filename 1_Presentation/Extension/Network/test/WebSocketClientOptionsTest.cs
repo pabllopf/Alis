@@ -37,6 +37,110 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class WebSocketClientOptionsTest
     {
+        [Fact]
+        public void DefaultConstructor_SetsDefaultKeepAliveInterval()
+        {
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            Assert.Equal(TimeSpan.FromSeconds(20), options.KeepAliveInterval);
+        }
+
+        [Fact]
+        public void DefaultConstructor_SetsDefaultNoDelay()
+        {
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            Assert.True(options.NoDelay);
+        }
+
+        [Fact]
+        public void DefaultConstructor_InitializesAdditionalHttpHeaders()
+        {
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            Assert.NotNull(options.AdditionalHttpHeaders);
+            Assert.Empty(options.AdditionalHttpHeaders);
+        }
+
+        [Fact]
+        public void DefaultConstructor_SetsDefaultIncludeExceptionInCloseResponse()
+        {
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            Assert.False(options.IncludeExceptionInCloseResponse);
+        }
+
+        [Fact]
+        public void DefaultConstructor_SetsDefaultSecWebSocketProtocol()
+        {
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            Assert.Null(options.SecWebSocketProtocol);
+        }
+
+        [Fact]
+        public void SetKeepAliveInterval_SetsValue()
+        {
+            WebSocketClientOptions options = new WebSocketClientOptions();
+            TimeSpan customInterval = TimeSpan.FromSeconds(30);
+
+            options.KeepAliveInterval = customInterval;
+
+            Assert.Equal(customInterval, options.KeepAliveInterval);
+        }
+
+        [Fact]
+        public void SetNoDelay_SetsValue()
+        {
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            options.NoDelay = false;
+
+            Assert.False(options.NoDelay);
+        }
+
+        [Fact]
+        public void SetSecWebSocketProtocol_SetsValue()
+        {
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            options.SecWebSocketProtocol = "chat";
+
+            Assert.Equal("chat", options.SecWebSocketProtocol);
+        }
+
+        [Fact]
+        public void SetIncludeExceptionInCloseResponse_SetsValue()
+        {
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            options.IncludeExceptionInCloseResponse = true;
+
+            Assert.True(options.IncludeExceptionInCloseResponse);
+        }
+
+        [Fact]
+        public void AdditionalHttpHeaders_AddsHeader()
+        {
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            options.AdditionalHttpHeaders["X-Custom-Header"] = "value";
+
+            Assert.Equal(1, options.AdditionalHttpHeaders.Count);
+            Assert.Equal("value", options.AdditionalHttpHeaders["X-Custom-Header"]);
+        }
+
+        [Fact]
+        public void AdditionalHttpHeaders_MultipleHeaders()
+        {
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            options.AdditionalHttpHeaders["Header1"] = "Value1";
+            options.AdditionalHttpHeaders["Header2"] = "Value2";
+
+            Assert.Equal(2, options.AdditionalHttpHeaders.Count);
+        }
+        
         /// <summary>
         ///     Tests that web socket client options default constructor
         /// </summary>

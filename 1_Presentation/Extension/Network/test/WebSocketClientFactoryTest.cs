@@ -45,6 +45,219 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class WebSocketClientFactoryTest
     {
+           [Fact]
+        public void Constructor_WithoutParameters_CreatesInstanceWithDefaultBufferPool()
+        {
+            WebSocketClientFactory factory = new WebSocketClientFactory();
+
+            Assert.NotNull(factory);
+            Assert.NotNull(factory.BufferPool);
+        }
+
+        [Fact]
+        public void Constructor_WithBufferFactory_SetsBufferFactory()
+        {
+            Func<MemoryStream> bufferFactory = () => new MemoryStream();
+            WebSocketClientFactory factory = new WebSocketClientFactory(bufferFactory);
+
+            Assert.NotNull(factory);
+            Assert.Same(bufferFactory, factory.BufferFactory);
+        }
+        
+
+        [Fact]
+        public void GetSubProtocolFromHeader_WithValidProtocol_ReturnsProtocol()
+        {
+            string response = "HTTP/1.1 101 Switching Protocols\r\n" +
+                            "Sec-WebSocket-Protocol: chat\r\n" +
+                            "\r\n";
+
+            string protocol = WebSocketClientFactory.GetSubProtocolFromHeader(response);
+
+            Assert.Equal("chat", protocol);
+        }
+
+        [Fact]
+        public void GetSubProtocolFromHeader_WithoutProtocol_ReturnsNull()
+        {
+            string response = "HTTP/1.1 101 Switching Protocols\r\n" +
+                            "\r\n";
+
+            string protocol = WebSocketClientFactory.GetSubProtocolFromHeader(response);
+
+            Assert.Null(protocol);
+        }
+
+        [Fact]
+        public void GetSubProtocolFromHeader_WithMultipleSpaces_ReturnsTrimmedProtocol()
+        {
+            string response = "HTTP/1.1 101 Switching Protocols\r\n" +
+                            "Sec-WebSocket-Protocol:   chat   \r\n" +
+                            "\r\n";
+
+            string protocol = WebSocketClientFactory.GetSubProtocolFromHeader(response);
+
+            Assert.Equal("chat", protocol);
+        }
+
+        [Fact]
+        public void GetSubProtocolFromHeader_CaseInsensitiveMatch_ReturnsProtocol()
+        {
+            string response = "HTTP/1.1 101 Switching Protocols\r\n" +
+                            "sec-websocket-protocol: chat\r\n" +
+                            "\r\n";
+
+            string protocol = WebSocketClientFactory.GetSubProtocolFromHeader(response);
+
+            Assert.Equal("chat", protocol);
+        }
+
+
+
+        [Fact]
+        public void ThrowIfInvalidAcceptString_WithInvalidAcceptString_ThrowsWebSocketHandshakeFailedException()
+        {
+            Guid guid = Guid.NewGuid();
+            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ==";
+            string invalidAcceptString = "invalidAcceptString";
+            string response = $"HTTP/1.1 101 Switching Protocols\r\n" +
+                            $"Sec-WebSocket-Accept: {invalidAcceptString}\r\n" +
+                            "\r\n";
+
+            WebSocketHandshakeFailedException exception = Assert.Throws<WebSocketHandshakeFailedException>(() => 
+                WebSocketClientFactory.ThrowIfInvalidAcceptString(guid, response, secWebSocketKey));
+
+            Assert.Contains("Handshake failed", exception.Message);
+        }
+        
+
+      
+
+        [Fact]
+        public void GenerateSecWebSocketKey_ReturnsBase64StringOf16Bytes()
+        {
+            string key = WebSocketClientFactory.GenerateSecWebSocketKey();
+
+            Assert.NotNull(key);
+            byte[] decodedKey = Convert.FromBase64String(key);
+            Assert.Equal(16, decodedKey.Length);
+        }
+
+        [Fact]
+        public void GenerateSecWebSocketKey_GeneratesDifferentKeys()
+        {
+            string key1 = WebSocketClientFactory.GenerateSecWebSocketKey();
+            string key2 = WebSocketClientFactory.GenerateSecWebSocketKey();
+
+            Assert.NotEqual(key1, key2);
+        }
+
+        [Fact]
+        public void BuildHandshakeRequest_WithValidUri_BuildsCorrectRequest()
+        {
+            Uri uri = new Uri("ws://example.com:8080/test");
+            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ==";
+            string protocol = "chat";
+            string additionalHeaders = "";
+
+            string request = WebSocketClientFactory.BuildHandshakeRequest(uri, secWebSocketKey, protocol, additionalHeaders);
+
+            Assert.Contains("GET /test HTTP/1.1", request);
+            Assert.Contains("Host: example.com:8080", request);
+            Assert.Contains("Upgrade: websocket", request);
+            Assert.Contains("Connection: Upgrade", request);
+            Assert.Contains($"Sec-WebSocket-Key: {secWebSocketKey}", request);
+            Assert.Contains("Sec-WebSocket-Version: 13", request);
+        }
+
+        [Fact]
+        public void BuildHandshakeRequest_WithWssScheme_BuildsCorrectRequest()
+        {
+            Uri uri = new Uri("wss://secure.example.com:443");
+            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ==";
+            string protocol = null;
+            string additionalHeaders = "";
+
+            string request = WebSocketClientFactory.BuildHandshakeRequest(uri, secWebSocketKey, protocol, additionalHeaders);
+
+            Assert.Contains("GET / HTTP/1.1", request);
+            Assert.Contains("Host: secure.example.com:443", request);
+        }
+
+        [Fact]
+        public void BuildHandshakeRequest_WithProtocol_IncludesProtocolHeader()
+        {
+            Uri uri = new Uri("ws://example.com");
+            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ==";
+            string protocol = "myprotocol";
+            string additionalHeaders = "";
+
+            string request = WebSocketClientFactory.BuildHandshakeRequest(uri, secWebSocketKey, protocol, additionalHeaders);
+
+            Assert.Contains("Sec-WebSocket-Protocol: myprotocol", request);
+        }
+
+        [Fact]
+        public void GetAdditionalHeaders_WithNullDictionary_ReturnsEmptyString()
+        {
+            Dictionary<string, string> headers = null;
+
+            string result = WebSocketClientFactory.GetAdditionalHeaders(headers);
+
+            Assert.Equal("", result);
+        }
+
+        [Fact]
+        public void GetAdditionalHeaders_WithEmptyDictionary_ReturnsEmptyString()
+        {
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+
+            string result = WebSocketClientFactory.GetAdditionalHeaders(headers);
+
+            Assert.Equal("", result);
+        }
+
+        [Fact]
+        public void GetAdditionalHeaders_WithHeaders_ReturnsFormattedString()
+        {
+            Dictionary<string, string> headers = new Dictionary<string, string>
+            {
+                {"X-Custom-Header", "value1"},
+                {"X-Another-Header", "value2"}
+            };
+
+            string result = WebSocketClientFactory.GetAdditionalHeaders(headers);
+
+            Assert.Contains("X-Custom-Header: value1", result);
+            Assert.Contains("X-Another-Header: value2", result);
+            Assert.Contains("\r\n", result);
+        }
+
+        [Fact]
+        public void ValidateServerCertificate_WithNoErrors_ReturnsTrue()
+        {
+            bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.None);
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void ValidateServerCertificate_WithSslPolicyErrors_ReturnsFalse()
+        {
+            bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.RemoteCertificateNameMismatch);
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void ValidateServerCertificate_WithAllSslPolicyErrors_ReturnsFalse()
+        {
+            bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, 
+                SslPolicyErrors.RemoteCertificateChainErrors | SslPolicyErrors.RemoteCertificateNameMismatch);
+
+            Assert.False(result);
+        }
+        
         /// <summary>
         ///     Tests that dispose closes web socket
         /// </summary>
