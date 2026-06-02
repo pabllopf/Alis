@@ -49,5 +49,18 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal("error occurred", args.Message);
             Assert.Null(args.Exception);
         }
+
+        /// <summary>
+        ///     Tests that constructor sets message and exception when provided
+        /// </summary>
+        [Fact]
+        public void Constructor_WithException_SetsMessageAndException()
+        {
+            Exception inner = new InvalidOperationException("inner error");
+            NetworkErrorEventArgs args = new NetworkErrorEventArgs("error occurred", inner);
+
+            Assert.Equal("error occurred", args.Message);
+            Assert.Equal(inner, args.Exception);
+        }
     }
 }
