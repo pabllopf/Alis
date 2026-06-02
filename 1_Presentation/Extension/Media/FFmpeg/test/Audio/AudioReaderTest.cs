@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
 {
@@ -37,5 +40,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// <seealso cref="AudioReader" />
     public class AudioReaderTest
     {
+        [Fact]
+        public void AudioReader_Constructor_ShouldThrowWhenFileMissing()
+        {
+            string missing = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".mp3");
+
+            Assert.Throws<FileNotFoundException>(() => new AudioReader(missing));
+        }
     }
 }
