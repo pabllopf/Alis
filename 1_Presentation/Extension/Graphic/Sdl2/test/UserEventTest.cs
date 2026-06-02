@@ -73,6 +73,18 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, evt.Data1);
             Assert.Equal(IntPtr.Zero, evt.Data2);
         }
+        }
 
-    }
+        [Fact]
+        public void ShouldAllowModificationOfProperties()
+        {
+            // Arrange
+            var evt = new UserEvent();
+            evt.Data1 = new IntPtr(0xDEAD);
+            evt.Data2 = new IntPtr(0xBEEF);
+            // Assert
+            Assert.Equal(new IntPtr(0xDEAD), evt.Data1);
+            Assert.Equal(new IntPtr(0xBEEF), evt.Data2);
+        }
+
 }
