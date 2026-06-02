@@ -113,5 +113,16 @@ namespace Alis.Extension.Network.Test.Core
 
             Assert.Equal(8, session.MaxPlayers);
         }
+
+        /// <summary>
+        ///     Tests that state can be set and retrieved
+        /// </summary>
+        [Fact]
+        public void State_SetAndGet_ReturnsCorrectValue()
+        {
+            NetworkSession session = new NetworkSession {State = SessionState.InProgress};
+
+            Assert.Equal(SessionState.InProgress, session.State);
+        }
     }
 }
