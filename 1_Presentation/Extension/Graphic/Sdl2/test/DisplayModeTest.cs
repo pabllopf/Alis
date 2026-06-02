@@ -16,5 +16,23 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, mode.refresh_rate);
             Assert.Equal(IntPtr.Zero, mode.DriverData);
         }
+
+        [Fact]
+        public void ShouldAssignAndRetrieveFields()
+        {
+            var mode = new DisplayMode
+            {
+                format = 123u,
+                w = 1920,
+                h = 1080,
+                refresh_rate = 60,
+                DriverData = new IntPtr(0xDEAD)
+            };
+            Assert.Equal(123u, mode.format);
+            Assert.Equal(1920, mode.w);
+            Assert.Equal(1080, mode.h);
+            Assert.Equal(60, mode.refresh_rate);
+            Assert.Equal(new IntPtr(0xDEAD), mode.DriverData);
+        }
     }
 }
