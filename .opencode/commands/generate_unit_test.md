@@ -1486,3 +1486,73 @@ test: multiple test coverage improvements
 # ABSOLUTE RULE
 
 NO TEST GENERATION MAY CONTINUE WITHOUT A SUCCESSFUL REAL COMMIT.
+
+
+
+# EXTERNAL CONTEXT RESOLUTION LAYER (MCP INTEGRATION)
+
+The system has access to MCP tools:
+
+* context7 (documentation and external technical knowledge)
+* engram (persistent semantic memory across executions)
+
+These tools are NOT optional. They are part of the reasoning pipeline.
+
+---
+
+# CONTEXT7 USAGE RULES
+
+The model MUST use context7 when:
+
+* resolving unknown API behavior
+* validating framework usage (.NET, xUnit, native bindings)
+* checking external library semantics (SDL2, FFmpeg, etc.)
+* confirming platform-specific behavior
+* unsure about runtime or SDK constraints
+
+The model MUST NOT guess API behavior when context7 is available.
+
+---
+
+# ENGRAM USAGE RULES
+
+The model MUST use engram when:
+
+* continuing work on an existing module or file
+* detecting repeated patterns across tests
+* retrieving previous decisions about mocking strategy
+* checking prior native dependency detection logic
+* ensuring consistency in test generation style
+
+Engram acts as the repository memory layer.
+
+---
+
+# PRIORITY ORDER FOR TRUTH RESOLUTION
+
+When resolving uncertainty:
+
+1. engram (project-specific memory)
+2. context7 (external truth / documentation)
+3. local file context
+4. heuristic inference (LAST RESORT ONLY)
+
+---
+
+# STRICT RULE
+
+If context7 or engram contains relevant information, the model MUST NOT:
+
+* hallucinate APIs
+* assume behavior
+* reconstruct missing semantics
+
+It MUST ground decisions in MCP outputs.
+
+---
+
+# MCP FAILURE RULE
+
+If MCP tools are unavailable or return empty:
+
+The model MAY continue using local reasoning, but MUST explicitly proceed with uncertainty minimization strategies.
