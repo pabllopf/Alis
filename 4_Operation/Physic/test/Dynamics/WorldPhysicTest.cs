@@ -469,6 +469,75 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Empty(world.JointList);
         }
+
+        /// <summary>
+        /// Tests that joint added event should fire when joint is added
+        /// </summary>
+        [Fact]
+        public void JointAddedEvent_ShouldFire_WhenJointIsAdded()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Static);
+            Body bodyB = world.CreateBody(new Vector2F(2.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Joint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+            int fireCount = 0;
+            world.JointAdded += (w, j) => fireCount++;
+
+            world.Add(joint);
+
+            Assert.Equal(1, fireCount);
+        }
+
+        /// <summary>
+        /// Tests that joint removed event should fire when joint is removed
+        /// </summary>
+        [Fact]
+        public void JointRemovedEvent_ShouldFire_WhenJointIsRemoved()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Static);
+            Body bodyB = world.CreateBody(new Vector2F(2.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Joint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+            world.Add(joint);
+            int fireCount = 0;
+            world.JointRemoved += (w, j) => fireCount++;
+
+            world.Remove(joint);
+
+            Assert.Equal(1, fireCount);
+        }
+
+        /// <summary>
+        /// Tests that fixture added event should fire when fixture is created
+        /// </summary>
+        [Fact]
+        public void FixtureAddedEvent_ShouldFire_WhenFixtureIsCreated()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            int fireCount = 0;
+            world.FixtureAdded += (w, b, f) => fireCount++;
+
+            world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+
+            Assert.Equal(1, fireCount);
+        }
+
+        /// <summary>
+        /// Tests that fixture removed event should fire when fixture is removed
+        /// </summary>
+        [Fact]
+        public void FixtureRemovedEvent_ShouldFire_WhenFixtureIsRemoved()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Fixture fixture = body.FixtureList[0];
+            int fireCount = 0;
+            world.FixtureRemoved += (w, b, f) => fireCount++;
+
+            world.Remove(body);
+
+            Assert.Equal(1, fireCount);
+        }
     }
 }
 
