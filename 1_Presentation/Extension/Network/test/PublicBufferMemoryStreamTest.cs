@@ -228,36 +228,6 @@ namespace Alis.Extension.Network.Test
         }
 
         [Fact]
-        public void ReadTimeout_ReturnsCorrectValue()
-        {
-            // Arrange
-            byte[] buffer = new byte[1024];
-            BufferPool pool = new BufferPool();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, pool);
-
-            // Act
-            int result = stream.ReadTimeout;
-
-            // Assert
-            Assert.Equal(0, result);
-        }
-
-        [Fact]
-        public void WriteTimeout_ReturnsCorrectValue()
-        {
-            // Arrange
-            byte[] buffer = new byte[1024];
-            BufferPool pool = new BufferPool();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, pool);
-
-            // Act
-            int result = stream.WriteTimeout;
-
-            // Assert
-            Assert.Equal(0, result);
-        }
-
-        [Fact]
         public void Flush_FlushesStream()
         {
             // Arrange

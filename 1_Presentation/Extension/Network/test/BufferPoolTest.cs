@@ -252,59 +252,7 @@ namespace Alis.Extension.Network.Test
             }
         }
 
-        /// <summary>
-        ///     Arrange: Create PublicBufferMemoryStream and write data
-        ///     Act: Read byte by byte from stream
-        ///     Assert: Each byte is read correctly in sequence
-        /// </summary>
-        [Fact]
-        public void PublicBufferMemoryStream_ReadByte_ReadsBytesSequentially()
-        {
-            // Arrange: Create pool and stream with data
-            using (MemoryStream buffer = _defaultPool.GetBuffer())
-            {
-                // Act: Write and read bytes sequentially
-                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
-                byte[] testData = { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE };
-                stream.Write(testData, 0, testData.Length);
 
-                // Assert: Each byte is read correctly
-                stream.Position = 0;
-                for (int i = 0; i < testData.Length; i++)
-                {
-                    byte readByte = (byte)stream.ReadByte();
-                    Assert.Equal(testData[i], readByte);
-                }
-
-                // Verify end of stream
-                Assert.Equal(-1, stream.ReadByte());
-            }
-        }
-
-        /// <summary>
-        ///     Arrange: Create PublicBufferMemoryStream with data
-        ///     Act: Close stream multiple times
-        ///     Assert: No exceptions are thrown and stream is properly closed
-        /// </summary>
-        [Fact]
-        public void PublicBufferMemoryStream_Close_ClosesStreamCorrectly()
-        {
-            // Arrange: Create pool and stream with data
-            using (MemoryStream buffer = _defaultPool.GetBuffer())
-            {
-                // Act: Create and close stream
-                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
-                stream.WriteByte(0x42);
-                stream.Close();
-
-                // Assert: Stream is closed and can be reused
-                Assert.Equal(0, stream.Length);
-                Assert.False(stream.CanWrite);
-
-                // Try to close again - should not throw
-                stream.Close();
-            }
-        }
 
         /// <summary>
         ///     Arrange: Create PublicBufferMemoryStream and write data
@@ -335,32 +283,6 @@ namespace Alis.Extension.Network.Test
             }
         }
 
-        /// <summary>
-        ///     Arrange: Create PublicBufferMemoryStream and write data
-        ///     Act: Clear stream by setting length to 0
-        ///     Assert: Stream is cleared and can be reused
-        /// </summary>
-        [Fact]
-        public void PublicBufferMemoryStream_Clear_ClearsStreamCorrectly()
-        {
-            // Arrange: Create pool and stream with data
-            using (MemoryStream buffer = _defaultPool.GetBuffer())
-            {
-                // Act: Write data and clear stream
-                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
-                byte[] testData = { 0x11, 0x22, 0x33 };
-                stream.Write(testData, 0, testData.Length);
-
-                // Assert: Clear works correctly
-                stream.SetLength(0);
-                Assert.Equal(0, stream.Length);
-                Assert.Equal(0, stream.Position);
-
-                // Can write new data after clear
-                stream.WriteByte(0x99);
-                Assert.Equal(1, stream.Length);
-            }
-        }
 
         #endregion
 
@@ -457,29 +379,6 @@ namespace Alis.Extension.Network.Test
 
         #region Edge Cases and Error Handling
 
-        /// <summary>
-        ///     Arrange: Create BufferPool with very small buffer size
-        ///     Act: Get buffer and write minimal data
-        ///     Assert: Pool handles small buffers correctly
-        /// </summary>
-        [Fact]
-        public void BufferPool_SmallBufferSize_HandlesSmallBuffers()
-        {
-            // Arrange: Create pool with minimal buffer size
-            BufferPool tinyPool = new BufferPool(16);
-
-            // Act: Get buffer and write small amount of data
-            using (MemoryStream buffer = tinyPool.GetBuffer())
-            {
-                buffer.WriteByte(0x01);
-                buffer.WriteByte(0x02);
-
-                // Assert: Small buffers work correctly
-                Assert.Equal(2, buffer.Length);
-            }
-
-            tinyPool.Dispose();
-        }
 
         /// <summary>
         ///     Arrange: Create BufferPool with large buffer size

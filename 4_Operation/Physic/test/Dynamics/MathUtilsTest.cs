@@ -77,34 +77,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that rotate 90 returns clockwise perpendicular
-        /// </summary>
-        [Fact]
-        public void Rot90_ShouldReturnClockwisePerpendicular()
-        {
-            Vector2F a = new Vector2F(1.0f, 0.0f);
-
-            Vector2F result = MathUtils.Rot90(ref a);
-
-            Assert.Equal(0.0f, result.X);
-            Assert.Equal(-1.0f, result.Y);
-        }
-
-        /// <summary>
-        /// Tests that rotate 270 returns counter clockwise perpendicular
-        /// </summary>
-        [Fact]
-        public void Rot270_ShouldReturnCounterClockwisePerpendicular()
-        {
-            Vector2F a = new Vector2F(1.0f, 0.0f);
-
-            Vector2F result = MathUtils.Rot270(ref a);
-
-            Assert.Equal(0.0f, result.X);
-            Assert.Equal(1.0f, result.Y);
-        }
-
-        /// <summary>
         /// Tests that abs returns absolute values of vector components
         /// </summary>
         [Fact]

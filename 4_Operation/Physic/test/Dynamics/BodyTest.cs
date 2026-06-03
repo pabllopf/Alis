@@ -350,6 +350,42 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.NotEqual(0.0f, body.AngularVelocity);
         }
+
+        /// <summary>
+        /// Tests that reset mass data should recalculate mass after fixture change
+        /// </summary>
+        [Fact]
+        public void ResetMassData_ShouldRecalculateMass()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 2.0f);
+
+            float massBefore = body.Mass;
+            body.ResetMassData();
+
+            Assert.True(body.Mass > 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that mass should reflect fixture density after reset
+        /// </summary>
+        [Fact]
+        public void Mass_ShouldReflectFixtureDensity()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 4.0f);
+            body.ResetMassData();
+
+            float massHighDensity = body.Mass;
+
+            Body body2 = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body2.CreateCircle(0.5f, 1.0f);
+            body2.ResetMassData();
+
+            Assert.True(massHighDensity > body2.Mass);
+        }
     }
 }
 
