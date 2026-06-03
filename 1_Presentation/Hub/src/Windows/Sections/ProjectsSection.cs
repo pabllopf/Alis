@@ -159,7 +159,8 @@ namespace Alis.App.Hub.Windows.Sections
         /// <param name="path">The path</param>
         private void RevealInFinder(string path)
         {
-            Process.Start(new ProcessStartInfo("open", path) {UseShellExecute = true});
+            ValidateFilePath(path);
+            Process.Start(new ProcessStartInfo("open", path) { UseShellExecute = true });
         }
 
         /// <summary>
@@ -168,7 +169,29 @@ namespace Alis.App.Hub.Windows.Sections
         /// <param name="path">The path</param>
         private void OpenInTerminal(string path)
         {
-            Process.Start(new ProcessStartInfo("open", "-a Terminal " + path) {UseShellExecute = true});
+            ValidateFilePath(path);
+            Process.Start(new ProcessStartInfo("open", "-a Terminal " + path) { UseShellExecute = true });
+        }
+
+        /// <summary>
+        ///     Validates that a file path is safe to use with shell commands
+        /// </summary>
+        /// <param name="path">The path to validate</param>
+        private static void ValidateFilePath(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                throw new ArgumentException("Path cannot be null or empty.", nameof(path));
+            }
+
+            string[] dangerousChars = { ";", "|", "&", "$", "`", "(", ")", "{", "}", "<", ">", "?", "*", "[", "]", "\\", "\"" };
+            foreach (string charSeq in dangerousChars)
+            {
+                if (path.Contains(charSeq))
+                {
+                    throw new SecurityException($"Path contains potentially dangerous characters: {charSeq}");
+                }
+            }
         }
 
         /// <summary>

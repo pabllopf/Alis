@@ -800,16 +800,36 @@ namespace Alis.App.Engine.Menus
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
+                    ValidateUrlScheme(url);
                     Process.Start("xdg-open", url);
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                 {
+                    ValidateUrlScheme(url);
                     Process.Start("open", url);
                 }
                 else
                 {
                     throw;
                 }
+            }
+        }
+
+        /// <summary>
+        ///     Validates that a URL uses a safe scheme (https only)
+        /// </summary>
+        /// <param name="url">The URL to validate</param>
+        private static void ValidateUrlScheme(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                throw new ArgumentException("URL cannot be null or empty.", nameof(url));
+            }
+
+            if (!url.StartsWith("https://", StringComparison.OrdinalIgnoreCase) &&
+                !url.StartsWith("http://", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new SecurityException($"Only http and https schemes are allowed. Got: {url}");
             }
         }
 

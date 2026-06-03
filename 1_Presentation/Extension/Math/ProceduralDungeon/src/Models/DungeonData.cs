@@ -77,6 +77,29 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
             Board = board ?? throw new ArgumentNullException(nameof(board));
             Rooms = rooms ?? throw new ArgumentNullException(nameof(rooms));
             Corridors = corridors ?? throw new ArgumentNullException(nameof(corridors));
+
+            ValidateDeserializedData();
+        }
+
+        /// <summary>
+        ///     Validates deserialized data to ensure security after deserialization
+        /// </summary>
+        private void ValidateDeserializedData()
+        {
+            if (Board?.Length == 0)
+            {
+                throw new ArgumentException("Deserialized board cannot be empty.");
+            }
+
+            if (Rooms?.Count == 0)
+            {
+                throw new ArgumentException("Deserialized rooms list cannot be empty.");
+            }
+
+            if (Corridors?.Count == 0)
+            {
+                throw new ArgumentException("Deserialized corridors list cannot be empty.");
+            }
         }
 
         /// <summary>

@@ -882,6 +882,13 @@ namespace Alis.Extension.Updater
         /// </summary>
         private static void ExtractEntry(ZipArchiveEntry entry, string entryFullPath)
         {
+            string targetDirectory = Path.GetDirectoryName(entryFullPath) ?? string.Empty;
+
+            if (!Path.IsPathRooted(targetDirectory))
+            {
+                throw new InvalidOperationException($"Invalid entry path: {entry.Name}");
+            }
+
             if (string.IsNullOrEmpty(entry.Name))
             {
                 Directory.CreateDirectory(entryFullPath);
