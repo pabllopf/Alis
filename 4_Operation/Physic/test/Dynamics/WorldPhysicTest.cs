@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Controllers;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
@@ -537,6 +538,66 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Remove(body);
 
             Assert.Equal(1, fireCount);
+        }
+
+        /// <summary>
+        /// Tests that create polygon should create body in world
+        /// </summary>
+        [Fact]
+        public void CreatePolygon_ShouldCreateBodyInWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(-1.0f, -1.0f),
+                new Vector2F(1.0f, -1.0f),
+                new Vector2F(0.0f, 1.0f)
+            };
+
+            Body body = world.CreatePolygon(vertices, 1.0f, Vector2F.Zero);
+
+            Assert.NotNull(body);
+            Assert.Single(world.BodyList);
+        }
+
+        /// <summary>
+        /// Tests that create chain shape should create body in world
+        /// </summary>
+        [Fact]
+        public void CreateChainShape_ShouldCreateBodyInWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0.0f, 0.0f),
+                new Vector2F(1.0f, 0.0f),
+                new Vector2F(1.0f, 1.0f)
+            };
+
+            Body body = world.CreateChainShape(vertices, Vector2F.Zero);
+
+            Assert.NotNull(body);
+            Assert.Single(world.BodyList);
+        }
+
+        /// <summary>
+        /// Tests that create loop shape should create body in world
+        /// </summary>
+        [Fact]
+        public void CreateLoopShape_ShouldCreateBodyInWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0.0f, 0.0f),
+                new Vector2F(1.0f, 0.0f),
+                new Vector2F(0.5f, 1.0f)
+            };
+
+            Body body = world.CreateLoopShape(vertices, Vector2F.Zero);
+
+            Assert.NotNull(body);
+            Assert.Single(world.BodyList);
         }
     }
 }
