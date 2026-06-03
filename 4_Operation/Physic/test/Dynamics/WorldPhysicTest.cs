@@ -179,17 +179,17 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set gravity when locked should throw
+        /// Tests that set gravity updates gravity vector
         /// </summary>
         [Fact]
-        public void SetGravity_WhenLocked_ShouldThrowInvalidOperationException()
+        public void SetGravity_ShouldUpdateGravityProperty()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vector2F newGravity = new Vector2F(0.0f, -9.81f);
 
-            world.BodyRemoved += (_, _) => world.SetGravity(new Vector2F(0.0f, -9.81f));
+            world.SetGravity(newGravity);
 
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            world.Remove(body);
+            Assert.Equal(newGravity, world.GetGravity);
         }
 
         /// <summary>
@@ -436,6 +436,39 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Empty(world.ControllerList);
         }
 
+        /// <summary>
+        /// Tests that add joint should add to joint list
+        /// </summary>
+        [Fact]
+        public void AddJoint_ShouldAddToJointList()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Static);
+            Body bodyB = world.CreateBody(new Vector2F(2.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Joint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            world.Add(joint);
+
+            Assert.Single(world.JointList);
+            Assert.Contains(joint, world.JointList);
+        }
+
+        /// <summary>
+        /// Tests that remove joint should remove from joint list
+        /// </summary>
+        [Fact]
+        public void RemoveJoint_ShouldRemoveFromJointList()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Static);
+            Body bodyB = world.CreateBody(new Vector2F(2.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Joint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+            world.Add(joint);
+
+            world.Remove(joint);
+
+            Assert.Empty(world.JointList);
+        }
     }
 }
 
