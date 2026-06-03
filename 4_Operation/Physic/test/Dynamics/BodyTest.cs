@@ -174,6 +174,122 @@ namespace Alis.Core.Physic.Test.Dynamics
                 Assert.True(fixture.GetIsSensor);
             }
         }
+
+        /// <summary>
+        /// Tests that create rectangle should add fixture to body
+        /// </summary>
+        [Fact]
+        public void CreateRectangle_ShouldAddFixtureToBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            body.CreateRectangle(2.0f, 1.0f, 1.0f, Vector2F.Zero);
+
+            Assert.Single(body.FixtureList);
+        }
+
+        /// <summary>
+        /// Tests that reset dynamics should clear forces and torques
+        /// </summary>
+        [Fact]
+        public void ResetDynamics_ShouldClearForcesAndTorques()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.ApplyForce(new Vector2F(10.0f, 0.0f));
+
+            body.ResetDynamics();
+
+            Assert.Equal(Vector2F.Zero, body.Force);
+            Assert.Equal(0.0f, body.Torque);
+        }
+
+        /// <summary>
+        /// Tests that set fixed rotation should prevent angular velocity changes
+        /// </summary>
+        [Fact]
+        public void SetFixedRotation_ShouldPreventAngularVelocityChanges()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            body.FixedRotation = true;
+
+            Assert.True(body.FixedRotation);
+        }
+
+        /// <summary>
+        /// Tests that set sleeping allowed should update property
+        /// </summary>
+        [Fact]
+        public void SetSleepingAllowed_ShouldUpdateProperty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            body.SleepingAllowed = false;
+
+            Assert.False(body.SleepingAllowed);
+        }
+
+        /// <summary>
+        /// Tests that set bullet should update property
+        /// </summary>
+        [Fact]
+        public void SetBullet_ShouldUpdateProperty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            body.IsBullet = true;
+
+            Assert.True(body.IsBullet);
+        }
+
+        /// <summary>
+        /// Tests that set ignore gravity should update property
+        /// </summary>
+        [Fact]
+        public void SetIgnoreGravity_ShouldUpdateProperty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            body.IgnoreGravity = true;
+
+            Assert.True(body.IgnoreGravity);
+        }
+
+        /// <summary>
+        /// Tests that set linear damping should update property
+        /// </summary>
+        [Fact]
+        public void SetLinearDamping_ShouldUpdateProperty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            body.LinearDamping = 0.5f;
+
+            Assert.Equal(0.5f, body.LinearDamping);
+        }
+
+        /// <summary>
+        /// Tests that set angular damping should update property
+        /// </summary>
+        [Fact]
+        public void SetAngularDamping_ShouldUpdateProperty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            body.AngularDamping = 0.3f;
+
+            Assert.Equal(0.3f, body.AngularDamping);
+        }
     }
 }
 
