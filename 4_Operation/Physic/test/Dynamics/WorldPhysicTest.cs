@@ -283,6 +283,17 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(1, fireCount);
         }
+
+        /// <summary>
+        /// Tests that remove null body should throw argument null exception
+        /// </summary>
+        [Fact]
+        public void Remove_NullBody_ShouldThrowArgumentNullException()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Throws<ArgumentNullException>(() => world.Remove((Body)null));
+        }
     }
 }
 
