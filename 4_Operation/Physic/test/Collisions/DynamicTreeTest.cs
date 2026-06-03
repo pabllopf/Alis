@@ -105,6 +105,89 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.Equal(0, tree.Height);
         }
+
+        /// <summary>
+        /// Tests that empty tree should have zero height
+        /// </summary>
+        [Fact]
+        public void EmptyTree_ShouldHaveZeroHeight()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+
+            Assert.Equal(0, tree.Height);
+        }
+
+        /// <summary>
+        /// Tests that empty tree should have zero area ratio
+        /// </summary>
+        [Fact]
+        public void EmptyTree_ShouldHaveZeroAreaRatio()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+
+            Assert.Equal(0.0f, tree.AreaRatio);
+        }
+
+        /// <summary>
+        /// Tests that empty tree should have zero max balance
+        /// </summary>
+        [Fact]
+        public void EmptyTree_ShouldHaveZeroMaxBalance()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+
+            Assert.Equal(0, tree.MaxBalance);
+        }
+
+        /// <summary>
+        /// Tests that get fat aabb should return fattened bounds
+        /// </summary>
+        [Fact]
+        public void GetFatAabb_ShouldReturnFattenedBounds()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            int proxyId = tree.AddProxy(ref aabb);
+
+            Aabb fatAabb = tree.GetFatAabb(proxyId);
+
+            Assert.True(fatAabb.LowerBound.X <= aabb.LowerBound.X);
+            Assert.True(fatAabb.UpperBound.X >= aabb.UpperBound.X);
+        }
+
+        /// <summary>
+        /// Tests that test fat aabb overlap should return true for overlapping proxies
+        /// </summary>
+        [Fact]
+        public void TestFatAabbOverlap_ShouldReturnTrueForOverlapping()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            Aabb aabb2 = new Aabb(new Vector2F(0.5f, 0.5f), new Vector2F(1.5f, 1.5f));
+            int proxy1 = tree.AddProxy(ref aabb1);
+            int proxy2 = tree.AddProxy(ref aabb2);
+
+            bool overlap = tree.TestFatAabbOverlap(proxy1, proxy2);
+
+            Assert.True(overlap);
+        }
+
+        /// <summary>
+        /// Tests that test fat aabb overlap should return false for distant proxies
+        /// </summary>
+        [Fact]
+        public void TestFatAabbOverlap_ShouldReturnFalseForDistant()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            Aabb aabb2 = new Aabb(new Vector2F(100.0f, 100.0f), new Vector2F(101.0f, 101.0f));
+            int proxy1 = tree.AddProxy(ref aabb1);
+            int proxy2 = tree.AddProxy(ref aabb2);
+
+            bool overlap = tree.TestFatAabbOverlap(proxy1, proxy2);
+
+            Assert.False(overlap);
+        }
     }
 }
 

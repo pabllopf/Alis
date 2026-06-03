@@ -245,6 +245,75 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(0.0f, result);
         }
+
+        /// <summary>
+        /// Tests that is collinear returns true for collinear points
+        /// </summary>
+        [Fact]
+        public void IsCollinear_ShouldReturnTrue_WhenPointsAreCollinear()
+        {
+            Vector2F a = new Vector2F(0.0f, 0.0f);
+            Vector2F b = new Vector2F(1.0f, 1.0f);
+            Vector2F c = new Vector2F(2.0f, 2.0f);
+
+            Assert.True(MathUtils.IsCollinear(ref a, ref b, ref c));
+        }
+
+        /// <summary>
+        /// Tests that is collinear returns false for non collinear points
+        /// </summary>
+        [Fact]
+        public void IsCollinear_ShouldReturnFalse_WhenPointsAreNotCollinear()
+        {
+            Vector2F a = new Vector2F(0.0f, 0.0f);
+            Vector2F b = new Vector2F(1.0f, 0.0f);
+            Vector2F c = new Vector2F(0.0f, 1.0f);
+
+            Assert.False(MathUtils.IsCollinear(ref a, ref b, ref c));
+        }
+
+        /// <summary>
+        /// Tests that cross product of 3d vectors returns perpendicular vector
+        /// </summary>
+        [Fact]
+        public void Cross_Of3DVectors_ShouldReturnPerpendicularVector()
+        {
+            Vector3F a = new Vector3F(1.0f, 0.0f, 0.0f);
+            Vector3F b = new Vector3F(0.0f, 1.0f, 0.0f);
+
+            Vector3F result = MathUtils.Cross(ref a, ref b);
+
+            Assert.Equal(0.0f, result.X);
+            Assert.Equal(0.0f, result.Y);
+            Assert.Equal(1.0f, result.Z);
+        }
+
+        /// <summary>
+        /// Tests that is valid vector returns true for valid vector
+        /// </summary>
+        [Fact]
+        public void IsValid_Vector2F_ShouldReturnTrue_WhenBothComponentsAreValid()
+        {
+            Vector2F v = new Vector2F(1.0f, 2.0f);
+
+            Assert.True(v.IsValid());
+        }
+
+        /// <summary>
+        /// Tests that clamp vector should clamp each component
+        /// </summary>
+        [Fact]
+        public void Clamp_Vector2F_ShouldClampComponents()
+        {
+            Vector2F value = new Vector2F(0.5f, 1.5f);
+            Vector2F low = new Vector2F(0.0f, 1.0f);
+            Vector2F high = new Vector2F(1.0f, 2.0f);
+
+            Vector2F result = MathUtils.Clamp(value, low, high);
+
+            Assert.Equal(0.5f, result.X);
+            Assert.Equal(1.5f, result.Y);
+        }
     }
 }
 
