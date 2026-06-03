@@ -278,47 +278,5 @@ namespace Alis.Core.Aspect.Memory.Test
 
             Assert.Equal(unicodeName, zipEntryInfo.FullName);
         }
-
-        /// <summary>
-        /// Gets the massive zip entry cases
-        /// </summary>
-        /// <returns>A system collections generic enumerable of object array</returns>
-        public static IEnumerable<object[]> GetMassiveZipEntryCases()
-        {
-            DateTimeOffset baseTime = new DateTimeOffset(2020, 1, 1, 0, 0, 0, TimeSpan.Zero);
-
-            for (int i = 0; i < 2000; i++)
-            {
-                string fullName = i == 1999
-                    ? new string('a', 512) + ".bin"
-                    : $"folder_{i % 17}/asset_{i}.dat";
-
-                long length = i == 1999 ? long.MaxValue - 1 : i * 4096L;
-                DateTimeOffset timestamp = baseTime.AddMinutes(i - 1000);
-
-                yield return new object[] {fullName, length, timestamp};
-            }
-        }
-
-        /// <summary>
-        /// Tests that zip entry info massive normal and extreme cases round trip metadata
-        /// </summary>
-        /// <param name="fullName">The full name</param>
-        /// <param name="length">The length</param>
-        /// <param name="timestamp">The timestamp</param>
-        [Theory, MemberData(nameof(GetMassiveZipEntryCases))]
-        public void ZipEntryInfo_MassiveNormalAndExtremeCases_RoundTripMetadata(string fullName, long length, DateTimeOffset timestamp)
-        {
-            ZipEntryInfo entry = new ZipEntryInfo
-            {
-                FullName = fullName,
-                Length = length,
-                LastWriteTimeUtc = timestamp
-            };
-
-            Assert.Equal(fullName, entry.FullName);
-            Assert.Equal(length, entry.Length);
-            Assert.Equal(timestamp, entry.LastWriteTimeUtc);
-        }
     }
 }

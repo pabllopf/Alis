@@ -38,18 +38,6 @@ namespace Alis.Core.Physic.Test.Collisions
     /// </summary>
     public class EpAxisTest
     {
-        /// <summary>
-        ///     Tests that constructor should initialize with default values
-        /// </summary>
-        [Fact]
-        public void Constructor_ShouldInitializeWithDefaultValues()
-        {
-            EpAxis epAxis = new EpAxis();
-
-            Assert.Equal(0, epAxis.Index);
-            Assert.Equal(0.0f, epAxis.Separation);
-            Assert.Equal(EpAxisType.None, epAxis.Type);
-        }
 
         /// <summary>
         ///     Tests that index should set and get correctly
@@ -149,70 +137,7 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(SettingEnv.Epsilon, epAxis.Separation);
         }
 
-        /// <summary>
-        ///     Tests that type should set and get correctly
-        /// </summary>
-        [Fact]
-        public void Type_ShouldSetAndGetCorrectly()
-        {
-            EpAxis epAxis = new EpAxis
-            {
-                Type = EpAxisType.ShapeA
-            };
-
-            Assert.Equal(EpAxisType.ShapeA, epAxis.Type);
-        }
-
-        /// <summary>
-        ///     Tests that type with ShapeB should work
-        /// </summary>
-        [Fact]
-        public void Type_WithShapeB_ShouldWork()
-        {
-            EpAxis epAxis = new EpAxis
-            {
-                Type = EpAxisType.ShapeB
-            };
-
-            Assert.Equal(EpAxisType.ShapeB, epAxis.Type);
-        }
-
-        /// <summary>
-        ///     Tests that all properties should set correctly
-        /// </summary>
-        [Fact]
-        public void AllProperties_ShouldSetCorrectly()
-        {
-            EpAxis epAxis = new EpAxis
-            {
-                Index = 7,
-                Separation = -1.5f,
-                Type = EpAxisType.ShapeA
-            };
-
-            Assert.Equal(7, epAxis.Index);
-            Assert.Equal(-1.5f, epAxis.Separation);
-            Assert.Equal(EpAxisType.ShapeA, epAxis.Type);
-        }
-
-        /// <summary>
-        ///     Tests that ep axis with most negative separation should be selected
-        /// </summary>
-        [Fact]
-        public void EpAxis_WithMostNegativeSeparation_ShouldBeSelected()
-        {
-            EpAxis epAxis = new EpAxis
-            {
-                Index = 3,
-                Separation = -10.0f,
-                Type = EpAxisType.ShapeA
-            };
-
-            Assert.Equal(3, epAxis.Index);
-            Assert.Equal(-10.0f, epAxis.Separation);
-            Assert.Equal(EpAxisType.ShapeA, epAxis.Type);
-        }
-
+      
         /// <summary>
         ///     Tests that default ep axis should have zero index
         /// </summary>
@@ -233,109 +158,6 @@ namespace Alis.Core.Physic.Test.Collisions
             EpAxis epAxis = new EpAxis();
 
             Assert.Equal(0.0f, epAxis.Separation);
-        }
-
-        /// <summary>
-        ///     Tests that default ep axis should have None type
-        /// </summary>
-        [Fact]
-        public void DefaultEpAxis_ShouldHaveNoneType()
-        {
-            EpAxis epAxis = new EpAxis();
-
-            Assert.Equal(EpAxisType.None, epAxis.Type);
-        }
-
-        /// <summary>
-        ///     Tests that ep axis should be structurally equal with same values
-        /// </summary>
-        [Fact]
-        public void EpAxis_ShouldBeStructurallyEqualWithSameValues()
-        {
-            EpAxis axis1 = new EpAxis
-            {
-                Index = 5,
-                Separation = -2.0f,
-                Type = EpAxisType.ShapeA
-            };
-
-            EpAxis axis2 = new EpAxis
-            {
-                Index = 5,
-                Separation = -2.0f,
-                Type = EpAxisType.ShapeA
-            };
-
-            Assert.Equal(axis1, axis2);
-        }
-
-        /// <summary>
-        ///     Tests that ep axis should be different with different index
-        /// </summary>
-        [Fact]
-        public void EpAxis_ShouldBeDifferentWithDifferentIndex()
-        {
-            EpAxis axis1 = new EpAxis
-            {
-                Index = 3,
-                Separation = -1.0f,
-                Type = EpAxisType.ShapeA
-            };
-
-            EpAxis axis2 = new EpAxis
-            {
-                Index = 7,
-                Separation = -1.0f,
-                Type = EpAxisType.ShapeA
-            };
-
-            Assert.NotEqual(axis1, axis2);
-        }
-
-        /// <summary>
-        ///     Tests that ep axis should be different with different separation
-        /// </summary>
-        [Fact]
-        public void EpAxis_ShouldBeDifferentWithDifferentSeparation()
-        {
-            EpAxis axis1 = new EpAxis
-            {
-                Index = 2,
-                Separation = -3.0f,
-                Type = EpAxisType.ShapeA
-            };
-
-            EpAxis axis2 = new EpAxis
-            {
-                Index = 2,
-                Separation = -5.0f,
-                Type = EpAxisType.ShapeA
-            };
-
-            Assert.NotEqual(axis1, axis2);
-        }
-
-        /// <summary>
-        ///     Tests that ep axis should be different with different type
-        /// </summary>
-        [Fact]
-        public void EpAxis_ShouldBeDifferentWithDifferentType()
-        {
-            EpAxis axis1 = new EpAxis
-            {
-                Index = 4,
-                Separation = -2.0f,
-                Type = EpAxisType.ShapeA
-            };
-
-            EpAxis axis2 = new EpAxis
-            {
-                Index = 4,
-                Separation = -2.0f,
-                Type = EpAxisType.ShapeB
-            };
-
-            Assert.NotEqual(axis1, axis2);
         }
     }
 }

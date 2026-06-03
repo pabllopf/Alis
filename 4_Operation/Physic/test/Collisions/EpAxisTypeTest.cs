@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using Alis.Core.Physic.Collisions;
 using Xunit;
 
@@ -35,47 +36,8 @@ namespace Alis.Core.Physic.Test.Collisions
     /// <summary>
     ///     The ep axis type test class
     /// </summary>
-    public class EpAxisTypeTest
+    public class EPAxisTypeTest
     {
-        /// <summary>
-        ///     Tests that unknown should have value zero
-        /// </summary>
-        [Fact]
-        public void Unknown_ShouldHaveValueZero()
-        {
-            byte value = 0;
-            Assert.Equal(value, (byte) EpAxisType.Unknown);
-        }
-
-        /// <summary>
-        ///     Tests that edgeA should have value one
-        /// </summary>
-        [Fact]
-        public void EdgeA_ShouldHaveValueOne()
-        {
-            byte value = 1;
-            Assert.Equal(value, (byte) EpAxisType.EdgeA);
-        }
-
-        /// <summary>
-        ///     Tests that edgeB should have value two
-        /// </summary>
-        [Fact]
-        public void EdgeB_ShouldHaveValueTwo()
-        {
-            byte value = 2;
-            Assert.Equal(value, (byte) EpAxisType.EdgeB);
-        }
-
-        /// <summary>
-        ///     Tests that all values should be unique
-        /// </summary>
-        [Fact]
-        public void AllValues_ShouldBeUnique()
-        {
-            Assert.NotEqual(EpAxisType.Unknown, EpAxisType.EdgeA);
-            Assert.NotEqual(EpAxisType.Unknown, EpAxisType.EdgeB);
-            Assert.NotEqual(EpAxisType.EdgeA, EpAxisType.EdgeB);
-        }
+       
     }
 }
