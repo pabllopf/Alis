@@ -302,11 +302,14 @@ namespace Alis.Extension.Network.Server
 
             try
             {
-                #if NET6_0_OR_GREATER
-                await _cancellationTokenSource?.CancelAsync();
-                #else
-                _cancellationTokenSource?.Cancel();
-                #endif
+                if (_cancellationTokenSource != null)
+                {
+                    #if NET6_0_OR_GREATER
+                    await _cancellationTokenSource.CancelAsync();
+                    #else
+                    _cancellationTokenSource.Cancel();
+                    #endif
+                }
                 await _transport?.StopAsync(cancellationToken);
 
                 lock (_lockObject)
