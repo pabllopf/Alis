@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """
 Worker release script: marks an issue as fixed or failed.
-Usage: python3 worker_release.py <issue-key> <fixed|failed> [message]
+Usage: python3 worker_release.py <bugs|security> <issue-key> <fixed|failed> <worker-id> [message]
 """
 import json
 import sys
+import os
 from datetime import datetime, timezone
 
-INDEX_PATH = "/Volumes/d/repositorios/Alis/.opencode/cache/sonar_issues_index.json"
-LOG_PATH = "/Volumes/d/repositorios/Alis/.opencode/cache/sonar_execution_log.jsonl"
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-def log_entry(worker_id, issue_key, action, message):
+def log_entry(worker_id, issue_key, action, message, category):
+    LOG_PATH = os.path.join(REPO_ROOT, ".opencode", "cache", "sonar", category, "sonar_execution_log.jsonl")
     entry = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "workerId": worker_id,
@@ -21,37 +22,77 @@ def log_entry(worker_id, issue_key, action, message):
     with open(LOG_PATH, 'a') as f:
         f.write(json.dumps(entry) + "\n")
 
-def release_issue(issue_key, status, worker_id, message=""):
+def release_issue(issue_key, status, worker_id, message="", category="bugs"):
+    INDEX_PATH = os.path.join(REPO_ROOT, ".opencode", "cache", "sonar", category, "sonar_issues_index.json")
+    STATE_PATH = os.path.join(REPO_ROOT, ".opencode", "cache", "sonar", category, "sonar_execution_state.json")
+    LOCK_PATH = os.path.join(REPO_ROOT, ".opencode", "cache", "sonar", category, "sonar_worker_locks.json")
+    
+    # Load index
     with open(INDEX_PATH, 'r') as f:
         idx = json.load(f)
     
-    if issue_key not in idx:
+    issues_key = "issues" if category == "bugs" else "hotspots"
+    issues = idx.get(issues_key, [])
+    
+    found = False
+    for issue in issues:
+        if issue.get("key") == issue_key:
+            if category == "bugs":
+                issue["status"] = status.upper() if status != "fixed" else "CLOSED"
+            else:
+                issue["status"] = "REVIEWED" if status == "fixed" else status.upper()
+            issue["completedAt"] = datetime.now(timezone.utc).isoformat()
+            found = True
+            break
+    
+    if not found:
         print(f"Error: issue {issue_key} not found in index")
         return False
     
-    issue = idx[issue_key]
-    issue['status'] = status
-    issue['completedAt'] = datetime.now(timezone.utc).isoformat()
+    # Update state
+    with open(STATE_PATH, 'r') as f:
+        state = json.load(f)
     
-    with open(INDEX_PATH, 'w') as f:
-        json.dump(idx, f, indent=2)
+    if issue_key not in state.get("processedIssues", []):
+        state["processedIssues"].append(issue_key)
     
-    log_entry(worker_id, issue_key, status, message)
+    if status == "failed":
+        if issue_key not in state.get("failedIssues", []):
+            state["failedIssues"].append(issue_key)
+    
+    state["lastUpdate"] = datetime.now(timezone.utc).isoformat()
+    state["remainingIssues"] = max(0, state.get("totalIssues", len(state["processedIssues"]) + len(state.get("failedIssues", [])))
+    
+    with open(STATE_PATH, 'w') as f:
+        json.dump(state, f, indent=2)
+    
+    # Release lock
+    with open(LOCK_PATH, 'r') as f:
+        locks = json.load(f)
+    
+    if issue_key in locks.get("locks", {}):
+        del locks["locks"][issue_key]
+    
+    with open(LOCK_PATH, 'w') as f:
+        json.dump(locks, f, indent=2)
+    
+    log_entry(worker_id, issue_key, status, message, category)
     print(f"Issue {issue_key} marked as {status}")
     return True
 
 if __name__ == '__main__':
-    if len(sys.argv) < 4:
-        print("Usage: worker_release.py <issue-key> <fixed|failed|blocked> <worker-id> [message]")
+    if len(sys.argv) < 5:
+        print("Usage: worker_release.py <bugs|security> <issue-key> <fixed|failed> <worker-id> [message]")
         sys.exit(1)
     
-    issue_key = sys.argv[1]
-    status = sys.argv[2]
-    worker_id = sys.argv[3]
-    message = sys.argv[4] if len(sys.argv) > 4 else ""
+    category = sys.argv[1]
+    issue_key = sys.argv[2]
+    status = sys.argv[3]
+    worker_id = sys.argv[4]
+    message = sys.argv[5] if len(sys.argv) > 5 else ""
     
     if status not in ('fixed', 'failed', 'blocked'):
         print(f"Invalid status: {status}. Must be fixed, failed, or blocked.")
         sys.exit(1)
     
-    release_issue(issue_key, status, worker_id, message)
+    release_issue(issue_key, status, worker_id, message, category)

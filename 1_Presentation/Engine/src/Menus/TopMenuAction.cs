@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Security;
 using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Graphic.Ui;

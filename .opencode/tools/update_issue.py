@@ -12,8 +12,9 @@ import os
 import fcntl
 from datetime import datetime, timezone
 
-CACHE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)))
-INDEX_PATH = os.path.join(CACHE_DIR, 'sonar_issues_index.json')
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+CATEGORY = sys.argv[4] if len(sys.argv) > 4 else "bugs"
+INDEX_PATH = os.path.join(REPO_ROOT, ".opencode", "cache", "sonar", CATEGORY, "sonar_issues_index.json")
 
 VALID_STATUSES = {'open', 'in_progress', 'fixed', 'failed', 'blocked'}
 

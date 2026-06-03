@@ -301,7 +301,7 @@ namespace Alis.App.Installer
                 io.MouseClickedCount = mouseClickedCount;
                 io.MouseDoubleClicked = mouseDoubleClicked;
                 io.MouseWheel = _platform.GetMouseWheel();
-            }
+            
 
             ImGui.NewFrame();
 

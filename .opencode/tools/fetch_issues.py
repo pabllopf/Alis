@@ -12,14 +12,22 @@ if not TOKEN:
 PROJECT = "pabllopf-official_alis"
 BASE_URL = "https://sonarcloud.io/api/issues/search"
 
-cache_dir = "./.opencode/cache/sonar"
+category = sys.argv[1] if len(sys.argv) > 1 else "bugs"
+cache_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), ".opencode", "cache", "sonar", category)
 os.makedirs(cache_dir, exist_ok=True)
 
 page = 1
 all_issues = []
 
+if category == "bugs":
+    type_filter = "BUG"
+elif category == "security":
+    type_filter = "SECURITY_HOTSPOT"
+else:
+    type_filter = "CODE_SMELL"
+
 while True:
-    url = f"{BASE_URL}?componentKeys={PROJECT}&types=CODE_SMELL&resolved=false&ps=500&p={page}"
+    url = f"{BASE_URL}?componentKeys={PROJECT}&types={type_filter}&resolved=false&ps=500&p={page}"
     print(f"Fetching page {page}...")
     
     req = urllib.request.Request(url)
@@ -47,8 +55,9 @@ while True:
         sys.exit(1)
 
 # Build snapshot
+snapshot_key = "issues" if category == "bugs" else "hotspots"
 with open(os.path.join(cache_dir, "sonar_issues_snapshot.json"), "w") as f:
-    json.dump({"issues": all_issues}, f, indent=2)
+    json.dump({snapshot_key: all_issues}, f, indent=2)
 
 # Build index
 index = {}
@@ -56,7 +65,7 @@ for issue in all_issues:
     key = issue.get("key")
     if key:
         index[key] = {
-            "ruleKey": issue.get("rule"),
+            "ruleKey": issue.get("rule") or issue.get("ruleKey"),
             "file": issue.get("component"),
             "line": issue.get("line"),
             "severity": issue.get("severity"),
@@ -71,4 +80,4 @@ for issue in all_issues:
 with open(os.path.join(cache_dir, "sonar_issues_index.json"), "w") as f:
     json.dump(index, f, indent=2)
 
-print(f"Ingested {len(all_issues)} issues.")
+print(f"Ingested {len(all_issues)} issues for category: {category}.")
