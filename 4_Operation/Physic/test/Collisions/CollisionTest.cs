@@ -137,6 +137,40 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(PointState.Persist, state2[0]);
             Assert.Equal(PointState.Add, state2[1]);
         }
+
+        /// <summary>
+        /// Tests that collide edge and circle should produce contact when circle touches edge
+        /// </summary>
+        [Fact]
+        public void CollideEdgeAndCircle_ShouldProduceContact_WhenCircleTouchesEdge()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            CircleShape circle = new CircleShape(0.5f, 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(1.0f, 0.4f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndCircle(ref manifold, edge, ref xfEdge, circle, ref xfCircle);
+
+            Assert.Equal(1, manifold.PointCount);
+        }
+
+        /// <summary>
+        /// Tests that collide edge and polygon should produce contact when polygon overlaps edge
+        /// </summary>
+        [Fact]
+        public void CollideEdgeAndPolygon_ShouldProduceContact_WhenPolygonOverlapsEdge()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, -0.2f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 1);
+        }
     }
 }
 
