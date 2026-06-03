@@ -188,6 +188,103 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.False(overlap);
         }
+
+        /// <summary>
+        /// Tests that ray cast should hit proxy when ray crosses it
+        /// </summary>
+        [Fact]
+        public void RayCast_ShouldHitProxy_WhenRayCrossesIt()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            int proxyId = tree.AddProxy(ref aabb);
+
+            List<int> hits = new List<int>();
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(-5.0f, 0.0f),
+                Point2 = new Vector2F(5.0f, 0.0f),
+                MaxFraction = 1.0f
+            };
+
+            tree.RayCast((ref RayCastInput ri, int id) =>
+            {
+                hits.Add(id);
+                return 1.0f;
+            }, ref input);
+
+            Assert.Contains(proxyId, hits);
+        }
+
+        /// <summary>
+        /// Tests that shift origin should translate all proxy bounds
+        /// </summary>
+        [Fact]
+        public void ShiftOrigin_ShouldTranslateAllProxyBounds()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(6.0f, 6.0f));
+            int proxyId = tree.AddProxy(ref aabb);
+
+            tree.ShiftOrigin(new Vector2F(2.0f, 3.0f));
+
+            Aabb shifted = tree.GetFatAabb(proxyId);
+            Assert.True(shifted.LowerBound.X < 5.0f);
+        }
+
+        /// <summary>
+        /// Tests that compute height should return zero for single node
+        /// </summary>
+        [Fact]
+        public void ComputeHeight_ShouldReturnZeroForSingleNode()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            tree.AddProxy(ref aabb);
+
+            int height = tree.ComputeHeight();
+
+            Assert.Equal(0, height);
+        }
+
+        /// <summary>
+        /// Tests that query should return false early when callback returns false
+        /// </summary>
+        [Fact]
+        public void Query_ShouldReturnFalseEarly_WhenCallbackReturnsFalse()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            Aabb aabb2 = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(6.0f, 6.0f));
+            tree.AddProxy(ref aabb1);
+            tree.AddProxy(ref aabb2);
+
+            Aabb queryArea = new Aabb(new Vector2F(-10.0f, -10.0f), new Vector2F(10.0f, 10.0f));
+            int hitCount = 0;
+            tree.Query(id =>
+            {
+                hitCount++;
+                return false;
+            }, ref queryArea);
+
+            Assert.Equal(1, hitCount);
+        }
+
+        /// <summary>
+        /// Tests that move proxy should return true when moving outside fat aabb
+        /// </summary>
+        [Fact]
+        public void MoveProxy_ShouldReturnTrue_WhenMovingOutsideFatAabb()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            int proxyId = tree.AddProxy(ref aabb);
+
+            Aabb newAabb = new Aabb(new Vector2F(10.0f, 10.0f), new Vector2F(11.0f, 11.0f));
+            bool moved = tree.MoveProxy(proxyId, ref newAabb, Vector2F.Zero);
+
+            Assert.True(moved);
+        }
     }
 }
 
