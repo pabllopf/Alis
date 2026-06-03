@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Concurrent;
 using System.IO;
 
@@ -39,7 +40,7 @@ namespace Alis.Extension.Network
     ///     MemoryStreams can grow larger than the DEFAULT_BUFFER_SIZE (or whatever you passed in)
     ///     and the underlying buffers will be returned to the pool at their larger sizes
     /// </summary>
-    public class BufferPool : IBufferPool
+    public class BufferPool : IBufferPool, IDisposable
     {
         /// <summary>
         ///     The default buffer size
@@ -95,6 +96,12 @@ namespace Alis.Extension.Network
         protected internal void ReturnBuffer(byte[] buffer)
         {
             _bufferPoolStack.Push(buffer);
+        }
+
+        public void Dispose()
+        {
+            while (_bufferPoolStack.TryPop(out _)) { }
+            GC.SuppressFinalize(this);    
         }
     }
 }
