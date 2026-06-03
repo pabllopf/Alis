@@ -171,6 +171,46 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.True(manifold.PointCount >= 1);
         }
+
+        /// <summary>
+        /// Tests that test overlap should return false for non overlapping circles
+        /// </summary>
+        [Fact]
+        public void TestOverlap_ShouldReturnFalse_ForNonOverlappingShapes()
+        {
+            CircleShape shapeA = new CircleShape(1.0f, 1.0f);
+            CircleShape shapeB = new CircleShape(1.0f, 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(10.0f, 0.0f), 0.0f);
+
+            bool overlap = Collision.TestOverlap(shapeA, 0, shapeB, 0, ref xfA, ref xfB);
+
+            Assert.False(overlap);
+        }
+
+        /// <summary>
+        /// Tests that get point states should mark remove correctly
+        /// </summary>
+        [Fact]
+        public void GetPointStates_ShouldMarkRemoveCorrectly()
+        {
+            Manifold oldManifold = new Manifold();
+            oldManifold.PointCount = 1;
+            ManifoldPoint oldPoint = oldManifold.Points[0];
+            oldPoint.Id.Key = 11;
+            oldManifold.Points[0] = oldPoint;
+
+            Manifold newManifold = new Manifold();
+            newManifold.PointCount = 1;
+            ManifoldPoint newPoint = newManifold.Points[0];
+            newPoint.Id.Key = 22;
+            newManifold.Points[0] = newPoint;
+
+            Collision.GetPointStates(out FixedArray2<PointState> state1, out FixedArray2<PointState> state2, ref oldManifold, ref newManifold);
+
+            Assert.Equal(PointState.Remove, state1[0]);
+            Assert.Equal(PointState.Add, state2[0]);
+        }
     }
 }
 
