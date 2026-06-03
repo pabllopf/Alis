@@ -82,10 +82,6 @@ namespace Alis.Core.Physic.Collisions
                 case ShapeType.Circle:
                 {
                     CircleShape circle = (CircleShape) shape;
-                    if (Vertices.Count > 0)
-                    {
-                        Vertices.Clear();
-                    }
 
                     Vertices.Add(circle.Position);
                     Radius = circle.GetRadius;
@@ -95,10 +91,6 @@ namespace Alis.Core.Physic.Collisions
                 case ShapeType.Polygon:
                 {
                     PolygonShape polygon = (PolygonShape) shape;
-                    if (Vertices.Count > 0)
-                    {
-                        Vertices.Clear();
-                    }
 
                     for (int i = 0; i < polygon.Vertices.Count; i++)
                     {
@@ -112,10 +104,6 @@ namespace Alis.Core.Physic.Collisions
                 case ShapeType.Chain:
                 {
                     ChainShape chain = (ChainShape) shape;
-                    if (Vertices.Count > 0)
-                    {
-                        Vertices.Clear();
-                    }
 
 
                     Vertices.Add(chain.Vertices[index]);
@@ -128,10 +116,6 @@ namespace Alis.Core.Physic.Collisions
                 case ShapeType.Edge:
                 {
                     EdgeShape edge = (EdgeShape) shape;
-                    if (Vertices.Count > 0)
-                    {
-                        Vertices.Clear();
-                    }
 
                     Vertices.Add(edge.Vertex1);
                     Vertices.Add(edge.Vertex2);

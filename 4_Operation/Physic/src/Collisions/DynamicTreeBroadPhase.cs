@@ -255,10 +255,6 @@ namespace Alis.Core.Physic.Collisions
 
             // Send the pairs back to the client.
             int i = 0;
-            if (_pairCount <= 0)
-            {
-                return;
-            }
 
             while (i < _pairCount)
             {

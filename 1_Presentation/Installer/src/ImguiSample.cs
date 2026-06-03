@@ -251,9 +251,7 @@ namespace Alis.App.Installer
 
             io.DisplaySize = new Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
 
-            if (_platform != null)
-            {
-                _platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
+            _platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
                 io.MousePos = new Vector2F(mx, my);
 
                 List<bool> mouseDownList = new List<bool>();
@@ -303,12 +301,6 @@ namespace Alis.App.Installer
                 io.MouseClickedCount = mouseClickedCount;
                 io.MouseDoubleClicked = mouseDoubleClicked;
                 io.MouseWheel = _platform.GetMouseWheel();
-            }
-            else
-            {
-                io.MousePos = new Vector2F(0, 0);
-                io.MouseDown = new List<bool> {false, false, false, false, false};
-                io.MouseWheel = 0.0f;
             }
 
             ImGui.NewFrame();
