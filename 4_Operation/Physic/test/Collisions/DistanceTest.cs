@@ -63,5 +63,28 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(output.Distance > 0.0f);
             Assert.True(output.Iterations >= 0);
         }
+
+        /// <summary>
+        /// Tests that compute distance should return near zero distance for overlapping circles
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_ShouldReturnNearZeroDistance_ForOverlappingCircles()
+        {
+            CircleShape circleA = new CircleShape(1.0f, 1.0f);
+            CircleShape circleB = new CircleShape(1.0f, 1.0f);
+
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = new ControllerTransform(new Vector2F(0.5f, 0.0f), 0.0f),
+                UseRadii = false
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+
+            Assert.True(output.Distance <= 0.5f);
+        }
     }
 }
