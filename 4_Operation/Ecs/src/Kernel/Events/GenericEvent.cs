@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Kernel.Events
@@ -159,7 +160,7 @@ namespace Alis.Core.Ecs.Kernel.Events
         public override bool Equals(object obj) => ReferenceEquals(this, obj);
 
         /// <inheritdoc />
-        public override int GetHashCode() => base.GetHashCode();
+        public override int GetHashCode() => 0;
 
         /// <summary>
         ///     Determines whether two <see cref="GenericEvent" /> instances are equal.
