@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 
@@ -58,6 +59,11 @@ namespace Alis.Core.Ecs.Redifinition
         ///     The weak target obj
         /// </summary>
         private GCHandle _weakTargetObj;
+
+        /// <summary>
+        ///     Static list to keep references alive until finalizer runs
+        /// </summary>
+        private static readonly List<Gen2GcCallback> _registeredCallbacks = new();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Gen2GcCallback" /> class
@@ -94,7 +100,8 @@ namespace Alis.Core.Ecs.Redifinition
         /// </summary>
         public static void Register(Func<bool> callback)
         {
-            new Gen2GcCallback(callback);
+            var instance = new Gen2GcCallback(callback);
+            _registeredCallbacks.Add(instance);
         }
 
         /// <summary>
@@ -105,13 +112,16 @@ namespace Alis.Core.Ecs.Redifinition
         /// </summary>
         public static void Register(Func<object, bool> callback, object targetObj)
         {
-            new Gen2GcCallback(callback, targetObj);
+            var instance = new Gen2GcCallback(callback, targetObj);
+            _registeredCallbacks.Add(instance);
         }
 
         /// <summary>
         /// </summary>
         ~Gen2GcCallback()
         {
+            _registeredCallbacks.Remove(this);
+
             if (_weakTargetObj.IsAllocated)
             {
                 object targetObj = _weakTargetObj.Target;
