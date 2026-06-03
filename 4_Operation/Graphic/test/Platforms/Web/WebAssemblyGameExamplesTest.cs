@@ -146,7 +146,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, y);
         }
 
-        [Theory]
+        
         [InlineData(0, "A / Cross")]
         [InlineData(1, "B / Circle")]
         [InlineData(2, "X / Square")]

@@ -27,6 +27,68 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Physic.Dynamics.Joints;
+using Xunit;
 
+namespace Alis.Core.Physic.Test.Dynamics.Joints
+{
+    /// <summary>
+    ///     The limit state test class
+    /// </summary>
+    public class LimitStateTest
+    {
+        /// <summary>
+        ///     Tests that inactive should have value zero
+        /// </summary>
+        [Fact]
+        public void Inactive_ShouldHaveValueZero()
+        {
+            byte value = 0;
+            Assert.Equal(value, (byte) LimitState.Inactive);
+        }
 
+        /// <summary>
+        ///     Tests that atLower should have value one
+        /// </summary>
+        [Fact]
+        public void AtLower_ShouldHaveValueOne()
+        {
+            byte value = 1;
+            Assert.Equal(value, (byte) LimitState.AtLower);
+        }
 
+        /// <summary>
+        ///     Tests that atUpper should have value two
+        /// </summary>
+        [Fact]
+        public void AtUpper_ShouldHaveValueTwo()
+        {
+            byte value = 2;
+            Assert.Equal(value, (byte) LimitState.AtUpper);
+        }
+
+        /// <summary>
+        ///     Tests that equal should have value three
+        /// </summary>
+        [Fact]
+        public void Equal_ShouldHaveValueThree()
+        {
+            byte value = 3;
+            Assert.Equal(value, (byte) LimitState.Equal);
+        }
+
+        /// <summary>
+        ///     Tests that all values should be unique
+        /// </summary>
+        [Fact]
+        public void AllValues_ShouldBeUnique()
+        {
+            Assert.NotEqual(LimitState.Inactive, LimitState.AtLower);
+            Assert.NotEqual(LimitState.Inactive, LimitState.AtUpper);
+            Assert.NotEqual(LimitState.Inactive, LimitState.Equal);
+            Assert.NotEqual(LimitState.AtLower, LimitState.AtUpper);
+            Assert.NotEqual(LimitState.AtLower, LimitState.Equal);
+            Assert.NotEqual(LimitState.AtUpper, LimitState.Equal);
+        }
+    }
+}

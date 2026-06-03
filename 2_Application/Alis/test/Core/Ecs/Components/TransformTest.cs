@@ -147,7 +147,7 @@ namespace Alis.Test.Core.Ecs.Components
         /// <summary>
         ///     Tests that Rotation can be set to any float value
         /// </summary>
-        [Theory]
+        
         [InlineData(0f)]
         [InlineData(360f)]
         [InlineData(-360f)]

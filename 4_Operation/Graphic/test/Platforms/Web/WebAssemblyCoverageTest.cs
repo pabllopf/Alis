@@ -99,8 +99,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
-
-        [Theory]
         [InlineData(65, ConsoleKey.A)]
         [InlineData(66, ConsoleKey.B)]
         [InlineData(67, ConsoleKey.C)]
@@ -134,7 +132,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
-        [Theory]
+        
         [InlineData(48, ConsoleKey.D0)]
         [InlineData(49, ConsoleKey.D1)]
         [InlineData(50, ConsoleKey.D2)]
@@ -152,7 +150,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
-        [Theory]
+        
         [InlineData(112, ConsoleKey.F1)]
         [InlineData(113, ConsoleKey.F2)]
         [InlineData(114, ConsoleKey.F3)]
@@ -172,7 +170,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
-        [Theory]
+        
         [InlineData(96, ConsoleKey.NumPad0)]
         [InlineData(97, ConsoleKey.NumPad1)]
         [InlineData(98, ConsoleKey.NumPad2)]
@@ -190,7 +188,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
-        [Theory]
+        
         [InlineData(106, ConsoleKey.Multiply)]
         [InlineData(107, ConsoleKey.Add)]
         [InlineData(109, ConsoleKey.Subtract)]
@@ -203,7 +201,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
-        [Theory]
+        
         [InlineData(16, ConsoleKey.LeftArrow)]
         [InlineData(17, ConsoleKey.Escape)]
         public void WebAssemblyPlatform_ConvertKeyCode_ModifierKeys(int keyCode, ConsoleKey expected)

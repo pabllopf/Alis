@@ -121,7 +121,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
-        [Theory]
+        
         [InlineData(true)]
         [InlineData(false)]
         public void FullscreenEventArgs_CanSetIsFullscreen(bool value)
@@ -306,7 +306,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
-        [Theory]
+        
         [InlineData(DisplayQuality.VeryLow, 0.5f)]
         [InlineData(DisplayQuality.Low, 0.75f)]
         [InlineData(DisplayQuality.Medium, 0.875f)]

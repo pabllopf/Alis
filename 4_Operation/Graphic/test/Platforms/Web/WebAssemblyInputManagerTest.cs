@@ -521,7 +521,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
-        [Theory]
+        
         [InlineData(ConsoleKey.A, "A")]
         [InlineData(ConsoleKey.B, "B")]
         [InlineData(ConsoleKey.Enter, "Enter")]

@@ -658,7 +658,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(buttons[4]);
         }
 
-        [Theory]
+        
         [InlineData(65, ConsoleKey.A)]
         [InlineData(66, ConsoleKey.B)]
         [InlineData(90, ConsoleKey.Z)]

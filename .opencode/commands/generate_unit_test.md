@@ -349,3 +349,985 @@ NO explanations.
 5. minimal mocking
 6. compilation safety
 7. speed
+
+# SOLUTION ARCHITECTURE CONTEXT MODEL
+
+The repository is a LARGE MULTI-MODULE .NET MONOREPO.
+
+The solution follows a STRICT DOMAIN SEGMENTED ARCHITECTURE.
+
+---
+
+# GLOBAL SOLUTION LAYERS
+
+The repository is organized into HIGH LEVEL DOMAIN LAYERS:
+
+| Layer           | Purpose                                         |
+| --------------- | ----------------------------------------------- |
+| 1_Presentation  | UI, integrations, extensions, platform adapters |
+| 2_Application   | Main application entrypoints and game samples   |
+| 3_Structuration | Shared foundational core abstractions           |
+| 4_Operation     | Runtime engine systems                          |
+| 5_Declaration   | Contracts and aspect declarations               |
+| 6_Ideation      | Utility/aspect-oriented reusable modules        |
+
+---
+
+# MODULE ISOLATION RULES
+
+CRITICAL:
+
+Each module is FULLY ISOLATED.
+
+The model MUST NEVER:
+
+* analyze unrelated modules
+* import dependencies from sibling modules
+* create shared test utilities outside current module
+* move across top-level architecture layers
+* scan the entire repository
+
+ONLY the TARGET module may be analyzed.
+
+---
+
+# MODULE TYPES
+
+Each module may contain:
+
+| Folder           | Meaning                  |
+| ---------------- | ------------------------ |
+| src              | production code          |
+| test             | unit tests               |
+| sample / samples | demos and examples       |
+| generator        | Roslyn source generators |
+
+---
+
+# PROJECT ROLE DETECTION
+
+The model MUST infer project role from path.
+
+Examples:
+
+```text
+*/src/*.csproj
+```
+
+→ production project
+
+```text
+*/test/*.csproj
+```
+
+→ unit test project
+
+```text
+*/sample/*.csproj
+```
+
+→ executable sample project
+
+```text
+*/generator/*.csproj
+```
+
+→ source generator project
+
+---
+
+# TEST TARGET RESOLUTION
+
+The test project MUST ALWAYS be resolved from the source project.
+
+Transformation rules:
+
+```text
+/src/Project.csproj
+```
+
+→
+
+```text
+/test/Project.Test.csproj
+```
+
+Examples:
+
+```text
+6_Ideation/Memory/src/Alis.Core.Aspect.Memory.csproj
+```
+
+→
+
+```text
+6_Ideation/Memory/test/Alis.Core.Aspect.Memory.Test.csproj
+```
+
+```text
+4_Operation/Ecs/src/Alis.Core.Ecs.csproj
+```
+
+→
+
+```text
+4_Operation/Ecs/test/Alis.Core.Ecs.Test.csproj
+```
+
+---
+
+# DOMAIN CLASSIFICATION MODEL
+
+The repository contains several DOMAIN CATEGORIES.
+
+The model MUST preserve domain semantics during test generation.
+
+## CORE ENGINE MODULES
+
+High complexity runtime systems:
+
+* Alis.Core.Ecs
+* Alis.Core.Graphic
+* Alis.Core.Audio
+* Alis.Core.Physic
+
+Testing strategy:
+
+* prioritize behavior coverage
+* prioritize state transitions
+* prioritize deterministic execution
+* avoid timing-sensitive tests
+
+---
+
+## ASPECT / UTILITY MODULES
+
+Reusable utility libraries:
+
+* Memory
+* Time
+* Logging
+* Fluent
+* Data
+* Math
+
+Testing strategy:
+
+* prioritize edge cases
+* prioritize null handling
+* prioritize transformations
+* prioritize pure deterministic assertions
+
+---
+
+## EXTENSION MODULES
+
+External integrations:
+
+* FFmpeg
+* GoogleDrive
+* DropBox
+* Stripe
+* Translator
+* GoogleAds
+
+Testing strategy:
+
+* isolate external dependencies
+* mock IO boundaries only
+* avoid network calls
+* avoid filesystem mutations outside temp directories
+
+---
+
+## GRAPHIC / PLATFORM MODULES
+
+Platform-specific bindings:
+
+* SDL2
+* GLFW
+* SFML
+* UI
+
+Testing strategy:
+
+* avoid graphical runtime dependencies
+* avoid native initialization when possible
+* prioritize wrapper behavior
+* prioritize parameter validation
+
+---
+
+# SOURCE GENERATOR RULES
+
+Projects under:
+
+```text
+*/generator/*
+```
+
+are Roslyn Source Generators.
+
+Tests MUST prioritize:
+
+* syntax edge cases
+* compilation behavior
+* deterministic generation
+* incremental generation consistency
+
+The model MUST avoid:
+
+* full compilation graph analysis
+* unnecessary workspace scans
+
+---
+
+# SAMPLE PROJECT RULES
+
+Projects under:
+
+```text
+*/sample/*
+*/samples/*
+```
+
+are NOT production code.
+
+The model MUST NEVER:
+
+* generate tests for sample projects
+* treat sample code as production behavior
+* infer architecture from samples
+
+Samples may ONLY be used as behavioral references.
+
+---
+
+# WORKING SET REDUCTION STRATEGY
+
+To reduce token usage and improve local model reliability:
+
+The model MUST ONLY load:
+
+1. current target file
+2. directly referenced types
+3. current module test project
+4. immediate dependency interfaces if strictly required
+
+The model MUST NOT:
+
+* recursively scan full dependency trees
+* inspect unrelated namespaces
+* load unrelated csproj files
+* analyze entire solution structure repeatedly
+
+---
+
+# EXECUTION ORDER OPTIMIZATION
+
+For large modules:
+
+Process STRICTLY:
+
+1. one source file
+2. one behavior group
+3. one test unit
+4. one commit
+
+Then continue incrementally.
+
+---
+
+# PLATFORM COMPATIBILITY CONTEXT
+
+The framework supports:
+
+* Windows
+* Linux
+* macOS
+* WASM
+* future Android/iOS
+
+Tests MUST remain:
+
+* platform agnostic
+* deterministic
+* CI-safe
+* free from OS-specific assumptions
+
+---
+
+# FRAMEWORK COMPATIBILITY CONTEXT
+
+Supported targets include:
+
+* .NET Standard 2.0
+* .NET Standard 2.1
+* .NET Core 2.x+
+* .NET 5+
+* .NET Framework 4.7.1+
+
+Tests MUST avoid:
+
+* runtime-specific APIs
+* unsupported reflection APIs
+* platform-exclusive features
+* APIs unavailable on netstandard2.0
+
+---
+
+# LARGE SOLUTION EXECUTION RULE
+
+CRITICAL:
+
+This repository is TOO LARGE for full-solution reasoning.
+
+The model MUST behave as an INCREMENTAL TESTING AGENT.
+
+NEVER perform:
+
+* full repository indexing
+* full repository reasoning
+* global architecture reconstruction
+* whole-solution symbol analysis
+
+# NATIVE DEPENDENCY TEST EXECUTION RULES
+
+CRITICAL:
+
+Some modules depend on:
+
+* native libraries
+* platform runtimes
+* external executables
+* multimedia frameworks
+* graphical backends
+* operating-system installed packages
+
+Examples include:
+
+* SDL2
+* SDL2_image
+* SDL2_ttf
+* FFmpeg
+* GLFW
+* SFML
+
+These dependencies MAY NOT exist on:
+
+* CI pipelines
+* developer machines
+* minimal environments
+* containerized runners
+
+The model MUST NEVER assume native dependencies are installed.
+
+---
+
+# MANDATORY CONDITIONAL TEST EXECUTION
+
+If a unit test depends DIRECTLY OR INDIRECTLY on:
+
+* native runtime bindings
+* unmanaged DLLs
+* shared objects
+* dylibs
+* external executables
+* platform-installed packages
+
+Then the test MUST NOT use plain:
+
+```csharp id="u2zvlt"
+[Fact]
+```
+
+Instead, the test MUST use a CONDITIONAL CUSTOM FACT ATTRIBUTE.
+
+---
+
+# REQUIRED CUSTOM FACT MODEL
+
+The model MUST generate custom xUnit Fact attributes capable of:
+
+1. detecting current operating system
+2. detecting dependency presence
+3. automatically skipping tests if dependency is unavailable
+
+---
+
+# REQUIRED EXECUTION BEHAVIOR
+
+The custom Fact attribute MUST:
+
+* execute safely on Windows
+* execute safely on Linux
+* execute safely on macOS
+
+AND MUST:
+
+* skip instead of fail
+* avoid throwing during discovery
+* avoid crashing test runners
+* provide clear skip reason
+
+---
+
+# PLATFORM DETECTION RULES
+
+The implementation MUST detect:
+
+```csharp id="tw4u5e"
+OperatingSystem.IsWindows()
+OperatingSystem.IsLinux()
+OperatingSystem.IsMacOS()
+```
+
+The model MUST NEVER use deprecated runtime detection APIs.
+
+---
+
+# NATIVE LIBRARY DETECTION STRATEGY
+
+Detection MUST be platform-specific.
+
+## WINDOWS
+
+Validate:
+
+* .dll existence
+* executable existence
+* PATH availability
+
+Examples:
+
+```text id="5hng5h"
+SDL2.dll
+avcodec-*.dll
+ffmpeg.exe
+```
+
+---
+
+## LINUX
+
+Validate:
+
+* shared object presence
+* executable presence
+* ldconfig availability when useful
+
+Examples:
+
+```text id="d7k7uq"
+libSDL2.so
+libSDL2_image.so
+libavcodec.so
+ffmpeg
+```
+
+---
+
+## MACOS
+
+Validate:
+
+* .dylib presence
+* Homebrew installations
+* executable availability
+
+Examples:
+
+```text id="4yjft8"
+libSDL2.dylib
+libavcodec.dylib
+ffmpeg
+```
+
+Typical installation examples:
+
+```bash id="k2xvtz"
+brew install sdl2 sdl2_image sdl2_ttf ffmpeg
+```
+
+---
+
+# PREFERRED DETECTION IMPLEMENTATION
+
+The model SHOULD prefer:
+
+```csharp id="wujh83"
+NativeLibrary.TryLoad(...)
+```
+
+when validating native libraries.
+
+For executable tools:
+
+```csharp id="2lc0j7"
+Process.Start(...)
+```
+
+or PATH probing MAY be used safely.
+
+---
+
+# REQUIRED ATTRIBUTE ARCHITECTURE
+
+The model SHOULD generate reusable attributes such as:
+
+```csharp id="m7j0t9"
+[RequiresSdlFact]
+[RequiresFfmpegFact]
+[RequiresNativeLibraryFact]
+```
+
+instead of duplicating detection logic across tests.
+
+---
+
+# REQUIRED SKIP SEMANTICS
+
+If dependency is unavailable:
+
+The test MUST be skipped.
+
+It MUST NOT:
+
+* fail
+* throw
+* crash
+* hang
+* abort discovery
+
+---
+
+# REQUIRED SKIP MESSAGE FORMAT
+
+Skip messages MUST clearly explain:
+
+* missing dependency
+* detected platform
+* optional installation hint
+
+Example:
+
+```text id="vhn4ko"
+SDL2 native library not detected on macOS.
+Install using: brew install sdl2
+```
+
+---
+
+# TEST GENERATION PRIORITY RULE
+
+When native dependencies are involved:
+
+Priority order becomes:
+
+1. safe execution
+2. deterministic skip behavior
+3. platform compatibility
+4. behavioral coverage
+5. minimal native assumptions
+
+---
+
+# GRAPHIC / MULTIMEDIA MODULE RULES
+
+The following modules are HIGH RISK for native dependencies:
+
+* Graphic
+* SDL2
+* GLFW
+* SFML
+* FFmpeg
+* Audio
+
+The model MUST automatically assume native dependency validation MAY be required.
+
+---
+
+# CI/CD COMPATIBILITY RULE
+
+Generated tests MUST support:
+
+* minimal CI agents
+* GitHub Actions
+* Azure Pipelines
+* GitLab CI
+* local developer machines
+
+WITHOUT requiring ALL native dependencies globally installed.
+
+---
+
+# DISCOVERY SAFETY RULE
+
+Custom attributes MUST be SAFE during test discovery.
+
+The model MUST avoid:
+
+* eager native initialization
+* static constructors loading native libraries
+* unsafe P/Invoke during attribute construction
+
+Native validation MUST be lazy and exception-safe.
+
+---
+
+# RECOMMENDED REUSABLE INFRASTRUCTURE
+
+The model SHOULD centralize native dependency validation into:
+
+```text id="l1ovv9"
+test/Common/NativeDependencyDetector.cs
+test/Common/NativeFactAttributes.cs
+```
+
+or equivalent module-local infrastructure.
+
+The model MUST avoid duplicating platform detection logic per test file.
+
+---
+
+# ABSOLUTE RULE
+
+Tests depending on native libraries MUST NEVER assume:
+
+* SDL2 is installed
+* FFmpeg is installed
+* Homebrew exists
+* PATH contains executables
+* CI runners contain multimedia runtimes
+
+ALL native assumptions MUST be validated dynamically before execution.
+
+
+# EXISTING TEST PRESERVATION RULES
+
+CRITICAL:
+
+Existing tests are PART OF THE SYSTEM.
+
+The model MUST NEVER:
+
+* rewrite unrelated existing tests
+* reformat unrelated test files
+* rename existing tests
+* change assertion styles globally
+* migrate frameworks
+* introduce mass refactors
+
+ONLY minimal localized modifications are allowed.
+
+---
+
+# TEST FILE MODIFICATION STRATEGY
+
+When a target test file already exists:
+
+The model MUST:
+
+1. preserve file structure
+2. preserve namespace structure
+3. preserve existing helper usage
+4. append new tests incrementally
+5. avoid unrelated formatting changes
+
+The model MUST NOT:
+
+* reorder entire files
+* alphabetize members
+* reformat entire documents
+* replace assertion libraries
+* introduce breaking style changes
+
+---
+
+# COMPILATION-FIRST EXECUTION MODEL
+
+CRITICAL:
+
+Generated tests MUST compile BEFORE coverage expansion continues.
+
+Priority order becomes:
+
+1. compilation safety
+2. deterministic execution
+3. behavioral correctness
+4. coverage expansion
+
+The model MUST NEVER continue generating tests on top of uncompilable code.
+
+---
+
+# MANDATORY POST-GENERATION VALIDATION
+
+After generating EACH test unit:
+
+The model MUST validate:
+
+* namespace correctness
+* using directives
+* target type visibility
+* constructor validity
+* assertion validity
+* async correctness
+* generic constraints
+* nullable correctness
+
+---
+
+# DUPLICATE TEST PREVENTION
+
+Before generating a new test:
+
+The model MUST verify the behavior is NOT already covered.
+
+The model MUST avoid:
+
+* semantic duplicate tests
+* assertion duplicates
+* renamed duplicate tests
+* duplicate edge cases
+
+---
+
+# TEST NAMING RULES
+
+Test names MUST:
+
+* describe observable behavior
+* remain deterministic
+* avoid implementation details
+* avoid ambiguous wording
+
+Preferred patterns:
+
+```csharp
+ShouldReturnValueWhenCondition
+ShouldThrowWhenInvalidInput
+ShouldUpdateStateAfterOperation
+ShouldNotModifyCollectionWhenEmpty
+```
+
+Forbidden patterns:
+
+```csharp
+Test1
+MethodWorks
+CoverageTest
+RandomScenario
+```
+
+---
+
+# MAXIMAL LOCALITY RULE
+
+The model MUST minimize generated surface area.
+
+Avoid creating:
+
+* unnecessary helper classes
+* unnecessary fixtures
+* unnecessary builders
+* unnecessary abstractions
+* unnecessary inheritance hierarchies
+
+Prefer INLINE SIMPLE TESTS unless reuse is clearly justified.
+
+---
+
+# MOCK MINIMIZATION STRATEGY
+
+CRITICAL:
+
+Over-mocking reduces behavioral coverage quality.
+
+The model MUST prefer:
+
+1. real objects
+2. lightweight stubs
+3. deterministic fake implementations
+
+The model MUST avoid:
+
+* mocking pure logic
+* mocking DTOs
+* mocking value objects
+* mocking collections
+* mocking simple data containers
+
+---
+
+# TEST INFRASTRUCTURE SIZE CONTROL
+
+Custom testing infrastructure MUST remain SMALL.
+
+The model MUST NOT generate:
+
+* large internal testing frameworks
+* generic abstraction systems
+* dynamic runtime test builders
+* reflection-based assertion engines
+
+Infrastructure must remain:
+
+* explicit
+* readable
+* localized
+* deterministic
+
+---
+
+# SOURCE FILE BOUNDARY RULE
+
+The model MUST operate PER SOURCE FILE.
+
+Workflow:
+
+1. analyze ONE source file
+2. generate tests
+3. validate compilation assumptions
+4. commit
+5. continue to next file
+
+The model MUST NEVER mix unrelated source files in a single reasoning step.
+
+---
+
+# TOKEN ECONOMY RULES
+
+CRITICAL FOR LOCAL MODELS:
+
+The model MUST minimize context consumption.
+
+The model MUST avoid:
+
+* repeating large code blocks
+* repeating repository structure
+* re-analyzing solved files
+* loading unnecessary dependencies
+* generating verbose explanations
+
+The model MUST optimize for:
+
+* short reasoning chains
+* localized analysis
+* incremental execution
+* deterministic output
+
+---
+
+# NO OVER-ENGINEERING RULE
+
+The model MUST generate the SIMPLEST valid test implementation.
+
+Forbidden unless strictly necessary:
+
+* custom DSLs
+* dynamic test generators
+* reflection-heavy infrastructure
+* meta-programming
+* excessive generic abstractions
+
+Prefer:
+
+* direct assertions
+* explicit setup
+* readable logic
+* localized helpers
+
+---
+
+# XUNIT EXECUTION RULES
+
+Preferred framework assumptions:
+
+* xUnit
+* Fact
+* Theory
+* InlineData
+
+The model MUST NOT:
+
+* introduce another test framework
+* mix NUnit/MSTest/xUnit
+* migrate existing test style
+
+---
+
+# ASYNC TEST SAFETY RULES
+
+Async tests MUST:
+
+* await all async operations
+* avoid Task.Delay timing assumptions
+* avoid fire-and-forget behavior
+* avoid race-condition assertions
+
+Forbidden:
+
+```csharp
+Task.Delay(...)
+Thread.Sleep(...)
+```
+
+unless explicitly required by target behavior.
+
+---
+
+# NULLABILITY COMPATIBILITY RULES
+
+Generated tests MUST respect:
+
+* nullable reference types
+* nullability annotations
+* compiler warnings
+
+The model MUST avoid generating nullable-invalid code.
+
+---
+
+# DETERMINISTIC EXECUTION RULE
+
+Generated tests MUST be deterministic across:
+
+* operating systems
+* execution order
+* CI runners
+* parallel execution
+
+The model MUST avoid:
+
+* random values without fixed seeds
+* time-sensitive assertions
+* environment-sensitive assumptions
+* filesystem ordering assumptions
+
+---
+
+# TEST SIZE RULE
+
+Each test SHOULD validate ONE PRIMARY BEHAVIOR.
+
+The model MUST avoid:
+
+* giant integration-style unit tests
+* multiple unrelated assertions
+* multi-scenario tests
+
+Prefer small focused tests.
+
+---
+
+# STOP CONDITION RULE
+
+The model MUST stop test generation for a file ONLY when:
+
+* all public behaviors are covered
+* all meaningful branches are covered
+* edge cases are covered
+* no high-value missing behavior remains
+
+The model MUST avoid infinite low-value test generation.

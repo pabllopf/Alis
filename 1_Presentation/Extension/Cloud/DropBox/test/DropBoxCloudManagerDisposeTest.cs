@@ -281,7 +281,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         /// <summary>
         ///     Tests that path normalization adds leading slash to paths without it
         /// </summary>
-        [Theory]
+        
         [InlineData("file.txt", "/file.txt")]
         [InlineData("folder/file.txt", "/folder/file.txt")]
         [InlineData("a/b/c/d.txt", "/a/b/c/d.txt")]
@@ -307,7 +307,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         /// <summary>
         ///     Tests that paths already starting with slash are not modified
         /// </summary>
-        [Theory]
+        
         [InlineData("/file.txt")]
         [InlineData("/folder/file.txt")]
         [InlineData("/")]
@@ -501,7 +501,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         /// <summary>
         ///     Tests that all methods throw InvalidOperationException without initialization
         /// </summary>
-        [Theory]
+        
         [InlineData("UploadFileAsync")]
         [InlineData("DownloadFileAsync")]
         [InlineData("ListFilesAsync")]

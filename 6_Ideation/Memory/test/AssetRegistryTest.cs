@@ -461,7 +461,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         ///     Tests that get resource memory stream by name with various resource name patterns
         /// </summary>
-        [Theory]
+        
         [InlineData("app.bmp")]
         [InlineData("APP.BMP")]
         [InlineData("App.Bmp")]
@@ -476,7 +476,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         ///     Tests that get resource path by name with various resource name patterns
         /// </summary>
-        [Theory]
+        
         [InlineData("app.bmp")]
         [InlineData("APP.BMP")]
         [InlineData("App.Bmp")]

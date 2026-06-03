@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Physic.Common.Logic;
 using Xunit;
 
@@ -39,110 +38,44 @@ namespace Alis.Core.Physic.Test.Common.Logic
     public class BreakableBodyStateTest
     {
         /// <summary>
-        ///     Tests that unbroken enum value should be defined
+        ///     Tests that unbroken should have value zero
         /// </summary>
         [Fact]
-        public void UnbrokenEnumValue_ShouldBeDefined()
+        public void Unbroken_ShouldHaveValueZero()
         {
-            BreakableBodyState state = BreakableBodyState.Unbroken;
-
-            Assert.Equal(BreakableBodyState.Unbroken, state);
+            byte value = 0;
+            Assert.Equal(value, (byte) BreakableBodyState.Unbroken);
         }
 
         /// <summary>
-        ///     Tests that should break enum value should be defined
+        ///     Tests that shouldBreak should have value one
         /// </summary>
         [Fact]
-        public void ShouldBreakEnumValue_ShouldBeDefined()
+        public void ShouldBreak_ShouldHaveValueOne()
         {
-            BreakableBodyState state = BreakableBodyState.ShouldBreak;
-
-            Assert.Equal(BreakableBodyState.ShouldBreak, state);
+            byte value = 1;
+            Assert.Equal(value, (byte) BreakableBodyState.ShouldBreak);
         }
 
         /// <summary>
-        ///     Tests that broken enum value should be defined
+        ///     Tests that broken should have value two
         /// </summary>
         [Fact]
-        public void BrokenEnumValue_ShouldBeDefined()
+        public void Broken_ShouldHaveValueTwo()
         {
-            BreakableBodyState state = BreakableBodyState.Broken;
-
-            Assert.Equal(BreakableBodyState.Broken, state);
+            byte value = 2;
+            Assert.Equal(value, (byte) BreakableBodyState.Broken);
         }
 
         /// <summary>
-        ///     Tests that breakable body state should have three values
+        ///     Tests that all values should be unique
         /// </summary>
         [Fact]
-        public void BreakableBodyState_ShouldHaveThreeValues()
+        public void AllValues_ShouldBeUnique()
         {
-            Array values = Enum.GetValues(typeof(BreakableBodyState));
-
-            Assert.Equal(3, values.Length);
-        }
-
-        /// <summary>
-        ///     Tests that breakable body state should be castable to int
-        /// </summary>
-        [Fact]
-        public void BreakableBodyState_ShouldBeCastableToInt()
-        {
-            int unbrokenValue = (int) BreakableBodyState.Unbroken;
-            int shouldBreakValue = (int) BreakableBodyState.ShouldBreak;
-            int brokenValue = (int) BreakableBodyState.Broken;
-
-            Assert.Equal(0, unbrokenValue);
-            Assert.Equal(1, shouldBreakValue);
-            Assert.Equal(2, brokenValue);
-        }
-
-        /// <summary>
-        ///     Tests that breakable body state should support equality comparison
-        /// </summary>
-        [Fact]
-        public void BreakableBodyState_ShouldSupportEqualityComparison()
-        {
-            BreakableBodyState state1 = BreakableBodyState.Unbroken;
-            BreakableBodyState state2 = BreakableBodyState.Unbroken;
-
-            Assert.Equal(state1, state2);
-        }
-
-        /// <summary>
-        ///     Tests that breakable body state should support inequality comparison
-        /// </summary>
-        [Fact]
-        public void BreakableBodyState_ShouldSupportInequalityComparison()
-        {
-            BreakableBodyState state1 = BreakableBodyState.Unbroken;
-            BreakableBodyState state2 = BreakableBodyState.Broken;
-
-            Assert.NotEqual(state1, state2);
-        }
-
-        /// <summary>
-        ///     Tests that breakable body state should transition from unbroken to should break
-        /// </summary>
-        [Fact]
-        public void BreakableBodyState_ShouldTransitionFromUnbrokenToShouldBreak()
-        {
-            BreakableBodyState state = BreakableBodyState.Unbroken;
-            state = BreakableBodyState.ShouldBreak;
-
-            Assert.Equal(BreakableBodyState.ShouldBreak, state);
-        }
-
-        /// <summary>
-        ///     Tests that breakable body state should transition from should break to broken
-        /// </summary>
-        [Fact]
-        public void BreakableBodyState_ShouldTransitionFromShouldBreakToBroken()
-        {
-            BreakableBodyState state = BreakableBodyState.ShouldBreak;
-            state = BreakableBodyState.Broken;
-
-            Assert.Equal(BreakableBodyState.Broken, state);
+            Assert.NotEqual(BreakableBodyState.Unbroken, BreakableBodyState.ShouldBreak);
+            Assert.NotEqual(BreakableBodyState.Unbroken, BreakableBodyState.Broken);
+            Assert.NotEqual(BreakableBodyState.ShouldBreak, BreakableBodyState.Broken);
         }
     }
 }

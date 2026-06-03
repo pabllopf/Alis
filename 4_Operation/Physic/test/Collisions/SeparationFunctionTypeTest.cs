@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Physic.Collisions;
 using Xunit;
 
@@ -39,86 +38,44 @@ namespace Alis.Core.Physic.Test.Collisions
     public class SeparationFunctionTypeTest
     {
         /// <summary>
-        ///     Tests that points enum value should be defined
+        ///     Tests that points should have value zero
         /// </summary>
         [Fact]
-        public void PointsEnumValue_ShouldBeDefined()
+        public void Points_ShouldHaveValueZero()
         {
-            SeparationFunctionType type = SeparationFunctionType.Points;
-
-            Assert.Equal(SeparationFunctionType.Points, type);
+            byte value = 0;
+            Assert.Equal(value, (byte) SeparationFunctionType.Points);
         }
 
         /// <summary>
-        ///     Tests that face a enum value should be defined
+        ///     Tests that faceA should have value one
         /// </summary>
         [Fact]
-        public void FaceAEnumValue_ShouldBeDefined()
+        public void FaceA_ShouldHaveValueOne()
         {
-            SeparationFunctionType type = SeparationFunctionType.FaceA;
-
-            Assert.Equal(SeparationFunctionType.FaceA, type);
+            byte value = 1;
+            Assert.Equal(value, (byte) SeparationFunctionType.FaceA);
         }
 
         /// <summary>
-        ///     Tests that face b enum value should be defined
+        ///     Tests that faceB should have value two
         /// </summary>
         [Fact]
-        public void FaceBEnumValue_ShouldBeDefined()
+        public void FaceB_ShouldHaveValueTwo()
         {
-            SeparationFunctionType type = SeparationFunctionType.FaceB;
-
-            Assert.Equal(SeparationFunctionType.FaceB, type);
+            byte value = 2;
+            Assert.Equal(value, (byte) SeparationFunctionType.FaceB);
         }
 
         /// <summary>
-        ///     Tests that separation function type should have three values
+        ///     Tests that all values should be unique
         /// </summary>
         [Fact]
-        public void SeparationFunctionType_ShouldHaveThreeValues()
+        public void AllValues_ShouldBeUnique()
         {
-            Array values = Enum.GetValues(typeof(SeparationFunctionType));
-
-            Assert.Equal(3, values.Length);
-        }
-
-        /// <summary>
-        ///     Tests that separation function type should be castable to int
-        /// </summary>
-        [Fact]
-        public void SeparationFunctionType_ShouldBeCastableToInt()
-        {
-            int pointsValue = (int) SeparationFunctionType.Points;
-            int faceAValue = (int) SeparationFunctionType.FaceA;
-            int faceBValue = (int) SeparationFunctionType.FaceB;
-
-            Assert.Equal(0, pointsValue);
-            Assert.Equal(1, faceAValue);
-            Assert.Equal(2, faceBValue);
-        }
-
-        /// <summary>
-        ///     Tests that separation function type should support equality comparison
-        /// </summary>
-        [Fact]
-        public void SeparationFunctionType_ShouldSupportEqualityComparison()
-        {
-            SeparationFunctionType type1 = SeparationFunctionType.FaceA;
-            SeparationFunctionType type2 = SeparationFunctionType.FaceA;
-
-            Assert.Equal(type1, type2);
-        }
-
-        /// <summary>
-        ///     Tests that separation function type should support inequality comparison
-        /// </summary>
-        [Fact]
-        public void SeparationFunctionType_ShouldSupportInequalityComparison()
-        {
-            SeparationFunctionType type1 = SeparationFunctionType.Points;
-            SeparationFunctionType type2 = SeparationFunctionType.FaceB;
-
-            Assert.NotEqual(type1, type2);
+            Assert.NotEqual(SeparationFunctionType.Points, SeparationFunctionType.FaceA);
+            Assert.NotEqual(SeparationFunctionType.Points, SeparationFunctionType.FaceB);
+            Assert.NotEqual(SeparationFunctionType.FaceA, SeparationFunctionType.FaceB);
         }
     }
 }

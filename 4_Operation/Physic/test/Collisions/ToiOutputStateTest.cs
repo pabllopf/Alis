@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Physic.Collisions;
 using Xunit;
 
@@ -39,108 +38,71 @@ namespace Alis.Core.Physic.Test.Collisions
     public class ToiOutputStateTest
     {
         /// <summary>
-        ///     Tests that unknown enum value should be defined
+        ///     Tests that unknown should have value zero
         /// </summary>
         [Fact]
-        public void UnknownEnumValue_ShouldBeDefined()
+        public void Unknown_ShouldHaveValueZero()
         {
-            ToiOutputState state = ToiOutputState.Unknown;
-
-            Assert.Equal(ToiOutputState.Unknown, state);
+            byte value = 0;
+            Assert.Equal(value, (byte) ToiOutputState.Unknown);
         }
 
         /// <summary>
-        ///     Tests that failed enum value should be defined
+        ///     Tests that failed should have value one
         /// </summary>
         [Fact]
-        public void FailedEnumValue_ShouldBeDefined()
+        public void Failed_ShouldHaveValueOne()
         {
-            ToiOutputState state = ToiOutputState.Failed;
-
-            Assert.Equal(ToiOutputState.Failed, state);
+            byte value = 1;
+            Assert.Equal(value, (byte) ToiOutputState.Failed);
         }
 
         /// <summary>
-        ///     Tests that overlapped enum value should be defined
+        ///     Tests that overlapped should have value two
         /// </summary>
         [Fact]
-        public void OverlappedEnumValue_ShouldBeDefined()
+        public void Overlapped_ShouldHaveValueTwo()
         {
-            ToiOutputState state = ToiOutputState.Overlapped;
-
-            Assert.Equal(ToiOutputState.Overlapped, state);
+            byte value = 2;
+            Assert.Equal(value, (byte) ToiOutputState.Overlapped);
         }
 
         /// <summary>
-        ///     Tests that touching enum value should be defined
+        ///     Tests that touching should have value three
         /// </summary>
         [Fact]
-        public void TouchingEnumValue_ShouldBeDefined()
+        public void Touching_ShouldHaveValueThree()
         {
-            ToiOutputState state = ToiOutputState.Touching;
-
-            Assert.Equal(ToiOutputState.Touching, state);
+            byte value = 3;
+            Assert.Equal(value, (byte) ToiOutputState.Touching);
         }
 
         /// <summary>
-        ///     Tests that separated enum value should be defined
+        ///     Tests that seperated should have value four
         /// </summary>
         [Fact]
-        public void SeparatedEnumValue_ShouldBeDefined()
+        public void Seperated_ShouldHaveValueFour()
         {
-            ToiOutputState state = ToiOutputState.Seperated;
-
-            Assert.Equal(ToiOutputState.Seperated, state);
+            byte value = 4;
+            Assert.Equal(value, (byte) ToiOutputState.Seperated);
         }
 
         /// <summary>
-        ///     Tests that toi output state should have five values
+        ///     Tests that all values should be unique
         /// </summary>
         [Fact]
-        public void ToiOutputState_ShouldHaveFiveValues()
+        public void AllValues_ShouldBeUnique()
         {
-            Array values = Enum.GetValues(typeof(ToiOutputState));
-
-            Assert.Equal(5, values.Length);
-        }
-
-        /// <summary>
-        ///     Tests that toi output state should be castable to int
-        /// </summary>
-        [Fact]
-        public void ToiOutputState_ShouldBeCastableToInt()
-        {
-            int unknownValue = (int) ToiOutputState.Unknown;
-            int failedValue = (int) ToiOutputState.Failed;
-            int overlappedValue = (int) ToiOutputState.Overlapped;
-
-            Assert.Equal(0, unknownValue);
-            Assert.Equal(1, failedValue);
-            Assert.Equal(2, overlappedValue);
-        }
-
-        /// <summary>
-        ///     Tests that toi output state should support equality comparison
-        /// </summary>
-        [Fact]
-        public void ToiOutputState_ShouldSupportEqualityComparison()
-        {
-            ToiOutputState state1 = ToiOutputState.Touching;
-            ToiOutputState state2 = ToiOutputState.Touching;
-
-            Assert.Equal(state1, state2);
-        }
-
-        /// <summary>
-        ///     Tests that toi output state should support inequality comparison
-        /// </summary>
-        [Fact]
-        public void ToiOutputState_ShouldSupportInequalityComparison()
-        {
-            ToiOutputState state1 = ToiOutputState.Unknown;
-            ToiOutputState state2 = ToiOutputState.Failed;
-
-            Assert.NotEqual(state1, state2);
+            Assert.NotEqual(ToiOutputState.Unknown, ToiOutputState.Failed);
+            Assert.NotEqual(ToiOutputState.Unknown, ToiOutputState.Overlapped);
+            Assert.NotEqual(ToiOutputState.Unknown, ToiOutputState.Touching);
+            Assert.NotEqual(ToiOutputState.Unknown, ToiOutputState.Seperated);
+            Assert.NotEqual(ToiOutputState.Failed, ToiOutputState.Overlapped);
+            Assert.NotEqual(ToiOutputState.Failed, ToiOutputState.Touching);
+            Assert.NotEqual(ToiOutputState.Failed, ToiOutputState.Seperated);
+            Assert.NotEqual(ToiOutputState.Overlapped, ToiOutputState.Touching);
+            Assert.NotEqual(ToiOutputState.Overlapped, ToiOutputState.Seperated);
+            Assert.NotEqual(ToiOutputState.Touching, ToiOutputState.Seperated);
         }
     }
 }

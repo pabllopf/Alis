@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EpAxisTypeTest.cs
+//  File:EPAxisTypeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -43,25 +43,28 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void Unknown_ShouldHaveValueZero()
         {
-            Assert.Equal(0, (int) EpAxisType.Unknown);
+            byte value = 0;
+            Assert.Equal(value, (byte) EpAxisType.Unknown);
         }
 
         /// <summary>
-        ///     Tests that edge a should have value one
+        ///     Tests that edgeA should have value one
         /// </summary>
         [Fact]
         public void EdgeA_ShouldHaveValueOne()
         {
-            Assert.Equal(1, (int) EpAxisType.EdgeA);
+            byte value = 1;
+            Assert.Equal(value, (byte) EpAxisType.EdgeA);
         }
 
         /// <summary>
-        ///     Tests that edge b should have value two
+        ///     Tests that edgeB should have value two
         /// </summary>
         [Fact]
         public void EdgeB_ShouldHaveValueTwo()
         {
-            Assert.Equal(2, (int) EpAxisType.EdgeB);
+            byte value = 2;
+            Assert.Equal(value, (byte) EpAxisType.EdgeB);
         }
 
         /// <summary>
@@ -70,20 +73,9 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void AllValues_ShouldBeUnique()
         {
-            EpAxisType[] values = new[]
-            {
-                EpAxisType.Unknown,
-                EpAxisType.EdgeA,
-                EpAxisType.EdgeB
-            };
-
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = i + 1; j < values.Length; j++)
-                {
-                    Assert.NotEqual(values[i], values[j]);
-                }
-            }
+            Assert.NotEqual(EpAxisType.Unknown, EpAxisType.EdgeA);
+            Assert.NotEqual(EpAxisType.Unknown, EpAxisType.EdgeB);
+            Assert.NotEqual(EpAxisType.EdgeA, EpAxisType.EdgeB);
         }
     }
 }

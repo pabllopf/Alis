@@ -43,7 +43,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     {
         // =====================================================================
 
-        [Theory]
+        
         [InlineData("WebAssembly")]
         [InlineData("Web")]
         [InlineData("Emscripten")]

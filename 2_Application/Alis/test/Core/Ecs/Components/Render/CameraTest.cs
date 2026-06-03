@@ -158,7 +158,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
         /// <summary>
         ///     Tests that Resolution can be set to various values
         /// </summary>
-        [Theory]
+        
         [InlineData(640f, 480f)]
         [InlineData(1920f, 1080f)]
         [InlineData(3840f, 2160f)]

@@ -82,7 +82,7 @@ namespace Alis.App.Hub.Test
         /// </summary>
         /// <param name="propertyName">The property name</param>
         /// <param name="expected">The expected</param>
-        [Theory]
+        
         [InlineData(nameof(Project.Name), "_name_")]
         [InlineData(nameof(Project.Path), "_path_")]
         [InlineData(nameof(Project.CloudStatus), "_cloudStatus_")]

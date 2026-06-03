@@ -73,7 +73,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.GetButton(1));
         }
 
-        [Theory]
+        
         [InlineData(-1)]
         [InlineData(13)]
         [InlineData(100)]

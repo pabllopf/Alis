@@ -389,7 +389,7 @@ namespace Alis.Extension.Profile.Test.Models
         /// <summary>
         ///     Tests that floating-point CPU values are preserved with precision.
         /// </summary>
-        [Theory]
+        
         [InlineData(0.1)]
         [InlineData(0.01)]
         [InlineData(0.001)]

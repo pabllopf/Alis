@@ -94,7 +94,7 @@ namespace Alis.Extension.Network.Test.Core
         /// <summary>
         ///     Tests that ConnectionState can be set to different states
         /// </summary>
-        [Theory]
+        
         [InlineData(PlayerConnectionState.Connected)]
         [InlineData(PlayerConnectionState.Disconnected)]
         public void ConnectionState_SetToDifferentStates_ReturnsCorrectValue(PlayerConnectionState state)

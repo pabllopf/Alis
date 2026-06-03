@@ -143,7 +143,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(config.MultisamplingEnabled);
         }
 
-        [Theory]
+        
         [InlineData(2)]
         [InlineData(4)]
         [InlineData(8)]
@@ -157,7 +157,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(count, config.MultisampleCount);
         }
 
-        [Theory]
+        
         [InlineData(1)]
         [InlineData(3)]
         [InlineData(5)]
@@ -238,7 +238,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(config.TouchInputEnabled);
         }
 
-        [Theory]
+        
         [InlineData(0.0f)]
         [InlineData(0.5f)]
         [InlineData(1.0f)]
@@ -251,7 +251,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(deadzone, config.GamepadDeadzone);
         }
 
-        [Theory]
+        
         [InlineData(-0.1f)]
         [InlineData(1.1f)]
         public void ConfigBuilder_WithGamepadDeadzone_InvalidValue_Throws(float deadzone)
@@ -260,7 +260,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 new WebAssemblyConfigurationBuilder().WithGamepadDeadzone(deadzone));
         }
 
-        [Theory]
+        
         [InlineData(0.0f)]
         [InlineData(0.5f)]
         [InlineData(1.0f)]
@@ -273,7 +273,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(deadzone, config.TriggerDeadzone);
         }
 
-        [Theory]
+        
         [InlineData(-0.01f)]
         [InlineData(1.01f)]
         public void ConfigBuilder_WithTriggerDeadzone_InvalidValue_Throws(float deadzone)

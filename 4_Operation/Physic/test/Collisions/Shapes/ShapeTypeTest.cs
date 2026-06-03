@@ -43,7 +43,18 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Unknown_ShouldHaveValueNegativeOne()
         {
-            Assert.Equal(-1, (int) ShapeType.Unknown);
+            byte value = unchecked((byte)(-1));
+            Assert.Equal(value, unchecked((byte)ShapeType.Unknown));
+        }
+
+        /// <summary>
+        ///     Tests that unknown value cast to byte should equal 255
+        /// </summary>
+        [Fact]
+        public void Unknown_CastToByte_ShouldEqual255()
+        {
+            byte value = 255;
+            Assert.Equal(value, unchecked((byte)ShapeType.Unknown));
         }
 
         /// <summary>
@@ -52,7 +63,8 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Circle_ShouldHaveValueZero()
         {
-            Assert.Equal(0, (int) ShapeType.Circle);
+            byte value = 0;
+            Assert.Equal(value, (byte) ShapeType.Circle);
         }
 
         /// <summary>
@@ -61,7 +73,8 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Edge_ShouldHaveValueOne()
         {
-            Assert.Equal(1, (int) ShapeType.Edge);
+            byte value = 1;
+            Assert.Equal(value, (byte) ShapeType.Edge);
         }
 
         /// <summary>
@@ -70,7 +83,8 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Polygon_ShouldHaveValueTwo()
         {
-            Assert.Equal(2, (int) ShapeType.Polygon);
+            byte value = 2;
+            Assert.Equal(value, (byte) ShapeType.Polygon);
         }
 
         /// <summary>
@@ -79,41 +93,41 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Chain_ShouldHaveValueThree()
         {
-            Assert.Equal(3, (int) ShapeType.Chain);
+            byte value = 3;
+            Assert.Equal(value, (byte) ShapeType.Chain);
         }
 
         /// <summary>
-        ///     Tests that type count should have value four
+        ///     Tests that typeCount should have value four
         /// </summary>
         [Fact]
         public void TypeCount_ShouldHaveValueFour()
         {
-            Assert.Equal(4, (int) ShapeType.TypeCount);
+            byte value = 4;
+            Assert.Equal(value, (byte) ShapeType.TypeCount);
         }
 
         /// <summary>
-        ///     Tests that all enum values should be unique
+        ///     Tests that all values should be unique
         /// </summary>
         [Fact]
-        public void AllEnumValues_ShouldBeUnique()
+        public void AllValues_ShouldBeUnique()
         {
-            ShapeType[] values = new[]
-            {
-                ShapeType.Unknown,
-                ShapeType.Circle,
-                ShapeType.Edge,
-                ShapeType.Polygon,
-                ShapeType.Chain,
-                ShapeType.TypeCount
-            };
-
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = i + 1; j < values.Length; j++)
-                {
-                    Assert.NotEqual(values[i], values[j]);
-                }
-            }
+            Assert.NotEqual(ShapeType.Unknown, ShapeType.Circle);
+            Assert.NotEqual(ShapeType.Unknown, ShapeType.Edge);
+            Assert.NotEqual(ShapeType.Unknown, ShapeType.Polygon);
+            Assert.NotEqual(ShapeType.Unknown, ShapeType.Chain);
+            Assert.NotEqual(ShapeType.Unknown, ShapeType.TypeCount);
+            Assert.NotEqual(ShapeType.Circle, ShapeType.Edge);
+            Assert.NotEqual(ShapeType.Circle, ShapeType.Polygon);
+            Assert.NotEqual(ShapeType.Circle, ShapeType.Chain);
+            Assert.NotEqual(ShapeType.Circle, ShapeType.TypeCount);
+            Assert.NotEqual(ShapeType.Edge, ShapeType.Polygon);
+            Assert.NotEqual(ShapeType.Edge, ShapeType.Chain);
+            Assert.NotEqual(ShapeType.Edge, ShapeType.TypeCount);
+            Assert.NotEqual(ShapeType.Polygon, ShapeType.Chain);
+            Assert.NotEqual(ShapeType.Polygon, ShapeType.TypeCount);
+            Assert.NotEqual(ShapeType.Chain, ShapeType.TypeCount);
         }
     }
 }

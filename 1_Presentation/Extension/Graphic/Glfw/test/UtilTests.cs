@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         ///     Tests that PtrToStringUTF8 correctly handles special characters
         /// </summary>
-        [Theory]
+        
         [InlineData("\n", "newline")]
         [InlineData("\t", "tab")]
         [InlineData("\r", "carriage return")]

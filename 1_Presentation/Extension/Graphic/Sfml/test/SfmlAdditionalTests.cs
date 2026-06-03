@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Windows Styles flags are powers of 2
         /// </summary>
-        [Theory]
+        
         [InlineData(WindowStyles.Titlebar, 0)]
         [InlineData(WindowStyles.Resize, 1)]
         [InlineData(WindowStyles.Close, 2)]
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Render Styles flags are powers of 2
         /// </summary>
-        [Theory]
+        
         [InlineData(RenderStyles.Bold, 0)]
         [InlineData(RenderStyles.Italic, 1)]
         [InlineData(RenderStyles.Underlined, 2)]

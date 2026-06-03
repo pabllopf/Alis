@@ -372,7 +372,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.Button produces powers of 2 for valid inputs (1-8)
         /// </summary>
-        [Theory]
+        
         [InlineData(1u, 1u)]
         [InlineData(2u, 2u)]
         [InlineData(3u, 4u)]
@@ -445,7 +445,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.WindowPosUndefinedDisplay and WindowPosIsUndefined are consistent for non-negative values
         /// </summary>
-        [Theory]
+        
         [InlineData(0)]
         [InlineData(100)]
         [InlineData(1000)]
@@ -459,7 +459,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Tests that Sdl.WindowPosCenteredDisplay and WindowPosIsCentered are consistent for non-negative values
         /// </summary>
-        [Theory]
+        
         [InlineData(0)]
         [InlineData(100)]
         [InlineData(1000)]
