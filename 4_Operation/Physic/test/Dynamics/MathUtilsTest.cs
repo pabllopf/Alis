@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
@@ -44,6 +46,161 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void MathUtils_TypeShouldBeAccessible()
         {
             Assert.NotNull(typeof(MathUtils));
+        }
+
+        /// <summary>
+        /// Tests that cross product of 2d vectors returns correct value
+        /// </summary>
+        [Fact]
+        public void Cross_Of2DVectors_ShouldReturnCorrectValue()
+        {
+            Vector2F a = new Vector2F(1.0f, 0.0f);
+            Vector2F b = new Vector2F(0.0f, 1.0f);
+
+            float result = MathUtils.Cross(ref a, ref b);
+
+            Assert.Equal(1.0f, result);
+        }
+
+        /// <summary>
+        /// Tests that cross product with scalar returns perpendicular vector
+        /// </summary>
+        [Fact]
+        public void Cross_WithScalar_ShouldReturnPerpendicularVector()
+        {
+            Vector2F a = new Vector2F(1.0f, 0.0f);
+
+            Vector2F result = MathUtils.Cross(a, 2.0f);
+
+            Assert.Equal(0.0f, result.X);
+            Assert.Equal(-2.0f, result.Y);
+        }
+
+        /// <summary>
+        /// Tests that rotate 90 returns clockwise perpendicular
+        /// </summary>
+        [Fact]
+        public void Rot90_ShouldReturnClockwisePerpendicular()
+        {
+            Vector2F a = new Vector2F(1.0f, 0.0f);
+
+            Vector2F result = MathUtils.Rot90(ref a);
+
+            Assert.Equal(0.0f, result.X);
+            Assert.Equal(-1.0f, result.Y);
+        }
+
+        /// <summary>
+        /// Tests that rotate 270 returns counter clockwise perpendicular
+        /// </summary>
+        [Fact]
+        public void Rot270_ShouldReturnCounterClockwisePerpendicular()
+        {
+            Vector2F a = new Vector2F(1.0f, 0.0f);
+
+            Vector2F result = MathUtils.Rot270(ref a);
+
+            Assert.Equal(0.0f, result.X);
+            Assert.Equal(1.0f, result.Y);
+        }
+
+        /// <summary>
+        /// Tests that abs returns absolute values of vector components
+        /// </summary>
+        [Fact]
+        public void Abs_ShouldReturnAbsoluteValues()
+        {
+            Vector2F v = new Vector2F(-3.0f, 4.0f);
+
+            Vector2F result = MathUtils.Abs(v);
+
+            Assert.Equal(3.0f, result.X);
+            Assert.Equal(4.0f, result.Y);
+        }
+
+        /// <summary>
+        /// Tests that clamp int should clamp value to range
+        /// </summary>
+        [Fact]
+        public void Clamp_Int_ShouldClampValueToRange()
+        {
+            Assert.Equal(5, MathUtils.Clamp(3, 5, 10));
+            Assert.Equal(10, MathUtils.Clamp(15, 5, 10));
+            Assert.Equal(7, MathUtils.Clamp(7, 5, 10));
+        }
+
+        /// <summary>
+        /// Tests that clamp float should clamp value to range
+        /// </summary>
+        [Fact]
+        public void Clamp_Float_ShouldClampValueToRange()
+        {
+            Assert.Equal(1.5f, MathUtils.Clamp(0.5f, 1.5f, 3.0f));
+            Assert.Equal(3.0f, MathUtils.Clamp(5.0f, 1.5f, 3.0f));
+            Assert.Equal(2.0f, MathUtils.Clamp(2.0f, 1.5f, 3.0f));
+        }
+
+        /// <summary>
+        /// Tests that skew returns perpendicular vector
+        /// </summary>
+        [Fact]
+        public void Skew_ShouldReturnPerpendicular()
+        {
+            Vector2F input = new Vector2F(1.0f, 2.0f);
+
+            Vector2F result = MathUtils.Skew(input);
+
+            Assert.Equal(-2.0f, result.X);
+            Assert.Equal(1.0f, result.Y);
+        }
+
+        /// <summary>
+        /// Tests that swap exchanges two values
+        /// </summary>
+        [Fact]
+        public void Swap_ShouldExchangeTwoValues()
+        {
+            int a = 1;
+            int b = 2;
+
+            MathUtils.Swap(ref a, ref b);
+
+            Assert.Equal(2, a);
+            Assert.Equal(1, b);
+        }
+
+        /// <summary>
+        /// Tests that float equals returns correct comparison
+        /// </summary>
+        [Fact]
+        public void FloatEquals_ShouldCompareWithinEpsilon()
+        {
+            Assert.True(MathUtils.FloatEquals(1.0f, 1.0f));
+            Assert.False(MathUtils.FloatEquals(1.0f, 2.0f));
+        }
+
+        /// <summary>
+        /// Tests that float in range checks value within inclusive bounds
+        /// </summary>
+        [Fact]
+        public void FloatInRange_ShouldCheckValueWithinBounds()
+        {
+            Assert.True(MathUtils.FloatInRange(5.0f, 0.0f, 10.0f));
+            Assert.True(MathUtils.FloatInRange(0.0f, 0.0f, 10.0f));
+            Assert.True(MathUtils.FloatInRange(10.0f, 0.0f, 10.0f));
+            Assert.False(MathUtils.FloatInRange(-1.0f, 0.0f, 10.0f));
+            Assert.False(MathUtils.FloatInRange(11.0f, 0.0f, 10.0f));
+        }
+
+        /// <summary>
+        /// Tests that is valid float returns true for normal values
+        /// </summary>
+        [Fact]
+        public void IsValid_Float_ShouldReturnTrueForNormalValues()
+        {
+            Assert.True(MathUtils.IsValid(0.0f));
+            Assert.True(MathUtils.IsValid(1.0f));
+            Assert.True(MathUtils.IsValid(-1.0f));
         }
     }
 }
