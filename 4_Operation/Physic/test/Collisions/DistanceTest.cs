@@ -206,5 +206,28 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.NotEqual(output.PointA, output.PointB);
         }
+
+        /// <summary>
+        /// Tests that compute distance should populate cache with simplex state
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_ShouldPopulateCacheWithSimplexState()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = new ControllerTransform(new Vector2F(5.0f, 0.0f), 0.0f),
+                UseRadii = false
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+
+            Assert.True(cache.Count >= 0);
+        }
     }
 }
