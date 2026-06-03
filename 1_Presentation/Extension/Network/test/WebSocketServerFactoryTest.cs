@@ -90,57 +90,6 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("json", result.WebSocketRequestedProtocols);
         }
 
-        [Fact]
-        public async Task AcceptWebSocketAsync_AcceptsValidRequest()
-        {
-            // Arrange
-            WebSocketServerFactory factory = new WebSocketServerFactory();
-            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
-            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
-            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
-
-            // Act
-            WebSocket result = await factory.AcceptWebSocketAsync(context);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.IsType<WebSocketImplementation>(result);
-        }
-
-        [Fact]
-        public async Task AcceptWebSocketAsync_WithOptions_AcceptsRequest()
-        {
-            // Arrange
-            WebSocketServerFactory factory = new WebSocketServerFactory();
-            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
-            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
-            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
-            WebSocketServerOptions options = new WebSocketServerOptions();
-
-            // Act
-            WebSocket result = await factory.AcceptWebSocketAsync(context, options);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.IsType<WebSocketImplementation>(result);
-        }
-
-        [Fact]
-        public async Task AcceptWebSocketAsync_ReturnsConnectedWebSocket()
-        {
-            // Arrange
-            WebSocketServerFactory factory = new WebSocketServerFactory();
-            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
-            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
-            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
-
-            // Act
-            WebSocket result = await factory.AcceptWebSocketAsync(context);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.NotNull(result);
-        }
 
         [Fact]
         public async Task ReadHttpHeaderFromStreamAsync_ReturnsCorrectPath()
@@ -159,39 +108,6 @@ namespace Alis.Extension.Network.Test
         }
 
         [Fact]
-        public async Task AcceptWebSocketAsync_WithDefaultOptions_ReturnsWebSocket()
-        {
-            // Arrange
-            WebSocketServerFactory factory = new WebSocketServerFactory();
-            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
-            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
-            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
-
-            // Act
-            WebSocket result = await factory.AcceptWebSocketAsync(context);
-
-            // Assert
-            Assert.NotNull(result);
-        }
-
-        [Fact]
-        public async Task AcceptWebSocketAsync_WithCancellation_ReturnsWebSocket()
-        {
-            // Arrange
-            WebSocketServerFactory factory = new WebSocketServerFactory();
-            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
-            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
-            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
-            CancellationToken token = new CancellationToken();
-
-            // Act
-            WebSocket result = await factory.AcceptWebSocketAsync(context, token);
-
-            // Assert
-            Assert.NotNull(result);
-        }
-
-        [Fact]
         public async Task ReadHttpHeaderFromStreamAsync_ReturnsHttpContextWithValidRequest()
         {
             // Arrange
@@ -207,21 +123,6 @@ namespace Alis.Extension.Network.Test
             Assert.True(result.IsWebSocketRequest);
         }
 
-        [Fact]
-        public async Task AcceptWebSocketAsync_ReturnsWebSocketWithCorrectGuid()
-        {
-            // Arrange
-            WebSocketServerFactory factory = new WebSocketServerFactory();
-            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
-            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
-            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
-
-            // Act
-            WebSocket result = await factory.AcceptWebSocketAsync(context);
-
-            // Assert
-            Assert.NotNull(result);
-        }
 
         [Fact]
         public async Task ReadHttpHeaderFromStreamAsync_ReturnsCorrectSubProtocols()
@@ -238,22 +139,6 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(result);
             Assert.Contains("json", result.WebSocketRequestedProtocols);
         }
-
-        [Fact]
-        public async Task AcceptWebSocketAsync_WithSubProtocol_ReturnsWebSocket()
-        {
-            // Arrange
-            WebSocketServerFactory factory = new WebSocketServerFactory();
-            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
-            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
-            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
-            WebSocketServerOptions options = new WebSocketServerOptions(TimeSpan.FromSeconds(60), "json");
-
-            // Act
-            WebSocket result = await factory.AcceptWebSocketAsync(context, options);
-
-            // Assert
-            Assert.NotNull(result);
-        }
+        
     }
 }

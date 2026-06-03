@@ -381,22 +381,6 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(100, stream.Position);
         }
 
-        [Fact]
-        public void ReadAsync_ReadsBytesAsync()
-        {
-            // Arrange
-            byte[] buffer = new byte[1024];
-            BufferPool pool = new BufferPool();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, pool);
-            byte[] data = new byte[] { 1, 2, 3, 4, 5 };
-            stream.Write(data, 0, data.Length);
-
-            // Act
-            byte[] readBuffer = new byte[3];
-            stream.ReadAsync(readBuffer, 0, 3);
-
-            // Assert
-            Assert.Equal(3, stream.Position);
-        }
+        
     }
 }

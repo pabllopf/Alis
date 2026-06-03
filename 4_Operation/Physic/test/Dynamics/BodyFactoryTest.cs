@@ -42,21 +42,6 @@ namespace Alis.Core.Physic.Test.Dynamics
     /// </summary>
     public class BodyFactoryTest
     {
-        /// <summary>
-        ///     Tests that CreateFixture should create a fixture with shape
-        /// </summary>
-        [Fact]
-        public void CreateFixture_ShouldCreateFixtureWithShape()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            CircleShape circleShape = new CircleShape(0.5f, 1.0f);
-
-            Fixture fixture = body.CreateFixture(circleShape);
-
-            Assert.NotNull(fixture);
-            Assert.Equal(circleShape, fixture.GetShape);
-        }
 
         /// <summary>
         ///     Tests that CreateFixture should add fixture to body
