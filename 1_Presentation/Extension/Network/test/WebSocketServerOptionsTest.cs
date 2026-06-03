@@ -28,52 +28,273 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Network;
 using Xunit;
 
 namespace Alis.Extension.Network.Test
 {
     /// <summary>
-    ///     The web socket server options test class
+    ///     Tests for WebSocketServerOptions class
     /// </summary>
     public class WebSocketServerOptionsTest
     {
-        /// <summary>
-        ///     Tests that web socket server options default constructor
-        /// </summary>
         [Fact]
-        public void WebSocketServerOptions_DefaultConstructor()
+        public void Constructor_CreatesInstanceWithDefaultValues()
         {
+            // Arrange
+            // Act
             WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Assert
             Assert.NotNull(options);
             Assert.Equal(TimeSpan.FromSeconds(60), options.KeepAliveInterval);
             Assert.False(options.IncludeExceptionInCloseResponse);
             Assert.Equal("", options.SubProtocol);
         }
 
-        /// <summary>
-        ///     Tests that web socket server options constructor with parameters
-        /// </summary>
         [Fact]
-        public void WebSocketServerOptions_ConstructorWithParameters()
+        public void Constructor_WithKeepAliveIntervalAndExceptionAndProtocol_CreatesInstance()
         {
-            WebSocketServerOptions options = new WebSocketServerOptions(30, true, "test");
+            // Arrange
+            double keepAliveInterval = 30;
+            bool includeException = true;
+            string subProtocol = "json";
+
+            // Act
+            WebSocketServerOptions options = new WebSocketServerOptions(keepAliveInterval, includeException, subProtocol);
+
+            // Assert
             Assert.NotNull(options);
             Assert.Equal(TimeSpan.FromSeconds(30), options.KeepAliveInterval);
             Assert.True(options.IncludeExceptionInCloseResponse);
-            Assert.Equal("test", options.SubProtocol);
+            Assert.Equal("json", options.SubProtocol);
         }
 
-        /// <summary>
-        ///     Tests that web socket server options constructor with time span and sub protocol
-        /// </summary>
         [Fact]
-        public void WebSocketServerOptions_ConstructorWithTimeSpanAndSubProtocol()
+        public void Constructor_WithKeepAliveIntervalAndProtocol_CreatesInstance()
         {
-            WebSocketServerOptions options = new WebSocketServerOptions(TimeSpan.FromSeconds(30), "test");
+            // Arrange
+            TimeSpan keepAliveInterval = TimeSpan.FromSeconds(45);
+            string subProtocol = "binary";
+
+            // Act
+            WebSocketServerOptions options = new WebSocketServerOptions(keepAliveInterval, subProtocol);
+
+            // Assert
+            Assert.NotNull(options);
+            Assert.Equal(keepAliveInterval, options.KeepAliveInterval);
+            Assert.False(options.IncludeExceptionInCloseResponse);
+            Assert.Equal("binary", options.SubProtocol);
+        }
+
+        [Fact]
+        public void KeepAliveInterval_DefaultValueIs60Seconds()
+        {
+            // Arrange
+            WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Act
+            TimeSpan result = options.KeepAliveInterval;
+
+            // Assert
+            Assert.Equal(TimeSpan.FromSeconds(60), result);
+        }
+
+        [Fact]
+        public void KeepAliveInterval_SetValue()
+        {
+            // Arrange
+            WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Act
+            options.KeepAliveInterval = TimeSpan.FromSeconds(30);
+
+            // Assert
+            Assert.Equal(TimeSpan.FromSeconds(30), options.KeepAliveInterval);
+        }
+
+        [Fact]
+        public void KeepAliveInterval_SetToZero_DisablesAutoPing()
+        {
+            // Arrange
+            WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Act
+            options.KeepAliveInterval = TimeSpan.Zero;
+
+            // Assert
+            Assert.Equal(TimeSpan.Zero, options.KeepAliveInterval);
+        }
+
+        [Fact]
+        public void IncludeExceptionInCloseResponse_DefaultValueIsFalse()
+        {
+            // Arrange
+            WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Act
+            bool result = options.IncludeExceptionInCloseResponse;
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void IncludeExceptionInCloseResponse_SetValueToTrue()
+        {
+            // Arrange
+            WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Act
+            options.IncludeExceptionInCloseResponse = true;
+
+            // Assert
+            Assert.True(options.IncludeExceptionInCloseResponse);
+        }
+
+        [Fact]
+        public void SubProtocol_DefaultValueIsEmptyString()
+        {
+            // Arrange
+            WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Act
+            string result = options.SubProtocol;
+
+            // Assert
+            Assert.Equal("", result);
+        }
+
+        [Fact]
+        public void SubProtocol_SetValue()
+        {
+            // Arrange
+            WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Act
+            options.SubProtocol = "json";
+
+            // Assert
+            Assert.Equal("json", options.SubProtocol);
+        }
+
+        [Fact]
+        public void SubProtocol_SetToNull()
+        {
+            // Arrange
+            WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Act
+            options.SubProtocol = null;
+
+            // Assert
+            Assert.Null(options.SubProtocol);
+        }
+
+        [Fact]
+        public void Constructor_WithKeepAliveInterval30AndExceptionAndProtocol_CreatesInstance()
+        {
+            // Arrange
+            // Act
+            WebSocketServerOptions options = new WebSocketServerOptions(30, true, "json");
+
+            // Assert
             Assert.NotNull(options);
             Assert.Equal(TimeSpan.FromSeconds(30), options.KeepAliveInterval);
+            Assert.True(options.IncludeExceptionInCloseResponse);
+            Assert.Equal("json", options.SubProtocol);
+        }
+
+        [Fact]
+        public void Constructor_WithKeepAliveInterval45AndProtocol_CreatesInstance()
+        {
+            // Arrange
+            // Act
+            WebSocketServerOptions options = new WebSocketServerOptions(TimeSpan.FromSeconds(45), "binary");
+
+            // Assert
+            Assert.NotNull(options);
+            Assert.Equal(TimeSpan.FromSeconds(45), options.KeepAliveInterval);
             Assert.False(options.IncludeExceptionInCloseResponse);
-            Assert.Equal("test", options.SubProtocol);
+            Assert.Equal("binary", options.SubProtocol);
+        }
+
+        [Fact]
+        public void CreateNewInstance_InitializesAllProperties()
+        {
+            // Arrange
+            // Act
+            WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Assert
+            Assert.NotNull(options);
+            Assert.Equal(TimeSpan.FromSeconds(60), options.KeepAliveInterval);
+            Assert.False(options.IncludeExceptionInCloseResponse);
+            Assert.Equal("", options.SubProtocol);
+        }
+
+        [Fact]
+        public void Constructor_WithKeepAliveIntervalZero_CreatesInstance()
+        {
+            // Arrange
+            // Act
+            WebSocketServerOptions options = new WebSocketServerOptions(TimeSpan.Zero, "");
+
+            // Assert
+            Assert.NotNull(options);
+            Assert.Equal(TimeSpan.Zero, options.KeepAliveInterval);
+        }
+
+        [Fact]
+        public void Constructor_WithIncludeExceptionTrue_CreatesInstance()
+        {
+            // Arrange
+            // Act
+            WebSocketServerOptions options = new WebSocketServerOptions(60, true, "json");
+
+            // Assert
+            Assert.NotNull(options);
+            Assert.True(options.IncludeExceptionInCloseResponse);
+        }
+
+        [Fact]
+        public void SubProtocol_SetToEmptyString()
+        {
+            // Arrange
+            WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Act
+            options.SubProtocol = "";
+
+            // Assert
+            Assert.Equal("", options.SubProtocol);
+        }
+
+        [Fact]
+        public void KeepAliveInterval_SetToLargeValue()
+        {
+            // Arrange
+            WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Act
+            options.KeepAliveInterval = TimeSpan.FromMinutes(5);
+
+            // Assert
+            Assert.Equal(TimeSpan.FromMinutes(5), options.KeepAliveInterval);
+        }
+
+        [Fact]
+        public void Constructor_WithAllParameters_CreatesInstance()
+        {
+            // Arrange
+            // Act
+            WebSocketServerOptions options = new WebSocketServerOptions(120, true, "custom-protocol");
+
+            // Assert
+            Assert.NotNull(options);
+            Assert.Equal(TimeSpan.FromSeconds(120), options.KeepAliveInterval);
+            Assert.True(options.IncludeExceptionInCloseResponse);
+            Assert.Equal("custom-protocol", options.SubProtocol);
         }
     }
 }

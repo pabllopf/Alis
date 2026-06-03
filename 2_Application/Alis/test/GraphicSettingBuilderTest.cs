@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Systems.Configuration.Graphic;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Graphic
+namespace Alis.Test
 {
     /// <summary>
     ///     Contains unit tests for the <see cref="GraphicSettingBuilder" /> class.

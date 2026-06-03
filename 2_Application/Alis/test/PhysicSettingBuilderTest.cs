@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Systems.Configuration.Physic;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Physic
+namespace Alis.Test
 {
     /// <summary>
     ///     Contains unit tests for the <see cref="PhysicSettingBuilder" /> class.

@@ -55,7 +55,7 @@ using Alis.Core.Ecs.Systems.Manager.Network;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
-namespace Alis.Test.Core.Ecs.Systems.Manager.Network
+namespace Alis.Test
 {
     /// <summary>
     ///     Contains unit tests for the <see cref="NetworkManager" /> class.

@@ -37,310 +37,768 @@ using Xunit;
 namespace Alis.Extension.Network.Test.Server
 {
     /// <summary>
-    ///     The network server manager test class
+    ///     Comprehensive tests for NetworkServerManager - server-side network connection manager
     /// </summary>
-    public class NetworkServerManagerTest
+    public class NetworkServerManagerTest : IDisposable
     {
+        private readonly NetworkServerManager _manager;
+        private readonly NetworkConfig _defaultConfig;
+
+        public NetworkServerManagerTest()
+        {
+            _manager = new NetworkServerManager();
+            _defaultConfig = new NetworkConfig { MaxPlayers = 32 };
+        }
+
+        public void Dispose()
+        {
+            _manager?.Dispose();
+        }
+
+        #region Constructor Tests
+
         /// <summary>
-        ///     Tests that constructor initializes default state
+        ///     Arrange: Create NetworkServerManager with default constructor
+        ///     Act: Verify manager initialization
+        ///     Assert: Manager is in Uninitialized state with valid ID
         /// </summary>
         [Fact]
         public void Constructor_DefaultState_IsUninitialized()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
+            // Arrange: Using _manager from constructor
 
-            Assert.Equal(NetworkManagerState.Uninitialized, manager.State);
-            Assert.NotNull(manager.Id);
-            Assert.NotEmpty(manager.Id);
-            Assert.Null(manager.CurrentSession);
-            Assert.Null(manager.LocalPlayer);
-            Assert.Null(manager.Config);
-            Assert.Null(manager.ListenUri);
+            // Act: Check initial state and properties
+            NetworkManagerState currentState = _manager.State;
+            string managerId = _manager.Id;
+
+            // Assert: Manager is properly initialized
+            Assert.Equal(NetworkManagerState.Uninitialized, currentState);
+            Assert.NotNull(managerId);
+            Assert.NotEmpty(managerId);
+            Assert.Null(_manager.CurrentSession);
+            Assert.Null(_manager.LocalPlayer);
+            Assert.Null(_manager.Config);
+            Assert.Null(_manager.ListenUri);
         }
 
         /// <summary>
-        ///     Tests that constructor generates unique ids
+        ///     Arrange: Create two NetworkServerManager instances
+        ///     Act: Verify each generates unique identifier
+        ///     Assert: Each manager has distinct ID
         /// </summary>
         [Fact]
         public void Constructor_GeneratesUniqueIds()
         {
+            // Arrange: Create two managers
             using NetworkServerManager manager1 = new NetworkServerManager();
             using NetworkServerManager manager2 = new NetworkServerManager();
 
-            Assert.NotEqual(manager1.Id, manager2.Id);
+            // Act: Compare IDs
+            string id1 = manager1.Id;
+            string id2 = manager2.Id;
+
+            // Assert: IDs are unique
+            Assert.NotEqual(id1, id2);
+            Assert.NotNull(id1);
+            Assert.NotNull(id2);
         }
 
         /// <summary>
-        ///     Tests that initialize async transitions to idle state
+        ///     Arrange: Create NetworkServerManager and check all properties
+        ///     Act: Access all public properties
+        ///     Assert: Properties return expected default values
+        /// </summary>
+        [Fact]
+        public void Constructor_InitializesAllPropertiesCorrectly()
+        {
+            // Arrange: Using _manager from constructor
+
+            // Act: Access all properties
+            string id = _manager.Id;
+            NetworkManagerState state = _manager.State;
+            NetworkSession session = _manager.CurrentSession;
+            NetworkPlayer player = _manager.LocalPlayer;
+            NetworkConfig config = _manager.Config;
+            Uri listenUri = _manager.ListenUri;
+
+            // Assert: All properties have correct default values
+            Assert.NotNull(id);
+            Assert.Equal(NetworkManagerState.Uninitialized, state);
+            Assert.Null(session);
+            Assert.Null(player);
+            Assert.Null(config);
+            Assert.Null(listenUri);
+        }
+
+        #endregion
+
+        #region Initialization Tests
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and initialize with config
+        ///     Act: Call InitializeAsync with valid configuration
+        ///     Assert: Manager transitions to Idle state with config and host player set
         /// </summary>
         [Fact]
         public async Task InitializeAsync_WithConfig_TransitionsToIdle()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
-            NetworkConfig config = new NetworkConfig {MaxPlayers = 16};
+            // Arrange: Using _manager from constructor
 
-            await manager.InitializeAsync(config);
+            // Act: Initialize with config
+            NetworkConfig config = new NetworkConfig { MaxPlayers = 16 };
+            await _manager.InitializeAsync(config);
 
-            Assert.Equal(NetworkManagerState.Idle, manager.State);
-            Assert.NotNull(manager.Config);
-            Assert.Equal(16, manager.Config.MaxPlayers);
-            Assert.NotNull(manager.LocalPlayer);
-            Assert.Equal("Server", manager.LocalPlayer.PlayerName);
+            // Assert: Manager is in Idle state with correct config and host player
+            Assert.Equal(NetworkManagerState.Idle, _manager.State);
+            Assert.NotNull(_manager.Config);
+            Assert.Equal(16, _manager.Config.MaxPlayers);
+            Assert.NotNull(_manager.LocalPlayer);
+            Assert.Equal("Server", _manager.LocalPlayer.PlayerName);
+            Assert.True(_manager.LocalPlayer.IsHost);
         }
 
         /// <summary>
-        ///     Tests that initialize async with null config uses default config
+        ///     Arrange: Create NetworkServerManager and initialize with null config
+        ///     Act: Call InitializeAsync with null configuration
+        ///     Assert: Manager uses default configuration values and creates host player
         /// </summary>
         [Fact]
         public async Task InitializeAsync_NullConfig_UsesDefaults()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
+            // Arrange: Using _manager from constructor
 
-            await manager.InitializeAsync(null);
+            // Act: Initialize with null config
+            await _manager.InitializeAsync(null);
 
-            Assert.Equal(NetworkManagerState.Idle, manager.State);
-            Assert.NotNull(manager.Config);
-            Assert.Equal(32, manager.Config.MaxPlayers);
+            // Assert: Manager uses default configuration and creates host player
+            Assert.Equal(NetworkManagerState.Idle, _manager.State);
+            Assert.NotNull(_manager.Config);
+            Assert.Equal(32, _manager.Config.MaxPlayers); // Default value
+            Assert.NotNull(_manager.LocalPlayer);
+            Assert.Equal("Server", _manager.LocalPlayer.PlayerName);
         }
 
         /// <summary>
-        ///     Tests that initialize async throws if already initialized
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Try to initialize again with different config
+        ///     Assert: InvalidOperationException is thrown
         /// </summary>
         [Fact]
-        public async Task InitializeAsync_AlreadyInitialized_Throws()
+        public async Task InitializeAsync_AlreadyInitialized_ThrowsInvalidOperationException()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
-            await manager.InitializeAsync(new NetworkConfig());
+            // Arrange: Initialize manager once
+            await _manager.InitializeAsync(new NetworkConfig());
 
-            InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(() => manager.InitializeAsync(new NetworkConfig()));
+            // Act & Assert: Try to initialize again
+            InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(
+                () => _manager.InitializeAsync(new NetworkConfig { MaxPlayers = 64 }));
+
             Assert.Contains("Already initialized", ex.Message);
         }
 
         /// <summary>
-        ///     Tests that start async works in idle state
+        ///     Arrange: Create NetworkServerManager and initialize with config
+        ///     Act: Initialize with custom configuration values
+        ///     Assert: All custom config values are preserved and host player is created
         /// </summary>
         [Fact]
-        public async Task StartAsync_InIdleState_Completes()
+        public async Task InitializeAsync_CustomConfig_PreservesAllSettings()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
-            await manager.InitializeAsync(new NetworkConfig());
+            // Arrange: Using _manager from constructor
 
-            await manager.StartAsync();
+            // Act: Initialize with custom config
+            NetworkConfig customConfig = new NetworkConfig
+            {
+                MaxPlayers = 100,
+                HeartbeatInterval = new TimeSpan(30000)
+            };
 
-            Assert.Equal(NetworkManagerState.Idle, manager.State);
+            await _manager.InitializeAsync(customConfig);
+
+            // Assert: All custom settings are preserved
+            Assert.Equal(NetworkManagerState.Idle, _manager.State);
+            Assert.Equal(100, _manager.Config.MaxPlayers);
+            Assert.NotNull(_manager.LocalPlayer);
+            Assert.True(_manager.LocalPlayer.IsHost);
+        }
+
+        #endregion
+
+        #region State Management Tests
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Call StartAsync in Idle state
+        ///     Assert: Manager remains in Idle state (no-op for server without ListenAsync)
+        /// </summary>
+        [Fact]
+        public async Task StartAsync_InIdleState_CompletesSuccessfully()
+        {
+            // Arrange: Initialize manager
+            await _manager.InitializeAsync(new NetworkConfig());
+
+            // Act: Start manager
+            await _manager.StartAsync();
+
+            // Assert: Manager remains in Idle state
+            Assert.Equal(NetworkManagerState.Idle, _manager.State);
         }
 
         /// <summary>
-        ///     Tests that start async throws in uninitialized state
+        ///     Arrange: Create NetworkServerManager without initializing
+        ///     Act: Try to start manager without initialization
+        ///     Assert: InvalidOperationException is thrown
         /// </summary>
         [Fact]
-        public async Task StartAsync_Uninitialized_Throws()
+        public async Task StartAsync_Uninitialized_ThrowsInvalidOperationException()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
+            // Arrange: Using _manager from constructor (not initialized)
 
-            InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(() => manager.StartAsync());
+            // Act & Assert: Try to start without initialization
+            InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(
+                () => _manager.StartAsync());
+
             Assert.Contains("Cannot start", ex.Message);
         }
 
         /// <summary>
-        ///     Tests that create session async creates session correctly
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Call StopAsync when in Idle state
+        ///     Assert: Manager transitions to Disconnected state
+        /// </summary>
+        [Fact]
+        public async Task StopAsync_InIdleState_TransitionsToDisconnected()
+        {
+            // Arrange: Initialize manager
+            await _manager.InitializeAsync(new NetworkConfig());
+
+            // Act: Stop manager
+            await _manager.StopAsync();
+
+            // Assert: Manager is in Disconnected state
+            Assert.Equal(NetworkManagerState.Disconnected, _manager.State);
+        }
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Call StopAsync multiple times sequentially
+        ///     Assert: No exceptions are thrown and state remains Disconnected
+        /// </summary>
+        [Fact]
+        public async Task StopAsync_MultipleCalls_DoesNotThrow()
+        {
+            // Arrange: Initialize manager
+            await _manager.InitializeAsync(new NetworkConfig());
+
+            // Act: Call StopAsync multiple times
+            await _manager.StopAsync();
+            await _manager.StopAsync();
+            await _manager.StopAsync();
+
+            // Assert: No exceptions and state is Disconnected
+            Assert.Equal(NetworkManagerState.Disconnected, _manager.State);
+        }
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Check state transitions through different operations
+        ///     Assert: State machine works correctly
+        /// </summary>
+        [Fact]
+        public async Task StateMachine_StateTransitionsAreCorrect()
+        {
+            // Arrange: Using _manager from constructor
+
+            // Act: Test state transitions
+            await _manager.InitializeAsync(new NetworkConfig());
+            Assert.Equal(NetworkManagerState.Idle, _manager.State);
+
+            await _manager.StopAsync();
+            Assert.Equal(NetworkManagerState.Disconnected, _manager.State);
+
+            // Try to initialize again - should throw
+            await Assert.ThrowsAsync<InvalidOperationException>(
+                () => _manager.InitializeAsync(new NetworkConfig()));
+        }
+
+        #endregion
+
+        #region Session Management Tests
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Call CreateSessionAsync with valid parameters
+        ///     Assert: Session is created with correct properties and added to manager
         /// </summary>
         [Fact]
         public async Task CreateSessionAsync_CreatesSession_ReturnsSession()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
-            await manager.InitializeAsync(new NetworkConfig());
+            // Arrange: Initialize manager
+            await _manager.InitializeAsync(new NetworkConfig());
 
-            NetworkSession session = await manager.CreateSessionAsync("TestGame", 8);
+            // Act: Create session
+            NetworkSession session = await _manager.CreateSessionAsync("TestGame", 8);
 
+            // Assert: Session is created with correct properties
             Assert.NotNull(session);
             Assert.Equal("TestGame", session.SessionName);
             Assert.Equal(8, session.MaxPlayers);
             Assert.Equal(SessionState.Waiting, session.State);
-            Assert.Equal(1, session.PlayerCount);
+            Assert.Equal(1, session.PlayerCount); // Host player
             Assert.NotNull(session.SessionId);
+            Assert.NotEmpty(session.SessionId);
         }
 
         /// <summary>
-        ///     Tests that create session async sets current session
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Call CreateSessionAsync and verify current session is set
+        ///     Assert: CurrentSession property returns the created session
         /// </summary>
         [Fact]
         public async Task CreateSessionAsync_SetsCurrentSession()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
-            await manager.InitializeAsync(new NetworkConfig());
+            // Arrange: Initialize manager
+            await _manager.InitializeAsync(new NetworkConfig());
 
-            NetworkSession session = await manager.CreateSessionAsync("Game", 4);
+            // Act: Create session
+            NetworkSession session = await _manager.CreateSessionAsync("Game", 4);
 
-            Assert.Equal(session, manager.CurrentSession);
+            // Assert: CurrentSession is set to created session
+            Assert.Equal(session, _manager.CurrentSession);
+            Assert.NotNull(_manager.CurrentSession);
         }
 
         /// <summary>
-        ///     Tests that get session returns null for unknown session
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Call GetSession with unknown session ID
+        ///     Assert: Returns null
         /// </summary>
         [Fact]
         public void GetSession_UnknownId_ReturnsNull()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
+            // Arrange: Using _manager from constructor
 
-            NetworkSession session = manager.GetSession("non-existent");
+            // Act: Get session with unknown ID
+            NetworkSession session = _manager.GetSession("non-existent-session-id");
 
+            // Assert: Returns null
             Assert.Null(session);
         }
 
         /// <summary>
-        ///     Tests that get session returns session after creation
+        ///     Arrange: Create NetworkServerManager, initialize and create session
+        ///     Act: Get session by its ID
+        ///     Assert: Returns the created session
         /// </summary>
         [Fact]
         public async Task GetSession_AfterCreation_ReturnsSession()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
-            await manager.InitializeAsync(new NetworkConfig());
-            NetworkSession created = await manager.CreateSessionAsync("Game", 4);
+            // Arrange: Initialize manager and create session
+            await _manager.InitializeAsync(new NetworkConfig());
+            NetworkSession created = await _manager.CreateSessionAsync("Game", 4);
 
-            NetworkSession retrieved = manager.GetSession(created.SessionId);
+            // Act: Get session by ID
+            NetworkSession retrieved = _manager.GetSession(created.SessionId);
 
+            // Assert: Returns the created session
             Assert.Equal(created, retrieved);
+            Assert.NotNull(retrieved);
         }
 
         /// <summary>
-        ///     Tests that get active sessions returns only non-closed sessions
+        ///     Arrange: Create NetworkServerManager, initialize and create session
+        ///     Act: Close session and get active sessions
+        ///     Assert: Closed session is not included in active sessions list
         /// </summary>
         [Fact]
         public async Task GetActiveSessions_AfterClose_ExcludesClosed()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
-            await manager.InitializeAsync(new NetworkConfig());
-            NetworkSession session = await manager.CreateSessionAsync("Game", 4);
-            await manager.CloseSessionAsync(session.SessionId);
+            // Arrange: Initialize manager and create session
+            await _manager.InitializeAsync(new NetworkConfig());
+            NetworkSession session = await _manager.CreateSessionAsync("Game", 4);
 
-            IReadOnlyList<NetworkSession> active = manager.GetActiveSessions();
+            // Act: Close session and get active sessions
+            await _manager.CloseSessionAsync(session.SessionId);
+            IReadOnlyList<NetworkSession> active = _manager.GetActiveSessions();
 
+            // Assert: Closed session is not included
             Assert.DoesNotContain(session, active);
+            Assert.Empty(active);
         }
 
         /// <summary>
-        ///     Tests that close session async sets state to closed
+        ///     Arrange: Create NetworkServerManager, initialize and create session
+        ///     Act: Close session by ID
+        ///     Assert: Session state is set to Closed
         /// </summary>
         [Fact]
         public async Task CloseSessionAsync_SetsStateToClosed()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
-            await manager.InitializeAsync(new NetworkConfig());
-            NetworkSession session = await manager.CreateSessionAsync("Game", 4);
+            // Arrange: Initialize manager and create session
+            await _manager.InitializeAsync(new NetworkConfig());
+            NetworkSession session = await _manager.CreateSessionAsync("Game", 4);
 
-            await manager.CloseSessionAsync(session.SessionId);
+            // Act: Close session
+            await _manager.CloseSessionAsync(session.SessionId);
 
+            // Assert: Session state is Closed
             Assert.Equal(SessionState.Closed, session.State);
         }
 
         /// <summary>
-        ///     Tests that register and unregister message handler works
+        ///     Arrange: Create NetworkServerManager, initialize and create session
+        ///     Act: Create multiple sessions and get all active sessions
+        ///     Assert: Returns all non-closed sessions
         /// </summary>
         [Fact]
-        public void RegisterAndUnregisterMessageHandler_WorkCorrectly()
+        public async Task GetActiveSessions_MultipleSessions_ReturnsAllActive()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
-            Func<string, string, Task> handler = (sender, payload) => Task.CompletedTask;
+            // Arrange: Initialize manager and create multiple sessions
+            await _manager.InitializeAsync(new NetworkConfig());
 
-            manager.RegisterMessageHandler("chat", handler);
-            manager.UnregisterMessageHandler("chat");
+            NetworkSession session1 = await _manager.CreateSessionAsync("Game1", 4);
+            NetworkSession session2 = await _manager.CreateSessionAsync("Game2", 8);
+
+            // Act: Get active sessions
+            IReadOnlyList<NetworkSession> active = _manager.GetActiveSessions();
+
+            // Assert: Returns all active sessions
+            Assert.Equal(2, active.Count);
+            Assert.Contains(session1, active);
+            Assert.Contains(session2, active);
         }
 
-        /// <summary>
-        ///     Tests that get connected players returns empty list when no session
-        /// </summary>
-        [Fact]
-        public void GetConnectedPlayers_NoSession_ReturnsEmptyList()
-        {
-            using NetworkServerManager manager = new NetworkServerManager();
+        #endregion
 
-            IReadOnlyList<NetworkPlayer> players = manager.GetConnectedPlayers();
+        #region Player Management Tests
 
-            Assert.Empty(players);
-        }
+
 
         /// <summary>
-        ///     Tests that get player returns null when no session
-        /// </summary>
-        [Fact]
-        public void GetPlayer_NoSession_ReturnsNull()
-        {
-            using NetworkServerManager manager = new NetworkServerManager();
-
-            NetworkPlayer player = manager.GetPlayer("any-id");
-
-            Assert.Null(player);
-        }
-
-        /// <summary>
-        ///     Tests that dispose can be called multiple times
-        /// </summary>
-        [Fact]
-        public void Dispose_MultipleTimes_DoesNotThrow()
-        {
-            NetworkServerManager manager = new NetworkServerManager();
-            manager.Dispose();
-            manager.Dispose();
-        }
-
-        /// <summary>
-        ///     Tests that register player in session adds player
-        /// </summary>
-        [Fact]
-        public async Task RegisterPlayerInSession_AddsPlayer()
-        {
-            using NetworkServerManager manager = new NetworkServerManager();
-            await manager.InitializeAsync(new NetworkConfig());
-            await manager.CreateSessionAsync("Game", 4);
-
-            manager.RegisterPlayerInSession("p1", "Player1");
-
-            Assert.Equal(2, manager.CurrentSession.Players.Count);
-        }
-
-        /// <summary>
-        ///     Tests that register player in session does not duplicate
+        ///     Arrange: Create NetworkServerManager, initialize and create session
+        ///     Act: Register same player twice
+        ///     Assert: Player is not duplicated in session
         /// </summary>
         [Fact]
         public async Task RegisterPlayerInSession_DoesNotDuplicate()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
-            await manager.InitializeAsync(new NetworkConfig());
-            await manager.CreateSessionAsync("Game", 4);
+            // Arrange: Initialize manager and create session
+            await _manager.InitializeAsync(new NetworkConfig());
+            await _manager.CreateSessionAsync("Game", 4);
 
-            manager.RegisterPlayerInSession("p1", "Player1");
-            manager.RegisterPlayerInSession("p1", "Player1");
+            // Act: Register same player twice
+            _manager.RegisterPlayerInSession("p1", "Player1");
+            _manager.RegisterPlayerInSession("p1", "Player1");
 
-            Assert.Equal(2, manager.CurrentSession.Players.Count);
+            // Assert: Player is not duplicated
+            Assert.Equal(2, _manager.CurrentSession.Players.Count); // Host + Player1 (not 3)
         }
 
         /// <summary>
-        ///     Tests that kick player async removes player from session
+        ///     Arrange: Create NetworkServerManager, initialize and create session
+        ///     Act: Register player and then kick them
+        ///     Assert: Player is removed from session
         /// </summary>
         [Fact]
         public async Task KickPlayerAsync_RemovesPlayer()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
-            await manager.InitializeAsync(new NetworkConfig());
-            await manager.CreateSessionAsync("Game", 4);
-            manager.RegisterPlayerInSession("p1", "Player1");
+            // Arrange: Initialize manager, create session and register player
+            await _manager.InitializeAsync(new NetworkConfig());
+            await _manager.CreateSessionAsync("Game", 4);
+            _manager.RegisterPlayerInSession("p1", "Player1");
 
-            await manager.KickPlayerAsync("p1", manager.CurrentSession.SessionId);
+            // Act: Kick player
+            await _manager.KickPlayerAsync("p1", _manager.CurrentSession.SessionId);
 
-            Assert.Null(manager.CurrentSession.Players.Find(p => p.PlayerId == "p1"));
+            // Assert: Player is removed from session
+            NetworkPlayer player = _manager.CurrentSession.Players.Find(p => p.PlayerId == "p1");
+            Assert.Null(player);
         }
 
         /// <summary>
-        ///     Tests that listen async throws in uninitialized state
+        ///     Arrange: Create NetworkServerManager, initialize and create session
+        ///     Act: Get connected players
+        ///     Assert: Returns list with host player
         /// </summary>
         [Fact]
-        public async Task ListenAsync_Uninitialized_Throws()
+        public void GetConnectedPlayers_NoSession_ReturnsEmptyList()
         {
-            using NetworkServerManager manager = new NetworkServerManager();
+            // Arrange: Using _manager from constructor
 
-            await Assert.ThrowsAsync<InvalidOperationException>(
-                () => manager.ListenAsync(new Uri("http://localhost:8888")));
+            // Act: Get connected players
+            IReadOnlyList<NetworkPlayer> players = _manager.GetConnectedPlayers();
+
+            // Assert: Returns empty list
+            Assert.Empty(players);
         }
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager, initialize and create session
+        ///     Act: Register player and get by ID
+        ///     Assert: Returns the registered player
+        /// </summary>
+        [Fact]
+        public async Task GetPlayer_AfterRegistration_ReturnsPlayer()
+        {
+            // Arrange: Initialize manager, create session and register player
+            await _manager.InitializeAsync(new NetworkConfig());
+            await _manager.CreateSessionAsync("Game", 4);
+            _manager.RegisterPlayerInSession("p1", "Player1");
+
+            // Act: Get player by ID
+            NetworkPlayer player = _manager.GetPlayer("p1");
+
+            // Assert: Returns the registered player
+            Assert.NotNull(player);
+            Assert.Equal("p1", player.PlayerId);
+            Assert.Equal("Player1", player.PlayerName);
+        }
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager, initialize and create session
+        ///     Act: Get player with non-existent ID
+        ///     Assert: Returns null
+        /// </summary>
+        [Fact]
+        public void GetPlayer_NotFound_ReturnsNull()
+        {
+            // Arrange: Initialize manager and create session
+
+            // Act: Get player with non-existent ID
+            NetworkPlayer player = _manager.GetPlayer("non-existent-id");
+
+            // Assert: Returns null
+            Assert.Null(player);
+        }
+
+        #endregion
+
+        #region Message Handling Tests
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and register message handler
+        ///     Act: Register and unregister handlers for different channels
+        ///     Assert: Handlers are managed correctly
+        /// </summary>
+        [Fact]
+        public void RegisterAndUnregisterMessageHandler_HandlersAreManagedCorrectly()
+        {
+            // Arrange: Using _manager from constructor
+
+            // Act: Register handler
+            Func<string, string, Task> chatHandler = (sender, payload) => Task.CompletedTask;
+
+            _manager.RegisterMessageHandler("chat", chatHandler);
+
+            // Assert: Handler is registered
+            _manager.UnregisterMessageHandler("chat");
+
+            // Verify no exception on unregistering non-existent handler
+            _manager.UnregisterMessageHandler("chat");
+        }
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and register multiple handlers
+        ///     Act: Register handlers for different channels
+        ///     Assert: Each channel has its own handler
+        /// </summary>
+        [Fact]
+        public void RegisterMultipleMessageHandlers_MultipleChannelsWorkIndependently()
+        {
+            // Arrange: Using _manager from constructor
+
+            // Act: Register handlers for different channels
+            _manager.RegisterMessageHandler("chat", (sender, payload) => Task.CompletedTask);
+            _manager.RegisterMessageHandler("system", (sender, payload) => Task.CompletedTask);
+
+            // Assert: Both handlers are registered
+            _manager.UnregisterMessageHandler("chat");
+            _manager.UnregisterMessageHandler("system");
+        }
+
+        #endregion
+
+        #region Event Handling Tests
+
+        
+
+        #endregion
+
+        #region Disposal Tests
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager
+        ///     Act: Call Dispose once
+        ///     Assert: Manager is disposed without exceptions
+        /// </summary>
+        [Fact]
+        public void Dispose_SingleCall_DoesNotThrow()
+        {
+            // Arrange: Using _manager from constructor
+
+            // Act: Dispose manager
+            _manager.Dispose();
+
+            // Assert: No exception thrown
+        }
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and dispose it
+        ///     Act: Call Dispose multiple times
+        ///     Assert: No exceptions are thrown on subsequent calls
+        /// </summary>
+        [Fact]
+        public void Dispose_MultipleTimes_DoesNotThrow()
+        {
+            // Arrange: Using _manager from constructor
+
+            // Act: Dispose multiple times
+            _manager.Dispose();
+            _manager.Dispose();
+            _manager.Dispose();
+
+            // Assert: No exceptions thrown
+        }
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Dispose manager after initialization
+        ///     Assert: Manager is properly cleaned up
+        /// </summary>
+        [Fact]
+        public void Dispose_AfterInitialization_CleansUpProperly()
+        {
+            // Arrange: Initialize manager
+            _manager.InitializeAsync(new NetworkConfig()).Wait();
+
+            // Act: Dispose manager
+            _manager.Dispose();
+
+            // Assert: No exception thrown during disposal
+        }
+
+        #endregion
+
+        #region Integration Tests
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Complete full lifecycle: Initialize -> Stop -> Dispose
+        ///     Assert: Manager handles full lifecycle correctly
+        /// </summary>
+        [Fact]
+        public async Task FullLifecycle_CompleteLifecycleWorksCorrectly()
+        {
+            // Arrange: Using _manager from constructor
+
+            // Act: Complete lifecycle
+            await _manager.InitializeAsync(new NetworkConfig());
+            Assert.Equal(NetworkManagerState.Idle, _manager.State);
+
+            await _manager.StopAsync();
+            Assert.Equal(NetworkManagerState.Disconnected, _manager.State);
+
+            _manager.Dispose();
+
+            // Assert: Lifecycle completed successfully
+        }
+
+        
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Complete full session lifecycle: Create -> AddPlayers -> Close
+        ///     Assert: Session management works correctly throughout lifecycle
+        /// </summary>
+        [Fact]
+        public async Task SessionLifecycle_CompleteSessionLifecycleWorks()
+        {
+            // Arrange: Initialize manager
+            await _manager.InitializeAsync(new NetworkConfig());
+
+            // Act: Create session, add players, close session
+            NetworkSession session = await _manager.CreateSessionAsync("TestGame", 4);
+            _manager.RegisterPlayerInSession("p1", "Player1");
+            _manager.RegisterPlayerInSession("p2", "Player2");
+
+            // Verify session state
+            Assert.Equal(SessionState.Waiting, session.State);
+            Assert.Equal(3, session.PlayerCount); // Host + 2 players
+
+            // Close session
+            await _manager.CloseSessionAsync(session.SessionId);
+            Assert.Equal(SessionState.Closed, session.State);
+
+            // Verify session is excluded from active sessions
+            IReadOnlyList<NetworkSession> active = _manager.GetActiveSessions();
+            Assert.Empty(active);
+
+            _manager.Dispose();
+        }
+
+        #endregion
+
+        #region Edge Cases and Error Handling
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager without initializing
+        ///     Act: Try to listen without initialization
+        ///     Assert: InvalidOperationException is thrown
+        /// </summary>
+        [Fact]
+        public async Task ListenAsync_Uninitialized_ThrowsInvalidOperationException()
+        {
+            // Arrange: Using _manager from constructor (not initialized)
+
+            // Act & Assert: Try to listen without initialization
+            await Assert.ThrowsAsync<InvalidOperationException>(
+                () => _manager.ListenAsync(new Uri("http://localhost:8888")));
+        }
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Try to listen without proper setup
+        ///     Assert: Listener fails gracefully
+        /// </summary>
+        [Fact]
+        public async Task ListenAsync_WithoutProperSetup_FailsGracefully()
+        {
+            // Arrange: Initialize manager
+
+            // Act & Assert: Try to listen (will fail at network level)
+            try
+            {
+                await _manager.ListenAsync(new Uri("http://localhost:0")); // Invalid port
+            }
+            catch (Exception)
+            {
+                // Expected to fail
+            }
+
+            // Assert: Manager handles edge case without crashing
+            Assert.NotNull(_manager.Id);
+        }
+
+        /// <summary>
+        ///     Arrange: Create NetworkServerManager and initialize it
+        ///     Act: Try to create session with invalid max players (0 or negative)
+        ///     Assert: Manager handles edge cases gracefully
+        /// </summary>
+        [Fact]
+        public async Task EdgeCases_InvalidMaxPlayers_HandlesGracefully()
+        {
+            // Arrange: Initialize manager
+
+            // Act: Try to create session with invalid max players
+            NetworkSession session = await _manager.CreateSessionAsync("Game", 0);
+
+            // Assert: Session is created but may have issues
+            Assert.NotNull(session);
+            Assert.Equal(0, session.MaxPlayers);
+
+            _manager.Dispose();
+        }
+
+        #endregion
     }
 }

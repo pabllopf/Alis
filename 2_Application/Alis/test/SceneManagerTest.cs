@@ -33,7 +33,7 @@ using Alis.Core.Ecs.Systems.Manager.Scene;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
-namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
+namespace Alis.Test
 {
     /// <summary>
     ///     Contains unit tests for the <see cref="SceneManager" /> class.

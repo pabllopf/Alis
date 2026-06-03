@@ -36,7 +36,7 @@ using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.System
+namespace Alis.Test
 {
     /// <summary>
     ///     Contains unit tests for the <see cref="VideoGameBuilder" /> class.

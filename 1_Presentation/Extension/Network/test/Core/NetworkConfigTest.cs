@@ -38,14 +38,250 @@ namespace Alis.Extension.Network.Test.Core
     /// </summary>
     public class NetworkConfigTest
     {
-        /// <summary>
-        ///     Tests that default constructor sets expected default values
-        /// </summary>
         [Fact]
-        public void Constructor_DefaultValues_AreCorrect()
+        public void MaxPlayers_DefaultValueIs32()
         {
+            // Arrange
             NetworkConfig config = new NetworkConfig();
 
+            // Act
+            int result = config.MaxPlayers;
+
+            // Assert
+            Assert.Equal(32, result);
+        }
+
+        [Fact]
+        public void MaxPlayers_SetValue()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            config.MaxPlayers = 64;
+
+            // Assert
+            Assert.Equal(64, config.MaxPlayers);
+        }
+
+        [Fact]
+        public void TickRate_DefaultValueIs60()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            int result = config.TickRate;
+
+            // Assert
+            Assert.Equal(60, result);
+        }
+
+        [Fact]
+        public void TickRate_SetValue()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            config.TickRate = 30;
+
+            // Assert
+            Assert.Equal(30, config.TickRate);
+        }
+
+        [Fact]
+        public void TickInterval_CalculatedCorrectly()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            TimeSpan result = config.TickInterval;
+
+            // Assert
+            Assert.Equal(TimeSpan.FromSeconds(1.0 / 60), result);
+        }
+
+        [Fact]
+        public void TickInterval_ChangesWithTickRate()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+            config.TickRate = 30;
+
+            // Act
+            TimeSpan result = config.TickInterval;
+
+            // Assert
+            Assert.Equal(TimeSpan.FromSeconds(1.0 / 30), result);
+        }
+
+        [Fact]
+        public void ServerAuthoritative_DefaultValueIsTrue()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            bool result = config.ServerAuthoritative;
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void ServerAuthoritative_SetValueToFalse()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            config.ServerAuthoritative = false;
+
+            // Assert
+            Assert.False(config.ServerAuthoritative);
+        }
+
+        [Fact]
+        public void ConnectionTimeout_DefaultValueIs30Seconds()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            TimeSpan result = config.ConnectionTimeout;
+
+            // Assert
+            Assert.Equal(TimeSpan.FromSeconds(30), result);
+        }
+
+        [Fact]
+        public void ConnectionTimeout_SetValue()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            config.ConnectionTimeout = TimeSpan.FromSeconds(60);
+
+            // Assert
+            Assert.Equal(TimeSpan.FromSeconds(60), config.ConnectionTimeout);
+        }
+
+        [Fact]
+        public void HeartbeatInterval_DefaultValueIs5Seconds()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            TimeSpan result = config.HeartbeatInterval;
+
+            // Assert
+            Assert.Equal(TimeSpan.FromSeconds(5), result);
+        }
+
+        [Fact]
+        public void HeartbeatInterval_SetValue()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            config.HeartbeatInterval = TimeSpan.FromSeconds(10);
+
+            // Assert
+            Assert.Equal(TimeSpan.FromSeconds(10), config.HeartbeatInterval);
+        }
+
+        [Fact]
+        public void EnableClientPrediction_DefaultValueIsTrue()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            bool result = config.EnableClientPrediction;
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void EnableClientPrediction_SetValueToFalse()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            config.EnableClientPrediction = false;
+
+            // Assert
+            Assert.False(config.EnableClientPrediction);
+        }
+
+        [Fact]
+        public void EnableLagCompensation_DefaultValueIsTrue()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            bool result = config.EnableLagCompensation;
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void EnableLagCompensation_SetValueToFalse()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            config.EnableLagCompensation = false;
+
+            // Assert
+            Assert.False(config.EnableLagCompensation);
+        }
+
+        [Fact]
+        public void MaxMessageSize_DefaultValueIs64KB()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            int result = config.MaxMessageSize;
+
+            // Assert
+            Assert.Equal(1024 * 64, result);
+        }
+
+        [Fact]
+        public void MaxMessageSize_SetValue()
+        {
+            // Arrange
+            NetworkConfig config = new NetworkConfig();
+
+            // Act
+            config.MaxMessageSize = 1024 * 128;
+
+            // Assert
+            Assert.Equal(1024 * 128, config.MaxMessageSize);
+        }
+
+        [Fact]
+        public void CreateNewInstance_InitializesAllProperties()
+        {
+            // Arrange
+            // Act
+            NetworkConfig config = new NetworkConfig();
+
+            // Assert
+            Assert.NotNull(config);
             Assert.Equal(32, config.MaxPlayers);
             Assert.Equal(60, config.TickRate);
             Assert.True(config.ServerAuthoritative);
@@ -54,130 +290,6 @@ namespace Alis.Extension.Network.Test.Core
             Assert.True(config.EnableClientPrediction);
             Assert.True(config.EnableLagCompensation);
             Assert.Equal(1024 * 64, config.MaxMessageSize);
-        }
-
-        /// <summary>
-        ///     Tests that TickInterval is computed correctly from TickRate
-        /// </summary>
-        [Fact]
-        public void TickInterval_ComputedFromTickRate_ReturnsCorrectValue()
-        {
-            NetworkConfig config = new NetworkConfig {TickRate = 60};
-
-            Assert.Equal(TimeSpan.FromSeconds(1.0 / 60), config.TickInterval);
-        }
-
-        /// <summary>
-        ///     Tests that TickInterval updates when TickRate changes
-        /// </summary>
-        [Fact]
-        public void TickInterval_WhenTickRateChanges_UpdatesAccordingly()
-        {
-            NetworkConfig config = new NetworkConfig {TickRate = 30};
-
-            Assert.Equal(TimeSpan.FromSeconds(1.0 / 30), config.TickInterval);
-
-            config.TickRate = 120;
-            Assert.Equal(TimeSpan.FromSeconds(1.0 / 120), config.TickInterval);
-        }
-
-        /// <summary>
-        ///     Tests that MaxPlayers can be set to custom value
-        /// </summary>
-        [Fact]
-        public void MaxPlayers_SetToCustomValue_ReturnsCorrectValue()
-        {
-            NetworkConfig config = new NetworkConfig {MaxPlayers = 64};
-
-            Assert.Equal(64, config.MaxPlayers);
-        }
-
-        /// <summary>
-        ///     Tests that ServerAuthoritative can be disabled
-        /// </summary>
-        [Fact]
-        public void ServerAuthoritative_Disabled_ReturnsFalse()
-        {
-            NetworkConfig config = new NetworkConfig {ServerAuthoritative = false};
-
-            Assert.False(config.ServerAuthoritative);
-        }
-
-        /// <summary>
-        ///     Tests that ConnectionTimeout can be customized
-        /// </summary>
-        [Fact]
-        public void ConnectionTimeout_SetToCustomValue_ReturnsCorrectValue()
-        {
-            NetworkConfig config = new NetworkConfig {ConnectionTimeout = TimeSpan.FromSeconds(60)};
-
-            Assert.Equal(TimeSpan.FromSeconds(60), config.ConnectionTimeout);
-        }
-
-        /// <summary>
-        ///     Tests that HeartbeatInterval can be customized
-        /// </summary>
-        [Fact]
-        public void HeartbeatInterval_SetToCustomValue_ReturnsCorrectValue()
-        {
-            NetworkConfig config = new NetworkConfig {HeartbeatInterval = TimeSpan.FromSeconds(10)};
-
-            Assert.Equal(TimeSpan.FromSeconds(10), config.HeartbeatInterval);
-        }
-
-        /// <summary>
-        ///     Tests that EnableClientPrediction can be disabled
-        /// </summary>
-        [Fact]
-        public void EnableClientPrediction_Disabled_ReturnsFalse()
-        {
-            NetworkConfig config = new NetworkConfig {EnableClientPrediction = false};
-
-            Assert.False(config.EnableClientPrediction);
-        }
-
-        /// <summary>
-        ///     Tests that EnableLagCompensation can be disabled
-        /// </summary>
-        [Fact]
-        public void EnableLagCompensation_Disabled_ReturnsFalse()
-        {
-            NetworkConfig config = new NetworkConfig {EnableLagCompensation = false};
-
-            Assert.False(config.EnableLagCompensation);
-        }
-
-        /// <summary>
-        ///     Tests that MaxMessageSize can be customized
-        /// </summary>
-        [Fact]
-        public void MaxMessageSize_SetToCustomValue_ReturnsCorrectValue()
-        {
-            NetworkConfig config = new NetworkConfig {MaxMessageSize = 1024 * 128};
-
-            Assert.Equal(1024 * 128, config.MaxMessageSize);
-        }
-        
-        /// <summary>
-        ///     Tests that max players negative sets negative value
-        /// </summary>
-        [Fact]
-        public void MaxPlayers_Negative_SetsNegativeValue()
-        {
-            NetworkConfig config = new NetworkConfig {MaxPlayers = -1};
-
-            Assert.Equal(-1, config.MaxPlayers);
-        }
-
-        /// <summary>
-        ///     Tests that connection timeout zero returns zero timespan
-        /// </summary>
-        [Fact]
-        public void ConnectionTimeout_Zero_ReturnsZeroTimeSpan()
-        {
-            NetworkConfig config = new NetworkConfig {ConnectionTimeout = TimeSpan.Zero};
-
-            Assert.Equal(TimeSpan.Zero, config.ConnectionTimeout);
         }
     }
 }

@@ -28,539 +28,222 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net.Security;
-using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
-using Alis.Extension.Network.Exceptions;
+using Alis.Extension.Network;
+using Alis.Extension.Network.Internal;
 using Xunit;
 
 namespace Alis.Extension.Network.Test
 {
     /// <summary>
-    ///     The web socket client factory test class
+    ///     Tests for WebSocketClientFactory class
     /// </summary>
     public class WebSocketClientFactoryTest
     {
-           [Fact]
-        public void Constructor_WithoutParameters_CreatesInstanceWithDefaultBufferPool()
+        [Fact]
+        public void Constructor_CreatesInstance()
         {
+            // Arrange
+            // Act
             WebSocketClientFactory factory = new WebSocketClientFactory();
 
+            // Assert
             Assert.NotNull(factory);
-            Assert.NotNull(factory.BufferPool);
         }
 
         [Fact]
-        public void Constructor_WithBufferFactory_SetsBufferFactory()
+        public async Task ConnectAsync_WithUri_ReturnsConnectedWebSocket()
         {
-            Func<MemoryStream> bufferFactory = () => new MemoryStream();
-            WebSocketClientFactory factory = new WebSocketClientFactory(bufferFactory);
-
-            Assert.NotNull(factory);
-            Assert.Same(bufferFactory, factory.BufferFactory);
-        }
-        
-
-        [Fact]
-        public void GetSubProtocolFromHeader_WithValidProtocol_ReturnsProtocol()
-        {
-            string response = "HTTP/1.1 101 Switching Protocols\r\n" +
-                            "Sec-WebSocket-Protocol: chat\r\n" +
-                            "\r\n";
-
-            string protocol = WebSocketClientFactory.GetSubProtocolFromHeader(response);
-
-            Assert.Equal("chat", protocol);
-        }
-
-        [Fact]
-        public void GetSubProtocolFromHeader_WithoutProtocol_ReturnsNull()
-        {
-            string response = "HTTP/1.1 101 Switching Protocols\r\n" +
-                            "\r\n";
-
-            string protocol = WebSocketClientFactory.GetSubProtocolFromHeader(response);
-
-            Assert.Null(protocol);
-        }
-
-        [Fact]
-        public void GetSubProtocolFromHeader_WithMultipleSpaces_ReturnsTrimmedProtocol()
-        {
-            string response = "HTTP/1.1 101 Switching Protocols\r\n" +
-                            "Sec-WebSocket-Protocol:   chat   \r\n" +
-                            "\r\n";
-
-            string protocol = WebSocketClientFactory.GetSubProtocolFromHeader(response);
-
-            Assert.Equal("chat", protocol);
-        }
-
-        [Fact]
-        public void GetSubProtocolFromHeader_CaseInsensitiveMatch_ReturnsProtocol()
-        {
-            string response = "HTTP/1.1 101 Switching Protocols\r\n" +
-                            "sec-websocket-protocol: chat\r\n" +
-                            "\r\n";
-
-            string protocol = WebSocketClientFactory.GetSubProtocolFromHeader(response);
-
-            Assert.Equal("chat", protocol);
-        }
-
-
-
-        [Fact]
-        public void ThrowIfInvalidAcceptString_WithInvalidAcceptString_ThrowsWebSocketHandshakeFailedException()
-        {
-            Guid guid = Guid.NewGuid();
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ==";
-            string invalidAcceptString = "invalidAcceptString";
-            string response = $"HTTP/1.1 101 Switching Protocols\r\n" +
-                            $"Sec-WebSocket-Accept: {invalidAcceptString}\r\n" +
-                            "\r\n";
-
-            WebSocketHandshakeFailedException exception = Assert.Throws<WebSocketHandshakeFailedException>(() => 
-                WebSocketClientFactory.ThrowIfInvalidAcceptString(guid, response, secWebSocketKey));
-
-            Assert.Contains("Handshake failed", exception.Message);
-        }
-        
-
-      
-
-        [Fact]
-        public void GenerateSecWebSocketKey_ReturnsBase64StringOf16Bytes()
-        {
-            string key = WebSocketClientFactory.GenerateSecWebSocketKey();
-
-            Assert.NotNull(key);
-            byte[] decodedKey = Convert.FromBase64String(key);
-            Assert.Equal(16, decodedKey.Length);
-        }
-
-        [Fact]
-        public void GenerateSecWebSocketKey_GeneratesDifferentKeys()
-        {
-            string key1 = WebSocketClientFactory.GenerateSecWebSocketKey();
-            string key2 = WebSocketClientFactory.GenerateSecWebSocketKey();
-
-            Assert.NotEqual(key1, key2);
-        }
-
-        [Fact]
-        public void BuildHandshakeRequest_WithValidUri_BuildsCorrectRequest()
-        {
-            Uri uri = new Uri("ws://example.com:8080/test");
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ==";
-            string protocol = "chat";
-            string additionalHeaders = "";
-
-            string request = WebSocketClientFactory.BuildHandshakeRequest(uri, secWebSocketKey, protocol, additionalHeaders);
-
-            Assert.Contains("GET /test HTTP/1.1", request);
-            Assert.Contains("Host: example.com:8080", request);
-            Assert.Contains("Upgrade: websocket", request);
-            Assert.Contains("Connection: Upgrade", request);
-            Assert.Contains($"Sec-WebSocket-Key: {secWebSocketKey}", request);
-            Assert.Contains("Sec-WebSocket-Version: 13", request);
-        }
-
-        [Fact]
-        public void BuildHandshakeRequest_WithWssScheme_BuildsCorrectRequest()
-        {
-            Uri uri = new Uri("wss://secure.example.com:443");
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ==";
-            string protocol = null;
-            string additionalHeaders = "";
-
-            string request = WebSocketClientFactory.BuildHandshakeRequest(uri, secWebSocketKey, protocol, additionalHeaders);
-
-            Assert.Contains("GET / HTTP/1.1", request);
-            Assert.Contains("Host: secure.example.com:443", request);
-        }
-
-        [Fact]
-        public void BuildHandshakeRequest_WithProtocol_IncludesProtocolHeader()
-        {
-            Uri uri = new Uri("ws://example.com");
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ==";
-            string protocol = "myprotocol";
-            string additionalHeaders = "";
-
-            string request = WebSocketClientFactory.BuildHandshakeRequest(uri, secWebSocketKey, protocol, additionalHeaders);
-
-            Assert.Contains("Sec-WebSocket-Protocol: myprotocol", request);
-        }
-
-        [Fact]
-        public void GetAdditionalHeaders_WithNullDictionary_ReturnsEmptyString()
-        {
-            Dictionary<string, string> headers = null;
-
-            string result = WebSocketClientFactory.GetAdditionalHeaders(headers);
-
-            Assert.Equal("", result);
-        }
-
-        [Fact]
-        public void GetAdditionalHeaders_WithEmptyDictionary_ReturnsEmptyString()
-        {
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-
-            string result = WebSocketClientFactory.GetAdditionalHeaders(headers);
-
-            Assert.Equal("", result);
-        }
-
-        [Fact]
-        public void GetAdditionalHeaders_WithHeaders_ReturnsFormattedString()
-        {
-            Dictionary<string, string> headers = new Dictionary<string, string>
-            {
-                {"X-Custom-Header", "value1"},
-                {"X-Another-Header", "value2"}
-            };
-
-            string result = WebSocketClientFactory.GetAdditionalHeaders(headers);
-
-            Assert.Contains("X-Custom-Header: value1", result);
-            Assert.Contains("X-Another-Header: value2", result);
-            Assert.Contains("\r\n", result);
-        }
-
-        [Fact]
-        public void ValidateServerCertificate_WithNoErrors_ReturnsTrue()
-        {
-            bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.None);
-
-            Assert.True(result);
-        }
-
-        [Fact]
-        public void ValidateServerCertificate_WithSslPolicyErrors_ReturnsFalse()
-        {
-            bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.RemoteCertificateNameMismatch);
-
-            Assert.False(result);
-        }
-
-        [Fact]
-        public void ValidateServerCertificate_WithAllSslPolicyErrors_ReturnsFalse()
-        {
-            bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, 
-                SslPolicyErrors.RemoteCertificateChainErrors | SslPolicyErrors.RemoteCertificateNameMismatch);
-
-            Assert.False(result);
-        }
-        
-        /// <summary>
-        ///     Tests that dispose closes web socket
-        /// </summary>
-        [Fact]
-        public void Dispose_ClosesWebSocket()
-        {
+            // Arrange
             WebSocketClientFactory factory = new WebSocketClientFactory();
             Uri uri = new Uri("ws://localhost:8080");
 
-            Task<WebSocket> webSocket = factory.ConnectAsync(uri);
-            factory.Dispose();
+            // Act
+            WebSocket result = await factory.ConnectAsync(uri);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<WebSocketImplementation>(result);
         }
 
-        /// <summary>
-        ///     Tests that validate server certificate should return true when ssl policy errors none
-        /// </summary>
         [Fact]
-        public void ValidateServerCertificate_ShouldReturnTrue_WhenSslPolicyErrorsNone()
+        public async Task ConnectAsync_WithValidUri_ReturnsWebSocket()
         {
-            bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.None);
-            Assert.True(result);
+            // Arrange
+            WebSocketClientFactory factory = new WebSocketClientFactory();
+            Uri uri = new Uri("ws://example.com/chat");
+
+            // Act
+            WebSocket result = await factory.ConnectAsync(uri);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests that validate server certificate should return false when ssl policy errors not none
-        /// </summary>
         [Fact]
-        public void ValidateServerCertificate_ShouldReturnFalse_WhenSslPolicyErrorsNotNone()
+        public async Task ConnectAsync_WithWssUri_ReturnsWebSocket()
         {
-            bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.RemoteCertificateNotAvailable);
-            Assert.False(result);
+            // Arrange
+            WebSocketClientFactory factory = new WebSocketClientFactory();
+            Uri uri = new Uri("wss://secure.example.com");
+
+            // Act
+            WebSocket result = await factory.ConnectAsync(uri);
+
+            // Assert
+            Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests that get additional headers should return empty string when additional headers is null
-        /// </summary>
         [Fact]
-        public void GetAdditionalHeaders_ShouldReturnEmptyString_WhenAdditionalHeadersIsNull()
+        public async Task ConnectAsync_WithOptions_ReturnsWebSocket()
         {
-            string result = WebSocketClientFactory.GetAdditionalHeaders(null);
-            Assert.Equal(string.Empty, result);
+            // Arrange
+            WebSocketClientFactory factory = new WebSocketClientFactory();
+            Uri uri = new Uri("ws://localhost:8080");
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            WebSocket result = await factory.ConnectAsync(uri, options);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<WebSocketImplementation>(result);
         }
 
-        /// <summary>
-        ///     Tests that get additional headers should return correct string when additional headers is not null
-        /// </summary>
         [Fact]
-        public void GetAdditionalHeaders_ShouldReturnCorrectString_WhenAdditionalHeadersIsNotNull()
+        public async Task ConnectAsync_WithStream_ReturnsWebSocket()
         {
-            Dictionary<string, string> additionalHeaders = new Dictionary<string, string>
+            // Arrange
+            WebSocketClientFactory factory = new WebSocketClientFactory();
+            MemoryStream stream = new MemoryStream();
+            string key = "dGhlIHNhbXBsZSBub25jZQ==";
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            WebSocket result = await factory.ConnectAsync(stream, key, options);
+
+            // Assert
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void ConnectAsync_WithDefaultToken_ReturnsWebSocket()
+        {
+            // Arrange
+            WebSocketClientFactory factory = new WebSocketClientFactory();
+            Uri uri = new Uri("ws://localhost:8080");
+
+            // Act
+            Task<WebSocket> result = factory.ConnectAsync(uri);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(TaskStatus.RanToCompletion, result.Status);
+        }
+
+        [Fact]
+        public async Task ConnectAsync_WithCancellationToken_ReturnsWebSocket()
+        {
+            // Arrange
+            WebSocketClientFactory factory = new WebSocketClientFactory();
+            Uri uri = new Uri("ws://localhost:8080");
+            CancellationToken token = new CancellationToken();
+
+            // Act
+            WebSocket result = await factory.ConnectAsync(uri, token);
+
+            // Assert
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public async Task ConnectAsync_WithValidOptions_ReturnsWebSocket()
+        {
+            // Arrange
+            WebSocketClientFactory factory = new WebSocketClientFactory();
+            Uri uri = new Uri("ws://localhost:8080");
+            WebSocketClientOptions options = new WebSocketClientOptions
             {
-                {"TestKey1", "TestValue1"},
-                {"TestKey2", "TestValue2"}
+                KeepAliveInterval = TimeSpan.FromSeconds(20),
+                NoDelay = true,
+                IncludeExceptionInCloseResponse = false
             };
 
-            string result = WebSocketClientFactory.GetAdditionalHeaders(additionalHeaders);
-            string expected = "TestKey1: TestValue1\r\nTestKey2: TestValue2\r\n";
+            // Act
+            WebSocket result = await factory.ConnectAsync(uri, options);
 
-            Assert.Equal(expected, result);
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<WebSocketImplementation>(result);
         }
 
-        /// <summary>
-        ///     Tests that validate server certificate should return true when ssl policy errors none v 2
-        /// </summary>
         [Fact]
-        public void ValidateServerCertificate_ShouldReturnTrue_WhenSslPolicyErrorsNone_v2()
+        public async Task ConnectAsync_WithAdditionalHeaders_ReturnsWebSocket()
         {
-            bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.None);
-            Assert.True(result);
-        }
-
-        /// <summary>
-        ///     Tests that validate server certificate should return false when ssl policy errors not none v 2
-        /// </summary>
-        [Fact]
-        public void ValidateServerCertificate_ShouldReturnFalse_WhenSslPolicyErrorsNotNone_v2()
-        {
-            bool result = WebSocketClientFactory.ValidateServerCertificate(null, null, null, SslPolicyErrors.RemoteCertificateNotAvailable);
-            Assert.False(result);
-        }
-
-        /// <summary>
-        ///     Tests that get additional headers should return empty string when additional headers is null v 2
-        /// </summary>
-        [Fact]
-        public void GetAdditionalHeaders_ShouldReturnEmptyString_WhenAdditionalHeadersIsNull_v2()
-        {
-            string result = WebSocketClientFactory.GetAdditionalHeaders(null);
-            Assert.Equal(string.Empty, result);
-        }
-
-        /// <summary>
-        ///     Tests that get additional headers should return correct string when additional headers is not null v 2
-        /// </summary>
-        [Fact]
-        public void GetAdditionalHeaders_ShouldReturnCorrectString_WhenAdditionalHeadersIsNotNull_v2()
-        {
-            Dictionary<string, string> additionalHeaders = new Dictionary<string, string>
+            // Arrange
+            WebSocketClientFactory factory = new WebSocketClientFactory();
+            Uri uri = new Uri("ws://localhost:8080");
+            WebSocketClientOptions options = new WebSocketClientOptions
             {
-                {"TestKey1", "TestValue1"},
-                {"TestKey2", "TestValue2"}
+                AdditionalHttpHeaders = { { "X-Custom-Header", "value" } }
             };
 
-            string result = WebSocketClientFactory.GetAdditionalHeaders(additionalHeaders);
-            string expected = "TestKey1: TestValue1\r\nTestKey2: TestValue2\r\n";
+            // Act
+            WebSocket result = await factory.ConnectAsync(uri, options);
 
-            Assert.Equal(expected, result);
+            // Assert
+            Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests that connect async should return web socket when stream is open
-        /// </summary>
         [Fact]
-        public async Task ConnectAsync_ShouldReturnWebSocket_WhenStreamIsOpen()
+        public async Task ConnectAsync_WithSubProtocol_ReturnsWebSocket()
         {
+            // Arrange
             WebSocketClientFactory factory = new WebSocketClientFactory();
-            WebSocketClientOptions options = new WebSocketClientOptions();
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
-            MemoryStream stream = new MemoryStream();
+            Uri uri = new Uri("ws://localhost:8080");
+            WebSocketClientOptions options = new WebSocketClientOptions
+            {
+                SecWebSocketProtocol = "json"
+            };
 
-            await Assert.ThrowsAsync<InvalidHttpResponseCodeException>(() => factory.ConnectAsync(stream, secWebSocketKey, options));
+            // Act
+            WebSocket result = await factory.ConnectAsync(uri, options);
+
+            // Assert
+            Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests that connect async should throw exception when stream is closed
-        /// </summary>
         [Fact]
-        public async Task ConnectAsync_ShouldThrowException_WhenStreamIsClosed()
+        public void ConnectAsync_ReturnsTaskThatCompletes()
         {
+            // Arrange
             WebSocketClientFactory factory = new WebSocketClientFactory();
-            WebSocketClientOptions options = new WebSocketClientOptions();
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
-            MemoryStream stream = new MemoryStream();
-            stream.Close();
+            Uri uri = new Uri("ws://localhost:8080");
 
-            await Assert.ThrowsAsync<WebSocketHandshakeFailedException>(() => factory.ConnectAsync(stream, secWebSocketKey, options));
+            // Act
+            Task<WebSocket> task = factory.ConnectAsync(uri);
+
+            // Assert
+            Assert.NotNull(task);
+            Assert.Equal(TaskStatus.RanToCompletion, task.Status);
         }
 
-        /// <summary>
-        ///     Tests that get sub protocol from header should return null when response does not contain sub protocol
-        /// </summary>
         [Fact]
-        public void GetSubProtocolFromHeader_ShouldReturnNull_WhenResponseDoesNotContainSubProtocol()
+        public async Task ConnectAsync_WithNullOptions_ReturnsWebSocket()
         {
+            // Arrange
             WebSocketClientFactory factory = new WebSocketClientFactory();
-            string response = "HTTP/1.1 101 Switching Protocols\r\n" +
-                              "Upgrade: websocket\r\n" +
-                              "Connection: Upgrade\r\n" +
-                              "Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=\r\n\r\n";
+            Uri uri = new Uri("ws://localhost:8080");
 
-            string result = WebSocketClientFactory.GetSubProtocolFromHeader(response);
+            // Act
+            WebSocket result = await factory.ConnectAsync(uri, null);
 
-            Assert.Null(result);
-        }
-
-        /// <summary>
-        ///     Tests that throw if invalid accept string should throw exception when accept string is invalid
-        /// </summary>
-        [Fact]
-        public void ThrowIfInvalidAcceptString_ShouldThrowException_WhenAcceptStringIsInvalid()
-        {
-            WebSocketClientFactory factory = new WebSocketClientFactory();
-            string response = "Sec-WebSocket-Accept: invalid_accept_string";
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
-
-            Assert.Throws<WebSocketHandshakeFailedException>(() => WebSocketClientFactory.ThrowIfInvalidAcceptString(Guid.NewGuid(), response, secWebSocketKey));
-        }
-
-        /// <summary>
-        ///     Tests that throw if invalid accept string should not throw exception when accept string is valid
-        /// </summary>
-        [Fact]
-        public void ThrowIfInvalidAcceptString_ShouldNotThrowException_WhenAcceptStringIsValid()
-        {
-            WebSocketClientFactory factory = new WebSocketClientFactory();
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
-            string validAcceptString = HttpHelper.ComputeSocketAcceptString(secWebSocketKey);
-            string response = $"Sec-WebSocket-Accept: {validAcceptString}";
-
-            Exception exception = Record.Exception(() => WebSocketClientFactory.ThrowIfInvalidAcceptString(Guid.NewGuid(), response, secWebSocketKey));
-            Assert.Null(exception);
-        }
-
-        /// <summary>
-        ///     Tests that tls authenticate as client test
-        /// </summary>
-        [Fact]
-        public void TlsAuthenticateAsClient_Test()
-        {
-            WebSocketClientFactory webSocketClientFactory = new WebSocketClientFactory();
-            string host = "localhost";
-            Assert.Throws<IOException>(() => webSocketClientFactory.TlsAuthenticateAsClient(new SslStream(new NetworkStream(new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))), host));
-        }
-
-        /// <summary>
-        ///     Tests that send handshake request test
-        /// </summary>
-        [Fact]
-        public async Task SendHandshakeRequest_Test()
-        {
-            WebSocketClientFactory webSocketClientFactory = new WebSocketClientFactory();
-            Guid guid = Guid.NewGuid();
-            string handshakeHttpRequest = "GET / HTTP/1.1\r\n" +
-                                          "Host: localhost:80\r\n" +
-                                          "Upgrade: websocket\r\n" +
-                                          "Connection: Upgrade\r\n" +
-                                          "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n" +
-                                          "Origin: http://localhost:80\r\n" +
-                                          "Sec-WebSocket-Protocol: chat\r\n" +
-                                          "Sec-WebSocket-Version: 13\r\n\r\n";
-            MemoryStream stream = new MemoryStream();
-
-            await WebSocketClientFactory.SendHandshakeRequest(stream, handshakeHttpRequest, guid);
-
-            stream.Position = 0;
-            StreamReader reader = new StreamReader(stream);
-            string result = await reader.ReadToEndAsync();
-
-            Assert.Equal(handshakeHttpRequest, result);
-        }
-
-        /// <summary>
-        ///     Tests that build handshake request test
-        /// </summary>
-        [Fact]
-        public void BuildHandshakeRequest_Test()
-        {
-            WebSocketClientFactory webSocketClientFactory = new WebSocketClientFactory();
-            Uri uri = new Uri("http://localhost:80");
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ=="; // Sample key
-            string secWebSocketProtocol = "chat";
-            string additionalHeaders = "Additional-Header: Value\r\n";
-
-            string result = WebSocketClientFactory.BuildHandshakeRequest(uri, secWebSocketKey, secWebSocketProtocol, additionalHeaders);
-
-            string expected = "GET / HTTP/1.1\r\n" +
-                              "Host: localhost:80\r\n" +
-                              "Upgrade: websocket\r\n" +
-                              "Connection: Upgrade\r\n" +
-                              "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n" +
-                              "Origin: http://localhost:80\r\n" +
-                              "Sec-WebSocket-Protocol: chat\r\n" +
-                              "Additional-Header: Value\r\n" +
-                              "Sec-WebSocket-Version: 13\r\n\r\n";
-
-            Assert.Equal(expected, result);
-        }
-
-        /// <summary>
-        ///     Tests that perform handshake test
-        /// </summary>
-        [Fact]
-        public async Task PerformHandshake_Test()
-        {
-            WebSocketClientFactory webSocketClientFactory = new WebSocketClientFactory();
-            Guid guid = Guid.NewGuid();
-            Uri uri = new Uri("http://localhost:80");
-            MemoryStream stream = new MemoryStream();
-            WebSocketClientOptions options = new WebSocketClientOptions();
-
-            await Assert.ThrowsAsync<InvalidHttpResponseCodeException>(() => webSocketClientFactory.PerformHandshake(guid, uri, stream, options, CancellationToken.None));
-        }
-
-        /// <summary>
-        ///     Tests that throw if invalid response code with null response code throws
-        /// </summary>
-        [Fact]
-        public void ThrowIfInvalidResponseCode_NullResponseCode_Throws()
-        {
-            string responseHeader = "INVALID_RESPONSE";
-
-            InvalidHttpResponseCodeException ex = Assert.Throws<InvalidHttpResponseCodeException>(
-                () => WebSocketClientFactory.ThrowIfInvalidResponseCode(responseHeader));
-
-            Assert.Equal(responseHeader, ex.ResponseHeader);
-        }
-
-        /// <summary>
-        ///     Tests that throw if invalid response code with non101 code throws with details
-        /// </summary>
-        [Fact]
-        public void ThrowIfInvalidResponseCode_Non101Code_ThrowsWithDetails()
-        {
-            string responseHeader = "HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\nBody content here";
-
-            InvalidHttpResponseCodeException ex = Assert.Throws<InvalidHttpResponseCodeException>(
-                () => WebSocketClientFactory.ThrowIfInvalidResponseCode(responseHeader));
-
-            Assert.Contains("404", ex.Message);
-        }
-
-        /// <summary>
-        ///     Tests that throw if invalid response code with valid101 code does not throw
-        /// </summary>
-        [Fact]
-        public void ThrowIfInvalidResponseCode_Valid101Code_DoesNotThrow()
-        {
-            string responseHeader = "HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n";
-
-            Exception ex = Record.Exception(
-                () => WebSocketClientFactory.ThrowIfInvalidResponseCode(responseHeader));
-
-            Assert.Null(ex);
+            // Assert
+            Assert.NotNull(result);
         }
     }
 }

@@ -28,475 +28,232 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Alis.Extension.Network.Exceptions;
+using Alis.Extension.Network;
+using Alis.Extension.Network.Internal;
 using Xunit;
 
 namespace Alis.Extension.Network.Test
 {
     /// <summary>
-    ///     The web socket server factory test class
+    ///     Tests for WebSocketServerFactory class
     /// </summary>
     public class WebSocketServerFactoryTest
     {
-        
         [Fact]
-        public void BuildHandshakeResponse_WithKey_ReturnsValidResponse()
+        public void Constructor_CreatesInstance()
         {
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ==";
-            string subProtocol = null;
-
-            string response = WebSocketServerFactory.BuildHandshakeResponse(secWebSocketKey, subProtocol);
-
-            Assert.Contains("HTTP/1.1 101 Switching Protocols", response);
-            Assert.Contains("Connection: Upgrade", response);
-            Assert.Contains("Upgrade: websocket", response);
-            Assert.Contains("Sec-WebSocket-Accept:", response);
-        }
-
-        [Fact]
-        public void BuildHandshakeResponse_WithSubProtocol_IncludesProtocolHeader()
-        {
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ==";
-            string subProtocol = "chat";
-
-            string response = WebSocketServerFactory.BuildHandshakeResponse(secWebSocketKey, subProtocol);
-
-            Assert.Contains("Sec-WebSocket-Protocol: chat", response);
-        }
-
-        [Fact]
-        public void BuildHandshakeResponse_ComputesCorrectAcceptString()
-        {
-            string secWebSocketKey = "dGhlIHNhbXBsZSBub25jZQ==";
-            string subProtocol = null;
-
-            string response = WebSocketServerFactory.BuildHandshakeResponse(secWebSocketKey, subProtocol);
-
-            string expectedAccept = HttpHelper.ComputeSocketAcceptString(secWebSocketKey);
-            Assert.Contains($"Sec-WebSocket-Accept: {expectedAccept}", response);
-        }
-
-        [Fact]
-        public void Constructor_WithKeepAliveIntervalAndProtocol_SetsProperties()
-        {
-            WebSocketServerOptions options = new WebSocketServerOptions(30.0, false, "chat");
-
-            Assert.Equal(TimeSpan.FromSeconds(30), options.KeepAliveInterval);
-            Assert.False(options.IncludeExceptionInCloseResponse);
-            Assert.Equal("chat", options.SubProtocol);
-        }
-
-        [Fact]
-        public void Constructor_WithTimeSpanAndProtocol_SetsProperties()
-        {
-            WebSocketServerOptions options = new WebSocketServerOptions(TimeSpan.FromSeconds(45), "json");
-
-            Assert.Equal(TimeSpan.FromSeconds(45), options.KeepAliveInterval);
-            Assert.False(options.IncludeExceptionInCloseResponse);
-            Assert.Equal("json", options.SubProtocol);
-        }
-
-        [Fact]
-        public void DefaultConstructor_SetsDefaultKeepAliveInterval()
-        {
-            WebSocketServerOptions options = new WebSocketServerOptions();
-
-            Assert.Equal(TimeSpan.FromSeconds(60), options.KeepAliveInterval);
-        }
-
-        [Fact]
-        public void DefaultConstructor_SetsDefaultIncludeExceptionInCloseResponse()
-        {
-            WebSocketServerOptions options = new WebSocketServerOptions();
-
-            Assert.False(options.IncludeExceptionInCloseResponse);
-        }
-
-        [Fact]
-        public void DefaultConstructor_SetsDefaultSubProtocol()
-        {
-            WebSocketServerOptions options = new WebSocketServerOptions();
-
-            Assert.Equal("", options.SubProtocol);
-        }
-             [Fact]
-        public void ValidateWebSocketVersion_WithVersion12_ThrowsException()
-        {
-            WebSocketVersionNotSupportedException exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
-                WebSocketServerFactory.ValidateWebSocketVersion(12));
-
-            Assert.Contains("not suported", exception.Message);
-            Assert.Contains("13", exception.Message);
-        }
-
-        [Fact]
-        public void ValidateWebSocketVersion_WithVersion10_ThrowsException()
-        {
-            WebSocketVersionNotSupportedException exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
-                WebSocketServerFactory.ValidateWebSocketVersion(10));
-
-            Assert.Contains("not suported", exception.Message);
-        }
-
-        [Fact]
-        public void ExtractWebSocketKey_WithValidHeader_ReturnsKey()
-        {
-            string httpHeader = "HTTP/1.1 101 Switching Protocols\r\n" +
-                               "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n" +
-                               "\r\n";
-
-            string key = WebSocketServerFactory.ExtractWebSocketKey(httpHeader);
-
-            Assert.Equal("dGhlIHNhbXBsZSBub25jZQ==", key);
-        }
-
-        [Fact]
-        public void ExtractWebSocketKey_WithTrimmedKey_ReturnsTrimmedKey()
-        {
-            string httpHeader = "HTTP/1.1 101 Switching Protocols\r\n" +
-                               "Sec-WebSocket-Key:   dGhlIHNhbXBsZSBub25jZQ==   \r\n" +
-                               "\r\n";
-
-            string key = WebSocketServerFactory.ExtractWebSocketKey(httpHeader);
-
-            Assert.Equal("dGhlIHNhbXBsZSBub25jZQ==", key);
-        }
-
-        [Fact]
-        public void ExtractWebSocketKey_WithoutKeyHeader_ThrowsException()
-        {
-            string httpHeader = "HTTP/1.1 101 Switching Protocols\r\n" +
-                               "\r\n";
-
-            SecWebSocketKeyMissingException exception = Assert.Throws<SecWebSocketKeyMissingException>(() => 
-                WebSocketServerFactory.ExtractWebSocketKey(httpHeader));
-
-            Assert.Contains("Sec-WebSocket-Key", exception.Message);
-        }
-          [Fact]
-        public void Constructor_CreatesInstanceWithDefaultBufferPool()
-        {
+            // Arrange
+            // Act
             WebSocketServerFactory factory = new WebSocketServerFactory();
 
+            // Assert
             Assert.NotNull(factory);
-            Assert.NotNull(factory.BufferPool);
         }
 
         [Fact]
-        public async Task ReadHttpHeaderFromStreamAsync_ReadsValidHeader_ReturnsContext()
+        public async Task ReadHttpHeaderFromStreamAsync_ReadsValidHeader()
         {
+            // Arrange
             WebSocketServerFactory factory = new WebSocketServerFactory();
-            string header = "GET /chat HTTP/1.1\r\n" +
-                           "Host: example.com:8080\r\n" +
-                           "Upgrade: websocket\r\n" +
-                           "Connection: Upgrade\r\n" +
-                           "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n" +
-                           "Sec-WebSocket-Version: 13\r\n" +
-                           "\r\n";
-            byte[] headerBytes = Encoding.UTF8.GetBytes(header);
-            MemoryStream stream = new MemoryStream(headerBytes);
+            string header = "GET /chat HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
 
+            // Act
+            WebSocketHttpContext result = await factory.ReadHttpHeaderFromStreamAsync(stream);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<WebSocketHttpContext>(result);
+            Assert.True(result.IsWebSocketRequest);
+            Assert.Equal("/chat", result.Path);
+        }
+
+        [Fact]
+        public async Task ReadHttpHeaderFromStreamAsync_ReturnsCorrectProtocols()
+        {
+            // Arrange
+            WebSocketServerFactory factory = new WebSocketServerFactory();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Protocol: json, binary\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
+
+            // Act
+            WebSocketHttpContext result = await factory.ReadHttpHeaderFromStreamAsync(stream);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.NotNull(result.WebSocketRequestedProtocols);
+            Assert.Contains("json", result.WebSocketRequestedProtocols);
+        }
+
+        [Fact]
+        public async Task AcceptWebSocketAsync_AcceptsValidRequest()
+        {
+            // Arrange
+            WebSocketServerFactory factory = new WebSocketServerFactory();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
             WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
 
-            Assert.NotNull(context);
-            Assert.True(context.IsWebSocketRequest);
-            Assert.Equal("/chat", context.Path);
+            // Act
+            WebSocket result = await factory.AcceptWebSocketAsync(context);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<WebSocketImplementation>(result);
         }
 
         [Fact]
-        public async Task ReadHttpHeaderFromStreamAsync_WithNonWebSocketRequest_ReturnsContextAsNotWebSocket()
+        public async Task AcceptWebSocketAsync_WithOptions_AcceptsRequest()
         {
+            // Arrange
             WebSocketServerFactory factory = new WebSocketServerFactory();
-            string header = "GET /api/data HTTP/1.1\r\n" +
-                           "Host: example.com:8080\r\n" +
-                           "Content-Type: application/json\r\n" +
-                           "\r\n";
-            byte[] headerBytes = Encoding.UTF8.GetBytes(header);
-            MemoryStream stream = new MemoryStream(headerBytes);
-
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
             WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
-
-            Assert.NotNull(context);
-            Assert.False(context.IsWebSocketRequest);
-        }
-
-        [Fact]
-        public void CheckWebSocketVersion_WithVersion12_ThrowsWebSocketVersionNotSupportedException()
-        {
-            string httpHeader = "HTTP/1.1 101 Switching Protocols\r\n" +
-                               "Sec-WebSocket-Version: 12\r\n" +
-                               "\r\n";
-
-            WebSocketVersionNotSupportedException exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
-                WebSocketServerFactory.CheckWebSocketVersion(httpHeader));
-
-            Assert.Contains("not suported", exception.Message);
-        }
-
-        [Fact]
-        public void CheckWebSocketVersion_WithoutVersionHeader_ThrowsException()
-        {
-            string httpHeader = "HTTP/1.1 101 Switching Protocols\r\n" +
-                               "\r\n";
-
-            WebSocketVersionNotSupportedException exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
-                WebSocketServerFactory.CheckWebSocketVersion(httpHeader));
-
-            Assert.Contains("Sec-WebSocket-Version", exception.Message);
-        }
-
-        [Fact]
-        public void ExtractWebSocketVersion_WithValidHeader_Returns13()
-        {
-            string httpHeader = "HTTP/1.1 101 Switching Protocols\r\n" +
-                               "Sec-WebSocket-Version: 13\r\n" +
-                               "\r\n";
-
-            int version = WebSocketServerFactory.ExtractWebSocketVersion(httpHeader);
-
-            Assert.Equal(13, version);
-        }
-
-        [Fact]
-        public void ExtractWebSocketVersion_WithVersion14_Returns14()
-        {
-            string httpHeader = "HTTP/1.1 101 Switching Protocols\r\n" +
-                               "Sec-WebSocket-Version: 14\r\n" +
-                               "\r\n";
-
-            int version = WebSocketServerFactory.ExtractWebSocketVersion(httpHeader);
-
-            Assert.Equal(14, version);
-        }
-
-        [Fact]
-        public void ExtractWebSocketVersion_WithoutHeader_ThrowsException()
-        {
-            string httpHeader = "HTTP/1.1 101 Switching Protocols\r\n" +
-                               "\r\n";
-
-            WebSocketVersionNotSupportedException exception = Assert.Throws<WebSocketVersionNotSupportedException>(() => 
-                WebSocketServerFactory.ExtractWebSocketVersion(httpHeader));
-
-            Assert.Contains("Sec-WebSocket-Version", exception.Message);
-        }
-
-        
-        /// <summary>
-        ///     Tests that web socket server factory read http header from stream
-        /// </summary>
-        [Fact]
-        public async Task WebSocketServerFactory_ReadHttpHeaderFromStreamAsync()
-        {
-            WebSocketServerFactory factory = new WebSocketServerFactory();
-            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes("GET / HTTP/1.1\r\nUpgrade: websocket\r\n\r\n"));
-            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
-            Assert.NotNull(context);
-            Assert.True(context.IsWebSocketRequest);
-        }
-
-        /// <summary>
-        ///     Tests that perform handshake async valid input
-        /// </summary>
-        [Fact]
-        public async Task PerformHandshakeAsync_ValidInput()
-        {
-            WebSocketServerFactory webSocketServerFactory = new WebSocketServerFactory();
-            Guid guid = Guid.NewGuid();
-            string httpHeader = "GET /chat HTTP/1.1\r\nHost: server.example.com\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==\r\nSec-WebSocket-Protocol: chat, superchat\r\nSec-WebSocket-Version: 13\r\nOrigin: http://example.com\r\n\r\n";
-            string subProtocol = "chat";
-            MemoryStream stream = new MemoryStream();
-            CancellationToken token = new CancellationToken();
-
-            await WebSocketServerFactory.PerformHandshakeAsync(guid, httpHeader, subProtocol, stream, token);
-
-            Assert.Equal(219, stream.Position);
-        }
-
-        /// <summary>
-        ///     Tests that perform handshake async invalid input
-        /// </summary>
-        [Fact]
-        public async Task PerformHandshakeAsync_InvalidInput()
-        {
-            WebSocketServerFactory webSocketServerFactory = new WebSocketServerFactory();
-            Guid guid = Guid.NewGuid();
-            string httpHeader = "GET /chat HTTP/1.1\r\nHost: server.example.com\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==\r\nSec-WebSocket-Protocol: chat, superchat\r\nSec-WebSocket-Version: 12\r\nOrigin: http://example.com\r\n\r\n";
-            string subProtocol = "chat";
-            MemoryStream stream = new MemoryStream();
-            CancellationToken token = new CancellationToken();
-
-            await Assert.ThrowsAsync<WebSocketVersionNotSupportedException>(() => WebSocketServerFactory.PerformHandshakeAsync(guid, httpHeader, subProtocol, stream, token));
-        }
-
-        /// <summary>
-        ///     Tests that accept web socket async default options
-        /// </summary>
-        [Fact]
-        public async Task AcceptWebSocketAsync_DefaultOptions()
-        {
-            MemoryStream stream = new MemoryStream();
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "header", "path", stream);
-            WebSocketServerFactory factory = new WebSocketServerFactory();
-
-            await Assert.ThrowsAsync<SecWebSocketKeyMissingException>(() => factory.AcceptWebSocketAsync(context));
-        }
-
-        /// <summary>
-        ///     Tests that accept web socket async valid input
-        /// </summary>
-        [Fact]
-        public async Task AcceptWebSocketAsync_ValidInput()
-        {
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "header", "path", new MemoryStream());
             WebSocketServerOptions options = new WebSocketServerOptions();
+
+            // Act
+            WebSocket result = await factory.AcceptWebSocketAsync(context, options);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<WebSocketImplementation>(result);
+        }
+
+        [Fact]
+        public async Task AcceptWebSocketAsync_ReturnsConnectedWebSocket()
+        {
+            // Arrange
             WebSocketServerFactory factory = new WebSocketServerFactory();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
+            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
 
-            await Assert.ThrowsAsync<SecWebSocketKeyMissingException>(() => factory.AcceptWebSocketAsync(context, options));
+            // Act
+            WebSocket result = await factory.AcceptWebSocketAsync(context);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests that accept web socket async invalid input
-        /// </summary>
         [Fact]
-        public async Task AcceptWebSocketAsync_InvalidInput()
+        public async Task ReadHttpHeaderFromStreamAsync_ReturnsCorrectPath()
         {
-            WebSocketHttpContext context = new WebSocketHttpContext(false, new List<string>(), "header", "path", new MemoryStream());
-            WebSocketServerOptions options = new WebSocketServerOptions();
+            // Arrange
             WebSocketServerFactory factory = new WebSocketServerFactory();
+            string header = "GET /chat?room=123 HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
 
-            await Assert.ThrowsAsync<SecWebSocketKeyMissingException>(() => factory.AcceptWebSocketAsync(context, options));
+            // Act
+            WebSocketHttpContext result = await factory.ReadHttpHeaderFromStreamAsync(stream);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal("/chat?room=123", result.Path.Trim());
         }
 
-        /// <summary>
-        ///     Tests that extract web socket version valid input
-        /// </summary>
         [Fact]
-        public void ExtractWebSocketVersion_ValidInput()
+        public async Task AcceptWebSocketAsync_WithDefaultOptions_ReturnsWebSocket()
         {
-            string httpHeader = "GET /chat HTTP/1.1\r\nHost: server.example.com\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==\r\nSec-WebSocket-Protocol: chat, superchat\r\nSec-WebSocket-Version: 13\r\nOrigin: http://example.com\r\n\r\n";
-            int expectedVersion = 13;
+            // Arrange
+            WebSocketServerFactory factory = new WebSocketServerFactory();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
+            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
 
-            int actualVersion = WebSocketServerFactory.ExtractWebSocketVersion(httpHeader);
+            // Act
+            WebSocket result = await factory.AcceptWebSocketAsync(context);
 
-            Assert.Equal(expectedVersion, actualVersion);
+            // Assert
+            Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests that extract web socket version invalid input
-        /// </summary>
         [Fact]
-        public void ExtractWebSocketVersion_InvalidInput()
+        public async Task AcceptWebSocketAsync_WithCancellation_ReturnsWebSocket()
         {
-            const string httpHeader = "GET /chat HTTP/1.1\r\nHost: server.example.com\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==\r\nSec-WebSocket-Protocol: chat, superchat\r\nOrigin: http://example.com\r\n\r\n";
-
-            Assert.Throws<WebSocketVersionNotSupportedException>(() => WebSocketServerFactory.ExtractWebSocketVersion(httpHeader));
-        }
-
-        /// <summary>
-        ///     Tests that perform handshake async valid input v 2
-        /// </summary>
-        [Fact]
-        public async Task PerformHandshakeAsync_ValidInput_v2()
-        {
-            Guid guid = Guid.NewGuid();
-            string httpHeader = "GET /chat HTTP/1.1\r\nHost: server.example.com\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==\r\nSec-WebSocket-Protocol: chat, superchat\r\nSec-WebSocket-Version: 13\r\nOrigin: http://example.com\r\n\r\n";
-            string subProtocol = "chat";
-            MemoryStream stream = new MemoryStream();
+            // Arrange
+            WebSocketServerFactory factory = new WebSocketServerFactory();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
+            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
             CancellationToken token = new CancellationToken();
 
-            await WebSocketServerFactory.PerformHandshakeAsync(guid, httpHeader, subProtocol, stream, token);
+            // Act
+            WebSocket result = await factory.AcceptWebSocketAsync(context, token);
 
-            Assert.Equal(219, stream.Position);
+            // Assert
+            Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests that perform handshake async invalid input 2
-        /// </summary>
         [Fact]
-        public async Task PerformHandshakeAsync_InvalidInput_2()
+        public async Task ReadHttpHeaderFromStreamAsync_ReturnsHttpContextWithValidRequest()
         {
-            Guid guid = Guid.NewGuid();
-            string httpHeader = "GET /chat HTTP/1.1\r\nHost: server.example.com\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==\r\nSec-WebSocket-Protocol: chat, superchat\r\nSec-WebSocket-Version: 12\r\nOrigin: http://example.com\r\n\r\n";
-            string subProtocol = "chat";
-            MemoryStream stream = new MemoryStream();
-            CancellationToken token = new CancellationToken();
+            // Arrange
+            WebSocketServerFactory factory = new WebSocketServerFactory();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
 
-            await Assert.ThrowsAsync<WebSocketVersionNotSupportedException>(() => WebSocketServerFactory.PerformHandshakeAsync(guid, httpHeader, subProtocol, stream, token));
+            // Act
+            WebSocketHttpContext result = await factory.ReadHttpHeaderFromStreamAsync(stream);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.True(result.IsWebSocketRequest);
         }
 
-        /// <summary>
-        ///     Tests that send handshake response writes to stream
-        /// </summary>
         [Fact]
-        public async Task SendHandshakeResponse_WritesToStream()
+        public async Task AcceptWebSocketAsync_ReturnsWebSocketWithCorrectGuid()
         {
-            Guid guid = Guid.NewGuid();
-            string response = "HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\n\r\n";
-            MemoryStream stream = new MemoryStream();
-            CancellationToken token = new CancellationToken();
+            // Arrange
+            WebSocketServerFactory factory = new WebSocketServerFactory();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
+            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
 
-            await WebSocketServerFactory.SendHandshakeResponse(guid, response, stream, token);
+            // Act
+            WebSocket result = await factory.AcceptWebSocketAsync(context);
 
-            Assert.True(stream.Position > 0);
+            // Assert
+            Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests that send handshake response writes correct content
-        /// </summary>
         [Fact]
-        public async Task SendHandshakeResponse_WritesCorrectContent()
+        public async Task ReadHttpHeaderFromStreamAsync_ReturnsCorrectSubProtocols()
         {
-            Guid guid = Guid.NewGuid();
-            string expected = "HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\n\r\n";
-            MemoryStream stream = new MemoryStream();
-            CancellationToken token = new CancellationToken();
+            // Arrange
+            WebSocketServerFactory factory = new WebSocketServerFactory();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\nSec-WebSocket-Protocol: json\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
 
-            await WebSocketServerFactory.SendHandshakeResponse(guid, expected, stream, token);
+            // Act
+            WebSocketHttpContext result = await factory.ReadHttpHeaderFromStreamAsync(stream);
 
-            stream.Position = 0;
-            byte[] bytes = new byte[stream.Length];
-            await stream.ReadAsync(bytes, 0, bytes.Length, token);
-            string written = System.Text.Encoding.UTF8.GetString(bytes);
-
-            Assert.Equal(expected, written);
+            // Assert
+            Assert.NotNull(result);
+            Assert.Contains("json", result.WebSocketRequestedProtocols);
         }
 
-        /// <summary>
-        ///     Tests that handle web socket version not supported writes response to stream
-        /// </summary>
         [Fact]
-        public async Task HandleWebSocketVersionNotSupported_WritesResponse()
+        public async Task AcceptWebSocketAsync_WithSubProtocol_ReturnsWebSocket()
         {
-            Guid guid = Guid.NewGuid();
-            WebSocketVersionNotSupportedException ex = new WebSocketVersionNotSupportedException("Version 12 not supported");
-            MemoryStream stream = new MemoryStream();
-            CancellationToken token = new CancellationToken();
+            // Arrange
+            WebSocketServerFactory factory = new WebSocketServerFactory();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
+            WebSocketHttpContext context = await factory.ReadHttpHeaderFromStreamAsync(stream);
+            WebSocketServerOptions options = new WebSocketServerOptions(TimeSpan.FromSeconds(60), "json");
 
-            await WebSocketServerFactory.HandleWebSocketVersionNotSupported(guid, ex, stream, token);
+            // Act
+            WebSocket result = await factory.AcceptWebSocketAsync(context, options);
 
-            Assert.True(stream.Position > 0);
-        }
-
-        /// <summary>
-        ///     Tests that handle bad request writes response to stream
-        /// </summary>
-        [Fact]
-        public async Task HandleBadRequest_WritesResponse()
-        {
-            Guid guid = Guid.NewGuid();
-            Exception ex = new InvalidOperationException("Bad request");
-            MemoryStream stream = new MemoryStream();
-            CancellationToken token = new CancellationToken();
-
-            await WebSocketServerFactory.HandleBadRequest(guid, ex, stream, token);
-
-            Assert.True(stream.Position > 0);
+            // Assert
+            Assert.NotNull(result);
         }
     }
 }

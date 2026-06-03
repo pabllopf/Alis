@@ -33,7 +33,7 @@ using Alis.Core.Ecs.Systems.Manager.Input;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
-namespace Alis.Test.Core.Ecs.Systems.Manager.Input
+namespace Alis.Test
 {
     /// <summary>
     ///     Contains unit tests for the <see cref="InputManager" /> class.

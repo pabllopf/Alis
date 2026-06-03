@@ -32,7 +32,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Systems.Configuration.Audio;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.Audio
+namespace Alis.Test
 {
     /// <summary>
     ///     Contains unit tests for the <see cref="AudioSettingBuilder" /> class.

@@ -27,130 +27,780 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.IO;
 using Xunit;
 
 namespace Alis.Extension.Network.Test
 {
     /// <summary>
-    ///     The buffer pool test class
+    ///     Comprehensive tests for BufferPool class - thread-safe buffer management pool
     /// </summary>
-    public class BufferPoolTest
+    public class BufferPoolTest : IDisposable
     {
+        private readonly BufferPool _defaultPool;
+        private readonly BufferPool _customSizePool;
+        private const int CustomBufferSize = 4096;
+
+        public BufferPoolTest()
+        {
+            _defaultPool = new BufferPool();
+            _customSizePool = new BufferPool(CustomBufferSize);
+        }
+
+        public void Dispose()
+        {
+            _defaultPool?.Dispose();
+            _customSizePool?.Dispose();
+        }
+
+        #region Constructor Tests
+
         /// <summary>
-        ///     Tests that buffer pool constructor default size
+        ///     Arrange: Create BufferPool with default constructor
+        ///     Act: Verify pool is created successfully
+        ///     Assert: Pool instance is not null and has default buffer size
         /// </summary>
         [Fact]
-        public void BufferPool_Constructor_DefaultSize()
+        public void BufferPool_Constructor_DefaultSize_CreatesPoolWithDefaultBufferSize()
         {
-            BufferPool bufferPool = new BufferPool();
-            Assert.NotNull(bufferPool);
+            // Arrange: No setup needed - using _defaultPool from constructor
+
+            // Act: Get a buffer to verify pool functionality
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Assert: Buffer is created successfully
+                Assert.NotNull(buffer);
+                Assert.NotNull(buffer.GetBuffer());
+            }
         }
 
         /// <summary>
-        ///     Tests that buffer pool constructor custom size
+        ///     Arrange: Create BufferPool with custom buffer size
+        ///     Act: Verify pool is created with specified size
+        ///     Assert: Pool instance is not null and can allocate buffers
         /// </summary>
         [Fact]
-        public void BufferPool_Constructor_CustomSize()
+        public void BufferPool_Constructor_CustomSize_CreatesPoolWithSpecifiedBufferSize()
         {
-            BufferPool bufferPool = new BufferPool(1024);
-            Assert.NotNull(bufferPool);
+            // Arrange: Using _customSizePool from constructor
+
+            // Act: Get a buffer from custom pool
+            using (MemoryStream buffer = _customSizePool.GetBuffer())
+            {
+                // Assert: Buffer is created successfully with custom size
+                Assert.NotNull(buffer);
+                byte[] bufferArray = buffer.GetBuffer();
+                Assert.NotNull(bufferArray);
+                // Note: Actual size may be larger due to MemoryStream internal growth
+            }
         }
 
         /// <summary>
-        ///     Tests that buffer pool get buffer
+        ///     Arrange: Create multiple BufferPool instances
+        ///     Act: Verify each pool is independent
+        ///     Assert: Each pool can manage buffers independently
         /// </summary>
         [Fact]
-        public void BufferPool_GetBuffer()
+        public void BufferPool_MultipleInstances_AreIndependent()
         {
-            BufferPool bufferPool = new BufferPool();
-            MemoryStream buffer = bufferPool.GetBuffer();
-            Assert.NotNull(buffer);
+            // Arrange: Create two separate pools
+            BufferPool pool1 = new BufferPool();
+            BufferPool pool2 = new BufferPool(CustomBufferSize);
+
+            // Act: Get buffers from each pool
+            using (MemoryStream buffer1 = pool1.GetBuffer())
+            using (MemoryStream buffer2 = pool2.GetBuffer())
+            {
+                // Assert: Both pools work independently
+                Assert.NotNull(buffer1);
+                Assert.NotNull(buffer2);
+                Assert.NotEqual(buffer1.GetBuffer(), buffer2.GetBuffer());
+            }
+
+            pool1.Dispose();
+            pool2.Dispose();
+        }
+
+        #endregion
+
+        #region GetBuffer Tests
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and request a buffer
+        ///     Act: Get buffer from pool
+        ///     Assert: Buffer is not null and has valid array
+        /// </summary>
+        [Fact]
+        public void BufferPool_GetBuffer_ReturnsValidMemoryStream()
+        {
+            // Arrange: Using _defaultPool from constructor
+
+            // Act: Get buffer from pool
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Assert: Buffer is valid and usable
+                Assert.NotNull(buffer);
+                byte[] bufferArray = buffer.GetBuffer();
+                Assert.NotNull(bufferArray);
+                Assert.Equal(0, buffer.Position);
+                Assert.Equal(0, buffer.Length);
+            }
         }
 
         /// <summary>
-        ///     Tests that public buffer memory stream constructor
+        ///     Arrange: Create BufferPool with custom size and request buffer
+        ///     Act: Get buffer from pool
+        ///     Assert: Buffer has capacity at least equal to custom size
         /// </summary>
         [Fact]
-        public void PublicBufferMemoryStream_Constructor()
+        public void BufferPool_GetBuffer_WithCustomSize_ReturnsBufferWithCorrectCapacity()
         {
-            BufferPool bufferPool = new BufferPool();
-            MemoryStream buffer = bufferPool.GetBuffer();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), bufferPool);
-            Assert.NotNull(stream);
+            // Arrange: Using _customSizePool from constructor
+
+            // Act: Get buffer from custom pool
+            using (MemoryStream buffer = _customSizePool.GetBuffer())
+            {
+                // Assert: Buffer capacity is at least the custom size
+                byte[] bufferArray = buffer.GetBuffer();
+                Assert.NotNull(bufferArray);
+                Assert.InRange(bufferArray.Length, CustomBufferSize, int.MaxValue);
+            }
         }
 
         /// <summary>
-        ///     Tests that public buffer memory stream write byte
+        ///     Arrange: Create BufferPool and request multiple buffers sequentially
+        ///     Act: Get multiple buffers from pool
+        ///     Assert: Each buffer is independent and valid
         /// </summary>
         [Fact]
-        public void PublicBufferMemoryStream_WriteByte()
+        public void BufferPool_GetBuffer_MultipleSequentialCalls_ReturnsIndependentBuffers()
         {
-            BufferPool bufferPool = new BufferPool();
-            MemoryStream buffer = bufferPool.GetBuffer();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), bufferPool);
-            stream.WriteByte(0x20);
-            Assert.Equal(0, stream.Length);
+            // Arrange: Using _defaultPool from constructor
+
+            // Act: Get multiple buffers sequentially
+            using (MemoryStream buffer1 = _defaultPool.GetBuffer())
+            using (MemoryStream buffer2 = _defaultPool.GetBuffer())
+            using (MemoryStream buffer3 = _defaultPool.GetBuffer())
+            {
+                // Assert: All buffers are independent
+                Assert.NotNull(buffer1);
+                Assert.NotNull(buffer2);
+                Assert.NotNull(buffer3);
+
+                byte[] array1 = buffer1.GetBuffer();
+                byte[] array2 = buffer2.GetBuffer();
+                byte[] array3 = buffer3.GetBuffer();
+
+                Assert.NotSame(array1, array2);
+                Assert.NotSame(array2, array3);
+                Assert.NotSame(array1, array3);
+            }
         }
 
         /// <summary>
-        ///     Tests that public buffer memory stream write
+        ///     Arrange: Create BufferPool and request buffer without using it
+        ///     Act: Get buffer but don't write to it
+        ///     Assert: Buffer is still valid and can be used later
         /// </summary>
         [Fact]
-        public void PublicBufferMemoryStream_Write()
+        public void BufferPool_GetBuffer_WithoutWrite_IsStillValid()
         {
-            BufferPool bufferPool = new BufferPool();
-            MemoryStream buffer = bufferPool.GetBuffer();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), bufferPool);
-            stream.Write(new byte[] {0x20, 0x30}, 0, 2);
-            Assert.Equal(0, stream.Length);
+            // Arrange: Using _defaultPool from constructor
+
+            // Act: Get buffer without writing
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Assert: Buffer is valid even without writes
+                Assert.NotNull(buffer);
+                Assert.Equal(0, buffer.Length);
+                Assert.Equal(0, buffer.Position);
+            }
+        }
+
+        #endregion
+
+        #region PublicBufferMemoryStream Tests
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and PublicBufferMemoryStream
+        ///     Act: Write byte to stream
+        ///     Assert: Byte is written correctly and stream position advances
+        /// </summary>
+        [Fact]
+        public void PublicBufferMemoryStream_WriteByte_WritesByteCorrectly()
+        {
+            // Arrange: Create pool and stream
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Write byte to stream
+                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
+                byte testByte = 0x42;
+                stream.WriteByte(testByte);
+
+                // Assert: Byte is written correctly
+                Assert.Equal(1, stream.Length);
+                Assert.Equal(1, stream.Position);
+                stream.Position = 0;
+                Assert.Equal(testByte, stream.ReadByte());
+            }
         }
 
         /// <summary>
-        ///     Tests that public buffer memory stream read byte
+        ///     Arrange: Create PublicBufferMemoryStream with multiple bytes
+        ///     Act: Write multiple bytes to stream
+        ///     Assert: All bytes are written correctly in order
         /// </summary>
         [Fact]
-        public void PublicBufferMemoryStream_ReadByte()
+        public void PublicBufferMemoryStream_WriteMultipleBytes_WritesAllBytesCorrectly()
         {
-            BufferPool bufferPool = new BufferPool();
-            MemoryStream buffer = bufferPool.GetBuffer();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), bufferPool);
-            stream.WriteByte(0x20);
-            stream.Position = 0;
-            Assert.Equal(0x20, stream.ReadByte());
+            // Arrange: Create pool and stream
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Write multiple bytes to stream
+                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
+                byte[] testData = { 0x01, 0x02, 0x03, 0x04, 0x05 };
+                stream.Write(testData, 0, testData.Length);
+
+                // Assert: All bytes are written correctly
+                Assert.Equal(testData.Length, stream.Length);
+                Assert.Equal(testData.Length, stream.Position);
+
+                // Read back and verify
+                stream.Position = 0;
+                byte[] readData = new byte[testData.Length];
+                stream.Read(readData, 0, testData.Length);
+                Assert.Equal(testData, readData);
+            }
         }
 
         /// <summary>
-        ///     Tests that public buffer memory stream read
+        ///     Arrange: Create PublicBufferMemoryStream and write data
+        ///     Act: Read data from stream at different positions
+        ///     Assert: Data is read correctly at each position
         /// </summary>
         [Fact]
-        public void PublicBufferMemoryStream_Read()
+        public void PublicBufferMemoryStream_Read_ReadsDataCorrectly()
         {
-            BufferPool bufferPool = new BufferPool();
-            MemoryStream buffer = bufferPool.GetBuffer();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), bufferPool);
-            stream.Write(new byte[] {0x20, 0x30}, 0, 2);
-            stream.Position = 0;
-            byte[] readBuffer = new byte[2];
-# if NET9_0_OR_GREATER
-            stream.ReadExactly(readBuffer, 0, 2);
-# else
-            stream.Read(readBuffer, 0, 2);
+            // Arrange: Create pool and stream with data
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Write and read data
+                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
+                byte[] testData = { 0x10, 0x20, 0x30, 0x40, 0x50 };
+                stream.Write(testData, 0, testData.Length);
+
+                // Assert: Read data matches written data
+                stream.Position = 0;
+                byte[] readData = new byte[testData.Length];
+#if NET9_0_OR_GREATER
+                stream.ReadExactly(readData, 0, testData.Length);
+#else
+                stream.Read(readData, 0, testData.Length);
 #endif
-            Assert.Equal(new byte[] {0x20, 0x30}, readBuffer);
+                Assert.Equal(testData, readData);
+            }
         }
 
         /// <summary>
-        ///     Tests that public buffer memory stream close
+        ///     Arrange: Create PublicBufferMemoryStream and write data
+        ///     Act: Read byte by byte from stream
+        ///     Assert: Each byte is read correctly in sequence
         /// </summary>
         [Fact]
-        public void PublicBufferMemoryStream_Close()
+        public void PublicBufferMemoryStream_ReadByte_ReadsBytesSequentially()
         {
-            BufferPool bufferPool = new BufferPool();
-            MemoryStream buffer = bufferPool.GetBuffer();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), bufferPool);
-            stream.Close();
-            Assert.Equal(0, stream.Length);
+            // Arrange: Create pool and stream with data
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Write and read bytes sequentially
+                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
+                byte[] testData = { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE };
+                stream.Write(testData, 0, testData.Length);
+
+                // Assert: Each byte is read correctly
+                stream.Position = 0;
+                for (int i = 0; i < testData.Length; i++)
+                {
+                    byte readByte = (byte)stream.ReadByte();
+                    Assert.Equal(testData[i], readByte);
+                }
+
+                // Verify end of stream
+                Assert.Equal(-1, stream.ReadByte());
+            }
         }
+
+        /// <summary>
+        ///     Arrange: Create PublicBufferMemoryStream with data
+        ///     Act: Close stream multiple times
+        ///     Assert: No exceptions are thrown and stream is properly closed
+        /// </summary>
+        [Fact]
+        public void PublicBufferMemoryStream_Close_ClosesStreamCorrectly()
+        {
+            // Arrange: Create pool and stream with data
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Create and close stream
+                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
+                stream.WriteByte(0x42);
+                stream.Close();
+
+                // Assert: Stream is closed and can be reused
+                Assert.Equal(0, stream.Length);
+                Assert.False(stream.CanWrite);
+
+                // Try to close again - should not throw
+                stream.Close();
+            }
+        }
+
+        /// <summary>
+        ///     Arrange: Create PublicBufferMemoryStream and write data
+        ///     Act: Seek to different positions and read/write
+        ///     Assert: Position changes work correctly
+        /// </summary>
+        [Fact]
+        public void PublicBufferMemoryStream_Seek_ChangesPositionCorrectly()
+        {
+            // Arrange: Create pool and stream with data
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Write data and seek to different positions
+                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
+                byte[] testData = { 0x01, 0x02, 0x03, 0x04, 0x05 };
+                stream.Write(testData, 0, testData.Length);
+
+                // Assert: Seek works correctly
+                stream.Position = 2;
+                Assert.Equal(2, stream.Position);
+                byte[] readData = new byte[3];
+                stream.Read(readData, 0, 3);
+                Assert.Equal(new byte[] { 0x03, 0x04, 0x05 }, readData);
+
+                // Seek to beginning
+                stream.Position = 0;
+                Assert.Equal(0, stream.Position);
+            }
+        }
+
+        /// <summary>
+        ///     Arrange: Create PublicBufferMemoryStream and write data
+        ///     Act: Clear stream by setting length to 0
+        ///     Assert: Stream is cleared and can be reused
+        /// </summary>
+        [Fact]
+        public void PublicBufferMemoryStream_Clear_ClearsStreamCorrectly()
+        {
+            // Arrange: Create pool and stream with data
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Write data and clear stream
+                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
+                byte[] testData = { 0x11, 0x22, 0x33 };
+                stream.Write(testData, 0, testData.Length);
+
+                // Assert: Clear works correctly
+                stream.SetLength(0);
+                Assert.Equal(0, stream.Length);
+                Assert.Equal(0, stream.Position);
+
+                // Can write new data after clear
+                stream.WriteByte(0x99);
+                Assert.Equal(1, stream.Length);
+            }
+        }
+
+        #endregion
+
+        #region Buffer Pool Management Tests
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and get multiple buffers
+        ///     Act: Get, use, and return buffers to pool
+        ///     Assert: Pool manages buffers correctly and can reuse them
+        /// </summary>
+        [Fact]
+        public void BufferPool_BufferManagement_ReturnsBuffersToPoolCorrectly()
+        {
+            // Arrange: Create pool and get multiple buffers
+            BufferPool testPool = new BufferPool(1024);
+
+            // Act: Get and dispose buffers (which returns them to pool)
+            using (MemoryStream buffer1 = testPool.GetBuffer())
+            using (MemoryStream buffer2 = testPool.GetBuffer())
+            {
+                // Write some data to buffers
+                buffer1.WriteByte(0x01);
+                buffer2.WriteByte(0x02);
+            }
+
+            // Assert: Buffers are returned to pool and can be reused
+            using (MemoryStream buffer3 = testPool.GetBuffer())
+            {
+                Assert.NotNull(buffer3);
+                Assert.Equal(0, buffer3.Length);
+            }
+
+            testPool.Dispose();
+        }
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and get buffer
+        ///     Act: Write data to buffer beyond initial size
+        ///     Assert: Buffer grows automatically and can handle larger data
+        /// </summary>
+        [Fact]
+        public void BufferPool_BufferGrowth_HandlesDataLargerThanInitialSize()
+        {
+            // Arrange: Create pool with small buffer size
+            BufferPool smallPool = new BufferPool(100);
+
+            // Act: Write data larger than initial buffer size
+            using (MemoryStream buffer = smallPool.GetBuffer())
+            {
+                byte[] largeData = new byte[1024];
+                for (int i = 0; i < largeData.Length; i++)
+                {
+                    buffer.WriteByte((byte)(i % 256));
+                }
+
+                // Assert: Buffer grew to accommodate data
+                Assert.Equal(1024, buffer.Length);
+                byte[] writtenData = buffer.GetBuffer();
+                Assert.NotNull(writtenData);
+                Assert.InRange(writtenData.Length, 1024, int.MaxValue);
+            }
+
+            smallPool.Dispose();
+        }
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and get buffer
+        ///     Act: Write and read data from buffer
+        ///     Assert: Data integrity is maintained through pool operations
+        /// </summary>
+        [Fact]
+        public void BufferPool_DataIntegrity_MaintainsDataCorrectly()
+        {
+            // Arrange: Create pool and get buffer
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Write specific data pattern
+                byte[] testData = new byte[256];
+                for (int i = 0; i < testData.Length; i++)
+                {
+                    testData[i] = (byte)((i * 7) % 256);
+                }
+
+                buffer.Write(testData, 0, testData.Length);
+
+                // Assert: Data integrity is maintained
+                buffer.Position = 0;
+                byte[] readData = new byte[testData.Length];
+                buffer.Read(readData, 0, testData.Length);
+                Assert.Equal(testData, readData);
+            }
+        }
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and get buffer
+        ///     Act: Write data, close stream, get new buffer
+        ///     Assert: New buffer is independent and pool manages lifecycle correctly
+        /// </summary>
+        [Fact]
+        public void BufferPool_StreamLifecycle_ManagesStreamLifecycleCorrectly()
+        {
+            // Arrange: Create pool
+            BufferPool lifecyclePool = new BufferPool(512);
+
+            // Act: Get buffer, write data, dispose (returns to pool)
+            using (MemoryStream buffer1 = lifecyclePool.GetBuffer())
+            {
+                byte[] testData = { 0xDE, 0xAD, 0xBE, 0xEF };
+                buffer1.Write(testData, 0, testData.Length);
+            }
+
+            // Assert: Can get new buffer from pool
+            using (MemoryStream buffer2 = lifecyclePool.GetBuffer())
+            {
+                Assert.NotNull(buffer2);
+                Assert.Equal(0, buffer2.Length);
+            }
+
+            lifecyclePool.Dispose();
+        }
+
+        #endregion
+
+        #region Edge Cases and Error Handling
+
+        /// <summary>
+        ///     Arrange: Create BufferPool with very small buffer size
+        ///     Act: Get buffer and write minimal data
+        ///     Assert: Pool handles small buffers correctly
+        /// </summary>
+        [Fact]
+        public void BufferPool_SmallBufferSize_HandlesSmallBuffers()
+        {
+            // Arrange: Create pool with minimal buffer size
+            BufferPool tinyPool = new BufferPool(16);
+
+            // Act: Get buffer and write small amount of data
+            using (MemoryStream buffer = tinyPool.GetBuffer())
+            {
+                buffer.WriteByte(0x01);
+                buffer.WriteByte(0x02);
+
+                // Assert: Small buffers work correctly
+                Assert.Equal(2, buffer.Length);
+            }
+
+            tinyPool.Dispose();
+        }
+
+        /// <summary>
+        ///     Arrange: Create BufferPool with large buffer size
+        ///     Act: Get buffer and verify it can handle large allocations
+        ///     Assert: Large buffers are allocated correctly
+        /// </summary>
+        [Fact]
+        public void BufferPool_LargeBufferSize_HandlesLargeBuffers()
+        {
+            // Arrange: Create pool with large buffer size
+            int largeBufferSize = 1024 * 1024; // 1MB
+            BufferPool largePool = new BufferPool(largeBufferSize);
+
+            // Act: Get buffer from large pool
+            using (MemoryStream buffer = largePool.GetBuffer())
+            {
+                // Assert: Large buffer is allocated correctly
+                byte[] bufferArray = buffer.GetBuffer();
+                Assert.NotNull(bufferArray);
+                Assert.InRange(bufferArray.Length, largeBufferSize, int.MaxValue);
+            }
+
+            largePool.Dispose();
+        }
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and get buffer
+        ///     Act: Read from empty buffer (no data written)
+        ///     Assert: Reading from empty buffer returns 0 bytes
+        /// </summary>
+        [Fact]
+        public void BufferPool_ReadFromEmptyBuffer_ReturnsZeroBytes()
+        {
+            // Arrange: Create pool and get buffer without writing
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Try to read from empty buffer
+                byte[] readData = new byte[10];
+                int bytesRead = buffer.Read(readData, 0, readData.Length);
+
+                // Assert: No bytes are read from empty buffer
+                Assert.Equal(0, bytesRead);
+            }
+        }
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and get buffer
+        ///     Act: Write to buffer, then read with offset and count
+        ///     Assert: Read with offset works correctly
+        /// </summary>
+        [Fact]
+        public void BufferPool_ReadWithOffset_HandlesOffsetCorrectly()
+        {
+            // Arrange: Create pool and write data with offset
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Write data starting at offset 10
+                byte[] testData = { 0x01, 0x02, 0x03 };
+                buffer.Position = 10;
+                buffer.Write(testData, 0, testData.Length);
+
+                // Assert: Data is written at correct offset
+                Assert.Equal(13, buffer.Length);
+
+                // Read from offset 10
+                buffer.Position = 10;
+                byte[] readData = new byte[3];
+                buffer.Read(readData, 0, 3);
+                Assert.Equal(testData, readData);
+            }
+        }
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and get buffer
+        ///     Act: Write data, then truncate stream
+        ///     Assert: Truncation works correctly and data is removed
+        /// </summary>
+        [Fact]
+        public void BufferPool_TruncateStream_RemovesDataCorrectly()
+        {
+            // Arrange: Create pool and write data
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Write data and truncate
+                byte[] testData = { 0x01, 0x02, 0x03, 0x04, 0x05 };
+                buffer.Write(testData, 0, testData.Length);
+
+                // Truncate to remove last 3 bytes
+                buffer.SetLength(2);
+
+                // Assert: Stream is truncated correctly
+                Assert.Equal(2, buffer.Length);
+                byte[] readData = new byte[2];
+                buffer.Position = 0;
+                buffer.Read(readData, 0, 2);
+                Assert.Equal(new byte[] { 0x01, 0x02 }, readData);
+            }
+        }
+
+        #endregion
+
+        #region Thread Safety Tests
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and get multiple buffers concurrently
+        ///     Act: Get buffers from pool in parallel
+        ///     Assert: Pool handles concurrent requests correctly
+        /// </summary>
+        [Fact]
+        public void BufferPool_ConcurrentAccess_HandlesConcurrentRequests()
+        {
+            // Arrange: Create pool
+            BufferPool concurrentPool = new BufferPool(1024);
+
+            // Act: Get multiple buffers concurrently
+            System.Collections.Generic.List<MemoryStream> buffers = new System.Collections.Generic.List<MemoryStream>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                buffers.Add(concurrentPool.GetBuffer());
+            }
+
+            // Assert: All buffers are valid and independent
+            for (int i = 0; i < buffers.Count; i++)
+            {
+                Assert.NotNull(buffers[i]);
+                byte[] bufferArray = buffers[i].GetBuffer();
+                Assert.NotNull(bufferArray);
+            }
+
+            // Cleanup
+            foreach (MemoryStream buffer in buffers)
+            {
+                buffer.Dispose();
+            }
+
+            concurrentPool.Dispose();
+        }
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and get buffer
+        ///     Act: Write data to buffer, then read from different position
+        ///     Assert: Multiple operations on same buffer work correctly
+        /// </summary>
+        [Fact]
+        public void BufferPool_MultipleOperations_HandlesMultipleOperations()
+        {
+            // Arrange: Create pool and get buffer
+            using (MemoryStream buffer = _defaultPool.GetBuffer())
+            {
+                // Act: Perform multiple operations
+                buffer.WriteByte(0x01);
+                buffer.WriteByte(0x02);
+                buffer.Position = 0;
+                byte b1 = (byte)buffer.ReadByte();
+                buffer.Position = 1;
+                byte b2 = (byte)buffer.ReadByte();
+
+                // Assert: Multiple operations work correctly
+                Assert.Equal(0x01, b1);
+                Assert.Equal(0x02, b2);
+            }
+        }
+
+        #endregion
+
+        #region Integration Tests
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and get buffer
+        ///     Act: Simulate typical network buffer usage pattern
+        ///     Assert: Pool handles realistic usage scenarios correctly
+        /// </summary>
+        [Fact]
+        public void BufferPool_Integration_TypicalNetworkUsage()
+        {
+            // Arrange: Create pool for network usage
+            BufferPool networkPool = new BufferPool(8192);
+
+            // Act: Simulate typical network buffer usage
+            using (MemoryStream buffer = networkPool.GetBuffer())
+            {
+                // Write network message header
+                byte[] header = System.Text.Encoding.UTF8.GetBytes("MSG:");
+                buffer.Write(header, 0, header.Length);
+
+                // Write message length
+                byte[] lengthBytes = System.Text.Encoding.UTF8.GetBytes("100");
+                buffer.Write(lengthBytes, 0, lengthBytes.Length);
+
+                // Write message body
+                byte[] body = System.Text.Encoding.UTF8.GetBytes("Hello, WebSocket!");
+                buffer.Write(body, 0, body.Length);
+
+                // Assert: Message is constructed correctly
+                buffer.Position = 0;
+                byte[] messageData = new byte[buffer.Length];
+                buffer.Read(messageData, 0, messageData.Length);
+
+                string message = System.Text.Encoding.UTF8.GetString(messageData);
+                Assert.Contains("MSG:", message);
+                Assert.Contains("Hello, WebSocket!", message);
+            }
+
+            networkPool.Dispose();
+        }
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and get buffer
+        ///     Act: Write binary data, read it back, verify integrity
+        ///     Assert: Binary data is handled correctly through pool
+        /// </summary>
+        [Fact]
+        public void BufferPool_Integration_BinaryDataHandling()
+        {
+            // Arrange: Create pool for binary data
+            BufferPool binaryPool = new BufferPool(4096);
+
+            // Act: Write and read binary data
+            using (MemoryStream buffer = binaryPool.GetBuffer())
+            {
+                // Write binary data with various byte values
+                byte[] binaryData = new byte[256];
+                for (int i = 0; i < binaryData.Length; i++)
+                {
+                    binaryData[i] = (byte)i;
+                }
+
+                buffer.Write(binaryData, 0, binaryData.Length);
+
+                // Read back and verify
+                buffer.Position = 0;
+                byte[] readData = new byte[binaryData.Length];
+                buffer.Read(readData, 0, binaryData.Length);
+
+                // Assert: Binary data integrity is maintained
+                Assert.Equal(binaryData, readData);
+            }
+
+            binaryPool.Dispose();
+        }
+
+        #endregion
     }
 }

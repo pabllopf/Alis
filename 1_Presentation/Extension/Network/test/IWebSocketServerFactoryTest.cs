@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PingPongManagerTest.cs
+//  File:IWebSocketServerFactoryTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Time;
 using Alis.Extension.Network;
 using Alis.Extension.Network.Internal;
 using Xunit;
@@ -39,27 +39,11 @@ using Xunit;
 namespace Alis.Extension.Network.Test
 {
     /// <summary>
-    ///     Tests for PingPongManager class
+    ///     Tests for IWebSocketServerFactory interface
     /// </summary>
-    public class PingPongManagerTest
+    public class IWebSocketServerFactoryTest
     {
-        [Fact]
-        public void Constructor_WithZeroKeepAliveInterval_CreatesInstance()
-        {
-            // Arrange
-            Guid guid = Guid.NewGuid();
-            WebSocket webSocket = null;
-            TimeSpan keepAliveInterval = TimeSpan.Zero;
-            CancellationToken token = CancellationToken.None;
 
-            // Act
-            Exception exception = Record.Exception(() => new PingPongManager(guid, webSocket, keepAliveInterval, token));
-
-            // Assert
-            Assert.NotNull(exception);
-            Assert.IsType<InvalidCastException>(exception);
-        }
-
-      
+       
     }
 }

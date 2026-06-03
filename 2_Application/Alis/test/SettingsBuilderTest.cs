@@ -40,7 +40,7 @@ using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Systems.Configuration;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders
+namespace Alis.Test
 {
     /// <summary>
     ///     Contains unit tests for the <see cref="SettingsBuilder" /> class.

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PingPongManagerTest.cs
+//  File:INetworkSerializerTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Net.WebSockets;
-using System.Threading;
-using System.Threading.Tasks;
-using Alis.Core.Aspect.Time;
-using Alis.Extension.Network;
-using Alis.Extension.Network.Internal;
+using System.Collections.Generic;
+using System.Linq;
+using Alis.Core.Aspect.Data.Json;
+using Alis.Extension.Network.Core;
 using Xunit;
 
-namespace Alis.Extension.Network.Test
+namespace Alis.Extension.Network.Test.Core
 {
     /// <summary>
-    ///     Tests for PingPongManager class
+    ///     Tests for INetworkSerializer interface
     /// </summary>
-    public class PingPongManagerTest
+    public class INetworkSerializerTest
     {
+        private class TestNetworkSerializer : INetworkSerializer
+        {
+            public string SerializeEnvelope(NetworkMessageEnvelope envelope) => "{}";
+            
+            public NetworkMessageEnvelope DeserializeEnvelope(string json) => new NetworkMessageEnvelope();
+            
+            string INetworkSerializer.Serialize<T>(T obj) => "{}";
+            T INetworkSerializer.Deserialize<T>(string json) => default;
+        }
+        
+
         [Fact]
-        public void Constructor_WithZeroKeepAliveInterval_CreatesInstance()
+        public void DeserializeEnvelope_DeserializesEnvelope()
         {
             // Arrange
-            Guid guid = Guid.NewGuid();
-            WebSocket webSocket = null;
-            TimeSpan keepAliveInterval = TimeSpan.Zero;
-            CancellationToken token = CancellationToken.None;
+            TestNetworkSerializer serializer = new TestNetworkSerializer();
 
             // Act
-            Exception exception = Record.Exception(() => new PingPongManager(guid, webSocket, keepAliveInterval, token));
+            NetworkMessageEnvelope result = serializer.DeserializeEnvelope("{}");
 
             // Assert
-            Assert.NotNull(exception);
-            Assert.IsType<InvalidCastException>(exception);
+            Assert.NotNull(result);
         }
 
-      
     }
 }

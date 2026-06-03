@@ -32,7 +32,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Systems.Configuration.General;
 using Xunit;
 
-namespace Alis.Test.Builder.Core.Ecs.System.ConfigurationBuilders.General
+namespace Alis.Test
 {
     /// <summary>
     ///     Contains unit tests for the <see cref="GeneralSettingBuilder" /> class.

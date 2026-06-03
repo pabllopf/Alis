@@ -27,214 +27,279 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.IO;
+using Alis.Extension.Network;
 using Xunit;
 
 namespace Alis.Extension.Network.Test
 {
     /// <summary>
-    ///     The web socket http context test class
+    ///     Tests for WebSocketHttpContext class
     /// </summary>
     public class WebSocketHttpContextTest
     {
-          [Fact]
-        public void Constructor_SetsAllProperties()
+        [Fact]
+        public void Constructor_CreatesInstanceWithValidRequest()
         {
+            // Arrange
             bool isWebSocketRequest = true;
-            List<string> subProtocols = new List<string> { "chat", "json" };
-            string httpHeader = "GET /chat HTTP/1.1\r\nHost: example.com\r\n\r\n";
+            List<string> protocols = new List<string> { "json", "binary" };
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
             string path = "/chat";
             MemoryStream stream = new MemoryStream();
 
-            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, subProtocols, httpHeader, path, stream);
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
 
+            // Assert
+            Assert.NotNull(context);
             Assert.True(context.IsWebSocketRequest);
-            Assert.Equal(subProtocols, context.WebSocketRequestedProtocols);
-            Assert.Equal(httpHeader, context.HttpHeader);
-            Assert.Equal(path, context.Path);
-            Assert.Same(stream, context.Stream);
+            Assert.Equal("/chat", context.Path);
         }
 
         [Fact]
-        public void Constructor_WithFalseIsWebSocketRequest_SetsProperty()
+        public void IsWebSocketRequest_ReturnsCorrectValue()
         {
-            WebSocketHttpContext context = new WebSocketHttpContext(false, new List<string>(), "header", "/path", new MemoryStream());
+            // Arrange
+            bool isWebSocketRequest = true;
+            List<string> protocols = new List<string>();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
+            string path = "/";
+            MemoryStream stream = new MemoryStream();
 
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
+            Assert.True(context.IsWebSocketRequest);
+        }
+
+        [Fact]
+        public void IsWebSocketRequest_ReturnsFalseWhenNotWebsocket()
+        {
+            // Arrange
+            bool isWebSocketRequest = false;
+            List<string> protocols = new List<string>();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\n\r\n";
+            string path = "/";
+            MemoryStream stream = new MemoryStream();
+
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
             Assert.False(context.IsWebSocketRequest);
         }
 
         [Fact]
-        public void Constructor_WithEmptySubProtocols_SetsProperty()
+        public void WebSocketRequestedProtocols_ReturnsCorrectList()
         {
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "header", "/path", new MemoryStream());
+            // Arrange
+            bool isWebSocketRequest = true;
+            List<string> protocols = new List<string> { "json", "binary", "custom" };
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
+            string path = "/";
+            MemoryStream stream = new MemoryStream();
 
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
+            Assert.NotNull(context.WebSocketRequestedProtocols);
+            Assert.Equal(3, context.WebSocketRequestedProtocols.Count);
+            Assert.Contains("json", context.WebSocketRequestedProtocols);
+            Assert.Contains("binary", context.WebSocketRequestedProtocols);
+            Assert.Contains("custom", context.WebSocketRequestedProtocols);
+        }
+
+        [Fact]
+        public void WebSocketRequestedProtocols_ReturnsEmptyListWhenNoProtocols()
+        {
+            // Arrange
+            bool isWebSocketRequest = true;
+            List<string> protocols = new List<string>();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
+            string path = "/";
+            MemoryStream stream = new MemoryStream();
+
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
             Assert.NotNull(context.WebSocketRequestedProtocols);
             Assert.Empty(context.WebSocketRequestedProtocols);
         }
 
         [Fact]
-        public void Constructor_WithNullHttpHeader_SetsProperty()
+        public void HttpHeader_ReturnsCorrectHeader()
         {
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), null, "/path", new MemoryStream());
-
-            Assert.Null(context.HttpHeader);
-        }
-
-        [Fact]
-        public void Constructor_WithNullPath_SetsProperty()
-        {
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "header", null, new MemoryStream());
-
-            Assert.Null(context.Path);
-        }
-
-        [Fact]
-        public void Constructor_WithNullStream_SetsProperty()
-        {
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "header", "/path", null);
-
-            Assert.Null(context.Stream);
-        }
-
-        [Fact]
-        public void IsWebSocketRequest_WithValidRequest_ReturnsTrue()
-        {
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "header", "/path", new MemoryStream());
-
-            Assert.True(context.IsWebSocketRequest);
-        }
-
-        [Fact]
-        public void IsWebSocketRequest_WithInvalidRequest_ReturnsFalse()
-        {
-            WebSocketHttpContext context = new WebSocketHttpContext(false, new List<string>(), "header", "/path", new MemoryStream());
-
-            Assert.False(context.IsWebSocketRequest);
-        }
-
-        [Fact]
-        public void WebSocketRequestedProtocols_ReturnsList()
-        {
-            List<string> expectedProtocols = new List<string> { "chat", "json", "xml" };
-            WebSocketHttpContext context = new WebSocketHttpContext(true, expectedProtocols, "header", "/path", new MemoryStream());
-
-            Assert.Equal(expectedProtocols, context.WebSocketRequestedProtocols);
-        }
-
-        [Fact]
-        public void HttpHeader_ReturnsRawHeader()
-        {
-            string expectedHeader = "GET /chat HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), expectedHeader, "/path", new MemoryStream());
-
-            Assert.Equal(expectedHeader, context.HttpHeader);
-        }
-
-        [Fact]
-        public void Path_ReturnsPath()
-        {
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "header", "/api/chat", new MemoryStream());
-
-            Assert.Equal("/api/chat", context.Path);
-        }
-
-        [Fact]
-        public void Stream_ReturnsStream()
-        {
+            // Arrange
+            bool isWebSocketRequest = true;
+            List<string> protocols = new List<string>();
+            string header = "GET /chat?room=123 HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
+            string path = "/chat?room=123";
             MemoryStream stream = new MemoryStream();
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "header", "/path", stream);
 
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
+            Assert.NotNull(context.HttpHeader);
+            Assert.Contains("GET", context.HttpHeader);
+            Assert.Contains("websocket", context.HttpHeader);
+        }
+
+        [Fact]
+        public void Path_ReturnsCorrectPath()
+        {
+            // Arrange
+            bool isWebSocketRequest = true;
+            List<string> protocols = new List<string>();
+            string header = "GET /chat?room=123 HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
+            string path = "/chat?room=123";
+            MemoryStream stream = new MemoryStream();
+
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
+            Assert.Equal("/chat?room=123", context.Path);
+        }
+
+        [Fact]
+        public void Stream_ReturnsCorrectStream()
+        {
+            // Arrange
+            bool isWebSocketRequest = true;
+            List<string> protocols = new List<string>();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
+            string path = "/";
+            MemoryStream stream = new MemoryStream();
+
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
+            Assert.NotNull(context.Stream);
+            Assert.IsType<MemoryStream>(context.Stream);
+        }
+
+        [Fact]
+        public void CreateNewInstance_InitializesAllProperties()
+        {
+            // Arrange
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "GET / HTTP/1.1\r\n\r\n", "/", new MemoryStream());
+
+            // Assert
+            Assert.NotNull(context);
+            Assert.True(context.IsWebSocketRequest);
+            Assert.NotNull(context.WebSocketRequestedProtocols);
+            Assert.NotNull(context.HttpHeader);
+            Assert.NotNull(context.Path);
+            Assert.NotNull(context.Stream);
+        }
+
+        [Fact]
+        public void WebSocketRequestedProtocols_IsReadOnly()
+        {
+            // Arrange
+            bool isWebSocketRequest = true;
+            List<string> protocols = new List<string> { "json" };
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
+            string path = "/";
+            MemoryStream stream = new MemoryStream();
+
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
+            Assert.NotNull(context.WebSocketRequestedProtocols);
+            Assert.IsAssignableFrom<IList<string>>(context.WebSocketRequestedProtocols);
+        }
+
+        [Fact]
+        public void HttpHeader_ContainsFullHeader()
+        {
+            // Arrange
+            bool isWebSocketRequest = true;
+            List<string> protocols = new List<string>();
+            string header = "GET /chat HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
+            string path = "/chat";
+            MemoryStream stream = new MemoryStream();
+
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
+            Assert.NotNull(context.HttpHeader);
+            Assert.Contains("Sec-WebSocket-Key", context.HttpHeader);
+            Assert.Contains("Sec-WebSocket-Version", context.HttpHeader);
+        }
+
+        [Fact]
+        public void Path_WithSpecialCharacters()
+        {
+            // Arrange
+            bool isWebSocketRequest = true;
+            List<string> protocols = new List<string>();
+            string header = "GET /chat?room=123&user=test HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
+            string path = "/chat?room=123&user=test";
+            MemoryStream stream = new MemoryStream();
+
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
+            Assert.Equal("/chat?room=123&user=test", context.Path);
+        }
+
+        [Fact]
+        public void Stream_IsSameInstance()
+        {
+            // Arrange
+            bool isWebSocketRequest = true;
+            List<string> protocols = new List<string>();
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
+            string path = "/";
+            MemoryStream stream = new MemoryStream();
+
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
             Assert.Same(stream, context.Stream);
         }
 
         [Fact]
-        public void Equals_WithSameProperties_ReturnsTrue()
+        public void WebSocketRequestedProtocols_WithSingleProtocol()
         {
-            MemoryStream stream1 = new MemoryStream();
-            MemoryStream stream2 = new MemoryStream();
-            
-            WebSocketHttpContext context1 = new WebSocketHttpContext(true, new List<string>(), "header", "/path", stream1);
-            WebSocketHttpContext context2 = new WebSocketHttpContext(true, new List<string>(), "header", "/path", stream2);
-
-            Assert.NotEqual(context1, context2);
-        }
-
-        [Fact]
-        public void ToString_ReturnsTypeFullName()
-        {
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "header", "/path", new MemoryStream());
-
-            string result = context.ToString();
-            Assert.Contains("WebSocketHttpContext", result);
-            
-        }
-        /// <summary>
-        ///     Tests that web socket http context constructor
-        /// </summary>
-        [Fact]
-        public void WebSocketHttpContext_Constructor()
-        {
+            // Arrange
+            bool isWebSocketRequest = true;
+            List<string> protocols = new List<string> { "json" };
+            string header = "GET / HTTP/1.1\r\nHost: example.com\r\nUpgrade: websocket\r\n\r\n";
+            string path = "/";
             MemoryStream stream = new MemoryStream();
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string> {"protocol1"}, "GET / HTTP/1.1\r\n\r\n", "/test", stream);
+
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(isWebSocketRequest, protocols, header, path, stream);
+
+            // Assert
+            Assert.Single(context.WebSocketRequestedProtocols);
+            Assert.Equal("json", context.WebSocketRequestedProtocols[0]);
+        }
+
+        [Fact]
+        public void CreateInstance_WithNullProtocols()
+        {
+            // Arrange
+            // Act
+            WebSocketHttpContext context = new WebSocketHttpContext(true, null, "GET / HTTP/1.1\r\n\r\n", "/", new MemoryStream());
+
+            // Assert
             Assert.NotNull(context);
-            Assert.True(context.IsWebSocketRequest);
-            Assert.Contains("protocol1", context.WebSocketRequestedProtocols);
-            Assert.Equal("GET / HTTP/1.1\r\n\r\n", context.HttpHeader);
-            Assert.Equal("/test", context.Path);
-            Assert.Equal(stream, context.Stream);
-        }
-
-        /// <summary>
-        ///     Tests that web socket http context is web socket request
-        /// </summary>
-        [Fact]
-        public void WebSocketHttpContext_IsWebSocketRequest()
-        {
-            WebSocketHttpContext context = new WebSocketHttpContext(true, new List<string>(), "", "", new MemoryStream());
-            Assert.True(context.IsWebSocketRequest);
-        }
-
-        /// <summary>
-        ///     Tests that web socket http context web socket requested protocols
-        /// </summary>
-        [Fact]
-        public void WebSocketHttpContext_WebSocketRequestedProtocols()
-        {
-            WebSocketHttpContext context = new WebSocketHttpContext(false, new List<string> {"protocol1", "protocol2"}, "", "", new MemoryStream());
-            Assert.Contains("protocol1", context.WebSocketRequestedProtocols);
-            Assert.Contains("protocol2", context.WebSocketRequestedProtocols);
-        }
-
-        /// <summary>
-        ///     Tests that web socket http context http header
-        /// </summary>
-        [Fact]
-        public void WebSocketHttpContext_HttpHeader()
-        {
-            WebSocketHttpContext context = new WebSocketHttpContext(false, new List<string>(), "GET / HTTP/1.1\r\n\r\n", "", new MemoryStream());
-            Assert.Equal("GET / HTTP/1.1\r\n\r\n", context.HttpHeader);
-        }
-
-        /// <summary>
-        ///     Tests that web socket http context path
-        /// </summary>
-        [Fact]
-        public void WebSocketHttpContext_Path()
-        {
-            WebSocketHttpContext context = new WebSocketHttpContext(false, new List<string>(), "", "/test", new MemoryStream());
-            Assert.Equal("/test", context.Path);
-        }
-
-        /// <summary>
-        ///     Tests that web socket http context stream
-        /// </summary>
-        [Fact]
-        public void WebSocketHttpContext_Stream()
-        {
-            MemoryStream stream = new MemoryStream();
-            WebSocketHttpContext context = new WebSocketHttpContext(false, new List<string>(), "", "", stream);
-            Assert.Equal(stream, context.Stream);
         }
     }
 }

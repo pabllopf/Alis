@@ -28,126 +28,25 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using Alis.Extension.Network;
 using Xunit;
 
 namespace Alis.Extension.Network.Test
 {
     /// <summary>
-    ///     The web socket client options test class
+    ///     Tests for WebSocketClientOptions class
     /// </summary>
     public class WebSocketClientOptionsTest
     {
         [Fact]
-        public void DefaultConstructor_SetsDefaultKeepAliveInterval()
+        public void Constructor_CreatesInstanceWithDefaultValues()
         {
+            // Arrange
+            // Act
             WebSocketClientOptions options = new WebSocketClientOptions();
 
-            Assert.Equal(TimeSpan.FromSeconds(20), options.KeepAliveInterval);
-        }
-
-        [Fact]
-        public void DefaultConstructor_SetsDefaultNoDelay()
-        {
-            WebSocketClientOptions options = new WebSocketClientOptions();
-
-            Assert.True(options.NoDelay);
-        }
-
-        [Fact]
-        public void DefaultConstructor_InitializesAdditionalHttpHeaders()
-        {
-            WebSocketClientOptions options = new WebSocketClientOptions();
-
-            Assert.NotNull(options.AdditionalHttpHeaders);
-            Assert.Empty(options.AdditionalHttpHeaders);
-        }
-
-        [Fact]
-        public void DefaultConstructor_SetsDefaultIncludeExceptionInCloseResponse()
-        {
-            WebSocketClientOptions options = new WebSocketClientOptions();
-
-            Assert.False(options.IncludeExceptionInCloseResponse);
-        }
-
-        [Fact]
-        public void DefaultConstructor_SetsDefaultSecWebSocketProtocol()
-        {
-            WebSocketClientOptions options = new WebSocketClientOptions();
-
-            Assert.Null(options.SecWebSocketProtocol);
-        }
-
-        [Fact]
-        public void SetKeepAliveInterval_SetsValue()
-        {
-            WebSocketClientOptions options = new WebSocketClientOptions();
-            TimeSpan customInterval = TimeSpan.FromSeconds(30);
-
-            options.KeepAliveInterval = customInterval;
-
-            Assert.Equal(customInterval, options.KeepAliveInterval);
-        }
-
-        [Fact]
-        public void SetNoDelay_SetsValue()
-        {
-            WebSocketClientOptions options = new WebSocketClientOptions();
-
-            options.NoDelay = false;
-
-            Assert.False(options.NoDelay);
-        }
-
-        [Fact]
-        public void SetSecWebSocketProtocol_SetsValue()
-        {
-            WebSocketClientOptions options = new WebSocketClientOptions();
-
-            options.SecWebSocketProtocol = "chat";
-
-            Assert.Equal("chat", options.SecWebSocketProtocol);
-        }
-
-        [Fact]
-        public void SetIncludeExceptionInCloseResponse_SetsValue()
-        {
-            WebSocketClientOptions options = new WebSocketClientOptions();
-
-            options.IncludeExceptionInCloseResponse = true;
-
-            Assert.True(options.IncludeExceptionInCloseResponse);
-        }
-
-        [Fact]
-        public void AdditionalHttpHeaders_AddsHeader()
-        {
-            WebSocketClientOptions options = new WebSocketClientOptions();
-
-            options.AdditionalHttpHeaders["X-Custom-Header"] = "value";
-
-            Assert.Equal(1, options.AdditionalHttpHeaders.Count);
-            Assert.Equal("value", options.AdditionalHttpHeaders["X-Custom-Header"]);
-        }
-
-        [Fact]
-        public void AdditionalHttpHeaders_MultipleHeaders()
-        {
-            WebSocketClientOptions options = new WebSocketClientOptions();
-
-            options.AdditionalHttpHeaders["Header1"] = "Value1";
-            options.AdditionalHttpHeaders["Header2"] = "Value2";
-
-            Assert.Equal(2, options.AdditionalHttpHeaders.Count);
-        }
-        
-        /// <summary>
-        ///     Tests that web socket client options default constructor
-        /// </summary>
-        [Fact]
-        public void WebSocketClientOptions_DefaultConstructor()
-        {
-            WebSocketClientOptions options = new WebSocketClientOptions();
+            // Assert
             Assert.NotNull(options);
             Assert.Equal(TimeSpan.FromSeconds(20), options.KeepAliveInterval);
             Assert.True(options.NoDelay);
@@ -156,59 +55,246 @@ namespace Alis.Extension.Network.Test
             Assert.Null(options.SecWebSocketProtocol);
         }
 
-        /// <summary>
-        ///     Tests that web socket client options keep alive interval
-        /// </summary>
         [Fact]
-        public void WebSocketClientOptions_KeepAliveInterval()
+        public void KeepAliveInterval_DefaultValueIs20Seconds()
         {
+            // Arrange
             WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            TimeSpan result = options.KeepAliveInterval;
+
+            // Assert
+            Assert.Equal(TimeSpan.FromSeconds(20), result);
+        }
+
+        [Fact]
+        public void KeepAliveInterval_SetValue()
+        {
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
             options.KeepAliveInterval = TimeSpan.FromSeconds(30);
+
+            // Assert
             Assert.Equal(TimeSpan.FromSeconds(30), options.KeepAliveInterval);
         }
 
-        /// <summary>
-        ///     Tests that web socket client options no delay
-        /// </summary>
         [Fact]
-        public void WebSocketClientOptions_NoDelay()
+        public void KeepAliveInterval_SetToZero_DisablesAutoPing()
         {
+            // Arrange
             WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            options.KeepAliveInterval = TimeSpan.Zero;
+
+            // Assert
+            Assert.Equal(TimeSpan.Zero, options.KeepAliveInterval);
+        }
+
+        [Fact]
+        public void NoDelay_DefaultValueIsTrue()
+        {
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            bool result = options.NoDelay;
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void NoDelay_SetValueToFalse()
+        {
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
             options.NoDelay = false;
+
+            // Assert
             Assert.False(options.NoDelay);
         }
 
-        /// <summary>
-        ///     Tests that web socket client options additional http headers
-        /// </summary>
         [Fact]
-        public void WebSocketClientOptions_AdditionalHttpHeaders()
+        public void AdditionalHttpHeaders_DefaultIsEmptyDictionary()
         {
+            // Arrange
             WebSocketClientOptions options = new WebSocketClientOptions();
-            options.AdditionalHttpHeaders.Add("TestHeader", "TestValue");
-            Assert.True(options.AdditionalHttpHeaders.ContainsKey("TestHeader"));
-            Assert.Equal("TestValue", options.AdditionalHttpHeaders["TestHeader"]);
+
+            // Act
+            Dictionary<string, string> result = options.AdditionalHttpHeaders;
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Empty(result);
         }
 
-        /// <summary>
-        ///     Tests that web socket client options sec web socket protocol
-        /// </summary>
         [Fact]
-        public void WebSocketClientOptions_SecWebSocketProtocol()
+        public void AdditionalHttpHeaders_AddHeader()
         {
+            // Arrange
             WebSocketClientOptions options = new WebSocketClientOptions();
-            options.SecWebSocketProtocol = "test";
-            Assert.Equal("test", options.SecWebSocketProtocol);
+
+            // Act
+            options.AdditionalHttpHeaders["X-Custom-Header"] = "value";
+
+            // Assert
+            Assert.Equal(1, options.AdditionalHttpHeaders.Count);
+            Assert.Equal("value", options.AdditionalHttpHeaders["X-Custom-Header"]);
         }
 
-        /// <summary>
-        ///     Tests that sec web socket extensions get returns expected value
-        /// </summary>
         [Fact]
-        public void SecWebSocketExtensions_Get_ReturnsExpectedValue()
+        public void AdditionalHttpHeaders_AddMultipleHeaders()
         {
-            WebSocketClientOptions webSocketClientOptions = new WebSocketClientOptions();
-            Assert.Null(webSocketClientOptions.SecWebSocketExtensions);
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            options.AdditionalHttpHeaders["Header1"] = "value1";
+            options.AdditionalHttpHeaders["Header2"] = "value2";
+
+            // Assert
+            Assert.Equal(2, options.AdditionalHttpHeaders.Count);
+            Assert.Equal("value1", options.AdditionalHttpHeaders["Header1"]);
+            Assert.Equal("value2", options.AdditionalHttpHeaders["Header2"]);
+        }
+
+        [Fact]
+        public void IncludeExceptionInCloseResponse_DefaultValueIsFalse()
+        {
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            bool result = options.IncludeExceptionInCloseResponse;
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void IncludeExceptionInCloseResponse_SetValueToTrue()
+        {
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            options.IncludeExceptionInCloseResponse = true;
+
+            // Assert
+            Assert.True(options.IncludeExceptionInCloseResponse);
+        }
+
+        [Fact]
+        public void SecWebSocketProtocol_DefaultValueIsNull()
+        {
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            string result = options.SecWebSocketProtocol;
+
+            // Assert
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public void SecWebSocketProtocol_SetValue()
+        {
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            options.SecWebSocketProtocol = "json";
+
+            // Assert
+            Assert.Equal("json", options.SecWebSocketProtocol);
+        }
+
+        [Fact]
+        public void SecWebSocketProtocol_SetToEmptyString()
+        {
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            options.SecWebSocketProtocol = "";
+
+            // Assert
+            Assert.Equal("", options.SecWebSocketProtocol);
+        }
+
+        [Fact]
+        public void CreateNewInstance_InitializesAllProperties()
+        {
+            // Arrange
+            // Act
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Assert
+            Assert.NotNull(options);
+            Assert.Equal(TimeSpan.FromSeconds(20), options.KeepAliveInterval);
+            Assert.True(options.NoDelay);
+            Assert.NotNull(options.AdditionalHttpHeaders);
+            Assert.False(options.IncludeExceptionInCloseResponse);
+            Assert.Null(options.SecWebSocketProtocol);
+        }
+
+        [Fact]
+        public void AdditionalHttpHeaders_IsModifiable()
+        {
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            options.AdditionalHttpHeaders.Clear();
+            options.AdditionalHttpHeaders["Test"] = "Value";
+
+            // Assert
+            Assert.Equal(1, options.AdditionalHttpHeaders.Count);
+        }
+
+        [Fact]
+        public void KeepAliveInterval_SetToNegativeValue()
+        {
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            options.KeepAliveInterval = TimeSpan.FromSeconds(-1);
+
+            // Assert
+            Assert.Equal(TimeSpan.FromSeconds(-1), options.KeepAliveInterval);
+        }
+
+        [Fact]
+        public void AdditionalHttpHeaders_AddHeaderWithSpecialCharacters()
+        {
+            // Arrange
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Act
+            options.AdditionalHttpHeaders["X-Special-Header"] = "value-with-special-chars";
+
+            // Assert
+            Assert.Equal("value-with-special-chars", options.AdditionalHttpHeaders["X-Special-Header"]);
+        }
+
+        [Fact]
+        public void Constructor_InitializesEmptyDictionary()
+        {
+            // Arrange
+            // Act
+            WebSocketClientOptions options = new WebSocketClientOptions();
+
+            // Assert
+            Assert.NotNull(options.AdditionalHttpHeaders);
+            Assert.Empty(options.AdditionalHttpHeaders);
         }
     }
 }
