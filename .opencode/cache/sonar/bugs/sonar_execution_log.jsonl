@@ -1,1 +1,7 @@
 {"timestamp": "2026-06-03T20:11:00+0000", "event": "snapshot_ingested", "category": "BUG", "totalIssues": 28, "message": "BUG snapshot ingested successfully"}
+{"timestamp": "2026-06-03T19:22:58Z", "event": "issues_resolved", "category": "BUG", "issueKeys": ["AZ513rmvQhsJmkYf-Qrh", "AZ513rjKQhsJmkYf-QrZ"], "message": "Resolved 2 BUG issues in Collision.cs"}
+{"timestamp": "2026-06-03T19:23:37Z", "event": "issue_resolved", "category": "BUG", "issueKey": "AZ513rmvQhsJmkYf-Qrj", "message": "Resolved BUG issue AZ513rmvQhsJmkYf-Qrj in Collision.cs line 1247"}
+{"timestamp": "2026-06-03T19:29:34Z", "event": "issue_resolved", "category": "BUG", "issueKey": "AZ5zNjSi3qigiBTjlprg", "message": "Resolved BUG issue AZ5zNjSi3qigiBTjlprg in RealExplosion.cs line 162"}
+{"timestamp": "2026-06-03T19:33:09Z", "event": "issue_resolved", "category": "BUG", "issueKey": "AZ5vyq-LSgPjiLhZ5n1p", "message": "Resolved BUG issue AZ5vyq-LSgPjiLhZ5n1p in GenericEvent.cs line 162"}
+{"timestamp": "2026-06-03T19:38:27Z", "event": "issues_resolved", "category": "BUG", "issueKeys": ["AZ5MJc5RtpWkLOZBArkf", "AZ1dvNF4MbZ4NfML32sP"], "message": "Resolved 2 BUG issues in NetworkServerManager.cs lines 306, 310"}
+{"timestamp": "2026-06-03T19:41:39Z", "event": "issue_resolved", "category": "BUG", "issueKey": "AZ5J9841HfGBtO-P0uUa", "message": "Resolved BUG issue AZ5J9841HfGBtO-P0uUa in Shader.cs line 1136"}
