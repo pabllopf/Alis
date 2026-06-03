@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Controllers;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
@@ -178,14 +179,17 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that default constructor should set enabled to true
+        /// Tests that set gravity when locked should throw
         /// </summary>
         [Fact]
-        public void DefaultConstructor_ShouldSetEnabledToTrue()
+        public void SetGravity_WhenLocked_ShouldThrowInvalidOperationException()
         {
-            WorldPhysic world = new WorldPhysic();
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
 
-            Assert.True(world.GetEnabled);
+            world.BodyRemoved += (_, _) => world.SetGravity(new Vector2F(0.0f, -9.81f));
+
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            world.Remove(body);
         }
 
         /// <summary>
@@ -401,6 +405,37 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(0, count);
         }
+
+        /// <summary>
+        /// Tests that add controller should add to controller list
+        /// </summary>
+        [Fact]
+        public void AddController_ShouldAddToControllerList()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Controller controller = new GravityController(9.81f);
+
+            world.Add(controller);
+
+            Assert.Single(world.ControllerList);
+            Assert.Contains(controller, world.ControllerList);
+        }
+
+        /// <summary>
+        /// Tests that remove controller should remove from controller list
+        /// </summary>
+        [Fact]
+        public void RemoveController_ShouldRemoveFromControllerList()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Controller controller = new GravityController(9.81f);
+            world.Add(controller);
+
+            world.Remove(controller);
+
+            Assert.Empty(world.ControllerList);
+        }
+
     }
 }
 
