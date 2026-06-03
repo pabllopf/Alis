@@ -120,6 +120,22 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0.9f, fixture.GetFriction);
             Assert.Equal(0.2f, fixture.GetRestitution);
         }
+
+        /// <summary>
+        /// Tests that test point should return false when point is outside circle
+        /// </summary>
+        [Fact]
+        public void TestPoint_ShouldReturnFalse_WhenPointOutsideCircle()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(1.0f, 1.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(1.0f, 1.0f);
+            Vector2F point = new Vector2F(5.0f, 5.0f);
+
+            bool isInside = fixture.TestPoint(ref point);
+
+            Assert.False(isInside);
+        }
     }
 }
 
