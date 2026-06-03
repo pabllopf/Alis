@@ -62,5 +62,35 @@ namespace Alis.Core.Physic.Test
             float actual = SettingEnv.MixRestitution(r1, r2);
             Assert.Equal(expected, actual);
         }
+
+        /// <summary>
+        /// Tests the MixFriction method returns zero when one input is zero.
+        /// </summary>
+        [Fact]
+        public void MixFriction_WithZero_ShouldReturnZero()
+        {
+            float actual = SettingEnv.MixFriction(0.5f, 0.0f);
+            Assert.Equal(0.0f, actual);
+        }
+
+        /// <summary>
+        /// Tests the MixFriction method returns the same value for equal inputs.
+        /// </summary>
+        [Fact]
+        public void MixFriction_WithEqualValues_ShouldReturnSameValue()
+        {
+            float actual = SettingEnv.MixFriction(0.5f, 0.5f);
+            Assert.Equal(0.5f, actual, 5);
+        }
+
+        /// <summary>
+        /// Tests the MixRestitution method returns zero when both inputs are zero.
+        /// </summary>
+        [Fact]
+        public void MixRestitution_WithEqualValues_ShouldReturnSameValue()
+        {
+            float actual = SettingEnv.MixRestitution(0.6f, 0.6f);
+            Assert.Equal(0.6f, actual);
+        }
     }
 }
