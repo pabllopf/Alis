@@ -136,6 +136,32 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.False(isInside);
         }
+
+        /// <summary>
+        /// Tests that clone onto should copy fixture properties to target body
+        /// </summary>
+        [Fact]
+        public void CloneOnto_ShouldCopyFixturePropertiesToTargetBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body sourceBody = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture sourceFixture = sourceBody.CreateCircle(0.5f, 1.0f);
+            sourceFixture.GetFriction = 0.7f;
+            sourceFixture.GetRestitution = 0.3f;
+            sourceFixture.GetIsSensor = true;
+            sourceFixture.Tag = "test-tag";
+
+            Body targetBody = world.CreateBody(new Vector2F(2.0f, 2.0f), 0.0f, BodyType.Dynamic);
+            Fixture clonedFixture = sourceFixture.CloneOnto(targetBody);
+
+            Assert.NotNull(clonedFixture);
+            Assert.NotSame(sourceFixture, clonedFixture);
+            Assert.Equal(0.7f, clonedFixture.GetFriction);
+            Assert.Equal(0.3f, clonedFixture.GetRestitution);
+            Assert.True(clonedFixture.GetIsSensor);
+            Assert.Equal("test-tag", clonedFixture.Tag);
+            Assert.Same(targetBody, clonedFixture.GetBody);
+        }
     }
 }
 
