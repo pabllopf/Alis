@@ -55,38 +55,12 @@ namespace Alis.Core.Ecs.Redifinition
         /// <summary>
         ///     The component handle
         /// </summary>
-        [ThreadStatic] internal static ComponentHandle[] SharedTempComponentHandleBuffer;
+        [ThreadStatic] internal static readonly ComponentHandle[] SharedTempComponentHandleBuffer = new ComponentHandle[8];
 
         /// <summary>
         ///     The component storage base
         /// </summary>
-        [ThreadStatic] internal static ComponentStorageBase[] SharedTempComponentStorageBuffer;
-
-        /// <summary>
-        ///     Lazy-initialized component handle buffer
-        /// </summary>
-        internal static ComponentHandle[] GetSharedTempComponentHandleBuffer()
-        {
-            if (SharedTempComponentHandleBuffer == null)
-            {
-                SharedTempComponentHandleBuffer = new ComponentHandle[8];
-            }
-
-            return SharedTempComponentHandleBuffer;
-        }
-
-        /// <summary>
-        ///     Lazy-initialized component storage buffer
-        /// </summary>
-        internal static ComponentStorageBase[] GetSharedTempComponentStorageBuffer()
-        {
-            if (SharedTempComponentStorageBuffer == null)
-            {
-                SharedTempComponentStorageBuffer = new ComponentStorageBase[8];
-            }
-
-            return SharedTempComponentStorageBuffer;
-        }
+        [ThreadStatic] internal static readonly ComponentStorageBase[] SharedTempComponentStorageBuffer = new ComponentStorageBase[8];
 
         /// <summary>
         ///     Rounds the down to power of two using the specified value
