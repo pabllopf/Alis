@@ -75,7 +75,7 @@ namespace Alis.Core.Graphic.Platforms.Web
                 gameContext.Run((context) =>
                 {
                     float wheelDelta = context.InputManager.GetMouseWheelDelta();
-                    if (wheelDelta != 0)
+                    if (Math.Abs(wheelDelta) > 0.1f)
                     {
                         // Zoom handling placeholder
                     }
@@ -171,11 +171,11 @@ namespace Alis.Core.Graphic.Platforms.Web
                     ScreenOrientation orientation = context.DisplayManager.GetOrientation();
                     if (orientation == ScreenOrientation.Portrait)
                     {
-                    // Button A action placeholder
+                        WebAssemblyGameContext.ConsoleLog("Portrait orientation");
                     }
                     else
                     {
-                        // Placeholder: landscape orientation action
+                        WebAssemblyGameContext.ConsoleLog("Landscape orientation");
                     }
                 });
             }
