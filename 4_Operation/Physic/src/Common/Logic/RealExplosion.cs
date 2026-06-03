@@ -133,7 +133,6 @@ namespace Alis.Core.Physic.Common.Logic
             Fixture[] shapes = new Fixture[MaxShapes];
 
             Fixture[] containedShapes = new Fixture[5];
-            bool exit = false;
 
             int shapeCount = 0;
             int containedShapeCount = 0;
@@ -143,12 +142,6 @@ namespace Alis.Core.Physic.Common.Logic
                 {
                     if (fixture.TestPoint(ref pos))
                     {
-                        if (IgnoreWhenInsideShape)
-                        {
-                            exit = true;
-                            return false;
-                        }
-
                         containedShapes[containedShapeCount++] = fixture;
                     }
                     else
@@ -158,11 +151,6 @@ namespace Alis.Core.Physic.Common.Logic
 
                     return true;
                 }, ref aabb);
-
-            if (exit)
-            {
-                return new Dictionary<Fixture, Vector2F>();
-            }
 
             Dictionary<Fixture, Vector2F> exploded = new Dictionary<Fixture, Vector2F>(shapeCount + containedShapeCount);
 
