@@ -1,0 +1,10 @@
+{
+  "category": "SECURITY_HOTSPOT",
+  "status": "running",
+  "currentWorker": null,
+  "processedIssues": [],
+  "failedIssues": [],
+  "lastUpdate": "2026-06-03T20:11:00+0000",
+  "totalIssues": 8,
+  "remainingIssues": 8
+}
