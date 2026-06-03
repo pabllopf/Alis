@@ -27,6 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Dynamics;
+using Xunit;
+
 namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
@@ -34,5 +40,28 @@ namespace Alis.Core.Physic.Test.Collisions
     /// </summary>
     public class DistanceTest
     {
+        /// <summary>
+        /// Tests that compute distance should return positive distance for separated circles
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_ShouldReturnPositiveDistance_ForSeparatedCircles()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = new ControllerTransform(new Vector2F(5.0f, 0.0f), 0.0f),
+                UseRadii = false
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+
+            Assert.True(output.Distance > 0.0f);
+            Assert.True(output.Iterations >= 0);
+        }
     }
 }
