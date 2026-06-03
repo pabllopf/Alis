@@ -318,6 +318,23 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Throws<ArgumentOutOfRangeException>(() => world.CreateRectangle(0.0f, 2.0f, 1.0f));
         }
+
+        /// <summary>
+        /// Tests that clear forces should reset body forces
+        /// </summary>
+        [Fact]
+        public void ClearForces_ShouldResetBodyForces()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.Force = new Vector2F(10.0f, 0.0f);
+            body.Torque = 5.0f;
+
+            world.ClearForces();
+
+            Assert.Equal(Vector2F.Zero, body.Force);
+            Assert.Equal(0.0f, body.Torque);
+        }
     }
 }
 
