@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 {
     /// <summary>
     ///     The gravity controller test class
-    /// </>
+    /// </summary>
     public class GravityControllerTest
     {
         /// <summary>
