@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
@@ -347,6 +348,58 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = other.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
 
             Assert.Throws<ArgumentException>(() => world.Add(body));
+        }
+
+        /// <summary>
+        /// Tests that add null joint should throw argument null exception
+        /// </summary>
+        [Fact]
+        public void Add_NullJoint_ShouldThrowArgumentNullException()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Throws<ArgumentNullException>(() => world.Add((Joint)null));
+        }
+
+        /// <summary>
+        /// Tests that create circle should create body in world
+        /// </summary>
+        [Fact]
+        public void CreateCircle_ShouldCreateBodyInWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+
+            Assert.NotNull(body);
+            Assert.Single(world.BodyList);
+        }
+
+        /// <summary>
+        /// Tests that proxy count should return positive after adding body
+        /// </summary>
+        [Fact]
+        public void ProxyCount_ShouldBePositive_AfterAddingBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+
+            int initialProxyCount = world.ProxyCount;
+
+            world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+
+            Assert.True(world.ProxyCount > initialProxyCount);
+        }
+
+        /// <summary>
+        /// Tests that contact count should return zero with no collisions
+        /// </summary>
+        [Fact]
+        public void ContactCount_ShouldReturnZero_WhenNoCollisions()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+
+            int count = world.ContactCount;
+
+            Assert.Equal(0, count);
         }
     }
 }
