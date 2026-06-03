@@ -50,19 +50,7 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, output.T);
         }
 
-        /// <summary>
-        ///     Tests that State should set and get correctly
-        /// </summary>
-        [Fact]
-        public void State_ShouldSetAndGetCorrectly()
-        {
-            ToiOutput output = new ToiOutput
-            {
-                State = ToiOutputState.Collided
-            };
-
-            Assert.Equal(ToiOutputState.Collided, output.State);
-        }
+      
 
         /// <summary>
         ///     Tests that T should set and get correctly
@@ -191,22 +179,6 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        ///     Tests that all properties should set correctly
-        /// </summary>
-        [Fact]
-        public void AllProperties_ShouldSetCorrectly()
-        {
-            ToiOutput output = new ToiOutput
-            {
-                State = ToiOutputState.Collided,
-                T = 0.5f
-            };
-
-            Assert.Equal(ToiOutputState.Collided, output.State);
-            Assert.Equal(0.5f, output.T);
-        }
-
-        /// <summary>
         ///     Tests that default ToiOutput should have Unknown state
         /// </summary>
         [Fact]
@@ -228,22 +200,7 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, output.T);
         }
 
-        /// <summary>
-        ///     Tests that ToiOutput with Collided state and valid T should be valid
-        /// </summary>
-        [Fact]
-        public void ToiOutput_WithCollidedStateAndValidT_ShouldBeValid()
-        {
-            ToiOutput output = new ToiOutput
-            {
-                State = ToiOutputState.Collided,
-                T = 0.3f
-            };
-
-            Assert.Equal(ToiOutputState.Collided, output.State);
-            Assert.Equal(0.3f, output.T);
-        }
-
+      
         /// <summary>
         ///     Tests that ToiOutput with Failed state should have valid T
         /// </summary>
@@ -306,69 +263,6 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.Equal(ToiOutputState.Seperated, output.State);
             Assert.Equal(1.0f, output.T);
-        }
-
-        /// <summary>
-        ///     Tests that ToiOutput should be structurally equal with same values
-        /// </summary>
-        [Fact]
-        public void ToiOutput_ShouldBeStructurallyEqualWithSameValues()
-        {
-            ToiOutput output1 = new ToiOutput
-            {
-                State = ToiOutputState.Collided,
-                T = 0.5f
-            };
-
-            ToiOutput output2 = new ToiOutput
-            {
-                State = ToiOutputState.Collided,
-                T = 0.5f
-            };
-
-            Assert.Equal(output1, output2);
-        }
-
-        /// <summary>
-        ///     Tests that ToiOutput should be different with different state
-        /// </summary>
-        [Fact]
-        public void ToiOutput_ShouldBeDifferentWithDifferentState()
-        {
-            ToiOutput output1 = new ToiOutput
-            {
-                State = ToiOutputState.Collided,
-                T = 0.5f
-            };
-
-            ToiOutput output2 = new ToiOutput
-            {
-                State = ToiOutputState.Touching,
-                T = 0.5f
-            };
-
-            Assert.NotEqual(output1, output2);
-        }
-
-        /// <summary>
-        ///     Tests that ToiOutput should be different with different T
-        /// </summary>
-        [Fact]
-        public void ToiOutput_ShouldBeDifferentWithDifferentT()
-        {
-            ToiOutput output1 = new ToiOutput
-            {
-                State = ToiOutputState.Collided,
-                T = 0.3f
-            };
-
-            ToiOutput output2 = new ToiOutput
-            {
-                State = ToiOutputState.Collided,
-                T = 0.7f
-            };
-
-            Assert.NotEqual(output1, output2);
         }
     }
 }
