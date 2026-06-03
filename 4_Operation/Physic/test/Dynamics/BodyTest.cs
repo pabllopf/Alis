@@ -290,6 +290,66 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(0.3f, body.AngularDamping);
         }
+
+        /// <summary>
+        /// Tests that add fixture should add to fixture list
+        /// </summary>
+        [Fact]
+        public void AddFixture_ShouldAddToFixtureList()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+
+            Assert.Contains(fixture, body.FixtureList);
+        }
+
+        /// <summary>
+        /// Tests that remove fixture should remove from fixture list
+        /// </summary>
+        [Fact]
+        public void RemoveFixture_ShouldRemoveFromFixtureList()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+
+            body.Remove(fixture);
+
+            Assert.Empty(body.FixtureList);
+        }
+
+        /// <summary>
+        /// Tests that apply torque should change angular velocity
+        /// </summary>
+        [Fact]
+        public void ApplyTorque_ShouldChangeAngularVelocity()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            body.ApplyTorque(10.0f);
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotEqual(0.0f, body.AngularVelocity);
+        }
+
+        /// <summary>
+        /// Tests that apply angular impulse should change angular velocity
+        /// </summary>
+        [Fact]
+        public void ApplyAngularImpulse_ShouldChangeAngularVelocity()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            body.ApplyAngularImpulse(5.0f);
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotEqual(0.0f, body.AngularVelocity);
+        }
     }
 }
 
