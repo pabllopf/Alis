@@ -335,6 +335,19 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(Vector2F.Zero, body.Force);
             Assert.Equal(0.0f, body.Torque);
         }
+
+        /// <summary>
+        /// Tests that add body from another world should throw
+        /// </summary>
+        [Fact]
+        public void Add_BodyFromAnotherWorld_ShouldThrowArgumentException()
+        {
+            WorldPhysic world = new WorldPhysic();
+            WorldPhysic other = new WorldPhysic();
+            Body body = other.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            Assert.Throws<ArgumentException>(() => world.Add(body));
+        }
     }
 }
 
