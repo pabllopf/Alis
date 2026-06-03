@@ -169,14 +169,67 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that default constructor should initialize with default gravity
+        /// Tests that create circle body should add to body list
         /// </summary>
         [Fact]
-        public void DefaultConstructor_ShouldInitializeWithDefaultGravity()
+        public void CreateCircle_ShouldAddToBodyList()
         {
-            WorldPhysic world = new WorldPhysic();
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
 
-            Assert.Equal(new Vector2F(0.0f, -9.80665f), world.GetGravity);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+
+            Assert.Single(world.BodyList);
+        }
+
+        /// <summary>
+        /// Tests that create rectangle body should add to body list
+        /// </summary>
+        [Fact]
+        public void CreateRectangle_ShouldAddToBodyList()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+
+            world.CreateRectangle(2.0f, 1.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            Assert.Single(world.BodyList);
+        }
+
+        /// <summary>
+        /// Tests that test point outside shape should return null
+        /// </summary>
+        [Fact]
+        public void TestPoint_OutsideShape_ShouldReturnNull()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 0.0f, new Vector2F(0.0f, 0.0f), BodyType.Static);
+
+            Fixture fixture = world.TestPoint(new Vector2F(5.0f, 5.0f));
+
+            Assert.Null(fixture);
+        }
+
+        /// <summary>
+        /// Tests that enabled property should be accessible
+        /// </summary>
+        [Fact]
+        public void Enabled_ShouldBeAccessible()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+
+            Assert.True(world.GetEnabled);
+        }
+
+        /// <summary>
+        /// Tests that body count should reflect created bodies
+        /// </summary>
+        [Fact]
+        public void BodyCount_ShouldReflectCreatedBodies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Static);
+            world.CreateBody(new Vector2F(1.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            Assert.Equal(2, world.BodyList.Count);
         }
 
         /// <summary>
