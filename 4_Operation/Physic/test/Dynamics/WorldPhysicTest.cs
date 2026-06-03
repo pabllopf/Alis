@@ -197,6 +197,20 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(world.BodyList);
             Assert.Empty(world.BodyList);
         }
+
+        /// <summary>
+        /// Tests that clear should remove all bodies
+        /// </summary>
+        [Fact]
+        public void Clear_ShouldRemoveAllBodies()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0.0f, -9.81f));
+            world.CreateBody(new Vector2F(1.0f, 2.0f), 0.0f, BodyType.Dynamic);
+
+            world.Clear();
+
+            Assert.Empty(world.BodyList);
+        }
     }
 }
 
