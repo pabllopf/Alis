@@ -202,6 +202,49 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(MathUtils.IsValid(1.0f));
             Assert.True(MathUtils.IsValid(-1.0f));
         }
+
+        /// <summary>
+        /// Tests that vector angle returns correct angle between vectors
+        /// </summary>
+        [Fact]
+        public void VectorAngle_ShouldReturnAngleBetweenVectors()
+        {
+            Vector2F v1 = new Vector2F(1.0f, 0.0f);
+            Vector2F v2 = new Vector2F(0.0f, 1.0f);
+
+            double angle = MathUtils.VectorAngle(ref v1, ref v2);
+
+            Assert.Equal(Math.PI / 2, angle, 5);
+        }
+
+        /// <summary>
+        /// Tests that area of triangle returns positive value for ccw vertices
+        /// </summary>
+        [Fact]
+        public void Area_ShouldReturnPositiveForCcwVertices()
+        {
+            Vector2F a = new Vector2F(0.0f, 0.0f);
+            Vector2F b = new Vector2F(1.0f, 0.0f);
+            Vector2F c = new Vector2F(0.0f, 1.0f);
+
+            float area = MathUtils.Area(ref a, ref b, ref c);
+
+            Assert.True(area > 0);
+        }
+
+        /// <summary>
+        /// Tests that dot product of 3d vectors returns correct value
+        /// </summary>
+        [Fact]
+        public void Dot_Of3DVectors_ShouldReturnCorrectValue()
+        {
+            Vector3F a = new Vector3F(1.0f, 0.0f, 0.0f);
+            Vector3F b = new Vector3F(0.0f, 1.0f, 0.0f);
+
+            float result = MathUtils.Dot(a, b);
+
+            Assert.Equal(0.0f, result);
+        }
     }
 }
 
