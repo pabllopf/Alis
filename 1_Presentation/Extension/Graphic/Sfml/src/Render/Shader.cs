@@ -1135,7 +1135,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         public class CurrentTextureType
         {
-            private CurrentTextureType() { }
+            public CurrentTextureType() { }
         }
     }
 }
