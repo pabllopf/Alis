@@ -307,6 +307,17 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Throws<ArgumentException>(() => world.Remove(body));
         }
+
+        /// <summary>
+        /// Tests that create rectangle with zero width should throw
+        /// </summary>
+        [Fact]
+        public void CreateRectangle_WithZeroWidth_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => world.CreateRectangle(0.0f, 2.0f, 1.0f));
+        }
     }
 }
 
