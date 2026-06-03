@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Common.Logic
 ///     Each fixture represents a separate part that can break away from the main body
 ///     when sufficient force is applied. The list is initialized with a capacity of 8.
 /// </summary>
-        public readonly List<Fixture> Parts = new List<Fixture>(8);
+        public List<Fixture> Parts = new List<Fixture>(8);
 
 /// <summary>
 ///     Gets the force threshold required to break the body apart.

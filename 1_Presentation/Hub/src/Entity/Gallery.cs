@@ -39,7 +39,7 @@ namespace Alis.App.Hub.Entity
         /// <summary>
         ///     The items
         /// </summary>
-        public readonly List<GalleryItem> Items;
+        public List<GalleryItem> Items;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Gallery" /> class

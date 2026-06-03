@@ -595,9 +595,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             ContactConstraintData constraint = new ContactConstraintData(cp1, cp2, normal);
 
-            while (true)
-            {
-                Vector2F x = -MathUtils.Mul(ref vc.NormalMass, ref b);
+            Vector2F x = -MathUtils.Mul(ref vc.NormalMass, ref b);
 
                 if ((x.X >= 0.0f) && (x.Y >= 0.0f))
                 {
@@ -632,10 +630,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                 if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
                 {
-                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
-                }
-
-                break;
+                ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
             }
         }
 
