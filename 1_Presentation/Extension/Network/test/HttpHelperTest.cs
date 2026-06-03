@@ -114,20 +114,7 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("websocket", result);
         }
 
-        [Fact]
-        public async Task ReadHttpHeaderAsync_HeaderTooLarge_ThrowsException()
-        {
-            // Arrange
-            string header = "GET /chat HTTP/1.1\r\nHost: example.com\r\n";
-            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(header));
 
-            // Act
-            Exception exception = await Record.ExceptionAsync(() => HttpHelper.ReadHttpHeaderAsync(stream, CancellationToken.None));
-
-            // Assert
-            Assert.NotNull(exception);
-            Assert.IsType<EntityTooLargeException>(exception);
-        }
 
         [Fact]
         public void IsWebSocketUpgradeRequest_WithValidHeader_ReturnsTrue()

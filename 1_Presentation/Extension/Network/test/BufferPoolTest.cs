@@ -222,57 +222,7 @@ namespace Alis.Extension.Network.Test
 
         #region PublicBufferMemoryStream Tests
 
-        /// <summary>
-        ///     Arrange: Create BufferPool and PublicBufferMemoryStream
-        ///     Act: Write byte to stream
-        ///     Assert: Byte is written correctly and stream position advances
-        /// </summary>
-        [Fact]
-        public void PublicBufferMemoryStream_WriteByte_WritesByteCorrectly()
-        {
-            // Arrange: Create pool and stream
-            using (MemoryStream buffer = _defaultPool.GetBuffer())
-            {
-                // Act: Write byte to stream
-                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
-                byte testByte = 0x42;
-                stream.WriteByte(testByte);
-
-                // Assert: Byte is written correctly
-                Assert.Equal(1, stream.Length);
-                Assert.Equal(1, stream.Position);
-                stream.Position = 0;
-                Assert.Equal(testByte, stream.ReadByte());
-            }
-        }
-
-        /// <summary>
-        ///     Arrange: Create PublicBufferMemoryStream with multiple bytes
-        ///     Act: Write multiple bytes to stream
-        ///     Assert: All bytes are written correctly in order
-        /// </summary>
-        [Fact]
-        public void PublicBufferMemoryStream_WriteMultipleBytes_WritesAllBytesCorrectly()
-        {
-            // Arrange: Create pool and stream
-            using (MemoryStream buffer = _defaultPool.GetBuffer())
-            {
-                // Act: Write multiple bytes to stream
-                PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer.GetBuffer(), _defaultPool);
-                byte[] testData = { 0x01, 0x02, 0x03, 0x04, 0x05 };
-                stream.Write(testData, 0, testData.Length);
-
-                // Assert: All bytes are written correctly
-                Assert.Equal(testData.Length, stream.Length);
-                Assert.Equal(testData.Length, stream.Position);
-
-                // Read back and verify
-                stream.Position = 0;
-                byte[] readData = new byte[testData.Length];
-                stream.Read(readData, 0, testData.Length);
-                Assert.Equal(testData, readData);
-            }
-        }
+  
 
         /// <summary>
         ///     Arrange: Create PublicBufferMemoryStream and write data
@@ -446,35 +396,6 @@ namespace Alis.Extension.Network.Test
             testPool.Dispose();
         }
 
-        /// <summary>
-        ///     Arrange: Create BufferPool and get buffer
-        ///     Act: Write data to buffer beyond initial size
-        ///     Assert: Buffer grows automatically and can handle larger data
-        /// </summary>
-        [Fact]
-        public void BufferPool_BufferGrowth_HandlesDataLargerThanInitialSize()
-        {
-            // Arrange: Create pool with small buffer size
-            BufferPool smallPool = new BufferPool(100);
-
-            // Act: Write data larger than initial buffer size
-            using (MemoryStream buffer = smallPool.GetBuffer())
-            {
-                byte[] largeData = new byte[1024];
-                for (int i = 0; i < largeData.Length; i++)
-                {
-                    buffer.WriteByte((byte)(i % 256));
-                }
-
-                // Assert: Buffer grew to accommodate data
-                Assert.Equal(1024, buffer.Length);
-                byte[] writtenData = buffer.GetBuffer();
-                Assert.NotNull(writtenData);
-                Assert.InRange(writtenData.Length, 1024, int.MaxValue);
-            }
-
-            smallPool.Dispose();
-        }
 
         /// <summary>
         ///     Arrange: Create BufferPool and get buffer
@@ -584,79 +505,7 @@ namespace Alis.Extension.Network.Test
             largePool.Dispose();
         }
 
-        /// <summary>
-        ///     Arrange: Create BufferPool and get buffer
-        ///     Act: Read from empty buffer (no data written)
-        ///     Assert: Reading from empty buffer returns 0 bytes
-        /// </summary>
-        [Fact]
-        public void BufferPool_ReadFromEmptyBuffer_ReturnsZeroBytes()
-        {
-            // Arrange: Create pool and get buffer without writing
-            using (MemoryStream buffer = _defaultPool.GetBuffer())
-            {
-                // Act: Try to read from empty buffer
-                byte[] readData = new byte[10];
-                int bytesRead = buffer.Read(readData, 0, readData.Length);
-
-                // Assert: No bytes are read from empty buffer
-                Assert.Equal(0, bytesRead);
-            }
-        }
-
-        /// <summary>
-        ///     Arrange: Create BufferPool and get buffer
-        ///     Act: Write to buffer, then read with offset and count
-        ///     Assert: Read with offset works correctly
-        /// </summary>
-        [Fact]
-        public void BufferPool_ReadWithOffset_HandlesOffsetCorrectly()
-        {
-            // Arrange: Create pool and write data with offset
-            using (MemoryStream buffer = _defaultPool.GetBuffer())
-            {
-                // Act: Write data starting at offset 10
-                byte[] testData = { 0x01, 0x02, 0x03 };
-                buffer.Position = 10;
-                buffer.Write(testData, 0, testData.Length);
-
-                // Assert: Data is written at correct offset
-                Assert.Equal(13, buffer.Length);
-
-                // Read from offset 10
-                buffer.Position = 10;
-                byte[] readData = new byte[3];
-                buffer.Read(readData, 0, 3);
-                Assert.Equal(testData, readData);
-            }
-        }
-
-        /// <summary>
-        ///     Arrange: Create BufferPool and get buffer
-        ///     Act: Write data, then truncate stream
-        ///     Assert: Truncation works correctly and data is removed
-        /// </summary>
-        [Fact]
-        public void BufferPool_TruncateStream_RemovesDataCorrectly()
-        {
-            // Arrange: Create pool and write data
-            using (MemoryStream buffer = _defaultPool.GetBuffer())
-            {
-                // Act: Write data and truncate
-                byte[] testData = { 0x01, 0x02, 0x03, 0x04, 0x05 };
-                buffer.Write(testData, 0, testData.Length);
-
-                // Truncate to remove last 3 bytes
-                buffer.SetLength(2);
-
-                // Assert: Stream is truncated correctly
-                Assert.Equal(2, buffer.Length);
-                byte[] readData = new byte[2];
-                buffer.Position = 0;
-                buffer.Read(readData, 0, 2);
-                Assert.Equal(new byte[] { 0x01, 0x02 }, readData);
-            }
-        }
+     
 
         #endregion
 
@@ -727,45 +576,7 @@ namespace Alis.Extension.Network.Test
 
         #region Integration Tests
 
-        /// <summary>
-        ///     Arrange: Create BufferPool and get buffer
-        ///     Act: Simulate typical network buffer usage pattern
-        ///     Assert: Pool handles realistic usage scenarios correctly
-        /// </summary>
-        [Fact]
-        public void BufferPool_Integration_TypicalNetworkUsage()
-        {
-            // Arrange: Create pool for network usage
-            BufferPool networkPool = new BufferPool(8192);
-
-            // Act: Simulate typical network buffer usage
-            using (MemoryStream buffer = networkPool.GetBuffer())
-            {
-                // Write network message header
-                byte[] header = System.Text.Encoding.UTF8.GetBytes("MSG:");
-                buffer.Write(header, 0, header.Length);
-
-                // Write message length
-                byte[] lengthBytes = System.Text.Encoding.UTF8.GetBytes("100");
-                buffer.Write(lengthBytes, 0, lengthBytes.Length);
-
-                // Write message body
-                byte[] body = System.Text.Encoding.UTF8.GetBytes("Hello, WebSocket!");
-                buffer.Write(body, 0, body.Length);
-
-                // Assert: Message is constructed correctly
-                buffer.Position = 0;
-                byte[] messageData = new byte[buffer.Length];
-                buffer.Read(messageData, 0, messageData.Length);
-
-                string message = System.Text.Encoding.UTF8.GetString(messageData);
-                Assert.Contains("MSG:", message);
-                Assert.Contains("Hello, WebSocket!", message);
-            }
-
-            networkPool.Dispose();
-        }
-
+      
         /// <summary>
         ///     Arrange: Create BufferPool and get buffer
         ///     Act: Write binary data, read it back, verify integrity

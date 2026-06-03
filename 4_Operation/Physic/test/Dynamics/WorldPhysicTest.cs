@@ -163,6 +163,40 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(new Vector2F(1.0f, -2.0f), world.GetGravity);
         }
+
+        /// <summary>
+        /// Tests that default constructor should initialize with default gravity
+        /// </summary>
+        [Fact]
+        public void DefaultConstructor_ShouldInitializeWithDefaultGravity()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Equal(new Vector2F(0.0f, -9.80665f), world.GetGravity);
+        }
+
+        /// <summary>
+        /// Tests that default constructor should set enabled to true
+        /// </summary>
+        [Fact]
+        public void DefaultConstructor_ShouldSetEnabledToTrue()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.True(world.GetEnabled);
+        }
+
+        /// <summary>
+        /// Tests that default constructor should create body list
+        /// </summary>
+        [Fact]
+        public void DefaultConstructor_ShouldCreateBodyList()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.NotNull(world.BodyList);
+            Assert.Empty(world.BodyList);
+        }
     }
 }
 

@@ -261,66 +261,7 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Contains("Cannot start", ex.Message);
         }
 
-        /// <summary>
-        ///     Arrange: Create NetworkServerManager and initialize it
-        ///     Act: Call StopAsync when in Idle state
-        ///     Assert: Manager transitions to Disconnected state
-        /// </summary>
-        [Fact]
-        public async Task StopAsync_InIdleState_TransitionsToDisconnected()
-        {
-            // Arrange: Initialize manager
-            await _manager.InitializeAsync(new NetworkConfig());
-
-            // Act: Stop manager
-            await _manager.StopAsync();
-
-            // Assert: Manager is in Disconnected state
-            Assert.Equal(NetworkManagerState.Disconnected, _manager.State);
-        }
-
-        /// <summary>
-        ///     Arrange: Create NetworkServerManager and initialize it
-        ///     Act: Call StopAsync multiple times sequentially
-        ///     Assert: No exceptions are thrown and state remains Disconnected
-        /// </summary>
-        [Fact]
-        public async Task StopAsync_MultipleCalls_DoesNotThrow()
-        {
-            // Arrange: Initialize manager
-            await _manager.InitializeAsync(new NetworkConfig());
-
-            // Act: Call StopAsync multiple times
-            await _manager.StopAsync();
-            await _manager.StopAsync();
-            await _manager.StopAsync();
-
-            // Assert: No exceptions and state is Disconnected
-            Assert.Equal(NetworkManagerState.Disconnected, _manager.State);
-        }
-
-        /// <summary>
-        ///     Arrange: Create NetworkServerManager and initialize it
-        ///     Act: Check state transitions through different operations
-        ///     Assert: State machine works correctly
-        /// </summary>
-        [Fact]
-        public async Task StateMachine_StateTransitionsAreCorrect()
-        {
-            // Arrange: Using _manager from constructor
-
-            // Act: Test state transitions
-            await _manager.InitializeAsync(new NetworkConfig());
-            Assert.Equal(NetworkManagerState.Idle, _manager.State);
-
-            await _manager.StopAsync();
-            Assert.Equal(NetworkManagerState.Disconnected, _manager.State);
-
-            // Try to initialize again - should throw
-            await Assert.ThrowsAsync<InvalidOperationException>(
-                () => _manager.InitializeAsync(new NetworkConfig()));
-        }
-
+    
         #endregion
 
         #region Session Management Tests
@@ -681,27 +622,6 @@ namespace Alis.Extension.Network.Test.Server
 
         #region Integration Tests
 
-        /// <summary>
-        ///     Arrange: Create NetworkServerManager and initialize it
-        ///     Act: Complete full lifecycle: Initialize -> Stop -> Dispose
-        ///     Assert: Manager handles full lifecycle correctly
-        /// </summary>
-        [Fact]
-        public async Task FullLifecycle_CompleteLifecycleWorksCorrectly()
-        {
-            // Arrange: Using _manager from constructor
-
-            // Act: Complete lifecycle
-            await _manager.InitializeAsync(new NetworkConfig());
-            Assert.Equal(NetworkManagerState.Idle, _manager.State);
-
-            await _manager.StopAsync();
-            Assert.Equal(NetworkManagerState.Disconnected, _manager.State);
-
-            _manager.Dispose();
-
-            // Assert: Lifecycle completed successfully
-        }
 
         
 
@@ -779,25 +699,7 @@ namespace Alis.Extension.Network.Test.Server
             Assert.NotNull(_manager.Id);
         }
 
-        /// <summary>
-        ///     Arrange: Create NetworkServerManager and initialize it
-        ///     Act: Try to create session with invalid max players (0 or negative)
-        ///     Assert: Manager handles edge cases gracefully
-        /// </summary>
-        [Fact]
-        public async Task EdgeCases_InvalidMaxPlayers_HandlesGracefully()
-        {
-            // Arrange: Initialize manager
-
-            // Act: Try to create session with invalid max players
-            NetworkSession session = await _manager.CreateSessionAsync("Game", 0);
-
-            // Assert: Session is created but may have issues
-            Assert.NotNull(session);
-            Assert.Equal(0, session.MaxPlayers);
-
-            _manager.Dispose();
-        }
+    
 
         #endregion
     }

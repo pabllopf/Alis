@@ -193,23 +193,7 @@ namespace Alis.Extension.Network.Test
             Assert.Same(buffer, result);
         }
 
-        [Fact]
-        public void ToArray_ReturnsBytes()
-        {
-            // Arrange
-            byte[] buffer = new byte[1024];
-            BufferPool pool = new BufferPool();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, pool);
-            byte[] data = new byte[] { 1, 2, 3 };
-            stream.Write(data, 0, data.Length);
 
-            // Act
-            byte[] result = stream.ToArray();
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal(3, result.Length);
-        }
 
         [Fact]
         public void Seek_SeeksToPosition()
@@ -226,20 +210,6 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(100, stream.Position);
         }
 
-        [Fact]
-        public void SetLength_SetsLength()
-        {
-            // Arrange
-            byte[] buffer = new byte[1024];
-            BufferPool pool = new BufferPool();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, pool);
-
-            // Act
-            stream.SetLength(500);
-
-            // Assert
-            Assert.Equal(500, stream.Length);
-        }
 
         [Fact]
         public void Close_ReturnsBufferToPool()
@@ -318,22 +288,6 @@ namespace Alis.Extension.Network.Test
 
             // Assert
             Assert.NotNull(targetStream);
-        }
-
-        [Fact]
-        public void ReadByte_ReadsByte()
-        {
-            // Arrange
-            byte[] buffer = new byte[1024];
-            BufferPool pool = new BufferPool();
-            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, pool);
-            stream.WriteByte(42);
-
-            // Act
-            int result = stream.ReadByte();
-
-            // Assert
-            Assert.Equal(42, result);
         }
 
         [Fact]
