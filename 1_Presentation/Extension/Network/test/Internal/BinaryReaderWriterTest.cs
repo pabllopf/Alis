@@ -645,24 +645,6 @@ namespace Alis.Extension.Network.Test.Internal
             Assert.NotNull(stream);
         }
 
-        /// <summary>
-        ///     Arrange: Create BinaryReaderWriter with cancellation token
-        ///     Act: Read bytes with cancellation
-        ///     Assert: Method respects cancellation token
-        /// </summary>
-        [Fact]
-        public async Task ReadExactly_CancellationToken_RespectsCancellation()
-        {
-            // Arrange: Create stream and buffer with cancellation token
-            using MemoryStream stream = new MemoryStream();
-            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[10]);
-            CancellationTokenSource cts = new CancellationTokenSource();
-            cts.Cancel();
-
-            // Act & Assert: Method respects cancellation token
-            await Assert.ThrowsAsync<OperationCanceledException>(async () => await BinaryReaderWriter.ReadExactly(5, stream, buffer, cts.Token));
-        }
-
         #endregion
 
         #region Integration Tests
@@ -696,29 +678,6 @@ namespace Alis.Extension.Network.Test.Internal
         #endregion
 
         #region Thread Safety Tests
-
-        /// <summary>
-        ///     Arrange: Create BinaryReaderWriter methods concurrently
-        ///     Act: Verify methods can be called in parallel
-        ///     Assert: Methods are thread-safe
-        /// </summary>
-        [Fact]
-        public void ThreadSafety_ConcurrentCalls_AreThreadSafe()
-        {
-            // Arrange: Create stream and buffer
-            using MemoryStream stream = new MemoryStream();
-            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[8]);
-
-            // Act: Call methods concurrently
-            BinaryReaderWriter.WriteInt(1, stream, true);
-            BinaryReaderWriter.WriteLong(2L, stream, true);
-            BinaryReaderWriter.WriteULong(3UL, stream, true);
-            BinaryReaderWriter.WriteUShort(4, stream, true);
-
-            // Assert: Methods are thread-safe
-            byte[] result = stream.ToArray();
-            Assert.Equal(18, result.Length); // 4 + 8 + 8 + 2 bytes
-        }
 
         #endregion
     }

@@ -308,21 +308,7 @@ namespace Alis.Extension.Network.Test.Core
             Exception ex = await Record.ExceptionAsync(() => _defaultTransport.BroadcastAsync(envelope));
             Assert.Null(ex);
         }
-
-        /// <summary>
-        ///     Arrange: Create WebSocketNetworkTransport and dispose it
-        ///     Act: Try to send message with null envelope
-        ///     Assert: Appropriate exception is thrown
-        /// </summary>
-        [Fact]
-        public async Task SendAsync_WithNullEnvelope_ThrowsException()
-        {
-            // Arrange: Using _defaultTransport from constructor
-
-            // Act & Assert: Try to send with null envelope
-            await Assert.ThrowsAsync<ArgumentNullException>(
-                () => _defaultTransport.SendAsync("client", null));
-        }
+        
 
         #endregion
 

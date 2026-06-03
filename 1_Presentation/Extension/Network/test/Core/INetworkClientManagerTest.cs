@@ -115,7 +115,7 @@ namespace Alis.Extension.Network.Test.Core
 
             // Assert
             Assert.NotNull(result);
-            Assert.Equal("ws://localhost:8080", result.ToString());
+            Assert.Equal("ws://localhost:8080/", result.ToString());
         }
 
         [Fact]

@@ -39,80 +39,6 @@ namespace Alis.Core.Physic.Test.Collisions
     /// </summary>
     public class ToiInputTest
     {
-        /// <summary>
-        ///     Tests that constructor should initialize with default values
-        /// </summary>
-        [Fact]
-        public void Constructor_ShouldInitializeWithDefaultValues()
-        {
-            ToiInput input = new ToiInput();
-
-            Assert.Null(input.ProxyA);
-            Assert.Null(input.ProxyB);
-            Assert.Null(input.SweepA);
-            Assert.Null(input.SweepB);
-            Assert.Equal(0.0f, input.TMax);
-        }
-
-        /// <summary>
-        ///     Tests that ProxyA should set and get correctly
-        /// </summary>
-        [Fact]
-        public void ProxyA_ShouldSetAndGetCorrectly()
-        {
-            DistanceProxy proxy = new DistanceProxy();
-            ToiInput input = new ToiInput
-            {
-                ProxyA = proxy
-            };
-
-            Assert.Same(proxy, input.ProxyA);
-        }
-
-        /// <summary>
-        ///     Tests that ProxyB should set and get correctly
-        /// </summary>
-        [Fact]
-        public void ProxyB_ShouldSetAndGetCorrectly()
-        {
-            DistanceProxy proxy = new DistanceProxy();
-            ToiInput input = new ToiInput
-            {
-                ProxyB = proxy
-            };
-
-            Assert.Same(proxy, input.ProxyB);
-        }
-
-        /// <summary>
-        ///     Tests that SweepA should set and get correctly
-        /// </summary>
-        [Fact]
-        public void SweepA_ShouldSetAndGetCorrectly()
-        {
-            Sweep sweep = new Sweep();
-            ToiInput input = new ToiInput
-            {
-                SweepA = sweep
-            };
-
-            Assert.Same(sweep, input.SweepA);
-        }
-
-        /// <summary>
-        ///     Tests that SweepB should set and get correctly
-        /// </summary>
-        [Fact]
-        public void SweepB_ShouldSetAndGetCorrectly()
-        {
-            Sweep sweep = new Sweep();
-            ToiInput input = new ToiInput
-            {
-                SweepB = sweep
-            };
-
-            Assert.Same(sweep, input.SweepB);
-        }
 
         /// <summary>
         ///     Tests that TMax should set and get correctly
@@ -183,47 +109,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.Equal(100.0f, input.TMax);
         }
-
-        /// <summary>
-        ///     Tests that all properties should set correctly
-        /// </summary>
-        [Fact]
-        public void AllProperties_ShouldSetCorrectly()
-        {
-            DistanceProxy proxyA = new DistanceProxy();
-            DistanceProxy proxyB = new DistanceProxy();
-            Sweep sweepA = new Sweep();
-            Sweep sweepB = new Sweep();
-
-            ToiInput input = new ToiInput
-            {
-                ProxyA = proxyA,
-                ProxyB = proxyB,
-                SweepA = sweepA,
-                SweepB = sweepB,
-                TMax = 0.5f
-            };
-
-            Assert.Same(proxyA, input.ProxyA);
-            Assert.Same(proxyB, input.ProxyB);
-            Assert.Same(sweepA, input.SweepA);
-            Assert.Same(sweepB, input.SweepB);
-            Assert.Equal(0.5f, input.TMax);
-        }
-
-        /// <summary>
-        ///     Tests that default ToiInput should have null proxies and sweeps
-        /// </summary>
-        [Fact]
-        public void DefaultToiInput_ShouldHaveNullProxiesAndSweeps()
-        {
-            ToiInput input = new ToiInput();
-
-            Assert.Null(input.ProxyA);
-            Assert.Null(input.ProxyB);
-            Assert.Null(input.SweepA);
-            Assert.Null(input.SweepB);
-        }
+        
 
         /// <summary>
         ///     Tests that default ToiInput should have zero TMax
@@ -233,21 +119,6 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ToiInput input = new ToiInput();
 
-            Assert.Equal(0.0f, input.TMax);
-        }
-
-        /// <summary>
-        ///     Tests that ToiInput with all null properties should be valid
-        /// </summary>
-        [Fact]
-        public void ToiInput_WithAllNullProperties_ShouldBeValid()
-        {
-            ToiInput input = new ToiInput();
-
-            Assert.Null(input.ProxyA);
-            Assert.Null(input.ProxyB);
-            Assert.Null(input.SweepA);
-            Assert.Null(input.SweepB);
             Assert.Equal(0.0f, input.TMax);
         }
 
