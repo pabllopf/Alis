@@ -294,6 +294,19 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Throws<ArgumentNullException>(() => world.Remove((Body)null));
         }
+
+        /// <summary>
+        /// Tests that remove body from wrong world should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Remove_BodyFromWrongWorld_ShouldThrowArgumentException()
+        {
+            WorldPhysic world = new WorldPhysic();
+            WorldPhysic other = new WorldPhysic();
+            Body body = other.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            Assert.Throws<ArgumentException>(() => world.Remove(body));
+        }
     }
 }
 
