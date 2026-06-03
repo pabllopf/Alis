@@ -1076,6 +1076,194 @@ The model MUST validate:
 * generic constraints
 * nullable correctness
 
+# COMPILATION & TEST VALIDATION LOOP (CRITICAL SAFETY LAYER)
+
+This system enforces STRICT compilation-first correctness for all generated tests.
+
+---
+
+# CORE PRINCIPLE
+
+The model MUST ensure that every generated test:
+
+* compiles successfully
+* is syntactically valid C#
+* is valid xUnit code
+* references correct namespaces
+* does not violate nullable rules
+* does not break project constraints
+
+The model MUST NOT assume correctness without verification.
+
+---
+
+# REQUIRED COMPILATION LOOP
+
+After generating EACH test unit, the model MUST execute:
+
+## STEP 1 — BUILD VALIDATION
+
+```bash
+dotnet build <target_test_project>
+```
+
+---
+
+## STEP 2 — COMPILATION CHECK RULE
+
+If build FAILS:
+
+The model MUST:
+
+1. STOP test generation immediately
+
+2. Analyze compiler errors
+
+3. Identify root cause category:
+
+   * missing using
+   * wrong namespace
+   * missing reference
+   * invalid API usage
+   * nullable violation
+   * syntax error
+   * incorrect xUnit usage
+
+4. FIX the test code
+
+5. RE-GENERATE ONLY the affected test unit
+
+6. REPEAT build validation
+
+---
+
+## STEP 3 — SUCCESS CONDITION
+
+Only when:
+
+```text
+dotnet build == SUCCESS
+```
+
+the model is allowed to proceed to:
+
+* git commit step
+* next test generation step
+
+---
+
+# STRICT NO-PROGRESSION RULE
+
+The model MUST NOT:
+
+* commit failing code
+* continue to next test if current test does not compile
+* batch multiple fixes without validation
+* skip build errors
+
+---
+
+# ERROR-DRIVEN SELF-CORRECTION LOOP
+
+For every compilation failure:
+
+The model MUST perform:
+
+## ERROR CLASSIFICATION
+
+Map errors into:
+
+### 1. Syntax Errors
+
+* missing braces
+* invalid tokens
+* malformed expressions
+
+### 2. API Errors
+
+* wrong method signature
+* missing constructor
+* incorrect overload
+
+### 3. Namespace Errors
+
+* missing using
+* wrong project reference
+
+### 4. xUnit Errors
+
+* invalid Fact/Theory usage
+* incorrect attribute placement
+
+### 5. Nullable Errors
+
+* null assignment violations
+* missing null checks
+
+---
+
+## FIX STRATEGY RULE
+
+The model MUST apply the MINIMAL FIX necessary:
+
+* DO NOT rewrite full file
+* DO NOT refactor unrelated tests
+* DO NOT change architecture
+* ONLY fix failing test unit
+
+---
+
+# COMPILATION-FIRST GATE (ABSOLUTE PRIORITY)
+
+The execution order becomes:
+
+1. Generate test
+2. Validate syntax correctness
+3. Run `dotnet build`
+4. Fix errors (loop until success)
+5. ONLY THEN commit
+6. ONLY THEN proceed to next test
+
+---
+
+# FORBIDDEN BEHAVIOR
+
+STRICTLY FORBIDDEN:
+
+* committing uncompiled code
+* skipping build validation
+* guessing fixes without checking build output
+* continuing pipeline with known errors
+* treating warnings as acceptable if they break compilation
+
+---
+
+# OPTIONAL ENHANCEMENT: PRE-FLIGHT CHECK
+
+Before running `dotnet build`, the model SHOULD perform:
+
+* namespace validation
+* using validation
+* constructor validation
+* xUnit attribute validation
+* nullability check
+
+This reduces iteration cycles.
+
+---
+
+# FINAL RULE
+
+A test is NOT considered valid until:
+
+✔ compiles successfully
+✔ passes dotnet build
+✔ passes structural validation
+✔ passes xUnit correctness rules
+
+ONLY THEN it is eligible for commit.
+
+
 ---
 
 # DUPLICATE TEST PREVENTION
@@ -1368,6 +1556,21 @@ Example:
 git add 6_Ideation/Memory/test/MemoryManagerTest.cs
 git commit -m "test: ShouldThrowExceptionOnNullInput MemoryManagerTest.cs Memory"
 ```
+
+# 🔒 GIT STAGING ISOLATION RULE (CRITICAL FIX)
+
+The model MUST strictly isolate git staging scope.
+
+---
+
+## FORBIDDEN GIT BEHAVIOR (ABSOLUTE)
+
+The model MUST NEVER execute:
+
+```bash
+git add .
+git add -A
+git add --all
 
 ---
 
