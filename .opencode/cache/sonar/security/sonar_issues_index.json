@@ -1,0 +1,192 @@
+{
+  "total": 8,
+  "hotspots": [
+    {
+      "key": "AZ1dvNH3MbZ4NfML32sy",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs",
+      "project": "pabllopf-official_alis",
+      "securityCategory": "object-injection",
+      "vulnerabilityProbability": "LOW",
+      "status": "TO_REVIEW",
+      "line": 75,
+      "message": "Make sure not performing data validation after deserialization is safe here.",
+      "assignee": "AXaU6Dg20CVG157Sg4fE",
+      "author": "pabloperdomofalcon@gmail.com",
+      "creationDate": "2026-02-23T00:00:00+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "textRange": {
+        "startLine": 75,
+        "endLine": 75,
+        "startOffset": 17,
+        "endOffset": 28
+      },
+      "flows": [],
+      "ruleKey": "csharpsquid:S5766"
+    },
+    {
+      "key": "AZ5MJc9ntpWkLOZBArkp",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+      "project": "pabllopf-official_alis",
+      "securityCategory": "others",
+      "vulnerabilityProbability": "LOW",
+      "status": "TO_REVIEW",
+      "line": 892,
+      "message": "Make sure that decompressing this archive file is safe.",
+      "assignee": "AXaU6Dg20CVG157Sg4fE",
+      "author": "pabloperdomofalcon@gmail.com",
+      "creationDate": "2026-05-21T16:33:15+0000",
+      "updateDate": "2026-05-21T20:05:40+0000",
+      "textRange": {
+        "startLine": 892,
+        "endLine": 892,
+        "startOffset": 16,
+        "endOffset": 56
+      },
+      "flows": [],
+      "ruleKey": "csharpsquid:S5042"
+    },
+    {
+      "key": "AZ6OPa7rsynw1OJ1vi7A",
+      "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenuAction.cs",
+      "project": "pabllopf-official_alis",
+      "securityCategory": "others",
+      "vulnerabilityProbability": "LOW",
+      "status": "TO_REVIEW",
+      "line": 803,
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "assignee": "AXaU6Dg20CVG157Sg4fE",
+      "author": "pabloperdomofalcon@gmail.com",
+      "creationDate": "2024-12-18T00:00:00+0000",
+      "updateDate": "2026-06-03T16:05:41+0000",
+      "textRange": {
+        "startLine": 803,
+        "endLine": 803,
+        "startOffset": 20,
+        "endOffset": 50
+      },
+      "flows": [],
+      "ruleKey": "csharpsquid:S4036"
+    },
+    {
+      "key": "AZ6OPa7rsynw1OJ1vi7B",
+      "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenuAction.cs",
+      "project": "pabllopf-official_alis",
+      "securityCategory": "others",
+      "vulnerabilityProbability": "LOW",
+      "status": "TO_REVIEW",
+      "line": 807,
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "assignee": "AXaU6Dg20CVG157Sg4fE",
+      "author": "pabloperdomofalcon@gmail.com",
+      "creationDate": "2024-12-18T00:00:00+0000",
+      "updateDate": "2026-06-03T16:05:41+0000",
+      "textRange": {
+        "startLine": 807,
+        "endLine": 807,
+        "startOffset": 20,
+        "endOffset": 46
+      },
+      "flows": [],
+      "ruleKey": "csharpsquid:S4036"
+    },
+    {
+      "key": "AZ6OPawqsynw1OJ1vi3l",
+      "component": "pabllopf-official_alis:1_Presentation/Hub/src/Windows/Sections/EditorInstallationSection.cs",
+      "project": "pabllopf-official_alis",
+      "securityCategory": "others",
+      "vulnerabilityProbability": "LOW",
+      "status": "TO_REVIEW",
+      "line": 185,
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "assignee": "AXaU6Dg20CVG157Sg4fE",
+      "author": "pabloperdomofalcon@gmail.com",
+      "creationDate": "2024-12-22T00:00:00+0000",
+      "updateDate": "2026-06-03T16:05:41+0000",
+      "textRange": {
+        "startLine": 185,
+        "endLine": 185,
+        "startOffset": 26,
+        "endOffset": 85
+      },
+      "flows": [],
+      "ruleKey": "csharpsquid:S4036"
+    },
+    {
+      "key": "AZ6OPawqsynw1OJ1vi3m",
+      "component": "pabllopf-official_alis:1_Presentation/Hub/src/Windows/Sections/EditorInstallationSection.cs",
+      "project": "pabllopf-official_alis",
+      "securityCategory": "others",
+      "vulnerabilityProbability": "LOW",
+      "status": "TO_REVIEW",
+      "line": 194,
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "assignee": "AXaU6Dg20CVG157Sg4fE",
+      "author": "pabloperdomofalcon@gmail.com",
+      "creationDate": "2024-12-22T00:00:00+0000",
+      "updateDate": "2026-06-03T16:05:41+0000",
+      "textRange": {
+        "startLine": 194,
+        "endLine": 194,
+        "startOffset": 26,
+        "endOffset": 102
+      },
+      "flows": [],
+      "ruleKey": "csharpsquid:S4036"
+    },
+    {
+      "key": "AZ6OPazHsynw1OJ1vi31",
+      "component": "pabllopf-official_alis:1_Presentation/Hub/src/Windows/Sections/ProjectsSection.cs",
+      "project": "pabllopf-official_alis",
+      "securityCategory": "others",
+      "vulnerabilityProbability": "LOW",
+      "status": "TO_REVIEW",
+      "line": 162,
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "assignee": "AXaU6Dg20CVG157Sg4fE",
+      "author": "pabloperdomofalcon@gmail.com",
+      "creationDate": "2024-12-22T00:00:00+0000",
+      "updateDate": "2026-06-03T16:05:41+0000",
+      "textRange": {
+        "startLine": 162,
+        "endLine": 162,
+        "startOffset": 26,
+        "endOffset": 85
+      },
+      "flows": [],
+      "ruleKey": "csharpsquid:S4036"
+    },
+    {
+      "key": "AZ6OPazHsynw1OJ1vi32",
+      "component": "pabllopf-official_alis:1_Presentation/Hub/src/Windows/Sections/ProjectsSection.cs",
+      "project": "pabllopf-official_alis",
+      "securityCategory": "others",
+      "vulnerabilityProbability": "LOW",
+      "status": "TO_REVIEW",
+      "line": 171,
+      "message": "Make sure the \"PATH\" variable only contains fixed, unwriteable directories.",
+      "assignee": "AXaU6Dg20CVG157Sg4fE",
+      "author": "pabloperdomofalcon@gmail.com",
+      "creationDate": "2024-12-22T00:00:00+0000",
+      "updateDate": "2026-06-03T16:05:41+0000",
+      "textRange": {
+        "startLine": 171,
+        "endLine": 171,
+        "startOffset": 26,
+        "endOffset": 102
+      },
+      "flows": [],
+      "ruleKey": "csharpsquid:S4036"
+    }
+  ],
+  "hotspotKeys": [
+    "AZ1dvNH3MbZ4NfML32sy",
+    "AZ5MJc9ntpWkLOZBArkp",
+    "AZ6OPa7rsynw1OJ1vi7A",
+    "AZ6OPa7rsynw1OJ1vi7B",
+    "AZ6OPawqsynw1OJ1vi3l",
+    "AZ6OPawqsynw1OJ1vi3m",
+    "AZ6OPazHsynw1OJ1vi31",
+    "AZ6OPazHsynw1OJ1vi32"
+  ],
+  "fetchedAt": "2026-06-03T20:11:00+0000"
+}

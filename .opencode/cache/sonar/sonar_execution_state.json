@@ -1,7 +1,0 @@
-{
-  "workerId": "worker-$(hostname)-001",
-  "lastUpdated": "2026-06-01T19:05:00Z",
-  "issuesProcessed": 5,
-  "totalIssues": 5,
-  "status": "completed"
-}
