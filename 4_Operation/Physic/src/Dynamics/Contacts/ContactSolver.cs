@@ -597,39 +597,39 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             Vector2F x = -MathUtils.Mul(ref vc.NormalMass, ref b);
 
-                if ((x.X >= 0.0f) && (x.Y >= 0.0f))
-                {
-                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
-                    break;
-                }
+            if ((x.X >= 0.0f) && (x.Y >= 0.0f))
+            {
+                ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
+                return;
+            }
 
-                x.X = -cp1.NormalMass * b.X;
-                x.Y = 0.0f;
-                vn2 = vc.K.Ex.Y * x.X + b.Y;
+            x.X = -cp1.NormalMass * b.X;
+            x.Y = 0.0f;
+            vn2 = vc.K.Ex.Y * x.X + b.Y;
 
-                if ((x.X >= 0.0f) && (vn2 >= 0.0f))
-                {
-                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
-                    break;
-                }
+            if ((x.X >= 0.0f) && (vn2 >= 0.0f))
+            {
+                ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
+                return;
+            }
 
-                x.X = 0.0f;
-                x.Y = -cp2.NormalMass * b.Y;
-                vn1 = vc.K.Ey.X * x.Y + b.X;
+            x.X = 0.0f;
+            x.Y = -cp2.NormalMass * b.Y;
+            vn1 = vc.K.Ey.X * x.Y + b.X;
 
-                if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
-                {
-                    ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
-                    break;
-                }
+            if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
+            {
+                ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
+                return;
+            }
 
-                x.X = 0.0f;
-                x.Y = 0.0f;
-                vn1 = b.X;
-                vn2 = b.Y;
+            x.X = 0.0f;
+            x.Y = 0.0f;
+            vn1 = b.X;
+            vn2 = b.Y;
 
-                if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
-                {
+            if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
+            {
                 ApplyBlockImpulse(ref vA, ref wA, ref vB, ref wB, x, a, constraint, mA, iA, mB, iB);
             }
         }
