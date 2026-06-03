@@ -28,5 +28,189 @@
 //  --------------------------------------------------------------------------
 
 
+using Alis.Core.Physic.Collisions;
+using Xunit;
 
+namespace Alis.Core.Physic.Test.Collisions
+{
+    /// <summary>
+    ///     The contact id test class
+    /// </summary>
+    public class ContactIdTest
+    {
+        /// <summary>
+        ///     Tests that constructor should initialize with default values
+        /// </summary>
+        [Fact]
+        public void Constructor_ShouldInitializeWithDefaultValues()
+        {
+            ContactId contactId = new ContactId();
 
+            Assert.Equal(default(ContactFeature), contactId.Features);
+            Assert.Equal(0u, contactId.Key);
+        }
+
+        /// <summary>
+        ///     Tests that features should set and get correctly
+        /// </summary>
+        [Fact]
+        public void Features_ShouldSetAndGetCorrectly()
+        {
+            ContactFeature expectedFeatures = new ContactFeature
+            {
+                IndexA = 1,
+                IndexB = 2,
+                TypeA = ContactFeatureType.Vertex,
+                TypeB = ContactFeatureType.Face
+            };
+
+            ContactId contactId = new ContactId
+            {
+                Features = expectedFeatures
+            };
+
+            Assert.Equal(expectedFeatures, contactId.Features);
+        }
+
+        /// <summary>
+        ///     Tests that key should set and get correctly
+        /// </summary>
+        [Fact]
+        public void Key_ShouldSetAndGetCorrectly()
+        {
+            uint expectedKey = 0x12345678u;
+
+            ContactId contactId = new ContactId
+            {
+                Key = expectedKey
+            };
+
+            Assert.Equal(expectedKey, contactId.Key);
+        }
+
+        /// <summary>
+        ///     Tests that setting features should update key through union
+        /// </summary>
+        [Fact]
+        public void SettingFeatures_ShouldUpdateKeyThroughUnion()
+        {
+            ContactFeature features = new ContactFeature
+            {
+                IndexA = 5,
+                IndexB = 10,
+                TypeA = ContactFeatureType.Edge,
+                TypeB = ContactFeatureType.Vertex
+            };
+
+            ContactId contactId = new ContactId { Features = features };
+
+            Assert.NotEqual(0u, contactId.Key);
+        }
+
+        /// <summary>
+        ///     Tests that setting key should update features through union
+        /// </summary>
+        [Fact]
+        public void SettingKey_ShouldUpdateFeaturesThroughUnion()
+        {
+            uint testKey = 0xDEADBEEFu;
+
+            ContactId contactId = new ContactId { Key = testKey };
+
+            Assert.Equal(testKey, contactId.Key);
+            Assert.NotEqual(default(ContactFeature), contactId.Features);
+        }
+
+        /// <summary>
+        ///     Tests that default contact id should have zero key
+        /// </summary>
+        [Fact]
+        public void DefaultContactId_ShouldHaveZeroKey()
+        {
+            ContactId contactId = new ContactId();
+
+            Assert.Equal(0u, contactId.Key);
+        }
+
+        /// <summary>
+        ///     Tests that contact id with all features set should have valid key
+        /// </summary>
+        [Fact]
+        public void ContactId_WithAllFeaturesSet_ShouldHaveValidKey()
+        {
+            ContactFeature features = new ContactFeature
+            {
+                IndexA = byte.MaxValue,
+                IndexB = byte.MaxValue,
+                TypeA = ContactFeatureType.Vertex,
+                TypeB = ContactFeatureType.Face
+            };
+
+            ContactId contactId = new ContactId { Features = features };
+
+            Assert.NotEqual(0u, contactId.Key);
+            Assert.Equal(byte.MaxValue, features.IndexA);
+            Assert.Equal(byte.MaxValue, features.IndexB);
+        }
+
+        /// <summary>
+        ///     Tests that contact id should be structurally equal with same features
+        /// </summary>
+        [Fact]
+        public void ContactId_ShouldBeStructurallyEqualWithSameFeatures()
+        {
+            ContactFeature features = new ContactFeature
+            {
+                IndexA = 3,
+                IndexB = 4,
+                TypeA = ContactFeatureType.Edge,
+                TypeB = ContactFeatureType.Edge
+            };
+
+            ContactId id1 = new ContactId { Features = features };
+            ContactId id2 = new ContactId { Features = features };
+
+            Assert.Equal(id1, id2);
+        }
+
+        /// <summary>
+        ///     Tests that contact id should be different with different features
+        /// </summary>
+        [Fact]
+        public void ContactId_ShouldBeDifferentWithDifferentFeatures()
+        {
+            ContactFeature features1 = new ContactFeature
+            {
+                IndexA = 1,
+                IndexB = 2,
+                TypeA = ContactFeatureType.Vertex,
+                TypeB = ContactFeatureType.Face
+            };
+
+            ContactFeature features2 = new ContactFeature
+            {
+                IndexA = 3,
+                IndexB = 4,
+                TypeA = ContactFeatureType.Edge,
+                TypeB = ContactFeatureType.Vertex
+            };
+
+            ContactId id1 = new ContactId { Features = features1 };
+            ContactId id2 = new ContactId { Features = features2 };
+
+            Assert.NotEqual(id1, id2);
+        }
+
+        /// <summary>
+        ///     Tests that contact id should be different with different keys
+        /// </summary>
+        [Fact]
+        public void ContactId_ShouldBeDifferentWithDifferentKeys()
+        {
+            ContactId id1 = new ContactId { Key = 0x11111111u };
+            ContactId id2 = new ContactId { Key = 0x22222222u };
+
+            Assert.NotEqual(id1, id2);
+        }
+    }
+}
