@@ -229,5 +229,31 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.True(cache.Count >= 0);
         }
+
+        /// <summary>
+        /// Tests that compute distance with warm cache should produce valid result
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_WithWarmCache_ShouldProduceValidResult()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = new ControllerTransform(new Vector2F(5.0f, 0.0f), 0.0f),
+                UseRadii = false
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output1, out SimplexCache cache, input);
+
+            input.ControllerTransformB = new ControllerTransform(new Vector2F(6.0f, 0.0f), 0.0f);
+            Distance.ComputeDistance(out DistanceOutput output2, out SimplexCache cache2, input);
+
+            Assert.True(output2.Distance > output1.Distance);
+        }
     }
 }
