@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
@@ -88,6 +90,68 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(1.0f / 60.0f);
 
             Assert.Equal(0, world.ContactManager.ContactCount);
+        }
+
+        /// <summary>
+        /// Tests that end contact callback should be raised when contact is destroyed
+        /// </summary>
+        [Fact]
+        public void EndContactCallback_ShouldBeRaised_WhenContactDestroyed()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            int endCount = 0;
+            world.ContactManager.EndContact = contact =>
+            {
+                endCount++;
+            };
+
+            world.Step(1.0f / 60.0f);
+            world.Remove(bodyB);
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(endCount > 0);
+        }
+
+        /// <summary>
+        /// Tests that pre solve callback should be raised during step
+        /// </summary>
+        [Fact]
+        public void PreSolveCallback_ShouldBeRaised_DuringStep()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            int preSolveCount = 0;
+            world.ContactManager.PreSolve = (Contact contact, ref Manifold manifold) =>
+            {
+                preSolveCount++;
+            };
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(preSolveCount > 0);
+        }
+
+        /// <summary>
+        /// Tests that post solve callback should be raised during step
+        /// </summary>
+        [Fact]
+        public void PostSolveCallback_ShouldBeRaised_DuringStep()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            int postSolveCount = 0;
+            world.ContactManager.PostSolve = (constraint, velocityConstraint) =>
+            {
+                postSolveCount++;
+            };
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(postSolveCount > 0);
         }
     }
 }
