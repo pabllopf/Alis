@@ -223,6 +223,66 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Throws<ArgumentNullException>(() => world.Add((Body)null));
         }
+
+        /// <summary>
+        /// Tests that add same body twice should throw argument exception
+        /// </summary>
+        [Fact]
+        public void Add_SameBodyTwice_ShouldThrowArgumentException()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            Assert.Throws<ArgumentException>(() => world.Add(body));
+        }
+
+        /// <summary>
+        /// Tests that create edge should create body in world
+        /// </summary>
+        [Fact]
+        public void CreateEdge_ShouldCreateBodyInWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vector2F start = new Vector2F(0.0f, 0.0f);
+            Vector2F end = new Vector2F(1.0f, 0.0f);
+
+            Body body = world.CreateEdge(start, end);
+
+            Assert.NotNull(body);
+            Assert.Contains(body, world.BodyList);
+        }
+
+        /// <summary>
+        /// Tests that body added event should fire when body is created
+        /// </summary>
+        [Fact]
+        public void BodyAddedEvent_ShouldFire_WhenBodyIsCreated()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            int fireCount = 0;
+            world.BodyAdded += (w, b) => fireCount++;
+
+            world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(1.0f, 1.0f), 0.0f, BodyType.Static);
+
+            Assert.Equal(2, fireCount);
+        }
+
+        /// <summary>
+        /// Tests that body removed event should fire when body is removed
+        /// </summary>
+        [Fact]
+        public void BodyRemovedEvent_ShouldFire_WhenBodyIsRemoved()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            int fireCount = 0;
+            world.BodyRemoved += (w, b) => fireCount++;
+
+            world.Remove(body);
+
+            Assert.Equal(1, fireCount);
+        }
     }
 }
 
