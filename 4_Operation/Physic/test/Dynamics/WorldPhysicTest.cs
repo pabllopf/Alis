@@ -185,6 +185,18 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.True(world.GetEnabled);
         }
+
+        /// <summary>
+        /// Tests that default constructor should create body list
+        /// </summary>
+        [Fact]
+        public void DefaultConstructor_ShouldCreateBodyList()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.NotNull(world.BodyList);
+            Assert.Empty(world.BodyList);
+        }
     }
 }
 
