@@ -1331,3 +1331,158 @@ The model MUST stop test generation for a file ONLY when:
 * no high-value missing behavior remains
 
 The model MUST avoid infinite low-value test generation.
+
+
+# MANDATORY REAL GIT COMMIT EXECUTION
+
+CRITICAL:
+
+The model MUST perform REAL git commits.
+
+The model MUST NOT:
+
+* simulate commits
+* describe commits conceptually
+* postpone commits
+* batch commits later
+* continue without committing
+
+The model MUST execute REAL repository commands.
+
+---
+
+# REQUIRED GIT EXECUTION FLOW
+
+After EACH generated test unit:
+
+The model MUST execute:
+
+```bash
+git add <modified_test_files>
+git commit -m "test: <test_name> <file_name> <target_scope>"
+```
+
+Example:
+
+```bash
+git add 6_Ideation/Memory/test/MemoryManagerTest.cs
+git commit -m "test: ShouldThrowExceptionOnNullInput MemoryManagerTest.cs Memory"
+```
+
+---
+
+# COMMIT IS BLOCKING
+
+The model MUST treat commit creation as BLOCKING.
+
+The model MUST NOT continue generating additional tests until:
+
+1. git commit succeeds
+2. commit hash is created
+3. working tree is clean for the committed changes
+
+---
+
+# COMMIT FAILURE RULE
+
+If commit fails:
+
+The model MUST:
+
+1. stop generation
+2. diagnose failure
+3. fix staging or compilation issues
+4. retry commit
+
+The model MUST NEVER silently ignore commit failures.
+
+---
+
+# REQUIRED COMMIT VALIDATION
+
+After each commit, the model SHOULD validate using:
+
+```bash
+git status
+git log -1 --oneline
+```
+
+The model MUST verify:
+
+* commit exists
+* message format is correct
+* only intended test changes were committed
+
+---
+
+# FORBIDDEN COMMIT BEHAVIOR
+
+STRICTLY FORBIDDEN:
+
+* single commit for multiple tests
+* end-of-file commits
+* end-of-session commits
+* squashed test commits
+* delayed commits
+* conceptual commit descriptions
+
+Each test unit MUST produce EXACTLY ONE dedicated commit.
+
+---
+
+# REQUIRED COMMIT MESSAGE FORMAT
+
+STRICT FORMAT:
+
+```text
+test: <test_name> <file_name> <target_scope>
+```
+
+MANDATORY RULES:
+
+* lowercase `test:`
+* single-line commit message
+* no extra prefixes
+* no emojis
+* no issue ids
+* no multiline descriptions
+
+---
+
+# EXAMPLES
+
+VALID:
+
+```text
+test: ShouldReturnValueWhenInputIsValid MemoryServiceTest.cs Memory
+```
+
+VALID:
+
+```text
+test: ShouldSkipExecutionWhenSdlMissing GraphicContextTest.cs Graphic
+```
+
+INVALID:
+
+```text
+Added tests
+```
+
+INVALID:
+
+```text
+feat: unit tests
+```
+
+INVALID:
+
+```text
+test: multiple test coverage improvements
+```
+
+---
+
+# ABSOLUTE RULE
+
+NO TEST GENERATION MAY CONTINUE WITHOUT A SUCCESSFUL REAL COMMIT.
