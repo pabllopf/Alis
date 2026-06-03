@@ -109,5 +109,28 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.True(output.Distance > 0.0f);
         }
+
+        /// <summary>
+        /// Tests that compute distance with use radii and overlapping shapes should return zero distance
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_WithUseRadiiAndOverlapping_ShouldReturnZeroDistance()
+        {
+            CircleShape circleA = new CircleShape(1.0f, 1.0f);
+            CircleShape circleB = new CircleShape(1.0f, 1.0f);
+
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = new ControllerTransform(new Vector2F(0.5f, 0.0f), 0.0f),
+                UseRadii = true
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+
+            Assert.Equal(0.0f, output.Distance);
+        }
     }
 }
