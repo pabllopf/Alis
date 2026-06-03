@@ -314,6 +314,63 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0.5f, result.X);
             Assert.Equal(1.5f, result.Y);
         }
+
+        /// <summary>
+        /// Tests that area by value returns positive for ccw vertices
+        /// </summary>
+        [Fact]
+        public void Area_ByValue_ShouldReturnPositiveForCcwVertices()
+        {
+            Vector2F a = new Vector2F(0.0f, 0.0f);
+            Vector2F b = new Vector2F(1.0f, 0.0f);
+            Vector2F c = new Vector2F(0.0f, 1.0f);
+
+            float area = MathUtils.Area(a, b, c);
+
+            Assert.True(area > 0);
+        }
+
+        /// <summary>
+        /// Tests that vector angle by value returns angle between vectors
+        /// </summary>
+        [Fact]
+        public void VectorAngle_ByValue_ShouldReturnAngleBetweenVectors()
+        {
+            Vector2F v1 = new Vector2F(1.0f, 0.0f);
+            Vector2F v2 = new Vector2F(0.0f, 1.0f);
+
+            double angle = MathUtils.VectorAngle(v1, v2);
+
+            Assert.Equal(Math.PI / 2, angle, 5);
+        }
+
+        /// <summary>
+        /// Tests that cross by value returns perpendicular vector
+        /// </summary>
+        [Fact]
+        public void Cross_ByValue2D_ShouldReturnCorrectValue()
+        {
+            Vector2F a = new Vector2F(1.0f, 0.0f);
+            Vector2F b = new Vector2F(0.0f, 1.0f);
+
+            float result = MathUtils.Cross(a, b);
+
+            Assert.Equal(1.0f, result);
+        }
+
+        /// <summary>
+        /// Tests that cross with scalar first returns perpendicular vector
+        /// </summary>
+        [Fact]
+        public void Cross_ScalarFirst_ShouldReturnPerpendicularVector()
+        {
+            Vector2F a = new Vector2F(1.0f, 0.0f);
+
+            Vector2F result = MathUtils.Cross(2.0f, ref a);
+
+            Assert.Equal(0.0f, result.X);
+            Assert.Equal(2.0f, result.Y);
+        }
     }
 }
 
