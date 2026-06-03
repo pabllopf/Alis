@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
@@ -210,6 +211,17 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Clear();
 
             Assert.Empty(world.BodyList);
+        }
+
+        /// <summary>
+        /// Tests that add null body should throw argument null exception
+        /// </summary>
+        [Fact]
+        public void Add_NullBody_ShouldThrowArgumentNullException()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Throws<ArgumentNullException>(() => world.Add((Body)null));
         }
     }
 }
