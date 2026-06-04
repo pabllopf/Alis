@@ -310,7 +310,10 @@ namespace Alis.Extension.Network.Server
                     _cancellationTokenSource.Cancel();
                     #endif
                 }
-                await _transport?.StopAsync(cancellationToken);
+                if (_transport != null)
+                {
+                    await _transport.StopAsync(cancellationToken);
+                }
 
                 lock (_lockObject)
                 {
