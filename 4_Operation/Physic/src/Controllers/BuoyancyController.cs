@@ -212,8 +212,10 @@ namespace Alis.Core.Physic.Controllers
                 return true;
             }, ref _container);
 
-            foreach (Body body in _uniqueBodies)
+            if (_uniqueBodies.Count > 0)
             {
+                foreach (Body body in _uniqueBodies)
+                {
                 Vector2F areac = Vector2F.Zero;
                 Vector2F massc = Vector2F.Zero;
                 float area = 0;
@@ -259,6 +261,7 @@ namespace Alis.Core.Physic.Controllers
 
                 //Angular drag
                 body.ApplyTorque(-body.Inertia / body.Mass * area * body.AngularVelocity * AngularDragCoefficient);
+                }
             }
         }
     }
