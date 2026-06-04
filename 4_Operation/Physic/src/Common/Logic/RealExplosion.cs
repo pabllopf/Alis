@@ -256,18 +256,16 @@ namespace Alis.Core.Physic.Common.Logic
                 Vector2F p2 = radius * new Vector2F((float)Math.Cos(midpt), (float)Math.Sin(midpt)) + pos;
 
                 Fixture fixture = null;
-                bool hitClosest = false;
 
                 WorldPhysic.RayCast((f, p, n, fr) =>
                 {
                     Body body = f.GetBody;
                     if (!IsActiveOn(body)) return 0;
-                    hitClosest = true;
                     fixture = f;
                     return fr;
                 }, p1, p2);
 
-                if (hitClosest && fixture.GetBody.GetBodyType == BodyType.Dynamic)
+                if (fixture is not null && fixture.GetBody.GetBodyType == BodyType.Dynamic)
                 {
                     ProcessRayHit(vals, i, valIndex, fixture.GetBody, ref rayMissed);
                     rayMissed = false;
