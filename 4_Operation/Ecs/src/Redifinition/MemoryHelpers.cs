@@ -52,15 +52,23 @@ namespace Alis.Core.Ecs.Redifinition
         public const int MaxComponentCount = 127;
 
 
-        /// <summary>
-        ///     The component handle
-        /// </summary>
-        [ThreadStatic] internal static readonly ComponentHandle[] SharedTempComponentHandleBuffer = new ComponentHandle[8];
+        [ThreadStatic]
+        private static ComponentHandle[] _sharedTempComponentHandleBuffer;
 
-        /// <summary>
-        ///     The component storage base
-        /// </summary>
-        [ThreadStatic] internal static readonly ComponentStorageBase[] SharedTempComponentStorageBuffer = new ComponentStorageBase[8];
+        internal static ComponentHandle[] SharedTempComponentHandleBuffer
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => _sharedTempComponentHandleBuffer ??= new ComponentHandle[8];
+        }
+
+        [ThreadStatic]
+        private static ComponentStorageBase[] _sharedTempComponentStorageBuffer;
+
+        internal static ComponentStorageBase[] SharedTempComponentStorageBuffer
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => _sharedTempComponentStorageBuffer ??= new ComponentStorageBase[8];
+        }
 
         /// <summary>
         ///     Rounds the down to power of two using the specified value
