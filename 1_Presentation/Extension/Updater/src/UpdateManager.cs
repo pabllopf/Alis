@@ -548,12 +548,6 @@ namespace Alis.Extension.Updater
                 }
             }
 
-            if (releases.Count == 0)
-            {
-                Logger.Exception("No releases found.");
-                return null;
-            }
-
             if ("latest" == VersionToInstall)
             {
                 Logger.Info("Returning latest release entry.");
