@@ -1,0 +1,435 @@
+{
+  "issues": [
+    {
+      "key": "AZ6Pafy3NnKxd0kLY3_O",
+      "rule": "csharpsquid:S2583",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+      "project": "pabllopf-official_alis",
+      "line": 259,
+      "hash": "3b391caf0bf5ea2615a0eac7af3a0158",
+      "textRange": {
+        "startLine": 259,
+        "endLine": 259,
+        "startOffset": 19,
+        "endOffset": 33
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+              "textRange": {
+                "startLine": 261,
+                "endLine": 275,
+                "startOffset": 21,
+                "endOffset": 24
+              }
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+      "effort": "15min",
+      "debt": "15min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "cwe",
+        "pitfall",
+        "suspicious",
+        "symbolic-execution",
+        "unused"
+      ],
+      "creationDate": "2026-06-03T21:34:26+0000",
+      "updateDate": "2026-06-03T21:34:26+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "fda9023e-b2a6-4b59-a247-b851646fddf4",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ6Paf1iNnKxd0kLY3_P",
+      "rule": "csharpsquid:S4158",
+      "severity": "MINOR",
+      "component": "pabllopf-official_alis:4_Operation/Physic/src/Controllers/BuoyancyController.cs",
+      "project": "pabllopf-official_alis",
+      "line": 215,
+      "hash": "b15651aaa6bde8e4bdd8f2436bbb54af",
+      "textRange": {
+        "startLine": 215,
+        "endLine": 215,
+        "startOffset": 34,
+        "endOffset": 47
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this call, the collection is known to be empty here.",
+      "effort": "15min",
+      "debt": "15min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "symbolic-execution"
+      ],
+      "creationDate": "2026-06-03T21:34:26+0000",
+      "updateDate": "2026-06-03T21:34:26+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "fda9023e-b2a6-4b59-a247-b851646fddf4",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ513rjKQhsJmkYf-QrZ",
+      "rule": "csharpsquid:S2583",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
+      "project": "pabllopf-official_alis",
+      "line": 270,
+      "hash": "caba793c431de8d1fbb828c643bbecf3",
+      "textRange": {
+        "startLine": 270,
+        "endLine": 270,
+        "startOffset": 20,
+        "endOffset": 30
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
+              "textRange": {
+                "startLine": 270,
+                "endLine": 273,
+                "startOffset": 34,
+                "endOffset": 38
+              }
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+      "effort": "15min",
+      "debt": "15min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "cwe",
+        "pitfall",
+        "suspicious",
+        "symbolic-execution",
+        "unused"
+      ],
+      "creationDate": "2026-05-29T22:31:34+0000",
+      "updateDate": "2026-05-29T22:31:34+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "fda9023e-b2a6-4b59-a247-b851646fddf4",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNfFMbZ4NfML324C",
+      "rule": "csharpsquid:S2996",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/MemoryHelpers.cs",
+      "project": "pabllopf-official_alis",
+      "line": 58,
+      "hash": "ba1798b62f462d1bd5dfd1ccd40d48cb",
+      "textRange": {
+        "startLine": 58,
+        "endLine": 58,
+        "startOffset": 98,
+        "endOffset": 122
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this initialization of 'SharedTempComponentHandleBuffer' or make it lazy.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "multi-threading"
+      ],
+      "creationDate": "2026-03-16T21:15:03+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": []
+    },
+    {
+      "key": "AZ1dvNfFMbZ4NfML324B",
+      "rule": "csharpsquid:S2996",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/MemoryHelpers.cs",
+      "project": "pabllopf-official_alis",
+      "line": 63,
+      "hash": "b4fde83f1ac8bd60f8d0409216abc81c",
+      "textRange": {
+        "startLine": 63,
+        "endLine": 63,
+        "startOffset": 104,
+        "endOffset": 133
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this initialization of 'SharedTempComponentStorageBuffer' or make it lazy.",
+      "effort": "20min",
+      "debt": "20min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "multi-threading"
+      ],
+      "creationDate": "2026-03-16T21:15:03+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": []
+    },
+    {
+      "key": "AZ1dvNF4MbZ4NfML32sP",
+      "rule": "csharpsquid:S2259",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs",
+      "project": "pabllopf-official_alis",
+      "line": 313,
+      "hash": "30f48aa2d651674a89c739a07e1e0c5b",
+      "textRange": {
+        "startLine": 313,
+        "endLine": 313,
+        "startOffset": 22,
+        "endOffset": 62
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs",
+              "textRange": {
+                "startLine": 313,
+                "endLine": 313,
+                "startOffset": 22,
+                "endOffset": 62
+              },
+              "msg": "Then a 'NullReferenceException' is thrown"
+            },
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs",
+              "textRange": {
+                "startLine": 313,
+                "endLine": 313,
+                "startOffset": 22,
+                "endOffset": 32
+              },
+              "msg": "If '_transport' is 'null'"
+            },
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs",
+              "textRange": {
+                "startLine": 295,
+                "endLine": 295,
+                "startOffset": 66,
+                "endOffset": 109
+              },
+              "msg": "If the expression is 'false'"
+            },
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs",
+              "textRange": {
+                "startLine": 295,
+                "endLine": 295,
+                "startOffset": 20,
+                "endOffset": 62
+              },
+              "msg": "If the expression is 'false'"
+            }
+          ],
+          "description": "Execution Flow",
+          "type": "EXECUTION"
+        }
+      ],
+      "status": "OPEN",
+      "message": "'_transport?.StopAsync(cancellationToken)' is null on at least one execution path.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "cwe",
+        "symbolic-execution"
+      ],
+      "creationDate": "2026-03-07T20:58:31+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "fda9023e-b2a6-4b59-a247-b851646fddf4",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvMimMbZ4NfML32Ai",
+      "rule": "csharpsquid:S3923",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs",
+      "project": "pabllopf-official_alis",
+      "line": 209,
+      "hash": "004887c01853cb8b931f69bc6d55131c",
+      "textRange": {
+        "startLine": 209,
+        "endLine": 209,
+        "startOffset": 43,
+        "endOffset": 80
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "This conditional operation returns the same value whether the condition is \"true\" or \"false\".",
+      "effort": "15min",
+      "debt": "15min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [],
+      "creationDate": "2026-02-11T00:00:00+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "56f957ce-2fcd-426e-9dab-730b9580d004",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ1dvNKBMbZ4NfML32tU",
+      "rule": "csharpsquid:S2583",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+      "project": "pabllopf-official_alis",
+      "line": 551,
+      "hash": "97cb929e86efd4866a7d94145113e4b4",
+      "textRange": {
+        "startLine": 551,
+        "endLine": 551,
+        "startOffset": 16,
+        "endOffset": 35
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
+              "textRange": {
+                "startLine": 553,
+                "endLine": 554,
+                "startOffset": 16,
+                "endOffset": 27
+              }
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+      "effort": "15min",
+      "debt": "15min",
+      "author": "gabrirot12@gmail.com",
+      "tags": [
+        "cwe",
+        "pitfall",
+        "suspicious",
+        "symbolic-execution",
+        "unused"
+      ],
+      "creationDate": "2024-12-23T00:00:00+0000",
+      "updateDate": "2026-04-05T13:00:52+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "dbb4a25e-6930-4034-99d7-5da1ce4b198c",
+      "lastChangeSource": "ANALYSIS"
+    }
+  ]
+}
