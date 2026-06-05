@@ -256,7 +256,7 @@ namespace Alis.Core.Physic.Collisions
             // Send the pairs back to the client.
             int i = 0;
 
-            while (i < _pairCount - 1)
+            while (i < _pairCount)
             {
                 Pair primaryPair = _pairBuffer[i];
 
