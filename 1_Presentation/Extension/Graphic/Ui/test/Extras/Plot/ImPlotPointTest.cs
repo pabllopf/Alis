@@ -33,52 +33,147 @@ using Xunit;
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
     /// <summary>
-    ///     The im plot point test class
+    ///     Provides unit coverage for <see cref="ImPlotPoint" /> struct.
     /// </summary>
     public class ImPlotPointTest
     {
         /// <summary>
-        ///     Tests that x should be initialized
+        ///     Tests that X and Y should be initialized correctly.
         /// </summary>
         [Fact]
-        public void X_ShouldBeInitialized()
+        public void XAndY_ShouldBeInitializedCorrectly()
         {
-            ImPlotPoint point = new ImPlotPoint();
-            Assert.Equal(default(double), point.X);
+            ImPlotPoint point = new ImPlotPoint { X = 10.0, Y = 20.0 };
+
+            Assert.Equal(10.0, point.X);
+            Assert.Equal(20.0, point.Y);
         }
 
         /// <summary>
-        ///     Tests that y should be initialized
+        ///     Tests that X should be set correctly.
         /// </summary>
         [Fact]
-        public void Y_ShouldBeInitialized()
+        public void X_ShouldBeSetCorrectly()
         {
-            ImPlotPoint point = new ImPlotPoint();
-            Assert.Equal(default(double), point.Y);
+            ImPlotPoint point = new ImPlotPoint { X = -50.5, Y = 100.0 };
+
+            Assert.Equal(-50.5, point.X);
         }
 
         /// <summary>
-        ///     Tests that x should set and get correctly
+        ///     Tests that Y should be set correctly.
         /// </summary>
         [Fact]
-        public void X_Should_SetAndGetCorrectly()
+        public void Y_ShouldBeSetCorrectly()
         {
-            ImPlotPoint point = new ImPlotPoint();
-            double value = 10.0;
-            point.X = value;
-            Assert.Equal(value, point.X);
+            ImPlotPoint point = new ImPlotPoint { X = 0.0, Y = 999.99 };
+
+            Assert.Equal(999.99, point.Y);
         }
 
         /// <summary>
-        ///     Tests that y should set and get correctly
+        ///     Tests that X and Y can be modified after initialization.
         /// </summary>
         [Fact]
-        public void Y_Should_SetAndGetCorrectly()
+        public void XAndY_ShouldBeModifiable()
+        {
+            ImPlotPoint point = new ImPlotPoint { X = 0.0, Y = 100.0 };
+
+            point.X = -100.0;
+            point.Y = 200.0;
+
+            Assert.Equal(-100.0, point.X);
+            Assert.Equal(200.0, point.Y);
+        }
+
+        /// <summary>
+        ///     Tests that default struct initialization sets X and Y to 0.
+        /// </summary>
+        [Fact]
+        public void DefaultInitialization_ShouldSetXAndYToZero()
         {
             ImPlotPoint point = new ImPlotPoint();
-            double value = 20.0;
-            point.Y = value;
-            Assert.Equal(value, point.Y);
+
+            Assert.Equal(0.0, point.X);
+            Assert.Equal(0.0, point.Y);
+        }
+
+        /// <summary>
+        ///     Tests that negative values can be used for X and Y.
+        /// </summary>
+        [Fact]
+        public void NegativeValues_ShouldBeSupported()
+        {
+            ImPlotPoint point = new ImPlotPoint { X = -1000.0, Y = -500.0 };
+
+            Assert.Equal(-1000.0, point.X);
+            Assert.Equal(-500.0, point.Y);
+        }
+
+        /// <summary>
+        ///     Tests that struct equality works correctly.
+        /// </summary>
+        [Fact]
+        public void Equality_ShouldWorkCorrectly()
+        {
+            ImPlotPoint point1 = new ImPlotPoint { X = 0.0, Y = 100.0 };
+            ImPlotPoint point2 = new ImPlotPoint { X = 0.0, Y = 100.0 };
+            ImPlotPoint point3 = new ImPlotPoint { X = 0.0, Y = 200.0 };
+
+            Assert.Equal(point1, point2);
+            Assert.NotEqual(point1, point3);
+        }
+
+        /// <summary>
+        ///     Tests that large double values are supported.
+        /// </summary>
+        [Fact]
+        public void LargeDoubleValues_ShouldBeSupported()
+        {
+            ImPlotPoint point = new ImPlotPoint 
+            { 
+                X = double.MaxValue, 
+                Y = double.MinValue 
+            };
+
+            Assert.Equal(double.MaxValue, point.X);
+            Assert.Equal(double.MinValue, point.Y);
+        }
+
+        /// <summary>
+        ///     Tests that zero values are supported.
+        /// </summary>
+        [Fact]
+        public void ZeroValues_ShouldBeSupported()
+        {
+            ImPlotPoint point = new ImPlotPoint { X = 0.0, Y = 0.0 };
+
+            Assert.Equal(0.0, point.X);
+            Assert.Equal(0.0, point.Y);
+        }
+
+        /// <summary>
+        ///     Tests that struct with only X set works correctly.
+        /// </summary>
+        [Fact]
+        public void OnlyXSet_ShouldWorkCorrectly()
+        {
+            ImPlotPoint point = new ImPlotPoint { X = 42.0 };
+
+            Assert.Equal(42.0, point.X);
+            Assert.Equal(0.0, point.Y);
+        }
+
+        /// <summary>
+        ///     Tests that struct with only Y set works correctly.
+        /// </summary>
+        [Fact]
+        public void OnlyYSet_ShouldWorkCorrectly()
+        {
+            ImPlotPoint point = new ImPlotPoint { Y = 42.0 };
+
+            Assert.Equal(0.0, point.X);
+            Assert.Equal(42.0, point.Y);
         }
     }
 }
