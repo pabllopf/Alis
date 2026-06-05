@@ -88,5 +88,77 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Color color = new Color(1, 2, 3, 4);
             Assert.False(string.IsNullOrWhiteSpace(color.ToString()));
         }
+
+        [Fact]
+        public void StaticColors_HaveExpectedValues()
+        {
+            Assert.Equal(new Color(0, 0, 0), Color.Black);
+            Assert.Equal(new Color(255, 255, 255), Color.White);
+            Assert.Equal(new Color(255, 0, 0), Color.Red);
+            Assert.Equal(new Color(0, 255, 0), Color.Green);
+            Assert.Equal(new Color(0, 0, 255), Color.Blue);
+            Assert.Equal(new Color(255, 255, 0), Color.Yellow);
+            Assert.Equal(new Color(255, 0, 255), Color.Magenta);
+            Assert.Equal(new Color(0, 255, 255), Color.Cyan);
+            Assert.Equal(new Color(0, 0, 0, 0), Color.Transparent);
+        }
+
+        [Fact]
+        public void OperatorAdd_ClampsTo255()
+        {
+            Color c1 = new Color(200, 200, 200, 200);
+            Color c2 = new Color(100, 100, 100, 100);
+            Color result = c1 + c2;
+            Assert.Equal(255, result.R);
+            Assert.Equal(255, result.G);
+            Assert.Equal(255, result.B);
+            Assert.Equal(255, result.A);
+        }
+
+        [Fact]
+        public void OperatorSubtract_ClampsToZero()
+        {
+            Color c1 = new Color(50, 50, 50, 50);
+            Color c2 = new Color(100, 100, 100, 100);
+            Color result = c1 - c2;
+            Assert.Equal(0, result.R);
+            Assert.Equal(0, result.G);
+            Assert.Equal(0, result.B);
+            Assert.Equal(0, result.A);
+        }
+
+        [Fact]
+        public void OperatorMultiply_ScalesCorrectly()
+        {
+            Color c1 = new Color(128, 128, 128, 128);
+            Color c2 = new Color(255, 255, 255, 255);
+            Color result = c1 * c2;
+            Assert.Equal(128, result.R);
+            Assert.Equal(128, result.G);
+            Assert.Equal(128, result.B);
+            Assert.Equal(128, result.A);
+        }
+
+        [Fact]
+        public void OperatorMultiply_WithHalfReducesByFactor()
+        {
+            Color white = new Color(255, 255, 255, 255);
+            Color half = new Color(128, 128, 128, 128);
+            Color result = white * half;
+            Assert.Equal(128, result.R);
+            Assert.Equal(128, result.G);
+            Assert.Equal(128, result.B);
+            Assert.Equal(128, result.A);
+        }
+
+        [Fact]
+        public void ThreeParamConstructor_SetsAlphaTo255()
+        {
+            Color color = new Color(10, 20, 30);
+            Assert.Equal(10, color.R);
+            Assert.Equal(20, color.G);
+            Assert.Equal(30, color.B);
+            Assert.Equal(255, color.A);
+        }
     }
 }
