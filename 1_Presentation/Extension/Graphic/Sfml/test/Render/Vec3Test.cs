@@ -62,5 +62,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(5.0f, v.Y);
             Assert.Equal(6.0f, v.Z);
         }
+
+        /// <summary>
+        ///     Tests the implicit cast from Vector3F.
+        /// </summary>
+        [Fact]
+        public void ImplicitCast_FromVector3F_Works()
+        {
+            Vector3F vec3f = new Vector3F(7.0f, 8.0f, 9.0f);
+            Vec3 v = vec3f;
+            Assert.Equal(7.0f, v.X);
+            Assert.Equal(8.0f, v.Y);
+            Assert.Equal(9.0f, v.Z);
+        }
     }
 }
