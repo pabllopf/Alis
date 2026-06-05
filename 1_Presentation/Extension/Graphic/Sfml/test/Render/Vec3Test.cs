@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Xunit;
 
@@ -47,6 +48,19 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(1.5f, v.X);
             Assert.Equal(2.5f, v.Y);
             Assert.Equal(3.5f, v.Z);
+        }
+
+        /// <summary>
+        ///     Tests the constructor from Vector3F.
+        /// </summary>
+        [Fact]
+        public void Constructor_FromVector3F_CopiesFields()
+        {
+            Vector3F source = new Vector3F(4.0f, 5.0f, 6.0f);
+            Vec3 v = new Vec3(source);
+            Assert.Equal(4.0f, v.X);
+            Assert.Equal(5.0f, v.Y);
+            Assert.Equal(6.0f, v.Z);
         }
     }
 }
