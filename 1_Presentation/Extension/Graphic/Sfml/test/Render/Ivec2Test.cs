@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Xunit;
 
@@ -46,6 +47,30 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Ivec2 v = new Ivec2(1, 2);
             Assert.Equal(1, v.X);
             Assert.Equal(2, v.Y);
+        }
+
+        /// <summary>
+        ///     Tests the constructor from Vector2F copies components.
+        /// </summary>
+        [Fact]
+        public void Constructor_FromVector2F_CopiesFields()
+        {
+            Vector2F source = new Vector2F(3.0f, 4.0f);
+            Ivec2 v = new Ivec2(source);
+            Assert.Equal(3.0f, v.X);
+            Assert.Equal(4.0f, v.Y);
+        }
+
+        /// <summary>
+        ///     Tests the implicit cast from Vector2F.
+        /// </summary>
+        [Fact]
+        public void ImplicitCast_FromVector2F_Works()
+        {
+            Vector2F vec2f = new Vector2F(5.0f, 6.0f);
+            Ivec2 v = vec2f;
+            Assert.Equal(5.0f, v.X);
+            Assert.Equal(6.0f, v.Y);
         }
     }
 }
