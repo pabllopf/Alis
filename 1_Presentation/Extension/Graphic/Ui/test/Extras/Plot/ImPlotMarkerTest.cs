@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Xunit;
 
@@ -38,27 +39,137 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
     public class ImPlotMarkerTest
     {
         /// <summary>
-        ///     Verifies that marker types are defined.
+        ///     Verifies that None has the expected value of -1.
         /// </summary>
         [Fact]
-        public void Circle_ShouldBeDefined()
+        public void None_ShouldHaveCorrectValue()
         {
-            ImPlotMarker marker = ImPlotMarker.Circle;
-            Assert.Equal(0, (int) marker);
+            ImPlotMarker marker = ImPlotMarker.None;
+            Assert.Equal(-1, (int)marker);
         }
 
         /// <summary>
-        ///     Verifies that different marker types have distinct values.
+        ///     Verifies that Circle has the expected value of 0.
         /// </summary>
         [Fact]
-        public void EnumValues_ShouldBeDistinct()
+        public void Circle_ShouldHaveCorrectValue()
         {
-            ImPlotMarker circle = ImPlotMarker.Circle;
-            ImPlotMarker square = ImPlotMarker.Square;
-            ImPlotMarker diamond = ImPlotMarker.Diamond;
+            ImPlotMarker marker = ImPlotMarker.Circle;
+            Assert.Equal(0, (int)marker);
+        }
 
-            Assert.NotEqual((int) circle, (int) square);
-            Assert.NotEqual((int) square, (int) diamond);
+        /// <summary>
+        ///     Verifies that Square has the expected value of 1.
+        /// </summary>
+        [Fact]
+        public void Square_ShouldHaveCorrectValue()
+        {
+            ImPlotMarker marker = ImPlotMarker.Square;
+            Assert.Equal(1, (int)marker);
+        }
+
+        /// <summary>
+        ///     Verifies that Diamond has the expected value of 2.
+        /// </summary>
+        [Fact]
+        public void Diamond_ShouldHaveCorrectValue()
+        {
+            ImPlotMarker marker = ImPlotMarker.Diamond;
+            Assert.Equal(2, (int)marker);
+        }
+
+        /// <summary>
+        ///     Verifies that Up has the expected value of 3.
+        /// </summary>
+        [Fact]
+        public void Up_ShouldHaveCorrectValue()
+        {
+            ImPlotMarker marker = ImPlotMarker.Up;
+            Assert.Equal(3, (int)marker);
+        }
+
+        /// <summary>
+        ///     Verifies that Down has the expected value of 4.
+        /// </summary>
+        [Fact]
+        public void Down_ShouldHaveCorrectValue()
+        {
+            ImPlotMarker marker = ImPlotMarker.Down;
+            Assert.Equal(4, (int)marker);
+        }
+
+        /// <summary>
+        ///     Verifies that Left has the expected value of 5.
+        /// </summary>
+        [Fact]
+        public void Left_ShouldHaveCorrectValue()
+        {
+            ImPlotMarker marker = ImPlotMarker.Left;
+            Assert.Equal(5, (int)marker);
+        }
+
+        /// <summary>
+        ///     Verifies that Right has the expected value of 6.
+        /// </summary>
+        [Fact]
+        public void Right_ShouldHaveCorrectValue()
+        {
+            ImPlotMarker marker = ImPlotMarker.Right;
+            Assert.Equal(6, (int)marker);
+        }
+
+        /// <summary>
+        ///     Verifies that Cross has the expected value of 7.
+        /// </summary>
+        [Fact]
+        public void Cross_ShouldHaveCorrectValue()
+        {
+            ImPlotMarker marker = ImPlotMarker.Cross;
+            Assert.Equal(7, (int)marker);
+        }
+
+        /// <summary>
+        ///     Verifies that Plus has the expected value of 8.
+        /// </summary>
+        [Fact]
+        public void Plus_ShouldHaveCorrectValue()
+        {
+            ImPlotMarker marker = ImPlotMarker.Plus;
+            Assert.Equal(8, (int)marker);
+        }
+
+        /// <summary>
+        ///     Verifies that Asterisk has the expected value of 9.
+        /// </summary>
+        [Fact]
+        public void Asterisk_ShouldHaveCorrectValue()
+        {
+            ImPlotMarker marker = ImPlotMarker.Asterisk;
+            Assert.Equal(9, (int)marker);
+        }
+
+        /// <summary>
+        ///     Verifies that Count has the expected value of 10.
+        /// </summary>
+        [Fact]
+        public void Count_ShouldHaveCorrectValue()
+        {
+            ImPlotMarker marker = ImPlotMarker.Count;
+            Assert.Equal(10, (int)marker);
+        }
+
+        /// <summary>
+        ///     Verifies that all enum values are sequential from -1 to Count.
+        /// </summary>
+        [Fact]
+        public void Values_ShouldBeSequential()
+        {
+            ImPlotMarker[] values = (ImPlotMarker[])Enum.GetValues(typeof(ImPlotMarker));
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                Assert.Equal(i - 1, (int)values[i]);
+            }
         }
     }
 }
