@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Xunit;
 
@@ -38,27 +39,137 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
     public class ImPlotLocationTest
     {
         /// <summary>
-        ///     Verifies that location values are defined.
+        ///     Verifies that Center has the expected value of 0.
         /// </summary>
         [Fact]
-        public void Center_ShouldBeDefined()
+        public void Center_ShouldHaveCorrectValue()
         {
             ImPlotLocation location = ImPlotLocation.Center;
-            Assert.Equal(0, (int) location);
+            Assert.Equal(0, (int)location);
         }
 
         /// <summary>
-        ///     Verifies that different locations have distinct values.
+        ///     Verifies that North has the expected value of 1.
         /// </summary>
         [Fact]
-        public void EnumValues_ShouldBeDistinct()
+        public void North_ShouldHaveCorrectValue()
         {
-            ImPlotLocation center = ImPlotLocation.Center;
-            ImPlotLocation north = ImPlotLocation.North;
-            ImPlotLocation south = ImPlotLocation.South;
+            ImPlotLocation location = ImPlotLocation.North;
+            Assert.Equal(1, (int)location);
+        }
 
-            Assert.NotEqual((int) center, (int) north);
-            Assert.NotEqual((int) north, (int) south);
+        /// <summary>
+        ///     Verifies that South has the expected value of 2.
+        /// </summary>
+        [Fact]
+        public void South_ShouldHaveCorrectValue()
+        {
+            ImPlotLocation location = ImPlotLocation.South;
+            Assert.Equal(2, (int)location);
+        }
+
+        /// <summary>
+        ///     Verifies that West has the expected value of 4.
+        /// </summary>
+        [Fact]
+        public void West_ShouldHaveCorrectValue()
+        {
+            ImPlotLocation location = ImPlotLocation.West;
+            Assert.Equal(4, (int)location);
+        }
+
+        /// <summary>
+        ///     Verifies that East has the expected value of 8.
+        /// </summary>
+        [Fact]
+        public void East_ShouldHaveCorrectValue()
+        {
+            ImPlotLocation location = ImPlotLocation.East;
+            Assert.Equal(8, (int)location);
+        }
+
+        /// <summary>
+        ///     Verifies that NorthWest has the expected value of 5.
+        /// </summary>
+        [Fact]
+        public void NorthWest_ShouldHaveCorrectValue()
+        {
+            ImPlotLocation location = ImPlotLocation.NorthWest;
+            Assert.Equal(5, (int)location);
+        }
+
+        /// <summary>
+        ///     Verifies that NorthEast has the expected value of 9.
+        /// </summary>
+        [Fact]
+        public void NorthEast_ShouldHaveCorrectValue()
+        {
+            ImPlotLocation location = ImPlotLocation.NorthEast;
+            Assert.Equal(9, (int)location);
+        }
+
+        /// <summary>
+        ///     Verifies that SouthWest has the expected value of 6.
+        /// </summary>
+        [Fact]
+        public void SouthWest_ShouldHaveCorrectValue()
+        {
+            ImPlotLocation location = ImPlotLocation.SouthWest;
+            Assert.Equal(6, (int)location);
+        }
+
+        /// <summary>
+        ///     Verifies that SouthEast has the expected value of 10.
+        /// </summary>
+        [Fact]
+        public void SouthEast_ShouldHaveCorrectValue()
+        {
+            ImPlotLocation location = ImPlotLocation.SouthEast;
+            Assert.Equal(10, (int)location);
+        }
+
+        /// <summary>
+        ///     Verifies that locations can be combined with bitwise OR.
+        /// </summary>
+        [Fact]
+        public void Locations_ShouldBeCombinable()
+        {
+            ImPlotLocation combined = ImPlotLocation.North | ImPlotLocation.West;
+            int expected = 1 | 4;
+            Assert.Equal(expected, (int)combined);
+        }
+
+        /// <summary>
+        ///     Verifies that NorthWest is the combination of North and West.
+        /// </summary>
+        [Fact]
+        public void NorthWest_ShouldBeCombinationOfNorthAndWest()
+        {
+            ImPlotLocation combined = ImPlotLocation.North | ImPlotLocation.West;
+            Assert.Equal(ImPlotLocation.NorthWest, combined);
+        }
+
+        /// <summary>
+        ///     Verifies that SouthEast is the combination of South and East.
+        /// </summary>
+        [Fact]
+        public void SouthEast_ShouldBeCombinationOfSouthAndEast()
+        {
+            ImPlotLocation combined = ImPlotLocation.South | ImPlotLocation.East;
+            Assert.Equal(ImPlotLocation.SouthEast, combined);
+        }
+
+        /// <summary>
+        ///     Verifies that all enum values are unique.
+        /// </summary>
+        [Fact]
+        public void Values_ShouldBeUnique()
+        {
+            ImPlotLocation[] values = (ImPlotLocation[])Enum.GetValues(typeof(ImPlotLocation));
+            int[] intValues = Array.ConvertAll(values, v => (int)v);
+
+            int[] uniqueValues = intValues.Distinct().ToArray();
+            Assert.Equal(intValues.Length, uniqueValues.Length);
         }
     }
 }
