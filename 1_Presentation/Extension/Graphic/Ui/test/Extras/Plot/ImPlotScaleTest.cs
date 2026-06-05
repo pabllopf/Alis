@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Xunit;
 
@@ -38,26 +39,70 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
     public class ImPlotScaleTest
     {
         /// <summary>
-        ///     Verifies that scale values are defined.
+        ///     Verifies that Linear has the expected value of 0.
         /// </summary>
         [Fact]
-        public void Linear_ShouldBeDefined()
+        public void Linear_ShouldHaveCorrectValue()
         {
             ImPlotScale scale = ImPlotScale.Linear;
-            Assert.Equal(0, (int) scale);
+            Assert.Equal(0, (int)scale);
         }
 
-
         /// <summary>
-        ///     Verifies that different scale types have distinct values.
+        ///     Verifies that Time has the expected value of 1.
         /// </summary>
         [Fact]
-        public void EnumValues_ShouldBeDistinct()
+        public void Time_ShouldHaveCorrectValue()
         {
-            ImPlotScale linear = ImPlotScale.Linear;
-            ImPlotScale log10 = ImPlotScale.Log10;
+            ImPlotScale scale = ImPlotScale.Time;
+            Assert.Equal(1, (int)scale);
+        }
 
-            Assert.NotEqual((int) linear, (int) log10);
+        /// <summary>
+        ///     Verifies that Log10 has the expected value of 2.
+        /// </summary>
+        [Fact]
+        public void Log10_ShouldHaveCorrectValue()
+        {
+            ImPlotScale scale = ImPlotScale.Log10;
+            Assert.Equal(2, (int)scale);
+        }
+
+        /// <summary>
+        ///     Verifies that SymLog has the expected value of 3.
+        /// </summary>
+        [Fact]
+        public void SymLog_ShouldHaveCorrectValue()
+        {
+            ImPlotScale scale = ImPlotScale.SymLog;
+            Assert.Equal(3, (int)scale);
+        }
+
+        /// <summary>
+        ///     Verifies that all enum values are sequential from 0 to SymLog.
+        /// </summary>
+        [Fact]
+        public void Values_ShouldBeSequential()
+        {
+            ImPlotScale[] values = (ImPlotScale[])Enum.GetValues(typeof(ImPlotScale));
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                Assert.Equal(i, (int)values[i]);
+            }
+        }
+
+        /// <summary>
+        ///     Verifies that all enum values are unique.
+        /// </summary>
+        [Fact]
+        public void Values_ShouldBeUnique()
+        {
+            ImPlotScale[] values = (ImPlotScale[])Enum.GetValues(typeof(ImPlotScale));
+            int[] intValues = Array.ConvertAll(values, v => (int)v);
+
+            int[] uniqueValues = intValues.Distinct().ToArray();
+            Assert.Equal(intValues.Length, uniqueValues.Length);
         }
     }
 }
