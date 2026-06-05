@@ -243,5 +243,191 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             Assert.NotNull(callback);
         }
+        /// <summary>
+        ///     Tests that char mods callback can be instantiated
+        /// </summary>
+        [Fact]
+        public void CharModsCallback_CanBeInstantiated()
+        {
+            CharModsCallback callback = (window, codePoint, mods) => { };
+
+            Assert.NotNull(callback);
+        }
+
+        /// <summary>
+        ///     Tests that char mods callback can be invoked
+        /// </summary>
+        [Fact]
+        public void CharModsCallback_CanBeInvoked()
+        {
+            uint receivedCodePoint = 0;
+            CharModsCallback callback = (window, codePoint, mods) => { receivedCodePoint = codePoint; };
+
+            callback(Window.None, 65, ModifierKeys.None);
+
+            Assert.Equal(65u, receivedCodePoint);
+        }
+
+        /// <summary>
+        ///     Tests that focus callback can be instantiated
+        /// </summary>
+        [Fact]
+        public void FocusCallback_CanBeInstantiated()
+        {
+            FocusCallback callback = (window, focusing) => { };
+
+            Assert.NotNull(callback);
+        }
+
+        /// <summary>
+        ///     Tests that focus callback can be invoked
+        /// </summary>
+        [Fact]
+        public void FocusCallback_CanBeInvoked()
+        {
+            bool receivedFocusing = false;
+            FocusCallback callback = (window, focusing) => { receivedFocusing = focusing; };
+
+            callback(Window.None, true);
+
+            Assert.True(receivedFocusing);
+        }
+
+        /// <summary>
+        ///     Tests that iconify callback can be instantiated
+        /// </summary>
+        [Fact]
+        public void IconifyCallback_CanBeInstantiated()
+        {
+            IconifyCallback callback = (window, focusing) => { };
+
+            Assert.NotNull(callback);
+        }
+
+        /// <summary>
+        ///     Tests that iconify callback can be invoked
+        /// </summary>
+        [Fact]
+        public void IconifyCallback_CanBeInvoked()
+        {
+            bool receivedIconified = false;
+            IconifyCallback callback = (window, iconified) => { receivedIconified = iconified; };
+
+            callback(System.IntPtr.Zero, true);
+
+            Assert.True(receivedIconified);
+        }
+
+        /// <summary>
+        ///     Tests that mouse enter callback can be instantiated
+        /// </summary>
+        [Fact]
+        public void MouseEnterCallback_CanBeInstantiated()
+        {
+            MouseEnterCallback callback = (window, entering) => { };
+
+            Assert.NotNull(callback);
+        }
+
+        /// <summary>
+        ///     Tests that mouse enter callback can be invoked
+        /// </summary>
+        [Fact]
+        public void MouseEnterCallback_CanBeInvoked()
+        {
+            bool receivedEntering = false;
+            MouseEnterCallback callback = (window, entering) => { receivedEntering = entering; };
+
+            callback(Window.None, true);
+
+            Assert.True(receivedEntering);
+        }
+
+        /// <summary>
+        ///     Tests that position callback can be instantiated
+        /// </summary>
+        [Fact]
+        public void PositionCallback_CanBeInstantiated()
+        {
+            PositionCallback callback = (window, x, y) => { };
+
+            Assert.NotNull(callback);
+        }
+
+        /// <summary>
+        ///     Tests that position callback can be invoked
+        /// </summary>
+        [Fact]
+        public void PositionCallback_CanBeInvoked()
+        {
+            double receivedX = 0;
+            double receivedY = 0;
+            PositionCallback callback = (window, x, y) =>
+            {
+                receivedX = x;
+                receivedY = y;
+            };
+
+            callback(Window.None, 300.5, 400.7);
+
+            Assert.Equal(300.5, receivedX);
+            Assert.Equal(400.7, receivedY);
+        }
+
+        /// <summary>
+        ///     Tests that window contents scale callback can be instantiated
+        /// </summary>
+        [Fact]
+        public void WindowContentsScaleCallback_CanBeInstantiated()
+        {
+            WindowContentsScaleCallback callback = (window, xScale, yScale) => { };
+
+            Assert.NotNull(callback);
+        }
+
+        /// <summary>
+        ///     Tests that window contents scale callback can be invoked
+        /// </summary>
+        [Fact]
+        public void WindowContentsScaleCallback_CanBeInvoked()
+        {
+            float receivedXScale = 0;
+            float receivedYScale = 0;
+            WindowContentsScaleCallback callback = (window, xScale, yScale) =>
+            {
+                receivedXScale = xScale;
+                receivedYScale = yScale;
+            };
+
+            callback(Window.None, 1.5f, 2.0f);
+
+            Assert.Equal(1.5f, receivedXScale);
+            Assert.Equal(2.0f, receivedYScale);
+        }
+
+        /// <summary>
+        ///     Tests that window maximized callback can be instantiated
+        /// </summary>
+        [Fact]
+        public void WindowMaximizedCallback_CanBeInstantiated()
+        {
+            WindowMaximizedCallback callback = (window, maximized) => { };
+
+            Assert.NotNull(callback);
+        }
+
+        /// <summary>
+        ///     Tests that window maximized callback can be invoked
+        /// </summary>
+        [Fact]
+        public void WindowMaximizedCallback_CanBeInvoked()
+        {
+            bool receivedMaximized = false;
+            WindowMaximizedCallback callback = (window, maximized) => { receivedMaximized = maximized; };
+
+            callback(Window.None, true);
+
+            Assert.True(receivedMaximized);
+        }
     }
 }
