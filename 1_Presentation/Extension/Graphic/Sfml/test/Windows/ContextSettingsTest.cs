@@ -66,5 +66,21 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(2u, cs.MajorVersion);
             Assert.Equal(0u, cs.MinorVersion);
         }
+
+        /// <summary>
+        ///     Tests the 7-parameter constructor with all values.
+        /// </summary>
+        [Fact]
+        public void Constructor_SevenParams_AssignsAllFields()
+        {
+            ContextSettings cs = new ContextSettings(32, 8, 8, 4, 5, ContextSettings.Attributes.Core | ContextSettings.Attributes.Debug, true);
+            Assert.Equal(32u, cs.DepthBits);
+            Assert.Equal(8u, cs.StencilBits);
+            Assert.Equal(8u, cs.AntialiasingLevel);
+            Assert.Equal(4u, cs.MajorVersion);
+            Assert.Equal(5u, cs.MinorVersion);
+            Assert.Equal(ContextSettings.Attributes.Core | ContextSettings.Attributes.Debug, cs.AttributeFlags);
+            Assert.True(cs.SRgbCapable);
+        }
     }
 }
