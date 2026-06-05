@@ -49,5 +49,19 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(3.0f, v.Z);
             Assert.Equal(4.0f, v.W);
         }
+
+        /// <summary>
+        ///     Tests the constructor from Color normalizes byte values to 0..1 range.
+        /// </summary>
+        [Fact]
+        public void Constructor_FromColor_NormalizesComponents()
+        {
+            Color color = new Color(128, 64, 32, 255);
+            Vec4 v = new Vec4(color);
+            Assert.Equal(128.0f / 255.0f, v.X);
+            Assert.Equal(64.0f / 255.0f, v.Y);
+            Assert.Equal(32.0f / 255.0f, v.Z);
+            Assert.Equal(255.0f / 255.0f, v.W);
+        }
     }
 }
