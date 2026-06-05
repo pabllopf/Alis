@@ -61,7 +61,10 @@ def release_issue(issue_key, status, worker_id, message="", category="bugs"):
             state["failedIssues"].append(issue_key)
     
     state["lastUpdate"] = datetime.now(timezone.utc).isoformat()
-    state["remainingIssues"] = max(0, state.get("totalIssues", len(state["processedIssues"]) + len(state.get("failedIssues", [])))
+    total = state.get("totalIssues", 0)
+    processed_count = len(state.get("processedIssues", []))
+    failed_count = len(state.get("failedIssues", []))
+    state["remainingIssues"] = max(0, total - processed_count - failed_count)
     
     with open(STATE_PATH, 'w') as f:
         json.dump(state, f, indent=2)

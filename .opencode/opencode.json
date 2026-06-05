@@ -5,7 +5,7 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/Qwen3.5-35B-A3B-4bit",
+  "model": "omlx/Qwen3.6-35B-A3B-NSC-ACE-SABER-4bit-MTPLX-Optimized-Speed",
 
   "provider": {
     "omlx": {
@@ -16,13 +16,20 @@
         "apiKey": "1234"
       },
       "models": {
-        "Qwen3.5-35B-A3B-4bit": {
-          "name": "Qwen3.5-35B-A3B-4bit",
+        "Qwen3.6-35B-A3B-NSC-ACE-SABER-4bit-MTPLX-Optimized-Speed": {
+          "name": "Qwen3.6-35B-A3B-NSC-ACE-SABER-4bit-MTPLX-Optimized-Speed",
           "modalities": {
             "input": ["text"],
             "output": ["text"]
           },
-          "attachment": false
+          "attachment": false,
+
+          "maxInputTokens": 65792,
+          "maxOutputTokens": 65792,
+          "limit": {
+            "context": 65792,
+            "output": 65792
+          }
         }
       }
     }

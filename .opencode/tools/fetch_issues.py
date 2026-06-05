@@ -22,7 +22,7 @@ all_issues = []
 if category == "bugs":
     type_filter = "BUG"
 elif category == "security":
-    type_filter = "SECURITY_HOTSPOT"
+    type_filter = "VULNERABILITY"
 else:
     type_filter = "CODE_SMELL"
 
@@ -59,23 +59,24 @@ snapshot_key = "issues" if category == "bugs" else "hotspots"
 with open(os.path.join(cache_dir, "sonar_issues_snapshot.json"), "w") as f:
     json.dump({snapshot_key: all_issues}, f, indent=2)
 
-# Build index
-index = {}
+# Build index (list format for worker_claim.py)
+index = {"issues": []}
 for issue in all_issues:
     key = issue.get("key")
     if key:
-        index[key] = {
+        index["issues"].append({
+            "key": key,
             "ruleKey": issue.get("rule") or issue.get("ruleKey"),
             "file": issue.get("component"),
             "line": issue.get("line"),
             "severity": issue.get("severity"),
-            "status": "open",
+            "status": "OPEN",
             "assignedWorker": None,
             "lockedAt": None,
             "completedAt": None,
             "attemptCount": 0,
             "message": issue.get("message")
-        }
+        })
 
 with open(os.path.join(cache_dir, "sonar_issues_index.json"), "w") as f:
     json.dump(index, f, indent=2)
