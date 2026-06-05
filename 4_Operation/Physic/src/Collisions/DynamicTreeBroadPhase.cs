@@ -254,25 +254,21 @@ namespace Alis.Core.Physic.Collisions
             Array.Sort(_pairBuffer, 0, _pairCount);
 
             // Send the pairs back to the client.
-            int i = 0;
-
-            while (i < _pairCount)
+            for (int i = 0; i < _pairCount; ++i)
             {
                 Pair primaryPair = _pairBuffer[i];
 
                 callback(primaryPair.ProxyIdA, primaryPair.ProxyIdB);
-                ++i;
 
                 // Skip any duplicate pairs.
-                while (i < _pairCount)
+                Pair pair = default;
+                while (++i < _pairCount)
                 {
-                    Pair pair = _pairBuffer[i];
+                    pair = _pairBuffer[i];
                     if (pair.ProxyIdA != primaryPair.ProxyIdA || pair.ProxyIdB != primaryPair.ProxyIdB)
                     {
                         break;
                     }
-
-                    ++i;
                 }
             }
         }
