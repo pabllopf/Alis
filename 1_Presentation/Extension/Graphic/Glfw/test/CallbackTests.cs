@@ -212,6 +212,20 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
+        ///     Tests that error callback can be invoked
+        /// </summary>
+        [Fact]
+        public void ErrorCallback_CanBeInvoked()
+        {
+            ErrorCode receivedCode = ErrorCode.Unknown;
+            ErrorCallback callback = (errorCode, description) => { receivedCode = errorCode; };
+
+            callback(ErrorCode.Unknown, System.IntPtr.Zero);
+
+            Assert.Equal(ErrorCode.Unknown, receivedCode);
+        }
+
+        /// <summary>
         ///     Tests that file drop callback can be instantiated
         /// </summary>
         [Fact]
