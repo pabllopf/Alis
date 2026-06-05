@@ -82,5 +82,21 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(ContextSettings.Attributes.Core | ContextSettings.Attributes.Debug, cs.AttributeFlags);
             Assert.True(cs.SRgbCapable);
         }
+
+        /// <summary>
+        ///     Tests ToString includes component names.
+        /// </summary>
+        [Fact]
+        public void ToString_IncludesComponentNames()
+        {
+            ContextSettings cs = new ContextSettings(24, 8);
+            string str = cs.ToString();
+            Assert.Contains("DepthBits", str);
+            Assert.Contains("StencilBits", str);
+            Assert.Contains("AntialiasingLevel", str);
+            Assert.Contains("MajorVersion", str);
+            Assert.Contains("MinorVersion", str);
+            Assert.Contains("AttributeFlags", str);
+        }
     }
 }
