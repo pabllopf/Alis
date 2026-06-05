@@ -33,52 +33,151 @@ using Xunit;
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
     /// <summary>
-    ///     The im plot range test class
+    ///     Provides unit coverage for <see cref="ImPlotRange" /> struct.
     /// </summary>
     public class ImPlotRangeTest
     {
         /// <summary>
-        ///     Tests that min should be initialized
+        ///     Tests that Min and Max should be initialized correctly.
         /// </summary>
         [Fact]
-        public void Min_ShouldBeInitialized()
+        public void MinAndMax_ShouldBeInitializedCorrectly()
         {
-            ImPlotRange range = new ImPlotRange();
-            Assert.Equal(default(double), range.Min);
+            ImPlotRange range = new ImPlotRange { Min = 0.0, Max = 100.0 };
+
+            Assert.Equal(0.0, range.Min);
+            Assert.Equal(100.0, range.Max);
         }
 
         /// <summary>
-        ///     Tests that max should be initialized
+        ///     Tests that Min should be set correctly.
         /// </summary>
         [Fact]
-        public void Max_ShouldBeInitialized()
+        public void Min_ShouldBeSetCorrectly()
         {
-            ImPlotRange range = new ImPlotRange();
-            Assert.Equal(default(double), range.Max);
+            ImPlotRange range = new ImPlotRange { Min = -50.5, Max = 100.0 };
+
+            Assert.Equal(-50.5, range.Min);
         }
 
         /// <summary>
-        ///     Tests that min should set and get correctly
+        ///     Tests that Max should be set correctly.
         /// </summary>
         [Fact]
-        public void Min_Should_SetAndGetCorrectly()
+        public void Max_ShouldBeSetCorrectly()
         {
-            ImPlotRange range = new ImPlotRange();
-            double value = 10.0;
-            range.Min = value;
-            Assert.Equal(value, range.Min);
+            ImPlotRange range = new ImPlotRange { Min = 0.0, Max = 999.99 };
+
+            Assert.Equal(999.99, range.Max);
         }
 
         /// <summary>
-        ///     Tests that max should set and get correctly
+        ///     Tests that Min and Max can be modified after initialization.
         /// </summary>
         [Fact]
-        public void Max_Should_SetAndGetCorrectly()
+        public void MinAndMax_ShouldBeModifiable()
+        {
+            ImPlotRange range = new ImPlotRange { Min = 0.0, Max = 100.0 };
+
+            range.Min = -100.0;
+            range.Max = 200.0;
+
+            Assert.Equal(-100.0, range.Min);
+            Assert.Equal(200.0, range.Max);
+        }
+
+        /// <summary>
+        ///     Tests that default struct initialization sets Min and Max to 0.
+        /// </summary>
+        [Fact]
+        public void DefaultInitialization_ShouldSetMinAndMaxToZero()
         {
             ImPlotRange range = new ImPlotRange();
-            double value = 20.0;
-            range.Max = value;
-            Assert.Equal(value, range.Max);
+
+            Assert.Equal(0.0, range.Min);
+            Assert.Equal(0.0, range.Max);
+        }
+
+        /// <summary>
+        ///     Tests that Min should be less than Max for valid range.
+        /// </summary>
+        [Fact]
+        public void ValidRange_ShouldHaveMinLessThanMax()
+        {
+            ImPlotRange range = new ImPlotRange { Min = 10.0, Max = 20.0 };
+
+            Assert.True(range.Min < range.Max);
+        }
+
+        /// <summary>
+        ///     Tests that Min can equal Max for zero-width range.
+        /// </summary>
+        [Fact]
+        public void ZeroWidthRange_ShouldAllowMinEqualToMax()
+        {
+            ImPlotRange range = new ImPlotRange { Min = 50.0, Max = 50.0 };
+
+            Assert.Equal(50.0, range.Min);
+            Assert.Equal(50.0, range.Max);
+            Assert.Equal(range.Min, range.Max);
+        }
+
+        /// <summary>
+        ///     Tests that negative values can be used for Min and Max.
+        /// </summary>
+        [Fact]
+        public void NegativeValues_ShouldBeSupported()
+        {
+            ImPlotRange range = new ImPlotRange { Min = -1000.0, Max = -500.0 };
+
+            Assert.Equal(-1000.0, range.Min);
+            Assert.Equal(-500.0, range.Max);
+        }
+
+        /// <summary>
+        ///     Tests that struct equality works correctly.
+        /// </summary>
+        [Fact]
+        public void Equality_ShouldWorkCorrectly()
+        {
+            ImPlotRange range1 = new ImPlotRange { Min = 0.0, Max = 100.0 };
+            ImPlotRange range2 = new ImPlotRange { Min = 0.0, Max = 100.0 };
+            ImPlotRange range3 = new ImPlotRange { Min = 0.0, Max = 200.0 };
+
+            Assert.Equal(range1, range2);
+            Assert.NotEqual(range1, range3);
+        }
+
+        /// <summary>
+        ///     Tests that large double values are supported.
+        /// </summary>
+        [Fact]
+        public void LargeDoubleValues_ShouldBeSupported()
+        {
+            ImPlotRange range = new ImPlotRange 
+            { 
+                Min = double.MinValue, 
+                Max = double.MaxValue 
+            };
+
+            Assert.Equal(double.MinValue, range.Min);
+            Assert.Equal(double.MaxValue, range.Max);
+        }
+
+        /// <summary>
+        ///     Tests that small double values are supported.
+        /// </summary>
+        [Fact]
+        public void SmallDoubleValues_ShouldBeSupported()
+        {
+            ImPlotRange range = new ImPlotRange 
+            { 
+                Min = double.NegativeInfinity, 
+                Max = double.PositiveInfinity 
+            };
+
+            Assert.Equal(double.NegativeInfinity, range.Min);
+            Assert.Equal(double.PositiveInfinity, range.Max);
         }
     }
 }
