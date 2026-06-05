@@ -52,5 +52,19 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(ContextSettings.Attributes.None, cs.AttributeFlags);
             Assert.False(cs.SRgbCapable);
         }
+
+        /// <summary>
+        ///     Tests the 3-parameter constructor with antialiasing.
+        /// </summary>
+        [Fact]
+        public void Constructor_ThreeParams_AssignsFields()
+        {
+            ContextSettings cs = new ContextSettings(24, 8, 4);
+            Assert.Equal(24u, cs.DepthBits);
+            Assert.Equal(8u, cs.StencilBits);
+            Assert.Equal(4u, cs.AntialiasingLevel);
+            Assert.Equal(2u, cs.MajorVersion);
+            Assert.Equal(0u, cs.MinorVersion);
+        }
     }
 }
