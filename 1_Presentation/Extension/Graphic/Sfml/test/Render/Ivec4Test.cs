@@ -49,5 +49,19 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(3, v.Z);
             Assert.Equal(4, v.W);
         }
+
+        /// <summary>
+        ///     Tests the constructor from Color copies byte components directly.
+        /// </summary>
+        [Fact]
+        public void Constructor_FromColor_CopiesComponents()
+        {
+            Color color = new Color(10, 20, 30, 40);
+            Ivec4 v = new Ivec4(color);
+            Assert.Equal(10, v.X);
+            Assert.Equal(20, v.Y);
+            Assert.Equal(30, v.Z);
+            Assert.Equal(40, v.W);
+        }
     }
 }
