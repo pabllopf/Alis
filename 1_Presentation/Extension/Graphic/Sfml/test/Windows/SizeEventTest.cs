@@ -47,5 +47,30 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0u, e.Width);
             Assert.Equal(0u, e.Height);
         }
+
+        /// <summary>
+        ///     Tests SizeEventArgs constructor sets properties from SizeEvent.
+        /// </summary>
+        [Fact]
+        public void SizeEventArgs_Constructor_SetsProperties()
+        {
+            SizeEvent e = new SizeEvent { Width = 800, Height = 600 };
+            SizeEventArgs args = new SizeEventArgs(e);
+            Assert.Equal(800u, args.Width);
+            Assert.Equal(600u, args.Height);
+        }
+
+        /// <summary>
+        ///     Tests SizeEventArgs ToString includes property names.
+        /// </summary>
+        [Fact]
+        public void SizeEventArgs_ToString_IncludesPropertyNames()
+        {
+            SizeEvent e = new SizeEvent { Width = 1024, Height = 768 };
+            SizeEventArgs args = new SizeEventArgs(e);
+            string str = args.ToString();
+            Assert.Contains("Width", str);
+            Assert.Contains("Height", str);
+        }
     }
 }
