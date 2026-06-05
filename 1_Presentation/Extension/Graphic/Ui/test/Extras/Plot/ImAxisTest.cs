@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Xunit;
 
@@ -38,18 +39,87 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
     public class ImAxisTest
     {
         /// <summary>
-        ///     Verifies that different axes have distinct identifiers.
+        ///     Verifies that X1 has the expected value of 0.
         /// </summary>
         [Fact]
-        public void EnumValues_ShouldBeDistinct()
+        public void X1_ShouldHaveCorrectValue()
         {
-            ImAxis x = ImAxis.X1;
-            ImAxis y = ImAxis.Y1;
-            ImAxis y2 = ImAxis.Y2;
+            ImAxis axis = ImAxis.X1;
+            Assert.Equal(0, (int)axis);
+        }
 
-            Assert.NotEqual((int) x, (int) y);
-            Assert.NotEqual((int) y, (int) y2);
-            Assert.NotEqual((int) x, (int) y2);
+        /// <summary>
+        ///     Verifies that X2 has the expected value of 1.
+        /// </summary>
+        [Fact]
+        public void X2_ShouldHaveCorrectValue()
+        {
+            ImAxis axis = ImAxis.X2;
+            Assert.Equal(1, (int)axis);
+        }
+
+        /// <summary>
+        ///     Verifies that X3 has the expected value of 2.
+        /// </summary>
+        [Fact]
+        public void X3_ShouldHaveCorrectValue()
+        {
+            ImAxis axis = ImAxis.X3;
+            Assert.Equal(2, (int)axis);
+        }
+
+        /// <summary>
+        ///     Verifies that Y1 has the expected value of 3.
+        /// </summary>
+        [Fact]
+        public void Y1_ShouldHaveCorrectValue()
+        {
+            ImAxis axis = ImAxis.Y1;
+            Assert.Equal(3, (int)axis);
+        }
+
+        /// <summary>
+        ///     Verifies that Y2 has the expected value of 4.
+        /// </summary>
+        [Fact]
+        public void Y2_ShouldHaveCorrectValue()
+        {
+            ImAxis axis = ImAxis.Y2;
+            Assert.Equal(4, (int)axis);
+        }
+
+        /// <summary>
+        ///     Verifies that Y3 has the expected value of 5.
+        /// </summary>
+        [Fact]
+        public void Y3_ShouldHaveCorrectValue()
+        {
+            ImAxis axis = ImAxis.Y3;
+            Assert.Equal(5, (int)axis);
+        }
+
+        /// <summary>
+        ///     Verifies that Count has the expected value of 6.
+        /// </summary>
+        [Fact]
+        public void Count_ShouldHaveCorrectValue()
+        {
+            ImAxis axis = ImAxis.Count;
+            Assert.Equal(6, (int)axis);
+        }
+
+        /// <summary>
+        ///     Verifies that all enum values are sequential from 0 to Count.
+        /// </summary>
+        [Fact]
+        public void Values_ShouldBeSequential()
+        {
+            ImAxis[] values = (ImAxis[])Enum.GetValues(typeof(ImAxis));
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                Assert.Equal(i, (int)values[i]);
+            }
         }
     }
 }
