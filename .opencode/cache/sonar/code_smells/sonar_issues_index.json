@@ -71,9 +71,9 @@
       "file": "pabllopf-official_alis:4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs",
       "line": 148,
       "severity": "CRITICAL",
-      "status": "OPEN",
-      "assignedWorker": null,
-      "lockedAt": null,
+      "status": "in_progress",
+      "assignedWorker": "worker-mac-1",
+      "lockedAt": "2026-06-08T08:33:54.594507+00:00",
       "completedAt": null,
       "attemptCount": 0,
       "message": "Remove this unread private class field 'CellHeight' or refactor the code to use its value."

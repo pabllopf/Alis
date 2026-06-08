@@ -175,8 +175,8 @@ namespace Alis.Core.Physic.Common.TextureTools
 
             for (int y = 0; y < yn; y++)
             {
-                float y0 = y * cellHeight + domain.LowerBound.Y;
-                float y1 = y == yn - 1 ? domain.UpperBound.Y : y0 + cellHeight;
+                float y0 = y * ctx.CellHeight + domain.LowerBound.Y;
+                float y1 = y == yn - 1 ? domain.UpperBound.Y : y0 + ctx.CellHeight;
 
                 GeomPoly pre = null;
                 for (int x = 0; x < xn; x++)
