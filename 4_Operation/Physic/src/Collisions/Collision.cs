@@ -1013,7 +1013,7 @@ namespace Alis.Core.Physic.Collisions
             /// <summary>
             ///     Builds the manifold points from the clipped results.
             /// </summary>
-            private static int BuildManifoldPoints(ref Manifold manifold, ref FixedArray2<ClipVertex> clipPoints2,
+            private static void BuildManifoldPoints(ref Manifold manifold, ref FixedArray2<ClipVertex> clipPoints2,
                 ref ReferenceFace rf, ref ControllerTransform xf, float radius, EpAxis primaryAxis)
             {
                 int pointCount = 0;
@@ -1045,7 +1045,6 @@ namespace Alis.Core.Physic.Collisions
                 }
 
                 manifold.PointCount = pointCount;
-                return pointCount;
             }
 
             /// <summary>
