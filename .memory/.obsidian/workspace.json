@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "glossary/entity-component-system-ecs.md",
+                "file": "ChunkTuple.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "entity-component-system-ecs"
+              "title": "ChunkTuple"
             }
           }
         ]
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "glossary/entity-component-system-ecs.md",
+                "file": "ChunkTuple.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de entity-component-system-ecs"
+              "title": "Enlaces entrantes de ChunkTuple"
             }
           },
           {
@@ -124,12 +124,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "glossary/entity-component-system-ecs.md",
+                "file": "ChunkTuple.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de entity-component-system-ecs"
+              "title": "Enlaces salientes de ChunkTuple"
             }
           },
           {
@@ -167,13 +167,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "glossary/entity-component-system-ecs.md",
+                "file": "ChunkTuple.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de entity-component-system-ecs"
+              "title": "Esquema de ChunkTuple"
             }
           }
         ]
@@ -199,33 +199,33 @@
   },
   "active": "847c078068ae35c5",
   "lastOpenFiles": [
-    "glossary/component.md",
-    "glossary/scene.md",
-    "glossary/gameobject.md",
-    "glossary/index.md",
     "glossary/entity-component-system-ecs.md",
+    "ChunkTuple.md",
+    "glossary/index.md",
+    "glossary/fluent-interface.md",
+    "glossary/event-t.md",
+    "glossary/gameobject-flags.md",
+    "glossary/ref-t.md",
+    "glossary/memory-management.md",
+    "glossary/rule.md",
+    "glossary/fastest-table.md",
+    "glossary/fastest-stack.md",
+    "glossary/chunk-tuple.md",
+    "glossary/component-storage.md",
+    "glossary/terms.md",
+    "glossary/query.md",
+    "glossary/scene.md",
+    "glossary/archetype.md",
+    "glossary/layer-dependency-order.md",
+    "glossary/component.md",
+    "glossary/system.md",
+    "glossary/gameobject.md",
     "GameObject.md",
     "testing/analysis.md",
     "index.md",
     "alis.samples.slnx.md",
     "alis.slnx.md",
-    "log.md",
-    "schema.md",
-    "onboarding/getting-started.md",
-    "Obsidian.md",
     "Sin título.canvas",
-    "security/security-overview.md",
-    "security/analysis.md",
-    "prompts/code-review-checklist.md",
-    "prompts/conversation-starters.md",
-    "prompts/ai-context.md",
-    "projects/5_Declaration/Aspect.md",
-    "projects/5_Declaration/Core.md",
-    "projects/5_Declaration/Alis.Core.Data.md",
-    "projects/5_Declaration/Alis.Core.Log.md",
-    "projects/6_Ideation/Data/Alis.Core.Aspect.Data.md",
-    "architecture/repository-overview.md",
-    "glossary/terms.md",
     "context",
     "projects/1_Presentation/Extension/Math/ProceduralDungeon",
     "projects/1_Presentation/Extension/Math/HighSpeedPriorityQueue",
