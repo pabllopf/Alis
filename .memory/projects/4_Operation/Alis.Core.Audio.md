@@ -1,67 +1,142 @@
-# Audio Project Documentation
+# Alis.Core.Audio
 
-## Alis.Core.Audio - Audio System
+## Overview
 
-### Purpose
-Cross-platform audio playback system providing unified audio API across Windows, Linux, macOS, and browser platforms. Handles audio file playback, looping, volume control, and playback events.
+The **Alis.Core.Audio** project provides cross-platform audio playback capabilities for the ALIS game engine. It implements a platform-agnostic player pattern that automatically selects the appropriate audio implementation based on the target operating system.
 
-### Dependencies
-- **Alis.Core**: Base abstractions
-- **Alis.Core.Aspect.Memory**: Memory aspects for cross-platform detection
-- **System.Timers**: Timer-based playback tracking on Windows
+## Purpose
 
-### Key Components
+- Abstract audio playback across Windows, macOS, Linux, and Web platforms
+- Provide a unified API for playing, pausing, resuming, and stopping audio
+- Support looped and non-looped audio playback
+- Handle volume control with percentage-based scaling
 
-#### Core Types
-- **Player**: Main audio player class implementing IPlayer interface
-- **IPlayer**: Audio playback interface with Play, Pause, Resume, Stop methods
-- **Platform-specific Players**: LinuxPlayer, WindowsPlayer, MacPlayer, BrowserPlayer
+## Architecture
 
-#### Platform Abstraction
-- **UnixPlayerBase**: Base class for Unix-like systems (Linux, macOS)
-- **LinuxPlayer**: Uses aplay/mpg123 for audio playback on Linux
-- **MacPlayer**: Uses afplay for audio playback on macOS
-- **WindowsPlayer**: Uses Windows API with Timer-based playback tracking
-- **BrowserPlayer**: Web platform audio implementation
+### Player Pattern
 
-#### Features
-- **Async Playback**: Asynchronous Play() and PlayLoop() methods
-- **Event Handling**: PlaybackFinished event for completion notifications
-- **Volume Control**: SetVolume(byte percent) with validation
-- **Cross-platform**: Automatic OS detection and platform-specific implementation
-- **File Format Support**: WAV, MP3, and common audio formats
+The `Player` class implements the [IPlayer](Interfaces/IPlayer.md) interface and acts as a facade that delegates to platform-specific implementations:
 
-### Data Access
-- File path handling (absolute and relative paths)
-- Platform-specific audio backend integration
-- Process-based audio execution on Unix systems
+| Platform | Implementation | File |
+|----------|---------------|------|
+| Windows | `WindowsPlayer` | Players/WindowsPlayer.cs |
+| macOS | `MacPlayer` | Players/MacPlayer.cs |
+| Linux | `LinuxPlayer` | Players/LinuxPlayer.cs |
+| WebAssembly | `BrowserPlayer` (WebPlayer) | Players/BrowserPlayer.cs |
+| Unix-based | `UnixPlayerBase` | Players/UnixPlayerBase.cs |
 
-### Messaging Usage
-- PlaybackFinished event for completion handling
-- Event-based architecture for audio lifecycle management
+### Platform Detection
 
-### Testing Status
-- **Unit Tests**: Partial - needs expansion
-- **Integration Tests**: Sample programs demonstrate usage
-- **Coverage**: Needs improvement in edge cases and error handling
+The `CheckOs()` method uses conditional compilation to select the appropriate player:
 
-### Risks
-1. **Platform Compatibility**: Heavy reliance on platform-specific tools (aplay, mpg123, afplay)
-2. **Resource Management**: WindowsPlayer implements IDisposable but needs careful resource cleanup
-3. **Thread Safety**: Async operations may have race conditions in multi-threaded scenarios
-4. **File Path Handling**: Cross-platform path separators and encoding issues
+```csharp
+#if osxarm64 || osxarm || osxx64 || osx
+    return new MacPlayer();
+#elif winx64 || winx86 || winarm64 || winarm || win
+    return new WindowsPlayer();
+#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
+    return new LinuxPlayer();
+#elif webassembly || browser
+    return new WebPlayer();
+#endif
+```
 
-### TODOs
-- [ ] Expand test coverage to 80%+
-- [ ] Add integration tests for all platforms
-- [ ] Improve error handling and validation
-- [ ] Add support for more audio formats
-- [ ] Create comprehensive sample applications
+## Public API
 
-### Complexity Observations
-- **Medium**: Platform abstraction layer adds complexity
-- **Cross-platform**: Different audio backends per platform
-- **Performance**: Generally good, but platform-specific optimizations needed
+### IPlayer Interface
 
-### Quality Plan
-See [[4_Operation/Audio/QualityPlan]] for improvement goals and tracking.
+```csharp
+public interface IPlayer
+{
+    bool Playing { get; }
+    bool Paused { get; }
+    event EventHandler PlaybackFinished;
+    
+    Task Play(string fileName);
+    Task PlayLoop(string fileName, bool loop);
+    Task Pause();
+    Task Resume();
+    Task Stop();
+    Task SetVolume(byte percent);
+}
+```
+
+### Player Class
+
+Main entry point for audio playback:
+
+- **`Play(string fileName)`** - Play audio file asynchronously
+- **`PlayLoop(string fileName, bool loop)`** - Loop audio playback
+- **`Pause()`** - Pause current playback
+- **`Resume()`** - Resume paused playback
+- **`Stop()`** - Stop and clear buffer
+- **`SetVolume(byte percent)`** - Set volume 0-100%
+
+## Files
+
+| File | Lines | Description |
+|------|-------|-------------|
+| Player.cs | 161 | Main player facade |
+| BrowserPlayer.cs | - | WebAssembly implementation |
+| LinuxPlayer.cs | - | Linux implementation |
+| MacPlayer.cs | - | macOS implementation |
+| WindowsPlayer.cs | - | Windows implementation |
+| UnixPlayerBase.cs | - | Base class for Unix players |
+| OpenAL.cs | - | OpenAL wrapper (if used) |
+
+## Dependencies
+
+- **Alis.Core** - Core engine functionality
+- Platform-specific APIs:
+  - Windows: DirectSound/XAudio2
+  - macOS: AVFoundation/AudioUnit
+  - Linux: ALSA/PulseAudio
+  - Web: Web Audio API
+
+## Quality Plan
+
+See [QualityPlan.md](QualityPlan.md) for performance and reliability goals.
+
+## Usage Example
+
+```csharp
+using Alis.Core.Audio;
+
+var player = new Player();
+await player.Play("sounds/background.mp3");
+await player.SetVolume(75);
+
+// Loop music
+await player.PlayLoop("sounds/theme.mp3", true);
+
+// Control playback
+await player.Pause();
+await player.Resume();
+await player.Stop();
+```
+
+## Events
+
+- **`PlaybackFinished`** - Fired when audio playback completes
+
+## Platform Support
+
+| Platform | Status | Implementation |
+|----------|--------|---------------|
+| Windows | ✅ Full | WindowsPlayer |
+| macOS | ✅ Full | MacPlayer |
+| Linux | ✅ Full | LinuxPlayer |
+| WebAssembly | ✅ Full | BrowserPlayer |
+
+## TODOs
+
+- [ ] Add audio effect support (reverb, echo, etc.)
+- [ ] Implement 3D spatial audio
+- [ ] Add audio streaming for large files
+- [ ] Optimize buffer management for real-time audio
+
+## Related Projects
+
+- [[Alis.Core.Graphic]] - Visual synchronization
+- [[Alis.Core.Ecs]] - Audio system integration
+- [[Alis.Core.Resource]] - Audio asset loading

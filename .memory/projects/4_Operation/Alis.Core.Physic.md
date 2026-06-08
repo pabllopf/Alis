@@ -1,78 +1,209 @@
-# Physic Project Documentation
+# Alis.Core.Physic
 
-## Alis.Core.Physic - Physics Engine
+## Overview
 
-### Purpose
-High-performance 2D physics engine providing rigid body dynamics, collision detection, broadphase algorithms, and physics controllers. Implements continuous collision detection (CCD), contact manifolds, and dynamic tree broadphase optimization.
+The **Alis.Core.Physic** project provides a comprehensive 2D physics engine for the ALIS game engine. It implements a full physics simulation system including rigid body dynamics, collision detection, constraints, and controllers.
 
-### Dependencies
-- **Alis.Core**: Base abstractions
-- **Alis.Core.Aspect.Memory**: Memory aspects for data structures
-- **System.Memory**: Span<T> and Memory<T> for performance
-- **System.Runtime.CompilerServices.Unsafe**: Low-level memory operations
+## Purpose
 
-### Key Components
+- Simulate 2D physics for game objects
+- Handle collision detection and resolution
+- Support rigid body dynamics
+- Implement constraint solving
+- Provide broadphase collision detection
+- Support continuous collision detection (CCD)
 
-#### Collision System
-- **Collision**: Core collision detection algorithms (GJK, EPA, SAT)
-- **BroadPhase**: Dynamic tree broadphase optimization
-- **Manifold**: Contact manifold generation and management
-- **Distance**: GJK distance algorithm for closest points
-- **AABB**: Axis-aligned bounding box operations
+## Architecture
 
-#### Dynamics System
-- **Body**: Rigid body with mass, inertia, velocity, and position
-- **BodyType**: Static, Dynamic, and Kinematic body types
-- **Fixture**: Collision shapes (polygon, edge, circle, chain)
-- **ContactManager**: Contact generation and persistence
-- **Complex**: Complex number operations for rotation
+### Core Components
 
-#### Controllers
-- **GravityController**: Gravity simulation with multiple gravity types
-- **BuoyancyController**: Fluid buoyancy simulation
-- **VelocityLimitController**: Velocity clamping and limits
+| Component | Description | Files |
+|-----------|-------------|-------|
+| **Dynamics** | Rigid body simulation | Dynamics/*.cs (~100 files) |
+| **Collisions** | Collision detection | Collisions/*.cs (~50 files) |
+| **Controllers** | Physics controllers | Controllers/*.cs (5 files) |
+| **Common** | Shared utilities | Common/*.cs (~40 files) |
 
-#### Common Utilities
-- **SettingEnv**: Physics engine configuration constants
-  - LinearSlop: Collision tolerance (0.005f)
-  - AngularSlop: Angular collision tolerance
-  - MaxSubSteps: Maximum sub-steps per contact (8)
-  - MaxManifoldPoints: Maximum contact points (2)
-- **Constant**: Mathematical constants (Pi, Tau)
-- **FileBuffer**: Buffered file reader for parsing
+### Dynamics System
 
-### Data Access
-- Direct memory access via Span<T> and Memory<T>
-- Custom memory pooling for performance
-- Unsafe code for low-level operations
+The dynamics system handles rigid body simulation:
 
-### Messaging Usage
-- **Event System**: AfterCollisionEventHandler, BeforeCollisionEventHandler
-- **Delegate-based callbacks**: BeginContactDelegate, EndContactDelegate
-- **Controller events**: Physics state change notifications
+- **Body** - Main rigid body class
+- **BodyCollection** - Collection of bodies
+- **Fixture** - Collision shapes attached to bodies
+- **ContactManager** - Manages body contacts
 
-### Testing Status
-- **Unit Tests**: Partial - needs expansion
-- **Integration Tests**: Sample programs demonstrate usage
-- **Coverage**: Needs improvement in edge cases and error handling
+### Collision Detection
 
-### Risks
-1. **Numerical Stability**: Float precision issues in collision detection
-2. **Performance**: Complex collision algorithms may impact frame rate
-3. **Thread Safety**: Physics simulation may have race conditions in multi-threaded scenarios
-4. **Memory Management**: Heavy use of unsafe code requires careful review
+Collision system implements:
 
-### TODOs
-- [ ] Expand test coverage to 80%+
-- [ ] Add multi-threaded testing
-- [ ] Optimize collision detection for large scenes
-- [ ] Add support for more collision shapes
-- [ ] Create comprehensive sample applications
+- **AABB** (Axis-Aligned Bounding Box) queries
+- **Dynamic Tree** broadphase algorithm
+- **GJK** (Gilbert-Johnson-Keerthi) distance algorithm
+- **EPA** (Expanding Polytope Algorithm) for collision resolution
+- **Ray casting** for queries
 
-### Complexity Observations
-- **High**: Physics engine with custom collision algorithms
-- **Performance-Critical**: Real-time simulation requires constant optimization
-- **Complexity**: Multiple broadphase algorithms and contact management
+### Controllers
 
-### Quality Plan
-See [[4_Operation/Physic/QualityPlan]] for improvement goals and tracking.
+Physics controllers that affect bodies:
+
+| Controller | Description |
+|------------|-------------|
+| `GravityController` | Apply gravity to bodies |
+| `BuoyancyController` | Simulate fluid buoyancy |
+| `VelocityLimitController` | Limit body velocities |
+
+## Configuration
+
+See [SettingEnv.cs](SettingEnv.cs) for physics engine settings:
+
+```csharp
+public static class SettingEnv
+{
+    // Collision tolerance
+    public const float LinearSlop = 0.005f;
+    public const float AngularSlop = 2.0f / 180.0f * Constant.Pi;
+    public const float PolygonRadius = 2.0f * LinearSlop;
+    
+    // Solver settings
+    public static readonly int VelocityIterations = 8;
+    public static readonly int PositionIterations = 3;
+    
+    // Sleep settings
+    public const float TimeToSleep = 0.5f;
+    public const float LinearSleepTolerance = 0.01f;
+    
+    // CCD (Continuous Collision Detection)
+    public static readonly bool ContinuousPhysics = true;
+    public const int MaxSubSteps = 8;
+}
+```
+
+## Public API
+
+### Body Class
+
+Main entry point for physics objects:
+
+```csharp
+public class Body
+{
+    // Properties
+    public Vector2 Position { get; set; }
+    public float Angle { get; set; }
+    public Vector2 Velocity { get; set; }
+    public float AngularVelocity { get; set; }
+    public float Mass { get; }
+    public float Inertia { get; }
+    
+    // Methods
+    public void ApplyForce(Vector2 force);
+    public void ApplyTorque(float torque);
+    public void SetLinearVelocity(Vector2 velocity);
+    public void SetAngularVelocity(float velocity);
+    public void Sleep();
+    public void WakeUp();
+}
+```
+
+### World Class
+
+Physics world management:
+
+```csharp
+public class World
+{
+    BodyCollection Bodies { get; }
+    
+    void Step(float deltaTime);
+    void DestroyBody(Body body);
+    Body CreateBody(BodyType type);
+}
+```
+
+### Collision System
+
+```csharp
+public static class Collision
+{
+    static bool TestCircleCircle(float radius1, Vector2 center1, float radius2, Vector2 center2);
+    static bool TestPolygonCircle(Polygon polygon, Circle circle);
+    // ... more collision tests
+}
+```
+
+## Files
+
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| Dynamics/ | ~100 | Rigid body simulation |
+| Collisions/ | ~50 | Collision detection algorithms |
+| Controllers/ | 5 | Physics controllers |
+| Common/ | ~40 | Shared utilities and constants |
+| SettingEnv.cs | 1 | Configuration settings |
+
+## Dependencies
+
+- **Alis.Core** - Core engine functionality
+- **Alis.Core.Ecs** - Entity integration (optional)
+
+## Quality Plan
+
+See [QualityPlan.md](QualityPlan.md) for performance and accuracy goals.
+
+## Usage Example
+
+```csharp
+using Alis.Core.Physic;
+
+// Create physics world
+var world = new World();
+
+// Create a body
+var body = world.CreateBody(BodyType.Dynamic);
+body.Position = new Vector2(0, 10);
+
+// Add a fixture (collision shape)
+var shape = new PolygonShape();
+shape.SetAsBox(5, 5);
+body.AddFixture(shape);
+
+// Step the physics world
+for (int i = 0; i < 60; i++)
+{
+    world.Step(1f / 60);
+}
+```
+
+## Features
+
+- ✅ Rigid body dynamics
+- ✅ Collision detection (AABB, ray cast)
+- ✅ Constraint solving
+- ✅ Continuous Collision Detection (CCD)
+- ✅ Sleep/wake management
+- ✅ Friction and restitution
+- ✅ Gravity and forces
+- ✅ Controllers (gravity, buoyancy, velocity limit)
+- ✅ Broadphase optimization (Dynamic Tree)
+
+## Performance Considerations
+
+- **Velocity/Position Iterations**: Default 8/3 iterations
+- **Sleep Thresholds**: Configurable for performance vs accuracy
+- **Broadphase**: Dynamic Tree for efficient queries
+- **Sub-stepping**: Up to 8 sub-steps per contact
+
+## TODOs
+
+- [ ] Add soft body support
+- [ ] Implement particle systems
+- [ ] Add vehicle physics
+- [ ] Optimize for mobile platforms
+- [ ] Add physics debugging visualizer
+
+## Related Projects
+
+- [[Alis.Core.Ecs]] - Physics system integration
+- [[Alis.Core.Graphic]] - Visual representation of physics
+- [[Alis.Core]] - Core engine

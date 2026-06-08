@@ -4,8 +4,8 @@
 - [x] Process Core projects (3_Structuration) - No source files found
 - [x] Process ECS system (4_Operation/Ecs) - 108 source files ✓
 - [x] Process Graphic system (4_Operation/Graphic) - 147 source files ✓
-- [ ] Process Audio system (4_Operation/Audio)
-- [ ] Process Physic system (4_Operation/Physic)
+- [x] Process Audio system (4_Operation/Audio) ✓
+- [x] Process Physic system (4_Operation/Physic) ✓
 - [ ] Process Ideation aspects (6_Ideation)
 - [ ] Process Extensions (1_Presentation/Extension)
 - [x] Generate dependency graphs ✓

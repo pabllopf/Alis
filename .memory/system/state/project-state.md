@@ -10,8 +10,8 @@
 |---|---|---|
 | Alis.Core.Ecs | 108 | Documented |
 | Alis.Core.Graphic | 147 | Documented |
-| Alis.Core.Audio | 5 | Documented |
-| Alis.Core.Physic | 39+ | Documented |
+| Alis.Core.Audio | 7 | Documented |
+| Alis.Core.Physic | 194 | Documented |
 | Alis.Core.Aspect.Memory | 6 | Documented |
 | Alis.Core.Aspect.Fluent | - | Documented |
 | Alis.Core.Aspect.Data | - | Documented |

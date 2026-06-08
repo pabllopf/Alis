@@ -15,8 +15,8 @@
 ### Core Engine (4_Operation)
 - Alis.Core.Ecs ✓ Documented (108 files)
 - Alis.Core.Graphic ✓ Documented (147 files)
-- Alis.Core.Audio ⏳ Pending
-- Alis.Core.Physic ⏳ Pending
+- Alis.Core.Audio ✓ Documented (7 files)
+- Alis.Core.Physic ✓ Documented (194 files)
 - Alis.Core.Input ⏳ Pending
 - Alis.Core.Resource ⏳ Pending
 - Alis.Core.Scene ⏳ Pending
