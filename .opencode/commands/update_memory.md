@@ -967,5 +967,248 @@ The final system MUST behave like:
 * a markdown-native repository memory layer
 * a fully obsidian-compatible engineering vault
 
+
+# MCP INTEGRATION LAYER (OBSIDIAN + CONTEXT SYSTEM + SSD / ENGRAM / CONTEXT7 EXTENDED TOOLING)
+
+This system MUST integrate external MCP providers and tool layers during execution to enhance repository understanding, context resolution, semantic enrichment, and persistent memory construction.
+
+---
+
+# MCP PROVIDERS
+
+The system MUST use the following MCP connections when available:
+
+## Context7 MCP
+
+```text
+Context7 Connected
 ```
+
+## Engram MCP
+
+```text
+engram Connected
+```
+
+## SSD MCP (Semantic System Data Layer)
+
+```text
+SSD Connected
+```
+
+SSD acts as a structural + semantic persistence layer for repository intelligence, indexing, and long-term memory stabilization.
+
+---
+
+# MCP USAGE PRINCIPLES
+
+You MUST treat MCP providers as:
+
+* external semantic memory layers
+* context augmentation systems
+* knowledge retrieval accelerators
+* embedding-aware enrichment engines
+* persistent cross-session reasoning systems
+
+They are NOT optional.
+
+They are part of the core execution pipeline.
+
+---
+
+# WHEN TO USE CONTEXT7 MCP
+
+You MUST use Context7 MCP when:
+
+* resolving ambiguous architecture patterns
+* mapping framework-specific behavior (.NET, EF Core, MediatR, CQRS)
+* understanding external library usage
+* clarifying design decisions
+* validating best practices
+* enriching project-level documentation
+* analyzing dependencies across modules
+* interpreting APIs or SDK behavior
+* verifying enterprise architectural constraints
+
+---
+
+# WHEN TO USE ENGRAM MCP
+
+You MUST use Engram MCP when:
+
+* building long-term semantic memory of the repository
+* connecting concepts across projects
+* detecting duplicated or semantically similar implementations
+* enriching knowledge graph links
+* improving cross-project reasoning
+* generating architectural insights
+* detecting conceptual drift in codebase evolution
+* building persistent semantic indexing for Obsidian vault
+* identifying behavioral patterns across services
+
+---
+
+# WHEN TO USE SSD MCP
+
+You MUST use SSD MCP when:
+
+* maintaining cross-session state consistency
+* validating incremental documentation integrity
+* synchronizing execution checkpoints
+* reconstructing partial analysis sessions
+* resolving incomplete work queues
+* restoring repository analysis state
+* verifying incremental commit boundaries
+* ensuring deterministic regeneration logic
+* stabilizing long-running indexing operations
+
+SSD is the authoritative persistence layer for execution continuity.
+
+---
+
+# MCP ENRICHMENT RULE
+
+Any generated documentation MUST be enriched using MCP output when available.
+
+This means:
+
+* MCP insights MUST be merged into markdown outputs
+* MCP context MUST influence architecture summaries
+* MCP relationships MUST be reflected in knowledge graph links
+* MCP signals MUST update dependency reasoning
+* MCP semantics MUST refine project boundaries
+* SSD state MUST validate persistence consistency
+
+---
+
+# MCP-FIRST CONTEXT STRATEGY
+
+Before analyzing any module or project:
+
+1. Query Context7 MCP for technical context
+2. Query Engram MCP for semantic relationships
+3. Query SSD MCP for persisted state and prior execution context
+4. Merge all MCP outputs into local repository state
+5. Update markdown tracking system
+6. Proceed with analysis using fully enriched context
+
+---
+
+# MCP AUGMENTED KNOWLEDGE GRAPH
+
+All Obsidian links MUST be enhanced using MCP signals.
+
+Example:
+
+```markdown
+[[billing-domain]]
+[[authentication-service]]
+[[shared-kernel]]
+```
+
+These links MUST reflect:
+
+* MCP semantic similarity
+* contextual dependency strength
+* cross-module coupling intensity
+* SSD continuity mapping across sessions
+
+---
+
+# MCP INFLUENCED DEPENDENCY SCORING
+
+Dependencies MUST be classified using MCP enrichment:
+
+* strong dependency (direct code reference + MCP correlation)
+* weak dependency (indirect usage + MCP similarity)
+* semantic dependency (no direct reference but MCP-linked concept)
+* legacy dependency (historical coupling detected via MCP)
+* persistent dependency (validated across SSD sessions)
+
+---
+
+# MCP-ENHANCED DOCUMENTATION QUALITY
+
+All generated markdown MUST be improved using MCP signals for:
+
+* clarity
+* architectural correctness
+* semantic completeness
+* cross-referencing accuracy
+* missing concept detection
+* structural stability
+* long-term consistency (SSD validation)
+
+---
+
+# MCP FAILURE HANDLING
+
+If MCP providers are unavailable:
+
+* fallback to local analysis
+* continue execution normally
+* mark MCP layer as "degraded"
+* log degradation in execution log
+* SSD remains authoritative fallback for state recovery
+
+Never stop execution due to MCP unavailability.
+
+---
+
+# MCP STATE TRACKING (MARKDOWN-ONLY SYSTEM)
+
+Maintain MCP status inside markdown system state:
+
+```markdown
+# MCP Status
+
+| Provider | Status | Last Sync | Notes |
+|----------|--------|----------|------|
+| Context7 | Connected | latest | active |
+| Engram   | Connected | latest | active |
+| SSD      | Connected | latest | persistence layer active |
+```
+
+---
+
+# SSD PERSISTENCE CONTRACT
+
+SSD MUST maintain:
+
+* execution checkpoints
+* incremental progress state
+* work queue continuity
+* commit alignment metadata
+* documentation version history
+
+ALL SSD state MUST be stored as markdown files inside `.memory/system/`.
+
+---
+
+# SSD RECOVERY RULE
+
+If execution is resumed:
+
+1. SSD MUST be loaded first
+2. pending work MUST be reconstructed from SSD state
+3. incomplete batches MUST be resumed
+4. previously stable outputs MUST NOT be regenerated
+5. only delta changes MUST be processed
+
+---
+
+# MCP FINAL OBJECTIVE
+
+MCP + SSD integration MUST ensure the system evolves into:
+
+* a semantically enriched repository intelligence layer
+* a cross-project reasoning engine
+* a long-term architectural memory system
+* an AI-optimized Obsidian knowledge graph
+* a context-aware autonomous documentation system
+* a persistent multi-session enterprise indexing engine
+* a deterministic incremental knowledge compiler
+
+
+
 ```
