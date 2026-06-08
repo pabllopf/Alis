@@ -49,7 +49,7 @@ namespace Alis.App.Hub.Windows.Sections
     /// <seealso cref="ASection" />
     public class EditorInstallationSection : ASection
     {
-        private const string ReleasesApiUrl = Environment.GetEnvironmentVariable("GITHUB_RELEASES_API_URL") ?? "https://api.github.com/repos/pabllopf/Alis/releases";
+        private static readonly string ReleasesApiUrl = Environment.GetEnvironmentVariable("GITHUB_RELEASES_API_URL") ?? "https://api.github.com/repos/pabllopf/Alis/releases";
 
         private List<InstalledVersion> installedVersions = new List<InstalledVersion>();
 
