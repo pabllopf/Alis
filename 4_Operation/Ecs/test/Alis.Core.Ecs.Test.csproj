@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
      <PropertyGroup>
         <TargetFrameworks>net8.0;</TargetFrameworks>
-        <OutputType>Library</OutputType>
+        <OutputType>Exe</OutputType>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
         <LangVersion>13</LangVersion>
         <Nullable>disable</Nullable>
