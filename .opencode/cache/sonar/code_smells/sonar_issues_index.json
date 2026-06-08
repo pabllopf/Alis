@@ -375,10 +375,10 @@
       "file": "pabllopf-official_alis:1_Presentation/Installer/src/ImguiSample.cs",
       "line": 248,
       "severity": "CRITICAL",
-      "status": "OPEN",
+      "status": "COMPLETED",
       "assignedWorker": null,
       "lockedAt": null,
-      "completedAt": null,
+      "completedAt": "2026-06-08T10:04:05+00:00",
       "attemptCount": 0,
       "message": "Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.",
       "assignee": "worker-mac-1",
@@ -395,7 +395,9 @@
       "lockedAt": null,
       "completedAt": null,
       "attemptCount": 0,
-      "message": "Remove the unnecessary Boolean literal(s)."
+      "message": "Remove the unnecessary Boolean literal(s).",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T10:13:22.652578+00:00"
     },
     {
       "key": "AZ6OPbAksynw1OJ1vi8C",
@@ -408,7 +410,9 @@
       "lockedAt": null,
       "completedAt": null,
       "attemptCount": 0,
-      "message": "Refactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed."
+      "message": "Refactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T10:15:35.569308+00:00"
     },
     {
       "key": "AZ6OPa9isynw1OJ1vi7m",
