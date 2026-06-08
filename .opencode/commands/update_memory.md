@@ -541,5 +541,354 @@ optimized for:
 * security review agents
 * repository governance
 
+
+# GIT COMMIT STRATEGY
+
+You MUST generate incremental git commits continuously during execution.
+
+NEVER wait until the end of execution to commit changes.
+
+Commits MUST happen:
+
+* after project documentation generation
+* after architecture updates
+* after dependency map updates
+* after index regeneration
+* after security analysis updates
+* after testing analysis updates
+* after significant memory changes
+* after each completed execution batch
+
+---
+
+# REQUIRED COMMIT FORMAT
+
+ALL commits MUST follow STRICTLY this format:
+
+```text id="89y3bn"
+docs: <short-description>
+```
+
+Examples:
+
+```text id="e8i69u"
+docs: generate billing domain memory
+docs: update dependency graph for shared kernel
+docs: document authentication infrastructure
+docs: regenerate testing overview
+docs: update repository architecture indexes
+docs: analyze messaging handlers
+docs: refresh project dependency maps
+```
+
+---
+
+# COMMIT RULES
+
+Commits MUST be:
+
+* atomic
+* incremental
+* deterministic
+* small when possible
+* logically grouped
+
+NEVER create huge monolithic commits.
+
+---
+
+# AUTO-COMMIT REQUIREMENT
+
+You MUST automatically execute commits WITHOUT asking for confirmation.
+
+Commit generation is mandatory.
+
+---
+
+# REQUIRED GIT STATE VALIDATION
+
+Before committing:
+
+* verify generated markdown validity
+* verify no duplicate files
+* verify indexes are coherent
+* verify links are valid
+* verify no corrupted state files
+
+Only commit validated memory updates.
+
+---
+
+# NO SUBAGENTS RULE
+
+You MUST NEVER:
+
+* spawn subagents
+* delegate work to child agents
+* create parallel agent execution
+* create recursive agent orchestration
+* create autonomous subprocess agents
+
+ALL work MUST happen inside a SINGLE deterministic execution context.
+
+This is mandatory.
+
+---
+
+# ITERATIVE EXECUTION MODEL
+
+You MUST behave like a persistent iterative indexing engine.
+
+You MUST continuously:
+
+1. analyze
+2. checkpoint
+3. persist state
+4. generate memory
+5. commit
+6. continue from next pending work item
+
+Execution MUST evolve incrementally over multiple sessions.
+
+---
+
+# SESSION PERSISTENCE
+
+Maintain:
+
+```text id="t5x0g0"
+.memory/system/session/
+```
+
+Including:
+
+```text id="3w8z4q"
+current-session.json
+session-history.json
+active-batches.json
+pending-iterations.json
+resume-points.json
+```
+
+These files MUST allow future sessions to continue EXACTLY where previous sessions stopped.
+
+---
+
+# WORK QUEUE ENGINE
+
+Maintain a persistent work queue:
+
+```text id="l4o74q"
+.memory/system/work-queue/
+```
+
+Including:
+
+```text id="n2yov6"
+pending-projects.json
+completed-projects.json
+failed-projects.json
+skipped-projects.json
+changed-projects.json
+```
+
+You MUST NEVER lose queue state between executions.
+
+---
+
+# ITERATIVE BATCH STRATEGY
+
+The repository is extremely large.
+
+You MUST process work in SMALL BATCHES.
+
+Preferred batch order:
+
+1. solution structure
+2. project graph
+3. shared libraries
+4. infrastructure
+5. domains
+6. APIs
+7. handlers
+8. testing
+9. security
+10. performance
+
+After each batch:
+
+* persist state
+* update indexes
+* commit changes
+* checkpoint execution
+
+---
+
+# DOCUMENTATION TRACKING
+
+Maintain documentation tracking metadata for EVERY generated artifact.
+
+Create:
+
+```text id="0x9pq6"
+.memory/system/tracking/
+```
+
+Including:
+
+```text id="c3tp7r"
+documentation-map.json
+coverage-map.json
+documentation-status.json
+generation-history.json
+regeneration-queue.json
+```
+
+---
+
+# DOCUMENTATION STATUS ENGINE
+
+Each project/module/document MUST have status tracking:
+
+```json id="7lppyo"
+{
+  "project": "Billing.API",
+  "status": "completed",
+  "lastAnalyzed": "timestamp",
+  "lastHash": "hash",
+  "documentationVersion": 4,
+  "pendingUpdates": false,
+  "lastCommit": "commit-sha",
+  "analysisCoverage": {
+    "architecture": true,
+    "dependencies": true,
+    "security": true,
+    "testing": false
+  }
+}
+```
+
+---
+
+# PARTIAL REGENERATION RULE
+
+If only ONE project changes:
+
+* ONLY regenerate affected documents
+* ONLY update affected indexes
+* ONLY update impacted diagrams
+* ONLY commit related changes
+
+NEVER regenerate unrelated memory.
+
+---
+
+# MEMORY EVOLUTION STRATEGY
+
+The memory system MUST evolve over time.
+
+Each execution SHOULD:
+
+* improve existing docs
+* enrich architectural understanding
+* refine dependency mapping
+* refine conventions
+* improve cross-linking
+* improve summaries
+* improve AI-consumable context
+
+---
+
+# CONTEXT WINDOW OPTIMIZATION
+
+You MUST optimize aggressively for limited context windows.
+
+NEVER:
+
+* load the entire repository into memory
+* load all markdown files simultaneously
+* re-read unchanged documents
+* regenerate stable summaries unnecessarily
+
+ALWAYS:
+
+* use indexed metadata
+* use hashes
+* use incremental scans
+* process localized batches
+* use persistent checkpoints
+
+---
+
+# INDEX-FIRST STRATEGY
+
+Before analyzing code:
+
+1. load indexes
+2. load tracking metadata
+3. load previous state
+4. determine delta changes
+5. build minimal work queue
+6. process only required targets
+
+---
+
+# ANTI-LOOP PROTECTION
+
+You MUST prevent infinite regeneration loops.
+
+If generated output hash has not changed:
+
+* skip regeneration
+* skip rewrite
+* skip commit
+
+If documentation quality is already sufficient:
+
+* mark as stable
+* avoid unnecessary updates
+
+---
+
+# STABILITY CLASSIFICATION
+
+Classify generated documents:
+
+* stable
+* volatile
+* high-churn
+* generated
+* manually-extended
+
+Prefer avoiding regeneration of stable files.
+
+---
+
+# MANUAL EDIT PROTECTION
+
+You MUST preserve:
+
+* manual notes
+* manually added wiki links
+* manual diagrams
+* custom summaries
+* hand-written architectural decisions
+
+Generated content MUST coexist safely with manual content.
+
+---
+
+# EXECUTION OBJECTIVE
+
+The final system MUST behave like:
+
+* a persistent repository intelligence engine
+* a self-maintaining Obsidian memory graph
+* an incremental enterprise documentation platform
+* a deterministic AI context system
+* a resumable autonomous repository indexing engine
+* a long-term engineering knowledge base
+
+
 ```
 ```
