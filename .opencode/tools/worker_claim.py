@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Worker claim script: atomically claims the first open/unassigned issue.
-Usage: python3 worker_claim.py <bugs|security> <worker-id>
+Usage: python3 worker_claim.py <bugs|security|code_smells> <worker-id>
 Returns JSON with claimed issue key and details, or null if none available.
 """
 import json
@@ -21,7 +21,7 @@ def claim_issue(worker_id, category):
         idx = json.load(f)
     
     # Determine issues list key
-    issues_key = "issues" if category == "bugs" else "hotspots"
+    issues_key = "issues" if category in ("bugs", "code_smells") else "hotspots"
     issues = idx.get(issues_key, [])
     
     # Find first open + unassigned issue
@@ -90,7 +90,7 @@ def claim_issue(worker_id, category):
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
-        print("Usage: worker_claim.py <bugs|security> <worker-id>")
+        print("Usage: worker_claim.py <bugs|security|code_smells> <worker-id>")
         sys.exit(1)
     
     category = sys.argv[1]

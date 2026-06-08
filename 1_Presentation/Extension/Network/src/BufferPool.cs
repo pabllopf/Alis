@@ -127,7 +127,7 @@ namespace Alis.Extension.Network
 
             if (disposing)
             {
-                while (_bufferPoolStack.TryPop(out _)) { }
+                while (_bufferPoolStack.TryPop(out _));
             }
 
             _disposed = true;

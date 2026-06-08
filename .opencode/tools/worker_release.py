@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Worker release script: marks an issue as fixed or failed.
-Usage: python3 worker_release.py <bugs|security> <issue-key> <fixed|failed> <worker-id> [message]
+Usage: python3 worker_release.py <bugs|security|code_smells> <issue-key> <fixed|failed> <worker-id> [message]
 """
 import json
 import sys
@@ -31,7 +31,7 @@ def release_issue(issue_key, status, worker_id, message="", category="bugs"):
     with open(INDEX_PATH, 'r') as f:
         idx = json.load(f)
     
-    issues_key = "issues" if category == "bugs" else "hotspots"
+    issues_key = "issues" if category in ("bugs", "code_smells") else "hotspots"
     issues = idx.get(issues_key, [])
     
     found = False
@@ -85,7 +85,7 @@ def release_issue(issue_key, status, worker_id, message="", category="bugs"):
 
 if __name__ == '__main__':
     if len(sys.argv) < 5:
-        print("Usage: worker_release.py <bugs|security> <issue-key> <fixed|failed> <worker-id> [message]")
+        print("Usage: worker_release.py <bugs|security|code_smells> <issue-key> <fixed|failed> <worker-id> [message]")
         sys.exit(1)
     
     category = sys.argv[1]

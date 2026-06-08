@@ -1,0 +1,9 @@
+{
+  "locks": {
+    "AZ6OPakDsynw1OJ1vi3i": {
+      "status": "in_progress",
+      "assignedWorker": "worker-mac-1",
+      "lockedAt": "2026-06-08T08:26:05.129988+00:00"
+    }
+  }
+}
