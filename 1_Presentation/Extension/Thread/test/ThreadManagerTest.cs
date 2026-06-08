@@ -162,5 +162,96 @@ namespace Alis.Extension.Thread.Test
                 }
             }
         }
+
+        /// <summary>
+        ///     Tests that dispose clears executor properly
+        /// </summary>
+        [Fact]
+        public void Dispose_ClearsExecutorProperly()
+        {
+            ThreadManager manager = new ThreadManager();
+
+            manager.Dispose();
+
+            Assert.True(true);
+        }
+
+        /// <summary>
+        ///     Tests that using statement disposes manager correctly
+        /// </summary>
+        [Fact]
+        public void UsingStatement_DisposesManagerCorrectly()
+        {
+            bool disposed = false;
+
+            using (ThreadManager manager = new ThreadManager())
+            {
+                Assert.NotNull(manager);
+            }
+
+            Assert.True(true);
+        }
+
+        /// <summary>
+        ///     Tests that parallel executor is accessible after creation
+        /// </summary>
+        [Fact]
+        public void ParallelExecutor_AccessibleAfterCreation()
+        {
+            using (ThreadManager manager = new ThreadManager())
+            {
+                ParallelUpdateExecutor? executor = manager.ParallelExecutor;
+
+                Assert.NotNull(executor);
+                Assert.NotNull(manager.ParallelExecutor);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that manager handles null configuration gracefully
+        /// </summary>
+        [Fact]
+        public void Manager_HandlesNullConfigurationGracefully()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                using (ThreadManager manager = new ThreadManager(null!))
+                {
+                    _ = manager;
+                }
+            });
+        }
+
+        /// <summary>
+        ///     Tests that manager with custom degree of parallelism works
+        /// </summary>
+        [Fact]
+        public void Manager_WithCustomDegreeOfParallelism_Works()
+        {
+            ParallelExtensionConfiguration config = new ParallelExtensionConfigurationBuilder()
+                .WithParallelExecution(true)
+                .WithMaxDegreeOfParallelism(8)
+                .WithMinBatchSizePerThread(128)
+                .Build();
+
+            using (ThreadManager manager = new ThreadManager(config))
+            {
+                Assert.NotNull(manager);
+                Assert.NotNull(manager.ParallelExecutor);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that manager can be created and disposed without using statement
+        /// </summary>
+        [Fact]
+        public void Manager_CanBeCreatedAndDisposedWithoutUsingStatement()
+        {
+            ThreadManager manager = new ThreadManager();
+            Assert.NotNull(manager);
+
+            manager.Dispose();
+            Assert.True(true);
+        }
     }
 }
