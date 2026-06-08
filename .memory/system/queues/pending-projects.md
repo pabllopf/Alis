@@ -1,13 +1,27 @@
-# Pending Projects Queue
+# Pending Work Queue
 
-## High Priority (Core Engine)
+## High Priority (Core Engine - 4_Operation)
 
-- [ ] Alis.Core.Audio
-- [ ] Alis.Core.Physic
+- [x] Alis.Core.Ecs ✓ Documented (108 files)
+- [x] Alis.Core.Graphic ✓ Documented (147 files)
+- [ ] Alis.Core.Audio ⏳ In Progress
+- [ ] Alis.Core.Physic ⏳ Pending
+- [ ] Alis.Core.Input ⏳ Pending
+- [ ] Alis.Core.Resource ⏳ Pending
+- [ ] Alis.Core.Scene ⏳ Pending
+- [ ] Alis.Core.Serialization ⏳ Pending
+- [ ] Alis.Core.Window ⏳ Pending
+
+## Medium Priority (Generators & Tests)
+
 - [ ] Alis.Core.Ecs.Generator
+- [ ] Alis.Core.Ecs.Test
 - [ ] Alis.Core.Graphic.Generator
+- [ ] Alis.Core.Graphic.Test
+- [ ] Alis.Core.Audio.Test
+- [ ] Alis.Core.Physic.Test
 
-## Medium Priority (Ideation)
+## High Priority (Ideation - 6_Ideation)
 
 - [ ] Alis.Core.Aspect.Memory
 - [ ] Alis.Core.Aspect.Fluent
@@ -25,3 +39,7 @@
 ## Total Pending
 
 138 projects to document
+
+## Current Batch
+
+**Batch 1**: Processing Audio and Physic systems (4_Operation)
