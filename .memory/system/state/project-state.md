@@ -6,11 +6,16 @@
 
 ## Completed Projects
 
-| Project | Status | Files |
+| Project | Files | Status |
 |---|---|---|
-| Alis.Core.Ecs | Analyzed | 108 |
-| Alis.Core.Graphic | Analyzed | 147 |
+| Alis.Core.Ecs | 108 | Documented |
+| Alis.Core.Graphic | 147 | Documented |
 
 ## Pending Projects
 
-138 projects remaining
+138 projects remaining to be documented
+
+## Batch Progress
+
+- **Batch 1**: 2/20 projects completed (ECS, Graphic)
+- **Remaining**: Audio, Physic, and 16 more projects
