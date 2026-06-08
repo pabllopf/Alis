@@ -144,12 +144,14 @@
       "file": "pabllopf-official_alis:1_Presentation/Engine/src/Engine.cs",
       "line": 129,
       "severity": "MINOR",
-      "status": "OPEN",
+      "status": "CLOSED",
       "assignedWorker": null,
       "lockedAt": null,
-      "completedAt": null,
+      "completedAt": "2026-06-08T08:48:47.780477+00:00",
       "attemptCount": 0,
-      "message": "Remove the field '_context' and declare it as a local variable in the relevant methods."
+      "message": "Remove the field '_context' and declare it as a local variable in the relevant methods.",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T08:46:05.324253+00:00"
     },
     {
       "key": "AZ6OPa9isynw1OJ1vi7-",
@@ -162,7 +164,9 @@
       "lockedAt": null,
       "completedAt": null,
       "attemptCount": 0,
-      "message": "Field 'Engine._fontTexture' is never assigned to, and will always have its default value 0"
+      "message": "Field 'Engine._fontTexture' is never assigned to, and will always have its default value 0",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T08:48:46.759641+00:00"
     },
     {
       "key": "AZ6OPa9isynw1OJ1vi7d",

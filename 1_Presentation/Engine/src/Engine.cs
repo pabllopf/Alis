@@ -124,11 +124,6 @@ namespace Alis.App.Engine
         private readonly float resolutionProgramY = 1080;
 
         /// <summary>
-        ///     The context
-        /// </summary>
-        private IntPtr _context;
-
-        /// <summary>
         ///     The ebo
         /// </summary>
         private uint _ebo;
@@ -235,15 +230,16 @@ namespace Alis.App.Engine
             platform?.MakeContextCurrent();
 
             IntPtr currentCtx = ImGui.GetCurrentContext();
+            IntPtr context;
             if (currentCtx == IntPtr.Zero)
             {
-                _context = ImGui.CreateContext();
-                ImGui.SetCurrentContext(_context);
+                context = ImGui.CreateContext();
+                ImGui.SetCurrentContext(context);
             }
             else
             {
-                _context = currentCtx;
-                ImGui.SetCurrentContext(_context);
+                context = currentCtx;
+                ImGui.SetCurrentContext(context);
             }
 
             _spaceWork.io = ImGui.GetIo();
