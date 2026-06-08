@@ -56,11 +56,6 @@ namespace Alis.App.Hub
     public class HubEngine
     {
         /// <summary>
-        ///     The is first time
-        /// </summary>
-        private static bool isFirstTime = true;
-
-        /// <summary>
         ///     The gl viewport width
         /// </summary>
         private static int glViewportWidth;
@@ -133,7 +128,7 @@ namespace Alis.App.Hub
         /// <summary>
         ///     The font texture
         /// </summary>
-        private uint _fontTexture;
+        private uint _fontTexture = 0;
 
         /// <summary>
         ///     The shader program
@@ -149,11 +144,6 @@ namespace Alis.App.Hub
         ///     The vbo
         /// </summary>
         private uint _vbo;
-
-        /// <summary>
-        ///     The first time scale
-        /// </summary>
-        private bool firstTimeScale = true;
 
         /// <summary>
         ///     The fonts
@@ -452,8 +442,8 @@ namespace Alis.App.Hub
 
             int[] viewport = new int[4];
             Gl.GlGetIntegerv(0x0BA2, viewport);
-            glViewportWidth = viewport[2];
-            glViewportHeight = viewport[3];
+            int glViewportWidth = viewport[2];
+            int glViewportHeight = viewport[3];
 
             float scaleX = glViewportWidth / resolutionProgramX;
             float scaleY = glViewportHeight / resolutionProgramY;
