@@ -1929,5 +1929,247 @@ MCP + SSD integration MUST ensure the system evolves into:
 * a deterministic incremental knowledge compiler
 
 
+# 🧠 Obsidian CLI Quick Reference
+
+## Core Concepts
+
+### file vs path
+- `file=` → fuzzy name (wikilink resolution)
+- `path=` → exact vault path
+
+---
+
+## Content Formatting Rules
+- Use `\n` for new lines
+- Escape spaces with quotes `" "`
+- Inline append uses `inline`
+
+---
+
+## File Operations
+
+### Create file
+```bash
+create name="Note Name" content="Initial content"
+````
+
+### Append content
+
+```bash
+append file="Note Name" content="Added line"
+```
+
+### Read file
+
+```bash
+read file="Note Name"
+```
+
+### Move / Rename
+
+```bash
+move file="Old" to="NewFolder/"
+rename file="Old" name="New"
+```
+
+### Delete file
+
+```bash
+delete file="Note Name"
+```
+
+---
+
+## Navigation
+
+### Open file
+
+```bash
+open file="Note Name"
+```
+
+### List files
+
+```bash
+files
+files folder="FolderName"
+```
+
+---
+
+## Knowledge Graph
+
+### Outgoing links
+
+```bash
+links file="Note Name"
+```
+
+### Backlinks
+
+```bash
+backlinks file="Note Name"
+```
+
+### Orphans (no inbound links)
+
+```bash
+orphans
+```
+
+### Dead ends (no outgoing links)
+
+```bash
+deadends
+```
+
+---
+
+## Search & Discovery
+
+```bash
+search query="text"
+search query="text" format=json
+```
+
+---
+
+## Tags
+
+```bash
+tags
+tags file="Note Name"
+```
+
+---
+
+## Properties (Metadata)
+
+### Set property
+
+```bash
+property:set name="status" value="active" type=text file="Note"
+```
+
+### Read property
+
+```bash
+property:read name="status" file="Note"
+```
+
+### Remove property
+
+```bash
+property:remove name="status" file="Note"
+```
+
+---
+
+## Daily Notes
+
+### Append
+
+```bash
+daily:append content="work log entry"
+```
+
+### Read
+
+```bash
+daily:read
+```
+
+---
+
+## Structure Inspection
+
+```bash
+vault
+folders
+folder path="Projects"
+wordcount file="Note"
+```
+
+---
+
+## Bookmarks
+
+```bash
+bookmark url="https://example.com" title="Example"
+bookmarks
+```
+
+---
+
+## Plugins & System
+
+```bash
+plugins
+plugins:enabled
+plugin:enable id="plugin-id"
+plugin:disable id="plugin-id"
+```
+
+---
+
+## Advanced Querying (Bases)
+
+```bash
+base:query file="BaseName" view="ViewName" format=json
+base:create file="BaseName" name="NewItem"
+```
+
+---
+
+## Automation Patterns
+
+### Append + link loop
+
+```bash
+append file="Note" content="new insight"
+links file="Note"
+backlinks file="Note"
+```
+
+---
+
+## Memory / AI Integration Layer
+
+```bash
+# Suggested structure integration
+
+.memory/
+├── system/
+├── projects/
+├── context/
+├── knowledge-graph/
+├── dependencies/
+```
+
+---
+
+## Incremental Knowledge Workflow
+
+```bash
+1. read file
+2. append insights
+3. extract links
+4. update backlinks
+5. search related concepts
+```
+
+---
+
+## Vault Intelligence Commands
+
+```bash
+files
+tags
+orphans
+deadends
+search query="architecture"
+```
+
+
 
 ```

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/1_Presentation/Alis.Extension.Cloud.DropBox.md",
+                "file": "security/security-overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Alis.Extension.Cloud.DropBox"
+              "title": "security-overview"
             }
           }
         ]
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "projects/1_Presentation/Alis.Extension.Cloud.DropBox.md",
+                "file": "security/security-overview.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de Alis.Extension.Cloud.DropBox"
+              "title": "Enlaces entrantes de security-overview"
             }
           },
           {
@@ -124,12 +124,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "projects/1_Presentation/Alis.Extension.Cloud.DropBox.md",
+                "file": "security/security-overview.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de Alis.Extension.Cloud.DropBox"
+              "title": "Enlaces salientes de security-overview"
             }
           },
           {
@@ -167,13 +167,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "projects/1_Presentation/Alis.Extension.Cloud.DropBox.md",
+                "file": "security/security-overview.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de Alis.Extension.Cloud.DropBox"
+              "title": "Esquema de security-overview"
             }
           }
         ]
@@ -199,6 +199,24 @@
   },
   "active": "847c078068ae35c5",
   "lastOpenFiles": [
+    "security/analysis.md",
+    "security/security-overview.md",
+    "prompts/code-review-checklist.md",
+    "prompts/conversation-starters.md",
+    "prompts/ai-context.md",
+    "projects/5_Declaration/Aspect.md",
+    "projects/5_Declaration/Core.md",
+    "projects/5_Declaration/Alis.Core.Data.md",
+    "projects/5_Declaration/Alis.Core.Log.md",
+    "projects/6_Ideation/Data/Alis.Core.Aspect.Data.md",
+    "architecture/repository-overview.md",
+    "glossary/terms.md",
+    "system/state/memory-generation-status.md",
+    "system/state/execution-state.md",
+    "system/indexes/project-index.md",
+    "system/state/pending-work.md",
+    "projects/1_Presentation/Alis.Extension.Cloud.DropBox.md",
+    "context",
     "projects/1_Presentation/Extension/Math/HighSpeedPriorityQueue/Alis.Extension.Math.HighSpeedPriorityQueue.md",
     "projects/1_Presentation/Extension/Math/ProceduralDungeon/Alis.Extension.Math.ProceduralDungeon.md",
     "projects/1_Presentation/Extension/Io/FileDialog/Alis.Extension.Io.FileDialog.md",
@@ -215,25 +233,7 @@
     "projects/1_Presentation/Extension/Cloud/DropBox",
     "projects/1_Presentation/Extension/Cloud",
     "projects/1_Presentation/Extension/Payment/Stripe",
-    "projects/1_Presentation/Extension/Payment",
     "system/state/project-state.md",
-    "projects/1_Presentation/Extension/Security/Alis.Extension.Security.md",
-    "projects/6_Ideation/Alis.Core.Aspect.Logging.md",
-    "system/state/analysis-state.md",
-    "system/sessions/session-history.md",
-    "system/sessions/current-session.md",
-    "system/checkpoints/latest-checkpoint.md",
-    "system/logs/execution-log.md",
-    "entities/Alis.md",
-    "glossary/terms.md",
-    "diagrams/dependency-graph.md",
-    "projects/5_Declaration/Alis.Core.Data.md",
-    "projects/6_Ideation/Alis.Core.Network.md",
-    "projects/6_Ideation/Logging/Alis.Core.Aspect.Logging.md",
-    "projects/6_Ideation/Time/Alis.Core.Aspect.Time.md",
-    "projects/6_Ideation/Math/Alis.Core.Aspect.Math.md",
-    "projects/6_Ideation/Data/Alis.Core.Aspect.Data.md",
-    "projects/6_Ideation/Fluent/Alis.Core.Aspect.Fluent.md",
-    "projects/6_Ideation/Memory/Alis.Core.Aspect.Memory.md"
+    "projects/1_Presentation/Extension/Security/Alis.Extension.Security.md"
   ]
 }
