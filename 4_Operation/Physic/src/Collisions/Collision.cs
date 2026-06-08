@@ -1007,7 +1007,7 @@ namespace Alis.Core.Physic.Collisions
                     manifold.LocalPoint = polygonB.Vertices[rf.I1];
                 }
 
-                int pointCount = BuildManifoldPoints(ref manifold, ref clipPoints2, ref rf, ref xf, radius, primaryAxis);
+                BuildManifoldPoints(ref manifold, ref clipPoints2, ref rf, ref xf, radius, primaryAxis);
             }
 
             /// <summary>
