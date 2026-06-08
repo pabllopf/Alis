@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "2ff87b265439b023",
+        "id": "6f75a4df5dcc9860",
         "type": "tabs",
         "children": [
           {
-            "id": "616c2a5466136963",
+            "id": "108c709bafcab2c9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Bienvenido.md",
+                "file": "concepts/Generator Pattern.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Bienvenido"
+              "title": "Generator Pattern"
             }
           }
         ]
@@ -73,12 +73,22 @@
               "icon": "lucide-bookmark",
               "title": "Marcadores"
             }
+          },
+          {
+            "id": "88a8ea3b2a6627a5",
+            "type": "leaf",
+            "state": {
+              "type": "notebook-navigator",
+              "state": {},
+              "icon": "notebook-navigator",
+              "title": "Navegador de Cuadernos"
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 405.5
   },
   "right": {
     "id": "09d21cacde4f110e",
@@ -94,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Bienvenido.md",
+                "file": "concepts/Generator Pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +114,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de Bienvenido"
+              "title": "Enlaces entrantes de Generator Pattern"
             }
           },
           {
@@ -113,12 +123,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Bienvenido.md",
+                "file": "concepts/Generator Pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de Bienvenido"
+              "title": "Enlaces salientes de Generator Pattern"
             }
           },
           {
@@ -156,13 +166,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Bienvenido.md",
+                "file": "concepts/Generator Pattern.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de Bienvenido"
+              "title": "Esquema de Generator Pattern"
             }
           }
         ]
@@ -180,26 +190,29 @@
       "daily-notes:Abrir la nota de hoy": false,
       "templates:Insertar plantilla": false,
       "command-palette:Abrir paleta de comandos": false,
-      "bases:Crear nueva base": false
+      "bases:Crear nueva base": false,
+      "notebook-navigator:Navegador de Cuadernos": false
     }
   },
-  "active": "616c2a5466136963",
+  "active": "108c709bafcab2c9",
   "lastOpenFiles": [
-    "concepts/Alis Architecture Overview.md",
-    "concepts/Multi-Platform Samples.md",
-    "concepts/Generator Pattern.md",
-    "concepts/Solution Composition.md",
-    "concepts/Aspect-Oriented Design.md",
     "concepts/Layered Architecture.md",
+    "concepts/Aspect-Oriented Design.md",
+    "concepts/Multi-Platform Samples.md",
+    "concepts/Solution Composition.md",
     "entities/Alis.md",
-    "schema.md",
+    "Obsidian.md",
     "index.md",
+    "alis.slnx.md",
+    "concepts/Generator Pattern.md",
+    "concepts/Alis Architecture Overview.md",
+    "Bienvenido.md",
+    "schema.md",
     "log.md",
     "sources",
     "concepts",
     "entities",
     "raw",
-    "Sin título.md",
-    "Bienvenido.md"
+    "Sin título.md"
   ]
 }
