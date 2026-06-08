@@ -15,6 +15,8 @@ graph TD
     Alis_Ecs --> Alis_Aspect_Data[Alis.Core.Aspect.Data]
     
     Alis_Graphic --> Alis_Aspect_Memory[Alis.Core.Aspect.Memory]
+    
+    Alis_Physic --> Alis_Core_Ecs[Alis.Core.Ecs]
 ```
 
 ### Ideation Layer
@@ -27,7 +29,31 @@ graph TD
     Alis_Aspect_Math[Alis.Core.Aspect.Math] --> Alis_Core
     Alis_Aspect_Time[Alis.Core.Aspect.Time] --> Alis_Core
     Alis_Aspect_Logging[Alis.Core.Aspect.Logging] --> Alis_Core
+    
+    Alis_Aspect_Fluent --> Alis_Ecs
+    Alis_Aspect_Data --> Alis_Core
+    Alis_Aspect_Memory --> Alis_Graphic
 ```
+
+### Core Systems Documentation Status
+
+| System | Files | Status |
+|--------|-------|--------|
+| Alis.Core.Ecs | 108 | ✅ Documented |
+| Alis.Core.Graphic | 147 | ✅ Documented |
+| Alis.Core.Audio | 7 | ✅ Documented |
+| Alis.Core.Physic | 194 | ✅ Documented |
+
+### Ideation Aspects Documentation Status
+
+| Aspect | Files | Status |
+|--------|-------|--------|
+| Memory | 3 | ✅ Documented |
+| Fluent | 128+ | ✅ Documented |
+| Data | 18 | ✅ Documented |
+| Math | 29 | ✅ Documented |
+| Time | 1 | ✅ Documented |
+| Logging | 24 | ✅ Documented |
 
 ### Extension Layer
 
