@@ -12,6 +12,13 @@
 - [x] Process Math aspect (6_Ideation/Math) ✓
 - [x] Process Time aspect (6_Ideation/Time) ✓
 - [x] Process Logging aspect (6_Ideation/Logging) ✓
+
+## Next Batch
+
+- [ ] Process Extensions (1_Presentation/Extension) - ~20 projects
+  - GoogleAds, Security, Stripe, Network, FileDialog, Updater, Language, Math, Graphic, Cloud, Thread, Media
+- [ ] Process Applications (1_Presentation) - Engine, Hub, Installer, Benchmark
+- [ ] Process Samples (~30 projects)
 - [ ] Process Ideation aspects (6_Ideation)
 - [ ] Process Extensions (1_Presentation/Extension)
 - [x] Generate dependency graphs ✓

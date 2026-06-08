@@ -12,8 +12,8 @@
 
 | Batch | Projects | Status |
 |---|---|---|
-| 1 | 10/20 | in_progress (50% complete) |
-| 2 | 0/20 | pending |
+| 1 | 10/20 | completed ✓ |
+| 2 | 0/20 | pending - Process Extensions (1_Presentation/Extension) |
 | 3 | 0/20 | pending |
 | 4 | 0/20 | pending |
 | 5 | 0/20 | pending |
