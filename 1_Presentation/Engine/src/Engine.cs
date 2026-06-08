@@ -1670,7 +1670,8 @@ namespace Alis.App.Engine
             }
 
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int texWidth, out int texHeight, out int _);
-            _spaceWork.FontTextureId = LoadTexture(pixelData, texWidth, texHeight);
+            _fontTexture = LoadTexture(pixelData, texWidth, texHeight);
+            _spaceWork.FontTextureId = _fontTexture;
             fonts.TexId = (IntPtr) _spaceWork.FontTextureId;
             fonts.ClearTexData();
         }
