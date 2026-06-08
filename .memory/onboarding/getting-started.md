@@ -17,7 +17,7 @@ dotnet build alis.slnx
 ### 2. Run a Game Sample
 ```bash
 # Navigate to a game sample
-cd 2_Application/Alis/Sample.Flappy.Bird/src
+cd 2_Application/alis/samples/alis.sample.flappy.bird/desktop
 
 # Run the game
 dotnet run
@@ -29,7 +29,7 @@ dotnet run
 dotnet test
 
 # Specific layer
-dotnet test 4_Operation/Alis.Core.Ecs/test/
+dotnet test 4_Operation/Ecs/test/Alis.Core.Ecs.Test.csproj
 
 # With coverage
 dotnet test /p:CollectCoverage=true
