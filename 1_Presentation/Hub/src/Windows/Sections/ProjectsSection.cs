@@ -54,25 +54,22 @@ namespace Alis.App.Hub.Windows.Sections
     {
         private const string NotConnectedStatus = "NOT CONNECTED";
 
+        private static string GetSamplePath() =>
+            Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
+                "..", "..", "..", "..", "..",
+                "1_Presentation", "Engine", "sample", "alis.app.engine.sample"));
+
 #if DEBUG
-        /// <summary>
-        ///     The project
-        /// </summary>
         private List<Project> projects = new List<Project>
         {
-            new Project("MacOS Project", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", NotConnectedStatus, "3 days ago", "v1.5.0"),
-            new Project("MacOS Project (latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", NotConnectedStatus, "3 days ago", "v1.0.5"),
-            new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", NotConnectedStatus, "5 minutes ago", "v1.0.5"),
-            new Project("LINUX Project", "/home/parallels/Repositorios/Alis/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", NotConnectedStatus, "5 minutes ago", "v1.0.5")
+            new Project("MacOS Project", GetSamplePath(), NotConnectedStatus, "3 days ago", "v1.5.0"),
+            new Project("MacOS Project (latest)", GetSamplePath(), NotConnectedStatus, "3 days ago", "v1.0.5")
         };
 #else
-        /// <summary>
-        ///     The project
-        /// </summary>
         private List<Project> projects = new List<Project>
         {
-            new Project("MacOS Project (latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", NotConnectedStatus, "3 days ago", "v0.9.0"),
-            new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", NotConnectedStatus, "5 minutes ago", "v0.9.0")
+            new Project("MacOS Project (latest)", GetSamplePath(), NotConnectedStatus, "3 days ago", "v0.9.0"),
+            new Project("Windows Project", GetSamplePath(), NotConnectedStatus, "5 minutes ago", "v0.9.0")
         };
 #endif
 
