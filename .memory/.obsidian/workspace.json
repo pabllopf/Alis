@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ChunkTuple.md",
+                "file": "dependencies/dependency-graph.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ChunkTuple"
+              "title": "dependency-graph"
             }
           }
         ]
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ChunkTuple.md",
+                "file": "dependencies/dependency-graph.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de ChunkTuple"
+              "title": "Enlaces entrantes de dependency-graph"
             }
           },
           {
@@ -124,12 +124,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ChunkTuple.md",
+                "file": "dependencies/dependency-graph.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de ChunkTuple"
+              "title": "Enlaces salientes de dependency-graph"
             }
           },
           {
@@ -167,13 +167,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ChunkTuple.md",
+                "file": "dependencies/dependency-graph.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de ChunkTuple"
+              "title": "Esquema de dependency-graph"
             }
           }
         ]
@@ -199,8 +199,21 @@
   },
   "active": "847c078068ae35c5",
   "lastOpenFiles": [
-    "glossary/entity-component-system-ecs.md",
+    "concepts/Multi-Platform Samples.md",
+    "glossary/gameobject-only.md",
+    "glossary/gameobject-enumerator.md",
+    "glossary/gameobject-lookup.md",
+    "glossary/gameobject-type.md",
+    "concepts/Generator Pattern.md",
+    "concepts/Solution Composition.md",
+    "concepts/Aspect-Oriented Design.md",
+    "concepts/Layered Architecture.md",
+    "glossary/gameobject-location.md",
     "ChunkTuple.md",
+    "glossary/gameobject-id-only.md",
+    "glossary/gameobject-only-event.md",
+    "glossary/component-event.md",
+    "glossary/entity-component-system-ecs.md",
     "glossary/index.md",
     "glossary/fluent-interface.md",
     "glossary/event-t.md",
@@ -212,19 +225,6 @@
     "glossary/fastest-stack.md",
     "glossary/chunk-tuple.md",
     "glossary/component-storage.md",
-    "glossary/terms.md",
-    "glossary/query.md",
-    "glossary/scene.md",
-    "glossary/archetype.md",
-    "glossary/layer-dependency-order.md",
-    "glossary/component.md",
-    "glossary/system.md",
-    "glossary/gameobject.md",
-    "GameObject.md",
-    "testing/analysis.md",
-    "index.md",
-    "alis.samples.slnx.md",
-    "alis.slnx.md",
     "Sin título.canvas",
     "context",
     "projects/1_Presentation/Extension/Math/ProceduralDungeon",
