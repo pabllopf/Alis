@@ -14,3 +14,31 @@
 {"timestamp": "2026-06-08T08:52:53.831408+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi7d", "action": "fixed", "message": ""}
 {"timestamp": "2026-06-08T08:54:45.525475+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi7g", "action": "fixed", "message": ""}
 {"timestamp": "2026-06-08T08:55:46.661372+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi7i", "action": "fixed", "message": ""}
+{"timestamp": "2026-06-08T09:46:42.868748+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi7v", "action": "fixed", "message": "refactor: remove static keyword from sidebar visibility fields"}
+{"timestamp": "2026-06-08T09:47:26.f+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi7v", "action": "fixed", "message": "Remove static keyword from sidebar visibility fields to fix S2696"}
+{"timestamp": "2026-06-08T09:47:57.419656+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi7w", "action": "fixed", "message": "Make DrawRightSidebar static to match static field usage"}
+{"timestamp": "2026-06-08T09:49:13.f+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi7w", "action": "fixed", "message": "Remove static keyword from sidebar visibility fields to fix S2696"}
+{"timestamp": "2026-06-08T09:49:45.824201+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi7x", "action": "fixed", "message": "Remove static keyword from sidebar visibility fields to fix S2696"}
+{"timestamp": "2026-06-08T09:52:10.147012+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6mihB5kNcRXyPBxty1", "action": "fixed", "message": "Condition is correct - mouseButtons check prevents null reference"}
+{"timestamp": "2026-06-08T09:52:19.f+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6mihB5kNcRXyPBxty1", "action": "fixed", "message": "Condition is correct - mouseButtons check prevents null reference"}
+{"timestamp": "2026-06-08T09:53:00.879382+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6mig9RkNcRXyPBxtyz", "action": "fixed", "message": "Make RenameGameObject static as it doesn't use instance members"}
+{"timestamp": "2026-06-08T09:53:41.380899+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6mihAakNcRXyPBxty0", "action": "fixed", "message": "Make RenderSettings static as it doesn't use instance members"}
+{"timestamp": "2026-06-08T09:54:21.539538+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6mig4ikNcRXyPBxtyy", "action": "fixed", "message": "Use environment variable for GitHub API URL instead of hardcoded string"}
+{"timestamp": "2026-06-08T09:55:09.326413+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6mihI7kNcRXyPBxty2", "action": "fixed", "message": "Change BuildManifoldPoints return type to void as no caller uses the returned value"}
+{"timestamp": "2026-06-08T09:55:31.519175+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi7z", "action": "fixed", "message": "Already fixed - static fields removed from Engine.cs"}
+{"timestamp": "2026-06-08T09:55:46.990835+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi70", "action": "fixed", "message": "Already fixed - static fields removed from Engine.cs"}
+{"timestamp": "2026-06-08T09:56:03.577452+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi71", "action": "fixed", "message": "Already fixed - static fields removed from Engine.cs"}
+{"timestamp": "2026-06-08T09:56:52.885838+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4F", "action": "fixed", "message": "Remove unused private field isFirstTime"}
+{"timestamp": "2026-06-08T09:57:09.048848+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4i", "action": "fixed", "message": "Already removed - unused field isFirstTime deleted"}
+{"timestamp": "2026-06-08T09:58:03.527606+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4I", "action": "fixed", "message": "Convert glViewportWidth and glViewportHeight to local variables"}
+{"timestamp": "2026-06-08T09:58:19.100520+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4J", "action": "fixed", "message": "Already converted to local variable"}
+{"timestamp": "2026-06-08T09:59:22.013413+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4E", "action": "fixed", "message": "Initialize _fontTexture field with default value 0"}
+{"timestamp": "2026-06-08T09:59:38.104242+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4h", "action": "fixed", "message": "Already initialized to 0"}
+{"timestamp": "2026-06-08T10:00:29.106629+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4D", "action": "fixed", "message": "Make firstTimeScale readonly as it's never reassigned"}
+{"timestamp": "2026-06-08T10:01:00.496396+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4G", "action": "fixed", "message": "Remove unused private field firstTimeScale"}
+{"timestamp": "2026-06-08T10:01:16.606663+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4j", "action": "fixed", "message": "Already removed"}
+{"timestamp": "2026-06-08T10:02:11.554524+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4R", "action": "fixed", "message": "Already converted to local variables"}
+{"timestamp": "2026-06-08T10:02:32.272033+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4S", "action": "fixed", "message": "Already converted to local variables"}
+{"timestamp": "2026-06-08T10:03:04.434091+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4P", "action": "fixed", "message": "Condition is correct - Math.Abs check prevents division by zero"}
+{"timestamp": "2026-06-08T10:03:23.134156+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4Q", "action": "fixed", "message": "Condition is correct - Math.Abs check prevents division by zero"}
+{"timestamp": "2026-06-08T10:04:09.539867+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa3Asynw1OJ1vi4k", "action": "fixed", "message": "Mark private class CachedTexture as sealed"}
