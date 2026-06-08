@@ -26,7 +26,7 @@
         <NoWarn>$(NoWarn);S4200</NoWarn> <!-- Warning S4200 : Native methods should be wrapped -->
         <NoWarn>$(NoWarn);S3925</NoWarn>  <!-- "ISerializable" should be implemented correctly -->
         <NoWarn>$(NoWarn);S3267</NoWarn> <!-- Warning S3267 : Loops should be simplified with "LINQ" expressions -->
-        <NoWarn>$(NoWarn);CA1816</NoWarn>
+        <NoWarn>$(NoWarn);CA1816;CS0419;CS1572;CS1573;CS1574;CS1734</NoWarn>
     </PropertyGroup>
 
     
