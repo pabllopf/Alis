@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Collections;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Xunit;
 
@@ -35,67 +37,125 @@ namespace Alis.Core.Ecs.Test.Systems
     /// <summary>
     ///     The query hash test class
     /// </summary>
-    /// <remarks>
-    ///     Tests the QueryHash struct that provides hash code generation for queries.
-    ///     This is critical for query caching and performance optimization in the ECS.
-    /// </remarks>
     public class QueryHashTest
     {
         /// <summary>
-        ///     Tests that QueryHash can be created with default constructor
+        ///     Tests that new creates a query hash with default state
         /// </summary>
-        /// <remarks>
-        ///     Validates that QueryHash can be instantiated using default constructor.
-        /// </remarks>
         [Fact]
-        public void QueryHash_CanBeCreatedWithDefaultConstructor()
-        {
-            QueryHash hash = new QueryHash();
-
-            Assert.NotEqual(0, hash.ToHashCode());
-        }
-
-        /// <summary>
-        ///     Tests that QueryHash.New() creates a new instance
-        /// </summary>
-        /// <remarks>
-        ///     Validates that the static New() method creates a valid QueryHash instance.
-        /// </remarks>
-        [Fact]
-        public void QueryHash_NewMethod_CreatesInstance()
+        public void ShouldCreateDefaultQueryHashWhenNewCalled()
         {
             QueryHash hash = QueryHash.New();
 
-            Assert.NotEqual(0, hash.ToHashCode());
+            int result = hash.ToHashCode();
+
+            Assert.Equal(12582917, result);
         }
 
         /// <summary>
-        ///     Tests that two new QueryHash instances have the same initial hash
+        ///     Tests that add rule changes hash code
         /// </summary>
-        /// <remarks>
-        ///     Validates that QueryHash instances start with the same initial state.
-        /// </remarks>
         [Fact]
-        public void QueryHash_TwoNewInstances_HaveSameInitialHash()
+        public void ShouldChangeHashCodeWhenRuleAdded()
+        {
+            QueryHash hash = QueryHash.New();
+            Rule rule = Rule.HasComponent(new ComponentId(1));
+
+            QueryHash result = hash.AddRule(rule);
+
+            Assert.NotEqual(12582917, result.ToHashCode());
+        }
+
+        /// <summary>
+        ///     Tests that add rule returns same instance for chaining
+        /// </summary>
+        [Fact]
+        public void ShouldReturnSameInstanceWhenRuleAddedForChaining()
+        {
+            QueryHash hash = QueryHash.New();
+            Rule rule = Rule.HasComponent(new ComponentId(1));
+
+            QueryHash result = hash.AddRule(rule);
+
+            Assert.Equal(hash.ToHashCode(), result.ToHashCode());
+        }
+
+        /// <summary>
+        ///     Tests that multiple rules produce different hash than single rule
+        /// </summary>
+        [Fact]
+        public void ShouldProduceDifferentHashCodeWhenMultipleRulesAdded()
         {
             QueryHash hash1 = QueryHash.New();
             QueryHash hash2 = QueryHash.New();
+            Rule rule1 = Rule.HasComponent(new ComponentId(1));
+            Rule rule2 = Rule.HasComponent(new ComponentId(2));
+
+            hash1.AddRule(rule1);
+            hash2.AddRule(rule1);
+            hash2.AddRule(rule2);
+
+            Assert.NotEqual(hash1.ToHashCode(), hash2.ToHashCode());
+        }
+
+        /// <summary>
+        ///     Tests that same rules produce same hash code
+        /// </summary>
+        [Fact]
+        public void ShouldProduceSameHashCodeWhenSameRulesAdded()
+        {
+            QueryHash hash1 = QueryHash.New();
+            QueryHash hash2 = QueryHash.New();
+            Rule rule = Rule.HasComponent(new ComponentId(1));
+
+            hash1.AddRule(rule);
+            hash2.AddRule(rule);
 
             Assert.Equal(hash1.ToHashCode(), hash2.ToHashCode());
         }
 
         /// <summary>
-        ///     Tests that QueryHash default value has valid hash
+        ///     Tests that new with rules array creates correct hash
         /// </summary>
-        /// <remarks>
-        ///     Validates that default(QueryHash) produces a valid hash code.
-        /// </remarks>
         [Fact]
-        public void QueryHash_DefaultValue_HasValidHash()
+        public void ShouldCreateCorrectHashWhenNewWithRulesCalled()
         {
-            QueryHash defaultHash = default(QueryHash);
+            Rule rule1 = Rule.HasComponent(new ComponentId(1));
+            Rule rule2 = Rule.HasComponent(new ComponentId(2));
+            FastImmutableArray<Rule>.Builder builder = FastImmutableArray<Rule>.CreateBuilder<Rule>(2);
+            builder.Add(rule1);
+            builder.Add(rule2);
+            FastImmutableArray<Rule> rules = builder.ToImmutable();
 
-            Assert.Equal(0, defaultHash.ToHashCode());
+            QueryHash hash = QueryHash.New(rules);
+
+            Assert.NotEqual(12582917, hash.ToHashCode());
+        }
+
+        /// <summary>
+        ///     Tests that new with empty rules returns default hash
+        /// </summary>
+        [Fact]
+        public void ShouldReturnDefaultHashWhenNewWithEmptyRulesCalled()
+        {
+            FastImmutableArray<Rule> rules = FastImmutableArray<Rule>.Empty;
+
+            QueryHash hash = QueryHash.New(rules);
+
+            Assert.Equal(12582917, hash.ToHashCode());
+        }
+
+        /// <summary>
+        ///     Tests that include disabled rule produces valid hash
+        /// </summary>
+        [Fact]
+        public void ShouldProduceValidHashCodeWhenIncludeDisabledRuleUsed()
+        {
+            QueryHash hash = QueryHash.New();
+
+            hash.AddRule(Rule.IncludeDisabledRule);
+
+            Assert.NotEqual(0, hash.ToHashCode());
         }
     }
 }
