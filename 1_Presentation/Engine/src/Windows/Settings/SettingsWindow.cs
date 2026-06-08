@@ -112,7 +112,7 @@ namespace Alis.App.Engine.Windows.Settings
         ///     Renders the settings using the specified settings
         /// </summary>
         /// <param name="settings">The settings</param>
-        private void RenderSettings(object[] settings)
+        private static void RenderSettings(object[] settings)
         {
             throw new NotImplementedException();
         }
