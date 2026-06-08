@@ -99,11 +99,6 @@ namespace Alis.Core.Physic.Controllers
         private readonly Vector2F _gravity;
 
         /// <summary>
-        ///     Collection of unique bodies currently within the fluid region that are eligible for buoyancy calculations.
-        /// </summary>
-        private readonly ICollection<Body> _uniqueBodies = new List<Body>();
-
-        /// <summary>
         ///     Controls the rotational drag that the fluid exerts on bodies within it.
         ///     Higher values simulate thicker fluids (e.g., honey), while lower values simulate water-like fluids.
         /// </summary>
@@ -196,7 +191,7 @@ namespace Alis.Core.Physic.Controllers
         /// </remarks>
         public override void Update(float dt)
         {
-            _uniqueBodies.Clear();
+            List<Body> uniqueBodies = new List<Body>();
             WorldPhysic.QueryAabb(fixture =>
             {
                 if (fixture.GetBody.GetBodyType == BodyType.Static || !fixture.GetBody.Awake)
@@ -204,15 +199,15 @@ namespace Alis.Core.Physic.Controllers
                     return true;
                 }
 
-                if (!_uniqueBodies.Contains(fixture.GetBody))
+                if (!uniqueBodies.Contains(fixture.GetBody))
                 {
-                    _uniqueBodies.Add(fixture.GetBody);
+                    uniqueBodies.Add(fixture.GetBody);
                 }
 
                 return true;
             }, ref _container);
 
-            foreach (Body body in _uniqueBodies)
+            foreach (Body body in uniqueBodies)
             {
                 Vector2F areac = Vector2F.Zero;
                 Vector2F massc = Vector2F.Zero;
