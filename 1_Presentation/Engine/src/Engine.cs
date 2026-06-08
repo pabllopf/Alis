@@ -61,17 +61,17 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The show project
         /// </summary>
-        private static bool showProject;
+        private bool showProject;
 
         /// <summary>
         ///     The show inspector
         /// </summary>
-        private static bool showInspector;
+        private bool showInspector;
 
         /// <summary>
         ///     The show console
         /// </summary>
-        private static bool showConsole;
+        private bool showConsole;
 
         /// <summary>
         ///     The vector
