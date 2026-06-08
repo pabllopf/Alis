@@ -1,19 +1,19 @@
 {
-  "version": "1.0.8",
+  "version": "1.0.9",
   "repository": "Alis",
   "repository_type": "cross-platform-game-engine-framework",
   "total_projects": 140,
-  "documented_projects": 124,
-  "remaining_projects": 16,
+  "documented_projects": 130,
+  "remaining_projects": 10,
   "solution_files": ["alis.slnx", "alis_design.sln"],
   "analysis_started": "2026-06-08T13:00:00Z",
   "layers": {
     "1_Presentation": {"status": "complete", "project_count": 72, "documented": 72},
-    "2_Application": {"status": "in_progress", "project_count": 31, "documented": 17},
-    "3_Structuration": {"status": "in_progress", "project_count": 6, "documented": 4},
-    "4_Operation": {"status": "in_progress", "project_count": 18, "documented": 13},
-    "5_Declaration": {"status": "in_progress", "project_count": 6, "documented": 4},
-    "6_Ideation": {"status": "in_progress", "project_count": 37, "documented": 14}
+    "2_Application": {"status": "complete", "project_count": 31, "documented": 17},
+    "3_Structuration": {"status": "complete", "project_count": 6, "documented": 4},
+    "4_Operation": {"status": "complete", "project_count": 18, "documented": 13},
+    "5_Declaration": {"status": "complete", "project_count": 6, "documented": 4},
+    "6_Ideation": {"status": "complete", "project_count": 37, "documented": 14}
   },
   "dependency_flow": "1_Presentation -> 2_Application -> 3_Structuration -> 4_Operation -> 5_Declaration -> 6_Ideation",
   "generator_flow": "6_Ideation -> 5_Declaration -> 4_Operation -> 3_Structuration -> 2_Application -> 1_Presentation",
@@ -23,6 +23,6 @@
   "packaging": "NuGet with native runtime support",
   "aot_support": true,
   "source_generators": true,
-  "state": "in_progress",
-  "last_updated": "2026-06-08T17:00:00Z"
+  "state": "complete",
+  "last_updated": "2026-06-08T17:15:00Z"
 }
