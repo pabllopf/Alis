@@ -5,7 +5,7 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/Qwen3.5-35B-A3B-4bit",
+  "model": "omlx/Qwen3.5-35B-A3B-MLX-2bit",
 
   "provider": {
     "omlx": {
@@ -16,8 +16,8 @@
         "apiKey": "1234"
       },
       "models": {
-        "Qwen3.5-35B-A3B-4bit": {
-          "name": "Qwen3.5-35B-A3B-4bit",
+        "Qwen3.5-35B-A3B-MLX-2bit": {
+          "name": "Qwen3.5-35B-A3B-MLX-2bit",
           "modalities": {
             "input": ["text"],
             "output": ["text"]
