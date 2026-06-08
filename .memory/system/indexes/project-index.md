@@ -107,6 +107,37 @@
 | Alis.Core.Aspect.Logging/sample | Sample | netstandard2.0 |
 | Alis.Core.Aspect.Logging/Generator | Source Generator | netstandard2.0 |
 
+## Documentation Status
+
+### Documented Extensions (1_Presentation/Extension)
+
+| Project | Files | Status | Documentation |
+|---------|-------|--------|---------------|
+| Alis.Extension.Security | 9 | ✓ Documented | [[Alis.Extension.Security]] |
+| Alis.Extension.Ads.GoogleAds | 4 | ✓ Documented | [[Alis.Extension.Ads.GoogleAds]] |
+| Alis.Extension.Cloud.DropBox | 2 | ✓ Documented | [[Alis.Extension.Cloud.DropBox]] |
+| Alis.Extension.Payment.Stripe | 15 | ✓ Documented | [[Alis.Extension.Payment.Stripe]] |
+| Alis.Extension.Network | 53 | ✓ Documented | [[Alis.Extension.Network]] |
+| Alis.Extension.Io.FileDialog | 12 | ✓ Documented | [[Alis.Extension.Io.FileDialog]] |
+| Alis.Extension.Math.ProceduralDungeon | 25 | ✓ Documented | [[Alis.Extension.Math.ProceduralDungeon]] |
+| Alis.Extension.Math.HighSpeedPriorityQueue | 9 | ✓ Documented | [[Alis.Extension.Math.HighSpeedPriorityQueue]] |
+
+### Pending Extensions
+
+| Project | Files | Status |
+|---------|-------|--------|
+| Alis.Extension.Updater | - | Pending |
+| Alis.Extension.Language.Translator | - | Pending |
+| Alis.Extension.Language.Dialogue | - | Pending |
+| Alis.Extension.Graphic.Ui | - | Pending |
+| Alis.Extension.Graphic.Sfml | - | Pending |
+| Alis.Extension.Graphic.Glfw | - | Pending |
+| Alis.Extension.Graphic.Sdl2 | - | Pending |
+| Alis.Extension.Profile | - | Pending |
+| Alis.Extension.Cloud.GoogleDrive | - | Pending |
+| Alis.Extension.Thread | - | Pending |
+| Alis.Extension.Media.FFmpeg | - | Pending |
+
 ## Summary
 - **Total Projects**: 140
 - **Presentation**: 23
@@ -116,3 +147,5 @@
 - **Declaration**: 1
 - **Ideation**: 24
 - **Test/Sample/Generator sub-projects**: 57 (included in layer counts above)
+- **Documented Extensions**: 8 out of 19 (42%)
+
