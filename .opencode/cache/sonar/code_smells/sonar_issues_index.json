@@ -114,12 +114,14 @@
       "file": "pabllopf-official_alis:1_Presentation/Hub/src/Windows/Sections/EditorInstallationSection.cs",
       "line": 250,
       "severity": "MINOR",
-      "status": "OPEN",
+      "status": "CLOSED",
       "assignedWorker": null,
       "lockedAt": null,
-      "completedAt": null,
+      "completedAt": "2026-06-08T08:43:39.815258+00:00",
       "attemptCount": 0,
-      "message": "Refactor your code not to use hardcoded absolute paths or URIs."
+      "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T08:40:42.640340+00:00"
     },
     {
       "key": "AZ6OPawqsynw1OJ1vi3r",

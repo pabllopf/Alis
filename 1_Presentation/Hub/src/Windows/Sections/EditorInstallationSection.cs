@@ -49,9 +49,8 @@ namespace Alis.App.Hub.Windows.Sections
     /// <seealso cref="ASection" />
     public class EditorInstallationSection : ASection
     {
-        /// <summary>
-        ///     The installed version
-        /// </summary>
+        private const string ReleasesApiUrl = "https://api.github.com/repos/pabllopf/Alis/releases";
+
         private List<InstalledVersion> installedVersions = new List<InstalledVersion>();
 
         /// <summary>
@@ -247,7 +246,7 @@ namespace Alis.App.Hub.Windows.Sections
             using HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.UserAgent.ParseAdd("Alis-Hub");
 
-            using HttpResponseMessage response = await client.GetAsync("https://api.github.com/repos/pabllopf/Alis/releases");
+            using HttpResponseMessage response = await client.GetAsync(ReleasesApiUrl);
             response.EnsureSuccessStatusCode();
 
             string json = await response.Content.ReadAsStringAsync();
