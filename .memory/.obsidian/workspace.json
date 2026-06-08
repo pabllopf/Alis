@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "system/indexes/project-index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "project-index"
             }
           }
         ]
@@ -84,8 +84,7 @@
               "title": "Navegador de Cuadernos"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -105,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "index.md",
+                "file": "system/indexes/project-index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +114,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de index"
+              "title": "Enlaces entrantes de project-index"
             }
           },
           {
@@ -124,12 +123,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "index.md",
+                "file": "system/indexes/project-index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de index"
+              "title": "Enlaces salientes de project-index"
             }
           },
           {
@@ -167,13 +166,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "index.md",
+                "file": "system/indexes/project-index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de index"
+              "title": "Esquema de project-index"
             }
           }
         ]
@@ -199,32 +198,32 @@
   },
   "active": "0850690c2d57722e",
   "lastOpenFiles": [
-    "Obsidian.md",
-    "log.md",
-    "schema.md",
-    "index.md",
-    "system/logs/execution-log.md",
-    "projects/4_Operation/Alis.Core.Scene.md",
-    "projects/4_Operation/Core.md",
-    "projects/4_Operation/Alis.Core.Serialization.md",
-    "projects/4_Operation/Alis.Core.Window.md",
-    "projects/1_Presentation/Benchmark.md",
-    "conventions/naming-conventions.md",
-    "architecture/repository-overview.md",
-    "projects/6_Ideation/Alis.Core.Network.md",
-    "prompts/ai-context.md",
-    "prompts/conversation-starters.md",
-    "prompts/code-review-checklist.md",
-    "security/analysis.md",
-    "system/indexes/dependency-index.md",
+    "projects/6_Ideation/Alis.Core.Aspect.Data.md",
+    "projects/6_Ideation/Alis.Core.Aspect.Time.md",
+    "projects/6_Ideation/Alis.Core.Aspect.Memory.md",
+    "projects/6_Ideation/Alis.Core.Aspect.Fluent.md",
+    "projects/6_Ideation/Alis.Core.Aspect.Math.md",
+    "projects/4_Operation/Alis.Core.Ecs.md",
     "system/indexes/layer-index.md",
-    "projects/Index.md",
-    "projects/1_Presentation/Extension-Profile.md",
-    "projects/1_Presentation/Extension-Network.md",
-    "projects/6_Ideation/Aspect.Logging.md",
-    "projects/5_Declaration/Aspect.md",
-    "projects/Cross-Cutting-Concerns.md",
-    "projects/Testing-Strategy.md",
+    "system/indexes/dependency-index.md",
+    "system/logs/execution-log.md",
+    "projects/1_Presentation/Alis.Extension.Language.Dialogue.md",
+    "projects/1_Presentation/Alis.Extension.Graphic.Ui.md",
+    "projects/1_Presentation/Alis.Extension.Cloud.DropBox.md",
+    "projects/1_Presentation/Alis.App.Installer.md",
+    "projects/1_Presentation/Alis.App.Hub.md",
+    "projects/1_Presentation/Alis.App.Engine.md",
+    "projects/1_Presentation/Alis.Extension.Math.ProceduralDungeon.Test.md",
+    "projects/1_Presentation/Alis.Extension.Graphic.Glfw.md",
+    "projects/1_Presentation/Alis.Extension.Graphic.Sdl2.md",
+    "projects/1_Presentation/Alis.Extension.Graphic.Sfml.md",
+    "projects/1_Presentation/Alis.Extension.Language.Dialogue.Sample.md",
+    "projects/1_Presentation/Alis.Extension.Language.Dialogue.Test.md",
+    "projects/1_Presentation/Alis.Extension.Language.Translator.md",
+    "projects/1_Presentation/Alis.Extension.Language.Translator.Sample.md",
+    "projects/1_Presentation/Alis.Extension.Language.Translator.Test.md",
+    "projects/1_Presentation/Alis.Extension.Updater.md",
+    "projects/1_Presentation/Alis.Extension.Updater.Sample.md",
     "projects/6_Ideation",
     "projects/5_Declaration",
     "projects/4_Operation",

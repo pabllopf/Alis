@@ -38,6 +38,11 @@ The generated system MUST be:
 * idempotent
 * repository-aware
 * optimized for future LLM consumption
+* markdown-native
+* obsidian-native
+* git-friendly
+* human-readable
+* AI-consumable
 
 ---
 
@@ -53,72 +58,53 @@ NEVER write outside `.memory`.
 
 ---
 
-# CRITICAL EXECUTION RULES
+# MARKDOWN-ONLY RULE
 
-## RULE: NEVER REPROCESS EVERYTHING
+ALL generated files MUST use ONLY `.md` format.
 
-You MUST detect:
+NEVER generate:
 
-* already processed files
-* already processed projects
-* already generated indexes
-* unchanged files
-* unchanged modules
+* `.json`
+* `.yaml`
+* `.yml`
+* `.xml`
+* `.tmp`
+* `.cache`
+* `.bin`
 
-You MUST skip work whenever possible.
+ALL tracking, state, metadata, queues, checkpoints, hashes, indexes and execution data MUST be stored as markdown files.
 
 ---
 
-## RULE: INCREMENTAL EXECUTION
+# MARKDOWN STATE STRATEGY
 
-You MUST maintain execution state files.
+ALL system state MUST be persisted using markdown tables, markdown sections and structured markdown documents.
 
-Create:
+Example allowed formats:
 
-```text
-.memory/system/state/
+```markdown
+# Analysis State
+
+| Project | Status | Hash | Last Updated |
+|---|---|---|---|
+| Billing.API | Completed | abc123 | 2026-06-08 |
 ```
 
-Including:
+```markdown
+# Pending Work Queue
 
-```text
-analysis-state.json
-file-hashes.json
-project-state.json
-execution-log.md
-pending-work.json
+- [ ] Billing.API
+- [x] SharedKernel
+- [ ] Identity.Infrastructure
 ```
 
----
+```markdown
+# File Hashes
 
-## RULE: RESUMABLE EXECUTION
-
-If execution stops:
-
-* token limit
-* interruption
-* crash
-* cancellation
-
-future executions MUST resume from the exact last unfinished point.
-
-NEVER restart full analysis unless explicitly requested.
-
----
-
-## RULE: CHANGE DETECTION
-
-You MUST detect:
-
-* modified files
-* added files
-* deleted files
-* renamed projects
-* changed dependencies
-* changed architecture
-* changed public APIs
-
-Only regenerate affected documentation.
+| File | Hash |
+|---|---|
+| Billing.API.csproj | abc123 |
+```
 
 ---
 
@@ -132,6 +118,10 @@ Generate:
 │   ├── state/
 │   ├── indexes/
 │   ├── logs/
+│   ├── tracking/
+│   ├── sessions/
+│   ├── queues/
+│   ├── checkpoints/
 │   └── metadata/
 │
 ├── architecture/
@@ -147,6 +137,7 @@ Generate:
 ├── sonar/
 ├── performance/
 ├── prompts/
+├── context/
 ├── conventions/
 ├── decisions/
 ├── onboarding/
@@ -157,6 +148,322 @@ Generate:
 ├── reports/
 └── summaries/
 ```
+
+---
+
+# REQUIRED STATE FILES
+
+Generate ONLY markdown files.
+
+Create:
+
+```text
+.memory/system/state/
+```
+
+Including:
+
+```text
+analysis-state.md
+file-hashes.md
+project-state.md
+execution-state.md
+pending-work.md
+completed-work.md
+resume-points.md
+regeneration-state.md
+stability-state.md
+repository-delta.md
+```
+
+---
+
+# REQUIRED SESSION FILES
+
+Create:
+
+```text
+.memory/system/sessions/
+```
+
+Including:
+
+```text
+current-session.md
+session-history.md
+active-batches.md
+pending-iterations.md
+execution-checkpoints.md
+last-successful-run.md
+```
+
+---
+
+# REQUIRED TRACKING FILES
+
+Create:
+
+```text
+.memory/system/tracking/
+```
+
+Including:
+
+```text
+documentation-map.md
+coverage-map.md
+documentation-status.md
+generation-history.md
+regeneration-queue.md
+project-analysis-coverage.md
+documentation-quality.md
+manual-edits.md
+```
+
+---
+
+# REQUIRED QUEUE FILES
+
+Create:
+
+```text
+.memory/system/queues/
+```
+
+Including:
+
+```text
+pending-projects.md
+completed-projects.md
+failed-projects.md
+skipped-projects.md
+changed-projects.md
+pending-indexes.md
+pending-regeneration.md
+high-priority-analysis.md
+```
+
+---
+
+# REQUIRED CHECKPOINT FILES
+
+Create:
+
+```text
+.memory/system/checkpoints/
+```
+
+Including:
+
+```text
+latest-checkpoint.md
+architecture-checkpoint.md
+dependency-checkpoint.md
+testing-checkpoint.md
+security-checkpoint.md
+documentation-checkpoint.md
+```
+
+---
+
+# REQUIRED LOG FILES
+
+Create:
+
+```text
+.memory/system/logs/
+```
+
+Including:
+
+```text
+execution-log.md
+regeneration-log.md
+commit-history.md
+analysis-history.md
+failures.md
+warnings.md
+```
+
+---
+
+# CRITICAL EXECUTION RULES
+
+## RULE: NEVER REPROCESS EVERYTHING
+
+You MUST detect:
+
+* already processed files
+* already processed projects
+* already generated indexes
+* unchanged files
+* unchanged modules
+* unchanged markdown outputs
+
+You MUST skip work whenever possible.
+
+---
+
+## RULE: INCREMENTAL EXECUTION
+
+You MUST maintain persistent markdown state files.
+
+You MUST continuously update:
+
+* hashes
+* work queues
+* project coverage
+* analysis status
+* execution checkpoints
+* regeneration queues
+
+using markdown ONLY.
+
+---
+
+## RULE: RESUMABLE EXECUTION
+
+If execution stops because of:
+
+* token limit
+* interruption
+* crash
+* cancellation
+* timeout
+
+future executions MUST resume from the exact last unfinished point.
+
+NEVER restart full analysis unless explicitly requested.
+
+---
+
+# ITERATIVE EXECUTION MODEL
+
+You MUST behave like a persistent iterative indexing engine.
+
+You MUST continuously:
+
+1. analyze
+2. checkpoint
+3. persist markdown state
+4. generate memory
+5. update markdown tracking
+6. commit
+7. continue from next pending work item
+
+Execution MUST evolve incrementally over multiple sessions.
+
+---
+
+# INDEX-FIRST STRATEGY
+
+Before analyzing code:
+
+1. load markdown indexes
+2. load markdown tracking files
+3. load previous markdown state
+4. determine delta changes
+5. build minimal work queue
+6. process only required targets
+
+---
+
+# CHANGE DETECTION
+
+You MUST detect:
+
+* modified files
+* added files
+* deleted files
+* renamed projects
+* changed dependencies
+* changed architecture
+* changed public APIs
+* changed markdown outputs
+
+Only regenerate affected documentation.
+
+---
+
+# FILE HASHING
+
+Maintain hashes using markdown tables.
+
+Track:
+
+* source files
+* csproj files
+* sln files
+* props files
+* targets files
+* yaml files
+* config files
+* markdown outputs
+
+Use hashes to determine regeneration necessity.
+
+---
+
+# ANTI-LOOP PROTECTION
+
+You MUST prevent infinite regeneration loops.
+
+If generated output hash has not changed:
+
+* skip regeneration
+* skip rewrite
+* skip commit
+
+If documentation quality is already sufficient:
+
+* mark as stable
+* avoid unnecessary updates
+
+---
+
+# STABILITY CLASSIFICATION
+
+Classify generated documents as:
+
+* stable
+* volatile
+* high-churn
+* generated
+* manually-extended
+
+Store classifications in markdown tables.
+
+Prefer avoiding regeneration of stable files.
+
+---
+
+# MANUAL EDIT PROTECTION
+
+You MUST preserve:
+
+* manual notes
+* manually added wiki links
+* manual diagrams
+* custom summaries
+* hand-written architectural decisions
+
+Generated content MUST coexist safely with manual content.
+
+If a markdown file contains:
+
+```text
+<!-- MANUAL NOTES START -->
+```
+
+and
+
+```text
+<!-- MANUAL NOTES END -->
+```
+
+You MUST preserve that section EXACTLY.
+
+NEVER overwrite manual notes.
 
 ---
 
@@ -285,7 +592,7 @@ These files MUST be optimized for future AI agents.
 
 ---
 
-## Obsidian Knowledge Graph
+# OBSIDIAN KNOWLEDGE GRAPH
 
 Generate markdown links between documents.
 
@@ -331,7 +638,7 @@ You MUST:
 * process incrementally
 * avoid loading entire repository into context
 * work module-by-module
-* maintain persistent state
+* maintain persistent markdown state
 * checkpoint frequently
 
 ---
@@ -351,20 +658,7 @@ Prefer:
 * incremental regeneration
 * file hashing
 * partial updates
-
----
-
-# FILE HASHING
-
-Maintain hashes for:
-
-* source files
-* csproj files
-* sln files
-* props/targets files
-* yaml/json configs
-
-Use hashes to determine regeneration necessity.
+* markdown tracking indexes
 
 ---
 
@@ -395,16 +689,22 @@ Generate:
 
 Including:
 
-* projects-index.md
-* services-index.md
-* apis-index.md
-* domains-index.md
-* repositories-index.md
-* handlers-index.md
-* events-index.md
-* commands-index.md
-* queries-index.md
-* tests-index.md
+```text
+projects-index.md
+services-index.md
+apis-index.md
+domains-index.md
+repositories-index.md
+handlers-index.md
+events-index.md
+commands-index.md
+queries-index.md
+tests-index.md
+dependency-index.md
+architecture-index.md
+security-index.md
+performance-index.md
+```
 
 ---
 
@@ -460,87 +760,11 @@ Append:
 * updated projects
 * failures
 * pending work
+* regenerated docs
+* stable docs skipped
+* queue updates
 
 ---
-
-# STRICT OUTPUT RULES
-
-NEVER:
-
-* rewrite everything unnecessarily
-* delete valid existing memory
-* duplicate markdown files
-* regenerate unchanged content
-* create temporary files outside `.memory`
-
-ALWAYS:
-
-* update incrementally
-* preserve manual edits when possible
-* append intelligently
-* maintain stable structure
-
----
-
-# MANUAL EDIT PRESERVATION
-
-If a markdown file contains:
-
-```text
-<!-- MANUAL NOTES START -->
-```
-
-and
-
-```text
-<!-- MANUAL NOTES END -->
-```
-
-You MUST preserve that section EXACTLY.
-
-NEVER overwrite manual notes.
-
----
-
-# EXECUTION STRATEGY
-
-At execution start:
-
-1. Load previous state
-2. Detect repository changes
-3. Build work queue
-4. Resume unfinished work
-5. Process incrementally
-6. Save checkpoints frequently
-7. Update indexes
-8. Regenerate affected summaries only
-
----
-
-# FINAL OBJECTIVE
-
-The final `.memory` directory must behave like:
-
-* a persistent AI memory system
-* a complete engineering knowledge base
-* an Obsidian vault
-* a repository intelligence platform
-* a future agent orchestration context layer
-
-optimized for:
-
-* humans
-* AI agents
-* LLM context injection
-* onboarding
-* maintenance
-* architecture evolution
-* autonomous remediation agents
-* Sonar remediation workflows
-* automated testing agents
-* security review agents
-* repository governance
-
 
 # GIT COMMIT STRATEGY
 
@@ -565,13 +789,13 @@ Commits MUST happen:
 
 ALL commits MUST follow STRICTLY this format:
 
-```text id="89y3bn"
+```text
 docs: <short-description>
 ```
 
 Examples:
 
-```text id="e8i69u"
+```text
 docs: generate billing domain memory
 docs: update dependency graph for shared kernel
 docs: document authentication infrastructure
@@ -613,7 +837,7 @@ Before committing:
 * verify no duplicate files
 * verify indexes are coherent
 * verify links are valid
-* verify no corrupted state files
+* verify no corrupted markdown state files
 
 Only commit validated memory updates.
 
@@ -632,67 +856,6 @@ You MUST NEVER:
 ALL work MUST happen inside a SINGLE deterministic execution context.
 
 This is mandatory.
-
----
-
-# ITERATIVE EXECUTION MODEL
-
-You MUST behave like a persistent iterative indexing engine.
-
-You MUST continuously:
-
-1. analyze
-2. checkpoint
-3. persist state
-4. generate memory
-5. commit
-6. continue from next pending work item
-
-Execution MUST evolve incrementally over multiple sessions.
-
----
-
-# SESSION PERSISTENCE
-
-Maintain:
-
-```text id="t5x0g0"
-.memory/system/session/
-```
-
-Including:
-
-```text id="3w8z4q"
-current-session.json
-session-history.json
-active-batches.json
-pending-iterations.json
-resume-points.json
-```
-
-These files MUST allow future sessions to continue EXACTLY where previous sessions stopped.
-
----
-
-# WORK QUEUE ENGINE
-
-Maintain a persistent work queue:
-
-```text id="l4o74q"
-.memory/system/work-queue/
-```
-
-Including:
-
-```text id="n2yov6"
-pending-projects.json
-completed-projects.json
-failed-projects.json
-skipped-projects.json
-changed-projects.json
-```
-
-You MUST NEVER lose queue state between executions.
 
 ---
 
@@ -717,8 +880,8 @@ Preferred batch order:
 
 After each batch:
 
-* persist state
-* update indexes
+* persist markdown state
+* update markdown indexes
 * commit changes
 * checkpoint execution
 
@@ -726,47 +889,17 @@ After each batch:
 
 # DOCUMENTATION TRACKING
 
-Maintain documentation tracking metadata for EVERY generated artifact.
+Maintain documentation tracking metadata for EVERY generated artifact using markdown tables and markdown indexes.
 
-Create:
+Track:
 
-```text id="0x9pq6"
-.memory/system/tracking/
-```
-
-Including:
-
-```text id="c3tp7r"
-documentation-map.json
-coverage-map.json
-documentation-status.json
-generation-history.json
-regeneration-queue.json
-```
-
----
-
-# DOCUMENTATION STATUS ENGINE
-
-Each project/module/document MUST have status tracking:
-
-```json id="7lppyo"
-{
-  "project": "Billing.API",
-  "status": "completed",
-  "lastAnalyzed": "timestamp",
-  "lastHash": "hash",
-  "documentationVersion": 4,
-  "pendingUpdates": false,
-  "lastCommit": "commit-sha",
-  "analysisCoverage": {
-    "architecture": true,
-    "dependencies": true,
-    "security": true,
-    "testing": false
-  }
-}
-```
+* analysis coverage
+* documentation quality
+* regeneration necessity
+* dependency relationships
+* project completion status
+* documentation stability
+* commit references
 
 ---
 
@@ -812,69 +945,12 @@ NEVER:
 
 ALWAYS:
 
-* use indexed metadata
+* use markdown indexes
+* use markdown tracking metadata
 * use hashes
 * use incremental scans
 * process localized batches
-* use persistent checkpoints
-
----
-
-# INDEX-FIRST STRATEGY
-
-Before analyzing code:
-
-1. load indexes
-2. load tracking metadata
-3. load previous state
-4. determine delta changes
-5. build minimal work queue
-6. process only required targets
-
----
-
-# ANTI-LOOP PROTECTION
-
-You MUST prevent infinite regeneration loops.
-
-If generated output hash has not changed:
-
-* skip regeneration
-* skip rewrite
-* skip commit
-
-If documentation quality is already sufficient:
-
-* mark as stable
-* avoid unnecessary updates
-
----
-
-# STABILITY CLASSIFICATION
-
-Classify generated documents:
-
-* stable
-* volatile
-* high-churn
-* generated
-* manually-extended
-
-Prefer avoiding regeneration of stable files.
-
----
-
-# MANUAL EDIT PROTECTION
-
-You MUST preserve:
-
-* manual notes
-* manually added wiki links
-* manual diagrams
-* custom summaries
-* hand-written architectural decisions
-
-Generated content MUST coexist safely with manual content.
+* use persistent markdown checkpoints
 
 ---
 
@@ -888,7 +964,8 @@ The final system MUST behave like:
 * a deterministic AI context system
 * a resumable autonomous repository indexing engine
 * a long-term engineering knowledge base
-
+* a markdown-native repository memory layer
+* a fully obsidian-compatible engineering vault
 
 ```
 ```
