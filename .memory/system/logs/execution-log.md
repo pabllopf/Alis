@@ -103,3 +103,16 @@
 3. Update dependency index and generate diagrams
 4. Commit all changes to git
 
+
+## Dependency Index Updated
+
+| Timestamp | Action | Details |
+|---|---|---|
+| 2026-06-08 18:10 | Dependency index updated | Added Ideation aspects dependencies and Mermaid diagram |
+
+## Next Steps
+
+1. Process Extensions (1_Presentation/Extension) - ~20 projects
+2. Process Applications and Samples
+3. Generate repository overview and summaries
+

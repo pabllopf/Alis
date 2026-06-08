@@ -198,6 +198,7 @@
   },
   "active": "9d5245e6134357f0",
   "lastOpenFiles": [
+    "diagrams/dependency-graph.md",
     "projects/6_Ideation/Logging/Alis.Core.Aspect.Logging.md",
     "projects/6_Ideation/Logging",
     "projects/6_Ideation/Time/Alis.Core.Aspect.Time.md",
@@ -229,7 +230,6 @@
     "system/indexes/domains-index.md",
     "diagrams/architecture-overview.md",
     "decisions/adr-002-aggregator-pattern.md",
-    "system/state/execution-state.md",
     "system/sessions",
     "system/checkpoints",
     "system/queues",
