@@ -16,11 +16,15 @@
 - [x] Process GoogleAds extension (1_Presentation/Extension/Ads) ✓
 - [x] Process DropBox extension (1_Presentation/Extension/Cloud) ✓
 - [x] Process Stripe extension (1_Presentation/Extension/Payment) ✓
+- [x] Process Network extension (1_Presentation/Extension/Network) ✓
+- [x] Process FileDialog extension (1_Presentation/Extension/Io) ✓
+- [x] Process ProceduralDungeon extension (1_Presentation/Extension/Math) ✓
+- [x] Process HighSpeedPriorityQueue extension (1_Presentation/Extension/Math) ✓
 
 ## Next Batch
 
-- [ ] Process Extensions (1_Presentation/Extension) - ~16 projects remaining
-  - Network, FileDialog, Updater, Language, Math, Graphic, Cloud (GoogleDrive), Thread, Media
+- [ ] Process Extensions (1_Presentation/Extension) - ~12 projects remaining
+  - Updater, Language (Translator, Dialogue), Graphic (Ui, Sfml, Glfw, Sdl2), Cloud (GoogleDrive), Thread, Media (FFmpeg)
 - [ ] Process Applications (1_Presentation) - Engine, Hub, Installer, Benchmark
 - [ ] Process Samples (~30 projects)
 - [ ] Process Ideation aspects (6_Ideation)

@@ -13,7 +13,7 @@
 | Batch | Projects | Status |
 |---|---|---|
 | 1 | 10/20 | completed ✓ |
-| 2 | 4/19 | processing - Process Extensions (1_Presentation/Extension) |
+| 2 | 8/19 | processing - Process Extensions (1_Presentation/Extension) |
 | 3 | 0/20 | pending |
 | 4 | 0/20 | pending |
 | 5 | 0/20 | pending |
