@@ -1,71 +1,138 @@
 # Alis.Core.Aspect.Memory
 
 ## Overview
-Memory and asset management library for ALIS game engine. Provides asset packaging, caching, and registry functionality.
 
-**Author**: Pablo Perdomo Falcón  
-**License**: GNU General Public License v3.0
-
-## Project Details
-- **Layer**: 6_Ideation
-- **Type**: Library (Memory Aspect)
-- **Framework**: net8.0
-- **Output Type**: Class Library
+The **Alis.Core.Aspect.Memory** project provides a ZIP-based asset management system with in-memory caching and disk extraction capabilities. It enables efficient storage and retrieval of embedded assets through a dual-cache strategy (in-memory ZIP bytes + disk-extracted paths).
 
 ## Purpose
-Provides comprehensive asset management system including:
-- Asset packaging (assets.pack format)
-- Zip archive handling and extraction
-- Memory caching for fast repeated access
-- Asset registry and resolution
-- Thread-safe asset management
 
-## Key Components
+- Manage embedded asset packages (.pack/.zip files)
+- Provide fast in-memory ZIP caching with entry indexing
+- Extract assets to temporary disk files when needed
+- Support concurrent access across multiple assemblies
+- Generate unique file names using SHA256 hashing
 
-### ZipCacheEntry Class
-- Caches raw byte content of extracted assets.pack archives
-- Pre-built lookup dictionaries for O(1) access
-- Maps entry paths and file names to ZipEntryInfo metadata
+## Architecture
+
+### Core Components
+
+| Component | Type | Description |
+|-----------|------|-------------|
+| `AssetRegistry` | Static Class | Main entry point - manages asset loading and caching |
+| `ZipCacheEntry` | Class | Represents cached ZIP data with entry indexes |
+| `ZipEntryInfo` | Class | Holds ZIP entry metadata (path, length, timestamp) |
+
+### Cache Strategy
+
+**Dual Cache System:**
+
+1. **In-Memory Cache** (`_zipCache`)
+   - Stores entire ZIP file bytes in memory (`PackBytes`)
+   - Maintains entry indexes for fast lookup
+   - Per-assembly locking to reduce contention
+
+2. **Disk Cache** (`_extractedPathCache`)
+   - Stores extracted file paths on disk
+   - Uses SHA256 hash for unique file naming
+   - Validates cached files against entry metadata
+
+### Thread Safety
+
+- **Global Lock** (`_globalLock`) - Cross-assembly coordination
+- **Per-Assembly Locks** (`_assemblyLocks`) - Reduces contention for same-assembly access
+- **ConcurrentDictionary** - Thread-safe assembly lock management
+
+## Public API
 
 ### AssetRegistry Class
-- Registers assembly-level embedded asset packages (.pack/.zip)
-- Resolves embedded resource paths by name
-- Provides in-memory stream resolution
-- Thread-safe caches for zip indexes
-- Minimizes redundant I/O across assemblies
 
-### ZipEntryInfo Struct
-- Metadata for individual zip entries
-- Path, name, and offset information
+```csharp
+public static class AssetRegistry
+{
+    // Registration
+    static void RegisterAssembly(string assemblyName, Func<Stream> assetLoader);
+    
+    // Resource Access
+    MemoryStream GetResourceMemoryStreamByName(string resourceName);
+    string GetResourcePathByName(string resourceName);
+    
+    // Cache Management (internal)
+    static void EnsureZipCachedForActiveAssembly();
+    static ZipEntryInfo FindZipEntryInfo(ZipCacheEntry cacheEntry, string resourceName);
+}
+```
+
+### Usage Example
+
+```csharp
+using Alis.Core.Aspect.Memory;
+
+// Register an assembly with its assets.pack
+var assembly = typeof(MyGameAssembly).Assembly;
+var stream = assembly.GetManifestResourceStream("assets.pack");
+AssetRegistry.RegisterAssembly(assembly.GetName().Name, () => stream);
+
+// Get resource as stream
+var resourceStream = AssetRegistry.GetResourceMemoryStreamByName("textures/sprite.png");
+
+// Get resource path on disk
+var filePath = AssetRegistry.GetResourcePathByName("sounds/music.mp3");
+```
+
+## Files
+
+| File | Lines | Description |
+|------|-------|-------------|
+| AssetRegistry.cs | 612 | Core asset management logic |
+| ZipCacheEntry.cs | - | ZIP cache entry data structure |
+| ZipEntryInfo.cs | - | Entry metadata holder |
 
 ## Dependencies
-- System.IO.Compression - Zip handling
-- System.Security.Cryptography - Hash calculations
 
-## Build Configuration
-- **LangVersion**: 13
-- **Nullable**: enabled
-- **AllowUnsafeBlocks**: false
+- **System.IO.Compression** - ZIP archive handling
+- **System.Security.Cryptography** - SHA256 hashing
+- **System.Buffers** - Array pooling for buffer management
 
-## Performance Features
-1. Memory-mapped asset access
-2. Concurrent dictionary for thread safety
-3. Cached zip indexes
-4. Minimal redundant I/O
+## Configuration
 
-## Testing Status
-- **Unit Tests**: Present (Alis.Core.Aspect.Memory.Test)
-- **Sample Apps**: Included (Alis.Core.Aspect.Memory.Sample)
+See [QualityPlan.md](QualityPlan.md) for performance goals.
 
-## Architecture Notes
-1. Static registry pattern for asset management
-2. Embedded resource handling
-3. SHA256 hash-based change detection
-4. Cross-platform path handling (forward slashes)
+## Quality Plan
+
+See [plan.md](plan.md) for detailed architecture notes and TODOs.
+
+## Performance Characteristics
+
+| Operation | Complexity | Notes |
+|-----------|------------|-------|
+| Register Assembly | O(1) | Adds to dictionary |
+| Cache ZIP | O(N) | N = number of entries in ZIP |
+| Lookup Entry | O(1) | Hash-based lookup |
+| Extract to Disk | O(M) | M = entry size in bytes |
+| Cache Hit (stream) | O(1) | In-memory lookup |
+| Cache Hit (disk) | O(1) | Path lookup + validation |
+
+## Known Issues
+
+1. **Memory Leak Risk** - `_zipCache` stores entire ZIP files with no size limit or eviction policy
+2. **Thread Safety Gaps** - Race conditions possible between cache lookup and entry extraction
+3. **No Cache Eviction** - Memory grows unbounded as new ZIPs are loaded
+4. **Disk Cleanup Not Guaranteed** - Temp files accumulate without automatic cleanup
+5. **Global Mutable State** - `ActiveAssemblyName` affects all subsequent lookups
+
+## TODOs
+
+- [ ] Add cache size limits (LRU eviction)
+- [ ] Fix thread safety gaps in per-assembly locking
+- [ ] Add automatic temp file cleanup
+- [ ] Support DI/IAssetRegistry interface
+- [ ] Add memory pressure handling
+- [ ] Implement async extraction
+- [ ] Add ZIP streaming for large packs (>500MB)
+- [ ] Create source generator for compile-time asset validation
 
 ## Related Projects
-- [[Alis.App.Engine]] (1_Presentation) - Uses asset pack system
-- [[Alis.Core.Aspect.Data]] (6_Ideation) - Data persistence
 
-## Documentation Version
-Auto-generated from source code analysis. Last updated: 2026-06-08
+- [[Alis.Core.Aspect.Fluent]] - Fluent aspect system
+- [[Alis.Core.Aspect.Data]] - Data aspect system
+- [[Alis.Core.Aspect.Memory.Generator]] - Source generator (if exists)

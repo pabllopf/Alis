@@ -12,6 +12,7 @@
 | Alis.Core.Graphic | 147 | Documented |
 | Alis.Core.Audio | 7 | Documented |
 | Alis.Core.Physic | 194 | Documented |
+| Alis.Core.Aspect.Memory | 3 | Documented |
 | Alis.Core.Aspect.Memory | 6 | Documented |
 | Alis.Core.Aspect.Fluent | - | Documented |
 | Alis.Core.Aspect.Data | - | Documented |

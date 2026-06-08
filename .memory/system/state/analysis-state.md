@@ -17,15 +17,14 @@
 - Alis.Core.Graphic ✓ Documented (147 files)
 - Alis.Core.Audio ✓ Documented (7 files)
 - Alis.Core.Physic ✓ Documented (194 files)
-- Alis.Core.Input ⏳ Pending
-- Alis.Core.Resource ⏳ Pending
-- Alis.Core.Scene ⏳ Pending
-- Alis.Core.Serialization ⏳ Pending
-- Alis.Core.Window ⏳ Pending
 
 ### Ideation Aspects (6_Ideation)
-- Alis.Core.Aspect.Memory ⏳ Pending
+- Alis.Core.Aspect.Memory ✓ Documented (3 files)
 - Alis.Core.Aspect.Fluent ⏳ Pending
+- Alis.Core.Aspect.Data ⏳ Pending
+- Alis.Core.Aspect.Math ⏳ Pending
+- Alis.Core.Aspect.Time ⏳ Pending
+- Alis.Core.Aspect.Logging ⏳ Pending
 - Alis.Core.Aspect.Data ⏳ Pending
 - Alis.Core.Aspect.Math ⏳ Pending
 - Alis.Core.Aspect.Time ⏳ Pending

@@ -12,7 +12,7 @@
 
 | Batch | Projects | Status |
 |---|---|---|
-| 1 | 4/20 | in_progress |
+| 1 | 5/20 | in_progress |
 | 2 | 0/20 | pending |
 | 3 | 0/20 | pending |
 | 4 | 0/20 | pending |
