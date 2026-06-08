@@ -6,3 +6,4 @@
 {"timestamp": "2026-06-08T08:30:57.566207+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6HYoPV6S35Q68IssY8", "action": "fixed"}
 {"timestamp": "2026-06-08T08:32:21.890660+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPakDsynw1OJ1vi3i", "action": "fixed", "message": "refactor: merge parameterless constructor with default parameter"}
 {"timestamp": "2026-06-08T08:34:18.389099+00:00", "workerId": "worker-mac-1", "issueKey": "AZ548a5QEMqJBb_RZcep", "action": "fixed", "message": "refactor: use ctx.CellHeight instead of local parameter"}
+{"timestamp": "2026-06-08T08:36:17.321818+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPazHsynw1OJ1vi3y", "action": "fixed", "message": "refactor: define NotConnectedStatus constant"}

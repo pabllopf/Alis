@@ -89,7 +89,9 @@
       "lockedAt": null,
       "completedAt": null,
       "attemptCount": 0,
-      "message": "Define a constant instead of using this literal 'NOT CONNECTED' 4 times."
+      "message": "Define a constant instead of using this literal 'NOT CONNECTED' 4 times.",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T08:35:06.276887+00:00"
     },
     {
       "key": "AZ6OPazHsynw1OJ1vi3z",
