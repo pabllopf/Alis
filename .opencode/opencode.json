@@ -5,7 +5,7 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/Qwen3.6-35B-A3B-UD-MLX-4bit",
+  "model": "omlx/Qwen3.5-35B-A3B-4bit",
 
   "provider": {
     "omlx": {
@@ -16,19 +16,19 @@
         "apiKey": "1234"
       },
       "models": {
-        "Qwen3.6-35B-A3B-UD-MLX-4bit": {
-          "name": "Qwen3.6-35B-A3B-UD-MLX-4bit",
+        "Qwen3.5-35B-A3B-4bit": {
+          "name": "Qwen3.5-35B-A3B-4bit",
           "modalities": {
             "input": ["text"],
             "output": ["text"]
           },
           "attachment": false,
 
-          "maxInputTokens": 98688,
-          "maxOutputTokens": 98688,
+          "maxInputTokens": 131584,
+          "maxOutputTokens": 131584,
           "limit": {
-            "context": 98688,
-            "output": 98688
+            "context": 131584,
+            "output": 131584
           }
         }
       }
