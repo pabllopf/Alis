@@ -1,33 +1,88 @@
-# Alis (Core Application Library)
+# Alis
 
 ## Overview
-The core application library that provides fundamental services for ALIS games and applications. Acts as the central dependency for all Presentation layer projects.
+Core application framework for the ALIS cross-platform game engine.
+
+**Author**: Pablo Perdomo Falcón  
+**License**: GNU General Public License v3.0  
+**Total Source Files**: ~88 C# files
 
 ## Project Details
 - **Layer**: 2_Application
-- **Type**: Class Library
-- **Framework**: net8.0
-- **Output Dir**: `bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/`
+- **Type**: Core Application Library
+- **Framework**: net8.0 (multi-targeting supported)
+- **Output Type**: Class Library
+
+## Purpose
+Provides the core game engine runtime application that launches and manages game instances. Serves as the main entry point for ALIS applications and integrates all engine subsystems including ECS (Entity Component System), rendering, audio, and physics.
+
+## Key Components
+
+### ECS (Entity Component System)
+- **Camera** - 2D/3D camera component
+  - Position and resolution management (Vector2F)
+  - OnStart/OnExit lifecycle methods
+  - Context-aware component
+  
+- **RigidBody** - Physics body component
+- **Sprite** - 2D sprite rendering
+- **Animation** - Animation system
+- **IAnimator** - Animation controller interface
+
+### Systems
+- **Scope System** - Entity scope management
 
 ## Dependencies
-- All generators from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation
+- [[Alis.Core.Aspect.Fluent]] (6_Ideation) - Fluent components
+- [[Alis.Core.Aspect.Logging]] (6_Ideation) - Logging aspect
+- [[Alis.Core.Aspect.Math]] (6_Ideation) - Vector2F, Color
+- [[Alis.Core.Ecs]] (4_Operation) - ECS systems
+- [[Alis.Core.Graphic]] (4_Operation) - Graphics primitives
 
 ## Build Configuration
 - **LangVersion**: 13
-- **Nullable**: disable
+- **Nullable**: disabled (project-specific)
 - **AllowUnsafeBlocks**: false
-- **SonarQubeExclude**: true
 
-## Asset Pipeline
-- Uses [[#Asset Pack System]] for resource management
-- SHA256 hash-based change detection
-- Incremental build via manifest file
+## Platform Support
+- Windows
+- macOS
+- Linux
+- Web (via Blazor/WebAssembly)
+- Mobile (Android, iOS - planned)
 
-## Key Build Targets
-- `_PrepareAssetPackManifest` — Generates asset manifest with SHA256 hashes
-- `ZipAssets` — Zips assets and encodes to base64
+## Testing Status
+- **Unit Tests**: Present (Alis.Test)
+- **Sample Apps**: Multiple samples included
+  - Asteroid game
+  - Dino runner
+  - Egg game
+  - Flappy Bird clone
+  - King of the Hill
+  - Pong
+  - Rogue-like
+  - Snake
+  - Space Simulator
+  - Ruins of Tartarus
+  - Split Camera
 
-## Notes
-- Central library consumed by all Presentation layer projects
-- No direct framework dependencies beyond .NET runtime
-- Provides core abstractions for game development
+## Architecture Notes
+1. ECS-based game architecture
+2. Component-based design with struct components
+3. Context-aware components for engine lifecycle
+4. Fluent API for component configuration
+
+## Sample Applications
+The project includes 11+ sample games demonstrating engine capabilities:
+- 2D platformers
+- Puzzle games
+- Arcade classics
+- Simulation games
+
+## Related Projects
+- [[Alis.App.Engine]] (1_Presentation) - Engine runtime
+- [[Alis.Core.Ecs]] (4_Operation) - ECS implementation
+- [[Alis.Core.Graphic]] (4_Operation) - Graphics subsystem
+
+## Documentation Version
+Auto-generated from source code analysis. Last updated: 2026-06-08
