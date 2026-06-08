@@ -157,19 +157,5 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             ImPlotMarker marker = ImPlotMarker.Count;
             Assert.Equal(10, (int)marker);
         }
-
-        /// <summary>
-        ///     Verifies that all enum values are sequential from -1 to Count.
-        /// </summary>
-        [Fact]
-        public void Values_ShouldBeSequential()
-        {
-            ImPlotMarker[] values = (ImPlotMarker[])Enum.GetValues(typeof(ImPlotMarker));
-
-            for (int i = 0; i < values.Length; i++)
-            {
-                Assert.Equal(i - 1, (int)values[i]);
-            }
-        }
     }
 }

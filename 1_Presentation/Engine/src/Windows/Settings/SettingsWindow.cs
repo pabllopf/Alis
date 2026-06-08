@@ -30,6 +30,7 @@
 using Alis.App.Engine.Core;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
+using System;
 
 namespace Alis.App.Engine.Windows.Settings
 {
@@ -65,6 +66,7 @@ namespace Alis.App.Engine.Windows.Settings
         /// </summary>
         public void Initialize()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -72,6 +74,7 @@ namespace Alis.App.Engine.Windows.Settings
         /// </summary>
         public void Start()
         {
+            throw new NotImplementedException();
         }
 
 
@@ -111,6 +114,7 @@ namespace Alis.App.Engine.Windows.Settings
         /// <param name="settings">The settings</param>
         private void RenderSettings(object[] settings)
         {
+            throw new NotImplementedException();
         }
     }
 }

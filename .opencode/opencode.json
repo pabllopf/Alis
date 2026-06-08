@@ -5,7 +5,7 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit",
+  "model": "omlx/Qwen3.5-35B-A3B-4bit",
 
   "provider": {
     "omlx": {
@@ -16,19 +16,19 @@
         "apiKey": "1234"
       },
       "models": {
-        "NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit": {
-          "name": "NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit",
+        "Qwen3.5-35B-A3B-4bit": {
+          "name": "Qwen3.5-35B-A3B-4bit",
           "modalities": {
             "input": ["text"],
             "output": ["text"]
           },
           "attachment": false,
 
-          "maxInputTokens": 65792,
-          "maxOutputTokens": 65792,
+          "maxInputTokens": 98688,
+          "maxOutputTokens": 98688,
           "limit": {
-            "context": 65792,
-            "output": 65792
+            "context": 98688,
+            "output": 98688
           }
         }
       }

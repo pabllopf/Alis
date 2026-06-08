@@ -26,7 +26,9 @@
       "lockedAt": null,
       "completedAt": null,
       "attemptCount": 0,
-      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable."
+      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+      "assignee": "worker-local-001",
+      "_claimedAt": "2026-06-08T08:11:25.220416+00:00"
     },
     {
       "key": "AZ6Paf1iNnKxd0kLY3_P",
@@ -39,7 +41,9 @@
       "lockedAt": null,
       "completedAt": null,
       "attemptCount": 0,
-      "message": "Remove this call, the collection is known to be empty here."
+      "message": "Remove this call, the collection is known to be empty here.",
+      "assignee": "worker-local-001",
+      "_claimedAt": "2026-06-08T08:13:03.373129+00:00"
     }
   ]
 }

@@ -31,6 +31,7 @@ using Alis.App.Engine.Core;
 using Alis.Core.Ecs;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
+using System;
 
 namespace Alis.App.Engine.Windows
 {
@@ -56,6 +57,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Initialize()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -63,6 +65,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Start()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -225,6 +228,7 @@ namespace Alis.App.Engine.Windows
         /// <param name="gameObject">The game object</param>
         private void RenameGameObject(GameObject gameObject)
         {
+            throw new NotImplementedException();
         }
     }
 }

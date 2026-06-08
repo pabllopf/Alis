@@ -189,10 +189,10 @@
       "file": "pabllopf-official_alis:1_Presentation/Engine/src/Engine.cs",
       "line": 169,
       "severity": "MINOR",
-      "status": "OPEN",
+      "status": "CLOSED",
       "assignedWorker": null,
       "lockedAt": null,
-      "completedAt": null,
+      "completedAt": "2026-06-08T08:54:52.759785+00:00",
       "attemptCount": 0,
       "message": "Remove the field 'fonts' and declare it as a local variable in the relevant methods.",
       "assignee": "worker-mac-1",
@@ -204,10 +204,10 @@
       "file": "pabllopf-official_alis:1_Presentation/Engine/src/Engine.cs",
       "line": 179,
       "severity": "MINOR",
-      "status": "OPEN",
+      "status": "CLOSED",
       "assignedWorker": null,
       "lockedAt": null,
-      "completedAt": null,
+      "completedAt": "2026-06-08T08:55:13.538684+00:00",
       "attemptCount": 0,
       "message": "Remove the field 'glViewportHeight' and declare it as a local variable in the relevant methods.",
       "assignee": "worker-mac-1",
@@ -219,12 +219,14 @@
       "file": "pabllopf-official_alis:1_Presentation/Engine/src/Engine.cs",
       "line": 184,
       "severity": "MINOR",
-      "status": "OPEN",
+      "status": "CLOSED",
       "assignedWorker": null,
       "lockedAt": null,
-      "completedAt": null,
+      "completedAt": "2026-06-08T08:55:46.769587+00:00",
       "attemptCount": 0,
-      "message": "Remove the field 'glViewportWidth' and declare it as a local variable in the relevant methods."
+      "message": "Remove the field 'glViewportWidth' and declare it as a local variable in the relevant methods.",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T08:54:57.404538+00:00"
     },
     {
       "key": "AZ6OPa9isynw1OJ1vi7l",
@@ -237,7 +239,9 @@
       "lockedAt": null,
       "completedAt": null,
       "attemptCount": 0,
-      "message": "Remove the unnecessary Boolean literal(s)."
+      "message": "Remove the unnecessary Boolean literal(s).",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T08:55:30.830624+00:00"
     },
     {
       "key": "AZ6OPa9isynw1OJ1vi7n",
@@ -250,7 +254,9 @@
       "lockedAt": null,
       "completedAt": null,
       "attemptCount": 0,
-      "message": "Change this condition so that it does not always evaluate to 'True'."
+      "message": "Change this condition so that it does not always evaluate to 'True'.",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T08:55:52.043308+00:00"
     },
     {
       "key": "AZ6OPa9isynw1OJ1vi7v",

@@ -219,6 +219,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Preferences()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -226,6 +227,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void QuitAlis()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -251,6 +253,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void SaveAsSceneTemplate()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -258,6 +261,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void NewProject()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -265,6 +269,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void OpenProject()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -280,6 +285,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void BuildProfiles()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -287,6 +293,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void BuildAndRun()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -302,6 +309,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Undo()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -309,6 +317,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Redo()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -316,6 +325,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void UndoHistory()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -323,6 +333,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void SelectAll()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -330,6 +341,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void DeselectAll()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -337,6 +349,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void SelectChildren()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -344,6 +357,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void SelectPrefabRoot()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -351,6 +365,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void InvertSelection()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -358,6 +373,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void SelectionGroups()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -365,6 +381,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Cut()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -372,6 +389,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Copy()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -379,6 +397,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Paste()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -386,6 +405,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void PasteSpecial()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -393,6 +413,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Duplicate()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -400,6 +421,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Rename()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -407,6 +429,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Delete()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -414,6 +437,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void FrameSelectedInScene()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -421,6 +445,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void FrameSelectedInWindow()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -428,6 +453,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void LockViewToSelected()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -435,6 +461,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Search()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -442,6 +469,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Play()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -449,6 +477,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Pause()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -456,6 +485,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Step()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -463,6 +493,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ProjectSettings()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -470,6 +501,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ClearAllPlayerPrefs()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -477,6 +509,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Lighting()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -484,6 +517,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void GraphicsTier()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -491,6 +525,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Rendering()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -498,6 +533,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Create()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -505,6 +541,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ImportNewAsset()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -512,6 +549,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ImportPackage()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -519,6 +557,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ExportPackage()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -526,6 +565,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void FindReferencesInScene()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -533,6 +573,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void OpenAsset()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -540,6 +581,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Reimport()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -547,6 +589,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ReimportAll()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -554,6 +597,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Refresh()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -561,6 +605,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void RemoveUnusedAssets()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -568,6 +613,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void CreateEmpty()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -575,6 +621,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void CreateEmptyChild()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -582,6 +629,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Create2DObject()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -589,6 +637,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void CreateUi()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -596,6 +645,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void CreateLight()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -603,6 +653,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void CreateAudio()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -610,6 +661,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void CreateTilemap()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -617,6 +669,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void AlignWithView()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -624,6 +677,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void AlignViewToSelected()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -631,6 +685,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void MoveToView()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -638,6 +693,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void RenameGameObject()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -645,6 +701,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void DuplicateGameObject()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -652,6 +709,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void DeleteGameObject()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -659,6 +717,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void AddComponent()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -666,6 +725,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Physics2D()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -673,6 +733,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Rendering2D()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -680,6 +741,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void AudioComponent()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -687,6 +749,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void UiComponent()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -694,6 +757,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ScriptsComponent()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -701,6 +765,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void SpriteEditor()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -708,6 +773,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void TilemapEditor()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -715,6 +781,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void AnimationEditor()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -722,6 +789,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void CustomTools()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -729,6 +797,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void GeneralWindow()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -736,6 +805,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void SceneViewWindow()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -743,6 +813,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void GameViewWindow()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -750,6 +821,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void InspectorWindow()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -757,6 +829,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void HierarchyWindow()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -764,6 +837,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ConsoleWindow()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>

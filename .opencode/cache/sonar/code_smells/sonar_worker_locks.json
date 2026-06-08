@@ -6,15 +6,21 @@
       "lockedAt": "2026-06-08T08:48:46.769639+00:00",
       "completedAt": "2026-06-08T08:53:28.732107+00:00"
     },
-    "AZ6OPa9isynw1OJ1vi7g": {
-      "status": "in_progress",
-      "assignedWorker": "worker-mac-1",
-      "lockedAt": "2026-06-08T08:53:29.005173+00:00"
-    },
     "AZ6OPa9isynw1OJ1vi7h": {
+      "status": "completed",
+      "assignedWorker": "worker-mac-1",
+      "lockedAt": "2026-06-08T08:53:49.900726+00:00",
+      "completedAt": "2026-06-08T08:55:13.541551+00:00"
+    },
+    "AZ6OPa9isynw1OJ1vi7l": {
       "status": "in_progress",
       "assignedWorker": "worker-mac-1",
-      "lockedAt": "2026-06-08T08:53:49.900726+00:00"
+      "lockedAt": "2026-06-08T08:55:30.834681+00:00"
+    },
+    "AZ6OPa9isynw1OJ1vi7n": {
+      "status": "in_progress",
+      "assignedWorker": "worker-mac-1",
+      "lockedAt": "2026-06-08T08:55:52.049391+00:00"
     }
   }
 }
