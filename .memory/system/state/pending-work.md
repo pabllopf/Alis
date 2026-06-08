@@ -7,6 +7,7 @@
 - [x] Process Audio system (4_Operation/Audio) ✓
 - [x] Process Physic system (4_Operation/Physic) ✓
 - [x] Process Memory aspect (6_Ideation/Memory) ✓
+- [x] Process Fluent aspect (6_Ideation/Fluent) ✓
 - [ ] Process Ideation aspects (6_Ideation)
 - [ ] Process Extensions (1_Presentation/Extension)
 - [x] Generate dependency graphs ✓
