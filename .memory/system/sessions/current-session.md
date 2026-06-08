@@ -22,8 +22,9 @@
 - [ ] Process Physic system
 - [ ] Process Ideation aspects (~30 projects)
 - [ ] Process Extensions (~40 projects)
-- [ ] Generate dependency graphs ✓
-- [ ] Create architecture documentation ✓
+- [x] Generate dependency graphs ✓
+- [x] Create architecture documentation ✓
+- [x] Create indexes (10+ files) ✓
 
 ## Current Focus
 
