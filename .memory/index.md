@@ -1,34 +1,101 @@
-# Index
+# ALIS Memory Index
 
-## Entities
+## Welcome
+This directory contains the complete memory system for the ALIS game engine framework.
 
-### Projects
-- [[Alis]] — C# game engine/framework with layered architecture (6 layers, 8 solution files)
+## Directory Structure
 
-### Tools & Technologies
-- [[.NET]] — C# runtime and SDK
-- [[Obsidian]] — Markdown knowledge base viewer (used for wiki)
-- [[qmd]] — Local markdown search engine (BM25 + vector + LLM re-ranking)
+```
+.memory/
+├── index.md                          ← You are here
+├── schema.md                         ← Memory system schema
+├── log.md                            ← Session log
+│
+├── architecture/                     ← Architecture documentation
+│   ├── repository-overview.md        ← Full architecture overview
+│   ├── dependency-graph.md           ← Dependency graph + Mermaid diagrams
+│   └── build-system.md               ← Build configuration and commands
+│
+├── projects/                         ← Per-project documentation
+│   ├── 1_Presentation/               ← Extensions, Apps, Benchmark
+│   ├── 2_Application/                ← Core app + game samples
+│   ├── 3_Structuration/              ← Core engine aggregator
+│   ├── 4_Operation/                  ← ECS, Graphic, Audio, Physic
+│   ├── 5_Declaration/                ← Aspect system aggregator
+│   └── 6_Ideation/                   ← Aspect definitions + generators
+│
+├── system/                           ← System state and indexes
+│   ├── state/                        ← State files
+│   │   ├── analysis-state.json       ← Analysis progress
+│   │   ├── file-hashes.json          ← File integrity hashes
+│   │   └── project-state.json        ← Project analysis state
+│   ├── indexes/                      ← Various indexes
+│   │   ├── project-index.md          ← All 140 projects indexed
+│   │   ├── dependency-index.md       ← Dependency map
+│   │   └── layer-index.md            ← Layer breakdown
+│   └── logs/                         ← Execution logs
+│       └── execution-log.md          ← Session execution log
+│
+├── prompts/                          ← AI context files
+│   ├── ai-context.md                 ← Quick reference for AI agents
+│   ├── conversation-starters.md      ← Context questions
+│   └── code-review-checklist.md      ← Review guidelines
+│
+├── diagrams/                         ← Architecture diagrams
+│   └── architecture-overview.md      ← Mermaid diagrams
+│
+├── testing/                          ← Testing analysis
+│   └── analysis.md                   ← Testing framework and strategy
+│
+├── security/                         ← Security analysis
+│   └── analysis.md                   ← Security extensions and best practices
+│
+├── glossary/                         ← Terminology
+│   └── terms.md                      ← ALIS-specific terms
+│
+├── conventions/                      ← Coding conventions
+│   └── naming-conventions.md         ← Naming rules
+│
+├── decisions/                        ← Architecture decision records
+│   ├── adr-001-layered-architecture.md
+│   └── adr-002-aggregator-pattern.md
+│
+├── onboarding/                       ← Onboarding materials
+│   └── getting-started.md            ← Quick start guide
+│
+├── summaries/                        ← Summaries
+│   ├── build-summary.md              ← Build system summary
+│   └── session-summary.md            ← This session's summary
+│
+├── concepts/                         ← (Pre-existing)
+├── entities/                         ← (Pre-existing)
+├── raw/                              ← (Pre-existing)
+└── sources/                          ← (Pre-existing)
+```
 
-## Concepts
+## Quick Links
 
-- [[Layered Architecture]] — 6-layer organization (Presentation → Application → Structuration → Operation → Declaration → Ideation)
-- [[Aspect-Oriented Design]] — Core.Aspect as foundation, 6 experimental aspects built on top
-- [[Solution Composition]] — Modular .slnx files for different build targets (core, apps, extensions, tests, samples)
-- [[Generator Pattern]] — Source generators for Ecs, Graphic, Memory, Data, Fluent aspects
-- [[Multi-Platform Samples]] — Each sample game ships Web + Desktop variants
+### For AI Agents
+- [[ai-context]] — Quick reference card
+- [[code-review-checklist]] — Review guidelines
 
-## Sources
+### For Developers
+- [[getting-started]] — Onboarding guide
+- [[repository-overview]] — Architecture overview
+- [[terms]] — Glossary
 
-- [[alis.slnx]] — Full solution (all projects: apps, samples, core, aspects, extensions)
-- [[alis.core.slnx]] — Core libraries only (no tests, samples, or presentation)
-- [[alis.apps.slnx]] — Applications + core dependencies (Installer, Engine, Hub)
-- [[alis.extensions.slnx]] — All extensions + core dependencies
-- [[alis.test.slnx]] — Test projects across all layers
-- [[alis.samples.slnx]] — Sample games + core samples
-- [[alis.core.aspect.slnx]] — Aspect layer only (5_Declaration + 6_Ideation)
-- [[alis.benchmark.slnx]] — Benchmark project
+### For Architecture
+- [[dependency-graph]] — Dependency map
+- [[build-system]] — Build configuration
+- [[adr-001-layered-architecture]] — Architecture decision
 
-## Overview
+### For Projects
+- [[project-index]] — All 140 projects indexed
+- [[layer-index]] — Layer breakdown
+- [[dependency-index]] — Dependency map
 
-- [[Alis Architecture Overview]]
+## Memory System Schema
+See [[schema]] for the memory system schema and conventions.
+
+## Session Log
+See [[log]] for the session execution log.

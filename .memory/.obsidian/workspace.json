@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "6f75a4df5dcc9860",
+        "id": "3d4c361931ba670e",
         "type": "tabs",
         "children": [
           {
-            "id": "108c709bafcab2c9",
+            "id": "be7d2620dcd69a2f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "concepts/Generator Pattern.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Generator Pattern"
+              "title": "Nueva pestaña"
             }
           }
         ]
@@ -84,7 +80,8 @@
               "title": "Navegador de Cuadernos"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -104,7 +101,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "concepts/Generator Pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +110,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de Generator Pattern"
+              "title": "Enlaces entrantes"
             }
           },
           {
@@ -123,12 +119,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "concepts/Generator Pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de Generator Pattern"
+              "title": "Enlaces salientes"
             }
           },
           {
@@ -166,13 +161,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "concepts/Generator Pattern.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de Generator Pattern"
+              "title": "Esquema"
             }
           }
         ]
@@ -191,28 +185,48 @@
       "templates:Insertar plantilla": false,
       "command-palette:Abrir paleta de comandos": false,
       "bases:Crear nueva base": false,
-      "notebook-navigator:Navegador de Cuadernos": false
+      "notebook-navigator:Navegador de Cuadernos": false,
+      "obsidian-git:Open Git source control": false,
+      "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "108c709bafcab2c9",
+  "active": "9d5245e6134357f0",
   "lastOpenFiles": [
-    "concepts/Layered Architecture.md",
-    "concepts/Aspect-Oriented Design.md",
-    "concepts/Multi-Platform Samples.md",
-    "concepts/Solution Composition.md",
-    "entities/Alis.md",
-    "Obsidian.md",
-    "index.md",
-    "alis.slnx.md",
-    "concepts/Generator Pattern.md",
-    "concepts/Alis Architecture Overview.md",
-    "Bienvenido.md",
-    "schema.md",
-    "log.md",
-    "sources",
-    "concepts",
-    "entities",
-    "raw",
-    "Sin título.md"
+    "decisions/adr-002-aggregator-pattern.md",
+    "summaries/session-summary.md",
+    "summaries/build-summary.md",
+    "onboarding/getting-started.md",
+    "decisions/adr-001-layered-architecture.md",
+    "conventions/naming-conventions.md",
+    "glossary/terms.md",
+    "system/indexes/layer-index.md",
+    "prompts/code-review-checklist.md",
+    "diagrams/architecture-overview.md",
+    "system/indexes/dependency-index.md",
+    "prompts/conversation-starters.md",
+    "security/analysis.md",
+    "system/indexes/project-index.md",
+    "testing/analysis.md",
+    "prompts/ai-context.md",
+    "projects/2_Application/Sample.Inefable.md",
+    "projects/2_Application/Sample.Egg.md",
+    "projects/1_Presentation/Extension.Media.FFmpeg.md",
+    "projects/2_Application/Sample.RuinsOfTartarus.md",
+    "projects/1_Presentation/Extension.Thread.md",
+    "projects/2_Application/Sample.Snake.md",
+    "projects/1_Presentation/Extension.Cloud.GoogleDrive.md",
+    "projects/1_Presentation/Extension.Cloud.DropBox.md",
+    "projects/2_Application/Sample.Rogue.md",
+    "projects/1_Presentation/Extension.Profile.md",
+    "projects/6_Ideation",
+    "projects/5_Declaration",
+    "projects/4_Operation",
+    "projects/3_Structuration",
+    "projects/2_Application",
+    "projects/1_Presentation",
+    "system/state/analysis-state.json",
+    "system/state/file-hashes.json",
+    "system/state/project-state.json",
+    "summaries"
   ]
 }
