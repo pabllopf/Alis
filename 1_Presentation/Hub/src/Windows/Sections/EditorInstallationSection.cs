@@ -262,7 +262,7 @@ namespace Alis.App.Hub.Windows.Sections
                 if (release.TryGetProperty("tag_name", out JsonElement tag) &&
                     (tag.ValueKind == JsonValueKind.String))
                 {
-                    string? version = tag.GetString();
+                    string version = tag.GetString();
                     if (!string.IsNullOrWhiteSpace(version))
                     {
                         versionList.Add(version);
