@@ -531,6 +531,391 @@ execution-checkpoints.md
 last-successful-run.md
 ```
 
+# ORGANIC MEMORY STRUCTURE STRATEGY
+
+The `.memory/` system MUST evolve organically over time as a scalable knowledge graph for both:
+
+* local AI systems
+* human engineers
+
+The generated markdown structure MUST remain:
+
+* modular
+* navigable
+* composable
+* semantically linked
+* context-efficient
+* scalable for very large repositories
+
+---
+
+# DOCUMENT SIZE RULES
+
+Generated markdown files MUST remain reasonably small and highly focused.
+
+NEVER generate massive monolithic markdown files.
+
+Preferred target sizes:
+
+| File Type         | Preferred Size       |
+| ----------------- | -------------------- |
+| project docs      | 200-800 lines        |
+| architecture docs | 300-1200 lines       |
+| indexes           | 100-500 lines        |
+| summaries         | 100-400 lines        |
+| diagrams          | isolated per topic   |
+| AI context files  | concise and reusable |
+
+---
+
+# FILE SPLITTING STRATEGY
+
+When a document becomes too large:
+
+You MUST automatically split it into smaller linked markdown files.
+
+Example:
+
+```text
+.memory/projects/Billing.API/
+├── overview.md
+├── dependencies.md
+├── handlers.md
+├── services.md
+├── repositories.md
+├── testing.md
+├── security.md
+├── performance.md
+└── diagrams.md
+```
+
+NEVER keep oversized project documentation in a single file.
+
+---
+
+# DOMAIN-ORIENTED STRUCTURING
+
+You MUST organize documentation semantically.
+
+Prefer:
+
+```text
+.memory/domain/billing/
+.memory/domain/identity/
+.memory/domain/orders/
+```
+
+instead of flat global structures.
+
+Documentation MUST reflect actual bounded contexts and architectural ownership.
+
+---
+
+# ORGANIC KNOWLEDGE EVOLUTION
+
+The `.memory/` structure MUST evolve naturally as repository understanding improves.
+
+You MUST continuously:
+
+* refine folder structure
+* improve semantic grouping
+* split overloaded documents
+* merge duplicated concepts
+* reorganize unstable areas
+* create better cross-links
+* improve retrieval efficiency
+
+---
+
+# FOLDER-AWARE DOCUMENTATION GENERATION
+
+You MUST use existing `.memory/` folder structure as contextual guidance.
+
+Before generating new documentation:
+
+1. inspect nearby markdown files
+2. inspect sibling directories
+3. inspect existing semantic groupings
+4. detect established conventions
+5. preserve organizational consistency
+
+NEVER generate disconnected documentation islands.
+
+---
+
+# MARKDOWN RELATIONSHIP ENGINE
+
+ALL generated markdown MUST be interconnected.
+
+You MUST generate:
+
+* wiki-links
+* backlinks
+* related topic sections
+* semantic references
+* dependency references
+* architectural references
+
+Example:
+
+```markdown id="h1b2k3"
+## Related
+
+- [[billing-domain]]
+- [[billing-application-services]]
+- [[invoice-processing]]
+- [[mediatr-patterns]]
+```
+
+---
+
+# BIDIRECTIONAL LINKING RULE
+
+Relationships MUST be bidirectional whenever possible.
+
+If:
+
+```markdown id="w7r3p8"
+[[billing-api]]
+```
+
+exists inside:
+
+```text id="f2q6v1"
+identity-domain.md
+```
+
+then related billing documents SHOULD reference identity relationships when semantically relevant.
+
+---
+
+# MEMORY CLUSTER STRATEGY
+
+The system MUST create semantic clusters.
+
+Example:
+
+```text
+.memory/domain/billing/
+├── overview.md
+├── architecture.md
+├── services/
+├── handlers/
+├── repositories/
+├── diagrams/
+├── dependencies/
+├── testing/
+└── security/
+```
+
+These clusters MUST become self-contained contextual zones.
+
+---
+
+# CONTEXT-EFFICIENT STRUCTURING
+
+Structure markdown for efficient AI retrieval.
+
+You MUST optimize for:
+
+* semantic locality
+* dependency locality
+* bounded-context isolation
+* targeted retrieval
+* low token expansion
+* high contextual density
+
+---
+
+# HIERARCHICAL INDEX STRATEGY
+
+Indexes MUST exist at multiple levels.
+
+Example:
+
+```text
+.memory/
+├── index.md
+├── domain/
+│   ├── billing/
+│   │   ├── index.md
+│   │   ├── services/
+│   │   └── handlers/
+```
+
+Each folder SHOULD contain a local `index.md`.
+
+---
+
+# SELF-DISCOVERABLE STRUCTURE
+
+A human or AI system MUST be able to navigate the repository memory naturally using only:
+
+* wiki-links
+* local indexes
+* related sections
+* semantic clustering
+
+without requiring full repository scans.
+
+---
+
+# DOCUMENTATION GRANULARITY RULE
+
+Prefer:
+
+* many small linked documents
+
+instead of:
+
+* few massive generalized documents
+
+Granularity improves:
+
+* AI retrieval precision
+* incremental regeneration
+* human readability
+* semantic navigation
+* partial updates
+
+---
+
+# DIRECTORY-LOCAL CONTEXT
+
+Each major folder SHOULD contain:
+
+```text
+index.md
+overview.md
+relationships.md
+```
+
+These files act as local semantic entrypoints.
+
+Example:
+
+```text
+.memory/domain/billing/index.md
+.memory/domain/billing/overview.md
+.memory/domain/billing/relationships.md
+```
+
+---
+
+# ARCHITECTURAL LOCALITY RULE
+
+Related architectural concepts MUST remain physically close in folder structure.
+
+Example:
+
+```text
+.memory/domain/billing/services/
+.memory/domain/billing/handlers/
+.memory/domain/billing/contracts/
+```
+
+Avoid scattering related knowledge globally.
+
+---
+
+# HUMAN + AI HYBRID DESIGN
+
+Documentation MUST simultaneously optimize for:
+
+## Humans
+
+* readability
+* navigation
+* onboarding
+* architecture understanding
+* debugging
+* maintenance
+
+## AI Systems
+
+* semantic chunking
+* retrieval precision
+* context locality
+* dependency awareness
+* incremental context loading
+* low-token retrieval
+
+---
+
+# RETRIEVAL-OPTIMIZED MARKDOWN
+
+Each markdown file SHOULD contain:
+
+* concise summaries
+* related links
+* semantic tags
+* bounded context identifiers
+* dependency references
+* architectural references
+
+Example:
+
+```markdown id="n5k9u2"
+# Billing API
+
+## Tags
+
+#billing #api #cqrs #mediatr #payments
+
+## Related
+
+- [[billing-domain]]
+- [[invoice-handler]]
+- [[payment-service]]
+```
+
+---
+
+# ORGANIC INDEX GENERATION
+
+Indexes MUST evolve automatically.
+
+You MUST generate:
+
+* local indexes
+* folder indexes
+* semantic indexes
+* relationship indexes
+* dependency indexes
+* context entrypoints
+
+based on actual repository evolution.
+
+---
+
+# SEMANTIC RESTRUCTURING RULE
+
+If documentation structure becomes inefficient:
+
+You MAY reorganize `.memory/` structure incrementally.
+
+BUT:
+
+* preserve existing links
+* preserve manual notes
+* preserve stable references
+* preserve compatibility
+* maintain redirects/indexes when needed
+
+---
+
+# MEMORY TOPOLOGY OBJECTIVE
+
+The final `.memory/` structure MUST behave like:
+
+* a semantic filesystem
+* an AI-native engineering knowledge graph
+* an Obsidian-first repository intelligence platform
+* a long-term architectural memory layer
+* a retrieval-optimized documentation system
+* a human-readable software topology map
+
+
 ---
 
 # REQUIRED TRACKING FILES
