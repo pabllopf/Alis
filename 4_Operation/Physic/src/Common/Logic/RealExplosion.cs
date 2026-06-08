@@ -265,9 +265,9 @@ namespace Alis.Core.Physic.Common.Logic
                     return fr;
                 }, p1, p2);
 
-                if (fixture is not null && fixture.GetBody.GetBodyType == BodyType.Dynamic)
+                if (fixture?.GetBody is { GetBodyType: BodyType.Dynamic } body)
                 {
-                    ProcessRayHit(vals, i, valIndex, fixture.GetBody, ref rayMissed);
+                    ProcessRayHit(vals, i, valIndex, body, ref rayMissed);
                     rayMissed = false;
                 }
                 else
