@@ -196,8 +196,20 @@
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "0850690c2d57722e",
+  "active": "9d5245e6134357f0",
   "lastOpenFiles": [
+    "projects/6_Ideation/Logging/Alis.Core.Aspect.Logging.md",
+    "projects/6_Ideation/Logging",
+    "projects/6_Ideation/Time/Alis.Core.Aspect.Time.md",
+    "projects/6_Ideation/Time",
+    "projects/6_Ideation/Math/Alis.Core.Aspect.Math.md",
+    "projects/6_Ideation/Math",
+    "projects/6_Ideation/Data/Alis.Core.Aspect.Data.md",
+    "projects/6_Ideation/Data",
+    "projects/6_Ideation/Fluent/Alis.Core.Aspect.Fluent.md",
+    "projects/6_Ideation/Fluent",
+    "projects/6_Ideation/Memory/Alis.Core.Aspect.Memory.md",
+    "projects/6_Ideation/Memory",
     "projects/4_Operation/Alis.Core.Physic.md",
     "glossary/terms.md",
     "architecture/repository-overview.md",
@@ -218,21 +230,9 @@
     "diagrams/architecture-overview.md",
     "decisions/adr-002-aggregator-pattern.md",
     "system/state/execution-state.md",
-    "testing/testing-overview.md",
-    "system/state/file-hashes.md",
-    "system/state/analysis-state.md",
-    "security/security-overview.md",
-    "system/indexes/apis-index.md",
-    "system/indexes/services-index.md",
     "system/sessions",
     "system/checkpoints",
     "system/queues",
-    "system/tracking",
-    "projects/6_Ideation",
-    "projects/5_Declaration",
-    "projects/4_Operation",
-    "projects/3_Structuration",
-    "projects/2_Application",
-    "projects/1_Presentation"
+    "system/tracking"
   ]
 }
