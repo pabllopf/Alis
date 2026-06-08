@@ -1,75 +1,79 @@
 # Alis.Core.Aspect.Math
 
 ## Overview
-Mathematical library for ALIS game engine. Provides vector math, quaternions, shapes, and utility functions.
 
-**Author**: Pablo Perdomo Falcón  
-**License**: GNU General Public License v3.0
-
-## Project Details
-- **Layer**: 6_Ideation
-- **Type**: Library (Math Aspect)
-- **Framework**: net8.0
-- **Output Type**: Class Library
+The **Alis.Core.Aspect.Math** project provides core math primitives for the ALIS game engine. It implements value-type vectors, matrices, shapes, quaternions, and custom math utilities designed for high-performance calculations with zero GC pressure on hot paths.
 
 ## Purpose
-Provides comprehensive mathematical utilities for game development including:
-- 2D/3D vector operations (Vector2F, Vector3F, Vector4F)
-- Quaternion mathematics for 3D rotations
-- Shape primitives (Point, Square, Rectangle, Circle)
-- Utility functions (Random, Constants, Helper)
 
-## Key Components
+- Provide 2D/3D vector mathematics (Vector2F, Vector3F, Vector4F)
+- Implement matrix operations (2x2, 3x2, 3x3, 4x4)
+- Define geometric shapes (Circle, Line, Point, Rectangle, Square)
+- Offer custom math functions optimized for float operations
 
-### Vector Types
-- **Vector2F** - 2D float vector
-- **Vector3F** - 3D float vector  
-- **Vector4F** - 4D float vector (RGBA, quaternion components)
+## Architecture
 
-### Quaternion
-- 3D rotation representation
-- Arithmetic operators (add, sub, mul, div)
-- StructLayout for performance
+### Value Types
 
-### Shapes
-- **IShape** - Shape interface
-- **PointI/PointF** - Point implementations
-- **SquareI/SquareF** - Square implementations
-- **RectangleI/RectangleF** - Rectangle implementations
+All types use `[StructLayout(LayoutKind.Sequential, Pack = 1)]` for cache-friendly memory layout:
 
-### Utilities
-- **Quaternion** - 3D rotation math
-- **RandomUtils** - Cryptographically secure random generation
-- **Constant** - Mathematical constants
-- **Helper** - Extension methods and helpers
+| Type | Description |
+|------|-------------|
+| **Vectors** | Vector2F, Vector3F, Vector4F (with fuzzy equality for collision detection) |
+| **Matrices** | Matrix2X2, Matrix3X2, Matrix3X3, Matrix4X4 (with precomputed hashCode) |
+| **Shapes** | CircleF/I, LineF/I, PointF/I, RectangleF/I, SquareF/I |
+| **Utilities** | Color (RGBA), Depth, Quaternion, CustomMathF, HashCode |
+
+### Key Features
+
+- **Fuzzy equality** - Vector2F uses 0.01f tolerance for float comparison
+- **Precomputed hashCode** - Matrices and Quaternions cache hash codes
+- **Integer/Float variants** - Every shape has F and I versions
+- **IShape marker** - Empty interface for generic constraints
+
+## Files
+
+| File | Count | Description |
+|------|-------|-------------|
+| Vector2F.cs | 1 | 2D float vector |
+| Vector3F.cs | 1 | 3D float vector |
+| Vector4F.cs | 1 | 4D float vector (color/quad) |
+| Matrix2X2.cs | 1 | 2x2 matrix |
+| Matrix3X2.cs | 1 | 3x2 affine transform |
+| Matrix4X4.cs | 1 | 4x4 perspective/orthographic |
+| CircleF.cs | 1 | 2D circle |
+| RectangleF.cs | 1 | 2D rectangle |
+| CustomMathF.cs | 1 | Custom math functions |
+| HashCode.cs | 1 | Custom hash code generator |
 
 ## Dependencies
-- None (standalone library)
 
-## Build Configuration
-- **LangVersion**: 13
-- **Nullable**: enabled
-- **AllowUnsafeBlocks**: true (performance-critical math)
+- **System.Security.Cryptography** - RNGCryptoServiceProvider (HashCode)
+- **Alis.Core** - Core engine
 
-## Performance Features
-1. Struct-based types for value semantics
-2. LayoutKind.Sequential for P/Invoke compatibility
-3. Pack=1 for tight memory layout
-4. Minimal allocations in hot paths
+## Quality Plan
 
-## Testing Status
-- **Unit Tests**: Present (Alis.Core.Aspect.Math.Test)
-- **Sample Apps**: Included (Alis.Core.Aspect.Math.Sample)
+See [QualityPlan.md](QualityPlan.md) for performance goals.
 
-## Architecture Notes
-1. Pure math library - no engine dependencies
-2. Struct-based for performance
-3. Implicit conversions where appropriate
-4. Extension methods for convenience
+## Known Issues
+
+1. **HashCode uses RNGCryptoServiceProvider** - Blocking call, slow startup
+2. **Quaternion hashCode stale** - Private setters invalidate cached hash
+3. **No Vector3F/Vector4F hashCode** - Inconsistent API
+4. **IShape is empty** - No common contract (Bounds, Intersects, Area)
+5. **No SIMD support** - Could use Vector<T> intrinsics
+
+## TODOs
+
+- [ ] Fix hashCode immutability
+- [ ] Replace RNGCryptoServiceProvider with Random.Shared
+- [ ] Add hashCode to Vector types
+- [ ] Give IShape a real contract (Intersects, Bounds, Area)
+- [ ] Add Quaternion factory methods (Identity, FromEuler)
+- [ ] Add matrix inverse/transpose
+- [ ] Add shape collision detection
 
 ## Related Projects
-- [[Alis.Core.Ecs]] (4_Operation) - Uses Vector2F
-- [[Alis.Extension.Graphic.*]] (1_Presentation) - Uses math types
 
-## Documentation Version
-Auto-generated from source code analysis. Last updated: 2026-06-08
+- [[Alis.Core.Ecs]] - Uses math primitives for transforms
+- [[Alis.Core.Graphic]] - Rendering uses math calculations

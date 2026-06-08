@@ -1,63 +1,89 @@
 # Alis.Core.Aspect.Time
 
 ## Overview
-Time measurement library for ALIS game engine. Provides high-resolution timing utilities similar to stopwatch functionality.
 
-**Author**: Pablo Perdomo Falcón  
-**License**: GNU General Public License v3.0
-
-## Project Details
-- **Layer**: 6_Ideation
-- **Type**: Library (Time Aspect)
-- **Framework**: net8.0
-- **Output Type**: Class Library
+The **Alis.Core.Aspect.Time** project provides a high-resolution time measurement utility for the ALIS game engine. It implements a stopwatch-like `Clock` class for measuring elapsed time with start, stop, reset, and restart operations.
 
 ## Purpose
-Provides high-resolution time measurement utilities for game development including:
-- Elapsed time tracking
-- Start/stop/reset/restart operations
-- High-resolution timing for performance measurement
-- Game loop timing management
 
-## Key Components
+- Measure elapsed time with high resolution
+- Support timing for game loops and performance profiling
+- Provide UTC-based time measurements
+- Enable timing operations without GC pressure
+
+## Architecture
 
 ### Clock Class
-- High-resolution time measurement utility
-- Similar to Stopwatch functionality
-- Uses DateTime.UtcNow as underlying time source
-- Start, stop, reset, and restart operations
-- Elapsed time accumulation
 
-### Features
-- Elapsed time tracking (TimeSpan)
-- Accurate timing for game loops
-- Performance measurement utilities
+Main entry point for time measurement:
+
+```csharp
+public class Clock
+{
+    // Properties
+    TimeSpan Elapsed { get; }
+    long ElapsedMilliseconds { get; }
+    long ElapsedSeconds { get; }
+    long ElapsedTicks { get; }
+    bool IsRunning { get; }
+    
+    // Methods
+    void Start();
+    void Stop();
+    void Reset();
+    void Restart();
+    static Clock Create(); // Factory method
+}
+```
+
+### Implementation Details
+
+- Uses `DateTime.UtcNow` as underlying time source
+- Not thread-safe - requires external synchronization for shared use
+- Accumulates elapsed time when stopped, continues when restarted
+
+## Files
+
+| File | Lines | Description |
+|------|-------|-------------|
+| Clock.cs | 171 | Main clock implementation |
 
 ## Dependencies
-- System - DateTime operations
 
-## Build Configuration
-- **LangVersion**: 13
-- **Nullable**: enabled
-- **AllowUnsafeBlocks**: false
+- **System** - DateTime, TimeSpan
 
-### Thread Safety
-- **Not thread-safe** - Instances should not be shared across threads without external synchronization
-- Accumulates elapsed time until stopped
+## Usage Example
 
-## Testing Status
-- **Unit Tests**: Present (Alis.Core.Aspect.Time.Test)
-- **Sample Apps**: Included (Alis.Core.Aspect.Time.Sample)
+```csharp
+using Alis.Core.Aspect.Time;
 
-## Architecture Notes
-1. Simple, focused timing utility
-2. No external dependencies
-3. Clear API for time measurement
-4. Game loop integration ready
+// Create and start clock
+var clock = Clock.Create();
+
+// Do some work
+DoWork();
+
+// Stop and check elapsed time
+clock.Stop();
+Console.WriteLine($"Took {clock.ElapsedMilliseconds}ms");
+
+// Restart for next measurement
+clock.Restart();
+DoMoreWork();
+clock.Stop();
+```
+
+## Quality Plan
+
+See [QualityPlan.md](QualityPlan.md) for performance goals.
+
+## TODOs
+
+- [ ] Add thread-safe variant
+- [ ] Support high-resolution timer (Stopwatch) as alternative
+- [ ] Add timing statistics (min, max, average)
 
 ## Related Projects
-- [[Alis.Core.Ecs]] (4_Operation) - Uses timing for update loops
-- [[Alis]] (2_Application) - Core application uses Clock
 
-## Documentation Version
-Auto-generated from source code analysis. Last updated: 2026-06-08
+- [[Alis.Core.Ecs]] - Uses Clock for frame timing
+- [[Alis.Core.Graphic]] - Rendering uses timing

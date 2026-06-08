@@ -14,6 +14,10 @@
 | Alis.Core.Physic | 194 | Documented |
 | Alis.Core.Aspect.Memory | 3 | Documented |
 | Alis.Core.Aspect.Fluent | 128+ | Documented |
+| Alis.Core.Aspect.Data | 18 | Documented |
+| Alis.Core.Aspect.Math | 29 | Documented |
+| Alis.Core.Aspect.Time | 1 | Documented |
+| Alis.Core.Aspect.Logging | 24 | Documented |
 | Alis.Core.Aspect.Memory | 6 | Documented |
 | Alis.Core.Aspect.Fluent | - | Documented |
 | Alis.Core.Aspect.Data | - | Documented |

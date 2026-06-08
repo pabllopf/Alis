@@ -21,10 +21,10 @@
 ### Ideation Aspects (6_Ideation)
 - Alis.Core.Aspect.Memory ✓ Documented (3 files)
 - Alis.Core.Aspect.Fluent ✓ Documented (128+ files)
-- Alis.Core.Aspect.Data ⏳ Pending
-- Alis.Core.Aspect.Math ⏳ Pending
-- Alis.Core.Aspect.Time ⏳ Pending
-- Alis.Core.Aspect.Logging ⏳ Pending
+- Alis.Core.Aspect.Data ✓ Documented (18 files)
+- Alis.Core.Aspect.Math ✓ Documented (29 files)
+- Alis.Core.Aspect.Time ✓ Documented (1 file)
+- Alis.Core.Aspect.Logging ✓ Documented (24 files)
 - Alis.Core.Aspect.Math ⏳ Pending
 - Alis.Core.Aspect.Time ⏳ Pending
 - Alis.Core.Aspect.Logging ⏳ Pending
