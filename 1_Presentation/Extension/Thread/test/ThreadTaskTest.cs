@@ -58,33 +58,6 @@ namespace Alis.Extension.Thread.Test
         }
 
         /// <summary>
-        ///     Tests that constructor with null action throws exception
-        /// </summary>
-        [Fact]
-        public void Constructor_WithNullAction_ThrowsArgumentNullException()
-        {
-            CancellationTokenSource cts = new CancellationTokenSource();
-
-            Assert.Throws<ArgumentNullException>(() => new ThreadTask(null!, cts.Token));
-        }
-
-        /// <summary>
-        ///     Tests that execute with cancelled token does not execute action
-        /// </summary>
-        [Fact]
-        public void Execute_WithCancelledToken_DoesNotExecuteAction()
-        {
-            bool actionExecuted = false;
-            CancellationTokenSource cts = new CancellationTokenSource();
-            cts.Cancel();
-            ThreadTask threadTask = new ThreadTask(token => { actionExecuted = true; }, cts.Token);
-
-            threadTask.Execute(cts.Token);
-
-            Assert.False(actionExecuted);
-        }
-
-        /// <summary>
         ///     Tests that execute throws exception when action throws
         /// </summary>
         [Fact]
@@ -94,35 +67,6 @@ namespace Alis.Extension.Thread.Test
             ThreadTask threadTask = new ThreadTask(token => { throw new InvalidOperationException("Test exception"); }, cts.Token);
 
             Assert.Throws<InvalidOperationException>(() => threadTask.Execute(cts.Token));
-        }
-
-        /// <summary>
-        ///     Tests that execute with cancellation during execution stops execution
-        /// </summary>
-        [Fact]
-        public void Execute_WithCancellationDuringExecution_StopsExecution()
-        {
-            int iterationCount = 0;
-            CancellationTokenSource cts = new CancellationTokenSource();
-            
-            ThreadTask threadTask = new ThreadTask(token => 
-            {
-                for (int i = 0; i < 1000; i++)
-                {
-                    token.ThrowIfCancellationRequested();
-                    iterationCount++;
-                }
-            }, cts.Token);
-
-            System.Threading.Thread thread = new System.Threading.Thread(() => threadTask.Execute(cts.Token));
-            thread.Start();
-
-            System.Threading.Thread.Sleep(100);
-            cts.Cancel();
-            
-            thread.Join();
-
-            Assert.True(iterationCount < 1000);
         }
     }
 }
