@@ -1,3 +1,3 @@
 #!/bin/bash
-dotnet document apply ../../../alis.sln
+dotnet document apply ../../../alis.slnx
 
