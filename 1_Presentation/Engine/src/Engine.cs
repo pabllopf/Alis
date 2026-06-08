@@ -73,6 +73,8 @@ namespace Alis.App.Engine
         /// </summary>
         private bool showConsole;
 
+        private IntPtr imguiContext;
+        
         /// <summary>
         ///     The vector
         /// </summary>
@@ -193,175 +195,7 @@ namespace Alis.App.Engine
             double lastTime = frameTimer.Elapsed.TotalSeconds;
 
 
-            platform = GetPlatform();
-            Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
-
-            if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
-            {
-                Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
-                platform?.Cleanup();
-                return;
-            }
-
-            platform.MakeContextCurrent();
-            Gl.Initialize(platform.GetProcAddress);
-            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
-            Gl.GlEnable(EnableCap.DepthTest);
-
-            IntPtr imguiContext = ImGui.CreateContext();
-            ImGui.SetCurrentContext(imguiContext);
-
-            Debug.Assert(platform != null, "Platform must be provided before Initialize is called.");
-            platform?.MakeContextCurrent();
-
-            IntPtr currentCtx = ImGui.GetCurrentContext();
-            IntPtr context;
-            if (currentCtx == IntPtr.Zero)
-            {
-                context = ImGui.CreateContext();
-                ImGui.SetCurrentContext(context);
-            }
-            else
-            {
-                context = currentCtx;
-                ImGui.SetCurrentContext(context);
-            }
-
-            _spaceWork.io = ImGui.GetIo();
-            Debug.Assert(_spaceWork.io.NativePtr != IntPtr.Zero, "ImGui _spaceWork.io must be valid after creating or setting context.");
-
-            // Backend capabilities
-
-            _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
-                                          ImGuiBackendFlags.PlatformHasViewports |
-                                          ImGuiBackendFlags.HasGamepad |
-                                          ImGuiBackendFlags.HasMouseHoveredViewport |
-                                          ImGuiBackendFlags.HasMouseCursors;
-
-
-            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
-                                         ImGuiConfigFlags.NavEnableGamepad;
-
-            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
-                                         ImGuiConfigFlags.ViewportsEnable;
-
-
-            _spaceWork.io = ImGui.GetIo();
-            _spaceWork.io.WantSaveIniSettings = false;
-
-            const string vertexShaderSource = "#version 330 core\n" +
-                                              "layout (location = 0) in vec2 Position;\n" +
-                                              "layout (location = 1) in vec2 UV;\n" +
-                                              "layout (location = 2) in vec4 Color;\n" +
-                                              "out vec2 Frag_UV;\n" +
-                                              "out vec4 Frag_Color;\n" +
-                                              "uniform mat4 ProjMtx;\n" +
-                                              "void main() { Frag_UV = UV; Frag_Color = Color; gl_Position = ProjMtx * vec4(Position.xy, 0, 1); }\n";
-
-            const string fragmentShaderSource = "#version 330 core\n" +
-                                                "in vec2 Frag_UV;\n" +
-                                                "in vec4 Frag_Color;\n" +
-                                                "uniform sampler2D Texture;\n" +
-                                                "out vec4 Out_Color;\n" +
-                                                "void main() { Out_Color = Frag_Color * texture(Texture, Frag_UV.st); }\n";
-
-            uint vert = Gl.GlCreateShader(ShaderType.VertexShader);
-            Gl.ShaderSource(vert, vertexShaderSource);
-            Gl.GlCompileShader(vert);
-            if (!Gl.GetShaderCompileStatus(vert))
-            {
-                Logger.Info("Vertex shader compile error: " + Gl.GetShaderInfoLog(vert));
-            }
-
-            uint frag = Gl.GlCreateShader(ShaderType.FragmentShader);
-            Gl.ShaderSource(frag, fragmentShaderSource);
-            Gl.GlCompileShader(frag);
-            if (!Gl.GetShaderCompileStatus(frag))
-            {
-                Logger.Info("Fragment shader compile error: " + Gl.GetShaderInfoLog(frag));
-            }
-
-            _shaderProgram = Gl.GlCreateProgram();
-            Gl.GlAttachShader(_shaderProgram, vert);
-            Gl.GlAttachShader(_shaderProgram, frag);
-            Gl.GlLinkProgram(_shaderProgram);
-            if (!Gl.GetProgramLinkStatus(_shaderProgram))
-            {
-                Logger.Info("Shader link error: " + Gl.GetProgramInfoLog(_shaderProgram));
-            }
-
-            Gl.GlDeleteShader(vert);
-            Gl.GlDeleteShader(frag);
-
-            _vao = Gl.GenVertexArray();
-            _vbo = Gl.GenBuffer();
-            _ebo = Gl.GenBuffer();
-
-            Gl.GlBindVertexArray(_vao);
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, _vbo);
-            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
-
-            int stride = Marshal.SizeOf<ImDrawVert>();
-            Gl.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, stride, IntPtr.Zero);
-            Gl.EnableVertexAttribArray(0);
-            Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, stride, new IntPtr(8));
-            Gl.EnableVertexAttribArray(1);
-            Gl.VertexAttribPointer(2, 4, VertexAttribPointerType.UnsignedByte, true, stride, new IntPtr(16));
-            Gl.EnableVertexAttribArray(2);
-
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, 0);
-            Gl.GlBindVertexArray(0);
-
-            Debug.Assert(platform != null, nameof(platform) + " != null");
-            platform.ShowWindow();
-            platform.SetTitle("Alis Hub - by @pabllopf");
-
-            _spaceWork.io = ImGui.GetIo();
-            _spaceWork.io.DisplaySize = new Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
-
-            Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
-
-            _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
-                                          | ImGuiBackendFlags.PlatformHasViewports
-                                          | ImGuiBackendFlags.HasGamepad
-                                          | ImGuiBackendFlags.HasMouseHoveredViewport
-                                          | ImGuiBackendFlags.HasMouseCursors;
-
-            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard
-                                         | ImGuiConfigFlags.NavEnableGamepad
-                                         | ImGuiConfigFlags.DockingEnable
-                                         | ImGuiConfigFlags.ViewportsEnable;
-
-            ImNodes.CreateContext();
-            ImPlot.CreateContext();
-            ImGuizMo.SetImGuiContext(imguiContext);
-            ImGui.SetCurrentContext(imguiContext);
-
-            LoadFonts();
-
-            SetStyle();
-
-            _spaceWork.OnInit();
-            _spaceWork.OnStart();
-
-            for (int i = 0; i < 5; i++)
-            {
-                _mouseClicked[i] = false;
-                _mouseDoubleClicked[i] = false;
-                _mouseClickedCount[i] = 0;
-                _mouseClickedTime[i] = 1e6; // valor grande = "no activo"
-                _prevMouseDown[i] = false;
-                _lastClickTime[i] = 0.0;
-                _lastClickPos[i] = new Vector2F(0, 0);
-            }
-
-            ImGuiIoPtr io = ImGui.GetIo();
-
-            _spaceWork.Viewport = ImGui.GetMainViewport();
-
-            dockspaceflags |= ImGuiWindowFlags.MenuBar;
-            dockspaceflags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove;
-            dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
+            InitializeEngine();
 
             while (_spaceWork.IsRunning)
             {
@@ -378,7 +212,7 @@ namespace Alis.App.Engine
                     delta = 0.25; // avoid huge dt values
                 }
 
-                io.DeltaTime = (float) delta;
+                _spaceWork.io.DeltaTime = (float) delta;
 
                 _spaceWork.IsRunning = platform.PollEvents();
 
@@ -445,7 +279,228 @@ namespace Alis.App.Engine
 
             ImGui.SetCurrentContext(new IntPtr());
 
+            CleanupEngine();
+
             platform.Cleanup();
+        }
+
+        private void InitializeEngine()
+        {
+            if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
+            {
+                Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
+                platform?.Cleanup();
+                return;
+            }
+
+            SetupOpenGLContext();
+            SetupImGuiBackend();
+            SetupShaders();
+            SetupBuffers();
+            SetupWindow();
+            SetupImGuiContext();
+            LoadFonts();
+            SetStyle();
+            _spaceWork.OnInit();
+            _spaceWork.OnStart();
+
+            for (int i = 0; i < 5; i++)
+            {
+                _mouseClicked[i] = false;
+                _mouseDoubleClicked[i] = false;
+                _mouseClickedCount[i] = 0;
+                _mouseClickedTime[i] = 1e6;
+                _prevMouseDown[i] = false;
+                _lastClickTime[i] = 0.0;
+                _lastClickPos[i] = new Vector2F(0, 0);
+            }
+
+            dockspaceflags |= ImGuiWindowFlags.MenuBar;
+            dockspaceflags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove;
+            dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
+        }
+
+        private void SetupOpenGLContext()
+        {
+            platform.MakeContextCurrent();
+            Gl.Initialize(platform.GetProcAddress);
+            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
+            Gl.GlEnable(EnableCap.DepthTest);
+        }
+
+        private void SetupImGuiBackend()
+        {
+            imguiContext= ImGui.CreateContext();
+            ImGui.SetCurrentContext(imguiContext);
+
+            Debug.Assert(platform != null, "Platform must be provided before Initialize is called.");
+            platform.MakeContextCurrent();
+
+            IntPtr currentCtx = ImGui.GetCurrentContext();
+            IntPtr context;
+            if (currentCtx == IntPtr.Zero)
+            {
+                context = ImGui.CreateContext();
+                ImGui.SetCurrentContext(context);
+            }
+            else
+            {
+                context = currentCtx;
+                ImGui.SetCurrentContext(context);
+            }
+
+            _spaceWork.io = ImGui.GetIo();
+            Debug.Assert(_spaceWork.io.NativePtr != IntPtr.Zero, "ImGui _spaceWork.io must be valid after creating or setting context.");
+
+            _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
+                                          ImGuiBackendFlags.PlatformHasViewports |
+                                          ImGuiBackendFlags.HasGamepad |
+                                          ImGuiBackendFlags.HasMouseHoveredViewport |
+                                          ImGuiBackendFlags.HasMouseCursors;
+
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
+                                         ImGuiConfigFlags.NavEnableGamepad;
+
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
+                                         ImGuiConfigFlags.ViewportsEnable;
+
+            _spaceWork.io = ImGui.GetIo();
+            _spaceWork.io.WantSaveIniSettings = false;
+        }
+
+        private void SetupShaders()
+        {
+            const string vertexShaderSource = "#version 330 core\n" +
+                                              "layout (location = 0) in vec2 Position;\n" +
+                                              "layout (location = 1) in vec2 UV;\n" +
+                                              "layout (location = 2) in vec4 Color;\n" +
+                                              "out vec2 Frag_UV;\n" +
+                                              "out vec4 Frag_Color;\n" +
+                                              "uniform mat4 ProjMtx;\n" +
+                                              "void main() { Frag_UV = UV; Frag_Color = Color; gl_Position = ProjMtx * vec4(Position.xy, 0, 1); }\n";
+
+            const string fragmentShaderSource = "#version 330 core\n" +
+                                                "in vec2 Frag_UV;\n" +
+                                                "in vec4 Frag_Color;\n" +
+                                                "uniform sampler2D Texture;\n" +
+                                                "out vec4 Out_Color;\n" +
+                                                "void main() { Out_Color = Frag_Color * texture(Texture, Frag_UV.st); }\n";
+
+            uint vert = Gl.GlCreateShader(ShaderType.VertexShader);
+            Gl.ShaderSource(vert, vertexShaderSource);
+            Gl.GlCompileShader(vert);
+            if (!Gl.GetShaderCompileStatus(vert))
+            {
+                Logger.Info("Vertex shader compile error: " + Gl.GetShaderInfoLog(vert));
+            }
+
+            uint frag = Gl.GlCreateShader(ShaderType.FragmentShader);
+            Gl.ShaderSource(frag, fragmentShaderSource);
+            Gl.GlCompileShader(frag);
+            if (!Gl.GetShaderCompileStatus(frag))
+            {
+                Logger.Info("Fragment shader compile error: " + Gl.GetShaderInfoLog(frag));
+            }
+
+            _shaderProgram = Gl.GlCreateProgram();
+            Gl.GlAttachShader(_shaderProgram, vert);
+            Gl.GlAttachShader(_shaderProgram, frag);
+            Gl.GlLinkProgram(_shaderProgram);
+            if (!Gl.GetProgramLinkStatus(_shaderProgram))
+            {
+                Logger.Info("Shader link error: " + Gl.GetProgramInfoLog(_shaderProgram));
+            }
+
+            Gl.GlDeleteShader(vert);
+            Gl.GlDeleteShader(frag);
+        }
+
+        private void SetupBuffers()
+        {
+            _vao = Gl.GenVertexArray();
+            _vbo = Gl.GenBuffer();
+            _ebo = Gl.GenBuffer();
+
+            Gl.GlBindVertexArray(_vao);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, _vbo);
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
+
+            int stride = Marshal.SizeOf<ImDrawVert>();
+            Gl.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, stride, IntPtr.Zero);
+            Gl.EnableVertexAttribArray(0);
+            Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, stride, new IntPtr(8));
+            Gl.EnableVertexAttribArray(1);
+            Gl.VertexAttribPointer(2, 4, VertexAttribPointerType.UnsignedByte, true, stride, new IntPtr(16));
+            Gl.EnableVertexAttribArray(2);
+
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, 0);
+            Gl.GlBindVertexArray(0);
+        }
+
+        private void SetupWindow()
+        {
+            Debug.Assert(platform != null, nameof(platform) + " != null");
+            platform.ShowWindow();
+            platform.SetTitle("Alis Hub - by @pabllopf");
+
+            _spaceWork.io = ImGui.GetIo();
+            _spaceWork.io.DisplaySize = new Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
+
+            Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
+
+            _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
+                                          | ImGuiBackendFlags.PlatformHasViewports
+                                          | ImGuiBackendFlags.HasGamepad
+                                          | ImGuiBackendFlags.HasMouseHoveredViewport
+                                          | ImGuiBackendFlags.HasMouseCursors;
+
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard
+                                         | ImGuiConfigFlags.NavEnableGamepad
+                                         | ImGuiConfigFlags.DockingEnable
+                                         | ImGuiConfigFlags.ViewportsEnable;
+
+            ImNodes.CreateContext();
+            ImPlot.CreateContext();
+            ImGuizMo.SetImGuiContext(imguiContext);
+            ImGui.SetCurrentContext(imguiContext);
+
+            _spaceWork.Viewport = ImGui.GetMainViewport();
+        }
+
+        private void SetupImGuiContext()
+        {
+            imguiContext = ImGui.CreateContext();
+            ImGui.SetCurrentContext(imguiContext);
+        }
+
+        private void CleanupEngine()
+        {
+            if (_vbo != 0)
+            {
+                Gl.DeleteBuffer(_vbo);
+            }
+
+            if (_ebo != 0)
+            {
+                Gl.DeleteBuffer(_ebo);
+            }
+
+            if (_vao != 0)
+            {
+                Gl.DeleteVertexArray(_vao);
+            }
+
+            if (_shaderProgram != 0)
+            {
+                Gl.GlDeleteProgram(_shaderProgram);
+            }
+
+            if (_fontTexture != 0)
+            {
+                Gl.DeleteTexture(_fontTexture);
+            }
+
+            ImGui.SetCurrentContext(new IntPtr());
         }
 
         /// <summary>
@@ -456,12 +511,10 @@ namespace Alis.App.Engine
             ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
 
-            platform.GetMouseState(out int mouseX, out int mouseY, out bool[] mouseButtons);
+            platform.GetMouseState(out _, out _, out bool[] mouseButtons);
             Debug.Assert((mouseButtons != null) && (mouseButtons.Length >= 3), "mouseButtons debe tener al menos 3 elementos");
 
-            platform.GetWindowMetrics(out int winX, out int winY,
-                out int winW, out int winH,
-                out int fbW, out int fbH);
+            platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
 
             platform.GetMousePositionInView(out float mx, out float my);
 

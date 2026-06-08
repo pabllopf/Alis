@@ -190,7 +190,7 @@ namespace Alis.App.Hub
             ImGui.SetCurrentContext(imguiContext);
 
             Debug.Assert(platform != null, "Platform must be provided before Initialize is called.");
-            platform?.MakeContextCurrent();
+            platform.MakeContextCurrent();
 
             IntPtr currentCtx = ImGui.GetCurrentContext();
             if (currentCtx == IntPtr.Zero)
@@ -428,12 +428,10 @@ namespace Alis.App.Hub
             ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
 
-            platform.GetMouseState(out int mouseX, out int mouseY, out bool[] mouseButtons);
+            platform.GetMouseState(out _, out _, out bool[] mouseButtons);
             Debug.Assert((mouseButtons != null) && (mouseButtons.Length >= 3), "mouseButtons debe tener al menos 3 elementos");
 
-            platform.GetWindowMetrics(out int winX, out int winY,
-                out int winW, out int winH,
-                out int fbW, out int fbH);
+            platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
 
             platform.GetMousePositionInView(out float mx, out float my);
 
