@@ -56,7 +56,341 @@ ALL generated content MUST stay STRICTLY inside:
 
 NEVER write outside `.memory`.
 
+
+# TARGETED SCOPE EXECUTION
+
+The command MAY receive an optional execution target argument.
+
+Supported targets:
+
+* single `.csproj`
+* single `.cs`
+* relative directory
+* solution root (default)
+
+Examples:
+
+```bash
+/opencode-memory Billing/Billing.API/Billing.API.csproj
+/opencode-memory SharedKernel/
+/opencode-memory src/Modules/Identity/
+/opencode-memory Billing.Application/Handlers/CreateInvoiceHandler.cs
+```
+
+If NO target is provided:
+
+* analyze the ENTIRE solution
+* use full incremental repository analysis mode
+
 ---
+
+# TARGET RESOLUTION RULES
+
+You MUST resolve the provided target BEFORE starting analysis.
+
+Resolution priority:
+
+1. exact file match
+2. exact directory match
+3. relative path normalization
+4. solution-relative lookup
+
+Supported target types:
+
+| Type | Behavior |
+|---|---|
+| `.sln` | analyze full solution |
+| `.csproj` | analyze only that project + dependencies |
+| `.cs` | analyze only related code graph |
+| directory | analyze only contained structure recursively |
+
+---
+
+# PARTIAL ANALYSIS MODE
+
+When a target is provided, the system MUST switch into:
+
+```text
+TARGETED MEMORY GENERATION MODE
+```
+
+In this mode:
+
+* ONLY affected artifacts MUST be analyzed
+* ONLY impacted memory documents MUST be generated
+* ONLY related indexes MUST be updated
+* ONLY impacted dependency graphs MUST be regenerated
+* ONLY scoped documentation MUST be committed
+
+NEVER regenerate unrelated repository memory.
+
+---
+
+# TARGETED PROJECT ANALYSIS (.csproj)
+
+If target is a `.csproj`:
+
+You MUST analyze:
+
+* project structure
+* project references
+* package references
+* public APIs
+* namespaces
+* handlers
+* services
+* repositories
+* CQRS usage
+* MediatR usage
+* DI registrations
+* configuration usage
+* EF Core usage
+* tests linked to the project
+* security-sensitive areas
+* performance-sensitive areas
+
+You MUST ALSO analyze:
+
+* direct dependencies
+* upstream dependents
+* architectural boundaries
+
+BUT avoid unrelated solution traversal.
+
+---
+
+# TARGETED FILE ANALYSIS (.cs)
+
+If target is a `.cs` file:
+
+You MUST build a localized semantic graph including:
+
+* containing namespace
+* containing project
+* direct references
+* inheritance hierarchy
+* interface implementations
+* injected dependencies
+* usages inside project
+* related handlers/services/controllers
+* related tests
+* related DTOs/entities/contracts
+
+Generate focused memory around the file context.
+
+---
+
+# TARGETED DIRECTORY ANALYSIS
+
+If target is a directory:
+
+You MUST recursively analyze ONLY:
+
+* contained projects
+* contained source files
+* contained modules
+* local dependencies
+* local architecture
+
+Cross-module analysis MUST remain scoped to impacted relationships only.
+
+---
+
+# SCOPED MEMORY GENERATION
+
+When running in targeted mode, generate ONLY affected documentation.
+
+Examples:
+
+```text
+.memory/projects/<affected>.md
+.memory/dependencies/<affected>.md
+.memory/context/<affected>.md
+.memory/diagrams/<affected>.md
+.memory/reports/<affected>.md
+```
+
+Avoid touching unrelated memory artifacts.
+
+---
+
+# TARGET-AWARE INDEX STRATEGY
+
+Indexes MUST support partial regeneration.
+
+When a target is provided:
+
+* update ONLY impacted index sections
+* preserve unrelated entries
+* avoid full index rebuilds unless required
+
+Applicable indexes:
+
+```text
+projects-index.md
+dependency-index.md
+architecture-index.md
+services-index.md
+handlers-index.md
+tests-index.md
+```
+
+---
+
+# TARGETED CHANGE DETECTION
+
+When scoped execution is active:
+
+You MUST compute delta ONLY for:
+
+* target files
+* target projects
+* impacted dependencies
+* impacted generated markdown
+
+Do NOT scan entire repository unnecessarily.
+
+---
+
+# TARGETED CHECKPOINTS
+
+Persist scoped execution state in markdown.
+
+Example:
+
+```markdown
+# Current Target Scope
+
+| Type | Target | Mode | Status |
+|---|---|---|---|
+| csproj | Billing.API.csproj | partial | running |
+```
+
+Store inside:
+
+```text
+.memory/system/state/execution-state.md
+```
+
+---
+
+# TARGETED QUEUE GENERATION
+
+When a target exists:
+
+Generate work queues ONLY for impacted components.
+
+Example:
+
+```markdown
+# Pending Scoped Work
+
+- [ ] Billing.API
+- [ ] Billing.Application
+- [ ] Billing.Tests
+```
+
+Avoid global queue expansion.
+
+---
+
+# TARGETED DEPENDENCY EXPANSION
+
+Dependency traversal MUST remain bounded.
+
+Allowed expansions:
+
+* direct references
+* direct dependents
+* immediate architectural neighbors
+
+Forbidden expansions unless explicitly requested:
+
+* full repository traversal
+* global architecture rebuild
+* unrelated bounded contexts
+* full dependency graph regeneration
+
+---
+
+# TARGETED COMMIT STRATEGY
+
+Commits in targeted mode MUST remain scope-specific.
+
+Examples:
+
+```text
+docs: generate memory for billing api
+docs: analyze create invoice handler
+docs: update identity module documentation
+docs: refresh billing dependency graph
+```
+
+NEVER include unrelated repository memory changes.
+
+---
+
+# TARGET MODE PRIORITY
+
+When target mode is active, prioritize:
+
+1. target structure
+2. local dependencies
+3. local architecture
+4. local tests
+5. local security
+6. local performance
+7. local diagrams
+8. local AI context
+
+Global analysis becomes secondary.
+
+---
+
+# TARGET MODE CONTEXT OPTIMIZATION
+
+In scoped execution mode you MUST aggressively minimize context usage.
+
+You MUST:
+
+* avoid loading unrelated projects
+* avoid global scans
+* avoid full repository indexing
+* avoid rebuilding stable memory
+
+You MUST prefer:
+
+* localized parsing
+* partial dependency graphs
+* incremental markdown updates
+* scoped checkpoint recovery
+* target-bound semantic enrichment
+
+---
+
+# DEFAULT FALLBACK BEHAVIOR
+
+If target resolution fails:
+
+1. log failure
+2. append to:
+
+```text
+.memory/system/logs/failures.md
+```
+
+3. continue safely if possible
+4. NEVER corrupt existing memory state
+
+If target is invalid and cannot be resolved:
+
+* abort scoped execution
+* preserve repository state
+* emit recovery instructions in markdown logs
+
+
+---
+
 
 # MARKDOWN-ONLY RULE
 
