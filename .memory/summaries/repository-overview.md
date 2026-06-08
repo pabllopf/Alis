@@ -1,102 +1,160 @@
-# Repository Overview
+# ALIS Game Engine Framework - Repository Overview
 
 ## High-Level Architecture
 
-Alis is a **high-performance game engine and development framework** written in C#. It follows a modular architecture with clear separation between core engine functionality, extensions, applications, and samples.
+ALIS is a high-performance 2D game engine framework written in C# with the following architectural layers:
 
-## Module Map
+### Layer 1: Presentation (1_Presentation)
+- **Extensions**: ~20 cross-platform extensions (Graphics, Audio, Cloud, Payment, etc.)
+- **Applications**: Engine, Hub, Installer
+- **Samples**: Console game samples for network extensions
 
-### 1_Presentation - User-Facing Applications
-- **Engine**: Core game application
-- **Hub**: Application hub/manager
-- **Installer**: Installation system
-- **Benchmark**: Performance testing
+### Layer 2: Application (2_Application)
+- **Alis Core**: Main application library
+- **Game Samples**: ~14 complete game samples (Flappy Bird, Pong, Space Simulator, etc.)
 
-### 2_Application - Main Application Layer
-- **Alis**: Main application framework
-- Multiple platform-specific samples (Android, iOS, Web, Desktop)
+### Layer 3: Structuration (3_Structuration)
+- **Alis.Core**: Core abstractions and base classes
+- Foundation for all other layers
 
-### 3_Structuration - Core Foundation
-- **Alis.Core**: Fundamental abstractions and base classes
+### Layer 4: Operation (4_Operation)
+- **ECS**: Entity Component System (108 files) - High-performance ECS with custom memory management
+- **Graphic**: Graphics rendering (147 files) - Cross-platform graphics with SFML/OpenGL
+- **Audio**: Audio playback system (5 files) - Platform-specific audio backends
+- **Physic**: 2D physics engine (39+ files) - Rigid body dynamics and collision detection
 
-### 4_Operation - Engine Systems
-- **Audio**: Audio processing system
-- **ECS**: Entity Component System for game logic
-- **Graphic**: Rendering and graphics system
-- **Physic**: Physics engine
+### Layer 5: Declaration (5_Declaration)
+- **Aspect System**: Core aspect infrastructure
 
-### 5_Declaration - Aspect-Oriented Programming
-- **Aspect**: AOP framework for cross-cutting concerns
-
-### 6_Ideation - Advanced Aspects
-- **Data**: Data management and processing
-- **Fluent**: Fluent interfaces and builders
-- **Logging**: Logging infrastructure
-- **Math**: Mathematical utilities and algorithms
-- **Memory**: Asset management and memory handling
-- **Time**: Time management and scheduling
-
-## Dependency Overview
-
-```
-Core (3_Structuration)
-  ↓
-Operation Systems (4_Operation)
-  - ECS
-  - Graphic  
-  - Audio
-  - Physic
-  ↓
-Ideation Aspects (6_Ideation)
-  ↓
-Extensions (1_Presentation/Extension)
-  ↓
-Applications & Samples
-```
+### Layer 6: Ideation (6_Ideation)
+- **Memory**: Asset registry and management system (6 files) - Thread-safe caching with ZIP handling
+- **Fluent**: Builder pattern implementation
+- **Data**: JSON serialization/deserialization (AOT-friendly)
+- **Math**: Custom mathematical operations with Taylor series approximations
+- **Time**: High-resolution clock for timing measurements
+- **Logging**: Flexible logging system with multiple outputs
 
 ## Technology Stack
 
-- **Language**: C# (.NET 5/6/7/8, .NET Framework 4.6.1, .NET Standard 2.0)
-- **Architecture**: ECS (Entity Component System), AOP (Aspect-Oriented Programming)
-- **Graphics**: SFML, GLFW, SDL2 bindings
-- **Cross-Platform**: Windows, macOS, Linux, iOS, Android, WebAssembly
-- **Package Management**: Embedded asset packs (.pack/.zip)
+### Core Technologies
+- **.NET 8**: Target framework (net8.0)
+- **C# 13**: Latest language features
+- **Unsafe Code**: Low-level memory operations for performance
 
-## Architectural Style
+### External Dependencies
+- **System.Memory**: Span<T> and Memory<T> for zero-copy operations
+- **System.Runtime.CompilerServices.Unsafe**: Low-level memory operations
+- **SFML/OpenGL**: Cross-platform graphics
+- **Platform-specific tools**: aplay, mpg123, afplay for audio
 
-1. **ECS Architecture**: Pure entity-component-system design for game logic
-2. **AOP Framework**: Cross-cutting concerns via aspect-oriented programming
-3. **Layered Architecture**: Clear separation between core, operation, and presentation layers
-4. **Plugin System**: Extension-based architecture for modularity
+## Architectural Patterns
 
-## Major Bounded Contexts
+### Design Patterns
+- **ECS**: Entity Component System with archetype-based storage
+- **Builder Pattern**: Fluent API for object construction
+- **Factory Pattern**: LoggerFactory and asset registry
+- **Strategy Pattern**: Platform-specific implementations
+- **Observer Pattern**: Event-based communication
 
-| Context | Description | Projects |
-|---|---|---|
-| Core Engine | Fundamental engine abstractions | Alis.Core, Alis.Core.Ecs, Alis.Core.Graphic |
-| Game Systems | Audio, Physics, Rendering | Alis.Core.Audio, Alis.Core.Physic |
-| AOP Framework | Aspect-oriented programming | Alis.Core.Aspect.* |
-| Extensions | Platform-specific extensions | Alis.Extension.* |
-| Applications | User-facing applications | Alis.App.* |
-| Samples | Example implementations | Alis.Sample.* |
+### Architecture Principles
+- **Clean Architecture**: Clear separation of concerns
+- **Layered Architecture**: Well-defined layer boundaries
+- **Dependency Inversion**: Abstractions over implementations
+- **Performance-first**: Zero-copy operations, custom memory management
 
-## Important Risks
+## Project Statistics
 
-1. **Multi-targeting Complexity**: Supporting .NET 5/6/7/8, .NET Framework, and .NET Standard increases maintenance burden
-2. **Native Interop**: Heavy use of platform-specific native bindings (OpenGL, SFML, etc.)
-3. **Memory Management**: Custom memory pooling and asset management requires careful handling
-4. **Performance Sensitivity**: ECS system requires high-performance code paths
+| Metric | Value |
+|---|---|
+| Total Projects | 140 |
+| Source Files | ~3,319 |
+| Documented Projects | 10 |
+| Documentation Coverage | ~7% |
 
-## Technical Debt Observations
+## Key Features
 
-1. **Generated Code**: Heavy reliance on source generators increases build complexity
-2. **Platform-Specific Code**: Extensive platform-specific implementations (Mac, Windows, Linux)
-3. **Test Coverage**: Mixed test coverage across projects
-4. **Documentation**: Limited inline documentation in some core areas
+### ECS System
+- High-performance entity management
+- Archetype-based component storage
+- Custom memory pooling
+- GameObject hierarchy
 
-## Repository Statistics
+### Graphics System
+- Cross-platform rendering (Windows, Linux, macOS, Web)
+- SFML and OpenGL backends
+- Hardware acceleration
 
-- **Total Projects**: 140
-- **Source Files**: ~3,319 C# files
-- **Target Frameworks**: .NET 5, 6, 7, 8, .NET Framework 4.6.1, .NET Standard 2.0
-- **Platform Support**: Windows, macOS, Linux, iOS, Android, WebAssembly
+### Physics Engine
+- 2D rigid body dynamics
+- Collision detection (GJK, EPA, SAT)
+- Continuous collision detection (CCD)
+- Dynamic tree broadphase optimization
+
+### Asset Management
+- Thread-safe asset registry
+- ZIP file handling with lazy extraction
+- SHA256-based change detection
+- Per-assembly caching
+
+## Testing Status
+
+- **Unit Tests**: Partial coverage across all projects
+- **Integration Tests**: Sample programs demonstrate usage
+- **Coverage**: Needs improvement (target: 80%+)
+
+## Quality Plans
+
+Each project includes a `QualityPlan.md` file with:
+- Code quality goals
+- Test coverage targets
+- Sample program expansion
+- Documentation improvements
+
+## Repository Structure
+
+```
+Alis/
+├── 1_Presentation/     # Extensions, Apps, Samples
+├── 2_Application/      # Core app + game samples
+├── 3_Structuration/    # Core engine aggregator
+├── 4_Operation/        # ECS, Graphic, Audio, Physic
+├── 5_Declaration/      # Aspect system
+├── 6_Ideation/         # Aspects + generators
+├── .memory/            # Generated documentation
+└── docs/               # Project documentation
+```
+
+## Documentation System
+
+The `.memory/` directory contains:
+- **projects/**: Per-project documentation
+- **system/**: State tracking, indexes, logs
+- **diagrams/**: Mermaid architecture diagrams
+- **indexes/**: Project and dependency indexes
+- **summaries/**: Repository overview and summaries
+
+## Next Steps for Memory Generation
+
+1. ✅ Document ECS system (108 files)
+2. ✅ Document Graphic system (147 files)
+3. ✅ Document Audio system (5 files)
+4. ✅ Document Physic system (39+ files)
+5. ✅ Document Memory aspect (6 files)
+6. ✅ Document Fluent, Data, Math, Time, Logging aspects
+7. ⏳ Document Extensions (~20 projects)
+8. ⏳ Document Applications and Samples
+9. ⏳ Generate architecture decision records
+
+## Cross-References
+
+- [[projects/Index]] - Complete project index
+- [[system/state/analysis-state]] - Current analysis state
+- [[diagrams/dependency-graph]] - Dependency visualization
+- [[summaries/repository-overview]] - This document
+
+## License
+
+GNU General Public License v3.0 (GPLv3)
+
+See [[license]] for full license text.
+
