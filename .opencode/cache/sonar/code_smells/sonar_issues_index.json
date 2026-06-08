@@ -162,7 +162,7 @@
       "status": "CLOSED",
       "assignedWorker": null,
       "lockedAt": null,
-      "completedAt": "2026-06-08T08:52:53.907209+00:00",
+      "completedAt": "2026-06-08T08:53:30.523388+00:00",
       "attemptCount": 0,
       "message": "Field 'Engine._fontTexture' is never assigned to, and will always have its default value 0",
       "assignee": "worker-mac-1",
@@ -194,7 +194,9 @@
       "lockedAt": null,
       "completedAt": null,
       "attemptCount": 0,
-      "message": "Remove the field 'fonts' and declare it as a local variable in the relevant methods."
+      "message": "Remove the field 'fonts' and declare it as a local variable in the relevant methods.",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T08:53:29.001203+00:00"
     },
     {
       "key": "AZ6OPa9isynw1OJ1vi7h",
@@ -207,7 +209,9 @@
       "lockedAt": null,
       "completedAt": null,
       "attemptCount": 0,
-      "message": "Remove the field 'glViewportHeight' and declare it as a local variable in the relevant methods."
+      "message": "Remove the field 'glViewportHeight' and declare it as a local variable in the relevant methods.",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T08:53:49.894348+00:00"
     },
     {
       "key": "AZ6OPa9isynw1OJ1vi7i",

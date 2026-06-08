@@ -1,9 +1,20 @@
 {
   "locks": {
     "AZ6OPa9isynw1OJ1vi7-": {
+      "status": "completed",
+      "assignedWorker": "worker-mac-1",
+      "lockedAt": "2026-06-08T08:48:46.769639+00:00",
+      "completedAt": "2026-06-08T08:53:28.732107+00:00"
+    },
+    "AZ6OPa9isynw1OJ1vi7g": {
       "status": "in_progress",
       "assignedWorker": "worker-mac-1",
-      "lockedAt": "2026-06-08T08:48:46.769639+00:00"
+      "lockedAt": "2026-06-08T08:53:29.005173+00:00"
+    },
+    "AZ6OPa9isynw1OJ1vi7h": {
+      "status": "in_progress",
+      "assignedWorker": "worker-mac-1",
+      "lockedAt": "2026-06-08T08:53:49.900726+00:00"
     }
   }
 }

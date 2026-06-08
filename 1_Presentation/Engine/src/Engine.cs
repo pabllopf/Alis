@@ -159,24 +159,9 @@ namespace Alis.App.Engine
         private bool firstTimeScale = true;
 
         /// <summary>
-        ///     The fonts
-        /// </summary>
-        private ImFontAtlasPtr fonts;
-
-        /// <summary>
         ///     The frame counter
         /// </summary>
         private int FrameCounter;
-
-        /// <summary>
-        ///     The gl viewport height
-        /// </summary>
-        private int glViewportHeight;
-
-        /// <summary>
-        ///     The gl viewport width
-        /// </summary>
-        private int glViewportWidth;
 
         /// <summary>
         ///     The is first time
@@ -487,8 +472,8 @@ namespace Alis.App.Engine
             {
                 int[] viewport = new int[4];
                 Gl.GlGetIntegerv(0x0BA2, viewport);
-                glViewportWidth = viewport[2];
-                glViewportHeight = viewport[3];
+                int glViewportWidth = viewport[2];
+                int glViewportHeight = viewport[3];
 
                 float scaleX = glViewportWidth / resolutionProgramX;
                 float scaleY = glViewportHeight / resolutionProgramY;
@@ -1483,7 +1468,7 @@ namespace Alis.App.Engine
         /// </summary>
         private void LoadFonts()
         {
-            fonts = ImGui.GetIo().Fonts;
+            ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
             int fontSize = 14;
             int fontSizeIcon = 13;
