@@ -1,6 +1,6 @@
 # Alis Solution Agent Rules
 
-## Core Commands
+## Main Commands
 
 ```bash
 # Restore dependencies
@@ -9,11 +9,8 @@ dotnet restore alis.slnx
 # Build solution
 dotnet build alis.slnx -c Debug
 
-# Run all tests (Debug + Release, skips Template/App/Test/Benchmark/Sample/Generator)
-docs/scripts/macos/run_tests.sh
-
-# Pack production projects only
-docs/scripts/macos/build_all.sh
+# Run all tests 
+dotnet test alis.slnx -c Debug
 ```
 
 ## Solution Architecture
@@ -26,7 +23,7 @@ Main solution: `alis.slnx` (335 projects across 6 layers)
 ```
 
 - **1_Presentation**: Engine, extensions, UI, runtime frontends
-- **2_Application**: Main Alis app, samples, executable compositions  
+- **2_Application**: Alis, samples, executable compositions  
 - **3_Structuration**: Core abstractions, base infrastructure
 - **4_Operation**: Graphics, audio, media, platform operations (many have `generator/` subfolders)
 - **5_Declaration**: Contracts, interfaces, metadata
