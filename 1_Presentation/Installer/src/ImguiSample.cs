@@ -254,53 +254,7 @@ namespace Alis.App.Installer
             _platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
                 io.MousePos = new Vector2F(mx, my);
 
-                List<bool> mouseDownList = new List<bool>();
-                for (int i = 0; i < 5; i++)
-                {
-                    mouseDownList.Add(i < mButtons.Length ? mButtons[i] : false);
-                }
-
-                List<bool> mouseClicked = new List<bool> {false, false, false, false, false};
-                List<bool> mouseDoubleClicked = new List<bool> {false, false, false, false, false};
-                List<double> mouseClickedTime = new List<double> {0, 0, 0, 0, 0};
-                List<ushort> mouseClickedCount = new List<ushort> {0, 0, 0, 0, 0};
-
-                double now = (double) Stopwatch.GetTimestamp() / Stopwatch.Frequency;
-                for (int i = 0; i < 5; i++)
-                {
-                    bool down = i < mButtons.Length ? mButtons[i] : false;
-                    bool prev = _prevMouseDown[i];
-
-                    if (down && !prev)
-                    {
-                        mouseClicked[i] = true;
-                        mouseClickedTime[i] = now;
-                        mouseClickedCount[i] = (ushort) (mouseClickedCount[i] + 1);
-
-                        double dt = now - _lastClickTime[i];
-                        float maxDist = io.MouseDoubleClickMaxDist;
-                        float dx = io.MousePos.X - _lastClickPos[i].X;
-                        float dy = io.MousePos.Y - _lastClickPos[i].Y;
-                        float dist2 = dx * dx + dy * dy;
-                        if ((dt <= io.MouseDoubleClickTime) && (dist2 <= maxDist * maxDist))
-                        {
-                            mouseDoubleClicked[i] = true;
-                            mouseClickedCount[i] = 2;
-                        }
-
-                        _lastClickTime[i] = now;
-                        _lastClickPos[i] = io.MousePos;
-                    }
-
-                    _prevMouseDown[i] = down;
-                }
-
-                io.MouseDown = mouseDownList;
-                io.MouseClicked = mouseClicked;
-                io.MouseClickedTime = mouseClickedTime;
-                io.MouseClickedCount = mouseClickedCount;
-                io.MouseDoubleClicked = mouseDoubleClicked;
-                io.MouseWheel = _platform.GetMouseWheel();
+                UpdateMouseState(io);
             
 
             ImGui.NewFrame();
@@ -332,6 +286,50 @@ namespace Alis.App.Installer
             ImDrawData drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
 
+        }
+
+        /// <summary>
+        ///     Updates mouse state from platform input.
+        /// </summary>
+        private void UpdateMouseState(ImGuiIoPtr io)
+        {
+            double now = (double) Stopwatch.GetTimestamp() / Stopwatch.Frequency;
+
+            for (int i = 0; i < 5; i++)
+            {
+                bool down = i < _mButtons.Length ? _mButtons[i] : false;
+                bool prev = _prevMouseDown[i];
+
+                if (down && !prev)
+                {
+                    _mouseClicked[i] = true;
+                    _mouseClickedTime[i] = now;
+                    _mouseClickedCount[i] = (ushort) (_mouseClickedCount[i] + 1);
+
+                    double dt = now - _lastClickTime[i];
+                    float maxDist = io.MouseDoubleClickMaxDist;
+                    float dx = io.MousePos.X - _lastClickPos[i].X;
+                    float dy = io.MousePos.Y - _lastClickPos[i].Y;
+                    float dist2 = dx * dx + dy * dy;
+                    if ((dt <= io.MouseDoubleClickTime) && (dist2 <= maxDist * maxDist))
+                    {
+                        _mouseDoubleClicked[i] = true;
+                        _mouseClickedCount[i] = 2;
+                    }
+
+                    _lastClickTime[i] = now;
+                    _lastClickPos[i] = io.MousePos;
+                }
+
+                _prevMouseDown[i] = down;
+            }
+
+            io.MouseDown = _mouseDownList;
+            io.MouseClicked = _mouseClicked;
+            io.MouseClickedTime = _mouseClickedTime;
+            io.MouseClickedCount = _mouseClickedCount;
+            io.MouseDoubleClicked = _mouseDoubleClicked;
+            io.MouseWheel = _platform.GetMouseWheel();
         }
 
         /// <summary>
