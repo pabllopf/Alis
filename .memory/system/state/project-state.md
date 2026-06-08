@@ -18,6 +18,10 @@
 | Alis.Core.Aspect.Math | 29 | Documented |
 | Alis.Core.Aspect.Time | 1 | Documented |
 | Alis.Core.Aspect.Logging | 24 | Documented |
+| Alis.Extension.Security | 9 | Documented |
+| Alis.Extension.Ads.GoogleAds | 4 | Documented |
+| Alis.Extension.Cloud.DropBox | 2 | Documented |
+| Alis.Extension.Payment.Stripe | 15 | Documented |
 | Alis.Core.Aspect.Memory | 6 | Documented |
 | Alis.Core.Aspect.Fluent | - | Documented |
 | Alis.Core.Aspect.Data | - | Documented |

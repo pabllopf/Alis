@@ -12,11 +12,15 @@
 - [x] Process Math aspect (6_Ideation/Math) ✓
 - [x] Process Time aspect (6_Ideation/Time) ✓
 - [x] Process Logging aspect (6_Ideation/Logging) ✓
+- [x] Process Security extension (1_Presentation/Extension/Security) ✓
+- [x] Process GoogleAds extension (1_Presentation/Extension/Ads) ✓
+- [x] Process DropBox extension (1_Presentation/Extension/Cloud) ✓
+- [x] Process Stripe extension (1_Presentation/Extension/Payment) ✓
 
 ## Next Batch
 
-- [ ] Process Extensions (1_Presentation/Extension) - ~20 projects
-  - GoogleAds, Security, Stripe, Network, FileDialog, Updater, Language, Math, Graphic, Cloud, Thread, Media
+- [ ] Process Extensions (1_Presentation/Extension) - ~16 projects remaining
+  - Network, FileDialog, Updater, Language, Math, Graphic, Cloud (GoogleDrive), Thread, Media
 - [ ] Process Applications (1_Presentation) - Engine, Hub, Installer, Benchmark
 - [ ] Process Samples (~30 projects)
 - [ ] Process Ideation aspects (6_Ideation)
