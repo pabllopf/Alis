@@ -1,3 +1,9 @@
 {
-  "locks": {}
+  "locks": {
+    "AZ6YEMnqXMMYSes8eRjZ": {
+      "status": "in_progress",
+      "assignedWorker": "worker-local-001",
+      "lockedAt": "2026-06-08T08:09:51.224694+00:00"
+    }
+  }
 }

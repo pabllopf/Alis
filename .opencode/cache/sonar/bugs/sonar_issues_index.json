@@ -1,10 +1,25 @@
 {
   "issues": [
     {
-      "key": "AZ6Pafy3NnKxd0kLY3_O",
+      "key": "AZ6YEMnqXMMYSes8eRjZ",
       "ruleKey": "csharpsquid:S2583",
       "file": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
-      "line": 259,
+      "line": 257,
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "assignedWorker": null,
+      "lockedAt": null,
+      "completedAt": null,
+      "attemptCount": 0,
+      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+      "assignee": "worker-local-001",
+      "_claimedAt": "2026-06-08T08:09:51.224360+00:00"
+    },
+    {
+      "key": "AZ6Xn7qqOPSex0CpFZfs",
+      "ruleKey": "csharpsquid:S2583",
+      "file": "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
+      "line": 268,
       "severity": "MAJOR",
       "status": "OPEN",
       "assignedWorker": null,
@@ -25,84 +40,6 @@
       "completedAt": null,
       "attemptCount": 0,
       "message": "Remove this call, the collection is known to be empty here."
-    },
-    {
-      "key": "AZ513rjKQhsJmkYf-QrZ",
-      "ruleKey": "csharpsquid:S2583",
-      "file": "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
-      "line": 270,
-      "severity": "MAJOR",
-      "status": "OPEN",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable."
-    },
-    {
-      "key": "AZ1dvNfFMbZ4NfML324C",
-      "ruleKey": "csharpsquid:S2996",
-      "file": "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/MemoryHelpers.cs",
-      "line": 58,
-      "severity": "MAJOR",
-      "status": "OPEN",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "message": "Remove this initialization of 'SharedTempComponentHandleBuffer' or make it lazy."
-    },
-    {
-      "key": "AZ1dvNfFMbZ4NfML324B",
-      "ruleKey": "csharpsquid:S2996",
-      "file": "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/MemoryHelpers.cs",
-      "line": 63,
-      "severity": "MAJOR",
-      "status": "OPEN",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "message": "Remove this initialization of 'SharedTempComponentStorageBuffer' or make it lazy."
-    },
-    {
-      "key": "AZ1dvNF4MbZ4NfML32sP",
-      "ruleKey": "csharpsquid:S2259",
-      "file": "pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs",
-      "line": 313,
-      "severity": "MAJOR",
-      "status": "OPEN",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "message": "'_transport?.StopAsync(cancellationToken)' is null on at least one execution path."
-    },
-    {
-      "key": "AZ1dvMimMbZ4NfML32Ai",
-      "ruleKey": "csharpsquid:S3923",
-      "file": "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs",
-      "line": 209,
-      "severity": "MAJOR",
-      "status": "OPEN",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "message": "This conditional operation returns the same value whether the condition is \"true\" or \"false\"."
-    },
-    {
-      "key": "AZ1dvNKBMbZ4NfML32tU",
-      "ruleKey": "csharpsquid:S2583",
-      "file": "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
-      "line": 551,
-      "severity": "MAJOR",
-      "status": "OPEN",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable."
     }
   ]
 }

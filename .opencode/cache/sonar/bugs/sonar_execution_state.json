@@ -1,25 +1,7 @@
 {
-  "totalIssues": 8,
-  "processedIssues": [
-    "AZ6Pafy3NnKxd0kLY3_O",
-    "AZ6Paf1iNnKxd0kLY3_P",
-    "AZ1dvNfFMbZ4NfML324B",
-    "AZ1dvNfFMbZ4NfML324C",
-    "AZ1dvNF4MbZ4NfML32sP",
-    "AZ1dvMimMbZ4NfML32Ai",
-    "AZ1dvNKBMbZ4NfML32tU",
-    "AZ513rjKQhsJmkYf-QrZ"
-  ],
+  "totalIssues": 3,
+  "processedIssues": [],
   "failedIssues": [],
-  "lastUpdate": "2026-06-04T15:17:56.836025+00:00",
-  "remainingIssues": 0,
-  "allFixed": true,
-  "fixedInCommits": [
-    "b74b0b563",
-    "0bb8170aa",
-    "5ba1e8478",
-    "ee53a1f9f",
-    "8216be6a1",
-    "affff327a"
-  ]
+  "remainingIssues": 3,
+  "lastUpdate": "2026-06-08T12:00:00+00:00"
 }
