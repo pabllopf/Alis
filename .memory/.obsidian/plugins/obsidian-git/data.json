@@ -23,7 +23,7 @@
   "treeStructure": false,
   "refreshSourceControl": true,
   "basePath": "../",
-  "differentIntervalCommitAndPush": true,
+  "differentIntervalCommitAndPush": false,
   "changedFilesInStatusBar": false,
   "showedMobileNotice": true,
   "refreshSourceControlTimer": 7000,
