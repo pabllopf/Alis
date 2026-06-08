@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <typeparam name="TArgument">The color type, typically <see cref="Color"/> or a platform-specific color representation.</typeparam>
     /// <remarks>
     ///     This sets a flat background color. For textured or gradient backgrounds,
-    ///     use <see cref="IBackground{out TBuilder, in TArgument}"/> instead.
+    ///     use <see cref="IBackground{TBuilder, TArgument}"/> instead.
     /// </remarks>
     public interface IBackgroundColor<out TBuilder, in TArgument>
     {

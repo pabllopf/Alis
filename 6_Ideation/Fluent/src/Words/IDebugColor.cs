@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <remarks>
     ///     The debug color affects wireframe overlays, bounding box outlines, and other
     ///     diagnostic visual aids. This only takes effect when debug visualization is enabled
-    ///     via <see cref="IDebug{out TBuilder, in TArgument}"/>.
+    ///     via <see cref="IDebug{TBuilder, TArgument}"/>.
     /// </remarks>
     public interface IDebugColor<out TBuilder, in TArgument>
     {

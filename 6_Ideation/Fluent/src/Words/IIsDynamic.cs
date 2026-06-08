@@ -49,7 +49,7 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <returns>The builder instance, enabling fluent chaining.</returns>
         /// <remarks>
         ///     Calling this method with <see langword="true"/> is equivalent to setting
-        ///     <see cref="IBodyType{out TBuilder, in TArgument}"/> to <c>Dynamic</c>.
+        ///     <see cref="IBodyType{TBuilder, TArgument}"/> to <c>Dynamic</c>.
         /// </remarks>
         TBuilder IsDynamic();
     }

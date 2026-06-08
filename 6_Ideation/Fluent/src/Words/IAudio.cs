@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <remarks>
     ///     Use this interface to attach audio clips, configure 2D/3D sound settings,
     ///     set looping behavior, or adjust volume and pitch for sound-emitting entities.
-    ///     Related interfaces: <see cref="IMute{out TBuilder, in TArgument}"/>, <see cref="ISetAudioClip{out TBuilder, in TArgument}"/>.
+    ///     Related interfaces: <see cref="IMute{TBuilder, TArgument}"/>, <see cref="ISetAudioClip{TBuilder, TArgument}"/>.
     /// </remarks>
     public interface IAudio<out TBuilder, in TArgument>
     {

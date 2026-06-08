@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <typeparam name="TBuilder">The builder type returned by the fluent method, enabling fluent chaining.</typeparam>
     /// <typeparam name="TArgument">The frame data type, typically a texture region, sprite rectangle, or frame index.</typeparam>
     /// <remarks>
-    ///     Used in conjunction with <see cref="IAddAnimation{out TBuilder, in TArgument}"/>
+    ///     Used in conjunction with <see cref="IAddAnimation{TBuilder, TArgument}"/>
     ///     to build multi-frame sprite animations. Each frame typically references a
     ///     region of a sprite sheet or an individual texture.
     /// </remarks>
