@@ -72,6 +72,36 @@ namespace Alis.App.Installer
         private readonly bool[] _prevMouseDown = new bool[5];
 
         /// <summary>
+        ///     The mouse buttons from platform
+        /// </summary>
+        private bool[] _mButtons = new bool[5];
+
+        /// <summary>
+        ///     The mouse down list
+        /// </summary>
+        private List<bool> _mouseDownList = new List<bool>();
+
+        /// <summary>
+        ///     The mouse clicked
+        /// </summary>
+        private List<bool> _mouseClicked = new List<bool>();
+
+        /// <summary>
+        ///     The mouse double clicked
+        /// </summary>
+        private List<bool> _mouseDoubleClicked = new List<bool>();
+
+        /// <summary>
+        ///     The mouse clicked time
+        /// </summary>
+        private List<double> _mouseClickedTime = new List<double>();
+
+        /// <summary>
+        ///     The mouse clicked count
+        /// </summary>
+        private List<ushort> _mouseClickedCount = new List<ushort>();
+
+        /// <summary>
         ///     The context
         /// </summary>
         private IntPtr _context;
@@ -115,12 +145,19 @@ namespace Alis.App.Installer
         ///     Initializes a new instance of the <see cref="ImguiSample" /> class
         /// </summary>
         /// <param name="platform">The platform</param>
-        public ImguiSample(INativePlatform platform) => _platform = platform;
+        public ImguiSample(INativePlatform platform) : this() => _platform = platform;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImguiSample" /> class
         /// </summary>
-        public ImguiSample() => _platform = null;
+        public ImguiSample()
+        {
+            _mouseDownList = new List<bool>(new bool[5]);
+            _mouseClicked = new List<bool>(new bool[5]);
+            _mouseDoubleClicked = new List<bool>(new bool[5]);
+            _mouseClickedTime = new List<double>(new double[5]);
+            _mouseClickedCount = new List<ushort>(new ushort[5]);
+        }
 
         /// <summary>
         ///     Initialize GL resources and ImGui context. Uses assertions and guards
@@ -253,6 +290,13 @@ namespace Alis.App.Installer
 
             _platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
                 io.MousePos = new Vector2F(mx, my);
+
+                _mButtons = mButtons;
+                _mouseDownList = new List<bool>(new bool[5]);
+                _mouseClicked = new List<bool>(new bool[5]);
+                _mouseDoubleClicked = new List<bool>(new bool[5]);
+                _mouseClickedTime = new List<double>(new double[5]);
+                _mouseClickedCount = new List<ushort>(new ushort[5]);
 
                 UpdateMouseState(io);
             
