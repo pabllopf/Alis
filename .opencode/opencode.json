@@ -5,7 +5,7 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/Qwen3.6-35B-A3B-NSC-ACE-SABER-4bit-MTPLX-Optimized-Speed",
+  "model": "omlx/NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit",
 
   "provider": {
     "omlx": {
@@ -16,8 +16,8 @@
         "apiKey": "1234"
       },
       "models": {
-        "Qwen3.6-35B-A3B-NSC-ACE-SABER-4bit-MTPLX-Optimized-Speed": {
-          "name": "Qwen3.6-35B-A3B-NSC-ACE-SABER-4bit-MTPLX-Optimized-Speed",
+        "NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit": {
+          "name": "NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit",
           "modalities": {
             "input": ["text"],
             "output": ["text"]
