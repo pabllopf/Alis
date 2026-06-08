@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "system/state/analysis-state.md",
+                "file": "onboarding/getting-started.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "analysis-state"
+              "title": "getting-started"
             }
           }
         ]
@@ -104,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "system/state/analysis-state.md",
+                "file": "onboarding/getting-started.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de analysis-state"
+              "title": "Enlaces entrantes de getting-started"
             }
           },
           {
@@ -123,12 +123,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "system/state/analysis-state.md",
+                "file": "onboarding/getting-started.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de analysis-state"
+              "title": "Enlaces salientes de getting-started"
             }
           },
           {
@@ -166,13 +166,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "system/state/analysis-state.md",
+                "file": "onboarding/getting-started.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de analysis-state"
+              "title": "Esquema de getting-started"
             }
           }
         ]
@@ -198,36 +198,36 @@
   },
   "active": "0850690c2d57722e",
   "lastOpenFiles": [
-    "system/tracking/documentation-status.md",
-    "system/tracking/coverage-map.md",
-    "system/tracking/documentation-map.md",
+    "system/indexes/indexes-summary.md",
+    "dependencies/dependency-graph.md",
+    "system/indexes/security-index.md",
+    "system/indexes/dependency-index.md",
+    "system/indexes/performance-index.md",
+    "system/indexes/handlers-index.md",
+    "system/indexes/tests-index.md",
+    "system/indexes/queries-index.md",
+    "system/indexes/commands-index.md",
+    "system/indexes/events-index.md",
+    "system/indexes/domains-index.md",
+    "diagrams/architecture-overview.md",
+    "decisions/adr-002-aggregator-pattern.md",
     "system/state/execution-state.md",
+    "testing/testing-overview.md",
     "system/state/file-hashes.md",
-    "system/state/pending-work.md",
-    "system/state/project-state.md",
-    "system/sessions/current-session.md",
-    "summaries/repository-overview.md",
     "system/state/analysis-state.md",
-    "system/indexes/project-index.md",
+    "security/security-overview.md",
+    "system/indexes/apis-index.md",
+    "system/indexes/services-index.md",
+    "system/indexes/architecture-index.md",
+    "system/indexes/projects-index.md",
+    "system/sessions/session-history.md",
+    "system/queues/completed-projects.md",
+    "system/checkpoints/latest-checkpoint.md",
+    "system/queues/pending-projects.md",
     "system/sessions",
     "system/checkpoints",
     "system/queues",
     "system/tracking",
-    "projects/6_Ideation/Alis.Core.Aspect.Data.md",
-    "projects/6_Ideation/Alis.Core.Aspect.Time.md",
-    "projects/6_Ideation/Alis.Core.Aspect.Memory.md",
-    "projects/6_Ideation/Alis.Core.Aspect.Fluent.md",
-    "projects/6_Ideation/Alis.Core.Aspect.Math.md",
-    "projects/4_Operation/Alis.Core.Ecs.md",
-    "system/indexes/layer-index.md",
-    "system/indexes/dependency-index.md",
-    "system/logs/execution-log.md",
-    "projects/1_Presentation/Alis.Extension.Language.Dialogue.md",
-    "projects/1_Presentation/Alis.Extension.Graphic.Ui.md",
-    "projects/1_Presentation/Alis.Extension.Cloud.DropBox.md",
-    "projects/1_Presentation/Alis.App.Installer.md",
-    "projects/1_Presentation/Alis.App.Hub.md",
-    "projects/1_Presentation/Alis.App.Engine.md",
     "projects/6_Ideation",
     "projects/5_Declaration",
     "projects/4_Operation",
