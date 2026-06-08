@@ -58,6 +58,11 @@ namespace Alis.Extension.Network
         private readonly int _bufferSize;
 
         /// <summary>
+        ///     Whether the object has been disposed
+        /// </summary>
+        private bool _disposed;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="BufferPool" /> class
         /// </summary>
         public BufferPool() : this(DefaultBufferSize)
@@ -98,10 +103,34 @@ namespace Alis.Extension.Network
             _bufferPoolStack.Push(buffer);
         }
 
+        ~BufferPool()
+        {
+            Dispose(false);
+        }
+
         public void Dispose()
         {
-            while (_bufferPoolStack.TryPop(out _)) { }
-            GC.SuppressFinalize(this);    
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Releases the managed resources used by the <see cref="BufferPool" />
+        /// </summary>
+        /// <param name="disposing">Whether to release managed resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                while (_bufferPoolStack.TryPop(out _)) { }
+            }
+
+            _disposed = true;
         }
     }
 }
