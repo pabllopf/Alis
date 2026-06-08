@@ -1,18 +1,18 @@
-# Alis.App.Installer
+# Alis.Core.Input
 
 ## Overview
-Installer application for ALIS engine and game distribution. Handles runtime installation and configuration.
+Input handling system for the ALIS engine. Manages keyboard, mouse, and gamepad input across platforms.
 
 ## Project Details
-- **Layer**: 1_Presentation
-- **Type**: Application (Installer)
+- **Layer**: 4_Operation
+- **Type**: Class Library
 - **Framework**: net8.0
-- **Output Type**: Exe
-- **Output Dir**: `bin/$(Configuration)/$(RuntimeIdentifier)/lib/`
+- **Output Dir**: `bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/`
 
 ## Dependencies
+- [[Alis.Core]] (3_Structuration) — Core engine abstractions
 - [[Alis]] (2_Application) — Core application library
-- All generators from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation
+- All generators from 5_Declaration, 6_Ideation
 
 ## Build Configuration
 - **LangVersion**: 13
@@ -30,5 +30,6 @@ Installer application for ALIS engine and game distribution. Handles runtime ins
 - `ZipAssets` — Zips assets and encodes to base64
 
 ## Notes
-- Used by Hub to install engine components
-- Platform-specific output via RuntimeIdentifier
+- Cross-platform input handling
+- Keyboard, mouse, and gamepad support
+- Input action mapping system

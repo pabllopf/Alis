@@ -1,17 +1,15 @@
-# Alis.App.Installer
+# Alis (Core Application Library)
 
 ## Overview
-Installer application for ALIS engine and game distribution. Handles runtime installation and configuration.
+The core application library that provides fundamental services for ALIS games and applications. Acts as the central dependency for all Presentation layer projects.
 
 ## Project Details
-- **Layer**: 1_Presentation
-- **Type**: Application (Installer)
+- **Layer**: 2_Application
+- **Type**: Class Library
 - **Framework**: net8.0
-- **Output Type**: Exe
-- **Output Dir**: `bin/$(Configuration)/$(RuntimeIdentifier)/lib/`
+- **Output Dir**: `bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/`
 
 ## Dependencies
-- [[Alis]] (2_Application) — Core application library
 - All generators from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation
 
 ## Build Configuration
@@ -30,5 +28,6 @@ Installer application for ALIS engine and game distribution. Handles runtime ins
 - `ZipAssets` — Zips assets and encodes to base64
 
 ## Notes
-- Used by Hub to install engine components
-- Platform-specific output via RuntimeIdentifier
+- Central library consumed by all Presentation layer projects
+- No direct framework dependencies beyond .NET runtime
+- Provides core abstractions for game development

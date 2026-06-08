@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "3d4c361931ba670e",
+        "id": "91a8dfc18002009f",
         "type": "tabs",
         "children": [
           {
-            "id": "be7d2620dcd69a2f",
+            "id": "0850690c2d57722e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "index.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nueva pestaña"
+              "title": "index"
             }
           }
         ]
@@ -101,6 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +115,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes"
+              "title": "Enlaces entrantes de index"
             }
           },
           {
@@ -119,11 +124,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes"
+              "title": "Enlaces salientes de index"
             }
           },
           {
@@ -161,12 +167,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema"
+              "title": "Esquema de index"
             }
           }
         ]
@@ -190,34 +197,34 @@
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "9d5245e6134357f0",
+  "active": "0850690c2d57722e",
   "lastOpenFiles": [
-    "decisions/adr-002-aggregator-pattern.md",
-    "summaries/session-summary.md",
-    "summaries/build-summary.md",
-    "onboarding/getting-started.md",
-    "decisions/adr-001-layered-architecture.md",
+    "Obsidian.md",
+    "log.md",
+    "schema.md",
+    "index.md",
+    "system/logs/execution-log.md",
+    "projects/4_Operation/Alis.Core.Scene.md",
+    "projects/4_Operation/Core.md",
+    "projects/4_Operation/Alis.Core.Serialization.md",
+    "projects/4_Operation/Alis.Core.Window.md",
+    "projects/1_Presentation/Benchmark.md",
     "conventions/naming-conventions.md",
-    "glossary/terms.md",
-    "system/indexes/layer-index.md",
-    "prompts/code-review-checklist.md",
-    "diagrams/architecture-overview.md",
-    "system/indexes/dependency-index.md",
-    "prompts/conversation-starters.md",
-    "security/analysis.md",
-    "system/indexes/project-index.md",
-    "testing/analysis.md",
+    "architecture/repository-overview.md",
+    "projects/6_Ideation/Alis.Core.Network.md",
     "prompts/ai-context.md",
-    "projects/2_Application/Sample.Inefable.md",
-    "projects/2_Application/Sample.Egg.md",
-    "projects/1_Presentation/Extension.Media.FFmpeg.md",
-    "projects/2_Application/Sample.RuinsOfTartarus.md",
-    "projects/1_Presentation/Extension.Thread.md",
-    "projects/2_Application/Sample.Snake.md",
-    "projects/1_Presentation/Extension.Cloud.GoogleDrive.md",
-    "projects/1_Presentation/Extension.Cloud.DropBox.md",
-    "projects/2_Application/Sample.Rogue.md",
-    "projects/1_Presentation/Extension.Profile.md",
+    "prompts/conversation-starters.md",
+    "prompts/code-review-checklist.md",
+    "security/analysis.md",
+    "system/indexes/dependency-index.md",
+    "system/indexes/layer-index.md",
+    "projects/Index.md",
+    "projects/1_Presentation/Extension-Profile.md",
+    "projects/1_Presentation/Extension-Network.md",
+    "projects/6_Ideation/Aspect.Logging.md",
+    "projects/5_Declaration/Aspect.md",
+    "projects/Cross-Cutting-Concerns.md",
+    "projects/Testing-Strategy.md",
     "projects/6_Ideation",
     "projects/5_Declaration",
     "projects/4_Operation",

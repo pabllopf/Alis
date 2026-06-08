@@ -1,13 +1,12 @@
-# Alis.App.Installer
+# Alis.Sample
 
 ## Overview
-Installer application for ALIS engine and game distribution. Handles runtime installation and configuration.
+Sample/demo application demonstrating usage of the core Alis application library.
 
 ## Project Details
-- **Layer**: 1_Presentation
-- **Type**: Application (Installer)
+- **Layer**: 2_Application
+- **Type**: Sample Application
 - **Framework**: net8.0
-- **Output Type**: Exe
 - **Output Dir**: `bin/$(Configuration)/$(RuntimeIdentifier)/lib/`
 
 ## Dependencies
@@ -30,5 +29,5 @@ Installer application for ALIS engine and game distribution. Handles runtime ins
 - `ZipAssets` — Zips assets and encodes to base64
 
 ## Notes
-- Used by Hub to install engine components
-- Platform-specific output via RuntimeIdentifier
+- Demonstrates core library usage patterns
+- Can be used as starting point for new projects
