@@ -44,9 +44,8 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void ShouldSetAndRetrieveGameObjectField()
         {
-            Scene scene = new Scene();
-            GameObject gameObject = scene.CreateGameObject();
             int[] buffer = [42];
+            GameObject gameObject = default;
 
             GameObjectRefTuple<int> tuple = new GameObjectRefTuple<int>
             {
@@ -63,9 +62,8 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void ShouldDeconstructWithCorrectGameObject()
         {
-            Scene scene = new Scene();
-            GameObject gameObject = scene.CreateGameObject();
             int[] buffer = [42];
+            GameObject gameObject = default;
 
             GameObjectRefTuple<int> tuple = new GameObjectRefTuple<int>
             {
@@ -84,9 +82,8 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void ShouldDeconstructWithCorrectRefValue()
         {
-            Scene scene = new Scene();
-            GameObject gameObject = scene.CreateGameObject();
             int[] buffer = [42];
+            GameObject gameObject = default;
 
             GameObjectRefTuple<int> tuple = new GameObjectRefTuple<int>
             {
@@ -105,9 +102,8 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void ShouldModifyOriginalBufferThroughRefValue()
         {
-            Scene scene = new Scene();
-            GameObject gameObject = scene.CreateGameObject();
             int[] buffer = [42];
+            GameObject gameObject = default;
 
             GameObjectRefTuple<int> tuple = new GameObjectRefTuple<int>
             {
