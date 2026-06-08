@@ -8,6 +8,7 @@
 - [x] Process Physic system (4_Operation/Physic) ✓
 - [x] Process Memory aspect (6_Ideation/Memory) ✓
 - [x] Process Fluent aspect (6_Ideation/Fluent) ✓
+- [ ] Process remaining aspects (Data, Math, Time, Logging)
 - [ ] Process Ideation aspects (6_Ideation)
 - [ ] Process Extensions (1_Presentation/Extension)
 - [x] Generate dependency graphs ✓
