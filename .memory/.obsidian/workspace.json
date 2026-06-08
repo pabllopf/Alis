@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/2_Application/Alis.md",
+                "file": "prompts/ai-context.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Alis"
+              "title": "ai-context"
             }
           }
         ]
@@ -104,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "projects/2_Application/Alis.md",
+                "file": "prompts/ai-context.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de Alis"
+              "title": "Enlaces entrantes de ai-context"
             }
           },
           {
@@ -123,12 +123,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "projects/2_Application/Alis.md",
+                "file": "prompts/ai-context.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de Alis"
+              "title": "Enlaces salientes de ai-context"
             }
           },
           {
@@ -166,13 +166,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "projects/2_Application/Alis.md",
+                "file": "prompts/ai-context.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de Alis"
+              "title": "Esquema de ai-context"
             }
           }
         ]
@@ -196,8 +196,16 @@
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "9d5245e6134357f0",
+  "active": "847c078068ae35c5",
   "lastOpenFiles": [
+    "index.md",
+    "GameObject.md",
+    "ChunkTuple.md",
+    "projects/Cross-Cutting-Concerns.md",
+    "projects/Generators.md",
+    "projects/Build-System.md",
+    "projects/Architecture.md",
+    "projects/2_Application/Alis.md",
     "projects/2_Application/Alis.Test.md",
     "projects/2_Application/Core.md",
     "projects/2_Application/Samples/Alis.Sample.md",
@@ -210,7 +218,6 @@
     "glossary/gameobject.md",
     "glossary/query.md",
     "glossary/ref-t.md",
-    "GameObject.md",
     "glossary/index.md",
     "projects/4_Operation/Alis.Core.Ecs.md",
     "projects/4_Operation/Alis.Core.Audio.md",
@@ -218,13 +225,6 @@
     "dependencies/dependency-graph.md",
     "concepts/Multi-Platform Samples.md",
     "glossary/gameobject-only.md",
-    "glossary/gameobject-lookup.md",
-    "glossary/gameobject-type.md",
-    "concepts/Generator Pattern.md",
-    "concepts/Solution Composition.md",
-    "concepts/Aspect-Oriented Design.md",
-    "concepts/Layered Architecture.md",
-    "glossary/gameobject-location.md",
     "Sin título.canvas",
     "context",
     "projects/1_Presentation/Extensions/Math/ProceduralDungeon",
