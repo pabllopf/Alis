@@ -128,13 +128,6 @@ await player.Stop();
 | Linux | ✅ Full | LinuxPlayer |
 | WebAssembly | ✅ Full | BrowserPlayer |
 
-## TODOs
-
-- [ ] Add audio effect support (reverb, echo, etc.)
-- [ ] Implement 3D spatial audio
-- [ ] Add audio streaming for large files
-- [ ] Optimize buffer management for real-time audio
-
 ## Related Projects
 
 - [[Alis.Core.Graphic]] - Visual synchronization

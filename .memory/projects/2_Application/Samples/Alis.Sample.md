@@ -10,7 +10,7 @@ Sample/demo application demonstrating usage of the core Alis application library
 - **Output Dir**: `bin/$(Configuration)/$(RuntimeIdentifier)/lib/`
 
 ## Dependencies
-- [[Alis]] (2_Application) — Core application library
+- [[projects/2_Application/Alis]] (2_Application) — Core application library
 - All generators from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation
 
 ## Build Configuration

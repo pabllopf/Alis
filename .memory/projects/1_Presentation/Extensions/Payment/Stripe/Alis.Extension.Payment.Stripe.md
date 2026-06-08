@@ -247,7 +247,7 @@ if (payment.Status == "succeeded")
 
 ## Related Projects
 
-- [[Alis.Extension.Security]] - Secure data handling
+- [[projects/1_Presentation/Alis.Extension.Security]] - Secure data handling
 - [[Alis.Core.Aspect.Logging]] - Logging system
 
 ## TODO

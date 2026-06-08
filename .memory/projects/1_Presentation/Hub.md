@@ -14,7 +14,7 @@ Game hub/launcher application for managing and launching ALIS games. Includes Ed
 - [[Alis]] (2_Application) — Core application library
 - [[Alis.Extension.Graphic.Ui]] — UI framework
 - [[Alis.Extension.Updater]] — Application update mechanism
-- [[Alis.Extension.Io.FileDialog]] — Cross-platform file dialogs
+- [[projects/1_Presentation/Alis.Extension.Io.FileDialog]] — Cross-platform file dialogs
 - All generators from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation
 
 ## Build Configuration

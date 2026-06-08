@@ -39,7 +39,7 @@ Comprehensive documentation for the ALIS project — a game engine and developme
 #### 2_Application
 - [[2_Application/Alis]] — Core application library
 - [[2_Application/Alis.Test]] — Unit tests for core library
-- [[2_Application/Alis.Sample]] — Sample application
+- [[Alis.Sample]] — Sample application
 
 #### 3_Structuration
 - [[3_Structuration/Core]] — Foundational abstractions overview

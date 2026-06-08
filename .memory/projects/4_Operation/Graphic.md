@@ -6,9 +6,7 @@
 High-performance 2D/3D graphics rendering system with support for multiple backends (SFML, GLFW, SDL2, OpenGL).
 
 ### Dependencies
-- **Alis.Core**: Base abstractions
-- **Alis.Core.Ecs**: ECS integration for rendering entities
-- **Platform-specific bindings**: SFML, GLFW, SDL2, OpenGL
+- **Alis.Core**.Aspect: Aspects of Alis
 
 ### Key Components
 
@@ -46,12 +44,6 @@ High-performance 2D/3D graphics rendering system with support for multiple backe
 1. **Platform Fragmentation**: Multiple backend support increases complexity
 2. **Native Interop**: Heavy use of platform-specific native code
 3. **Memory Leaks**: GPU resource management requires careful handling
-
-### TODOs
-- [ ] Expand test coverage
-- [ ] Add WebGL/WebAssembly support documentation
-- [ ] Create performance benchmarks
-- [ ] Document shader system
 
 ### Complexity Observations
 - **High**: Multi-platform graphics API abstraction

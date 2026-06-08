@@ -134,7 +134,7 @@ public class SecureString
 
 ## Related Projects
 
-- [[Alis.Extension.Network]] - Network security
+- [[projects/1_Presentation/Alis.Extension.Network]] - Network security
 - [[Alis.Core]] - Core engine
 - [[SecureString]] - Secure string implementation
 

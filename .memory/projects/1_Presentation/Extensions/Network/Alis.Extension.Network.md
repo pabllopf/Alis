@@ -270,7 +270,7 @@ await client.SendAsync(new NetworkMessageEnvelope
 
 ## Related Projects
 
-- [[Alis.Extension.Security]] - Secure data handling
+- [[projects/1_Presentation/Alis.Extension.Security]] - Secure data handling
 - [[Alis.Core.Ecs]] - ECS engine
 - [[Alis.Extension.Cloud]] - Cloud storage
 

@@ -11,10 +11,14 @@
             "id": "847c078068ae35c5",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Vista gráfica"
+              "type": "markdown",
+              "state": {
+                "file": "projects/2_Application/Alis.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Alis"
             }
           }
         ]
@@ -100,6 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "projects/2_Application/Alis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +114,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes"
+              "title": "Enlaces entrantes de Alis"
             }
           },
           {
@@ -118,11 +123,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "projects/2_Application/Alis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes"
+              "title": "Enlaces salientes de Alis"
             }
           },
           {
@@ -160,12 +166,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "projects/2_Application/Alis.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema"
+              "title": "Esquema de Alis"
             }
           }
         ]
@@ -191,11 +198,26 @@
   },
   "active": "9d5245e6134357f0",
   "lastOpenFiles": [
+    "projects/2_Application/Alis.Test.md",
+    "projects/2_Application/Core.md",
+    "projects/2_Application/Samples/Alis.Sample.md",
+    "projects/2_Application/Samples/Sample.Asteroid.md",
+    "projects/3_Structuration/Alis.Core.Graphic.md",
+    "projects/2_Application/Samples",
+    "projects/3_Structuration/Alis.Core.Ecs.md",
+    "projects/3_Structuration/Core.md",
+    "glossary/gameobject-enumerator.md",
+    "glossary/gameobject.md",
+    "glossary/query.md",
+    "glossary/ref-t.md",
+    "GameObject.md",
     "glossary/index.md",
+    "projects/4_Operation/Alis.Core.Ecs.md",
+    "projects/4_Operation/Alis.Core.Audio.md",
+    "projects/4_Operation/Graphic.md",
     "dependencies/dependency-graph.md",
     "concepts/Multi-Platform Samples.md",
     "glossary/gameobject-only.md",
-    "glossary/gameobject-enumerator.md",
     "glossary/gameobject-lookup.md",
     "glossary/gameobject-type.md",
     "concepts/Generator Pattern.md",
@@ -203,30 +225,15 @@
     "concepts/Aspect-Oriented Design.md",
     "concepts/Layered Architecture.md",
     "glossary/gameobject-location.md",
-    "ChunkTuple.md",
-    "glossary/gameobject-id-only.md",
-    "glossary/gameobject-only-event.md",
-    "glossary/component-event.md",
-    "glossary/entity-component-system-ecs.md",
-    "glossary/fluent-interface.md",
-    "glossary/event-t.md",
-    "glossary/gameobject-flags.md",
-    "glossary/ref-t.md",
-    "glossary/memory-management.md",
-    "glossary/rule.md",
-    "glossary/fastest-table.md",
-    "glossary/fastest-stack.md",
-    "glossary/chunk-tuple.md",
     "Sin título.canvas",
     "context",
-    "projects/1_Presentation/Extension/Math/ProceduralDungeon",
-    "projects/1_Presentation/Extension/Math/HighSpeedPriorityQueue",
-    "projects/1_Presentation/Extension/Math",
-    "projects/1_Presentation/Extension/Network",
-    "projects/1_Presentation/Extension/Io/FileDialog",
-    "projects/1_Presentation/Extension/Io",
-    "projects/1_Presentation/Extension/Cloud/DropBox",
-    "projects/1_Presentation/Extension/Cloud",
-    "projects/1_Presentation/Extension/Payment/Stripe"
+    "projects/1_Presentation/Extensions/Math/ProceduralDungeon",
+    "projects/1_Presentation/Extensions/Math/HighSpeedPriorityQueue",
+    "projects/1_Presentation/Extensions/Math",
+    "projects/1_Presentation/Extensions/Network",
+    "projects/1_Presentation/Extensions/Io/FileDialog",
+    "projects/1_Presentation/Extensions/Io",
+    "projects/1_Presentation/Extensions/Cloud/DropBox",
+    "projects/1_Presentation/Extensions/Cloud"
   ]
 }

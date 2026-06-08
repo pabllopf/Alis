@@ -180,7 +180,7 @@ Logger.Error($"Failed to upload file to DropBox: {ex.Message}");
 ## Related Projects
 
 - [[Alis.Extension.Cloud.GoogleDrive]] - Google Drive integration
-- [[Alis.Extension.Security]] - Secure data handling
+- [[projects/1_Presentation/Alis.Extension.Security]] - Secure data handling
 - [[Alis.Core.Aspect.Logging]] - Logging system
 
 ## TODO

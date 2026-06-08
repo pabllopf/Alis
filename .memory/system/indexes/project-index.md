@@ -113,12 +113,12 @@
 
 | Project | Files | Status | Documentation |
 |---------|-------|--------|---------------|
-| Alis.Extension.Security | 9 | ✓ Documented | [[Alis.Extension.Security]] |
-| Alis.Extension.Ads.GoogleAds | 4 | ✓ Documented | [[Alis.Extension.Ads.GoogleAds]] |
-| Alis.Extension.Cloud.DropBox | 2 | ✓ Documented | [[Alis.Extension.Cloud.DropBox]] |
-| Alis.Extension.Payment.Stripe | 15 | ✓ Documented | [[Alis.Extension.Payment.Stripe]] |
-| Alis.Extension.Network | 53 | ✓ Documented | [[Alis.Extension.Network]] |
-| Alis.Extension.Io.FileDialog | 12 | ✓ Documented | [[Alis.Extension.Io.FileDialog]] |
+| Alis.Extension.Security | 9 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Security]] |
+| Alis.Extension.Ads.GoogleAds | 4 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Ads.GoogleAds]] |
+| Alis.Extension.Cloud.DropBox | 2 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Cloud.DropBox]] |
+| Alis.Extension.Payment.Stripe | 15 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Payment.Stripe]] |
+| Alis.Extension.Network | 53 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Network]] |
+| Alis.Extension.Io.FileDialog | 12 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Io.FileDialog]] |
 | Alis.Extension.Math.ProceduralDungeon | 25 | ✓ Documented | [[Alis.Extension.Math.ProceduralDungeon]] |
 | Alis.Extension.Math.HighSpeedPriorityQueue | 9 | ✓ Documented | [[Alis.Extension.Math.HighSpeedPriorityQueue]] |
 
