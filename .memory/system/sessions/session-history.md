@@ -11,6 +11,9 @@
 - Document ECS system (108 files)
 - Document Graphic system (147 files)
 - Create queue and checkpoint files
+- Generate dependency graph
+- Create 13+ index files
+- Generate security overview
 
 ### In Progress
 - Continue Batch 1 (Audio, Physic systems)

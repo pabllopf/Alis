@@ -8,8 +8,8 @@
 - [ ] Process Physic system (4_Operation/Physic)
 - [ ] Process Ideation aspects (6_Ideation)
 - [ ] Process Extensions (1_Presentation/Extension)
-- [ ] Generate dependency graphs
-- [ ] Create architecture documentation
+- [x] Generate dependency graphs ✓
+- [x] Create architecture documentation ✓
 
 ## Priority Queue
 
@@ -21,4 +21,4 @@
 
 ## Current Batch
 
-**Batch 1**: Processing ECS and core systems (20 projects) - In Progress
+**Batch 1**: Processing ECS and core systems (20 projects) - In Progress (2/20)
