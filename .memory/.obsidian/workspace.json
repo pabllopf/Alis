@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "system/indexes/project-index.md",
+                "file": "system/state/analysis-state.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "project-index"
+              "title": "analysis-state"
             }
           }
         ]
@@ -104,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "system/indexes/project-index.md",
+                "file": "system/state/analysis-state.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de project-index"
+              "title": "Enlaces entrantes de analysis-state"
             }
           },
           {
@@ -123,12 +123,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "system/indexes/project-index.md",
+                "file": "system/state/analysis-state.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de project-index"
+              "title": "Enlaces salientes de analysis-state"
             }
           },
           {
@@ -166,13 +166,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "system/indexes/project-index.md",
+                "file": "system/state/analysis-state.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de project-index"
+              "title": "Esquema de analysis-state"
             }
           }
         ]
@@ -198,6 +198,21 @@
   },
   "active": "0850690c2d57722e",
   "lastOpenFiles": [
+    "system/tracking/documentation-status.md",
+    "system/tracking/coverage-map.md",
+    "system/tracking/documentation-map.md",
+    "system/state/execution-state.md",
+    "system/state/file-hashes.md",
+    "system/state/pending-work.md",
+    "system/state/project-state.md",
+    "system/sessions/current-session.md",
+    "summaries/repository-overview.md",
+    "system/state/analysis-state.md",
+    "system/indexes/project-index.md",
+    "system/sessions",
+    "system/checkpoints",
+    "system/queues",
+    "system/tracking",
     "projects/6_Ideation/Alis.Core.Aspect.Data.md",
     "projects/6_Ideation/Alis.Core.Aspect.Time.md",
     "projects/6_Ideation/Alis.Core.Aspect.Memory.md",
@@ -213,26 +228,11 @@
     "projects/1_Presentation/Alis.App.Installer.md",
     "projects/1_Presentation/Alis.App.Hub.md",
     "projects/1_Presentation/Alis.App.Engine.md",
-    "projects/1_Presentation/Alis.Extension.Math.ProceduralDungeon.Test.md",
-    "projects/1_Presentation/Alis.Extension.Graphic.Glfw.md",
-    "projects/1_Presentation/Alis.Extension.Graphic.Sdl2.md",
-    "projects/1_Presentation/Alis.Extension.Graphic.Sfml.md",
-    "projects/1_Presentation/Alis.Extension.Language.Dialogue.Sample.md",
-    "projects/1_Presentation/Alis.Extension.Language.Dialogue.Test.md",
-    "projects/1_Presentation/Alis.Extension.Language.Translator.md",
-    "projects/1_Presentation/Alis.Extension.Language.Translator.Sample.md",
-    "projects/1_Presentation/Alis.Extension.Language.Translator.Test.md",
-    "projects/1_Presentation/Alis.Extension.Updater.md",
-    "projects/1_Presentation/Alis.Extension.Updater.Sample.md",
     "projects/6_Ideation",
     "projects/5_Declaration",
     "projects/4_Operation",
     "projects/3_Structuration",
     "projects/2_Application",
-    "projects/1_Presentation",
-    "system/state/analysis-state.json",
-    "system/state/file-hashes.json",
-    "system/state/project-state.json",
-    "summaries"
+    "projects/1_Presentation"
   ]
 }

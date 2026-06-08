@@ -1,28 +1,59 @@
-# Alis.Core.Graphic
+# Graphic System Documentation
 
-## Overview
-Core engine Graphic subsystem. Provides low-level Graphic functionality for the game engine.
+## Alis.Core.Graphic - Rendering and Graphics System
 
-## Project Details
-- **Layer**: 4_Operation
-- **Type**: Engine Subsystem
-- **Framework**: net8.0 / netstandard2.0
-- **Purpose**: Graphic engine operations
+### Purpose
+High-performance 2D/3D graphics rendering system with support for multiple backends (SFML, GLFW, SDL2, OpenGL).
 
-## Sub-projects
-- src/ — Main implementation
-- test/ — Unit tests
-- sample/ — Usage examples
-- Generator/ — Source generator (where applicable)
+### Dependencies
+- **Alis.Core**: Base abstractions
+- **Alis.Core.Ecs**: ECS integration for rendering entities
+- **Platform-specific bindings**: SFML, GLFW, SDL2, OpenGL
 
-## Dependencies
-- Alis.Core.Aspect (5_Declaration)
+### Key Components
 
-## Key Files
-- `*.cs` — Graphic implementation
-- `*.Generator.cs` — Generated code (from Roslyn generator)
+#### Rendering Pipeline
+- **Window Management**: Cross-platform window creation and management
+- **OpenGL Context**: Graphics context management
+- **Sprite System**: 2D sprite rendering
+- **Font System**: Text rendering with font management
 
-## Notes
-- Uses source generators for boilerplate reduction
-- Generator outputs to Alis.Core.Aspect (Declaration layer)
-- Exposed through Alis.Core aggregator
+#### UI System
+- **Font Manager**: Font loading and caching
+- **UI Components**: Basic UI element support
+
+#### Platform Support
+- **macOS**: Native Cocoa/OpenGL integration
+- **Windows**: DirectX/OpenGL support
+- **Linux**: OpenGL/Vulkan support
+- **WebAssembly**: WebGL rendering
+
+### Data Access
+- Direct GPU access via OpenGL bindings
+- Texture management and caching
+- Shader system support
+
+### Messaging Usage
+- Event system for window/input events
+- Render notifications
+
+### Testing Status
+- **Unit Tests**: Limited - needs expansion
+- **Integration Tests**: Platform-specific tests needed
+- **Coverage**: Low priority currently
+
+### Risks
+1. **Platform Fragmentation**: Multiple backend support increases complexity
+2. **Native Interop**: Heavy use of platform-specific native code
+3. **Memory Leaks**: GPU resource management requires careful handling
+
+### TODOs
+- [ ] Expand test coverage
+- [ ] Add WebGL/WebAssembly support documentation
+- [ ] Create performance benchmarks
+- [ ] Document shader system
+
+### Complexity Observations
+- **High**: Multi-platform graphics API abstraction
+- **Performance-Critical**: Render loop optimization
+- **Complexity**: Platform-specific implementations
