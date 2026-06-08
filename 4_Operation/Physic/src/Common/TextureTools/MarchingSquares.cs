@@ -152,21 +152,6 @@ namespace Alis.Core.Physic.Common.TextureTools
 
             public MarchCellContext(sbyte[,] f, sbyte[,] fs, GeomPolyVal[,] ps, Aabb domain,
                 int xn, float cellWidth, int lerpCount, bool combine,
-                CxFastList<GeomPoly> ret)
-            {
-                F = f;
-                Fs = fs;
-                Ps = ps;
-                Domain = domain;
-                Xn = xn;
-                CellWidth = cellWidth;
-                LerpCount = lerpCount;
-                Combine = combine;
-                Ret = ret;
-            }
-
-            public MarchCellContext(sbyte[,] f, sbyte[,] fs, GeomPolyVal[,] ps, Aabb domain,
-                int xn, float cellWidth, int lerpCount, bool combine,
                 CxFastList<GeomPoly> ret, float cellHeight)
             {
                 F = f;
