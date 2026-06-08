@@ -1,34 +1,68 @@
 # Alis.Core
 
 ## Overview
-The foundational core library providing basic abstractions, utilities, and cross-platform services for the ALIS engine.
+Core structuration library for ALIS game engine. Provides foundational testing infrastructure and sample applications.
+
+**Author**: Pablo Perdomo Falcón  
+**License**: GNU General Public License v3.0
 
 ## Project Details
 - **Layer**: 3_Structuration
-- **Type**: Class Library
-- **Framework**: net8.0
-- **Output Dir**: `bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/`
+- **Type**: Library (Core Infrastructure)
+- **Framework**: net8.0, netstandard2.0
+- **Output Type**: Class Library
+
+## Purpose
+Provides core structuration infrastructure including:
+- Testing framework setup
+- Sample applications for demonstration
+- Source generator integration points
+- Quality improvement and validation infrastructure
+
+## Key Components
+
+### Testing Infrastructure
+- **DefaultTest** - Base test class for unit tests
+- Test assembly configuration
+
+### Sample Applications
+- **Core.Sample** - Sample application demonstrating core features
+
+### Source Generators (Referenced)
+- **Alis.Core.Ecs.Generator** - ECS component registry generator
+- **Alis.Core.Aspect.Memory.Generator** - Memory aspect resource accessor generator
 
 ## Dependencies
-- [[Alis]] (2_Application) — Core application library
-- All generators from 4_Operation, 5_Declaration, 6_Ideation
+- [[Alis.Core.Ecs]] (4_Operation) - ECS systems
+- [[Alis.Core.Aspect.Memory]] (6_Ideation) - Memory aspect
+- xUnit testing framework
 
 ## Build Configuration
 - **LangVersion**: 13
-- **Nullable**: disable
-- **AllowUnsafeBlocks**: false
-- **SonarQubeExclude**: true
+- **Nullable**: enabled
+- **Multi-targeting**: net8.0, netstandard2.0
 
-## Asset Pipeline
-- Uses [[#Asset Pack System]] for resource management
-- SHA256 hash-based change detection
-- Incremental build via manifest file
+## Quality Plan
+See QualityPlan.md for improvement goals:
+1. Code quality analysis and improvements
+2. Unit test coverage expansion
+3. Sample program enhancement
+4. Architecture compliance validation
 
-## Key Build Targets
-- `_PrepareAssetPackManifest` — Generates asset manifest with SHA256 hashes
-- `ZipAssets` — Zips assets and encodes to base64
+## Testing Status
+- **Unit Tests**: Present (Alis.Core.Test)
+- **Sample Apps**: Included (Alis.Core.Sample)
 
-## Notes
-- Foundation for all other Structuration libraries
-- Provides cross-platform abstractions
-- No Presentation layer dependencies
+## Architecture Notes
+1. Minimal source code - focuses on infrastructure
+2. Source generator integration points
+3. Testing and sample project templates
+4. Quality improvement tracking
+
+## Related Projects
+- [[Alis.Core.Ecs.Generator]] (4_Operation) - ECS generator
+- [[Alis.Core.Aspect.Memory.Generator]] (6_Ideation) - Memory generator
+- [[Alis]] (2_Application) - Core application
+
+## Documentation Version
+Auto-generated from source code analysis. Last updated: 2026-06-08
