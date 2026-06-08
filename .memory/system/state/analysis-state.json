@@ -1,17 +1,17 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": "Alis",
   "repository_type": "cross-platform-game-engine-framework",
   "total_projects": 140,
-  "documented_projects": 118,
-  "remaining_projects": 22,
+  "documented_projects": 119,
+  "remaining_projects": 21,
   "solution_files": ["alis.slnx", "alis_design.sln"],
   "analysis_started": "2026-06-08T13:00:00Z",
   "layers": {
-    "1_Presentation": {"status": "in_progress", "project_count": 72, "documented": 72},
+    "1_Presentation": {"status": "complete", "project_count": 72, "documented": 72},
     "2_Application": {"status": "in_progress", "project_count": 31, "documented": 17},
     "3_Structuration": {"status": "in_progress", "project_count": 6, "documented": 4},
-    "4_Operation": {"status": "in_progress", "project_count": 18, "documented": 12},
+    "4_Operation": {"status": "in_progress", "project_count": 18, "documented": 13},
     "5_Declaration": {"status": "in_progress", "project_count": 6, "documented": 4},
     "6_Ideation": {"status": "in_progress", "project_count": 37, "documented": 9}
   },
@@ -24,5 +24,5 @@
   "aot_support": true,
   "source_generators": true,
   "state": "in_progress",
-  "last_updated": "2026-06-08T15:30:00Z"
+  "last_updated": "2026-06-08T15:45:00Z"
 }
