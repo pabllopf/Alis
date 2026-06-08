@@ -1,119 +1,127 @@
-# ALIS Repository Overview
+# ALIS Game Engine Framework - Repository Overview
 
-## What is ALIS?
-ALIS is a **cross-platform game engine framework** for .NET that supports:
-- **Desktop**: Windows, macOS, Linux
-- **Web**: WASM
-- **Mobile**: Android, iOS
+## Executive Summary
 
-## Architecture Summary
+**ALIS** is a comprehensive game engine framework written in C# with 140+ projects organized into 6 major layers. This document provides a high-level overview of the architecture, modules, and key components.
 
-ALIS uses a **6-layer screaming architecture** with strict dependency flow:
+## Architecture Layers
 
-```
-1_Presentation → 2_Application → 3_Structuration → 4_Operation → 5_Declaration → 6_Ideation
-```
+### 1_Presentation - User Interface Layer (23 projects)
 
-**Dependency Rule**: Each layer may only reference the layer immediately below it. No cross-layer or upward references are allowed.
+Applications and extensions for game engines:
 
-**Generator Flow**: Source generators in `6_Ideation` cascade code generation down through all layers:
-```
-6_Ideation.Generator → 5_Declaration.Aspect → 4_Operation → 3_Structuration → 2_Application → 1_Presentation
-```
+| Project | Type | Description |
+|---------|------|-------------|
+| Alis.App.Engine | Application | Main game engine application |
+| Alis.App.Hub | Application | Hub/manager application |
+| Alis.App.Installer | Application | Installer utility |
+| Alis.Benchmark | Benchmark | Performance benchmarking |
+| Alis.Extension.* | Extension | Platform bindings and utilities |
 
-## Repository Statistics
+**Extensions**: GoogleAds, Security, Stripe, Network, FileDialog, Updater, Language.Translator, Language.Dialogue, Math.ProceduralDungeon, Math.HighSpeedPriorityQueue, Graphic.Ui, Graphic.Sfml, Graphic.Glfw, Graphic.Sdl2, Profile, Cloud.DropBox, Cloud.GoogleDrive, Thread, Media.FFmpeg
 
-| Metric | Value |
-|--------|-------|
-| Total Projects | 140 |
-| Solution Files | 2 (alis.slnx, alis_design.sln) |
-| Architectural Layers | 6 |
-| Target Frameworks | 22 (net461 → net10.0) |
-| Test Framework | xUnit 2.6.6 + Moq 4.20.70 |
-| Code Analysis | SonarQube |
-| Packaging | NuGet with native runtime support |
+### 2_Application - Game Applications (14 projects)
 
-## Layer Breakdown
+Sample games and applications built with ALIS:
 
-### 1_Presentation (Extensions, Apps, Hub)
-- **Purpose**: User-facing applications and extensions
-- **Subfolders**: Benchmark, Engine, Extension, Hub, Installer
-- **Key Projects**:
-  - `Alis.App.Engine` — Game engine runtime
-  - `Alis.App.Hub` — Game hub/launcher
-  - `Alis.App.Installer` — Installer application
-  - 19+ extensions (Ads, Security, Payment, Network, Cloud, Media, etc.)
+- Alis.App.Core - Core application framework
+- Alis.Sample.* - ~13 sample games (Flappy Bird, Pong, Dino, Space Simulator, etc.)
 
-### 2_Application (Core App + Game Samples)
-- **Purpose**: Application layer with game samples
-- **Subfolders**: Alis (core app + 14 game samples)
-- **Game Samples**: Flappy Bird, Pong, Dino, Space Simulator, King Platform, Snake, Rogue, Asteroid, Ruins of Tartarus, Egg, Inefable, Split Camera, Empty, etc.
+### 3_Structuration - Core Aggregator (5 projects)
 
-### 3_Structuration (Core Engine)
-- **Purpose**: Core engine aggregation and structuring
-- **Subfolders**: Core
-- **Key Projects**:
-  - `Alis.Core` — Core engine aggregator (zero hand-written code)
-  - `Alis.Core.Ecs` — Entity Component System
-  - `Alis.Core.Graphic` — Graphics engine
-  - `Alis.Core.Audio` — Audio engine
-  - `Alis.Core.Physic` — Physics engine
+Core engine subsystems:
 
-### 4_Operation (Engine Operations)
-- **Purpose**: Core engine operations (ECS, Graphics, Audio, Physics)
-- **Subfolders**: Audio, Ecs, Graphic, Physic
-- **Key Projects**: Each has src/test/sample/generator sub-projects
+| Project | Status | Files |
+|---------|--------|-------|
+| Alis.Core | Aggregator | - |
+| Alis.Core.Ecs | Documented | 108 files |
+| Alis.Core.Graphic | Documented | 147 files |
+| Alis.Core.Audio | Documented | 7 files |
+| Alis.Core.Physic | Documented | 194 files |
 
-### 5_Declaration (Aspect System)
-- **Purpose**: Aspect-oriented programming system
-- **Subfolders**: Aspect
-- **Key Projects**: `Alis.Core.Aspect` — Zero hand-written code, pure aggregator
+**ECS (Entity Component System)**: Core game object management with 108 source files including Entity, Scene, GameObject, Query systems
 
-### 6_Ideation (Aspects)
-- **Purpose**: High-level aspect definitions with source generators
-- **Subfolders**: Data, Fluent, Logging, Math, Memory, Time
-- **Pattern**: Each aspect has src/test/sample/generator (4 projects per aspect × 6 aspects = 24 projects)
+**Graphic**: Rendering subsystem with 147 files including shaders, textures, meshes, materials
 
-## Build System
+### 4_Operation - Engine Subsystems (16 projects)
 
-### Directory.Build.props
-- **C# Version**: 13
-- **Target Frameworks**: net8.0, netstandard2.0 (project-dependent)
-- **SDK**: .NET 10.0.0 (rollForward: latestMajor)
-- **Features**:
-  - SonarQube code analysis with custom NoWarn rules
-  - InternalsVisibleTo for test projects
-  - Global package references (coverlet, SonarQube analyzer)
-  - Custom analyzers: ALIS001-ALIS010
-  - AOT compilation support (PublishAot, EnableTrimAnalyzer)
-  - Native runtime support for 12+ platform/architecture combos
+Low-level engine operations:
 
-### NuGet Packaging
-- **Native Runtimes**: linux-arm64, linux-arm, linux-x64, linux-musl-x64, linux-musl-arm, linux-musl-arm64, osx-arm64, osx-x64, win-arm64, win-x64, win-x86
-- **Assets**: SFML native libraries bundled
-- **Publish Ready**: Self-contained, framework-dependent, and cross-platform builds
+- **Ecs**: Entity Component System (documented - 108 files)
+- **Graphic**: Rendering engine (documented - 147 files)
+- **Audio**: Cross-platform audio player (documented - 7 files)
+- **Physic**: 2D physics engine (documented - 194 files)
+- **Input**, **Resource**, **Scene**, **Serialization**, **Window**: Other subsystems
 
-## Testing Strategy
-- All test projects follow naming: `{ProjectName}.Test`
-- Framework: xUnit 2.6.6 with Moq 4.20.70
-- Coverage: coverlet.collector 6.0.4
-- Isolation: Xunit.StaFact for STA tests
-- Convention: Test projects excluded from SonarQube (`SonarQubeExclude=true`)
+### 5_Declaration - Aspect System (1 project)
 
-## Source Generator Architecture
-ALIS uses Roslyn source generators extensively:
-- `Alis.Core.Ecs.Generator` — ECS component/system generation
-- `Alis.Core.Graphic.Generator` — Graphics shader/resource generation
-- `Alis.Core.Aspect.Memory.Generator` — Memory aspect generation
-- `Alis.Core.Aspect.Fluent.Generator` — Fluent API generation
-- `Alis.Core.Aspect.Data.Generator` — Data model generation
+| Project | Description |
+|---------|-------------|
+| Alis.Core.Aspect | Aspect-oriented programming aggregator |
 
-Generators cascade: Ideation → Declaration → Operation → Structuration → Application → Presentation
+### 6_Ideation - Aspect Definitions (24 projects)
 
-## Key Conventions
-1. **Namespace Convention**: `Alis.{LayerContext}.{Module}.{SubModule}`
-2. **Project Reference Pattern**: Projects reference only their immediate lower layer
-3. **Aggregator Pattern**: Core and Aspect projects contain zero hand-written code — they aggregate and expose other projects
-4. **Generator Pattern**: Each Ideation aspect has src/test/sample/generator sub-projects
-5. **Test Isolation**: Tests are in separate projects with InternalsVisibleTo access
-6. **No RootNamespace**: Individual csproj files don't specify RootNamespace — inferred from folder structure
+Aspect implementations with source generators:
+
+| Project | Type | Status | Files |
+|---------|------|--------|-------|
+| Alis.Core.Aspect.Memory | Asset management | Documented | 3 files |
+| Alis.Core.Aspect.Fluent | Fluent builder API | Documented | 128+ files |
+| Alis.Core.Aspect.Data | JSON serialization | Documented | 18 files |
+| Alis.Core.Aspect.Math | Math primitives | Documented | 29 files |
+| Alis.Core.Aspect.Time | Time measurement | Documented | 1 file |
+| Alis.Core.Aspect.Logging | Structured logging | Documented | 24 files |
+
+**Memory**: ZIP-based asset management with dual-cache strategy (in-memory + disk)
+
+**Fluent**: Word pattern with 120+ marker interfaces for fluent builder API
+
+**Data**: Custom JSON parser with source generator for AOT compatibility
+
+**Math**: Value-type vectors, matrices, shapes with zero GC pressure
+
+**Time**: High-resolution clock for timing measurements
+
+**Logging**: Structured logging with pluggable filters/formatters/outputs
+
+## Technology Stack
+
+- **Language**: C# (.NET 4.6.1 - .NET 9.0)
+- **Architecture**: Layered + Aspect-Oriented Programming
+- **Patterns**: ECS, Builder, Fluent Interface, Source Generators
+- **Serialization**: Custom JSON parser (AOT-compatible)
+- **Math**: Value types with StructLayout(Pack=1) for cache efficiency
+
+## Key Features
+
+1. **ECS Architecture**: Entity Component System for game object management
+2. **Cross-Platform**: Windows, macOS, Linux, WebAssembly support
+3. **AOT Compatible**: No reflection at runtime, source generators for compile-time code generation
+4. **High Performance**: Value types, zero GC pressure on hot paths
+5. **Modular Design**: 140+ projects organized in 6 layers
+
+## Documentation Status
+
+| Layer | Projects | Documented | Pending |
+|-------|----------|------------|---------|
+| 4_Operation (Core) | 16 | 4 | 12 |
+| 6_Ideation (Aspects) | 24 | 6 | 0 |
+| 1_Presentation (Extensions) | 23 | 0 | 23 |
+| 2_Application (Samples) | 14 | 0 | 14 |
+| **Total** | **140** | **10** | **130** |
+
+## Next Steps
+
+1. Process Extensions (1_Presentation/Extension) - ~20 projects
+2. Process Applications and Samples (~40 projects)
+3. Generate dependency graphs and architecture diagrams
+4. Update AI context files for future agents
+
+## Related Documentation
+
+- [[Alis.Core.Ecs]] - Entity Component System
+- [[Alis.Core.Graphic]] - Rendering engine
+- [[Alis.Core.Audio]] - Cross-platform audio
+- [[Alis.Core.Physic]] - 2D physics engine
+- [[Alis.Core.Aspect.Fluent]] - Fluent builder API
+- [[Alis.Core.Aspect.Math]] - Math primitives
