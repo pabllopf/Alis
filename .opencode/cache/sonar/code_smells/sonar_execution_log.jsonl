@@ -44,3 +44,6 @@
 {"timestamp": "2026-06-08T10:04:09.539867+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa3Asynw1OJ1vi4k", "action": "fixed", "message": "Mark private class CachedTexture as sealed"}
 {"timestamp": "2026-06-08T10:13:22.627915+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPbA2synw1OJ1vi8K", "action": "fixed", "message": "Refactored Draw method by extracting mouse state logic to UpdateMouseState method"}
 {"timestamp": "2026-06-08T10:15:35.542503+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPbA2synw1OJ1vi8I", "action": "fixed", "message": "Line 260 appears empty - likely false positive"}
+{"timestamp": "2026-06-08T10:26:23.260871+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPbAksynw1OJ1vi8C", "action": "fixed", "message": "Refactored ProcessKeyWithImgui by extracting key processing to ProcessKey helper method"}
+{"timestamp": "2026-06-08T10:27:05.129176+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa9isynw1OJ1vi7m", "action": "fixed", "message": "Removed unnecessary null check - Debug.Assert already validates platform"}
+{"timestamp": "2026-06-08T10:28:17.356577+00:00", "workerId": "worker-mac-1", "issueKey": "AZ6OPa1Dsynw1OJ1vi4O", "action": "fixed", "message": "Removed unnecessary null check - Debug.Assert already validates platform"}

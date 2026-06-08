@@ -405,10 +405,10 @@
       "file": "pabllopf-official_alis:1_Presentation/Installer/src/Installer.cs",
       "line": 64,
       "severity": "CRITICAL",
-      "status": "OPEN",
+      "status": "COMPLETED",
       "assignedWorker": null,
       "lockedAt": null,
-      "completedAt": null,
+      "completedAt": "2026-06-08T10:15:30+00:00",
       "attemptCount": 0,
       "message": "Refactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.",
       "assignee": "worker-mac-1",
@@ -420,12 +420,14 @@
       "file": "pabllopf-official_alis:1_Presentation/Engine/src/Engine.cs",
       "line": 215,
       "severity": "MAJOR",
-      "status": "OPEN",
+      "status": "COMPLETED",
       "assignedWorker": null,
       "lockedAt": null,
-      "completedAt": null,
+      "completedAt": "2026-06-08T10:26:20+00:00",
       "attemptCount": 0,
-      "message": "Remove this unnecessary check for null."
+      "message": "Remove this unnecessary check for null.",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T10:26:23.289064+00:00"
     },
     {
       "key": "AZ6OPa1Dsynw1OJ1vi4O",
@@ -433,12 +435,14 @@
       "file": "pabllopf-official_alis:1_Presentation/Hub/src/HubEngine.cs",
       "line": 203,
       "severity": "MAJOR",
-      "status": "OPEN",
+      "status": "COMPLETED",
       "assignedWorker": null,
       "lockedAt": null,
-      "completedAt": null,
+      "completedAt": "2026-06-08T10:27:00+00:00",
       "attemptCount": 0,
-      "message": "Remove this unnecessary check for null."
+      "message": "Remove this unnecessary check for null.",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T10:27:05.158250+00:00"
     },
     {
       "key": "AZ6OPa9isynw1OJ1vi7k",
@@ -451,7 +455,9 @@
       "lockedAt": null,
       "completedAt": null,
       "attemptCount": 0,
-      "message": "Refactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed."
+      "message": "Refactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.",
+      "assignee": "worker-mac-1",
+      "_claimedAt": "2026-06-08T10:28:17.382849+00:00"
     },
     {
       "key": "AZ6OPa9isynw1OJ1vi7y",
