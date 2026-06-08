@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "security/security-overview.md",
+                "file": "glossary/entity-component-system-ecs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "security-overview"
+              "title": "entity-component-system-ecs"
             }
           }
         ]
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "security/security-overview.md",
+                "file": "glossary/entity-component-system-ecs.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de security-overview"
+              "title": "Enlaces entrantes de entity-component-system-ecs"
             }
           },
           {
@@ -124,12 +124,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "security/security-overview.md",
+                "file": "glossary/entity-component-system-ecs.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de security-overview"
+              "title": "Enlaces salientes de entity-component-system-ecs"
             }
           },
           {
@@ -167,13 +167,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "security/security-overview.md",
+                "file": "glossary/entity-component-system-ecs.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de security-overview"
+              "title": "Esquema de entity-component-system-ecs"
             }
           }
         ]
@@ -199,8 +199,20 @@
   },
   "active": "847c078068ae35c5",
   "lastOpenFiles": [
-    "security/analysis.md",
+    "glossary/index.md",
+    "glossary/entity-component-system-ecs.md",
+    "GameObject.md",
+    "testing/analysis.md",
+    "index.md",
+    "alis.samples.slnx.md",
+    "alis.slnx.md",
+    "log.md",
+    "schema.md",
+    "onboarding/getting-started.md",
+    "Obsidian.md",
+    "Sin título.canvas",
     "security/security-overview.md",
+    "security/analysis.md",
     "prompts/code-review-checklist.md",
     "prompts/conversation-starters.md",
     "prompts/ai-context.md",
@@ -214,26 +226,15 @@
     "system/state/memory-generation-status.md",
     "system/state/execution-state.md",
     "system/indexes/project-index.md",
-    "system/state/pending-work.md",
-    "projects/1_Presentation/Alis.Extension.Cloud.DropBox.md",
     "context",
-    "projects/1_Presentation/Extension/Math/HighSpeedPriorityQueue/Alis.Extension.Math.HighSpeedPriorityQueue.md",
-    "projects/1_Presentation/Extension/Math/ProceduralDungeon/Alis.Extension.Math.ProceduralDungeon.md",
-    "projects/1_Presentation/Extension/Io/FileDialog/Alis.Extension.Io.FileDialog.md",
-    "projects/1_Presentation/Extension/Network/Alis.Extension.Network.md",
     "projects/1_Presentation/Extension/Math/ProceduralDungeon",
     "projects/1_Presentation/Extension/Math/HighSpeedPriorityQueue",
     "projects/1_Presentation/Extension/Math",
     "projects/1_Presentation/Extension/Network",
     "projects/1_Presentation/Extension/Io/FileDialog",
     "projects/1_Presentation/Extension/Io",
-    "projects/1_Presentation/Extension/Payment/Stripe/Alis.Extension.Payment.Stripe.md",
-    "projects/1_Presentation/Extension/Cloud/DropBox/Alis.Extension.Cloud.DropBox.md",
-    "projects/1_Presentation/Extension/Ads/GoogleAds/Alis.Extension.Ads.GoogleAds.md",
     "projects/1_Presentation/Extension/Cloud/DropBox",
     "projects/1_Presentation/Extension/Cloud",
-    "projects/1_Presentation/Extension/Payment/Stripe",
-    "system/state/project-state.md",
-    "projects/1_Presentation/Extension/Security/Alis.Extension.Security.md"
+    "projects/1_Presentation/Extension/Payment/Stripe"
   ]
 }
