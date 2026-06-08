@@ -226,7 +226,7 @@ namespace Alis.App.Engine.Windows
         ///     Renames the game object using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        private void RenameGameObject(GameObject gameObject)
+        private static void RenameGameObject(GameObject gameObject)
         {
             throw new NotImplementedException();
         }
