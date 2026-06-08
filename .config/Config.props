@@ -97,7 +97,6 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
     </ItemGroup>
-
     
     <PropertyGroup>
         <NoWarn>$(NoWarn);CS1685</NoWarn> <!-- Error CS1685 : Warning As Error: Define on differente assemblys of alias gloabal -->
