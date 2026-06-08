@@ -2,7 +2,7 @@
 
 ## Prerequisites
 - .NET SDK 10.0.0+ (rollForward: latestMajor)
-- IDE: Visual Studio 2022+, Rider, or VS Code with C# Dev Kit
+- IDE: Rider
 
 ## Quick Start
 
@@ -50,44 +50,19 @@ dotnet test /p:CollectCoverage=true
 Presentation → Application → Structuration → Operation → Declaration ← Ideation
 ```
 
-### Source Generator Flow
-```
-Ideation.Generator → Declaration → Operation → Structuration → Application → Presentation
-```
-
 ## Adding a New Extension
 
 1. Create folder: `1_Presentation/Extension.{Name}/`
 2. Create csproj with appropriate target framework
-3. Add project reference to `Alis.App.Core` (or `Alis.Core.Graphic` for graphic extensions)
+3. Add project reference to `Alis`
 4. Implement extension code
 5. Add test project: `Extension.{Name}.Test/`
 6. Update solution file if needed
 
 ## Adding a New Game Sample
 
-1. Create folder: `2_Application/Alis/Sample.{Name}/`
+1. Create folder: `2_Application/Alis/samples/alis.sample.{Name}/alis.sample.{Name}.csproj`
 2. Create csproj targeting net8.0
-3. Add project references to `Alis.App.Core` and `Alis.Core`
+3. Add project references to `Alis`
 4. Implement game code
 5. Add test project if needed
-
-## Adding a New Aspect
-
-1. Create folder: `6_Ideation/Aspect.{Name}/`
-2. Create sub-projects: src/, test/, sample/, Generator/
-3. Implement aspect definition in src/
-4. Implement Roslyn source generator in Generator/
-5. Add tests for generator output in test/
-6. Add usage examples in sample/
-
-## Key Files to Know
-- `Directory.Build.props` — Build configuration
-- `.config/Config.props` — Project metadata
-- `alis.slnx` — Structured solution
-- `2_Application/Alis/src/.docs/arquitecture.md` — Architecture reference
-
-## Common Tasks
-- See `.memory/prompts/code-review-checklist.md` for review guidelines
-- See `.memory/architecture/repository-overview.md` for full architecture details
-- See `.memory/glossary/terms.md` for terminology
