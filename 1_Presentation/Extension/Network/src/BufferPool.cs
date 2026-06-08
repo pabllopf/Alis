@@ -65,15 +65,8 @@ namespace Alis.Extension.Network
         /// <summary>
         ///     Initializes a new instance of the <see cref="BufferPool" /> class
         /// </summary>
-        public BufferPool() : this(DefaultBufferSize)
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BufferPool" /> class
-        /// </summary>
         /// <param name="bufferSize">The buffer size</param>
-        public BufferPool(int bufferSize)
+        public BufferPool(int bufferSize = DefaultBufferSize)
         {
             _bufferSize = bufferSize;
             _bufferPoolStack = new ConcurrentStack<byte[]>();

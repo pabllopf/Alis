@@ -2,10 +2,13 @@
   "totalIssues": 296,
   "processedIssues": [
     "AZ6YEMnqXMMYSes8eRjY",
-    "AZ6OPakDsynw1OJ1vi3h"
+    "AZ6OPakDsynw1OJ1vi3h",
+    "AZ6HYocW6S35Q68IssY9",
+    "AZ6HYoPV6S35Q68IssY8",
+    "AZ6OPakDsynw1OJ1vi3i"
   ],
   "failedIssues": [],
-  "remainingIssues": 294,
-  "lastUpdate": "2026-06-08T08:26:52.019930+00:00",
+  "remainingIssues": 291,
+  "lastUpdate": "2026-06-08T08:32:21.890353+00:00",
   "status": "idle"
 }
