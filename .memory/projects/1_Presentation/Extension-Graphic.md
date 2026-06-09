@@ -19,3 +19,13 @@ Both Graphic extensions follow the standard extension pattern:
 ## Dependencies
 - [[Alis]] (2_Application)
 - All generators from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation
+
+## Related
+- [[projects/1_Presentation/Extension]] — Extension overview
+- [[projects/1_Presentation/Alis.Extension.Graphic.Ui]] — UI extension
+- [[projects/1_Presentation/Alis.Extension.Graphic.Sfml]] — SFML extension
+- [[projects/1_Presentation/Alis.Extension.Graphic.Glfw]] — GLFW extension
+- [[projects/1_Presentation/Alis.Extension.Graphic.Sdl2]] — SDL2 extension
+- [[Extension System]] — Concept overview
+- [[Multi-Platform Samples]] — Graphic samples
+- [[projects/Index]] — All project docs

@@ -19,3 +19,10 @@ Both Language extensions follow the standard extension pattern:
 ## Dependencies
 - [[Alis]] (2_Application)
 - All generators from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation
+
+## Related
+- [[projects/1_Presentation/Extension]] — Extension overview
+- [[projects/1_Presentation/Alis.Extension.Language.Translator]] — Translator
+- [[projects/1_Presentation/Alis.Extension.Language.Dialogue]] — Dialogue
+- [[Extension System]] — Concept overview
+- [[projects/Index]] — All project docs
