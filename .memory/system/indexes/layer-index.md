@@ -37,8 +37,8 @@
 - **Dependencies**: References 3_Structuration; receives generators from 3–6
 - **Key Projects**:
   - **Alis** — Core application framework
-  - **13 Game Samples** — Each with Desktop + Web targets (26 projects total)
-  - **Special**: Asteroid has iOS and Android targets
+  - **14 Game Samples** — Each with Desktop + Web targets (28 projects total)
+  - **Special**: Asteroid has iOS and Android targets (4 platforms — most multi-platform sample)
 
 ---
 

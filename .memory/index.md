@@ -10,6 +10,11 @@ This directory contains the complete Obsidian-compatible memory system for the *
 ## Quick Navigation
 
 ### For AI Agents
+- [[context/architecture-rules]] — Layer dependency rules and constraints
+- [[context/coding-conventions]] — Coding standards for the repo
+- [[context/dependency-constraints]] — Module dependency rules
+- [[context/project-map]] — Quick reference to all project types
+- [[context/onboarding]] — Quick start guide
 - [[prompts/ai-context]] — Quick reference card for AI agents
 - [[prompts/code-review-checklist]] — Code review guidelines
 - [[conventions/naming-conventions]] — Naming rules and patterns
@@ -38,7 +43,7 @@ This directory contains the complete Obsidian-compatible memory system for the *
 | Total Projects | ~140 (335 in slnx) |
 | Architectural Layers | 6 |
 | Extensions | 19 |
-| Game Samples | 13 |
+| Game Samples | 14 |
 | Test Projects | ~35 |
 | Source Generators | 8 |
 | CI/CD Workflows | 41 |
@@ -84,7 +89,19 @@ This directory contains the complete Obsidian-compatible memory system for the *
 │   └── code-review-checklist.md      ← Review guidelines
 │
 ├── diagrams/                         ← Architecture diagrams (Mermaid)
-│   └── architecture-overview.md      ← Layer + generator diagrams
+│   ├── README.md                     ← Diagram index
+│   ├── architecture-overview.md      ← 6-layer architecture with generator cascade
+│   ├── dependency-graph.md           ← Module dependency relationships
+│   ├── game-pipeline.md             ← VideoGame bootstrap flow, script lifecycle
+│   ├── ecs-architecture.md          ← ECS data flow, chunk storage, query strategies
+│   └── benchmark-comparison.md      ← ECS framework comparison, benchmark map
+│
+├── context/                          ← AI context files
+│   ├── architecture-rules.md         ← Layer dependency rules
+│   ├── coding-conventions.md         ← Coding standards
+│   ├── dependency-constraints.md     ← Module dependency rules
+│   ├── project-map.md               ← Project quick reference
+│   └── onboarding.md                ← Quick start guide
 │
 ├── testing/                          ← Testing analysis
 │   └── analysis.md                   ← Testing framework and strategy

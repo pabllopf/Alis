@@ -109,40 +109,85 @@
 
 ## Documentation Status
 
-### Documented Extensions (1_Presentation/Extension) — ALL 19 COMPLETED
+### 1_Presentation — ALI COMPLETED (4/4)
+| Project | Type | Status | Documentation |
+|---------|------|--------|---------------|
+| Alis.Benchmark | Benchmark runner (BenchmarkDotNet) | ✓ Documented | [[projects/1_Presentation/Alis.Benchmark]] |
+| Alis.App.Engine | Game engine application | ✓ Documented | [[projects/1_Presentation/Alis.App.Engine]] |
+| Alis.App.Hub | Project management hub | ✓ Documented | [[projects/1_Presentation/Alis.App.Hub]] |
+| Alis.App.Installer | Installation wizard | ✓ Documented | [[projects/1_Presentation/Alis.App.Installer]] |
 
+### 1_Presentation/Extension — ALL 19 COMPLETED (19/19)
 | Project | Files | Status | Documentation |
 |---------|-------|--------|---------------|
-| Alis.Extension.Security | 9 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Security]] |
-| Alis.Extension.Ads.GoogleAds | 4 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Ads.GoogleAds]] |
-| Alis.Extension.Cloud.DropBox | 2 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Cloud.DropBox]] |
-| Alis.Extension.Cloud.GoogleDrive | 3 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Cloud.GoogleDrive]] |
-| Alis.Extension.Payment.Stripe | 15 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Payment.Stripe]] |
-| Alis.Extension.Network | 53 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Network]] |
-| Alis.Extension.Io.FileDialog | 12 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Io.FileDialog]] |
-| Alis.Extension.Updater | 10 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Updater]] |
-| Alis.Extension.Language.Translator | 20 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Language.Translator]] |
-| Alis.Extension.Language.Dialogue | 8 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Language.Dialogue]] |
-| Alis.Extension.Math.ProceduralDungeon | 25 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Math.ProceduralDungeon]] |
-| Alis.Extension.Math.HighSpeedPriorityQueue | 9 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Math.HighSpeedPriorityQueue]] |
-| Alis.Extension.Graphic.Ui | 116 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Graphic.Ui]] |
-| Alis.Extension.Graphic.Sfml | multiple | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Graphic.Sfml]] |
-| Alis.Extension.Graphic.Glfw | 37 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Graphic.Glfw]] |
-| Alis.Extension.Graphic.Sdl2 | multiple | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Graphic.Sdl2]] |
-| Alis.Extension.Profile | 9 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Profile]] |
-| Alis.Extension.Thread | 10 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Thread]] |
-| Alis.Extension.Media.FFmpeg | 15 | ✓ Documented | [[projects/1_Presentation/Alis.Extension.Media.FFmpeg]] |
+| Alis.Extension.Security | 9 | ✓ | [[projects/1_Presentation/Alis.Extension.Security]] |
+| Alis.Extension.Ads.GoogleAds | 4 | ✓ | [[projects/1_Presentation/Alis.Extension.Ads.GoogleAds]] |
+| Alis.Extension.Cloud.DropBox | 2 | ✓ | [[projects/1_Presentation/Alis.Extension.Cloud.DropBox]] |
+| Alis.Extension.Cloud.GoogleDrive | 3 | ✓ | [[projects/1_Presentation/Alis.Extension.Cloud.GoogleDrive]] |
+| Alis.Extension.Payment.Stripe | 15 | ✓ | [[projects/1_Presentation/Alis.Extension.Payment.Stripe]] |
+| Alis.Extension.Network | 53 | ✓ | [[projects/1_Presentation/Alis.Extension.Network]] |
+| Alis.Extension.Io.FileDialog | 12 | ✓ | [[projects/1_Presentation/Alis.Extension.Io.FileDialog]] |
+| Alis.Extension.Updater | 10 | ✓ | [[projects/1_Presentation/Alis.Extension.Updater]] |
+| Alis.Extension.Language.Translator | 20 | ✓ | [[projects/1_Presentation/Alis.Extension.Language.Translator]] |
+| Alis.Extension.Language.Dialogue | 8 | ✓ | [[projects/1_Presentation/Alis.Extension.Language.Dialogue]] |
+| Alis.Extension.Math.ProceduralDungeon | 25 | ✓ | [[projects/1_Presentation/Alis.Extension.Math.ProceduralDungeon]] |
+| Alis.Extension.Math.HighSpeedPriorityQueue | 9 | ✓ | [[projects/1_Presentation/Alis.Extension.Math.HighSpeedPriorityQueue]] |
+| Alis.Extension.Graphic.Ui | 116 | ✓ | [[projects/1_Presentation/Alis.Extension.Graphic.Ui]] |
+| Alis.Extension.Graphic.Sfml | multiple | ✓ | [[projects/1_Presentation/Alis.Extension.Graphic.Sfml]] |
+| Alis.Extension.Graphic.Glfw | 37 | ✓ | [[projects/1_Presentation/Alis.Extension.Graphic.Glfw]] |
+| Alis.Extension.Graphic.Sdl2 | multiple | ✓ | [[projects/1_Presentation/Alis.Extension.Graphic.Sdl2]] |
+| Alis.Extension.Profile | 9 | ✓ | [[projects/1_Presentation/Alis.Extension.Profile]] |
+| Alis.Extension.Thread | 10 | ✓ | [[projects/1_Presentation/Alis.Extension.Thread]] |
+| Alis.Extension.Media.FFmpeg | 15 | ✓ | [[projects/1_Presentation/Alis.Extension.Media.FFmpeg]] |
+
+### 2_Application — COMPLETED (15/15)
+| Project | Type | Status | Documentation |
+|---------|------|--------|---------------|
+| Alis.App.Core | Application core | ✓ | [[projects/2_Application/Alis]] |
+| Alis.Sample.Asteroid | Game sample (4 platforms) | ✓ | [[projects/2_Application/Samples/Sample.Asteroid]] |
+| Alis.Sample.Flappy.Bird | Game sample | ✓ | [[projects/2_Application/Samples/Sample.Flappy.Bird]] |
+| Alis.Sample.Pong | Game sample | ✓ | [[projects/2_Application/Samples/Sample.Pong]] |
+| Alis.Sample.King.Platform | Game sample | ✓ | [[projects/2_Application/Samples/Sample.King.Platform]] |
+| Alis.Sample.Dino | Game sample | ✓ | [[projects/2_Application/Samples/Sample.Dino]] |
+| Alis.Sample.Egg | Game sample | ✓ | [[projects/2_Application/Samples/Sample.Egg]] |
+| Alis.Sample.Empty | Template project | ✓ | [[projects/2_Application/Samples/Sample.Empty]] |
+| Alis.Sample.Inefable | Game sample | ✓ | [[projects/2_Application/Samples/Sample.Inefable]] |
+| Alis.Sample.Rogue | Game sample | ✓ | [[projects/2_Application/Samples/Sample.Rogue]] |
+| Alis.Sample.RuinsOfTartarus | Game sample | ✓ | [[projects/2_Application/Samples/Sample.RuinsOfTartarus]] |
+| Alis.Sample.Snake | Game sample | ✓ | [[projects/2_Application/Samples/Sample.Snake]] |
+| Alis.Sample.Space.Simulator | Game sample | ✓ | [[projects/2_Application/Samples/Sample.Space.Simulator]] |
+| Alis.Sample.SplitCamera | Technical sample | ✓ | [[projects/2_Application/Samples/Sample.SplitCamera]] |
+
+### 4_Operation — COMPLETED (4/4)
+| Project | Source Files | Status | Documentation |
+|---------|-------------|--------|---------------|
+| Alis.Core.Ecs | ~108 | ✓ Documented | [[projects/4_Operation/Ecs]] |
+| Alis.Core.Graphic | ~147 | ✓ Documented | [[projects/4_Operation/Graphic]] |
+| Alis.Core.Audio | ~7 | ✓ Documented | [[projects/4_Operation/Audio]] |
+| Alis.Core.Physic | ~194 | ✓ Documented | [[projects/4_Operation/Physic]] |
+
+### 6_Ideation — COMPLETED (6/6)
+| Aspect | Status | Documentation |
+|--------|--------|---------------|
+| Memory | ✓ Documented | [[projects/6_Ideation/Memory]] |
+| Fluent | ✓ Documented | [[projects/6_Ideation/Fluent]] |
+| Data | ✓ Documented | [[projects/6_Ideation/Data]] |
+| Math | ✓ Documented | [[projects/6_Ideation/Math]] |
+| Time | ✓ Documented | [[projects/6_Ideation/Time]] |
+| Logging | ✓ Documented | [[projects/6_Ideation/Logging]] |
 
 ## Summary
-- **Total Projects**: 140
-- **Presentation**: 23
-- **Application**: 14
-- **Structuration**: 5
-- **Operation**: 16
-- **Declaration**: 1
-- **Ideation**: 24
-- **Test/Sample/Generator sub-projects**: 57 (included in layer counts above)
-- **Documented Extensions**: 19 out of 19 (100% — ALL COMPLETED)
+- **Total Projects**: ~140 (335 in slnx)
+- **Presentation (1)**: 23 projects
+- **Application (2)**: 15 projects
+- **Structuration (3)**: 5 projects
+- **Operation (4)**: 16 projects
+- **Declaration (5)**: 1 project
+- **Ideation (6)**: 24 projects
+- **Test/Sample/Generator sub-projects**: ~57 (included above)
+- **Documented**: ~53 projects (~40% — Applications, Extensions, Samples, Core Systems, Ideation)
+- **Extensions**: 19/19 (100%)
+- **Samples**: 14/14 (100%)
 
 ## Related
 
