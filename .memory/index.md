@@ -220,6 +220,11 @@ dotnet test alis.slnx -c Debug
 
 ## Related
 
+- [[Cross-Link Index]] — Cross-reference mapping (NEW)
+- [[Memory System Index]] — System components (NEW)
+- [[Memory System Summary]] — Complete summary (NEW)
+- [[Cross-Link Validation Report]] — Validation report (NEW)
+- [[Cross-Link Diagrams]] — Visual diagrams (NEW)
 - [[system/state/analysis-state]] — Analysis progress
 - [[system/state/project-state]] — Project tracking
 - [[system/state/execution-state]] — Execution batches
