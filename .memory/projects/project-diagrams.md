@@ -1,6 +1,11 @@
 ---
 title: Project Diagrams
-tags: [project,documentation,reference]
+tags:
+  - project
+  - documentation
+  - reference
+
+status: draft
 ---
 
 

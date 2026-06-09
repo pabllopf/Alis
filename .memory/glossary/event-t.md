@@ -1,6 +1,11 @@
 ---
 title: Event<T>
-tags: [glossary,terminology,reference]
+tags:
+  - glossary
+  - terminology
+  - reference
+
+status: draft
 ---
 
 

@@ -1,6 +1,12 @@
 ---
 title: Core Libraries (4_Operation)
-tags: [operation,runtime,implementation,documentation]
+tags:
+  - operation
+  - runtime
+  - implementation
+  - documentation
+
+status: draft
 ---
 
 

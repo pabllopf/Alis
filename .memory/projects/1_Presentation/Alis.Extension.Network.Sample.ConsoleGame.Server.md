@@ -1,6 +1,12 @@
 ---
 title: Alis.Extension.Network.Sample.ConsoleGame.Server
-tags: [presentation,application,extension,documentation]
+tags:
+  - presentation
+  - application
+  - extension
+  - documentation
+
+status: draft
 ---
 
 

@@ -1,6 +1,12 @@
 ---
 title: File Hashes
-tags: [system,state,tracking,management]
+tags:
+  - system
+  - state
+  - tracking
+  - management
+
+status: draft
 ---
 
 

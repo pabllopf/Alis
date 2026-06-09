@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "31fde3fd7eb683a2",
+        "id": "b1fe94e1b7e36b4d",
         "type": "tabs",
         "children": [
           {
-            "id": "d8b5ec4fd47572e4",
+            "id": "274c279b57203fea",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "diagrams/ecs-architecture.md",
-                "mode": "source",
-                "source": false
+                "file": "projects/3_Structuration/Alis.Core.md",
+                "mode": "preview",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "ecs-architecture"
+              "title": "Alis.Core"
             }
           }
         ]
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "diagrams/ecs-architecture.md",
+                "file": "projects/3_Structuration/Alis.Core.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de ecs-architecture"
+              "title": "Enlaces entrantes de Alis.Core"
             }
           },
           {
@@ -196,34 +196,34 @@
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "d8b5ec4fd47572e4",
+  "active": "274c279b57203fea",
   "lastOpenFiles": [
-    "diagrams/dependency-diagrams.md",
-    "diagrams/ecs-architecture.md",
-    "system-metadata-index.md",
-    "sources-index.md",
-    "glossary-index.md",
-    "extensions-index.md",
-    "samples-index.md",
-    "applications-index.md",
+    "concepts/procedural-generation-framework.md",
+    "concepts/Platform-Specific Build Constants.md",
+    "concepts/new-concepts-summary.md",
+    "concepts/multi-targeting-strategy.md",
+    "concepts/Multi-Targeting Strategy.md",
+    "concepts/Multi-Platform Samples.md",
+    "concepts/Layered Architecture.md",
+    "concepts/high-speed-priority-queue.md",
+    "concepts/Generator Pattern.md",
+    "concepts/Extension System.md",
+    "concepts/event-driven-entity-system.md",
+    "concepts/Entity Component System.md",
+    "concepts/dialogue-system-architecture.md",
+    "concepts/Developer Onboarding.md",
+    "concepts/Dependency Management.md",
+    "concepts/data-oriented-design.md",
+    "concepts/cross-platform-abstraction-layer.md",
+    "concepts/concepts-index.md",
+    "concepts/compression-memory-optimization.md",
+    "concepts/compile-time-polymorphism.md",
+    "concepts/CI_CD Pipeline.md",
+    "concepts/Build System Configuration.md",
+    "concepts/Aspect-Oriented Design.md",
+    "concepts/Application Composition.md",
+    "concepts/Alis Architecture Overview.md",
     "concepts-index.md",
-    "projects/2_Application/Samples/Sample.Pong.md",
-    "projects/Index.md",
-    "glossary/gameobject.md",
-    "projects/1_Presentation/Extension.md",
-    "memory-system-final-summary.md",
-    "MEMORY-SUMMARY.md",
-    "applications/benchmark.md",
-    "applications/hub.md",
-    "applications/engine-editor.md",
-    "architecture/architecture-diagrams.md",
-    "concepts/Quality Assurance.md",
-    "concepts/resource-management-patterns.md",
-    "context/context-diagrams.md",
-    "context/architecture-rules.md",
-    "context/dependency-constraints.md",
-    "glossary/component-event.md",
-    "glossary/component.md",
     "architecture/properties.config.json",
     "projects/projects.config.json",
     "security/security.config.json",

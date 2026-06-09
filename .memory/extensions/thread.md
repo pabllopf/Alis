@@ -1,6 +1,13 @@
 ---
 Extension: Thread
-tags: [extension,plugin,thread,concurrency,documentation]
+tags:
+  - extension
+  - plugin
+  - thread
+  - concurrency
+  - documentation
+
+status: draft
 ---
 
 

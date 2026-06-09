@@ -1,6 +1,11 @@
 ---
 title: Zero-Copy Abstractions
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

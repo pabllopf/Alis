@@ -1,6 +1,12 @@
 ---
 title: Core Libraries (6_Ideation)
-tags: [ideation,aspect,library,documentation]
+tags:
+  - ideation
+  - aspect
+  - library
+  - documentation
+
+status: draft
 ---
 
 

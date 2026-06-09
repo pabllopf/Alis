@@ -1,6 +1,11 @@
 ---
 title: Alis.Core.Aspect.Memory
-tags: [project,documentation,reference]
+tags:
+  - project
+  - documentation
+  - reference
+
+status: draft
 ---
 
 

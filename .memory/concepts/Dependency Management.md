@@ -1,6 +1,11 @@
 ---
 title: Dependency Management
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

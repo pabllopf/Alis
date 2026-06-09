@@ -1,6 +1,11 @@
 ---
 title: Coding Conventions
-tags: [project,documentation,reference]
+tags:
+  - project
+  - documentation
+  - reference
+
+status: draft
 ---
 
 

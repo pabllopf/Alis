@@ -1,6 +1,11 @@
 ---
 title: Naming Conventions — ALIS
-tags: [convention,standard,naming]
+tags:
+  - convention
+  - standard
+  - naming
+
+status: draft
 ---
 
 

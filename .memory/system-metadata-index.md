@@ -1,7 +1,12 @@
 ---
 title: System Metadata Index
-tags: [metadata,system,configuration]
+tags:
+  - metadata
+  - system
+  - configuration
 lastUpdated: 2026-06-09
+
+status: draft
 ---
 
 

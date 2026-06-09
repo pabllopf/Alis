@@ -1,6 +1,11 @@
 ---
 title: Regeneration Log
-tags: [log,execution,history]
+tags:
+  - log
+  - execution
+  - history
+
+status: draft
 ---
 
 

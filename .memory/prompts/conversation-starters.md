@@ -1,6 +1,11 @@
 ---
 title: Conversation Starters — ALIS
-tags: [prompt,ai,reference]
+tags:
+  - prompt
+  - ai
+  - reference
+
+status: draft
 ---
 
 

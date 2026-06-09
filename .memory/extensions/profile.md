@@ -1,6 +1,14 @@
 ---
 Extension: Profile
-tags: [extension,plugin,profile,profiling,performance,documentation]
+tags:
+  - extension
+  - plugin
+  - profile
+  - profiling
+  - performance
+  - documentation
+
+status: draft
 ---
 
 

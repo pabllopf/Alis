@@ -1,6 +1,11 @@
 ---
 title: Code Review Checklist — ALIS
-tags: [prompt,ai,reference]
+tags:
+  - prompt
+  - ai
+  - reference
+
+status: draft
 ---
 
 

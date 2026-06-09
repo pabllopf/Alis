@@ -1,6 +1,11 @@
 ---
 title: Value Object Pattern
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

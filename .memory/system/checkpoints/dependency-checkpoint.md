@@ -1,6 +1,11 @@
 ---
 title: Dependency Checkpoint
-tags: [checkpoint,validation,tracking]
+tags:
+  - checkpoint
+  - validation
+  - tracking
+
+status: draft
 ---
 
 

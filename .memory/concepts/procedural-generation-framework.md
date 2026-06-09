@@ -1,6 +1,11 @@
 ---
 title: Procedural Generation Framework
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

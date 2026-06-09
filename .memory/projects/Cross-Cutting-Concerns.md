@@ -1,6 +1,11 @@
 ---
 title: Cross-Cutting Concerns
-tags: [project,documentation,reference]
+tags:
+  - project
+  - documentation
+  - reference
+
+status: draft
 ---
 
 

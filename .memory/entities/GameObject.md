@@ -1,6 +1,12 @@
 ---
 title: GameObject
-tags: [entity,gameobject,scene,component]
+tags:
+  - entity
+  - gameobject
+  - scene
+  - component
+
+status: draft
 ---
 
 

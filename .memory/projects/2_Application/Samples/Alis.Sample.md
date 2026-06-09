@@ -1,6 +1,11 @@
 ---
 title: Alis.Sample (All-in-One Sample)
-tags: [application,sample,documentation]
+tags:
+  - application
+  - sample
+  - documentation
+
+status: draft
 ---
 
 

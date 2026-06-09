@@ -1,6 +1,12 @@
 ---
 title: Alis.Extension.Payment.Stripe.Sample
-tags: [presentation,application,extension,documentation]
+tags:
+  - presentation
+  - application
+  - extension
+  - documentation
+
+status: draft
 ---
 
 

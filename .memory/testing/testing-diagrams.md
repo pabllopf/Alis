@@ -1,6 +1,12 @@
 ---
 title: Testing Architecture
-tags: [testing,test,quality,assurance]
+tags:
+  - testing
+  - test
+  - quality
+  - assurance
+
+status: draft
 ---
 
 

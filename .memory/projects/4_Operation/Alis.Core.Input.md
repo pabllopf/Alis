@@ -1,6 +1,12 @@
 ---
 title: Alis.Core.Input
-tags: [operation,runtime,implementation,documentation]
+tags:
+  - operation
+  - runtime
+  - implementation
+  - documentation
+
+status: draft
 ---
 
 

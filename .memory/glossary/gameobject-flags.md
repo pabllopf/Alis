@@ -1,6 +1,11 @@
 ---
 title: GameObjectFlags
-tags: [glossary,terminology,reference]
+tags:
+  - glossary
+  - terminology
+  - reference
+
+status: draft
 ---
 
 

@@ -1,6 +1,12 @@
 ---
 title: Alis
-tags: [entity,gameobject,scene,component]
+tags:
+  - entity
+  - gameobject
+  - scene
+  - component
+
+status: draft
 ---
 
 

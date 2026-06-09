@@ -1,6 +1,11 @@
 ---
 title: Source Code Conventions
-tags: [source,reference,documentation]
+tags:
+  - source
+  - reference
+  - documentation
+
+status: draft
 ---
 
 

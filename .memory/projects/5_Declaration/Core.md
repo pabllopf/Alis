@@ -1,6 +1,12 @@
 ---
 title: 5_Declaration Layer Overview
-tags: [declaration,contract,interface,documentation]
+tags:
+  - declaration
+  - contract
+  - interface
+  - documentation
+
+status: draft
 ---
 
 

@@ -1,6 +1,11 @@
 ---
 title: Architecture Diagrams
-tags: [architecture,design,pattern]
+tags:
+  - architecture
+  - design
+  - pattern
+
+status: draft
 ---
 
 

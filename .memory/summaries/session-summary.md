@@ -1,6 +1,11 @@
 ---
 title: Session Summary — ALIS Memory Generation
-tags: [summary,overview,documentation]
+tags:
+  - summary
+  - overview
+  - documentation
+
+status: draft
 ---
 
 

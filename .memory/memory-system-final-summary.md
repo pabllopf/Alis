@@ -1,6 +1,10 @@
 ---
 title: Memory System Update - Final Summary
-tags: [documentation,reference]
+tags:
+  - documentation
+  - reference
+
+status: draft
 ---
 
 

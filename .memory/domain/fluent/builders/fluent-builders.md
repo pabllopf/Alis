@@ -1,6 +1,12 @@
 ---
 title: Fluent Builders
-tags: [domain,api,reference,documentation]
+tags:
+  - domain
+  - api
+  - reference
+  - documentation
+
+status: draft
 ---
 
 

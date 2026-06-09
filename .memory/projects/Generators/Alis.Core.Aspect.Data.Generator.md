@@ -1,6 +1,11 @@
 ---
 title: Alis.Core.Aspect.Data.Generator
-tags: [project,documentation,reference]
+tags:
+  - project
+  - documentation
+  - reference
+
+status: draft
 ---
 
 

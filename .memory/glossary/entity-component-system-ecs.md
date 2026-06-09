@@ -1,6 +1,11 @@
 ---
 title: Entity Component System (ECS)
-tags: [glossary,terminology,reference]
+tags:
+  - glossary
+  - terminology
+  - reference
+
+status: draft
 ---
 
 

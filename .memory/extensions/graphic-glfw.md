@@ -1,6 +1,14 @@
 ---
 Extension: Graphic.Glfw
-tags: [extension,plugin,graphic,glfw,rendering,documentation]
+tags:
+  - extension
+  - plugin
+  - graphic
+  - glfw
+  - rendering
+  - documentation
+
+status: draft
 ---
 
 

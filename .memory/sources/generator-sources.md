@@ -1,6 +1,11 @@
 ---
 title: Source Generator Sources
-tags: [source,reference,documentation]
+tags:
+  - source
+  - reference
+  - documentation
+
+status: draft
 ---
 
 

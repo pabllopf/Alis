@@ -1,6 +1,14 @@
 ---
 Extension: Graphic.Sfml
-tags: [extension,plugin,graphic,sfml,rendering,documentation]
+tags:
+  - extension
+  - plugin
+  - graphic
+  - sfml
+  - rendering
+  - documentation
+
+status: draft
 ---
 
 

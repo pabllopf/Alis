@@ -1,6 +1,11 @@
 ---
 title: Alis.Sample.Flappy.Bird
-tags: [application,sample,documentation]
+tags:
+  - application
+  - sample
+  - documentation
+
+status: draft
 ---
 
 

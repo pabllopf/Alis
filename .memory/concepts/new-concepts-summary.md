@@ -1,6 +1,11 @@
 ---
 title: New Concepts Added to Alis Memory System
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

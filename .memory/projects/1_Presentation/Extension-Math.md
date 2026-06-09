@@ -1,6 +1,12 @@
 ---
 title: Math Extensions
-tags: [presentation,application,extension,documentation]
+tags:
+  - presentation
+  - application
+  - extension
+  - documentation
+
+status: draft
 ---
 
 

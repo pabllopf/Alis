@@ -1,6 +1,14 @@
 ---
 Extension: Updater
-tags: [extension,plugin,updater,update,maintenance,documentation]
+tags:
+  - extension
+  - plugin
+  - updater
+  - update
+  - maintenance
+  - documentation
+
+status: draft
 ---
 
 

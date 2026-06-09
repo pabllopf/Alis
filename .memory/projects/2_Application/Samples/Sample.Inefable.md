@@ -1,6 +1,11 @@
 ---
 title: Alis.Sample.Inefable
-tags: [application,sample,documentation]
+tags:
+  - application
+  - sample
+  - documentation
+
+status: draft
 ---
 
 

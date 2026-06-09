@@ -1,6 +1,11 @@
 ---
 title: Compression & Memory Optimization
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

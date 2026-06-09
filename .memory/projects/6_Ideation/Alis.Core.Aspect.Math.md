@@ -1,6 +1,12 @@
 ---
 title: Alis.Core.Aspect.Math
-tags: [ideation,aspect,library,documentation]
+tags:
+  - ideation
+  - aspect
+  - library
+  - documentation
+
+status: draft
 ---
 
 

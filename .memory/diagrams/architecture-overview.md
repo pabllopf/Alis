@@ -1,6 +1,11 @@
 ---
 title: Architecture Overview Diagram — ALIS
-tags: [diagram,visualization,mermaid]
+tags:
+  - diagram
+  - visualization
+  - mermaid
+
+status: draft
 ---
 
 

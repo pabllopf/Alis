@@ -1,6 +1,11 @@
 ---
 title: Application Composition
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

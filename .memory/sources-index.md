@@ -1,7 +1,12 @@
 ---
 title: Sources Index
-tags: [source,reference,documentation]
+tags:
+  - source
+  - reference
+  - documentation
 lastUpdated: 2026-06-09
+
+status: draft
 ---
 
 

@@ -1,6 +1,11 @@
 ---
 title: ADR-001: Six-Layer Screaming Architecture
-tags: [decision,adr,architecture]
+tags:
+  - decision
+  - adr
+  - architecture
+
+status: draft
 ---
 
 

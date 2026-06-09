@@ -1,6 +1,11 @@
 ---
 title: High-Speed Priority Queue
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

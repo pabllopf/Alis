@@ -1,6 +1,11 @@
 ---
 title: Aspect-Oriented Design
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

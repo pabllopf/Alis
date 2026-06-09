@@ -1,6 +1,12 @@
 ---
 title: Alis.Core
-tags: [structuration,core,abstraction,documentation]
+tags:
+  - structuration
+  - core
+  - abstraction
+  - documentation
+
+status: draft
 ---
 
 

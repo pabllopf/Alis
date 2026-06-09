@@ -1,6 +1,11 @@
 ---
 title: Developer Onboarding
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

@@ -1,6 +1,12 @@
 ---
 title: Alis.Core.Data
-tags: [declaration,contract,interface,documentation]
+tags:
+  - declaration
+  - contract
+  - interface
+  - documentation
+
+status: draft
 ---
 
 

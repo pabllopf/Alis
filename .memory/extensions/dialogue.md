@@ -1,6 +1,12 @@
 ---
 Extension: Language.Dialogue
-tags: [extension,plugin,dialogue,documentation]
+tags:
+  - extension
+  - plugin
+  - dialogue
+  - documentation
+
+status: draft
 ---
 
 

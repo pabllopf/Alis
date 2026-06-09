@@ -1,6 +1,11 @@
 ---
 title: ALIS Architecture
-tags: [project,documentation,reference]
+tags:
+  - project
+  - documentation
+  - reference
+
+status: draft
 ---
 
 

@@ -1,6 +1,11 @@
 ---
 title: Prompt Engineering
-tags: [prompt,ai,reference]
+tags:
+  - prompt
+  - ai
+  - reference
+
+status: draft
 ---
 
 

@@ -1,6 +1,11 @@
 ---
 title: Memory Management
-tags: [glossary,terminology,reference]
+tags:
+  - glossary
+  - terminology
+  - reference
+
+status: draft
 ---
 
 

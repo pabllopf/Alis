@@ -1,6 +1,11 @@
 ---
 title: Extension System
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

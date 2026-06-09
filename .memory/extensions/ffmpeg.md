@@ -1,6 +1,14 @@
 ---
 Extension: Media.FFmpeg
-tags: [extension,plugin,ffmpeg,multimedia,video,documentation]
+tags:
+  - extension
+  - plugin
+  - ffmpeg
+  - multimedia
+  - video
+  - documentation
+
+status: draft
 ---
 
 

@@ -1,7 +1,12 @@
 ---
 title: Game Samples Index
-tags: [sample,game,example]
+tags:
+  - sample
+  - game
+  - example
 lastUpdated: 2026-06-09
+
+status: draft
 ---
 
 

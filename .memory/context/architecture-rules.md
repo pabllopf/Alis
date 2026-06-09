@@ -1,6 +1,11 @@
 ---
 title: Architecture Rules
-tags: [project,documentation,reference]
+tags:
+  - project
+  - documentation
+  - reference
+
+status: draft
 ---
 
 

@@ -1,6 +1,12 @@
 ---
 Getting Started with ALIS
-tags: [onboarding,guide,getting-started,documentation]
+tags:
+  - onboarding
+  - guide
+  - getting-started
+  - documentation
+
+status: draft
 ---
 
 

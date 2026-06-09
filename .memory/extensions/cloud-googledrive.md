@@ -1,6 +1,14 @@
 ---
 Extension: Cloud.GoogleDrive
-tags: [extension,plugin,cloud,google,drive,documentation]
+tags:
+  - extension
+  - plugin
+  - cloud
+  - google
+  - drive
+  - documentation
+
+status: draft
 ---
 
 

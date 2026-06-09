@@ -1,6 +1,11 @@
 ---
 title: Naming Conventions
-tags: [convention,standard,naming]
+tags:
+  - convention
+  - standard
+  - naming
+
+status: draft
 ---
 
 

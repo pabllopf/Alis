@@ -1,6 +1,12 @@
 ---
 title: MCP Status
-tags: [system,state,tracking,management]
+tags:
+  - system
+  - state
+  - tracking
+  - management
+
+status: draft
 ---
 
 

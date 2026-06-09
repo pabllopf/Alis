@@ -1,6 +1,11 @@
 ---
 title: Build System — ALIS
-tags: [architecture,design,pattern]
+tags:
+  - architecture
+  - design
+  - pattern
+
+status: draft
 ---
 
 

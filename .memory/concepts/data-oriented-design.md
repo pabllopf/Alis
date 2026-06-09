@@ -1,6 +1,11 @@
 ---
 title: Data-Oriented Design (DOD)
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

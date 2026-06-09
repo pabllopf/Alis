@@ -1,3 +1,7 @@
+---
+status: draft
+---
+
 # ALIS Memory System - Global Properties
 
 ## Overview
@@ -94,7 +98,10 @@ lastUpdated: 2026-06-09
 author: Pablo Perdomo Falcón
 license: GPLv3
 repository: https://github.com/pabllopf/Alis
-tags: [documentation, reference, index]
+tags:
+  - documentation
+  - reference
+  - index
 accessibility: public
 weight: 100
 ai-summary: "ALIS Memory Index - Complete documentation for ALIS Game Engine Framework"
@@ -114,7 +121,11 @@ version: 1.0.0
 lastUpdated: 2026-06-09
 author: Pablo Perdomo Falcón
 license: GPLv3
-tags: [domain, api, reference, documentation]
+tags:
+  - domain
+  - api
+  - reference
+  - documentation
 accessibility: public
 weight: 85
 ai-summary: "JSON serialization library for AOT environments"
@@ -135,7 +146,11 @@ status: active
 version: 1.0.0
 lastUpdated: 2026-06-09
 author: Pablo Perdomo Falcón
-tags: [concept, theory, architecture, documentation]
+tags:
+  - concept
+  - theory
+  - architecture
+  - documentation
 accessibility: public
 weight: 90
 ai-summary: "Overview of ALIS Game Engine Framework architecture"

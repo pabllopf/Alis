@@ -1,7 +1,12 @@
 ---
 title: Glossary Index
-tags: [glossary,terminology,reference]
+tags:
+  - glossary
+  - terminology
+  - reference
 lastUpdated: 2026-06-09
+
+status: draft
 ---
 
 

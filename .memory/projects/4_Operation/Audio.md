@@ -1,6 +1,12 @@
 ---
 title: Alis.Core.Audio
-tags: [operation,runtime,implementation,documentation]
+tags:
+  - operation
+  - runtime
+  - implementation
+  - documentation
+
+status: draft
 ---
 
 

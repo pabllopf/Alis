@@ -1,6 +1,11 @@
 ---
 title: Event-Driven Entity System
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

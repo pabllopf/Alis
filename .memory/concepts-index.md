@@ -1,7 +1,12 @@
 ---
 title: Concepts Index
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
 lastUpdated: 2026-06-09
+
+status: draft
 ---
 
 

@@ -1,6 +1,11 @@
 ---
 title: ADR-002: Aggregator Pattern for Core Projects
-tags: [decision,adr,architecture]
+tags:
+  - decision
+  - adr
+  - architecture
+
+status: draft
 ---
 
 

@@ -1,6 +1,11 @@
 ---
 title: ALIS Game Engine Framework — Repository Overview
-tags: [architecture,design,pattern]
+tags:
+  - architecture
+  - design
+  - pattern
+
+status: draft
 ---
 
 

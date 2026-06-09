@@ -1,6 +1,14 @@
 ---
 Extension: Graphic.Sdl2
-tags: [extension,plugin,graphic,sdl2,rendering,documentation]
+tags:
+  - extension
+  - plugin
+  - graphic
+  - sdl2
+  - rendering
+  - documentation
+
+status: draft
 ---
 
 

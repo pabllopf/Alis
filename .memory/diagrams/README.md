@@ -1,6 +1,11 @@
 ---
 title: Diagrams
-tags: [diagram,visualization,mermaid]
+tags:
+  - diagram
+  - visualization
+  - mermaid
+
+status: draft
 ---
 
 

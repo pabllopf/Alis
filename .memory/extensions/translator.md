@@ -1,6 +1,13 @@
 ---
 Extension: Language.Translator
-tags: [extension,plugin,translator,translation,documentation]
+tags:
+  - extension
+  - plugin
+  - translator
+  - translation
+  - documentation
+
+status: draft
 ---
 
 

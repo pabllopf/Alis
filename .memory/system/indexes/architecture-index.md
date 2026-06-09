@@ -1,6 +1,11 @@
 ---
 title: Architecture Index — ALIS
-tags: [index,catalog,reference]
+tags:
+  - index
+  - catalog
+  - reference
+
+status: draft
 ---
 
 

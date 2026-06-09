@@ -1,6 +1,12 @@
 ---
 title: Alis.Extension.Graphic.Sdl2
-tags: [presentation,application,extension,documentation]
+tags:
+  - presentation
+  - application
+  - extension
+  - documentation
+
+status: draft
 ---
 
 

@@ -1,6 +1,11 @@
 ---
 title: Repository Structure
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

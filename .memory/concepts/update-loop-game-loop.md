@@ -1,6 +1,11 @@
 ---
 title: Update Loop & Game Loop Pattern
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

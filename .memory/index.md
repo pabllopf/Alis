@@ -1,3 +1,7 @@
+---
+status: draft
+---
+
 # ALIS Memory System - Global Index
 
 > **Version**: 1.2.0 | **Author**: Pablo Perdomo Falcón | **License**: GPLv3  

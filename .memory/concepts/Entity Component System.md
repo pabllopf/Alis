@@ -1,6 +1,11 @@
 ---
 title: Entity Component System (ECS)
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

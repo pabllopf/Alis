@@ -1,6 +1,7 @@
 ---
 title: "{{title}}"
-tags: [documentation]
+tags:
+  - documentation
 type: concept
 status: draft
 version: 1.0.0

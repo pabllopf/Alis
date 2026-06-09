@@ -1,6 +1,11 @@
 ---
 title: Dependency Graph
-tags: [diagram,visualization,mermaid]
+tags:
+  - diagram
+  - visualization
+  - mermaid
+
+status: draft
 ---
 
 

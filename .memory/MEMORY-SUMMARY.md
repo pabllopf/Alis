@@ -1,6 +1,10 @@
 ---
 title: Memory Generation Summary
-tags: [documentation,reference]
+tags:
+  - documentation
+  - reference
+
+status: draft
 ---
 
 

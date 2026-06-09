@@ -1,6 +1,11 @@
 ---
 title: Solution Composition
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

@@ -1,6 +1,12 @@
 ---
 title: Alis.Extension.Security.Sample
-tags: [presentation,application,extension,documentation]
+tags:
+  - presentation
+  - application
+  - extension
+  - documentation
+
+status: draft
 ---
 
 

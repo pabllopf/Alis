@@ -1,6 +1,12 @@
 ---
 title: Component Architecture
-tags: [domain,api,reference,documentation]
+tags:
+  - domain
+  - api
+  - reference
+  - documentation
+
+status: draft
 ---
 
 

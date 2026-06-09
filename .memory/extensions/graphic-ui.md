@@ -1,6 +1,14 @@
 ---
 Extension: Graphic.Ui
-tags: [extension,plugin,graphic,ui,interface,documentation]
+tags:
+  - extension
+  - plugin
+  - graphic
+  - ui
+  - interface
+  - documentation
+
+status: draft
 ---
 
 

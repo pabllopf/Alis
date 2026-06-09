@@ -1,6 +1,11 @@
 ---
 title: Ideation Sources
-tags: [source,reference,documentation]
+tags:
+  - source
+  - reference
+  - documentation
+
+status: draft
 ---
 
 

@@ -1,6 +1,11 @@
 ---
 title: Flappy Bird
-tags: [sample,game,example]
+tags:
+  - sample
+  - game
+  - example
+
+status: draft
 ---
 
 

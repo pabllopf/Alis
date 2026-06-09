@@ -1,7 +1,13 @@
 ---
 title: Extensions Index
-tags: [extension,plugin,add-on,documentation]
+tags:
+  - extension
+  - plugin
+  - add-on
+  - documentation
 lastUpdated: 2026-06-09
+
+status: draft
 ---
 
 

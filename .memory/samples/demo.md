@@ -1,6 +1,11 @@
 ---
 title: Demo
-tags: [sample,game,example]
+tags:
+  - sample
+  - game
+  - example
+
+status: draft
 ---
 
 

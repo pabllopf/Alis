@@ -1,7 +1,12 @@
 ---
 title: Applications Index
-tags: [application,software,tool]
+tags:
+  - application
+  - software
+  - tool
 lastUpdated: 2026-06-09
+
+status: draft
 ---
 
 

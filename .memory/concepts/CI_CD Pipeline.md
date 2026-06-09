@@ -1,6 +1,11 @@
 ---
 title: CI/CD Pipeline
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

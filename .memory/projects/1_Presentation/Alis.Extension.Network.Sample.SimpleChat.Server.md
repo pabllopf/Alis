@@ -1,6 +1,12 @@
 ---
 title: Alis.Extension.Network.Sample.SimpleChat.Server
-tags: [presentation,application,extension,documentation]
+tags:
+  - presentation
+  - application
+  - extension
+  - documentation
+
+status: draft
 ---
 
 

@@ -1,6 +1,11 @@
 ---
 title: Dialogue System Architecture
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

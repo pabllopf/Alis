@@ -1,6 +1,11 @@
 ---
 title: Cross-Platform Abstraction Layer
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
+
+status: draft
 ---
 
 

@@ -1,6 +1,12 @@
 ---
 title: Alis.Extension.Language.Dialogue.Test
-tags: [presentation,application,extension,documentation]
+tags:
+  - presentation
+  - application
+  - extension
+  - documentation
+
+status: draft
 ---
 
 

@@ -1,6 +1,12 @@
 ---
 title: Alis.Core.Ecs
-tags: [operation,runtime,implementation,documentation]
+tags:
+  - operation
+  - runtime
+  - implementation
+  - documentation
+
+status: draft
 ---
 
 

@@ -1,6 +1,11 @@
 ---
 title: Testing Strategy
-tags: [project,documentation,reference]
+tags:
+  - project
+  - documentation
+  - reference
+
+status: draft
 ---
 
 

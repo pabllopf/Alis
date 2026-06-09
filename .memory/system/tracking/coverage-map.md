@@ -1,6 +1,11 @@
 ---
 title: Coverage Map
-tags: [tracking,monitoring,analysis]
+tags:
+  - tracking
+  - monitoring
+  - analysis
+
+status: draft
 ---
 
 

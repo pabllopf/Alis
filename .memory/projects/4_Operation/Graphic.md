@@ -1,6 +1,12 @@
 ---
 title: Graphic System Documentation
-tags: [operation,runtime,implementation,documentation]
+tags:
+  - operation
+  - runtime
+  - implementation
+  - documentation
+
+status: draft
 ---
 
 

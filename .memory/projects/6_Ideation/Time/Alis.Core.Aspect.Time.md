@@ -1,6 +1,12 @@
 ---
 title: Time Aspect Documentation
-tags: [ideation,aspect,library,documentation]
+tags:
+  - ideation
+  - aspect
+  - library
+  - documentation
+
+status: draft
 ---
 
 

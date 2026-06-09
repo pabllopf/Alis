@@ -1,6 +1,12 @@
 ---
 title: Alis.Core.Log
-tags: [declaration,contract,interface,documentation]
+tags:
+  - declaration
+  - contract
+  - interface
+  - documentation
+
+status: draft
 ---
 
 

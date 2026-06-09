@@ -1,6 +1,12 @@
 ---
 title: Alis.Core.Aspect.Time
-tags: [domain,api,reference,documentation]
+tags:
+  - domain
+  - api
+  - reference
+  - documentation
+
+status: draft
 ---
 
 

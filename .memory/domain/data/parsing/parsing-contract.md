@@ -1,6 +1,12 @@
 ---
 title: JSON Parsing
-tags: [domain,api,reference,documentation]
+tags:
+  - domain
+  - api
+  - reference
+  - documentation
+
+status: draft
 ---
 
 
