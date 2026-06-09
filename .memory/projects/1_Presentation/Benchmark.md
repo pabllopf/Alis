@@ -33,3 +33,11 @@ Performance benchmarking application for ALIS engine components. Measures and co
 ## Notes
 - Excluded from SonarQube analysis
 - Uses benchmarking framework for performance measurement
+
+## Related
+- [[projects/1_Presentation/Engine]] — Engine runtime
+- [[projects/4_Operation/Ecs]] — ECS performance
+- [[architecture/build-system]] — Build configuration
+- [[build-summary]] — Build overview
+- [[performance-index]] — Performance tracking
+- [[Alis Architecture Overview]] — Full architecture

@@ -63,3 +63,15 @@ Coverage settings in `.config/coverlet.runsettings`:
 - [[Build System Configuration]]
 - [[Multi-Targeting Strategy]]
 - [[Layered Architecture]]
+
+## Related
+- [[Quality Assurance]] — Code quality
+- [[CI/CD Pipeline]] — Automation
+- [[Developer Onboarding]] — Testing workflow
+- [[Alis Architecture Overview]] — Full architecture
+- [[projects/Index]] — Test project docs
+- [[tests-index]] — Test coverage index
+- [[coverage-map]] — Coverage tracking
+- [[code-review-checklist]] — Review checklist
+- [[build-system]] — Test configuration
+- [[handlers-index]] — Test handler index

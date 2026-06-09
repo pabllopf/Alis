@@ -1,55 +1,97 @@
 # Extension System
 
-Alis provides 18+ modular extensions organized under `1_Presentation/Extension/`.
+Alis provides 18+ modular extensions organized under `1_Presentation/Extension/` for cross-platform functionality.
 
 ## Extension Categories
 
-### Graphics
-- `Graphic.Ui` - UI framework
-- `Graphic.Sfml` - Simple Fast Multimedia Library wrapper
-- `Graphic.Glfw` - OpenGL context management
-- `Graphic.Sdl2` - Simple DirectMedia Layer 2
+### Graphics Extensions
+| Extension | Purpose |
+|-----------|---------|
+| `Graphic.Ui` | UI framework and rendering |
+| `Graphic.Sfml` | Simple Fast Multimedia Library wrapper |
+| `Graphic.Glfw` | OpenGL context management |
+| `Graphic.Sdl2` | Simple DirectMedia Layer 2 wrapper |
 
 ### Cloud & Storage
-- `Cloud.DropBox` - Dropbox integration
-- `Cloud.GoogleDrive` - Google Drive integration
+| Extension | Purpose |
+|-----------|---------|
+| `Cloud.DropBox` | Dropbox integration and file sync |
+| `Cloud.GoogleDrive` | Google Drive integration |
 
 ### Payment & Security
-- `Payment.Stripe` - Stripe payment processing
-- `Security` - Security abstractions
+| Extension | Purpose |
+|-----------|---------|
+| `Payment.Stripe` | Stripe payment processing |
+| `Security` | Security abstractions and utilities |
 
 ### Network & Communication
-- `Network` - Network layer abstractions
+| Extension | Purpose |
+|-----------|---------|
+| `Network` | Network layer abstractions |
+| `Thread` | Threading and concurrency utilities |
 
 ### I/O Operations
-- `Io.FileDialog` - File dialog interface
+| Extension | Purpose |
+|-----------|---------|
+| `Io.FileDialog` | Cross-platform file dialog interface |
 
 ### Media Processing
-- `Media.FFmpeg` - FFmpeg multimedia framework wrapper
+| Extension | Purpose |
+|-----------|---------|
+| `Media.FFmpeg` | FFmpeg multimedia framework wrapper |
 
 ### Math & Algorithms
-- `Math.ProceduralDungeon` - Procedural dungeon generation
-- `Math.HighSpeedPriorityQueue` - High-performance priority queue
+| Extension | Purpose |
+|-----------|---------|
+| `Math.ProceduralDungeon` | Procedural dungeon generation algorithms |
+| `Math.HighSpeedPriorityQueue` | High-performance priority queue implementation |
 
 ### Communication & Localization
-- `Thread` - Threading abstractions
-- `Language.Translator` - Translation services
-- `Language.Dialogue` - Dialogue system
+| Extension | Purpose |
+|-----------|---------|
+| `Language.Translator` | Translation services and localization |
+| `Language.Dialogue` | Dialogue system for games |
 
 ### System Management
-- `Updater` - Application update mechanism
-- `Profile` - User profile management
+| Extension | Purpose |
+|-----------|---------|
+| `Updater` | Application update mechanism |
+| `Profile` | User profile management |
 
 ### Advertising
-- `Ads.GoogleAds` - Google Ads integration
+| Extension | Purpose |
+|-----------|---------|
+| `Ads.GoogleAds` | Google Ads integration |
 
 ## Extension Architecture
 
 Each extension follows a consistent pattern:
-1. Abstraction layer (interface definitions)
-2. Implementation layer (platform-specific code)
-3. Integration with main engine
+1. **Abstraction layer** - Interface definitions
+2. **Implementation layer** - Platform-specific code
+3. **Integration** - Integration with main engine
+
+## Extension Registration
+
+Extensions are registered in the dependency injection container:
+```csharp
+services.AddExtension<GraphicExtension>();
+services.AddExtension<CloudExtension>();
+```
 
 ## See Also
 - [[Layered Architecture]]
 - [[Solution Composition]]
+- [[Alis Architecture Overview]]
+
+## Related
+- [[projects/1_Presentation/Extension]] — Extension project docs
+- [[Alis.Extension.Graphic.Ui]] — Ui extension
+- [[Alis.Extension.Graphic.Sfml]] — SFML extension
+- [[Alis.Extension.Network]] — Networking extension
+- [[Alis.Extension.Security]] — Security extension
+- [[Alis.Extension.Payment.Stripe]] — Payment extension
+- [[Alis.Extension.Cloud.DropBox]] — Cloud storage
+- [[Multi-Platform Samples]] — Sample game platforms
+- [[Platform-Specific Build Constants]] — Platform detection
+- [[build-system]] — Build configuration
+- [[onboarding/getting-started]] — Adding extensions guide

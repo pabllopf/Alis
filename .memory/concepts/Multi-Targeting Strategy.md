@@ -1,6 +1,6 @@
 # Multi-Targeting Strategy
 
-Alis uses aggressive multi-targeting across 15+ framework configurations simultaneously.
+Alis uses aggressive multi-targeting across 15+ framework configurations simultaneously for maximum compatibility.
 
 ## Target Frameworks
 
@@ -34,7 +34,17 @@ Alis uses aggressive multi-targeting across 15+ framework configurations simulta
 
 ```xml
 <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0;net5.0;net8.0;net10.0;...</TargetFrameworks>
+    <TargetFrameworks Condition="'$(Configuration)' == 'Debug'">
+        netcoreapp2.0;net5.0;net8.0;net10.0;netstandard2.0;net461
+    </TargetFrameworks>
+    
+    <TargetFrameworks Condition="'$(Configuration)' == 'Release'">
+        netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;netcoreapp3.1;
+        net5.0;net6.0;net7.0;net8.0;net9.0;net10.0;
+        netstandard2.0;netstandard2.1;
+        net461;net471;net472;net48;net481
+    </TargetFrameworks>
+    
     <RuntimeIdentifiers>browser-wasm;win-x64;linux-x64;...</RuntimeIdentifiers>
     <LangVersion>13</LangVersion>
     <Nullable>disable</Nullable>
@@ -49,15 +59,19 @@ Build-time constants are automatically defined based on `RuntimeIdentifier`:
 - `linux-x64` → defines `linuxx64` constant
 - `browser-wasm` → defines `browserwasm` constant
 
+## Usage Pattern
+
+```csharp
+#if browserwasm
+// WebAssembly-specific code
+#elif winx64
+// Windows x64-specific code
+#elif linuxx64
+// Linux x64-specific code
+#endif
+```
+
 ## See Also
-- [[Layered Architecture]]
-- [[Multi-Platform Samples]]
 - [[Platform-Specific Build Constants]]
 - [[Build System Configuration]]
-
-## Related Architecture
-
-- [[build-system]] — Multi-targeting in build
-- [[build-summary]] — Framework targets overview
-- [[project-index]] — Framework targets per project
-- [[projects/Index]] — Project framework details
+- [[Multi-Platform Samples]]

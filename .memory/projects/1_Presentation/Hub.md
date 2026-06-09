@@ -59,3 +59,11 @@ Game hub/launcher application for managing and launching ALIS games. Includes Ed
 - Hub is the central application that orchestrates Engine and Installer
 - macOS bundle includes Editor subdirectory if present
 - DMG creation has retry logic for Spotlight-related issues
+
+## Related
+- [[projects/1_Presentation/Engine]] — Engine dependency
+- [[projects/1_Presentation/Alis.App.Hub]] — Hub docs
+- [[projects/Cross-Cutting-Concerns]] — Build config
+- [[architecture/build-system]] — Build system
+- [[Alis Architecture Overview]] — Full architecture
+- [[Platform-Specific Build Constants]] — Platform detection

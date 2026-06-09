@@ -57,3 +57,17 @@ High-performance Entity Component System (ECS) for game development, providing e
 - **High**: ECS architecture with custom memory management
 - **Performance-Critical**: Core game loop path
 - **Complexity**: Archetype-based component storage
+
+## Related
+- [[projects/4_Operation/Alis.Core.Ecs]] — ECS project docs
+- [[projects/3_Structuration/Alis.Core]] — Core abstractions
+- [[projects/2_Application/Alis]] — Application integration
+- [[Entity Component System]] — Concept overview
+- [[aspect-oriented-design]] — Design patterns
+- [[entity-component-system-ecs]] — Glossary definition
+- [[Component]] — Data component pattern
+- [[System]] — Logic processing
+- [[Archetype]] — Component grouping
+- [[performance-index]] — ECS performance
+- [[queries-index]] — Query system
+- [[architecture-index]] — Patterns index

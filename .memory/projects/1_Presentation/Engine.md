@@ -57,3 +57,14 @@ The main game engine runtime application. Launches and manages game instances. E
 - Uses .NET 10.0 (latest framework version in the solution)
 - AOT compilation enabled for both Debug and Release configurations
 - Generates analysis files: .mstat, .dgml, .map, IL dump
+
+## Related
+- [[projects/1_Presentation/Hub]] — Launcher application
+- [[projects/1_Presentation/Benchmark]] — Performance benchmarks
+- [[projects/2_Application/Alis]] — Core application library
+- [[projects/4_Operation/Ecs]] — ECS implementation
+- [[projects/Cross-Cutting-Concerns]] — Build configuration
+- [[architecture/build-system]] — Build configuration
+- [[Alis Architecture Overview]] — Full architecture
+- [[Multi-Platform Samples]] — Sample platforms
+- [[Platform-Specific Build Constants]] — Platform detection
