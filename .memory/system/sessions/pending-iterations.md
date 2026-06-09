@@ -6,6 +6,8 @@ tags:
   - history
 
 status: draft
+
+license: GPLv3
 ---
 
 

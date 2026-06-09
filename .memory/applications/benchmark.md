@@ -6,6 +6,8 @@ tags:
   - tool
 
 status: draft
+
+license: GPLv3
 ---
 
 

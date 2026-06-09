@@ -6,6 +6,8 @@ tags:
   - tracking
 
 status: draft
+
+license: GPLv3
 ---
 
 

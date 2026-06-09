@@ -6,6 +6,8 @@ tags:
   - mermaid
 
 status: draft
+
+license: GPLv3
 ---
 
 

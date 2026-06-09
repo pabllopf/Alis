@@ -7,6 +7,8 @@ tags:
   - documentation
 
 status: draft
+
+license: GPLv3
 ---
 
 

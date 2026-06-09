@@ -7,6 +7,8 @@ tags:
   - component
 
 status: draft
+
+license: GPLv3
 ---
 
 

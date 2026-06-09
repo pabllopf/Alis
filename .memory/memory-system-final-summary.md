@@ -5,6 +5,8 @@ tags:
   - reference
 
 status: draft
+
+license: GPLv3
 ---
 
 

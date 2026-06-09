@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/3_Structuration/Alis.Core.md",
+                "file": "projects/3_Structuration/alis-core.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Alis.Core"
+              "title": "alis-core"
             }
           }
         ]
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "projects/3_Structuration/Alis.Core.md",
+                "file": "projects/3_Structuration/alis-core.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Enlaces entrantes de Alis.Core"
+              "title": "Enlaces entrantes de alis-core"
             }
           },
           {
@@ -198,6 +198,7 @@
   },
   "active": "274c279b57203fea",
   "lastOpenFiles": [
+    "projects/3_Structuration/Alis.Core.md",
     "concepts/procedural-generation-framework.md",
     "concepts/Platform-Specific Build Constants.md",
     "concepts/new-concepts-summary.md",
@@ -223,7 +224,6 @@
     "concepts/Aspect-Oriented Design.md",
     "concepts/Application Composition.md",
     "concepts/Alis Architecture Overview.md",
-    "concepts-index.md",
     "architecture/properties.config.json",
     "projects/projects.config.json",
     "security/security.config.json",

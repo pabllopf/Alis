@@ -7,6 +7,8 @@ tags:
 lastUpdated: 2026-06-09
 
 status: draft
+
+license: GPLv3
 ---
 
 

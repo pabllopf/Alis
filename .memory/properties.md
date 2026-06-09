@@ -1,5 +1,7 @@
 ---
 status: draft
+
+license: GPLv3
 ---
 
 # ALIS Memory System - Global Properties

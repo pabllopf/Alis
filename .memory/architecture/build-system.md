@@ -6,6 +6,8 @@ tags:
   - pattern
 
 status: draft
+
+license: GPLv3
 ---
 
 

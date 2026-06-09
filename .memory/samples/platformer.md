@@ -6,6 +6,8 @@ tags:
   - example
 
 status: draft
+
+license: GPLv3
 ---
 
 

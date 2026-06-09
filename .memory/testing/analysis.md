@@ -7,6 +7,8 @@ tags:
   - assurance
 
 status: draft
+
+license: GPLv3
 ---
 
 

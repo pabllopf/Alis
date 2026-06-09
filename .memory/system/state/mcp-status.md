@@ -7,6 +7,8 @@ tags:
   - management
 
 status: draft
+
+license: GPLv3
 ---
 
 

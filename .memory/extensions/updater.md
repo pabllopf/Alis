@@ -9,6 +9,10 @@ tags:
   - documentation
 
 status: draft
+
+license: GPLv3
+
+license: GPLv3
 ---
 
 

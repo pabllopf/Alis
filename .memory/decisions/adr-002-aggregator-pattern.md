@@ -6,6 +6,8 @@ tags:
   - architecture
 
 status: draft
+
+license: GPLv3
 ---
 
 

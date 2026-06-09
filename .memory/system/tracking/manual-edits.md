@@ -6,6 +6,8 @@ tags:
   - analysis
 
 status: draft
+
+license: GPLv3
 ---
 
 

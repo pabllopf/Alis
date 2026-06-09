@@ -6,6 +6,8 @@ tags:
   - naming
 
 status: draft
+
+license: GPLv3
 ---
 
 
