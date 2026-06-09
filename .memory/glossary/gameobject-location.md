@@ -127,3 +127,14 @@ Invalid location scenarios:
 - [[FastestTable]] - High-performance lookup table
 - [[Archetype]] - Component type optimization
 - [[Component Storage]] - Typed data storage
+- [[GameObject]] - Entity handle
+- [[Scene]] - World container
+- [[GameObjectLookup]] - Safe entity access
+- [[GameObjectType]] - Archetype type
+- [[entity-component-system-ecs]] — ECS overview
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[performance-index]] — Performance optimizations
+- [[architecture-index]] — Patterns

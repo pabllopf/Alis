@@ -59,3 +59,35 @@ All extensions use the same asset pipeline:
 - Extensions are the primary way to add functionality to ALIS applications
 - Each extension is independently buildable and testable
 - Sample projects demonstrate usage patterns
+
+## Related
+
+- [[projects/Index]] — All project documentation
+- [[projects/Architecture]] — Layer architecture
+- [[projects/Build-System]] — Build system docs
+- [[projects/Generators]] — Generator references
+- [[projects/Cross-Cutting-Concerns]] — Build config
+- [[Multi-Platform Samples]] — Sample details
+- [[adr-001-layered-architecture]] — Layer decision
+- [[testing/analysis]] — Extension testing
+- [[code-review-checklist]] — Extension review
+- [[Alis Architecture Overview]] — Architecture concept
+
+### Individual Extension Docs
+- [[Alis.Extension.Graphic.Ui]]
+- [[Alis.Extension.Graphic.Sfml]]
+- [[Alis.Extension.Graphic.Glfw]]
+- [[Alis.Extension.Graphic.Sdl2]]
+- [[Alis.Extension.Network]]
+- [[Alis.Extension.Io.FileDialog]]
+- [[Alis.Extension.Security]]
+- [[Alis.Extension.Payment.Stripe]]
+- [[Alis.Extension.Cloud.DropBox]]
+- [[Alis.Extension.Language.Translator]]
+- [[Alis.Extension.Language.Dialogue]]
+- [[Alis.Extension.Math.ProceduralDungeon]]
+- [[Alis.Extension.Math.HighSpeedPriorityQueue]]
+- [[Alis.Extension.Profile]]
+- [[Alis.Extension.Thread]]
+- [[Alis.Extension.Media.FFmpeg]]
+- [[Alis.Extension.Updater]]

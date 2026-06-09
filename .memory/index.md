@@ -1,7 +1,51 @@
 # ALIS Memory Index
 
+> **Version**: 1.0.6 | **Author**: Pablo Perdomo Falcón | **License**: GPLv3
+> **Repository**: https://github.com/pabllopf/Alis | **Website**: www.alisengine.com
+
 ## Welcome
-This directory contains the complete memory system for the ALIS game engine framework.
+
+This directory contains the complete Obsidian-compatible memory system for the **ALIS Game Engine Framework** — a cross-platform C# game engine with 140+ projects organized across 6 architectural layers.
+
+## Quick Navigation
+
+### For AI Agents
+- [[prompts/ai-context]] — Quick reference card for AI agents
+- [[prompts/code-review-checklist]] — Code review guidelines
+- [[conventions/naming-conventions]] — Naming rules and patterns
+
+### For Developers
+- [[onboarding/getting-started]] — Developer onboarding guide
+- [[architecture/repository-overview]] — Full architecture overview
+- [[glossary/index]] — ALIS-specific terminology
+
+### For Architecture
+- [[architecture/dependency-graph]] — Dependency map with Mermaid diagrams
+- [[architecture/build-system]] — Build configuration and commands
+- [[decisions/adr-001-layered-architecture]] — Six-layer architecture decision
+- [[decisions/adr-002-aggregator-pattern]] — Aggregator pattern decision
+
+### For Project Discovery
+- [[system/indexes/projects-index]] — All projects indexed
+- [[system/indexes/layer-index]] — Layer breakdown
+- [[system/indexes/dependency-index]] — Dependency relationships
+- [[system/indexes/architecture-index]] — Architectural patterns
+
+## Repository At a Glance
+
+| Metric | Value |
+|--------|-------|
+| Total Projects | ~140 (335 in slnx) |
+| Architectural Layers | 6 |
+| Extensions | 19 |
+| Game Samples | 13 |
+| Test Projects | ~35 |
+| Source Generators | 8 |
+| CI/CD Workflows | 41 |
+| Target Frameworks | 15+ (Debug) / 21 (Release) |
+| Runtime Identifiers | 13 |
+| C# Version | 13 |
+| .NET SDK | 10.0+ |
 
 ## Directory Structure
 
@@ -25,24 +69,22 @@ This directory contains the complete memory system for the ALIS game engine fram
 │   └── 6_Ideation/                   ← Aspect definitions + generators
 │
 ├── system/                           ← System state and indexes
-│   ├── state/                        ← State files
-│   │   ├── analysis-state.json       ← Analysis progress
-│   │   ├── file-hashes.json          ← File integrity hashes
-│   │   └── project-state.json        ← Project analysis state
-│   ├── indexes/                      ← Various indexes
-│   │   ├── project-index.md          ← All 140 projects indexed
-│   │   ├── dependency-index.md       ← Dependency map
-│   │   └── layer-index.md            ← Layer breakdown
-│   └── logs/                         ← Execution logs
-│       └── execution-log.md          ← Session execution log
+│   ├── state/                        ← Execution state (markdown)
+│   ├── indexes/                      ← Navigation indexes
+│   ├── logs/                         ← Execution logs
+│   ├── tracking/                     ← Documentation tracking
+│   ├── sessions/                     ← Session management
+│   ├── queues/                       ← Work queues
+│   ├── checkpoints/                  ← Execution checkpoints
+│   └── metadata/                     ← System metadata
 │
 ├── prompts/                          ← AI context files
 │   ├── ai-context.md                 ← Quick reference for AI agents
 │   ├── conversation-starters.md      ← Context questions
 │   └── code-review-checklist.md      ← Review guidelines
 │
-├── diagrams/                         ← Architecture diagrams
-│   └── architecture-overview.md      ← Mermaid diagrams
+├── diagrams/                         ← Architecture diagrams (Mermaid)
+│   └── architecture-overview.md      ← Layer + generator diagrams
 │
 ├── testing/                          ← Testing analysis
 │   └── analysis.md                   ← Testing framework and strategy
@@ -51,7 +93,7 @@ This directory contains the complete memory system for the ALIS game engine fram
 │   └── analysis.md                   ← Security extensions and best practices
 │
 ├── glossary/                         ← Terminology
-│   └── terms.md                      ← ALIS-specific terms
+│   └── index.md                      ← ALIS-specific terms
 │
 ├── conventions/                      ← Coding conventions
 │   └── naming-conventions.md         ← Naming rules
@@ -65,7 +107,7 @@ This directory contains the complete memory system for the ALIS game engine fram
 │
 ├── summaries/                        ← Summaries
 │   ├── build-summary.md              ← Build system summary
-│   └── session-summary.md            ← This session's summary
+│   └── session-summary.md            ← Session summaries
 │
 ├── concepts/                         ← (Pre-existing)
 ├── entities/                         ← (Pre-existing)
@@ -73,67 +115,17 @@ This directory contains the complete memory system for the ALIS game engine fram
 └── sources/                          ← (Pre-existing)
 ```
 
-## Quick Links
+## Related Documentation
 
-### For AI Agents
-- [[ai-context]] — Quick reference card
-- [[code-review-checklist]] — Review guidelines
-
-### For Developers
-- [[getting-started]] — Onboarding guide
-- [[repository-overview]] — Architecture overview
-- [[terms]] — Glossary
-
-### For Architecture
-- [[dependency-graph]] — Dependency map
-- [[build-system]] — Build configuration
-- [[adr-001-layered-architecture]] — Architecture decision
-
-### For Projects
-- [[project-index]] — All 140 projects indexed
-- [[layer-index]] — Layer breakdown
-- [[dependency-index]] — Dependency map
+- [[readme]] — Project README
+- [[contributing]] — Contribution guidelines
+- [[security]] — Security policy
+- [[changelog]] — Version history
 
 ## Memory System Schema
+
 See [[schema]] for the memory system schema and conventions.
 
 ## Session Log
+
 See [[log]] for the session execution log.
-
-## Related Topics
-
-### Architecture & Design
-- [[Layered Architecture]] — Layer structure and dependency rules
-- [[Aspect-Oriented Design]] — AOP foundation and aspects
-- [[Generator Pattern]] — Source generator architecture
-- [[Multi-Targeting Strategy]] — 15+ framework targets
-- [[Platform-Specific Build Constants]] — Build-time platform detection
-
-### Decisions
-- [[adr-001-layered-architecture]] — Six-layer architecture decision
-- [[adr-002-aggregator-pattern]] — Aggregator pattern decision
-
-### Onboarding & Context
-- [[ai-context]] — AI agent quick reference
-- [[code-review-checklist]] — Review guidelines
-- [[conversation-starters]] — Context questions
-- [[naming-conventions]] — Project and code naming rules
-- [[getting-started]] — Onboarding guide
-
-### Diagrams & Visualizations
-- [[architecture-overview]] — Layer architecture Mermaid diagrams
-- [[dependency-graph]] — Dependency visualization
-- [[build-system]] — Build configuration and commands
-
-### Analysis
-- [[testing-overview]] — Test coverage status
-- [[testing/analysis]] — Testing framework and patterns
-- [[security-overview]] — Security risks and recommendations
-- [[security/analysis]] — Security extensions and best practices
-- [[analysis-state]] — Current analysis progress
-
-### Summaries
-- [[repository-overview]] — Full architecture overview
-- [[build-summary]] — Build system summary
-- [[session-summary]] — Memory generation session summary
-- [[indexes-summary]] — All indexes overview

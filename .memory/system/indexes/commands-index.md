@@ -16,3 +16,14 @@
 | Update | Update all entities | Update type |
 | Query | Query entities | Rule, Component types |
 | BatchCreate | Create multiple entities | Count, Components |
+
+## Related
+
+- [[queries-index]] — Query commands
+- [[events-index]] — Event commands
+- [[handlers-index]] — Command handlers
+- [[apis-index]] — Command APIs
+- [[Alis.Core.Ecs]] — ECS command docs
+- [[entity-component-system-ecs]] — ECS overview
+- [[architecture-index]] — Command pattern
+- [[indexes-summary]] — All indexes

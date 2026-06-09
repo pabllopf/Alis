@@ -20,3 +20,15 @@
 - AssetRegistry asset loading handlers
 - Network communication handlers (extensions)
 - Platform-specific event handlers
+
+## Related
+
+- [[events-index]] — Event system
+- [[commands-index]] — Command patterns
+- [[queries-index]] — Query system
+- [[services-index]] — Core services
+- [[apis-index]] — Public APIs
+- [[Alis.Core.Ecs]] — ECS handler docs
+- [[entity-component-system-ecs]] — ECS overview
+- [[System]] — System processing unit
+- [[indexes-summary]] — All indexes

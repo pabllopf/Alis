@@ -157,3 +157,12 @@ public bool IsValid => EntityID != 0 && EntityVersion == GetEntityVersion(Entity
 - [[GameObject]] - Full entity handle with world and version
 - [[FastestTable]] - High-performance lookup table
 - [[GameObjectLocation]] - Entity location data
+- [[GameObjectType]] - Archetype type
+- [[Scene]] - World container
+- [[entity-component-system-ecs]] — ECS overview
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[architecture-index]] — Patterns
+- [[events-index]] — Event system

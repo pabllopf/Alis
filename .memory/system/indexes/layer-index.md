@@ -35,3 +35,17 @@
 - **Projects**: 24 (6 aspects × 4 sub-projects)
 - **Dependencies**: References 5_Declaration
 - **Key Projects**: Memory, Fluent, Math, Time, Data, Logging (each with src/test/sample/Generator)
+
+## Related
+
+- [[project-index]] — All projects by layer
+- [[architecture-index]] — Architecture patterns
+- [[dependency-index]] — Dependency rules
+- [[domains-index]] — Bounded contexts
+- [[Layered Architecture]] — Layer structure concept
+- [[adr-001-layered-architecture]] — Layer architecture decision
+- [[adr-002-aggregator-pattern]] — Aggregator pattern
+- [[architecture/repository-overview]] — Architecture overview
+- [[architecture/dependency-graph]] — Layer dependencies
+- [[projects/Architecture]] — Project architecture
+- [[indexes-summary]] — All indexes

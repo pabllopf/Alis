@@ -27,3 +27,16 @@
 - Entity creation/destruction
 - Component access in update loop
 - Graphics draw calls
+
+## Related
+
+- [[Alis.Core.Ecs]] — ECS performance
+- [[Alis.Core.Aspect.Memory]] — Memory pooling
+- [[Alis.Core.Graphic]] — Rendering performance
+- [[Alis.Benchmark]] — Benchmarking app
+- [[architecture-index]] — Performance patterns
+- [[tests-index]] — Performance tests
+- [[project-index]] — Performance-critical projects
+- [[memory-management]] — Memory optimization
+- [[glossary/index]] — Performance-related terms
+- [[indexes-summary]] — All indexes

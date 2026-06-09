@@ -152,4 +152,14 @@ graph TD
 
 1. Enrich Application docs (Engine, Hub, Installer, Benchmark)
 2. Enrich Sample project docs
-3. Update dependency diagrams with all new extensions
+3. Update dependency diagrams
+
+## Related
+
+- [[architecture/dependency-graph]] — Dependency map with Mermaid
+- [[diagrams/dependency-graph]] — Visual dependency diagram
+- [[diagrams/architecture-overview]] — Architecture diagrams
+- [[layer-index]] — Layer dependency rules
+- [[project-index]] — All project dependencies
+- [[adr-001-layered-architecture]] — Layer rules decision
+- [[indexes-summary]] — All indexes with all new extensions

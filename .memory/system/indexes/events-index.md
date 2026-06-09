@@ -21,3 +21,15 @@
 
 - Memory management events (cache invalidation)
 - Network communication events (extension projects)
+
+## Related
+
+- [[handlers-index]] — Event handlers
+- [[commands-index]] — Command patterns
+- [[entity-component-system-ecs]] — ECS event flow
+- [[Event<T>]] — Generic event handler
+- [[ComponentEvent]] — Component lifecycle
+- [[GameObjectFlags]] — Event flag management
+- [[Alis.Core.Ecs]] — ECS event docs
+- [[architecture-index]] — Event architecture
+- [[indexes-summary]] — All indexes

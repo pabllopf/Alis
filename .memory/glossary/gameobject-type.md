@@ -140,3 +140,13 @@ public override int GetHashCode()
 - [[Archetype]] - Component type optimization
 - [[ComponentId]] - Component type identifier
 - [[GameObjectLocation]] - Entity location data
+- [[GameObject]] - Entity handle
+- [[Scene]] - World container
+- [[Component]] - Data-only struct
+- [[entity-component-system-ecs]] — ECS overview
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[architecture-index]] — Patterns
+- [[queries-index]] — Query system

@@ -113,3 +113,12 @@ Unlike GameObject, does not store:
 - [[GameObject]] - Full entity handle with world and version
 - [[FastestStack]] - Memory-efficient stack for recycled IDs
 - [[GameObjectLocation]] - Entity location with archetype index
+- [[GameObjectIdOnly]] - Similar ID-only wrapper
+- [[Scene]] - World container
+- [[entity-component-system-ecs]] — ECS overview
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[performance-index]] — Memory efficiency
+- [[architecture-index]] — Patterns

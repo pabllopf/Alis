@@ -129,3 +129,14 @@ public Ref<T> TryGetCore<T>(out bool exists)
 - [[Component Storage]] - Typed data storage
 - [[GameObject]] - Entity handle
 - [[Archetype]] - Component type optimization
+- [[Component]] - Data-only struct
+- [[Scene]] - World container
+- [[memory-management]] — Memory strategy
+- [[Span<T>]] — Memory slice
+- [[entity-component-system-ecs]] — ECS overview
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[performance-index]] — Zero-copy performance
+- [[architecture-index]] — Patterns

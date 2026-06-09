@@ -26,3 +26,17 @@ var query = scene.CreateQuery(Rule.AnyOf<Lightweight, FastMoving>());
 - O(1) query creation
 - O(n) query execution (n = matching entities)
 - Chunk-based iteration for cache efficiency
+
+## Related
+
+- [[commands-index]] — ECS commands
+- [[events-index]] — Event queries
+- [[handlers-index]] — Query handlers
+- [[apis-index]] — Query APIs
+- [[entity-component-system-ecs]] — ECS overview
+- [[Query]] — Query glossary
+- [[Rule]] — Rule glossary
+- [[Alis.Core.Ecs]] — ECS project docs
+- [[performance-index]] — Query performance
+- [[architecture-index]] — Query architecture
+- [[indexes-summary]] — All indexes

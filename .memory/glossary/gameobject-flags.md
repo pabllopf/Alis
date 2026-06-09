@@ -144,3 +144,13 @@ WorldEventFlags &= ~GameObjectFlags.AddComp;  // Clear AddComp
 - [[GameObject]] - Entity handle
 - [[Event<T>]] - Generic event handler
 - [[ComponentEvent]] - Component lifecycle events
+- [[Component]] - Data-only struct
+- [[Scene]] - World container
+- [[entity-component-system-ecs]] — ECS overview
+- [[GameObjectOnlyEvent]] — Entity-only event
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[events-index]] — Event system
+- [[architecture-index]] — Patterns

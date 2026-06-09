@@ -138,3 +138,13 @@ scene.EntityDeleted += (entity) =>
 - [[Event<T>]] - Generic event handler
 - [[GameObject]] - Entity handle
 - [[ComponentEvent]] - Component lifecycle events
+- [[GameObjectFlags]] - Entity state flags
+- [[Scene]] - World container
+- [[entity-component-system-ecs]] — ECS overview
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[events-index]] — Event system
+- [[handlers-index]] — Handler index
+- [[architecture-index]] — Patterns

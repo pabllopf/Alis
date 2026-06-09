@@ -29,3 +29,17 @@
 2. **Value Types**: Heavy use of structs for performance
 3. **Unsafe Code**: Direct memory manipulation for speed
 4. **Multi-targeting**: Support multiple .NET versions
+
+## Related
+
+- [[architecture/repository-overview]] — Full architecture overview
+- [[architecture/dependency-graph]] — Dependency rules
+- [[Layered Architecture]] — Layer structure
+- [[adr-001-layered-architecture]] — Architecture decision
+- [[adr-002-aggregator-pattern]] — Aggregator decision
+- [[projects/Architecture]] — Project-level architecture
+- [[Alis Architecture Overview]] — Concept overview
+- [[dependency-index]] — Dependency map
+- [[domains-index]] — Bounded contexts
+- [[layer-index]] — Layer breakdown
+- [[indexes-summary]] — All indexes

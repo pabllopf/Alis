@@ -144,3 +144,16 @@
 - **Test/Sample/Generator sub-projects**: 57 (included in layer counts above)
 - **Documented Extensions**: 19 out of 19 (100% — ALL COMPLETED)
 
+## Related
+
+- [[projects/Index]] — Project documentation index
+- [[projects/Architecture]] — Project architecture
+- [[layer-index]] — Layer breakdown
+- [[dependency-index]] — Dependency map
+- [[architecture-index]] — Architecture patterns
+- [[services-index]] — Service catalog
+- [[tests-index]] — Test project index
+- [[domains-index]] — Bounded contexts
+- [[analysis-state]] — Analysis progress
+- [[coverage-map]] — Coverage tracking
+

@@ -30,3 +30,14 @@
 2. Add automated CI/CD testing
 3. Implement property-based testing
 4. Add fuzzing tests for asset pack parsing
+
+## Related
+
+- [[testing-overview]] — Test coverage overview
+- [[testing/analysis]] — Testing patterns
+- [[code-review-checklist]] — Testing checklist
+- [[projects/Testing-Strategy]] — Testing strategy docs
+- [[coverage-map]] — Coverage tracking
+- [[project-index]] — Test projects listed
+- [[build-system]] — Test commands
+- [[onboarding/getting-started]] — Running tests guide

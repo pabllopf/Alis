@@ -27,3 +27,14 @@
 2. Implement SAST/DAST scanning
 3. Regular dependency updates
 4. Security documentation for developers
+
+## Related
+
+- [[security-overview]] — Security overview
+- [[security/analysis]] — Security analysis details
+- [[code-review-checklist]] — Security checklist
+- [[Alis.Extension.Security]] — Security extension
+- [[Alis.Extension.Payment.Stripe]] — Payment security
+- [[project-index]] — Security-relevant projects
+- [[build-system]] — Secure build config
+- [[indexes-summary]] — All indexes
