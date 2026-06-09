@@ -2,11 +2,11 @@
 
 | Field | Value |
 |---|---|
-| Current Batch | 4 |
+| Current Batch | 5 |
 | Total Batches Needed | 6 |
 | Projects Per Batch | 20 |
 | Execution Mode | incremental |
-| Last Checkpoint | Application + Samples enrichment completed |
+| Last Checkpoint | Mermaid diagrams + AI context files |
 
 ## Batch Progress
 
@@ -16,7 +16,7 @@
 | 2 | 8/8 | completed ✓ (Extensions Batch 1) |
 | 3 | 11/11 | completed ✓ (Extensions Batch 2 - Enrichment) |
 | 4 | 18/18 | completed ✓ (Applications + Samples enrichment) |
-| 5 | 0/- | pending — Mermaid diagrams + AI context files |
+| 5 | 5/5 | completed ✓ (Mermaid diagrams + AI context files) |
 | 6 | 0/- | pending — Final polish + index update |
 
 ## Related
