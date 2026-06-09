@@ -1,7 +1,8 @@
-# Prompt Engineering
+---
+title: Prompt Engineering
+tags: [prompt,ai,reference]
+---
 
-tags:
-  - prompt,ai,reference
 
 Diagrams illustrating prompt patterns and AI interaction flows.
 

@@ -1,7 +1,8 @@
-# Alis.Extension.Thread
+---
+title: Alis.Extension.Thread
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Parallel execution extension for ALIS ECS systems. Provides automatic work partitioning and efficient thread pool management for component update parallelization.

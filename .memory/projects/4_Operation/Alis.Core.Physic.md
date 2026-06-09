@@ -1,7 +1,8 @@
-# Alis.Core.Physic
+---
+title: Alis.Core.Physic
+tags: [operation,runtime,implementation,documentation]
+---
 
-tags:
-  - operation,runtime,implementation,documentation
 
 ## Overview
 2D physics simulation library for ALIS game engine. Provides rigid body dynamics, collision detection, constraints, and physics world management.

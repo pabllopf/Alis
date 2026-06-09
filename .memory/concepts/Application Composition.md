@@ -1,7 +1,8 @@
-# Application Composition
+---
+title: Application Composition
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Alis organizes applications and samples across multiple layers with clear separation of concerns.
 

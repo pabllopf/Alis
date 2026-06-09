@@ -1,7 +1,8 @@
-# Sample: RPG
+---
+title: Sample: RPG
+tags: [sample,game,example]
+---
 
-tags:
-  - sample,game,example
 
 ## Overview
 

@@ -1,7 +1,8 @@
-# Project Diagrams
+---
+title: Project Diagrams
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 Mermaid diagrams illustrating project structure and relationships.
 

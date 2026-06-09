@@ -1,7 +1,8 @@
-# Components
+---
+title: Components
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## IComponentBase
 

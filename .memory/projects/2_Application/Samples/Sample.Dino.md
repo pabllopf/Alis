@@ -1,7 +1,8 @@
-# Alis.Sample.Dino
+---
+title: Alis.Sample.Dino
+tags: [application,sample,documentation]
+---
 
-tags:
-  - application,sample,documentation
 
 ## Overview
 Chrome T-Rex Dino game clone built on the ALIS engine. Features a runner-style game with physics, basic scene setup, and audio. Demonstrates configuration with settings blocks and minimalist world construction.

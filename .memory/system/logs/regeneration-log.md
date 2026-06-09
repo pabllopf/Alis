@@ -1,7 +1,8 @@
-# Regeneration Log
+---
+title: Regeneration Log
+tags: [log,execution,history]
+---
 
-tags:
-  - log,execution,history
 
 | Timestamp | File | Action | Reason |
 |-----------|------|--------|--------|

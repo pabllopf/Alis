@@ -1,7 +1,8 @@
-# Fluent Interface
+---
+title: Fluent Interface
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Definition
 

@@ -1,7 +1,8 @@
-# Projects Index
+---
+title: Projects Index
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 ## Overview
 Complete index of all 140+ projects in the ALIS repository, organized by architectural layer.

@@ -1,7 +1,8 @@
-# Session History
+---
+title: Session History
+tags: [session,execution,history]
+---
 
-tags:
-  - session,execution,history
 
 | Session | Date | Focus | Projects Documented |
 |---------|------|-------|-------------------|

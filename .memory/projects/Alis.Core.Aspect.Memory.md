@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Memory
+---
+title: Alis.Core.Aspect.Memory
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 **Status**: ✅ Documented  
 **Type**: Asset Registry / ZIP Management  

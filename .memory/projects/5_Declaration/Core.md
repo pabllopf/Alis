@@ -1,7 +1,8 @@
-# 5_Declaration Layer Overview
+---
+title: 5_Declaration Layer Overview
+tags: [declaration,contract,interface,documentation]
+---
 
-tags:
-  - declaration,contract,interface,documentation
 
 ## Overview
 The Declaration layer (`5_Declaration`) contains the aspect system aggregator. Zero hand-written code — pure aggregator that consolidates all generated types from 6_Ideation and 4_Operation generators into a single assembly consumed by 3_Structuration.

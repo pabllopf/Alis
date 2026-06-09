@@ -1,7 +1,8 @@
-# Sample: Pac-Man
+---
+title: Sample: Pac-Man
+tags: [sample,game,example]
+---
 
-tags:
-  - sample,game,example
 
 ## Overview
 

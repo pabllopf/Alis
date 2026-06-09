@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Time
+---
+title: Alis.Core.Aspect.Time
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 **Status**: ✅ Documented  
 **Type**: Time Measurement / Stopwatch  

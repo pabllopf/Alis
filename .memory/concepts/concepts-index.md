@@ -1,7 +1,8 @@
-# Concepts Index
+---
+title: Concepts Index
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Comprehensive index of all architectural and design concepts used throughout the Alis solution.
 

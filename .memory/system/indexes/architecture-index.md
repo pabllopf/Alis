@@ -1,7 +1,8 @@
-# Architecture Index — ALIS
+---
+title: Architecture Index — ALIS
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 ## Architectural Patterns
 

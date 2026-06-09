@@ -1,7 +1,8 @@
-# Domains Index — ALIS
+---
+title: Domains Index — ALIS
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 ## Bounded Contexts
 

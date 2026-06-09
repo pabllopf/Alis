@@ -1,7 +1,8 @@
-# Code Review Checklist — ALIS
+---
+title: Code Review Checklist — ALIS
+tags: [prompt,ai,reference]
+---
 
-tags:
-  - prompt,ai,reference
 
 ## Architecture Compliance
 - [ ] Project is in the correct architectural layer

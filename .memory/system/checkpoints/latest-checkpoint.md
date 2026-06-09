@@ -1,7 +1,8 @@
-# Latest Checkpoint
+---
+title: Latest Checkpoint
+tags: [checkpoint,validation,tracking]
+---
 
-tags:
-  - checkpoint,validation,tracking
 
 Current execution checkpoint for resumable memory generation.
 

@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Time
+---
+title: Alis.Core.Aspect.Time
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## Overview
 

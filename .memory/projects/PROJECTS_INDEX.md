@@ -1,7 +1,8 @@
-# Alis Projects Documentation Index
+---
+title: Alis Projects Documentation Index
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 ## Documentation Status
 

@@ -1,7 +1,8 @@
-# Build System — ALIS
+---
+title: Build System — ALIS
+tags: [architecture,design,pattern]
+---
 
-tags:
-  - architecture,design,pattern
 
 ## SDK Requirements
 

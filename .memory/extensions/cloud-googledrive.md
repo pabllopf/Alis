@@ -1,7 +1,8 @@
-# Extension: Cloud.GoogleDrive
+---
+title: Extension: Cloud.GoogleDrive
+tags: [on]
+---
 
-tags:
-  - extension,plugin,add-on
 
 ## Overview
 

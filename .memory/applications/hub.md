@@ -1,7 +1,8 @@
-# Application: Alis.App.Hub
+---
+title: Application: Alis.App.Hub
+tags: [application,software,tool]
+---
 
-tags:
-  - application,software,tool
 
 ## Overview
 

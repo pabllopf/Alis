@@ -1,7 +1,8 @@
-# Memory System Update - Final Summary
+---
+title: Memory System Update - Final Summary
+tags: [documentation,reference]
+---
 
-tags:
-  - documentation,reference
 
 This document provides a complete summary of the memory system update for the Alis solution.
 

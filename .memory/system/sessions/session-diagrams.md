@@ -1,7 +1,8 @@
-# Session Tracking
+---
+title: Session Tracking
+tags: [session,execution,history]
+---
 
-tags:
-  - session,execution,history
 
 Diagrams illustrating session management and history.
 

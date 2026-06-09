@@ -1,7 +1,8 @@
-# Architecture Checkpoint
+---
+title: Architecture Checkpoint
+tags: [checkpoint,validation,tracking]
+---
 
-tags:
-  - checkpoint,validation,tracking
 
 ## Status
 - **Layer architecture**: Documented and stable

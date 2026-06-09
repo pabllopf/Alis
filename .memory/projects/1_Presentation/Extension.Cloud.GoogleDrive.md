@@ -1,7 +1,8 @@
-# Alis.Extension.Cloud.GoogleDrive
+---
+title: Alis.Extension.Cloud.GoogleDrive
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Extension module for Cloud.GoogleDrive functionality in ALIS.

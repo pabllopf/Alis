@@ -1,7 +1,8 @@
-# Alis.Extension.Ads.GoogleAds.Sample
+---
+title: Alis.Extension.Ads.GoogleAds.Sample
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Auto-generated documentation for Alis.Extension.Ads.GoogleAds.Sample.

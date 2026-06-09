@@ -1,7 +1,8 @@
-# Testing Checkpoint
+---
+title: Testing Checkpoint
+tags: [checkpoint,validation,tracking]
+---
 
-tags:
-  - checkpoint,validation,tracking
 
 ## Status
 - **Test framework**: xUnit + Moq + Xunit.StaFact

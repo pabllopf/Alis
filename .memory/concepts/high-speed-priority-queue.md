@@ -1,7 +1,8 @@
-# High-Speed Priority Queue
+---
+title: High-Speed Priority Queue
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 High-speed priority queues provide O(log n) operations with minimal memory allocation, optimized for ECS scheduling and real-time systems.
 

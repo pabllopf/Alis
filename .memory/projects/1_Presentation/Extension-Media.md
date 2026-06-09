@@ -1,7 +1,8 @@
-# Media Extensions
+---
+title: Media Extensions
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Alis.Extension.Media.FFmpeg
 - **Path**: `1_Presentation/Extension/Media/FFmpeg/src/`

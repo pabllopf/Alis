@@ -1,7 +1,8 @@
-# Alis.Core.Network
+---
+title: Alis.Core.Network
+tags: [ideation,aspect,library,documentation]
+---
 
-tags:
-  - ideation,aspect,library,documentation
 
 ## Overview
 Networked game functionality for the ALIS engine. Provides multiplayer support, network synchronization, and client-server communication.

@@ -1,7 +1,8 @@
-# Memory Generation Status
+---
+title: Memory Generation Status
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 ## Overview
 Complete status of the ALIS memory system generation and documentation.

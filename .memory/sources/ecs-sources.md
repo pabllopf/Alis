@@ -1,7 +1,8 @@
-# ECS Sources
+---
+title: ECS Sources
+tags: [source,reference,documentation]
+---
 
-tags:
-  - source,reference,documentation
 
 Entity Component System runtime and source generator in `4_Operation/Ecs/`.
 

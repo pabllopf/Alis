@@ -1,7 +1,8 @@
-# Completed Work Queue
+---
+title: Completed Work Queue
+tags: [queue,work,tracking]
+---
 
-tags:
-  - queue,work,tracking
 
 Tracking of successfully completed documentation tasks.
 

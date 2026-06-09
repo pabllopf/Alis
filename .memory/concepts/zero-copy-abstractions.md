@@ -1,7 +1,8 @@
-# Zero-Copy Abstractions
+---
+title: Zero-Copy Abstractions
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Zero-copy abstractions provide data access without creating new allocations, enabling high-performance operations with minimal garbage collection pressure.
 

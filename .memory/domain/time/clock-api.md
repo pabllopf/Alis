@@ -1,7 +1,8 @@
-# Clock API Reference
+---
+title: Clock API Reference
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## Class
 

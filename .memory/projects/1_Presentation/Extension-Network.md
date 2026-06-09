@@ -1,7 +1,8 @@
-# Network Extensions
+---
+title: Network Extensions
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Alis.Extension.Network.Client
 - **Path**: `1_Presentation/Extension/Network/Client/src/`

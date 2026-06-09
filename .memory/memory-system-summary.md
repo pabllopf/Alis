@@ -1,7 +1,8 @@
-# Memory System Summary
+---
+title: Memory System Summary
+tags: [documentation,reference]
+---
 
-tags:
-  - documentation,reference
 
 ## Overview
 

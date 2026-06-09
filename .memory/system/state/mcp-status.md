@@ -1,7 +1,8 @@
-# MCP Status
+---
+title: MCP Status
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 External MCP provider integration status for enhanced repository understanding.
 

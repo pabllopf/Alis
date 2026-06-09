@@ -1,7 +1,8 @@
-# Alis.Sample.Space.Simulator
+---
+title: Alis.Sample.Space.Simulator
+tags: [application,sample,documentation]
+---
 
-tags:
-  - application,sample,documentation
 
 ## Overview
 Space simulation game built on the ALIS engine. Provides a physics-based foundation for space/sandbox gameplay with basic scene setup and audio placeholder.

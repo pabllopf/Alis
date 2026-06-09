@@ -1,7 +1,8 @@
-# Alis.Extension.Math.HighSpeedPriorityQueue
+---
+title: Alis.Extension.Math.HighSpeedPriorityQueue
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 

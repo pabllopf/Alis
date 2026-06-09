@@ -1,7 +1,8 @@
-# Queue Management
+---
+title: Queue Management
+tags: [queue,work,tracking]
+---
 
-tags:
-  - queue,work,tracking
 
 Comprehensive queue management documentation for tracking pending and completed work.
 

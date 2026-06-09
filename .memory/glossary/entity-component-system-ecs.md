@@ -1,7 +1,8 @@
-# Entity Component System (ECS)
+---
+title: Entity Component System (ECS)
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Definition
 

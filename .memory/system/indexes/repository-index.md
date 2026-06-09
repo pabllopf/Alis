@@ -1,7 +1,8 @@
-# Repository Index
+---
+title: Repository Index
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 Comprehensive index of all repository documentation and memory artifacts.
 

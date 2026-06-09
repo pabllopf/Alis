@@ -1,7 +1,8 @@
-# Component Storage
+---
+title: Component Storage
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Definition
 

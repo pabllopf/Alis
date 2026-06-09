@@ -1,7 +1,8 @@
-# GameObjectEnumerator
+---
+title: GameObjectEnumerator
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Definition
 

@@ -1,7 +1,8 @@
-# GameObjectOnlyEvent
+---
+title: GameObjectOnlyEvent
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Definition
 

@@ -1,7 +1,8 @@
-# Documentation Map
+---
+title: Documentation Map
+tags: [tracking,monitoring,analysis]
+---
 
-tags:
-  - tracking,monitoring,analysis
 
 Comprehensive tracking of all generated documentation across the repository.
 

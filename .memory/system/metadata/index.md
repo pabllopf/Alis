@@ -1,7 +1,8 @@
-# System Metadata
+---
+title: System Metadata
+tags: [metadata,system,configuration]
+---
 
-tags:
-  - metadata,system,configuration
 
 ## Purpose
 This directory stores metadata about the .memory/ system itself, including schema definitions, conventions, and system-level configuration.

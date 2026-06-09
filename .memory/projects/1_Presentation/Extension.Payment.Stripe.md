@@ -1,7 +1,8 @@
-# Alis.Extension.Payment.Stripe
+---
+title: Alis.Extension.Payment.Stripe
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Extension module for Payment.Stripe functionality in ALIS.

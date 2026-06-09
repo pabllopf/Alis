@@ -1,7 +1,8 @@
-# Words
+---
+title: Words
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## Overview
 

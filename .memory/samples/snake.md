@@ -1,7 +1,8 @@
-# Sample: Snake
+---
+title: Sample: Snake
+tags: [sample,game,example]
+---
 
-tags:
-  - sample,game,example
 
 ## Overview
 

@@ -1,7 +1,8 @@
-# Alis
+---
+title: Alis
+tags: [application,sample,documentation]
+---
 
-tags:
-  - application,sample,documentation
 
 ## Overview
 Core application framework for the ALIS cross-platform game engine.

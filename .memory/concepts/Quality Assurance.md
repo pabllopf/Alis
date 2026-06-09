@@ -1,7 +1,8 @@
-# Quality Assurance
+---
+title: Quality Assurance
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Alis implements comprehensive quality assurance through static analysis, code coverage, and automated testing.
 

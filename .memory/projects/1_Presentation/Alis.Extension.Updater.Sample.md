@@ -1,7 +1,8 @@
-# Alis.Extension.Updater.Sample
+---
+title: Alis.Extension.Updater.Sample
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Auto-generated documentation for Alis.Extension.Updater.Sample.

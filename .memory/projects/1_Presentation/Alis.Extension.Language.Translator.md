@@ -1,7 +1,8 @@
-# Alis.Extension.Language.Translator
+---
+title: Alis.Extension.Language.Translator
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Multi-language translation system for ALIS applications. Provides text localization with caching, pluralization, and fallback language support.

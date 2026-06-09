@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Memory
+---
+title: Alis.Core.Aspect.Memory
+tags: [ideation,aspect,library,documentation]
+---
 
-tags:
-  - ideation,aspect,library,documentation
 
 ## Overview
 

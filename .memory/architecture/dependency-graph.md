@@ -1,7 +1,8 @@
-# ALIS Dependency Graph
+---
+title: ALIS Dependency Graph
+tags: [architecture,design,pattern]
+---
 
-tags:
-  - architecture,design,pattern
 
 ## Layer Dependencies (Mermaid)
 

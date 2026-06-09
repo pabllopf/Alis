@@ -1,7 +1,8 @@
-# Regeneration State
+---
+title: Regeneration State
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 ## Changed Since Last Regeneration
 

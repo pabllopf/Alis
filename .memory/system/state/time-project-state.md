@@ -1,7 +1,8 @@
-# Time Aspect Project State
+---
+title: Time Aspect Project State
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 ## Analysis Status
 

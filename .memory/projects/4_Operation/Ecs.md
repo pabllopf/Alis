@@ -1,7 +1,8 @@
-# ECS Project Documentation
+---
+title: ECS Project Documentation
+tags: [operation,runtime,implementation,documentation]
+---
 
-tags:
-  - operation,runtime,implementation,documentation
 
 ## Alis.Core.Ecs - Entity Component System
 

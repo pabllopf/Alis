@@ -1,7 +1,8 @@
-# Generated Code Sources
+---
+title: Generated Code Sources
+tags: [source,reference,documentation]
+---
 
-tags:
-  - source,reference,documentation
 
 Source-generated code produced at compile time by Roslyn source generators.
 

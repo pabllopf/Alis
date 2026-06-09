@@ -1,7 +1,8 @@
-# Cross-Link Validation Summary
+---
+title: Cross-Link Validation Summary
+tags: [documentation,reference]
+---
 
-tags:
-  - documentation,reference
 
 **Date**: June 9, 2026  
 **Status**: ✅ **COMPLETED**  

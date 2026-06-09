@@ -1,7 +1,8 @@
-# ALIS Project Index
+---
+title: ALIS Project Index
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 ## Overview
 Comprehensive documentation for the ALIS project — a game engine and development platform built with C# and .NET.

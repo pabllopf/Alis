@@ -1,7 +1,8 @@
-# Project: Alis.Core.Aspect (Declaration)
+---
+title: Project: Alis.Core.Aspect (Declaration)
+tags: [declaration,contract,interface,documentation]
+---
 
-tags:
-  - declaration,contract,interface,documentation
 
 ## Overview
 

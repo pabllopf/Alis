@@ -1,7 +1,8 @@
-# Extension: Media.FFmpeg
+---
+title: Extension: Media.FFmpeg
+tags: [on]
+---
 
-tags:
-  - extension,plugin,add-on
 
 ## Overview
 

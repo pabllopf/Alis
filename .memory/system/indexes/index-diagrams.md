@@ -1,7 +1,8 @@
-# Index Management
+---
+title: Index Management
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 Diagrams illustrating repository indexing and navigation.
 

@@ -1,7 +1,8 @@
-# Conversation Starters — ALIS
+---
+title: Conversation Starters — ALIS
+tags: [prompt,ai,reference]
+---
 
-tags:
-  - prompt,ai,reference
 
 ## For New AI Sessions
 When starting work on ALIS, consider these context questions:

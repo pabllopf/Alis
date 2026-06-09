@@ -1,7 +1,8 @@
-# Game Samples
+---
+title: Game Samples
+tags: [sample,game,example]
+---
 
-tags:
-  - sample,game,example
 
 ## Overview
 

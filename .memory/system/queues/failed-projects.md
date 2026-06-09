@@ -1,7 +1,8 @@
-# Failed Projects
+---
+title: Failed Projects
+tags: [queue,work,tracking]
+---
 
-tags:
-  - queue,work,tracking
 
 | Project | Error | Timestamp | Retries |
 |---------|-------|-----------|---------|

@@ -1,7 +1,8 @@
-# Pending Work Queue
+---
+title: Pending Work Queue
+tags: [queue,work,tracking]
+---
 
-tags:
-  - queue,work,tracking
 
 ## High Priority (Core Engine - 4_Operation)
 

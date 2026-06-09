@@ -1,7 +1,8 @@
-# Project State
+---
+title: Project State
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 | Total Projects | Documented | Pending | Failed | Status | Coverage |
 |---|---|---|---|---|---|

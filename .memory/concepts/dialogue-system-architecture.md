@@ -1,7 +1,8 @@
-# Dialogue System Architecture
+---
+title: Dialogue System Architecture
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Dialogue systems provide scripted narrative with branching paths, localization support, and player choice integration for games and interactive applications.
 

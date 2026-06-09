@@ -1,7 +1,8 @@
-# Benchmark Comparison Map
+---
+title: Benchmark Comparison Map
+tags: [diagram,visualization,mermaid]
+---
 
-tags:
-  - diagram,visualization,mermaid
 
 ## ECS Frameworks Compared
 

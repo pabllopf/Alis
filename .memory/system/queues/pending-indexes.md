@@ -1,7 +1,8 @@
-# Pending Indexes
+---
+title: Pending Indexes
+tags: [queue,work,tracking]
+---
 
-tags:
-  - queue,work,tracking
 
 | Index | Status | Last Updated |
 |-------|--------|-------------|

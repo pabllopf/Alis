@@ -1,7 +1,8 @@
-# Completed Work
+---
+title: Completed Work
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 ## Session Summary
 

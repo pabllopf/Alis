@@ -1,7 +1,8 @@
-# Multi-Targeting Strategy
+---
+title: Multi-Targeting Strategy
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Multi-targeting enables compiling once and deploying everywhere, supporting .NET 2.0 through .NET 10, .NET Framework 4.61-4.81, and WebAssembly.
 

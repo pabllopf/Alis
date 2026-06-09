@@ -1,7 +1,8 @@
-# Sample: Breakout
+---
+title: Sample: Breakout
+tags: [sample,game,example]
+---
 
-tags:
-  - sample,game,example
 
 ## Overview
 

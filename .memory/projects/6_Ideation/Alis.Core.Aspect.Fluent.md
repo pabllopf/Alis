@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Fluent
+---
+title: Alis.Core.Aspect.Fluent
+tags: [ideation,aspect,library,documentation]
+---
 
-tags:
-  - ideation,aspect,library,documentation
 
 ## Overview
 

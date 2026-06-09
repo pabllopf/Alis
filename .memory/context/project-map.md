@@ -1,7 +1,8 @@
-# Project Map
+---
+title: Project Map
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 ## Quick Reference
 

@@ -1,7 +1,8 @@
-# Alis.Extension.Network.Sample.SimpleGame.Server
+---
+title: Alis.Extension.Network.Sample.SimpleGame.Server
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Auto-generated documentation for Alis.Extension.Network.Sample.SimpleGame.Server.

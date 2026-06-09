@@ -1,7 +1,8 @@
-# Regeneration Queue
+---
+title: Regeneration Queue
+tags: [tracking,monitoring,analysis]
+---
 
-tags:
-  - tracking,monitoring,analysis
 
 ## Pending Regeneration
 

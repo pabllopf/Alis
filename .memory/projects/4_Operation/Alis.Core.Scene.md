@@ -1,7 +1,8 @@
-# Alis.Core.Scene
+---
+title: Alis.Core.Scene
+tags: [operation,runtime,implementation,documentation]
+---
 
-tags:
-  - operation,runtime,implementation,documentation
 
 ## Overview
 Scene management system for the ALIS engine. Handles scene loading, unloading, transitions, and scene graph management.

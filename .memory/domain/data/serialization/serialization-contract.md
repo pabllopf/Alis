@@ -1,7 +1,8 @@
-# Serialization
+---
+title: Serialization
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## IJsonSerializable
 

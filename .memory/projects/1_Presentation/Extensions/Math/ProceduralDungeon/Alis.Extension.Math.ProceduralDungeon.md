@@ -1,7 +1,8 @@
-# Alis.Extension.Math.ProceduralDungeon
+---
+title: Alis.Extension.Math.ProceduralDungeon
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 

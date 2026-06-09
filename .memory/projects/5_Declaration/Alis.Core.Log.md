@@ -1,7 +1,8 @@
-# Alis.Core.Log
+---
+title: Alis.Core.Log
+tags: [declaration,contract,interface,documentation]
+---
 
-tags:
-  - declaration,contract,interface,documentation
 
 > **Note**: This project is located in **6_Ideation**, not 5_Declaration. See [[projects/6_Ideation/Alis.Core.Aspect.Logging]] for the correct documentation.
 

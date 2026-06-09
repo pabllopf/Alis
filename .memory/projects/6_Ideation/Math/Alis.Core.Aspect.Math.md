@@ -1,7 +1,8 @@
-# Math Aspect Documentation
+---
+title: Math Aspect Documentation
+tags: [ideation,aspect,library,documentation]
+---
 
-tags:
-  - ideation,aspect,library,documentation
 
 ## Alis.Core.Aspect.Math - Mathematical Operations
 

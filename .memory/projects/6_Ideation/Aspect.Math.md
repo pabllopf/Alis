@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Math
+---
+title: Alis.Core.Aspect.Math
+tags: [ideation,aspect,library,documentation]
+---
 
-tags:
-  - ideation,aspect,library,documentation
 
 ## Overview
 High-level Math aspect definition with source generator. Provides Math-oriented programming capabilities.

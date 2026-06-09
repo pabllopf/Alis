@@ -1,7 +1,8 @@
-# AssetRegistry API Reference
+---
+title: AssetRegistry API Reference
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## Class
 

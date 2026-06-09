@@ -1,7 +1,8 @@
-# Naming Conventions
+---
+title: Naming Conventions
+tags: [convention,standard,naming]
+---
 
-tags:
-  - convention,standard,naming
 
 Diagrams illustrating naming patterns and coding standards.
 

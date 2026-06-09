@@ -1,7 +1,8 @@
-# Manual Edits
+---
+title: Manual Edits
+tags: [tracking,monitoring,analysis]
+---
 
-tags:
-  - tracking,monitoring,analysis
 
 ## Protected Sections
 

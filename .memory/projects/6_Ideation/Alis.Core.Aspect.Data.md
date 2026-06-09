@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Data
+---
+title: Alis.Core.Aspect.Data
+tags: [ideation,aspect,library,documentation]
+---
 
-tags:
-  - ideation,aspect,library,documentation
 
 ## Overview
 

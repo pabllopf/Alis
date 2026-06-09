@@ -1,7 +1,8 @@
-# Alis.Core.Serialization
+---
+title: Alis.Core.Serialization
+tags: [operation,runtime,implementation,documentation]
+---
 
-tags:
-  - operation,runtime,implementation,documentation
 
 ## Overview
 Data serialization system for the ALIS engine. Handles saving/loading game data, configuration files, and persistent storage.

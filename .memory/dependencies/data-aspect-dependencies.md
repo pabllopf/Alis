@@ -1,7 +1,8 @@
-# Dependencies
+---
+title: Dependencies
+tags: [documentation,reference]
+---
 
-tags:
-  - documentation,reference
 
 ## Project Dependencies
 

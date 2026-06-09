@@ -1,7 +1,8 @@
-# Execution Checkpoints
+---
+title: Execution Checkpoints
+tags: [session,execution,history]
+---
 
-tags:
-  - session,execution,history
 
 | Checkpoint | Timestamp | Scope | Status |
 |------------|-----------|-------|--------|

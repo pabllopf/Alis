@@ -1,7 +1,8 @@
-# Layered Architecture
+---
+title: Layered Architecture
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Alis uses a 6-layer numbered directory structure that progresses from concrete to abstract, following dependency inversion principles.
 

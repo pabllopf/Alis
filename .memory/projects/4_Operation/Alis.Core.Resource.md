@@ -1,7 +1,8 @@
-# Alis.Core.Resource
+---
+title: Alis.Core.Resource
+tags: [operation,runtime,implementation,documentation]
+---
 
-tags:
-  - operation,runtime,implementation,documentation
 
 ## Overview
 Resource loading and management system for the ALIS engine. Handles asset loading, caching, and lifecycle management.

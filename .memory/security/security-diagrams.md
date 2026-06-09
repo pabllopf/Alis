@@ -1,7 +1,8 @@
-# Security Architecture
+---
+title: Security Architecture
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 Security diagrams and patterns for the Alis solution.
 

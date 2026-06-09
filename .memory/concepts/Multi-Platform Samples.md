@@ -1,7 +1,8 @@
-# Multi-Platform Samples
+---
+title: Multi-Platform Samples
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Alis includes 12+ sample games, each targeting multiple platforms demonstrating cross-platform capabilities.
 

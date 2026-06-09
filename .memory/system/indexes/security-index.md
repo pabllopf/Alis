@@ -1,7 +1,8 @@
-# Security Index — ALIS
+---
+title: Security Index — ALIS
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 ## Security-Sensitive Areas
 

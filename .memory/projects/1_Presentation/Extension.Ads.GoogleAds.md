@@ -1,7 +1,8 @@
-# Alis.Extension.Ads.GoogleAds
+---
+title: Alis.Extension.Ads.GoogleAds
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Extension module for Ads.GoogleAds functionality in ALIS.

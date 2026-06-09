@@ -1,7 +1,8 @@
-# Sample: Tetris
+---
+title: Sample: Tetris
+tags: [sample,game,example]
+---
 
-tags:
-  - sample,game,example
 
 ## Overview
 

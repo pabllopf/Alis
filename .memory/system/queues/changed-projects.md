@@ -1,7 +1,8 @@
-# Changed Projects
+---
+title: Changed Projects
+tags: [queue,work,tracking]
+---
 
-tags:
-  - queue,work,tracking
 
 ## Recently Changed
 

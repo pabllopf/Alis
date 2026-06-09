@@ -1,7 +1,8 @@
-# Tests Index — ALIS
+---
+title: Tests Index — ALIS
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 ## Test Framework
 

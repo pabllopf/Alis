@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Memory
+---
+title: Alis.Core.Aspect.Memory
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## Overview
 

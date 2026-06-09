@@ -1,7 +1,8 @@
-# JsonNativeAot - Static Facade
+---
+title: JsonNativeAot - Static Facade
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## Overview
 

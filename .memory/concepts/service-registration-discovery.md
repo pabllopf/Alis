@@ -1,7 +1,8 @@
-# Service Registration & Discovery
+---
+title: Service Registration & Discovery
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Service registration and discovery provide compile-time service registry via source generators, enabling type-safe dependency injection without runtime reflection.
 

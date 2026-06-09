@@ -1,7 +1,8 @@
-# Resource Management Patterns
+---
+title: Resource Management Patterns
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Resource management patterns provide safe, efficient handling of external resources (files, network, GPU) with automatic cleanup and caching.
 

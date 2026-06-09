@@ -1,7 +1,8 @@
-# Architecture
+---
+title: Architecture
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## Design Patterns
 

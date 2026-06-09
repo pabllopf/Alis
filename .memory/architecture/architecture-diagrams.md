@@ -1,7 +1,8 @@
-# Architecture Diagrams
+---
+title: Architecture Diagrams
+tags: [architecture,design,pattern]
+---
 
-tags:
-  - architecture,design,pattern
 
 Mermaid diagrams illustrating the Alis solution architecture.
 

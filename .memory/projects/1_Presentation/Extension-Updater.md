@@ -1,7 +1,8 @@
-# Updater Extension
+---
+title: Updater Extension
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Alis.Extension.Updater
 - **Path**: `1_Presentation/Extension/Updater/src/`

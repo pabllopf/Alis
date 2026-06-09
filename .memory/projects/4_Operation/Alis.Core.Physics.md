@@ -1,7 +1,8 @@
-# Alis.Core.Physics
+---
+title: Alis.Core.Physics
+tags: [operation,runtime,implementation,documentation]
+---
 
-tags:
-  - operation,runtime,implementation,documentation
 
 ## Overview
 Physics simulation engine for the ALIS engine. Provides rigid body physics, collision detection, and physics-based animations.

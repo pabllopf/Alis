@@ -1,7 +1,8 @@
-# Extensions Index
+---
+title: Extensions Index
+tags: [on]
+---
 
-tags:
-  - extension,plugin,add-on
 
 ## Overview
 

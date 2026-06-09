@@ -1,7 +1,8 @@
-# Checkpoint Management
+---
+title: Checkpoint Management
+tags: [checkpoint,validation,tracking]
+---
 
-tags:
-  - checkpoint,validation,tracking
 
 Diagrams illustrating checkpoint tracking and restoration.
 

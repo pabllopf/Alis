@@ -1,7 +1,8 @@
-# Events Index — ALIS
+---
+title: Events Index — ALIS
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 ## ECS Events
 

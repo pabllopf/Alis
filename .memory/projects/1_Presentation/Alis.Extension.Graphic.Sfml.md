@@ -1,7 +1,8 @@
-# Alis.Extension.Graphic.Sfml
+---
+title: Alis.Extension.Graphic.Sfml
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Simple and Fast Multimedia Library (SFML) bindings for C#.

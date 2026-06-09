@@ -1,7 +1,8 @@
-# Repository Structure
+---
+title: Repository Structure
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Alis uses a well-organized directory structure with 6 main layers and supporting directories.
 

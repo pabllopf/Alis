@@ -1,7 +1,8 @@
-# Pending Work Queue
+---
+title: Pending Work Queue
+tags: [queue,work,tracking]
+---
 
-tags:
-  - queue,work,tracking
 
 Tracking of incomplete and pending documentation tasks.
 

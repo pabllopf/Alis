@@ -1,7 +1,8 @@
-# Developer Onboarding
+---
+title: Developer Onboarding
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Quick reference for new developers joining the Alis project.
 

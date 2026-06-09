@@ -1,7 +1,8 @@
-# Log
+---
+title: Log
+tags: [documentation,reference]
+---
 
-tags:
-  - documentation,reference
 
 ## Activity Log
 

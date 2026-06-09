@@ -1,7 +1,8 @@
-# Alis.Extension.Math.ProceduralDungeon.Test
+---
+title: Alis.Extension.Math.ProceduralDungeon.Test
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Auto-generated documentation for Alis.Extension.Math.ProceduralDungeon.Test.

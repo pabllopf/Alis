@@ -1,7 +1,8 @@
-# Scene
+---
+title: Scene
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Definition
 

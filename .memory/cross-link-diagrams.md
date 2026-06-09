@@ -1,7 +1,8 @@
-# Cross-Link Diagrams
+---
+title: Cross-Link Diagrams
+tags: [documentation,reference]
+---
 
-tags:
-  - documentation,reference
 
 ## Memory System Architecture
 

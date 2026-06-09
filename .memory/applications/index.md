@@ -1,7 +1,8 @@
-# Applications Index
+---
+title: Applications Index
+tags: [application,software,tool]
+---
 
-tags:
-  - application,software,tool
 
 ## Overview
 

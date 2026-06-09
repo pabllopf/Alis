@@ -1,7 +1,8 @@
-# Solution Files Strategy
+---
+title: Solution Files Strategy
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Alis uses 8 modular `.slnx` solution files for different build targets, enabling focused compilation and faster development cycles.
 

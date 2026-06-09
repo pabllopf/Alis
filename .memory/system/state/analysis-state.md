@@ -1,7 +1,8 @@
-# Analysis State
+---
+title: Analysis State
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 | Field | Value |
 |---|---|

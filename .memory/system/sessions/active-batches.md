@@ -1,7 +1,8 @@
-# Active Batches
+---
+title: Active Batches
+tags: [session,execution,history]
+---
 
-tags:
-  - session,execution,history
 
 | Batch | Focus | Status | Projects |
 |-------|-------|--------|----------|

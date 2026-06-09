@@ -1,7 +1,8 @@
-# Session Management
+---
+title: Session Management
+tags: [session,execution,history]
+---
 
-tags:
-  - session,execution,history
 
 Comprehensive session tracking and history documentation.
 

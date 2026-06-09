@@ -1,7 +1,8 @@
-# Source Generator Sources
+---
+title: Source Generator Sources
+tags: [source,reference,documentation]
+---
 
-tags:
-  - source,reference,documentation
 
 AOT-safe source generators for compile-time code generation.
 

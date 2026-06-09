@@ -1,7 +1,8 @@
-# Alis.Core.Ecs
+---
+title: Alis.Core.Ecs
+tags: [operation,runtime,implementation,documentation]
+---
 
-tags:
-  - operation,runtime,implementation,documentation
 
 ## Overview
 Entity Component System (ECS) library for ALIS game engine. Provides high-performance ECS architecture with structurally-oriented design.

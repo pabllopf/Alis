@@ -1,7 +1,8 @@
-# Diagrams
+---
+title: Diagrams
+tags: [diagram,visualization,mermaid]
+---
 
-tags:
-  - diagram,visualization,mermaid
 
 Visual documentation of the ALIS engine architecture using Mermaid diagrams.
 

@@ -1,7 +1,8 @@
-# Alis.Test
+---
+title: Alis.Test
+tags: [application,sample,documentation]
+---
 
-tags:
-  - application,sample,documentation
 
 ## Overview
 Unit tests for the core Alis application library.

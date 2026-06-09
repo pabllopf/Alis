@@ -1,7 +1,8 @@
-# Alis.Extension.Language.Dialogue.Sample
+---
+title: Alis.Extension.Language.Dialogue.Sample
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Auto-generated documentation for Alis.Extension.Language.Dialogue.Sample.

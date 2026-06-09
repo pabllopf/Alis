@@ -1,7 +1,8 @@
-# Alis.Extension.Security.Sample
+---
+title: Alis.Extension.Security.Sample
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Auto-generated documentation for Alis.Extension.Security.Sample.

@@ -1,7 +1,8 @@
-# Alis.Extension.Network
+---
+title: Alis.Extension.Network
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 

@@ -1,7 +1,8 @@
-# Documentation Status
+---
+title: Documentation Status
+tags: [tracking,monitoring,analysis]
+---
 
-tags:
-  - tracking,monitoring,analysis
 
 | Document | Status | Quality | Last Updated |
 |---|---|---|---|---|

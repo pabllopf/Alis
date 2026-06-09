@@ -1,7 +1,8 @@
-# Repository Overview
+---
+title: Repository Overview
+tags: [summary,overview,documentation]
+---
 
-tags:
-  - summary,overview,documentation
 
 Comprehensive overview of the Alis solution architecture and structure.
 

@@ -1,7 +1,8 @@
-# Cross-Platform Abstraction Layer
+---
+title: Cross-Platform Abstraction Layer
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Cross-platform abstraction provides platform-agnostic APIs with native implementations for Windows, Linux, macOS, and Web platforms.
 

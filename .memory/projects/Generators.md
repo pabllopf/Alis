@@ -1,7 +1,8 @@
-# Generator Projects
+---
+title: Generator Projects
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 ## Overview
 5 Roslyn code generation / analysis projects across 2 layers. Each generator ships as an `Analyzer` dependency (`PrivateAssets=all`, `ReferenceOutputAssembly=false`) consumed by the Alis.Core.Aspect aggregator. Shared build template: `.config/default/default_generator_csproj.props`.

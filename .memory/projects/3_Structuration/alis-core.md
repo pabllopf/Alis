@@ -1,7 +1,8 @@
-# Project: Alis.Core (Structuration)
+---
+title: Project: Alis.Core (Structuration)
+tags: [structuration,core,abstraction,documentation]
+---
 
-tags:
-  - structuration,core,abstraction,documentation
 
 ## Overview
 

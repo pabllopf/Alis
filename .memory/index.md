@@ -1,7 +1,8 @@
-# ALIS Memory Index
+---
+title: ALIS Memory Index
+tags: [documentation,reference]
+---
 
-tags:
-  - documentation,reference
 
 > **Version**: 1.1.0 | **Author**: Pablo Perdomo Falcón | **License**: GPLv3  
 > **Repository**: https://github.com/pabllopf/Alis | **Website**: www.alisengine.com  

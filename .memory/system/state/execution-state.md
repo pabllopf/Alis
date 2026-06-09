@@ -1,7 +1,8 @@
-# Execution State
+---
+title: Execution State
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 ## Current Session
 

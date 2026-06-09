@@ -1,7 +1,8 @@
-# Sample: Asteroids
+---
+title: Sample: Asteroids
+tags: [sample,game,example]
+---
 
-tags:
-  - sample,game,example
 
 ## Overview
 

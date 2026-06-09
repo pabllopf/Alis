@@ -1,7 +1,8 @@
-# Data Aspect Documentation
+---
+title: Data Aspect Documentation
+tags: [ideation,aspect,library,documentation]
+---
 
-tags:
-  - ideation,aspect,library,documentation
 
 ## Alis.Core.Aspect.Data - JSON Serialization System
 

@@ -1,7 +1,8 @@
-# ALIS Architecture
+---
+title: ALIS Architecture
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 ## Overview
 ALIS follows a layered architecture with 6 distinct layers, each with increasing specificity. Dependencies flow upward only — lower layers never depend on higher ones.

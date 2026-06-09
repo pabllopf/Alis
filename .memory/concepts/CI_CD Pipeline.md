@@ -1,7 +1,8 @@
-# CI/CD Pipeline
+---
+title: CI/CD Pipeline
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Alis uses GitHub Actions for continuous integration and automated testing across all target frameworks.
 

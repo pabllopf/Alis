@@ -1,7 +1,8 @@
-# Alis.Extension.Cloud.GoogleDrive
+---
+title: Alis.Extension.Cloud.GoogleDrive
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Google Drive cloud storage integration for ALIS applications. Provides file upload, download, and management via Google Drive API v3.

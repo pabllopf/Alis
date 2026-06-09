@@ -1,7 +1,8 @@
-# Game Pipeline
+---
+title: Game Pipeline
+tags: [diagram,visualization,mermaid]
+---
 
-tags:
-  - diagram,visualization,mermaid
 
 ## VideoGame Bootstrap Flow
 

@@ -1,7 +1,8 @@
-# Ref<T>
+---
+title: Ref<T>
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Definition
 

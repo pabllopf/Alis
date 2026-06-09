@@ -1,7 +1,8 @@
-# Log Management
+---
+title: Log Management
+tags: [log,execution,history]
+---
 
-tags:
-  - log,execution,history
 
 Diagrams illustrating logging and monitoring systems.
 

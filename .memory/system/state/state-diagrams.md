@@ -1,7 +1,8 @@
-# State Tracking Diagrams
+---
+title: State Tracking Diagrams
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 Mermaid diagrams illustrating system state and monitoring.
 

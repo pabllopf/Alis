@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Data
+---
+title: Alis.Core.Aspect.Data
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## Overview
 

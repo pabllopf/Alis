@@ -1,7 +1,8 @@
-# Extension: Thread
+---
+title: Extension: Thread
+tags: [on]
+---
 
-tags:
-  - extension,plugin,add-on
 
 ## Overview
 

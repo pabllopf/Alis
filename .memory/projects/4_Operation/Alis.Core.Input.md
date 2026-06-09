@@ -1,7 +1,8 @@
-# Alis.Core.Input
+---
+title: Alis.Core.Input
+tags: [operation,runtime,implementation,documentation]
+---
 
-tags:
-  - operation,runtime,implementation,documentation
 
 ## Overview
 Input handling system for the ALIS engine. Manages keyboard, mouse, and gamepad input across platforms.

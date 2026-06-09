@@ -1,7 +1,8 @@
-# Commands Index — ALIS
+---
+title: Commands Index — ALIS
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 ## Build Commands
 

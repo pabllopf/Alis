@@ -1,7 +1,8 @@
-# Alis.Extension.Graphic.Glfw
+---
+title: Alis.Extension.Graphic.Glfw
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Cross-platform OpenGL context management and windowing library using GLFW 3.

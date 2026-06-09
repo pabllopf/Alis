@@ -1,7 +1,8 @@
-# Onboarding
+---
+title: Onboarding
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 ## Quick Start
 

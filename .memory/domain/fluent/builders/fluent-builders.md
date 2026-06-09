@@ -1,7 +1,8 @@
-# Fluent Builders
+---
+title: Fluent Builders
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## IBuild<T>
 

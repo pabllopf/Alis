@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Data
+---
+title: Alis.Core.Aspect.Data
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 **Status**: ✅ Documented  
 **Type**: Library / Aspect  

@@ -1,7 +1,8 @@
-# Testing Analysis — ALIS
+---
+title: Testing Analysis — ALIS
+tags: [testing,test,quality,assurance]
+---
 
-tags:
-  - testing,test,quality,assurance
 
 ## Test Framework
 

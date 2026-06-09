@@ -1,7 +1,8 @@
-# ALIS Game Engine Framework — Repository Overview
+---
+title: ALIS Game Engine Framework — Repository Overview
+tags: [architecture,design,pattern]
+---
 
-tags:
-  - architecture,design,pattern
 
 ## Executive Summary
 

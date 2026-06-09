@@ -1,7 +1,8 @@
-# Extension: Graphic.Ui
+---
+title: Extension: Graphic.Ui
+tags: [on]
+---
 
-tags:
-  - extension,plugin,add-on
 
 ## Overview
 

@@ -1,7 +1,8 @@
-# Memory System Update Tracking
+---
+title: Memory System Update Tracking
+tags: [documentation,reference]
+---
 
-tags:
-  - documentation,reference
 
 This document tracks all changes made to the `.memory/` system during this update session.
 

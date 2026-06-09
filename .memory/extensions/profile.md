@@ -1,7 +1,8 @@
-# Extension: Profile
+---
+title: Extension: Profile
+tags: [on]
+---
 
-tags:
-  - extension,plugin,add-on
 
 ## Overview
 

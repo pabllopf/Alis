@@ -1,7 +1,8 @@
-# Query-Based Architecture
+---
+title: Query-Based Architecture
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Query-based architecture uses declarative component queries to filter and process entities, replacing inheritance hierarchies with composition-based filtering.
 

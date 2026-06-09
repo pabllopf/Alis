@@ -1,7 +1,8 @@
-# Sample: Shooter
+---
+title: Sample: Shooter
+tags: [sample,game,example]
+---
 
-tags:
-  - sample,game,example
 
 ## Overview
 

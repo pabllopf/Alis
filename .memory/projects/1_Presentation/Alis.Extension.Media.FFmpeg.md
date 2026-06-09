@@ -1,7 +1,8 @@
-# Alis.Extension.Media.FFmpeg
+---
+title: Alis.Extension.Media.FFmpeg
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 FFmpeg multimedia processing wrapper for ALIS. Provides audio/video encoding, decoding, playback, and stream manipulation via FFmpeg CLI integration.

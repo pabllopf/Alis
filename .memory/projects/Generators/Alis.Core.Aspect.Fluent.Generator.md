@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Fluent.Generator
+---
+title: Alis.Core.Aspect.Fluent.Generator
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 ## Overview
 AOT-safety `DiagnosticAnalyzer` (not a source generator — ships in generator project format). Detects and reports reflection patterns that would break native AOT compilation. All diagnostics emit at `DiagnosticSeverity.Error` to enforce AOT compatibility.

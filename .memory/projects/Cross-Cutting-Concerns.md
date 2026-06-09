@@ -1,7 +1,8 @@
-# Cross-Cutting Concerns
+---
+title: Cross-Cutting Concerns
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 ## Overview
 ALIS has several cross-cutting concerns that apply consistently across all projects in the solution.

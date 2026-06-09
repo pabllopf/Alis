@@ -1,7 +1,8 @@
-# Build System
+---
+title: Build System
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 ## Overview
 ALIS uses a highly automated build system with shared configuration, asset pipeline, and platform-specific targets. All projects import `Config.props` for common settings.

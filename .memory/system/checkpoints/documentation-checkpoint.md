@@ -1,7 +1,8 @@
-# Documentation Checkpoint
+---
+title: Documentation Checkpoint
+tags: [checkpoint,validation,tracking]
+---
 
-tags:
-  - checkpoint,validation,tracking
 
 ## Status
 - **Total markdown files**: ~80+

@@ -1,7 +1,8 @@
-# Analysis History
+---
+title: Analysis History
+tags: [log,execution,history]
+---
 
-tags:
-  - log,execution,history
 
 | Timestamp | Scope | Files Analyzed | Result |
 |-----------|-------|---------------|--------|

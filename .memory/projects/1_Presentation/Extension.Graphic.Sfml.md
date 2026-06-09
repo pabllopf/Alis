@@ -1,7 +1,8 @@
-# Alis.Extension.Graphic.Sfml
+---
+title: Alis.Extension.Graphic.Sfml
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Extension module for Graphic.Sfml functionality in ALIS.

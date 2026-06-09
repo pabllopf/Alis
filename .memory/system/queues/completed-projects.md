@@ -1,7 +1,8 @@
-# Completed Projects Queue
+---
+title: Completed Projects Queue
+tags: [queue,work,tracking]
+---
 
-tags:
-  - queue,work,tracking
 
 | Project | Files | Status | Documented |
 |---|---|---|---|

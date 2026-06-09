@@ -1,7 +1,8 @@
-# Alis.Extension.Payment.Stripe.Test
+---
+title: Alis.Extension.Payment.Stripe.Test
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Auto-generated documentation for Alis.Extension.Payment.Stripe.Test.

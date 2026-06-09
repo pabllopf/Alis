@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Logging
+---
+title: Alis.Core.Aspect.Logging
+tags: [ideation,aspect,library,documentation]
+---
 
-tags:
-  - ideation,aspect,library,documentation
 
 ## Overview
 

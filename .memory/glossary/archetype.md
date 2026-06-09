@@ -1,7 +1,8 @@
-# Archetype
+---
+title: Archetype
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Definition
 

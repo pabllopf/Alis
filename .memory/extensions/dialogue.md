@@ -1,7 +1,8 @@
-# Extension: Language.Dialogue
+---
+title: Extension: Language.Dialogue
+tags: [on]
+---
 
-tags:
-  - extension,plugin,add-on
 
 ## Overview
 

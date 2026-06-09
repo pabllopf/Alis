@@ -1,7 +1,8 @@
-# Architecture Diagrams
+---
+title: Architecture Diagrams
+tags: [diagram,visualization,mermaid]
+---
 
-tags:
-  - diagram,visualization,mermaid
 
 Mermaid diagrams illustrating the Alis solution architecture and relationships.
 

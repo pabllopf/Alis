@@ -1,7 +1,8 @@
-# Indexes Summary
+---
+title: Indexes Summary
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 ## Generated Indexes (12 total)
 

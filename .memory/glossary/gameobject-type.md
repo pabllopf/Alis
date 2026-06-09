@@ -1,7 +1,8 @@
-# GameObjectType
+---
+title: GameObjectType
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Definition
 

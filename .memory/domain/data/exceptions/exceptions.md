@@ -1,7 +1,8 @@
-# Exceptions
+---
+title: Exceptions
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## JsonParsingException
 

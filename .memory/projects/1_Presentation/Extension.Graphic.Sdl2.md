@@ -1,7 +1,8 @@
-# Alis.Extension.Graphic.Sdl2
+---
+title: Alis.Extension.Graphic.Sdl2
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Extension module for Graphic.Sdl2 functionality in ALIS.

@@ -1,7 +1,8 @@
-# Alis.Extension.Io.FileDialog
+---
+title: Alis.Extension.Io.FileDialog
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 

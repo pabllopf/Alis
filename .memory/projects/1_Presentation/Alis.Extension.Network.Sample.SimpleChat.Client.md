@@ -1,7 +1,8 @@
-# Alis.Extension.Network.Sample.SimpleChat.Client
+---
+title: Alis.Extension.Network.Sample.SimpleChat.Client
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Auto-generated documentation for Alis.Extension.Network.Sample.SimpleChat.Client.

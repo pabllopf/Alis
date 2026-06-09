@@ -1,7 +1,8 @@
-# Performance Index
+---
+title: Performance Index
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 ## Performance-Critical Systems
 

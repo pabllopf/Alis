@@ -1,7 +1,8 @@
-# Getting Started with ALIS
+---
+title: Getting Started with ALIS
+tags: [started]
+---
 
-tags:
-  - onboarding,guide,getting-started
 
 ## Prerequisites
 

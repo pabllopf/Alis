@@ -1,7 +1,8 @@
-# Fluent Aspect Project State
+---
+title: Fluent Aspect Project State
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 ## Analysis Status
 

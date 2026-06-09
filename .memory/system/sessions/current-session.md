@@ -1,7 +1,8 @@
-# Current Session
+---
+title: Current Session
+tags: [session,execution,history]
+---
 
-tags:
-  - session,execution,history
 
 Active session tracking for memory generation and analysis.
 

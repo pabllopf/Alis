@@ -1,7 +1,8 @@
-# Dependency Diagrams
+---
+title: Dependency Diagrams
+tags: [diagram,visualization,mermaid]
+---
 
-tags:
-  - diagram,visualization,mermaid
 
 Mermaid diagrams illustrating project dependencies and relationships.
 

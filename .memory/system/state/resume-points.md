@@ -1,7 +1,8 @@
-# Resume Points
+---
+title: Resume Points
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 ## Current Position
 - **Batch**: 3 (Extensions) — Completed

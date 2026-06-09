@@ -1,7 +1,8 @@
-# Alis.Extension.Profile
+---
+title: Alis.Extension.Profile
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Extension module for Profile functionality in ALIS.

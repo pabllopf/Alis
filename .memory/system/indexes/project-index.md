@@ -1,7 +1,8 @@
-# Project Index — ALIS
+---
+title: Project Index — ALIS
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 ## By Layer
 

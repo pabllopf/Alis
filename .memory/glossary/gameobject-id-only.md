@@ -1,7 +1,8 @@
-# GameObjectIdOnly
+---
+title: GameObjectIdOnly
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Definition
 

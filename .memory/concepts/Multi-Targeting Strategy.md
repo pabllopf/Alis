@@ -1,7 +1,8 @@
-# Multi-Targeting Strategy
+---
+title: Multi-Targeting Strategy
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Alis uses aggressive multi-targeting across 15+ framework configurations simultaneously for maximum compatibility.
 

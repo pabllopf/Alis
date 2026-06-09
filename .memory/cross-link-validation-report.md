@@ -1,7 +1,8 @@
-# Cross-Link Validation Report
+---
+title: Cross-Link Validation Report
+tags: [documentation,reference]
+---
 
-tags:
-  - documentation,reference
 
 ## Overview
 

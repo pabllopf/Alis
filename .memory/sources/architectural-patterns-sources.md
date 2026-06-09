@@ -1,7 +1,8 @@
-# Architectural Patterns in Source Code
+---
+title: Architectural Patterns in Source Code
+tags: [source,reference,documentation]
+---
 
-tags:
-  - source,reference,documentation
 
 Design patterns and architectural approaches used throughout the Alis solution.
 

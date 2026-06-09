@@ -1,7 +1,8 @@
-# Alis.Extension.Updater
+---
+title: Alis.Extension.Updater
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Self-update mechanism for ALIS applications. Downloads, verifies, and installs application updates from GitHub releases.

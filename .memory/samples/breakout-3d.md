@@ -1,7 +1,8 @@
-# Sample: Breakout 3D
+---
+title: Sample: Breakout 3D
+tags: [sample,game,example]
+---
 
-tags:
-  - sample,game,example
 
 ## Overview
 

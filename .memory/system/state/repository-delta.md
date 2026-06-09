@@ -1,7 +1,8 @@
-# Repository Delta
+---
+title: Repository Delta
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 ## Changes Detected
 

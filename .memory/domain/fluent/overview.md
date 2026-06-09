@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Fluent
+---
+title: Alis.Core.Aspect.Fluent
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## Overview
 

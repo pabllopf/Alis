@@ -1,7 +1,8 @@
-# Alis.Core.Aspect.Fluent
+---
+title: Alis.Core.Aspect.Fluent
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 **Status**: ✅ Documented  
 **Type**: Game Entity System / Fluent Builder  

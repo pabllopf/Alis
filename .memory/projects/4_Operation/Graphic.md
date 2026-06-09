@@ -1,7 +1,8 @@
-# Graphic System Documentation
+---
+title: Graphic System Documentation
+tags: [operation,runtime,implementation,documentation]
+---
 
-tags:
-  - operation,runtime,implementation,documentation
 
 ## Alis.Core.Graphic - Rendering and Graphics System
 

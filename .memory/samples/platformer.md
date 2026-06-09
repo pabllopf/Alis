@@ -1,7 +1,8 @@
-# Sample: Platformer
+---
+title: Sample: Platformer
+tags: [sample,game,example]
+---
 
-tags:
-  - sample,game,example
 
 ## Overview
 

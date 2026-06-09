@@ -1,7 +1,8 @@
-# Math Extensions
+---
+title: Math Extensions
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Alis.Extension.Math.ProceduralDungeon
 - **Path**: `1_Presentation/Extension/Math/ProceduralDungeon/src/`

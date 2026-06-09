@@ -1,7 +1,8 @@
-# Sources Overview
+---
+title: Sources Overview
+tags: [source,reference,documentation]
+---
 
-tags:
-  - source,reference,documentation
 
 Comprehensive documentation of all source files and projects in the Alis solution.
 

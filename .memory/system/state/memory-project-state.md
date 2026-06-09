@@ -1,7 +1,8 @@
-# Memory Aspect Project State
+---
+title: Memory Aspect Project State
+tags: [system,state,tracking,management]
+---
 
-tags:
-  - system,state,tracking,management
 
 ## Analysis Status
 

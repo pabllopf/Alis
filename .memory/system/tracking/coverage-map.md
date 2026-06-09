@@ -1,7 +1,8 @@
-# Coverage Map
+---
+title: Coverage Map
+tags: [tracking,monitoring,analysis]
+---
 
-tags:
-  - tracking,monitoring,analysis
 
 Tracking of analysis and documentation coverage across all repository projects.
 

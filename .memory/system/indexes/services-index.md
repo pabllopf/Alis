@@ -1,7 +1,8 @@
-# Services Index — ALIS
+---
+title: Services Index — ALIS
+tags: [index,catalog,reference]
+---
 
-tags:
-  - index,catalog,reference
 
 ## Core Engine Services
 

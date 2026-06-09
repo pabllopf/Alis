@@ -1,7 +1,8 @@
-# Commit History
+---
+title: Commit History
+tags: [log,execution,history]
+---
 
-tags:
-  - log,execution,history
 
 | Hash | Date | Message |
 |------|------|---------|

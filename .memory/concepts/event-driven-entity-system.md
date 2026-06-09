@@ -1,7 +1,8 @@
-# Event-Driven Entity System
+---
+title: Event-Driven Entity System
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 Event-driven entity systems provide per-entity event notifications for lifecycle management, debugging, and decoupled system communication.
 

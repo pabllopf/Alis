@@ -1,7 +1,8 @@
-# Time Aspect Documentation
+---
+title: Time Aspect Documentation
+tags: [ideation,aspect,library,documentation]
+---
 
-tags:
-  - ideation,aspect,library,documentation
 
 ## Alis.Core.Aspect.Time - High-Resolution Clock
 

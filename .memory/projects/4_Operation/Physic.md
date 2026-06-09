@@ -1,7 +1,8 @@
-# Alis.Core.Physic
+---
+title: Alis.Core.Physic
+tags: [operation,runtime,implementation,documentation]
+---
 
-tags:
-  - operation,runtime,implementation,documentation
 
 ## Overview
 Core engine Physic subsystem. Provides low-level Physic functionality for the game engine.

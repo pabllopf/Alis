@@ -1,7 +1,8 @@
-# Dependency Checkpoint
+---
+title: Dependency Checkpoint
+tags: [checkpoint,validation,tracking]
+---
 
-tags:
-  - checkpoint,validation,tracking
 
 ## Status
 - **Cyclic dependencies**: None detected

@@ -1,7 +1,8 @@
-# Memory System Index
+---
+title: Memory System Index
+tags: [documentation,reference]
+---
 
-tags:
-  - documentation,reference
 
 ## Overview
 

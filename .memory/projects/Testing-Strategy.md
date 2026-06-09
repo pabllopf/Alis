@@ -1,7 +1,8 @@
-# Testing Strategy
+---
+title: Testing Strategy
+tags: [project,documentation,reference]
+---
 
-tags:
-  - project,documentation,reference
 
 ## Overview
 ALIS uses a distributed testing approach where each project has its own test project. Test projects auto-discover their source project via regex pattern matching.

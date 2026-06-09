@@ -1,7 +1,8 @@
-# Glossary Index
+---
+title: Glossary Index
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Core Architecture Terms
 

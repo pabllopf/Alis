@@ -1,7 +1,8 @@
-# Dependency Graph
+---
+title: Dependency Graph
+tags: [documentation,reference]
+---
 
-tags:
-  - documentation,reference
 
 ## Related
 

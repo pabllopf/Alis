@@ -1,7 +1,8 @@
-# Alis.Core.Audio
+---
+title: Alis.Core.Audio
+tags: [operation,runtime,implementation,documentation]
+---
 
-tags:
-  - operation,runtime,implementation,documentation
 
 ## Overview
 Core engine Audio subsystem. Provides low-level Audio functionality for the game engine.

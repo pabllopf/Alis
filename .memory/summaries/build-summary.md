@@ -1,7 +1,8 @@
-# Build Summary — ALIS
+---
+title: Build Summary — ALIS
+tags: [summary,overview,documentation]
+---
 
-tags:
-  - summary,overview,documentation
 
 ## Build System Overview
 

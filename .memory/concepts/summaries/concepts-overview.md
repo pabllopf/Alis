@@ -1,7 +1,8 @@
-# Concepts Overview
+---
+title: Concepts Overview
+tags: [concept,theory,documentation]
+---
 
-tags:
-  - concept,theory,documentation
 
 This directory contains comprehensive documentation about the Alis solution architecture and development practices.
 

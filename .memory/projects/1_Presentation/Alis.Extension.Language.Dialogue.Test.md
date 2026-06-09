@@ -1,7 +1,8 @@
-# Alis.Extension.Language.Dialogue.Test
+---
+title: Alis.Extension.Language.Dialogue.Test
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 Auto-generated documentation for Alis.Extension.Language.Dialogue.Test.

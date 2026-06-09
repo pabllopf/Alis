@@ -1,7 +1,8 @@
-# Security Checkpoint
+---
+title: Security Checkpoint
+tags: [checkpoint,validation,tracking]
+---
 
-tags:
-  - checkpoint,validation,tracking
 
 ## Status
 - **Security analysis**: Initial pass complete

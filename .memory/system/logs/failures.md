@@ -1,7 +1,8 @@
-# Failure Log
+---
+title: Failure Log
+tags: [log,execution,history]
+---
 
-tags:
-  - log,execution,history
 
 Tracking of errors, warnings, and issues encountered during memory generation.
 

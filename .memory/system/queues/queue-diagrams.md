@@ -1,7 +1,8 @@
-# Queue Management
+---
+title: Queue Management
+tags: [queue,work,tracking]
+---
 
-tags:
-  - queue,work,tracking
 
 Diagrams illustrating task queues and pending work tracking.
 

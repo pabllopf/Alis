@@ -1,7 +1,8 @@
-# Generation History
+---
+title: Generation History
+tags: [tracking,monitoring,analysis]
+---
 
-tags:
-  - tracking,monitoring,analysis
 
 ## Batch 1 — Core Systems & Ideation Aspects
 

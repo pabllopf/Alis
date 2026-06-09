@@ -1,7 +1,8 @@
-# Sources Index
+---
+title: Sources Index
+tags: [source,reference,documentation]
+---
 
-tags:
-  - source,reference,documentation
 
 Comprehensive index of all source files and projects in the Alis solution.
 

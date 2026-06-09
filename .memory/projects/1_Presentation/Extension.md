@@ -1,7 +1,8 @@
-# Extension Projects
+---
+title: Extension Projects
+tags: [presentation,application,extension,documentation]
+---
 
-tags:
-  - presentation,application,extension,documentation
 
 ## Overview
 The 1_Presentation layer contains all Extension projects — reusable libraries that provide cross-cutting capabilities to ALIS applications. Extensions are organized into subdirectories by domain.

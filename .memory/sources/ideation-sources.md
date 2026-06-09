@@ -1,7 +1,8 @@
-# Ideation Sources
+---
+title: Ideation Sources
+tags: [source,reference,documentation]
+---
 
-tags:
-  - source,reference,documentation
 
 Experimental aspects in `6_Ideation/`.
 

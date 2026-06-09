@@ -1,7 +1,8 @@
-# Logging Aspect Documentation
+---
+title: Logging Aspect Documentation
+tags: [ideation,aspect,library,documentation]
+---
 
-tags:
-  - ideation,aspect,library,documentation
 
 ## Alis.Core.Aspect.Logging - Logging System
 

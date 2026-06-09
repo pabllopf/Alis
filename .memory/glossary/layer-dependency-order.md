@@ -1,7 +1,8 @@
-# Layer Dependency Order
+---
+title: Layer Dependency Order
+tags: [glossary,terminology,reference]
+---
 
-tags:
-  - glossary,terminology,reference
 
 ## Definition
 

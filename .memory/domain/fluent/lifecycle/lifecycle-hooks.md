@@ -1,7 +1,8 @@
-# Lifecycle Hooks
+---
+title: Lifecycle Hooks
+tags: [domain,api,reference,documentation]
+---
 
-tags:
-  - domain,api,reference,documentation
 
 ## Overview
 

@@ -1,7 +1,8 @@
-# Testing Architecture
+---
+title: Testing Architecture
+tags: [testing,test,quality,assurance]
+---
 
-tags:
-  - testing,test,quality,assurance
 
 Mermaid diagrams illustrating the testing strategy and coverage.
 
