@@ -24,9 +24,22 @@
 
 | Dependency | Projects | Purpose |
 |---|---|---|
-| Stripe SDK | Payment.Stripe | Payment processing |
-| Dropbox SDK | Cloud.DropBox | Cloud storage |
-| Google Drive API | Cloud.GoogleDrive | Cloud storage |
+| Alis.Core.Aspect.Logging | ALL 19 extensions | Logging infrastructure |
+| Alis.App.Core | Most extensions | Core application framework |
+| Alis.Core.Ecs | Cloud.GoogleDrive | ECS manager integration |
+| Alis.Core.Aspect.Math | Graphic extensions, Sdl2 | Vector types, transforms |
+| Google.Apis.Drive.v3 | Cloud.GoogleDrive | Google Drive API |
+| Google.Apis.Auth | Cloud.GoogleDrive | OAuth 2.0 authentication |
+| Stripe.net | Payment.Stripe | Stripe payment API |
+| Dropbox SDK | Cloud.DropBox | Dropbox cloud storage |
+| ENet | Network | UDP networking library |
+| FFmpeg | Media.FFmpeg | Multimedia processing CLI |
+| cimgui | Graphic.Ui | ImGui native library |
+| SFML | Graphic.Sfml | Simple and Fast Multimedia Library |
+| GLFW | Graphic.Glfw | OpenGL window management |
+| SDL2 | Graphic.Sdl2 | Simple DirectMedia Layer |
+| System.Net.Http | Updater, Network | HTTP communication |
+| System.IO.Compression | Updater, Memory | ZIP extraction
 
 ### Ideation Dependencies
 
@@ -128,15 +141,15 @@ graph TD
 
 | Layer | Projects | Documented | Pending |
 |---|---|---|---|
-| 1_Presentation | ~60 | 0 | 60 |
-| 2_Application | ~40 | 0 | 40 |
-| 3_Structuration | ~5 | 0 | 5 |
-| 4_Operation | ~14 | 4 | 10 |
-| 5_Declaration | ~3 | 0 | 3 |
-| 6_Ideation | ~18 | 6 | 12 |
+| 1_Presentation | 23 | 23 | 0 |
+| 2_Application | 14 | 1 (core) | 13 (samples need enrichment) |
+| 3_Structuration | 5 | 5 | 0 |
+| 4_Operation | 16 | 10 | 6 (sub-projects) |
+| 5_Declaration | 1 | 1 | 0 |
+| 6_Ideation | 24 | 24 | 0 |
 
 ## Next Steps
 
-1. Document Extensions (1_Presentation/Extension)
-2. Document Applications and Samples
-3. Update dependency diagrams
+1. Enrich Application docs (Engine, Hub, Installer, Benchmark)
+2. Enrich Sample project docs
+3. Update dependency diagrams with all new extensions

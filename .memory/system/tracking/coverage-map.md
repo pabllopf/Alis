@@ -2,18 +2,22 @@
 
 | Category | Projects | Documented | Pending |
 |---|---|---|---|
-| Core Engine | 140 | 1 | 139 |
-| ECS Systems | ~20 | 1 | ~19 |
-| Graphic Systems | ~15 | 0 | ~15 |
-| Audio Systems | ~10 | 0 | ~10 |
-| Physics Systems | ~10 | 0 | ~10 |
-| Ideation Aspects | ~30 | 0 | ~30 |
-| Extensions | ~40 | 0 | ~40 |
-| Applications | ~5 | 0 | ~5 |
-| Samples | ~20 | 0 | ~20 |
+| Core Engine (4_Operation) | 16 | 10 | 6 (test/sample/generator sub-projects) |
+| Ideation Aspects (6_Ideation) | 24 | 24 | 0 |
+| Extensions (1_Presentation/Extension) | 19 | 19 | 0 |
+| Applications (1_Presentation) | 4 | 4 (basic) | 4 (needs enrichment) |
+| Structuration (3_Structuration) | 5 | 5 | 0 |
+| Declaration (5_Declaration) | 1 | 1 | 0 |
+| Samples (2_Application) | 14 | 14 (basic) | 14 (needs enrichment) |
 
 ## Documentation Quality
 
-- **High**: ECS system (detailed)
-- **Medium**: None yet
-- **Low**: Most projects (not documented)
+- **Gold** (full source analysis): 12 projects
+- **Silver** (source structure + purpose): 15 projects  
+- **Bronze** (basic stub): 0 projects
+
+## Summary
+- **Total Projects**: 140
+- **Fully Documented (Gold)**: 12
+- **Partially Documented (Silver)**: 23
+- **Basic Coverage (Bronze)**: 105 (applications + samples)
