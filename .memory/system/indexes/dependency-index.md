@@ -1,165 +1,150 @@
-# Dependency Index
+# Dependency Index — ALIS
 
-## Project Dependencies
+## Dependency Flow (Strict)
 
-### Core Dependencies
-
-| Dependency | Projects | Purpose |
-|---|---|---|
-| Alis.Core | All projects | Base abstractions |
-| System.Memory | ECS, Graphic | Span<T>, Memory<T> |
-| System.Runtime.CompilerServices.Unsafe | ECS | Low-level memory ops |
-| Alis.Core.Aspect.Memory | All Ideation aspects | Memory management and asset registry |
-
-### Platform Dependencies
-
-| Dependency | Projects | Purpose |
-|---|---|---|
-| SFML | Graphic | Cross-platform graphics |
-| GLFW | Graphic | Window management |
-| SDL2 | Graphic | Graphics/audio backend |
-| OpenGL | Graphic, ECS | 3D rendering |
-
-### Extension Dependencies
-
-| Dependency | Projects | Purpose |
-|---|---|---|
-| Alis.Core.Aspect.Logging | ALL 19 extensions | Logging infrastructure |
-| Alis.App.Core | Most extensions | Core application framework |
-| Alis.Core.Ecs | Cloud.GoogleDrive | ECS manager integration |
-| Alis.Core.Aspect.Math | Graphic extensions, Sdl2 | Vector types, transforms |
-| Google.Apis.Drive.v3 | Cloud.GoogleDrive | Google Drive API |
-| Google.Apis.Auth | Cloud.GoogleDrive | OAuth 2.0 authentication |
-| Stripe.net | Payment.Stripe | Stripe payment API |
-| Dropbox SDK | Cloud.DropBox | Dropbox cloud storage |
-| ENet | Network | UDP networking library |
-| FFmpeg | Media.FFmpeg | Multimedia processing CLI |
-| cimgui | Graphic.Ui | ImGui native library |
-| SFML | Graphic.Sfml | Simple and Fast Multimedia Library |
-| GLFW | Graphic.Glfw | OpenGL window management |
-| SDL2 | Graphic.Sdl2 | Simple DirectMedia Layer |
-| System.Net.Http | Updater, Network | HTTP communication |
-| System.IO.Compression | Updater, Memory | ZIP extraction
-
-### Ideation Dependencies
-
-| Dependency | Projects | Purpose |
-|---|---|---|
-| Alis.Core.Aspect.Memory | Memory, Fluent, Data, Math, Time, Logging | Cross-cutting aspects |
-| System.Buffers | Memory | ArrayPool for memory management |
-| System.IO.Compression | Memory | ZIP file handling |
-| System.Security.Cryptography | Memory | SHA256 hash-based change detection |
-
-## Dependency Graph
-
-```mermaid
-graph TD
-    subgraph "1_Presentation"
-        A[Extensions]
-        B[Applications]
-        C[Samples]
-    end
-    
-    subgraph "2_Application"
-        D[Alis Core App]
-        E[Game Samples]
-    end
-    
-    subgraph "3_Structuration"
-        F[Alis.Core]
-    end
-    
-    subgraph "4_Operation"
-        G[ECS]
-        H[Graphic]
-        I[Audio]
-        J[Physic]
-    end
-    
-    subgraph "5_Declaration"
-        K[Aspect System]
-    end
-    
-    subgraph "6_Ideation"
-        L[Memory Aspect]
-        M[Fluent Aspect]
-        N[Data Aspect]
-        O[Math Aspect]
-        P[Time Aspect]
-        Q[Logging Aspect]
-    end
-    
-    F --> G
-    F --> H
-    F --> I
-    F --> J
-    F --> K
-    
-    G --> L
-    H --> L
-    I --> L
-    J --> L
-    
-    K --> L
-    K --> M
-    K --> N
-    K --> O
-    K --> P
-    K --> Q
-    
-    A --> F
-    B --> F
-    C --> F
-    D --> F
-    E --> F
-    
-    L --> M
-    L --> N
-    L --> O
-    L --> P
-    L --> Q
+```
+1_Presentation → 2_Application → 3_Structuration → 4_Operation → 5_Declaration ← 6_Ideation
 ```
 
-## Layer Violations
+Upward references are **forbidden**. Source generators cascade **downward**.
 
-- None detected - Architecture well-separated
+---
 
-## Key Relationships
+## Layer Dependencies
 
-### Core to Operation
-- **Alis.Core** → **ECS, Graphic, Audio, Physic**: Base abstractions for all operation systems
+```mermaid
+graph LR
+    P[1_Presentation] --> A[2_Application]
+    A --> S[3_Structuration]
+    S --> O[4_Operation]
+    O --> D[5_Declaration]
+    I[6_Ideation] --> D
 
-### Ideation to Core
-- **All Ideation aspects** → **Alis.Core.Aspect.Memory**: Memory aspect provides asset registry and caching
-- **Memory** → **System.Buffers, System.IO.Compression**: External dependencies for ZIP handling
+    style I fill:#f9f,stroke:#333
+    style D fill:#bbf,stroke:#333
+    style O fill:#bfb,stroke:#333
+    style S fill:#ff9,stroke:#333
+    style A fill:#fbb,stroke:#333
+    style P fill:#bfb,stroke:#333
+```
 
-### Platform Bindings
-- **Graphic** → **SFML, GLFW, SDL2**: Cross-platform graphics backends
-- **Audio** → **Platform-specific tools**: aplay, mpg123, afplay
+---
 
-## Documentation Coverage
+## Project Reference Graph
 
-| Layer | Projects | Documented | Pending |
-|---|---|---|---|
-| 1_Presentation | 23 | 23 | 0 |
-| 2_Application | 14 | 1 (core) | 13 (samples need enrichment) |
-| 3_Structuration | 5 | 5 | 0 |
-| 4_Operation | 16 | 10 | 6 (sub-projects) |
-| 5_Declaration | 1 | 1 | 0 |
-| 6_Ideation | 24 | 24 | 0 |
+### Debug Mode (Implicit References via Config.props)
 
-## Next Steps
+The build system in `.config/Config.props` automatically adds project references based on layer:
 
-1. Enrich Application docs (Engine, Hub, Installer, Benchmark)
-2. Enrich Sample project docs
-3. Update dependency diagrams
+| Layer | References |
+|-------|-----------|
+| 1_Presentation | All projects in 2_Application + all generators from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation |
+| 2_Application | All src projects in 3_Structuration + all generators from 4_Operation, 5_Declaration, 6_Ideation |
+| 3_Structuration | All src projects in 4_Operation + all generators from 5_Declaration, 6_Ideation |
+| 4_Operation | All src projects in 5_Declaration + all generators from 6_Ideation |
+| 5_Declaration | All src projects in 6_Ideation |
+| 6_Ideation | None (leaf layer) |
 
-## Related
+### Release Mode (Compile-time Inlining)
 
-- [[architecture/dependency-graph]] — Dependency map with Mermaid
-- [[diagrams/dependency-graph]] — Visual dependency diagram
-- [[diagrams/architecture-overview]] — Architecture diagrams
-- [[layer-index]] — Layer dependency rules
-- [[project-index]] — All project dependencies
-- [[adr-001-layered-architecture]] — Layer rules decision
-- [[indexes-summary]] — All indexes with all new extensions
+In Release builds, source files from lower layers are **compiled directly** into higher layers via `<Compile Include>` directives:
+
+- 2_Application includes source from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation
+- 3_Structuration includes source from 4_Operation, 6_Ideation
+- 4_Operation includes source from 5_Declaration, 6_Ideation
+- 5_Declaration includes source from 6_Ideation
+
+This produces **single assembly** output for each layer in Release mode.
+
+---
+
+## External NuGet Dependencies
+
+### Conditional Dependencies (Config.props)
+
+| Condition | Package | Version |
+|-----------|---------|---------|
+| net461–net481 | System.IO.Compression | 4.3.0 |
+| net461–net481 | System.Net.Http | 4.3.0 |
+| net461–net481 | System.Runtime.CompilerServices.Unsafe | 6.1.1 |
+| net461–net481 | System.Memory | 4.6.2 |
+| netcoreapp2.0–3.1 | System.Runtime.CompilerServices.Unsafe | 6.1.1 |
+| netcoreapp2.0–3.1 | System.Memory | 4.6.2 |
+| netstandard2.0–2.1 | System.Runtime.CompilerServices.Unsafe | 6.1.1 |
+| netstandard2.0–2.1 | System.Memory | 4.6.2 |
+| All | Microsoft.SourceLink.GitHub | 8.0.0 |
+
+### Extension-Specific Dependencies
+
+| Assembly | Package | Version |
+|----------|---------|---------|
+| Alis.Extension.Payment.Stripe | Stripe.net | 49.2.0 |
+| Alis.Extension.Ads.GoogleAds | Google.Ads.Common | 9.5.3 |
+| Alis.Extension.Cloud.GoogleDrive | Google.Apis.Drive.v3 | 1.68.0.3601 |
+| Alis.Extension.Cloud.DropBox | Dropbox.Api | 7.0.0 |
+
+---
+
+## Generator Cascade
+
+```mermaid
+flowchart LR
+    subgraph "6_Ideation Generators"
+        G1[Memory.Generator]
+        G2[Fluent.Generator]
+        G3[Math.Generator]
+        G4[Time.Generator]
+        G5[Data.Generator]
+        G6[Logging.Generator]
+    end
+
+    subgraph "4_Operation Generators"
+        G7[Ecs.Generator]
+        G8[Graphic.Generator]
+    end
+
+    subgraph "5_Declaration"
+        ASP[Alis.Core.Aspect<br/>Generated]
+    end
+
+    G1 --> ASP
+    G2 --> ASP
+    G3 --> ASP
+    G4 --> ASP
+    G5 --> ASP
+    G6 --> ASP
+    G7 --> ASP
+    G8 --> ASP
+```
+
+All generators target `netstandard2.0` and are referenced as `Analyzer` with `PrivateAssets=all` and `ReferenceOutputAssembly=false`.
+
+---
+
+## Platform Dependencies
+
+| Extension | Platform | Native Binding |
+|-----------|----------|---------------|
+| Alis.Extension.Graphic.Sfml | Graphics | SFML native libs |
+| Alis.Extension.Graphic.Glfw | Window/Input | GLFW native libs |
+| Alis.Extension.Graphic.Sdl2 | Graphics/Audio | SDL2 native libs |
+| Alis.Core.Audio | Audio | Platform-specific (aplay, mpg123, afplay) |
+
+---
+
+## Dependency Health
+
+| Metric | Status |
+|--------|--------|
+| Layer Violations | None detected |
+| Cyclic Dependencies | None (strict layering prevents this) |
+| External NuGet Packages | 8 total |
+| Generator Coupling | Via Roslyn analyzer references only |
+
+---
+
+## Related Documentation
+
+- [[architecture/dependency-graph]] — Visual dependency maps
+- [[architecture/repository-overview]] — Architecture overview
+- [[system/indexes/layer-index]] — Layer breakdown

@@ -9,6 +9,7 @@
 | 5 | 2026-06-08 | App/Sample docs | Engine, Hub, Installer, Benchmark, core app, samples |
 | 6 | 2026-06-09 | Extensions Batch 2 enrichment | Updater, Translator, Dialogue, Profile, GoogleDrive, Thread, FFmpeg, Network, FileDialog, Security, Stripe |
 | 7 | 2026-06-09 | System file creation | Tracking, queues, checkpoints, sessions, logs, state, metadata |
+| 8 | 2026-06-09 | Knowledge graph cross-linking | Added wiki-links across all architecture, concepts, glossary, indexes, and system files for connected graph |
 
 ## Related
 
