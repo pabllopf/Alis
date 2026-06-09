@@ -132,3 +132,13 @@ for (int i = 0; i < batch.Entities.Count; i++)
 - [[ChunkTuple]] - Batch entity creation result
 - [[GameObject]] - Entity handle
 - [[FastestStack]] - Memory-efficient stack
+- [[Scene]] - World container
+- [[Component]] - Data-only struct
+- [[Query]] - Entity filtering
+- [[entity-component-system-ecs]] — ECS overview
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[queries-index]] — Query index
+- [[architecture-index]] — Patterns

@@ -136,3 +136,13 @@ Compact storage:
 - [[FastestStack]] - Memory-efficient stack
 - [[GameObjectLocation]] - Entity location data
 - [[Scene]] - World container
+- [[GameObject]] - Entity handle
+- [[Archetype]] - Component optimization
+- [[Component Storage]] - Typed data storage
+- [[memory-management]] — Memory strategy
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[performance-index]] — Performance optimizations
+- [[architecture-index]] — Patterns

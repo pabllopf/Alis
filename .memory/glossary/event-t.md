@@ -135,3 +135,13 @@ public void InvokeInternal(GameObject gameObject, ComponentId componentId)
 - [[GameObjectFlags]] - Entity state flags
 - [[ComponentEvent]] - Component lifecycle events
 - [[GameObjectOnlyEvent]] - Entity-only event handler
+- [[GameObject]] - Entity handle
+- [[Component]] - Data-only struct
+- [[entity-component-system-ecs]] — ECS overview
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[events-index]] — Event system index
+- [[handlers-index]] — Handler index
+- [[architecture-index]] — Patterns

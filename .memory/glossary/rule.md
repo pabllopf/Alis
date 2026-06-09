@@ -219,3 +219,13 @@ public struct FlexibleRule<T1, T2> where T1 : struct where T2 : struct
 - [[Query]] - Component-based entity filtering
 - [[Archetype]] - Component type optimization
 - [[System]] - Processing unit using rules
+- [[Component]] - Data-only struct
+- [[Scene]] - World container
+- [[GameObject]] - Entity handle
+- [[entity-component-system-ecs]] — ECS overview
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[queries-index]] — Query index
+- [[architecture-index]] — Patterns

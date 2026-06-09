@@ -163,3 +163,12 @@ Contiguous memory layout:
 - [[FastestTable]] - High-performance lookup table
 - [[GameObjectIdOnly]] - Entity ID wrapper
 - [[ArchetypeDeferredUpdateRecord]] - Deferred operation record
+- [[GameObject]] - Entity handle
+- [[Scene]] - World container
+- [[memory-management]] — Memory strategy
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[performance-index]] — Performance optimizations
+- [[architecture-index]] — Patterns

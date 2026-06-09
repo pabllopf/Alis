@@ -1,24 +1,39 @@
 # Alis.Sample.Dino
 
 ## Overview
-Sample game demonstrating ALIS engine capabilities: Dino.
+Chrome T-Rex Dino game clone built on the ALIS engine. Features a runner-style game with physics, basic scene setup, and audio. Demonstrates configuration with settings blocks and minimalist world construction.
 
 ## Project Details
 - **Layer**: 2_Application
 - **Type**: Game Sample
-- **Framework**: net8.0
-- **Purpose**: Educational/reference game
+- **Framework**: `net10.0`
+- **Platforms**: Desktop, Web
+- **Purpose**: Educational/reference — runner game implementation
+
+## Platform Variants
+| Platform | Project File |
+|---|---|
+| Desktop | `Alis.Sample.Dino.Desktop.csproj` |
+| Web | `Alis.Sample.Dino.Web.csproj` |
+
+## Scene Structure
+| GameObject | Components | Purpose |
+|---|---|---|
+| `SoundTrack` | (empty) | Audio placeholder |
+
+## Configuration
+- **Name**: "T-Rex Dino Game"
+- **Resolution**: 800×600
+- **Gravity**: `(0, -9.8)`
+- All configuration sections use `.Build()` termination
 
 ## Dependencies
-- Alis.App.Core (2_Application)
-- Alis.Core (3_Structuration)
-
-## Key Files
-- `Program.cs` — Game entry point
-- `Game.cs` — Game implementation
-- `*.cs` — Game-specific systems and components
+- [[projects/2_Application/Alis]] (Core application library)
+- `Alis.Core.Ecs` — ECS, Scene, GameObject
+- `Alis.Core.Ecs.Systems` — VideoGame
 
 ## Notes
-- Demonstrates specific engine features
-- Reference implementation for game developers
-- May use specific extensions
+- Demonstrates multi-section configuration pattern (Settings blocks)
+- Soundtrack GameObject exists as placeholder — audio setup deferred to gameplay scripts
+- Uses Build() method termination (fluent API variant)
+- Gameplay logic expected in separate script files

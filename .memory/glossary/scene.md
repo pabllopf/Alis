@@ -147,3 +147,18 @@ scene.RecycleEntity(entity.EntityID);
 - [[GameObject]] - Entity handle
 - [[Archetype]] - Component type optimization
 - [[FastestTable]] - High-performance lookup table
+- [[Component]] - Data-only struct
+- [[System]] - Logic processor
+- [[Query]] - Entity filtering
+- [[entity-component-system-ecs]] — ECS overview
+- [[Component Storage]] — Typed data storage
+- [[ChunkTuple]] — Batch creation
+- [[GameObjectEnumerator]] — Entity iteration
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[queries-index]] — Query index
+- [[handlers-index]] — Handler index
+- [[events-index]] — Event system
+- [[architecture-index]] — Patterns

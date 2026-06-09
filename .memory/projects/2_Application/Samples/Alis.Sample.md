@@ -1,33 +1,46 @@
-# Alis.Sample
+# Alis.Sample (All-in-One Sample)
 
 ## Overview
-Sample/demo application demonstrating usage of the core Alis application library.
+All-in-one sample/demo application that exercises the full ALIS engine pipeline. Includes all source generators from across the 6-layer architecture and a custom asset build pipeline with SHA256-based incremental compilation.
 
 ## Project Details
 - **Layer**: 2_Application
-- **Type**: Sample Application
-- **Framework**: net8.0
+- **Type**: Sample Application (integration test / reference)
+- **Framework**: `net10.0`
 - **Output Dir**: `bin/$(Configuration)/$(RuntimeIdentifier)/lib/`
+- **SonarQubeExclude**: `true`
 
 ## Dependencies
-- [[projects/2_Application/Alis]] (2_Application) — Core application library
-- All generators from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation
+- **Direct**: [[projects/2_Application/Alis]] (Core application library)
+- **Source Generators**: All generators from:
+  - `3_Structuration/**/generator/**`
+  - `4_Operation/**/generator/**`
+  - `5_Declaration/**/generator/**`
+  - `6_Ideation/**/generator/**`
 
 ## Build Configuration
-- **LangVersion**: 13
-- **Nullable**: disable
-- **AllowUnsafeBlocks**: false
-- **SonarQubeExclude**: true
+- **LangVersion**: `13`
+- **Nullable**: `disable`
+- **AllowUnsafeBlocks**: `false`
 
 ## Asset Pipeline
-- Uses [[#Asset Pack System]] for resource management
-- SHA256 hash-based change detection
-- Incremental build via manifest file
+Uses a custom MSBuild-based asset pipeline for resource management:
 
-## Key Build Targets
-- `_PrepareAssetPackManifest` — Generates asset manifest with SHA256 hashes
-- `ZipAssets` — Zips assets and encodes to base64
+| Target | Description |
+|---|---|
+| `_PrepareAssetPackManifest` | Generates asset manifest with SHA256 content hashes for each asset file |
+| `ZipAssets` | Compresses all assets into a zip archive |
+| *(embedded)* | Base64-encodes the zip into the assembly |
+
+**Architecture**: Incremental build — only re-processes assets when content changes (SHA256-based change detection via manifest file).
+
+## Project References
+- All `Generator.csproj` files from 4_Operation and 6_Ideation (referenced as Analyzers with `PrivateAssets=all`, `ReferenceOutputAssembly=false`)
+- Targets `netstandard2.0` for generator compatibility
 
 ## Notes
-- Demonstrates core library usage patterns
-- Can be used as starting point for new projects
+- Most comprehensive sample in terms of dependency coverage (references every layer)
+- Tests the full build pipeline including source generators
+- Asset pipeline enables self-contained game builds without external asset files at runtime
+- SHA256 manifest ensures deterministic builds and cache optimization
+- Excluded from SonarQube analysis (sample code quality standards differ from library code)

@@ -1,24 +1,38 @@
 # Alis.Sample.Space.Simulator
 
 ## Overview
-Sample game demonstrating ALIS engine capabilities: Space.Simulator.
+Space simulation game built on the ALIS engine. Provides a physics-based foundation for space/sandbox gameplay with basic scene setup and audio placeholder.
 
 ## Project Details
 - **Layer**: 2_Application
 - **Type**: Game Sample
-- **Framework**: net8.0
-- **Purpose**: Educational/reference game
+- **Framework**: `net10.0`
+- **Platforms**: Desktop, Web
+- **Purpose**: Educational/reference — space simulation foundation
+
+## Platform Variants
+| Platform | Project File |
+|---|---|
+| Desktop | `Alis.Sample.Space.Simulator.Desktop.csproj` |
+| Web | `Alis.Sample.Space.Simulator.Web.csproj` |
+
+## Scene Structure
+| GameObject | Components | Purpose |
+|---|---|---|
+| `Sound Track` | (transform only) | Audio placeholder |
+
+## Configuration
+- **Name**: "T-Rex Dino Game" (note: likely placeholder)
+- **Resolution**: 800×600
+- **Gravity**: `(0, -9.8)`
+- **Audio volume**: 50
 
 ## Dependencies
-- Alis.App.Core (2_Application)
-- Alis.Core (3_Structuration)
-
-## Key Files
-- `Program.cs` — Game entry point
-- `Game.cs` — Game implementation
-- `*.cs` — Game-specific systems and components
+- [[projects/2_Application/Alis]] (Core application library)
+- `Alis.Core.Ecs` — ECS, Scene, GameObject
+- `Alis.Core.Ecs.Systems` — VideoGame
 
 ## Notes
-- Demonstrates specific engine features
-- Reference implementation for game developers
-- May use specific extensions
+- Name field appears to be a placeholder (copy-paste from Dino sample)
+- Gameplay scripts (spacecraft physics, orbital mechanics, etc.) would extend this foundation
+- Basic scene with Sound Track placeholder for spatial audio

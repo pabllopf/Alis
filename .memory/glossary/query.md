@@ -190,3 +190,16 @@ private GameObject[] GetMatchingEntities(GameObjectType type)
 - [[System]] - Processing unit using queries
 - [[FastestTable]] - High-performance lookup table
 - [[Archetype]] - Component type optimization
+- [[Component]] - Data-only struct
+- [[Scene]] - World container
+- [[GameObject]] - Entity handle
+- [[entity-component-system-ecs]] — ECS overview
+- [[Rule]] — Query constraint
+- [[GameObjectEnumerator]] — Entity iteration
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[queries-index]] — Full query index
+- [[performance-index]] — Query performance
+- [[architecture-index]] — Patterns

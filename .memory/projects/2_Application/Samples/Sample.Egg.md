@@ -1,24 +1,39 @@
 # Alis.Sample.Egg
 
 ## Overview
-Sample game demonstrating ALIS engine capabilities: Egg.
+**"The Egg"** — a narrative/philosophical game based on Andy Weir's short story, built on the ALIS engine. Demonstrates configuration-driven scene setup with named scene and sound track, suitable for narrative-focused game experiences.
 
 ## Project Details
 - **Layer**: 2_Application
 - **Type**: Game Sample
-- **Framework**: net8.0
-- **Purpose**: Educational/reference game
+- **Framework**: `net10.0`
+- **Platforms**: Desktop, Web
+- **Purpose**: Educational/reference — narrative game foundation
+
+## Platform Variants
+| Platform | Project File |
+|---|---|
+| Desktop | `Alis.Sample.Egg.Desktop.csproj` |
+| Web | `Alis.Sample.Egg.Web.csproj` |
+
+## Scene Structure
+| GameObject | Components | Purpose |
+|---|---|---|
+| `Sound Track` | (transform only) | Audio placeholder |
+
+## Configuration
+- **Name**: "The Egg"
+- **Resolution**: 800×600
+- **Gravity**: `(0, -9.8)`
+- **Icon**: `app.ico`
 
 ## Dependencies
-- Alis.App.Core (2_Application)
-- Alis.Core (3_Structuration)
-
-## Key Files
-- `Program.cs` — Game entry point
-- `Game.cs` — Game implementation
-- `*.cs` — Game-specific systems and components
+- [[projects/2_Application/Alis]] (Core application library)
+- `Alis.Core.Ecs` — ECS, Scene, GameObject
+- `Alis.Core.Ecs.Systems` — VideoGame
 
 ## Notes
-- Demonstrates specific engine features
-- Reference implementation for game developers
-- May use specific extensions
+- Named after Andy Weir's "The Egg" — suggests narrative/dialogue focus
+- Audio volume set to 50 (balanced for dialogue)
+- Basic scene with named GameObject — foundation for narrative interactions
+- Uses `.ico` icon format (vs `.bmp` used by other samples)

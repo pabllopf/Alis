@@ -90,3 +90,13 @@ public interface IWithTag<T> : IHasBuilder<IWithTag<T>> where T : struct
 - [[Builder Pattern]] - Object construction pattern
 - [[Component]] - Data container
 - [[GameObject]] - Entity handle
+- [[entity-component-system-ecs]] — ECS overview
+- [[ComponentStorage]] — Typed data storage
+- [[event-t]] — Generic event handler
+
+## Related Architecture
+
+- [[Alis.Core.Aspect.Fluent]] — Fluent aspect project
+- [[architecture-index]] — Patterns index
+- [[apis-index]] — Public APIs
+- [[naming-conventions]] — Interface naming

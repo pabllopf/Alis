@@ -119,3 +119,12 @@ public void Dispose()
 - [[GameObjectFlags]] - Entity state flags
 - [[Event<T>]] - Generic event handler
 - [[GameObject]] - Entity handle
+- [[Component]] - Data-only struct
+- [[Scene]] - World container
+- [[entity-component-system-ecs]] — ECS overview
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[events-index]] — Event system index
+- [[handlers-index]] — Handler index

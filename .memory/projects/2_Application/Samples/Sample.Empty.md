@@ -1,24 +1,27 @@
 # Alis.Sample.Empty
 
 ## Overview
-Sample game demonstrating ALIS engine capabilities: Empty.
+Empty/skeleton project built on the ALIS engine. Minimal bootstrap with `VideoGame.Create().Run()` — serves as the starting template for new ALIS game projects.
 
 ## Project Details
 - **Layer**: 2_Application
-- **Type**: Game Sample
-- **Framework**: net8.0
-- **Purpose**: Educational/reference game
+- **Type**: Template/Skeleton Project
+- **Framework**: `net10.0`
+- **Platforms**: Desktop, Web
+- **Purpose**: Project template — minimum viable ALIS game
+
+## Platform Variants
+| Platform | Project File |
+|---|---|
+| Desktop | `Alis.Sample.Empty.Desktop.csproj` |
+| Web | `Alis.Sample.Empty.Web.csproj` |
 
 ## Dependencies
-- Alis.App.Core (2_Application)
-- Alis.Core (3_Structuration)
-
-## Key Files
-- `Program.cs` — Game entry point
-- `Game.cs` — Game implementation
-- `*.cs` — Game-specific systems and components
+- [[projects/2_Application/Alis]] (Core application library)
+- `Alis.Core.Ecs.Systems` — VideoGame
 
 ## Notes
-- Demonstrates specific engine features
-- Reference implementation for game developers
-- May use specific extensions
+- Intended as the starter template for new game projects
+- Provides Desktop + Web dual-targeting out of the box
+- No configuration, no scene setup — completely clean slate
+- Ideal starting point for understanding ALIS project structure

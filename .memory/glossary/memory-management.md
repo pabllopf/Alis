@@ -153,3 +153,13 @@ Ref<Transform> transformRef = player.TryGetCore<Transform>(out bool exists);
 - [[ZipCacheEntry]] - Compressed cache entry
 - [[AssetRegistry]] - Resource management
 - [[ZipEntryInfo]] - Archive metadata
+- [[GameObject]] - Entity handle (struct packing)
+- [[Ref<T>]] - Reference wrapper
+- [[Span<T>]] - Memory slice
+
+## Related Architecture
+
+- [[Alis.Core.Aspect.Memory]] — Memory aspect project
+- [[performance-index]] — Performance optimizations
+- [[security-overview]] — Memory security
+- [[glossary/index]] — All glossary terms

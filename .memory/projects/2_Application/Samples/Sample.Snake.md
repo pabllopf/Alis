@@ -1,24 +1,31 @@
 # Alis.Sample.Snake
 
 ## Overview
-Sample game demonstrating ALIS engine capabilities: Snake.
+Classic Snake game built on the ALIS engine. Minimal boilerplate — demonstrates the simplest possible game setup using `VideoGame.Create().Run()` with zero configuration.
 
 ## Project Details
 - **Layer**: 2_Application
 - **Type**: Game Sample
-- **Framework**: net8.0
-- **Purpose**: Educational/reference game
+- **Framework**: `net10.0`
+- **Platforms**: Desktop, Web
+- **Purpose**: Educational/reference — minimal engine bootstrap
+
+## Platform Variants
+| Platform | Project File |
+|---|---|
+| Desktop | `Alis.Sample.Snake.Desktop.csproj` |
+| Web | `Alis.Sample.Snake.Web.csproj` |
+
+## Scene Structure
+- **Minimal**: No explicit scene setup in `Program.cs`
+- Single call: `VideoGame.Create().Run()` — all defaults
 
 ## Dependencies
-- Alis.App.Core (2_Application)
-- Alis.Core (3_Structuration)
-
-## Key Files
-- `Program.cs` — Game entry point
-- `Game.cs` — Game implementation
-- `*.cs` — Game-specific systems and components
+- [[projects/2_Application/Alis]] (Core application library)
+- `Alis.Core.Ecs.Systems` — VideoGame
 
 ## Notes
-- Demonstrates specific engine features
-- Reference implementation for game developers
-- May use specific extensions
+- Most minimal sample — showcase of absolute minimum code to start an ALIS game
+- Gameplay logic likely in separate script files (not in `Program.cs`)
+- Demonstrates that ALIS engine works with zero-configuration bootstrap
+- All settings use engine defaults (resolution, physics, audio)

@@ -149,3 +149,16 @@ public class Archetype
 - [[Archetype]] - Component type optimization
 - [[GameObjectLocation]] - Entity location data
 - [[Component<T>]] - Component wrapper
+- [[GameObject]] - Entity handle
+- [[Scene]] - World container
+- [[Component]] - Data-only struct
+- [[entity-component-system-ecs]] — ECS overview
+- [[memory-management]] — Memory strategy
+- [[FastestTable]] — Lookup table
+- [[FastestStack]] — Memory-efficient stack
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[performance-index]] — Performance optimizations
+- [[architecture-index]] — Patterns

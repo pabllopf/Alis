@@ -77,3 +77,17 @@ player.Remove<Transform>();
 - [[Component Storage]] - Typed component data
 - [[Archetype]] - Component type optimization
 - [[GameObjectFlags]] - Entity state flags
+- [[Component]] - Data-only struct
+- [[System]] - Logic processor
+- [[Query]] - Entity filtering
+- [[entity-component-system-ecs]] — ECS overview
+- [[GameObjectLocation]] — Location data
+- [[GameObjectOnly]] — Entity-only handle
+- [[GameObjectEnumerator]] — Entity iteration
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[queries-index]] — Query index
+- [[performance-index]] — Performance optimizations
+- [[architecture-index]] — Patterns

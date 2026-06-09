@@ -1,24 +1,46 @@
 # Alis.Sample.Inefable
 
 ## Overview
-Sample game demonstrating ALIS engine capabilities: Inefable.
+**Inefable** — a "Roguelike 2D multiplayer with RPG and arcade components" built on the ALIS engine. The most narratively ambitious sample, featuring a dungeon entrance scene with animated background, sprite rendering, and camera system. Intended as a reference for more complex game compositions combining multiple genres.
 
 ## Project Details
 - **Layer**: 2_Application
 - **Type**: Game Sample
-- **Framework**: net8.0
-- **Purpose**: Educational/reference game
+- **Framework**: `net10.0`
+- **Platforms**: Desktop, Web
+- **Purpose**: Educational/reference — hybrid genre game composition
+
+## Platform Variants
+| Platform | Project File |
+|---|---|
+| Desktop | `Alis.Sample.Inefable.Desktop.csproj` |
+| Web | `Alis.Sample.Inefable.Web.csproj` |
+
+## Scene Structure ("Dungeon Entrance")
+| GameObject | Components | Purpose |
+|---|---|---|
+| `Main Camera` | `Camera` (1024×768) | Game view |
+| `Background` | `Sprite` (`Draw001.bmp`, depth -3, tagged "Environment") | Dungeon backdrop |
+
+## Graphics
+- **Resolution**: 1024×768
+- **Sprite depth**: -3 (renders behind other elements)
+
+## Physics
+- **Gravity**: `(0, -9.8)`
+- **Debug**: Enabled
+
+## Audio
+- **Volume**: 100
 
 ## Dependencies
-- Alis.App.Core (2_Application)
-- Alis.Core (3_Structuration)
-
-## Key Files
-- `Program.cs` — Game entry point
-- `Game.cs` — Game implementation
-- `*.cs` — Game-specific systems and components
+- [[projects/2_Application/Alis]] (Core application library)
+- `Alis.Core.Ecs` — ECS, Scene, GameObject
+- `Alis.Core.Ecs.Components.Render` — Sprite, Camera
+- `Alis.Core.Ecs.Systems` — VideoGame
 
 ## Notes
-- Demonstrates specific engine features
-- Reference implementation for game developers
-- May use specific extensions
+- Most complex game description among samples ("Roguelike 2D multiplayer with RPG and arcade components")
+- Current implementation is a minimal scene setup (camera + background) — gameplay systems would extend this foundation
+- Uses `General.Debug(false)` — release-mode configuration
+- Build() calls terminate each configuration section (fluent API variant)

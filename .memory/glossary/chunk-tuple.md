@@ -130,3 +130,13 @@ public struct EntityEnumerator : IEnumerator<GameObject>
 - [[GameObject]] - Entity handle
 - [[Scene]] - World container
 - [[FastestStack]] - Memory-efficient stack
+- [[GameObjectEnumerator]] - Entity iteration
+- [[Component]] - Data-only struct
+- [[Archetype]] - Component optimization
+- [[entity-component-system-ecs]] — ECS overview
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[performance-index]] — Batch performance
+- [[architecture-index]] — Patterns
