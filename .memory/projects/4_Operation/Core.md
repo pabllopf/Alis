@@ -44,3 +44,15 @@ All use the same asset pipeline:
 - Operation layer provides concrete runtime implementations
 - Builds upon Structuration layer abstractions
 - Consumed by Declaration and Ideation layers
+
+## Related
+- [[projects/3_Structuration/Alis.Core]] — Core abstractions
+- [[projects/5_Declaration/Core]] — Declaration layer
+- [[projects/6_Ideation/Core]] — Ideation layer
+- [[projects/2_Application/Alis]] — Application layer
+- [[projects/4_Operation/Ecs]] — ECS subsystem
+- [[projects/Cross-Cutting-Concerns]] — Build config
+- [[Layered Architecture]] — Layer structure
+- [[Alis Architecture Overview]] — Full architecture
+- [[generator-pattern]] — Generator pattern
+- [[operation-index]] — Operations index

@@ -39,3 +39,14 @@ All use the same asset pipeline:
 - Declaration layer defines data contracts used by all other layers
 - Pure interface/DTO definitions with no implementation
 - Consumed by Ideation layer
+
+## Related
+- [[projects/3_Structuration/Alis.Core]] — Core abstractions
+- [[projects/4_Operation/Core]] — Operation layer
+- [[projects/6_Ideation/Core]] — Ideation layer
+- [[projects/2_Application/Alis]] — Application layer
+- [[Layered Architecture]] — Layer structure
+- [[Alis Architecture Overview]] — Full architecture
+- [[aspect-oriented-design]] — Design patterns
+- [[projects/Cross-Cutting-Concerns]] — Build config
+- [[declaration-index]] — Declaration index

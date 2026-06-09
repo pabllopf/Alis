@@ -39,3 +39,15 @@ All use the same asset pipeline:
 - Ideation layer contains game-specific domain logic
 - Most specialized libraries in the architecture
 - Consumed by Presentation layer applications
+
+## Related
+- [[projects/3_Structuration/Alis.Core]] — Core abstractions
+- [[projects/4_Operation/Core]] — Operation layer
+- [[projects/5_Declaration/Core]] — Declaration layer
+- [[projects/2_Application/Alis]] — Application layer
+- [[projects/1_Presentation/Engine]] — Engine consumer
+- [[Layered Architecture]] — Layer structure
+- [[Alis Architecture Overview]] — Full architecture
+- [[aspect-oriented-design]] — Design patterns
+- [[ideation-index]] — Ideation index
+- [[projects/Cross-Cutting-Concerns]] — Build config
