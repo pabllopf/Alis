@@ -1,0 +1,111 @@
+{
+  "propertyTypes": {
+    "title": {
+      "type": "text",
+      "required": true,
+      "placeholder": "Document title"
+    },
+    "tags": {
+      "type": "multiselect",
+      "options": [
+        "documentation", "reference", "concept", "theory", "architecture",
+        "design", "implementation", "project", "api", "glossary", "terminology",
+        "decision", "adr", "diagram", "visualization", "mermaid",
+        "system", "state", "tracking", "management", "sample", "game", "example",
+        "extension", "plugin", "add-on", "application", "software", "tool",
+        "summary", "overview", "source", "testing", "test", "quality", "assurance",
+        "onboarding", "guide", "getting-started", "prompt", "ai", "entity", "gameobject",
+        "scene", "component", "performance", "benchmark", "optimization", "report", "analysis",
+        "validation", "index", "catalog", "queue", "work", "log", "execution", "history",
+        "checkpoint", "convention", "standard", "naming", "crosslink"
+      ]
+    },
+    "type": {
+      "type": "select",
+      "options": ["index", "concept", "project", "glossary", "decision", "diagram", "system", "sample", "extension", "application"]
+    },
+    "status": {
+      "type": "select",
+      "options": ["active", "archived", "draft", "deprecated"]
+    },
+    "version": {
+      "type": "text",
+      "placeholder": "X.Y.Z"
+    },
+    "lastUpdated": {
+      "type": "date"
+    },
+    "author": {
+      "type": "text"
+    },
+    "license": {
+      "type": "text"
+    },
+    "repository": {
+      "type": "url"
+    },
+    "weight": {
+      "type": "number",
+      "min": 0,
+      "max": 100
+    },
+    "accessibility": {
+      "type": "select",
+      "options": ["public", "internal", "private"]
+    },
+    "language": {
+      "type": "select",
+      "options": ["en", "es"]
+    },
+    "ai-summary": {
+      "type": "textarea",
+      "maxLength": 500
+    },
+    "ai-keywords": {
+      "type": "multiselect"
+    },
+    "ai-confidence": {
+      "type": "number",
+      "min": 0.0,
+      "max": 1.0
+    },
+    "ai-context": {
+      "type": "multiselect",
+      "options": ["architecture", "design", "implementation", "reference", "theory"]
+    },
+    "ai-priority": {
+      "type": "select",
+      "options": ["high", "medium", "low"]
+    },
+    "related": {
+      "type": "multilink"
+    },
+    "parent": {
+      "type": "link"
+    },
+    "child": {
+      "type": "multilink"
+    },
+    "references": {
+      "type": "multilink"
+    },
+    "dependsOn": {
+      "type": "multilink"
+    }
+  },
+  "defaultProperties": {
+    "status": "active",
+    "version": "1.0.0",
+    "accessibility": "public",
+    "language": "en",
+    "ai-confidence": 0.85,
+    "ai-priority": "medium"
+  },
+  "validationRules": {
+    "requireTitle": true,
+    "requireTags": true,
+    "requireType": true,
+    "validateLinks": true,
+    "autoUpdateDate": true
+  }
+}

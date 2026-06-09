@@ -1,7 +1,8 @@
 ---
-title: Extension: Graphic.Sfml
-tags: [on]
+Extension: Graphic.Sfml
+tags: [extension,plugin,graphic,sfml,rendering,documentation]
 ---
+
 
 
 ## Overview

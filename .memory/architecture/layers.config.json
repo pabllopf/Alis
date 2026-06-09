@@ -1,0 +1,134 @@
+{
+  "layers": [
+    {
+      "id": "1_Presentation",
+      "name": "Presentation Layer",
+      "description": "Engine, extensions, UI, runtime frontends",
+      "directory": "projects/1_Presentation",
+      "fileCount": 76,
+      "priority": 100,
+      "properties": {
+        "type": "presentation",
+        "status": "active",
+        "accessibility": "public",
+        "weight": 95,
+        "ai-priority": "high"
+      },
+      "projects": [
+        "Engine"
+      ]
+    },
+    {
+      "id": "2_Application",
+      "name": "Application Layer",
+      "description": "Alis, samples, executable compositions",
+      "directory": "projects/2_Application",
+      "fileCount": 52,
+      "priority": 90,
+      "properties": {
+        "type": "application",
+        "status": "active",
+        "accessibility": "public",
+        "weight": 85,
+        "ai-priority": "high"
+      },
+      "projects": [
+        "Samples"
+      ]
+    },
+    {
+      "id": "3_Structuration",
+      "name": "Structuration Layer",
+      "description": "Core abstractions, base infrastructure",
+      "directory": "projects/3_Structuration",
+      "fileCount": 37,
+      "priority": 85,
+      "properties": {
+        "type": "structuration",
+        "status": "active",
+        "accessibility": "public",
+        "weight": 90,
+        "ai-priority": "high"
+      },
+      "projects": [
+        "Core",
+        "Infrastructure"
+      ]
+    },
+    {
+      "id": "4_Operation",
+      "name": "Operation Layer",
+      "description": "Graphics, audio, media, platform operations",
+      "directory": "projects/4_Operation",
+      "fileCount": 15,
+      "priority": 80,
+      "properties": {
+        "type": "operation",
+        "status": "active",
+        "accessibility": "public",
+        "weight": 80,
+        "ai-priority": "medium"
+      },
+      "projects": [
+        "Graphics",
+        "Audio",
+        "Media"
+      ]
+    },
+    {
+      "id": "5_Declaration",
+      "name": "Declaration Layer",
+      "description": "Contracts, interfaces, metadata",
+      "directory": "projects/5_Declaration",
+      "fileCount": 6,
+      "priority": 75,
+      "properties": {
+        "type": "declaration",
+        "status": "active",
+        "accessibility": "public",
+        "weight": 75,
+        "ai-priority": "medium"
+      },
+      "projects": [
+        "Audio",
+        "Physic",
+        "Aspect"
+      ]
+    },
+    {
+      "id": "6_Ideation",
+      "name": "Ideation Layer",
+      "description": "Experimental modules",
+      "directory": "projects/6_Ideation",
+      "fileCount": 15,
+      "priority": 70,
+      "properties": {
+        "type": "ideation",
+        "status": "draft",
+        "accessibility": "internal",
+        "weight": 60,
+        "ai-priority": "low"
+      },
+      "projects": [
+        "Memory",
+        "Time",
+        "Math",
+        "Logging"
+      ]
+    }
+  ],
+  "dependencyOrder": [
+    "1_Presentation",
+    "2_Application",
+    "3_Structuration",
+    "4_Operation",
+    "5_Declaration",
+    "6_Ideation"
+  ],
+  "rules": {
+    "noReverseDependencies": true,
+    "multiTargeting": true,
+    "aotCompatibility": true,
+    "xmlDocumentation": true
+  }
+}

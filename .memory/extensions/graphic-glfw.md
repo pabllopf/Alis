@@ -1,7 +1,8 @@
 ---
-title: Extension: Graphic.Glfw
-tags: [on]
+Extension: Graphic.Glfw
+tags: [extension,plugin,graphic,glfw,rendering,documentation]
 ---
+
 
 
 ## Overview

@@ -1,7 +1,8 @@
 ---
-title: Extension: Profile
-tags: [on]
+Extension: Profile
+tags: [extension,plugin,profile,profiling,performance,documentation]
 ---
+
 
 
 ## Overview

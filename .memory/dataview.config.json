@@ -1,0 +1,44 @@
+{
+  "enableJavaScript": false,
+  "taskSupport": {
+    "enableTaskSupport": false
+  },
+  "defaultView": "table",
+  "tables": {
+    "showFileIcons": true,
+    "abbreviateUrls": true,
+    "truncateDescriptions": true,
+    "showTags": true,
+    "showType": true,
+    "showStatus": true,
+    "showVersion": true,
+    "showLastUpdated": true,
+    "showAuthor": true,
+    "showWeight": true,
+    "showAccessibility": true,
+    "showAIConfidence": true,
+    "showAIPriority": true
+  },
+  "views": {
+    "groupByType": true,
+    "groupByStatus": true,
+    "groupByTags": true,
+    "groupByAuthor": true,
+    "groupByDate": true,
+    "sortByWeight": true,
+    "sortByLastUpdated": true,
+    "sortByTitle": true
+  },
+  "queries": {
+    "allDocuments": "TABLE type, status, version, lastUpdated, author, weight, ai-confidence FROM .memory/ SORT lastUpdated DESC",
+    "activeProjects": "TABLE version, lastUpdated, author FROM .memory/projects/ WHERE status = \"active\" SORT weight DESC",
+    "concepts": "TABLE version, author, ai-confidence FROM .memory/concepts/ WHERE type = \"concept\" SORT ai-confidence DESC",
+    "glossary": "TABLE version, lastUpdated FROM .memory/glossary/ SORT title ASC",
+    "decisions": "TABLE version, author, weight FROM .memory/decisions/ WHERE status = \"active\" SORT weight DESC",
+    "diagrams": "TABLE version, lastUpdated FROM .memory/diagrams/ WHERE type = \"diagram\"",
+    "systemState": "TABLE version, status, lastUpdated FROM .memory/system/ WHERE status = \"active\" SORT lastUpdated DESC",
+    "samples": "TABLE version, author, weight FROM .memory/samples/ WHERE type = \"sample\" SORT weight DESC",
+    "extensions": "TABLE version, lastUpdated, author FROM .memory/extensions/ WHERE status = \"active\"",
+    "applications": "TABLE version, author, accessibility FROM .memory/applications/ WHERE accessibility = \"public\" SORT weight DESC"
+  }
+}

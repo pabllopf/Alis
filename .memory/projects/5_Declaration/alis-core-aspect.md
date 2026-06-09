@@ -1,5 +1,5 @@
 ---
-title: Project: Alis.Core.Aspect (Declaration)
+title: Alis.Core.Aspect
 tags: [declaration,contract,interface,documentation]
 ---
 

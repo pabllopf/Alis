@@ -1,0 +1,226 @@
+{
+  "propertySchema": {
+    "version": "1.2.0",
+    "lastUpdated": "2026-06-09",
+    "author": "Pablo Perdomo Falcón",
+    "license": "GPLv3"
+  },
+  "propertyCategories": {
+    "core": {
+      "description": "Required properties for all documents",
+      "properties": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "minLength": 3,
+          "description": "Human-readable document title"
+        },
+        {
+          "name": "tags",
+          "type": "array",
+          "required": true,
+          "itemType": "string",
+          "format": "lowercase,hyphen-separated",
+          "description": "Categorization tags"
+        },
+        {
+          "name": "type",
+          "type": "enum",
+          "required": true,
+          "options": ["index", "concept", "project", "glossary", "decision", "diagram", "system", "sample", "extension", "application"],
+          "description": "Document type"
+        }
+      ]
+    },
+    "metadata": {
+      "description": "Recommended metadata properties",
+      "properties": [
+        {
+          "name": "status",
+          "type": "enum",
+          "required": false,
+          "options": ["active", "archived", "draft", "deprecated"],
+          "default": "active",
+          "description": "Document lifecycle status"
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "required": false,
+          "format": "semantic-versioning",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "default": "1.0.0",
+          "description": "Semantic versioning (X.Y.Z)"
+        },
+        {
+          "name": "lastUpdated",
+          "type": "date",
+          "required": false,
+          "format": "ISO-8601",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "Last modification date"
+        },
+        {
+          "name": "author",
+          "type": "string",
+          "required": false,
+          "description": "Document author name"
+        },
+        {
+          "name": "license",
+          "type": "string",
+          "required": false,
+          "default": "GPLv3",
+          "description": "License type"
+        },
+        {
+          "name": "repository",
+          "type": "url",
+          "required": false,
+          "description": "Source repository URL"
+        },
+        {
+          "name": "weight",
+          "type": "number",
+          "required": false,
+          "min": 0,
+          "max": 100,
+          "default": 50,
+          "description": "Importance/priority score"
+        },
+        {
+          "name": "accessibility",
+          "type": "enum",
+          "required": false,
+          "options": ["public", "internal", "private"],
+          "default": "public",
+          "description": "Access level"
+        },
+        {
+          "name": "language",
+          "type": "enum",
+          "required": false,
+          "options": ["en", "es"],
+          "default": "en",
+          "description": "Document language"
+        }
+      ]
+    },
+    "aiOptimized": {
+      "description": "AI-optimized properties for better machine understanding",
+      "properties": [
+        {
+          "name": "ai-summary",
+          "type": "string",
+          "required": false,
+          "maxLength": 500,
+          "description": "AI-generated summary"
+        },
+        {
+          "name": "ai-keywords",
+          "type": "array",
+          "required": false,
+          "itemType": "string",
+          "maxItems": 10,
+          "description": "AI-extracted keywords"
+        },
+        {
+          "name": "ai-confidence",
+          "type": "number",
+          "required": false,
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.85,
+          "description": "AI confidence score"
+        },
+        {
+          "name": "ai-context",
+          "type": "array",
+          "required": false,
+          "itemType": "string",
+          "options": ["architecture", "design", "implementation", "reference", "theory"],
+          "description": "AI context categories"
+        },
+        {
+          "name": "ai-priority",
+          "type": "enum",
+          "required": false,
+          "options": ["high", "medium", "low"],
+          "default": "medium",
+          "description": "AI processing priority"
+        }
+      ]
+    },
+    "relationships": {
+      "description": "Relationship properties for document linking",
+      "properties": [
+        {
+          "name": "related",
+          "type": "array",
+          "required": false,
+          "itemType": "link",
+          "format": "wiki-link",
+          "pattern": "^\\[\\[.*\\]\\]$",
+          "description": "Related document wiki-links"
+        },
+        {
+          "name": "parent",
+          "type": "link",
+          "required": false,
+          "format": "wiki-link",
+          "pattern": "^\\[\\[.*\\]\\]$",
+          "description": "Parent document wiki-link"
+        },
+        {
+          "name": "child",
+          "type": "array",
+          "required": false,
+          "itemType": "link",
+          "format": "wiki-link",
+          "pattern": "^\\[\\[.*\\]\\]$",
+          "description": "Child document wiki-links"
+        },
+        {
+          "name": "references",
+          "type": "array",
+          "required": false,
+          "itemType": "link",
+          "format": "wiki-link",
+          "pattern": "^\\[\\[.*\\]\\]$",
+          "description": "External reference wiki-links"
+        },
+        {
+          "name": "dependsOn",
+          "type": "array",
+          "required": false,
+          "itemType": "link",
+          "format": "wiki-link",
+          "pattern": "^\\[\\[.*\\]\\]$",
+          "description": "Dependencies wiki-links"
+        }
+      ]
+    }
+  },
+  "validationRules": [
+    "title: string, required, min 3 chars",
+    "tags: array, required, lowercase, hyphen-separated",
+    "type: enum, one of documentTypes",
+    "status: enum, one of statusValues",
+    "version: string, semantic versioning X.Y.Z",
+    "lastUpdated: date, YYYY-MM-DD format",
+    "weight: number, 0-100",
+    "confidence: number, 0-1",
+    "links: wiki-link format [[Document Title]]"
+  ],
+  "defaultValues": {
+    "status": "active",
+    "version": "1.0.0",
+    "accessibility": "public",
+    "language": "en",
+    "ai-confidence": 0.85,
+    "ai-priority": "medium",
+    "weight": 50,
+    "license": "GPLv3"
+  }
+}

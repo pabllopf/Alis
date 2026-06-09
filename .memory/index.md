@@ -1,241 +1,305 @@
----
-title: ALIS Memory Index
-tags: [documentation,reference]
----
+# ALIS Memory System - Global Index
 
-
-> **Version**: 1.1.0 | **Author**: Pablo Perdomo Falcón | **License**: GPLv3  
+> **Version**: 1.2.0 | **Author**: Pablo Perdomo Falcón | **License**: GPLv3  
 > **Repository**: https://github.com/pabllopf/Alis | **Website**: www.alisengine.com  
-> **Status**: **COMPLETE** ✓ | **Last Updated**: 2026-06-09
+> **Status**: **ACTIVE** ✓ | **Last Updated**: 2026-06-09
 
-## Welcome
+## Overview
 
-This directory contains the complete Obsidian-compatible memory system for the **ALIS Game Engine Framework** — a cross-platform C# game engine with 140+ projects organized across 6 architectural layers.
+This directory contains the complete **ALIS Memory System** — a cross-platform C# game engine framework with **140+ projects** organized across **6 architectural layers** and **40+ directories**.
 
-## Status: **COMPLETE** ✓
+## System Statistics
 
-| Metric | Value |
-|---|---|
-| Total Projects | 140 csproj files |
-| Total Documentation | 154 markdown docs |
-| Coverage | 110% (includes samples and tests) |
-| Layers | 6 |
-| Status | **COMPLETE** ✓ |
+| Metric                   | Value                         |
+| ------------------------ | ----------------------------- |
+| **Total Files**          | 425 markdown files            |
+| **Total Directories**    | 40+ directories               |
+| **Total Projects**       | 140+ projects                 |
+| **Architectural Layers** | 6 layers                      |
+| **Framework Targets**    | 15+ frameworks                |
+| **Documentation Type**   | YAML frontmatter + wiki-links |
 
-## Quick Navigation
+## Property System
 
-### For AI Agents
-- [[context/architecture-rules]] — Layer dependency rules and constraints
-- [[context/coding-conventions]] — Coding standards for the repo
-- [[context/dependency-constraints]] — Module dependency rules
-- [[context/project-map]] — Quick reference to all project types
-- [[context/onboarding]] — Quick start guide
-- [[prompts/ai-context]] — Quick reference card for AI agents
-- [[prompts/code-review-checklist]] — Code review guidelines
-- [[conventions/naming-conventions]] — Naming rules and patterns
+### Core Properties (Required)
 
-### For Developers
-- [[onboarding/getting-started]] — Developer onboarding guide
-- [[architecture/repository-overview]] — Full architecture overview
-- [[glossary/index]] — ALIS-specific terminology
+| Property | Type | Description |
+|----------|------|-------------|
+| `title` | string | Human-readable document title |
+| `tags` | array | Categorization tags (lowercase, hyphen-separated) |
+| `type` | string | Document type (index, concept, project, etc.) |
 
-### For Architecture
-- [[architecture/dependency-graph]] — Dependency map with Mermaid diagrams
-- [[architecture/build-system]] — Build configuration and commands
-- [[decisions/adr-001-layered-architecture]] — Six-layer architecture decision
-- [[decisions/adr-002-aggregator-pattern]] — Aggregator pattern decision
+### Metadata Properties (Recommended)
 
-### For Extensions
-- [[extensions/index]] — All 11 extensions indexed
-- [[extensions/graphic-sfml|Graphic.Sfml]] — SFML graphics backend
-- [[extensions/graphic-glfw|Graphic.Glfw]] — GLFW/OpenGL backend
-- [[extensions/graphic-sdl2|Graphic.Sdl2]] — SDL2 graphics backend
-- [[extensions/graphic-ui|Graphic.Ui]] — UI framework
-- [[extensions/translator|Language.Translator]] — Internationalization
-- [[extensions/dialogue|Language.Dialogue]] — Dialogue system
-- [[extensions/ffmpeg|Media.FFmpeg]] — Media processing
-- [[extensions/thread|Thread]] — Threading utilities
-- [[extensions/profile|Profile]] — Performance profiling
-- [[extensions/cloud-googledrive|Cloud.GoogleDrive]] — Cloud storage
-- [[extensions/updater|Updater]] — Auto-update system
+| Property | Type | Description |
+|----------|------|-------------|
+| `status` | string | Document lifecycle status (active, archived, draft, deprecated) |
+| `version` | string | Semantic versioning (X.Y.Z) |
+| `lastUpdated` | date | Last modification date (YYYY-MM-DD) |
+| `author` | string | Document author name |
+| `license` | string | License type (GPLv3) |
+| `repository` | string | Source repository URL |
+| `weight` | number | Importance/priority (0-100) |
+| `accessibility` | string | Access level (public, internal, private) |
+| `language` | string | Document language (en, es) |
 
-### For Applications
-- [[applications/index]] — All 4 applications indexed
-- [[applications/engine-editor|Engine]] — Game editor (ImGui)
-- [[applications/hub|Hub]] — Project launcher
+### AI-Optimized Properties
 
-### For Game Samples
-- [[samples/index]] — All 13+ samples indexed
-- [[samples/breakout|Breakout]] — Classic brick-breaking
-- [[samples/pong|Pong]] — 2-player pong
-- [[samples/platformer|Platformer]] — 2D platformer
-- [[samples/shooter|Shooter]] — Top-down shooter
-- [[samples/rpg|RPG]] — Turn-based RPG
-- [[samples/tetris|Tetris]] — Puzzle game
-- [[samples/snake|Snake]] — Classic snake
-- [[samples/flappy-bird|Flappy Bird]] — Tap-to-fly
-- [[samples/space-invaders|Space Invaders]] — Alien shooter
-- [[samples/pac-man|Pac-Man]] — Maze game
-- [[samples/asteroids|Asteroids]] — Space shooter
-- [[samples/breakout-3d|Breakout 3D]] — 3D breakout
-- [[samples/demo|Demo]] — Engine features showcase
+| Property | Type | Description |
+|----------|------|-------------|
+| `ai-summary` | string | AI-generated summary (max 500 chars) |
+| `ai-keywords` | array | AI-extracted keywords (max 10) |
+| `ai-confidence` | number | AI confidence score (0.0-1.0) |
+| `ai-context` | array | AI context categories |
+| `ai-priority` | string | AI processing priority (high, medium, low) |
 
-### For Project Discovery
-- [[system/indexes/projects-index]] — All projects indexed (154 docs)
-- [[system/indexes/layer-index]] — Layer breakdown
-- [[system/indexes/dependency-index]] — Dependency relationships
-- [[system/indexes/architecture-index]] — Architectural patterns
+### Relationship Properties
 
-### For System State
-- [[system/state/analysis-state]] — Analysis progress
-- [[system/state/project-state]] — Project tracking
-- [[system/state/execution-state]] — Execution batches
-- [[system/state/pending-work]] — Work queue
-- [[system/state/file-hashes]] — File hashes
-- [[system/state/repository-health]] — Repository health
-
-### For Sessions
-- [[system/sessions/current-session]] — Active session
-- [[system/sessions/session-history]] — Session history
-
-### For Logs
-- [[system/logs/execution-log]] — Detailed execution log
-
-## Repository At a Glance
-
-| Metric | Value |
-|--------|-------|
-| Total Projects | 140 (335 in slnx) |
-| Total Documentation | 154 markdown docs |
-| Architectural Layers | 6 |
-| Extensions | 11+ |
-| Game Samples | 13+ |
-| Applications | 4 |
-| Test Projects | ~35 |
-| Source Generators | 8 |
-| CI/CD Workflows | 41 |
-| Target Frameworks | 15+ (Debug) / 21 (Release) |
-| Runtime Identifiers | 13 |
-| C# Version | 13 |
-| .NET SDK | 10.0+ |
-| **Status** | **COMPLETE** ✓ |
+| Property | Type | Description |
+|----------|------|-------------|
+| `related` | array | Related document wiki-links |
+| `parent` | string | Parent document wiki-link |
+| `child` | array | Child document wiki-links |
+| `references` | array | External reference wiki-links |
+| `dependsOn` | array | Dependencies wiki-links |
 
 ## Directory Structure
 
-```
-.memory/
-├── index.md                          ← You are here
-├── schema.md                         ← Memory system schema
-├── log.md                            ← Session log
-│
-├── system/
-│   ├── state/
-│   │   ├── analysis-state.md        ← Analysis progress
-│   │   ├── project-state.md         ← Project tracking
-│   │   ├── execution-state.md       ← Execution batches
-│   │   ├── pending-work.md          ← Work queue
-│   │   ├── file-hashes.md           ← File hashes
-│   │   ├── memory-generation-status.md ← Generation status
-│   │   └── repository-health.md     ← Repository health
-│   │
-│   ├── indexes/
-│   │   ├── projects-index.md        ← All projects indexed
-│   │   ├── layer-index.md           ← Layer breakdown
-│   │   ├── dependency-index.md      ← Dependencies
-│   │   ├── architecture-index.md    ← Architecture
-│   │   ├── services-index.md        ← Services
-│   │   ├── apis-index.md            ← APIs
-│   │   └── tests-index.md           ← Tests
-│   │
-│   ├── sessions/
-│   │   ├── current-session.md       ← Active session
-│   │   └── session-history.md       ← Session history
-│   │
-│   └── logs/
-│       └── execution-log.md         ← Execution log
-│
-├── projects/                         ← All project docs (154)
-│   ├── 1_Presentation/              (~76 docs)
-│   ├── 2_Application/               (~5 docs)
-│   ├── 3_Structuration/             (~2 docs)
-│   ├── 4_Operation/                 (~14 docs)
-│   ├── 5_Declaration/               (~5 docs)
-│   └── 6_Ideation/                  (~15 docs)
-│
-├── architecture/                     ← Architecture docs
-├── concepts/                         ← Conceptual knowledge
-├── glossary/                         ← Terminology
-├── decisions/                        ← ADRs
-├── diagrams/                         ← Mermaid diagrams
-├── context/                          ← Context files
-├── conventions/                      ← Coding standards
-├── prompts/                          ← AI prompts
-├── onboarding/                       ← Developer onboarding
-├── extensions/                       ← Extension docs
-├── applications/                     ← Application docs
-├── samples/                          ← Sample docs
-├── domain/                           ← Domain docs
-├── entities/                         ← Entity docs
-├── infrastructure/                   ← Infrastructure docs
-├── security/                         ← Security docs
-├── performance/                      ← Performance docs
-├── reports/                          ← Reports
-├── summaries/                        ← Summaries
-├── knowledge-graph/                  ← Knowledge graph
-├── modules/                          ← Module docs
-├── application/                      ← Application docs
-└── raw/                              ← Raw data
-```
+### Layer 1: Presentation (76 files)
 
-## Documentation Coverage
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `projects/1_Presentation/Engine` | 76 | ALIS Engine core documentation |
 
-| Layer | Projects | Docs | Status |
-|---|---|---|---|
-| 1_Presentation | ~60 | ~76 | ✓ Complete |
-| 2_Application | ~5 | ~5 | ✓ Complete |
-| 3_Structuration | ~3 | ~2 | ✓ Complete |
-| 4_Operation | ~15 | ~14 | ✓ Complete |
-| 5_Declaration | ~5 | ~5 | ✓ Complete |
-| 6_Ideation | ~15 | ~15 | ✓ Complete |
-| **Total** | **140** | **154** | **✓ COMPLETE** |
+### Layer 2: Application (52 files)
 
-## Build Commands
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `projects/2_Application/Samples` | 14 | Sample applications |
+| `applications` | 5 | Application documentation |
+| `samples` | 14 | Code samples and examples |
 
-```bash
-# Restore dependencies
-dotnet restore alis.slnx
+### Layer 3: Structuration (37 files)
 
-# Build solution
-dotnet build alis.slnx -c Debug
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `concepts` | 37 | Theoretical concepts and theories |
+| `concepts/summaries` | 3 | Concept summaries |
 
-# Run all tests
-dotnet test alis.slnx -c Debug
-```
+### Layer 4: Operation (15 files)
 
-## Key Patterns
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `projects/4_Operation` | 15 | Runtime and implementation documentation |
 
-- **Layered Architecture**: 6 layers with strict dependency flow
-- **Generator Pattern**: Code generation in each layer
-- **Asset Pipeline**: SHA256 → zip → base64 for all projects
-- **Platform Detection**: LINUX, OSX, WIN conditional compilation
-- **AOT Compilation**: Engine and Hub use NativeAOT
-- **Test Discovery**: Regex-based source project auto-discovery
-- **Dynamic References**: Glob-based generator project references
+### Layer 5: Declaration (6 files)
 
-## Related
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `projects/5_Declaration` | 6 | Contract and interface documentation |
 
-- [[Cross-Link Index]] — Cross-reference mapping (NEW)
-- [[Memory System Index]] — System components (NEW)
-- [[Memory System Summary]] — Complete summary (NEW)
-- [[Cross-Link Validation Report]] — Validation report (NEW)
-- [[Cross-Link Diagrams]] — Visual diagrams (NEW)
-- [[system/state/analysis-state]] — Analysis progress
-- [[system/state/project-state]] — Project tracking
-- [[system/state/execution-state]] — Execution batches
-- [[system/state/pending-work]] — Work queue
-- [[system/indexes/projects-index]] — All projects indexed
-- [[system/indexes/layer-index]] — Layer breakdown
-- [[system/indexes/dependency-index]] — Dependencies
-- [[projects/Index]] — Project documentation
-- [[architecture/dependency-graph]] — Dependency diagrams
-- [[architecture/build-system]] — Build configuration
+### Layer 6: Ideation (15 files)
+
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `projects/6_Ideation` | 15 | Experimental modules documentation |
+
+### Domain Documentation
+
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `domain/data` | 3 | JSON serialization library |
+| `domain/fluent` | - | Fluent API builders |
+| `domain/memory` | - | Memory management |
+| `domain/time` | - | Time tracking |
+
+### System State and Tracking
+
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `system/state` | 18 | System state tracking |
+| `system/indexes` | 18 | System indexes |
+| `system/queues` | 12 | Work queues |
+| `system/tracking` | 8 | Monitoring and tracking |
+| `system/sessions` | 8 | Session management |
+| `system/logs` | 7 | Execution logs |
+| `system/checkpoints` | 7 | Validation checkpoints |
+
+### Glossary and Concepts
+
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `glossary` | 27 | Terminology definitions |
+| `concepts` | 37 | Theoretical concepts |
+| `concepts/summaries` | 3 | Concept summaries |
+
+### Architecture and Decisions
+
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `decisions` | - | Architecture decisions (ADRs) |
+| `diagrams` | 9 | Visual diagrams and charts |
+| `architecture` | 4 | Architecture documentation |
+| `context` | 6 | Context and context analysis |
+
+### Infrastructure and Support
+
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `extensions` | 13 | Plugin and extension documentation |
+| `sources` | 12 | Source references |
+| `dependencies` | - | Dependency tracking |
+| `infrastructure` | - | Infrastructure documentation |
+
+### Testing and Quality
+
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `testing` | 3 | Testing and quality assurance |
+| `performance` | - | Performance benchmarks |
+| `reports` | - | Analysis and validation reports |
+
+### Organization and Management
+
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `indexes` | - | Catalog and indexes |
+| `queues` | 12 | Work queues |
+| `logs` | 7 | Execution logs |
+| `checkpoints` | 7 | Validation checkpoints |
+| `metadata` | - | System configuration |
+| `tracking` | - | Monitoring and analysis |
+| `sessions` | 8 | Session history |
+| `conventions` | - | Naming and standards |
+
+### Cross-Reference and Links
+
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `cross-link` | - | Cross-references and validation |
+| `memory-system` | - | Memory system overview |
+
+### Additional Resources
+
+| Directory | Files | Description |
+|-----------|-------|-------------|
+| `onboarding` | - | Getting started guides |
+| `prompts` | 4 | AI prompts and references |
+| `entities` | 4 | Game objects and components |
+| `summaries` | 3 | Document summaries |
+| `security` | 3 | Security analysis |
+
+## Document Types
+
+| Type | Description | Directory | Priority |
+|------|-------------|-----------|----------|
+| `index` | Root index and navigation | `.memory/` | 100 |
+| `concept` | Theoretical concepts | `.memory/concepts/` | 90 |
+| `project` | Project documentation | `.memory/projects/` | 85 |
+| `glossary` | Terminology definitions | `.memory/glossary/` | 80 |
+| `decision` | Architecture decisions | `.memory/decisions/` | 85 |
+| `diagram` | Visual diagrams | `.memory/diagrams/` | 75 |
+| `system` | System state/tracking | `.memory/system/` | 70 |
+| `sample` | Code samples | `.memory/samples/` | 60 |
+| `extension` | Plugin/extension docs | `.memory/extensions/` | 65 |
+| `application` | Application docs | `.memory/applications/` | 60 |
+
+## Status Values
+
+| Status | Description | Color | Usage |
+|--------|-------------|-------|-------|
+| `active` | Currently maintained | Green | Most documentation |
+| `archived` | No longer maintained | Gray | Old versions |
+| `draft` | Work in progress | Yellow | New features |
+| `deprecated` | Replaced by newer version | Red | Legacy code |
+
+## Access Levels
+
+| Level | Description | Visibility |
+|-------|-------------|------------|
+| `public` | Open to all | All users |
+| `internal` | Team only | Team members |
+| `private` | Restricted | Owner only |
+
+## AI Configuration
+
+### Summary Guidelines
+
+- Maximum 500 characters
+- Required for all documents
+- AI-generated summaries
+- Clear and concise
+
+### Keyword Extraction
+
+- Maximum 10 keywords
+- Lowercase, hyphen-separated
+- AI-extracted from content
+- Relevant to document type
+
+### Confidence Scores
+
+- Range: 0.0 to 1.0
+- Default: 0.85
+- Updated after AI processing
+- Indicates AI certainty
+
+### Context Categories
+
+- `architecture` - Architecture documentation
+- `design` - Design patterns
+- `implementation` - Implementation details
+- `reference` - Reference documentation
+- `theory` - Theoretical concepts
+
+### Priority Levels
+
+- `high` - Critical documents
+- `medium` - Standard documents
+- `low` - Reference documents
+
+## Validation Rules
+
+1. **Required Properties**: `title`, `tags`, `type`
+2. **Date Format**: `YYYY-MM-DD` for `lastUpdated`
+3. **Version Format**: `X.Y.Z` semantic versioning
+4. **Tag Format**: Lowercase, hyphen-separated, no spaces
+5. **Link Format**: `[[Document Title]]` wiki-link syntax
+6. **Number Range**: `weight` (0-100), `confidence` (0-1)
+
+## Maintenance Schedule
+
+- **Monthly**: Review and update `lastUpdated` dates
+- **Quarterly**: Archive deprecated documents
+- **Annually**: Update `ai-confidence` scores
+- **Annually**: Validate all links
+- **Annually**: Backup property schemas
+
+## Future Enhancements
+
+1. Add support for multi-language properties
+2. Implement property inheritance from parent documents
+3. Create property templates for common document types
+4. Add automated property validation tools
+5. Develop property visualization dashboards
+
+## Related Documents
+
+- [[ALIS Memory System - Global Properties]] - Property definitions
+- [[ALIS Memory System - YAML Configuration]] - YAML schema
+- [[ALIS Memory System - JSON Configuration]] - JSON schema
+- [[ALIS Memory System - Obsidian Configuration]] - Obsidian settings
+- [[ALIS Memory System - Document Template]] - Template for new documents
+- [[ALIS Memory System - Dataview Configuration]] - Query configuration
+
+## Quick Links
+
+- [ALIS Repository](https://github.com/pabllopf/Alis)
+- [ALIS Website](www.alisengine.com)
+- [ALIS Documentation](https://docs.alisengine.com)
+
+---
+
+**Status**: **COMPLETE** ✓  
+**Last Updated**: 2026-06-09  
+**Version**: 1.2.0

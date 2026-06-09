@@ -1,7 +1,8 @@
 ---
-title: Extension: Graphic.Sdl2
-tags: [on]
+Extension: Graphic.Sdl2
+tags: [extension,plugin,graphic,sdl2,rendering,documentation]
 ---
+
 
 
 ## Overview

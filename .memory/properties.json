@@ -1,0 +1,213 @@
+{
+  "memorySystem": {
+    "name": "ALIS Memory System",
+    "version": "1.2.0",
+    "lastUpdated": "2026-06-09",
+    "author": "Pablo Perdomo Falcón",
+    "license": "GPLv3",
+    "repository": "https://github.com/pabllopf/Alis"
+  },
+  "properties": {
+    "core": {
+      "required": ["title", "tags", "type"],
+      "recommended": ["status", "version", "lastUpdated", "author", "license", "repository", "weight", "accessibility", "language"]
+    },
+    "aiOptimized": ["ai-summary", "ai-keywords", "ai-confidence", "ai-context", "ai-priority"],
+    "relationships": ["related", "parent", "child", "references", "dependsOn"]
+  },
+  "documentTypes": {
+    "index": {
+      "description": "Root index and navigation files",
+      "directory": ".memory/",
+      "priority": 100
+    },
+    "concept": {
+      "description": "Theoretical concepts and theories",
+      "directory": ".memory/concepts/",
+      "priority": 90
+    },
+    "project": {
+      "description": "Project-specific documentation",
+      "directory": ".memory/projects/",
+      "priority": 85
+    },
+    "glossary": {
+      "description": "Terminology definitions",
+      "directory": ".memory/glossary/",
+      "priority": 80
+    },
+    "decision": {
+      "description": "Architecture decisions and ADRs",
+      "directory": ".memory/decisions/",
+      "priority": 85
+    },
+    "diagram": {
+      "description": "Visual diagrams and charts",
+      "directory": ".memory/diagrams/",
+      "priority": 75
+    },
+    "system": {
+      "description": "System state and tracking",
+      "directory": ".memory/system/",
+      "priority": 70
+    },
+    "sample": {
+      "description": "Code samples and examples",
+      "directory": ".memory/samples/",
+      "priority": 60
+    },
+    "extension": {
+      "description": "Plugin and extension documentation",
+      "directory": ".memory/extensions/",
+      "priority": 65
+    },
+    "application": {
+      "description": "Application documentation",
+      "directory": ".memory/applications/",
+      "priority": 60
+    }
+  },
+  "statusValues": {
+    "active": {
+      "description": "Currently maintained",
+      "color": "green"
+    },
+    "archived": {
+      "description": "No longer maintained",
+      "color": "gray"
+    },
+    "draft": {
+      "description": "Work in progress",
+      "color": "yellow"
+    },
+    "deprecated": {
+      "description": "Replaced by newer version",
+      "color": "red"
+    }
+  },
+  "accessLevels": {
+    "public": {
+      "description": "Open to all",
+      "visibility": "all"
+    },
+    "internal": {
+      "description": "Team only",
+      "visibility": "team"
+    },
+    "private": {
+      "description": "Restricted",
+      "visibility": "owner"
+    }
+  },
+  "validation": {
+    "rules": [
+      "title: string, required, min 3 chars",
+      "tags: array, required, lowercase, hyphen-separated",
+      "type: enum, one of documentTypes",
+      "status: enum, one of statusValues",
+      "version: string, semantic versioning X.Y.Z",
+      "lastUpdated: date, YYYY-MM-DD format",
+      "weight: number, 0-100",
+      "confidence: number, 0-1",
+      "links: wiki-link format [[Document Title]]"
+    ]
+  },
+  "aiConfiguration": {
+    "summary": {
+      "maxLength": 500,
+      "required": true
+    },
+    "keywords": {
+      "maxCount": 10,
+      "required": true
+    },
+    "confidence": {
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.85
+    },
+    "context": {
+      "categories": ["architecture", "design", "implementation", "reference", "theory"]
+    },
+    "priority": {
+      "levels": ["high", "medium", "low"]
+    }
+  },
+  "organization": {
+    "directoryStructure": [
+      "context", "security", "projects", "domain", "glossary", "concepts",
+      "decisions", "diagrams", "system", "samples", "extensions", "applications",
+      "summaries", "sources", "testing", "onboarding", "prompts", "entities",
+      "performance", "reports", "indexes", "queues", "logs", "checkpoints",
+      "metadata", "tracking", "sessions", "conventions", "architecture",
+      "cross-link", "memory-system"
+    ],
+    "fileCount": 425,
+    "totalDirectories": 40,
+    "totalProjects": 140
+  },
+  "humanAccess": {
+    "features": [
+      "Clear titles",
+      "Descriptive tags",
+      "Proper status tracking",
+      "Wiki-link relationships",
+      "Author and date information"
+    ],
+    "guidelines": [
+      "Use clear, descriptive titles",
+      "Add relevant tags for categorization",
+      "Maintain proper status and version tracking",
+      "Link related documents using wiki-links",
+      "Include author and date information"
+    ]
+  },
+  "aiAccess": {
+    "features": [
+      "AI-optimized properties",
+      "Consistent keyword extraction",
+      "Confidence scores",
+      "Context tags",
+      "Priority levels"
+    ],
+    "guidelines": [
+      "Provide AI-optimized properties for better understanding",
+      "Use consistent keyword extraction",
+      "Maintain confidence scores for AI-generated content",
+      "Include context tags for better retrieval",
+      "Set priority levels for processing order"
+    ]
+  },
+  "automatedTools": {
+    "features": [
+      "Property validation",
+      "Status lifecycle management",
+      "Tag filtering and grouping",
+      "Version tracking",
+      "Dependency monitoring"
+    ],
+    "guidelines": [
+      "Validate required properties before processing",
+      "Use status for lifecycle management",
+      "Leverage tags for filtering and grouping",
+      "Track versions for change management",
+      "Monitor dependencies for impact analysis"
+    ]
+  },
+  "maintenance": {
+    "schedule": [
+      "Review and update lastUpdated dates monthly",
+      "Archive deprecated documents quarterly",
+      "Update ai-confidence scores after AI processing",
+      "Validate all links annually",
+      "Backup property schemas annually"
+    ]
+  },
+  "futureEnhancements": [
+    "Add support for multi-language properties",
+    "Implement property inheritance from parent documents",
+    "Create property templates for common document types",
+    "Add automated property validation tools",
+    "Develop property visualization dashboards"
+  ]
+}

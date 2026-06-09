@@ -1,7 +1,8 @@
 ---
-title: Extension: Thread
-tags: [on]
+Extension: Thread
+tags: [extension,plugin,thread,concurrency,documentation]
 ---
+
 
 
 ## Overview

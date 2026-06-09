@@ -1,0 +1,98 @@
+{
+  "totalProjects": 140,
+  "totalFiles": 425,
+  "totalDirectories": 40,
+  "lastUpdated": "2026-06-09",
+  "version": "1.2.0",
+  "projects": [
+    {
+      "name": "ALIS Engine",
+      "layer": "1_Presentation",
+      "directory": "projects/1_Presentation/Engine",
+      "files": 76,
+      "status": "active",
+      "priority": 100,
+      "type": "engine"
+    },
+    {
+      "name": "ALIS Samples",
+      "layer": "2_Application",
+      "directory": "projects/2_Application/Samples",
+      "files": 14,
+      "status": "active",
+      "priority": 85,
+      "type": "sample"
+    },
+    {
+      "name": "ALIS Core",
+      "layer": "3_Structuration",
+      "directory": "projects/3_Structuration",
+      "files": 37,
+      "status": "active",
+      "priority": 90,
+      "type": "core"
+    },
+    {
+      "name": "ALIS Graphics",
+      "layer": "4_Operation",
+      "directory": "projects/4_Operation",
+      "files": 15,
+      "status": "active",
+      "priority": 80,
+      "type": "operation"
+    },
+    {
+      "name": "ALIS Audio",
+      "layer": "5_Declaration",
+      "directory": "projects/5_Declaration",
+      "files": 6,
+      "status": "active",
+      "priority": 75,
+      "type": "declaration"
+    },
+    {
+      "name": "ALIS Memory",
+      "layer": "6_Ideation",
+      "directory": "projects/6_Ideation",
+      "files": 15,
+      "status": "draft",
+      "priority": 60,
+      "type": "experimental"
+    }
+  ],
+  "frameworkTargets": [
+    "netstandard2.0",
+    "netstandard2.1",
+    "netcoreapp2.0",
+    "netcoreapp2.1",
+    "netcoreapp3.0",
+    "netcoreapp3.1",
+    "net5.0",
+    "net6.0",
+    "net7.0",
+    "net8.0",
+    "net9.0",
+    "net10.0",
+    "net461",
+    "net462",
+    "net47",
+    "net471",
+    "net472",
+    "net48",
+    "net481"
+  ],
+  "platformTargets": [
+    "win-x64",
+    "win-x86",
+    "win-arm64",
+    "linux-x64",
+    "linux-musl-x64",
+    "linux-arm",
+    "linux-arm64",
+    "linux-musl-arm",
+    "linux-musl-arm64",
+    "osx-x64",
+    "osx-arm64",
+    "browser-wasm"
+  ]
+}

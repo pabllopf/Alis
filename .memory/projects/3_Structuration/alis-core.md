@@ -1,5 +1,5 @@
 ---
-title: Project: Alis.Core (Structuration)
+title: Alis.Core
 tags: [structuration,core,abstraction,documentation]
 ---
 

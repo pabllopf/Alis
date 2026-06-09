@@ -1,7 +1,8 @@
 ---
-title: Extension: Language.Dialogue
-tags: [on]
+Extension: Language.Dialogue
+tags: [extension,plugin,dialogue,documentation]
 ---
+
 
 
 ## Overview

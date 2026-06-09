@@ -1,7 +1,8 @@
 ---
-title: Extension: Media.FFmpeg
-tags: [on]
+Extension: Media.FFmpeg
+tags: [extension,plugin,ffmpeg,multimedia,video,documentation]
 ---
+
 
 
 ## Overview

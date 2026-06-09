@@ -1,3 +1,12 @@
 [
-  "notebook-navigator"
+  "properties",
+  "dataview",
+  "advanced-canvas",
+  "obsidian-gantt",
+  "mermaid-extension",
+  "tag-wrangler",
+  "quickswitcher",
+  "file-recovery",
+  "templater",
+  "obsidian-git"
 ]

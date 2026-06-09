@@ -1,6 +1,9 @@
 ---
 title: Concepts Overview
-tags: [concept,theory,documentation]
+tags:
+  - concept
+  - theory
+  - documentation
 ---
 
 

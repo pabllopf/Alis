@@ -1,7 +1,8 @@
 ---
-title: Extension: Language.Translator
-tags: [on]
+Extension: Language.Translator
+tags: [extension,plugin,translator,translation,documentation]
 ---
+
 
 
 ## Overview

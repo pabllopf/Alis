@@ -1,7 +1,8 @@
 ---
-title: Extension: Updater
-tags: [on]
+Extension: Updater
+tags: [extension,plugin,updater,update,maintenance,documentation]
 ---
+
 
 
 ## Overview
