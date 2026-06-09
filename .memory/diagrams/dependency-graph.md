@@ -5,9 +5,10 @@ tags:
   - visualization
   - mermaid
 
-status: draft
+status: Draft
 
 license: GPLv3
+
 ---
 
 

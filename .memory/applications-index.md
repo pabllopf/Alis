@@ -6,9 +6,10 @@ tags:
   - tool
 lastUpdated: 2026-06-09
 
-status: draft
+status: Draft
 
 license: GPLv3
+
 ---
 
 

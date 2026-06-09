@@ -5,9 +5,10 @@ tags:
   - adr
   - architecture
 
-status: draft
+status: Draft
 
 license: GPLv3
+
 ---
 
 

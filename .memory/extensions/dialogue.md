@@ -6,9 +6,10 @@ tags:
   - dialogue
   - documentation
 
-status: draft
+status: Draft
 
 license: GPLv3
+
 ---
 
 

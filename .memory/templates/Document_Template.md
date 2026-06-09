@@ -3,7 +3,7 @@ title: "{{title}}"
 tags:
   - documentation
 type: concept
-status: draft
+status: Draft
 version: 1.0.0
 lastUpdated: {{date: YYYY-MM-DD}}
 author: "{{author}}"
@@ -22,6 +22,7 @@ parent: [[ALIS Memory Index]]
 child: []
 references: []
 dependsOn: []
+
 ---
 
 # {{title}}

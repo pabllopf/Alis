@@ -5,9 +5,10 @@ tags:
   - standard
   - naming
 
-status: draft
+status: Draft
 
 license: GPLv3
+
 ---
 
 

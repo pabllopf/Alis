@@ -5,9 +5,10 @@ tags:
   - game
   - example
 
-status: draft
+status: Draft
 
 license: GPLv3
+
 ---
 
 

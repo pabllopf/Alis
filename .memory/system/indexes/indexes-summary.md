@@ -5,9 +5,10 @@ tags:
   - catalog
   - reference
 
-status: draft
+status: Draft
 
 license: GPLv3
+
 ---
 
 

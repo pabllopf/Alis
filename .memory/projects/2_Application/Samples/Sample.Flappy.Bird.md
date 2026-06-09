@@ -5,9 +5,10 @@ tags:
   - sample
   - documentation
 
-status: draft
+status: Draft
 
 license: GPLv3
+
 ---
 
 

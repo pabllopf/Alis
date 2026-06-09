@@ -5,9 +5,10 @@ tags:
   - terminology
   - reference
 
-status: draft
+status: Draft
 
 license: GPLv3
+
 ---
 
 

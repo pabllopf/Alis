@@ -5,9 +5,10 @@ tags:
   - ai
   - reference
 
-status: draft
+status: Draft
 
 license: GPLv3
+
 ---
 
 

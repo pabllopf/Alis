@@ -1,7 +1,8 @@
 ---
-status: draft
+status: Draft
 
 license: GPLv3
+
 ---
 
 # ALIS Memory System - Global Index
