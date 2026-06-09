@@ -1,150 +1,129 @@
-# Dependency Index — ALIS
+# Dependency Index
 
-## Dependency Flow (Strict)
+## Overview
+Complete dependency mapping for all 140+ projects in the ALIS repository.
+
+## Dependency Rules
+
+### Layer Dependency Order (Strict)
 
 ```
-1_Presentation → 2_Application → 3_Structuration → 4_Operation → 5_Declaration ← 6_Ideation
+1_Presentation → 2_Application → 3_Structuration → 4_Operation → 5_Declaration → 6_Ideation
 ```
 
-Upward references are **forbidden**. Source generators cascade **downward**.
-
----
+**Rules**:
+- Lower layers NEVER depend on higher layers
+- Dependencies flow from Presentation → Ideation
+- Cross-layer dependencies must follow this order
 
 ## Layer Dependencies
 
-```mermaid
-graph LR
-    P[1_Presentation] --> A[2_Application]
-    A --> S[3_Structuration]
-    S --> O[4_Operation]
-    O --> D[5_Declaration]
-    I[6_Ideation] --> D
+### 1_Presentation Depends On
 
-    style I fill:#f9f,stroke:#333
-    style D fill:#bbf,stroke:#333
-    style O fill:#bfb,stroke:#333
-    style S fill:#ff9,stroke:#333
-    style A fill:#fbb,stroke:#333
-    style P fill:#bfb,stroke:#333
-```
+- 2_Application (Alis)
+- 3_Structuration (Core abstractions)
+- 4_Operation (Runtime implementations)
+- 5_Declaration (Contracts)
+- 6_Ideation (Game-specific logic)
 
----
+### 2_Application Depends On
 
-## Project Reference Graph
+- 3_Structuration (Core abstractions)
+- 4_Operation (Runtime implementations)
+- 5_Declaration (Contracts)
+- 6_Ideation (Game-specific logic)
 
-### Debug Mode (Implicit References via Config.props)
+### 3_Structuration Depends On
 
-The build system in `.config/Config.props` automatically adds project references based on layer:
+- None (foundation layer)
 
-| Layer | References |
-|-------|-----------|
-| 1_Presentation | All projects in 2_Application + all generators from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation |
-| 2_Application | All src projects in 3_Structuration + all generators from 4_Operation, 5_Declaration, 6_Ideation |
-| 3_Structuration | All src projects in 4_Operation + all generators from 5_Declaration, 6_Ideation |
-| 4_Operation | All src projects in 5_Declaration + all generators from 6_Ideation |
-| 5_Declaration | All src projects in 6_Ideation |
-| 6_Ideation | None (leaf layer) |
+### 4_Operation Depends On
 
-### Release Mode (Compile-time Inlining)
+- 3_Structuration (Core abstractions)
+- 5_Declaration (Contracts)
+- 6_Ideation (Aspects)
 
-In Release builds, source files from lower layers are **compiled directly** into higher layers via `<Compile Include>` directives:
+### 5_Declaration Depends On
 
-- 2_Application includes source from 3_Structuration, 4_Operation, 5_Declaration, 6_Ideation
-- 3_Structuration includes source from 4_Operation, 6_Ideation
-- 4_Operation includes source from 5_Declaration, 6_Ideation
-- 5_Declaration includes source from 6_Ideation
+- 3_Structuration (Core abstractions)
+- 4_Operation (Runtime implementations)
 
-This produces **single assembly** output for each layer in Release mode.
+### 6_Ideation Depends On
 
----
+- 3_Structuration (Core abstractions)
+- 4_Operation (Runtime implementations)
+- 5_Declaration (Contracts)
 
-## External NuGet Dependencies
+## Project Dependencies
 
-### Conditional Dependencies (Config.props)
+### Core Engine (4_Operation)
 
-| Condition | Package | Version |
-|-----------|---------|---------|
-| net461–net481 | System.IO.Compression | 4.3.0 |
-| net461–net481 | System.Net.Http | 4.3.0 |
-| net461–net481 | System.Runtime.CompilerServices.Unsafe | 6.1.1 |
-| net461–net481 | System.Memory | 4.6.2 |
-| netcoreapp2.0–3.1 | System.Runtime.CompilerServices.Unsafe | 6.1.1 |
-| netcoreapp2.0–3.1 | System.Memory | 4.6.2 |
-| netstandard2.0–2.1 | System.Runtime.CompilerServices.Unsafe | 6.1.1 |
-| netstandard2.0–2.1 | System.Memory | 4.6.2 |
-| All | Microsoft.SourceLink.GitHub | 8.0.0 |
+| Project | Dependencies |
+|---|---|
+| Alis.Core.Ecs | Alis.Core.Aspect.Math.Collections, Alis.Core.Ecs.Kernel, Alis.Core.Ecs.Redifinition |
+| Alis.Core.Graphic | Alis.Core.Aspect (all aspects) |
+| Alis.Core.Audio | Alis.Core.Aspect (all aspects) |
+| Alis.Core.Physic | Alis.Core.Aspect (all aspects) |
 
-### Extension-Specific Dependencies
+### Ideation Aspects (6_Ideation)
 
-| Assembly | Package | Version |
-|----------|---------|---------|
-| Alis.Extension.Payment.Stripe | Stripe.net | 49.2.0 |
-| Alis.Extension.Ads.GoogleAds | Google.Ads.Common | 9.5.3 |
-| Alis.Extension.Cloud.GoogleDrive | Google.Apis.Drive.v3 | 1.68.0.3601 |
-| Alis.Extension.Cloud.DropBox | Dropbox.Api | 7.0.0 |
+| Project | Dependencies |
+|---|---|
+| Alis.Core.Aspect.Memory | Alis.Core, Alis.Core.Aspect |
+| Alis.Core.Aspect.Fluent | Alis.Core, Alis.Core.Aspect |
+| Alis.Core.Aspect.Data | Alis.Core, Alis.Core.Aspect |
+| Alis.Core.Aspect.Math | Alis.Core, Alis.Core.Aspect |
+| Alis.Core.Aspect.Time | Alis.Core, Alis.Core.Aspect |
+| Alis.Core.Aspect.Logging | Alis.Core, Alis.Core.Aspect |
 
----
+### Extensions (1_Presentation)
 
-## Generator Cascade
+| Project | Dependencies |
+|---|---|
+| Alis.Extension.Security | Alis.Core, Alis.Core.Aspect |
+| Alis.Extension.Network | Alis.Core, Alis.Core.Aspect |
+| Alis.Extension.Media.FFmpeg | Alis.Core, Alis.Core.Aspect |
+| Alis.Extension.Language.Translator | Alis.Core, Alis.Core.Aspect |
+| Alis.Extension.Language.Dialogue | Alis.Core, Alis.Core.Aspect |
 
-```mermaid
-flowchart LR
-    subgraph "6_Ideation Generators"
-        G1[Memory.Generator]
-        G2[Fluent.Generator]
-        G3[Math.Generator]
-        G4[Time.Generator]
-        G5[Data.Generator]
-        G6[Logging.Generator]
-    end
+## Build System Dependencies
 
-    subgraph "4_Operation Generators"
-        G7[Ecs.Generator]
-        G8[Graphic.Generator]
-    end
+### Config.props
 
-    subgraph "5_Declaration"
-        ASP[Alis.Core.Aspect<br/>Generated]
-    end
+- Multi-targeting: 15+ frameworks (netstandard2.0–2.1, netcoreapp2.0–3.1, net5.0–10.0, net461–481)
+- Runtime identifiers: Windows, Linux, macOS, Web
+- Analyzers: Enabled for all projects
 
-    G1 --> ASP
-    G2 --> ASP
-    G3 --> ASP
-    G4 --> ASP
-    G5 --> ASP
-    G6 --> ASP
-    G7 --> ASP
-    G8 --> ASP
-```
+### Asset Pipeline
 
-All generators target `netstandard2.0` and are referenced as `Analyzer` with `PrivateAssets=all` and `ReferenceOutputAssembly=false`.
+- SHA256 hash-based change detection
+- Incremental build via manifest file
+- Base64-encoded zip archives
 
----
+## Platform Targets
 
-## Platform Dependencies
+- **Windows**: win-x64, win-x86, win-arm64
+- **Linux**: linux-x64, linux-musl-x64, linux-arm, linux-arm64, linux-musl-arm, linux-musl-arm64
+- **macOS**: osx-x64, osx-arm64
+- **Web**: browser-wasm
 
-| Extension | Platform | Native Binding |
-|-----------|----------|---------------|
-| Alis.Extension.Graphic.Sfml | Graphics | SFML native libs |
-| Alis.Extension.Graphic.Glfw | Window/Input | GLFW native libs |
-| Alis.Extension.Graphic.Sdl2 | Graphics/Audio | SDL2 native libs |
-| Alis.Core.Audio | Audio | Platform-specific (aplay, mpg123, afplay) |
+## Framework Targets
 
----
+- .NET Core 2.0–3.1
+- .NET 5–10
+- .NET Standard 2.0–2.1
+- .NET Framework 4.61–4.81
 
-## Dependency Health
+## AOT Compatibility
 
-| Metric | Status |
-|--------|--------|
-| Layer Violations | None detected |
-| Cyclic Dependencies | None (strict layering prevents this) |
-| External NuGet Packages | 8 total |
-| Generator Coupling | Via Roslyn analyzer references only |
+- No `System.Reflection.Emit`
+- No runtime IL emit
+- No dynamic method generation
+- Source generators produce AOT-safe code
 
----
+## Related
 
-## Related Documentation
-
-- [[architecture/dependency-graph]] — Visual dependency maps
-- [[architecture/repository-overview]] — Architecture overview
-- [[system/indexes/layer-index]] — Layer breakdown
+- [[architecture/dependency-graph]] — Dependency diagrams
+- [[system/state/analysis-state]] — Analysis state
+- [[projects-index]] — All projects indexed
+- [[layer-index]] — Layer breakdown
