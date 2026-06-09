@@ -1,89 +1,105 @@
 # Concepts Index
 
-Comprehensive index of all Alis architecture and development concepts.
+Comprehensive index of all architectural and design concepts used throughout the Alis solution.
 
-## Architecture Concepts
+## Core Patterns
 
-| Concept | Description |
-|---------|-------------|
-| [[Alis Architecture Overview]] | High-level architecture overview |
-| [[Layered Architecture]] | 6-layer structure and dependencies |
-| [[Repository Structure]] | Directory organization |
-| [[Solution Files Strategy]] | 8 modular .slnx files |
+### Data-Oriented Design
+- [[Data-Oriented Design (DOD)]] - Cache-first optimization, component-based architecture
+- **Location**: `4_Operation/Ecs/src/`
+- **Benefits**: CPU cache efficiency, SIMD optimization
 
-## Platform Concepts
+### Value Object Pattern
+- [[Value Object Pattern]] - Immutable data types with equality by value
+- **Location**: `6_Ideation/Math/src/`
+- **Benefits**: Thread safety, predictable equality
 
-| Concept | Description |
-|---------|-------------|
-| [[Multi-Targeting Strategy]] | 15+ framework configurations |
-| [[Platform-Specific Build Constants]] | Conditional compilation |
-| [[Multi-Platform Samples]] | 12+ sample games |
+### Zero-Copy Abstractions
+- [[Zero-Copy Abstractions]] - Memory-efficient data access without allocation
+- **Location**: `4_Operation/Ecs/src/Query.cs`
+- **Benefits**: No GC pressure, high-performance queries
 
-## Design Patterns
+### Compile-Time Polymorphism
+- [[Compile-Time Polymorphism]] - Static dispatch via source generation
+- **Location**: `*/generator/` subdirectories
+- **Benefits**: AOT compatibility, better optimization
 
-| Concept | Description |
-|---------|-------------|
-| [[Aspect-Oriented Design]] | Core.Aspect foundation |
-| [[Generator Pattern]] | Source code generation |
-| [[Entity Component System]] | ECS architecture |
+## System Architecture
 
-## Development Concepts
+### Entity Component System
+- [[Entity Component System]] - Data-oriented game engine architecture
+- **Location**: `4_Operation/Ecs/src/`
+- **Benefits**: Cache efficiency, scalability
 
-| Concept | Description |
-|---------|-------------|
-| [[Build System Configuration]] | Centralized build settings |
-| [[Testing Strategy]] | xUnit testing framework |
-| [[CI/CD Pipeline]] | GitHub Actions workflows |
-| [[Quality Assurance]] | Static analysis and coverage |
-| [[Developer Onboarding]] | Getting started guide |
+### Query-Based Architecture
+- [[Query-Based Architecture]] - Type-safe component filtering
+- **Location**: `4_Operation/Ecs/src/Query.cs`
+- **Benefits**: Declarative logic, composition over inheritance
 
-## Extension Concepts
+### Event-Driven Entity System
+- [[Event-Driven Entity System]] - Per-entity event notifications
+- **Location**: `4_Operation/Ecs/src/PerEntityEvents.cs`
+- **Benefits**: Decoupled systems, reactive architecture
 
-| Concept | Description |
-|---------|-------------|
-| [[Extension System]] | 18+ modular extensions |
-| [[Application Composition]] | Main app and samples |
+### Game Loop Pattern
+- [[Update Loop & Game Loop]] - Fixed timestep simulation with delta time
+- **Location**: `1_Presentation/Engine/src/`
+- **Benefits**: Frame-rate independence, deterministic simulation
 
-## Dependency Concepts
+## Resource Management
 
-| Concept | Description |
-|---------|-------------|
-| [[Dependency Management]] | No external NuGet packages |
+### Resource Management Patterns
+- [[Resource Management Patterns]] - RAII + async loading with caching
+- **Location**: `6_Ideation/Memory/src/`
+- **Benefits**: Automatic cleanup, async loading
 
-## Quick Navigation
+### Compression & Memory Optimization
+- [[Compression & Memory Optimization]] - Zip-based cache entries
+- **Location**: `6_Ideation/Memory/src/ZipCacheEntry.cs`
+- **Benefits**: Reduced memory footprint, disk caching
 
-### Getting Started
-1. [[Developer Onboarding]] - Start here
-2. [[Alis Architecture Overview]] - Understand the architecture
-3. [[Repository Structure]] - Explore the codebase
+### Service Registration & Discovery
+- [[Service Registration & Discovery]] - Compile-time service registry
+- **Location**: `*/generator/ComponentRegistryGenerator.cs`
+- **Benefits**: Type-safe, AOT compatible
 
-### Building & Testing
-1. [[Build System Configuration]] - Build settings
-2. [[Multi-Targeting Strategy]] - Framework targets
-3. [[Testing Strategy]] - Testing approach
+## Extensions & Utilities
 
-### Architecture Deep Dive
-1. [[Layered Architecture]] - 6-layer structure
-2. [[Aspect-Oriented Design]] - Declarative foundation
-3. [[Generator Pattern]] - Code generation
-4. [[Entity Component System]] - ECS architecture
+### Cross-Platform Abstraction Layer
+- [[Cross-Platform Abstraction Layer]] - Platform-agnostic APIs with native implementations
+- **Location**: `1_Presentation/Extension/`
+- **Benefits**: Single codebase, native performance
 
-### Platform Support
-1. [[Multi-Platform Samples]] - Sample games
-2. [[Platform-Specific Build Constants]] - Platform detection
-3. [[Extension System]] - Cross-platform extensions
+### Procedural Generation Framework
+- [[Procedural Generation Framework]] - Algorithmic content generation
+- **Location**: `1_Presentation/Extension/Math.ProceduralDungeon/`
+- **Usage**: Dungeon generation, random content creation
+
+### High-Speed Priority Queue
+- [[High-Speed Priority Queue]] - Optimized heap-based priority queue
+- **Location**: `1_Presentation/Extension/Math.HighSpeedPriorityQueue/`
+- **Benefits**: O(log n) operations, memory-efficient
+
+### Dialogue System Architecture
+- [[Dialogue System Architecture]] - Scripted narrative with branching paths
+- **Location**: `1_Presentation/Extension/Language.Dialogue/`
+- **Usage**: Game dialogue, branching conversations
+
+## Build & Deployment
+
+### Multi-Targeting Strategy
+- [[Multi-Targeting Strategy]] - Compile once, deploy everywhere (.NET 2.0 - .NET 10)
+- **Location**: `.config/Config.props`
+- **Benefits**: Maximum compatibility, enterprise support
+
+### Source Generators
+- [[Source Generators]] - AOT-safe compile-time code generation
+- **Location**: `*/generator/` subdirectories
+- **Benefits**: Type safety, diagnostics (ALIS0xxx)
 
 ## See Also
-- `.memory/summaries/` - Generated summaries
-- `.memory/architecture/` - Architecture documentation
-- `.memory/dependencies/` - Dependency maps
 
-## Related
-- [[project-index]] — All projects by layer
-- [[architecture-index]] — Architecture patterns
-- [[indexes-summary]] — All indexes overview
-- [[conversation-starters]] — Discussion topics
-- [[ai-context]] — AI context
-- [[repository-overview]] — Repository overview
-- [[dependency-graph]] — Dependency visualization
-- [[documentation-map]] — Documentation coverage
+- `.memory/architecture/` - Architecture documentation
+- `.memory/projects/` - Project-specific documentation
+- `.memory/sources/` - Source file documentation
+- `.memory/diagrams/` - Architecture diagrams

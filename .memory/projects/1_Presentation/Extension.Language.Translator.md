@@ -18,3 +18,11 @@ Extension module for Language.Translator functionality in ALIS.
 
 ## Notes
 - Plugin architecture integration
+
+## Related
+- [[projects/1_Presentation/Alis.Extension.Language.Translator]] — Full docs
+- [[projects/1_Presentation/Extension-Language]] — Language extensions overview
+- [[projects/1_Presentation/Alis.Extension.Language.Translator.Sample]] — Sample app
+- [[projects/1_Presentation/Alis.Extension.Language.Translator.Test]] — Tests
+- [[Extension System]] — Concept overview
+- [[projects/Index]] — All project docs

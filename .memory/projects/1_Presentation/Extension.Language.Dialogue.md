@@ -18,3 +18,9 @@ Extension module for Language.Dialogue functionality in ALIS.
 
 ## Notes
 - Plugin architecture integration
+
+## Related
+- [[projects/1_Presentation/Alis.Extension.Language.Dialogue]] — Full docs
+- [[projects/1_Presentation/Extension-Language]] — Language extensions overview
+- [[Extension System]] — Concept overview
+- [[projects/Index]] — All project docs

@@ -18,3 +18,9 @@ Extension module for Math.HighSpeedPriorityQueue functionality in ALIS.
 
 ## Notes
 - Plugin architecture integration
+
+## Related
+- [[projects/1_Presentation/Alis.Extension.Math.HighSpeedPriorityQueue]] — Full docs
+- [[projects/1_Presentation/Extension-Math]] — Math extensions overview
+- [[Extension System]] — Concept overview
+- [[projects/Index]] — All project docs

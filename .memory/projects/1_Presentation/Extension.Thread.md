@@ -18,3 +18,9 @@ Extension module for Thread functionality in ALIS.
 
 ## Notes
 - Plugin architecture integration
+
+## Related
+- [[projects/1_Presentation/Alis.Extension.Thread]] — Full docs
+- [[projects/1_Presentation/Extension-Thread]] — Thread overview
+- [[Extension System]] — Concept overview
+- [[projects/Index]] — All project docs

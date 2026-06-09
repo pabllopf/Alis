@@ -18,3 +18,8 @@ Extension module for Cloud.GoogleDrive functionality in ALIS.
 
 ## Notes
 - Plugin architecture integration
+
+## Related
+- [[projects/1_Presentation/Alis.Extension.Cloud.GoogleDrive]] — Full docs
+- [[Extension System]] — Concept overview
+- [[projects/Index]] — All project docs

@@ -19,3 +19,11 @@ Extension module for Io.FileDialog functionality in ALIS.
 ## Notes
 - Cross-platform support where applicable
 - Plugin architecture integration
+
+## Related
+- [[projects/1_Presentation/Alis.Extension.Io.FileDialog]] — Full docs
+- [[projects/1_Presentation/Extension-Io]] — Io extensions overview
+- [[projects/1_Presentation/Alis.Extension.Io.FileDialog.Sample]] — Sample app
+- [[projects/1_Presentation/Alis.Extension.Io.FileDialog.Test]] — Tests
+- [[Extension System]] — Concept overview
+- [[projects/Index]] — All project docs

@@ -18,3 +18,11 @@ Extension module for Updater functionality in ALIS.
 
 ## Notes
 - Plugin architecture integration
+
+## Related
+- [[projects/1_Presentation/Alis.Extension.Updater]] — Full docs
+- [[projects/1_Presentation/Extension-Updater]] — Updater overview
+- [[projects/1_Presentation/Alis.Extension.Updater.Sample]] — Sample app
+- [[projects/1_Presentation/Alis.Extension.Updater.Test]] — Tests
+- [[Extension System]] — Concept overview
+- [[projects/Index]] — All project docs

@@ -19,3 +19,10 @@ Extension module for Network functionality in ALIS.
 ## Notes
 - Cross-platform support where applicable
 - Plugin architecture integration
+
+## Related
+- [[projects/1_Presentation/Alis.Extension.Network]] — Full docs
+- [[projects/1_Presentation/Extension-Network]] — Network extensions overview
+- [[projects/1_Presentation/Alis.Extension.Network.Test]] — Tests
+- [[Extension System]] — Concept overview
+- [[projects/Index]] — All project docs

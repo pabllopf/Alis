@@ -18,3 +18,9 @@ Extension module for Cloud.DropBox functionality in ALIS.
 
 ## Notes
 - Plugin architecture integration
+
+## Related
+- [[projects/1_Presentation/Extensions/Cloud/DropBox/Alis.Extension.Cloud.DropBox]] — Full docs
+- [[projects/1_Presentation/Extension-Cloud]] — Cloud extensions overview
+- [[Extension System]] — Concept overview
+- [[projects/Index]] — All project docs

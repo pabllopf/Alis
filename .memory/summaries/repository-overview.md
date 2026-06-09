@@ -1,194 +1,91 @@
-# ALIS Game Engine Framework - Repository Overview
+# Repository Overview
 
-## High-Level Architecture
+Comprehensive overview of the Alis solution architecture and structure.
 
-ALIS is a high-performance 2D game engine framework written in C# with the following architectural layers:
+## Solution Summary
 
-### Layer 1: Presentation (1_Presentation)
-- **Extensions**: ~20 cross-platform extensions (Graphics, Audio, Cloud, Payment, etc.)
-- **Applications**: Engine, Hub, Installer
-- **Samples**: Console game samples for network extensions
+**Alis** is a C# game engine/framework with:
+- **140+ projects** across 6 architectural layers
+- **8 modular .slnx solution files** for focused builds
+- **15+ target frameworks** (netstandard2.0–2.1, netcoreapp2.0–3.1, net5.0–10.0, net461–481)
+- **Multi-platform support** (Windows, Linux, macOS, WebAssembly, iOS, Android)
+- **Source generators** for AOT-safe code generation
 
-### Layer 2: Application (2_Application)
-- **Alis Core**: Main application library
-- **Game Samples**: ~14 complete game samples (Flappy Bird, Pong, Space Simulator, etc.)
+## Architecture Layers
 
-### Layer 3: Structuration (3_Structuration)
-- **Alis.Core**: Core abstractions and base classes
-- Foundation for all other layers
+### 1_Presentation - User-Facing Applications
+- **Engine** - Main game engine runtime
+- **Hub** - Hub application for management
+- **Installer** - Installation application
+- **Extension/** - 18+ modular extensions (Graphics, Cloud, Payment, etc.)
+- **Benchmark** - Performance benchmarks
 
-### Layer 4: Operation (4_Operation)
-- **ECS**: Entity Component System (108 files) - High-performance ECS with custom memory management
-- **Graphic**: Graphics rendering (147 files) - Cross-platform graphics with SFML/OpenGL
-- **Audio**: Audio playback system (5 files) - Platform-specific audio backends
-- **Physic**: 2D physics engine (39+ files) - Rigid body dynamics and collision detection
+### 2_Application - Main Application & Samples
+- **Alis/src** - Main application entry point
+- **samples/** - 12+ sample games (Web + Desktop variants)
 
-### Layer 5: Declaration (5_Declaration)
-- **Aspect System**: Core aspect infrastructure
+### 3_Structuration - Core Foundations
+- **Core/** - Foundational abstractions and libraries
 
-### Layer 6: Ideation (6_Ideation)
-- **Memory**: Asset registry and management system (6 files) - Thread-safe caching with ZIP handling
-- **Fluent**: Builder pattern implementation
-- **Data**: JSON serialization/deserialization (AOT-friendly)
-- **Math**: Custom mathematical operations with Taylor series approximations
-- **Time**: High-resolution clock for timing measurements
-- **Logging**: Flexible logging system with multiple outputs
+### 4_Operation - Operational Systems
+- **Ecs/** - Entity Component System with source generator
+- **Graphic/** - Graphics rendering with source generator
+- **Audio/** - Audio processing
+- **Physic/** - Physics engine
+
+### 5_Declaration - Declarative Foundation
+- **Aspect/** - Core.Aspect - declarative programming foundation
+
+### 6_Ideation - Experimental Aspects
+- **Memory/** - Memory abstractions with source generator
+- **Fluent/** - Fluent APIs with source generator
+- **Data/** - Data structures with source generator
+- **Math/** - Mathematical utilities
+- **Time/** - Time management
+- **Logging/** - Logging infrastructure
+
+## Solution Files (8 .slnx)
+
+| File | Purpose |
+|------|---------|
+| `alis.slnx` | Full solution - all projects |
+| `alis.core.slnx` | Core libraries only |
+| `alis.apps.slnx` | Applications (Engine, Hub, Installer) |
+| `alis.extensions.slnx` | All extensions |
+| `alis.test.slnx` | Test projects |
+| `alis.samples.slnx` | Sample games |
+| `alis.core.aspect.slnx` | Declaration + Ideation layers |
+| `alis.benchmark.slnx` | Benchmark project |
 
 ## Technology Stack
 
-### Core Technologies
-- **.NET 8**: Target framework (net8.0)
-- **C# 13**: Latest language features
-- **Unsafe Code**: Low-level memory operations for performance
-
-### External Dependencies
-- **System.Memory**: Span<T> and Memory<T> for zero-copy operations
-- **System.Runtime.CompilerServices.Unsafe**: Low-level memory operations
-- **SFML/OpenGL**: Cross-platform graphics
-- **Platform-specific tools**: aplay, mpg123, afplay for audio
-
-## Architectural Patterns
-
-### Design Patterns
-- **ECS**: Entity Component System with archetype-based storage
-- **Builder Pattern**: Fluent API for object construction
-- **Factory Pattern**: LoggerFactory and asset registry
-- **Strategy Pattern**: Platform-specific implementations
-- **Observer Pattern**: Event-based communication
-
-### Architecture Principles
-- **Clean Architecture**: Clear separation of concerns
-- **Layered Architecture**: Well-defined layer boundaries
-- **Dependency Inversion**: Abstractions over implementations
-- **Performance-first**: Zero-copy operations, custom memory management
-
-## Project Statistics
-
-| Metric | Value |
-|---|---|
-| Total Projects | 140 |
-| Source Files | ~3,319 |
-| Documented Projects | 10 |
-| Documentation Coverage | ~7% |
+- **Language**: C# 13
+- **Testing**: xUnit + Xunit.StaFact + Moq
+- **Static Analysis**: SonarQube + .NET Analyzers
+- **Source Link**: Microsoft.SourceLink.GitHub
+- **Coverage**: Coverlet
 
 ## Key Features
 
-### ECS System
-- High-performance entity management
-- Archetype-based component storage
-- Custom memory pooling
-- GameObject hierarchy
+1. **Multi-Targeting** - 15+ framework configurations
+2. **Multi-Platform** - Desktop, Web, Mobile support
+3. **Source Generators** - AOT-safe compile-time code generation
+4. **ECS Architecture** - Entity Component System for game logic
+5. **Aspect-Oriented Design** - Core.Aspect as declarative foundation
+6. **Modular Solutions** - 8 .slnx files for focused builds
+7. **No External NuGet** - Only standard .NET and native APIs
 
-### Graphics System
-- Cross-platform rendering (Windows, Linux, macOS, Web)
-- SFML and OpenGL backends
-- Hardware acceleration
+## Documentation Coverage
 
-### Physics Engine
-- 2D rigid body dynamics
-- Collision detection (GJK, EPA, SAT)
-- Continuous collision detection (CCD)
-- Dynamic tree broadphase optimization
+| Category | Files | Status |
+|----------|-------|--------|
+| Concepts | 21 | ✅ Complete |
+| Sources | 12 | ✅ Complete |
+| Architecture | 7+ | ✅ Complete |
+| Projects | 150+ | 🔄 In Progress |
+| Dependencies | 15+ | ✅ Complete |
 
-### Asset Management
-- Thread-safe asset registry
-- ZIP file handling with lazy extraction
-- SHA256-based change detection
-- Per-assembly caching
-
-## Testing Status
-
-- **Unit Tests**: Partial coverage across all projects
-- **Integration Tests**: Sample programs demonstrate usage
-- **Coverage**: Needs improvement (target: 80%+)
-
-## Quality Plans
-
-Each project includes a `QualityPlan.md` file with:
-- Code quality goals
-- Test coverage targets
-- Sample program expansion
-- Documentation improvements
-
-## Repository Structure
-
-```
-Alis/
-├── 1_Presentation/     # Extensions, Apps, Samples
-├── 2_Application/      # Core app + game samples
-├── 3_Structuration/    # Core engine aggregator
-├── 4_Operation/        # ECS, Graphic, Audio, Physic
-├── 5_Declaration/      # Aspect system
-├── 6_Ideation/         # Aspects + generators
-├── .memory/            # Generated documentation
-└── docs/               # Project documentation
-```
-
-## Documentation System
-
-The `.memory/` directory contains:
-- **projects/**: Per-project documentation
-- **system/**: State tracking, indexes, logs
-- **diagrams/**: Mermaid architecture diagrams
-- **indexes/**: Project and dependency indexes
-- **summaries/**: Repository overview and summaries
-
-## Next Steps for Memory Generation
-
-1. ✅ Document ECS system (108 files)
-2. ✅ Document Graphic system (147 files)
-3. ✅ Document Audio system (5 files)
-4. ✅ Document Physic system (39+ files)
-5. ✅ Document Memory aspect (6 files)
-6. ✅ Document Fluent, Data, Math, Time, Logging aspects
-7. ⏳ Document Extensions (~20 projects)
-8. ⏳ Document Applications and Samples
-9. ⏳ Generate architecture decision records
-
-## Cross-References
-
-- [[projects/Index]] - Complete project index
-- [[system/state/analysis-state]] - Current analysis state
-- [[diagrams/dependency-graph]] - Dependency visualization
-- [[summaries/repository-overview]] - This document
-
-## License
-
-GNU General Public License v3.0 (GPLv3)
-
-## Related Architecture
-
-- [[architecture/repository-overview]] — Detailed architecture
-- [[architecture/dependency-graph]] — Dependency map
-- [[architecture/build-system]] — Build configuration
-- [[build-system]] — Build docs
-
-## Related Concepts
-
-- [[Alis Architecture Overview]] — Full concept overview
-- [[Layered Architecture]] — Layer details
-- [[Aspect-Oriented Design]] — AOP foundation
-- [[Generator Pattern]] — Source generators
-
-## Related Indexes
-
-- [[project-index]] — All 140 projects
-- [[layer-index]] — Layer breakdown
-- [[architecture-index]] — Patterns index
-- [[domains-index]] — Bounded contexts
-- [[services-index]] — Service catalog
-
-## Related Analysis
-
-- [[testing-overview]] — Test coverage status
-- [[security-overview]] — Security analysis
-- [[performance-index]] — Performance optimizations
-
-## Related Documentation
-
-- [[onboarding/getting-started]] — Developer onboarding
-- [[ai-context]] — AI agent reference
-- [[adr-001-layered-architecture]] — Architecture decisions
-- [[adr-002-aggregator-pattern]] — Aggregator decision
-- [[session-summary]] — Memory generation session
-
+## See Also
+- [[Layered Architecture]]
+- [[Multi-Targeting Strategy]]
+- [[Generator Pattern]]

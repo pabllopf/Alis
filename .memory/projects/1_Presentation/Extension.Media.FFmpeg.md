@@ -18,3 +18,9 @@ Extension module for Media.FFmpeg functionality in ALIS.
 
 ## Notes
 - Plugin architecture integration
+
+## Related
+- [[projects/1_Presentation/Alis.Extension.Media.FFmpeg]] — Full docs
+- [[projects/1_Presentation/Extension-Media]] — Media extensions overview
+- [[Extension System]] — Concept overview
+- [[projects/Index]] — All project docs
