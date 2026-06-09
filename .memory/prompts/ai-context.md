@@ -1,88 +1,119 @@
 # AI Context — ALIS Game Engine Framework
 
-## Quick Reference for AI Agents
+> Quick reference card for AI agents working with the ALIS codebase.
 
-### Repository Structure
-```
-Alis/
-├── 1_Presentation/     # Extensions, Apps (Engine, Hub, Installer), Benchmark
-├── 2_Application/      # Core app + 13 game samples
-├── 3_Structuration/    # Core engine aggregator
-├── 4_Operation/        # ECS, Graphic, Audio, Physic (each with src/test/sample/Generator)
-├── 5_Declaration/      # Aspect system aggregator (zero hand-written code)
-├── 6_Ideation/         # Memory, Fluent, Math, Time, Data, Logging (each with src/test/sample/Generator)
-├── .config/            # Config.props (version, author, license)
-├── Directory.Build.props  # Centralized build config (C# 13, net8.0, SonarQube)
-├── alis.slnx           # Structured solution
-└── alis_design.sln     # Full design solution (75 projects)
-```
+## Repository Facts
 
-### Key Facts
-- **140 total projects** across 6 architectural layers
-- **Dependency flow**: 1 → 2 → 3 → 4 → 5 → 6 (strict layering)
-- **Generator flow**: 6_Ideation.Generator → 5_Declaration → 4_Operation → ...
-- **Test framework**: xUnit 2.6.6 + Moq 4.20.70
-- **Code analysis**: SonarQube (tests excluded)
-- **Target frameworks**: net8.0, netstandard2.0 (project-dependent)
-- **C# version**: 13
+| Fact | Value |
+|------|-------|
+| Language | C# 13 |
+| SDK | .NET 10.0+ |
+| Total Projects | ~140 unique (335 in slnx) |
+| Architectural Layers | 6 (strict dependency flow) |
+| Extensions | 19 |
+| Game Samples | 13 (Desktop + Web each) |
+| Source Generators | 8 |
+| Test Framework | xUnit 2.6.6 + Moq 4.20.70 |
+| Code Analysis | SonarQube + .NET Analyzers |
+| License | GPLv3 |
 
-### Naming Conventions
-- **Projects**: `Alis.{LayerContext}.{Module}.{SubModule}`
-- **Namespaces**: Mirror project structure (e.g., `Alis.Core.Ecs`)
-- **Test projects**: `{ProjectName}.Test`
-- **Extensions**: `Alis.Extension.{Category}.{Name}`
-- **Samples**: `Alis.Sample.{GameName}`
+## Architecture Rules (CRITICAL)
 
-### Aggregator Pattern
-Projects with zero hand-written code:
-- `Alis.Core` (3_Structuration) — aggregates 4_Operation projects
-- `Alis.Core.Aspect` (5_Declaration) — aggregates generated code from 6_Ideation
+1. **Dependency flow is STRICT**: `1_Presentation → 2_Application → 3_Structuration → 4_Operation → 5_Declaration ← 6_Ideation`
+2. **Never create upward references** (e.g., 4_Operation → 3_Structuration)
+3. **Aggregator projects have ZERO hand-written code** (Alis.Core, Alis.Core.Aspect)
+4. **Source generators cascade downward** from 6_Ideation through all layers
+5. **No external NuGet packages** — only standard .NET, system libraries, native APIs
 
-### Source Generator Architecture
-Each Ideation aspect has 4 sub-projects:
-1. `src/` — Aspect definition + generator implementation
-2. `test/` — Tests for generator output
-3. `sample/` — Usage examples
-4. `Generator/` — Roslyn ISourceGenerator
+## Layer Responsibilities
 
-Generators cascade: Ideation → Declaration → Operation → Structuration → Application → Presentation
+| Layer | Purpose | Key Projects |
+|-------|---------|-------------|
+| 1_Presentation | User-facing apps & extensions | Engine, Hub, Installer, 19 Extensions |
+| 2_Application | Core app & game samples | Alis, 13 Samples |
+| 3_Structuration | Core aggregator (zero code) | Alis.Core |
+| 4_Operation | Engine subsystems | ECS, Graphic, Audio, Physic |
+| 5_Declaration | Aspect aggregator (zero code) | Alis.Core.Aspect |
+| 6_Ideation | Aspect definitions + generators | Memory, Fluent, Data, Math, Time, Logging |
 
-### Build Commands
+## Naming Conventions
+
+| Type | Pattern | Example |
+|------|---------|---------|
+| Projects | `Alis.{Layer}.{Module}.{Sub}` | `Alis.Core.Ecs` |
+| Namespaces | Mirror project structure | `Alis.Core.Ecs` |
+| Test Projects | `{ProjectName}.Test` | `Alis.Core.Ecs.Test` |
+| Extensions | `Alis.Extension.{Category}.{Name}` | `Alis.Extension.Graphic.Sfml` |
+| Samples | `Alis.Sample.{GameName}` | `Alis.Sample.Flappy.Bird` |
+| Generators | `Alis.*.Generator` | `Alis.Core.Ecs.Generator` |
+
+## Build Commands
+
 ```bash
-dotnet restore                    # Restore all dependencies
-dotnet build alis.slnx            # Build all projects
-dotnet test                       # Run all tests
-dotnet pack -c Release           # Create NuGet packages
+dotnet restore                    # Restore dependencies
+dotnet build alis.slnx            # Build all
+dotnet test alis.slnx             # Run all tests
+dotnet pack -c Release            # Create NuGet packages
 ```
 
-### Common Tasks
-- **Adding a new extension**: Create in `1_Presentation/Extension.{Name}/`
-- **Adding a game sample**: Create in `2_Application/Alis/Sample.{Name}/`
-- **Adding an aspect**: Create in `6_Ideation/Aspect.{Name}/` with src/test/sample/Generator
-- **Adding engine subsystem**: Create in `4_Operation/{Name}/` with src/test/sample/Generator
+## Project Structure Template
 
-### Files to Check
-- `Directory.Build.props` — Build configuration
-- `.config/Config.props` — Project metadata
-- `alis.slnx` — Solution structure
-- `2_Application/Alis/src/.docs/arquitecture.md` — Canonical architecture reference
+Each engine subsystem follows this pattern:
+```
+4_Operation/{Name}/
+├── src/          # Source library
+├── test/         # xUnit tests
+├── sample/       # Usage examples
+└── generator/    # Roslyn source generator (optional)
+```
 
-### Anti-Patterns to Avoid
+## Files to Check
+
+| File | Purpose |
+|------|---------|
+| `Directory.Build.props` | Shared build properties (AssemblyVersion, analyzers) |
+| `.config/Config.props` | Multi-targeting, RIDs, generator references, dependencies |
+| `global.json` | SDK version requirements |
+| `alis.slnx` | Solution structure (all projects) |
+| `AGENTS.md` | Agent rules and conventions |
+
+## Anti-Patterns to Avoid
+
 - ❌ Cross-layer references (e.g., 1_Presentation → 3_Structuration)
 - ❌ Upward references (e.g., 4_Operation → 3_Structuration)
-- ❌ Hand-written code in aggregator projects (Alis.Core, Alis.Core.Aspect)
+- ❌ Hand-written code in aggregator projects
 - ❌ Modifying generated code directly (edit the generator instead)
+- ❌ Adding external NuGet packages without approval
+- ❌ Using `System.Reflection.Emit` (breaks AOT compatibility)
 
-## Related
+## Performance Patterns
 
-- [[conversation-starters]] — Context questions for new sessions
-- [[code-review-checklist]] — Review guidelines
-- [[naming-conventions]] — Naming rules
-- [[conventions/naming-conventions]] — Detailed conventions
-- [[onboarding/getting-started]] — Developer onboarding
-- [[repository-overview]] — Architecture reference
-- [[projects/Index]] — Project documentation
-- [[architecture/dependency-graph]] — Dependency rules
-- [[build-system]] — Build commands
-- [[testing/analysis]] — Testing framework details
-- [[adr-001-layered-architecture]] — Architecture decisions
+- Use `Span<T>` and `Memory<T>` for zero-allocation slicing
+- Prefer value types (structs) for hot paths
+- Use `StructLayout(Pack=1)` for cache-efficient data structures
+- Leverage archetype-based ECS for cache-friendly iteration
+- Use `ArrayPool<T>` for temporary buffer management
+
+## Testing Patterns
+
+```csharp
+// Standard test pattern
+public class MyTest
+{
+    [Fact]
+    public void Should_DoSomething()
+    {
+        // Arrange
+        // Act
+        // Assert
+    }
+}
+```
+
+---
+
+## Related Documentation
+
+- [[prompts/code-review-checklist]] — Code review guidelines
+- [[conventions/naming-conventions]] — Naming rules
+- [[architecture/repository-overview]] — Architecture overview

@@ -1,6 +1,6 @@
 # Platform-Specific Build Constants
 
-Alis automatically defines build-time constants based on the target platform.
+Alis automatically defines build-time constants based on the target platform for conditional compilation.
 
 ## Constant Definition Logic
 
@@ -12,19 +12,23 @@ Constants are derived from `RuntimeIdentifier` and `NETCoreSdkRuntimeIdentifier`
 </DefineConstants>
 ```
 
-## Platform Constants
+## Platform Constants Mapping
 
-| RuntimeIdentifier | Defined Constant |
-|-------------------|------------------|
-| `win-x64` | `winx64` |
-| `linux-x64` | `linuxx64` |
-| `browser-wasm` | `browserwasm` |
-| `osx-arm64` | `osxarm64` |
-| `android-arm64` | `androidarm64` |
+| RuntimeIdentifier | Defined Constant | Example Usage |
+|-------------------|------------------|---------------|
+| `win-x64` | `winx64` | Windows x64-specific code |
+| `win-x86` | `winx86` | Windows x86-specific code |
+| `linux-x64` | `linuxx64` | Linux x64-specific code |
+| `linux-arm64` | `linuxarm64` | Linux ARM64-specific code |
+| `osx-x64` | `osxx64` | macOS x64-specific code |
+| `osx-arm64` | `osxarm64` | macOS Apple Silicon-specific code |
+| `browser-wasm` | `browserwasm` | Blazor WebAssembly code |
+| `android-arm64` | `androidarm64` | Android ARM64-specific code |
+| `ios-arm64` | `iosarm64` | iOS ARM64-specific code |
 
-## Linux Flavor Detection
+## Linux Distribution Detection
 
-The system also detects Linux distributions:
+The system also detects Linux distributions and defines flavor constants:
 
 ```xml
 <DefineConstants Condition="...StartsWith('ubuntu')...">
@@ -35,7 +39,7 @@ The system also detects Linux distributions:
 Supported distributions:
 - Ubuntu, Debian, Alpine, CentOS, Fedora, Rocky, RHEL, openSUSE, Raspbian, Mariner
 
-## Usage Pattern
+## Conditional Compilation Usage
 
 ```csharp
 #if browserwasm
@@ -44,16 +48,40 @@ Supported distributions:
 // Windows x64-specific code
 #elif linuxx64
 // Linux x64-specific code
+#elif osxarm64
+// macOS Apple Silicon-specific code
 #endif
+```
+
+## Platform Detection at Runtime
+
+```csharp
+public static class PlatformHelper
+{
+    public static bool IsWeb => 
+        #if browserwasm
+        true;
+        #else
+        false;
+        #endif
+
+    public static bool IsWindows => 
+        #if winx64 || winx86
+        true;
+        #else
+        false;
+        #endif
+
+    public static bool IsLinux => 
+        #if linuxx64 || linuxarm64
+        true;
+        #else
+        false;
+        #endif
+}
 ```
 
 ## See Also
 - [[Multi-Targeting Strategy]]
 - [[Multi-Platform Samples]]
 - [[Build System Configuration]]
-
-## Related Architecture
-
-- [[build-system]] — Platform-specific builds
-- [[build-summary]] — Build pipeline
-- [[naming-conventions]] — Conditional compilation naming

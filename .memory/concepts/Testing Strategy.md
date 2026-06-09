@@ -1,48 +1,65 @@
 # Testing Strategy
 
-Alis uses xUnit testing framework with specialized plugins for cross-platform testing.
+Alis uses xUnit testing framework with specialized plugins for cross-platform and UI testing.
 
 ## Testing Framework
 
-- **xUnit** - Primary testing framework
-- **Xunit.StaFact** - Single-threaded tests for UI/platform-specific code
-- **Moq** - Mocking library for dependency injection testing
+| Package | Purpose |
+|---------|---------|
+| **xUnit** | Primary testing framework |
+| **Xunit.StaFact** | Single-threaded tests for UI/platform-specific code |
+| **Moq** | Mocking library for dependency injection testing |
 
 ## Test Organization
 
-Tests are organized by layer:
-- `1_Presentation/*/tests/` - Presentation layer tests
-- `2_Application/*/tests/` - Application layer tests
-- `3_Structuration/*/tests/` - Core library tests
-- `4_Operation/*/tests/` - Operation layer tests
-- `5_Declaration/*/tests/` - Declaration layer tests
-- `6_Ideation/*/tests/` - Ideation layer tests
+Tests are organized by layer to match source structure:
 
-## Test Output
+```
+1_Presentation/*/tests/  ← Presentation layer tests
+2_Application/*/tests/   ← Application layer tests
+3_Structuration/*/tests/ ← Core library tests
+4_Operation/*/tests/     ← Operation layer tests
+5_Declaration/*/tests/   ← Declaration layer tests
+6_Ideation/*/tests/      ← Ideation layer tests
+```
+
+## Test Output Structure
 
 Test results are organized by target framework:
 ```text
 .test/<TargetFramework>/
+  - Test assemblies
+  - Test reports
+  - Coverage data
 ```
 
 ## Build Configuration
 
 ```xml
 <ItemGroup>
-    <PackageReference Include="xunit" Version="..." />
-    <PackageReference Include="xunit.runner.visualstudio" Version="..." />
-    <PackageReference Include="Xunit.StaFact" Version="..." />
-    <PackageReference Include="Moq" Version="..." />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageReference Include="Xunit.StaFact" Version="1.1.14" />
+    <PackageReference Include="Moq" Version="4.20.70" />
 </ItemGroup>
 ```
 
-## Coverage Settings
+## Coverage Configuration
 
-Coverage configuration in `.config/coverlet.runsettings`:
+Coverage settings in `.config/coverlet.runsettings`:
 - Code coverage thresholds
-- Exclude patterns
-- Report formats
+- Exclude patterns for generated code
+- Report formats (cobertura, lcov, json)
+
+## Testing Best Practices
+
+1. **Unit tests** - Isolated, fast, no external dependencies
+2. **Integration tests** - Test component interactions
+3. **UI tests** - Use StaFact for single-threaded UI code
+4. **Cross-platform tests** - Test on multiple platforms
+5. **AOT compatibility** - Ensure tests work with Native AOT
 
 ## See Also
 - [[Build System Configuration]]
+- [[Multi-Targeting Strategy]]
 - [[Layered Architecture]]

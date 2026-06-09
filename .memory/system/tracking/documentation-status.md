@@ -1,49 +1,58 @@
 # Documentation Status
 
-## Project Status Summary
-
-| Status | Count | Description |
-|--------|-------|-------------|
-| Gold | 12 | Full source analysis, architecture, dependencies, testing |
-| Silver | 23 | Source structure, purpose, dependencies |
-| Bronze | 105 | Basic project info (apps + samples need enrichment) |
+| Document | Status | Quality | Last Updated |
+|---|---|---|---|
+| index.md | Complete | High | 2026-06-09 |
+| architecture/repository-overview.md | Complete | High | 2026-06-09 |
+| architecture/dependency-graph.md | Complete | High | 2026-06-09 |
+| architecture/build-system.md | Complete | High | 2026-06-09 |
+| system/indexes/projects-index.md | Complete | High | 2026-06-09 |
+| system/indexes/layer-index.md | Complete | High | 2026-06-09 |
+| system/indexes/dependency-index.md | Complete | High | 2026-06-09 |
+| system/indexes/architecture-index.md | Complete | High | 2026-06-09 |
+| system/indexes/services-index.md | Complete | High | 2026-06-09 |
+| system/indexes/handlers-index.md | Complete | Medium | 2026-06-09 |
+| system/indexes/events-index.md | Complete | Medium | 2026-06-09 |
+| system/indexes/domains-index.md | Complete | Medium | 2026-06-09 |
+| system/indexes/security-index.md | Complete | High | 2026-06-09 |
+| system/indexes/tests-index.md | Complete | High | 2026-06-09 |
+| system/indexes/commands-index.md | Complete | Medium | 2026-06-09 |
+| system/indexes/queries-index.md | Complete | Medium | 2026-06-09 |
+| prompts/ai-context.md | Complete | High | 2026-06-09 |
+| onboarding/getting-started.md | Complete | High | 2026-06-09 |
+| security/analysis.md | Complete | High | 2026-06-09 |
+| testing/analysis.md | Complete | High | 2026-06-09 |
+| decisions/adr-001-layered-architecture.md | Complete | High | 2026-06-09 |
+| decisions/adr-002-aggregator-pattern.md | Complete | High | 2026-06-09 |
+| conventions/naming-conventions.md | Complete | High | 2026-06-09 |
 
 ## Generation History
 
 | Date | Documents Generated | Status |
 |---|---|---|
-| 2026-06-08 | Core engine + Ideation aspects (10 projects) | Success |
-| 2026-06-08 | Extension batch 1 (8 projects) | Success |
-| 2026-06-08 | Application/sample basics | Success |
-| 2026-06-09 | Extension enrichment (11 files) | Success |
-| 2026-06-09 | System files (20+ files) | Success |
-
-## Gold Standard Docs
-1. Alis.Core.Ecs
-2. Alis.Core.Graphic
-3. Alis.Core.Audio
-4. Alis.Core.Physic
-5. Alis.Core.Aspect.Memory
-6. Alis.Core.Aspect.Fluent
-7. Alis.Core.Aspect.Data
-8. Alis.Core.Aspect.Math
-9. Alis.Core.Aspect.Time
-10. Alis.Core.Aspect.Logging
-11. Alis.Extension.Graphic.Sfml
-12. Alis.Extension.Graphic.Glfw
+| 2026-06-08 | 3 | Success (initial) |
+| 2026-06-09 | 23 | Success (comprehensive enrichment) |
 
 ## Regeneration Queue
+
 | Document | Reason | Priority |
 |---|---|---|
-| Application docs | Need enrichment | High |
-| Sample docs | Need enrichment | Medium |
+| projects/4_Operation/Ecs.md | Update with enriched details | Medium |
+| projects/4_Operation/Graphic.md | Update with enriched details | Medium |
+| projects/4_Operation/Audio.md | Update with enriched details | Low |
+| projects/4_Operation/Physic.md | Update with enriched details | Low |
+| projects/6_Ideation/*.md | Update all aspect docs | Medium |
 
-## Related
+## Coverage Summary
 
-- [[documentation-map]] — Documentation file map
-- [[coverage-map]] — Coverage tracking
-- [[analysis-state]] — Analysis progress
-- [[project-state]] — Project tracking
-- [[memory-generation-status]] — Generation status
-- [[project-index]] — All projects
-- [[indexes-summary]] — All indexes
+| Category | Total | Documented | Coverage |
+|---|---|---|---|
+| Architecture | 3 | 3 | 100% |
+| System Indexes | 14 | 14 | 100% |
+| Project Docs | ~140 | ~18 | ~13% |
+| Prompts/AI | 3 | 3 | 100% |
+| Onboarding | 1 | 1 | 100% |
+| Security | 1 | 1 | 100% |
+| Testing | 1 | 1 | 100% |
+| Decisions | 2 | 2 | 100% |
+| Conventions | 1 | 1 | 100% |

@@ -1,34 +1,25 @@
 # Coverage Map
 
-| Category | Projects | Documented | Pending |
-|---|---|---|---|
-| Core Engine (4_Operation) | 16 | 10 | 6 (test/sample/generator sub-projects) |
-| Ideation Aspects (6_Ideation) | 24 | 24 | 0 |
-| Extensions (1_Presentation/Extension) | 19 | 19 | 0 |
-| Applications (1_Presentation) | 4 | 4 (basic) | 4 (needs enrichment) |
-| Structuration (3_Structuration) | 5 | 5 | 0 |
-| Declaration (5_Declaration) | 1 | 1 | 0 |
-| Samples (2_Application) | 14 | 14 (basic) | 14 (needs enrichment) |
+| Category | Projects | Documented | Pending | Coverage |
+|---|---|---|---|---|
+| Core Engine (4_Operation) | 14 | 4 | 10 | 29% |
+| Ideation Aspects (6_Ideation) | ~24 | 6 | ~18 | 25% |
+| Extensions (1_Presentation) | ~57 | 8 | ~49 | 14% |
+| Applications (1_Presentation) | 7 | 0 | 7 | 0% |
+| Samples (2_Application) | ~28 | 0 | ~28 | 0% |
+| Structuration (3_Structuration) | 3 | 0 | 3 | 0% |
+| Declaration (5_Declaration) | 3 | 0 | 3 | 0% |
+| **Total** | **~140** | **~18** | **~122** | **~13%** |
 
 ## Documentation Quality
 
-- **Gold** (full source analysis): 12 projects
-- **Silver** (source structure + purpose): 15 projects  
-- **Bronze** (basic stub): 0 projects
+- **High**: ECS, Graphic, Audio, Physic, all 6 Ideation aspects, Architecture, Build System, AI Context
+- **Medium**: Extension docs, Security, Testing
+- **Low**: Application docs, Sample docs
 
-## Summary
-- **Total Projects**: 140
-- **Fully Documented (Gold)**: 12
-- **Partially Documented (Silver)**: 23
-- **Basic Coverage (Bronze)**: 105 (applications + samples)
+## Priority Areas for Next Session
 
-## Related
-
-- [[documentation-map]] — Documentation file map
-- [[documentation-status]] — Documentation quality status
-- [[analysis-state]] — Analysis progress
-- [[project-state]] — Project tracking
-- [[project-index]] — All projects
-- [[tests-index]] — Test coverage
-- [[indexes-summary]] — All indexes overview
-- [[memory-generation-status]] — Generation status
+1. **Applications** (1_Presentation) — Engine, Hub, Installer (high user visibility)
+2. **Remaining Extensions** — ~11 extensions not yet individually documented
+3. **Samples** — All 13 game samples
+4. **Structuration/Declaration** — Aggregator project details

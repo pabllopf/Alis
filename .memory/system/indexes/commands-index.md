@@ -1,29 +1,41 @@
-# Commands Index
+# Commands Index — ALIS
 
-## ECS Commands
+## Build Commands
 
-| Command | Purpose | Parameters |
-|---|---|---|
-| Create | Create new entity | Components array |
-| Destroy | Remove entity | Entity ID |
-| AddComponent | Add component to entity | Entity ID, Component type |
-| RemoveComponent | Remove component from entity | Entity ID, Component type |
+| Command | Description |
+|---------|-------------|
+| `dotnet restore` | Restore all NuGet dependencies |
+| `dotnet build alis.slnx` | Build all projects (Debug) |
+| `dotnet build alis.slnx -c Release` | Build all projects (Release) |
+| `dotnet test alis.slnx` | Run all tests |
+| `dotnet test /p:CollectCoverage=true` | Run tests with coverage |
+| `dotnet pack -c Release` | Create NuGet packages |
 
-## Scene Commands
+## Memory System Commands
 
-| Command | Purpose | Parameters |
-|---|---|---|
-| Update | Update all entities | Update type |
-| Query | Query entities | Rule, Component types |
-| BatchCreate | Create multiple entities | Count, Components |
+| Command | Description |
+|---------|-------------|
+| `dotnet restore` | Restore dependencies |
+| `dotnet build alis.slnx -c Debug` | Build solution |
+| `dotnet test alis.slnx -c Debug` | Run tests |
 
-## Related
+## Development Commands
 
-- [[queries-index]] — Query commands
-- [[events-index]] — Event commands
-- [[handlers-index]] — Command handlers
-- [[apis-index]] — Command APIs
-- [[Alis.Core.Ecs]] — ECS command docs
-- [[entity-component-system-ecs]] — ECS overview
-- [[architecture-index]] — Command pattern
-- [[indexes-summary]] — All indexes
+```bash
+# Run a game sample
+cd 2_Application/Alis/samples/alis.sample.flappy.bird/desktop
+dotnet run
+
+# Run specific test project
+dotnet test 4_Operation/Ecs/test/Alis.Core.Ecs.Test.csproj
+
+# Build specific project
+dotnet build 4_Operation/Ecs/src/Alis.Core.Ecs.csproj
+```
+
+---
+
+## Related Documentation
+
+- [[architecture/build-system]] — Build configuration
+- [[onboarding/getting-started]] — Getting started guide

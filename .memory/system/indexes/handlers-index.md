@@ -1,34 +1,56 @@
-# Handlers Index
+# Handlers Index — ALIS
 
 ## ECS Update Handlers
 
 | Handler | Type | Description |
-|---|---|---|
+|---------|------|-------------|
 | UpdateRunner | System | Per-frame update execution |
 | FixedUpdateRunner | System | Fixed timestep physics updates |
 | RenderRunner | System | Graphics rendering updates |
 
+## ECS Component Handlers
+
+| Handler | Event | Purpose |
+|---------|-------|---------|
+| ComponentEventHandler | ComponentAdded/Removed | Notify systems of component changes |
+| GameObjectEventHandler | GameObjectCreated/Destroyed | Hierarchy management |
+| EntityUpdate | Entity lifecycle | Per-entity update management |
+
 ## Event Handlers
 
 | Handler | Event | Purpose |
-|---|---|---|
-| ComponentEventHandler | ComponentAdded/Removed | Notify systems of changes |
-| GameObjectEventHandler | GameObjectCreated/Destroyed | Hierarchy management |
+|---------|-------|---------|
+| ComponentEventHandler | ComponentAdded | System notification on component add |
+| ComponentEventHandler | ComponentRemoved | System notification on component remove |
+| GameObjectEventHandler | GameObjectCreated | Scene initialization |
+| GameObjectEventHandler | GameObjectDestroyed | Cleanup handlers |
 
-## Custom Handlers
+## Network Handlers (Extension)
 
-- AssetRegistry asset loading handlers
-- Network communication handlers (extensions)
-- Platform-specific event handlers
+| Handler | Protocol | Purpose |
+|---------|----------|---------|
+| BufferPool | TCP/UDP | Memory-efficient buffer management |
+| Network handlers | TCP/UDP | Client-server communication |
 
-## Related
+## Asset Handlers
 
-- [[events-index]] — Event system
-- [[commands-index]] — Command patterns
-- [[queries-index]] — Query system
-- [[services-index]] — Core services
-- [[apis-index]] — Public APIs
-- [[Alis.Core.Ecs]] — ECS handler docs
-- [[entity-component-system-ecs]] — ECS overview
-- [[System]] — System processing unit
-- [[indexes-summary]] — All indexes
+| Handler | Event | Purpose |
+|---------|-------|---------|
+| AssetRegistry | AssetLoaded | Asset pack loading and caching |
+| SHA256 Validator | IntegrityCheck | Change detection for embedded assets |
+
+## Platform Event Handlers
+
+| Handler | Event | Purpose |
+|---------|-------|---------|
+| WindowResized | Window dimensions change | Render system adjustment |
+| InputChanged | User input received | Game logic processing |
+| AudioDeviceEvent | Audio device changes | SDL2 audio device management |
+
+---
+
+## Related Documentation
+
+- [[system/indexes/events-index]] — Event catalog
+- [[system/indexes/services-index]] — Service inventory
+- [[system/indexes/architecture-index]] — Architecture patterns

@@ -1,42 +1,42 @@
-# Queries Index
+# Queries Index — ALIS
 
 ## ECS Query System
 
-### Rule-Based Queries
+| Query | Purpose | Location |
+|-------|---------|----------|
+| SceneQuery | Filter entities by component rules | 4_Operation/Ecs/src/ |
+| ComponentQuery | Query entities with specific components | 4_Operation/Ecs/src/ |
+| ArchetypeQuery | Query by archetype type | 4_Operation/Ecs/src/ |
 
+## Query Patterns
+
+### Rule-Based Filtering
 ```csharp
-// Query entities with Transform and Position components
-var query = scene.CreateQuery(Rule.With<Transform>().And<Position>());
-
-// Query entities with Transform, excluding Physics components
-var query = scene.CreateQuery(Rule.With<Transform>().Without<Physics>());
-
-// Query entities with any of multiple components
-var query = scene.CreateQuery(Rule.AnyOf<Lightweight, FastMoving>());
+// Example: Query entities with specific components
+scene.Query<Position, Velocity>()
 ```
 
-### Query Results
+### Attribute-Based Updates
+```csharp
+// Update systems by attribute type
+scene.UpdateSystemsByAttribute<UpdateAttribute>()
+```
 
-- **Query<TComponent>**: Typed query results
-- **QueryEnumerable<T>**: LINQ-compatible query results
-- **Chunk-based iteration**: Cache-friendly entity processing
+## Scene Operations
 
-### Performance Characteristics
+| Operation | Description |
+|-----------|-------------|
+| Entity creation | Create entities with typed components |
+| Component add/remove | Add/remove components with event notifications |
+| Query filtering | Custom queries using rule-based filtering |
+| System updates | Update systems by attribute/component type |
+| Structural changes | Deferred structural changes during update cycles |
+| Bulk creation | Bulk entity creation for performance |
 
-- O(1) query creation
-- O(n) query execution (n = matching entities)
-- Chunk-based iteration for cache efficiency
+---
 
-## Related
+## Related Documentation
 
-- [[commands-index]] — ECS commands
-- [[events-index]] — Event queries
-- [[handlers-index]] — Query handlers
-- [[apis-index]] — Query APIs
-- [[entity-component-system-ecs]] — ECS overview
-- [[Query]] — Query glossary
-- [[Rule]] — Rule glossary
-- [[Alis.Core.Ecs]] — ECS project docs
-- [[performance-index]] — Query performance
-- [[architecture-index]] — Query architecture
-- [[indexes-summary]] — All indexes
+- [[system/indexes/handlers-index]] — Handler patterns
+- [[system/indexes/events-index]] — Event catalog
+- [[system/indexes/architecture-index]] — Architecture patterns
