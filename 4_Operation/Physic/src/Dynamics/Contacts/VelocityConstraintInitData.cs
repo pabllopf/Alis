@@ -48,16 +48,49 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         float wB)
     {
 
+        /// <summary>
+        /// Gets the value of the c a
+        /// </summary>
         internal Vector2F cA { get; } = cA;
+        /// <summary>
+        /// Gets the value of the c b
+        /// </summary>
         internal Vector2F cB { get; } = cB;
+        /// <summary>
+        /// Gets the value of the m a
+        /// </summary>
         internal float mA { get; } = mA;
+        /// <summary>
+        /// Gets the value of the m b
+        /// </summary>
         internal float mB { get; } = mB;
+        /// <summary>
+        /// Gets the value of the i a
+        /// </summary>
         internal float iA { get; } = iA;
+        /// <summary>
+        /// Gets the value of the i b
+        /// </summary>
         internal float iB { get; } = iB;
+        /// <summary>
+        /// Gets the value of the tangent
+        /// </summary>
         internal Vector2F tangent { get; } = tangent;
+        /// <summary>
+        /// Gets the value of the v a
+        /// </summary>
         internal Vector2F vA { get; } = vA;
+        /// <summary>
+        /// Gets the value of the w a
+        /// </summary>
         internal float wA { get; } = wA;
+        /// <summary>
+        /// Gets the value of the v b
+        /// </summary>
         internal Vector2F vB { get; } = vB;
+        /// <summary>
+        /// Gets the value of the w b
+        /// </summary>
         internal float wB { get; } = wB;
     }
 }

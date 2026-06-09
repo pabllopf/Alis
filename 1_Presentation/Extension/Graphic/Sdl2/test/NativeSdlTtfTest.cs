@@ -4,8 +4,14 @@ using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The native sdl ttf test class
+    /// </summary>
     public class NativeSdlTtfTest
     {
+        /// <summary>
+        /// Tests that should return compiled version
+        /// </summary>
         [Fact]
         public void ShouldReturnCompiledVersion()
         {

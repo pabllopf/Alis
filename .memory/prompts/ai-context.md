@@ -72,3 +72,17 @@ dotnet pack -c Release           # Create NuGet packages
 - ❌ Upward references (e.g., 4_Operation → 3_Structuration)
 - ❌ Hand-written code in aggregator projects (Alis.Core, Alis.Core.Aspect)
 - ❌ Modifying generated code directly (edit the generator instead)
+
+## Related
+
+- [[conversation-starters]] — Context questions for new sessions
+- [[code-review-checklist]] — Review guidelines
+- [[naming-conventions]] — Naming rules
+- [[conventions/naming-conventions]] — Detailed conventions
+- [[onboarding/getting-started]] — Developer onboarding
+- [[repository-overview]] — Architecture reference
+- [[projects/Index]] — Project documentation
+- [[architecture/dependency-graph]] — Dependency rules
+- [[build-system]] — Build commands
+- [[testing/analysis]] — Testing framework details
+- [[adr-001-layered-architecture]] — Architecture decisions

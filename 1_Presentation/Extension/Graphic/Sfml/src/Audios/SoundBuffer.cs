@@ -42,6 +42,9 @@ namespace Alis.Extension.Graphic.Sfml.Audios
     /// </summary>
     public class SoundBuffer : ObjectBase
     {
+        /// <summary>
+        /// The resource name
+        /// </summary>
         private const string _resourceName = "sound buffer";
 
         /// <summary>

@@ -39,6 +39,9 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class PublicBufferMemoryStreamTest
     {
+        /// <summary>
+        /// Tests that constructor creates instance with buffer
+        /// </summary>
         [Fact]
         public void Constructor_CreatesInstanceWithBuffer()
         {
@@ -54,6 +57,9 @@ namespace Alis.Extension.Network.Test
             Assert.IsType<PublicBufferMemoryStream>(stream);
         }
 
+        /// <summary>
+        /// Tests that can read returns true
+        /// </summary>
         [Fact]
         public void CanRead_ReturnsTrue()
         {
@@ -69,6 +75,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that can seek returns true
+        /// </summary>
         [Fact]
         public void CanSeek_ReturnsTrue()
         {
@@ -84,6 +93,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that can write returns true
+        /// </summary>
         [Fact]
         public void CanWrite_ReturnsTrue()
         {
@@ -99,6 +111,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that capacity returns correct value
+        /// </summary>
         [Fact]
         public void Capacity_ReturnsCorrectValue()
         {
@@ -114,6 +129,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(1024, result);
         }
 
+        /// <summary>
+        /// Tests that position starts at zero
+        /// </summary>
         [Fact]
         public void Position_StartsAtZero()
         {
@@ -129,6 +147,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(0, result);
         }
 
+        /// <summary>
+        /// Tests that write byte writes byte
+        /// </summary>
         [Fact]
         public void WriteByte_WritesByte()
         {
@@ -144,6 +165,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(1, stream.Position);
         }
 
+        /// <summary>
+        /// Tests that write writes bytes
+        /// </summary>
         [Fact]
         public void Write_WritesBytes()
         {
@@ -160,6 +184,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(5, stream.Position);
         }
 
+        /// <summary>
+        /// Tests that read reads bytes
+        /// </summary>
         [Fact]
         public void Read_ReadsBytes()
         {
@@ -178,6 +205,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(3, bytesRead);
         }
 
+        /// <summary>
+        /// Tests that get buffer returns original buffer
+        /// </summary>
         [Fact]
         public void GetBuffer_ReturnsOriginalBuffer()
         {
@@ -195,6 +225,9 @@ namespace Alis.Extension.Network.Test
 
 
 
+        /// <summary>
+        /// Tests that seek seeks to position
+        /// </summary>
         [Fact]
         public void Seek_SeeksToPosition()
         {
@@ -211,6 +244,9 @@ namespace Alis.Extension.Network.Test
         }
 
 
+        /// <summary>
+        /// Tests that close returns buffer to pool
+        /// </summary>
         [Fact]
         public void Close_ReturnsBufferToPool()
         {
@@ -227,6 +263,9 @@ namespace Alis.Extension.Network.Test
             // Buffer returned to pool without exception
         }
 
+        /// <summary>
+        /// Tests that flush flushes stream
+        /// </summary>
         [Fact]
         public void Flush_FlushesStream()
         {
@@ -242,6 +281,9 @@ namespace Alis.Extension.Network.Test
             // No exception thrown
         }
 
+        /// <summary>
+        /// Tests that copy to async copies to stream
+        /// </summary>
         [Fact]
         public void CopyToAsync_CopiesToStream()
         {
@@ -260,6 +302,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(targetStream);
         }
 
+        /// <summary>
+        /// Tests that write async writes bytes
+        /// </summary>
         [Fact]
         public void WriteAsync_WritesBytesAsync()
         {
@@ -276,6 +321,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(3, stream.Position);
         }
 
+        /// <summary>
+        /// Tests that create new instance initializes correctly
+        /// </summary>
         [Fact]
         public void CreateNewInstance_InitializesCorrectly()
         {
@@ -290,6 +338,9 @@ namespace Alis.Extension.Network.Test
         }
         
 
+        /// <summary>
+        /// Tests that position can be set
+        /// </summary>
         [Fact]
         public void Position_CanBeSet()
         {

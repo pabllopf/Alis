@@ -574,8 +574,18 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             }
         }
 
+        /// <summary>
+        /// Invokes the event handler using the specified handler
+        /// </summary>
+        /// <param name="handler">The handler</param>
         private void InvokeEventHandler(EventHandler handler) => handler?.Invoke(this, EventArgs.Empty);
 
+        /// <summary>
+        /// Invokes the event handler using the specified handler
+        /// </summary>
+        /// <typeparam name="TEventArgs">The event args</typeparam>
+        /// <param name="handler">The handler</param>
+        /// <param name="args">The args</param>
         private void InvokeEventHandler<TEventArgs>(EventHandler<TEventArgs> handler, TEventArgs args) where TEventArgs : EventArgs => handler?.Invoke(this, args);
 
         /// <summary>Event handler for the Closed event</summary>

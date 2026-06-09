@@ -95,10 +95,24 @@ namespace Alis.Core.Physic.Collisions
             return 1;
         }
 
+        /// <summary>
+        /// Equalses the other
+        /// </summary>
+        /// <param name="other">The other</param>
+        /// <returns>The bool</returns>
         public bool Equals(Pair other) => ProxyIdA == other.ProxyIdA && ProxyIdB == other.ProxyIdB;
 
+        /// <summary>
+        /// Equalses the obj
+        /// </summary>
+        /// <param name="obj">The obj</param>
+        /// <returns>The bool</returns>
         public override bool Equals(object obj) => obj is Pair other && Equals(other);
 
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>The int</returns>
         public override int GetHashCode() => ProxyIdA * 31 + ProxyIdB;
 
         public static bool operator ==(Pair left, Pair right) => left.Equals(right);

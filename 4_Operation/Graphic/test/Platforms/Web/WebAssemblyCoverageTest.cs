@@ -46,18 +46,27 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that game context console log does not throw
+        /// </summary>
         [Fact]
         public void GameContext_ConsoleLog_DoesNotThrow()
         {
             WebAssemblyGameContext.ConsoleLog("test");
         }
 
+        /// <summary>
+        /// Tests that game context console warn does not throw
+        /// </summary>
         [Fact]
         public void GameContext_ConsoleWarn_DoesNotThrow()
         {
             WebAssemblyGameContext.ConsoleWarn("test");
         }
 
+        /// <summary>
+        /// Tests that game context console error does not throw
+        /// </summary>
         [Fact]
         public void GameContext_ConsoleError_DoesNotThrow()
         {
@@ -66,12 +75,18 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that game context show alert does not throw
+        /// </summary>
         [Fact]
         public void GameContext_ShowAlert_DoesNotThrow()
         {
             WebAssemblyGameContext.ShowAlert("test");
         }
 
+        /// <summary>
+        /// Tests that game context show confirm returns false on non browser
+        /// </summary>
         [Fact]
         public void GameContext_ShowConfirm_ReturnsFalseOnNonBrowser()
         {
@@ -83,6 +98,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
       
 
+        /// <summary>
+        /// Tests that web assembly platform initialize already initialized returns true
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_Initialize_AlreadyInitialized_ReturnsTrue()
         {
@@ -91,6 +109,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that web assembly platform cleanup when initialized clears state
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_Cleanup_WhenInitialized_ClearsState()
         {
@@ -99,6 +120,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         // =====================================================================
+        /// <summary>
+        /// Webs the assembly platform convert key code alphabet keys using the specified key code
+        /// </summary>
+        /// <param name="keyCode">The key code</param>
+        /// <param name="expected">The expected</param>
         [InlineData(65, ConsoleKey.A)]
         [InlineData(66, ConsoleKey.B)]
         [InlineData(67, ConsoleKey.C)]
@@ -133,6 +159,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Webs the assembly platform convert key code number keys using the specified key code
+        /// </summary>
+        /// <param name="keyCode">The key code</param>
+        /// <param name="expected">The expected</param>
         [InlineData(48, ConsoleKey.D0)]
         [InlineData(49, ConsoleKey.D1)]
         [InlineData(50, ConsoleKey.D2)]
@@ -151,6 +182,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Webs the assembly platform convert key code function keys using the specified key code
+        /// </summary>
+        /// <param name="keyCode">The key code</param>
+        /// <param name="expected">The expected</param>
         [InlineData(112, ConsoleKey.F1)]
         [InlineData(113, ConsoleKey.F2)]
         [InlineData(114, ConsoleKey.F3)]
@@ -171,6 +207,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Webs the assembly platform convert key code numpad keys using the specified key code
+        /// </summary>
+        /// <param name="keyCode">The key code</param>
+        /// <param name="expected">The expected</param>
         [InlineData(96, ConsoleKey.NumPad0)]
         [InlineData(97, ConsoleKey.NumPad1)]
         [InlineData(98, ConsoleKey.NumPad2)]
@@ -189,6 +230,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Webs the assembly platform convert key code numpad operators using the specified key code
+        /// </summary>
+        /// <param name="keyCode">The key code</param>
+        /// <param name="expected">The expected</param>
         [InlineData(106, ConsoleKey.Multiply)]
         [InlineData(107, ConsoleKey.Add)]
         [InlineData(109, ConsoleKey.Subtract)]
@@ -202,6 +248,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Webs the assembly platform convert key code modifier keys using the specified key code
+        /// </summary>
+        /// <param name="keyCode">The key code</param>
+        /// <param name="expected">The expected</param>
         [InlineData(16, ConsoleKey.LeftArrow)]
         [InlineData(17, ConsoleKey.Escape)]
         public void WebAssemblyPlatform_ConvertKeyCode_ModifierKeys(int keyCode, ConsoleKey expected)
@@ -211,6 +262,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
+        /// <summary>
+        /// Tests that web assembly platform convert key code default returns no name
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_ConvertKeyCode_Default_ReturnsNoName()
         {
@@ -221,60 +275,90 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that game examples basic game loop example skipped on non browser
+        /// </summary>
         [Fact]
         public void GameExamples_BasicGameLoopExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that game examples gamepad input example skipped on non browser
+        /// </summary>
         [Fact]
         public void GameExamples_GamepadInputExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that game examples display management example skipped on non browser
+        /// </summary>
         [Fact]
         public void GameExamples_DisplayManagementExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that game examples fps game example skipped on non browser
+        /// </summary>
         [Fact]
         public void GameExamples_FpsGameExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that game examples system info example does not throw
+        /// </summary>
         [Fact]
         public void GameExamples_SystemInfoExample_DoesNotThrow()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that game examples configuration presets example skipped on non browser
+        /// </summary>
         [Fact]
         public void GameExamples_ConfigurationPresetsExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that game examples text input example skipped on non browser
+        /// </summary>
         [Fact]
         public void GameExamples_TextInputExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that game examples performance monitoring example skipped on non browser
+        /// </summary>
         [Fact]
         public void GameExamples_PerformanceMonitoringExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that game examples dialog box example skipped on non browser
+        /// </summary>
         [Fact]
         public void GameExamples_DialogBoxExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that game examples complete game template skipped on non browser
+        /// </summary>
         [Fact]
         public void GameExamples_CompleteGameTemplate_SkippedOnNonBrowser()
         {
@@ -285,18 +369,27 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that system info get platform name returns web assembly
+        /// </summary>
         [Fact]
         public void SystemInfo_GetPlatformName_ReturnsWebAssembly()
         {
             Assert.Equal("WebAssembly", SystemInfo.PlatformName);
         }
 
+        /// <summary>
+        /// Tests that system info is online returns false on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_IsOnline_ReturnsFalseOnNonBrowser()
         {
             Assert.False(SystemInfo.IsOnline());
         }
 
+        /// <summary>
+        /// Tests that system info get language returns default on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_GetLanguage_ReturnsDefaultOnNonBrowser()
         {
@@ -304,6 +397,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("en", lang);
         }
 
+        /// <summary>
+        /// Tests that system info get device pixel ratio returns default on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
         {
@@ -311,6 +407,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1.0f, ratio);
         }
 
+        /// <summary>
+        /// Tests that system info get battery level returns default on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
         {
@@ -318,12 +417,18 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(-1.0f, level);
         }
 
+        /// <summary>
+        /// Tests that system info is charging returns false on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_IsCharging_ReturnsFalseOnNonBrowser()
         {
             Assert.False(SystemInfo.IsCharging());
         }
 
+        /// <summary>
+        /// Tests that system info get screen orientation returns default on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_GetScreenOrientation_ReturnsDefaultOnNonBrowser()
         {
@@ -331,6 +436,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1, orientation); // landscape
         }
 
+        /// <summary>
+        /// Tests that system info get system time ms returns zero on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_GetSystemTimeMs_ReturnsZeroOnNonBrowser()
         {
@@ -338,18 +446,27 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0, time);
         }
 
+        /// <summary>
+        /// Tests that system info log to console does not throw
+        /// </summary>
         [Fact]
         public void SystemInfo_LogToConsole_DoesNotThrow()
         {
             SystemInfo.LogToConsole("test");
         }
 
+        /// <summary>
+        /// Tests that system info warn to console does not throw
+        /// </summary>
         [Fact]
         public void SystemInfo_WarnToConsole_DoesNotThrow()
         {
             SystemInfo.WarnToConsole("test");
         }
 
+        /// <summary>
+        /// Tests that system info error to console does not throw
+        /// </summary>
         [Fact]
         public void SystemInfo_ErrorToConsole_DoesNotThrow()
         {
@@ -360,6 +477,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
       
 
+        /// <summary>
+        /// Tests that quick start log platform info does not throw
+        /// </summary>
         [Fact]
         public void QuickStart_LogPlatformInfo_DoesNotThrow()
         {
@@ -368,6 +488,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that game context presets game 2 d returns valid config
+        /// </summary>
         [Fact]
         public void GameContextPresets_Game2D_ReturnsValidConfig()
         {
@@ -385,6 +508,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.MouseInputEnabled);
         }
 
+        /// <summary>
+        /// Tests that game context presets game 3 d returns valid config
+        /// </summary>
         [Fact]
         public void GameContextPresets_Game3D_ReturnsValidConfig()
         {
@@ -399,6 +525,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(DisplayQuality.VeryHigh, config.DisplayQuality);
         }
 
+        /// <summary>
+        /// Tests that game context presets puzzle game returns valid config
+        /// </summary>
         [Fact]
         public void GameContextPresets_PuzzleGame_ReturnsValidConfig()
         {
@@ -415,6 +544,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.MouseInputEnabled);
         }
 
+        /// <summary>
+        /// Tests that game context presets mobile game returns valid config
+        /// </summary>
         [Fact]
         public void GameContextPresets_MobileGame_ReturnsValidConfig()
         {
@@ -431,6 +563,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that emscripten web get connected gamepads returns empty on non browser
+        /// </summary>
         [Fact]
         public void EmscriptenWeb_GetConnectedGamepads_ReturnsEmptyOnNonBrowser()
         {
@@ -439,6 +574,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Empty(gamepads);
         }
 
+        /// <summary>
+        /// Tests that emscripten web get gamepad axes returns empty on non browser
+        /// </summary>
         [Fact]
         public void EmscriptenWeb_GetGamepadAxes_ReturnsEmptyOnNonBrowser()
         {
@@ -447,6 +585,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Empty(axes);
         }
 
+        /// <summary>
+        /// Tests that emscripten web get gamepad buttons returns empty on non browser
+        /// </summary>
         [Fact]
         public void EmscriptenWeb_GetGamepadButtons_ReturnsEmptyOnNonBrowser()
         {
@@ -455,6 +596,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Empty(buttons);
         }
 
+        /// <summary>
+        /// Tests that emscripten web open file dialog returns null on non browser
+        /// </summary>
         [Fact]
         public void EmscriptenWeb_OpenFileDialog_ReturnsNullOnNonBrowser()
         {
@@ -462,6 +606,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that emscripten web open file dialog with mime types returns null on non browser
+        /// </summary>
         [Fact]
         public void EmscriptenWeb_OpenFileDialog_WithMimeTypes_ReturnsNullOnNonBrowser()
         {
@@ -469,6 +616,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that emscripten web paste from clipboard returns null on non browser
+        /// </summary>
         [Fact]
         public void EmscriptenWeb_PasteFromClipboard_ReturnsNullOnNonBrowser()
         {
@@ -476,6 +626,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that emscripten web get language returns default on non browser
+        /// </summary>
         [Fact]
         public void EmscriptenWeb_GetLanguage_ReturnsDefaultOnNonBrowser()
         {
@@ -485,6 +638,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Invokes the private using the specified instance
+        /// </summary>
+        /// <param name="instance">The instance</param>
+        /// <param name="methodName">The method name</param>
+        /// <param name="arguments">The arguments</param>
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)
         {
             MethodInfo method = instance.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);

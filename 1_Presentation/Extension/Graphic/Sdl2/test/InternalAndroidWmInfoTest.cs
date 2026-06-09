@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal android wm info test class
+    /// </summary>
     public class InternalAndroidWmInfoTest
     {
+        /// <summary>
+        /// Tests that internal android wm info default initialization properties have default values
+        /// </summary>
         [Fact]
         public void InternalAndroidWmInfo_DefaultInitialization_PropertiesHaveDefaultValues()
         {
@@ -15,6 +21,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, info.Surface);
         }
 
+        /// <summary>
+        /// Tests that internal android wm info set properties stores values correctly
+        /// </summary>
         [Fact]
         public void InternalAndroidWmInfo_SetProperties_StoresValuesCorrectly()
         {
@@ -28,6 +37,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(new IntPtr(456), info.Surface);
         }
 
+        /// <summary>
+        /// Tests that internal android wm info is value type copy is independent
+        /// </summary>
         [Fact]
         public void InternalAndroidWmInfo_IsValueType_CopyIsIndependent()
         {

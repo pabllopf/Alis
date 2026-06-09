@@ -114,6 +114,12 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
             }
         }
 
+        /// <summary>
+        /// Parses the json object using the specified json
+        /// </summary>
+        /// <param name="json">The json</param>
+        /// <param name="result">The result</param>
+        /// <exception cref="JsonParsingException">Expected ':' at position {position}</exception>
         private void ParseJsonObject(string json, ref Dictionary<string, string> result)
         {
             int position = 0;

@@ -43,6 +43,9 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class WebSocketClientFactoryTest
     {
+        /// <summary>
+        /// Tests that constructor creates instance
+        /// </summary>
         [Fact]
         public void Constructor_CreatesInstance()
         {

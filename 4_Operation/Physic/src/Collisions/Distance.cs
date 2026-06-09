@@ -179,6 +179,13 @@ namespace Alis.Core.Physic.Collisions
             ApplyRadii(input, ref output);
         }
 
+        /// <summary>
+        /// Saves the simplex indices using the specified simplex
+        /// </summary>
+        /// <param name="simplex">The simplex</param>
+        /// <param name="saveA">The save</param>
+        /// <param name="saveB">The save</param>
+        /// <param name="saveCount">The save count</param>
         private static void SaveSimplexIndices(Simplex simplex, FixedArray3<int> saveA, FixedArray3<int> saveB, int saveCount)
         {
             for (int i = 0; i < saveCount; ++i)
@@ -188,6 +195,10 @@ namespace Alis.Core.Physic.Collisions
             }
         }
 
+        /// <summary>
+        /// Solves the simplex using the specified simplex
+        /// </summary>
+        /// <param name="simplex">The simplex</param>
         private static void SolveSimplex(Simplex simplex)
         {
             switch (simplex.Count)
@@ -201,6 +212,14 @@ namespace Alis.Core.Physic.Collisions
             }
         }
 
+        /// <summary>
+        /// Ises the duplicate vertex using the specified vertex
+        /// </summary>
+        /// <param name="vertex">The vertex</param>
+        /// <param name="saveA">The save</param>
+        /// <param name="saveB">The save</param>
+        /// <param name="saveCount">The save count</param>
+        /// <returns>The bool</returns>
         private static bool IsDuplicateVertex(SimplexVertex vertex, FixedArray3<int> saveA, FixedArray3<int> saveB, int saveCount)
         {
             for (int i = 0; i < saveCount; ++i)
@@ -214,6 +233,11 @@ namespace Alis.Core.Physic.Collisions
             return false;
         }
 
+        /// <summary>
+        /// Applies the radii using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
         private static void ApplyRadii(DistanceInput input, ref DistanceOutput output)
         {
             if (!input.UseRadii)

@@ -38,16 +38,31 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class BufferPoolTest : IDisposable
     {
+        /// <summary>
+        /// The default pool
+        /// </summary>
         private readonly BufferPool _defaultPool;
+        /// <summary>
+        /// The custom size pool
+        /// </summary>
         private readonly BufferPool _customSizePool;
+        /// <summary>
+        /// The custom buffer size
+        /// </summary>
         private const int CustomBufferSize = 4096;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BufferPoolTest"/> class
+        /// </summary>
         public BufferPoolTest()
         {
             _defaultPool = new BufferPool();
             _customSizePool = new BufferPool(CustomBufferSize);
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _defaultPool?.Dispose();

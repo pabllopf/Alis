@@ -39,6 +39,9 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class WebSocketClientOptionsTest
     {
+        /// <summary>
+        /// Tests that constructor creates instance with default values
+        /// </summary>
         [Fact]
         public void Constructor_CreatesInstanceWithDefaultValues()
         {
@@ -55,6 +58,9 @@ namespace Alis.Extension.Network.Test
             Assert.Null(options.SecWebSocketProtocol);
         }
 
+        /// <summary>
+        /// Tests that keep alive interval default value is 20 seconds
+        /// </summary>
         [Fact]
         public void KeepAliveInterval_DefaultValueIs20Seconds()
         {
@@ -68,6 +74,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(TimeSpan.FromSeconds(20), result);
         }
 
+        /// <summary>
+        /// Tests that keep alive interval set value
+        /// </summary>
         [Fact]
         public void KeepAliveInterval_SetValue()
         {
@@ -81,6 +90,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(TimeSpan.FromSeconds(30), options.KeepAliveInterval);
         }
 
+        /// <summary>
+        /// Tests that keep alive interval set to zero disables auto ping
+        /// </summary>
         [Fact]
         public void KeepAliveInterval_SetToZero_DisablesAutoPing()
         {
@@ -94,6 +106,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(TimeSpan.Zero, options.KeepAliveInterval);
         }
 
+        /// <summary>
+        /// Tests that no delay default value is true
+        /// </summary>
         [Fact]
         public void NoDelay_DefaultValueIsTrue()
         {
@@ -107,6 +122,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that no delay set value to false
+        /// </summary>
         [Fact]
         public void NoDelay_SetValueToFalse()
         {
@@ -120,6 +138,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(options.NoDelay);
         }
 
+        /// <summary>
+        /// Tests that additional http headers default is empty dictionary
+        /// </summary>
         [Fact]
         public void AdditionalHttpHeaders_DefaultIsEmptyDictionary()
         {
@@ -134,6 +155,9 @@ namespace Alis.Extension.Network.Test
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that additional http headers add header
+        /// </summary>
         [Fact]
         public void AdditionalHttpHeaders_AddHeader()
         {
@@ -148,6 +172,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("value", options.AdditionalHttpHeaders["X-Custom-Header"]);
         }
 
+        /// <summary>
+        /// Tests that additional http headers add multiple headers
+        /// </summary>
         [Fact]
         public void AdditionalHttpHeaders_AddMultipleHeaders()
         {
@@ -164,6 +191,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("value2", options.AdditionalHttpHeaders["Header2"]);
         }
 
+        /// <summary>
+        /// Tests that include exception in close response default value is false
+        /// </summary>
         [Fact]
         public void IncludeExceptionInCloseResponse_DefaultValueIsFalse()
         {
@@ -177,6 +207,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that include exception in close response set value to true
+        /// </summary>
         [Fact]
         public void IncludeExceptionInCloseResponse_SetValueToTrue()
         {
@@ -190,6 +223,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(options.IncludeExceptionInCloseResponse);
         }
 
+        /// <summary>
+        /// Tests that sec web socket protocol default value is null
+        /// </summary>
         [Fact]
         public void SecWebSocketProtocol_DefaultValueIsNull()
         {
@@ -203,6 +239,9 @@ namespace Alis.Extension.Network.Test
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that sec web socket protocol set value
+        /// </summary>
         [Fact]
         public void SecWebSocketProtocol_SetValue()
         {
@@ -216,6 +255,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("json", options.SecWebSocketProtocol);
         }
 
+        /// <summary>
+        /// Tests that sec web socket protocol set to empty string
+        /// </summary>
         [Fact]
         public void SecWebSocketProtocol_SetToEmptyString()
         {
@@ -229,6 +271,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("", options.SecWebSocketProtocol);
         }
 
+        /// <summary>
+        /// Tests that create new instance initializes all properties
+        /// </summary>
         [Fact]
         public void CreateNewInstance_InitializesAllProperties()
         {
@@ -245,6 +290,9 @@ namespace Alis.Extension.Network.Test
             Assert.Null(options.SecWebSocketProtocol);
         }
 
+        /// <summary>
+        /// Tests that additional http headers is modifiable
+        /// </summary>
         [Fact]
         public void AdditionalHttpHeaders_IsModifiable()
         {
@@ -259,6 +307,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(1, options.AdditionalHttpHeaders.Count);
         }
 
+        /// <summary>
+        /// Tests that keep alive interval set to negative value
+        /// </summary>
         [Fact]
         public void KeepAliveInterval_SetToNegativeValue()
         {
@@ -272,6 +323,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(TimeSpan.FromSeconds(-1), options.KeepAliveInterval);
         }
 
+        /// <summary>
+        /// Tests that additional http headers add header with special characters
+        /// </summary>
         [Fact]
         public void AdditionalHttpHeaders_AddHeaderWithSpecialCharacters()
         {
@@ -285,6 +339,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("value-with-special-chars", options.AdditionalHttpHeaders["X-Special-Header"]);
         }
 
+        /// <summary>
+        /// Tests that constructor initializes empty dictionary
+        /// </summary>
         [Fact]
         public void Constructor_InitializesEmptyDictionary()
         {

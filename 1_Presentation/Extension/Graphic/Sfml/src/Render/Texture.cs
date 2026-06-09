@@ -44,6 +44,9 @@ namespace Alis.Extension.Graphic.Sfml.Render
     /// </summary>
     public class Texture : ObjectBase
     {
+        /// <summary>
+        /// The resource name
+        /// </summary>
         private const string _resourceName = "texture";
 
         /// <summary>

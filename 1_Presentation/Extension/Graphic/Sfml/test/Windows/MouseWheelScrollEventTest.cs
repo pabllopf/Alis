@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The mouse wheel scroll event test class
+    /// </summary>
     public class MouseWheelScrollEventTest
     {
+        /// <summary>
+        /// Tests that mouse wheel scroll event default has zero values
+        /// </summary>
         [Fact]
         public void MouseWheelScrollEvent_Default_HasZeroValues()
         {
@@ -43,6 +49,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0, e.Y);
         }
 
+        /// <summary>
+        /// Tests that mouse wheel scroll event args constructor sets properties
+        /// </summary>
         [Fact]
         public void MouseWheelScrollEventArgs_Constructor_SetsProperties()
         {
@@ -54,6 +63,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(100, args.Y);
         }
 
+        /// <summary>
+        /// Tests that mouse wheel scroll event args to string includes property names
+        /// </summary>
         [Fact]
         public void MouseWheelScrollEventArgs_ToString_IncludesPropertyNames()
         {

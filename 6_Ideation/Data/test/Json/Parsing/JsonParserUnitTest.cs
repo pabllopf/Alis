@@ -1072,9 +1072,20 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         /// </summary>
         private class ThrowingEscapeSequenceHandler : IEscapeSequenceHandler
         {
+            /// <summary>
+            /// Ises the escaped using the specified text
+            /// </summary>
+            /// <param name="text">The text</param>
+            /// <param name="position">The position</param>
+            /// <returns>The bool</returns>
             public bool IsEscaped(string text, int position) =>
                 throw new InvalidOperationException("Simulated escape handler failure");
 
+            /// <summary>
+            /// Unescapes the escaped string
+            /// </summary>
+            /// <param name="escapedString">The escaped string</param>
+            /// <returns>The string</returns>
             public string Unescape(string escapedString) => escapedString;
         }
     }

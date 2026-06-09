@@ -440,6 +440,15 @@ namespace Alis.Core.Physic.Collisions.Shapes
             return area;
         }
 
+        /// <summary>
+        /// Tracks the dive transition using the specified is submerged
+        /// </summary>
+        /// <param name="isSubmerged">The is submerged</param>
+        /// <param name="lastSubmerged">The last submerged</param>
+        /// <param name="i">The </param>
+        /// <param name="diveCount">The dive count</param>
+        /// <param name="intoIndex">The into index</param>
+        /// <param name="outoIndex">The outo index</param>
         private static void TrackDiveTransition(bool isSubmerged, bool lastSubmerged, int i, ref int diveCount, ref int intoIndex, ref int outoIndex)
         {
             if (isSubmerged && !lastSubmerged)
@@ -454,6 +463,11 @@ namespace Alis.Core.Physic.Collisions.Shapes
             }
         }
 
+        /// <summary>
+        /// Adjusts the single dive indices using the specified into index
+        /// </summary>
+        /// <param name="intoIndex">The into index</param>
+        /// <param name="outoIndex">The outo index</param>
         private void AdjustSingleDiveIndices(ref int intoIndex, ref int outoIndex)
         {
             if (intoIndex == -1)
@@ -462,6 +476,13 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 outoIndex = Vertices.Count - 1;
         }
 
+        /// <summary>
+        /// Interpolates the vertex using the specified i 1
+        /// </summary>
+        /// <param name="i1">The </param>
+        /// <param name="i2">The </param>
+        /// <param name="lambda">The lambda</param>
+        /// <returns>The vector</returns>
         private Vector2F InterpolateVertex(int i1, int i2, float lambda)
         {
             return new Vector2F(
@@ -469,6 +490,15 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 Vertices[i1].Y * (1 - lambda) + Vertices[i2].Y * lambda);
         }
 
+        /// <summary>
+        /// Adds the triangle using the specified area
+        /// </summary>
+        /// <param name="area">The area</param>
+        /// <param name="center">The center</param>
+        /// <param name="intoVec">The into vec</param>
+        /// <param name="p2">The </param>
+        /// <param name="p3">The </param>
+        /// <param name="kInv3">The inv</param>
         private static void AddTriangle(ref float area, ref Vector2F center, Vector2F intoVec, Vector2F p2, Vector2F p3, float kInv3)
         {
             Vector2F e1 = p2 - intoVec;

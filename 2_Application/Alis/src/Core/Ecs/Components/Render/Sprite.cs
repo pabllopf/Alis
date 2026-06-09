@@ -93,6 +93,10 @@ namespace Alis.Core.Ecs.Components.Render
         /// </summary>
         private static uint LastBoundTexture = 0;
 
+        /// <summary>
+        /// Binds the texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
         private static void BindTexture(uint texture)
         {
             Gl.GlActiveTexture(TextureUnit.Texture0);

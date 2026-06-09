@@ -40,6 +40,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// <seealso cref="AudioReader" />
     public class AudioReaderTest
     {
+        /// <summary>
+        /// Tests that audio reader constructor should throw when file missing
+        /// </summary>
         [Fact]
         public void AudioReader_Constructor_ShouldThrowWhenFileMissing()
         {
@@ -48,6 +51,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Throws<FileNotFoundException>(() => new AudioReader(missing));
         }
 
+        /// <summary>
+        /// Tests that audio reader load should throw for invalid bit depth
+        /// </summary>
         [Fact]
         public void AudioReader_Load_ShouldThrowForInvalidBitDepth()
         {
@@ -68,6 +74,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that audio reader load should throw when metadata not loaded
+        /// </summary>
         [Fact]
         public void AudioReader_Load_ShouldThrowWhenMetadataNotLoaded()
         {

@@ -341,6 +341,18 @@ namespace Alis.Core.Physic.Collisions
             return true;
         }
 
+        /// <summary>
+        /// Processes the aabb axes using the specified tmin
+        /// </summary>
+        /// <param name="tmin">The tmin</param>
+        /// <param name="tmax">The tmax</param>
+        /// <param name="normal">The normal</param>
+        /// <param name="absD">The abs</param>
+        /// <param name="lowerBound">The lower bound</param>
+        /// <param name="upperBound">The upper bound</param>
+        /// <param name="p">The </param>
+        /// <param name="d">The </param>
+        /// <returns>The bool</returns>
         private static bool ProcessAABBAxes(ref float tmin, ref float tmax, ref Vector2F normal, Vector2F absD, Vector2F lowerBound, Vector2F upperBound, Vector2F p, Vector2F d)
         {
             for (int i = 0; i < 2; ++i)
@@ -360,6 +372,19 @@ namespace Alis.Core.Physic.Collisions
             return true;
         }
 
+        /// <summary>
+        /// Processes the axis using the specified tmin
+        /// </summary>
+        /// <param name="tmin">The tmin</param>
+        /// <param name="tmax">The tmax</param>
+        /// <param name="normal">The normal</param>
+        /// <param name="absDi">The abs di</param>
+        /// <param name="lowerBoundI">The lower bound</param>
+        /// <param name="upperBoundI">The upper bound</param>
+        /// <param name="pI">The </param>
+        /// <param name="dI">The </param>
+        /// <param name="i">The </param>
+        /// <returns>The bool</returns>
         private static bool ProcessAxis(ref float tmin, ref float tmax, ref Vector2F normal, float absDi, float lowerBoundI, float upperBoundI, float pI, float dI, int i)
         {
             if (absDi < SettingEnv.Epsilon)

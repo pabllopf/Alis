@@ -165,6 +165,13 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             RemoveCoincidentVertices(slicedPoly2);
         }
 
+        /// <summary>
+        /// Inserts the intersection point using the specified sliced poly
+        /// </summary>
+        /// <param name="slicedPoly">The sliced poly</param>
+        /// <param name="start">The start</param>
+        /// <param name="end">The end</param>
+        /// <param name="intersectionPoint">The intersection point</param>
         private static void InsertIntersectionPoint(Vertices slicedPoly, Vector2F start, Vector2F end, Vector2F intersectionPoint)
         {
             float alpha = GetAlpha(start, end, intersectionPoint);
@@ -181,6 +188,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
         }
 
+        /// <summary>
+        /// Removes the coincident vertices using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
         private static void RemoveCoincidentVertices(Vertices vertices)
         {
             int idx = 0;
@@ -229,6 +240,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             ProcessPoly2Edges(poly1Coeff, poly1Simplicies, poly2Simplicies, clipType, resultSimplices);
         }
 
+        /// <summary>
+        /// Processes the poly 1 edges using the specified poly 1 simplicies
+        /// </summary>
+        /// <param name="poly1Simplicies">The poly simplicies</param>
+        /// <param name="poly2Coeff">The poly coeff</param>
+        /// <param name="poly2Simplicies">The poly simplicies</param>
+        /// <param name="clipType">The clip type</param>
+        /// <param name="resultSimplices">The result simplices</param>
         private static void ProcessPoly1Edges(List<Edge> poly1Simplicies,
             List<float> poly2Coeff, List<Edge> poly2Simplicies,
             PolyClipType clipType, List<Edge> resultSimplices)
@@ -254,6 +273,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
         }
 
+        /// <summary>
+        /// Processes the poly 2 edges using the specified poly 1 coeff
+        /// </summary>
+        /// <param name="poly1Coeff">The poly coeff</param>
+        /// <param name="poly1Simplicies">The poly simplicies</param>
+        /// <param name="poly2Simplicies">The poly simplicies</param>
+        /// <param name="clipType">The clip type</param>
+        /// <param name="resultSimplices">The result simplices</param>
         private static void ProcessPoly2Edges(List<float> poly1Coeff, List<Edge> poly1Simplicies,
             List<Edge> poly2Simplicies,
             PolyClipType clipType, List<Edge> resultSimplices)
@@ -285,6 +312,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
         }
 
+        /// <summary>
+        /// Computes the poly 1 edge character using the specified poly 1 simplicies
+        /// </summary>
+        /// <param name="poly1Simplicies">The poly simplicies</param>
+        /// <param name="poly2Simplicies">The poly simplicies</param>
+        /// <param name="poly2Coeff">The poly coeff</param>
+        /// <param name="i">The </param>
+        /// <returns>The edge character</returns>
         private static float ComputePoly1EdgeCharacter(List<Edge> poly1Simplicies, List<Edge> poly2Simplicies, List<float> poly2Coeff, int i)
         {
             if (poly2Simplicies.Contains(poly1Simplicies[i]))
@@ -310,6 +345,15 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return edgeCharacter;
         }
 
+        /// <summary>
+        /// Computes the poly 2 edge character using the specified poly 1 simplicies
+        /// </summary>
+        /// <param name="poly1Simplicies">The poly simplicies</param>
+        /// <param name="poly2Simplicies">The poly simplicies</param>
+        /// <param name="poly1Coeff">The poly coeff</param>
+        /// <param name="clipType">The clip type</param>
+        /// <param name="i">The </param>
+        /// <returns>The edge character</returns>
         private static float ComputePoly2EdgeCharacter(List<Edge> poly1Simplicies, List<Edge> poly2Simplicies, List<float> poly1Coeff, PolyClipType clipType, int i)
         {
             if (poly1Simplicies.Contains(-poly2Simplicies[i]) && (clipType == PolyClipType.Union))
@@ -360,6 +404,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return errVal;
         }
 
+        /// <summary>
+        /// Builds the single polygon using the specified simplicies
+        /// </summary>
+        /// <param name="simplicies">The simplicies</param>
+        /// <param name="error">The error</param>
+        /// <returns>The output</returns>
         private static Vertices BuildSinglePolygon(List<Edge> simplicies, out bool error)
         {
             error = false;
@@ -397,6 +447,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return output;
         }
 
+        /// <summary>
+        /// Tries the match edge start using the specified output
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="simplicies">The simplicies</param>
+        /// <param name="index">The index</param>
+        /// <param name="closed">The closed</param>
+        /// <returns>The bool</returns>
         private static bool TryMatchEdgeStart(Vertices output, List<Edge> simplicies, ref int index, out bool closed)
         {
             closed = false;
@@ -417,6 +475,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return true;
         }
 
+        /// <summary>
+        /// Tries the match edge end using the specified output
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="simplicies">The simplicies</param>
+        /// <param name="index">The index</param>
+        /// <param name="closed">The closed</param>
+        /// <returns>The bool</returns>
         private static bool TryMatchEdgeEnd(Vertices output, List<Edge> simplicies, ref int index, out bool closed)
         {
             closed = false;

@@ -35,3 +35,15 @@ Source generators in 6_Ideation produce code that flows down through all layers,
 ## References
 - `Directory.Build.props` — Centralized build config
 - `2_Application/Alis/src/.docs/arquitecture.md` — Canonical architecture reference
+
+## Related
+
+- [[adr-002-aggregator-pattern]] — Related aggregator decision
+- [[Layered Architecture]] — Layer structure details
+- [[Alis Architecture Overview]] — Full architecture overview
+- [[repository-overview]] — Architecture overview
+- [[architecture/dependency-graph]] — Dependency rules
+- [[build-system]] — Build configuration
+- [[layer-index]] — Layer breakdown
+- [[projects/Architecture]] — Project-level architecture
+- [[architecture-index]] — Architectural patterns index

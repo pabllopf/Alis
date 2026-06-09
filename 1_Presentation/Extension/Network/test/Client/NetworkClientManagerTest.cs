@@ -41,15 +41,27 @@ namespace Alis.Extension.Network.Test.Client
     /// </summary>
     public class NetworkClientManagerTest : IDisposable
     {
+        /// <summary>
+        /// The manager
+        /// </summary>
         private readonly NetworkClientManager _manager;
+        /// <summary>
+        /// The default config
+        /// </summary>
         private readonly NetworkConfig _defaultConfig;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NetworkClientManagerTest"/> class
+        /// </summary>
         public NetworkClientManagerTest()
         {
             _manager = new NetworkClientManager();
             _defaultConfig = new NetworkConfig { MaxPlayers = 32 };
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _manager?.Dispose();

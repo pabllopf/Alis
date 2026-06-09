@@ -52,18 +52,30 @@ namespace Alis.Core.Ecs.Redifinition
         public const int MaxComponentCount = 127;
 
 
+        /// <summary>
+        /// The shared temp component handle buffer
+        /// </summary>
         [ThreadStatic]
         private static ComponentHandle[] _sharedTempComponentHandleBuffer;
 
+        /// <summary>
+        /// Gets the value of the shared temp component handle buffer
+        /// </summary>
         internal static ComponentHandle[] SharedTempComponentHandleBuffer
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => _sharedTempComponentHandleBuffer ??= new ComponentHandle[8];
         }
 
+        /// <summary>
+        /// The shared temp component storage buffer
+        /// </summary>
         [ThreadStatic]
         private static ComponentStorageBase[] _sharedTempComponentStorageBuffer;
 
+        /// <summary>
+        /// Gets the value of the shared temp component storage buffer
+        /// </summary>
         internal static ComponentStorageBase[] SharedTempComponentStorageBuffer
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]

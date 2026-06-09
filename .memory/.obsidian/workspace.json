@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "prompts/ai-context.md",
+                "file": "architecture/dependency-graph.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ai-context"
+              "title": "dependency-graph"
             }
           }
         ]
@@ -84,7 +84,8 @@
               "title": "Navegador de Cuadernos"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -192,39 +193,38 @@
       "command-palette:Abrir paleta de comandos": false,
       "bases:Crear nueva base": false,
       "notebook-navigator:Navegador de Cuadernos": false,
-      "obsidian-git:Open Git source control": false,
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "847c078068ae35c5",
+  "active": "88a8ea3b2a6627a5",
   "lastOpenFiles": [
-    "index.md",
-    "GameObject.md",
-    "ChunkTuple.md",
-    "projects/Cross-Cutting-Concerns.md",
-    "projects/Generators.md",
-    "projects/Build-System.md",
-    "projects/Architecture.md",
-    "projects/2_Application/Alis.md",
-    "projects/2_Application/Alis.Test.md",
-    "projects/2_Application/Core.md",
-    "projects/2_Application/Samples/Alis.Sample.md",
-    "projects/2_Application/Samples/Sample.Asteroid.md",
-    "projects/3_Structuration/Alis.Core.Graphic.md",
+    "system/metadata/index.md",
+    "system/state/repository-delta.md",
+    "system/state/stability-state.md",
+    "system/state/regeneration-state.md",
+    "system/state/resume-points.md",
+    "system/state/completed-work.md",
+    "system/logs/warnings.md",
+    "system/logs/analysis-history.md",
+    "system/logs/commit-history.md",
+    "system/logs/regeneration-log.md",
+    "system/sessions/last-successful-run.md",
+    "system/sessions/execution-checkpoints.md",
+    "system/sessions/pending-iterations.md",
+    "system/sessions/active-batches.md",
+    "system/checkpoints/documentation-checkpoint.md",
+    "system/checkpoints/security-checkpoint.md",
+    "system/checkpoints/testing-checkpoint.md",
+    "system/checkpoints/dependency-checkpoint.md",
+    "system/checkpoints/architecture-checkpoint.md",
+    "system/queues/high-priority-analysis.md",
+    "system/queues/pending-regeneration.md",
+    "system/queues/pending-indexes.md",
+    "system/queues/changed-projects.md",
+    "system/queues/skipped-projects.md",
+    "system/queues/failed-projects.md",
+    "concepts/Solution Files Strategy.md",
     "projects/2_Application/Samples",
-    "projects/3_Structuration/Alis.Core.Ecs.md",
-    "projects/3_Structuration/Core.md",
-    "glossary/gameobject-enumerator.md",
-    "glossary/gameobject.md",
-    "glossary/query.md",
-    "glossary/ref-t.md",
-    "glossary/index.md",
-    "projects/4_Operation/Alis.Core.Ecs.md",
-    "projects/4_Operation/Alis.Core.Audio.md",
-    "projects/4_Operation/Graphic.md",
-    "dependencies/dependency-graph.md",
-    "concepts/Multi-Platform Samples.md",
-    "glossary/gameobject-only.md",
     "Sin título.canvas",
     "context",
     "projects/1_Presentation/Extensions/Math/ProceduralDungeon",

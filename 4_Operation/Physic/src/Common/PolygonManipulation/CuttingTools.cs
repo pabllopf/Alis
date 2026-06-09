@@ -77,6 +77,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             second = newPolygon[1];
         }
 
+        /// <summary>
+        /// Adjusts the points near vertices using the specified shape
+        /// </summary>
+        /// <param name="shape">The shape</param>
+        /// <param name="localEntryPoint">The local entry point</param>
+        /// <param name="localExitPoint">The local exit point</param>
         private static void AdjustPointsNearVertices(PolygonShape shape, ref Vector2F localEntryPoint, ref Vector2F localExitPoint)
         {
             foreach (Vector2F vertex in shape.Vertices)
@@ -93,6 +99,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
         }
 
+        /// <summary>
+        /// Splits the vertices using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="localEntryPoint">The local entry point</param>
+        /// <param name="localExitPoint">The local exit point</param>
+        /// <param name="newPolygon">The new polygon</param>
+        /// <returns>The cut added</returns>
         private static int[] SplitVertices(Vertices vertices, Vector2F localEntryPoint, Vector2F localExitPoint, Vertices[] newPolygon)
         {
             int[] cutAdded = {-1, -1};
@@ -113,11 +127,26 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return cutAdded;
         }
 
+        /// <summary>
+        /// Classifies the vertex using the specified vertex
+        /// </summary>
+        /// <param name="vertex">The vertex</param>
+        /// <param name="localEntryPoint">The local entry point</param>
+        /// <param name="localExitPoint">The local exit point</param>
+        /// <returns>The int</returns>
         private static int ClassifyVertex(Vector2F vertex, Vector2F localEntryPoint, Vector2F localExitPoint)
         {
             return Vector2F.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertex - localEntryPoint) > SettingEnv.Epsilon ? 0 : 1;
         }
 
+        /// <summary>
+        /// Adds the cut points using the specified new polygon
+        /// </summary>
+        /// <param name="newPolygon">The new polygon</param>
+        /// <param name="cutAdded">The cut added</param>
+        /// <param name="last">The last</param>
+        /// <param name="localEntryPoint">The local entry point</param>
+        /// <param name="localExitPoint">The local exit point</param>
         private static void AddCutPoints(Vertices[] newPolygon, int[] cutAdded, int last, Vector2F localEntryPoint, Vector2F localExitPoint)
         {
             if (last == 0)
@@ -135,6 +164,13 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
         }
 
+        /// <summary>
+        /// Ensures the cut points added using the specified new polygon
+        /// </summary>
+        /// <param name="newPolygon">The new polygon</param>
+        /// <param name="cutAdded">The cut added</param>
+        /// <param name="localEntryPoint">The local entry point</param>
+        /// <param name="localExitPoint">The local exit point</param>
         private static void EnsureCutPointsAdded(Vertices[] newPolygon, int[] cutAdded, Vector2F localEntryPoint, Vector2F localExitPoint)
         {
             if (cutAdded[0] == -1)
@@ -152,6 +188,11 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
         }
 
+        /// <summary>
+        /// Adjusts the cut point offsets using the specified new polygon
+        /// </summary>
+        /// <param name="newPolygon">The new polygon</param>
+        /// <param name="cutAdded">The cut added</param>
         private static void AdjustCutPointOffsets(Vertices[] newPolygon, int[] cutAdded)
         {
             for (int n = 0; n < 2; n++)
@@ -164,6 +205,13 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
         }
 
+        /// <summary>
+        /// Computes the offset before cut using the specified new polygon
+        /// </summary>
+        /// <param name="newPolygon">The new polygon</param>
+        /// <param name="n">The </param>
+        /// <param name="cutAdded">The cut added</param>
+        /// <returns>The offset</returns>
         private static Vector2F ComputeOffsetBeforeCut(Vertices[] newPolygon, int n, int[] cutAdded)
         {
             Vector2F offset;
@@ -186,6 +234,13 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return offset;
         }
 
+        /// <summary>
+        /// Computes the offset after cut using the specified new polygon
+        /// </summary>
+        /// <param name="newPolygon">The new polygon</param>
+        /// <param name="n">The </param>
+        /// <param name="cutAdded">The cut added</param>
+        /// <returns>The offset</returns>
         private static Vector2F ComputeOffsetAfterCut(Vertices[] newPolygon, int n, int[] cutAdded)
         {
             Vector2F offset;

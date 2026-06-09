@@ -37,6 +37,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     /// </summary>
     public class EmscriptenWebScriptTest
     {
+        /// <summary>
+        /// Tests that get bridge script includes core sections
+        /// </summary>
         [Fact]
         public void GetBridgeScript_IncludesCoreSections()
         {
@@ -49,6 +52,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Contains("createIntArray", script);
         }
 
+        /// <summary>
+        /// Tests that get bridge script returns non empty string
+        /// </summary>
         [Fact]
         public void GetBridgeScript_ReturnsNonEmptyString()
         {
@@ -57,6 +63,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.NotEmpty(script);
         }
 
+        /// <summary>
+        /// Tests that get bridge script contains key functions
+        /// </summary>
         [Fact]
         public void GetBridgeScript_ContainsKeyFunctions()
         {
@@ -90,6 +99,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Contains("consoleError", script);
         }
 
+        /// <summary>
+        /// Tests that get bridge script contains emscripten web bridge
+        /// </summary>
         [Fact]
         public void GetBridgeScript_ContainsEmscriptenWebBridge()
         {
@@ -101,6 +113,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Contains("windowCallbacks", script);
         }
 
+        /// <summary>
+        /// Tests that get bridge script contains array helpers
+        /// </summary>
         [Fact]
         public void GetBridgeScript_ContainsArrayHelpers()
         {
@@ -111,6 +126,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Contains("freeArray", script);
         }
 
+        /// <summary>
+        /// Tests that get bridge script contains init function
+        /// </summary>
         [Fact]
         public void GetBridgeScript_ContainsInitFunction()
         {
@@ -122,6 +140,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Contains("registerWindowListeners", script);
         }
 
+        /// <summary>
+        /// Tests that get html template returns non empty string
+        /// </summary>
         [Fact]
         public void GetHtmlTemplate_ReturnsNonEmptyString()
         {
@@ -130,6 +151,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.NotEmpty(html);
         }
 
+        /// <summary>
+        /// Tests that get html template contains required elements
+        /// </summary>
         [Fact]
         public void GetHtmlTemplate_ContainsRequiredElements()
         {

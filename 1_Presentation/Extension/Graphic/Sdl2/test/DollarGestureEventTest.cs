@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The dollar gesture event test class
+    /// </summary>
     public class DollarGestureEventTest
     {
+        /// <summary>
+        /// Tests that dollar gesture event default initialization fields have default values
+        /// </summary>
         [Fact]
         public void DollarGestureEvent_DefaultInitialization_FieldsHaveDefaultValues()
         {
@@ -20,6 +26,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0f, ev.y);
         }
 
+        /// <summary>
+        /// Tests that dollar gesture event set fields stores values correctly
+        /// </summary>
         [Fact]
         public void DollarGestureEvent_SetFields_StoresValuesCorrectly()
         {
@@ -45,6 +54,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(150f, ev.y);
         }
 
+        /// <summary>
+        /// Tests that dollar gesture event is value type copy is independent
+        /// </summary>
         [Fact]
         public void DollarGestureEvent_IsValueType_CopyIsIndependent()
         {

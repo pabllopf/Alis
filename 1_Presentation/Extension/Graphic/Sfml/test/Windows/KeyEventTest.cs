@@ -37,6 +37,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
     /// </summary>
     public class KeyEventTest
     {
+        /// <summary>
+        /// Tests that key event default has zero values
+        /// </summary>
         [Fact]
         public void KeyEvent_Default_HasZeroValues()
         {
@@ -48,6 +51,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0, e.System);
         }
 
+        /// <summary>
+        /// Tests that key event args constructor sets properties
+        /// </summary>
         [Fact]
         public void KeyEventArgs_Constructor_SetsProperties()
         {
@@ -60,6 +66,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.False(args.System);
         }
 
+        /// <summary>
+        /// Tests that key event args to string includes property names
+        /// </summary>
         [Fact]
         public void KeyEventArgs_ToString_IncludesPropertyNames()
         {

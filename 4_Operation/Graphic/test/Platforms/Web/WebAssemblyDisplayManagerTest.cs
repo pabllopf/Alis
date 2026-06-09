@@ -42,6 +42,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     {
         // =====================================================================
 
+        /// <summary>
+        /// Tests that display mode default values are zero
+        /// </summary>
         [Fact]
         public void DisplayMode_DefaultValues_AreZero()
         {
@@ -52,6 +55,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(mode.IsFullscreenOnly);
         }
 
+        /// <summary>
+        /// Tests that display mode set properties works
+        /// </summary>
         [Fact]
         public void DisplayMode_SetProperties_Works()
         {
@@ -68,6 +74,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(mode.IsFullscreenOnly);
         }
 
+        /// <summary>
+        /// Tests that display mode to string returns expected format
+        /// </summary>
         [Fact]
         public void DisplayMode_ToString_ReturnsExpectedFormat()
         {
@@ -75,6 +84,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("1920x1080@60Hz", mode.ToString());
         }
 
+        /// <summary>
+        /// Tests that display mode to string with zero refresh rate
+        /// </summary>
         [Fact]
         public void DisplayMode_ToString_WithZeroRefreshRate()
         {
@@ -82,6 +94,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("800x600@0Hz", mode.ToString());
         }
 
+        /// <summary>
+        /// Tests that display mode to string with different refresh rates
+        /// </summary>
         [Fact]
         public void DisplayMode_ToString_WithDifferentRefreshRates()
         {
@@ -91,6 +106,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("1920x1080@144Hz", mode144.ToString());
         }
 
+        /// <summary>
+        /// Tests that display mode multiple modes different instances
+        /// </summary>
         [Fact]
         public void DisplayMode_MultipleModes_DifferentInstances()
         {
@@ -102,6 +120,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that display event args can set properties
+        /// </summary>
         [Fact]
         public void DisplayEventArgs_CanSetProperties()
         {
@@ -112,6 +133,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that orientation event args can set properties
+        /// </summary>
         [Fact]
         public void OrientationEventArgs_CanSetProperties()
         {
@@ -122,6 +146,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // =====================================================================
 
         
+        /// <summary>
+        /// Fullscreens the event args can set is fullscreen using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
         [InlineData(true)]
         [InlineData(false)]
         public void FullscreenEventArgs_CanSetIsFullscreen(bool value)
@@ -132,6 +160,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that display manager get width returns platform width
+        /// </summary>
         [Fact]
         public void DisplayManager_GetWidth_ReturnsPlatformWidth()
         {
@@ -140,6 +171,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(800, manager.GetWidth());
         }
 
+        /// <summary>
+        /// Tests that display manager get height returns platform height
+        /// </summary>
         [Fact]
         public void DisplayManager_GetHeight_ReturnsPlatformHeight()
         {
@@ -148,6 +182,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(600, manager.GetHeight());
         }
 
+        /// <summary>
+        /// Tests that display manager get aspect ratio correct calculation
+        /// </summary>
         [Fact]
         public void DisplayManager_GetAspectRatio_CorrectCalculation()
         {
@@ -157,6 +194,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(800.0f / 600.0f, aspect, 3);
         }
 
+        /// <summary>
+        /// Tests that display manager get aspect ratio widescreen
+        /// </summary>
         [Fact]
         public void DisplayManager_GetAspectRatio_Widescreen()
         {
@@ -167,6 +207,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1920.0f / 1080.0f, aspect, 3);
         }
 
+        /// <summary>
+        /// Tests that display manager get orientation landscape
+        /// </summary>
         [Fact]
         public void DisplayManager_GetOrientation_Landscape()
         {
@@ -175,6 +218,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ScreenOrientation.Landscape, manager.GetOrientation());
         }
 
+        /// <summary>
+        /// Tests that display manager get orientation portrait
+        /// </summary>
         [Fact]
         public void DisplayManager_GetOrientation_Portrait()
         {
@@ -184,6 +230,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ScreenOrientation.Portrait, manager.GetOrientation());
         }
 
+        /// <summary>
+        /// Tests that display manager get orientation square
+        /// </summary>
         [Fact]
         public void DisplayManager_GetOrientation_Square()
         {
@@ -193,6 +242,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ScreenOrientation.Square, manager.GetOrientation());
         }
 
+        /// <summary>
+        /// Tests that display manager get device pixel ratio returns default on non browser
+        /// </summary>
         [Fact]
         public void DisplayManager_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
         {
@@ -202,6 +254,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1.0f, ratio);
         }
 
+        /// <summary>
+        /// Tests that display manager constructor null platform throws
+        /// </summary>
         [Fact]
         public void DisplayManager_Constructor_NullPlatform_Throws()
         {
@@ -210,6 +265,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
         // =====================================================================
 
+        /// <summary>
+        /// Tests that display manager toggle fullscreen returns false on non browser
+        /// </summary>
         [Fact]
         public void DisplayManager_ToggleFullscreen_ReturnsFalseOnNonBrowser()
         {
@@ -218,6 +276,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.ToggleFullscreen());
         }
 
+        /// <summary>
+        /// Tests that display manager enter fullscreen returns false on non browser
+        /// </summary>
         [Fact]
         public void DisplayManager_EnterFullscreen_ReturnsFalseOnNonBrowser()
         {
@@ -226,6 +287,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.EnterFullscreen());
         }
 
+        /// <summary>
+        /// Tests that display manager exit fullscreen returns false on non browser
+        /// </summary>
         [Fact]
         public void DisplayManager_ExitFullscreen_ReturnsFalseOnNonBrowser()
         {
@@ -234,6 +298,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.ExitFullscreen());
         }
 
+        /// <summary>
+        /// Tests that display manager is fullscreen returns false on non browser
+        /// </summary>
         [Fact]
         public void DisplayManager_IsFullscreen_ReturnsFalseOnNonBrowser()
         {
@@ -242,6 +309,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that display manager get supported modes returns modes
+        /// </summary>
         [Fact]
         public void DisplayManager_GetSupportedModes_ReturnsModes()
         {
@@ -253,6 +323,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(9, modes.Length);
         }
 
+        /// <summary>
+        /// Tests that display manager get supported modes contains standard resolutions
+        /// </summary>
         [Fact]
         public void DisplayManager_GetSupportedModes_ContainsStandardResolutions()
         {
@@ -264,6 +337,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Contains(modes, m => (m.Width == 1920) && (m.Height == 1080));
         }
 
+        /// <summary>
+        /// Tests that display manager get supported modes contains fullscreen mode
+        /// </summary>
         [Fact]
         public void DisplayManager_GetSupportedModes_ContainsFullscreenMode()
         {
@@ -273,6 +349,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Contains(modes, m => m.IsFullscreenOnly);
         }
 
+        /// <summary>
+        /// Tests that display manager find display mode existing mode returns mode
+        /// </summary>
         [Fact]
         public void DisplayManager_FindDisplayMode_ExistingMode_ReturnsMode()
         {
@@ -284,6 +363,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1080, mode.Height);
         }
 
+        /// <summary>
+        /// Tests that display manager find display mode non existing returns null
+        /// </summary>
         [Fact]
         public void DisplayManager_FindDisplayMode_NonExisting_ReturnsNull()
         {
@@ -293,6 +375,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(mode);
         }
 
+        /// <summary>
+        /// Tests that display manager find display mode 640x 480 returns mode
+        /// </summary>
         [Fact]
         public void DisplayManager_FindDisplayMode_640x480_ReturnsMode()
         {
@@ -307,6 +392,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // =====================================================================
 
         
+        /// <summary>
+        /// Displays the manager get rendering scale correct value using the specified quality
+        /// </summary>
+        /// <param name="quality">The quality</param>
+        /// <param name="expectedScale">The expected scale</param>
         [InlineData(DisplayQuality.VeryLow, 0.5f)]
         [InlineData(DisplayQuality.Low, 0.75f)]
         [InlineData(DisplayQuality.Medium, 0.875f)]
@@ -321,6 +411,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(expectedScale, manager.GetRenderingScale());
         }
 
+        /// <summary>
+        /// Tests that display manager get display quality default is high
+        /// </summary>
         [Fact]
         public void DisplayManager_GetDisplayQuality_DefaultIsHigh()
         {
@@ -329,6 +422,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(DisplayQuality.High, manager.GetDisplayQuality());
         }
 
+        /// <summary>
+        /// Tests that display manager set display quality changes quality
+        /// </summary>
         [Fact]
         public void DisplayManager_SetDisplayQuality_ChangesQuality()
         {
@@ -340,6 +436,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that display manager get system language returns default on non browser
+        /// </summary>
         [Fact]
         public void DisplayManager_GetSystemLanguage_ReturnsDefaultOnNonBrowser()
         {
@@ -347,12 +446,18 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("en", lang);
         }
 
+        /// <summary>
+        /// Tests that display manager is online returns false on non browser
+        /// </summary>
         [Fact]
         public void DisplayManager_IsOnline_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyDisplayManager.IsOnline());
         }
 
+        /// <summary>
+        /// Tests that display manager get battery level returns default on non browser
+        /// </summary>
         [Fact]
         public void DisplayManager_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
         {
@@ -360,18 +465,27 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(-1.0f, level);
         }
 
+        /// <summary>
+        /// Tests that display manager is charging returns false on non browser
+        /// </summary>
         [Fact]
         public void DisplayManager_IsCharging_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyDisplayManager.IsCharging());
         }
 
+        /// <summary>
+        /// Tests that display manager get refresh rate returns 60
+        /// </summary>
         [Fact]
         public void DisplayManager_GetRefreshRate_Returns60()
         {
             Assert.Equal(60, WebAssemblyDisplayManager.RefreshRate);
         }
 
+        /// <summary>
+        /// Tests that display manager save screenshot returns true
+        /// </summary>
         [Fact]
         public void DisplayManager_SaveScreenshot_ReturnsTrue()
         {
@@ -379,6 +493,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Invokes the private using the specified instance
+        /// </summary>
+        /// <param name="instance">The instance</param>
+        /// <param name="methodName">The method name</param>
+        /// <param name="arguments">The arguments</param>
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)
         {
             MethodInfo method = instance.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);

@@ -66,3 +66,18 @@ Presentation → Application → Structuration → Operation → Declaration ←
 3. Add project references to `Alis`
 4. Implement game code
 5. Add test project if needed
+
+## Related
+
+- [[ai-context]] — AI agent quick reference
+- [[conversation-starters]] — Context questions
+- [[projects/Index]] — All project documentation
+- [[repository-overview]] — Architecture overview
+- [[build-system]] — Build configuration
+- [[build-summary]] — Build pipeline
+- [[Alis Architecture Overview]] — Full architecture
+- [[testing/analysis]] — Testing patterns
+- [[code-review-checklist]] — Review guidelines
+- [[Layered Architecture]] — Architecture explanation
+- [[Solution Composition]] — Solution files
+- [[Multi-Platform Samples]] — Game sample details

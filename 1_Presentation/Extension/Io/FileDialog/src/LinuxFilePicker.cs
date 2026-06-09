@@ -219,6 +219,12 @@ namespace Alis.Extension.Io.FileDialog
             return string.Join(" ", args);
         }
 
+        /// <summary>
+        /// Builds the zenity file dialog arguments using the specified args
+        /// </summary>
+        /// <param name="args">The args</param>
+        /// <param name="options">The options</param>
+        /// <param name="allowMultiple">The allow multiple</param>
         private static void BuildZenityFileDialogArguments(List<string> args, FilePickerOptions options, bool allowMultiple)
         {
             args.Add("--file-selection");
@@ -250,6 +256,12 @@ namespace Alis.Extension.Io.FileDialog
             }
         }
 
+        /// <summary>
+        /// Builds the kdialog file dialog arguments using the specified args
+        /// </summary>
+        /// <param name="args">The args</param>
+        /// <param name="options">The options</param>
+        /// <param name="allowMultiple">The allow multiple</param>
         private static void BuildKdialogFileDialogArguments(List<string> args, FilePickerOptions options, bool allowMultiple)
         {
             if (allowMultiple)

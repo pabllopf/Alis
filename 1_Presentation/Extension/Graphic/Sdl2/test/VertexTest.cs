@@ -39,6 +39,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class VertexTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {
@@ -51,6 +54,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0f, vertex.TexCoordinate.Y);
         }
 
+        /// <summary>
+        /// Tests that should assign and retrieve properties
+        /// </summary>
         [Fact]
         public void ShouldAssignAndRetrieveProperties()
         {

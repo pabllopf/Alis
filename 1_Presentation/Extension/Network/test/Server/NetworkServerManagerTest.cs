@@ -41,15 +41,27 @@ namespace Alis.Extension.Network.Test.Server
     /// </summary>
     public class NetworkServerManagerTest : IDisposable
     {
+        /// <summary>
+        /// The manager
+        /// </summary>
         private readonly NetworkServerManager _manager;
+        /// <summary>
+        /// The default config
+        /// </summary>
         private readonly NetworkConfig _defaultConfig;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NetworkServerManagerTest"/> class
+        /// </summary>
         public NetworkServerManagerTest()
         {
             _manager = new NetworkServerManager();
             _defaultConfig = new NetworkConfig { MaxPlayers = 32 };
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _manager?.Dispose();

@@ -3,8 +3,14 @@ using Alis.Extension.Graphic.Sdl2.Sdl2Ttf;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The sdl ttf test class
+    /// </summary>
     public class SdlTtfTest
     {
+        /// <summary>
+        /// Tests that should have correct constant values
+        /// </summary>
         [Fact]
         public void ShouldHaveCorrectConstantValues()
         {

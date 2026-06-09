@@ -490,6 +490,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Velocities[_indexB].W = wB;
         }
 
+        /// <summary>
+        /// Updates the limit state using the specified fixed rotation
+        /// </summary>
+        /// <param name="fixedRotation">The fixed rotation</param>
+        /// <param name="aA">The </param>
+        /// <param name="aB">The </param>
         private void UpdateLimitState(bool fixedRotation, float aA, float aB)
         {
             if (_enableLimit && !fixedRotation)
@@ -625,6 +631,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             return (positionError <= SettingEnv.LinearSlop) && (angularError <= SettingEnv.AngularSlop);
         }
 
+        /// <summary>
+        /// Solves the motor constraint using the specified w a
+        /// </summary>
+        /// <param name="wA">The </param>
+        /// <param name="wB">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="iB">The </param>
+        /// <param name="data">The data</param>
         private void SolveMotorConstraint(ref float wA, ref float wB, float iA, float iB, SolverData data)
         {
             if (!_enableMotor || _limitState == LimitState.Equal) return;
@@ -640,6 +654,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
             wB += iB * impulse;
         }
 
+        /// <summary>
+        /// Solves the limit constraint using the specified v a
+        /// </summary>
+        /// <param name="vA">The </param>
+        /// <param name="wA">The </param>
+        /// <param name="vB">The </param>
+        /// <param name="wB">The </param>
+        /// <param name="mA">The </param>
+        /// <param name="mB">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="iB">The </param>
         private void SolveLimitConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
             float mA, float mB, float iA, float iB)
         {
@@ -669,6 +694,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             wB += iB * (MathUtils.Cross(ref _rB, ref p) + impulse.Z);
         }
 
+        /// <summary>
+        /// Solves the at lower using the specified impulse
+        /// </summary>
+        /// <param name="impulse">The impulse</param>
+        /// <param name="cdot1">The cdot</param>
         private void SolveAtLower(ref Vector3F impulse, ref Vector2F cdot1)
         {
             float newImpulse = _impulse.Z + impulse.Z;
@@ -689,6 +719,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
         }
 
+        /// <summary>
+        /// Solves the at upper using the specified impulse
+        /// </summary>
+        /// <param name="impulse">The impulse</param>
+        /// <param name="cdot1">The cdot</param>
         private void SolveAtUpper(ref Vector3F impulse, ref Vector2F cdot1)
         {
             float newImpulse = _impulse.Z + impulse.Z;
@@ -709,6 +744,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
         }
 
+        /// <summary>
+        /// Solves the point to point constraint using the specified v a
+        /// </summary>
+        /// <param name="vA">The </param>
+        /// <param name="wA">The </param>
+        /// <param name="vB">The </param>
+        /// <param name="wB">The </param>
+        /// <param name="mA">The </param>
+        /// <param name="mB">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="iB">The </param>
         private void SolvePointToPointConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
             float mA, float mB, float iA, float iB)
         {
@@ -725,6 +771,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             wB += iB * MathUtils.Cross(ref _rB, ref impulse);
         }
 
+        /// <summary>
+        /// Solves the position point to point constraint using the specified c a
+        /// </summary>
+        /// <param name="cA">The </param>
+        /// <param name="positionError">The position error</param>
+        /// <param name="aA">The </param>
+        /// <param name="cB">The </param>
+        /// <param name="aB">The </param>
         private void SolvePositionPointToPointConstraint(ref Vector2F cA, out float positionError, ref float aA, ref Vector2F cB, ref float aB)
         {
             Complex qA = Complex.FromAngle(aA);

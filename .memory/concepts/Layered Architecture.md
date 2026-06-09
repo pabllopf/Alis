@@ -20,3 +20,21 @@ Each module typically contains: `src/`, `test/`, `sample/`, and optionally `gene
 - [[Aspect-Oriented Design]]
 - [[Solution Composition]]
 - [[Generator Pattern]]
+- [[Multi-Targeting Strategy]]
+- [[Platform-Specific Build Constants]]
+
+## Related Architecture
+
+- [[repository-overview]] — Full architecture overview
+- [[architecture/dependency-graph]] — Layer dependency rules
+- [[adr-001-layered-architecture]] — ADR for this architecture
+- [[adr-002-aggregator-pattern]] — Aggregator design
+- [[build-system]] — Build configuration
+- [[layer-index]] — Layer breakdown index
+
+## Related Glossary
+
+- [[entity-component-system-ecs]] — ECS architecture
+- [[archetype]] — Component type optimization
+- [[component]] — Data-only struct pattern
+- [[layer-dependency-order]] — Strict dependency rules

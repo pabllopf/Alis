@@ -14,3 +14,18 @@ Several aspects use source generators to produce code at compile time:
 
 ## See Also
 - [[Aspect-Oriented Design]]
+- [[Layered Architecture]]
+- [[Alis Architecture Overview]]
+
+## Related Architecture
+
+- [[architecture/dependency-graph]] — Generator cascade details
+- [[build-system]] — Build pipeline with generators
+- [[build-summary]] — Generator flow in build
+- [[projects/Generators]] — Generator project docs
+- [[adr-001-layered-architecture]] — Generator flow decision
+
+## Related Tests
+
+- [[testing/analysis]] — Generator testing strategy
+- [[code-review-checklist]] — Generator review checklist

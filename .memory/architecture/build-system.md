@@ -131,3 +131,15 @@ dotnet pack -c Release
 - Test coverage requirements (coverlet.collector)
 - Multi-platform build verification
 - NuGet package validation
+
+## Related
+
+- [[build-summary]] — Build system overview
+- [[Multi-Targeting Strategy]] — Framework targeting strategy
+- [[Platform-Specific Build Constants]] — Build-time constants
+- [[Build System Configuration]] — Config.props details
+- [[naming-conventions]] — Naming conventions
+- [[code-review-checklist]] — Build checklist
+- [[project-index]] — All project frameworks
+- [[adr-001-layered-architecture]] — Architecture decision
+- [[architecture-overview]] — Build flow in diagrams

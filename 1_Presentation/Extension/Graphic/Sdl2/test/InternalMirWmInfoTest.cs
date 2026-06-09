@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal mir wm info test class
+    /// </summary>
     public class InternalMirWmInfoTest
     {
+        /// <summary>
+        /// Tests that internal mir wm info default initialization properties have default values
+        /// </summary>
         [Fact]
         public void InternalMirWmInfo_DefaultInitialization_PropertiesHaveDefaultValues()
         {
@@ -15,6 +21,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, info.Surface);
         }
 
+        /// <summary>
+        /// Tests that internal mir wm info set properties stores values correctly
+        /// </summary>
         [Fact]
         public void InternalMirWmInfo_SetProperties_StoresValuesCorrectly()
         {
@@ -28,6 +37,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(new IntPtr(200), info.Surface);
         }
 
+        /// <summary>
+        /// Tests that internal mir wm info is value type copy is independent
+        /// </summary>
         [Fact]
         public void InternalMirWmInfo_IsValueType_CopyIsIndependent()
         {

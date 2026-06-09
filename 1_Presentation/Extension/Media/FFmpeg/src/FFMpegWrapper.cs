@@ -41,6 +41,9 @@ namespace Alis.Extension.Media.FFmpeg
     /// </summary>
     public static class FfMpegWrapper
     {
+        /// <summary>
+        /// The hide banner arg
+        /// </summary>
         private const string HideBannerArg = "-hide_banner";
 
         /// <summary>
@@ -263,6 +266,11 @@ namespace Alis.Extension.Media.FFmpeg
                 m => (m.Groups["description"].Value, GetMediaTypeFromTypeChar(m.Groups["type"].Value[0])));
         }
 
+        /// <summary>
+        /// Gets the media type from type char using the specified type char
+        /// </summary>
+        /// <param name="typeChar">The type char</param>
+        /// <returns>The media type</returns>
         private static MediaType GetMediaTypeFromTypeChar(char typeChar)
         {
             return typeChar switch
@@ -301,6 +309,11 @@ namespace Alis.Extension.Media.FFmpeg
                 m => (m.Groups["description"].Value, GetMuxingSupportFromType(m.Groups["type"].Value.Trim())));
         }
 
+        /// <summary>
+        /// Gets the muxing support from type using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The muxing support</returns>
         private static MuxingSupport GetMuxingSupportFromType(string type)
         {
             return type switch

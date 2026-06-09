@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The touch event test class
+    /// </summary>
     public class TouchEventTest
     {
+        /// <summary>
+        /// Tests that touch event default has zero values
+        /// </summary>
         [Fact]
         public void TouchEvent_Default_HasZeroValues()
         {
@@ -43,6 +49,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0, e.Y);
         }
 
+        /// <summary>
+        /// Tests that touch event args constructor sets properties
+        /// </summary>
         [Fact]
         public void TouchEventArgs_Constructor_SetsProperties()
         {
@@ -53,6 +62,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(100, args.Y);
         }
 
+        /// <summary>
+        /// Tests that touch event args to string includes property names
+        /// </summary>
         [Fact]
         public void TouchEventArgs_ToString_IncludesPropertyNames()
         {

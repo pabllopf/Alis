@@ -3,8 +3,14 @@ using Alis.Extension.Graphic.Sdl2.Sdl2Image;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The img init flags test class
+    /// </summary>
     public class ImgInitFlagsTest
     {
+        /// <summary>
+        /// Tests that should have correct values
+        /// </summary>
         [Fact]
         public void ShouldHaveCorrectValues()
         {

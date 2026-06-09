@@ -23,6 +23,9 @@ namespace Alis.Core.Audio.Test.Players
     /// </summary>
     public class LinuxPlayerGetBashCommandTests
     {
+        /// <summary>
+        /// Gets the bash command with wav extension should return mpg 123
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithWavExtension_ShouldReturnMpg123()
         {
@@ -36,6 +39,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("mpg123 -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with ogg extension should return aplay
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithOggExtension_ShouldReturnAplay()
         {
@@ -49,6 +55,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("aplay -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with flac extension should return aplay
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithFlacExtension_ShouldReturnAplay()
         {
@@ -62,6 +71,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("aplay -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with mp 3 extension should return aplay
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithMp3Extension_ShouldReturnAplay()
         {
@@ -75,6 +87,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("aplay -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with null file name should return aplay
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithNullFileName_ShouldReturnAplay()
         {
@@ -86,6 +101,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("fileName", exception.ParamName);
         }
 
+        /// <summary>
+        /// Gets the bash command with empty file name should return aplay
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithEmptyFileName_ShouldReturnAplay()
         {
@@ -99,6 +117,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("aplay -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with no extension should return aplay
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithNoExtension_ShouldReturnAplay()
         {
@@ -112,6 +133,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("aplay -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with spaces in path should return aplay
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithSpacesInPath_ShouldReturnAplay()
         {
@@ -125,6 +149,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("mpg123 -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with uppercase wav extension should return mpg 123
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithUppercaseWavExtension_ShouldReturnMpg123()
         {
@@ -138,6 +165,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("mpg123 -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with mixed case wav extension should return mpg 123
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithMixedCaseWavExtension_ShouldReturnMpg123()
         {
@@ -151,6 +181,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("mpg123 -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with long path should return correct command
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithLongPath_ShouldReturnCorrectCommand()
         {
@@ -165,6 +198,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("mpg123 -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with relative path should return correct command
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithRelativePath_ShouldReturnCorrectCommand()
         {
@@ -178,6 +214,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("mpg123 -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with home directory path should return correct command
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithHomeDirectoryPath_ShouldReturnCorrectCommand()
         {
@@ -191,6 +230,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("mpg123 -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with special characters in path should return correct command
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithSpecialCharactersInPath_ShouldReturnCorrectCommand()
         {
@@ -204,6 +246,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("mpg123 -q", command);
         }
 
+        /// <summary>
+        /// Gets the bash command with multiple dots in filename should return correct command
+        /// </summary>
         [LinuxOnly]
         public void GetBashCommand_WithMultipleDotsInFilename_ShouldReturnCorrectCommand()
         {

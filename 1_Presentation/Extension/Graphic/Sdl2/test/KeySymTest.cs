@@ -4,8 +4,14 @@ using Alis.Extension.Graphic.Sdl2.Mapping;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The key sym test class
+    /// </summary>
     public class KeySymTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {
@@ -13,6 +19,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0u, sym.unicode);
         }
 
+        /// <summary>
+        /// Tests that should assign and retrieve fields
+        /// </summary>
         [Fact]
         public void ShouldAssignAndRetrieveFields()
         {

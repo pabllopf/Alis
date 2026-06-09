@@ -69,6 +69,9 @@ namespace Alis.Extension.Updater
         ///     GitHub API JSON property names
         /// </summary>
         private const string JsonTagName = "tag_name";
+        /// <summary>
+        /// The json browser download url
+        /// </summary>
         private const string JsonBrowserDownloadUrl = "browser_download_url";
 
         /// <summary>

@@ -282,6 +282,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             return new Trapezoid(left, right, top, bottom);
         }
 
+        /// <summary>
+        /// Updates the max using the specified e
+        /// </summary>
+        /// <param name="e">The </param>
+        /// <param name="max">The max</param>
+        /// <param name="margin">The margin</param>
         private static void UpdateMax(Edge e, ref Point max, float margin)
         {
             if (e.P.X > max.X)
@@ -305,6 +311,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             }
         }
 
+        /// <summary>
+        /// Updates the min using the specified e
+        /// </summary>
+        /// <param name="e">The </param>
+        /// <param name="min">The min</param>
+        /// <param name="margin">The margin</param>
         private static void UpdateMin(Edge e, ref Point min, float margin)
         {
             if (e.P.X < min.X)

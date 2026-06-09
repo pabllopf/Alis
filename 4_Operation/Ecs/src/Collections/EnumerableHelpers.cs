@@ -76,6 +76,13 @@ namespace Alis.Core.Ecs.Collections
             return Array.Empty<T>();
         }
 
+        /// <summary>
+        /// Returns the array from collection using the specified collection
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="collection">The collection</param>
+        /// <param name="length">The length</param>
+        /// <returns>The array</returns>
         private static T[] ToArrayFromCollection<T>(ICollection<T> collection, out int length)
         {
             int count = collection.Count;
@@ -91,6 +98,14 @@ namespace Alis.Core.Ecs.Collections
             return Array.Empty<T>();
         }
 
+        /// <summary>
+        /// Returns the array from enumerator using the specified enumerator
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="enumerator">The enumerator</param>
+        /// <param name="arrayMaxLength">The array max length</param>
+        /// <param name="length">The length</param>
+        /// <returns>The arr</returns>
         private static T[] ToArrayFromEnumerator<T>(IEnumerator<T> enumerator, int arrayMaxLength, out int length)
         {
             const int defaultCapacity = 4;

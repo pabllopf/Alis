@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The joystick move event test class
+    /// </summary>
     public class JoystickMoveEventTest
     {
+        /// <summary>
+        /// Tests that joystick move event default has zero values
+        /// </summary>
         [Fact]
         public void JoystickMoveEvent_Default_HasZeroValues()
         {
@@ -42,6 +48,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0.0f, e.Position);
         }
 
+        /// <summary>
+        /// Tests that joystick move event args constructor sets properties
+        /// </summary>
         [Fact]
         public void JoystickMoveEventArgs_Constructor_SetsProperties()
         {
@@ -52,6 +61,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(50.0f, args.Position);
         }
 
+        /// <summary>
+        /// Tests that joystick move event args to string includes property names
+        /// </summary>
         [Fact]
         public void JoystickMoveEventArgs_ToString_IncludesPropertyNames()
         {

@@ -74,6 +74,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that audio player play should throw when no filename
+        /// </summary>
         [Fact]
         public void AudioPlayer_Play_ShouldThrowWhenNoFilename()
         {
@@ -84,6 +87,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Contains("No filename was specified", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that audio player close write should throw when not opened
+        /// </summary>
         [Fact]
         public void AudioPlayer_CloseWrite_ShouldThrowWhenNotOpened()
         {
@@ -92,6 +98,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Throws<InvalidOperationException>(() => player.CloseWrite());
         }
 
+        /// <summary>
+        /// Tests that audio player constructor should set filename
+        /// </summary>
         [Fact]
         public void AudioPlayer_Constructor_ShouldSetFilename()
         {
@@ -100,6 +109,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Equal("test.mp3", player.Filename);
         }
 
+        /// <summary>
+        /// Tests that audio player constructor should default filename to null
+        /// </summary>
         [Fact]
         public void AudioPlayer_Constructor_ShouldDefaultFilenameToNull()
         {
@@ -108,6 +120,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Null(player.Filename);
         }
 
+        /// <summary>
+        /// Tests that audio player open write should throw on invalid bit depth
+        /// </summary>
         [Fact]
         public void AudioPlayer_OpenWrite_ShouldThrowOnInvalidBitDepth()
         {

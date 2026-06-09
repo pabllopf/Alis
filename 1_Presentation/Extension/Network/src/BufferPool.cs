@@ -101,6 +101,9 @@ namespace Alis.Extension.Network
             Dispose(false);
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);

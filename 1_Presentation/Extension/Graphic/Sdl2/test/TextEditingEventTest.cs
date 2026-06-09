@@ -41,6 +41,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class TextEditingEventTest
     {
+        /// <summary>
+        /// Tests that should marshal text from pointer
+        /// </summary>
         [Fact]
         public void ShouldMarshalTextFromPointer()
         {
@@ -61,6 +64,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
         }
 
+        /// <summary>
+        /// Tests that should return null text when ptr is zero
+        /// </summary>
         [Fact]
         public void ShouldReturnNullTextWhenPtrIsZero()
         {
@@ -73,6 +79,11 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         }
 
         // Helper to construct the struct since it's readonly and struct
+        /// <summary>
+        /// Gets the text editing event using the specified text ptr
+        /// </summary>
+        /// <param name="textPtr">The text ptr</param>
+        /// <returns>The evt</returns>
         private static TextEditingEvent GetTextEditingEvent(IntPtr textPtr)
         {
             TextEditingEvent evt = new TextEditingEvent();
@@ -81,6 +92,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             return evt;
         }
 
+        /// <summary>
+        /// Tests that should assign and retrieve public fields
+        /// </summary>
         [Fact]
         public void ShouldAssignAndRetrievePublicFields()
         {

@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The event test class
+    /// </summary>
     public class EventTest
     {
+        /// <summary>
+        /// Tests that event default initialization fields have default values
+        /// </summary>
         [Fact]
         public void Event_DefaultInitialization_FieldsHaveDefaultValues()
         {
@@ -14,6 +20,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(EventType.FirstEvent, ev.type);
         }
 
+        /// <summary>
+        /// Tests that event explicit layout type field is accessible
+        /// </summary>
         [Fact]
         public void Event_ExplicitLayout_TypeFieldIsAccessible()
         {
@@ -24,6 +33,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(EventType.Quit, ev.type);
         }
 
+        /// <summary>
+        /// Tests that event is value type copy is independent
+        /// </summary>
         [Fact]
         public void Event_IsValueType_CopyIsIndependent()
         {

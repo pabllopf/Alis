@@ -45,82 +45,152 @@ namespace Alis.Test
         /// </summary>
         private class TestRuntime : AManager
         {
+            /// <summary>
+            /// Gets or sets the value of the on init called
+            /// </summary>
             public bool OnInitCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on awake called
+            /// </summary>
             public bool OnAwakeCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on start called
+            /// </summary>
             public bool OnStartCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on update called
+            /// </summary>
             public bool OnUpdateCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on draw called
+            /// </summary>
             public bool OnDrawCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on exit called
+            /// </summary>
             public bool OnExitCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on save called
+            /// </summary>
             public bool OnSaveCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on load called
+            /// </summary>
             public bool OnLoadCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on stop called
+            /// </summary>
             public bool OnStopCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on before update called
+            /// </summary>
             public bool OnBeforeUpdateCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on after update called
+            /// </summary>
             public bool OnAfterUpdateCalled { get; private set; }
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestRuntime"/> class
+            /// </summary>
+            /// <param name="context">The context</param>
             public TestRuntime(Context context) : base(context)
             {
             }
 
+            /// <summary>
+            /// Ons the init
+            /// </summary>
             public override void OnInit()
             {
                 base.OnInit();
                 OnInitCalled = true;
             }
 
+            /// <summary>
+            /// Ons the awake
+            /// </summary>
             public override void OnAwake()
             {
                 base.OnAwake();
                 OnAwakeCalled = true;
             }
 
+            /// <summary>
+            /// Ons the start
+            /// </summary>
             public override void OnStart()
             {
                 base.OnStart();
                 OnStartCalled = true;
             }
 
+            /// <summary>
+            /// Ons the update
+            /// </summary>
             public override void OnUpdate()
             {
                 base.OnUpdate();
                 OnUpdateCalled = true;
             }
 
+            /// <summary>
+            /// Ons the draw
+            /// </summary>
             public override void OnDraw()
             {
                 base.OnDraw();
                 OnDrawCalled = true;
             }
 
+            /// <summary>
+            /// Ons the exit
+            /// </summary>
             public override void OnExit()
             {
                 base.OnExit();
                 OnExitCalled = true;
             }
 
+            /// <summary>
+            /// Ons the save
+            /// </summary>
             public override void OnSave()
             {
                 base.OnSave();
                 OnSaveCalled = true;
             }
 
+            /// <summary>
+            /// Ons the load
+            /// </summary>
             public override void OnLoad()
             {
                 base.OnLoad();
                 OnLoadCalled = true;
             }
 
+            /// <summary>
+            /// Ons the stop
+            /// </summary>
             public override void OnStop()
             {
                 base.OnStop();
                 OnStopCalled = true;
             }
 
+            /// <summary>
+            /// Ons the before update
+            /// </summary>
             public override void OnBeforeUpdate()
             {
                 base.OnBeforeUpdate();
                 OnBeforeUpdateCalled = true;
             }
 
+            /// <summary>
+            /// Ons the after update
+            /// </summary>
             public override void OnAfterUpdate()
             {
                 base.OnAfterUpdate();

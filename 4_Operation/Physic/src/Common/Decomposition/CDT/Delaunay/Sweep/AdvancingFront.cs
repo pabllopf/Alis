@@ -175,6 +175,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             return node;
         }
 
+        /// <summary>
+        /// Locates the exact point using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <param name="node">The node</param>
+        /// <exception cref="InvalidOperationException">Failed to find Node for given afront point</exception>
+        /// <returns>The advancing front node</returns>
         private static AdvancingFrontNode LocateExactPoint(TriangulationPoint point, AdvancingFrontNode node)
         {
             if (point == node.Point)
@@ -195,6 +202,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             throw new InvalidOperationException("Failed to find Node for given afront point");
         }
 
+        /// <summary>
+        /// Searches the prev direction using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <param name="node">The node</param>
+        /// <returns>The node</returns>
         private static AdvancingFrontNode SearchPrevDirection(TriangulationPoint point, AdvancingFrontNode node)
         {
             while ((node = node.Prev) != null)
@@ -208,6 +221,12 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             return node;
         }
 
+        /// <summary>
+        /// Searches the next direction using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <param name="node">The node</param>
+        /// <returns>The node</returns>
         private static AdvancingFrontNode SearchNextDirection(TriangulationPoint point, AdvancingFrontNode node)
         {
             while ((node = node.Next) != null)

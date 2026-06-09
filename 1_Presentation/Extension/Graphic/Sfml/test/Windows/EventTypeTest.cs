@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The event type test class
+    /// </summary>
     public class EventTypeTest
     {
+        /// <summary>
+        /// Tests that event type has expected values
+        /// </summary>
         [Fact]
         public void EventType_HasExpectedValues()
         {

@@ -3,8 +3,14 @@ using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The multi gesture event test class
+    /// </summary>
     public class MultiGestureEventTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {

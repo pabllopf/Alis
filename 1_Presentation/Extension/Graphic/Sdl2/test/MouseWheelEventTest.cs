@@ -3,8 +3,14 @@ using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The mouse wheel event test class
+    /// </summary>
     public class MouseWheelEventTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {

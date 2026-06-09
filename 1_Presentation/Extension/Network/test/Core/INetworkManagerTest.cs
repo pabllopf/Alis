@@ -44,35 +44,101 @@ namespace Alis.Extension.Network.Test.Core
     /// </summary>
     public class INetworkManagerTest
     {
+        /// <summary>
+        /// The test network manager class
+        /// </summary>
+        /// <seealso cref="INetworkManager"/>
         private class TestNetworkManager : INetworkManager
         {
+            /// <summary>
+            /// Gets the value of the id
+            /// </summary>
             public string Id => "test-id";
+            /// <summary>
+            /// Gets the value of the state
+            /// </summary>
             public NetworkManagerState State => NetworkManagerState.Disconnected;
+            /// <summary>
+            /// Gets the value of the current session
+            /// </summary>
             public NetworkSession CurrentSession => null;
+            /// <summary>
+            /// Gets the value of the local player
+            /// </summary>
             public NetworkPlayer LocalPlayer => null;
+            /// <summary>
+            /// Gets or sets the value of the config
+            /// </summary>
             public NetworkConfig Config { get; set; } = new NetworkConfig();
             
+            /// <summary>
+            /// Initializes the config
+            /// </summary>
+            /// <param name="config">The config</param>
+            /// <param name="cancellationToken">The cancellation token</param>
             public Task InitializeAsync(NetworkConfig config, CancellationToken cancellationToken = default)
                 => Task.CompletedTask;
             
+            /// <summary>
+            /// Starts the cancellation token
+            /// </summary>
+            /// <param name="cancellationToken">The cancellation token</param>
             public Task StartAsync(CancellationToken cancellationToken = default)
                 => Task.CompletedTask;
             
+            /// <summary>
+            /// Stops the cancellation token
+            /// </summary>
+            /// <param name="cancellationToken">The cancellation token</param>
             public Task StopAsync(CancellationToken cancellationToken = default)
                 => Task.CompletedTask;
             
+            /// <summary>
+            /// Sends the message using the specified target player id
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="targetPlayerId">The target player id</param>
+            /// <param name="channel">The channel</param>
+            /// <param name="message">The message</param>
+            /// <param name="reliable">The reliable</param>
             public Task SendMessageAsync<T>(string targetPlayerId, string channel, T message, bool reliable = true)
                 where T : IJsonSerializable => Task.CompletedTask;
             
+            /// <summary>
+            /// Broadcasts the message using the specified channel
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="channel">The channel</param>
+            /// <param name="message">The message</param>
+            /// <param name="reliable">The reliable</param>
+            /// <param name="exceptPlayerId">The except player id</param>
             public Task BroadcastMessageAsync<T>(string channel, T message, bool reliable = true, string exceptPlayerId = null)
                 where T : IJsonSerializable => Task.CompletedTask;
             
+            /// <summary>
+            /// Registers the message handler using the specified channel
+            /// </summary>
+            /// <param name="channel">The channel</param>
+            /// <param name="handler">The handler</param>
             public void RegisterMessageHandler(string channel, Func<string, string, Task> handler) { }
             
+            /// <summary>
+            /// Unregisters the message handler using the specified channel
+            /// </summary>
+            /// <param name="channel">The channel</param>
             public void UnregisterMessageHandler(string channel) { }
             
+            /// <summary>
+            /// Gets the connected players
+            /// </summary>
+            /// <returns>A read only list of network player</returns>
             public IReadOnlyList<NetworkPlayer> GetConnectedPlayers() => new List<NetworkPlayer>();
             
+            /// <summary>
+            /// Gets the player using the specified player id
+            /// </summary>
+            /// <param name="playerId">The player id</param>
+            /// <returns>The network player</returns>
             public NetworkPlayer GetPlayer(string playerId) => null;
             
             public event EventHandler<PlayerEventArgs> PlayerJoined;
@@ -81,9 +147,15 @@ namespace Alis.Extension.Network.Test.Core
             public event EventHandler<EventArgs> Disconnected;
             public event EventHandler<NetworkErrorEventArgs> Error;
             
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose() { }
         }
 
+        /// <summary>
+        /// Tests that id returns correct id
+        /// </summary>
         [Fact]
         public void Id_ReturnsCorrectId()
         {
@@ -97,6 +169,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal("test-id", result);
         }
 
+        /// <summary>
+        /// Tests that state returns disconnected state
+        /// </summary>
         [Fact]
         public void State_ReturnsDisconnectedState()
         {
@@ -110,6 +185,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkManagerState.Disconnected, result);
         }
 
+        /// <summary>
+        /// Tests that current session returns null when not connected
+        /// </summary>
         [Fact]
         public void CurrentSession_ReturnsNullWhenNotConnected()
         {
@@ -123,6 +201,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that local player returns null when not connected
+        /// </summary>
         [Fact]
         public void LocalPlayer_ReturnsNullWhenNotConnected()
         {
@@ -136,6 +217,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that config returns default config
+        /// </summary>
         [Fact]
         public void Config_ReturnsDefaultConfig()
         {
@@ -151,6 +235,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(60, result.TickRate);
         }
 
+        /// <summary>
+        /// Tests that initialize async completes successfully
+        /// </summary>
         [Fact]
         public void InitializeAsync_CompletesSuccessfully()
         {
@@ -166,6 +253,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TaskStatus.RanToCompletion, result.Status);
         }
 
+        /// <summary>
+        /// Tests that start async completes successfully
+        /// </summary>
         [Fact]
         public void StartAsync_CompletesSuccessfully()
         {
@@ -180,6 +270,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TaskStatus.RanToCompletion, result.Status);
         }
 
+        /// <summary>
+        /// Tests that stop async completes successfully
+        /// </summary>
         [Fact]
         public void StopAsync_CompletesSuccessfully()
         {
@@ -194,6 +287,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TaskStatus.RanToCompletion, result.Status);
         }
         
+        /// <summary>
+        /// Tests that register message handler registers handler
+        /// </summary>
         [Fact]
         public void RegisterMessageHandler_RegistersHandler()
         {
@@ -208,6 +304,9 @@ namespace Alis.Extension.Network.Test.Core
             // Handler registered without exception
         }
 
+        /// <summary>
+        /// Tests that unregister message handler unregisters handler
+        /// </summary>
         [Fact]
         public void UnregisterMessageHandler_UnregistersHandler()
         {
@@ -221,6 +320,9 @@ namespace Alis.Extension.Network.Test.Core
             // Handler unregistered without exception
         }
 
+        /// <summary>
+        /// Tests that get connected players returns empty list
+        /// </summary>
         [Fact]
         public void GetConnectedPlayers_ReturnsEmptyList()
         {
@@ -235,6 +337,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that get player returns null when player not found
+        /// </summary>
         [Fact]
         public void GetPlayer_ReturnsNullWhenPlayerNotFound()
         {
@@ -248,6 +353,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that dispose cleans up resources
+        /// </summary>
         [Fact]
         public void Dispose_CleansUpResources()
         {

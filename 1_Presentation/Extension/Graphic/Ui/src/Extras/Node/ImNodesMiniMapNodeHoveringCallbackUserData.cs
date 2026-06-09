@@ -34,6 +34,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
     /// </summary>
     public class ImNodesMiniMapNodeHoveringCallbackUserData
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImNodesMiniMapNodeHoveringCallbackUserData"/> class
+        /// </summary>
         public ImNodesMiniMapNodeHoveringCallbackUserData() { }
     }
 }

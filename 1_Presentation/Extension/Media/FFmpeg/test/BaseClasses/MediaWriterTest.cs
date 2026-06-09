@@ -40,25 +40,56 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
     /// <seealso cref="MediaWriter{TFrame}" />
     public class MediaWriterTest
     {
+        /// <summary>
+        /// The test frame class
+        /// </summary>
+        /// <seealso cref="IMediaFrame"/>
         private sealed class TestFrame : IMediaFrame
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestFrame"/> class
+            /// </summary>
+            /// <param name="rawData">The raw data</param>
             public TestFrame(byte[] rawData)
             {
                 RawData = rawData;
             }
 
+            /// <summary>
+            /// Gets the value of the raw data
+            /// </summary>
             public byte[] RawData { get; }
 
+            /// <summary>
+            /// Loads the stream
+            /// </summary>
+            /// <param name="stream">The stream</param>
+            /// <returns>The bool</returns>
             public bool Load(Stream stream) => true;
         }
 
+        /// <summary>
+        /// The test writer class
+        /// </summary>
+        /// <seealso cref="MediaWriter{TestFrame}"/>
         private sealed class TestWriter : MediaWriter<TestFrame>
         {
+            /// <summary>
+            /// Sets the opened using the specified value
+            /// </summary>
+            /// <param name="value">The value</param>
             public void SetOpened(bool value) => OpenedForWriting = value;
 
+            /// <summary>
+            /// Sets the stream using the specified stream
+            /// </summary>
+            /// <param name="stream">The stream</param>
             public void SetStream(Stream stream) => InputDataStream = stream;
         }
 
+        /// <summary>
+        /// Tests that media writer write frame should throw when not opened
+        /// </summary>
         [Fact]
         public void MediaWriter_WriteFrame_ShouldThrowWhenNotOpened()
         {
@@ -67,6 +98,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Throws<InvalidOperationException>(() => writer.WriteFrame(new TestFrame(new byte[1])));
         }
 
+        /// <summary>
+        /// Tests that media writer write frame should write to input stream
+        /// </summary>
         [Fact]
         public void MediaWriter_WriteFrame_ShouldWriteToInputStream()
         {

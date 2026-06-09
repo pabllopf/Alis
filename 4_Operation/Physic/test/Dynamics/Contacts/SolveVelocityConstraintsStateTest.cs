@@ -39,6 +39,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
     /// </summary>
     public class SolveVelocityConstraintsStateTest
     {
+        /// <summary>
+        /// Tests that get should create new state when queue is empty
+        /// </summary>
         [Fact]
         public void Get_ShouldCreateNewStateWhenQueueIsEmpty()
         {
@@ -53,6 +56,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(5, casted.End);
         }
 
+        /// <summary>
+        /// Tests that get should set correct start and end values
+        /// </summary>
         [Fact]
         public void Get_ShouldSetCorrectStartAndEndValues()
         {
@@ -65,6 +71,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(8, casted.End);
         }
 
+        /// <summary>
+        /// Tests that get should set contact solver correctly
+        /// </summary>
         [Fact]
         public void Get_ShouldSetContactSolverCorrectly()
         {
@@ -76,6 +85,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(contactSolver, casted.ContactSolver);
         }
 
+        /// <summary>
+        /// Tests that return should add state back to queue
+        /// </summary>
         [Fact]
         public void Return_ShouldAddStateBackToQueue()
         {
@@ -90,6 +102,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.NotNull(casted2);
         }
 
+        /// <summary>
+        /// Tests that return should restore state properties
+        /// </summary>
         [Fact]
         public void Return_ShouldRestoreStateProperties()
         {
@@ -104,6 +119,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.NotNull(casted2);
         }
 
+        /// <summary>
+        /// Tests that multiple get calls should reuse pooled states
+        /// </summary>
         [Fact]
         public void MultipleGetCalls_ShouldReusePooledStates()
         {
@@ -120,6 +138,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(contactSolver2, casted2.ContactSolver);
         }
 
+        /// <summary>
+        /// Tests that return should allow state reuse multiple times
+        /// </summary>
         [Fact]
         public void Return_ShouldAllowStateReuseMultipleTimes()
         {
@@ -134,6 +155,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.NotNull(casted2);
         }
 
+        /// <summary>
+        /// Tests that get should handle zero start and end values
+        /// </summary>
         [Fact]
         public void Get_ShouldHandleZeroStartAndEndValues()
         {
@@ -146,6 +170,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(0, casted.End);
         }
 
+        /// <summary>
+        /// Tests that get should handle large start and end values
+        /// </summary>
         [Fact]
         public void Get_ShouldHandleLargeStartAndEndValues()
         {
@@ -158,6 +185,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(100, casted.End);
         }
 
+        /// <summary>
+        /// Tests that get should handle same start and end values
+        /// </summary>
         [Fact]
         public void Get_ShouldHandleSameStartAndEndValues()
         {
@@ -170,6 +200,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(5, casted.End);
         }
 
+        /// <summary>
+        /// Tests that state should be internal
+        /// </summary>
         [Fact]
         public void State_ShouldBeInternalClass()
         {
@@ -179,6 +212,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(stateType.IsSealed);
         }
 
+        /// <summary>
+        /// Tests that state should have private constructor
+        /// </summary>
         [Fact]
         public void State_ShouldHavePrivateConstructor()
         {
@@ -188,6 +224,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.NotEmpty(constructors);
         }
 
+        /// <summary>
+        /// Tests that get should handle multiple contact solvers
+        /// </summary>
         [Fact]
         public void Get_ShouldHandleMultipleContactSolvers()
         {
@@ -208,6 +247,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(contactSolver3, casted3.ContactSolver);
         }
 
+        /// <summary>
+        /// Tests that return should work with different state configurations
+        /// </summary>
         [Fact]
         public void Return_ShouldWorkWithDifferentStateConfigurations()
         {
@@ -227,6 +269,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.NotNull(casted4);
         }
 
+        /// <summary>
+        /// Tests that state properties should be set correctly after get
+        /// </summary>
         [Fact]
         public void StateProperties_ShouldBeSetCorrectlyAfterGet()
         {
@@ -239,6 +284,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(20, casted.End);
         }
 
+        /// <summary>
+        /// Tests that state should support repeated get and return cycles
+        /// </summary>
         [Fact]
         public void State_ShouldSupportRepeatedGetAndReturnCycles()
         {

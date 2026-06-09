@@ -40,12 +40,24 @@ namespace Alis.Extension.Ads.GoogleAds.Test
     /// </summary>
     public class AdsManagerEventTests
     {
+        /// <summary>
+        /// Creates the config using the specified app id
+        /// </summary>
+        /// <param name="appId">The app id</param>
+        /// <param name="bannerId">The banner id</param>
+        /// <param name="interstitialId">The interstitial id</param>
+        /// <param name="rewardedId">The rewarded id</param>
+        /// <returns>The ad configuration</returns>
         private AdConfiguration CreateConfig(string appId = "app-id", string bannerId = "banner-id",
             string interstitialId = "interstitial-id", string rewardedId = "rewarded-id")
         {
             return new AdConfiguration(appId, bannerId, interstitialId, rewardedId);
         }
 
+        /// <summary>
+        /// Creates the context
+        /// </summary>
+        /// <returns>A mock of context</returns>
         private Mock<Context> CreateContext()
         {
             return new Mock<Context>();

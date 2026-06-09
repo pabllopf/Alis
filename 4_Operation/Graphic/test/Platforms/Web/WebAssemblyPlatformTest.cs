@@ -39,6 +39,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     /// </summary>
     public class WebAssemblyPlatformTest
     {
+        /// <summary>
+        /// Tests that web assembly platform default state is consistent
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_DefaultState_IsConsistent()
         {
@@ -61,6 +64,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Tests that web assembly platform key events update state and queue
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_KeyEvents_UpdateStateAndQueue()
         {
@@ -77,6 +83,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.IsKeyDown(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that web assembly platform char input collects and clears
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_CharInput_CollectsAndClears()
         {
@@ -89,6 +98,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.TryGetLastInputCharacters(out string _));
         }
 
+        /// <summary>
+        /// Tests that web assembly platform mouse events update coordinates and buttons
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_MouseEvents_UpdateCoordinatesAndButtons()
         {
@@ -108,6 +120,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(buttons[1]);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform get mouse position in view returns default coords
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_GetMousePositionInView_ReturnsDefaultCoords()
         {
@@ -117,6 +132,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, y);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform try get gamepad state no gamepads returns false
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_TryGetGamepadState_NoGamepads_ReturnsFalse()
         {
@@ -126,6 +144,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(state);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform get connected gamepad indices empty returns empty array
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_GetConnectedGamepadIndices_Empty_ReturnsEmptyArray()
         {
@@ -135,6 +156,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Empty(indices);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform get proc address calls interop
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_GetProcAddress_CallsInterop()
         {
@@ -142,6 +166,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.ThrowsAny<Exception>(() => platform.GetProcAddress("glClearColor"));
         }
 
+        /// <summary>
+        /// Tests that web assembly platform show window sets visible
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_ShowWindow_SetsVisible()
         {
@@ -150,6 +177,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsWindowVisible());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform hide window clears visible
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_HideWindow_ClearsVisible()
         {
@@ -159,6 +189,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.IsWindowVisible());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform set title does not throw
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_SetTitle_DoesNotThrow()
         {
@@ -166,6 +199,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SetTitle("New Title");
         }
 
+        /// <summary>
+        /// Tests that web assembly platform set size does not throw
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_SetSize_DoesNotThrow()
         {
@@ -173,6 +209,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SetSize(1024, 768);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform set window icon does not throw
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_SetWindowIcon_DoesNotThrow()
         {
@@ -180,6 +219,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SetWindowIcon("/icon.png");
         }
 
+        /// <summary>
+        /// Tests that web assembly platform poll events resets wheel delta
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_PollEvents_ResetsWheelDelta()
         {
@@ -192,6 +234,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, platform.GetMouseWheel());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform poll events returns true when not closing
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_PollEvents_ReturnsTrueWhenNotClosing()
         {
@@ -200,6 +245,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform cleanup not initialized does nothing
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_Cleanup_NotInitialized_DoesNothing()
         {
@@ -207,6 +255,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.Cleanup();
         }
 
+        /// <summary>
+        /// Tests that web assembly platform cleanup not initialized does not clear state
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_Cleanup_NotInitialized_DoesNotClearState()
         {
@@ -219,6 +270,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that web assembly platform initialize when already initialized returns true
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_Initialize_WhenAlreadyInitialized_ReturnsTrue()
         {
@@ -226,6 +280,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.Initialize(800, 600, "Test");
         }
 
+        /// <summary>
+        /// Tests that web assembly platform make context current with zero handles does not throw
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_MakeContextCurrent_WithZeroHandles_DoesNotThrow()
         {
@@ -233,6 +290,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.MakeContextCurrent();
         }
 
+        /// <summary>
+        /// Tests that web assembly platform swap buffers with zero handles does not throw
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_SwapBuffers_WithZeroHandles_DoesNotThrow()
         {
@@ -240,6 +300,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SwapBuffers();
         }
 
+        /// <summary>
+        /// Tests that web assembly platform try get last key pressed empty queue returns false
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_TryGetLastKeyPressed_EmptyQueue_ReturnsFalse()
         {
@@ -249,6 +312,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ConsoleKey.NoName, key);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform is key down unknown key returns false
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_IsKeyDown_UnknownKey_ReturnsFalse()
         {
@@ -256,6 +322,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.IsKeyDown(ConsoleKey.F24));
         }
 
+        /// <summary>
+        /// Tests that web assembly platform try get last input characters empty returns false
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_TryGetLastInputCharacters_Empty_ReturnsFalse()
         {
@@ -265,6 +334,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(string.Empty, chars);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse wheel sets delta
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseWheel_SetsDelta()
         {
@@ -273,6 +345,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(-3.0f, platform.GetMouseWheel());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse wheel positive delta
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseWheel_PositiveDelta()
         {
@@ -281,6 +356,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(10.0f, platform.GetMouseWheel());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse down boundary button 0 works
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseDown_BoundaryButton0_Works()
         {
@@ -292,6 +370,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(60, y);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse down boundary button 4 works
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseDown_BoundaryButton4_Works()
         {
@@ -301,6 +382,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(buttons[4]);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse down out of bounds button ignored
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseDown_OutOfBoundsButton_Ignored()
         {
@@ -314,6 +398,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(buttons[4]);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse down negative button ignored
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseDown_NegativeButton_Ignored()
         {
@@ -323,6 +410,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(buttons[0]);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse up out of bounds button ignored
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseUp_OutOfBoundsButton_Ignored()
         {
@@ -330,6 +420,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "OnMouseUp", 10, 0, 0, 0, 0);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on window resize updates dimensions
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnWindowResize_UpdatesDimensions()
         {
@@ -339,6 +432,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1080, platform.GetWindowHeight());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on window close sets should close
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnWindowClose_SetsShouldClose()
         {
@@ -348,6 +444,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on window focus true sets visible
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnWindowFocus_True_SetsVisible()
         {
@@ -356,6 +455,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsWindowVisible());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on window focus false clears visible
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnWindowFocus_False_ClearsVisible()
         {
@@ -364,6 +466,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.IsWindowVisible());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on gamepad connect creates state
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnGamepadConnect_CreatesState()
         {
@@ -374,6 +479,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.Connected);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on gamepad connect multiple gamepads
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnGamepadConnect_MultipleGamepads()
         {
@@ -387,6 +495,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.TryGetGamepadState(2, out GamepadState s2) && s2.Connected);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on gamepad disconnect sets disconnected
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnGamepadDisconnect_SetsDisconnected()
         {
@@ -398,6 +509,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.Connected);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on gamepad disconnect non existent does not throw
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnGamepadDisconnect_NonExistent_DoesNotThrow()
         {
@@ -405,6 +519,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "OnGamepadDisconnect", 99);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform get connected gamepad indices returns only connected
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_GetConnectedGamepadIndices_ReturnsOnlyConnected()
         {
@@ -418,6 +535,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Contains(0, indices);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform get connected gamepad indices all disconnected returns empty
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_GetConnectedGamepadIndices_AllDisconnected_ReturnsEmpty()
         {
@@ -429,6 +549,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Empty(indices);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on char input invalid char code does not throw
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnCharInput_InvalidCharCode_DoesNotThrow()
         {
@@ -436,6 +559,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "OnCharInput", (uint)0x110000);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on char input multiple characters accumulates
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnCharInput_MultipleCharacters_Accumulates()
         {
@@ -448,6 +574,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("Hi!", chars);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on key down same key multiple times enqueues each time
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnKeyDown_SameKeyMultipleTimes_EnqueuesEachTime()
         {
@@ -462,6 +591,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ConsoleKey.A, key2);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on key down repeated key does not enqueue without release
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnKeyDown_RepeatedKey_DoesNotEnqueueWithoutRelease()
         {
@@ -475,6 +607,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.TryGetLastKeyPressed(out _));
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on key down different keys queue order preserved
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnKeyDown_DifferentKeys_QueueOrderPreserved()
         {
@@ -493,6 +628,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ConsoleKey.C, k3);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on key up key not in states does not throw
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnKeyUp_KeyNotInStates_DoesNotThrow()
         {
@@ -500,6 +638,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "OnKeyUp", 65, 0);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse move updates client coords
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseMove_UpdatesClientCoords()
         {
@@ -510,6 +651,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(400, y);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse down updates coords and button
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseDown_UpdatesCoordsAndButton()
         {
@@ -521,6 +665,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(80, y);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse up updates coords and releases button
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseUp_UpdatesCoordsAndReleasesButton()
         {
@@ -533,6 +680,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(40, y);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse wheel negative delta
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseWheel_NegativeDelta()
         {
@@ -541,6 +691,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(-10.0f, platform.GetMouseWheel());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on mouse wheel zero delta
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnMouseWheel_ZeroDelta()
         {
@@ -549,6 +702,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, platform.GetMouseWheel());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on gamepad connect same index twice does not duplicate
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnGamepadConnect_SameIndexTwice_DoesNotDuplicate()
         {
@@ -559,6 +715,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Single(indices);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on window resize same size works
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnWindowResize_SameSize_Works()
         {
@@ -568,6 +727,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(600, platform.GetWindowHeight());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on window resize zero size works
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnWindowResize_ZeroSize_Works()
         {
@@ -577,6 +739,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, platform.GetWindowHeight());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on window resize max size works
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnWindowResize_MaxSize_Works()
         {
@@ -586,6 +751,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(int.MaxValue, platform.GetWindowHeight());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform on window resize negative size works
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_OnWindowResize_NegativeSize_Works()
         {
@@ -595,6 +763,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(-200, platform.GetWindowHeight());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform poll events multiple calls resets wheel each time
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_PollEvents_MultipleCalls_ResetsWheelEachTime()
         {
@@ -608,6 +779,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, platform.GetMouseWheel());
         }
 
+        /// <summary>
+        /// Tests that web assembly platform set window icon empty path does not throw
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_SetWindowIcon_EmptyPath_DoesNotThrow()
         {
@@ -615,6 +789,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SetWindowIcon("");
         }
 
+        /// <summary>
+        /// Tests that web assembly platform set window icon null path does not throw
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_SetWindowIcon_NullPath_DoesNotThrow()
         {
@@ -622,6 +799,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SetWindowIcon(null);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform get window metrics returns default values on non browser
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_GetWindowMetrics_ReturnsDefaultValuesOnNonBrowser()
         {
@@ -634,6 +814,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
         
 
+        /// <summary>
+        /// Tests that web assembly platform get mouse state returns cloned array
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_GetMouseState_ReturnsClonedArray()
         {
@@ -643,6 +826,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.NotSame(buttons1, buttons2);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform get mouse state multiple buttons
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_GetMouseState_MultipleButtons()
         {
@@ -659,6 +845,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Webs the assembly platform convert key code maps correctly using the specified key code
+        /// </summary>
+        /// <param name="keyCode">The key code</param>
+        /// <param name="expected">The expected</param>
         [InlineData(65, ConsoleKey.A)]
         [InlineData(66, ConsoleKey.B)]
         [InlineData(90, ConsoleKey.Z)]
@@ -691,6 +882,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(expected));
         }
 
+        /// <summary>
+        /// Tests that web assembly platform convert key code unknown key maps to no name
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_ConvertKeyCode_UnknownKey_MapsToNoName()
         {
@@ -699,6 +893,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NoName));
         }
 
+        /// <summary>
+        /// Tests that web assembly platform get window position x returns default on non browser
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_GetWindowPositionX_ReturnsDefaultOnNonBrowser()
         {
@@ -707,6 +904,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, x);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform get window position y returns default on non browser
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_GetWindowPositionY_ReturnsDefaultOnNonBrowser()
         {
@@ -715,6 +915,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, y);
         }
 
+        /// <summary>
+        /// Invokes the private using the specified instance
+        /// </summary>
+        /// <param name="instance">The instance</param>
+        /// <param name="methodName">The method name</param>
+        /// <param name="arguments">The arguments</param>
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)
         {
             MethodInfo method = instance.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);

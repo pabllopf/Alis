@@ -609,6 +609,13 @@ public Vertices(IEnumerable<Vector2F> vertices)
             return wn == 0 ? -1 : 1;
         }
 
+        /// <summary>
+        /// Ises the point on edge using the specified p 1
+        /// </summary>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
         private static bool IsPointOnEdge(ref Vector2F p1, ref Vector2F p2, ref Vector2F point)
         {
             Vector2F edge = p2 - p1;
@@ -616,6 +623,14 @@ public Vertices(IEnumerable<Vector2F> vertices)
             return (Math.Abs(area) < float.Epsilon) && (Vector2F.Dot(point - p1, edge) >= 0f) && (Vector2F.Dot(point - p2, edge) <= 0f);
         }
 
+        /// <summary>
+        /// Updates the winding number using the specified p 1
+        /// </summary>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <param name="point">The point</param>
+        /// <param name="wn">The wn</param>
+        /// <returns>The wn</returns>
         private static int UpdateWindingNumber(ref Vector2F p1, ref Vector2F p2, ref Vector2F point, int wn)
         {
             float area = MathUtils.Area(ref p1, ref p2, ref point);

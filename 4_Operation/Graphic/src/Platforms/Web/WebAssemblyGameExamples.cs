@@ -103,6 +103,11 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Handles the single gamepad input using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="gamepadIndex">The gamepad index</param>
         private static void HandleSingleGamepadInput(WebAssemblyGameContext context, int gamepadIndex)
         {
             if (context.TryGetGamepadState(gamepadIndex, out GamepadInputState gamepadState))
@@ -199,6 +204,12 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Handles the pointer lock using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="pointerLocked">The pointer locked</param>
+        /// <returns>The pointer locked</returns>
         private static bool HandlePointerLock(WebAssemblyGameContext context, bool pointerLocked)
         {
             if (context.IsMouseButtonDown(0) && !pointerLocked)
@@ -219,6 +230,10 @@ namespace Alis.Core.Graphic.Platforms.Web
             return pointerLocked;
         }
 
+        /// <summary>
+        /// Handles the keyboard movement using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
         private static void HandleKeyboardMovement(WebAssemblyGameContext context)
         {
             if (context.IsKeyDown(ConsoleKey.W))

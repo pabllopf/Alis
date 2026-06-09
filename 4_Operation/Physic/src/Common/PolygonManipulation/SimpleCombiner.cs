@@ -71,6 +71,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return polys;
         }
 
+        /// <summary>
+        /// Processes the valid polygon using the specified poly
+        /// </summary>
+        /// <param name="poly">The poly</param>
+        /// <param name="polyIndex">The poly index</param>
+        /// <param name="maxPolys">The max polys</param>
+        /// <param name="tolerance">The tolerance</param>
+        /// <param name="polys">The polys</param>
         private static void ProcessValidPolygon(Vertices poly, ref int polyIndex, int maxPolys, float tolerance, List<Vertices> polys)
         {
             if (polyIndex >= maxPolys)
@@ -91,6 +99,16 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
         }
 
+        /// <summary>
+        /// Processes the next polygon using the specified poly index
+        /// </summary>
+        /// <param name="polyIndex">The poly index</param>
+        /// <param name="triangles">The triangles</param>
+        /// <param name="covered">The covered</param>
+        /// <param name="maxPolys">The max polys</param>
+        /// <param name="tolerance">The tolerance</param>
+        /// <param name="polys">The polys</param>
+        /// <returns>The bool</returns>
         private static bool ProcessNextPolygon(ref int polyIndex, List<Vertices> triangles, bool[] covered, int maxPolys, float tolerance, List<Vertices> polys)
         {
             int currTri = FindNextUncoveredTriangle(triangles, covered);
@@ -105,11 +123,21 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return true;
         }
 
+        /// <summary>
+        /// Adds the polygon to list using the specified poly
+        /// </summary>
+        /// <param name="poly">The poly</param>
+        /// <param name="polys">The polys</param>
         private static void AddPolygonToList(Vertices poly, List<Vertices> polys)
         {
             polys.Add(new Vertices(poly));
         }
 
+        /// <summary>
+        /// Marks the degenerate triangles using the specified triangles
+        /// </summary>
+        /// <param name="triangles">The triangles</param>
+        /// <returns>The covered</returns>
         private static bool[] MarkDegenerateTriangles(List<Vertices> triangles)
         {
             bool[] covered = new bool[triangles.Count];
@@ -129,6 +157,13 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return covered;
         }
 
+        /// <summary>
+        /// Ises the degenerate triangle using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
         private static bool IsDegenerateTriangle(Vector2F a, Vector2F b, Vector2F c)
         {
             if ((Math.Abs(a.X - b.X) < float.Epsilon) && (Math.Abs(a.Y - b.Y) < float.Epsilon))
@@ -149,6 +184,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return false;
         }
 
+        /// <summary>
+        /// Finds the next uncovered triangle using the specified triangles
+        /// </summary>
+        /// <param name="triangles">The triangles</param>
+        /// <param name="covered">The covered</param>
+        /// <returns>The int</returns>
         private static int FindNextUncoveredTriangle(List<Vertices> triangles, bool[] covered)
         {
             for (int i = 0; i < triangles.Count; ++i)
@@ -162,6 +203,13 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return -1;
         }
 
+        /// <summary>
+        /// Builds the initial poly using the specified curr tri
+        /// </summary>
+        /// <param name="currTri">The curr tri</param>
+        /// <param name="triangles">The triangles</param>
+        /// <param name="covered">The covered</param>
+        /// <returns>The poly</returns>
         private static Vertices BuildInitialPoly(int currTri, List<Vertices> triangles, bool[] covered)
         {
             Vertices poly = new Vertices(3);
@@ -174,6 +222,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return poly;
         }
 
+        /// <summary>
+        /// Tries the add neighboring triangles using the specified poly
+        /// </summary>
+        /// <param name="poly">The poly</param>
+        /// <param name="triangles">The triangles</param>
+        /// <param name="covered">The covered</param>
         private static void TryAddNeighboringTriangles(Vertices poly, List<Vertices> triangles, bool[] covered)
         {
             int index = 0;
@@ -208,6 +262,10 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
         }
 
+        /// <summary>
+        /// Removes the empty polygons using the specified polys
+        /// </summary>
+        /// <param name="polys">The polys</param>
         private static void RemoveEmptyPolygons(List<Vertices> polys)
         {
             for (int i = polys.Count - 1; i >= 0; i--)
@@ -261,6 +319,15 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             return result;
         }
 
+        /// <summary>
+        /// Finds the matching vertices using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="firstP">The first</param>
+        /// <param name="firstT">The first</param>
+        /// <param name="secondP">The second</param>
+        /// <param name="secondT">The second</param>
         private static void FindMatchingVertices(Vertices t, Vertices vertices, ref int firstP, ref int firstT, ref int secondP, ref int secondT)
         {
             for (int i = 0; i < vertices.Count; i++)
@@ -280,11 +347,26 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
         }
 
+        /// <summary>
+        /// Vertexes the matches using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The bool</returns>
         private static bool VertexMatches(Vector2F a, Vector2F b)
         {
             return (Math.Abs(a.X - b.X) < float.Epsilon) && (Math.Abs(a.Y - b.Y) < float.Epsilon);
         }
 
+        /// <summary>
+        /// Records the match using the specified first p
+        /// </summary>
+        /// <param name="firstP">The first</param>
+        /// <param name="firstT">The first</param>
+        /// <param name="secondP">The second</param>
+        /// <param name="secondT">The second</param>
+        /// <param name="vertexIndex">The vertex index</param>
+        /// <param name="triangleIndex">The triangle index</param>
         private static void RecordMatch(ref int firstP, ref int firstT, ref int secondP, ref int secondT, int vertexIndex, int triangleIndex)
         {
             if (firstP == -1)
@@ -299,6 +381,12 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }
         }
 
+        /// <summary>
+        /// Finds the tip index using the specified first t
+        /// </summary>
+        /// <param name="firstT">The first</param>
+        /// <param name="secondT">The second</param>
+        /// <returns>The tip</returns>
         private static int FindTipIndex(int firstT, int secondT)
         {
             int tipT = 0;

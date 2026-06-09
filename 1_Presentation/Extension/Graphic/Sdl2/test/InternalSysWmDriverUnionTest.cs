@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal sys wm driver union test class
+    /// </summary>
     public class InternalSysWmDriverUnionTest
     {
+        /// <summary>
+        /// Tests that internal sys wm driver union default initialization fields have default values
+        /// </summary>
         [Fact]
         public void InternalSysWmDriverUnion_DefaultInitialization_FieldsHaveDefaultValues()
         {
@@ -19,6 +25,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal((IntPtr)0, u.uikit.Window);
         }
 
+        /// <summary>
+        /// Tests that internal sys wm driver union is value type copy is independent
+        /// </summary>
         [Fact]
         public void InternalSysWmDriverUnion_IsValueType_CopyIsIndependent()
         {

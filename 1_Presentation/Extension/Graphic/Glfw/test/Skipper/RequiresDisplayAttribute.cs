@@ -62,10 +62,22 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
 
 #else
 
+        /// <summary>
+        /// Ises the windows
+        /// </summary>
+        /// <returns>The bool</returns>
         private static bool IsWindows() => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
 
+        /// <summary>
+        /// Ises the linux
+        /// </summary>
+        /// <returns>The bool</returns>
         private static bool IsLinux() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
 
+        /// <summary>
+        /// Ises the mac os
+        /// </summary>
+        /// <returns>The bool</returns>
         private static bool IsMacOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
 
 #endif

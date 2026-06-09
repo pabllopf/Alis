@@ -37,3 +37,14 @@
 
 - **GPLv3 License**: All code must remain open source
 - **No Proprietary Dependencies**: All dependencies are open source
+
+## Related
+
+- [[security/analysis]] — Detailed security extension analysis
+- [[security-index]] — Security-sensitive areas index
+- [[code-review-checklist]] — Security review checklist
+- [[Alis.Extension.Security]] — Security extension docs
+- [[Alis.Extension.Payment.Stripe]] — Payment security
+- [[architecture/dependency-graph]] — Trust boundary map
+- [[build-system]] — Security build config
+- [[analysis-state]] — Security analysis status

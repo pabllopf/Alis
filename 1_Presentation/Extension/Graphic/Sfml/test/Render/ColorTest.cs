@@ -89,6 +89,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.False(string.IsNullOrWhiteSpace(color.ToString()));
         }
 
+        /// <summary>
+        /// Tests that static colors have expected values
+        /// </summary>
         [Fact]
         public void StaticColors_HaveExpectedValues()
         {
@@ -103,6 +106,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(new Color(0, 0, 0, 0), Color.Transparent);
         }
 
+        /// <summary>
+        /// Tests that operator add clamps to 255
+        /// </summary>
         [Fact]
         public void OperatorAdd_ClampsTo255()
         {
@@ -115,6 +121,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(255, result.A);
         }
 
+        /// <summary>
+        /// Tests that operator subtract clamps to zero
+        /// </summary>
         [Fact]
         public void OperatorSubtract_ClampsToZero()
         {
@@ -127,6 +136,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0, result.A);
         }
 
+        /// <summary>
+        /// Tests that operator multiply scales correctly
+        /// </summary>
         [Fact]
         public void OperatorMultiply_ScalesCorrectly()
         {
@@ -139,6 +151,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(128, result.A);
         }
 
+        /// <summary>
+        /// Tests that operator multiply with half reduces by factor
+        /// </summary>
         [Fact]
         public void OperatorMultiply_WithHalfReducesByFactor()
         {
@@ -151,6 +166,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(128, result.A);
         }
 
+        /// <summary>
+        /// Tests that three param constructor sets alpha to 255
+        /// </summary>
         [Fact]
         public void ThreeParamConstructor_SetsAlphaTo255()
         {

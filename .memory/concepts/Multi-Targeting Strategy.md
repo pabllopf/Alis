@@ -52,3 +52,12 @@ Build-time constants are automatically defined based on `RuntimeIdentifier`:
 ## See Also
 - [[Layered Architecture]]
 - [[Multi-Platform Samples]]
+- [[Platform-Specific Build Constants]]
+- [[Build System Configuration]]
+
+## Related Architecture
+
+- [[build-system]] — Multi-targeting in build
+- [[build-summary]] — Framework targets overview
+- [[project-index]] — Framework targets per project
+- [[projects/Index]] — Project framework details

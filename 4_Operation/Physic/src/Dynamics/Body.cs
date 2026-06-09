@@ -43,6 +43,9 @@ namespace Alis.Core.Physic.Dynamics
     /// </summary>
     public partial class Body
     {
+        /// <summary>
+        /// The world locked message
+        /// </summary>
         private const string WorldLockedMessage = "The World is locked.";
 
         /// <summary>

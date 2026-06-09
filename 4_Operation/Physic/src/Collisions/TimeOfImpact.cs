@@ -174,6 +174,15 @@ namespace Alis.Core.Physic.Collisions
             }
         }
 
+        /// <summary>
+        /// Tries the handle distance result using the specified distance output
+        /// </summary>
+        /// <param name="distanceOutput">The distance output</param>
+        /// <param name="target">The target</param>
+        /// <param name="tolerance">The tolerance</param>
+        /// <param name="output">The output</param>
+        /// <param name="t1">The </param>
+        /// <returns>The bool</returns>
         private static bool TryHandleDistanceResult(DistanceOutput distanceOutput, float target, float tolerance, ref ToiOutput output, ref float t1)
         {
             if (distanceOutput.Distance <= 0.0f)
@@ -193,6 +202,15 @@ namespace Alis.Core.Physic.Collisions
             return false;
         }
 
+        /// <summary>
+        /// Tries the push back iterations using the specified t max
+        /// </summary>
+        /// <param name="tMax">The max</param>
+        /// <param name="target">The target</param>
+        /// <param name="tolerance">The tolerance</param>
+        /// <param name="t1">The </param>
+        /// <param name="output">The output</param>
+        /// <returns>The done</returns>
         private static bool TryPushBackIterations(float tMax, float target, float tolerance, ref float t1, ref ToiOutput output)
         {
             bool done = false;
@@ -244,6 +262,18 @@ namespace Alis.Core.Physic.Collisions
             return done;
         }
 
+        /// <summary>
+        /// Performs the root find using the specified index a
+        /// </summary>
+        /// <param name="indexA">The index</param>
+        /// <param name="indexB">The index</param>
+        /// <param name="t1">The </param>
+        /// <param name="t2">The </param>
+        /// <param name="s1">The </param>
+        /// <param name="s2">The </param>
+        /// <param name="target">The target</param>
+        /// <param name="tolerance">The tolerance</param>
+        /// <returns>The </returns>
         private static float PerformRootFind(int indexA, int indexB, float t1, float t2, float s1, float s2, float target, float tolerance)
         {
             int rootIterCount = 0;
@@ -276,6 +306,16 @@ namespace Alis.Core.Physic.Collisions
             return t2;
         }
 
+        /// <summary>
+        /// Computes the root step using the specified root iter count
+        /// </summary>
+        /// <param name="rootIterCount">The root iter count</param>
+        /// <param name="a1">The </param>
+        /// <param name="a2">The </param>
+        /// <param name="s1">The </param>
+        /// <param name="s2">The </param>
+        /// <param name="target">The target</param>
+        /// <returns>The float</returns>
         private static float ComputeRootStep(int rootIterCount, float a1, float a2, float s1, float s2, float target)
         {
             return (rootIterCount & 1) != 0
@@ -283,6 +323,9 @@ namespace Alis.Core.Physic.Collisions
                 : 0.5f * (a1 + a2);
         }
 
+        /// <summary>
+        /// Records the root iteration
+        /// </summary>
         private static void RecordRootIteration()
         {
             if (SettingEnv.EnableDiagnostics)
@@ -291,6 +334,10 @@ namespace Alis.Core.Physic.Collisions
             }
         }
 
+        /// <summary>
+        /// Records the max root iters using the specified root iter count
+        /// </summary>
+        /// <param name="rootIterCount">The root iter count</param>
         private static void RecordMaxRootIters(int rootIterCount)
         {
             if (SettingEnv.EnableDiagnostics)
@@ -299,6 +346,16 @@ namespace Alis.Core.Physic.Collisions
             }
         }
 
+        /// <summary>
+        /// Updates the bisection bounds using the specified a 1
+        /// </summary>
+        /// <param name="a1">The </param>
+        /// <param name="s1">The </param>
+        /// <param name="a2">The </param>
+        /// <param name="s2">The </param>
+        /// <param name="t">The </param>
+        /// <param name="s">The </param>
+        /// <param name="target">The target</param>
         private static void UpdateBisectionBounds(ref float a1, ref float s1, ref float a2, ref float s2, float t, float s, float target)
         {
             if (s > target)

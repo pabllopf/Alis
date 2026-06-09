@@ -40,6 +40,9 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class WebSocketHttpContextTest
     {
+        /// <summary>
+        /// Tests that constructor creates instance with valid request
+        /// </summary>
         [Fact]
         public void Constructor_CreatesInstanceWithValidRequest()
         {
@@ -59,6 +62,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("/chat", context.Path);
         }
 
+        /// <summary>
+        /// Tests that is web socket request returns correct value
+        /// </summary>
         [Fact]
         public void IsWebSocketRequest_ReturnsCorrectValue()
         {
@@ -76,6 +82,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(context.IsWebSocketRequest);
         }
 
+        /// <summary>
+        /// Tests that is web socket request returns false when not websocket
+        /// </summary>
         [Fact]
         public void IsWebSocketRequest_ReturnsFalseWhenNotWebsocket()
         {
@@ -93,6 +102,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(context.IsWebSocketRequest);
         }
 
+        /// <summary>
+        /// Tests that web socket requested protocols returns correct list
+        /// </summary>
         [Fact]
         public void WebSocketRequestedProtocols_ReturnsCorrectList()
         {
@@ -114,6 +126,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("custom", context.WebSocketRequestedProtocols);
         }
 
+        /// <summary>
+        /// Tests that web socket requested protocols returns empty list when no protocols
+        /// </summary>
         [Fact]
         public void WebSocketRequestedProtocols_ReturnsEmptyListWhenNoProtocols()
         {
@@ -132,6 +147,9 @@ namespace Alis.Extension.Network.Test
             Assert.Empty(context.WebSocketRequestedProtocols);
         }
 
+        /// <summary>
+        /// Tests that http header returns correct header
+        /// </summary>
         [Fact]
         public void HttpHeader_ReturnsCorrectHeader()
         {
@@ -151,6 +169,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("websocket", context.HttpHeader);
         }
 
+        /// <summary>
+        /// Tests that path returns correct path
+        /// </summary>
         [Fact]
         public void Path_ReturnsCorrectPath()
         {
@@ -168,6 +189,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("/chat?room=123", context.Path);
         }
 
+        /// <summary>
+        /// Tests that stream returns correct stream
+        /// </summary>
         [Fact]
         public void Stream_ReturnsCorrectStream()
         {
@@ -186,6 +210,9 @@ namespace Alis.Extension.Network.Test
             Assert.IsType<MemoryStream>(context.Stream);
         }
 
+        /// <summary>
+        /// Tests that create new instance initializes all properties
+        /// </summary>
         [Fact]
         public void CreateNewInstance_InitializesAllProperties()
         {
@@ -202,6 +229,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(context.Stream);
         }
 
+        /// <summary>
+        /// Tests that web socket requested protocols is read only
+        /// </summary>
         [Fact]
         public void WebSocketRequestedProtocols_IsReadOnly()
         {
@@ -220,6 +250,9 @@ namespace Alis.Extension.Network.Test
             Assert.IsAssignableFrom<IList<string>>(context.WebSocketRequestedProtocols);
         }
 
+        /// <summary>
+        /// Tests that http header contains full header
+        /// </summary>
         [Fact]
         public void HttpHeader_ContainsFullHeader()
         {
@@ -239,6 +272,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("Sec-WebSocket-Version", context.HttpHeader);
         }
 
+        /// <summary>
+        /// Tests that path with special characters
+        /// </summary>
         [Fact]
         public void Path_WithSpecialCharacters()
         {
@@ -256,6 +292,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("/chat?room=123&user=test", context.Path);
         }
 
+        /// <summary>
+        /// Tests that stream is same instance
+        /// </summary>
         [Fact]
         public void Stream_IsSameInstance()
         {
@@ -273,6 +312,9 @@ namespace Alis.Extension.Network.Test
             Assert.Same(stream, context.Stream);
         }
 
+        /// <summary>
+        /// Tests that web socket requested protocols with single protocol
+        /// </summary>
         [Fact]
         public void WebSocketRequestedProtocols_WithSingleProtocol()
         {
@@ -291,6 +333,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("json", context.WebSocketRequestedProtocols[0]);
         }
 
+        /// <summary>
+        /// Tests that create instance with null protocols
+        /// </summary>
         [Fact]
         public void CreateInstance_WithNullProtocols()
         {

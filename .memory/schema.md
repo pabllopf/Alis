@@ -59,3 +59,12 @@
 3. Identify orphan pages with no inbound links
 4. Flag concepts mentioned but lacking pages
 5. Suggest new sources to investigate
+
+## Related
+
+- [[analysis-state]] — Current analysis state
+- [[coverage-map]] — Documentation coverage tracking
+- [[documentation-map]] — Documentation file mapping
+- [[index]] — Memory system index
+- [[log]] — Session activity log
+- [[execution-log]] — Detailed execution history

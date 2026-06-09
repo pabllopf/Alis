@@ -46,3 +46,14 @@ ALIS includes several security-related extensions:
 - SFML native libraries bundled in NuGet packages
 - Verify integrity of native binaries
 - Use signed packages for distribution
+
+## Related
+
+- [[security-overview]] — High-level security analysis
+- [[security-index]] — Security-sensitive areas
+- [[Alis.Extension.Security]] — Security extension
+- [[Alis.Extension.Payment.Stripe]] — Stripe payment security
+- [[Alis.Extension.Cloud.DropBox]] — Dropbox auth security
+- [[code-review-checklist]] — Security review items
+- [[build-system]] — Secure build configuration
+- [[project-index]] — Security extension projects

@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
 {
+    /// <summary>
+    /// The loading failed exception test class
+    /// </summary>
     public class LoadingFailedExceptionTest
     {
+        /// <summary>
+        /// Tests that default constructor sets default message
+        /// </summary>
         [Fact]
         public void DefaultConstructor_SetsDefaultMessage()
         {
@@ -12,6 +18,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal("Failed to load a resource", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that constructor with resource name sets message
+        /// </summary>
         [Fact]
         public void Constructor_WithResourceName_SetsMessage()
         {
@@ -19,6 +28,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal("Failed to load texture from memory", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that constructor with resource name and inner exception sets message
+        /// </summary>
         [Fact]
         public void Constructor_WithResourceNameAndInnerException_SetsMessage()
         {
@@ -28,6 +40,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(inner, ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that constructor with resource name and filename sets message
+        /// </summary>
         [Fact]
         public void Constructor_WithResourceNameAndFilename_SetsMessage()
         {
@@ -35,6 +50,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal("Failed to load font from file arial.ttf", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that constructor with resource name filename and inner exception sets message
+        /// </summary>
         [Fact]
         public void Constructor_WithResourceNameFilenameAndInnerException_SetsMessage()
         {

@@ -160,6 +160,13 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Loads the palette using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="headerSize">The header size</param>
+        /// <param name="bitsPerPixel">The bits per pixel</param>
+        /// <returns>The palette</returns>
         private static byte[][] LoadPalette(BinaryReader reader, int headerSize, short bitsPerPixel)
         {
             int paletteSize = 0;
@@ -242,6 +249,14 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Loads the rgb row using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="width">The width</param>
+        /// <param name="row">The row</param>
+        /// <param name="hasAlpha">The has alpha</param>
+        /// <param name="rawData">The raw data</param>
         private static void LoadRgbRow(BinaryReader reader, int width, int row, bool hasAlpha, byte[] rawData)
         {
             for (int x = 0; x < width; x++)
@@ -258,6 +273,14 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Loads the indexed row using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="width">The width</param>
+        /// <param name="row">The row</param>
+        /// <param name="palette">The palette</param>
+        /// <param name="rawData">The raw data</param>
         private static void LoadIndexedRow(BinaryReader reader, int width, int row, byte[][] palette, byte[] rawData)
         {
             for (int x = 0; x < width; x++)
@@ -271,6 +294,14 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Loads the 4 bit row using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="width">The width</param>
+        /// <param name="row">The row</param>
+        /// <param name="palette">The palette</param>
+        /// <param name="rawData">The raw data</param>
         private static void Load4BitRow(BinaryReader reader, int width, int row, byte[][] palette, byte[] rawData)
         {
             for (int x = 0; x < width; x += 2)
@@ -288,6 +319,14 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Loads the 1 bit row using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="width">The width</param>
+        /// <param name="row">The row</param>
+        /// <param name="palette">The palette</param>
+        /// <param name="rawData">The raw data</param>
         private static void Load1BitRow(BinaryReader reader, int width, int row, byte[][] palette, byte[] rawData)
         {
             for (int x = 0; x < width; x += 8)
@@ -305,6 +344,12 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Skips the padding using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="rowPadded">The row padded</param>
+        /// <param name="rowSize">The row size</param>
         private static void SkipPadding(BinaryReader reader, int rowPadded, int rowSize)
         {
             int padding = rowPadded - rowSize;
@@ -343,6 +388,16 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Writes the encoded pixels using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="palette">The palette</param>
+        /// <param name="rawData">The raw data</param>
+        /// <param name="width">The width</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="count">The count</param>
         private static void WriteEncodedPixels(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, int y, int count)
         {
             for (int i = 0; i < count; i++)
@@ -362,6 +417,16 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Handles the escape code using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="palette">The palette</param>
+        /// <param name="rawData">The raw data</param>
+        /// <param name="width">The width</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="value">The value</param>
         private static void HandleEscapeCode(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, ref int y, byte value)
         {
             if (value == 0) // End of line
@@ -387,6 +452,16 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Writes the absolute pixels using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="palette">The palette</param>
+        /// <param name="rawData">The raw data</param>
+        /// <param name="width">The width</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="absCount">The abs count</param>
         private static void WriteAbsolutePixels(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, int y, int absCount)
         {
             for (int i = 0; i < absCount; i++)
@@ -441,6 +516,16 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Writes the rle 4 pixels using the specified palette
+        /// </summary>
+        /// <param name="palette">The palette</param>
+        /// <param name="rawData">The raw data</param>
+        /// <param name="width">The width</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="count">The count</param>
+        /// <param name="value">The value</param>
         private static void WriteRle4Pixels(byte[][] palette, byte[] rawData, int width, ref int x, int y, int count, byte value)
         {
             byte first = (byte)(value >> 4);
@@ -463,6 +548,16 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Handles the rle 4 escape code using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="palette">The palette</param>
+        /// <param name="rawData">The raw data</param>
+        /// <param name="width">The width</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="value">The value</param>
         private static void HandleRle4EscapeCode(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, ref int y, byte value)
         {
             if (value == 0) // End of line
@@ -488,6 +583,16 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Writes the rle 4 absolute pixels using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="palette">The palette</param>
+        /// <param name="rawData">The raw data</param>
+        /// <param name="width">The width</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="absCount">The abs count</param>
         private static void WriteRle4AbsolutePixels(BinaryReader reader, byte[][] palette, byte[] rawData, int width, ref int x, int y, int absCount)
         {
             int pairs = (absCount + 1) / 2;

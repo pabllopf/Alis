@@ -38,6 +38,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class UserEventTest
     {
+        /// <summary>
+        /// Tests that should assign and retrieve all fields
+        /// </summary>
         [Fact]
         public void ShouldAssignAndRetrieveAllFields()
         {
@@ -60,6 +63,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(new IntPtr(0xABCD), evt.Data2);
         }
 
+        /// <summary>
+        /// Tests that should support default initialization
+        /// </summary>
         [Fact]
         public void ShouldSupportDefaultInitialization()
         {
@@ -75,6 +81,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         }
 
 
+        /// <summary>
+        /// Tests that should allow modification of properties
+        /// </summary>
         [Fact]
         public void ShouldAllowModificationOfProperties()
         {

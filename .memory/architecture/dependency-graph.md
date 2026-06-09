@@ -196,3 +196,16 @@ Each generator project:
 2. Uses Roslyn `ISourceGenerator` interface
 3. Outputs generated `.cs` files into the target project
 4. May have its own test and sample projects
+
+## Related
+
+- [[dependency-index]] — Dependency index with Mermaid
+- [[diagrams/dependency-graph]] — Visual dependency diagram
+- [[dependencies/dependency-graph]] — Raw dependency data
+- [[architecture-overview]] — Full architecture diagrams
+- [[adr-001-layered-architecture]] — Layer dependency rules
+- [[adr-002-aggregator-pattern]] — Aggregator reference pattern
+- [[layer-index]] — Layer-by-layer breakdown
+- [[project-index]] — All projects indexed
+- [[Generator Pattern]] — Generator architecture
+- [[Layered Architecture]] — Layer structure details

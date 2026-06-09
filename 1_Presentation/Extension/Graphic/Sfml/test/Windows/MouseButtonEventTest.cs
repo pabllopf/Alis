@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The mouse button event test class
+    /// </summary>
     public class MouseButtonEventTest
     {
+        /// <summary>
+        /// Tests that mouse button event default has zero values
+        /// </summary>
         [Fact]
         public void MouseButtonEvent_Default_HasZeroValues()
         {
@@ -42,6 +48,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0, e.Y);
         }
 
+        /// <summary>
+        /// Tests that mouse button event args constructor sets properties
+        /// </summary>
         [Fact]
         public void MouseButtonEventArgs_Constructor_SetsProperties()
         {
@@ -52,6 +61,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(200, args.Y);
         }
 
+        /// <summary>
+        /// Tests that mouse button event args to string includes property names
+        /// </summary>
         [Fact]
         public void MouseButtonEventArgs_ToString_IncludesPropertyNames()
         {

@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The joystick button event test class
+    /// </summary>
     public class JoystickButtonEventTest
     {
+        /// <summary>
+        /// Tests that joystick button event default has zero values
+        /// </summary>
         [Fact]
         public void JoystickButtonEvent_Default_HasZeroValues()
         {
@@ -42,6 +48,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0u, e.Button);
         }
 
+        /// <summary>
+        /// Tests that joystick button event args constructor sets properties
+        /// </summary>
         [Fact]
         public void JoystickButtonEventArgs_Constructor_SetsProperties()
         {
@@ -51,6 +60,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(5u, args.Button);
         }
 
+        /// <summary>
+        /// Tests that joystick button event args to string includes property names
+        /// </summary>
         [Fact]
         public void JoystickButtonEventArgs_ToString_IncludesPropertyNames()
         {

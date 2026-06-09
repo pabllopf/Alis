@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal kms wm info test class
+    /// </summary>
     public class InternalKmsWmInfoTest
     {
+        /// <summary>
+        /// Tests that internal kms wm info default initialization fields have default values
+        /// </summary>
         [Fact]
         public void InternalKmsWmInfo_DefaultInitialization_FieldsHaveDefaultValues()
         {
@@ -16,6 +22,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, info.gbm_dev);
         }
 
+        /// <summary>
+        /// Tests that internal kms wm info is value type copy is independent
+        /// </summary>
         [Fact]
         public void InternalKmsWmInfo_IsValueType_CopyIsIndependent()
         {

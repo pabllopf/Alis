@@ -40,15 +40,27 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class IPingPongManagerTest
     {
+        /// <summary>
+        /// The test ping pong manager class
+        /// </summary>
+        /// <seealso cref="IPingPongManager"/>
         private class TestPingPongManager : IPingPongManager
         {
             public event EventHandler<PongEventArgs> Pong;
             
+            /// <summary>
+            /// Sends the ping using the specified payload
+            /// </summary>
+            /// <param name="payload">The payload</param>
+            /// <param name="cancellation">The cancellation</param>
             public Task SendPing(ArraySegment<byte> payload, CancellationToken cancellation)
                 => Task.CompletedTask;
         }
         
 
+        /// <summary>
+        /// Tests that send ping completes successfully
+        /// </summary>
         [Fact]
         public void SendPing_CompletesSuccessfully()
         {
@@ -64,6 +76,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(TaskStatus.RanToCompletion, result.Status);
         }
 
+        /// <summary>
+        /// Tests that send ping with empty payload completes successfully
+        /// </summary>
         [Fact]
         public void SendPing_WithEmptyPayload_CompletesSuccessfully()
         {
@@ -79,6 +94,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(TaskStatus.RanToCompletion, result.Status);
         }
 
+        /// <summary>
+        /// Tests that send ping with cancellation token completes successfully
+        /// </summary>
         [Fact]
         public void SendPing_WithCancellationToken_CompletesSuccessfully()
         {

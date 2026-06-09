@@ -38,6 +38,9 @@ namespace Alis.Extension.Network.Test.Core
     /// </summary>
     public class SessionStateTest
     {
+        /// <summary>
+        /// Tests that waiting returns correct value
+        /// </summary>
         [Fact]
         public void Waiting_ReturnsCorrectValue()
         {
@@ -51,6 +54,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(expectedState, actualState);
         }
 
+        /// <summary>
+        /// Tests that in progress returns correct value
+        /// </summary>
         [Fact]
         public void InProgress_ReturnsCorrectValue()
         {
@@ -64,6 +70,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(expectedState, actualState);
         }
 
+        /// <summary>
+        /// Tests that finished returns correct value
+        /// </summary>
         [Fact]
         public void Finished_ReturnsCorrectValue()
         {
@@ -77,6 +86,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(expectedState, actualState);
         }
 
+        /// <summary>
+        /// Tests that closed returns correct value
+        /// </summary>
         [Fact]
         public void Closed_ReturnsCorrectValue()
         {
@@ -90,6 +102,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(expectedState, actualState);
         }
 
+        /// <summary>
+        /// Tests that all values are defined
+        /// </summary>
         [Fact]
         public void AllValuesAreDefined()
         {

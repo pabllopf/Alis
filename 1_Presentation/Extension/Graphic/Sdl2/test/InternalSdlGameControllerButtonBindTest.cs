@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal sdl game controller button bind test class
+    /// </summary>
     public class InternalSdlGameControllerButtonBindTest
     {
+        /// <summary>
+        /// Tests that internal sdl game controller button bind default initialization fields have default values
+        /// </summary>
         [Fact]
         public void InternalSdlGameControllerButtonBind_DefaultInitialization_FieldsHaveDefaultValues()
         {
@@ -15,6 +21,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, bind.unionVal1);
         }
 
+        /// <summary>
+        /// Tests that internal sdl game controller button bind is value type copy is independent
+        /// </summary>
         [Fact]
         public void InternalSdlGameControllerButtonBind_IsValueType_CopyIsIndependent()
         {

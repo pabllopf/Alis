@@ -35,11 +35,23 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
+    /// <summary>
+    /// The audio video writer test class
+    /// </summary>
     public class AudioVideoWriterTest
     {
+        /// <summary>
+        /// Gets the value of the default video options
+        /// </summary>
         private static EncoderOptions DefaultVideoOptions => new EncoderOptions { Format = "mp4", EncoderName = "libx264", EncoderArguments = "-crf 23" };
+        /// <summary>
+        /// Gets the value of the default audio options
+        /// </summary>
         private static EncoderOptions DefaultAudioOptions => new EncoderOptions { Format = "mp4", EncoderName = "aac", EncoderArguments = "-b:a 128k" };
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on zero video width
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldThrowOnZeroVideoWidth()
         {
@@ -47,6 +59,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter("out.mp4", 0, 1080, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on negative video width
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldThrowOnNegativeVideoWidth()
         {
@@ -54,6 +69,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter("out.mp4", -1, 1080, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on zero video height
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldThrowOnZeroVideoHeight()
         {
@@ -61,6 +79,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter("out.mp4", 1920, 0, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on negative video height
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldThrowOnNegativeVideoHeight()
         {
@@ -68,6 +89,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter("out.mp4", 1920, -1, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on zero video framerate
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldThrowOnZeroVideoFramerate()
         {
@@ -75,6 +99,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter("out.mp4", 1920, 1080, 0, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on negative video framerate
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldThrowOnNegativeVideoFramerate()
         {
@@ -82,6 +109,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter("out.mp4", 1920, 1080, -1, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on empty filename
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldThrowOnEmptyFilename()
         {
@@ -89,6 +119,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter("", 1920, 1080, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on null filename
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldThrowOnNullFilename()
         {
@@ -96,6 +129,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter((string)null, 1920, 1080, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on zero audio channels
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldThrowOnZeroAudioChannels()
         {
@@ -103,6 +139,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter("out.mp4", 1920, 1080, 30, 0, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on zero audio sample rate
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldThrowOnZeroAudioSampleRate()
         {
@@ -110,6 +149,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter("out.mp4", 1920, 1080, 30, 2, 0, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on invalid audio bit depth
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldThrowOnInvalidAudioBitDepth()
         {
@@ -117,6 +159,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter("out.mp4", 1920, 1080, 30, 2, 44100, 8, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on null stream
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_StreamCtor_ShouldThrowOnNullStream()
         {
@@ -124,6 +169,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 new AudioVideoWriter((Stream)null, 1920, 1080, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on zero width
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_StreamCtor_ShouldThrowOnZeroWidth()
         {
@@ -134,6 +182,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on invalid bit depth
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_StreamCtor_ShouldThrowOnInvalidBitDepth()
         {
@@ -144,6 +195,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that audio video writer close write should throw when not opened
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_CloseWrite_ShouldThrowWhenNotOpened()
         {
@@ -152,6 +206,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidOperationException>(() => writer.CloseWrite());
         }
 
+        /// <summary>
+        /// Tests that audio video writer file ctor should set properties
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_FileCtor_ShouldSetProperties()
         {
@@ -167,6 +224,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal("out.mp4", writer.Filename);
         }
 
+        /// <summary>
+        /// Tests that audio video writer stream ctor should set properties
+        /// </summary>
         [Fact]
         public void AudioVideoWriter_StreamCtor_ShouldSetProperties()
         {

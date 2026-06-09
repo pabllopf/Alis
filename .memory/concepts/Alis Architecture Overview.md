@@ -75,3 +75,26 @@ Alis is a C# game engine/framework with a modular 6-layer architecture and aspec
 - [[Solution Composition]]
 - [[Generator Pattern]]
 - [[Multi-Platform Samples]]
+- [[Build System Configuration]]
+- [[Multi-Targeting Strategy]]
+- [[Platform-Specific Build Constants]]
+
+## Related Architecture
+
+- [[repository-overview]] — Full architecture overview
+- [[architecture/dependency-graph]] — Dependency rules and flow
+- [[build-system]] — Build configuration details
+- [[adr-001-layered-architecture]] — Six-layer ADR
+- [[adr-002-aggregator-pattern]] — Aggregator ADR
+
+## Related Projects
+
+- [[projects/Index]] — Project documentation index
+- [[projects/Architecture]] — Detailed layer documentation
+
+## Related Analysis
+
+- [[testing-overview]] — Testing strategy
+- [[security-overview]] — Security risks
+- [[onboarding/getting-started]] — Developer onboarding
+- [[ai-context]] — AI agent reference

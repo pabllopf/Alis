@@ -94,6 +94,13 @@ namespace Alis.Core.Physic.Common.ConvexHull
             return result;
         }
 
+        /// <summary>
+        /// Finds the next hull index using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="currentHull">The current hull</param>
+        /// <param name="ih">The ih</param>
+        /// <returns>The ie</returns>
         private static int FindNextHullIndex(Vertices vertices, int currentHull, int ih)
         {
             int ie = 0;

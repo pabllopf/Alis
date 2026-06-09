@@ -4,8 +4,14 @@ using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The sdl test class
+    /// </summary>
     public class SdlTest
     {
+        /// <summary>
+        /// Tests that should have correct constant values
+        /// </summary>
         [Fact]
         public void ShouldHaveCorrectConstantValues()
         {
@@ -27,6 +33,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal((ushort)(1 << 15), Sdl.AudioMaskSigned);
         }
 
+        /// <summary>
+        /// Tests that should compute fourcc
+        /// </summary>
         [Fact]
         public void ShouldComputeFourcc()
         {
@@ -35,6 +44,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(expected, result);
         }
 
+        /// <summary>
+        /// Tests that should return gl compiled version
+        /// </summary>
         [Fact]
         public void ShouldReturnGlCompiledVersion()
         {
@@ -42,6 +54,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(2 * 1000 + 0 * 100 + 18, version);
         }
 
+        /// <summary>
+        /// Tests that should return get version
+        /// </summary>
         [Fact]
         public void ShouldReturnGetVersion()
         {
@@ -51,6 +66,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(18, version.patch);
         }
 
+        /// <summary>
+        /// Tests that should compute window pos undefined display
+        /// </summary>
         [Fact]
         public void ShouldComputeWindowPosUndefinedDisplay()
         {
@@ -58,6 +76,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.True((pos & unchecked((int)0xFFFF0000)) != 0);
         }
 
+        /// <summary>
+        /// Tests that should detect window pos is undefined
+        /// </summary>
         [Fact]
         public void ShouldDetectWindowPosIsUndefined()
         {
@@ -66,6 +87,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.WindowPosIsUndefined(100));
         }
 
+        /// <summary>
+        /// Tests that should compute window pos centered display
+        /// </summary>
         [Fact]
         public void ShouldComputeWindowPosCenteredDisplay()
         {
@@ -73,6 +97,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.True((pos & unchecked((int)0xFFFF0000)) != 0);
         }
 
+        /// <summary>
+        /// Tests that should detect window pos is centered
+        /// </summary>
         [Fact]
         public void ShouldDetectWindowPosIsCentered()
         {
@@ -80,6 +107,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.True(Sdl.WindowPosIsCentered(pos));
             Assert.False(Sdl.WindowPosIsCentered(200));
         }
+        /// <summary>
+        /// Tests that should compute audio bit size
+        /// </summary>
         [Fact]
         public void ShouldComputeAudioBitSize()
         {
@@ -87,6 +117,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal((ushort)0x08, Sdl.SdlAudioBitSize(0x0108));
         }
 
+        /// <summary>
+        /// Tests that should detect audio is float
+        /// </summary>
         [Fact]
         public void ShouldDetectAudioIsFloat()
         {
@@ -94,6 +127,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.SdlAudioIsFloat(0x0000));
         }
 
+        /// <summary>
+        /// Tests that should detect audio is big endian
+        /// </summary>
         [Fact]
         public void ShouldDetectAudioIsBigEndian()
         {
@@ -101,6 +137,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.SdlAudioIsBigEndian(0x0000));
         }
 
+        /// <summary>
+        /// Tests that should detect audio is signed
+        /// </summary>
         [Fact]
         public void ShouldDetectAudioIsSigned()
         {
@@ -108,6 +147,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.SdlAudioIsSigned(0x0000));
         }
 
+        /// <summary>
+        /// Tests that should detect audio is int
+        /// </summary>
         [Fact]
         public void ShouldDetectAudioIsInt()
         {
@@ -115,6 +157,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.SdlAudioIsInt(0x0100));
         }
 
+        /// <summary>
+        /// Tests that should detect audio is little endian
+        /// </summary>
         [Fact]
         public void ShouldDetectAudioIsLittleEndian()
         {
@@ -122,6 +167,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.SdlAudioIsLittleEndian(0x1000));
         }
 
+        /// <summary>
+        /// Tests that should detect audio is unsigned
+        /// </summary>
         [Fact]
         public void ShouldDetectAudioIsUnsigned()
         {
@@ -129,6 +177,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.SdlAudioIsUnsigned(0x8000));
         }
 
+        /// <summary>
+        /// Tests that should define pixel fourcc
+        /// </summary>
         [Fact]
         public void ShouldDefinePixelFourcc()
         {

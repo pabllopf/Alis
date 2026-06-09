@@ -129,3 +129,28 @@ Aspect implementations with source generators:
 - [[Alis.Core.Physic]] - 2D physics engine
 - [[Alis.Core.Aspect.Fluent]] - Fluent builder API
 - [[Alis.Core.Aspect.Math]] - Math primitives
+
+## Related Architecture
+
+- [[Layered Architecture]] — Layer structure details
+- [[Aspect-Oriented Design]] — AOP foundation
+- [[Generator Pattern]] — Source generator architecture
+- [[adr-001-layered-architecture]] — ADR for six-layer design
+- [[adr-002-aggregator-pattern]] — ADR for aggregator pattern
+- [[build-system]] — Build configuration
+- [[architecture-overview]] — Mermaid architecture diagrams
+- [[build-summary]] — Build system summary
+
+## Related Indexes
+
+- [[project-index]] — All 140 projects
+- [[layer-index]] — Layer breakdown
+- [[dependency-index]] — Dependency graph
+- [[architecture-index]] — Architectural patterns
+- [[domains-index]] — Bounded contexts
+
+## Related Analysis
+
+- [[testing-overview]] — Test coverage
+- [[security-overview]] — Security analysis
+- [[repository-overview]] — Package-level overview

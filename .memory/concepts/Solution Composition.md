@@ -24,3 +24,13 @@ dotnet test alis.test.slnx    # Run tests
 
 ## See Also
 - [[Layered Architecture]]
+- [[Alis Architecture Overview]]
+- [[Multi-Platform Samples]]
+- [[Build System Configuration]]
+
+## Related Architecture
+
+- [[build-system]] — Build commands and structure
+- [[build-summary]] — Build pipeline overview
+- [[projects/Index]] — Project structure in solutions
+- [[project-index]] — All projects by solution

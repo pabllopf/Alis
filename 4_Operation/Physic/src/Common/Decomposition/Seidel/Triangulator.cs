@@ -136,6 +136,11 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
             CreateMountains();
         }
 
+        /// <summary>
+        /// Processes the trapezoid using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        /// <param name="edge">The edge</param>
         private void ProcessTrapezoid(Trapezoid t, Edge edge)
         {
             _trapezoidalMap.Map.Remove(t);

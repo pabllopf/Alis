@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The controller touchpad event test class
+    /// </summary>
     public class ControllerTouchpadEventTest
     {
+        /// <summary>
+        /// Tests that controller touchpad event default initialization fields have default values
+        /// </summary>
         [Fact]
         public void ControllerTouchpadEvent_DefaultInitialization_FieldsHaveDefaultValues()
         {
@@ -20,6 +26,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0f, ev.pressure);
         }
 
+        /// <summary>
+        /// Tests that controller touchpad event set fields stores values correctly
+        /// </summary>
         [Fact]
         public void ControllerTouchpadEvent_SetFields_StoresValuesCorrectly()
         {
@@ -45,6 +54,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0.9f, ev.pressure);
         }
 
+        /// <summary>
+        /// Tests that controller touchpad event is value type copy is independent
+        /// </summary>
         [Fact]
         public void ControllerTouchpadEvent_IsValueType_CopyIsIndependent()
         {
@@ -57,6 +69,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(99, copy.finger);
         }
 
+        /// <summary>
+        /// Tests that controller touchpad event with negative coordinates stores correctly
+        /// </summary>
         [Fact]
         public void ControllerTouchpadEvent_WithNegativeCoordinates_StoresCorrectly()
         {

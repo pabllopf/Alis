@@ -44,6 +44,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // =====================================================================
 
         
+        /// <summary>
+        /// Webs the assembly platform integration get platform valid name returns instance using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
         [InlineData("WebAssembly")]
         [InlineData("Web")]
         [InlineData("Emscripten")]
@@ -55,6 +59,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.IsType<WebAssemblyPlatform>(platform);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform integration get platform invalid name throws
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatformIntegration_GetPlatform_InvalidName_Throws()
         {
@@ -62,6 +69,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 WebAssemblyPlatformIntegration.GetPlatform("InvalidPlatform"));
         }
 
+        /// <summary>
+        /// Tests that web assembly platform integration get supported platforms returns names
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatformIntegration_GetSupportedPlatforms_ReturnsNames()
         {
@@ -73,6 +83,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Contains("WASM", platforms);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform integration register platform invalid type throws
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatformIntegration_RegisterPlatform_InvalidType_Throws()
         {
@@ -80,6 +93,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 WebAssemblyPlatformIntegration.RegisterPlatform("Custom", typeof(string)));
         }
 
+        /// <summary>
+        /// Tests that web assembly platform integration create optimized platform default returns instance
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatformIntegration_CreateOptimizedPlatform_Default_ReturnsInstance()
         {
@@ -89,18 +105,27 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
         // =====================================================================
 
+        /// <summary>
+        /// Tests that system info get platform name returns web assembly
+        /// </summary>
         [Fact]
         public void SystemInfo_GetPlatformName_ReturnsWebAssembly()
         {
             Assert.Equal("WebAssembly", SystemInfo.PlatformName);
         }
 
+        /// <summary>
+        /// Tests that system info is online returns false on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_IsOnline_ReturnsFalseOnNonBrowser()
         {
             Assert.False(SystemInfo.IsOnline());
         }
 
+        /// <summary>
+        /// Tests that system info get language returns default on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_GetLanguage_ReturnsDefaultOnNonBrowser()
         {
@@ -108,6 +133,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("en", lang);
         }
 
+        /// <summary>
+        /// Tests that system info get device pixel ratio returns default on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
         {
@@ -115,6 +143,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1.0f, ratio);
         }
 
+        /// <summary>
+        /// Tests that system info get battery level returns default on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
         {
@@ -122,12 +153,18 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(-1.0f, level);
         }
 
+        /// <summary>
+        /// Tests that system info is charging returns false on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_IsCharging_ReturnsFalseOnNonBrowser()
         {
             Assert.False(SystemInfo.IsCharging());
         }
 
+        /// <summary>
+        /// Tests that system info get screen orientation returns default on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_GetScreenOrientation_ReturnsDefaultOnNonBrowser()
         {
@@ -135,6 +172,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1, orientation);
         }
 
+        /// <summary>
+        /// Tests that system info get system time ms returns zero on non browser
+        /// </summary>
         [Fact]
         public void SystemInfo_GetSystemTimeMs_ReturnsZeroOnNonBrowser()
         {
@@ -142,24 +182,36 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0, time);
         }
 
+        /// <summary>
+        /// Tests that system info log to console does not throw
+        /// </summary>
         [Fact]
         public void SystemInfo_LogToConsole_DoesNotThrow()
         {
             SystemInfo.LogToConsole("test");
         }
 
+        /// <summary>
+        /// Tests that system info warn to console does not throw
+        /// </summary>
         [Fact]
         public void SystemInfo_WarnToConsole_DoesNotThrow()
         {
             SystemInfo.WarnToConsole("test");
         }
 
+        /// <summary>
+        /// Tests that system info error to console does not throw
+        /// </summary>
         [Fact]
         public void SystemInfo_ErrorToConsole_DoesNotThrow()
         {
             SystemInfo.ErrorToConsole("test");
         }
 
+        /// <summary>
+        /// Tests that quick start log platform info does not throw
+        /// </summary>
         [Fact]
         public void QuickStart_LogPlatformInfo_DoesNotThrow()
         {

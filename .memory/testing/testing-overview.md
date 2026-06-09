@@ -39,3 +39,16 @@
 - Platform-specific timing issues
 - Native binding initialization races
 - Multi-threaded ECS updates
+
+## Related
+
+- [[testing/analysis]] — Detailed testing patterns
+- [[tests-index]] — All test projects indexed
+- [[code-review-checklist]] — Testing checklist
+- [[coverage-map]] — Test coverage tracking
+- [[projects/Testing-Strategy]] — Testing strategy doc
+- [[Alis.Core.Ecs.Test]] — ECS test documentation
+- [[Alis.Core.Graphic.Test]] — Graphic test documentation
+- [[onboarding/getting-started]] — Running tests guide
+- [[build-system]] — Test commands
+- [[build-summary]] — Test pipeline

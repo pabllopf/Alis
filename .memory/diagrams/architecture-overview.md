@@ -236,3 +236,14 @@ graph LR
     EXT_THREAD --> APP_CORE
     EXT_MEDIA --> APP_CORE
 ```
+
+## Related
+
+- [[diagrams/dependency-graph]] — Dependency visualization
+- [[architecture/dependency-graph]] — Dependency rules
+- [[architecture/repository-overview]] — Full architecture
+- [[Alis Architecture Overview]] — Architecture concepts
+- [[Layered Architecture]] — Layer structure
+- [[adr-001-layered-architecture]] — Architecture decisions
+- [[build-system]] — Build flow
+- [[project-index]] — All projects in diagrams

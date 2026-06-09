@@ -226,6 +226,14 @@ namespace Alis.Core.Physic.Dynamics
             ContactPoolList.Next = contact;
         }
 
+        /// <summary>
+        /// Notifies the separation using the specified fixture a
+        /// </summary>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="contact">The contact</param>
         private static void NotifySeparation(Fixture fixtureA, Fixture fixtureB, Body bodyA, Body bodyB, Contact contact)
         {
             OnSeparationEventHandler onFixtureSeparationHandlerA = fixtureA.OnSeparation;
@@ -253,6 +261,12 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Removes the from world using the specified contact
+        /// </summary>
+        /// <param name="contact">The contact</param>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
         private void RemoveFromWorld(Contact contact, Body bodyA, Body bodyB)
         {
             // Remove from the world.
@@ -265,6 +279,13 @@ namespace Alis.Core.Physic.Dynamics
             RemoveFromBody(contact.NodeA, contact.NodeB, bodyA, bodyB);
         }
 
+        /// <summary>
+        /// Removes the from body using the specified node a
+        /// </summary>
+        /// <param name="nodeA">The node</param>
+        /// <param name="nodeB">The node</param>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
         private static void RemoveFromBody(ContactEdge nodeA, ContactEdge nodeB, Body bodyA, Body bodyB)
         {
             if (nodeA == bodyA.ContactList)
@@ -354,6 +375,10 @@ namespace Alis.Core.Physic.Dynamics
             return collide;
         }
 
+        /// <summary>
+        /// Inserts the contact into world using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
         private void InsertContactIntoWorld(Contact c)
         {
             c.Prev = ContactList;
@@ -363,6 +388,12 @@ namespace Alis.Core.Physic.Dynamics
             ContactCount++;
         }
 
+        /// <summary>
+        /// Connects the contact to body a using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
         private static void ConnectContactToBodyA(Contact c, Body bodyA, Body bodyB)
         {
             c.NodeA.Contact = c;
@@ -377,6 +408,12 @@ namespace Alis.Core.Physic.Dynamics
             bodyA.ContactList = c.NodeA;
         }
 
+        /// <summary>
+        /// Connects the contact to body b using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
         private static void ConnectContactToBodyB(Contact c, Body bodyA, Body bodyB)
         {
             c.NodeB.Contact = c;
@@ -391,6 +428,13 @@ namespace Alis.Core.Physic.Dynamics
             bodyB.ContactList = c.NodeB;
         }
 
+        /// <summary>
+        /// Wakes the bodies on contact using the specified fixture a
+        /// </summary>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
         private static void WakeBodiesOnContact(Fixture fixtureA, Fixture fixtureB, Body bodyA, Body bodyB)
         {
             if (fixtureA.GetIsSensor || fixtureB.GetIsSensor)
@@ -402,6 +446,16 @@ namespace Alis.Core.Physic.Dynamics
             bodyB.Awake = true;
         }
 
+        /// <summary>
+        /// Contacts the already exists using the specified body a
+        /// </summary>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <param name="indexA">The index</param>
+        /// <param name="indexB">The index</param>
+        /// <returns>The bool</returns>
         private static bool ContactAlreadyExists(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB, int indexA, int indexB)
         {
             for (ContactEdge ceB = bodyB.ContactList; ceB != null; ceB = ceB.Next)
@@ -430,6 +484,14 @@ namespace Alis.Core.Physic.Dynamics
             return false;
         }
 
+        /// <summary>
+        /// Passeses the collision filters using the specified body a
+        /// </summary>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <returns>The bool</returns>
         private bool PassesCollisionFilters(Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB)
         {
             if (!bodyB.ShouldCollide(bodyA))
@@ -463,6 +525,11 @@ namespace Alis.Core.Physic.Dynamics
             return true;
         }
 
+        /// <summary>
+        /// Processes the contact collision using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The contact</returns>
         private Contact ProcessContactCollision(Contact c)
         {
             Fixture fixtureA = c.FixtureA;
@@ -504,6 +571,12 @@ namespace Alis.Core.Physic.Dynamics
             return c.Next;
         }
 
+        /// <summary>
+        /// Processes the contact multi core using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <param name="lockOrder">The lock order</param>
+        /// <returns>The contact</returns>
         private Contact ProcessContactMultiCore(Contact c, ref int lockOrder)
         {
             Fixture fixtureA = c.FixtureA;
@@ -547,6 +620,15 @@ namespace Alis.Core.Physic.Dynamics
             return c.Next;
         }
 
+        /// <summary>
+        /// Tries the resolve contact filter using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <returns>The bool</returns>
         private bool TryResolveContactFilter(ref Contact c, Body bodyA, Body bodyB, Fixture fixtureA, Fixture fixtureB)
         {
             if (!c.FilterFlag)
@@ -583,6 +665,11 @@ namespace Alis.Core.Physic.Dynamics
             return false;
         }
 
+        /// <summary>
+        /// Updates the contact with lock using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <exception cref="InvalidOperationException">Bodies cannot have the same lock order.</exception>
         private void UpdateContactWithLock(Contact c)
         {
             Fixture fixtureA = c.FixtureA;
@@ -611,6 +698,11 @@ namespace Alis.Core.Physic.Dynamics
             Interlocked.Exchange(ref orderedBodyA.Lock, 0);
         }
 
+        /// <summary>
+        /// Acquires the locks using the specified body a
+        /// </summary>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
         private static void AcquireLocks(Body bodyA, Body bodyB)
         {
             while (true)

@@ -201,6 +201,17 @@ namespace Alis.Core.Physic.Collisions
             ResolveBarycentricContact(ref manifold, cLocal, v1, v2, radius, polygonA, vertIndex1, circleB);
         }
 
+        /// <summary>
+        /// Resolves the barycentric contact using the specified manifold
+        /// </summary>
+        /// <param name="manifold">The manifold</param>
+        /// <param name="cLocal">The local</param>
+        /// <param name="v1">The </param>
+        /// <param name="v2">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="polygonA">The polygon</param>
+        /// <param name="vertIndex1">The vert index</param>
+        /// <param name="circleB">The circle</param>
         private static void ResolveBarycentricContact(ref Manifold manifold, Vector2F cLocal, Vector2F v1, Vector2F v2, float radius, PolygonShape polygonA, int vertIndex1, CircleShape circleB)
         {
             float u1 = (cLocal.X - v1.X) * (v2.X - v1.X) + (cLocal.Y - v1.Y) * (v2.Y - v1.Y);
@@ -241,6 +252,13 @@ namespace Alis.Core.Physic.Collisions
             }
         }
 
+        /// <summary>
+        /// Setup the face a manifold using the specified manifold
+        /// </summary>
+        /// <param name="manifold">The manifold</param>
+        /// <param name="normal">The normal</param>
+        /// <param name="localPoint">The local point</param>
+        /// <param name="circlePosition">The circle position</param>
         private static void SetupFaceAManifold(ref Manifold manifold, Vector2F normal, Vector2F localPoint, Vector2F circlePosition)
         {
             manifold.PointCount = 1;
@@ -254,6 +272,13 @@ namespace Alis.Core.Physic.Collisions
             manifold.Points[0] = p0;
         }
 
+        /// <summary>
+        /// Setup the vertex a manifold using the specified manifold
+        /// </summary>
+        /// <param name="manifold">The manifold</param>
+        /// <param name="rawNormal">The raw normal</param>
+        /// <param name="localPoint">The local point</param>
+        /// <param name="circlePosition">The circle position</param>
         private static void SetupVertexAManifold(ref Manifold manifold, Vector2F rawNormal, Vector2F localPoint, Vector2F circlePosition)
         {
             manifold.PointCount = 1;
@@ -530,6 +555,13 @@ namespace Alis.Core.Physic.Collisions
             manifold.Points[0] = mp2;
         }
 
+        /// <summary>
+        /// Ises the circle in previous edge region using the specified edge a
+        /// </summary>
+        /// <param name="edgeA">The edge</param>
+        /// <param name="q">The </param>
+        /// <param name="a">The </param>
+        /// <returns>The bool</returns>
         private static bool IsCircleInPreviousEdgeRegion(EdgeShape edgeA, Vector2F q, Vector2F a)
         {
             if (!edgeA.HasVertex0)
@@ -545,6 +577,13 @@ namespace Alis.Core.Physic.Collisions
             return u1 > 0.0f;
         }
 
+        /// <summary>
+        /// Ises the circle in next edge region using the specified edge a
+        /// </summary>
+        /// <param name="edgeA">The edge</param>
+        /// <param name="q">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The bool</returns>
         private static bool IsCircleInNextEdgeRegion(EdgeShape edgeA, Vector2F q, Vector2F b)
         {
             if (!edgeA.HasVertex3)
@@ -721,9 +760,36 @@ namespace Alis.Core.Physic.Collisions
             return FindBestEdge(poly1, ref xf1To2, edge, s, poly2, prevEdge, sPrev, nextEdge, sNext, count1, out edgeIndex);
         }
 
+        /// <summary>
+        /// Gets the prev edge using the specified edge
+        /// </summary>
+        /// <param name="edge">The edge</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int</returns>
         private static int GetPrevEdge(int edge, int count) => edge - 1 >= 0 ? edge - 1 : count - 1;
+        /// <summary>
+        /// Gets the next edge using the specified edge
+        /// </summary>
+        /// <param name="edge">The edge</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int</returns>
         private static int GetNextEdge(int edge, int count) => edge + 1 < count ? edge + 1 : 0;
 
+        /// <summary>
+        /// Finds the best edge using the specified poly 1
+        /// </summary>
+        /// <param name="poly1">The poly</param>
+        /// <param name="xf1To2">The xf to</param>
+        /// <param name="edge">The edge</param>
+        /// <param name="s">The </param>
+        /// <param name="poly2">The poly</param>
+        /// <param name="prevEdge">The prev edge</param>
+        /// <param name="sPrev">The prev</param>
+        /// <param name="nextEdge">The next edge</param>
+        /// <param name="sNext">The next</param>
+        /// <param name="count1">The count</param>
+        /// <param name="edgeIndex">The edge index</param>
+        /// <returns>The float</returns>
         private static float FindBestEdge(PolygonShape poly1, ref ControllerTransform xf1To2, int edge, float s,
             PolygonShape poly2, int prevEdge, float sPrev, int nextEdge, float sNext, int count1, out int edgeIndex)
         {
@@ -752,6 +818,18 @@ namespace Alis.Core.Physic.Collisions
             return LocalSearch(poly1, ref xf1To2, poly2, count1, bestEdge, bestSeparation, increment, out edgeIndex);
         }
 
+        /// <summary>
+        /// Locals the search using the specified poly 1
+        /// </summary>
+        /// <param name="poly1">The poly</param>
+        /// <param name="xf1To2">The xf to</param>
+        /// <param name="poly2">The poly</param>
+        /// <param name="count1">The count</param>
+        /// <param name="bestEdge">The best edge</param>
+        /// <param name="bestSeparation">The best separation</param>
+        /// <param name="increment">The increment</param>
+        /// <param name="edgeIndex">The edge index</param>
+        /// <returns>The best separation</returns>
         private static float LocalSearch(PolygonShape poly1, ref ControllerTransform xf1To2,
             PolygonShape poly2, int count1, int bestEdge, float bestSeparation, int increment, out int edgeIndex)
         {
@@ -1211,21 +1289,60 @@ namespace Alis.Core.Physic.Collisions
                 return (SelectBackLowerLimit(i, neg), SelectBackUpperLimit(i, neg));
             }
 
+            /// <summary>
+            /// Ises the front any using the specified a
+            /// </summary>
+            /// <param name="a">The </param>
+            /// <param name="b">The </param>
+            /// <param name="c">The </param>
+            /// <returns>The bool</returns>
             private static bool IsFrontAny(float a, float b, float c) =>
                 (a >= 0.0f) || (b >= 0.0f) || (c >= 0.0f);
 
+            /// <summary>
+            /// Ises the front first or both using the specified a
+            /// </summary>
+            /// <param name="a">The </param>
+            /// <param name="b">The </param>
+            /// <param name="c">The </param>
+            /// <returns>The bool</returns>
             private static bool IsFrontFirstOrBoth(float a, float b, float c) =>
                 (a >= 0.0f) || ((b >= 0.0f) && (c >= 0.0f));
 
+            /// <summary>
+            /// Ises the front last or both using the specified a
+            /// </summary>
+            /// <param name="a">The </param>
+            /// <param name="b">The </param>
+            /// <param name="c">The </param>
+            /// <returns>The bool</returns>
             private static bool IsFrontLastOrBoth(float a, float b, float c) =>
                 (c >= 0.0f) || ((a >= 0.0f) && (b >= 0.0f));
 
+            /// <summary>
+            /// Ises the front all using the specified a
+            /// </summary>
+            /// <param name="a">The </param>
+            /// <param name="b">The </param>
+            /// <param name="c">The </param>
+            /// <returns>The bool</returns>
             private static bool IsFrontAll(float a, float b, float c) =>
                 (a >= 0.0f) && (b >= 0.0f) && (c >= 0.0f);
 
+            /// <summary>
+            /// Ises the front both using the specified a
+            /// </summary>
+            /// <param name="a">The </param>
+            /// <param name="b">The </param>
+            /// <returns>The bool</returns>
             private static bool IsFrontBoth(float a, float b) =>
                 (a >= 0.0f) && (b >= 0.0f);
 
+            /// <summary>
+            /// Selects the front lower limit using the specified i
+            /// </summary>
+            /// <param name="i">The </param>
+            /// <returns>The vector</returns>
             private static Vector2F SelectFrontLowerLimit(CollisionNormalInputs i)
             {
                 if (i.HasVertex0 && i.HasVertex3) return i.Convex1 ? i.Normal0 : i.Normal1;
@@ -1233,6 +1350,11 @@ namespace Alis.Core.Physic.Collisions
                 return i.Normal1;
             }
 
+            /// <summary>
+            /// Selects the front upper limit using the specified i
+            /// </summary>
+            /// <param name="i">The </param>
+            /// <returns>The vector</returns>
             private static Vector2F SelectFrontUpperLimit(CollisionNormalInputs i)
             {
                 if (i.HasVertex0 && i.HasVertex3) return i.Convex1 && !i.Convex2 ? i.Normal1 : i.Normal2;
@@ -1240,6 +1362,12 @@ namespace Alis.Core.Physic.Collisions
                 return i.Normal2;
             }
 
+            /// <summary>
+            /// Selects the back lower limit using the specified i
+            /// </summary>
+            /// <param name="i">The </param>
+            /// <param name="neg">The neg</param>
+            /// <returns>The vector</returns>
             private static Vector2F SelectBackLowerLimit(CollisionNormalInputs i, Vector2F neg)
             {
                 if (i.HasVertex0 && i.HasVertex3) return i.Convex1 && !i.Convex2 ? -i.Normal2 : neg;
@@ -1247,6 +1375,12 @@ namespace Alis.Core.Physic.Collisions
                 return -i.Normal2;
             }
 
+            /// <summary>
+            /// Selects the back upper limit using the specified i
+            /// </summary>
+            /// <param name="i">The </param>
+            /// <param name="neg">The neg</param>
+            /// <returns>The vector</returns>
             private static Vector2F SelectBackUpperLimit(CollisionNormalInputs i, Vector2F neg)
             {
                 if (i.HasVertex0 && i.HasVertex3) return i.Convex1 ? neg : -i.Normal0;
@@ -1286,6 +1420,14 @@ namespace Alis.Core.Physic.Collisions
                 }
             }
 
+            /// <summary>
+            /// Selects the primary axis using the specified polygon axis
+            /// </summary>
+            /// <param name="polygonAxis">The polygon axis</param>
+            /// <param name="edgeAxis">The edge axis</param>
+            /// <param name="kRelativeTol">The relative tol</param>
+            /// <param name="kAbsoluteTol">The absolute tol</param>
+            /// <returns>The edge axis</returns>
             private static EpAxis SelectPrimaryAxis(EpAxis polygonAxis, EpAxis edgeAxis, float kRelativeTol, float kAbsoluteTol)
             {
                 if (polygonAxis.Type == EpAxisType.Unknown)
@@ -1301,6 +1443,18 @@ namespace Alis.Core.Physic.Collisions
                 return edgeAxis;
             }
 
+            /// <summary>
+            /// Builds the edge a manifold using the specified manifold
+            /// </summary>
+            /// <param name="manifold">The manifold</param>
+            /// <param name="ie">The ie</param>
+            /// <param name="rf">The rf</param>
+            /// <param name="tempPolygonB">The temp polygon</param>
+            /// <param name="normal">The normal</param>
+            /// <param name="normal1">The normal</param>
+            /// <param name="v1">The </param>
+            /// <param name="v2">The </param>
+            /// <param name="front">The front</param>
             private static void BuildEdgeAManifold(ref Manifold manifold, ref FixedArray2<ClipVertex> ie, out ReferenceFace rf,
                 ref TempPolygon tempPolygonB, Vector2F normal, Vector2F normal1, Vector2F v1, Vector2F v2, bool front)
             {
@@ -1357,6 +1511,16 @@ namespace Alis.Core.Physic.Collisions
                 }
             }
 
+            /// <summary>
+            /// Builds the face b manifold using the specified manifold
+            /// </summary>
+            /// <param name="manifold">The manifold</param>
+            /// <param name="ie">The ie</param>
+            /// <param name="rf">The rf</param>
+            /// <param name="tempPolygonB">The temp polygon</param>
+            /// <param name="primaryAxis">The primary axis</param>
+            /// <param name="v1">The </param>
+            /// <param name="v2">The </param>
             private static void BuildFaceBManifold(ref Manifold manifold, ref FixedArray2<ClipVertex> ie, out ReferenceFace rf,
                 ref TempPolygon tempPolygonB, EpAxis primaryAxis, Vector2F v1, Vector2F v2)
             {

@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal wayland wm info test class
+    /// </summary>
     public class InternalWaylandWmInfoTest
     {
+        /// <summary>
+        /// Tests that internal wayland wm info default initialization properties have default values
+        /// </summary>
         [Fact]
         public void InternalWaylandWmInfo_DefaultInitialization_PropertiesHaveDefaultValues()
         {
@@ -19,6 +25,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, info.XdgToplevel);
         }
 
+        /// <summary>
+        /// Tests that internal wayland wm info set properties stores values correctly
+        /// </summary>
         [Fact]
         public void InternalWaylandWmInfo_SetProperties_StoresValuesCorrectly()
         {
@@ -40,6 +49,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(new IntPtr(6), info.XdgToplevel);
         }
 
+        /// <summary>
+        /// Tests that internal wayland wm info is value type copy is independent
+        /// </summary>
         [Fact]
         public void InternalWaylandWmInfo_IsValueType_CopyIsIndependent()
         {

@@ -61,3 +61,15 @@ Directory.Build.props automatically exposes internals to test projects:
 - ❌ Testing aggregator projects (they have no logic)
 - ❌ Cross-layer integration tests that depend on specific implementations
 - ❌ Missing tests for source generator edge cases
+
+## Related
+
+- [[testing-overview]] — High-level test coverage
+- [[tests-index]] — All test projects indexed
+- [[code-review-checklist]] — Test review checklist
+- [[projects/Testing-Strategy]] — Testing strategy docs
+- [[Alis.Sample]] — Sample game testing
+- [[onboarding/getting-started]] — Running tests
+- [[build-system]] — Test commands
+- [[analysis-state]] — Test analysis progress
+- [[indexes-summary]] — All indexes overview

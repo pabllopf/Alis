@@ -39,6 +39,10 @@ namespace Alis.Extension.Cloud.DropBox.Test
     /// </summary>
     public class DropBoxCloudManagerDisposeTest
     {
+        /// <summary>
+        /// Creates the mock context
+        /// </summary>
+        /// <returns>The context</returns>
         private static Context CreateMockContext() => new Context();
 
         #region Dispose Pattern Tests

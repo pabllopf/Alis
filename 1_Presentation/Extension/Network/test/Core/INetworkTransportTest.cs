@@ -40,28 +40,66 @@ namespace Alis.Extension.Network.Test.Core
     /// </summary>
     public class INetworkTransportTest
     {
+        /// <summary>
+        /// The test network transport class
+        /// </summary>
+        /// <seealso cref="INetworkTransport"/>
         private class TestNetworkTransport : INetworkTransport
         {
+            /// <summary>
+            /// Gets the value of the state
+            /// </summary>
             public NetworkTransportState State => NetworkTransportState.Disconnected;
             
+            /// <summary>
+            /// Sends the client id
+            /// </summary>
+            /// <param name="clientId">The client id</param>
+            /// <param name="message">The message</param>
+            /// <param name="cancellationToken">The cancellation token</param>
             public Task SendAsync(string clientId, NetworkMessageEnvelope message, CancellationToken cancellationToken = default)
                 => Task.CompletedTask;
             
+            /// <summary>
+            /// Broadcasts the message
+            /// </summary>
+            /// <param name="message">The message</param>
+            /// <param name="exceptClientId">The except client id</param>
+            /// <param name="cancellationToken">The cancellation token</param>
             public Task BroadcastAsync(NetworkMessageEnvelope message, string exceptClientId = null, CancellationToken cancellationToken = default)
                 => Task.CompletedTask;
             
+            /// <summary>
+            /// Receives the cancellation token
+            /// </summary>
+            /// <param name="cancellationToken">The cancellation token</param>
+            /// <returns>A task containing the string client id network message envelope message</returns>
             public Task<(string ClientId, NetworkMessageEnvelope Message)> ReceiveAsync(CancellationToken cancellationToken = default)
                 => Task.FromResult(("client1", new NetworkMessageEnvelope(){ }));
             
+            /// <summary>
+            /// Starts the cancellation token
+            /// </summary>
+            /// <param name="cancellationToken">The cancellation token</param>
             public Task StartAsync(CancellationToken cancellationToken = default)
                 => Task.CompletedTask;
             
+            /// <summary>
+            /// Stops the cancellation token
+            /// </summary>
+            /// <param name="cancellationToken">The cancellation token</param>
             public Task StopAsync(CancellationToken cancellationToken = default)
                 => Task.CompletedTask;
             
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose() { }
         }
 
+        /// <summary>
+        /// Tests that state returns disconnected state
+        /// </summary>
         [Fact]
         public void State_ReturnsDisconnectedState()
         {
@@ -75,6 +113,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, result);
         }
 
+        /// <summary>
+        /// Tests that send async completes successfully
+        /// </summary>
         [Fact]
         public void SendAsync_CompletesSuccessfully()
         {
@@ -90,6 +131,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TaskStatus.RanToCompletion, result.Status);
         }
 
+        /// <summary>
+        /// Tests that broadcast async completes successfully
+        /// </summary>
         [Fact]
         public void BroadcastAsync_CompletesSuccessfully()
         {
@@ -105,6 +149,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TaskStatus.RanToCompletion, result.Status);
         }
 
+        /// <summary>
+        /// Tests that receive async returns message
+        /// </summary>
         [Fact]
         public void ReceiveAsync_ReturnsMessage()
         {
@@ -123,6 +170,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.NotNull(message);
         }
 
+        /// <summary>
+        /// Tests that start async completes successfully
+        /// </summary>
         [Fact]
         public void StartAsync_CompletesSuccessfully()
         {
@@ -137,6 +187,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TaskStatus.RanToCompletion, result.Status);
         }
 
+        /// <summary>
+        /// Tests that stop async completes successfully
+        /// </summary>
         [Fact]
         public void StopAsync_CompletesSuccessfully()
         {
@@ -151,6 +204,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TaskStatus.RanToCompletion, result.Status);
         }
 
+        /// <summary>
+        /// Tests that dispose cleans up resources
+        /// </summary>
         [Fact]
         public void Dispose_CleansUpResources()
         {

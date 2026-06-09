@@ -833,6 +833,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
             return (linearError <= SettingEnv.LinearSlop) && (angularError <= SettingEnv.AngularSlop);
         }
 
+        /// <summary>
+        /// Computes the motor jacobian using the specified q a
+        /// </summary>
+        /// <param name="qA">The </param>
+        /// <param name="d">The </param>
+        /// <param name="rA">The </param>
+        /// <param name="rB">The </param>
+        /// <param name="mA">The </param>
+        /// <param name="mB">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="iB">The </param>
         private void ComputeMotorJacobian(ref Complex qA, Vector2F d, Vector2F rA, Vector2F rB, float mA, float mB, float iA, float iB)
         {
             _axis = Complex.Multiply(ref _localXAxis, ref qA);
@@ -846,6 +857,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
         }
 
+        /// <summary>
+        /// Computes the prismatic constraint using the specified q a
+        /// </summary>
+        /// <param name="qA">The </param>
+        /// <param name="d">The </param>
+        /// <param name="rA">The </param>
+        /// <param name="rB">The </param>
+        /// <param name="mA">The </param>
+        /// <param name="mB">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="iB">The </param>
         private void ComputePrismaticConstraint(ref Complex qA, Vector2F d, Vector2F rA, Vector2F rB, float mA, float mB, float iA, float iB)
         {
             _perp = Complex.Multiply(ref _localYAxisA, ref qA);
@@ -871,6 +893,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             k.Ez = new Vector3F(k13, k23, k33);
         }
 
+        /// <summary>
+        /// Applies the limit state using the specified d
+        /// </summary>
+        /// <param name="d">The </param>
         private void ApplyLimitState(Vector2F d)
         {
             float jointTranslation = Vector2F.Dot(_axis, d);

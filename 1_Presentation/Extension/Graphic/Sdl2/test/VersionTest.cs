@@ -37,6 +37,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class VersionTest
     {
+        /// <summary>
+        /// Tests that should set fields through constructor
+        /// </summary>
         [Fact]
         public void ShouldSetFieldsThroughConstructor()
         {
@@ -48,6 +51,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(1, version.patch);
         }
 
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {
@@ -59,6 +65,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, version.patch);
         }
 
+        /// <summary>
+        /// Tests that should truncate values exceeding byte
+        /// </summary>
         [Fact]
         public void ShouldTruncateValuesExceedingByte()
         {

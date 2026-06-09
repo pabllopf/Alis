@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The cursor test class
+    /// </summary>
     public class CursorTest
     {
+        /// <summary>
+        /// Tests that cursor type has expected values
+        /// </summary>
         [Fact]
         public void CursorType_HasExpectedValues()
         {

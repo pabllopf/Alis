@@ -1047,6 +1047,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             return false;
         }
 
+        /// <summary>
+        /// Legalizes the edge using the specified tcx
+        /// </summary>
+        /// <param name="tcx">The tcx</param>
+        /// <param name="t">The </param>
+        /// <param name="i">The </param>
+        /// <returns>The bool</returns>
         private static bool LegalizeEdge(DtSweepContext tcx, DelaunayTriangle t, int i)
         {
             DelaunayTriangle ot = t.Neighbors[i];

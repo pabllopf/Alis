@@ -73,6 +73,9 @@ namespace Alis.App.Engine
         /// </summary>
         private bool showConsole;
 
+        /// <summary>
+        /// The imgui context
+        /// </summary>
         private IntPtr imguiContext;
         
         /// <summary>
@@ -284,6 +287,9 @@ namespace Alis.App.Engine
             platform.Cleanup();
         }
 
+        /// <summary>
+        /// Initializes the engine
+        /// </summary>
         private void InitializeEngine()
         {
             if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
@@ -320,6 +326,9 @@ namespace Alis.App.Engine
             dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
         }
 
+        /// <summary>
+        /// Setup the open gl context
+        /// </summary>
         private void SetupOpenGLContext()
         {
             platform.MakeContextCurrent();
@@ -328,6 +337,9 @@ namespace Alis.App.Engine
             Gl.GlEnable(EnableCap.DepthTest);
         }
 
+        /// <summary>
+        /// Setup the im gui backend
+        /// </summary>
         private void SetupImGuiBackend()
         {
             imguiContext= ImGui.CreateContext();
@@ -368,6 +380,9 @@ namespace Alis.App.Engine
             _spaceWork.io.WantSaveIniSettings = false;
         }
 
+        /// <summary>
+        /// Setup the shaders
+        /// </summary>
         private void SetupShaders()
         {
             const string vertexShaderSource = "#version 330 core\n" +
@@ -415,6 +430,9 @@ namespace Alis.App.Engine
             Gl.GlDeleteShader(frag);
         }
 
+        /// <summary>
+        /// Setup the buffers
+        /// </summary>
         private void SetupBuffers()
         {
             _vao = Gl.GenVertexArray();
@@ -437,6 +455,9 @@ namespace Alis.App.Engine
             Gl.GlBindVertexArray(0);
         }
 
+        /// <summary>
+        /// Setup the window
+        /// </summary>
         private void SetupWindow()
         {
             Debug.Assert(platform != null, nameof(platform) + " != null");
@@ -467,12 +488,18 @@ namespace Alis.App.Engine
             _spaceWork.Viewport = ImGui.GetMainViewport();
         }
 
+        /// <summary>
+        /// Setup the im gui context
+        /// </summary>
         private void SetupImGuiContext()
         {
             imguiContext = ImGui.CreateContext();
             ImGui.SetCurrentContext(imguiContext);
         }
 
+        /// <summary>
+        /// Cleanups the engine
+        /// </summary>
         private void CleanupEngine()
         {
             if (_vbo != 0)

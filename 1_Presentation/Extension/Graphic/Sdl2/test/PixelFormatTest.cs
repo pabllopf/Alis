@@ -4,8 +4,14 @@ using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The pixel format test class
+    /// </summary>
     public class PixelFormatTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {
@@ -22,6 +28,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, fmt.Next);
         }
 
+        /// <summary>
+        /// Tests that should assign palette
+        /// </summary>
         [Fact]
         public void ShouldAssignPalette()
         {
@@ -30,6 +39,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(new IntPtr(0xFADE), fmt.Palette);
         }
 
+        /// <summary>
+        /// Tests that should assign next
+        /// </summary>
         [Fact]
         public void ShouldAssignNext()
         {

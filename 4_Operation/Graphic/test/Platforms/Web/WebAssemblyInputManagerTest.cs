@@ -42,6 +42,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     {
         // =====================================================================
 
+        /// <summary>
+        /// Tests that input manager register key binding single key works
+        /// </summary>
         [Fact]
         public void InputManager_RegisterKeyBinding_SingleKey_Works()
         {
@@ -51,6 +54,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsActionActive("Jump"));
         }
 
+        /// <summary>
+        /// Tests that input manager register key binding multiple keys works
+        /// </summary>
         [Fact]
         public void InputManager_RegisterKeyBinding_MultipleKeys_Works()
         {
@@ -60,6 +66,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsActionActive("Move"));
         }
 
+        /// <summary>
+        /// Tests that input manager register key binding same action twice adds keys
+        /// </summary>
         [Fact]
         public void InputManager_RegisterKeyBinding_SameActionTwice_AddsKeys()
         {
@@ -71,6 +80,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(manager.IsActionActive("Action"));
         }
 
+        /// <summary>
+        /// Tests that input manager clear key binding removes action
+        /// </summary>
         [Fact]
         public void InputManager_ClearKeyBinding_RemovesAction()
         {
@@ -81,6 +93,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsActionActive("Fire"));
         }
 
+        /// <summary>
+        /// Tests that input manager clear key binding non existent does not throw
+        /// </summary>
         [Fact]
         public void InputManager_ClearKeyBinding_NonExistent_DoesNotThrow()
         {
@@ -89,6 +104,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             manager.ClearKeyBinding("NonExistent");
         }
 
+        /// <summary>
+        /// Tests that input manager is action active non existent action returns false
+        /// </summary>
         [Fact]
         public void InputManager_IsActionActive_NonExistentAction_ReturnsFalse()
         {
@@ -97,6 +115,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsActionActive("Unknown"));
         }
 
+        /// <summary>
+        /// Tests that input manager is action active with pressed key returns true
+        /// </summary>
         [Fact]
         public void InputManager_IsActionActive_WithPressedKey_ReturnsTrue()
         {
@@ -107,6 +128,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(manager.IsActionActive("Fire"));
         }
 
+        /// <summary>
+        /// Tests that input manager is action active after key up returns false
+        /// </summary>
         [Fact]
         public void InputManager_IsActionActive_AfterKeyUp_ReturnsFalse()
         {
@@ -118,6 +142,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsActionActive("Fire"));
         }
 
+        /// <summary>
+        /// Tests that input manager is action just pressed no keys in queue returns false
+        /// </summary>
         [Fact]
         public void InputManager_IsActionJustPressed_NoKeysInQueue_ReturnsFalse()
         {
@@ -127,6 +154,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsActionJustPressed("Jump"));
         }
 
+        /// <summary>
+        /// Tests that input manager is action just pressed matching key returns true
+        /// </summary>
         [Fact]
         public void InputManager_IsActionJustPressed_MatchingKey_ReturnsTrue()
         {
@@ -137,6 +167,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(manager.IsActionJustPressed("Jump"));
         }
 
+        /// <summary>
+        /// Tests that input manager is action just pressed non matching key returns false
+        /// </summary>
         [Fact]
         public void InputManager_IsActionJustPressed_NonMatchingKey_ReturnsFalse()
         {
@@ -147,6 +180,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsActionJustPressed("Jump"));
         }
 
+        /// <summary>
+        /// Tests that input manager is action just pressed consumes key from queue
+        /// </summary>
         [Fact]
         public void InputManager_IsActionJustPressed_ConsumesKeyFromQueue()
         {
@@ -158,6 +194,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsActionJustPressed("Jump"));
         }
 
+        /// <summary>
+        /// Tests that input manager is action just pressed non existent action returns false
+        /// </summary>
         [Fact]
         public void InputManager_IsActionJustPressed_NonExistentAction_ReturnsFalse()
         {
@@ -168,6 +207,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that input manager get mouse position returns default coords
+        /// </summary>
         [Fact]
         public void InputManager_GetMousePosition_ReturnsDefaultCoords()
         {
@@ -178,6 +220,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, y);
         }
 
+        /// <summary>
+        /// Tests that input manager get mouse position after move returns new coords
+        /// </summary>
         [Fact]
         public void InputManager_GetMousePosition_AfterMove_ReturnsNewCoords()
         {
@@ -189,6 +234,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(200, y);
         }
 
+        /// <summary>
+        /// Tests that input manager get mouse wheel delta default returns zero
+        /// </summary>
         [Fact]
         public void InputManager_GetMouseWheelDelta_Default_ReturnsZero()
         {
@@ -197,6 +245,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, manager.GetMouseWheelDelta());
         }
 
+        /// <summary>
+        /// Tests that input manager get mouse wheel delta after wheel returns delta
+        /// </summary>
         [Fact]
         public void InputManager_GetMouseWheelDelta_AfterWheel_ReturnsDelta()
         {
@@ -207,6 +258,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(5.0f, manager.GetMouseWheelDelta());
         }
 
+        /// <summary>
+        /// Tests that input manager is mouse button down default returns false
+        /// </summary>
         [Fact]
         public void InputManager_IsMouseButtonDown_Default_ReturnsFalse()
         {
@@ -215,6 +269,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsMouseButtonDown(0));
         }
 
+        /// <summary>
+        /// Tests that input manager is mouse button down after click returns true
+        /// </summary>
         [Fact]
         public void InputManager_IsMouseButtonDown_AfterClick_ReturnsTrue()
         {
@@ -224,6 +281,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(manager.IsMouseButtonDown(0));
         }
 
+        /// <summary>
+        /// Tests that input manager is mouse button down right button
+        /// </summary>
         [Fact]
         public void InputManager_IsMouseButtonDown_RightButton()
         {
@@ -234,6 +294,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsMouseButtonDown(0));
         }
 
+        /// <summary>
+        /// Tests that input manager is mouse button down invalid button returns false
+        /// </summary>
         [Fact]
         public void InputManager_IsMouseButtonDown_InvalidButton_ReturnsFalse()
         {
@@ -243,6 +306,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsMouseButtonDown(10));
         }
 
+        /// <summary>
+        /// Tests that input manager is mouse button down after mouse up returns false
+        /// </summary>
         [Fact]
         public void InputManager_IsMouseButtonDown_AfterMouseUp_ReturnsFalse()
         {
@@ -255,6 +321,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that input manager get connected gamepad indices empty returns empty
+        /// </summary>
         [Fact]
         public void InputManager_GetConnectedGamepadIndices_Empty_ReturnsEmpty()
         {
@@ -265,6 +334,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Empty(indices);
         }
 
+        /// <summary>
+        /// Tests that input manager try get gamepad state no gamepad returns false
+        /// </summary>
         [Fact]
         public void InputManager_TryGetGamepadState_NoGamepad_ReturnsFalse()
         {
@@ -275,6 +347,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(state);
         }
 
+        /// <summary>
+        /// Tests that input manager is gamepad button just pressed no gamepad returns false
+        /// </summary>
         [Fact]
         public void InputManager_IsGamepadButtonJustPressed_NoGamepad_ReturnsFalse()
         {
@@ -283,6 +358,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsGamepadButtonJustPressed(0, 0));
         }
 
+        /// <summary>
+        /// Tests that input manager is gamepad button just released no gamepad returns false
+        /// </summary>
         [Fact]
         public void InputManager_IsGamepadButtonJustReleased_NoGamepad_ReturnsFalse()
         {
@@ -293,6 +371,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that input manager update does not throw
+        /// </summary>
         [Fact]
         public void InputManager_Update_DoesNotThrow()
         {
@@ -301,6 +382,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             manager.Update();
         }
 
+        /// <summary>
+        /// Tests that input manager update multiple times does not throw
+        /// </summary>
         [Fact]
         public void InputManager_Update_MultipleTimes_DoesNotThrow()
         {
@@ -311,6 +395,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             manager.Update();
         }
 
+        /// <summary>
+        /// Tests that input manager update does not reset wheel delta
+        /// </summary>
         [Fact]
         public void InputManager_Update_DoesNotResetWheelDelta()
         {
@@ -323,6 +410,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that input manager vibrate gamepad returns false on non browser
+        /// </summary>
         [Fact]
         public void InputManager_VibrateGamepad_ReturnsFalseOnNonBrowser()
         {
@@ -333,6 +423,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that input manager constructor null platform throws
+        /// </summary>
         [Fact]
         public void InputManager_Constructor_NullPlatform_Throws()
         {
@@ -342,6 +435,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that key binding default has no keys
+        /// </summary>
         [Fact]
         public void KeyBinding_Default_HasNoKeys()
         {
@@ -349,6 +445,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(binding.ContainsKey(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that key binding add key adds key
+        /// </summary>
         [Fact]
         public void KeyBinding_AddKey_AddsKey()
         {
@@ -357,6 +456,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(binding.ContainsKey(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that key binding add key duplicate key does not throw
+        /// </summary>
         [Fact]
         public void KeyBinding_AddKey_DuplicateKey_DoesNotThrow()
         {
@@ -366,6 +468,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(binding.ContainsKey(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that key binding remove key removes key
+        /// </summary>
         [Fact]
         public void KeyBinding_RemoveKey_RemovesKey()
         {
@@ -375,6 +480,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(binding.ContainsKey(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that key binding remove key non existent does not throw
+        /// </summary>
         [Fact]
         public void KeyBinding_RemoveKey_NonExistent_DoesNotThrow()
         {
@@ -383,6 +491,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(binding.ContainsKey(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that key binding clear removes all keys
+        /// </summary>
         [Fact]
         public void KeyBinding_Clear_RemovesAllKeys()
         {
@@ -396,6 +507,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(binding.ContainsKey(ConsoleKey.C));
         }
 
+        /// <summary>
+        /// Tests that key binding multiple keys all detected
+        /// </summary>
         [Fact]
         public void KeyBinding_MultipleKeys_AllDetected()
         {
@@ -409,6 +523,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that input context constructor creates instance
+        /// </summary>
         [Fact]
         public void InputContext_Constructor_CreatesInstance()
         {
@@ -419,6 +536,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Same(platform, context.Platform);
         }
 
+        /// <summary>
+        /// Tests that input context constructor null platform throws
+        /// </summary>
         [Fact]
         public void InputContext_Constructor_NullPlatform_Throws()
         {
@@ -426,6 +546,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 new WebAssemblyInputContext(null));
         }
 
+        /// <summary>
+        /// Tests that input context try get text input empty returns false
+        /// </summary>
         [Fact]
         public void InputContext_TryGetTextInput_Empty_ReturnsFalse()
         {
@@ -436,6 +559,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(string.Empty, text);
         }
 
+        /// <summary>
+        /// Tests that input context try get text input with input returns true
+        /// </summary>
         [Fact]
         public void InputContext_TryGetTextInput_WithInput_ReturnsTrue()
         {
@@ -447,6 +573,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("X", text);
         }
 
+        /// <summary>
+        /// Tests that input context update does not throw
+        /// </summary>
         [Fact]
         public void InputContext_Update_DoesNotThrow()
         {
@@ -455,36 +584,54 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             context.Update();
         }
 
+        /// <summary>
+        /// Tests that input context lock pointer returns false on non browser
+        /// </summary>
         [Fact]
         public void InputContext_LockPointer_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.LockPointer());
         }
 
+        /// <summary>
+        /// Tests that input context unlock pointer returns false on non browser
+        /// </summary>
         [Fact]
         public void InputContext_UnlockPointer_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.UnlockPointer());
         }
 
+        /// <summary>
+        /// Tests that input context is pointer locked returns false on non browser
+        /// </summary>
         [Fact]
         public void InputContext_IsPointerLocked_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.IsPointerLocked());
         }
 
+        /// <summary>
+        /// Tests that input context request fullscreen returns false on non browser
+        /// </summary>
         [Fact]
         public void InputContext_RequestFullscreen_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.RequestFullscreen());
         }
 
+        /// <summary>
+        /// Tests that input context exit fullscreen returns false on non browser
+        /// </summary>
         [Fact]
         public void InputContext_ExitFullscreen_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.ExitFullscreen());
         }
 
+        /// <summary>
+        /// Tests that input context is fullscreen returns false on non browser
+        /// </summary>
         [Fact]
         public void InputContext_IsFullscreen_ReturnsFalseOnNonBrowser()
         {
@@ -493,6 +640,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that touch point default is active and begin
+        /// </summary>
         [Fact]
         public void TouchPoint_Default_IsActiveAndBegin()
         {
@@ -501,6 +651,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(TouchState.Begin, touch.State);
         }
 
+        /// <summary>
+        /// Tests that touch point set properties works
+        /// </summary>
         [Fact]
         public void TouchPoint_SetProperties_Works()
         {
@@ -522,6 +675,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // =====================================================================
 
         
+        /// <summary>
+        /// Webs the assembly input manager get key name returns correct name using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <param name="expected">The expected</param>
         [InlineData(ConsoleKey.A, "A")]
         [InlineData(ConsoleKey.B, "B")]
         [InlineData(ConsoleKey.Enter, "Enter")]
@@ -552,6 +710,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(expected, name);
         }
 
+        /// <summary>
+        /// Tests that web assembly input manager get key name unknown key returns unknown
+        /// </summary>
         [Fact]
         public void WebAssemblyInputManager_GetKeyName_UnknownKey_ReturnsUnknown()
         {
@@ -559,6 +720,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("Unknown", name);
         }
 
+        /// <summary>
+        /// Invokes the private using the specified instance
+        /// </summary>
+        /// <param name="instance">The instance</param>
+        /// <param name="methodName">The method name</param>
+        /// <param name="arguments">The arguments</param>
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)
         {
             MethodInfo method = instance.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);

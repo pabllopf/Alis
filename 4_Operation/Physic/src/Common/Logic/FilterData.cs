@@ -92,18 +92,42 @@ namespace Alis.Core.Physic.Common.Logic
             return false;
         }
 
+        /// <summary>
+        /// Ises the disabled on group using the specified fixture
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        /// <returns>The bool</returns>
         private bool IsDisabledOnGroup(Fixture fixture) =>
             (fixture.GetCollisionGroup == DisabledOnGroup) && (fixture.GetCollisionGroup != 0) && (DisabledOnGroup != 0);
 
+        /// <summary>
+        /// Ises the disabled on category using the specified fixture
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        /// <returns>The bool</returns>
         private bool IsDisabledOnCategory(Fixture fixture) =>
             (fixture.GetCollisionCategories & DisabledOnCategories) != Categories.None;
 
+        /// <summary>
+        /// Hases the enabled filter
+        /// </summary>
+        /// <returns>The bool</returns>
         private bool HasEnabledFilter() =>
             EnabledOnGroup != 0 || EnabledOnCategories != Categories.All;
 
+        /// <summary>
+        /// Ises the enabled on group using the specified fixture
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        /// <returns>The bool</returns>
         private bool IsEnabledOnGroup(Fixture fixture) =>
             (fixture.GetCollisionGroup == EnabledOnGroup) && (fixture.GetCollisionGroup != 0) && (EnabledOnGroup != 0);
 
+        /// <summary>
+        /// Ises the enabled on category using the specified fixture
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        /// <returns>The bool</returns>
         private bool IsEnabledOnCategory(Fixture fixture) =>
             ((fixture.GetCollisionCategories & EnabledOnCategories) != Categories.None) && (EnabledOnCategories != Categories.All);
 

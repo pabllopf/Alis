@@ -48,6 +48,12 @@ namespace Alis.Core.Graphic.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Registers the keyboard callbacks native using the specified on key down callback
+        /// </summary>
+        /// <param name="onKeyDownCallback">The on key down callback</param>
+        /// <param name="onKeyUpCallback">The on key up callback</param>
+        /// <param name="onCharInputCallback">The on char input callback</param>
         [DllImport(EmscriptenLib, EntryPoint = "registerKeyboardCallbacks", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void RegisterKeyboardCallbacksNative(
@@ -55,6 +61,13 @@ namespace Alis.Core.Graphic.Platforms.Web
             IntPtr onKeyUpCallback,
             IntPtr onCharInputCallback);
 
+        /// <summary>
+        /// Registers the mouse callbacks native using the specified on mouse move callback
+        /// </summary>
+        /// <param name="onMouseMoveCallback">The on mouse move callback</param>
+        /// <param name="onMouseDownCallback">The on mouse down callback</param>
+        /// <param name="onMouseUpCallback">The on mouse up callback</param>
+        /// <param name="onMouseWheelCallback">The on mouse wheel callback</param>
         [DllImport(EmscriptenLib, EntryPoint = "registerMouseCallbacks", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void RegisterMouseCallbacksNative(
@@ -63,12 +76,23 @@ namespace Alis.Core.Graphic.Platforms.Web
             IntPtr onMouseUpCallback,
             IntPtr onMouseWheelCallback);
 
+        /// <summary>
+        /// Registers the gamepad callbacks native using the specified on gamepad connect callback
+        /// </summary>
+        /// <param name="onGamepadConnectCallback">The on gamepad connect callback</param>
+        /// <param name="onGamepadDisconnectCallback">The on gamepad disconnect callback</param>
         [DllImport(EmscriptenLib, EntryPoint = "registerGamepadCallbacks", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void RegisterGamepadCallbacksNative(
             IntPtr onGamepadConnectCallback,
             IntPtr onGamepadDisconnectCallback);
 
+        /// <summary>
+        /// Registers the window callbacks native using the specified on window resize callback
+        /// </summary>
+        /// <param name="onWindowResizeCallback">The on window resize callback</param>
+        /// <param name="onWindowCloseCallback">The on window close callback</param>
+        /// <param name="onWindowFocusCallback">The on window focus callback</param>
         [DllImport(EmscriptenLib, EntryPoint = "registerWindowCallbacks", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void RegisterWindowCallbacksNative(
@@ -76,162 +100,340 @@ namespace Alis.Core.Graphic.Platforms.Web
             IntPtr onWindowCloseCallback,
             IntPtr onWindowFocusCallback);
 
+        /// <summary>
+        /// Gets the connected gamepads native
+        /// </summary>
+        /// <returns>The int ptr</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getConnectedGamepads", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern IntPtr GetConnectedGamepadsNative();
 
+        /// <summary>
+        /// Gets the gamepad axes native using the specified gamepad index
+        /// </summary>
+        /// <param name="gamepadIndex">The gamepad index</param>
+        /// <returns>The int ptr</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getGamepadAxes", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern IntPtr GetGamepadAxesNative(int gamepadIndex);
 
+        /// <summary>
+        /// Gets the gamepad buttons native using the specified gamepad index
+        /// </summary>
+        /// <param name="gamepadIndex">The gamepad index</param>
+        /// <returns>The int ptr</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getGamepadButtons", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern IntPtr GetGamepadButtonsNative(int gamepadIndex);
 
+        /// <summary>
+        /// Gets the array length using the specified array ptr
+        /// </summary>
+        /// <param name="arrayPtr">The array ptr</param>
+        /// <returns>The int</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getArrayLength", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern int GetArrayLength(IntPtr arrayPtr);
 
+        /// <summary>
+        /// Gets the array int element using the specified array ptr
+        /// </summary>
+        /// <param name="arrayPtr">The array ptr</param>
+        /// <param name="index">The index</param>
+        /// <returns>The int</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getArrayIntElement", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern int GetArrayIntElement(IntPtr arrayPtr, int index);
 
+        /// <summary>
+        /// Gets the array float element using the specified array ptr
+        /// </summary>
+        /// <param name="arrayPtr">The array ptr</param>
+        /// <param name="index">The index</param>
+        /// <returns>The float</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getArrayFloatElement", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern float GetArrayFloatElement(IntPtr arrayPtr, int index);
 
+        /// <summary>
+        /// Gets the array bool element using the specified array ptr
+        /// </summary>
+        /// <param name="arrayPtr">The array ptr</param>
+        /// <param name="index">The index</param>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getArrayBoolElement", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool GetArrayBoolElement(IntPtr arrayPtr, int index);
 
+        /// <summary>
+        /// Frees the array using the specified array ptr
+        /// </summary>
+        /// <param name="arrayPtr">The array ptr</param>
         [DllImport(EmscriptenLib, EntryPoint = "freeArray", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void FreeArray(IntPtr arrayPtr);
 
+        /// <summary>
+        /// Shows the canvas native
+        /// </summary>
         [DllImport(EmscriptenLib, EntryPoint = "showCanvas", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void ShowCanvasNative();
 
+        /// <summary>
+        /// Hides the canvas native
+        /// </summary>
         [DllImport(EmscriptenLib, EntryPoint = "hideCanvas", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void HideCanvasNative();
 
+        /// <summary>
+        /// Sets the window title native using the specified title
+        /// </summary>
+        /// <param name="title">The title</param>
         [DllImport(EmscriptenLib, EntryPoint = "setWindowTitle", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void SetWindowTitleNative(string title);
 
+        /// <summary>
+        /// Sets the canvas size native using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         [DllImport(EmscriptenLib, EntryPoint = "setCanvasSize", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void SetCanvasSizeNative(int width, int height);
 
+        /// <summary>
+        /// Sets the window icon native using the specified icon path
+        /// </summary>
+        /// <param name="iconPath">The icon path</param>
         [DllImport(EmscriptenLib, EntryPoint = "setWindowIcon", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void SetWindowIconNative(string iconPath);
 
+        /// <summary>
+        /// Gets the window position x native
+        /// </summary>
+        /// <returns>The int</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getWindowPositionX", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern int GetWindowPositionXNative();
 
+        /// <summary>
+        /// Gets the window position y native
+        /// </summary>
+        /// <returns>The int</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getWindowPositionY", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern int GetWindowPositionYNative();
 
+        /// <summary>
+        /// Gets the device pixel ratio native
+        /// </summary>
+        /// <returns>The float</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getDevicePixelRatio", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern float GetDevicePixelRatioNative();
 
+        /// <summary>
+        /// Requests the fullscreen native
+        /// </summary>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "requestFullscreen", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool RequestFullscreenNative();
 
+        /// <summary>
+        /// Exits the fullscreen native
+        /// </summary>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "exitFullscreen", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool ExitFullscreenNative();
 
+        /// <summary>
+        /// Ises the fullscreen enabled native
+        /// </summary>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "isFullscreenEnabled", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool IsFullscreenEnabledNative();
 
+        /// <summary>
+        /// Locks the pointer native
+        /// </summary>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "lockPointer", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool LockPointerNative();
 
+        /// <summary>
+        /// Unlocks the pointer native
+        /// </summary>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "unlockPointer", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool UnlockPointerNative();
 
+        /// <summary>
+        /// Ises the pointer locked native
+        /// </summary>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "isPointerLocked", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool IsPointerLockedNative();
 
+        /// <summary>
+        /// Vibrates the gamepad native using the specified gamepad index
+        /// </summary>
+        /// <param name="gamepadIndex">The gamepad index</param>
+        /// <param name="leftMotor">The left motor</param>
+        /// <param name="rightMotor">The right motor</param>
+        /// <param name="duration">The duration</param>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "vibrateGamepad", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool VibrateGamepadNative(int gamepadIndex, float leftMotor, float rightMotor, float duration);
 
+        /// <summary>
+        /// Gets the system time ms native
+        /// </summary>
+        /// <returns>The double</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getSystemTimeMs", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern double GetSystemTimeMsNative();
 
+        /// <summary>
+        /// Opens the file dialog native using the specified mime types
+        /// </summary>
+        /// <param name="mimeTypes">The mime types</param>
+        /// <returns>The int ptr</returns>
         [DllImport(EmscriptenLib, EntryPoint = "openFileDialog", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern IntPtr OpenFileDialogNative(string mimeTypes);
 
+        /// <summary>
+        /// Saves the file native using the specified filename
+        /// </summary>
+        /// <param name="filename">The filename</param>
+        /// <param name="data">The data</param>
+        /// <param name="dataLength">The data length</param>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "saveFile", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool SaveFileNative(string filename, byte[] data, int dataLength);
 
+        /// <summary>
+        /// Copies the to clipboard native using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "copyToClipboard", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool CopyToClipboardNative(string text);
 
+        /// <summary>
+        /// Pastes the from clipboard native
+        /// </summary>
+        /// <returns>The int ptr</returns>
         [DllImport(EmscriptenLib, EntryPoint = "pasteFromClipboard", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern IntPtr PasteFromClipboardNative();
 
+        /// <summary>
+        /// Shows the alert native using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         [DllImport(EmscriptenLib, EntryPoint = "showAlert", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void ShowAlertNative(string message);
 
+        /// <summary>
+        /// Shows the confirm native using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "showConfirm", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool ShowConfirmNative(string message);
 
+        /// <summary>
+        /// Gets the language native
+        /// </summary>
+        /// <returns>The int ptr</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getLanguage", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern IntPtr GetLanguageNative();
 
+        /// <summary>
+        /// Ises the online native
+        /// </summary>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "isOnline", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool IsOnlineNative();
 
+        /// <summary>
+        /// Gets the battery level native
+        /// </summary>
+        /// <returns>The float</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getBatteryLevel", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern float GetBatteryLevelNative();
 
+        /// <summary>
+        /// Ises the charging native
+        /// </summary>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "isCharging", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool IsChargingNative();
 
+        /// <summary>
+        /// Gets the orientation native
+        /// </summary>
+        /// <returns>The int</returns>
         [DllImport(EmscriptenLib, EntryPoint = "getOrientation", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern int GetOrientationNative();
 
+        /// <summary>
+        /// Requests the camera permission native
+        /// </summary>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "requestCameraPermission", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool RequestCameraPermissionNative();
 
+        /// <summary>
+        /// Requests the microphone permission native
+        /// </summary>
+        /// <returns>The bool</returns>
         [DllImport(EmscriptenLib, EntryPoint = "requestMicrophonePermission", CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern bool RequestMicrophonePermissionNative();
 
+        /// <summary>
+        /// Consoles the log native using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         [DllImport(EmscriptenLib, EntryPoint = "consoleLog", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void ConsoleLogNative(string message);
 
+        /// <summary>
+        /// Consoles the warn native using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         [DllImport(EmscriptenLib, EntryPoint = "consoleWarn", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void ConsoleWarnNative(string message);
 
+        /// <summary>
+        /// Consoles the error native using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
         [DllImport(EmscriptenLib, EntryPoint = "consoleError", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl),
          DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories), ExcludeFromCodeCoverage]
         private static extern void ConsoleErrorNative(string message);

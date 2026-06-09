@@ -39,6 +39,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class SysWmEventTest
     {
+        /// <summary>
+        /// Tests that should assign and retrieve msg
+        /// </summary>
         [Fact]
         public void ShouldAssignAndRetrieveMsg()
         {
@@ -50,6 +53,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(new IntPtr(0xCAFE), evt.Msg);
         }
 
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {

@@ -52,8 +52,15 @@ namespace Alis.App.Hub.Windows.Sections
     /// <seealso cref="ASection" />
     public class ProjectsSection : ASection
     {
+        /// <summary>
+        /// The not connected status
+        /// </summary>
         private const string NotConnectedStatus = "NOT CONNECTED";
 
+        /// <summary>
+        /// Gets the sample path
+        /// </summary>
+        /// <returns>The string</returns>
         private static string GetSamplePath() =>
             Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
                 "..", "..", "..", "..", "..",
@@ -66,6 +73,9 @@ namespace Alis.App.Hub.Windows.Sections
             new Project("MacOS Project (latest)", GetSamplePath(), NotConnectedStatus, "3 days ago", "v1.0.5")
         };
 #else
+        /// <summary>
+        /// The not connected status
+        /// </summary>
         private List<Project> projects = new List<Project>
         {
             new Project("MacOS Project (latest)", GetSamplePath(), NotConnectedStatus, "3 days ago", "v0.9.0"),

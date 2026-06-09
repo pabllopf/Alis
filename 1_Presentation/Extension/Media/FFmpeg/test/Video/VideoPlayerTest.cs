@@ -76,6 +76,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that video player play should throw when no filename
+        /// </summary>
         [Fact]
         public void VideoPlayer_Play_ShouldThrowWhenNoFilename()
         {
@@ -86,6 +89,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("No filename was specified", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that video player close write should throw when not opened
+        /// </summary>
         [Fact]
         public void VideoPlayer_CloseWrite_ShouldThrowWhenNotOpened()
         {
@@ -94,6 +100,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidOperationException>(() => player.CloseWrite());
         }
 
+        /// <summary>
+        /// Tests that video player constructor should set filename
+        /// </summary>
         [Fact]
         public void VideoPlayer_Constructor_ShouldSetFilename()
         {
@@ -102,6 +111,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal("test.mp4", player.Filename);
         }
 
+        /// <summary>
+        /// Tests that video player constructor should default filename to null
+        /// </summary>
         [Fact]
         public void VideoPlayer_Constructor_ShouldDefaultFilenameToNull()
         {

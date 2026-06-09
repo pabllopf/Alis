@@ -45,3 +45,13 @@
 ## Enum Naming
 - **Enums**: PascalCase (e.g., `GameState`, `ExtensionType`)
 - **Enum values**: PascalCase (e.g., `Running`, `Paused`, `Stopped`)
+
+## Related
+
+- [[ai-context]] — AI agent naming reference
+- [[code-review-checklist]] — Naming review items
+- [[projects/Index]] — Project naming examples
+- [[adr-001-layered-architecture]] — Layer naming convention
+- [[layer-index]] — Layer naming
+- [[project-index]] — All project names
+- [[Alis Architecture Overview]] — Naming context

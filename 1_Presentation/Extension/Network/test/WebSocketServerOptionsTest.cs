@@ -38,6 +38,9 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class WebSocketServerOptionsTest
     {
+        /// <summary>
+        /// Tests that constructor creates instance with default values
+        /// </summary>
         [Fact]
         public void Constructor_CreatesInstanceWithDefaultValues()
         {
@@ -52,6 +55,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("", options.SubProtocol);
         }
 
+        /// <summary>
+        /// Tests that constructor with keep alive interval and exception and protocol creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithKeepAliveIntervalAndExceptionAndProtocol_CreatesInstance()
         {
@@ -70,6 +76,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("json", options.SubProtocol);
         }
 
+        /// <summary>
+        /// Tests that constructor with keep alive interval and protocol creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithKeepAliveIntervalAndProtocol_CreatesInstance()
         {
@@ -87,6 +96,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("binary", options.SubProtocol);
         }
 
+        /// <summary>
+        /// Tests that keep alive interval default value is 60 seconds
+        /// </summary>
         [Fact]
         public void KeepAliveInterval_DefaultValueIs60Seconds()
         {
@@ -100,6 +112,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(TimeSpan.FromSeconds(60), result);
         }
 
+        /// <summary>
+        /// Tests that keep alive interval set value
+        /// </summary>
         [Fact]
         public void KeepAliveInterval_SetValue()
         {
@@ -113,6 +128,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(TimeSpan.FromSeconds(30), options.KeepAliveInterval);
         }
 
+        /// <summary>
+        /// Tests that keep alive interval set to zero disables auto ping
+        /// </summary>
         [Fact]
         public void KeepAliveInterval_SetToZero_DisablesAutoPing()
         {
@@ -126,6 +144,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(TimeSpan.Zero, options.KeepAliveInterval);
         }
 
+        /// <summary>
+        /// Tests that include exception in close response default value is false
+        /// </summary>
         [Fact]
         public void IncludeExceptionInCloseResponse_DefaultValueIsFalse()
         {
@@ -139,6 +160,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that include exception in close response set value to true
+        /// </summary>
         [Fact]
         public void IncludeExceptionInCloseResponse_SetValueToTrue()
         {
@@ -152,6 +176,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(options.IncludeExceptionInCloseResponse);
         }
 
+        /// <summary>
+        /// Tests that sub protocol default value is empty string
+        /// </summary>
         [Fact]
         public void SubProtocol_DefaultValueIsEmptyString()
         {
@@ -165,6 +192,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("", result);
         }
 
+        /// <summary>
+        /// Tests that sub protocol set value
+        /// </summary>
         [Fact]
         public void SubProtocol_SetValue()
         {
@@ -178,6 +208,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("json", options.SubProtocol);
         }
 
+        /// <summary>
+        /// Tests that sub protocol set to null
+        /// </summary>
         [Fact]
         public void SubProtocol_SetToNull()
         {
@@ -191,6 +224,9 @@ namespace Alis.Extension.Network.Test
             Assert.Null(options.SubProtocol);
         }
 
+        /// <summary>
+        /// Tests that constructor with keep alive interval 30 and exception and protocol creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithKeepAliveInterval30AndExceptionAndProtocol_CreatesInstance()
         {
@@ -205,6 +241,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("json", options.SubProtocol);
         }
 
+        /// <summary>
+        /// Tests that constructor with keep alive interval 45 and protocol creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithKeepAliveInterval45AndProtocol_CreatesInstance()
         {
@@ -219,6 +258,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("binary", options.SubProtocol);
         }
 
+        /// <summary>
+        /// Tests that create new instance initializes all properties
+        /// </summary>
         [Fact]
         public void CreateNewInstance_InitializesAllProperties()
         {
@@ -233,6 +275,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("", options.SubProtocol);
         }
 
+        /// <summary>
+        /// Tests that constructor with keep alive interval zero creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithKeepAliveIntervalZero_CreatesInstance()
         {
@@ -245,6 +290,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(TimeSpan.Zero, options.KeepAliveInterval);
         }
 
+        /// <summary>
+        /// Tests that constructor with include exception true creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithIncludeExceptionTrue_CreatesInstance()
         {
@@ -257,6 +305,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(options.IncludeExceptionInCloseResponse);
         }
 
+        /// <summary>
+        /// Tests that sub protocol set to empty string
+        /// </summary>
         [Fact]
         public void SubProtocol_SetToEmptyString()
         {
@@ -270,6 +321,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("", options.SubProtocol);
         }
 
+        /// <summary>
+        /// Tests that keep alive interval set to large value
+        /// </summary>
         [Fact]
         public void KeepAliveInterval_SetToLargeValue()
         {
@@ -283,6 +337,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(TimeSpan.FromMinutes(5), options.KeepAliveInterval);
         }
 
+        /// <summary>
+        /// Tests that constructor with all parameters creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithAllParameters_CreatesInstance()
         {

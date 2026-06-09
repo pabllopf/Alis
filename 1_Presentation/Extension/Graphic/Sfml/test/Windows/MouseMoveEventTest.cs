@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The mouse move event test class
+    /// </summary>
     public class MouseMoveEventTest
     {
+        /// <summary>
+        /// Tests that mouse move event default has zero values
+        /// </summary>
         [Fact]
         public void MouseMoveEvent_Default_HasZeroValues()
         {
@@ -42,6 +48,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0, e.Y);
         }
 
+        /// <summary>
+        /// Tests that mouse move event args constructor sets properties
+        /// </summary>
         [Fact]
         public void MouseMoveEventArgs_Constructor_SetsProperties()
         {
@@ -51,6 +60,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(240, args.Y);
         }
 
+        /// <summary>
+        /// Tests that mouse move event args to string includes property names
+        /// </summary>
         [Fact]
         public void MouseMoveEventArgs_ToString_IncludesPropertyNames()
         {

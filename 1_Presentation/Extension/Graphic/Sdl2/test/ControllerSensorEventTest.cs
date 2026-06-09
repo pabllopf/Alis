@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The controller sensor event test class
+    /// </summary>
     public class ControllerSensorEventTest
     {
+        /// <summary>
+        /// Tests that controller sensor event default initialization fields have default values
+        /// </summary>
         [Fact]
         public void ControllerSensorEvent_DefaultInitialization_FieldsHaveDefaultValues()
         {
@@ -19,6 +25,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0f, ev.data3);
         }
 
+        /// <summary>
+        /// Tests that controller sensor event is value type copy is independent
+        /// </summary>
         [Fact]
         public void ControllerSensorEvent_IsValueType_CopyIsIndependent()
         {

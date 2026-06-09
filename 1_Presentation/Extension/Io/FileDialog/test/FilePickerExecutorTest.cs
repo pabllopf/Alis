@@ -43,6 +43,9 @@ namespace Alis.Extension.Io.FileDialog.Test
     {
         #region ExecuteCommand - Validation Tests
 
+        /// <summary>
+        /// Tests that execute command with null file name throws argument exception
+        /// </summary>
         [Fact]
         public void ExecuteCommand_WithNullFileName_ThrowsArgumentException()
         {
@@ -53,6 +56,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Throws<ArgumentException>(act);
         }
 
+        /// <summary>
+        /// Tests that execute command with empty file name throws argument exception
+        /// </summary>
         [Fact]
         public void ExecuteCommand_WithEmptyFileName_ThrowsArgumentException()
         {
@@ -64,6 +70,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("fileName", exception.ParamName);
         }
 
+        /// <summary>
+        /// Tests that execute command with whitespace file name throws argument exception
+        /// </summary>
         [Fact]
         public void ExecuteCommand_WithWhitespaceFileName_ThrowsArgumentException()
         {
@@ -74,6 +83,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Throws<ArgumentException>(act);
         }
 
+        /// <summary>
+        /// Tests that execute command with null arguments succeeds
+        /// </summary>
         [Fact]
         public void ExecuteCommand_WithNullArguments_Succeeds()
         {
@@ -88,6 +100,9 @@ namespace Alis.Extension.Io.FileDialog.Test
 
         #region ExecuteCommand - Happy Path Tests
 
+        /// <summary>
+        /// Executes the command with ls command returns output
+        /// </summary>
         [LinuxOnly]
         public void ExecuteCommand_WithLsCommand_ReturnsOutput()
         {
@@ -98,6 +113,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Executes the command with ls command on mac returns output
+        /// </summary>
         [OSXOnly]
         public void ExecuteCommand_WithLsCommandOnMac_ReturnsOutput()
         {
@@ -108,6 +126,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Executes the command with dir command returns output
+        /// </summary>
         [WindowsOnly]
         public void ExecuteCommand_WithDirCommand_ReturnsOutput()
         {
@@ -118,6 +139,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Executes the command with echo command returns expected output
+        /// </summary>
         [LinuxOnly]
         public void ExecuteCommand_WithEchoCommand_ReturnsExpectedOutput()
         {
@@ -128,6 +152,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("hello world", result);
         }
 
+        /// <summary>
+        /// Executes the command with echo command on mac returns expected output
+        /// </summary>
         [OSXOnly]
         public void ExecuteCommand_WithEchoCommandOnMac_ReturnsExpectedOutput()
         {
@@ -138,6 +165,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("hello world", result);
         }
 
+        /// <summary>
+        /// Executes the command with echo command on windows returns expected output
+        /// </summary>
         [WindowsOnly]
         public void ExecuteCommand_WithEchoCommandOnWindows_ReturnsExpectedOutput()
         {
@@ -148,6 +178,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("hello world", result);
         }
 
+        /// <summary>
+        /// Executes the command with long arguments returns output
+        /// </summary>
         [LinuxOnly]
         public void ExecuteCommand_WithLongArguments_ReturnsOutput()
         {
@@ -159,6 +192,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Executes the command with arguments containing spaces returns output
+        /// </summary>
         [LinuxOnly]
         public void ExecuteCommand_WithArgumentsContainingSpaces_ReturnsOutput()
         {
@@ -173,6 +209,9 @@ namespace Alis.Extension.Io.FileDialog.Test
 
         #region ExecuteCommand - Timeout Tests
 
+        /// <summary>
+        /// Executes the command with timeout kills process and returns null
+        /// </summary>
         [LinuxOnly]
         public void ExecuteCommand_WithTimeout_KillsProcessAndReturnsNull()
         {
@@ -183,6 +222,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Executes the command with timeout on mac kills process and returns null
+        /// </summary>
         [OSXOnly]
         public void ExecuteCommand_WithTimeoutOnMac_KillsProcessAndReturnsNull()
         {
@@ -193,6 +235,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Executes the command with timeout on windows kills process and returns null
+        /// </summary>
         [WindowsOnly]
         public void ExecuteCommand_WithTimeoutOnWindows_KillsProcessAndReturnsNull()
         {
@@ -207,6 +252,9 @@ namespace Alis.Extension.Io.FileDialog.Test
 
         #region ExecuteCommand - Error Handling Tests
 
+        /// <summary>
+        /// Tests that execute command with non existent command throws invalid operation exception
+        /// </summary>
         [Fact]
         public void ExecuteCommand_WithNonExistentCommand_ThrowsInvalidOperationException()
         {
@@ -218,6 +266,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("this_command_does_not_exist_abc123", exception.Message);
         }
 
+        /// <summary>
+        /// Tests that execute command with non existent command has inner exception
+        /// </summary>
         [Fact]
         public void ExecuteCommand_WithNonExistentCommand_HasInnerException()
         {
@@ -229,6 +280,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(exception.InnerException);
         }
 
+        /// <summary>
+        /// Executes the command with valid command and custom timeout returns output
+        /// </summary>
         [LinuxOnly]
         public void ExecuteCommand_WithValidCommandAndCustomTimeout_ReturnsOutput()
         {
@@ -239,6 +293,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Executes the command with valid command and custom timeout on mac returns output
+        /// </summary>
         [OSXOnly]
         public void ExecuteCommand_WithValidCommandAndCustomTimeoutOnMac_ReturnsOutput()
         {
@@ -249,6 +306,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Executes the command with valid command and custom timeout on windows returns output
+        /// </summary>
         [WindowsOnly]
         public void ExecuteCommand_WithValidCommandAndCustomTimeoutOnWindows_ReturnsOutput()
         {
@@ -263,6 +323,9 @@ namespace Alis.Extension.Io.FileDialog.Test
 
         #region CommandExists - Validation Tests
 
+        /// <summary>
+        /// Tests that command exists with null command returns false
+        /// </summary>
         [Fact]
         public void CommandExists_WithNullCommand_ReturnsFalse()
         {
@@ -273,6 +336,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that command exists with empty command returns false
+        /// </summary>
         [Fact]
         public void CommandExists_WithEmptyCommand_ReturnsFalse()
         {
@@ -283,6 +349,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that command exists with whitespace command returns false
+        /// </summary>
         [Fact]
         public void CommandExists_WithWhitespaceCommand_ReturnsFalse()
         {
@@ -297,6 +366,9 @@ namespace Alis.Extension.Io.FileDialog.Test
 
         #region CommandExists - Happy Path Tests
 
+        /// <summary>
+        /// Commands the exists with ls command returns true
+        /// </summary>
         [LinuxOnly]
         public void CommandExists_WithLsCommand_ReturnsTrue()
         {
@@ -307,6 +379,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Commands the exists with dir command on windows returns true
+        /// </summary>
         [WindowsOnly]
         public void CommandExists_WithDirCommandOnWindows_ReturnsTrue()
         {
@@ -322,6 +397,9 @@ namespace Alis.Extension.Io.FileDialog.Test
 
         #region CommandExists - Negative Tests
 
+        /// <summary>
+        /// Tests that command exists with non existent command returns false
+        /// </summary>
         [Fact]
         public void CommandExists_WithNonExistentCommand_ReturnsFalse()
         {
@@ -332,6 +410,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that command exists with random string returns false
+        /// </summary>
         [Fact]
         public void CommandExists_WithRandomString_ReturnsFalse()
         {
@@ -346,6 +427,9 @@ namespace Alis.Extension.Io.FileDialog.Test
 
         #region CommandExists - Edge Cases
 
+        /// <summary>
+        /// Commands the exists with command containing special chars returns false
+        /// </summary>
         [LinuxOnly]
         public void CommandExists_WithCommandContainingSpecialChars_ReturnsFalse()
         {
@@ -356,6 +440,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Commands the exists with command containing special chars on mac returns false
+        /// </summary>
         [OSXOnly]
         public void CommandExists_WithCommandContainingSpecialCharsOnMac_ReturnsFalse()
         {
@@ -366,6 +453,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Commands the exists with command containing special chars on windows returns false
+        /// </summary>
         [WindowsOnly]
         public void CommandExists_WithCommandContainingSpecialCharsOnWindows_ReturnsFalse()
         {
@@ -376,6 +466,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Commands the exists with uppercase command returns true
+        /// </summary>
         [LinuxOnly]
         public void CommandExists_WithUppercaseCommand_ReturnsTrue()
         {
@@ -386,6 +479,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Commands the exists with uppercase command on windows returns true
+        /// </summary>
         [WindowsOnly]
         public void CommandExists_WithUppercaseCommandOnWindows_ReturnsTrue()
         {

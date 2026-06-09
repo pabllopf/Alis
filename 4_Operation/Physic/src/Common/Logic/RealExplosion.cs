@@ -189,6 +189,11 @@ namespace Alis.Core.Physic.Common.Logic
             return valIndex;
         }
 
+        /// <summary>
+        /// Converts the to polygon shape using the specified fixture
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        /// <returns>The polygon shape</returns>
         private static PolygonShape ConvertToPolygonShape(Fixture fixture)
         {
             if (fixture.GetShape is CircleShape cs)
@@ -197,6 +202,11 @@ namespace Alis.Core.Physic.Common.Logic
             return fixture.GetShape as PolygonShape;
         }
 
+        /// <summary>
+        /// Creates the polygon from circle using the specified cs
+        /// </summary>
+        /// <param name="cs">The cs</param>
+        /// <returns>The polygon shape</returns>
         private static PolygonShape CreatePolygonFromCircle(CircleShape cs)
         {
             Vertices v = new Vertices();
@@ -208,6 +218,14 @@ namespace Alis.Core.Physic.Common.Logic
             return new PolygonShape(v, 0);
         }
 
+        /// <summary>
+        /// Computes the angle bounds for shape using the specified ps
+        /// </summary>
+        /// <param name="ps">The ps</param>
+        /// <param name="body">The body</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="vals">The vals</param>
+        /// <param name="valIndex">The val index</param>
         private static void ComputeAngleBoundsForShape(PolygonShape ps, Body body, Vector2F pos, float[] vals, ref int valIndex)
         {
             Vector2F toCentroid = body.GetWorldPoint(ps.MassData.Centroid) - pos;
@@ -232,6 +250,11 @@ namespace Alis.Core.Physic.Common.Logic
             vals[valIndex++] = maxAbsolute;
         }
 
+        /// <summary>
+        /// Normalizes the angle difference using the specified diff
+        /// </summary>
+        /// <param name="diff">The diff</param>
+        /// <returns>The diff</returns>
         private static float NormalizeAngleDifference(float diff)
         {
             diff = (diff - Constant.Pi) % (2 * Constant.Pi);
@@ -277,9 +300,23 @@ namespace Alis.Core.Physic.Common.Logic
             }
         }
 
+        /// <summary>
+        /// Shoulds the skip angle pair using the specified vals
+        /// </summary>
+        /// <param name="vals">The vals</param>
+        /// <param name="i">The </param>
+        /// <param name="valIndex">The val index</param>
+        /// <returns>The bool</returns>
         private static bool ShouldSkipAnglePair(float[] vals, int i, int valIndex) =>
             Math.Abs(vals[i] - vals[i == valIndex - 1 ? 0 : i + 1]) < float.Epsilon;
 
+        /// <summary>
+        /// Computes the midpoint using the specified vals
+        /// </summary>
+        /// <param name="vals">The vals</param>
+        /// <param name="i">The </param>
+        /// <param name="valIndex">The val index</param>
+        /// <returns>The float</returns>
         private static float ComputeMidpoint(float[] vals, int i, int valIndex)
         {
             float midpt = i == valIndex - 1
@@ -288,6 +325,14 @@ namespace Alis.Core.Physic.Common.Logic
             return midpt / 2;
         }
 
+        /// <summary>
+        /// Processes the ray hit using the specified vals
+        /// </summary>
+        /// <param name="vals">The vals</param>
+        /// <param name="i">The </param>
+        /// <param name="valIndex">The val index</param>
+        /// <param name="body">The body</param>
+        /// <param name="rayMissed">The ray missed</param>
         private void ProcessRayHit(float[] vals, int i, int valIndex, Body body, ref bool rayMissed)
         {
             int iplus = i == valIndex - 1 ? 0 : i + 1;
@@ -306,6 +351,10 @@ namespace Alis.Core.Physic.Common.Logic
             AdjustOverlappingData();
         }
 
+        /// <summary>
+        /// Updates the last shape data using the specified max
+        /// </summary>
+        /// <param name="max">The max</param>
         private void UpdateLastShapeData(float max)
         {
             int laPos = _data.Count - 1;
@@ -314,12 +363,21 @@ namespace Alis.Core.Physic.Common.Logic
             _data[laPos] = la;
         }
 
+        /// <summary>
+        /// Adds the new shape data using the specified body
+        /// </summary>
+        /// <param name="body">The body</param>
+        /// <param name="min">The min</param>
+        /// <param name="max">The max</param>
         private void AddNewShapeData(Body body, float min, float max)
         {
             ShapeData d = new() { Body = body, Min = min, Max = max };
             _data.Add(d);
         }
 
+        /// <summary>
+        /// Merges the circular data
+        /// </summary>
         private void MergeCircularData()
         {
             if (_data.Count <= 1) return;
@@ -338,6 +396,9 @@ namespace Alis.Core.Physic.Common.Logic
             }
         }
 
+        /// <summary>
+        /// Adjusts the wrapped data
+        /// </summary>
         private void AdjustWrappedData()
         {
             int lastPos = _data.Count - 1;
@@ -349,6 +410,9 @@ namespace Alis.Core.Physic.Common.Logic
             }
         }
 
+        /// <summary>
+        /// Adjusts the overlapping data
+        /// </summary>
         private void AdjustOverlappingData()
         {
             AdjustWrappedData();
@@ -372,15 +436,43 @@ namespace Alis.Core.Physic.Common.Logic
             }
         }
 
+        /// <summary>
+        /// Computes the inserted rays using the specified arclen
+        /// </summary>
+        /// <param name="arclen">The arclen</param>
+        /// <param name="first">The first</param>
+        /// <param name="minRays">The min rays</param>
+        /// <param name="maxAngle">The max angle</param>
+        /// <returns>The int</returns>
         private static int ComputeInsertedRays(float arclen, float first, int minRays, float maxAngle)
         {
             int insertedRays = (int)Math.Ceiling((arclen - 2.0f * first - (minRays - 1) * maxAngle) / maxAngle);
             return insertedRays < 0 ? 0 : insertedRays;
         }
 
+        /// <summary>
+        /// Computes the ray offset using the specified arclen
+        /// </summary>
+        /// <param name="arclen">The arclen</param>
+        /// <param name="first">The first</param>
+        /// <param name="insertedRays">The inserted rays</param>
+        /// <param name="minRays">The min rays</param>
+        /// <returns>The float</returns>
         private static float ComputeRayOffset(float arclen, float first, int insertedRays, int minRays) =>
             (arclen - first * 2.0f) / ((float)minRays + insertedRays - 1);
 
+        /// <summary>
+        /// Applies the impulses for arc using the specified i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="pos">The pos</param>
+        /// <param name="radius">The radius</param>
+        /// <param name="arclen">The arclen</param>
+        /// <param name="first">The first</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="insertedRays">The inserted rays</param>
+        /// <param name="maxForce">The max force</param>
+        /// <param name="exploded">The exploded</param>
         private void ApplyImpulsesForArc(int i, Vector2F pos, float radius, float arclen, float first, float offset, int insertedRays, float maxForce, Dictionary<Fixture, Vector2F> exploded)
         {
             for (float j = _data[i].Min + first;
@@ -391,6 +483,17 @@ namespace Alis.Core.Physic.Common.Logic
             }
         }
 
+        /// <summary>
+        /// Applies the ray impulses using the specified i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="pos">The pos</param>
+        /// <param name="radius">The radius</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="arclen">The arclen</param>
+        /// <param name="insertedRays">The inserted rays</param>
+        /// <param name="maxForce">The max force</param>
+        /// <param name="exploded">The exploded</param>
         private void ApplyRayImpulses(int i, Vector2F pos, float radius, float angle, float arclen, int insertedRays, float maxForce, Dictionary<Fixture, Vector2F> exploded)
         {
             Vector2F p1 = pos;
@@ -416,6 +519,17 @@ namespace Alis.Core.Physic.Common.Logic
             }
         }
 
+        /// <summary>
+        /// Computes the impulse vector using the specified angle
+        /// </summary>
+        /// <param name="angle">The angle</param>
+        /// <param name="minlambda">The minlambda</param>
+        /// <param name="arclen">The arclen</param>
+        /// <param name="insertedRays">The inserted rays</param>
+        /// <param name="maxForce">The max force</param>
+        /// <param name="ro">The ro</param>
+        /// <param name="minRays">The min rays</param>
+        /// <returns>The vector</returns>
         private static Vector2F ComputeImpulseVector(float angle, float minlambda, float arclen, int insertedRays, float maxForce, RayCastOutput ro, int minRays)
         {
             float impulse = arclen / (minRays + insertedRays) * maxForce * 180.0f / Constant.Pi * (1.0f - Math.Min(1.0f, minlambda));
@@ -423,6 +537,12 @@ namespace Alis.Core.Physic.Common.Logic
             return Vector2F.Dot(impulse * dir, -ro.Normal) * dir;
         }
 
+        /// <summary>
+        /// Updates the exploded dictionary using the specified exploded
+        /// </summary>
+        /// <param name="exploded">The exploded</param>
+        /// <param name="f">The </param>
+        /// <param name="vectImp">The vect imp</param>
         private static void UpdateExplodedDictionary(Dictionary<Fixture, Vector2F> exploded, Fixture f, Vector2F vectImp)
         {
             if (exploded.ContainsKey(f))

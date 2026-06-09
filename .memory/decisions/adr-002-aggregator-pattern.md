@@ -17,3 +17,15 @@ Use the aggregator pattern: these projects contain zero hand-written code and ex
 ## References
 - `3_Structuration/Core` — Alis.Core aggregator
 - `5_Declaration/Aspect` — Alis.Core.Aspect aggregator
+
+## Related
+
+- [[adr-001-layered-architecture]] — Layer architecture decision
+- [[Layered Architecture]] — Layer structure
+- [[Aspect-Oriented Design]] — Aspect aggregation
+- [[Alis Architecture Overview]] — Full architecture
+- [[repository-overview]] — Architecture overview
+- [[projects/Architecture]] — Project-level details
+- [[Alis.Core]] — Core aggregator project
+- [[Alis.Core.Aspect]] — Aspect aggregator project
+- [[architecture-index]] — Patterns index

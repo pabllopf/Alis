@@ -39,6 +39,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     {
         // =====================================================================
 
+        /// <summary>
+        /// Tests that gamepad state default values are correct
+        /// </summary>
         [Fact]
         public void GamepadState_DefaultValues_AreCorrect()
         {
@@ -54,6 +57,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(13, state.Buttons.Length);
         }
 
+        /// <summary>
+        /// Tests that gamepad state buttons array all false by default
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonsArray_AllFalseByDefault()
         {
@@ -64,6 +70,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Tests that gamepad state get button valid index returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_GetButton_ValidIndex_ReturnsCorrectValue()
         {
@@ -74,6 +83,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Gamepads the state get button invalid index returns false using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
         [InlineData(-1)]
         [InlineData(13)]
         [InlineData(100)]
@@ -83,6 +96,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.GetButton(index));
         }
 
+        /// <summary>
+        /// Tests that gamepad state button a returns buttons 0
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonA_ReturnsButtons0()
         {
@@ -91,6 +107,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonA);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button b returns buttons 1
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonB_ReturnsButtons1()
         {
@@ -99,6 +118,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonB);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button x returns buttons 2
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonX_ReturnsButtons2()
         {
@@ -107,6 +129,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonX);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button y returns buttons 3
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonY_ReturnsButtons3()
         {
@@ -115,6 +140,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonY);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button lb returns buttons 4
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonLb_ReturnsButtons4()
         {
@@ -123,6 +151,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonLb);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button rb returns buttons 5
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonRb_ReturnsButtons5()
         {
@@ -131,6 +162,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonRb);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button left stick click returns buttons 10
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonLeftStickClick_ReturnsButtons10()
         {
@@ -139,6 +173,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonLeftStickClick);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button right stick click returns buttons 11
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonRightStickClick_ReturnsButtons11()
         {
@@ -147,6 +184,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonRightStickClick);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button start returns buttons 9
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonStart_ReturnsButtons9()
         {
@@ -155,6 +195,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonStart);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button back returns buttons 8
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonBack_ReturnsButtons8()
         {
@@ -163,6 +206,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonBack);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button guide returns buttons 12
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonGuide_ReturnsButtons12()
         {
@@ -171,6 +217,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonGuide);
         }
 
+        /// <summary>
+        /// Tests that gamepad state set connected works
+        /// </summary>
         [Fact]
         public void GamepadState_SetConnected_Works()
         {
@@ -178,6 +227,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.Connected);
         }
 
+        /// <summary>
+        /// Tests that gamepad state set analog sticks works
+        /// </summary>
         [Fact]
         public void GamepadState_SetAnalogSticks_Works()
         {
@@ -194,6 +246,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(-0.1f, state.RightStickY);
         }
 
+        /// <summary>
+        /// Tests that gamepad state set triggers works
+        /// </summary>
         [Fact]
         public void GamepadState_SetTriggers_Works()
         {
@@ -206,6 +261,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.9f, state.RightTrigger);
         }
 
+        /// <summary>
+        /// Tests that gamepad state set all buttons true
+        /// </summary>
         [Fact]
         public void GamepadState_SetAllButtons_True()
         {
@@ -220,6 +278,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Tests that gamepad state set all buttons false
+        /// </summary>
         [Fact]
         public void GamepadState_SetAllButtons_False()
         {
@@ -234,6 +295,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Tests that gamepad state all button properties correct indices
+        /// </summary>
         [Fact]
         public void GamepadState_AllButtonProperties_CorrectIndices()
         {
@@ -253,6 +317,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that gamepad input state default null states
+        /// </summary>
         [Fact]
         public void GamepadInputState_Default_NullStates()
         {
@@ -261,6 +328,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(state.PreviousState);
         }
 
+        /// <summary>
+        /// Tests that gamepad input state update shifts current to previous
+        /// </summary>
         [Fact]
         public void GamepadInputState_Update_ShiftsCurrentToPrevious()
         {
@@ -271,6 +341,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(state.PreviousState);
         }
 
+        /// <summary>
+        /// Tests that gamepad input state update twice preserves previous
+        /// </summary>
         [Fact]
         public void GamepadInputState_UpdateTwice_PreservesPrevious()
         {
@@ -283,6 +356,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(first, state.PreviousState);
         }
 
+        /// <summary>
+        /// Tests that gamepad input state set properties works
+        /// </summary>
         [Fact]
         public void GamepadInputState_SetProperties_Works()
         {

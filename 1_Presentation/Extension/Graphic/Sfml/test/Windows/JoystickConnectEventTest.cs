@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The joystick connect event test class
+    /// </summary>
     public class JoystickConnectEventTest
     {
+        /// <summary>
+        /// Tests that joystick connect event default has zero value
+        /// </summary>
         [Fact]
         public void JoystickConnectEvent_Default_HasZeroValue()
         {
@@ -41,6 +47,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0u, e.JoystickId);
         }
 
+        /// <summary>
+        /// Tests that joystick connect event args constructor sets joystick id
+        /// </summary>
         [Fact]
         public void JoystickConnectEventArgs_Constructor_SetsJoystickId()
         {
@@ -49,6 +58,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(3u, args.JoystickId);
         }
 
+        /// <summary>
+        /// Tests that joystick connect event args to string includes joystick id
+        /// </summary>
         [Fact]
         public void JoystickConnectEventArgs_ToString_IncludesJoystickId()
         {

@@ -33,8 +33,14 @@ using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal cocoa wm info test class
+    /// </summary>
     public class InternalCocoaWmInfoTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {
@@ -42,6 +48,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, obj.Window);
         }
 
+        /// <summary>
+        /// Tests that should assign and retrieve properties
+        /// </summary>
         [Fact]
         public void ShouldAssignAndRetrieveProperties()
         {

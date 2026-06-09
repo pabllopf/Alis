@@ -41,6 +41,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     {
         // =====================================================================
 
+        /// <summary>
+        /// Tests that web assembly configuration default values are correct
+        /// </summary>
         [Fact]
         public void WebAssemblyConfiguration_DefaultValues_AreCorrect()
         {
@@ -68,6 +71,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that config builder with size sets width and height
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithSize_SetsWidthAndHeight()
         {
@@ -79,6 +85,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1080, config.WindowHeight);
         }
 
+        /// <summary>
+        /// Tests that config builder with title sets title
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithTitle_SetsTitle()
         {
@@ -89,6 +98,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("My Game", config.WindowTitle);
         }
 
+        /// <summary>
+        /// Tests that config builder with icon path sets icon path
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithIconPath_SetsIconPath()
         {
@@ -99,6 +111,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("/assets/icon.png", config.IconPath);
         }
 
+        /// <summary>
+        /// Tests that config builder with v sync sets v sync
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithVSync_SetsVSync()
         {
@@ -109,6 +124,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(config.VSync);
         }
 
+        /// <summary>
+        /// Tests that config builder with target frame rate valid value sets rate
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithTargetFrameRate_ValidValue_SetsRate()
         {
@@ -119,6 +137,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(120, config.TargetFrameRate);
         }
 
+        /// <summary>
+        /// Tests that config builder with target frame rate zero throws
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithTargetFrameRate_Zero_Throws()
         {
@@ -126,6 +147,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 new WebAssemblyConfigurationBuilder().WithTargetFrameRate(0));
         }
 
+        /// <summary>
+        /// Tests that config builder with target frame rate negative throws
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithTargetFrameRate_Negative_Throws()
         {
@@ -133,6 +157,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 new WebAssemblyConfigurationBuilder().WithTargetFrameRate(-1));
         }
 
+        /// <summary>
+        /// Tests that config builder with multisampling sets enabled
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithMultisampling_SetsEnabled()
         {
@@ -144,6 +171,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Configs the builder with multisample count valid value sets count using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
         [InlineData(2)]
         [InlineData(4)]
         [InlineData(8)]
@@ -158,6 +189,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Configs the builder with multisample count invalid value throws using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
         [InlineData(1)]
         [InlineData(3)]
         [InlineData(5)]
@@ -168,6 +203,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 new WebAssemblyConfigurationBuilder().WithMultisampleCount(count));
         }
 
+        /// <summary>
+        /// Tests that config builder with fullscreen sets fullscreen
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithFullscreen_SetsFullscreen()
         {
@@ -178,6 +216,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.Fullscreen);
         }
 
+        /// <summary>
+        /// Tests that config builder with pointer lock sets pointer lock
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithPointerLock_SetsPointerLock()
         {
@@ -188,6 +229,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.PointerLock);
         }
 
+        /// <summary>
+        /// Tests that config builder with display quality sets quality
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithDisplayQuality_SetsQuality()
         {
@@ -198,6 +242,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(DisplayQuality.Ultra, config.DisplayQuality);
         }
 
+        /// <summary>
+        /// Tests that config builder with gamepad input sets enabled
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithGamepadInput_SetsEnabled()
         {
@@ -208,6 +255,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(config.GamepadInputEnabled);
         }
 
+        /// <summary>
+        /// Tests that config builder with keyboard input sets enabled
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithKeyboardInput_SetsEnabled()
         {
@@ -218,6 +268,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(config.KeyboardInputEnabled);
         }
 
+        /// <summary>
+        /// Tests that config builder with mouse input sets enabled
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithMouseInput_SetsEnabled()
         {
@@ -228,6 +281,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(config.MouseInputEnabled);
         }
 
+        /// <summary>
+        /// Tests that config builder with touch input sets enabled
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithTouchInput_SetsEnabled()
         {
@@ -239,6 +295,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Configs the builder with gamepad deadzone valid value sets deadzone using the specified deadzone
+        /// </summary>
+        /// <param name="deadzone">The deadzone</param>
         [InlineData(0.0f)]
         [InlineData(0.5f)]
         [InlineData(1.0f)]
@@ -252,6 +312,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Configs the builder with gamepad deadzone invalid value throws using the specified deadzone
+        /// </summary>
+        /// <param name="deadzone">The deadzone</param>
         [InlineData(-0.1f)]
         [InlineData(1.1f)]
         public void ConfigBuilder_WithGamepadDeadzone_InvalidValue_Throws(float deadzone)
@@ -261,6 +325,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Configs the builder with trigger deadzone valid value sets deadzone using the specified deadzone
+        /// </summary>
+        /// <param name="deadzone">The deadzone</param>
         [InlineData(0.0f)]
         [InlineData(0.5f)]
         [InlineData(1.0f)]
@@ -274,6 +342,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Configs the builder with trigger deadzone invalid value throws using the specified deadzone
+        /// </summary>
+        /// <param name="deadzone">The deadzone</param>
         [InlineData(-0.01f)]
         [InlineData(1.01f)]
         public void ConfigBuilder_WithTriggerDeadzone_InvalidValue_Throws(float deadzone)
@@ -282,6 +354,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 new WebAssemblyConfigurationBuilder().WithTriggerDeadzone(deadzone));
         }
 
+        /// <summary>
+        /// Tests that config builder with debug mode sets debug mode
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithDebugMode_SetsDebugMode()
         {
@@ -292,6 +367,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.DebugMode);
         }
 
+        /// <summary>
+        /// Tests that config builder chained methods works
+        /// </summary>
         [Fact]
         public void ConfigBuilder_ChainedMethods_Works()
         {
@@ -317,6 +395,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.DebugMode);
         }
 
+        /// <summary>
+        /// Tests that config builder build multiple times returns same instance
+        /// </summary>
         [Fact]
         public void ConfigBuilder_Build_MultipleTimes_ReturnsSameInstance()
         {
@@ -329,6 +410,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Same(config1, config2);
         }
 
+        /// <summary>
+        /// Tests that config builder with size negative values accepts
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithSize_NegativeValues_Accepts()
         {
@@ -340,6 +424,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(-200, config.WindowHeight);
         }
 
+        /// <summary>
+        /// Tests that config builder with size zero values accepts
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithSize_ZeroValues_Accepts()
         {
@@ -351,6 +438,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, config.WindowHeight);
         }
 
+        /// <summary>
+        /// Tests that config builder with title empty string accepts
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithTitle_EmptyString_Accepts()
         {
@@ -361,6 +451,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("", config.WindowTitle);
         }
 
+        /// <summary>
+        /// Tests that config builder with title null accepts
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithTitle_Null_Accepts()
         {
@@ -371,6 +464,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(config.WindowTitle);
         }
 
+        /// <summary>
+        /// Tests that config builder with icon path null accepts
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithIconPath_Null_Accepts()
         {
@@ -381,6 +477,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(config.IconPath);
         }
 
+        /// <summary>
+        /// Tests that config builder with target frame rate one accepts
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithTargetFrameRate_One_Accepts()
         {
@@ -391,6 +490,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1, config.TargetFrameRate);
         }
 
+        /// <summary>
+        /// Tests that config builder with target frame rate max int accepts
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithTargetFrameRate_MaxInt_Accepts()
         {
@@ -401,6 +503,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(int.MaxValue, config.TargetFrameRate);
         }
 
+        /// <summary>
+        /// Tests that config builder with gamepad deadzone boundary values
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithGamepadDeadzone_BoundaryValues()
         {
@@ -415,6 +520,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1.0f, configMax.GamepadDeadzone);
         }
 
+        /// <summary>
+        /// Tests that config builder with trigger deadzone boundary values
+        /// </summary>
         [Fact]
         public void ConfigBuilder_WithTriggerDeadzone_BoundaryValues()
         {
@@ -431,6 +539,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that web assembly platform factory create default returns instance
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatformFactory_CreateDefault_ReturnsInstance()
         {
@@ -439,6 +550,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.IsType<WebAssemblyPlatform>(platform);
         }
 
+        /// <summary>
+        /// Tests that web assembly platform factory create null config throws
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatformFactory_Create_NullConfig_Throws()
         {
@@ -448,6 +562,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
         
 
+        /// <summary>
+        /// Tests that web assembly platform factory create with action null action throws
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatformFactory_Create_WithAction_NullAction_Throws()
         {
@@ -457,6 +574,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that game context presets game 2 d returns valid config
+        /// </summary>
         [Fact]
         public void GameContextPresets_Game2D_ReturnsValidConfig()
         {
@@ -474,6 +594,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.MouseInputEnabled);
         }
 
+        /// <summary>
+        /// Tests that game context presets game 3 d returns valid config
+        /// </summary>
         [Fact]
         public void GameContextPresets_Game3D_ReturnsValidConfig()
         {
@@ -488,6 +611,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(DisplayQuality.VeryHigh, config.DisplayQuality);
         }
 
+        /// <summary>
+        /// Tests that game context presets puzzle game returns valid config
+        /// </summary>
         [Fact]
         public void GameContextPresets_PuzzleGame_ReturnsValidConfig()
         {
@@ -504,6 +630,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.MouseInputEnabled);
         }
 
+        /// <summary>
+        /// Tests that game context presets mobile game returns valid config
+        /// </summary>
         [Fact]
         public void GameContextPresets_MobileGame_ReturnsValidConfig()
         {

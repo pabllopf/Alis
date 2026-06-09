@@ -40,10 +40,21 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class UtilTests
     {
         // Use NativeWindow type to get the source assembly (not the test assembly)
+        /// <summary>
+        /// The get type
+        /// </summary>
         private static readonly Type UtilType = typeof(NativeWindow).Assembly.GetType("Alis.Extension.Graphic.Glfw.Util");
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly System.Reflection.MethodInfo PtrToStringUTF8 = UtilType.GetMethod(
             "PtrToStringUTF8", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
 
+        /// <summary>
+        /// Calls the ptr to string utf 8 using the specified ptr
+        /// </summary>
+        /// <param name="ptr">The ptr</param>
+        /// <returns>The string</returns>
         private static string CallPtrToStringUTF8(IntPtr ptr)
         {
             return (string)PtrToStringUTF8.Invoke(null, new object[] { ptr });

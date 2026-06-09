@@ -4,8 +4,14 @@ using Alis.Extension.Graphic.Sdl2.Mapping;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The keyboard event test class
+    /// </summary>
     public class KeyboardEventTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {
@@ -16,6 +22,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, evt.repeat);
         }
 
+        /// <summary>
+        /// Tests that should assign keysym
+        /// </summary>
         [Fact]
         public void ShouldAssignKeysym()
         {

@@ -591,6 +591,13 @@ namespace Alis.Core.Aspect.Memory
             return match;
         }
 
+        /// <summary>
+        /// Validates the active assembly using the specified resource name
+        /// </summary>
+        /// <param name="resourceName">The resource name</param>
+        /// <exception cref="InvalidOperationException">La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.</exception>
+        /// <exception cref="InvalidOperationException">No hay una asamblea activa configurada.</exception>
+        /// <exception cref="ArgumentException">resourceName no puede estar vacío. </exception>
         private static void ValidateActiveAssembly(string resourceName)
         {
             if (string.IsNullOrWhiteSpace(resourceName))

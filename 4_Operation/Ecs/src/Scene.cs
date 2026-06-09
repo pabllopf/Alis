@@ -1843,6 +1843,21 @@ namespace Alis.Core.Ecs
             }
         }
 
+        /// <summary>
+        /// Transfers the component using the specified from runners
+        /// </summary>
+        /// <param name="fromRunners">The from runners</param>
+        /// <param name="destRunners">The dest runners</param>
+        /// <param name="destMap">The dest map</param>
+        /// <param name="runnerIndex">The runner index</param>
+        /// <param name="componentId">The component id</param>
+        /// <param name="nextIndex">The next index</param>
+        /// <param name="currentIndex">The current index</param>
+        /// <param name="deletedIndex">The deleted index</param>
+        /// <param name="componentHandles">The component handles</param>
+        /// <param name="writeToIndex">The write to index</param>
+        /// <param name="hasGenericRemoveEvent">The has generic remove event</param>
+        /// <param name="deleteData">The delete data</param>
         private static void TransferComponent(
             ComponentStorageBase[] fromRunners, ComponentStorageBase[] destRunners,
             byte[] destMap, int runnerIndex, ComponentId componentId,
@@ -1874,6 +1889,12 @@ namespace Alis.Core.Ecs
             }
         }
 
+        /// <summary>
+        /// Fires the component removed event using the specified component removed event
+        /// </summary>
+        /// <param name="componentRemovedEvent">The component removed event</param>
+        /// <param name="gameObject">The game object</param>
+        /// <param name="componentHandles">The component handles</param>
         private static void FireComponentRemovedEvent(
             Event<ComponentId> componentRemovedEvent, GameObject gameObject,
             Span<ComponentHandle> componentHandles)
@@ -1889,6 +1910,12 @@ namespace Alis.Core.Ecs
             }
         }
 
+        /// <summary>
+        /// Fires the component removed generic event using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        /// <param name="componentHandles">The component handles</param>
+        /// <param name="hasGenericRemoveEvent">The has generic remove event</param>
         private void FireComponentRemovedGenericEvent(
             GameObject gameObject, Span<ComponentHandle> componentHandles,
             bool hasGenericRemoveEvent)

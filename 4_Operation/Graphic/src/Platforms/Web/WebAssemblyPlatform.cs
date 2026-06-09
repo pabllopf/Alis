@@ -544,6 +544,10 @@ namespace Alis.Core.Graphic.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Updates the single gamepad state using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
         private void UpdateSingleGamepadState(int index)
         {
             GamepadState state;

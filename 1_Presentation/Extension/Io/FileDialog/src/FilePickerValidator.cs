@@ -226,6 +226,11 @@ namespace Alis.Extension.Io.FileDialog
             return ValidateSelectedPaths(result.SelectedPaths, options);
         }
 
+        /// <summary>
+        /// Hases the selected paths using the specified result
+        /// </summary>
+        /// <param name="result">The result</param>
+        /// <returns>The bool</returns>
         private static bool HasSelectedPaths(FilePickerResult result)
         {
             if (result.SelectedPaths == null || result.SelectedPaths.Count == 0)
@@ -237,6 +242,12 @@ namespace Alis.Extension.Io.FileDialog
             return true;
         }
 
+        /// <summary>
+        /// Hases the too many paths using the specified result
+        /// </summary>
+        /// <param name="result">The result</param>
+        /// <param name="options">The options</param>
+        /// <returns>The bool</returns>
         private static bool HasTooManyPaths(FilePickerResult result, FilePickerOptions options)
         {
             if (!options.AllowMultiple && (result.SelectedPaths.Count > 1))

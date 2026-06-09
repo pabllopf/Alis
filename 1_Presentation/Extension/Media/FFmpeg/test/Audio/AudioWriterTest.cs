@@ -40,54 +40,81 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// <seealso cref="AudioWriter" />
     public class AudioWriterTest
     {
+        /// <summary>
+        /// Tests that audio writer file ctor should throw on zero channels
+        /// </summary>
         [Fact]
         public void AudioWriter_FileCtor_ShouldThrowOnZeroChannels()
         {
             Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", 0, 44100));
         }
 
+        /// <summary>
+        /// Tests that audio writer file ctor should throw on negative channels
+        /// </summary>
         [Fact]
         public void AudioWriter_FileCtor_ShouldThrowOnNegativeChannels()
         {
             Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", -1, 44100));
         }
 
+        /// <summary>
+        /// Tests that audio writer file ctor should throw on zero sample rate
+        /// </summary>
         [Fact]
         public void AudioWriter_FileCtor_ShouldThrowOnZeroSampleRate()
         {
             Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", 2, 0));
         }
 
+        /// <summary>
+        /// Tests that audio writer file ctor should throw on negative sample rate
+        /// </summary>
         [Fact]
         public void AudioWriter_FileCtor_ShouldThrowOnNegativeSampleRate()
         {
             Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", 2, -1));
         }
 
+        /// <summary>
+        /// Tests that audio writer file ctor should throw on invalid bit depth
+        /// </summary>
         [Fact]
         public void AudioWriter_FileCtor_ShouldThrowOnInvalidBitDepth()
         {
             Assert.Throws<InvalidOperationException>(() => new AudioWriter("out.mp3", 2, 44100, 8));
         }
 
+        /// <summary>
+        /// Tests that audio writer file ctor should throw on null filename
+        /// </summary>
         [Fact]
         public void AudioWriter_FileCtor_ShouldThrowOnNullFilename()
         {
             Assert.Throws<ArgumentException>(() => new AudioWriter((string)null, 2, 44100));
         }
 
+        /// <summary>
+        /// Tests that audio writer file ctor should throw on empty filename
+        /// </summary>
         [Fact]
         public void AudioWriter_FileCtor_ShouldThrowOnEmptyFilename()
         {
             Assert.Throws<ArgumentException>(() => new AudioWriter("", 2, 44100));
         }
 
+        /// <summary>
+        /// Tests that audio writer stream ctor should throw on null stream
+        /// </summary>
         [Fact]
         public void AudioWriter_StreamCtor_ShouldThrowOnNullStream()
         {
             Assert.Throws<ArgumentNullException>(() => new AudioWriter((Stream)null, 2, 44100));
         }
 
+        /// <summary>
+        /// Tests that audio writer stream ctor should throw on zero channels
+        /// </summary>
         [Fact]
         public void AudioWriter_StreamCtor_ShouldThrowOnZeroChannels()
         {
@@ -97,6 +124,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that audio writer stream ctor should throw on invalid bit depth
+        /// </summary>
         [Fact]
         public void AudioWriter_StreamCtor_ShouldThrowOnInvalidBitDepth()
         {
@@ -106,6 +136,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that audio writer close write should throw when not opened
+        /// </summary>
         [Fact]
         public void AudioWriter_CloseWrite_ShouldThrowWhenNotOpened()
         {
@@ -114,6 +147,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Throws<InvalidOperationException>(() => writer.CloseWrite());
         }
 
+        /// <summary>
+        /// Tests that audio writer file ctor should set properties
+        /// </summary>
         [Fact]
         public void AudioWriter_FileCtor_ShouldSetProperties()
         {
@@ -126,6 +162,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.NotNull(writer.EncoderOptions);
         }
 
+        /// <summary>
+        /// Tests that audio writer stream ctor should set properties
+        /// </summary>
         [Fact]
         public void AudioWriter_StreamCtor_ShouldSetProperties()
         {

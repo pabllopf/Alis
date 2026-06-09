@@ -25,6 +25,9 @@ namespace Alis.Core.Audio.Test.Players
     /// </summary>
     public class WindowsPlayerTests
     {
+        /// <summary>
+        /// Disposes the withdisposing true should release resources
+        /// </summary>
         [WindowsOnly]
         public void Dispose_WithdisposingTrue_ShouldReleaseResources()
         {
@@ -38,6 +41,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Disposes the withdisposing false should not release managed resources
+        /// </summary>
         [WindowsOnly]
         public void Dispose_WithdisposingFalse_ShouldNotReleaseManagedResources()
         {
@@ -51,6 +57,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Disposes the multiple calls should not throw
+        /// </summary>
         [WindowsOnly]
         public void Dispose_MultipleCalls_ShouldNotThrow()
         {
@@ -64,6 +73,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Sets the volume with zero should calculate min volume
+        /// </summary>
         [WindowsOnly]
         public void SetVolume_WithZero_ShouldCalculateMinVolume()
         {
@@ -80,6 +92,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Sets the volume with fifty should calculate mid volume
+        /// </summary>
         [WindowsOnly]
         public void SetVolume_WithFifty_ShouldCalculateMidVolume()
         {
@@ -96,6 +111,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Sets the volume with hundred should calculate max volume
+        /// </summary>
         [WindowsOnly]
         public void SetVolume_WithHundred_ShouldCalculateMaxVolume()
         {
@@ -112,6 +130,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Sets the volume calculation should produce symmetric channels
+        /// </summary>
         [WindowsOnly]
         public void SetVolume_Calculation_ShouldProduceSymmetricChannels()
         {
@@ -128,6 +149,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Sets the volume with negative value should handle gracefully
+        /// </summary>
         [WindowsOnly]
         public void SetVolume_WithNegativeValue_ShouldHandleGracefully()
         {
@@ -142,6 +166,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(exception.InnerException);
         }
 
+        /// <summary>
+        /// Sets the volume with value over hundred should handle gracefully
+        /// </summary>
         [WindowsOnly]
         public void SetVolume_WithValueOverHundred_ShouldHandleGracefully()
         {
@@ -156,6 +183,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(exception.InnerException);
         }
 
+        /// <summary>
+        /// Playings the property should be public get
+        /// </summary>
         [WindowsOnly]
         public void Playing_Property_ShouldBePublicGet()
         {
@@ -168,6 +198,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(playingProperty.CanRead);
         }
 
+        /// <summary>
+        /// Pauseds the property should be public get
+        /// </summary>
         [WindowsOnly]
         public void Paused_Property_ShouldBePublicGet()
         {
@@ -180,6 +213,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(pausedProperty.CanRead);
         }
 
+        /// <summary>
+        /// Ises the playing property should be public get
+        /// </summary>
         [WindowsOnly]
         public void IsPlaying_Property_ShouldBePublicGet()
         {
@@ -192,6 +228,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(isPlayingProperty.CanRead);
         }
 
+        /// <summary>
+        /// Ises the paused property should be public get
+        /// </summary>
         [WindowsOnly]
         public void IsPaused_Property_ShouldBePublicGet()
         {
@@ -204,6 +243,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(isPausedProperty.CanRead);
         }
 
+        /// <summary>
+        /// Playbacks the finished event should exist
+        /// </summary>
         [WindowsOnly]
         public void PlaybackFinished_Event_ShouldExist()
         {
@@ -215,6 +257,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(eventInfo);
         }
 
+        /// <summary>
+        /// Playbacks the paused event should exist
+        /// </summary>
         [WindowsOnly]
         public void PlaybackPaused_Event_ShouldExist()
         {
@@ -226,6 +271,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(eventInfo);
         }
 
+        /// <summary>
+        /// Playbacks the resumed event should exist
+        /// </summary>
         [WindowsOnly]
         public void PlaybackResumed_Event_ShouldExist()
         {
@@ -237,6 +285,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(eventInfo);
         }
 
+        /// <summary>
+        /// Waves the out set volume return type should be int
+        /// </summary>
         [WindowsOnly]
         public void WaveOutSetVolume_ReturnType_ShouldBeInt()
         {
@@ -250,6 +301,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(typeof(int), waveOutSetVolumeMethod.ReturnType);
         }
 
+        /// <summary>
+        /// Waves the out get volume return type should be int
+        /// </summary>
         [WindowsOnly]
         public void WaveOutGetVolume_ReturnType_ShouldBeInt()
         {
@@ -263,6 +317,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(typeof(int), waveOutGetVolumeMethod.ReturnType);
         }
 
+        /// <summary>
+        /// Waves the out reset return type should be int
+        /// </summary>
         [WindowsOnly]
         public void WaveOutReset_ReturnType_ShouldBeInt()
         {
@@ -276,6 +333,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(typeof(int), waveOutResetMethod.ReturnType);
         }
 
+        /// <summary>
+        /// Waves the out open return type should be int
+        /// </summary>
         [WindowsOnly]
         public void WaveOutOpen_ReturnType_ShouldBeInt()
         {
@@ -289,6 +349,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(typeof(int), waveOutOpenMethod.ReturnType);
         }
 
+        /// <summary>
+        /// Waves the out close return type should be int
+        /// </summary>
         [WindowsOnly]
         public void WaveOutClose_ReturnType_ShouldBeInt()
         {
@@ -302,6 +365,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(typeof(int), waveOutCloseMethod.ReturnType);
         }
 
+        /// <summary>
+        /// Waves the out write return type should be int
+        /// </summary>
         [WindowsOnly]
         public void WaveOutWrite_ReturnType_ShouldBeInt()
         {
@@ -315,6 +381,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(typeof(int), waveOutWriteMethod.ReturnType);
         }
 
+        /// <summary>
+        /// Waves the header struct size should be correct
+        /// </summary>
         [WindowsOnly]
         public void WaveHeaderStruct_Size_ShouldBeCorrect()
         {
@@ -325,6 +394,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(waveHeaderType);
         }
 
+        /// <summary>
+        /// Waves the format struct size should be correct
+        /// </summary>
         [WindowsOnly]
         public void WaveFormatStruct_Size_ShouldBeCorrect()
         {
@@ -335,6 +407,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(waveFormatType);
         }
 
+        /// <summary>
+        /// Constantses the wave out constants should be defined
+        /// </summary>
         [WindowsOnly]
         public void Constants_WaveOutConstants_ShouldBeDefined()
         {

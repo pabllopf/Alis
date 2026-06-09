@@ -40,15 +40,27 @@ namespace Alis.Extension.Network.Test.Core
     /// </summary>
     public class WebSocketNetworkTransportTest : IDisposable
     {
+        /// <summary>
+        /// The default transport
+        /// </summary>
         private readonly WebSocketNetworkTransport _defaultTransport;
+        /// <summary>
+        /// The configured transport
+        /// </summary>
         private readonly WebSocketNetworkTransport _configuredTransport;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebSocketNetworkTransportTest"/> class
+        /// </summary>
         public WebSocketNetworkTransportTest()
         {
             _defaultTransport = new WebSocketNetworkTransport();
             _configuredTransport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:9999"));
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _defaultTransport?.Dispose();

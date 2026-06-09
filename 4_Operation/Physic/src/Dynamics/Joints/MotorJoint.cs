@@ -332,6 +332,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Velocities[_indexB].W = wB;
         }
 
+        /// <summary>
+        /// Solves the angular friction using the specified w a
+        /// </summary>
+        /// <param name="wA">The </param>
+        /// <param name="wB">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="iB">The </param>
+        /// <param name="h">The </param>
+        /// <param name="invH">The inv</param>
         private void SolveAngularFriction(ref float wA, ref float wB, float iA, float iB, float h, float invH)
         {
             float cdot = wB - wA + invH * CorrectionFactor * _angularError;
@@ -346,6 +355,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
             wB += iB * impulse;
         }
 
+        /// <summary>
+        /// Solves the linear friction using the specified v a
+        /// </summary>
+        /// <param name="vA">The </param>
+        /// <param name="wA">The </param>
+        /// <param name="vB">The </param>
+        /// <param name="wB">The </param>
+        /// <param name="mA">The </param>
+        /// <param name="mB">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="iB">The </param>
+        /// <param name="h">The </param>
+        /// <param name="invH">The inv</param>
         private void SolveLinearFriction(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB, float h, float invH)
         {
             Vector2F cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA) + invH * CorrectionFactor * _linearError;

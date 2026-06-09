@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal uikit wm info test class
+    /// </summary>
     public class InternalUikitWmInfoTest
     {
+        /// <summary>
+        /// Tests that internal uikit wm info default initialization fields have default values
+        /// </summary>
         [Fact]
         public void InternalUikitWmInfo_DefaultInitialization_FieldsHaveDefaultValues()
         {
@@ -17,6 +23,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0u, info.resolveFramebuffer);
         }
 
+        /// <summary>
+        /// Tests that internal uikit wm info set fields stores values correctly
+        /// </summary>
         [Fact]
         public void InternalUikitWmInfo_SetFields_StoresValuesCorrectly()
         {
@@ -34,6 +43,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(3u, info.resolveFramebuffer);
         }
 
+        /// <summary>
+        /// Tests that internal uikit wm info is value type copy is independent
+        /// </summary>
         [Fact]
         public void InternalUikitWmInfo_IsValueType_CopyIsIndependent()
         {

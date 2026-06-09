@@ -243,6 +243,11 @@ namespace Alis.Core.Physic.Common
             return Closed ? GetClosedPosition(time) : GetOpenPosition(time);
         }
 
+        /// <summary>
+        /// Gets the closed position using the specified time
+        /// </summary>
+        /// <param name="time">The time</param>
+        /// <returns>The temp</returns>
         private Vector2F GetClosedPosition(float time)
         {
             Add(_controlPoints[0]);
@@ -265,6 +270,11 @@ namespace Alis.Core.Physic.Common
             return temp;
         }
 
+        /// <summary>
+        /// Gets the open position using the specified time
+        /// </summary>
+        /// <param name="time">The time</param>
+        /// <returns>The temp</returns>
         private Vector2F GetOpenPosition(float time)
         {
             int p = (int) (time / _deltaT);
@@ -281,6 +291,11 @@ namespace Alis.Core.Physic.Common
             return temp;
         }
 
+        /// <summary>
+        /// Wraps the index using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The index</returns>
         private int WrapIndex(int index)
         {
             int max = _controlPoints.Count - 1;
@@ -289,6 +304,11 @@ namespace Alis.Core.Physic.Common
             return index;
         }
 
+        /// <summary>
+        /// Clamps the index using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The index</returns>
         private int ClampIndex(int index)
         {
             int max = _controlPoints.Count - 1;

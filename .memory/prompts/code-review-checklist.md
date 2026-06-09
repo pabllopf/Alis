@@ -35,3 +35,16 @@
 - [ ] Project doc exists in `.memory/projects/`
 - [ ] README updated (if applicable)
 - [ ] Architecture docs updated (if layer structure changed)
+
+## Related
+
+- [[ai-context]] — AI agent reference
+- [[conversation-starters]] — Context questions
+- [[naming-conventions]] — Naming rules
+- [[adr-001-layered-architecture]] — Layer rules
+- [[adr-002-aggregator-pattern]] — Aggregator rules
+- [[testing/analysis]] — Test patterns and conventions
+- [[security/analysis]] — Security best practices
+- [[build-system]] — Build configuration
+- [[projects/Index]] — Project docs checklist
+- [[analysis-state]] — Documentation coverage

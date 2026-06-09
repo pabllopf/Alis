@@ -50,3 +50,10 @@ Supported distributions:
 ## See Also
 - [[Multi-Targeting Strategy]]
 - [[Multi-Platform Samples]]
+- [[Build System Configuration]]
+
+## Related Architecture
+
+- [[build-system]] — Platform-specific builds
+- [[build-summary]] — Build pipeline
+- [[naming-conventions]] — Conditional compilation naming

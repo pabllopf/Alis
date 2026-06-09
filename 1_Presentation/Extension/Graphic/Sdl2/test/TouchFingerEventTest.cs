@@ -37,6 +37,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class TouchFingerEventTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {
@@ -55,6 +58,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0u, evt.windowID);
         }
 
+        /// <summary>
+        /// Tests that should assign and retrieve all fields
+        /// </summary>
         [Fact]
         public void ShouldAssignAndRetrieveAllFields()
         {

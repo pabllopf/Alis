@@ -41,60 +41,90 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
     /// <seealso cref="VideoWriter" />
     public class VideoWriterTest
     {
+        /// <summary>
+        /// Tests that video writer file ctor should throw on null filename
+        /// </summary>
         [Fact]
         public void VideoWriter_FileCtor_ShouldThrowOnNullFilename()
         {
             Assert.Throws<ArgumentNullException>(() => new VideoWriter((string)null, 1920, 1080, 30));
         }
 
+        /// <summary>
+        /// Tests that video writer file ctor should throw on empty filename
+        /// </summary>
         [Fact]
         public void VideoWriter_FileCtor_ShouldThrowOnEmptyFilename()
         {
             Assert.Throws<ArgumentNullException>(() => new VideoWriter("", 1920, 1080, 30));
         }
 
+        /// <summary>
+        /// Tests that video writer file ctor should throw on zero width
+        /// </summary>
         [Fact]
         public void VideoWriter_FileCtor_ShouldThrowOnZeroWidth()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 0, 1080, 30));
         }
 
+        /// <summary>
+        /// Tests that video writer file ctor should throw on negative width
+        /// </summary>
         [Fact]
         public void VideoWriter_FileCtor_ShouldThrowOnNegativeWidth()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", -1, 1080, 30));
         }
 
+        /// <summary>
+        /// Tests that video writer file ctor should throw on zero height
+        /// </summary>
         [Fact]
         public void VideoWriter_FileCtor_ShouldThrowOnZeroHeight()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, 0, 30));
         }
 
+        /// <summary>
+        /// Tests that video writer file ctor should throw on negative height
+        /// </summary>
         [Fact]
         public void VideoWriter_FileCtor_ShouldThrowOnNegativeHeight()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, -1, 30));
         }
 
+        /// <summary>
+        /// Tests that video writer file ctor should throw on zero framerate
+        /// </summary>
         [Fact]
         public void VideoWriter_FileCtor_ShouldThrowOnZeroFramerate()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, 1080, 0));
         }
 
+        /// <summary>
+        /// Tests that video writer file ctor should throw on negative framerate
+        /// </summary>
         [Fact]
         public void VideoWriter_FileCtor_ShouldThrowOnNegativeFramerate()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, 1080, -1));
         }
 
+        /// <summary>
+        /// Tests that video writer stream ctor should throw on null stream
+        /// </summary>
         [Fact]
         public void VideoWriter_StreamCtor_ShouldThrowOnNullStream()
         {
             Assert.Throws<ArgumentNullException>(() => new VideoWriter((Stream)null, 1920, 1080, 30));
         }
 
+        /// <summary>
+        /// Tests that video writer stream ctor should throw on zero width
+        /// </summary>
         [Fact]
         public void VideoWriter_StreamCtor_ShouldThrowOnZeroWidth()
         {
@@ -104,6 +134,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that video writer stream ctor should throw on zero height
+        /// </summary>
         [Fact]
         public void VideoWriter_StreamCtor_ShouldThrowOnZeroHeight()
         {
@@ -113,6 +146,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that video writer stream ctor should throw on zero framerate
+        /// </summary>
         [Fact]
         public void VideoWriter_StreamCtor_ShouldThrowOnZeroFramerate()
         {
@@ -122,6 +158,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that video writer close write should throw when not opened
+        /// </summary>
         [Fact]
         public void VideoWriter_CloseWrite_ShouldThrowWhenNotOpened()
         {
@@ -130,6 +169,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidOperationException>(() => writer.CloseWrite());
         }
 
+        /// <summary>
+        /// Tests that video writer file ctor should create with default encoder options
+        /// </summary>
         [Fact]
         public void VideoWriter_FileCtor_ShouldCreateWithDefaultEncoderOptions()
         {
@@ -142,6 +184,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(30, writer.Framerate);
         }
 
+        /// <summary>
+        /// Tests that video writer stream ctor should create with default encoder options
+        /// </summary>
         [Fact]
         public void VideoWriter_StreamCtor_ShouldCreateWithDefaultEncoderOptions()
         {

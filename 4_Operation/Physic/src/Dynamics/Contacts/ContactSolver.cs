@@ -47,10 +47,25 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         private readonly struct ContactConstraintData
         {
+            /// <summary>
+            /// The cp
+            /// </summary>
             public readonly VelocityConstraintPoint Cp1;
+            /// <summary>
+            /// The cp
+            /// </summary>
             public readonly VelocityConstraintPoint Cp2;
+            /// <summary>
+            /// The normal
+            /// </summary>
             public readonly Vector2F Normal;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ContactConstraintData"/> class
+            /// </summary>
+            /// <param name="cp1">The cp</param>
+            /// <param name="cp2">The cp</param>
+            /// <param name="normal">The normal</param>
             public ContactConstraintData(VelocityConstraintPoint cp1, VelocityConstraintPoint cp2, Vector2F normal)
             {
                 Cp1 = cp1;
@@ -317,6 +332,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Initializes the velocity constraint points using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        /// <param name="points">The points</param>
+        /// <param name="data">The data</param>
         private static void InitializeVelocityConstraintPoints(ContactVelocityConstraint vc, FixedArray2<Vector2F> points, VelocityConstraintInitData data)
         {
             Vector2F cA = data.cA, cB = data.cB;
@@ -492,6 +513,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Acquires the contact locks using the specified index a
+        /// </summary>
+        /// <param name="indexA">The index</param>
+        /// <param name="indexB">The index</param>
         private void AcquireContactLocks(int indexA, int indexB)
         {
             while (true)
@@ -510,12 +536,31 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Releases the contact locks using the specified index b
+        /// </summary>
+        /// <param name="indexB">The index</param>
+        /// <param name="indexA">The index</param>
         private void ReleaseContactLocks(int indexB, int indexA)
         {
             Interlocked.Exchange(ref Locks[indexB], 0);
             Interlocked.Exchange(ref Locks[indexA], 0);
         }
 
+        /// <summary>
+        /// Solves the friction impulse using the specified vc
+        /// </summary>
+        /// <param name="vc">The vc</param>
+        /// <param name="vA">The </param>
+        /// <param name="wA">The </param>
+        /// <param name="vB">The </param>
+        /// <param name="wB">The </param>
+        /// <param name="normal">The normal</param>
+        /// <param name="friction">The friction</param>
+        /// <param name="mA">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="mB">The </param>
+        /// <param name="iB">The </param>
         private static void SolveFrictionImpulse(
             ContactVelocityConstraint vc,
             ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
@@ -548,6 +593,19 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Solves the single point normal using the specified v a
+        /// </summary>
+        /// <param name="vA">The </param>
+        /// <param name="wA">The </param>
+        /// <param name="vB">The </param>
+        /// <param name="wB">The </param>
+        /// <param name="vc">The vc</param>
+        /// <param name="normal">The normal</param>
+        /// <param name="mA">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="mB">The </param>
+        /// <param name="iB">The </param>
         private static void SolveSinglePointNormal(
             ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
             ContactVelocityConstraint vc, ref Vector2F normal,
@@ -572,6 +630,19 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             wB += iB * MathUtils.Cross(ref vcp.Rb, ref p);
         }
 
+        /// <summary>
+        /// Solves the two point normal using the specified v a
+        /// </summary>
+        /// <param name="vA">The </param>
+        /// <param name="wA">The </param>
+        /// <param name="vB">The </param>
+        /// <param name="wB">The </param>
+        /// <param name="vc">The vc</param>
+        /// <param name="normal">The normal</param>
+        /// <param name="mA">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="mB">The </param>
+        /// <param name="iB">The </param>
         private static void SolveTwoPointNormal(
             ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
             ContactVelocityConstraint vc, ref Vector2F normal,
@@ -634,6 +705,20 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Applies the block impulse using the specified v a
+        /// </summary>
+        /// <param name="vA">The </param>
+        /// <param name="wA">The </param>
+        /// <param name="vB">The </param>
+        /// <param name="wB">The </param>
+        /// <param name="x">The </param>
+        /// <param name="a">The </param>
+        /// <param name="constraint">The constraint</param>
+        /// <param name="mA">The </param>
+        /// <param name="iA">The </param>
+        /// <param name="mB">The </param>
+        /// <param name="iB">The </param>
         private static void ApplyBlockImpulse(
             ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
             Vector2F x, Vector2F a, ContactConstraintData constraint,
@@ -737,6 +822,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             return minSeparation >= -3.0f * SettingEnv.LinearSlop;
         }
 
+        /// <summary>
+        /// Gets the ordered indices using the specified pc
+        /// </summary>
+        /// <param name="pc">The pc</param>
+        /// <returns>The int int</returns>
         private static (int, int) GetOrderedIndices(ContactPositionConstraint pc)
         {
             int orderedIndexA = pc.IndexA;
@@ -749,6 +839,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             return (orderedIndexA, orderedIndexB);
         }
 
+        /// <summary>
+        /// Locks the bodies using the specified ordered index a
+        /// </summary>
+        /// <param name="orderedIndexA">The ordered index</param>
+        /// <param name="orderedIndexB">The ordered index</param>
         private void LockBodies(int orderedIndexA, int orderedIndexB)
         {
             while (true)
@@ -767,12 +862,22 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Unlocks the bodies using the specified ordered index a
+        /// </summary>
+        /// <param name="orderedIndexA">The ordered index</param>
+        /// <param name="orderedIndexB">The ordered index</param>
         private void UnlockBodies(int orderedIndexA, int orderedIndexB)
         {
             Interlocked.Exchange(ref Locks[orderedIndexB], 0);
             Interlocked.Exchange(ref Locks[orderedIndexA], 0);
         }
 
+        /// <summary>
+        /// Solves the contact position constraint using the specified pc
+        /// </summary>
+        /// <param name="pc">The pc</param>
+        /// <returns>The min separation</returns>
         private float SolveContactPositionConstraint(ContactPositionConstraint pc)
         {
             float minSeparation = 0.0f;

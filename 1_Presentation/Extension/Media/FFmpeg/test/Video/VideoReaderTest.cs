@@ -40,6 +40,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
     /// <seealso cref="VideoReader" />
     public class VideoReaderTest
     {
+        /// <summary>
+        /// Tests that video reader constructor should throw when file missing
+        /// </summary>
         [Fact]
         public void VideoReader_Constructor_ShouldThrowWhenFileMissing()
         {
@@ -48,6 +51,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<FileNotFoundException>(() => new VideoReader(missing));
         }
 
+        /// <summary>
+        /// Tests that video reader load should throw when metadata not loaded
+        /// </summary>
         [Fact]
         public void VideoReader_Load_ShouldThrowWhenMetadataNotLoaded()
         {

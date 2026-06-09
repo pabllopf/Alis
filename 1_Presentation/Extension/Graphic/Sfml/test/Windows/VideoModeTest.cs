@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The video mode test class
+    /// </summary>
     public class VideoModeTest
     {
+        /// <summary>
+        /// Tests that constructor with width and height sets defaults
+        /// </summary>
         [Fact]
         public void Constructor_WithWidthAndHeight_SetsDefaults()
         {
@@ -14,6 +20,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(32u, vm.BitsPerPixel);
         }
 
+        /// <summary>
+        /// Tests that constructor with width height and bpp sets all fields
+        /// </summary>
         [Fact]
         public void Constructor_WithWidthHeightAndBpp_SetsAllFields()
         {
@@ -23,6 +32,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(16u, vm.BitsPerPixel);
         }
 
+        /// <summary>
+        /// Tests that to string includes component names
+        /// </summary>
         [Fact]
         public void ToString_IncludesComponentNames()
         {

@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal 11 wm info test class
+    /// </summary>
     public class InternalX11WmInfoTest
     {
+        /// <summary>
+        /// Tests that internal x 11 wm info default initialization properties have default values
+        /// </summary>
         [Fact]
         public void InternalX11WmInfo_DefaultInitialization_PropertiesHaveDefaultValues()
         {
@@ -15,6 +21,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, info.Window);
         }
 
+        /// <summary>
+        /// Tests that internal x 11 wm info set properties stores values correctly
+        /// </summary>
         [Fact]
         public void InternalX11WmInfo_SetProperties_StoresValuesCorrectly()
         {
@@ -28,6 +37,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(new IntPtr(2000), info.Window);
         }
 
+        /// <summary>
+        /// Tests that internal x 11 wm info is value type copy is independent
+        /// </summary>
         [Fact]
         public void InternalX11WmInfo_IsValueType_CopyIsIndependent()
         {

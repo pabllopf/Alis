@@ -44,6 +44,9 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class WebSocketServerFactoryTest
     {
+        /// <summary>
+        /// Tests that constructor creates instance
+        /// </summary>
         [Fact]
         public void Constructor_CreatesInstance()
         {
@@ -55,6 +58,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(factory);
         }
 
+        /// <summary>
+        /// Tests that read http header from stream async reads valid header
+        /// </summary>
         [Fact]
         public async Task ReadHttpHeaderFromStreamAsync_ReadsValidHeader()
         {
@@ -73,6 +79,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("/chat", result.Path);
         }
 
+        /// <summary>
+        /// Tests that read http header from stream async returns correct protocols
+        /// </summary>
         [Fact]
         public async Task ReadHttpHeaderFromStreamAsync_ReturnsCorrectProtocols()
         {
@@ -91,6 +100,9 @@ namespace Alis.Extension.Network.Test
         }
 
 
+        /// <summary>
+        /// Tests that read http header from stream async returns correct path
+        /// </summary>
         [Fact]
         public async Task ReadHttpHeaderFromStreamAsync_ReturnsCorrectPath()
         {
@@ -107,6 +119,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("/chat?room=123", result.Path.Trim());
         }
 
+        /// <summary>
+        /// Tests that read http header from stream async returns http context with valid request
+        /// </summary>
         [Fact]
         public async Task ReadHttpHeaderFromStreamAsync_ReturnsHttpContextWithValidRequest()
         {
@@ -124,6 +139,9 @@ namespace Alis.Extension.Network.Test
         }
 
 
+        /// <summary>
+        /// Tests that read http header from stream async returns correct sub protocols
+        /// </summary>
         [Fact]
         public async Task ReadHttpHeaderFromStreamAsync_ReturnsCorrectSubProtocols()
         {

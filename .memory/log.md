@@ -7,3 +7,11 @@
 - Created entity page: Alis
 - Created concept pages: Layered Architecture, Aspect-Oriented Design, Solution Composition, Generator Pattern, Multi-Platform Samples, Alis Architecture Overview
 - Updated index.md with all pages and cross-references
+
+## Related
+
+- [[execution-log]] — Detailed execution history
+- [[session-history]] — Session tracking
+- [[current-session]] — Active session state
+- [[session-summary]] — Memory generation session summary
+- [[index]] — Memory system index

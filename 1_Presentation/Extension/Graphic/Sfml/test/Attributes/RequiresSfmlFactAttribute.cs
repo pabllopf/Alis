@@ -4,9 +4,16 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Attributes
 {
+    /// <summary>
+    /// The requires sfml fact attribute class
+    /// </summary>
+    /// <seealso cref="FactAttribute"/>
     [ExcludeFromCodeCoverage]
     public class RequiresSfmlFactAttribute : FactAttribute
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequiresSfmlFactAttribute"/> class
+        /// </summary>
         public RequiresSfmlFactAttribute()
         {
             try

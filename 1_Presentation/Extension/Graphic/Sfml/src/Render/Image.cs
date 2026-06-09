@@ -44,6 +44,9 @@ namespace Alis.Extension.Graphic.Sfml.Render
     /// </summary>
     public class Image : ObjectBase
     {
+        /// <summary>
+        /// The resource name
+        /// </summary>
         private const string _resourceName = "image";
 
         /// <summary>

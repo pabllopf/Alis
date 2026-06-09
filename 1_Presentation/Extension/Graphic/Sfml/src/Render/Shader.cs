@@ -1135,6 +1135,9 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         public class CurrentTextureType
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="CurrentTextureType"/> class
+            /// </summary>
             public CurrentTextureType() { }
         }
     }

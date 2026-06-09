@@ -277,6 +277,12 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
         }
 
+        /// <summary>
+        /// Computes the pressed keys using the specified new keys
+        /// </summary>
+        /// <param name="newKeys">The new keys</param>
+        /// <param name="currentKeys">The current keys</param>
+        /// <returns>The pressed</returns>
         private static HashSet<ConsoleKey> ComputePressedKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys)
         {
             HashSet<ConsoleKey> pressed = new HashSet<ConsoleKey>(newKeys);
@@ -284,6 +290,12 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             return pressed;
         }
 
+        /// <summary>
+        /// Computes the held keys using the specified new keys
+        /// </summary>
+        /// <param name="newKeys">The new keys</param>
+        /// <param name="currentKeys">The current keys</param>
+        /// <returns>The held</returns>
         private static HashSet<ConsoleKey> ComputeHeldKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys)
         {
             HashSet<ConsoleKey> held = new HashSet<ConsoleKey>(newKeys);
@@ -291,6 +303,12 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             return held;
         }
 
+        /// <summary>
+        /// Computes the released keys using the specified current keys
+        /// </summary>
+        /// <param name="currentKeys">The current keys</param>
+        /// <param name="newKeys">The new keys</param>
+        /// <returns>The released</returns>
         private static HashSet<ConsoleKey> ComputeReleasedKeys(HashSet<ConsoleKey> currentKeys, HashSet<ConsoleKey> newKeys)
         {
             HashSet<ConsoleKey> released = new HashSet<ConsoleKey>(currentKeys);
@@ -298,6 +316,12 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             return released;
         }
 
+        /// <summary>
+        /// Updates the key timestamps using the specified pressed keys
+        /// </summary>
+        /// <param name="pressedKeys">The pressed keys</param>
+        /// <param name="releasedKeys">The released keys</param>
+        /// <param name="now">The now</param>
         private void UpdateKeyTimestamps(HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
         {
             foreach (ConsoleKey key in pressedKeys)
@@ -311,6 +335,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
         }
 
+        /// <summary>
+        /// Processes the key event components using the specified pressed keys
+        /// </summary>
+        /// <param name="pressedKeys">The pressed keys</param>
+        /// <param name="heldKeys">The held keys</param>
+        /// <param name="releasedKeys">The released keys</param>
+        /// <param name="now">The now</param>
         private void ProcessKeyEventComponents(HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> heldKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
         {
             foreach (GameObject gameObject in Context.SceneManager.CurrentWorld
@@ -325,6 +356,15 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
         }
 
+        /// <summary>
+        /// Processes the key event for component using the specified component type
+        /// </summary>
+        /// <param name="componentType">The component type</param>
+        /// <param name="gameObject">The game object</param>
+        /// <param name="pressedKeys">The pressed keys</param>
+        /// <param name="heldKeys">The held keys</param>
+        /// <param name="releasedKeys">The released keys</param>
+        /// <param name="now">The now</param>
         private void ProcessKeyEventForComponent(Type componentType, GameObject gameObject, HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> heldKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
         {
             if (typeof(IOnPressKey).IsAssignableFrom(componentType))
@@ -357,6 +397,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
         }
 
+        /// <summary>
+        /// Renders the box colliders using the specified box collider game objects
+        /// </summary>
+        /// <param name="boxColliderGameObjects">The box collider game objects</param>
+        /// <param name="physicSettings">The physic settings</param>
+        /// <param name="camera">The camera</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
         private static void RenderBoxColliders(GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects, PhysicSetting physicSettings, RefTuple<Camera> camera, float pixelsPerMeter)
         {
             foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
@@ -372,6 +419,12 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
         }
 
+        /// <summary>
+        /// Renders the sprites using the specified sprite game objects
+        /// </summary>
+        /// <param name="spriteGameObjects">The sprite game objects</param>
+        /// <param name="camera">The camera</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
         private static void RenderSprites(GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects, RefTuple<Camera> camera, float pixelsPerMeter)
         {
             foreach (GameObject spriteGameobject in spriteGameObjects)

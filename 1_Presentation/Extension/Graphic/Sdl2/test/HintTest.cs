@@ -3,8 +3,14 @@ using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The hint test class
+    /// </summary>
     public class HintTest
     {
+        /// <summary>
+        /// Tests that should have non empty constants
+        /// </summary>
         [Fact]
         public void ShouldHaveNonEmptyConstants()
         {

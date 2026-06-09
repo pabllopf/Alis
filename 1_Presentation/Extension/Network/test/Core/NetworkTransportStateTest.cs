@@ -38,6 +38,9 @@ namespace Alis.Extension.Network.Test.Core
     /// </summary>
     public class NetworkTransportStateTest
     {
+        /// <summary>
+        /// Tests that disconnected returns correct value
+        /// </summary>
         [Fact]
         public void Disconnected_ReturnsCorrectValue()
         {
@@ -51,6 +54,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(expectedState, actualState);
         }
 
+        /// <summary>
+        /// Tests that connecting returns correct value
+        /// </summary>
         [Fact]
         public void Connecting_ReturnsCorrectValue()
         {
@@ -64,6 +70,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(expectedState, actualState);
         }
 
+        /// <summary>
+        /// Tests that connected returns correct value
+        /// </summary>
         [Fact]
         public void Connected_ReturnsCorrectValue()
         {
@@ -77,6 +86,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(expectedState, actualState);
         }
 
+        /// <summary>
+        /// Tests that disconnecting returns correct value
+        /// </summary>
         [Fact]
         public void Disconnecting_ReturnsCorrectValue()
         {
@@ -90,6 +102,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(expectedState, actualState);
         }
 
+        /// <summary>
+        /// Tests that all values are defined
+        /// </summary>
         [Fact]
         public void AllValuesAreDefined()
         {

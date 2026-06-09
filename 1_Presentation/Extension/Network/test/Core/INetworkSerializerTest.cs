@@ -40,17 +40,46 @@ namespace Alis.Extension.Network.Test.Core
     /// </summary>
     public class INetworkSerializerTest
     {
+        /// <summary>
+        /// The test network serializer class
+        /// </summary>
+        /// <seealso cref="INetworkSerializer"/>
         private class TestNetworkSerializer : INetworkSerializer
         {
+            /// <summary>
+            /// Serializes the envelope using the specified envelope
+            /// </summary>
+            /// <param name="envelope">The envelope</param>
+            /// <returns>The string</returns>
             public string SerializeEnvelope(NetworkMessageEnvelope envelope) => "{}";
             
+            /// <summary>
+            /// Deserializes the envelope using the specified json
+            /// </summary>
+            /// <param name="json">The json</param>
+            /// <returns>The network message envelope</returns>
             public NetworkMessageEnvelope DeserializeEnvelope(string json) => new NetworkMessageEnvelope();
             
+            /// <summary>
+            /// Serializes the obj
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="obj">The obj</param>
+            /// <returns>The string</returns>
             string INetworkSerializer.Serialize<T>(T obj) => "{}";
+            /// <summary>
+            /// Deserializes the json
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="json">The json</param>
+            /// <returns>The</returns>
             T INetworkSerializer.Deserialize<T>(string json) => default;
         }
         
 
+        /// <summary>
+        /// Tests that deserialize envelope deserializes envelope
+        /// </summary>
         [Fact]
         public void DeserializeEnvelope_DeserializesEnvelope()
         {

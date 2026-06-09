@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The sensor event test class
+    /// </summary>
     public class SensorEventTest
     {
+        /// <summary>
+        /// Tests that sensor event default has zero values
+        /// </summary>
         [Fact]
         public void SensorEvent_Default_HasZeroValues()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0.0f, e.Z);
         }
 
+        /// <summary>
+        /// Tests that sensor event args constructor sets properties
+        /// </summary>
         [Fact]
         public void SensorEventArgs_Constructor_SetsProperties()
         {
@@ -55,6 +64,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(3.0f, args.Z);
         }
 
+        /// <summary>
+        /// Tests that sensor event args to string includes property names
+        /// </summary>
         [Fact]
         public void SensorEventArgs_ToString_IncludesPropertyNames()
         {

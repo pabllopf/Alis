@@ -37,6 +37,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class SensorEventTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {

@@ -332,6 +332,11 @@ namespace Alis.Core.Physic.Dynamics
             ContactManager.FindNewContacts();
         }
 
+        /// <summary>
+        /// Shoulds the process body using the specified body
+        /// </summary>
+        /// <param name="body">The body</param>
+        /// <returns>The bool</returns>
         private static bool ShouldProcessBody(Body body)
         {
             if (body.Island)
@@ -352,6 +357,11 @@ namespace Alis.Core.Physic.Dynamics
             return true;
         }
 
+        /// <summary>
+        /// Processes the body at using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <param name="step">The step</param>
         private void ProcessBodyAt(int index, ref TimeStep step)
         {
             Body seed = BodyList.List[index];
@@ -367,6 +377,9 @@ namespace Alis.Core.Physic.Dynamics
             ClearIslandFlagsForStaticBodies();
         }
 
+        /// <summary>
+        /// Clears the island flags for static bodies
+        /// </summary>
         private void ClearIslandFlagsForStaticBodies()
         {
             for (int i = 0; i < GetIsland.BodyCount; ++i)
@@ -379,6 +392,9 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Synchronizes the non static island bodies
+        /// </summary>
         private void SynchronizeNonStaticIslandBodies()
         {
             foreach (Body b in BodyList)
@@ -392,6 +408,9 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Clears the island flags
+        /// </summary>
         private void ClearIslandFlags()
         {
             foreach (Body b in BodyList)
@@ -410,6 +429,10 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Builds the island dfs using the specified seed
+        /// </summary>
+        /// <param name="seed">The seed</param>
         private void BuildIslandDFS(Body seed)
         {
             int stackCount = 0;
@@ -432,6 +455,11 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Processes the contact edges using the specified b
+        /// </summary>
+        /// <param name="b">The </param>
+        /// <param name="stackCount">The stack count</param>
         private void ProcessContactEdges(Body b, ref int stackCount)
         {
             for (ContactEdge ce = b.ContactList; ce != null; ce = ce.Next)
@@ -468,6 +496,11 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Processes the joint edges using the specified b
+        /// </summary>
+        /// <param name="b">The </param>
+        /// <param name="stackCount">The stack count</param>
         private void ProcessJointEdges(Body b, ref int stackCount)
         {
             for (JointEdge je = b.JointList; je != null; je = je.Next)
@@ -647,6 +680,11 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Shoulds the skip contact alpha using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The bool</returns>
         private static bool ShouldSkipContactAlpha(Contact c)
         {
             Fixture fA = c.FixtureA;
@@ -677,6 +715,11 @@ namespace Alis.Core.Physic.Dynamics
             return !collideA && !collideB;
         }
 
+        /// <summary>
+        /// Calculates the contact alpha using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <returns>The float</returns>
         private float CalculateContactAlpha(Contact c)
         {
             if (c.ToiFlag)
@@ -741,6 +784,12 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Processes the toi contact using the specified ce
+        /// </summary>
+        /// <param name="ce">The ce</param>
+        /// <param name="body">The body</param>
+        /// <param name="minAlpha">The min alpha</param>
         private void ProcessToiContact(ContactEdge ce, Body body, float minAlpha)
         {
             Contact contact = ce.Contact;
@@ -1746,6 +1795,10 @@ namespace Alis.Core.Physic.Dynamics
             _gravity = physicGravity;
         }
 
+        /// <summary>
+        /// Connects the joint non fixed using the specified joint
+        /// </summary>
+        /// <param name="joint">The joint</param>
         private static void ConnectJointNonFixed(Joint joint)
         {
             if (joint.IsFixedType())
@@ -1768,6 +1821,10 @@ namespace Alis.Core.Physic.Dynamics
             FlagContactsForJointFiltering(joint);
         }
 
+        /// <summary>
+        /// Flags the contacts for joint filtering using the specified joint
+        /// </summary>
+        /// <param name="joint">The joint</param>
         private static void FlagContactsForJointFiltering(Joint joint)
         {
             if (joint.CollideConnected)
@@ -1789,6 +1846,11 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Removes the joint edge a using the specified joint
+        /// </summary>
+        /// <param name="joint">The joint</param>
+        /// <param name="bodyA">The body</param>
         private static void RemoveJointEdgeA(Joint joint, Body bodyA)
         {
             if (joint.EdgeA.Prev != null)
@@ -1810,6 +1872,11 @@ namespace Alis.Core.Physic.Dynamics
             joint.EdgeA.Next = null;
         }
 
+        /// <summary>
+        /// Removes the joint edge b using the specified joint
+        /// </summary>
+        /// <param name="joint">The joint</param>
+        /// <param name="bodyB">The body</param>
         private static void RemoveJointEdgeB(Joint joint, Body bodyB)
         {
             if (joint.IsFixedType())
@@ -1836,6 +1903,13 @@ namespace Alis.Core.Physic.Dynamics
             joint.EdgeB.Next = null;
         }
 
+        /// <summary>
+        /// Flags the contacts for joint removal using the specified joint
+        /// </summary>
+        /// <param name="joint">The joint</param>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="collideConnected">The collide connected</param>
         private static void FlagContactsForJointRemoval(Joint joint, Body bodyA, Body bodyB, bool collideConnected)
         {
             if (joint.IsFixedType() || collideConnected)
@@ -1855,6 +1929,12 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
+        /// <summary>
+        /// Executes the step physics using the specified dt
+        /// </summary>
+        /// <param name="dt">The dt</param>
+        /// <param name="step">The step</param>
+        /// <param name="iterations">The iterations</param>
         private void ExecuteStepPhysics(float dt, ref TimeStep step, ref SolverIterations iterations)
         {
             for (int i = 0; i < ControllerList.List.Count; i++)

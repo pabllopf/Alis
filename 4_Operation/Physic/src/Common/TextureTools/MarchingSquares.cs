@@ -139,17 +139,60 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// </summary>
         private readonly struct MarchCellContext
         {
+            /// <summary>
+            /// The 
+            /// </summary>
             public readonly sbyte[,] F;
+            /// <summary>
+            /// The fs
+            /// </summary>
             public readonly sbyte[,] Fs;
+            /// <summary>
+            /// The ps
+            /// </summary>
             public readonly GeomPolyVal[,] Ps;
+            /// <summary>
+            /// The domain
+            /// </summary>
             public readonly Aabb Domain;
+            /// <summary>
+            /// The xn
+            /// </summary>
             public readonly int Xn;
+            /// <summary>
+            /// The cell width
+            /// </summary>
             public readonly float CellWidth;
+            /// <summary>
+            /// The cell height
+            /// </summary>
             public readonly float CellHeight;
+            /// <summary>
+            /// The lerp count
+            /// </summary>
             public readonly int LerpCount;
+            /// <summary>
+            /// The combine
+            /// </summary>
             public readonly bool Combine;
+            /// <summary>
+            /// The ret
+            /// </summary>
             public readonly CxFastList<GeomPoly> Ret;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="MarchCellContext"/> class
+            /// </summary>
+            /// <param name="f">The </param>
+            /// <param name="fs">The fs</param>
+            /// <param name="ps">The ps</param>
+            /// <param name="domain">The domain</param>
+            /// <param name="xn">The xn</param>
+            /// <param name="cellWidth">The cell width</param>
+            /// <param name="lerpCount">The lerp count</param>
+            /// <param name="combine">The combine</param>
+            /// <param name="ret">The ret</param>
+            /// <param name="cellHeight">The cell height</param>
             public MarchCellContext(sbyte[,] f, sbyte[,] fs, GeomPolyVal[,] ps, Aabb domain,
                 int xn, float cellWidth, int lerpCount, bool combine,
                 CxFastList<GeomPoly> ret, float cellHeight)
@@ -167,6 +210,20 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
         }
 
+        /// <summary>
+        /// Processes the grid cells using the specified f
+        /// </summary>
+        /// <param name="f">The </param>
+        /// <param name="fs">The fs</param>
+        /// <param name="ps">The ps</param>
+        /// <param name="domain">The domain</param>
+        /// <param name="xn">The xn</param>
+        /// <param name="yn">The yn</param>
+        /// <param name="cellWidth">The cell width</param>
+        /// <param name="cellHeight">The cell height</param>
+        /// <param name="lerpCount">The lerp count</param>
+        /// <param name="combine">The combine</param>
+        /// <returns>The ret</returns>
         private static CxFastList<GeomPoly> ProcessGridCells(sbyte[,] f, sbyte[,] fs, GeomPolyVal[,] ps, Aabb domain,
             int xn, int yn, float cellWidth, float cellHeight, int lerpCount, bool combine)
         {
@@ -188,6 +245,14 @@ namespace Alis.Core.Physic.Common.TextureTools
             return ret;
         }
 
+        /// <summary>
+        /// Processes the cell using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y0">The </param>
+        /// <param name="y1">The </param>
+        /// <param name="pre">The pre</param>
+        /// <param name="ctx">The ctx</param>
         private static void ProcessCell(int x, float y0, float y1, ref GeomPoly pre, MarchCellContext ctx)
         {
             float x0 = x * ctx.CellWidth + ctx.Domain.LowerBound.X;
@@ -260,6 +325,13 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
         }
 
+        /// <summary>
+        /// Cans the combine using the specified ps
+        /// </summary>
+        /// <param name="ps">The ps</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The bool</returns>
         private static bool CanCombine(GeomPolyVal[,] ps, int x, int y)
         {
             GeomPolyVal p = ps[x, y];
@@ -277,6 +349,13 @@ namespace Alis.Core.Physic.Common.TextureTools
             return true;
         }
 
+        /// <summary>
+        /// Finds the starting point using the specified bp
+        /// </summary>
+        /// <param name="bp">The bp</param>
+        /// <param name="ay">The ay</param>
+        /// <param name="ax">The ax</param>
+        /// <returns>The bi</returns>
         private static CxFastListNode<Vector2F> FindStartingPoint(CxFastList<Vector2F> bp, float ay, float ax)
         {
             CxFastListNode<Vector2F> bi = bp.Begin();
@@ -288,12 +367,24 @@ namespace Alis.Core.Physic.Common.TextureTools
             return bi;
         }
 
+        /// <summary>
+        /// Hases the valid start using the specified bi
+        /// </summary>
+        /// <param name="bi">The bi</param>
+        /// <param name="ay">The ay</param>
+        /// <returns>The bool</returns>
         private static bool HasValidStart(CxFastListNode<Vector2F> bi, float ay)
         {
             Vector2F b1 = bi.NextPos().GetElem();
             return Square(b1.Y - ay) <= SettingEnv.Epsilon;
         }
 
+        /// <summary>
+        /// Hases the matching vertex using the specified ap
+        /// </summary>
+        /// <param name="ap">The ap</param>
+        /// <param name="b1">The </param>
+        /// <returns>The bool</returns>
         private static bool HasMatchingVertex(CxFastList<Vector2F> ap, Vector2F b1)
         {
             CxFastListNode<Vector2F> ai = ap.Begin();
@@ -310,6 +401,12 @@ namespace Alis.Core.Physic.Common.TextureTools
             return false;
         }
 
+        /// <summary>
+        /// Merges the polygons using the specified u
+        /// </summary>
+        /// <param name="u">The </param>
+        /// <param name="p">The </param>
+        /// <param name="bi">The bi</param>
         private static void MergePolygons(GeomPolyVal u, GeomPolyVal p, CxFastListNode<Vector2F> bi)
         {
             CxFastList<Vector2F> bp = p.GeomP.Points;
@@ -335,6 +432,15 @@ namespace Alis.Core.Physic.Common.TextureTools
             }
         }
 
+        /// <summary>
+        /// Updates the polygon references using the specified ps
+        /// </summary>
+        /// <param name="ps">The ps</param>
+        /// <param name="x">The </param>
+        /// <param name="xn">The xn</param>
+        /// <param name="y">The </param>
+        /// <param name="oldPoly">The old poly</param>
+        /// <param name="newPoly">The new poly</param>
         private static void UpdatePolygonReferences(GeomPolyVal[,] ps, int x, int xn, int y, GeomPoly oldPoly, GeomPoly newPoly)
         {
             for (int ax2 = x + 1; ax2 < xn; ax2++)
@@ -856,6 +962,11 @@ namespace Alis.Core.Physic.Common.TextureTools
                 return null;
             }
 
+            /// <summary>
+            /// Finds the non default using the specified value
+            /// </summary>
+            /// <param name="value">The value</param>
+            /// <returns>A cx fast list node of t</returns>
             private CxFastListNode<T> FindNonDefault(T value)
             {
                 CxFastListNode<T> head = _head;
@@ -873,6 +984,10 @@ namespace Alis.Core.Physic.Common.TextureTools
                 return null;
             }
 
+            /// <summary>
+            /// Finds the default
+            /// </summary>
+            /// <returns>A cx fast list node of t</returns>
             private CxFastListNode<T> FindDefault()
             {
                 CxFastListNode<T> head = _head;

@@ -4,8 +4,14 @@ using Alis.Extension.Graphic.Sdl2.Enums;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The generic event test class
+    /// </summary>
     public class GenericEventTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {
@@ -13,6 +19,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0u, evt.timestamp);
         }
 
+        /// <summary>
+        /// Tests that should assign type and timestamp
+        /// </summary>
         [Fact]
         public void ShouldAssignTypeAndTimestamp()
         {

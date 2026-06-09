@@ -26,6 +26,9 @@ namespace Alis.Core.Audio.Test.Players
     /// </summary>
     public class UnixPlayerBaseInternalTests
     {
+        /// <summary>
+        /// Handles the playback finished with playing true should set playing false
+        /// </summary>
         [MacOsOnly]
         public void HandlePlaybackFinished_WithPlayingTrue_ShouldSetPlayingFalse()
         {
@@ -44,6 +47,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False((bool) playingProperty.GetValue(player));
         }
 
+        /// <summary>
+        /// Handles the playback finished with playing false should not change state
+        /// </summary>
         [MacOsOnly]
         public void HandlePlaybackFinished_WithPlayingFalse_ShouldNotChangeState()
         {
@@ -62,6 +68,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False((bool) playingProperty.GetValue(player));
         }
 
+        /// <summary>
+        /// Handles the playback finished should invoke playback finished event
+        /// </summary>
         [MacOsOnly]
         public void HandlePlaybackFinished_ShouldInvokePlaybackFinishedEvent()
         {
@@ -83,6 +92,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(eventRaised);
         }
 
+        /// <summary>
+        /// Handles the playback finished with null event args should not throw
+        /// </summary>
         [MacOsOnly]
         public void HandlePlaybackFinished_WithNullEventArgs_ShouldNotThrow()
         {
@@ -99,6 +111,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Handles the playback finished with custom event args should pass event args
+        /// </summary>
         [MacOsOnly]
         public void HandlePlaybackFinished_WithCustomEventArgs_ShouldPassEventArgs()
         {
@@ -122,6 +137,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Same(customArgs, receivedArgs);
         }
 
+        /// <summary>
+        /// Handles the playback finished multiple invocations should only fire once per playing state
+        /// </summary>
         [MacOsOnly]
         public void HandlePlaybackFinished_MultipleInvocations_ShouldOnlyFireOncePerPlayingState()
         {
@@ -144,6 +162,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(1, eventCount);
         }
 
+        /// <summary>
+        /// Playings the property should be private set
+        /// </summary>
         [MacOsOnly]
         public void Playing_Property_ShouldBePrivateSet()
         {
@@ -159,6 +180,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(playingProperty.SetMethod.IsPublic);
         }
 
+        /// <summary>
+        /// Pauseds the property should be private set
+        /// </summary>
         [MacOsOnly]
         public void Paused_Property_ShouldBePrivateSet()
         {
@@ -174,6 +198,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(pausedProperty.SetMethod.IsPublic);
         }
 
+        /// <summary>
+        /// Pauses the process command constant should be defined
+        /// </summary>
         [MacOsOnly]
         public void PauseProcessCommand_Constant_ShouldBeDefined()
         {
@@ -186,6 +213,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(pauseCommandField);
         }
 
+        /// <summary>
+        /// Resumes the process command constant should be defined
+        /// </summary>
         [MacOsOnly]
         public void ResumeProcessCommand_Constant_ShouldBeDefined()
         {
@@ -202,6 +232,9 @@ namespace Alis.Core.Audio.Test.Players
 
 
 
+        /// <summary>
+        /// Gets the audio duration with valid file should return positive value
+        /// </summary>
         [MacOsOnly]
         public void GetAudioDuration_WithValidFile_ShouldReturnPositiveValue()
         {
@@ -230,6 +263,9 @@ namespace Alis.Core.Audio.Test.Players
         }
         
 
+        /// <summary>
+        /// Gets the audio duration with null file should throw exception
+        /// </summary>
         [MacOsOnly]
         public void GetAudioDuration_WithNullFile_ShouldThrowException()
         {
@@ -244,6 +280,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(exception.InnerException);
         }
 
+        /// <summary>
+        /// Extracts the wav from resources async with null file name should throw exception
+        /// </summary>
         [MacOsOnly]
         public void ExtractWavFromResourcesAsync_WithNullFileName_ShouldThrowException()
         {
@@ -258,6 +297,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(exception.InnerException);
         }
 
+        /// <summary>
+        /// Extracts the wav from resources async with empty file name should throw exception
+        /// </summary>
         [MacOsOnly]
         public void ExtractWavFromResourcesAsync_WithEmptyFileName_ShouldThrowException()
         {
@@ -272,6 +314,10 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(exception.InnerException);
         }
         
+        /// <summary>
+        /// Creates the minimal wav file
+        /// </summary>
+        /// <returns>The wav</returns>
         private byte[] CreateMinimalWavFile()
         {
             byte[] wav = new byte[44 + 100];

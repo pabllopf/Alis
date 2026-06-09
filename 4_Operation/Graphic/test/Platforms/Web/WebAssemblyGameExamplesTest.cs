@@ -38,24 +38,36 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     /// </summary>
     public class WebAssemblyGameExamplesTest
     {
+        /// <summary>
+        /// Tests that basic game loop example skipped on non browser
+        /// </summary>
         [Fact]
         public void BasicGameLoopExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that gamepad input example skipped on non browser
+        /// </summary>
         [Fact]
         public void GamepadInputExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that display management example skipped on non browser
+        /// </summary>
         [Fact]
         public void DisplayManagementExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that fps game example skipped on non browser
+        /// </summary>
         [Fact]
         public void FpsGameExample_SkippedOnNonBrowser()
         {
@@ -66,6 +78,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Tests that game development utils apply deadzone within deadzone zeroes output
+        /// </summary>
         [Fact]
         public void GameDevelopmentUtils_ApplyDeadzone_WithinDeadzone_ZeroesOutput()
         {
@@ -76,6 +91,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, y);
         }
 
+        /// <summary>
+        /// Tests that game development utils apply deadzone outside deadzone normalizes
+        /// </summary>
         [Fact]
         public void GameDevelopmentUtils_ApplyDeadzone_OutsideDeadzone_Normalizes()
         {
@@ -86,6 +104,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True((magnitude > 0) && (magnitude <= 1.0f));
         }
 
+        /// <summary>
+        /// Tests that game development utils apply deadzone zero input stays zero
+        /// </summary>
         [Fact]
         public void GameDevelopmentUtils_ApplyDeadzone_ZeroInput_StaysZero()
         {
@@ -96,6 +117,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, y);
         }
 
+        /// <summary>
+        /// Tests that game development utils apply deadzone custom deadzone works
+        /// </summary>
         [Fact]
         public void GameDevelopmentUtils_ApplyDeadzone_CustomDeadzone_Works()
         {
@@ -106,6 +130,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(magnitude > 0);
         }
 
+        /// <summary>
+        /// Tests that game development utils apply deadzone at deadzone boundary zeroes output
+        /// </summary>
         [Fact]
         public void GameDevelopmentUtils_ApplyDeadzone_AtDeadzoneBoundary_ZeroesOutput()
         {
@@ -116,6 +143,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, y);
         }
 
+        /// <summary>
+        /// Tests that game development utils normalize input within bounds no change
+        /// </summary>
         [Fact]
         public void GameDevelopmentUtils_NormalizeInput_WithinBounds_NoChange()
         {
@@ -126,6 +156,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.4f, y, 5);
         }
 
+        /// <summary>
+        /// Tests that game development utils normalize input exceeds bounds normalizes
+        /// </summary>
         [Fact]
         public void GameDevelopmentUtils_NormalizeInput_ExceedsBounds_Normalizes()
         {
@@ -136,6 +169,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, y, 5);
         }
 
+        /// <summary>
+        /// Tests that game development utils normalize input zero input no change
+        /// </summary>
         [Fact]
         public void GameDevelopmentUtils_NormalizeInput_ZeroInput_NoChange()
         {
@@ -147,6 +183,11 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         }
 
         
+        /// <summary>
+        /// Games the development utils get gamepad button name returns correct name using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <param name="expected">The expected</param>
         [InlineData(0, "A / Cross")]
         [InlineData(1, "B / Circle")]
         [InlineData(2, "X / Square")]
@@ -168,6 +209,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(expected, name);
         }
 
+        /// <summary>
+        /// Tests that game development utils get key name delegates to input manager
+        /// </summary>
         [Fact]
         public void GameDevelopmentUtils_GetKeyName_DelegatesToInputManager()
         {

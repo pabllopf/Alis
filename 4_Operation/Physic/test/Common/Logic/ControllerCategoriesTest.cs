@@ -38,36 +38,54 @@ namespace Alis.Core.Physic.Test.Common.Logic
     /// </summary>
     public class ControllerCategoriesTest
     {
+        /// <summary>
+        /// Tests that none value should be zero
+        /// </summary>
         [Fact]
         public void NoneValue_ShouldBeZero()
         {
             Assert.Equal(0x00000000, (int)ControllerCategories.None);
         }
 
+        /// <summary>
+        /// Tests that cat 01 value should be 0x 00000001
+        /// </summary>
         [Fact]
         public void Cat01Value_ShouldBe0x00000001()
         {
             Assert.Equal(0x00000001, (int)ControllerCategories.Cat01);
         }
 
+        /// <summary>
+        /// Tests that cat 02 value should be 0x 00000002
+        /// </summary>
         [Fact]
         public void Cat02Value_ShouldBe0x00000002()
         {
             Assert.Equal(0x00000002, (int)ControllerCategories.Cat02);
         }
 
+        /// <summary>
+        /// Tests that cat 31 value should be 0x 40000000
+        /// </summary>
         [Fact]
         public void Cat31Value_ShouldBe0x40000000()
         {
             Assert.Equal(0x40000000, (int)ControllerCategories.Cat31);
         }
 
+        /// <summary>
+        /// Tests that all value should be int max value
+        /// </summary>
         [Fact]
         public void AllValue_ShouldBeIntMaxValue()
         {
             Assert.Equal(int.MaxValue, (int)ControllerCategories.All);
         }
 
+        /// <summary>
+        /// Tests that controller categories should support bitwise or
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldSupportBitwiseOr()
         {
@@ -76,6 +94,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Equal(0x00000003, (int)combined);
         }
 
+        /// <summary>
+        /// Tests that controller categories should support bitwise and
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldSupportBitwiseAnd()
         {
@@ -85,6 +106,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Equal(ControllerCategories.Cat01, result);
         }
 
+        /// <summary>
+        /// Tests that controller categories should support bitwise xor
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldSupportBitwiseXor()
         {
@@ -94,6 +118,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Equal(ControllerCategories.Cat02, result);
         }
 
+        /// <summary>
+        /// Tests that controller categories should support bitwise negation
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldSupportBitwiseNegation()
         {
@@ -103,6 +130,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.False(inverted.HasFlag(ControllerCategories.Cat01));
         }
 
+        /// <summary>
+        /// Tests that controller categories should support has flag
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldSupportHasFlag()
         {
@@ -114,6 +144,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.False(multi.HasFlag(ControllerCategories.Cat04));
         }
 
+        /// <summary>
+        /// Tests that all category should contain all categories
+        /// </summary>
         [Fact]
         public void AllCategory_ShouldContainAllCategories()
         {
@@ -122,6 +155,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(ControllerCategories.All.HasFlag(ControllerCategories.Cat31));
         }
 
+        /// <summary>
+        /// Tests that controller categories should be flags enum
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldBeFlagsEnum()
         {
@@ -130,6 +166,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotEmpty(attributes);
         }
 
+        /// <summary>
+        /// Tests that controller categories should support multiple flags
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldSupportMultipleFlags()
         {
@@ -142,6 +181,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.False((multi & ControllerCategories.Cat02) != 0);
         }
 
+        /// <summary>
+        /// Tests that controller categories should support equality check
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldSupportEqualityCheck()
         {
@@ -152,6 +194,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(cat1 == cat2);
         }
 
+        /// <summary>
+        /// Tests that controller categories should support inequality check
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldSupportInequalityCheck()
         {
@@ -162,6 +207,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(cat1 != cat2);
         }
 
+        /// <summary>
+        /// Tests that controller categories should convert to int
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldConvertToInt()
         {
@@ -171,6 +219,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Equal(0x00000010, value);
         }
 
+        /// <summary>
+        /// Tests that controller categories should convert from int
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldConvertFromInt()
         {
@@ -179,6 +230,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Equal(ControllerCategories.Cat04, cat);
         }
 
+        /// <summary>
+        /// Tests that controller categories should have all 31 categories
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldHaveAll31Categories()
         {
@@ -189,6 +243,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             }
         }
 
+        /// <summary>
+        /// Tests that controller categories should support complex combination
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldSupportComplexCombination()
         {
@@ -203,6 +260,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(complex.HasFlag(ControllerCategories.Cat11));
         }
 
+        /// <summary>
+        /// Tests that controller categories should support remove flag
+        /// </summary>
         [Fact]
         public void ControllerCategories_ShouldSupportRemoveFlag()
         {

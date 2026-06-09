@@ -38,6 +38,9 @@ namespace Alis.Extension.Network.Test.Core
     /// </summary>
     public class NetworkConfigTest
     {
+        /// <summary>
+        /// Tests that max players default value is 32
+        /// </summary>
         [Fact]
         public void MaxPlayers_DefaultValueIs32()
         {
@@ -51,6 +54,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(32, result);
         }
 
+        /// <summary>
+        /// Tests that max players set value
+        /// </summary>
         [Fact]
         public void MaxPlayers_SetValue()
         {
@@ -64,6 +70,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(64, config.MaxPlayers);
         }
 
+        /// <summary>
+        /// Tests that tick rate default value is 60
+        /// </summary>
         [Fact]
         public void TickRate_DefaultValueIs60()
         {
@@ -77,6 +86,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(60, result);
         }
 
+        /// <summary>
+        /// Tests that tick rate set value
+        /// </summary>
         [Fact]
         public void TickRate_SetValue()
         {
@@ -90,6 +102,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(30, config.TickRate);
         }
 
+        /// <summary>
+        /// Tests that tick interval calculated correctly
+        /// </summary>
         [Fact]
         public void TickInterval_CalculatedCorrectly()
         {
@@ -103,6 +118,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TimeSpan.FromSeconds(1.0 / 60), result);
         }
 
+        /// <summary>
+        /// Tests that tick interval changes with tick rate
+        /// </summary>
         [Fact]
         public void TickInterval_ChangesWithTickRate()
         {
@@ -117,6 +135,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TimeSpan.FromSeconds(1.0 / 30), result);
         }
 
+        /// <summary>
+        /// Tests that server authoritative default value is true
+        /// </summary>
         [Fact]
         public void ServerAuthoritative_DefaultValueIsTrue()
         {
@@ -130,6 +151,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that server authoritative set value to false
+        /// </summary>
         [Fact]
         public void ServerAuthoritative_SetValueToFalse()
         {
@@ -143,6 +167,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.False(config.ServerAuthoritative);
         }
 
+        /// <summary>
+        /// Tests that connection timeout default value is 30 seconds
+        /// </summary>
         [Fact]
         public void ConnectionTimeout_DefaultValueIs30Seconds()
         {
@@ -156,6 +183,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TimeSpan.FromSeconds(30), result);
         }
 
+        /// <summary>
+        /// Tests that connection timeout set value
+        /// </summary>
         [Fact]
         public void ConnectionTimeout_SetValue()
         {
@@ -169,6 +199,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TimeSpan.FromSeconds(60), config.ConnectionTimeout);
         }
 
+        /// <summary>
+        /// Tests that heartbeat interval default value is 5 seconds
+        /// </summary>
         [Fact]
         public void HeartbeatInterval_DefaultValueIs5Seconds()
         {
@@ -182,6 +215,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TimeSpan.FromSeconds(5), result);
         }
 
+        /// <summary>
+        /// Tests that heartbeat interval set value
+        /// </summary>
         [Fact]
         public void HeartbeatInterval_SetValue()
         {
@@ -195,6 +231,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(TimeSpan.FromSeconds(10), config.HeartbeatInterval);
         }
 
+        /// <summary>
+        /// Tests that enable client prediction default value is true
+        /// </summary>
         [Fact]
         public void EnableClientPrediction_DefaultValueIsTrue()
         {
@@ -208,6 +247,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that enable client prediction set value to false
+        /// </summary>
         [Fact]
         public void EnableClientPrediction_SetValueToFalse()
         {
@@ -221,6 +263,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.False(config.EnableClientPrediction);
         }
 
+        /// <summary>
+        /// Tests that enable lag compensation default value is true
+        /// </summary>
         [Fact]
         public void EnableLagCompensation_DefaultValueIsTrue()
         {
@@ -234,6 +279,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that enable lag compensation set value to false
+        /// </summary>
         [Fact]
         public void EnableLagCompensation_SetValueToFalse()
         {
@@ -247,6 +295,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.False(config.EnableLagCompensation);
         }
 
+        /// <summary>
+        /// Tests that max message size default value is 64 kb
+        /// </summary>
         [Fact]
         public void MaxMessageSize_DefaultValueIs64KB()
         {
@@ -260,6 +311,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(1024 * 64, result);
         }
 
+        /// <summary>
+        /// Tests that max message size set value
+        /// </summary>
         [Fact]
         public void MaxMessageSize_SetValue()
         {
@@ -273,6 +327,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(1024 * 128, config.MaxMessageSize);
         }
 
+        /// <summary>
+        /// Tests that create new instance initializes all properties
+        /// </summary>
         [Fact]
         public void CreateNewInstance_InitializesAllProperties()
         {

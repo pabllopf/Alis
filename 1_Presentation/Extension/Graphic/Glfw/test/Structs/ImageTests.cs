@@ -39,6 +39,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
     /// </summary>
     public class ImageTests
     {
+        /// <summary>
+        /// The base directory
+        /// </summary>
         private readonly string _testAssetsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Assets");
 
         /// <summary>

@@ -317,6 +317,13 @@ namespace Alis.Core.Audio.Players
             return 0;
         }
 
+        /// <summary>
+        /// Finds the data chunk using the specified wav
+        /// </summary>
+        /// <param name="wav">The wav</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="dataOffset">The data offset</param>
+        /// <param name="dataSize">The data size</param>
         private static void FindDataChunk(byte[] wav, ref int pos, out int dataOffset, out int dataSize)
         {
             dataOffset = 0;
@@ -337,6 +344,13 @@ namespace Alis.Core.Audio.Players
             }
         }
 
+        /// <summary>
+        /// Tries the get format using the specified bits
+        /// </summary>
+        /// <param name="bits">The bits</param>
+        /// <param name="channels">The channels</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         private static bool TryGetFormat(int bits, int channels, out int format)
         {
             format = 0;

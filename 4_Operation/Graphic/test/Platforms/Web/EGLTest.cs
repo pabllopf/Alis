@@ -37,6 +37,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     /// </summary>
     public class EGLTest
     {
+        /// <summary>
+        /// Tests that egl constants have expected values
+        /// </summary>
         [Fact]
         public void EglConstants_HaveExpectedValues()
         {
@@ -58,6 +61,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0x30A0, EGL.EGL_OPENGL_ES_API);
         }
 
+        /// <summary>
+        /// Tests that egl constants lib egl is correct string
+        /// </summary>
         [Fact]
         public void EglConstants_LibEgl_IsCorrectString()
         {

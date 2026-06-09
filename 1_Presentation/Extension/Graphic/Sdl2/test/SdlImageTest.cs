@@ -4,8 +4,14 @@ using Alis.Extension.Graphic.Sdl2.Sdl2Image;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The sdl image test class
+    /// </summary>
     public class SdlImageTest
     {
+        /// <summary>
+        /// Tests that should return compiled version
+        /// </summary>
         [Fact]
         public void ShouldReturnCompiledVersion()
         {

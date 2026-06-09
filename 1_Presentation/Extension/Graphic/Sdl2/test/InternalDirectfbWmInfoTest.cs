@@ -33,8 +33,14 @@ using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal directfb wm info test class
+    /// </summary>
     public class InternalDirectfbWmInfoTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, obj.Surface);
         }
 
+        /// <summary>
+        /// Tests that should assign and retrieve properties
+        /// </summary>
         [Fact]
         public void ShouldAssignAndRetrieveProperties()
         {

@@ -39,6 +39,9 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
     /// </summary>
     public abstract class MediaWriter<TFrame> where TFrame : IMediaFrame
     {
+        /// <summary>
+        /// The fmpeg executable name
+        /// </summary>
         private const string FFmpegExecutableName = "ffmpeg";
 
         /// <summary>

@@ -814,6 +814,12 @@ namespace Alis.Core.Physic.Collisions
             return iN;
         }
 
+        /// <summary>
+        /// Updates the parent pointer using the specified parent index
+        /// </summary>
+        /// <param name="parentIndex">The parent index</param>
+        /// <param name="oldChild">The old child</param>
+        /// <param name="newChild">The new child</param>
         private void UpdateParentPointer(int parentIndex, int oldChild, int newChild)
         {
             if (parentIndex != NullNode)
@@ -980,6 +986,13 @@ namespace Alis.Core.Physic.Collisions
             Validate();
         }
 
+        /// <summary>
+        /// Finds the best pair using the specified nodes
+        /// </summary>
+        /// <param name="nodes">The nodes</param>
+        /// <param name="count">The count</param>
+        /// <param name="iMin">The min</param>
+        /// <param name="jMin">The min</param>
         private void FindBestPair(int[] nodes, int count, out int iMin, out int jMin)
         {
             float minCost = SettingEnv.MaxFloat;

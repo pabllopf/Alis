@@ -24,9 +24,18 @@ namespace Alis.Core.Audio.Test.Players
     /// </summary>
     public class BrowserPlayerWavParsingTests
     {
+        /// <summary>
+        /// The browser player type
+        /// </summary>
         private readonly Type _browserPlayerType;
+        /// <summary>
+        /// The browser player
+        /// </summary>
         private readonly object _browserPlayer;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BrowserPlayerWavParsingTests"/> class
+        /// </summary>
         public BrowserPlayerWavParsingTests()
         {
             Assembly assembly = typeof(Player).Assembly;
@@ -34,6 +43,12 @@ namespace Alis.Core.Audio.Test.Players
             _browserPlayer = Activator.CreateInstance(_browserPlayerType, true);
         }
 
+        /// <summary>
+        /// Invokes the method using the specified method name
+        /// </summary>
+        /// <param name="methodName">The method name</param>
+        /// <param name="args">The args</param>
+        /// <returns>The object</returns>
         private object InvokeMethod(string methodName, params object[] args)
         {
             MethodInfo method = _browserPlayerType.GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Static);
@@ -41,6 +56,9 @@ namespace Alis.Core.Audio.Test.Players
             return method.Invoke(_browserPlayer, args);
         }
 
+        /// <summary>
+        /// Tries the parse wav with valid stereo 16 should return true
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithValidStereo16_ShouldReturnTrue()
         {
@@ -54,6 +72,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tries the parse wav with valid mono 16 should return true
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithValidMono16_ShouldReturnTrue()
         {
@@ -67,6 +88,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tries the parse wav with valid mono 8 should return true
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithValidMono8_ShouldReturnTrue()
         {
@@ -80,6 +104,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tries the parse wav with valid stereo 8 should return true
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithValidStereo8_ShouldReturnTrue()
         {
@@ -93,6 +120,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tries the parse wav with null array should return false
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithNullArray_ShouldReturnFalse()
         {
@@ -104,6 +134,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(exception.InnerException);
         }
 
+        /// <summary>
+        /// Tries the parse wav with empty array should return false
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithEmptyArray_ShouldReturnFalse()
         {
@@ -117,6 +150,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tries the parse wav with too small array should return false
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithTooSmallArray_ShouldReturnFalse()
         {
@@ -130,6 +166,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tries the parse wav with invalid riff header should return false
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithInvalidRiffHeader_ShouldReturnFalse()
         {
@@ -147,6 +186,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tries the parse wav with invalid wave header should return false
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithInvalidWaveHeader_ShouldReturnFalse()
         {
@@ -164,6 +206,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tries the parse wav with compressed format should return false
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithCompressedFormat_ShouldReturnFalse()
         {
@@ -177,6 +222,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tries the parse wav with unsupported channels should return false
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithUnsupportedChannels_ShouldReturnFalse()
         {
@@ -190,6 +238,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tries the parse wav with mp 3 audio format should return false
+        /// </summary>
         [BrowserOnly]
         public void TryParseWav_WithMp3AudioFormat_ShouldReturnFalse()
         {
@@ -203,6 +254,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Finds the fmt chunk with fmt at start should return size
+        /// </summary>
         [BrowserOnly]
         public void FindFmtChunk_WithFmtAtStart_ShouldReturnSize()
         {
@@ -218,6 +272,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(16, fmtSize);
         }
 
+        /// <summary>
+        /// Finds the fmt chunk with fmt after other chunk should return size
+        /// </summary>
         [BrowserOnly]
         public void FindFmtChunk_WithFmtAfterOtherChunk_ShouldReturnSize()
         {
@@ -233,6 +290,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(16, fmtSize);
         }
 
+        /// <summary>
+        /// Finds the fmt chunk with no fmt chunk should return zero
+        /// </summary>
         [BrowserOnly]
         public void FindFmtChunk_WithNoFmtChunk_ShouldReturnZero()
         {
@@ -256,6 +316,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(0, fmtSize);
         }
 
+        /// <summary>
+        /// Finds the data chunk with data chunk should return offset and size
+        /// </summary>
         [BrowserOnly]
         public void FindDataChunk_WithDataChunk_ShouldReturnOffsetAndSize()
         {
@@ -271,6 +334,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Finds the data chunk with no data chunk should return zero
+        /// </summary>
         [BrowserOnly]
         public void FindDataChunk_WithNoDataChunk_ShouldReturnZero()
         {
@@ -294,6 +360,13 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Creates the valid wav file using the specified bits
+        /// </summary>
+        /// <param name="bits">The bits</param>
+        /// <param name="channels">The channels</param>
+        /// <param name="sampleRate">The sample rate</param>
+        /// <returns>The wav</returns>
         private byte[] CreateValidWavFile(int bits, int channels, int sampleRate)
         {
             byte[] wav = new byte[44 + 100];
@@ -352,6 +425,13 @@ namespace Alis.Core.Audio.Test.Players
             return wav;
         }
 
+        /// <summary>
+        /// Creates the wav with extra chunk using the specified bits
+        /// </summary>
+        /// <param name="bits">The bits</param>
+        /// <param name="channels">The channels</param>
+        /// <param name="sampleRate">The sample rate</param>
+        /// <returns>The wav</returns>
         private byte[] CreateWavWithExtraChunk(int bits, int channels, int sampleRate)
         {
             byte[] wav = new byte[60 + 100];

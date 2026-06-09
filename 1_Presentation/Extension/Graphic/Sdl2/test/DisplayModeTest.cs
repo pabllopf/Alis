@@ -4,8 +4,14 @@ using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The display mode test class
+    /// </summary>
     public class DisplayModeTest
     {
+        /// <summary>
+        /// Tests that should default to zero
+        /// </summary>
         [Fact]
         public void ShouldDefaultToZero()
         {
@@ -17,6 +23,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, mode.DriverData);
         }
 
+        /// <summary>
+        /// Tests that should assign and retrieve fields
+        /// </summary>
         [Fact]
         public void ShouldAssignAndRetrieveFields()
         {

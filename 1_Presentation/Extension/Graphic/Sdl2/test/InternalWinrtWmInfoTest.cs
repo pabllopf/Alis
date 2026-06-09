@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal winrt wm info test class
+    /// </summary>
     public class InternalWinrtWmInfoTest
     {
+        /// <summary>
+        /// Tests that internal winrt wm info default initialization property has default value
+        /// </summary>
         [Fact]
         public void InternalWinrtWmInfo_DefaultInitialization_PropertyHasDefaultValue()
         {
@@ -14,6 +20,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(IntPtr.Zero, info.Window);
         }
 
+        /// <summary>
+        /// Tests that internal winrt wm info set property stores value correctly
+        /// </summary>
         [Fact]
         public void InternalWinrtWmInfo_SetProperty_StoresValueCorrectly()
         {
@@ -25,6 +34,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(new IntPtr(777), info.Window);
         }
 
+        /// <summary>
+        /// Tests that internal winrt wm info is value type copy is independent
+        /// </summary>
         [Fact]
         public void InternalWinrtWmInfo_IsValueType_CopyIsIndependent()
         {

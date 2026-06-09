@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The internal game controller button bind hat test class
+    /// </summary>
     public class InternalGameControllerButtonBindHatTest
     {
+        /// <summary>
+        /// Tests that internal game controller button bind hat default initialization properties have default values
+        /// </summary>
         [Fact]
         public void InternalGameControllerButtonBindHat_DefaultInitialization_PropertiesHaveDefaultValues()
         {
@@ -14,6 +20,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, hat.HatMask);
         }
 
+        /// <summary>
+        /// Tests that internal game controller button bind hat set properties stores values correctly
+        /// </summary>
         [Fact]
         public void InternalGameControllerButtonBindHat_SetProperties_StoresValuesCorrectly()
         {
@@ -27,6 +36,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(2, hat.HatMask);
         }
 
+        /// <summary>
+        /// Tests that internal game controller button bind hat is value type copy is independent
+        /// </summary>
         [Fact]
         public void InternalGameControllerButtonBindHat_IsValueType_CopyIsIndependent()
         {

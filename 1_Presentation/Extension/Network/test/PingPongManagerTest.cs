@@ -43,6 +43,9 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class PingPongManagerTest
     {
+        /// <summary>
+        /// Tests that constructor with zero keep alive interval creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithZeroKeepAliveInterval_CreatesInstance()
         {

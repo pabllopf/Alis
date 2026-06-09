@@ -419,6 +419,15 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Invokes the handlers using the specified handlers
+        /// </summary>
+        /// <param name="handlers">The handlers</param>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <param name="contact">The contact</param>
+        /// <param name="currentEnabled">The current enabled</param>
+        /// <returns>The current enabled</returns>
         private static bool InvokeHandlers(OnCollisionEventHandler handlers, Fixture fixtureA, Fixture fixtureB, Contact contact, bool currentEnabled)
         {
             if (handlers == null)

@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The audio device event test class
+    /// </summary>
     public class AudioDeviceEventTest
     {
+        /// <summary>
+        /// Tests that audio device event default initialization fields have default values
+        /// </summary>
         [Fact]
         public void AudioDeviceEvent_DefaultInitialization_FieldsHaveDefaultValues()
         {
@@ -16,6 +22,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, ev.isCapture);
         }
 
+        /// <summary>
+        /// Tests that audio device event set fields stores values correctly
+        /// </summary>
         [Fact]
         public void AudioDeviceEvent_SetFields_StoresValuesCorrectly()
         {
@@ -33,6 +42,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(1, ev.isCapture);
         }
 
+        /// <summary>
+        /// Tests that audio device event is value type copy is independent
+        /// </summary>
         [Fact]
         public void AudioDeviceEvent_IsValueType_CopyIsIndependent()
         {
@@ -45,6 +57,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(99u, copy.type);
         }
 
+        /// <summary>
+        /// Tests that audio device event with zero capture sets is capture to zero
+        /// </summary>
         [Fact]
         public void AudioDeviceEvent_WithZeroCapture_SetsIsCaptureToZero()
         {
@@ -53,6 +68,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, ev.isCapture);
         }
 
+        /// <summary>
+        /// Tests that audio device event with max values stores correctly
+        /// </summary>
         [Fact]
         public void AudioDeviceEvent_WithMaxValues_StoresCorrectly()
         {

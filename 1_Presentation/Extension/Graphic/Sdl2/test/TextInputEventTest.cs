@@ -68,6 +68,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     public class TextInputEventTest
     {
 
+        /// <summary>
+        /// Tests that should return text bytes from struct
+        /// </summary>
         [Fact]
         public void ShouldReturnTextBytesFromStruct()
         {
@@ -88,6 +91,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
         }
 
+        /// <summary>
+        /// Tests that should return all zeros when default
+        /// </summary>
         [Fact]
         public void ShouldReturnAllZerosWhenDefault()
         {
@@ -100,6 +106,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         }
         
 
+        /// <summary>
+        /// Tests that should handle all ones in bytes
+        /// </summary>
         [Fact]
         public void ShouldHandleAllOnesInBytes()
         {
@@ -116,6 +125,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.All(bytes, b => Assert.Equal(255, b));
         }
 
+        /// <summary>
+        /// Tests that should support pattern bytes
+        /// </summary>
         [Fact]
         public void ShouldSupportPatternBytes()
         {

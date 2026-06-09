@@ -44,6 +44,9 @@ namespace Alis.Extension.Network.Test
     /// </summary>
     public class HttpHelperTest
     {
+        /// <summary>
+        /// Tests that calculate web socket key returns base 64 string
+        /// </summary>
         [Fact]
         public void CalculateWebSocketKey_ReturnsBase64String()
         {
@@ -57,6 +60,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(result.Length > 0);
         }
 
+        /// <summary>
+        /// Tests that calculate web socket key returns different values
+        /// </summary>
         [Fact]
         public void CalculateWebSocketKey_ReturnsDifferentValues()
         {
@@ -69,6 +75,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotEqual(key1, key2);
         }
 
+        /// <summary>
+        /// Tests that compute socket accept string returns base 64 string
+        /// </summary>
         [Fact]
         public void ComputeSocketAcceptString_ReturnsBase64String()
         {
@@ -84,6 +93,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(result.Length > 0);
         }
 
+        /// <summary>
+        /// Tests that compute socket accept string with valid key returns correct format
+        /// </summary>
         [Fact]
         public void ComputeSocketAcceptString_WithValidKey_ReturnsCorrectFormat()
         {
@@ -98,6 +110,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(result.Length > 0);
         }
 
+        /// <summary>
+        /// Tests that read http header async reads valid header
+        /// </summary>
         [Fact]
         public async Task ReadHttpHeaderAsync_ReadsValidHeader()
         {
@@ -116,6 +131,9 @@ namespace Alis.Extension.Network.Test
 
 
 
+        /// <summary>
+        /// Tests that is web socket upgrade request with valid header returns true
+        /// </summary>
         [Fact]
         public void IsWebSocketUpgradeRequest_WithValidHeader_ReturnsTrue()
         {
@@ -129,6 +147,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that is web socket upgrade request without websocket returns false
+        /// </summary>
         [Fact]
         public void IsWebSocketUpgradeRequest_WithoutWebsocket_ReturnsFalse()
         {
@@ -142,6 +163,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that is web socket upgrade request with invalid header returns false
+        /// </summary>
         [Fact]
         public void IsWebSocketUpgradeRequest_WithInvalidHeader_ReturnsFalse()
         {
@@ -155,6 +179,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that get path from header returns correct path
+        /// </summary>
         [Fact]
         public void GetPathFromHeader_ReturnsCorrectPath()
         {
@@ -169,6 +196,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("/chat?room=123", result.Trim());
         }
 
+        /// <summary>
+        /// Tests that get path from header with invalid header returns null
+        /// </summary>
         [Fact]
         public void GetPathFromHeader_WithInvalidHeader_ReturnsNull()
         {
@@ -182,6 +212,9 @@ namespace Alis.Extension.Network.Test
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that get sub protocols returns empty list when no protocol
+        /// </summary>
         [Fact]
         public void GetSubProtocols_ReturnsEmptyListWhenNoProtocol()
         {
@@ -196,6 +229,9 @@ namespace Alis.Extension.Network.Test
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that get sub protocols returns list with single protocol
+        /// </summary>
         [Fact]
         public void GetSubProtocols_ReturnsListWithSingleProtocol()
         {
@@ -211,6 +247,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("json", result[0]);
         }
 
+        /// <summary>
+        /// Tests that get sub protocols returns list with multiple protocols
+        /// </summary>
         [Fact]
         public void GetSubProtocols_ReturnsListWithMultipleProtocols()
         {
@@ -227,6 +266,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("binary", result);
         }
 
+        /// <summary>
+        /// Tests that read http response code returns correct code
+        /// </summary>
         [Fact]
         public void ReadHttpResponseCode_ReturnsCorrectCode()
         {
@@ -241,6 +283,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("101 Switching Protocols", result.Trim());
         }
 
+        /// <summary>
+        /// Tests that read http response code with invalid response returns null
+        /// </summary>
         [Fact]
         public void ReadHttpResponseCode_WithInvalidResponse_ReturnsNull()
         {
@@ -254,6 +299,9 @@ namespace Alis.Extension.Network.Test
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that write http header async writes valid header
+        /// </summary>
         [Fact]
         public async Task WriteHttpHeaderAsync_WritesValidHeader()
         {
@@ -270,6 +318,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("HTTP/1.1 101 Switching Protocols", result);
         }
 
+        /// <summary>
+        /// Tests that calculate web socket key returns valid base 64
+        /// </summary>
         [Fact]
         public void CalculateWebSocketKey_ReturnsValidBase64()
         {
@@ -283,6 +334,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(16, decoded.Length);
         }
 
+        /// <summary>
+        /// Tests that compute socket accept string with standard key returns correct accept
+        /// </summary>
         [Fact]
         public void ComputeSocketAcceptString_WithStandardKey_ReturnsCorrectAccept()
         {

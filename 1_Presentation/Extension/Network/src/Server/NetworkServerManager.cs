@@ -41,81 +41,130 @@ namespace Alis.Extension.Network.Server
 
 
 
+    /// <summary>
+    /// The network server manager class
+    /// </summary>
+    /// <seealso cref="INetworkServerManager"/>
     public sealed class NetworkServerManager : INetworkServerManager
     {
 
 
 
+        /// <summary>
+        /// The client to session map
+        /// </summary>
         private readonly ConcurrentDictionary<string, string> _clientToSessionMap;
 
 
 
 
+        /// <summary>
+        /// The id
+        /// </summary>
         private readonly string _id;
 
 
 
 
+        /// <summary>
+        /// The lock object
+        /// </summary>
         private readonly object _lockObject = new object();
 
 
 
 
+        /// <summary>
+        /// The message handlers
+        /// </summary>
         private readonly ConcurrentDictionary<string, Func<string, string, Task>> _messageHandlers;
 
 
 
 
+        /// <summary>
+        /// The sessions
+        /// </summary>
         private readonly ConcurrentDictionary<string, NetworkSession> _sessions;
 
 
 
 
+        /// <summary>
+        /// The cancellation token source
+        /// </summary>
         private CancellationTokenSource _cancellationTokenSource;
 
 
 
 
+        /// <summary>
+        /// The config
+        /// </summary>
         private NetworkConfig _config;
 
 
 
 
+        /// <summary>
+        /// The current session
+        /// </summary>
         private NetworkSession _currentSession;
 
 
 
 
+        /// <summary>
+        /// The is disposed
+        /// </summary>
         private bool _isDisposed;
 
 
 
 
+        /// <summary>
+        /// The listen uri
+        /// </summary>
         private Uri _listenUri;
 
 
 
 
+        /// <summary>
+        /// The local player
+        /// </summary>
         private NetworkPlayer _localPlayer;
 
 
 
 
+        /// <summary>
+        /// The serializer
+        /// </summary>
         private INetworkSerializer _serializer;
 
 
 
 
+        /// <summary>
+        /// The uninitialized
+        /// </summary>
         private NetworkManagerState _state = NetworkManagerState.Uninitialized;
 
 
 
 
+        /// <summary>
+        /// The transport
+        /// </summary>
         private INetworkTransport _transport;
 
 
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NetworkServerManager"/> class
+        /// </summary>
         public NetworkServerManager()
         {
             _id = Guid.NewGuid().ToString();
@@ -127,31 +176,49 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Gets the value of the id
+        /// </summary>
         public string Id => _id;
 
 
 
 
+        /// <summary>
+        /// Gets the value of the state
+        /// </summary>
         public NetworkManagerState State => _state;
 
 
 
 
+        /// <summary>
+        /// Gets the value of the current session
+        /// </summary>
         public NetworkSession CurrentSession => _currentSession;
 
 
 
 
+        /// <summary>
+        /// Gets the value of the local player
+        /// </summary>
         public NetworkPlayer LocalPlayer => _localPlayer;
 
 
 
 
+        /// <summary>
+        /// Gets the value of the config
+        /// </summary>
         public NetworkConfig Config => _config;
 
 
 
 
+        /// <summary>
+        /// Gets the value of the listen uri
+        /// </summary>
         public Uri ListenUri => _listenUri;
 
 
@@ -192,6 +259,12 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Initializes the config
+        /// </summary>
+        /// <param name="config">The config</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <exception cref="InvalidOperationException">Already initialized</exception>
         public async Task InitializeAsync(NetworkConfig config, CancellationToken cancellationToken = default(CancellationToken))
         {
             lock (_lockObject)
@@ -221,6 +294,11 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Starts the cancellation token
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <exception cref="InvalidOperationException">Cannot start in current state</exception>
         public async Task StartAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             lock (_lockObject)
@@ -237,6 +315,10 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Stops the cancellation token
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token</param>
         public async Task StopAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             await StopListeningAsync(cancellationToken);
@@ -245,6 +327,12 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Listens the address
+        /// </summary>
+        /// <param name="address">The address</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <exception cref="InvalidOperationException">Cannot listen in current state</exception>
         public async Task ListenAsync(Uri address, CancellationToken cancellationToken = default(CancellationToken))
         {
             lock (_lockObject)
@@ -288,6 +376,10 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Stops the listening using the specified cancellation token
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token</param>
         public async Task StopListeningAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             lock (_lockObject)
@@ -331,6 +423,13 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Creates the session using the specified session name
+        /// </summary>
+        /// <param name="sessionName">The session name</param>
+        /// <param name="maxPlayers">The max players</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns>A task containing the network session</returns>
         public async Task<NetworkSession> CreateSessionAsync(string sessionName, int maxPlayers, CancellationToken cancellationToken = default(CancellationToken))
         {
             NetworkSession session = new NetworkSession
@@ -354,6 +453,11 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Gets the session using the specified session id
+        /// </summary>
+        /// <param name="sessionId">The session id</param>
+        /// <returns>The session</returns>
         public NetworkSession GetSession(string sessionId)
         {
             _sessions.TryGetValue(sessionId, out NetworkSession session);
@@ -363,6 +467,10 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Gets the active sessions
+        /// </summary>
+        /// <returns>A read only list of network session</returns>
         public IReadOnlyList<NetworkSession> GetActiveSessions()
         {
             return _sessions.Values.Where(s => s.State != SessionState.Closed).ToList();
@@ -371,6 +479,11 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Closes the session using the specified session id
+        /// </summary>
+        /// <param name="sessionId">The session id</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         public async Task CloseSessionAsync(string sessionId, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (_sessions.TryGetValue(sessionId, out NetworkSession session))
@@ -384,6 +497,13 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Kicks the player using the specified player id
+        /// </summary>
+        /// <param name="playerId">The player id</param>
+        /// <param name="sessionId">The session id</param>
+        /// <param name="reason">The reason</param>
+        /// <param name="cancellationToken">The cancellation token</param>
         public async Task KickPlayerAsync(string playerId, string sessionId, string reason = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (_sessions.TryGetValue(sessionId, out NetworkSession session))
@@ -402,6 +522,14 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Sends the message using the specified target player id
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="targetPlayerId">The target player id</param>
+        /// <param name="channel">The channel</param>
+        /// <param name="message">The message</param>
+        /// <param name="reliable">The reliable</param>
         public async Task SendMessageAsync<T>(string targetPlayerId, string channel, T message, bool reliable = true) where T : IJsonSerializable
         {
             string payload = _serializer.Serialize(message);
@@ -427,6 +555,14 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Broadcasts the message using the specified channel
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="channel">The channel</param>
+        /// <param name="message">The message</param>
+        /// <param name="reliable">The reliable</param>
+        /// <param name="exceptPlayerId">The except player id</param>
         public async Task BroadcastMessageAsync<T>(string channel, T message, bool reliable = true, string exceptPlayerId = null) where T : IJsonSerializable
         {
             string payload = _serializer.Serialize(message);
@@ -450,6 +586,11 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Registers the message handler using the specified channel
+        /// </summary>
+        /// <param name="channel">The channel</param>
+        /// <param name="handler">The handler</param>
         public void RegisterMessageHandler(string channel, Func<string, string, Task> handler)
         {
             _messageHandlers.AddOrUpdate(channel, handler, (key, old) => handler);
@@ -458,6 +599,10 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Unregisters the message handler using the specified channel
+        /// </summary>
+        /// <param name="channel">The channel</param>
         public void UnregisterMessageHandler(string channel)
         {
             _messageHandlers.TryRemove(channel, out _);
@@ -466,11 +611,20 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Gets the connected players
+        /// </summary>
+        /// <returns>A read only list of network player</returns>
         public IReadOnlyList<NetworkPlayer> GetConnectedPlayers() => _currentSession?.Players ?? new List<NetworkPlayer>();
 
 
 
 
+        /// <summary>
+        /// Gets the player using the specified player id
+        /// </summary>
+        /// <param name="playerId">The player id</param>
+        /// <returns>The network player</returns>
         public NetworkPlayer GetPlayer(string playerId)
         {
             return _currentSession?.Players.Find(p => p.PlayerId == playerId);
@@ -479,6 +633,9 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (_isDisposed)
@@ -505,6 +662,11 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Registers the player in session using the specified player id
+        /// </summary>
+        /// <param name="playerId">The player id</param>
+        /// <param name="playerName">The player name</param>
         public void RegisterPlayerInSession(string playerId, string playerName)
         {
             if (_currentSession != null)
@@ -530,6 +692,10 @@ namespace Alis.Extension.Network.Server
 
 
 
+        /// <summary>
+        /// Processes the messages using the specified cancellation token
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token</param>
         private async Task ProcessMessagesAsync(CancellationToken cancellationToken)
         {
             try

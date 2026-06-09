@@ -74,6 +74,11 @@ namespace Alis.Core.Physic.Common.ConvexHull
             return BuildResultFromHull(h, top);
         }
 
+        /// <summary>
+        /// Finds the minmax using the specified point set
+        /// </summary>
+        /// <param name="pointSet">The point set</param>
+        /// <returns>The int</returns>
         private static int FindMinmax(Vertices pointSet)
         {
             float xmin = pointSet[0].X;
@@ -89,6 +94,11 @@ namespace Alis.Core.Physic.Common.ConvexHull
             return i - 1;
         }
 
+        /// <summary>
+        /// Finds the maxmin using the specified point set
+        /// </summary>
+        /// <param name="pointSet">The point set</param>
+        /// <returns>The int</returns>
         private static int FindMaxmin(Vertices pointSet)
         {
             float xmax = pointSet[pointSet.Count - 1].X;
@@ -104,6 +114,13 @@ namespace Alis.Core.Physic.Common.ConvexHull
             return i + 1;
         }
 
+        /// <summary>
+        /// Builds the vertical line hull using the specified point set
+        /// </summary>
+        /// <param name="pointSet">The point set</param>
+        /// <param name="h">The </param>
+        /// <param name="minmax">The minmax</param>
+        /// <returns>The vertices</returns>
         private static Vertices BuildVerticalLineHull(Vertices pointSet, Vector2F[] h, int minmax)
         {
             const int minmin = 0;
@@ -120,6 +137,14 @@ namespace Alis.Core.Physic.Common.ConvexHull
             return BuildResultFromHull(h, top);
         }
 
+        /// <summary>
+        /// Builds the lower chain using the specified point set
+        /// </summary>
+        /// <param name="pointSet">The point set</param>
+        /// <param name="h">The </param>
+        /// <param name="minmax">The minmax</param>
+        /// <param name="maxmin">The maxmin</param>
+        /// <returns>The top</returns>
         private static int BuildLowerChain(Vertices pointSet, Vector2F[] h, int minmax, int maxmin)
         {
             const int minmin = 0;
@@ -140,11 +165,26 @@ namespace Alis.Core.Physic.Common.ConvexHull
             return top;
         }
 
+        /// <summary>
+        /// Shoulds the skip lower point using the specified point set
+        /// </summary>
+        /// <param name="pointSet">The point set</param>
+        /// <param name="minmin">The minmin</param>
+        /// <param name="maxmin">The maxmin</param>
+        /// <param name="i">The </param>
+        /// <returns>The bool</returns>
         private static bool ShouldSkipLowerPoint(Vertices pointSet, int minmin, int maxmin, int i)
         {
             return (MathUtils.Area(pointSet[minmin], pointSet[maxmin], pointSet[i]) >= 0) && (i < maxmin);
         }
 
+        /// <summary>
+        /// Pops the non hull vertices using the specified hull
+        /// </summary>
+        /// <param name="hull">The hull</param>
+        /// <param name="top">The top</param>
+        /// <param name="candidate">The candidate</param>
+        /// <param name="minTop">The min top</param>
         private static void PopNonHullVertices(Vector2F[] hull, ref int top, Vector2F candidate, int minTop = 0)
         {
             while (top > minTop && MathUtils.Area(hull[top - 1], hull[top], candidate) <= 0)
@@ -153,6 +193,15 @@ namespace Alis.Core.Physic.Common.ConvexHull
             }
         }
 
+        /// <summary>
+        /// Builds the upper chain using the specified point set
+        /// </summary>
+        /// <param name="pointSet">The point set</param>
+        /// <param name="h">The </param>
+        /// <param name="minmax">The minmax</param>
+        /// <param name="maxmin">The maxmin</param>
+        /// <param name="top">The top</param>
+        /// <returns>The top</returns>
         private static int BuildUpperChain(Vertices pointSet, Vector2F[] h, int minmax, int maxmin, int top)
         {
             int maxmax = pointSet.Count - 1;
@@ -182,11 +231,25 @@ namespace Alis.Core.Physic.Common.ConvexHull
             return top;
         }
 
+        /// <summary>
+        /// Shoulds the skip upper point using the specified point set
+        /// </summary>
+        /// <param name="pointSet">The point set</param>
+        /// <param name="maxmax">The maxmax</param>
+        /// <param name="minmax">The minmax</param>
+        /// <param name="i">The </param>
+        /// <returns>The bool</returns>
         private static bool ShouldSkipUpperPoint(Vertices pointSet, int maxmax, int minmax, int i)
         {
             return (MathUtils.Area(pointSet[maxmax], pointSet[minmax], pointSet[i]) >= 0) && (i > minmax);
         }
 
+        /// <summary>
+        /// Builds the result from hull using the specified h
+        /// </summary>
+        /// <param name="h">The </param>
+        /// <param name="top">The top</param>
+        /// <returns>The res</returns>
         private static Vertices BuildResultFromHull(Vector2F[] h, int top)
         {
             Vertices res = new Vertices(top + 1);
