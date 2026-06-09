@@ -107,3 +107,14 @@ graph TD
 2. Document 6_Ideation generators and samples
 3. Process Extensions (1_Presentation/Extension)
 
+## Related
+
+- [[diagrams/architecture-overview]] — Full architecture diagrams
+- [[architecture/dependency-graph]] — Dependency rules
+- [[dependencies/dependency-graph]] — Raw dependency data
+- [[architecture/repository-overview]] — Architecture overview
+- [[dependency-index]] — Dependency index
+- [[layer-index]] — Layer breakdown
+- [[project-index]] — All projects
+- [[adr-001-layered-architecture]] — Dependency rules decision
+

@@ -86,3 +86,24 @@ The Alis ECS implementation provides:
 - [[Scene]] - World container
 - [[Component Storage]] - Typed data storage
 - [[Archetype]] - Component combination optimization
+- [[Component]] - Data-only struct
+- [[System]] - Logic processor
+- [[Query]] - Entity filtering
+- [[Rule]] - Component constraint
+
+## Related Architecture
+
+- [[Layered Architecture]] — Layer structure
+- [[Alis Architecture Overview]] — Full architecture
+- [[architecture/repository-overview]] — Architecture docs
+- [[queries-index]] — Query system
+- [[events-index]] — Event system
+- [[commands-index]] — Commands
+- [[handlers-index]] — Handlers
+- [[performance-index]] — Performance analysis
+- [[architecture-index]] — Patterns
+
+## Related Projects
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[projects/Index]] — All project docs

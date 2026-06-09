@@ -101,5 +101,11 @@ Violations detected:
 
 ## Related
 
-- [[Project Reference]] - csproj dependency
-- [[Architectural Boundary]] - Layer separation
+- [[Layered Architecture]] — Layer structure concept
+- [[adr-001-layered-architecture]] — Layer architecture decision
+- [[architecture/dependency-graph]] — Layer dependency rules
+- [[layer-index]] — Layer breakdown
+- [[dependency-index]] — Dependency map
+- [[architecture-index]] — Patterns index
+- [[projects/Architecture]] — Project architecture
+- [[naming-conventions]] — Layer naming

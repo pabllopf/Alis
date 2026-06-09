@@ -195,3 +195,16 @@ render.Dispose();
 - [[Query]] - Component-based entity filtering
 - [[GameObject]] - Entity handle
 - [[Archetype]] - Component type optimization
+- [[Component]] - Data-only struct
+- [[Scene]] - World container
+- [[entity-component-system-ecs]] — ECS overview
+- [[Rule]] — Component constraint
+- [[ComponentEvent]] — Lifecycle events
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[handlers-index]] — Handler index
+- [[events-index]] — Event system
+- [[queries-index]] — Query system
+- [[architecture-index]] — Patterns

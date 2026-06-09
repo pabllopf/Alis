@@ -187,3 +187,12 @@
 - **Extensions**: 19/19 (100% — ALL COMPLETED)
 - **Next**: Application docs enrichment
 
+## Related
+
+- [[log]] — Activity log
+- [[session-history]] — All sessions
+- [[current-session]] — Active session
+- [[analysis-state]] — Analysis progress
+- [[latest-checkpoint]] — Latest checkpoint
+- [[session-summary]] — Session summary
+

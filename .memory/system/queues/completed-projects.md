@@ -8,3 +8,11 @@
 ## Total Completed
 
 2 projects documented
+
+## Related
+
+- [[pending-projects]] — Pending queue
+- [[project-state]] — Overall project state
+- [[analysis-state]] — Analysis progress
+- [[project-index]] — All projects
+- [[projects-index]] — Project docs

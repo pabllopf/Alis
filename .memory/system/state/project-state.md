@@ -82,3 +82,15 @@
 2. Enrich Sample project documentation
 3. Update dependency index and generate diagrams
 4. Update AI context files
+
+## Related
+
+- [[analysis-state]] — Analysis progress
+- [[execution-state]] — Execution batches
+- [[pending-work]] — Work queue
+- [[memory-generation-status]] — Generation status
+- [[project-index]] — All projects indexed
+- [[coverage-map]] — Coverage map
+- [[documentation-status]] — Status tracking
+- [[file-hashes]] — File hashes
+- [[latest-checkpoint]] — Latest checkpoint

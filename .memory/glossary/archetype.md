@@ -108,3 +108,15 @@ Table indexed by archetype ID for fast lookup.
 - [[Component Storage]] - Typed data storage
 - [[GameObject]] - Entity handle
 - [[Query]] - Entity filtering
+- [[Component]] - Data-only struct
+- [[System]] - Logic processor
+- [[entity-component-system-ecs]] — ECS overview
+- [[GameObjectEnumerator]] — Entity iteration
+- [[ChunkTuple]] — Batch creation
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project docs
+- [[architecture-index]] — Patterns
+- [[performance-index]] — Performance optimizations
+- [[queries-index]] — Query documentation

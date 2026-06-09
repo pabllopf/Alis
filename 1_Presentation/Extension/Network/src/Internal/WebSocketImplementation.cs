@@ -515,7 +515,7 @@ namespace Alis.Extension.Network.Internal
                 Events.Log.InvalidStateBeforeCloseOutput(Guid, StateInternal);
             }
 
-#if NET6_0_OR_GREATER
+#if NET8_0_OR_GREATER
             await InternalReadCts.CancelAsync();
 #else
             InternalReadCts.Cancel();

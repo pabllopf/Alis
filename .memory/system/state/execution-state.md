@@ -18,3 +18,15 @@
 | 4 | 0/18 | pending - Applications + Samples enrichment |
 | 5 | 0/- | pending - Indexes + Diagrams |
 | 6 | 0/- | pending - Final polish |
+
+## Related
+
+- [[analysis-state]] — Analysis progress
+- [[project-state]] — Project-level state
+- [[pending-work]] — Work queue
+- [[memory-generation-status]] — Generation status
+- [[current-session]] — Active session
+- [[session-history]] — Session history
+- [[latest-checkpoint]] — Latest checkpoint
+- [[documentation-status]] — Doc generation status
+- [[session-summary]] — Session summary

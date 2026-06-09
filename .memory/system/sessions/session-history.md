@@ -9,3 +9,12 @@
 | 5 | 2026-06-08 | App/Sample docs | Engine, Hub, Installer, Benchmark, core app, samples |
 | 6 | 2026-06-09 | Extensions Batch 2 enrichment | Updater, Translator, Dialogue, Profile, GoogleDrive, Thread, FFmpeg, Network, FileDialog, Security, Stripe |
 | 7 | 2026-06-09 | System file creation | Tracking, queues, checkpoints, sessions, logs, state, metadata |
+
+## Related
+
+- [[current-session]] — Active session
+- [[session-summary]] — Session summary
+- [[execution-log]] — Detailed execution log
+- [[log]] — Activity log
+- [[analysis-state]] — Analysis progress
+- [[latest-checkpoint]] — Latest checkpoint

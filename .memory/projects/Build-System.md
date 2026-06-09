@@ -129,4 +129,18 @@ dotnet test Alis.sln
 dotnet publish -r linux-x64 -c Release
 dotnet publish -r osx.11.0 -c Release
 dotnet publish -r win-x64 -c Release
+
+## Related
+
+- [[build-system]] — Architecture build docs
+- [[build-summary]] — Build pipeline overview
+- [[Cross-Cutting-Concerns]] — Cross-cutting build config
+- [[Generators]] — Generator reference pattern
+- [[Multi-Targeting Strategy]] — Framework targets
+- [[Platform-Specific Build Constants]] — Platform symbols
+- [[naming-conventions]] — Project naming rules
+- [[projects/Index]] — All project docs
+- [[onboarding/getting-started]] — Build commands
+- [[ai-context]] — Build reference
+- [[code-review-checklist]] — Build review items
 ```

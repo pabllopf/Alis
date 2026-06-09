@@ -90,3 +90,35 @@ dotnet publish -r linux-x64 -c Release  # Publish for Linux
 - NativeAOT warnings indicate AOT compatibility work
 - Hub auto-builds Engine and Installer dependencies
 - macOS builds create .app bundles with DMG generation
+
+## Related Architecture
+
+- [[architecture/repository-overview]] — Full architecture overview
+- [[architecture/dependency-graph]] — Dependency rules and flow
+- [[architecture/build-system]] — Build configuration
+- [[Alis Architecture Overview]] — Concept-level overview
+- [[Layered Architecture]] — Layer structure
+- [[adr-001-layered-architecture]] — Architecture decision
+- [[adr-002-aggregator-pattern]] — Aggregator pattern decision
+
+## Related Indexes
+
+- [[project-index]] — Complete 140-project index
+- [[layer-index]] — Layer breakdown
+- [[dependency-index]] — Dependency map
+- [[architecture-index]] — Patterns index
+
+## Related Topics
+
+- [[Generator Pattern]] — Source generator architecture
+- [[Multi-Targeting Strategy]] — Framework targets
+- [[Platform-Specific Build Constants]] — Platform detection
+- [[Multi-Platform Samples]] — Sample game details
+
+## Related Documentation
+
+- [[testing-overview]] — Test coverage
+- [[security-overview]] — Security analysis
+- [[naming-conventions]] — Naming rules
+- [[onboarding/getting-started]] — Developer guide
+- [[ai-context]] — AI agent reference

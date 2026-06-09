@@ -33,3 +33,13 @@
 - Total: 140 projects
 - Extension docs complete: 19/19
 - Total documented: ~35 projects
+
+## Related
+
+- [[analysis-state]] — Analysis state
+- [[project-state]] — Project tracking
+- [[coverage-map]] — Coverage tracking
+- [[documentation-map]] — Documentation map
+- [[projects-index]] — Project documentation
+- [[project-index]] — Project list
+- [[documentation-status]] — Status tracking

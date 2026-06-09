@@ -99,3 +99,17 @@ All projects import `Config.props` for shared settings:
 - Extensive warning suppression suggests ongoing migration/refactoring
 - NativeAOT warnings indicate AOT compatibility work in progress
 - NuGet vulnerability warnings suggest outdated packages
+
+## Related
+
+- [[projects/Build-System]] — Build configuration
+- [[projects/Generators]] — Generator reference pattern
+- [[build-system]] — Architecture build docs
+- [[build-summary]] — Build pipeline overview
+- [[Multi-Targeting Strategy]] — Framework targets
+- [[Platform-Specific Build Constants]] — Platform symbols
+- [[naming-conventions]] — Naming rules
+- [[projects/Index]] — All project docs
+- [[adr-001-layered-architecture]] — Architecture decision
+- [[code-review-checklist]] — Review guidelines
+- [[ai-context]] — Build reference

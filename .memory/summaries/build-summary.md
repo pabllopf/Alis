@@ -36,3 +36,16 @@ dotnet pack -c Release           # Create NuGet packages
 4. **Analyze**: SonarQube analysis (excluding tests)
 5. **Test**: xUnit tests run with coverlet coverage
 6. **Package**: NuGet packages created with native runtime support
+
+## Related
+
+- [[build-system]] — Detailed build configuration
+- [[Build System Configuration]] — Config.props details
+- [[Multi-Targeting Strategy]] — Framework targets
+- [[Platform-Specific Build Constants]] — Platform constants
+- [[adr-001-layered-architecture]] — Architecture decision
+- [[project-index]] — Framework targets per project
+- [[projects/Build-System]] — Build system project docs
+- [[code-review-checklist]] — Build checklist
+- [[onboarding/getting-started]] — Build commands
+- [[ai-context]] — Build reference

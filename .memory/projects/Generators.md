@@ -54,3 +54,15 @@ Generators depend on:
 - Each layer has its own generators relevant to that layer's domain
 - Dynamic referencing ensures all generators are automatically included
 - No hardcoding of generator paths — uses MSBuild glob patterns
+
+## Related
+
+- [[Generator Pattern]] — Concept-level generator docs
+- [[Aspect-Oriented Design]] — AOP aspect generators
+- [[projects/Build-System]] — Build system with generator refs
+- [[projects/Cross-Cutting-Concerns]] — Generator reference pattern
+- [[adr-001-layered-architecture]] — Generator flow decision
+- [[architecture/dependency-graph]] — Generator cascade
+- [[build-system]] — Build with generators
+- [[testing/analysis]] — Generator testing
+- [[code-review-checklist]] — Generator review

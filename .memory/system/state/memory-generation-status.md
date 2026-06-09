@@ -63,3 +63,16 @@
 
 *Generated: 2026-06-08*
 *Session ID: memory-generation-001*
+
+## Related
+
+- [[analysis-state]] — Current analysis state
+- [[execution-state]] — Batch execution state
+- [[project-state]] — Project-level tracking
+- [[pending-work]] — Work queue
+- [[coverage-map]] — Coverage tracking
+- [[documentation-status]] — Doc tracking
+- [[project-index]] — All projects
+- [[session-summary]] — Session summary
+- [[latest-checkpoint]] — Latest checkpoint
+- [[index]] — Memory system root

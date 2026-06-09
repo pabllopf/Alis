@@ -73,3 +73,19 @@ All layers (except 1_Presentation) include a `Generator/` subdirectory containin
 - **LangVersion**: Consistently set to 13 across all projects
 - **Nullable**: Disabled across all projects
 - **AllowUnsafeBlocks**: Disabled across all projects
+
+## Related
+
+- [[architecture/repository-overview]] — High-level architecture
+- [[architecture/dependency-graph]] — Dependency rules
+- [[Alis Architecture Overview]] — Concept architecture
+- [[Layered Architecture]] — Layer structure
+- [[adr-001-layered-architecture]] — Architecture decision
+- [[adr-002-aggregator-pattern]] — Aggregator decision
+- [[build-system]] — Build configuration
+- [[projects/Index]] — All project docs index
+- [[project-index]] — Complete project list
+- [[layer-index]] — Layer breakdown
+- [[Generator Pattern]] — Generator architecture
+- [[Testing-Strategy]] — Testing approach
+- [[Cross-Cutting-Concerns]] — Cross-cutting docs

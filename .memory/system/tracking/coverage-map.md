@@ -21,3 +21,14 @@
 - **Fully Documented (Gold)**: 12
 - **Partially Documented (Silver)**: 23
 - **Basic Coverage (Bronze)**: 105 (applications + samples)
+
+## Related
+
+- [[documentation-map]] — Documentation file map
+- [[documentation-status]] — Documentation quality status
+- [[analysis-state]] — Analysis progress
+- [[project-state]] — Project tracking
+- [[project-index]] — All projects
+- [[tests-index]] — Test coverage
+- [[indexes-summary]] — All indexes overview
+- [[memory-generation-status]] — Generation status

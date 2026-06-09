@@ -77,3 +77,17 @@
 - **Batch 3**: Extensions Batch 2 — Enrichment (19/19 completed)
 - **Completed**: All 19 extension projects, 4 core engine systems, 6 ideation aspects
 - **Next**: Application projects (Engine, Hub, Installer, Benchmark)
+
+## Related
+
+- [[project-state]] — Detailed project analysis state
+- [[execution-state]] — Execution batch progress
+- [[pending-work]] — Work queue
+- [[memory-generation-status]] — Full generation status
+- [[coverage-map]] — Documentation coverage map
+- [[documentation-status]] — Documentation generation status
+- [[project-index]] — All project status
+- [[file-hashes]] — File hash tracking
+- [[session-summary]] — Session summary
+- [[log]] — Activity log
+- [[execution-log]] — Execution history

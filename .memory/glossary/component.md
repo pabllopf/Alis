@@ -115,3 +115,15 @@ Auto-generated for each component type:
 - [[System]] - Logic processor
 - [[Component Storage]] - Typed data storage
 - [[Archetype]] - Component type optimization
+- [[entity-component-system-ecs]] — ECS overview
+- [[Scene]] — Entity container
+- [[Query]] — Entity filtering
+- [[ComponentEvent]] — Lifecycle events
+- [[Ref<T>]] — Reference wrapper
+- [[memory-management]] — Memory strategy
+
+## Related Architecture
+
+- [[Alis.Core.Ecs]] — ECS project
+- [[architecture-index]] — Patterns
+- [[performance-index]] — Struct optimization

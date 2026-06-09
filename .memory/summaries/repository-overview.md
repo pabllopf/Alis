@@ -156,5 +156,39 @@ The `.memory/` directory contains:
 
 GNU General Public License v3.0 (GPLv3)
 
-See [[license]] for full license text.
+## Related Architecture
+
+- [[architecture/repository-overview]] — Detailed architecture
+- [[architecture/dependency-graph]] — Dependency map
+- [[architecture/build-system]] — Build configuration
+- [[build-system]] — Build docs
+
+## Related Concepts
+
+- [[Alis Architecture Overview]] — Full concept overview
+- [[Layered Architecture]] — Layer details
+- [[Aspect-Oriented Design]] — AOP foundation
+- [[Generator Pattern]] — Source generators
+
+## Related Indexes
+
+- [[project-index]] — All 140 projects
+- [[layer-index]] — Layer breakdown
+- [[architecture-index]] — Patterns index
+- [[domains-index]] — Bounded contexts
+- [[services-index]] — Service catalog
+
+## Related Analysis
+
+- [[testing-overview]] — Test coverage status
+- [[security-overview]] — Security analysis
+- [[performance-index]] — Performance optimizations
+
+## Related Documentation
+
+- [[onboarding/getting-started]] — Developer onboarding
+- [[ai-context]] — AI agent reference
+- [[adr-001-layered-architecture]] — Architecture decisions
+- [[adr-002-aggregator-pattern]] — Aggregator decision
+- [[session-summary]] — Memory generation session
 

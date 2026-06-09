@@ -70,3 +70,15 @@ dotnet test Alis.sln /p:CollectCoverage=true
 - Test projects are excluded from SonarQube analysis
 - Sample projects are not tested (no test project for samples)
 - Test discovery is automatic via MSBuild conditions
+
+## Related
+
+- [[testing-overview]] — High-level test coverage
+- [[testing/analysis]] — Detailed test patterns
+- [[tests-index]] — All test projects indexed
+- [[projects/Cross-Cutting-Concerns]] — Build config for tests
+- [[code-review-checklist]] — Testing checklist
+- [[onboarding/getting-started]] — Running tests
+- [[build-system]] — Test commands
+- [[projects/Build-System]] — Build system docs
+- [[coverage-map]] — Test coverage tracking

@@ -50,3 +50,14 @@ Generate a complete enterprise monorepo memory system inside `.memory/` for the 
 - `.memory/decisions/` — Architecture decision records
 - `.memory/onboarding/` — Getting started guide
 - `.memory/summaries/` — Build and session summaries
+
+## Related
+
+- [[execution-log]] — Execution history
+- [[session-history]] — All sessions
+- [[current-session]] — Active session
+- [[analysis-state]] — Analysis progress
+- [[project-state]] — Project analysis state
+- [[documentation-status]] — Doc generation status
+- [[memory-generation-status]] — Memory generation status
+- [[log]] — Session activity log
