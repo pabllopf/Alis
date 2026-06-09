@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/Index.md",
+                "file": "projects/2_Application/Samples/Sample.Pong.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Index"
+              "title": "Sample.Pong"
             }
           }
         ]
@@ -198,6 +198,7 @@
   },
   "active": "d8b5ec4fd47572e4",
   "lastOpenFiles": [
+    "projects/Index.md",
     "glossary/gameobject.md",
     "projects/1_Presentation/Extension.md",
     "memory-system-final-summary.md",
@@ -223,7 +224,6 @@
     "projects/2_Application/Samples/Sample.Dino.md",
     "projects/2_Application/Samples/Sample.Asteroid.md",
     "projects/2_Application/Samples/Alis.Sample.md",
-    "projects/2_Application/Alis.md",
     "architecture/properties.config.json",
     "projects/projects.config.json",
     "security/security.config.json",
