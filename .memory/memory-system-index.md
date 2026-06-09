@@ -1,132 +1,312 @@
 # Memory System Index
 
-Comprehensive index of the entire `.memory/` system for the Alis solution.
+## Overview
 
-## Quick Navigation
+Complete index of all memory system components with proper cross-references and relations. This index ensures high-performance navigation and relationship tracking across the entire documentation system.
 
-### Core Documentation
-- [`.memory/sources/sources-overview.md`] - Master documentation of all source files
-- [`.memory/concepts/concepts-index.md`] - All architectural and design concepts
-- [`.memory/memory-system-update-summary.md`] - Latest update summary
+## System Components
 
-### Source Documentation
-- [`.memory/sources/index.md`] - Master sources index
-- [`.memory/sources/sources-overview.md`] - Comprehensive sources overview
-- [`.memory/sources/architectural-patterns-sources.md`] - Design patterns
-- [`.memory/sources/conventions-sources.md`] - Coding standards
-- [`.memory/sources/ecs-sources.md`] - ECS runtime and generator
-- [`.memory/sources/generator-sources.md`] - Source generators
-- [`.memory/sources/extension-sources.md`] - 18+ modular extensions
-- [`.memory/sources/ideation-sources.md`] - Experimental aspects
-- [`.memory/sources/benchmark-sources.md`] - Performance benchmarks
-- [`.memory/sources/test-sources.md`] - Unit and integration tests
-- [`.memory/sources/generated-code-sources.md`] - Source-generated code
+### 1. Core Index Files
 
-### Concept Documentation (NEW - 15 concepts)
-- [`.memory/concepts/concepts-index.md`] - Master concepts index with quick navigation
-- [`.memory/concepts/data-oriented-design.md`] - Cache-first ECS optimization
-- [`.memory/concepts/value-object-pattern.md`] - Immutable data types
-- [`.memory/concepts/zero-copy-abstractions.md`] - Memory-efficient queries
-- [`.memory/concepts/compile-time-polymorphism.md`] - Source generator dispatch
-- [`.memory/concepts/resource-management-patterns.md`] - RAII + async loading
-- [`.memory/concepts/query-based-architecture.md`] - Type-safe filtering
-- [`.memory/concepts/event-driven-entity-system.md`] - Per-entity events
-- [`.memory/concepts/cross-platform-abstraction-layer.md`] - Platform-agnostic APIs
-- [`.memory/concepts/procedural-generation-framework.md`] - Algorithmic generation
-- [`.memory/concepts/high-speed-priority-queue.md`] - O(log n) heap operations
-- [`.memory/concepts/dialogue-system-architecture.md`] - Branching narrative
-- [`.memory/concepts/update-loop-game-loop.md`] - Fixed timestep simulation
-- [`.memory/concepts/service-registration-discovery.md`] - Compile-time DI registry
-- [`.memory/concepts/compression-memory-optimization.md`] - Zip-based caching
-- [`.memory/concepts/multi-targeting-strategy.md`] - .NET 2.0 to .NET 10 support
+| File | Purpose | Status |
+|---|---|---|
+| [[Index]] | Main memory entry point | ✅ Active |
+| [[Schema]] | Memory system schema | ✅ Active |
+| [[Log]] | Session logging | ✅ Active |
+| [[Cross-Link Index]] | Cross-reference mapping | ✅ New |
 
-### Update Tracking
-- [`.memory/memory-system-update-summary.md`] - Latest update summary
-- [`.memory/memory-system-tracking.md`] - Update tracking metadata
+### 2. State Management
 
-## Detailed Index
+| File | Purpose | Status |
+|---|---|---|
+| [[System/State/Analysis-State]] | Analysis progress tracking | ✅ Active |
+| [[System/State/Project-State]] | Project tracking | ✅ Active |
+| [[System/State/Execution-State]] | Execution batch tracking | ✅ Active |
+| [[System/State/Pending-Work]] | Work queue management | ✅ Active |
+| [[System/State/File-Hashes]] | File hash tracking | ✅ Active |
+| [[System/State/Repository-Health]] | Repository health monitoring | ✅ Active |
+| [[System/State/Repository-Delta]] | Repository changes tracking | ✅ Active |
+| [[System/State/Stability-State]] | Stability monitoring | ✅ Active |
+| [[System/State/Resume-Points]] | Resume point tracking | ✅ Active |
+| [[System/State/MCP-Status]] | MCP integration status | ✅ Active |
 
-### 1. Sources Documentation
+### 3. Indexes
 
-#### Overview Files
-- **`sources/index.md`** - Master navigation index for all sources
-- **`sources/sources-overview.md`** - Comprehensive documentation of 500+ source files
+| File | Purpose | Status |
+|---|---|---|
+| [[System/Indexes/Projects-Index]] | All projects indexed | ✅ Active |
+| [[System/Indexes/Layer-Index]] | Layer breakdown | ✅ Active |
+| [[System/Indexes/Dependency-Index]] | Dependency relationships | ✅ Active |
+| [[System/Indexes/Architecture-Index]] | Architectural patterns | ✅ Active |
+| [[System/Indexes/Service-Index]] | Service registry | ✅ Active |
+| [[System/Indexes/API-Index]] | API documentation | ✅ Active |
+| [[System/Indexes/Query-Index]] | Query patterns | ✅ Active |
+| [[System/Indexes/Event-Index]] | Event handling | ✅ Active |
+| [[System/Indexes/Handler-Index]] | Event handlers | ✅ Active |
+| [[System/Indexes/Performance-Index]] | Performance metrics | ✅ Active |
+| [[System/Indexes/Security-Index]] | Security analysis | ✅ Active |
+| [[System/Indexes/Tests-Index]] | Test coverage | ✅ Active |
+| [[System/Indexes/Repository-Index]] | Repository structure | ✅ Active |
 
-#### Category Documentation
-- **`sources/architectural-patterns-sources.md`** - Design patterns and architecture
-- **`sources/conventions-sources.md`** - Coding standards and conventions
-- **`sources/ecs-sources.md`** - ECS runtime and source generator
-- **`sources/generator-sources.md`** - AOT-safe source generators
-- **`sources/extension-sources.md`** - 18+ modular extensions
-- **`sources/ideation-sources.md`** - Experimental aspects (Memory, Fluent, Data, Math, Time, Logging)
-- **`sources/benchmark-sources.md`** - Performance benchmarks
-- **`sources/test-sources.md`** - Unit and integration tests
-- **`sources/generated-code-sources.md`** - Source-generated code
+### 4. Sessions
 
-### 2. Concepts Documentation (NEW)
+| File | Purpose | Status |
+|---|---|---|
+| [[System/Sessions/Current-Session]] | Active session tracking | ✅ Active |
+| [[System/Sessions/Session-History]] | Session history log | ✅ Active |
+| [[System/Sessions/Execution-Checkpoints]] | Execution checkpoints | ✅ Active |
+| [[System/Sessions/Pending-Iterations]] | Pending iterations | ✅ Active |
+| [[System/Sessions/Last-Successful-Run]] | Last successful execution | ✅ Active |
 
-#### Performance Optimization
-- **`concepts/data-oriented-design.md`** - Cache-first ECS optimization (+3-5x performance)
-- **`concepts/zero-copy-abstractions.md`** - Memory-efficient queries without allocation
-- **`concepts/query-based-architecture.md`** - Type-safe component filtering
-- **`concepts/high-speed-priority-queue.md`** - O(log n) heap operations for scheduling
-- **`concepts/compression-memory-optimization.md`** - Zip-based cache entries (-60-80% memory)
+### 5. Logs
 
-#### Architecture Patterns
-- **`concepts/value-object-pattern.md`** - Immutable data types with equality by value
-- **`concepts/compile-time-polymorphism.md`** - Static dispatch via source generators
-- **`concepts/event-driven-entity-system.md`** - Per-entity lifecycle events
-- **`concepts/update-loop-game-loop.md`** - Fixed timestep simulation with delta time
+| File | Purpose | Status |
+|---|---|---|
+| [[System/Logs/Execution-Log]] | Detailed execution log | ✅ Active |
+| [[System/Logs/Analysis-History]] | Analysis history | ✅ Active |
+| [[System/Logs/Commit-History]] | Git commit history | ✅ Active |
+| [[System/Logs/Failures]] | Failure tracking | ✅ Active |
+| [[System/Logs/Warnings]] | Warning tracking | ✅ Active |
+| [[System/Logs/Regeneration-Log]] | Regeneration tracking | ✅ Active |
 
-#### Resource Management
-- **`concepts/resource-management-patterns.md`** - RAII + async loading with caching
-- **`concepts/service-registration-discovery.md`** - Compile-time DI registry
+### 6. Tracking
 
-#### Extension Framework
-- **`concepts/cross-platform-abstraction-layer.md`** - Platform-agnostic APIs (Win/Linux/macOS/Web)
-- **`concepts/procedural-generation-framework.md`** - Algorithmic content generation
-- **`concepts/dialogue-system-architecture.md`** - Branching narrative with localization
-- **`concepts/multi-targeting-strategy.md`** - .NET 2.0 to .NET 10 support
+| File | Purpose | Status |
+|---|---|---|
+| [[System/Tracking/Coverage-Map]] | Documentation coverage | ✅ Active |
+| [[System/Tracking/Documentation-Map]] | Documentation structure | ✅ Active |
+| [[System/Tracking/Documentation-Quality]] | Quality metrics | ✅ Active |
+| [[System/Tracking/Documentation-Status]] | Status tracking | ✅ Active |
+| [[System/Tracking/Generation-History]] | Generation history | ✅ Active |
+| [[System/Tracking/Regeneration-Queue]] | Regeneration queue | ✅ Active |
+| [[System/Tracking/Manual-Edits]] | Manual edit tracking | ✅ Active |
+| [[System/Tracking/Project-Analysis-Coverage]] | Analysis coverage | ✅ Active |
 
-### 3. Update Tracking
+### 7. Queues
 
-- **`memory-system-update-summary.md`** - Comprehensive update summary
-- **`memory-system-tracking.md`** - Tracking metadata and quality checks
+| File | Purpose | Status |
+|---|---|---|
+| [[System/Queues/Pending-Projects]] | Pending project analysis | ✅ Active |
+| [[System/Queues/Completed-Projects]] | Completed projects | ✅ Active |
+| [[System/Queues/Failed-Projects]] | Failed projects | ✅ Active |
+| [[System/Queues/Skipped-Projects]] | Skipped projects | ✅ Active |
+| [[System/Queues/High-Priority-Analysis]] | High priority items | ✅ Active |
+| [[System/Queues/Pending-Indexes]] | Pending indexes | ✅ Active |
+| [[System/Queues/Pending-Regeneration]] | Pending regeneration | ✅ Active |
+| [[System/Queues/Pending-Work]] | Pending work items | ✅ Active |
+| [[System/Queues/Changed-Projects]] | Changed projects | ✅ Active |
+| [[System/Queues/Completed-Work]] | Completed work | ✅ Active |
 
-## Usage Guidelines
+### 8. Checkpoints
 
-### For Developers
-1. Start with `sources/sources-overview.md` for general overview
-2. Read specific source category documentation as needed
-3. Study concepts for design patterns and best practices
-4. Follow conventions in `sources/conventions-sources.md`
+| File | Purpose | Status |
+|---|---|---|
+| [[System/Checkpoints/Latest-Checkpoint]] | Latest checkpoint | ✅ Active |
+| [[System/Checkpoints/Architecture-Checkpoint]] | Architecture checkpoint | ✅ Active |
+| [[System/Checkpoints/Dependency-Checkpoint]] | Dependency checkpoint | ✅ Active |
+| [[System/Checkpoints/Documentation-Checkpoint]] | Documentation checkpoint | ✅ Active |
+| [[System/Checkpoints/Security-Checkpoint]] | Security checkpoint | ✅ Active |
+| [[System/Checkpoints/Testing-Checkpoint]] | Testing checkpoint | ✅ Active |
 
-### For AI Agents
-1. Use documentation as context for code generation
-2. Reference architectural patterns for design decisions
-3. Check generated code locations for understanding compile-time generation
-4. Apply new concepts to ECS systems and extensions
+### 9. Metadata
 
-### For Documentation Maintenance
-1. Update sources when new modules are added
-2. Add new concepts for emerging patterns
-3. Maintain cross-links between documents
-4. Keep statistics table current
+| File | Purpose | Status |
+|---|---|---|
+| [[System/Metadata/Index]] | System metadata | ✅ Active |
 
-## Statistics
+## Domain Documentation
 
-| Metric | Value |
-|--------|-------|
-| **Source files documented** | 500+ |
-| **Test files documented** | 200+ |
-| **Generated files tracked** | 300+ |
-| **Documentation files** | 28+ (11 sources + 17 concepts) |
-| **Total lines documented** | ~5,000+ |
-| **New concepts added** | 15 |
+### Data Domain
 
-## See Also
+| File | Purpose | Status |
+|---|---|---|
+| [[Domain/Data/Overview]] | JSON library overview | ✅ Active |
+| [[Domain/Data/Serialization/Serialization-Contract]] | Serialization interface | ✅ Active |
+| [[Domain/Data/Deserialization/Deserialization-Contract]] | Deserialization interface | ✅ Active |
+| [[Domain/Data/Parsing/Parsing-Contract]] | Parsing interface | ✅ Active |
+| [[Domain/Data/File-Operations/File-Operations]] | File operations | ✅ Active |
+| [[Domain/Data/Exceptions/Exceptions]] | Exception handling | ✅ Active |
+| [[Domain/Data/JsonNativeAOT-Facade]] | NativeAOT facade | ✅ Active |
+| [[Domain/Data/Architecture]] | Data architecture | ✅ Active |
 
-- [`.memory/sources/`] - Source file documentation
-- [`.memory/concepts/`] - Architectural and design concepts (NEW)
-- [`.memory/architecture/`] - Architecture documentation (if exists)
-- [`.memory/projects/`] - Project-specific documentation (if exists)
+### Fluent Domain
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Domain/Fluent/Overview]] | Fluent builder overview | ✅ Active |
+| [[Domain/Fluent/Components/Component-System]] | Component system | ✅ Active |
+| [[Domain/Fluent/Builders/Fluent-Builders]] | Builder interfaces | ✅ Active |
+| [[Domain/Fluent/Words/Words-Index]] | Builder words index | ✅ Active |
+| [[Domain/Fluent/Lifecycle/Lifecycle-Hooks]] | Lifecycle hooks | ✅ Active |
+
+### Memory Domain
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Domain/Memory/Overview]] | Asset registry overview | ✅ Active |
+| [[Domain/Memory/Asset-Registry-API]] | Asset registry API | ✅ Active |
+
+### Time Domain
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Domain/Time/Overview]] | Clock overview | ✅ Active |
+| [[Domain/Time/Clock-API]] | Clock API reference | ✅ Active |
+
+## Project Documentation
+
+### Layer 1 - Presentation
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Projects/1_Presentation/Engine]] | Game engine runtime | ✅ Active |
+| [[Projects/1_Presentation/Hub]] | Project launcher | ✅ Active |
+| [[Projects/1_Presentation/Installer]] | Installer application | ✅ Active |
+| [[Projects/1_Presentation/Benchmark]] | Performance benchmarks | ✅ Active |
+
+### Layer 2 - Application
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Projects/2_Application/Alis]] | Core application | ✅ Active |
+| [[Projects/2_Application/Alis.Test]] | Core tests | ✅ Active |
+| [[Projects/2_Application/Samples/Alis.Sample]] | Sample application | ✅ Active |
+
+### Layer 3 - Structuration
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Projects/3_Structuration/Alis.Core]] | Core abstractions | ✅ Active |
+| [[Projects/3_Structuration/Alis.Core.Ecs]] | ECS abstractions | ✅ Active |
+
+### Layer 4 - Operation
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Projects/4_Operation/Core]] | Runtime implementations | ✅ Active |
+| [[Projects/4_Operation/Ecs]] | ECS runtime | ✅ Active |
+| [[Projects/4_Operation/Graphic]] | Graphics runtime | ✅ Active |
+| [[Projects/4_Operation/Audio]] | Audio runtime | ✅ Active |
+| [[Projects/4_Operation/Physic]] | Physics runtime | ✅ Active |
+
+### Layer 5 - Declaration
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Projects/5_Declaration/Core]] | Data contracts | ✅ Active |
+| [[Projects/5_Declaration/Alis.Core.Data]] | Data contracts | ✅ Active |
+| [[Projects/5_Declaration/Alis.Core.Log]] | Logging contracts | ✅ Active |
+
+### Layer 6 - Ideation
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Projects/6_Ideation/Core]] | Game functionality | ✅ Active |
+| [[Projects/6_Ideation/Alis.Core.Game]] | Game logic | ✅ Active |
+| [[Projects/6_Ideation/Alis.Core.Network]] | Network logic | ✅ Active |
+| [[Projects/6_Ideation/Alis.Core.Aspect.Data]] | JSON library | ✅ Active |
+| [[Projects/6_Ideation/Alis.Core.Aspect.Fluent]] | Fluent builder | ✅ Active |
+| [[Projects/6_Ideation/Alis.Core.Aspect.Memory]] | Asset registry | ✅ Active |
+| [[Projects/6_Ideation/Alis.Core.Aspect.Time]] | Clock utility | ✅ Active |
+
+## Conceptual Knowledge
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Concepts/Index]] | Concepts index | ✅ Active |
+| [[Concepts/Alis Architecture Overview]] | Architecture overview | ✅ Active |
+| [[Concepts/Layered Architecture]] | Layer structure | ✅ Active |
+| [[Concepts/Entity Component System]] | ECS pattern | ✅ Active |
+| [[Concepts/Query Based Architecture]] | Query patterns | ✅ Active |
+| [[Concepts/Data Oriented Design]] | DOD principles | ✅ Active |
+| [[Concepts/Generator Pattern]] | Code generation | ✅ Active |
+| [[Concepts/Multi-Targeting Strategy]] | Framework targets | ✅ Active |
+| [[Concepts/Zero Copy Abstractions]] | Zero-copy patterns | ✅ Active |
+| [[Concepts/Value Object Pattern]] | Value objects | ✅ Active |
+
+## Glossary
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Glossary/Index]] | Glossary index | ✅ Active |
+| [[Glossary/Component]] | Component definition | ✅ Active |
+| [[Glossary/Entity Component System]] | ECS definition | ✅ Active |
+| [[Glossary/Query]] | Query definition | ✅ Active |
+| [[Glossary/Archetype]] | Archetype definition | ✅ Active |
+| [[Glossary/GameObject]] | GameObject definition | ✅ Active |
+| [[Glossary/Scene]] | Scene definition | ✅ Active |
+
+## Decisions
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Decisions/adr-001-layered-architecture]] | Layered architecture decision | ✅ Active |
+| [[Decisions/adr-002-aggregator-pattern]] | Aggregator pattern decision | ✅ Active |
+
+## Extensions
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Extensions/Index]] | Extensions index | ✅ Active |
+| [[Extensions/Graphic.Sfml]] | SFML graphics | ✅ Active |
+| [[Extensions/Graphic.Glfw]] | GLFW graphics | ✅ Active |
+| [[Extensions/Graphic.Sdl2]] | SDL2 graphics | ✅ Active |
+| [[Extensions/Dialogue]] | Dialogue system | ✅ Active |
+| [[Extensions/Translator]] | Translation system | ✅ Active |
+| [[Extensions/FFmpeg]] | Media processing | ✅ Active |
+| [[Extensions/Thread]] | Threading utilities | ✅ Active |
+| [[Extensions/Profile]] | Performance profiling | ✅ Active |
+| [[Extensions/Updater]] | Auto-update system | ✅ Active |
+| [[Extensions/Cloud.GoogleDrive]] | Cloud storage | ✅ Active |
+
+## Applications
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Applications/Index]] | Applications index | ✅ Active |
+| [[Applications/Engine]] | Game editor | ✅ Active |
+| [[Applications/Hub]] | Project launcher | ✅ Active |
+
+## Samples
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Samples/Index]] | Samples index | ✅ Active |
+| [[Samples/Breakout]] | Breakout game | ✅ Active |
+| [[Samples/Pong]] | Pong game | ✅ Active |
+| [[Samples/Platformer]] | Platformer game | ✅ Active |
+| [[Samples/Shooter]] | Shooter game | ✅ Active |
+| [[Samples/RPG]] | RPG game | ✅ Active |
+| [[Samples/Tetris]] | Tetris game | ✅ Active |
+| [[Samples/Snake]] | Snake game | ✅ Active |
+| [[Samples/Flappy Bird]] | Flappy Bird game | ✅ Active |
+| [[Samples/Space Invaders]] | Space Invaders game | ✅ Active |
+| [[Samples/Pac-Man]] | Pac-Man game | ✅ Active |
+| [[Samples/Asteroids]] | Asteroids game | ✅ Active |
+
+## Context Files
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Context/Architecture-Rules]] | Architecture rules | ✅ Active |
+| [[Context/Coding-Conventions]] | Coding standards | ✅ Active |
+| [[Context/Dependency-Constraints]] | Dependency rules | ✅ Active |
+| [[Context/Project-Map]] | Project mapping | ✅ Active |
+| [[Context/Onboarding]] | Developer onboarding | ✅ Active |
+
+## Prompts
+
+| File | Purpose | Status |
+|---|---|---|
+| [[Prompts/Index]] | Prompts index | ✅ Active |
+| [[Prompts/AI-Context]] | AI agent context | ✅ Active |
+| [[Prompts/Code-Review-Checklist]] | Code review guidelines | ✅ Active |
+
+## Related Documentation
+
+- [[Index]] — Main memory entry point
+- [[Cross-Link Index]] — Cross-reference mapping
+- [[Projects/Index]] — Project documentation
+- [[Architecture/Dependency-Graph]] — Dependency diagrams
+- [[Concepts/Index]] — Conceptual knowledge
+- [[Glossary/Index]] — Terminology
