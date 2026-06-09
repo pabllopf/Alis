@@ -35,6 +35,35 @@
 | decisions/adr-001-layered-architecture.md | Complete | High | 2026-06-09 |
 | decisions/adr-002-aggregator-pattern.md | Complete | High | 2026-06-09 |
 | conventions/naming-conventions.md | Complete | High | 2026-06-09 |
+| extensions/updater.md | Complete | High | 2026-06-09 |
+| extensions/translator.md | Complete | High | 2026-06-09 |
+| extensions/dialogue.md | Complete | High | 2026-06-09 |
+| extensions/graphic-sfml.md | Complete | High | 2026-06-09 |
+| extensions/graphic-glfw.md | Complete | High | 2026-06-09 |
+| extensions/graphic-sdl2.md | Complete | High | 2026-06-09 |
+| extensions/thread.md | Complete | High | 2026-06-09 |
+| extensions/ffmpeg.md | Complete | High | 2026-06-09 |
+| extensions/profile.md | Complete | High | 2026-06-09 |
+| extensions/cloud-googledrive.md | Complete | High | 2026-06-09 |
+| extensions/graphic-ui.md | Complete | High | 2026-06-09 |
+| applications/engine-editor.md | Complete | High | 2026-06-09 |
+| applications/hub.md | Complete | High | 2026-06-09 |
+| applications/installer.md | Complete | High | 2026-06-09 |
+| applications/benchmark.md | Complete | High | 2026-06-09 |
+| samples/index.md | Complete | High | 2026-06-09 |
+| samples/breakout.md | Complete | High | 2026-06-09 |
+| samples/pong.md | Complete | High | 2026-06-09 |
+| samples/platformer.md | Complete | High | 2026-06-09 |
+| samples/shooter.md | Complete | High | 2026-06-09 |
+| samples/rpg.md | Complete | High | 2026-06-09 |
+| samples/tetris.md | Complete | High | 2026-06-09 |
+| samples/snake.md | Complete | High | 2026-06-09 |
+| samples/flappy-bird.md | Complete | High | 2026-06-09 |
+| samples/space-invaders.md | Complete | High | 2026-06-09 |
+| samples/pac-man.md | Complete | High | 2026-06-09 |
+| samples/asteroids.md | Complete | High | 2026-06-09 |
+| samples/breakout-3d.md | Complete | High | 2026-06-09 |
+| samples/demo.md | Complete | High | 2026-06-09 |
 
 ## Generation History
 
@@ -44,6 +73,7 @@
 | 2026-06-09 | 23 | Success (comprehensive enrichment) |
 | 2026-06-09 | 14 | Success (samples + benchmark enrichment) |
 | 2026-06-09 | 8 | Success (diagrams + context files) |
+| 2026-06-09 | 30 | Success (extensions + applications + samples) |
 
 ## Regeneration Queue
 
@@ -60,7 +90,7 @@
 |---|---|---|---|---|
 | Architecture | 3 | 3 | 100% |
 | System Indexes | 14 | 14 | 100% |
-| Project Docs | ~140 | ~53 | ~40% |
+| Project Docs | ~140 | ~83 | ~59% |
 | Diagrams | 5 | 5 | 100% |
 | Context/AI | 5 | 5 | 100% |
 | Prompts/AI | 3 | 3 | 100% |
@@ -69,3 +99,6 @@
 | Testing | 1 | 1 | 100% |
 | Decisions | 2 | 2 | 100% |
 | Conventions | 1 | 1 | 100% |
+| Extensions | 11 | 11 | 100% |
+| Applications | 4 | 4 | 100% |
+| Samples | 13 | 13 | 100% |
