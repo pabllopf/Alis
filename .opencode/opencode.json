@@ -115,7 +115,8 @@
     ".opencode/plugins/tree-sitter-csharp.js",
     ".opencode/plugins/test-impact.js",
     ".opencode/plugins/git-smart-context.js",
-    ".opencode/plugins/file-summary-cache.js"
+    ".opencode/plugins/file-summary-cache.js",
+    "oc-tps@latest"
   ],
 
   "autoupdate": false

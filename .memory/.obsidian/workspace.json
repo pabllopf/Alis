@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "testing/analysis.md",
+                "file": "entities/Alis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "analysis"
+              "title": "Alis"
             }
           }
         ]
@@ -198,6 +198,7 @@
   },
   "active": "88f2a6bcff3fb0a3",
   "lastOpenFiles": [
+    "testing/analysis.md",
     "extensions/Graphic.Sfml.md",
     "domain/data/deserialization/deserialization-contract.md",
     "dependencies/data-aspect-dependencies.md",
@@ -231,7 +232,6 @@
     "domain/data/diagrams/component-diagrams.md",
     "domain/data/diagrams",
     "projects/Alis.Core.Aspect.Data.md",
-    "system/state/data-project-state.md",
     "domain/data/exceptions",
     "domain/data/file-operations",
     "Sin título.canvas"
