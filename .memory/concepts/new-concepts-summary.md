@@ -1,5 +1,8 @@
 # New Concepts Added to Alis Memory System
 
+tags:
+  - concept,theory,documentation
+
 This document summarizes the 15 new architectural and design concepts added to the `.memory/concepts/` directory.
 
 ## Summary

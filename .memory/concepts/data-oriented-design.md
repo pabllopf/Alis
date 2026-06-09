@@ -1,5 +1,8 @@
 # Data-Oriented Design (DOD)
 
+tags:
+  - concept,theory,documentation
+
 Data-Oriented Design is a software design paradigm that focuses on optimizing data layout and access patterns for better CPU cache utilization and parallel processing.
 
 ## Core Principles

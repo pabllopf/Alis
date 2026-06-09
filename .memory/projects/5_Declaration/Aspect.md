@@ -1,5 +1,8 @@
 # Alis.Core.Aspect
 
+tags:
+  - declaration,contract,interface,documentation
+
 ## Overview
 Aspect-oriented declaration library in the Declaration layer. Pure aggregator project — zero hand-written C# code. Receives all generated types from 6_Ideation source generators (Memory, Fluent, Data, Math, Time, Logging) and 4_Operation generators (ECS, Graphic) into a single assembly.
 

@@ -1,5 +1,8 @@
 # Alis.App.Installer
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Installation wizard application for ALIS game engine. Handles engine installation, updates, and version management.
 

@@ -1,5 +1,8 @@
 # Queue Management
 
+tags:
+  - queue,work,tracking
+
 Diagrams illustrating task queues and pending work tracking.
 
 ## Pending Work Flow

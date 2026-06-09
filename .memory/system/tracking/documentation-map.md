@@ -1,5 +1,8 @@
 # Documentation Map
 
+tags:
+  - tracking,monitoring,analysis
+
 Comprehensive tracking of all generated documentation across the repository.
 
 ## Documentation Categories

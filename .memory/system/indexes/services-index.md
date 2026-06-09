@@ -1,5 +1,8 @@
 # Services Index — ALIS
 
+tags:
+  - index,catalog,reference
+
 ## Core Engine Services
 
 | Service | Project | Layer | Description |

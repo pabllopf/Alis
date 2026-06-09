@@ -1,5 +1,8 @@
 # Alis.Sample.Empty
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 Empty/skeleton project built on the ALIS engine. Minimal bootstrap with `VideoGame.Create().Run()` — serves as the starting template for new ALIS game projects.
 

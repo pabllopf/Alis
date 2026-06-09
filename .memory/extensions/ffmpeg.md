@@ -1,5 +1,8 @@
 # Extension: Media.FFmpeg
 
+tags:
+  - extension,plugin,add-on
+
 ## Overview
 
 | Property | Value |

@@ -1,5 +1,8 @@
 # Testing Architecture
 
+tags:
+  - testing,test,quality,assurance
+
 Mermaid diagrams illustrating the testing strategy and coverage.
 
 ## Test Pyramid

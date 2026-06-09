@@ -1,5 +1,8 @@
 # Alis.Sample.Asteroid
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 Classic Asteroids arcade game clone built on the ALIS engine. The player controls a spaceship in an asteroid field, shooting asteroids while avoiding collisions. Demonstrates physics-based movement, collision detection, projectile spawning, audio feedback, and multi-platform deployment (Desktop, Web, iOS, Android).
 

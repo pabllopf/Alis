@@ -1,5 +1,8 @@
 # Sample: Platformer
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 | Property | Value |

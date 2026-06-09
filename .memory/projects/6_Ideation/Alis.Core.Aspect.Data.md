@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Data
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 
 The **Alis.Core.Aspect.Data** project provides a JSON serialization/deserialization system with source generator support for AOT-compatible code generation. It implements a custom recursive descent parser instead of relying on System.Text.Json.

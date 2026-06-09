@@ -1,5 +1,8 @@
 # Warnings
 
+tags:
+  - log,execution,history
+
 | Timestamp | Severity | Issue | Status |
 |-----------|----------|-------|--------|
 | 2026-06-09 | Info | Extension docs enriched, some still basic | Open |

@@ -1,5 +1,8 @@
 # GameObjectEnumerator
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **GameObjectEnumerator** is an entity iteration wrapper that provides safe, efficient enumeration of entities within a batch or archetype, supporting zero-copy iteration.

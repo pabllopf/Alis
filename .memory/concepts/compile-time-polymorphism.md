@@ -1,5 +1,8 @@
 # Compile-Time Polymorphism
 
+tags:
+  - concept,theory,documentation
+
 Compile-time polymorphism uses source generators and static dispatch instead of virtual method calls, enabling AOT compatibility and better compiler optimizations.
 
 ## Core Concept

@@ -1,5 +1,8 @@
 # Alis.Extension.Cloud.DropBox
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Cloud.DropBox functionality in ALIS.
 

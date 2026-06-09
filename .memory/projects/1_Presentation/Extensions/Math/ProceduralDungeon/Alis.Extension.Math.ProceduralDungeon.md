@@ -1,5 +1,8 @@
 # Alis.Extension.Math.ProceduralDungeon
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 
 The **Alis.Extension.Math.ProceduralDungeon** project provides a robust procedural dungeon generation system for ALIS games, enabling automatic creation of randomized dungeon layouts with rooms, corridors, and structured board generation.

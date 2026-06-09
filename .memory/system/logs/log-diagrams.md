@@ -1,5 +1,8 @@
 # Log Management
 
+tags:
+  - log,execution,history
+
 Diagrams illustrating logging and monitoring systems.
 
 ## Execution Flow

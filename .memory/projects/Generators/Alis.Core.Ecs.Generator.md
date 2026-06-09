@@ -1,5 +1,8 @@
 # Alis.Core.Ecs.Generator
 
+tags:
+  - project,documentation,reference
+
 ## Overview
 Most complex generator in the Alis repository. Incremental generator (`IIncrementalGenerator`) that produces the ECS component type registry — scans all `IComponentBase` implementations and generates registration code consumed by the Alis.Core.Ecs runtime.
 

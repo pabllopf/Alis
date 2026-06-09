@@ -1,5 +1,8 @@
 # Alis.Extension.Io.FileDialog.Sample
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Auto-generated documentation for Alis.Extension.Io.FileDialog.Sample.
 

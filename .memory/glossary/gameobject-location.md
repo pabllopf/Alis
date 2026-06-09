@@ -1,5 +1,8 @@
 # GameObjectLocation
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **GameObjectLocation** is a struct that stores an entity's current location within the world, including archetype ID and storage index for fast component lookup.

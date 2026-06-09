@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "e580c01885fe26f1",
+        "id": "d37f8ea8f568a6e1",
         "type": "tabs",
         "children": [
           {
-            "id": "847c078068ae35c5",
+            "id": "88f2a6bcff3fb0a3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "concepts/procedural-generation-framework.md",
+                "file": "testing/analysis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "procedural-generation-framework"
+              "title": "analysis"
             }
           }
         ]
@@ -196,44 +196,44 @@
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "847c078068ae35c5",
+  "active": "88f2a6bcff3fb0a3",
   "lastOpenFiles": [
-    "concepts/summaries/concepts-overview.md",
-    "entities/Scene.md",
-    "entities/Component.md",
-    "entities/Alis.md",
-    "entities/GameObject.md",
-    "applications/engine-editor.md",
-    "applications/hub.md",
-    "applications/installer.md",
-    "applications/benchmark.md",
-    "applications/index.md",
-    "testing/testing-diagrams.md",
-    "samples/space-invaders.md",
-    "system/queues/queue-diagrams.md",
-    "system/queues/queue-management.md",
-    "system/logs/execution-log.md",
-    "system/logs/log-diagrams.md",
-    "projects/6_Ideation/Time/Alis.Core.Aspect.Time.md",
-    "glossary/index.md",
-    "cross-link-fix-summary.md",
-    "cross-link-validation-summary.md",
-    "cross-link-validation-report.md",
-    "memory-system-final-summary.md",
-    "memory-system-index.md",
-    "concepts/concepts-index.md",
-    "memory-system-tracking.md",
-    "memory-system-update-summary.md",
-    "samples",
-    "applications",
-    "projects/Generators",
-    "extensions",
-    "concepts/summaries",
-    "projects/2_Application/Samples",
-    "Sin título.canvas",
-    "context",
-    "projects/1_Presentation/Extensions/Math/ProceduralDungeon",
-    "projects/1_Presentation/Extensions/Math/HighSpeedPriorityQueue",
-    "projects/1_Presentation/Extensions/Math"
+    "extensions/Graphic.Sfml.md",
+    "domain/data/deserialization/deserialization-contract.md",
+    "dependencies/data-aspect-dependencies.md",
+    "domain/data/exceptions/exceptions.md",
+    "cross-linking-summary.md",
+    "cross-link-diagrams.md",
+    "memory-system-summary.md",
+    "cross-link-index.md",
+    "system/state/memory-project-state.md",
+    "projects/Alis.Core.Aspect.Memory.md",
+    "domain/memory/asset-registry-api.md",
+    "domain/memory/overview.md",
+    "domain/memory",
+    "system/state/time-project-state.md",
+    "projects/Alis.Core.Aspect.Time.md",
+    "domain/time/clock-api.md",
+    "domain/time/overview.md",
+    "domain/time",
+    "system/state/fluent-project-state.md",
+    "projects/Alis.Core.Aspect.Fluent.md",
+    "domain/fluent/lifecycle/lifecycle-hooks.md",
+    "domain/fluent/words/words-index.md",
+    "domain/fluent/builders/fluent-builders.md",
+    "domain/fluent/components/component-system.md",
+    "domain/fluent/overview.md",
+    "domain/fluent/words",
+    "domain/fluent/lifecycle",
+    "domain/fluent/components",
+    "domain/fluent/builders",
+    "domain/fluent",
+    "domain/data/diagrams/component-diagrams.md",
+    "domain/data/diagrams",
+    "projects/Alis.Core.Aspect.Data.md",
+    "system/state/data-project-state.md",
+    "domain/data/exceptions",
+    "domain/data/file-operations",
+    "Sin título.canvas"
   ]
 }

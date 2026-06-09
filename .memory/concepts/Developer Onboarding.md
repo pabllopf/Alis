@@ -1,5 +1,8 @@
 # Developer Onboarding
 
+tags:
+  - concept,theory,documentation
+
 Quick reference for new developers joining the Alis project.
 
 ## Prerequisites

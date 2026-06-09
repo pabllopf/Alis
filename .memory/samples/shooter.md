@@ -1,5 +1,8 @@
 # Sample: Shooter
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 | Property | Value |

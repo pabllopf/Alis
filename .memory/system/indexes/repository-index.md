@@ -1,5 +1,8 @@
 # Repository Index
 
+tags:
+  - index,catalog,reference
+
 Comprehensive index of all repository documentation and memory artifacts.
 
 ## Documentation Categories

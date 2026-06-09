@@ -1,5 +1,8 @@
 # Alis.Extension.Io.FileDialog.Test
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Auto-generated documentation for Alis.Extension.Io.FileDialog.Test.
 

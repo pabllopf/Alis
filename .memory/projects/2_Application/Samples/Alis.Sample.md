@@ -1,5 +1,8 @@
 # Alis.Sample (All-in-One Sample)
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 All-in-one sample/demo application that exercises the full ALIS engine pipeline. Includes all source generators from across the 6-layer architecture and a custom asset build pipeline with SHA256-based incremental compilation.
 

@@ -1,5 +1,8 @@
 # Alis.Core.Graphic.Generator
 
+tags:
+  - project,documentation,reference
+
 ## Overview
 Skeleton/source generator in the Graphic subsystem. Implements `ISourceGenerator` but both `Initialize()` and `Execute()` are empty stubs — no actual source generation logic. Likely a placeholder or template for future resource pipeline processing.
 

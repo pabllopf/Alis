@@ -1,5 +1,8 @@
 # Alis.Extension.Cloud.DropBox
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Dropbox cloud storage integration for ALIS game engine. Provides file synchronization and cloud asset management.
 

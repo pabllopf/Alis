@@ -1,5 +1,8 @@
 # Documentation Quality
 
+tags:
+  - tracking,monitoring,analysis
+
 ## Quality Levels
 
 | Level | Description |

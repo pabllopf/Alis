@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Logging
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 High-level Logging aspect definition with source generator. Provides Logging-oriented programming capabilities.
 

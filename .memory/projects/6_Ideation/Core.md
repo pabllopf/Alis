@@ -1,5 +1,8 @@
 # Core Libraries (6_Ideation)
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 The 6_Ideation layer contains ideation libraries that provide high-level game-specific functionality, utilities, and domain logic. These are the most specialized libraries in the architecture.
 

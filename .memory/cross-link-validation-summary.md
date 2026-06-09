@@ -1,5 +1,8 @@
 # Cross-Link Validation Summary
 
+tags:
+  - documentation,reference
+
 **Date**: June 9, 2026  
 **Status**: ✅ **COMPLETED**  
 **Total Files Checked**: 35 markdown files  

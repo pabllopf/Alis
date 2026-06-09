@@ -1,5 +1,8 @@
 # Context Management
 
+tags:
+  - project,documentation,reference
+
 Diagrams illustrating context handling and state management.
 
 ## Context Flow

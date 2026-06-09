@@ -1,5 +1,8 @@
 # Last Successful Run
 
+tags:
+  - session,execution,history
+
 ## Session Info
 - **Date**: 2026-06-09
 - **Duration**: Active session

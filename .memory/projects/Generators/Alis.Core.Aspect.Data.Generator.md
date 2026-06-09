@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Data.Generator
 
+tags:
+  - project,documentation,reference
+
 ## Overview
 Source generator (`ISourceGenerator`) for AOT-safe JSON serialization. Scans `[Serializable]` types and generates `IJsonSerializable` / `IJsonDesSerializable<T>` partial class implementations.
 

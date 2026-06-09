@@ -1,5 +1,8 @@
 # JSON Parsing
 
+tags:
+  - domain,api,reference,documentation
+
 ## IJsonParser
 
 Parses JSON strings into flat property dictionaries without deserializing to specific types.

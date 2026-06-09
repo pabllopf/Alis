@@ -1,5 +1,8 @@
 # Alis.Core.Window
 
+tags:
+  - operation,runtime,implementation,documentation
+
 ## Overview
 Window management system for the ALIS engine. Handles window creation, resizing, fullscreen mode, and platform-specific window behavior.
 

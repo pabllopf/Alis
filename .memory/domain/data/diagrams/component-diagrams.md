@@ -1,5 +1,8 @@
 # Component Architecture
 
+tags:
+  - domain,api,reference,documentation
+
 ## Main Pipeline
 
 ```mermaid

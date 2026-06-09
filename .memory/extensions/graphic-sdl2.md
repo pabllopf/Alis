@@ -1,5 +1,8 @@
 # Extension: Graphic.Sdl2
 
+tags:
+  - extension,plugin,add-on
+
 ## Overview
 
 | Property | Value |

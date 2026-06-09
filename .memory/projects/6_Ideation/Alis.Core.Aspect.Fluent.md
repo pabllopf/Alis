@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Fluent
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 
 The **Alis.Core.Aspect.Fluent** project provides a fluent API interface system for the ALIS game engine. It implements a chainable interface builder pattern using marker interfaces ("words" and "components") that compose to build game objects, scenes, and configurations.

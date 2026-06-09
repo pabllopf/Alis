@@ -1,5 +1,8 @@
 # File Operations
 
+tags:
+  - domain,api,reference,documentation
+
 ## IJsonFileHandler
 
 Handles reading and writing JSON files to disk.

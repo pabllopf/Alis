@@ -1,5 +1,8 @@
 # Alis.Extension.Math.HighSpeedPriorityQueue
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Math.HighSpeedPriorityQueue functionality in ALIS.
 

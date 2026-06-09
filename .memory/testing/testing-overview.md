@@ -1,5 +1,8 @@
 # Testing Overview
 
+tags:
+  - testing,test,quality,assurance
+
 ## Test Coverage Status
 
 ### Documented Projects with Tests

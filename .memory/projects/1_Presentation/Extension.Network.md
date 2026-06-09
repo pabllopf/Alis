@@ -1,5 +1,8 @@
 # Alis.Extension.Network
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Network functionality in ALIS.
 

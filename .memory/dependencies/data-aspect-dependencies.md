@@ -1,5 +1,8 @@
 # Dependencies
 
+tags:
+  - documentation,reference
+
 ## Project Dependencies
 
 ### Internal Dependencies

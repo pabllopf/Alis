@@ -1,5 +1,8 @@
 # Events Index — ALIS
 
+tags:
+  - index,catalog,reference
+
 ## ECS Events
 
 | Event | Trigger | Handler | Layer |

@@ -1,5 +1,8 @@
 # Extension System
 
+tags:
+  - concept,theory,documentation
+
 Alis provides 18+ modular extensions organized under `1_Presentation/Extension/` for cross-platform functionality.
 
 ## Extension Categories

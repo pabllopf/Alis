@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Memory
 
+tags:
+  - domain,api,reference,documentation
+
 ## Overview
 
 **Alis.Core.Aspect.Memory** provides an asset registry system for managing embedded asset packages (.pack/.zip) across assemblies. It enables loading, caching, and resolving embedded resources from compressed archives with thread-safe operations and intelligent caching strategies.

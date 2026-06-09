@@ -1,5 +1,8 @@
 # Alis.Extension.Updater.Test
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Auto-generated documentation for Alis.Extension.Updater.Test.
 

@@ -1,5 +1,8 @@
 # System
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **System** is a processing unit that operates on entities with specific component combinations, following the ECS architecture pattern.

@@ -1,5 +1,8 @@
 # Naming Conventions
 
+tags:
+  - convention,standard,naming
+
 Diagrams illustrating naming patterns and coding standards.
 
 ## Naming Convention Flow

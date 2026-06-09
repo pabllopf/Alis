@@ -1,5 +1,8 @@
 # Component
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 A **Component** is a data-only struct attached to entities in the ECS architecture. Components contain no logic, no inheritance, and no methods—they are pure data containers processed by [[System]] instances.

@@ -1,5 +1,8 @@
 # Alis.Extension.Network.Test
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Auto-generated documentation for Alis.Extension.Network.Test.
 

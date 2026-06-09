@@ -1,5 +1,8 @@
 # Performance Index
 
+tags:
+  - index,catalog,reference
+
 ## Performance-Critical Systems
 
 | System | Optimization | Status |

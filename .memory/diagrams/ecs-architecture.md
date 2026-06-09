@@ -1,5 +1,8 @@
 # ECS Architecture
 
+tags:
+  - diagram,visualization,mermaid
+
 ## Core Data Flow
 
 ```mermaid

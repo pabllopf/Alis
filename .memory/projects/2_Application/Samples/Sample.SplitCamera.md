@@ -1,5 +1,8 @@
 # Alis.Sample.SplitCamera
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 Split-screen camera demonstration built on the ALIS engine. Features a `Config/` directory likely containing multi-camera configuration files. Demonstrates the engine's ability to render multiple viewports simultaneously.
 

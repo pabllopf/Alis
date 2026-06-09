@@ -1,5 +1,8 @@
 # Alis.Extension.Cloud.DropBox
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 
 The **Alis.Extension.Cloud.DropBox** project provides Dropbox integration for file storage, synchronization, and backup capabilities within ALIS applications.

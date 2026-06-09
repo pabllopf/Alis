@@ -1,5 +1,8 @@
 # Pending Indexes
 
+tags:
+  - queue,work,tracking
+
 | Index | Status | Last Updated |
 |-------|--------|-------------|
 | project-index.md | Updated | 2026-06-09 |

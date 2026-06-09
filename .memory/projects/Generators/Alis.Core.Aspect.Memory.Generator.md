@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Memory.Generator
 
+tags:
+  - project,documentation,reference
+
 ## Overview
 Incremental generator (`IIncrementalGenerator`) for AOT-safe resource embedding. Reads `assets.pack` from `AdditionalTexts`, decompresses/re-compresses it, and embeds the compressed byte array into generated code for runtime access without reflection.
 

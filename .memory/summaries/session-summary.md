@@ -1,5 +1,8 @@
 # Session Summary — ALIS Memory Generation
 
+tags:
+  - summary,overview,documentation
+
 ## Goal
 Generate a complete enterprise monorepo memory system inside `.memory/` for the ALIS game engine framework (140+ projects).
 

@@ -1,5 +1,8 @@
 # Alis.Extension.Math.HighSpeedPriorityQueue
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 
 The **Alis.Extension.Math.HighSpeedPriorityQueue** project provides high-performance priority queue implementations for ALIS, optimized for game loop operations and real-time systems.

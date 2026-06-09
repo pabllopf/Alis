@@ -1,5 +1,8 @@
 # Value Object Pattern
 
+tags:
+  - concept,theory,documentation
+
 Value Objects are immutable data types that define equality by their attributes rather than by identity. They are fundamental to Domain-Driven Design and functional programming.
 
 ## Core Characteristics

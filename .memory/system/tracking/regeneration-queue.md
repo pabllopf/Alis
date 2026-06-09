@@ -1,5 +1,8 @@
 # Regeneration Queue
 
+tags:
+  - tracking,monitoring,analysis
+
 ## Pending Regeneration
 
 | Artifact | Reason | Priority | Status |

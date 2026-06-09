@@ -1,5 +1,8 @@
 # Session History
 
+tags:
+  - session,execution,history
+
 | Session | Date | Focus | Projects Documented |
 |---------|------|-------|-------------------|
 | 1 | 2026-06-08 | Core engine initialization | Solution structure, state files |

@@ -1,5 +1,8 @@
 # Words
 
+tags:
+  - domain,api,reference,documentation
+
 ## Overview
 
 "Words" are fluent builder interfaces that configure entity properties. Each "word" is a method that returns a builder for chaining.

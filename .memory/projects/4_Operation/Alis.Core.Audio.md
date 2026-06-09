@@ -1,5 +1,8 @@
 # Alis.Core.Audio
 
+tags:
+  - operation,runtime,implementation,documentation
+
 ## Overview
 Audio playback library for ALIS game engine. Provides cross-platform audio playback with platform-specific implementations for Windows, macOS, Linux, and WebAssembly.
 

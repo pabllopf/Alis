@@ -1,5 +1,8 @@
 # Dependency Management
 
+tags:
+  - concept,theory,documentation
+
 Alis follows strict dependency rules with no external NuGet packages, using only standard .NET libraries and native APIs.
 
 ## Dependency Rules

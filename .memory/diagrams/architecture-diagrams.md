@@ -1,5 +1,8 @@
 # Architecture Diagrams
 
+tags:
+  - diagram,visualization,mermaid
+
 Mermaid diagrams illustrating the Alis solution architecture and relationships.
 
 ## Layer Dependency Diagram

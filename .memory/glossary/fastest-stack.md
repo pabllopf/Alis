@@ -1,5 +1,8 @@
 # FastestStack
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **FastestStack** is a memory-efficient stack implementation optimized for ECS operations, providing O(1) push/pop operations with minimal allocation overhead.

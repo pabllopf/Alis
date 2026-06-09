@@ -1,5 +1,8 @@
 # Update Loop & Game Loop Pattern
 
+tags:
+  - concept,theory,documentation
+
 The game loop is the heart of any real-time application, providing fixed timestep simulation with delta time for frame-rate independence and deterministic behavior.
 
 ## Core Concept

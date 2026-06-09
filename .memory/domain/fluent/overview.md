@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Fluent
 
+tags:
+  - domain,api,reference,documentation
+
 ## Overview
 
 **Alis.Core.Aspect.Fluent** is a game entity component system with fluent builder patterns. It provides an AOT-compatible, reflection-free approach to entity-component architecture through interface-based contracts.

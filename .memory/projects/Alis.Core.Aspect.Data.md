@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Data
 
+tags:
+  - project,documentation,reference
+
 **Status**: ✅ Documented  
 **Type**: Library / Aspect  
 **Layer**: 6_Ideation  

@@ -1,5 +1,8 @@
 # Extension: Language.Translator
 
+tags:
+  - extension,plugin,add-on
+
 ## Overview
 
 | Property | Value |

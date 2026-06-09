@@ -1,5 +1,8 @@
 # Naming Conventions — ALIS
 
+tags:
+  - convention,standard,naming
+
 ## Project Naming
 - **Pattern**: `Alis.{LayerContext}.{Module}.{SubModule}`
 - **Examples**:

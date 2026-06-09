@@ -1,5 +1,8 @@
 # Analysis History
 
+tags:
+  - log,execution,history
+
 | Timestamp | Scope | Files Analyzed | Result |
 |-----------|-------|---------------|--------|
 | 2026-06-08 | Solution structure | alis.slnx | Mapped 140 projects across 6 layers |

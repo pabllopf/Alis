@@ -1,5 +1,8 @@
 # Sample: RPG
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 | Property | Value |

@@ -1,5 +1,8 @@
 # Fluent Interface
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 A **Fluent Interface** is a method chaining pattern that enables object configuration through a sequence of method calls, improving code readability and reducing boilerplate.

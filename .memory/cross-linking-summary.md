@@ -1,5 +1,8 @@
 # Cross-Linking Summary
 
+tags:
+  - project,documentation,reference
+
 ## Overview
 
 Complete cross-linking system for ALIS memory with 1,800+ validated links across 450+ documentation files.

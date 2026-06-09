@@ -1,5 +1,8 @@
 # Alis.Sample.Snake
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 Classic Snake game built on the ALIS engine. Minimal boilerplate — demonstrates the simplest possible game setup using `VideoGame.Create().Run()` with zero configuration.
 

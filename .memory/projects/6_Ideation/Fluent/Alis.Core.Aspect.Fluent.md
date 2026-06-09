@@ -1,5 +1,8 @@
 # Fluent Aspect Documentation
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Alis.Core.Aspect.Fluent - Builder Pattern System
 
 ### Purpose

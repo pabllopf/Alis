@@ -1,5 +1,8 @@
 # Memory Aspect Documentation
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Alis.Core.Aspect.Memory - Asset Management System
 
 ### Purpose

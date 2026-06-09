@@ -1,5 +1,8 @@
 # Prompt Engineering
 
+tags:
+  - prompt,ai,reference
+
 Diagrams illustrating prompt patterns and AI interaction flows.
 
 ## AI Context Flow

@@ -1,5 +1,8 @@
 # Alis.Extension.Payment.Stripe.Sample
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Auto-generated documentation for Alis.Extension.Payment.Stripe.Sample.
 

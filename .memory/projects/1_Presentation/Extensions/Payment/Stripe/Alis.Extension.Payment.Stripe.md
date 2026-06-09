@@ -1,5 +1,8 @@
 # Alis.Extension.Payment.Stripe
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 
 The **Alis.Extension.Payment.Stripe** project provides a comprehensive Stripe payment gateway integration for ALIS applications, supporting checkout sessions, payment intents, and refunds.

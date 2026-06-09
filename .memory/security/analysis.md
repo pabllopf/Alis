@@ -1,5 +1,8 @@
 # Security Analysis — ALIS
 
+tags:
+  - project,documentation,reference
+
 ## Security Extensions
 
 ### Alis.Extension.Security

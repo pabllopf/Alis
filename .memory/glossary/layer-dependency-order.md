@@ -1,5 +1,8 @@
 # Layer Dependency Order
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 The **Layer Dependency Order** defines the strict dependency hierarchy for the Alis monorepo, ensuring architectural boundaries are maintained and dependencies flow in one direction only.

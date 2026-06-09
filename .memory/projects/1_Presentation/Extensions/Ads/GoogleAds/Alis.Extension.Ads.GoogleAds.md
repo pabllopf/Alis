@@ -1,5 +1,8 @@
 # Alis.Extension.Ads.GoogleAds
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 
 The **Alis.Extension.Ads.GoogleAds** project provides an abstraction layer for Google AdMob integration, enabling game developers to implement monetization through banner ads, interstitial ads, and rewarded video ads.

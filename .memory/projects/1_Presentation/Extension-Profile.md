@@ -1,5 +1,8 @@
 # Profile Extension
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Alis.Extension.Profile
 - **Path**: `1_Presentation/Extension/Profile/src/`
 - **Type**: User profile management library

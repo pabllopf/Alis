@@ -1,5 +1,8 @@
 # Clock API Reference
 
+tags:
+  - domain,api,reference,documentation
+
 ## Class
 
 - **Type**: `Clock`

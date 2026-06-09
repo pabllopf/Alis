@@ -1,5 +1,8 @@
 # GameObjectOnlyEvent
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **GameObjectOnlyEvent** is a specialized event handler that manages entity lifecycle events without component parameters, focusing on entity creation and deletion.

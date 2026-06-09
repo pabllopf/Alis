@@ -1,5 +1,8 @@
 # Queue Management
 
+tags:
+  - queue,work,tracking
+
 Comprehensive queue management documentation for tracking pending and completed work.
 
 ## Queue Categories

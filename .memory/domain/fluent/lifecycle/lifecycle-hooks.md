@@ -1,5 +1,8 @@
 # Lifecycle Hooks
 
+tags:
+  - domain,api,reference,documentation
+
 ## Overview
 
 Lifecycle hooks are interfaces that define when component code executes during the entity lifecycle.

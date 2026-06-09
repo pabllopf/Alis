@@ -1,5 +1,8 @@
 # Tests Index — ALIS
 
+tags:
+  - index,catalog,reference
+
 ## Test Framework
 
 | Component | Technology |

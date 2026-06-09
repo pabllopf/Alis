@@ -1,5 +1,8 @@
 # Analysis State
 
+tags:
+  - system,state,tracking,management
+
 | Field | Value |
 |---|---|
 | Total Projects | 140 unique .csproj |

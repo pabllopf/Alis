@@ -1,5 +1,8 @@
 # State Tracking Diagrams
 
+tags:
+  - system,state,tracking,management
+
 Mermaid diagrams illustrating system state and monitoring.
 
 ## Repository Health Monitoring

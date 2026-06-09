@@ -1,5 +1,8 @@
 # Language Extensions
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Alis.Extension.Language.Translator
 - **Path**: `1_Presentation/Extension/Language/Translator/src/`
 - **Type**: Translation service library

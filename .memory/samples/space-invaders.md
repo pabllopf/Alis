@@ -1,5 +1,8 @@
 # Sample: Space Invaders
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 | Property | Value |

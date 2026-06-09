@@ -1,5 +1,8 @@
 # Query
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **Query** is a component-based entity filter that efficiently retrieves entities matching specific component combinations for processing.

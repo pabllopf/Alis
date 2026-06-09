@@ -1,5 +1,8 @@
 # Layer Index
 
+tags:
+  - index,catalog,reference
+
 ## Overview
 Complete documentation of all 6 architectural layers in the ALIS repository.
 

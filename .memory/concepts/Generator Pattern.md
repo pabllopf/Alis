@@ -1,5 +1,8 @@
 # Generator Pattern
 
+tags:
+  - concept,theory,documentation
+
 Alis uses Roslyn source generators to produce AOT-safe code at compile time, eliminating runtime reflection requirements.
 
 ## Source Generators

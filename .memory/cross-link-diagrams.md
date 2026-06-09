@@ -1,5 +1,8 @@
 # Cross-Link Diagrams
 
+tags:
+  - documentation,reference
+
 ## Memory System Architecture
 
 ```mermaid

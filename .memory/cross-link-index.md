@@ -1,5 +1,8 @@
 # Cross-Link Index
 
+tags:
+  - project,documentation,reference
+
 ## Overview
 
 This document provides a complete mapping of all cross-references between documentation files in the ALIS memory system. It ensures proper navigation and relationship tracking across all 154+ documentation files.

@@ -1,5 +1,8 @@
 # Alis.Extension.Media.FFmpeg
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Media.FFmpeg functionality in ALIS.
 

@@ -1,5 +1,8 @@
 # Extensions Index
 
+tags:
+  - extension,plugin,add-on
+
 ## Overview
 
 Alis provides 11 extensions that add functionality to the core engine. Each extension is in the `4_Operation` layer and depends on `Alis.Core`.

@@ -1,5 +1,8 @@
 # Application: Alis.Benchmark
 
+tags:
+  - application,software,tool
+
 ## Overview
 
 | Property | Value |

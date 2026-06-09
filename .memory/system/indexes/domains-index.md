@@ -1,5 +1,8 @@
 # Domains Index — ALIS
 
+tags:
+  - index,catalog,reference
+
 ## Bounded Contexts
 
 | Domain | Projects | Description | Layer |

@@ -1,5 +1,8 @@
 # Alis.Extension.Ads.GoogleAds.Test
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Auto-generated documentation for Alis.Extension.Ads.GoogleAds.Test.
 

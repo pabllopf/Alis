@@ -1,5 +1,8 @@
 # Alis.Core.Data
 
+tags:
+  - declaration,contract,interface,documentation
+
 > **Note**: This project is located in **6_Ideation**, not 5_Declaration. See [[projects/6_Ideation/Alis.Core.Aspect.Data]] for the correct documentation.
 
 ## Redirect

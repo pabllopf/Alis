@@ -1,5 +1,8 @@
 # Extension: Graphic.Ui
 
+tags:
+  - extension,plugin,add-on
+
 ## Overview
 
 | Property | Value |

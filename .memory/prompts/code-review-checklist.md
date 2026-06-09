@@ -1,5 +1,8 @@
 # Code Review Checklist — ALIS
 
+tags:
+  - prompt,ai,reference
+
 ## Architecture Compliance
 - [ ] Project is in the correct architectural layer
 - [ ] Dependencies only reference the immediate lower layer

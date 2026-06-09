@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Time
 
+tags:
+  - project,documentation,reference
+
 **Status**: ✅ Documented  
 **Type**: Time Measurement / Stopwatch  
 **Layer**: 6_Ideation  

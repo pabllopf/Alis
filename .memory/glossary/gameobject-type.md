@@ -1,5 +1,8 @@
 # GameObjectType
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **GameObjectType** represents an archetype type identifier that defines a unique combination of component types for entity grouping and optimization.

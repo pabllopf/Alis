@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Time
 
+tags:
+  - domain,api,reference,documentation
+
 ## Overview
 
 **Alis.Core.Aspect.Time** provides a high-resolution time measurement utility similar to a stopwatch. It allows measuring elapsed time with start, stop, reset, and restart operations using `DateTime.UtcNow` as the underlying time source.

@@ -1,5 +1,8 @@
 # Component Storage
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **Component Storage** is a typed data storage container that holds component instances for entities within an [[Archetype]], providing fast indexed access and memory-efficient storage.

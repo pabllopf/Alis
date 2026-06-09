@@ -1,5 +1,8 @@
 # Execution Log
 
+tags:
+  - log,execution,history
+
 Comprehensive log of all memory generation and analysis executions.
 
 ## Session History

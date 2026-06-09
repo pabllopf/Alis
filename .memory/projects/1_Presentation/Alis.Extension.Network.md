@@ -1,5 +1,8 @@
 # Alis.Extension.Network
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Multi-platform networking library for ALIS applications. Provides UDP and TCP socket communication with support for client-server and peer-to-peer architectures.
 

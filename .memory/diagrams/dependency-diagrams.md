@@ -1,5 +1,8 @@
 # Dependency Diagrams
 
+tags:
+  - diagram,visualization,mermaid
+
 Mermaid diagrams illustrating project dependencies and relationships.
 
 ## Layer Dependency Graph

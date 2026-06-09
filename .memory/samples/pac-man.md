@@ -1,5 +1,8 @@
 # Sample: Pac-Man
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 | Property | Value |

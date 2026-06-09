@@ -1,5 +1,8 @@
 # Fluent Builders
 
+tags:
+  - domain,api,reference,documentation
+
 ## IBuild<T>
 
 Terminal interface that constructs and returns the final object.

@@ -1,5 +1,8 @@
 # Architecture Overview Diagram — ALIS
 
+tags:
+  - diagram,visualization,mermaid
+
 ## Layer Architecture (Mermaid)
 
 ```mermaid

@@ -1,5 +1,8 @@
 # Alis.Benchmark
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 BenchmarkDotNet-based performance benchmarking suite for the ALIS game engine. Compares ALIS ECS performance against 17+ third-party ECS frameworks across entity creation, component manipulation, system execution, and data access patterns.
 

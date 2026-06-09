@@ -1,5 +1,8 @@
 # Exceptions
 
+tags:
+  - domain,api,reference,documentation
+
 ## JsonParsingException
 
 Thrown when JSON parsing fails due to malformed input.

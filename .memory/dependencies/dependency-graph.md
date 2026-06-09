@@ -1,5 +1,8 @@
 # Dependency Graph
 
+tags:
+  - documentation,reference
+
 ## Related
 
 - [[architecture/dependency-graph]] — Full dependency map with Mermaid

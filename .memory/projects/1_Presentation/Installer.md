@@ -1,5 +1,8 @@
 # Alis.App.Installer
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Installer application for ALIS engine and game distribution. Handles runtime installation and configuration.
 

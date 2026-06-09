@@ -1,5 +1,8 @@
 # Alis.Extension.Security.Test
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Auto-generated documentation for Alis.Extension.Security.Test.
 

@@ -1,5 +1,8 @@
 # Alis.Extension.Updater
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Updater functionality in ALIS.
 

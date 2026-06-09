@@ -1,5 +1,8 @@
 # Alis.Extension.Security
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 
 The **Alis.Extension.Security** project provides secure data types that protect sensitive information from being exposed in memory through encryption and obfuscation techniques.

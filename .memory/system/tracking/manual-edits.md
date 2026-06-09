@@ -1,5 +1,8 @@
 # Manual Edits
 
+tags:
+  - tracking,monitoring,analysis
+
 ## Protected Sections
 
 Files may contain manually edited sections between these markers:

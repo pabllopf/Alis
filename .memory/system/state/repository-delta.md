@@ -1,5 +1,8 @@
 # Repository Delta
 
+tags:
+  - system,state,tracking,management
+
 ## Changes Detected
 
 | Change Type | Count | Scope |

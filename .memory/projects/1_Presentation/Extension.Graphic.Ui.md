@@ -1,5 +1,8 @@
 # Alis.Extension.Graphic.Ui
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Graphic.Ui functionality in ALIS.
 

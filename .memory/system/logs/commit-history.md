@@ -1,5 +1,8 @@
 # Commit History
 
+tags:
+  - log,execution,history
+
 | Hash | Date | Message |
 |------|------|---------|
 | - | 2026-06-08 | docs: initialize memory system structure |

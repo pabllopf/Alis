@@ -1,5 +1,8 @@
 # ALIS Game Engine Framework — Repository Overview
 
+tags:
+  - architecture,design,pattern
+
 ## Executive Summary
 
 **ALIS** is a comprehensive cross-platform game engine framework written in C# with **140+ projects** organized into **6 architectural layers**. It features an Entity Component System (ECS), aspect-oriented programming via source generators, and targets 15+ .NET frameworks across Windows, macOS, Linux, and WebAssembly.

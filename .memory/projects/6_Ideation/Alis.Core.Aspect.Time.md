@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Time
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 
 The **Alis.Core.Aspect.Time** project provides a high-resolution time measurement utility for the ALIS game engine. It implements a stopwatch-like `Clock` class for measuring elapsed time with start, stop, reset, and restart operations.

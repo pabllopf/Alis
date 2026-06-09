@@ -1,5 +1,8 @@
 # Sample: Pong
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 | Property | Value |

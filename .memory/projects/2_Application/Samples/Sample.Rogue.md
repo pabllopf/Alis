@@ -1,5 +1,8 @@
 # Alis.Sample.Rogue
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 Roguelike 2D game built on the ALIS engine. Features a foundational dungeon-crawler setup with physics, audio, and a named sound track. Demonstrates the base configuration for tile-based or procedurally generated roguelike experiences.
 

@@ -1,5 +1,8 @@
 # Procedural Generation Framework
 
+tags:
+  - concept,theory,documentation
+
 Procedural generation creates content algorithmically rather than manually, enabling infinite variety and dynamic content creation.
 
 ## Core Algorithms

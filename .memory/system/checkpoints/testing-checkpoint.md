@@ -1,5 +1,8 @@
 # Testing Checkpoint
 
+tags:
+  - checkpoint,validation,tracking
+
 ## Status
 - **Test framework**: xUnit + Moq + Xunit.StaFact
 - **Test projects**: Present for most core and extension projects

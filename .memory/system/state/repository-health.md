@@ -1,5 +1,8 @@
 # Repository Health
 
+tags:
+  - system,state,tracking,management
+
 ## Overview
 Comprehensive health analysis of the ALIS repository and memory system.
 

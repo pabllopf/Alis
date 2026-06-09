@@ -1,5 +1,8 @@
 # Alis.Extension.Math.ProceduralDungeon
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Math.ProceduralDungeon functionality in ALIS.
 

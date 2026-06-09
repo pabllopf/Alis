@@ -1,5 +1,8 @@
 # Extension Sources
 
+tags:
+  - source,reference,documentation
+
 18+ modular extensions in `1_Presentation/Extension/`.
 
 ## Extension Categories

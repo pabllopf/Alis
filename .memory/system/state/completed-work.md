@@ -1,5 +1,8 @@
 # Completed Work
 
+tags:
+  - system,state,tracking,management
+
 ## Session Summary
 
 ### Extensions Enriched (11 projects)

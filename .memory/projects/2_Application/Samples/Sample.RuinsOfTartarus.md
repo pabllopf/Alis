@@ -1,5 +1,8 @@
 # Alis.Sample.RuinsOfTartarus
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 Dungeon-themed game built on the ALIS engine featuring an animated background with a looping 2-frame torch/fire effect. Demonstrates animated sprite backgrounds, camera setup, and scene design for atmospheric environments.
 

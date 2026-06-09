@@ -1,5 +1,8 @@
 # Coding Conventions
 
+tags:
+  - project,documentation,reference
+
 ## Source Files
 
 - **Only `.cs` files** — never generate `.md`, `.txt`, `.json`, `.yaml`, `.xml` files in source

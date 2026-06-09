@@ -1,5 +1,8 @@
 # Alis.App.Hub
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Editor hub application for ALIS game engine. Provides development environment and project management.
 

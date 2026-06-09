@@ -1,5 +1,8 @@
 # Alis.Extension.Graphic.Ui
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 ImGui (Immediate Mode GUI) bindings for C#. Provides cross-platform immediate mode graphical user interface.
 

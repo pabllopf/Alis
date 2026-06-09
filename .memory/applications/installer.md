@@ -1,5 +1,8 @@
 # Application: Alis.App.Installer
 
+tags:
+  - application,software,tool
+
 ## Overview
 
 | Property | Value |

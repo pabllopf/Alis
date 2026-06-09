@@ -1,5 +1,8 @@
 # Project Index — ALIS
 
+tags:
+  - index,catalog,reference
+
 ## By Layer
 
 ### 1_Presentation (23 projects)

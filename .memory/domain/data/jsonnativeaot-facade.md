@@ -1,5 +1,8 @@
 # JsonNativeAot - Static Facade
 
+tags:
+  - domain,api,reference,documentation
+
 ## Overview
 
 `JsonNativeAot` is the main entry point for all JSON operations. It provides a static facade that configures and exposes a complete JSON pipeline through lazily-initialized singletons.

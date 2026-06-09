@@ -1,5 +1,8 @@
 # Alis.Extension.Profile
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Performance profiling extension for ALIS applications. Provides CPU time tracking, memory metrics, and resource monitoring for performance analysis.
 

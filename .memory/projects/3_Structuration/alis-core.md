@@ -1,5 +1,8 @@
 # Project: Alis.Core (Structuration)
 
+tags:
+  - structuration,core,abstraction,documentation
+
 ## Overview
 
 | Property | Value |

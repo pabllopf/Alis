@@ -1,5 +1,8 @@
 # Cross-Link Validation Report
 
+tags:
+  - documentation,reference
+
 ## Overview
 
 This report validates all cross-references in the memory system, ensuring proper relationships, detecting broken links, and identifying orphaned files.

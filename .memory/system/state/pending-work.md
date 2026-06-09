@@ -1,5 +1,8 @@
 # Pending Work Queue
 
+tags:
+  - system,state,tracking,management
+
 ## Completed
 
 - [x] Initialize memory system structure

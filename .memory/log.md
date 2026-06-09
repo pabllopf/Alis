@@ -1,5 +1,8 @@
 # Log
 
+tags:
+  - documentation,reference
+
 ## Activity Log
 
 ## [2026-06-08] ingest | Alis Solution Analysis

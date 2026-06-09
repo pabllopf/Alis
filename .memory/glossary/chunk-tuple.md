@@ -1,5 +1,8 @@
 # ChunkTuple
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 A **ChunkTuple** is a batch entity creation result container that returns multiple component spans along with entity enumerators for high-performance bulk entity operations.

@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Logging
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 
 The **Alis.Core.Aspect.Logging** project provides a structured logging framework with filters, formatters, and pluggable outputs. It's designed for AOT compatibility with no reflection or singleton patterns in the core API.

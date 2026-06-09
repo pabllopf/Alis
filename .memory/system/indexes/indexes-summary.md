@@ -1,5 +1,8 @@
 # Indexes Summary
 
+tags:
+  - index,catalog,reference
+
 ## Generated Indexes (12 total)
 
 1. **projects-index.md** - Project catalog and status

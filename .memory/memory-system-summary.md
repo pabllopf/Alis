@@ -1,5 +1,8 @@
 # Memory System Summary
 
+tags:
+  - documentation,reference
+
 ## Overview
 
 Complete memory system for ALIS Game Engine Framework with 450+ documentation files, 1,800+ cross-references, and 100% link validation.

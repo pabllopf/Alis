@@ -1,5 +1,8 @@
 # Onboarding
 
+tags:
+  - project,documentation,reference
+
 ## Quick Start
 
 ```bash

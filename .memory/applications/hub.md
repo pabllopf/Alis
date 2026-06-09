@@ -1,5 +1,8 @@
 # Application: Alis.App.Hub
 
+tags:
+  - application,software,tool
+
 ## Overview
 
 | Property | Value |

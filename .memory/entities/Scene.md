@@ -1,5 +1,8 @@
 # Scene
 
+tags:
+  - entity,gameobject,scene,component
+
 ## Overview
 The central container for all entities and systems in the ECS architecture. Manages an isolated world or game level with its own collection of entities, each consisting of typed components.
 

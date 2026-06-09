@@ -1,5 +1,8 @@
 # High Priority Analysis
 
+tags:
+  - queue,work,tracking
+
 ## Current Queue
 
 | Priority | Project | Reason |

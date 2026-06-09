@@ -1,5 +1,8 @@
 # Sample: Breakout
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 | Property | Value |

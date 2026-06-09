@@ -1,5 +1,8 @@
 # Alis.Extension.Io.FileDialog
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Cross-platform file dialog extension for ALIS. Provides native open/save file dialog integration across Windows, macOS, and Linux.
 

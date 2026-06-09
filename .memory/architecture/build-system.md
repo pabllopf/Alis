@@ -1,5 +1,8 @@
 # Build System — ALIS
 
+tags:
+  - architecture,design,pattern
+
 ## SDK Requirements
 
 ```json

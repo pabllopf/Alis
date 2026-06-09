@@ -1,5 +1,8 @@
 # Security Index — ALIS
 
+tags:
+  - index,catalog,reference
+
 ## Security-Sensitive Areas
 
 | Area | Risk Level | Location | Mitigation |

@@ -1,5 +1,8 @@
 # Memory System Update Summary
 
+tags:
+  - project,documentation,reference
+
 This document summarizes the comprehensive update to the `.memory/` system with new concepts and enhanced documentation.
 
 ## Update Overview

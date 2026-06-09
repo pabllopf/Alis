@@ -1,5 +1,8 @@
 # Scene
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **Scene** is the core container that manages entities, components, archetypes, and systems in the ECS architecture.

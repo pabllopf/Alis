@@ -1,5 +1,8 @@
 # GameObjectOnly
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **GameObjectOnly** is a lightweight entity wrapper that stores only the entity identifier without world or version information, used for recycled entity tracking and efficient ID management.

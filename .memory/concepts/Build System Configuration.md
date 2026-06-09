@@ -1,5 +1,8 @@
 # Build System Configuration
 
+tags:
+  - concept,theory,documentation
+
 Alis uses centralized build configuration through `.config/Config.props` for consistent settings across all 140+ projects.
 
 ## Configuration Files

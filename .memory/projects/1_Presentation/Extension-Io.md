@@ -1,5 +1,8 @@
 # Io Extensions
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Alis.Extension.Io.FileDialog
 - **Path**: `1_Presentation/Extension/FileDialog/src/`
 - **Type**: Cross-platform file dialog library

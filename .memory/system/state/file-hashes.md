@@ -1,5 +1,8 @@
 # File Hashes
 
+tags:
+  - system,state,tracking,management
+
 ## Solution Files
 
 | File | Hash | Last Updated |

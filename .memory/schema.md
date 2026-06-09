@@ -1,5 +1,8 @@
 # LLM Wiki Schema
 
+tags:
+  - documentation,reference
+
 ## Structure
 
 ```

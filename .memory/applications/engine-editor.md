@@ -1,5 +1,8 @@
 # Application: Alis.App.Engine
 
+tags:
+  - application,software,tool
+
 ## Overview
 
 | Property | Value |

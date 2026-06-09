@@ -1,5 +1,8 @@
 # Compression & Memory Optimization
 
+tags:
+  - concept,theory,documentation
+
 Compression and memory optimization techniques reduce memory footprint and improve cache efficiency through compression algorithms and smart caching strategies.
 
 ## Core Techniques

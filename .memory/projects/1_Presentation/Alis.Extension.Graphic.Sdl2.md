@@ -1,5 +1,8 @@
 # Alis.Extension.Graphic.Sdl2
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Cross-platform game development library using SDL2 (Simple DirectMedia Layer).
 

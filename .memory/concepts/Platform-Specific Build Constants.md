@@ -1,5 +1,8 @@
 # Platform-Specific Build Constants
 
+tags:
+  - concept,theory,documentation
+
 Alis automatically defines build-time constants based on the target platform for conditional compilation.
 
 ## Constant Definition Logic

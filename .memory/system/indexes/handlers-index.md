@@ -1,5 +1,8 @@
 # Handlers Index — ALIS
 
+tags:
+  - index,catalog,reference
+
 ## ECS Update Handlers
 
 | Handler | Type | Description |

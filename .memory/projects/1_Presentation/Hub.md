@@ -1,5 +1,8 @@
 # Alis.App.Hub
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Game hub/launcher application for managing and launching ALIS games. Includes Editor and Installer integration.
 

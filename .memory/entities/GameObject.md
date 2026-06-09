@@ -1,5 +1,8 @@
 # GameObject
 
+tags:
+  - entity,gameobject,scene,component
+
 ## Overview
 A lightweight struct representing an entity in the ECS (Entity Component System) architecture. Serves as the primary handle for accessing and manipulating game objects within a Scene.
 

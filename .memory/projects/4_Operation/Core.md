@@ -1,5 +1,8 @@
 # Core Libraries (4_Operation)
 
+tags:
+  - operation,runtime,implementation,documentation
+
 ## Overview
 The 4_Operation layer contains operational libraries that provide concrete implementations and runtime services for the ALIS engine. These build upon the abstractions in 3_Structuration.
 

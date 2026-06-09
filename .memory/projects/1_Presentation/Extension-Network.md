@@ -1,5 +1,8 @@
 # Network Extensions
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Alis.Extension.Network.Client
 - **Path**: `1_Presentation/Extension/Network/Client/src/`
 - **Type**: Network client library

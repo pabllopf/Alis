@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Data
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 High-level Data aspect definition with source generator. Provides Data-oriented programming capabilities.
 

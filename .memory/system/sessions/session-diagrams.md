@@ -1,5 +1,8 @@
 # Session Tracking
 
+tags:
+  - session,execution,history
+
 Diagrams illustrating session management and history.
 
 ## Session Flow

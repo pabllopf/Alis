@@ -1,5 +1,8 @@
 # Alis.Extension.Language.Dialogue
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Dialogue system for ALIS games. Provides state-machine-based dialog management with branching conversations, events, and condition support.
 

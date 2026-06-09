@@ -1,5 +1,8 @@
 # Memory Management
 
+tags:
+  - glossary,terminology,reference
+
 ## Overview
 
 Memory management in Alis focuses on efficient resource handling, compressed storage, and fast asset retrieval through specialized components.

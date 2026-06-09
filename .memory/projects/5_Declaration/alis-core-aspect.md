@@ -1,5 +1,8 @@
 # Project: Alis.Core.Aspect (Declaration)
 
+tags:
+  - declaration,contract,interface,documentation
+
 ## Overview
 
 | Property | Value |

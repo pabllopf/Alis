@@ -1,5 +1,8 @@
 # Changed Projects
 
+tags:
+  - queue,work,tracking
+
 ## Recently Changed
 
 | Project | Change Type | Timestamp |

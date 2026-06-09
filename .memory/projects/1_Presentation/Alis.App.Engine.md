@@ -1,5 +1,8 @@
 # Alis.App.Engine
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Main game engine runtime application that launches and manages game instances.
 

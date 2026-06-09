@@ -1,5 +1,8 @@
 # Alis Architecture Overview
 
+tags:
+  - concept,theory,documentation
+
 Alis is a C# game engine/framework with a modular 6-layer architecture, aspect-oriented design, and aggressive multi-targeting strategy.
 
 ## Architecture Layers

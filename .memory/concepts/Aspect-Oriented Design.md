@@ -1,5 +1,8 @@
 # Aspect-Oriented Design
 
+tags:
+  - concept,theory,documentation
+
 Alis uses aspect-oriented programming with Core.Aspect as the declarative foundation, building experimental aspects on top.
 
 ## Architecture

@@ -1,5 +1,8 @@
 # GameObjectFlags
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **GameObjectFlags** is a bitwise flags enum that tracks entity state, lifecycle events, and component presence for efficient entity management and event handling.

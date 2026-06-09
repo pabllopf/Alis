@@ -1,5 +1,8 @@
 # Alis.Sample.Egg
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 **"The Egg"** — a narrative/philosophical game based on Andy Weir's short story, built on the ALIS engine. Demonstrates configuration-driven scene setup with named scene and sound track, suitable for narrative-focused game experiences.
 

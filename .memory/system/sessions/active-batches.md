@@ -1,5 +1,8 @@
 # Active Batches
 
+tags:
+  - session,execution,history
+
 | Batch | Focus | Status | Projects |
 |-------|-------|--------|----------|
 | 1 | Core Systems (4_Operation) | Completed | Ecs, Graphic, Audio, Physic |

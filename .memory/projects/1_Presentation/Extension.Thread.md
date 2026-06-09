@@ -1,5 +1,8 @@
 # Alis.Extension.Thread
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Thread functionality in ALIS.
 

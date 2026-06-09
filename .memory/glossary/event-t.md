@@ -1,5 +1,8 @@
 # Event<T>
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **Event<T>** is a generic event handler that provides type-safe event registration, invocation, and management for ECS lifecycle events and component callbacks.

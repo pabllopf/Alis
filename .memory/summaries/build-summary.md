@@ -1,5 +1,8 @@
 # Build Summary — ALIS
 
+tags:
+  - summary,overview,documentation
+
 ## Build System Overview
 
 ### Centralized Configuration

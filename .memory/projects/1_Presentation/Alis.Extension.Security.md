@@ -1,5 +1,8 @@
 # Alis.Extension.Security
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Security extension for ALIS applications. Provides authentication, authorization, and secure data handling capabilities.
 

@@ -1,5 +1,8 @@
 # Alis.Extension.Language.Dialogue
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Language.Dialogue functionality in ALIS.
 

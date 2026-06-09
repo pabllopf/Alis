@@ -1,5 +1,8 @@
 # Alis.Core.Aspect
 
+tags:
+  - declaration,contract,interface,documentation
+
 ## Overview
 Aspect-oriented programming library for ALIS game engine. Provides fluent interfaces, logging, and cross-cutting concerns management.
 

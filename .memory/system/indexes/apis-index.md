@@ -1,5 +1,8 @@
 # APIs Index
 
+tags:
+  - index,catalog,reference
+
 ## Public APIs
 
 ### Alis.Core.Ecs

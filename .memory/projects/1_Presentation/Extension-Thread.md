@@ -1,5 +1,8 @@
 # Thread Extension
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Alis.Extension.Thread
 - **Path**: `1_Presentation/Extension/Thread/src/`
 - **Type**: Threading utilities library

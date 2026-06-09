@@ -1,5 +1,8 @@
 # Alis.Benchmark
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Performance benchmarking application for ALIS engine components. Measures and compares performance of engine subsystems.
 

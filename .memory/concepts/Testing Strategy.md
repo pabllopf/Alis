@@ -1,5 +1,8 @@
 # Testing Strategy
 
+tags:
+  - concept,theory,documentation
+
 Alis uses xUnit testing framework with specialized plugins for cross-platform and UI testing.
 
 ## Testing Framework

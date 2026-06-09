@@ -1,5 +1,8 @@
 # Game Samples
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 Alis provides 13 game samples demonstrating various game types and engine features. Each sample is available in both Desktop and Web (WASM) versions.

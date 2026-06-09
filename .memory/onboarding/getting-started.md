@@ -1,5 +1,8 @@
 # Getting Started with ALIS
 
+tags:
+  - onboarding,guide,getting-started
+
 ## Prerequisites
 
 - **.NET SDK**: 10.0.0+ (rollForward: latestMajor)

@@ -1,5 +1,8 @@
 # Component
 
+tags:
+  - entity,gameobject,scene,component
+
 ## Overview
 A data-only struct or class that holds state information for entities in the ECS architecture. Components contain no logic—only data that systems operate on.
 

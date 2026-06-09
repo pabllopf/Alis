@@ -1,5 +1,8 @@
 # Alis.Sample.Inefable
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 **Inefable** — a "Roguelike 2D multiplayer with RPG and arcade components" built on the ALIS engine. The most narratively ambitious sample, featuring a dungeon entrance scene with animated background, sprite rendering, and camera system. Intended as a reference for more complex game compositions combining multiple genres.
 

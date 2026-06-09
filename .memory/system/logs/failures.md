@@ -1,5 +1,8 @@
 # Failure Log
 
+tags:
+  - log,execution,history
+
 Tracking of errors, warnings, and issues encountered during memory generation.
 
 ## Error Summary

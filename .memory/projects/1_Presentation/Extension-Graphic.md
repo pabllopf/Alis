@@ -1,5 +1,8 @@
 # Graphic Extensions
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Alis.Extension.Graphic.Ui
 - **Path**: `1_Presentation/Extension/Graphic/Ui/src/`
 - **Type**: UI framework library

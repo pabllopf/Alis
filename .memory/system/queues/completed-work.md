@@ -1,5 +1,8 @@
 # Completed Work Queue
 
+tags:
+  - queue,work,tracking
+
 Tracking of successfully completed documentation tasks.
 
 ## Completed Tasks - Concepts

@@ -1,5 +1,8 @@
 # Source Generator Diagrams
 
+tags:
+  - diagram,visualization,mermaid
+
 Mermaid diagrams illustrating source generator architecture and code generation flow.
 
 ## Generator Architecture Overview

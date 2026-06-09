@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Time
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 High-level Time aspect definition with source generator. Provides Time-oriented programming capabilities.
 

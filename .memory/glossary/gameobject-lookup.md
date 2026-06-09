@@ -1,5 +1,8 @@
 # GameObjectLookup
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **GameObjectLookup** is a wrapper that provides safe entity access with version checking, preventing operations on deleted or recycled entities.

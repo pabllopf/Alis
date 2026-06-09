@@ -1,5 +1,8 @@
 # Documentation Status
 
+tags:
+  - tracking,monitoring,analysis
+
 | Document | Status | Quality | Last Updated |
 |---|---|---|---|---|
 | index.md | Complete | High | 2026-06-09 |

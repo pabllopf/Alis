@@ -1,5 +1,8 @@
 # Sample: Demo
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 | Property | Value |

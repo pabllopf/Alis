@@ -1,5 +1,8 @@
 # Archetype
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 An **Archetype** is an optimization structure that groups entities with identical component type combinations. Archetypes enable cache-efficient storage and fast entity queries by organizing components contiguously.

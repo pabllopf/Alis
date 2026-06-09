@@ -1,5 +1,8 @@
 # Alis.Extension.Network.Sample.ConsoleGame.Server
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Auto-generated documentation for Alis.Extension.Network.Sample.ConsoleGame.Server.
 

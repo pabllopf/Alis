@@ -1,5 +1,8 @@
 # Alis.Core.Game
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 Game logic and state management for the ALIS engine. Provides game lifecycle, state machines, and game-specific utilities.
 

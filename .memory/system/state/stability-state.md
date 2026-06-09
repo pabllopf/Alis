@@ -1,5 +1,8 @@
 # Stability State
 
+tags:
+  - system,state,tracking,management
+
 ## Document Classification
 
 ### Stable (source rarely changes)

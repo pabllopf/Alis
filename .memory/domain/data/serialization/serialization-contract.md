@@ -1,5 +1,8 @@
 # Serialization
 
+tags:
+  - domain,api,reference,documentation
+
 ## IJsonSerializable
 
 Defines a contract for objects that can provide their serializable properties for JSON conversion.

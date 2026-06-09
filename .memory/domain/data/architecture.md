@@ -1,5 +1,8 @@
 # Architecture
 
+tags:
+  - domain,api,reference,documentation
+
 ## Design Patterns
 
 ### Facade Pattern

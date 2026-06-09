@@ -1,5 +1,8 @@
 # Rule
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **Rule** defines component requirements and constraints for entity processing, used by queries to filter entities and systems to determine which entities to process.

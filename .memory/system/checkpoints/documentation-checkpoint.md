@@ -1,5 +1,8 @@
 # Documentation Checkpoint
 
+tags:
+  - checkpoint,validation,tracking
+
 ## Status
 - **Total markdown files**: ~80+
 - **Projects documented**: ~35 fully, ~105 partially

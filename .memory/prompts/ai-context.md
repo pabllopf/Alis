@@ -1,5 +1,8 @@
 # AI Context — ALIS Game Engine Framework
 
+tags:
+  - prompt,ai,reference
+
 > Quick reference card for AI agents working with the ALIS codebase.
 
 ## Repository Facts

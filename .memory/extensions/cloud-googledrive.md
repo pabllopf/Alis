@@ -1,5 +1,8 @@
 # Extension: Cloud.GoogleDrive
 
+tags:
+  - extension,plugin,add-on
+
 ## Overview
 
 | Property | Value |

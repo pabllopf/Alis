@@ -1,5 +1,8 @@
 # ADR-001: Six-Layer Screaming Architecture
 
+tags:
+  - decision,adr,architecture
+
 ## Status
 Accepted
 

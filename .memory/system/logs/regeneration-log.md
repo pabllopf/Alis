@@ -1,5 +1,8 @@
 # Regeneration Log
 
+tags:
+  - log,execution,history
+
 | Timestamp | File | Action | Reason |
 |-----------|------|--------|--------|
 | 2026-06-09 | Alis.Extension.Updater.md | Regenerated | Stub → full content |

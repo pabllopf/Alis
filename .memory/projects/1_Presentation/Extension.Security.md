@@ -1,5 +1,8 @@
 # Alis.Extension.Security
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Security functionality in ALIS.
 

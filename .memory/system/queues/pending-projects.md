@@ -1,5 +1,8 @@
 # Pending Work Queue
 
+tags:
+  - queue,work,tracking
+
 ## High Priority (Core Engine - 4_Operation)
 
 - [x] Alis.Core.Ecs ✓ Documented (108 files)

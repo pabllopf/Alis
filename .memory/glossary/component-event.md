@@ -1,5 +1,8 @@
 # ComponentEvent
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **ComponentEvent** is a lifecycle event handler that manages component addition and removal callbacks for entity state tracking.

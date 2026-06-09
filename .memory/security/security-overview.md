@@ -1,5 +1,8 @@
 # Security Overview
 
+tags:
+  - project,documentation,reference
+
 ## Security Analysis
 
 ### Current State

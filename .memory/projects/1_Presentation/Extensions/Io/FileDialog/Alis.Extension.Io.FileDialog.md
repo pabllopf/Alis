@@ -1,5 +1,8 @@
 # Alis.Extension.Io.FileDialog
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 
 The **Alis.Extension.Io.FileDialog** project provides cross-platform file picker functionality for ALIS applications, enabling users to select files and folders through native system dialogs.

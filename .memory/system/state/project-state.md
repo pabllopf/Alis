@@ -1,5 +1,8 @@
 # Project State
 
+tags:
+  - system,state,tracking,management
+
 | Total Projects | Documented | Pending | Failed | Status | Coverage |
 |---|---|---|---|---|---|
 | 140 | 154 | 0 | 0 | **Complete** | 110% |

@@ -1,5 +1,8 @@
 # Generation History
 
+tags:
+  - tracking,monitoring,analysis
+
 ## Batch 1 — Core Systems & Ideation Aspects
 
 | Date | Action | Files |

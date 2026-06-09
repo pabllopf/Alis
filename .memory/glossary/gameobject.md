@@ -1,5 +1,8 @@
 # GameObject
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 A **GameObject** is a lightweight 8-byte struct that serves as an entity handle in the ECS architecture. It's NOT a game object with embedded logic—it's simply an identifier for accessing components attached to an entity.

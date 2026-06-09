@@ -1,5 +1,8 @@
 # Execution Checkpoints
 
+tags:
+  - session,execution,history
+
 | Checkpoint | Timestamp | Scope | Status |
 |------------|-----------|-------|--------|
 | CP-001 | 2026-06-08 | Core engine init | Completed |

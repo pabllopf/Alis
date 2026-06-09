@@ -1,5 +1,8 @@
 # Alis.Extension.Payment.Stripe
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Stripe payment processing integration for ALIS applications. Provides subscription management, one-time payments, and webhook handling.
 

@@ -1,5 +1,8 @@
 # Architecture Rules
 
+tags:
+  - project,documentation,reference
+
 ## Layer Dependency (Strict, Never Reverse)
 
 ```

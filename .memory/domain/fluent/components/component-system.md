@@ -1,5 +1,8 @@
 # Components
 
+tags:
+  - domain,api,reference,documentation
+
 ## IComponentBase
 
 Marker interface for all component interfaces in the fluent game entity system.

@@ -1,5 +1,8 @@
 # Extension: Graphic.Glfw
 
+tags:
+  - extension,plugin,add-on
+
 ## Overview
 
 | Property | Value |

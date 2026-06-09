@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Memory
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 
 The **Alis.Core.Aspect.Memory** project provides a ZIP-based asset management system with in-memory caching and disk extraction capabilities. It enables efficient storage and retrieval of embedded assets through a dual-cache strategy (in-memory ZIP bytes + disk-extracted paths).

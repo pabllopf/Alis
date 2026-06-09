@@ -1,5 +1,8 @@
 # Time Aspect Project State
 
+tags:
+  - system,state,tracking,management
+
 ## Analysis Status
 
 | Project | Status | Last Updated | Lines |

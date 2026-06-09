@@ -1,5 +1,8 @@
 # Project Map
 
+tags:
+  - project,documentation,reference
+
 ## Quick Reference
 
 ### 1_Presentation (~80 projects)

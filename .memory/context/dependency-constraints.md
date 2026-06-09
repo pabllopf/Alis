@@ -1,5 +1,8 @@
 # Dependency Constraints
 
+tags:
+  - project,documentation,reference
+
 ## Layer Rules Summary
 
 ```

@@ -1,5 +1,8 @@
 # Testing Analysis — ALIS
 
+tags:
+  - testing,test,quality,assurance
+
 ## Test Framework
 
 | Component | Technology |

@@ -1,5 +1,8 @@
 # Alis.Sample.Flappy.Bird
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 Complete Flappy Bird clone built on the ALIS engine. Features a bird with animated wing flaps, procedurally generated pipes, scrolling floor, score counter, and two-scene game flow (main menu + gameplay). Demonstrates scene management, sprite animation, trigger-based scoring, and physics collisions.
 

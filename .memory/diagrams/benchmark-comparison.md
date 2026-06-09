@@ -1,5 +1,8 @@
 # Benchmark Comparison Map
 
+tags:
+  - diagram,visualization,mermaid
+
 ## ECS Frameworks Compared
 
 ```mermaid

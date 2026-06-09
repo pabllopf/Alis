@@ -1,5 +1,8 @@
 # Completed Projects Queue
 
+tags:
+  - queue,work,tracking
+
 | Project | Files | Status | Documented |
 |---|---|---|---|
 | Alis.Core.Ecs | 108 | Complete | Yes |

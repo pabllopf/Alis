@@ -1,5 +1,8 @@
 # Alis.Sample.Pong
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 Classic Pong game built on the ALIS engine. Two-player local multiplayer with paddle collision, ball physics, and wall boundaries. Demonstrates kinematic body control, ball restitution physics, two-player input handling, and minimal scene setup.
 

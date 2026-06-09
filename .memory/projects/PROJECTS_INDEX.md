@@ -1,5 +1,8 @@
 # Alis Projects Documentation Index
 
+tags:
+  - project,documentation,reference
+
 ## Documentation Status
 
 | Layer | Project | Status | Files | Priority |

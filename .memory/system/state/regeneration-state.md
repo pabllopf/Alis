@@ -1,5 +1,8 @@
 # Regeneration State
 
+tags:
+  - system,state,tracking,management
+
 ## Changed Since Last Regeneration
 
 | Artifact Type | Changed | Reason |

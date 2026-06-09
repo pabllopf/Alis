@@ -1,5 +1,8 @@
 # Sample: Flappy Bird
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 | Property | Value |

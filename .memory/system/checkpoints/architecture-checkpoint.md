@@ -1,5 +1,8 @@
 # Architecture Checkpoint
 
+tags:
+  - checkpoint,validation,tracking
+
 ## Status
 - **Layer architecture**: Documented and stable
 - **6-layer clean architecture**: Verified

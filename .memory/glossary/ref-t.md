@@ -1,5 +1,8 @@
 # Ref<T>
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **Ref<T>** is a reference wrapper that provides direct, zero-copy access to component data without copying the underlying struct, enabling efficient component manipulation.

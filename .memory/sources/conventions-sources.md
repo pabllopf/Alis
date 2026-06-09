@@ -1,5 +1,8 @@
 # Source Code Conventions
 
+tags:
+  - source,reference,documentation
+
 Coding standards and conventions used throughout the Alis solution.
 
 ## Language Version

@@ -1,5 +1,8 @@
 # Benchmark Sources
 
+tags:
+  - source,reference,documentation
+
 Performance benchmarks in `1_Presentation/Benchmark/`.
 
 ## Benchmark Projects

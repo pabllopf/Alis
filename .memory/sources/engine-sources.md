@@ -1,5 +1,8 @@
 # Engine Sources
 
+tags:
+  - source,reference,documentation
+
 Main game engine runtime sources in `1_Presentation/Engine/`.
 
 ## Engine Structure

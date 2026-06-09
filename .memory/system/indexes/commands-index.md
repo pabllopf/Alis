@@ -1,5 +1,8 @@
 # Commands Index — ALIS
 
+tags:
+  - index,catalog,reference
+
 ## Build Commands
 
 | Command | Description |

@@ -1,5 +1,8 @@
 # Deserialization
 
+tags:
+  - domain,api,reference,documentation
+
 ## IJsonDesSerializable<T>
 
 Defines a contract for objects that can reconstruct themselves from a flat dictionary of JSON property names and their string values.

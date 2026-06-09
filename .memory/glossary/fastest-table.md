@@ -1,5 +1,8 @@
 # FastestTable
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **FastestTable** is a high-performance lookup table implementation optimized for ECS entity management, providing O(1) average-case lookups with minimal memory overhead.

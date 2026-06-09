@@ -1,5 +1,8 @@
 # Architecture Index — ALIS
 
+tags:
+  - index,catalog,reference
+
 ## Architectural Patterns
 
 ### 1. Entity Component System (ECS)

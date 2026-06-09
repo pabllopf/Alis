@@ -1,5 +1,8 @@
 # Pending Regeneration
 
+tags:
+  - queue,work,tracking
+
 ## High Priority
 - [ ] Application layer docs (Alis.App.Core + 4 app projects)
 - [ ] Sample project comprehensive docs (14 samples)

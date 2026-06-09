@@ -1,5 +1,8 @@
 # Dependency Graph
 
+tags:
+  - diagram,visualization,mermaid
+
 ## Architecture Overview
 
 ```mermaid

@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Memory
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 High-level Memory aspect definition with source generator. Provides Memory-oriented programming capabilities.
 

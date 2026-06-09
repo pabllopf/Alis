@@ -1,5 +1,8 @@
 # Project Analysis Coverage
 
+tags:
+  - tracking,monitoring,analysis
+
 ## Coverage by Layer
 
 ### 1_Presentation (23 projects)

@@ -1,5 +1,8 @@
 # Source Generator Sources
 
+tags:
+  - source,reference,documentation
+
 AOT-safe source generators for compile-time code generation.
 
 ## Generator Projects

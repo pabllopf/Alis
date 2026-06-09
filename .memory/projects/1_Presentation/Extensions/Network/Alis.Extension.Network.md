@@ -1,5 +1,8 @@
 # Alis.Extension.Network
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 
 The **Alis.Extension.Network** project provides a complete WebSocket-based networking solution for ALIS games, supporting multiplayer connectivity, client-server communication, and real-time data exchange.

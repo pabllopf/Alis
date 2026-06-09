@@ -1,5 +1,8 @@
 # Memory Generation Summary
 
+tags:
+  - documentation,reference
+
 Comprehensive summary of all memory generation work completed for the Alis solution.
 
 ## Work Completed

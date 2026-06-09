@@ -1,5 +1,8 @@
 # Entity Component System (ECS)
 
+tags:
+  - concept,theory,documentation
+
 Alis implements an ECS architecture for game logic with source code generation for optimal performance.
 
 ## ECS Architecture Principles

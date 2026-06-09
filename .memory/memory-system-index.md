@@ -1,5 +1,8 @@
 # Memory System Index
 
+tags:
+  - documentation,reference
+
 ## Overview
 
 Complete index of all memory system components with proper cross-references and relations. This index ensures high-performance navigation and relationship tracking across the entire documentation system.

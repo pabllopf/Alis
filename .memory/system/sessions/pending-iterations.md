@@ -1,5 +1,8 @@
 # Pending Iterations
 
+tags:
+  - session,execution,history
+
 ## Next Iterations
 
 | Iteration | Focus | Est. Work Items |

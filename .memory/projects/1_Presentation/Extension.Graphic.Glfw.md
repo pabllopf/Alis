@@ -1,5 +1,8 @@
 # Alis.Extension.Graphic.Glfw
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Graphic.Glfw functionality in ALIS.
 

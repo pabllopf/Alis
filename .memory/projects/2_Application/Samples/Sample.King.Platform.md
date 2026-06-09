@@ -1,5 +1,8 @@
 # Alis.Sample.King.Platform
 
+tags:
+  - application,sample,documentation
+
 ## Overview
 2D platformer game built on the ALIS engine. A king character with animated run cycle, physics-based movement on platform terrain, and a following camera. Demonstrates sprite animation, dynamic/static collision, camera attachment to game objects, and scene persistence via `VideoGame.Save()`.
 

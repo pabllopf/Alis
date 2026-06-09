@@ -1,5 +1,8 @@
 # Architecture Diagrams
 
+tags:
+  - architecture,design,pattern
+
 Mermaid diagrams illustrating the Alis solution architecture.
 
 ## Layer Dependency Flow

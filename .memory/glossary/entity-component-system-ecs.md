@@ -1,5 +1,8 @@
 # Entity Component System (ECS)
 
+tags:
+  - glossary,terminology,reference
+
 ## Definition
 
 **Entity Component System (ECS)** is a game development architecture pattern that separates data (components) from logic (systems), using entities as lightweight identifiers that link components together.

@@ -1,5 +1,8 @@
 # Glossary Index
 
+tags:
+  - glossary,terminology,reference
+
 ## Core Architecture Terms
 
 - [[Entity Component System (ECS)]] - Game development architecture pattern

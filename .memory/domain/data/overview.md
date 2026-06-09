@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Data
 
+tags:
+  - domain,api,reference,documentation
+
 ## Overview
 
 **Alis.Core.Aspect.Data** is a JSON serialization/deserialization library designed for AOT (Ahead-of-Time) compiled environments. It provides a reflection-free, runtime IL-emission-free approach to JSON handling through interface-based contracts.

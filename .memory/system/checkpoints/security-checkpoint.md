@@ -1,5 +1,8 @@
 # Security Checkpoint
 
+tags:
+  - checkpoint,validation,tracking
+
 ## Status
 - **Security analysis**: Initial pass complete
 - **Hardcoded secrets**: None detected in scanned projects

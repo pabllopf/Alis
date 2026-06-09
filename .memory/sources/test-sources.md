@@ -1,5 +1,8 @@
 # Test Sources
 
+tags:
+  - source,reference,documentation
+
 Unit and integration tests across all layers.
 
 ## Test Organization

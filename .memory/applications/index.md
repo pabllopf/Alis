@@ -1,5 +1,8 @@
 # Applications Index
 
+tags:
+  - application,software,tool
+
 ## Overview
 
 Alis provides 4 applications that serve as tools, editors, and launchers for the game engine ecosystem.

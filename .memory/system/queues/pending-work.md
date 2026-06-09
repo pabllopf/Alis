@@ -1,5 +1,8 @@
 # Pending Work Queue
 
+tags:
+  - queue,work,tracking
+
 Tracking of incomplete and pending documentation tasks.
 
 ## High Priority Items

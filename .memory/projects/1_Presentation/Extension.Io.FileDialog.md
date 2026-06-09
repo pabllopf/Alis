@@ -1,5 +1,8 @@
 # Alis.Extension.Io.FileDialog
 
+tags:
+  - presentation,application,extension,documentation
+
 ## Overview
 Extension module for Io.FileDialog functionality in ALIS.
 

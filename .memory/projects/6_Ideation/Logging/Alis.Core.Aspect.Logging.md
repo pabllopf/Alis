@@ -1,5 +1,8 @@
 # Logging Aspect Documentation
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Alis.Core.Aspect.Logging - Logging System
 
 ### Purpose

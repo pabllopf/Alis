@@ -1,5 +1,8 @@
 # Dependency Index
 
+tags:
+  - index,catalog,reference
+
 ## Overview
 Complete dependency mapping for all 140+ projects in the ALIS repository.
 

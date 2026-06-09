@@ -1,5 +1,8 @@
 # Alis
 
+tags:
+  - entity,gameobject,scene,component
+
 C# game engine/framework organized into 6 architectural layers with aspect-oriented design.
 
 ## Summary

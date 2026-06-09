@@ -1,5 +1,8 @@
 # Extension: Language.Dialogue
 
+tags:
+  - extension,plugin,add-on
+
 ## Overview
 
 | Property | Value |

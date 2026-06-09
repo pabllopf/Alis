@@ -1,5 +1,8 @@
 # Alis.Core
 
+tags:
+  - structuration,core,abstraction,documentation
+
 ## Overview
 Core aggregator library in the Structuration layer. Re-exports all types from 4_Operation (ECS, Graphic, Audio, Physic) into a single assembly for consumption by higher layers. Zero hand-written C# code — pure infrastructure project.
 

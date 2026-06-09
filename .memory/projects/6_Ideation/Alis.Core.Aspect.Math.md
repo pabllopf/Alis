@@ -1,5 +1,8 @@
 # Alis.Core.Aspect.Math
 
+tags:
+  - ideation,aspect,library,documentation
+
 ## Overview
 
 The **Alis.Core.Aspect.Math** project provides core math primitives for the ALIS game engine. It implements value-type vectors, matrices, shapes, quaternions, and custom math utilities designed for high-performance calculations with zero GC pressure on hot paths.

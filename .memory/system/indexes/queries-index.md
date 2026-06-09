@@ -1,5 +1,8 @@
 # Queries Index — ALIS
 
+tags:
+  - index,catalog,reference
+
 ## ECS Query System
 
 | Query | Purpose | Location |

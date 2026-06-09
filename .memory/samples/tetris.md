@@ -1,5 +1,8 @@
 # Sample: Tetris
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 | Property | Value |

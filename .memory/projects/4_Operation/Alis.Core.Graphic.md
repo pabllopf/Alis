@@ -1,5 +1,8 @@
 # Alis.Core.Graphic
 
+tags:
+  - operation,runtime,implementation,documentation
+
 ## Overview
 Graphics rendering library for ALIS game engine using OpenGL. Provides cross-platform rendering, image loading, UI system, and platform-specific OpenGL implementations.
 

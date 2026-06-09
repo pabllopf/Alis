@@ -1,5 +1,8 @@
 # Sample: Snake
 
+tags:
+  - sample,game,example
+
 ## Overview
 
 | Property | Value |
