@@ -2,84 +2,148 @@
 
 ## Definition
 
-A **Scene** is the central container for all entities and systems in the ECS architecture. It manages entity lifecycle, component storage, archetype optimization, and system execution.
+**Scene** is the core container that manages entities, components, archetypes, and systems in the ECS architecture.
 
-## Core Responsibilities
+## Core Purpose
 
-### Entity Management
+Scene enables:
 
-- Create entities with components: `scene.Create(new Transform(), new Health())`
-- Delete entities and recycle IDs
-- Track entity versions for safe deletion handling
-- Manage entity table lookups
+- Entity lifecycle management (create, delete, recycle)
+- Component storage and retrieval
+- Archetype optimization and management
+- System execution and update cycles
 
-### Component Storage
-
-- Organize components by type into [[Component Storage]] instances
-- Optimize memory layout via [[Archetype]] structures
-- Provide fast component access via `Ref<T>` wrappers
-
-### System Execution
-
-- Update systems by attribute: `scene.Update<FixedUpdate>()`
-- Execute component-specific updates: `scene.UpdateComponent<T>()`
-- Manage structural change safety during update cycles
-
-### Query Processing
-
-- Create custom queries: `scene.CreateQuery(Rule.With<Transform>().And<Health>())`
-- Cache query results by hash
-- Attach/detach archetypes dynamically
-
-## Key Properties
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `Id` | `ushort` | Unique scene identifier |
-| `EntityCount` | `int` | Current entity count |
-| `AllowStructualChanges` | `bool` | Structural change safety flag |
-| `DefaultArchetype` | `Archetype` | Zero-component archetype |
-| `EntityTable` | `FastestTable<GameObjectLocation>` | Entity lookup table |
-
-## Update Cycle
+## Structure
 
 ```csharp
-// Enter update state (disallow structural changes)
-scene.EnterDisallowState();
-
-try
+public struct Scene
 {
-    // Update all systems
-    scene.Update();
+    public FastestTable<GameObject, GameObjectLookup> EntityTable;
+    public FastestTable<GameObjectType, Archetype> Archetypes;
+    public FastestStack<GameObjectOnly> RecycledEntityIds;
     
-    // Update specific component type
-    scene.UpdateComponent<Transform>();
-}
-finally
-{
-    // Exit update state, apply deferred changes
-    scene.ExitDisallowState();
+    public GameObject CreateEntity<T1, T2>(...);
+    public void DeleteEntity(GameObject entity);
+    public GameObjectType GetOrCreateArchetype<T1, T2>(...);
 }
 ```
 
-## Deferred Structural Changes
+## Usage in ECS
 
-When structural changes occur during update:
+### Entity Creation
 
-1. Changes queued in [[WorldUpdateCommandBuffer]]
-2. Applied after current update completes
-3. Recursion limit: 200 operations
+Create entities with components:
 
-## Events
+```csharp
+Scene scene = new Scene();
 
-- `EntityCreated` - Fired when entity created
-- `EntityDeleted` - Fired when entity deleted
-- `ComponentAdded` - Fired when component added
-- `ComponentRemoved` - Fired when component removed
+// Create entity with Transform and Render components
+GameObject entity = scene.CreateEntity<Transform, Render>();
+
+// Access components
+ref Transform transform = ref entity.GetComponent<Transform>(scene);
+ref Render render = ref entity.GetComponent<Render>(scene);
+
+transform.Position = Vector3.Zero;
+render.Color = Color.White;
+```
+
+### Entity Deletion
+
+Delete entities from scene:
+
+```csharp
+public void DeleteEntity(GameObject entity)
+{
+    // Remove from archetype
+    GameObjectLocation location = GetEntityLocation(entity);
+    Archetype archetype = GetArchetype(location.ArchetypeId);
+    
+    // Move to end and swap for O(1) deletion
+    archetype.RemoveEntity(location);
+    
+    // Recycle entity ID
+    RecycledEntityIds.Push(new GameObjectOnly(entity.EntityID));
+}
+
+// Usage
+scene.DeleteEntity(entity);
+```
+
+### Archetype Management
+
+Create and manage archetypes:
+
+```csharp
+public GameObjectType GetOrCreateArchetype<T1, T2>()
+{
+    ComponentId[] componentIds = new ComponentId[]
+    {
+        ComponentId<T1>,
+        ComponentId<T2>
+    };
+    
+    GameObjectType type = new GameObjectType(archetypeId, componentIds);
+    
+    if (!Archetypes.TryGetValue(type, out Archetype archetype))
+    {
+        archetype = new Archetype(type);
+        Archetypes[type] = archetype;
+    }
+    
+    return type;
+}
+
+// Usage
+GameObjectType type = scene.GetOrCreateArchetype<Transform, Health>();
+```
+
+## Entity Lifecycle
+
+### Create → Use → Delete
+
+```csharp
+// 1. Create entity
+GameObject entity = scene.CreateEntity<Transform, Health>();
+
+// 2. Use entity (update components)
+ref Transform transform = ref entity.GetComponent<Transform>(scene);
+transform.Position += deltaTime * movementSpeed;
+
+// 3. Delete entity
+scene.DeleteEntity(entity);
+
+// 4. Entity ID recycled for reuse
+GameObject newEntity = scene.CreateEntity<Transform>();
+```
+
+### Version Checking
+
+Scene manages entity versions:
+
+```csharp
+public struct GameObject
+{
+    public int EntityID;
+    public ushort EntityVersion;
+    public int WorldID;
+}
+
+// Scene updates version when entity recycled
+scene.RecycleEntity(entity.EntityID);
+```
+
+## Performance Characteristics
+
+| Operation | Complexity |
+|-----------|------------|
+| **Create Entity** | O(1) archetype lookup + FastestTable insert |
+| **Delete Entity** | O(1) swap-and-pop from archetype |
+| **Get Component** | O(1) FastestTable lookup |
+| **Archetype Lookup** | O(1) FastestTable lookup |
 
 ## Related
 
 - [[GameObject]] - Entity handle
 - [[Archetype]] - Component type optimization
-- [[Query]] - Entity filtering
-- [[System]] - Logic processor
+- [[FastestTable]] - High-performance lookup table

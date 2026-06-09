@@ -2,149 +2,191 @@
 
 ## Definition
 
-A **Query** is an entity filtering mechanism that selects entities matching specific component presence/absence rules. Queries enable efficient iteration over entities with desired component combinations.
+**Query** is a component-based entity filter that efficiently retrieves entities matching specific component combinations for processing.
 
-## Core Concept
+## Core Purpose
 
-### Rule-Based Filtering
+Query enables:
 
-Queries use rules to specify component requirements:
+- Efficient entity filtering by component signature
+- Zero-copy component access during iteration
+- Automatic archetype-based optimization
 
-```csharp
-// Entities with Transform AND Health
-var query = scene.CreateQuery(
-    Rule.With<Transform>().And<Health>());
-
-// Entities with Transform OR Health  
-var query = scene.CreateQuery(
-    Rule.With<Transform>().Or<Health>());
-
-// Entities with Transform WITHOUT Health
-var query = scene.CreateQuery(
-    Rule.With<Transform>().Without<Health>());
-```
-
-### Query Execution
+## Structure
 
 ```csharp
-var query = scene.CreateQuery(Rule.With<Transform>().And<Health>());
-
-foreach (ref var entity in query)
+public struct Query<T1, T2> where T1 : struct where T2 : struct
 {
-    ref var transform = ref entity.Get<Transform>();
-    ref var health = ref entity.Get<Health>();
+    public GameObject[] Entities { get; }
+    public FastestTable<T1> Table1 { get; }
+    public FastestTable<T2> Table2 { get; }
     
-    // Process entity
+    public T1 GetComponent1(GameObject entity);
+    public T2 GetComponent2(GameObject entity);
+}
+
+// Generic multi-component query
+public struct Query<T1, T2, T3> where T1 : struct where T2 : struct where T3 : struct
+{
+    public GameObject[] Entities { get; }
+    public FastestTable<T1> Table1 { get; }
+    public FastestTable<T2> Table2 { get; }
+    public FastestTable<T3> Table3 { get; }
 }
 ```
 
-## Query Types
+## Usage in ECS
 
-### CustomQuery
+### Basic Query
 
-User-defined rule combinations:
+Filter entities by component combination:
 
 ```csharp
-var query = scene.CustomQuery(
-    Rule.With<Transform>(),
-    Rule.With<Health>().Without<Velocity>());
+// Create query for entities with Transform and Velocity
+Query<Transform, Velocity> movementQuery = 
+    new Query<Transform, Velocity>(scene);
+
+// Iterate matching entities
+foreach (var entity in movementQuery.Entities)
+{
+    ref Transform transform = ref movementQuery.GetComponent1(entity);
+    ref Velocity velocity = ref movementQuery.GetComponent2(entity);
+    
+    // Update position based on velocity
+    transform.Position += velocity.Value * deltaTime;
+}
 ```
 
-### QueryHash
+### Query Creation
 
-Query identification via hash:
-
-- Rules combined into hash code
-- Cached query results by hash
-- Fast lookup for repeated queries
+Initialize query with scene reference:
 
 ```csharp
-QueryHash queryHash = QueryHash.New();
-foreach (Rule rule in rules)
+public struct Query<T1, T2> where T1 : struct where T2 : struct
 {
-    queryHash.AddRule(rule);
+    private Scene _scene;
+    
+    public Query(Scene scene)
+    {
+        _scene = scene;
+        
+        // Find archetype with both components
+        GameObjectType type = FindArchetype<T1, T2>(scene);
+        
+        // Get component tables from archetype
+        Table1 = type.GetComponentStorage<T1>();
+        Table2 = type.GetComponentStorage<T2>();
+        
+        // Get matching entities
+        Entities = GetMatchingEntities(type);
+    }
 }
 
-int hashCode = queryHash.ToHashCode();
+// Usage
+Query<Transform, Health> query = new Query<Transform, Health>(scene);
 ```
 
-### QueryEnumerable
+### Component Access
 
-Entity enumeration:
+Get components from queried entities:
 
 ```csharp
-public class QueryEnumerable : IEnumerable<GameObject>
+public T1 GetComponent1(GameObject entity)
 {
-    public Enumerator GetEnumerator();
+    GameObjectLocation location = GetEntityLocation(entity);
+    return Table1[location.Index];
 }
 
-public struct Enumerator : IEnumerator<GameObject>
+public T2 GetComponent2(GameObject entity)
 {
-    public GameObject Current { get; }
-    public bool MoveNext();
+    GameObjectLocation location = GetEntityLocation(entity);
+    return Table2[location.Index];
+}
+
+// Usage
+foreach (var entity in query.Entities)
+{
+    ref Transform transform = ref query.GetComponent1(entity);
+    ref Health health = ref query.GetComponent2(entity);
+    
+    // Process entity and components
 }
 ```
 
-## Query Performance
+### Multi-Component Queries
+
+Query with multiple component types:
+
+```csharp
+// Query with 3 components
+Query<Transform, Health, Render> combatQuery = 
+    new Query<Transform, Health, Render>(scene);
+
+foreach (var entity in combatQuery.Entities)
+{
+    ref Transform transform = ref combatQuery.GetComponent1(entity);
+    ref Health health = ref combatQuery.GetComponent2(entity);
+    ref Render render = ref combatQuery.GetComponent3(entity);
+    
+    // Process entity with all three components
+}
+```
+
+## Query Optimization
+
+### Archetype Matching
+
+Query automatically finds matching archetypes:
+
+```csharp
+private GameObjectType FindArchetype<T1, T2>(Scene scene)
+{
+    foreach (var archetype in scene.Archetypes.Values)
+    {
+        if (archetype.HasComponent<T1>() && 
+            archetype.HasComponent<T2>())
+        {
+            return archetype.Type;
+        }
+    }
+    
+    return null;
+}
+
+// Query only iterates entities from matching archetypes
+```
+
+### Entity Filtering
+
+Filter entities by component presence:
+
+```csharp
+private GameObject[] GetMatchingEntities(GameObjectType type)
+{
+    FastestTable<GameObject> entityTable = type.GetEntityTable();
+    
+    // Get entities that have both components
+    FastestTable<T1> table1 = type.GetComponentStorage<T1>();
+    FastestTable<T2> table2 = type.GetComponentStorage<T2>();
+    
+    // Intersection of entity indices
+    return GetEntityIntersection(table1, table2);
+}
+
+// Query returns only entities with all required components
+```
+
+## Performance Characteristics
 
 | Operation | Complexity |
 |-----------|------------|
-| **Query Creation** | O(n) where n = rules count |
+| **Query Creation** | O(a) where a = archetype count |
 | **Entity Iteration** | O(m) where m = matching entities |
-| **Component Access** | O(1) via archetype lookup |
-| **Cache Hit** | O(1) for cached queries |
-
-## Query Caching
-
-Queries cached by hash:
-
-```csharp
-public Dictionary<int, Query> QueryCache = [];
-
-// Reuse cached query
-if (!QueryCache.TryGetValue(hashCode, out Query query))
-{
-    QueryCache[hashCode] = query = CreateQueryFromSpan(rules);
-}
-```
-
-## Archetype Attachment
-
-Queries automatically attach to archetypes:
-
-```csharp
-public void TryAttachArchetype(Archetype archetype)
-{
-    if (archetype.Types.ContainsAll(Rules))
-    {
-        // Add archetype entities to query
-    }
-}
-```
-
-## Query Results
-
-### Single Entity
-
-```csharp
-GameObject? entity = query.FirstOrDefault();
-```
-
-### Entity Collection
-
-```csharp
-List<GameObject> entities = query.ToList();
-```
-
-### Chunked Results
-
-```csharp
-ChunkTuple<Transform, Health> chunks = query.ToChunks();
-```
+| **Component Access** | O(1) FastestTable lookup |
+| **Memory Overhead** | Minimal (no allocation during iteration) |
 
 ## Related
 
-- [[Rule]] - Component presence constraint
+- [[System]] - Processing unit using queries
+- [[FastestTable]] - High-performance lookup table
 - [[Archetype]] - Component type optimization
-- [[Scene]] - World container
-- [[GameObject]] - Entity handle

@@ -2,145 +2,220 @@
 
 ## Definition
 
-A **Rule** is a component presence/absence constraint used in [[Query]] filtering. Rules specify which components an entity must have, must not have, or can optionally have to match a query.
+**Rule** defines component requirements and constraints for entity processing, used by queries to filter entities and systems to determine which entities to process.
 
-## Rule Types
+## Core Purpose
 
-### With<T>
+Rule enables:
 
-Requires component presence:
+- Component type requirement specification
+- Entity filtering based on component presence
+- Query optimization and validation
 
-```csharp
-Rule.With<Transform>()           // Entity must have Transform
-Rule.With<Health>()              // Entity must have Health
-```
-
-### Without<T>
-
-Requires component absence:
+## Structure
 
 ```csharp
-Rule.Without<Velocity>()         // Entity must NOT have Velocity
-Rule.Without<Dead>()             // Entity must NOT have Dead component
-```
-
-### Or<T>
-
-Allows component presence (OR logic):
-
-```csharp
-Rule.With<Transform>().Or<Health>()  // Entity has Transform OR Health
-```
-
-## Rule Composition
-
-### AND Logic (Default)
-
-Multiple `With` rules imply AND:
-
-```csharp
-Rule.With<Transform>().And<Health>()
-// Entity must have BOTH Transform AND Health
-```
-
-### OR Logic
-
-Use `Or` for alternative components:
-
-```csharp
-Rule.With<Transform>().Or<Health>()
-// Entity has Transform OR Health (or both)
-```
-
-### Mixed Logic
-
-Combine rules for complex queries:
-
-```csharp
-var query = scene.CreateQuery(
-    Rule.With<Transform>(),
-    Rule.Without<Dead>(),
-    Rule.With<Health>().Without<Velocity>());
-
-// Entity must have: Transform AND Health
-// Entity must NOT have: Dead OR Velocity
-```
-
-## Rule Implementation
-
-### Rule Class
-
-```csharp
-public class Rule
+public struct Rule<T1, T2> where T1 : struct where T2 : struct
 {
-    public ComponentId? ComponentId { get; }
-    public bool MustHave { get; }
-    public bool MustNotHave { get; }
+    public ComponentId[] RequiredComponents { get; }
+    public ComponentId[] OptionalComponents { get; }
     
-    public static Rule With<T>() where T : struct;
-    public static Rule Without<T>() where T : struct;
+    public bool Matches(GameObjectType archetype);
+    public Query<T1, T2> CreateQuery(Scene scene);
+}
+
+// Component requirement validation
+public struct Rule<T1, T2, T3> where T1 : struct where T2 : struct where T3 : struct
+{
+    public FastestTable<T1> Table1 { get; }
+    public FastestTable<T2> Table2 { get; }
+    public FastestTable<T3> Table3 { get; }
 }
 ```
 
-### Rule Hashing
+## Usage in ECS
 
-Rules combined into query hash:
+### Component Requirements
+
+Define required component types:
 
 ```csharp
-QueryHash queryHash = QueryHash.New();
-foreach (Rule rule in rules)
+public struct Rule<T1, T2> where T1 : struct where T2 : struct
 {
-    queryHash.AddRule(rule);
-}
-
-int hashCode = queryHash.ToHashCode();
-```
-
-## Rule Validation
-
-### Component Type Check
-
-Rules validated at compile-time:
-
-```csharp
-// Valid
-Rule.With<Transform>()
-
-// Invalid - compilation error if T is not struct
-Rule.With<string>()  // Error: T must be struct
-```
-
-### Archetype Matching
-
-Rules checked against archetype types:
-
-```csharp
-public bool Matches(Archetype archetype)
-{
-    foreach (var rule in Rules)
+    public ComponentId[] RequiredComponents 
+    { 
+        get => new ComponentId[] 
+        {
+            ComponentId<T1>,
+            ComponentId<T2>
+        };
+    }
+    
+    public bool Matches(GameObjectType archetype)
     {
-        if (rule.MustHave && !archetype.Types.Contains(rule.ComponentId))
+        foreach (var compId in RequiredComponents)
+        {
+            if (!archetype.HasComponent(compId))
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+}
+
+// Usage
+Rule<Transform, Health> rule = new Rule<Transform, Health>();
+
+if (rule.Matches(archetype.Type))
+{
+    // Archetype has both Transform and Health components
+}
+```
+
+### Query Creation
+
+Create query from rule:
+
+```csharp
+public Query<T1, T2> CreateQuery(Scene scene)
+{
+    return new Query<T1, T2>(scene);
+}
+
+// Usage
+Rule<Transform, Velocity> rule = new Rule<Transform, Velocity>();
+Query<Transform, Velocity> query = rule.CreateQuery(scene);
+
+foreach (var entity in query.Entities)
+{
+    // Process entities with Transform and Velocity
+}
+```
+
+### Optional Components
+
+Define optional component requirements:
+
+```csharp
+public struct Rule<T1, T2, T3> where T1 : struct where T2 : struct where T3 : struct
+{
+    public ComponentId[] RequiredComponents 
+    { 
+        get => new ComponentId[] { ComponentId<T1> };
+    }
+    
+    public ComponentId[] OptionalComponents 
+    { 
+        get => new ComponentId[] 
+        {
+            ComponentId<T2>,
+            ComponentId<T3>
+        };
+    }
+    
+    public bool Matches(GameObjectType archetype)
+    {
+        // Check required components
+        foreach (var compId in RequiredComponents)
+        {
+            if (!archetype.HasComponent(compId))
+            {
+                return false;
+            }
+        }
+        
+        // Optional components are not required for match
+        return true;
+    }
+}
+
+// Usage
+Rule<Transform, Health, Render> rule = new Rule<Transform, Health, Render>();
+
+// Matches archetypes with Transform only
+// Also matches archetypes with Transform + Health
+// Also matches archetypes with Transform + Health + Render
+```
+
+### Rule Validation
+
+Validate archetype against rule:
+
+```csharp
+public bool Matches(GameObjectType archetype)
+{
+    foreach (var compId in RequiredComponents)
+    {
+        if (!archetype.HasComponent(compId))
+        {
             return false;
-            
-        if (rule.MustNotHave && archetype.Types.Contains(rule.ComponentId))
-            return false;
+        }
     }
     
     return true;
 }
+
+// Rule matching scenarios:
+// - Archetype has all required components → Match
+// - Archetype missing required component → No match
+// - Archetype has optional components → Match (optional)
 ```
 
-## Performance
+## Rule Types
+
+### Strict Rule
+
+Require all specified components:
+
+```csharp
+public struct StrictRule<T1, T2> where T1 : struct where T2 : struct
+{
+    public ComponentId[] RequiredComponents 
+    { 
+        get => new ComponentId[] 
+        {
+            ComponentId<T1>,
+            ComponentId<T2>
+        };
+    }
+}
+
+// Must have both components to match
+```
+
+### Flexible Rule
+
+Allow optional components:
+
+```csharp
+public struct FlexibleRule<T1, T2> where T1 : struct where T2 : struct
+{
+    public ComponentId[] RequiredComponents 
+    { 
+        get => new ComponentId[] { ComponentId<T1> };
+    }
+    
+    public ComponentId[] OptionalComponents 
+    { 
+        get => new ComponentId[] { ComponentId<T2> };
+    }
+}
+
+// Must have T1, T2 is optional
+```
+
+## Performance Characteristics
 
 | Operation | Complexity |
 |-----------|------------|
-| **Rule Creation** | O(1) |
-| **Rule Hashing** | O(n) where n = rules count |
-| **Archetype Matching** | O(m) where m = archetype types |
-| **Query Execution** | O(k) where k = matching entities |
+| **Rule Creation** | O(1) component ID array |
+| **Match Check** | O(n) where n = required components |
+| **Query Creation** | O(a) where a = archetype count |
 
 ## Related
 
-- [[Query]] - Entity filtering
+- [[Query]] - Component-based entity filtering
 - [[Archetype]] - Component type optimization
-- [[Scene]] - World container
+- [[System]] - Processing unit using rules

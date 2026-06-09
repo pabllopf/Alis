@@ -2,141 +2,196 @@
 
 ## Definition
 
-A **System** is a logic processor that operates on components with specific attributes in the ECS architecture. Systems contain all game logic and iterate over entities matching component queries.
+**System** is a processing unit that operates on entities with specific component combinations, following the ECS architecture pattern.
 
-## Core Responsibilities
+## Core Purpose
 
-### Component Processing
+System enables:
 
-Systems process components by:
+- Entity processing based on component combinations
+- Update cycle management with UpdateTypeAttribute markers
+- Query-based entity filtering and iteration
 
-1. Filtering entities with specific component combinations
-2. Iterating over matching entities
-3. Executing logic on component references
-
-### Update Cycles
-
-Systems execute in update cycles:
+## Structure
 
 ```csharp
-// Update all systems with FixedUpdate attribute
-scene.Update<FixedUpdate>();
-
-// Update specific component type
-scene.UpdateComponent<Transform>();
-```
-
-## System Types
-
-### IComponentUpdateFilter
-
-Single-component update system:
-
-```csharp
-[UpdateType(typeof(FixedUpdate))]
-public class MovementSystem : IComponentUpdateFilter
+[UpdateType(UpdateType.Update)]
+public class MovementSystem : SystemBase
 {
-    public void Update(ref Transform t, ref Velocity v)
+    public Query<Transform, Velocity> Query { get; }
+    
+    public override void Update()
     {
-        t.X += v.X;
-        t.Y += v.Y;
+        foreach (var entity in Query.Entities)
+        {
+            ref Transform transform = ref entity.GetComponent<Transform>(scene);
+            ref Velocity velocity = ref entity.GetComponent<Velocity>(scene);
+            
+            transform.Position += velocity.Value * deltaTime;
+        }
     }
+}
+
+public abstract class SystemBase
+{
+    public Scene Scene { get; protected set; }
+    public abstract void Update();
 }
 ```
 
-### SceneUpdateFilter
+## Usage in ECS
 
-Multi-component system with rules:
+### System Declaration
+
+Create system with component requirements:
 
 ```csharp
-[UpdateType(typeof(FixedUpdate))]
-public class PhysicsSystem : SceneUpdateFilter
+[UpdateType(UpdateType.Update)]
+public class RenderSystem : SystemBase
 {
+    public Query<Transform, Color> Query { get; }
+    
+    public RenderSystem(Scene scene) : base(scene)
+    {
+        Query = new Query<Transform, Color>(scene);
+    }
+    
     public override void Update()
     {
-        foreach (ref var entity in Entities)
+        foreach (var entity in Query.Entities)
         {
-            ref var transform = ref entity.Get<Transform>();
-            ref var velocity = ref entity.Get<Velocity>();
+            ref Transform transform = ref Query.GetComponent1(entity);
+            ref Color color = ref Query.GetComponent2(entity);
             
-            transform.X += velocity.X;
-            transform.Y += velocity.Y;
+            // Render entity at transform.Position with color
         }
     }
 }
 ```
 
-## System Attributes
+### Query-Based Processing
 
-### UpdateTypeAttribute
-
-Marks systems for specific update cycles:
+Process entities matching component signature:
 
 ```csharp
-[UpdateType(typeof(FixedUpdate))]
-public class MovementSystem : IComponentUpdateFilter { }
+public class Query<T1, T2> where T1 : struct where T2 : struct
+{
+    public GameObject[] Entities { get; }
+    public FastestTable<T1> Table1 { get; }
+    public FastestTable<T2> Table2 { get; }
+    
+    public T1 GetComponent1(GameObject entity);
+    public T2 GetComponent2(GameObject entity);
+}
 
-[UpdateType(typeof(BeforeDraw))]
-public class RenderingSystem : IComponentUpdateFilter { }
+// Query entities with Transform and Health components
+Query<Transform, Health> query = new Query<Transform, Health>(scene);
+
+foreach (var entity in query.Entities)
+{
+    ref Transform transform = ref query.GetComponent1(entity);
+    ref Health health = ref query.GetComponent2(entity);
+    
+    // Process entity
+}
 ```
 
-### UpdateOrderAttribute
+### Update Cycle
 
-Controls execution order within update cycle:
+Execute systems in update order:
 
 ```csharp
-[UpdateType(typeof(FixedUpdate))]
-[UpdateOrder(1)]
-public class PhysicsSystem : IComponentUpdateFilter { }
+public class GameLoop
+{
+    private SystemBase[] _systems;
+    
+    public void Update(float deltaTime)
+    {
+        // Sort systems by UpdateTypeAttribute
+        Array.Sort(_systems, (a, b) => 
+            a.UpdateType.CompareTo(b.UpdateType));
+        
+        // Execute systems in order
+        foreach (var system in _systems)
+        {
+            system.Update(deltaTime);
+        }
+    }
+}
 
-[UpdateType(typeof(FixedUpdate))]
-[UpdateOrder(2)]
-public class MovementSystem : IComponentUpdateFilter { }
+// Usage
+GameLoop loop = new GameLoop();
+loop.Update(deltaTime);
+```
+
+## UpdateTypeAttribute
+
+Mark system update timing:
+
+```csharp
+public enum UpdateType
+{
+    LateUpdate,   // After all updates
+    Update,       // Standard update
+    FixedUpdate   // Fixed timestep physics
+}
+
+[UpdateType(UpdateType.FixedUpdate)]
+public class PhysicsSystem : SystemBase
+{
+    public Query<Transform, Velocity> Query { get; }
+    
+    public override void Update()
+    {
+        // Physics calculations at fixed timestep
+    }
+}
+
+[UpdateType(UpdateType.Update)]
+public class MovementSystem : SystemBase
+{
+    public Query<Transform, Velocity> Query { get; }
+    
+    public override void Update()
+    {
+        // Movement calculations at variable timestep
+    }
+}
 ```
 
 ## System Lifecycle
 
-### Registration
-
-Systems automatically registered when attached to scene:
-
-1. Scene scans for `[UpdateType]` attributes
-2. Systems added to update registry
-3. Executed during `scene.Update<T>()`
-
-### Execution
+### Create → Register → Update → Destroy
 
 ```csharp
-// Enter update state
-scene.EnterDisallowState();
+// 1. Create systems
+MovementSystem movement = new MovementSystem(scene);
+RenderSystem render = new RenderSystem(scene);
 
-try
-{
-    // Update all systems with attribute T
-    scene.Update<T>();
-}
-finally
-{
-    // Exit update state, apply deferred changes
-    scene.ExitDisallowState();
-}
+// 2. Register systems with game loop
+GameLoop loop = new GameLoop();
+loop.RegisterSystem(movement);
+loop.RegisterSystem(render);
+
+// 3. Update cycle
+loop.Update(deltaTime);
+
+// 4. Cleanup
+movement.Dispose();
+render.Dispose();
 ```
 
-## System Events
+## Performance Characteristics
 
-- Component added/removed events trigger system updates
-- Archetype changes automatically update system queries
-- Deferred structural changes queued and applied
-
-## Performance
-
-- **Cache Efficiency**: Contiguous component storage
-- **Query Caching**: Hash-based query result caching
-- **AOT Safe**: No reflection, no dynamic code generation
+| Operation | Complexity |
+|-----------|------------|
+| **Query Creation** | O(n) archetype iteration |
+| **Entity Iteration** | O(m) where m = matching entities |
+| **Component Access** | O(1) FastestTable lookup |
+| **System Update** | O(m × k) where k = component count |
 
 ## Related
 
-- [[Component]] - Data container
+- [[Query]] - Component-based entity filtering
 - [[GameObject]] - Entity handle
-- [[Scene]] - World container
-- [[Query]] - Entity filtering
+- [[Archetype]] - Component type optimization
