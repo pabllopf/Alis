@@ -5,7 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/Qwen3.5-35B-A3B-4bit",
+  "model": "mlx/mlx-community/Qwen3.5-35B-A3B-4bit",
+  "small_model": "mlx/mlx-community/Qwen3.5-35B-A3B-4bit",
 
   "provider": {
     "omlx": {
@@ -18,6 +19,54 @@
       "models": {
         "Qwen3.5-35B-A3B-4bit": {
           "name": "Qwen3.5-35B-A3B-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 131584,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 131584,
+            "output": 131584
+          }
+        }
+      }
+    },
+    "mlx": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "mlx",
+      "options": {
+        "baseURL": "http://127.0.0.1:8080/v1"
+      },
+      "models": {
+        "mlx-community/Qwen3.5-35B-A3B-4bit": {
+          "name": "mlx-community/Qwen3.5-35B-A3B-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 131584,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 131584,
+            "output": 131584
+          }
+        }
+      }
+    },
+    "rapid-mlx": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "rapid-mlx",
+      "options": {
+        "baseURL": "http://127.0.0.1:8000/v1"
+      },
+      "models": {
+        "mlx-community/Qwen3.5-35B-A3B-4bit": {
+          "name": "mlx-community/Qwen3.5-35B-A3B-4bit",
           "modalities": {
             "input": ["text"],
             "output": ["text"]
