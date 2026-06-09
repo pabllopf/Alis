@@ -1,5 +1,5 @@
 ---
-title: Sample: Pong
+title: Pong
 tags: [sample,game,example]
 ---
 

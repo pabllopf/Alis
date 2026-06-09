@@ -1,5 +1,5 @@
 ---
-title: Application: Alis.Benchmark
+title: Alis.Benchmark
 tags: [application,software,tool]
 ---
 

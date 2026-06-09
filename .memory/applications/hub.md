@@ -1,5 +1,5 @@
 ---
-title: Application: Alis.App.Hub
+title: Alis.App.Hub
 tags: [application,software,tool]
 ---
 

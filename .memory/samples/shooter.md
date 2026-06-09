@@ -1,5 +1,5 @@
 ---
-title: Sample: Shooter
+title: Shooter
 tags: [sample,game,example]
 ---
 

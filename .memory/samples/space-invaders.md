@@ -1,5 +1,5 @@
 ---
-title: Sample: Space Invaders
+title: Space Invaders
 tags: [sample,game,example]
 ---
 

@@ -1,13 +1,6 @@
 {
   "accentColor": "#6c84c2",
   "cssTheme": "",
-  "theme": "moonstone",
-  "baseFontSize": 16,
-  "textFontSize": 18,
-  "headingFontSize": 24,
-  "monospaceFontSize": 16,
-  "accentColorEnabled": true,
-  "textFont": "Inter",
-  "monospaceFont": "Fira Code",
-  "accentColorEnabled": true
+  "theme": "system",
+  "baseFontSize": 16
 }

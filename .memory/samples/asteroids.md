@@ -1,5 +1,5 @@
 ---
-title: Sample: Asteroids
+title: Asteroids
 tags: [sample,game,example]
 ---
 

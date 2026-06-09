@@ -1,8 +1,14 @@
 {
+  "alwaysUpdateLinks": true,
+  "textFontSize": 18,
+  "headingFontSize": 24,
+  "monospaceFontSize": 16,
+  "accentColorEnabled": true,
+  "textFont": "Inter",
+  "monospaceFont": "Fira Code",
   "newFileLocation": "current",
   "newFileFolderPath": ".memory",
   "readableLineLength": true,
   "vimMode": false,
-  "alwaysUpdateLinks": true,
   "attachmentFolderPath": ".attachments"
 }

@@ -1,5 +1,5 @@
 ---
-title: Sample: Pac-Man
+title: Pac-Man
 tags: [sample,game,example]
 ---
 

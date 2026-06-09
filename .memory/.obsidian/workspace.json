@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "concepts/Quality Assurance.md",
+                "file": "projects/Index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Quality Assurance"
+              "title": "Index"
             }
           }
         ]
@@ -84,7 +84,8 @@
               "title": "Navegador de Cuadernos"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -197,6 +198,15 @@
   },
   "active": "d8b5ec4fd47572e4",
   "lastOpenFiles": [
+    "glossary/gameobject.md",
+    "projects/1_Presentation/Extension.md",
+    "memory-system-final-summary.md",
+    "MEMORY-SUMMARY.md",
+    "applications/benchmark.md",
+    "applications/hub.md",
+    "applications/engine-editor.md",
+    "architecture/architecture-diagrams.md",
+    "concepts/Quality Assurance.md",
     "concepts/resource-management-patterns.md",
     "context/context-diagrams.md",
     "context/architecture-rules.md",
@@ -214,18 +224,9 @@
     "projects/2_Application/Samples/Sample.Asteroid.md",
     "projects/2_Application/Samples/Alis.Sample.md",
     "projects/2_Application/Alis.md",
-    "projects/3_Structuration/Alis.Core.md",
-    "projects/3_Structuration/alis-core.md",
-    "projects/4_Operation/Alis.Core.Graphic.md",
-    "projects/4_Operation/Alis.Core.Physic.md",
-    "testing/testing-diagrams.md",
-    "2026-06-09.md",
-    "index.md",
     "architecture/properties.config.json",
     "projects/projects.config.json",
     "security/security.config.json",
-    "applications/installer.md",
-    "applications/hub.md",
     "architecture/layers.config.json",
     "dataview.config.json",
     "templates",

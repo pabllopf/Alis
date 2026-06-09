@@ -1,5 +1,5 @@
 ---
-title: Application: Alis.App.Installer
+title: Alis.App.Installer
 tags: [application,software,tool]
 ---
 

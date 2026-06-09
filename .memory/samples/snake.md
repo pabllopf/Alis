@@ -1,5 +1,5 @@
 ---
-title: Sample: Snake
+title: Snake
 tags: [sample,game,example]
 ---
 

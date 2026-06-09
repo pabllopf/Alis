@@ -1,5 +1,5 @@
 ---
-title: Sample: RPG
+title: RPG
 tags: [sample,game,example]
 ---
 

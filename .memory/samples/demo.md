@@ -1,5 +1,5 @@
 ---
-title: Sample: Demo
+title: Demo
 tags: [sample,game,example]
 ---
 

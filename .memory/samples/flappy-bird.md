@@ -1,5 +1,5 @@
 ---
-title: Sample: Flappy Bird
+title: Flappy Bird
 tags: [sample,game,example]
 ---
 

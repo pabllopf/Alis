@@ -1,5 +1,5 @@
 ---
-title: Sample: Platformer
+title: Platformer
 tags: [sample,game,example]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Sample: Tetris
+title: Tetris
 tags: [sample,game,example]
 ---
 

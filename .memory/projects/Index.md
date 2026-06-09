@@ -1,6 +1,9 @@
 ---
 title: ALIS Project Index
-tags: [project,documentation,reference]
+tags:
+  - project
+  - documentation
+  - reference
 ---
 
 
