@@ -5,11 +5,8 @@ tags:
   - gameobject
   - scene
   - component
-
-status: Draft
-
+status: To Do
 license: GPLv3
-
 ---
 
 
