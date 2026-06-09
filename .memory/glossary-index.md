@@ -1,6 +1,7 @@
 ---
 title: Glossary Index
 tags: [glossary,terminology,reference]
+lastUpdated: 2026-06-09
 ---
 
 
@@ -64,14 +65,10 @@ See [[Layer Dependency Order]] for project organization.
 - [[ECS Implementation Details]]
 - [[Memory Management Strategies]]
 
-## Related Architecture
+## Cross-References
 
-- [[architecture/repository-overview]] — Full architecture
-- [[architecture/dependency-graph]] — Dependency rules
-- [[architecture-index]] — Patterns index
-- [[queries-index]] — ECS query system
-- [[events-index]] — Event system
-- [[commands-index]] — Command patterns
-- [[handlers-index]] — Handler index
-- [[performance-index]] — Performance patterns
-- [[layer-dependency-order]] — Layer dependency rules
+- [[concepts-index|Concepts Index]] - Core architectural concepts
+- [[applications-index|Applications Index]] - Application terminology
+- [[samples-index|Samples Index]] - Sample game terminology
+- [[extensions-index|Extensions Index]] - Extension-related terms
+- [[sources-index|Sources Index]] - Source code terminology

@@ -1,6 +1,7 @@
 ---
 title: Concepts Index
 tags: [concept,theory,documentation]
+lastUpdated: 2026-06-09
 ---
 
 
@@ -105,5 +106,12 @@ Comprehensive index of all architectural and design concepts used throughout the
 
 - `.memory/architecture/` - Architecture documentation
 - `.memory/projects/` - Project-specific documentation
-- `.memory/sources/` - Source file documentation
+- [[sources-index|Sources Index]] - Source file documentation
 - `.memory/diagrams/` - Architecture diagrams
+
+## Cross-References
+
+- [[applications-index|Applications Index]] - Game applications and tools
+- [[samples-index|Samples Index]] - Game samples and examples
+- [[extensions-index|Extensions Index]] - Plugin and extension documentation
+- [[glossary-index|Glossary Index]] - Terminology and definitions

@@ -1,6 +1,7 @@
 ---
 title: Sources Index
 tags: [source,reference,documentation]
+lastUpdated: 2026-06-09
 ---
 
 
@@ -70,6 +71,13 @@ Comprehensive index of all source files and projects in the Alis solution.
 - `6_Ideation/Data/src/` - Data structures
 
 ## See Also
+
 - [[Alis Architecture Overview]]
 - [[Layered Architecture]]
 - [[Generator Pattern]]
+
+## Cross-References
+
+- [[concepts-index|Concepts Index]] - Concepts implemented in source
+- [[projects-index|Projects Index]] - Project organization
+- [[glossary-index|Glossary Index]] - Terminology for source files

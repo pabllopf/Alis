@@ -1,6 +1,9 @@
 ---
 title: ECS Architecture
-tags: [diagram,visualization,mermaid]
+tags:
+  - diagram
+  - visualization
+  - mermaid
 ---
 
 

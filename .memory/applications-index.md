@@ -1,6 +1,7 @@
 ---
 title: Applications Index
 tags: [application,software,tool]
+lastUpdated: 2026-06-09
 ---
 
 
@@ -129,7 +130,13 @@ dotnet run -c Release --project Alis.Benchmark
 
 ## Related
 
-- [[extensions/index|Extensions Index]]
-- [[samples/index|Samples Index]]
+- [[extensions-index|Extensions Index]]
+- [[samples-index|Samples Index]]
 - [[architecture/repository-overview|Repository Overview]]
 - [[onboarding/getting-started|Getting Started]]
+
+## Cross-References
+
+- [[concepts-index|Concepts Index]] - Core architectural concepts
+- [[glossary-index|Glossary Index]] - Terminology for applications
+- [[projects-index|Projects Index]] - Project documentation

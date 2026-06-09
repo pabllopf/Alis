@@ -1,6 +1,7 @@
 ---
-Extensions Index
+title: Extensions Index
 tags: [extension,plugin,add-on,documentation]
+lastUpdated: 2026-06-09
 ---
 
 
@@ -173,5 +174,11 @@ var report = profiler.GetReport();
 ## Related
 
 - [[architecture/repository-overview|Repository Overview]]
-- [[system/indexes/projects-index|Projects Index]]
+- [[projects-index|Projects Index]]
 - [[onboarding/getting-started|Getting Started]]
+
+## Cross-References
+
+- [[applications-index|Applications Index]] - Applications using extensions
+- [[concepts-index|Concepts Index]] - Patterns implemented in extensions
+- [[glossary-index|Glossary Index]] - Terms related to extensions

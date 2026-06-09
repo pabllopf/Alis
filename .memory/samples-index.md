@@ -1,6 +1,7 @@
 ---
-title: Game Samples
+title: Game Samples Index
 tags: [sample,game,example]
+lastUpdated: 2026-06-09
 ---
 
 
@@ -137,4 +138,10 @@ dotnet serve -p 8080 -w Samples.Web/Breakout.Web/bin/Release/net8.0/browser-wasm
 
 - [[onboarding/getting-started|Getting Started]]
 - [[architecture/repository-overview|Repository Overview]]
-- [[applications/engine-editor|Engine Editor]]
+- [[applications-index|Applications Index]] - Engine and tools
+
+## Cross-References
+
+- [[applications-index|Applications Index]] - Game applications
+- [[extensions-index|Extensions Index]] - Extensions used in samples
+- [[concepts-index|Concepts Index]] - Patterns used in samples
