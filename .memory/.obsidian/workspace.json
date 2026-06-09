@@ -75,7 +75,7 @@
             }
           },
           {
-            "id": "88a8ea3b2a6627a5",
+            "id": "773ae85571ac0b74",
             "type": "leaf",
             "state": {
               "type": "notebook-navigator",
@@ -187,17 +187,18 @@
     "hiddenItems": {
       "switcher:Abrir selector rápido": false,
       "graph:Abrir vista gráfica": false,
+      "notebook-navigator:Navegador de Cuadernos": false,
       "canvas:Crear nuevo lienzo": false,
       "daily-notes:Abrir la nota de hoy": false,
       "templates:Insertar plantilla": false,
       "command-palette:Abrir paleta de comandos": false,
       "bases:Crear nueva base": false,
-      "notebook-navigator:Navegador de Cuadernos": false,
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "17deffb463926260",
+  "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "diagrams/architecture-diagrams.md",
     "entities/Scene.md",
     "entities/Sin título.base",
     "entities/Alis.md",
