@@ -50,7 +50,7 @@
 ### 3_Structuration (5 projects)
 | Project | Type | Framework |
 |---------|------|-----------|
-| Alis.Core | Aggregator | net8.0/netstandard2.0 |
+| Alis.Core | Aggregator | Multi-target (all) |
 | Alis.Core.Ecs | Engine Subsystem | net8.0/netstandard2.0 |
 | Alis.Core.Graphic | Engine Subsystem | net8.0/netstandard2.0 |
 | Alis.Core.Audio | Engine Subsystem | net8.0/netstandard2.0 |
@@ -62,11 +62,11 @@
 | Alis.Core.Ecs/src | Engine Subsystem | net8.0/netstandard2.0 |
 | Alis.Core.Ecs/test | Test | net8.0/netstandard2.0 |
 | Alis.Core.Ecs/sample | Sample | net8.0/netstandard2.0 |
-| Alis.Core.Ecs/Generator | Source Generator | net8.0/netstandard2.0 |
+| Alis.Core.Ecs.Generator | Source Generator | netstandard2.0;net8.0;net10.0 |
 | Alis.Core.Graphic/src | Engine Subsystem | net8.0/netstandard2.0 |
 | Alis.Core.Graphic/test | Test | net8.0/netstandard2.0 |
 | Alis.Core.Graphic/sample | Sample | net8.0/netstandard2.0 |
-| Alis.Core.Graphic/Generator | Source Generator | net8.0/netstandard2.0 |
+| Alis.Core.Graphic.Generator | Source Generator | netstandard2.0;net8.0;net10.0 |
 | Alis.Core.Audio/src | Engine Subsystem | net8.0/netstandard2.0 |
 | Alis.Core.Audio/test | Test | net8.0/netstandard2.0 |
 | Alis.Core.Audio/sample | Sample | net8.0/netstandard2.0 |
@@ -85,27 +85,27 @@
 | Alis.Core.Aspect.Memory/src | Aspect Definition | netstandard2.0 |
 | Alis.Core.Aspect.Memory/test | Test | netstandard2.0 |
 | Alis.Core.Aspect.Memory/sample | Sample | netstandard2.0 |
-| Alis.Core.Aspect.Memory/Generator | Source Generator | netstandard2.0 |
+| Alis.Core.Aspect.Memory.Generator | Source Generator | netstandard2.0;net8.0;net10.0 |
 | Alis.Core.Aspect.Fluent/src | Aspect Definition | netstandard2.0 |
 | Alis.Core.Aspect.Fluent/test | Test | netstandard2.0 |
 | Alis.Core.Aspect.Fluent/sample | Sample | netstandard2.0 |
-| Alis.Core.Aspect.Fluent/Generator | Source Generator | netstandard2.0 |
+| Alis.Core.Aspect.Fluent.Generator | Source Generator | netstandard2.0;net8.0;net10.0 |
 | Alis.Core.Aspect.Math/src | Aspect Definition | netstandard2.0 |
 | Alis.Core.Aspect.Math/test | Test | netstandard2.0 |
 | Alis.Core.Aspect.Math/sample | Sample | netstandard2.0 |
-| Alis.Core.Aspect.Math/Generator | Source Generator | netstandard2.0 |
+| Alis.Core.Aspect.Math.Generator | Source Generator | netstandard2.0;net8.0;net10.0 |
 | Alis.Core.Aspect.Time/src | Aspect Definition | netstandard2.0 |
 | Alis.Core.Aspect.Time/test | Test | netstandard2.0 |
 | Alis.Core.Aspect.Time/sample | Sample | netstandard2.0 |
-| Alis.Core.Aspect.Time/Generator | Source Generator | netstandard2.0 |
+| Alis.Core.Aspect.Time.Generator | Source Generator | netstandard2.0;net8.0;net10.0 |
 | Alis.Core.Aspect.Data/src | Aspect Definition | netstandard2.0 |
 | Alis.Core.Aspect.Data/test | Test | netstandard2.0 |
 | Alis.Core.Aspect.Data/sample | Sample | netstandard2.0 |
-| Alis.Core.Aspect.Data/Generator | Source Generator | netstandard2.0 |
+| Alis.Core.Aspect.Data.Generator | Source Generator | netstandard2.0;net8.0;net10.0 |
 | Alis.Core.Aspect.Logging/src | Aspect Definition | netstandard2.0 |
 | Alis.Core.Aspect.Logging/test | Test | netstandard2.0 |
 | Alis.Core.Aspect.Logging/sample | Sample | netstandard2.0 |
-| Alis.Core.Aspect.Logging/Generator | Source Generator | netstandard2.0 |
+| Alis.Core.Aspect.Logging.Generator | Source Generator | netstandard2.0;net8.0;net10.0 |
 
 ## Documentation Status
 
@@ -166,6 +166,25 @@
 | Alis.Core.Audio | ~7 | ✓ Documented | [[projects/4_Operation/Audio]] |
 | Alis.Core.Physic | ~194 | ✓ Documented | [[projects/4_Operation/Physic]] |
 
+### 3_Structuration — COMPLETED (1/1)
+| Project | Type | Status | Documentation |
+|---------|------|--------|---------------|
+| Alis.Core | Core aggregator | ✓ Documented | [[projects/3_Structuration/Alis.Core]] |
+
+### 5_Declaration — COMPLETED (1/1)
+| Project | Type | Status | Documentation |
+|---------|------|--------|---------------|
+| Alis.Core.Aspect | Aspect aggregator | ✓ Documented | [[projects/5_Declaration/Aspect]] |
+
+### Generators — COMPLETED (5/5)
+| Project | Layer | Type | Status | Documentation |
+|---------|-------|------|--------|---------------|
+| Alis.Core.Ecs.Generator | 4_Operation | `IIncrementalGenerator` | ✓ Documented | [[projects/Generators/Alis.Core.Ecs.Generator]] |
+| Alis.Core.Graphic.Generator | 4_Operation | `ISourceGenerator` (stub) | ✓ Documented | [[projects/Generators/Alis.Core.Graphic.Generator]] |
+| Alis.Core.Aspect.Memory.Generator | 6_Ideation | `IIncrementalGenerator` | ✓ Documented | [[projects/Generators/Alis.Core.Aspect.Memory.Generator]] |
+| Alis.Core.Aspect.Fluent.Generator | 6_Ideation | `DiagnosticAnalyzer` | ✓ Documented | [[projects/Generators/Alis.Core.Aspect.Fluent.Generator]] |
+| Alis.Core.Aspect.Data.Generator | 6_Ideation | `ISourceGenerator` | ✓ Documented | [[projects/Generators/Alis.Core.Aspect.Data.Generator]] |
+
 ### 6_Ideation — COMPLETED (6/6)
 | Aspect | Status | Documentation |
 |--------|--------|---------------|
@@ -185,7 +204,10 @@
 - **Declaration (5)**: 1 project
 - **Ideation (6)**: 24 projects
 - **Test/Sample/Generator sub-projects**: ~57 (included above)
-- **Documented**: ~53 projects (~40% — Applications, Extensions, Samples, Core Systems, Ideation)
+- **Documented**: ~61 projects (~44% — +3_Structuration, +5_Declaration, +5 Generators)
+- **Structuration**: 1/1 (100%)
+- **Declaration**: 1/1 (100%)
+- **Generators**: 5/5 (100%)
 - **Extensions**: 19/19 (100%)
 - **Samples**: 14/14 (100%)
 

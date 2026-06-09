@@ -1,52 +1,27 @@
-# Core Libraries (5_Declaration)
+# 5_Declaration Layer Overview
 
 ## Overview
-The 5_Declaration layer contains declaration libraries that provide data contracts, DTOs, and interface definitions for the ALIS engine. These define the shapes of data used across the system.
+The Declaration layer (`5_Declaration`) contains the aspect system aggregator. Zero hand-written code — pure aggregator that consolidates all generated types from 6_Ideation and 4_Operation generators into a single assembly consumed by 3_Structuration.
 
-## Projects in this Layer
-- [[Alis.Core.Data]] — Data contracts and DTOs
-- [[Alis.Core.Log]] — Logging infrastructure
+## Projects
 
-## Common Pattern
-All Declaration projects follow the standard pattern:
-- src/ — Main library
-- test/ — Unit tests (SonarQube excluded)
-- sample/ — Sample applications
+| Project | Type | Hand-Written Code |
+|---|---|---|
+| [[projects/5_Declaration/Aspect\|Alis.Core.Aspect]] | Aggregator (Aspect System) | Zero — pure aggregation |
+| Alis.Core.Aspect.Test | Test suite | Tests |
+| Alis.Core.Aspect.Sample | Usage samples | Samples |
 
 ## Dependencies
-All depend on:
-- [[Alis.Core]] (3_Structuration) — Core engine abstractions
-- [[Alis]] (2_Application) — Core application library
-- All generators from 6_Ideation
-
-## Build Configuration
-- **LangVersion**: 13
-- **Nullable**: disable
-- **AllowUnsafeBlocks**: false
-- **SonarQubeExclude**: true (test projects)
-
-## Asset Pipeline
-All use the same asset pipeline:
-- SHA256 hash-based change detection
-- Incremental build via manifest file
-- Base64-encoded zip archives
-
-## Key Build Targets (All Declaration Projects)
-- `_PrepareAssetPackManifest` — Generates asset manifest with SHA256 hashes
-- `ZipAssets` — Zips assets and encodes to base64
+This layer depends on nothing (leaf for hand-written code) but **consumes** generated output from:
+- All 6_Ideation generators (Memory, Fluent, Data, Math, Time, Logging)
+- All 4_Operation generators (ECS, Graphic)
 
 ## Notes
-- Declaration layer defines data contracts used by all other layers
-- Pure interface/DTO definitions with no implementation
-- Consumed by Ideation layer
+- Earlier versions of this index referenced `Alis.Core.Data` and `Alis.Core.Log` as 5_Declaration projects — these are actually aspects in 6_Ideation ([[projects/6_Ideation/Data]], [[projects/6_Ideation/Logging]])
+- Generator references use dynamic glob patterns in MSBuild
 
 ## Related
-- [[projects/3_Structuration/Alis.Core]] — Core abstractions
-- [[projects/4_Operation/Core]] — Operation layer
-- [[projects/6_Ideation/Core]] — Ideation layer
-- [[projects/2_Application/Alis]] — Application layer
-- [[Layered Architecture]] — Layer structure
-- [[Alis Architecture Overview]] — Full architecture
-- [[aspect-oriented-design]] — Design patterns
-- [[projects/Cross-Cutting-Concerns]] — Build config
-- [[declaration-index]] — Declaration index
+- [[projects/5_Declaration/Aspect]] — Aspect aggregator
+- [[projects/Generators]] — Generator overview
+- [[system/indexes/layer-index]] — Layer breakdown
+- [[system/indexes/dependency-index]] — Generator cascade

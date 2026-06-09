@@ -8,4 +8,5 @@
 | CP-004 | 2026-06-08 | Extensions Batch 1 | Completed |
 | CP-005 | 2026-06-08 | App/Sample basics | Completed |
 | CP-006 | 2026-06-09 | Extensions Batch 2 (enrichment) | Completed |
-| CP-007 | 2026-06-09 | System files & indexes | In Progress |
+| CP-007 | 2026-06-09 | System files & indexes | Completed |
+| CP-008 | 2026-06-09 | Structuration + Declaration + Generators | Completed |
