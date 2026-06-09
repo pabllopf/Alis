@@ -44,3 +44,13 @@ Uses a custom MSBuild-based asset pipeline for resource management:
 - Asset pipeline enables self-contained game builds without external asset files at runtime
 - SHA256 manifest ensures deterministic builds and cache optimization
 - Excluded from SonarQube analysis (sample code quality standards differ from library code)
+
+## Related
+- [[Multi-Platform Samples]] — Sample game overview
+- [[projects/2_Application/Alis]] — Core application
+- [[projects/1_Presentation/Engine]] — Engine runtime
+- [[Application Composition]] — App structure
+- [[Generator Pattern]] — Source generation
+- [[Layered Architecture]] — Layer structure
+- [[build-system]] — Build configuration
+- [[projects/Index]] — All project docs
