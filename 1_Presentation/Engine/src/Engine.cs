@@ -2142,23 +2142,6 @@ namespace Alis.App.Engine
         }
 
         /// <summary>
-        ///     Gets the platform
-        /// </summary>
-        /// <returns>The native platform</returns>
-        private INativePlatform GetPlatform()
-        {
-#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
-            return new MacNativePlatform();
-#elif winx64 || winx86 || winarm64 || winarm || win
-            return new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
-#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
-            return new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
-#else
-            return null;
-#endif
-        }
-
-        /// <summary>
         ///     Initializes the platform using the specified platform
         /// </summary>
         /// <param name="platform">The platform</param>
