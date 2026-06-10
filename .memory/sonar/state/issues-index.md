@@ -22,6 +22,7 @@
 | AZ6sG0wFDMjfSxivO2NO | external_roslyn:CS0169 | HubEngine.cs | 66 | resolved-previous | 93c34adb4 |
 | AZ6OPa1Dsynw1OJ1vi4P | csharpsquid:S1125 | HubEngine.cs | 450 | committed | c0acbe16e |
 | AZ6OPa1Dsynw1OJ1vi4Q | csharpsquid:S2589 | HubEngine.cs | 450 | committed | 24d60a422 |
+| AZ6OPbAksynw1OJ1vi8C | csharpsquid:S3776 | Installer.cs | 64 | committed | 088daf48e |
 
-Total indexed: 20
-Total committed: 20
+Total indexed: 21
+Total committed: 21
