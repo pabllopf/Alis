@@ -1448,9 +1448,9 @@ namespace Alis.App.Engine
         ///     Loads the font from resource using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
-        /// <param name="size">The size</param>
+        
         /// <returns>The native ptr</returns>
-        private static IntPtr LoadFontFromResource(Stream stream, int size)
+        private static IntPtr LoadFontFromResource(Stream stream)
         {
             Debug.Assert((stream != null) && (stream.Length > 0), "Font stream must be valid.");
 
