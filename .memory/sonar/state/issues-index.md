@@ -15,6 +15,7 @@
 | AZ6sG00gDMjfSxivO2NV | csharpsquid:S3604 | ImguiSample.cs | 92 | resolved-previous | 9b89aff9f |
 | AZ6sG00gDMjfSxivO2NW | csharpsquid:S3604 | ImguiSample.cs | 97 | committed | 42d2ed59b |
 | AZ6sG00gDMjfSxivO2NX | csharpsquid:S3604 | ImguiSample.cs | 102 | resolved-previous | 46f63414c |
+| AZ6sG00gDMjfSxivO2NY | csharpsquid:S1125 | ImguiSample.cs | 344 | committed | 23980a4b4 |
 
-Total indexed: 13
-Total committed: 13
+Total indexed: 14
+Total committed: 14

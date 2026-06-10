@@ -16,3 +16,4 @@
 - [resolved-previous] AZ6sG00gDMjfSxivO2NV | csharpsquid:S3604 | ImguiSample.cs:92 | 9b89aff9f | Already resolved in 932f4cfb6
 - [committed] AZ6sG00gDMjfSxivO2NW | csharpsquid:S3604 | ImguiSample.cs:97 | 42d2ed59b | Removed redundant inline initializers for _mouseClickedTime and _mouseClickedCount
 - [resolved-previous] AZ6sG00gDMjfSxivO2NX | csharpsquid:S3604 | ImguiSample.cs:102 | 46f63414c | Already resolved in 42d2ed59b
+- [committed] AZ6sG00gDMjfSxivO2NY | csharpsquid:S1125 | ImguiSample.cs:344 | 23980a4b4 | Replaced Boolean literal 'false' with 'default' in ternary
