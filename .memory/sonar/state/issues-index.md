@@ -38,6 +38,7 @@
 | AZ6OPa9isynw1OJ1vi7e | csharpsquid:S1144 | Engine.cs | 1453 | committed | c4d2006ad |
 | AZ6OPa9isynw1OJ1vi79 | csharpsquid:S2325 | Engine.cs | 1456 | committed | 719c60701 |
 | AZ6OPa9Hsynw1OJ1vi7X | csharpsquid:S3776 | DockSpaceMenu.cs | 71 | committed | 2aea0f8d2 |
+| AZ6OPbAksynw1OJ1vi8E | csharpsquid:S2696,S2325 | Installer.cs | 70,64 | committed | 4b1f99d62 |
 
-Total indexed: 36
-Total committed: 36
+Total indexed: 37
+Total committed: 37

@@ -86,22 +86,7 @@ namespace Alis.App.Engine.Menus
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
 
 
-            if (!SpaceWork.IsMacOs)
-            {
-                Vector2F dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 90);
-
-                Vector2F menuSize = new Vector2F(SpaceWork.Viewport.Size.X, bottomMenuHeight);
-                ImGui.SetNextWindowPos(new Vector2F(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 31 + bottomMenuHeight / 2));
-                ImGui.SetNextWindowSize(menuSize);
-            }
-            else
-            {
-                Vector2F dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 35);
-
-                Vector2F menuSize = new Vector2F(SpaceWork.Viewport.Size.X, bottomMenuHeight);
-                ImGui.SetNextWindowPos(new Vector2F(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 8));
-                ImGui.SetNextWindowSize(menuSize);
-            }
+            SetupNextWindowProperties();
 
 
             if (ImGui.Begin("Bottom Menu", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollbar))
@@ -155,6 +140,24 @@ namespace Alis.App.Engine.Menus
             }
 
             ImGui.PopStyleColor(3);
+        }
+
+        private void SetupNextWindowProperties()
+        {
+            if (!SpaceWork.IsMacOs)
+            {
+                Vector2F dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 90);
+                Vector2F menuSize = new Vector2F(SpaceWork.Viewport.Size.X, bottomMenuHeight);
+                ImGui.SetNextWindowPos(new Vector2F(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 31 + bottomMenuHeight / 2));
+                ImGui.SetNextWindowSize(menuSize);
+            }
+            else
+            {
+                Vector2F dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 35);
+                Vector2F menuSize = new Vector2F(SpaceWork.Viewport.Size.X, bottomMenuHeight);
+                ImGui.SetNextWindowPos(new Vector2F(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 8));
+                ImGui.SetNextWindowSize(menuSize);
+            }
         }
 
         /// <summary>
