@@ -341,7 +341,7 @@ namespace Alis.App.Installer
 
             for (int i = 0; i < 5; i++)
             {
-                bool down = i < _mButtons.Length ? _mButtons[i] : false;
+                bool down = i < _mButtons.Length ? _mButtons[i] : default;
                 bool prev = _prevMouseDown[i];
 
                 if (down && !prev)
