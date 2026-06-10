@@ -21,6 +21,7 @@
 | AZ6sG0wFDMjfSxivO2NP | external_roslyn:CS0169 | HubEngine.cs | 61 | resolved-previous | c2e1a7a95 |
 | AZ6sG0wFDMjfSxivO2NO | external_roslyn:CS0169 | HubEngine.cs | 66 | resolved-previous | 93c34adb4 |
 | AZ6OPa1Dsynw1OJ1vi4P | csharpsquid:S1125 | HubEngine.cs | 450 | committed | c0acbe16e |
+| AZ6OPa1Dsynw1OJ1vi4Q | csharpsquid:S2589 | HubEngine.cs | 450 | committed | 24d60a422 |
 
-Total indexed: 19
-Total committed: 19
+Total indexed: 20
+Total committed: 20

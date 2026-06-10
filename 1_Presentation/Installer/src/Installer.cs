@@ -155,59 +155,7 @@ namespace Alis.App.Installer
             style.WindowRounding = 0.0f;
             style.Colors2 = new Vector4F(0.00f, 0.00f, 0.00f, 1.00f);
 
-            bool running = true;
-            while (running)
-            {
-                double now = frameTimer.Elapsed.TotalSeconds;
-                double delta = now - lastTime;
-                lastTime = now;
-                if (delta <= 0.0)
-                {
-                    delta = targetFrameTime;
-                }
-
-                if (delta > 0.25)
-                {
-                    delta = 0.25; // avoid huge dt values
-                }
-
-                io.DeltaTime = (float) delta;
-
-                running = _platform.PollEvents();
-
-                ProcessKeyWithImgui();
-
-                if (_platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
-                {
-                    ImGui.GetIo().AddInputCharactersUtf8(pendingChars);
-                }
-
-                example.Draw();
-                _platform.SwapBuffers();
-
-                int glError = Gl.GlGetError();
-                if (glError != 0)
-                {
-                    Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
-                }
-
-                double frameEnd = frameTimer.Elapsed.TotalSeconds;
-                double frameElapsed = frameEnd - now;
-                double sleepTime = targetFrameTime - frameElapsed;
-                if (sleepTime > 0.0)
-                {
-                    int sleepMs = (int) (sleepTime * 1000.0);
-                    if (sleepMs > 0)
-                    {
-                        Thread.Sleep(sleepMs);
-                    }
-
-                    while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
-                    {
-                        Thread.SpinWait(10);
-                    }
-                }
-            }
+            RunGameLoop(frameTimer, ref lastTime, targetFrameTime, io, example);
 
             example.Cleanup();
             _platform.Cleanup();
@@ -405,6 +353,66 @@ namespace Alis.App.Installer
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
             Gl.GlBindTexture(TextureTarget.Texture2D, 0);
             return textureId;
+        }
+
+        /// <summary>
+        ///     Runs the game loop
+        /// </summary>
+        private static void RunGameLoop(Stopwatch frameTimer, ref double lastTime, double targetFrameTime, ImGuiIoPtr io, IExample example)
+        {
+            bool running = true;
+            while (running)
+            {
+                double now = frameTimer.Elapsed.TotalSeconds;
+                double delta = now - lastTime;
+                lastTime = now;
+                if (delta <= 0.0)
+                {
+                    delta = targetFrameTime;
+                }
+
+                if (delta > 0.25)
+                {
+                    delta = 0.25; // avoid huge dt values
+                }
+
+                io.DeltaTime = (float) delta;
+
+                running = _platform.PollEvents();
+
+                ProcessKeyWithImgui();
+
+                if (_platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
+                {
+                    ImGui.GetIo().AddInputCharactersUtf8(pendingChars);
+                }
+
+                example.Draw();
+                _platform.SwapBuffers();
+
+                int glError = Gl.GlGetError();
+                if (glError != 0)
+                {
+                    Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
+                }
+
+                double frameEnd = frameTimer.Elapsed.TotalSeconds;
+                double frameElapsed = frameEnd - now;
+                double sleepTime = targetFrameTime - frameElapsed;
+                if (sleepTime > 0.0)
+                {
+                    int sleepMs = (int) (sleepTime * 1000.0);
+                    if (sleepMs > 0)
+                    {
+                        Thread.Sleep(sleepMs);
+                    }
+
+                    while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
+                    {
+                        Thread.SpinWait(10);
+                    }
+                }
+            }
         }
     }
 }

@@ -22,3 +22,4 @@
 - [resolved-previous] AZ6sG0wFDMjfSxivO2NP | external_roslyn:CS0169 | HubEngine.cs:61 | c2e1a7a95 | Already resolved in 570d784e5
 - [resolved-previous] AZ6sG0wFDMjfSxivO2NO | external_roslyn:CS0169 | HubEngine.cs:66 | 93c34adb4 | Already resolved in 570d784e5
 - [committed] AZ6OPa1Dsynw1OJ1vi4P | csharpsquid:S1125 | HubEngine.cs:450 | c0acbe16e | Replaced Boolean literal 'false' with 'default' in ternary
+- [committed] AZ6OPa1Dsynw1OJ1vi4Q | csharpsquid:S2589 | HubEngine.cs:450 | 24d60a422 | Removed redundant null check for mouseButtons
