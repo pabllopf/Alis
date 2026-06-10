@@ -183,19 +183,9 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     Abouts the alis
         /// </summary>
-        private static void AboutAlis()
+       private static void AboutAlis()
         {
             string version = "latest";
-            /*if (OperatingSystem.IsMacOS())
-            {
-                NSAlert alert = new NSAlert
-                {
-                    AlertStyle = NSAlertStyle.Informational,
-                    MessageText = "About Alis",
-                    InformativeText = $"Version v{version} \nby Pablo Perdomo Falcón"
-                };
-                alert.RunModal();
-            }*/
 
             if (OperatingSystem.IsWindows() || OperatingSystem.IsLinux())
             {
@@ -233,19 +223,8 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     News the scene
         /// </summary>
-        private static void NewScene()
+      private static void NewScene()
         {
-            /*Scene scene = new Scene().Builder()
-                .Name("New Scene")
-                .Add<GameObject>(camera => camera
-                    .Name("Main Camera")
-                    .AddComponent(new Camera())
-                    .Build())
-                .Build();
-
-            _spaceWork.VideoGame.Context.SceneManager.Add(scene);
-            _spaceWork.VideoGame.Save();
-            _spaceWork.VideoGame.Context.SceneManager.LoadScene(scene);*/
         }
 
         /// <summary>
