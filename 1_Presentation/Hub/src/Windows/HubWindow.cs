@@ -73,11 +73,6 @@ namespace Alis.App.Hub.Windows
         public readonly ProjectsSection ProjectsSection;
 
         /// <summary>
-        ///     The space work
-        /// </summary>
-        private readonly SpaceWork spaceWork;
-
-        /// <summary>
         ///     The selected menu item
         /// </summary>
         private int selectedMenuItem;
@@ -90,8 +85,6 @@ namespace Alis.App.Hub.Windows
         /// <param name="spaceWork">The space work</param>
         public HubWindow(SpaceWork spaceWork) : base(spaceWork)
         {
-            this.spaceWork = spaceWork;
-
             CommunitySection = new CommunitySection(spaceWork);
             ProjectsSection = new ProjectsSection(spaceWork);
             EditorInstallationSection = new EditorInstallationSection(spaceWork);
