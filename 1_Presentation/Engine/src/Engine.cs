@@ -182,7 +182,7 @@ namespace Alis.App.Engine
         ///     The platform
         /// </summary>
 #pragma warning disable CS0649
-        private INativePlatform platform = null!;
+        private readonly INativePlatform platform = null!;
 #pragma warning restore CS0649
 
         /// <summary>
