@@ -55,15 +55,7 @@ namespace Alis.App.Hub
     /// </summary>
     public class HubEngine
     {
-        /// <summary>
-        ///     The gl viewport width
-        /// </summary>
-        private static int glViewportWidth;
-
-        /// <summary>
-        ///     The gl viewport height
-        /// </summary>
-        private static int glViewportHeight;
+ 
 
         /// <summary>
         ///     The vector
