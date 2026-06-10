@@ -76,8 +76,6 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Render()
         {
-            //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
-
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
@@ -105,8 +103,6 @@ namespace Alis.App.Engine.Menus
                 ImGui.SetNextWindowSize(menuSize);
             }
 
-
-            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0));
 
             if (ImGui.Begin("Bottom Menu", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollbar))
             {
@@ -143,78 +139,11 @@ namespace Alis.App.Engine.Menus
                 }
 
 
-                /*
-                if (ImGui.Button($"{FontAwesome5.Save}##save", new Vector2F(32, 32)))
-                {
-                   Logger.Info("Guardando...");
-                }*/
-
-                //ImGui.EndTooltip();
+                ImGui.NextColumn();
 
                 ImGui.NextColumn();
 
-                /*
-                if (ImGui.Button($"{FontAwesome5.Undo}##undo", new Vector2F(32, 32)))
-                {
-                   Logger.Info("Deshaciendo...");
-                }
-
-                //ImGui.EndTooltip();
-
-                if (ImGui.Button($"{FontAwesome5.Redo}##redo", new Vector2F(32, 32)))
-                {
-                   Logger.Info("Rehaciendo...");
-                }
-
-                */
-
                 ImGui.NextColumn();
-
-
-                //ImGui.BeginTooltip();
-
-                //ImGui.Text("Seleccionar rama de Git");
-
-                //ImGui.EndTooltip();
-
-                ImGui.NextColumn();
-
-                /*
-                if (ImGui.Button($"{FontAwesome5.Tools}##tools", new Vector2F(32, 32)))
-                {
-                    ImGui.OpenPopup("ToolsMenu");
-                }*/
-
-                // ImGui.BeginTooltip();
-
-                //ImGui.Text("Herramientas rápidas");
-
-                //ImGui.EndTooltip();
-
-                /*
-                if (ImGui.BeginPopup("ToolsMenu"))
-                {
-                    if (ImGui.MenuItem("Configurar entorno"))
-                    {
-                       Logger.Info("Abriendo configuración del entorno...");
-                    }
-
-                    if (ImGui.MenuItem("Reparar proyecto"))
-                    {
-                       Logger.Info("Reparando proyecto...");
-                    }
-
-                    ImGui.EndPopup();
-                }*/
-
-                ImGui.NextColumn();
-
-                //ImGui.BeginTooltip();
-
-                //ImGui.Text("Notificaciones");
-
-                //ImGui.EndTooltip();
-
 
                 ImGui.PopStyleVar(3);
                 ImGui.NextColumn();
