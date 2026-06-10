@@ -61,7 +61,7 @@ namespace Alis.App.Installer
         /// <summary>
         ///     Application entry point.
         /// </summary>
-        public void Run(string[] args)
+        public static void Run(string[] args)
         {
             const double targetFrameTime = 1.0 / 60.0;
             Stopwatch frameTimer = Stopwatch.StartNew();

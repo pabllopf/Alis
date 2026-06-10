@@ -40,7 +40,7 @@ namespace Alis.App.Installer
         /// <param name="args">Command-line arguments passed to the application.</param>
         public static void Main(string[] args)
         {
-            new Installer().Run(args);
+            Installer.Run(args);
         }
     }
 }
