@@ -78,270 +78,129 @@ namespace Alis.App.Engine.Menus
 
             if (ImGui.BeginMenu("File"))
             {
-                if (ImGui.MenuItem("New Scene", Shortcuts.NewScene))
-                {
-                    TopMenuAction.ExecuteMenuAction("New Scene");
-                }
+                RenderMenuItem("New Scene", Shortcuts.NewScene);
 
-                if (ImGui.MenuItem("Open Scene...", Shortcuts.OpenScene))
-                {
-                    TopMenuAction.ExecuteMenuAction("Open Scene...");
-                }
+                RenderMenuItem("Open Scene...", Shortcuts.OpenScene);
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Save", Shortcuts.Save))
-                {
-                    TopMenuAction.ExecuteMenuAction("Save");
-                }
+                RenderMenuItem("Save", Shortcuts.Save);
 
-                if (ImGui.MenuItem("Save As...", Shortcuts.SaveAs))
-                {
-                    TopMenuAction.ExecuteMenuAction("Save As...");
-                }
+                RenderMenuItem("Save As...", Shortcuts.SaveAs);
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("New Project"))
-                {
-                    TopMenuAction.ExecuteMenuAction("New Project");
-                }
+                RenderMenuItem("New Project");
 
-                if (ImGui.MenuItem("Open Project"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Open Project");
-                }
+                RenderMenuItem("Open Project");
 
-                if (ImGui.MenuItem("Save Project"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Save Project");
-                }
+                RenderMenuItem("Save Project");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Build Profiles"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Build Profiles");
-                }
+                RenderMenuItem("Build Profiles");
 
-                if (ImGui.MenuItem("Build And Run"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Build And Run");
-                }
+                RenderMenuItem("Build And Run");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Close"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Close");
-                }
+                RenderMenuItem("Close");
 
                 ImGui.EndMenu();
             }
 
             if (ImGui.BeginMenu("Edit"))
             {
-                if (ImGui.MenuItem("Undo", Shortcuts.Undo))
-                {
-                    TopMenuAction.ExecuteMenuAction("Undo");
-                }
+                RenderMenuItem("Undo", Shortcuts.Undo);
 
-                if (ImGui.MenuItem("Redo", Shortcuts.Redo))
-                {
-                    TopMenuAction.ExecuteMenuAction("Redo");
-                }
+                RenderMenuItem("Redo", Shortcuts.Redo);
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Undo History"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Undo History");
-                }
+                RenderMenuItem("Undo History");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Select All"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Select All");
-                }
+                RenderMenuItem("Select All");
 
-                if (ImGui.MenuItem("Deselect All"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Deselect All");
-                }
+                RenderMenuItem("Deselect All");
 
-                if (ImGui.MenuItem("Select Children"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Select Children");
-                }
+                RenderMenuItem("Select Children");
 
-                if (ImGui.MenuItem("Select Prefab Root"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Select Prefab Root");
-                }
+                RenderMenuItem("Select Prefab Root");
 
-                if (ImGui.MenuItem("Invert Selection"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Invert Selection");
-                }
+                RenderMenuItem("Invert Selection");
 
-                if (ImGui.MenuItem("Selection Groups"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Selection Groups");
-                }
+                RenderMenuItem("Selection Groups");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Cut"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Cut");
-                }
+                RenderMenuItem("Cut");
 
-                if (ImGui.MenuItem("Copy"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Copy");
-                }
+                RenderMenuItem("Copy");
 
-                if (ImGui.MenuItem("Paste"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Paste");
-                }
+                RenderMenuItem("Paste");
 
-                if (ImGui.MenuItem("Paste Special"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Paste Special");
-                }
+                RenderMenuItem("Paste Special");
 
-                if (ImGui.MenuItem("Duplicate"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Duplicate");
-                }
+                RenderMenuItem("Duplicate");
 
-                if (ImGui.MenuItem("Rename"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Rename");
-                }
+                RenderMenuItem("Rename");
 
-                if (ImGui.MenuItem("Delete"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Delete");
-                }
+                RenderMenuItem("Delete");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Frame Selected in Scene"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Frame Selected in Scene");
-                }
+                RenderMenuItem("Frame Selected in Scene");
 
-                if (ImGui.MenuItem("Frame Selected in Window under Cursor"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Frame Selected in Window under Cursor");
-                }
+                RenderMenuItem("Frame Selected in Window under Cursor");
 
-                if (ImGui.MenuItem("Lock View to Selected"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Lock View to Selected");
-                }
+                RenderMenuItem("Lock View to Selected");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Search"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Search");
-                }
+                RenderMenuItem("Search");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Play", Shortcuts.Play))
-                {
-                    TopMenuAction.ExecuteMenuAction("Play");
-                }
+                RenderMenuItem("Play", Shortcuts.Play);
 
-                if (ImGui.MenuItem("Pause", Shortcuts.Pause))
-                {
-                    TopMenuAction.ExecuteMenuAction("Pause");
-                }
+                RenderMenuItem("Pause", Shortcuts.Pause);
 
-                if (ImGui.MenuItem("Step"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Step");
-                }
+                RenderMenuItem("Step");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Project Settings..."))
-                {
-                    TopMenuAction.ExecuteMenuAction("Project Settings...");
-                }
+                RenderMenuItem("Project Settings...");
 
-                if (ImGui.MenuItem("Clear All PlayerPrefs"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Clear All PlayerPrefs");
-                }
+                RenderMenuItem("Clear All PlayerPrefs");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Lighting"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Lighting");
-                }
+                RenderMenuItem("Lighting");
 
-                if (ImGui.MenuItem("Graphics Tier"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Graphics Tier");
-                }
+                RenderMenuItem("Graphics Tier");
 
-                if (ImGui.MenuItem("Rendering"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Rendering");
-                }
+                RenderMenuItem("Rendering");
 
                 ImGui.EndMenu();
             }
 
             if (ImGui.BeginMenu("Assets"))
             {
-                if (ImGui.MenuItem("Create"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Create");
-                }
+                RenderMenuItem("Create");
 
                 if (ImGui.MenuItem("Import New Asset...\tCmd+I"))
                 {
                     TopMenuAction.ExecuteMenuAction("Import New Asset...");
                 }
 
-                if (ImGui.MenuItem("Import Package..."))
-                {
-                    TopMenuAction.ExecuteMenuAction("Import Package...");
-                }
+                RenderMenuItem("Import Package...");
 
-                if (ImGui.MenuItem("Export Package..."))
-                {
-                    TopMenuAction.ExecuteMenuAction("Export Package...");
-                }
+                RenderMenuItem("Export Package...");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Find References In Scene"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Find References In Scene");
-                }
+                RenderMenuItem("Find References In Scene");
 
-                if (ImGui.MenuItem("Open Asset..."))
-                {
-                    TopMenuAction.ExecuteMenuAction("Open Asset...");
-                }
+                RenderMenuItem("Open Asset...");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Reimport"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Reimport");
-                }
+                RenderMenuItem("Reimport");
 
-                if (ImGui.MenuItem("Reimport All"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Reimport All");
-                }
+                RenderMenuItem("Reimport All");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Refresh"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Refresh");
-                }
+                RenderMenuItem("Refresh");
 
-                if (ImGui.MenuItem("Remove Unused Assets"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Remove Unused Assets");
-                }
+                RenderMenuItem("Remove Unused Assets");
 
                 ImGui.EndMenu();
             }
@@ -353,204 +212,102 @@ namespace Alis.App.Engine.Menus
                     TopMenuAction.ExecuteMenuAction("Create Empty");
                 }
 
-                if (ImGui.MenuItem("Create Empty Child"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Create Empty Child");
-                }
+                RenderMenuItem("Create Empty Child");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("2D Object"))
-                {
-                    TopMenuAction.ExecuteMenuAction("2D Object");
-                }
+                RenderMenuItem("2D Object");
 
-                if (ImGui.MenuItem("UI"))
-                {
-                    TopMenuAction.ExecuteMenuAction("UI");
-                }
+                RenderMenuItem("UI");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Light"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Light");
-                }
+                RenderMenuItem("Light");
 
-                if (ImGui.MenuItem("Audio"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Audio");
-                }
+                RenderMenuItem("Audio");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Tilemap"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Tilemap");
-                }
+                RenderMenuItem("Tilemap");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Align With View"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Align With View");
-                }
+                RenderMenuItem("Align With View");
 
-                if (ImGui.MenuItem("Align View to Selected"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Align View to Selected");
-                }
+                RenderMenuItem("Align View to Selected");
 
-                if (ImGui.MenuItem("Move to View"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Move to View");
-                }
+                RenderMenuItem("Move to View");
 
-                if (ImGui.MenuItem("Rename"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Rename");
-                }
+                RenderMenuItem("Rename");
 
-                if (ImGui.MenuItem("Duplicate"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Duplicate");
-                }
+                RenderMenuItem("Duplicate");
 
-                if (ImGui.MenuItem("Delete"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Delete");
-                }
+                RenderMenuItem("Delete");
 
                 ImGui.EndMenu();
             }
 
             if (ImGui.BeginMenu("Component"))
             {
-                if (ImGui.MenuItem("Add Component"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Add Component");
-                }
+                RenderMenuItem("Add Component");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Physics 2D"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Physics 2D");
-                }
+                RenderMenuItem("Physics 2D");
 
-                if (ImGui.MenuItem("Rendering 2D"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Rendering 2D");
-                }
+                RenderMenuItem("Rendering 2D");
 
-                if (ImGui.MenuItem("Audio"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Audio");
-                }
+                RenderMenuItem("Audio");
 
-                if (ImGui.MenuItem("UI"))
-                {
-                    TopMenuAction.ExecuteMenuAction("UI");
-                }
+                RenderMenuItem("UI");
 
-                if (ImGui.MenuItem("Scripts"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Scripts");
-                }
+                RenderMenuItem("Scripts");
 
                 ImGui.EndMenu();
             }
 
             if (ImGui.BeginMenu("Tools"))
             {
-                if (ImGui.MenuItem("Sprite Editor"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Sprite Editor");
-                }
+                RenderMenuItem("Sprite Editor");
 
-                if (ImGui.MenuItem("Tilemap Editor"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Tilemap Editor");
-                }
+                RenderMenuItem("Tilemap Editor");
 
-                if (ImGui.MenuItem("Animation Editor"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Animation Editor");
-                }
+                RenderMenuItem("Animation Editor");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Custom Tools..."))
-                {
-                    TopMenuAction.ExecuteMenuAction("Custom Tools...");
-                }
+                RenderMenuItem("Custom Tools...");
 
                 ImGui.EndMenu();
             }
 
             if (ImGui.BeginMenu("Window"))
             {
-                if (ImGui.MenuItem("General"))
-                {
-                    TopMenuAction.ExecuteMenuAction("General");
-                }
+                RenderMenuItem("General");
 
-                if (ImGui.MenuItem("Scene View"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Scene View");
-                }
+                RenderMenuItem("Scene View");
 
-                if (ImGui.MenuItem("Game View"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Game View");
-                }
+                RenderMenuItem("Game View");
 
-                if (ImGui.MenuItem("Inspector"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Inspector");
-                }
+                RenderMenuItem("Inspector");
 
-                if (ImGui.MenuItem("Hierarchy"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Hierarchy");
-                }
+                RenderMenuItem("Hierarchy");
 
-                if (ImGui.MenuItem("Console"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Console");
-                }
+                RenderMenuItem("Console");
 
                 ImGui.EndMenu();
             }
 
             if (ImGui.BeginMenu("Help"))
             {
-                if (ImGui.MenuItem("About Alis", Shortcuts.AboutAlis))
-                {
-                    TopMenuAction.ExecuteMenuAction("About Alis");
-                }
+                RenderMenuItem("About Alis", Shortcuts.AboutAlis);
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Preferences", Shortcuts.Preferences))
-                {
-                    TopMenuAction.ExecuteMenuAction("Preferences");
-                }
+                RenderMenuItem("Preferences", Shortcuts.Preferences);
 
-                if (ImGui.MenuItem("Alis Manual"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Alis Manual");
-                }
+                RenderMenuItem("Alis Manual");
 
-                if (ImGui.MenuItem("API Reference"))
-                {
-                    TopMenuAction.ExecuteMenuAction("API Reference");
-                }
+                RenderMenuItem("API Reference");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Report Bug"))
-                {
-                    TopMenuAction.ExecuteMenuAction("Report Bug");
-                }
+                RenderMenuItem("Report Bug");
 
                 ImGui.Separator();
-                if (ImGui.MenuItem("Quit Alis", Shortcuts.QuitAlis))
-                {
-                    TopMenuAction.ExecuteMenuAction("Quit Alis");
-                }
+                RenderMenuItem("Quit Alis", Shortcuts.QuitAlis);
 
                 ImGui.EndMenu();
             }
@@ -566,6 +323,14 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Start()
         {
+        }
+
+        private void RenderMenuItem(string text, string shortcut = null)
+        {
+            if (ImGui.MenuItem(text, shortcut))
+            {
+                TopMenuAction.ExecuteMenuAction(text);
+            }
         }
 
         /// <summary>

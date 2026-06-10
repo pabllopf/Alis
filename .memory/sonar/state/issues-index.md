@@ -40,6 +40,7 @@
 | AZ6OPa9Hsynw1OJ1vi7X | csharpsquid:S3776 | DockSpaceMenu.cs | 71 | committed | 2aea0f8d2 |
 | AZ6OPbAksynw1OJ1vi8E | csharpsquid:S2696,S2325 | Installer.cs | 70,64 | committed | 4b1f99d62 |
 | AZ6OPa82synw1OJ1vi7U | csharpsquid:S3776 | BottomMenu.cs | 77 | committed | e381173c2 |
+| AZ6OPa0Hsynw1OJ1vi3- | csharpsquid:S4487 | HubWindow.cs | 78 | committed | 84e1190c7 |
 
-Total indexed: 38
-Total committed: 38
+Total indexed: 39
+Total committed: 39

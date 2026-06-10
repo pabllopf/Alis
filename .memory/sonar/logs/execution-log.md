@@ -41,3 +41,4 @@
 - [committed] AZ6OPa9Hsynw1OJ1vi7X | csharpsquid:S3776 | DockSpaceMenu.cs:71 | 2aea0f8d2 | Extracted menu bar rendering into 3 helper methods (cognitive complexity 44->15)
 - [committed] AZ6OPbAksynw1OJ1vi8E | csharpsquid:S2696,S2325 | Installer.cs:70,64 | 4b1f99d62 | Made Run method static to match static field usage
 - [committed] AZ6OPa82synw1OJ1vi7U | csharpsquid:S3776 | BottomMenu.cs:77 | e381173c2 | Extracted window positioning into SetupNextWindowPosition helper (cognitive complexity 16->15)
+- [committed] AZ6OPa0Hsynw1OJ1vi3- | csharpsquid:S4487 | HubWindow.cs:78 | 84e1190c7 | Removed unread private field spaceWork (only assigned, never read)
