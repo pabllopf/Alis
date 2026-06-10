@@ -9,6 +9,7 @@
 | AZ6sG0wFDMjfSxivO2NJ | csharpsquid:S2933 | HubEngine.cs | 123 | committed | 2dbb949b4 |
 | AZ6sG0wFDMjfSxivO2NM | csharpsquid:S1117 | HubEngine.cs | 443 | resolved-previous | 7c99e0d2f |
 | AZ6sG0wFDMjfSxivO2NN | csharpsquid:S1117 | HubEngine.cs | 444 | resolved-previous | fc7fcf5bc |
+| AZ6sG0rrDMjfSxivO2NI | csharpsquid:S1075 | EditorInstallationSection.cs | 55 | committed | 3573e006b |
 
-Total indexed: 7
-Total committed: 7
+Total indexed: 8
+Total committed: 8

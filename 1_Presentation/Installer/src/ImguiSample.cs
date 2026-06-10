@@ -79,7 +79,7 @@ namespace Alis.App.Installer
         /// <summary>
         ///     The mouse down list
         /// </summary>
-        private List<bool> _mouseDownList = new List<bool>();
+        private List<bool> _mouseDownList;
 
         /// <summary>
         ///     The mouse clicked

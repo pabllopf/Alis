@@ -198,6 +198,8 @@
   },
   "active": "cd454652532e2f91",
   "lastOpenFiles": [
+    "sonar/fixes/AZ6sG0rrDMjfSxivO2NI.md",
+    "sonar/issues/AZ6sG0rrDMjfSxivO2NI.md",
     "sonar/fixes/AZ6sG0wFDMjfSxivO2NN.md",
     "sonar/issues/AZ6sG0wFDMjfSxivO2NN.md",
     "sonar/fixes/AZ6sG0wFDMjfSxivO2NM.md",
@@ -231,8 +233,6 @@
     "architecture/architecture-overview.md",
     "apis",
     "properties.md",
-    "diagrams/README.md",
-    "diagrams/architecture-diagrams.md",
     "entities/Sin título.base",
     "Sin título.canvas"
   ]
