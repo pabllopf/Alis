@@ -38,3 +38,4 @@
 - [committed] AZ6OPa9isynw1OJ1vi78 | csharpsquid:S1172 | Engine.cs:1453 | 5ee3b8603 | Removed unused size parameter from LoadFontFromResource
 - [committed] AZ6OPa9isynw1OJ1vi7e | csharpsquid:S1144 | Engine.cs:1453 | c4d2006ad | Removed unused private method LoadFontFromResource
 - [committed] AZ6OPa9isynw1OJ1vi79 | csharpsquid:S2325 | Engine.cs:1456 | 719c60701 | Made LoadTexture static
+- [committed] AZ6OPa9Hsynw1OJ1vi7X | csharpsquid:S3776 | DockSpaceMenu.cs:71 | 2aea0f8d2 | Extracted menu bar rendering into 3 helper methods (cognitive complexity 44->15)
