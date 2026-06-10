@@ -47,24 +47,6 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
 
-        /*
-        /// <summary>
-        ///     The play
-        /// </summary>
-        private readonly Dictionary<Type, string> _componentIcons = new Dictionary<Type, string>
-        {
-            {typeof(Sprite), FontAwesome5.PaintBrush},
-            {typeof(Animator), FontAwesome5.ShieldAlt},
-            {typeof(BoxCollider), FontAwesome5.ShieldAlt},
-            {typeof(Camera), FontAwesome5.Camera},
-            {typeof(DirectionalLight), FontAwesome5.Lightbulb},
-            {typeof(AudioSource), FontAwesome5.VolumeUp},
-            {typeof(Animation), FontAwesome5.Play},
-            {typeof(PointLight), FontAwesome5.Lightbulb},
-            {typeof(SpotLight), FontAwesome5.Lightbulb},
-            {typeof(AreaLight), FontAwesome5.Lightbulb}
-        };*/
-
         /// <summary>
         ///     The tags
         /// </summary>
@@ -73,8 +55,6 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The selected game object
         /// </summary>
-        //private GameObject _selectedGameObject;
-
         /// <summary>
         ///     The zero
         /// </summary>
@@ -119,17 +99,6 @@ namespace Alis.App.Engine.Windows
             {
             }
 
-            /*if (_selectedGameObject != null)
-            {
-                RenderHeader();
-
-                RenderTransform();
-
-                RenderComponents();
-
-                RenderAddComponentButton();
-            }*/
-
             ImGui.End();
         }
 
@@ -149,51 +118,6 @@ namespace Alis.App.Engine.Windows
                 ShowAddComponentPopup();
             }
 
-            /*Assembly assembly = Assembly.GetAssembly(typeof(AComponent))!;
-            Type[] allTypes = assembly.GetTypes();
-            IEnumerable<Type> componentSubclasses = allTypes.Where(t => t.IsSubclassOf(typeof(AComponent)));
-            List<Type> componentTypes = componentSubclasses
-                .Where(t => (t.Namespace != null) && t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("Alis"))
-                .ToList();
-
-            IOrderedEnumerable<IGrouping<string, Type>> groupedComponents = componentTypes
-                .GroupBy(t => t.Namespace)
-                .OrderBy(g => g.Key);
-
-            ImGui.SetNextWindowSize(new Vector2F(ImGui.GetWindowWidth(), groupedComponents.Count() * 30 + 90));
-            if (ImGui.BeginPopup("AddComponentPopup"))
-            {
-                // Campo de búsqueda
-
-                searchQueryComand = Marshal.StringToHGlobalAnsi(searchQuery);
-                ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
-                ImGui.InputText($"{FontAwesome5.Search}##Search components", searchQueryComand, 256);
-                searchQuery = Marshal.PtrToStringAnsi(searchQueryComand);
-
-                if (!string.IsNullOrEmpty(searchQuery))
-                {
-                    componentTypes = componentTypes
-                        .Where(t => t.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
-                        .ToList();
-                }
-
-
-                foreach (IGrouping<string, Type> group in groupedComponents)
-                {
-                    if (ImGui.CollapsingHeader(group.Key))
-                    {
-                        foreach (Type componentType in group)
-                        {
-                            if (ImGui.MenuItem(componentType.Name))
-                            {
-                                AddComponentToSelectedGameObject(componentType);
-                            }
-                        }
-                    }
-                }
-
-                ImGui.EndPopup();
-            }*/
         }
 
         /// <summary>
@@ -211,51 +135,14 @@ namespace Alis.App.Engine.Windows
         /// <param name="componentType">The component type</param>
         private void AddComponentToSelectedGameObject([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)] Type componentType)
         {
-            /*
-            if (_selectedGameObject == null)
-            {
-                return;
-            }
-
-            AComponent component = (AComponent) Activator.CreateInstance(componentType);
-            _selectedGameObject.Add(component);*/
         }
 
         /// <summary>
         ///     Renderiza la sección superior del inspector con el nombre y el tag del objeto.
         /// </summary>
-        private void RenderHeader()
+      private void RenderHeader()
         {
-            /*
-                if (_selectedGameObject == null)
-                {
-                    return;
-                }*/
-
-            if (ImGui.BeginChild("##Header", new Vector2F(ImGui.GetContentRegionAvail().X, 80), true, ImGuiWindowFlags.NoCollapse))
-            {
-                ImGui.PushFont(SpaceWork.FontLoaded30Bold);
-                ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 5); // Adjust the Y position
-                ImGui.Text($"{FontAwesome5.Cube}");
-                ImGui.PopFont();
-
-                ImGui.SameLine();
-
-                /*
-                bool isEnable = _selectedGameObject.IsEnable;
-                ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
-                ImGui.Checkbox($"##{_selectedGameObject.Name} isEnable", ref isEnable);
-                _selectedGameObject.IsEnable = isEnable;
-
-                ImGui.SameLine();
-
-                commandBufferName = Marshal.StringToHGlobalAnsi(_selectedGameObject.Name);
-                ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-                ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
-                if (ImGui.InputText("##Name", commandBufferName, 256))
-                {
-                    _selectedGameObject.Name = Marshal.PtrToStringAnsi(commandBufferName);
-                }
+        }
 
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
                 ImGui.Separator();
