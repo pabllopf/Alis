@@ -35,3 +35,4 @@
 - [resolved-previous] AZ6OPa9isynw1OJ1vi75 | csharpsquid:S2325 | Engine.cs:2148 | ca627e58a | Already resolved in 84df1eb30 (method removed)
 - [committed] AZ6OPa9isynw1OJ1vi76 | csharpsquid:S2325 | Engine.cs:1430 | 00d4f854d | Made InitializePlatform static
 - [committed] AZ6OPa9isynw1OJ1vi77 | csharpsquid:S2325 | Engine.cs:1453 | c54c2f6ff | Made LoadFontFromResource static
+- [committed] AZ6OPa9isynw1OJ1vi78 | csharpsquid:S1172 | Engine.cs:1453 | 5ee3b8603 | Removed unused size parameter from LoadFontFromResource
