@@ -33,3 +33,4 @@
 - [committed] AZ6OPawqsynw1OJ1vi3q | csharpsquid:S3776 | EditorInstallationSection.cs:318 | 299a80d2d | Extracted table rendering into helper methods (cognitive complexity 22->15)
 - [committed] AZ6OPa9isynw1OJ1vi74 | csharpsquid:S108 | Engine.cs:1394 | 5eadc28f1 | Removed empty if branch by inverting condition
 - [resolved-previous] AZ6OPa9isynw1OJ1vi75 | csharpsquid:S2325 | Engine.cs:2148 | ca627e58a | Already resolved in 84df1eb30 (method removed)
+- [committed] AZ6OPa9isynw1OJ1vi76 | csharpsquid:S2325 | Engine.cs:1430 | 00d4f854d | Made InitializePlatform static
