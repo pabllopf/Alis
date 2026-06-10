@@ -20,7 +20,7 @@ license: GPLv3
 | alis.slnx | pending | - |
 | alis_design.sln | pending | - |
 
-## Project Documentation Files (154 docs)
+## Project Documentation Files (161 docs)
 
 ### 1_Presentation (~76 docs)
 
@@ -154,8 +154,8 @@ license: GPLv3
 ## Notes
 
 - Total: 140 projects
-- Total docs: 154 markdown files
-- Coverage: 110% (includes samples and test projects)
+- Total docs: 161 markdown files
+- Coverage: 115% (includes samples and test projects)
 - Status: **COMPLETE** ✓
 
 ## Related

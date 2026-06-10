@@ -16,7 +16,7 @@ license: GPLv3
 | Field | Value |
 |---|---|
 | Total Projects | 140 unique .csproj |
-| Projects Documented | 154 markdown docs |
+| Projects Documented | 161 markdown docs |
 | Projects Pending | 0 |
 | Projects Failed | 0 |
 | Batch Size | 20 |
@@ -94,7 +94,7 @@ license: GPLv3
 | 4_Operation | ~15 | ~14 | ✓ Complete |
 | 5_Declaration | ~5 | ~5 | ✓ Complete |
 | 6_Ideation | ~15 | ~15 | ✓ Complete |
-| **Total** | **140** | **154** | **✓ Complete** |
+| **Total** | **140** | **161** | **✓ Complete** |
 
 ## Next Steps
 

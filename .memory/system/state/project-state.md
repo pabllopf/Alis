@@ -15,7 +15,7 @@ license: GPLv3
 
 | Total Projects | Documented | Pending | Failed | Status | Coverage |
 |---|---|---|---|---|---|
-| 140 | 154 | 0 | 0 | **Complete** | 110% |
+| 140 | 161 | 0 | 0 | **Complete** | 115% |
 
 ## Completed Projects
 

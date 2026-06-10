@@ -98,24 +98,26 @@ Comprehensive log of all memory generation and analysis executions.
 
 #### Summary
 - Total csproj files: 140
-- Total markdown docs: 154
-- Coverage: 110% (includes samples and test projects)
+- Total markdown docs: 161
+- Coverage: 115% (includes samples and test projects)
 - Status: **COMPLETE** ✓
 
 #### Updates Made
-1. Updated analysis-state.md - Complete status
-2. Updated project-state.md - All projects documented
+1. Updated analysis-state.md - Complete status (161 docs)
+2. Updated project-state.md - All projects documented (161 docs)
 3. Updated pending-work.md - Maintenance tasks
 4. Updated execution-state.md - All batches complete
 5. Updated projects-index.md - Complete index
 6. Updated layer-index.md - All 6 layers documented
 7. Updated dependency-index.md - All dependencies mapped
+8. Updated file-hashes.md - Corrected counts
 
 #### Commits
-- docs: update analysis state - all 140 projects documented (154 markdown docs)
+- docs: update analysis state - all 140 projects documented (161 markdown docs)
 - docs: update projects index - all 140 projects documented
 - docs: update layer index - all 6 layers documented
 - docs: update dependency index - all dependencies mapped
+- docs: correct documentation counts - 161 markdown files
 
 #### Next Steps
 1. Monitor for new projects
