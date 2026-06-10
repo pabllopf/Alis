@@ -181,6 +181,6 @@ namespace Alis.App.Hub.Core
         ///     Ons the render
         /// </summary>
         /// <param name="scaleFactor"></param>
-        public void OnRender(float scaleFactor) => HubWindow.OnRender(scaleFactor);
+        public void OnRender(float scale) => HubWindow.OnRender(scale);
     }
 }

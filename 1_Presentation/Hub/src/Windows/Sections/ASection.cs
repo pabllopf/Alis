@@ -81,7 +81,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Ons the render
         /// </summary>
-        public abstract void OnRender(float scaleFactor);
+        public abstract void OnRender(float scale);
 
         /// <summary>
         ///     Ons the destroy

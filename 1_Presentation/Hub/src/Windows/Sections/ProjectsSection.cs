@@ -228,16 +228,16 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Ons the render
         /// </summary>
-        public override void OnRender(float scaleFactor)
+        public override void OnRender(float scale)
         {
-            float buttonWidth = 75 * scaleFactor;
-            float elementHeight = 30 * scaleFactor;
-            float spaceBetween = 10 * scaleFactor;
+            float buttonWidth = 75 * scale;
+            float elementHeight = 30 * scale;
+            float spaceBetween = 10 * scale;
 
             ImGui.Separator();
             ImGui.Spacing();
 
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(spaceBetween, 20 * scaleFactor));
+            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(spaceBetween, 20 * scale));
 
             RenderSearchBar(buttonWidth, elementHeight, spaceBetween);
 

@@ -27,3 +27,4 @@
 - [committed] AZ6OPa9isynw1OJ1vi7k | csharpsquid:S3776 | Engine.cs:196 | 80c4d4e23 | Extracted game loop into RunGameLoop method (cognitive complexity 23->15)
 - [committed] AZ6OPa9isynw1OJ1vi7y | csharpsquid:S3776 | Engine.cs:731 | 4bb56d6e9 | Replaced 820 lines of repetitive if/else with ProcessKey helper (cognitive complexity 182->15)
 - [committed] AZ6OPa1Dsynw1OJ1vi4N | csharpsquid:S3776 | HubEngine.cs:159 | 320a86d0f | Extracted game loop into RunGameLoop method (cognitive complexity 30->15)
+- [committed] AZ6OPa1Dsynw1OJ1vi4a | csharpsquid:S3776 | HubEngine.cs:483 | da4dc79e8 | Replaced 820 lines of repetitive if/else with ProcessKey helper (cognitive complexity 182->15)

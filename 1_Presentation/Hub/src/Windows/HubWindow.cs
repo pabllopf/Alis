@@ -134,8 +134,8 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Renders this instance
         /// </summary>
-        /// <param name="scaleFactor"></param>
-        public override void OnRender(float scaleFactor)
+        /// <param name="scale"></param>
+        public override void OnRender(float scale)
         {
             ImGuiIoPtr io = ImGui.GetIo();
             Vector2F screenSize = io.DisplaySize;
@@ -145,18 +145,18 @@ namespace Alis.App.Hub.Windows
 
             ImGui.Begin("##MainWindow", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove);
 
-            ImGui.BeginChild("Sidebar", new Vector2F(220 * scaleFactor, screenSize.Y - 20 * scaleFactor), true);
+            ImGui.BeginChild("Sidebar", new Vector2F(220 * scale, screenSize.Y - 20 * scale), true);
 
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10 * scaleFactor, 10 * scaleFactor));
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10 * scaleFactor, 10 * scaleFactor));
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10 * scale, 10 * scale));
+            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10 * scale, 10 * scale));
 
             ImGui.Separator();
             ImGui.PopStyleVar(2);
 
-            ButtonsLeftMenu(scaleFactor);
+            ButtonsLeftMenu(scale);
 
-            ImGui.SetCursorPosY(screenSize.Y - 70 * scaleFactor);
-            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(200 * scaleFactor, 40 * scaleFactor)))
+            ImGui.SetCursorPosY(screenSize.Y - 70 * scale);
+            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(200 * scale, 40 * scale)))
             {
                 OpenPreferences();
             }
@@ -166,8 +166,8 @@ namespace Alis.App.Hub.Windows
             ImGui.EndChild();
 
             ImGui.SameLine();
-            ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - 220 * scaleFactor, screenSize.Y - 20 * scaleFactor), false);
-            RenderMainContent(scaleFactor);
+            ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - 220 * scale, screenSize.Y - 20 * scale), false);
+            RenderMainContent(scale);
             ImGui.EndChild();
 
             ImGui.End();
@@ -236,15 +236,15 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Buttonses the left menu
         /// </summary>
-        private void ButtonsLeftMenu(float scaleFactor)
+        private void ButtonsLeftMenu(float scale)
         {
             for (int i = 0; i < menuItems.Length; i++)
             {
-                ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f * scaleFactor);
-                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10 * scaleFactor, 10 * scaleFactor));
+                ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f * scale);
+                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10 * scale, 10 * scale));
                 ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2F(0, 0.5f));
 
-                if (ImGui.Button(menuItems[i], new Vector2F(200 * scaleFactor, 40 * scaleFactor)))
+                if (ImGui.Button(menuItems[i], new Vector2F(200 * scale, 40 * scale)))
                 {
                     selectedMenuItem = i;
                 }
@@ -256,22 +256,22 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Renders the main content
         /// </summary>
-        private void RenderMainContent(float scaleFactor)
+        private void RenderMainContent(float scale)
         {
             ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
             switch (selectedMenuItem)
             {
                 case 0:
-                    ProjectsSection.OnRender(scaleFactor);
+                    ProjectsSection.OnRender(scale);
                     break;
                 case 1:
-                    EditorInstallationSection.OnRender(scaleFactor);
+                    EditorInstallationSection.OnRender(scale);
                     break;
                 case 2:
-                    LearnSection.OnRender(scaleFactor);
+                    LearnSection.OnRender(scale);
                     break;
                 case 3:
-                    CommunitySection.OnRender(scaleFactor);
+                    CommunitySection.OnRender(scale);
                     break;
             }
 

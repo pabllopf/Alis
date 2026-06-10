@@ -93,7 +93,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Ons the render
         /// </summary>
-        public override void OnRender(float scaleFactor)
+        public override void OnRender(float scale)
         {
             ImGui.Text("Learn and Explore");
             ImGui.Separator();
