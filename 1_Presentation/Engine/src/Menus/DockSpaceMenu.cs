@@ -87,11 +87,8 @@ namespace Alis.App.Engine.Menus
                 //float centerOffsetY = contentHeight * 0.5f;  // Calcula el centro vertical
 
 
-                //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 5f)); // Ajustar el espaciado si es necesario
-
-                ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
+          ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
                 ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
-                //ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
 
                 if (ImGui.Button($"{FontAwesome5.Bars}"))
                 {
