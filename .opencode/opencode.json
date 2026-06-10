@@ -49,12 +49,11 @@
           },
           "attachment": false,
 
-          "maxInputTokens": 65536,
-          "maxOutputTokens": 8192,
-
+          "maxInputTokens": 131584,
+          "maxOutputTokens": 131584,
           "limit": {
-            "context": 65536,
-            "output": 8192
+            "context": 131584,
+            "output": 131584
           }
         }
       }
