@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "diagrams/architecture-diagrams.md",
+                "file": "diagrams/README.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "architecture-diagrams"
+              "title": "README"
             }
           }
         ]
@@ -196,7 +196,7 @@
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "773ae85571ac0b74",
+  "active": "17deffb463926260",
   "lastOpenFiles": [
     "diagrams/architecture-diagrams.md",
     "entities/Scene.md",
