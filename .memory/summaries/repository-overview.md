@@ -1,103 +1,153 @@
 ---
 title: Repository Overview
 tags:
-  - summary
   - overview
-  - documentation
-
+  - architecture
+  - game-engine
+  - monorepo
 status: Draft
-
 license: GPLv3
-
 ---
 
+# Alis Repository Overview
 
-Comprehensive overview of the Alis solution architecture and structure.
+## Summary
 
-## Solution Summary
+**Alis** is a cross-platform game engine and development framework built entirely in C# .NET. It follows a strict 6-layer clean architecture with 140 projects, 3319 C# source files, and comprehensive multi-targeting across 15+ .NET frameworks.
 
-**Alis** is a C# game engine/framework with:
-- **140+ projects** across 6 architectural layers
-- **8 modular .slnx solution files** for focused builds
-- **15+ target frameworks** (netstandard2.0–2.1, netcoreapp2.0–3.1, net5.0–10.0, net461–481)
-- **Multi-platform support** (Windows, Linux, macOS, WebAssembly, iOS, Android)
-- **Source generators** for AOT-safe code generation
+## Repository Statistics
 
-## Architecture Layers
+| Metric | Value |
+|---|---|
+| Total Projects | 140 |
+| Solution Files | 10 |
+| C# Source Files | 3319 |
+| Test Projects | 35 |
+| Source Generators | 5 |
+| Architectural Layers | 6 |
+| Target Frameworks (Release) | 19 |
+| Target Frameworks (Debug) | 6 |
+| Runtime Identifiers | 15 |
 
-### 1_Presentation - User-Facing Applications
-- **Engine** - Main game engine runtime
-- **Hub** - Hub application for management
-- **Installer** - Installation application
-- **Extension/** - 18+ modular extensions (Graphics, Cloud, Payment, etc.)
-- **Benchmark** - Performance benchmarks
+## Architectural Layers
 
-### 2_Application - Main Application & Samples
-- **Alis/src** - Main application entry point
-- **samples/** - 12+ sample games (Web + Desktop variants)
+```
+1_Presentation (69 projects) → 2_Application (30) → 3_Structuration (3) → 4_Operation (14) → 5_Declaration (3) → 6_Ideation (21)
+```
 
-### 3_Structuration - Core Foundations
-- **Core/** - Foundational abstractions and libraries
+### Layer 1: Presentation (69 projects)
 
-### 4_Operation - Operational Systems
-- **Ecs/** - Entity Component System with source generator
-- **Graphic/** - Graphics rendering with source generator
-- **Audio/** - Audio processing
-- **Physic/** - Physics engine
+The engine and extension layer. Contains executable applications, UI extensions, and platform integrations.
 
-### 5_Declaration - Declarative Foundation
-- **Aspect/** - Core.Aspect - declarative programming foundation
+| Submodule | Description |
+|---|---|
+| Engine | Core game engine executable with asset packing, platform-specific bundling (macOS .app, Linux zip, Windows zip) |
+| Extension/Ads | Google Ads integration |
+| Extension/Cloud | Dropbox, Google Drive cloud storage |
+| Extension/Graphic | GLFW, SDL2, SFML, UI rendering backends |
+| Extension/Io | File dialog integration |
+| Extension/Language | Dialogue system, translation |
+| Extension/Math | Priority queue, procedural dungeon generation |
+| Extension/Media | FFmpeg multimedia |
+| Extension/Network | Networking (servers/clients for games and chat) |
+| Extension/Payment | Stripe payment integration |
+| Extension/Profile | User profile management |
+| Extension/Security | Security utilities |
+| Extension/Thread | Threading utilities |
+| Extension/Updater | Application update mechanism |
+| Hub | Application hub/editor with IDE-like functionality |
+| Installer | Cross-platform installer |
+| Benchmark | Performance benchmarks (ECS comparisons: SveltoECS vs Myriad) |
 
-### 6_Ideation - Experimental Aspects
-- **Memory/** - Memory abstractions with source generator
-- **Fluent/** - Fluent APIs with source generator
-- **Data/** - Data structures with source generator
-- **Math/** - Mathematical utilities
-- **Time/** - Time management
-- **Logging/** - Logging infrastructure
+### Layer 2: Application (30 projects)
 
-## Solution Files (8 .slnx)
+Application composition layer. Contains the main `Alis` library and sample games.
 
-| File | Purpose |
-|------|---------|
-| `alis.slnx` | Full solution - all projects |
-| `alis.core.slnx` | Core libraries only |
-| `alis.apps.slnx` | Applications (Engine, Hub, Installer) |
-| `alis.extensions.slnx` | All extensions |
-| `alis.test.slnx` | Test projects |
-| `alis.samples.slnx` | Sample games |
-| `alis.core.aspect.slnx` | Declaration + Ideation layers |
-| `alis.benchmark.slnx` | Benchmark project |
+| Submodule | Description |
+|---|---|
+| Alis/src | Core application library (main entry point for all samples) |
+| Alis/samples | 16+ sample games (Flappy Bird, Pong, Snake, Space Simulator, King Platform, Rogue, etc.) |
+
+### Layer 3: Structuration (3 projects)
+
+Core abstractions and base infrastructure.
+
+| Project | Description |
+|---|---|
+| Alis.Core | Foundation core with base types, patterns, and abstractions |
+
+### Layer 4: Operation (14 projects)
+
+Platform operations: graphics, audio, physics, ECS.
+
+| Submodule | Description |
+|---|---|
+| Audio | Audio operations and manipulation |
+| Ecs | Entity Component System with source generator |
+| Graphic | Graphics rendering operations with source generator |
+| Physic | Physics simulation operations |
+
+### Layer 5: Declaration (3 projects)
+
+Contracts, interfaces, and metadata declarations.
+
+| Submodule | Description |
+|---|---|
+| Aspect | Aspect declarations and contracts |
+
+### Layer 6: Ideation (21 projects)
+
+Experimental modules with test/sample/generator/src structure.
+
+| Module | Description |
+|---|---|
+| Data | Data operations and manipulation |
+| Fluent | Fluent API builders |
+| Logging | Logging infrastructure |
+| Math | Mathematical operations |
+| Memory | Memory management, asset registry, zip caching |
+| Time | Time operations and scheduling |
+
+## Key Technical Characteristics
+
+- **No external NuGet packages** — only standard .NET and native APIs
+- **Multi-targeting** — 19 frameworks in Release (netcoreapp2.0–10.0, netstandard2.0–2.1, net461–481)
+- **AOT compatible** — no reflection emit or dynamic IL generation
+- **Source generators** — 5 generator projects produce AOT-safe code with ALIS0xxx diagnostic IDs
+- **C# 13** with nullable disabled, warnings as errors
+- **Cross-platform** — Windows, Linux, macOS, WebAssembly, mobile (Android/iOS planned)
+- **Asset packing** — custom SHA256-based asset manifest with base64 embedding
+- **Platform-specific build targets** — macOS .app bundles, Linux/Windows zip bundling, DMG creation
+
+## Solution Files
+
+| Solution | Purpose |
+|---|---|
+| alis.slnx | Main solution (335 projects) |
+| alis.sln | Legacy solution |
+| alis.core.slnx | Core projects only |
+| alis.extensions.slnx | Extension projects |
+| alis.apps.slnx | Application projects |
+| alis.test.slnx | Test projects |
+| alis.samples.slnx | Sample projects |
+| alis.benchmark.slnx | Benchmark projects |
+| alis.core.aspect.slnx | Aspect projects |
 
 ## Technology Stack
 
 - **Language**: C# 13
+- **Runtime**: .NET Core 2.0–3.1, .NET 5–10, .NET Framework 4.61–4.81
 - **Testing**: xUnit + Xunit.StaFact + Moq
-- **Static Analysis**: SonarQube + .NET Analyzers
-- **Source Link**: Microsoft.SourceLink.GitHub
-- **Coverage**: Coverlet
+- **ECS**: Custom ECS with SveltoECS and Myriad benchmarks
+- **Graphics**: GLFW, SDL2, SFML
+- **Media**: FFmpeg
+- **Payment**: Stripe
+- **Cloud**: Dropbox, Google Drive
+- **Ads**: Google Ads
 
-## Key Features
+## Related
 
-1. **Multi-Targeting** - 15+ framework configurations
-2. **Multi-Platform** - Desktop, Web, Mobile support
-3. **Source Generators** - AOT-safe compile-time code generation
-4. **ECS Architecture** - Entity Component System for game logic
-5. **Aspect-Oriented Design** - Core.Aspect as declarative foundation
-6. **Modular Solutions** - 8 .slnx files for focused builds
-7. **No External NuGet** - Only standard .NET and native APIs
-
-## Documentation Coverage
-
-| Category | Files | Status |
-|----------|-------|--------|
-| Concepts | 21 | ✅ Complete |
-| Sources | 12 | ✅ Complete |
-| Architecture | 7+ | ✅ Complete |
-| Projects | 150+ | 🔄 In Progress |
-| Dependencies | 15+ | ✅ Complete |
-
-## See Also
-- [[Layered Architecture]]
-- [[Multi-Targeting Strategy]]
-- [[Generator Pattern]]
+- [[architecture-overview]]
+- [[project-structure]]
+- [[conventions-and-standards]]
+- [[onboarding-guide]]

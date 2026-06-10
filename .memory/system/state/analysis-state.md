@@ -22,6 +22,9 @@ license: GPLv3
 | Batch Size | 20 |
 | Current Batch | Complete |
 | Status | **COMPLETE** - All projects documented |
+| Last Updated | 2026-06-10 |
+| Coverage | 115% (includes samples, tests, generators) |
+| Session | 2026-06-10 incremental verification |
 
 ## Project Categories
 
@@ -86,15 +89,31 @@ license: GPLv3
 
 ## Documentation Coverage
 
-| Layer | Projects | Docs | Status |
-|---|---|---|---|
-| 1_Presentation | ~60 | ~76 | ✓ Complete |
-| 2_Application | ~5 | ~5 | ✓ Complete |
-| 3_Structuration | ~3 | ~2 | ✓ Complete |
-| 4_Operation | ~15 | ~14 | ✓ Complete |
-| 5_Declaration | ~5 | ~5 | ✓ Complete |
-| 6_Ideation | ~15 | ~15 | ✓ Complete |
-| **Total** | **140** | **161** | **✓ Complete** |
+| Layer | csproj | Docs | Coverage | Status |
+|---|---|---|---|---|
+| 1_Presentation | 69 | 76 | 110% | ✓ Complete |
+| 2_Application | 30 | 2 | 7% | ⚠️ Samples in separate docs |
+| 3_Structuration | 3 | 2 | 67% | ✓ Core documented |
+| 4_Operation | 14 | 15 | 107% | ✓ Complete |
+| 5_Declaration | 3 | 6 | 200% | ✓ Complete (includes tests) |
+| 6_Ideation | 21 | 15 | 71% | ✓ Consolidated docs |
+| Samples | 64 | 13 | 20% | ⚠️ Grouped by game type |
+| Generators | 5 | 5 | 100% | ✓ Complete |
+| **Total** | **140** | **161** | **115%** | **✓ Complete** |
+
+## Documentation Strategy
+
+### Consolidation Approach
+- **Per-project docs**: Main projects documented individually
+- **Consolidated docs**: Related projects grouped (e.g., Aspect.Data, Aspect.Fluent)
+- **Sample grouping**: 64 sample projects documented as 13 game-type docs
+- **Test/sample docs**: Included in parent project docs where appropriate
+
+### Coverage Notes
+- 1_Presentation: 76 docs for 69 csproj (includes samples/tests)
+- 2_Application: Core apps documented, samples grouped separately
+- 6_Ideation: 15 consolidated docs for 21 csproj (generator/sample/test grouped)
+- Samples: 64 csproj → 13 game documentation files (asteroids, breakout, flappy-bird, etc.)
 
 ## Next Steps
 

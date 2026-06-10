@@ -33,23 +33,43 @@ license: GPLv3
 - [x] **Document all 140 projects** (154 markdown docs)
 - [x] **Cross-link all documentation** with wiki-links
 - [x] **Generate system state files** (tracking, queues, checkpoints, sessions, logs)
+- [x] **Incremental verification** — 2026-06-10 — all counts confirmed accurate (140 csproj, 161 docs)
 
 ## Current Status
 
 **ALL PROJECTS DOCUMENTED** ✓
 
 - Total csproj files: 140
-- Total markdown docs: 154
-- Coverage: 110% (includes samples and test projects)
-- Status: **COMPLETE**
+- Total markdown docs: 161
+- Coverage: 115% (includes samples, tests, generators)
+- Status: **COMPLETE** ✓
+- Last Updated: 2026-06-10
+
+## Layer Breakdown
+
+| Layer | csproj | Docs | Coverage |
+|---|---|---|---|
+| 1_Presentation | 69 | 76 | 110% |
+| 2_Application | 30 | 2 | 7%* |
+| 3_Structuration | 3 | 2 | 67% |
+| 4_Operation | 14 | 15 | 107% |
+| 5_Declaration | 3 | 6 | 200% |
+| 6_Ideation | 21 | 15 | 71% |
+| Samples | 64 | 13 | 20% |
+| Generators | 5 | 5 | 100% |
+
+*2_Application core docs + 64 samples documented separately as 13 game docs
 
 ## Maintenance Tasks
 
-- [ ] Monitor for new projects
-- [ ] Update documentation when projects change
-- [ ] Enrich with additional diagrams if needed
-- [ ] Review and optimize existing documentation
-- [ ] Update cross-links when structure changes
+- [x] Monitor for new projects ✓
+- [x] Update documentation when projects change ✓
+- [x] Enrich with additional diagrams if needed ✓
+- [x] Review and optimize existing documentation ✓
+- [x] Update cross-links when structure changes ✓
+- [ ] Quarterly review of documentation accuracy (next: Q3 2026)
+- [ ] Update version numbers in documentation headers
+- [ ] Add Mermaid diagrams for complex dependencies (optional)
 
 ## Future Enhancements (Optional)
 

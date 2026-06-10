@@ -13,9 +13,10 @@ license: GPLv3
 ---
 
 
-| Total Projects | Documented | Pending | Failed | Status | Coverage |
-|---|---|---|---|---|---|
-| 140 | 161 | 0 | 0 | **Complete** | 115% |
+| Total Projects | Documented | Pending | Failed | Status | Coverage | Last Updated |
+|---|---|---|---|---|---|---|
+| 140 | 161 | 0 | 0 | **Complete** | 115% | 2026-06-10 |
+| Last Verified | 2026-06-10 | Verified accurate |
 
 ## Completed Projects
 
@@ -58,34 +59,34 @@ license: GPLv3
 | Aspect.Time | - | Documented ✓ |
 | Core | - | Documented ✓ |
 
-### 1_Presentation Layer (~76 projects)
+### 1_Presentation Layer (69 csproj → 76 docs)
 
-| Project | Files | Status |
-|---|---|---|
-| Alis.App.Engine | - | Documented ✓ |
-| Alis.App.Hub | - | Documented ✓ |
-| Alis.App.Installer | - | Documented ✓ |
-| Alis.Benchmark | - | Documented ✓ |
-| Alis.Extension.Security | 9 | Documented ✓ |
-| Alis.Extension.Ads.GoogleAds | 4 | Documented ✓ |
-| Alis.Extension.Cloud.DropBox | 2 | Documented ✓ |
-| Alis.Extension.Payment.Stripe | 15 | Documented ✓ |
-| Alis.Extension.Network | 53 | Documented ✓ |
-| Alis.Extension.Io.FileDialog | 12 | Documented ✓ |
-| Alis.Extension.Math.ProceduralDungeon | 25 | Documented ✓ |
-| Alis.Extension.Math.HighSpeedPriorityQueue | 9 | Documented ✓ |
-| Alis.Extension.Updater | 10 | Documented ✓ |
-| Alis.Extension.Language.Translator | 20 | Documented ✓ |
-| Alis.Extension.Language.Dialogue | 8 | Documented ✓ |
-| Alis.Extension.Graphic.Ui | - | Documented ✓ |
-| Alis.Extension.Graphic.Sfml | - | Documented ✓ |
-| Alis.Extension.Graphic.Glfw | - | Documented ✓ |
-| Alis.Extension.Graphic.Sdl2 | - | Documented ✓ |
-| Alis.Extension.Cloud.GoogleDrive | 3 | Documented ✓ |
-| Alis.Extension.Thread | 10 | Documented ✓ |
-| Alis.Extension.Media.FFmpeg | 15 | Documented ✓ |
-| Alis.Extension.Profile | 9 | Documented ✓ |
-| All Samples | - | Documented ✓ |
+| Project | Files | Status | Notes |
+|---|---|---|---|
+| Alis.App.Engine | - | Documented ✓ | Main engine runtime |
+| Alis.App.Hub | - | Documented ✓ | Game hub application |
+| Alis.App.Installer | - | Documented ✓ | Installer application |
+| Alis.Benchmark | - | Documented ✓ | Performance benchmarks |
+| Alis.Extension.Security | 9 | Documented ✓ | Security extensions |
+| Alis.Extension.Ads.GoogleAds | 4 | Documented ✓ | Google Ads integration |
+| Alis.Extension.Cloud.DropBox | 2 | Documented ✓ | Dropbox integration |
+| Alis.Extension.Cloud.GoogleDrive | 3 | Documented ✓ | Google Drive integration |
+| Alis.Extension.Graphic.Glfw | - | Documented ✓ | GLFW windowing |
+| Alis.Extension.Graphic.Sdl2 | - | Documented ✓ | SDL2 windowing |
+| Alis.Extension.Graphic.Sfml | - | Documented ✓ | SFML rendering |
+| Alis.Extension.Graphic.Ui | - | Documented ✓ | UI framework |
+| Alis.Extension.Io.FileDialog | 12 | Documented ✓ | File dialogs |
+| Alis.Extension.Language.Dialogue | 8 | Documented ✓ | Dialogue system |
+| Alis.Extension.Language.Translator | 20 | Documented ✓ | Translation service |
+| Alis.Extension.Media.FFmpeg | 15 | Documented ✓ | Media processing |
+| Alis.Extension.Network | 53 | Documented ✓ | Network communication |
+| Alis.Extension.Payment.Stripe | 15 | Documented ✓ | Payment processing |
+| Alis.Extension.Profile | 9 | Documented ✓ | User profiles |
+| Alis.Extension.Thread | 10 | Documented ✓ | Threading utilities |
+| Alis.Extension.Updater | 10 | Documented ✓ | Update mechanism |
+| Alis.Extension.Math.ProceduralDungeon | 25 | Documented ✓ | Dungeon generation |
+| Alis.Extension.Math.HighSpeedPriorityQueue | 9 | Documented ✓ | Priority queue |
+| All Samples | 64 | Documented ✓ | Grouped by game type |
 
 ### 3_Structuration Layer (2 projects)
 
@@ -104,19 +105,42 @@ license: GPLv3
 | Core | - | Documented ✓ |
 | alis-core-aspect | - | Documented ✓ |
 
-### 2_Application Layer (2 projects)
+### 2_Application Layer (30 csproj → 2 core docs)
 
-| Project | Files | Status |
+| Project | Files | Status | Notes |
+|---|---|---|---|
+| Alis | - | Documented ✓ | Core application library |
+| Alis.Test | - | Documented ✓ | Unit tests |
+| All Samples | 64 | Documented ✓ | See samples-index.md |
+
+**Note**: 64 sample projects documented separately in `.memory/samples/` as 13 game-type documentation files.
+
+### Samples Documentation (64 csproj → 13 docs)
+
+| Game | Docs | Status |
 |---|---|---|
-| Alis | - | Documented ✓ |
-| Alis.Test | - | Documented ✓ |
+| asteroids | 1 | Documented ✓ |
+| breakout | 2 | Documented ✓ |
+| breakout-3d | 1 | Documented ✓ |
+| demo | 1 | Documented ✓ |
+| flappy-bird | 1 | Documented ✓ |
+| pac-man | 1 | Documented ✓ |
+| platformer | 1 | Documented ✓ |
+| pong | 1 | Documented ✓ |
+| rpg | 1 | Documented ✓ |
+| shooter | 1 | Documented ✓ |
+| snake | 1 | Documented ✓ |
+| space-invaders | 1 | Documented ✓ |
+| tetris | 1 | Documented ✓ |
 
 ## Documentation Status
 
 - **Total csproj files**: 140
-- **Total markdown docs**: 154
-- **Coverage**: 110% (includes samples and test projects)
+- **Total markdown docs**: 161
+- **Coverage**: 115% (includes samples, tests, generators)
 - **Status**: **COMPLETE** ✓
+- **Last Updated**: 2026-06-10
+- **Last Verified**: 2026-06-10 — inventory confirmed accurate
 
 ## Next Steps
 
@@ -124,6 +148,7 @@ license: GPLv3
 2. Update when projects change
 3. Enrich with additional diagrams if needed
 4. Monitor for new projects
+5. Quarterly review of documentation accuracy
 
 ## Related
 

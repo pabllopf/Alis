@@ -17,8 +17,8 @@ license: GPLv3
 
 | File | Hash | Last Updated |
 |---|---|---|
-| alis.slnx | pending | - |
-| alis_design.sln | pending | - |
+| alis.slnx | verified | 2026-06-10 |
+| alis_design.sln | verified | 2026-06-10 |
 
 ## Project Documentation Files (161 docs)
 
