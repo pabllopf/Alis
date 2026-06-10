@@ -198,6 +198,8 @@
   },
   "active": "cd454652532e2f91",
   "lastOpenFiles": [
+    "sonar/fixes/AZ6sG00gDMjfSxivO2NU.md",
+    "sonar/issues/AZ6sG00gDMjfSxivO2NU.md",
     "sonar/fixes/AZ6sG00gDMjfSxivO2NT.md",
     "sonar/issues/AZ6sG00gDMjfSxivO2NT.md",
     "sonar/fixes/AZ6sG0rrDMjfSxivO2NI.md",
@@ -222,7 +224,6 @@
     "sonar/state/issues-index.md",
     "sonar/state/locks.md",
     "system/state/file-states.md",
-    "memory-system-summary.md",
     "sonar/sorted-issues.json",
     "sonar/raw-payload.json",
     "sonar/logs",
@@ -231,7 +232,6 @@
     "sonar/fixes",
     "sonar/issues",
     "sonar/state",
-    "summaries/repository-overview.md",
     "apis",
     "entities/Sin título.base",
     "Sin título.canvas"

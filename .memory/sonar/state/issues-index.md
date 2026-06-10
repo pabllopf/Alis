@@ -11,6 +11,7 @@
 | AZ6sG0wFDMjfSxivO2NN | csharpsquid:S1117 | HubEngine.cs | 444 | resolved-previous | fc7fcf5bc |
 | AZ6sG0rrDMjfSxivO2NI | csharpsquid:S1075 | EditorInstallationSection.cs | 55 | committed | 3573e006b |
 | AZ6sG00gDMjfSxivO2NT | csharpsquid:S3604 | ImguiSample.cs | 82 | committed | 599b18976 |
+| AZ6sG00gDMjfSxivO2NU | csharpsquid:S3604 | ImguiSample.cs | 87 | committed | 932f4cfb6 |
 
-Total indexed: 9
-Total committed: 9
+Total indexed: 10
+Total committed: 10
