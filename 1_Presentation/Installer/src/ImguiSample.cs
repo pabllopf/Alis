@@ -84,12 +84,12 @@ namespace Alis.App.Installer
         /// <summary>
         ///     The mouse clicked
         /// </summary>
-        private List<bool> _mouseClicked = new List<bool>();
+        private List<bool> _mouseClicked;
 
         /// <summary>
         ///     The mouse double clicked
         /// </summary>
-        private List<bool> _mouseDoubleClicked = new List<bool>();
+        private List<bool> _mouseDoubleClicked;
 
         /// <summary>
         ///     The mouse clicked time
