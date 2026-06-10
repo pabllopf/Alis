@@ -326,6 +326,43 @@ namespace Alis.App.Hub
 
             ImGuiIoPtr io = ImGui.GetIo();
 
+            RunGameLoop(frameTimer, ref lastTime, targetFrameTime, io);
+
+            if (_vbo != 0)
+            {
+                Gl.DeleteBuffer(_vbo);
+            }
+
+            if (_ebo != 0)
+            {
+                Gl.DeleteBuffer(_ebo);
+            }
+
+            if (_vao != 0)
+            {
+                Gl.DeleteVertexArray(_vao);
+            }
+
+            if (_shaderProgram != 0)
+            {
+                Gl.GlDeleteProgram(_shaderProgram);
+            }
+
+            if (_fontTexture != 0)
+            {
+                Gl.DeleteTexture(_fontTexture);
+            }
+
+            ImGui.SetCurrentContext(new IntPtr());
+
+            platform.Cleanup();
+        }
+
+        /// <summary>
+        ///     Runs the game loop
+        /// </summary>
+        private void RunGameLoop(Stopwatch frameTimer, ref double lastTime, double targetFrameTime, ImGuiIoPtr io)
+        {
             while (_spaceWork.IsRunning)
             {
                 double now = frameTimer.Elapsed.TotalSeconds;
@@ -381,35 +418,6 @@ namespace Alis.App.Hub
                     }
                 }
             }
-
-            if (_vbo != 0)
-            {
-                Gl.DeleteBuffer(_vbo);
-            }
-
-            if (_ebo != 0)
-            {
-                Gl.DeleteBuffer(_ebo);
-            }
-
-            if (_vao != 0)
-            {
-                Gl.DeleteVertexArray(_vao);
-            }
-
-            if (_shaderProgram != 0)
-            {
-                Gl.GlDeleteProgram(_shaderProgram);
-            }
-
-            if (_fontTexture != 0)
-            {
-                Gl.DeleteTexture(_fontTexture);
-            }
-
-            ImGui.SetCurrentContext(new IntPtr());
-
-            platform.Cleanup();
         }
 
         /// <summary>

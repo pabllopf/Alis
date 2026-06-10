@@ -25,3 +25,4 @@
 - [committed] AZ6OPa1Dsynw1OJ1vi4Q | csharpsquid:S2589 | HubEngine.cs:450 | 24d60a422 | Removed redundant null check for mouseButtons
 - [committed] AZ6OPbAksynw1OJ1vi8C | csharpsquid:S3776 | Installer.cs:64 | 088daf48e | Extracted game loop into RunGameLoop method (cognitive complexity 22->15)
 - [committed] AZ6OPa9isynw1OJ1vi7k | csharpsquid:S3776 | Engine.cs:196 | 80c4d4e23 | Extracted game loop into RunGameLoop method (cognitive complexity 23->15)
+- [committed] AZ6OPa9isynw1OJ1vi7y | csharpsquid:S3776 | Engine.cs:731 | 4bb56d6e9 | Replaced 820 lines of repetitive if/else with ProcessKey helper (cognitive complexity 182->15)
