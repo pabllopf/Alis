@@ -24,3 +24,4 @@
 - [committed] AZ6OPa1Dsynw1OJ1vi4P | csharpsquid:S1125 | HubEngine.cs:450 | c0acbe16e | Replaced Boolean literal 'false' with 'default' in ternary
 - [committed] AZ6OPa1Dsynw1OJ1vi4Q | csharpsquid:S2589 | HubEngine.cs:450 | 24d60a422 | Removed redundant null check for mouseButtons
 - [committed] AZ6OPbAksynw1OJ1vi8C | csharpsquid:S3776 | Installer.cs:64 | 088daf48e | Extracted game loop into RunGameLoop method (cognitive complexity 22->15)
+- [committed] AZ6OPa9isynw1OJ1vi7k | csharpsquid:S3776 | Engine.cs:196 | 80c4d4e23 | Extracted game loop into RunGameLoop method (cognitive complexity 23->15)
