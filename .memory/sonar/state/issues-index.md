@@ -12,6 +12,7 @@
 | AZ6sG0rrDMjfSxivO2NI | csharpsquid:S1075 | EditorInstallationSection.cs | 55 | committed | 3573e006b |
 | AZ6sG00gDMjfSxivO2NT | csharpsquid:S3604 | ImguiSample.cs | 82 | committed | 599b18976 |
 | AZ6sG00gDMjfSxivO2NU | csharpsquid:S3604 | ImguiSample.cs | 87 | committed | 932f4cfb6 |
+| AZ6sG00gDMjfSxivO2NV | csharpsquid:S3604 | ImguiSample.cs | 92 | resolved-previous | 9b89aff9f |
 
-Total indexed: 10
-Total committed: 10
+Total indexed: 11
+Total committed: 11

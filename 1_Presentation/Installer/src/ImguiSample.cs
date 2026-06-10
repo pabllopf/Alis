@@ -94,12 +94,12 @@ namespace Alis.App.Installer
         /// <summary>
         ///     The mouse clicked time
         /// </summary>
-        private List<double> _mouseClickedTime = new List<double>();
+        private List<double> _mouseClickedTime;
 
         /// <summary>
         ///     The mouse clicked count
         /// </summary>
-        private List<ushort> _mouseClickedCount = new List<ushort>();
+        private List<ushort> _mouseClickedCount;
 
         /// <summary>
         ///     The context

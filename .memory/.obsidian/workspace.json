@@ -198,6 +198,8 @@
   },
   "active": "cd454652532e2f91",
   "lastOpenFiles": [
+    "sonar/fixes/AZ6sG00gDMjfSxivO2NV.md",
+    "sonar/issues/AZ6sG00gDMjfSxivO2NV.md",
     "sonar/fixes/AZ6sG00gDMjfSxivO2NU.md",
     "sonar/issues/AZ6sG00gDMjfSxivO2NU.md",
     "sonar/fixes/AZ6sG00gDMjfSxivO2NT.md",
@@ -222,8 +224,6 @@
     "sonar/issues/AZ6sG0zTDMjfSxivO2NQ.md",
     "samples/space-invaders.md",
     "sonar/state/issues-index.md",
-    "sonar/state/locks.md",
-    "system/state/file-states.md",
     "sonar/sorted-issues.json",
     "sonar/raw-payload.json",
     "sonar/logs",
