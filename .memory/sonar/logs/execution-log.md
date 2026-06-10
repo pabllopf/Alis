@@ -14,3 +14,4 @@
 - [committed] AZ6sG00gDMjfSxivO2NT | csharpsquid:S3604 | ImguiSample.cs:82 | 599b18976 | Removed redundant inline field initializer
 - [committed] AZ6sG00gDMjfSxivO2NU | csharpsquid:S3604 | ImguiSample.cs:87 | 932f4cfb6 | Removed redundant inline initializers for _mouseClicked and _mouseDoubleClicked
 - [resolved-previous] AZ6sG00gDMjfSxivO2NV | csharpsquid:S3604 | ImguiSample.cs:92 | 9b89aff9f | Already resolved in 932f4cfb6
+- [committed] AZ6sG00gDMjfSxivO2NW | csharpsquid:S3604 | ImguiSample.cs:97 | 42d2ed59b | Removed redundant inline initializers for _mouseClickedTime and _mouseClickedCount
