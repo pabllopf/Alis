@@ -315,7 +315,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Ons the render
         /// </summary>
-        public override void OnRender(float scale)
+       public override void OnRender(float scale)
         {
             DetectInstalledVersions();
 
@@ -328,52 +328,70 @@ namespace Alis.App.Hub.Windows.Sections
 
             ImGui.NewLine();
 
-            if (ImGui.BeginTable("InstallsTable", 3, ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg))
+            RenderInstallationsTable();
+        }
+
+        /// <summary>
+        ///     Renders the installations table
+        /// </summary>
+        private void RenderInstallationsTable()
+        {
+            if (!ImGui.BeginTable("InstallsTable", 3, ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg))
             {
-                ImGui.TableSetupColumn("Version", ImGuiTableColumnFlags.WidthFixed, 100);
-                ImGui.TableSetupColumn("Installation Date", ImGuiTableColumnFlags.WidthFixed, 150);
-                ImGui.TableSetupColumn("Actions", ImGuiTableColumnFlags.WidthStretch);
-                ImGui.TableHeadersRow();
+                return;
+            }
 
-                foreach (InstalledVersion version in installedVersions)
+            ImGui.TableSetupColumn("Version", ImGuiTableColumnFlags.WidthFixed, 100);
+            ImGui.TableSetupColumn("Installation Date", ImGuiTableColumnFlags.WidthFixed, 150);
+            ImGui.TableSetupColumn("Actions", ImGuiTableColumnFlags.WidthStretch);
+            ImGui.TableHeadersRow();
+
+            foreach (InstalledVersion version in installedVersions)
+            {
+                RenderInstallationRow(version);
+            }
+
+            ImGui.EndTable();
+        }
+
+        /// <summary>
+        ///     Renders a single installation row
+        /// </summary>
+        private void RenderInstallationRow(InstalledVersion version)
+        {
+            ImGui.TableNextRow();
+
+            ImGui.TableSetColumnIndex(0);
+            ImGui.Text(version.Version);
+
+            ImGui.TableSetColumnIndex(1);
+            ImGui.Text(version.ReleaseDate);
+
+            ImGui.TableSetColumnIndex(2);
+
+            if (ImGui.Button($"Actions##{version.Version}"))
+            {
+                ImGui.OpenPopup($"ActionsPopup##{version.Version}");
+            }
+
+            if (ImGui.BeginPopup($"ActionsPopup##{version.Version}"))
+            {
+                if (ImGui.MenuItem("Reveal in Finder"))
                 {
-                    ImGui.TableNextRow();
-
-                    ImGui.TableSetColumnIndex(0);
-                    ImGui.Text(version.Version);
-
-                    ImGui.TableSetColumnIndex(1);
-                    ImGui.Text(version.ReleaseDate);
-
-                    ImGui.TableSetColumnIndex(2);
-
-                    if (ImGui.Button($"Actions##{version.Version}"))
-                    {
-                        ImGui.OpenPopup($"ActionsPopup##{version.Version}");
-                    }
-
-                    if (ImGui.BeginPopup($"ActionsPopup##{version.Version}"))
-                    {
-                        if (ImGui.MenuItem("Reveal in Finder"))
-                        {
-                            RevealInFinder(version.InstallPath);
-                        }
-
-                        if (ImGui.MenuItem("Open in Terminal"))
-                        {
-                            OpenInTerminal(version.InstallPath);
-                        }
-
-                        if (ImGui.MenuItem("Delete"))
-                        {
-                            DeleteInstallation(version.InstallPath);
-                        }
-
-                        ImGui.EndPopup();
-                    }
+                    RevealInFinder(version.InstallPath);
                 }
 
-                ImGui.EndTable();
+                if (ImGui.MenuItem("Open in Terminal"))
+                {
+                    OpenInTerminal(version.InstallPath);
+                }
+
+                if (ImGui.MenuItem("Delete"))
+                {
+                    DeleteInstallation(version.InstallPath);
+                }
+
+                ImGui.EndPopup();
             }
         }
 
