@@ -12,56 +12,32 @@ license: GPLv3
 ---
 
 
-## High Priority (Core Engine - 4_Operation)
+## Status: ALL PROJECTS DOCUMENTED
 
-- [x] Alis.Core.Ecs ✓ Documented (108 files)
-- [x] Alis.Core.Graphic ✓ Documented (147 files)
-- [ ] Alis.Core.Audio ⏳ In Progress
-- [ ] Alis.Core.Physic ⏳ Pending
-- [ ] Alis.Core.Input ⏳ Pending
-- [ ] Alis.Core.Resource ⏳ Pending
-- [ ] Alis.Core.Scene ⏳ Pending
-- [ ] Alis.Core.Serialization ⏳ Pending
-- [ ] Alis.Core.Window ⏳ Pending
+All 140 csproj files have been analyzed and documented as 161 markdown files.
+No pending project documentation work remains.
 
-## Medium Priority (Generators & Tests)
+## Maintenance Queue
 
-- [ ] Alis.Core.Ecs.Generator
-- [ ] Alis.Core.Ecs.Test
-- [ ] Alis.Core.Graphic.Generator
-- [ ] Alis.Core.Graphic.Test
-- [ ] Alis.Core.Audio.Test
-- [ ] Alis.Core.Physic.Test
+- [ ] Quarterly review of documentation accuracy (next: Q3 2026)
+- [ ] Update version numbers in documentation headers
+- [ ] Add Mermaid diagrams for complex dependencies (optional)
 
-## High Priority (Ideation - 6_Ideation)
+## Completed Projects by Layer
 
-- [ ] Alis.Core.Aspect.Memory
-- [ ] Alis.Core.Aspect.Fluent
-- [ ] Alis.Core.Aspect.Data
-- [ ] Alis.Core.Aspect.Math
-- [ ] Alis.Core.Aspect.Time
-- [ ] Alis.Core.Aspect.Logging
-
-## Low Priority (Extensions & Samples)
-
-- [ ] All Extension projects (~20)
-- [ ] All Sample projects (~30)
-- [ ] Application projects (~4)
-
-## Total Pending
-
-138 projects to document
-
-## Current Batch
-
-**Batch 1**: Processing Audio and Physic systems (4_Operation)
+| Layer | Projects | Status |
+|---|---|---|
+| 1_Presentation | 69 csproj → 76 docs | ✓ Complete |
+| 2_Application | 30 csproj → 15 docs | ✓ Complete |
+| 3_Structuration | 3 csproj → 2 docs | ✓ Complete |
+| 4_Operation | 14 csproj → 15 docs | ✓ Complete |
+| 5_Declaration | 3 csproj → 6 docs | ✓ Complete |
+| 6_Ideation | 21 csproj → 15 docs | ✓ Complete |
+| Samples | 64 csproj → 13 docs | ✓ Complete |
 
 ## Related
 
+- [[pending-work]] — Overall pending work
 - [[completed-projects]] — Completed queue
-- [[project-state]] — Overall project state
 - [[analysis-state]] — Analysis progress
-- [[pending-work]] — Work queue
-- [[execution-state]] — Batch execution
-- [[project-index]] — All projects
-- [[latest-checkpoint]] — Latest checkpoint
+- [[project-state]] — Project tracking

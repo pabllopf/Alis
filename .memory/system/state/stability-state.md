@@ -15,22 +15,30 @@ license: GPLv3
 
 ## Document Classification
 
-### Stable (source rarely changes)
+### Stable (immutable / rarely changes)
 | Document | Classification |
-|----------|---------------|
+|---|---|
 | Architecture docs | Stable |
 | Core engine docs | Stable |
 | Ideation aspect docs | Stable |
 | Dependency graphs | Stable |
 | ADR documents | Stable |
+| entities/Component.md | Immutable (status: Done) |
+| entities/Alis.md | Immutable (status: Done) |
 
 ### Volatile (may change frequently)
 | Document | Classification |
-|----------|---------------|
-| Extension docs | Stable (now complete) |
-| Application docs | Volatile (pending enrichment) |
-| Sample docs | Volatile (pending enrichment) |
-| Indexes | Volatile (updated per batch) |
+|---|---|
+| Indexes | Updated per batch |
+| State files | Updated per session |
+| Queue files | Updated per batch |
+| Log files | Updated per session |
+| Checkpoint files | Updated per batch |
 
 ### Generated
-All markdown in .memory/ is auto-generated unless marked with MANUAL NOTES markers.
+All markdown in .memory/ is auto-generated unless marked with MANUAL NOTES markers or status: Done.
+
+## Related
+
+- [[stability-state]] — Stability state
+- [[analysis-state]] — Analysis state
