@@ -8,3 +8,4 @@
 - [committed] AZ6sG0wFDMjfSxivO2NK | csharpsquid:S1144 | HubEngine.cs:61 | 570d784e5 | Removed unused private static fields glViewportWidth/glViewportHeight
 - [resolved-previous] AZ6sG0wFDMjfSxivO2NL | csharpsquid:S1144 | HubEngine.cs:66 | d557c13d0 | Already resolved in 570d784e5
 - [committed] AZ6sG0wFDMjfSxivO2NJ | csharpsquid:S2933 | HubEngine.cs:123 | 2dbb949b4 | Made _fontTexture readonly
+- [resolved-previous] AZ6sG0wFDMjfSxivO2NM | csharpsquid:S1117 | HubEngine.cs:443 | 7c99e0d2f | Already resolved in 570d784e5

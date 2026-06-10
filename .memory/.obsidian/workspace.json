@@ -198,6 +198,8 @@
   },
   "active": "cd454652532e2f91",
   "lastOpenFiles": [
+    "sonar/fixes/AZ6sG0wFDMjfSxivO2NM.md",
+    "sonar/issues/AZ6sG0wFDMjfSxivO2NM.md",
     "sonar/fixes/AZ6sG0wFDMjfSxivO2NJ.md",
     "sonar/issues/AZ6sG0wFDMjfSxivO2NJ.md",
     "sonar/fixes/AZ6sG0wFDMjfSxivO2NL.md",
@@ -232,8 +234,6 @@
     "entities/Scene.md",
     "entities/Sin título.base",
     "entities/Alis.md",
-    "entities/GameObject.md",
-    "entities/Component.md",
     "Sin título.canvas"
   ]
 }
