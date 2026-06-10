@@ -17,6 +17,7 @@
 | AZ6sG00gDMjfSxivO2NX | csharpsquid:S3604 | ImguiSample.cs | 102 | resolved-previous | 46f63414c |
 | AZ6sG00gDMjfSxivO2NY | csharpsquid:S1125 | ImguiSample.cs | 344 | committed | 23980a4b4 |
 | AZ6mihB5kNcRXyPBxty1 | csharpsquid:S2589 | Engine.cs | 572 | committed | 840b533b1 |
+| AZ6sG0zTDMjfSxivO2NS | external_roslyn:CS0649 | Engine.cs | 184 | committed | 131b117bb |
 
-Total indexed: 15
-Total committed: 15
+Total indexed: 16
+Total committed: 16
