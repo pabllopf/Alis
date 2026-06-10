@@ -29,6 +29,7 @@
 | AZ6OPa1Dsynw1OJ1vi4a | csharpsquid:S3776 | HubEngine.cs | 483 | committed | da4dc79e8 |
 | AZ6OPaz2synw1OJ1vi39 | csharpsquid:S927 | AWindow.cs | 91 | committed | f3c20df01 |
 | AZ6OPay1synw1OJ1vi3t | csharpsquid:S927 | ASection.cs | 84 | resolved-previous | b5c28a258 |
+| AZ6OPawqsynw1OJ1vi3q | csharpsquid:S3776 | EditorInstallationSection.cs | 318 | committed | 299a80d2d |
 
-Total indexed: 27
-Total committed: 27
+Total indexed: 28
+Total committed: 28
