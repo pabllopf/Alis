@@ -31,6 +31,7 @@
 | AZ6OPay1synw1OJ1vi3t | csharpsquid:S927 | ASection.cs | 84 | resolved-previous | b5c28a258 |
 | AZ6OPawqsynw1OJ1vi3q | csharpsquid:S3776 | EditorInstallationSection.cs | 318 | committed | 299a80d2d |
 | AZ6OPa9isynw1OJ1vi74 | csharpsquid:S108 | Engine.cs | 1394 | committed | 5eadc28f1 |
+| AZ6OPa9isynw1OJ1vi75 | csharpsquid:S2325 | Engine.cs | 2148 | resolved-previous | ca627e58a |
 
-Total indexed: 29
-Total committed: 29
+Total indexed: 30
+Total committed: 30
