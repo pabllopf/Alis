@@ -145,11 +145,8 @@ namespace Alis.App.Engine.Demos
         ///     Simples the sample
         /// </summary>
         [Conditional("DEBUG")]
-        private void SimpleSample()
+     private void SimpleSample()
         {
-            //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.35f, 0.3f, 0.3f, 1.0f));
-
-
             if (ImGui.Begin("Gizmo", ref isOpen))
             {
                 ImGuizMo.Enable(true);
