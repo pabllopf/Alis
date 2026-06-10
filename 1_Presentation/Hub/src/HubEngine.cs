@@ -482,825 +482,98 @@ namespace Alis.App.Hub
         /// </summary>
         private void ProcessKeyWithImgui()
         {
-            if (platform.IsKeyDown(ConsoleKey.Backspace))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Backspace, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Backspace, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Tab))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Tab, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Tab, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Enter))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Enter, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Enter, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Pause))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Pause, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Pause, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.PrintScreen))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.PrintScreen, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.PrintScreen, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Escape))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Escape, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Escape, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Spacebar))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Space, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Space, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.PageUp))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.PageUp, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.PageUp, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.PageDown))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.PageDown, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.PageDown, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.End))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.End, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.End, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Home))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Home, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Home, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Insert))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Insert, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Insert, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Delete))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Delete, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Delete, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.LeftArrow))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.LeftArrow, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.LeftArrow, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.UpArrow))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.UpArrow, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.UpArrow, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.RightArrow))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.RightArrow, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.RightArrow, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.DownArrow))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.DownArrow, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.DownArrow, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.D0))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._0, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._0, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.D1))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._1, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._1, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.D2))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._2, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._2, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.D3))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._3, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._3, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.D4))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._4, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._4, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.D5))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._5, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._5, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.D6))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._6, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._6, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.D7))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._7, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._7, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.D8))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._8, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._8, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.D9))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._9, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey._9, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.A))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.A, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.A, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.B))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.B, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.B, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.C))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.C, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.C, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.D))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.D, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.D, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.E))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.E, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.E, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.G))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.G, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.G, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.H))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.H, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.H, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.I))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.I, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.I, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.J))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.J, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.J, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.K))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.K, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.K, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.L))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.L, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.L, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.M))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.M, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.M, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.N))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.N, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.N, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.O))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.O, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.O, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.P))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.P, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.P, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Q))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Q, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Q, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.R))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.R, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.R, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.S))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.S, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.S, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.T))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.T, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.T, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.U))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.U, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.U, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.V))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.V, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.V, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.W))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.W, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.W, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.X))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.X, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.X, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Y))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Y, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Y, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Z))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Z, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Z, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F1))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F1, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F1, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F2))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F2, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F2, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F3))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F3, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F3, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F4))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F4, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F4, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F5))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F5, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F5, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F6))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F6, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F6, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F7))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F7, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F7, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F8))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F8, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F8, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F9))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F9, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F9, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F10))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F10, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F10, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F11))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F11, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F11, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.F12))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F12, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.F12, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.NumPad0))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad0, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad0, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.NumPad1))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad1, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad1, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.NumPad2))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad2, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad2, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.NumPad3))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad3, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad3, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.NumPad4))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad4, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad4, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.NumPad5))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad5, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad5, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.NumPad6))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad6, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad6, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.NumPad7))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad7, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad7, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.NumPad8))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad8, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad8, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.NumPad9))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad9, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Keypad9, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Multiply))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.KeypadMultiply, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.KeypadMultiply, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Add))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.KeypadAdd, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.KeypadAdd, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Subtract))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.KeypadSubtract, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.KeypadSubtract, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Decimal))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.KeypadDecimal, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.KeypadDecimal, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Divide))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.KeypadDivide, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.KeypadDivide, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Oem1))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Semicolon, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Semicolon, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Oem2))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Slash, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Slash, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Oem3))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.GraveAccent, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.GraveAccent, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Oem4))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.LeftBracket, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.LeftBracket, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Oem5))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Backslash, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Backslash, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Oem6))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.RightBracket, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.RightBracket, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.Oem7))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Apostrophe, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Apostrophe, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.OemComma))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Comma, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Comma, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.OemMinus))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Minus, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Minus, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.OemPeriod))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Period, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Period, false);
-            }
-
-            if (platform.IsKeyDown(ConsoleKey.OemPlus))
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Equal, true);
-            }
-            else
-            {
-                _spaceWork.io.AddKeyEvent(ImGuiKey.Equal, false);
-            }
+            ProcessKey(_spaceWork.io, ConsoleKey.Backspace, ImGuiKey.Backspace);
+            ProcessKey(_spaceWork.io, ConsoleKey.Tab, ImGuiKey.Tab);
+            ProcessKey(_spaceWork.io, ConsoleKey.Enter, ImGuiKey.Enter);
+            ProcessKey(_spaceWork.io, ConsoleKey.Pause, ImGuiKey.Pause);
+            ProcessKey(_spaceWork.io, ConsoleKey.PrintScreen, ImGuiKey.PrintScreen);
+            ProcessKey(_spaceWork.io, ConsoleKey.Escape, ImGuiKey.Escape);
+            ProcessKey(_spaceWork.io, ConsoleKey.Spacebar, ImGuiKey.Space);
+            ProcessKey(_spaceWork.io, ConsoleKey.PageUp, ImGuiKey.PageUp);
+            ProcessKey(_spaceWork.io, ConsoleKey.PageDown, ImGuiKey.PageDown);
+            ProcessKey(_spaceWork.io, ConsoleKey.End, ImGuiKey.End);
+            ProcessKey(_spaceWork.io, ConsoleKey.Home, ImGuiKey.Home);
+            ProcessKey(_spaceWork.io, ConsoleKey.Insert, ImGuiKey.Insert);
+            ProcessKey(_spaceWork.io, ConsoleKey.Delete, ImGuiKey.Delete);
+            ProcessKey(_spaceWork.io, ConsoleKey.LeftArrow, ImGuiKey.LeftArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.UpArrow, ImGuiKey.UpArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.RightArrow, ImGuiKey.RightArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.DownArrow, ImGuiKey.DownArrow);
+            ProcessKey(_spaceWork.io, ConsoleKey.D0, ImGuiKey._0);
+            ProcessKey(_spaceWork.io, ConsoleKey.D1, ImGuiKey._1);
+            ProcessKey(_spaceWork.io, ConsoleKey.D2, ImGuiKey._2);
+            ProcessKey(_spaceWork.io, ConsoleKey.D3, ImGuiKey._3);
+            ProcessKey(_spaceWork.io, ConsoleKey.D4, ImGuiKey._4);
+            ProcessKey(_spaceWork.io, ConsoleKey.D5, ImGuiKey._5);
+            ProcessKey(_spaceWork.io, ConsoleKey.D6, ImGuiKey._6);
+            ProcessKey(_spaceWork.io, ConsoleKey.D7, ImGuiKey._7);
+            ProcessKey(_spaceWork.io, ConsoleKey.D8, ImGuiKey._8);
+            ProcessKey(_spaceWork.io, ConsoleKey.D9, ImGuiKey._9);
+            ProcessKey(_spaceWork.io, ConsoleKey.A, ImGuiKey.A);
+            ProcessKey(_spaceWork.io, ConsoleKey.B, ImGuiKey.B);
+            ProcessKey(_spaceWork.io, ConsoleKey.C, ImGuiKey.C);
+            ProcessKey(_spaceWork.io, ConsoleKey.D, ImGuiKey.D);
+            ProcessKey(_spaceWork.io, ConsoleKey.E, ImGuiKey.E);
+            ProcessKey(_spaceWork.io, ConsoleKey.F, ImGuiKey.F);
+            ProcessKey(_spaceWork.io, ConsoleKey.G, ImGuiKey.G);
+            ProcessKey(_spaceWork.io, ConsoleKey.H, ImGuiKey.H);
+            ProcessKey(_spaceWork.io, ConsoleKey.I, ImGuiKey.I);
+            ProcessKey(_spaceWork.io, ConsoleKey.J, ImGuiKey.J);
+            ProcessKey(_spaceWork.io, ConsoleKey.K, ImGuiKey.K);
+            ProcessKey(_spaceWork.io, ConsoleKey.L, ImGuiKey.L);
+            ProcessKey(_spaceWork.io, ConsoleKey.M, ImGuiKey.M);
+            ProcessKey(_spaceWork.io, ConsoleKey.N, ImGuiKey.N);
+            ProcessKey(_spaceWork.io, ConsoleKey.O, ImGuiKey.O);
+            ProcessKey(_spaceWork.io, ConsoleKey.P, ImGuiKey.P);
+            ProcessKey(_spaceWork.io, ConsoleKey.Q, ImGuiKey.Q);
+            ProcessKey(_spaceWork.io, ConsoleKey.R, ImGuiKey.R);
+            ProcessKey(_spaceWork.io, ConsoleKey.S, ImGuiKey.S);
+            ProcessKey(_spaceWork.io, ConsoleKey.T, ImGuiKey.T);
+            ProcessKey(_spaceWork.io, ConsoleKey.U, ImGuiKey.U);
+            ProcessKey(_spaceWork.io, ConsoleKey.V, ImGuiKey.V);
+            ProcessKey(_spaceWork.io, ConsoleKey.W, ImGuiKey.W);
+            ProcessKey(_spaceWork.io, ConsoleKey.X, ImGuiKey.X);
+            ProcessKey(_spaceWork.io, ConsoleKey.Y, ImGuiKey.Y);
+            ProcessKey(_spaceWork.io, ConsoleKey.Z, ImGuiKey.Z);
+            ProcessKey(_spaceWork.io, ConsoleKey.F1, ImGuiKey.F1);
+            ProcessKey(_spaceWork.io, ConsoleKey.F2, ImGuiKey.F2);
+            ProcessKey(_spaceWork.io, ConsoleKey.F3, ImGuiKey.F3);
+            ProcessKey(_spaceWork.io, ConsoleKey.F4, ImGuiKey.F4);
+            ProcessKey(_spaceWork.io, ConsoleKey.F5, ImGuiKey.F5);
+            ProcessKey(_spaceWork.io, ConsoleKey.F6, ImGuiKey.F6);
+            ProcessKey(_spaceWork.io, ConsoleKey.F7, ImGuiKey.F7);
+            ProcessKey(_spaceWork.io, ConsoleKey.F8, ImGuiKey.F8);
+            ProcessKey(_spaceWork.io, ConsoleKey.F9, ImGuiKey.F9);
+            ProcessKey(_spaceWork.io, ConsoleKey.F10, ImGuiKey.F10);
+            ProcessKey(_spaceWork.io, ConsoleKey.F11, ImGuiKey.F11);
+            ProcessKey(_spaceWork.io, ConsoleKey.F12, ImGuiKey.F12);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad0, ImGuiKey.Keypad0);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad1, ImGuiKey.Keypad1);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad2, ImGuiKey.Keypad2);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad3, ImGuiKey.Keypad3);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad4, ImGuiKey.Keypad4);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad5, ImGuiKey.Keypad5);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad6, ImGuiKey.Keypad6);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad7, ImGuiKey.Keypad7);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad8, ImGuiKey.Keypad8);
+            ProcessKey(_spaceWork.io, ConsoleKey.NumPad9, ImGuiKey.Keypad9);
+            ProcessKey(_spaceWork.io, ConsoleKey.Multiply, ImGuiKey.KeypadMultiply);
+            ProcessKey(_spaceWork.io, ConsoleKey.Add, ImGuiKey.KeypadAdd);
+            ProcessKey(_spaceWork.io, ConsoleKey.Subtract, ImGuiKey.KeypadSubtract);
+            ProcessKey(_spaceWork.io, ConsoleKey.Divide, ImGuiKey.KeypadDivide);
+            ProcessKey(_spaceWork.io, ConsoleKey.Decimal, ImGuiKey.KeypadDecimal);
+            ProcessKey(_spaceWork.io, ConsoleKey.OemPeriod, ImGuiKey.Period);
+            ProcessKey(_spaceWork.io, ConsoleKey.OemPlus, ImGuiKey.Equal);
         }
+
+        /// <summary>
+        ///     Processes a single key mapping
+        /// </summary>
+        private void ProcessKey(ImGuiIoPtr io, ConsoleKey consoleKey, ImGuiKey imguiKey)
+        {
+            io.AddKeyEvent(imguiKey, platform.IsKeyDown(consoleKey));
+        }
+
 
 
         /// <summary>
