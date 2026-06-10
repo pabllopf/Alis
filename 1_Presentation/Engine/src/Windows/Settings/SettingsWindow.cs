@@ -88,33 +88,12 @@ namespace Alis.App.Engine.Windows.Settings
                 return;
             }
 
-            /*
-            object[] settings =
+           if (ImGui.Begin(WindowName, ref isOpen))
             {
-                SpaceWork.VideoGame.Context.Setting.General,
-                SpaceWork.VideoGame.Context.Setting.Graphic,
-                SpaceWork.VideoGame.Context.Setting.Audio,
-                SpaceWork.VideoGame.Context.Setting.Input,
-                SpaceWork.VideoGame.Context.Setting.Network,
-                SpaceWork.VideoGame.Context.Setting.Physic,
-                SpaceWork.VideoGame.Context.Setting.Scene
-            };*/
-
-            if (ImGui.Begin(WindowName, ref isOpen))
-            {
-                //RenderSettings(settings);
             }
 
             ImGui.End();
         }
 
-        /// <summary>
-        ///     Renders the settings using the specified settings
-        /// </summary>
-        /// <param name="settings">The settings</param>
-        private static void RenderSettings(object[] settings)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
