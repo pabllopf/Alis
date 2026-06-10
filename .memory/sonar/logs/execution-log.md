@@ -37,3 +37,4 @@
 - [committed] AZ6OPa9isynw1OJ1vi77 | csharpsquid:S2325 | Engine.cs:1453 | c54c2f6ff | Made LoadFontFromResource static
 - [committed] AZ6OPa9isynw1OJ1vi78 | csharpsquid:S1172 | Engine.cs:1453 | 5ee3b8603 | Removed unused size parameter from LoadFontFromResource
 - [committed] AZ6OPa9isynw1OJ1vi7e | csharpsquid:S1144 | Engine.cs:1453 | c4d2006ad | Removed unused private method LoadFontFromResource
+- [committed] AZ6OPa9isynw1OJ1vi79 | csharpsquid:S2325 | Engine.cs:1456 | 719c60701 | Made LoadTexture static
