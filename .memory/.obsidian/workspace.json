@@ -198,6 +198,8 @@
   },
   "active": "cd454652532e2f91",
   "lastOpenFiles": [
+    "sonar/fixes/AZ6sG0wFDMjfSxivO2NO.md",
+    "sonar/issues/AZ6sG0wFDMjfSxivO2NO.md",
     "sonar/fixes/AZ6sG0wFDMjfSxivO2NP.md",
     "sonar/issues/AZ6sG0wFDMjfSxivO2NP.md",
     "sonar/fixes/AZ6sG0zTDMjfSxivO2NS.md",
@@ -222,8 +224,6 @@
     "sonar/fixes/AZ6sG0wFDMjfSxivO2NM.md",
     "sonar/issues/AZ6sG0wFDMjfSxivO2NM.md",
     "sonar/fixes/AZ6sG0wFDMjfSxivO2NJ.md",
-    "sonar/issues/AZ6sG0wFDMjfSxivO2NJ.md",
-    "sonar/fixes/AZ6sG0wFDMjfSxivO2NL.md",
     "sonar/sorted-issues.json",
     "sonar/raw-payload.json",
     "sonar/logs",

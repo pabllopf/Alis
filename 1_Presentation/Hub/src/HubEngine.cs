@@ -447,7 +447,7 @@ namespace Alis.App.Hub
 
             for (int i = 0; i < 5; i++)
             {
-                bool isDown = (mouseButtons != null) && (i < mouseButtons.Length) ? mouseButtons[i] : false;
+                bool isDown = (mouseButtons != null) && (i < mouseButtons.Length) ? mouseButtons[i] : default;
                 io.AddMouseButtonEvent(i, isDown);
 
                 if (isDown)

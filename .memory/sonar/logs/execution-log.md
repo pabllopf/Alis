@@ -20,3 +20,4 @@
 - [committed] AZ6mihB5kNcRXyPBxty1 | csharpsquid:S2589 | Engine.cs:572 | 840b533b1 | Removed redundant null check for mouseButtons
 - [committed] AZ6sG0zTDMjfSxivO2NS | external_roslyn:CS0649 | Engine.cs:184 | 131b117bb | Added pragma warning disable CS0649 for externally-injected platform field
 - [resolved-previous] AZ6sG0wFDMjfSxivO2NP | external_roslyn:CS0169 | HubEngine.cs:61 | c2e1a7a95 | Already resolved in 570d784e5
+- [resolved-previous] AZ6sG0wFDMjfSxivO2NO | external_roslyn:CS0169 | HubEngine.cs:66 | 93c34adb4 | Already resolved in 570d784e5
