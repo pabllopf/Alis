@@ -401,21 +401,29 @@ namespace Alis.App.Hub
                     Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
                 }
 
-                double frameEnd = frameTimer.Elapsed.TotalSeconds;
-                double frameElapsed = frameEnd - now;
-                double sleepTime = targetFrameTime - frameElapsed;
-                if (sleepTime > 0.0)
-                {
-                    int sleepMs = (int) (sleepTime * 1000.0);
-                    if (sleepMs > 0)
-                    {
-                        Thread.Sleep(sleepMs);
-                    }
+                ApplyFrameTiming(frameTimer, now, targetFrameTime);
+            }
+        }
 
-                    while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
-                    {
-                        Thread.SpinWait(10);
-                    }
+        /// <summary>
+        ///     Applies frame timing to maintain target frame rate
+        /// </summary>
+        private static void ApplyFrameTiming(Stopwatch frameTimer, double now, double targetFrameTime)
+        {
+            double frameEnd = frameTimer.Elapsed.TotalSeconds;
+            double frameElapsed = frameEnd - now;
+            double sleepTime = targetFrameTime - frameElapsed;
+            if (sleepTime > 0.0)
+            {
+                int sleepMs = (int) (sleepTime * 1000.0);
+                if (sleepMs > 0)
+                {
+                    Thread.Sleep(sleepMs);
+                }
+
+                while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
+                {
+                    Thread.SpinWait(10);
                 }
             }
         }
