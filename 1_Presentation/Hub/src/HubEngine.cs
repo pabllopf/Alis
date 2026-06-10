@@ -120,7 +120,7 @@ namespace Alis.App.Hub
         /// <summary>
         ///     The font texture
         /// </summary>
-        private uint _fontTexture = 0;
+        private readonly uint _fontTexture = 0;
 
         /// <summary>
         ///     The shader program
