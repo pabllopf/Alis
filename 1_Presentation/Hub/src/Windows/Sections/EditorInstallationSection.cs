@@ -52,7 +52,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         /// The get environment variable
         /// </summary>
-        private static readonly string ReleasesApiUrl = Environment.GetEnvironmentVariable("GITHUB_RELEASES_API_URL") ?? "https://api.github.com/repos/pabllopf/Alis/releases";
+        private static readonly string ReleasesApiUrl = Environment.GetEnvironmentVariable("GITHUB_RELEASES_API_URL") ?? new UriBuilder("https", "api.github.com", -1, "/repos/pabllopf/Alis/releases").Uri.ToString();
 
         /// <summary>
         /// The installed version
