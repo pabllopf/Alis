@@ -225,6 +225,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
       private static void NewScene()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
