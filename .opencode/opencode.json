@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "mlx/mlx-community/Qwen3.5-35B-A3B-4bit",
-  "small_model": "mlx/mlx-community/Qwen3.5-35B-A3B-4bit",
+  "model": "omlx/unsloth/Qwen3.6-35B-A3B-UD-MLX-4bit",
+  "small_model": "omlx/unsloth/Qwen3.6-35B-A3B-4bit",
 
   "provider": {
     "omlx": {
@@ -19,6 +19,84 @@
       "models": {
         "Qwen3.5-35B-A3B-4bit": {
           "name": "Qwen3.5-35B-A3B-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 131584,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 131584,
+            "output": 131584
+          }
+        },
+        "Qwen3.5-122B-A10B-4bit": {
+          "name": "Qwen3.5-122B-A10B-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 131584,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 131584,
+            "output": 131584
+          }
+        },
+         "unsloth/Qwen3.6-35B-A3B-UD-MLX-4bit": {
+          "name": "unsloth/Qwen3.6-35B-A3B-UD-MLX-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 131584,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 131584,
+            "output": 131584
+          }
+        },
+
+        "unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit": {
+          "name": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 131584,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 131584,
+            "output": 131584
+          }
+        },
+
+         "unsloth/Qwen3.6-35B-A3B-GGUF-4bit": {
+          "name": "unsloth/Qwen3.6-35B-A3B-GGUF-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 131584,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 131584,
+            "output": 131584
+          }
+        },
+
+        "gpt-oss-20b-MXFP4-Q8": {
+          "name": "gpt-oss-20b-MXFP4-Q8",
           "modalities": {
             "input": ["text"],
             "output": ["text"]

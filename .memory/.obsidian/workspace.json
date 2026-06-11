@@ -192,12 +192,14 @@
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "479876149a43d2eb",
+  "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "sonar/logs/execution-log.md",
+    "sonar/state/locks.md",
+    "sonar/state/issues-index.md",
+    "sonar/state/state.md",
     "sonar/fixes/AZ6OPbAksynw1OJ1vi8E.md",
     "sonar/issues/AZ6OPbAksynw1OJ1vi8E.md",
-    "sonar/logs/execution-log.md",
-    "sonar/state/issues-index.md",
     "sonar/issues/AZ6OPaz2synw1OJ1vi39.md",
     "sonar/issues/AZ6OPa1Dsynw1OJ1vi4a.md",
     "sonar/fixes/AZ6OPa1Dsynw1OJ1vi4N.md",
@@ -218,8 +220,6 @@
     "sonar/fixes/AZ6sG0zTDMjfSxivO2NS.md",
     "sonar/issues/AZ6sG0zTDMjfSxivO2NS.md",
     "sonar/fixes/AZ6mihB5kNcRXyPBxty1.md",
-    "sonar/issues/AZ6mihB5kNcRXyPBxty1.md",
-    "sonar/issues/AZ6sG00gDMjfSxivO2NY.md",
     "sonar/sorted-issues.json",
     "sonar/raw-payload.json",
     "sonar/logs",

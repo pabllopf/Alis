@@ -1,8 +1,8 @@
-# Execution State
+# Sonar Remediation State
 
 - **Project**: pabllopf-official_alis
 - **Main Branch**: master
-- **Last Execution**: 2026-06-10
-- **Status**: processing
-- **Cleaned**: 2026-06-10
-- **Progress**: 39/182 committed
+- **Last Run**: 2026-06-11
+- **Status**: in progress
+- **Issues Processed**: 1/127
+- **Issues Remaining**: 126
