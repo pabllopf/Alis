@@ -65,12 +65,12 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The zero
         /// </summary>
-        private IntPtr commandBufferTag = IntPtr.Zero;
+        private readonly IntPtr commandBufferTag = IntPtr.Zero;
 
         /// <summary>
         ///     The zero
         /// </summary>
-        private IntPtr searchQueryComand = IntPtr.Zero;
+        private readonly IntPtr searchQueryComand = IntPtr.Zero;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="InspectorWindow" /> class

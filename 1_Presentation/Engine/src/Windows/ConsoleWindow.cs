@@ -73,7 +73,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The command
         /// </summary>
-        private byte[] command = new byte[256];
+        private readonly byte[] command = new byte[256];
 
         /// <summary>
         ///     The is open
