@@ -315,7 +315,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Creates the project
         /// </summary>
-        private void CreateProject()
+        private static void CreateProject()
         {
             ImGui.OpenPopup("New Project");
         }
