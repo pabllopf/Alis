@@ -194,6 +194,7 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "sonar/patterns/S2325-method-should-not-be-static.md",
     "sonar/patterns/S2933-field-never-assigned.md",
     "sonar/issues/AZ6zQlWZ6-8DAyAuaboi.md",
     "sonar/patterns/S3776-extract-combo-body.md",
@@ -219,7 +220,6 @@
     "sonar/fixes/AZ6OPa1Dsynw1OJ1vi4P.md",
     "sonar/issues/AZ6OPa1Dsynw1OJ1vi4P.md",
     "sonar/fixes/AZ6sG0wFDMjfSxivO2NO.md",
-    "sonar/issues/AZ6sG0wFDMjfSxivO2NO.md",
     "sonar/sorted-issues.json",
     "sonar/raw-payload.json",
     "sonar/logs",

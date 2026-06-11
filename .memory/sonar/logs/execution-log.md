@@ -36,6 +36,13 @@
 - **Commit**: 571f17590
 - **Timestamp**: 2026-06-11
 
+### AZ6zQlV-6-8DAyAuabog — csharpsquid:S2325 (MINOR)
+- **File**: DockSpaceMenu.cs:134
+- **Issue**: Method should not be static when it only accesses instance members
+- **Fix**: Removed static modifier from RenderSolutionCombo() and RenderControlButtons()
+- **Commit**: 6198973a1
+- **Timestamp**: 2026-06-11
+
 ### AZ6OPa6Rsynw1OJ1vi46 — csharpsquid:S3776 (CRITICAL)
 - **File**: AssetsWindow.cs:196
 - **Issue**: Cognitive Complexity 70 → 15
