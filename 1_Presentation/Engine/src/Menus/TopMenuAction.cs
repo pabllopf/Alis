@@ -373,11 +373,17 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        ///     Duplicates
+        ///     Duplicates the game object
         /// </summary>
-        private static void Duplicate()
+        private static void DuplicateGameObject()
         {
-            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        ///     Deletes the game object
+        /// </summary>
+        private static void DeleteGameObject()
+        {
         }
 
         /// <summary>
