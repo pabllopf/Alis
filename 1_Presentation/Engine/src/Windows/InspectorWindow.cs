@@ -50,10 +50,6 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The selected game object
         /// </summary>
-        //private GameObject _selectedGameObject;
-
-
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="InspectorWindow" /> class
         /// </summary>
