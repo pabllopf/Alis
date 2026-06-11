@@ -325,17 +325,11 @@ namespace Alis.App.Engine.Windows
 
             ImGui.Separator();
 
-            if (ImGui.Selectable("Physics Material"))
-            {
-            }
+            _ = ImGui.Selectable("Physics Material");
 
-            if (ImGui.Selectable("GUI Skin"))
-            {
-            }
+            _ = ImGui.Selectable("GUI Skin");
 
-            if (ImGui.Selectable("Custom Font"))
-            {
-            }
+            _ = ImGui.Selectable("Custom Font");
         }
 
         /// <summary>
