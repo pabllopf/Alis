@@ -47,10 +47,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
 
-        /// <summary>
-        ///     The width texture
-        /// </summary>
-        private float widthTexture;
+
 
 
         /// <summary>
@@ -91,74 +88,7 @@ namespace Alis.App.Engine.Windows
             ImGui.End();
         }
 
-        /// <summary>
-        ///     Gets the mouse world position
-        /// </summary>
-        /// <returns>The world pos</returns>
-        private Vector2F GetMouseWorldPosition()
-        {
-            ImGuiIoPtr io = ImGui.GetIo();
 
-            Vector2F mousePosition = io.MousePos;
-            Vector2F windowPosition = ImGui.GetWindowPos();
-            Vector2F windowSize = ImGui.GetWindowSize();
-            Vector2F textureSize = new Vector2F(widthTexture, heightTexture);
-
-            Vector2F mousePositionRelativeToWindow = mousePosition - windowPosition;
-            Vector2F mousePositionRelativeToTexture = mousePositionRelativeToWindow - (windowSize - textureSize) / 2;
-
-            mousePositionRelativeToTexture.Y -= 30.0f;
-
-            Logger.Info("--------------------");
-            Logger.Info($"Mouse Position: {mousePosition.X}, {mousePosition.Y}");
-            Logger.Info($"Window Position: {windowPosition.X}, {windowPosition.Y}");
-            Logger.Info($"Window Size: {windowSize.X}, {windowSize.Y}");
-            Logger.Info($"Texture Size: {textureSize.X}, {textureSize.Y}");
-            Logger.Info($"Mouse Position Relative To Window: {mousePositionRelativeToWindow.X}, {mousePositionRelativeToWindow.Y}");
-            Logger.Info($"Mouse Position Relative To Texture: {mousePositionRelativeToTexture.X}, {mousePositionRelativeToTexture.Y}");
-            Logger.Info("--------------------");
-            Vector2F errorPosition = new Vector2F(0, 0);
-
-            if (mousePositionRelativeToTexture.X >= textureSize.X)
-            {
-                errorPosition.X = mousePositionRelativeToTexture.X - textureSize.X;
-                Logger.Info($"Error Position X: {errorPosition.X}");
-            }
-
-            if (mousePositionRelativeToTexture.X < 0)
-            {
-                errorPosition.X = -mousePositionRelativeToTexture.X;
-                Logger.Info($"Error Position X: {errorPosition.X}");
-            }
-
-            if (mousePositionRelativeToTexture.Y >= textureSize.Y)
-            {
-                errorPosition.Y = mousePositionRelativeToTexture.Y - textureSize.Y;
-                Logger.Info($"Error Position Y: {errorPosition.Y}");
-            }
-
-            if (mousePositionRelativeToTexture.Y < 0)
-            {
-                errorPosition.Y = -mousePositionRelativeToTexture.Y;
-                Logger.Info($"Error Position Y: {errorPosition.Y}");
-            }
-
-            Vector2F mousePositionRelativeToTextureAdjusted = mousePositionRelativeToTexture - errorPosition;
-
-            mousePositionRelativeToTextureAdjusted.X = (float) Math.Floor(mousePositionRelativeToTextureAdjusted.X);
-            mousePositionRelativeToTextureAdjusted.Y = (float) Math.Floor(mousePositionRelativeToTextureAdjusted.Y);
-
-            Logger.Info($"Mouse Position Relative To Texture Adjusted: {mousePositionRelativeToTextureAdjusted.X}, {mousePositionRelativeToTextureAdjusted.Y}");
-
-            Vector2F mousePositionRelativeToTextureCentered = new Vector2F(0, 0);
-            mousePositionRelativeToTextureCentered.X = mousePositionRelativeToTextureAdjusted.X - textureSize.X / 2;
-            mousePositionRelativeToTextureCentered.Y = mousePositionRelativeToTextureAdjusted.Y - textureSize.Y / 2;
-
-            Logger.Info($"Mouse Position Relative To Texture Centered: {mousePositionRelativeToTextureCentered.X}, {mousePositionRelativeToTextureCentered.Y}");
-
-           Vector2F worldPos = new Vector2F();
-            return worldPos;
-        }
 
       }
 }
