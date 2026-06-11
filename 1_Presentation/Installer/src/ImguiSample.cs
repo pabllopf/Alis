@@ -102,11 +102,6 @@ namespace Alis.App.Installer
         private List<ushort> _mouseClickedCount;
 
         /// <summary>
-        ///     The context
-        /// </summary>
-        private IntPtr _context;
-
-        /// <summary>
         ///     The counter
         /// </summary>
         private int _counter;
@@ -171,14 +166,10 @@ namespace Alis.App.Installer
             IntPtr currentCtx = ImGui.GetCurrentContext();
             if (currentCtx == IntPtr.Zero)
             {
-                _context = ImGui.CreateContext();
-                ImGui.SetCurrentContext(_context);
+                currentCtx = ImGui.CreateContext();
             }
-            else
-            {
-                _context = currentCtx;
-                ImGui.SetCurrentContext(_context);
-            }
+
+            ImGui.SetCurrentContext(currentCtx);
 
             ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO must be valid after creating or setting context.");
