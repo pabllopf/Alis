@@ -126,7 +126,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Shows the add component popup
         /// </summary>
-        private void ShowAddComponentPopup()
+        private static void ShowAddComponentPopup()
         {
             ImGui.OpenPopup("AddComponentPopup");
         }
