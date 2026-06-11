@@ -47,24 +47,6 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
 
-        /*
-        /// <summary>
-        ///     The play
-        /// </summary>
-        private readonly Dictionary<Type, string> _componentIcons = new Dictionary<Type, string>
-        {
-            {typeof(Sprite), FontAwesome5.PaintBrush},
-            {typeof(Animator), FontAwesome5.ShieldAlt},
-            {typeof(BoxCollider), FontAwesome5.ShieldAlt},
-            {typeof(Camera), FontAwesome5.Camera},
-            {typeof(DirectionalLight), FontAwesome5.Lightbulb},
-            {typeof(AudioSource), FontAwesome5.VolumeUp},
-            {typeof(Animation), FontAwesome5.Play},
-            {typeof(PointLight), FontAwesome5.Lightbulb},
-            {typeof(SpotLight), FontAwesome5.Lightbulb},
-            {typeof(AreaLight), FontAwesome5.Lightbulb}
-        };*/
-
         /// <summary>
         ///     The tags
         /// </summary>
