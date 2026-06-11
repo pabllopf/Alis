@@ -197,52 +197,71 @@ namespace Alis.App.Engine.Windows
 
             foreach (string line in consoleLines)
             {
-                ImGui.PushId(line.GetHashCode());
-
-                if (line.Contains("Trace:"))
-                {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.5f, 0.5f, 0.5f, 1.0f));
-                }
-
-                if (line.Contains("Info:"))
-                {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.0f, 1.0f, 0.0f, 1.0f));
-                }
-
-                if (line.Contains("Log:") || line.Contains("Message:"))
-                {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 1.0f, 1.0f));
-                }
-
-                if (line.Contains("Warning:", StringComparison.OrdinalIgnoreCase))
-                {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 0.0f, 1.0f));
-                }
-
-                if (line.Contains("Error:", StringComparison.OrdinalIgnoreCase) || line.Contains("Exception:", StringComparison.OrdinalIgnoreCase))
-                {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 0.0f, 0.0f, 1.0f));
-                }
-
-                if (!line.Contains("Trace:") && !line.Contains("Log:", StringComparison.OrdinalIgnoreCase) && !line.Contains("message", StringComparison.OrdinalIgnoreCase) && !line.Contains("Warning:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Error:", StringComparison.OrdinalIgnoreCase) && !line.Contains("Exception:", StringComparison.OrdinalIgnoreCase) &&
-                    !line.Contains("Info:"))
-                {
-                    ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 1.0f, 1.0f));
-                }
-
-                if (ImGui.Selectable(line, false, ImGuiSelectableFlags.AllowDoubleClick))
-                {
-                    if (ImGui.IsMouseDoubleClicked(0))
-                    {
-                        Logger.Info($"Double-clicked on: {line}");
-                    }
-                }
-
-                ImGui.PopStyleColor();
-                ImGui.PopId();
+                RenderConsoleLine(line);
             }
 
             ImGui.EndChild();
+        }
+
+        /// <summary>
+        ///     Renders the console line
+        /// </summary>
+        /// <param name="line">The line</param>
+        private void RenderConsoleLine(string line)
+        {
+            ImGui.PushId(line.GetHashCode());
+
+            PushLineColor(line);
+
+            if (ImGui.Selectable(line, false, ImGuiSelectableFlags.AllowDoubleClick))
+            {
+                if (ImGui.IsMouseDoubleClicked(0))
+                {
+                    Logger.Info($"Double-clicked on: {line}");
+                }
+            }
+
+            ImGui.PopStyleColor();
+            ImGui.PopId();
+        }
+
+        /// <summary>
+        ///     Pushes the line color based on content
+        /// </summary>
+        /// <param name="line">The line</param>
+        private static void PushLineColor(string line)
+        {
+            if (line.Contains("Trace:"))
+            {
+                ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.5f, 0.5f, 0.5f, 1.0f));
+                return;
+            }
+
+            if (line.Contains("Info:"))
+            {
+                ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.0f, 1.0f, 0.0f, 1.0f));
+                return;
+            }
+
+            if (line.Contains("Log:") || line.Contains("Message:"))
+            {
+                ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 1.0f, 1.0f));
+                return;
+            }
+
+            if (line.Contains("Warning:", StringComparison.OrdinalIgnoreCase))
+            {
+                ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 0.0f, 1.0f));
+                return;
+            }
+
+            if (line.Contains("Error:", StringComparison.OrdinalIgnoreCase) || line.Contains("Exception:", StringComparison.OrdinalIgnoreCase))
+            {
+                ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 0.0f, 0.0f, 1.0f));
+                return;
+            }
+
+            ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(1.0f, 1.0f, 1.0f, 1.0f));
         }
     }
 }
