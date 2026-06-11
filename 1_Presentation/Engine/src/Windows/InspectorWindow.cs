@@ -48,11 +48,6 @@ namespace Alis.App.Engine.Windows
         public static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
 
         /// <summary>
-        ///     The tags
-        /// </summary>
-        private readonly string[] tags = {"Player", "Enemy", "NPC", "Item"};
-
-        /// <summary>
         ///     The selected game object
         /// </summary>
         //private GameObject _selectedGameObject;
