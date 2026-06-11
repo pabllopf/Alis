@@ -1130,23 +1130,6 @@ namespace Alis.App.Hub
         }
 
         /// <summary>
-        ///     Loads the font from resource using the specified stream
-        /// </summary>
-        /// <param name="stream">The stream</param>
-        /// <param name="size">The size</param>
-        /// <returns>The native ptr</returns>
-        private static IntPtr LoadFontFromResource(Stream stream, int size)
-        {
-            Debug.Assert((stream != null) && (stream.Length > 0), "Font stream must be valid.");
-
-            byte[] data = new byte[stream.Length];
-            stream.ReadExactly(data, 0, (int) stream.Length);
-            IntPtr nativePtr = Marshal.AllocHGlobal(data.Length);
-            Marshal.Copy(data, 0, nativePtr, data.Length);
-            return nativePtr;
-        }
-
-        /// <summary>
         ///     Loads the texture using the specified pixel data
         /// </summary>
         /// <param name="pixelData">The pixel data</param>
