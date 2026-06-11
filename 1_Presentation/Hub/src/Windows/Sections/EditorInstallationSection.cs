@@ -227,7 +227,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Deletes the installation using the specified path
         /// </summary>
         /// <param name="path">The path</param>
-        private void DeleteInstallation(string path)
+        private static void DeleteInstallation(string path)
         {
             Directory.Delete(path, true);
         }
