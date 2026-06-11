@@ -169,7 +169,7 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     Gets the value of the is mac os
         /// </summary>
-        public bool IsMacOs => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+        public static bool IsMacOs => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
 
 
         /// <summary>

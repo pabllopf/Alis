@@ -644,7 +644,7 @@ namespace Alis.App.Engine
 
             Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
 
-            if (_spaceWork.IsMacOs)
+            if (SpaceWork.IsMacOs)
             {
                 dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 55);
             }
@@ -655,7 +655,7 @@ namespace Alis.App.Engine
                                     ImGuiWindowFlags.NoScrollbar |
                                     ImGuiWindowFlags.NoScrollWithMouse);
 
-            if (_spaceWork.IsMacOs)
+            if (SpaceWork.IsMacOs)
             {
                 ImGui.SetWindowPos(new Vector2F(0, 30));
                 ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
@@ -701,7 +701,7 @@ namespace Alis.App.Engine
 
             Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
 
-            if (_spaceWork.IsMacOs)
+            if (SpaceWork.IsMacOs)
             {
                 dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 55);
             }
@@ -712,7 +712,7 @@ namespace Alis.App.Engine
                                     ImGuiWindowFlags.NoScrollbar |
                                     ImGuiWindowFlags.NoScrollWithMouse);
 
-            if (_spaceWork.IsMacOs)
+            if (SpaceWork.IsMacOs)
             {
                 ImGui.SetWindowPos(new Vector2F(dockSize.X - 35, 30));
                 ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
@@ -1237,14 +1237,14 @@ namespace Alis.App.Engine
 
             Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
 
-            if (_spaceWork.IsMacOs)
+            if (SpaceWork.IsMacOs)
             {
                 dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 60);
             }
 
             dockSize = dockSize - new Vector2F(80, 0);
 
-            if (_spaceWork.IsMacOs)
+            if (SpaceWork.IsMacOs)
             {
                 ImGui.SetWindowPos(new Vector2F(40, 0));
             }
