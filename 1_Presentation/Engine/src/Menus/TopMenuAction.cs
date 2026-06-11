@@ -221,10 +221,11 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        ///     News the scene
+        ///     Creates a new scene
         /// </summary>
         private static void NewScene()
         {
+            // Intentionally not implemented — scene creation requires full editor infrastructure
             throw new NotSupportedException();
         }
 
