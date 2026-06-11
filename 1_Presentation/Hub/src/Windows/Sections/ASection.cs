@@ -41,7 +41,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Initializes a new instance of the <see cref="ASection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public ASection(SpaceWork spaceWork) => SpaceWork = spaceWork;
+        protected ASection(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         /// <summary>
         ///     Gets or sets the value of the space work
