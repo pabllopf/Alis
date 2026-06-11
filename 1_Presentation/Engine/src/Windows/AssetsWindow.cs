@@ -396,76 +396,15 @@ namespace Alis.App.Engine.Windows
             {
                 foreach (string directory in directories)
                 {
-                    ImGui.TableNextColumn();
-                    string folderName = Path.GetFileName(directory);
-
-                    ImGui.PushFont(SpaceWork.FontLoaded45Bold);
-                    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
-                    ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
-                    ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
-                    ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f); // No border
-
-                    if (ImGui.Selectable($"{FontAwesome5.Folder}##{folderName}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight)))
-                    {
-                        if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
-                        {
-                            currentPath = Path.Combine(currentPath, folderName);
-                        }
-                    }
-
-                    ImGui.PopStyleVar(3);
-                    ImGui.PopStyleColor();
-                    ImGui.PopFont();
-
-                    ImGui.PushFont(SpaceWork.FontLoaded10Solid);
-                    float textWidth = ImGui.CalcTextSize(folderName).X;
-                    ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
-                    ImGui.TextWrapped(folderName);
-                    ImGui.Dummy(new Vector2F(0, itemPadding)); // Add padding between items
-                    ImGui.PopFont();
+                    RenderDirectoryItem(directory, itemWidth, itemHeight, itemPadding);
                 }
 
                 foreach (string file in files)
                 {
-                    ImGui.TableNextColumn();
-                    string extension = Path.GetExtension(file).ToLower();
-                    string icon = fileIcons.ContainsKey(extension) ? fileIcons[extension] : FontAwesome5.File;
-
-                    ImGui.PushFont(SpaceWork.FontLoaded45Bold);
-                    ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
-                    ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
-                    ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
-                    ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f); // No border
-
-                    if (ImGui.Selectable($"{icon}##{Path.GetFileName(file)}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight)))
-                    {
-                        if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
-                        {
-                        }
-                    }
-
-                    ImGui.PopStyleVar(3);
-                    ImGui.PopStyleColor();
-                    ImGui.PopFont();
-
-                    ImGui.PushFont(SpaceWork.FontLoaded10Solid);
-                    float textWidth = ImGui.CalcTextSize(Path.GetFileName(file)).X;
-                    ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
-                    ImGui.TextWrapped(Path.GetFileNameWithoutExtension(file));
-                    ImGui.Dummy(new Vector2F(0, itemPadding)); // Add padding between items
-                    ImGui.PopFont();
+                    RenderFileItem(file, itemWidth, itemHeight, itemPadding);
                 }
 
-                int totalItems = directories.Length + files.Length;
-                int emptyItems = columns - totalItems % columns;
-                if (emptyItems < columns)
-                {
-                    for (int i = 0; i < emptyItems; i++)
-                    {
-                        ImGui.TableNextColumn();
-                        ImGui.Dummy(new Vector2F(itemWidth, itemHeight)); // Invisible item to fill space
-                    }
-                }
+                RenderTableFillItems(directories.Length + files.Length, columns, itemWidth, itemHeight);
 
                 ImGui.EndTable();
             }
@@ -473,6 +412,89 @@ namespace Alis.App.Engine.Windows
             ImGui.EndChild();
         }
 
+        /// <summary>
+        ///     Renders the directory item
+        /// </summary>
+        private void RenderDirectoryItem(string directory, float itemWidth, float itemHeight, float itemPadding)
+        {
+            ImGui.TableNextColumn();
+            string folderName = Path.GetFileName(directory);
+
+            ImGui.PushFont(SpaceWork.FontLoaded45Bold);
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0));
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0));
+            ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f));
+            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
+
+            if (ImGui.Selectable($"{FontAwesome5.Folder}##{folderName}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight)))
+            {
+                if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
+                {
+                    currentPath = Path.Combine(currentPath, folderName);
+                }
+            }
+
+            ImGui.PopStyleVar(3);
+            ImGui.PopStyleColor();
+            ImGui.PopFont();
+
+            ImGui.PushFont(SpaceWork.FontLoaded10Solid);
+            float textWidth = ImGui.CalcTextSize(folderName).X;
+            ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
+            ImGui.TextWrapped(folderName);
+            ImGui.Dummy(new Vector2F(0, itemPadding));
+            ImGui.PopFont();
+        }
+
+        /// <summary>
+        ///     Renders the file item
+        /// </summary>
+        private void RenderFileItem(string file, float itemWidth, float itemHeight, float itemPadding)
+        {
+            ImGui.TableNextColumn();
+            string extension = Path.GetExtension(file).ToLower();
+            string icon = fileIcons.ContainsKey(extension) ? fileIcons[extension] : FontAwesome5.File;
+
+            ImGui.PushFont(SpaceWork.FontLoaded45Bold);
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0));
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0));
+            ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f));
+            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
+
+            if (ImGui.Selectable($"{icon}##{Path.GetFileName(file)}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight)))
+            {
+                if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
+                {
+                }
+            }
+
+            ImGui.PopStyleVar(3);
+            ImGui.PopStyleColor();
+            ImGui.PopFont();
+
+            ImGui.PushFont(SpaceWork.FontLoaded10Solid);
+            float textWidth = ImGui.CalcTextSize(Path.GetFileName(file)).X;
+            ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
+            ImGui.TextWrapped(Path.GetFileNameWithoutExtension(file));
+            ImGui.Dummy(new Vector2F(0, itemPadding));
+            ImGui.PopFont();
+        }
+
+        /// <summary>
+        ///     Renders the table fill items
+        /// </summary>
+        private static void RenderTableFillItems(int totalItems, int columns, float itemWidth, float itemHeight)
+        {
+            int emptyItems = columns - totalItems % columns;
+            if (emptyItems < columns)
+            {
+                for (int i = 0; i < emptyItems; i++)
+                {
+                    ImGui.TableNextColumn();
+                    ImGui.Dummy(new Vector2F(itemWidth, itemHeight));
+                }
+            }
+        }
 
         /// <summary>
         ///     Renders the assets
