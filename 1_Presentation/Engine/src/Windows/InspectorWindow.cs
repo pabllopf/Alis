@@ -57,10 +57,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         //private GameObject _selectedGameObject;
 
-        /// <summary>
-        ///     The zero
-        /// </summary>
-        private IntPtr commandBufferName = IntPtr.Zero;
+
 
         /// <summary>
         ///     The zero
