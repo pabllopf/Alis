@@ -1073,10 +1073,7 @@ namespace Alis.App.Hub
                 for (int cmdi = 0; cmdi < cmdList.CmdBuffer.Size; cmdi++)
                 {
                     ImDrawCmd pcmd = cmdList.CmdBuffer[cmdi];
-                    if (pcmd.UserCallback != IntPtr.Zero)
-                    {
-                    }
-                    else
+                    if (pcmd.UserCallback == IntPtr.Zero)
                     {
                         IntPtr texIdPtr = pcmd.GetTexId();
                         uint texId = texIdPtr == IntPtr.Zero ? _fontTexture : (uint) texIdPtr.ToInt64();
