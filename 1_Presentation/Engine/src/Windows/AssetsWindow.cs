@@ -414,12 +414,9 @@ namespace Alis.App.Engine.Windows
             ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f));
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
 
-            if (ImGui.Selectable($"{FontAwesome5.Folder}##{folderName}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight)))
+            if (ImGui.Selectable($"{FontAwesome5.Folder}##{folderName}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight)) && ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
             {
-                if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
-                {
-                    currentPath = Path.Combine(currentPath, folderName);
-                }
+                currentPath = Path.Combine(currentPath, folderName);
             }
 
             ImGui.PopStyleVar(3);

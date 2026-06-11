@@ -213,12 +213,9 @@ namespace Alis.App.Engine.Windows
 
             PushLineColor(line);
 
-            if (ImGui.Selectable(line, false, ImGuiSelectableFlags.AllowDoubleClick))
+            if (ImGui.Selectable(line, false, ImGuiSelectableFlags.AllowDoubleClick) && ImGui.IsMouseDoubleClicked(0))
             {
-                if (ImGui.IsMouseDoubleClicked(0))
-                {
-                    Logger.Info($"Double-clicked on: {line}");
-                }
+                Logger.Info($"Double-clicked on: {line}");
             }
 
             ImGui.PopStyleColor();
