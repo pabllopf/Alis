@@ -132,47 +132,54 @@ namespace Alis.App.Engine.Windows
 
             if (ImGui.Begin(NameWindow, ref isOpen, flags))
             {
-                ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
-                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
-
-                ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
-                ImGui.Button($"{FontAwesome5.TrashAlt}");
-
-
-                ImGui.PopStyleVar(1);
-                ImGui.PopStyleColor(2);
-
-                ImGui.SameLine();
-
-                float buttonWidth = 32 + ImGui.GetStyle().ItemSpacing.X;
-                float remainingButtonsWidth = buttonWidth * 4f; // 3 botones a la derecha
-                float filterWidth = ImGui.GetContentRegionAvail().X - remainingButtonsWidth;
-                if (filterWidth > 0)
-                {
-                    ImGui.SetNextItemWidth(filterWidth);
-                }
-
-                ImGui.InputText($"{FontAwesome5.Search}", commandPtr, 256);
-
-                ImGui.SameLine();
-
-                ImGui.Spacing();
-                ImGui.SameLine();
-                ImGui.Spacing();
-                ImGui.SameLine();
-
-                ImGui.Button($"{FontAwesome5.ExclamationCircle}");
-                ImGui.SameLine();
-                ImGui.Button($"{FontAwesome5.ExclamationTriangle}");
-                ImGui.SameLine();
-                ImGui.Button($"{FontAwesome5.Bug}");
-
-                ImGui.Separator(); // Opcional: para separar visualmente las secciones
-
+                RenderConsoleToolbar();
                 RenderConsoleOutput();
             }
 
             ImGui.End();
+        }
+
+        private void RenderConsoleToolbar()
+        {
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
+
+            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
+            ImGui.Button($"{FontAwesome5.TrashAlt}");
+
+            ImGui.PopStyleVar(1);
+            ImGui.PopStyleColor(2);
+
+            ImGui.SameLine();
+
+            RenderFilterAndActionButtons();
+        }
+
+        private void RenderFilterAndActionButtons()
+        {
+            float buttonWidth = 32 + ImGui.GetStyle().ItemSpacing.X;
+            float remainingButtonsWidth = buttonWidth * 4f;
+            float filterWidth = ImGui.GetContentRegionAvail().X - remainingButtonsWidth;
+            if (filterWidth > 0)
+            {
+                ImGui.SetNextItemWidth(filterWidth);
+            }
+
+            ImGui.InputText($"{FontAwesome5.Search}", commandPtr, 256);
+
+            ImGui.SameLine();
+            ImGui.Spacing();
+            ImGui.SameLine();
+            ImGui.Spacing();
+            ImGui.SameLine();
+
+            ImGui.Button($"{FontAwesome5.ExclamationCircle}");
+            ImGui.SameLine();
+            ImGui.Button($"{FontAwesome5.ExclamationTriangle}");
+            ImGui.SameLine();
+            ImGui.Button($"{FontAwesome5.Bug}");
+
+            ImGui.Separator();
         }
 
         /// <summary>
