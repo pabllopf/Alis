@@ -166,7 +166,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// </summary>
         /// <exception cref="FileNotFoundException">Engine executable not found in {installerPath}</exception>
         /// <returns>The string</returns>
-        private string GetInstallerPath()
+        private static string GetInstallerPath()
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string installerPath = Path.Combine(basePath, "Installer");
