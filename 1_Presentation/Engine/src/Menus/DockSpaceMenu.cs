@@ -137,9 +137,7 @@ namespace Alis.App.Engine.Menus
             if (ImGui.BeginCombo("##Solution Name", $"{FontAwesome5.Font} Sample", ImGuiComboFlags.HeightLarge))
             {
                 ImGui.Separator();
-                if (ImGui.Selectable($"{FontAwesome5.Plus} New Solution"))
-                {
-                }
+                _ = ImGui.Selectable($"{FontAwesome5.Plus} New Solution");
 
                 if (ImGui.Selectable($"{FontAwesome5.FolderOpen} Open Solution"))
                 {
