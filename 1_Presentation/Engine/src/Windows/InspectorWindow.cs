@@ -94,27 +94,6 @@ namespace Alis.App.Engine.Windows
         public SpaceWork SpaceWork { get; }
 
         /// <summary>
-        ///     Renders the add component button
-        /// </summary>
-        private void RenderAddComponentButton()
-        {
-            if (ImGui.Button("Add Component", new Vector2F(ImGui.GetContentRegionAvail().X, 30)))
-            {
-                ShowAddComponentPopup();
-            }
-
-        }
-
-        /// <summary>
-        ///     Shows the add component popup
-        /// </summary>
-        private static void ShowAddComponentPopup()
-        {
-            ImGui.OpenPopup("AddComponentPopup");
-        }
-
-
-        /// <summary>
         ///     Adds a component to the selected game object
         /// </summary>
         /// <param name="componentType">The component type</param>
