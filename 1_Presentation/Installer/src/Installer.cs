@@ -54,11 +54,6 @@ namespace Alis.App.Installer
     public class Installer
     {
         /// <summary>
-        ///     The platform
-        /// </summary>
-        private static INativePlatform _platform;
-
-        /// <summary>
         ///     Application entry point.
         /// </summary>
         public static void Run(string[] args)
@@ -67,32 +62,32 @@ namespace Alis.App.Installer
             Stopwatch frameTimer = Stopwatch.StartNew();
             double lastTime = frameTimer.Elapsed.TotalSeconds;
 
-            _platform = GetPlatform();
-            Debug.Assert(_platform != null, "Platform implementation must be provided for the current OS.");
+            INativePlatform platform = GetPlatform();
+            Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
 
-            if (!InitializePlatform(_platform, 800, 600, "C# + OpenGL Platform"))
+            if (!InitializePlatform(platform, 800, 600, "C# + OpenGL Platform"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
-                _platform.Cleanup();
+                platform.Cleanup();
                 return;
             }
 
-            _platform.MakeContextCurrent();
-            Gl.Initialize(_platform.GetProcAddress);
-            Gl.GlViewport(0, 0, _platform.GetWindowWidth(), _platform.GetWindowHeight());
+            platform.MakeContextCurrent();
+            Gl.Initialize(platform.GetProcAddress);
+            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
             Gl.GlEnable(EnableCap.DepthTest);
 
             IntPtr imguiContext = ImGui.CreateContext();
             ImGui.SetCurrentContext(imguiContext);
 
-            IExample example = new ImguiSample(_platform);
+            IExample example = new ImguiSample(platform);
             example.Initialize();
 
-            _platform.ShowWindow();
-            _platform.SetTitle("C# + OpenGL Platform - ImGui");
+            platform.ShowWindow();
+            platform.SetTitle("C# + OpenGL Platform - ImGui");
 
             ImGuiIoPtr io = ImGui.GetIo();
-            io.DisplaySize = new Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
+            io.DisplaySize = new Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
 
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
@@ -155,118 +150,116 @@ namespace Alis.App.Installer
             style.WindowRounding = 0.0f;
             style.Colors2 = new Vector4F(0.00f, 0.00f, 0.00f, 1.00f);
 
-            RunGameLoop(frameTimer, ref lastTime, targetFrameTime, io, example);
+            RunGameLoop(frameTimer, ref lastTime, targetFrameTime, io, example, platform);
 
             example.Cleanup();
-            _platform.Cleanup();
+            platform.Cleanup();
         }
 
         /// <summary>
         ///     Processes the key with imgui
         /// </summary>
-        private static void ProcessKeyWithImgui()
+        private static void ProcessKeyWithImgui(ImGuiIoPtr io, INativePlatform platform)
         {
-            ImGuiIoPtr io = ImGui.GetIo();
-
-            ProcessKey(io, ConsoleKey.Backspace, ImGuiKey.Backspace);
-            ProcessKey(io, ConsoleKey.Tab, ImGuiKey.Tab);
-            ProcessKey(io, ConsoleKey.Enter, ImGuiKey.Enter);
-            ProcessKey(io, ConsoleKey.Pause, ImGuiKey.Pause);
-            ProcessKey(io, ConsoleKey.PrintScreen, ImGuiKey.PrintScreen);
-            ProcessKey(io, ConsoleKey.Escape, ImGuiKey.Escape);
-            ProcessKey(io, ConsoleKey.Spacebar, ImGuiKey.Space);
-            ProcessKey(io, ConsoleKey.PageUp, ImGuiKey.PageUp);
-            ProcessKey(io, ConsoleKey.PageDown, ImGuiKey.PageDown);
-            ProcessKey(io, ConsoleKey.End, ImGuiKey.End);
-            ProcessKey(io, ConsoleKey.Home, ImGuiKey.Home);
-            ProcessKey(io, ConsoleKey.Insert, ImGuiKey.Insert);
-            ProcessKey(io, ConsoleKey.Delete, ImGuiKey.Delete);
-            ProcessKey(io, ConsoleKey.LeftArrow, ImGuiKey.LeftArrow);
-            ProcessKey(io, ConsoleKey.UpArrow, ImGuiKey.UpArrow);
-            ProcessKey(io, ConsoleKey.RightArrow, ImGuiKey.RightArrow);
-            ProcessKey(io, ConsoleKey.DownArrow, ImGuiKey.DownArrow);
-            ProcessKey(io, ConsoleKey.D0, ImGuiKey._0);
-            ProcessKey(io, ConsoleKey.D1, ImGuiKey._1);
-            ProcessKey(io, ConsoleKey.D2, ImGuiKey._2);
-            ProcessKey(io, ConsoleKey.D3, ImGuiKey._3);
-            ProcessKey(io, ConsoleKey.D4, ImGuiKey._4);
-            ProcessKey(io, ConsoleKey.D5, ImGuiKey._5);
-            ProcessKey(io, ConsoleKey.D6, ImGuiKey._6);
-            ProcessKey(io, ConsoleKey.D7, ImGuiKey._7);
-            ProcessKey(io, ConsoleKey.D8, ImGuiKey._8);
-            ProcessKey(io, ConsoleKey.D9, ImGuiKey._9);
-            ProcessKey(io, ConsoleKey.A, ImGuiKey.A);
-            ProcessKey(io, ConsoleKey.B, ImGuiKey.B);
-            ProcessKey(io, ConsoleKey.C, ImGuiKey.C);
-            ProcessKey(io, ConsoleKey.D, ImGuiKey.D);
-            ProcessKey(io, ConsoleKey.E, ImGuiKey.E);
-            ProcessKey(io, ConsoleKey.F, ImGuiKey.F);
-            ProcessKey(io, ConsoleKey.G, ImGuiKey.G);
-            ProcessKey(io, ConsoleKey.H, ImGuiKey.H);
-            ProcessKey(io, ConsoleKey.I, ImGuiKey.I);
-            ProcessKey(io, ConsoleKey.J, ImGuiKey.J);
-            ProcessKey(io, ConsoleKey.K, ImGuiKey.K);
-            ProcessKey(io, ConsoleKey.L, ImGuiKey.L);
-            ProcessKey(io, ConsoleKey.M, ImGuiKey.M);
-            ProcessKey(io, ConsoleKey.N, ImGuiKey.N);
-            ProcessKey(io, ConsoleKey.O, ImGuiKey.O);
-            ProcessKey(io, ConsoleKey.P, ImGuiKey.P);
-            ProcessKey(io, ConsoleKey.Q, ImGuiKey.Q);
-            ProcessKey(io, ConsoleKey.R, ImGuiKey.R);
-            ProcessKey(io, ConsoleKey.S, ImGuiKey.S);
-            ProcessKey(io, ConsoleKey.T, ImGuiKey.T);
-            ProcessKey(io, ConsoleKey.U, ImGuiKey.U);
-            ProcessKey(io, ConsoleKey.V, ImGuiKey.V);
-            ProcessKey(io, ConsoleKey.W, ImGuiKey.W);
-            ProcessKey(io, ConsoleKey.X, ImGuiKey.X);
-            ProcessKey(io, ConsoleKey.Y, ImGuiKey.Y);
-            ProcessKey(io, ConsoleKey.Z, ImGuiKey.Z);
-            ProcessKey(io, ConsoleKey.F1, ImGuiKey.F1);
-            ProcessKey(io, ConsoleKey.F2, ImGuiKey.F2);
-            ProcessKey(io, ConsoleKey.F3, ImGuiKey.F3);
-            ProcessKey(io, ConsoleKey.F4, ImGuiKey.F4);
-            ProcessKey(io, ConsoleKey.F5, ImGuiKey.F5);
-            ProcessKey(io, ConsoleKey.F6, ImGuiKey.F6);
-            ProcessKey(io, ConsoleKey.F7, ImGuiKey.F7);
-            ProcessKey(io, ConsoleKey.F8, ImGuiKey.F8);
-            ProcessKey(io, ConsoleKey.F9, ImGuiKey.F9);
-            ProcessKey(io, ConsoleKey.F10, ImGuiKey.F10);
-            ProcessKey(io, ConsoleKey.F11, ImGuiKey.F11);
-            ProcessKey(io, ConsoleKey.F12, ImGuiKey.F12);
-            ProcessKey(io, ConsoleKey.NumPad0, ImGuiKey.Keypad0);
-            ProcessKey(io, ConsoleKey.NumPad1, ImGuiKey.Keypad1);
-            ProcessKey(io, ConsoleKey.NumPad2, ImGuiKey.Keypad2);
-            ProcessKey(io, ConsoleKey.NumPad3, ImGuiKey.Keypad3);
-            ProcessKey(io, ConsoleKey.NumPad4, ImGuiKey.Keypad4);
-            ProcessKey(io, ConsoleKey.NumPad5, ImGuiKey.Keypad5);
-            ProcessKey(io, ConsoleKey.NumPad6, ImGuiKey.Keypad6);
-            ProcessKey(io, ConsoleKey.NumPad7, ImGuiKey.Keypad7);
-            ProcessKey(io, ConsoleKey.NumPad8, ImGuiKey.Keypad8);
-            ProcessKey(io, ConsoleKey.NumPad9, ImGuiKey.Keypad9);
-            ProcessKey(io, ConsoleKey.Multiply, ImGuiKey.KeypadMultiply);
-            ProcessKey(io, ConsoleKey.Add, ImGuiKey.KeypadAdd);
-            ProcessKey(io, ConsoleKey.Subtract, ImGuiKey.KeypadSubtract);
-            ProcessKey(io, ConsoleKey.Decimal, ImGuiKey.KeypadDecimal);
-            ProcessKey(io, ConsoleKey.Divide, ImGuiKey.KeypadDivide);
-            ProcessKey(io, ConsoleKey.Oem1, ImGuiKey.Semicolon);
-            ProcessKey(io, ConsoleKey.Oem2, ImGuiKey.Slash);
-            ProcessKey(io, ConsoleKey.Oem3, ImGuiKey.GraveAccent);
-            ProcessKey(io, ConsoleKey.Oem4, ImGuiKey.LeftBracket);
-            ProcessKey(io, ConsoleKey.Oem5, ImGuiKey.Backslash);
-            ProcessKey(io, ConsoleKey.Oem6, ImGuiKey.RightBracket);
-            ProcessKey(io, ConsoleKey.Oem7, ImGuiKey.Apostrophe);
-            ProcessKey(io, ConsoleKey.OemComma, ImGuiKey.Comma);
-            ProcessKey(io, ConsoleKey.OemMinus, ImGuiKey.Minus);
-            ProcessKey(io, ConsoleKey.OemPeriod, ImGuiKey.Period);
-            ProcessKey(io, ConsoleKey.OemPlus, ImGuiKey.Equal);
+            ProcessKey(io, ConsoleKey.Backspace, ImGuiKey.Backspace, platform);
+            ProcessKey(io, ConsoleKey.Tab, ImGuiKey.Tab, platform);
+            ProcessKey(io, ConsoleKey.Enter, ImGuiKey.Enter, platform);
+            ProcessKey(io, ConsoleKey.Pause, ImGuiKey.Pause, platform);
+            ProcessKey(io, ConsoleKey.PrintScreen, ImGuiKey.PrintScreen, platform);
+            ProcessKey(io, ConsoleKey.Escape, ImGuiKey.Escape, platform);
+            ProcessKey(io, ConsoleKey.Spacebar, ImGuiKey.Space, platform);
+            ProcessKey(io, ConsoleKey.PageUp, ImGuiKey.PageUp, platform);
+            ProcessKey(io, ConsoleKey.PageDown, ImGuiKey.PageDown, platform);
+            ProcessKey(io, ConsoleKey.End, ImGuiKey.End, platform);
+            ProcessKey(io, ConsoleKey.Home, ImGuiKey.Home, platform);
+            ProcessKey(io, ConsoleKey.Insert, ImGuiKey.Insert, platform);
+            ProcessKey(io, ConsoleKey.Delete, ImGuiKey.Delete, platform);
+            ProcessKey(io, ConsoleKey.LeftArrow, ImGuiKey.LeftArrow, platform);
+            ProcessKey(io, ConsoleKey.UpArrow, ImGuiKey.UpArrow, platform);
+            ProcessKey(io, ConsoleKey.RightArrow, ImGuiKey.RightArrow, platform);
+            ProcessKey(io, ConsoleKey.DownArrow, ImGuiKey.DownArrow, platform);
+            ProcessKey(io, ConsoleKey.D0, ImGuiKey._0, platform);
+            ProcessKey(io, ConsoleKey.D1, ImGuiKey._1, platform);
+            ProcessKey(io, ConsoleKey.D2, ImGuiKey._2, platform);
+            ProcessKey(io, ConsoleKey.D3, ImGuiKey._3, platform);
+            ProcessKey(io, ConsoleKey.D4, ImGuiKey._4, platform);
+            ProcessKey(io, ConsoleKey.D5, ImGuiKey._5, platform);
+            ProcessKey(io, ConsoleKey.D6, ImGuiKey._6, platform);
+            ProcessKey(io, ConsoleKey.D7, ImGuiKey._7, platform);
+            ProcessKey(io, ConsoleKey.D8, ImGuiKey._8, platform);
+            ProcessKey(io, ConsoleKey.D9, ImGuiKey._9, platform);
+            ProcessKey(io, ConsoleKey.A, ImGuiKey.A, platform);
+            ProcessKey(io, ConsoleKey.B, ImGuiKey.B, platform);
+            ProcessKey(io, ConsoleKey.C, ImGuiKey.C, platform);
+            ProcessKey(io, ConsoleKey.D, ImGuiKey.D, platform);
+            ProcessKey(io, ConsoleKey.E, ImGuiKey.E, platform);
+            ProcessKey(io, ConsoleKey.F, ImGuiKey.F, platform);
+            ProcessKey(io, ConsoleKey.G, ImGuiKey.G, platform);
+            ProcessKey(io, ConsoleKey.H, ImGuiKey.H, platform);
+            ProcessKey(io, ConsoleKey.I, ImGuiKey.I, platform);
+            ProcessKey(io, ConsoleKey.J, ImGuiKey.J, platform);
+            ProcessKey(io, ConsoleKey.K, ImGuiKey.K, platform);
+            ProcessKey(io, ConsoleKey.L, ImGuiKey.L, platform);
+            ProcessKey(io, ConsoleKey.M, ImGuiKey.M, platform);
+            ProcessKey(io, ConsoleKey.N, ImGuiKey.N, platform);
+            ProcessKey(io, ConsoleKey.O, ImGuiKey.O, platform);
+            ProcessKey(io, ConsoleKey.P, ImGuiKey.P, platform);
+            ProcessKey(io, ConsoleKey.Q, ImGuiKey.Q, platform);
+            ProcessKey(io, ConsoleKey.R, ImGuiKey.R, platform);
+            ProcessKey(io, ConsoleKey.S, ImGuiKey.S, platform);
+            ProcessKey(io, ConsoleKey.T, ImGuiKey.T, platform);
+            ProcessKey(io, ConsoleKey.U, ImGuiKey.U, platform);
+            ProcessKey(io, ConsoleKey.V, ImGuiKey.V, platform);
+            ProcessKey(io, ConsoleKey.W, ImGuiKey.W, platform);
+            ProcessKey(io, ConsoleKey.X, ImGuiKey.X, platform);
+            ProcessKey(io, ConsoleKey.Y, ImGuiKey.Y, platform);
+            ProcessKey(io, ConsoleKey.Z, ImGuiKey.Z, platform);
+            ProcessKey(io, ConsoleKey.F1, ImGuiKey.F1, platform);
+            ProcessKey(io, ConsoleKey.F2, ImGuiKey.F2, platform);
+            ProcessKey(io, ConsoleKey.F3, ImGuiKey.F3, platform);
+            ProcessKey(io, ConsoleKey.F4, ImGuiKey.F4, platform);
+            ProcessKey(io, ConsoleKey.F5, ImGuiKey.F5, platform);
+            ProcessKey(io, ConsoleKey.F6, ImGuiKey.F6, platform);
+            ProcessKey(io, ConsoleKey.F7, ImGuiKey.F7, platform);
+            ProcessKey(io, ConsoleKey.F8, ImGuiKey.F8, platform);
+            ProcessKey(io, ConsoleKey.F9, ImGuiKey.F9, platform);
+            ProcessKey(io, ConsoleKey.F10, ImGuiKey.F10, platform);
+            ProcessKey(io, ConsoleKey.F11, ImGuiKey.F11, platform);
+            ProcessKey(io, ConsoleKey.F12, ImGuiKey.F12, platform);
+            ProcessKey(io, ConsoleKey.NumPad0, ImGuiKey.Keypad0, platform);
+            ProcessKey(io, ConsoleKey.NumPad1, ImGuiKey.Keypad1, platform);
+            ProcessKey(io, ConsoleKey.NumPad2, ImGuiKey.Keypad2, platform);
+            ProcessKey(io, ConsoleKey.NumPad3, ImGuiKey.Keypad3, platform);
+            ProcessKey(io, ConsoleKey.NumPad4, ImGuiKey.Keypad4, platform);
+            ProcessKey(io, ConsoleKey.NumPad5, ImGuiKey.Keypad5, platform);
+            ProcessKey(io, ConsoleKey.NumPad6, ImGuiKey.Keypad6, platform);
+            ProcessKey(io, ConsoleKey.NumPad7, ImGuiKey.Keypad7, platform);
+            ProcessKey(io, ConsoleKey.NumPad8, ImGuiKey.Keypad8, platform);
+            ProcessKey(io, ConsoleKey.NumPad9, ImGuiKey.Keypad9, platform);
+            ProcessKey(io, ConsoleKey.Multiply, ImGuiKey.KeypadMultiply, platform);
+            ProcessKey(io, ConsoleKey.Add, ImGuiKey.KeypadAdd, platform);
+            ProcessKey(io, ConsoleKey.Subtract, ImGuiKey.KeypadSubtract, platform);
+            ProcessKey(io, ConsoleKey.Decimal, ImGuiKey.KeypadDecimal, platform);
+            ProcessKey(io, ConsoleKey.Divide, ImGuiKey.KeypadDivide, platform);
+            ProcessKey(io, ConsoleKey.Oem1, ImGuiKey.Semicolon, platform);
+            ProcessKey(io, ConsoleKey.Oem2, ImGuiKey.Slash, platform);
+            ProcessKey(io, ConsoleKey.Oem3, ImGuiKey.GraveAccent, platform);
+            ProcessKey(io, ConsoleKey.Oem4, ImGuiKey.LeftBracket, platform);
+            ProcessKey(io, ConsoleKey.Oem5, ImGuiKey.Backslash, platform);
+            ProcessKey(io, ConsoleKey.Oem6, ImGuiKey.RightBracket, platform);
+            ProcessKey(io, ConsoleKey.Oem7, ImGuiKey.Apostrophe, platform);
+            ProcessKey(io, ConsoleKey.OemComma, ImGuiKey.Comma, platform);
+            ProcessKey(io, ConsoleKey.OemMinus, ImGuiKey.Minus, platform);
+            ProcessKey(io, ConsoleKey.OemPeriod, ImGuiKey.Period, platform);
+            ProcessKey(io, ConsoleKey.OemPlus, ImGuiKey.Equal, platform);
         }
 
         /// <summary>
         ///     Processes a single key event.
         /// </summary>
-        private static void ProcessKey(ImGuiIoPtr io, ConsoleKey key, ImGuiKey imguiKey)
+        private static void ProcessKey(ImGuiIoPtr io, ConsoleKey key, ImGuiKey imguiKey, INativePlatform platform)
         {
-            if (_platform.IsKeyDown(key))
+            if (platform.IsKeyDown(key))
             {
                 io.AddKeyEvent(imguiKey, true);
             }
@@ -358,7 +351,7 @@ namespace Alis.App.Installer
         /// <summary>
         ///     Runs the game loop
         /// </summary>
-        private static void RunGameLoop(Stopwatch frameTimer, ref double lastTime, double targetFrameTime, ImGuiIoPtr io, IExample example)
+        private static void RunGameLoop(Stopwatch frameTimer, ref double lastTime, double targetFrameTime, ImGuiIoPtr io, IExample example, INativePlatform platform)
         {
             bool running = true;
             while (running)
@@ -367,14 +360,14 @@ namespace Alis.App.Installer
                 double delta = CalculateDeltaTime(ref lastTime, now, targetFrameTime);
                 io.DeltaTime = (float) delta;
 
-                running = _platform.PollEvents();
+                running = platform.PollEvents();
 
-                ProcessKeyWithImgui();
+                ProcessKeyWithImgui(io, platform);
 
-                ProcessPendingInput();
+                ProcessPendingInput(io, platform);
 
                 example.Draw();
-                _platform.SwapBuffers();
+                platform.SwapBuffers();
 
                 CheckGlError();
 
@@ -398,11 +391,11 @@ namespace Alis.App.Installer
             return delta;
         }
 
-        private static void ProcessPendingInput()
+        private static void ProcessPendingInput(ImGuiIoPtr io, INativePlatform platform)
         {
-            if (_platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
+            if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
             {
-                ImGui.GetIo().AddInputCharactersUtf8(pendingChars);
+                io.AddInputCharactersUtf8(pendingChars);
             }
         }
 
