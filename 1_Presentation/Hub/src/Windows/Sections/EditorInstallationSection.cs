@@ -245,7 +245,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Fetches the available versions
         /// </summary>
         /// <returns>The version list</returns>
-        private async Task<List<string>> FetchAvailableVersionsAsync()
+        private static async Task<List<string>> FetchAvailableVersionsAsync()
         {
             List<string> versionList = new List<string>();
 
