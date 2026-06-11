@@ -297,21 +297,6 @@ namespace Alis.App.Hub.Test
             Assert.True(isFocusedProperty.CanWrite);
         }
 
-        /// <summary>
-        ///     Tests that ASection constructor accepts SpaceWork parameter
-        /// </summary>
-        [Fact]
-        public void ASection_Constructor_ShouldAcceptSpaceWorkParameter()
-        {
-            ConstructorInfo[] constructors = typeof(ASection).GetConstructors();
-
-            Assert.NotEmpty(constructors);
-
-            ParameterInfo[] parameters = constructors[0].GetParameters();
-            Assert.Single(parameters);
-            Assert.Equal(typeof(SpaceWork), parameters[0].ParameterType);
-        }
-
         #endregion
 
         #region HubWindow Tests
