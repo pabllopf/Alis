@@ -131,7 +131,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     Renders the solution combo box
         /// </summary>
-        private static void RenderSolutionCombo()
+        private void RenderSolutionCombo()
         {
             ImGui.SetNextItemWidth(100);
             if (ImGui.BeginCombo("##Solution Name", $"{FontAwesome5.Font} Sample", ImGuiComboFlags.HeightLarge))
@@ -152,7 +152,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     Renders the control buttons
         /// </summary>
-        private static void RenderControlButtons()
+        private void RenderControlButtons()
         {
             float controlOffset = ImGui.GetWindowWidth() * 0.5f - 65;
             ImGui.SameLine(controlOffset);
