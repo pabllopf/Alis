@@ -237,9 +237,7 @@ namespace Alis.App.Engine.Windows
 
             _ = ImGui.Selectable("Material");
 
-            if (ImGui.Selectable("MonoBehaviour Script"))
-            {
-            }
+            _ = ImGui.Selectable("MonoBehaviour Script");
 
             ImGui.TextDisabled("Prefab Variant");
 
