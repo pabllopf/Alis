@@ -63,7 +63,7 @@ namespace Alis.App.Hub.Windows
         ///     Initializes a new instance of the <see cref="AWindow" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public AWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
+        protected AWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         /// <summary>
         ///     Gets or sets the value of the space work
