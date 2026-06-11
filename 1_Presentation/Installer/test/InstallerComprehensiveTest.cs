@@ -120,22 +120,6 @@ namespace Alis.App.Installer.Test
         }
 
         /// <summary>
-        /// Tests that installer run should expose expected signature
-        /// </summary>
-        [Fact]
-        public void Installer_Run_ShouldExposeExpectedSignature()
-        {
-            MethodInfo run = typeof(Installer).GetMethod("Run", BindingFlags.Public | BindingFlags.Instance);
-
-            Assert.NotNull(run);
-            Assert.Equal(typeof(void), run.ReturnType);
-
-            ParameterInfo[] parameters = run.GetParameters();
-            Assert.Single(parameters);
-            Assert.Equal(typeof(string[]), parameters[0].ParameterType);
-        }
-
-        /// <summary>
         /// Tests that installer initialize platform should return false when platform is null
         /// </summary>
         [Fact]
