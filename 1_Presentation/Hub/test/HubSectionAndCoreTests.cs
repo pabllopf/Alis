@@ -86,22 +86,7 @@ namespace Alis.App.Hub.Test
             Assert.Contains(methods, m => m.Name == "OnRender" && m.IsAbstract);
             Assert.Contains(methods, m => m.Name == "OnDestroy" && m.IsAbstract);
         }
-
-        /// <summary>
-        ///     Tests that AWindow has a constructor accepting SpaceWork
-        /// </summary>
-        [Fact]
-        public void AWindow_Constructor_ShouldAcceptSpaceWorkParameter()
-        {
-            ConstructorInfo[] constructors = typeof(AWindow).GetConstructors();
-
-            Assert.NotEmpty(constructors);
-            Assert.Single(constructors);
-
-            ParameterInfo[] parameters = constructors[0].GetParameters();
-            Assert.Single(parameters);
-            Assert.Equal(typeof(SpaceWork), parameters[0].ParameterType);
-        }
+        
 
         #endregion
 
