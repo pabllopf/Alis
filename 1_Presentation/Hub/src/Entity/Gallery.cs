@@ -37,6 +37,11 @@ namespace Alis.App.Hub.Entity
     public class Gallery
     {
         /// <summary>
+        ///     The hub logo image name
+        /// </summary>
+        private const string HubLogoImageName = "Hub_logo.bmp";
+
+        /// <summary>
         ///     The items
         /// </summary>
         public List<GalleryItem> Items;
@@ -48,7 +53,7 @@ namespace Alis.App.Hub.Entity
         {
             Items = new List<GalleryItem>();
 
-            string[] imageOptions = {"Hub_logo.bmp", "Hub_logo.bmp", "Hub_logo.bmp", "Hub_logo.bmp"};
+            string[] imageOptions = {HubLogoImageName, HubLogoImageName, HubLogoImageName, HubLogoImageName};
 
             for (int i = 0; i < 10; i++)
             {
