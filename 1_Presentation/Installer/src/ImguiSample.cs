@@ -104,7 +104,7 @@ namespace Alis.App.Installer
         /// <summary>
         ///     The counter
         /// </summary>
-        private int _counter;
+        private int _counter = 0;
 
         /// <summary>
         ///     The ebo
@@ -163,12 +163,7 @@ namespace Alis.App.Installer
             Debug.Assert(_platform != null, "Platform must be provided before Initialize is called.");
             _platform?.MakeContextCurrent();
 
-            IntPtr currentCtx = ImGui.GetCurrentContext();
-            if (currentCtx == IntPtr.Zero)
-            {
-                currentCtx = ImGui.CreateContext();
-            }
-
+            IntPtr currentCtx = ImGui.GetCurrentContext() ?? ImGui.CreateContext();
             ImGui.SetCurrentContext(currentCtx);
 
             ImGuiIoPtr io = ImGui.GetIo();
