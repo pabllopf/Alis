@@ -114,8 +114,9 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Render()
         {
-            if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoCollapse))
+            if (!ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoCollapse))
             {
+                return;
             }
 
             ImGui.End();
