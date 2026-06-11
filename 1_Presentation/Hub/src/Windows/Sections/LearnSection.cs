@@ -197,7 +197,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Displays the documentation
         /// </summary>
-        private void DisplayDocumentation()
+        private static void DisplayDocumentation()
         {
             string searchQuery = string.Empty;
 
