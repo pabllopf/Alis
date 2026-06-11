@@ -1169,7 +1169,7 @@ namespace Alis.App.Hub
         /// <param name="format">The format</param>
         /// <param name="internalFormat">The internal format</param>
         /// <returns>The texture id</returns>
-        private uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
+        private static uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
         {
             uint textureId = Gl.GenTexture();
             Gl.GlPixelStorei(StoreParameter.UnpackAlignment, 1);
