@@ -210,118 +210,7 @@ namespace Alis.App.Engine.Windows
                 ImGui.SetNextItemWidth(32);
                 if (ImGui.BeginCombo("##Plus", $"{FontAwesome5.Plus}", ImGuiComboFlags.HeightLargest | ImGuiComboFlags.NoArrowButton))
                 {
-                    ImGui.Separator();
-
-                    if (ImGui.Selectable("Folder"))
-                    {
-                    }
-
-                    if (ImGui.Selectable("Material"))
-                    {
-                    }
-
-                    if (ImGui.Selectable("MonoBehaviour Script"))
-                    {
-                    }
-
-                    ImGui.TextDisabled("Prefab Variant"); // Opción deshabilitada
-
-                    ImGui.Separator();
-
-                    if (ImGui.BeginMenu("2D"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Animation"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Audio"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Rendering"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Scene"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Scripting"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Search"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Shader"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Shader Graph"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Testing"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Terrain"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Text Core"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("TextMeshPro"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Tutorials"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("Timeline"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    if (ImGui.BeginMenu("UI Toolkit"))
-                    {
-                        ImGui.EndMenu();
-                    }
-
-                    ImGui.Separator();
-
-                    if (ImGui.Selectable("Physics Material"))
-                    {
-                    }
-
-                    if (ImGui.Selectable("GUI Skin"))
-                    {
-                    }
-
-                    if (ImGui.Selectable("Custom Font"))
-                    {
-                    }
-
+                    RenderPlusMenu();
                     ImGui.EndCombo();
                 }
 
@@ -336,6 +225,124 @@ namespace Alis.App.Engine.Windows
             ImGui.End();
         }
 
+
+        /// <summary>
+        ///     Renders the plus menu
+        /// </summary>
+        private void RenderPlusMenu()
+        {
+            ImGui.Separator();
+
+            if (ImGui.Selectable("Folder"))
+            {
+            }
+
+            if (ImGui.Selectable("Material"))
+            {
+            }
+
+            if (ImGui.Selectable("MonoBehaviour Script"))
+            {
+            }
+
+            ImGui.TextDisabled("Prefab Variant");
+
+            ImGui.Separator();
+
+            if (ImGui.BeginMenu("2D"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Animation"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Audio"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Rendering"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Scene"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Scripting"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Search"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Shader"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Shader Graph"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Testing"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Terrain"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Text Core"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("TextMeshPro"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Tutorials"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Timeline"))
+            {
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("UI Toolkit"))
+            {
+                ImGui.EndMenu();
+            }
+
+            ImGui.Separator();
+
+            if (ImGui.Selectable("Physics Material"))
+            {
+            }
+
+            if (ImGui.Selectable("GUI Skin"))
+            {
+            }
+
+            if (ImGui.Selectable("Custom Font"))
+            {
+            }
+        }
 
         /// <summary>
         ///     Renders the search bar
