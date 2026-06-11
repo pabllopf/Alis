@@ -209,7 +209,7 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Opens the preferences
         /// </summary>
-        private void OpenPreferences()
+        private static void OpenPreferences()
         {
             ImGui.OpenPopup("Preferences");
         }
