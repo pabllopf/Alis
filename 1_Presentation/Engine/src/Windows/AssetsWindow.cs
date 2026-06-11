@@ -235,9 +235,7 @@ namespace Alis.App.Engine.Windows
 
             _ = ImGui.Selectable("Folder");
 
-            if (ImGui.Selectable("Material"))
-            {
-            }
+            _ = ImGui.Selectable("Material");
 
             if (ImGui.Selectable("MonoBehaviour Script"))
             {
