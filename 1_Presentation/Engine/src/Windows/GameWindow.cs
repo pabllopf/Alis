@@ -68,8 +68,9 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Render()
         {
-            if (ImGui.Begin(NameWindow))
+            if (!ImGui.Begin(NameWindow))
             {
+                return;
             }
 
             ImGui.End();
