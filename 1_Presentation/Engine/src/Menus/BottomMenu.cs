@@ -94,37 +94,8 @@ namespace Alis.App.Engine.Menus
                 ImGui.Columns(6, "MenuColumns", false); // Seis columnas para más botones
 
 
-                if (ImGui.Button($"{FontAwesome5.Bell}##notifications"))
-                {
-                    Logger.Info("Abriendo notificaciones...");
-                }
+                RenderBranchSelector();
 
-
-                ImGui.SameLine();
-
-                ImGui.SetNextItemWidth(90);
-                if (ImGui.BeginCombo("##branchSelector", $"{FontAwesome5.CodeBranch}Master", ImGuiComboFlags.HeightLarge))
-                {
-                    if (ImGui.Selectable("master"))
-                    {
-                        Logger.Info("Cambiando a la rama master...");
-                    }
-
-                    if (ImGui.Selectable("develop"))
-                    {
-                        Logger.Info("Cambiando a la rama develop...");
-                    }
-
-                    if (ImGui.Selectable("feature/new-feature"))
-                    {
-                        Logger.Info("Cambiando a la rama feature/new-feature...");
-                    }
-
-                    ImGui.EndCombo();
-                }
-
-
-                ImGui.NextColumn();
 
                 ImGui.NextColumn();
 
@@ -140,6 +111,37 @@ namespace Alis.App.Engine.Menus
             }
 
             ImGui.PopStyleColor(3);
+        }
+
+        private void RenderBranchSelector()
+        {
+            if (ImGui.Button($"{FontAwesome5.Bell}##notifications"))
+            {
+                Logger.Info("Abriendo notificaciones...");
+            }
+
+            ImGui.SameLine();
+
+            ImGui.SetNextItemWidth(90);
+            if (ImGui.BeginCombo("##branchSelector", $"{FontAwesome5.CodeBranch}Master", ImGuiComboFlags.HeightLarge))
+            {
+                if (ImGui.Selectable("master"))
+                {
+                    Logger.Info("Cambiando a la rama master...");
+                }
+
+                if (ImGui.Selectable("develop"))
+                {
+                    Logger.Info("Cambiando a la rama develop...");
+                }
+
+                if (ImGui.Selectable("feature/new-feature"))
+                {
+                    Logger.Info("Cambiando a la rama feature/new-feature...");
+                }
+
+                ImGui.EndCombo();
+            }
         }
 
         private void SetupNextWindowProperties()
