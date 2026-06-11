@@ -85,7 +85,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Installs the new version
         /// </summary>
-        private void InstallNewVersion()
+        private static void InstallNewVersion()
         {
             ImGui.OpenPopup("Install_New_Version");
         }
