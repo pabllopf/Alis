@@ -143,9 +143,7 @@ namespace Alis.App.Engine.Menus
 
                 ImGui.Separator();
                 ImGui.TextDisabled("Recent Solutions");
-                if (ImGui.Selectable("Sample Solution"))
-                {
-                }
+                _ = ImGui.Selectable("Sample Solution");
 
                 ImGui.EndCombo();
             }
