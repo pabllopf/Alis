@@ -364,39 +364,54 @@ namespace Alis.App.Installer
             while (running)
             {
                 double now = frameTimer.Elapsed.TotalSeconds;
-                double delta = now - lastTime;
-                lastTime = now;
-                if (delta <= 0.0)
-                {
-                    delta = targetFrameTime;
-                }
-
-                if (delta > 0.25)
-                {
-                    delta = 0.25; // avoid huge dt values
-                }
-
+                double delta = CalculateDeltaTime(ref lastTime, now, targetFrameTime);
                 io.DeltaTime = (float) delta;
 
                 running = _platform.PollEvents();
 
                 ProcessKeyWithImgui();
 
-                if (_platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
-                {
-                    ImGui.GetIo().AddInputCharactersUtf8(pendingChars);
-                }
+                ProcessPendingInput();
 
                 example.Draw();
                 _platform.SwapBuffers();
 
-                int glError = Gl.GlGetError();
-                if (glError != 0)
-                {
-                    Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
-                }
+                CheckGlError();
 
                 ApplyFrameTiming(frameTimer, now, targetFrameTime);
+            }
+        }
+
+        private static double CalculateDeltaTime(ref double lastTime, double now, double targetFrameTime)
+        {
+            double delta = now - lastTime;
+            lastTime = now;
+            if (delta <= 0.0)
+            {
+                delta = targetFrameTime;
+            }
+            else if (delta > 0.25)
+            {
+                delta = 0.25;
+            }
+
+            return delta;
+        }
+
+        private static void ProcessPendingInput()
+        {
+            if (_platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
+            {
+                ImGui.GetIo().AddInputCharactersUtf8(pendingChars);
+            }
+        }
+
+        private static void CheckGlError()
+        {
+            int glError = Gl.GlGetError();
+            if (glError != 0)
+            {
+                Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
             }
         }
 
