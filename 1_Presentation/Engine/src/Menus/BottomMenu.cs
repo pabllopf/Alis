@@ -76,41 +76,42 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Render()
         {
-            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
-            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
-            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
-
-
-            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 3));
-            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
-
-
+            ApplyBottomMenuStyling();
             SetupNextWindowProperties();
-
 
             if (ImGui.Begin("Bottom Menu", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollbar))
             {
-                ImGui.Columns(6, "MenuColumns", false); // Seis columnas para más botones
-
-
-                RenderBranchSelector();
-
-
-                ImGui.NextColumn();
-
-                ImGui.NextColumn();
-
-                ImGui.PopStyleVar(3);
-                ImGui.NextColumn();
-
-                ImGui.SetCursorPosX(ImGui.GetContentRegionMax().X - 150); // Ajustar según el tamaño de la barra
-                ImGui.ProgressBar(0.65f, new Vector2F(150, 20), "3/15"); // Ejemplo de barra al 65%
-
+                RenderMenuContent();
                 ImGui.End();
             }
 
             ImGui.PopStyleColor(3);
+        }
+
+        private void ApplyBottomMenuStyling()
+        {
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+
+            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 3));
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
+        }
+
+        private void RenderMenuContent()
+        {
+            ImGui.Columns(6, "MenuColumns", false);
+
+            RenderBranchSelector();
+
+            ImGui.NextColumn();
+            ImGui.NextColumn();
+            ImGui.PopStyleVar(3);
+            ImGui.NextColumn();
+
+            ImGui.SetCursorPosX(ImGui.GetContentRegionMax().X - 150);
+            ImGui.ProgressBar(0.65f, new Vector2F(150, 20), "3/15");
         }
 
         private void RenderBranchSelector()
