@@ -395,14 +395,6 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        ///     Deletes
-        /// </summary>
-        private static void Delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         ///     Frames the selected in scene
         /// </summary>
         private static void FrameSelectedInScene()
@@ -619,14 +611,6 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        ///     Creates the audio
-        /// </summary>
-        private static void CreateAudio()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         ///     Creates the tilemap
         /// </summary>
         private static void CreateTilemap()
@@ -654,14 +638,6 @@ namespace Alis.App.Engine.Menus
         ///     Moves the to view
         /// </summary>
         private static void MoveToView()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Renames the game object
-        /// </summary>
-        private static void RenameGameObject()
         {
             throw new NotImplementedException();
         }
