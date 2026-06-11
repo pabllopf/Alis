@@ -643,22 +643,6 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        ///     Duplicates the game object
-        /// </summary>
-        private static void DuplicateGameObject()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Deletes the game object
-        /// </summary>
-        private static void DeleteGameObject()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         ///     Adds the component
         /// </summary>
         private static void AddComponent()
