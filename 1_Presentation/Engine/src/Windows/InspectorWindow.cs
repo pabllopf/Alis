@@ -55,11 +55,6 @@ namespace Alis.App.Engine.Windows
 
 
         /// <summary>
-        ///     The zero
-        /// </summary>
-        private readonly IntPtr searchQueryComand = IntPtr.Zero;
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="InspectorWindow" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
