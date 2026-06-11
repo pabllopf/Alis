@@ -130,22 +130,24 @@ namespace Alis.App.Hub.Windows
         /// <param name="scale"></param>
         public override void OnRender(float scale)
         {
-            ImGuiIoPtr io = ImGui.GetIo();
-            Vector2F screenSize = io.DisplaySize;
+            Vector2F screenSize = ImGui.GetIo().DisplaySize;
 
             ImGui.SetNextWindowPos(Vector2F.Zero);
             ImGui.SetNextWindowSize(screenSize);
 
             ImGui.Begin("##MainWindow", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove);
 
+            RenderSidebar(scale, screenSize);
+            RenderMainContentArea(scale, screenSize);
+
+            ImGui.End();
+        }
+
+        private void RenderSidebar(float scale, Vector2F screenSize)
+        {
             ImGui.BeginChild("Sidebar", new Vector2F(220 * scale, screenSize.Y - 20 * scale), true);
 
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10 * scale, 10 * scale));
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10 * scale, 10 * scale));
-
             ImGui.Separator();
-            ImGui.PopStyleVar(2);
-
             ButtonsLeftMenu(scale);
 
             ImGui.SetCursorPosY(screenSize.Y - 70 * scale);
@@ -157,13 +159,14 @@ namespace Alis.App.Hub.Windows
             RenderPreferences();
 
             ImGui.EndChild();
+        }
 
+        private void RenderMainContentArea(float scale, Vector2F screenSize)
+        {
             ImGui.SameLine();
             ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - 220 * scale, screenSize.Y - 20 * scale), false);
             RenderMainContent(scale);
             ImGui.EndChild();
-
-            ImGui.End();
         }
 
         /// <summary>
