@@ -233,9 +233,7 @@ namespace Alis.App.Engine.Windows
         {
             ImGui.Separator();
 
-            if (ImGui.Selectable("Folder"))
-            {
-            }
+            _ = ImGui.Selectable("Folder");
 
             if (ImGui.Selectable("Material"))
             {
