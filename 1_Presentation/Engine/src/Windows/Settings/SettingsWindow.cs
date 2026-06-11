@@ -90,6 +90,7 @@ namespace Alis.App.Engine.Windows.Settings
 
             if (!ImGui.Begin(WindowName, ref isOpen))
             {
+                // Guard clause: exit early if window is not ready
                 return;
             }
 
