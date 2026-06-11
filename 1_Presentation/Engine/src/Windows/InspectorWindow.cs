@@ -121,51 +121,6 @@ namespace Alis.App.Engine.Windows
                 ShowAddComponentPopup();
             }
 
-            /*Assembly assembly = Assembly.GetAssembly(typeof(AComponent))!;
-            Type[] allTypes = assembly.GetTypes();
-            IEnumerable<Type> componentSubclasses = allTypes.Where(t => t.IsSubclassOf(typeof(AComponent)));
-            List<Type> componentTypes = componentSubclasses
-                .Where(t => (t.Namespace != null) && t.IsClass && !t.IsAbstract && t.Namespace.StartsWith("Alis"))
-                .ToList();
-
-            IOrderedEnumerable<IGrouping<string, Type>> groupedComponents = componentTypes
-                .GroupBy(t => t.Namespace)
-                .OrderBy(g => g.Key);
-
-            ImGui.SetNextWindowSize(new Vector2F(ImGui.GetWindowWidth(), groupedComponents.Count() * 30 + 90));
-            if (ImGui.BeginPopup("AddComponentPopup"))
-            {
-                // Campo de búsqueda
-
-                searchQueryComand = Marshal.StringToHGlobalAnsi(searchQuery);
-                ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
-                ImGui.InputText($"{FontAwesome5.Search}##Search components", searchQueryComand, 256);
-                searchQuery = Marshal.PtrToStringAnsi(searchQueryComand);
-
-                if (!string.IsNullOrEmpty(searchQuery))
-                {
-                    componentTypes = componentTypes
-                        .Where(t => t.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
-                        .ToList();
-                }
-
-
-                foreach (IGrouping<string, Type> group in groupedComponents)
-                {
-                    if (ImGui.CollapsingHeader(group.Key))
-                    {
-                        foreach (Type componentType in group)
-                        {
-                            if (ImGui.MenuItem(componentType.Name))
-                            {
-                                AddComponentToSelectedGameObject(componentType);
-                            }
-                        }
-                    }
-                }
-
-                ImGui.EndPopup();
-            }*/
         }
 
         /// <summary>
@@ -183,14 +138,6 @@ namespace Alis.App.Engine.Windows
         /// <param name="componentType">The component type</param>
         private void AddComponentToSelectedGameObject([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)] Type componentType)
         {
-            /*
-            if (_selectedGameObject == null)
-            {
-                return;
-            }
-
-            AComponent component = (AComponent) Activator.CreateInstance(componentType);
-            _selectedGameObject.Add(component);*/
         }
 
         /// <summary>
