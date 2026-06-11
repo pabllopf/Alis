@@ -366,18 +366,7 @@ namespace Alis.App.Hub
             while (_spaceWork.IsRunning)
             {
                 double now = frameTimer.Elapsed.TotalSeconds;
-                double delta = now - lastTime;
-                lastTime = now;
-                if (delta <= 0.0)
-                {
-                    delta = targetFrameTime;
-                }
-
-                if (delta > 0.25)
-                {
-                    delta = 0.25; // avoid huge dt values
-                }
-
+                double delta = CalculateDeltaTime(ref lastTime, now, targetFrameTime);
                 io.DeltaTime = (float) delta;
 
                 _spaceWork.IsRunning = platform.PollEvents();
@@ -386,22 +375,48 @@ namespace Alis.App.Hub
 
                 UpdateMousePosAndButtons();
 
-                if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
-                {
-                    _spaceWork.io.AddInputCharactersUtf8(pendingChars);
-                }
+                ProcessPendingInput();
 
                 Draw();
 
                 platform.SwapBuffers();
 
-                int glError = Gl.GlGetError();
-                if (glError != 0)
-                {
-                    Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
-                }
+                CheckGlError();
 
                 ApplyFrameTiming(frameTimer, now, targetFrameTime);
+            }
+        }
+
+        private static double CalculateDeltaTime(ref double lastTime, double now, double targetFrameTime)
+        {
+            double delta = now - lastTime;
+            lastTime = now;
+            if (delta <= 0.0)
+            {
+                delta = targetFrameTime;
+            }
+            else if (delta > 0.25)
+            {
+                delta = 0.25;
+            }
+
+            return delta;
+        }
+
+        private void ProcessPendingInput()
+        {
+            if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
+            {
+                _spaceWork.io.AddInputCharactersUtf8(pendingChars);
+            }
+        }
+
+        private void CheckGlError()
+        {
+            int glError = Gl.GlGetError();
+            if (glError != 0)
+            {
+                Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
             }
         }
 
