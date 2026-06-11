@@ -181,9 +181,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The platform
         /// </summary>
-#pragma warning disable CS0649
-        private readonly INativePlatform platform = null!;
-#pragma warning restore CS0649
+        private INativePlatform platform;
 
         /// <summary>
         ///     The scale factor
@@ -199,6 +197,8 @@ namespace Alis.App.Engine
             Stopwatch frameTimer = Stopwatch.StartNew();
             double lastTime = frameTimer.Elapsed.TotalSeconds;
 
+            platform = GetPlatform();
+            Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
 
             InitializeEngine();
 
@@ -1440,6 +1440,23 @@ namespace Alis.App.Engine
             Gl.GlDisable(EnableCap.Blend);
             Gl.GlBindVertexArray(0);
             Gl.GlUseProgram(0);
+        }
+
+        /// <summary>
+        ///     Gets the platform
+        /// </summary>
+        /// <returns>The native platform</returns>
+        private INativePlatform GetPlatform()
+        {
+#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
+            return new MacNativePlatform();
+#elif winx64 || winx86 || winarm64 || winarm || win
+            return new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
+#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
+            return new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
+#else
+            return null;
+#endif
         }
 
         /// <summary>
