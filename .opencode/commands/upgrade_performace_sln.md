@@ -685,3 +685,325 @@ Optimization is NOT complete.
 ```
 
 You are a continuous optimization engine whose primary responsibility is evolving the Alis solution toward maximum performance while preserving behavior, maintaining strict TDD discipline, persisting all learned knowledge in Obsidian memory, and ensuring compatibility from .NET Standard 2.0 through .NET 10 across Windows, Linux, and macOS.
+
+
+# ADDITIONAL PROJECT-SPECIFIC RULES FOR ALIS
+
+## SOLUTION STRUCTURE CONVENTION
+
+All analysis, test discovery, optimization, validation and TDD workflows MUST assume the following repository structure:
+
+```text
+<Domain>/<Module>/
+
+src/
+    Alis.<Module>.csproj
+
+sample/
+    Alis.<Module>.Sample.csproj
+
+test/
+    Alis.<Module>.Test.csproj
+```
+
+Example:
+
+```text
+3_Structuration/Core/
+
+src/
+    Alis.Core.csproj
+
+sample/
+    Alis.Core.Sample.csproj
+
+test/
+    Alis.Core.Test.csproj
+```
+
+---
+
+# PROJECT DISCOVERY RULE
+
+When a production project is discovered:
+
+```text
+src/Alis.<Module>.csproj
+```
+
+You MUST automatically associate:
+
+```text
+test/Alis.<Module>.Test.csproj
+```
+
+as the primary TDD validation project.
+
+And:
+
+```text
+sample/Alis.<Module>.Sample.csproj
+```
+
+as the executable behavior verification project.
+
+---
+
+# TEST LOCATION RULE
+
+New tests MUST always be created inside:
+
+```text
+test/
+```
+
+Never inside:
+
+```text
+src/
+sample/
+```
+
+---
+
+# SAMPLE PROJECT RULE
+
+Sample projects represent executable documentation.
+
+Whenever an optimization impacts:
+
+```text
+Public APIs
+Usage patterns
+Developer workflows
+```
+
+You MUST verify whether the corresponding sample project requires updates.
+
+If a sample becomes outdated:
+
+```text
+Update sample
+Update tests
+Validate sample compilation
+```
+
+before committing.
+
+---
+
+# BENCHMARK PROJECT RULE
+
+There is ONLY ONE benchmark project in the entire repository.
+
+Location:
+
+```text
+1_Presentation/Benchmark/src/Alis.Benchmark.csproj
+```
+
+No additional benchmark projects may be created.
+
+---
+
+# PERFORMANCE VALIDATION RULE
+
+Whenever an optimization affects performance-sensitive code:
+
+You MUST add or update benchmark scenarios inside:
+
+```text
+1_Presentation/Benchmark/src/Alis.Benchmark.csproj
+```
+
+Never create:
+
+```text
+Benchmark folders
+Benchmark projects
+Microbenchmark projects
+Temporary benchmark solutions
+```
+
+outside the official benchmark project.
+
+---
+
+# BENCHMARK ORGANIZATION
+
+Benchmarks should be grouped by module:
+
+Example:
+
+```text
+CoreBenchmarks.cs
+CollectionsBenchmarks.cs
+SerializationBenchmarks.cs
+GraphicsBenchmarks.cs
+MemoryBenchmarks.cs
+```
+
+Store benchmark results in memory:
+
+```text
+./.memory/knowledge/benchmark-results/
+```
+
+---
+
+# MODULE ANALYSIS ORDER
+
+Prioritize modules using this sequence:
+
+```text
+1. Hot paths already benchmarked
+
+2. Modules with highest allocation pressure
+
+3. Modules with highest execution frequency
+
+4. Core infrastructure
+
+5. Graphics
+
+6. Collections
+
+7. Serialization
+
+8. Utilities
+
+9. Samples
+
+10. Remaining modules
+```
+
+---
+
+# TEST EXECUTION STRATEGY
+
+For every optimized project:
+
+Execute:
+
+```text
+Associated test project
+```
+
+Example:
+
+```text
+3_Structuration/Core/test/Alis.Core.Test.csproj
+```
+
+before considering the optimization complete.
+
+If the module has no tests:
+
+```text
+Create tests first
+```
+
+and only then proceed with optimization.
+
+---
+
+# CROSS-PROJECT VALIDATION
+
+When modifying:
+
+```text
+src/Alis.<Module>.csproj
+```
+
+validate:
+
+```text
+test/Alis.<Module>.Test.csproj
+sample/Alis.<Module>.Sample.csproj
+```
+
+before committing.
+
+---
+
+# DISCOVERY OPTIMIZATION
+
+Do NOT recursively search the entire repository repeatedly.
+
+Build a module index once and persist it in:
+
+```text
+./.memory/index.md
+```
+
+containing:
+
+```text
+Module
+Production project
+Test project
+Sample project
+Dependencies
+Frameworks
+Optimization history
+```
+
+Future executions MUST reuse this index.
+
+---
+
+# BENCHMARK-FIRST HOTPATH RULE
+
+Before optimizing any code path:
+
+Check whether a benchmark already exists in:
+
+```text
+1_Presentation/Benchmark/src/Alis.Benchmark.csproj
+```
+
+If it exists:
+
+```text
+Measure
+Optimize
+Measure again
+Document delta
+```
+
+If it does not exist and the code is performance critical:
+
+```text
+Create benchmark
+Measure baseline
+Optimize
+Measure again
+Document delta
+```
+
+---
+
+# ALIS-SPECIFIC SUCCESS CRITERIA
+
+An optimization is only complete when:
+
+```text
+Associated test project passes
+
+Associated sample project builds
+
+Official benchmark project updated if required
+
+Memory updated
+
+Knowledge persisted
+
+Commit created
+
+Cross-platform compatibility verified
+
+Multi-framework compatibility verified
+```
+
+Otherwise the optimization remains incomplete.
+
