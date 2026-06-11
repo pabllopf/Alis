@@ -56,11 +56,6 @@ namespace Alis.App.Engine.Windows
         private readonly IntPtr commandPtr;
 
         /// <summary>
-        ///     The concurrent queue
-        /// </summary>
-        private readonly ConcurrentQueue<string> consoleOutputQueue = new ConcurrentQueue<string>();
-
-        /// <summary>
         ///     The no collapse
         /// </summary>
         private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
@@ -69,11 +64,6 @@ namespace Alis.App.Engine.Windows
         ///     The string writer
         /// </summary>
         private readonly StringWriter stringWriter = new StringWriter();
-
-        /// <summary>
-        ///     The command
-        /// </summary>
-        private readonly byte[] command = new byte[256];
 
         /// <summary>
         ///     The is open
