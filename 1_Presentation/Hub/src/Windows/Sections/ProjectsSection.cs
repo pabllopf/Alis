@@ -85,9 +85,22 @@ namespace Alis.App.Hub.Windows.Sections
 
 
         /// <summary>
-        ///     The conmand ptr
+        ///     The selected project index
         /// </summary>
-        private IntPtr conmandPtr;
+        private int selectedProjectIndex = -1;
+
+        /// <summary>
+        ///     The show create project popup
+        /// </summary>
+        private bool showCreateProjectPopup;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ProjectsSection" /> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
+        public ProjectsSection(SpaceWork spaceWork) : base(spaceWork)
+        {
+        }
 
         /// <summary>
         ///     The empty
@@ -273,12 +286,14 @@ namespace Alis.App.Hub.Windows.Sections
 
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(5, (elementHeight - iconHeight) / 2));
 
-            conmandPtr = Marshal.StringToHGlobalAnsi(searchQuery);
-            if (ImGui.InputText("##Search", conmandPtr, 256))
+            IntPtr searchPtr = Marshal.StringToHGlobalAnsi(searchQuery);
+            if (ImGui.InputText("##Search", searchPtr, 256))
             {
-                searchQuery = Marshal.PtrToStringAnsi(conmandPtr);
+                searchQuery = Marshal.PtrToStringAnsi(searchPtr);
                 Logger.Info("Search query: " + searchQuery);
             }
+
+            Marshal.FreeHGlobal(searchPtr);
 
             ImGui.PopStyleVar(1);
             ImGui.SameLine();
@@ -359,15 +374,19 @@ namespace Alis.App.Hub.Windows.Sections
             ImGui.SetNextWindowPos(new Vector2F(ImGui.GetIo().DisplaySize.X / 2 - 300, ImGui.GetIo().DisplaySize.Y / 2 - 175));
             if (ImGui.BeginPopupModal("New Project", ref showCreateProjectPopup, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
             {
+                string name = projectName;
+                IntPtr namePtr = Marshal.StringToHGlobalAnsi(name);
                 ImGui.Text("Project Name:");
-                conmandPtrProjectName = Marshal.StringToHGlobalAnsi(projectName);
-                ImGui.InputText("##ProjectName", conmandPtrProjectName, 100);
-                projectName = Marshal.PtrToStringAnsi(conmandPtrProjectName);
+                ImGui.InputText("##ProjectName", namePtr, 100);
+                name = Marshal.PtrToStringAnsi(namePtr) ?? name;
+                Marshal.FreeHGlobal(namePtr);
 
+                string path = projectPath;
+                IntPtr pathPtr = Marshal.StringToHGlobalAnsi(path);
                 ImGui.Text("Project Path:");
-                conmandPtrProjectPath = Marshal.StringToHGlobalAnsi(projectPath);
-                ImGui.InputText("##ProjectPath", conmandPtrProjectPath, 256);
-                projectPath = Marshal.PtrToStringAnsi(conmandPtrProjectPath);
+                ImGui.InputText("##ProjectPath", pathPtr, 256);
+                path = Marshal.PtrToStringAnsi(pathPtr) ?? path;
+                Marshal.FreeHGlobal(pathPtr);
 
                 ImGui.SameLine();
 
@@ -385,20 +404,25 @@ namespace Alis.App.Hub.Windows.Sections
 
                     if (selectedFile.IsSuccess)
                     {
-                        projectPath = selectedFile.SelectedPath;
-                        Logger.Info("Selected project path: " + projectPath);
+                        path = selectedFile.SelectedPath;
+                        Logger.Info("Selected project path: " + path);
                     }
                 }
 
+                string version = editorVersion;
+                IntPtr versionPtr = Marshal.StringToHGlobalAnsi(version);
                 ImGui.Text("Editor Version:");
-                conmandPtrEditorVersion = Marshal.StringToHGlobalAnsi(editorVersion);
-                ImGui.InputText("##EditorVersion", conmandPtrEditorVersion, 50);
-                editorVersion = Marshal.PtrToStringAnsi(conmandPtrEditorVersion);
+                ImGui.InputText("##EditorVersion", versionPtr, 50);
+                version = Marshal.PtrToStringAnsi(versionPtr) ?? version;
+                Marshal.FreeHGlobal(versionPtr);
 
                 ImGui.Separator();
 
                 if (ImGui.Button("Create"))
                 {
+                    projectName = name;
+                    projectPath = path;
+                    editorVersion = version;
                     ImGui.CloseCurrentPopup();
                 }
 
