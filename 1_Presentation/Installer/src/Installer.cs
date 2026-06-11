@@ -403,14 +403,10 @@ namespace Alis.App.Installer
                 running = platform.PollEvents();
 
                 ProcessKeyWithImgui(io, platform);
-
                 ProcessPendingInput(io, platform);
-
                 example.Draw();
                 platform.SwapBuffers();
-
                 CheckGlError();
-
                 ApplyFrameTiming(frameTimer, now, targetFrameTime);
             }
         }
