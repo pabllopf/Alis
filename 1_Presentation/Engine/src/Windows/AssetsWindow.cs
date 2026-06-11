@@ -595,34 +595,53 @@ namespace Alis.App.Engine.Windows
             }
             else
             {
-                string folderName = Path.GetFileName(path);
-                string[] subDirectories = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly);
+                RenderNonRootDirectory(path);
+            }
+        }
 
-                if (subDirectories.Length > 0)
-                {
-                    if (ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.OpenOnArrow))
-                    {
-                        if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !isMoveDirectory)
-                        {
-                            string relativePath = path.Replace(SpaceWork.Project.Path, "");
-                            currentPath = relativePath.StartsWith($"{Path.DirectorySeparatorChar}") ? relativePath : $"{Path.DirectorySeparatorChar}{relativePath}";
-                            isMoveDirectory = true;
-                        }
+        /// <summary>
+        ///     Renders the non root directory
+        /// </summary>
+        /// <param name="path">The path</param>
+        private void RenderNonRootDirectory(string path)
+        {
+            string folderName = Path.GetFileName(path);
+            string[] subDirectories = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly);
 
-                        RenderSubDirectories(path);
-                        ImGui.TreePop();
-                    }
-                }
-                else
+            if (subDirectories.Length > 0)
+            {
+                if (ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.OpenOnArrow))
                 {
-                    ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen);
                     if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !isMoveDirectory)
                     {
                         string relativePath = path.Replace(SpaceWork.Project.Path, "");
                         currentPath = relativePath.StartsWith($"{Path.DirectorySeparatorChar}") ? relativePath : $"{Path.DirectorySeparatorChar}{relativePath}";
                         isMoveDirectory = true;
                     }
+
+                    RenderSubDirectories(path);
+                    ImGui.TreePop();
                 }
+            }
+            else
+            {
+                RenderLeafDirectory(path, folderName);
+            }
+        }
+
+        /// <summary>
+        ///     Renders the leaf directory
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <param name="folderName">The folder name</param>
+        private void RenderLeafDirectory(string path, string folderName)
+        {
+            ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen);
+            if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !isMoveDirectory)
+            {
+                string relativePath = path.Replace(SpaceWork.Project.Path, "");
+                currentPath = relativePath.StartsWith($"{Path.DirectorySeparatorChar}") ? relativePath : $"{Path.DirectorySeparatorChar}{relativePath}";
+                isMoveDirectory = true;
             }
         }
 
