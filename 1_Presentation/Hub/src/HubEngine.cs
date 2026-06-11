@@ -357,17 +357,11 @@ namespace Alis.App.Hub
                 _spaceWork.IsRunning = platform.PollEvents();
 
                 ProcessKeyWithImgui();
-
                 UpdateMousePosAndButtons();
-
                 ProcessPendingInput();
-
                 Draw();
-
                 platform.SwapBuffers();
-
                 CheckGlError();
-
                 ApplyFrameTiming(frameTimer, now, targetFrameTime);
             }
         }
