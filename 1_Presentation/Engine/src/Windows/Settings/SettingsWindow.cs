@@ -88,10 +88,10 @@ namespace Alis.App.Engine.Windows.Settings
                 return;
             }
 
-          if (ImGui.Begin(WindowName, ref isOpen))
-             {
-                 // Intentionally empty - Settings window placeholder
-             }
+            if (!ImGui.Begin(WindowName, ref isOpen))
+            {
+                return;
+            }
 
             ImGui.End();
         }
