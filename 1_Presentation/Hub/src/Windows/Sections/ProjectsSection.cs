@@ -305,15 +305,11 @@ namespace Alis.App.Hub.Windows.Sections
 
             ImGui.SameLine();
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
-            if (ImGui.Button("Import", new Vector2F(buttonWidth, elementHeight)))
-            {
-            }
+            _ = ImGui.Button("Import", new Vector2F(buttonWidth, elementHeight));
 
             ImGui.SameLine();
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
-            if (ImGui.Button("Clone", new Vector2F(buttonWidth, elementHeight)))
-            {
-            }
+            _ = ImGui.Button("Clone", new Vector2F(buttonWidth, elementHeight));
         }
 
         /// <summary>
