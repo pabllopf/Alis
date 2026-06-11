@@ -189,6 +189,9 @@
         <Project Path="1_Presentation/Installer/src/Alis.App.Installer.csproj" />
         <Project Path="1_Presentation/Installer/test/Alis.App.Installer.Test.csproj" />
     </Folder>
+    <Folder Name="/1_Presentation/Benchmark/">
+        <Project Path="1_Presentation/Benchmark/src/Alis.Benchmark.csproj" />
+    </Folder>
 
     <Folder Name="/1_Presentation/Engine/">
         <Project Path="1_Presentation/Engine/src/Alis.App.Engine.csproj" />
