@@ -245,14 +245,6 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        ///     Saves the project
-        /// </summary>
-        private static void SaveProject()
-        {
-            ImGui.SaveIniSettingsToDisk(AppDomain.CurrentDomain.BaseDirectory + "settings.ini");
-        }
-
-        /// <summary>
         ///     Builds the profiles
         /// </summary>
         private static void BuildProfiles()
