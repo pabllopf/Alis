@@ -93,29 +93,11 @@ namespace Alis.App.Hub.Windows.Sections
         ///     The show create project popup
         /// </summary>
         private bool showCreateProjectPopup;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ProjectsSection" /> class
-        /// </summary>
-        /// <param name="spaceWork">The space work</param>
-        public ProjectsSection(SpaceWork spaceWork) : base(spaceWork)
-        {
-        }
-
+        
         /// <summary>
         ///     The empty
         /// </summary>
         private string searchQuery = string.Empty;
-
-        /// <summary>
-        ///     The selected project index
-        /// </summary>
-        private int selectedProjectIndex = -1;
-
-        /// <summary>
-        ///     The show create project popup
-        /// </summary>
-        private bool showCreateProjectPopup;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectsSection" /> class

@@ -92,6 +92,11 @@ namespace Alis.App.Engine.Menus
             ImGui.PopStyleVar(2);
         }
 
+        public void Render()
+        {
+            
+        }
+
         /// <summary>
         ///     Renders the menu bar content
         /// </summary>

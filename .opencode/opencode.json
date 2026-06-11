@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/unsloth/Qwen3.6-35B-A3B-UD-MLX-4bit",
-  "small_model": "omlx/unsloth/Qwen3.6-35B-A3B-4bit",
+  "model": "omlx/Qwen3.6-35B-A3B-TurboQuant-MLX-4bit",
+  "small_model": "omlx/Qwen3.6-35B-A3B-TurboQuant-MLX-4bit",
 
   "provider": {
     "omlx": {
@@ -17,6 +17,21 @@
         "apiKey": "1234"
       },
       "models": {
+        "Qwen3.6-35B-A3B-TurboQuant-MLX-4bit": {
+          "name": "Qwen3.6-35B-A3B-TurboQuant-MLX-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 131072,
+          "maxOutputTokens": 131072,
+          "limit": {
+            "context": 131072,
+            "output": 131072
+          }
+        },
         "Qwen3.5-35B-A3B-4bit": {
           "name": "Qwen3.5-35B-A3B-4bit",
           "modalities": {
@@ -25,11 +40,11 @@
           },
           "attachment": false,
 
-          "maxInputTokens": 131584,
-          "maxOutputTokens": 131584,
+          "maxInputTokens": 131072,
+          "maxOutputTokens": 131072,
           "limit": {
-            "context": 131584,
-            "output": 131584
+            "context": 131072,
+            "output": 131072
           }
         },
         "Qwen3.5-122B-A10B-4bit": {
@@ -40,11 +55,11 @@
           },
           "attachment": false,
 
-          "maxInputTokens": 131584,
-          "maxOutputTokens": 131584,
+          "maxInputTokens": 131072,
+          "maxOutputTokens": 131072,
           "limit": {
-            "context": 131584,
-            "output": 131584
+            "context": 131072,
+            "output": 131072
           }
         },
          "unsloth/Qwen3.6-35B-A3B-UD-MLX-4bit": {
@@ -55,11 +70,11 @@
           },
           "attachment": false,
 
-          "maxInputTokens": 131584,
-          "maxOutputTokens": 131584,
+          "maxInputTokens": 131072,
+          "maxOutputTokens": 131072,
           "limit": {
-            "context": 131584,
-            "output": 131584
+            "context": 131072,
+            "output": 131072
           }
         },
 
@@ -71,11 +86,11 @@
           },
           "attachment": false,
 
-          "maxInputTokens": 131584,
-          "maxOutputTokens": 131584,
+          "maxInputTokens": 131072,
+          "maxOutputTokens": 131072,
           "limit": {
-            "context": 131584,
-            "output": 131584
+            "context": 131072,
+            "output": 131072
           }
         },
 
@@ -87,11 +102,11 @@
           },
           "attachment": false,
 
-          "maxInputTokens": 131584,
-          "maxOutputTokens": 131584,
+          "maxInputTokens": 131072,
+          "maxOutputTokens": 131072,
           "limit": {
-            "context": 131584,
-            "output": 131584
+            "context": 131072,
+            "output": 131072
           }
         },
 
@@ -103,11 +118,11 @@
           },
           "attachment": false,
 
-          "maxInputTokens": 131584,
-          "maxOutputTokens": 131584,
+          "maxInputTokens": 131072,
+          "maxOutputTokens": 131072,
           "limit": {
-            "context": 131584,
-            "output": 131584
+            "context": 131072,
+            "output": 131072
           }
         }
       }
@@ -151,11 +166,11 @@
           },
           "attachment": false,
 
-          "maxInputTokens": 131584,
-          "maxOutputTokens": 131584,
+          "maxInputTokens": 131072,
+          "maxOutputTokens": 131072,
           "limit": {
-            "context": 131584,
-            "output": 131584
+            "context": 131072,
+            "output": 131072
           }
         }
       }
