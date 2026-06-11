@@ -223,9 +223,9 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     News the scene
         /// </summary>
-      private static void NewScene()
+        private static void NewScene()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         /// <summary>
