@@ -94,14 +94,6 @@ namespace Alis.App.Engine.Windows
         public SpaceWork SpaceWork { get; }
 
         /// <summary>
-        ///     Adds a component to the selected game object
-        /// </summary>
-        /// <param name="componentType">The component type</param>
-        private void AddComponentToSelectedGameObject([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)] Type componentType)
-        {
-        }
-
-        /// <summary>
         ///     Renderiza la sección superior del inspector con el nombre y el tag del objeto.
         /// </summary>
         private void RenderHeader()
