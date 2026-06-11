@@ -169,7 +169,7 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Renders the preferences
         /// </summary>
-        private void RenderPreferences()
+        private static void RenderPreferences()
         {
             if (ImGui.BeginPopupModal("Preferences"))
             {
