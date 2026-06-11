@@ -248,7 +248,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Displays the tips
         /// </summary>
-        private void DisplayTips()
+        private static void DisplayTips()
         {
             List<string> tips = new List<string>
             {
