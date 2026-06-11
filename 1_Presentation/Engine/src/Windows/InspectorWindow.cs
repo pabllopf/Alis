@@ -93,7 +93,5 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
-
-        }
     }
 }

@@ -108,11 +108,6 @@ namespace Alis.App.Hub
         private readonly float resolutionProgramY = 575;
 
         /// <summary>
-        ///     The context
-        /// </summary>
-        private IntPtr _context;
-
-        /// <summary>
         ///     The ebo
         /// </summary>
         private uint _ebo;
@@ -136,11 +131,6 @@ namespace Alis.App.Hub
         ///     The vbo
         /// </summary>
         private uint _vbo;
-
-        /// <summary>
-        ///     The fonts
-        /// </summary>
-        private ImFontAtlasPtr fonts;
 
         /// <summary>
         ///     The platform
@@ -187,14 +177,10 @@ namespace Alis.App.Hub
             IntPtr currentCtx = ImGui.GetCurrentContext();
             if (currentCtx == IntPtr.Zero)
             {
-                _context = ImGui.CreateContext();
-                ImGui.SetCurrentContext(_context);
+                currentCtx = ImGui.CreateContext();
             }
-            else
-            {
-                _context = currentCtx;
-                ImGui.SetCurrentContext(_context);
-            }
+
+            ImGui.SetCurrentContext(currentCtx);
 
             _spaceWork.io = ImGui.GetIo();
             Debug.Assert(_spaceWork.io.NativePtr != IntPtr.Zero, "ImGui _spaceWork.io must be valid after creating or setting context.");
@@ -604,7 +590,7 @@ namespace Alis.App.Hub
         /// </summary>
         private void LoadFonts()
         {
-            fonts = ImGui.GetIo().Fonts;
+            ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
             int fontSize = 14;
             int fontSizeIcon = 13;
