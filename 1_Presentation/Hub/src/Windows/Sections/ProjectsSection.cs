@@ -148,7 +148,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// </summary>
         /// <param name="editorVersion">The editor version</param>
         /// <returns>The engine path</returns>
-        private string GetEnginePath(string editorVersion)
+        private static string GetEnginePath(string editorVersion)
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string editorPath = Path.Combine(basePath, "Editor", editorVersion);
