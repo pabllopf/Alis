@@ -186,7 +186,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The platform
         /// </summary>
-        private INativePlatform platform;
+        private readonly INativePlatform platform;
 
         /// <summary>
         ///     The scale factor
