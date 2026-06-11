@@ -72,24 +72,60 @@ namespace Alis.App.Installer
                 return;
             }
 
-            platform.MakeContextCurrent();
-            Gl.Initialize(platform.GetProcAddress);
-            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
-            Gl.GlEnable(EnableCap.DepthTest);
-
-            IntPtr imguiContext = ImGui.CreateContext();
-            ImGui.SetCurrentContext(imguiContext);
-
+            InitializeOpenGL(platform);
+            IntPtr imguiContext = InitializeImGui(platform);
             IExample example = new ImguiSample(platform);
             example.Initialize();
 
             platform.ShowWindow();
             platform.SetTitle("C# + OpenGL Platform - ImGui");
 
+            ImGuiIoPtr io = ConfigureImGui(imguiContext, platform);
+            Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
+
+            LoadFonts(imguiContext);
+            ConfigureStyle();
+
+            RunGameLoop(frameTimer, ref lastTime, targetFrameTime, io, example, platform);
+
+            example.Cleanup();
+            platform.Cleanup();
+        }
+
+        /// <summary>
+        ///     Initializes OpenGL settings and context.
+        /// </summary>
+        private static void InitializeOpenGL(INativePlatform platform)
+        {
+            platform.MakeContextCurrent();
+            Gl.Initialize(platform.GetProcAddress);
+            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
+            Gl.GlEnable(EnableCap.DepthTest);
+        }
+
+        /// <summary>
+        ///     Initializes ImGui context and returns it.
+        /// </summary>
+        private static IntPtr InitializeImGui(INativePlatform platform)
+        {
+            IntPtr imguiContext = ImGui.CreateContext();
+            ImGui.SetCurrentContext(imguiContext);
+
+            ImNodes.CreateContext();
+            ImPlot.CreateContext();
+            ImGuizMo.SetImGuiContext(imguiContext);
+            ImGui.SetCurrentContext(imguiContext);
+
+            return imguiContext;
+        }
+
+        /// <summary>
+        ///     Configures ImGui IO settings and returns the IO pointer.
+        /// </summary>
+        private static ImGuiIoPtr ConfigureImGui(IntPtr imguiContext, INativePlatform platform)
+        {
             ImGuiIoPtr io = ImGui.GetIo();
             io.DisplaySize = new Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
-
-            Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
             io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
                                | ImGuiBackendFlags.PlatformHasViewports
@@ -102,11 +138,14 @@ namespace Alis.App.Installer
                               | ImGuiConfigFlags.DockingEnable
                               | ImGuiConfigFlags.ViewportsEnable;
 
-            ImNodes.CreateContext();
-            ImPlot.CreateContext();
-            ImGuizMo.SetImGuiContext(imguiContext);
-            ImGui.SetCurrentContext(imguiContext);
+            return io;
+        }
 
+        /// <summary>
+        ///     Loads and configures fonts from resources.
+        /// </summary>
+        private static void LoadFonts(IntPtr imguiContext)
+        {
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
             const int fontSize = 14;
@@ -144,16 +183,17 @@ namespace Alis.App.Installer
             uint fontTexId = LoadTexture(pixelData, texWidth, texHeight);
             fonts.TexId = (IntPtr) fontTexId;
             fonts.ClearTexData();
+        }
 
+        /// <summary>
+        ///     Configures ImGui styling.
+        /// </summary>
+        private static void ConfigureStyle()
+        {
             ImGuiStyle style = ImGui.GetStyle();
             ImGui.StyleColorsDark();
             style.WindowRounding = 0.0f;
             style.Colors2 = new Vector4F(0.00f, 0.00f, 0.00f, 1.00f);
-
-            RunGameLoop(frameTimer, ref lastTime, targetFrameTime, io, example, platform);
-
-            example.Cleanup();
-            platform.Cleanup();
         }
 
         /// <summary>
