@@ -449,12 +449,7 @@ namespace Alis.App.Engine.Windows
             ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f));
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
 
-            if (ImGui.Selectable($"{icon}##{Path.GetFileName(file)}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight)))
-            {
-                if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left))
-                {
-                }
-            }
+            _ = ImGui.Selectable($"{icon}##{Path.GetFileName(file)}", false, ImGuiSelectableFlags.AllowDoubleClick, new Vector2F(itemWidth, itemHeight));
 
             ImGui.PopStyleVar(3);
             ImGui.PopStyleColor();
