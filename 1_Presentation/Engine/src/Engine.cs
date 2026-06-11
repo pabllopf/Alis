@@ -209,6 +209,17 @@ namespace Alis.App.Engine
 
             RunGameLoop(frameTimer, ref lastTime, targetFrameTime);
 
+            CleanupGraphicsResources();
+
+            ImGui.SetCurrentContext(new IntPtr());
+
+            CleanupEngine();
+
+            platform.Cleanup();
+        }
+
+        private void CleanupGraphicsResources()
+        {
             if (_vbo != 0)
             {
                 Gl.DeleteBuffer(_vbo);
@@ -233,12 +244,6 @@ namespace Alis.App.Engine
             {
                 Gl.DeleteTexture(_fontTexture);
             }
-
-            ImGui.SetCurrentContext(new IntPtr());
-
-            CleanupEngine();
-
-            platform.Cleanup();
         }
 
         /// <summary>
