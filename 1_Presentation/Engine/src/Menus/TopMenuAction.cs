@@ -229,14 +229,6 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        ///     Saves the as scene template
-        /// </summary>
-        private static void SaveAsSceneTemplate()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         ///     News the project
         /// </summary>
         private static void NewProject()
