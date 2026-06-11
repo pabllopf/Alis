@@ -1278,7 +1278,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     Builds the default layout
         /// </summary>
-        private void BuildDefaultLayout()
+        private static void BuildDefaultLayout()
         {
             ImGuiViewportPtr viewport = ImGui.GetMainViewport();
             uint dockspaceId = ImGui.GetId("MyDockSpace");
