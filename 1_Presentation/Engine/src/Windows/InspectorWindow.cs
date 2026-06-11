@@ -57,11 +57,6 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The zero
         /// </summary>
-        private readonly IntPtr commandBufferTag = IntPtr.Zero;
-
-        /// <summary>
-        ///     The zero
-        /// </summary>
         private readonly IntPtr searchQueryComand = IntPtr.Zero;
 
         /// <summary>
