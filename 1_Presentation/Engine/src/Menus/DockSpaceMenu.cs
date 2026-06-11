@@ -139,9 +139,7 @@ namespace Alis.App.Engine.Menus
                 ImGui.Separator();
                 _ = ImGui.Selectable($"{FontAwesome5.Plus} New Solution");
 
-                if (ImGui.Selectable($"{FontAwesome5.FolderOpen} Open Solution"))
-                {
-                }
+                _ = ImGui.Selectable($"{FontAwesome5.FolderOpen} Open Solution");
 
                 ImGui.Separator();
                 ImGui.TextDisabled("Recent Solutions");
