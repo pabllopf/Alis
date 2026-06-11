@@ -1126,7 +1126,7 @@ namespace Alis.App.Hub
         /// <param name="height">The height</param>
         /// <param name="title">The title</param>
         /// <returns>The bool</returns>
-        private bool InitializePlatform(INativePlatform platform, int width, int height, string title)
+        private static bool InitializePlatform(INativePlatform platform, int width, int height, string title)
         {
             if (platform == null)
             {
