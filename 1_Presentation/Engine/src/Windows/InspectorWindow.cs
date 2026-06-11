@@ -94,79 +94,9 @@ namespace Alis.App.Engine.Windows
         public SpaceWork SpaceWork { get; }
 
         /// <summary>
-        ///     Renderiza la sección superior del inspector con el nombre y el tag del objeto.
+        ///     Renders the transform
         /// </summary>
-        private void RenderHeader()
-        {
-            /*
-                if (_selectedGameObject == null)
-                {
-                    return;
-                }*/
-
-            if (ImGui.BeginChild("##Header", new Vector2F(ImGui.GetContentRegionAvail().X, 80), true, ImGuiWindowFlags.NoCollapse))
-            {
-                ImGui.PushFont(SpaceWork.FontLoaded30Bold);
-                ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 5); // Adjust the Y position
-                ImGui.Text($"{FontAwesome5.Cube}");
-                ImGui.PopFont();
-
-                ImGui.SameLine();
-
-                /*
-                bool isEnable = _selectedGameObject.IsEnable;
-                ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
-                ImGui.Checkbox($"##{_selectedGameObject.Name} isEnable", ref isEnable);
-                _selectedGameObject.IsEnable = isEnable;
-
-                ImGui.SameLine();
-
-                commandBufferName = Marshal.StringToHGlobalAnsi(_selectedGameObject.Name);
-                ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-                ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
-                if (ImGui.InputText("##Name", commandBufferName, 256))
-                {
-                    _selectedGameObject.Name = Marshal.PtrToStringAnsi(commandBufferName);
-                }
-
-                ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
-                ImGui.Separator();
-
-                ImGui.AlignTextToFramePadding();
-                ImGui.Text("Tag:");
-                ImGui.SameLine();
-
-                int currentTagIndex = Array.IndexOf(tags, _selectedGameObject.Tag);
-                string itemsSeparatedByZerosTags = string.Join("\0", tags);
-                ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X / 2 - 10);
-                if (ImGui.Combo("##Tag", ref currentTagIndex, itemsSeparatedByZerosTags))
-                {
-                    _selectedGameObject.Tag = tags[currentTagIndex];
-                }
-
-                ImGui.SameLine();
-
-                ImGui.AlignTextToFramePadding();
-                ImGui.Text("Layer:");
-                ImGui.SameLine();
-
-                string[] layers = {"Default", "UI", "Background", "Foreground"}; // List of possible layers
-                int currentLayerIndex = Array.IndexOf(layers, _selectedGameObject.Layer);
-                string itemsSeparatedByZerosLayers = string.Join("\0", layers);
-                ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-                if (ImGui.Combo("##Layer", ref currentLayerIndex, itemsSeparatedByZerosLayers))
-                {
-                    _selectedGameObject.Layer = layers[currentLayerIndex];
-                }
-            }
-*/
-                ImGui.EndChild();
-            }
-
-            /// <summary>
-            ///     Renders the transform
-            /// </summary>
-            /*private void RenderTransform()
+        /*private void RenderTransform()
             {
                 if (ImGui.CollapsingHeader($"{FontAwesome5.Compass} Transform", ImGuiTreeNodeFlags.DefaultOpen))
                 {
