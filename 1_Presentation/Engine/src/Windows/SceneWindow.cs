@@ -48,37 +48,6 @@ namespace Alis.App.Engine.Windows
         public static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
 
         /// <summary>
-        ///     The active button
-        /// </summary>
-        private readonly HashSet<ActiveButton> activeButtons = new HashSet<ActiveButton>();
-
-        /// <summary>
-        ///     The height texture
-        /// </summary>
-        private float heightTexture;
-
-        /// <summary>
-        ///     The offset texture
-        /// </summary>
-        private Vector2F offsetTexture;
-
-        /// <summary>
-        ///     The pixel ptr
-        /// </summary>
-        private IntPtr pixelPtr;
-
-
-        /// <summary>
-        ///     The selected game object
-        /// </summary>
-        //private GameObject selectedGameObject;
-
-        /// <summary>
-        ///     The textureopen gl id
-        /// </summary>
-        private uint textureopenGlId;
-
-        /// <summary>
         ///     The width texture
         /// </summary>
         private float widthTexture;
