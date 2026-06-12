@@ -386,6 +386,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void DeleteGameObject()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
