@@ -855,7 +855,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ReportBug()
         {
-            OpenUrl("https://github.com/pabllopf/Alis/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=");
+            OpenUrl(AlisBugReportUrl);
         }
 
         /// <summary>
