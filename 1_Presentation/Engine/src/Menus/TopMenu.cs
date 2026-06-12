@@ -256,7 +256,7 @@ namespace Alis.App.Engine.Menus
             }
         }
 
-        private void RenderHelpMenu()
+        private static void RenderHelpMenu()
         {
             if (ImGui.BeginMenu("Help"))
             {
