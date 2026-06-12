@@ -62,6 +62,8 @@ namespace Alis.App.Hub
         /// </summary>
         private readonly Vector2F[] _lastClickPos = new Vector2F[5];
 
+        private const string HubJetBrainsMonoBoldTtf = "Hub_JetBrainsMono-Bold.ttf";
+
         /// <summary>
         ///     The last click time
         /// </summary>
@@ -588,7 +590,7 @@ namespace Alis.App.Hub
             int fontSize = 14;
             int fontSizeIcon = 13;
 
-            MemoryStream fontFileSolid = AssetRegistry.GetResourceMemoryStreamByName("Hub_JetBrainsMono-Bold.ttf");
+            MemoryStream fontFileSolid = AssetRegistry.GetResourceMemoryStreamByName(HubJetBrainsMonoBoldTtf);
             IntPtr fontData = Marshal.AllocHGlobal((int) fontFileSolid.Length);
             byte[] fontDataBytes = new byte[fontFileSolid.Length];
             fontFileSolid.ReadExactly(fontDataBytes, 0, (int) fontFileSolid.Length);
@@ -625,7 +627,7 @@ namespace Alis.App.Hub
                 return;
             }
 
-            MemoryStream fontFileSolid12 = AssetRegistry.GetResourceMemoryStreamByName("Hub_JetBrainsMono-Bold.ttf");
+            MemoryStream fontFileSolid12 = AssetRegistry.GetResourceMemoryStreamByName(HubJetBrainsMonoBoldTtf);
             IntPtr fontData12 = Marshal.AllocHGlobal((int) fontFileSolid12.Length);
             byte[] fontDataBytes12 = new byte[fontFileSolid12.Length];
             fontFileSolid12.ReadExactly(fontDataBytes12, 0, (int) fontFileSolid12.Length);
@@ -661,7 +663,7 @@ namespace Alis.App.Hub
                 return;
             }
 
-            MemoryStream fontFileSolid40 = AssetRegistry.GetResourceMemoryStreamByName("Hub_JetBrainsMono-Bold.ttf");
+            MemoryStream fontFileSolid40 = AssetRegistry.GetResourceMemoryStreamByName(HubJetBrainsMonoBoldTtf);
             IntPtr fontData40 = Marshal.AllocHGlobal((int) fontFileSolid40.Length);
             byte[] fontDataBytes40 = new byte[fontFileSolid40.Length];
             fontFileSolid40.ReadExactly(fontDataBytes40, 0, (int) fontFileSolid40.Length);
@@ -697,7 +699,7 @@ namespace Alis.App.Hub
                 return;
             }
 
-            MemoryStream fontFileSolid28 = AssetRegistry.GetResourceMemoryStreamByName("Hub_JetBrainsMono-Bold.ttf");
+            MemoryStream fontFileSolid28 = AssetRegistry.GetResourceMemoryStreamByName(HubJetBrainsMonoBoldTtf);
             IntPtr fontData28 = Marshal.AllocHGlobal((int) fontFileSolid28.Length);
             byte[] fontDataBytes28 = new byte[fontFileSolid28.Length];
             fontFileSolid28.ReadExactly(fontDataBytes28, 0, (int) fontFileSolid28.Length);
@@ -732,7 +734,7 @@ namespace Alis.App.Hub
                 return;
             }
 
-            MemoryStream fontFileSolidLight = AssetRegistry.GetResourceMemoryStreamByName("Hub_JetBrainsMono-Bold.ttf");
+            MemoryStream fontFileSolidLight = AssetRegistry.GetResourceMemoryStreamByName(HubJetBrainsMonoBoldTtf);
             IntPtr fontDataLight = Marshal.AllocHGlobal((int) fontFileSolidLight.Length);
             byte[] fontDataBytesLight = new byte[fontFileSolidLight.Length];
             fontFileSolidLight.ReadExactly(fontDataBytesLight, 0, (int) fontFileSolidLight.Length);
