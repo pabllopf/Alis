@@ -159,6 +159,18 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
+        /// Tests that video writer stream ctor should throw on negative height
+        /// </summary>
+        [Fact]
+        public void VideoWriter_StreamCtor_ShouldThrowOnNegativeHeight()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 1920, -1, 30));
+            }
+        }
+
+        /// <summary>
         /// Tests that video writer stream ctor should throw on zero framerate
         /// </summary>
         [Fact]
@@ -167,6 +179,18 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             using (MemoryStream ms = new MemoryStream())
             {
                 Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 1920, 1080, 0));
+            }
+        }
+
+        /// <summary>
+        /// Tests that video writer stream ctor should throw on negative framerate
+        /// </summary>
+        [Fact]
+        public void VideoWriter_StreamCtor_ShouldThrowOnNegativeFramerate()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 1920, 1080, -1));
             }
         }
 
