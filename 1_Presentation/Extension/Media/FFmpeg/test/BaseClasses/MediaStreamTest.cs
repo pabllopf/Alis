@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
 using Xunit;
 
@@ -360,6 +361,70 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             bool isVideo = stream.IsVideo;
 
             Assert.True(isVideo);
+        }
+
+        /// <summary>
+        ///     Tests that media stream is audio should return false for subtitle codec type
+        /// </summary>
+        [Fact]
+        public void MediaStream_IsAudio_ShouldReturnFalseForSubtitleCodecType()
+        {
+            MediaStream stream = new MediaStream {CodecType = "subtitle"};
+
+            bool isAudio = stream.IsAudio;
+
+            Assert.False(isAudio);
+        }
+
+        /// <summary>
+        ///     Tests that media stream is video should return false for subtitle codec type
+        /// </summary>
+        [Fact]
+        public void MediaStream_IsVideo_ShouldReturnFalseForSubtitleCodecType()
+        {
+            MediaStream stream = new MediaStream {CodecType = "subtitle"};
+
+            bool isVideo = stream.IsVideo;
+
+            Assert.False(isVideo);
+        }
+
+        /// <summary>
+        ///     Tests that media stream sample rate number should return negative one for whitespace string
+        /// </summary>
+        [Fact]
+        public void MediaStream_SampleRateNumber_ShouldReturnNegativeOneForWhitespaceString()
+        {
+            MediaStream stream = new MediaStream {SampleRate = "   "};
+
+            int sampleRateNumber = stream.SampleRateNumber;
+
+            Assert.Equal(-1, sampleRateNumber);
+        }
+
+        /// <summary>
+        ///     Tests that media stream disposition property should be settable
+        /// </summary>
+        [Fact]
+        public void MediaStream_DispositionProperty_ShouldBeSettable()
+        {
+            MediaStream stream = new MediaStream();
+            Dictionary<string, int> disposition = new Dictionary<string, int> {{"default", 1}};
+
+            stream.Disposition = disposition;
+
+            Assert.Equal(disposition, stream.Disposition);
+        }
+
+        /// <summary>
+        ///     Tests that media stream default disposition should be null
+        /// </summary>
+        [Fact]
+        public void MediaStream_DefaultDisposition_ShouldBeNull()
+        {
+            MediaStream stream = new MediaStream();
+
+            Assert.Null(stream.Disposition);
         }
     }
 }
