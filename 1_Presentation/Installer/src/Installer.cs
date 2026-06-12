@@ -80,7 +80,7 @@ namespace Alis.App.Installer
             platform.ShowWindow();
             platform.SetTitle("C# + OpenGL Platform - ImGui");
 
-            ImGuiIoPtr io = ConfigureImGui(imguiContext, platform);
+            ImGuiIoPtr io = ConfigureImGui(platform);
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
             LoadFonts(imguiContext);
@@ -122,7 +122,7 @@ namespace Alis.App.Installer
         /// <summary>
         ///     Configures ImGui IO settings and returns the IO pointer.
         /// </summary>
-        private static ImGuiIoPtr ConfigureImGui(IntPtr imguiContext, INativePlatform platform)
+        private static ImGuiIoPtr ConfigureImGui(INativePlatform platform)
         {
             ImGuiIoPtr io = ImGui.GetIo();
             io.DisplaySize = new Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
