@@ -214,7 +214,7 @@ namespace Alis.App.Engine.Menus
             }
         }
 
-        private void RenderComponentMenu()
+        private static void RenderComponentMenu()
         {
             if (ImGui.BeginMenu("Component"))
             {
