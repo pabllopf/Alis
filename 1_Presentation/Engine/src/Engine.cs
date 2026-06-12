@@ -179,6 +179,11 @@ namespace Alis.App.Engine
         private bool IsInit;
 
         /// <summary>
+        ///     The JetBrains Mono font resource name
+        /// </summary>
+        private const string JetBrainsMonoFontName = "JetBrainsMonoFontName";
+
+        /// <summary>
         ///     The platform
         /// </summary>
         private INativePlatform platform;
@@ -862,7 +867,7 @@ namespace Alis.App.Engine
             int fontSize = 14;
             int fontSizeIcon = 13;
 
-            MemoryStream fontFileSolid = AssetRegistry.GetResourceMemoryStreamByName("JetBrainsMonoFontName");
+            MemoryStream fontFileSolid = AssetRegistry.GetResourceMemoryStreamByName(JetBrainsMonoFontName);
             IntPtr fontData = Marshal.AllocHGlobal((int) fontFileSolid.Length);
             byte[] fontDataBytes = new byte[fontFileSolid.Length];
             fontFileSolid.ReadExactly(fontDataBytes, 0, (int) fontFileSolid.Length);
@@ -899,7 +904,7 @@ namespace Alis.App.Engine
                 return;
             }
 
-            MemoryStream fontFileSolid12 = AssetRegistry.GetResourceMemoryStreamByName("JetBrainsMonoFontName");
+            MemoryStream fontFileSolid12 = AssetRegistry.GetResourceMemoryStreamByName(JetBrainsMonoFontName);
             IntPtr fontData12 = Marshal.AllocHGlobal((int) fontFileSolid12.Length);
             byte[] fontDataBytes12 = new byte[fontFileSolid12.Length];
             fontFileSolid12.ReadExactly(fontDataBytes12, 0, (int) fontFileSolid12.Length);
@@ -935,7 +940,7 @@ namespace Alis.App.Engine
                 return;
             }
 
-            MemoryStream fontFileSolid40 = AssetRegistry.GetResourceMemoryStreamByName("JetBrainsMonoFontName");
+            MemoryStream fontFileSolid40 = AssetRegistry.GetResourceMemoryStreamByName(JetBrainsMonoFontName);
             IntPtr fontData40 = Marshal.AllocHGlobal((int) fontFileSolid40.Length);
             byte[] fontDataBytes40 = new byte[fontFileSolid40.Length];
             fontFileSolid40.ReadExactly(fontDataBytes40, 0, (int) fontFileSolid40.Length);
@@ -971,7 +976,7 @@ namespace Alis.App.Engine
                 return;
             }
 
-            MemoryStream fontFileSolid28 = AssetRegistry.GetResourceMemoryStreamByName("JetBrainsMonoFontName");
+            MemoryStream fontFileSolid28 = AssetRegistry.GetResourceMemoryStreamByName(JetBrainsMonoFontName);
             IntPtr fontData28 = Marshal.AllocHGlobal((int) fontFileSolid28.Length);
             byte[] fontDataBytes28 = new byte[fontFileSolid28.Length];
             fontFileSolid28.ReadExactly(fontDataBytes28, 0, (int) fontFileSolid28.Length);
@@ -1006,7 +1011,7 @@ namespace Alis.App.Engine
                 return;
             }
 
-            MemoryStream fontFileSolidLight = AssetRegistry.GetResourceMemoryStreamByName("JetBrainsMonoFontName");
+            MemoryStream fontFileSolidLight = AssetRegistry.GetResourceMemoryStreamByName(JetBrainsMonoFontName);
             IntPtr fontDataLight = Marshal.AllocHGlobal((int) fontFileSolidLight.Length);
             byte[] fontDataBytesLight = new byte[fontFileSolidLight.Length];
             fontFileSolidLight.ReadExactly(fontDataBytesLight, 0, (int) fontFileSolidLight.Length);
