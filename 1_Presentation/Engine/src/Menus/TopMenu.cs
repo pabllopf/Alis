@@ -160,7 +160,7 @@ namespace Alis.App.Engine.Menus
             }
         }
 
-        private void RenderAssetsMenu()
+        private static void RenderAssetsMenu()
         {
             if (ImGui.BeginMenu("Assets"))
             {
