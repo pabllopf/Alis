@@ -328,11 +328,6 @@ namespace Alis.App.Hub.Windows.Sections
         private string projectPath = string.Empty;
 
         /// <summary>
-        ///     The zero
-        /// </summary>
-        private IntPtr conmandPtrEditorVersion = IntPtr.Zero;
-
-        /// <summary>
         ///     The empty
         /// </summary>
         private string editorVersion = string.Empty;
