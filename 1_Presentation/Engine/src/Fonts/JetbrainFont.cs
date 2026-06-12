@@ -32,7 +32,8 @@ namespace Alis.App.Engine.Fonts
     /// <summary>
     ///     The jetbrain font class
     /// </summary>
-    public sealed class JetbrainFont
+    /// <seealso cref="IFont" />
+    public sealed class JetbrainFont : IFont
     {
     }
 }
