@@ -179,5 +179,41 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
                 Assert.Equal(ms, writer.DestinationStream);
             }
         }
+
+        /// <summary>
+        /// Tests that audio writer stream ctor should throw on negative channels
+        /// </summary>
+        [Fact]
+        public void AudioWriter_StreamCtor_ShouldThrowOnNegativeChannels()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() => new AudioWriter(ms, -1, 44100));
+            }
+        }
+
+        /// <summary>
+        /// Tests that audio writer stream ctor should throw on zero sample rate
+        /// </summary>
+        [Fact]
+        public void AudioWriter_StreamCtor_ShouldThrowOnZeroSampleRate()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() => new AudioWriter(ms, 2, 0));
+            }
+        }
+
+        /// <summary>
+        /// Tests that audio writer stream ctor should throw on negative sample rate
+        /// </summary>
+        [Fact]
+        public void AudioWriter_StreamCtor_ShouldThrowOnNegativeSampleRate()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() => new AudioWriter(ms, 2, -1));
+            }
+        }
     }
 }
