@@ -792,7 +792,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void ApiReference()
         {
-            OpenUrl("https://www.alisengine.com/en/v0.4.0/api/Alis.html");
+            OpenUrl(AlisApiUrl);
         }
 
         /// <summary>
