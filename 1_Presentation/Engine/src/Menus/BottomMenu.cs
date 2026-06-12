@@ -99,7 +99,7 @@ namespace Alis.App.Engine.Menus
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
         }
 
-        private void RenderMenuContent()
+        private static void RenderMenuContent()
         {
             ImGui.Columns(6, "MenuColumns", false);
 
