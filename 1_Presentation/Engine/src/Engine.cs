@@ -298,7 +298,7 @@ namespace Alis.App.Engine
             }
         }
 
-        private void CheckGlError()
+        private static void CheckGlError()
         {
             int glError = Gl.GlGetError();
             if (glError != 0)
