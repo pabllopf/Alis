@@ -222,6 +222,19 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
+        /// Tests that audio video writer stream ctor should throw on zero audio channels
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_StreamCtor_ShouldThrowOnZeroAudioChannels()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() =>
+                    new AudioVideoWriter(ms, 1920, 1080, 30, 0, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+            }
+        }
+
+        /// <summary>
         /// Tests that audio video writer stream ctor should throw on invalid bit depth
         /// </summary>
         [Fact]
