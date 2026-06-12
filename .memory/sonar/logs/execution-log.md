@@ -1,122 +1,43 @@
 # Execution Log
 
-## Session Start
+## Session: 2026-06-12
 
-- **Timestamp**: 2026-06-11
-
-### AZ6zQlWZ6-8DAyAuaboj — csharpsquid:S3776 (CRITICAL)
-- **File**: Engine.cs:242
-- **Issue**: Cognitive Complexity 18 → 15 allowed
-- **Fix**: Extracted `CalculateDeltaTime`, `ProcessPendingInput`, `CheckGlError` helper methods
-- **Commit**: bcec4dcba
-
-### AZ6zQlUF6-8DAyAuabof — csharpsquid:S1186 (CRITICAL)
-- **File**: TopMenuAction.cs:226
-- **Issue**: Empty method — must throw `NotSupportedException` or have explanatory comment
-- **Fix**: Changed `NotImplementedException` → `NotSupportedException`, fixed indentation
-- **Commit**: 907e5aae2
-
-### AZ6zQlOe6-8DAyAuabod — csharpsquid:S3776 (CRITICAL)
-- **File**: HubEngine.cs:364
-- **Issue**: Cognitive Complexity 18 → 15 allowed
-- **Fix**: Extracted `CalculateDeltaTime`, `ProcessPendingInput`, `CheckGlError` helper methods
-- **Commit**: 7c8d6c7aa
-
-### AZ6zQlXO6-8DAyAuabok — csharpsquid:S3776 (CRITICAL)
-- **File**: Installer.cs:361
-- **Issue**: Cognitive Complexity 18 → 15 allowed
-- **Fix**: Extracted `CalculateDeltaTime`, `ProcessPendingInput`, `CheckGlError` helper methods
-- **Commit**: e2114293b
-- **Timestamp**: 2026-06-11
-
-### AZ6zQlWZ6-8DAyAuaboi — csharpsquid:S2933 (MAJOR)
-- **File**: Engine.cs:185
-- **Issue**: Field 'platform' is never assigned and always has default value null
-- **Fix**: Removed readonly modifier, added GetPlatform() method, assigned platform in Run()
-- **Commit**: 571f17590
-- **Timestamp**: 2026-06-11
-
-### AZ6zQlV-6-8DAyAuabog — csharpsquid:S2325 (MINOR)
-- **File**: DockSpaceMenu.cs:134
-- **Issue**: Method should not be static when it only accesses instance members
-- **Fix**: Removed static modifier from RenderSolutionCombo() and RenderControlButtons()
-- **Commit**: 6198973a1
-- **Timestamp**: 2026-06-11
-
-### AZ6OPa6Rsynw1OJ1vi46 — csharpsquid:S3776 (CRITICAL)
-- **File**: AssetsWindow.cs:196
-- **Issue**: Cognitive Complexity 70 → 15
-- **Fix**: Extracted `RenderPlusMenu()` helper
-- **Commit**: 5f1b41c2c
-
-### AZ6OPa6Rsynw1OJ1vi5B — csharpsquid:S3776 (CRITICAL)
-- **File**: AssetsWindow.cs:368
-- **Issue**: Cognitive Complexity 29 → 15
-- **Fix**: Extracted `RenderDirectoryItem`, `RenderFileItem`, `RenderTableFillItems` helpers
-- **Commit**: 9b75abf72
-
-### AZ6OPa6Rsynw1OJ1vi5F — csharpsquid:S3776 (CRITICAL)
-- **File**: AssetsWindow.cs:553
-- **Issue**: Cognitive Complexity 29 → 15
-- **Fix**: Extracted `RenderNonRootDirectory`, `RenderLeafDirectory` from `RenderDirectory`
-- **Commit**: 49ef6f542
-
-### AZ6OPa6Rsynw1OJ1vi5G — csharpsquid:S3776 (CRITICAL)
-- **File**: AssetsWindow.cs:653
-- **Issue**: Cognitive Complexity 40 → 15
-- **Fix**: Refactored `RenderFilesOnFolder()` to use shared helpers
-- **Commit**: 81bf81a18
-
-### AZ6OPa7Wsynw1OJ1vi5p — csharpsquid:S3776 (CRITICAL)
-- **File**: ConsoleWindow.cs:191
-- **Issue**: Cognitive Complexity 21 → 15
-- **Fix**: Extracted `RenderConsoleLine`, `PushLineColor` helpers
-- **Commit**: 56af5b8f0
-
-### AZ6OPa6zsynw1OJ1vi5O — csharpsquid:S125 (MAJOR)
-- **File**: InspectorWindow.cs:55
-- **Issue**: Commented-out _componentIcons block
-- **Fix**: Removed commented code
-- **Commit**: 3740885ef
-
-### AZ6OPa6zsynw1OJ1vi5Q — csharpsquid:S125 (MAJOR)
-- **File**: InspectorWindow.cs:152
-- **Issue**: Commented-out AddComponentPopup block
-- **Fix**: Removed commented code
-- **Commit**: 7cb32f3cc
-
-### AZ6OPa7rsynw1OJ1vi5t — csharpsquid:S1144 (MAJOR)
-- **File**: TopMenuAction.cs:233
-- **Issue**: Unused private method 'SaveAsSceneTemplate'
-- **Fix**: Removed method
-- **Commit**: dfda84a02
-
-### AZ6OPa7rsynw1OJ1vi5u — csharpsquid:S1144 (MAJOR)
-- **File**: TopMenuAction.cs:257
-- **Issue**: Unused private method 'SaveProject'
-- **Fix**: Removed method
-- **Commit**: 830501534
-
-### AZ6OPa7rsynw1OJ1vi5v — csharpsquid:S1144 (MAJOR)
-- **File**: TopMenuAction.cs:393
-- **Issue**: Unused private method 'Duplicate'
-- **Fix**: Removed method (and Delete, CreateUi, CreateAudio, RenameGameObject)
-- **Commit**: ebc28db20
-
-### AZ6zQlSD6-8DAyAuaboe — csharpsquid:S108 (MAJOR)
-- **File**: SettingsWindow.cs:92
-- **Issue**: Empty block in ImGui.Begin
-- **Fix**: Changed to early-return pattern (`if (!ImGui.Begin(...)) return;`)
-- **Commit**: 7c85d08ab
-
-### AZ6OPa5osynw1OJ1vi44 — csharpsquid:S108 (MAJOR)
-- **File**: GameWindow.cs:72
-- **Issue**: Empty block in ImGui.Begin
-- **Fix**: Changed to early-return pattern (`if (!ImGui.Begin(...)) return;`)
-- **Commit**: ee0ac445b
-
-### AZ6OPa5Tsynw1OJ1vi4y — csharpsquid:S108 (MAJOR)
-- **File**: SceneWindow.cs:118
-- **Issue**: Empty block in ImGui.Begin
-- **Fix**: Changed to early-return pattern (`if (!ImGui.Begin(...)) return;`)
-- **Commit**: a8f6dcd24
+| Time | Action | Issue | File | Details |
+|------|--------|-------|------|---------|
+| 2026-06-12T17:43:45 | FIX | AZ64sUr6LnQ0n5Zded5D | Engine.cs | S1144 - Removed unused private const field |
+| 2026-06-12T17:44:30 | FIX | AZ64sUr6LnQ0n5Zded5E | Engine.cs | S1192 - Defined constant, replaced 6 literals |
+| 2026-06-12T17:44:45 | FIX | AZ64sUr7LnQ0n5Zded5F | Engine.cs | S2325 - Made CheckGlError static |
+| 2026-06-12T17:44:55 | FIX | AZ64sUr7LnQ0n5Zded5G | Engine.cs | S2325 - Made GetPlatform static |
+| 2026-06-12T17:45:05 | FIX | AZ64sUrRLnQ0n5Zded5A | BottomMenu.cs | S2325 - Made ApplyBottomMenuStyling static |
+| 2026-06-12T17:45:10 | FIX | AZ64sUrRLnQ0n5Zded5B | BottomMenu.cs | S2325 - Made RenderBranchSelector static |
+| 2026-06-12T17:45:15 | FIX | AZ64sUrhLnQ0n5Zded5C | DockSpaceMenu.cs | S2325 - Made RenderMenuBarContent static |
+| 2026-06-12T17:45:20 | FIX | AZ64sUrDLnQ0n5Zded4- | TopMenu.cs | S2325 - Made ApplyTopMenuStyling static |
+| 2026-06-12T17:45:25 | FIX | AZ64sUrDLnQ0n5Zded4_ | TopMenu.cs | S2325 - Made RenderMenuItem static |
+| 2026-06-12T17:45:35 | FIX | AZ64sUpxLnQ0n5Zded42 | AssetsWindow.cs | S2325 - Made RenderPlusMenu static |
+| 2026-06-12T17:45:40 | FIX | AZ64sUqQLnQ0n5Zded43 | ConsoleWindow.cs | S2325 - Made RenderConsoleLine static |
+| 2026-06-12T17:45:45 | FIX | AZ64sUnqLnQ0n5Zded4z | HubEngine.cs | S2325 - Made CheckGlError static |
+| 2026-06-12T17:46:00 | FIX | AZ64sUqmLnQ0n5Zded44 | TopMenuAction.cs | S1186 - Added NotImplementedException to DuplicateGameObject |
+| 2026-06-12T17:46:10 | FIX | AZ64sUqmLnQ0n5Zded45 | TopMenuAction.cs | S1186 - Added NotImplementedException to DeleteGameObject |
+| 2026-06-12T17:46:20 | FIX | AZ64sUqmLnQ0n5Zded46 | TopMenuAction.cs | S2737 - Removed redundant catch block |
+| 2026-06-12T17:46:35 | FIX | AZ6OPa7rsynw1OJ1vi6- | TopMenuAction.cs | S1075 - Extracted URL constant for Alis manual |
+| 2026-06-12T17:46:45 | FIX | AZ6OPa7rsynw1OJ1vi6_ | TopMenuAction.cs | S1075 - Extracted URL constant for API reference |
+| 2026-06-12T17:46:55 | FIX | AZ6OPa7rsynw1OJ1vi7C | TopMenuAction.cs | S1075 - Extracted URL constant for bug report |
+| 2026-06-12T17:47:05 | FIX | AZ6OPa7rsynw1OJ1vi5x | TopMenuAction.cs | S1144 - Removed unused CreateUi method |
+| 2026-06-12T17:47:20 | FIX | AZ64sUpxLnQ0n5Zded41 | AssetsWindow.cs | S3776 - Reduced cognitive complexity via foreach loop |
+| 2026-06-12T17:47:40 | FIX | AZ6OPa7Wsynw1OJ1vi5o | ConsoleWindow.cs | S3881 - Fixed IDisposable pattern with Dispose(bool) |
+| 2026-06-12T17:47:55 | FIX | AZ64sUnqLnQ0n5Zded40 | HubEngine.cs | S2589 - Removed unnecessary null-conditional |
+| 2026-06-12T17:48:10 | FIX | AZ6OPa1Dsynw1OJ1vi4M | HubEngine.cs | S1192 - Defined constant for font resource name |
+| 2026-06-12T17:48:25 | FIX | AZ64sUlhLnQ0n5Zded4w | ProjectsSection.cs | S1144 - Removed unused conmandPtrProjectName |
+| 2026-06-12T17:48:35 | FIX | AZ64sUlhLnQ0n5Zded4x | ProjectsSection.cs | S1144 - Removed unused conmandPtrProjectPath |
+| 2026-06-12T17:48:45 | FIX | AZ64sUlhLnQ0n5Zded4y | ProjectsSection.cs | S1144 - Removed unused conmandPtrEditorVersion |
+| 2026-06-12T17:49:00 | FIX | AZ64sUs1LnQ0n5Zded5H | Installer.cs | S1118 - Made Installer class static |
+| 2026-06-12T17:49:10 | FIX | AZ64sUs1LnQ0n5Zded5I | Installer.cs | S1172 - Removed unused platform param from InitializeImGui |
+| 2026-06-12T17:49:20 | FIX | AZ64sUs1LnQ0n5Zded5J | Installer.cs | S1172 - Removed unused imguiContext param from ConfigureImGui |
+| 2026-06-12T17:49:30 | FIX | AZ64sUs1LnQ0n5Zded5K | Installer.cs | S1172 - Removed unused imguiContext param from LoadFonts |
+| 2026-06-12T17:49:45 | FIX | AZ64sUq1LnQ0n5Zded47 | IMenu.cs | CS0108 - Added new keyword to Initialize |
+| 2026-06-12T17:49:55 | FIX | AZ64sUq1LnQ0n5Zded48 | IMenu.cs | CS0108 - Added new keyword to Update |
+| 2026-06-12T17:50:05 | FIX | AZ64sUq1LnQ0n5Zded49 | IMenu.cs | CS0108 - Added new keyword to Render |
+| 2026-06-12T17:50:20 | FIX | AZ6OPbA2synw1OJ1vi8H | ImguiSample.cs | S2589 - Removed unnecessary null-conditional |
+| 2026-06-12T17:50:35 | FIX | AZ6OPa_Ksynw1OJ1vi8A | HackFont.cs | S2094 - Implemented IFont interface |
+| 2026-06-12T17:50:45 | FIX | AZ6OPa_fsynw1OJ1vi8B | JetbrainFont.cs | S2094 - Implemented IFont interface |
+| 2026-06-12T17:51:00 | FIX | AZ6OPa6isynw1OJ1vi5L | ProjectWindow.cs | S1144 - Removed unused RenameGameObject method |

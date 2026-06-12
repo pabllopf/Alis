@@ -1,135 +1,44 @@
-# Issue Index
+# Issues Index
 
-| Sonar ID | Rule | File | Status | Committed |
-|----------|------|------|--------|-----------|
-| AZ6zQlWZ6-8DAyAuaboj | csharpsquid:S3776 | Engine.cs | ✅ fixed | bcec4dcba |
-| AZ6zQlUF6-8DAyAuabof | csharpsquid:S1186 | TopMenuAction.cs | ✅ fixed | 907e5aae2 |
-| AZ6zQlOe6-8DAyAuabod | csharpsquid:S3776 | HubEngine.cs | ✅ fixed | 7c8d6c7aa |
-| AZ6zQlXO6-8DAyAuabok | csharpsquid:S3776 | Installer.cs | ✅ fixed | e2114293b |
-| AZ6zQlWZ6-8DAyAuaboi | csharpsquid:S2933 | Engine.cs | ✅ fixed | 571f17590 |
-| AZ6zQlV-6-8DAyAuabog | csharpsquid:S2325 | DockSpaceMenu.cs | ✅ fixed | 6198973a1 |
-| AZ6OPbAksynw1OJ1vi8E | csharpsquid:S2696 | Installer.cs | ✅ fixed | f498c0e39 |
-| AZ6zQlWZ6-8DAyAuaboi | csharpsquid:S2933 | Engine.cs | 🔴 open | - |
-| AZ6OPa82synw1OJ1vi7U | csharpsquid:S3776 | BottomMenu.cs | 🔴 open | - |
-| AZ6OPa8ksynw1OJ1vi7J | csharpsquid:S3776 | TopMenu.cs | 🔴 open | - |
-| AZ6OPa6Rsynw1OJ1vi46 | csharpsquid:S3776 | AssetsWindow.cs | ✅ fixed | 5f1b41c2c |
-| AZ6OPa6Rsynw1OJ1vi5B | csharpsquid:S3776 | AssetsWindow.cs | ✅ fixed | 9b75abf72 |
-| AZ6OPa6Rsynw1OJ1vi5B | csharpsquid:S3776 | AssetsWindow.cs | ✅ fixed | 9b75abf72 |
-| AZ6OPa6Rsynw1OJ1vi5F | csharpsquid:S3776 | AssetsWindow.cs | ✅ fixed | 49ef6f542 |
-| AZ6OPa6Rsynw1OJ1vi5G | csharpsquid:S3776 | AssetsWindow.cs | ✅ fixed | 81bf81a18 |
-| AZ6OPa7Wsynw1OJ1vi5p | csharpsquid:S3776 | ConsoleWindow.cs | 🔴 open | - |
-| AZ6OPa0Hsynw1OJ1vi3- | csharpsquid:S4487 | HubWindow.cs | 🔴 open | - |
-| AZ6OPbAksynw1OJ1vi8E | csharpsquid:S2696 | Installer.cs | 🔴 open | - |
-| AZ6OPa9Hsynw1OJ1vi7Y | csharpsquid:S108 | DockSpaceMenu.cs | ✅ fixed | 848ed3ab9 |
-| AZ6OPa9Hsynw1OJ1vi7Z | csharpsquid:S108 | DockSpaceMenu.cs | ✅ fixed | 6effdd7cc |
-| AZ6OPa9Hsynw1OJ1vi7a | csharpsquid:S108 | DockSpaceMenu.cs | ✅ fixed | e755e8e70 |
-| AZ6OPa7rsynw1OJ1vi5t | csharpsquid:S1144 | TopMenuAction.cs | 🔴 open | - |
-| AZ6OPa7rsynw1OJ1vi5u | csharpsquid:S1144 | TopMenuAction.cs | 🔴 open | - |
-| AZ6OPa7rsynw1OJ1vi5v | csharpsquid:S1144 | TopMenuAction.cs | 🔴 open | - |
-| AZ6OPa7rsynw1OJ1vi5w | csharpsquid:S1144 | TopMenuAction.cs | 🔴 open | - |
-| AZ6OPa7rsynw1OJ1vi5x | csharpsquid:S1144 | TopMenuAction.cs | 🔴 open | - |
-| AZ6OPa7rsynw1OJ1vi5y | csharpsquid:S1144 | TopMenuAction.cs | 🔴 open | - |
-| AZ6OPa7rsynw1OJ1vi5z | csharpsquid:S1144 | TopMenuAction.cs | 🔴 open | - |
-| AZ6OPa6Rsynw1OJ1vi47 | csharpsquid:S108 | AssetsWindow.cs | ✅ fixed | 0c1cf2db3 |
-| AZ6OPa6Rsynw1OJ1vi48 | csharpsquid:S108 | AssetsWindow.cs | ✅ fixed | f4cc6797c |
-| AZ6OPa6Rsynw1OJ1vi49 | csharpsquid:S108 | AssetsWindow.cs | ✅ fixed | 200050568 |
-| AZ6OPa6Rsynw1OJ1vi4- | csharpsquid:S108 | AssetsWindow.cs | ✅ fixed | 3e8fb6ca3 |
-| AZ6OPa6Rsynw1OJ1vi4_ | csharpsquid:S108 | AssetsWindow.cs | ✅ fixed | 3e8fb6ca3 |
-| AZ6OPa6Rsynw1OJ1vi5A | csharpsquid:S108 | AssetsWindow.cs | ✅ fixed | 3e8fb6ca3 |
-| AZ6OPa6Rsynw1OJ1vi5D | csharpsquid:S1066 | AssetsWindow.cs | ✅ fixed | f63793a12 |
-| AZ6OPa6Rsynw1OJ1vi5E | csharpsquid:S1066 | AssetsWindow.cs | ✅ fixed | f63793a12 |
-| AZ6OPa6Rsynw1OJ1vi5C | csharpsquid:S108 | AssetsWindow.cs | ✅ fixed | f33fafd2b |
-| AZ6OPa6Rsynw1OJ1vi5I | csharpsquid:S1066 | AssetsWindow.cs | ✅ fixed | f63793a12 |
-| AZ6OPa6Rsynw1OJ1vi5J | csharpsquid:S1066 | AssetsWindow.cs | ✅ fixed | f63793a12 |
-| AZ6OPa6Rsynw1OJ1vi5H | csharpsquid:S108 | AssetsWindow.cs | ✅ fixed | f33fafd2b |
-| AZ6OPa7Wsynw1OJ1vi5o | csharpsquid:S3881 | ConsoleWindow.cs | 🔴 open | - |
-| AZ6OPa7Wsynw1OJ1vi5m | csharpsquid:S1144 | ConsoleWindow.cs | 🔴 open | - |
-| AZ6OPa7Wsynw1OJ1vi5l | csharpsquid:S2933 | ConsoleWindow.cs | 🔴 open | - |
-| AZ6OPa7Wsynw1OJ1vi5n | csharpsquid:S1144 | ConsoleWindow.cs | 🔴 open | - |
-| AZ6OPa7Wsynw1OJ1vi5q | csharpsquid:S1066 | ConsoleWindow.cs | ✅ fixed | f63793a12 |
-| AZ6OPa5osynw1OJ1vi44 | csharpsquid:S108 | GameWindow.cs | ✅ fixed | ee0ac445b |
-| AZ6OPa6zsynw1OJ1vi5O | csharpsquid:S125 | InspectorWindow.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5Y | csharpsquid:S1144 | InspectorWindow.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5V | csharpsquid:S2933 | InspectorWindow.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5Z | csharpsquid:S1144 | InspectorWindow.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5W | csharpsquid:S2933 | InspectorWindow.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5a | csharpsquid:S1144 | InspectorWindow.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5X | csharpsquid:S2933 | InspectorWindow.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5b | csharpsquid:S1144 | InspectorWindow.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5f | csharpsquid:S108 | InspectorWindow.cs | ✅ fixed | a95a9edc0 |
-| AZ6OPa6zsynw1OJ1vi5P | csharpsquid:S125 | InspectorWindow.cs | ✅ fixed (bonus) | a95a9edc0 |
-| AZ6OPa6zsynw1OJ1vi5c | csharpsquid:S1144 | InspectorWindow.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5Q | csharpsquid:S125 | InspectorWindow.cs | ✅ fixed (bonus) | a95a9edc0 |
-| AZ6OPa6zsynw1OJ1vi5d | csharpsquid:S1144 | InspectorWindow.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5R | csharpsquid:S125 | InspectorWindow.cs | ✅ fixed (bonus) | a95a9edc0 |
-| AZ6OPa6zsynw1OJ1vi5e | csharpsquid:S1144 | InspectorWindow.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5S | csharpsquid:S125 | InspectorWindow.cs | ✅ fixed (bonus) | a95a9edc0 |
-| AZ6OPa6zsynw1OJ1vi5T | csharpsquid:S125 | InspectorWindow.cs | ✅ fixed (bonus) | a95a9edc0 |
-| AZ6OPa6zsynw1OJ1vi5U | csharpsquid:S125 | InspectorWindow.cs | ✅ fixed (bonus) | a95a9edc0 |
-| AZ6OPa6isynw1OJ1vi5M | csharpsquid:S108 | ProjectWindow.cs | ✅ fixed | 109726132 |
-| AZ6OPa6isynw1OJ1vi5L | csharpsquid:S1144 | ProjectWindow.cs | 🔴 open | - |
-| AZ6OPa5Tsynw1OJ1vi4t | csharpsquid:S1144 | SceneWindow.cs | 🔴 open | - |
-| AZ6OPa5Tsynw1OJ1vi43 | external_roslyn:CS0649 | SceneWindow.cs | 🔴 open | - |
-| AZ6OPa5Tsynw1OJ1vi40 | external_roslyn:CS0169 | SceneWindow.cs | 🔴 open | - |
-| AZ6OPa5Tsynw1OJ1vi4u | csharpsquid:S1144 | SceneWindow.cs | 🔴 open | - |
-| AZ6OPa5Tsynw1OJ1vi41 | external_roslyn:CS0169 | SceneWindow.cs | 🔴 open | - |
-| AZ6OPa5Tsynw1OJ1vi4v | csharpsquid:S1144 | SceneWindow.cs | 🔴 open | - |
-| AZ6OPa5Tsynw1OJ1vi42 | external_roslyn:CS0169 | SceneWindow.cs | 🔴 open | - |
-| AZ6OPa5Tsynw1OJ1vi4w | csharpsquid:S1144 | SceneWindow.cs | 🔴 open | - |
-| AZ6OPa5Tsynw1OJ1vi4z | external_roslyn:CS0649 | SceneWindow.cs | 🔴 open | - |
-| AZ6OPa5Tsynw1OJ1vi4y | csharpsquid:S108 | SceneWindow.cs | ✅ fixed | a8f6dcd24 |
-| AZ6OPa5Tsynw1OJ1vi4x | csharpsquid:S1144 | SceneWindow.cs | 🔴 open | - |
-| AZ6zQlSD6-8DAyAuaboe | csharpsquid:S108 | SettingsWindow.cs | ✅ fixed | 7c85d08ab |
-| AZ6OPa5-synw1OJ1vi45 | csharpsquid:S108 | SolutionWindow.cs | ✅ fixed | e8540d9bb |
-| AZ6OPa1Dsynw1OJ1vi4b | csharpsquid:S108 | HubEngine.cs | ✅ fixed | bb13fe9d1 |
-| AZ6OPa1Dsynw1OJ1vi4H | csharpsquid:S1144 | HubEngine.cs | 🔴 open | - |
-| AZ6OPa1Dsynw1OJ1vi4f | csharpsquid:S1172 | HubEngine.cs | 🔴 open | - |
-| AZ6OPaz2synw1OJ1vi38 | csharpsquid:S3442 | AWindow.cs | 🔴 open | - |
-| AZ6OPay1synw1OJ1vi3s | csharpsquid:S3442 | ASection.cs | 🔴 open | - |
-| AZ6OPazHsynw1OJ1vi33 | csharpsquid:S108 | ProjectsSection.cs | ✅ fixed | 9b379f77c |
-| AZ6OPazHsynw1OJ1vi34 | csharpsquid:S108 | ProjectsSection.cs | ✅ fixed | 9b379f77c |
-| AZ6OPbA2synw1OJ1vi8H | csharpsquid:S2589 | ImguiSample.cs | 🔴 open | - |
-| AZ6OPbA2synw1OJ1vi8M | csharpsquid:S108 | ImguiSample.cs | ✅ fixed | ae8f92390 |
-| AZ6OPa-0synw1OJ1vi7_ | csharpsquid:S2325 | SpaceWork.cs | 🔴 open | - |
-| AZ6OPa9isynw1OJ1vi7j | csharpsquid:S1192 | Engine.cs | 🔴 open | - |
-| AZ6OPa9isynw1OJ1vi72 | csharpsquid:S2325 | Engine.cs | ✅ fixed | 725ef2f19 |
-| AZ6OPa9isynw1OJ1vi73 | csharpsquid:S1481 | Engine.cs | 🔴 open | - |
-| AZ6OPa_Ksynw1OJ1vi8A | csharpsquid:S2094 | HackFont.cs | 🔴 open | - |
-| AZ6OPa_fsynw1OJ1vi8B | csharpsquid:S2094 | JetbrainFont.cs | 🔴 open | - |
-| AZ6zQlV-6-8DAyAuabog | csharpsquid:S2325 | DockSpaceMenu.cs | 🔴 open | - |
-| AZ6zQlV-6-8DAyAuaboh | csharpsquid:S2325 | DockSpaceMenu.cs | 🔴 open | - |
-| AZ6OPa8Qsynw1OJ1vi7E | csharpsquid:S3444 | IMenu.cs | 🔴 open | - |
-| AZ6OPa8ksynw1OJ1vi7F | csharpsquid:S1192 | TopMenu.cs | 🔴 open | - |
-| AZ6OPa8ksynw1OJ1vi7G | csharpsquid:S1192 | TopMenu.cs | 🔴 open | - |
-| AZ6OPa8ksynw1OJ1vi7H | csharpsquid:S1192 | TopMenu.cs | 🔴 open | - |
-| AZ6OPa8ksynw1OJ1vi7I | csharpsquid:S1192 | TopMenu.cs | 🔴 open | - |
-| AZ6OPa7rsynw1OJ1vi6- | csharpsquid:S1075 | TopMenuAction.cs | 🔴 open | - |
-| AZ6OPa7rsynw1OJ1vi6_ | csharpsquid:S1075 | TopMenuAction.cs | 🔴 open | - |
-| AZ6OPa7rsynw1OJ1vi7C | csharpsquid:S1075 | TopMenuAction.cs | 🔴 open | - |
-| AZ6OPa6zsynw1OJ1vi5g | csharpsquid:S2325 | InspectorWindow.cs | ✅ fixed | bc83190a3 |
-| AZ6OPa5Tsynw1OJ1vi4r | csharpsquid:S3459 | SceneWindow.cs | 🔴 open | - |
-| AZ6OPa5Tsynw1OJ1vi4s | csharpsquid:S3459 | SceneWindow.cs | 🔴 open | - |
-| AZ6OPa0hsynw1OJ1vi4C | csharpsquid:S1192 | Gallery.cs | 🔴 open | - |
-| AZ6OPa1Dsynw1OJ1vi4K | csharpsquid:S1450 | HubEngine.cs | 🔴 open | - |
-| AZ6OPa1Dsynw1OJ1vi4L | csharpsquid:S1450 | HubEngine.cs | 🔴 open | - |
-| AZ6OPa1Dsynw1OJ1vi4M | csharpsquid:S1192 | HubEngine.cs | 🔴 open | - |
-| AZ6OPa1Dsynw1OJ1vi4c | csharpsquid:S2325 | HubEngine.cs | ✅ fixed | 2708ec3ad |
-| AZ6OPa1Dsynw1OJ1vi4d | csharpsquid:S2325 | HubEngine.cs | ✅ fixed | 874325d1a |
-| AZ6OPa1Dsynw1OJ1vi4e | csharpsquid:S2325 | HubEngine.cs | ✅ fixed | bc5936db7 |
-| AZ6OPa1Dsynw1OJ1vi4g | csharpsquid:S2325 | HubEngine.cs | ✅ fixed | 3b329851e |
-| AZ6OPa0Hsynw1OJ1vi3_ | csharpsquid:S2325 | HubWindow.cs | ✅ fixed | d39fc1a21 |
-| AZ6OPa0Hsynw1OJ1vi4A | csharpsquid:S2325 | HubWindow.cs | ✅ fixed | e6dfbf612 |
-| AZ6OPawqsynw1OJ1vi3j | csharpsquid:S2325 | EditorInstallationSection.cs | 🔴 open | - |
-| AZ6OPawqsynw1OJ1vi3k | csharpsquid:S2325 | EditorInstallationSection.cs | 🔴 open | - |
-| AZ6OPawqsynw1OJ1vi3n | csharpsquid:S2325 | EditorInstallationSection.cs | 🔴 open | - |
-| AZ6OPawqsynw1OJ1vi3o | csharpsquid:S2325 | EditorInstallationSection.cs | 🔴 open | - |
-| AZ6OPazdsynw1OJ1vi37 | csharpsquid:S2325 | LearnSection.cs | 🔴 open | - |
-| AZ6OPazdsynw1OJ1vi36 | csharpsquid:S2325 | LearnSection.cs | 🔴 open | - |
-| AZ6OPazHsynw1OJ1vi3u | csharpsquid:S1450 | ProjectsSection.cs | 🔴 open | - |
-| AZ6OPazHsynw1OJ1vi30 | csharpsquid:S2325 | ProjectsSection.cs | 🔴 open | - |
-| AZ6OPazHsynw1OJ1vi35 | csharpsquid:S2325 | ProjectsSection.cs | 🔴 open | - |
-| AZ6OPazHsynw1OJ1vi3v | csharpsquid:S1450 | ProjectsSection.cs | 🔴 open | - |
-| AZ6OPazHsynw1OJ1vi3w | csharpsquid:S1450 | ProjectsSection.cs | 🔴 open | - |
-| AZ6OPazHsynw1OJ1vi3x | csharpsquid:S1450 | ProjectsSection.cs | 🔴 open | - |
-| AZ6OPbA2synw1OJ1vi8G | csharpsquid:S1450 | ImguiSample.cs | 🔴 open | - |
-| AZ6OPbAksynw1OJ1vi8D | csharpsquid:S2325 | Installer.cs | 🔴 open | - |
+| Issue Key | Rule | File | Line | Severity | Status | Commit Hash |
+|-----------|------|------|------|----------|--------|-------------|
+| AZ64sUr6LnQ0n5Zded5D | csharpsquid:S1144 | 1_Presentation/Engine/src/Engine.cs | 184 | MAJOR | FIXED | e1a46559a |
+| AZ64sUr6LnQ0n5Zded5E | csharpsquid:S1192 | 1_Presentation/Engine/src/Engine.cs | 184 | MINOR | FIXED | b38b3cebf |
+| AZ64sUr7LnQ0n5Zded5F | csharpsquid:S2325 | 1_Presentation/Engine/src/Engine.cs | 301 | MINOR | FIXED | df0e59f8c |
+| AZ64sUr7LnQ0n5Zded5G | csharpsquid:S2325 | 1_Presentation/Engine/src/Engine.cs | 1459 | MINOR | FIXED | ada247f77 |
+| AZ64sUrRLnQ0n5Zded5A | csharpsquid:S2325 | 1_Presentation/Engine/src/Menus/BottomMenu.cs | 91 | MINOR | FIXED | 276ab8d69 |
+| AZ64sUrRLnQ0n5Zded5B | csharpsquid:S2325 | 1_Presentation/Engine/src/Menus/BottomMenu.cs | 117 | MINOR | FIXED | dc3a08a5e |
+| AZ64sUrhLnQ0n5Zded5C | csharpsquid:S2325 | 1_Presentation/Engine/src/Menus/DockSpaceMenu.cs | 103 | MINOR | FIXED | d12071786 |
+| AZ64sUrDLnQ0n5Zded4- | csharpsquid:S2325 | 1_Presentation/Engine/src/Menus/TopMenu.cs | 87 | MINOR | FIXED | c6512a7d4 |
+| AZ64sUrDLnQ0n5Zded4_ | csharpsquid:S2325 | 1_Presentation/Engine/src/Menus/TopMenu.cs | 283 | MINOR | FIXED | 87b396252 |
+| AZ64sUqmLnQ0n5Zded44 | csharpsquid:S1186 | 1_Presentation/Engine/src/Menus/TopMenuAction.cs | 379 | CRITICAL | FIXED | 6aa98116e |
+| AZ64sUqmLnQ0n5Zded45 | csharpsquid:S1186 | 1_Presentation/Engine/src/Menus/TopMenuAction.cs | 386 | CRITICAL | FIXED | 518737c12 |
+| AZ64sUqmLnQ0n5Zded46 | csharpsquid:S2737 | 1_Presentation/Engine/src/Menus/TopMenuAction.cs | 824 | MINOR | FIXED | 617bc47f4 |
+| AZ64sUpxLnQ0n5Zded41 | csharpsquid:S3776 | 1_Presentation/Engine/src/Windows/AssetsWindow.cs | 232 | CRITICAL | FIXED | a8493537b |
+| AZ64sUpxLnQ0n5Zded42 | csharpsquid:S2325 | 1_Presentation/Engine/src/Windows/AssetsWindow.cs | 232 | MINOR | FIXED | 25b8f7792 |
+| AZ64sUqQLnQ0n5Zded43 | csharpsquid:S2325 | 1_Presentation/Engine/src/Windows/ConsoleWindow.cs | 207 | MINOR | FIXED | 6fedb3474 |
+| AZ64sUnqLnQ0n5Zded40 | csharpsquid:S2589 | 1_Presentation/Hub/src/HubEngine.cs | 161 | MAJOR | FIXED | 67bbb20e6 |
+| AZ64sUnqLnQ0n5Zded4z | csharpsquid:S2325 | 1_Presentation/Hub/src/HubEngine.cs | 393 | MINOR | FIXED | 354a98201 |
+| AZ64sUlhLnQ0n5Zded4t | csharpsquid:S2933 | 1_Presentation/Hub/src/Windows/Sections/ProjectsSection.cs | 323 | MAJOR | AUTO-RESOLVED | 4f5a5c716 |
+| AZ64sUlhLnQ0n5Zded4w | csharpsquid:S1144 | 1_Presentation/Hub/src/Windows/Sections/ProjectsSection.cs | 323 | MAJOR | FIXED | 4f5a5c716 |
+| AZ64sUlhLnQ0n5Zded4u | csharpsquid:S2933 | 1_Presentation/Hub/src/Windows/Sections/ProjectsSection.cs | 333 | MAJOR | AUTO-RESOLVED | 4e2126fe7 |
+| AZ64sUlhLnQ0n5Zded4x | csharpsquid:S1144 | 1_Presentation/Hub/src/Windows/Sections/ProjectsSection.cs | 333 | MAJOR | FIXED | 4e2126fe7 |
+| AZ64sUlhLnQ0n5Zded4v | csharpsquid:S2933 | 1_Presentation/Hub/src/Windows/Sections/ProjectsSection.cs | 343 | MAJOR | AUTO-RESOLVED | 783a401b5 |
+| AZ64sUlhLnQ0n5Zded4y | csharpsquid:S1144 | 1_Presentation/Hub/src/Windows/Sections/ProjectsSection.cs | 343 | MAJOR | FIXED | 783a401b5 |
+| AZ64sUs1LnQ0n5Zded5H | csharpsquid:S1118 | 1_Presentation/Installer/src/Installer.cs | 54 | MAJOR | FIXED | 376ac5102 |
+| AZ64sUs1LnQ0n5Zded5I | csharpsquid:S1172 | 1_Presentation/Installer/src/Installer.cs | 109 | MAJOR | FIXED | 186f5316a |
+| AZ64sUs1LnQ0n5Zded5J | csharpsquid:S1172 | 1_Presentation/Installer/src/Installer.cs | 125 | MAJOR | FIXED | 0fffa5011 |
+| AZ64sUs1LnQ0n5Zded5K | csharpsquid:S1172 | 1_Presentation/Installer/src/Installer.cs | 147 | MAJOR | FIXED | 2215a4fce |
+| AZ64sUq1LnQ0n5Zded47 | external_roslyn:CS0108 | 1_Presentation/Engine/src/Menus/IMenu.cs | 42 | MAJOR | FIXED | d10a632c3 |
+| AZ64sUq1LnQ0n5Zded48 | external_roslyn:CS0108 | 1_Presentation/Engine/src/Menus/IMenu.cs | 47 | MAJOR | FIXED | a7e89ac16 |
+| AZ64sUq1LnQ0n5Zded49 | external_roslyn:CS0108 | 1_Presentation/Engine/src/Menus/IMenu.cs | 52 | MAJOR | FIXED | d57a33d96 |
+| AZ6OPbA2synw1OJ1vi8H | csharpsquid:S2589 | 1_Presentation/Installer/src/ImguiSample.cs | 164 | MAJOR | FIXED | 6659f7bde |
+| AZ6OPa1Dsynw1OJ1vi4M | csharpsquid:S1192 | 1_Presentation/Hub/src/HubEngine.cs | 591 | MINOR | FIXED | 170a79db7 |
+| AZ6OPa_Ksynw1OJ1vi8A | csharpsquid:S2094 | 1_Presentation/Engine/src/Fonts/HackFont.cs | 35 | MINOR | FIXED | 90467783a |
+| AZ6OPa_fsynw1OJ1vi8B | csharpsquid:S2094 | 1_Presentation/Engine/src/Fonts/JetbrainFont.cs | 35 | MINOR | FIXED | f7d2206a0 |
+| AZ6OPa6isynw1OJ1vi5L | csharpsquid:S1144 | 1_Presentation/Engine/src/Windows/ProjectWindow.cs | 93 | MAJOR | FIXED | 887171948 |
+| AZ6OPa7rsynw1OJ1vi5x | csharpsquid:S1144 | 1_Presentation/Engine/src/Menus/TopMenuAction.cs | 601 | MAJOR | FIXED | 1899424e0 |
+| AZ6OPa7Wsynw1OJ1vi5o | csharpsquid:S3881 | 1_Presentation/Engine/src/Windows/ConsoleWindow.cs | 46 | MAJOR | FIXED | d3cfd2d8d |
+| AZ6OPa7rsynw1OJ1vi6- | csharpsquid:S1075 | 1_Presentation/Engine/src/Menus/TopMenuAction.cs | 779 | MINOR | FIXED | 998ed23ed |
+| AZ6OPa7rsynw1OJ1vi6_ | csharpsquid:S1075 | 1_Presentation/Engine/src/Menus/TopMenuAction.cs | 787 | MINOR | FIXED | 50342a762 |
+| AZ6OPa7rsynw1OJ1vi7C | csharpsquid:S1075 | 1_Presentation/Engine/src/Menus/TopMenuAction.cs | 854 | MINOR | FIXED | a2f47d245 |
