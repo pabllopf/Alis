@@ -229,7 +229,7 @@ namespace Alis.App.Engine.Menus
             }
         }
 
-        private void RenderToolsMenu()
+        private static void RenderToolsMenu()
         {
             if (ImGui.BeginMenu("Tools"))
             {
