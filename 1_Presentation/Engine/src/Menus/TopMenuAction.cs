@@ -604,14 +604,6 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        ///     Creates the ui
-        /// </summary>
-        private static void CreateUi()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         ///     Creates the light
         /// </summary>
         private static void CreateLight()
