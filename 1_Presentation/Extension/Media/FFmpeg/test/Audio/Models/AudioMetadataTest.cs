@@ -294,5 +294,104 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
             Assert.Equal(2, stereoMetadata.Channels);
             Assert.Equal(6, surroundMetadata.Channels);
         }
+
+        /// <summary>
+        ///     Tests that audio metadata get first video stream should return null when no video stream
+        /// </summary>
+        [Fact]
+        public void AudioMetadata_GetFirstVideoStream_ShouldReturnNullWhenNoVideoStream()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            MediaStream audioStream = new MediaStream {CodecType = "audio"};
+            metadata.Streams = new List<MediaStream> {audioStream};
+
+            MediaStream result = metadata.GetFirstVideoStream();
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that audio metadata get first audio stream should return null when streams is empty
+        /// </summary>
+        [Fact]
+        public void AudioMetadata_GetFirstAudioStream_ShouldReturnNullWhenStreamsEmpty()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            metadata.Streams = new List<MediaStream>();
+
+            MediaStream result = metadata.GetFirstAudioStream();
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that audio metadata get first video stream should return null when streams is empty
+        /// </summary>
+        [Fact]
+        public void AudioMetadata_GetFirstVideoStream_ShouldReturnNullWhenStreamsEmpty()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            metadata.Streams = new List<MediaStream>();
+
+            MediaStream result = metadata.GetFirstVideoStream();
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that audio metadata get first audio stream should return first matching stream
+        /// </summary>
+        [Fact]
+        public void AudioMetadata_GetFirstAudioStream_ShouldReturnFirstMatchingStream()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            MediaStream firstAudio = new MediaStream {CodecType = "audio"};
+            MediaStream secondAudio = new MediaStream {CodecType = "audio"};
+            MediaStream videoStream = new MediaStream {CodecType = "video"};
+            metadata.Streams = new List<MediaStream> {videoStream, firstAudio, secondAudio};
+
+            MediaStream result = metadata.GetFirstAudioStream();
+
+            Assert.Equal(firstAudio, result);
+        }
+
+        /// <summary>
+        ///     Tests that audio metadata get first video stream should return first matching stream
+        /// </summary>
+        [Fact]
+        public void AudioMetadata_GetFirstVideoStream_ShouldReturnFirstMatchingStream()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            MediaStream audioStream = new MediaStream {CodecType = "audio"};
+            MediaStream firstVideo = new MediaStream {CodecType = "video"};
+            MediaStream secondVideo = new MediaStream {CodecType = "video"};
+            metadata.Streams = new List<MediaStream> {audioStream, firstVideo, secondVideo};
+
+            MediaStream result = metadata.GetFirstVideoStream();
+
+            Assert.Equal(firstVideo, result);
+        }
+
+        /// <summary>
+        ///     Tests that audio metadata default streams should be null
+        /// </summary>
+        [Fact]
+        public void AudioMetadata_DefaultStreams_ShouldBeNull()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+
+            Assert.Null(metadata.Streams);
+        }
+
+        /// <summary>
+        ///     Tests that audio metadata default format should be null
+        /// </summary>
+        [Fact]
+        public void AudioMetadata_DefaultFormat_ShouldBeNull()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+
+            Assert.Null(metadata.Format);
+        }
     }
 }
