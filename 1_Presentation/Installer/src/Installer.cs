@@ -51,7 +51,7 @@ namespace Alis.App.Installer
     ///     Sample host application that creates a native window, initializes OpenGL and ImGui,
     ///     and runs the selected example. Code is organized for clarity and maintainability.
     /// </summary>
-    public class Installer
+    public static class Installer
     {
         /// <summary>
         ///     Application entry point.
