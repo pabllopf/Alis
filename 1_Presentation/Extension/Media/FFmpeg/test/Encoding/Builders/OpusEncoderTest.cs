@@ -299,5 +299,144 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             encoder.CompressionLevel = 10;
             Assert.Equal(10, encoder.CompressionLevel);
         }
+
+        /// <summary>
+        ///     Tests that opus encoder create should include default vbr in arguments
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_Create_ShouldIncludeDefaultVbrInArguments()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-vbr on", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder create should include default bitrate in arguments
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_Create_ShouldIncludeDefaultBitrateInArguments()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-b:a 128k", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder create should include audio application in arguments
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_Create_ShouldIncludeAudioApplicationInArguments()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-application audio", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder create should include lowdelay application in arguments
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_Create_ShouldIncludeLowdelayApplicationInArguments()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+            encoder.CodecApplication = OpusEncoder.Application.LowDelay;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-application lowdelay", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder create should include default compression level in arguments
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_Create_ShouldIncludeDefaultCompressionLevelInArguments()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-compression_level 10", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder create should not include channel count when null
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_Create_ShouldNotIncludeChannelCountWhenNull()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+            encoder.ChannelCount = null;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.DoesNotContain("-ac", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder create should not include sample rate when null
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_Create_ShouldNotIncludeSampleRateWhenNull()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+            encoder.SampleRate = null;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.DoesNotContain("-ar", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder create should include sample rate when set
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_Create_ShouldIncludeSampleRateWhenSet()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+            encoder.SampleRate = 48000;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-ar", options.EncoderArguments);
+            Assert.Contains("48000", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder set cbr should override default vbr
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_SetCbr_ShouldOverrideDefaultVbr()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+
+            encoder.SetCbr("256k");
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-vbr off", options.EncoderArguments);
+            Assert.Contains("256k", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder set cvbr should override default vbr
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_SetCvbr_ShouldOverrideDefaultVbr()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+
+            encoder.SetCvbr("192k");
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-vbr constrained", options.EncoderArguments);
+            Assert.Contains("192k", options.EncoderArguments);
+        }
     }
 }
