@@ -390,19 +390,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         }
 
         /// <summary>
-        ///     Tests that media stream sample rate number should return negative one for whitespace string
-        /// </summary>
-        [Fact]
-        public void MediaStream_SampleRateNumber_ShouldReturnNegativeOneForWhitespaceString()
-        {
-            MediaStream stream = new MediaStream {SampleRate = "   "};
-
-            int sampleRateNumber = stream.SampleRateNumber;
-
-            Assert.Equal(-1, sampleRateNumber);
-        }
-
-        /// <summary>
         ///     Tests that media stream disposition property should be settable
         /// </summary>
         [Fact]

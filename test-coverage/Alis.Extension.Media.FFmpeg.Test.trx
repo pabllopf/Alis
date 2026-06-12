@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="d1c60d00-4a1a-475c-8de5-cf4dbfc7cfc9" name="@MacBook-Pro-de-Pablo 2026-06-12 18:05:40" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-06-12T18:05:40.9096760+01:00" queuing="2026-06-12T18:05:40.9096760+01:00" start="2026-06-12T18:05:38.5952990+01:00" finish="2026-06-12T18:05:40.9099560+01:00" />
+  <TestSettings name="default" id="dfb69c4c-3737-4272-b169-289e15514ad1">
+    <Deployment runDeploymentRoot="_MacBook-Pro-de-Pablo_2026-06-12_18_05_40" />
+  </TestSettings>
+  <TestLists>
+    <TestList name="Resultados sin formato de lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos los resultados cargados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="0" executed="0" passed="0" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.6+bf9b858c26 (64-bit .NET 8.0.27)
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="MacBook-Pro-de-Pablo" outcome="Warning" timestamp="2026-06-12T18:05:40.3792880+01:00">
+        <Text>No hay ninguna prueba disponible en /Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Media/FFmpeg/test/bin/Debug/lib/Alis.Extension.Media.FFmpeg.Test.dll. Asegúrese de que los detectores y ejecutores de pruebas están registrados y de que la configuración de versión de la plataforma y de Framework es correcta y vuelva a intentarlo.</Text>
+      </RunInfo>
+    </RunInfos>
+    <CollectorDataEntries>
+      <Collector agentName="MacBook-Pro-de-Pablo" uri="datacollector://microsoft/CoverletCodeCoverage/1.0" collectorDisplayName="XPlat code coverage">
+        <UriAttachments>
+          <UriAttachment>
+            <A href="MacBook-Pro-de-Pablo/coverage.cobertura.xml"></A>
+          </UriAttachment>
+        </UriAttachments>
+      </Collector>
+    </CollectorDataEntries>
+  </ResultSummary>
+</TestRun>
