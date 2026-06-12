@@ -243,84 +243,19 @@ namespace Alis.App.Engine.Windows
 
             ImGui.Separator();
 
-            if (ImGui.BeginMenu("2D"))
-            {
-                ImGui.EndMenu();
-            }
+            string[] menuNames =
+            [
+                "2D", "Animation", "Audio", "Rendering", "Scene", "Scripting", "Search",
+                "Shader", "Shader Graph", "Testing", "Terrain", "Text Core", "TextMeshPro",
+                "Tutorials", "Timeline", "UI Toolkit"
+            ];
 
-            if (ImGui.BeginMenu("Animation"))
+            foreach (string menuName in menuNames)
             {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Audio"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Rendering"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Scene"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Scripting"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Search"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Shader"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Shader Graph"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Testing"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Terrain"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Text Core"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("TextMeshPro"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Tutorials"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("Timeline"))
-            {
-                ImGui.EndMenu();
-            }
-
-            if (ImGui.BeginMenu("UI Toolkit"))
-            {
-                ImGui.EndMenu();
+                if (ImGui.BeginMenu(menuName))
+                {
+                    ImGui.EndMenu();
+                }
             }
 
             ImGui.Separator();
