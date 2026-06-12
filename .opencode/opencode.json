@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/Qwen3.6-35B-A3B-TurboQuant-MLX-4bit",
-  "small_model": "omlx/Qwen3.6-35B-A3B-TurboQuant-MLX-4bit",
+  "model": "llama/unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit",
+  "small_model": "llama/unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit",
 
   "provider": {
     "omlx": {
@@ -166,7 +166,24 @@
           }
         }
       }
+    },
+      "llama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llama",
+      "options": {
+        "baseURL": "http://127.0.0.1:8001/v1"
+      },
+      "models": {
+        "unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit": {
+          "name": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          }
+        }
+      }
     }
+
   },
 
   "compaction": {
