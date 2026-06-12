@@ -185,7 +185,7 @@ namespace Alis.App.Engine.Menus
             }
         }
 
-        private void RenderGameObjectMenu()
+        private static void RenderGameObjectMenu()
         {
             if (ImGui.BeginMenu("GameObject"))
             {
