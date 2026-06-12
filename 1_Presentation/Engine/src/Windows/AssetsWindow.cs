@@ -229,7 +229,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders the plus menu
         /// </summary>
-        private void RenderPlusMenu()
+        private static void RenderPlusMenu()
         {
             ImGui.Separator();
 
