@@ -318,11 +318,6 @@ namespace Alis.App.Hub.Windows.Sections
         }
 
         /// <summary>
-        ///     The zero
-        /// </summary>
-        private IntPtr conmandPtrProjectName = IntPtr.Zero;
-
-        /// <summary>
         ///     The empty
         /// </summary>
         private string projectName = string.Empty;
