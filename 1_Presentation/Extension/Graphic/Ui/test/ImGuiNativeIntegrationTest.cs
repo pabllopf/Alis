@@ -38,12 +38,42 @@ namespace Alis.Extension.Graphic.Ui.Test
     ///     Integration tests that exercise the native cimgui library via P/Invoke.
     ///     These tests require the native library to be present at runtime
     ///     and only run on macOS (the current dev platform).
+    ///     <br/><br/>
+    ///     NOTE: Some native functions (igGetColumnIndex, igGetColumnsCount) crash
+    ///     with SIGSEGV on the bundled cimgui build — likely a version mismatch
+    ///     between the cimgui binary and the .NET struct layout. Those are excluded
+    ///     from this test class.
     /// </summary>
-    public class ImGuiNativeIntegrationTest
+    public class ImGuiNativeIntegrationTest : IDisposable
     {
+        private readonly IntPtr _context;
+
+        /// <summary>
+        ///     Initializes a new instance, creating a fresh ImGui context for the test.
+        /// </summary>
+        public ImGuiNativeIntegrationTest()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                _context = ImGuiNative.igCreateContext(IntPtr.Zero);
+                ImGuiNative.igSetCurrentContext(_context);
+            }
+        }
+
+        /// <summary>
+        ///     Cleans up the ImGui context after each test.
+        /// </summary>
+        public void Dispose()
+        {
+            if (_context != IntPtr.Zero)
+            {
+                ImGuiNative.igDestroyContext(_context);
+            }
+        }
+
         /// <summary>
         ///     Verifies the native cimgui library can be loaded and returns a version string.
-        ///     igGetVersion is a safe entry point that does NOT require an ImGui context.
+        ///     igGetVersion does NOT require an ImGui context.
         /// </summary>
         [MacOsOnly]
         public void IgGetVersion_ShouldReturnNonEmptyString()
@@ -54,6 +84,47 @@ namespace Alis.Extension.Graphic.Ui.Test
             string version = Marshal.PtrToStringAnsi(versionPtr);
             Assert.NotNull(version);
             Assert.NotEmpty(version);
+        }
+
+        /// <summary>
+        ///     Verifies igGetFrameCount returns a non-negative value with an active context.
+        /// </summary>
+        [MacOsOnly]
+        public void GetFrameCount_WithContext_ShouldReturnNonNegative()
+        {
+            int frameCount = ImGuiNative.igGetFrameCount();
+            Assert.True(frameCount >= 0);
+        }
+
+        /// <summary>
+        ///     Verifies igGetCurrentContext returns the context set by igSetCurrentContext.
+        /// </summary>
+        [MacOsOnly]
+        public void GetCurrentContext_ShouldReturnValidPointer()
+        {
+            IntPtr current = ImGuiNative.igGetCurrentContext();
+            Assert.NotEqual(IntPtr.Zero, current);
+        }
+
+        /// <summary>
+        ///     Verifies igGetStyle returns a reference to ImGuiStyle with default values.
+        /// </summary>
+        [MacOsOnly]
+        public void GetStyle_ShouldReturnDefaultValues()
+        {
+            ref ImGuiStyle style = ref ImGuiNative.igGetStyle();
+            Assert.True(style.Alpha > 0);
+            Assert.True(style.WindowPadding.X >= 0);
+        }
+
+        /// <summary>
+        ///     Verifies igGetIO returns a pointer to the ImGuiIO struct.
+        /// </summary>
+        [MacOsOnly]
+        public void GetIO_ShouldReturnNonZeroPointer()
+        {
+            IntPtr io = ImGuiNative.igGetIO();
+            Assert.NotEqual(IntPtr.Zero, io);
         }
     }
 }
