@@ -114,7 +114,7 @@ namespace Alis.App.Engine.Menus
             ImGui.ProgressBar(0.65f, new Vector2F(150, 20), "3/15");
         }
 
-        private void RenderBranchSelector()
+        private static void RenderBranchSelector()
         {
             if (ImGui.Button($"{FontAwesome5.Bell}##notifications"))
             {
