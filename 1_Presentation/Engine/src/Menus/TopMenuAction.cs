@@ -823,10 +823,6 @@ namespace Alis.App.Engine.Menus
                         throw;
                     }
                 }
-                catch
-                {
-                    throw;
-                }
             }
         }
 
