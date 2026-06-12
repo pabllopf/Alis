@@ -116,7 +116,7 @@ namespace Alis.App.Engine.Menus
             }
         }
 
-        private void RenderEditMenu()
+        private static void RenderEditMenu()
         {
             if (ImGui.BeginMenu("Edit"))
             {
