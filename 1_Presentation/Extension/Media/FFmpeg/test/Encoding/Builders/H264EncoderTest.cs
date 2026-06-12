@@ -387,5 +387,109 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
 
             Assert.IsAssignableFrom<H264Encoder>(encoder);
         }
+
+        /// <summary>
+        ///     Tests that h 264 encoder create should include default crf in arguments
+        /// </summary>
+        [Fact]
+        public void H264Encoder_Create_ShouldIncludeDefaultCrfInArguments()
+        {
+            H264Encoder encoder = new H264Encoder();
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-crf", options.EncoderArguments);
+            Assert.Contains("22.00", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that h 264 encoder create should include custom crf in arguments
+        /// </summary>
+        [Fact]
+        public void H264Encoder_Create_ShouldIncludeCustomCrfInArguments()
+        {
+            H264Encoder encoder = new H264Encoder();
+            encoder.SetCqp(18);
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-crf", options.EncoderArguments);
+            Assert.Contains("18.00", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that h 264 encoder create should include cbr settings in arguments
+        /// </summary>
+        [Fact]
+        public void H264Encoder_Create_ShouldIncludeCbrSettingsInArguments()
+        {
+            H264Encoder encoder = new H264Encoder();
+            encoder.SetCbr("5M", "10M");
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-x264-params", options.EncoderArguments);
+            Assert.Contains("nal-hrd=cbr", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that h 264 encoder create should include vbv settings in arguments
+        /// </summary>
+        [Fact]
+        public void H264Encoder_Create_ShouldIncludeVbvSettingsInArguments()
+        {
+            H264Encoder encoder = new H264Encoder();
+            encoder.SetVbv(23, "5M", "10M");
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-maxrate", options.EncoderArguments);
+            Assert.Contains("-bufsize", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that h 264 encoder create should include abr settings in arguments
+        /// </summary>
+        [Fact]
+        public void H264Encoder_Create_ShouldIncludeAbrSettingsInArguments()
+        {
+            H264Encoder encoder = new H264Encoder();
+            encoder.SetAbr("4M");
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-b:v", options.EncoderArguments);
+            Assert.Contains("4M", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that h 264 encoder create should include baseline profile
+        /// </summary>
+        [Fact]
+        public void H264Encoder_Create_ShouldIncludeBaselineProfile()
+        {
+            H264Encoder encoder = new H264Encoder();
+            encoder.EncoderFFmpegProfile = FFmpegProfile.Baseline;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-profile:v", options.EncoderArguments);
+            Assert.Contains("baseline", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that h 264 encoder create should include main profile
+        /// </summary>
+        [Fact]
+        public void H264Encoder_Create_ShouldIncludeMainProfile()
+        {
+            H264Encoder encoder = new H264Encoder();
+            encoder.EncoderFFmpegProfile = FFmpegProfile.Main;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-profile:v", options.EncoderArguments);
+            Assert.Contains("main", options.EncoderArguments);
+        }
     }
 }
