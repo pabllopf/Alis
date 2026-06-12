@@ -135,6 +135,18 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
+        /// Tests that video writer stream ctor should throw on negative width
+        /// </summary>
+        [Fact]
+        public void VideoWriter_StreamCtor_ShouldThrowOnNegativeWidth()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, -1, 1080, 30));
+            }
+        }
+
+        /// <summary>
         /// Tests that video writer stream ctor should throw on zero height
         /// </summary>
         [Fact]
