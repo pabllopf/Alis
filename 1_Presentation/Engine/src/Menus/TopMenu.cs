@@ -94,7 +94,7 @@ namespace Alis.App.Engine.Menus
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
         }
 
-        private void RenderFileMenu()
+        private static void RenderFileMenu()
         {
             if (ImGui.BeginMenu("File"))
             {
