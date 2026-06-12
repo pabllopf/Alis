@@ -196,6 +196,19 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
+        /// Tests that audio video writer stream ctor should throw on negative height
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_StreamCtor_ShouldThrowOnNegativeHeight()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() =>
+                    new AudioVideoWriter(ms, 1920, -1, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+            }
+        }
+
+        /// <summary>
         /// Tests that audio video writer stream ctor should throw on invalid bit depth
         /// </summary>
         [Fact]
