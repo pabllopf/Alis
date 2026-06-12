@@ -324,5 +324,117 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
 
             Assert.IsAssignableFrom<Vp9Encoder>(encoder);
         }
+
+        /// <summary>
+        ///     Tests that vp 9 encoder create should include tune content in arguments
+        /// </summary>
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeTuneContentInArguments()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-tune-content", options.EncoderArguments);
+            Assert.Contains("default", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that vp 9 encoder create should include deadline in arguments
+        /// </summary>
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeDeadlineInArguments()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-deadline", options.EncoderArguments);
+            Assert.Contains("good", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that vp 9 encoder create should not include row mt when disabled
+        /// </summary>
+        [Fact]
+        public void Vp9Encoder_Create_ShouldNotIncludeRowMtWhenDisabled()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.RowBasedMultithreading = false;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.DoesNotContain("-row-mt", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that vp 9 encoder create should not include cpu used when null
+        /// </summary>
+        [Fact]
+        public void Vp9Encoder_Create_ShouldNotIncludeCpuUsedWhenNull()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.CpuUsed = null;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.DoesNotContain("-cpu-used", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that vp 9 encoder create should include film tune content
+        /// </summary>
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeFilmTuneContent()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.EncoderTune = Vp9Encoder.Tune.Film;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("film", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that vp 9 encoder create should include screen tune content
+        /// </summary>
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeScreenTuneContent()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.EncoderTune = Vp9Encoder.Tune.Screen;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("screen", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that vp 9 encoder create should include best deadline
+        /// </summary>
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeBestDeadline()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.EncoderQuality = Quality.Best;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("best", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that vp 9 encoder create should include realtime deadline
+        /// </summary>
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeRealtimeDeadline()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.EncoderQuality = Quality.RealTime;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("realtime", options.EncoderArguments);
+        }
     }
 }
