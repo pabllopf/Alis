@@ -161,7 +161,7 @@ namespace Alis.App.Installer
         public void Initialize()
         {
             Debug.Assert(_platform != null, "Platform must be provided before Initialize is called.");
-            _platform?.MakeContextCurrent();
+            _platform.MakeContextCurrent();
 
             IntPtr currentCtx = ImGui.GetCurrentContext();
             
