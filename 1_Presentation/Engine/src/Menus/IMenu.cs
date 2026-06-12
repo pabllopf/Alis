@@ -49,7 +49,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     Renders this instance
         /// </summary>
-        void Render();
+        new void Render();
 
         /// <summary>
         ///     Starts this instance
