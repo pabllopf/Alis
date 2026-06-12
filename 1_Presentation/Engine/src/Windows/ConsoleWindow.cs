@@ -87,9 +87,19 @@ namespace Alis.App.Engine.Windows
         /// <returns>The value task</returns>
         public async ValueTask DisposeAsync()
         {
+            await DisposeAsyncCore().ConfigureAwait(false);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Disposes the async core
+        /// </summary>
+        /// <returns>The value task</returns>
+        protected virtual async ValueTask DisposeAsyncCore()
+        {
             if (stringWriter != null)
             {
-                await stringWriter.DisposeAsync();
+                await stringWriter.DisposeAsync().ConfigureAwait(false);
             }
         }
 
@@ -98,7 +108,20 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Dispose()
         {
-            stringWriter?.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Disposes the specified disposing
+        /// </summary>
+        /// <param name="disposing">The disposing</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                stringWriter?.Dispose();
+            }
         }
 
         /// <summary>
