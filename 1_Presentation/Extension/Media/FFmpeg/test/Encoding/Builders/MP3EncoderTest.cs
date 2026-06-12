@@ -254,5 +254,82 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             encoder.SetCqp(9);
             Assert.Contains("9", encoder.CurrentQualitySettings);
         }
+
+        /// <summary>
+        ///     Tests that mp 3 encoder create should not include sample rate when null
+        /// </summary>
+        [Fact]
+        public void Mp3Encoder_Create_ShouldNotIncludeSampleRateWhenNull()
+        {
+            Mp3Encoder encoder = new Mp3Encoder();
+            encoder.SampleRate = null;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.DoesNotContain("-ar", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that mp 3 encoder create should include default quality in arguments
+        /// </summary>
+        [Fact]
+        public void Mp3Encoder_Create_ShouldIncludeDefaultQualityInArguments()
+        {
+            Mp3Encoder encoder = new Mp3Encoder();
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-q:a", options.EncoderArguments);
+            Assert.Contains("4", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that mp 3 encoder set cbr should override default cqp
+        /// </summary>
+        [Fact]
+        public void Mp3Encoder_SetCbr_ShouldOverrideDefaultCqp()
+        {
+            Mp3Encoder encoder = new Mp3Encoder();
+
+            encoder.SetCbr("320k");
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-b:a 320k", options.EncoderArguments);
+            Assert.DoesNotContain("-q:a", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that mp 3 encoder set abr should override default cqp
+        /// </summary>
+        [Fact]
+        public void Mp3Encoder_SetAbr_ShouldOverrideDefaultCqp()
+        {
+            Mp3Encoder encoder = new Mp3Encoder();
+
+            encoder.SetAbr("256k");
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-b:a 256k", options.EncoderArguments);
+            Assert.Contains("-abr 1", options.EncoderArguments);
+            Assert.DoesNotContain("-q:a", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that mp 3 encoder create should include both channel count and sample rate when set
+        /// </summary>
+        [Fact]
+        public void Mp3Encoder_Create_ShouldIncludeBothChannelCountAndSampleRateWhenSet()
+        {
+            Mp3Encoder encoder = new Mp3Encoder();
+            encoder.ChannelCount = 2;
+            encoder.SampleRate = 44100;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-ac", options.EncoderArguments);
+            Assert.Contains("2", options.EncoderArguments);
+            Assert.Contains("-ar", options.EncoderArguments);
+            Assert.Contains("44100", options.EncoderArguments);
+        }
     }
 }
