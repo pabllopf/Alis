@@ -1456,7 +1456,7 @@ namespace Alis.App.Engine
         ///     Gets the platform
         /// </summary>
         /// <returns>The native platform</returns>
-        private INativePlatform GetPlatform()
+        private static INativePlatform GetPlatform()
         {
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
             return new MacNativePlatform();
