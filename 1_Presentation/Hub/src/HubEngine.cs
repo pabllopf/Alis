@@ -158,7 +158,7 @@ namespace Alis.App.Hub
             if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
-                platform?.Cleanup();
+                platform.Cleanup();
                 return;
             }
 
