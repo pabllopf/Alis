@@ -88,7 +88,7 @@ namespace Alis.App.Engine.Menus
             ImGui.PopStyleColor(3);
         }
 
-        private void ApplyBottomMenuStyling()
+        private static void ApplyBottomMenuStyling()
         {
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
