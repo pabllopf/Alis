@@ -242,5 +242,23 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("192k", encoder192k.CurrentQualitySettings);
             Assert.Contains("320k", encoder320k.CurrentQualitySettings);
         }
+
+        /// <summary>
+        ///     Tests that aac encoder create should include both channel count and sample rate when set
+        /// </summary>
+        [Fact]
+        public void AacEncoder_Create_ShouldIncludeBothChannelCountAndSampleRateWhenSet()
+        {
+            AacEncoder encoder = new AacEncoder();
+            encoder.ChannelCount = 2;
+            encoder.SampleRate = 48000;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-ac", options.EncoderArguments);
+            Assert.Contains("2", options.EncoderArguments);
+            Assert.Contains("-ar", options.EncoderArguments);
+            Assert.Contains("48000", options.EncoderArguments);
+        }
     }
 }
