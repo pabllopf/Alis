@@ -222,5 +222,84 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             // Assert
             Assert.IsAssignableFrom<VorbisEncoder>(encoder);
         }
+
+        /// <summary>
+        ///     Tests that vorbis encoder create should not include channel count when null
+        /// </summary>
+        [Fact]
+        public void VorbisEncoder_Create_ShouldNotIncludeChannelCountWhenNull()
+        {
+            VorbisEncoder encoder = new VorbisEncoder();
+            encoder.ChannelCount = null;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.DoesNotContain("-ac", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that vorbis encoder create should not include sample rate when null
+        /// </summary>
+        [Fact]
+        public void VorbisEncoder_Create_ShouldNotIncludeSampleRateWhenNull()
+        {
+            VorbisEncoder encoder = new VorbisEncoder();
+            encoder.SampleRate = null;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.DoesNotContain("-ar", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that vorbis encoder create should include default quality in arguments
+        /// </summary>
+        [Fact]
+        public void VorbisEncoder_Create_ShouldIncludeDefaultQualityInArguments()
+        {
+            VorbisEncoder encoder = new VorbisEncoder();
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-q:a", options.EncoderArguments);
+            Assert.Contains("3.00", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that vorbis encoder set cbr should override default cqp
+        /// </summary>
+        [Fact]
+        public void VorbisEncoder_SetCbr_ShouldOverrideDefaultCqp()
+        {
+            VorbisEncoder encoder = new VorbisEncoder();
+
+            encoder.SetCbr("256k");
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-b:a 256k", options.EncoderArguments);
+            Assert.DoesNotContain("-q:a", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that vorbis encoder default channel count should be null
+        /// </summary>
+        [Fact]
+        public void VorbisEncoder_DefaultChannelCount_ShouldBeNull()
+        {
+            VorbisEncoder encoder = new VorbisEncoder();
+
+            Assert.Null(encoder.ChannelCount);
+        }
+
+        /// <summary>
+        ///     Tests that vorbis encoder default sample rate should be null
+        /// </summary>
+        [Fact]
+        public void VorbisEncoder_DefaultSampleRate_ShouldBeNull()
+        {
+            VorbisEncoder encoder = new VorbisEncoder();
+
+            Assert.Null(encoder.SampleRate);
+        }
     }
 }
