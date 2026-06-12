@@ -323,11 +323,6 @@ namespace Alis.App.Hub.Windows.Sections
         private string projectName = string.Empty;
 
         /// <summary>
-        ///     The zero
-        /// </summary>
-        private IntPtr conmandPtrProjectPath = IntPtr.Zero;
-
-        /// <summary>
         ///     The empty
         /// </summary>
         private string projectPath = string.Empty;
