@@ -44,7 +44,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        void Update();
+        new void Update();
 
         /// <summary>
         ///     Renders this instance
