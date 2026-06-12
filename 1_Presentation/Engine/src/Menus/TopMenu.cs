@@ -242,7 +242,7 @@ namespace Alis.App.Engine.Menus
             }
         }
 
-        private void RenderWindowMenu()
+        private static void RenderWindowMenu()
         {
             if (ImGui.BeginMenu("Window"))
             {
