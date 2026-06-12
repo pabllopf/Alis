@@ -100,7 +100,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     Renders the menu bar content
         /// </summary>
-        private void RenderMenuBarContent()
+        private static void RenderMenuBarContent()
         {
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
