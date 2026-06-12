@@ -799,27 +799,24 @@ namespace Alis.App.Engine.Menus
             }
             catch
             {
-                try
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                    {
-                        url = url.Replace("&", "^&");
-                        Process.Start(new ProcessStartInfo(url) {UseShellExecute = true});
-                    }
-                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                    {
-                        ValidateUrlScheme(url);
-                        Process.Start("xdg-open", url);
-                    }
-                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                    {
-                        ValidateUrlScheme(url);
-                        Process.Start("open", url);
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo(url) {UseShellExecute = true});
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    ValidateUrlScheme(url);
+                    Process.Start("xdg-open", url);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    ValidateUrlScheme(url);
+                    Process.Start("open", url);
+                }
+                else
+                {
+                    throw;
                 }
             }
         }
