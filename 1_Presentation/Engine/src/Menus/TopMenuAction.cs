@@ -54,6 +54,12 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static readonly Dictionary<string, Action> MenuActions = new Dictionary<string, Action>();
 
+        private const string AlisEngineUrl = "https://www.alisengine.com";
+
+        private const string AlisApiUrl = "https://www.alisengine.com/en/v0.4.0/api/Alis.html";
+
+        private const string AlisBugReportUrl = "https://github.com/pabllopf/Alis/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=";
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="TopMenuAction" /> class
         /// </summary>
@@ -778,7 +784,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void AlisManual()
         {
-            OpenUrl("https://www.alisengine.com");
+            OpenUrl(AlisEngineUrl);
         }
 
         /// <summary>
