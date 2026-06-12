@@ -8,7 +8,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Attributes
     /// The requires sfml fact attribute class
     /// </summary>
     /// <seealso cref="FactAttribute"/>
-    [ExcludeFromCodeCoverage]
+    
     public class RequiresSfmlFactAttribute : FactAttribute
     {
         /// <summary>

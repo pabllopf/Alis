@@ -36,7 +36,7 @@ namespace System.Runtime.CompilerServices
 {
     /// <summary>
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    
     public static class RuntimeHelpers
     {
         /// <summary>

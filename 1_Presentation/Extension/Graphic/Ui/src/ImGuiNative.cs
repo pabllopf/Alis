@@ -506,6 +506,13 @@ namespace Alis.Extension.Graphic.Ui
         public static extern IntPtr igCreateContext(IntPtr sharedFontAtlas);
 
         /// <summary>
+        ///     Igs the destroy context using the specified ctx
+        /// </summary>
+        /// <param name="ctx">The ctx</param>
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDestroyContext"), ExcludeFromCodeCoverage]
+        public static extern void igDestroyContext(IntPtr ctx);
+
+        /// <summary>
         ///     Igs the debug check version and data layout using the specified version str
         /// </summary>
         /// <param name="versionStr">The version str</param>
