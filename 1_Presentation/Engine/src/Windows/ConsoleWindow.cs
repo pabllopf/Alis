@@ -204,7 +204,7 @@ namespace Alis.App.Engine.Windows
         ///     Renders the console line
         /// </summary>
         /// <param name="line">The line</param>
-        private void RenderConsoleLine(string line)
+        private static void RenderConsoleLine(string line)
         {
             ImGui.PushId(line.GetHashCode());
 
