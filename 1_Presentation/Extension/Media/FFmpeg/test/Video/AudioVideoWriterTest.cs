@@ -140,6 +140,16 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
+        /// Tests that audio video writer file ctor should throw on negative audio channels
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_FileCtor_ShouldThrowOnNegativeAudioChannels()
+        {
+            Assert.Throws<InvalidDataException>(() =>
+                new AudioVideoWriter("out.mp4", 1920, 1080, 30, -1, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+        }
+
+        /// <summary>
         /// Tests that audio video writer file ctor should throw on zero audio sample rate
         /// </summary>
         [Fact]
@@ -147,6 +157,16 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         {
             Assert.Throws<InvalidDataException>(() =>
                 new AudioVideoWriter("out.mp4", 1920, 1080, 30, 2, 0, 16, DefaultVideoOptions, DefaultAudioOptions));
+        }
+
+        /// <summary>
+        /// Tests that audio video writer file ctor should throw on negative audio sample rate
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_FileCtor_ShouldThrowOnNegativeAudioSampleRate()
+        {
+            Assert.Throws<InvalidDataException>(() =>
+                new AudioVideoWriter("out.mp4", 1920, 1080, 30, 2, -1, 16, DefaultVideoOptions, DefaultAudioOptions));
         }
 
         /// <summary>
@@ -179,6 +199,123 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             {
                 Assert.Throws<InvalidDataException>(() =>
                     new AudioVideoWriter(ms, 0, 1080, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+            }
+        }
+
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on negative width
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_StreamCtor_ShouldThrowOnNegativeWidth()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() =>
+                    new AudioVideoWriter(ms, -1, 1080, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+            }
+        }
+
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on zero height
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_StreamCtor_ShouldThrowOnZeroHeight()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() =>
+                    new AudioVideoWriter(ms, 1920, 0, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+            }
+        }
+
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on negative height
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_StreamCtor_ShouldThrowOnNegativeHeight()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() =>
+                    new AudioVideoWriter(ms, 1920, -1, 30, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+            }
+        }
+
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on zero framerate
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_StreamCtor_ShouldThrowOnZeroFramerate()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() =>
+                    new AudioVideoWriter(ms, 1920, 1080, 0, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+            }
+        }
+
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on negative framerate
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_StreamCtor_ShouldThrowOnNegativeFramerate()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() =>
+                    new AudioVideoWriter(ms, 1920, 1080, -1, 2, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+            }
+        }
+
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on zero audio channels
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_StreamCtor_ShouldThrowOnZeroAudioChannels()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() =>
+                    new AudioVideoWriter(ms, 1920, 1080, 30, 0, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+            }
+        }
+
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on negative audio channels
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_StreamCtor_ShouldThrowOnNegativeAudioChannels()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() =>
+                    new AudioVideoWriter(ms, 1920, 1080, 30, -1, 44100, 16, DefaultVideoOptions, DefaultAudioOptions));
+            }
+        }
+
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on zero audio sample rate
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_StreamCtor_ShouldThrowOnZeroAudioSampleRate()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() =>
+                    new AudioVideoWriter(ms, 1920, 1080, 30, 2, 0, 16, DefaultVideoOptions, DefaultAudioOptions));
+            }
+        }
+
+        /// <summary>
+        /// Tests that audio video writer stream ctor should throw on negative audio sample rate
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_StreamCtor_ShouldThrowOnNegativeAudioSampleRate()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() =>
+                    new AudioVideoWriter(ms, 1920, 1080, 30, 2, -1, 16, DefaultVideoOptions, DefaultAudioOptions));
             }
         }
 
