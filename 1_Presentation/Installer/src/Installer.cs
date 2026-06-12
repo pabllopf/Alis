@@ -73,7 +73,7 @@ namespace Alis.App.Installer
             }
 
             InitializeOpenGL(platform);
-            IntPtr imguiContext = InitializeImGui();
+            InitializeImGui();
             IExample example = new ImguiSample(platform);
             example.Initialize();
 
