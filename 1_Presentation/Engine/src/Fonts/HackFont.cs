@@ -32,7 +32,8 @@ namespace Alis.App.Engine.Fonts
     /// <summary>
     ///     The hack font class
     /// </summary>
-    public sealed class HackFont
+    /// <seealso cref="IFont" />
+    public sealed class HackFont : IFont
     {
     }
 }
