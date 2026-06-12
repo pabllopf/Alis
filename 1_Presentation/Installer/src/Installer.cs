@@ -83,7 +83,7 @@ namespace Alis.App.Installer
             ImGuiIoPtr io = ConfigureImGui(platform);
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
-            LoadFonts(imguiContext);
+            LoadFonts();
             ConfigureStyle();
 
             RunGameLoop(frameTimer, ref lastTime, targetFrameTime, io, example, platform);
@@ -144,7 +144,7 @@ namespace Alis.App.Installer
         /// <summary>
         ///     Loads and configures fonts from resources.
         /// </summary>
-        private static void LoadFonts(IntPtr imguiContext)
+        private static void LoadFonts()
         {
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
