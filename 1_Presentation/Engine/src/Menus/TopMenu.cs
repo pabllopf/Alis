@@ -280,7 +280,7 @@ namespace Alis.App.Engine.Menus
         {
         }
 
-        private void RenderMenuItem(string text, string shortcut = null)
+        private static void RenderMenuItem(string text, string shortcut = null)
         {
             if (ImGui.MenuItem(text, shortcut))
             {
