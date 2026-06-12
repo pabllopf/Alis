@@ -39,7 +39,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     Initializes this instance
         /// </summary>
-        void Initialize();
+        new void Initialize();
 
         /// <summary>
         ///     Updates this instance
