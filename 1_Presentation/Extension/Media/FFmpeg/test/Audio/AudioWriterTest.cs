@@ -203,5 +203,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
                 Assert.Throws<InvalidDataException>(() => new AudioWriter(ms, 2, 0));
             }
         }
+
+        /// <summary>
+        /// Tests that audio writer stream ctor should throw on negative sample rate
+        /// </summary>
+        [Fact]
+        public void AudioWriter_StreamCtor_ShouldThrowOnNegativeSampleRate()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Assert.Throws<InvalidDataException>(() => new AudioWriter(ms, 2, -1));
+            }
+        }
     }
 }
