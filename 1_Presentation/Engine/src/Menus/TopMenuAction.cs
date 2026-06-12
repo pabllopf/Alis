@@ -378,6 +378,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void DuplicateGameObject()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
