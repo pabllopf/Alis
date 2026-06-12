@@ -85,14 +85,5 @@ namespace Alis.App.Engine.Windows
         ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
-
-        /// <summary>
-        ///     Renames the game object using the specified game object
-        /// </summary>
-        /// <param name="gameObject">The game object</param>
-        private static void RenameGameObject(GameObject gameObject)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
