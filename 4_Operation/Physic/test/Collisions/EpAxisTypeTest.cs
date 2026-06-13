@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Physic.Collisions;
 using Xunit;
 
@@ -36,8 +35,57 @@ namespace Alis.Core.Physic.Test.Collisions
     /// <summary>
     ///     The ep axis type test class
     /// </summary>
-    public class EPAxisTypeTest
+    public class EpAxisTypeTest
     {
-       
+        /// <summary>
+        ///     Tests that unknown should have value zero
+        /// </summary>
+        [Fact]
+        public void Unknown_ShouldHaveValueZero()
+        {
+            Assert.Equal(0, (int)EpAxisType.Unknown);
+        }
+
+        /// <summary>
+        ///     Tests that edge a should have value one
+        /// </summary>
+        [Fact]
+        public void EdgeA_ShouldHaveValueOne()
+        {
+            Assert.Equal(1, (int)EpAxisType.EdgeA);
+        }
+
+        /// <summary>
+        ///     Tests that edge b should have value two
+        /// </summary>
+        [Fact]
+        public void EdgeB_ShouldHaveValueTwo()
+        {
+            Assert.Equal(2, (int)EpAxisType.EdgeB);
+        }
+
+        /// <summary>
+        ///     Tests that values should be sequential
+        /// </summary>
+        [Fact]
+        public void Values_ShouldBeSequential()
+        {
+            Assert.True((int)EpAxisType.EdgeA == (int)EpAxisType.Unknown + 1);
+            Assert.True((int)EpAxisType.EdgeB == (int)EpAxisType.EdgeA + 1);
+        }
+
+        /// <summary>
+        ///     Tests that all values should be unique
+        /// </summary>
+        [Fact]
+        public void AllValues_ShouldBeUnique()
+        {
+            EpAxisType[] values = (EpAxisType[])System.Enum.GetValues(typeof(EpAxisType));
+
+            Assert.Equal(3, values.Length);
+            Assert.Equal(EpAxisType.Unknown, values[0]);
+            Assert.Equal(EpAxisType.EdgeA, values[1]);
+            Assert.Equal(EpAxisType.EdgeB, values[2]);
+        }
     }
 }
