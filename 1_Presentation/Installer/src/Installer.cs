@@ -104,9 +104,9 @@ namespace Alis.App.Installer
         }
 
         /// <summary>
-        ///     Initializes ImGui context and returns it.
+        ///     Initializes ImGui context.
         /// </summary>
-        private static IntPtr InitializeImGui()
+        private static void InitializeImGui()
         {
             IntPtr imguiContext = ImGui.CreateContext();
             ImGui.SetCurrentContext(imguiContext);
@@ -115,8 +115,6 @@ namespace Alis.App.Installer
             ImPlot.CreateContext();
             ImGuizMo.SetImGuiContext(imguiContext);
             ImGui.SetCurrentContext(imguiContext);
-
-            return imguiContext;
         }
 
         /// <summary>
