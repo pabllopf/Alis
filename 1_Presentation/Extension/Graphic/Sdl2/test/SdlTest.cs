@@ -292,5 +292,45 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             Assert.Equal(Sdl.Button(Sdl.ButtonX2), Sdl.GlButtonX2Mask);
         }
+
+        /// <summary>
+        /// Tests that GlAudioU16Sys matches endianness
+        /// </summary>
+        [Fact]
+        public void ShouldHaveGlAudioU16Sys()
+        {
+            ushort expected = System.BitConverter.IsLittleEndian ? Sdl.AudioU16Lsb : Sdl.AudioU16Msb;
+            Assert.Equal(expected, Sdl.GlAudioU16Sys);
+        }
+
+        /// <summary>
+        /// Tests that GlAudioS16Sys matches endianness
+        /// </summary>
+        [Fact]
+        public void ShouldHaveGlAudioS16Sys()
+        {
+            ushort expected = System.BitConverter.IsLittleEndian ? Sdl.AudioS16Lsb : Sdl.AudioS16Msb;
+            Assert.Equal(expected, Sdl.GlAudioS16Sys);
+        }
+
+        /// <summary>
+        /// Tests that GlAudioS32Sys matches endianness
+        /// </summary>
+        [Fact]
+        public void ShouldHaveGlAudioS32Sys()
+        {
+            ushort expected = System.BitConverter.IsLittleEndian ? Sdl.AudioS32Lsb : Sdl.AudioS32Msb;
+            Assert.Equal(expected, Sdl.GlAudioS32Sys);
+        }
+
+        /// <summary>
+        /// Tests that GlAudioF32Sys matches endianness
+        /// </summary>
+        [Fact]
+        public void ShouldHaveGlAudioF32Sys()
+        {
+            ushort expected = System.BitConverter.IsLittleEndian ? Sdl.AudioF32Lsb : Sdl.AudioF32Msb;
+            Assert.Equal(expected, Sdl.GlAudioF32Sys);
+        }
     }
 }
