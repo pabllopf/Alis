@@ -45,6 +45,82 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             Assert.NotNull(typeof(Shape));
         }
+
+        /// <summary>
+        /// Tests that circle shape should have correct shape type
+        /// </summary>
+        [Fact]
+        public void CircleShape_ShouldHaveCorrectShapeType()
+        {
+            CircleShape circle = new CircleShape(1f, 1f);
+
+            Assert.Equal(ShapeType.Circle, circle.ShapeType);
+        }
+
+        /// <summary>
+        /// Tests that circle shape should have correct child count
+        /// </summary>
+        [Fact]
+        public void CircleShape_ShouldHaveCorrectChildCount()
+        {
+            CircleShape circle = new CircleShape(1f, 1f);
+
+            Assert.Equal(1, circle.ChildCount);
+        }
+
+        /// <summary>
+        /// Tests that circle shape should have correct radius
+        /// </summary>
+        [Fact]
+        public void CircleShape_ShouldHaveCorrectRadius()
+        {
+            CircleShape circle = new CircleShape(2f, 1f);
+
+            Assert.Equal(2f, circle.GetRadius);
+        }
+
+        /// <summary>
+        /// Tests that circle shape should have correct density
+        /// </summary>
+        [Fact]
+        public void CircleShape_ShouldHaveCorrectDensity()
+        {
+            CircleShape circle = new CircleShape(1f, 3f);
+
+            Assert.Equal(3f, circle.GetDensity);
+        }
+
+        /// <summary>
+        /// Tests that circle shape should have mass data
+        /// </summary>
+        [Fact]
+        public void CircleShape_ShouldHaveMassData()
+        {
+            CircleShape circle = new CircleShape(1f, 1f);
+
+            Assert.NotNull(circle.MassData);
+        }
+
+        /// <summary>
+        /// Tests that polygon shape should have correct shape type
+        /// </summary>
+        [Fact]
+        public void PolygonShape_ShouldHaveCorrectShapeType()
+        {
+            PolygonShape polygon = new PolygonShape(1f);
+
+            Assert.Equal(ShapeType.Polygon, polygon.ShapeType);
+        }
+
+        /// <summary>
+        /// Tests that polygon shape should have correct child count
+        /// </summary>
+        [Fact]
+        public void PolygonShape_ShouldHaveCorrectChildCount()
+        {
+            PolygonShape polygon = new PolygonShape(1f);
+
+            Assert.Equal(1, polygon.ChildCount);
+        }
     }
 }
-
