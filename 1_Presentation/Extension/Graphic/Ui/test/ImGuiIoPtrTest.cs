@@ -40,6 +40,40 @@ namespace Alis.Extension.Graphic.Ui.Test
     public class ImGuiIoPtrTest
     {
         /// <summary>
+        ///     Tests that native ptr should store value from int ptr constructor
+        /// </summary>
+        [Fact]
+        public void NativePtr_ShouldStoreValueFromIntPtrConstructor()
+        {
+            IntPtr nativePtr = new IntPtr(42);
+            ImGuiIoPtr ioPtr = new ImGuiIoPtr(nativePtr);
+            Assert.Equal(nativePtr, ioPtr.NativePtr);
+        }
+
+        /// <summary>
+        ///     Tests that implicit operator from int ptr should return correct instance
+        /// </summary>
+        [Fact]
+        public void ImplicitOperator_FromIntPtr_ShouldReturnCorrectInstance()
+        {
+            IntPtr nativePtr = new IntPtr(99);
+            ImGuiIoPtr ioPtr = nativePtr;
+            Assert.Equal(nativePtr, ioPtr.NativePtr);
+        }
+
+        /// <summary>
+        ///     Tests that implicit operator from im gui io ptr should return correct int ptr
+        /// </summary>
+        [Fact]
+        public void ImplicitOperator_FromImGuiIoPtr_ShouldReturnCorrectIntPtr()
+        {
+            IntPtr nativePtr = new IntPtr(77);
+            ImGuiIoPtr ioPtr = new ImGuiIoPtr(nativePtr);
+            IntPtr result = ioPtr;
+            Assert.Equal(nativePtr, result);
+        }
+
+        /// <summary>
         ///     Tests that want text input get set returns expected
         /// </summary>
         [Fact]

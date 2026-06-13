@@ -39,6 +39,40 @@ namespace Alis.Extension.Graphic.Ui.Test
     public class ImFontAtlasPtrTest
     {
         /// <summary>
+        ///     Tests that native ptr should store value from int ptr constructor
+        /// </summary>
+        [Fact]
+        public void NativePtr_ShouldStoreValueFromIntPtrConstructor()
+        {
+            IntPtr nativePtr = new IntPtr(42);
+            ImFontAtlasPtr atlasPtr = new ImFontAtlasPtr(nativePtr);
+            Assert.Equal(nativePtr, atlasPtr.NativePtr);
+        }
+
+        /// <summary>
+        ///     Tests that implicit operator from int ptr should return correct instance
+        /// </summary>
+        [Fact]
+        public void ImplicitOperator_FromIntPtr_ShouldReturnCorrectInstance()
+        {
+            IntPtr nativePtr = new IntPtr(99);
+            ImFontAtlasPtr atlasPtr = nativePtr;
+            Assert.Equal(nativePtr, atlasPtr.NativePtr);
+        }
+
+        /// <summary>
+        ///     Tests that implicit operator from im font atlas ptr should return correct int ptr
+        /// </summary>
+        [Fact]
+        public void ImplicitOperator_FromImFontAtlasPtr_ShouldReturnCorrectIntPtr()
+        {
+            IntPtr nativePtr = new IntPtr(77);
+            ImFontAtlasPtr atlasPtr = new ImFontAtlasPtr(nativePtr);
+            IntPtr result = atlasPtr;
+            Assert.Equal(nativePtr, result);
+        }
+
+        /// <summary>
         ///     Tests that native ptr should be initialized
         /// </summary>
         [Fact]
