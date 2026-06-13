@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
 
@@ -44,6 +45,63 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void AngleJoint_TypeShouldBeAccessible()
         {
             Assert.NotNull(typeof(AngleJoint));
+        }
+
+        /// <summary>
+        /// Tests that constructor with bodies should set joint type to angle
+        /// </summary>
+        [Fact]
+        public void Constructor_WithBodies_ShouldSetJointTypeToAngle()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Assert.Equal(JointType.Angle, joint.JointType);
+        }
+
+        /// <summary>
+        /// Tests that constructor with bodies should set bias factor to default
+        /// </summary>
+        [Fact]
+        public void Constructor_WithBodies_ShouldSetBiasFactorToDefault()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Assert.Equal(0.2f, joint.BiasFactor);
+        }
+
+        /// <summary>
+        /// Tests that constructor with bodies should set max impulse to max value
+        /// </summary>
+        [Fact]
+        public void Constructor_WithBodies_ShouldSetMaxImpulseToMaxValue()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Assert.Equal(float.MaxValue, joint.MaxImpulse);
+        }
+
+        /// <summary>
+        /// Tests that constructor with bodies should set body a and body b
+        /// </summary>
+        [Fact]
+        public void Constructor_WithBodies_ShouldSetBodyAAndBodyB()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
         }
     }
 }
