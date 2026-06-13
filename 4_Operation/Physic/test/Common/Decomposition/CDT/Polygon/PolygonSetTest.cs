@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
+using PolygonPolygon = Alis.Core.Physic.Common.Decomposition.CDT.Polygon.Polygon;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
@@ -45,6 +48,53 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         {
             Assert.NotNull(typeof(PolygonSet));
         }
+
+        /// <summary>
+        /// Tests that default constructor should create empty set
+        /// </summary>
+        [Fact]
+        public void DefaultConstructor_ShouldCreateEmptySet()
+        {
+            PolygonSet polySet = new PolygonSet();
+
+            Assert.NotNull(polySet);
+        }
+
+        /// <summary>
+        /// Tests that constructor with polygon should add it
+        /// </summary>
+        [Fact]
+        public void Constructor_WithPolygon_ShouldAddIt()
+        {
+            List<PolygonPoint> points = new List<PolygonPoint>
+            {
+                new PolygonPoint(0.0, 0.0),
+                new PolygonPoint(1.0, 0.0),
+                new PolygonPoint(0.0, 1.0)
+            };
+            PolygonPolygon polygon = new PolygonPolygon(points);
+            PolygonSet polySet = new PolygonSet(polygon);
+
+            Assert.Contains(polygon, polySet.GetPolygons);
+        }
+
+        /// <summary>
+        /// Tests that add should add polygon to set
+        /// </summary>
+        [Fact]
+        public void Add_ShouldAddPolygonToSet()
+        {
+            List<PolygonPoint> points = new List<PolygonPoint>
+            {
+                new PolygonPoint(0.0, 0.0),
+                new PolygonPoint(1.0, 0.0),
+                new PolygonPoint(0.0, 1.0)
+            };
+            PolygonPolygon polygon = new PolygonPolygon(points);
+            PolygonSet polySet = new PolygonSet();
+            polySet.Add(polygon);
+
+            Assert.Contains(polygon, polySet.GetPolygons);
+        }
     }
 }
-

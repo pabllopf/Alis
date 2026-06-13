@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Controllers;
 using Alis.Core.Physic.Dynamics;
@@ -61,6 +62,21 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(sender, capturedWorld);
             Assert.Equal(controllerArg, capturedController);
         }
+
+        /// <summary>
+        ///     Tests that chaining multiple handlers should call all
+        /// </summary>
+        [Fact]
+        public void Chaining_ShouldCallAllHandlers()
+        {
+            int callCount = 0;
+            ControllerDelegate first = (w, c) => { callCount++; };
+            ControllerDelegate second = (w, c) => { callCount++; };
+
+            ControllerDelegate chain = first + second;
+            chain(null, null);
+
+            Assert.Equal(2, callCount);
+        }
     }
 }
-

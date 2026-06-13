@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Sets;
 using Xunit;
 
@@ -45,6 +47,39 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Sets
         {
             Assert.NotNull(typeof(ConstrainedPointSet));
         }
+
+        /// <summary>
+        /// Tests that constructor with points and indices should set edge index
+        /// </summary>
+        [Fact]
+        public void Constructor_WithPointsAndIndices_ShouldSetEdgeIndex()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(1.0, 0.0),
+                new TriangulationPoint(0.0, 1.0)
+            };
+            int[] indices = { 0, 1 };
+            ConstrainedPointSet cps = new ConstrainedPointSet(points, indices);
+
+            Assert.NotNull(cps.EdgeIndex);
+            Assert.Equal(2, cps.EdgeIndex.Length);
+        }
+
+        /// <summary>
+        /// Tests that triangulation mode should be constrained
+        /// </summary>
+        [Fact]
+        public void TriangulationMode_ShouldBeConstrained()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0)
+            };
+            ConstrainedPointSet cps = new ConstrainedPointSet(points, new int[0]);
+
+            Assert.Equal(TriangulationMode.Constrained, cps.TriangulationMode);
+        }
     }
 }
-

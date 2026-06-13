@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.Decomposition;
 using Xunit;
 
@@ -35,16 +37,34 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
     /// <summary>
     /// The cdt decomposer test class
     /// </summary>
-    public class CDTDecomposerTest
+    public class CdtDecomposerTest
     {
         /// <summary>
         /// Tests that cdt decomposer type should be accessible
         /// </summary>
         [Fact]
-        public void CDTDecomposer_TypeShouldBeAccessible()
+        public void CdtDecomposer_TypeShouldBeAccessible()
         {
             Assert.NotNull(typeof(CdtDecomposer));
         }
+
+        /// <summary>
+        /// Tests that convex partition with triangle should return single part
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithTriangle_ShouldReturnSinglePart()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0f, 1f)
+            });
+
+            System.Collections.Generic.List<Vertices> result = CdtDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+        }
     }
 }
-

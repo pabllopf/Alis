@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.Decomposition;
 using Xunit;
 
@@ -45,6 +47,24 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         {
             Assert.NotNull(typeof(FlipcodeDecomposer));
         }
+
+        /// <summary>
+        /// Tests that convex partition with triangle should return single part
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithTriangle_ShouldReturnSinglePart()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0f, 1f)
+            });
+
+            System.Collections.Generic.List<Vertices> result = FlipcodeDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+        }
     }
 }
-

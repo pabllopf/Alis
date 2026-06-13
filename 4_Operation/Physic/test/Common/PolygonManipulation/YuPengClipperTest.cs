@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.PolygonManipulation;
 using Xunit;
 
@@ -45,6 +47,31 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         {
             Assert.NotNull(typeof(YuPengClipper));
         }
+
+        /// <summary>
+        /// Tests that union with overlapping triangles should produce result
+        /// </summary>
+        [Fact]
+        public void Union_WithOverlappingTriangles_ShouldProduceResult()
+        {
+            Vertices tri1 = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(0f, 2f)
+            });
+            Vertices tri2 = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0f, 1f)
+            });
+
+            PolyClipError error = PolyClipError.None;
+            System.Collections.Generic.List<Vertices> result = YuPengClipper.Union(tri1, tri2, out error);
+
+            Assert.NotNull(result);
+            Assert.Equal(PolyClipError.None, error);
+        }
     }
 }
-

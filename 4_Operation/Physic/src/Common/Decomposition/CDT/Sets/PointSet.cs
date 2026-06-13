@@ -66,6 +66,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         /// <param name="t">The </param>
         public void AddTriangle(DelaunayTriangle t)
         {
+            if (GetTriangles == null)
+            {
+                GetTriangles = new List<DelaunayTriangle>();
+            }
+
             GetTriangles.Add(t);
         }
 
@@ -75,6 +80,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Sets
         /// <param name="list">The list</param>
         public void AddTriangles(IEnumerable<DelaunayTriangle> list)
         {
+            if (GetTriangles == null)
+            {
+                GetTriangles = new List<DelaunayTriangle>();
+            }
+
             foreach (DelaunayTriangle tri in list)
             {
                 GetTriangles.Add(tri);

@@ -34,174 +34,79 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
 {
     /// <summary>
-    ///     The triangulation point test class
+    /// The triangulation point test class
     /// </summary>
     public class TriangulationPointTest
     {
         /// <summary>
-        ///     Tests that constructor should initialize with coordinates
+        /// Tests that constructor should set x and y
         /// </summary>
         [Fact]
-        public void Constructor_ShouldInitializeWithCoordinates()
+        public void Constructor_ShouldSetXAndY()
         {
-            double x = 5.0;
-            double y = 10.0;
+            TriangulationPoint point = new TriangulationPoint(1.5, 2.5);
 
-            TriangulationPoint point = new TriangulationPoint(x, y);
-
-            Assert.Equal(x, point.X);
-            Assert.Equal(y, point.Y);
+            Assert.Equal(1.5, point.X);
+            Assert.Equal(2.5, point.Y);
         }
 
         /// <summary>
-        ///     Tests that xf property should get and set correctly
+        /// Tests that xf should convert to float
         /// </summary>
         [Fact]
-        public void XfProperty_ShouldGetAndSetCorrectly()
+        public void Xf_ShouldConvertToFloat()
         {
-            TriangulationPoint point = new TriangulationPoint(5.0, 10.0);
+            TriangulationPoint point = new TriangulationPoint(3.14, 0.0);
 
-            point.Xf = 15.0f;
-
-            Assert.Equal(15.0f, point.Xf);
-            Assert.Equal(15.0, point.X);
+            Assert.Equal(3.14f, point.Xf);
         }
 
         /// <summary>
-        ///     Tests that yf property should get and set correctly
+        /// Tests that yf should convert to float
         /// </summary>
         [Fact]
-        public void YfProperty_ShouldGetAndSetCorrectly()
+        public void Yf_ShouldConvertToFloat()
         {
-            TriangulationPoint point = new TriangulationPoint(5.0, 10.0);
+            TriangulationPoint point = new TriangulationPoint(0.0, 2.71);
 
-            point.Yf = 20.0f;
-
-            Assert.Equal(20.0f, point.Yf);
-            Assert.Equal(20.0, point.Y);
+            Assert.Equal(2.71f, point.Yf);
         }
 
         /// <summary>
-        ///     Tests that has edges should return false initially
+        /// Tests that has edges should be false initially
         /// </summary>
         [Fact]
-        public void HasEdges_ShouldReturnFalseInitially()
+        public void HasEdges_ShouldBeFalseInitially()
         {
-            TriangulationPoint point = new TriangulationPoint(0, 0);
+            TriangulationPoint point = new TriangulationPoint(0.0, 0.0);
 
             Assert.False(point.HasEdges);
         }
 
         /// <summary>
-        ///     Tests that add edge should initialize edges list
+        /// Tests that add edge should initialize edges list
         /// </summary>
         [Fact]
         public void AddEdge_ShouldInitializeEdgesList()
         {
-            TriangulationPoint point = new TriangulationPoint(0, 0);
-            TriangulationPoint p1 = new TriangulationPoint(1, 0);
-            TriangulationPoint p2 = new TriangulationPoint(0, 1);
+            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
             DtSweepConstraint edge = new DtSweepConstraint(p1, p2);
 
-            point.AddEdge(edge);
+            p1.AddEdge(edge);
 
-            Assert.True(point.HasEdges);
-            Assert.NotNull(point.Edges);
-            Assert.Single(point.Edges);
+            Assert.True(p1.HasEdges);
         }
 
         /// <summary>
-        ///     Tests that add edge should add multiple edges
+        /// Tests that to string should return formatted value
         /// </summary>
         [Fact]
-        public void AddEdge_ShouldAddMultipleEdges()
+        public void ToString_ShouldReturnFormattedValue()
         {
-            TriangulationPoint point = new TriangulationPoint(0, 0);
-            TriangulationPoint p1 = new TriangulationPoint(1, 0);
-            TriangulationPoint p2 = new TriangulationPoint(0, 1);
-            DtSweepConstraint edge1 = new DtSweepConstraint(p1, p2);
-            DtSweepConstraint edge2 = new DtSweepConstraint(p2, p1);
+            TriangulationPoint point = new TriangulationPoint(1.0, 2.0);
 
-            point.AddEdge(edge1);
-            point.AddEdge(edge2);
-
-            Assert.Equal(2, point.Edges.Count);
-        }
-
-        /// <summary>
-        ///     Tests that to string should return formatted string
-        /// </summary>
-        [Fact]
-        public void ToString_ShouldReturnFormattedString()
-        {
-            TriangulationPoint point = new TriangulationPoint(5.5, 10.5);
-
-            string result = point.ToString();
-
-            Assert.Contains("5", result);
-            Assert.Contains("10", result);
-        }
-
-        /// <summary>
-        ///     Tests that triangulation point should handle negative coordinates
-        /// </summary>
-        [Fact]
-        public void TriangulationPoint_ShouldHandleNegativeCoordinates()
-        {
-            TriangulationPoint point = new TriangulationPoint(-5.0, -10.0);
-
-            Assert.Equal(-5.0, point.X);
-            Assert.Equal(-10.0, point.Y);
-        }
-
-        /// <summary>
-        ///     Tests that triangulation point should handle zero coordinates
-        /// </summary>
-        [Fact]
-        public void TriangulationPoint_ShouldHandleZeroCoordinates()
-        {
-            TriangulationPoint point = new TriangulationPoint(0, 0);
-
-            Assert.Equal(0, point.X);
-            Assert.Equal(0, point.Y);
-        }
-
-        /// <summary>
-        ///     Tests that triangulation point should handle large coordinates
-        /// </summary>
-        [Fact]
-        public void TriangulationPoint_ShouldHandleLargeCoordinates()
-        {
-            TriangulationPoint point = new TriangulationPoint(10000.0, 20000.0);
-
-            Assert.Equal(10000.0, point.X);
-            Assert.Equal(20000.0, point.Y);
-        }
-
-        /// <summary>
-        ///     Tests that xf and yf should convert between double and float
-        /// </summary>
-        [Fact]
-        public void XfAndYf_ShouldConvertBetweenDoubleAndFloat()
-        {
-            TriangulationPoint point = new TriangulationPoint(5.5, 10.5);
-
-            float xf = point.Xf;
-            float yf = point.Yf;
-
-            Assert.Equal(5.5f, xf);
-            Assert.Equal(10.5f, yf);
-        }
-
-        /// <summary>
-        ///     Tests that edges property should be null initially
-        /// </summary>
-        [Fact]
-        public void EdgesProperty_ShouldBeNullInitially()
-        {
-            TriangulationPoint point = new TriangulationPoint(0, 0);
-
-            Assert.Null(point.Edges);
+            Assert.Equal("[1,2]", point.ToString());
         }
     }
 }

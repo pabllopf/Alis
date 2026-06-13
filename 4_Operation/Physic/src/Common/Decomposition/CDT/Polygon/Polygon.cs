@@ -125,6 +125,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         /// <param name="t">The </param>
         public void AddTriangle(DelaunayTriangle t)
         {
+            if (Triangles == null)
+            {
+                Triangles = new List<DelaunayTriangle>();
+            }
+
             Triangles.Add(t);
         }
 
@@ -134,6 +139,11 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         /// <param name="list">The list</param>
         public void AddTriangles(IEnumerable<DelaunayTriangle> list)
         {
+            if (Triangles == null)
+            {
+                Triangles = new List<DelaunayTriangle>();
+            }
+
             Triangles.AddRange(list);
         }
 

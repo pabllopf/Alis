@@ -47,4 +47,3 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         }
     }
 }
-
