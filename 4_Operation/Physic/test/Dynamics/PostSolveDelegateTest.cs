@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;
@@ -61,6 +62,21 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(capturedContact);
             Assert.Equal(impulseArg, capturedImpulse);
         }
+
+        /// <summary>
+        ///     Tests that chaining multiple handlers should call all
+        /// </summary>
+        [Fact]
+        public void Chaining_ShouldCallAllHandlers()
+        {
+            int callCount = 0;
+            PostSolveDelegate first = (contact, impulse) => { callCount++; };
+            PostSolveDelegate second = (contact, impulse) => { callCount++; };
+
+            PostSolveDelegate chain = first + second;
+            chain(null, new ContactVelocityConstraint());
+
+            Assert.Equal(2, callCount);
+        }
     }
 }
-
