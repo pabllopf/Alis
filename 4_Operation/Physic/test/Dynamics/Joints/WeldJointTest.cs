@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
 
@@ -45,6 +47,77 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Assert.NotNull(typeof(WeldJoint));
         }
+
+        /// <summary>
+        /// Tests that constructor with bodies and anchors should set joint type to weld
+        /// </summary>
+        [Fact]
+        public void Constructor_WithBodiesAndAnchors_ShouldSetJointTypeToWeld()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            Assert.Equal(JointType.Weld, joint.JointType);
+        }
+
+        /// <summary>
+        /// Tests that constructor with bodies and anchors should set body a and body b
+        /// </summary>
+        [Fact]
+        public void Constructor_WithBodiesAndAnchors_ShouldSetBodyAAndBodyB()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+        }
+
+        /// <summary>
+        /// Tests that reference angle should round trip
+        /// </summary>
+        [Fact]
+        public void ReferenceAngle_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            joint.ReferenceAngle = 0.5f;
+
+            Assert.Equal(0.5f, joint.ReferenceAngle);
+        }
+
+        /// <summary>
+        /// Tests that frequency should round trip
+        /// </summary>
+        [Fact]
+        public void Frequency_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            joint.FrequencyHz = 10.0f;
+
+            Assert.Equal(10.0f, joint.FrequencyHz);
+        }
+
+        /// <summary>
+        /// Tests that damping ratio should round trip
+        /// </summary>
+        [Fact]
+        public void DampingRatio_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            joint.DampingRatio = 0.8f;
+
+            Assert.Equal(0.8f, joint.DampingRatio);
+        }
     }
 }
-
