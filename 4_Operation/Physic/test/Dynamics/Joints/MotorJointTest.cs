@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
 
@@ -45,6 +47,123 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Assert.NotNull(typeof(MotorJoint));
         }
+
+        /// <summary>
+        /// Tests that constructor with bodies should set joint type to motor
+        /// </summary>
+        [Fact]
+        public void Constructor_WithBodies_ShouldSetJointTypeToMotor()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            Assert.Equal(JointType.Motor, joint.JointType);
+        }
+
+        /// <summary>
+        /// Tests that constructor with bodies should set body a and body b
+        /// </summary>
+        [Fact]
+        public void Constructor_WithBodies_ShouldSetBodyAAndBodyB()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+        }
+
+        /// <summary>
+        /// Tests that max force should round trip
+        /// </summary>
+        [Fact]
+        public void MaxForce_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            joint.MaxForce = 500.0f;
+
+            Assert.Equal(500.0f, joint.MaxForce);
+        }
+
+        /// <summary>
+        /// Tests that max torque should round trip
+        /// </summary>
+        [Fact]
+        public void MaxTorque_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            joint.MaxTorque = 100.0f;
+
+            Assert.Equal(100.0f, joint.MaxTorque);
+        }
+
+        /// <summary>
+        /// Tests that get reaction force should return zero for default joint
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_ShouldReturnZeroForDefaultJoint()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            Vector2F force = joint.GetReactionForce(1.0f);
+
+            Assert.Equal(Vector2F.Zero, force);
+        }
+
+        /// <summary>
+        /// Tests that get reaction torque should return zero for default joint
+        /// </summary>
+        [Fact]
+        public void GetReactionTorque_ShouldReturnZeroForDefaultJoint()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            float torque = joint.GetReactionTorque(1.0f);
+
+            Assert.Equal(0.0f, torque);
+        }
+
+        /// <summary>
+        /// Tests that linear offset should round trip
+        /// </summary>
+        [Fact]
+        public void LinearOffset_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            Vector2F offset = new Vector2F(3.0f, 4.0f);
+            joint.LinearOffset = offset;
+
+            Assert.Equal(offset, joint.LinearOffset);
+        }
+
+        /// <summary>
+        /// Tests that angular offset should round trip
+        /// </summary>
+        [Fact]
+        public void AngularOffset_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            joint.AngularOffset = 0.5f;
+
+            Assert.Equal(0.5f, joint.AngularOffset);
+        }
     }
 }
-
