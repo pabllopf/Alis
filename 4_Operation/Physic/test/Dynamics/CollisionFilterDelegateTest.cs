@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
@@ -45,6 +46,22 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Assert.NotNull(typeof(CollisionFilterDelegate));
         }
+
+        /// <summary>
+        ///     Tests that chaining multiple handlers should call all
+        /// </summary>
+        [Fact]
+        public void Chaining_ShouldCallAllHandlers()
+        {
+            int callCount = 0;
+            CollisionFilterDelegate first = (a, b) => { callCount++; return true; };
+            CollisionFilterDelegate second = (a, b) => { callCount++; return false; };
+
+            CollisionFilterDelegate chain = first + second;
+            bool result = chain(null, null);
+
+            Assert.Equal(2, callCount);
+            Assert.False(result);
+        }
     }
 }
-
