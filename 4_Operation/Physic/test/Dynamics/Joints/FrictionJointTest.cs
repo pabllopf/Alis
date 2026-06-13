@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
 
@@ -45,6 +47,62 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Assert.NotNull(typeof(FrictionJoint));
         }
+
+        /// <summary>
+        /// Tests that constructor with bodies and anchors should set joint type to friction
+        /// </summary>
+        [Fact]
+        public void Constructor_WithBodiesAndAnchors_ShouldSetJointTypeToFriction()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
+
+            Assert.Equal(JointType.Friction, joint.JointType);
+        }
+
+        /// <summary>
+        /// Tests that constructor with bodies and anchors should set body a and body b
+        /// </summary>
+        [Fact]
+        public void Constructor_WithBodiesAndAnchors_ShouldSetBodyAAndBodyB()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
+
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+        }
+
+        /// <summary>
+        /// Tests that max force should round trip
+        /// </summary>
+        [Fact]
+        public void MaxForce_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
+
+            joint.MaxForce = 300.0f;
+
+            Assert.Equal(300.0f, joint.MaxForce);
+        }
+
+        /// <summary>
+        /// Tests that max torque should round trip
+        /// </summary>
+        [Fact]
+        public void MaxTorque_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
+
+            joint.MaxTorque = 50.0f;
+
+            Assert.Equal(50.0f, joint.MaxTorque);
+        }
     }
 }
-
