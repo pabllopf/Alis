@@ -39,200 +39,37 @@ namespace Alis.Extension.Graphic.Ui.Test
     public class ImDrawListPtrTest
     {
         /// <summary>
-        ///     Tests that native ptr should be initialized
+        ///     Tests that native ptr should store value from int ptr constructor
         /// </summary>
         [Fact]
-        public void NativePtr_ShouldBeInitialized()
+        public void NativePtr_ShouldStoreValueFromIntPtrConstructor()
         {
-            ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
-            Assert.Equal(IntPtr.Zero, ptr.NativePtr);
+            IntPtr nativePtr = new IntPtr(42);
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(nativePtr);
+            Assert.Equal(nativePtr, drawListPtr.NativePtr);
         }
 
         /// <summary>
-        ///     Tests that font data should be initialized
+        ///     Tests that implicit operator from int ptr should return correct instance
         /// </summary>
         [Fact]
-        public void FontData_ShouldBeInitialized()
+        public void ImplicitOperator_FromIntPtr_ShouldReturnCorrectInstance()
         {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.FontData, ptr.FontData);
+            IntPtr nativePtr = new IntPtr(99);
+            ImDrawListPtr drawListPtr = nativePtr;
+            Assert.Equal(nativePtr, drawListPtr.NativePtr);
         }
 
         /// <summary>
-        ///     Tests that font data size should be initialized
+        ///     Tests that implicit operator from im draw list ptr should return correct int ptr
         /// </summary>
         [Fact]
-        public void FontDataSize_ShouldBeInitialized()
+        public void ImplicitOperator_FromImDrawListPtr_ShouldReturnCorrectIntPtr()
         {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.FontDataSize, ptr.FontDataSize);
-        }
-
-        /// <summary>
-        ///     Tests that font data owned by atlas should be initialized
-        /// </summary>
-        [Fact]
-        public void FontDataOwnedByAtlas_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.FontDataOwnedByAtlas != 0, ptr.FontDataOwnedByAtlas);
-        }
-
-        /// <summary>
-        ///     Tests that font no should be initialized
-        /// </summary>
-        [Fact]
-        public void FontNo_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.FontNo, ptr.FontNo);
-        }
-
-        /// <summary>
-        ///     Tests that size pixels should be initialized
-        /// </summary>
-        [Fact]
-        public void SizePixels_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.SizePixels, ptr.SizePixels);
-        }
-
-        /// <summary>
-        ///     Tests that oversample h should be initialized
-        /// </summary>
-        [Fact]
-        public void OversampleH_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.OversampleH, ptr.OversampleH);
-        }
-
-        /// <summary>
-        ///     Tests that oversample v should be initialized
-        /// </summary>
-        [Fact]
-        public void OversampleV_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.OversampleV, ptr.OversampleV);
-        }
-
-        /// <summary>
-        ///     Tests that snap h should be initialized
-        /// </summary>
-        [Fact]
-        public void SnapH_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.SnapH != 0, ptr.SnapH);
-        }
-
-        /// <summary>
-        ///     Tests that glyph extra spacing should be initialized
-        /// </summary>
-        [Fact]
-        public void GlyphExtraSpacing_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.GlyphExtraSpacing, ptr.GlyphExtraSpacing);
-        }
-
-        /// <summary>
-        ///     Tests that glyph offset should be initialized
-        /// </summary>
-        [Fact]
-        public void GlyphOffset_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.GlyphOffset, ptr.GlyphOffset);
-        }
-
-        /// <summary>
-        ///     Tests that glyph ranges should be initialized
-        /// </summary>
-        [Fact]
-        public void GlyphRanges_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.GlyphRanges, ptr.GlyphRanges);
-        }
-
-        /// <summary>
-        ///     Tests that glyph min advance x should be initialized
-        /// </summary>
-        [Fact]
-        public void GlyphMinAdvanceX_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.GlyphMinAdvanceX, ptr.GlyphMinAdvanceX);
-        }
-
-        /// <summary>
-        ///     Tests that glyph max advance x should be initialized
-        /// </summary>
-        [Fact]
-        public void GlyphMaxAdvanceX_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.GlyphMaxAdvanceX, ptr.GlyphMaxAdvanceX);
-        }
-
-        /// <summary>
-        ///     Tests that merge mode should be initialized
-        /// </summary>
-        [Fact]
-        public void MergeMode_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.MergeMode != 0, ptr.MergeMode);
-        }
-
-        /// <summary>
-        ///     Tests that font builder flags should be initialized
-        /// </summary>
-        [Fact]
-        public void FontBuilderFlags_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.FontBuilderFlags, ptr.FontBuilderFlags);
-        }
-
-        /// <summary>
-        ///     Tests that rasterizer multiply should be initialized
-        /// </summary>
-        [Fact]
-        public void RasterizerMultiply_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.RasterizerMultiply, ptr.RasterizerMultiply);
-        }
-
-        /// <summary>
-        ///     Tests that ellipsis char should be initialized
-        /// </summary>
-        [Fact]
-        public void EllipsisChar_ShouldBeInitialized()
-        {
-            ImFontConfig config = new ImFontConfig();
-            ImFontConfigPtr ptr = new ImFontConfigPtr(config);
-            Assert.Equal(config.EllipsisChar, ptr.EllipsisChar);
+            IntPtr nativePtr = new IntPtr(77);
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(nativePtr);
+            IntPtr result = drawListPtr;
+            Assert.Equal(nativePtr, result);
         }
 
         /// <summary>
