@@ -247,5 +247,50 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             Assert.Equal(0x02, Sdl.AndroidExternalStorageWrite);
         }
+
+        /// <summary>
+        /// Tests that GlButtonLMask equals Button(ButtonLeft)
+        /// </summary>
+        [Fact]
+        public void ShouldHaveGlButtonLMask()
+        {
+            Assert.Equal(Sdl.Button(Sdl.ButtonLeft), Sdl.GlButtonLMask);
+        }
+
+        /// <summary>
+        /// Tests that GlButtonMMask equals Button(ButtonMiddle)
+        /// </summary>
+        [Fact]
+        public void ShouldHaveGlButtonMMask()
+        {
+            Assert.Equal(Sdl.Button(Sdl.ButtonMiddle), Sdl.GlButtonMMask);
+        }
+
+        /// <summary>
+        /// Tests that GlButtonRMask equals Button(ButtonRight)
+        /// </summary>
+        [Fact]
+        public void ShouldHaveGlButtonRMask()
+        {
+            Assert.Equal(Sdl.Button(Sdl.ButtonRight), Sdl.GlButtonRMask);
+        }
+
+        /// <summary>
+        /// Tests that GlButtonX1Mask equals Button(ButtonX1)
+        /// </summary>
+        [Fact]
+        public void ShouldHaveGlButtonX1Mask()
+        {
+            Assert.Equal(Sdl.Button(Sdl.ButtonX1), Sdl.GlButtonX1Mask);
+        }
+
+        /// <summary>
+        /// Tests that GlButtonX2Mask equals Button(ButtonX2)
+        /// </summary>
+        [Fact]
+        public void ShouldHaveGlButtonX2Mask()
+        {
+            Assert.Equal(Sdl.Button(Sdl.ButtonX2), Sdl.GlButtonX2Mask);
+        }
     }
 }
