@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
@@ -102,6 +104,150 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.Same(bodyA, joint.BodyA);
             Assert.Same(bodyB, joint.BodyB);
+        }
+
+        /// <summary>
+        /// Tests that target angle should round trip
+        /// </summary>
+        [Fact]
+        public void TargetAngle_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            joint.TargetAngle = 1.5f;
+
+            Assert.Equal(1.5f, joint.TargetAngle);
+        }
+
+        /// <summary>
+        /// Tests that target angle should default to zero
+        /// </summary>
+        [Fact]
+        public void TargetAngle_ShouldDefaultToZero()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Assert.Equal(0.0f, joint.TargetAngle);
+        }
+
+        /// <summary>
+        /// Tests that softness should default to zero
+        /// </summary>
+        [Fact]
+        public void Softness_ShouldDefaultToZero()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Assert.Equal(0.0f, joint.Softness);
+        }
+
+        /// <summary>
+        /// Tests that softness should round trip
+        /// </summary>
+        [Fact]
+        public void Softness_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            joint.Softness = 0.5f;
+
+            Assert.Equal(0.5f, joint.Softness);
+        }
+
+        /// <summary>
+        /// Tests that get reaction force should return zero
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_ShouldReturnZero()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Vector2F force = joint.GetReactionForce(1.0f);
+
+            Assert.Equal(Vector2F.Zero, force);
+        }
+
+        /// <summary>
+        /// Tests that get reaction torque should return zero
+        /// </summary>
+        [Fact]
+        public void GetReactionTorque_ShouldReturnZero()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            float torque = joint.GetReactionTorque(1.0f);
+
+            Assert.Equal(0.0f, torque);
+        }
+
+        /// <summary>
+        /// Tests that world anchor a should return body a position
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_ShouldReturnBodyAPosition()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Vector2F anchor = joint.WorldAnchorA;
+
+            Assert.Equal(bodyA.Position, anchor);
+        }
+
+        /// <summary>
+        /// Tests that world anchor b setter should throw not supported
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_Setter_ShouldThrowNotSupported()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Assert.Throws<NotSupportedException>(() => joint.WorldAnchorB = Vector2F.Zero);
+        }
+
+        /// <summary>
+        /// Tests that bias factor should round trip
+        /// </summary>
+        [Fact]
+        public void BiasFactor_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            joint.BiasFactor = 0.5f;
+
+            Assert.Equal(0.5f, joint.BiasFactor);
+        }
+
+        /// <summary>
+        /// Tests that max impulse should round trip
+        /// </summary>
+        [Fact]
+        public void MaxImpulse_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            joint.MaxImpulse = 100.0f;
+
+            Assert.Equal(100.0f, joint.MaxImpulse);
         }
     }
 }
