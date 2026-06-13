@@ -4,14 +4,7 @@
       "id": "default",
       "name": "Predeterminado",
       "fileVisibility": "supported",
-      "propertyKeys": [
-        {
-          "key": "status",
-          "showInNavigation": true,
-          "showInList": true,
-          "showInFileMenu": true
-        }
-      ],
+      "propertyKeys": [],
       "hiddenFolders": [],
       "hiddenTags": [],
       "hiddenFileNames": [],

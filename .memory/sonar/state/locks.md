@@ -1,5 +1,5 @@
-# Locks — Sonar Remediation
+# Distributed Locks
 
-| Issue ID | Worker | Timestamp | Status |
-|----------|--------|-----------|--------|
-| AZ683VHNikltiDWnKQjK | remediation-agent | 2026-06-12T20:05:00Z | released |
+| Issue ID | Worker ID | Timestamp | Status |
+|----------|-----------|-----------|--------|
+| AZ69k12mUs3jAr3sDLt2 | local | 2026-06-13T12:00:00Z | RELEASED |

@@ -182,6 +182,42 @@
           }
         }
       }
+    },
+      "unslothstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "unslothstudio",
+      "options": {
+        "baseURL": "http://localhost:8888/v1",
+        "apiKey": "sk-unsloth-df85451fcf7cc175835abaa566d4580e"
+      },
+      "models": {
+        "unsloth/gemma-4-26B-A4B-it-qat-GGUF": {
+          "name": "unsloth/gemma-4-26B-A4B-it-qat-GGUF",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "maxInputTokens": 262144,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 262144,
+            "output": 131584
+          }
+        },
+        "unsloth/gemma-4-26B-A4B-it-GGUF": {
+          "name": "unsloth/gemma-4-26B-A4B-it-GGUF",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "maxInputTokens": 262144,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 262144,
+            "output": 131584
+          }
+        }
+      }
     }
 
   },

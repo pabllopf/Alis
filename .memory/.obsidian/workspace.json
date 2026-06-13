@@ -11,10 +11,14 @@
             "id": "479876149a43d2eb",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Vista gráfica"
+              "type": "markdown",
+              "state": {
+                "file": "concepts/value-object-pattern.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "value-object-pattern"
             }
           }
         ]
@@ -72,6 +76,16 @@
           },
           {
             "id": "773ae85571ac0b74",
+            "type": "leaf",
+            "state": {
+              "type": "notebook-navigator",
+              "state": {},
+              "icon": "notebook-navigator",
+              "title": "Navegador de Cuadernos"
+            }
+          },
+          {
+            "id": "015b386d4c35fd49",
             "type": "leaf",
             "state": {
               "type": "notebook-navigator",
@@ -183,17 +197,23 @@
     "hiddenItems": {
       "switcher:Abrir selector rápido": false,
       "graph:Abrir vista gráfica": false,
-      "notebook-navigator:Navegador de Cuadernos": false,
       "canvas:Crear nuevo lienzo": false,
       "daily-notes:Abrir la nota de hoy": false,
       "templates:Insertar plantilla": false,
       "command-palette:Abrir paleta de comandos": false,
       "bases:Crear nueva base": false,
-      "markdown-importer:Abrir el importador de Markdown": false
+      "markdown-importer:Abrir el importador de Markdown": false,
+      "notebook-navigator:Navegador de Cuadernos": false
     }
   },
-  "active": "773ae85571ac0b74",
+  "active": "479876149a43d2eb",
   "lastOpenFiles": [
+    "sonar/fixes/AZ69k12mUs3jAr3sDLt2.md",
+    "sonar/issues/AZ69k12mUs3jAr3sDLt2.md",
+    "sonar/issues-index.json",
+    "sonar/raw-issues.json",
+    "sonar/logs/session-log.md",
+    "sonar/state/issue-progress.md",
     "sonar/patterns/S2325-method-should-be-static.md",
     "sonar/fixes/AZ64sUr6LnQ0n5Zded5E.md",
     "sonar/issues/AZ64sUr6LnQ0n5Zded5E.md",
@@ -216,10 +236,6 @@
     "sonar/fixes/AZ6OPa1Dsynw1OJ1vi4N.md",
     "sonar/issues/AZ6OPa1Dsynw1OJ1vi4N.md",
     "sonar/issues/AZ6OPa9isynw1OJ1vi7y.md",
-    "sonar/fixes/AZ6OPa9isynw1OJ1vi7k.md",
-    "sonar/issues/AZ6OPa9isynw1OJ1vi7k.md",
-    "sonar/fixes/AZ6OPbAksynw1OJ1vi8C.md",
-    "sonar/issues/AZ6OPbAksynw1OJ1vi8C.md",
     "sonar/sorted-issues.json",
     "sonar/raw-payload.json",
     "sonar/logs",
@@ -228,8 +244,6 @@
     "sonar/fixes",
     "sonar/issues",
     "sonar/state",
-    "apis",
-    "entities/Sin título.base",
     "Sin título.canvas"
   ]
 }

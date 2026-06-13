@@ -1,256 +1,45 @@
 [
   {
-    "id": "AZ683VHNikltiDWnKQjK",
-    "rule": "csharpsquid:S2325",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/BottomMenu.cs",
-    "componentName": "",
-    "line": 102,
-    "message": "Make 'RenderMenuContent' a static method.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "INTENTIONAL",
-    "tags": [
-      "pitfall"
-    ],
-    "textRange": {
-      "startLine": 102,
-      "endLine": 102,
-      "startOffset": 21,
-      "endOffset": 38
-    }
-  },
-  {
-    "id": "AZ683VHAikltiDWnKQjC",
-    "rule": "csharpsquid:S2325",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenu.cs",
-    "componentName": "",
-    "line": 97,
-    "message": "Make 'RenderFileMenu' a static method.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "INTENTIONAL",
-    "tags": [
-      "pitfall"
-    ],
-    "textRange": {
-      "startLine": 97,
-      "endLine": 97,
-      "startOffset": 21,
-      "endOffset": 35
-    }
-  },
-  {
-    "id": "AZ683VHAikltiDWnKQjE",
-    "rule": "csharpsquid:S2325",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenu.cs",
-    "componentName": "",
-    "line": 119,
-    "message": "Make 'RenderEditMenu' a static method.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "INTENTIONAL",
-    "tags": [
-      "pitfall"
-    ],
-    "textRange": {
-      "startLine": 119,
-      "endLine": 119,
-      "startOffset": 21,
-      "endOffset": 35
-    }
-  },
-  {
-    "id": "AZ683VHAikltiDWnKQjD",
-    "rule": "csharpsquid:S2325",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenu.cs",
-    "componentName": "",
-    "line": 163,
-    "message": "Make 'RenderAssetsMenu' a static method.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "INTENTIONAL",
-    "tags": [
-      "pitfall"
-    ],
-    "textRange": {
-      "startLine": 163,
-      "endLine": 163,
-      "startOffset": 21,
-      "endOffset": 37
-    }
-  },
-  {
-    "id": "AZ683VHAikltiDWnKQjF",
-    "rule": "csharpsquid:S2325",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenu.cs",
-    "componentName": "",
-    "line": 188,
-    "message": "Make 'RenderGameObjectMenu' a static method.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "INTENTIONAL",
-    "tags": [
-      "pitfall"
-    ],
-    "textRange": {
-      "startLine": 188,
-      "endLine": 188,
-      "startOffset": 21,
-      "endOffset": 41
-    }
-  },
-  {
-    "id": "AZ683VHAikltiDWnKQjG",
-    "rule": "csharpsquid:S2325",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenu.cs",
-    "componentName": "",
-    "line": 217,
-    "message": "Make 'RenderComponentMenu' a static method.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "INTENTIONAL",
-    "tags": [
-      "pitfall"
-    ],
-    "textRange": {
-      "startLine": 217,
-      "endLine": 217,
-      "startOffset": 21,
-      "endOffset": 40
-    }
-  },
-  {
-    "id": "AZ683VHAikltiDWnKQjH",
-    "rule": "csharpsquid:S2325",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenu.cs",
-    "componentName": "",
-    "line": 232,
-    "message": "Make 'RenderToolsMenu' a static method.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "INTENTIONAL",
-    "tags": [
-      "pitfall"
-    ],
-    "textRange": {
-      "startLine": 232,
-      "endLine": 232,
-      "startOffset": 21,
-      "endOffset": 36
-    }
-  },
-  {
-    "id": "AZ683VHAikltiDWnKQjI",
-    "rule": "csharpsquid:S2325",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenu.cs",
-    "componentName": "",
-    "line": 245,
-    "message": "Make 'RenderWindowMenu' a static method.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "INTENTIONAL",
-    "tags": [
-      "pitfall"
-    ],
-    "textRange": {
-      "startLine": 245,
-      "endLine": 245,
-      "startOffset": 21,
-      "endOffset": 37
-    }
-  },
-  {
-    "id": "AZ683VHAikltiDWnKQjJ",
-    "rule": "csharpsquid:S2325",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenu.cs",
-    "componentName": "",
-    "line": 259,
-    "message": "Make 'RenderHelpMenu' a static method.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "INTENTIONAL",
-    "tags": [
-      "pitfall"
-    ],
-    "textRange": {
-      "startLine": 259,
-      "endLine": 259,
-      "startOffset": 21,
-      "endOffset": 35
-    }
-  },
-  {
-    "id": "AZ683VD3ikltiDWnKQi_",
-    "rule": "csharpsquid:S1075",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenuAction.cs",
-    "componentName": "",
-    "line": 57,
-    "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "CONSISTENT",
-    "tags": [],
-    "textRange": {
-      "startLine": 57,
-      "endLine": 57,
-      "startOffset": 45,
-      "endOffset": 73
-    }
-  },
-  {
-    "id": "AZ683VD3ikltiDWnKQjA",
-    "rule": "csharpsquid:S1075",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenuAction.cs",
-    "componentName": "",
-    "line": 59,
-    "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "CONSISTENT",
-    "tags": [],
-    "textRange": {
-      "startLine": 59,
-      "endLine": 59,
-      "startOffset": 42,
-      "endOffset": 94
-    }
-  },
-  {
-    "id": "AZ683VD3ikltiDWnKQjB",
-    "rule": "csharpsquid:S1075",
-    "severity": "MINOR",
-    "component": "pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenuAction.cs",
-    "componentName": "",
-    "line": 61,
-    "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
-    "status": "OPEN",
-    "cleanCodeAttributeCategory": "CONSISTENT",
-    "tags": [],
-    "textRange": {
-      "startLine": 61,
-      "endLine": 61,
-      "startOffset": 48,
-      "endOffset": 152
-    }
-  },
-  {
-    "id": "AZ683VIFikltiDWnKQjL",
-    "rule": "csharpsquid:S1481",
+    "key": "AZ69k12mUs3jAr3sDLt2",
+    "rule": "csharpsquid:S3241",
     "severity": "MINOR",
     "component": "pabllopf-official_alis:1_Presentation/Installer/src/Installer.cs",
-    "componentName": "",
-    "line": 76,
-    "message": "Remove the unused local variable 'imguiContext'.",
+    "project": "pabllopf-official_alis",
+    "line": 109,
+    "hash": "d91ad076408aa8fed2973a3ab9166f2c",
+    "textRange": {
+      "startLine": 109,
+      "endLine": 109,
+      "startOffset": 23,
+      "endOffset": 29
+    },
+    "flows": [],
     "status": "OPEN",
-    "cleanCodeAttributeCategory": "INTENTIONAL",
+    "message": "Change return type to 'void'; not a single caller uses the returned value.",
+    "effort": "2min",
+    "debt": "2min",
+    "assignee": "pabllopf-fj3X7@github",
+    "author": "pabloperdomofalcon@gmail.com",
     "tags": [
+      "design",
       "unused"
     ],
-    "textRange": {
-      "startLine": 76,
-      "endLine": 76,
-      "startOffset": 19,
-      "endOffset": 31
-    }
+    "creationDate": "2026-06-12T20:41:57+0000",
+    "updateDate": "2026-06-12T20:41:57+0000",
+    "type": "CODE_SMELL",
+    "organization": "pabllopf-official",
+    "cleanCodeAttribute": "CLEAR",
+    "cleanCodeAttributeCategory": "INTENTIONAL",
+    "impacts": [
+      {
+        "softwareQuality": "MAINTAINABILITY",
+        "severity": "LOW"
+      }
+    ],
+    "issueStatus": "OPEN",
+    "projectName": "Alis",
+    "internalTags": [],
+    "lastChangeAnalysisUuid": "17660ebc-ab6b-4a4c-afd7-9f47103f0df7",
+    "lastChangeSource": "ANALYSIS"
   }
 ]

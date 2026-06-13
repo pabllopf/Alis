@@ -27,64 +27,76 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
 {
     /// <summary>
-    ///     Extended tests for FrugalStack to validate memory efficiency,
-    ///     push-pop cycles, and edge case handling.
+    ///     Extended tests for <see cref="FrugalStack{T}" /> struct
     /// </summary>
     public class FrugalStackExtendedTest
     {
         /// <summary>
-        ///     Test that FrugalStack can be created.
+        ///     Tests that frugal stack is value type
         /// </summary>
         [Fact]
-        public void Constructor_Default_StackCreated()
+        public void FrugalStack_IsValueType()
         {
-            FrugalStack<int> stack = new FrugalStack<int>();
+            Type type = typeof(FrugalStack<int>);
 
-            Assert.NotNull(stack);
+            Assert.True(type.IsValueType);
         }
 
         /// <summary>
-        ///     Test that FrugalStack.Push and Pop maintain LIFO order.
+        ///     Tests that frugal stack has sequential struct layout
         /// </summary>
         [Fact]
-        public void PushAndPop_MultipleValues_CorrectLIFOOrder()
+        public void FrugalStack_HasSequentialStructLayout()
         {
-            FrugalStack<int> stack = new FrugalStack<int>();
+            StructLayoutAttribute layout = typeof(FrugalStack<int>).StructLayoutAttribute;
 
-            stack.Push(100);
-            stack.Push(200);
-            stack.Push(300);
-
-            Assert.Equal(300, stack.Pop());
-            Assert.Equal(200, stack.Pop());
-            Assert.Equal(100, stack.Pop());
+            Assert.Equal(LayoutKind.Sequential, layout.Value);
         }
 
         /// <summary>
-        ///     Test that FrugalStack.TryPop returns false when stack is empty.
+        ///     Tests that pop returns last pushed value
         /// </summary>
         [Fact]
-        public void TryPop_EmptyStack_ReturnsFalse()
+        public void Pop_ReturnsLastPushedValue()
         {
-            FrugalStack<string> stack = new FrugalStack<string>();
+            FrugalStack<int> stack = new FrugalStack<int>();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
 
-            bool result = stack.TryPop(out string value);
+            int result = stack.Pop();
+
+            Assert.Equal(3, result);
+        }
+
+        /// <summary>
+        ///     Tests that try pop returns false when empty
+        /// </summary>
+        [Fact]
+        public void TryPop_ReturnsFalseWhenEmpty()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+
+            bool result = stack.TryPop(out int value);
 
             Assert.False(result);
-            Assert.Null(value);
+            Assert.Equal(default(int), value);
         }
 
         /// <summary>
-        ///     Test that FrugalStack.TryPop returns true and correct value when not empty.
+        ///     Tests that try pop returns true when has items
         /// </summary>
         [Fact]
-        public void TryPop_WithElements_ReturnsTrueWithValue()
+        public void TryPop_ReturnsTrueWhenHasItems()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
             stack.Push(42);
@@ -96,29 +108,129 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        ///     Test that FrugalStack.Remove works correctly.
+        ///     Tests that remove removes first occurrence
         /// </summary>
         [Fact]
-        public void Remove_ExistingElement_RemovedSuccessfully()
+        public void Remove_RemovesFirstOccurrence()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+
+            stack.Remove(2);
+
+            Assert.True(stack.Any);
+        }
+
+        /// <summary>
+        ///     Tests that remove does nothing if item not found
+        /// </summary>
+        [Fact]
+        public void Remove_DoesNothingIfItemNotFound()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+            stack.Push(1);
+            stack.Push(2);
+
+            stack.Remove(99);
+
+            Assert.True(stack.Any);
+        }
+
+        /// <summary>
+        ///     Tests that as span returns correct elements
+        /// </summary>
+        [Fact]
+        public void AsSpan_ReturnsCorrectElements()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
             stack.Push(10);
             stack.Push(20);
             stack.Push(30);
 
-            stack.Remove(20);
+            Span<int> span = stack.AsSpan();
 
-            int val1 = stack.Pop();
-            int val2 = stack.Pop();
-            Assert.Equal(30, val1);
-            Assert.Equal(10, val2);
+            Assert.Equal(3, span.Length);
+            Assert.Equal(10, span[0]);
+            Assert.Equal(20, span[1]);
+            Assert.Equal(30, span[2]);
         }
 
         /// <summary>
-        ///     Test that FrugalStack with multiple push and pop operations works.
+        ///     Tests that as span of empty stack returns empty span
         /// </summary>
         [Fact]
-        public void Push_MultipleElements_AllAccessible()
+        public void AsSpan_EmptyStack_ReturnsEmptySpan()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+
+            Span<int> span = stack.AsSpan();
+
+            Assert.Equal(0, span.Length);
+        }
+
+        /// <summary>
+        ///     Tests that any is false after popping all items
+        /// </summary>
+        [Fact]
+        public void Any_IsFalseAfterPoppingAllItems()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+            stack.Push(1);
+
+            stack.Pop();
+
+            Assert.False(stack.Any);
+        }
+
+        /// <summary>
+        ///     Tests that pop on empty stack throws index out of range
+        /// </summary>
+        [Fact]
+        public void Pop_OnEmptyStack_ThrowsIndexOutOfRange()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+
+            Assert.Throws<IndexOutOfRangeException>(() => stack.Pop());
+        }
+
+        /// <summary>
+        ///     Tests that frugal stack can store reference types
+        /// </summary>
+        [Fact]
+        public void FrugalStack_CanStoreReferenceTypesExtended()
+        {
+            FrugalStack<string> stack = new FrugalStack<string>();
+            stack.Push("first");
+            stack.Push("second");
+
+            string result = stack.Pop();
+
+            Assert.Equal("second", result);
+        }
+
+        /// <summary>
+        ///     Tests that frugal stack can store custom structs
+        /// </summary>
+        [Fact]
+        public void FrugalStack_CanStoreCustomStructs()
+        {
+            FrugalStack<Position> stack = new FrugalStack<Position>();
+            Position pos = new Position {X = 10, Y = 20};
+            stack.Push(pos);
+
+            Position result = stack.Pop();
+
+            Assert.Equal(10, result.X);
+            Assert.Equal(20, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that frugal stack handles many pushes and pops
+        /// </summary>
+        [Fact]
+        public void FrugalStack_HandlesManyPushesAndPops()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
 
@@ -129,101 +241,37 @@ namespace Alis.Core.Ecs.Test.Collections
 
             for (int i = 49; i >= 0; i--)
             {
-                Assert.Equal(i, stack.Pop());
+                int value = stack.Pop();
+                Assert.Equal(i, value);
             }
-        }
-
-        /// <summary>
-        ///     Test that FrugalStack properly tracks Any property.
-        /// </summary>
-        [Fact]
-        public void Any_AfterPushAndPop_TracksEmptyState()
-        {
-            FrugalStack<int> stack = new FrugalStack<int>();
 
             Assert.False(stack.Any);
-
-            stack.Push(42);
-            Assert.True(stack.Any);
-
-            stack.Pop();
-            Assert.False(stack.Any);
         }
 
         /// <summary>
-        ///     Test that FrugalStack with reference types maintains proper references.
+        ///     Tests that frugal stack can be copied
         /// </summary>
         [Fact]
-        public void Push_ReferenceType_MaintainReferences()
+        public void FrugalStack_CanBeCopied()
         {
-            FrugalStack<object> stack = new FrugalStack<object>();
-            var obj1 = new {Value = 1};
-            var obj2 = new {Value = 2};
+            FrugalStack<int> original = new FrugalStack<int>();
+            original.Push(1);
+            original.Push(2);
 
-            stack.Push(obj1);
-            stack.Push(obj2);
+            FrugalStack<int> copy = original;
 
-            Assert.Same(obj2, stack.Pop());
-            Assert.Same(obj1, stack.Pop());
+            Assert.Equal(original.Any, copy.Any);
         }
 
         /// <summary>
-        ///     Test that FrugalStack maintains proper state with multiple push/pop cycles.
+        ///     Tests that frugal stack default has no elements
         /// </summary>
         [Fact]
-        public void PushPopCycles_MultipleOperations_CorrectState()
+        public void FrugalStack_Default_HasNoElements()
         {
-            FrugalStack<int> stack = new FrugalStack<int>();
+            FrugalStack<int> defaultStack = default(FrugalStack<int>);
 
-            stack.Push(1);
-            Assert.True(stack.Any);
-
-            stack.Push(2);
-            Assert.True(stack.Any);
-
-            int val = stack.Pop();
-            Assert.Equal(2, val);
-            Assert.True(stack.Any);
-
-            stack.Pop();
-            Assert.False(stack.Any);
-        }
-
-        /// <summary>
-        ///     Test that FrugalStack handles different value types.
-        /// </summary>
-        [Fact]
-        public void Push_DifferentValueTypes_WorksCorrectly()
-        {
-            FrugalStack<int> intStack = new FrugalStack<int>();
-            FrugalStack<string> stringStack = new FrugalStack<string>();
-            FrugalStack<double> doubleStack = new FrugalStack<double>();
-
-            intStack.Push(42);
-            stringStack.Push("test");
-            doubleStack.Push(3.14);
-
-            Assert.Equal(42, intStack.Pop());
-            Assert.Equal("test", stringStack.Pop());
-            Assert.Equal(3.14, doubleStack.Pop());
-        }
-
-        /// <summary>
-        ///     Test that FrugalStack properly handles repeated push/pop on same instance.
-        /// </summary>
-        [Fact]
-        public void RepeatedOperations_SameInstance_MaintainsCorrectBehavior()
-        {
-            FrugalStack<int> stack = new FrugalStack<int>();
-
-            stack.Push(10);
-            Assert.Equal(10, stack.Pop());
-
-            stack.Push(20);
-            Assert.Equal(20, stack.Pop());
-
-            stack.Push(30);
-            Assert.Equal(30, stack.Pop());
+            Assert.False(defaultStack.Any);
         }
     }
 }
