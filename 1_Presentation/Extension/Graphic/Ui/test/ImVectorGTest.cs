@@ -109,5 +109,19 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             Assert.Throws<NullReferenceException>(() => imVectorG[10]);
         }
+
+        /// <summary>
+        ///     Tests that direct constructor should initialize all fields correctly
+        /// </summary>
+        [Fact]
+        public void DirectConstructor_ShouldInitializeAllFields()
+        {
+            IntPtr data = new IntPtr(42);
+            ImVectorG<int> imVectorG = new ImVectorG<int>(5, 10, data);
+
+            Assert.Equal(5, imVectorG.Size);
+            Assert.Equal(10, imVectorG.Capacity);
+            Assert.Equal(data, imVectorG.Data);
+        }
     }
 }
