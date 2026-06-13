@@ -1,3 +1,4 @@
+using Alis.Extension.Graphic.Sdl2.Mapping;
 using Xunit;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Structs;
@@ -185,6 +186,39 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             uint result = Sdl.SdlDefinePixelFourcc((byte)'Y', (byte)'V', (byte)'1', (byte)'2');
             Assert.Equal(Sdl.Fourcc((byte)'Y', (byte)'V', (byte)'1', (byte)'2'), result);
+        }
+
+        /// <summary>
+        /// Tests that ScanCodeToKeyCode maps SDL scancode to keycode with mask applied
+        /// </summary>
+        [Fact]
+        public void ShouldMapScanCodeToKeyCode()
+        {
+            KeyCodes result = Sdl.ScanCodeToKeyCode(SdlScancode.SdlScancodeA);
+            KeyCodes expected = (KeyCodes)((int)SdlScancode.SdlScancodeA | Sdl.KScancodeMask);
+            Assert.Equal(expected, result);
+        }
+
+        /// <summary>
+        /// Tests that ScanCodeToKeyCode returns unknown for unknown scancode
+        /// </summary>
+        [Fact]
+        public void ShouldMapScanCodeToKeyCodeUnknown()
+        {
+            KeyCodes result = Sdl.ScanCodeToKeyCode(SdlScancode.SdlScancodeUnknown);
+            KeyCodes expected = (KeyCodes)((int)SdlScancode.SdlScancodeUnknown | Sdl.KScancodeMask);
+            Assert.Equal(expected, result);
+        }
+
+        /// <summary>
+        /// Tests that ScanCodeToKeyCode produces distinct values for different scancodes
+        /// </summary>
+        [Fact]
+        public void ShouldMapScanCodeToKeyCodeDistinct()
+        {
+            KeyCodes resultA = Sdl.ScanCodeToKeyCode(SdlScancode.SdlScancodeA);
+            KeyCodes resultB = Sdl.ScanCodeToKeyCode(SdlScancode.SdlScancodeB);
+            Assert.NotEqual(resultA, resultB);
         }
     }
 }
