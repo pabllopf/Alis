@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -1147,6 +1148,82 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector4F value = new Vector4F();
             obj.Colors54 = value;
             Assert.Equal(value, obj.Colors54);
+        }
+
+        /// <summary>
+        ///     Tests that indexer get returns correct color for valid index
+        /// </summary>
+        [Fact]
+        public void Indexer_Get_ShouldReturnCorrectColorForIndex0()
+        {
+            ImGuiStyle style = new ImGuiStyle();
+            Vector4F color = new Vector4F(1, 0, 0, 1);
+            style.Colors0 = color;
+            Assert.Equal(color, style[0]);
+        }
+
+        /// <summary>
+        ///     Tests that indexer get returns correct color for last index
+        /// </summary>
+        [Fact]
+        public void Indexer_Get_ShouldReturnCorrectColorForIndex54()
+        {
+            ImGuiStyle style = new ImGuiStyle();
+            Vector4F color = new Vector4F(0, 0, 1, 1);
+            style.Colors54 = color;
+            Assert.Equal(color, style[54]);
+        }
+
+        /// <summary>
+        ///     Tests that indexer set should set correct color for valid index
+        /// </summary>
+        [Fact]
+        public void Indexer_Set_ShouldSetColorForIndex0()
+        {
+            ImGuiStyle style = new ImGuiStyle();
+            Vector4F color = new Vector4F(1, 1, 0, 1);
+            style[0] = color;
+            Assert.Equal(color, style.Colors0);
+        }
+
+        /// <summary>
+        ///     Tests that indexer get throws for negative index
+        /// </summary>
+        [Fact]
+        public void Indexer_Get_ShouldThrowForNegativeIndex()
+        {
+            ImGuiStyle style = new ImGuiStyle();
+            Assert.Throws<CustomIndexOutOfRangeException>(() => style[-1]);
+        }
+
+        /// <summary>
+        ///     Tests that indexer get throws for index out of range
+        /// </summary>
+        [Fact]
+        public void Indexer_Get_ShouldThrowForIndexOutOfRange()
+        {
+            ImGuiStyle style = new ImGuiStyle();
+            Assert.Throws<CustomIndexOutOfRangeException>(() => style[55]);
+        }
+
+        /// <summary>
+        ///     Tests that indexer set throws for negative index
+        /// </summary>
+        [Fact]
+        public void Indexer_Set_ShouldThrowForNegativeIndex()
+        {
+            ImGuiStyle style = new ImGuiStyle();
+            Assert.Throws<CustomIndexOutOfRangeException>(() => style[-1] = new Vector4F());
+        }
+
+        /// <summary>
+        ///     Tests that indexer set throws for index out of range
+        /// </summary>
+        [Fact]
+        public void Indexer_Set_ShouldThrowForIndexOutOfRange()
+        {
+            ImGuiStyle style = new ImGuiStyle();
+            Assert.Throws<CustomIndexOutOfRangeException>(() => style[55] = new Vector4F());
         }
     }
 }
