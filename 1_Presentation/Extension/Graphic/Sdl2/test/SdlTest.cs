@@ -332,5 +332,131 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             ushort expected = System.BitConverter.IsLittleEndian ? Sdl.AudioF32Lsb : Sdl.AudioF32Msb;
             Assert.Equal(expected, Sdl.GlAudioF32Sys);
         }
+
+        /// <summary>
+        /// Tests that AudioU8 constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioU8Constant()
+        {
+            Assert.Equal((ushort)0x0008, Sdl.AudioU8);
+        }
+
+        /// <summary>
+        /// Tests that AudioS8 constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioS8Constant()
+        {
+            Assert.Equal((ushort)0x8008, Sdl.AudioS8);
+        }
+
+        /// <summary>
+        /// Tests that AudioU16Lsb constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioU16LsbConstant()
+        {
+            Assert.Equal((ushort)0x0010, Sdl.AudioU16Lsb);
+        }
+
+        /// <summary>
+        /// Tests that AudioS16Lsb constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioS16LsbConstant()
+        {
+            Assert.Equal((ushort)0x8010, Sdl.AudioS16Lsb);
+        }
+
+        /// <summary>
+        /// Tests that AudioU16Msb constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioU16MsbConstant()
+        {
+            Assert.Equal((ushort)0x1010, Sdl.AudioU16Msb);
+        }
+
+        /// <summary>
+        /// Tests that AudioS16Msb constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioS16MsbConstant()
+        {
+            Assert.Equal((ushort)0x9010, Sdl.AudioS16Msb);
+        }
+
+        /// <summary>
+        /// Tests that AudioU16 alias matches AudioU16Lsb
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioU16Alias()
+        {
+            Assert.Equal(Sdl.AudioU16Lsb, Sdl.AudioU16);
+        }
+
+        /// <summary>
+        /// Tests that AudioS16 alias matches AudioS16Lsb
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioS16Alias()
+        {
+            Assert.Equal(Sdl.AudioS16Lsb, Sdl.AudioS16);
+        }
+
+        /// <summary>
+        /// Tests that AudioS32Lsb constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioS32LsbConstant()
+        {
+            Assert.Equal((ushort)0x8020, Sdl.AudioS32Lsb);
+        }
+
+        /// <summary>
+        /// Tests that AudioS32Msb constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioS32MsbConstant()
+        {
+            Assert.Equal((ushort)0x9020, Sdl.AudioS32Msb);
+        }
+
+        /// <summary>
+        /// Tests that AudioS32 alias matches AudioS32Lsb
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioS32Alias()
+        {
+            Assert.Equal(Sdl.AudioS32Lsb, Sdl.AudioS32);
+        }
+
+        /// <summary>
+        /// Tests that AudioF32Lsb constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioF32LsbConstant()
+        {
+            Assert.Equal((ushort)0x8120, Sdl.AudioF32Lsb);
+        }
+
+        /// <summary>
+        /// Tests that AudioF32Msb constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioF32MsbConstant()
+        {
+            Assert.Equal((ushort)0x9120, Sdl.AudioF32Msb);
+        }
+
+        /// <summary>
+        /// Tests that AudioF32 alias matches AudioF32Lsb
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAudioF32Alias()
+        {
+            Assert.Equal(Sdl.AudioF32Lsb, Sdl.AudioF32);
+        }
     }
 }
