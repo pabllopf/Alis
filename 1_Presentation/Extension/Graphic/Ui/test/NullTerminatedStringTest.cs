@@ -135,5 +135,28 @@ namespace Alis.Extension.Graphic.Ui.Test
             NullTerminatedString nts = new NullTerminatedString(data);
             Assert.Equal("test", nts.ToString());
         }
+
+        /// <summary>
+        ///     Tests that implicit operator converts to string correctly
+        /// </summary>
+        [Fact]
+        public void ImplicitOperator_ShouldConvertToString()
+        {
+            byte[] data = Encoding.UTF8.GetBytes("Hello");
+            NullTerminatedString nts = new NullTerminatedString(data);
+            string result = nts;
+            Assert.Equal("Hello", result);
+        }
+
+        /// <summary>
+        ///     Tests that implicit operator returns empty when data is null
+        /// </summary>
+        [Fact]
+        public void ImplicitOperator_ShouldReturnEmpty_WhenDataIsNull()
+        {
+            NullTerminatedString nts = new NullTerminatedString(IntPtr.Zero);
+            string result = nts;
+            Assert.Equal(string.Empty, result);
+        }
     }
 }
