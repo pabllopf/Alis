@@ -27,6 +27,125 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Common;
+using Xunit;
 
+namespace Alis.Core.Physic.Test.Collisions
+{
+    /// <summary>
+    /// The distance proxy test class
+    /// </summary>
+    public class DistanceProxyTest
+    {
+        /// <summary>
+        /// Tests that constructor with circle shape should set single vertex at center
+        /// </summary>
+        [Fact]
+        public void Constructor_WithCircleShape_ShouldSetSingleVertexAtCenter()
+        {
+            CircleShape circle = new CircleShape(1f, 1f);
+            DistanceProxy proxy = new DistanceProxy(circle, 0);
 
+            Vector2F supportVertex = proxy.GetSupportVertex(new Vector2F(1f, 0f));
 
+            Assert.Equal(Vector2F.Zero, supportVertex);
+        }
+
+        /// <summary>
+        /// Tests that constructor with circle shape should return index zero for any direction
+        /// </summary>
+        [Fact]
+        public void Constructor_WithCircleShape_ShouldReturnIndexZeroForAnyDirection()
+        {
+            CircleShape circle = new CircleShape(1f, 1f);
+            DistanceProxy proxy = new DistanceProxy(circle, 0);
+
+            int supportIndex = proxy.GetSupport(new Vector2F(1f, 0f));
+
+            Assert.Equal(0, supportIndex);
+        }
+
+        /// <summary>
+        /// Tests that constructor with polygon shape should return correct support index
+        /// </summary>
+        [Fact]
+        public void Constructor_WithPolygonShape_ShouldReturnCorrectSupportIndex()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0f, 1f)
+            });
+            PolygonShape polygon = new PolygonShape(vertices, 1f);
+            DistanceProxy proxy = new DistanceProxy(polygon, 0);
+
+            int supportX = proxy.GetSupport(new Vector2F(1f, 0f));
+            int supportY = proxy.GetSupport(new Vector2F(0f, 1f));
+            int supportNegX = proxy.GetSupport(new Vector2F(-1f, 0f));
+
+            Assert.Equal(1, supportX);
+            Assert.Equal(2, supportY);
+            Assert.Equal(0, supportNegX);
+        }
+
+        /// <summary>
+        /// Tests that constructor with polygon shape should return correct support vertex
+        /// </summary>
+        [Fact]
+        public void Constructor_WithPolygonShape_ShouldReturnCorrectSupportVertex()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0f, 1f)
+            });
+            PolygonShape polygon = new PolygonShape(vertices, 1f);
+            DistanceProxy proxy = new DistanceProxy(polygon, 0);
+
+            Vector2F supportVertexX = proxy.GetSupportVertex(new Vector2F(1f, 0f));
+            Vector2F supportVertexY = proxy.GetSupportVertex(new Vector2F(0f, 1f));
+            Vector2F supportVertexNegX = proxy.GetSupportVertex(new Vector2F(-1f, 0f));
+
+            Assert.Equal(new Vector2F(1f, 0f), supportVertexX);
+            Assert.Equal(new Vector2F(0f, 1f), supportVertexY);
+            Assert.Equal(new Vector2F(0f, 0f), supportVertexNegX);
+        }
+
+        /// <summary>
+        /// Tests that constructor with edge shape should set two vertices
+        /// </summary>
+        [Fact]
+        public void Constructor_WithEdgeShape_ShouldSetTwoVertices()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0f, 0f), new Vector2F(1f, 0f));
+            DistanceProxy proxy = new DistanceProxy(edge, 0);
+
+            Vector2F supportRight = proxy.GetSupportVertex(new Vector2F(1f, 0f));
+            Vector2F supportLeft = proxy.GetSupportVertex(new Vector2F(-1f, 0f));
+
+            Assert.Equal(new Vector2F(1f, 0f), supportRight);
+            Assert.Equal(new Vector2F(0f, 0f), supportLeft);
+        }
+
+        /// <summary>
+        /// Tests that constructor with edge shape should return correct support index
+        /// </summary>
+        [Fact]
+        public void Constructor_WithEdgeShape_ShouldReturnCorrectSupportIndex()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0f, 0f), new Vector2F(1f, 0f));
+            DistanceProxy proxy = new DistanceProxy(edge, 0);
+
+            int supportRight = proxy.GetSupport(new Vector2F(1f, 0f));
+            int supportLeft = proxy.GetSupport(new Vector2F(-1f, 0f));
+
+            Assert.Equal(1, supportRight);
+            Assert.Equal(0, supportLeft);
+        }
+    }
+}
