@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
@@ -55,6 +56,22 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.False(result);
             Assert.Null(capturedFixture);
         }
+
+        /// <summary>
+        ///     Tests that chaining multiple handlers should call all
+        /// </summary>
+        [Fact]
+        public void Chaining_ShouldCallAllHandlers()
+        {
+            int callCount = 0;
+            QueryReportFixtureDelegate first = fixture => { callCount++; return true; };
+            QueryReportFixtureDelegate second = fixture => { callCount++; return false; };
+
+            QueryReportFixtureDelegate chain = first + second;
+            bool result = chain(null);
+
+            Assert.Equal(2, callCount);
+            Assert.False(result);
+        }
     }
 }
-
