@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
@@ -49,6 +50,22 @@ namespace Alis.Core.Physic.Test.Dynamics
             callback(null);
 
             Assert.True(invoked);
+        }
+
+        /// <summary>
+        ///     Tests that chaining multiple handlers should call all
+        /// </summary>
+        [Fact]
+        public void Chaining_ShouldCallAllHandlers()
+        {
+            int callCount = 0;
+            EndContactDelegate first = contact => { callCount++; };
+            EndContactDelegate second = contact => { callCount++; };
+
+            EndContactDelegate chain = first + second;
+            chain(null);
+
+            Assert.Equal(2, callCount);
         }
     }
 }
