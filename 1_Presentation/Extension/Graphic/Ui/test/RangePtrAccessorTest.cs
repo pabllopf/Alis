@@ -94,5 +94,27 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             Assert.Throws<CustomIndexOutOfRangeException>(() => accessor[10]);
         }
+
+        /// <summary>
+        ///     Tests that indexer should throw when index is negative
+        /// </summary>
+        [Fact]
+        public void Indexer_ShouldThrow_WhenIndexIsNegative()
+        {
+            RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(123), 10);
+
+            Assert.Throws<CustomIndexOutOfRangeException>(() => accessor[-1]);
+        }
+
+        /// <summary>
+        ///     Tests that indexer should throw when count is zero
+        /// </summary>
+        [Fact]
+        public void Indexer_ShouldThrow_WhenCountIsZero()
+        {
+            RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(123), 0);
+
+            Assert.Throws<CustomIndexOutOfRangeException>(() => accessor[0]);
+        }
     }
 }
