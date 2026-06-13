@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DeleteComponentExtendedTest.cs
+//  File:CreateCommandExtendedTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,86 +30,93 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel
 {
     /// <summary>
-    ///     Extended tests for <see cref="DeleteComponent" /> record struct
+    ///     Extended tests for <see cref="CreateCommand" /> record struct
     /// </summary>
-    public class DeleteComponentExtendedTest
+    public class CreateCommandExtendedTest
     {
         /// <summary>
-        ///     Tests that delete component is value type
+        ///     Tests that create command is value type
         /// </summary>
         [Fact]
-        public void DeleteComponent_IsValueType()
+        public void CreateCommand_IsValueType()
         {
-            Type type = typeof(DeleteComponent);
+            Type type = typeof(CreateCommand);
 
             Assert.True(type.IsValueType);
         }
 
         /// <summary>
-        ///     Tests that delete component has sequential struct layout
+        ///     Tests that create command has sequential struct layout
         /// </summary>
         [Fact]
-        public void DeleteComponent_HasSequentialStructLayout()
+        public void CreateCommand_HasSequentialStructLayout()
         {
-            StructLayoutAttribute layout = typeof(DeleteComponent).StructLayoutAttribute;
+            StructLayoutAttribute layout = typeof(CreateCommand).StructLayoutAttribute;
 
             Assert.Equal(LayoutKind.Sequential, layout.Value);
         }
 
         /// <summary>
-        ///     Tests that delete component stores entity
+        ///     Tests that create command stores entity
         /// </summary>
         [Fact]
-        public void DeleteComponent_StoresEntity()
+        public void CreateCommand_StoresEntity()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
 
-            DeleteComponent cmd = new DeleteComponent(entity, default);
+            CreateCommand cmd = new CreateCommand(entity, 0, 1);
 
             Assert.Equal(entity, cmd.Entity);
         }
 
         /// <summary>
-        ///     Tests that delete component stores component id
+        ///     Tests that create command stores buffer index
         /// </summary>
         [Fact]
-        public void DeleteComponent_StoresComponentId()
+        public void CreateCommand_StoresBufferIndex()
         {
-            ComponentId compId = Component<Position>.Id;
+            CreateCommand cmd = new CreateCommand(default, 42, 1);
 
-            DeleteComponent cmd = new DeleteComponent(default, compId);
-
-            Assert.Equal(compId, cmd.ComponentId);
+            Assert.Equal(42, cmd.BufferIndex);
         }
 
         /// <summary>
-        ///     Tests that delete component equality works
+        ///     Tests that create command stores buffer length
         /// </summary>
         [Fact]
-        public void DeleteComponent_EqualityWorks()
+        public void CreateCommand_StoresBufferLength()
+        {
+            CreateCommand cmd = new CreateCommand(default, 0, 10);
+
+            Assert.Equal(10, cmd.BufferLength);
+        }
+
+        /// <summary>
+        ///     Tests that create command equality works
+        /// </summary>
+        [Fact]
+        public void CreateCommand_EqualityWorks()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
-            ComponentId compId = Component<Position>.Id;
-            DeleteComponent cmd1 = new DeleteComponent(entity, compId);
-            DeleteComponent cmd2 = new DeleteComponent(entity, compId);
+            CreateCommand cmd1 = new CreateCommand(entity, 0, 1);
+            CreateCommand cmd2 = new CreateCommand(entity, 0, 1);
 
             Assert.Equal(cmd1, cmd2);
         }
 
         /// <summary>
-        ///     Tests that delete component with different entities are not equal
+        ///     Tests that create command with different values are not equal
         /// </summary>
         [Fact]
-        public void DeleteComponent_DifferentEntities_AreNotEqual()
+        public void CreateCommand_DifferentValues_AreNotEqual()
         {
-            DeleteComponent cmd1 = new DeleteComponent(new GameObjectIdOnly(1, 0), default);
-            DeleteComponent cmd2 = new DeleteComponent(new GameObjectIdOnly(2, 0), default);
+            CreateCommand cmd1 = new CreateCommand(default, 0, 1);
+            CreateCommand cmd2 = new CreateCommand(default, 0, 2);
 
             Assert.NotEqual(cmd1, cmd2);
         }

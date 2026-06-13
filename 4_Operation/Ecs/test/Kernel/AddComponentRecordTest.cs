@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DeleteComponentExtendedTest.cs
+//  File:AddComponentExtendedTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -36,82 +36,70 @@ using Xunit;
 namespace Alis.Core.Ecs.Test.Kernel
 {
     /// <summary>
-    ///     Extended tests for <see cref="DeleteComponent" /> record struct
+    ///     Extended tests for <see cref="AddComponent" /> record struct
     /// </summary>
-    public class DeleteComponentExtendedTest
+    public class AddComponentRecordTest
     {
         /// <summary>
-        ///     Tests that delete component is value type
+        ///     Tests that add component is value type
         /// </summary>
         [Fact]
-        public void DeleteComponent_IsValueType()
+        public void AddComponent_IsValueType()
         {
-            Type type = typeof(DeleteComponent);
+            Type type = typeof(AddComponent);
 
             Assert.True(type.IsValueType);
         }
 
         /// <summary>
-        ///     Tests that delete component has sequential struct layout
+        ///     Tests that add component has sequential struct layout
         /// </summary>
         [Fact]
-        public void DeleteComponent_HasSequentialStructLayout()
+        public void AddComponent_HasSequentialStructLayout()
         {
-            StructLayoutAttribute layout = typeof(DeleteComponent).StructLayoutAttribute;
+            StructLayoutAttribute layout = typeof(AddComponent).StructLayoutAttribute;
 
             Assert.Equal(LayoutKind.Sequential, layout.Value);
         }
 
         /// <summary>
-        ///     Tests that delete component stores entity
+        ///     Tests that add component stores entity
         /// </summary>
         [Fact]
-        public void DeleteComponent_StoresEntity()
+        public void AddComponent_StoresEntity()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
 
-            DeleteComponent cmd = new DeleteComponent(entity, default);
+            AddComponent cmd = new AddComponent(entity, default);
 
             Assert.Equal(entity, cmd.Entity);
         }
 
         /// <summary>
-        ///     Tests that delete component stores component id
+        ///     Tests that add component stores component handle
         /// </summary>
         [Fact]
-        public void DeleteComponent_StoresComponentId()
+        public void AddComponent_StoresComponentHandle()
         {
-            ComponentId compId = Component<Position>.Id;
+            ComponentHandle handle = ComponentHandle.Create(new Position {X = 1, Y = 2});
 
-            DeleteComponent cmd = new DeleteComponent(default, compId);
+            AddComponent cmd = new AddComponent(default, handle);
 
-            Assert.Equal(compId, cmd.ComponentId);
+            Assert.Equal(handle, cmd.ComponentHandle);
         }
 
         /// <summary>
-        ///     Tests that delete component equality works
+        ///     Tests that add component equality works
         /// </summary>
         [Fact]
-        public void DeleteComponent_EqualityWorks()
+        public void AddComponent_EqualityWorks()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
-            ComponentId compId = Component<Position>.Id;
-            DeleteComponent cmd1 = new DeleteComponent(entity, compId);
-            DeleteComponent cmd2 = new DeleteComponent(entity, compId);
+            ComponentHandle handle = ComponentHandle.Create(new Position {X = 1, Y = 2});
+            AddComponent cmd1 = new AddComponent(entity, handle);
+            AddComponent cmd2 = new AddComponent(entity, handle);
 
             Assert.Equal(cmd1, cmd2);
-        }
-
-        /// <summary>
-        ///     Tests that delete component with different entities are not equal
-        /// </summary>
-        [Fact]
-        public void DeleteComponent_DifferentEntities_AreNotEqual()
-        {
-            DeleteComponent cmd1 = new DeleteComponent(new GameObjectIdOnly(1, 0), default);
-            DeleteComponent cmd2 = new DeleteComponent(new GameObjectIdOnly(2, 0), default);
-
-            Assert.NotEqual(cmd1, cmd2);
         }
     }
 }

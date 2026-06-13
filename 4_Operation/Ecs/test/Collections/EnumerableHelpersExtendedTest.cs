@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EnumerableHelpersExtendedTest.cs
+//  File:EnumerableHelpersTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Collections;
 using Xunit;
@@ -35,132 +34,91 @@ using Xunit;
 namespace Alis.Core.Ecs.Test.Collections
 {
     /// <summary>
-    ///     Extended tests for EnumerableHelpers utility functions
-    ///     to validate conversion, filtering, and enumerable operations.
+    ///     Tests for <see cref="EnumerableHelpers" /> class
     /// </summary>
     public class EnumerableHelpersExtendedTest
     {
         /// <summary>
-        ///     Test that ToArray converts enumerable to array correctly.
+        ///     Tests that get empty enumerator returns empty enumerator
         /// </summary>
         [Fact]
-        public void ToArray_Enumerable_ConvertsSuccessfully()
+        public void GetEmptyEnumerator_ReturnsEmptyEnumerator()
         {
-            int[] enumerable = new[] {1, 2, 3, 4, 5};
+            IEnumerator<int> enumerator = EnumerableHelpers.GetEmptyEnumerator<int>();
 
-            int[] array = EnumerableHelpers.ToArray(enumerable, out int count);
-
-            Assert.NotNull(array);
-            Assert.Equal(5, count);
+            Assert.False(enumerator.MoveNext());
         }
 
         /// <summary>
-        ///     Test that ToArray with List maintains order.
-        /// </summary>
-        [Fact]
-        public void ToArray_ListEnumerable_OrderPreserved()
-        {
-            List<string> list = new List<string> {"a", "b", "c", "d"};
-
-            string[] array = EnumerableHelpers.ToArray(list, out int count);
-
-            Assert.Equal(4, count);
-            Assert.Equal("a", array[0]);
-            Assert.Equal("d", array[count - 1]);
-        }
-
-        /// <summary>
-        ///     Test that ToArray handles empty enumerable.
+        ///     Tests that to array from empty enumerable returns empty array
         /// </summary>
         [Fact]
         public void ToArray_EmptyEnumerable_ReturnsEmptyArray()
         {
-            List<int> emptyList = new List<int>();
+            IEnumerable<int> empty = System.Array.Empty<int>();
 
-            int[] array = EnumerableHelpers.ToArray(emptyList, out int count);
+            int[] result = EnumerableHelpers.ToArray(empty, out int length);
 
-            Assert.Equal(0, count);
+            Assert.Empty(result);
+            Assert.Equal(0, length);
         }
 
         /// <summary>
-        ///     Test that ToArray works with different value types.
+        ///     Tests that to array from list returns correct array
         /// </summary>
         [Fact]
-        public void ToArray_ValueTypes_ConvertsCorrectly()
+        public void ToArray_FromList_ReturnsCorrectArray()
         {
-            List<Guid> guids = new List<Guid>
-            {
-                Guid.NewGuid(),
-                Guid.NewGuid(),
-                Guid.NewGuid()
-            };
+            List<int> list = new List<int> {1, 2, 3};
 
-            Guid[] array = EnumerableHelpers.ToArray(guids, out int count);
+            int[] result = EnumerableHelpers.ToArray(list, out int length);
 
-            Assert.Equal(3, count);
-            Assert.Equal(guids[0], array[0]);
+            Assert.Equal(3, length);
+            Assert.Equal(1, result[0]);
+            Assert.Equal(2, result[1]);
+            Assert.Equal(3, result[2]);
         }
 
         /// <summary>
-        ///     Test that ToArray with large enumerable works efficiently.
+        ///     Tests that to array from enumerable returns correct array
         /// </summary>
         [Fact]
-        public void ToArray_LargeEnumerable_ConvertedSuccessfully()
+        public void ToArray_FromEnumerable_ReturnsCorrectArray()
         {
-            List<int> largeList = new List<int>();
-            for (int i = 0; i < 10000; i++)
-            {
-                largeList.Add(i);
-            }
+            IEnumerable<int> enumerable = new List<int> {10, 20, 30, 40};
 
-            int[] array = EnumerableHelpers.ToArray(largeList, out int count);
+            int[] result = EnumerableHelpers.ToArray(enumerable, out int length);
 
-            Assert.Equal(10000, count);
-            Assert.Equal(0, array[0]);
-            Assert.Equal(9999, array[count - 1]);
+            Assert.Equal(4, length);
+            Assert.Equal(10, result[0]);
+            Assert.Equal(40, result[3]);
         }
 
         /// <summary>
-        ///     Test that ToArray properly counts elements.
+        ///     Tests that to array from single element enumerable returns correct array
         /// </summary>
         [Fact]
-        public void ToArray_OutputCount_MatchesArrayLength()
+        public void ToArray_SingleElement_ReturnsCorrectArray()
         {
-            List<double> list = new List<double> {1.1, 2.2, 3.3, 4.4, 5.5};
+            IEnumerable<string> enumerable = new List<string> {"hello"};
 
-            double[] array = EnumerableHelpers.ToArray(list, out int count);
+            string[] result = EnumerableHelpers.ToArray(enumerable, out int length);
 
-            Assert.Equal(count, list.Count);
-            Assert.True(count > 0);
+            Assert.Equal(1, length);
+            Assert.Equal("hello", result[0]);
         }
 
         /// <summary>
-        ///     Test that ToArray works with custom enumerables.
+        ///     Tests that to array length matches collection count
         /// </summary>
         [Fact]
-        public void ToArray_CustomEnumerable_Works()
+        public void ToArray_LengthMatchesCollectionCount()
         {
-            IEnumerable<int> enumerable = new[] {10, 20, 30, 40};
+            List<int> list = new List<int> {1, 2, 3, 4, 5};
 
-            int[] array = EnumerableHelpers.ToArray(enumerable, out int count);
+            int[] result = EnumerableHelpers.ToArray(list, out int length);
 
-            Assert.Equal(4, count);
-        }
-
-        /// <summary>
-        ///     Test that ToArray with reference types maintains references.
-        /// </summary>
-        [Fact]
-        public void ToArray_ReferenceTypes_MaintainReferences()
-        {
-            var obj1 = new {ID = 1};
-            var obj2 = new {ID = 2};
-            List<object> list = new List<object> {obj1, obj2};
-
-            object[] array = EnumerableHelpers.ToArray(list, out int count);
-
-            Assert.Same(obj1, array[0]);
-            Assert.Same(obj2, array[1]);
+            Assert.Equal(list.Count, length);
         }
     }
 }
