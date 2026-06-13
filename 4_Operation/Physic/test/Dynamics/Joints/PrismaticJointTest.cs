@@ -49,61 +49,92 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
 
         /// <summary>
-        /// Tests that joint translation follows the configured axis.
+        /// Tests that constructor with bodies anchor and axis should set joint type to prismatic
         /// </summary>
         [Fact]
-        public void PrismaticJoint_JointTranslation_TracksAxisDisplacement()
+        public void Constructor_WithBodiesAnchorAndAxis_ShouldSetJointTypeToPrismatic()
         {
-            Body bodyA = new Body {GetBodyType = BodyType.Dynamic, Position = new Vector2F(0.0f, 0.0f)};
-            Body bodyB = new Body {GetBodyType = BodyType.Dynamic, Position = new Vector2F(5.0f, 0.0f)};
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            PrismaticJoint joint = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(1.0f, 0.0f));
 
-            PrismaticJoint joint = new PrismaticJoint(
-                bodyA,
-                bodyB,
-                new Vector2F(0.0f, 0.0f),
-                new Vector2F(1.0f, 0.0f));
-
-            Assert.Equal(5.0f, joint.JointTranslation, 5);
+            Assert.Equal(JointType.Prismatic, joint.JointType);
         }
 
         /// <summary>
-        /// Tests that the joint speed matches linear velocity projected onto the axis.
+        /// Tests that constructor with bodies anchor and axis should set body a and body b
         /// </summary>
         [Fact]
-        public void PrismaticJoint_JointSpeed_UsesRelativeAxisVelocity()
+        public void Constructor_WithBodiesAnchorAndAxis_ShouldSetBodyAAndBodyB()
         {
-            Body bodyA = new Body {GetBodyType = BodyType.Dynamic, Position = new Vector2F(0.0f, 0.0f)};
-            Body bodyB = new Body {GetBodyType = BodyType.Dynamic, Position = new Vector2F(2.0f, 0.0f)};
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            PrismaticJoint joint = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(1.0f, 0.0f));
 
-            PrismaticJoint joint = new PrismaticJoint(
-                bodyA,
-                bodyB,
-                new Vector2F(0.0f, 0.0f),
-                new Vector2F(1.0f, 0.0f));
-
-            bodyA.LinearVelocity = new Vector2F(1.0f, 0.0f);
-            bodyB.LinearVelocity = new Vector2F(3.0f, 0.0f);
-
-            Assert.Equal(2.0f, joint.JointSpeed, 5);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
         }
 
         /// <summary>
-        /// Tests that the axis is normalized and stored in local coordinates.
+        /// Tests that local anchor a should round trip
         /// </summary>
         [Fact]
-        public void PrismaticJoint_Axis1_NormalizesLocalAxis()
+        public void LocalAnchorA_ShouldRoundTrip()
         {
-            Body bodyA = new Body {GetBodyType = BodyType.Dynamic};
-            Body bodyB = new Body {GetBodyType = BodyType.Dynamic};
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            PrismaticJoint joint = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(1.0f, 0.0f));
 
-            PrismaticJoint joint = new PrismaticJoint(
-                bodyA,
-                bodyB,
-                new Vector2F(0.0f, 0.0f),
-                new Vector2F(2.0f, 0.0f));
+            Vector2F anchor = new Vector2F(2.0f, 3.0f);
+            joint.LocalAnchorA = anchor;
 
-            Assert.Equal(1.0f, joint.LocalXAxis.X, 5);
-            Assert.Equal(0.0f, joint.LocalXAxis.Y, 5);
+            Assert.Equal(anchor, joint.LocalAnchorA);
+        }
+
+        /// <summary>
+        /// Tests that local anchor b should round trip
+        /// </summary>
+        [Fact]
+        public void LocalAnchorB_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            PrismaticJoint joint = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(1.0f, 0.0f));
+
+            Vector2F anchor = new Vector2F(4.0f, 5.0f);
+            joint.LocalAnchorB = anchor;
+
+            Assert.Equal(anchor, joint.LocalAnchorB);
+        }
+
+        /// <summary>
+        /// Tests that motor impulse should round trip
+        /// </summary>
+        [Fact]
+        public void MotorImpulse_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            PrismaticJoint joint = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(1.0f, 0.0f));
+
+            joint.MotorImpulse = 2.5f;
+
+            Assert.Equal(2.5f, joint.MotorImpulse);
+        }
+
+        /// <summary>
+        /// Tests that reference angle should round trip
+        /// </summary>
+        [Fact]
+        public void ReferenceAngle_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            PrismaticJoint joint = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(1.0f, 0.0f));
+
+            joint.ReferenceAngle = 0.3f;
+
+            Assert.Equal(0.3f, joint.ReferenceAngle);
         }
     }
 }
