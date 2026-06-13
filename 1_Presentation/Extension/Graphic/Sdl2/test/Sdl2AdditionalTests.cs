@@ -518,5 +518,132 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         }
 
         #endregion
+
+        /// <summary>
+        ///     Tests that PixelFormatRgb888 alias matches GlFormatXRgb888
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatRgb888_AliasMatchesGlFormat()
+        {
+            Assert.Equal(Sdl.GlFormatXRgb888, Sdl.PixelFormatRgb888);
+        }
+
+        /// <summary>
+        ///     Tests that PixelFormatBgr888 alias matches GlFormatXBgr888
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatBgr888_AliasMatchesGlFormat()
+        {
+            Assert.Equal(Sdl.GlFormatXBgr888, Sdl.PixelFormatBgr888);
+        }
+
+        /// <summary>
+        ///     Tests that PixelFormatRgb444 alias matches GlFormatXRgb444
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatRgb444_AliasMatchesGlFormat()
+        {
+            Assert.Equal(Sdl.GlFormatXRgb444, Sdl.PixelFormatRgb444);
+        }
+
+        /// <summary>
+        ///     Tests that PixelFormatBgr444 alias matches GlFormatXBgr444
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatBgr444_AliasMatchesGlFormat()
+        {
+            Assert.Equal(Sdl.GlFormatXBgr444, Sdl.PixelFormatBgr444);
+        }
+
+        /// <summary>
+        ///     Tests that PixelFormatRgb555 alias matches GlFormatXRgb1555
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatRgb555_AliasMatchesGlFormat()
+        {
+            Assert.Equal(Sdl.GlFormatXRgb1555, Sdl.PixelFormatRgb555);
+        }
+
+        /// <summary>
+        ///     Tests that PixelFormatBgr555 alias matches GlFormatXBgr1555
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatBgr555_AliasMatchesGlFormat()
+        {
+            Assert.Equal(Sdl.GlFormatXBgr1555, Sdl.PixelFormatBgr555);
+        }
+
+        /// <summary>
+        ///     Tests that Argb8888 and Abgr8888 pixel formats are distinct
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatArgb8888AndAbgr8888_AreDistinct()
+        {
+            Assert.NotEqual(Sdl.PixelFormatArgb8888, Sdl.PixelFormatABgr8888);
+        }
+
+        /// <summary>
+        ///     Tests that Argb8888 and Rgba8888 pixel formats are distinct
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatArgb8888AndRgba8888_AreDistinct()
+        {
+            Assert.NotEqual(Sdl.PixelFormatArgb8888, Sdl.PixelFormatRgba8888);
+        }
+
+        /// <summary>
+        ///     Tests that Yv12 and Iyuv pixel formats are distinct
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatYv12AndIyuv_AreDistinct()
+        {
+            Assert.NotEqual(Sdl.PixelFormatYv12, Sdl.PixelFormatIy);
+        }
+
+        /// <summary>
+        ///     Tests that PixelFormatIndex8 is non-zero
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatIndex8_IsNonZero()
+        {
+            Assert.NotEqual(0u, Sdl.PixelFormatIndex8);
+        }
+
+        /// <summary>
+        ///     Tests that PixelFormatRgb332 is non-zero
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatRgb332_IsNonZero()
+        {
+            Assert.NotEqual(0u, Sdl.PixelFormatRgb332);
+        }
+
+        /// <summary>
+        ///     Tests that PixelFormatRgb24 is non-zero
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatRgb24_IsNonZero()
+        {
+            Assert.NotEqual(0u, Sdl.PixelFormatRgb24);
+        }
+
+        /// <summary>
+        ///     Tests that PixelFormatBgr24 is non-zero and different from Rgb24
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatBgr24_DiffersFromRgb24()
+        {
+            Assert.NotEqual(0u, Sdl.PixelFormatBgr24);
+            Assert.NotEqual(Sdl.PixelFormatRgb24, Sdl.PixelFormatBgr24);
+        }
+
+        /// <summary>
+        ///     Tests that PixelFormatArgb2101010 is non-zero
+        /// </summary>
+        [Fact]
+        public void Sdl_PixelFormatArgb2101010_IsNonZero()
+        {
+            Assert.NotEqual(0u, Sdl.PixelFormatArgb2101010);
+        }
     }
 }
