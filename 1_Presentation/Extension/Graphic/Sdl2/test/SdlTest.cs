@@ -220,5 +220,32 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             KeyCodes resultB = Sdl.ScanCodeToKeyCode(SdlScancode.SdlScancodeB);
             Assert.NotEqual(resultA, resultB);
         }
+
+        /// <summary>
+        /// Tests that MixMaxVolume constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveMixMaxVolumeConstant()
+        {
+            Assert.Equal(128, Sdl.MixMaxVolume);
+        }
+
+        /// <summary>
+        /// Tests that AndroidExternalStorageRead constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAndroidExternalStorageReadConstant()
+        {
+            Assert.Equal(0x01, Sdl.AndroidExternalStorageRead);
+        }
+
+        /// <summary>
+        /// Tests that AndroidExternalStorageWrite constant has correct value
+        /// </summary>
+        [Fact]
+        public void ShouldHaveAndroidExternalStorageWriteConstant()
+        {
+            Assert.Equal(0x02, Sdl.AndroidExternalStorageWrite);
+        }
     }
 }
