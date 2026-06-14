@@ -11,10 +11,39 @@
         <ApplicationIcon Condition="Exists('$(ProjectDir)Assets/app.ico')">Assets/app.ico</ApplicationIcon>
         <Configurations>Debug;Release;Win;Osx;Linux;Browser;Android;Ios</Configurations>
         <Platforms>AnyCPU;x64;x86;arm;arm64;wasm;simulator_x64;simulator_arm64</Platforms>
+
+         <TargetFrameworks Condition="'$(Configuration)' == 'Win'">netcoreapp2.0;net5.0;net8.0;net10.0;netstandard2.0;net461;</TargetFrameworks>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Win' AND '$(Platform)' == 'arm64'">win-arm64</RuntimeIdentifier>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Win' AND '$(Platform)' == 'arm'">win-arm</RuntimeIdentifier>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Win' AND '$(Platform)' == 'x64'">win-x64</RuntimeIdentifier>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Win' AND '$(Platform)' == 'x86'">win-x86</RuntimeIdentifier>
+
+         <TargetFrameworks Condition="'$(Configuration)' == 'Osx'">net5.0;net8.0;net10.0;netstandard2.0;</TargetFrameworks>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Osx' AND '$(Platform)' == 'arm64'">osx-arm64</RuntimeIdentifier>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Osx' AND '$(Platform)' == 'x64'">osx-x64</RuntimeIdentifier>
+
+         <TargetFrameworks Condition="'$(Configuration)' == 'Linux'">net5.0;net8.0;net10.0;netstandard2.0;</TargetFrameworks>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Linux' AND '$(Platform)' == 'arm'">linux-arm</RuntimeIdentifier>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Linux' AND '$(Platform)' == 'arm64'">linux-arm64</RuntimeIdentifier>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Linux' AND '$(Platform)' == 'x64'">linux-x64</RuntimeIdentifier>
+
+         <TargetFrameworks Condition="'$(Configuration)' == 'Browser'">net8.0;net10.0;netstandard2.0;</TargetFrameworks>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Browser' AND '$(Platform)' == 'wasm'">browser-wasm</RuntimeIdentifier>
+
+         <TargetFrameworks Condition="'$(Configuration)' == 'Ios'">net10.0;netstandard2.0;</TargetFrameworks>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'arm64'">ios-arm64</RuntimeIdentifier>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'x64'">ios-x64</RuntimeIdentifier>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'simulator_x64'">iossimulator-x64</RuntimeIdentifier>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'simulator_arm64'">iossimulator-arm64</RuntimeIdentifier>
+
+         <TargetFrameworks Condition="'$(Configuration)' == 'Android'">net10.0;netstandard2.0;</TargetFrameworks>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Android' AND '$(Platform)' == 'arm64'">android-arm64</RuntimeIdentifier>
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Android' AND '$(Platform)' == 'x64'">android-x64</RuntimeIdentifier>
     </PropertyGroup>
     
     
-
+    
+    
      <PropertyGroup>
         <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
 
@@ -62,6 +91,7 @@
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
 
+    
       <ItemGroup Condition="$(NameTest.StartsWith('Alis'))">
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"

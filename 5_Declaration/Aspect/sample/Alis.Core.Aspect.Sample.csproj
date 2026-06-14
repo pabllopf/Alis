@@ -9,12 +9,11 @@
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
         <ApplicationIcon Condition="Exists('$(ProjectDir)Assets/app.ico')">Assets/app.ico</ApplicationIcon>
+        <Configurations>Debug;Release;Win;Osx;Linux;Browser;Android;Ios</Configurations>
+        <Platforms>AnyCPU;x64;x86;arm;arm64;wasm;simulator_x64;simulator_arm64</Platforms>
     </PropertyGroup>
     
-    <ItemGroup>
-        <None Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
-        <Compile Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
-    </ItemGroup>
+    
 
      <PropertyGroup>
         <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>

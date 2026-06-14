@@ -9,6 +9,8 @@
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
         <WarningLevel>0</WarningLevel>
+        <Configurations>Debug;Release;Win;Osx;Linux;Browser;Android;Ios</Configurations>
+        <Platforms>AnyCPU;x64;x86;arm;arm64;wasm;simulator_x64;simulator_arm64</Platforms>
     </PropertyGroup>
 
 
@@ -30,10 +32,7 @@
         <PackageReference Include="Moq" Version="4.20.70"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <None Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
-        <Compile Remove="._*;**/._*;**/._*.*;**/*.vb;**/*.fs;**/bin/*;**/obj/*;" />
-    </ItemGroup>
+    
 
    <PropertyGroup>
         <NoWarn>$(NoWarn);ALIS009;ALIS010;ALIS001;ALIS003;ALIS002;ALIS005;ALIS006;ALIS007;ALIS008</NoWarn>
@@ -92,21 +91,7 @@
 
     </ItemGroup>
     
-    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Payment.Stripe'))">
-        <PackageReference Include="Stripe.net" Version="49.2.0"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Ads.GoogleAds'))">
-        <PackageReference Include="Google.Ads.Common" Version="9.5.3"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Cloud.GoogleDrive'))">
-        <PackageReference Include="Google.Apis.Drive.v3" Version="1.68.0.3601"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Cloud.DropBox'))">
-        <PackageReference Include="Dropbox.Api" Version="7.0.0"/>
-    </ItemGroup>
+    
     
 
     <ItemGroup>

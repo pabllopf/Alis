@@ -9,6 +9,8 @@
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
         <WarningLevel>0</WarningLevel>
+        <Configurations>Debug;Release;Win;Osx;Linux;Browser;Android;Ios</Configurations>
+        <Platforms>AnyCPU;x64;x86;arm;arm64;wasm;simulator_x64;simulator_arm64</Platforms>
     </PropertyGroup>
 
 
