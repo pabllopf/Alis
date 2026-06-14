@@ -16,6 +16,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -32,6 +36,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -48,6 +56,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -66,6 +78,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -82,6 +98,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -98,6 +118,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -114,6 +138,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -130,6 +158,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -146,6 +178,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -162,6 +198,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -178,6 +218,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -194,6 +238,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -210,6 +258,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -226,6 +278,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -242,6 +298,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -258,6 +318,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -283,6 +347,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -299,6 +367,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -315,6 +387,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -331,6 +407,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -356,6 +436,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -372,6 +456,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -388,6 +476,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -404,6 +496,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -423,6 +519,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -439,6 +539,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -455,6 +559,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -471,6 +579,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -490,6 +602,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -506,6 +622,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -522,6 +642,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -538,6 +662,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -557,6 +685,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -573,6 +705,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -589,6 +725,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -605,6 +745,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -630,6 +774,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -646,6 +794,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -662,6 +814,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -687,6 +843,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -703,6 +863,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -719,6 +883,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -735,6 +903,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -754,6 +926,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -770,6 +946,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -786,6 +966,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -802,6 +986,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -821,6 +1009,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -837,6 +1029,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -853,6 +1049,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -869,6 +1069,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -888,6 +1092,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -904,6 +1112,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -920,6 +1132,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -936,6 +1152,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -955,6 +1175,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -971,6 +1195,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -987,6 +1215,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1003,6 +1235,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1022,6 +1258,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1038,6 +1278,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1054,6 +1298,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1070,6 +1318,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1083,6 +1335,7 @@
         <BuildType Name="Browser" />
         <BuildType Name="Debug" />
         <BuildType Name="Ios" />
+        <BuildType Name="Linux" />
         <BuildType Name="Osx" />
         <BuildType Name="Release" />
         <BuildType Name="Win" />
@@ -1135,6 +1388,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1151,6 +1408,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1169,6 +1430,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1188,6 +1453,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1204,6 +1473,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1223,6 +1496,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1239,6 +1516,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1262,6 +1543,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1278,6 +1563,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1294,6 +1583,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1313,6 +1606,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1329,6 +1626,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1345,6 +1646,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1364,6 +1669,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1380,6 +1689,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1398,6 +1711,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1414,6 +1731,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1432,6 +1753,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1448,6 +1773,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1468,6 +1797,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1484,6 +1817,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1500,6 +1837,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1519,6 +1860,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1535,6 +1880,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1555,6 +1904,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1571,6 +1924,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1587,6 +1944,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1606,6 +1967,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1622,6 +1987,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1638,6 +2007,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1657,6 +2030,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1673,6 +2050,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1689,6 +2070,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1709,6 +2094,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1725,6 +2114,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1741,6 +2134,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1760,6 +2157,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1776,6 +2177,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1792,6 +2197,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1812,6 +2221,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1828,6 +2241,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1844,6 +2261,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1863,6 +2284,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1879,6 +2304,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1895,6 +2324,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1914,6 +2347,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1930,6 +2367,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1946,6 +2387,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1966,6 +2411,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1982,6 +2431,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -1998,6 +2451,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2017,6 +2474,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2033,6 +2494,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2049,6 +2514,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2068,6 +2537,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2084,6 +2557,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2100,6 +2577,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2120,6 +2601,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2136,6 +2621,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2152,6 +2641,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2171,6 +2664,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2187,6 +2684,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2203,6 +2704,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2222,6 +2727,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2238,6 +2747,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2254,6 +2767,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2274,6 +2791,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2290,6 +2811,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />
@@ -2306,6 +2831,10 @@
             <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
             <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
             <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
             <Platform Solution="Osx|arm64" Project="arm64" />
             <Platform Solution="Osx|x64" Project="x64" />
             <Platform Solution="Win|arm" Project="arm" />

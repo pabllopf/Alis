@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-     <PropertyGroup>
+      <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
@@ -23,8 +23,8 @@
         <RuntimeIdentifier Condition="'$(Configuration)' == 'Linux' AND '$(Platform)' == 'arm'">linux-arm</RuntimeIdentifier>
         <RuntimeIdentifier Condition="'$(Configuration)' == 'Linux' AND '$(Platform)' == 'arm64'">linux-arm64</RuntimeIdentifier>
         <RuntimeIdentifier Condition="'$(Configuration)' == 'Linux' AND '$(Platform)' == 'x64'">linux-x64</RuntimeIdentifier>
-        
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Browser' AND '$(Platform)' == 'wasm'">browser-wasm</RuntimeIdentifier>
+
+         <RuntimeIdentifier Condition="'$(Configuration)' == 'Browser' AND '$(Platform)' == 'wasm'">browser-wasm</RuntimeIdentifier>
         
         <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'arm64'">ios-arm64</RuntimeIdentifier>
         <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'x64'">ios-x64</RuntimeIdentifier>
