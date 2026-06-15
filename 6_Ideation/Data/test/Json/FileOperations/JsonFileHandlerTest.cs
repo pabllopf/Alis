@@ -273,6 +273,143 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         }
 
         /// <summary>
+        ///     Tests that serialize to file throws IOException when serializer throws
+        /// </summary>
+        [Fact]
+        public void SerializeToFile_ThrowsIOException_WhenSerializerThrows()
+        {
+            // Create a handler with a serializer that throws
+            IJsonSerializer throwingSerializer = new ThrowingJsonSerializer();
+            EscapeSequenceHandler escapeHandler = new EscapeSequenceHandler();
+            JsonParser parser = new JsonParser(escapeHandler);
+            JsonDeserializer deserializer = new JsonDeserializer(parser);
+            JsonFileHandler throwingHandler = new JsonFileHandler(throwingSerializer, deserializer);
+
+            TestObject obj = new TestObject {Name = "Test", Value = 42};
+            Assert.Throws<IOException>(() => throwingHandler.SerializeToFile(obj, "test", "path"));
+        }
+
+        /// <summary>
+        ///     Tests that deserialize from file throws IOException when deserializer throws
+        /// </summary>
+        [Fact]
+        public void DeserializeFromFile_ThrowsIOException_WhenDeserializerThrows()
+        {
+            // Create a handler with a deserializer that throws
+            IJsonSerializer serializer = new JsonSerializer();
+            IJsonDeserializer throwingDeserializer = new ThrowingJsonDeserializer(new JsonParser(new EscapeSequenceHandler()));
+            JsonFileHandler throwingHandler = new JsonFileHandler(serializer, throwingDeserializer);
+
+            // First create a file to deserialize
+            TestObject obj = new TestObject {Name = "Test", Value = 42};
+            string relativePath = Path.Combine("JsonFileHandlerTests", "deserialize_error");
+
+            try
+            {
+                _fileHandler.SerializeToFile(obj, "testread", relativePath);
+
+                // Now try to deserialize with throwing deserializer
+                Assert.Throws<IOException>(() =>
+                    throwingHandler.DeserializeFromFile<TestObject>("testread", relativePath));
+            }
+            finally
+            {
+                Cleanup();
+            }
+        }
+
+        /// <summary>
+        ///     A JSON serializer that throws an exception
+        /// </summary>
+        private class ThrowingJsonSerializer : IJsonSerializer
+        {
+            /// <inheritdoc />
+            public string Serialize<T>(T instance) where T : IJsonSerializable
+            {
+                throw new InvalidOperationException("Serializer error");
+            }
+        }
+
+        /// <summary>
+        ///     A JSON deserializer that throws an exception
+        /// </summary>
+        private class ThrowingJsonDeserializer : IJsonDeserializer
+        {
+            private readonly JsonParser _parser;
+
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="ThrowingJsonDeserializer" /> class
+            /// </summary>
+            public ThrowingJsonDeserializer(JsonParser parser) => _parser = parser;
+
+            /// <inheritdoc />
+            public T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
+            {
+                throw new InvalidOperationException("Deserializer error");
+            }
+        }
+
+        /// <summary>
+        ///     Tests that deserialize from file throws IOException when deserializer throws
+        /// </summary>
+        [Fact]
+        public void DeserializeFromFile_ThrowsIOException_WhenDeserializerThrows()
+        {
+            // Create a handler with a deserializer that throws
+            IJsonSerializer serializer = new JsonSerializer();
+            IJsonDeserializer throwingDeserializer = new ThrowingJsonDeserializer(new JsonParser(new EscapeSequenceHandler()));
+            JsonFileHandler throwingHandler = new JsonFileHandler(serializer, throwingDeserializer);
+
+            // First create a file to deserialize
+            TestObject obj = new TestObject {Name = "Test", Value = 42};
+            string relativePath = Path.Combine("JsonFileHandlerTests", "deserialize_error");
+
+            try
+            {
+                _fileHandler.SerializeToFile(obj, "testread", relativePath);
+
+                // Now try to deserialize with throwing deserializer
+                Assert.Throws<IOException>(() =>
+                    throwingHandler.DeserializeFromFile<TestObject>("testread", relativePath));
+            }
+            finally
+            {
+                Cleanup();
+            }
+        }
+
+        /// <summary>
+        ///     A JSON serializer that throws an exception
+        /// </summary>
+        private class ThrowingJsonSerializer : IJsonSerializer
+        {
+            /// <inheritdoc />
+            public string Serialize<T>(T instance) where T : IJsonSerializable
+            {
+                throw new InvalidOperationException("Serializer error");
+            }
+        }
+
+        /// <summary>
+        ///     A JSON deserializer that throws an exception
+        /// </summary>
+        private class ThrowingJsonDeserializer : IJsonDeserializer
+        {
+            private readonly JsonParser _parser;
+
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="ThrowingJsonDeserializer" /> class
+            /// </summary>
+            public ThrowingJsonDeserializer(JsonParser parser) => _parser = parser;
+
+            /// <inheritdoc />
+            public T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
+            {
+                throw new InvalidOperationException("Deserializer error");
+            }
+        }
+
+        /// <summary>
         ///     The test object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
