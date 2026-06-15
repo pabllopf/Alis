@@ -184,6 +184,28 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
+        ///     Tests that sin with angle greater than half pi reduces the angle and returns expected value
+        /// </summary>
+        [Fact]
+        public void Sin_WhenAngleGreaterThanHalfPi_ReducesAngle()
+        {
+            float result = CustomMathF.Sin(CustomMathF.Pi);
+
+            Assert.Equal(0f, result, 2);
+        }
+
+        /// <summary>
+        ///     Tests that sin with angle less than negative half pi increases the angle and returns expected value
+        /// </summary>
+        [Fact]
+        public void Sin_WhenAngleLessThanNegativeHalfPi_IncreasesAngle()
+        {
+            float result = CustomMathF.Sin(-CustomMathF.Pi);
+
+            Assert.Equal(0f, result, 2);
+        }
+
+        /// <summary>
         ///     Tests that sin and cos with full turn are approximately canonical
         /// </summary>
         [Fact]
