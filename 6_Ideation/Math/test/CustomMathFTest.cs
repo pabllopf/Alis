@@ -133,6 +133,53 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
+        ///     Tests that acos with NaN input returns NaN
+        /// </summary>
+        [Fact]
+        public void Acos_WithNaN_ReturnsNaN()
+        {
+            Assert.True(float.IsNaN(CustomMathF.Acos(float.NaN)));
+        }
+
+        /// <summary>
+        ///     Tests that acos with boundary values returns expected results
+        /// </summary>
+        [Fact]
+        public void Acos_WithBoundaryValues_ReturnsExpectedResults()
+        {
+            // Acos(-1) = Pi
+            float result = CustomMathF.Acos(-1f);
+            Assert.Equal(CustomMathF.Pi, result, 2);
+
+            // Acos(1) = 0
+            result = CustomMathF.Acos(1f);
+            Assert.Equal(0f, result, 2);
+
+            // Acos(0) = Pi/2
+            result = CustomMathF.Acos(0f);
+            Assert.Equal(CustomMathF.Pi / 2f, result, 2);
+        }
+
+        /// <summary>
+        ///     Tests that acos with various values returns expected results
+        /// </summary>
+        [Fact]
+        public void Acos_WithVariousValues_ReturnsExpectedResults()
+        {
+            // Acos(0.5) = Pi/3 ≈ 1.047
+            float result = CustomMathF.Acos(0.5f);
+            Assert.Equal(1.047f, result, 2);
+
+            // Acos(-0.5) = 2*Pi/3 ≈ 2.094
+            result = CustomMathF.Acos(-0.5f);
+            Assert.Equal(2.094f, result, 2);
+
+            // Acos(sqrt(2)/2) = Pi/4 ≈ 0.785
+            result = CustomMathF.Acos(0.70710678f);
+            Assert.Equal(0.785f, result, 2);
+        }
+
+        /// <summary>
         ///     Tests that clamp limits value to range
         /// </summary>
         [Fact]
@@ -351,13 +398,5 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(0f, CustomMathF.Abs(0f));
         }
 
-        /// <summary>
-        ///     Tests that acos with na n returns na n
-        /// </summary>
-        [Fact]
-        public void Acos_WithNaN_ReturnsNaN()
-        {
-            Assert.True(float.IsNaN(CustomMathF.Acos(float.NaN)));
-        }
     }
 }
