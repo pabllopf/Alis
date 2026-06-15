@@ -95,13 +95,18 @@ namespace Alis.Core.Aspect.Fluent.Generator
         public const string IdUnknownReflection = "ALIS010";
 
         /// <summary>
+        ///     The AOT reflection category
+        /// </summary>
+        private const string CategoryAotReflection = "AOT/Reflection";
+
+        /// <summary>
         ///     The description
         /// </summary>
         private static readonly DiagnosticDescriptor ReflectionApiRule = new DiagnosticDescriptor(
             IdReflectionApi,
             "Use of System.Reflection (possible AOT issue)",
             "Use of reflection API '{0}' may require additional runtime metadata and can break Publish AOT when reflection is disabled",
-            "AOT/Reflection",
+            CategoryAotReflection,
             DiagnosticSeverity.Error,
             true,
             "Detects direct uses of System.Reflection that usually require access to metadata that AOT may remove if not preserved.");
@@ -125,7 +130,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             IdInvokeApi,
             "Invocation via MethodInfo.Invoke / PropertyInfo.GetValue",
             "Dynamic invocation '{0}' depends on runtime metadata and is not compatible with reflection disabled",
-            "AOT/Reflection",
+            CategoryAotReflection,
             DiagnosticSeverity.Error,
             true);
 
@@ -136,7 +141,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             IdActivatorApi,
             "Use of Activator.CreateInstance / CreateInstanceFrom",
             "Activator.CreateInstance and variants '{0}' require creating types by name and are not compatible if reflection is disabled or required types are not preserved",
-            "AOT/Reflection",
+            CategoryAotReflection,
             DiagnosticSeverity.Error,
             true);
 
@@ -147,7 +152,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             IdTypeGetType,
             "Type.GetType / Assembly.Load",
             "Call to Type.GetType/Assembly.Load '{0}' requires loading types by string which needs metadata not available in AOT if not preserved",
-            "AOT/Reflection",
+            CategoryAotReflection,
             DiagnosticSeverity.Error,
             true);
 
