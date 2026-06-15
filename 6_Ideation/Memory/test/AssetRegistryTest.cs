@@ -192,6 +192,21 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourceMemoryStreamByName_ExistingResource_ReturnsMemoryStream()
         {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            prop.SetValue(null, null);
+            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
             string assemblyName = "TestAssembly_" + Guid.NewGuid();
             string expectedContent = "content";
             Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", expectedContent}};
@@ -389,12 +404,32 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourceMemoryStreamByName_ExistingResource_ContentMatches()
         {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            prop.SetValue(null, null);
+            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
+            string assemblyName = "TestAssembly_" + Guid.NewGuid();
+            string content = "expected test content";
+            Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", content}};
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
             using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("app.bmp");
 
             Assert.NotNull(result);
             Assert.True(result.Length > 0);
 
-            // Verify the content is readable and starts with expected data
             result.Position = 0;
             byte[] buffer = new byte[result.Length];
             int bytesRead = result.Read(buffer, 0, buffer.Length);
@@ -497,6 +532,27 @@ namespace Alis.Core.Aspect.Memory.Test
         [Fact]
         public void GetResourcePathByName_CalledTwice_ReturnsSamePath()
         {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            prop.SetValue(null, null);
+            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
+            string assemblyName = "TestAssembly_CalledTwice_" + Guid.NewGuid();
+            string content = "called twice content";
+            Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", content}};
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
             string result1 = AssetRegistry.GetResourcePathByName("app.bmp");
             Assert.NotNull(result1);
             Assert.NotEmpty(result1);
