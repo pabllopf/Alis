@@ -274,12 +274,9 @@ namespace Alis.Core.Ecs.Generator
                     {
                         foreach (AttributeSyntax attr in attrList.Attributes)
                         {
-                            if (semanticModel.GetSymbolInfo(attr).Symbol is IMethodSymbol attrCtor)
+                            if (semanticModel.GetSymbolInfo(attr).Symbol is IMethodSymbol attrCtor && InheritsFromBase(attrCtor.ContainingType, RegistryHelpers.UpdateTypeAttributeName))
                             {
-                                if (InheritsFromBase(attrCtor.ContainingType, RegistryHelpers.UpdateTypeAttributeName))
-                                {
-                                    attributes.Push(attrCtor.ContainingType.ToString());
-                                }
+                                attributes.Push(attrCtor.ContainingType.ToString());
                             }
                         }
                     }
