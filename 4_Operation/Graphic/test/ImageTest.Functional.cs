@@ -104,6 +104,24 @@ namespace Alis.Core.Graphic.Test
 
         
         /// <summary>
+        ///     Tests loading a 1-bit monochrome BMP with palette.
+        /// </summary>
+        [Fact]
+        public void LoadFromStream_When1BitMonochrome_ReturnsCorrectImage()
+        {
+            using MemoryStream stream = CreateMinimalBmp1Bit(2, 2);
+
+            Image image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
+                .Invoke(null, new object[] { stream }) as Image;
+
+            Assert.NotNull(image);
+            Assert.Equal(2, image.Width);
+            Assert.Equal(2, image.Height);
+            Assert.NotNull(image.Data);
+            Assert.Equal(2 * 2 * 4, image.Data.Length);
+        }
+
+        /// <summary>
         ///     Tests that empty stream throws exception.
         /// </summary>
         [Fact]
@@ -371,8 +389,8 @@ namespace Alis.Core.Graphic.Test
         private static MemoryStream CreateMinimalBmp1Bit(int width, int height)
         {
             int paletteSize = 2 * 4; // 2 entries for 1-bit
-            int rowSize = (width + 7) / 8; // 8 pixels per byte
-            rowSize = (rowSize + 1) / 2 * 2; // Padded to even
+            int pixelDataPerRow = (width + 7) / 8; // 8 pixels per byte
+            int rowSize = (pixelDataPerRow + 3) / 4 * 4; // Padded to 4-byte boundary
             int imageSize = rowSize * height;
             int fileSize = 54 + paletteSize + imageSize;
 
@@ -403,10 +421,11 @@ namespace Alis.Core.Graphic.Test
             bmp[paletteOffset] = 0; bmp[paletteOffset + 1] = 0; bmp[paletteOffset + 2] = 0; bmp[paletteOffset + 3] = 255; // Black
             bmp[paletteOffset + 4] = 255; bmp[paletteOffset + 5] = 255; bmp[paletteOffset + 6] = 255; bmp[paletteOffset + 7] = 255; // White
             
-            // Pixel data (1 bit per pixel, 8 pixels per byte)
+            // Pixel data (1 bit per pixel, 8 pixels per byte) with 4-byte row alignment
             int pixelOffset = 54 + paletteSize;
             for (int y = 0; y < height; y++)
             {
+                int rowStart = pixelOffset;
                 byte pixelByte = 0;
                 for (int x = 0; x < width; x++)
                 {
@@ -420,9 +439,11 @@ namespace Alis.Core.Graphic.Test
                         pixelByte = 0;
                     }
                 }
-                while ((pixelOffset % 2 != 0) && (pixelOffset < 54 + paletteSize + rowSize * (y + 1)))
+                int written = pixelOffset - rowStart;
+                while (written < rowSize)
                 {
                     bmp[pixelOffset++] = 0;
+                    written++;
                 }
             }
 
