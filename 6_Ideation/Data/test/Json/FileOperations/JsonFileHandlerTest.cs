@@ -335,6 +335,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         /// </summary>
         private class ThrowingJsonDeserializer : IJsonDeserializer
         {
+            /// <summary>
+            /// The parser
+            /// </summary>
             private readonly JsonParser _parser;
 
             /// <summary>
@@ -395,6 +398,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         /// </summary>
         private class ThrowingJsonDeserializer : IJsonDeserializer
         {
+            /// <summary>
+            /// The parser
+            /// </summary>
             private readonly JsonParser _parser;
 
             /// <summary>

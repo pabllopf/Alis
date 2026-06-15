@@ -161,6 +161,9 @@ namespace Alis.App.Engine.Windows
             ImGui.End();
         }
 
+        /// <summary>
+        /// Renders the console toolbar
+        /// </summary>
         private void RenderConsoleToolbar()
         {
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
@@ -177,6 +180,9 @@ namespace Alis.App.Engine.Windows
             RenderFilterAndActionButtons();
         }
 
+        /// <summary>
+        /// Renders the filter and action buttons
+        /// </summary>
         private void RenderFilterAndActionButtons()
         {
             float buttonWidth = 32 + ImGui.GetStyle().ItemSpacing.X;

@@ -46,6 +46,9 @@ namespace Alis.Extension.Graphic.Ui.Test
     /// </summary>
     public class ImGuiNativeIntegrationTest : IDisposable
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly IntPtr _context;
 
         /// <summary>

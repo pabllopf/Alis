@@ -143,6 +143,11 @@ namespace Alis.App.Hub.Windows
             ImGui.End();
         }
 
+        /// <summary>
+        /// Renders the sidebar using the specified scale
+        /// </summary>
+        /// <param name="scale">The scale</param>
+        /// <param name="screenSize">The screen size</param>
         private void RenderSidebar(float scale, Vector2F screenSize)
         {
             ImGui.BeginChild("Sidebar", new Vector2F(220 * scale, screenSize.Y - 20 * scale), true);
@@ -161,6 +166,11 @@ namespace Alis.App.Hub.Windows
             ImGui.EndChild();
         }
 
+        /// <summary>
+        /// Renders the main content area using the specified scale
+        /// </summary>
+        /// <param name="scale">The scale</param>
+        /// <param name="screenSize">The screen size</param>
         private void RenderMainContentArea(float scale, Vector2F screenSize)
         {
             ImGui.SameLine();
