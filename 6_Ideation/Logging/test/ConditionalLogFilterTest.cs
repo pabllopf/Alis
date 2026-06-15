@@ -249,6 +249,15 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
+        ///     Tests that conditional log filter null predicate should throw argument null exception
+        /// </summary>
+        [Fact]
+        public void ConditionalLogFilter_NullPredicate_ShouldThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => new ConditionalLogFilter(null));
+        }
+
+        /// <summary>
         ///     Creates the entry using the specified level
         /// </summary>
         /// <param name="level">The level</param>
