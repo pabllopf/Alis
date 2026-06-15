@@ -138,6 +138,24 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
+        ///     Tests that max with first int smaller than second returns second
+        /// </summary>
+        [Fact]
+        public void Max_WhenFirstIsSmaller_ReturnsSecond()
+        {
+            Assert.Equal(7, CustomMathF.Max(3, 7));
+        }
+
+        /// <summary>
+        ///     Tests that min with first int smaller than second returns first
+        /// </summary>
+        [Fact]
+        public void Min_WhenFirstIsSmaller_ReturnsFirst()
+        {
+            Assert.Equal(3, CustomMathF.Min(3, 7));
+        }
+
+        /// <summary>
         ///     Tests that abs with negative and positive values returns magnitude
         /// </summary>
         [Fact]
