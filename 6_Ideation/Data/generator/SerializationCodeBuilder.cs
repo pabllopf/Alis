@@ -38,6 +38,11 @@ namespace Alis.Core.Aspect.Data.Generator
     /// </summary>
     internal class SerializationCodeBuilder
     {
+        private const string XmlSummary = "        /// <summary>";
+        private const string XmlSummaryEnd = "        /// </summary>";
+        private const string XmlReturns = "        /// <returns>An enumerable of tuples containing property names and their serialized values.</returns>";
+        private const string ExcludeFromCodeCoverage = "        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]";
+
         /// <summary>
         ///     The string builder
         /// </summary>
@@ -122,11 +127,11 @@ namespace Alis.Core.Aspect.Data.Generator
         /// </summary>
         private void AddGetSerializablePropertiesMethod()
         {
-            _stringBuilder.AppendLine("        /// <summary>");
+            _stringBuilder.AppendLine(XmlSummary);
             _stringBuilder.AppendLine("        ///     Gets the serializable properties of this instance.");
-            _stringBuilder.AppendLine("        /// </summary>");
-            _stringBuilder.AppendLine("        /// <returns>An enumerable of tuples containing property names and their serialized values.</returns>");
-            _stringBuilder.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            _stringBuilder.AppendLine(XmlSummaryEnd);
+            _stringBuilder.AppendLine(XmlReturns);
+            _stringBuilder.AppendLine(ExcludeFromCodeCoverage);
             _stringBuilder.AppendLine("        IEnumerable<(string PropertyName, string Value)> IJsonSerializable.GetSerializableProperties()");
             _stringBuilder.AppendLine("        {");
 
@@ -159,12 +164,12 @@ namespace Alis.Core.Aspect.Data.Generator
         /// </summary>
         private void AddCreateFromPropertiesMethod()
         {
-            _stringBuilder.AppendLine("        /// <summary>");
+            _stringBuilder.AppendLine(XmlSummary);
             _stringBuilder.AppendLine("        ///     Creates an instance from a dictionary of properties.");
-            _stringBuilder.AppendLine("        /// </summary>");
+            _stringBuilder.AppendLine(XmlSummaryEnd);
             _stringBuilder.AppendLine("        /// <param name=\"properties\">The property dictionary.</param>");
             _stringBuilder.AppendLine("        /// <returns>A new instance with properties set from the dictionary.</returns>");
-            _stringBuilder.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            _stringBuilder.AppendLine(ExcludeFromCodeCoverage);
             _stringBuilder.AppendLine($"        {_typeSymbol.Name} IJsonDesSerializable<{_typeSymbol.Name}>.CreateFromProperties(Dictionary<string, string> properties)");
             _stringBuilder.AppendLine("        {");
             _stringBuilder.AppendLine($"            return new {_typeSymbol.Name}");
@@ -198,21 +203,21 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     Adds the extension methods for JSON conversion.
         /// </summary>
-        private void AddExtensionMethods()
+       private void AddExtensionMethods()
         {
-            _stringBuilder.AppendLine("        /// <summary>");
+            _stringBuilder.AppendLine(XmlSummary);
             _stringBuilder.AppendLine("        ///     Converts this instance to its JSON string representation.");
-            _stringBuilder.AppendLine("        /// </summary>");
+            _stringBuilder.AppendLine(XmlSummaryEnd);
             _stringBuilder.AppendLine("        /// <returns>The JSON string representation of this instance.</returns>");
-            _stringBuilder.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            _stringBuilder.AppendLine(ExcludeFromCodeCoverage);
             _stringBuilder.AppendLine("        public string ToJson() => JsonNativeAot.Serialize(this);");
             _stringBuilder.AppendLine("");
-            _stringBuilder.AppendLine("        /// <summary>");
+            _stringBuilder.AppendLine(XmlSummary);
             _stringBuilder.AppendLine($"        ///     Creates an instance of {_typeSymbol.Name} from a JSON string.");
-            _stringBuilder.AppendLine("        /// </summary>");
+            _stringBuilder.AppendLine(XmlSummaryEnd);
             _stringBuilder.AppendLine("        /// <param name=\"json\">The JSON string to deserialize.</param>");
             _stringBuilder.AppendLine($"        /// <returns>A new instance of {_typeSymbol.Name} deserialized from the JSON string.</returns>");
-            _stringBuilder.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            _stringBuilder.AppendLine(ExcludeFromCodeCoverage);
             _stringBuilder.AppendLine($"        public static {_typeSymbol.Name} FromJson(string json) => JsonNativeAot.Deserialize<{_typeSymbol.Name}>(json);");
             _stringBuilder.AppendLine("");
         }
