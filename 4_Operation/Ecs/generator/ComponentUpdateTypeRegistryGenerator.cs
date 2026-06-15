@@ -26,8 +26,9 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
 using System;
+
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
@@ -113,7 +114,7 @@ namespace Alis.Core.Ecs.Generator
             }
 
             UpdateModelFlags flags = UpdateModelFlags.None;
-            Stack<Diagnostic> diagnostics = new Stack<Diagnostic>(1);
+            System.Collections.Generic.Stack<Diagnostic> diagnostics = new System.Collections.Generic.Stack<Diagnostic>(1);
             INamedTypeSymbol @interface = null;
 
             string[] genericArguments = new string[0];
@@ -172,7 +173,7 @@ namespace Alis.Core.Ecs.Generator
 
             //only components here
 
-            Stack<string> attributes = new Stack<string>(1);
+            System.Collections.Generic.Stack<string> attributes = new System.Collections.Generic.Stack<string>(1);
             PushUpdateTypeAttributes(ref attributes, gsc.Node, gsc.SemanticModel);
 
             AddMiscFlags();
@@ -230,7 +231,7 @@ namespace Alis.Core.Ecs.Generator
                 }
             }
 
-            TypeDeclarationModel[] GetContainingTypes(ref Stack<Diagnostic> diags)
+            TypeDeclarationModel[] GetContainingTypes(ref System.Collections.Generic.Stack<Diagnostic> diags)
             {
                 int nestedTypeCount = 0;
                 INamedTypeSymbol current = componentTypeSymbol;
@@ -264,22 +265,21 @@ namespace Alis.Core.Ecs.Generator
         /// <param name="attributes">The attributes</param>
         /// <param name="node">The node</param>
         /// <param name="semanticModel">The semantic model</param>
-        private static void PushUpdateTypeAttributes(ref Stack<string> attributes, SyntaxNode node, SemanticModel semanticModel)
+        private static void PushUpdateTypeAttributes(ref System.Collections.Generic.Stack<string> attributes, SyntaxNode node, SemanticModel semanticModel)
         {
-            foreach (MemberDeclarationSyntax item in ((TypeDeclarationSyntax) node).Members)
+            TypeDeclarationSyntax typeDeclaration = (TypeDeclarationSyntax) node;
+            IEnumerable<AttributeSyntax> attributeSyntaxes =
+                from method in typeDeclaration.Members.OfType<MethodDeclarationSyntax>()
+                where method.AttributeLists.Count != 0 && method.Identifier.ToString() == RegistryHelpers.UpdateMethodName
+                from attrList in method.AttributeLists
+                from attr in attrList.Attributes
+                select attr;
+
+            foreach (AttributeSyntax attr in attributeSyntaxes)
             {
-                if (item is MethodDeclarationSyntax method && (method.AttributeLists.Count != 0) && (method.Identifier.ToString() == RegistryHelpers.UpdateMethodName))
+                if (semanticModel.GetSymbolInfo(attr).Symbol is IMethodSymbol attrCtor && InheritsFromBase(attrCtor.ContainingType, RegistryHelpers.UpdateTypeAttributeName))
                 {
-                    foreach (AttributeListSyntax attrList in method.AttributeLists)
-                    {
-                        foreach (AttributeSyntax attr in attrList.Attributes)
-                        {
-                            if (semanticModel.GetSymbolInfo(attr).Symbol is IMethodSymbol attrCtor && InheritsFromBase(attrCtor.ContainingType, RegistryHelpers.UpdateTypeAttributeName))
-                            {
-                                attributes.Push(attrCtor.ContainingType.ToString());
-                            }
-                        }
-                    }
+                    attributes.Push(attrCtor.ContainingType.ToString());
                 }
             }
         }
