@@ -104,6 +104,24 @@ namespace Alis.Core.Graphic.Test
 
         
         /// <summary>
+        ///     Tests loading a 32-bit BMP with alpha channel.
+        /// </summary>
+        [Fact]
+        public void LoadFromStream_When32BitBmp_ReturnsCorrectImage()
+        {
+            using MemoryStream stream = CreateMinimalBmp32Bit(2, 2);
+
+            Image image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
+                .Invoke(null, new object[] { stream }) as Image;
+
+            Assert.NotNull(image);
+            Assert.Equal(2, image.Width);
+            Assert.Equal(2, image.Height);
+            Assert.NotNull(image.Data);
+            Assert.Equal(2 * 2 * 4, image.Data.Length);
+        }
+
+        /// <summary>
         ///     Tests loading a 1-bit monochrome BMP with palette.
         /// </summary>
         [Fact]
