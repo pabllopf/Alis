@@ -50,13 +50,13 @@
 
         <TargetFrameworks Condition="'$(Configuration)' == 'Browser'">net8.0;net10.0;netstandard2.0;</TargetFrameworks>
         
-        <TargetFrameworks Condition="'$(Configuration)' == 'Ios'">net10.0;netstandard2.0;</TargetFrameworks>
+        <TargetFrameworks Condition="'$(Configuration)' == 'Ios'">net8.0;net10.0;netstandard2.0;</TargetFrameworks>
         <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'arm64'">ios-arm64</RuntimeIdentifier>
         <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'x64'">ios-x64</RuntimeIdentifier>
         <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'simulator_x64'">iossimulator-x64</RuntimeIdentifier>
         <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'simulator_arm64'">iossimulator-arm64</RuntimeIdentifier>
 
-        <TargetFrameworks Condition="'$(Configuration)' == 'Android'">net10.0;netstandard2.0;</TargetFrameworks>
+        <TargetFrameworks Condition="'$(Configuration)' == 'Android'">net8.0;net10.0;netstandard2.0;</TargetFrameworks>
         <RuntimeIdentifier Condition="'$(Configuration)' == 'Android' AND '$(Platform)' == 'arm64'">android-arm64</RuntimeIdentifier>
         <RuntimeIdentifier Condition="'$(Configuration)' == 'Android' AND '$(Platform)' == 'x64'">android-x64</RuntimeIdentifier>
     </PropertyGroup>
