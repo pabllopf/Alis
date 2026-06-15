@@ -382,5 +382,101 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(-near * far / (near - far), matrix.M34, 3);
             Assert.Equal(-1f, matrix.M43, 3);
         }
+
+        /// <summary>
+        ///     Tests that operator multiply multiplies two matrices correctly
+        /// </summary>
+        [Fact]
+        public void Op_Multiply_MultipliesTwoMatricesCorrectly()
+        {
+            Matrix4X4 a = Matrix4X4.Identity;
+            Matrix4X4 b = Matrix4X4.Identity;
+
+            Matrix4X4 result = a * b;
+
+            Assert.Equal(1f, result.M11);
+            Assert.Equal(1f, result.M22);
+            Assert.Equal(1f, result.M33);
+            Assert.Equal(1f, result.M44);
+        }
+
+        /// <summary>
+        ///     Tests that equals with non matrix returns false
+        /// </summary>
+        [Fact]
+        public void Equals_WithNonMatrix_ReturnsFalse()
+        {
+            Matrix4X4 matrix = Matrix4X4.Identity;
+
+            bool result = matrix.Equals("not a matrix");
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that equals with boxed matrix returns true
+        /// </summary>
+        [Fact]
+        public void Equals_WithBoxedMatrix_ReturnsTrue()
+        {
+            Matrix4X4 matrix = Matrix4X4.Identity;
+
+            bool result = matrix.Equals((object) Matrix4X4.Identity);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that indexer get returns correct values for all positions
+        /// </summary>
+        [Fact]
+        public void Indexer_Get_ReturnsCorrectValuesForAllPositions()
+        {
+            Matrix4X4 matrix = new Matrix4X4(
+                1, 2, 3, 4,
+                5, 6, 7, 8,
+                9, 10, 11, 12,
+                13, 14, 15, 16
+            );
+
+            Assert.Equal(1, matrix[0, 0]);
+            Assert.Equal(2, matrix[0, 1]);
+            Assert.Equal(3, matrix[0, 2]);
+            Assert.Equal(4, matrix[0, 3]);
+            Assert.Equal(5, matrix[1, 0]);
+            Assert.Equal(6, matrix[1, 1]);
+            Assert.Equal(7, matrix[1, 2]);
+            Assert.Equal(8, matrix[1, 3]);
+            Assert.Equal(9, matrix[2, 0]);
+            Assert.Equal(10, matrix[2, 1]);
+            Assert.Equal(11, matrix[2, 2]);
+            Assert.Equal(12, matrix[2, 3]);
+            Assert.Equal(13, matrix[3, 0]);
+            Assert.Equal(14, matrix[3, 1]);
+            Assert.Equal(15, matrix[3, 2]);
+            Assert.Equal(16, matrix[3, 3]);
+        }
+
+        /// <summary>
+        ///     Tests that indexer set updates correct positions
+        /// </summary>
+        [Fact]
+        public void Indexer_Set_UpdatesCorrectPositions()
+        {
+            Matrix4X4 matrix = new Matrix4X4();
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    matrix[i, j] = i * 4 + j + 1;
+                }
+            }
+
+            Assert.Equal(1, matrix[0, 0]);
+            Assert.Equal(6, matrix[1, 1]);
+            Assert.Equal(11, matrix[2, 2]);
+            Assert.Equal(16, matrix[3, 3]);
+        }
     }
 }
