@@ -83,6 +83,24 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
+        ///     Tests that cos with NaN returns NaN
+        /// </summary>
+        [Fact]
+        public void Cos_WithNaN_ReturnsNaN()
+        {
+            Assert.True(float.IsNaN(CustomMathF.Cos(float.NaN)));
+        }
+
+        /// <summary>
+        ///     Tests that tan with NaN returns NaN
+        /// </summary>
+        [Fact]
+        public void Tan_WithNaN_ReturnsNaN()
+        {
+            Assert.True(float.IsNaN(CustomMathF.Tan(float.NaN)));
+        }
+
+        /// <summary>
         ///     Tests that trigonometric functions with invalid values return na n
         /// </summary>
         [Fact]
@@ -135,6 +153,46 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(3, CustomMathF.Min(7, 3));
             Assert.Equal(7.5f, CustomMathF.Max(7.5f, 7.4f));
             Assert.Equal(7.4f, CustomMathF.Min(7.5f, 7.4f));
+        }
+
+        /// <summary>
+        ///     Tests that max returns second operand when first is smaller
+        /// </summary>
+        [Fact]
+        public void Max_ReturnsSecondOperand_WhenFirstIsSmaller()
+        {
+            Assert.Equal(5, CustomMathF.Max(3, 5));
+            Assert.Equal(7.5f, CustomMathF.Max(7.4f, 7.5f));
+        }
+
+        /// <summary>
+        ///     Tests that min returns second operand when first is larger
+        /// </summary>
+        [Fact]
+        public void Min_ReturnsSecondOperand_WhenFirstIsLarger()
+        {
+            Assert.Equal(3, CustomMathF.Min(5, 3));
+            Assert.Equal(7.4f, CustomMathF.Min(7.5f, 7.4f));
+        }
+
+        /// <summary>
+        ///     Tests that max returns equal value when operands are equal
+        /// </summary>
+        [Fact]
+        public void Max_ReturnsEqualValue_WhenOperandsAreEqual()
+        {
+            Assert.Equal(5, CustomMathF.Max(5, 5));
+            Assert.Equal(5.0f, CustomMathF.Max(5.0f, 5.0f));
+        }
+
+        /// <summary>
+        ///     Tests that min returns equal value when operands are equal
+        /// </summary>
+        [Fact]
+        public void Min_ReturnsEqualValue_WhenOperandsAreEqual()
+        {
+            Assert.Equal(5, CustomMathF.Min(5, 5));
+            Assert.Equal(5.0f, CustomMathF.Min(5.0f, 5.0f));
         }
 
         /// <summary>
@@ -216,6 +274,81 @@ namespace Alis.Core.Aspect.Math.Test
 
             Assert.Equal(0f, sin, 2);
             Assert.Equal(1f, cos, 2);
+        }
+
+        /// <summary>
+        ///     Tests that acos with valid input returns expected value
+        /// </summary>
+        [Fact]
+        public void Acos_WithValidInput_ReturnsExpectedValue()
+        {
+            float result1 = CustomMathF.Acos(0f);
+            float result2 = CustomMathF.Acos(1f);
+
+            Assert.Equal(CustomMathF.Pi / 2, result1, 2);
+            Assert.Equal(0f, result2, 2);
+        }
+
+        /// <summary>
+        ///     Tests that cos with non trivial angle executes loop iterations
+        /// </summary>
+        [Fact]
+        public void Cos_WithNonTrivialAngle_ExecutesLoopIterations()
+        {
+            float result = CustomMathF.Cos(CustomMathF.Pi);
+
+            Assert.Equal(-1f, result, 2);
+        }
+
+        /// <summary>
+        ///     Tests that sin with non trivial angle executes loop iterations
+        /// </summary>
+        [Fact]
+        public void Sin_WithNonTrivialAngle_ExecutesLoopIterations()
+        {
+            float result = CustomMathF.Sin(CustomMathF.Pi / 2);
+
+            Assert.Equal(1f, result, 2);
+        }
+
+        /// <summary>
+        ///     Tests that sqrt with non perfect square returns approximate value
+        /// </summary>
+        [Fact]
+        public void Sqrt_WithNonPerfectSquare_ReturnsApproximateValue()
+        {
+            float result = CustomMathF.Sqrt(2f);
+
+            Assert.Equal(1.414f, result, 3);
+        }
+
+        /// <summary>
+        ///     Tests that tan with normal angle returns expected value
+        /// </summary>
+        [Fact]
+        public void Tan_WithNormalAngle_ReturnsExpectedValue()
+        {
+            float result = CustomMathF.Tan(0f);
+
+            Assert.Equal(0f, result, 2);
+        }
+
+        /// <summary>
+        ///     Tests that abs with zero returns zero
+        /// </summary>
+        [Fact]
+        public void Abs_WithZero_ReturnsZero()
+        {
+            Assert.Equal(0f, CustomMathF.Abs(0f));
+        }
+
+        /// <summary>
+        ///     Tests that acos with na n returns na n
+        /// </summary>
+        [Fact]
+        public void Acos_WithNaN_ReturnsNaN()
+        {
+            Assert.True(float.IsNaN(CustomMathF.Acos(float.NaN)));
         }
     }
 }
