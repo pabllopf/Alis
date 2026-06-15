@@ -62,6 +62,49 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
+        ///     Tests that core logger constructor null name should use empty string
+        /// </summary>
+        [Fact]
+        public void CoreLogger_Constructor_NullName_ShouldUseEmptyString()
+        {
+            List<ILogOutput> outputs = new List<ILogOutput>();
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+
+            CoreLogger logger = new CoreLogger(null, outputs, filters, formatter);
+
+            Assert.Equal(string.Empty, logger.Name);
+        }
+
+        /// <summary>
+        ///     Tests that core logger constructor null outputs should use empty list
+        /// </summary>
+        [Fact]
+        public void CoreLogger_Constructor_NullOutputs_ShouldNotThrow()
+        {
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+
+            CoreLogger logger = new CoreLogger("TestLogger", null, filters, formatter);
+
+            logger.LogInfo("Should not throw");
+        }
+
+        /// <summary>
+        ///     Tests that core logger constructor null filters should use empty list
+        /// </summary>
+        [Fact]
+        public void CoreLogger_Constructor_NullFilters_ShouldNotThrow()
+        {
+            List<ILogOutput> outputs = new List<ILogOutput>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, null, formatter);
+
+            logger.LogInfo("Should not throw");
+        }
+
+        /// <summary>
         ///     Tests that core logger log trace should write to output
         /// </summary>
         [Fact]
@@ -280,6 +323,23 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Single(entries);
             Assert.Equal(2, entries[0].Properties.Count);
             Assert.Equal(123, entries[0].Properties["UserId"]);
+        }
+
+        /// <summary>
+        ///     Tests that core logger log structured disabled level should not log
+        /// </summary>
+        [Fact]
+        public void CoreLogger_LogStructured_DisabledLevel_ShouldNotLog()
+        {
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> {memoryOutput};
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter, LogLevel.Warning);
+
+            logger.LogStructured(LogLevel.Info, "Should not appear", new Dictionary<string, object>());
+
+            Assert.Empty(memoryOutput.GetEntries());
         }
 
         /// <summary>
