@@ -147,5 +147,97 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(0xC0000000u, HashCode.RotateLeft(0x60000000u, 1));
             Assert.Equal(0xC0000000u, HashCode.RotateLeft(0x80000001u, 31));
         }
+
+        /// <summary>
+        ///     Tests that combine with null covers null branch for single parameter
+        /// </summary>
+        [Fact]
+        public void Combine_WithNull_CoversNullBranch()
+        {
+            int value = HashCode.Combine<string>(null);
+
+            Assert.IsType<int>(value);
+        }
+
+        /// <summary>
+        ///     Tests that combine two with null covers null branches
+        /// </summary>
+        [Fact]
+        public void Combine_TwoWithNull_CoversNullBranches()
+        {
+            int value = HashCode.Combine<string, string>(null, null);
+
+            Assert.IsType<int>(value);
+        }
+
+        /// <summary>
+        ///     Tests that combine four with null covers null branches
+        /// </summary>
+        [Fact]
+        public void Combine_FourWithNull_CoversNullBranches()
+        {
+            int value = HashCode.Combine<string, string, string, string>(null, null, null, null);
+
+            Assert.IsType<int>(value);
+        }
+
+        /// <summary>
+        ///     Tests that combine five with null covers null branches
+        /// </summary>
+        [Fact]
+        public void Combine_FiveWithNull_CoversNullBranches()
+        {
+            int value = HashCode.Combine<string, string, string, string, string>(null, null, null, null, null);
+
+            Assert.IsType<int>(value);
+        }
+
+        /// <summary>
+        ///     Tests that combine six with null covers null branches
+        /// </summary>
+        [Fact]
+        public void Combine_SixWithNull_CoversNullBranches()
+        {
+            int value = HashCode.Combine<string, string, string, string, string, string>(null, null, null, null, null, null);
+
+            Assert.IsType<int>(value);
+        }
+
+        /// <summary>
+        ///     Tests that combine seven with null covers null branches
+        /// </summary>
+        [Fact]
+        public void Combine_SevenWithNull_CoversNullBranches()
+        {
+            int value = HashCode.Combine<string, string, string, string, string, string, string>(null, null, null, null, null, null, null);
+
+            Assert.IsType<int>(value);
+        }
+
+        /// <summary>
+        ///     Tests that combine eight with null covers null branches
+        /// </summary>
+        [Fact]
+        public void Combine_EightWithNull_CoversNullBranches()
+        {
+            int value = HashCode.Combine<string, string, string, string, string, string, string, string>(null, null, null, null, null, null, null, null);
+
+            Assert.IsType<int>(value);
+        }
+
+        /// <summary>
+        ///     Tests that add with null covers null branch
+        /// </summary>
+        [Fact]
+        public void Add_WithNull_CoversNullBranch()
+        {
+            HashCode hash = new HashCode();
+            hash.Add<string>(null);
+            hash.Add<string>(null);
+
+            int value = hash.ToHashCode();
+
+            Assert.IsType<int>(value);
+        }
     }
 }
