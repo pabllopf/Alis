@@ -172,20 +172,20 @@ namespace Alis.Core.Aspect.Math
                 return float.NaN;
             }
 
-            float angle = Pi / 2; // Initial guess of pi/2
+            float angle = Pi / 2;
             float term = x;
             float squared = x * x;
 
             for (int i = 1; i <= MaxIterations; i++)
             {
-                term *= squared * (2 * i - 1) / (2 * i * i * 4);
-                float currentTerm = term / (2 * i + 1);
-                angle -= currentTerm;
+                angle -= term;
 
-                if (Abs(currentTerm) < float.Epsilon)
+                if (Abs(term) < float.Epsilon)
                 {
                     break;
                 }
+
+                term *= squared * (2 * i - 1) * (2 * i - 1) / (2 * i * (2 * i + 1));
             }
 
             return angle;
