@@ -509,25 +509,41 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        ///     Tests that GetResourcePathByName triggers the full extraction pipeline
-        ///     (ExtractResourceToTemp) when the temp file does not exist yet.
-        ///     We force this by registering a new assembly with a unique resource name
-        ///     and then looking it up — since the resource name is unique, the temp file
-        ///     cannot already exist.
+        ///     Forces the full extraction pipeline (ExtractResourceToTemp) by using
+        ///     reflection to reset the static active-assembly state before registering
+        ///     a fresh assembly with a unique resource that cannot already be cached or
+        ///     extracted as a temp file.
         /// </summary>
         [Fact]
-        public void GetResourcePathByName_ExtractsResourceToTemp_ContentMatches()
+        public void GetResourcePathByName_ForcesExtractResourceToTemp()
         {
-            // Register a new assembly as if we were the first test —
-            // this only matters if ActiveAssemblyName is null.
-            string assemblyName = "ExtractTest_" + Guid.NewGuid();
-            byte[] zip = CreateTestZipBytes(new Dictionary<string, string> {{"data.txt", "extracted-content"}});
+            // Use reflection to reset ActiveAssemblyName to null so our test
+            // becomes the "first" registration.
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            prop.SetValue(null, null);
+            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
+            // Now register a brand-new assembly with a unique resource
+            string assemblyName = "FreshTest_" + Guid.NewGuid();
+            byte[] zip = CreateTestZipBytes(new Dictionary<string, string> {{"test.txt", "hello world"}});
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zip, false));
 
-            // Now look up "data.txt" using whichever assembly is active.
-            string result = AssetRegistry.GetResourcePathByName("app.bmp");
+            // This call MUST go through TryGetValidatedTempPath (miss) → ExtractResourceToTemp
+            string result = AssetRegistry.GetResourcePathByName("test.txt");
             Assert.NotNull(result);
             Assert.True(File.Exists(result));
+            Assert.Equal("hello world", File.ReadAllText(result));
         }
     }
 }

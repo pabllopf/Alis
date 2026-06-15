@@ -356,7 +356,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         ///     Tests that deserialize from file throws IOException when deserializer throws
         /// </summary>
         [Fact]
-        public void DeserializeFromFile_ThrowsIOException_WhenDeserializerThrows()
+        public void DeserializeFromFile_ThrowsIOException_WhenDeserializerThrows_v2()
         {
             // Create a handler with a deserializer that throws
             IJsonSerializer serializer = new JsonSerializer();
@@ -381,39 +381,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
             }
         }
 
-        /// <summary>
-        ///     A JSON serializer that throws an exception
-        /// </summary>
-        private class ThrowingJsonSerializer : IJsonSerializer
-        {
-            /// <inheritdoc />
-            public string Serialize<T>(T instance) where T : IJsonSerializable
-            {
-                throw new InvalidOperationException("Serializer error");
-            }
-        }
-
-        /// <summary>
-        ///     A JSON deserializer that throws an exception
-        /// </summary>
-        private class ThrowingJsonDeserializer : IJsonDeserializer
-        {
-            /// <summary>
-            /// The parser
-            /// </summary>
-            private readonly JsonParser _parser;
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="ThrowingJsonDeserializer" /> class
-            /// </summary>
-            public ThrowingJsonDeserializer(JsonParser parser) => _parser = parser;
-
-            /// <inheritdoc />
-            public T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
-            {
-                throw new InvalidOperationException("Deserializer error");
-            }
-        }
+      
 
         /// <summary>
         ///     The test object class
