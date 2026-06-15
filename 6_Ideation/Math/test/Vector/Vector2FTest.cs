@@ -1288,5 +1288,79 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             Assert.True(result);
         }
+
+        /// <summary>
+        ///     Tests that max with reversed values covers both comparison branches
+        /// </summary>
+        [Fact]
+        public void Max_WithReversedValues_CoversBothBranches()
+        {
+            Vector2F v1 = new Vector2F(3, 5);
+            Vector2F v2 = new Vector2F(5, 3);
+
+            Vector2F result = Vector2F.Max(v1, v2);
+
+            Assert.Equal(5, result.X);
+            Assert.Equal(5, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that min with reversed values covers both comparison branches
+        /// </summary>
+        [Fact]
+        public void Min_WithReversedValues_CoversBothBranches()
+        {
+            Vector2F v1 = new Vector2F(3, 5);
+            Vector2F v2 = new Vector2F(5, 3);
+
+            Vector2F result = Vector2F.Min(v1, v2);
+
+            Assert.Equal(3, result.X);
+            Assert.Equal(3, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that max ref method with reversed values covers both comparison branches
+        /// </summary>
+        [Fact]
+        public void Max_RefMethod_WithReversedValues_CoversBothBranches()
+        {
+            Vector2F v1 = new Vector2F(3, 5);
+            Vector2F v2 = new Vector2F(5, 3);
+
+            Vector2F.Max(ref v1, ref v2, out Vector2F result);
+
+            Assert.Equal(5, result.X);
+            Assert.Equal(5, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that min ref method with reversed values covers both comparison branches
+        /// </summary>
+        [Fact]
+        public void Min_RefMethod_WithReversedValues_CoversBothBranches()
+        {
+            Vector2F v1 = new Vector2F(3, 5);
+            Vector2F v2 = new Vector2F(5, 3);
+
+            Vector2F.Min(ref v1, ref v2, out Vector2F result);
+
+            Assert.Equal(3, result.X);
+            Assert.Equal(3, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that to string with format provider returns formatted string
+        /// </summary>
+        [Fact]
+        public void ToString_WithFormatProvider_ReturnsFormattedString()
+        {
+            Vector2F v = new Vector2F(1.5f, 2.5f);
+
+            string result = v.ToString("F1", System.Globalization.CultureInfo.InvariantCulture);
+
+            Assert.Contains("1.5", result);
+            Assert.Contains("2.5", result);
+        }
     }
 }

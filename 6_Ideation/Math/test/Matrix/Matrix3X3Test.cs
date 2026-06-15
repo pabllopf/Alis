@@ -510,5 +510,82 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(new Vector3F(0, 0, 0), result.Ey);
             Assert.Equal(new Vector3F(0, 0, 0), result.Ez);
         }
+
+        /// <summary>
+        ///     Tests that get inverse 22 with non zero determinant computes correctly
+        /// </summary>
+        [Fact]
+        public void GetInverse22_WithNonZeroDeterminant_ComputesCorrectly()
+        {
+            Matrix3X3 matrix = new Matrix3X3(
+                new Vector3F(1, 0, 0),
+                new Vector3F(0, 1, 0),
+                new Vector3F(0, 0, 1)
+            );
+
+            Matrix3X3 result = new Matrix3X3();
+            matrix.GetInverse22(ref result);
+
+            Assert.Equal(new Vector3F(1, 0, 0), result.Ex);
+            Assert.Equal(new Vector3F(0, 1, 0), result.Ey);
+            Assert.Equal(new Vector3F(0, 0, 0), result.Ez);
+        }
+
+        /// <summary>
+        ///     Tests that get inverse 22 with zero determinant does not divide
+        /// </summary>
+        [Fact]
+        public void GetInverse22_WithZeroDeterminant_DoesNotDivide()
+        {
+            Matrix3X3 matrix = new Matrix3X3(
+                new Vector3F(0, 0, 0),
+                new Vector3F(0, 0, 0),
+                new Vector3F(0, 0, 0)
+            );
+
+            Matrix3X3 result = new Matrix3X3();
+            matrix.GetInverse22(ref result);
+
+            Assert.Equal(new Vector3F(0, 0, 0), result.Ex);
+        }
+
+        /// <summary>
+        ///     Tests that solve 33 with non zero determinant returns correct result
+        /// </summary>
+        [Fact]
+        public void Solve33_WithNonZeroDeterminant_ReturnsCorrectResult()
+        {
+            Matrix3X3 matrix = new Matrix3X3(
+                new Vector3F(1, 0, 0),
+                new Vector3F(0, 1, 0),
+                new Vector3F(0, 0, 1)
+            );
+
+            Vector3F result = matrix.Solve33(new Vector3F(1, 2, 3));
+
+            Assert.Equal(1f, result.X);
+            Assert.Equal(2f, result.Y);
+            Assert.Equal(3f, result.Z);
+        }
+
+        /// <summary>
+        ///     Tests that get sym inverse 33 with non zero determinant computes correctly
+        /// </summary>
+        [Fact]
+        public void GetSymInverse33_WithNonZeroDeterminant_ComputesCorrectly()
+        {
+            Matrix3X3 matrix = new Matrix3X3(
+                new Vector3F(1, 0, 0),
+                new Vector3F(0, 1, 0),
+                new Vector3F(0, 0, 1)
+            );
+
+            Matrix3X3 result = new Matrix3X3();
+            matrix.GetSymInverse33(ref result);
+
+            Assert.Equal(new Vector3F(1, 0, 0), result.Ex);
+            Assert.Equal(new Vector3F(0, 1, 0), result.Ey);
+            Assert.Equal(new Vector3F(0, 0, 1), result.Ez);
+        }
     }
 }
