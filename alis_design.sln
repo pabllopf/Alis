@@ -1,0 +1,1858 @@
+<Solution>
+
+    <!-- ===================== -->
+    <!-- 2 APPLICATION LAYER   -->
+    <!-- ===================== -->
+
+    <Folder Name="/2_Application/" />
+
+    <Folder Name="/2_Application/Alis/">
+        <Project Path="2_Application/Alis/generator/Alis.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="2_Application/Alis/src/Alis.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="2_Application/Alis/test/Alis.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <!-- ===================== -->
+    <!-- 3 STRUCTURATION       -->
+    <!-- ===================== -->
+
+    <Folder Name="/3_Structuration/" />
+
+    <Folder Name="/3_Structuration/Core/">
+        <Project Path="3_Structuration/Core/src/Alis.Core.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="3_Structuration/Core/test/Alis.Core.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="3_Structuration/Core/generator/Alis.Core.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <!-- ===================== -->
+    <!-- 4 OPERATION           -->
+    <!-- ===================== -->
+
+    <Folder Name="/4_Operation/" />
+
+    <Folder Name="/4_Operation/Ecs/">
+        <Project Path="4_Operation/Ecs/src/Alis.Core.Ecs.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="4_Operation/Ecs/test/Alis.Core.Ecs.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/4_Operation/Graphic/">
+        <Project Path="4_Operation/Graphic/src/Alis.Core.Graphic.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="4_Operation/Graphic/test/Alis.Core.Graphic.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="4_Operation/Graphic/generator/Alis.Core.Graphic.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/4_Operation/Audio/">
+        <Project Path="4_Operation/Audio/src/Alis.Core.Audio.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="4_Operation/Audio/test/Alis.Core.Audio.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="4_Operation/Audio/generator/Alis.Core.Audio.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/4_Operation/Physic/">
+        <Project Path="4_Operation/Physic/src/Alis.Core.Physic.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="4_Operation/Physic/test/Alis.Core.Physic.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="4_Operation/Physic/generator/Alis.Core.Physic.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <!-- ===================== -->
+    <!-- 5 DECLARATION         -->
+    <!-- ===================== -->
+
+    <Folder Name="/5_Declaration/" />
+
+    <Folder Name="/5_Declaration/Aspect/">
+        <Project Path="5_Declaration/Aspect/src/Alis.Core.Aspect.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="5_Declaration/Aspect/test/Alis.Core.Aspect.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <!-- ===================== -->
+    <!-- 6 IDEATION            -->
+    <!-- ===================== -->
+
+    <Folder Name="/6_Ideation/" />
+
+    <Folder Name="/6_Ideation/Memory/">
+        <Project Path="6_Ideation/Memory/src/Alis.Core.Aspect.Memory.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Memory/test/Alis.Core.Aspect.Memory.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Memory/generator/Alis.Core.Aspect.Memory.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/6_Ideation/Fluent/">
+        <Project Path="6_Ideation/Fluent/src/Alis.Core.Aspect.Fluent.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Fluent/test/Alis.Core.Aspect.Fluent.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Fluent/generator/Alis.Core.Aspect.Fluent.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/6_Ideation/Math/">
+        <Project Path="6_Ideation/Math/src/Alis.Core.Aspect.Math.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Math/test/Alis.Core.Aspect.Math.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Math/generator/Alis.Core.Aspect.Math.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/6_Ideation/Time/">
+        <Project Path="6_Ideation/Time/src/Alis.Core.Aspect.Time.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Time/test/Alis.Core.Aspect.Time.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Time/generator/Alis.Core.Aspect.Time.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/6_Ideation/Data/">
+        <Project Path="6_Ideation/Data/src/Alis.Core.Aspect.Data.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Data/test/Alis.Core.Aspect.Data.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/6_Ideation/Logging/">
+        <Project Path="6_Ideation/Logging/src/Alis.Core.Aspect.Logging.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Logging/test/Alis.Core.Aspect.Logging.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="6_Ideation/Logging/generator/Alis.Core.Aspect.Logging.Generator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+    <Configurations>
+        <BuildType Name="Android" />
+        <BuildType Name="Browser" />
+        <BuildType Name="Debug" />
+        <BuildType Name="Ios" />
+        <BuildType Name="Linux" />
+        <BuildType Name="Osx" />
+        <BuildType Name="Release" />
+        <BuildType Name="Win" />
+        <Platform Name="Any CPU" />
+        <Platform Name="arm" />
+        <Platform Name="arm64" />
+        <Platform Name="simulator_arm64" />
+        <Platform Name="simulator_x64" />
+        <Platform Name="wasm" />
+        <Platform Name="x64" />
+        <Platform Name="x86" />
+    </Configurations>
+    <Folder Name="/.scripts/" />
+    <Folder Name="/.scripts/osx/">
+        <File Path="docs\scripts\macos\build_all.sh" />
+        <File Path="docs\scripts\macos\clean_sln.sh" />
+        <File Path="docs\scripts\macos\commit.sh" />
+        <File Path="docs\scripts\macos\compress_wav.sh" />
+        <File Path="docs\scripts\macos\convert_to_bmp.sh" />
+        <File Path="docs\scripts\macos\delete_all_workflows.sh" />
+        <File Path="docs\scripts\macos\generate_comments.sh" />
+        <File Path="docs\scripts\macos\generate_test.sh" />
+        <File Path="docs\scripts\macos\install_env.sh" />
+        <File Path="docs\scripts\macos\pack_all.sh" />
+        <File Path="docs\scripts\macos\push.sh" />
+        <File Path="docs\scripts\macos\reset_repository.sh" />
+        <File Path="docs\scripts\macos\reset_tags.sh" />
+        <File Path="docs\scripts\macos\restart_nuget.sh" />
+        <File Path="docs\scripts\macos\restart_permissions.sh" />
+        <File Path="docs\scripts\macos\restart_sln.sh" />
+        <File Path="docs\scripts\macos\restart_sln_design.sh" />
+        <File Path="docs\scripts\macos\run_tests.sh" />
+        <File Path="docs\scripts\macos\test_modules_size.sh" />
+        <File Path="docs\scripts\macos\test_repository_size.sh" />
+    </Folder>
+
+    <!-- ===================== -->
+    <!-- 1 PRESENTATION        -->
+    <!-- ===================== -->
+
+    <Folder Name="/1_Presentation/" />
+
+    <Folder Name="/1_Presentation/Installer/">
+        <Project Path="1_Presentation/Installer/src/Alis.App.Installer.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Installer/test/Alis.App.Installer.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+    <Folder Name="/1_Presentation/Benchmark/">
+        <Project Path="1_Presentation/Benchmark/src/Alis.Benchmark.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Engine/">
+        <Project Path="1_Presentation/Engine/src/Alis.App.Engine.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Engine/test/Alis.App.Engine.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Hub/">
+        <Project Path="1_Presentation/Hub/src/Alis.App.Hub.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Hub/test/Alis.App.Hub.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/" />
+    <Folder Name="/1_Presentation/Extension/Ads/" />
+
+    <!-- EXTENSIONS (FULLY COMPLETED) -->
+
+    <Folder Name="/1_Presentation/Extension/Ads/GoogleAds/">
+        <Project Path="1_Presentation/Extension/Ads/GoogleAds/src/Alis.Extension.Ads.GoogleAds.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Ads/GoogleAds/test/Alis.Extension.Ads.GoogleAds.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Security/">
+        <Project Path="1_Presentation/Extension/Security/src/Alis.Extension.Security.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Security/test/Alis.Extension.Security.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Payment/" />
+
+    <Folder Name="/1_Presentation/Extension/Payment/Stripe/">
+        <Project Path="1_Presentation/Extension/Payment/Stripe/src/Alis.Extension.Payment.Stripe.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Payment/Stripe/test/Alis.Extension.Payment.Stripe.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Network/">
+        <Project Path="1_Presentation/Extension/Network/src/Alis.Extension.Network.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Network/test/Alis.Extension.Network.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Io/" />
+
+    <Folder Name="/1_Presentation/Extension/Io/FileDialog/">
+        <Project Path="1_Presentation/Extension/Io/FileDialog/src/Alis.Extension.Io.FileDialog.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Io/FileDialog/test/Alis.Extension.Io.FileDialog.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Updater/">
+        <Project Path="1_Presentation/Extension/Updater/src/Alis.Extension.Updater.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Updater/test/Alis.Extension.Updater.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Language/Translator/">
+        <Project Path="1_Presentation/Extension/Language/Translator/src/Alis.Extension.Language.Translator.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Language/Translator/test/Alis.Extension.Language.Translator.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Language/" />
+
+    <Folder Name="/1_Presentation/Extension/Language/Dialogue/">
+        <Project Path="1_Presentation/Extension/Language/Dialogue/src/Alis.Extension.Language.Dialogue.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Language/Dialogue/test/Alis.Extension.Language.Dialogue.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Math/ProceduralDungeon/">
+        <Project Path="1_Presentation/Extension/Math/ProceduralDungeon/src/Alis.Extension.Math.ProceduralDungeon.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Math/ProceduralDungeon/test/Alis.Extension.Math.ProceduralDungeon.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Math/" />
+
+    <Folder Name="/1_Presentation/Extension/Math/HighSpeedPriorityQueue/">
+        <Project Path="1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/Alis.Extension.Math.HighSpeedPriorityQueue.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Math/HighSpeedPriorityQueue/test/Alis.Extension.Math.HighSpeedPriorityQueue.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Ui/">
+        <Project Path="1_Presentation/Extension/Graphic/Ui/src/Alis.Extension.Graphic.Ui.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Graphic/Ui/test/Alis.Extension.Graphic.Ui.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Sfml/">
+        <Project Path="1_Presentation/Extension/Graphic/Sfml/src/Alis.Extension.Graphic.Sfml.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Graphic/Sfml/test/Alis.Extension.Graphic.Sfml.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Graphic/" />
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Glfw/">
+        <Project Path="1_Presentation/Extension/Graphic/Glfw/src/Alis.Extension.Graphic.Glfw.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Graphic/Glfw/test/Alis.Extension.Graphic.Glfw.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Graphic/Sdl2/">
+        <Project Path="1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Graphic/Sdl2/test/Alis.Extension.Graphic.Sdl2.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Profile/">
+        <Project Path="1_Presentation/Extension/Profile/src/Alis.Extension.Profile.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Profile/test/Alis.Extension.Profile.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Cloud/" />
+
+    <Folder Name="/1_Presentation/Extension/Cloud/DropBox/">
+        <Project Path="1_Presentation/Extension/Cloud/DropBox/src/Alis.Extension.Cloud.DropBox.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Cloud/DropBox/test/Alis.Extension.Cloud.DropBox.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Cloud/GoogleDrive/">
+        <Project Path="1_Presentation/Extension/Cloud/GoogleDrive/src/Alis.Extension.Cloud.GoogleDrive.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Cloud/GoogleDrive/test/Alis.Extension.Cloud.GoogleDrive.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+    <Folder Name="/1_Presentation/Extension/Thread/">
+        <Project Path="1_Presentation/Extension/Thread/src/Alis.Extension.Thread.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Thread/test/Alis.Extension.Thread.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+    <Folder Name="/1_Presentation/Extension/Media/" />
+
+    <Folder Name="/1_Presentation/Extension/Media/FFmpeg/">
+        <Project Path="1_Presentation/Extension/Media/FFmpeg/src/Alis.Extension.Media.FFmpeg.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+        <Project Path="1_Presentation/Extension/Media/FFmpeg/test/Alis.Extension.Media.FFmpeg.Test.csproj">
+            <Platform Solution="Android|arm64" Project="arm64" />
+            <Platform Solution="Android|x64" Project="x64" />
+            <Platform Solution="Browser|wasm" Project="wasm" />
+            <Platform Solution="Debug|x64" Project="x64" />
+            <Platform Solution="Ios|arm64" Project="arm64" />
+            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
+            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
+            <Platform Solution="Ios|x64" Project="x64" />
+            <Platform Solution="Linux|arm" Project="arm" />
+            <Platform Solution="Linux|arm64" Project="arm64" />
+            <Platform Solution="Linux|x64" Project="x64" />
+            <Platform Solution="Linux|x86" Project="x86" />
+            <Platform Solution="Osx|arm64" Project="arm64" />
+            <Platform Solution="Osx|x64" Project="x64" />
+            <Platform Solution="Win|arm" Project="arm" />
+            <Platform Solution="Win|arm64" Project="arm64" />
+            <Platform Solution="Win|x64" Project="x64" />
+            <Platform Solution="Win|x86" Project="x86" />
+        </Project>
+    </Folder>
+
+</Solution>

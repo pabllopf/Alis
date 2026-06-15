@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "llama/unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit",
-  "small_model": "llama/unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit",
+  "model": "omlx/Qwen3.5-35B-A3B-4bit",
+  "small_model": "omlx/Qwen3.5-35B-A3B-4bit",
 
   "provider": {
     "omlx": {
@@ -40,10 +40,10 @@
           },
           "attachment": false,
 
-          "maxInputTokens": 131072,
+          "maxInputTokens": 262144,
           "maxOutputTokens": 131072,
           "limit": {
-            "context": 131072,
+            "context": 262144,
             "output": 131072
           }
         },

@@ -27,7 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using Alis.Extension.Network.Exceptions;
 using Xunit;
 
 namespace Alis.Extension.Network.Test
@@ -342,18 +346,375 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public void Position_CanBeSet()
         {
-            // Arrange
             byte[] buffer = new byte[1024];
             BufferPool pool = new BufferPool();
             PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, pool);
 
-            // Act
             stream.Position = 100;
 
-            // Assert
             Assert.Equal(100, stream.Position);
         }
 
-        
+        /// <summary>
+        /// Tests that Write triggers buffer enlargement when writing beyond capacity
+        /// </summary>
+        [Fact]
+        public void Write_EnlargesBufferWhenExceedingCapacity()
+        {
+            byte[] buffer = new byte[16];
+            BufferPool pool = new BufferPool();
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, pool);
+            byte[] data = new byte[32];
+
+            stream.Write(data, 0, 32);
+
+            Assert.Equal(32, stream.Position);
+            Assert.True(stream.Capacity >= 32);
+        }
+
+        /// <summary>
+        /// Tests that WriteByte triggers buffer enlargement when writing beyond capacity
+        /// </summary>
+        [Fact]
+        public void WriteByte_EnlargesBufferWhenExceedingCapacity()
+        {
+            byte[] buffer = new byte[4];
+            BufferPool pool = new BufferPool();
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, pool);
+
+            for (int i = 0; i < 10; i++)
+            {
+                stream.WriteByte((byte)i);
+            }
+
+            Assert.Equal(10, stream.Position);
+            Assert.True(stream.Capacity >= 10);
+        }
+
+        /// <summary>
+        /// Tests that Write within capacity does not enlarge buffer
+        /// </summary>
+        [Fact]
+        public void Write_WithinCapacity_DoesNotEnlarge()
+        {
+            byte[] buffer = new byte[64];
+            BufferPool pool = new BufferPool();
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(buffer, pool);
+            byte[] data = new byte[32];
+
+            stream.Write(data, 0, 32);
+
+            Assert.Equal(32, stream.Position);
+            Assert.Equal(64, stream.Capacity);
+        }
+
+        /// <summary>
+        /// Tests that IsNewBufferRequired returns false when count fits in remaining space
+        /// </summary>
+        [Fact]
+        public void IsNewBufferRequired_False_WhenEnoughSpace()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+
+            bool result = stream.IsNewBufferRequired(32);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        /// Tests that IsNewBufferRequired returns true when count exceeds remaining space
+        /// </summary>
+        [Fact]
+        public void IsNewBufferRequired_True_WhenNotEnoughSpace()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+
+            bool result = stream.IsNewBufferRequired(128);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        /// Tests that CalculateInitialNewSize returns double the buffer length
+        /// </summary>
+        [Fact]
+        public void CalculateInitialNewSize_ReturnsDoubleBufferLength()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[100], new BufferPool());
+
+            long result = stream.CalculateInitialNewSize();
+
+            Assert.Equal(200, result);
+        }
+
+        /// <summary>
+        /// Tests that CalculateRequiredSize returns expected value
+        /// </summary>
+        [Fact]
+        public void CalculateRequiredSize_ReturnsExpectedValue()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[100], new BufferPool());
+
+            long result = stream.CalculateRequiredSize(50, 10);
+
+            Assert.Equal(140, result);
+        }
+
+        /// <summary>
+        /// Tests that ValidateRequiredSize does not throw for valid size
+        /// </summary>
+        [Fact]
+        public void ValidateRequiredSize_ValidSize_DoesNotThrow()
+        {
+            PublicBufferMemoryStream.ValidateRequiredSize(1024);
+        }
+
+        /// <summary>
+        /// Tests that ValidateRequiredSize throws WebSocketBufferOverflowException for size exceeding int.MaxValue
+        /// </summary>
+        [Fact]
+        public void ValidateRequiredSize_OverflowSize_ThrowsWebSocketBufferOverflowException()
+        {
+            Assert.Throws<WebSocketBufferOverflowException>(() =>
+                PublicBufferMemoryStream.ValidateRequiredSize((long)int.MaxValue + 1));
+        }
+
+        /// <summary>
+        /// Tests that IsNewSizeLessThanRequiredSize returns true when required is larger
+        /// </summary>
+        [Fact]
+        public void IsNewSizeLessThanRequiredSize_RequiredLarger_ReturnsTrue()
+        {
+            bool result = PublicBufferMemoryStream.IsNewSizeLessThanRequiredSize(100, 200);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        /// Tests that IsNewSizeLessThanRequiredSize returns false when new size is large enough
+        /// </summary>
+        [Fact]
+        public void IsNewSizeLessThanRequiredSize_NewSizeSufficient_ReturnsFalse()
+        {
+            bool result = PublicBufferMemoryStream.IsNewSizeLessThanRequiredSize(300, 200);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        /// Tests that ComputeCandidateSize rounds up to power of 2
+        /// </summary>
+        [Fact]
+        public void ComputeCandidateSize_RoundsUpToPowerOf2()
+        {
+            long result = PublicBufferMemoryStream.ComputeCandidateSize(150);
+
+            Assert.Equal(256, result);
+        }
+
+        /// <summary>
+        /// Tests that ComputeCandidateSize returns requiredSize when candidate exceeds int.MaxValue
+        /// </summary>
+        [Fact]
+        public void ComputeCandidateSize_ExceedsMaxInt_ReturnsRequiredSize()
+        {
+            long result = PublicBufferMemoryStream.ComputeCandidateSize((long)int.MaxValue + 1);
+
+            Assert.Equal((long)int.MaxValue + 1, result);
+        }
+
+        /// <summary>
+        /// Tests that CanTimeout returns expected value
+        /// </summary>
+        [Fact]
+        public void CanTimeout_ReturnsExpectedValue()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+
+            bool result = stream.CanTimeout;
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        /// Tests that reading ReadTimeout throws InvalidOperationException
+        /// </summary>
+        [Fact]
+        public void ReadTimeout_Get_ThrowsInvalidOperationException()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+
+            Assert.Throws<InvalidOperationException>(() => stream.ReadTimeout);
+        }
+
+        /// <summary>
+        /// Tests that setting ReadTimeout throws InvalidOperationException
+        /// </summary>
+        [Fact]
+        public void ReadTimeout_Set_ThrowsInvalidOperationException()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+
+            Assert.Throws<InvalidOperationException>(() => stream.ReadTimeout = 5000);
+        }
+
+        /// <summary>
+        /// Tests that reading WriteTimeout throws InvalidOperationException
+        /// </summary>
+        [Fact]
+        public void WriteTimeout_Get_ThrowsInvalidOperationException()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+
+            Assert.Throws<InvalidOperationException>(() => stream.WriteTimeout);
+        }
+
+        /// <summary>
+        /// Tests that setting WriteTimeout throws InvalidOperationException
+        /// </summary>
+        [Fact]
+        public void WriteTimeout_Set_ThrowsInvalidOperationException()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+
+            Assert.Throws<InvalidOperationException>(() => stream.WriteTimeout = 3000);
+        }
+
+        /// <summary>
+        /// Tests that FlushAsync does not throw
+        /// </summary>
+        [Fact]
+        public async Task FlushAsync_DoesNotThrow()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+
+            await stream.FlushAsync(CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Tests that ReadAsync reads bytes asynchronously
+        /// </summary>
+        [Fact]
+        public async Task ReadAsync_ReadsBytes()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+            byte[] data = { 1, 2, 3, 4, 5 };
+            stream.Write(data, 0, 5);
+
+            byte[] readBuffer = new byte[3];
+            int bytesRead = await stream.ReadAsync(readBuffer, 0, 3);
+
+            Assert.Equal(3, bytesRead);
+        }
+
+        /// <summary>
+        /// Tests that ReadByte reads a single byte
+        /// </summary>
+        [Fact]
+        public void ReadByte_ReadsSingleByte()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+            stream.WriteByte(42);
+
+            stream.Position = 0;
+            int result = stream.ReadByte();
+
+            Assert.Equal(42, result);
+        }
+
+        /// <summary>
+        /// Tests that SetLength enlarges buffer if required
+        /// </summary>
+        [Fact]
+        public void SetLength_EnlargesBufferIfRequired()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[16], new BufferPool());
+
+            stream.SetLength(100);
+
+            Assert.True(stream.Capacity >= 100);
+        }
+
+        /// <summary>
+        /// Tests that ToArray returns array with stream content (underlying buffer length)
+        /// </summary>
+        [Fact]
+        public void ToArray_ReturnsBufferContent()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+            byte[] data = { 1, 2, 3 };
+            stream.Write(data, 0, 3);
+
+            byte[] result = stream.ToArray();
+
+            Assert.Equal(64, result.Length);
+            Assert.Equal(1, result[0]);
+            Assert.Equal(2, result[1]);
+            Assert.Equal(3, result[2]);
+        }
+
+        /// <summary>
+        /// Tests that WriteTo writes content to another stream
+        /// </summary>
+        [Fact]
+        public void WriteTo_WritesToTargetStream()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+            byte[] data = { 1, 2, 3 };
+            stream.Write(data, 0, 3);
+
+            using MemoryStream target = new MemoryStream();
+            stream.WriteTo(target);
+
+            Assert.True(target.Length > 0);
+        }
+
+        /// <summary>
+        /// Tests that CopyToAsync with buffer size copies to target stream
+        /// </summary>
+        [Fact]
+        public async Task CopyToAsync_WithBufferSize_CopiesToStream()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[1024], new BufferPool());
+            byte[] data = new byte[100];
+            stream.Write(data, 0, 100);
+
+            using MemoryStream target = new MemoryStream();
+            await stream.CopyToAsync(target, 4096, CancellationToken.None);
+
+            Assert.True(target.Length > 0);
+        }
+
+        /// <summary>
+        /// Tests that BeginRead and EndRead work correctly
+        /// </summary>
+        [Fact]
+        public void BeginRead_EndRead_ReadsCorrectly()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+            byte[] data = { 1, 2, 3, 4, 5 };
+            stream.Write(data, 0, 5);
+
+            byte[] readBuffer = new byte[3];
+            IAsyncResult asyncResult = stream.BeginRead(readBuffer, 0, 3, null, null);
+            int bytesRead = stream.EndRead(asyncResult);
+
+            Assert.Equal(3, bytesRead);
+        }
+
+        /// <summary>
+        /// Tests that BeginWrite and EndWrite work correctly
+        /// </summary>
+        [Fact]
+        public void BeginWrite_EndWrite_WritesCorrectly()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+            byte[] data = { 1, 2, 3 };
+
+            IAsyncResult asyncResult = stream.BeginWrite(data, 0, 3, null, null);
+            stream.EndWrite(asyncResult);
+
+            Assert.Equal(3, stream.Position);
+        }
     }
 }

@@ -28,8 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.Net.WebSockets;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
+using Alis.Extension.Network.Internal;
 using Xunit;
 
 namespace Alis.Extension.Network.Test
@@ -45,20 +49,115 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public void Constructor_WithZeroKeepAliveInterval_CreatesInstance()
         {
-            // Arrange
             Guid guid = Guid.NewGuid();
             WebSocket webSocket = null;
             TimeSpan keepAliveInterval = TimeSpan.Zero;
             CancellationToken token = CancellationToken.None;
 
-            // Act
             Exception exception = Record.Exception(() => new PingPongManager(guid, webSocket, keepAliveInterval, token));
 
-            // Assert
             Assert.NotNull(exception);
             Assert.IsType<InvalidCastException>(exception);
         }
 
-      
+        /// <summary>
+        /// Tests that constructor with valid WebSocketImplementation creates instance
+        /// </summary>
+        [Fact]
+        public void Constructor_WithValidWebSocket_CreatesInstance()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
+                TimeSpan.FromSeconds(30), null, false, true, null);
+            CancellationTokenSource cts = new CancellationTokenSource();
+
+            PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.Zero, cts.Token);
+
+            Assert.NotNull(manager);
+        }
+
+        /// <summary>
+        /// Tests that PingSentTicksExist returns false when no ping sent
+        /// </summary>
+        [Fact]
+        public void PingSentTicksExist_NoPingSent_ReturnsFalse()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
+                TimeSpan.FromSeconds(30), null, false, true, null);
+            CancellationTokenSource cts = new CancellationTokenSource();
+            PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.Zero, cts.Token);
+
+            bool result = manager.PingSentTicksExist();
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        /// Tests that PingSentTicksExist returns true after internal SendPing
+        /// </summary>
+        [Fact]
+        public async Task PingSentTicksExist_AfterInternalSendPing_ReturnsTrue()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
+                TimeSpan.FromSeconds(30), null, false, true, null);
+            CancellationTokenSource cts = new CancellationTokenSource();
+            PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.Zero, cts.Token);
+
+            await manager.SendPing();
+
+            Assert.True(manager.PingSentTicksExist());
+        }
+
+        /// <summary>
+        /// Tests that WebSocketImplPong clears ping sent ticks and raises event
+        /// </summary>
+        [Fact]
+        public void WebSocketImplPong_ClearsTicksAndRaisesEvent()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
+                TimeSpan.FromSeconds(30), null, false, true, null);
+            CancellationTokenSource cts = new CancellationTokenSource();
+            PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.Zero, cts.Token);
+            bool eventRaised = false;
+            manager.Pong += (sender, args) => eventRaised = true;
+
+            manager.WebSocketImplPong(null, new PongEventArgs(new ArraySegment<byte>(new byte[0])));
+
+            Assert.False(manager.PingSentTicksExist());
+            Assert.True(eventRaised);
+        }
+
+        /// <summary>
+        /// Tests that LogPingPongManagerStart does not throw
+        /// </summary>
+        [Fact]
+        public void LogPingPongManagerStart_DoesNotThrow()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
+                TimeSpan.FromSeconds(30), null, false, true, null);
+            CancellationTokenSource cts = new CancellationTokenSource();
+            PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.Zero, cts.Token);
+
+            manager.LogPingPongManagerStart();
+        }
+
+        /// <summary>
+        /// Tests that LogPingPongManagerEnd does not throw
+        /// </summary>
+        [Fact]
+        public void LogPingPongManagerEnd_DoesNotThrow()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
+                TimeSpan.FromSeconds(30), null, false, true, null);
+            CancellationTokenSource cts = new CancellationTokenSource();
+            PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.Zero, cts.Token);
+
+            manager.LogPingPongManagerEnd();
+        }
     }
 }

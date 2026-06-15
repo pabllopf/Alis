@@ -186,6 +186,20 @@ namespace Alis.Core.Graphic.Test
         #region Edge Cases
 
         /// <summary>
+        ///     Tests that a BMP with negative height throws an exception due to overflow.
+        /// </summary>
+        [Fact]
+        public void LoadFromStream_WhenNegativeHeight_ThrowsException()
+        {
+            using MemoryStream stream = CreateBmpWithNegativeHeight(2, 2);
+
+            MethodInfo loadMethod = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.ThrowsAny<Exception>(() =>
+                loadMethod.Invoke(null, new object[] { stream }));
+        }
+
+        /// <summary>
         ///     Tests loading a 1x1 pixel image.
         /// </summary>
         [Fact]
