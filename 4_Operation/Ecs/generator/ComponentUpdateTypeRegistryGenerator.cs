@@ -114,7 +114,6 @@ namespace Alis.Core.Ecs.Generator
             }
 
             UpdateModelFlags flags = UpdateModelFlags.None;
-            System.Collections.Generic.Stack<Diagnostic> diagnostics = new System.Collections.Generic.Stack<Diagnostic>(1);
             INamedTypeSymbol @interface = null;
 
             string[] genericArguments = new string[0];
@@ -187,7 +186,7 @@ namespace Alis.Core.Ecs.Generator
                 @namespace = componentTypeSymbol.ContainingNamespace.ToString();
             }
 
-            TypeDeclarationModel[] nestTypes = GetContainingTypes(ref diagnostics);
+            TypeDeclarationModel[] nestTypes = GetContainingTypes();
 
             bool isAcc =
                 componentTypeSymbol.DeclaredAccessibility == Accessibility.Public ||
@@ -231,7 +230,7 @@ namespace Alis.Core.Ecs.Generator
                 }
             }
 
-            TypeDeclarationModel[] GetContainingTypes(ref System.Collections.Generic.Stack<Diagnostic> diags)
+            TypeDeclarationModel[] GetContainingTypes()
             {
                 int nestedTypeCount = 0;
                 INamedTypeSymbol current = componentTypeSymbol;
