@@ -658,3 +658,429 @@ Stop only when one of the following is true:
 5. Remaining uncovered code is platform-specific and intentionally excluded.
 
 Coverage improvement is the only success metric.
+
+# COVERAGE CACHE RULE (MANDATORY)
+
+Coverage generation is expensive.
+
+Before executing any build, test, or coverage command, first inspect whether a valid coverage snapshot already exists.
+
+Coverage reports are considered cached state.
+
+Always reuse existing coverage data when it is still valid.
+
+---
+
+# COVERAGE CACHE DISCOVERY
+
+Before executing:
+
+```bash
+dotnet build
+dotnet test
+```
+
+or any coverage collection command:
+
+Search for existing coverage artifacts inside:
+
+```text
+./.test/
+```
+
+Look for:
+
+```text
+coverage.opencover.xml
+```
+
+and any related coverage reports.
+
+---
+
+# COVERAGE CACHE VALIDITY
+
+Existing coverage data may be reused when:
+
+* coverage report exists
+* coverage report is readable
+* source files analyzed have not changed since coverage generation
+* test projects analyzed have not changed since coverage generation
+
+If the coverage cache is valid:
+
+DO NOT execute a new full-solution coverage run.
+
+Reuse the existing coverage snapshot.
+
+---
+
+# BUILD CACHE VALIDITY
+
+Avoid expensive full-solution validation when unnecessary.
+
+Before running:
+
+```bash
+dotnet build -c Debug -f net8.0 ./alis.slnx
+```
+
+determine whether:
+
+* source files changed
+* test files changed
+* project files changed
+* package references changed
+
+If no relevant changes occurred since the last successful build:
+
+Reuse the previous successful build state.
+
+Do not rebuild the solution.
+
+---
+
+# TEST CACHE VALIDITY
+
+Before executing:
+
+```bash
+dotnet test --no-build -m:4 -f net8.0 -c Debug ./alis.slnx
+```
+
+determine whether any files affecting the current target changed.
+
+If no relevant files changed:
+
+Reuse the previous successful test execution state.
+
+Do not rerun the entire solution.
+
+---
+
+# COVERAGE-FIRST EXECUTION MODEL
+
+Execution order becomes:
+
+1. Search for existing coverage reports
+2. Validate coverage cache
+3. If cache is valid:
+
+   * reuse coverage
+   * identify next uncovered target
+4. If cache is missing or invalid:
+
+   * generate fresh coverage
+5. Continue test generation
+
+Coverage regeneration is a last resort.
+
+---
+
+# REGENERATION CONDITIONS
+
+Generate a new full coverage report only when one of the following occurs:
+
+1. No coverage report exists.
+2. Coverage report is unreadable.
+3. Coverage report is incomplete.
+4. Source code changed after report generation.
+5. Test code changed after report generation.
+6. Current target file has already been modified.
+7. Coverage validation is required after completing a source file.
+
+Otherwise reuse existing coverage data.
+
+---
+
+# TOKEN OPTIMIZATION RULE
+
+Minimize repository-wide operations.
+
+Avoid repeatedly executing:
+
+```bash
+dotnet build -c Debug -f net8.0 ./alis.slnx
+```
+
+Avoid repeatedly executing:
+
+```bash
+dotnet test --no-build -m:4 -f net8.0 -c Debug ./alis.slnx
+```
+
+Avoid repeatedly collecting coverage.
+
+Always prefer:
+
+1. Existing coverage reports
+2. Existing build results
+3. Existing test results
+
+Only regenerate when strictly necessary.
+
+---
+
+# COVERAGE VALIDATION FREQUENCY
+
+Do not regenerate full repository coverage after every test.
+
+Do not regenerate full repository coverage after every source file modification.
+
+Only regenerate when:
+
+* a source file has been fully completed
+* a module has been completed
+* a significant coverage milestone has been reached
+* coverage cache becomes invalid
+
+Coverage collection is expensive and should be minimized.
+
+---
+
+# PERFORMANCE RULE
+
+Assume:
+
+* Full solution build is expensive.
+* Full solution test execution is expensive.
+* Full coverage collection is extremely expensive.
+
+Treat coverage reports, successful builds, and successful test executions as reusable artifacts whenever possible.
+
+Always prefer incremental validation over full-solution validation.
+
+# INCREMENTAL GIT COMMIT RULE (MANDATORY)
+
+Every successful coverage improvement must be committed immediately.
+
+Commits are part of the workflow.
+
+Do not postpone commits.
+
+Do not batch commits.
+
+Do not create a single commit for multiple coverage additions.
+
+---
+
+# COMMIT GRANULARITY
+
+After adding a new test that successfully:
+
+* compiles
+* passes validation
+* increases coverage
+
+create a commit immediately.
+
+One logical test addition equals one commit.
+
+A commit may contain:
+
+* a single test method
+* a small coherent test scenario
+* the minimal code required to increase coverage
+
+Do not accumulate multiple unrelated tests before committing.
+
+---
+
+# COMMIT EXECUTION ORDER
+
+For every generated test:
+
+1. Add test
+2. Build
+3. Run affected tests
+4. Validate coverage increase
+5. Commit
+6. Continue
+
+A new test must never be generated before the previous commit is completed.
+
+---
+
+# REQUIRED COMMIT COMMAND
+
+Execute:
+
+```bash id="j84iq6"
+git add <modified_test_files>
+
+git commit -m "test: <TestName> <FileName>.cs"
+```
+
+Example:
+
+```bash id="jlwmvw"
+git add 3_Structuration/Core/test/StringExtensionTest.cs
+
+git commit -m "test: ShouldReturnEmptyWhenInputIsNull StringExtensionTest.cs"
+```
+
+Example:
+
+```bash id="k2q54q"
+git add 6_Ideation/Memory/test/MemoryManagerTest.cs
+
+git commit -m "test: ShouldThrowWhenBufferIsNull MemoryManagerTest.cs"
+```
+
+---
+
+# COMMIT MESSAGE FORMAT (STRICT)
+
+Always use:
+
+```text id="7if56m"
+test: <TestName> <FileName>.cs
+```
+
+Examples:
+
+```text id="d80vy5"
+test: ShouldReturnEmptyWhenInputIsNull StringExtensionTest.cs
+```
+
+```text id="iwm5dh"
+test: ShouldThrowWhenBufferIsNull MemoryManagerTest.cs
+```
+
+```text id="zfdn9u"
+test: ShouldCreateEntityWithValidParameters EntityFactoryTest.cs
+```
+
+---
+
+# COMMIT MESSAGE RULES
+
+The test name must:
+
+* describe observable behavior
+* be deterministic
+* match the generated test method
+
+Use patterns such as:
+
+```text id="w8v5lt"
+ShouldReturnValueWhenCondition
+ShouldThrowWhenInvalidInput
+ShouldCreateInstanceWhenValidParameters
+ShouldUpdateStateAfterOperation
+ShouldNotModifyCollectionWhenEmpty
+```
+
+Do not use:
+
+```text id="ls9xya"
+Test1
+CoverageTest
+FixCoverage
+AddedTests
+MiscCoverage
+```
+
+---
+
+# STAGING RULES
+
+Never execute:
+
+```bash id="o18wjr"
+git add .
+```
+
+Never execute:
+
+```bash id="gwnm7e"
+git add -A
+```
+
+Never execute:
+
+```bash id="3db31w"
+git add --all
+```
+
+Stage only the files directly modified for the current test addition.
+
+Example:
+
+```bash id="vr1qvy"
+git add 3_Structuration/Core/test/StringExtensionTest.cs
+```
+
+or:
+
+```bash id="jovdyg"
+git add 3_Structuration/Core/test/StringExtensionTest.cs
+git add 3_Structuration/Core/test/Common/TestHelpers.cs
+```
+
+if a helper modification is strictly required.
+
+---
+
+# COMMIT VALIDATION
+
+After every commit execute:
+
+```bash id="vxtk2t"
+git log -1 --oneline
+```
+
+Verify:
+
+* commit exists
+* commit succeeded
+* commit message matches required format
+
+If commit fails:
+
+STOP.
+
+Diagnose the issue.
+
+Fix the issue.
+
+Retry the commit.
+
+Do not continue until a successful commit exists.
+
+---
+
+# COVERAGE-COMMIT RELATIONSHIP
+
+A commit must represent a measurable coverage improvement.
+
+Do not commit:
+
+* formatting-only changes
+* comment-only changes
+* coverage-neutral changes
+* unrelated modifications
+
+Every commit must correspond to newly covered behavior.
+
+---
+
+# WORKFLOW SUMMARY
+
+For every uncovered behavior:
+
+1. Generate test
+2. Build
+3. Run affected tests
+4. Validate coverage improvement
+5. Stage modified files only
+6. Commit using:
+
+```text id="v2v9pw"
+test: <TestName> <FileName>.cs
+```
+
+7. Verify commit
+8. Continue to the next uncovered behavior
+
+This workflow is mandatory for the entire execution.
