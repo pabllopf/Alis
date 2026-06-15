@@ -601,7 +601,7 @@ namespace Alis.Core.Graphic
                 byte absValue = reader.ReadByte();
                 byte first = (byte)(absValue >> 4);
                 byte second = (byte)(absValue & 0x0F);
-                for (int j = 0; j < 2 && i * 2 + j < absCount; j++)
+                for (int j = 0; (j < 2) && (i * 2 + j < absCount); j++)
                 {
                     byte colorIndex = j == 0 ? first : second;
                     if (x >= width)

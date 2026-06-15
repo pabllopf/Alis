@@ -316,12 +316,9 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="s2">The </param>
         /// <param name="target">The target</param>
         /// <returns>The float</returns>
-        private static float ComputeRootStep(int rootIterCount, float a1, float a2, float s1, float s2, float target)
-        {
-            return (rootIterCount & 1) != 0
-                ? a1 + (target - s1) * (a2 - a1) / (s2 - s1)
-                : 0.5f * (a1 + a2);
-        }
+        private static float ComputeRootStep(int rootIterCount, float a1, float a2, float s1, float s2, float target) => (rootIterCount & 1) != 0
+            ? a1 + (target - s1) * (a2 - a1) / (s2 - s1)
+            : 0.5f * (a1 + a2);
 
         /// <summary>
         /// Records the root iteration

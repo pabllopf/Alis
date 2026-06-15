@@ -27,8 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-using System.Diagnostics.CodeAnalysis;
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
 using System.Reflection;
 
 // ReSharper disable once CheckNamespace

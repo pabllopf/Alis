@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.PolygonManipulation;
@@ -68,7 +69,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             });
 
             PolyClipError error = PolyClipError.None;
-            System.Collections.Generic.List<Vertices> result = YuPengClipper.Union(tri1, tri2, out error);
+            List<Vertices> result = YuPengClipper.Union(tri1, tri2, out error);
 
             Assert.NotNull(result);
             Assert.Equal(PolyClipError.None, error);

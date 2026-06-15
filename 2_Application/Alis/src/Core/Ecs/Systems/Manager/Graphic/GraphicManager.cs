@@ -36,7 +36,6 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Ecs.Components;
-using Alis.Core.Ecs.Components.Body;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Kernel;
@@ -150,7 +149,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
 
 
-            if (!string.IsNullOrEmpty(Context.Setting.General.Icon) && AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon) != null)
+            if (!string.IsNullOrEmpty(Context.Setting.General.Icon) && (AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon) != null))
             {
                 platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));
             }

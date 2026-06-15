@@ -51,7 +51,6 @@
 
 using System;
 using System.Collections.Concurrent;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Thread.Attributes;
 using Alis.Extension.Thread.Interfaces;
 

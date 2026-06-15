@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Xunit;
 
 namespace Alis.Extension.Ads.GoogleAds.Test

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace Alis.Extension.Graphic.Ui.Test.Assets

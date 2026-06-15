@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Extension.Network.Core;
@@ -75,7 +74,7 @@ namespace Alis.Extension.Network.Test.Core
             /// <param name="cancellationToken">The cancellation token</param>
             /// <returns>A task containing the string client id network message envelope message</returns>
             public Task<(string ClientId, NetworkMessageEnvelope Message)> ReceiveAsync(CancellationToken cancellationToken = default)
-                => Task.FromResult(("client1", new NetworkMessageEnvelope(){ }));
+                => Task.FromResult(("client1", new NetworkMessageEnvelope { }));
             
             /// <summary>
             /// Starts the cancellation token

@@ -220,7 +220,7 @@ namespace Alis.Core.Physic.Common
             ua *= oneOverDenom;
 
             // check if intersection point of the two lines is on line segment 1
-            if (firstIsSegment && ((ua < 0.0f) || (ua > 1.0f)))
+            if (firstIsSegment && (ua < 0.0f || ua > 1.0f))
                 return false;
 
             // numerator of second equation
@@ -228,11 +228,11 @@ namespace Alis.Core.Physic.Common
             ub *= oneOverDenom;
 
             // check if intersection point of the two lines is on line segment 2
-            if (secondIsSegment && ((ub < 0.0f) || (ub > 1.0f)))
+            if (secondIsSegment && (ub < 0.0f || ub > 1.0f))
                 return false;
 
             // check if they are coincident (no collision in this case)
-            if ((Math.Abs(ua) <= SettingEnv.Epsilon) || (Math.Abs(ub) <= SettingEnv.Epsilon))
+            if (Math.Abs(ua) <= SettingEnv.Epsilon || Math.Abs(ub) <= SettingEnv.Epsilon)
                 return false;
 
             // There is an intersection

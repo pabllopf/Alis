@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EPAxisTypeTest.cs
+//  File:EpAxisTypeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Collisions;
 using Xunit;
 
@@ -80,7 +81,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void AllValues_ShouldBeUnique()
         {
-            EpAxisType[] values = (EpAxisType[])System.Enum.GetValues(typeof(EpAxisType));
+            EpAxisType[] values = (EpAxisType[])Enum.GetValues(typeof(EpAxisType));
 
             Assert.Equal(3, values.Length);
             Assert.Equal(EpAxisType.Unknown, values[0]);

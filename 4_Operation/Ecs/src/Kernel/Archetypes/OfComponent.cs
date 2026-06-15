@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 // S2436: 9 generic parameters required for ECS of-component type combinations
+
 using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Ecs.Kernel.Archetypes

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Threading;
 using Alis.Extension.Io.FileDialog.Test.Attributes;
 using Xunit;
 

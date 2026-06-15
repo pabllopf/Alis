@@ -30,10 +30,6 @@
 using System;
 using System.Net.WebSockets;
 using System.Threading;
-using System.Threading.Tasks;
-using Alis.Core.Aspect.Time;
-using Alis.Extension.Network;
-using Alis.Extension.Network.Internal;
 using Xunit;
 
 namespace Alis.Extension.Network.Test

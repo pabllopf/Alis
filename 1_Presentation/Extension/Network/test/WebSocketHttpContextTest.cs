@@ -27,10 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.IO;
-using Alis.Extension.Network;
 using Xunit;
 
 namespace Alis.Extension.Network.Test

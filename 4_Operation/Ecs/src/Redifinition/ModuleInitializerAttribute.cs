@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET5_0_OR_GREATER)
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET5_0_OR_GREATER
 // ReSharper disable once CheckNamespace
 namespace System.Runtime.CompilerServices
 {

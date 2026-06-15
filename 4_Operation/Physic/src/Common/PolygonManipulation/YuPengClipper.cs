@@ -430,7 +430,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     --index;
                 }
 
-                if (!closed && ++index == simplicies.Count)
+                if (!closed && (++index == simplicies.Count))
                 {
                     if (count == simplicies.Count)
                     {

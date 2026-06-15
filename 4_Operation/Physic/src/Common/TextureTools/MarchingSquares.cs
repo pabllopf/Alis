@@ -446,7 +446,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             for (int ax2 = x + 1; ax2 < xn; ax2++)
             {
                 GeomPolyVal p2 = ps[ax2, y];
-                if (p2 != null && p2.GeomP == oldPoly)
+                if ((p2 != null) && (p2.GeomP == oldPoly))
                 {
                     p2.GeomP = newPoly;
                 }
@@ -455,7 +455,7 @@ namespace Alis.Core.Physic.Common.TextureTools
             for (int ax2 = x - 1; ax2 >= 0; ax2--)
             {
                 GeomPolyVal p2 = ps[ax2, y];
-                if (p2 != null && p2.GeomP == oldPoly)
+                if ((p2 != null) && (p2.GeomP == oldPoly))
                 {
                     p2.GeomP = newPoly;
                 }
@@ -805,7 +805,7 @@ namespace Alis.Core.Physic.Common.TextureTools
 
                 EqualityComparer<T> comparer = EqualityComparer<T>.Default;
 
-                if (head != null && !EqualityComparer<T>.Default.Equals(value, default(T)))
+                if ((head != null) && !EqualityComparer<T>.Default.Equals(value, default(T)))
                 {
                     do
                     {

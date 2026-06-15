@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
-#if (NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+#if (NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
 // ReSharper disable once CheckNamespace
 namespace System.Runtime.InteropServices
 {

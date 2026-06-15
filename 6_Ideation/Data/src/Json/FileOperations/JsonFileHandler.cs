@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Alis.Core.Aspect.Data.Json.Deserialization;
 using Alis.Core.Aspect.Data.Json.Serialization;

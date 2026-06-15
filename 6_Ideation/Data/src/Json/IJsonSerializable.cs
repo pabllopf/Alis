@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Data.Json
 {

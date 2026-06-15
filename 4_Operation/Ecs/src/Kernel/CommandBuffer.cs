@@ -238,8 +238,8 @@ namespace Alis.Core.Ecs.Kernel
         /// <returns>The has items</returns>
         internal bool PlaybackInternal()
         {
-            bool hasItems = (DeleteEntityBuffer.Count > 0) || (CreateEntityBuffer.Count > 0) ||
-                            (RemoveComponentBuffer.Count > 0) || (AddComponentBuffer.Count > 0);
+            bool hasItems = DeleteEntityBuffer.Count > 0 || CreateEntityBuffer.Count > 0 ||
+                            RemoveComponentBuffer.Count > 0 || AddComponentBuffer.Count > 0;
 
             if (!hasItems)
             {

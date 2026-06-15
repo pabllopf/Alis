@@ -48,10 +48,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         /// <summary>
         /// Initializes a new instance of the <see cref="AdsManagerDisposeTest"/> class
         /// </summary>
-        public AdsManagerDisposeTest()
-        {
-            _defaultConfig = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
-        }
+        public AdsManagerDisposeTest() => _defaultConfig = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
 
         /// <summary>
         /// Disposes this instance

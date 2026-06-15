@@ -313,9 +313,9 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             AdvancingFrontNode node)
         {
             Fill(tcx, node.Next);
-            if (node.Next.Point != edge.P && 
-                TriangulationUtil.Orient2d(edge.Q, node.Next.Point, edge.P) == Orientation.Ccw &&
-                TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) == Orientation.Ccw)
+            if ((node.Next.Point != edge.P) && 
+                (TriangulationUtil.Orient2d(edge.Q, node.Next.Point, edge.P) == Orientation.Ccw) &&
+                (TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) == Orientation.Ccw))
             {
                 FillRightConcaveEdgeEvent(tcx, edge, node);
             }
@@ -418,9 +418,9 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         private static void FillLeftConcaveEdgeEvent(DtSweepContext tcx, DtSweepConstraint edge, AdvancingFrontNode node)
         {
             Fill(tcx, node.Prev);
-            if (node.Prev.Point != edge.P && 
-                TriangulationUtil.Orient2d(edge.Q, node.Prev.Point, edge.P) == Orientation.Cw &&
-                TriangulationUtil.Orient2d(node.Point, node.Prev.Point, node.Prev.Prev.Point) == Orientation.Cw)
+            if ((node.Prev.Point != edge.P) && 
+                (TriangulationUtil.Orient2d(edge.Q, node.Prev.Point, edge.P) == Orientation.Cw) &&
+                (TriangulationUtil.Orient2d(node.Point, node.Prev.Point, node.Prev.Prev.Point) == Orientation.Cw))
             {
                 FillLeftConcaveEdgeEvent(tcx, edge, node);
             }

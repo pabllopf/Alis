@@ -242,9 +242,9 @@ namespace Alis.Extension.Network.Test.Core
 
             List<(string, string)> properties = envelope.GetSerializableProperties().ToList();
 
-            Assert.Contains(properties, p => p.Item1 == "MessageId" && p.Item2 == null);
-            Assert.Contains(properties, p => p.Item1 == "MessageType" && p.Item2 == null);
-            Assert.Contains(properties, p => p.Item1 == "Payload" && p.Item2 == null);
+            Assert.Contains(properties, p => (p.Item1 == "MessageId") && (p.Item2 == null));
+            Assert.Contains(properties, p => (p.Item1 == "MessageType") && (p.Item2 == null));
+            Assert.Contains(properties, p => (p.Item1 == "Payload") && (p.Item2 == null));
         }
     }
 }

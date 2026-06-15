@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Alis.Extension.Network.Core;
 using Xunit;
 

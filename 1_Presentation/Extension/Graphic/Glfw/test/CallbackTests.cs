@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Xunit;
@@ -220,7 +221,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             ErrorCode receivedCode = ErrorCode.Unknown;
             ErrorCallback callback = (errorCode, description) => { receivedCode = errorCode; };
 
-            callback(ErrorCode.Unknown, System.IntPtr.Zero);
+            callback(ErrorCode.Unknown, IntPtr.Zero);
 
             Assert.Equal(ErrorCode.Unknown, receivedCode);
         }
@@ -327,7 +328,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             bool receivedIconified = false;
             IconifyCallback callback = (window, iconified) => { receivedIconified = iconified; };
 
-            callback(System.IntPtr.Zero, true);
+            callback(IntPtr.Zero, true);
 
             Assert.True(receivedIconified);
         }

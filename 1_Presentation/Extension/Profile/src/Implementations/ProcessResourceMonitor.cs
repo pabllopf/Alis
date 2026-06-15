@@ -29,7 +29,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Profile.Interfaces;
 
 namespace Alis.Extension.Profile.Implementations

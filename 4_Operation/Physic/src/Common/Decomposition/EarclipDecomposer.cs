@@ -278,7 +278,7 @@ namespace Alis.Core.Physic.Common.Decomposition
             {
                 for (int j = i + 1; j < pin.Count; ++j)
                 {
-                    if (Math.Abs(pin[i].X - pin[j].X) < tolerance && Math.Abs(pin[i].Y - pin[j].Y) < tolerance && j != i + 1)
+                    if ((Math.Abs(pin[i].X - pin[j].X) < tolerance) && (Math.Abs(pin[i].Y - pin[j].Y) < tolerance) && (j != i + 1))
                     {
                         pinchIndexA = i;
                         pinchIndexB = j;

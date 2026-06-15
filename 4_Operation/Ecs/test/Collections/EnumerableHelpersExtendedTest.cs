@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EnumerableHelpersTest.cs
+//  File:EnumerableHelpersExtendedTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Collections;
 using Xunit;
@@ -55,7 +56,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void ToArray_EmptyEnumerable_ReturnsEmptyArray()
         {
-            IEnumerable<int> empty = System.Array.Empty<int>();
+            IEnumerable<int> empty = Array.Empty<int>();
 
             int[] result = EnumerableHelpers.ToArray(empty, out int length);
 

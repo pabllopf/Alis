@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Language.Translator.Abstractions;
 
 namespace Alis.Extension.Language.Translator

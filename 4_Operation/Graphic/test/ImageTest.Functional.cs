@@ -167,7 +167,7 @@ namespace Alis.Core.Graphic.Test
                     bmp[pixelOffset++] = 64;  // Red
                 }
                 // Padding
-                while (pixelOffset % 4 != 0 && pixelOffset < 54 + rowSize * (y + 1))
+                while ((pixelOffset % 4 != 0) && (pixelOffset < 54 + rowSize * (y + 1)))
                 {
                     bmp[pixelOffset++] = 0;
                 }
@@ -273,7 +273,7 @@ namespace Alis.Core.Graphic.Test
                 {
                     bmp[pixelOffset++] = (byte)((x + y) % 256);
                 }
-                while (pixelOffset % 4 != 0 && pixelOffset < 54 + paletteSize + rowSize * (y + 1))
+                while ((pixelOffset % 4 != 0) && (pixelOffset < 54 + paletteSize + rowSize * (y + 1)))
                 {
                     bmp[pixelOffset++] = 0;
                 }
@@ -331,11 +331,11 @@ namespace Alis.Core.Graphic.Test
             {
                 for (int x = 0; x < width; x += 2)
                 {
-                    byte high = (byte)((x % 16));
-                    byte low = (byte)(((x + 1) % 16));
+                    byte high = (byte)(x % 16);
+                    byte low = (byte)((x + 1) % 16);
                     bmp[pixelOffset++] = (byte)((high << 4) | low);
                 }
-                while (pixelOffset % 2 != 0 && pixelOffset < 54 + paletteSize + rowSize * (y + 1))
+                while ((pixelOffset % 2 != 0) && (pixelOffset < 54 + paletteSize + rowSize * (y + 1)))
                 {
                     bmp[pixelOffset++] = 0;
                 }
@@ -399,7 +399,7 @@ namespace Alis.Core.Graphic.Test
                         pixelByte = 0;
                     }
                 }
-                while (pixelOffset % 2 != 0 && pixelOffset < 54 + paletteSize + rowSize * (y + 1))
+                while ((pixelOffset % 2 != 0) && (pixelOffset < 54 + paletteSize + rowSize * (y + 1)))
                 {
                     bmp[pixelOffset++] = 0;
                 }
@@ -488,7 +488,7 @@ namespace Alis.Core.Graphic.Test
             // DIB Header with negative height
             WriteLittleEndian(bmp, 14, 40);
             WriteLittleEndian(bmp, 18, (uint)width);
-            WriteLittleEndian(bmp, 22, (uint)(-height)); // Negative height
+            WriteLittleEndian(bmp, 22, (uint)-height); // Negative height
             WriteLittleEndian(bmp, 26, (ushort)1);
             WriteLittleEndian(bmp, 28, (ushort)24);
             WriteLittleEndian(bmp, 32, 0);

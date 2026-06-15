@@ -267,10 +267,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
             ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
-            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
-            {
-                throw new InvalidOperationException("Property enumeration failed");
-            }
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties() => throw new InvalidOperationException("Property enumeration failed");
         }
 
         /// <summary>
@@ -282,10 +279,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
             ///     Gets the serializable properties
             /// </summary>
             /// <returns>An enumerable of string property name and string value</returns>
-            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
-            {
-                throw new JsonSerializationException("Already wrapped");
-            }
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties() => throw new JsonSerializationException("Already wrapped");
         }
     }
 }

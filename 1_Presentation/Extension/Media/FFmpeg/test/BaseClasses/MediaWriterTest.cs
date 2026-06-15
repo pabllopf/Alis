@@ -50,10 +50,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             /// Initializes a new instance of the <see cref="TestFrame"/> class
             /// </summary>
             /// <param name="rawData">The raw data</param>
-            public TestFrame(byte[] rawData)
-            {
-                RawData = rawData;
-            }
+            public TestFrame(byte[] rawData) => RawData = rawData;
 
             /// <summary>
             /// Gets the value of the raw data

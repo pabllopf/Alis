@@ -505,19 +505,19 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             CollisionFilterDelegate contactFilterHandler = ContactFilter;
-            if (contactFilterHandler != null && !contactFilterHandler(fixtureA, fixtureB))
+            if ((contactFilterHandler != null) && !contactFilterHandler(fixtureA, fixtureB))
             {
                 return false;
             }
 
             BeforeCollisionEventHandler beforeCollisionHandlerA = fixtureA.BeforeCollision;
-            if (beforeCollisionHandlerA != null && !beforeCollisionHandlerA(fixtureA, fixtureB))
+            if ((beforeCollisionHandlerA != null) && !beforeCollisionHandlerA(fixtureA, fixtureB))
             {
                 return false;
             }
 
             BeforeCollisionEventHandler beforeCollisionHandlerB = fixtureB.BeforeCollision;
-            if (beforeCollisionHandlerB != null && !beforeCollisionHandlerB(fixtureB, fixtureA))
+            if ((beforeCollisionHandlerB != null) && !beforeCollisionHandlerB(fixtureB, fixtureA))
             {
                 return false;
             }
@@ -653,7 +653,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             CollisionFilterDelegate contactFilterHandler = ContactFilter;
-            if (contactFilterHandler != null && !contactFilterHandler(fixtureA, fixtureB))
+            if ((contactFilterHandler != null) && !contactFilterHandler(fixtureA, fixtureB))
             {
                 Contact cNuke = c;
                 c = c.Next;

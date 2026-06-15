@@ -30,9 +30,9 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Xunit;
-using Alis.Extension.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.Sdl2.Enums;
+using Alis.Extension.Graphic.Sdl2.Structs;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
@@ -87,7 +87,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         private static TextEditingEvent GetTextEditingEvent(IntPtr textPtr)
         {
             TextEditingEvent evt = new TextEditingEvent();
-            FieldInfo field = typeof(TextEditingEvent).GetField("textPtr", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            FieldInfo field = typeof(TextEditingEvent).GetField("textPtr", BindingFlags.Instance | BindingFlags.NonPublic);
             field.SetValueDirect(__makeref(evt), textPtr);
             return evt;
         }

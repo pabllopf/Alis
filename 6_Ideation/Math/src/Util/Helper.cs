@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>Contains commonly used precalculated values and mathematical operations for interpolation, clamping, angle conversion, and power-of-two testing.</summary>

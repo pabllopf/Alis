@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 using System;
 using Alis.Extension.Graphic.Sdl2.Structs;
-using Alis.Extension.Graphic.Sdl2.Enums;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {

@@ -7,10 +7,23 @@
 //  --------------------------------------------------------------------------
 //  File:InstallerComprehensiveTest.cs
 // 
-//  Author:Pablo Perdomo Falcon
+//  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -96,7 +109,7 @@ namespace Alis.App.Installer.Test
             Assert.Contains(ctors, c =>
             {
                 ParameterInfo[] p = c.GetParameters();
-                return p.Length == 1 && p[0].ParameterType == typeof(INativePlatform);
+                return (p.Length == 1) && (p[0].ParameterType == typeof(INativePlatform));
             });
         }
 
@@ -184,7 +197,7 @@ namespace Alis.App.Installer.Test
 
             try
             {
-                using MemoryStream stream = new MemoryStream(data, writable: false);
+                using MemoryStream stream = new MemoryStream(data, false);
                 ptr = (IntPtr)method.Invoke(null, new object[] { stream });
 
                 Assert.NotEqual(IntPtr.Zero, ptr);
@@ -220,7 +233,7 @@ namespace Alis.App.Installer.Test
 
             try
             {
-                using MemoryStream stream = new MemoryStream(data, writable: false);
+                using MemoryStream stream = new MemoryStream(data, false);
                 ptr = (IntPtr)method.Invoke(null, new object[] { stream });
 
                 Assert.Equal(stream.Length, stream.Position);

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Net.WebSockets;
 using Alis.Extension.Network.Internal;
 using Xunit;
@@ -429,7 +430,7 @@ namespace Alis.Extension.Network.Test.Internal
         public void WebSocketReadCursor_ThreadSafety_ConcurrentCreation()
         {
             // Arrange: Create multiple cursors concurrently
-            System.Collections.Generic.List<WebSocketReadCursor> cursors = new System.Collections.Generic.List<WebSocketReadCursor>();
+            List<WebSocketReadCursor> cursors = new List<WebSocketReadCursor>();
 
             for (int i = 0; i < 10; i++)
             {

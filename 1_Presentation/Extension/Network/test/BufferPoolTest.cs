@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Xunit;
 
@@ -349,7 +350,7 @@ namespace Alis.Extension.Network.Test
                 byte[] testData = new byte[256];
                 for (int i = 0; i < testData.Length; i++)
                 {
-                    testData[i] = (byte)((i * 7) % 256);
+                    testData[i] = (byte)(i * 7 % 256);
                 }
 
                 buffer.Write(testData, 0, testData.Length);
@@ -437,7 +438,7 @@ namespace Alis.Extension.Network.Test
             BufferPool concurrentPool = new BufferPool(1024);
 
             // Act: Get multiple buffers concurrently
-            System.Collections.Generic.List<MemoryStream> buffers = new System.Collections.Generic.List<MemoryStream>();
+            List<MemoryStream> buffers = new List<MemoryStream>();
 
             for (int i = 0; i < 10; i++)
             {

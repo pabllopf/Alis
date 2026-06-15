@@ -826,7 +826,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, bool hideTextAfterDoubleHash)
-            => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
+            => CalcTextSizeImpl(text, hideTextAfterDoubleHash);
 
         /// <summary>
         ///     Calcs the text size using the specified text
@@ -846,7 +846,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, bool hideTextAfterDoubleHash)
-            => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
+            => CalcTextSizeImpl(text, hideTextAfterDoubleHash);
 
         /// <summary>
         ///     Calcs the text size using the specified text
@@ -866,7 +866,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, bool hideTextAfterDoubleHash, float wrapWidth)
-            => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash, wrapWidth: wrapWidth);
+            => CalcTextSizeImpl(text, hideTextAfterDoubleHash, wrapWidth);
 
         /// <summary>
         ///     Calcs the text size using the specified text

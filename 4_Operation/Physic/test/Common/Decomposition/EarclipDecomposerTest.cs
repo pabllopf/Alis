@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.Decomposition;
@@ -61,7 +62,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
                 new Vector2F(0f, 1f)
             });
 
-            System.Collections.Generic.List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
+            List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
 
             Assert.NotNull(result);
             Assert.True(result.Count >= 1);

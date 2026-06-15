@@ -226,10 +226,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             /// <param name="properties">The properties</param>
             /// <exception cref="JsonDeserializationException">Intentional failure</exception>
             /// <returns>The throwing test object</returns>
-            public ThrowingTestObject CreateFromProperties(Dictionary<string, string> properties)
-            {
-                throw new JsonDeserializationException("Intentional failure");
-            }
+            public ThrowingTestObject CreateFromProperties(Dictionary<string, string> properties) => throw new JsonDeserializationException("Intentional failure");
 
             /// <summary>
             /// Gets the serializable properties

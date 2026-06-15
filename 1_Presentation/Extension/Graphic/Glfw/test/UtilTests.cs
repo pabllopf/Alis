@@ -5,29 +5,30 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: UtilTests.cs
+//  File:UtilTests.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using Xunit;
@@ -47,8 +48,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         /// <summary>
         /// The static
         /// </summary>
-        private static readonly System.Reflection.MethodInfo PtrToStringUTF8 = UtilType.GetMethod(
-            "PtrToStringUTF8", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+        private static readonly MethodInfo PtrToStringUTF8 = UtilType.GetMethod(
+            "PtrToStringUTF8", BindingFlags.Public | BindingFlags.Static);
 
         /// <summary>
         /// Calls the ptr to string utf 8 using the specified ptr

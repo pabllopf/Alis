@@ -1,7 +1,36 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SdlTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
 using Alis.Extension.Graphic.Sdl2.Mapping;
 using Xunit;
-using Alis.Extension.Graphic.Sdl2;
-using Alis.Extension.Graphic.Sdl2.Structs;
+using Version = Alis.Extension.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
@@ -299,7 +328,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldHaveGlAudioU16Sys()
         {
-            ushort expected = System.BitConverter.IsLittleEndian ? Sdl.AudioU16Lsb : Sdl.AudioU16Msb;
+            ushort expected = BitConverter.IsLittleEndian ? Sdl.AudioU16Lsb : Sdl.AudioU16Msb;
             Assert.Equal(expected, Sdl.GlAudioU16Sys);
         }
 
@@ -309,7 +338,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldHaveGlAudioS16Sys()
         {
-            ushort expected = System.BitConverter.IsLittleEndian ? Sdl.AudioS16Lsb : Sdl.AudioS16Msb;
+            ushort expected = BitConverter.IsLittleEndian ? Sdl.AudioS16Lsb : Sdl.AudioS16Msb;
             Assert.Equal(expected, Sdl.GlAudioS16Sys);
         }
 
@@ -319,7 +348,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldHaveGlAudioS32Sys()
         {
-            ushort expected = System.BitConverter.IsLittleEndian ? Sdl.AudioS32Lsb : Sdl.AudioS32Msb;
+            ushort expected = BitConverter.IsLittleEndian ? Sdl.AudioS32Lsb : Sdl.AudioS32Msb;
             Assert.Equal(expected, Sdl.GlAudioS32Sys);
         }
 
@@ -329,7 +358,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ShouldHaveGlAudioF32Sys()
         {
-            ushort expected = System.BitConverter.IsLittleEndian ? Sdl.AudioF32Lsb : Sdl.AudioF32Msb;
+            ushort expected = BitConverter.IsLittleEndian ? Sdl.AudioF32Lsb : Sdl.AudioF32Msb;
             Assert.Equal(expected, Sdl.GlAudioF32Sys);
         }
 

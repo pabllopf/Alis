@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
@@ -158,7 +159,7 @@ namespace Alis.Core.Ecs.Test.Systems
         [Fact]
         public void NewWithEmptyRules_ReturnsDefaultHash()
         {
-            Aspect.Math.Collections.FastImmutableArray<Rule> rules = Aspect.Math.Collections.FastImmutableArray<Rule>.Empty;
+            FastImmutableArray<Rule> rules = FastImmutableArray<Rule>.Empty;
 
             QueryHash hash = QueryHash.New(rules);
 

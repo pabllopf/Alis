@@ -30,6 +30,7 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -288,7 +289,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             p.BeginErrorReadLine();
 
             p.WaitForExit();
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
 
             Assert.Equal(100, reportedProgress);
         }

@@ -33,8 +33,6 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Alis.Extension.Network.Exceptions;
-using Alis.Extension.Network;
 using Xunit;
 
 namespace Alis.Extension.Network.Test

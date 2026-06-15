@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Language.Dialogue.Core;
 
 namespace Alis.Extension.Language.Dialogue

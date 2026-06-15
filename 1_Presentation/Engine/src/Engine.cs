@@ -612,7 +612,7 @@ namespace Alis.App.Engine
 
             for (int i = 0; i < 5; i++)
             {
-                bool isDown = i < mouseButtons.Length && mouseButtons[i];
+                bool isDown = (i < mouseButtons.Length) && mouseButtons[i];
                 io.AddMouseButtonEvent(i, isDown);
 
                 if (isDown)

@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Unknown_ShouldHaveValueNegativeOne()
         {
-            byte value = unchecked((byte)(-1));
+            byte value = unchecked((byte)-1);
             Assert.Equal(value, unchecked((byte)ShapeType.Unknown));
         }
 

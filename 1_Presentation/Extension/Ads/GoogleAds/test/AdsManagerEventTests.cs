@@ -50,18 +50,13 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         /// <returns>The ad configuration</returns>
         private AdConfiguration CreateConfig(string appId = "app-id", string bannerId = "banner-id",
             string interstitialId = "interstitial-id", string rewardedId = "rewarded-id")
-        {
-            return new AdConfiguration(appId, bannerId, interstitialId, rewardedId);
-        }
+            => new AdConfiguration(appId, bannerId, interstitialId, rewardedId);
 
         /// <summary>
         /// Creates the context
         /// </summary>
         /// <returns>A mock of context</returns>
-        private Mock<Context> CreateContext()
-        {
-            return new Mock<Context>();
-        }
+        private Mock<Context> CreateContext() => new Mock<Context>();
 
         #region ShowBannerAd Happy Path Tests
 

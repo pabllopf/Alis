@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Collections;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {

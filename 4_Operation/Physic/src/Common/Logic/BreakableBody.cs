@@ -182,7 +182,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <param name="impulse">The impulse</param>
         internal void PostSolve(Contact contact, ContactVelocityConstraint impulse)
         {
-            if (State != BreakableBodyState.Broken && (Parts.Contains(contact.FixtureA) || Parts.Contains(contact.FixtureB)))
+            if ((State != BreakableBodyState.Broken) && (Parts.Contains(contact.FixtureA) || Parts.Contains(contact.FixtureB)))
             {
                     float maxImpulse = 0.0f;
                     int count = contact.Manifold.PointCount;

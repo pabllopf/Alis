@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
@@ -123,7 +124,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Island island = new Island();
 
-            System.Exception ex = Record.Exception(() => island.Dispose());
+            Exception ex = Record.Exception(() => island.Dispose());
 
             Assert.Null(ex);
         }
@@ -137,7 +138,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Island island = new Island();
 
             island.Dispose();
-            System.Exception ex = Record.Exception(() => island.Dispose());
+            Exception ex = Record.Exception(() => island.Dispose());
 
             Assert.Null(ex);
         }

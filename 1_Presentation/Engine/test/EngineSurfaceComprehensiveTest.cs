@@ -7,8 +7,23 @@
 //  --------------------------------------------------------------------------
 //  File:EngineSurfaceComprehensiveTest.cs
 // 
-//  Author:Pablo Perdomo Falcon
+//  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -16,7 +31,6 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Alis.App.Engine;
 using Alis.App.Engine.Configuration;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Demos;
@@ -57,7 +71,7 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void Program_InternalType_ShouldExposeMainSignature()
         {
-            Type programType = typeof(Engine).Assembly.GetType("Alis.App.Engine.Program", throwOnError: true);
+            Type programType = typeof(Engine).Assembly.GetType("Alis.App.Engine.Program", true);
             MethodInfo main = programType.GetMethod("Main", BindingFlags.Public | BindingFlags.Static);
 
             Assert.NotNull(programType);
@@ -325,7 +339,7 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void InternalActiveButtonEnum_ShouldContainExpectedMembers()
         {
-            Type enumType = typeof(Engine).Assembly.GetType("Alis.App.Engine.Windows.ActiveButton", throwOnError: true);
+            Type enumType = typeof(Engine).Assembly.GetType("Alis.App.Engine.Windows.ActiveButton", true);
             string[] names = Enum.GetNames(enumType);
 
             Assert.True(enumType.IsEnum);
@@ -345,7 +359,7 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void InternalIWindow_ShouldInheritFromExpectedEngineCoreInterfaces()
         {
-            Type iwindowType = typeof(Engine).Assembly.GetType("Alis.App.Engine.Windows.IWindow", throwOnError: true);
+            Type iwindowType = typeof(Engine).Assembly.GetType("Alis.App.Engine.Windows.IWindow", true);
             Type[] interfaces = iwindowType.GetInterfaces();
 
             Assert.True(iwindowType.IsInterface);

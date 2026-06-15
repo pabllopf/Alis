@@ -29,7 +29,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Skipper

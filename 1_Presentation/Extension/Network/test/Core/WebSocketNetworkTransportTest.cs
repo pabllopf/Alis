@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Extension.Network.Core;
@@ -490,7 +491,7 @@ namespace Alis.Extension.Network.Test.Core
             // Arrange: Using _defaultTransport from constructor
 
             // Act: Perform concurrent operations
-            System.Collections.Generic.List<Task> tasks = new System.Collections.Generic.List<Task>();
+            List<Task> tasks = new List<Task>();
 
             for (int i = 0; i < 10; i++)
             {

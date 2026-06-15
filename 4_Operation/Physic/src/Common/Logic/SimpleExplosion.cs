@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Common.Logic
 
             WorldPhysic.QueryAabb(fixture =>
             {
-                if (Vector2F.Distance(fixture.GetBody.Position, pos) <= radius && !affectedBodies.Contains(fixture.GetBody))
+                if ((Vector2F.Distance(fixture.GetBody.Position, pos) <= radius) && !affectedBodies.Contains(fixture.GetBody))
                 {
                     affectedBodies.Add(fixture.GetBody);
                 }

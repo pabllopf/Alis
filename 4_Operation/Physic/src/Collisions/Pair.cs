@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Collisions
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
-        public bool Equals(Pair other) => ProxyIdA == other.ProxyIdA && ProxyIdB == other.ProxyIdB;
+        public bool Equals(Pair other) => (ProxyIdA == other.ProxyIdA) && (ProxyIdB == other.ProxyIdB);
 
         /// <summary>
         /// Equalses the obj

@@ -350,7 +350,7 @@ namespace Alis.Core.Aspect.Memory.Test
 
             Assert.NotNull(result);
             Assert.NotEmpty(result);
-            Assert.True(System.IO.File.Exists(result), "The returned path should point to an existing file");
+            Assert.True(File.Exists(result), "The returned path should point to an existing file");
         }
 
         /// <summary>

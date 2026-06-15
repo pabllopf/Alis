@@ -285,7 +285,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 float numerator = Vector2F.Dot(Normals[i], Vertices[i] - p1);
                 float denominator = Vector2F.Dot(Normals[i], d);
 
-                if (Math.Abs(denominator) < SettingEnv.Epsilon && numerator < 0.0f)
+                if ((Math.Abs(denominator) < SettingEnv.Epsilon) && (numerator < 0.0f))
                 {
                     return false;
                 }
@@ -483,12 +483,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <param name="i2">The </param>
         /// <param name="lambda">The lambda</param>
         /// <returns>The vector</returns>
-        private Vector2F InterpolateVertex(int i1, int i2, float lambda)
-        {
-            return new Vector2F(
-                Vertices[i1].X * (1 - lambda) + Vertices[i2].X * lambda,
-                Vertices[i1].Y * (1 - lambda) + Vertices[i2].Y * lambda);
-        }
+        private Vector2F InterpolateVertex(int i1, int i2, float lambda) => new Vector2F(
+            Vertices[i1].X * (1 - lambda) + Vertices[i2].X * lambda,
+            Vertices[i1].Y * (1 - lambda) + Vertices[i2].Y * lambda);
 
         /// <summary>
         /// Adds the triangle using the specified area

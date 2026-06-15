@@ -1297,7 +1297,7 @@ namespace Alis.Core.Physic.Collisions
             /// <param name="c">The </param>
             /// <returns>The bool</returns>
             private static bool IsFrontAny(float a, float b, float c) =>
-                (a >= 0.0f) || (b >= 0.0f) || (c >= 0.0f);
+                a >= 0.0f || b >= 0.0f || c >= 0.0f;
 
             /// <summary>
             /// Ises the front first or both using the specified a
@@ -1307,7 +1307,7 @@ namespace Alis.Core.Physic.Collisions
             /// <param name="c">The </param>
             /// <returns>The bool</returns>
             private static bool IsFrontFirstOrBoth(float a, float b, float c) =>
-                (a >= 0.0f) || ((b >= 0.0f) && (c >= 0.0f));
+                a >= 0.0f || ((b >= 0.0f) && (c >= 0.0f));
 
             /// <summary>
             /// Ises the front last or both using the specified a
@@ -1317,7 +1317,7 @@ namespace Alis.Core.Physic.Collisions
             /// <param name="c">The </param>
             /// <returns>The bool</returns>
             private static bool IsFrontLastOrBoth(float a, float b, float c) =>
-                (c >= 0.0f) || ((a >= 0.0f) && (b >= 0.0f));
+                c >= 0.0f || ((a >= 0.0f) && (b >= 0.0f));
 
             /// <summary>
             /// Ises the front all using the specified a

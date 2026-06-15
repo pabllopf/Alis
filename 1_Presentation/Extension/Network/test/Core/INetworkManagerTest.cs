@@ -29,13 +29,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Extension.Network.Core;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Alis.Extension.Network.Test.Core
 {

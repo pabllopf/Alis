@@ -30,7 +30,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Alis.Extension.Network;
 using Xunit;
 
 namespace Alis.Extension.Network.Test

@@ -353,10 +353,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The bool</returns>
-        private static bool VertexMatches(Vector2F a, Vector2F b)
-        {
-            return (Math.Abs(a.X - b.X) < float.Epsilon) && (Math.Abs(a.Y - b.Y) < float.Epsilon);
-        }
+        private static bool VertexMatches(Vector2F a, Vector2F b) => (Math.Abs(a.X - b.X) < float.Epsilon) && (Math.Abs(a.Y - b.Y) < float.Epsilon);
 
         /// <summary>
         /// Records the match using the specified first p

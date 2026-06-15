@@ -56,9 +56,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Graphic.Sdl2.Enums;
-using Xunit;
+using System.Reflection;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             TextInputEvent evt = new TextInputEvent();
             for (int i = 0; i < 32; ++i)
             {
-                typeof(TextInputEvent).GetField($"byte{i}", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+                typeof(TextInputEvent).GetField($"byte{i}", BindingFlags.Instance | BindingFlags.NonPublic)
                     .SetValueDirect(__makeref(evt), (byte)(i + 1));
             }
             // Act
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             TextInputEvent evt = new TextInputEvent();
             for (int i = 0; i < 32; ++i)
             {
-                typeof(TextInputEvent).GetField($"byte{i}", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+                typeof(TextInputEvent).GetField($"byte{i}", BindingFlags.Instance | BindingFlags.NonPublic)
                     .SetValueDirect(__makeref(evt), (byte)255);
             }
             // Act
@@ -135,8 +135,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             TextInputEvent evt = new TextInputEvent();
             for (int i = 0; i < 32; ++i)
             {
-                byte value = (i % 2 == 0) ? (byte)0xAA : (byte)0x55;
-                typeof(TextInputEvent).GetField($"byte{i}", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+                byte value = i % 2 == 0 ? (byte)0xAA : (byte)0x55;
+                typeof(TextInputEvent).GetField($"byte{i}", BindingFlags.Instance | BindingFlags.NonPublic)
                     .SetValueDirect(__makeref(evt), value);
             }
             // Act
@@ -144,7 +144,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             // Assert:
             for (int i = 0; i < 32; ++i)
             {
-                Assert.Equal((i % 2 == 0) ? 0xAA : 0x55, bytes[i]);
+                Assert.Equal(i % 2 == 0 ? 0xAA : 0x55, bytes[i]);
             }
         }
     }

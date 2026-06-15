@@ -183,10 +183,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
             return IsWindowVisible();
         }
 
-        private static bool IsMouseEvent(int type)
-        {
-            return type == 1 || type == 2 || type == 3 || type == 4 || type == 5 || type == 22;
-        }
+        private static bool IsMouseEvent(int type) => type == 1 || type == 2 || type == 3 || type == 4 || type == 5 || type == 22;
 
         private bool HandleMouseEvent(IntPtr evt, int type)
         {
@@ -325,15 +322,15 @@ namespace Alis.Core.Graphic.Platforms.Osx
         {
             ConsoleKey? mapped = null;
 
-            if (c >= '0' && c <= '9')
+            if ((c >= '0') && (c <= '9'))
             {
                 mapped = (ConsoleKey) ((int) ConsoleKey.D0 + (c - '0'));
             }
-            else if (c >= 'A' && c <= 'Z')
+            else if ((c >= 'A') && (c <= 'Z'))
             {
                 mapped = (ConsoleKey) ((int) ConsoleKey.A + (c - 'A'));
             }
-            else if (c >= 'a' && c <= 'z')
+            else if ((c >= 'a') && (c <= 'z'))
             {
                 mapped = (ConsoleKey) ((int) ConsoleKey.A + (c - 'a'));
             }

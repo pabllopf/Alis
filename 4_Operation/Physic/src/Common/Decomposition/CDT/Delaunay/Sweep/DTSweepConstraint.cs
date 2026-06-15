@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         {
             P = p1;
             Q = p2;
-            if (p1.Y > p2.Y || (Math.Abs(p1.Y - p2.Y) < float.Epsilon && p1.X > p2.X))
+            if (p1.Y > p2.Y || ((Math.Abs(p1.Y - p2.Y) < float.Epsilon) && (p1.X > p2.X)))
             {
                 Q = p1;
                 P = p2;

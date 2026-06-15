@@ -31,8 +31,8 @@ using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 using Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
-using PolygonPolygon = Alis.Core.Physic.Common.Decomposition.CDT.Polygon.Polygon;
 using Xunit;
+using PolygonPolygon = Alis.Core.Physic.Common.Decomposition.CDT.Polygon.Polygon;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
 {

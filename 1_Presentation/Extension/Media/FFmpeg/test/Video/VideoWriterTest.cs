@@ -29,7 +29,6 @@
 
 using System;
 using System.IO;
-using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 

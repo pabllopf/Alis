@@ -33,7 +33,6 @@ using System.Reflection;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Windows;
 using Alis.App.Hub.Windows.Sections;
-using Alis.Extension.Graphic.Ui;
 using Xunit;
 
 namespace Alis.App.Hub.Test
@@ -80,11 +79,11 @@ namespace Alis.App.Hub.Test
         {
             MethodInfo[] methods = typeof(AWindow).GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
 
-            Assert.Contains(methods, m => m.Name == "OnInit" && m.IsAbstract);
-            Assert.Contains(methods, m => m.Name == "OnStart" && m.IsAbstract);
-            Assert.Contains(methods, m => m.Name == "OnUpdate" && m.IsAbstract);
-            Assert.Contains(methods, m => m.Name == "OnRender" && m.IsAbstract);
-            Assert.Contains(methods, m => m.Name == "OnDestroy" && m.IsAbstract);
+            Assert.Contains(methods, m => (m.Name == "OnInit") && m.IsAbstract);
+            Assert.Contains(methods, m => (m.Name == "OnStart") && m.IsAbstract);
+            Assert.Contains(methods, m => (m.Name == "OnUpdate") && m.IsAbstract);
+            Assert.Contains(methods, m => (m.Name == "OnRender") && m.IsAbstract);
+            Assert.Contains(methods, m => (m.Name == "OnDestroy") && m.IsAbstract);
         }
         
 

@@ -29,9 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel.Events

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Alis.Extension.Thread.Core;
 using Alis.Extension.Thread.Interfaces;
 using Alis.Extension.Thread.Scheduling;

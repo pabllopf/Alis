@@ -135,7 +135,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void FileDialogType_Parse_ShouldBeCaseInsensitive()
         {
 #if NET8_0_OR_GREATER
-            FileDialogType parsed = Enum.Parse<FileDialogType>("openfile", ignoreCase: true);
+            FileDialogType parsed = Enum.Parse<FileDialogType>("openfile", true);
 #else
             FileDialogType parsed = (FileDialogType)Enum.Parse(typeof(FileDialogType), "openfile", ignoreCase: true);
 #endif

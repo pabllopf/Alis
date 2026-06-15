@@ -179,10 +179,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
         /// <param name="qbm1">The qbm</param>
         /// <param name="nextPt">The next pt</param>
         /// <returns>The bool</returns>
-        private static bool IsInsideDeque(Vector2F[] deque, int qf, int qb, int qfm1, int qbm1, Vector2F nextPt)
-        {
-            return (MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0) && (MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0);
-        }
+        private static bool IsInsideDeque(Vector2F[] deque, int qf, int qb, int qfm1, int qbm1, Vector2F nextPt) => (MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0) && (MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0);
 
         /// <summary>
         /// Pops the deque front using the specified deque

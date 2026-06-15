@@ -134,10 +134,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// <param name="localEntryPoint">The local entry point</param>
         /// <param name="localExitPoint">The local exit point</param>
         /// <returns>The int</returns>
-        private static int ClassifyVertex(Vector2F vertex, Vector2F localEntryPoint, Vector2F localExitPoint)
-        {
-            return Vector2F.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertex - localEntryPoint) > SettingEnv.Epsilon ? 0 : 1;
-        }
+        private static int ClassifyVertex(Vector2F vertex, Vector2F localEntryPoint, Vector2F localExitPoint) => Vector2F.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertex - localEntryPoint) > SettingEnv.Epsilon ? 0 : 1;
 
         /// <summary>
         /// Adds the cut points using the specified new polygon

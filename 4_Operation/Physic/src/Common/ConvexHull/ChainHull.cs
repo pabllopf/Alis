@@ -173,10 +173,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
         /// <param name="maxmin">The maxmin</param>
         /// <param name="i">The </param>
         /// <returns>The bool</returns>
-        private static bool ShouldSkipLowerPoint(Vertices pointSet, int minmin, int maxmin, int i)
-        {
-            return (MathUtils.Area(pointSet[minmin], pointSet[maxmin], pointSet[i]) >= 0) && (i < maxmin);
-        }
+        private static bool ShouldSkipLowerPoint(Vertices pointSet, int minmin, int maxmin, int i) => (MathUtils.Area(pointSet[minmin], pointSet[maxmin], pointSet[i]) >= 0) && (i < maxmin);
 
         /// <summary>
         /// Pops the non hull vertices using the specified hull
@@ -187,7 +184,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
         /// <param name="minTop">The min top</param>
         private static void PopNonHullVertices(Vector2F[] hull, ref int top, Vector2F candidate, int minTop = 0)
         {
-            while (top > minTop && MathUtils.Area(hull[top - 1], hull[top], candidate) <= 0)
+            while ((top > minTop) && (MathUtils.Area(hull[top - 1], hull[top], candidate) <= 0))
             {
                 top--;
             }
@@ -239,10 +236,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
         /// <param name="minmax">The minmax</param>
         /// <param name="i">The </param>
         /// <returns>The bool</returns>
-        private static bool ShouldSkipUpperPoint(Vertices pointSet, int maxmax, int minmax, int i)
-        {
-            return (MathUtils.Area(pointSet[maxmax], pointSet[minmax], pointSet[i]) >= 0) && (i > minmax);
-        }
+        private static bool ShouldSkipUpperPoint(Vertices pointSet, int maxmax, int minmax, int i) => (MathUtils.Area(pointSet[maxmax], pointSet[minmax], pointSet[i]) >= 0) && (i > minmax);
 
         /// <summary>
         /// Builds the result from hull using the specified h

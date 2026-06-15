@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Manager;
 using Alis.Core.Ecs.Systems.Manager.Scene;
@@ -158,8 +159,8 @@ namespace Alis.Test
         public void Constructor_WithScenes_InitializesList()
         {
             Context context = new Context(new Setting());
-            Alis.Core.Ecs.Scene scene1 = new Alis.Core.Ecs.Scene();
-            Alis.Core.Ecs.Scene scene2 = new Alis.Core.Ecs.Scene();
+            Scene scene1 = new Scene();
+            Scene scene2 = new Scene();
 
             SceneManager sceneManager = new SceneManager(context, scene1, scene2);
 
@@ -178,7 +179,7 @@ namespace Alis.Test
         {
             Context context = new Context(new Setting());
             SceneManager sceneManager = new SceneManager(context);
-            Alis.Core.Ecs.Scene newScene = new Alis.Core.Ecs.Scene();
+            Scene newScene = new Scene();
 
             sceneManager.AddScene(newScene);
 
@@ -193,8 +194,8 @@ namespace Alis.Test
         public void LoadScene_SwitchesCurrentWorld()
         {
             Context context = new Context(new Setting());
-            Alis.Core.Ecs.Scene scene1 = new Alis.Core.Ecs.Scene();
-            Alis.Core.Ecs.Scene scene2 = new Alis.Core.Ecs.Scene();
+            Scene scene1 = new Scene();
+            Scene scene2 = new Scene();
             SceneManager sceneManager = new SceneManager(context, scene1, scene2);
 
             sceneManager.LoadScene(1);

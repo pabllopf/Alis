@@ -337,7 +337,7 @@ namespace Alis.Core.Physic.Common.Logic
         {
             int iplus = i == valIndex - 1 ? 0 : i + 1;
 
-            if (ListAny(_data) && ListLast(_data).Body == body && !rayMissed)
+            if (ListAny(_data) && (ListLast(_data).Body == body) && !rayMissed)
                 UpdateLastShapeData(iplus);
             else
                 AddNewShapeData(body, vals[i], vals[iplus]);
@@ -505,7 +505,7 @@ namespace Alis.Core.Physic.Common.Logic
             foreach (Fixture f in _data[i].Body.FixtureList)
             {
                 RayCastInput ri = new() { Point1 = p1, Point2 = p2, MaxFraction = 50f };
-                if (f.RayCast(out ro, ref ri, 0) && minlambda > ro.Fraction)
+                if (f.RayCast(out ro, ref ri, 0) && (minlambda > ro.Fraction))
                 {
                     minlambda = ro.Fraction;
                     hitpoint = ro.Fraction * p2 + (1 - ro.Fraction) * p1;

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Controllers;
 using Alis.Core.Physic.Dynamics;

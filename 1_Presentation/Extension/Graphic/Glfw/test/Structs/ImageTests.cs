@@ -161,10 +161,10 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
                 byte blue = image.Data[i + 2];
                 byte alpha = image.Data[i + 3];
                 
-                Assert.True(red >= 0 && red <= 255, $"Red value at index {i} is invalid: {red}");
-                Assert.True(green >= 0 && green <= 255, $"Green value at index {i + 1} is invalid: {green}");
-                Assert.True(blue >= 0 && blue <= 255, $"Blue value at index {i + 2} is invalid: {blue}");
-                Assert.True(alpha >= 0 && alpha <= 255, $"Alpha value at index {i + 3} is invalid: {alpha}");
+                Assert.True((red >= 0) && (red <= 255), $"Red value at index {i} is invalid: {red}");
+                Assert.True((green >= 0) && (green <= 255), $"Green value at index {i + 1} is invalid: {green}");
+                Assert.True((blue >= 0) && (blue <= 255), $"Blue value at index {i + 2} is invalid: {blue}");
+                Assert.True((alpha >= 0) && (alpha <= 255), $"Alpha value at index {i + 3} is invalid: {alpha}");
             }
         }
     }

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Graphic.Platforms.Web
 {

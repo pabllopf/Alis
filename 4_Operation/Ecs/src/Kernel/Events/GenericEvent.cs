@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Kernel.Events
