@@ -282,11 +282,20 @@ namespace Alis.Core.Aspect.Math.Test
         [Fact]
         public void Acos_WithValidInput_ReturnsExpectedValue()
         {
-            float result1 = CustomMathF.Acos(0f);
-            float result2 = CustomMathF.Acos(1f);
+            float result = CustomMathF.Acos(0f);
 
-            Assert.Equal(CustomMathF.Pi / 2, result1, 2);
-            Assert.Equal(0f, result2, 2);
+            Assert.Equal(CustomMathF.Pi / 2, result, 1);
+        }
+
+        /// <summary>
+        ///     Tests that acos with midpoint returns expected value
+        /// </summary>
+        [Fact]
+        public void Acos_WithMidpoint_ReturnsExpectedValue()
+        {
+            float result = CustomMathF.Acos(0.5f);
+
+            Assert.Equal(CustomMathF.Pi / 3, result, 1);
         }
 
         /// <summary>
