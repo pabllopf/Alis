@@ -44,6 +44,8 @@ namespace Alis.Core.Ecs.Generator
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     internal class GeneratorAnalyzer : DiagnosticAnalyzer
     {
+        private const string CategorySourceGeneration = "Source Generation";
+
         /// <summary>
         ///     The is enabled by default
         /// </summary>
@@ -51,7 +53,7 @@ namespace Alis.Core.Ecs.Generator
             "FR0000",
             "Non-partial Generic Component Type",
             "Generic Component '{0}' must be marked as partial",
-            "Source Generation",
+            CategorySourceGeneration,
             DiagnosticSeverity.Error,
             true);
 
@@ -62,7 +64,7 @@ namespace Alis.Core.Ecs.Generator
             "FR0001",
             "Non-partial Outer Inaccessible Type",
             "Outer type of inaccessible nested component type '{0}' must be marked as partial",
-            "Source Generation",
+            CategorySourceGeneration,
             DiagnosticSeverity.Error,
             true);
 
@@ -73,7 +75,7 @@ namespace Alis.Core.Ecs.Generator
             "FR0002",
             "Non-partial Nested Inaccessible Component Type",
             "Inaccessible Nested Component Type '{0}' must be marked as partial",
-            "Source Generation",
+            CategorySourceGeneration,
             DiagnosticSeverity.Error,
             true);
 
@@ -84,7 +86,7 @@ namespace Alis.Core.Ecs.Generator
             "FR0003",
             "Multiple Component Interface Implementations",
             "Components should only implement one update component interface",
-            "Source Generation",
+            CategorySourceGeneration,
             DiagnosticSeverity.Warning,
             true);
 
