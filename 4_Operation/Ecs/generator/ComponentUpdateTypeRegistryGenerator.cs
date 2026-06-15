@@ -49,6 +49,8 @@ namespace Alis.Core.Ecs.Generator
     [Generator(LanguageNames.CSharp)]
     public class ComponentUpdateTypeRegistryGenerator : IIncrementalGenerator
     {
+        private const string GlobalNamespacePrefix = "global::";
+
         /// <summary>
         ///     The symbol display format
         /// </summary>
@@ -346,13 +348,13 @@ namespace Alis.Core.Ecs.Generator
         {
             cb
                 .Append("GenerationServices.RegisterType(typeof(")
-                .Append("global::").Append(model.FullName)
+                .Append(GlobalNamespacePrefix).Append(model.FullName)
                 .Append("), new ");
 
             (model.ImplInterface == RegistryHelpers.TargetInterfaceName ? cb.Append("NoneUpdate") : cb.Append("Update"))
                 .Append("RunnerFactory")
                 .Append('<')
-                .Append("global::").Append(model.FullName);
+                .Append(GlobalNamespacePrefix).Append(model.FullName);
 
             foreach (string item in model.GenericArguments)
             {
@@ -364,23 +366,23 @@ namespace Alis.Core.Ecs.Generator
             {
                 cb.Append("GenerationServices.RegisterUpdateMethodAttribute(")
                     .Append("typeof(")
-                    .Append("global::").Append(attrType)
+                    .Append(GlobalNamespacePrefix).Append(attrType)
                     .Append("), typeof(")
-                    .Append("global::").Append(model.FullName)
+                    .Append(GlobalNamespacePrefix).Append(model.FullName)
                     .AppendLine("));");
             }
 
             if (model.HasFlag(UpdateModelFlags.Initable))
             {
                 cb.Append("GenerationServices.RegisterInit<")
-                    .Append("global::").Append(model.FullName)
+                    .Append(GlobalNamespacePrefix).Append(model.FullName)
                     .AppendLine(">();");
             }
 
             if (model.HasFlag(UpdateModelFlags.Destroyable))
             {
                 cb.Append("GenerationServices.RegisterDestroy<")
-                    .Append("global::").Append(model.FullName)
+                    .Append(GlobalNamespacePrefix).Append(model.FullName)
                     .AppendLine(">();");
             }
 
