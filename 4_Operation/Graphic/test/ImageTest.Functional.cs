@@ -77,8 +77,26 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2, image.Height);
             Assert.NotNull(image.Data);
         }
-        
 
+        /// <summary>
+        ///     Tests loading a 4-bit indexed BMP with palette.
+        /// </summary>
+        [Fact]
+        public void LoadFromStream_When4BitIndexed_ReturnsCorrectImage()
+        {
+            using MemoryStream stream = CreateMinimalBmp4BitIndexed(2, 2);
+
+            Image image = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static)
+                .Invoke(null, new object[] { stream }) as Image;
+
+            Assert.NotNull(image);
+            Assert.Equal(2, image.Width);
+            Assert.Equal(2, image.Height);
+            Assert.NotNull(image.Data);
+            Assert.Equal(2 * 2 * 4, image.Data.Length);
+        }
+
+        
         #endregion
 
         #region Error Handling Tests
@@ -288,8 +306,8 @@ namespace Alis.Core.Graphic.Test
         private static MemoryStream CreateMinimalBmp4BitIndexed(int width, int height)
         {
             int paletteSize = 16 * 4; // 16 entries for 4-bit
-            int rowSize = (width + 1) / 2; // 2 pixels per byte
-            rowSize = (rowSize + 1) / 2 * 2; // Padded to even
+            int pixelDataPerRow = (width + 1) / 2; // 2 pixels per byte
+            int rowSize = (pixelDataPerRow + 3) / 4 * 4; // Padded to 4-byte boundary
             int imageSize = rowSize * height;
             int fileSize = 54 + paletteSize + imageSize;
 
@@ -325,19 +343,22 @@ namespace Alis.Core.Graphic.Test
                 bmp[paletteOffset + i * 4 + 3] = 255;
             }
             
-            // Pixel indices (packed 2 per byte)
+            // Pixel indices (packed 2 per byte) with 4-byte row alignment
             int pixelOffset = 54 + paletteSize;
             for (int y = 0; y < height; y++)
             {
+                int rowStart = pixelOffset;
                 for (int x = 0; x < width; x += 2)
                 {
                     byte high = (byte)(x % 16);
                     byte low = (byte)((x + 1) % 16);
                     bmp[pixelOffset++] = (byte)((high << 4) | low);
                 }
-                while ((pixelOffset % 2 != 0) && (pixelOffset < 54 + paletteSize + rowSize * (y + 1)))
+                int written = pixelOffset - rowStart;
+                while (written < rowSize)
                 {
                     bmp[pixelOffset++] = 0;
+                    written++;
                 }
             }
 
