@@ -142,23 +142,7 @@ namespace Alis.Core.Ecs.Generator
         /// </summary>
         /// <param name="symbol">The symbol</param>
         /// <returns>The bool</returns>
-        public static bool IsOrExtendsIComponentBase(this INamedTypeSymbol symbol)
-        {
-            if (symbol.IsIComponentBase())
-            {
-                return true;
-            }
-
-            foreach (INamedTypeSymbol @interface in symbol.Interfaces)
-            {
-                if (@interface.IsIComponentBase())
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
+        public static bool IsOrExtendsIComponentBase(this INamedTypeSymbol symbol) => symbol.IsIComponentBase() || symbol.Interfaces.Any(@interface => @interface.IsIComponentBase());
 
         /// <summary>
         ///     Ises the i component base using the specified symbol

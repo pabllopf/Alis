@@ -1135,19 +1135,6 @@ namespace Alis.Core.Ecs.Generator.Collections
         Array IFastImmutableArray.Array => array;
 
         /// <summary>
-        ///     Gets the string to display in the debugger watches window for this instance.
-        /// </summary>
-
-        private string DebuggerDisplay
-        {
-            get
-            {
-                FastImmutableArray<T> self = this;
-                return self.IsDefault ? "Uninitialized" : $"Length = {self.Length}";
-            }
-        }
-
-        /// <summary>
         ///     Copies the contents of this array to the specified array.
         /// </summary>
         /// <param name="destination">The array to copy to.</param>

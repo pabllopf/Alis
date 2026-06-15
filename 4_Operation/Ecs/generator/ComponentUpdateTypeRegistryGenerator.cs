@@ -127,14 +127,13 @@ namespace Alis.Core.Ecs.Generator
                 {
                     continue;
                 }
-                //potentialInterface is some kind of IComponentBase
-
-                string name = potentialInterface.ToString();
 
                 needsRegistering = true;
 
                 if (potentialInterface.IsSpecialComponentInterface())
                 {
+                    string name = potentialInterface.ToString();
+
                     if (name != RegistryHelpers.FullyQualifiedTargetInterfaceName)
                     {
                         flags |= name switch
