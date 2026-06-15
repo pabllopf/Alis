@@ -172,5 +172,19 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(2f, x.X, 4);
             Assert.Equal(2f, x.Y, 4);
         }
+
+        /// <summary>
+        ///     Tests that inverse property with zero determinant returns default matrix
+        /// </summary>
+        [Fact]
+        public void Inverse_WithZeroDeterminant_ReturnsDefaultMatrix()
+        {
+            Matrix2X2 matrix = new Matrix2X2(0f, 0f, 0f, 0f);
+
+            Matrix2X2 inverse = matrix.Inverse;
+
+            Assert.Equal(0f, inverse.Ex.X);
+            Assert.Equal(0f, inverse.Ex.Y);
+        }
     }
 }
