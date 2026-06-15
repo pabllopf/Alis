@@ -147,5 +147,59 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(0f, added.M31);
             Assert.Equal(0f, added.M32);
         }
+
+        /// <summary>
+        ///     Tests that translation getter returns m 31 and m 32 as vector
+        /// </summary>
+        [Fact]
+        public void Translation_Getter_ReturnsM31AndM32AsVector()
+        {
+            Matrix3X2 matrix = new Matrix3X2(1f, 2f, 3f, 4f, 5f, 6f);
+
+            Vector2F translation = matrix.Translation;
+
+            Assert.Equal(5f, translation.X);
+            Assert.Equal(6f, translation.Y);
+        }
+
+        /// <summary>
+        ///     Tests that get hash code returns consistent values
+        /// </summary>
+        [Fact]
+        public void GetHashCode_ReturnsConsistentValues()
+        {
+            Matrix3X2 first = new Matrix3X2(1f, 2f, 3f, 4f, 5f, 6f);
+            Matrix3X2 second = new Matrix3X2(1f, 2f, 3f, 4f, 5f, 6f);
+
+            Assert.Equal(first.GetHashCode(), second.GetHashCode());
+        }
+
+        /// <summary>
+        ///     Tests that create scale from vector sets m 11 and m 22
+        /// </summary>
+        [Fact]
+        public void CreateScale_FromVector_SetsM11AndM22()
+        {
+            Matrix3X2 result = Matrix3X2.CreateScale(new Vector2F(3f, 4f));
+
+            Assert.Equal(3f, result.M11);
+            Assert.Equal(4f, result.M22);
+            Assert.Equal(0f, result.M12);
+            Assert.Equal(0f, result.M21);
+        }
+
+        /// <summary>
+        ///     Tests that create scale from components sets m 11 and m 22
+        /// </summary>
+        [Fact]
+        public void CreateScale_FromComponents_SetsM11AndM22()
+        {
+            Matrix3X2 result = Matrix3X2.CreateScale(3f, 4f);
+
+            Assert.Equal(3f, result.M11);
+            Assert.Equal(4f, result.M22);
+            Assert.Equal(0f, result.M12);
+            Assert.Equal(0f, result.M21);
+        }
     }
 }
