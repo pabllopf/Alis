@@ -58,6 +58,11 @@ namespace Alis.Core.Aspect.Memory.Generator
         private const string RegistryNamespace = "Alis.Core.Aspect.Memory.AssetRegistry";
 
         /// <summary>
+        ///     The AOT resources category
+        /// </summary>
+        private const string CategoryAotResources = "AOT Resources";
+
+        /// <summary>
         ///     Initializes the context
         /// </summary>
         /// <param name="context">The context</param>
@@ -79,11 +84,11 @@ namespace Alis.Core.Aspect.Memory.Generator
                     (compilation.Options.OutputKind != OutputKind.WindowsApplication))
                 {
 #if NET8_0_OR_GREATER
-                    DiagnosticDescriptor descInfo = new DiagnosticDescriptor("ALIS0013", "Proyecto no ejecutable", "El generador no se ejecuta en proyectos de tipo {0}", "AOT Resources", DiagnosticSeverity.Info, true);
+                    DiagnosticDescriptor descInfo = new DiagnosticDescriptor("ALIS0013", "Proyecto no ejecutable", "El generador no se ejecuta en proyectos de tipo {0}", CategoryAotResources, DiagnosticSeverity.Info, true);
                     spc.ReportDiagnostic(Diagnostic.Create(descInfo, Location.None, compilation.Options.OutputKind.ToString()));
 #endif
 #if NETSTANDARD2_0
-                    DiagnosticDescriptor descInfoNetStandard = new DiagnosticDescriptor("ALIS0013", "Proyecto no ejecutable", "El generador no se ejecuta en proyectos de tipo {0}", "AOT Resources", DiagnosticSeverity.Info, true);
+                    DiagnosticDescriptor descInfoNetStandard = new DiagnosticDescriptor("ALIS0013", "Proyecto no ejecutable", "El generador no se ejecuta en proyectos de tipo {0}", CategoryAotResources, DiagnosticSeverity.Info, true);
                     spc.ReportDiagnostic(Diagnostic.Create(descInfoNetStandard, Location.None, compilation.Options.OutputKind.ToString()));
 #endif
                     return;
@@ -92,11 +97,11 @@ namespace Alis.Core.Aspect.Memory.Generator
                 if (pakFiles.IsDefaultOrEmpty || pakFiles.Length == 0)
                 {
 #if NET8_0_OR_GREATER
-                    DiagnosticDescriptor descWarning = new DiagnosticDescriptor("ALIS0011", "Archivo no encontrado", "El archivo assets.pack no fue encontrado. Asegúrate de generarlo antes de compilar.", "AOT Resources", DiagnosticSeverity.Warning, true);
+                    DiagnosticDescriptor descWarning = new DiagnosticDescriptor("ALIS0011", "Archivo no encontrado", "El archivo assets.pack no fue encontrado. Asegúrate de generarlo antes de compilar.", CategoryAotResources, DiagnosticSeverity.Warning, true);
                     spc.ReportDiagnostic(Diagnostic.Create(descWarning, Location.None));
 #endif
 #if NETSTANDARD2_0
-                    DiagnosticDescriptor descWarningNetStandard = new DiagnosticDescriptor("ALIS0011", "Archivo no encontrado", "El archivo assets.pack no fue encontrado. Asegúrate de generarlo antes de compilar.", "AOT Resources", DiagnosticSeverity.Warning, true);
+                    DiagnosticDescriptor descWarningNetStandard = new DiagnosticDescriptor("ALIS0011", "Archivo no encontrado", "El archivo assets.pack no fue encontrado. Asegúrate de generarlo antes de compilar.", CategoryAotResources, DiagnosticSeverity.Warning, true);
                     spc.ReportDiagnostic(Diagnostic.Create(descWarningNetStandard, Location.None));
 #endif
                     return;
@@ -106,11 +111,11 @@ namespace Alis.Core.Aspect.Memory.Generator
                 if (pakText == null)
                 {
 #if NET8_0_OR_GREATER
-                    DiagnosticDescriptor descError = new DiagnosticDescriptor("ALIS0012", "Archivo vacío", "El archivo assets.pack está vacío o no es válido.", "AOT Resources", DiagnosticSeverity.Error, true);
+                    DiagnosticDescriptor descError = new DiagnosticDescriptor("ALIS0012", "Archivo vacío", "El archivo assets.pack está vacío o no es válido.", CategoryAotResources, DiagnosticSeverity.Error, true);
                     spc.ReportDiagnostic(Diagnostic.Create(descError, Location.None));
 #endif
 #if NETSTANDARD2_0
-                    DiagnosticDescriptor descErrorNetStandard = new DiagnosticDescriptor("ALIS0012", "Archivo vacío", "El archivo assets.pack está vacío o no es válido.", "AOT Resources", DiagnosticSeverity.Error, true);
+                    DiagnosticDescriptor descErrorNetStandard = new DiagnosticDescriptor("ALIS0012", "Archivo vacío", "El archivo assets.pack está vacío o no es válido.", CategoryAotResources, DiagnosticSeverity.Error, true);
                     spc.ReportDiagnostic(Diagnostic.Create(descErrorNetStandard, Location.None));
 #endif
                     return;
@@ -121,11 +126,11 @@ namespace Alis.Core.Aspect.Memory.Generator
                 string originalHash = CalculateSha256Hash(originalBytes);
 
 #if NET8_0_OR_GREATER
-                DiagnosticDescriptor descHash = new DiagnosticDescriptor("ALIS0007", "Hash calculado", $"Hash SHA256 de assets.pack: {originalHash}", "AOT Resources", DiagnosticSeverity.Info, true);
+                DiagnosticDescriptor descHash = new DiagnosticDescriptor("ALIS0007", "Hash calculado", $"Hash SHA256 de assets.pack: {originalHash}", CategoryAotResources, DiagnosticSeverity.Info, true);
                 spc.ReportDiagnostic(Diagnostic.Create(descHash, Location.None));
 #endif
 #if NETSTANDARD2_0
-                DiagnosticDescriptor descHashNetStandard = new DiagnosticDescriptor("ALIS0007", "Hash calculado", $"Hash SHA256 de assets.pack: {originalHash}", "AOT Resources", DiagnosticSeverity.Info, true);
+                DiagnosticDescriptor descHashNetStandard = new DiagnosticDescriptor("ALIS0007", "Hash calculado", $"Hash SHA256 de assets.pack: {originalHash}", CategoryAotResources, DiagnosticSeverity.Info, true);
                 spc.ReportDiagnostic(Diagnostic.Create(descHashNetStandard, Location.None));
 #endif
 
