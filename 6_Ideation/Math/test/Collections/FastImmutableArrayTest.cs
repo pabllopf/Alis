@@ -1443,5 +1443,60 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.Equal(1, builder[0]);
             Assert.Equal(3, builder[1]);
         }
+
+        /// <summary>
+        ///     Tests that builder index of with empty range returns minus one
+        /// </summary>
+        [Fact]
+        public void Builder_IndexOf_EmptyRange_ReturnsMinusOne()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(2);
+
+            int index = builder.IndexOf(1, 0, 0, null);
+
+            Assert.Equal(-1, index);
+        }
+
+        /// <summary>
+        ///     Tests that builder last index of with null comparer uses default
+        /// </summary>
+        [Fact]
+        public void Builder_LastIndexOf_WithNullComparer_UsesDefault()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(2);
+            builder.Add(1);
+
+            int index = builder.LastIndexOf(1, 0, 1, null);
+
+            Assert.Equal(0, index);
+        }
+
+        /// <summary>
+        ///     Tests that builder last index of with custom comparer and no match returns minus one
+        /// </summary>
+        [Fact]
+        public void Builder_LastIndexOf_WithCustomComparer_NotFound_ReturnsMinusOne()
+        {
+            FastImmutableArray<string>.Builder builder = FastImmutableArray<string>.CreateBuilder<string>(2);
+            builder.Add("A");
+
+            int index = builder.LastIndexOf("b", 0, 1, StringComparer.OrdinalIgnoreCase);
+
+            Assert.Equal(-1, index);
+        }
+
+        /// <summary>
+        ///     Tests that builder remove range with empty enumerable does nothing
+        /// </summary>
+        [Fact]
+        public void Builder_RemoveRange_EmptyEnumerable_DoesNothing()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(2);
+            builder.Add(1);
+
+            builder.RemoveRange(System.Array.Empty<int>(), EqualityComparer<int>.Default);
+
+            Assert.Equal(1, builder.Count);
+        }
     }
 }

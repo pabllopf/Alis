@@ -35,10 +35,19 @@ namespace Alis.App.Engine.Menus
     /// </summary>
     internal static class Urls
     {
+        /// <summary>
+        /// The alis engine
+        /// </summary>
         public const string AlisEngine = "https://www.alisengine.com";
 
+        /// <summary>
+        /// The alis api reference
+        /// </summary>
         public const string AlisApiReference = "https://www.alisengine.com/en/v0.4.0/api/Alis.html";
 
+        /// <summary>
+        /// The alis bug report
+        /// </summary>
         public const string AlisBugReport = "https://github.com/pabllopf/Alis/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=";
     }
 }

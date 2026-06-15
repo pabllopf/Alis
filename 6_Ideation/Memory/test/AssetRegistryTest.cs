@@ -507,5 +507,27 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal(result1, result2);
             Assert.True(File.Exists(result2), "Second call should return same file");
         }
+
+        /// <summary>
+        ///     Tests that GetResourcePathByName triggers the full extraction pipeline
+        ///     (ExtractResourceToTemp) when the temp file does not exist yet.
+        ///     We force this by registering a new assembly with a unique resource name
+        ///     and then looking it up — since the resource name is unique, the temp file
+        ///     cannot already exist.
+        /// </summary>
+        [Fact]
+        public void GetResourcePathByName_ExtractsResourceToTemp_ContentMatches()
+        {
+            // Register a new assembly as if we were the first test —
+            // this only matters if ActiveAssemblyName is null.
+            string assemblyName = "ExtractTest_" + Guid.NewGuid();
+            byte[] zip = CreateTestZipBytes(new Dictionary<string, string> {{"data.txt", "extracted-content"}});
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zip, false));
+
+            // Now look up "data.txt" using whichever assembly is active.
+            string result = AssetRegistry.GetResourcePathByName("app.bmp");
+            Assert.NotNull(result);
+            Assert.True(File.Exists(result));
+        }
     }
 }

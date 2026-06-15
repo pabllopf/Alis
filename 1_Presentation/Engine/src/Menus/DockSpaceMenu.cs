@@ -92,6 +92,9 @@ namespace Alis.App.Engine.Menus
             ImGui.PopStyleVar(2);
         }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             

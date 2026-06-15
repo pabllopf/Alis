@@ -255,48 +255,138 @@ namespace Alis.Core.Aspect.Logging.Test
         /// </summary>
         private sealed class MockLogger : ILogger
         {
+            /// <summary>
+            /// Gets the value of the trace messages
+            /// </summary>
             public List<string> TraceMessages { get; } = new List<string>();
 
+            /// <summary>
+            /// Gets the value of the debug messages
+            /// </summary>
             public List<string> DebugMessages { get; } = new List<string>();
 
+            /// <summary>
+            /// Gets the value of the info messages
+            /// </summary>
             public List<string> InfoMessages { get; } = new List<string>();
 
+            /// <summary>
+            /// Gets the value of the warning messages
+            /// </summary>
             public List<string> WarningMessages { get; } = new List<string>();
 
+            /// <summary>
+            /// Gets the value of the error messages
+            /// </summary>
             public List<string> ErrorMessages { get; } = new List<string>();
 
+            /// <summary>
+            /// Gets the value of the critical messages
+            /// </summary>
             public List<string> CriticalMessages { get; } = new List<string>();
 
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name => "MockLogger";
 
+            /// <summary>
+            /// Logs the trace using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogTrace(string message) => TraceMessages.Add(message);
 
+            /// <summary>
+            /// Logs the debug using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogDebug(string message) => DebugMessages.Add(message);
 
+            /// <summary>
+            /// Logs the info using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogInfo(string message) => InfoMessages.Add(message);
 
+            /// <summary>
+            /// Logs the warning using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogWarning(string message) => WarningMessages.Add(message);
 
+            /// <summary>
+            /// Logs the error using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogError(string message) => ErrorMessages.Add(message);
 
+            /// <summary>
+            /// Logs the error using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
+            /// <param name="exception">The exception</param>
             public void LogError(string message, Exception exception) => ErrorMessages.Add(message);
 
+            /// <summary>
+            /// Logs the critical using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogCritical(string message) => CriticalMessages.Add(message);
 
+            /// <summary>
+            /// Logs the critical using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
+            /// <param name="exception">The exception</param>
             public void LogCritical(string message, Exception exception) => CriticalMessages.Add(message);
 
+            /// <summary>
+            /// Logs the level
+            /// </summary>
+            /// <param name="level">The level</param>
+            /// <param name="message">The message</param>
             public void Log(LogLevel level, string message) { }
 
+            /// <summary>
+            /// Logs the level
+            /// </summary>
+            /// <param name="level">The level</param>
+            /// <param name="message">The message</param>
+            /// <param name="exception">The exception</param>
             public void Log(LogLevel level, string message, Exception exception) { }
 
+            /// <summary>
+            /// Logs the structured using the specified level
+            /// </summary>
+            /// <param name="level">The level</param>
+            /// <param name="message">The message</param>
+            /// <param name="properties">The properties</param>
             public void LogStructured(LogLevel level, string message, IReadOnlyDictionary<string, object> properties) { }
 
+            /// <summary>
+            /// Sets the correlation id using the specified correlation id
+            /// </summary>
+            /// <param name="correlationId">The correlation id</param>
             public void SetCorrelationId(string correlationId) { }
 
+            /// <summary>
+            /// Gets the correlation id
+            /// </summary>
+            /// <returns>The string</returns>
             public string GetCorrelationId() => null;
 
+            /// <summary>
+            /// Begins the scope using the specified scope
+            /// </summary>
+            /// <param name="scope">The scope</param>
+            /// <returns>The disposable</returns>
             public IDisposable BeginScope(object scope) => null;
 
+            /// <summary>
+            /// Ises the enabled using the specified level
+            /// </summary>
+            /// <param name="level">The level</param>
+            /// <returns>The bool</returns>
             public bool IsEnabled(LogLevel level) => true;
         }
     }

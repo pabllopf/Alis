@@ -88,6 +88,9 @@ namespace Alis.App.Engine.Menus
             ImGui.PopStyleColor(3);
         }
 
+        /// <summary>
+        /// Applies the bottom menu styling
+        /// </summary>
         private static void ApplyBottomMenuStyling()
         {
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
@@ -99,6 +102,9 @@ namespace Alis.App.Engine.Menus
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
         }
 
+        /// <summary>
+        /// Renders the menu content
+        /// </summary>
         private static void RenderMenuContent()
         {
             ImGui.Columns(6, "MenuColumns", false);
@@ -114,6 +120,9 @@ namespace Alis.App.Engine.Menus
             ImGui.ProgressBar(0.65f, new Vector2F(150, 20), "3/15");
         }
 
+        /// <summary>
+        /// Renders the branch selector
+        /// </summary>
         private static void RenderBranchSelector()
         {
             if (ImGui.Button($"{FontAwesome5.Bell}##notifications"))
@@ -145,6 +154,9 @@ namespace Alis.App.Engine.Menus
             }
         }
 
+        /// <summary>
+        /// Setup the next window properties
+        /// </summary>
         private void SetupNextWindowProperties()
         {
             if (!SpaceWork.IsMacOs)

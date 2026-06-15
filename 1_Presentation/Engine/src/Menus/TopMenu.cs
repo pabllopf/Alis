@@ -84,6 +84,9 @@ namespace Alis.App.Engine.Menus
             ImGui.PopStyleColor(3);
         }
 
+        /// <summary>
+        /// Applies the top menu styling
+        /// </summary>
         private static void ApplyTopMenuStyling()
         {
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
@@ -94,6 +97,9 @@ namespace Alis.App.Engine.Menus
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
         }
 
+        /// <summary>
+        /// Renders the file menu
+        /// </summary>
         private static void RenderFileMenu()
         {
             if (ImGui.BeginMenu("File"))
@@ -116,6 +122,9 @@ namespace Alis.App.Engine.Menus
             }
         }
 
+        /// <summary>
+        /// Renders the edit menu
+        /// </summary>
         private static void RenderEditMenu()
         {
             if (ImGui.BeginMenu("Edit"))
@@ -160,6 +169,9 @@ namespace Alis.App.Engine.Menus
             }
         }
 
+        /// <summary>
+        /// Renders the assets menu
+        /// </summary>
         private static void RenderAssetsMenu()
         {
             if (ImGui.BeginMenu("Assets"))
@@ -185,6 +197,9 @@ namespace Alis.App.Engine.Menus
             }
         }
 
+        /// <summary>
+        /// Renders the game object menu
+        /// </summary>
         private static void RenderGameObjectMenu()
         {
             if (ImGui.BeginMenu("GameObject"))
@@ -214,6 +229,9 @@ namespace Alis.App.Engine.Menus
             }
         }
 
+        /// <summary>
+        /// Renders the component menu
+        /// </summary>
         private static void RenderComponentMenu()
         {
             if (ImGui.BeginMenu("Component"))
@@ -229,6 +247,9 @@ namespace Alis.App.Engine.Menus
             }
         }
 
+        /// <summary>
+        /// Renders the tools menu
+        /// </summary>
         private static void RenderToolsMenu()
         {
             if (ImGui.BeginMenu("Tools"))
@@ -242,6 +263,9 @@ namespace Alis.App.Engine.Menus
             }
         }
 
+        /// <summary>
+        /// Renders the window menu
+        /// </summary>
         private static void RenderWindowMenu()
         {
             if (ImGui.BeginMenu("Window"))
@@ -256,6 +280,9 @@ namespace Alis.App.Engine.Menus
             }
         }
 
+        /// <summary>
+        /// Renders the help menu
+        /// </summary>
         private static void RenderHelpMenu()
         {
             if (ImGui.BeginMenu("Help"))
@@ -280,6 +307,11 @@ namespace Alis.App.Engine.Menus
         {
         }
 
+        /// <summary>
+        /// Renders the menu item using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="shortcut">The shortcut</param>
         private static void RenderMenuItem(string text, string shortcut = null)
         {
             if (ImGui.MenuItem(text, shortcut))

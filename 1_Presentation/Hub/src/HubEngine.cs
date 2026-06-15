@@ -62,6 +62,9 @@ namespace Alis.App.Hub
         /// </summary>
         private readonly Vector2F[] _lastClickPos = new Vector2F[5];
 
+        /// <summary>
+        /// The hub jet brains mono bold ttf
+        /// </summary>
         private const string HubJetBrainsMonoBoldTtf = "Hub_JetBrainsMono-Bold.ttf";
 
         /// <summary>
@@ -368,6 +371,13 @@ namespace Alis.App.Hub
             }
         }
 
+        /// <summary>
+        /// Calculates the delta time using the specified last time
+        /// </summary>
+        /// <param name="lastTime">The last time</param>
+        /// <param name="now">The now</param>
+        /// <param name="targetFrameTime">The target frame time</param>
+        /// <returns>The delta</returns>
         private static double CalculateDeltaTime(ref double lastTime, double now, double targetFrameTime)
         {
             double delta = now - lastTime;
@@ -384,6 +394,9 @@ namespace Alis.App.Hub
             return delta;
         }
 
+        /// <summary>
+        /// Processes the pending input
+        /// </summary>
         private void ProcessPendingInput()
         {
             if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
@@ -392,6 +405,9 @@ namespace Alis.App.Hub
             }
         }
 
+        /// <summary>
+        /// Checks the gl error
+        /// </summary>
         private static void CheckGlError()
         {
             int glError = Gl.GlGetError();

@@ -409,6 +409,13 @@ namespace Alis.App.Installer
             }
         }
 
+        /// <summary>
+        /// Calculates the delta time using the specified last time
+        /// </summary>
+        /// <param name="lastTime">The last time</param>
+        /// <param name="now">The now</param>
+        /// <param name="targetFrameTime">The target frame time</param>
+        /// <returns>The delta</returns>
         private static double CalculateDeltaTime(ref double lastTime, double now, double targetFrameTime)
         {
             double delta = now - lastTime;
@@ -425,6 +432,11 @@ namespace Alis.App.Installer
             return delta;
         }
 
+        /// <summary>
+        /// Processes the pending input using the specified io
+        /// </summary>
+        /// <param name="io">The io</param>
+        /// <param name="platform">The platform</param>
         private static void ProcessPendingInput(ImGuiIoPtr io, INativePlatform platform)
         {
             if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
@@ -433,6 +445,9 @@ namespace Alis.App.Installer
             }
         }
 
+        /// <summary>
+        /// Checks the gl error
+        /// </summary>
         private static void CheckGlError()
         {
             int glError = Gl.GlGetError();

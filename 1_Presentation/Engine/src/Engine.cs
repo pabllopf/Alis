@@ -218,6 +218,9 @@ namespace Alis.App.Engine
             platform.Cleanup();
         }
 
+        /// <summary>
+        /// Cleanups the graphics resources
+        /// </summary>
         private void CleanupGraphicsResources()
         {
             if (_vbo != 0)
@@ -274,6 +277,13 @@ namespace Alis.App.Engine
             }
         }
 
+        /// <summary>
+        /// Calculates the delta time using the specified last time
+        /// </summary>
+        /// <param name="lastTime">The last time</param>
+        /// <param name="now">The now</param>
+        /// <param name="targetFrameTime">The target frame time</param>
+        /// <returns>The delta</returns>
         private static double CalculateDeltaTime(ref double lastTime, double now, double targetFrameTime)
         {
             double delta = now - lastTime;
@@ -290,6 +300,9 @@ namespace Alis.App.Engine
             return delta;
         }
 
+        /// <summary>
+        /// Processes the pending input
+        /// </summary>
         private void ProcessPendingInput()
         {
             if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
@@ -298,6 +311,9 @@ namespace Alis.App.Engine
             }
         }
 
+        /// <summary>
+        /// Checks the gl error
+        /// </summary>
         private static void CheckGlError()
         {
             int glError = Gl.GlGetError();
