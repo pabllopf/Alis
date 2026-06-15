@@ -115,57 +115,13 @@ namespace Alis.Core.Ecs.Generator
                 return ComponentUpdateItemModel.Default;
             }
 
-            UpdateModelFlags flags = UpdateModelFlags.None;
+          UpdateModelFlags flags = UpdateModelFlags.None;
             INamedTypeSymbol @interface = null;
 
             string[] genericArguments = new string[0];
             bool needsRegistering = false;
 
-            foreach (INamedTypeSymbol potentialInterface in componentTypeSymbol.AllInterfaces)
-            {
-                ct.ThrowIfCancellationRequested();
-
-                if (!potentialInterface.IsOrExtendsIComponentBase())
-                {
-                    continue;
-                }
-
-                needsRegistering = true;
-
-                if (potentialInterface.IsSpecialComponentInterface())
-                {
-                    string name = potentialInterface.ToString();
-
-                    if (name != RegistryHelpers.FullyQualifiedTargetInterfaceName)
-                    {
-                        flags |= name switch
-                        {
-                            RegistryHelpers.FullyQualifiedInitableInterfaceName => UpdateModelFlags.Initable,
-                            RegistryHelpers.FullyQualifiedDestroyableInterfaceName => UpdateModelFlags.Destroyable,
-                            _ => UpdateModelFlags.None
-                        };
-                    }
-                    else
-                    {
-                        @interface ??= potentialInterface;
-                    }
-                }
-                else if (potentialInterface.IsAlisComponentInterface())
-                {
-                    @interface = potentialInterface;
-
-                    if (@interface.TypeArguments.Length != 0)
-                    {
-                        genericArguments = new string[@interface.TypeArguments.Length];
-
-                        for (int i = 0; i < @interface.TypeArguments.Length; i++)
-                        {
-                            ITypeSymbol namedTypeSymbol = @interface.TypeArguments[i];
-                            genericArguments[i] = namedTypeSymbol.ToDisplayString(FullyQualifiedTypeNameFormat);
-                        }
-                    }
-                }
-            }
+            (needsRegistering, @interface, genericArguments, flags) = InspectComponentInterfaces(componentTypeSymbol, ct, flags);
 
             if (!needsRegistering || @interface is null)
             {
@@ -255,9 +211,71 @@ namespace Alis.Core.Ecs.Generator
                     );
                 }
 
-                nestedTypeSymbols.AsSpan().Reverse();
+             nestedTypeSymbols.AsSpan().Reverse();
                 return nestedTypeSymbols;
             }
+        }
+
+        /// <summary>
+        ///     Inspects the component interfaces using the specified symbol
+        /// </summary>
+        /// <param name="componentTypeSymbol">The component type symbol</param>
+        /// <param name="ct">The ct</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The inspection results</returns>
+        private static (bool needsRegistering, INamedTypeSymbol @interface, string[] genericArguments, UpdateModelFlags flags) InspectComponentInterfaces(INamedTypeSymbol componentTypeSymbol, CancellationToken ct, UpdateModelFlags flags)
+        {
+            INamedTypeSymbol @interface = null;
+            string[] genericArguments = new string[0];
+            bool needsRegistering = false;
+
+            foreach (INamedTypeSymbol potentialInterface in componentTypeSymbol.AllInterfaces)
+            {
+                ct.ThrowIfCancellationRequested();
+
+                if (!potentialInterface.IsOrExtendsIComponentBase())
+                {
+                    continue;
+                }
+
+                needsRegistering = true;
+
+                if (potentialInterface.IsSpecialComponentInterface())
+                {
+                    string name = potentialInterface.ToString();
+
+                    if (name != RegistryHelpers.FullyQualifiedTargetInterfaceName)
+                    {
+                        flags |= name switch
+                        {
+                            RegistryHelpers.FullyQualifiedInitableInterfaceName => UpdateModelFlags.Initable,
+                            RegistryHelpers.FullyQualifiedDestroyableInterfaceName => UpdateModelFlags.Destroyable,
+                            _ => UpdateModelFlags.None
+                        };
+                    }
+                    else
+                    {
+                        @interface ??= potentialInterface;
+                    }
+                }
+                else if (potentialInterface.IsAlisComponentInterface())
+                {
+                    @interface = potentialInterface;
+
+                    if (@interface.TypeArguments.Length != 0)
+                    {
+                        genericArguments = new string[@interface.TypeArguments.Length];
+
+                        for (int i = 0; i < @interface.TypeArguments.Length; i++)
+                        {
+                            ITypeSymbol namedTypeSymbol = @interface.TypeArguments[i];
+                            genericArguments[i] = namedTypeSymbol.ToDisplayString(FullyQualifiedTypeNameFormat);
+                        }
+                    }
+                }
+            }
+
+            return (needsRegistering, @interface, genericArguments, flags);
         }
 
         /// <summary>
