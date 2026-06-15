@@ -242,14 +242,14 @@ namespace Alis.Core.Ecs.Generator.Collections
             }
 
             /// <summary>
-            ///     Removes the first occurrence of the specified element from the builder.
+            ///     Removes the first occurrence of the specified item from the builder.
             ///     If no match is found, the builder remains unchanged.
             /// </summary>
-            /// <param name="element">The element.</param>
-            /// <returns>A value indicating whether the specified element was found and removed from the collection.</returns>
-            public bool Remove(T element)
+            /// <param name="item">The item.</param>
+            /// <returns>A value indicating whether the item was found and removed from the collection.</returns>
+            public bool Remove(T item)
             {
-                int index = IndexOf(element);
+                int index = IndexOf(item);
                 if (index >= 0)
                 {
                     RemoveAt(index);
@@ -286,10 +286,10 @@ namespace Alis.Core.Ecs.Generator.Collections
             ///     Copies the current contents to the specified array.
             /// </summary>
             /// <param name="array">The array to copy to.</param>
-            /// <param name="index">The starting index of the target array.</param>
-            public void CopyTo(T[] array, int index)
+            /// <param name="arrayIndex">The starting index of the target array.</param>
+            public void CopyTo(T[] array, int arrayIndex)
             {
-                Array.Copy(_elements, 0, array, index, Count);
+                Array.Copy(_elements, 0, array, arrayIndex, Count);
             }
 
             /// <summary>
