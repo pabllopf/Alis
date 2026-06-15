@@ -36,6 +36,15 @@ namespace Alis.Core.Aspect.Data.Generator
     /// </summary>
     internal static class HelperMethodsGenerator
     {
+        private const string XmlSummary = "        /// <summary>";
+        private const string XmlSummaryEnd = "        /// </summary>";
+        private const string XmlParamArray = "        /// <param name=\"array\">The array to serialize.</param>";
+        private const string XmlReturnsNull = "        /// <returns>The JSON array string representation, or null if the array is null.</returns>";
+        private const string ExcludeFromCodeCoverage = "        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]";
+        private const string MethodBodyStart = "        {";
+        private const string BlockStart = "            {";
+        private const string BlockEnd = "            }";
+
         /// <summary>
         ///     Generates all helper methods for serialization and deserialization.
         /// </summary>
@@ -69,25 +78,25 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <param name="sb">The string builder.</param>
         private static void AppendSerializeArrayMethod(StringBuilder sb)
         {
-            sb.AppendLine("        /// <summary>");
+            sb.AppendLine(XmlSummary);
             sb.AppendLine("        ///     Serializes a one-dimensional array to a JSON array string.");
-            sb.AppendLine("        /// </summary>");
-            sb.AppendLine("        /// <param name=\"array\">The array to serialize.</param>");
-            sb.AppendLine("        /// <returns>The JSON array string representation, or null if the array is null.</returns>");
-            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            sb.AppendLine(XmlSummaryEnd);
+            sb.AppendLine(XmlParamArray);
+            sb.AppendLine(XmlReturnsNull);
+            sb.AppendLine(ExcludeFromCodeCoverage);
             sb.AppendLine("        private static string SerializeArray(System.Array array)");
-            sb.AppendLine("        {");
+            sb.AppendLine(MethodBodyStart);
             sb.AppendLine("            if (array == null) return null;");
             sb.AppendLine("            var items = new System.Collections.Generic.List<string>();");
             sb.AppendLine("            foreach (var item in array)");
-            sb.AppendLine("            {");
+            sb.AppendLine(BlockStart);
             sb.AppendLine("                if (item is IJsonSerializable serializable)");
             sb.AppendLine("                    items.Add(JsonNativeAot.Serialize(serializable));");
             sb.AppendLine("                else if (item is string str)");
             sb.AppendLine("                    items.Add($\"\\\"{str}\\\"\");");
             sb.AppendLine("                else");
             sb.AppendLine("                    items.Add(item?.ToString() ?? \"null\");");
-            sb.AppendLine("            }");
+            sb.AppendLine(BlockEnd);
             sb.AppendLine("            return \"[\" + string.Join(\",\", items) + \"]\";");
             sb.AppendLine("        }");
         }
