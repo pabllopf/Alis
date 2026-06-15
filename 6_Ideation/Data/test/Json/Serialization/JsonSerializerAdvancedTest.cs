@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Data.Json.Exceptions;
 using Alis.Core.Aspect.Data.Json.Serialization;
 using Xunit;
 
@@ -498,6 +499,100 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
                     yield return ($"Property{i}", $"Value{i}");
                 }
             }
+        }
+
+        /// <summary>
+        ///     The test exception object class - throws exception during serialization
+        /// </summary>
+        /// <seealso cref="IJsonSerializable" />
+        private class TestExceptionObject : IJsonSerializable
+        {
+            /// <summary>
+            ///     Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+            {
+                throw new InvalidOperationException("Simulated serialization error");
+            }
+        }
+
+        /// <summary>
+        ///     The test exception serialization object class - throws JsonSerializationException during serialization
+        /// </summary>
+        /// <seealso cref="IJsonSerializable" />
+        private class TestExceptionSerializationObject : IJsonSerializable
+        {
+            /// <summary>
+            ///     Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+            {
+                throw new JsonSerializationException("Simulated serialization exception");
+            }
+        }
+
+        /// <summary>
+        ///     Tests that serialize object throwing exception wraps it in JsonSerializationException
+        /// </summary>
+        [Fact]
+        public void Serialize_ObjectThrowingException_WrapsInJsonSerializationException()
+        {
+            TestExceptionObject obj = new TestExceptionObject();
+
+            var exception = Assert.Throws<JsonSerializationException>(() => _serializer.Serialize(obj));
+
+            Assert.Contains("TestExceptionObject", exception.Message);
+            Assert.IsType<InvalidOperationException>(exception.InnerException);
+            Assert.Equal("Simulated serialization error", exception.InnerException.Message);
+        }
+
+        /// <summary>
+        ///     Tests that serialize object throwing JsonSerializationException re-throws it
+        /// </summary>
+        [Fact]
+        public void Serialize_ObjectThrowingJsonSerializationException_ReThrowsIt()
+        {
+            TestExceptionSerializationObject obj = new TestExceptionSerializationObject();
+
+            var exception = Assert.Throws<JsonSerializationException>(() => _serializer.Serialize(obj));
+
+            Assert.Equal("Simulated serialization exception", exception.Message);
+            Assert.Null(exception.InnerException);
+        }
+
+        /// <summary>
+        ///     The test complex object class - returns complex JSON values
+        /// </summary>
+        /// <seealso cref="IJsonSerializable" />
+        private class TestComplexObject : IJsonSerializable
+        {
+            /// <summary>
+            ///     Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
+            public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+            {
+                yield return ("Name", "John");
+                yield return ("Tags", "[\"tag1\",\"tag2\"]");
+                yield return ("Metadata", "{\"key\":\"value\"}");
+            }
+        }
+
+        /// <summary>
+        ///     Tests that serialize object with complex values includes them unquoted
+        /// </summary>
+        [Fact]
+        public void Serialize_ObjectWithComplexValues_IncludesUnquoted()
+        {
+            TestComplexObject obj = new TestComplexObject();
+
+            string json = _serializer.Serialize(obj);
+
+            Assert.Contains("\"Name\":\"John\"", json);
+            Assert.Contains("\"Tags\":[\"tag1\",\"tag2\"]", json);
+            Assert.Contains("\"Metadata\":{\"key\":\"value\"}", json);
         }
     }
 }
