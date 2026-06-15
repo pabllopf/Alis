@@ -343,6 +343,63 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0.0f, result.X);
             Assert.Equal(2.0f, result.Y);
         }
+
+        /// <summary>
+        /// Tests that is valid float returns false for NaN
+        /// </summary>
+        [Fact]
+        public void IsValid_FloatNaN_ReturnsFalse()
+        {
+            Assert.False(MathUtils.IsValid(float.NaN));
+        }
+
+        /// <summary>
+        /// Tests that is valid float returns false for Infinity
+        /// </summary>
+        [Fact]
+        public void IsValid_FloatInfinity_ReturnsFalse()
+        {
+            Assert.False(MathUtils.IsValid(float.PositiveInfinity));
+            Assert.False(MathUtils.IsValid(float.NegativeInfinity));
+        }
+
+        /// <summary>
+        /// Tests that is valid vector returns false when one component is NaN
+        /// </summary>
+        [Fact]
+        public void IsValid_VectorWithNaN_ReturnsFalse()
+        {
+            Vector2F v = new Vector2F(float.NaN, 1.0f);
+            Assert.False(v.IsValid());
+        }
+
+        /// <summary>
+        /// Tests that vector angle wraps around when angle exceeds PI
+        /// </summary>
+        [Fact]
+        public void VectorAngle_WhenDeltaExceedsPi_WrapsAround()
+        {
+            Vector2F p1 = new Vector2F(-1.0f, -0.1f);
+            Vector2F p2 = new Vector2F(-1.0f, 0.1f);
+
+            double angle = MathUtils.VectorAngle(ref p1, ref p2);
+
+            Assert.InRange(angle, -Math.PI, Math.PI);
+        }
+
+        /// <summary>
+        /// Tests that vector angle wraps around when angle is below negative PI
+        /// </summary>
+        [Fact]
+        public void VectorAngle_WhenDeltaBelowNegativePi_WrapsAround()
+        {
+            Vector2F p1 = new Vector2F(-1.0f, 0.1f);
+            Vector2F p2 = new Vector2F(-1.0f, -0.1f);
+
+            double angle = MathUtils.VectorAngle(ref p1, ref p2);
+
+            Assert.InRange(angle, -Math.PI, Math.PI);
+        }
     }
 }
 

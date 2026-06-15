@@ -92,5 +92,15 @@ namespace Alis.Core.Physic.Test
             float actual = SettingEnv.MixRestitution(0.6f, 0.6f);
             Assert.Equal(0.6f, actual);
         }
+
+        /// <summary>
+        /// Tests the MixRestitution method returns the first value when it is greater than the second.
+        /// </summary>
+        [Fact]
+        public void MixRestitution_WithFirstGreater_ReturnsFirst()
+        {
+            float actual = SettingEnv.MixRestitution(0.9f, 0.3f);
+            Assert.Equal(0.9f, actual);
+        }
     }
 }
