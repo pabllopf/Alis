@@ -114,20 +114,6 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        ///     Appends the line using the specified value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The code builder</returns>
-        public CodeBuilder AppendLine<T>(T value)
-        {
-            _sb.Append(value);
-            _sb.AppendLine();
-            _sb.Append(' ', TabsPerIndent * Indents);
-            return this;
-        }
-
-        /// <summary>
         ///     Foreaches the items
         /// </summary>
         /// <typeparam name="T">The </typeparam>
@@ -190,6 +176,20 @@ namespace Alis.Core.Ecs.Generator
         public CodeBuilder Execute<T>(in T uniform, CancellationToken ct, CodeBuilderDelegate<T> action)
         {
             action(in uniform, this, ct);
+            return this;
+        }
+
+        /// <summary>
+        ///     Appends the line using the specified value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The code builder</returns>
+        public CodeBuilder AppendLine<T>(T value)
+        {
+            _sb.Append(value);
+            _sb.AppendLine();
+            _sb.Append(' ', TabsPerIndent * Indents);
             return this;
         }
 
