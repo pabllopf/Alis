@@ -218,6 +218,20 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
+        ///     Tests that compact log formatter formats unknown log level as '?'
+        /// </summary>
+        [Fact]
+        public void CompactLogFormatter_DefaultLevel_QuestionMark()
+        {
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            LogEntry entry = new LogEntry((LogLevel)99, "Unknown level", "Logger");
+
+            string formatted = formatter.Format(entry);
+
+            Assert.Contains("[?]", formatted);
+        }
+
+        /// <summary>
         ///     Tests that compact log formatter performance should be very fast
         /// </summary>
         [Fact]
