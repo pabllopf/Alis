@@ -136,6 +136,20 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
+        ///     Tests that unsupported BMP compression type throws an exception.
+        /// </summary>
+        [Fact]
+        public void LoadFromStream_WhenUnsupportedCompression_ThrowsException()
+        {
+            using MemoryStream stream = CreateBmpWithUnsupportedCompression();
+
+            MethodInfo loadMethod = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.ThrowsAny<Exception>(() =>
+                loadMethod.Invoke(null, new object[] { stream }));
+        }
+
+        /// <summary>
         ///     Tests that empty stream throws exception.
         /// </summary>
         [Fact]
