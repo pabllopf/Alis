@@ -122,6 +122,20 @@ namespace Alis.Core.Graphic.Test
         }
 
         /// <summary>
+        ///     Tests that invalid BMP header throws an exception.
+        /// </summary>
+        [Fact]
+        public void LoadFromStream_WhenInvalidHeader_ThrowsException()
+        {
+            using MemoryStream stream = CreateInvalidBmpHeader();
+
+            MethodInfo loadMethod = typeof(Image).GetMethod("LoadFromStream", BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.ThrowsAny<Exception>(() =>
+                loadMethod.Invoke(null, new object[] { stream }));
+        }
+
+        /// <summary>
         ///     Tests that empty stream throws exception.
         /// </summary>
         [Fact]
