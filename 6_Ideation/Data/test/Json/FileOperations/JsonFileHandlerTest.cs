@@ -190,6 +190,32 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         }
 
         /// <summary>
+        ///     Tests that serialize to existing directory does not call create directory
+        /// </summary>
+        [Fact]
+        public void SerializeToFile_ToExistingDirectory_SkipsCreateDirectory()
+        {
+            try
+            {
+                TestObject obj = new TestObject {Name = "Test", Value = 42};
+                string relativePath = Path.Combine("JsonFileHandlerTests", "existingdir");
+
+                Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, relativePath));
+                _fileHandler.SerializeToFile(obj, "existingfile", relativePath);
+
+                string filePath = Path.Combine(Environment.CurrentDirectory, relativePath, "existingfile.json");
+                Assert.True(File.Exists(filePath));
+
+                string json = File.ReadAllText(filePath);
+                Assert.Contains("Test", json);
+            }
+            finally
+            {
+                Cleanup();
+            }
+        }
+
+        /// <summary>
         ///     Tests that constructor with null serializer throws argument null exception
         /// </summary>
         [Fact]
