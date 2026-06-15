@@ -69,7 +69,7 @@ namespace Alis.Core.Ecs.Generator
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
             IncrementalValuesProvider<ComponentUpdateItemModel> models = context.SyntaxProvider.CreateSyntaxProvider(
-                static (n, _) => n is TypeDeclarationSyntax {BaseList: not null} typeDec,
+                static (n, _) => n is TypeDeclarationSyntax {BaseList: not null},
                 GenerateComponentUpdateModel);
 
             IncrementalValueProvider<ImmutableArray<ComponentUpdateItemModel>> allModels = models.Where(m => !m.IsDefault).Collect();
@@ -344,8 +344,6 @@ namespace Alis.Core.Ecs.Generator
         /// <param name="model">The model</param>
         private static void AppendInitalizationMethodBody(CodeBuilder cb, in ComponentUpdateItemModel model)
         {
-            (int Start, int Count) span = ExtractUpdaterName(model.ImplInterface);
-
             cb
                 .Append("GenerationServices.RegisterType(typeof(")
                 .Append("global::").Append(model.FullName)
@@ -387,8 +385,6 @@ namespace Alis.Core.Ecs.Generator
             }
 
             cb.AppendLine();
-
-            static (int Start, int Count) ExtractUpdaterName(string interfaceName) => (1, interfaceName.Length - "IComponent".Length);
         }
 
         /// <summary>
