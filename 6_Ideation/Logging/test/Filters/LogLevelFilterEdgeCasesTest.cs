@@ -122,6 +122,17 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         }
 
         /// <summary>
+        ///     Tests that log level filter null entry should return false
+        /// </summary>
+        [Fact]
+        public void LogLevelFilter_NullEntry_ShouldReturnFalse()
+        {
+            LogLevelFilter filter = new LogLevelFilter(LogLevel.Trace);
+
+            Assert.False(filter.ShouldLog(null));
+        }
+
+        /// <summary>
         ///     Creates the entry using the specified level
         /// </summary>
         /// <param name="level">The level</param>
