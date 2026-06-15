@@ -45,22 +45,54 @@ namespace Alis.Core.Ecs.Generator
     internal class GeneratorAnalyzer : DiagnosticAnalyzer
     {
         /// <summary>
-        ///     The supported diagnostics
+        ///     The is enabled by default
         /// </summary>
-        private static readonly FastImmutableArray<DiagnosticDescriptor> _supportedDiagnostics;
+        public static readonly DiagnosticDescriptor NonPartialGenericComponent = new(
+            "FR0000",
+            "Non-partial Generic Component Type",
+            "Generic Component '{0}' must be marked as partial",
+            "Source Generation",
+            DiagnosticSeverity.Error,
+            true);
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="GeneratorAnalyzer" /> class
+        ///     The is enabled by default
         /// </summary>
-        static GeneratorAnalyzer()
-        {
-            FastImmutableArray<DiagnosticDescriptor>.Builder b = FastImmutableArray<DiagnosticDescriptor>.CreateBuilder<DiagnosticDescriptor>(4);
-            b.Add(NonPartialGenericComponent);
-            b.Add(NonPartialOuterInaccessibleType);
-            b.Add(NonPartialNestedInaccessibleType);
-            b.Add(MultipleComponentInterfaces);
-            _supportedDiagnostics = b.MoveToImmutable();
-        }
+        public static readonly DiagnosticDescriptor NonPartialOuterInaccessibleType = new(
+            "FR0001",
+            "Non-partial Outer Inaccessible Type",
+            "Outer type of inaccessible nested component type '{0}' must be marked as partial",
+            "Source Generation",
+            DiagnosticSeverity.Error,
+            true);
+
+        /// <summary>
+        ///     The is enabled by default
+        /// </summary>
+        public static readonly DiagnosticDescriptor NonPartialNestedInaccessibleType = new(
+            "FR0002",
+            "Non-partial Nested Inaccessible Component Type",
+            "Inaccessible Nested Component Type '{0}' must be marked as partial",
+            "Source Generation",
+            DiagnosticSeverity.Error,
+            true);
+
+        /// <summary>
+        ///     The is enabled by default
+        /// </summary>
+        public static readonly DiagnosticDescriptor MultipleComponentInterfaces = new(
+            "FR0003",
+            "Multiple Component Interface Implementations",
+            "Components should only implement one update component interface",
+            "Source Generation",
+            DiagnosticSeverity.Warning,
+            true);
+
+        /// <summary>
+        ///     The supported diagnostics
+        /// </summary>
+        private static readonly FastImmutableArray<DiagnosticDescriptor> _supportedDiagnostics =
+            new FastImmutableArray<DiagnosticDescriptor>(new[] { NonPartialGenericComponent, NonPartialOuterInaccessibleType, NonPartialNestedInaccessibleType, MultipleComponentInterfaces });
 
         /// <summary>
         ///     Gets the value of the supported diagnostics
@@ -163,50 +195,5 @@ namespace Alis.Core.Ecs.Generator
                 context.ReportDiagnostic(Diagnostic.Create(diagnosticDescriptor, location.Locations.First(), args));
             }
         }
-
-#pragma warning disable RS2008 // Enable analyzer release tracking
-        /// <summary>
-        ///     The is enabled by default
-        /// </summary>
-        public static readonly DiagnosticDescriptor NonPartialGenericComponent = new(
-            "FR0000",
-            "Non-partial Generic Component Type",
-            "Generic Component '{0}' must be marked as partial",
-            "Source Generation",
-            DiagnosticSeverity.Error,
-            true);
-
-        /// <summary>
-        ///     The is enabled by default
-        /// </summary>
-        public static readonly DiagnosticDescriptor NonPartialOuterInaccessibleType = new(
-            "FR0001",
-            "Non-partial Outer Inaccessible Type",
-            "Outer type of inaccessible nested component type '{0}' must be marked as partial",
-            "Source Generation",
-            DiagnosticSeverity.Error,
-            true);
-
-        /// <summary>
-        ///     The is enabled by default
-        /// </summary>
-        public static readonly DiagnosticDescriptor NonPartialNestedInaccessibleType = new(
-            "FR0002",
-            "Non-partial Nested Inaccessible Component Type",
-            "Inaccessible Nested Component Type '{0}' must be marked as partial",
-            "Source Generation",
-            DiagnosticSeverity.Error,
-            true);
-
-        /// <summary>
-        ///     The is enabled by default
-        /// </summary>
-        public static readonly DiagnosticDescriptor MultipleComponentInterfaces = new(
-            "FR0003",
-            "Multiple Component Interface Implementations",
-            "Components should only implement one update component interface",
-            "Source Generation",
-            DiagnosticSeverity.Warning,
-            true);
     }
 }
