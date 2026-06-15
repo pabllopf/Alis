@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/Qwen3.5-35B-A3B-4bit",
-  "small_model": "omlx/Qwen3.5-35B-A3B-4bit",
+  "model": "llama/unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit",
+  "small_model": "llama/unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit",
 
   "provider": {
     "omlx": {
@@ -179,6 +179,12 @@
           "modalities": {
             "input": ["text"],
             "output": ["text"]
+          },
+          "maxInputTokens": 262144,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 262144,
+            "output": 131584
           }
         }
       }
@@ -237,10 +243,6 @@
     ]
   },
 
-  "instructions": [
-    "CONTRIBUTING.md"
-  ],
-
   "tools": {
     "ripgrep": true,
     "fd": true,
@@ -250,12 +252,8 @@
   },
 
   "plugin": [
-    ".opencode/plugins/tree-sitter-csharp.js",
-    ".opencode/plugins/test-impact.js",
-    ".opencode/plugins/git-smart-context.js",
-    ".opencode/plugins/file-summary-cache.js",
     "oc-tps@latest"
   ],
 
-  "autoupdate": false
+  "autoupdate": true
 }
