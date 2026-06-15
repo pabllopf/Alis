@@ -155,20 +155,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="obj">The object to compare.</param>
         /// <returns><c>true</c> if the object is a <see cref="Matrix3X2" /> with equal elements; otherwise, <c>false</c>.</returns>
         
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (Equals(this, obj))
-            {
-                return true;
-            }
-
-            return (obj.GetType() == GetType()) && Equals((Matrix3X2) obj);
-        }
+        public override bool Equals(object obj) => obj is Matrix3X2 other && Equals(other);
 
         /// <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
         /// <param name="value1">The first matrix.</param>

@@ -201,5 +201,65 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(0f, result.M12);
             Assert.Equal(0f, result.M21);
         }
+
+        /// <summary>
+        ///     Tests that equals returns true for identical matrices
+        /// </summary>
+        [Fact]
+        public void Equals_WithIdenticalMatrices_ReturnsTrue()
+        {
+            Matrix3X2 first = new Matrix3X2(1f, 2f, 3f, 4f, 5f, 6f);
+            Matrix3X2 second = new Matrix3X2(1f, 2f, 3f, 4f, 5f, 6f);
+
+            Assert.True(first.Equals(second));
+            Assert.True(first.Equals((object)second));
+        }
+
+        /// <summary>
+        ///     Tests that equals returns false for different matrices
+        /// </summary>
+        [Fact]
+        public void Equals_WithDifferentMatrices_ReturnsFalse()
+        {
+            Matrix3X2 first = new Matrix3X2(1f, 2f, 3f, 4f, 5f, 6f);
+            Matrix3X2 second = new Matrix3X2(2f, 2f, 3f, 4f, 5f, 6f);
+
+            Assert.False(first.Equals(second));
+        }
+
+        /// <summary>
+        ///     Tests that equals returns false for null
+        /// </summary>
+        [Fact]
+        public void Equals_WithNull_ReturnsFalse()
+        {
+            Matrix3X2 matrix = new Matrix3X2(1f, 2f, 3f, 4f, 5f, 6f);
+
+            Assert.False(matrix.Equals(null));
+        }
+
+        /// <summary>
+        ///     Tests that equals returns false for different type
+        /// </summary>
+        [Fact]
+        public void Equals_WithDifferentType_ReturnsFalse()
+        {
+            Matrix3X2 matrix = new Matrix3X2(1f, 2f, 3f, 4f, 5f, 6f);
+
+            Assert.False(matrix.Equals("not a matrix"));
+        }
+
+        /// <summary>
+        ///     Tests that equals with exact comparison differs from tolerance operator
+        /// </summary>
+        [Fact]
+        public void Equals_UsesExactComparison_UnlikeOperator()
+        {
+            Matrix3X2 first = new Matrix3X2(1f, 2f, 3f, 4f, 5f, 6f);
+            Matrix3X2 second = new Matrix3X2(1.05f, 2.05f, 3.05f, 4.05f, 5.05f, 6.05f);
+
+            Assert.True(first == second);        // tolerance-based
+            Assert.False(first.Equals(second));  // exact comparison
+        }
     }
 }

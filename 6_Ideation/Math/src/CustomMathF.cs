@@ -172,6 +172,10 @@ namespace Alis.Core.Aspect.Math
                 return float.NaN;
             }
 
+            // Exact values at boundaries — Taylor series converges too slowly near ±1
+            if (x <= -1f) return Pi;
+            if (x >= 1f) return 0f;
+
             float angle = Pi / 2;
             float term = x;
             float squared = x * x;

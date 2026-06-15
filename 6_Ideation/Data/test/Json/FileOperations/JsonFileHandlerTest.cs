@@ -255,6 +255,24 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         }
 
         /// <summary>
+        ///     Tests that deserialize from file throws file not found when file is deleted after check
+        /// </summary>
+        [Fact]
+        public void DeserializeFromFile_ThrowsFileNotFoundException_WhenFileMissing()
+        {
+            string relativePath = Path.Combine("JsonFileHandlerTests", "missing");
+            string filePath = Path.Combine(Environment.CurrentDirectory, relativePath, "missing.json");
+
+            if (Directory.Exists(Path.GetDirectoryName(filePath)))
+            {
+                Directory.Delete(Path.GetDirectoryName(filePath), true);
+            }
+
+            Assert.Throws<FileNotFoundException>(() =>
+                _fileHandler.DeserializeFromFile<TestObject>("missing", relativePath));
+        }
+
+        /// <summary>
         ///     The test object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />

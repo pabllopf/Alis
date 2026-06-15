@@ -567,9 +567,16 @@ namespace Alis.Core.Aspect.Math.Collections
                 foreach (T item in items)
                 {
                     int index = IndexOf(item, 0, _count, equalityComparer);
-                    while ((index >= 0) && !indicesToRemove.Add(index) && (index + 1 < _count))
+                    while (index >= 0)
                     {
-                        index = IndexOf(item, index + 1, equalityComparer);
+                        indicesToRemove.Add(index);
+                        index++;
+                        if (index >= _count)
+                        {
+                            break;
+                        }
+
+                        index = IndexOf(item, index, _count - index, equalityComparer);
                     }
                 }
 

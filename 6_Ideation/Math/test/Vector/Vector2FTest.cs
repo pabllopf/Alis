@@ -1350,6 +1350,20 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
+        ///     Tests that to string with format provider via i formattable returns formatted string
+        /// </summary>
+        [Fact]
+        public void ToString_WithFormatProviderViaIFormattable_ReturnsFormattedString()
+        {
+            Vector2F v = new Vector2F(1.5f, 2.5f);
+
+            string result = ((System.IFormattable) v).ToString("F1", System.Globalization.CultureInfo.InvariantCulture);
+
+            Assert.Contains("1.5", result);
+            Assert.Contains("2.5", result);
+        }
+
+        /// <summary>
         ///     Tests that to string with format provider returns formatted string
         /// </summary>
         [Fact]

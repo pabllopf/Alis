@@ -322,6 +322,98 @@ namespace Alis.Core.Aspect.Math.Test.Util
         }
 
         /// <summary>
+        ///     Tests that clamp should return max when value exceeds max
+        /// </summary>
+        [Fact]
+        public void Clamp_ShouldReturnMax_WhenValueExceedsMax()
+        {
+            float result = Helper.Clamp(10f, 0f, 5f);
+
+            Assert.Equal(5f, result);
+        }
+
+        /// <summary>
+        ///     Tests that clamp should return min when value is below min
+        /// </summary>
+        [Fact]
+        public void Clamp_ShouldReturnMin_WhenValueIsBelowMin()
+        {
+            float result = Helper.Clamp(-10f, 0f, 5f);
+
+            Assert.Equal(0f, result);
+        }
+
+        /// <summary>
+        ///     Tests that max should return value one when greater
+        /// </summary>
+        [Fact]
+        public void Max_ShouldReturnValueOne_WhenGreater()
+        {
+            float result = Helper.Max(5f, 1f);
+
+            Assert.Equal(5f, result);
+        }
+
+        /// <summary>
+        ///     Tests that min should return value two when smaller
+        /// </summary>
+        [Fact]
+        public void Min_ShouldReturnValueTwo_WhenSmaller()
+        {
+            float result = Helper.Min(5f, 1f);
+
+            Assert.Equal(1f, result);
+        }
+
+        /// <summary>
+        ///     Tests that is power of two should return false when value is not power of two
+        /// </summary>
+        [Fact]
+        public void IsPowerOfTwo_ShouldReturnFalse_WhenValueIsNotPowerOfTwo()
+        {
+            Assert.False(Helper.IsPowerOfTwo(3));
+            Assert.False(Helper.IsPowerOfTwo(0));
+        }
+
+        /// <summary>
+        ///     Tests that wrap angle should wrap positive angle beyond pi
+        /// </summary>
+        [Fact]
+        public void WrapAngle_ShouldWrapPositiveAngle_BeyondPi()
+        {
+            float angle = Constant.Pi + 1f;
+            float result = Helper.WrapAngle(angle);
+
+            Assert.True(result > -Constant.Pi);
+            Assert.True(result <= Constant.Pi);
+        }
+
+        /// <summary>
+        ///     Tests that wrap angle should wrap negative angle below negative pi
+        /// </summary>
+        [Fact]
+        public void WrapAngle_ShouldWrapNegativeAngle_BelowNegativePi()
+        {
+            float angle = -Constant.Pi - 1f;
+            float result = Helper.WrapAngle(angle);
+
+            Assert.True(result > -Constant.Pi);
+            Assert.True(result <= Constant.Pi);
+        }
+
+        /// <summary>
+        ///     Tests that wrap angle should return original angle when angle equals two pi
+        /// </summary>
+        [Fact]
+        public void WrapAngle_ShouldReturnOriginalAngle_WhenAngleEqualsTwoPi()
+        {
+            float angle = Constant.TwoPi;
+            float result = Helper.WrapAngle(angle);
+
+            Assert.Equal(0f, result, 5);
+        }
+
+        /// <summary>
         ///     Tests that hermite should calculate correctly when amount is between zero and one
         /// </summary>
         [Fact]
