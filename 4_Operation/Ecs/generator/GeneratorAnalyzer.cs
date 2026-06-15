@@ -80,6 +80,33 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
+        ///     Analyzes the component interfaces using the specified symbol
+        /// </summary>
+        /// <param name="namedTypeSymbol">The named type symbol</param>
+        /// <returns>The is component and update interface count</returns>
+        private static (bool isComponent, int updateInterfaceCount) AnalyzeComponentInterfaces(INamedTypeSymbol namedTypeSymbol)
+        {
+            bool isComponent = false;
+            int updateInterfaceCount = 0;
+
+            foreach (INamedTypeSymbol @interface in namedTypeSymbol.AllInterfaces)
+            {
+                if (!@interface.IsOrExtendsIComponentBase())
+                {
+                    return (false, 0);
+                }
+
+                isComponent = true;
+                if (!@interface.IsSpecialComponentInterface() && @interface.IsAlisComponentInterface())
+                {
+                    updateInterfaceCount++;
+                }
+            }
+
+            return (isComponent, updateInterfaceCount);
+        }
+
+        /// <summary>
         ///     Analyzes the type declaration using the specified context
         /// </summary>
         /// <param name="context">The context</param>
@@ -91,23 +118,7 @@ namespace Alis.Core.Ecs.Generator
                 return;
             }
 
-            bool isComponent = false;
-            int updateInterfaceCount = 0;
-
-
-            foreach (INamedTypeSymbol @interface in namedTypeSymbol.AllInterfaces)
-            {
-                if (!@interface.IsOrExtendsIComponentBase())
-                {
-                    return;
-                }
-
-                isComponent = true;
-                if (!@interface.IsSpecialComponentInterface() && @interface.IsAlisComponentInterface())
-                {
-                    updateInterfaceCount++;
-                }
-            }
+            (bool isComponent, int updateInterfaceCount) = AnalyzeComponentInterfaces(namedTypeSymbol);
 
             if (!isComponent)
             {
