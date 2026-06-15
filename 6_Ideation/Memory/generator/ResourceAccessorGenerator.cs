@@ -182,7 +182,7 @@ namespace Alis.Core.Aspect.Memory.Generator
         /// <param name="compressedByteDataAsCSharp">The compressed byte data as sharp</param>
         /// <param name="originalHash">The original hash</param>
         /// <returns>The string</returns>
-        private string GenerateRegistrationLoader(string assemblyName, string compressedByteDataAsCSharp, string originalHash)
+        private static string GenerateRegistrationLoader(string assemblyName, string compressedByteDataAsCSharp, string originalHash)
         {
             StringBuilder sb = new StringBuilder();
 
