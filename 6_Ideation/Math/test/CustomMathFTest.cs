@@ -147,6 +147,15 @@ namespace Alis.Core.Aspect.Math.Test
         }
 
         /// <summary>
+        ///     Tests that max with first float smaller than second returns second
+        /// </summary>
+        [Fact]
+        public void Max_WhenFirstIsSmallerFloat_ReturnsSecond()
+        {
+            Assert.Equal(7.5f, CustomMathF.Max(7.4f, 7.5f));
+        }
+
+        /// <summary>
         ///     Tests that min with first int smaller than second returns first
         /// </summary>
         [Fact]
