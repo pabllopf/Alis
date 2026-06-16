@@ -537,12 +537,33 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         ///     Tests that get resource memory stream by name with various resource name patterns
         /// </summary>
-        
+        [Theory]
         [InlineData("app.bmp")]
         [InlineData("APP.BMP")]
         [InlineData("App.Bmp")]
         public void GetResourceMemoryStreamByName_VariousCasePatterns_FindsResource(string resourceName)
         {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            prop.SetValue(null, null);
+            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
+            string assemblyName = "TestAssembly_Case_" + Guid.NewGuid();
+            string expectedContent = "test content for case test";
+            Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", expectedContent}};
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
             using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName(resourceName);
 
             Assert.NotNull(result);
@@ -552,12 +573,33 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         ///     Tests that get resource path by name with various resource name patterns
         /// </summary>
-        
+        [Theory]
         [InlineData("app.bmp")]
         [InlineData("APP.BMP")]
         [InlineData("App.Bmp")]
         public void GetResourcePathByName_VariousCasePatterns_ReturnsValidPath(string resourceName)
         {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            prop.SetValue(null, null);
+            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
+            string assemblyName = "TestAssembly_CasePath_" + Guid.NewGuid();
+            string content = "path case test content";
+            Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", content}};
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
             string result = AssetRegistry.GetResourcePathByName(resourceName);
 
             Assert.NotNull(result);
@@ -807,6 +849,444 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.NotNull(result3);
             Assert.True(File.Exists(result3));
             Assert.Equal(originalContent, File.ReadAllText(result3), ignoreCase: false);
+        }
+
+        /// <summary>
+        ///     Tests that GetResourceMemoryStreamByName throws when active assembly
+        ///     is not registered in the loaders dictionary.
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_ActiveAssemblyNotInLoaders_ThrowsInvalidOperationException()
+        {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            string savedAssembly = (string)prop.GetValue(null);
+            var savedLoaders = new Dictionary<object, object>();
+            {
+                System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
+                foreach (System.Collections.DictionaryEntry entry in loaders)
+                    savedLoaders[entry.Key] = entry.Value;
+            }
+
+            try
+            {
+                // Set ActiveAssemblyName to a non-empty value that is NOT in RegisteredAssetLoaders
+                prop.SetValue(null, "NonExistentAssemblyName");
+                ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
+                    AssetRegistry.GetResourceMemoryStreamByName("any.txt"));
+                Assert.Contains("no tiene un assets.pack registrado", ex.Message);
+            }
+            finally
+            {
+                prop.SetValue(null, savedAssembly);
+                System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
+                loaders.Clear();
+                foreach (var kvp in savedLoaders)
+                    loaders[kvp.Key] = kvp.Value;
+            }
+        }
+
+        /// <summary>
+        ///     Tests that MakeSafeTempName handles extensions longer than 16 characters.
+        /// </summary>
+        [Fact]
+        public void MakeSafeTempName_LongExtension_StripsExtension()
+        {
+            Type at = typeof(AssetRegistry);
+            var method = at.GetMethod("MakeSafeTempName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            string assemblyName = "TestAssembly";
+            string longExtKey = "file." + new string('x', 20);
+
+            string result = (string)method.Invoke(null, new object[] {assemblyName, longExtKey});
+
+            Assert.NotNull(result);
+            Assert.StartsWith(assemblyName + "_", result);
+            // Extension longer than 16 chars should be stripped
+            Assert.DoesNotContain(".xxxxxxxx", result);
+        }
+
+        /// <summary>
+        ///     Tests that MakeSafeTempName keeps a normal extension.
+        /// </summary>
+        [Fact]
+        public void MakeSafeTempName_NormalExtension_IsKept()
+        {
+            Type at = typeof(AssetRegistry);
+            var method = at.GetMethod("MakeSafeTempName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            string assemblyName = "TestAssembly";
+            string normalKey = "file.txt";
+
+            string result = (string)method.Invoke(null, new object[] {assemblyName, normalKey});
+
+            Assert.NotNull(result);
+            Assert.StartsWith(assemblyName + "_", result);
+            Assert.EndsWith(".txt", result);
+        }
+
+        /// <summary>
+        ///     Tests that ToLowerHex returns empty string for null bytes.
+        /// </summary>
+        [Fact]
+        public void ToLowerHex_NullBytes_ReturnsEmpty()
+        {
+            Type at = typeof(AssetRegistry);
+            var method = at.GetMethod("ToLowerHex",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            string result = (string)method.Invoke(null, new object[] {null});
+
+            Assert.Equal(string.Empty, result);
+        }
+
+        /// <summary>
+        ///     Tests that ToLowerHex returns empty string for empty byte array.
+        /// </summary>
+        [Fact]
+        public void ToLowerHex_EmptyBytes_ReturnsEmpty()
+        {
+            Type at = typeof(AssetRegistry);
+            var method = at.GetMethod("ToLowerHex",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            string result = (string)method.Invoke(null, new object[] {Array.Empty<byte>()});
+
+            Assert.Equal(string.Empty, result);
+        }
+
+        /// <summary>
+        ///     Tests that MakeSafeTempName strips extension when it contains a forward slash.
+        /// </summary>
+        [Fact]
+        public void MakeSafeTempName_ExtensionContainsForwardSlash_StripsExtension()
+        {
+            Type at = typeof(AssetRegistry);
+            var method = at.GetMethod("MakeSafeTempName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            string assemblyName = "TestAssembly";
+            string keyWithSlash = "file." + new string('a', 10) + "/bad.ext";
+
+            string result = (string)method.Invoke(null, new object[] {assemblyName, keyWithSlash});
+
+            Assert.NotNull(result);
+            Assert.StartsWith(assemblyName + "_", result);
+            Assert.DoesNotContain("/", result);
+            Assert.DoesNotContain(".aaaaaaaaaa", result);
+        }
+
+        /// <summary>
+        ///     Tests that MakeSafeTempName strips extension when it contains a backslash.
+        /// </summary>
+        [Fact]
+        public void MakeSafeTempName_ExtensionContainsBackslash_StripsExtension()
+        {
+            Type at = typeof(AssetRegistry);
+            var method = at.GetMethod("MakeSafeTempName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            string assemblyName = "TestAssembly";
+            string keyWithBackslash = "file." + new string('b', 10) + "\\bad.ext";
+
+            string result = (string)method.Invoke(null, new object[] {assemblyName, keyWithBackslash});
+
+            Assert.NotNull(result);
+            Assert.StartsWith(assemblyName + "_", result);
+            Assert.DoesNotContain("\\", result);
+        }
+
+        /// <summary>
+        ///     Tests that TryGetCachedPath removes the cache entry when the resource
+        ///     is no longer found in the zip archive (entryCandidate is null).
+        /// </summary>
+        [Fact]
+        public void GetResourcePathByName_CacheEntryWithMissingResource_RemovesCache()
+        {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            prop.SetValue(null, null);
+            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
+            string assemblyName = "CacheRemove_" + Guid.NewGuid();
+            string content = "cache remove test";
+            Dictionary<string, string> testData = new Dictionary<string, string> {{"existing.txt", content}};
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            string result1 = AssetRegistry.GetResourcePathByName("existing.txt");
+            Assert.NotNull(result1);
+            Assert.True(File.Exists(result1));
+
+            string result2 = AssetRegistry.GetResourcePathByName("existing.txt");
+            Assert.Equal(result1, result2);
+
+            File.WriteAllText(result1, "modified");
+            File.SetLastWriteTimeUtc(result1, DateTime.UtcNow.AddDays(-1));
+
+            string result3 = AssetRegistry.GetResourcePathByName("existing.txt");
+            Assert.NotNull(result3);
+            Assert.True(File.Exists(result3));
+            Assert.Equal(content, File.ReadAllText(result3));
+        }
+
+        /// <summary>
+        ///     Tests that FindZipEntryInfo resolves a resource by file name when
+        ///     there is a single unambiguous match using path-based lookup.
+        /// </summary>
+        [Fact]
+        public void FindZipEntryInfo_FullPathMatch_ReturnsEntry()
+        {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            prop.SetValue(null, null);
+            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
+            string assemblyName = "FullPathMatch_" + Guid.NewGuid();
+            Dictionary<string, string> entries = new Dictionary<string, string>
+            {
+                {"assets/images/icon.png", "icon content"}
+            };
+            byte[] zipBytes = CreateTestZipBytes(entries);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("assets/images/icon.png");
+            Assert.NotNull(result);
+            Assert.True(result.Length > 0);
+        }
+
+        /// <summary>
+        ///     Tests that FindZipEntryInfo resolves a resource by partial name match
+        ///     when full path and file name lookups fail.
+        /// </summary>
+        [Fact]
+        public void FindZipEntryInfo_PartialMatch_ReturnsEntry()
+        {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            prop.SetValue(null, null);
+            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
+            string assemblyName = "PartialMatch_" + Guid.NewGuid();
+            Dictionary<string, string> entries = new Dictionary<string, string>
+            {
+                {"data/config/settings.xml", "settings content"}
+            };
+            byte[] zipBytes = CreateTestZipBytes(entries);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("settings");
+            Assert.NotNull(result);
+            Assert.True(result.Length > 0);
+        }
+
+        /// <summary>
+        ///     Tests that FindZipEntryInfo can resolve a resource by file name when
+        ///     there is a single unambiguous match.
+        /// </summary>
+        [Fact]
+        public void FindZipEntryInfo_FileNameMatch_WhenSingleMatch()
+        {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            prop.SetValue(null, null);
+            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
+            string assemblyName = "FindByName_" + Guid.NewGuid();
+            Dictionary<string, string> entries = new Dictionary<string, string>
+            {
+                {"subdir/uniquefile.txt", "content"}
+            };
+            byte[] zipBytes = CreateTestZipBytes(entries);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("uniquefile.txt");
+            Assert.NotNull(result);
+            Assert.True(result.Length > 0);
+        }
+
+        /// <summary>
+        ///     Tests that GetResourceMemoryStreamByName with null active assembly and no loaders
+        ///     throws the correct exception when no assembly is configured.
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_NullActiveAssemblyAndNoLoaders_ThrowsInvalidOperation()
+        {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            string savedAssembly = (string)prop.GetValue(null);
+            var savedLoaders = new Dictionary<object, object>();
+            {
+                System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
+                foreach (System.Collections.DictionaryEntry entry in loaders)
+                    savedLoaders[entry.Key] = entry.Value;
+            }
+
+            try
+            {
+                prop.SetValue(null, null);
+                ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+                ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+                ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
+                    AssetRegistry.GetResourceMemoryStreamByName("any.txt"));
+                Assert.Contains("No hay una asamblea activa configurada", ex.Message);
+            }
+            finally
+            {
+                prop.SetValue(null, savedAssembly);
+                System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
+                loaders.Clear();
+                foreach (var kvp in savedLoaders)
+                    loaders[kvp.Key] = kvp.Value;
+            }
+        }
+
+        /// <summary>
+        ///     Tests that GetResourcePathByName with active assembly but no registered
+        ///     loader throws InvalidOperationException.
+        /// </summary>
+        [Fact]
+        public void GetResourcePathByName_ActiveAssemblyNotInLoaders_ThrowsInvalidOperation()
+        {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            string savedAssembly = (string)prop.GetValue(null);
+            var savedLoaders = new Dictionary<object, object>();
+            {
+                System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
+                foreach (System.Collections.DictionaryEntry entry in loaders)
+                    savedLoaders[entry.Key] = entry.Value;
+            }
+
+            try
+            {
+                // Set active assembly to a name that is NOT in the loaders
+                prop.SetValue(null, "MissingAssembly_" + Guid.NewGuid());
+                ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
+                    AssetRegistry.GetResourcePathByName("any.txt"));
+                Assert.Contains("no tiene un assets.pack registrado", ex.Message);
+            }
+            finally
+            {
+                prop.SetValue(null, savedAssembly);
+                System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
+                loaders.Clear();
+                foreach (var kvp in savedLoaders)
+                    loaders[kvp.Key] = kvp.Value;
+            }
+        }
+
+        /// <summary>
+        ///     Tests that EnsureZipCachedForActiveAssembly throws when the loader returns
+        ///     a null stream, covering the srcStream == null check.
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_NullLoaderStream_ThrowsFileNotFoundException()
+        {
+            Type at = typeof(AssetRegistry);
+            var prop = at.GetProperty("ActiveAssemblyName",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var dict = at.GetField("RegisteredAssetLoaders",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var zipCache = at.GetField("_zipCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var pathCache = at.GetField("_extractedPathCache",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            string savedAssembly = (string)prop.GetValue(null);
+            var savedLoaders = new Dictionary<object, object>();
+            {
+                System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
+                foreach (System.Collections.DictionaryEntry entry in loaders)
+                    savedLoaders[entry.Key] = entry.Value;
+            }
+
+            try
+            {
+                prop.SetValue(null, null);
+                ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
+                ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
+                ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
+
+                string assemblyName = "NullStreamAssembly_" + Guid.NewGuid();
+                AssetRegistry.RegisterAssembly(assemblyName, () => null);
+
+                FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
+                    AssetRegistry.GetResourceMemoryStreamByName("any.txt"));
+                Assert.Contains("not found", ex.Message);
+            }
+            finally
+            {
+                prop.SetValue(null, savedAssembly);
+                System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
+                loaders.Clear();
+                foreach (var kvp in savedLoaders)
+                    loaders[kvp.Key] = kvp.Value;
+            }
         }
     }
 }
