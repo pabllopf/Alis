@@ -59,7 +59,14 @@ namespace Alis.Core.Ecs.Generator
         /// <exception cref="ArgumentNullException"></exception>
         public EquatableArray(T[] items)
         {
+#if NET6_0_OR_GREATER
             ArgumentNullException.ThrowIfNull(items);
+#else
+            if (items is null)
+            {
+                throw new ArgumentNullException(nameof(items));
+            }
+#endif
 
             Items = items;
         }

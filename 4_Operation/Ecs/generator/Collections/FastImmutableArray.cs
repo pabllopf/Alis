@@ -170,7 +170,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             /// </summary>
             /// <param name="index">The index.</param>
             /// <returns></returns>
-            /// <exception cref="IndexOutOfRangeException">
+            /// <exception cref="ArgumentOutOfRangeException">
             /// </exception>
             public T this[int index]
             {
@@ -178,7 +178,7 @@ namespace Alis.Core.Ecs.Generator.Collections
                 {
                     if (index >= Count)
                     {
-                        ThrowIndexOutOfRangeException();
+                        ThrowArgumentOutOfRangeException();
                     }
 
                     return _elements[index];
@@ -188,7 +188,7 @@ namespace Alis.Core.Ecs.Generator.Collections
                 {
                     if (index >= Count)
                     {
-                        ThrowIndexOutOfRangeException();
+                        ThrowArgumentOutOfRangeException();
                     }
 
                     _elements[index] = value;
@@ -314,22 +314,22 @@ namespace Alis.Core.Ecs.Generator.Collections
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
             /// <summary>
-            ///     Throws the index out of range exception
+            ///     Throws the argument out of range exception
             /// </summary>
-            private static void ThrowIndexOutOfRangeException() => throw new ArgumentOutOfRangeException();
+            private static void ThrowArgumentOutOfRangeException() => throw new ArgumentOutOfRangeException();
 
             /// <summary>
             ///     Gets a read-only reference to the element at the specified index.
             /// </summary>
             /// <param name="index">The index.</param>
             /// <returns></returns>
-            /// <exception cref="IndexOutOfRangeException">
+            /// <exception cref="ArgumentOutOfRangeException">
             /// </exception>
             public ref readonly T ItemRef(int index)
             {
                 if (index >= Count)
                 {
-                    ThrowIndexOutOfRangeException();
+                    ThrowArgumentOutOfRangeException();
                 }
 
                 return ref _elements[index];

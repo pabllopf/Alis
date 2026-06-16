@@ -55,8 +55,7 @@ namespace Alis.Core.Ecs.Generator
             "Generic Component '{0}' must be marked as partial",
             CategorySourceGeneration,
             DiagnosticSeverity.Error,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary>
         ///     The is enabled by default
@@ -67,8 +66,7 @@ namespace Alis.Core.Ecs.Generator
             "Outer type of inaccessible nested component type '{0}' must be marked as partial",
             CategorySourceGeneration,
             DiagnosticSeverity.Error,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary>
         ///     The is enabled by default
@@ -79,8 +77,7 @@ namespace Alis.Core.Ecs.Generator
             "Inaccessible Nested Component Type '{0}' must be marked as partial",
             CategorySourceGeneration,
             DiagnosticSeverity.Error,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary>
         ///     The is enabled by default
@@ -91,8 +88,7 @@ namespace Alis.Core.Ecs.Generator
             "Components should only implement one update component interface",
             CategorySourceGeneration,
             DiagnosticSeverity.Warning,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary>
         ///     The supported diagnostics
