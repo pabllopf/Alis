@@ -263,5 +263,49 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             int closeCount = formatted.Count(c => c == '}');
             Assert.Equal(openCount, closeCount);
         }
+
+        /// <summary>
+        ///     Tests that json log formatter backspace character should be escaped
+        /// </summary>
+        [Fact]
+        public void JsonLogFormatter_BackspaceCharacter_ShouldBeEscaped()
+        {
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message with\bbackspace", "Logger");
+
+            string formatted = formatter.Format(entry);
+
+            Assert.Contains("\\b", formatted);
+        }
+
+        /// <summary>
+        ///     Tests that json log formatter form feed character should be escaped
+        /// </summary>
+        [Fact]
+        public void JsonLogFormatter_FormFeedCharacter_ShouldBeEscaped()
+        {
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message with\fformfeed", "Logger");
+
+            string formatted = formatter.Format(entry);
+
+            Assert.Contains("\\f", formatted);
+        }
+
+        /// <summary>
+        ///     Tests that json log formatter control characters below 32 should use unicode escape
+        /// </summary>
+        [Fact]
+        public void JsonLogFormatter_ControlBelow32_ShouldUseUnicodeEscape()
+        {
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Null\0and\x01\x02in message", "Logger");
+
+            string formatted = formatter.Format(entry);
+
+            Assert.Contains("\\u0000", formatted);
+            Assert.Contains("\\u0001", formatted);
+            Assert.Contains("\\u0002", formatted);
+        }
     }
 }
