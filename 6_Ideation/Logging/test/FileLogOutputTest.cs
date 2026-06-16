@@ -297,6 +297,60 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
+        ///     Tests that flush after dispose returns early without throwing
+        /// </summary>
+        [Fact]
+        public void Flush_AfterDispose_ReturnsEarly()
+        {
+            string filePath = Path.Combine(_testDir, "flush_dispose.log");
+            Directory.CreateDirectory(_testDir);
+            FileLogOutput output = new FileLogOutput(filePath);
+
+            output.Dispose();
+            output.Flush(); // Should not throw and return early
+        }
+
+        /// <summary>
+        ///     Tests that write after dispose returns early without throwing
+        /// </summary>
+        [Fact]
+        public void Write_AfterDispose_DoesNotWrite()
+        {
+            string filePath = Path.Combine(_testDir, "write_dispose.log");
+            Directory.CreateDirectory(_testDir);
+            FileLogOutput output = new FileLogOutput(filePath);
+
+            output.Dispose();
+            output.Write(new LogEntry(LogLevel.Info, "After dispose", "Logger"));
+        }
+
+        /// <summary>
+        ///     Tests that file log output flush after dispose does not throw
+        /// </summary>
+        [Fact]
+        public void FileLogOutput_Flush_AfterDispose_DoesNotThrow()
+        {
+            string filePath = Path.Combine(_testDir, "flush_after_dispose.log");
+            Directory.CreateDirectory(_testDir);
+            FileLogOutput output = new FileLogOutput(filePath);
+
+            output.Dispose();
+            output.Flush(); // Should not throw when disposed
+        }
+
+        /// <summary>
+        ///     Tests that file log output constructor invalid path sets is enabled false
+        /// </summary>
+        [Fact]
+        public void FileLogOutput_InvalidPath_SetsIsEnabledFalse()
+        {
+            FileLogOutput output = new FileLogOutput("/invalid_dir_does_not_exist_12345/log.txt");
+
+            Assert.False(output.IsEnabled);
+            output.Dispose();
+        }
+
+        /// <summary>
         ///     Cleanups this instance
         /// </summary>
         private void Cleanup()
