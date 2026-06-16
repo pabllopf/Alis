@@ -316,7 +316,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             /// <summary>
             ///     Throws the index out of range exception
             /// </summary>
-            private static void ThrowIndexOutOfRangeException() => throw new IndexOutOfRangeException();
+            private static void ThrowIndexOutOfRangeException() => throw new ArgumentOutOfRangeException();
 
             /// <summary>
             ///     Gets a read-only reference to the element at the specified index.
