@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Filters;
 using Alis.Core.Aspect.Logging.Formatters;
@@ -123,20 +124,53 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        [Fact]
+        public void ShouldSwallowExceptionDuringWriteInCoreLogger()
+        {
+            ThrowingOutput throwOnWrite = new ThrowingOutput(throwOnWrite: true);
+            MemoryLogOutput memory = new MemoryLogOutput();
+            LoggerFactory factory = new LoggerFactory();
+            factory.AddOutput(throwOnWrite);
+            factory.AddOutput(memory);
+            ILogger logger = factory.CreateLogger("Test");
+
+            Exception ex = Record.Exception(() => logger.LogInfo("msg"));
+
+            Assert.Null(ex);
+            Assert.Single(memory.GetEntries());
+        }
+
+        [Fact]
+        public void ShouldSwallowExceptionFromThrowingFilter()
+        {
+            MemoryLogOutput memory = new MemoryLogOutput();
+            LoggerFactory factory = new LoggerFactory();
+            factory.AddOutput(memory);
+            factory.AddFilter(new ThrowingFilter());
+            ILogger logger = factory.CreateLogger("Test");
+
+            Exception ex = Record.Exception(() => logger.LogInfo("msg"));
+
+            Assert.Null(ex);
+            Assert.Empty(memory.GetEntries());
+        }
+
         /// <summary>
-        ///     Helper output that throws on Dispose or Flush.
+        ///     Helper output that throws on Dispose, Flush, or Write.
         /// </summary>
         private sealed class ThrowingOutput : ILogOutput
         {
             private readonly bool _throwOnDispose;
             private readonly bool _throwOnFlush;
+            private readonly bool _throwOnWrite;
 
             public bool DisposeCalled { get; private set; }
 
-            public ThrowingOutput(bool throwOnDispose = false, bool throwOnFlush = false)
+            public ThrowingOutput(bool throwOnDispose = false, bool throwOnFlush = false, bool throwOnWrite = false)
             {
                 _throwOnDispose = throwOnDispose;
                 _throwOnFlush = throwOnFlush;
+                _throwOnWrite = throwOnWrite;
             }
 
             public string Name => "ThrowingOutput";
@@ -144,6 +178,10 @@ namespace Alis.Core.Aspect.Logging.Test
 
             public void Write(ILogEntry entry)
             {
+                if (_throwOnWrite)
+                {
+                    throw new InvalidOperationException("Write failed");
+                }
             }
 
             public void Flush()
@@ -161,6 +199,19 @@ namespace Alis.Core.Aspect.Logging.Test
                 {
                     throw new InvalidOperationException("Dispose failed");
                 }
+            }
+        }
+
+        /// <summary>
+        ///     Helper filter that throws on ShouldLog.
+        /// </summary>
+        private sealed class ThrowingFilter : ILogFilter
+        {
+            public string Name => "ThrowingFilter";
+
+            public bool ShouldLog(ILogEntry entry)
+            {
+                throw new InvalidOperationException("Filter failed");
             }
         }
     }
