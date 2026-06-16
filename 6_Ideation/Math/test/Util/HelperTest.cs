@@ -431,5 +431,49 @@ namespace Alis.Core.Aspect.Math.Test.Util
 
             Assert.Equal(expected, result);
         }
+
+        /// <summary>
+        ///     Tests that max returns value two when value one is less
+        /// </summary>
+        [Fact]
+        public void Max_WhenValue1IsLess_ReturnsValue2()
+        {
+            float result = Helper.Max(3f, 7f);
+
+            Assert.Equal(7f, result);
+        }
+
+        /// <summary>
+        ///     Tests that max returns same value when both are equal
+        /// </summary>
+        [Fact]
+        public void Max_WhenValuesAreEqual_ReturnsSame()
+        {
+            float result = Helper.Max(5f, 5f);
+
+            Assert.Equal(5f, result);
+        }
+
+        /// <summary>
+        ///     Tests that min returns value one when value one is less
+        /// </summary>
+        [Fact]
+        public void Min_WhenValue1IsLess_ReturnsValue1()
+        {
+            float result = Helper.Min(3f, 7f);
+
+            Assert.Equal(3f, result);
+        }
+
+        /// <summary>
+        ///     Tests that min returns same value when both are equal
+        /// </summary>
+        [Fact]
+        public void Min_WhenValuesAreEqual_ReturnsSame()
+        {
+            float result = Helper.Min(5f, 5f);
+
+            Assert.Equal(5f, result);
+        }
     }
 }
