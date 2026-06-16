@@ -118,7 +118,7 @@ namespace Alis.Core.Ecs.Generator
           UpdateModelFlags flags = UpdateModelFlags.None;
             INamedTypeSymbol @interface = null;
 
-            string[] genericArguments = new string[0];
+            string[] genericArguments = Array.Empty<string>();
             bool needsRegistering = false;
 
             (needsRegistering, @interface, genericArguments, flags) = InspectComponentInterfaces(componentTypeSymbol, ct, flags);
@@ -228,7 +228,7 @@ namespace Alis.Core.Ecs.Generator
         private static (bool needsRegistering, INamedTypeSymbol @interface, string[] genericArguments, UpdateModelFlags flags) InspectComponentInterfaces(INamedTypeSymbol componentTypeSymbol, CancellationToken ct, UpdateModelFlags flags)
         {
             INamedTypeSymbol @interface = null;
-            string[] genericArguments = new string[0];
+            string[] genericArguments = Array.Empty<string>();
             bool needsRegistering = false;
 
             foreach (INamedTypeSymbol potentialInterface in componentTypeSymbol.AllInterfaces)
