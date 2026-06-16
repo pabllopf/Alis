@@ -1,14 +1,4 @@
 {
-  "total": 2,
-  "p": 1,
-  "ps": 500,
-  "paging": {
-    "pageIndex": 1,
-    "pageSize": 500,
-    "total": 2
-  },
-  "effortTotal": 30,
-  "debtTotal": 30,
   "issues": [
     {
       "key": "AZ6mihJTkNcRXyPBxty3",
@@ -109,43 +99,5 @@
       "lastChangeAnalysisUuid": "5d64b5b7-d8e3-4010-9099-51067e6a241e",
       "lastChangeSource": "ANALYSIS"
     }
-  ],
-  "components": [
-    {
-      "organization": "pabllopf-official",
-      "key": "pabllopf-official_alis:4_Operation/Ecs/generator/EquatableArray.cs",
-      "uuid": "AZ7KU7B9gfB4D_M8MD0r",
-      "enabled": true,
-      "qualifier": "FIL",
-      "name": "EquatableArray.cs",
-      "longName": "4_Operation/Ecs/generator/EquatableArray.cs",
-      "path": "4_Operation/Ecs/generator/EquatableArray.cs"
-    },
-    {
-      "organization": "pabllopf-official",
-      "key": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
-      "uuid": "AZ1dvMFRMbZ4NfML313M",
-      "enabled": true,
-      "qualifier": "FIL",
-      "name": "DynamicTreeBroadPhase.cs",
-      "longName": "4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
-      "path": "4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs"
-    },
-    {
-      "organization": "pabllopf-official",
-      "key": "pabllopf-official_alis",
-      "uuid": "AZ1dr0tGe6OZJxlmhqNc",
-      "enabled": true,
-      "qualifier": "TRK",
-      "name": "Alis",
-      "longName": "Alis"
-    }
-  ],
-  "organizations": [
-    {
-      "key": "pabllopf-official",
-      "name": "Pablo Perdomo Falc\u00f3n"
-    }
-  ],
-  "facets": []
+  ]
 }
