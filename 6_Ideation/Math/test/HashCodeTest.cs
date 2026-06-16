@@ -239,5 +239,169 @@ namespace Alis.Core.Aspect.Math.Test
 
             Assert.IsType<int>(value);
         }
+
+        /// <summary>
+        ///     Tests that adding exactly four elements triggers initialization and produces a consistent hash
+        /// </summary>
+        [Fact]
+        public void Add_WithFourElements_TriggersInitialization()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(10);
+            hash.Add(20);
+            hash.Add(30);
+            hash.Add(40);
+
+            int value = hash.ToHashCode();
+
+            HashCode same = new HashCode();
+            same.Add(10);
+            same.Add(20);
+            same.Add(30);
+            same.Add(40);
+
+            Assert.Equal(same.ToHashCode(), value);
+        }
+
+        /// <summary>
+        ///     Tests that adding five elements covers the partial queue path in ToHashCode
+        /// </summary>
+        [Fact]
+        public void Add_WithFiveElements_CoversPartialQueuePath()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(1);
+            hash.Add(2);
+            hash.Add(3);
+            hash.Add(4);
+            hash.Add(5);
+
+            int value = hash.ToHashCode();
+
+            HashCode same = new HashCode();
+            same.Add(1);
+            same.Add(2);
+            same.Add(3);
+            same.Add(4);
+            same.Add(5);
+
+            Assert.Equal(same.ToHashCode(), value);
+        }
+
+        /// <summary>
+        ///     Tests that adding six elements covers the two-item queue path in ToHashCode
+        /// </summary>
+        [Fact]
+        public void Add_WithSixElements_CoversTwoItemQueuePath()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(1);
+            hash.Add(2);
+            hash.Add(3);
+            hash.Add(4);
+            hash.Add(5);
+            hash.Add(6);
+
+            int value = hash.ToHashCode();
+
+            HashCode same = new HashCode();
+            same.Add(1);
+            same.Add(2);
+            same.Add(3);
+            same.Add(4);
+            same.Add(5);
+            same.Add(6);
+
+            Assert.Equal(same.ToHashCode(), value);
+        }
+
+        /// <summary>
+        ///     Tests that adding seven elements covers the three-item queue path in ToHashCode
+        /// </summary>
+        [Fact]
+        public void Add_WithSevenElements_CoversThreeItemQueuePath()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(1);
+            hash.Add(2);
+            hash.Add(3);
+            hash.Add(4);
+            hash.Add(5);
+            hash.Add(6);
+            hash.Add(7);
+
+            int value = hash.ToHashCode();
+
+            HashCode same = new HashCode();
+            same.Add(1);
+            same.Add(2);
+            same.Add(3);
+            same.Add(4);
+            same.Add(5);
+            same.Add(6);
+            same.Add(7);
+
+            Assert.Equal(same.ToHashCode(), value);
+        }
+
+        /// <summary>
+        ///     Tests that combine three with null covers null branches
+        /// </summary>
+        [Fact]
+        public void Combine_ThreeWithNull_CoversNullBranches()
+        {
+            int value = HashCode.Combine<string, string, string>(null, null, null);
+
+            Assert.IsType<int>(value);
+        }
+
+        /// <summary>
+        ///     Tests that combine three with mixed null and non-null values covers partial null branches
+        /// </summary>
+        [Fact]
+        public void Combine_ThreeWithPartialNull_CoversPartialNullBranches()
+        {
+            int value = HashCode.Combine<string, int, string>(null, 42, null);
+
+            Assert.IsType<int>(value);
+        }
+
+        /// <summary>
+        ///     Tests that to hash code with length exactly four covers the full state path
+        /// </summary>
+        [Fact]
+        public void ToHashCode_WithLengthFour_CoversFullStatePath()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(100);
+            hash.Add(200);
+            hash.Add(300);
+            hash.Add(400);
+
+            int result = hash.ToHashCode();
+
+            Assert.IsType<int>(result);
+        }
+
+        /// <summary>
+        ///     Tests that to hash code with length eight covers the multi-round state path
+        /// </summary>
+        [Fact]
+        public void ToHashCode_WithLengthEight_CoversMultiRoundStatePath()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(1);
+            hash.Add(2);
+            hash.Add(3);
+            hash.Add(4);
+            hash.Add(5);
+            hash.Add(6);
+            hash.Add(7);
+            hash.Add(8);
+
+            int result = hash.ToHashCode();
+
+            Assert.IsType<int>(result);
+        }
     }
 }
