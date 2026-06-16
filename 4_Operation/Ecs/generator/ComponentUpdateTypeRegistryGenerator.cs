@@ -235,24 +235,29 @@ namespace Alis.Core.Ecs.Generator
             {
                 ct.ThrowIfCancellationRequested();
 
-                if (!potentialInterface.IsOrExtendsIComponentBase())
-                {
-                    continue;
-                }
-
-                needsRegistering = true;
-
-                if (potentialInterface.IsSpecialComponentInterface())
-                {
-                    ProcessSpecialComponentInterface(potentialInterface, ref @interface, ref flags);
-                }
-                else if (potentialInterface.IsAlisComponentInterface())
-                {
-                    ProcessAlisComponentInterface(potentialInterface, ref @interface, ref genericArguments);
-                }
+                InspectSingleInterface(potentialInterface, ref @interface, ref genericArguments, ref needsRegistering, ref flags);
             }
 
             return (needsRegistering, @interface, genericArguments, flags);
+        }
+
+        private static void InspectSingleInterface(INamedTypeSymbol potentialInterface, ref INamedTypeSymbol @interface, ref string[] genericArguments, ref bool needsRegistering, ref UpdateModelFlags flags)
+        {
+            if (!potentialInterface.IsOrExtendsIComponentBase())
+            {
+                return;
+            }
+
+            needsRegistering = true;
+
+            if (potentialInterface.IsSpecialComponentInterface())
+            {
+                ProcessSpecialComponentInterface(potentialInterface, ref @interface, ref flags);
+            }
+            else if (potentialInterface.IsAlisComponentInterface())
+            {
+                ProcessAlisComponentInterface(potentialInterface, ref @interface, ref genericArguments);
+            }
         }
 
         private static void ProcessSpecialComponentInterface(INamedTypeSymbol potentialInterface, ref INamedTypeSymbol @interface, ref UpdateModelFlags flags)

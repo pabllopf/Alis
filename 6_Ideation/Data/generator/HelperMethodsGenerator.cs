@@ -44,6 +44,7 @@ namespace Alis.Core.Aspect.Data.Generator
         private const string MethodBodyStart = "        {";
         private const string BlockStart = "            {";
         private const string BlockEnd = "            }";
+        private const string MethodEnd = "        }";
 
         /// <summary>
         ///     Generates all helper methods for serialization and deserialization.
