@@ -1,0 +1,7 @@
+{
+    "errors": [
+        {
+            "msg": "Value of parameter 'types' (SECURITY_HOTSPOT) must be one of: [CODE_SMELL, BUG, VULNERABILITY]"
+        }
+    ]
+}

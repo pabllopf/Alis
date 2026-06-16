@@ -1,0 +1,22 @@
+{
+  "project": "pabllopf-official_alis",
+  "fetchedAt": "",
+  "totalIssues": 2,
+  "resolvedCount": 2,
+  "issues": {
+    "AZ6mihJTkNcRXyPBxty3": {
+      "status": "resolved",
+      "assignedWorker": null,
+      "attemptCount": 1,
+      "lastAttempt": "2026-06-16T21:35:00+0000",
+      "resolvedAt": "2026-06-16T21:35:00+0000"
+    },
+    "AZ7KU79QgfB4D_M8MD1M": {
+      "status": "resolved",
+      "assignedWorker": null,
+      "attemptCount": 1,
+      "lastAttempt": "2026-06-16T21:35:00+0000",
+      "resolvedAt": "2026-06-16T21:35:00+0000"
+    }
+  }
+}

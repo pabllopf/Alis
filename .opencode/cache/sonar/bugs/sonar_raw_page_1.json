@@ -1,0 +1,151 @@
+{
+    "total": 2,
+    "p": 1,
+    "ps": 500,
+    "paging": {
+        "pageIndex": 1,
+        "pageSize": 500,
+        "total": 2
+    },
+    "effortTotal": 30,
+    "debtTotal": 30,
+    "issues": [
+        {
+            "key": "AZ6mihJTkNcRXyPBxty3",
+            "rule": "csharpsquid:S2583",
+            "severity": "MAJOR",
+            "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+            "project": "pabllopf-official_alis",
+            "line": 258,
+            "hash": "3b391caf0bf5ea2615a0eac7af3a0158",
+            "textRange": {
+                "startLine": 258,
+                "endLine": 258,
+                "startOffset": 19,
+                "endOffset": 33
+            },
+            "flows": [
+                {
+                    "locations": [
+                        {
+                            "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+                            "textRange": {
+                                "startLine": 260,
+                                "endLine": 276,
+                                "startOffset": 21,
+                                "endOffset": 26
+                            }
+                        }
+                    ]
+                }
+            ],
+            "status": "OPEN",
+            "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+            "effort": "15min",
+            "debt": "15min",
+            "assignee": "pabllopf-fj3X7@github",
+            "author": "pabloperdomofalcon@gmail.com",
+            "tags": [
+                "cwe",
+                "pitfall",
+                "suspicious",
+                "symbolic-execution",
+                "unused"
+            ],
+            "creationDate": "2026-06-08T09:20:47+0000",
+            "updateDate": "2026-06-08T09:20:47+0000",
+            "type": "BUG",
+            "organization": "pabllopf-official",
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "MEDIUM"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "projectName": "Alis",
+            "internalTags": [],
+            "lastChangeAnalysisUuid": "70991135-ac9f-445f-9642-a48635d8310a",
+            "lastChangeSource": "ANALYSIS"
+        },
+        {
+            "key": "AZ7KU79QgfB4D_M8MD1M",
+            "rule": "csharpsquid:S3887",
+            "severity": "MINOR",
+            "component": "pabllopf-official_alis:4_Operation/Ecs/generator/EquatableArray.cs",
+            "project": "pabllopf-official_alis",
+            "line": 47,
+            "hash": "c21ed3bdb2f394060349afe44ee7fb31",
+            "textRange": {
+                "startLine": 47,
+                "endLine": 47,
+                "startOffset": 24,
+                "endOffset": 27
+            },
+            "flows": [],
+            "status": "OPEN",
+            "message": "Use an immutable collection or reduce the accessibility of the non-private readonly field 'Items'.",
+            "effort": "15min",
+            "debt": "15min",
+            "author": "rvr.99@hotmail.com",
+            "tags": [],
+            "creationDate": "2025-05-13T23:00:00+0000",
+            "updateDate": "2026-06-15T08:07:33+0000",
+            "type": "BUG",
+            "organization": "pabllopf-official",
+            "cleanCodeAttribute": "CLEAR",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "LOW"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "projectName": "Alis",
+            "internalTags": [],
+            "lastChangeAnalysisUuid": "5d64b5b7-d8e3-4010-9099-51067e6a241e",
+            "lastChangeSource": "ANALYSIS"
+        }
+    ],
+    "components": [
+        {
+            "organization": "pabllopf-official",
+            "key": "pabllopf-official_alis:4_Operation/Ecs/generator/EquatableArray.cs",
+            "uuid": "AZ7KU7B9gfB4D_M8MD0r",
+            "enabled": true,
+            "qualifier": "FIL",
+            "name": "EquatableArray.cs",
+            "longName": "4_Operation/Ecs/generator/EquatableArray.cs",
+            "path": "4_Operation/Ecs/generator/EquatableArray.cs"
+        },
+        {
+            "organization": "pabllopf-official",
+            "key": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+            "uuid": "AZ1dvMFRMbZ4NfML313M",
+            "enabled": true,
+            "qualifier": "FIL",
+            "name": "DynamicTreeBroadPhase.cs",
+            "longName": "4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+            "path": "4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs"
+        },
+        {
+            "organization": "pabllopf-official",
+            "key": "pabllopf-official_alis",
+            "uuid": "AZ1dr0tGe6OZJxlmhqNc",
+            "enabled": true,
+            "qualifier": "TRK",
+            "name": "Alis",
+            "longName": "Alis"
+        }
+    ],
+    "organizations": [
+        {
+            "key": "pabllopf-official",
+            "name": "Pablo Perdomo Falc\u00f3n"
+        }
+    ],
+    "facets": []
+}
