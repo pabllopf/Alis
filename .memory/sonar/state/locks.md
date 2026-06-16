@@ -1,3 +1,3 @@
 # Distributed Locks
 
-<!-- No active locks -->
+No active locks.

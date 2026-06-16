@@ -178,7 +178,7 @@ namespace Alis.Core.Ecs.Generator.Collections
                 {
                     if (index >= Count)
                     {
-                        ThrowArgumentOutOfRangeException();
+                        ThrowArgumentOutOfRangeException(nameof(index));
                     }
 
                     return _elements[index];
@@ -188,7 +188,7 @@ namespace Alis.Core.Ecs.Generator.Collections
                 {
                     if (index >= Count)
                     {
-                        ThrowArgumentOutOfRangeException();
+                        ThrowArgumentOutOfRangeException(nameof(index));
                     }
 
                     _elements[index] = value;
@@ -316,7 +316,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             /// <summary>
             ///     Throws the argument out of range exception
             /// </summary>
-            private static void ThrowArgumentOutOfRangeException() => throw new ArgumentOutOfRangeException();
+            private static void ThrowArgumentOutOfRangeException(string paramName) => throw new ArgumentOutOfRangeException(paramName);
 
             /// <summary>
             ///     Gets a read-only reference to the element at the specified index.
@@ -329,7 +329,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             {
                 if (index >= Count)
                 {
-                    ThrowArgumentOutOfRangeException();
+                    ThrowArgumentOutOfRangeException(nameof(index));
                 }
 
                 return ref _elements[index];
