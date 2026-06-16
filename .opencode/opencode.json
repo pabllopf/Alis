@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "llama/unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit",
-  "small_model": "llama/unsloth/Qwen3.6-35B-A3B-MTP-GGUF-4bit",
+  "model": "omlx/mlx-community/Qwen3.6-35B-A3B-4bit",
+  "small_model": "omlx/mlx-community/Qwen3.6-35B-A3B-4bit",
 
   "provider": {
     "omlx": {
@@ -17,6 +17,21 @@
         "apiKey": "1234"
       },
       "models": {
+        "mlx-community/Qwen3.6-35B-A3B-4bit": {
+          "name": "mlx-community/Qwen3.6-35B-A3B-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 262144,
+          "maxOutputTokens": 131072,
+          "limit": {
+            "context": 262144,
+            "output": 131072
+          }
+        },
         "Qwen3.6-35B-A3B-TurboQuant-MLX-4bit": {
           "name": "Qwen3.6-35B-A3B-TurboQuant-MLX-4bit",
           "modalities": {
