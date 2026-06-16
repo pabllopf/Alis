@@ -108,22 +108,22 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <param name="sb">The string builder.</param>
         private static void AppendSerialize2DArrayMethod(StringBuilder sb)
         {
-            sb.AppendLine("        /// <summary>");
+            sb.AppendLine(XmlSummary);
             sb.AppendLine("        ///     Serializes a two-dimensional array to a JSON nested array string.");
-            sb.AppendLine("        /// </summary>");
+            sb.AppendLine(XmlSummaryEnd);
             sb.AppendLine("        /// <typeparam name=\"T\">The element type of the array.</typeparam>");
             sb.AppendLine("        /// <param name=\"array\">The two-dimensional array to serialize.</param>");
             sb.AppendLine("        /// <returns>The JSON nested array string representation, or null if the array is null.</returns>");
-            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            sb.AppendLine(ExcludeFromCodeCoverage);
             sb.AppendLine("        private static string Serialize2DArray<T>(T[,] array)");
-            sb.AppendLine("        {");
+            sb.AppendLine(MethodBodyStart);
             sb.AppendLine("            if (array == null) return null;");
             sb.AppendLine("            var rowList = new System.Collections.Generic.List<string>();");
             sb.AppendLine("            for (int i = 0; i < array.GetLength(0); i++)");
-            sb.AppendLine("            {");
+            sb.AppendLine(BlockStart);
             sb.AppendLine("                var rowItems = new System.Collections.Generic.List<string>();");
             sb.AppendLine("                for (int j = 0; j < array.GetLength(1); j++)");
-            sb.AppendLine("                {");
+            sb.AppendLine(BlockStart);
             sb.AppendLine("                    var item = array[i, j];");
             sb.AppendLine("                    if (item is IJsonSerializable serializable)");
             sb.AppendLine("                        rowItems.Add(JsonNativeAot.Serialize(serializable));");
@@ -131,11 +131,11 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("                        rowItems.Add($\"\\\"{str}\\\"\");");
             sb.AppendLine("                    else");
             sb.AppendLine("                        rowItems.Add(item?.ToString() ?? \"null\");");
-            sb.AppendLine("                }");
+            sb.AppendLine(BlockEnd);
             sb.AppendLine("                rowList.Add(\"[\" + string.Join(\",\", rowItems) + \"]\");");
-            sb.AppendLine("            }");
+            sb.AppendLine(BlockEnd);
             sb.AppendLine("            return \"[\" + string.Join(\",\", rowList) + \"]\";");
-            sb.AppendLine("        }");
+            sb.AppendLine(MethodEnd);
         }
 
         /// <summary>
@@ -144,27 +144,27 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <param name="sb">The string builder.</param>
         private static void AppendSerializeCollectionMethod(StringBuilder sb)
         {
-            sb.AppendLine("        /// <summary>");
+            sb.AppendLine(XmlSummary);
             sb.AppendLine("        ///     Serializes an enumerable collection to a JSON array string.");
-            sb.AppendLine("        /// </summary>");
+            sb.AppendLine(XmlSummaryEnd);
             sb.AppendLine("        /// <param name=\"collection\">The collection to serialize.</param>");
             sb.AppendLine("        /// <returns>The JSON array string representation, or null if the collection is null.</returns>");
-            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            sb.AppendLine(ExcludeFromCodeCoverage);
             sb.AppendLine("        private static string SerializeCollection(System.Collections.IEnumerable collection)");
-            sb.AppendLine("        {");
+            sb.AppendLine(MethodBodyStart);
             sb.AppendLine("            if (collection == null) return null;");
             sb.AppendLine("            var items = new System.Collections.Generic.List<string>();");
             sb.AppendLine("            foreach (var item in collection)");
-            sb.AppendLine("            {");
+            sb.AppendLine(BlockStart);
             sb.AppendLine("                if (item is IJsonSerializable serializable)");
             sb.AppendLine("                    items.Add(JsonNativeAot.Serialize(serializable));");
             sb.AppendLine("                else if (item is string str)");
             sb.AppendLine("                    items.Add($\"\\\"{str}\\\"\");");
             sb.AppendLine("                else");
             sb.AppendLine("                    items.Add(item?.ToString() ?? \"null\");");
-            sb.AppendLine("            }");
+            sb.AppendLine(BlockEnd);
             sb.AppendLine("            return \"[\" + string.Join(\",\", items) + \"]\";");
-            sb.AppendLine("        }");
+            sb.AppendLine(MethodEnd);
         }
 
         /// <summary>
@@ -173,18 +173,18 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <param name="sb">The string builder.</param>
         private static void AppendSerializeDictionaryMethod(StringBuilder sb)
         {
-            sb.AppendLine("        /// <summary>");
+            sb.AppendLine(XmlSummary);
             sb.AppendLine("        ///     Serializes a dictionary to a JSON object string.");
-            sb.AppendLine("        /// </summary>");
+            sb.AppendLine(XmlSummaryEnd);
             sb.AppendLine("        /// <param name=\"dictionary\">The dictionary to serialize.</param>");
             sb.AppendLine("        /// <returns>The JSON object string representation, or null if the dictionary is null.</returns>");
-            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            sb.AppendLine(ExcludeFromCodeCoverage);
             sb.AppendLine("        private static string SerializeDictionary(System.Collections.IDictionary dictionary)");
-            sb.AppendLine("        {");
+            sb.AppendLine(MethodBodyStart);
             sb.AppendLine("            if (dictionary == null) return null;");
             sb.AppendLine("            var items = new System.Collections.Generic.List<string>();");
             sb.AppendLine("            foreach (System.Collections.DictionaryEntry entry in dictionary)");
-            sb.AppendLine("            {");
+            sb.AppendLine(BlockStart);
             sb.AppendLine("                var key = entry.Key?.ToString() ?? \"null\";");
             sb.AppendLine("                string valueStr;");
             sb.AppendLine("                if (entry.Value is IJsonSerializable serializable)");
@@ -194,9 +194,9 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("                else");
             sb.AppendLine("                    valueStr = entry.Value?.ToString() ?? \"null\";");
             sb.AppendLine("                items.Add($\"\\\"{key}\\\":{valueStr}\");");
-            sb.AppendLine("            }");
+            sb.AppendLine(BlockEnd);
             sb.AppendLine("            return \"{\" + string.Join(\",\", items) + \"}\";");
-            sb.AppendLine("        }");
+            sb.AppendLine(MethodEnd);
         }
 
         /// <summary>
