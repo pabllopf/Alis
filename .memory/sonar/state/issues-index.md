@@ -2,32 +2,32 @@
 
 <!-- Last Sync: 2026-06-16 -->
 <!-- Total Issues: 36 -->
-<!-- Fixed: 2 -->
-<!-- Pending: 34 -->
+<!-- Fixed: 9 -->
+<!-- Pending: 27 -->
 
 ## Fixed
 
 | # | Key | Rule | File |
 |---|-----|------|------|
-| 1 | AZ7PZo8YIRleBA2bjxWx | csharpsquid:S3776 | ComponentUpdateTypeRegistryGenerator.cs |
-| 2 | AZ7KU7-PgfB4D_M8MD1T | csharpsquid:S3776 | ComponentUpdateTypeRegistryGenerator.cs |
+| 1 | AZ7PZo8YIRleBA2bjxWx | S3776 | ComponentUpdateTypeRegistryGenerator.cs |
+| 2 | AZ7PZpH4IRleBA2bjxW0 | S1192 | HelperMethodsGenerator.cs |
+| 3 | AZ7PZpH4IRleBA2bjxW1 | S1192 | HelperMethodsGenerator.cs |
+| 4 | AZ7PZpH4IRleBA2bjxW2 | S1192 | HelperMethodsGenerator.cs |
+| 5 | AZ7PZpH4IRleBA2bjxW3 | S1192 | HelperMethodsGenerator.cs |
+| 6 | AZ7PZpH4IRleBA2bjxW4 | S1192 | HelperMethodsGenerator.cs |
+| 7 | AZ7PZpH4IRleBA2bjxW5 | S1192 | HelperMethodsGenerator.cs |
+| 8 | AZ7KU8HPgfB4D_M8MD1t | S1192 | HelperMethodsGenerator.cs |
+| 9 | AZ7KU7-PgfB4D_M8MD1T | S3776 | ComponentUpdateTypeRegistryGenerator.cs |
 
 ## Pending
 
 | # | Key | Rule | File | Severity |
 |---|-----|------|------|----------|
-| 2 | AZ7PZpH4IRleBA2bjxW0 | S1192 | HelperMethodsGenerator.cs | MINOR |
-| 3 | AZ7PZpH4IRleBA2bjxW1 | S1192 | HelperMethodsGenerator.cs | MINOR |
-| 4 | AZ7PZpH4IRleBA2bjxW2 | S1192 | HelperMethodsGenerator.cs | MINOR |
-| 5 | AZ7PZpH4IRleBA2bjxW3 | S1192 | HelperMethodsGenerator.cs | MINOR |
-| 6 | AZ7PZpH4IRleBA2bjxW4 | S1192 | HelperMethodsGenerator.cs | MINOR |
-| 7 | AZ7PZpH4IRleBA2bjxW5 | S1192 | HelperMethodsGenerator.cs | MINOR |
 | 8 | AZ7PZo8ZIRleBA2bjxWy | CA1068 | ComponentUpdateTypeRegistryGenerator.cs | INFO |
 | 9 | AZ7PZo6MIRleBA2bjxWt | RS2008 | GeneratorAnalyzer.cs | MAJOR |
 | 10 | AZ7PZo6MIRleBA2bjxWu | RS2008 | GeneratorAnalyzer.cs | MAJOR |
 | 11 | AZ7PZo6MIRleBA2bjxWv | RS2008 | GeneratorAnalyzer.cs | MAJOR |
 | 12 | AZ7PZo6MIRleBA2bjxWw | RS2008 | GeneratorAnalyzer.cs | MAJOR |
-| 13 | AZ7KU8HPgfB4D_M8MD1t | S1192 | HelperMethodsGenerator.cs | MINOR |
 | 14 | AZ7KU8FagfB4D_M8MD1d | RS2000 | AotReflectionAnalyzer.cs | MAJOR |
 | 15 | AZ7KU8FagfB4D_M8MD1e | RS2000 | AotReflectionAnalyzer.cs | MAJOR |
 | 16 | AZ7KU8FagfB4D_M8MD1f | RS2000 | AotReflectionAnalyzer.cs | MAJOR |

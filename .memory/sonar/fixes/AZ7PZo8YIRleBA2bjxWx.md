@@ -1,12 +1,13 @@
-# Fix AZ7PZo8YIRleBA2bjxWx
+# Fix: AZ7PZo8YIRleBA2bjxWx
 
-- Rule: csharpsquid:S3776
-- Strategy: Extract Method
-- Pattern: ExtractMethod_ComplexBranch_ToHelper
+## Pattern
+Extract Method — S3776 Cognitive Complexity
 
-## Changes
+## Summary
+Extracted `InspectSingleInterface` private method from `InspectComponentInterfaces` to flatten the foreach body into its own method, reducing cognitive complexity from 21 to 1.
 
-- Extracted `ProcessSpecialComponentInterface` from `InspectComponentInterfaces` foreach body
-- Extracted `ProcessAlisComponentInterface` from `InspectComponentInterfaces` foreach body
-- Both extracted methods take `ref` parameters for out-vars
-- Cognitive complexity reduced: 21 → ~4
+## File
+ComponentUpdateTypeRegistryGenerator.cs
+
+## Commit
+a8123d754
