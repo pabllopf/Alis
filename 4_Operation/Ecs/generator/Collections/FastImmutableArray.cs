@@ -170,30 +170,30 @@ namespace Alis.Core.Ecs.Generator.Collections
             /// </summary>
             /// <param name="index">The index.</param>
             /// <returns></returns>
-            /// <exception cref="IndexOutOfRangeException">
-            /// </exception>
-            public T this[int index]
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// </exception>
+        public T this[int index]
+        {
+            get
             {
-                get
+                if (index >= Count)
                 {
-                    if (index >= Count)
-                    {
-                        ThrowIndexOutOfRangeException();
-                    }
-
-                    return _elements[index];
+                    ThrowArgumentOutOfRangeException();
                 }
 
-                set
-                {
-                    if (index >= Count)
-                    {
-                        ThrowIndexOutOfRangeException();
-                    }
-
-                    _elements[index] = value;
-                }
+                return _elements[index];
             }
+
+            set
+            {
+                if (index >= Count)
+                {
+                    ThrowArgumentOutOfRangeException();
+                }
+
+                _elements[index] = value;
+            }
+        }
 
             /// <summary>
             ///     Gets a value indicating whether the <see cref="ICollection{T}" /> is read-only.
@@ -314,23 +314,25 @@ namespace Alis.Core.Ecs.Generator.Collections
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
             /// <summary>
-            ///     Throws the index out of range exception
+            ///     Throws the argument out of range exception
             /// </summary>
-            private static void ThrowIndexOutOfRangeException() => throw new ArgumentOutOfRangeException();
+            private static void ThrowArgumentOutOfRangeException() => throw new ArgumentOutOfRangeException();
 
             /// <summary>
             ///     Gets a read-only reference to the element at the specified index.
             /// </summary>
             /// <param name="index">The index.</param>
             /// <returns></returns>
-            /// <exception cref="IndexOutOfRangeException">
+            /// <exception cref="ArgumentOutOfRangeException">
             /// </exception>
-            public ref readonly T ItemRef(int index)
+            public ref readonly T this[int index]
             {
-                if (index >= Count)
+                get
                 {
-                    ThrowIndexOutOfRangeException();
-                }
+                    if ((uint) index >= (uint) Count)
+                    {
+                        ThrowArgumentOutOfRangeException();
+                    }
 
                 return ref _elements[index];
             }
