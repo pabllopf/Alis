@@ -68,7 +68,7 @@ namespace Alis.Core.Ecs.Generator
             }
 #endif
 
-            Items = items;
+            Items = (T[])items.Clone();
         }
 
         /// <summary>
