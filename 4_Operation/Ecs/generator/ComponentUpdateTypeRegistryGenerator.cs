@@ -133,7 +133,7 @@ namespace Alis.Core.Ecs.Generator
             System.Collections.Generic.Stack<string> attributes = new System.Collections.Generic.Stack<string>(1);
             PushUpdateTypeAttributes(ref attributes, gsc.Node, gsc.SemanticModel);
 
-            AddMiscFlags();
+            AddMiscFlags(componentTypeSymbol, ref flags);
 
             Debug.Assert(genericArguments is not null);
 
@@ -144,12 +144,14 @@ namespace Alis.Core.Ecs.Generator
                 @namespace = componentTypeSymbol.ContainingNamespace.ToString();
             }
 
-            TypeDeclarationModel[] nestTypes = GetContainingTypes();
+            TypeDeclarationModel[] nestTypes = GetContainingTypes(componentTypeSymbol);
 
             bool isAcc =
                 componentTypeSymbol.DeclaredAccessibility == Accessibility.Public ||
                 componentTypeSymbol.DeclaredAccessibility == Accessibility.Internal;
-            if (((nestTypes.Length != 0) && !isAcc) || flags.HasFlag(UpdateModelFlags.IsGeneric))
+
+            bool requiresSelfInit = (nestTypes.Length != 0 && !isAcc) || flags.HasFlag(UpdateModelFlags.IsGeneric);
+            if (requiresSelfInit)
             {
                 flags |= UpdateModelFlags.IsSelfInit;
             }
@@ -165,55 +167,55 @@ namespace Alis.Core.Ecs.Generator
                 new EquatableArray<string>(genericArguments!),
                 new EquatableArray<string>(attributes.ToArray())
             );
+        }
 
-            void AddMiscFlags()
+        private static void AddMiscFlags(INamedTypeSymbol componentTypeSymbol, ref UpdateModelFlags flags)
+        {
+            if (componentTypeSymbol.IsGenericType)
             {
-                if (componentTypeSymbol.IsGenericType)
-                {
-                    flags |= UpdateModelFlags.IsGeneric;
-                }
-
-                if (componentTypeSymbol.TypeKind == TypeKind.Class)
-                {
-                    flags |= UpdateModelFlags.IsClass;
-                }
-                else if (componentTypeSymbol.TypeKind == TypeKind.Struct)
-                {
-                    flags |= UpdateModelFlags.IsStruct;
-                }
-
-                if (componentTypeSymbol.IsRecord)
-                {
-                    flags |= UpdateModelFlags.IsRecord;
-                }
+                flags |= UpdateModelFlags.IsGeneric;
             }
 
-            TypeDeclarationModel[] GetContainingTypes()
+            if (componentTypeSymbol.TypeKind == TypeKind.Class)
             {
-                int nestedTypeCount = 0;
-                INamedTypeSymbol current = componentTypeSymbol;
-                while (current.ContainingType is not null)
-                {
-                    current = current.ContainingType;
-                    nestedTypeCount++;
-                }
-
-                TypeDeclarationModel[] nestedTypeSymbols = new TypeDeclarationModel[nestedTypeCount];
-                current = componentTypeSymbol;
-                int index = 0;
-                while (current.ContainingType is not null)
-                {
-                    current = current.ContainingType;
-                    nestedTypeSymbols[index++] = new TypeDeclarationModel(
-                        current.IsRecord,
-                        current.TypeKind,
-                        current.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat)
-                    );
-                }
-
-             nestedTypeSymbols.AsSpan().Reverse();
-                return nestedTypeSymbols;
+                flags |= UpdateModelFlags.IsClass;
             }
+            else if (componentTypeSymbol.TypeKind == TypeKind.Struct)
+            {
+                flags |= UpdateModelFlags.IsStruct;
+            }
+
+            if (componentTypeSymbol.IsRecord)
+            {
+                flags |= UpdateModelFlags.IsRecord;
+            }
+        }
+
+        private static TypeDeclarationModel[] GetContainingTypes(INamedTypeSymbol componentTypeSymbol)
+        {
+            int nestedTypeCount = 0;
+            INamedTypeSymbol current = componentTypeSymbol;
+            while (current.ContainingType is not null)
+            {
+                current = current.ContainingType;
+                nestedTypeCount++;
+            }
+
+            TypeDeclarationModel[] nestedTypeSymbols = new TypeDeclarationModel[nestedTypeCount];
+            current = componentTypeSymbol;
+            int index = 0;
+            while (current.ContainingType is not null)
+            {
+                current = current.ContainingType;
+                nestedTypeSymbols[index++] = new TypeDeclarationModel(
+                    current.IsRecord,
+                    current.TypeKind,
+                    current.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat)
+                );
+            }
+
+            nestedTypeSymbols.AsSpan().Reverse();
+            return nestedTypeSymbols;
         }
 
         /// <summary>
