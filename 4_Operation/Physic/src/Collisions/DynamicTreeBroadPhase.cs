@@ -254,8 +254,7 @@ namespace Alis.Core.Physic.Collisions
             Array.Sort(_pairBuffer, 0, _pairCount);
 
             // Send the pairs back to the client.
-            var i = 0;
-            while (i < _pairCount)
+            for (var i = 0; i < _pairCount; i++)
             {
                 Pair primaryPair = _pairBuffer[i];
 
@@ -273,7 +272,8 @@ namespace Alis.Core.Physic.Collisions
 
                     nextI++;
                 }
-                i = nextI;
+
+                i = nextI - 1;
             }
         }
 
