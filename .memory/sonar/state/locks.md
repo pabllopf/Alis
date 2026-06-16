@@ -1,3 +1,2 @@
-# Distributed Locks
-
-No active locks.
+# Locks
+# Format: | Issue ID | Worker | Timestamp | Expires |

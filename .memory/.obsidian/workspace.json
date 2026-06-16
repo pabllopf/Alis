@@ -202,8 +202,11 @@
       "markdown-importer:Abrir el importador de Markdown": false
     }
   },
-  "active": "479876149a43d2eb",
+  "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "sonar/logs/execution-log.md",
+    "sonar/state/issues-index.md",
+    "sonar/state/locks.md",
     "concepts/value-object-pattern.md",
     "sonar/fixes/AZ69k12mUs3jAr3sDLt2.md",
     "sonar/issues/AZ69k12mUs3jAr3sDLt2.md",
@@ -216,9 +219,6 @@
     "sonar/issues/AZ64sUr6LnQ0n5Zded5E.md",
     "sonar/fixes/AZ64sUr6LnQ0n5Zded5D.md",
     "sonar/issues/AZ64sUr6LnQ0n5Zded5D.md",
-    "sonar/logs/execution-log.md",
-    "sonar/state/issues-index.md",
-    "sonar/state/locks.md",
     "sonar/patterns/S2325-method-should-not-be-static.md",
     "sonar/patterns/S2933-field-never-assigned.md",
     "sonar/issues/AZ6zQlWZ6-8DAyAuaboi.md",
