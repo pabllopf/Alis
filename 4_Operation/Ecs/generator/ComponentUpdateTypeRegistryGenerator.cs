@@ -359,11 +359,11 @@ namespace Alis.Core.Ecs.Generator
                 .AppendLine("[global::System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]")
                 .AppendLine("internal static void RegisterAll()")
                 .Scope()
-                .Foreach(models.AsSpan(), ct, static (in ComponentUpdateItemModel model, CodeBuilder builder, CancellationToken ct) =>
+                .Foreach(models.AsSpan(), static (in ComponentUpdateItemModel model, CodeBuilder builder, CancellationToken ct) =>
                 {
                     AppendInitalizationMethodBody(builder, in model);
                     ct.ThrowIfCancellationRequested();
-                })
+                }, ct)
                 .Unscope()
                 .Unscope()
                 .Unscope();
@@ -447,7 +447,7 @@ namespace Alis.Core.Ecs.Generator
                 .AppendLine("using global::System.Runtime.CompilerServices;")
                 .AppendLine()
                 .If(@namespace is not null, @namespace, (ns, c) => c.Append("namespace ").AppendLine(ns).Scope())
-                .Foreach(model.NestedTypes, ct,
+                .Foreach(model.NestedTypes,
                     (in TypeDeclarationModel typeInfo, CodeBuilder cb, CancellationToken _) =>
                         cb.Append("partial ").If(typeInfo.IsRecord, c => c.Append("record")).Append(typeInfo.TypeKind switch
                         {
@@ -455,15 +455,15 @@ namespace Alis.Core.Ecs.Generator
                             TypeKind.Class => "class ",
                             TypeKind.Interface => "interface ",
                             _ => throw new NotImplementedException()
-                        }).AppendLine(typeInfo.Name).Scope())
+                        }).AppendLine(typeInfo.Name).Scope(), ct)
                 .Append("partial ").If(model.IsRecord, c => c.Append("record ")).Append(model.IsStruct ? "struct " : "class ").Append(model.MinimallyQualifiedName).AppendLine()
                 .Scope()
                 .Append("static ").Append(model.HintName).AppendLine("()")
                 .Scope()
-                .Execute(in model, ct, (in ComponentUpdateItemModel model, CodeBuilder builder, CancellationToken ct) => AppendInitalizationMethodBody(cb, in model))
+                .Execute(in model, (in ComponentUpdateItemModel model, CodeBuilder builder, CancellationToken ct) => AppendInitalizationMethodBody(cb, in model), ct)
                 .Unscope()
                 .Unscope()
-                .Foreach(model.NestedTypes, ct, (in TypeDeclarationModel s, CodeBuilder cb, CancellationToken _) => cb.Unscope())
+                .Foreach(model.NestedTypes, (in TypeDeclarationModel s, CodeBuilder cb, CancellationToken _) => cb.Unscope(), ct)
                 .If(@namespace is not null, c => c.Unscope());
 
             return new(SanitizeNameForFile(model.FullName), cb.ToString());

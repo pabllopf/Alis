@@ -118,10 +118,10 @@ namespace Alis.Core.Ecs.Generator
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="items">The items</param>
-        /// <param name="ct">The ct</param>
         /// <param name="onEach">The on each</param>
+        /// <param name="ct">The ct</param>
         /// <returns>The code builder</returns>
-        public CodeBuilder Foreach<T>(ReadOnlySpan<T> items, CancellationToken ct, CodeBuilderDelegate<T> onEach)
+        public CodeBuilder Foreach<T>(ReadOnlySpan<T> items, CodeBuilderDelegate<T> onEach, CancellationToken ct)
         {
             foreach (ref readonly T i in items)
             {
@@ -170,10 +170,10 @@ namespace Alis.Core.Ecs.Generator
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="uniform">The uniform</param>
-        /// <param name="ct">The ct</param>
         /// <param name="action">The action</param>
+        /// <param name="ct">The ct</param>
         /// <returns>The code builder</returns>
-        public CodeBuilder Execute<T>(in T uniform, CancellationToken ct, CodeBuilderDelegate<T> action)
+        public CodeBuilder Execute<T>(in T uniform, CodeBuilderDelegate<T> action, CancellationToken ct)
         {
             action(in uniform, this, ct);
             return this;
