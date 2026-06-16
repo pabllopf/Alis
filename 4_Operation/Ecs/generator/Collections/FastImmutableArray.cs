@@ -260,6 +260,29 @@ namespace Alis.Core.Ecs.Generator.Collections
             }
 
             /// <summary>
+            ///     Removes the first occurrence of the specified element from the builder.
+            ///     If no match is found, the builder remains unchanged.
+            /// </summary>
+            /// <param name="element">The element to remove.</param>
+            /// <param name="equalityComparer">
+            ///     The equality comparer to use in the search.
+            ///     If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
+            /// </param>
+            /// <returns>A value indicating whether the specified element was found and removed from the collection.</returns>
+            public bool Remove(T element, IEqualityComparer<T> equalityComparer)
+            {
+                int index = IndexOf(element, 0, _count, equalityComparer);
+
+                if (index >= 0)
+                {
+                    RemoveAt(index);
+                    return true;
+                }
+
+                return false;
+            }
+
+            /// <summary>
             ///     Removes the <see cref="IList{T}" /> item at the specified index.
             /// </summary>
             /// <param name="index">The zero-based index of the item to remove.</param>
@@ -501,29 +524,6 @@ namespace Alis.Core.Ecs.Generator.Collections
             public void AddRange<TDerived>(FastImmutableArray<TDerived>.Builder items) where TDerived : T
             {
                 AddRange(items._elements, items.Count);
-            }
-
-            /// <summary>
-            ///     Removes the first occurrence of the specified element from the builder.
-            ///     If no match is found, the builder remains unchanged.
-            /// </summary>
-            /// <param name="element">The element to remove.</param>
-            /// <param name="equalityComparer">
-            ///     The equality comparer to use in the search.
-            ///     If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
-            /// </param>
-            /// <returns>A value indicating whether the specified element was found and removed from the collection.</returns>
-            public bool Remove(T element, IEqualityComparer<T> equalityComparer)
-            {
-                int index = IndexOf(element, 0, _count, equalityComparer);
-
-                if (index >= 0)
-                {
-                    RemoveAt(index);
-                    return true;
-                }
-
-                return false;
             }
 
             /// <summary>
