@@ -1498,5 +1498,51 @@ namespace Alis.Core.Aspect.Math.Test.Collections
 
             Assert.Equal(1, builder.Count);
         }
+
+        /// <summary>
+        ///     Tests that builder non generic get enumerator returns values
+        /// </summary>
+        [Fact]
+        public void Builder_GetEnumerator_NonGeneric_ReturnsValues()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(2);
+            builder.AddRange(1, 2);
+
+            System.Collections.IEnumerator enumerator = ((System.Collections.IEnumerable)builder).GetEnumerator();
+
+            Assert.True(enumerator.MoveNext());
+            Assert.Equal(1, enumerator.Current);
+            Assert.True(enumerator.MoveNext());
+            Assert.Equal(2, enumerator.Current);
+            Assert.False(enumerator.MoveNext());
+        }
+
+        /// <summary>
+        ///     Tests that builder index of with start index and count finds element
+        /// </summary>
+        [Fact]
+        public void Builder_IndexOf_WithStartIndexAndCount_FindsElement()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(4);
+            builder.AddRange(1, 2, 3, 2);
+
+            int index = builder.IndexOf(2, 1, 2);
+
+            Assert.Equal(1, index);
+        }
+
+        /// <summary>
+        ///     Tests that builder index of with start index and comparer finds element
+        /// </summary>
+        [Fact]
+        public void Builder_IndexOf_WithStartIndexAndComparer_FindsElement()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(4);
+            builder.AddRange(1, 2, 3, 2);
+
+            int index = builder.IndexOf(2, 1, EqualityComparer<int>.Default);
+
+            Assert.Equal(1, index);
+        }
     }
 }
