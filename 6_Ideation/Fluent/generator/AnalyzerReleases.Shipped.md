@@ -1,4 +1,4 @@
-## Unshipped
+## Shipped
 
 | Rule ID | Category | Severity | Notes |
 |---------|----------|----------|-------|
