@@ -205,22 +205,22 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <param name="sb">The string builder.</param>
         private static void AppendDeserializeArrayMethod(StringBuilder sb)
         {
-            sb.AppendLine("        /// <summary>");
+            sb.AppendLine(XmlSummary);
             sb.AppendLine("        ///     Deserializes a JSON array string to a typed array.");
-            sb.AppendLine("        /// </summary>");
+            sb.AppendLine(XmlSummaryEnd);
             sb.AppendLine("        /// <typeparam name=\"T\">The element type of the array.</typeparam>");
             sb.AppendLine("        /// <param name=\"json\">The JSON array string to deserialize.</param>");
             sb.AppendLine("        /// <returns>The deserialized array, or an empty array if the JSON is null or empty.</returns>");
-            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            sb.AppendLine(ExcludeFromCodeCoverage);
             sb.AppendLine("        private static T[] DeserializeArray<T>(string json)");
-            sb.AppendLine("        {");
+            sb.AppendLine(MethodBodyStart);
             sb.AppendLine("            if (string.IsNullOrEmpty(json) || json == \"[]\") return new T[0];");
             sb.AppendLine("            json = json.Trim('[', ']');");
             sb.AppendLine("            if (string.IsNullOrWhiteSpace(json)) return new T[0];");
             sb.AppendLine("            var items = new System.Collections.Generic.List<T>();");
             sb.AppendLine("            var parts = json.Split(',');");
             sb.AppendLine("            foreach (var part in parts)");
-            sb.AppendLine("            {");
+            sb.AppendLine(BlockStart);
             sb.AppendLine("                var trimmed = part.Trim();");
             sb.AppendLine("                if (typeof(T) == typeof(string))");
             sb.AppendLine("                    items.Add((T)(object)trimmed.Trim('\\\"'));");
@@ -238,9 +238,9 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("                    items.Add((T)(object)long.Parse(trimmed));");
             sb.AppendLine("                else if (typeof(T) == typeof(decimal))");
             sb.AppendLine("                    items.Add((T)(object)decimal.Parse(trimmed));");
-            sb.AppendLine("            }");
+            sb.AppendLine(BlockEnd);
             sb.AppendLine("            return items.ToArray();");
-            sb.AppendLine("        }");
+            sb.AppendLine(MethodEnd);
         }
 
         /// <summary>
@@ -249,15 +249,15 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <param name="sb">The string builder.</param>
         private static void AppendDeserialize2DArrayMethod(StringBuilder sb)
         {
-            sb.AppendLine("        /// <summary>");
+            sb.AppendLine(XmlSummary);
             sb.AppendLine("        ///     Deserializes a JSON nested array string to a two-dimensional typed array.");
-            sb.AppendLine("        /// </summary>");
+            sb.AppendLine(XmlSummaryEnd);
             sb.AppendLine("        /// <typeparam name=\"T\">The element type of the array.</typeparam>");
             sb.AppendLine("        /// <param name=\"json\">The JSON nested array string to deserialize.</param>");
             sb.AppendLine("        /// <returns>The deserialized two-dimensional array, or an empty array if the JSON is null or empty.</returns>");
-            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            sb.AppendLine(ExcludeFromCodeCoverage);
             sb.AppendLine("        private static T[,] Deserialize2DArray<T>(string json)");
-            sb.AppendLine("        {");
+            sb.AppendLine(MethodBodyStart);
             sb.AppendLine("            if (string.IsNullOrEmpty(json) || json == \"[]\") return new T[0, 0];");
             sb.AppendLine("            json = json.Trim('[', ']');");
             sb.AppendLine("            if (string.IsNullOrWhiteSpace(json)) return new T[0, 0];");
@@ -267,11 +267,11 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("            int colCount = firstRow.Length;");
             sb.AppendLine("            var result = new T[rowCount, colCount];");
             sb.AppendLine("            for (int i = 0; i < rowCount; i++)");
-            sb.AppendLine("            {");
+            sb.AppendLine(BlockStart);
             sb.AppendLine("                var cleanRow = rowsData[i].Trim('[', ']');");
             sb.AppendLine("                var values = cleanRow.Split(',');");
             sb.AppendLine("                for (int j = 0; j < colCount && j < values.Length; j++)");
-            sb.AppendLine("                {");
+            sb.AppendLine(BlockStart);
             sb.AppendLine("                    var trimmed = values[j].Trim();");
             sb.AppendLine("                    if (typeof(T) == typeof(string))");
             sb.AppendLine("                        result[i, j] = (T)(object)trimmed.Trim('\\\"');");
@@ -289,10 +289,10 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("                        result[i, j] = (T)(object)long.Parse(trimmed);");
             sb.AppendLine("                    else if (typeof(T) == typeof(decimal))");
             sb.AppendLine("                        result[i, j] = (T)(object)decimal.Parse(trimmed);");
-            sb.AppendLine("                }");
-            sb.AppendLine("            }");
+            sb.AppendLine(BlockEnd);
+            sb.AppendLine(BlockEnd);
             sb.AppendLine("            return result;");
-            sb.AppendLine("        }");
+            sb.AppendLine(MethodEnd);
         }
 
         /// <summary>
@@ -301,19 +301,19 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <param name="sb">The string builder.</param>
         private static void AppendDeserializeListMethod(StringBuilder sb)
         {
-            sb.AppendLine("        /// <summary>");
+            sb.AppendLine(XmlSummary);
             sb.AppendLine("        ///     Deserializes a JSON array string to a generic list.");
-            sb.AppendLine("        /// </summary>");
+            sb.AppendLine(XmlSummaryEnd);
             sb.AppendLine("        /// <typeparam name=\"T\">The element type of the list.</typeparam>");
             sb.AppendLine("        /// <param name=\"json\">The JSON array string to deserialize.</param>");
             sb.AppendLine("        /// <returns>The deserialized list, or an empty list if the JSON is null or empty.</returns>");
-            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            sb.AppendLine(ExcludeFromCodeCoverage);
             sb.AppendLine("        private static System.Collections.Generic.List<T> DeserializeList<T>(string json)");
-            sb.AppendLine("        {");
+            sb.AppendLine(MethodBodyStart);
             sb.AppendLine("            if (string.IsNullOrEmpty(json) || json == \"[]\") return new System.Collections.Generic.List<T>();");
             sb.AppendLine("            var array = DeserializeArray<T>(json);");
             sb.AppendLine("            return new System.Collections.Generic.List<T>(array);");
-            sb.AppendLine("        }");
+            sb.AppendLine(MethodEnd);
         }
 
         /// <summary>
@@ -322,26 +322,26 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <param name="sb">The string builder.</param>
         private static void AppendDeserializeDictionaryMethod(StringBuilder sb)
         {
-            sb.AppendLine("        /// <summary>");
+            sb.AppendLine(XmlSummary);
             sb.AppendLine("        ///     Deserializes a JSON object string to a generic dictionary.");
-            sb.AppendLine("        /// </summary>");
+            sb.AppendLine(XmlSummaryEnd);
             sb.AppendLine("        /// <typeparam name=\"TKey\">The key type of the dictionary.</typeparam>");
             sb.AppendLine("        /// <typeparam name=\"TValue\">The value type of the dictionary.</typeparam>");
             sb.AppendLine("        /// <param name=\"json\">The JSON object string to deserialize.</param>");
             sb.AppendLine("        /// <returns>The deserialized dictionary, or an empty dictionary if the JSON is null or empty.</returns>");
-            sb.AppendLine("        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]");
+            sb.AppendLine(ExcludeFromCodeCoverage);
             sb.AppendLine("        private static System.Collections.Generic.Dictionary<TKey, TValue> DeserializeDictionary<TKey, TValue>(string json)");
-            sb.AppendLine("        {");
+            sb.AppendLine(MethodBodyStart);
             sb.AppendLine("            var result = new System.Collections.Generic.Dictionary<TKey, TValue>();");
             sb.AppendLine("            if (string.IsNullOrEmpty(json) || json == \"{}\") return result;");
             sb.AppendLine("            json = json.Trim('{', '}');");
             sb.AppendLine("            if (string.IsNullOrWhiteSpace(json)) return result;");
             sb.AppendLine("            var pairs = json.Split(',');");
             sb.AppendLine("            foreach (var pair in pairs)");
-            sb.AppendLine("            {");
+            sb.AppendLine(BlockStart);
             sb.AppendLine("                var keyValue = pair.Split(':');");
             sb.AppendLine("                if (keyValue.Length == 2)");
-            sb.AppendLine("                {");
+            sb.AppendLine(BlockStart);
             sb.AppendLine("                    var key = keyValue[0].Trim().Trim('\\\"');");
             sb.AppendLine("                    var value = keyValue[1].Trim().Trim('\\\"');");
             sb.AppendLine("                    TKey parsedKey = default;");
@@ -355,10 +355,10 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("                    else if (typeof(TValue) == typeof(int))");
             sb.AppendLine("                        parsedValue = (TValue)(object)int.Parse(value);");
             sb.AppendLine("                    result[parsedKey] = parsedValue;");
-            sb.AppendLine("                }");
-            sb.AppendLine("            }");
+            sb.AppendLine(BlockEnd);
+            sb.AppendLine(BlockEnd);
             sb.AppendLine("            return result;");
-            sb.AppendLine("        }");
+            sb.AppendLine(MethodEnd);
         }
     }
 }
