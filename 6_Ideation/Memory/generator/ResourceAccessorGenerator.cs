@@ -175,7 +175,12 @@ namespace Alis.Core.Aspect.Memory.Generator
         /// <returns>The string</returns>
         private static string CalculateSha256Hash(byte[] data)
         {
+#if NET6_0_OR_GREATER
             byte[] h = SHA256.HashData(data ?? Array.Empty<byte>());
+#else
+            using SHA256 sha = SHA256.Create();
+            byte[] h = sha.ComputeHash(data ?? Array.Empty<byte>());
+#endif
             return BitConverter.ToString(h).Replace("-", "").ToLowerInvariant();
         }
 

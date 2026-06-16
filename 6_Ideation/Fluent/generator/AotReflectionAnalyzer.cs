@@ -109,8 +109,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             CategoryAotReflection,
             DiagnosticSeverity.Error,
             true,
-            "Detects direct uses of System.Reflection that usually require access to metadata that AOT may remove if not preserved.",
-            hasKnownRuleId: true);
+            "Detects direct uses of System.Reflection that usually require access to metadata that AOT may remove if not preserved.");
 
         /// <summary>
         ///     The description
@@ -122,8 +121,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "AOT/CodeGen",
             DiagnosticSeverity.Error,
             true,
-            "Detects dynamic code generation APIs that do not work in pure AOT environments.",
-            hasKnownRuleId: true);
+            "Detects dynamic code generation APIs that do not work in pure AOT environments.");
 
         /// <summary>
         ///     The is enabled by default
@@ -134,8 +132,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Dynamic invocation '{0}' depends on runtime metadata and is not compatible with reflection disabled",
             CategoryAotReflection,
             DiagnosticSeverity.Error,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary>
         ///     The is enabled by default
@@ -146,8 +143,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Activator.CreateInstance and variants '{0}' require creating types by name and are not compatible if reflection is disabled or required types are not preserved",
             CategoryAotReflection,
             DiagnosticSeverity.Error,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary>
         ///     The is enabled by default
@@ -158,8 +154,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Call to Type.GetType/Assembly.Load '{0}' requires loading types by string which needs metadata not available in AOT if not preserved",
             CategoryAotReflection,
             DiagnosticSeverity.Error,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary>
         ///     The is enabled by default
@@ -170,8 +165,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Use of 'dynamic' or IDynamicMetaObjectProvider '{0}' requires runtime binders that AOT may remove",
             "AOT/Dynamic",
             DiagnosticSeverity.Error,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary>
         ///     The is enabled by default
@@ -182,8 +176,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Serializer using reflection by default '{0}' often fails under AOT if required types are not preserved",
             "AOT/Serialization",
             DiagnosticSeverity.Error,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary>
         ///     The is enabled by default
@@ -194,8 +187,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Expression.Compile() generates dynamic IL at runtime and is not supported under AOT, usage detected: '{0}'",
             "AOT/Expression",
             DiagnosticSeverity.Error,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary>
         ///     The is enabled by default
@@ -206,8 +198,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Use of RuntimeHelpers or eager compilation '{0}' may depend on JIT behavior not available in AOT",
             "AOT/Runtime",
             DiagnosticSeverity.Error,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary>
         ///     The is enabled by default
@@ -218,8 +209,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Pattern detected that may require runtime reflection: '{0}' review manually for AOT",
             "AOT/ManualReview",
             DiagnosticSeverity.Error,
-            true,
-            hasKnownRuleId: true);
+            true);
 
         /// <summary> /// Gets the value of the supported diagnostics /// </summary>
 

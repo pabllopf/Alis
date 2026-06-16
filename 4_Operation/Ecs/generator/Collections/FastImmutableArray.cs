@@ -170,30 +170,30 @@ namespace Alis.Core.Ecs.Generator.Collections
             /// </summary>
             /// <param name="index">The index.</param>
             /// <returns></returns>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// </exception>
-        public T this[int index]
-        {
-            get
+            /// <exception cref="ArgumentOutOfRangeException">
+            /// </exception>
+            public T this[int index]
             {
-                if (index >= Count)
+                get
                 {
-                    ThrowArgumentOutOfRangeException();
+                    if (index >= Count)
+                    {
+                        ThrowArgumentOutOfRangeException();
+                    }
+
+                    return _elements[index];
                 }
 
-                return _elements[index];
-            }
-
-            set
-            {
-                if (index >= Count)
+                set
                 {
-                    ThrowArgumentOutOfRangeException();
-                }
+                    if (index >= Count)
+                    {
+                        ThrowArgumentOutOfRangeException();
+                    }
 
-                _elements[index] = value;
+                    _elements[index] = value;
+                }
             }
-        }
 
             /// <summary>
             ///     Gets a value indicating whether the <see cref="ICollection{T}" /> is read-only.
@@ -334,7 +334,8 @@ namespace Alis.Core.Ecs.Generator.Collections
                         ThrowArgumentOutOfRangeException();
                     }
 
-                return ref _elements[index];
+                    return ref _elements[index];
+                }
             }
 
             /// <summary>
