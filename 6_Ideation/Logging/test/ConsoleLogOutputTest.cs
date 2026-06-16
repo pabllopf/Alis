@@ -226,5 +226,18 @@ namespace Alis.Core.Aspect.Logging.Test
 
             output.Write(entry);
         }
+
+        /// <summary>
+        ///     Tests that write after dispose should not throw and not write
+        /// </summary>
+        [Fact]
+        public void Write_AfterDispose_DoesNotWrite()
+        {
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            output.Dispose();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+
+            output.Write(entry);
+        }
     }
 }
