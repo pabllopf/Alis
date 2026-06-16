@@ -1030,7 +1030,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <summary>
         ///     An empty (initialized) instance of <see cref="FastImmutableArray{T}" />.
         /// </summary>
-        public static readonly FastImmutableArray<T> Empty = new FastImmutableArray<T>(new T[0]);
+        public static readonly FastImmutableArray<T> Empty = new FastImmutableArray<T>(Array.Empty<T>());
 
         /// <summary>
         ///     The backing field for this instance. References to this value should never be shared with outside code.
