@@ -1,3 +1,0 @@
-{"timestamp": "2026-06-08T08:11:20.815044+00:00", "workerId": "worker-local-001", "issueKey": "AZ6YEMnqXMMYSes8eRjZ", "action": "fixed", "message": "Fix double increment in for/while loop causing condition to always evaluate to false"}
-{"timestamp": "2026-06-08T08:12:59.036381+00:00", "workerId": "worker-local-001", "issueKey": "AZ6Xn7qqOPSex0CpFZfs", "action": "fixed", "message": "Replaced compound null/type check with null-conditional property pattern"}
-{"timestamp": "2026-06-08T08:14:34.709252+00:00", "workerId": "worker-local-001", "issueKey": "AZ6Paf1iNnKxd0kLY3_P", "action": "fixed", "message": "Replaced field with local List to satisfy collection-emptiness analysis"}
