@@ -167,5 +167,18 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
 
             Assert.True(elapsed.TotalSeconds < 10);
         }
+
+        /// <summary>
+        ///     Tests that console log output with unknown log level uses default color (white).
+        /// </summary>
+        [Fact]
+        public void ConsoleLogOutput_UnknownLogLevel_UsesDefaultColor()
+        {
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            LogLevel unknownLevel = (LogLevel)99;
+            LogEntry entry = new LogEntry(unknownLevel, "Unknown level message", "Logger");
+
+            output.Write(entry);
+        }
     }
 }
