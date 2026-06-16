@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.Generator
             string[] genericArguments = Array.Empty<string>();
             bool needsRegistering = false;
 
-            (needsRegistering, @interface, genericArguments, flags) = InspectComponentInterfaces(componentTypeSymbol, ct, flags);
+            (needsRegistering, @interface, genericArguments, flags) = InspectComponentInterfaces(componentTypeSymbol, flags, ct);
 
             if (!needsRegistering || @interface is null)
             {
@@ -222,10 +222,10 @@ namespace Alis.Core.Ecs.Generator
         ///     Inspects the component interfaces using the specified symbol
         /// </summary>
         /// <param name="componentTypeSymbol">The component type symbol</param>
-        /// <param name="ct">The ct</param>
         /// <param name="flags">The flags</param>
+        /// <param name="ct">The ct</param>
         /// <returns>The inspection results</returns>
-        private static (bool needsRegistering, INamedTypeSymbol @interface, string[] genericArguments, UpdateModelFlags flags) InspectComponentInterfaces(INamedTypeSymbol componentTypeSymbol, CancellationToken ct, UpdateModelFlags flags)
+        private static (bool needsRegistering, INamedTypeSymbol @interface, string[] genericArguments, UpdateModelFlags flags) InspectComponentInterfaces(INamedTypeSymbol componentTypeSymbol, UpdateModelFlags flags, CancellationToken ct)
         {
             INamedTypeSymbol @interface = null;
             string[] genericArguments = Array.Empty<string>();
