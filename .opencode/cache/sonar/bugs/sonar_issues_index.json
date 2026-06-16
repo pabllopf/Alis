@@ -1,10 +1,10 @@
 {
   "issues": [
     {
-      "key": "AZ6mihJTkNcRXyPBxty3",
+      "key": "AZ7SNQ04GxvN3xmv4SmI",
       "ruleKey": "csharpsquid:S2583",
       "file": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
-      "line": 258,
+      "line": 257,
       "severity": "MAJOR",
       "status": "OPEN",
       "assignedWorker": null,
@@ -12,19 +12,6 @@
       "completedAt": null,
       "attemptCount": 0,
       "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable."
-    },
-    {
-      "key": "AZ7KU79QgfB4D_M8MD1M",
-      "ruleKey": "csharpsquid:S3887",
-      "file": "pabllopf-official_alis:4_Operation/Ecs/generator/EquatableArray.cs",
-      "line": 47,
-      "severity": "MINOR",
-      "status": "OPEN",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "message": "Use an immutable collection or reduce the accessibility of the non-private readonly field 'Items'."
     }
   ]
 }
