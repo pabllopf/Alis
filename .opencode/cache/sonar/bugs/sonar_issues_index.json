@@ -1,17 +1,3 @@
 {
-  "issues": [
-    {
-      "key": "AZ7SNQ04GxvN3xmv4SmI",
-      "ruleKey": "csharpsquid:S2583",
-      "file": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
-      "line": 257,
-      "severity": "MAJOR",
-      "status": "OPEN",
-      "assignedWorker": null,
-      "lockedAt": null,
-      "completedAt": null,
-      "attemptCount": 0,
-      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable."
-    }
-  ]
+  "issues": []
 }

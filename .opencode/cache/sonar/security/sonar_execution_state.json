@@ -1,6 +1,6 @@
 {
-  "status": "running",
-  "lastUpdated": "2026-06-16T20:56:41.359891+00:00",
+  "status": "completed",
+  "lastUpdated": "2026-06-17T00:00:00.000000+00:00",
   "processedIssues": [
     "AZ1dvNH3MbZ4NfML32sy",
     "AZ5MJc9ntpWkLOZBArkp",
@@ -11,5 +11,6 @@
     "AZ6OPazHsynw1OJ1vi31",
     "AZ6OPazHsynw1OJ1vi32"
   ],
-  "workerId": "local-worker-1"
+  "workerId": "local-worker-1",
+  "summary": "All 8 security hotspots resolved (commit cabc67639)"
 }
