@@ -874,7 +874,7 @@ namespace Alis.Extension.Updater
         }
 
         /// <summary>
-        ///     Extracts a single entry to the target path
+        ///     Extracts a single entry to the target path with size limits
         /// </summary>
         private static void ExtractEntry(ZipArchiveEntry entry, string entryFullPath)
         {
@@ -892,7 +892,24 @@ namespace Alis.Extension.Updater
             else
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(entryFullPath));
-                entry.ExtractToFile(entryFullPath, true);
+                using (Stream entryStream = entry.Open())
+                using (FileStream fileStream = new FileStream(entryFullPath, FileMode.Create, FileAccess.Write))
+                {
+                    byte[] buffer = new byte[4096];
+                    int totalBytesWritten = 0;
+                    int bytesRead;
+
+                    while ((bytesRead = entryStream.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        totalBytesWritten += bytesRead;
+                        if (totalBytesWritten > ThresholdSize)
+                        {
+                            throw new InvalidOperationException($"Entry '{entry.Name}' exceeds the maximum allowed size.");
+                        }
+
+                        fileStream.Write(buffer, 0, bytesRead);
+                    }
+                }
             }
         }
 

@@ -84,11 +84,19 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         ///     Each element represents a square on the board with its type (floor, wall, corner, etc.).
         /// </summary>
         /// <exception cref="ArgumentNullException">Thrown when the assigned value is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when the board dimensions are not positive.</exception>
         [JsonNativePropertyName("board")]
         public BoardSquare[,] Board
         {
             get => _board;
-            set => _board = value ?? throw new ArgumentNullException(nameof(Board));
+            set
+            {
+                _board = value ?? throw new ArgumentNullException(nameof(Board));
+                if (_board.GetLength(0) <= 0 || _board.GetLength(1) <= 0)
+                {
+                    throw new ArgumentException("Board dimensions must be greater than zero.", nameof(Board));
+                }
+            }
         }
 
         /// <summary>

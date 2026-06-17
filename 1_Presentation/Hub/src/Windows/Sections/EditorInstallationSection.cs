@@ -189,7 +189,7 @@ namespace Alis.App.Hub.Windows.Sections
         private void RevealInFinder(string path)
         {
             ValidateFilePath(path);
-            Process.Start(new ProcessStartInfo("open", path) { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("/usr/bin/open", path) { UseShellExecute = true });
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Alis.App.Hub.Windows.Sections
         private void OpenInTerminal(string path)
         {
             ValidateFilePath(path);
-            Process.Start(new ProcessStartInfo("open", "-a Terminal " + path) { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("/usr/bin/open", "-a Terminal " + path) { UseShellExecute = true });
         }
 
         /// <summary>

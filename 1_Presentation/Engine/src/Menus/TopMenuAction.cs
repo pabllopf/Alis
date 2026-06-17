@@ -803,12 +803,12 @@ namespace Alis.App.Engine.Menus
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
                     ValidateUrlScheme(url);
-                    Process.Start("xdg-open", url);
+                    Process.Start("/usr/bin/xdg-open", url);
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                 {
                     ValidateUrlScheme(url);
-                    Process.Start("open", url);
+                    Process.Start("/usr/bin/open", url);
                 }
                 else
                 {
