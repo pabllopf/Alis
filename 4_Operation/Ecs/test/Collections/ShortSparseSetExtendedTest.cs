@@ -208,5 +208,60 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("banana", set[1]);
             Assert.Equal("cherry", set[2]);
         }
+
+        /// <summary>
+        ///     Tests that TryGet returns false for id within sparse range but not added
+        /// </summary>
+        [Fact]
+        public void TryGet_WithIdInSparseRangeButNotAdded_ReturnsFalse()
+        {
+            ShortSparseSet<string> set = new ShortSparseSet<string>();
+            set[10] = "ten";
+
+            bool result = set.TryGet(5, out string value);
+
+            Assert.False(result);
+            Assert.Null(value);
+        }
+
+        /// <summary>
+        ///     Tests that Get throws for id within sparse range but not added
+        /// </summary>
+        [Fact]
+        public void Get_WithIdInSparseRangeButNotAdded_ThrowsArgumentOutOfRange()
+        {
+            ShortSparseSet<string> set = new ShortSparseSet<string>();
+            set[10] = "ten";
+
+            Assert.Throws<ArgumentOutOfRangeException>(new Action(() => set.Get(5)));
+        }
+
+        /// <summary>
+        ///     Tests that Remove returns false for id within sparse range but not added
+        /// </summary>
+        [Fact]
+        public void Remove_WithIdInSparseRangeButNotAdded_ReturnsFalse()
+        {
+            ShortSparseSet<string> set = new ShortSparseSet<string>();
+            set[10] = "ten";
+
+            bool result = set.Remove(5);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that EnsureCapacity does not resize when already sufficient
+        /// </summary>
+        [Fact]
+        public void EnsureCapacity_WhenAlreadySufficient_DoesNotResize()
+        {
+            ShortSparseSet<int> set = new ShortSparseSet<int>();
+            int currentCapacity = set.Capacity;
+
+            set.EnsureCapacity(2);
+
+            Assert.Equal(currentCapacity, set.Capacity);
+        }
     }
 }
