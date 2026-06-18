@@ -27,9 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Collections;
+using Alis.Core.Ecs.Exceptions;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Redifinition;
+using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Redifinition
@@ -487,13 +492,183 @@ namespace Alis.Core.Ecs.Test.Redifinition
         }
 
         /// <summary>
+        ///     Tests that ReadOnlySpanToImmutableArray converts a span to an immutable array
+        /// </summary>
+        [Fact]
+        public void ReadOnlySpanToImmutableArray_WithComponents_CreatesArray()
+        {
+            ComponentId[] ids = [Component<Position>.Id, Component<Velocity>.Id];
+            FastImmutableArray<ComponentId> result = MemoryHelpers.ReadOnlySpanToImmutableArray<ComponentId>(ids);
+
+            Assert.Equal(2, result.Length);
+            Assert.Equal(Component<Position>.Id, result[0]);
+            Assert.Equal(Component<Velocity>.Id, result[1]);
+        }
+
+        /// <summary>
+        ///     Tests that Concat adds a new type to an empty array
+        /// </summary>
+        [Fact]
+        public void Concat_SingleType_ToEmptyArray_AddsType()
+        {
+            FastImmutableArray<ComponentId> empty = FastImmutableArray<ComponentId>.Empty;
+
+            FastImmutableArray<ComponentId> result = MemoryHelpers.Concat(empty, Component<Position>.Id);
+
+            Assert.Equal(1, result.Length);
+            Assert.Equal(Component<Position>.Id, result[0]);
+        }
+
+        /// <summary>
+        ///     Tests that Concat throws when adding a duplicate type
+        /// </summary>
+        [Fact]
+        public void Concat_SingleType_Duplicate_ThrowsInvalidOperation()
+        {
+            FastImmutableArray<ComponentId> start = MemoryHelpers.ReadOnlySpanToImmutableArray<ComponentId>([Component<Position>.Id]);
+
+            Assert.Throws<InvalidOperationException>(new Action(() => MemoryHelpers.Concat(start, Component<Position>.Id)));
+        }
+
+        /// <summary>
+        ///     Tests that Concat adds a span of new types to an existing array
+        /// </summary>
+        [Fact]
+        public void Concat_Span_ToExistingArray_AddsTypes()
+        {
+            FastImmutableArray<ComponentId> start = MemoryHelpers.ReadOnlySpanToImmutableArray<ComponentId>([Component<Position>.Id]);
+
+            FastImmutableArray<ComponentId> result = MemoryHelpers.Concat(start, new[] { Component<Velocity>.Id, Component<Health>.Id });
+
+            Assert.Equal(3, result.Length);
+            Assert.Equal(Component<Position>.Id, result[0]);
+            Assert.Equal(Component<Velocity>.Id, result[1]);
+            Assert.Equal(Component<Health>.Id, result[2]);
+        }
+
+        /// <summary>
+        ///     Tests that Concat throws when a span contains a duplicate type
+        /// </summary>
+        [Fact]
+        public void Concat_Span_Duplicate_ThrowsInvalidOperation()
+        {
+            FastImmutableArray<ComponentId> start = MemoryHelpers.ReadOnlySpanToImmutableArray<ComponentId>([Component<Position>.Id, Component<Velocity>.Id]);
+
+            Assert.Throws<InvalidOperationException>(new Action(() => MemoryHelpers.Concat(start, new[] { Component<Velocity>.Id })));
+        }
+
+        /// <summary>
+        ///     Tests that Remove removes an existing type
+        /// </summary>
+        [Fact]
+        public void Remove_SingleType_Existing_RemovesType()
+        {
+            FastImmutableArray<ComponentId> types = MemoryHelpers.ReadOnlySpanToImmutableArray<ComponentId>([Component<Position>.Id, Component<Velocity>.Id]);
+
+            FastImmutableArray<ComponentId> result = MemoryHelpers.Remove(types, Component<Position>.Id);
+
+            Assert.Equal(1, result.Length);
+            Assert.Equal(Component<Velocity>.Id, result[0]);
+        }
+
+        /// <summary>
+        ///     Tests that Remove throws when type is not found
+        /// </summary>
+        [Fact]
+        public void Remove_SingleType_NotFound_ThrowsComponentNotFoundException()
+        {
+            FastImmutableArray<ComponentId> types = MemoryHelpers.ReadOnlySpanToImmutableArray<ComponentId>([Component<Position>.Id]);
+
+            Assert.Throws<ComponentNotFoundException>(new Action(() => MemoryHelpers.Remove(types, Component<Velocity>.Id)));
+        }
+
+        /// <summary>
+        ///     Tests that Remove removes a span of types from an array
+        /// </summary>
+        [Fact]
+        public void Remove_Span_Existing_RemovesTypes()
+        {
+            FastImmutableArray<ComponentId> types = MemoryHelpers.ReadOnlySpanToImmutableArray<ComponentId>([Component<Position>.Id, Component<Velocity>.Id, Component<Health>.Id]);
+
+            FastImmutableArray<ComponentId> result = MemoryHelpers.Remove(types, new[] { Component<Position>.Id, Component<Health>.Id });
+
+            Assert.Equal(1, result.Length);
+            Assert.Equal(Component<Velocity>.Id, result[0]);
+        }
+
+        /// <summary>
+        ///     Tests that Remove throws when a span contains a type not found
+        /// </summary>
+        [Fact]
+        public void Remove_Span_NotFound_ThrowsComponentNotFoundException()
+        {
+            FastImmutableArray<ComponentId> types = MemoryHelpers.ReadOnlySpanToImmutableArray<ComponentId>([Component<Position>.Id]);
+
+            Assert.Throws<ComponentNotFoundException>(new Action(() => MemoryHelpers.Remove(types, new[] { Component<Velocity>.Id })));
+        }
+
+        /// <summary>
+        ///     Tests that GetValueOrResize returns ref to existing element
+        /// </summary>
+        [Fact]
+        public void GetValueOrResize_WithValidIndex_ReturnsRef()
+        {
+            int[] arr = [10, 20, 30];
+
+            ref int val = ref MemoryHelpers.GetValueOrResize(ref arr, 1);
+
+            Assert.Equal(20, val);
+            val = 25;
+            Assert.Equal(25, arr[1]);
+        }
+
+        /// <summary>
+        ///     Tests that GetValueOrResize resizes and returns ref for out-of-range index
+        /// </summary>
+        [Fact]
+        public void GetValueOrResize_WithOutOfRangeIndex_ResizesAndReturnsRef()
+        {
+            int[] arr = [10, 20, 30];
+
+            ref int val = ref MemoryHelpers.GetValueOrResize(ref arr, 5);
+
+            Assert.True(arr.Length >= 6);
+            val = 50;
+            Assert.Equal(50, arr[5]);
+        }
+
+        /// <summary>
+        ///     Tests that Poison does not throw for value types
+        /// </summary>
+        [Fact]
+        public void Poison_ValueType_DoesNotThrow()
+        {
+            int value = 42;
+
+            MemoryHelpers.Poison(ref value);
+
+            Assert.Equal(42, value);
+        }
+
+        /// <summary>
+        ///     Tests that Poison throws for reference types
+        /// </summary>
+        [Fact]
+        public void Poison_ReferenceType_ThrowsNotSupported()
+        {
+            string item = "test";
+
+            Assert.Throws<NotSupportedException>(new Action(() => MemoryHelpers.Poison(ref item)));
+        }
+
+        /// <summary>
         ///     Helper test class for GetOrAddNew tests
         /// </summary>
         private class TestClass
         {
             /// <summary>
-            ///     Gets or sets the value of the value
-            /// </summary>
+        ///     Gets or sets the value of the value
+        /// </summary>
             public int Value { get; set; }
         }
     }
