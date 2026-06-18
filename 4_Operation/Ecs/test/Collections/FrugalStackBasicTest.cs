@@ -146,5 +146,120 @@ namespace Alis.Core.Ecs.Test.Collections
 
             Assert.True(stack.Any);
         }
+
+        /// <summary>
+        ///     Tests that TryPop returns false on empty stack
+        /// </summary>
+        [Fact]
+        public void TryPop_EmptyStack_ReturnsFalse()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+
+            bool result = stack.TryPop(out int value);
+
+            Assert.False(result);
+            Assert.Equal(default, value);
+        }
+
+        /// <summary>
+        ///     Tests that TryPop returns true and popped value on non-empty stack
+        /// </summary>
+        [Fact]
+        public void TryPop_NonEmptyStack_ReturnsTrueAndValue()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+            stack.Push(42);
+
+            bool result = stack.TryPop(out int value);
+
+            Assert.True(result);
+            Assert.Equal(42, value);
+            Assert.False(stack.Any);
+        }
+
+        /// <summary>
+        ///     Tests that Pop returns and removes the top element
+        /// </summary>
+        [Fact]
+        public void Pop_ReturnsAndRemovesTop()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+            stack.Push(10);
+            stack.Push(20);
+
+            int popped = stack.Pop();
+
+            Assert.Equal(20, popped);
+            Assert.True(stack.Any);
+            Assert.Equal(10, stack.Pop());
+            Assert.False(stack.Any);
+        }
+
+        /// <summary>
+        ///     Tests that Pop clears reference for reference types
+        /// </summary>
+        [Fact]
+        public void Pop_ReferenceType_ClearsSlot()
+        {
+            FrugalStack<string> stack = new FrugalStack<string>();
+            stack.Push("hello");
+
+            string popped = stack.Pop();
+
+            Assert.Equal("hello", popped);
+            Assert.False(stack.Any);
+        }
+
+        /// <summary>
+        ///     Tests that Remove removes existing item
+        /// </summary>
+        [Fact]
+        public void Remove_ExistingItem_RemovesIt()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+            stack.Push(10);
+            stack.Push(20);
+            stack.Push(30);
+
+            stack.Remove(20);
+
+            Assert.Equal(2, stack.AsSpan().Length);
+        }
+
+        /// <summary>
+        ///     Tests that Remove does nothing for non-existing item
+        /// </summary>
+        [Fact]
+        public void Remove_NonExistingItem_DoesNothing()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+            stack.Push(10);
+            stack.Push(20);
+
+            stack.Remove(99);
+
+            Assert.Equal(2, stack.AsSpan().Length);
+        }
+
+        /// <summary>
+        ///     Tests that Pop with many pushes grows and shrinks correctly
+        /// </summary>
+        [Fact]
+        public void PushAndPop_ManyItems_WorksCorrectly()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+
+            for (int i = 0; i < 100; i++)
+            {
+                stack.Push(i);
+            }
+
+            for (int i = 99; i >= 0; i--)
+            {
+                Assert.Equal(i, stack.Pop());
+            }
+
+            Assert.False(stack.Any);
+        }
     }
 }
