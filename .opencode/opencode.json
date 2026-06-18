@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/mlx-community/Qwen3-Coder-30B-A3B-Instruct-MLX-4bit",
-  "small_model": "omlx/mlx-community/Qwen3-Coder-30B-A3B-Instruct-MLX-4bit",
+  "model": "omlx/mlx-community/North-Mini-Code-1.0-4bit",
+  "small_model": "omlx/mlx-community/North-Mini-Code-1.0-4bit",
 
   "provider": {
     "omlx": {
@@ -16,7 +16,24 @@
         "baseURL": "http://127.0.0.1:8000/v1",
         "apiKey": "1234"
       },
+
+      
       "models": {
+        "mlx-community/North-Mini-Code-1.0-4bit": {
+          "name": "mlx-community/North-Mini-Code-1.0-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 128000,
+          "maxOutputTokens": 128000,
+          "limit": {
+            "context": 128000,
+            "output": 128000
+          }
+        },
         "mlx-community/Qwen3-Coder-30B-A3B-Instruct-MLX-4bit": {
           "name": "mlx-community/Qwen3-Coder-30B-A3B-Instruct-MLX-4bit",
           "modalities": {
