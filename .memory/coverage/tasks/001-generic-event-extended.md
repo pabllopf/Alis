@@ -31,4 +31,13 @@ GenericEvent.cs - Event collection with internal Add/Remove/Invoke and public op
 1 (Public methods - Equals, GetHashCode, operators)
 
 ### Status
-Pending
+Completed
+
+### Commit
+ee0256614
+
+### Timestamp
+2026-06-18T18:55:00Z
+
+### Tests Added
+10 tests covering: Equals (same ref, different ref, null), GetHashCode, == operator, != operator, Invoke with no listeners, operator + with existing first action

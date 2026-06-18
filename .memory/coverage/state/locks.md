@@ -2,10 +2,10 @@
 
 ## Active Locks
 
-- target: 4_Operation/Ecs/src/Kernel/Events/GenericEvent.cs
-- worker: alis-coverage-agent-1
-- timestamp: 2026-06-18T18:50:00Z
+None
 
 ## Lock History
 
-None
+| Target | Worker | Timestamp | Released |
+|--------|--------|-----------|----------|
+| 4_Operation/Ecs/src/Kernel/Events/GenericEvent.cs | alis-coverage-agent-1 | 2026-06-18T18:50:00Z | 2026-06-18T18:55:00Z |
