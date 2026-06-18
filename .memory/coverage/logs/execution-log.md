@@ -55,6 +55,10 @@
 | 2026-06-18T20:18:00Z | test_create | EnumerableHelpersEmptyEnumerableTest.cs - 5 tests |
 | 2026-06-18T20:19:00Z | test_pass | All 5 tests passed (0 failures). Full suite: 2649/2649 passed |
 | 2026-06-18T20:20:00Z | task_commit | a854bb337 - test: coverage EnumerableHelpers.cs |
+| 2026-06-18T20:25:00Z | task_start | Task 011: ComponentStorage.cs (90.9%, 4 ul) - reference type branches |
+| 2026-06-18T20:28:00Z | test_create | ComponentStorageReferenceTest.cs - 7 tests |
+| 2026-06-18T20:29:00Z | test_pass | All 7 tests passed (0 failures). Full suite: 2660/2660 passed |
+| 2026-06-18T20:30:00Z | task_commit | af076fbcf - test: coverage ComponentStorage.cs |
 | 2026-06-18T20:10:00Z | task_start | Task 010: MemoryHelpers.cs (92.0%, 6 ul) |
 | 2026-06-18T20:13:00Z | test_create | ReadOnlySpanToImmutableArray, Concat, Remove, GetValueOrResize, Poison - 14 tests |
 | 2026-06-18T20:14:00Z | test_pass | All 38 MemoryHelpersTest tests passed (0 failures) |
