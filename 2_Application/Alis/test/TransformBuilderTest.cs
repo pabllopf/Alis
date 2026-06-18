@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InputSettingBuilderTest.cs
+//  File:TransformBuilderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,71 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Input;
-using Alis.Core.Ecs.Systems.Configuration.Input;
+using Alis.Builder.Core.Ecs.Entity;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Components;
 using Xunit;
 
 namespace Alis.Test
 {
-    public class InputSettingBuilderTest
+    public class TransformBuilderTest
     {
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
+            TransformBuilder builder = new TransformBuilder();
             Assert.NotNull(builder);
         }
 
         [Fact]
-        public void Build_ReturnsInputSettingInstance()
+        public void Build_ReturnsTransformInstance()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSetting result = builder.Build();
+            TransformBuilder builder = new TransformBuilder();
+            Transform result = builder.Build();
             Assert.NotNull(result);
         }
 
         [Fact]
-        public void MouseSensitivity_SetsValue_ReturnsBuilder()
+        public void Position_SetsXY_ReturnsBuilder()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSettingBuilder result = builder.MouseSensitivity(2.5f);
+            TransformBuilder builder = new TransformBuilder();
+            TransformBuilder result = builder.Position(10.0f, 20.0f);
             Assert.Same(builder, result);
         }
 
         [Fact]
-        public void ChainingAllProperties_CreatesInputSetting()
+        public void Position_SetsVector_ReturnsBuilder()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSetting result = builder.MouseSensitivity(1.5f).Build();
+            TransformBuilder builder = new TransformBuilder();
+            TransformBuilder result = builder.Position(new Vector2F(5.0f, 15.0f));
+            Assert.Same(builder, result);
+        }
+
+        [Fact]
+        public void Rotation_SetsAngle_ReturnsBuilder()
+        {
+            TransformBuilder builder = new TransformBuilder();
+            TransformBuilder result = builder.Rotation(45.0f);
+            Assert.Same(builder, result);
+        }
+
+        [Fact]
+        public void Scale_SetsXY_ReturnsBuilder()
+        {
+            TransformBuilder builder = new TransformBuilder();
+            TransformBuilder result = builder.Scale(2.0f, 3.0f);
+            Assert.Same(builder, result);
+        }
+
+        [Fact]
+        public void ChainingAllProperties_CreatesTransform()
+        {
+            TransformBuilder builder = new TransformBuilder();
+            Transform result = builder
+                .Position(1.0f, 2.0f)
+                .Rotation(90.0f)
+                .Scale(2.0f, 2.0f)
+                .Build();
             Assert.NotNull(result);
         }
     }

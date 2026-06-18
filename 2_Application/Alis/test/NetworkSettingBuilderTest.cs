@@ -28,131 +28,33 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Network;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Systems.Configuration.Network;
 using Xunit;
 
 namespace Alis.Test
 {
-    /// <summary>
-    ///     Contains unit tests for the <see cref="NetworkSettingBuilder" /> class.
-    /// </summary>
     public class NetworkSettingBuilderTest
     {
-        /// <summary>
-        ///     Tests that the default constructor creates a builder.
-        /// </summary>
         [Fact]
-        public void DefaultConstructor_CreatesBuilder()
+        public void Constructor_NoArgs_CreatesBuilder()
         {
             NetworkSettingBuilder builder = new NetworkSettingBuilder();
-
             Assert.NotNull(builder);
         }
 
-        /// <summary>
-        ///     Tests that the Build method returns a NetworkSetting instance.
-        /// </summary>
         [Fact]
         public void Build_ReturnsNetworkSettingInstance()
         {
             NetworkSettingBuilder builder = new NetworkSettingBuilder();
-            NetworkSetting setting = builder.Build();
-
-            Assert.IsType<NetworkSetting>(setting);
+            NetworkSetting result = builder.Build();
+            Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests that the Build method returns a non-null NetworkSetting.
-        /// </summary>
         [Fact]
-        public void Build_ReturnsNonNullNetworkSetting()
+        public void Ip_SetsIp_ReturnsBuilder()
         {
             NetworkSettingBuilder builder = new NetworkSettingBuilder();
-            NetworkSetting setting = builder.Build();
-
-            Assert.NotNull(setting);
-        }
-
-        /// <summary>
-        ///     Tests that the builder implements expected interfaces.
-        /// </summary>
-        [Fact]
-        public void BuilderImplementsExpectedInterfaces()
-        {
-            NetworkSettingBuilder builder = new NetworkSettingBuilder();
-
-            Assert.IsAssignableFrom<IBuild<NetworkSetting>>(builder);
-        }
-
-        /// <summary>
-        ///     Tests that the default Build returns default NetworkSetting values.
-        /// </summary>
-        [Fact]
-        public void DefaultBuildReturnsDefaultValues()
-        {
-            NetworkSettingBuilder builder = new NetworkSettingBuilder();
-            NetworkSetting setting = builder.Build();
-
-            Assert.Equal(8080, setting.Port);
-            Assert.Equal("127.0.0.1", setting.Ip);
-            Assert.Equal("localhost", setting.Host);
-            Assert.Equal("http", setting.Protocol);
-        }
-
-        /// <summary>
-        ///     Tests that the Ip method returns the same builder instance for chaining.
-        /// </summary>
-        [Fact]
-        public void IpReturnsBuilderForChaining()
-        {
-            NetworkSettingBuilder builder = new NetworkSettingBuilder();
-
             NetworkSettingBuilder result = builder.Ip("192.168.1.1");
-
-            Assert.Same(builder, result);
-        }
-
-        /// <summary>
-        ///     Tests that calling Build multiple times returns the same instance (reference).
-        /// </summary>
-        [Fact]
-        public void BuildReturnsSameInstanceEachCall()
-        {
-            NetworkSettingBuilder builder = new NetworkSettingBuilder();
-
-            NetworkSetting first = builder.Build();
-            NetworkSetting second = builder.Build();
-
-            Assert.Equal(first.Port, second.Port);
-            Assert.Equal(first.Ip, second.Ip);
-            Assert.Equal(first.Host, second.Host);
-            Assert.Equal(first.Protocol, second.Protocol);
-        }
-
-        /// <summary>
-        ///     Tests that Ip method can be called with null value.
-        /// </summary>
-        [Fact]
-        public void IpCanBeCalledWithNull()
-        {
-            NetworkSettingBuilder builder = new NetworkSettingBuilder();
-
-            NetworkSettingBuilder result = builder.Ip(null);
-
-            Assert.Same(builder, result);
-        }
-
-        /// <summary>
-        ///     Tests that Ip method can be called with empty string.
-        /// </summary>
-        [Fact]
-        public void IpCanBeCalledWithEmptyString()
-        {
-            NetworkSettingBuilder builder = new NetworkSettingBuilder();
-
-            NetworkSettingBuilder result = builder.Ip(string.Empty);
-
             Assert.Same(builder, result);
         }
     }

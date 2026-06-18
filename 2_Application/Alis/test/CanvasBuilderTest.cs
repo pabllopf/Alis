@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InputSettingBuilderTest.cs
+//  File:CanvasBuilderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Input;
-using Alis.Core.Ecs.Systems.Configuration.Input;
+using Alis.Builder.Core.Ecs.Components.Ui;
+using Alis.Core.Ecs.Components.Ui;
 using Xunit;
 
 namespace Alis.Test
 {
-    public class InputSettingBuilderTest
+    public class CanvasBuilderTest
     {
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
+            CanvasBuilder builder = new CanvasBuilder();
             Assert.NotNull(builder);
         }
 
         [Fact]
-        public void Build_ReturnsInputSettingInstance()
+        public void Build_ReturnsCanvasInstance()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSetting result = builder.Build();
-            Assert.NotNull(result);
-        }
-
-        [Fact]
-        public void MouseSensitivity_SetsValue_ReturnsBuilder()
-        {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSettingBuilder result = builder.MouseSensitivity(2.5f);
-            Assert.Same(builder, result);
-        }
-
-        [Fact]
-        public void ChainingAllProperties_CreatesInputSetting()
-        {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSetting result = builder.MouseSensitivity(1.5f).Build();
+            CanvasBuilder builder = new CanvasBuilder();
+            Canvas result = builder.Build();
             Assert.NotNull(result);
         }
     }

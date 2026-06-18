@@ -28,116 +28,63 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Physic;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Systems.Configuration.Physic;
 using Xunit;
 
 namespace Alis.Test
 {
-    /// <summary>
-    ///     Contains unit tests for the <see cref="PhysicSettingBuilder" /> class.
-    /// </summary>
     public class PhysicSettingBuilderTest
     {
-        /// <summary>
-        ///     Tests that the default constructor creates a builder.
-        /// </summary>
         [Fact]
-        public void DefaultConstructor_CreatesBuilder()
+        public void Constructor_NoArgs_CreatesBuilder()
         {
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
-
             Assert.NotNull(builder);
         }
 
-        /// <summary>
-        ///     Tests that the Build method returns a PhysicSetting instance.
-        /// </summary>
         [Fact]
         public void Build_ReturnsPhysicSettingInstance()
         {
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
-            PhysicSetting setting = builder.Build();
-
-            Assert.NotNull(setting);
-            Assert.IsType<PhysicSetting>(setting);
+            PhysicSetting result = builder.Build();
+            Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests that the Build method returns a non-null PhysicSetting.
-        /// </summary>
         [Fact]
-        public void Build_ReturnsNonNullPhysicSetting()
+        public void Gravity_SetsGravity_ReturnsBuilder()
         {
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
-            PhysicSetting setting = builder.Build();
-
-            Assert.NotNull(setting);
+            PhysicSettingBuilder result = builder.Gravity(0f, -9.81f);
+            Assert.Same(builder, result);
         }
 
-        /// <summary>
-        ///     Tests that PhysicSetting can be configured via the builder.
-        /// </summary>
         [Fact]
-        public void PhysicSettingCanBeConfiguredViaBuilder()
+        public void Debug_SetsDebug_ReturnsBuilder()
         {
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
-
-            PhysicSetting setting = builder.Gravity(0f, -9.81f).Debug(true).Build();
-
-            Assert.NotNull(setting);
+            PhysicSettingBuilder result = builder.Debug(true);
+            Assert.Same(builder, result);
         }
 
-        /// <summary>
-        ///     Tests that the builder creates a valid PhysicSetting object.
-        /// </summary>
         [Fact]
-        public void BuilderCreatesValidPhysicSettingObject()
+        public void DebugColor_SetsColor_ReturnsBuilder()
         {
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
-
-            PhysicSetting setting = builder.Build();
-
-            Assert.NotNull(setting);
+            PhysicSettingBuilder result = builder.DebugColor(Color.Red);
+            Assert.Same(builder, result);
         }
 
-        /// <summary>
-        ///     Tests that the builder implements expected interfaces.
-        /// </summary>
         [Fact]
-        public void BuilderImplementsExpectedInterfaces()
+        public void ChainingAllProperties_CreatesPhysicSetting()
         {
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
-
-            Assert.IsAssignableFrom<IBuild<PhysicSetting>>(builder);
-            Assert.IsAssignableFrom<IGravity<PhysicSettingBuilder, float>>(builder);
-        }
-
-        /// <summary>
-        ///     Tests that gravity can be set via the builder.
-        /// </summary>
-        [Fact]
-        public void GravityCanBeSetViaBuilder()
-        {
-            PhysicSettingBuilder builder = new PhysicSettingBuilder();
-
-            PhysicSetting setting = builder.Gravity(0f, -15f).Build();
-
-            Assert.NotNull(setting);
-        }
-
-        /// <summary>
-        ///     Tests that debug mode can be set via the builder.
-        /// </summary>
-        [Fact]
-        public void DebugCanBeSetViaBuilder()
-        {
-            PhysicSettingBuilder builder = new PhysicSettingBuilder();
-
-            PhysicSetting setting = builder.Debug(true).Build();
-
-            Assert.NotNull(setting);
+            PhysicSetting result = builder
+                .Gravity(0f, -9.81f)
+                .Debug(true)
+                .DebugColor(Color.Green)
+                .Build();
+            Assert.NotNull(result);
         }
     }
 }

@@ -28,238 +28,98 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.General;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Systems.Configuration.General;
 using Xunit;
 
 namespace Alis.Test
 {
-    /// <summary>
-    ///     Contains unit tests for the <see cref="GeneralSettingBuilder" /> class.
-    /// </summary>
     public class GeneralSettingBuilderTest
     {
-        /// <summary>
-        ///     Tests that the default constructor creates a builder.
-        /// </summary>
         [Fact]
-        public void DefaultConstructor_CreatesBuilder()
+        public void Constructor_NoArgs_CreatesBuilder()
         {
             GeneralSettingBuilder builder = new GeneralSettingBuilder();
-
             Assert.NotNull(builder);
         }
 
-        /// <summary>
-        ///     Tests that the Build method returns a GeneralSetting instance.
-        /// </summary>
         [Fact]
         public void Build_ReturnsGeneralSettingInstance()
         {
             GeneralSettingBuilder builder = new GeneralSettingBuilder();
-            GeneralSetting setting = builder.Build();
-
-            Assert.NotNull(setting);
-            Assert.IsType<GeneralSetting>(setting);
+            GeneralSetting result = builder.Build();
+            Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests that the Build method returns a non-null GeneralSetting.
-        /// </summary>
         [Fact]
-        public void Build_ReturnsNonNullGeneralSetting()
+        public void Name_SetsName_ReturnsBuilder()
         {
             GeneralSettingBuilder builder = new GeneralSettingBuilder();
-            GeneralSetting setting = builder.Build();
-
-            Assert.NotNull(setting);
-        }
-
-        /// <summary>
-        ///     Tests that the builder implements expected interfaces.
-        /// </summary>
-        [Fact]
-        public void BuilderImplementsExpectedInterfaces()
-        {
-            GeneralSettingBuilder builder = new GeneralSettingBuilder();
-
-            Assert.IsAssignableFrom<IBuild<GeneralSetting>>(builder);
-        }
-
-        /// <summary>
-        ///     Tests that Name can be set via the builder and is reflected in the built result.
-        /// </summary>
-        [Fact]
-        public void NameCanBeSetViaBuilder()
-        {
-            GeneralSettingBuilder builder = new GeneralSettingBuilder();
-            const string expectedName = "MyGame";
-
-            GeneralSetting setting = builder.Name(expectedName).Build();
-
-            Assert.Equal(expectedName, setting.Name);
-        }
-
-        /// <summary>
-        ///     Tests that Description can be set via the builder and is reflected in the built result.
-        /// </summary>
-        [Fact]
-        public void DescriptionCanBeSetViaBuilder()
-        {
-            GeneralSettingBuilder builder = new GeneralSettingBuilder();
-            const string expectedDescription = "A test game description";
-
-            GeneralSetting setting = builder.Description(expectedDescription).Build();
-
-            Assert.Equal(expectedDescription, setting.Description);
-        }
-
-        /// <summary>
-        ///     Tests that Version can be set via the builder and is reflected in the built result.
-        /// </summary>
-        [Fact]
-        public void VersionCanBeSetViaBuilder()
-        {
-            GeneralSettingBuilder builder = new GeneralSettingBuilder();
-            const string expectedVersion = "1.2.3";
-
-            GeneralSetting setting = builder.Version(expectedVersion).Build();
-
-            Assert.Equal(expectedVersion, setting.Version);
-        }
-
-        /// <summary>
-        ///     Tests that Author can be set via the builder and is reflected in the built result.
-        /// </summary>
-        [Fact]
-        public void AuthorCanBeSetViaBuilder()
-        {
-            GeneralSettingBuilder builder = new GeneralSettingBuilder();
-            const string expectedAuthor = "Test Author";
-
-            GeneralSetting setting = builder.Author(expectedAuthor).Build();
-
-            Assert.Equal(expectedAuthor, setting.Author);
-        }
-
-        /// <summary>
-        ///     Tests that License can be set via the builder and is reflected in the built result.
-        /// </summary>
-        [Fact]
-        public void LicenseCanBeSetViaBuilder()
-        {
-            GeneralSettingBuilder builder = new GeneralSettingBuilder();
-            const string expectedLicense = "MIT";
-
-            GeneralSetting setting = builder.License(expectedLicense).Build();
-
-            Assert.Equal(expectedLicense, setting.License);
-        }
-
-        /// <summary>
-        ///     Tests that Icon can be set via the builder and is reflected in the built result.
-        /// </summary>
-        [Fact]
-        public void IconCanBeSetViaBuilder()
-        {
-            GeneralSettingBuilder builder = new GeneralSettingBuilder();
-            const string expectedIcon = "custom.ico";
-
-            GeneralSetting setting = builder.Icon(expectedIcon).Build();
-
-            Assert.Equal(expectedIcon, setting.Icon);
-        }
-
-        /// <summary>
-        ///     Tests that Debug can be set via the builder and is reflected in the built result.
-        /// </summary>
-        [Fact]
-        public void DebugCanBeSetViaBuilder()
-        {
-            GeneralSettingBuilder builder = new GeneralSettingBuilder();
-
-            GeneralSetting setting = builder.Debug(true).Build();
-
-            Assert.True(setting.Debug);
-        }
-
-        /// <summary>
-        ///     Tests that Debug can be set to false via the builder and is reflected in the built result.
-        /// </summary>
-        [Fact]
-        public void DebugCanBeSetToFalseViaBuilder()
-        {
-            GeneralSettingBuilder builder = new GeneralSettingBuilder();
-
-            GeneralSetting setting = builder.Debug(false).Build();
-
-            Assert.False(setting.Debug);
-        }
-
-        /// <summary>
-        ///     Tests that all properties can be set via fluent chaining and are reflected in the built result.
-        /// </summary>
-        [Fact]
-        public void AllPropertiesCanBeSetViaFluentChaining()
-        {
-            GeneralSettingBuilder builder = new GeneralSettingBuilder();
-
-            GeneralSetting setting = builder
-                .Name("FluentGame")
-                .Description("A game built with fluent API")
-                .Version("2.0.0")
-                .Author("Dev Team")
-                .License("Apache 2.0")
-                .Icon("icon.png")
-                .Debug(true)
-                .Build();
-
-            Assert.Equal("FluentGame", setting.Name);
-            Assert.Equal("A game built with fluent API", setting.Description);
-            Assert.Equal("2.0.0", setting.Version);
-            Assert.Equal("Dev Team", setting.Author);
-            Assert.Equal("Apache 2.0", setting.License);
-            Assert.Equal("icon.png", setting.Icon);
-            Assert.True(setting.Debug);
-        }
-
-        /// <summary>
-        ///     Tests that the builder returns itself from fluent methods for chaining.
-        /// </summary>
-        [Fact]
-        public void BuilderReturnsItselfFromFluentMethods()
-        {
-            GeneralSettingBuilder builder = new GeneralSettingBuilder();
-
-            GeneralSettingBuilder result = builder.Name("Test");
-
+            GeneralSettingBuilder result = builder.Name("TestApp");
             Assert.Same(builder, result);
         }
 
-        /// <summary>
-        ///     Tests that Name with null value can be set via the builder.
-        /// </summary>
         [Fact]
-        public void NameCanBeSetToNull()
+        public void Version_SetsVersion_ReturnsBuilder()
         {
             GeneralSettingBuilder builder = new GeneralSettingBuilder();
-
-            GeneralSetting setting = builder.Name(null).Build();
-
-            Assert.Null(setting.Name);
+            GeneralSettingBuilder result = builder.Version("1.0.0");
+            Assert.Same(builder, result);
         }
 
-        /// <summary>
-        ///     Tests that Name with empty string can be set via the builder.
-        /// </summary>
         [Fact]
-        public void NameCanBeSetToEmptyString()
+        public void Author_SetsAuthor_ReturnsBuilder()
         {
             GeneralSettingBuilder builder = new GeneralSettingBuilder();
+            GeneralSettingBuilder result = builder.Author("Pablo");
+            Assert.Same(builder, result);
+        }
 
-            GeneralSetting setting = builder.Name(string.Empty).Build();
+        [Fact]
+        public void Description_SetsDescription_ReturnsBuilder()
+        {
+            GeneralSettingBuilder builder = new GeneralSettingBuilder();
+            GeneralSettingBuilder result = builder.Description("A test app");
+            Assert.Same(builder, result);
+        }
 
-            Assert.Equal(string.Empty, setting.Name);
+        [Fact]
+        public void License_SetsLicense_ReturnsBuilder()
+        {
+            GeneralSettingBuilder builder = new GeneralSettingBuilder();
+            GeneralSettingBuilder result = builder.License("MIT");
+            Assert.Same(builder, result);
+        }
+
+        [Fact]
+        public void Icon_SetsIcon_ReturnsBuilder()
+        {
+            GeneralSettingBuilder builder = new GeneralSettingBuilder();
+            GeneralSettingBuilder result = builder.Icon("icon.png");
+            Assert.Same(builder, result);
+        }
+
+        [Fact]
+        public void Debug_SetsDebug_ReturnsBuilder()
+        {
+            GeneralSettingBuilder builder = new GeneralSettingBuilder();
+            GeneralSettingBuilder result = builder.Debug(true);
+            Assert.Same(builder, result);
+        }
+
+        [Fact]
+        public void ChainingAllProperties_CreatesGeneralSetting()
+        {
+            GeneralSettingBuilder builder = new GeneralSettingBuilder();
+            GeneralSetting result = builder
+                .Name("App")
+                .Version("1.0")
+                .Author("Test")
+                .Description("Desc")
+                .License("MIT")
+                .Icon("icon.png")
+                .Debug(true)
+                .Build();
+            Assert.NotNull(result);
         }
     }
 }

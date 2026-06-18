@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InputSettingBuilderTest.cs
+//  File:CircleColliderBuilderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Input;
-using Alis.Core.Ecs.Systems.Configuration.Input;
+using Alis.Builder.Core.Ecs.Components.Collider;
+using Alis.Core.Ecs.Components.Collider;
 using Xunit;
 
 namespace Alis.Test
 {
-    public class InputSettingBuilderTest
+    public class CircleColliderBuilderTest
     {
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
+            CircleColliderBuilder builder = new CircleColliderBuilder();
             Assert.NotNull(builder);
         }
 
         [Fact]
-        public void Build_ReturnsInputSettingInstance()
+        public void Build_ReturnsCircleColliderInstance()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSetting result = builder.Build();
-            Assert.NotNull(result);
-        }
-
-        [Fact]
-        public void MouseSensitivity_SetsValue_ReturnsBuilder()
-        {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSettingBuilder result = builder.MouseSensitivity(2.5f);
-            Assert.Same(builder, result);
-        }
-
-        [Fact]
-        public void ChainingAllProperties_CreatesInputSetting()
-        {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSetting result = builder.MouseSensitivity(1.5f).Build();
+            CircleColliderBuilder builder = new CircleColliderBuilder();
+            CircleCollider result = builder.Build();
             Assert.NotNull(result);
         }
     }

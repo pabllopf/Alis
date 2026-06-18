@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InputSettingBuilderTest.cs
+//  File:SceneManagerBuilderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,43 +27,41 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Input;
-using Alis.Core.Ecs.Systems.Configuration.Input;
+using System;
+using Alis.Builder.Core.Ecs.System.ManagerBuilders.Scenes;
+using Alis.Core.Ecs.Systems.Manager.Scene;
+using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
 namespace Alis.Test
 {
-    public class InputSettingBuilderTest
+    public class SceneManagerBuilderTest
     {
         [Fact]
-        public void Constructor_NoArgs_CreatesBuilder()
+        public void Constructor_WithContext_CreatesBuilder()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
+            Context context = new Context();
+            SceneManagerBuilder builder = new SceneManagerBuilder(context);
             Assert.NotNull(builder);
         }
 
         [Fact]
-        public void Build_ReturnsInputSettingInstance()
+        public void Build_ReturnsSceneManagerInstance()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSetting result = builder.Build();
+            Context context = new Context();
+            SceneManagerBuilder builder = new SceneManagerBuilder(context);
+            SceneManager result = builder.Build();
             Assert.NotNull(result);
         }
 
         [Fact]
-        public void MouseSensitivity_SetsValue_ReturnsBuilder()
+        public void Build_ReturnsSameInstance()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSettingBuilder result = builder.MouseSensitivity(2.5f);
-            Assert.Same(builder, result);
-        }
-
-        [Fact]
-        public void ChainingAllProperties_CreatesInputSetting()
-        {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSetting result = builder.MouseSensitivity(1.5f).Build();
-            Assert.NotNull(result);
+            Context context = new Context();
+            SceneManagerBuilder builder = new SceneManagerBuilder(context);
+            SceneManager first = builder.Build();
+            SceneManager second = builder.Build();
+            Assert.Same(first, second);
         }
     }
 }

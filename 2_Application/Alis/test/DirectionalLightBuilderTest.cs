@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InputSettingBuilderTest.cs
+//  File:DirectionalLightBuilderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Input;
-using Alis.Core.Ecs.Systems.Configuration.Input;
+using Alis.Builder.Core.Ecs.Components.Light;
+using Alis.Core.Ecs.Components.Light;
 using Xunit;
 
 namespace Alis.Test
 {
-    public class InputSettingBuilderTest
+    public class DirectionalLightBuilderTest
     {
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
+            DirectionalLightBuilder builder = new DirectionalLightBuilder();
             Assert.NotNull(builder);
         }
 
         [Fact]
-        public void Build_ReturnsInputSettingInstance()
+        public void Build_ReturnsDirectionalLightInstance()
         {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSetting result = builder.Build();
-            Assert.NotNull(result);
-        }
-
-        [Fact]
-        public void MouseSensitivity_SetsValue_ReturnsBuilder()
-        {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSettingBuilder result = builder.MouseSensitivity(2.5f);
-            Assert.Same(builder, result);
-        }
-
-        [Fact]
-        public void ChainingAllProperties_CreatesInputSetting()
-        {
-            InputSettingBuilder builder = new InputSettingBuilder();
-            InputSetting result = builder.MouseSensitivity(1.5f).Build();
+            DirectionalLightBuilder builder = new DirectionalLightBuilder();
+            DirectionalLight result = builder.Build();
             Assert.NotNull(result);
         }
     }
