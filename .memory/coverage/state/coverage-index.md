@@ -2,7 +2,7 @@
 
 ## Project: pabllopf-official_alis
 ## Branch: master
-## Last Updated: 2026-06-18T19:15:00Z
+## Last Updated: 2026-06-18T19:45:00Z
 
 ## Project Summary
 - Overall Coverage: 47.1%
@@ -21,6 +21,10 @@
 | 003 | ComponentHandle.cs | 82.6% | 3 | 89270c354 | 2026-06-18T19:05:00Z |
 | 004 | FastLookup.cs | 95.9% | 2 | 57e9d6f93 | 2026-06-18T19:10:00Z |
 | 005 | FastestArrayPool.cs | 95.3% | 2 | 7071e156c | 2026-06-18T19:15:00Z |
+| 006 | GenerationServices.cs | 95.7% | 1 | a93461d8c | 2026-06-18T19:40:00Z |
+| 007 | ArchetypeNeighborCache.cs | 78.2% | 18 | e17d677f0 | 2026-06-18T19:45:00Z |
+| 008 | ComponentID.cs | 90.9% | 1 | 6edb8b0a4 | 2026-06-18T19:52:00Z |
+| 009 | Rule.cs | 84.8% | 2 | pending | 2026-06-18T20:05:00Z |
 
 ## Tasks
 
@@ -31,3 +35,7 @@
 | 003 | ComponentHandle.cs | 82.6% | 3 | 1 | Completed |
 | 004 | FastLookup.cs | 95.9% | 2 | 1 | Completed |
 | 005 | FastestArrayPool.cs | 95.3% | 2 | 1 | Completed |
+| 006 | GenerationServices.cs | 95.7% | 1 | 1 | Completed |
+| 007 | ArchetypeNeighborCache.cs | 78.2% | 18 | 1 | Completed |
+| 008 | ComponentID.cs | 90.9% | 1 | 1 | Completed |
+| 009 | Rule.cs | 84.8% | 2 | 1 | Completed |
