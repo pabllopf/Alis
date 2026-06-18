@@ -29,7 +29,7 @@
 | 011 | ComponentStorage.cs | 90.9% | 4 | af076fbcf | 2026-06-18T20:30:00Z |
 | 012 | ShortSparseSet.cs | 93.3% | 6 | f7eceefc2 | 2026-06-18T20:25:00Z |
 | 013 | AnimationBuilder.cs | 0.0% | 10+ | d886d2e34 | 2026-06-18T20:50:00Z |
-| 014 | BitOperations.cs | 31.0% | 20 | pending | 2026-06-18T20:40:00Z |
+| 014 | BitOperations.cs | 31.0% | 20 | d4dcc2fbd | 2026-06-18T20:40:00Z |
 
 ## Tasks
 
