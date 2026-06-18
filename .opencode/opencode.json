@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/unsloth/Qwen3.6-35B-A3B-UD-MLX-4bit",
-  "small_model": "omlx/unsloth/Qwen3.6-35B-A3B-UD-MLX-4bit",
+  "model": "omlx/mlx-community/Qwen3-Coder-30B-A3B-Instruct-MLX-4bit",
+  "small_model": "omlx/mlx-community/Qwen3-Coder-30B-A3B-Instruct-MLX-4bit",
 
   "provider": {
     "omlx": {
@@ -17,6 +17,21 @@
         "apiKey": "1234"
       },
       "models": {
+        "mlx-community/Qwen3-Coder-30B-A3B-Instruct-MLX-4bit": {
+          "name": "mlx-community/Qwen3-Coder-30B-A3B-Instruct-MLX-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 128000,
+          "maxOutputTokens": 128000,
+          "limit": {
+            "context": 128000,
+            "output": 128000
+          }
+        },
         "mlx-community/Qwen3-Coder-Next-5bit": {
           "name": "mlx-community/Qwen3-Coder-Next-5bit",
           "modalities": {
