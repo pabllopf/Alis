@@ -2,7 +2,7 @@
 
 ## Project: pabllopf-official_alis
 ## Branch: master
-## Last Updated: 2026-06-18T18:55:00Z
+## Last Updated: 2026-06-18T19:15:00Z
 
 ## Project Summary
 - Overall Coverage: 47.1%
@@ -17,9 +17,17 @@
 | ID | File | Coverage (Before) | Uncovered Lines (Before) | Commit | Timestamp |
 |----|------|-------------------|--------------------------|--------|-----------|
 | 001 | GenericEvent.cs | 89.6% | 7 | ee0256614 | 2026-06-18T18:55:00Z |
+| 002 | GameObjectOnlyEvent.cs | 83.1% | 9 | 51b1a0764 | 2026-06-18T19:00:00Z |
+| 003 | ComponentHandle.cs | 82.6% | 3 | 89270c354 | 2026-06-18T19:05:00Z |
+| 004 | FastLookup.cs | 95.9% | 2 | 57e9d6f93 | 2026-06-18T19:10:00Z |
+| 005 | FastestArrayPool.cs | 95.3% | 2 | 7071e156c | 2026-06-18T19:15:00Z |
 
 ## Tasks
 
 | ID | File | Coverage | Uncovered Lines | Priority | Status |
 |----|------|----------|-----------------|----------|--------|
 | 001 | GenericEvent.cs | 89.6% | 7 | 1 | Completed |
+| 002 | GameObjectOnlyEvent.cs | 83.1% | 9 | 1 | Completed |
+| 003 | ComponentHandle.cs | 82.6% | 3 | 1 | Completed |
+| 004 | FastLookup.cs | 95.9% | 2 | 1 | Completed |
+| 005 | FastestArrayPool.cs | 95.3% | 2 | 1 | Completed |
