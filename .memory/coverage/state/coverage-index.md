@@ -25,6 +25,7 @@
 | 007 | ArchetypeNeighborCache.cs | 78.2% | 18 | e17d677f0 | 2026-06-18T19:45:00Z |
 | 008 | ComponentID.cs | 90.9% | 1 | 6edb8b0a4 | 2026-06-18T19:52:00Z |
 | 009 | Rule.cs | 84.8% | 2 | 6d28012cf | 2026-06-18T20:05:00Z |
+| 010 | EnumerableHelpers.cs | 90.3% | 3 | <COMMIT_HASH> | 2026-06-18T20:20:00Z |
 
 ## Tasks
 
@@ -39,3 +40,5 @@
 | 007 | ArchetypeNeighborCache.cs | 78.2% | 18 | 1 | Completed |
 | 008 | ComponentID.cs | 90.9% | 1 | 1 | Completed |
 | 009 | Rule.cs | 84.8% | 2 | 1 | Completed |
+| 010 | EnumerableHelpers.cs | 90.3% | 3 | 1 | Completed |
+| 010 | MemoryHelpers.cs | 92.0% | 6 | 1 | Completed |
