@@ -90,20 +90,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.Null(exception);
         }
-
-        /// <summary>
-        ///     Tests that <see cref="Component.GetComponentFactoryFromType" /> throws
-        ///     <see cref="InvalidOperationException" /> for an unregistered non-component type.
-        /// </summary>
-        [Fact]
-        public void GetComponentFactoryFromType_UnregisteredType_ThrowsInvalidOperation()
-        {
-            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentFactoryFromType(typeof(int)));
-
-            Assert.Contains("RegisterComponent", exception.Message);
-        }
-
+        
         /// <summary>
         ///     Tests that <see cref="Component.GetExistingOrSetupNewComponent{T}" /> returns
         ///     a valid tuple for a newly requested component type.

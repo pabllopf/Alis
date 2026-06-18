@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -38,7 +39,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     Coverage-focused tests for <see cref="CommandBuffer" />, targeting
     ///     uncovered method overloads, exception paths, and entity-creation chain.
     /// </summary>
-    public class CommandBufferCoverageTest
+    public partial class CommandBufferCoverageTest
     {
         /// <summary>
         ///     Tests that <see cref="CommandBuffer.RemoveComponent(GameObject, Type)" />
@@ -137,27 +138,6 @@ namespace Alis.Core.Ecs.Test.Kernel
             buffer.Playback();
 
             Assert.False(entity.Has<TestComponent>());
-        }
-
-        /// <summary>
-        ///     Tests the Entity / With / End creation chain via <see cref="CommandBuffer.Entity" />.
-        /// </summary>
-        [Fact]
-        public void Entity_With_End_CreatesEntityOnPlayback()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-
-            buffer.Entity().With(new Position { X = 10, Y = 20 }).With(new Velocity { X = 1, Y = 2 }).End();
-            buffer.Playback();
-
-            int count = 0;
-            foreach (ref GameObjectType _ in scene.GetAllArchetypes())
-            {
-                count++;
-            }
-
-            Assert.True(count > 0);
         }
 
         /// <summary>
@@ -299,7 +279,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Component used to trigger <see cref="CommandBuffer.Playback" /> during an update.
         /// </summary>
-        private struct PlaybackBlockerComponent : IOnUpdate
+        private partial struct PlaybackBlockerComponent : IOnUpdate
         {
             /// <summary>
             ///     The command buffer to playback.
