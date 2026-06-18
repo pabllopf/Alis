@@ -5,12 +5,12 @@
 ## Last Updated: 2026-06-18T20:40:00Z
 
 ## Project Summary
-- Overall Coverage: 47.1%
-- Line Coverage: 46.7%
-- Branch Coverage: 49.2%
-- Uncovered Lines: 33,843
-- Uncovered Conditions: 6,466
-- Conditions To Cover: 12,738
+- Overall Coverage: 47.7%
+- Line Coverage: 47.4%
+- Branch Coverage: 49.6%
+- Uncovered Lines: 33,414
+- Uncovered Conditions: 6,423
+- Conditions To Cover: 12,746
 
 ## Completed Tasks
 
@@ -30,6 +30,7 @@
 | 012 | ShortSparseSet.cs | 93.3% | 6 | f7eceefc2 | 2026-06-18T20:25:00Z |
 | 013 | AnimationBuilder.cs | 0.0% | 10+ | d886d2e34 | 2026-06-18T20:50:00Z |
 | 014 | BitOperations.cs | 31.0% | 20 | d4dcc2fbd | 2026-06-18T20:40:00Z |
+| 015 | Archetype.cs | 85.8% | 84 | 46faa8af6 | 2026-06-18T21:00:00Z |
 
 ## Tasks
 
@@ -50,3 +51,4 @@
 | 012 | ShortSparseSet.cs | 93.3% | 6 | 1 | Completed |
 | 013 | AnimationBuilder.cs | 0.0% | 10+ | 1 | Completed |
 | 014 | BitOperations.cs | 31.0% | 20 | 1 | Completed |
+| 015 | Archetype.cs | 85.8% | 84 | 1 | Completed |

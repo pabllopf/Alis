@@ -98,3 +98,16 @@
 | 2026-06-18T20:45:00Z | test_create | AnimationBuilderTest.cs — 6 tests covering Name/Speed/Order/Build |
 | 2026-06-18T20:47:00Z | test_pass | All 6 tests passed (0 failures) |
 | 2026-06-18T20:50:00Z | task_commit | d886d2e34 — test: coverage AnimationBuilder.cs |
+
+## Session: 2026-06-18T21:00:00Z
+
+| Timestamp | Action | Details |
+|-----------|--------|---------|
+| 2026-06-18T21:00:00Z | session_start | New coverage remediation session started (resumed) |
+| 2026-06-18T21:00:00Z | memory_load | Loaded existing memory with 14 completed tasks |
+| 2026-06-18T21:00:00Z | coverage_fetch | Fetched project coverage: 47.7% (improved from 47.1%, 33,414 ul, -429 ul covered) |
+| 2026-06-18T21:00:00Z | delta_check | SonarCloud delta detected: +0.6% coverage, -429 uncovered lines, -43 uncovered conditions |
+| 2026-06-18T21:00:00Z | target_select | Task 015: Archetype.cs (85.8%, 84 ul, 30 uc) — ECS core, high priority |
+| 2026-06-18T21:00:00Z | test_create | ArchetypeCoverageTest.cs — 32 tests covering GetComponentSpan, DeleteEntity, EnsureCapacity, GetEntitySpan, Update, archetype creation paths |
+| 2026-06-18T21:00:00Z | test_pass | All 32 ArchetypeCoverageTest tests passed. Full suite: 2904/2904 passed |
+| 2026-06-18T21:00:00Z | task_commit | 46faa8af6 — test: coverage Archetype.cs |
