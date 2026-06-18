@@ -74,6 +74,19 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
+        ///     Tests that registering the same type with the same factory twice does not throw.
+        /// </summary>
+        [Fact]
+        public void RegisterType_SameFactoryTwice_DoesNotThrow()
+        {
+            Type componentType = typeof(GenerationServicesProbeComponent);
+
+            GenerationServices.RegisterType(componentType, new UpdateRunnerFactory<UpdateComponent>());
+
+            GenerationServices.RegisterType(componentType, new UpdateRunnerFactory<UpdateComponent>());
+        }
+
+        /// <summary>
         ///     Tests that register update method attribute adds component type to cache
         /// </summary>
         [Fact]
