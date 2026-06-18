@@ -269,6 +269,27 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
+        ///     Tests that TraverseArchetype hits on all four slots after Set(ushort, Archetype) overload.
+        /// </summary>
+        [Fact]
+        public void ArchetypeNeighborCache_TraverseArchetype_AllFourSlots()
+        {
+            using Scene scene = new Scene();
+            Archetype arch = scene.DefaultArchetype;
+
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
+            cache.Set(10, arch);
+            cache.Set(20, arch);
+            cache.Set(30, arch);
+            cache.Set(40, arch);
+
+            Assert.Same(arch, cache.TraverseArchetype(10));
+            Assert.Same(arch, cache.TraverseArchetype(20));
+            Assert.Same(arch, cache.TraverseArchetype(30));
+            Assert.Same(arch, cache.TraverseArchetype(40));
+        }
+
+        /// <summary>
         ///     Tests that fast lookup set lookup and find adjacent archetype all paths work
         /// </summary>
         [Fact]
