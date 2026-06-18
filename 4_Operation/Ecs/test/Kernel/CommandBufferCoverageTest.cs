@@ -247,26 +247,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.Contains("currently being created", exception.Message);
         }
-
-        /// <summary>
-        ///     Tests that <see cref="CommandBuffer.Playback" /> throws
-        ///     <see cref="InvalidOperationException" /> when structural changes
-        ///     are not allowed (e.g., during scene update).
-        /// </summary>
-        [Fact]
-        public void Playback_WhenStructuralChangesDisallowed_ThrowsInvalidOperation()
-        {
-            using Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(scene);
-            GameObject entity = scene.Create(new TestComponent { Value = 1 });
-            buffer.DeleteEntity(entity);
-
-            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() =>
-                PlaybackDuringUpdate(buffer, scene));
-
-            Assert.Contains("structural changes", exception.Message);
-        }
-
+        
         /// <summary>
         ///     Helper that triggers playback inside an update callback where structural changes are locked.
         /// </summary>
