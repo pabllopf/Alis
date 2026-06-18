@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/mlx-community/North-Mini-Code-1.0-4bit",
-  "small_model": "omlx/mlx-community/North-Mini-Code-1.0-4bit",
+  "model": "omlx/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit",
+  "small_model": "omlx/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit",
 
   "provider": {
     "omlx": {
@@ -19,6 +19,24 @@
 
       
       "models": {
+
+      
+        "lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit": {
+          "name": "lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 262144,
+          "maxOutputTokens": 262144,
+          "limit": {
+            "context": 262144,
+            "output": 262144
+          }
+        },
+
         "mlx-community/North-Mini-Code-1.0-4bit": {
           "name": "mlx-community/North-Mini-Code-1.0-4bit",
           "modalities": {
