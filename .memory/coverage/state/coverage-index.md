@@ -26,6 +26,8 @@
 | 008 | ComponentID.cs | 90.9% | 1 | 6edb8b0a4 | 2026-06-18T19:52:00Z |
 | 009 | Rule.cs | 84.8% | 2 | 6d28012cf | 2026-06-18T20:05:00Z |
 | 010 | EnumerableHelpers.cs | 90.3% | 3 | a854bb337 | 2026-06-18T20:20:00Z |
+| 011 | MemoryHelpers.cs | 92.0% | 6 | fc1cd0f9e | 2026-06-18T20:15:00Z |
+| 012 | ShortSparseSet.cs | 93.3% | 6 | f7eceefc2 | 2026-06-18T20:25:00Z |
 
 ## Tasks
 
@@ -41,4 +43,5 @@
 | 008 | ComponentID.cs | 90.9% | 1 | 1 | Completed |
 | 009 | Rule.cs | 84.8% | 2 | 1 | Completed |
 | 010 | EnumerableHelpers.cs | 90.3% | 3 | 1 | Completed |
-| 010 | MemoryHelpers.cs | 92.0% | 6 | 1 | Completed |
+| 011 | MemoryHelpers.cs | 92.0% | 6 | 1 | Completed |
+| 012 | ShortSparseSet.cs | 93.3% | 6 | 1 | Completed |

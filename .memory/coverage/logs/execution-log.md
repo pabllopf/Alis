@@ -59,6 +59,10 @@
 | 2026-06-18T20:13:00Z | test_create | ReadOnlySpanToImmutableArray, Concat, Remove, GetValueOrResize, Poison - 14 tests |
 | 2026-06-18T20:14:00Z | test_pass | All 38 MemoryHelpersTest tests passed (0 failures) |
 | 2026-06-18T20:15:00Z | task_commit | fc1cd0f9e - test: coverage MemoryHelpers.cs |
+| 2026-06-18T20:20:00Z | task_start | Task 011: ShortSparseSet.cs (93.3%, 6 ul) |
+| 2026-06-18T20:22:00Z | test_create | TryGet/Get/Remove edge cases + EnsureCapacity - 4 tests |
+| 2026-06-18T20:23:00Z | test_pass | All 2653 tests passed (0 failures) |
+| 2026-06-18T20:25:00Z | task_commit | f7eceefc2 - test: coverage ShortSparseSet.cs |
 
 ## Session: 2026-06-18T19:55:00Z
 
