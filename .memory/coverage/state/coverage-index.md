@@ -24,7 +24,7 @@
 | 006 | GenerationServices.cs | 95.7% | 1 | a93461d8c | 2026-06-18T19:40:00Z |
 | 007 | ArchetypeNeighborCache.cs | 78.2% | 18 | e17d677f0 | 2026-06-18T19:45:00Z |
 | 008 | ComponentID.cs | 90.9% | 1 | 6edb8b0a4 | 2026-06-18T19:52:00Z |
-| 009 | Rule.cs | 84.8% | 2 | pending | 2026-06-18T20:05:00Z |
+| 009 | Rule.cs | 84.8% | 2 | 6d28012cf | 2026-06-18T20:05:00Z |
 
 ## Tasks
 

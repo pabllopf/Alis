@@ -47,4 +47,4 @@
 | 2026-06-18T20:00:00Z | task_start | Task 009: Rule.cs (84.8%, 2 ul) |
 | 2026-06-18T20:02:00Z | test_create | RuleApplies_* - 8 tests covering all switch branches |
 | 2026-06-18T20:03:00Z | test_pass | All 25 RuleExtended tests passed (0 failures) |
-| 2026-06-18T20:05:00Z | task_commit | pending - test: coverage Rule.cs |
+| 2026-06-18T20:05:00Z | task_commit | 6d28012cf - test: coverage Rule.cs |
