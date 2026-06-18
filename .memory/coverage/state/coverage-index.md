@@ -2,7 +2,7 @@
 
 ## Project: pabllopf-official_alis
 ## Branch: master
-## Last Updated: 2026-06-18T20:30:00Z
+## Last Updated: 2026-06-18T20:40:00Z
 
 ## Project Summary
 - Overall Coverage: 47.1%
@@ -27,6 +27,9 @@
 | 009 | Rule.cs | 84.8% | 2 | 6d28012cf | 2026-06-18T20:05:00Z |
 | 010 | EnumerableHelpers.cs | 90.3% | 3 | a854bb337 | 2026-06-18T20:20:00Z |
 | 011 | ComponentStorage.cs | 90.9% | 4 | af076fbcf | 2026-06-18T20:30:00Z |
+| 012 | ShortSparseSet.cs | 93.3% | 6 | f7eceefc2 | 2026-06-18T20:25:00Z |
+| 013 | AnimationBuilder.cs | 0.0% | 10+ | d886d2e34 | 2026-06-18T20:50:00Z |
+| 014 | BitOperations.cs | 31.0% | 20 | pending | 2026-06-18T20:40:00Z |
 
 ## Tasks
 
@@ -45,3 +48,5 @@
 | 011 | ComponentStorage.cs | 90.9% | 4 | 1 | Completed |
 | 011 | MemoryHelpers.cs | 92.0% | 6 | 1 | Completed |
 | 012 | ShortSparseSet.cs | 93.3% | 6 | 1 | Completed |
+| 013 | AnimationBuilder.cs | 0.0% | 10+ | 1 | Completed |
+| 014 | BitOperations.cs | 31.0% | 20 | 1 | Completed |

@@ -77,3 +77,23 @@
 | 2026-06-18T19:55:00Z | coverage_fetch | Fetched project coverage: 47.1% (unchanged, 33,843 ul) |
 | 2026-06-18T19:55:00Z | delta_check | No delta detected — coverage matches indexed state exactly |
 | 2026-06-18T19:55:00Z | session_stop | STOP IMMEDIATELY — no coverage delta to process |
+| 2026-06-18T20:30:00Z | session_start | New coverage remediation session started (resumed) |
+| 2026-06-18T20:30:00Z | memory_load | Loaded existing memory with 12 completed tasks |
+| 2026-06-18T20:30:00Z | coverage_fetch | Fetched project coverage: 47.1%, uncovered_lines: 33,843 |
+| 2026-06-18T20:30:00Z | delta_check | No SonarCloud delta — user requested to continue with orphaned tasks |
+| 2026-06-18T20:32:00Z | task_start | Task 013: BitOperations.cs (31.0%, 20 ul) |
+| 2026-06-18T20:35:00Z | test_create | BitOperationsTest.cs - 100 tests covering Log2, RoundUpToPowerOf2, RotateLeft |
+| 2026-06-18T20:38:00Z | test_pass | All 100 BitOperations tests passed (0 failures) |
+| 2026-06-18T20:39:00Z | csproj_fix | Added Aliases="global,ecs" to ProjectReference to resolve System.Numerics.BitOperations ambiguity on net8.0 |
+
+## Session: 2026-06-18T20:40:00Z
+
+| Timestamp | Action | Details |
+|-----------|--------|---------|
+| 2026-06-18T20:40:00Z | session_start | New coverage remediation session started (resumed) |
+| 2026-06-18T20:40:00Z | memory_load | Loaded existing memory with 12 completed tasks |
+| 2026-06-18T20:40:00Z | coverage_fetch | Fetched project coverage: 47.1% (unchanged, 33,843 ul) |
+| 2026-06-18T20:40:00Z | task_start | Task 013: AnimationBuilder.cs (0.0%, 0 ul) — Builder in 2_Application/Alis |
+| 2026-06-18T20:45:00Z | test_create | AnimationBuilderTest.cs — 6 tests covering Name/Speed/Order/Build |
+| 2026-06-18T20:47:00Z | test_pass | All 6 tests passed (0 failures) |
+| 2026-06-18T20:50:00Z | task_commit | d886d2e34 — test: coverage AnimationBuilder.cs |

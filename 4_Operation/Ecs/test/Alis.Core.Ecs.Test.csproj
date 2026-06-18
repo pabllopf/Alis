@@ -144,7 +144,8 @@
    <ItemGroup Condition="$(AssemblyName.Contains('Test')) AND $(NameTest.StartsWith('Alis'))">
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
-            Include="$(ProjectDir)../src/$(NameTest).csproj"/>
+            Include="$(ProjectDir)../src/$(NameTest).csproj"
+            Aliases="global,ecs"/>
 
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False"
