@@ -241,5 +241,34 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.NotEqual(default(ComponentId), stringId);
             Assert.Equal(typeof(string), stringId.Type);
         }
+
+        /// <summary>
+        ///     Tests that DebuggerDisplayString returns the expected format.
+        /// </summary>
+        [Fact]
+        public void ComponentId_DebuggerDisplayString_ReturnsExpectedFormat()
+        {
+            ComponentId id = Component<Position>.Id;
+
+            string display = id.DebuggerDisplayString;
+
+            Assert.Contains("Types:", display);
+            Assert.Contains("ID:", display);
+            Assert.Contains(typeof(Position).Name, display);
+        }
+
+        /// <summary>
+        ///     Tests that the explicit ITypeId.Value returns RawIndex.
+        /// </summary>
+        [Fact]
+        public void ComponentId_ExplicitITypeId_ReturnsRawIndex()
+        {
+            ComponentId id = Component<Position>.Id;
+            ITypeId typedId = id;
+
+            ushort value = typedId.Value;
+
+            Assert.Equal(id.RawIndex, value);
+        }
     }
 }
