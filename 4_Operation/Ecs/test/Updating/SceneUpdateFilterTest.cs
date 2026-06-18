@@ -46,6 +46,11 @@ namespace Alis.Core.Ecs.Test.Updating
         private static readonly Type RegisteredFilterType = typeof(RegisteredSceneUpdateFilterAttribute);
 
         /// <summary>
+        ///     The registered scene update filter attribute for stretching components
+        /// </summary>
+        private static readonly Type StretchFilterType = typeof(StretchFilterAttribute);
+
+        /// <summary>
         ///     The empty scene update filter attribute
         /// </summary>
         private static readonly Type EmptyFilterType = typeof(EmptySceneUpdateFilterAttribute);
@@ -167,10 +172,53 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
+        ///     Tests that <see cref="SceneUpdateFilter.ArchetypeAdded" /> resizes the internal component buffer
+        ///     when the number of filtered components in an archetype exceeds the initial capacity of 8.
+        /// </summary>
+        [Fact]
+        public void ArchetypeAdded_ResizesBuffer_WhenExceedingInitialCapacity()
+        {
+            GenerationServices.RegisterUpdateMethodAttribute(StretchFilterType, typeof(Position));
+            GenerationServices.RegisterUpdateMethodAttribute(StretchFilterType, typeof(Velocity));
+            GenerationServices.RegisterUpdateMethodAttribute(StretchFilterType, typeof(Health));
+            GenerationServices.RegisterUpdateMethodAttribute(StretchFilterType, typeof(Damage));
+            GenerationServices.RegisterUpdateMethodAttribute(StretchFilterType, typeof(Transform));
+            GenerationServices.RegisterUpdateMethodAttribute(StretchFilterType, typeof(TestStruct));
+            GenerationServices.RegisterUpdateMethodAttribute(StretchFilterType, typeof(AnotherComponent));
+            GenerationServices.RegisterUpdateMethodAttribute(StretchFilterType, typeof(TestComponent));
+            GenerationServices.RegisterUpdateMethodAttribute(StretchFilterType, typeof(AnotherComponent2));
+
+            using Scene scene = new Scene();
+            GameObject obj = scene.Create(
+                new Position { X = 1, Y = 2 },
+                new Velocity { X = 1, Y = 2 },
+                new Health { Value = 100 },
+                new Armor { Value = 50 },
+                new Damage { Value = 10 },
+                new Transform { },
+                new TestStruct { X = 1 },
+                new AnotherComponent { Data = 99 }
+            );
+            obj.Add(new TestComponent { Value = 1, Name = "stretch" });
+            obj.Add(new AnotherComponent2 { Name = "stretch-2", Data = 42 });
+
+            SceneUpdateFilter filter = new SceneUpdateFilter(scene, StretchFilterType);
+            Exception ex = Record.Exception(() => filter.Update());
+            Assert.Null(ex);
+        }
+
+        /// <summary>
         ///     The registered scene update filter attribute class
         /// </summary>
         /// <seealso cref="Attribute" />
         private sealed class RegisteredSceneUpdateFilterAttribute : Attribute
+        {
+        }
+
+        /// <summary>
+        ///     Attribute used to test buffer stretching beyond initial capacity.
+        /// </summary>
+        private sealed class StretchFilterAttribute : Attribute
         {
         }
 
