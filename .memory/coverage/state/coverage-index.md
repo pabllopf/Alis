@@ -20,5 +20,10 @@ pabllopf-official_alis / master
 |------|----------------------|--------|
 | 4_Operation/Physic/src/Collisions/AABB.cs | +0.1% (3 lines) | pending |
 
+## Completed Tasks
+| Task | File | Commit | Coverage Impact | Date |
+|------|------|--------|-----------------|------|
+| 1 | 4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs | 2593cae79 | +6 tests (arity 1) | 2026-06-19 |
+
 ## Priority Queue
 <!-- Populated dynamically during processing -->
