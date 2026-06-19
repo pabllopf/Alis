@@ -130,5 +130,35 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         ///     Gets the height of the dungeon board.
         /// </summary>
         public int Height => Board.GetLength(1);
+
+        /// <summary>
+        ///     Validates that all properties contain valid data.
+        ///     Should be called after deserialization to ensure data integrity.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">Thrown when any required property is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when a property contains invalid values.</exception>
+        /// <seealso cref="JsonNativeAot" />
+        public void Validate()
+        {
+            if (_board == null)
+            {
+                throw new ArgumentNullException(nameof(Board));
+            }
+
+            if (_board.GetLength(0) <= 0 || _board.GetLength(1) <= 0)
+            {
+                throw new ArgumentException("Board dimensions must be greater than zero.", nameof(Board));
+            }
+
+            if (_rooms == null)
+            {
+                throw new ArgumentNullException(nameof(Rooms));
+            }
+
+            if (_corridors == null)
+            {
+                throw new ArgumentNullException(nameof(Corridors));
+            }
+        }
     }
 }
