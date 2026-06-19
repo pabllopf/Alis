@@ -34,6 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Moq;
 using Xunit;
@@ -217,6 +218,236 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 null);
 
             return (BreakableBody)ctor.Invoke(new[] { world });
+        }
+
+        /// <summary>
+        /// Tests that post solve with high impulse sets state to should break
+        /// </summary>
+        [Fact]
+        public void PostSolve_WhenHighImpulseExceedsStrength_SetsStateToShouldBreak()
+        {
+            Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
+            BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
+
+            Mock<Fixture> mockFixture = new Mock<Fixture>();
+            List<Fixture> parts = (List<Fixture>)typeof(BreakableBody)
+                .GetField("Parts", BindingFlags.Instance | BindingFlags.Public)
+                .GetValue(breakableBody);
+            parts.Add(mockFixture.Object);
+
+            Mock<Contact> mockContact = new Mock<Contact>();
+            mockContact.Setup(c => c.FixtureA).Returns(mockFixture.Object);
+
+            ContactVelocityConstraint constraint = new ContactVelocityConstraint();
+            constraint.PointCount = 1;
+            constraint.Points[0].NormalImpulse = 600.0f;
+
+            breakableBody.PostSolve(mockContact.Object, constraint);
+
+            Assert.Equal(BreakableBodyState.ShouldBreak, breakableBody.State);
+        }
+
+        /// <summary>
+        /// Tests that post solve with low impulse does not change state
+        /// </summary>
+        [Fact]
+        public void PostSolve_WhenLowImpulseBelowStrength_DoesNotChangeState()
+        {
+            Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
+            BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
+
+            Mock<Fixture> mockFixture = new Mock<Fixture>();
+            List<Fixture> parts = (List<Fixture>)typeof(BreakableBody)
+                .GetField("Parts", BindingFlags.Instance | BindingFlags.Public)
+                .GetValue(breakableBody);
+            parts.Add(mockFixture.Object);
+
+            Mock<Contact> mockContact = new Mock<Contact>();
+            mockContact.Setup(c => c.FixtureA).Returns(mockFixture.Object);
+
+            ContactVelocityConstraint constraint = new ContactVelocityConstraint();
+            constraint.PointCount = 1;
+            constraint.Points[0].NormalImpulse = 100.0f;
+
+            breakableBody.PostSolve(mockContact.Object, constraint);
+
+            Assert.Equal(BreakableBodyState.Unbroken, breakableBody.State);
+        }
+
+        /// <summary>
+        /// Tests that post solve when already broken does not change state
+        /// </summary>
+        [Fact]
+        public void PostSolve_WhenStateIsBroken_DoesNotChangeState()
+        {
+            Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
+            BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
+            breakableBody.State = BreakableBodyState.Broken;
+
+            Mock<Fixture> mockFixture = new Mock<Fixture>();
+            Mock<Contact> mockContact = new Mock<Contact>();
+            mockContact.Setup(c => c.FixtureA).Returns(mockFixture.Object);
+
+            ContactVelocityConstraint constraint = new ContactVelocityConstraint();
+            constraint.PointCount = 1;
+            constraint.Points[0].NormalImpulse = 600.0f;
+
+            breakableBody.PostSolve(mockContact.Object, constraint);
+
+            Assert.Equal(BreakableBodyState.Broken, breakableBody.State);
+        }
+
+        /// <summary>
+        /// Tests that post solve with non matching fixture does not change state
+        /// </summary>
+        [Fact]
+        public void PostSolve_WhenFixtureNotInParts_DoesNotChangeState()
+        {
+            Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
+            BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
+
+            Mock<Fixture> unrelatedFixture = new Mock<Fixture>();
+            Mock<Contact> mockContact = new Mock<Contact>();
+            mockContact.Setup(c => c.FixtureA).Returns(unrelatedFixture.Object);
+
+            ContactVelocityConstraint constraint = new ContactVelocityConstraint();
+            constraint.PointCount = 1;
+            constraint.Points[0].NormalImpulse = 600.0f;
+
+            breakableBody.PostSolve(mockContact.Object, constraint);
+
+            Assert.Equal(BreakableBodyState.Unbroken, breakableBody.State);
+        }
+
+        /// <summary>
+        /// Tests that cache velocities caches linear and angular velocities
+        /// </summary>
+        [Fact]
+        public void CacheVelocities_CachesLinearAndAngularVelocities()
+        {
+            Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
+            BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
+
+            Body body = new Body();
+            body.LinearVelocity = new Vector2F(3.0f, 4.0f);
+            body.AngularVelocity = 2.0f;
+
+            Fixture fixture = new Fixture(new PolygonShape(new Alis.Core.Physic.Common.Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(1f, 1f)
+            }), 1.0f));
+            fixture.GetBody = body;
+            breakableBody.Parts.Add(fixture);
+
+            breakableBody.CacheVelocities();
+
+            float[] angularCache = (float[])typeof(BreakableBody)
+                .GetField("_angularVelocitiesCache", BindingFlags.Instance | BindingFlags.NonPublic)
+                .GetValue(breakableBody);
+            Vector2F[] velocityCache = (Vector2F[])typeof(BreakableBody)
+                .GetField("_velocitiesCache", BindingFlags.Instance | BindingFlags.NonPublic)
+                .GetValue(breakableBody);
+
+            Assert.Equal(2.0f, angularCache[0]);
+            Assert.Equal(3.0f, velocityCache[0].X);
+            Assert.Equal(4.0f, velocityCache[0].Y);
+        }
+
+        /// <summary>
+        /// Tests that cache velocities resizes cache when parts exceed cache length
+        /// </summary>
+        [Fact]
+        public void CacheVelocities_WhenPartsExceedCacheLength_ResizesCache()
+        {
+            Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
+            BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
+
+            Body body = new Body();
+            body.LinearVelocity = new Vector2F(1.0f, 2.0f);
+            body.AngularVelocity = 3.0f;
+
+            for (int i = 0; i < 10; i++)
+            {
+                Fixture fixture = new Fixture(new PolygonShape(new Alis.Core.Physic.Common.Vertices(new[]
+                {
+                    new Vector2F(0f, 0f),
+                    new Vector2F(1f, 0f),
+                    new Vector2F(1f, 1f)
+                }), 1.0f));
+                fixture.GetBody = body;
+                breakableBody.Parts.Add(fixture);
+            }
+
+            breakableBody.CacheVelocities();
+
+            float[] angularCache = (float[])typeof(BreakableBody)
+                .GetField("_angularVelocitiesCache", BindingFlags.Instance | BindingFlags.NonPublic)
+                .GetValue(breakableBody);
+            Vector2F[] velocityCache = (Vector2F[])typeof(BreakableBody)
+                .GetField("_velocitiesCache", BindingFlags.Instance | BindingFlags.NonPublic)
+                .GetValue(breakableBody);
+
+            Assert.Equal(10, angularCache.Length);
+            Assert.Equal(10, velocityCache.Length);
+        }
+
+        /// <summary>
+        /// Tests that update when should break transitions to broken
+        /// </summary>
+        [Fact]
+        public void Update_WhenShouldBreak_TransitionsToBroken()
+        {
+            Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
+            Mock<Body> mockMainBody = new Mock<Body>();
+
+            mockWorld.Setup(w => w.CreateBody(It.IsAny<Vector2F>(), It.IsAny<float>(), It.IsAny<BodyType>()))
+                .Returns(mockMainBody.Object);
+
+            List<Alis.Core.Physic.Common.Vertices> vertices = new List<Alis.Core.Physic.Common.Vertices>
+            {
+                new Alis.Core.Physic.Common.Vertices(new[]
+                {
+                    new Vector2F(0f, 0f),
+                    new Vector2F(1f, 0f),
+                    new Vector2F(1f, 1f),
+                    new Vector2F(0f, 1f)
+                })
+            };
+
+            BreakableBody breakableBody = new BreakableBody(mockWorld.Object, vertices, 1.0f);
+            breakableBody.State = BreakableBodyState.ShouldBreak;
+
+            mockWorld.Setup(w => w.Remove(mockMainBody.Object));
+
+            breakableBody.Update();
+
+            Assert.Equal(BreakableBodyState.Broken, breakableBody.State);
+        }
+
+        /// <summary>
+        /// Tests that constructor with shapes creates main body
+        /// </summary>
+        [Fact]
+        public void Constructor_WithShapes_CreatesMainBody()
+        {
+            Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
+            Mock<Body> mockBody = new Mock<Body>();
+
+            mockWorld.Setup(w => w.CreateBody(It.IsAny<Vector2F>(), It.IsAny<float>(), It.IsAny<BodyType>()))
+                .Returns(mockBody.Object);
+
+            Mock<Shape> mockShape = new Mock<Shape>();
+            Mock<Fixture> mockFixture = new Mock<Fixture>();
+            mockBody.Setup(b => b.CreateFixture(It.IsAny<Shape>())).Returns(mockFixture.Object);
+
+            List<Shape> shapes = new List<Shape> { mockShape.Object };
+
+            BreakableBody breakableBody = new BreakableBody(mockWorld.Object, shapes);
+
+            Assert.NotNull(breakableBody.MainBody);
+            Assert.Single(breakableBody.Parts);
         }
     }
 }
