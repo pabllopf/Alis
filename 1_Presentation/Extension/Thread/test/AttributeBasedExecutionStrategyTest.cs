@@ -139,7 +139,7 @@ namespace Alis.Extension.Thread.Test
         }
 
         /// <summary>
-        ///     Tests that clear cache clears internal caches
+        /// Tests that clear cache clears internal caches
         /// </summary>
         [Fact]
         public void ClearCache_ClearsInternalCaches()
@@ -151,6 +151,32 @@ namespace Alis.Extension.Thread.Test
             strategy.ClearCache();
 
             Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that CanExecuteInParallel returns false for null type
+        /// </summary>
+        [Fact]
+        public void CanExecuteInParallel_NullType_ReturnsFalse()
+        {
+            AttributeBasedExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
+
+            bool result = strategy.CanExecuteInParallel(null);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        /// Tests that GetMinimumBatchSize returns default for null type
+        /// </summary>
+        [Fact]
+        public void GetMinimumBatchSize_NullType_ReturnsDefault()
+        {
+            AttributeBasedExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
+
+            int batchSize = strategy.GetMinimumBatchSize(null);
+
+            Assert.Equal(128, batchSize);
         }
     }
 }
