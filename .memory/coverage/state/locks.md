@@ -14,3 +14,4 @@
 | `4_Operation/Physic/src/Common/Logic/FilterData.cs` | `worker-1` | `2026-06-19T09:23:03+01:00` | Released |
 | `4_Operation/Physic/src/Collisions/Distance.cs` | `coverage-agent` | `2026-06-19T10:50:00-03:00` | Released |
 | `4_Operation/Physic/src/Dynamics/ControllerCollection.cs` | `worker-1` | `2026-06-19T09:23:03+01:00` | Released |
+| `4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs` | `worker-1` | `2026-06-19T09:23:03+01:00` | Released |

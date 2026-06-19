@@ -104,3 +104,4 @@
 | 4_Operation/Physic/src/Collisions/Distance.cs | 83.3% | ~87%+ | Same-position overlap, Y-axis separation, ApplyRadii far-apart, Touching boundary |
 | 4_Operation/Physic/src/Common/Logic/FilterData.cs | 64.8% | ~80%+ | IsDisabledOnGroup/Category, IsEnabledOnGroup/Category, HasEnabledFilter, no-fixtures path, no-match path, IsInEnabledInCategory false |
 | 4_Operation/Physic/src/Dynamics/ControllerCollection.cs | 45.8% | ~80%+ | Remove/Insert/RemoveAt/Set NotSupported, CopyTo, IndexOf, Count, Get indexer, Enumerator exhausted, Reset, modification exceptions, Dispose |
+| 4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs | 53.5% | ~75%+ | Internal ctor, WorldAnchorA set, WorldAnchorB get, TargetAngle change/same, SolvePositionConstraints |
