@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
@@ -87,6 +88,207 @@ namespace Alis.Core.Physic.Test.Dynamics
             }
 
             Assert.Equal(2, count);
+        }
+
+        /// <summary>
+        /// Tests that collection remove via icompatible throws not supported exception
+        /// </summary>
+        [Fact]
+        public void Collection_RemoveViaICollection_ThrowsNotSupportedException()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            Fixture fixture = new Fixture(new CircleShape(0.3f, 1.0f));
+
+            Assert.Throws<NotSupportedException>(() => ((ICollection<Fixture>)collection).Remove(fixture));
+        }
+
+        /// <summary>
+        /// Tests that collection insert via ilist throws not supported exception
+        /// </summary>
+        [Fact]
+        public void Collection_InsertViaIList_ThrowsNotSupportedException()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            Fixture fixture = new Fixture(new CircleShape(0.3f, 1.0f));
+
+            Assert.Throws<NotSupportedException>(() => ((IList<Fixture>)collection).Insert(0, fixture));
+        }
+
+        /// <summary>
+        /// Tests that collection remove at via ilist throws not supported exception
+        /// </summary>
+        [Fact]
+        public void Collection_RemoveAtViaIList_ThrowsNotSupportedException()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+
+            Assert.Throws<NotSupportedException>(() => ((IList<Fixture>)collection).RemoveAt(0));
+        }
+
+        /// <summary>
+        /// Tests that collection set indexer via ilist throws not supported exception
+        /// </summary>
+        [Fact]
+        public void Collection_SetIndexerViaIList_ThrowsNotSupportedException()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            Fixture fixture = new Fixture(new CircleShape(0.3f, 1.0f));
+
+            Assert.Throws<NotSupportedException>(() => ((IList<Fixture>)collection)[0] = fixture);
+        }
+
+        /// <summary>
+        /// Tests that collection copy to copies fixtures to array
+        /// </summary>
+        [Fact]
+        public void Collection_CopyTo_CopiesFixturesToArray()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.CreateRectangle(0.5f, 0.5f, 1.0f, Vector2F.Zero);
+
+            Fixture[] array = new Fixture[2];
+            body.FixtureList.CopyTo(array, 0);
+
+            Assert.Equal(2, array.Length);
+            Assert.NotNull(array[0]);
+            Assert.NotNull(array[1]);
+        }
+
+        /// <summary>
+        /// Tests that collection index of returns correct index for existing fixture
+        /// </summary>
+        [Fact]
+        public void Collection_IndexOf_ExistingFixture_ReturnsCorrectIndex()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+
+            int index = body.FixtureList.IndexOf(fixture);
+
+            Assert.Equal(0, index);
+        }
+
+        /// <summary>
+        /// Tests that collection index of missing fixture returns minus one
+        /// </summary>
+        [Fact]
+        public void Collection_IndexOf_MissingFixture_ReturnsMinusOne()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            Fixture fixture = new Fixture(new CircleShape(0.3f, 1.0f));
+
+            Assert.Equal(-1, collection.IndexOf(fixture));
+        }
+
+        /// <summary>
+        /// Tests that collection count reflects number of fixtures
+        /// </summary>
+        [Fact]
+        public void Collection_Count_ReflectsNumberOfFixtures()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            Assert.Equal(0, body.FixtureList.Count);
+
+            body.CreateCircle(0.5f, 1.0f);
+            Assert.Equal(1, body.FixtureList.Count);
+
+            body.CreateRectangle(0.5f, 0.5f, 1.0f, Vector2F.Zero);
+            Assert.Equal(2, body.FixtureList.Count);
+        }
+
+        /// <summary>
+        /// Tests that collection get indexer returns correct fixture
+        /// </summary>
+        [Fact]
+        public void Collection_GetIndexer_ReturnsCorrectFixture()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+
+            Assert.Equal(fixture, body.FixtureList[0]);
+        }
+
+        /// <summary>
+        /// Tests that collection typed enumerator move next returns false when exhausted
+        /// </summary>
+        [Fact]
+        public void Collection_Enumerator_MoveNext_ReturnsFalseWhenExhausted()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            FixtureCollection.FixtureEnumerator enumerator = collection.GetEnumerator();
+
+            Assert.False(enumerator.MoveNext());
+        }
+
+        /// <summary>
+        /// Tests that collection enumerator reset via i enumerator interface works
+        /// </summary>
+        [Fact]
+        public void Collection_Enumerator_ResetViaIEnumerator_Works()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            FixtureCollection.FixtureEnumerator enumerator = collection.GetEnumerator();
+
+            IEnumerator boxed = enumerator;
+            boxed.Reset();
+        }
+
+        /// <summary>
+        /// Tests that enumerator current throws invalid operation when collection modified during enumeration
+        /// </summary>
+        [Fact]
+        public void Enumerator_Current_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            FixtureCollection.FixtureEnumerator enumerator = collection.GetEnumerator();
+
+            collection.List.Add(new Fixture(new CircleShape(0.3f, 1.0f)));
+            collection.GenerationStamp++;
+
+            Assert.Throws<InvalidOperationException>(() => enumerator.Current);
+        }
+
+        /// <summary>
+        /// Tests that enumerator move next throws invalid operation when collection modified
+        /// </summary>
+        [Fact]
+        public void Enumerator_MoveNext_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            FixtureCollection.FixtureEnumerator enumerator = collection.GetEnumerator();
+
+            collection.List.Add(new Fixture(new CircleShape(0.3f, 1.0f)));
+            collection.GenerationStamp++;
+
+            Assert.Throws<InvalidOperationException>(() => enumerator.MoveNext());
+        }
+
+        /// <summary>
+        /// Tests that collection enumerator dispose clears references
+        /// </summary>
+        [Fact]
+        public void Collection_Enumerator_Dispose_ClearsReferences()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            FixtureCollection.FixtureEnumerator enumerator = collection.GetEnumerator();
+
+            ((IDisposable)enumerator).Dispose();
         }
     }
 }
