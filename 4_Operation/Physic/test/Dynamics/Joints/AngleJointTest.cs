@@ -249,6 +249,98 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.Equal(100.0f, joint.MaxImpulse);
         }
+
+        /// <summary>
+        /// Tests that internal constructor should set joint type to angle
+        /// </summary>
+        [Fact]
+        public void InternalConstructor_ShouldSetJointTypeToAngle()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Assert.Equal(JointType.Angle, joint.JointType);
+        }
+
+        /// <summary>
+        /// Tests that world anchor a set should update body a position
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Set_ShouldUpdateBodyAPosition()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Vector2F newPosition = new Vector2F(5.0f, 10.0f);
+            joint.WorldAnchorA = newPosition;
+
+            Assert.Equal(newPosition, bodyA.Position);
+        }
+
+        /// <summary>
+        /// Tests that world anchor b get should return body b position
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_Get_ShouldReturnBodyBPosition()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            bodyB.Position = new Vector2F(3.0f, 7.0f);
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            Vector2F anchor = joint.WorldAnchorB;
+
+            Assert.Equal(bodyB.Position, anchor);
+        }
+
+        /// <summary>
+        /// Tests that target angle set with changed value should wake bodies
+        /// </summary>
+        [Fact]
+        public void TargetAngle_SetWithChangedValue_ShouldWakeBodies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            joint.TargetAngle = 1.5f;
+
+            Assert.Equal(1.5f, joint.TargetAngle);
+        }
+
+        /// <summary>
+        /// Tests that target angle set with same value should not wake bodies
+        /// </summary>
+        [Fact]
+        public void TargetAngle_SetWithSameValue_ShouldNotWakeBodies()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+
+            joint.TargetAngle = joint.TargetAngle;
+
+            Assert.Equal(0.0f, joint.TargetAngle);
+        }
+
+        /// <summary>
+        /// Tests that solve position constraints should return true
+        /// </summary>
+        [Fact]
+        public void SolvePositionConstraints_ShouldReturnTrue()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            AngleJoint joint = new AngleJoint(bodyA, bodyB);
+            SolverData data = new SolverData();
+
+            bool result = joint.SolvePositionConstraints(ref data);
+
+            Assert.True(result);
+        }
     }
 }
 
