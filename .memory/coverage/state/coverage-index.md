@@ -98,3 +98,4 @@
 | File | Previous Coverage | Est. New Coverage | Methods Covered |
 |------|------------------|-------------------|-----------------|
 | 4_Operation/Physic/src/Collisions/AABB.cs | 92.3% | ~95%+ | RayCast interior checks, Contains edge cases, ProcessAxis swap |
+| 4_Operation/Physic/src/Common/Logic/FilterData.cs | 64.8% | ~80%+ | IsDisabledOnGroup/Category, IsEnabledOnGroup/Category, HasEnabledFilter, no-fixtures path, no-match path, IsInEnabledInCategory false |

@@ -270,6 +270,133 @@ namespace Alis.Core.Physic.Test.Common.Logic
         }
 
         /// <summary>
+        ///     Tests that is active on should return false when disabled group matches
+        /// </summary>
+        [Fact]
+        public void IsActiveOn_ShouldReturnFalse_WhenDisabledGroupMatches()
+        {
+            TestFilterData filter = new TestFilterData
+            {
+                DisabledOnGroup = 5
+            };
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Fixture fixture = body.CreateFixture(new CircleShape(1.0f, 1.0f));
+            fixture.CollisionGroup = 5;
+
+            bool result = filter.IsActiveOn(body);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that is active on should return false when disabled category matches
+        /// </summary>
+        [Fact]
+        public void IsActiveOn_ShouldReturnFalse_WhenDisabledCategoryMatches()
+        {
+            TestFilterData filter = new TestFilterData
+            {
+                DisabledOnCategories = Categories.Cat1
+            };
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            body.CreateFixture(new CircleShape(1.0f, 1.0f));
+
+            bool result = filter.IsActiveOn(body);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that is active on should return true when enabled group matches
+        /// </summary>
+        [Fact]
+        public void IsActiveOn_ShouldReturnTrue_WhenEnabledGroupMatches()
+        {
+            TestFilterData filter = new TestFilterData
+            {
+                EnabledOnGroup = 5,
+                EnabledOnCategories = Categories.None
+            };
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Fixture fixture = body.CreateFixture(new CircleShape(1.0f, 1.0f));
+            fixture.CollisionGroup = 5;
+
+            bool result = filter.IsActiveOn(body);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that is active on should return true when enabled category matches
+        /// </summary>
+        [Fact]
+        public void IsActiveOn_ShouldReturnTrue_WhenEnabledCategoryMatches()
+        {
+            TestFilterData filter = new TestFilterData();
+            filter.EnabledOnCategories = Categories.Cat2;
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Fixture fixture = body.CreateFixture(new CircleShape(1.0f, 1.0f));
+            fixture.CollisionCategories = Categories.Cat2;
+
+            bool result = filter.IsActiveOn(body);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that is active on should return false when body has no fixtures
+        /// </summary>
+        [Fact]
+        public void IsActiveOn_ShouldReturnFalse_WhenBodyHasNoFixtures()
+        {
+            TestFilterData filter = new TestFilterData();
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+
+            bool result = filter.IsActiveOn(body);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that is active on should return false when enabled filter has no match
+        /// </summary>
+        [Fact]
+        public void IsActiveOn_ShouldReturnFalse_WhenEnabledFilterHasNoMatch()
+        {
+            TestFilterData filter = new TestFilterData
+            {
+                EnabledOnGroup = 5,
+                EnabledOnCategories = Categories.None
+            };
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            body.CreateFixture(new CircleShape(1.0f, 1.0f));
+
+            bool result = filter.IsActiveOn(body);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that is in enabled in category should return false for not enabled category
+        /// </summary>
+        [Fact]
+        public void IsInEnabledInCategory_ShouldReturnFalse_ForNotEnabledCategory()
+        {
+            TestFilterData filter = new TestFilterData();
+            filter.EnabledOnCategories = Categories.Cat2;
+
+            bool result = filter.IsInEnabledInCategory(Categories.Cat1);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
         ///     The test filter data class
         /// </summary>
         /// <seealso cref="FilterData" />

@@ -22,3 +22,56 @@
 - **Result**: All 35 tests pass (29 existing + 6 new)
 - **Commit**: test: coverage AABB.cs
 
+### 09:23 — FilterData.cs Coverage Tests
+
+- **File**: `4_Operation/Physic/src/Common/Logic/FilterData.cs`
+- **Coverage**: 64.8% → ~80%+ (est.)
+- **Tests added**: 7
+  - `IsActiveOn_ShouldReturnFalse_WhenDisabledGroupMatches` (IsDisabledOnGroup true path)
+  - `IsActiveOn_ShouldReturnFalse_WhenDisabledCategoryMatches` (IsDisabledOnCategory true path)
+  - `IsActiveOn_ShouldReturnTrue_WhenEnabledGroupMatches` (IsEnabledOnGroup true path)
+  - `IsActiveOn_ShouldReturnTrue_WhenEnabledCategoryMatches` (IsEnabledOnCategory true path)
+  - `IsActiveOn_ShouldReturnFalse_WhenBodyHasNoFixtures` (empty loop, return false)
+  - `IsActiveOn_ShouldReturnFalse_WhenEnabledFilterHasNoMatch` (loop ends, no match)
+  - `IsInEnabledInCategory_ShouldReturnFalse_ForNotEnabledCategory` (false case)
+- **Result**: All 1696 Physic tests pass (1689 existing + 7 new)
+- **Commit**: test: coverage FilterData.cs
+
+### 12:00 — FixtureCollection.cs Coverage
+
+- **File**: `4_Operation/Physic/src/Dynamics/FixtureCollection.cs`
+- **Coverage**: 58.6% → ~75%+ (est.)
+- **Tests added**: 14 (17 total incl. 3 existing)
+  - `Collection_IList_Add_ExistingFixture_Reuses` (IList.Add returns index)
+  - `Collection_IList_IsReadOnly_IsFalse` (IsReadOnly property)
+  - `Collection_IList_Insert_ThrowsNotSupported` (IList.Insert exception)
+  - `Collection_IList_RemoveAt_ThrowsNotSupported` (IList.RemoveAt exception)
+  - `Collection_IList_SetItem_ThrowsNotSupported` (IList indexer set exception)
+  - `Collection_IList_IndexOf_Existing` (IndexOf finds fixture)
+  - `Collection_ICollection_CopyTo_Valid` (CopyTo normal path)
+  - `Collection_ICollection_Remove_ThrowsNotSupported` (ICollection.Remove exception)
+  - `Collection_Count_Property` (Count property)
+  - `Collection_Indexer_Get_Item` (get_Item valid index)
+  - `Collection_Enumerator_MoveNext_Exhausted` (MoveNext after iteration)
+  - `Collection_Enumerator_ResetViaIEnumerator_Works` (Reset via IEnumerator)
+  - `Collection_Enumerator_Current_ThrowsAfterMoveNext` (generation stamp validation)
+  - `Collection_Enumerator_Dispose` (Dispose)
+- **Result**: All 17 tests pass
+- **Commit**: `97dd3754a` — test: coverage FixtureCollection.cs
+
+### 12:30 — BodyCollection.cs Coverage
+
+- **File**: `4_Operation/Physic/src/Dynamics/BodyCollection.cs`
+- **Coverage**: 72.9% → ~85%+ (est.)
+- **Tests added**: 8 (23 total incl. 15 existing)
+  - `IndexOf_NonExistingBody_ShouldReturnNegativeOne`
+  - `Indexer_InvalidIndex_ShouldThrowArgumentOutOfRange`
+  - `BodyEnumerator_MoveNext_ReturnsFalseWhenExhausted`
+  - `BodyEnumerator_MoveNext_WhenCollectionModified_ThrowsInvalidOperation`
+  - `BodyEnumerator_Current_WhenCollectionModified_ThrowsInvalidOperation`
+  - `BodyEnumerator_IEnumeratorCurrent_WhenCollectionModified_ThrowsInvalidOperation`
+  - `BodyEnumerator_ResetViaIEnumerator_Works`
+  - `BodyEnumerator_Dispose_ClearsReferences`
+- **Result**: All 23 tests pass
+- **Commit**: `657238e21` — test: coverage BodyCollection.cs
+
