@@ -26,4 +26,5 @@ pabllopf-official_alis / master
 | 1 | 4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs | 2593cae79 | +6 tests (arity 1) | 2026-06-19 |
 
 ## Priority Queue
-<!-- Populated dynamically during processing -->
+1. BreakableBody.cs ✅ (40.2% → ~60%, 56 ul addressed)
+2. Next target: TBD

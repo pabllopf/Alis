@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
@@ -399,6 +400,169 @@ namespace Alis.Core.Physic.Test.Dynamics
             double angle = MathUtils.VectorAngle(ref p1, ref p2);
 
             Assert.InRange(angle, -Math.PI, Math.PI);
+        }
+        /// <summary>
+        ///     Tests that rot 270 returns correct vector
+        /// </summary>
+        [Fact]
+        public void Rot270_ShouldRotateVector270Degrees()
+        {
+            Vector2F v = new Vector2F(1.0f, 0.0f);
+
+            Vector2F result = MathUtils.Rot270(ref v);
+
+            Assert.Equal(0.0f, result.X);
+            Assert.Equal(-1.0f, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that rot 90 returns correct vector
+        /// </summary>
+        [Fact]
+        public void Rot90_ShouldRotateVector90Degrees()
+        {
+            Vector2F v = new Vector2F(1.0f, 0.0f);
+
+            Vector2F result = MathUtils.Rot90(ref v);
+
+            Assert.Equal(0.0f, result.X);
+            Assert.Equal(1.0f, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that mul matrix 22 with vector by value returns transformed vector
+        /// </summary>
+        [Fact]
+        public void Mul_Mat22WithVectorByValue_ShouldTransformVector()
+        {
+            Mat22 m = new Mat22(1.0f, 0.0f, 0.0f, 1.0f);
+            Vector2F v = new Vector2F(3.0f, 4.0f);
+
+            Vector2F result = MathUtils.Mul(ref m, v);
+
+            Assert.Equal(3.0f, result.X);
+            Assert.Equal(4.0f, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that mul matrix 22 with vector by ref returns transformed vector
+        /// </summary>
+        [Fact]
+        public void Mul_Mat22WithVectorByRef_ShouldTransformVector()
+        {
+            Mat22 m = new Mat22(2.0f, 0.0f, 0.0f, 2.0f);
+            Vector2F v = new Vector2F(3.0f, 4.0f);
+
+            Vector2F result = MathUtils.Mul(ref m, ref v);
+
+            Assert.Equal(6.0f, result.X);
+            Assert.Equal(8.0f, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that mul t matrix 22 with vector by value returns transformed vector
+        /// </summary>
+        [Fact]
+        public void MulT_Mat22WithVectorByValue_ShouldTransformVector()
+        {
+            Mat22 m = new Mat22(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector2F v = new Vector2F(5.0f, 6.0f);
+
+            Vector2F result = MathUtils.MulT(ref m, v);
+
+            Assert.Equal(23.0f, result.X);
+            Assert.Equal(34.0f, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that mul t matrix 22 with vector by ref returns transformed vector
+        /// </summary>
+        [Fact]
+        public void MulT_Mat22WithVectorByRef_ShouldTransformVector()
+        {
+            Mat22 m = new Mat22(1.0f, 2.0f, 3.0f, 4.0f);
+            Vector2F v = new Vector2F(5.0f, 6.0f);
+
+            Vector2F result = MathUtils.MulT(ref m, ref v);
+
+            Assert.Equal(23.0f, result.X);
+            Assert.Equal(34.0f, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that mul matrix 33 with vector returns transformed vector
+        /// </summary>
+        [Fact]
+        public void Mul_Mat33WithVector_ShouldTransformVector()
+        {
+            Mat33 m = new Mat33(
+                new Vector3F(1.0f, 0.0f, 0.0f),
+                new Vector3F(0.0f, 1.0f, 0.0f),
+                new Vector3F(0.0f, 0.0f, 1.0f));
+            Vector3F v = new Vector3F(2.0f, 3.0f, 4.0f);
+
+            Vector3F result = MathUtils.Mul(m, v);
+
+            Assert.Equal(2.0f, result.X);
+            Assert.Equal(3.0f, result.Y);
+            Assert.Equal(4.0f, result.Z);
+        }
+
+        /// <summary>
+        ///     Tests that mul 22 returns 2d result from 3x3 matrix
+        /// </summary>
+        [Fact]
+        public void Mul22_ShouldReturn2DVector()
+        {
+            Mat33 m = new Mat33(
+                new Vector3F(2.0f, 0.0f, 0.0f),
+                new Vector3F(0.0f, 2.0f, 0.0f),
+                new Vector3F(0.0f, 0.0f, 1.0f));
+            Vector2F v = new Vector2F(3.0f, 4.0f);
+
+            Vector2F result = MathUtils.Mul22(m, v);
+
+            Assert.Equal(6.0f, result.X);
+            Assert.Equal(8.0f, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that dot of 2d vectors by value and ref returns correct value
+        /// </summary>
+        [Fact]
+        public void Dot_Vector2FByValueAndRef_ShouldReturnCorrectValue()
+        {
+            Vector2F a = new Vector2F(1.0f, 2.0f);
+            Vector2F b = new Vector2F(3.0f, 4.0f);
+
+            float result = MathUtils.Dot(a, ref b);
+
+            Assert.Equal(11.0f, result);
+        }
+
+        /// <summary>
+        ///     Tests that cross with out parameter returns correct value
+        /// </summary>
+        [Fact]
+        public void Cross_WithOutParameter_ShouldReturnCorrectValue()
+        {
+            Vector2F a = new Vector2F(1.0f, 0.0f);
+            Vector2F b = new Vector2F(0.0f, 1.0f);
+
+            MathUtils.Cross(ref a, ref b, out float result);
+
+            Assert.Equal(1.0f, result);
+        }
+
+        /// <summary>
+        ///     Tests that float equals with delta returns correct comparison
+        /// </summary>
+        [Fact]
+        public void FloatEquals_WithDelta_ShouldCompareWithinTolerance()
+        {
+            Assert.True(MathUtils.FloatEquals(1.0f, 1.05f, 0.1f));
+            Assert.False(MathUtils.FloatEquals(1.0f, 1.2f, 0.1f));
+            Assert.True(MathUtils.FloatEquals(-1.0f, -1.0f, 0.0f));
         }
     }
 }

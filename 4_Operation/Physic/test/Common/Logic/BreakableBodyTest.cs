@@ -229,20 +229,18 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
             BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
 
-            Mock<Fixture> mockFixture = new Mock<Fixture>();
-            List<Fixture> parts = (List<Fixture>)typeof(BreakableBody)
-                .GetField("Parts", BindingFlags.Instance | BindingFlags.Public)
-                .GetValue(breakableBody);
-            parts.Add(mockFixture.Object);
+            Fixture fixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            breakableBody.Parts.Add(fixture);
 
-            Mock<Contact> mockContact = new Mock<Contact>();
-            mockContact.Setup(c => c.FixtureA).Returns(mockFixture.Object);
+            Fixture otherFixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            Contact contact = new Contact(fixture, 0, otherFixture, 0);
+            contact.Manifold.PointCount = 1;
 
             ContactVelocityConstraint constraint = new ContactVelocityConstraint();
             constraint.PointCount = 1;
             constraint.Points[0].NormalImpulse = 600.0f;
 
-            breakableBody.PostSolve(mockContact.Object, constraint);
+            breakableBody.PostSolve(contact, constraint);
 
             Assert.Equal(BreakableBodyState.ShouldBreak, breakableBody.State);
         }
@@ -256,20 +254,18 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
             BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
 
-            Mock<Fixture> mockFixture = new Mock<Fixture>();
-            List<Fixture> parts = (List<Fixture>)typeof(BreakableBody)
-                .GetField("Parts", BindingFlags.Instance | BindingFlags.Public)
-                .GetValue(breakableBody);
-            parts.Add(mockFixture.Object);
+            Fixture fixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            breakableBody.Parts.Add(fixture);
 
-            Mock<Contact> mockContact = new Mock<Contact>();
-            mockContact.Setup(c => c.FixtureA).Returns(mockFixture.Object);
+            Fixture otherFixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            Contact contact = new Contact(fixture, 0, otherFixture, 0);
+            contact.Manifold.PointCount = 1;
 
             ContactVelocityConstraint constraint = new ContactVelocityConstraint();
             constraint.PointCount = 1;
             constraint.Points[0].NormalImpulse = 100.0f;
 
-            breakableBody.PostSolve(mockContact.Object, constraint);
+            breakableBody.PostSolve(contact, constraint);
 
             Assert.Equal(BreakableBodyState.Unbroken, breakableBody.State);
         }
@@ -284,15 +280,16 @@ namespace Alis.Core.Physic.Test.Common.Logic
             BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
             breakableBody.State = BreakableBodyState.Broken;
 
-            Mock<Fixture> mockFixture = new Mock<Fixture>();
-            Mock<Contact> mockContact = new Mock<Contact>();
-            mockContact.Setup(c => c.FixtureA).Returns(mockFixture.Object);
+            Fixture fixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            Fixture otherFixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            Contact contact = new Contact(fixture, 0, otherFixture, 0);
+            contact.Manifold.PointCount = 1;
 
             ContactVelocityConstraint constraint = new ContactVelocityConstraint();
             constraint.PointCount = 1;
             constraint.Points[0].NormalImpulse = 600.0f;
 
-            breakableBody.PostSolve(mockContact.Object, constraint);
+            breakableBody.PostSolve(contact, constraint);
 
             Assert.Equal(BreakableBodyState.Broken, breakableBody.State);
         }
@@ -306,15 +303,16 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
             BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
 
-            Mock<Fixture> unrelatedFixture = new Mock<Fixture>();
-            Mock<Contact> mockContact = new Mock<Contact>();
-            mockContact.Setup(c => c.FixtureA).Returns(unrelatedFixture.Object);
+            Fixture unrelatedFixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            Fixture otherFixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            Contact contact = new Contact(unrelatedFixture, 0, otherFixture, 0);
+            contact.Manifold.PointCount = 1;
 
             ContactVelocityConstraint constraint = new ContactVelocityConstraint();
             constraint.PointCount = 1;
             constraint.Points[0].NormalImpulse = 600.0f;
 
-            breakableBody.PostSolve(mockContact.Object, constraint);
+            breakableBody.PostSolve(contact, constraint);
 
             Assert.Equal(BreakableBodyState.Unbroken, breakableBody.State);
         }
@@ -329,6 +327,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
 
             Body body = new Body();
+            body.GetBodyType = BodyType.Dynamic;
             body.LinearVelocity = new Vector2F(3.0f, 4.0f);
             body.AngularVelocity = 2.0f;
 
@@ -365,6 +364,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
 
             Body body = new Body();
+            body.GetBodyType = BodyType.Dynamic;
             body.LinearVelocity = new Vector2F(1.0f, 2.0f);
             body.AngularVelocity = 3.0f;
 
@@ -405,6 +405,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             mockWorld.Setup(w => w.CreateBody(It.IsAny<Vector2F>(), It.IsAny<float>(), It.IsAny<BodyType>()))
                 .Returns(mockMainBody.Object);
 
+            Fixture fixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            mockMainBody.Setup(b => b.CreateFixture(It.IsAny<Shape>())).Returns(fixture);
+
             List<Alis.Core.Physic.Common.Vertices> vertices = new List<Alis.Core.Physic.Common.Vertices>
             {
                 new Alis.Core.Physic.Common.Vertices(new[]
@@ -438,11 +441,11 @@ namespace Alis.Core.Physic.Test.Common.Logic
             mockWorld.Setup(w => w.CreateBody(It.IsAny<Vector2F>(), It.IsAny<float>(), It.IsAny<BodyType>()))
                 .Returns(mockBody.Object);
 
-            Mock<Shape> mockShape = new Mock<Shape>();
-            Mock<Fixture> mockFixture = new Mock<Fixture>();
-            mockBody.Setup(b => b.CreateFixture(It.IsAny<Shape>())).Returns(mockFixture.Object);
+            Shape shape = new CircleShape(0.5f, 1.0f);
+            Fixture fixture = new Fixture(shape.Clone());
+            mockBody.Setup(b => b.CreateFixture(It.IsAny<Shape>())).Returns(fixture);
 
-            List<Shape> shapes = new List<Shape> { mockShape.Object };
+            List<Shape> shapes = new List<Shape> { shape };
 
             BreakableBody breakableBody = new BreakableBody(mockWorld.Object, shapes);
 
