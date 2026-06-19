@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "llmstudio/qwen/qwen3.6-35b-a3b",
-  "small_model": "llmstudio/qwen/qwen3.6-35b-a3b",
+  "model": "llmstudio/nvidia/nemotron-3-nano-omni",
+  "small_model": "llmstudio/nvidia/nemotron-3-nano-omni",
 
   "provider": {
     "omlx": {
@@ -313,6 +313,19 @@
         "baseURL": "http://localhost:1234/v1"
       },
       "models": {
+        "nvidia/nemotron-3-nano-omni": {
+          "name": "nvidia/nemotron-3-nano-omni",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "maxInputTokens": 262144,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 262144,
+            "output": 131584
+          }
+        },
         "qwen/qwen3.6-35b-a3b": {
           "name": "qwen/qwen3.6-35b-a3b",
           "modalities": {
