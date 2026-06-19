@@ -2,7 +2,7 @@
 
 **Project**: pabllopf-official_alis
 **Branch**: master
-**Last Sync**: 2026-06-19T17:45:00Z
+**Last Sync**: 2026-06-19T18:30:00Z
 **Overall Coverage**: 47.9% (line: 47.5%, branch: 49.9%)
 
 ## Summary
@@ -46,18 +46,19 @@
 | 27 | 6_Ideation/Math/src/Collections/FastImmutableArray.cs | 99.5% | 99.4% | 3 | 100.0% | 0 |
 
 ## Already Processed (from previous sessions)
-- BreakableBody.cs — 14 tests added with Moq (state enum, properties, constructors, Update)
+- BreakableBody.cs — 12 tests added with Moq (state enum, properties, constructors, Update)
 - ChainHull.cs — 7 tests for convex hull edge cases (collinear, vertical, ≤3 points)
 - AABB.cs — 6 tests for RayCast and Contains edge cases
 - Distance.cs — 4 GJK algorithm edge case tests
 - DynamicTreeBroadPhase — 8 tests for all untested public methods
+- BuoyancyController.cs — 12 new tests covering Update() method body (QueryAabb, body filtering, submerged area, buoyancy/drag forces) — commit 708bc65ab
 
 ## Next Priority Targets
-1. **BayazitDecomposer.cs** — 11.1% coverage, 152 uncovered lines, 65 conditions
-2. **ConstrainedPointSet.cs** — 11.4% coverage, 25 uncovered lines
-3. **BuoyancyController.cs** — 29.6% coverage, 42 uncovered lines
-4. **ContactManager.cs** — 50.2% coverage, 159 uncovered lines
-5. **Collision.cs** — 57.6% coverage, 301 uncovered lines
+1. **BuoyancyController.cs** — 29.6% coverage, 42 uncovered lines, 15 conditions (Update method body)
+2. **ContactManager.cs** — 50.2% coverage, 159 uncovered lines
+3. **Collision.cs** — 57.6% coverage, 301 uncovered lines
+4. **Body.cs** — 61.8% coverage, 208 uncovered lines
+5. **Contact.cs** — 61.9% coverage, 101 uncovered lines
 
 ## Notes
 - BreakableBody.cs and ChainHull.cs are already processed but still show low coverage because SonarCloud hasn't re-indexed yet (pending CI push)
