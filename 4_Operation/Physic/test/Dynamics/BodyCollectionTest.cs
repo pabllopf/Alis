@@ -350,5 +350,65 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             ((IDisposable) enumerator).Dispose();
         }
+
+        /// <summary>
+        ///     Tests that generic i enumerable get enumerator returns typed enumerator
+        /// </summary>
+        [Fact]
+        public void GenericEnumerable_GetEnumerator_ReturnsTypedEnumerator()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            world.CreateBody();
+
+            IEnumerator<Body> enumerator = ((IEnumerable<Body>)world.BodyList).GetEnumerator();
+
+            Assert.True(enumerator.MoveNext());
+            Assert.NotNull(enumerator.Current);
+        }
+
+        /// <summary>
+        ///     Tests that non generic i enumerable get enumerator returns enumerator
+        /// </summary>
+        [Fact]
+        public void NonGenericEnumerable_GetEnumerator_ReturnsEnumerator()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            world.CreateBody();
+
+            IEnumerator enumerator = ((IEnumerable)world.BodyList).GetEnumerator();
+
+            Assert.True(enumerator.MoveNext());
+            Assert.NotNull(enumerator.Current);
+        }
+
+        /// <summary>
+        ///     Tests that generic i enumerator current returns correct body
+        /// </summary>
+        [Fact]
+        public void GenericEnumerator_Current_ReturnsCorrectBody()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body body = world.CreateBody();
+            IEnumerator<Body> enumerator = ((IEnumerable<Body>)world.BodyList).GetEnumerator();
+
+            enumerator.MoveNext();
+
+            Assert.Equal(body, enumerator.Current);
+        }
+
+        /// <summary>
+        ///     Tests that generic i enumerator current throws when collection modified
+        /// </summary>
+        [Fact]
+        public void GenericEnumerator_Current_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            IEnumerator<Body> enumerator = ((IEnumerable<Body>)world.BodyList).GetEnumerator();
+
+            world.BodyList.List.Add(new Body());
+            world.BodyList.GenerationStamp++;
+
+            Assert.Throws<InvalidOperationException>(() => enumerator.Current);
+        }
     }
 }
