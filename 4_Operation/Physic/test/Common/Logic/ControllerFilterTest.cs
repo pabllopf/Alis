@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Common.Logic;
 using Xunit;
 
@@ -44,6 +45,71 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void ControllerFilter_TypeShouldBeAccessible()
         {
             Assert.NotNull(typeof(ControllerFilter));
+        }
+
+        /// <summary>
+        /// Tests that constructor sets controller categories
+        /// </summary>
+        [Fact]
+        public void Constructor_SetsControllerCategories()
+        {
+            ControllerFilter filter = new ControllerFilter(ControllerCategories.Cat01);
+
+            Assert.Equal(ControllerCategories.Cat01, filter.ControllerCategories);
+        }
+
+        /// <summary>
+        /// Tests that IgnoreController clears the specified category
+        /// </summary>
+        [Fact]
+        public void IgnoreController_ClearsCategory()
+        {
+            ControllerFilter filter = new ControllerFilter(ControllerCategories.Cat01 | ControllerCategories.Cat02);
+
+            filter.IgnoreController(ControllerCategories.Cat01);
+
+            Assert.Equal(ControllerCategories.Cat02, filter.ControllerCategories);
+        }
+
+        /// <summary>
+        /// Tests that RestoreController sets the specified category
+        /// </summary>
+        [Fact]
+        public void RestoreController_SetsCategory()
+        {
+            ControllerFilter filter = new ControllerFilter(ControllerCategories.None);
+
+            filter.RestoreController(ControllerCategories.Cat01);
+
+            Assert.Equal(ControllerCategories.Cat01, filter.ControllerCategories);
+        }
+
+        /// <summary>
+        /// Tests that IsControllerIgnored returns true when category is ignored
+        /// </summary>
+        [Fact]
+        public void IsControllerIgnored_ReturnsTrueWhenIgnored()
+        {
+            ControllerFilter filter = new ControllerFilter(ControllerCategories.Cat02);
+            filter.IgnoreController(ControllerCategories.Cat02);
+
+            bool ignored = filter.IsControllerIgnored(ControllerCategories.Cat02);
+
+            Assert.True(ignored);
+        }
+
+        /// <summary>
+        /// Tests that IsControllerIgnored returns false when category is not ignored
+        /// </summary>
+        [Fact]
+        public void IsControllerIgnored_ReturnsFalseWhenNotIgnored()
+        {
+            ControllerFilter filter = new ControllerFilter(ControllerCategories.Cat01 | ControllerCategories.Cat02);
+            filter.IgnoreController(ControllerCategories.Cat01);
+
+            bool ignored = filter.IsControllerIgnored(ControllerCategories.Cat02);
+
+            Assert.False(ignored);
         }
     }
 }
