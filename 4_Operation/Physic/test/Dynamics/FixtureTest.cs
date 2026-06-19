@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
@@ -161,6 +162,172 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(clonedFixture.GetIsSensor);
             Assert.Equal("test-tag", clonedFixture.Tag);
             Assert.Same(targetBody, clonedFixture.GetBody);
+        }
+
+        /// <summary>
+        ///     Tests that constructor defaults are set correctly
+        /// </summary>
+        [Fact]
+        public void Constructor_Defaults_ShouldSetCorrectValues()
+        {
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
+
+            Assert.Equal(Categories.Cat1, fixture.GetCollisionCategories);
+            Assert.Equal(Categories.All, fixture.GetCollidesWith);
+            Assert.Equal((short)0, fixture.GetCollisionGroup);
+            Assert.Equal(0.2f, fixture.GetFriction);
+            Assert.Equal(0.0f, fixture.GetRestitution);
+            Assert.False(fixture.GetIsSensor);
+            Assert.Null(fixture.GetBody);
+            Assert.NotNull(fixture.GetShape);
+            Assert.NotNull(fixture.Proxies);
+        }
+
+        /// <summary>
+        ///     Tests that tag property can be set and retrieved
+        /// </summary>
+        [Fact]
+        public void Tag_ShouldSetAndGetValue()
+        {
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
+
+            fixture.Tag = "my-tag";
+
+            Assert.Equal("my-tag", fixture.Tag);
+        }
+
+        /// <summary>
+        ///     Tests that get collision group set with same value should not refilter
+        /// </summary>
+        [Fact]
+        public void GetCollisionGroup_SameValue_ShouldNotRefilter()
+        {
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
+
+            fixture.GetCollisionGroup = 0;
+
+            Assert.Equal((short)0, fixture.GetCollisionGroup);
+        }
+
+        /// <summary>
+        ///     Tests that get collides with set with same value should not refilter
+        /// </summary>
+        [Fact]
+        public void GetCollidesWith_SameValue_ShouldNotRefilter()
+        {
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
+
+            fixture.GetCollidesWith = Categories.All;
+
+            Assert.Equal(Categories.All, fixture.GetCollidesWith);
+        }
+
+        /// <summary>
+        ///     Tests that get collision categories set with same value should not refilter
+        /// </summary>
+        [Fact]
+        public void GetCollisionCategories_SameValue_ShouldNotRefilter()
+        {
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
+
+            fixture.GetCollisionCategories = Categories.Cat1;
+
+            Assert.Equal(Categories.Cat1, fixture.GetCollisionCategories);
+        }
+
+        /// <summary>
+        ///     Tests that get is sensor with no body should not wake body
+        /// </summary>
+        [Fact]
+        public void GetIsSensor_WithNoBody_ShouldNotThrow()
+        {
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
+
+            fixture.GetIsSensor = true;
+
+            Assert.True(fixture.GetIsSensor);
+        }
+
+        /// <summary>
+        ///     Tests that get body is null when fixture not attached
+        /// </summary>
+        [Fact]
+        public void GetBody_WhenNotAttached_ShouldBeNull()
+        {
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
+
+            Assert.Null(fixture.GetBody);
+        }
+
+        /// <summary>
+        ///     Tests that get shape returns the cloned shape
+        /// </summary>
+        [Fact]
+        public void GetShape_ShouldReturnClonedShape()
+        {
+            CircleShape shape = new CircleShape(0.5f, 1.0f);
+            Fixture fixture = new Fixture(shape);
+
+            Assert.NotNull(fixture.GetShape);
+            Assert.IsType<CircleShape>(fixture.GetShape);
+        }
+
+        /// <summary>
+        ///     Tests that ray cast returns correct result
+        /// </summary>
+        [Fact]
+        public void RayCast_ShouldReturnResult()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(5.0f, 1.0f);
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(-10.0f, 0.0f),
+                Point2 = new Vector2F(10.0f, 0.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = fixture.RayCast(out RayCastOutput output, ref input, 0);
+
+            Assert.True(hit);
+            Assert.True(output.Fraction > 0.0f);
+        }
+
+        /// <summary>
+        ///     Tests that ray cast returns false when no intersection
+        /// </summary>
+        [Fact]
+        public void RayCast_ShouldReturnFalse_WhenNoIntersection()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(1.0f, 1.0f);
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(10.0f, 10.0f),
+                Point2 = new Vector2F(20.0f, 20.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = fixture.RayCast(out RayCastOutput output, ref input, 0);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        ///     Tests that get aabb returns the proxy aabb for the child index
+        /// </summary>
+        [Fact]
+        public void GetAabb_ShouldReturnProxyAabb()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(1.0f, 1.0f);
+
+            fixture.GetAabb(out Aabb aabb, 0);
+
+            Assert.NotNull(aabb);
         }
     }
 }
