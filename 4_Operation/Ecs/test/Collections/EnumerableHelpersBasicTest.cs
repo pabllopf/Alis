@@ -173,6 +173,51 @@ namespace Alis.Core.Ecs.Test.Collections
         }
         
         /// <summary>
+        ///     Tests that ToArray works with pure IEnumerable (not ICollection).
+        ///     This exercises the enumerator code path in ToArrayFromEnumerator.
+        /// </summary>
+        [Fact]
+        public void EnumerableHelpers_ToArrayWithPureEnumerable()
+        {
+            int[] array = EnumerableHelpers.ToArray(GetTestEnumerable(), out int length);
+
+            Assert.NotNull(array);
+            Assert.Equal(5, length);
+            Assert.Equal(1, array[0]);
+            Assert.Equal(5, array[4]);
+        }
+
+        /// <summary>
+        ///     Tests that ToArray with single element enumerable works correctly.
+        /// </summary>
+        [Fact]
+        public void EnumerableHelpers_ToArrayWithSingleElementEnumerable()
+        {
+            IEnumerable<int> single = GetSingleElementEnumerable();
+
+            int[] array = EnumerableHelpers.ToArray(single, out int length);
+
+            Assert.Equal(1, length);
+            Assert.Equal(42, array[0]);
+        }
+
+        /// <summary>
+        ///     Tests that Reset restores enumerator to initial state.
+        /// </summary>
+        [Fact]
+        public void EnumerableHelpers_Reset_RestoresEnumeratorState()
+        {
+            List<int>.Enumerator enumerator = new List<int> { 1, 2, 3 }.GetEnumerator();
+            enumerator.MoveNext();
+            int first = (int)enumerator.Current;
+
+            EnumerableHelpers.Reset(ref enumerator);
+            enumerator.MoveNext();
+
+            Assert.Equal(first, (int)enumerator.Current);
+        }
+
+        /// <summary>
         ///     Helper method to provide a pure IEnumerable (not ICollection)
         /// </summary>
         private static IEnumerable<int> GetTestEnumerable()
@@ -182,6 +227,14 @@ namespace Alis.Core.Ecs.Test.Collections
             yield return 3;
             yield return 4;
             yield return 5;
+        }
+
+        /// <summary>
+        ///     Helper method to provide a single-element pure IEnumerable
+        /// </summary>
+        private static IEnumerable<int> GetSingleElementEnumerable()
+        {
+            yield return 42;
         }
     }
 }
