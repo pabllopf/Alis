@@ -529,5 +529,26 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.False(aabb.Contains(ref point));
         }
+
+        /// <summary>
+        ///     Tests that ray cast with shallow diagonal from below left sets the y normal
+        /// </summary>
+        [Fact]
+        public void RayCast_WithShallowDiagonalFromBelowLeft_ShouldSetNormalY()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(-10.0f, -10.0f),
+                Point2 = new Vector2F(20.0f, 6.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
+            Assert.True(hit);
+            Assert.True(output.Fraction > 0.5f);
+            Assert.Equal(-1.0f, output.Normal.Y);
+        }
     }
 }
