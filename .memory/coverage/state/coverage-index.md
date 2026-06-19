@@ -24,7 +24,7 @@ pabllopf-official_alis / master
 | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Audio/AudioManager.cs | +2 constructors | 36f44a0cc |
 | 1_Presentation/Extension/Math/ProceduralDungeon/src/Services/CorridorFactory.cs | +1 line, +1 branch | 2a3559796 |
 | 4_Operation/Ecs/src/Collections/FastestArrayPool.cs | +1 condition | 73278cfb8 |
-| 1_Presentation/Extension/Thread/src/Strategies/AttributeBasedExecutionStrategy.cs | +2 null branches | pending |
+| 1_Presentation/Extension/Thread/src/Strategies/AttributeBasedExecutionStrategy.cs | +2 null branches | 56ad45be8 |
 
 ## Completed Tasks
 | # | File | Commit | Coverage Impact |

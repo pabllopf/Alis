@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using Alis.Extension.Thread.Scheduling;
 using Xunit;
@@ -107,6 +108,55 @@ namespace Alis.Extension.Thread.Test
             Assert.Single(partitions);
             Assert.Equal(0, partitions[0].StartIndex);
             Assert.Equal(10, partitions[0].Length);
+        }
+
+        /// <summary>
+        ///     Tests that CreatePartitions throws when totalCount is zero
+        /// </summary>
+        [Fact]
+        public void CreatePartitions_ThrowsWhenTotalCountIsZero()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => BatchPartitioner.CreatePartitions(0, 4));
+        }
+
+        /// <summary>
+        ///     Tests that CreatePartitions throws when totalCount is negative
+        /// </summary>
+        [Fact]
+        public void CreatePartitions_ThrowsWhenTotalCountIsNegative()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => BatchPartitioner.CreatePartitions(-1, 4));
+        }
+
+        /// <summary>
+        ///     Tests that CreatePartitions throws when partitionCount is zero
+        /// </summary>
+        [Fact]
+        public void CreatePartitions_ThrowsWhenPartitionCountIsZero()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => BatchPartitioner.CreatePartitions(100, 0));
+        }
+
+        /// <summary>
+        ///     Tests that CreatePartitions throws when partitionCount is negative
+        /// </summary>
+        [Fact]
+        public void CreatePartitions_ThrowsWhenPartitionCountIsNegative()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => BatchPartitioner.CreatePartitions(100, -1));
+        }
+
+        /// <summary>
+        ///     Tests that CreatePartitions handles more partitions than items
+        /// </summary>
+        [Fact]
+        public void CreatePartitions_HandlesMorePartitionsThanItems()
+        {
+            BatchPartition[] partitions = BatchPartitioner.CreatePartitions(5, 10);
+
+            Assert.Equal(5, partitions.Length);
+            int totalItems = partitions.Sum(p => p.Length);
+            Assert.Equal(5, totalItems);
         }
     }
 }
