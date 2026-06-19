@@ -131,3 +131,64 @@
 - **Result**: All 18 tests pass
 - **Commit**: `099de14e6` — test: coverage Fixture.cs
 
+### 13:30 — Complex.cs Coverage
+
+- **File**: `4_Operation/Physic/src/Dynamics/Complex.cs`
+- **Coverage**: 75.6% → ~90%+ (est.)
+- **Tests added**: 15 (27 total incl. 12 existing)
+  - `Normalize_ShouldProduceUnitComplex`
+  - `ToVector2_ReturnsCorrectVector`
+  - `Multiply_ComplexByComplex_ReturnsCorrectResult`
+  - `Divide_ComplexByComplex_ReturnsCorrectResult`
+  - `Divide_ComplexByComplex_WithOutParam_ReturnsCorrectResult`
+  - `Multiply_VectorByComplex_ReturnsRotatedVector` (ref overload)
+  - `Multiply_VectorByComplex_WithOutParam_ReturnsRotatedVector`
+  - `Multiply_VectorByComplex_Instance_ReturnsRotatedVector`
+  - `Divide_VectorByComplex_ReturnsRotatedVector` (ref overload)
+  - `Divide_VectorByComplex_Instance_ReturnsRotatedVector`
+  - `Divide_VectorByComplex_WithOutParam_ReturnsRotatedVector`
+  - `Conjugate_Static_ReturnsConjugate`
+  - `Negate_Static_ReturnsNegatedValue`
+  - `Normalize_Static_ReturnsUnitComplex`
+  - `ToString_ReturnsFormattedString`
+- **Result**: All 27 tests pass
+- **Commit**: `c77d633d1` — test: coverage Complex.cs
+
+### 14:30 — Contact.cs Coverage
+
+- **File**: `4_Operation/Physic/src/Dynamics/Contacts/Contact.cs`
+- **Coverage**: 59.7% → ~65%+ (est., pending SonarCloud rescan)
+- **Tests added**: 21 (22 total incl. 1 existing)
+  - `Constructor_WithNullFixtures_ShouldSetDefaults`
+  - `Constructor_WithValidFixtures_ShouldInitializeProperties`
+  - `Friction_DefaultValue_ShouldBeZero` / `Friction_SetAndGet_ShouldRoundtrip`
+  - `Restitution_DefaultValue_ShouldBeZero` / `Restitution_SetAndGet_ShouldRoundtrip`
+  - `TangentSpeed_DefaultValue_ShouldBeZero` / `TangentSpeed_SetAndGet_ShouldRoundtrip`
+  - `Enabled_DefaultValue_ShouldBeTrue` / `Enabled_SetAndGet_ShouldRoundtrip`
+  - `IsTouching_DefaultValue_ShouldBeFalse` / `IsTouching_SetAndGet_ShouldRoundtrip`
+  - `Next_DefaultValue_ShouldBeNull` / `Next_SetAndGet_ShouldRoundtrip`
+  - `Prev_DefaultValue_ShouldBeNull` / `Prev_SetAndGet_ShouldRoundtrip`
+  - `ResetFriction_WithValidFixtures_ShouldMixFrictions`
+  - `ResetRestitution_WithValidFixtures_ShouldMixRestitutions`
+  - `Create_WithCircleShapes_ShouldReturnContact`
+  - `Create_WithPolygonAndCircle_ShouldNotSwap`
+  - `Destroy_WithoutManifoldPoints_ShouldNotThrow`
+- **Result**: All 22 tests pass
+- **Commit**: `06999e3d4` — test: coverage Contact.cs
+
+### 11:05 — DynamicTreeBroadPhase.cs Coverage
+
+- **File**: `4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs`
+- **Coverage**: 88.8% → ~96%+ (est.)
+- **Tests added**: 8 (11 total incl. 3 existing)
+  - `RemoveProxy_ShouldDecrementCount`
+  - `MoveProxy_ShouldBufferMoveAndTriggerNewOverlap`
+  - `TouchProxy_ShouldNotThrow`
+  - `GetFatAabb_ShouldReturnValidAabb`
+  - `TestOverlap_ShouldReturnTrueForOverlappingProxies`
+  - `TestOverlap_ShouldReturnFalseForNonOverlappingProxies`
+  - `RayCast_ShouldInvokeCallback`
+  - `ShiftOrigin_ShouldNotThrow`
+- **Result**: All 11 tests pass (1775 total Physic tests)
+- **Commit**: (pending)
+
