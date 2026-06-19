@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
@@ -242,6 +243,112 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.CreateBody();
 
             Assert.Throws<NotSupportedException>(() => ((IList<Body>) world.BodyList).RemoveAt(0));
+        }
+
+        /// <summary>
+        ///     Tests that index of non existing body should return negative one
+        /// </summary>
+        [Fact]
+        public void IndexOf_NonExistingBody_ShouldReturnNegativeOne()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body body = new Body();
+
+            int index = world.BodyList.IndexOf(body);
+
+            Assert.Equal(-1, index);
+        }
+
+        /// <summary>
+        ///     Tests that indexer with invalid index should throw argument out of range
+        /// </summary>
+        [Fact]
+        public void Indexer_InvalidIndex_ShouldThrowArgumentOutOfRange()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => world.BodyList[10]);
+        }
+
+        /// <summary>
+        ///     Tests that body enumerator move next returns false when exhausted
+        /// </summary>
+        [Fact]
+        public void BodyEnumerator_MoveNext_ReturnsFalseWhenExhausted()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            BodyCollection.BodyEnumerator enumerator = world.BodyList.GetEnumerator();
+
+            Assert.False(enumerator.MoveNext());
+        }
+
+        /// <summary>
+        ///     Tests that body enumerator move next throws invalid operation when collection modified
+        /// </summary>
+        [Fact]
+        public void BodyEnumerator_MoveNext_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            BodyCollection.BodyEnumerator enumerator = world.BodyList.GetEnumerator();
+
+            world.BodyList.List.Add(new Body());
+            world.BodyList.GenerationStamp++;
+
+            Assert.Throws<InvalidOperationException>(() => enumerator.MoveNext());
+        }
+
+        /// <summary>
+        ///     Tests that body enumerator current throws invalid operation when collection modified
+        /// </summary>
+        [Fact]
+        public void BodyEnumerator_Current_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            BodyCollection.BodyEnumerator enumerator = world.BodyList.GetEnumerator();
+
+            world.BodyList.List.Add(new Body());
+            world.BodyList.GenerationStamp++;
+
+            Assert.Throws<InvalidOperationException>(() => enumerator.Current);
+        }
+
+        /// <summary>
+        ///     Tests that body enumerator i enumerator current throws invalid operation when collection modified
+        /// </summary>
+        [Fact]
+        public void BodyEnumerator_IEnumeratorCurrent_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            BodyCollection.BodyEnumerator enumerator = world.BodyList.GetEnumerator();
+
+            world.BodyList.List.Add(new Body());
+            world.BodyList.GenerationStamp++;
+
+            Assert.Throws<InvalidOperationException>(() => ((IEnumerator) enumerator).Current);
+        }
+
+        /// <summary>
+        ///     Tests that body enumerator reset via i enumerator interface works
+        /// </summary>
+        [Fact]
+        public void BodyEnumerator_ResetViaIEnumerator_Works()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            BodyCollection.BodyEnumerator enumerator = world.BodyList.GetEnumerator();
+
+            ((IEnumerator) enumerator).Reset();
+        }
+
+        /// <summary>
+        ///     Tests that body enumerator dispose clears references
+        /// </summary>
+        [Fact]
+        public void BodyEnumerator_Dispose_ClearsReferences()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            BodyCollection.BodyEnumerator enumerator = world.BodyList.GetEnumerator();
+
+            ((IDisposable) enumerator).Dispose();
         }
     }
 }
