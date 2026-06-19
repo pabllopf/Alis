@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "omlx/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit",
-  "small_model": "omlx/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-MLX-4bit",
+  "model": "llmstudio/qwen/qwen3.6-35b-a3b",
+  "small_model": "llmstudio/qwen/qwen3.6-35b-a3b",
 
   "provider": {
     "omlx": {
@@ -292,6 +292,29 @@
         },
         "unsloth/gemma-4-26B-A4B-it-GGUF": {
           "name": "unsloth/gemma-4-26B-A4B-it-GGUF",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "maxInputTokens": 262144,
+          "maxOutputTokens": 131584,
+          "limit": {
+            "context": 262144,
+            "output": 131584
+          }
+        }
+      }
+    },
+
+    "llmstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llmstudio",
+      "options": {
+        "baseURL": "http://localhost:1234/v1"
+      },
+      "models": {
+        "qwen/qwen3.6-35b-a3b": {
+          "name": "qwen/qwen3.6-35b-a3b",
           "modalities": {
             "input": ["text"],
             "output": ["text"]
