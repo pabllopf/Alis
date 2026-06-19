@@ -290,6 +290,54 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             ((IDisposable)enumerator).Dispose();
         }
+
+        /// <summary>
+        ///     Tests that generic i enumerable get enumerator returns typed enumerator
+        /// </summary>
+        [Fact]
+        public void GenericEnumerable_GetEnumerator_ReturnsTypedEnumerator()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            IEnumerator<Fixture> enumerator = ((IEnumerable<Fixture>)body.FixtureList).GetEnumerator();
+
+            Assert.True(enumerator.MoveNext());
+            Assert.NotNull(enumerator.Current);
+        }
+
+        /// <summary>
+        ///     Tests that non generic i enumerable get enumerator returns enumerator
+        /// </summary>
+        [Fact]
+        public void NonGenericEnumerable_GetEnumerator_ReturnsEnumerator()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            IEnumerator enumerator = ((IEnumerable)body.FixtureList).GetEnumerator();
+
+            Assert.True(enumerator.MoveNext());
+            Assert.NotNull(enumerator.Current);
+        }
+
+        /// <summary>
+        ///     Tests that non generic enumerator current throws when collection modified
+        /// </summary>
+        [Fact]
+        public void NonGenericEnumerator_Current_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            IEnumerator enumerator = ((IEnumerable)collection).GetEnumerator();
+
+            collection.List.Add(new Fixture(new CircleShape(0.3f, 1.0f)));
+            collection.GenerationStamp++;
+
+            Assert.Throws<InvalidOperationException>(() => enumerator.Current);
+        }
     }
 }
 

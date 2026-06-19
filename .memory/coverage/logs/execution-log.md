@@ -10,3 +10,6 @@
 | 2026-06-19T19:10:00Z | coverage | 4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs | task created |
 | 2026-06-19T19:12:00Z | test | AngleJointInternalConstructorTest | compile + 25/25 pass |
 | 2026-06-19T19:13:00Z | commit | AngleJoint.cs | pending |
+| 2026-06-19T19:00:00Z | coverage | ComponentHandle.cs | DebuggerDisplayString tests. Commit: a919bf5fe |
+| 2026-06-19T19:15:00Z | coverage | FrameBuilder.cs | Build() test. Commit: f76f5db80 |
+| 2026-06-19T19:45:00Z | coverage | EnumerableHelpers.cs | Pure enumerable, Reset, single-element tests. Commit: 61c9da8f1 |

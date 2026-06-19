@@ -288,6 +288,21 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             ((IDisposable)enumerator).Dispose();
         }
+
+        /// <summary>
+        /// Tests that non-generic IEnumerable.GetEnumerator returns a ControllerEnumerator
+        /// </summary>
+        [Fact]
+        public void Collection_NonGenericEnumerable_GetEnumerator_ReturnsControllerEnumerator()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ControllerCollection collection = world.ControllerList;
+            System.Collections.IEnumerable nonGeneric = collection;
+
+            System.Collections.IEnumerator result = nonGeneric.GetEnumerator();
+
+            Assert.IsType<ControllerEnumerator>(result);
+        }
     }
 }
 
