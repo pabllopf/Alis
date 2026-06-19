@@ -37,6 +37,17 @@
 - **Result**: All 1696 Physic tests pass (1689 existing + 7 new)
 - **Commit**: test: coverage FilterData.cs
 
+### 09:23 — ControllerCollection.cs Coverage Tests
+
+- **File**: `4_Operation/Physic/src/Dynamics/ControllerCollection.cs`
+- **Coverage**: 45.8% → ~80%+ (est.)
+- **Tests added**: 14
+  - Remove/Insert/RemoveAt/Set indexer NotSupportedException paths
+  - CopyTo, IndexOf, Count, Get indexer
+  - Enumerator MoveNext exhausted, Reset, modification detection, Dispose
+- **Result**: All 1721 Physic tests pass (1707 existing + 14 new)
+- **Commit**: test: coverage ControllerCollection.cs
+
 ### 12:00 — FixtureCollection.cs Coverage
 
 - **File**: `4_Operation/Physic/src/Dynamics/FixtureCollection.cs`
@@ -74,4 +85,23 @@
   - `BodyEnumerator_Dispose_ClearsReferences`
 - **Result**: All 23 tests pass
 - **Commit**: `657238e21` — test: coverage BodyCollection.cs
+
+### 13:00 — Fixture.cs Coverage
+
+- **File**: `4_Operation/Physic/src/Dynamics/Fixture.cs`
+- **Coverage**: 79.0% → ~87%+ (est.)
+- **Tests added**: 11 (18 total incl. 7 existing)
+  - `Constructor_Defaults_ShouldSetCorrectValues`
+  - `Tag_ShouldSetAndGetValue`
+  - `GetCollisionGroup_SameValue_ShouldNotRefilter`
+  - `GetCollidesWith_SameValue_ShouldNotRefilter`
+  - `GetCollisionCategories_SameValue_ShouldNotRefilter`
+  - `GetIsSensor_WithNoBody_ShouldNotThrow`
+  - `GetBody_WhenNotAttached_ShouldBeNull`
+  - `GetShape_ShouldReturnClonedShape`
+  - `RayCast_ShouldReturnResult`
+  - `RayCast_ShouldReturnFalse_WhenNoIntersection`
+  - `GetAabb_ShouldReturnProxyAabb`
+- **Result**: All 18 tests pass
+- **Commit**: `099de14e6` — test: coverage Fixture.cs
 

@@ -97,5 +97,9 @@
 
 | File | Previous Coverage | Est. New Coverage | Methods Covered |
 |------|------------------|-------------------|-----------------|
+| 4_Operation/Physic/src/Dynamics/Fixture.cs | 79.0% | ~87%+ | Constructor defaults, Tag, GetBody/GetShape props, same-value early returns, RayCast, GetAabb |
+| 4_Operation/Physic/src/Dynamics/BodyCollection.cs | 72.9% | ~85%+ | BodyEnumerator edge cases, IndexOf non-existing, Indexer invalid index |
+| 4_Operation/Physic/src/Dynamics/FixtureCollection.cs | 58.6% | ~75%+ | IList exception paths, CopyTo, IndexOf, Count, indexer, FixtureEnumerator edge cases |
 | 4_Operation/Physic/src/Collisions/AABB.cs | 92.3% | ~95%+ | RayCast interior checks, Contains edge cases, ProcessAxis swap |
 | 4_Operation/Physic/src/Common/Logic/FilterData.cs | 64.8% | ~80%+ | IsDisabledOnGroup/Category, IsEnabledOnGroup/Category, HasEnabledFilter, no-fixtures path, no-match path, IsInEnabledInCategory false |
+| 4_Operation/Physic/src/Dynamics/ControllerCollection.cs | 45.8% | ~80%+ | Remove/Insert/RemoveAt/Set NotSupported, CopyTo, IndexOf, Count, Get indexer, Enumerator exhausted, Reset, modification exceptions, Dispose |
