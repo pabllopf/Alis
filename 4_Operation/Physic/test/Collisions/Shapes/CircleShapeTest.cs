@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
@@ -375,6 +376,70 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             Assert.Equal(original.GetRadius, clone.GetRadius);
             Assert.Equal(original.Position, clone.Position);
             Assert.Equal(original.ShapeType, clone.ShapeType);
+        }
+
+        /// <summary>
+        ///     Tests that compute submerged area returns partial area when partially submerged
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_PartiallySubmerged_ReturnsPartialArea()
+        {
+            CircleShape circle = new CircleShape(1.0f, 1.0f);
+            circle.Position = new Vector2F(0.0f, 0.0f);
+            ControllerTransform transform = new ControllerTransform
+            {
+                Position = new Vector2F(0.0f, 0.0f),
+                Rotation = Complex.One
+            };
+            Vector2F normal = new Vector2F(0.0f, -1.0f);
+
+            float area = circle.ComputeSubmergedArea(ref normal, 0.5f, ref transform, out Vector2F sc);
+
+            Assert.True(area > 0.0f);
+            Assert.True(area < Constant.Pi * 1.0f);
+        }
+
+        /// <summary>
+        ///     Tests that ray cast returns false when ray starts inside circle
+        /// </summary>
+        [Fact]
+        public void RayCast_WhenRayStartsInsideCircle_ReturnsFalse()
+        {
+            CircleShape circle = new CircleShape(5.0f, 1.0f);
+            ControllerTransform transform = new ControllerTransform
+            {
+                Position = new Vector2F(0.0f, 0.0f),
+                Rotation = Complex.One
+            };
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(2.0f, 0.0f),
+                Point2 = new Vector2F(10.0f, 0.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        ///     Tests that test point on edge returns true
+        /// </summary>
+        [Fact]
+        public void TestPoint_OnEdge_ShouldReturnTrue()
+        {
+            CircleShape circle = new CircleShape(5.0f, 1.0f);
+            ControllerTransform transform = new ControllerTransform
+            {
+                Position = new Vector2F(0.0f, 0.0f),
+                Rotation = Complex.One
+            };
+            Vector2F point = new Vector2F(5.0f, 0.0f);
+
+            bool result = circle.TestPoint(ref transform, ref point);
+
+            Assert.True(result);
         }
     }
 }
