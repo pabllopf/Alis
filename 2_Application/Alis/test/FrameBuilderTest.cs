@@ -58,5 +58,19 @@ namespace Alis.Test
             FrameBuilder result = builder.File("frames/test.png");
             Assert.Same(builder, result);
         }
+
+        /// <summary>
+        /// Tests that build returns frame with configured file name
+        /// </summary>
+        [Fact]
+        public void Build_AfterFile_ReturnsFrameWithFileName()
+        {
+            FrameBuilder builder = new FrameBuilder();
+            builder.File("frames/test.png");
+
+            Frame frame = builder.Build();
+
+            Assert.Equal("frames/test.png", frame.NameFile);
+        }
     }
 }
