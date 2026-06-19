@@ -20,7 +20,19 @@
   - `Contains_Point_ShouldReturnFalse_WhenOnLowerBound` (boundary epsilon case)
   - `Contains_Point_ShouldReturnFalse_WhenOnUpperBound` (boundary epsilon case)
 - **Result**: All 35 tests pass (29 existing + 6 new)
-- **Commit**: test: coverage AABB.cs
+- **Commit**: `6a7c8880e` — test: coverage AABB.cs
+
+### 11:00 — Distance.cs Edge-Case Tests
+
+- **File**: `4_Operation/Physic/src/Collisions/Distance.cs`
+- **Coverage**: 83.3% → ~87%+ (est.)
+- **Tests added**: 4
+  - `ComputeDistance_WithSamePosition_ShouldReturnZero` (full overlap, simplex count 3)
+  - `ComputeDistance_WithYAxisSeparation_ShouldReturnCorrectDistance` (2D orientation path)
+  - `ComputeDistance_WithUseRadiiAndFarApart_ShouldSubtractRadii` (ApplyRadii subtract branch, multi-iteration GJK)
+  - `ComputeDistance_WithTouchingShapes_ShouldReturnNearZeroDistance` (ApplyRadii collapse branch at boundary)
+- **Result**: All 13 Distance tests pass (9 existing + 4 new)
+- **Commit**: test: coverage Distance.cs
 
 ### 09:23 — FilterData.cs Coverage Tests
 

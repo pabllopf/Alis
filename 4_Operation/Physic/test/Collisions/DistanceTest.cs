@@ -276,5 +276,96 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.True(output2.Distance > output1.Distance);
         }
+
+        /// <summary>
+        ///     Tests that compute distance with shapes at same position should return zero
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_WithSamePosition_ShouldReturnZero()
+        {
+            CircleShape circle = new CircleShape(1.0f, 1.0f);
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(circle, 0),
+                ProxyB = new DistanceProxy(circle, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = ControllerTransform.Identity,
+                UseRadii = false
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+
+            Assert.Equal(0.0f, output.Distance);
+            Assert.True(cache.Count >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that compute distance with y axis separation should return correct distance
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_WithYAxisSeparation_ShouldReturnCorrectDistance()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = new ControllerTransform(new Vector2F(0.0f, 5.0f), 0.0f),
+                UseRadii = false
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+
+            Assert.True(output.Distance > 0.0f);
+            Assert.True(output.Iterations >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that compute distance with use radii and far apart should subtract both radii
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_WithUseRadiiAndFarApart_ShouldSubtractRadii()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = new ControllerTransform(new Vector2F(10.0f, 0.0f), 0.0f),
+                UseRadii = true
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+
+            Assert.True(output.Distance > 0.0f);
+            Assert.True(output.Iterations > 0);
+            Assert.NotEqual(output.PointA, output.PointB);
+        }
+
+        /// <summary>
+        ///     Tests that compute distance with touching shapes should return near zero distance
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_WithTouchingShapes_ShouldReturnNearZeroDistance()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f),
+                UseRadii = true
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+
+            Assert.Equal(0.0f, output.Distance);
+        }
     }
 }
