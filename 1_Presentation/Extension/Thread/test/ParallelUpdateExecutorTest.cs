@@ -270,5 +270,53 @@ namespace Alis.Extension.Thread.Test
 
             Assert.True(true);
         }
+
+        /// <summary>
+        ///     Tests that ExecuteUpdate with null action throws for non generic overload
+        /// </summary>
+        [Fact]
+        public void ExecuteUpdate_WithNullActionForNonGeneric_ThrowsArgumentNullException()
+        {
+            ParallelExecutionContext context = new ParallelExecutionContext();
+            IParallelExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
+            ParallelUpdateExecutor executor = new ParallelUpdateExecutor(context, strategy);
+
+            Assert.Throws<ArgumentNullException>(() =>
+                executor.ExecuteUpdate(100, null));
+        }
+
+        /// <summary>
+        ///     Tests that ExecuteUpdate with zero count does nothing for non generic overload
+        /// </summary>
+        [Fact]
+        public void ExecuteUpdate_WithZeroCountForNonGeneric_DoesNothing()
+        {
+            ParallelExecutionContext context = new ParallelExecutionContext();
+            IParallelExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
+            ParallelUpdateExecutor executor = new ParallelUpdateExecutor(context, strategy);
+
+            int executionCount = 0;
+
+            executor.ExecuteUpdate(0, (start, length) => { Interlocked.Increment(ref executionCount); });
+
+            Assert.Equal(0, executionCount);
+        }
+
+        /// <summary>
+        ///     Tests that ExecuteUpdate with negative count does nothing for non generic overload
+        /// </summary>
+        [Fact]
+        public void ExecuteUpdate_WithNegativeCountForNonGeneric_DoesNothing()
+        {
+            ParallelExecutionContext context = new ParallelExecutionContext();
+            IParallelExecutionStrategy strategy = new AttributeBasedExecutionStrategy();
+            ParallelUpdateExecutor executor = new ParallelUpdateExecutor(context, strategy);
+
+            int executionCount = 0;
+
+            executor.ExecuteUpdate(-10, (start, length) => { Interlocked.Increment(ref executionCount); });
+
+            Assert.Equal(0, executionCount);
+        }
     }
 }

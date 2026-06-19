@@ -12,25 +12,5 @@
 | 2026-06-19T19:13:00Z | commit | AngleJoint.cs | pending |
 | 2026-06-19T19:00:00Z | coverage | ComponentHandle.cs | DebuggerDisplayString tests. Commit: a919bf5fe |
 | 2026-06-19T19:15:00Z | coverage | FrameBuilder.cs | Build() test. Commit: f76f5db80 |
-| 2026-06-19T19:45:00Z | coverage | EnumerableHelpers.cs | Pure enumerable, Reset, single-element tests. Commit: 61c9da8f1 |
-| 2026-06-19T20:00:00Z | lock | 4_Operation/Physic/src/Dynamics/ControllerCollection.cs | acquired |
-| 2026-06-19T20:01:00Z | test | ControllerCollection.cs | 1 new test, 18/18 passing |
-| 2026-06-19T20:02:00Z | commit | ControllerCollection.cs | 59af40cd5 (pre-existing) |
-| 2026-06-19T20:05:00Z | lock | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Audio/AudioManager.cs | acquired |
-| 2026-06-19T20:06:00Z | test | AudioManager.cs | fix [Theory] missing, 11/11 passing |
-| 2026-06-19T20:07:00Z | commit | AudioManager.cs | 36f44a0cc |
-| 2026-06-19T20:10:00Z | lock | 1_Presentation/Extension/Math/ProceduralDungeon/src/Services/CorridorFactory.cs | acquired |
-| 2026-06-19T20:11:00Z | test | CorridorFactory.cs | 1 new test + dead code fix, 11/11 passing |
-| 2026-06-19T20:12:00Z | commit | CorridorFactory.cs | 2a3559796 |
-| 2026-06-19T20:15:00Z | lock | 4_Operation/Ecs/src/Collections/FastestArrayPool.cs | acquired |
-| 2026-06-19T20:16:00Z | test | FastestArrayPool.cs | 1 new test, 28/28 passing |
-| 2026-06-19T20:17:00Z | commit | FastestArrayPool.cs | 73278cfb8 |
-| 2026-06-19T20:20:00Z | lock | 1_Presentation/Extension/Thread/src/Strategies/AttributeBasedExecutionStrategy.cs | acquired |
-| 2026-06-19T20:21:00Z | test | AttributeBasedExecutionStrategy.cs | 2 new tests, 8/8 passing |
-| 2026-06-19T20:22:00Z | commit | AttributeBasedExecutionStrategy.cs | 56ad45be8 |
-| 2026-06-19T20:25:00Z | lock | 1_Presentation/Extension/Thread/src/Scheduling/BatchPartitioner.cs | acquired |
-| 2026-06-19T20:26:00Z | test | BatchPartitioner.cs | 5 new tests, 9/9 passing |
-| 2026-06-19T20:27:00Z | commit | BatchPartitioner.cs | ec88eed2f |
-| 2026-06-19T20:30:00Z | lock | 4_Operation/Physic/src/Common/Logic/ControllerFilter.cs | acquired |
-| 2026-06-19T20:31:00Z | test | ControllerFilter.cs | 5 new tests, 6/6 passing |
-| 2026-06-19T20:32:00Z | commit | ControllerFilter.cs | pending |
+| 2026-06-19T19:45:00Z | coverage | EnumerableHelpers.cs | Pure enumerable, Reset tests. Commit: 61c9da8f1 |
+| 2026-06-19T20:00:00Z | coverage | ComponentUpdateParallelizer.cs | Null action guard test. Commit: d052bd986 |

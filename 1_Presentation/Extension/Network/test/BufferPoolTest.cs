@@ -527,6 +527,26 @@ namespace Alis.Extension.Network.Test
             binaryPool.Dispose();
         }
 
+        #region Dispose Edge Cases
+
+        /// <summary>
+        ///     Arrange: Create BufferPool and dispose it twice
+        ///     Act: Call Dispose() twice
+        ///     Assert: Second dispose is safe and does not throw
+        /// </summary>
+        [Fact]
+        public void BufferPool_Dispose_CalledTwice_ShouldNotThrow()
+        {
+            // Arrange: Create a new pool
+            BufferPool pool = new BufferPool();
+
+            // Act: Dispose twice
+            pool.Dispose();
+
+            // Assert: Second dispose does not throw
+            pool.Dispose();
+        }
+
         #endregion
     }
 }
