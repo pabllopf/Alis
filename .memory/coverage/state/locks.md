@@ -8,4 +8,5 @@
 | 4_Operation/Ecs/src/Collections/FastestArrayPool.cs | default | 2026-06-19T20:15:00Z | released |
 | 1_Presentation/Extension/Thread/src/Strategies/AttributeBasedExecutionStrategy.cs | default | 2026-06-19T20:20:00Z | released |
 | 1_Presentation/Extension/Thread/src/Scheduling/BatchPartitioner.cs | default | 2026-06-19T20:25:00Z | released |
-| 4_Operation/Physic/src/Common/Logic/ControllerFilter.cs | default | 2026-06-19T20:30:00Z | acquired |
+| 4_Operation/Physic/src/Common/Logic/ControllerFilter.cs | default | 2026-06-19T20:30:00Z | released |
+| 1_Presentation/Extension/Thread/src/Core/ParallelExecutionContext.cs | default | 2026-06-19T20:35:00Z | acquired |

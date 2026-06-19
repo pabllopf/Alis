@@ -204,5 +204,40 @@ namespace Alis.Extension.Thread.Test
 
             Assert.Equal(1, partitions);
         }
+
+        /// <summary>
+        ///     Tests that CalculateOptimalPartitions returns one when count less than min batch per thread
+        /// </summary>
+        [Fact]
+        public void CalculateOptimalPartitions_WhenCountLessThanMinBatchPerThread_ReturnsOne()
+        {
+            ParallelExecutionContext context = new ParallelExecutionContext
+            {
+                EnableParallelExecution = true,
+                MaxDegreeOfParallelism = 4,
+                MinBatchSizePerThread = 128
+            };
+
+            int partitions = context.CalculateOptimalPartitions(50, 10);
+
+            Assert.Equal(1, partitions);
+        }
+
+        /// <summary>
+        ///     Tests that ShouldExecuteInParallel returns false when max degree is one
+        /// </summary>
+        [Fact]
+        public void ShouldExecuteInParallel_WhenMaxDegreeIsOne_ReturnsFalse()
+        {
+            ParallelExecutionContext context = new ParallelExecutionContext
+            {
+                EnableParallelExecution = true,
+                MaxDegreeOfParallelism = 1
+            };
+
+            bool result = context.ShouldExecuteInParallel(1000, 10);
+
+            Assert.False(result);
+        }
     }
 }
