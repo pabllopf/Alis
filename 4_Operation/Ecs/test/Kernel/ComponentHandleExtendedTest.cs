@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel
@@ -285,6 +286,37 @@ namespace Alis.Core.Ecs.Test.Kernel
             {
                 Assert.True(true);
             }
+        }
+
+        /// <summary>
+        ///     Tests that DebuggerDisplayString returns the string representation
+        ///     when the component handle has a valid component.
+        /// </summary>
+        [Fact]
+        public void DebuggerDisplayString_WithValidComponent_ShouldReturnValue()
+        {
+            Position position = new Position { X = 10, Y = 20 };
+            ComponentHandle handle = ComponentHandle.Create(position);
+
+            string display = handle.DebuggerDisplayString;
+
+            Assert.NotNull(display);
+        }
+
+        /// <summary>
+        ///     Tests that DebuggerDisplayString returns "null"
+        ///     when the component handle points to a disposed reference type component.
+        /// </summary>
+        [Fact]
+        public void DebuggerDisplayString_AfterDispose_ShouldReturnNull()
+        {
+            string text = "test";
+            ComponentHandle handle = ComponentHandle.Create(text);
+            handle.Dispose();
+
+            string display = handle.DebuggerDisplayString;
+
+            Assert.Equal("null", display);
         }
     }
 }
