@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
@@ -187,6 +188,224 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(1.0f, complex.R);
             Assert.Equal(0.0f, complex.I);
+        }
+
+        /// <summary>
+        ///     Tests that normalize should produce unit complex
+        /// </summary>
+        [Fact]
+        public void Normalize_ShouldProduceUnitComplex()
+        {
+            Complex complex = new Complex(3.0f, 4.0f);
+
+            complex.Normalize();
+
+            Assert.True(Math.Abs(complex.Magnitude - 1.0f) < 0.001f);
+        }
+
+        /// <summary>
+        ///     Tests that to vector 2 returns correct vector
+        /// </summary>
+        [Fact]
+        public void ToVector2_ReturnsCorrectVector()
+        {
+            Complex complex = new Complex(3.0f, 4.0f);
+
+            Vector2F vector = complex.ToVector2();
+
+            Assert.Equal(3.0f, vector.X);
+            Assert.Equal(4.0f, vector.Y);
+        }
+
+        /// <summary>
+        ///     Tests that multiply complex by complex returns correct result
+        /// </summary>
+        [Fact]
+        public void Multiply_ComplexByComplex_ReturnsCorrectResult()
+        {
+            Complex a = new Complex(1.0f, 2.0f);
+            Complex b = new Complex(3.0f, 4.0f);
+
+            Complex result = Complex.Multiply(ref a, ref b);
+
+            Assert.Equal(1*3 - 2*4, result.R);
+            Assert.Equal(2*3 + 1*4, result.I);
+        }
+
+        /// <summary>
+        ///     Tests that divide complex by complex returns correct result
+        /// </summary>
+        [Fact]
+        public void Divide_ComplexByComplex_ReturnsCorrectResult()
+        {
+            Complex a = new Complex(1.0f, 2.0f);
+            Complex b = new Complex(3.0f, 4.0f);
+
+            Complex result = Complex.Divide(ref a, ref b);
+
+            Assert.Equal(3*1 + 4*2, result.R);
+            Assert.Equal(3*2 - 4*1, result.I);
+        }
+
+        /// <summary>
+        ///     Tests that divide complex by complex with out parameter returns correct result
+        /// </summary>
+        [Fact]
+        public void Divide_ComplexByComplex_WithOutParam_ReturnsCorrectResult()
+        {
+            Complex a = new Complex(1.0f, 2.0f);
+            Complex b = new Complex(3.0f, 4.0f);
+
+            Complex.Divide(ref a, ref b, out Complex result);
+
+            Assert.Equal(3*1 + 4*2, result.R);
+            Assert.Equal(3*2 - 4*1, result.I);
+        }
+
+        /// <summary>
+        ///     Tests that multiply vector by complex returns rotated vector
+        /// </summary>
+        [Fact]
+        public void Multiply_VectorByComplex_ReturnsRotatedVector()
+        {
+            Vector2F v = new Vector2F(1.0f, 0.0f);
+            Complex c = new Complex(0.0f, 1.0f);
+
+            Vector2F result = Complex.Multiply(ref v, ref c);
+
+            Assert.Equal(0.0f, result.X, 5);
+            Assert.Equal(1.0f, result.Y, 5);
+        }
+
+        /// <summary>
+        ///     Tests that multiply vector by complex with out parameter returns rotated vector
+        /// </summary>
+        [Fact]
+        public void Multiply_VectorByComplex_WithOutParam_ReturnsRotatedVector()
+        {
+            Vector2F v = new Vector2F(1.0f, 0.0f);
+            Complex c = new Complex(0.0f, 1.0f);
+
+            Complex.Multiply(ref v, ref c, out Vector2F result);
+
+            Assert.Equal(0.0f, result.X, 5);
+            Assert.Equal(1.0f, result.Y, 5);
+        }
+
+        /// <summary>
+        ///     Tests that multiply vector by complex returns rotated vector
+        /// </summary>
+        [Fact]
+        public void Multiply_VectorByComplex_Instance_ReturnsRotatedVector()
+        {
+            Vector2F v = new Vector2F(1.0f, 0.0f);
+            Complex c = new Complex(0.0f, 1.0f);
+
+            Vector2F result = Complex.Multiply(v, ref c);
+
+            Assert.Equal(0.0f, result.X, 5);
+            Assert.Equal(1.0f, result.Y, 5);
+        }
+
+        /// <summary>
+        ///     Tests that divide vector by complex returns rotated vector
+        /// </summary>
+        [Fact]
+        public void Divide_VectorByComplex_ReturnsRotatedVector()
+        {
+            Vector2F v = new Vector2F(0.0f, 1.0f);
+            Complex c = new Complex(0.0f, 1.0f);
+
+            Vector2F result = Complex.Divide(ref v, ref c);
+
+            Assert.Equal(1.0f, result.X, 5);
+            Assert.Equal(0.0f, result.Y, 5);
+        }
+
+        /// <summary>
+        ///     Tests that divide vector by complex returns rotated vector
+        /// </summary>
+        [Fact]
+        public void Divide_VectorByComplex_Instance_ReturnsRotatedVector()
+        {
+            Vector2F v = new Vector2F(0.0f, 1.0f);
+            Complex c = new Complex(0.0f, 1.0f);
+
+            Vector2F result = Complex.Divide(v, ref c);
+
+            Assert.Equal(1.0f, result.X, 5);
+            Assert.Equal(0.0f, result.Y, 5);
+        }
+
+        /// <summary>
+        ///     Tests that divide vector by complex with out parameter returns rotated vector
+        /// </summary>
+        [Fact]
+        public void Divide_VectorByComplex_WithOutParam_ReturnsRotatedVector()
+        {
+            Vector2F v = new Vector2F(0.0f, 1.0f);
+            Complex c = new Complex(0.0f, 1.0f);
+
+            Complex.Divide(v, ref c, out Vector2F result);
+
+            Assert.Equal(1.0f, result.X, 5);
+            Assert.Equal(0.0f, result.Y, 5);
+        }
+
+        /// <summary>
+        ///     Tests that conjugate static returns conjugate
+        /// </summary>
+        [Fact]
+        public void Conjugate_Static_ReturnsConjugate()
+        {
+            Complex complex = new Complex(3.0f, 4.0f);
+
+            Complex result = Complex.Conjugate(ref complex);
+
+            Assert.Equal(3.0f, result.R);
+            Assert.Equal(-4.0f, result.I);
+        }
+
+        /// <summary>
+        ///     Tests that negate static returns negated value
+        /// </summary>
+        [Fact]
+        public void Negate_Static_ReturnsNegatedValue()
+        {
+            Complex complex = new Complex(3.0f, 4.0f);
+
+            Complex result = Complex.Negate(ref complex);
+
+            Assert.Equal(-3.0f, result.R);
+            Assert.Equal(-4.0f, result.I);
+        }
+
+        /// <summary>
+        ///     Tests that normalize static returns unit complex
+        /// </summary>
+        [Fact]
+        public void Normalize_Static_ReturnsUnitComplex()
+        {
+            Complex complex = new Complex(3.0f, 4.0f);
+
+            Complex result = Complex.Normalize(ref complex);
+
+            Assert.True(Math.Abs(result.Magnitude - 1.0f) < 0.001f);
+            Assert.True(result.R > 0);
+        }
+
+        /// <summary>
+        ///     Tests that to string returns formatted string
+        /// </summary>
+        [Fact]
+        public void ToString_ReturnsFormattedString()
+        {
+            Complex complex = new Complex(3.0f, 4.0f);
+
+            string str = complex.ToString();
+
+            Assert.Contains("3", str);
+            Assert.Contains("4", str);
         }
     }
 }
