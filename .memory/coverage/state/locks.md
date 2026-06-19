@@ -1,7 +1,4 @@
 # Distributed Locks
-
-## Active Locks
-
-| Target | Worker | Timestamp | Status |
-|--------|--------|-----------|--------|
-| AudioPlayerWindow.cs | agent-1 | 2026-06-19T16:41:00Z | processing |
+## Format: target | worker | timestamp | status
+## Locks older than 60 minutes may be reclaimed.
+1_Presentation/Engine/src/Windows/AssetsWindow.cs | worker-1 | 2026-06-19T16:27:29Z | processing
