@@ -202,6 +202,20 @@ namespace Alis.Extension.Thread.Test
         }
 
         /// <summary>
+        ///     Tests that execute component update with null action throws argument null exception
+        /// </summary>
+        [Fact]
+        public void ExecuteComponentUpdate_WithNullAction_ThrowsArgumentNullException()
+        {
+            ParallelExecutionContext context = new ParallelExecutionContext();
+            ParallelUpdateExecutor executor = new ParallelUpdateExecutor(context, new AttributeBasedExecutionStrategy());
+            ComponentUpdateParallelizer parallelizer = new ComponentUpdateParallelizer(executor);
+
+            Assert.Throws<ArgumentNullException>(() =>
+                parallelizer.ExecuteComponentUpdate<TestComponent>(new TestComponent[0].AsSpan(), null));
+        }
+
+        /// <summary>
         ///     Tests that execute component update with empty span does nothing
         /// </summary>
         [Fact]
