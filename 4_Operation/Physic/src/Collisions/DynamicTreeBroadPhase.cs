@@ -255,24 +255,33 @@ namespace Alis.Core.Physic.Collisions
 
             // Send the pairs back to the client.
             // Skip duplicates: after sorting, identical pairs are adjacent.
-            int lastReportedA = -1;
-            int lastReportedB = -1;
-            bool hasLastPair = false;
+            int remaining = _pairCount;
+            int i = 0;
 
-            for (int i = 0; i < _pairCount; i++)
+            if (remaining > 0)
             {
-                int proxyIdA = _pairBuffer[i].ProxyIdA;
-                int proxyIdB = _pairBuffer[i].ProxyIdB;
+                int lastReportedA = _pairBuffer[0].ProxyIdA;
+                int lastReportedB = _pairBuffer[0].ProxyIdB;
 
-                if (hasLastPair && proxyIdA == lastReportedA && proxyIdB == lastReportedB)
+                callback(lastReportedA, lastReportedB);
+                i = 1;
+
+                while (i < remaining)
                 {
-                    continue;
-                }
+                    int proxyIdA = _pairBuffer[i].ProxyIdA;
+                    int proxyIdB = _pairBuffer[i].ProxyIdB;
 
-                callback(proxyIdA, proxyIdB);
-                lastReportedA = proxyIdA;
-                lastReportedB = proxyIdB;
-                hasLastPair = true;
+                    if (proxyIdA == lastReportedA && proxyIdB == lastReportedB)
+                    {
+                        i++;
+                        continue;
+                    }
+
+                    callback(proxyIdA, proxyIdB);
+                    lastReportedA = proxyIdA;
+                    lastReportedB = proxyIdB;
+                    i++;
+                }
             }
         }
 
