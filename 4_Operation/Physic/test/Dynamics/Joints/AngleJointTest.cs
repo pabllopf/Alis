@@ -264,6 +264,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
 
         /// <summary>
+        ///     Tests that internal parameterless constructor should set joint type to angle
+        /// </summary>
+        [Fact]
+        public void InternalConstructor_Parameterless_ShouldSetJointTypeToAngle()
+        {
+            AngleJoint joint = new AngleJoint();
+
+            Assert.Equal(JointType.Angle, joint.JointType);
+        }
+
+        /// <summary>
         /// Tests that world anchor a set should update body a position
         /// </summary>
         [Fact]

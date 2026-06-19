@@ -18,13 +18,8 @@ pabllopf-official_alis / master
 ## Processed Files
 | File | Estimated Improvement | Commit |
 |------|----------------------|--------|
-| 4_Operation/Physic/src/Collisions/AABB.cs | +0.1% (3 lines) | pending |
-
-## Completed Tasks
-| Task | File | Commit | Coverage Impact | Date |
-|------|------|--------|-----------------|------|
-| 1 | 4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs | 2593cae79 | +6 tests (arity 1) | 2026-06-19 |
+| 4_Operation/Physic/src/Collisions/AABB.cs | +3 lines, 1 condition | 8f6a81933 |
+| 4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs | +1 line | pending |
 
 ## Priority Queue
-1. BreakableBody.cs ✅ (40.2% → ~60%, 56 ul addressed)
-2. Next target: TBD
+<!-- Populated dynamically during processing -->
