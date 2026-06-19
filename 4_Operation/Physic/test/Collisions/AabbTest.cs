@@ -428,5 +428,106 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(new Vector2F(1.0f, 2.0f), aabb1.LowerBound);
             Assert.Equal(new Vector2F(5.0f, 6.0f), aabb1.UpperBound);
         }
+
+        /// <summary>
+        ///     Tests that ray cast with do interior check false should return true when ray starts inside
+        /// </summary>
+        [Fact]
+        public void RayCast_WithDoInteriorCheckFalse_ShouldReturnTrue_WhenRayStartsInside()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(5.0f, 5.0f),
+                Point2 = new Vector2F(15.0f, 5.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out _, ref input, false);
+
+            Assert.True(hit);
+        }
+
+        /// <summary>
+        ///     Tests that ray cast with do interior check true should return false when ray starts inside
+        /// </summary>
+        [Fact]
+        public void RayCast_WithDoInteriorCheckTrue_ShouldReturnFalse_WhenRayStartsInside()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(5.0f, 5.0f),
+                Point2 = new Vector2F(15.0f, 5.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out _, ref input);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        ///     Tests that ray cast should return false when max fraction less than tmin
+        /// </summary>
+        [Fact]
+        public void RayCast_ShouldReturnFalse_WhenMaxFractionLessThanTmin()
+        {
+            Aabb aabb = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(10.0f, 10.0f));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(0.0f, 7.5f),
+                Point2 = new Vector2F(15.0f, 7.5f),
+                MaxFraction = 0.1f
+            };
+
+            bool hit = aabb.RayCast(out _, ref input);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        ///     Tests that ray cast should handle negative direction with swap
+        /// </summary>
+        [Fact]
+        public void RayCast_ShouldHandleNegativeDirection_WithSwap()
+        {
+            Aabb aabb = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(10.0f, 10.0f));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(15.0f, 7.5f),
+                Point2 = new Vector2F(0.0f, 7.5f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
+            Assert.True(hit);
+            Assert.True(output.Fraction > 0.0f);
+        }
+
+        /// <summary>
+        ///     Tests that contains point should return false when on lower bound
+        /// </summary>
+        [Fact]
+        public void Contains_Point_ShouldReturnFalse_WhenOnLowerBound()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
+            Vector2F point = new Vector2F(0.0f, 5.0f);
+
+            Assert.False(aabb.Contains(ref point));
+        }
+
+        /// <summary>
+        ///     Tests that contains point should return false when on upper bound
+        /// </summary>
+        [Fact]
+        public void Contains_Point_ShouldReturnFalse_WhenOnUpperBound()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
+            Vector2F point = new Vector2F(10.0f, 5.0f);
+
+            Assert.False(aabb.Contains(ref point));
+        }
     }
 }
