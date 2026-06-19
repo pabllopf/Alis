@@ -2,7 +2,7 @@
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+//                              ░█─░█ ░█▄▄█ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
 //  File:ConstrainedPointSetTest.cs
@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.CDT;
+using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
 using Alis.Core.Physic.Common.Decomposition.CDT.Sets;
 using Xunit;
 
@@ -80,6 +81,119 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Sets
             ConstrainedPointSet cps = new ConstrainedPointSet(points, new int[0]);
 
             Assert.Equal(TriangulationMode.Constrained, cps.TriangulationMode);
+        }
+
+        /// <summary>
+        /// Tests that constructor with constraints enumerable should set triangulation mode
+        /// </summary>
+        [Fact]
+        public void Constructor_WithConstraintsEnumerable_ShouldSetTriangulationMode()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(1.0, 0.0),
+                new TriangulationPoint(0.5, 1.0)
+            };
+            List<TriangulationPoint> constraints = new List<TriangulationPoint>
+            {
+                points[0],
+                points[1],
+                points[1],
+                points[2]
+            };
+            ConstrainedPointSet cps = new ConstrainedPointSet(points, constraints);
+
+            Assert.Equal(TriangulationMode.Constrained, cps.TriangulationMode);
+        }
+
+        /// <summary>
+        /// Tests that PrepareTriangulation with constraints enumerable adds points to context
+        /// </summary>
+        [Fact]
+        public void PrepareTriangulation_WithConstraintsEnumerable_ShouldAddPointsToContext()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(1.0, 0.0),
+                new TriangulationPoint(0.5, 1.0)
+            };
+            List<TriangulationPoint> constraints = new List<TriangulationPoint>
+            {
+                points[0],
+                points[1],
+                points[1],
+                points[2]
+            };
+            ConstrainedPointSet cps = new ConstrainedPointSet(points, constraints);
+            DtSweepContext tcx = new DtSweepContext();
+
+            cps.PrepareTriangulation(tcx);
+
+            Assert.Equal(points.Count, tcx.Points.Count);
+        }
+
+        /// <summary>
+        /// Tests that PrepareTriangulation with edge index adds points to context
+        /// </summary>
+        [Fact]
+        public void PrepareTriangulation_WithEdgeIndex_ShouldAddPointsToContext()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(1.0, 0.0),
+                new TriangulationPoint(0.5, 1.0)
+            };
+            int[] indices = { 0, 1, 1, 2 };
+            ConstrainedPointSet cps = new ConstrainedPointSet(points, indices);
+            DtSweepContext tcx = new DtSweepContext();
+
+            cps.PrepareTriangulation(tcx);
+
+            Assert.Equal(points.Count, tcx.Points.Count);
+        }
+
+        /// <summary>
+        /// Tests that PrepareTriangulation with empty constraints list does not crash
+        /// </summary>
+        [Fact]
+        public void PrepareTriangulation_EmptyConstraintsList_ShouldNotCrash()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(1.0, 0.0)
+            };
+            List<TriangulationPoint> constraints = new List<TriangulationPoint>();
+            ConstrainedPointSet cps = new ConstrainedPointSet(points, constraints);
+            DtSweepContext tcx = new DtSweepContext();
+
+            cps.PrepareTriangulation(tcx);
+
+            Assert.Equal(points.Count, tcx.Points.Count);
+        }
+
+        /// <summary>
+        /// Tests that PrepareTriangulation with null constraints list does not crash
+        /// </summary>
+        [Fact]
+        public void PrepareTriangulation_NullConstraintsList_ShouldUseEdgeIndex()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(1.0, 0.0),
+                new TriangulationPoint(0.5, 1.0)
+            };
+            int[] indices = { 0, 1, 1, 2 };
+            ConstrainedPointSet cps = new ConstrainedPointSet(points, indices);
+            DtSweepContext tcx = new DtSweepContext();
+
+            cps.PrepareTriangulation(tcx);
+
+            Assert.Equal(points.Count, tcx.Points.Count);
         }
     }
 }
