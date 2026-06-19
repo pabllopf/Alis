@@ -22,7 +22,8 @@ pabllopf-official_alis / master
 | 4_Operation/Physic/src/Dynamics/Joints/AngleJoint.cs | +1 line | pending |
 | 4_Operation/Physic/src/Dynamics/ControllerCollection.cs | +1 line | 59af40cd5 |
 | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Audio/AudioManager.cs | +2 constructors | 36f44a0cc |
-| 1_Presentation/Extension/Math/ProceduralDungeon/src/Services/CorridorFactory.cs | +1 line, +1 branch | pending |
+| 1_Presentation/Extension/Math/ProceduralDungeon/src/Services/CorridorFactory.cs | +1 line, +1 branch | 2a3559796 |
+| 4_Operation/Ecs/src/Collections/FastestArrayPool.cs | +1 condition | pending |
 
 ## Completed Tasks
 | # | File | Commit | Coverage Impact |

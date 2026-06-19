@@ -79,5 +79,19 @@ namespace Alis.Core.Ecs.Test.Collections
 
             Assert.Null(rented[0]);
         }
+        /// <summary>
+        ///     Tests that Return with clearArray true and value type does not clear content.
+        /// </summary>
+        [Fact]
+        public void Return_WithClearArrayAndValueType_DoesNotClear()
+        {
+            FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
+            int[] array = pool.Rent(100);
+            array[0] = 42;
+
+            pool.Return(array, clearArray: true);
+
+            Assert.Equal(42, array[0]);
+        }
     }
 }
