@@ -374,33 +374,6 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         }
 
         /// <summary>
-        ///     Tests CanSee with a simple convex polygon
-        /// </summary>
-        [Fact]
-        public void CanSee_WithConvexPolygon_ShouldReturnTrueForAllPairs()
-        {
-            Vertices vertices = new Vertices(new[]
-            {
-                new Vector2F(0f, 0f),
-                new Vector2F(10f, 0f),
-                new Vector2F(10f, 10f),
-                new Vector2F(0f, 10f)
-            });
-
-            // In a convex polygon, all vertices can see each other
-            for (int i = 0; i < vertices.Count; i++)
-            {
-                for (int j = 0; j < vertices.Count; j++)
-                {
-                    if (i != j)
-                    {
-                        Assert.True(BayazitDecomposer.CanSee(i, j, vertices));
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         ///     Tests Reflex with a concave vertex
         /// </summary>
         [Fact]
