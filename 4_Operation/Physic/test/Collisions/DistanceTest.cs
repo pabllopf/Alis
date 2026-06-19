@@ -27,9 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
@@ -366,6 +368,95 @@ namespace Alis.Core.Physic.Test.Collisions
             Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
 
             Assert.Equal(0.0f, output.Distance);
+        }
+
+        /// <summary>
+        ///     Tests that compute distance with polygon shapes completes without error
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_WithPolygonShapes_CompletesSuccessfully()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0.5f, 1f)
+            });
+            PolygonShape polygonA = new PolygonShape(vertices, 1f);
+            PolygonShape polygonB = new PolygonShape(vertices, 1f);
+
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(polygonA, 0),
+                ProxyB = new DistanceProxy(polygonB, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = new ControllerTransform(new Vector2F(3.0f, 0.0f), 0.0f),
+                UseRadii = false
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+
+            Assert.True(output.Distance >= 0.0f);
+            Assert.True(output.Iterations >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that compute distance with polygon shapes and use radii completes without error
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_WithPolygonAndRadii_CompletesSuccessfully()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0.5f, 1f)
+            });
+            PolygonShape polygonA = new PolygonShape(vertices, 1f);
+            PolygonShape polygonB = new PolygonShape(vertices, 1f);
+
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(polygonA, 0),
+                ProxyB = new DistanceProxy(polygonB, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = new ControllerTransform(new Vector2F(3.0f, 0.0f), 0.0f),
+                UseRadii = true
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+
+            Assert.True(output.Distance >= 0.0f);
+        }
+
+        /// <summary>
+        ///     Tests that compute distance with rotated shapes completes without error
+        /// </summary>
+        [Fact]
+        public void ComputeDistance_WithRotatedPolygons_CompletesSuccessfully()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0.5f, 1f)
+            });
+            PolygonShape polygonA = new PolygonShape(vertices, 1f);
+            PolygonShape polygonB = new PolygonShape(vertices, 1f);
+
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(polygonA, 0),
+                ProxyB = new DistanceProxy(polygonB, 0),
+                ControllerTransformA = ControllerTransform.Identity,
+                ControllerTransformB = new ControllerTransform(new Vector2F(3f, 0f), MathF.PI / 4.0f),
+                UseRadii = false
+            };
+
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+
+            Assert.True(output.Distance >= 0.0f);
+            Assert.True(cache.Count <= 3);
         }
     }
 }
