@@ -13,3 +13,9 @@
 | 2026-06-19T19:00:00Z | coverage | ComponentHandle.cs | DebuggerDisplayString tests. Commit: a919bf5fe |
 | 2026-06-19T19:15:00Z | coverage | FrameBuilder.cs | Build() test. Commit: f76f5db80 |
 | 2026-06-19T19:45:00Z | coverage | EnumerableHelpers.cs | Pure enumerable, Reset, single-element tests. Commit: 61c9da8f1 |
+| 2026-06-19T20:00:00Z | lock | 4_Operation/Physic/src/Dynamics/ControllerCollection.cs | acquired |
+| 2026-06-19T20:01:00Z | test | ControllerCollection.cs | 1 new test, 18/18 passing |
+| 2026-06-19T20:02:00Z | commit | ControllerCollection.cs | 59af40cd5 (pre-existing) |
+| 2026-06-19T20:05:00Z | lock | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Audio/AudioManager.cs | acquired |
+| 2026-06-19T20:06:00Z | test | AudioManager.cs | fix [Theory] missing, 11/11 passing |
+| 2026-06-19T20:07:00Z | commit | AudioManager.cs | pending |

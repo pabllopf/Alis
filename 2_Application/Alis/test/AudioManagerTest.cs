@@ -183,7 +183,7 @@ namespace Alis.Test
         /// <summary>
         ///     Tests the full constructor with all parameters.
         /// </summary>
-        
+        [Theory]
         [InlineData("test-id", "TestAudio", "AudioTag", true)]
         [InlineData("", "", "", false)]
         public void FullConstructor_SetsAllProperties(string id, string name, string tag, bool isEnable)
