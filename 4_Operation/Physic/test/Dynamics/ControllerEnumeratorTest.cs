@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Controllers;
 using Alis.Core.Physic.Dynamics;
@@ -74,6 +76,119 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Add(new GravityController(2.0f));
 
             Assert.Throws<InvalidOperationException>(() => enumerator.MoveNext());
+        }
+
+        /// <summary>
+        /// Tests that generic i enumerable get enumerator returns typed enumerator
+        /// </summary>
+        [Fact]
+        public void GenericEnumerable_GetEnumerator_ReturnsTypedEnumerator()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.Add(new GravityController(1.0f));
+
+            IEnumerator<Controller> enumerator = ((IEnumerable<Controller>)world.ControllerList).GetEnumerator();
+
+            using (enumerator)
+            {
+                Assert.True(enumerator.MoveNext());
+                Assert.NotNull(enumerator.Current);
+            }
+        }
+
+        /// <summary>
+        /// Tests that non generic i enumerable get enumerator returns enumerator
+        /// </summary>
+        [Fact]
+        public void NonGenericEnumerable_GetEnumerator_ReturnsEnumerator()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.Add(new GravityController(1.0f));
+
+            IEnumerator enumerator = ((IEnumerable)world.ControllerList).GetEnumerator();
+
+            Assert.True(enumerator.MoveNext());
+            Assert.NotNull(enumerator.Current);
+        }
+
+        /// <summary>
+        /// Tests that generic i enumerator current returns correct controller
+        /// </summary>
+        [Fact]
+        public void GenericEnumerator_Current_ReturnsCorrectController()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            GravityController controller = new GravityController(1.0f);
+            world.Add(controller);
+            IEnumerator<Controller> enumerator = ((IEnumerable<Controller>)world.ControllerList).GetEnumerator();
+
+            enumerator.MoveNext();
+
+            Assert.Equal(controller, enumerator.Current);
+        }
+
+        /// <summary>
+        /// Tests that non generic i enumerator current returns correct controller
+        /// </summary>
+        [Fact]
+        public void NonGenericEnumerator_Current_ReturnsCorrectController()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            GravityController controller = new GravityController(1.0f);
+            world.Add(controller);
+            IEnumerator enumerator = ((IEnumerable)world.ControllerList).GetEnumerator();
+
+            enumerator.MoveNext();
+
+            Assert.Equal(controller, enumerator.Current);
+        }
+
+        /// <summary>
+        /// Tests that i enumerator reset resets enumerator
+        /// </summary>
+        [Fact]
+        public void IEnumerator_Reset_ResetsEnumerator()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.Add(new GravityController(1.0f));
+            world.Add(new GravityController(2.0f));
+            IEnumerator enumerator = ((IEnumerable)world.ControllerList).GetEnumerator();
+
+            enumerator.MoveNext();
+            enumerator.Reset();
+            enumerator.MoveNext();
+
+            Assert.NotNull(enumerator.Current);
+        }
+
+        /// <summary>
+        /// Tests that generic i enumerator current throws when collection modified
+        /// </summary>
+        [Fact]
+        public void GenericEnumerator_Current_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.Add(new GravityController(1.0f));
+            IEnumerator<Controller> enumerator = ((IEnumerable<Controller>)world.ControllerList).GetEnumerator();
+
+            world.Add(new GravityController(2.0f));
+
+            Assert.Throws<InvalidOperationException>(() => enumerator.Current);
+        }
+
+        /// <summary>
+        /// Tests that non generic i enumerator current throws when collection modified
+        /// </summary>
+        [Fact]
+        public void NonGenericEnumerator_Current_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.Add(new GravityController(1.0f));
+            IEnumerator enumerator = ((IEnumerable)world.ControllerList).GetEnumerator();
+
+            world.Add(new GravityController(2.0f));
+
+            Assert.Throws<InvalidOperationException>(() => enumerator.Current);
         }
     }
 }
