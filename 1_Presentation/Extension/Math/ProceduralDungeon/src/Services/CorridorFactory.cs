@@ -163,7 +163,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
             } while (newDirection == oppositeDirection);
 
             return newDirection;
-            return newDirection;
         }
     }
 }

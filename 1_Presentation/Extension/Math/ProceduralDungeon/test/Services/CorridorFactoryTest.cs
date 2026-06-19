@@ -28,9 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Math.ProceduralDungeon.Interfaces;
 using Alis.Extension.Math.ProceduralDungeon.Models;
 using Alis.Extension.Math.ProceduralDungeon.Services;
 using Alis.Extension.Math.ProceduralDungeon.Test.Mocks;
+using Moq;
 using Xunit;
 
 namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
@@ -146,7 +148,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         }
 
         /// <summary>
-        ///     Tests that create corridor should use room direction to avoid opposite.
+        /// Tests that create corridor should use room direction to avoid opposite.
         /// </summary>
         [Fact]
         public void CreateCorridor_ShouldUseRoomDirectionToAvoidOpposite()
@@ -158,6 +160,28 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             CorridorData corridor = factory.CreateCorridor(4, 4, room);
 
             Assert.NotEqual(Direction.West, corridor.Direction);
+        }
+
+        /// <summary>
+        /// Tests that create corridor retries when random direction is opposite and picks a valid one.
+        /// </summary>
+        [Fact]
+        public void CreateCorridor_WhenRandomIsOpposite_ShouldRetryUntilValid()
+        {
+            Direction roomDirection = Direction.East;
+            Direction opposite = Direction.West;
+            Mock<IRandomNumberGenerator> mockRng = new Mock<IRandomNumberGenerator>();
+            mockRng.SetupSequence(m => m.Next(1, 5))
+                .Returns((int)opposite)
+                .Returns((int)Direction.North);
+
+            CorridorFactory factory = new CorridorFactory(mockRng.Object);
+            RoomData room = new RoomData(10, 10, 8, 8, roomDirection);
+
+            CorridorData corridor = factory.CreateCorridor(4, 4, room);
+
+            Assert.Equal(Direction.North, corridor.Direction);
+            mockRng.Verify(m => m.Next(1, 5), Times.Exactly(2));
         }
 
         /// <summary>
