@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.ConvexHull;
@@ -81,6 +82,82 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             Vertices hull = ChainHull.GetConvexHull(vertices);
 
             Assert.Equal(2, hull.Count);
+        }
+
+        /// <summary>
+        /// Tests that get convex hull with collinear points on edges returns all collinear points
+        /// </summary>
+        [Fact]
+        public void GetConvexHull_WithCollinearPointsOnEdges_ShouldReturnAllCollinearPoints()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+
+            Vertices hull = ChainHull.GetConvexHull(vertices);
+
+            Assert.Equal(5, hull.Count);
+        }
+
+        /// <summary>
+        /// Tests that get convex hull with collinear points along the entire shape returns minimal endpoints
+        /// </summary>
+        [Fact]
+        public void GetConvexHull_WithAllCollinearPoints_ShouldReturnMinimalEndpoints()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 1f),
+                new Vector2F(2f, 2f),
+                new Vector2F(3f, 3f)
+            });
+
+            Vertices hull = ChainHull.GetConvexHull(vertices);
+
+            Assert.Equal(3, hull.Count);
+        }
+
+        /// <summary>
+        /// Tests that get convex hull with points on a vertical line returns the correct hull
+        /// </summary>
+        [Fact]
+        public void GetConvexHull_WithVerticalLinePoints_ShouldReturnVerticalHull()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(1f, 0f),
+                new Vector2F(1f, 1f),
+                new Vector2F(1f, 2f),
+                new Vector2F(1f, 3f)
+            });
+
+            Vertices hull = ChainHull.GetConvexHull(vertices);
+
+            Assert.Equal(3, hull.Count);
+        }
+
+        /// <summary>
+        /// Tests that get convex hull with triangle returns the same triangle
+        /// </summary>
+        [Fact]
+        public void GetConvexHull_WithTriangle_ShouldReturnSameTriangle()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(5f, 0f),
+                new Vector2F(2f, 4f)
+            });
+
+            Vertices hull = ChainHull.GetConvexHull(vertices);
+
+            Assert.Equal(3, hull.Count);
         }
     }
 }
