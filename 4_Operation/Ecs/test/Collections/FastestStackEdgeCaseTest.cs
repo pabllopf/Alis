@@ -39,6 +39,9 @@ namespace Alis.Core.Ecs.Test.Collections
     /// </summary>
     public class FastestStackEdgeCaseTest
     {
+        /// <summary>
+        /// Tests that peek on empty stack throws invalid operation
+        /// </summary>
         [Fact]
         public void Peek_OnEmptyStack_ThrowsInvalidOperation()
         {
@@ -46,6 +49,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<InvalidOperationException>(() => stack.Peek());
         }
 
+        /// <summary>
+        /// Tests that pop on empty stack throws invalid operation
+        /// </summary>
         [Fact]
         public void Pop_OnEmptyStack_ThrowsInvalidOperation()
         {
@@ -53,6 +59,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<InvalidOperationException>(() => stack.Pop());
         }
 
+        /// <summary>
+        /// Tests that remove existing element removes it
+        /// </summary>
         [Fact]
         public void Remove_ExistingElement_RemovesIt()
         {
@@ -67,6 +76,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(stack.Contains(20));
         }
 
+        /// <summary>
+        /// Tests that remove non existing element does nothing
+        /// </summary>
         [Fact]
         public void Remove_NonExistingElement_DoesNothing()
         {
@@ -79,6 +91,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(2, stack.Count);
         }
 
+        /// <summary>
+        /// Tests that remove last element pops it
+        /// </summary>
         [Fact]
         public void Remove_LastElement_PopsIt()
         {
@@ -92,6 +107,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(10, stack.Peek());
         }
 
+        /// <summary>
+        /// Tests that trim excess with negative capacity throws argument out of range
+        /// </summary>
         [Fact]
         public void TrimExcess_WithNegativeCapacity_ThrowsArgumentOutOfRange()
         {
@@ -100,6 +118,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentOutOfRangeException>(() => stack.TrimExcess(-1));
         }
 
+        /// <summary>
+        /// Tests that trim excess with capacity less than size throws argument out of range
+        /// </summary>
         [Fact]
         public void TrimExcess_WithCapacityLessThanSize_ThrowsArgumentOutOfRange()
         {
@@ -110,6 +131,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentOutOfRangeException>(() => stack.TrimExcess(2));
         }
 
+        /// <summary>
+        /// Tests that trim excess with same capacity does nothing
+        /// </summary>
         [Fact]
         public void TrimExcess_WithSameCapacity_DoesNothing()
         {
@@ -122,6 +146,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(10, stack.Capacity);
         }
 
+        /// <summary>
+        /// Tests that ensure capacity with negative capacity throws argument out of range
+        /// </summary>
         [Fact]
         public void EnsureCapacity_WithNegativeCapacity_ThrowsArgumentOutOfRange()
         {
@@ -129,6 +156,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentOutOfRangeException>(() => stack.EnsureCapacity(-1));
         }
 
+        /// <summary>
+        /// Tests that copy to with null array throws argument null
+        /// </summary>
         [Fact]
         public void CopyTo_WithNullArray_ThrowsArgumentNull()
         {
@@ -137,6 +167,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentNullException>(() => ((ICollection) stack).CopyTo(null, 0));
         }
 
+        /// <summary>
+        /// Tests that copy to with multi dimensional array throws argument exception
+        /// </summary>
         [Fact]
         public void CopyTo_WithMultiDimensionalArray_ThrowsArgumentException()
         {
@@ -146,6 +179,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentException>(() => ((ICollection) stack).CopyTo(multiDim, 0));
         }
 
+        /// <summary>
+        /// Tests that copy to with non zero lower bound throws argument exception
+        /// </summary>
         [Fact]
         public void CopyTo_WithNonZeroLowerBound_ThrowsArgumentException()
         {
@@ -155,6 +191,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentException>(() => ((ICollection) stack).CopyTo(nonZero, 0));
         }
 
+        /// <summary>
+        /// Tests that copy to with negative index throws argument out of range
+        /// </summary>
         [Fact]
         public void CopyTo_WithNegativeIndex_ThrowsArgumentOutOfRange()
         {
@@ -164,6 +203,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentOutOfRangeException>(() => ((ICollection) stack).CopyTo(target, -1));
         }
 
+        /// <summary>
+        /// Tests that copy to with index beyond array length throws argument out of range
+        /// </summary>
         [Fact]
         public void CopyTo_WithIndexBeyondArrayLength_ThrowsArgumentOutOfRange()
         {
@@ -173,6 +215,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentOutOfRangeException>(() => ((ICollection) stack).CopyTo(target, 10));
         }
 
+        /// <summary>
+        /// Tests that copy to with insufficient space throws argument exception
+        /// </summary>
         [Fact]
         public void CopyTo_WithInsufficientSpace_ThrowsArgumentException()
         {
@@ -184,6 +229,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentException>(() => ((ICollection) stack).CopyTo(target, 0));
         }
 
+        /// <summary>
+        /// Tests that copy to with wrong array type throws argument exception
+        /// </summary>
         [Fact]
         public void CopyTo_WithWrongArrayType_ThrowsArgumentException()
         {
@@ -193,6 +241,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentException>(() => ((ICollection) stack).CopyTo(target, 0));
         }
 
+        /// <summary>
+        /// Tests that copy to with valid parameters copies correctly
+        /// </summary>
         [Fact]
         public void CopyTo_WithValidParameters_CopiesCorrectly()
         {
@@ -211,6 +262,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, target[4]);
         }
 
+        /// <summary>
+        /// Tests that enumerator move next returns elements in correct order
+        /// </summary>
         [Fact]
         public void Enumerator_MoveNext_ReturnsElementsInCorrectOrder()
         {
@@ -226,6 +280,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(enumerator.MoveNext());
         }
 
+        /// <summary>
+        /// Tests that enumerator get current before move next throws invalid operation
+        /// </summary>
         [Fact]
         public void Enumerator_GetCurrentBeforeMoveNext_ThrowsInvalidOperation()
         {
@@ -236,6 +293,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<InvalidOperationException>(() => enumerator.Current);
         }
 
+        /// <summary>
+        /// Tests that enumerator get current after enumeration ended throws invalid operation
+        /// </summary>
         [Fact]
         public void Enumerator_GetCurrentAfterEnumerationEnded_ThrowsInvalidOperation()
         {
@@ -248,6 +308,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<InvalidOperationException>(() => enumerator.Current);
         }
 
+        /// <summary>
+        /// Tests that enumerator dispose sets index to minus one
+        /// </summary>
         [Fact]
         public void Enumerator_Dispose_SetsIndexToMinusOne()
         {
@@ -259,6 +322,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<InvalidOperationException>(() => enumerator.Current);
         }
 
+        /// <summary>
+        /// Tests that enumerator empty stack returns false on move next
+        /// </summary>
         [Fact]
         public void Enumerator_EmptyStack_ReturnsFalseOnMoveNext()
         {
@@ -268,6 +334,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(enumerator.MoveNext());
         }
 
+        /// <summary>
+        /// Tests that enumerator reset restarts enumeration
+        /// </summary>
         [Fact]
         public void Enumerator_Reset_RestartsEnumeration()
         {
@@ -285,6 +354,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(20, enumerator.Current);
         }
 
+        /// <summary>
+        /// Tests that push after trim excess grows correctly
+        /// </summary>
         [Fact]
         public void Push_AfterTrimExcess_GrowsCorrectly()
         {
@@ -299,6 +371,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(3, stack.Peek());
         }
 
+        /// <summary>
+        /// Tests that push beyond default capacity triggers resize
+        /// </summary>
         [Fact]
         public void Push_BeyondDefaultCapacity_TriggersResize()
         {
@@ -312,6 +387,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(stack.Capacity >= 33);
         }
 
+        /// <summary>
+        /// Tests that indexer get returns correct value
+        /// </summary>
         [Fact]
         public void Indexer_Get_ReturnsCorrectValue()
         {
@@ -323,6 +401,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(20, stack[1]);
         }
 
+        /// <summary>
+        /// Tests that indexer set modifies value
+        /// </summary>
         [Fact]
         public void Indexer_Set_ModifiesValue()
         {
@@ -335,6 +416,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(99, stack[0]);
         }
 
+        /// <summary>
+        /// Tests that to array empty stack returns empty array
+        /// </summary>
         [Fact]
         public void ToArray_EmptyStack_ReturnsEmptyArray()
         {
@@ -345,6 +429,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that push single item is peekable
+        /// </summary>
         [Fact]
         public void Push_SingleItem_IsPeekable()
         {
@@ -355,6 +442,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(42, stack.Peek());
         }
 
+        /// <summary>
+        /// Tests that peek on empty string stack throws invalid operation
+        /// </summary>
         [Fact]
         public void Peek_OnEmptyStringStack_ThrowsInvalidOperation()
         {
@@ -362,6 +452,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<InvalidOperationException>(() => stack.Peek());
         }
 
+        /// <summary>
+        /// Tests that pop on empty string stack throws invalid operation
+        /// </summary>
         [Fact]
         public void Pop_OnEmptyStringStack_ThrowsInvalidOperation()
         {
@@ -369,6 +462,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<InvalidOperationException>(() => stack.Pop());
         }
 
+        /// <summary>
+        /// Tests that try pop with reference type clears slot
+        /// </summary>
         [Fact]
         public void TryPop_WithReferenceType_ClearsSlot()
         {
@@ -386,6 +482,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that enumerator current before move next string stack throws
+        /// </summary>
         [Fact]
         public void Enumerator_CurrentBeforeMoveNext_StringStack_Throws()
         {
@@ -396,6 +495,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<InvalidOperationException>(() => enumerator.Current);
         }
 
+        /// <summary>
+        /// Tests that contains after remove returns false
+        /// </summary>
         [Fact]
         public void Contains_AfterRemove_ReturnsFalse()
         {

@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The general setting builder test class
+    /// </summary>
     public class GeneralSettingBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor no args creates builder
+        /// </summary>
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
@@ -42,6 +48,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns general setting instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsGeneralSettingInstance()
         {
@@ -50,6 +59,9 @@ namespace Alis.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that name sets name returns builder
+        /// </summary>
         [Fact]
         public void Name_SetsName_ReturnsBuilder()
         {
@@ -58,6 +70,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that version sets version returns builder
+        /// </summary>
         [Fact]
         public void Version_SetsVersion_ReturnsBuilder()
         {
@@ -66,6 +81,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that author sets author returns builder
+        /// </summary>
         [Fact]
         public void Author_SetsAuthor_ReturnsBuilder()
         {
@@ -74,6 +92,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that description sets description returns builder
+        /// </summary>
         [Fact]
         public void Description_SetsDescription_ReturnsBuilder()
         {
@@ -82,6 +103,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that license sets license returns builder
+        /// </summary>
         [Fact]
         public void License_SetsLicense_ReturnsBuilder()
         {
@@ -90,6 +114,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that icon sets icon returns builder
+        /// </summary>
         [Fact]
         public void Icon_SetsIcon_ReturnsBuilder()
         {
@@ -98,6 +125,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that debug sets debug returns builder
+        /// </summary>
         [Fact]
         public void Debug_SetsDebug_ReturnsBuilder()
         {
@@ -106,6 +136,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that chaining all properties creates general setting
+        /// </summary>
         [Fact]
         public void ChainingAllProperties_CreatesGeneralSetting()
         {

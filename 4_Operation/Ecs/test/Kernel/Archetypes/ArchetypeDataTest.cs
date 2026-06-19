@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 {
+    /// <summary>
+    /// The archetype data test class
+    /// </summary>
     public class ArchetypeDataTest
     {
+        /// <summary>
+        /// Tests that constructor should set id and component types
+        /// </summary>
         [Fact]
         public void Constructor_ShouldSetIdAndComponentTypes()
         {
@@ -23,6 +29,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(2, data.ComponentTypes.Length);
         }
 
+        /// <summary>
+        /// Tests that constructor with empty types should set empty component types
+        /// </summary>
         [Fact]
         public void Constructor_WithEmptyTypes_ShouldSetEmptyComponentTypes()
         {
@@ -35,6 +44,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(0, data.ComponentTypes.Length);
         }
 
+        /// <summary>
+        /// Tests that deconstruct should return id and component types
+        /// </summary>
         [Fact]
         public void Deconstruct_ShouldReturnIdAndComponentTypes()
         {
@@ -48,6 +60,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(types.Length, deconstructedTypes.Length);
         }
 
+        /// <summary>
+        /// Tests that equals same values should be equal
+        /// </summary>
         [Fact]
         public void Equals_SameValues_ShouldBeEqual()
         {
@@ -60,6 +75,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(data1.Equals(data2));
         }
 
+        /// <summary>
+        /// Tests that equals different id should not be equal
+        /// </summary>
         [Fact]
         public void Equals_DifferentId_ShouldNotBeEqual()
         {

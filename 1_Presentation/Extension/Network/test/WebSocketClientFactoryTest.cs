@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -102,7 +103,7 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public void GetAdditionalHeaders_Empty_ReturnsEmpty()
         {
-            var headers = new System.Collections.Generic.Dictionary<string, string>();
+            Dictionary<string, string> headers = new System.Collections.Generic.Dictionary<string, string>();
             string result = WebSocketClientFactory.GetAdditionalHeaders(headers);
 
             Assert.Equal(string.Empty, result);
@@ -114,7 +115,7 @@ namespace Alis.Extension.Network.Test
         [Fact]
         public void GetAdditionalHeaders_WithHeaders_ReturnsFormattedHeaders()
         {
-            var headers = new System.Collections.Generic.Dictionary<string, string>
+            Dictionary<string, string> headers = new System.Collections.Generic.Dictionary<string, string>
             {
                 { "Authorization", "Bearer token123" },
                 { "X-Custom", "value" }

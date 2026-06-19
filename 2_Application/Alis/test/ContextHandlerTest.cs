@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The context handler test class
+    /// </summary>
     public class ContextHandlerTest
     {
+        /// <summary>
+        /// Tests that constructor with context creates handler
+        /// </summary>
         [Fact]
         public void Constructor_WithContext_CreatesHandler()
         {
@@ -42,6 +48,9 @@ namespace Alis.Test
             Assert.NotNull(handler);
         }
 
+        /// <summary>
+        /// Tests that context property returns same instance
+        /// </summary>
         [Fact]
         public void Context_Property_ReturnsSameInstance()
         {
@@ -50,6 +59,9 @@ namespace Alis.Test
             Assert.Same(context, handler.Context);
         }
 
+        /// <summary>
+        /// Tests that exit sets is running to false
+        /// </summary>
         [Fact]
         public void Exit_SetsIsRunningToFalse()
         {
@@ -60,6 +72,9 @@ namespace Alis.Test
             Assert.False(context.IsRunning);
         }
 
+        /// <summary>
+        /// Tests that load does not throw
+        /// </summary>
         [Fact]
         public void Load_DoesNotThrow()
         {
@@ -68,6 +83,9 @@ namespace Alis.Test
             handler.Load();
         }
 
+        /// <summary>
+        /// Tests that save does not throw
+        /// </summary>
         [Fact]
         public void Save_DoesNotThrow()
         {

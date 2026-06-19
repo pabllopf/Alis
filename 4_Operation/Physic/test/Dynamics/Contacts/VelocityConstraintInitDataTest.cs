@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Vector2F vB = new Vector2F(1.0f, 1.0f);
             float wB = 3.0f;
 
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 cA, cB, mA, mB, iA, iB, tangent, vA, wA, vB, wB);
 
             Assert.Equal(cA, data.cA);
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void Constructor_ShouldSupportZeroValues()
         {
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 Vector2F.Zero, Vector2F.Zero, 0.0f, 0.0f, 0.0f, 0.0f,
                 Vector2F.Zero, Vector2F.Zero, 0.0f, Vector2F.Zero, 0.0f);
 
@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void Constructor_ShouldSupportNegativeValues()
         {
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 new Vector2F(-1.0f, -2.0f), new Vector2F(-3.0f, -4.0f),
                 -1.5f, -2.5f, -0.5f, -1.5f, new Vector2F(-1.0f, 0.0f),
                 new Vector2F(0.0f, -1.0f), -2.0f, new Vector2F(-1.0f, -1.0f), -3.0f);
@@ -125,7 +125,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void Constructor_ShouldSupportLargeValues()
         {
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 new Vector2F(1000.0f, 2000.0f), new Vector2F(3000.0f, 4000.0f),
                 100.5f, 200.5f, 50.5f, 150.5f, new Vector2F(100.0f, 0.0f),
                 new Vector2F(0.0f, 100.0f), 200.0f, new Vector2F(100.0f, 100.0f), 300.0f);
@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void Constructor_ShouldSupportSmallValues()
         {
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 new Vector2F(0.001f, 0.002f), new Vector2F(0.003f, 0.004f),
                 0.0015f, 0.0025f, 0.0005f, 0.0015f, new Vector2F(0.001f, 0.0f),
                 new Vector2F(0.0f, 0.001f), 0.002f, new Vector2F(0.001f, 0.001f), 0.003f);
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Vector2F unitY = new Vector2F(0.0f, 1.0f);
             Vector2F unitDiag = new Vector2F(0.707106781f, 0.707106781f);
 
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 unitX, unitY, 1.0f, 1.0f, 1.0f, 1.0f,
                 unitDiag, unitX, 1.0f, unitY, 1.0f);
 
@@ -195,7 +195,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Constructor_ShouldSupportEqualMassValues()
         {
             float mass = 5.0f;
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 Vector2F.Zero, Vector2F.Zero, mass, mass, 1.0f, 1.0f,
                 Vector2F.Zero, Vector2F.Zero, 0.0f, Vector2F.Zero, 0.0f);
 
@@ -210,7 +210,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Constructor_ShouldSupportEqualInertiaValues()
         {
             float inertia = 2.5f;
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 Vector2F.Zero, Vector2F.Zero, 1.0f, 1.0f, inertia, inertia,
                 Vector2F.Zero, Vector2F.Zero, 0.0f, Vector2F.Zero, 0.0f);
 
@@ -227,7 +227,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Vector2F velocity = new Vector2F(3.0f, 4.0f);
             float angular = 2.5f;
 
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 Vector2F.Zero, Vector2F.Zero, 1.0f, 1.0f, 1.0f, 1.0f,
                 Vector2F.Zero, velocity, angular, velocity, angular);
 
@@ -243,7 +243,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void Constructor_ShouldSupportComplexScenarioValues()
         {
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 new Vector2F(10.5f, 20.3f), new Vector2F(30.7f, 40.9f),
                 15.25f, 25.75f, 5.5f, 15.5f, new Vector2F(0.866f, 0.5f),
                 new Vector2F(1.5f, 2.5f), 3.75f, new Vector2F(2.5f, 3.5f), 4.25f);
@@ -268,7 +268,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Constructor_ShouldBeImmutable()
         {
             Vector2F cA = new Vector2F(1.0f, 2.0f);
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 cA, Vector2F.Zero, 1.0f, 1.0f, 1.0f, 1.0f,
                 Vector2F.Zero, Vector2F.Zero, 0.0f, Vector2F.Zero, 0.0f);
 
@@ -281,7 +281,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void Constructor_ShouldSupportAllCategoryTypes()
         {
-            var data = new VelocityConstraintInitData(
+            VelocityConstraintInitData data = new VelocityConstraintInitData(
                 Vector2F.One, Vector2F.One * 2, 1.0f, 1.0f, 1.0f, 1.0f,
                 Vector2F.One, Vector2F.One, 1.0f, Vector2F.One, 1.0f);
 

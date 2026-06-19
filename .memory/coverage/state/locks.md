@@ -1,4 +1,6 @@
-# Distributed Locks
-## Format: target | worker | timestamp | status
-## Locks older than 60 minutes may be reclaimed.
-1_Presentation/Engine/src/Windows/AssetsWindow.cs | worker-1 | 2026-06-19T16:27:29Z | processing
+# Locks
+
+**Last Updated**: 2026-06-19T18:00:00Z
+
+| Target | Worker | Status | Timestamp |
+|--------|--------|--------|-----------|

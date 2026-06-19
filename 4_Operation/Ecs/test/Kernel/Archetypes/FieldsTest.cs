@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 {
+    /// <summary>
+    /// The fields test class
+    /// </summary>
     public class FieldsTest
     {
+        /// <summary>
+        /// Tests that default constructor should initialize fields to null
+        /// </summary>
         [Fact]
         public void DefaultConstructor_ShouldInitializeFieldsToNull()
         {
@@ -16,6 +22,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Null(fields.Components);
         }
 
+        /// <summary>
+        /// Tests that fields can set map
+        /// </summary>
         [Fact]
         public void Fields_CanSetMap()
         {
@@ -27,6 +36,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Same(map, fields.Map);
         }
 
+        /// <summary>
+        /// Tests that fields can set components
+        /// </summary>
         [Fact]
         public void Fields_CanSetComponents()
         {
@@ -38,6 +50,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Same(components, fields.Components);
         }
 
+        /// <summary>
+        /// Tests that struct layout should be sequential
+        /// </summary>
         [Fact]
         public void StructLayout_ShouldBeSequential()
         {

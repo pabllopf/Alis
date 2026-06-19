@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The time setting struct test class
+    /// </summary>
     public class TimeSettingStructTest
     {
+        /// <summary>
+        /// Tests that default values should be correct
+        /// </summary>
         [Fact]
         public void DefaultValues_ShouldBeCorrect()
         {
@@ -43,6 +49,9 @@ namespace Alis.Test
             Assert.Equal(1.0f, setting.TimeScale);
         }
 
+        /// <summary>
+        /// Tests that custom constructor should store values
+        /// </summary>
         [Fact]
         public void CustomConstructor_ShouldStoreValues()
         {
@@ -52,6 +61,9 @@ namespace Alis.Test
             Assert.Equal(2.0f, setting.TimeScale);
         }
 
+        /// <summary>
+        /// Tests that should implement i time setting
+        /// </summary>
         [Fact]
         public void ShouldImplementITimeSetting()
         {

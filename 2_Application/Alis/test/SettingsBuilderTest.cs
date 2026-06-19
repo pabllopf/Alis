@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The settings builder test class
+    /// </summary>
     public class SettingsBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor no args creates builder
+        /// </summary>
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
@@ -43,6 +49,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns setting instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsSettingInstance()
         {
@@ -51,6 +60,9 @@ namespace Alis.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that audio with config returns builder
+        /// </summary>
         [Fact]
         public void Audio_WithConfig_ReturnsBuilder()
         {
@@ -59,6 +71,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that general with config returns builder
+        /// </summary>
         [Fact]
         public void General_WithConfig_ReturnsBuilder()
         {
@@ -67,6 +82,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that graphic with config returns builder
+        /// </summary>
         [Fact]
         public void Graphic_WithConfig_ReturnsBuilder()
         {
@@ -75,6 +93,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that input with config returns builder
+        /// </summary>
         [Fact]
         public void Input_WithConfig_ReturnsBuilder()
         {
@@ -83,6 +104,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that network with config returns builder
+        /// </summary>
         [Fact]
         public void Network_WithConfig_ReturnsBuilder()
         {
@@ -91,6 +115,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that physic with config returns builder
+        /// </summary>
         [Fact]
         public void Physic_WithConfig_ReturnsBuilder()
         {
@@ -99,6 +126,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that chaining all settings creates setting
+        /// </summary>
         [Fact]
         public void ChainingAllSettings_CreatesSetting()
         {

@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The network setting struct test class
+    /// </summary>
     public class NetworkSettingStructTest
     {
+        /// <summary>
+        /// Tests that default values should be correct
+        /// </summary>
         [Fact]
         public void DefaultValues_ShouldBeCorrect()
         {
@@ -44,6 +50,9 @@ namespace Alis.Test
             Assert.Equal("http", setting.Protocol);
         }
 
+        /// <summary>
+        /// Tests that custom constructor should store values
+        /// </summary>
         [Fact]
         public void CustomConstructor_ShouldStoreValues()
         {
@@ -54,6 +63,9 @@ namespace Alis.Test
             Assert.Equal("https", setting.Protocol);
         }
 
+        /// <summary>
+        /// Tests that should implement i network setting
+        /// </summary>
         [Fact]
         public void ShouldImplementINetworkSetting()
         {

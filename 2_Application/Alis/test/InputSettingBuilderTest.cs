@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The input setting builder test class
+    /// </summary>
     public class InputSettingBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor no args creates builder
+        /// </summary>
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
@@ -42,6 +48,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns input setting instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsInputSettingInstance()
         {
@@ -50,6 +59,9 @@ namespace Alis.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that mouse sensitivity sets value returns builder
+        /// </summary>
         [Fact]
         public void MouseSensitivity_SetsValue_ReturnsBuilder()
         {
@@ -58,6 +70,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that chaining all properties creates input setting
+        /// </summary>
         [Fact]
         public void ChainingAllProperties_CreatesInputSetting()
         {

@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.Logic;
@@ -202,9 +203,14 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Equal(1, breakableBody.Parts.Count);
         }
 
+        /// <summary>
+        /// Creates the breakable body using the specified world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <returns>The breakable body</returns>
         private static BreakableBody CreateBreakableBody(WorldPhysic world)
         {
-            var ctor = typeof(BreakableBody).GetConstructor(
+            ConstructorInfo ctor = typeof(BreakableBody).GetConstructor(
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance,
                 null,
                 new[] { typeof(WorldPhysic) },

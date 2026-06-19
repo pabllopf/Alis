@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Reflection;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;
 
@@ -52,7 +54,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void PositionSolverManifold_ShouldBeStaticClass()
         {
-            var type = typeof(PositionSolverManifold);
+            Type type = typeof(PositionSolverManifold);
             Assert.True(type.IsSealed);
             Assert.True(type.IsAbstract);
         }
@@ -63,7 +65,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void Initialize_MethodShouldExist()
         {
-            var method = typeof(PositionSolverManifold).GetMethod("Initialize");
+            MethodInfo method = typeof(PositionSolverManifold).GetMethod("Initialize");
             Assert.NotNull(method);
         }
 
@@ -73,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void PositionSolverManifold_ShouldBeInCorrectNamespace()
         {
-            var type = typeof(PositionSolverManifold);
+            Type type = typeof(PositionSolverManifold);
             Assert.Equal("Alis.Core.Physic.Dynamics.Contacts", type.Namespace);
         }
 
@@ -83,8 +85,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void PositionSolverManifold_ShouldHaveCorrectAttributes()
         {
-            var type = typeof(PositionSolverManifold);
-            var attributes = type.GetCustomAttributes(false);
+            Type type = typeof(PositionSolverManifold);
+            object[] attributes = type.GetCustomAttributes(false);
             Assert.NotNull(attributes);
         }
     }

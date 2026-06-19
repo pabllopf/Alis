@@ -19,6 +19,17 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class LoggingFilterFormatterOutputCoverageTest
     {
+        /// <summary>
+        /// Creates the entry using the specified level
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <param name="message">The message</param>
+        /// <param name="loggerName">The logger name</param>
+        /// <param name="exception">The exception</param>
+        /// <param name="correlationId">The correlation id</param>
+        /// <param name="properties">The properties</param>
+        /// <param name="scopes">The scopes</param>
+        /// <returns>The log entry</returns>
         private static LogEntry CreateEntry(
             LogLevel level = LogLevel.Info,
             string message = "test",
@@ -35,6 +46,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // LogLevelFilter
         // ============================================================
 
+        /// <summary>
+        /// Tests that log level filter should log entry above min level
+        /// </summary>
         [Fact]
         public void LogLevelFilter_ShouldLog_EntryAboveMinLevel()
         {
@@ -44,6 +58,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that log level filter should log entry at min level
+        /// </summary>
         [Fact]
         public void LogLevelFilter_ShouldLog_EntryAtMinLevel()
         {
@@ -53,6 +70,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that log level filter should not log entry below min level
+        /// </summary>
         [Fact]
         public void LogLevelFilter_ShouldNotLog_EntryBelowMinLevel()
         {
@@ -62,6 +82,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that log level filter should not log null entry
+        /// </summary>
         [Fact]
         public void LogLevelFilter_ShouldNotLog_NullEntry()
         {
@@ -70,6 +93,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(null));
         }
 
+        /// <summary>
+        /// Tests that log level filter name contains level
+        /// </summary>
         [Fact]
         public void LogLevelFilter_Name_ContainsLevel()
         {
@@ -82,6 +108,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // LoggerNameFilter
         // ============================================================
 
+        /// <summary>
+        /// Tests that logger name filter inclusive should log matching name
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_Inclusive_ShouldLog_MatchingName()
         {
@@ -91,6 +120,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that logger name filter inclusive should not log non matching name
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_Inclusive_ShouldNotLog_NonMatchingName()
         {
@@ -100,6 +132,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that logger name filter exclusive should not log matching name
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_Exclusive_ShouldNotLog_MatchingName()
         {
@@ -109,6 +144,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that logger name filter exclusive should log non matching name
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_Exclusive_ShouldLog_NonMatchingName()
         {
@@ -118,6 +156,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that logger name filter null entry returns true
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_NullEntry_ReturnsTrue()
         {
@@ -126,6 +167,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(null));
         }
 
+        /// <summary>
+        /// Tests that logger name filter empty names returns true
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_EmptyNames_ReturnsTrue()
         {
@@ -135,6 +179,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that logger name filter null names returns true
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_NullNames_ReturnsTrue()
         {
@@ -144,6 +191,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that logger name filter name inclusive contains count
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_Name_Inclusive_ContainsCount()
         {
@@ -153,6 +203,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("2", filter.Name);
         }
 
+        /// <summary>
+        /// Tests that logger name filter name exclusive contains exclude
+        /// </summary>
         [Fact]
         public void LoggerNameFilter_Name_Exclusive_ContainsExclude()
         {
@@ -165,6 +218,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // CompositeLogFilter
         // ============================================================
 
+        /// <summary>
+        /// Tests that composite log filter and all pass returns true
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_And_AllPass_ReturnsTrue()
         {
@@ -180,6 +236,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that composite log filter and one fails returns false
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_And_OneFails_ReturnsFalse()
         {
@@ -195,6 +254,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that composite log filter or one pass returns true
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_Or_OnePass_ReturnsTrue()
         {
@@ -210,6 +272,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that composite log filter or none pass returns false
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_Or_NonePass_ReturnsFalse()
         {
@@ -225,6 +290,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that composite log filter null entry returns true
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_NullEntry_ReturnsTrue()
         {
@@ -235,6 +303,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(null));
         }
 
+        /// <summary>
+        /// Tests that composite log filter empty filters returns true
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_EmptyFilters_ReturnsTrue()
         {
@@ -244,6 +315,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that composite log filter null filters returns true
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_NullFilters_ReturnsTrue()
         {
@@ -253,6 +327,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that composite log filter name and
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_Name_And()
         {
@@ -260,6 +337,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("AND", filter.Name);
         }
 
+        /// <summary>
+        /// Tests that composite log filter name or
+        /// </summary>
         [Fact]
         public void CompositeLogFilter_Name_Or()
         {
@@ -271,6 +351,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // ConditionalLogFilter
         // ============================================================
 
+        /// <summary>
+        /// Tests that conditional log filter predicate true returns true
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_PredicateTrue_ReturnsTrue()
         {
@@ -280,6 +363,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter predicate false returns false
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_PredicateFalse_ReturnsFalse()
         {
@@ -289,6 +375,10 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter exception in predicate returns true
+        /// </summary>
+        /// <exception cref="InvalidOperationException">boom</exception>
         [Fact]
         public void ConditionalLogFilter_ExceptionInPredicate_ReturnsTrue()
         {
@@ -301,12 +391,18 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(entry));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter null predicate throws
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_NullPredicate_Throws()
         {
             Assert.Throws<ArgumentNullException>(() => new ConditionalLogFilter(null));
         }
 
+        /// <summary>
+        /// Tests that conditional log filter name default
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_Name_Default()
         {
@@ -314,6 +410,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("ConditionalFilter", filter.Name);
         }
 
+        /// <summary>
+        /// Tests that conditional log filter name custom
+        /// </summary>
         [Fact]
         public void ConditionalLogFilter_Name_Custom()
         {
@@ -325,6 +424,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // SamplingLogFilter
         // ============================================================
 
+        /// <summary>
+        /// Tests that sampling log filter rate 1 every entry passes
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_Rate1_EveryEntryPasses()
         {
@@ -335,6 +437,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that sampling log filter rate 3 passes every third
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_Rate3_PassesEveryThird()
         {
@@ -347,6 +452,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(filter.ShouldLog(CreateEntry()));  // counter=6
         }
 
+        /// <summary>
+        /// Tests that sampling log filter null entry returns false
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_NullEntry_ReturnsFalse()
         {
@@ -355,12 +463,18 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.False(filter.ShouldLog(null));
         }
 
+        /// <summary>
+        /// Tests that sampling log filter rate less than 1 throws
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_RateLessThan1_Throws()
         {
             Assert.Throws<ArgumentException>(() => new SamplingLogFilter(sampleRate: 0));
         }
 
+        /// <summary>
+        /// Tests that sampling log filter name contains rate
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_Name_ContainsRate()
         {
@@ -368,6 +482,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("7", filter.Name);
         }
 
+        /// <summary>
+        /// Tests that sampling log filter default rate
+        /// </summary>
         [Fact]
         public void SamplingLogFilter_DefaultRate()
         {
@@ -379,6 +496,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // CompactLogFormatter
         // ============================================================
 
+        /// <summary>
+        /// Tests that compact log formatter format info level
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_Format_InfoLevel()
         {
@@ -390,6 +510,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("[I] Hello", result);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter level prefix
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <param name="expectedPrefix">The expected prefix</param>
         [Theory]
         [InlineData(LogLevel.Trace, "T")]
         [InlineData(LogLevel.Debug, "D")]
@@ -407,6 +532,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.StartsWith($"[{expectedPrefix}]", result);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter with exception
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_WithException()
         {
@@ -418,6 +546,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("[EXC: bad]", result);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter without exception
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_WithoutException()
         {
@@ -429,6 +560,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("[EXC:", result);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter unknown level
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_UnknownLevel()
         {
@@ -440,6 +574,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.StartsWith("[?]", result);
         }
 
+        /// <summary>
+        /// Tests that compact log formatter name
+        /// </summary>
         [Fact]
         public void CompactLogFormatter_Name()
         {
@@ -451,6 +588,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // JsonLogFormatter
         // ============================================================
 
+        /// <summary>
+        /// Tests that json log formatter format contains level and message
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ContainsLevelAndMessage()
         {
@@ -463,6 +603,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"message\":\"something happened\"", result);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format contains logger name
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ContainsLoggerName()
         {
@@ -474,6 +617,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"logger\":\"MyApp\"", result);
         }
 
+        /// <summary>
+        /// Tests that json log formatter format contains thread id
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Format_ContainsThreadId()
         {
@@ -485,6 +631,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains($"\"threadId\":{Thread.CurrentThread.ManagedThreadId}", result);
         }
 
+        /// <summary>
+        /// Tests that json log formatter with correlation id
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_WithCorrelationId()
         {
@@ -496,6 +645,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"correlationId\":\"abc-123\"", result);
         }
 
+        /// <summary>
+        /// Tests that json log formatter without correlation id
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_WithoutCorrelationId()
         {
@@ -507,6 +659,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("correlationId", result);
         }
 
+        /// <summary>
+        /// Tests that json log formatter with properties
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_WithProperties()
         {
@@ -520,6 +675,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"key1\":\"value1\"", result);
         }
 
+        /// <summary>
+        /// Tests that json log formatter without properties
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_WithoutProperties()
         {
@@ -531,6 +689,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.DoesNotContain("properties", result);
         }
 
+        /// <summary>
+        /// Tests that json log formatter with scopes
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_WithScopes()
         {
@@ -543,6 +704,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\"scopes\":[", result);
         }
 
+        /// <summary>
+        /// Tests that json log formatter with exception
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_WithException()
         {
@@ -556,6 +720,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("test err", result);
         }
 
+        /// <summary>
+        /// Tests that json log formatter escape special chars
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_EscapeSpecialChars()
         {
@@ -570,6 +737,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Contains("\\\\", result);
         }
 
+        /// <summary>
+        /// Tests that json log formatter name
+        /// </summary>
         [Fact]
         public void JsonLogFormatter_Name()
         {
@@ -581,6 +751,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // MemoryLogOutput
         // ============================================================
 
+        /// <summary>
+        /// Tests that memory log output write stores entry
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Write_StoresEntry()
         {
@@ -593,6 +766,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Single(output.GetEntries());
         }
 
+        /// <summary>
+        /// Tests that memory log output write null entry does not store
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Write_NullEntry_DoesNotStore()
         {
@@ -603,6 +779,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output max entries removes oldest
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_MaxEntries_RemovesOldest()
         {
@@ -619,6 +798,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("4", entries[2].Message);
         }
 
+        /// <summary>
+        /// Tests that memory log output max entries zero or negative unlimited
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_MaxEntries_ZeroOrNegative_Unlimited()
         {
@@ -632,6 +814,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(100, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output flush no op
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Flush_NoOp()
         {
@@ -644,6 +829,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(1, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output dispose clears entries
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Dispose_ClearsEntries()
         {
@@ -655,6 +843,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output dispose called twice no error
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Dispose_CalledTwice_NoError()
         {
@@ -667,6 +858,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that memory log output write after dispose ignored
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Write_AfterDispose_Ignored()
         {
@@ -678,6 +872,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output clear removes all
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Clear_RemovesAll()
         {
@@ -690,6 +887,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output get entries returns snapshot
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_GetEntries_ReturnsSnapshot()
         {
@@ -704,6 +904,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(3, output.Count);
         }
 
+        /// <summary>
+        /// Tests that memory log output name
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_Name()
         {
@@ -711,6 +914,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("MemoryOutput", output.Name);
         }
 
+        /// <summary>
+        /// Tests that memory log output is enabled default
+        /// </summary>
         [Fact]
         public void MemoryLogOutput_IsEnabled_Default()
         {
@@ -722,6 +928,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // DebugLogOutput
         // ============================================================
 
+        /// <summary>
+        /// Tests that debug log output write no debugger does not throw
+        /// </summary>
         [Fact]
         public void DebugLogOutput_Write_NoDebugger_DoesNotThrow()
         {
@@ -733,6 +942,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that debug log output write null entry does not throw
+        /// </summary>
         [Fact]
         public void DebugLogOutput_Write_NullEntry_DoesNotThrow()
         {
@@ -743,6 +955,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that debug log output write after dispose does not throw
+        /// </summary>
         [Fact]
         public void DebugLogOutput_Write_AfterDispose_DoesNotThrow()
         {
@@ -754,6 +969,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that debug log output flush no op
+        /// </summary>
         [Fact]
         public void DebugLogOutput_Flush_NoOp()
         {
@@ -764,6 +982,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that debug log output dispose called twice no error
+        /// </summary>
         [Fact]
         public void DebugLogOutput_Dispose_CalledTwice_NoError()
         {
@@ -773,6 +994,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that debug log output name
+        /// </summary>
         [Fact]
         public void DebugLogOutput_Name()
         {
@@ -780,6 +1004,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("DebugOutput", output.Name);
         }
 
+        /// <summary>
+        /// Tests that debug log output custom formatter
+        /// </summary>
         [Fact]
         public void DebugLogOutput_CustomFormatter()
         {
@@ -792,6 +1019,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // AsyncLogOutput
         // ============================================================
 
+        /// <summary>
+        /// Tests that async log output write flush delivers to inner
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Write_FlushDeliversToInner()
         {
@@ -804,6 +1034,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(1, inner.Count);
         }
 
+        /// <summary>
+        /// Tests that async log output write null entry does not throw
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Write_NullEntry_DoesNotThrow()
         {
@@ -815,6 +1048,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that async log output write after dispose does not throw
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Write_AfterDispose_DoesNotThrow()
         {
@@ -827,6 +1063,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that async log output write when disabled does not queue
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Write_WhenDisabled_DoesNotQueue()
         {
@@ -839,6 +1078,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, inner.Count);
         }
 
+        /// <summary>
+        /// Tests that async log output max queue size drops oldest
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_MaxQueueSize_DropsOldest()
         {
@@ -858,6 +1100,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal("4", entries[2].Message);
         }
 
+        /// <summary>
+        /// Tests that async log output max queue size zero or negative unlimited
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_MaxQueueSize_ZeroOrNegative_Unlimited()
         {
@@ -873,6 +1118,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(100, inner.Count);
         }
 
+        /// <summary>
+        /// Tests that async log output flush writes to inner
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Flush_WritesToInner()
         {
@@ -886,6 +1134,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(2, inner.Count);
         }
 
+        /// <summary>
+        /// Tests that async log output dispose flushes and disposes inner
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Dispose_FlushesAndDisposesInner()
         {
@@ -900,6 +1151,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(innerDisposed);
         }
 
+        /// <summary>
+        /// Tests that async log output dispose called twice no error
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Dispose_CalledTwice_NoError()
         {
@@ -910,12 +1164,18 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that async log output null inner throws
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_NullInner_Throws()
         {
             Assert.Throws<ArgumentNullException>(() => new AsyncLogOutput(null));
         }
 
+        /// <summary>
+        /// Tests that async log output name
+        /// </summary>
         [Fact]
         public void AsyncLogOutput_Name()
         {
@@ -929,6 +1189,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // FileLogOutput
         // ============================================================
 
+        /// <summary>
+        /// Tests that file log output write writes to file
+        /// </summary>
         [Fact]
         public void FileLogOutput_Write_WritesToFile()
         {
@@ -950,6 +1213,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output write null entry does not throw
+        /// </summary>
         [Fact]
         public void FileLogOutput_Write_NullEntry_DoesNotThrow()
         {
@@ -967,6 +1233,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output write after dispose does not throw
+        /// </summary>
         [Fact]
         public void FileLogOutput_Write_AfterDispose_DoesNotThrow()
         {
@@ -984,24 +1253,36 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output empty path throws
+        /// </summary>
         [Fact]
         public void FileLogOutput_EmptyPath_Throws()
         {
             Assert.Throws<ArgumentException>(() => new FileLogOutput(""));
         }
 
+        /// <summary>
+        /// Tests that file log output null path throws
+        /// </summary>
         [Fact]
         public void FileLogOutput_NullPath_Throws()
         {
             Assert.Throws<ArgumentException>(() => new FileLogOutput(null));
         }
 
+        /// <summary>
+        /// Tests that file log output whitespace path throws
+        /// </summary>
         [Fact]
         public void FileLogOutput_WhitespacePath_Throws()
         {
             Assert.Throws<ArgumentException>(() => new FileLogOutput("   "));
         }
 
+        /// <summary>
+        /// Tests that file log output creates directory if missing
+        /// </summary>
         [Fact]
         public void FileLogOutput_CreatesDirectoryIfMissing()
         {
@@ -1022,6 +1303,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output append mode
+        /// </summary>
         [Fact]
         public void FileLogOutput_AppendMode()
         {
@@ -1046,6 +1330,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output overwrite mode
+        /// </summary>
         [Fact]
         public void FileLogOutput_OverwriteMode()
         {
@@ -1070,6 +1357,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output flush no op when not disposed
+        /// </summary>
         [Fact]
         public void FileLogOutput_Flush_NoOpWhenNotDisposed()
         {
@@ -1089,6 +1379,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output flush after dispose no op
+        /// </summary>
         [Fact]
         public void FileLogOutput_Flush_AfterDispose_NoOp()
         {
@@ -1107,6 +1400,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output dispose called twice no error
+        /// </summary>
         [Fact]
         public void FileLogOutput_Dispose_CalledTwice_NoError()
         {
@@ -1124,6 +1420,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output custom formatter
+        /// </summary>
         [Fact]
         public void FileLogOutput_CustomFormatter()
         {
@@ -1143,6 +1442,9 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Tests that file log output name
+        /// </summary>
         [Fact]
         public void FileLogOutput_Name()
         {
@@ -1156,6 +1458,9 @@ namespace Alis.Core.Aspect.Logging.Test
         // LoggerScope
         // ============================================================
 
+        /// <summary>
+        /// Tests that logger scope dispose pops scope
+        /// </summary>
         [Fact]
         public void LoggerScope_Dispose_PopsScope()
         {
@@ -1169,6 +1474,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, stack.Count);
         }
 
+        /// <summary>
+        /// Tests that logger scope dispose invokes callback
+        /// </summary>
         [Fact]
         public void LoggerScope_Dispose_InvokesCallback()
         {
@@ -1181,6 +1489,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(invoked);
         }
 
+        /// <summary>
+        /// Tests that logger scope dispose called twice no error
+        /// </summary>
         [Fact]
         public void LoggerScope_Dispose_CalledTwice_NoError()
         {
@@ -1194,12 +1505,18 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Equal(0, stack.Count);
         }
 
+        /// <summary>
+        /// Tests that logger scope null stack throws
+        /// </summary>
         [Fact]
         public void LoggerScope_NullStack_Throws()
         {
             Assert.Throws<ArgumentNullException>(() => new LoggerScope("test", null, null));
         }
 
+        /// <summary>
+        /// Tests that logger scope null callback no error
+        /// </summary>
         [Fact]
         public void LoggerScope_NullCallback_NoError()
         {
@@ -1211,6 +1528,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that logger scope nested scopes last in first out
+        /// </summary>
         [Fact]
         public void LoggerScope_NestedScopes_LastInFirstOut()
         {
@@ -1234,23 +1554,49 @@ namespace Alis.Core.Aspect.Logging.Test
         /// </summary>
         private class SpyLogOutput : ILogOutput
         {
+            /// <summary>
+            /// The on dispose
+            /// </summary>
             private readonly Action _onDispose;
+            /// <summary>
+            /// Gets or sets the value of the was written
+            /// </summary>
             public bool WasWritten { get; private set; }
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name => "SpyOutput";
+            /// <summary>
+            /// Gets or sets the value of the is enabled
+            /// </summary>
             public bool IsEnabled { get; set; } = true;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="SpyLogOutput"/> class
+            /// </summary>
+            /// <param name="onDispose">The on dispose</param>
             public SpyLogOutput(Action onDispose = null)
             {
                 _onDispose = onDispose;
             }
 
+            /// <summary>
+            /// Writes the entry
+            /// </summary>
+            /// <param name="entry">The entry</param>
             public void Write(ILogEntry entry)
             {
                 WasWritten = true;
             }
 
+            /// <summary>
+            /// Flushes this instance
+            /// </summary>
             public void Flush() { }
 
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose()
             {
                 _onDispose?.Invoke();

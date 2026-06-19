@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Exceptions;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
@@ -60,7 +62,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.False(entity.Has<Velocity>());
 
             // Accessing a non-present component triggers the error path in GetComponentSpan
-            var ex = Assert.ThrowsAny<Exception>(() => entity.Get<Velocity>());
+            Exception ex = Assert.ThrowsAny<Exception>(() => entity.Get<Velocity>());
 
             scene.Dispose();
         }
@@ -514,7 +516,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position());
 
-            var data = scene.DefaultArchetype.Data;
+            Fields data = scene.DefaultArchetype.Data;
             Assert.NotNull(data.Map);
             Assert.NotNull(data.Components);
 
@@ -532,7 +534,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         {
             using Scene scene = new Scene();
 
-            var id = scene.DefaultArchetype.Id;
+            GameObjectType id = scene.DefaultArchetype.Id;
             Assert.NotNull(id);
 
             scene.Dispose();
@@ -549,7 +551,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         {
             using Scene scene = new Scene();
 
-            var types = scene.DefaultArchetype.ArchetypeTypeArray;
+            FastImmutableArray<ComponentId> types = scene.DefaultArchetype.ArchetypeTypeArray;
             Assert.NotNull(types);
 
             scene.Dispose();

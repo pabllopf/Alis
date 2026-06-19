@@ -11,6 +11,9 @@ namespace Alis.Core.Aspect.Math.Test.Collections
     /// </summary>
     public class FastImmutableArrayCoverageTest
     {
+        /// <summary>
+        /// Tests that builder indexer getter out of range should throw
+        /// </summary>
         [Fact]
         public void BuilderIndexerGetterOutOfRangeShouldThrow()
         {
@@ -22,6 +25,9 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.Throws<ArgumentOutOfRangeException>(() => _ = builder[3]);
         }
 
+        /// <summary>
+        /// Tests that builder indexer setter out of range should throw
+        /// </summary>
         [Fact]
         public void BuilderIndexerSetterOutOfRangeShouldThrow()
         {
@@ -33,6 +39,9 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.Throws<ArgumentOutOfRangeException>(() => builder[3] = 99);
         }
 
+        /// <summary>
+        /// Tests that non generic get enumerator should work
+        /// </summary>
         [Fact]
         public void NonGenericGetEnumeratorShouldWork()
         {
@@ -50,6 +59,9 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.False(enumerator.MoveNext());
         }
 
+        /// <summary>
+        /// Tests that builder item ref out of range should throw
+        /// </summary>
         [Fact]
         public void BuilderItemRefOutOfRangeShouldThrow()
         {
@@ -64,6 +76,9 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             });
         }
 
+        /// <summary>
+        /// Tests that builder index of with start index and count should work
+        /// </summary>
         [Fact]
         public void BuilderIndexOfWithStartIndexAndCountShouldWork()
         {
@@ -75,6 +90,9 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.Equal(2, result);
         }
 
+        /// <summary>
+        /// Tests that builder index of with start index and count not found should return minus one
+        /// </summary>
         [Fact]
         public void BuilderIndexOfWithStartIndexAndCountNotFoundShouldReturnMinusOne()
         {
@@ -86,6 +104,9 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.Equal(-1, result);
         }
 
+        /// <summary>
+        /// Tests that builder index of with start index and comparer should work
+        /// </summary>
         [Fact]
         public void BuilderIndexOfWithStartIndexAndComparerShouldWork()
         {
@@ -97,6 +118,9 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.Equal(1, result);
         }
 
+        /// <summary>
+        /// Tests that builder index of with start index and comparer not found should return minus one
+        /// </summary>
         [Fact]
         public void BuilderIndexOfWithStartIndexAndComparerNotFoundShouldReturnMinusOne()
         {

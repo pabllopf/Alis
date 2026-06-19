@@ -115,7 +115,7 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Exception_ShouldLogAndThrow()
         {
-            var mockLogger = new MockLogger();
+            MockLogger mockLogger = new MockLogger();
             Logger.SetDefaultLogger(mockLogger);
 
             InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => Logger.Exception("Test error"));
@@ -131,7 +131,7 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_SetDefaultLogger_ShouldUseCustomLogger()
         {
-            var mockLogger = new MockLogger();
+            MockLogger mockLogger = new MockLogger();
             Logger.SetDefaultLogger(mockLogger);
 
             Logger.Info("Custom logger message");
@@ -146,7 +146,7 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_SetDefaultLoggerToNull_ShouldReset()
         {
-            var mockLogger = new MockLogger();
+            MockLogger mockLogger = new MockLogger();
             Logger.SetDefaultLogger(mockLogger);
             Logger.SetDefaultLogger(null);
 
@@ -159,7 +159,7 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Log_DelegatesToInfo()
         {
-            var mockLogger = new MockLogger();
+            MockLogger mockLogger = new MockLogger();
             Logger.SetDefaultLogger(mockLogger);
 
             Logger.Log("Log message");
@@ -174,7 +174,7 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_AllMethods_ShouldCallCorrectLoggerMethod()
         {
-            var mockLogger = new MockLogger();
+            MockLogger mockLogger = new MockLogger();
             Logger.SetDefaultLogger(mockLogger);
 
             Logger.Trace("Trace");
@@ -196,7 +196,7 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Exception_WithEmptyMessage_Throws()
         {
-            var mockLogger = new MockLogger();
+            MockLogger mockLogger = new MockLogger();
             Logger.SetDefaultLogger(mockLogger);
 
             InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => Logger.Exception(string.Empty));
@@ -210,7 +210,7 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_ConcurrentCalls_ShouldBeThreadSafe()
         {
-            var mockLogger = new MockLogger();
+            MockLogger mockLogger = new MockLogger();
             Logger.SetDefaultLogger(mockLogger);
 
             System.Threading.Tasks.Task[] tasks = new System.Threading.Tasks.Task[10];
@@ -233,7 +233,7 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_WithNullMessage_ShouldNotThrow()
         {
-            var mockLogger = new MockLogger();
+            MockLogger mockLogger = new MockLogger();
             Logger.SetDefaultLogger(mockLogger);
 
             Logger.Info(null);

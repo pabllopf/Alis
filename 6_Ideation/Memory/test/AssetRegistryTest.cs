@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Reflection;
 using System.Text;
 using Xunit;
 
@@ -193,13 +194,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourceMemoryStreamByName_ExistingResource_ReturnsMemoryStream()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             prop.SetValue(null, null);
@@ -376,7 +377,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourceMemoryStreamByName_SubstringFallback_FindsResourceByPartialMatch()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
             string saved = (string)prop.GetValue(null);
             string name = "TestAssembly_SubStr_" + Guid.NewGuid();
@@ -404,7 +405,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourceMemoryStreamByName_CaseInsensitiveFullMatch_FindsResource()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
             string saved = (string)prop.GetValue(null);
             string name = "TestAssembly_Case_" + Guid.NewGuid();
@@ -431,13 +432,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourceMemoryStreamByName_ExistingResource_ContentMatches()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             prop.SetValue(null, null);
@@ -469,7 +470,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourceMemoryStreamByName_ReturnsStreamPositionedAtZero()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
             string saved = (string)prop.GetValue(null);
             string name = "TestAssembly_ZeroPos_" + Guid.NewGuid();
@@ -544,13 +545,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourceMemoryStreamByName_VariousCasePatterns_FindsResource(string resourceName)
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             prop.SetValue(null, null);
@@ -580,13 +581,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourcePathByName_VariousCasePatterns_ReturnsValidPath(string resourceName)
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             prop.SetValue(null, null);
@@ -616,13 +617,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourcePathByName_CalledTwice_ReturnsSamePath()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             prop.SetValue(null, null);
@@ -659,13 +660,13 @@ namespace Alis.Core.Aspect.Memory.Test
             // Use reflection to reset ActiveAssemblyName to null so our test
             // becomes the "first" registration.
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             prop.SetValue(null, null);
@@ -693,13 +694,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourceMemoryStreamByName_NullActiveAssembly_ThrowsInvalidOperationException()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string savedAssembly = (string)prop.GetValue(null);
-            var savedLoaders = new System.Collections.Generic.Dictionary<object, object>();
+            Dictionary<object, object> savedLoaders = new System.Collections.Generic.Dictionary<object, object>();
             {
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 foreach (System.Collections.DictionaryEntry entry in loaders)
@@ -720,7 +721,7 @@ namespace Alis.Core.Aspect.Memory.Test
                 prop.SetValue(null, savedAssembly);
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 loaders.Clear();
-                foreach (var kvp in savedLoaders)
+                foreach (KeyValuePair<object, object> kvp in savedLoaders)
                     loaders[kvp.Key] = kvp.Value;
             }
         }
@@ -734,13 +735,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourcePathByName_NullActiveAssembly_ThrowsInvalidOperationException()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string savedAssembly = (string)prop.GetValue(null);
-            var savedLoaders = new System.Collections.Generic.Dictionary<object, object>();
+            Dictionary<object, object> savedLoaders = new System.Collections.Generic.Dictionary<object, object>();
             {
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 foreach (System.Collections.DictionaryEntry entry in loaders)
@@ -761,7 +762,7 @@ namespace Alis.Core.Aspect.Memory.Test
                 prop.SetValue(null, savedAssembly);
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 loaders.Clear();
-                foreach (var kvp in savedLoaders)
+                foreach (KeyValuePair<object, object> kvp in savedLoaders)
                     loaders[kvp.Key] = kvp.Value;
             }
         }
@@ -775,13 +776,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourcePathByName_ActiveAssemblyMissingLoader_ThrowsInvalidOperationException()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string savedAssembly = (string)prop.GetValue(null);
-            var savedLoaders = new System.Collections.Generic.Dictionary<object, object>();
+            Dictionary<object, object> savedLoaders = new System.Collections.Generic.Dictionary<object, object>();
             {
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 foreach (System.Collections.DictionaryEntry entry in loaders)
@@ -802,7 +803,7 @@ namespace Alis.Core.Aspect.Memory.Test
                 prop.SetValue(null, savedAssembly);
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 loaders.Clear();
-                foreach (var kvp in savedLoaders)
+                foreach (KeyValuePair<object, object> kvp in savedLoaders)
                     loaders[kvp.Key] = kvp.Value;
             }
         }
@@ -815,13 +816,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourcePathByName_CacheInvalidated_WhenFileModified()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             prop.SetValue(null, null);
@@ -859,13 +860,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourceMemoryStreamByName_ActiveAssemblyNotInLoaders_ThrowsInvalidOperationException()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string savedAssembly = (string)prop.GetValue(null);
-            var savedLoaders = new Dictionary<object, object>();
+            Dictionary<object, object> savedLoaders = new Dictionary<object, object>();
             {
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 foreach (System.Collections.DictionaryEntry entry in loaders)
@@ -887,7 +888,7 @@ namespace Alis.Core.Aspect.Memory.Test
                 prop.SetValue(null, savedAssembly);
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 loaders.Clear();
-                foreach (var kvp in savedLoaders)
+                foreach (KeyValuePair<object, object> kvp in savedLoaders)
                     loaders[kvp.Key] = kvp.Value;
             }
         }
@@ -899,7 +900,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void MakeSafeTempName_LongExtension_StripsExtension()
         {
             Type at = typeof(AssetRegistry);
-            var method = at.GetMethod("MakeSafeTempName",
+            MethodInfo method = at.GetMethod("MakeSafeTempName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string assemblyName = "TestAssembly";
@@ -920,7 +921,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void MakeSafeTempName_NormalExtension_IsKept()
         {
             Type at = typeof(AssetRegistry);
-            var method = at.GetMethod("MakeSafeTempName",
+            MethodInfo method = at.GetMethod("MakeSafeTempName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string assemblyName = "TestAssembly";
@@ -940,7 +941,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void ToLowerHex_NullBytes_ReturnsEmpty()
         {
             Type at = typeof(AssetRegistry);
-            var method = at.GetMethod("ToLowerHex",
+            MethodInfo method = at.GetMethod("ToLowerHex",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string result = (string)method.Invoke(null, new object[] {null});
@@ -955,7 +956,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void ToLowerHex_EmptyBytes_ReturnsEmpty()
         {
             Type at = typeof(AssetRegistry);
-            var method = at.GetMethod("ToLowerHex",
+            MethodInfo method = at.GetMethod("ToLowerHex",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string result = (string)method.Invoke(null, new object[] {Array.Empty<byte>()});
@@ -970,7 +971,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void MakeSafeTempName_ExtensionContainsForwardSlash_StripsExtension()
         {
             Type at = typeof(AssetRegistry);
-            var method = at.GetMethod("MakeSafeTempName",
+            MethodInfo method = at.GetMethod("MakeSafeTempName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string assemblyName = "TestAssembly";
@@ -991,7 +992,7 @@ namespace Alis.Core.Aspect.Memory.Test
         public void MakeSafeTempName_ExtensionContainsBackslash_StripsExtension()
         {
             Type at = typeof(AssetRegistry);
-            var method = at.GetMethod("MakeSafeTempName",
+            MethodInfo method = at.GetMethod("MakeSafeTempName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string assemblyName = "TestAssembly";
@@ -1012,13 +1013,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourcePathByName_CacheEntryWithMissingResource_RemovesCache()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             prop.SetValue(null, null);
@@ -1056,13 +1057,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void FindZipEntryInfo_FullPathMatch_ReturnsEntry()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             prop.SetValue(null, null);
@@ -1091,13 +1092,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void FindZipEntryInfo_PartialMatch_ReturnsEntry()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             prop.SetValue(null, null);
@@ -1126,13 +1127,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void FindZipEntryInfo_FileNameMatch_WhenSingleMatch()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             prop.SetValue(null, null);
@@ -1161,17 +1162,17 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourceMemoryStreamByName_NullActiveAssemblyAndNoLoaders_ThrowsInvalidOperation()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string savedAssembly = (string)prop.GetValue(null);
-            var savedLoaders = new Dictionary<object, object>();
+            Dictionary<object, object> savedLoaders = new Dictionary<object, object>();
             {
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 foreach (System.Collections.DictionaryEntry entry in loaders)
@@ -1194,7 +1195,7 @@ namespace Alis.Core.Aspect.Memory.Test
                 prop.SetValue(null, savedAssembly);
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 loaders.Clear();
-                foreach (var kvp in savedLoaders)
+                foreach (KeyValuePair<object, object> kvp in savedLoaders)
                     loaders[kvp.Key] = kvp.Value;
             }
         }
@@ -1207,13 +1208,13 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourcePathByName_ActiveAssemblyNotInLoaders_ThrowsInvalidOperation()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string savedAssembly = (string)prop.GetValue(null);
-            var savedLoaders = new Dictionary<object, object>();
+            Dictionary<object, object> savedLoaders = new Dictionary<object, object>();
             {
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 foreach (System.Collections.DictionaryEntry entry in loaders)
@@ -1235,7 +1236,7 @@ namespace Alis.Core.Aspect.Memory.Test
                 prop.SetValue(null, savedAssembly);
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 loaders.Clear();
-                foreach (var kvp in savedLoaders)
+                foreach (KeyValuePair<object, object> kvp in savedLoaders)
                     loaders[kvp.Key] = kvp.Value;
             }
         }
@@ -1248,17 +1249,17 @@ namespace Alis.Core.Aspect.Memory.Test
         public void GetResourceMemoryStreamByName_NullLoaderStream_ThrowsFileNotFoundException()
         {
             Type at = typeof(AssetRegistry);
-            var prop = at.GetProperty("ActiveAssemblyName",
+            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var dict = at.GetField("RegisteredAssetLoaders",
+            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var zipCache = at.GetField("_zipCache",
+            FieldInfo zipCache = at.GetField("_zipCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            var pathCache = at.GetField("_extractedPathCache",
+            FieldInfo pathCache = at.GetField("_extractedPathCache",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
             string savedAssembly = (string)prop.GetValue(null);
-            var savedLoaders = new Dictionary<object, object>();
+            Dictionary<object, object> savedLoaders = new Dictionary<object, object>();
             {
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 foreach (System.Collections.DictionaryEntry entry in loaders)
@@ -1284,7 +1285,7 @@ namespace Alis.Core.Aspect.Memory.Test
                 prop.SetValue(null, savedAssembly);
                 System.Collections.IDictionary loaders = (System.Collections.IDictionary)dict.GetValue(null);
                 loaders.Clear();
-                foreach (var kvp in savedLoaders)
+                foreach (KeyValuePair<object, object> kvp in savedLoaders)
                     loaders[kvp.Key] = kvp.Value;
             }
         }

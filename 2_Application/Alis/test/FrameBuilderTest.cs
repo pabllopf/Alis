@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The frame builder test class
+    /// </summary>
     public class FrameBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor creates builder
+        /// </summary>
         [Fact]
         public void Constructor_CreatesBuilder()
         {
@@ -42,6 +48,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that file sets file name returns builder
+        /// </summary>
         [Fact]
         public void File_SetsFileName_ReturnsBuilder()
         {

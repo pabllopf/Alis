@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The animator builder test class
+    /// </summary>
     public class AnimatorBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor with context creates builder
+        /// </summary>
         [Fact]
         public void Constructor_WithContext_CreatesBuilder()
         {
@@ -45,6 +51,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns animator instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsAnimatorInstance()
         {
@@ -54,6 +63,9 @@ namespace Alis.Test
             Assert.NotNull(animator);
         }
 
+        /// <summary>
+        /// Tests that build sets context on animator
+        /// </summary>
         [Fact]
         public void Build_SetsContextOnAnimator()
         {
@@ -63,6 +75,9 @@ namespace Alis.Test
             Assert.NotNull(animator);
         }
 
+        /// <summary>
+        /// Tests that add animation with valid func returns builder
+        /// </summary>
         [Fact]
         public void AddAnimation_WithValidFunc_ReturnsBuilder()
         {
@@ -72,6 +87,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that add animation animation is added to animator
+        /// </summary>
         [Fact]
         public void AddAnimation_AnimationIsAddedToAnimator()
         {

@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The rigid body builder test class
+    /// </summary>
     public class RigidBodyBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor no args creates builder
+        /// </summary>
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
@@ -42,6 +48,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns rigid body instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsRigidBodyInstance()
         {

@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The camera builder test class
+    /// </summary>
     public class CameraBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor with context creates builder
+        /// </summary>
         [Fact]
         public void Constructor_WithContext_CreatesBuilder()
         {
@@ -45,6 +51,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns camera instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsCameraInstance()
         {
@@ -54,6 +63,9 @@ namespace Alis.Test
             Assert.NotNull(camera);
         }
 
+        /// <summary>
+        /// Tests that resolution sets resolution returns builder
+        /// </summary>
         [Fact]
         public void Resolution_SetsResolution_ReturnsBuilder()
         {
@@ -63,6 +75,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that position sets position returns builder
+        /// </summary>
         [Fact]
         public void Position_SetsPosition_ReturnsBuilder()
         {
@@ -72,6 +87,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that background color sets color returns builder
+        /// </summary>
         [Fact]
         public void BackgroundColor_SetsColor_ReturnsBuilder()
         {
@@ -81,6 +99,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that chaining all properties creates camera
+        /// </summary>
         [Fact]
         public void ChainingAllProperties_CreatesCamera()
         {

@@ -219,7 +219,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void State_ShouldHavePrivateConstructor()
         {
             Type stateType = typeof(SolveVelocityConstraintsState);
-            var constructors = stateType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
+            ConstructorInfo[] constructors = stateType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
 
             Assert.NotEmpty(constructors);
         }

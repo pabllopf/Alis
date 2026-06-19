@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The game object builder test class
+    /// </summary>
     public class GameObjectBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor with scene and context creates builder
+        /// </summary>
         [Fact]
         public void Constructor_WithSceneAndContext_CreatesBuilder()
         {
@@ -46,6 +52,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns game object instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsGameObjectInstance()
         {
@@ -56,6 +65,9 @@ namespace Alis.Test
             Assert.NotNull(gameObject);
         }
 
+        /// <summary>
+        /// Tests that name sets name returns builder
+        /// </summary>
         [Fact]
         public void Name_SetsName_ReturnsBuilder()
         {
@@ -66,6 +78,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that tag sets tag returns builder
+        /// </summary>
         [Fact]
         public void Tag_SetsTag_ReturnsBuilder()
         {
@@ -76,6 +91,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that id sets id returns builder
+        /// </summary>
         [Fact]
         public void Id_SetsId_ReturnsBuilder()
         {
@@ -86,6 +104,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that is active sets active returns builder
+        /// </summary>
         [Fact]
         public void IsActive_SetsActive_ReturnsBuilder()
         {
@@ -96,6 +117,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that is active no args returns builder
+        /// </summary>
         [Fact]
         public void IsActive_NoArgs_ReturnsBuilder()
         {
@@ -106,6 +130,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that is static sets static returns builder
+        /// </summary>
         [Fact]
         public void IsStatic_SetsStatic_ReturnsBuilder()
         {
@@ -116,6 +143,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that is static no args returns builder
+        /// </summary>
         [Fact]
         public void IsStatic_NoArgs_ReturnsBuilder()
         {
@@ -126,6 +156,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that transform with config returns builder
+        /// </summary>
         [Fact]
         public void Transform_WithConfig_ReturnsBuilder()
         {

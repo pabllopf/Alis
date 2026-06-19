@@ -541,7 +541,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         {
             TestExceptionObject obj = new TestExceptionObject();
 
-            var exception = Assert.Throws<JsonSerializationException>(() => _serializer.Serialize(obj));
+            JsonSerializationException exception = Assert.Throws<JsonSerializationException>(() => _serializer.Serialize(obj));
 
             Assert.Contains("TestExceptionObject", exception.Message);
             Assert.IsType<InvalidOperationException>(exception.InnerException);
@@ -556,7 +556,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         {
             TestExceptionSerializationObject obj = new TestExceptionSerializationObject();
 
-            var exception = Assert.Throws<JsonSerializationException>(() => _serializer.Serialize(obj));
+            JsonSerializationException exception = Assert.Throws<JsonSerializationException>(() => _serializer.Serialize(obj));
 
             Assert.Equal("Simulated serialization exception", exception.Message);
             Assert.Null(exception.InnerException);

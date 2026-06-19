@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The network setting builder test class
+    /// </summary>
     public class NetworkSettingBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor no args creates builder
+        /// </summary>
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
@@ -42,6 +48,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns network setting instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsNetworkSettingInstance()
         {
@@ -50,6 +59,9 @@ namespace Alis.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that ip sets ip returns builder
+        /// </summary>
         [Fact]
         public void Ip_SetsIp_ReturnsBuilder()
         {

@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The scene manager builder test class
+    /// </summary>
     public class SceneManagerBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor with context creates builder
+        /// </summary>
         [Fact]
         public void Constructor_WithContext_CreatesBuilder()
         {
@@ -45,6 +51,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns scene manager instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsSceneManagerInstance()
         {
@@ -54,6 +63,9 @@ namespace Alis.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that build returns same instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsSameInstance()
         {

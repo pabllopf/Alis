@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The audio setting builder test class
+    /// </summary>
     public class AudioSettingBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor no args creates builder
+        /// </summary>
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
@@ -42,6 +48,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns audio setting instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsAudioSettingInstance()
         {
@@ -50,6 +59,9 @@ namespace Alis.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that volume sets volume returns builder
+        /// </summary>
         [Fact]
         public void Volume_SetsVolume_ReturnsBuilder()
         {
@@ -58,6 +70,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that is mute sets mute returns builder
+        /// </summary>
         [Fact]
         public void IsMute_SetsMute_ReturnsBuilder()
         {
@@ -66,6 +81,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that chaining all properties creates audio setting
+        /// </summary>
         [Fact]
         public void ChainingAllProperties_CreatesAudioSetting()
         {

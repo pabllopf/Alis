@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The physic setting builder test class
+    /// </summary>
     public class PhysicSettingBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor no args creates builder
+        /// </summary>
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
@@ -43,6 +49,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns physic setting instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsPhysicSettingInstance()
         {
@@ -51,6 +60,9 @@ namespace Alis.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that gravity sets gravity returns builder
+        /// </summary>
         [Fact]
         public void Gravity_SetsGravity_ReturnsBuilder()
         {
@@ -59,6 +71,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that debug sets debug returns builder
+        /// </summary>
         [Fact]
         public void Debug_SetsDebug_ReturnsBuilder()
         {
@@ -67,6 +82,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that debug color sets color returns builder
+        /// </summary>
         [Fact]
         public void DebugColor_SetsColor_ReturnsBuilder()
         {
@@ -75,6 +93,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that chaining all properties creates physic setting
+        /// </summary>
         [Fact]
         public void ChainingAllProperties_CreatesPhysicSetting()
         {

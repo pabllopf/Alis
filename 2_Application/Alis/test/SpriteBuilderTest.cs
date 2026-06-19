@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The sprite builder test class
+    /// </summary>
     public class SpriteBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor with context creates builder
+        /// </summary>
         [Fact]
         public void Constructor_WithContext_CreatesBuilder()
         {
@@ -44,6 +50,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns sprite instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsSpriteInstance()
         {
@@ -53,6 +62,9 @@ namespace Alis.Test
             Assert.NotNull(sprite);
         }
 
+        /// <summary>
+        /// Tests that depth sets depth returns builder
+        /// </summary>
         [Fact]
         public void Depth_SetsDepth_ReturnsBuilder()
         {
@@ -62,6 +74,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that set texture sets texture path returns builder
+        /// </summary>
         [Fact]
         public void SetTexture_SetsTexturePath_ReturnsBuilder()
         {
@@ -71,6 +86,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that chaining all properties creates sprite
+        /// </summary>
         [Fact]
         public void ChainingAllProperties_CreatesSprite()
         {

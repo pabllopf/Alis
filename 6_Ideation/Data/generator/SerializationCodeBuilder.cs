@@ -38,9 +38,21 @@ namespace Alis.Core.Aspect.Data.Generator
     /// </summary>
     internal class SerializationCodeBuilder
     {
+        /// <summary>
+        /// The xml summary
+        /// </summary>
         private const string XmlSummary = "        /// <summary>";
+        /// <summary>
+        /// The xml summary end
+        /// </summary>
         private const string XmlSummaryEnd = "        /// </summary>";
+        /// <summary>
+        /// The xml returns
+        /// </summary>
         private const string XmlReturns = "        /// <returns>An enumerable of tuples containing property names and their serialized values.</returns>";
+        /// <summary>
+        /// The exclude from code coverage
+        /// </summary>
         private const string ExcludeFromCodeCoverage = "        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]";
 
         /// <summary>

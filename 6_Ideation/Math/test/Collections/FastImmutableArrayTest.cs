@@ -1183,7 +1183,7 @@ namespace Alis.Core.Aspect.Math.Test.Collections
         [Fact]
         public void Builder_AddRange_DerivedFastImmutableArray_Appends()
         {
-            var source = new FastImmutableArray<string>(new[] { "a", "b" });
+            FastImmutableArray<string> source = new FastImmutableArray<string>(new[] { "a", "b" });
             FastImmutableArray<object>.Builder builder = FastImmutableArray<object>.CreateBuilder<object>(2);
             builder.Add(1);
 

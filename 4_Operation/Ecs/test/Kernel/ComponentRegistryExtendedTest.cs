@@ -98,7 +98,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void GetExistingOrSetupNewComponent_NewType_ReturnsValidTuple()
         {
-            var (id, _, _, _) = Component.GetExistingOrSetupNewComponent<Guid>();
+            (ComponentId id, _, _, _) = Component.GetExistingOrSetupNewComponent<Guid>();
 
             Assert.NotEqual(default(ComponentId), id);
         }

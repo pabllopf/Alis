@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The transform builder test class
+    /// </summary>
     public class TransformBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor no args creates builder
+        /// </summary>
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
@@ -43,6 +49,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns transform instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsTransformInstance()
         {
@@ -51,6 +60,9 @@ namespace Alis.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that position sets xy returns builder
+        /// </summary>
         [Fact]
         public void Position_SetsXY_ReturnsBuilder()
         {
@@ -59,6 +71,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that position sets vector returns builder
+        /// </summary>
         [Fact]
         public void Position_SetsVector_ReturnsBuilder()
         {
@@ -67,6 +82,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that rotation sets angle returns builder
+        /// </summary>
         [Fact]
         public void Rotation_SetsAngle_ReturnsBuilder()
         {
@@ -75,6 +93,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that scale sets xy returns builder
+        /// </summary>
         [Fact]
         public void Scale_SetsXY_ReturnsBuilder()
         {
@@ -83,6 +104,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that chaining all properties creates transform
+        /// </summary>
         [Fact]
         public void ChainingAllProperties_CreatesTransform()
         {

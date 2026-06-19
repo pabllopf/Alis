@@ -36,14 +36,41 @@ namespace Alis.Core.Aspect.Data.Generator
     /// </summary>
     internal static class HelperMethodsGenerator
     {
+        /// <summary>
+        /// The xml summary
+        /// </summary>
         private const string XmlSummary = "        /// <summary>";
+        /// <summary>
+        /// The xml summary end
+        /// </summary>
         private const string XmlSummaryEnd = "        /// </summary>";
+        /// <summary>
+        /// The xml param array
+        /// </summary>
         private const string XmlParamArray = "        /// <param name=\"array\">The array to serialize.</param>";
+        /// <summary>
+        /// The xml returns null
+        /// </summary>
         private const string XmlReturnsNull = "        /// <returns>The JSON array string representation, or null if the array is null.</returns>";
+        /// <summary>
+        /// The exclude from code coverage
+        /// </summary>
         private const string ExcludeFromCodeCoverage = "        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]";
+        /// <summary>
+        /// The method body start
+        /// </summary>
         private const string MethodBodyStart = "        {";
+        /// <summary>
+        /// The block start
+        /// </summary>
         private const string BlockStart = "            {";
+        /// <summary>
+        /// The block end
+        /// </summary>
         private const string BlockEnd = "            }";
+        /// <summary>
+        /// The method end
+        /// </summary>
         private const string MethodEnd = "        }";
 
         /// <summary>

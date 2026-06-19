@@ -38,8 +38,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The setting struct extended test class
+    /// </summary>
     public class SettingStructExtendedTest
     {
+        /// <summary>
+        /// Tests that custom constructor should store all settings
+        /// </summary>
         [Fact]
         public void CustomConstructor_ShouldStoreAllSettings()
         {
@@ -59,6 +65,9 @@ namespace Alis.Test
             Assert.Equal(new Alis.Core.Aspect.Math.Vector.Vector2F(0, -5f), setting.Physic.Gravity);
         }
 
+        /// <summary>
+        /// Tests that settings should be settable
+        /// </summary>
         [Fact]
         public void Settings_ShouldBeSettable()
         {

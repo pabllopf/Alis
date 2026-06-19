@@ -13,6 +13,9 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class LoggerFactoryCoverageTest
     {
+        /// <summary>
+        /// Tests that should swallow exception during dispose
+        /// </summary>
         [Fact]
         public void ShouldSwallowExceptionDuringDispose()
         {
@@ -26,6 +29,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(throwOnDispose.DisposeCalled);
         }
 
+        /// <summary>
+        /// Tests that should swallow exception during flush
+        /// </summary>
         [Fact]
         public void ShouldSwallowExceptionDuringFlush()
         {
@@ -38,6 +44,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that should return early from flush when disposed
+        /// </summary>
         [Fact]
         public void ShouldReturnEarlyFromFlushWhenDisposed()
         {
@@ -49,6 +58,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that should dispose multiple outputs swallowing exceptions
+        /// </summary>
         [Fact]
         public void ShouldDisposeMultipleOutputsSwallowingExceptions()
         {
@@ -63,6 +75,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that should set minimum level and return factory
+        /// </summary>
         [Fact]
         public void ShouldSetMinimumLevelAndReturnFactory()
         {
@@ -73,6 +88,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Same(factory, result);
         }
 
+        /// <summary>
+        /// Tests that should set formatter and return factory
+        /// </summary>
         [Fact]
         public void ShouldSetFormatterAndReturnFactory()
         {
@@ -84,6 +102,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Same(factory, result);
         }
 
+        /// <summary>
+        /// Tests that should set formatter null and throw
+        /// </summary>
         [Fact]
         public void ShouldSetFormatterNullAndThrow()
         {
@@ -92,6 +113,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Throws<ArgumentNullException>(() => factory.SetFormatter(null));
         }
 
+        /// <summary>
+        /// Tests that should add output null and throw
+        /// </summary>
         [Fact]
         public void ShouldAddOutputNullAndThrow()
         {
@@ -100,6 +124,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Throws<ArgumentNullException>(() => factory.AddOutput(null));
         }
 
+        /// <summary>
+        /// Tests that should add filter null and throw
+        /// </summary>
         [Fact]
         public void ShouldAddFilterNullAndThrow()
         {
@@ -108,6 +135,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Throws<ArgumentNullException>(() => factory.AddFilter(null));
         }
 
+        /// <summary>
+        /// Tests that should flush all outputs with throwing one
+        /// </summary>
         [Fact]
         public void ShouldFlushAllOutputsWithThrowingOne()
         {
@@ -124,6 +154,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that should swallow exception during write in core logger
+        /// </summary>
         [Fact]
         public void ShouldSwallowExceptionDuringWriteInCoreLogger()
         {
@@ -140,6 +173,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Single(memory.GetEntries());
         }
 
+        /// <summary>
+        /// Tests that should swallow exception from throwing filter
+        /// </summary>
         [Fact]
         public void ShouldSwallowExceptionFromThrowingFilter()
         {
@@ -160,12 +196,30 @@ namespace Alis.Core.Aspect.Logging.Test
         /// </summary>
         private sealed class ThrowingOutput : ILogOutput
         {
+            /// <summary>
+            /// The throw on dispose
+            /// </summary>
             private readonly bool _throwOnDispose;
+            /// <summary>
+            /// The throw on flush
+            /// </summary>
             private readonly bool _throwOnFlush;
+            /// <summary>
+            /// The throw on write
+            /// </summary>
             private readonly bool _throwOnWrite;
 
+            /// <summary>
+            /// Gets or sets the value of the dispose called
+            /// </summary>
             public bool DisposeCalled { get; private set; }
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ThrowingOutput"/> class
+            /// </summary>
+            /// <param name="throwOnDispose">The throw on dispose</param>
+            /// <param name="throwOnFlush">The throw on flush</param>
+            /// <param name="throwOnWrite">The throw on write</param>
             public ThrowingOutput(bool throwOnDispose = false, bool throwOnFlush = false, bool throwOnWrite = false)
             {
                 _throwOnDispose = throwOnDispose;
@@ -173,9 +227,20 @@ namespace Alis.Core.Aspect.Logging.Test
                 _throwOnWrite = throwOnWrite;
             }
 
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name => "ThrowingOutput";
+            /// <summary>
+            /// Gets or sets the value of the is enabled
+            /// </summary>
             public bool IsEnabled { get; set; } = true;
 
+            /// <summary>
+            /// Writes the entry
+            /// </summary>
+            /// <param name="entry">The entry</param>
+            /// <exception cref="InvalidOperationException">Write failed</exception>
             public void Write(ILogEntry entry)
             {
                 if (_throwOnWrite)
@@ -184,6 +249,10 @@ namespace Alis.Core.Aspect.Logging.Test
                 }
             }
 
+            /// <summary>
+            /// Flushes this instance
+            /// </summary>
+            /// <exception cref="InvalidOperationException">Flush failed</exception>
             public void Flush()
             {
                 if (_throwOnFlush)
@@ -192,6 +261,10 @@ namespace Alis.Core.Aspect.Logging.Test
                 }
             }
 
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
+            /// <exception cref="InvalidOperationException">Dispose failed</exception>
             public void Dispose()
             {
                 DisposeCalled = true;
@@ -207,8 +280,17 @@ namespace Alis.Core.Aspect.Logging.Test
         /// </summary>
         private sealed class ThrowingFilter : ILogFilter
         {
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name => "ThrowingFilter";
 
+            /// <summary>
+            /// Shoulds the log using the specified entry
+            /// </summary>
+            /// <param name="entry">The entry</param>
+            /// <exception cref="InvalidOperationException">Filter failed</exception>
+            /// <returns>The bool</returns>
             public bool ShouldLog(ILogEntry entry)
             {
                 throw new InvalidOperationException("Filter failed");

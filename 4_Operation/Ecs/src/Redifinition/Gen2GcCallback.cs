@@ -100,7 +100,7 @@ namespace Alis.Core.Ecs.Redifinition
         /// </summary>
         public static void Register(Func<bool> callback)
         {
-            var instance = new Gen2GcCallback(callback);
+            Gen2GcCallback instance = new Gen2GcCallback(callback);
             _registeredCallbacks.Add(instance);
         }
 
@@ -112,7 +112,7 @@ namespace Alis.Core.Ecs.Redifinition
         /// </summary>
         public static void Register(Func<object, bool> callback, object targetObj)
         {
-            var instance = new Gen2GcCallback(callback, targetObj);
+            Gen2GcCallback instance = new Gen2GcCallback(callback, targetObj);
             _registeredCallbacks.Add(instance);
         }
 

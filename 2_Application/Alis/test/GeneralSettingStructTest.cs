@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The general setting struct test class
+    /// </summary>
     public class GeneralSettingStructTest
     {
+        /// <summary>
+        /// Tests that default values should be correct
+        /// </summary>
         [Fact]
         public void DefaultValues_ShouldBeCorrect()
         {
@@ -47,6 +53,9 @@ namespace Alis.Test
             Assert.Equal("app.ico", setting.Icon);
         }
 
+        /// <summary>
+        /// Tests that custom constructor should store values
+        /// </summary>
         [Fact]
         public void CustomConstructor_ShouldStoreValues()
         {
@@ -60,6 +69,9 @@ namespace Alis.Test
             Assert.Equal("icon.png", setting.Icon);
         }
 
+        /// <summary>
+        /// Tests that should implement i general setting
+        /// </summary>
         [Fact]
         public void ShouldImplementIGeneralSetting()
         {

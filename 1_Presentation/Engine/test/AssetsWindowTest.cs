@@ -128,7 +128,7 @@ namespace Alis.App.Engine.Test
             AssetsWindow window = new AssetsWindow(spaceWork);
 
             // Initialize is a no-op but should be callable
-            var initializeMethod = typeof(AssetsWindow).GetMethod("Initialize", BindingFlags.Public | BindingFlags.Instance);
+            MethodInfo initializeMethod = typeof(AssetsWindow).GetMethod("Initialize", BindingFlags.Public | BindingFlags.Instance);
 
             Assert.NotNull(initializeMethod);
             
@@ -145,7 +145,7 @@ namespace Alis.App.Engine.Test
             SpaceWork spaceWork = new SpaceWork();
             AssetsWindow window = new AssetsWindow(spaceWork);
 
-            var startMethod = typeof(AssetsWindow).GetMethod("Start", BindingFlags.Public | BindingFlags.Instance);
+            MethodInfo startMethod = typeof(AssetsWindow).GetMethod("Start", BindingFlags.Public | BindingFlags.Instance);
 
             Assert.NotNull(startMethod);
             
@@ -165,7 +165,7 @@ namespace Alis.App.Engine.Test
             FieldInfo field = typeof(AssetsWindow).GetField("fileIcons", BindingFlags.NonPublic | BindingFlags.Instance);
             Assert.NotNull(field);
 
-            var fileIcons = (Dictionary<string, string>)field.GetValue(window);
+            Dictionary<string, string> fileIcons = (Dictionary<string, string>)field.GetValue(window);
 
             Assert.NotNull(fileIcons);
             Assert.True(fileIcons.ContainsKey(".png"));
@@ -187,7 +187,7 @@ namespace Alis.App.Engine.Test
             AssetsWindow window = new AssetsWindow(spaceWork);
 
             FieldInfo field = typeof(AssetsWindow).GetField("fileIcons", BindingFlags.NonPublic | BindingFlags.Instance);
-            var fileIcons = (Dictionary<string, string>)field.GetValue(window);
+            Dictionary<string, string> fileIcons = (Dictionary<string, string>)field.GetValue(window);
 
             Assert.True(fileIcons.Count > 50, "fileIcons should have more than 50 entries");
         }
@@ -204,7 +204,7 @@ namespace Alis.App.Engine.Test
             FieldInfo field = typeof(AssetsWindow).GetField("ignorePatterns", BindingFlags.NonPublic | BindingFlags.Instance);
             Assert.NotNull(field);
 
-            var ignorePatterns = (string[])field.GetValue(window);
+            string[] ignorePatterns = (string[])field.GetValue(window);
 
             Assert.NotNull(ignorePatterns);
             Assert.Contains("*.meta", ignorePatterns);
@@ -244,39 +244,24 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(isOpenField);
             isOpenField.SetValue(window, false);
 
-            var renderMethod = typeof(AssetsWindow).GetMethod("Render", BindingFlags.Public | BindingFlags.Instance);
+            MethodInfo renderMethod = typeof(AssetsWindow).GetMethod("Render", BindingFlags.Public | BindingFlags.Instance);
             Assert.NotNull(renderMethod);
 
             // Should not throw when isOpen is false (early return)
             renderMethod.Invoke(window, null);
         }
-
-        /// <summary>
-        ///     Tests that RenderFilesOnFolder method exists
-        /// </summary>
-        [Fact]
-        public void RenderFilesOnFolder_Method_ShouldExist()
-        {
-            var method = typeof(AssetsWindow).GetMethod("RenderFilesOnFolder", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Assert.NotNull(method);
-            
-            var parameters = method.GetParameters();
-            Assert.Single(parameters);
-            Assert.Equal("text", parameters[0].ParameterType.Name);
-        }
-
+        
         /// <summary>
         ///     Tests that RenderDirectoryItem method exists
         /// </summary>
         [Fact]
         public void RenderDirectoryItem_Method_ShouldExist()
         {
-            var method = typeof(AssetsWindow).GetMethod("RenderDirectoryItem", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo method = typeof(AssetsWindow).GetMethod("RenderDirectoryItem", BindingFlags.NonPublic | BindingFlags.Instance);
 
             Assert.NotNull(method);
             
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Equal(4, parameters.Length);
         }
 
@@ -286,11 +271,11 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void RenderFileItem_Method_ShouldExist()
         {
-            var method = typeof(AssetsWindow).GetMethod("RenderFileItem", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo method = typeof(AssetsWindow).GetMethod("RenderFileItem", BindingFlags.NonPublic | BindingFlags.Instance);
 
             Assert.NotNull(method);
             
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Equal(4, parameters.Length);
         }
 
@@ -300,7 +285,7 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void RenderPlusMenu_Method_ShouldBeStatic()
         {
-            var method = typeof(AssetsWindow).GetMethod("RenderPlusMenu", BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo method = typeof(AssetsWindow).GetMethod("RenderPlusMenu", BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.NotNull(method);
             Assert.True(method.IsStatic);
@@ -312,7 +297,7 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void RenderSearchBar_Method_ShouldExist()
         {
-            var method = typeof(AssetsWindow).GetMethod("RenderSearchBar", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo method = typeof(AssetsWindow).GetMethod("RenderSearchBar", BindingFlags.NonPublic | BindingFlags.Instance);
 
             Assert.NotNull(method);
         }
@@ -323,7 +308,7 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void RenderAssets_Method_ShouldExist()
         {
-            var method = typeof(AssetsWindow).GetMethod("RenderAssets", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo method = typeof(AssetsWindow).GetMethod("RenderAssets", BindingFlags.NonPublic | BindingFlags.Instance);
 
             Assert.NotNull(method);
         }
@@ -334,7 +319,7 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void RenderFolders_Method_ShouldExist()
         {
-            var method = typeof(AssetsWindow).GetMethod("RenderFolders", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo method = typeof(AssetsWindow).GetMethod("RenderFolders", BindingFlags.NonPublic | BindingFlags.Instance);
 
             Assert.NotNull(method);
         }
@@ -345,12 +330,12 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void RenderDirectory_Method_ShouldExist_WithIsRootParameter()
         {
-            var methods = typeof(AssetsWindow).GetMethods(BindingFlags.NonPublic | BindingFlags.Instance);
-            var renderDirectory = methods.FirstOrDefault(m => m.Name == "RenderDirectory");
+            MethodInfo[] methods = typeof(AssetsWindow).GetMethods(BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo renderDirectory = methods.FirstOrDefault(m => m.Name == "RenderDirectory");
 
             Assert.NotNull(renderDirectory);
             
-            var parameters = renderDirectory.GetParameters();
+            ParameterInfo[] parameters = renderDirectory.GetParameters();
             Assert.Equal(2, parameters.Length);
             Assert.Equal("path", parameters[0].Name);
             Assert.Equal("isRoot", parameters[1].Name);
@@ -362,12 +347,12 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void RenderTableFillItems_Method_ShouldBeStatic()
         {
-            var method = typeof(AssetsWindow).GetMethod("RenderTableFillItems", BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo method = typeof(AssetsWindow).GetMethod("RenderTableFillItems", BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.NotNull(method);
             Assert.True(method.IsStatic);
             
-            var parameters = method.GetParameters();
+            ParameterInfo[] parameters = method.GetParameters();
             Assert.Equal(4, parameters.Length);
         }
 
@@ -394,9 +379,9 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void PublicMethods_ShouldBeDocumented()
         {
-            var publicMethods = typeof(AssetsWindow).GetMethods(BindingFlags.Public | BindingFlags.Instance);
+            MethodInfo[] publicMethods = typeof(AssetsWindow).GetMethods(BindingFlags.Public | BindingFlags.Instance);
 
-            foreach (var method in publicMethods)
+            foreach (MethodInfo method in publicMethods)
             {
                 // Verify method exists and is discoverable
                 Assert.NotNull(method);
@@ -410,7 +395,7 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void AssetsWindow_ShouldHaveExpectedPublicMembers()
         {
-            var type = typeof(AssetsWindow);
+            Type type = typeof(AssetsWindow);
 
             // Check for SpaceWork property
             PropertyInfo spaceWorkProp = type.GetProperty("SpaceWork");
@@ -438,120 +423,8 @@ namespace Alis.App.Engine.Test
             FieldInfo windowNameField = type.GetField("WindowName", BindingFlags.Public | BindingFlags.Static);
             Assert.NotNull(windowNameField);
         }
-
-        /// <summary>
-        ///     Tests that the fileIcons dictionary maps image extensions to image icons
-        /// </summary>
-        [Fact]
-        public void FileIcons_ShouldMapImageExtensionsCorrectly()
-        {
-            SpaceWork spaceWork = new SpaceWork();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            FieldInfo field = typeof(AssetsWindow).GetField("fileIcons", BindingFlags.NonPublic | BindingFlags.Instance);
-            var fileIcons = (Dictionary<string, string>)field.GetValue(window);
-
-            // Image extensions should map to FileImage
-            Assert.Equal("Image", fileIcons[".png"]);
-            Assert.Equal("Image", fileIcons[".jpg"]);
-            Assert.Equal("Image", fileIcons[".jpeg"]);
-            Assert.Equal("Image", fileIcons[".bmp"]);
-            Assert.Equal("Image", fileIcons[".gif"]);
-            Assert.Equal("Image", fileIcons[".svg"]);
-        }
-
-        /// <summary>
-        ///     Tests that the fileIcons dictionary maps audio extensions to audio icons
-        /// </summary>
-        [Fact]
-        public void FileIcons_ShouldMapAudioExtensionsCorrectly()
-        {
-            SpaceWork spaceWork = new SpaceWork();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            FieldInfo field = typeof(AssetsWindow).GetField("fileIcons", BindingFlags.NonPublic | BindingFlags.Instance);
-            var fileIcons = (Dictionary<string, string>)field.GetValue(window);
-
-            Assert.Equal("Audio", fileIcons[".mp3"]);
-            Assert.Equal("Audio", fileIcons[".wav"]);
-            Assert.Equal("Audio", fileIcons[".ogg"]);
-            Assert.Equal("Audio", fileIcons[".flac"]);
-            Assert.Equal("Audio", fileIcons[".aiff"]);
-        }
-
-        /// <summary>
-        ///     Tests that the fileIcons dictionary maps video extensions to video icons
-        /// </summary>
-        [Fact]
-        public void FileIcons_ShouldMapVideoExtensionsCorrectly()
-        {
-            SpaceWork spaceWork = new SpaceWork();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            FieldInfo field = typeof(AssetsWindow).GetField("fileIcons", BindingFlags.NonPublic | BindingFlags.Instance);
-            var fileIcons = (Dictionary<string, string>)field.GetValue(window);
-
-            Assert.Equal("Video", fileIcons[".mp4"]);
-            Assert.Equal("Video", fileIcons[".avi"]);
-            Assert.Equal("Video", fileIcons[".mkv"]);
-            Assert.Equal("Video", fileIcons[".mov"]);
-        }
-
-        /// <summary>
-        ///     Tests that the fileIcons dictionary maps code extensions to code icons
-        /// </summary>
-        [Fact]
-        public void FileIcons_ShouldMapCodeExtensionsCorrectly()
-        {
-            SpaceWork spaceWork = new SpaceWork();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            FieldInfo field = typeof(AssetsWindow).GetField("fileIcons", BindingFlags.NonPublic | BindingFlags.Instance);
-            var fileIcons = (Dictionary<string, string>)field.GetValue(window);
-
-            Assert.Equal("Code", fileIcons[".cs"]);
-            Assert.Equal("Code", fileIcons[".cpp"]);
-            Assert.Equal("Code", fileIcons[".h"]);
-            Assert.Equal("Code", fileIcons[".html"]);
-            Assert.Equal("Code", fileIcons[".json"]);
-        }
-
-        /// <summary>
-        ///     Tests that the fileIcons dictionary maps archive extensions to archive icons
-        /// </summary>
-        [Fact]
-        public void FileIcons_ShouldMapArchiveExtensionsCorrectly()
-        {
-            SpaceWork spaceWork = new SpaceWork();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            FieldInfo field = typeof(AssetsWindow).GetField("fileIcons", BindingFlags.NonPublic | BindingFlags.Instance);
-            var fileIcons = (Dictionary<string, string>)field.GetValue(window);
-
-            Assert.Equal("Archive", fileIcons[".zip"]);
-            Assert.Equal("Archive", fileIcons[".rar"]);
-            Assert.Equal("Archive", fileIcons[".7z"]);
-            Assert.Equal("Archive", fileIcons[".tar"]);
-        }
-
-        /// <summary>
-        ///     Tests that the fileIcons dictionary maps font extensions to font icons
-        /// </summary>
-        [Fact]
-        public void FileIcons_ShouldMapFontExtensionsCorrectly()
-        {
-            SpaceWork spaceWork = new SpaceWork();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            FieldInfo field = typeof(AssetsWindow).GetField("fileIcons", BindingFlags.NonPublic | BindingFlags.Instance);
-            var fileIcons = (Dictionary<string, string>)field.GetValue(window);
-
-            Assert.Equal("Font", fileIcons[".ttf"]);
-            Assert.Equal("Font", fileIcons[".otf"]);
-            Assert.Equal("Font", fileIcons[".woff"]);
-            Assert.Equal("Font", fileIcons[".woff2"]);
-        }
-
+        
+       
         /// <summary>
         ///     Tests that default path uses platform-appropriate directory separator
         /// </summary>

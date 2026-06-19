@@ -44,6 +44,9 @@ namespace Alis.Core.Ecs.Generator
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     internal class GeneratorAnalyzer : DiagnosticAnalyzer
     {
+        /// <summary>
+        /// The category source generation
+        /// </summary>
         private const string CategorySourceGeneration = "Source Generation";
 
         /// <summary>

@@ -39,6 +39,9 @@ namespace Alis.Core.Ecs.Test.Collections
     /// </summary>
     public class FastestTableEdgeCaseTest
     {
+        /// <summary>
+        /// Tests that constructor with size zero creates empty buffer
+        /// </summary>
         [Fact]
         public void Constructor_WithSizeZero_CreatesEmptyBuffer()
         {
@@ -47,6 +50,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, table.Length);
         }
 
+        /// <summary>
+        /// Tests that constructor with size one creates buffer of one
+        /// </summary>
         [Fact]
         public void Constructor_WithSizeOne_CreatesBufferOfOne()
         {
@@ -55,6 +61,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(1, table.Length);
         }
 
+        /// <summary>
+        /// Tests that constructor with exact power of two creates exact size
+        /// </summary>
         [Fact]
         public void Constructor_WithExactPowerOfTwo_CreatesExactSize()
         {
@@ -63,6 +72,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(16, table.Length);
         }
 
+        /// <summary>
+        /// Tests that constructor with non power of two rounds up
+        /// </summary>
         [Fact]
         public void Constructor_WithNonPowerOfTwo_RoundsUp()
         {
@@ -71,6 +83,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(16, table.Length);
         }
 
+        /// <summary>
+        /// Tests that empty static property has zero length
+        /// </summary>
         [Fact]
         public void Empty_StaticProperty_HasZeroLength()
         {
@@ -79,6 +94,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, table.Length);
         }
 
+        /// <summary>
+        /// Tests that length after resize reflects new capacity
+        /// </summary>
         [Fact]
         public void Length_AfterResize_ReflectsNewCapacity()
         {
@@ -90,6 +108,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(table.Length >= 16);
         }
 
+        /// <summary>
+        /// Tests that index at capacity boundary no resize
+        /// </summary>
         [Fact]
         public void Index_AtCapacityBoundary_NoResize()
         {
@@ -100,6 +121,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(99, table[7]);
         }
 
+        /// <summary>
+        /// Tests that index at capacity triggers resize
+        /// </summary>
         [Fact]
         public void Index_AtCapacity_TriggersResize()
         {
@@ -110,6 +134,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(42, table[4]);
         }
 
+        /// <summary>
+        /// Tests that index far beyond capacity resizes large
+        /// </summary>
         [Fact]
         public void Index_FarBeyondCapacity_ResizesLarge()
         {
@@ -120,6 +147,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(7, table[100]);
         }
 
+        /// <summary>
+        /// Tests that index zero length resizes on first access
+        /// </summary>
         [Fact]
         public void Index_ZeroLength_ResizesOnFirstAccess()
         {
@@ -132,6 +162,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(1, table[0]);
         }
 
+        /// <summary>
+        /// Tests that ensure capacity sufficient capacity does not resize
+        /// </summary>
         [Fact]
         public void EnsureCapacity_SufficientCapacity_DoesNotResize()
         {
@@ -143,6 +176,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(oldLength, table.Length);
         }
 
+        /// <summary>
+        /// Tests that ensure capacity insufficient capacity resizes
+        /// </summary>
         [Fact]
         public void EnsureCapacity_InsufficientCapacity_Resizes()
         {
@@ -153,6 +189,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(table.Length >= 16);
         }
 
+        /// <summary>
+        /// Tests that unsafe index no resize valid index returns ref
+        /// </summary>
         [Fact]
         public void UnsafeIndexNoResize_ValidIndex_ReturnsRef()
         {
@@ -164,6 +203,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(77, val);
         }
 
+        /// <summary>
+        /// Tests that as span returns full buffer
+        /// </summary>
         [Fact]
         public void AsSpan_ReturnsFullBuffer()
         {
@@ -178,6 +220,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(2, span[1]);
         }
 
+        /// <summary>
+        /// Tests that as span empty table returns empty
+        /// </summary>
         [Fact]
         public void AsSpan_EmptyTable_ReturnsEmpty()
         {
@@ -188,6 +233,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(span.IsEmpty);
         }
 
+        /// <summary>
+        /// Tests that struct default has null buffer
+        /// </summary>
         [Fact]
         public void Struct_Default_HasNullBuffer()
         {
@@ -196,6 +244,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<NullReferenceException>(() => table.Length);
         }
 
+        /// <summary>
+        /// Tests that struct copy shares buffer
+        /// </summary>
         [Fact]
         public void Struct_Copy_SharesBuffer()
         {
@@ -209,6 +260,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(20, copy[1]);
         }
 
+        /// <summary>
+        /// Tests that index reference type resize preserves values
+        /// </summary>
         [Fact]
         public void Index_ReferenceType_ResizePreservesValues()
         {
@@ -223,6 +277,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("d", table[3]);
         }
 
+        /// <summary>
+        /// Tests that multiple resize data correct after several growths
+        /// </summary>
         [Fact]
         public void MultipleResize_DataCorrect_AfterSeveralGrowths()
         {

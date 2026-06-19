@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The box collider builder test class
+    /// </summary>
     public class BoxColliderBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor with context creates builder
+        /// </summary>
         [Fact]
         public void Constructor_WithContext_CreatesBuilder()
         {
@@ -45,6 +51,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns box collider instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsBoxColliderInstance()
         {
@@ -54,6 +63,9 @@ namespace Alis.Test
             Assert.NotNull(boxCollider);
         }
 
+        /// <summary>
+        /// Tests that angular velocity sets value returns builder
+        /// </summary>
         [Fact]
         public void AngularVelocity_SetsValue_ReturnsBuilder()
         {
@@ -63,6 +75,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that auto tilling sets value returns builder
+        /// </summary>
         [Fact]
         public void AutoTilling_SetsValue_ReturnsBuilder()
         {
@@ -72,6 +87,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that body type sets value returns builder
+        /// </summary>
         [Fact]
         public void BodyType_SetsValue_ReturnsBuilder()
         {
@@ -81,6 +99,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that fixed rotation sets value returns builder
+        /// </summary>
         [Fact]
         public void FixedRotation_SetsValue_ReturnsBuilder()
         {
@@ -90,6 +111,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that friction sets value returns builder
+        /// </summary>
         [Fact]
         public void Friction_SetsValue_ReturnsBuilder()
         {
@@ -99,6 +123,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that is active returns builder
+        /// </summary>
         [Fact]
         public void IsActive_ReturnsBuilder()
         {
@@ -108,6 +135,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that is trigger returns builder
+        /// </summary>
         [Fact]
         public void IsTrigger_ReturnsBuilder()
         {
@@ -117,6 +147,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that mass sets value returns builder
+        /// </summary>
         [Fact]
         public void Mass_SetsValue_ReturnsBuilder()
         {
@@ -126,6 +159,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that restitution sets value returns builder
+        /// </summary>
         [Fact]
         public void Restitution_SetsValue_ReturnsBuilder()
         {
@@ -135,6 +171,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that rotation sets value returns builder
+        /// </summary>
         [Fact]
         public void Rotation_SetsValue_ReturnsBuilder()
         {
@@ -144,6 +183,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that size sets value returns builder
+        /// </summary>
         [Fact]
         public void Size_SetsValue_ReturnsBuilder()
         {
@@ -153,6 +195,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that linear velocity sets value returns builder
+        /// </summary>
         [Fact]
         public void LinearVelocity_SetsValue_ReturnsBuilder()
         {
@@ -162,6 +207,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that relative position sets value returns builder
+        /// </summary>
         [Fact]
         public void RelativePosition_SetsValue_ReturnsBuilder()
         {
@@ -171,6 +219,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that ignore gravity sets value returns builder
+        /// </summary>
         [Fact]
         public void IgnoreGravity_SetsValue_ReturnsBuilder()
         {
@@ -180,6 +231,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that chaining all properties creates box collider
+        /// </summary>
         [Fact]
         public void ChainingAllProperties_CreatesBoxCollider()
         {

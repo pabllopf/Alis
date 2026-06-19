@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The graphic setting builder test class
+    /// </summary>
     public class GraphicSettingBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor no args creates builder
+        /// </summary>
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
@@ -43,6 +49,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns graphic setting instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsGraphicSettingInstance()
         {
@@ -51,6 +60,9 @@ namespace Alis.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that target sets target returns builder
+        /// </summary>
         [Fact]
         public void Target_SetsTarget_ReturnsBuilder()
         {
@@ -59,6 +71,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that frame rate sets frame rate returns builder
+        /// </summary>
         [Fact]
         public void FrameRate_SetsFrameRate_ReturnsBuilder()
         {
@@ -67,6 +82,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that resolution sets resolution returns builder
+        /// </summary>
         [Fact]
         public void Resolution_SetsResolution_ReturnsBuilder()
         {
@@ -75,6 +93,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that background color sets color returns builder
+        /// </summary>
         [Fact]
         public void BackgroundColor_SetsColor_ReturnsBuilder()
         {
@@ -83,6 +104,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that is resizable sets flag returns builder
+        /// </summary>
         [Fact]
         public void IsResizable_SetsFlag_ReturnsBuilder()
         {
@@ -91,6 +115,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that chaining all properties creates graphic setting
+        /// </summary>
         [Fact]
         public void ChainingAllProperties_CreatesGraphicSetting()
         {

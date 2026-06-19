@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The video game builder test class
+    /// </summary>
     public class VideoGameBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor no args creates builder
+        /// </summary>
         [Fact]
         public void Constructor_NoArgs_CreatesBuilder()
         {
@@ -43,6 +49,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns video game instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsVideoGameInstance()
         {
@@ -51,6 +60,9 @@ namespace Alis.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that settings with config returns builder
+        /// </summary>
         [Fact]
         public void Settings_WithConfig_ReturnsBuilder()
         {

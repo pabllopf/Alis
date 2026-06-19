@@ -49,6 +49,9 @@ namespace Alis.Core.Ecs.Generator
     [Generator(LanguageNames.CSharp)]
     public class ComponentUpdateTypeRegistryGenerator : IIncrementalGenerator
     {
+        /// <summary>
+        /// The global namespace prefix
+        /// </summary>
         private const string GlobalNamespacePrefix = "global::";
 
         /// <summary>
@@ -169,6 +172,11 @@ namespace Alis.Core.Ecs.Generator
             );
         }
 
+        /// <summary>
+        /// Adds the misc flags using the specified component type symbol
+        /// </summary>
+        /// <param name="componentTypeSymbol">The component type symbol</param>
+        /// <param name="flags">The flags</param>
         private static void AddMiscFlags(INamedTypeSymbol componentTypeSymbol, ref UpdateModelFlags flags)
         {
             if (componentTypeSymbol.IsGenericType)
@@ -191,6 +199,11 @@ namespace Alis.Core.Ecs.Generator
             }
         }
 
+        /// <summary>
+        /// Gets the containing types using the specified component type symbol
+        /// </summary>
+        /// <param name="componentTypeSymbol">The component type symbol</param>
+        /// <returns>The nested type symbols</returns>
         private static TypeDeclarationModel[] GetContainingTypes(INamedTypeSymbol componentTypeSymbol)
         {
             int nestedTypeCount = 0;
@@ -241,6 +254,14 @@ namespace Alis.Core.Ecs.Generator
             return (needsRegistering, @interface, genericArguments, flags);
         }
 
+        /// <summary>
+        /// Inspects the single interface using the specified potential interface
+        /// </summary>
+        /// <param name="potentialInterface">The potential interface</param>
+        /// <param name="@interface">The interface</param>
+        /// <param name="genericArguments">The generic arguments</param>
+        /// <param name="needsRegistering">The needs registering</param>
+        /// <param name="flags">The flags</param>
         private static void InspectSingleInterface(INamedTypeSymbol potentialInterface, ref INamedTypeSymbol @interface, ref string[] genericArguments, ref bool needsRegistering, ref UpdateModelFlags flags)
         {
             if (!potentialInterface.IsOrExtendsIComponentBase())
@@ -260,6 +281,12 @@ namespace Alis.Core.Ecs.Generator
             }
         }
 
+        /// <summary>
+        /// Processes the special component interface using the specified potential interface
+        /// </summary>
+        /// <param name="potentialInterface">The potential interface</param>
+        /// <param name="@interface">The interface</param>
+        /// <param name="flags">The flags</param>
         private static void ProcessSpecialComponentInterface(INamedTypeSymbol potentialInterface, ref INamedTypeSymbol @interface, ref UpdateModelFlags flags)
         {
             string name = potentialInterface.ToString();
@@ -279,6 +306,12 @@ namespace Alis.Core.Ecs.Generator
             }
         }
 
+        /// <summary>
+        /// Processes the alis component interface using the specified potential interface
+        /// </summary>
+        /// <param name="potentialInterface">The potential interface</param>
+        /// <param name="@interface">The interface</param>
+        /// <param name="genericArguments">The generic arguments</param>
         private static void ProcessAlisComponentInterface(INamedTypeSymbol potentialInterface, ref INamedTypeSymbol @interface, ref string[] genericArguments)
         {
             @interface = potentialInterface;

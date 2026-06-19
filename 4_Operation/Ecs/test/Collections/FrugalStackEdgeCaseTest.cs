@@ -40,6 +40,9 @@ namespace Alis.Core.Ecs.Test.Collections
     /// </summary>
     public class FrugalStackEdgeCaseTest
     {
+        /// <summary>
+        /// Tests that pop on empty stack throws index out of range
+        /// </summary>
         [Fact]
         public void Pop_OnEmptyStack_ThrowsIndexOutOfRange()
         {
@@ -47,6 +50,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<IndexOutOfRangeException>(() => stack.Pop());
         }
 
+        /// <summary>
+        /// Tests that push beyond initial capacity resize triggers
+        /// </summary>
         [Fact]
         public void Push_BeyondInitialCapacity_ResizeTriggers()
         {
@@ -59,6 +65,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(10, stack.Pop());
         }
 
+        /// <summary>
+        /// Tests that push exact 16 items resize using multiplication
+        /// </summary>
         [Fact]
         public void Push_Exact16Items_ResizeUsingMultiplication()
         {
@@ -75,6 +84,9 @@ namespace Alis.Core.Ecs.Test.Collections
             }
         }
 
+        /// <summary>
+        /// Tests that remove last element pops correctly
+        /// </summary>
         [Fact]
         public void Remove_LastElement_PopsCorrectly()
         {
@@ -90,6 +102,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(stack.Any);
         }
 
+        /// <summary>
+        /// Tests that remove first element replaces with top
+        /// </summary>
         [Fact]
         public void Remove_FirstElement_ReplacesWithTop()
         {
@@ -105,6 +120,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(stack.Any);
         }
 
+        /// <summary>
+        /// Tests that remove on single element empties stack
+        /// </summary>
         [Fact]
         public void Remove_OnSingleElement_EmptiesStack()
         {
@@ -116,6 +134,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(stack.Any);
         }
 
+        /// <summary>
+        /// Tests that reference type pop clears element
+        /// </summary>
         [Fact]
         public void ReferenceType_Pop_ClearsElement()
         {
@@ -129,6 +150,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(stack.Any);
         }
 
+        /// <summary>
+        /// Tests that reference type remove clears reference
+        /// </summary>
         [Fact]
         public void ReferenceType_Remove_ClearsReference()
         {
@@ -144,6 +168,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(stack.Any);
         }
 
+        /// <summary>
+        /// Tests that reference type try pop returns value
+        /// </summary>
         [Fact]
         public void ReferenceType_TryPop_ReturnsValue()
         {
@@ -156,6 +183,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("test", value);
         }
 
+        /// <summary>
+        /// Tests that as span on empty stack returns empty
+        /// </summary>
         [Fact]
         public void AsSpan_OnEmptyStack_ReturnsEmpty()
         {
@@ -166,6 +196,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(span.IsEmpty);
         }
 
+        /// <summary>
+        /// Tests that as span after pop reflects remaining
+        /// </summary>
         [Fact]
         public void AsSpan_AfterPop_ReflectsRemaining()
         {
@@ -182,6 +215,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(2, span[1]);
         }
 
+        /// <summary>
+        /// Tests that struct push on copy does not affect original
+        /// </summary>
         [Fact]
         public void Struct_PushOnCopy_DoesNotAffectOriginal()
         {
@@ -196,6 +232,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(3, copy.AsSpan().Length);
         }
 
+        /// <summary>
+        /// Tests that struct pop on copy does not affect original
+        /// </summary>
         [Fact]
         public void Struct_PopOnCopy_DoesNotAffectOriginal()
         {
@@ -210,6 +249,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(1, copy.AsSpan().Length);
         }
 
+        /// <summary>
+        /// Tests that try pop on empty reference type returns null
+        /// </summary>
         [Fact]
         public void TryPop_OnEmptyReferenceType_ReturnsNull()
         {
@@ -221,6 +263,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Null(value);
         }
 
+        /// <summary>
+        /// Tests that push try pop push try pop alternating
+        /// </summary>
         [Fact]
         public void Push_TryPop_Push_TryPop_Alternating()
         {
@@ -237,6 +282,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(stack.TryPop(out _));
         }
 
+        /// <summary>
+        /// Tests that contains using inline array returns expected
+        /// </summary>
         [Fact]
         public void Contains_UsingInlineArray_ReturnsExpected()
         {
@@ -249,6 +297,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.DoesNotContain(99, stack.AsSpan().ToArray());
         }
 
+        /// <summary>
+        /// Tests that push zero items then pop still empty
+        /// </summary>
         [Fact]
         public void Push_ZeroItemsThenPop_StillEmpty()
         {
@@ -256,6 +307,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(stack.Any);
         }
 
+        /// <summary>
+        /// Tests that multiple remove with duplicates removes first only
+        /// </summary>
         [Fact]
         public void MultipleRemove_WithDuplicates_RemovesFirstOnly()
         {

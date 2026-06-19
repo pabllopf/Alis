@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The audio source builder test class
+    /// </summary>
     public class AudioSourceBuilderTest
     {
+        /// <summary>
+        /// Tests that constructor with context creates builder
+        /// </summary>
         [Fact]
         public void Constructor_WithContext_CreatesBuilder()
         {
@@ -44,6 +50,9 @@ namespace Alis.Test
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Tests that build returns audio source instance
+        /// </summary>
         [Fact]
         public void Build_ReturnsAudioSourceInstance()
         {
@@ -53,6 +62,9 @@ namespace Alis.Test
             Assert.NotNull(audioSource);
         }
 
+        /// <summary>
+        /// Tests that file sets file path returns builder
+        /// </summary>
         [Fact]
         public void File_SetsFilePath_ReturnsBuilder()
         {
@@ -62,6 +74,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that volume sets volume returns builder
+        /// </summary>
         [Fact]
         public void Volume_SetsVolume_ReturnsBuilder()
         {
@@ -71,6 +86,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that mute sets mute returns builder
+        /// </summary>
         [Fact]
         public void Mute_SetsMute_ReturnsBuilder()
         {
@@ -80,6 +98,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that play on awake sets play on awake returns builder
+        /// </summary>
         [Fact]
         public void PlayOnAwake_SetsPlayOnAwake_ReturnsBuilder()
         {
@@ -89,6 +110,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that loop sets loop returns builder
+        /// </summary>
         [Fact]
         public void Loop_SetsLoop_ReturnsBuilder()
         {
@@ -98,6 +122,9 @@ namespace Alis.Test
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that chaining all properties creates audio source
+        /// </summary>
         [Fact]
         public void ChainingAllProperties_CreatesAudioSource()
         {
