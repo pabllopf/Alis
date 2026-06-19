@@ -5,6 +5,7 @@
     
     <PropertyGroup>
         <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+        <RunAnalyzers>false</RunAnalyzers>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -14,6 +15,9 @@
 
     <PropertyGroup>
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+        <OptimizeImplicitlyTriggeredBuild>true</OptimizeImplicitlyTriggeredBuild>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     </PropertyGroup>
     
     <PropertyGroup>

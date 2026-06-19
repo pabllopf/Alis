@@ -204,8 +204,12 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "coverage/tasks/bayazit-decomposer-coverage.md",
     "coverage/logs/execution-log.md",
+    "coverage/patterns/imgui-window-testing.md",
+    "coverage/tests/audio-player-window-test.md",
     "coverage/state/locks.md",
+    "coverage/tasks/audio-player-window-coverage.md",
     "coverage/state/coverage-index.md",
     "coverage/tests/015-archetype.md",
     "coverage/tests/014-bit-operations.md",
@@ -234,10 +238,6 @@
     "system/coverage/cache/InlineArray8.md",
     "system/coverage/cache/IDTable.md",
     "system/coverage/cache/FrugalStack.md",
-    "system/coverage/cache/FastLookup.md",
-    "system/coverage/cache/FastestTable.md",
-    "system/coverage/cache/FastestStack.md",
-    "system/coverage/cache/FastestArrayPool.md",
     "system/coverage/parse_coverage.py",
     "system/coverage/coverage.opencover.xml",
     "Sin título.canvas"

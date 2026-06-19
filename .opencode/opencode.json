@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "llmstudio/nvidia/nemotron-3-nano-omni",
-  "small_model": "llmstudio/nvidia/nemotron-3-nano-omni",
+  "model": "llmstudio/qwen/qwen3.6-35b-a3b",
+  "small_model": "llmstudio/qwen/qwen3.6-35b-a3b",
 
   "provider": {
     "omlx": {
@@ -324,6 +324,19 @@
           "limit": {
             "context": 262144,
             "output": 131584
+          }
+        },
+        "liquid/lfm2-24b-a2b": {
+          "name": "liquid/lfm2-24b-a2b",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "maxInputTokens": 128000,
+          "maxOutputTokens": 128000,
+          "limit": {
+            "context": 128000,
+            "output": 128000
           }
         },
         "qwen/qwen3.6-35b-a3b": {
