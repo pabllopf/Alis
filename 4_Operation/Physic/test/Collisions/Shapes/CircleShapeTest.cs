@@ -242,5 +242,139 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
 
             Assert.NotNull(aabb);
         }
+
+        /// <summary>
+        ///     Tests that ray cast should return true when ray hits circle
+        /// </summary>
+        [Fact]
+        public void RayCast_ShouldReturnTrue_WhenRayHitsCircle()
+        {
+            CircleShape circle = new CircleShape(5.0f, 1.0f);
+            ControllerTransform transform = new ControllerTransform
+            {
+                Position = new Vector2F(0.0f, 0.0f),
+                Rotation = Complex.One
+            };
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(-10.0f, 0.0f),
+                Point2 = new Vector2F(10.0f, 0.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.True(hit);
+            Assert.True(output.Fraction > 0.0f);
+        }
+
+        /// <summary>
+        ///     Tests that ray cast should return false when ray misses circle
+        /// </summary>
+        [Fact]
+        public void RayCast_ShouldReturnFalse_WhenRayMissesCircle()
+        {
+            CircleShape circle = new CircleShape(1.0f, 1.0f);
+            ControllerTransform transform = new ControllerTransform
+            {
+                Position = new Vector2F(0.0f, 0.0f),
+                Rotation = Complex.One
+            };
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(10.0f, 10.0f),
+                Point2 = new Vector2F(20.0f, 20.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        ///     Tests that compute submerged area returns zero when circle is above water
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_AboveWater_ReturnsZero()
+        {
+            CircleShape circle = new CircleShape(1.0f, 1.0f);
+            circle.Position = new Vector2F(0.0f, 0.0f);
+            ControllerTransform transform = new ControllerTransform
+            {
+                Position = new Vector2F(0.0f, 0.0f),
+                Rotation = Complex.One
+            };
+            Vector2F normal = new Vector2F(0.0f, 1.0f);
+
+            float area = circle.ComputeSubmergedArea(ref normal, -10.0f, ref transform, out Vector2F sc);
+
+            Assert.Equal(0.0f, area);
+        }
+
+        /// <summary>
+        ///     Tests that compute submerged area returns full area when circle is under water
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_UnderWater_ReturnsFullArea()
+        {
+            CircleShape circle = new CircleShape(1.0f, 1.0f);
+            circle.Position = new Vector2F(0.0f, 0.0f);
+            ControllerTransform transform = new ControllerTransform
+            {
+                Position = new Vector2F(0.0f, 0.0f),
+                Rotation = Complex.One
+            };
+            Vector2F normal = new Vector2F(0.0f, -1.0f);
+
+            float area = circle.ComputeSubmergedArea(ref normal, 10.0f, ref transform, out Vector2F sc);
+
+            Assert.True(area > 0.0f);
+        }
+
+        /// <summary>
+        ///     Tests that compare to returns true for equal circles
+        /// </summary>
+        [Fact]
+        public void CompareTo_EqualCircles_ReturnsTrue()
+        {
+            CircleShape a = new CircleShape(2.0f, 1.0f);
+            CircleShape b = new CircleShape(2.0f, 1.0f);
+
+            bool equal = a.CompareTo(b);
+
+            Assert.True(equal);
+        }
+
+        /// <summary>
+        ///     Tests that compare to returns false for different circles
+        /// </summary>
+        [Fact]
+        public void CompareTo_DifferentCircles_ReturnsFalse()
+        {
+            CircleShape a = new CircleShape(2.0f, 1.0f);
+            CircleShape b = new CircleShape(3.0f, 1.0f);
+
+            bool equal = a.CompareTo(b);
+
+            Assert.False(equal);
+        }
+
+        /// <summary>
+        ///     Tests that clone creates independent copy
+        /// </summary>
+        [Fact]
+        public void Clone_CreatesIndependentCopy()
+        {
+            CircleShape original = new CircleShape(2.0f, 1.0f);
+            original.Position = new Vector2F(3.0f, 4.0f);
+
+            CircleShape clone = (CircleShape)original.Clone();
+
+            Assert.NotSame(original, clone);
+            Assert.Equal(original.GetRadius, clone.GetRadius);
+            Assert.Equal(original.Position, clone.Position);
+            Assert.Equal(original.ShapeType, clone.ShapeType);
+        }
     }
 }

@@ -11,16 +11,16 @@
   "debtTotal": 15,
   "issues": [
     {
-      "key": "AZ7SNQ04GxvN3xmv4SmI",
+      "key": "AZ7Wga6T8Znd_eTQxpai",
       "rule": "csharpsquid:S2583",
       "severity": "MAJOR",
       "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
       "project": "pabllopf-official_alis",
-      "line": 257,
-      "hash": "bff29a820fd8d8db58e4116d881bdef9",
+      "line": 262,
+      "hash": "ea80884f2cf37ce898cefce3bec5fe73",
       "textRange": {
-        "startLine": 257,
-        "endLine": 257,
+        "startLine": 262,
+        "endLine": 262,
         "startOffset": 28,
         "endOffset": 42
       },
@@ -30,10 +30,10 @@
             {
               "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
               "textRange": {
-                "startLine": 257,
-                "endLine": 276,
+                "startLine": 262,
+                "endLine": 275,
                 "startOffset": 44,
-                "endOffset": 30
+                "endOffset": 35
               }
             }
           ]
@@ -52,8 +52,8 @@
         "symbolic-execution",
         "unused"
       ],
-      "creationDate": "2026-06-16T20:51:01+0000",
-      "updateDate": "2026-06-16T20:51:01+0000",
+      "creationDate": "2026-06-17T16:53:17+0000",
+      "updateDate": "2026-06-17T16:53:17+0000",
       "type": "BUG",
       "organization": "pabllopf-official",
       "cleanCodeAttribute": "LOGICAL",
@@ -67,7 +67,7 @@
       "issueStatus": "OPEN",
       "projectName": "Alis",
       "internalTags": [],
-      "lastChangeAnalysisUuid": "43fa2326-a7d8-4cf4-8702-b64a71bc6c54",
+      "lastChangeAnalysisUuid": "eaedac56-eddf-45db-8a8d-1e7b9acf3c63",
       "lastChangeSource": "ANALYSIS"
     }
   ],

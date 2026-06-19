@@ -1,4 +1,9 @@
 {
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 1
+  },
   "hotspots": [
     {
       "key": "AZ1dvNH3MbZ4NfML32sy",
@@ -21,6 +26,23 @@
       },
       "flows": [],
       "ruleKey": "csharpsquid:S5766"
+    }
+  ],
+  "components": [
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis",
+      "qualifier": "TRK",
+      "name": "Alis",
+      "longName": "Alis"
+    },
+    {
+      "organization": "pabllopf-official",
+      "key": "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs",
+      "qualifier": "FIL",
+      "name": "DungeonData.cs",
+      "longName": "1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs",
+      "path": "1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs"
     }
   ]
 }
