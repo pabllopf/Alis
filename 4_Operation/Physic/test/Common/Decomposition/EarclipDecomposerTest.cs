@@ -67,5 +67,85 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.NotNull(result);
             Assert.True(result.Count >= 1);
         }
+
+        /// <summary>
+        /// Tests that convex partition with square should return triangles
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithSquare_ShouldReturnResult()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(0f, 2f),
+                new Vector2F(2f, 2f),
+                new Vector2F(2f, 0f)
+            });
+
+            List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that convex partition with pentagon should return result
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithPentagon_ShouldReturnResult()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(-0.5f, 1f),
+                new Vector2F(1f, 2f),
+                new Vector2F(2.5f, 1f),
+                new Vector2F(2f, 0f)
+            });
+
+            List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that convex partition with concave shape should decompose
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithConcaveShape_ShouldDecompose()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(0f, 2f),
+                new Vector2F(1f, 2f),
+                new Vector2F(1f, 1f),
+                new Vector2F(3f, 1f),
+                new Vector2F(3f, 0f)
+            });
+
+            List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+        }
+
+        /// <summary>
+        /// Tests that convex partition with custom tolerance should work
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithCustomTolerance_ShouldWork()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0f, 1f)
+            });
+
+            List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices, 0.1f);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+        }
     }
 }
