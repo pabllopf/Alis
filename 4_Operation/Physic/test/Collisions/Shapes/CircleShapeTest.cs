@@ -441,5 +441,29 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
 
             Assert.True(result);
         }
+
+        /// <summary>
+        ///     Tests that ray cast returns false when ray is beyond max fraction
+        /// </summary>
+        [Fact]
+        public void RayCast_WhenPassingRayButBeyondMaxFraction_ReturnsFalse()
+        {
+            CircleShape circle = new CircleShape(5.0f, 1.0f);
+            ControllerTransform transform = new ControllerTransform
+            {
+                Position = new Vector2F(0.0f, 0.0f),
+                Rotation = Complex.One
+            };
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(-10.0f, 0.0f),
+                Point2 = new Vector2F(10.0f, 0.0f),
+                MaxFraction = 0.01f
+            };
+
+            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.False(hit);
+        }
     }
 }
