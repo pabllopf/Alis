@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Contains_WithJointNotInCollection_ReturnsFalse()
         {
             JointCollection collection = new JointCollection(new WorldPhysic(Vector2F.Zero));
-            Joint joint = JointFactory.CreateDistanceJoint(new WorldPhysic(Vector2F.Zero));
+            Joint joint = new DistanceJoint();
 
             bool result = collection.Contains(joint);
 
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void IndexOf_MissingJoint_ReturnsMinusOne()
         {
             JointCollection collection = new JointCollection(new WorldPhysic(Vector2F.Zero));
-            Joint joint = JointFactory.CreateDistanceJoint(new WorldPhysic(Vector2F.Zero));
+            Joint joint = new DistanceJoint();
 
             Assert.Equal(-1, collection.IndexOf(joint));
         }
