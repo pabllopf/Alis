@@ -162,5 +162,179 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(scale, transform.Scale);
         }
+
+        /// <summary>
+        ///     Tests that multiply vector by identity transform should return same vector
+        /// </summary>
+        [Fact]
+        public void Multiply_VectorByIdentity_ShouldReturnSameVector()
+        {
+            Vector2F vector = new Vector2F(3.0f, 4.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+
+            Vector2F result = ControllerTransform.Multiply(vector, ref transform);
+
+            Assert.Equal(vector, result);
+        }
+
+        /// <summary>
+        ///     Tests that multiply vector by transform with position should translate
+        /// </summary>
+        [Fact]
+        public void Multiply_VectorByTransform_ShouldTranslate()
+        {
+            Vector2F vector = new Vector2F(1.0f, 2.0f);
+            Vector2F position = new Vector2F(5.0f, 10.0f);
+            ControllerTransform transform = new ControllerTransform(position, 0.0f);
+
+            Vector2F result = ControllerTransform.Multiply(vector, ref transform);
+
+            Assert.Equal(new Vector2F(6.0f, 12.0f), result);
+        }
+
+        /// <summary>
+        ///     Tests that multiply vector by transform with rotation should rotate
+        /// </summary>
+        [Fact]
+        public void Multiply_VectorByTransform_ShouldRotate()
+        {
+            Vector2F vector = new Vector2F(1.0f, 0.0f);
+            ControllerTransform transform = new ControllerTransform(Vector2F.Zero, 90.0f);
+
+            Vector2F result = ControllerTransform.Multiply(vector, ref transform);
+
+            Assert.True(System.Math.Abs(result.X) < 0.01f);
+            Assert.True(System.Math.Abs(result.Y - 1.0f) < 0.01f);
+        }
+
+        /// <summary>
+        ///     Tests that divide vector by identity transform should return same vector
+        /// </summary>
+        [Fact]
+        public void Divide_VectorByIdentity_ShouldReturnSameVector()
+        {
+            Vector2F vector = new Vector2F(3.0f, 4.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+
+            Vector2F result = ControllerTransform.Divide(vector, ref transform);
+
+            Assert.Equal(vector, result);
+        }
+
+        /// <summary>
+        ///     Tests that divide vector by transform with position should translate back
+        /// </summary>
+        [Fact]
+        public void Divide_VectorByTransform_ShouldTranslateBack()
+        {
+            Vector2F vector = new Vector2F(6.0f, 12.0f);
+            Vector2F position = new Vector2F(5.0f, 10.0f);
+            ControllerTransform transform = new ControllerTransform(position, 0.0f);
+
+            Vector2F result = ControllerTransform.Divide(vector, ref transform);
+
+            Assert.Equal(new Vector2F(1.0f, 2.0f), result);
+        }
+
+        /// <summary>
+        ///     Tests that divide vector with out parameter should work correctly
+        /// </summary>
+        [Fact]
+        public void Divide_VectorWithOutParameter_ShouldWork()
+        {
+            Vector2F vector = new Vector2F(6.0f, 12.0f);
+            Vector2F position = new Vector2F(5.0f, 10.0f);
+            ControllerTransform transform = new ControllerTransform(position, 0.0f);
+
+            ControllerTransform.Divide(vector, ref transform, out Vector2F result);
+
+            Assert.Equal(new Vector2F(1.0f, 2.0f), result);
+        }
+
+        /// <summary>
+        ///     Tests that multiply transform by identity should return same transform
+        /// </summary>
+        [Fact]
+        public void Multiply_TransformByIdentity_ShouldReturnSameTransform()
+        {
+            ControllerTransform left = new ControllerTransform(new Vector2F(2.0f, 3.0f), 0.5f);
+            ControllerTransform right = ControllerTransform.Identity;
+
+            ControllerTransform result = ControllerTransform.Multiply(ref left, ref right);
+
+            Assert.Equal(left.Position, result.Position);
+            Assert.Equal(left.Rotation, result.Rotation);
+        }
+
+        /// <summary>
+        ///     Tests that multiply two transforms should compose
+        /// </summary>
+        [Fact]
+        public void Multiply_TwoTransforms_ShouldCompose()
+        {
+            ControllerTransform left = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f);
+            ControllerTransform right = new ControllerTransform(new Vector2F(2.0f, 3.0f), 0.0f);
+
+            ControllerTransform result = ControllerTransform.Multiply(ref left, ref right);
+
+            Assert.Equal(new Vector2F(3.0f, 3.0f), result.Position);
+        }
+
+        /// <summary>
+        ///     Tests that divide transform by itself should return identity
+        /// </summary>
+        [Fact]
+        public void Divide_TransformByItself_ShouldReturnIdentity()
+        {
+            ControllerTransform transform = new ControllerTransform(new Vector2F(2.0f, 3.0f), 0.5f);
+
+            ControllerTransform result = ControllerTransform.Divide(ref transform, ref transform);
+
+            Assert.True(System.Math.Abs(result.Position.X) < 0.001f);
+            Assert.True(System.Math.Abs(result.Position.Y) < 0.001f);
+        }
+
+        /// <summary>
+        ///     Tests that divide transform with out parameter should work
+        /// </summary>
+        [Fact]
+        public void Divide_TransformWithOutParameter_ShouldWork()
+        {
+            ControllerTransform left = new ControllerTransform(new Vector2F(5.0f, 6.0f), 0.5f);
+            ControllerTransform right = new ControllerTransform(new Vector2F(2.0f, 3.0f), 0.25f);
+
+            ControllerTransform.Divide(ref left, ref right, out ControllerTransform result);
+
+            Assert.NotNull(result.Position);
+            Assert.NotNull(result.Rotation);
+        }
+
+        /// <summary>
+        ///     Tests that multiply transform by complex one should return same transform
+        /// </summary>
+        [Fact]
+        public void Multiply_TransformByComplexOne_ShouldReturnSameTransform()
+        {
+            ControllerTransform transform = new ControllerTransform(new Vector2F(2.0f, 3.0f), 0.5f);
+
+            ControllerTransform.Multiply(ref transform, Complex.One, out ControllerTransform result);
+
+            Assert.Equal(transform.Position, result.Position);
+            Assert.Equal(transform.Rotation, result.Rotation);
+        }
+
+        /// <summary>
+        ///     Tests that divide transform by complex one should return same transform
+        /// </summary>
+        [Fact]
+        public void Divide_TransformByComplexOne_ShouldReturnSameTransform()
+        {
+            ControllerTransform transform = new ControllerTransform(new Vector2F(2.0f, 3.0f), 0.5f);
+
+            ControllerTransform.Divide(ref transform, Complex.One, out ControllerTransform result);
+
+            Assert.Equal(transform.Position, result.Position);
+            Assert.Equal(transform.Rotation, result.Rotation);
+        }
     }
 }
