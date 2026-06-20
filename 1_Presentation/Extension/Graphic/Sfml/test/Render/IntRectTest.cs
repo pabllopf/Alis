@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Xunit;
 
@@ -90,13 +91,225 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        ///     Tests ToString returns a non-empty string.
+        ///     Tests ToString returns the expected format.
         /// </summary>
         [Fact]
-        public void ToString_NotEmpty()
+        public void ToString_ReturnsExpectedFormat()
         {
             IntRect rect = new IntRect(1, 2, 3, 4);
-            Assert.False(string.IsNullOrWhiteSpace(rect.ToString()));
+            string str = rect.ToString();
+            Assert.Contains("Left(1)", str);
+            Assert.Contains("Top(2)", str);
+            Assert.Contains("Width(3)", str);
+            Assert.Contains("Height(4)", str);
+        }
+
+        /// <summary>
+        ///     Tests the Vector2F constructor.
+        /// </summary>
+        [Fact]
+        public void Constructor_FromVector2F_AssignsFields()
+        {
+            IntRect rect = new IntRect(new Vector2F(1, 2), new Vector2F(3, 4));
+            Assert.Equal(1, rect.Left);
+            Assert.Equal(2, rect.Top);
+            Assert.Equal(3, rect.Width);
+            Assert.Equal(4, rect.Height);
+        }
+
+        /// <summary>
+        ///     Tests Contains with a point on the left boundary.
+        /// </summary>
+        [Fact]
+        public void Contains_OnLeftBoundary_ReturnsTrue()
+        {
+            IntRect rect = new IntRect(0, 0, 10, 10);
+            Assert.True(rect.Contains(0, 5));
+        }
+
+        /// <summary>
+        ///     Tests Contains with a point on the right boundary (exclusive).
+        /// </summary>
+        [Fact]
+        public void Contains_OnRightBoundary_ReturnsFalse()
+        {
+            IntRect rect = new IntRect(0, 0, 10, 10);
+            Assert.False(rect.Contains(10, 5));
+        }
+
+        /// <summary>
+        ///     Tests Contains with a point on the top boundary.
+        /// </summary>
+        [Fact]
+        public void Contains_OnTopBoundary_ReturnsTrue()
+        {
+            IntRect rect = new IntRect(0, 0, 10, 10);
+            Assert.True(rect.Contains(5, 0));
+        }
+
+        /// <summary>
+        ///     Tests Contains with a point on the bottom boundary.
+        /// </summary>
+        [Fact]
+        public void Contains_OnBottomBoundary_ReturnsFalse()
+        {
+            IntRect rect = new IntRect(0, 0, 10, 10);
+            Assert.False(rect.Contains(5, 10));
+        }
+
+        /// <summary>
+        ///     Tests Contains with a point completely outside.
+        /// </summary>
+        [Fact]
+        public void Contains_OutsideBothAxes_ReturnsFalse()
+        {
+            IntRect rect = new IntRect(0, 0, 10, 10);
+            Assert.False(rect.Contains(20, 20));
+        }
+
+        /// <summary>
+        ///     Tests Contains with a rectangle that has negative width and height.
+        /// </summary>
+        [Fact]
+        public void Contains_NegativeDimensions_WorksCorrectly()
+        {
+            IntRect rect = new IntRect(10, 10, -10, -10);
+            Assert.True(rect.Contains(5, 5));
+            Assert.False(rect.Contains(15, 15));
+        }
+
+        /// <summary>
+        ///     Tests Intersects with rectangles that have negative dimensions.
+        /// </summary>
+        [Fact]
+        public void Intersects_NegativeDimensions_WorksCorrectly()
+        {
+            IntRect r1 = new IntRect(10, 10, -10, -10);
+            IntRect r2 = new IntRect(5, 5, 5, 5);
+            Assert.True(r1.Intersects(r2));
+        }
+
+        /// <summary>
+        ///     Tests Intersects with touching edges (no overlap).
+        /// </summary>
+        [Fact]
+        public void Intersects_TouchingEdges_ReturnsFalse()
+        {
+            IntRect r1 = new IntRect(0, 0, 10, 10);
+            IntRect r2 = new IntRect(10, 0, 10, 10);
+            Assert.False(r1.Intersects(r2));
+        }
+
+        /// <summary>
+        ///     Tests Intersects with no overlap verifies overlap is cleared.
+        /// </summary>
+        [Fact]
+        public void Intersects_NoOverlap_OverlapCleared()
+        {
+            IntRect r1 = new IntRect(0, 0, 10, 10);
+            IntRect r2 = new IntRect(20, 20, 10, 10);
+            Assert.False(r1.Intersects(r2, out IntRect overlap));
+            Assert.Equal(0, overlap.Left);
+            Assert.Equal(0, overlap.Top);
+            Assert.Equal(0, overlap.Width);
+            Assert.Equal(0, overlap.Height);
+        }
+
+        /// <summary>
+        ///     Tests Equals with another IntRect — equal values.
+        /// </summary>
+        [Fact]
+        public void Equals_EqualValues_ReturnsTrue()
+        {
+            IntRect r1 = new IntRect(1, 2, 3, 4);
+            IntRect r2 = new IntRect(1, 2, 3, 4);
+            Assert.True(r1.Equals(r2));
+        }
+
+        /// <summary>
+        ///     Tests Equals with another IntRect — different values.
+        /// </summary>
+        [Fact]
+        public void Equals_DifferentValues_ReturnsFalse()
+        {
+            IntRect r1 = new IntRect(1, 2, 3, 4);
+            IntRect r2 = new IntRect(5, 6, 7, 8);
+            Assert.False(r1.Equals(r2));
+        }
+
+        /// <summary>
+        ///     Tests Equals with object parameter.
+        /// </summary>
+        [Fact]
+        public void Equals_ObjectParameter_WorksCorrectly()
+        {
+            IntRect r1 = new IntRect(1, 2, 3, 4);
+            object r2 = new IntRect(1, 2, 3, 4);
+            object nonRect = new object();
+            Assert.True(r1.Equals(r2));
+            Assert.False(r1.Equals(nonRect));
+        }
+
+        /// <summary>
+        ///     Tests GetHashCode for equal rects.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_EqualRects_ReturnsSameValue()
+        {
+            IntRect r1 = new IntRect(1, 2, 3, 4);
+            IntRect r2 = new IntRect(1, 2, 3, 4);
+            Assert.Equal(r1.GetHashCode(), r2.GetHashCode());
+        }
+
+        /// <summary>
+        ///     Tests GetHashCode for different rects.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_DifferentRects_ReturnsDifferentValue()
+        {
+            IntRect r1 = new IntRect(1, 2, 3, 4);
+            IntRect r2 = new IntRect(5, 6, 7, 8);
+            Assert.NotEqual(r1.GetHashCode(), r2.GetHashCode());
+        }
+
+        /// <summary>
+        ///     Tests the equality operator.
+        /// </summary>
+        [Fact]
+        public void Operator_Equality_WorksCorrectly()
+        {
+            IntRect r1 = new IntRect(1, 2, 3, 4);
+            IntRect r2 = new IntRect(1, 2, 3, 4);
+            IntRect r3 = new IntRect(5, 6, 7, 8);
+            Assert.True(r1 == r2);
+            Assert.False(r1 == r3);
+        }
+
+        /// <summary>
+        ///     Tests the inequality operator.
+        /// </summary>
+        [Fact]
+        public void Operator_Inequality_WorksCorrectly()
+        {
+            IntRect r1 = new IntRect(1, 2, 3, 4);
+            IntRect r2 = new IntRect(1, 2, 3, 4);
+            IntRect r3 = new IntRect(5, 6, 7, 8);
+            Assert.False(r1 != r2);
+            Assert.True(r1 != r3);
+        }
+
+        /// <summary>
+        ///     Tests explicit cast to FloatRect.
+        /// </summary>
+        [Fact]
+        public void ExplicitCast_ToFloatRect_WorksCorrectly()
+        {
+            IntRect rect = new IntRect(1, 2, 3, 4);
+            FloatRect floatRect = (FloatRect) rect;
+            Assert.Equal(1, floatRect.Left);
+            Assert.Equal(2, floatRect.Top);
+            Assert.Equal(3, floatRect.Width);
+            Assert.Equal(4, floatRect.Height);
         }
     }
 }
