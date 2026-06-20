@@ -218,5 +218,70 @@ namespace Alis.Core.Physic.Test.Controllers
 
             Assert.True(true); // No exception thrown
         }
+
+        /// <summary>
+        ///     Tests that add body adds to bodies list
+        /// </summary>
+        [Fact]
+        public void AddBody_ShouldAddToBodiesList()
+        {
+            GravityController controller = new GravityController(10.0f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody();
+
+            controller.AddBody(body);
+
+            Assert.Contains(body, controller.Bodies);
+        }
+
+        /// <summary>
+        ///     Tests that add point adds to points list
+        /// </summary>
+        [Fact]
+        public void AddPoint_ShouldAddToPointsList()
+        {
+            GravityController controller = new GravityController(10.0f);
+            Vector2F point = new Vector2F(100f, 200f);
+
+            controller.AddPoint(point);
+
+            Assert.Contains(point, controller.Points);
+        }
+
+        /// <summary>
+        ///     Tests that update with linear gravity type should execute without errors
+        /// </summary>
+        [Fact]
+        public void Update_WithLinearGravityType_ShouldExecuteWithoutErrors()
+        {
+            GravityController controller = new GravityController(10.0f, 100f, 1f);
+            controller.GravityType = GravityType.Linear;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body body1 = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body body2 = world.CreateBody(new Vector2F(5, 5), 0, BodyType.Dynamic);
+            controller.AddBody(body1);
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown
+        }
+
+        /// <summary>
+        ///     Tests that update with point gravity should execute without errors
+        /// </summary>
+        [Fact]
+        public void Update_WithPointGravity_ShouldExecuteWithoutErrors()
+        {
+            GravityController controller = new GravityController(100f);
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            controller.WorldPhysic = world;
+            Body body = world.CreateBody(new Vector2F(10, 10), 0, BodyType.Dynamic);
+            controller.AddPoint(new Vector2F(0, 0));
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown
+        }
     }
 }
