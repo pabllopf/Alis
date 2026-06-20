@@ -41,28 +41,109 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     public class AudioReaderTest
     {
         /// <summary>
-        /// Tests that audio reader constructor should throw when file missing
+        ///     Tests that audio reader constructor should throw when file missing
         /// </summary>
         [Fact]
         public void AudioReader_Constructor_ShouldThrowWhenFileMissing()
         {
-            string missing = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".mp3");
+            string missing = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
 
             Assert.Throws<FileNotFoundException>(() => new AudioReader(missing));
         }
 
         /// <summary>
-        /// Tests that audio reader load should throw for invalid bit depth
+        ///     Tests that audio reader constructor creates instance with valid file
+        /// </summary>
+        [Fact]
+        public void AudioReader_Constructor_WithValidFile_ShouldCreateInstance()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
+
+                Assert.NotNull(reader);
+                Assert.Equal(path, reader.Filename);
+                Assert.False(reader.MetadataLoaded);
+                Assert.Null(reader.Metadata);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that audio reader constructor accepts custom ffmpeg executable path
+        /// </summary>
+        [Fact]
+        public void AudioReader_Constructor_WithCustomFfmpeg_ShouldAcceptPath()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path, "custom_ffmpeg", "custom_ffprobe");
+
+                Assert.NotNull(reader);
+                Assert.Equal(path, reader.Filename);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that audio reader constructor accepts custom ffprobe executable path
+        /// </summary>
+        [Fact]
+        public void AudioReader_Constructor_WithCustomFfprobe_ShouldAcceptPath()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path, "ffmpeg", "custom_ffprobe");
+
+                Assert.NotNull(reader);
+                Assert.Equal(path, reader.Filename);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that audio reader load should throw for invalid bit depth
         /// </summary>
         [Fact]
         public void AudioReader_Load_ShouldThrowForInvalidBitDepth()
         {
-            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".mp3");
-            File.WriteAllBytes(path, new byte[] {1});
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
 
             try
             {
-                AudioReader reader = new AudioReader(path);
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
 
                 InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load(8));
 
@@ -70,22 +151,26 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
             finally
             {
-                File.Delete(path);
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
             }
         }
 
         /// <summary>
-        /// Tests that audio reader load should throw when metadata not loaded
+        ///     Tests that audio reader load should throw when metadata not loaded
         /// </summary>
         [Fact]
         public void AudioReader_Load_ShouldThrowWhenMetadataNotLoaded()
         {
-            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".mp3");
-            File.WriteAllBytes(path, new byte[] {1});
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
 
             try
             {
-                AudioReader reader = new AudioReader(path);
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
 
                 InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load());
 
@@ -93,8 +178,359 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
             finally
             {
-                File.Delete(path);
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
             }
+        }
+
+        /// <summary>
+        ///     Tests that audio reader load throws for bit depth 0
+        /// </summary>
+        [Fact]
+        public void AudioReader_Load_WithBitDepthZero_ShouldThrowInvalidOperationException()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load(0));
+
+                Assert.Contains("Acceptable bit depths", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that audio reader load throws for negative bit depth
+        /// </summary>
+        [Fact]
+        public void AudioReader_Load_WithNegativeBitDepth_ShouldThrowInvalidOperationException()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load(-16));
+
+                Assert.Contains("Acceptable bit depths", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that audio reader load throws for bit depth 64
+        /// </summary>
+        [Fact]
+        public void AudioReader_Load_WithBitDepth64_ShouldThrowInvalidOperationException()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load(64));
+
+                Assert.Contains("Acceptable bit depths", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that audio reader dispose does not throw on fresh instance
+        /// </summary>
+        [Fact]
+        public void AudioReader_Dispose_ShouldNotThrowOnFreshInstance()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                AudioReader reader = new(path);
+                bool threw = false;
+
+                try
+                {
+                    reader.Dispose();
+                }
+                catch
+                {
+                    threw = true;
+                }
+
+                Assert.False(threw);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that audio reader dispose can be called multiple times without throwing
+        /// </summary>
+        [Fact]
+        public void AudioReader_MultipleDispose_ShouldNotThrow()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                AudioReader reader = new(path);
+                bool threw = false;
+
+                try
+                {
+                    reader.Dispose();
+                    reader.Dispose();
+                    reader.Dispose();
+                }
+                catch
+                {
+                    threw = true;
+                }
+
+                Assert.False(threw);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that NextFrame with AudioFrame parameter throws when audio is not loaded for reading
+        /// </summary>
+        [Fact]
+        public void AudioReader_NextFrameWithFrame_WhenNotLoaded_ShouldThrowInvalidOperationException()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
+                AudioFrame frame = new(2, 1024, 16);
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.NextFrame(frame));
+
+                Assert.Contains("load the audio", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that CurrentSampleOffset is initially zero
+        /// </summary>
+        [Fact]
+        public void AudioReader_CurrentSampleOffset_InitialState_ShouldBeZero()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
+
+                Assert.Equal(0L, reader.CurrentSampleOffset);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that MetadataLoaded is initially false
+        /// </summary>
+        [Fact]
+        public void AudioReader_MetadataLoaded_InitialState_ShouldBeFalse()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
+
+                Assert.False(reader.MetadataLoaded);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that Metadata is initially null
+        /// </summary>
+        [Fact]
+        public void AudioReader_Metadata_InitialState_ShouldBeNull()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
+
+                Assert.Null(reader.Metadata);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that Filename property is correctly set after construction
+        /// </summary>
+        [Fact]
+        public void AudioReader_Filename_ShouldBeSetByConstructor()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
+
+                Assert.Equal(path, reader.Filename);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+        /// <summary>
+        ///     Tests that AudioReader implements IDisposable correctly
+        /// </summary>
+        [Fact]
+        public void AudioReader_Idisposable_Implementation_ShouldNotThrow()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using (AudioReader reader = new(path))
+                {
+                    Assert.NotNull(reader);
+                }
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that AudioReader with valid file has correct default state
+        /// </summary>
+        [Fact]
+        public void AudioReader_WithValidFile_ShouldHaveCorrectDefaultState()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".wav");
+
+            try
+            {
+                File.WriteAllBytes(path, new byte[] { 0 });
+
+                using AudioReader reader = new(path);
+
+                Assert.Equal(path, reader.Filename);
+                Assert.False(reader.MetadataLoaded);
+                Assert.Null(reader.Metadata);
+                Assert.Equal(0L, reader.CurrentSampleOffset);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that AudioReader constructor throws with correct message for missing file
+        /// </summary>
+        [Fact]
+        public void AudioReader_Constructor_WithMissingFile_ShouldThrowFileNotFoundExceptionWithMessage()
+        {
+            string missing = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() => new AudioReader(missing));
+
+            Assert.Contains("not found", ex.Message);
+            Assert.Contains(".mp3", ex.Message);
         }
     }
 }
