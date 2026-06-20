@@ -350,6 +350,19 @@ namespace Alis.Extension.Graphic.Sfml.Test
             Assert.Equal(mode1.GetHashCode(), mode2.GetHashCode());
         }
 
+        /// <summary>
+        ///     Tests that BlendMode Equals(object) returns false for non-BlendMode types
+        /// </summary>
+        [Fact]
+        public void BlendMode_Equals_WithNonBlendMode_ReturnsFalse()
+        {
+            BlendMode mode = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
+
+            Assert.False(mode.Equals(null));
+            Assert.False(mode.Equals(new object()));
+            Assert.False(mode.Equals("some string"));
+        }
+
         #endregion
 
         #region BlendMode Constructor Tests
