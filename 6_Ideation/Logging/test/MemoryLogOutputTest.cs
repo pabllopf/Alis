@@ -320,5 +320,19 @@ namespace Alis.Core.Aspect.Logging.Test
             // Assert
             Assert.Equal(0, output.Count);
         }
+
+        /// <summary>
+        ///     Tests that write after dispose does not store entries
+        /// </summary>
+        [Fact]
+        public void MemoryLogOutput_WriteAfterDispose_ShouldNotStore()
+        {
+            MemoryLogOutput output = new MemoryLogOutput();
+            output.Dispose();
+
+            output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
+
+            Assert.Equal(0, output.Count);
+        }
     }
 }
