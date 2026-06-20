@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -387,7 +388,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
 
-            scene.AllowStructualChanges = false;
+            scene.EnterDisallowState();
 
             Assert.Throws<InvalidOperationException>(() => buffer.Playback());
         }
