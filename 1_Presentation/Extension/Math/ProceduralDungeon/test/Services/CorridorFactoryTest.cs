@@ -185,6 +185,48 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         }
 
         /// <summary>
+        ///     Tests that create first corridor creates corridor with south direction.
+        /// </summary>
+        [Fact]
+        public void CreateFirstCorridor_ShouldCreateCorridorWithSouthDirection()
+        {
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(3); // Direction.South
+            CorridorFactory factory = new CorridorFactory(mockRng);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
+            int width = 4;
+            int height = 4;
+
+            CorridorData corridor = factory.CreateFirstCorridor(width, height, room);
+
+            Assert.Equal(12, corridor.XPos); // room.XPos + room.Width / 2 - width / 2
+            Assert.Equal(6, corridor.YPos); // room.YPos - height
+            Assert.Equal(width, corridor.Width);
+            Assert.Equal(height, corridor.Height);
+            Assert.Equal(Direction.South, corridor.Direction);
+        }
+
+        /// <summary>
+        ///     Tests that create first corridor creates corridor with east direction.
+        /// </summary>
+        [Fact]
+        public void CreateFirstCorridor_ShouldCreateCorridorWithEastDirection()
+        {
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(2); // Direction.East
+            CorridorFactory factory = new CorridorFactory(mockRng);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
+            int width = 4;
+            int height = 4;
+
+            CorridorData corridor = factory.CreateFirstCorridor(width, height, room);
+
+            Assert.Equal(6, corridor.XPos); // room.XPos - height
+            Assert.Equal(12, corridor.YPos);
+            Assert.Equal(height, corridor.Width);
+            Assert.Equal(width, corridor.Height);
+            Assert.Equal(Direction.East, corridor.Direction);
+        }
+
+        /// <summary>
         ///     Tests that multiple corridors should potentially have different directions.
         /// </summary>
         [Fact]
