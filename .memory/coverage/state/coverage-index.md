@@ -18,6 +18,7 @@ Last updated: 2026-06-20T12:00:00Z
 | Coverage | UL | Path | Status |
 |----------|-----|------|--------|
 | 75.1% | 36 | 1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/GenericPriorityQueue.cs | completed |
+| 87.2% | 18 | 1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/FastPriorityQueue.cs | completed |
 | ... | ... | ... | pending |
 
 ## Priority Order
