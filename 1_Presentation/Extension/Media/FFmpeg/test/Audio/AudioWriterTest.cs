@@ -37,182 +37,560 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// <summary>
     ///     The audio writer test class
     /// </summary>
-    /// <seealso cref="AudioWriter" />
     public class AudioWriterTest
     {
         /// <summary>
-        /// Tests that audio writer file ctor should throw on zero channels
+        ///     Tests that constructor with filename validates channels and sample rate
         /// </summary>
         [Fact]
-        public void AudioWriter_FileCtor_ShouldThrowOnZeroChannels()
+        public void AudioWriter_Constructor_WithFilename_ZeroChannels_ShouldThrowInvalidDataException()
         {
-            Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", 0, 44100));
-        }
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
 
-        /// <summary>
-        /// Tests that audio writer file ctor should throw on negative channels
-        /// </summary>
-        [Fact]
-        public void AudioWriter_FileCtor_ShouldThrowOnNegativeChannels()
-        {
-            Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", -1, 44100));
-        }
-
-        /// <summary>
-        /// Tests that audio writer file ctor should throw on zero sample rate
-        /// </summary>
-        [Fact]
-        public void AudioWriter_FileCtor_ShouldThrowOnZeroSampleRate()
-        {
-            Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", 2, 0));
-        }
-
-        /// <summary>
-        /// Tests that audio writer file ctor should throw on negative sample rate
-        /// </summary>
-        [Fact]
-        public void AudioWriter_FileCtor_ShouldThrowOnNegativeSampleRate()
-        {
-            Assert.Throws<InvalidDataException>(() => new AudioWriter("out.mp3", 2, -1));
-        }
-
-        /// <summary>
-        /// Tests that audio writer file ctor should throw on invalid bit depth
-        /// </summary>
-        [Fact]
-        public void AudioWriter_FileCtor_ShouldThrowOnInvalidBitDepth()
-        {
-            Assert.Throws<InvalidOperationException>(() => new AudioWriter("out.mp3", 2, 44100, 8));
-        }
-
-        /// <summary>
-        /// Tests that audio writer file ctor should throw on null filename
-        /// </summary>
-        [Fact]
-        public void AudioWriter_FileCtor_ShouldThrowOnNullFilename()
-        {
-            Assert.Throws<ArgumentException>(() => new AudioWriter((string)null, 2, 44100));
-        }
-
-        /// <summary>
-        /// Tests that audio writer file ctor should throw on empty filename
-        /// </summary>
-        [Fact]
-        public void AudioWriter_FileCtor_ShouldThrowOnEmptyFilename()
-        {
-            Assert.Throws<ArgumentException>(() => new AudioWriter("", 2, 44100));
-        }
-
-        /// <summary>
-        /// Tests that audio writer stream ctor should throw on null stream
-        /// </summary>
-        [Fact]
-        public void AudioWriter_StreamCtor_ShouldThrowOnNullStream()
-        {
-            Assert.Throws<ArgumentNullException>(() => new AudioWriter((Stream)null, 2, 44100));
-        }
-
-        /// <summary>
-        /// Tests that audio writer stream ctor should throw on zero channels
-        /// </summary>
-        [Fact]
-        public void AudioWriter_StreamCtor_ShouldThrowOnZeroChannels()
-        {
-            using (MemoryStream ms = new MemoryStream())
+            try
             {
-                Assert.Throws<InvalidDataException>(() => new AudioWriter(ms, 0, 44100));
+                InvalidDataException ex = Assert.Throws<InvalidDataException>(() => new AudioWriter(path, 0, 44100));
+
+                Assert.Contains("Channels/Sample rate", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
             }
         }
 
         /// <summary>
-        /// Tests that audio writer stream ctor should throw on invalid bit depth
+        ///     Tests that constructor with filename validates channels and sample rate negative values
         /// </summary>
         [Fact]
-        public void AudioWriter_StreamCtor_ShouldThrowOnInvalidBitDepth()
+        public void AudioWriter_Constructor_WithFilename_NegativeChannels_ShouldThrowInvalidDataException()
         {
-            using (MemoryStream ms = new MemoryStream())
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
             {
-                Assert.Throws<InvalidOperationException>(() => new AudioWriter(ms, 2, 44100, 8));
+                InvalidDataException ex = Assert.Throws<InvalidDataException>(() => new AudioWriter(path, -1, 44100));
+
+                Assert.Contains("Channels/Sample rate", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
             }
         }
 
         /// <summary>
-        /// Tests that audio writer close write should throw when not opened
+        ///     Tests that constructor with filename validates zero sample rate
         /// </summary>
         [Fact]
-        public void AudioWriter_CloseWrite_ShouldThrowWhenNotOpened()
+        public void AudioWriter_Constructor_WithFilename_ZeroSampleRate_ShouldThrowInvalidDataException()
         {
-            AudioWriter writer = new AudioWriter("out.mp3", 2, 44100);
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
 
-            Assert.Throws<InvalidOperationException>(() => writer.CloseWrite());
+            try
+            {
+                InvalidDataException ex = Assert.Throws<InvalidDataException>(() => new AudioWriter(path, 2, 0));
+
+                Assert.Contains("Channels/Sample rate", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
         }
 
         /// <summary>
-        /// Tests that audio writer file ctor should set properties
+        ///     Tests that constructor with filename validates negative sample rate
         /// </summary>
         [Fact]
-        public void AudioWriter_FileCtor_ShouldSetProperties()
+        public void AudioWriter_Constructor_WithFilename_NegativeSampleRate_ShouldThrowInvalidDataException()
         {
-            AudioWriter writer = new AudioWriter("out.mp3", 2, 44100, 16);
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
 
+            try
+            {
+                InvalidDataException ex = Assert.Throws<InvalidDataException>(() => new AudioWriter(path, 2, -44100));
+
+                Assert.Contains("Channels/Sample rate", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with filename validates invalid bit depth 8
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_WithFilename_BitDepth8_ShouldThrowInvalidOperationException()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
+            {
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => new AudioWriter(path, 2, 44100, 8));
+
+                Assert.Contains("bit depths", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with filename validates invalid bit depth 64
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_WithFilename_BitDepth64_ShouldThrowInvalidOperationException()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
+            {
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => new AudioWriter(path, 2, 44100, 64));
+
+                Assert.Contains("bit depths", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with filename validates empty filename
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_WithFilename_Empty_ShouldThrowArgumentException()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
+            {
+                ArgumentException ex = Assert.Throws<ArgumentException>(() => new AudioWriter(string.Empty, 2, 44100));
+
+                Assert.Contains("Filename", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with filename validates null filename
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_WithFilename_Null_ShouldThrowArgumentException()
+        {
+            try
+            {
+                ArgumentException ex = Assert.Throws<ArgumentException>(() => new AudioWriter((string)null, 2, 44100));
+
+                Assert.Contains("Filename", ex.Message);
+            }
+            finally
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with filename sets properties correctly
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_WithFilename_ShouldSetProperties()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
+            {
+                using AudioWriter writer = new(path, 2, 44100, 16);
+
+                Assert.Equal(path, writer.Filename);
+                Assert.True(writer.UseFilename);
+                Assert.Equal(2, writer.Channels);
+                Assert.Equal(44100, writer.SampleRate);
+                Assert.Equal(16, writer.BitDepth);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with stream validates null stream
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_WithStream_Null_ShouldThrowArgumentNullException()
+        {
+            using MemoryStream stream = new();
+
+            ArgumentNullException ex = Assert.Throws<ArgumentNullException>(() => new AudioWriter((Stream)null, 2, 44100));
+
+            Assert.Contains("destinationStream", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that constructor with stream sets properties correctly
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_WithStream_ShouldSetProperties()
+        {
+            using MemoryStream stream = new();
+
+            using AudioWriter writer = new(stream, 2, 44100, 16);
+
+            Assert.Null(writer.Filename);
+            Assert.False(writer.UseFilename);
             Assert.Equal(2, writer.Channels);
             Assert.Equal(44100, writer.SampleRate);
             Assert.Equal(16, writer.BitDepth);
-            Assert.True(writer.UseFilename);
+        }
+
+        /// <summary>
+        ///     Tests that constructor with stream and custom options sets encoder options
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_WithStream_CustomOptions_ShouldSetEncoderOptions()
+        {
+            using MemoryStream stream = new();
+
+            // Use default options (Mp3Encoder)
+            using AudioWriter writer = new(stream, 2, 44100);
+
             Assert.NotNull(writer.EncoderOptions);
         }
 
         /// <summary>
-        /// Tests that audio writer stream ctor should set properties
+        ///     Tests that Dispose does not throw on fresh instance
         /// </summary>
         [Fact]
-        public void AudioWriter_StreamCtor_ShouldSetProperties()
+        public void AudioWriter_Dispose_ShouldNotThrowOnFreshInstance()
         {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                AudioWriter writer = new AudioWriter(ms, 2, 44100, 16);
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
 
-                Assert.Equal(2, writer.Channels);
-                Assert.Equal(44100, writer.SampleRate);
-                Assert.Equal(16, writer.BitDepth);
-                Assert.False(writer.UseFilename);
-                Assert.Equal(ms, writer.DestinationStream);
+            try
+            {
+                using AudioWriter writer = new(path, 2, 44100);
+
+                bool threw = false;
+                try
+                {
+                    writer.Dispose();
+                }
+                catch
+                {
+                    threw = true;
+                }
+
+                Assert.False(threw);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
             }
         }
 
         /// <summary>
-        /// Tests that audio writer stream ctor should throw on negative channels
+        ///     Tests that Dispose can be called multiple times without throwing
         /// </summary>
         [Fact]
-        public void AudioWriter_StreamCtor_ShouldThrowOnNegativeChannels()
+        public void AudioWriter_MultipleDispose_ShouldNotThrow()
         {
-            using (MemoryStream ms = new MemoryStream())
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
             {
-                Assert.Throws<InvalidDataException>(() => new AudioWriter(ms, -1, 44100));
+                using AudioWriter writer = new(path, 2, 44100);
+
+                bool threw = false;
+                try
+                {
+                    writer.Dispose();
+                    writer.Dispose();
+                    writer.Dispose();
+                }
+                catch
+                {
+                    threw = true;
+                }
+
+                Assert.False(threw);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+
+        /// <summary>
+        ///     Tests that CloseWrite throws when not opened for writing
+        /// </summary>
+        [Fact]
+        public void AudioWriter_CloseWrite_NotOpened_ShouldThrowInvalidOperationException()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
+            {
+                using AudioWriter writer = new(path, 2, 44100);
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => writer.CloseWrite());
+
+                Assert.Contains("not opened", ex.Message);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
             }
         }
 
         /// <summary>
-        /// Tests that audio writer stream ctor should throw on zero sample rate
+        ///     Tests that CurrentFFmpegProcess is initially null
         /// </summary>
         [Fact]
-        public void AudioWriter_StreamCtor_ShouldThrowOnZeroSampleRate()
+        public void AudioWriter_CurrentFFmpegProcess_InitialState_ShouldBeNull()
         {
-            using (MemoryStream ms = new MemoryStream())
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
             {
-                Assert.Throws<InvalidDataException>(() => new AudioWriter(ms, 2, 0));
+                using AudioWriter writer = new(path, 2, 44100);
+
+                Assert.Null(writer.CurrentFFmpegProcess);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
             }
         }
 
         /// <summary>
-        /// Tests that audio writer stream ctor should throw on negative sample rate
+        ///     Tests that DestinationStream is initially null for filename constructor
         /// </summary>
         [Fact]
-        public void AudioWriter_StreamCtor_ShouldThrowOnNegativeSampleRate()
+        public void AudioWriter_DestinationStream_FilenameConstructor_ShouldBeNull()
         {
-            using (MemoryStream ms = new MemoryStream())
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
             {
-                Assert.Throws<InvalidDataException>(() => new AudioWriter(ms, 2, -1));
+                using AudioWriter writer = new(path, 2, 44100);
+
+                Assert.Null(writer.DestinationStream);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that DestinationStream is set for stream constructor
+        /// </summary>
+        [Fact]
+        public void AudioWriter_DestinationStream_StreamConstructor_ShouldBeSet()
+        {
+            using MemoryStream stream = new();
+
+            using AudioWriter writer = new(stream, 2, 44100);
+
+            Assert.NotNull(writer.DestinationStream);
+        }
+
+        /// <summary>
+        ///     Tests that OutputDataStream is initially null
+        /// </summary>
+        [Fact]
+        public void AudioWriter_OutputDataStream_InitialState_ShouldBeNull()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
+            {
+                using AudioWriter writer = new(path, 2, 44100);
+
+                Assert.Null(writer.OutputDataStream);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with custom ffmpeg executable sets it correctly
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_CustomFfmpeg_ShouldAcceptPath()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
+            {
+                using AudioWriter writer = new(path, 2, 44100, 16, null, "custom_ffmpeg");
+
+                Assert.NotNull(writer);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with stream and custom ffmpeg executable sets it correctly
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_WithStream_CustomFfmpeg_ShouldAcceptPath()
+        {
+            using MemoryStream stream = new();
+
+            using AudioWriter writer = new(stream, 2, 44100, 16, null, "custom_ffmpeg");
+
+            Assert.NotNull(writer);
+        }
+
+        /// <summary>
+        ///     Tests that constructor with filename and bit depth 24 works correctly
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_BitDepth24_ShouldSetCorrectly()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
+            {
+                using AudioWriter writer = new(path, 2, 44100, 24);
+
+                Assert.Equal(24, writer.BitDepth);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with filename and bit depth 32 works correctly
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_BitDepth32_ShouldSetCorrectly()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
+            {
+                using AudioWriter writer = new(path, 2, 44100, 32);
+
+                Assert.Equal(32, writer.BitDepth);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with filename and single channel works correctly
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_SingleChannel_ShouldSetCorrectly()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
+            {
+                using AudioWriter writer = new(path, 1, 48000);
+
+                Assert.Equal(1, writer.Channels);
+                Assert.Equal(48000, writer.SampleRate);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with filename and high sample rate works correctly
+        /// </summary>
+        [Fact]
+        public void AudioWriter_Constructor_HighSampleRate_ShouldSetCorrectly()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+
+            try
+            {
+                using AudioWriter writer = new(path, 6, 192000);
+
+                Assert.Equal(6, writer.Channels);
+                Assert.Equal(192000, writer.SampleRate);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
             }
         }
     }
