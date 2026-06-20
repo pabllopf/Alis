@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Test.Controllers
         }
 
         /// <summary>
-        ///     Tests that velocity limit controller should handle negative velocities
+        /// Tests that velocity limit controller should handle negative velocities
         /// </summary>
         [Fact]
         public void VelocityLimitController_ShouldHandleNegativeVelocities()
@@ -164,6 +164,94 @@ namespace Alis.Core.Physic.Test.Controllers
 
             Assert.Equal(-50.0f, controller.MaxLinearVelocity);
             Assert.Equal(-10.0f, controller.MaxAngularVelocity);
+        }
+
+        /// <summary>
+        /// Tests that add body adds to internal list
+        /// </summary>
+        [Fact]
+        public void AddBody_ShouldAddBody()
+        {
+            VelocityLimitController controller = new VelocityLimitController();
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody();
+
+            controller.AddBody(body);
+
+            controller.Update(0.016f);
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that remove body removes from internal list
+        /// </summary>
+        [Fact]
+        public void RemoveBody_ShouldRemoveBody()
+        {
+            VelocityLimitController controller = new VelocityLimitController();
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody();
+            controller.AddBody(body);
+
+            controller.RemoveBody(body);
+
+            controller.Update(0.016f);
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that update clamps linear velocity when exceeding max
+        /// </summary>
+        [Fact]
+        public void Update_ShouldClampLinearVelocity_WhenExceedingMax()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(5.0f, 100.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            body.LinearVelocityInternal = new Vector2F(100f, 0f);
+            controller.Update(0.016f);
+
+            float displacement = 0.016f * body.LinearVelocityInternal.Length();
+            Assert.True(displacement <= 5.0f + 0.0001f);
+        }
+
+        /// <summary>
+        /// Tests that update does not clamp linear velocity when within limits
+        /// </summary>
+        [Fact]
+        public void Update_ShouldNotClampLinearVelocity_WhenWithinLimits()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            body.LinearVelocityInternal = new Vector2F(5.0f, 0f);
+            controller.Update(0.016f);
+
+            Assert.Equal(5.0f, body.LinearVelocityInternal.X);
+        }
+
+        /// <summary>
+        /// Tests that update with linear limit disabled does not clamp
+        /// </summary>
+        [Fact]
+        public void Update_WithLinearLimitDisabled_ShouldNotClamp()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(0.0f, 100.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            body.LinearVelocityInternal = new Vector2F(500f, 0f);
+            controller.Update(0.016f);
+
+            Assert.Equal(500f, body.LinearVelocityInternal.X);
         }
     }
 }

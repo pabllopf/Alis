@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Math.Matrix;
@@ -330,6 +331,29 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             FixedArray3<string> array = new FixedArray3<string>();
 
             Assert.IsAssignableFrom<IEnumerable<string>>(array);
+        }
+
+        /// <summary>
+        ///     Tests that non-generic GetEnumerator is callable through IEnumerable.
+        /// </summary>
+        [Fact]
+        public void NonGenericGetEnumerator_IsCallable()
+        {
+            FixedArray3<string> array = new FixedArray3<string>();
+            array[0] = "a";
+            array[1] = "b";
+            array[2] = "c";
+
+            IEnumerator enumerator = ((IEnumerable)array).GetEnumerator();
+
+            Assert.NotNull(enumerator);
+            Assert.True(enumerator.MoveNext());
+            Assert.Equal("a", enumerator.Current);
+            Assert.True(enumerator.MoveNext());
+            Assert.Equal("b", enumerator.Current);
+            Assert.True(enumerator.MoveNext());
+            Assert.Equal("c", enumerator.Current);
+            Assert.False(enumerator.MoveNext());
         }
 
         /// <summary>
