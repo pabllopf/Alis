@@ -85,5 +85,28 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             Assert.NotNull(hull);
             Assert.True(hull.Count >= 3);
         }
+
+        /// <summary>
+        ///     Tests that get convex hull with collinear points eliminates interior points
+        /// </summary>
+        [Fact]
+        public void GetConvexHull_WithCollinearPoints_EliminatesInteriorPoints()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(5f, 0f),
+                new Vector2F(3f, 0f),
+                new Vector2F(4f, 0f),
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(2f, 0f)
+            });
+
+            Vertices hull = GiftWrap.GetConvexHull(vertices);
+
+            Assert.Equal(2, hull.Count);
+            Assert.Contains(new Vector2F(5f, 0f), hull);
+            Assert.Contains(new Vector2F(0f, 0f), hull);
+        }
     }
 }
