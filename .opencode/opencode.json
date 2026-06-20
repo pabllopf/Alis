@@ -46,10 +46,10 @@
           "attachment": false,
 
           "maxInputTokens": 262144,
-          "maxOutputTokens": 262144,
+          "maxOutputTokens": 128000,
           "limit": {
             "context": 262144,
-            "output": 262144
+            "output": 128000
           }
         },
 
