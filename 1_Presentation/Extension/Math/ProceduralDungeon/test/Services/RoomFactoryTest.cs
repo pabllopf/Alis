@@ -214,6 +214,18 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         }
 
         /// <summary>
+        ///     Tests that create room should throw when corridor direction is invalid.
+        /// </summary>
+        [Fact]
+        public void CreateRoom_ShouldThrowException_WhenCorridorDirectionIsInvalid()
+        {
+            RoomFactory factory = new RoomFactory();
+            CorridorData corridor = new CorridorData(10, 20, 4, 4, (Direction)99);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => factory.CreateRoom(5, 5, corridor));
+        }
+
+        /// <summary>
         ///     Tests that create boss room should throw exception when height is negative.
         /// </summary>
         [Fact]
