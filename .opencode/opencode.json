@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "llmstudio/unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
-  "small_model": "llmstudio/unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
+  "model": "llmstudio/unsloth/qwen3.6-35b-a3b-mtp",
+  "small_model": "llmstudio/unsloth/qwen3.6-35b-a3b-mtp",
 
   "provider": {
     "omlx": {
@@ -34,22 +34,6 @@
           "limit": {
             "context": 262144,
             "output": 262144
-          }
-        },
-
-         "unsloth/Qwen3.6-35B-A3B-MTP-GGUF": {
-          "name": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
-          "modalities": {
-            "input": ["text"],
-            "output": ["text"]
-          },
-          "attachment": false,
-
-          "maxInputTokens": 262144,
-          "maxOutputTokens": 128000,
-          "limit": {
-            "context": 262144,
-            "output": 128000
           }
         },
 
@@ -324,6 +308,39 @@
           "limit": {
             "context": 262144,
             "output": 131584
+          }
+        },
+
+        "qwen/qwen3.5-9b": {
+          "name": "qwen/qwen3.5-9b",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 262144,
+          "maxOutputTokens": 262144,
+          "limit": {
+            "context": 262144,
+            "output": 262144
+          }
+        },
+        
+
+         "unsloth/qwen3.6-35b-a3b-mtp": {
+          "name": "unsloth/qwen3.6-35b-a3b-mtp",
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "attachment": false,
+
+          "maxInputTokens": 262144,
+          "maxOutputTokens": 128000,
+          "limit": {
+            "context": 262144,
+            "output": 128000
           }
         },
         "liquid/lfm2-24b-a2b": {

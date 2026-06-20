@@ -204,6 +204,13 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "coverage/tasks/task-001.md",
+    "coverage/state/priority-targets.json",
+    "coverage/state/coverage-delta.json",
+    "coverage/state/sonarcloud-data.json",
+    "coverage/logs/execution-log.md",
+    "coverage/state/coverage-index.md",
+    "coverage/state/locks.md",
     "coverage/tasks/JointCollection-EnumerationGaps.md",
     "coverage/tests/ContactListHead-TrivialInterface.md",
     "coverage/tasks/ContactListHead-TrivialInterface.md",
@@ -227,19 +234,12 @@
     "coverage/tasks/task-002-fast-priority-queue.md",
     "coverage/tests/task-001-tests.md",
     "coverage/tasks/task-001-generic-priority-queue.md",
-    "coverage/tasks/task-001-AssetsWindow.md",
     "coverage/state/coverage-index.json",
-    "coverage/tasks/bayazit-decomposer-coverage.md",
-    "coverage/logs/execution-log.md",
-    "coverage/patterns/imgui-window-testing.md",
     "coverage/decisions",
     "coverage/patterns",
     "coverage/tests",
     "coverage/tasks",
     "coverage/state",
-    "coverage/logs",
-    "coverage",
-    "coverage/state/sonarcloud-raw.json",
     "Sin título.canvas"
   ]
 }
