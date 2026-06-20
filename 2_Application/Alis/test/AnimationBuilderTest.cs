@@ -111,6 +111,39 @@ namespace Alis.Test
         }
 
         /// <summary>
+        ///     Tests that AddFrame adds a frame and returns the builder.
+        /// </summary>
+        [Fact]
+        public void AddFrame_WithLambda_AddsFrameAndReturnsBuilder()
+        {
+            Context context = new Context();
+            AnimationBuilder builder = new AnimationBuilder(context);
+
+            AnimationBuilder result = builder.AddFrame(fb => fb.File("test.png").Build());
+
+            Assert.Same(builder, result);
+            Animation animation = builder.Build();
+            Assert.NotNull(animation.Frames);
+            Assert.Single(animation.Frames);
+        }
+
+        /// <summary>
+        ///     Tests that adding multiple frames works.
+        /// </summary>
+        [Fact]
+        public void AddFrame_MultipleFrames_AddsAllFrames()
+        {
+            Context context = new Context();
+            AnimationBuilder builder = new AnimationBuilder(context);
+
+            builder.AddFrame(fb => fb.File("frame1.png").Build());
+            builder.AddFrame(fb => fb.File("frame2.png").Build());
+
+            Animation animation = builder.Build();
+            Assert.Equal(2, animation.Frames.Count);
+        }
+
+        /// <summary>
         ///     Tests that chaining Name, Speed, and Order sets all properties correctly.
         /// </summary>
         [Fact]
