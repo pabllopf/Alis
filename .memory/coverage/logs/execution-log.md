@@ -61,6 +61,15 @@
 
 ## 2026-06-20T13:45:00Z
 
+- **Task**: GiftWrap.cs collinear points elimination
+- **File**: GiftWrapTest.cs
+- **Tests**: 1 new test (collinear interior points)
+- **Covered lines**: 124-126
+- **Status**: Completed
+- **Commit**: bf555157d
+
+## 2026-06-20T13:45:00Z
+
 - **Task**: AdsManager.cs constructor defaults and visibility flag tests
 - **File**: AdvancedAdsManagerTest.cs
 - **Tests**: 3 new tests (constructor defaults, banner visibility toggle, no-ad guard)

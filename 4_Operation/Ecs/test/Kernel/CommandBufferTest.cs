@@ -360,5 +360,48 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.True(entity.Has<AnotherComponent>());
         }
+
+        /// <summary>
+        ///     Tests that add component with object overload adds component
+        /// </summary>
+        [Fact]
+        public void AddComponent_WithObjectOverload_AddsComponent()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+            GameObject entity = scene.Create(new TestComponent());
+            object component = new AnotherComponent {Name = "ObjectAdded"};
+
+            buffer.AddComponent(entity, component);
+            buffer.Playback();
+
+            Assert.True(entity.Has<AnotherComponent>());
+        }
+
+        /// <summary>
+        ///     Tests that playback when scene does not allow changes throws invalid operation exception
+        /// </summary>
+        [Fact]
+        public void Playback_WhenSceneDoesNotAllowChanges_ThrowsInvalidOperationException()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+
+            scene.AllowStructualChanges = false;
+
+            Assert.Throws<InvalidOperationException>(() => buffer.Playback());
+        }
+
+        /// <summary>
+        ///     Tests that with without entity throws invalid operation exception
+        /// </summary>
+        [Fact]
+        public void With_WithoutEntity_ThrowsInvalidOperationException()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+
+            Assert.Throws<InvalidOperationException>(() => buffer.With(new TestComponent()));
+        }
     }
 }
