@@ -79,5 +79,61 @@ namespace Alis.Extension.Language.Dialogue.Test
 
             Assert.Throws<ArgumentNullException>(() => DialogActionExecutor.ExecuteAction(action, null));
         }
+
+        /// <summary>
+        ///     Tests that ExecuteActions with null actions throws exception
+        /// </summary>
+        [Fact]
+        public void ExecuteActions_WithNullActions_ThrowsArgumentNullException()
+        {
+            DialogContext context = new DialogContext("test");
+
+            Assert.Throws<ArgumentNullException>(() => DialogActionExecutor.ExecuteActions(null, context));
+        }
+
+        /// <summary>
+        ///     Tests that ExecuteActions with null context throws exception
+        /// </summary>
+        [Fact]
+        public void ExecuteActions_WithNullContext_ThrowsArgumentNullException()
+        {
+            IDialogAction[] actions = { new CallbackDialogAction("test") };
+
+            Assert.Throws<ArgumentNullException>(() => DialogActionExecutor.ExecuteActions(actions, null));
+        }
+
+        /// <summary>
+        ///     Tests that ExecuteActions returns correct count for valid actions
+        /// </summary>
+        [Fact]
+        public void ExecuteActions_WithValidActions_ReturnsSuccessCount()
+        {
+            DialogContext context = new DialogContext("test");
+            int executedCount = 0;
+            IDialogAction[] actions =
+            {
+                new CallbackDialogAction("a", () => executedCount++),
+                new CallbackDialogAction("b", () => executedCount++)
+            };
+
+            int result = DialogActionExecutor.ExecuteActions(actions, context);
+
+            Assert.Equal(2, result);
+            Assert.Equal(2, executedCount);
+        }
+
+        /// <summary>
+        ///     Tests that ExecuteActions handles empty collection
+        /// </summary>
+        [Fact]
+        public void ExecuteActions_WithEmptyCollection_ReturnsZero()
+        {
+            DialogContext context = new DialogContext("test");
+            IDialogAction[] actions = System.Array.Empty<IDialogAction>();
+
+            int result = DialogActionExecutor.ExecuteActions(actions, context);
+
+            Assert.Equal(0, result);
+        }
     }
 }
