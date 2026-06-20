@@ -161,5 +161,17 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(44100, original.Freq);
             Assert.Equal(48000, copy.Freq);
         }
+
+        /// <summary>
+        ///     Tests that AudioSpec readonly fields default to zero.
+        /// </summary>
+        [Fact]
+        public void AudioSpec_ReadonlyFields_DefaultToZero()
+        {
+            AudioSpec audioSpec = new AudioSpec();
+
+            Assert.Equal(0, audioSpec.silence);
+            Assert.Equal(0u, audioSpec.size);
+        }
     }
 }
