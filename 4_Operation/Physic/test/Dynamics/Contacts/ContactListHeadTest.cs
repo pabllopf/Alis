@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Physic.Dynamics.Contacts;
@@ -186,6 +187,53 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             }
 
             Assert.Equal(count1, count2);
+        }
+
+        /// <summary>
+        ///     Tests that non generic get enumerator returns contact enumerator
+        /// </summary>
+        [Fact]
+        public void GetEnumerator_NonGeneric_ReturnsContactEnumerator()
+        {
+            ContactListHead head = new ContactListHead();
+            IEnumerable nonGeneric = head;
+
+            IEnumerator result = nonGeneric.GetEnumerator();
+
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<IEnumerator<Contact>>(result);
+        }
+
+        /// <summary>
+        ///     Tests that non generic current returns current contact
+        /// </summary>
+        [Fact]
+        public void Enumerator_Current_NonGeneric_ReturnsCurrentContact()
+        {
+            ContactListHead head = new ContactListHead();
+            IEnumerable nonGeneric = head;
+            IEnumerator enumerator = nonGeneric.GetEnumerator();
+
+            object current = enumerator.Current;
+
+            Assert.NotNull(current);
+            Assert.IsAssignableFrom<Contact>(current);
+        }
+
+        /// <summary>
+        ///     Tests that reset resets enumerator to head
+        /// </summary>
+        [Fact]
+        public void Enumerator_Reset_ResetsToHead()
+        {
+            ContactListHead head = new ContactListHead();
+            IEnumerable nonGeneric = head;
+            IEnumerator enumerator = nonGeneric.GetEnumerator();
+
+            enumerator.Reset();
+
+            Assert.NotNull(enumerator.Current);
+            Assert.Same(head, enumerator.Current);
         }
     }
 }
