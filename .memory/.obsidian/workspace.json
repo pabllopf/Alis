@@ -204,6 +204,8 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "coverage/tests/ContactListHead-TrivialInterface.md",
+    "coverage/tasks/ContactListHead-TrivialInterface.md",
     "coverage/tasks/EarclipDecomposer-ConvexPartition.md",
     "coverage/logs/archive/task-002-tests.md",
     "coverage/logs/archive/task-001-tests.md",
@@ -230,8 +232,6 @@
     "coverage/logs/execution-log.md",
     "coverage/patterns/imgui-window-testing.md",
     "coverage/tests/audio-player-window-test.md",
-    "coverage/state/locks.md",
-    "coverage/tasks/audio-player-window-coverage.md",
     "coverage/decisions",
     "coverage/patterns",
     "coverage/tests",

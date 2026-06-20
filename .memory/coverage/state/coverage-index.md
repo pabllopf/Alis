@@ -64,6 +64,8 @@ Last updated: 2026-06-20T13:00:00Z
 | EarclipDecomposer.cs | 9d3e3bf5a |
 | CircleShape.cs | 71aecdaa3 |
 | DialogActionExecutor.cs | 12a52066 |
+| AdsManager.cs | a4f14acf5 |
+| ContactListHead.cs | 4174a971d |
 
 ## Pending (unaddressed from SonarCloud)
 

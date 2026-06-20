@@ -35,57 +35,51 @@ using Xunit;
 namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
 {
     /// <summary>
-    ///     Test class for <see cref="DungeonData" />.
+    ///     Tests the <see cref="DungeonData" /> class.
     /// </summary>
     public class DungeonDataTest
     {
         /// <summary>
-        ///     Tests that default constructor should initialize with empty values.
+        ///     Tests that default constructor initializes empty collections.
         /// </summary>
         [Fact]
-        public void DefaultConstructor_ShouldInitializeWithEmptyValues()
+        public void DefaultConstructor_InitializesEmptyCollections()
         {
-            DungeonData dungeonData = new DungeonData();
+            DungeonData data = new DungeonData();
 
-            Assert.NotNull(dungeonData.Board);
-            Assert.Equal(0, dungeonData.Width);
-            Assert.Equal(0, dungeonData.Height);
-            Assert.NotNull(dungeonData.Rooms);
-            Assert.Empty(dungeonData.Rooms);
-            Assert.NotNull(dungeonData.Corridors);
-            Assert.Empty(dungeonData.Corridors);
+            Assert.NotNull(data.Board);
+            Assert.NotNull(data.Rooms);
+            Assert.NotNull(data.Corridors);
+            Assert.Equal(0, data.Width);
+            Assert.Equal(0, data.Height);
+            Assert.Empty(data.Rooms);
+            Assert.Empty(data.Corridors);
         }
 
         /// <summary>
-        ///     Tests that constructor should initialize all properties correctly.
+        ///     Tests that internal constructor with valid parameters creates a valid instance.
         /// </summary>
         [Fact]
-        public void Constructor_ShouldInitializeAllPropertiesCorrectly()
+        public void InternalConstructor_WithValidParameters_CreatesInstance()
         {
             BoardSquare[,] board = new BoardSquare[10, 10];
-            List<RoomData> rooms = new List<RoomData>
-            {
-                new RoomData(5, 5, 3, 3, Direction.North)
-            };
-            List<CorridorData> corridors = new List<CorridorData>
-            {
-                new CorridorData(6, 6, 2, 2, Direction.South)
-            };
+            List<RoomData> rooms = new List<RoomData> { new RoomData(0, 0, 5, 5, Direction.North) };
+            List<CorridorData> corridors = new List<CorridorData> { new CorridorData(0, 0, 3, 3, Direction.North) };
 
-            DungeonData dungeonData = new DungeonData(board, rooms, corridors);
+            DungeonData data = new DungeonData(board, rooms, corridors);
 
-            Assert.NotNull(dungeonData.Board);
-            Assert.Equal(rooms, dungeonData.Rooms);
-            Assert.Equal(corridors, dungeonData.Corridors);
-            Assert.Equal(10, dungeonData.Width);
-            Assert.Equal(10, dungeonData.Height);
+            Assert.Same(board, data.Board);
+            Assert.Same(rooms, data.Rooms);
+            Assert.Same(corridors, data.Corridors);
+            Assert.Equal(10, data.Width);
+            Assert.Equal(10, data.Height);
         }
 
         /// <summary>
-        ///     Tests that constructor should throw argument null exception when board is null.
+        ///     Tests that internal constructor throws when board is null.
         /// </summary>
         [Fact]
-        public void Constructor_ShouldThrowArgumentNullException_WhenBoardIsNull()
+        public void InternalConstructor_WithNullBoard_ThrowsArgumentNullException()
         {
             List<RoomData> rooms = new List<RoomData>();
             List<CorridorData> corridors = new List<CorridorData>();
@@ -94,10 +88,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         }
 
         /// <summary>
-        ///     Tests that constructor should throw argument null exception when rooms is null.
+        ///     Tests that internal constructor throws when rooms is null.
         /// </summary>
         [Fact]
-        public void Constructor_ShouldThrowArgumentNullException_WhenRoomsIsNull()
+        public void InternalConstructor_WithNullRooms_ThrowsArgumentNullException()
         {
             BoardSquare[,] board = new BoardSquare[10, 10];
             List<CorridorData> corridors = new List<CorridorData>();
@@ -106,10 +100,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         }
 
         /// <summary>
-        ///     Tests that constructor should throw argument null exception when corridors is null.
+        ///     Tests that internal constructor throws when corridors is null.
         /// </summary>
         [Fact]
-        public void Constructor_ShouldThrowArgumentNullException_WhenCorridorsIsNull()
+        public void InternalConstructor_WithNullCorridors_ThrowsArgumentNullException()
         {
             BoardSquare[,] board = new BoardSquare[10, 10];
             List<RoomData> rooms = new List<RoomData>();
@@ -118,205 +112,153 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         }
 
         /// <summary>
-        ///     Tests that width property should return correct board width.
+        ///     Tests that Board setter accepts valid board.
         /// </summary>
         [Fact]
-        public void Width_ShouldReturnCorrectBoardWidth()
+        public void Board_SetValid_StoresValue()
         {
-            BoardSquare[,] board = new BoardSquare[15, 20];
-            List<RoomData> rooms = new List<RoomData>();
-            List<CorridorData> corridors = new List<CorridorData>();
-            DungeonData dungeonData = new DungeonData(board, rooms, corridors);
-
-            int width = dungeonData.Width;
-
-            Assert.Equal(15, width);
-        }
-
-        /// <summary>
-        ///     Tests that height property should return correct board height.
-        /// </summary>
-        [Fact]
-        public void Height_ShouldReturnCorrectBoardHeight()
-        {
-            BoardSquare[,] board = new BoardSquare[15, 20];
-            List<RoomData> rooms = new List<RoomData>();
-            List<CorridorData> corridors = new List<CorridorData>();
-            DungeonData dungeonData = new DungeonData(board, rooms, corridors);
-
-            int height = dungeonData.Height;
-
-            Assert.Equal(20, height);
-        }
-
-        /// <summary>
-        ///     Tests that rooms property should return read only list.
-        /// </summary>
-        [Fact]
-        public void Rooms_ShouldReturnReadOnlyList()
-        {
-            BoardSquare[,] board = new BoardSquare[10, 10];
-            List<RoomData> rooms = new List<RoomData>
-            {
-                new RoomData(5, 5, 3, 3, Direction.North),
-                new RoomData(8, 8, 4, 4, Direction.South, true)
-            };
-            List<CorridorData> corridors = new List<CorridorData>();
-            DungeonData dungeonData = new DungeonData(board, rooms, corridors);
-
-            List<RoomData> result = dungeonData.Rooms;
-
-            Assert.Equal(2, result.Count);
-            Assert.IsAssignableFrom<IReadOnlyList<RoomData>>(result);
-        }
-
-        /// <summary>
-        ///     Tests that corridors property should return read only list.
-        /// </summary>
-        [Fact]
-        public void Corridors_ShouldReturnReadOnlyList()
-        {
-            BoardSquare[,] board = new BoardSquare[10, 10];
-            List<RoomData> rooms = new List<RoomData>();
-            List<CorridorData> corridors = new List<CorridorData>
-            {
-                new CorridorData(5, 5, 2, 2, Direction.East),
-                new CorridorData(7, 7, 3, 3, Direction.West)
-            };
-            DungeonData dungeonData = new DungeonData(board, rooms, corridors);
-
-            List<CorridorData> result = dungeonData.Corridors;
-
-            Assert.Equal(2, result.Count);
-            Assert.IsAssignableFrom<IReadOnlyList<CorridorData>>(result);
-        }
-
-        /// <summary>
-        ///     Tests that constructor should accept empty lists.
-        /// </summary>
-        [Fact]
-        public void Constructor_ShouldAcceptEmptyLists()
-        {
+            DungeonData data = new DungeonData();
             BoardSquare[,] board = new BoardSquare[5, 5];
+
+            data.Board = board;
+
+            Assert.Same(board, data.Board);
+        }
+
+        /// <summary>
+        ///     Tests that Board setter throws when value is null.
+        /// </summary>
+        [Fact]
+        public void Board_SetNull_ThrowsArgumentNullException()
+        {
+            DungeonData data = new DungeonData();
+
+            Assert.Throws<ArgumentNullException>(() => data.Board = null);
+        }
+
+        /// <summary>
+        ///     Tests that Board setter throws when width is zero.
+        /// </summary>
+        [Fact]
+        public void Board_SetZeroWidth_ThrowsArgumentException()
+        {
+            DungeonData data = new DungeonData();
+
+            Assert.Throws<ArgumentException>(() => data.Board = new BoardSquare[0, 5]);
+        }
+
+        /// <summary>
+        ///     Tests that Board setter throws when height is zero.
+        /// </summary>
+        [Fact]
+        public void Board_SetZeroHeight_ThrowsArgumentException()
+        {
+            DungeonData data = new DungeonData();
+
+            Assert.Throws<ArgumentException>(() => data.Board = new BoardSquare[5, 0]);
+        }
+
+        /// <summary>
+        ///     Tests that Rooms setter accepts valid list.
+        /// </summary>
+        [Fact]
+        public void Rooms_SetValid_StoresValue()
+        {
+            DungeonData data = new DungeonData();
             List<RoomData> rooms = new List<RoomData>();
+
+            data.Rooms = rooms;
+
+            Assert.Same(rooms, data.Rooms);
+        }
+
+        /// <summary>
+        ///     Tests that Rooms setter throws when value is null.
+        /// </summary>
+        [Fact]
+        public void Rooms_SetNull_ThrowsArgumentNullException()
+        {
+            DungeonData data = new DungeonData();
+
+            Assert.Throws<ArgumentNullException>(() => data.Rooms = null);
+        }
+
+        /// <summary>
+        ///     Tests that Corridors setter accepts valid list.
+        /// </summary>
+        [Fact]
+        public void Corridors_SetValid_StoresValue()
+        {
+            DungeonData data = new DungeonData();
             List<CorridorData> corridors = new List<CorridorData>();
 
-            DungeonData dungeonData = new DungeonData(board, rooms, corridors);
+            data.Corridors = corridors;
 
-            Assert.Empty(dungeonData.Rooms);
-            Assert.Empty(dungeonData.Corridors);
+            Assert.Same(corridors, data.Corridors);
         }
 
         /// <summary>
-        ///     Tests that Board property should be mutable.
+        ///     Tests that Corridors setter throws when value is null.
         /// </summary>
         [Fact]
-        public void Board_ShouldBeMutable()
+        public void Corridors_SetNull_ThrowsArgumentNullException()
         {
-            DungeonData dungeonData = new DungeonData();
-            BoardSquare[,] newBoard = new BoardSquare[20, 30];
+            DungeonData data = new DungeonData();
 
-            dungeonData.Board = newBoard;
-
-            Assert.Equal(newBoard, dungeonData.Board);
-            Assert.Equal(20, dungeonData.Width);
-            Assert.Equal(30, dungeonData.Height);
+            Assert.Throws<ArgumentNullException>(() => data.Corridors = null);
         }
 
         /// <summary>
-        ///     Tests that Rooms property should be mutable.
+        ///     Tests that Width returns the correct board width.
         /// </summary>
         [Fact]
-        public void Rooms_ShouldBeMutable()
+        public void Width_ReturnsCorrectValue()
         {
-            DungeonData dungeonData = new DungeonData();
-            List<RoomData> newRooms = new List<RoomData>
-            {
-                new RoomData(1, 1, 3, 3, Direction.North),
-                new RoomData(10, 10, 5, 5, Direction.South, true)
-            };
+            DungeonData data = new DungeonData();
+            data.Board = new BoardSquare[15, 20];
 
-            dungeonData.Rooms = newRooms;
-
-            Assert.Equal(newRooms, dungeonData.Rooms);
-            Assert.Equal(2, dungeonData.Rooms.Count);
+            Assert.Equal(15, data.Width);
         }
 
         /// <summary>
-        ///     Tests that Corridors property should be mutable.
+        ///     Tests that Height returns the correct board height.
         /// </summary>
         [Fact]
-        public void Corridors_ShouldBeMutable()
+        public void Height_ReturnsCorrectValue()
         {
-            DungeonData dungeonData = new DungeonData();
-            List<CorridorData> newCorridors = new List<CorridorData>
-            {
-                new CorridorData(5, 5, 2, 2, Direction.East),
-                new CorridorData(15, 15, 3, 3, Direction.West)
-            };
+            DungeonData data = new DungeonData();
+            data.Board = new BoardSquare[15, 20];
 
-            dungeonData.Corridors = newCorridors;
-
-            Assert.Equal(newCorridors, dungeonData.Corridors);
-            Assert.Equal(2, dungeonData.Corridors.Count);
+            Assert.Equal(20, data.Height);
         }
 
         /// <summary>
-        ///     Tests that Width and Height properties work correctly with various board sizes.
-        /// </summary>
-        [Theory, InlineData(1, 1), InlineData(100, 100), InlineData(50, 75), InlineData(1, 1000), InlineData(1000, 1)]
-        public void Dimensions_ShouldReturnCorrectValuesForVariousBoardSizes(int boardWidth, int boardHeight)
-        {
-            BoardSquare[,] board = new BoardSquare[boardWidth, boardHeight];
-            DungeonData dungeonData = new DungeonData(board, new List<RoomData>(), new List<CorridorData>());
-
-            int width = dungeonData.Width;
-            int height = dungeonData.Height;
-
-            Assert.Equal(boardWidth, width);
-            Assert.Equal(boardHeight, height);
-        }
-
-        /// <summary>
-        ///     Tests that constructor preserves list references correctly.
+        ///     Tests that Validate passes with valid data.
         /// </summary>
         [Fact]
-        public void Constructor_ShouldPreserveListReferences()
+        public void Validate_WithValidData_DoesNotThrow()
         {
-            BoardSquare[,] board = new BoardSquare[10, 10];
-            List<RoomData> rooms = new List<RoomData> {new RoomData(0, 0, 1, 1, Direction.North)};
-            List<CorridorData> corridors = new List<CorridorData> {new CorridorData(5, 5, 1, 1, Direction.East)};
+            DungeonData data = new DungeonData();
+            data.Board = new BoardSquare[10, 10];
+            data.Rooms = new List<RoomData>();
+            data.Corridors = new List<CorridorData>();
 
-            DungeonData dungeonData = new DungeonData(board, rooms, corridors);
-
-            Assert.Same(rooms, dungeonData.Rooms);
-            Assert.Same(corridors, dungeonData.Corridors);
+            data.Validate();
         }
 
         /// <summary>
-        ///     Tests that properties can be modified after construction.
+        ///     Tests that Validate throws when board dimensions are invalid (default constructor gives 0x0).
         /// </summary>
         [Fact]
-        public void Properties_ShouldAllBeModifiableAfterConstruction()
+        public void Validate_WithDefaultZeroBoard_ThrowsArgumentException()
         {
-            BoardSquare[,] originalBoard = new BoardSquare[10, 10];
-            List<RoomData> originalRooms = new List<RoomData>();
-            List<CorridorData> originalCorridors = new List<CorridorData>();
-            DungeonData dungeonData = new DungeonData(originalBoard, originalRooms, originalCorridors);
+            DungeonData data = new DungeonData();
+            data.Rooms = new List<RoomData>();
+            data.Corridors = new List<CorridorData>();
 
-            BoardSquare[,] newBoard = new BoardSquare[20, 20];
-            List<RoomData> newRooms = new List<RoomData> {new RoomData(0, 0, 1, 1, Direction.North)};
-            List<CorridorData> newCorridors = new List<CorridorData> {new CorridorData(0, 0, 1, 1, Direction.South)};
-
-            dungeonData.Board = newBoard;
-            dungeonData.Rooms = newRooms;
-            dungeonData.Corridors = newCorridors;
-
-            Assert.Equal(newBoard, dungeonData.Board);
-            Assert.Equal(newRooms, dungeonData.Rooms);
-            Assert.Equal(newCorridors, dungeonData.Corridors);
-            Assert.Equal(20, dungeonData.Width);
-            Assert.Equal(20, dungeonData.Height);
+            Assert.Throws<ArgumentException>(() => data.Validate());
         }
+
+
     }
 }
