@@ -204,6 +204,7 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "coverage/tasks/JointCollection-EnumerationGaps.md",
     "coverage/tests/ContactListHead-TrivialInterface.md",
     "coverage/tasks/ContactListHead-TrivialInterface.md",
     "coverage/tasks/EarclipDecomposer-ConvexPartition.md",
@@ -231,7 +232,6 @@
     "coverage/tasks/bayazit-decomposer-coverage.md",
     "coverage/logs/execution-log.md",
     "coverage/patterns/imgui-window-testing.md",
-    "coverage/tests/audio-player-window-test.md",
     "coverage/decisions",
     "coverage/patterns",
     "coverage/tests",
