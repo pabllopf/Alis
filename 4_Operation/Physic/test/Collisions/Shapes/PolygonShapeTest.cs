@@ -274,5 +274,127 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
 
             Assert.NotNull(polygon.Vertices);
         }
+
+        /// <summary>
+        ///     Tests that compare to returns true for equal polygons
+        /// </summary>
+        [Fact]
+        public void CompareTo_EqualPolygons_ReturnsTrue()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) };
+            PolygonShape a = new PolygonShape(vertices, 1.0f);
+            PolygonShape b = new PolygonShape(vertices, 1.0f);
+
+            bool equal = a.CompareTo(b);
+
+            Assert.True(equal);
+        }
+
+        /// <summary>
+        ///     Tests that compare to returns false for different polygons
+        /// </summary>
+        [Fact]
+        public void CompareTo_DifferentPolygons_ReturnsFalse()
+        {
+            Vertices verticesA = new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) };
+            Vertices verticesB = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(0, 2) };
+            PolygonShape a = new PolygonShape(verticesA, 1.0f);
+            PolygonShape b = new PolygonShape(verticesB, 1.0f);
+
+            bool equal = a.CompareTo(b);
+
+            Assert.False(equal);
+        }
+
+        /// <summary>
+        ///     Tests that clone creates independent copy
+        /// </summary>
+        [Fact]
+        public void Clone_CreatesIndependentCopy()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) };
+            PolygonShape original = new PolygonShape(vertices, 1.0f);
+
+            PolygonShape clone = (PolygonShape)original.Clone();
+
+            Assert.NotSame(original, clone);
+            Assert.Equal(original.ShapeType, clone.ShapeType);
+            Assert.NotNull(clone.Vertices);
+        }
+
+        /// <summary>
+        ///     Tests that compute aabb should return valid bounds
+        /// </summary>
+        [Fact]
+        public void ComputeAabb_ShouldReturnValidBounds()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(2, 2), new Vector2F(0, 2) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+
+            polygon.ComputeAabb(out Aabb aabb, ref transform, 0);
+
+            Assert.True(aabb.LowerBound.X <= aabb.UpperBound.X);
+            Assert.True(aabb.LowerBound.Y <= aabb.UpperBound.Y);
+        }
+
+        /// <summary>
+        ///     Tests that ray cast should return true when ray hits polygon
+        /// </summary>
+        [Fact]
+        public void RayCast_ShouldReturnTrue_WhenRayHitsPolygon()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(10, 0), new Vector2F(10, 10), new Vector2F(0, 10) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(-5, 5),
+                Point2 = new Vector2F(15, 5),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = polygon.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.True(hit);
+            Assert.True(output.Fraction > 0);
+        }
+
+        /// <summary>
+        ///     Tests that ray cast should return false when ray misses polygon
+        /// </summary>
+        [Fact]
+        public void RayCast_ShouldReturnFalse_WhenRayMissesPolygon()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(10, 0), new Vector2F(10, 10), new Vector2F(0, 10) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(20, 20),
+                Point2 = new Vector2F(30, 30),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = polygon.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        ///     Tests that compute submerged area returns zero when above water
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_AboveWater_ReturnsZero()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            Vector2F normal = new Vector2F(0, 1);
+
+            float area = polygon.ComputeSubmergedArea(ref normal, -10, ref transform, out Vector2F sc);
+
+            Assert.Equal(0, area);
+        }
     }
 }

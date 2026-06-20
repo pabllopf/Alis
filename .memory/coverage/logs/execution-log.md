@@ -107,3 +107,19 @@
 - **Tests**: 2 new tests (idempotent registration, many types unique IDs)
 - **Status**: Completed
 - **Commit**: b4ece162c
+
+## 2026-06-20T15:00:00Z
+
+- **Task**: JointCollection.cs enumeration edge coverage
+- **File**: JointCollectionTest.cs
+- **Tests**: 20 new tests (Contains, IndexOf, Count, indexer, read-only, CopyTo, IEnumerable, enumeration edge cases)
+- **Status**: Completed
+- **Commit**: a0022a00d
+
+## 2026-06-20T15:15:00Z
+
+- **Task**: GravityController.cs method coverage
+- **File**: GravityControllerTest.cs
+- **Tests**: 4 new tests (AddBody, AddPoint, Linear gravity type, Point gravity)
+- **Status**: Completed
+- **Commit**: 48de806e8
