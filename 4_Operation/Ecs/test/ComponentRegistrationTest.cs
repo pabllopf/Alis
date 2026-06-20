@@ -97,5 +97,32 @@ namespace Alis.Core.Ecs.Test
             Assert.NotEqual(default(ComponentId), posId);
             Assert.NotEqual(default(ComponentId), healthId);
         }
+
+        /// <summary>
+        ///     Tests registering a component multiple times is idempotent
+        /// </summary>
+        [Fact]
+        public void RegisterComponent_MultipleTimes_IsIdempotent()
+        {
+            ComponentId id1 = Component<Damage>.Id;
+            ComponentId id2 = Component<Damage>.Id;
+
+            Assert.Equal(id1, id2);
+        }
+
+        /// <summary>
+        ///     Tests that many component types get unique IDs
+        /// </summary>
+        [Fact]
+        public void Component_ManyTypesGetUniqueIds()
+        {
+            ComponentId posId = Component<Transform>.Id;
+            ComponentId testId = Component<TestComponent>.Id;
+            ComponentId armorId = Component<Armor>.Id;
+
+            Assert.NotEqual(posId, testId);
+            Assert.NotEqual(testId, armorId);
+            Assert.NotEqual(posId, armorId);
+        }
     }
 }
