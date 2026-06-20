@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Sdl2.Delegates;
 using Alis.Extension.Graphic.Sdl2.Structs;
 using Xunit;
 
@@ -130,6 +131,20 @@ namespace Alis.Extension.Graphic.Sdl2.Test
 
             Assert.Equal(original.Freq, copy.Freq);
             Assert.Equal(original.Channels, copy.Channels);
+        }
+
+        /// <summary>
+        ///     Tests setting and getting the Callback delegate property.
+        /// </summary>
+        [Fact]
+        public void AudioSpec_SetCallback_StoresDelegateCorrectly()
+        {
+            AudioSpec audioSpec = new AudioSpec();
+            SdlAudioCallback callback = (userdata, stream, len) => { };
+
+            audioSpec.Callback = callback;
+
+            Assert.Equal(callback, audioSpec.Callback);
         }
 
         /// <summary>
