@@ -305,5 +305,61 @@ namespace Alis.Extension.Ads.GoogleAds.Test
             Assert.Equal(customTag, manager.Tag);
             Assert.True(manager.IsInitialized);
         }
+
+        /// <summary>
+        ///     Tests that constructor sets default properties
+        /// </summary>
+        [Fact]
+        public void Constructor_WithContext_ShouldSetDefaultProperties()
+        {
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+
+            Assert.Equal("AdsManager", manager.Name);
+            Assert.Equal("Ads", manager.Tag);
+            Assert.False(manager.IsInitialized);
+            Assert.False(manager.IsBannerAdLoaded);
+            Assert.False(manager.IsInterstitialAdLoaded);
+            Assert.False(manager.IsRewardedVideoAdLoaded);
+            Assert.False(manager._isBannerAdVisible);
+        }
+
+        /// <summary>
+        ///     Tests that ShowBannerAd and HideBannerAd toggle visibility flag
+        /// </summary>
+        [Fact]
+        public async Task ShowAndHideBannerAd_ShouldToggleVisibilityFlag()
+        {
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner", "interstitial", "rewarded");
+            await manager.InitializeAsync(config);
+            await manager.LoadBannerAdAsync("banner");
+
+            Assert.False(manager._isBannerAdVisible);
+
+            manager.ShowBannerAd();
+            Assert.True(manager._isBannerAdVisible);
+
+            manager.HideBannerAd();
+            Assert.False(manager._isBannerAdVisible);
+        }
+
+        /// <summary>
+        ///     Tests that ShowBannerAd without loaded ad does not set visibility
+        /// </summary>
+        [Fact]
+        public async Task ShowBannerAd_WithoutLoadedAd_ShouldNotSetVisible()
+        {
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner", "interstitial", "rewarded");
+            await manager.InitializeAsync(config);
+
+            manager.ShowBannerAd();
+
+            Assert.False(manager._isBannerAdVisible);
+        }
+
     }
 }
