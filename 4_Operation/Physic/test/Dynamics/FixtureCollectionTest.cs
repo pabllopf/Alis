@@ -338,6 +338,72 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Throws<InvalidOperationException>(() => enumerator.Current);
         }
+
+        /// <summary>
+        ///     Tests that contains returns true for fixture in collection
+        /// </summary>
+        [Fact]
+        public void Contains_WithFixtureInCollection_ReturnsTrue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+
+            bool result = body.FixtureList.Contains(fixture);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that contains returns false for fixture not in collection
+        /// </summary>
+        [Fact]
+        public void Contains_WithFixtureNotInCollection_ReturnsFalse()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            Fixture fixture = new Fixture(new CircleShape(0.3f, 1.0f));
+
+            bool result = collection.Contains(fixture);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that non generic enumerator current returns correct fixture when not modified
+        /// </summary>
+        [Fact]
+        public void NonGenericEnumerator_Current_ReturnsCorrectFixture()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+            IEnumerator enumerator = ((IEnumerable)body.FixtureList).GetEnumerator();
+
+            enumerator.MoveNext();
+
+            Assert.Equal(fixture, enumerator.Current);
+        }
+
+        /// <summary>
+        ///     Tests that enumerator reset then enumerate works correctly
+        /// </summary>
+        [Fact]
+        public void Enumerator_ResetThenEnumerate_Works()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.CreateRectangle(0.5f, 0.5f, 1.0f, Vector2F.Zero);
+            FixtureCollection.FixtureEnumerator enumerator = body.FixtureList.GetEnumerator();
+
+            enumerator.MoveNext();
+            enumerator.MoveNext();
+            Assert.False(enumerator.MoveNext());
+
+            enumerator.Reset();
+            Assert.True(enumerator.MoveNext());
+        }
     }
 }
 

@@ -60,6 +60,19 @@ namespace Alis.Test
         }
 
         /// <summary>
+        /// Tests that build returns frame with default state.
+        /// </summary>
+        [Fact]
+        public void Build_Default_ReturnsDefaultFrame()
+        {
+            FrameBuilder builder = new FrameBuilder();
+
+            Frame frame = builder.Build();
+
+            Assert.Null(frame.NameFile);
+        }
+
+        /// <summary>
         /// Tests that build returns frame with configured file name
         /// </summary>
         [Fact]

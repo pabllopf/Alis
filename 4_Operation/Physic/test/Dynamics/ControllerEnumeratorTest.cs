@@ -190,6 +190,41 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Throws<InvalidOperationException>(() => enumerator.Current);
         }
+
+        /// <summary>
+        /// Tests that enumerator reset then enumerate works
+        /// </summary>
+        [Fact]
+        public void ResetThenEnumerate_Works()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.Add(new GravityController(1.0f));
+            world.Add(new GravityController(2.0f));
+            ControllerEnumerator enumerator = world.ControllerList.GetEnumerator();
+
+            enumerator.MoveNext();
+            enumerator.MoveNext();
+            Assert.False(enumerator.MoveNext());
+
+            enumerator.Reset();
+            Assert.True(enumerator.MoveNext());
+        }
+
+        /// <summary>
+        /// Tests that dispose clears enumerator state
+        /// </summary>
+        [Fact]
+        public void Dispose_ClearsState()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.Add(new GravityController(1.0f));
+            ControllerEnumerator enumerator = world.ControllerList.GetEnumerator();
+
+            enumerator.Dispose();
+
+            Assert.False(enumerator.MoveNext());
+        }
+
     }
 }
 
