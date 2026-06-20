@@ -395,7 +395,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
             body.CreateCircle(0.5f, 1.0f);
             body.CreateRectangle(0.5f, 0.5f, 1.0f, Vector2F.Zero);
-            FixtureCollection.FixtureEnumerator enumerator = body.FixtureList.GetEnumerator();
+            IEnumerator enumerator = body.FixtureList.GetEnumerator();
 
             enumerator.MoveNext();
             enumerator.MoveNext();

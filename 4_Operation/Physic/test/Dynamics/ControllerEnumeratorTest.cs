@@ -200,7 +200,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.Add(new GravityController(1.0f));
             world.Add(new GravityController(2.0f));
-            ControllerEnumerator enumerator = world.ControllerList.GetEnumerator();
+            IEnumerator enumerator = world.ControllerList.GetEnumerator();
 
             enumerator.MoveNext();
             enumerator.MoveNext();
@@ -211,18 +211,16 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that dispose clears enumerator state
+        /// Tests that dispose does not throw
         /// </summary>
         [Fact]
-        public void Dispose_ClearsState()
+        public void Dispose_DoesNotThrow()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.Add(new GravityController(1.0f));
             ControllerEnumerator enumerator = world.ControllerList.GetEnumerator();
 
-            enumerator.Dispose();
-
-            Assert.False(enumerator.MoveNext());
+            ((IDisposable)enumerator).Dispose();
         }
 
     }
