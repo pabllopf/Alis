@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Math.ProceduralDungeon.Interfaces;
 using Alis.Extension.Math.ProceduralDungeon.Models;
+using Moq;
 using Xunit;
 
 namespace Alis.Extension.Math.ProceduralDungeon.Test
@@ -92,6 +94,42 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
             };
 
             Assert.Throws<ArgumentException>(() => new Dungeon(config));
+        }
+
+        /// <summary>
+        ///     Tests that internal constructor with valid dependencies creates a valid instance.
+        /// </summary>
+        [Fact]
+        public void Constructor_InternalWithValidDependencies_CreatesValidInstance()
+        {
+            Mock<IDungeonGenerator> generatorMock = new Mock<IDungeonGenerator>();
+            Mock<IRandomNumberGenerator> randomMock = new Mock<IRandomNumberGenerator>();
+
+            using Dungeon dungeon = new Dungeon(generatorMock.Object, randomMock.Object);
+
+            Assert.NotNull(dungeon);
+        }
+
+        /// <summary>
+        ///     Tests that internal constructor throws exception with null generator.
+        /// </summary>
+        [Fact]
+        public void Constructor_InternalWithNullGenerator_ThrowsArgumentNullException()
+        {
+            Mock<IRandomNumberGenerator> randomMock = new Mock<IRandomNumberGenerator>();
+
+            Assert.Throws<ArgumentNullException>(() => new Dungeon(null, randomMock.Object));
+        }
+
+        /// <summary>
+        ///     Tests that internal constructor throws exception with null random number generator.
+        /// </summary>
+        [Fact]
+        public void Constructor_InternalWithNullRandom_ThrowsArgumentNullException()
+        {
+            Mock<IDungeonGenerator> generatorMock = new Mock<IDungeonGenerator>();
+
+            Assert.Throws<ArgumentNullException>(() => new Dungeon(generatorMock.Object, null));
         }
 
         /// <summary>
