@@ -333,5 +333,28 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
 
             Assert.IsAssignableFrom<IEnumerable<bool>>(array);
         }
+
+        /// <summary>
+        ///     Tests that non-generic GetEnumerator is callable through IEnumerable.
+        /// </summary>
+        [Fact]
+        public void NonGenericGetEnumerator_IsCallable()
+        {
+            FixedBitArray3 array = new FixedBitArray3();
+            array[0] = true;
+            array[1] = false;
+            array[2] = true;
+
+            IEnumerator enumerator = ((IEnumerable)array).GetEnumerator();
+
+            Assert.NotNull(enumerator);
+            Assert.True(enumerator.MoveNext());
+            Assert.True((bool)enumerator.Current);
+            Assert.True(enumerator.MoveNext());
+            Assert.False((bool)enumerator.Current);
+            Assert.True(enumerator.MoveNext());
+            Assert.True((bool)enumerator.Current);
+            Assert.False(enumerator.MoveNext());
+        }
     }
 }
