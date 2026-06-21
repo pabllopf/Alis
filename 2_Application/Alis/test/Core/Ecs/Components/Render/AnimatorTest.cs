@@ -510,5 +510,17 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Assert.NotEqual(frameAfterFirst, animator.CurrentFrameIndex);
         }
+
+        /// <summary>
+        ///     Tests that OnUpdate returns early when clock is null (default struct)
+        /// </summary>
+        [Fact]
+        public void Animator_OnUpdate_WithDefaultStruct_ShouldNotThrow()
+        {
+            Animator animator = default;
+
+            animator.OnUpdate(null!);
+        }
+
     }
 }
