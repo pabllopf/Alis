@@ -395,5 +395,93 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.NotEqual(settings1, settings2);
             Assert.True(settings1 != settings2);
         }
+
+        /// <summary>
+        ///     Tests that SizeOfTexture defaults to zero vector
+        /// </summary>
+        [Fact]
+        public void BoxCollider_SizeOfTexture_DefaultShouldBeZero()
+        {
+            BoxCollider collider = new BoxCollider();
+
+            Assert.Equal(0f, collider.SizeOfTexture.X);
+            Assert.Equal(0f, collider.SizeOfTexture.Y);
+        }
+
+        /// <summary>
+        ///     Tests that Context property defaults to null
+        /// </summary>
+        [Fact]
+        public void BoxCollider_Context_ShouldDefaultToNull()
+        {
+            BoxCollider collider = new BoxCollider();
+
+            Assert.Null(collider.Context);
+        }
+
+        /// <summary>
+        ///     Tests that Body property can be set and retrieved
+        /// </summary>
+        [Fact]
+        public void BoxCollider_Body_ShouldBeSettable()
+        {
+            BoxCollider collider = new BoxCollider();
+            Alis.Core.Physic.Dynamics.Body body = new Alis.Core.Physic.Dynamics.Body();
+
+            collider.Body = body;
+
+            Assert.Same(body, collider.Body);
+        }
+
+        /// <summary>
+        ///     Tests that BoxColliderSettings with different width are not equal
+        /// </summary>
+        [Fact]
+        public void BoxColliderSettings_DifferentWidth_ShouldNotBeEqual()
+        {
+            var settings1 = new BoxCollider.BoxColliderSettings(
+                false, 10f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
+            );
+
+            var settings2 = new BoxCollider.BoxColliderSettings(
+                false, 20f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
+            );
+
+            Assert.NotEqual(settings1, settings2);
+        }
+
+        /// <summary>
+        ///     Tests that BoxColliderSettings with different height are not equal
+        /// </summary>
+        [Fact]
+        public void BoxColliderSettings_DifferentHeight_ShouldNotBeEqual()
+        {
+            var settings1 = new BoxCollider.BoxColliderSettings(
+                false, 10f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
+            );
+
+            var settings2 = new BoxCollider.BoxColliderSettings(
+                false, 10f, 20f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
+            );
+
+            Assert.NotEqual(settings1, settings2);
+        }
+
+        /// <summary>
+        ///     Tests that BoxColliderSettings with different rotation are not equal
+        /// </summary>
+        [Fact]
+        public void BoxColliderSettings_DifferentRotation_ShouldNotBeEqual()
+        {
+            var settings1 = new BoxCollider.BoxColliderSettings(
+                false, 10f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
+            );
+
+            var settings2 = new BoxCollider.BoxColliderSettings(
+                false, 10f, 10f, 90f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
+            );
+
+            Assert.NotEqual(settings1, settings2);
+        }
     }
 }

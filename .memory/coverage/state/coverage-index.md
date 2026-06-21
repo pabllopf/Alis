@@ -28,7 +28,7 @@
 | 11 | pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs | 54.0% | 53.3% | 55.6% | 50 |
 | 12 | pabllopf-official_alis:1_Presentation/Hub/src/Windows/Sections/ASection.cs | 60.0% | 60.0% | - | 2 |
 | 13 | pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs | 63.5% | 68.1% | 50.0% | 15 |
-| 14 | pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs | 65.3% | 67.1% | 59.8% | 188 |
+| 14 | pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs | 65.3% | 67.1% | 59.8% | 188 | COMPLETED-69tests |
 | 15 | pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/AdvancingFront.cs | 82.5% | 85.4% | 73.3% | 14 |
 | 16 | pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs | 86.4% | 88.4% | 75.8% | 79 |
 | 17 | pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs | 90.3% | 91.2% | 87.8% | 22 |
@@ -94,6 +94,5 @@
 | # | File | Coverage | Uncovered Lines | Test File | Status |
 |---|------|----------|-----------------|-----------|--------|
 | 1 | 2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | 12.3% | 239 | BoxColliderTest.cs | Needs more tests |
-| 2 | 4_Operation/Physic/src/Dynamics/Body.cs | 65.3% | 188 | NONE | NEEDS TEST FILE |
-| 3 | 1_Presentation/Hub/src/Windows/Sections/ASection.cs | 60.0% | 2 | NONE | NEEDS TEST FILE |
-| 4 | 2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs | 63.5% | 15 | NONE | NEEDS TEST FILE |
+| 2 | 1_Presentation/Hub/src/Windows/Sections/ASection.cs | 60.0% | 2 | NONE | NEEDS TEST FILE |
+| 3 | 2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs | 63.5% | 15 | NONE | NEEDS TEST FILE |

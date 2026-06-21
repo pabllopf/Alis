@@ -2,7 +2,8 @@
 
 | Target | Worker | Timestamp | Status |
 |--------|--------|-----------|--------|
-| 4_Operation/Physic/src/Dynamics/Body.cs | coverage-agent | 2026-06-21T14:30:00Z | locked |
+| 4_Operation/Physic/src/Dynamics/Body.cs | coverage-agent | 2026-06-21T14:32:00Z | completed |
+| 2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | coverage-agent | 2026-06-21T14:35:00Z | locked |
 | 6_Ideation/Fluent/generator/AotReflectionAnalyzer.cs | agent-01 | 2026-06-21T10:42:00Z | completed |
 | 4_Operation/Audio/src/Players/BrowserPlayer.cs | coverage-agent | 2026-06-21T10:20:00Z | completed |
 | 1_Presentation/Engine/src/Menus/BottomMenu.cs | coverage-agent | 2026-06-21T10:20:00Z | completed |

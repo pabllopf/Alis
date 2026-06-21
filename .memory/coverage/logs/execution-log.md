@@ -2,6 +2,14 @@
 
 ## 2026-06-21
 
+### [14:32] Task #9: Body.cs
+- Target: 4_Operation/Physic/src/Dynamics/Body.cs (65.3% coverage, 188 uncovered lines)
+- Existing tests: 23 tests in BodyTest.cs
+- Tests added: 69 new tests covering property setters, transform conversions, fixture management, forces/impulses
+- All 92 tests pass (23 original + 69 new)
+- Production changes: None required
+- Commit: 38cb45fc1
+
 ### [14:30] Coverage Delta Synchronization (Resumed Session)
 - Loaded SonarCloud project coverage: 49.9% coverage, 49.4% line coverage, 52.4% branch coverage
 - Compared with previous state: minor fluctuation (-0.1% across all metrics)
