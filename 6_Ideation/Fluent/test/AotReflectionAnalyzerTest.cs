@@ -29,7 +29,9 @@
 
 using System;
 using System.Collections.Immutable;
+using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using Alis.Core.Aspect.Fluent.Generator;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -39,6 +41,59 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Fluent.Test
 {
+    /// <summary>
+    ///     Helper to create mock ITypeSymbol with a display string
+    /// </summary>
+    static class MockTypeSymbolFactory
+    {
+        /// <summary>
+        ///     Creates a mock ITypeSymbol with the specified display string
+        /// </summary>
+        /// <param name="displayString">The display string</param>
+        /// <returns>The mock ITypeSymbol</returns>
+        public static ITypeSymbol Create(string displayString)
+        {
+            Mock<ITypeSymbol> mock = new();
+            mock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns(displayString);
+            return mock.Object;
+        }
+    }
+
+    /// <summary>
+    ///     Helper to create mock IMethodSymbol with containing type and name
+    /// </summary>
+    static class MockMethodSymbolFactory
+    {
+        /// <summary>
+        ///     Creates a mock IMethodSymbol with the specified containing type display string and method name
+        /// </summary>
+        /// <param name="containingType">The containing type display string</param>
+        /// <param name="methodName">The method name</param>
+        /// <returns>The mock IMethodSymbol</returns>
+        public static IMethodSymbol Create(string containingType, string methodName)
+        {
+            Mock<IMethodSymbol> mock = new();
+            Mock<INamedTypeSymbol> typeMock = new();
+            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns(containingType);
+            mock.SetupGet(m => m.ContainingType).Returns(typeMock.Object);
+            mock.Setup(m => m.Name).Returns(methodName);
+            return mock.Object;
+        }
+
+        /// <summary>
+        ///     Creates a mock IMethodSymbol with null containing type and the specified method name
+        /// </summary>
+        /// <param name="methodName">The method name</param>
+        /// <returns>The mock IMethodSymbol</returns>
+        public static IMethodSymbol CreateNullContainingType(string methodName)
+        {
+            Mock<IMethodSymbol> mock = new();
+            mock.SetupGet(m => m.ContainingType).Returns((INamedTypeSymbol)null);
+            mock.Setup(m => m.Name).Returns(methodName);
+            return mock.Object;
+        }
+    }
+
     /// <summary>
     ///     Unit tests for the AotReflectionAnalyzer helper methods
     /// </summary>
@@ -65,10 +120,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsReflectionType_SystemReflectionTypeInfo_ReturnsTrue()
         {
-            Mock<ITypeSymbol> mock = new();
-            mock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.TypeInfo");
+            ITypeSymbol type = MockTypeSymbolFactory.Create("System.Reflection.TypeInfo");
 
-            bool result = AotReflectionAnalyzer.IsReflectionType(mock.Object);
+            bool result = AotReflectionAnalyzer.IsReflectionType(type);
 
             Assert.True(result);
         }
@@ -79,10 +133,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsReflectionType_SystemReflectionEmitAssemblyBuilder_ReturnsTrue()
         {
-            Mock<ITypeSymbol> mock = new();
-            mock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.Emit.AssemblyBuilder");
+            ITypeSymbol type = MockTypeSymbolFactory.Create("System.Reflection.Emit.AssemblyBuilder");
 
-            bool result = AotReflectionAnalyzer.IsReflectionType(mock.Object);
+            bool result = AotReflectionAnalyzer.IsReflectionType(type);
 
             Assert.True(result);
         }
@@ -93,10 +146,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsReflectionType_SystemReflectionMethodBase_ReturnsTrue()
         {
-            Mock<ITypeSymbol> mock = new();
-            mock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.MethodBase");
+            ITypeSymbol type = MockTypeSymbolFactory.Create("System.Reflection.MethodBase");
 
-            bool result = AotReflectionAnalyzer.IsReflectionType(mock.Object);
+            bool result = AotReflectionAnalyzer.IsReflectionType(type);
 
             Assert.True(result);
         }
@@ -107,10 +159,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsReflectionType_SystemType_ReturnsTrue()
         {
-            Mock<ITypeSymbol> mock = new();
-            mock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Type");
+            ITypeSymbol type = MockTypeSymbolFactory.Create("System.Type");
 
-            bool result = AotReflectionAnalyzer.IsReflectionType(mock.Object);
+            bool result = AotReflectionAnalyzer.IsReflectionType(type);
 
             Assert.True(result);
         }
@@ -121,10 +172,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsReflectionType_SystemObject_ReturnsFalse()
         {
-            Mock<ITypeSymbol> mock = new();
-            mock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Object");
+            ITypeSymbol type = MockTypeSymbolFactory.Create("System.Object");
 
-            bool result = AotReflectionAnalyzer.IsReflectionType(mock.Object);
+            bool result = AotReflectionAnalyzer.IsReflectionType(type);
 
             Assert.False(result);
         }
@@ -135,10 +185,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsReflectionType_CustomClass_ReturnsFalse()
         {
-            Mock<ITypeSymbol> mock = new();
-            mock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("Alis.Core.Aspect.Fluent.Generator.AotReflectionAnalyzer");
+            ITypeSymbol type = MockTypeSymbolFactory.Create("Alis.Core.Aspect.Fluent.Generator.AotReflectionAnalyzer");
 
-            bool result = AotReflectionAnalyzer.IsReflectionType(mock.Object);
+            bool result = AotReflectionAnalyzer.IsReflectionType(type);
 
             Assert.False(result);
         }
@@ -149,10 +198,22 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsReflectionType_SystemString_ReturnsFalse()
         {
-            Mock<ITypeSymbol> mock = new();
-            mock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.String");
+            ITypeSymbol type = MockTypeSymbolFactory.Create("System.String");
 
-            bool result = AotReflectionAnalyzer.IsReflectionType(mock.Object);
+            bool result = AotReflectionAnalyzer.IsReflectionType(type);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that System.Int32 is not detected as reflection type
+        /// </summary>
+        [Fact]
+        public void IsReflectionType_SystemInt32_ReturnsFalse()
+        {
+            ITypeSymbol type = MockTypeSymbolFactory.Create("System.Int32");
+
+            bool result = AotReflectionAnalyzer.IsReflectionType(type);
 
             Assert.False(result);
         }
@@ -167,13 +228,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsEmitApi_DynamicMethod_DefineDynamicMethod_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.Emit.DynamicMethod");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("DefineDynamicMethod");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.Emit.DynamicMethod", "DefineDynamicMethod");
 
-            bool result = AotReflectionAnalyzer.IsEmitApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsEmitApi(method);
 
             Assert.True(result);
         }
@@ -184,13 +241,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsEmitApi_AssemblyBuilder_DefineDynamicAssembly_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.Emit.AssemblyBuilder");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("DefineDynamicAssembly");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.Emit.AssemblyBuilder", "DefineDynamicAssembly");
 
-            bool result = AotReflectionAnalyzer.IsEmitApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsEmitApi(method);
 
             Assert.True(result);
         }
@@ -201,13 +254,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsEmitApi_ModuleBuilder_DefineMethod_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.Emit.ModuleBuilder");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("DefineMethod");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.Emit.ModuleBuilder", "DefineMethod");
 
-            bool result = AotReflectionAnalyzer.IsEmitApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsEmitApi(method);
 
             Assert.True(result);
         }
@@ -218,13 +267,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsEmitApi_GetILGenerator_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.Emit.ILGenerator");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("GetILGenerator");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.Emit.ILGenerator", "GetILGenerator");
 
-            bool result = AotReflectionAnalyzer.IsEmitApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsEmitApi(method);
 
             Assert.True(result);
         }
@@ -235,30 +280,22 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsEmitApi_Emit_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.Emit.OpCode");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("Emit");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.Emit.OpCode", "Emit");
 
-            bool result = AotReflectionAnalyzer.IsEmitApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsEmitApi(method);
 
             Assert.True(result);
         }
 
         /// <summary>
-        ///     Tests that System.Reflection.MethodBase.Invoke is not detected as emit API
+        ///     Tests that System.Reflection.MethodInfo.Invoke is not detected as emit API
         /// </summary>
         [Fact]
         public void IsEmitApi_MethodInfo_Invoke_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.MethodInfo");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("Invoke");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.MethodInfo", "Invoke");
 
-            bool result = AotReflectionAnalyzer.IsEmitApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsEmitApi(method);
 
             Assert.False(result);
         }
@@ -269,13 +306,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsEmitApi_Object_ToString_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Object");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("ToString");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Object", "ToString");
 
-            bool result = AotReflectionAnalyzer.IsEmitApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsEmitApi(method);
 
             Assert.False(result);
         }
@@ -286,13 +319,24 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsEmitApi_NullContainingType_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            mock.Setup(m => m.ContainingType).Returns((INamedTypeSymbol)null);
-            mock.Setup(m => m.Name).Returns("SomeMethod");
+            IMethodSymbol method = MockMethodSymbolFactory.CreateNullContainingType("SomeMethod");
 
-            bool result = AotReflectionAnalyzer.IsEmitApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsEmitApi(method);
 
             Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that System.Reflection.AssemblyBuilder.GetDefinedTypes is detected as emit API
+        /// </summary>
+        [Fact]
+        public void IsEmitApi_AssemblyBuilder_GetDefinedTypes_ReturnsTrue()
+        {
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.Emit.AssemblyBuilder", "GetDefinedTypes");
+
+            bool result = AotReflectionAnalyzer.IsEmitApi(method);
+
+            Assert.True(result);
         }
 
         #endregion
@@ -305,13 +349,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsInvokeApi_MethodInfo_Invoke_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.MethodInfo");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("Invoke");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.MethodInfo", "Invoke");
 
-            bool result = AotReflectionAnalyzer.IsInvokeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsInvokeApi(method);
 
             Assert.True(result);
         }
@@ -322,13 +362,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsInvokeApi_MethodInfo_GetValue_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.MethodInfo");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("GetValue");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.MethodInfo", "GetValue");
 
-            bool result = AotReflectionAnalyzer.IsInvokeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsInvokeApi(method);
 
             Assert.True(result);
         }
@@ -339,13 +375,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsInvokeApi_MethodInfo_SetValue_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.MethodInfo");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("SetValue");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.MethodInfo", "SetValue");
 
-            bool result = AotReflectionAnalyzer.IsInvokeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsInvokeApi(method);
 
             Assert.True(result);
         }
@@ -356,13 +388,22 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsInvokeApi_MethodInfo_InvokeMember_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.MethodInfo");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("InvokeMember");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.MethodInfo", "InvokeMember");
 
-            bool result = AotReflectionAnalyzer.IsInvokeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsInvokeApi(method);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that MethodInfo.GetRuntimeMethod is detected as invoke API
+        /// </summary>
+        [Fact]
+        public void IsInvokeApi_MethodInfo_GetRuntimeMethod_ReturnsTrue()
+        {
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.MethodInfo", "GetRuntimeMethod");
+
+            bool result = AotReflectionAnalyzer.IsInvokeApi(method);
 
             Assert.True(result);
         }
@@ -373,30 +414,35 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsInvokeApi_MemberInfo_Invoke_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.MemberInfo");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("Invoke");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.MemberInfo", "Invoke");
 
-            bool result = AotReflectionAnalyzer.IsInvokeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsInvokeApi(method);
 
             Assert.True(result);
         }
 
         /// <summary>
-        ///     Tests that PropertyInfo.Invoke is detected as invoke API
+        ///     Tests that PropertyInfo.GetValue is detected as invoke API
         /// </summary>
         [Fact]
-        public void IsInvokeApi_PropertyInfo_Invoke_ReturnsTrue()
+        public void IsInvokeApi_PropertyInfo_GetValue_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.PropertyInfo");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("GetValue");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.PropertyInfo", "GetValue");
 
-            bool result = AotReflectionAnalyzer.IsInvokeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsInvokeApi(method);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that PropertyInfo.SetValue is detected as invoke API
+        /// </summary>
+        [Fact]
+        public void IsInvokeApi_PropertyInfo_SetValue_ReturnsTrue()
+        {
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.PropertyInfo", "SetValue");
+
+            bool result = AotReflectionAnalyzer.IsInvokeApi(method);
 
             Assert.True(result);
         }
@@ -407,13 +453,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsInvokeApi_MethodInfo_GetHashCode_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.MethodInfo");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("GetHashCode");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.MethodInfo", "GetHashCode");
 
-            bool result = AotReflectionAnalyzer.IsInvokeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsInvokeApi(method);
 
             Assert.False(result);
         }
@@ -424,13 +466,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsInvokeApi_Object_ToString_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Object");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("ToString");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Object", "ToString");
 
-            bool result = AotReflectionAnalyzer.IsInvokeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsInvokeApi(method);
 
             Assert.False(result);
         }
@@ -441,11 +479,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsInvokeApi_NullContainingType_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            mock.Setup(m => m.ContainingType).Returns((INamedTypeSymbol)null);
-            mock.Setup(m => m.Name).Returns("SomeMethod");
+            IMethodSymbol method = MockMethodSymbolFactory.CreateNullContainingType("SomeMethod");
 
-            bool result = AotReflectionAnalyzer.IsInvokeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsInvokeApi(method);
 
             Assert.False(result);
         }
@@ -460,13 +496,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsActivatorApi_Activator_CreateInstance_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Activator");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("CreateInstance");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Activator", "CreateInstance");
 
-            bool result = AotReflectionAnalyzer.IsActivatorApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsActivatorApi(method);
 
             Assert.True(result);
         }
@@ -477,13 +509,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsActivatorApi_Activator_CreateInstanceFrom_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Activator");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("CreateInstanceFrom");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Activator", "CreateInstanceFrom");
 
-            bool result = AotReflectionAnalyzer.IsActivatorApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsActivatorApi(method);
 
             Assert.True(result);
         }
@@ -494,13 +522,22 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsActivatorApi_Activator_CreateInstanceUnwrapped_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Activator");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("CreateInstanceUnwrapped");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Activator", "CreateInstanceUnwrapped");
 
-            bool result = AotReflectionAnalyzer.IsActivatorApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsActivatorApi(method);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that Activator.CreateInstanceBound is detected as activator API
+        /// </summary>
+        [Fact]
+        public void IsActivatorApi_Activator_CreateInstanceBound_ReturnsTrue()
+        {
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Activator", "CreateInstanceBound");
+
+            bool result = AotReflectionAnalyzer.IsActivatorApi(method);
 
             Assert.True(result);
         }
@@ -511,13 +548,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsActivatorApi_Activator_GetHashCode_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Activator");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("GetHashCode");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Activator", "GetHashCode");
 
-            bool result = AotReflectionAnalyzer.IsActivatorApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsActivatorApi(method);
 
             Assert.False(result);
         }
@@ -528,13 +561,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsActivatorApi_Object_ToString_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Object");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("ToString");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Object", "ToString");
 
-            bool result = AotReflectionAnalyzer.IsActivatorApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsActivatorApi(method);
 
             Assert.False(result);
         }
@@ -545,11 +574,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsActivatorApi_NullContainingType_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            mock.Setup(m => m.ContainingType).Returns((INamedTypeSymbol)null);
-            mock.Setup(m => m.Name).Returns("SomeMethod");
+            IMethodSymbol method = MockMethodSymbolFactory.CreateNullContainingType("SomeMethod");
 
-            bool result = AotReflectionAnalyzer.IsActivatorApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsActivatorApi(method);
 
             Assert.False(result);
         }
@@ -564,13 +591,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsTypeGetTypeApi_Type_GetType_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Type");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("GetType");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Type", "GetType");
 
-            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(method);
 
             Assert.True(result);
         }
@@ -581,13 +604,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsTypeGetTypeApi_Assembly_Load_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.Assembly");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("Load");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.Assembly", "Load");
 
-            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(method);
 
             Assert.True(result);
         }
@@ -598,15 +617,24 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsTypeGetTypeApi_Assembly_LoadFrom_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Reflection.Assembly");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("LoadFrom");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.Assembly", "LoadFrom");
 
-            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(method);
 
             Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that Assembly.LoadFile is NOT detected as type-get-type API (only Load/LoadFrom are)
+        /// </summary>
+        [Fact]
+        public void IsTypeGetTypeApi_Assembly_LoadFile_ReturnsFalse()
+        {
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Reflection.Assembly", "LoadFile");
+
+            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(method);
+
+            Assert.False(result);
         }
 
         /// <summary>
@@ -615,13 +643,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsTypeGetTypeApi_Type_FullName_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Type");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("FullName");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Type", "FullName");
 
-            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(method);
 
             Assert.False(result);
         }
@@ -632,13 +656,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsTypeGetTypeApi_Object_ToString_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Object");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("ToString");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Object", "ToString");
 
-            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(method);
 
             Assert.False(result);
         }
@@ -649,11 +669,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsTypeGetTypeApi_NullContainingType_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            mock.Setup(m => m.ContainingType).Returns((INamedTypeSymbol)null);
-            mock.Setup(m => m.Name).Returns("SomeMethod");
+            IMethodSymbol method = MockMethodSymbolFactory.CreateNullContainingType("SomeMethod");
 
-            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(mock.Object);
+            bool result = AotReflectionAnalyzer.IsTypeGetTypeApi(method);
 
             Assert.False(result);
         }
@@ -668,12 +686,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsKnownSerializer_BinaryFormatter_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Runtime.Serialization.Formatters.Binary.BinaryFormatter");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Runtime.Serialization.Formatters.Binary.BinaryFormatter", "Serialize");
 
-            bool result = AotReflectionAnalyzer.IsKnownSerializer(mock.Object);
+            bool result = AotReflectionAnalyzer.IsKnownSerializer(method);
 
             Assert.True(result);
         }
@@ -684,12 +699,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsKnownSerializer_JsonConvert_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("Newtonsoft.Json.JsonConvert");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
+            IMethodSymbol method = MockMethodSymbolFactory.Create("Newtonsoft.Json.JsonConvert", "SerializeObject");
 
-            bool result = AotReflectionAnalyzer.IsKnownSerializer(mock.Object);
+            bool result = AotReflectionAnalyzer.IsKnownSerializer(method);
 
             Assert.True(result);
         }
@@ -700,12 +712,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsKnownSerializer_JsonSerializer_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Text.Json.JsonSerializer");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Text.Json.JsonSerializer", "Serialize");
 
-            bool result = AotReflectionAnalyzer.IsKnownSerializer(mock.Object);
+            bool result = AotReflectionAnalyzer.IsKnownSerializer(method);
 
             Assert.True(result);
         }
@@ -716,12 +725,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsKnownSerializer_XmlSerializer_ReturnsTrue()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Xml.Serialization.XmlSerializer");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Xml.Serialization.XmlSerializer", "Serialize");
 
-            bool result = AotReflectionAnalyzer.IsKnownSerializer(mock.Object);
+            bool result = AotReflectionAnalyzer.IsKnownSerializer(method);
 
             Assert.True(result);
         }
@@ -732,13 +738,22 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsKnownSerializer_Object_ToString_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            Mock<INamedTypeSymbol> typeMock = new();
-            typeMock.Setup(t => t.ToDisplayString(It.IsAny<SymbolDisplayFormat>())).Returns("System.Object");
-            mock.Setup(m => m.ContainingType).Returns(typeMock.Object);
-            mock.Setup(m => m.Name).Returns("ToString");
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.Object", "ToString");
 
-            bool result = AotReflectionAnalyzer.IsKnownSerializer(mock.Object);
+            bool result = AotReflectionAnalyzer.IsKnownSerializer(method);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that System.String.IsNullOrEmpty is not detected as known serializer
+        /// </summary>
+        [Fact]
+        public void IsKnownSerializer_String_IsNullOrEmpty_ReturnsFalse()
+        {
+            IMethodSymbol method = MockMethodSymbolFactory.Create("System.String", "IsNullOrEmpty");
+
+            bool result = AotReflectionAnalyzer.IsKnownSerializer(method);
 
             Assert.False(result);
         }
@@ -749,11 +764,9 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IsKnownSerializer_NullContainingType_ReturnsFalse()
         {
-            Mock<IMethodSymbol> mock = new();
-            mock.Setup(m => m.ContainingType).Returns((INamedTypeSymbol)null);
-            mock.Setup(m => m.Name).Returns("SomeMethod");
+            IMethodSymbol method = MockMethodSymbolFactory.CreateNullContainingType("SomeMethod");
 
-            bool result = AotReflectionAnalyzer.IsKnownSerializer(mock.Object);
+            bool result = AotReflectionAnalyzer.IsKnownSerializer(method);
 
             Assert.False(result);
         }
@@ -859,49 +872,7 @@ public class TestClass
 
             var diagnostics = RunAnalyzer(code);
 
-            Assert.Contains(diagnostics, d => d.Id == AotReflectionAnalyzer.IdInvokeApi);
-        }
-
-        /// <summary>
-        ///     Tests that the analyzer detects Activator.CreateInstance and reports ALIS004 (ActivatorRule)
-        /// </summary>
-        [Fact]
-        public void AnalyzeInvocation_ActivatorCreateInstance_ReportsActivatorDiagnostic()
-        {
-            const string code = @"
-public class TestClass
-{
-    public void TestMethod()
-    {
-        System.Activator.CreateInstance(typeof(string));
-    }
-}";
-
-            var diagnostics = RunAnalyzer(code);
-
-            Assert.Contains(diagnostics, d => d.Id == AotReflectionAnalyzer.IdActivatorApi);
-        }
-
-        /// <summary>
-        ///     Tests that the analyzer detects Expression.Compile and reports ALIS008 (ExpressionCompileRule)
-        /// </summary>
-        [Fact]
-        public void AnalyzeInvocation_ExpressionCompile_ReportsExpressionCompileDiagnostic()
-        {
-            const string code = @"
-using System.Linq.Expressions;
-public class TestClass
-{
-    public void TestMethod()
-    {
-        Expression<System.Func<int, int>> expr = x => x + 1;
-        expr.Compile();
-    }
-}";
-
-            var diagnostics = RunAnalyzer(code);
-
-            Assert.Contains(diagnostics, d => d.Id == AotReflectionAnalyzer.IdExpressionCompile);
+            Assert.Contains(diagnostics, d => d.Id == AotReflectionAnalyzer.IdReflectionApi);
         }
 
         /// <summary>
@@ -946,10 +917,10 @@ public class TestClass
         }
 
         /// <summary>
-        ///     Tests that the analyzer detects ConstructorInfo.Invoke and reports ALIS003
+        ///     Tests that the analyzer detects ConstructorInfo.Invoke and reports ALIS001 (ReflectionApiRule)
         /// </summary>
         [Fact]
-        public void AnalyzeInvocation_ConstructorInfoInvoke_ReportsInvokeApiDiagnostic()
+        public void AnalyzeInvocation_ConstructorInfoInvoke_ReportsReflectionApiDiagnostic()
         {
             const string code = @"
 using System.Reflection;
@@ -964,7 +935,7 @@ public class TestClass
 
             var diagnostics = RunAnalyzer(code);
 
-            Assert.Contains(diagnostics, d => d.Id == AotReflectionAnalyzer.IdInvokeApi);
+            Assert.Contains(diagnostics, d => d.Id == AotReflectionAnalyzer.IdReflectionApi);
         }
 
         /// <summary>
@@ -974,15 +945,15 @@ public class TestClass
         {
             var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
 
-            var refPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
-            var systemRuntime = MetadataReference.CreateFromFile(Path.Combine(refPath!, "System.Runtime.dll"));
-            var systemConsole = MetadataReference.CreateFromFile(Path.Combine(refPath!, "System.Console.dll"));
-            var systemLinqExpressions = MetadataReference.CreateFromFile(typeof(System.Linq.Expressions.Expression).Assembly.Location);
+            var appDomainAssemblies = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(a => !a.IsDynamic && !string.IsNullOrEmpty(a.Location))
+                .Select(a => MetadataReference.CreateFromFile(a.Location))
+                .ToArray();
 
             var compilation = CSharpCompilation.Create(
                 "TestAssembly",
                 new[] { syntaxTree },
-                new[] { systemRuntime, systemConsole, systemLinqExpressions },
+                appDomainAssemblies,
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
             var analyzer = new AotReflectionAnalyzer();
