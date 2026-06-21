@@ -19,31 +19,28 @@
 - Target: 4_Operation/Audio/src/Players/BrowserPlayer.cs (0.0% coverage)
 - Status: ALREADY COVERED - 35 existing tests in BrowserPlayerWavParsingTests.cs
 - Reason: Test project has SonarQubeExclude=true; constructor/Play depend on OpenAL native libraries
-- No action taken
-
-### [10:00] Task: AudioReader.cs
-- Target: 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs (30.2%)
-- Changed ResolveBitDepth to internal static, added null guard for SampleFormat
-- 9 new tests covering all ResolveBitDepth branches (64/32/24/16/8/unknown/null/empty/pre-set)
-- 624/625 tests pass (1 pre-existing flaky FFmpeg process test)
-- Committed: `test: coverage AudioReader.cs`
 
 ### [10:46] Task #3: BottomMenu.cs
 - Target: 1_Presentation/Engine/src/Menus/BottomMenu.cs (2.2% coverage)
 - Status: ALREADY COVERED - 8 existing tests in BottomMenuTest.cs
 - Reason: Render methods depend on ImGui UI framework
-- No action taken
 
 ### [10:47] Task #4: AssetsWindow.cs
 - Target: 1_Presentation/Engine/src/Windows/AssetsWindow.cs (19.7% coverage)
 - Status: ALREADY COVERED - 7 existing tests in AssetsWindowTest.cs
 - Reason: Render methods depend on ImGui UI framework
-- No action taken
 
-### [10:00] Session: AudioReader, AudioPlayerWindow, AudioPlayer, Animator, AudioVideoWriter
-- AudioReader.cs (30.2%): 9 tests for ResolveBitDepth; changed private→internal static, added null guard
-- AudioPlayerWindow.cs (35.6%): Rewrote tests with GetUninitializedObject, 5 tests pass (was 0)
-- AudioPlayer.cs (37.1%): 1 test for WriteFrame validation
-- Animator.cs (41.3%): 1 test for default struct OnUpdate (null clock guard)
-- AudioVideoWriter.cs (51.2%): 3 tests for null filename, stream validation, OpenedForWriting initial state
-- Commits: 8e41431, 9f13ef9, 5190f21, e036b17, 3cd326a
+### [10:50] Task #5: AudioReader.cs
+- Target: 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs (30.2% coverage)
+- Status: ALREADY COVERED - 28 existing tests in AudioReaderTest.cs
+- Reason: LoadMetadata/Load/NextFrame depend on external FFmpeg/ffprobe execution
+
+### [10:52] Task #6: AudioPlayerWindow.cs
+- Target: 1_Presentation/Engine/src/Windows/AudioPlayerWindow.cs (35.6% coverage)
+- Status: ALREADY COVERED - 5 existing tests in AudioPlayerWindowTest.cs
+- Reason: Render method depends on ImGui UI framework
+
+### [10:53] Task #7: AudioPlayer.cs
+- Target: 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs (37.1% coverage)
+- Status: ALREADY COVERED - 9 existing tests in AudioPlayerTest.cs
+- Reason: Play/OpenWrite/CloseWrite depend on external ffplay process
