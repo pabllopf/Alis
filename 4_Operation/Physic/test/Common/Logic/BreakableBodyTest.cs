@@ -452,5 +452,45 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(breakableBody.MainBody);
             Assert.Single(breakableBody.Parts);
         }
+
+        /// <summary>
+        ///     Tests that decompose when already broken throws invalid operation exception
+        /// </summary>
+        [Fact]
+        public void Decompose_WhenAlreadyBroken_ShouldThrowInvalidOperationException()
+        {
+            Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
+
+            BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
+            breakableBody.State = BreakableBodyState.Broken;
+
+            Assert.Throws<InvalidOperationException>(() => breakableBody.Decompose());
+        }
+
+        /// <summary>
+        ///     Tests that post solve with multiple impulse points uses max impulse value
+        /// </summary>
+        [Fact]
+        public void PostSolve_WithMultipleImpulsePoints_ShouldUseMaxImpulse()
+        {
+            Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
+            BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
+
+            Fixture fixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            breakableBody.Parts.Add(fixture);
+
+            Fixture otherFixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            Contact contact = new Contact(fixture, 0, otherFixture, 0);
+            contact.Manifold.PointCount = 2;
+
+            ContactVelocityConstraint constraint = new ContactVelocityConstraint();
+            constraint.PointCount = 2;
+            constraint.Points[0].NormalImpulse = 100.0f;
+            constraint.Points[1].NormalImpulse = 600.0f;
+
+            breakableBody.PostSolve(contact, constraint);
+
+            Assert.Equal(BreakableBodyState.ShouldBreak, breakableBody.State);
+        }
     }
 }
