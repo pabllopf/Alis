@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Windows.Settings;
 using Xunit;
@@ -10,40 +11,35 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void Constructor_ShouldSetSpaceWork()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                SettingsWindow window = new SettingsWindow(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            SettingsWindow window = new SettingsWindow(spaceWork);
 
-                Assert.NotNull(window);
-                Assert.Same(spaceWork, window.SpaceWork);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("SettingsWindow", ex.Message);
-            }
+            Assert.NotNull(window);
+            Assert.Same(spaceWork, window.SpaceWork);
         }
 
         [Fact]
         public void SpaceWork_Property_ShouldReturnSetValue()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                SettingsWindow window = new SettingsWindow(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            SettingsWindow window = new SettingsWindow(spaceWork);
 
-                Assert.NotNull(window.SpaceWork);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("SettingsWindow", ex.Message);
-            }
+            Assert.NotNull(window.SpaceWork);
+            Assert.Same(spaceWork, window.SpaceWork);
+        }
+
+        [Fact]
+        public void Constructor_WithNull_ShouldSetNullSpaceWork()
+        {
+            SettingsWindow window = new SettingsWindow(null);
+
+            Assert.Null(window.SpaceWork);
         }
 
         [Fact]
         public void Initialize_ThrowsNotImplementedException()
         {
-            SpaceWork spaceWork = new SpaceWork();
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
             SettingsWindow window = new SettingsWindow(spaceWork);
 
             Assert.Throws<NotImplementedException>(() => window.Initialize());
@@ -52,10 +48,16 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void Start_ThrowsNotImplementedException()
         {
-            SpaceWork spaceWork = new SpaceWork();
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
             SettingsWindow window = new SettingsWindow(spaceWork);
 
             Assert.Throws<NotImplementedException>(() => window.Start());
+        }
+
+        [Fact]
+        public void WindowName_ShouldContainSettings()
+        {
+            Assert.Contains("Settings", SettingsWindow.WindowName, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
