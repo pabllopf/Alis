@@ -44,3 +44,8 @@
 - Target: 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs (37.1% coverage)
 - Status: ALREADY COVERED - 9 existing tests in AudioPlayerTest.cs
 - Reason: Play/OpenWrite/CloseWrite depend on external ffplay process
+
+### [10:55] Task #8: AudioVideoWriter.cs
+- Target: 1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs (51.2% coverage)
+- Status: ALREADY COVERED - 30 existing tests in AudioVideoWriterTest.cs
+- Reason: OpenWrite/CloseWrite/WriteFrame depend on external FFmpeg process
