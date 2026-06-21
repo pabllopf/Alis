@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Render
@@ -161,6 +163,263 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.NotNull(animator.Play);
             Assert.NotNull(animator.NextFrame);
             Assert.NotNull(animator.GetCurrentFrame);
+        }
+
+        /// <summary>
+        ///     Tests that the list constructor sets animations without starting the clock
+        /// </summary>
+        [Fact]
+        public void Animator_ListConstructor_ShouldSetAnimations()
+        {
+            List<Animation> animations = new List<Animation>
+            {
+                new Animation("idle", 0, 1f),
+                new Animation("walk", 0, 1.5f)
+            };
+
+            Animator animator = new Animator(animations);
+
+            Assert.Same(animations, animator.Animations);
+            Assert.Equal(0, animator.CurrentAnimationIndex);
+            Assert.Equal(0, animator.CurrentFrameIndex);
+        }
+
+        /// <summary>
+        ///     Tests that AddAnimation adds to the list
+        /// </summary>
+        [Fact]
+        public void Animator_AddAnimation_ShouldGrowList()
+        {
+            Animator animator = new Animator();
+
+            Assert.Empty(animator.Animations);
+
+            animator.AddAnimation(new Animation("anim1", 0, 1f));
+            Assert.Single(animator.Animations);
+
+            animator.AddAnimation(new Animation("anim2", 1, 2f));
+            Assert.Equal(2, animator.Animations.Count);
+        }
+
+        /// <summary>
+        ///     Tests that Play finds animation by name and sets CurrentAnimationIndex
+        /// </summary>
+        [Fact]
+        public void Animator_Play_ShouldFindByName()
+        {
+            Animator animator = new Animator();
+            animator.AddAnimation(new Animation("idle", 0, 1f));
+            animator.AddAnimation(new Animation("walk", 0, 1.5f));
+            animator.AddAnimation(new Animation("run", 1, 2f));
+
+            animator.Play("walk");
+
+            Assert.Equal(1, animator.CurrentAnimationIndex);
+            Assert.Equal(0, animator.CurrentFrameIndex);
+        }
+
+        /// <summary>
+        ///     Tests that Play with non-existent name does not change index
+        /// </summary>
+        [Fact]
+        public void Animator_Play_WithNonExistentName_ShouldNotChangeIndex()
+        {
+            Animator animator = new Animator();
+            animator.AddAnimation(new Animation("idle", 0, 1f));
+
+            animator.Play("nonexistent");
+
+            Assert.Equal(0, animator.CurrentAnimationIndex);
+        }
+
+        /// <summary>
+        ///     Tests that NextFrame advances the frame index
+        /// </summary>
+        [Fact]
+        public void Animator_NextFrame_ShouldAdvanceFrameIndex()
+        {
+            Animation anim = new Animation("test", 0, 1f);
+            anim.Frames.Add(new Frame());
+            anim.Frames.Add(new Frame());
+            anim.Frames.Add(new Frame());
+
+            Animator animator = new Animator(new List<Animation> { anim });
+
+            Assert.Equal(0, animator.CurrentFrameIndex);
+            animator.NextFrame();
+            Assert.Equal(1, animator.CurrentFrameIndex);
+            animator.NextFrame();
+            Assert.Equal(2, animator.CurrentFrameIndex);
+        }
+
+        /// <summary>
+        ///     Tests that NextFrame wraps around at the end of the frame list
+        /// </summary>
+        [Fact]
+        public void Animator_NextFrame_ShouldWrapAround()
+        {
+            Animation anim = new Animation("test", 0, 1f);
+            anim.Frames.Add(new Frame());
+            anim.Frames.Add(new Frame());
+
+            Animator animator = new Animator(new List<Animation> { anim });
+            animator.CurrentFrameIndex = 1;
+
+            animator.NextFrame();
+
+            Assert.Equal(0, animator.CurrentFrameIndex);
+        }
+
+        /// <summary>
+        ///     Tests that NextFrame does not crash when the current animation has no frames
+        /// </summary>
+        [Fact]
+        public void Animator_NextFrame_WithEmptyFrames_ShouldNotCrash()
+        {
+            Animator animator = new Animator();
+            animator.AddAnimation(new Animation("empty", 0, 1f));
+
+            animator.NextFrame();
+
+            Assert.Equal(0, animator.CurrentFrameIndex);
+        }
+
+        /// <summary>
+        ///     Tests that NextFrame does not crash when there are no animations
+        /// </summary>
+        [Fact]
+        public void Animator_NextFrame_WithNoAnimations_ShouldNotCrash()
+        {
+            Animator animator = new Animator();
+
+            animator.NextFrame();
+
+            Assert.Equal(0, animator.CurrentFrameIndex);
+        }
+
+        /// <summary>
+        ///     Tests that GetCurrentFrame returns the current frame
+        /// </summary>
+        [Fact]
+        public void Animator_GetCurrentFrame_ShouldReturnCurrentFrame()
+        {
+            Animation anim = new Animation("test", 0, 1f);
+            Frame frame1 = new Frame { NameFile = "frame1.png" };
+            Frame frame2 = new Frame { NameFile = "frame2.png" };
+            anim.Frames.Add(frame1);
+            anim.Frames.Add(frame2);
+
+            Animator animator = new Animator(new List<Animation> { anim });
+
+            Assert.Equal("frame1.png", animator.GetCurrentFrame().NameFile);
+
+            animator.NextFrame();
+
+            Assert.Equal("frame2.png", animator.GetCurrentFrame().NameFile);
+        }
+
+        /// <summary>
+        ///     Tests that GetCurrentFrame returns default when animation has no frames
+        /// </summary>
+        [Fact]
+        public void Animator_GetCurrentFrame_WithEmptyFrames_ShouldReturnDefault()
+        {
+            Animator animator = new Animator();
+            animator.AddAnimation(new Animation("empty", 0, 1f));
+
+            Frame frame = animator.GetCurrentFrame();
+
+            Assert.Null(frame.NameFile);
+        }
+
+        /// <summary>
+        ///     Tests that CurrentAnimation returns the active animation
+        /// </summary>
+        [Fact]
+        public void Animator_CurrentAnimation_ShouldReturnActiveAnimation()
+        {
+            Animation anim1 = new Animation("idle", 0, 1f);
+            anim1.Frames.Add(new Frame());
+            Animation anim2 = new Animation("walk", 1, 2f);
+            anim2.Frames.Add(new Frame());
+
+            Animator animator = new Animator(new List<Animation> { anim1, anim2 });
+
+            Animation current = animator.CurrentAnimation;
+
+            Assert.Equal("idle", current.Name);
+            Assert.Equal(1f, current.Speed);
+
+            animator.Play("walk");
+
+            current = animator.CurrentAnimation;
+
+            Assert.Equal("walk", current.Name);
+            Assert.Equal(2f, current.Speed);
+        }
+
+        /// <summary>
+        ///     Tests that CurrentAnimation returns default when the animation list is empty
+        /// </summary>
+        [Fact]
+        public void Animator_CurrentAnimation_WithEmptyList_ShouldReturnDefault()
+        {
+            Animator animator = new Animator();
+
+            Animation current = animator.CurrentAnimation;
+
+            Assert.Null(current.Name);
+            Assert.Equal(0, current.Order);
+            Assert.Equal(0f, current.Speed);
+            Assert.Null(current.Frames);
+        }
+
+        /// <summary>
+        ///     Tests that Context property can be set and read
+        /// </summary>
+        [Fact]
+        public void Animator_Context_ShouldBeSettable()
+        {
+            Animator animator = new Animator();
+            Context context = new Context();
+
+            animator.Context = context;
+
+            Assert.Same(context, animator.Context);
+        }
+
+        /// <summary>
+        ///     Tests that OnStart does not throw (does not depend on IGameObject)
+        /// </summary>
+        [Fact]
+        public void Animator_OnStart_ShouldNotThrow()
+        {
+            Animator animator = new Animator();
+
+            animator.OnStart(null!);
+        }
+
+        /// <summary>
+        ///     Tests that OnExit does not throw and resets elapsed time
+        /// </summary>
+        [Fact]
+        public void Animator_OnExit_ShouldNotThrow()
+        {
+            Animator animator = new Animator();
+
+            animator.OnExit(null!);
+        }
+
+        /// <summary>
+        ///     Tests that Animator implements IOnStart, IOnUpdate, and IOnExit lifecycle interfaces
+        /// </summary>
+        [Fact]
+        public void Animator_ShouldImplementLifecycleInterfaces()
+        {
+            Animator animator = new Animator();
+
+            Assert.IsAssignableFrom<IOnStart>(animator);
+            Assert.IsAssignableFrom<IOnUpdate>(animator);
         }
     }
 }
