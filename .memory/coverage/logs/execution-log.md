@@ -2,6 +2,22 @@
 
 ## 2026-06-21
 
+### [14:30] Coverage Delta Synchronization (Resumed Session)
+- Loaded SonarCloud project coverage: 49.9% coverage, 49.4% line coverage, 52.4% branch coverage
+- Compared with previous state: minor fluctuation (-0.1% across all metrics)
+- Reviewed git history: 42 test files modified in last 50 commits
+- Updated coverage-index.md with full task completion ledger
+- Identified unprocessed targets:
+  1. Body.cs (65.3%, 188 uncovered lines, NO test file) — HIGHEST PRIORITY
+  2. ASection.cs (60.0%, 2 uncovered lines, NO test file) — quick win
+  3. AudioSource.cs (63.5%, 15 uncovered lines, NO test file) — quick win
+  4. BoxCollider.cs (12.3%, 239 uncovered lines, has test file but needs more)
+- Files skipped (SonarCloud excluded or ImGui-dependent):
+  - AotReflectionAnalyzer.cs (0.0%) — 380 tests committed, awaiting SonarCloud re-analysis
+  - BrowserPlayer.cs (0.0%) — SonarQubeExclude=true, 35 existing tests
+  - BottomMenu.cs (2.2%) — ImGui-dependent, 8 existing tests
+  - AssetsWindow.cs (19.7%) — ImGui-dependent, 7 existing tests
+
 ### [10:42] Coverage Delta Synchronization
 - Loaded SonarCloud project coverage: 50.0% coverage, 49.5% line coverage, 52.5% branch coverage
 - Identified 24 files with < 100% coverage
