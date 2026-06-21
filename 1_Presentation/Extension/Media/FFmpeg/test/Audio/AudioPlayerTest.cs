@@ -130,5 +130,20 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             Assert.Throws<InvalidOperationException>(() => player.OpenWrite(44100, 2, 8));
         }
+
+        /// <summary>
+        ///     Tests that WriteFrame throws when not opened for writing
+        /// </summary>
+        [Fact]
+        public void AudioPlayer_WriteFrame_WhenNotOpened_ShouldThrowInvalidOperationException()
+        {
+            AudioPlayer player = new AudioPlayer("test.mp3");
+            AudioFrame frame = new AudioFrame(2, 1024, 16);
+
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => player.WriteFrame(frame));
+
+            Assert.Contains("prepared for writing", ex.Message);
+        }
+
     }
 }
