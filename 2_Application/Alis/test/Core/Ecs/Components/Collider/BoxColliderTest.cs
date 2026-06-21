@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
+using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
@@ -243,6 +244,156 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.NotNull(collider.OnUpdate);
             Assert.NotNull(collider.OnStart);
             Assert.NotNull(collider.OnExit);
+        }
+
+        /// <summary>
+        ///     Tests that constructor with settings copies all values
+        /// </summary>
+        [Fact]
+        public void BoxCollider_SettingsConstructor_ShouldCopyAllValues()
+        {
+            BoxCollider.BoxColliderSettings settings = new BoxCollider.BoxColliderSettings(
+                IsTrigger: true,
+                Width: 20f,
+                Height: 30f,
+                Rotation: 45f,
+                RelativePosition: new Vector2F(5f, 10f),
+                AutoTilling: true,
+                BodyType: BodyType.Dynamic,
+                Restitution: 0.8f,
+                Friction: 0.3f,
+                FixedRotation: true,
+                Mass: 5.0f,
+                IgnoreGravity: true,
+                LinearVelocity: new Vector2F(1f, 2f),
+                AngularVelocity: 10f
+            );
+
+            BoxCollider collider = new BoxCollider(settings);
+
+            Assert.True(collider.IsTrigger);
+            Assert.Equal(20f, collider.Width);
+            Assert.Equal(30f, collider.Height);
+            Assert.Equal(45f, collider.Rotation);
+            Assert.Equal(5f, collider.RelativePosition.X);
+            Assert.Equal(10f, collider.RelativePosition.Y);
+            Assert.True(collider.AutoTilling);
+            Assert.Equal(BodyType.Dynamic, collider.BodyType);
+            Assert.Equal(0.8f, collider.Restitution);
+            Assert.Equal(0.3f, collider.Friction);
+            Assert.True(collider.FixedRotation);
+            Assert.Equal(5.0f, collider.Mass);
+            Assert.True(collider.IgnoreGravity);
+            Assert.Equal(1f, collider.LinearVelocity.X);
+            Assert.Equal(2f, collider.LinearVelocity.Y);
+            Assert.Equal(10f, collider.AngularVelocity);
+        }
+
+        /// <summary>
+        ///     Tests that BoxColliderSettings record stores all values
+        /// </summary>
+        [Fact]
+        public void BoxColliderSettings_ShouldStoreValues()
+        {
+            BoxCollider.BoxColliderSettings settings = new BoxCollider.BoxColliderSettings(
+                IsTrigger: true,
+                Width: 15f,
+                Height: 25f,
+                Rotation: 90f,
+                RelativePosition: new Vector2F(1f, 2f),
+                AutoTilling: false,
+                BodyType: BodyType.Kinematic,
+                Restitution: 0.1f,
+                Friction: 0.9f,
+                FixedRotation: false,
+                Mass: 10f,
+                IgnoreGravity: true,
+                LinearVelocity: new Vector2F(3f, 4f),
+                AngularVelocity: 5f
+            );
+
+            Assert.True(settings.IsTrigger);
+            Assert.Equal(15f, settings.Width);
+            Assert.Equal(25f, settings.Height);
+            Assert.Equal(90f, settings.Rotation);
+            Assert.Equal(BodyType.Kinematic, settings.BodyType);
+            Assert.Equal(0.1f, settings.Restitution);
+            Assert.Equal(0.9f, settings.Friction);
+            Assert.Equal(10f, settings.Mass);
+            Assert.Equal(5f, settings.AngularVelocity);
+        }
+
+        /// <summary>
+        ///     Tests that Context property can be set and read
+        /// </summary>
+        [Fact]
+        public void BoxCollider_Context_ShouldBeSettable()
+        {
+            BoxCollider collider = new BoxCollider();
+            Context context = new Context();
+
+            collider.Context = context;
+            Assert.Same(context, collider.Context);
+        }
+
+        /// <summary>
+        ///     Tests that SizeOfTexture property can be set and read
+        /// </summary>
+        [Fact]
+        public void BoxCollider_SizeOfTexture_ShouldBeSettable()
+        {
+            BoxCollider collider = new BoxCollider();
+            Vector2F size = new Vector2F(32f, 32f);
+
+            collider.SizeOfTexture = size;
+            Assert.Equal(32f, collider.SizeOfTexture.X);
+            Assert.Equal(32f, collider.SizeOfTexture.Y);
+        }
+
+        /// <summary>
+        ///     Tests that BoxColliderSettings record supports equality
+        /// </summary>
+        [Fact]
+        public void BoxColliderSettings_Equality_ShouldWork()
+        {
+            BoxCollider.BoxColliderSettings settings1 = new BoxCollider.BoxColliderSettings(
+                false, 10f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
+            );
+
+            BoxCollider.BoxColliderSettings settings2 = new BoxCollider.BoxColliderSettings(
+                false, 10f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
+            );
+
+            Assert.Equal(settings1, settings2);
+            Assert.True(settings1 == settings2);
+        }
+
+        /// <summary>
+        ///     Tests that BoxCollider Body property defaults to null
+        /// </summary>
+        [Fact]
+        public void BoxCollider_Body_ShouldDefaultToNull()
+        {
+            BoxCollider collider = new BoxCollider();
+            Assert.Null(collider.Body);
+        }
+
+        /// <summary>
+        ///     Tests that BoxColliderSettings with different values are not equal
+        /// </summary>
+        [Fact]
+        public void BoxColliderSettings_Inequality_ShouldWork()
+        {
+            BoxCollider.BoxColliderSettings settings1 = new BoxCollider.BoxColliderSettings(
+                false, 10f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
+            );
+
+            BoxCollider.BoxColliderSettings settings2 = new BoxCollider.BoxColliderSettings(
+                true, 10f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
+            );
+
+            Assert.NotEqual(settings1, settings2);
+            Assert.True(settings1 != settings2);
         }
     }
 }
