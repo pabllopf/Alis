@@ -69,14 +69,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// <summary>
         ///     Initializes a new instance of the <see cref="DungeonData" /> class.
         /// </summary>
-        /// <param name="board">The 2D array representing the dungeon board.</param>
-        /// <param name="rooms">The list of rooms in the dungeon.</param>
-        /// <param name="corridors">The list of corridors connecting the rooms.</param>
-        internal DungeonData(BoardSquare[,] board, List<RoomData> rooms, List<CorridorData> corridors)
+        /// <param name="Board">The 2D array representing the dungeon board.</param>
+        /// <param name="Rooms">The list of rooms in the dungeon.</param>
+        /// <param name="Corridors">The list of corridors connecting the rooms.</param>
+        internal DungeonData(BoardSquare[,] Board, List<RoomData> Rooms, List<CorridorData> Corridors)
         {
-            Board = board ?? throw new ArgumentNullException(nameof(board));
-            Rooms = rooms ?? throw new ArgumentNullException(nameof(rooms));
-            Corridors = corridors ?? throw new ArgumentNullException(nameof(corridors));
+            _board = Board ?? throw new ArgumentNullException(nameof(Board));
+            _rooms = Rooms ?? throw new ArgumentNullException(nameof(Rooms));
+            _corridors = Corridors ?? throw new ArgumentNullException(nameof(Corridors));
         }
         
         /// <summary>
