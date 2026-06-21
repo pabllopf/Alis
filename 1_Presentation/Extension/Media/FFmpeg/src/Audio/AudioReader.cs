@@ -118,9 +118,14 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         ///     Resolves the bit depth from the sample format if not already set.
         /// </summary>
         /// <param name="metadata">The audio metadata to update.</param>
-        private static void ResolveBitDepth(AudioMetadata metadata)
+        internal static void ResolveBitDepth(AudioMetadata metadata)
         {
             if (metadata.BitDepth != 0)
+            {
+                return;
+            }
+
+            if (string.IsNullOrEmpty(metadata.SampleFormat))
             {
                 return;
             }

@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Audio.Models;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -531,6 +532,123 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             Assert.Contains("not found", ex.Message);
             Assert.Contains(".mp3", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that ResolveBitDepth returns early when bit depth already set
+        /// </summary>
+        [Fact]
+        public void ResolveBitDepth_WhenBitDepthAlreadySet_ShouldNotChange()
+        {
+            AudioMetadata metadata = new AudioMetadata { BitDepth = 24, SampleFormat = "s16le" };
+
+            AudioReader.ResolveBitDepth(metadata);
+
+            Assert.Equal(24, metadata.BitDepth);
+        }
+
+        /// <summary>
+        ///     Tests that ResolveBitDepth sets 64 for format containing 64
+        /// </summary>
+        [Fact]
+        public void ResolveBitDepth_FormatContains64_ShouldSet64()
+        {
+            AudioMetadata metadata = new AudioMetadata { SampleFormat = "s64le" };
+
+            AudioReader.ResolveBitDepth(metadata);
+
+            Assert.Equal(64, metadata.BitDepth);
+        }
+
+        /// <summary>
+        ///     Tests that ResolveBitDepth sets 32 for format containing 32
+        /// </summary>
+        [Fact]
+        public void ResolveBitDepth_FormatContains32_ShouldSet32()
+        {
+            AudioMetadata metadata = new AudioMetadata { SampleFormat = "s32le" };
+
+            AudioReader.ResolveBitDepth(metadata);
+
+            Assert.Equal(32, metadata.BitDepth);
+        }
+
+        /// <summary>
+        ///     Tests that ResolveBitDepth sets 24 for format containing 24
+        /// </summary>
+        [Fact]
+        public void ResolveBitDepth_FormatContains24_ShouldSet24()
+        {
+            AudioMetadata metadata = new AudioMetadata { SampleFormat = "s24le" };
+
+            AudioReader.ResolveBitDepth(metadata);
+
+            Assert.Equal(24, metadata.BitDepth);
+        }
+
+        /// <summary>
+        ///     Tests that ResolveBitDepth sets 16 for format containing 16
+        /// </summary>
+        [Fact]
+        public void ResolveBitDepth_FormatContains16_ShouldSet16()
+        {
+            AudioMetadata metadata = new AudioMetadata { SampleFormat = "s16le" };
+
+            AudioReader.ResolveBitDepth(metadata);
+
+            Assert.Equal(16, metadata.BitDepth);
+        }
+
+        /// <summary>
+        ///     Tests that ResolveBitDepth sets 8 for format containing 8
+        /// </summary>
+        [Fact]
+        public void ResolveBitDepth_FormatContains8_ShouldSet8()
+        {
+            AudioMetadata metadata = new AudioMetadata { SampleFormat = "u8" };
+
+            AudioReader.ResolveBitDepth(metadata);
+
+            Assert.Equal(8, metadata.BitDepth);
+        }
+
+        /// <summary>
+        ///     Tests that ResolveBitDepth leaves 0 for unknown format
+        /// </summary>
+        [Fact]
+        public void ResolveBitDepth_UnknownFormat_ShouldLeaveZero()
+        {
+            AudioMetadata metadata = new AudioMetadata { SampleFormat = "fltp" };
+
+            AudioReader.ResolveBitDepth(metadata);
+
+            Assert.Equal(0, metadata.BitDepth);
+        }
+
+        /// <summary>
+        ///     Tests that ResolveBitDepth leaves 0 for null format
+        /// </summary>
+        [Fact]
+        public void ResolveBitDepth_NullFormat_ShouldLeaveZero()
+        {
+            AudioMetadata metadata = new AudioMetadata { SampleFormat = null };
+
+            AudioReader.ResolveBitDepth(metadata);
+
+            Assert.Equal(0, metadata.BitDepth);
+        }
+
+        /// <summary>
+        ///     Tests that ResolveBitDepth leaves 0 for empty format
+        /// </summary>
+        [Fact]
+        public void ResolveBitDepth_EmptyFormat_ShouldLeaveZero()
+        {
+            AudioMetadata metadata = new AudioMetadata { SampleFormat = string.Empty };
+
+            AudioReader.ResolveBitDepth(metadata);
+
+            Assert.Equal(0, metadata.BitDepth);
         }
     }
 }
