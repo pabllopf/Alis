@@ -421,5 +421,94 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.IsAssignableFrom<IOnStart>(animator);
             Assert.IsAssignableFrom<IOnUpdate>(animator);
         }
+
+        /// <summary>
+        ///     Tests that OnUpdate advances frames when elapsed time exceeds frame duration
+        /// </summary>
+        [Fact]
+        public void Animator_OnUpdate_ShouldAdvanceFrame_WhenElapsedTimeExceedsFrameDuration()
+        {
+            Animator animator = new Animator();
+            animator.Animations = new List<Animation>
+            {
+                new Animation
+                {
+                    Name = "TestAnim",
+                    Speed = 1000f,
+                    Frames = new List<Frame>
+                    {
+                        new Frame { NameFile = "frame1" },
+                        new Frame { NameFile = "frame2" },
+                        new Frame { NameFile = "frame3" }
+                    }
+                }
+            };
+            animator.Play("TestAnim");
+            animator.OnStart(null!);
+            System.Threading.Thread.Sleep(15);
+            animator.OnUpdate(null!);
+
+            Assert.True(animator.CurrentFrameIndex > 0, "OnUpdate should have advanced the frame");
+        }
+
+        /// <summary>
+        ///     Tests that OnUpdate with zero speed does not advance frames
+        /// </summary>
+        [Fact]
+        public void Animator_OnUpdate_WithZeroSpeed_ShouldNotAdvanceFrame()
+        {
+            Animator animator = new Animator();
+            animator.Animations = new List<Animation>
+            {
+                new Animation
+                {
+                    Name = "TestAnim",
+                    Speed = 0f,
+                    Frames = new List<Frame>
+                    {
+                        new Frame { NameFile = "frame1" },
+                        new Frame { NameFile = "frame2" }
+                    }
+                }
+            };
+            animator.Play("TestAnim");
+            animator.OnStart(null!);
+            System.Threading.Thread.Sleep(15);
+            animator.OnUpdate(null!);
+
+            Assert.Equal(0, animator.CurrentFrameIndex);
+        }
+
+        /// <summary>
+        ///     Tests that OnUpdate wraps around to first frame after last frame
+        /// </summary>
+        [Fact]
+        public void Animator_OnUpdate_ShouldWrapAround_AfterLastFrame()
+        {
+            Animator animator = new Animator();
+            animator.Animations = new List<Animation>
+            {
+                new Animation
+                {
+                    Name = "TestAnim",
+                    Speed = 10000f,
+                    Frames = new List<Frame>
+                    {
+                        new Frame { NameFile = "frame1" },
+                        new Frame { NameFile = "frame2" }
+                    }
+                }
+            };
+            animator.Play("TestAnim");
+            animator.OnStart(null!);
+            System.Threading.Thread.Sleep(15);
+            animator.OnUpdate(null!);
+            int frameAfterFirst = animator.CurrentFrameIndex;
+
+            System.Threading.Thread.Sleep(15);
+            animator.OnUpdate(null!);
+
+            Assert.NotEqual(frameAfterFirst, animator.CurrentFrameIndex);
+        }
     }
 }

@@ -82,6 +82,7 @@ namespace Alis.Core.Ecs.Components.Render
         public Animator(List<Animation> animations)
         {
             Animations = animations;
+            _clock = new Clock();
             CurrentAnimationIndex = 0;
             CurrentFrameIndex = 0;
         }
