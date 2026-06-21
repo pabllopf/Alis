@@ -142,22 +142,22 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         {
             if (_board == null)
             {
-                throw new ArgumentNullException(nameof(Board));
+                throw new ArgumentNullException(nameof(_board));
             }
 
             if (_board.GetLength(0) <= 0 || _board.GetLength(1) <= 0)
             {
-                throw new ArgumentException("Board dimensions must be greater than zero.", nameof(Board));
+                throw new ArgumentException("Board dimensions must be greater than zero.", nameof(_board));
             }
 
             if (_rooms == null)
             {
-                throw new ArgumentNullException(nameof(Rooms));
+                throw new ArgumentNullException(nameof(_rooms));
             }
 
             if (_corridors == null)
             {
-                throw new ArgumentNullException(nameof(Corridors));
+                throw new ArgumentNullException(nameof(_corridors));
             }
         }
     }
