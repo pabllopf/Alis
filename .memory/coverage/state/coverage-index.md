@@ -44,8 +44,9 @@
 |----------|--------|----------------|
 | pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/DistanceJoint.cs | Completed | 2026-06-21 |
 | pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/FrictionJoint.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:6_Ideation/Fluent/generator/AotReflectionAnalyzer.cs | tests-added | 2026-06-21T09:59Z |
+| pabllopf-official_alis:6_Ideation/Fluent/generator/AotReflectionAnalyzer.cs | COMPLETED-380tests | 2026-06-21T09:57Z |
 | pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | tests-added | 2026-06-21T10:58Z |
+| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs | tests-added | 2026-06-21T11:30Z |
 
 ## Unprocessed Priority Queue
 1. 4_Operation/Audio/src/Players/BrowserPlayer.cs (0.0%)
