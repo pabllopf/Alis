@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
 
             pointSet.Sort(PointComparer);
 
-            Vector2F[] h = new Vector2F[pointSet.Count];
+            Vector2F[] h = new Vector2F[pointSet.Count * 2];
 
             int minmax = FindMinmax(pointSet);
             if (minmax == pointSet.Count - 1)
