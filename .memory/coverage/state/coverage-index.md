@@ -49,10 +49,15 @@
 | pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | tests-added | 2026-06-21T10:58Z |
 | pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs | tests-added | 2026-06-21T11:30Z |
 | pabllopf-official_alis:1_Presentation/Engine/src/Menus/BottomMenu.cs | tests-improved | 2026-06-21T10:00Z |
+| pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs | tests-added | 2026-06-21T10:00Z |
+| pabllopf-official_alis:1_Presentation/Engine/src/Windows/AudioPlayerWindow.cs | tests-improved | 2026-06-21T10:00Z |
+| pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs | tests-added | 2026-06-21T10:00Z |
+| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs | tests-added | 2026-06-21T10:00Z |
+| pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs | tests-added | 2026-06-21T10:00Z |
 
 ## Unprocessed Priority Queue
-1. 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs (30.2%)
-2. 1_Presentation/Engine/src/Windows/AudioPlayerWindow.cs (35.6%)
-3. 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs (37.1%)
-4. 2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs (41.3%)
-5. 1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs (51.2%)
+1. 4_Operation/Ecs/src/Components/AudioSource.cs (57.0%)
+2. 1_Presentation/Engine/src/Windows/SettingsWindow.cs (66.9%)
+3. 1_Presentation/Engine/src/Windows/ProjectWindow.cs (72.2%)
+4. 2_Application/Alis/src/Core/Ecs/Systems/System/EntitySystem.cs (72.9%)
+5. 1_Presentation/Engine/src/Windows/ConfigWindow.cs (73.1%)

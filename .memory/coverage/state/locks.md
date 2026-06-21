@@ -7,3 +7,8 @@
 | 1_Presentation/Engine/src/Menus/BottomMenu.cs | coverage-agent | 2026-06-21T10:20:00Z | completed |
 | 1_Presentation/Engine/src/Windows/AssetsWindow.cs | coverage-agent | 2026-06-21T10:20:00Z | locked |
 | 1_Presentation/Engine/src/Menus/BottomMenu.cs | agent | 2026-06-21T10:00:00Z | completed |
+| 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs | agent | 2026-06-21T10:00:00Z | completed |
+| 1_Presentation/Engine/src/Windows/AudioPlayerWindow.cs | agent | 2026-06-21T10:00:00Z | completed |
+| 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs | agent | 2026-06-21T10:00:00Z | completed |
+| 2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs | agent | 2026-06-21T10:00:00Z | completed |
+| 1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs | agent | 2026-06-21T10:00:00Z | completed |
