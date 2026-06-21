@@ -147,5 +147,144 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.NotNull(result);
             Assert.True(result.Count >= 1);
         }
+
+        /// <summary>
+        ///     Tests that triangulate polygon with less than 3 vertices returns empty list
+        /// </summary>
+        [Fact]
+        public void TriangulatePolygon_WithLessThan3Vertices_ShouldReturnEmptyList()
+        {
+            Vertices vertices = new Vertices(new[] { new Vector2F(0f, 0f) });
+
+            List<Vertices> result = EarclipDecomposer.TriangulatePolygon(vertices, 0.001f);
+
+            Assert.NotNull(result);
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that resolve pinch point returns false with less than 3 vertices
+        /// </summary>
+        [Fact]
+        public void ResolvePinchPoint_WithLessThan3Vertices_ShouldReturnFalse()
+        {
+            Vertices vertices = new Vertices(new[] { new Vector2F(0f, 0f), new Vector2F(1f, 0f) });
+
+            bool result = EarclipDecomposer.ResolvePinchPoint(vertices, out Vertices poutA, out Vertices poutB, 0.001f);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that resolve pinch point returns false for a convex polygon without pinch points
+        /// </summary>
+        [Fact]
+        public void ResolvePinchPoint_WithoutPinchPoint_ShouldReturnFalse()
+        {
+            Vertices vertices = new Vertices(new[] { new Vector2F(0f, 0f), new Vector2F(10f, 0f), new Vector2F(10f, 10f), new Vector2F(0f, 10f) });
+
+            bool result = EarclipDecomposer.ResolvePinchPoint(vertices, out Vertices poutA, out Vertices poutB, 0.001f);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that remainder corrects negative modulus
+        /// </summary>
+        [Fact]
+        public void Remainder_WithNegativeInput_ShouldReturnPositiveModulus()
+        {
+            int result = EarclipDecomposer.Remainder(-1, 5);
+
+            Assert.Equal(4, result);
+        }
+
+        /// <summary>
+        ///     Tests that remainder works with positive input
+        /// </summary>
+        [Fact]
+        public void Remainder_WithPositiveInput_ShouldReturnModulus()
+        {
+            Assert.Equal(2, EarclipDecomposer.Remainder(7, 5));
+            Assert.Equal(3, EarclipDecomposer.Remainder(3, 5));
+        }
+
+        /// <summary>
+        ///     Tests that is ear returns false for a reflex vertex
+        /// </summary>
+        [Fact]
+        public void IsEar_WithReflexVertex_ShouldReturnFalse()
+        {
+            float[] xv = { 0f, 0f, 1f, 1f, 3f, 3f };
+            float[] yv = { 0f, 2f, 2f, 1f, 1f, 0f };
+
+            bool result = EarclipDecomposer.IsEar(3, xv, yv, 6);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that is ear returns false for an out-of-bounds index
+        /// </summary>
+        [Fact]
+        public void IsEar_WithOutOfBoundsIndex_ShouldReturnFalse()
+        {
+            float[] xv = { 0f, 1f, 0f };
+            float[] yv = { 0f, 0f, 1f };
+
+            bool result = EarclipDecomposer.IsEar(5, xv, yv, 3);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that is ear returns false for polygon with less than 3 vertices
+        /// </summary>
+        [Fact]
+        public void IsEar_WithLessThan3Vertices_ShouldReturnFalse()
+        {
+            float[] xv = { 0f, 1f };
+            float[] yv = { 0f, 0f };
+
+            bool result = EarclipDecomposer.IsEar(0, xv, yv, 2);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that is ear returns true for a valid ear in a clockwise triangle
+        /// </summary>
+        [Fact]
+        public void IsEar_WithTriangle_ShouldReturnTrue()
+        {
+            float[] xv = { 0f, 0f, 1f };
+            float[] yv = { 0f, 1f, 0f };
+
+            bool result = EarclipDecomposer.IsEar(0, xv, yv, 3);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that convex partition handles pinch points by splitting and merging
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithPinchPoint_ShouldDecompose()
+        {
+            // Clockwise polygon with near-duplicate start/end vertices to trigger pinch point
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(0f, 10f),
+                new Vector2F(10f, 10f),
+                new Vector2F(10f, 0f),
+                new Vector2F(0.0001f, 0.0001f)
+            });
+
+            List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count > 0);
+        }
     }
 }
