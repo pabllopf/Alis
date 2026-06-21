@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Windows;
 using Xunit;
@@ -10,34 +11,20 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void Constructor_ShouldSetSpaceWork()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                ConsoleWindow window = new ConsoleWindow(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            ConsoleWindow window = new ConsoleWindow(spaceWork);
 
-                Assert.NotNull(window);
-                Assert.Same(spaceWork, window.SpaceWork);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("ConsoleWindow", ex.Message);
-            }
+            Assert.NotNull(window);
+            Assert.Same(spaceWork, window.SpaceWork);
         }
 
         [Fact]
         public void SpaceWork_Property_ShouldReturnSetValue()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                ConsoleWindow window = new ConsoleWindow(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            ConsoleWindow window = new ConsoleWindow(spaceWork);
 
-                Assert.NotNull(window.SpaceWork);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("ConsoleWindow", ex.Message);
-            }
+            Assert.NotNull(window.SpaceWork);
         }
 
         [Fact]
@@ -50,37 +37,23 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void Initialize_ShouldNotThrow()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                ConsoleWindow window = new ConsoleWindow(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            ConsoleWindow window = new ConsoleWindow(spaceWork);
 
-                window.Initialize();
+            window.Initialize();
 
-                Assert.NotNull(window);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("ConsoleWindow", ex.Message);
-            }
+            Assert.NotNull(window);
         }
 
         [Fact]
         public void Start_ShouldNotThrow()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                ConsoleWindow window = new ConsoleWindow(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            ConsoleWindow window = new ConsoleWindow(spaceWork);
 
-                window.Start();
+            window.Start();
 
-                Assert.NotNull(window);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("ConsoleWindow", ex.Message);
-            }
+            Assert.NotNull(window);
         }
     }
 }

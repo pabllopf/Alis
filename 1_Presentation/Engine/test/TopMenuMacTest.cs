@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Menus;
 using Xunit;
@@ -10,106 +11,64 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void Constructor_ShouldSetSpaceWork()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                TopMenuMac menu = new TopMenuMac(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            TopMenuMac menu = new TopMenuMac(spaceWork);
 
-                Assert.NotNull(menu);
-                Assert.Same(spaceWork, menu.SpaceWork);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("TopMenuMac", ex.Message);
-            }
+            Assert.NotNull(menu);
+            Assert.Same(spaceWork, menu.SpaceWork);
         }
 
         [Fact]
         public void SpaceWork_Property_ShouldReturnSetValue()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                TopMenuMac menu = new TopMenuMac(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            TopMenuMac menu = new TopMenuMac(spaceWork);
 
-                Assert.NotNull(menu.SpaceWork);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("TopMenuMac", ex.Message);
-            }
+            Assert.NotNull(menu.SpaceWork);
         }
 
         [Fact]
         public void Initialize_ShouldNotThrow()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                TopMenuMac menu = new TopMenuMac(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            TopMenuMac menu = new TopMenuMac(spaceWork);
 
-                menu.Initialize();
+            menu.Initialize();
 
-                Assert.NotNull(menu);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("TopMenuMac", ex.Message);
-            }
+            Assert.NotNull(menu);
         }
 
         [Fact]
         public void Start_ShouldNotThrow()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                TopMenuMac menu = new TopMenuMac(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            TopMenuMac menu = new TopMenuMac(spaceWork);
 
-                menu.Start();
+            menu.Start();
 
-                Assert.NotNull(menu);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("TopMenuMac", ex.Message);
-            }
+            Assert.NotNull(menu);
         }
 
         [Fact]
         public void Update_ShouldNotThrow()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                TopMenuMac menu = new TopMenuMac(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            TopMenuMac menu = new TopMenuMac(spaceWork);
 
-                menu.Update();
+            menu.Update();
 
-                Assert.NotNull(menu);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("TopMenuMac", ex.Message);
-            }
+            Assert.NotNull(menu);
         }
 
         [Fact]
         public void Render_ShouldNotThrow()
         {
-            try
-            {
-                SpaceWork spaceWork = new SpaceWork();
-                TopMenuMac menu = new TopMenuMac(spaceWork);
+            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
+            TopMenuMac menu = new TopMenuMac(spaceWork);
 
-                menu.Render();
+            menu.Render();
 
-                Assert.NotNull(menu);
-            }
-            catch (Exception ex)
-            {
-                Assert.Contains("TopMenuMac", ex.Message);
-            }
+            Assert.NotNull(menu);
         }
     }
 }
