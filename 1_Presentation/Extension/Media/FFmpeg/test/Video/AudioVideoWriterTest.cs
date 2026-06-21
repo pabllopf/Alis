@@ -639,5 +639,65 @@ namespace Alis.Extension.Media.FFmpeg.Video.Test
                 }
             }
         }
+
+        /// <summary>
+        ///     Tests that constructor with filename validates null filename
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_Constructor_WithFilename_Null_ShouldThrowArgumentException()
+        {
+            Assert.Throws<ArgumentException>(() => new AudioVideoWriter((string)null, 1920, 1080, 30.0, 2, 44100, 16, null, null));
+        }
+
+        /// <summary>
+        ///     Tests that constructor with stream validates zero video width
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_Constructor_WithStream_ZeroWidth_ShouldThrowInvalidDataException()
+        {
+            using MemoryStream stream = new();
+
+            InvalidDataException ex = Assert.Throws<InvalidDataException>(
+                () => new AudioVideoWriter(stream, 0, 1080, 30.0, 2, 44100, 16, null, null));
+
+            Assert.Contains("frame dimensions", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that constructor with stream validates negative video width
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_Constructor_WithStream_NegativeWidth_ShouldThrowInvalidDataException()
+        {
+            using MemoryStream stream = new();
+
+            InvalidDataException ex = Assert.Throws<InvalidDataException>(
+                () => new AudioVideoWriter(stream, -1920, 1080, 30.0, 2, 44100, 16, null, null));
+
+            Assert.Contains("frame dimensions", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that OpenedForWriting is initially false
+        /// </summary>
+        [Fact]
+        public void AudioVideoWriter_OpenedForWriting_InitialState_ShouldBeFalse()
+        {
+            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
+
+            try
+            {
+                using AudioVideoWriter writer = new(path, 1920, 1080, 30.0, 2, 44100, 16, null, null);
+
+                Assert.False(writer.OpenedForWriting);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
     }
 }
