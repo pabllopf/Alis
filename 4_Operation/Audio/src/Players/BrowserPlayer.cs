@@ -233,7 +233,7 @@ namespace Alis.Core.Audio.Players
         /// <param name="freq">The freq</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        private static bool TryParseWav(byte[] wav, out int dataOffset, out int dataSize, out int freq, out int format)
+        internal static bool TryParseWav(byte[] wav, out int dataOffset, out int dataSize, out int freq, out int format)
         {
             dataOffset = 0;
             dataSize = 0;
@@ -300,7 +300,7 @@ namespace Alis.Core.Audio.Players
         /// <summary>
         ///     Determines the OpenAL format based on bits per sample and channel count.
         /// </summary>
-        private static int FindFmtChunk(byte[] wav, ref int fmtPos)
+        internal static int FindFmtChunk(byte[] wav, ref int fmtPos)
         {
             while (fmtPos < wav.Length - 8)
             {
@@ -324,7 +324,7 @@ namespace Alis.Core.Audio.Players
         /// <param name="pos">The pos</param>
         /// <param name="dataOffset">The data offset</param>
         /// <param name="dataSize">The data size</param>
-        private static void FindDataChunk(byte[] wav, ref int pos, out int dataOffset, out int dataSize)
+        internal static void FindDataChunk(byte[] wav, ref int pos, out int dataOffset, out int dataSize)
         {
             dataOffset = 0;
             dataSize = 0;
@@ -351,7 +351,7 @@ namespace Alis.Core.Audio.Players
         /// <param name="channels">The channels</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
-        private static bool TryGetFormat(int bits, int channels, out int format)
+        internal static bool TryGetFormat(int bits, int channels, out int format)
         {
             format = 0;
             if (bits == 16)
