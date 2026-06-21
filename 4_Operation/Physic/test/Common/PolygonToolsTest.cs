@@ -252,7 +252,7 @@ namespace Alis.Core.Physic.Test.Common
         }
 
         /// <summary>
-        ///     Tests that create rectangle with negative dimensions should work
+        /// Tests that create rectangle with negative dimensions should work
         /// </summary>
         [Fact]
         public void CreateRectangle_WithNegativeDimensions_ShouldWork()
@@ -260,6 +260,155 @@ namespace Alis.Core.Physic.Test.Common
             Vertices vertices = PolygonTools.CreateRectangle(-5.0f, -3.0f);
 
             Assert.Equal(4, vertices.Count);
+        }
+
+        /// <summary>
+        ///     Tests that create arc should create vertices
+        /// </summary>
+        [Fact]
+        public void CreateArc_ShouldCreateVertices()
+        {
+            Vertices vertices = PolygonTools.CreateArc((float)Math.PI, 8, 5.0f);
+
+            Assert.NotEmpty(vertices);
+        }
+
+        /// <summary>
+        ///     Tests that create arc with minimum sides should work
+        /// </summary>
+        [Fact]
+        public void CreateArc_WithMinimumSides_ShouldWork()
+        {
+            Vertices vertices = PolygonTools.CreateArc((float)Math.PI, 3, 5.0f);
+
+            Assert.NotEmpty(vertices);
+        }
+
+        /// <summary>
+        ///     Tests that create capsule should create vertices
+        /// </summary>
+        [Fact]
+        public void CreateCapsule_ShouldCreateVertices()
+        {
+            Vertices vertices = PolygonTools.CreateCapsule(10.0f, 2.0f, 8);
+
+            Assert.NotEmpty(vertices);
+        }
+
+        /// <summary>
+        ///     Tests that create capsule throws when radius too large
+        /// </summary>
+        [Fact]
+        public void CreateCapsule_ShouldThrowException_WhenRadiusTooLarge()
+        {
+            Assert.Throws<ArgumentException>(() => PolygonTools.CreateCapsule(10.0f, 6.0f, 8));
+        }
+
+        /// <summary>
+        ///     Tests that create capsule with different top and bottom radii creates vertices
+        /// </summary>
+        [Fact]
+        public void CreateCapsule_WithDifferentRadii_ShouldCreateVertices()
+        {
+            Vertices vertices = PolygonTools.CreateCapsule(10.0f, 2.0f, 8, 3.0f, 6);
+
+            Assert.NotEmpty(vertices);
+        }
+
+        /// <summary>
+        ///     Tests that create capsule throws when height is zero
+        /// </summary>
+        [Fact]
+        public void CreateCapsule_ShouldThrowException_WhenHeightIsZero()
+        {
+            Assert.Throws<ArgumentException>(() => PolygonTools.CreateCapsule(0.0f, 2.0f, 8, 3.0f, 6));
+        }
+
+        /// <summary>
+        ///     Tests that create capsule throws when top radius is zero
+        /// </summary>
+        [Fact]
+        public void CreateCapsule_ShouldThrowException_WhenTopRadiusIsZero()
+        {
+            Assert.Throws<ArgumentException>(() => PolygonTools.CreateCapsule(10.0f, 0.0f, 8, 3.0f, 6));
+        }
+
+        /// <summary>
+        ///     Tests that create capsule throws when top edges is zero
+        /// </summary>
+        [Fact]
+        public void CreateCapsule_ShouldThrowException_WhenTopEdgesIsZero()
+        {
+            Assert.Throws<ArgumentException>(() => PolygonTools.CreateCapsule(10.0f, 2.0f, 0, 3.0f, 6));
+        }
+
+        /// <summary>
+        ///     Tests that create capsule throws when bottom radius is zero
+        /// </summary>
+        [Fact]
+        public void CreateCapsule_ShouldThrowException_WhenBottomRadiusIsZero()
+        {
+            Assert.Throws<ArgumentException>(() => PolygonTools.CreateCapsule(10.0f, 2.0f, 8, 0.0f, 6));
+        }
+
+        /// <summary>
+        ///     Tests that create capsule throws when top radius too large relative to height
+        /// </summary>
+        [Fact]
+        public void CreateCapsule_ShouldThrowException_WhenTopRadiusTooLarge()
+        {
+            Assert.Throws<ArgumentException>(() => PolygonTools.CreateCapsule(10.0f, 6.0f, 8, 2.0f, 6));
+        }
+
+        /// <summary>
+        ///     Tests that create capsule throws when bottom radius too large
+        /// </summary>
+        [Fact]
+        public void CreateCapsule_ShouldThrowException_WhenBottomRadiusTooLarge()
+        {
+            Assert.Throws<ArgumentException>(() => PolygonTools.CreateCapsule(10.0f, 2.0f, 8, 6.0f, 6));
+        }
+
+        /// <summary>
+        ///     Tests that create capsule throws when bottom edges is zero
+        /// </summary>
+        [Fact]
+        public void CreateCapsule_ShouldThrowException_WhenBottomEdgesIsZero()
+        {
+            Assert.Throws<ArgumentException>(() => PolygonTools.CreateCapsule(10.0f, 2.0f, 8, 2.0f, 0));
+        }
+
+        /// <summary>
+        ///     Tests that create gear should create vertices
+        /// </summary>
+        [Fact]
+        public void CreateGear_ShouldCreateVertices()
+        {
+            Vertices vertices = PolygonTools.CreateGear(5.0f, 8, 50.0f, 1.0f);
+
+            Assert.NotEmpty(vertices);
+        }
+
+        /// <summary>
+        ///     Tests that create gear with zero tip percentage should work
+        /// </summary>
+        [Fact]
+        public void CreateGear_WithZeroTipPercentage_ShouldWork()
+        {
+            Vertices vertices = PolygonTools.CreateGear(5.0f, 6, 0.0f, 1.0f);
+
+            Assert.NotEmpty(vertices);
+        }
+
+        /// <summary>
+        ///     Tests that create gear with full tip percentage should work
+        /// </summary>
+        [Fact]
+        public void CreateGear_WithFullTipPercentage_ShouldWork()
+        {
+            Vertices vertices = PolygonTools.CreateGear(5.0f, 6, 100.0f, 1.0f);
+
+            Assert.NotEmpty(vertices);
         }
     }
 }
