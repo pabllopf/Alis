@@ -360,5 +360,115 @@ namespace Alis.Core.Physic.Test.Common
 
             Assert.NotEqual(Vector2F.Zero, position);
         }
+
+        /// <summary>
+        ///     Tests that get position with closed path and time zero exercises wrap negative index
+        /// </summary>
+        [Fact]
+        public void GetPosition_WithClosedPathAndTimeZero_ShouldExerciseWrapNegative()
+        {
+            Path path = new Path(new[]
+            {
+                new Vector2F(0, 0),
+                new Vector2F(10, 0),
+                new Vector2F(10, 10)
+            });
+            path.Closed = true;
+
+            Vector2F position = path.GetPosition(0f);
+
+            Assert.Equal(new Vector2F(0, 0), position);
+        }
+
+        /// <summary>
+        ///     Tests that get position with open path large time exercises clamp max index
+        /// </summary>
+        [Fact]
+        public void GetPosition_WithOpenPathAndTimeNearEnd_ShouldExerciseClampMax()
+        {
+            Path path = new Path(new[]
+            {
+                new Vector2F(0, 0),
+                new Vector2F(5, 5),
+                new Vector2F(10, 0),
+                new Vector2F(15, 5)
+            });
+
+            Vector2F position = path.GetPosition(0.99f);
+
+            Assert.NotEqual(Vector2F.Zero, position);
+        }
+
+        /// <summary>
+        ///     Tests that get length with closed path should return positive value
+        /// </summary>
+        [Fact]
+        public void GetLength_WithClosedPath_ShouldReturnPositiveValue()
+        {
+            Path path = new Path(new[]
+            {
+                new Vector2F(0, 0),
+                new Vector2F(10, 0),
+                new Vector2F(10, 10)
+            });
+            path.Closed = true;
+
+            float length = path.GetLength();
+
+            Assert.True(length > 0);
+        }
+
+        /// <summary>
+        ///     Tests that calc catmull rom returns interpolated value
+        /// </summary>
+        [Fact]
+        public void CalcCatmullRom_ShouldReturnInterpolatedValue()
+        {
+            Vector2F p0 = new Vector2F(0, 0);
+            Vector2F p1 = new Vector2F(5, 5);
+            Vector2F p2 = new Vector2F(10, 0);
+            Vector2F p3 = new Vector2F(15, 5);
+
+            Path.CalcCatmullRom(p0, p1, p2, p3, 0.5f, out Vector2F result);
+
+            Assert.NotEqual(Vector2F.Zero, result);
+        }
+
+        /// <summary>
+        ///     Tests that subdivide evenly with closed path returns list
+        /// </summary>
+        [Fact]
+        public void SubdivideEvenly_WithClosedPath_ShouldReturnList()
+        {
+            Path path = new Path(new[]
+            {
+                new Vector2F(0, 0),
+                new Vector2F(5, 5),
+                new Vector2F(10, 0)
+            });
+            path.Closed = true;
+
+            List<Vector3F> subdivisions = path.SubdivideEvenly(5);
+
+            Assert.NotNull(subdivisions);
+        }
+
+        /// <summary>
+        ///     Tests that subdivide evenly with large divisions returns list
+        /// </summary>
+        [Fact]
+        public void SubdivideEvenly_WithLargeDivisions_ShouldReturnList()
+        {
+            Path path = new Path(new[]
+            {
+                new Vector2F(0, 0),
+                new Vector2F(5, 5),
+                new Vector2F(10, 0)
+            });
+
+            List<Vector3F> subdivisions = path.SubdivideEvenly(50);
+
+            Assert.NotNull(subdivisions);
+        }
     }
 }
