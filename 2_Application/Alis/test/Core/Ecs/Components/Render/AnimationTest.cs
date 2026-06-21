@@ -165,5 +165,67 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Assert.NotNull(animation.AddFrame);
         }
+
+        /// <summary>
+        ///     Tests that the three-parameter constructor sets values correctly
+        /// </summary>
+        [Fact]
+        public void Animation_ThreeParamConstructor_ShouldSetValues()
+        {
+            Animation animation = new Animation("Walk", 1, 2f);
+
+            Assert.Equal("Walk", animation.Name);
+            Assert.Equal(1, animation.Order);
+            Assert.Equal(2f, animation.Speed);
+            Assert.NotNull(animation.Frames);
+            Assert.Empty(animation.Frames);
+        }
+
+        /// <summary>
+        ///     Tests that the four-parameter constructor sets values including frames
+        /// </summary>
+        [Fact]
+        public void Animation_FourParamConstructor_ShouldSetValues()
+        {
+            List<Frame> frames = new List<Frame>
+            {
+                new Frame { NameFile = "f1.png" },
+                new Frame { NameFile = "f2.png" }
+            };
+
+            Animation animation = new Animation("Run", 2, 3f, frames);
+
+            Assert.Equal("Run", animation.Name);
+            Assert.Equal(2, animation.Order);
+            Assert.Equal(3f, animation.Speed);
+            Assert.Same(frames, animation.Frames);
+            Assert.Equal(2, animation.Frames.Count);
+        }
+
+        /// <summary>
+        ///     Tests that the four-parameter constructor creates new list when frames is null
+        /// </summary>
+        [Fact]
+        public void Animation_FourParamConstructor_WithNullFrames_ShouldCreateNewList()
+        {
+            Animation animation = new Animation("Test", 0, 1f, null);
+
+            Assert.NotNull(animation.Frames);
+            Assert.Empty(animation.Frames);
+        }
+
+        /// <summary>
+        ///     Tests that AddFrame works after replacing the frames list
+        /// </summary>
+        [Fact]
+        public void Animation_AddFrame_AfterReplacingFrames_ShouldWork()
+        {
+            Animation animation = new Animation();
+            animation.Frames = new List<Frame>();
+
+            animation.AddFrame(new Frame { NameFile = "test.png" });
+
+            Assert.Single(animation.Frames);
+        }
     }
 }

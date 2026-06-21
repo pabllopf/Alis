@@ -250,5 +250,59 @@ namespace Alis.Test
                 .Build();
             Assert.NotNull(boxCollider);
         }
+
+        /// <summary>
+        /// Tests that IsTrigger without parameters sets trigger to true
+        /// </summary>
+        [Fact]
+        public void IsTrigger_NoParams_SetsTriggerTrue()
+        {
+            Context context = new Context();
+            BoxColliderBuilder builder = new BoxColliderBuilder(context);
+            BoxColliderBuilder result = builder.IsTrigger();
+            Assert.Same(builder, result);
+
+            BoxCollider boxCollider = builder.Build();
+            Assert.True(boxCollider.IsTrigger);
+        }
+
+        /// <summary>
+        /// Tests that Build returns a BoxCollider with properties set by the builder
+        /// </summary>
+        [Fact]
+        public void Build_ShouldReturnConfiguredCollider()
+        {
+            Context context = new Context();
+            BoxCollider collider = new BoxColliderBuilder(context)
+                .BodyType(BodyType.Dynamic)
+                .AngularVelocity(5f)
+                .Friction(0.3f)
+                .Restitution(0.7f)
+                .Mass(10f)
+                .IsTrigger(true)
+                .Size(2f, 4f)
+                .Rotation(90f)
+                .AutoTilling(true)
+                .FixedRotation(true)
+                .LinearVelocity(1f, 2f)
+                .RelativePosition(3f, 4f)
+                .IgnoreGravity(true)
+                .Build();
+
+            Assert.Equal(BodyType.Dynamic, collider.BodyType);
+            Assert.Equal(5f, collider.AngularVelocity);
+            Assert.Equal(0.3f, collider.Friction);
+            Assert.Equal(0.7f, collider.Restitution);
+            Assert.Equal(10f, collider.Mass);
+            Assert.True(collider.IsTrigger);
+            Assert.Equal(2f, collider.SizeOfTexture.X);
+            Assert.Equal(4f, collider.SizeOfTexture.Y);
+            Assert.Equal(90f, collider.Rotation);
+            Assert.True(collider.AutoTilling);
+            Assert.True(collider.FixedRotation);
+            Assert.Equal(1f, collider.LinearVelocity.X);
+            Assert.Equal(2f, collider.LinearVelocity.Y);
+            Assert.True(collider.IgnoreGravity);
+        }
     }
 }
