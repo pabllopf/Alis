@@ -128,5 +128,166 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.Equal(anchor, joint.LocalAnchorA);
         }
+
+        /// <summary>
+        /// Tests that world anchor a get should return body a get world point
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Get_ShouldReturnBodyAGetWorldPoint()
+        {
+            Body body = new Body();
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
+
+            Vector2F anchor = joint.WorldAnchorA;
+
+            Assert.Equal(body.Position, anchor);
+        }
+
+        /// <summary>
+        /// Tests that world anchor a set should update local anchor a
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Set_ShouldUpdateLocalAnchorA()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(5.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
+
+            joint.WorldAnchorA = new Vector2F(8.0f, 3.0f);
+
+            Assert.Equal(new Vector2F(3.0f, 3.0f), joint.LocalAnchorA);
+        }
+
+        /// <summary>
+        /// Tests that world anchor b should round trip
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_ShouldRoundTrip()
+        {
+            Body body = new Body();
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
+
+            Vector2F expected = new Vector2F(5.0f, 10.0f);
+            joint.WorldAnchorB = expected;
+
+            Assert.Equal(expected, joint.WorldAnchorB);
+        }
+
+        /// <summary>
+        /// Tests that world anchor b get from constructor should return world anchor
+        /// </summary>
+        [Fact]
+        public void Constructor_ShouldSetWorldAnchorB()
+        {
+            Body body = new Body();
+            Vector2F worldAnchor = new Vector2F(10.0f, 20.0f);
+            FixedMouseJoint joint = new FixedMouseJoint(body, worldAnchor);
+
+            Assert.Equal(worldAnchor, joint.WorldAnchorB);
+        }
+
+        /// <summary>
+        /// Tests that frequency should default to five
+        /// </summary>
+        [Fact]
+        public void Frequency_ShouldDefaultToFive()
+        {
+            Body body = new Body();
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
+
+            Assert.Equal(5.0f, joint.Frequency);
+        }
+
+        /// <summary>
+        /// Tests that damping ratio should default to zero point seven
+        /// </summary>
+        [Fact]
+        public void DampingRatio_ShouldDefaultToZeroPointSeven()
+        {
+            Body body = new Body();
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
+
+            Assert.Equal(0.7f, joint.DampingRatio);
+        }
+
+        /// <summary>
+        /// Tests that max force should default to body mass times thousand
+        /// </summary>
+        [Fact]
+        public void MaxForce_ShouldDefaultToBodyMassTimesThousand()
+        {
+            Body body = new Body();
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
+
+            Assert.Equal(1000.0f * body.Mass, joint.MaxForce);
+        }
+
+        /// <summary>
+        /// Tests that get reaction force should return zero initially
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_ShouldReturnZeroInitially()
+        {
+            Body body = new Body();
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
+
+            Vector2F force = joint.GetReactionForce(1.0f);
+
+            Assert.Equal(Vector2F.Zero, force);
+        }
+
+        /// <summary>
+        /// Tests that get reaction force with inv dt should return zero
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_WithInvDt_ShouldReturnZero()
+        {
+            Body body = new Body();
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
+
+            Vector2F force = joint.GetReactionForce(62.5f);
+
+            Assert.Equal(Vector2F.Zero, force);
+        }
+
+        /// <summary>
+        /// Tests that get reaction torque should return zero
+        /// </summary>
+        [Fact]
+        public void GetReactionTorque_ShouldReturnZero()
+        {
+            Body body = new Body();
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
+
+            float torque = joint.GetReactionTorque(1.0f);
+
+            Assert.Equal(0.0f, torque);
+        }
+
+        /// <summary>
+        /// Tests that local anchor a from constructor should be computed from world anchor
+        /// </summary>
+        [Fact]
+        public void Constructor_ShouldComputeLocalAnchorA()
+        {
+            Body body = new Body();
+            FixedMouseJoint joint = new FixedMouseJoint(body, new Vector2F(3.0f, 4.0f));
+
+            Assert.Equal(new Vector2F(3.0f, 4.0f), joint.LocalAnchorA);
+        }
+
+        /// <summary>
+        /// Tests that constructor with body and world anchor should compute local anchor a correctly
+        /// </summary>
+        [Fact]
+        public void Constructor_WithWorldAnchor_ShouldComputeLocalAnchorACorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(5.0f, 10.0f), 0.0f, BodyType.Dynamic);
+
+            FixedMouseJoint joint = new FixedMouseJoint(body, new Vector2F(8.0f, 15.0f));
+
+            Assert.Equal(new Vector2F(3.0f, 5.0f), joint.LocalAnchorA);
+        }
     }
 }
