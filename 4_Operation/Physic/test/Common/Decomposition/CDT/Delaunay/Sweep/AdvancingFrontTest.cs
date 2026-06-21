@@ -189,5 +189,202 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
 
             Assert.NotSame(front1, front2);
         }
+
+        /// <summary>
+        ///     Tests that LocateNode returns correct node for x between head and next
+        /// </summary>
+        [Fact]
+        public void LocateNode_BetweenHeadAndFirstNode_ReturnsHead()
+        {
+            TriangulationPoint headPoint = new TriangulationPoint(0, 0);
+            TriangulationPoint midPoint = new TriangulationPoint(5, 0);
+            TriangulationPoint tailPoint = new TriangulationPoint(10, 0);
+
+            AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
+            AdvancingFrontNode mid = new AdvancingFrontNode(midPoint);
+            AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
+
+            head.Next = mid;
+            mid.Prev = head;
+            mid.Next = tail;
+            tail.Prev = mid;
+
+            AdvancingFront front = new AdvancingFront(head, tail);
+
+            AdvancingFrontNode result = front.LocateNode(new TriangulationPoint(3, 0));
+
+            Assert.Same(head, result);
+        }
+
+        /// <summary>
+        ///     Tests that LocateNode returns correct node for x between two inner nodes
+        /// </summary>
+        [Fact]
+        public void LocateNode_BetweenMiddleNodes_ReturnsPreviousNode()
+        {
+            TriangulationPoint headPoint = new TriangulationPoint(0, 0);
+            TriangulationPoint mid1Point = new TriangulationPoint(5, 0);
+            TriangulationPoint mid2Point = new TriangulationPoint(8, 0);
+            TriangulationPoint tailPoint = new TriangulationPoint(10, 0);
+
+            AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
+            AdvancingFrontNode mid1 = new AdvancingFrontNode(mid1Point);
+            AdvancingFrontNode mid2 = new AdvancingFrontNode(mid2Point);
+            AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
+
+            head.Next = mid1;
+            mid1.Prev = head;
+            mid1.Next = mid2;
+            mid2.Prev = mid1;
+            mid2.Next = tail;
+            tail.Prev = mid2;
+
+            AdvancingFront front = new AdvancingFront(head, tail);
+
+            AdvancingFrontNode result = front.LocateNode(new TriangulationPoint(6, 0));
+
+            Assert.Same(mid1, result);
+        }
+
+        /// <summary>
+        ///     Tests that LocateNode returns null when x is beyond tail
+        /// </summary>
+        [Fact]
+        public void LocateNode_AfterTail_ReturnsNull()
+        {
+            TriangulationPoint headPoint = new TriangulationPoint(0, 0);
+            TriangulationPoint tailPoint = new TriangulationPoint(10, 0);
+
+            AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
+            AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
+
+            head.Next = tail;
+            tail.Prev = head;
+
+            AdvancingFront front = new AdvancingFront(head, tail);
+
+            AdvancingFrontNode result = front.LocateNode(new TriangulationPoint(20, 0));
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that LocateNode returns null when x is before head
+        /// </summary>
+        [Fact]
+        public void LocateNode_BeforeHead_ReturnsNull()
+        {
+            TriangulationPoint headPoint = new TriangulationPoint(0, 0);
+            TriangulationPoint tailPoint = new TriangulationPoint(10, 0);
+
+            AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
+            AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
+
+            head.Next = tail;
+            tail.Prev = head;
+
+            AdvancingFront front = new AdvancingFront(head, tail);
+
+            AdvancingFrontNode result = front.LocateNode(new TriangulationPoint(-5, 0));
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that LocatePoint finds exact match on head
+        /// </summary>
+        [Fact]
+        public void LocatePoint_ExactMatchOnHead_ReturnsHead()
+        {
+            TriangulationPoint headPoint = new TriangulationPoint(0, 0);
+            TriangulationPoint tailPoint = new TriangulationPoint(10, 0);
+
+            AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
+            AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
+
+            head.Next = tail;
+            tail.Prev = head;
+
+            AdvancingFront front = new AdvancingFront(head, tail);
+
+            AdvancingFrontNode result = front.LocatePoint(headPoint);
+
+            Assert.Same(head, result);
+        }
+
+        /// <summary>
+        ///     Tests that LocatePoint searches forward and finds the node
+        /// </summary>
+        [Fact]
+        public void LocatePoint_SearchForward_FindsNode()
+        {
+            TriangulationPoint headPoint = new TriangulationPoint(0, 0);
+            TriangulationPoint midPoint = new TriangulationPoint(5, 0);
+            TriangulationPoint tailPoint = new TriangulationPoint(10, 0);
+
+            AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
+            AdvancingFrontNode mid = new AdvancingFrontNode(midPoint);
+            AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
+
+            head.Next = mid;
+            mid.Prev = head;
+            mid.Next = tail;
+            tail.Prev = mid;
+
+            AdvancingFront front = new AdvancingFront(head, tail);
+
+            AdvancingFrontNode result = front.LocatePoint(midPoint);
+
+            Assert.Same(mid, result);
+        }
+
+        /// <summary>
+        ///     Tests that LocatePoint returns null when searching backward and point is not found
+        /// </summary>
+        [Fact]
+        public void LocatePoint_SearchPrevDirection_NotFound_ReturnsNull()
+        {
+            TriangulationPoint headPoint = new TriangulationPoint(0, 0);
+            TriangulationPoint tailPoint = new TriangulationPoint(10, 0);
+
+            AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
+            AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
+
+            head.Next = tail;
+            tail.Prev = head;
+
+            AdvancingFront front = new AdvancingFront(head, tail);
+
+            // px=-1 < head.X=0 → SearchPrevDirection → head.Prev is null → returns null
+            AdvancingFrontNode result = front.LocatePoint(new TriangulationPoint(-1, 0));
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that LocateNode returns correct node for x near tail
+        /// </summary>
+        [Fact]
+        public void LocateNode_NearTail_ReturnsLastInnerNode()
+        {
+            TriangulationPoint headPoint = new TriangulationPoint(0, 0);
+            TriangulationPoint midPoint = new TriangulationPoint(5, 0);
+            TriangulationPoint tailPoint = new TriangulationPoint(10, 0);
+
+            AdvancingFrontNode head = new AdvancingFrontNode(headPoint);
+            AdvancingFrontNode mid = new AdvancingFrontNode(midPoint);
+            AdvancingFrontNode tail = new AdvancingFrontNode(tailPoint);
+
+            head.Next = mid;
+            mid.Prev = head;
+            mid.Next = tail;
+            tail.Prev = mid;
+
+            AdvancingFront front = new AdvancingFront(head, tail);
+
+            AdvancingFrontNode result = front.LocateNode(new TriangulationPoint(9, 0));
+
+            Assert.Same(mid, result);
+        }
     }
 }
