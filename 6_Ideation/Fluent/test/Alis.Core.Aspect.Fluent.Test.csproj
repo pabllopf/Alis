@@ -30,6 +30,7 @@
         </PackageReference>
 
         <PackageReference Include="Moq" Version="4.20.70"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.0"/>
     </ItemGroup>
 
     
@@ -49,6 +50,11 @@
         <NoWarn>$(NoWarn);CA1816;CA1816;CS0419;CS1572;CS1573;CS1574;CS1734;CS1572;CS1573;CS1574;CS0419;CS1734</NoWarn>
     </PropertyGroup>
     
+    <ItemGroup>
+        <!-- Direct reference for testing generator internals -->
+        <ProjectReference Include="../generator/Alis.Core.Aspect.Fluent.Generator.csproj" />
+    </ItemGroup>
+
     <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
                           Include="
@@ -169,6 +175,11 @@
                 TargetFramework=netstandard2.0
             </Properties>
         </ProjectReference>
+
+        <ProjectReference
+            Condition="$(AssemblyName.Contains('Fluent.Test')) AND Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
+            Include="$(ProjectDir)../generator/$(NameTest).Generator.csproj"/>
+
     </ItemGroup>
 
            <!-- ========== PROPIEDADES DE ASSETS ========== -->

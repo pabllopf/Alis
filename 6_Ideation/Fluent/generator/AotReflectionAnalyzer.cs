@@ -29,11 +29,14 @@
 
 using System;
 using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Operations;
+
+[assembly: InternalsVisibleTo("Alis.Core.Aspect.Fluent.Test")]
 
 namespace Alis.Core.Aspect.Fluent.Generator
 {
@@ -454,7 +457,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The bool</returns>
-        private static bool IsReflectionType(ITypeSymbol type)
+        internal static bool IsReflectionType(ITypeSymbol type)
         {
             if (type == null)
             {
@@ -480,7 +483,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         /// </summary>
         /// <param name="method">The method</param>
         /// <returns>The bool</returns>
-        private static bool IsEmitApi(IMethodSymbol method)
+        internal static bool IsEmitApi(IMethodSymbol method)
         {
             string t = method.ContainingType?.ToDisplayString() ?? string.Empty;
             string n = method.Name;
@@ -507,7 +510,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         /// </summary>
         /// <param name="method">The method</param>
         /// <returns>The bool</returns>
-        private static bool IsInvokeApi(IMethodSymbol method)
+        internal static bool IsInvokeApi(IMethodSymbol method)
         {
             string t = method.ContainingType?.ToDisplayString() ?? string.Empty;
             string n = method.Name;
@@ -529,7 +532,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         /// </summary>
         /// <param name="method">The method</param>
         /// <returns>The bool</returns>
-        private static bool IsActivatorApi(IMethodSymbol method)
+        internal static bool IsActivatorApi(IMethodSymbol method)
         {
             string t = method.ContainingType?.ToDisplayString() ?? string.Empty;
             return (t == "System.Activator") && (method.Name.StartsWith("CreateInstance", StringComparison.Ordinal) || method.Name.StartsWith("Create"));
@@ -540,7 +543,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         /// </summary>
         /// <param name="method">The method</param>
         /// <returns>The bool</returns>
-        private static bool IsTypeGetTypeApi(IMethodSymbol method)
+        internal static bool IsTypeGetTypeApi(IMethodSymbol method)
         {
             string t = method.ContainingType?.ToDisplayString() ?? string.Empty;
             return ((t == "System.Type") && (method.Name == "GetType")) || ((t == "System.Reflection.Assembly") && (method.Name == "Load" || method.Name == "LoadFrom"));
@@ -551,7 +554,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         /// </summary>
         /// <param name="method">The method</param>
         /// <returns>The bool</returns>
-        private static bool IsKnownSerializer(IMethodSymbol method)
+        internal static bool IsKnownSerializer(IMethodSymbol method)
         {
             string t = method.ContainingType?.ToDisplayString() ?? string.Empty;
             if (t.StartsWith("System.Runtime.Serialization.Formatters.Binary.BinaryFormatter", StringComparison.Ordinal))
