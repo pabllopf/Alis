@@ -15,7 +15,7 @@
 
 | # | File Key | Coverage | Line Cov | Branch Cov | Uncovered Lines |
 |----|----------|----------|----------|------------|-----------------|
-| 1 | pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs | 0.0% | - | - | - |
+| 1 | pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs | ALREADY-COVERED-35tests | - | - | - |
 | 2 | pabllopf-official_alis:1_Presentation/Engine/src/Menus/BottomMenu.cs | 2.2% | - | - | - |
 | 3 | pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | 12.3% | - | - | - |
 | 4 | pabllopf-official_alis:1_Presentation/Engine/src/Windows/AssetsWindow.cs | 19.7% | - | - | - |
@@ -51,8 +51,8 @@
 | pabllopf-official_alis:1_Presentation/Engine/src/Menus/BottomMenu.cs | tests-improved | 2026-06-21T10:00Z |
 
 ## Unprocessed Priority Queue
-1. 4_Operation/Audio/src/Players/BrowserPlayer.cs (0.0%)
-2. 1_Presentation/Engine/src/Windows/AssetsWindow.cs (19.7%)
-3. 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs (30.2%)
-4. 1_Presentation/Engine/src/Windows/AudioPlayerWindow.cs (35.6%)
-5. 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs (37.1%)
+1. 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs (30.2%)
+2. 1_Presentation/Engine/src/Windows/AudioPlayerWindow.cs (35.6%)
+3. 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs (37.1%)
+4. 2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs (41.3%)
+5. 1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs (51.2%)
