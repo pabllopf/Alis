@@ -38,6 +38,39 @@ using Xunit;
 namespace Alis.App.Hub.Test
 {
     /// <summary>
+    ///     Concrete subclass of ASection for testing abstract class members
+    /// </summary>
+    internal class TestASection : ASection
+    {
+        public TestASection(SpaceWork spaceWork) : base(spaceWork)
+        {
+        }
+
+        public override void OnInit()
+        {
+        }
+
+        public override void OnStart()
+        {
+        }
+
+        public override void OnUpdate()
+        {
+        }
+
+        public override void OnRender(float scale)
+        {
+        }
+
+        public override void OnDestroy()
+        {
+        }
+    }
+}
+
+namespace Alis.App.Hub.Test
+{
+    /// <summary>
     ///     Tests for Hub Section classes and Core classes (SpaceWork, AWindow).
     /// </summary>
     public class HubSectionAndCoreTests
@@ -653,6 +686,146 @@ namespace Alis.App.Hub.Test
         {
             SpaceWork spaceWork = new SpaceWork();
             ProjectsSection section = new ProjectsSection(spaceWork);
+
+            Assert.NotNull(section);
+        }
+
+        #endregion
+
+        #region ASection Tests
+
+        /// <summary>
+        ///     Tests that ASection is an abstract class implementing IRuntime
+        /// </summary>
+        [Fact]
+        public void ASection_ShouldBeAbstractClassImplementingIRuntime()
+        {
+            Type aSectionType = typeof(ASection);
+
+            Assert.True(aSectionType.IsAbstract);
+            Assert.True(aSectionType.IsClass);
+            Assert.True(typeof(IRuntime).IsAssignableFrom(aSectionType));
+        }
+
+        /// <summary>
+        ///     Tests that ASection constructor sets SpaceWork property
+        /// </summary>
+        [Fact]
+        public void ASection_Constructor_ShouldSetSpaceWork()
+        {
+            SpaceWork spaceWork = new SpaceWork();
+            TestASection section = new TestASection(spaceWork);
+
+            Assert.Same(spaceWork, section.SpaceWork);
+        }
+
+        /// <summary>
+        ///     Tests that ASection SpaceWork property can be set after construction
+        /// </summary>
+        [Fact]
+        public void ASection_SpaceWorkProperty_ShouldBeSettable()
+        {
+            TestASection section = new TestASection(new SpaceWork());
+            SpaceWork newSpaceWork = new SpaceWork();
+
+            section.SpaceWork = newSpaceWork;
+
+            Assert.Same(newSpaceWork, section.SpaceWork);
+        }
+
+        /// <summary>
+        ///     Tests that ASection Title defaults to "Window"
+        /// </summary>
+        [Fact]
+        public void ASection_TitleProperty_ShouldDefaultToWindow()
+        {
+            TestASection section = new TestASection(new SpaceWork());
+
+            Assert.Equal("Window", section.Title);
+        }
+
+        /// <summary>
+        ///     Tests that ASection Title property can be get and set
+        /// </summary>
+        [Fact]
+        public void ASection_TitleProperty_ShouldBeSettable()
+        {
+            TestASection section = new TestASection(new SpaceWork());
+            section.Title = "TestTitle";
+            Assert.Equal("TestTitle", section.Title);
+        }
+
+        /// <summary>
+        ///     Tests that ASection IsOpen defaults to false
+        /// </summary>
+        [Fact]
+        public void ASection_IsOpenProperty_ShouldDefaultToFalse()
+        {
+            TestASection section = new TestASection(new SpaceWork());
+
+            Assert.False(section.IsOpen);
+        }
+
+        /// <summary>
+        ///     Tests that ASection IsOpen property can be get and set
+        /// </summary>
+        [Fact]
+        public void ASection_IsOpenProperty_ShouldBeSettable()
+        {
+            TestASection section = new TestASection(new SpaceWork());
+            section.IsOpen = true;
+            Assert.True(section.IsOpen);
+        }
+
+        /// <summary>
+        ///     Tests that ASection IsFocused defaults to false
+        /// </summary>
+        [Fact]
+        public void ASection_IsFocusedProperty_ShouldDefaultToFalse()
+        {
+            TestASection section = new TestASection(new SpaceWork());
+
+            Assert.False(section.IsFocused);
+        }
+
+        /// <summary>
+        ///     Tests that ASection IsFocused property can be get and set
+        /// </summary>
+        [Fact]
+        public void ASection_IsFocusedProperty_ShouldBeSettable()
+        {
+            TestASection section = new TestASection(new SpaceWork());
+            section.IsFocused = true;
+            Assert.True(section.IsFocused);
+        }
+
+        /// <summary>
+        ///     Tests that ASection has all abstract methods from IRuntime
+        /// </summary>
+        [Fact]
+        public void ASection_IRuntimeMethods_ShouldBeAbstract()
+        {
+            MethodInfo[] methods = typeof(ASection).GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+
+            foreach (MethodInfo method in methods.Where(m => m.IsAbstract))
+            {
+                Assert.True(method.IsAbstract, $"{method.Name} should be abstract");
+            }
+        }
+
+        /// <summary>
+        ///     Tests that TestASection concrete subclass can invoke all abstract methods without throwing
+        /// </summary>
+        [Fact]
+        public void TestASection_AllMethods_ShouldNotThrow()
+        {
+            TestASection section = new TestASection(new SpaceWork());
+
+            section.OnInit();
+            section.OnStart();
+            section.OnUpdate();
+            section.OnRender(1.0f);
+            section.OnDestroy();
 
             Assert.NotNull(section);
         }
