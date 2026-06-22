@@ -108,5 +108,35 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.NotNull(result);
             Assert.True(result.Count >= 3);
         }
+
+        /// <summary>
+        ///     Tests that convex partition with polygon having a hole includes hole branch
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithHole_ShouldIncludeHoleBranch()
+        {
+            Vertices outer = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(10f, 0f),
+                new Vector2F(10f, 10f),
+                new Vector2F(0f, 10f)
+            });
+
+            Vertices inner = new Vertices(new[]
+            {
+                new Vector2F(2f, 2f),
+                new Vector2F(8f, 2f),
+                new Vector2F(8f, 8f),
+                new Vector2F(2f, 8f)
+            });
+
+            outer.Holes = new List<Vertices> { inner };
+
+            List<Vertices> result = CdtDecomposer.ConvexPartition(outer);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 4);
+        }
     }
 }
