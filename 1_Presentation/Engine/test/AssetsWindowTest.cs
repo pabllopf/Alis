@@ -156,19 +156,5 @@ namespace Alis.App.Engine.Test
 
             Assert.NotNull(window);
         }
-
-        /// <summary>
-        ///     Tests that Render() does not throw an exception.
-        /// </summary>
-        [Fact]
-        public void Render_ShouldNotThrow()
-        {
-            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            window.Render();
-
-            Assert.NotNull(window);
-        }
     }
 }

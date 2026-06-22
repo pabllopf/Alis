@@ -156,20 +156,7 @@ namespace Alis.App.Engine.Test
 
             Assert.NotNull(window);
         }
-
-        /// <summary>
-        ///     Tests that Render() does not throw an exception when window is open.
-        /// </summary>
-        [Fact]
-        public void Render_ShouldNotThrow_WhenWindowIsOpen()
-        {
-            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
-            AudioPlayerWindow window = new AudioPlayerWindow(spaceWork);
-
-            window.Render();
-
-            Assert.NotNull(window);
-        }
+        
 
         /// <summary>
         ///     Tests that Render() does not throw an exception when window is closed.

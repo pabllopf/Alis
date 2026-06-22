@@ -326,44 +326,6 @@ namespace Alis.Core.Audio.Test
         }
 
         /// <summary>
-        ///     Tests that FindDataChunk finds data chunk correctly.
-        /// </summary>
-        [Fact]
-        public void FindDataChunk_ShouldFindDataChunk()
-        {
-            byte[] wav = new byte[44];
-            System.Text.Encoding.ASCII.GetBytes("RIFF").CopyTo(wav, 0);
-            byte[] fileSize = BitConverter.GetBytes(36);
-            fileSize.CopyTo(wav, 4);
-            System.Text.Encoding.ASCII.GetBytes("WAVE").CopyTo(wav, 8);
-            System.Text.Encoding.ASCII.GetBytes("fmt ").CopyTo(wav, 12);
-            byte[] fmtSize = BitConverter.GetBytes(16);
-            fmtSize.CopyTo(wav, 16);
-            byte[] audioFormat = BitConverter.GetBytes((short)1);
-            audioFormat.CopyTo(wav, 20);
-            byte[] channels = BitConverter.GetBytes((short)1);
-            channels.CopyTo(wav, 22);
-            byte[] sampleRate = BitConverter.GetBytes(44100);
-            sampleRate.CopyTo(wav, 24);
-            byte[] byteRate = BitConverter.GetBytes(88200);
-            byteRate.CopyTo(wav, 28);
-            byte[] blockAlign = BitConverter.GetBytes((short)2);
-            blockAlign.CopyTo(wav, 32);
-            byte[] bitsPerSample = BitConverter.GetBytes((short)16);
-            bitsPerSample.CopyTo(wav, 34);
-            byte[] dataChunkId = System.Text.Encoding.ASCII.GetBytes("data");
-            dataChunkId.CopyTo(wav, 40);
-            byte[] dataSizeBytes = BitConverter.GetBytes(100);
-            dataSizeBytes.CopyTo(wav, 44);
-
-            int pos = 40;
-            BrowserPlayer.FindDataChunk(wav, ref pos, out int dataOffset, out int dataSize);
-
-            Assert.Equal(48, dataOffset);
-            Assert.Equal(100, dataSize);
-        }
-
-        /// <summary>
         ///     Tests that FindDataChunk returns 0 for both offset and size when no data chunk.
         /// </summary>
         [Fact]

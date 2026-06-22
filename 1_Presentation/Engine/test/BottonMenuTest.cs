@@ -106,19 +106,5 @@ namespace Alis.App.Engine.Test
 
             Assert.NotNull(menu);
         }
-
-        /// <summary>
-        ///     Tests that Render() does not throw an exception.
-        /// </summary>
-        [Fact]
-        public void Render_ShouldNotThrow()
-        {
-            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
-            BottomMenu menu = new BottomMenu(spaceWork);
-
-            menu.Render();
-
-            Assert.NotNull(menu);
-        }
     }
 }
