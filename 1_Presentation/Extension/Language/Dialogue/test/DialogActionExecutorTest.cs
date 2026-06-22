@@ -135,5 +135,76 @@ namespace Alis.Extension.Language.Dialogue.Test
 
             Assert.Equal(0, result);
         }
+
+        /// <summary>
+        ///     Tests that ExecuteAction returns false when action is not valid
+        /// </summary>
+        [Fact]
+        public void ExecuteAction_WithInvalidAction_ReturnsFalse()
+        {
+            DialogContext context = new DialogContext("testDialog");
+            IDialogAction action = new InvalidDialogAction("invalidAction");
+
+            bool result = DialogActionExecutor.ExecuteAction(action, context);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that ExecuteAction does not execute callback when action is invalid
+        /// </summary>
+        [Fact]
+        public void ExecuteAction_WithInvalidAction_DoesNotExecute()
+        {
+            DialogContext context = new DialogContext("testDialog");
+            bool executed = false;
+            IDialogAction action = new InvalidDialogAction("invalidAction", () => executed = true);
+
+            DialogActionExecutor.ExecuteAction(action, context);
+
+            Assert.False(executed);
+        }
+
+        /// <summary>
+        ///     Tests that ExecuteActions counts only valid actions
+        /// </summary>
+        [Fact]
+        public void ExecuteActions_WithMixedValidAndInvalid_CountsOnlyValid()
+        {
+            DialogContext context = new DialogContext("test");
+            IDialogAction[] actions =
+            {
+                new CallbackDialogAction("valid1", () => { }),
+                new InvalidDialogAction("invalid1"),
+                new CallbackDialogAction("valid2", () => { })
+            };
+
+            int result = DialogActionExecutor.ExecuteActions(actions, context);
+
+            Assert.Equal(2, result);
+        }
+
+        /// <summary>
+        ///     Test helper: an action that is always invalid
+        /// </summary>
+        private sealed class InvalidDialogAction : IDialogAction
+        {
+            private readonly Action _callback;
+
+            public InvalidDialogAction(string id, Action callback = null)
+            {
+                Id = id;
+                _callback = callback;
+            }
+
+            public string Id { get; }
+
+            public void Execute(DialogContext context)
+            {
+                _callback?.Invoke();
+            }
+
+            public bool IsValid(DialogContext context) => false;
+        }
     }
 }
