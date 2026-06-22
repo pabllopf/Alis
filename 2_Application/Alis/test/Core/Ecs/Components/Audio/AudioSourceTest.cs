@@ -27,8 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Threading.Tasks;
+using Alis.Core.Audio.Interfaces;
 using Alis.Core.Ecs.Components.Audio;
 using Alis.Core.Ecs.Systems.Scope;
+using Moq;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Audio
@@ -215,6 +218,95 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             AudioSource source = new AudioSource(context);
 
             source.Play();
+        }
+
+        /// <summary>
+        ///     Tests that Stop calls player.Stop when player is playing
+        /// </summary>
+        [Fact]
+        public void AudioSource_Stop_WhenPlayerIsPlaying_ShouldCallPlayerStop()
+        {
+            Mock<IPlayer> mock = new Mock<IPlayer>();
+            mock.Setup(p => p.Playing).Returns(true);
+            mock.Setup(p => p.Stop()).Returns(Task.CompletedTask);
+
+            Context context = new Context();
+            AudioSource source = new AudioSource(context);
+            source.PlayerForTest = mock.Object;
+
+            source.Stop();
+
+            mock.Verify(p => p.Stop(), Times.Once);
+        }
+
+        /// <summary>
+        ///     Tests that Stop does not call player.Stop when player is not playing
+        /// </summary>
+        [Fact]
+        public void AudioSource_Stop_WhenPlayerIsNotPlaying_ShouldNotCallPlayerStop()
+        {
+            Mock<IPlayer> mock = new Mock<IPlayer>();
+            mock.Setup(p => p.Playing).Returns(false);
+
+            Context context = new Context();
+            AudioSource source = new AudioSource(context);
+            source.PlayerForTest = mock.Object;
+
+            source.Stop();
+
+            mock.Verify(p => p.Stop(), Times.Never);
+        }
+
+        /// <summary>
+        ///     Tests that Resume calls player.Resume when player is not playing
+        /// </summary>
+        [Fact]
+        public void AudioSource_Resume_WhenPlayerIsNotPlaying_ShouldCallPlayerResume()
+        {
+            Mock<IPlayer> mock = new Mock<IPlayer>();
+            mock.Setup(p => p.Playing).Returns(false);
+            mock.Setup(p => p.Resume()).Returns(Task.CompletedTask);
+
+            Context context = new Context();
+            AudioSource source = new AudioSource(context);
+            source.PlayerForTest = mock.Object;
+
+            source.Resume();
+
+            mock.Verify(p => p.Resume(), Times.Once);
+        }
+
+        /// <summary>
+        ///     Tests that Resume does not call player.Resume when player is playing
+        /// </summary>
+        [Fact]
+        public void AudioSource_Resume_WhenPlayerIsPlaying_ShouldNotCallPlayerResume()
+        {
+            Mock<IPlayer> mock = new Mock<IPlayer>();
+            mock.Setup(p => p.Playing).Returns(true);
+
+            Context context = new Context();
+            AudioSource source = new AudioSource(context);
+            source.PlayerForTest = mock.Object;
+
+            source.Resume();
+
+            mock.Verify(p => p.Resume(), Times.Never);
+        }
+
+        /// <summary>
+        ///     Tests that OnStart does not throw when PlayOnAwake is false (else branch)
+        /// </summary>
+        [Fact]
+        public void AudioSource_OnStart_WithPlayOnAwakeFalse_ShouldNotThrow()
+        {
+            Context context = new Context();
+
+            Mock<IPlayer> mock = new Mock<IPlayer>();
+            AudioSource source = new AudioSource(context);
+            source.PlayerForTest = mock.Object;
+
+            source.OnStart(null!);
         }
     }
 }

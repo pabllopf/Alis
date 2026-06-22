@@ -31,6 +31,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Audio;
+using Alis.Core.Audio.Interfaces;
 using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Components.Audio
@@ -50,7 +51,12 @@ namespace Alis.Core.Ecs.Components.Audio
         /// <summary>
         ///     The player
         /// </summary>
-        private readonly Player player = new Player();
+        private IPlayer player = new Player();
+
+        /// <summary>
+        ///     Sets the player for testing purposes
+        /// </summary>
+        internal IPlayer PlayerForTest { set { player = value; } }
 
         /// <summary>
         ///     Gets or sets the value of the is playing
