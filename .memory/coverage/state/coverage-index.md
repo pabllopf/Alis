@@ -69,3 +69,4 @@
 | pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/GameObjectBuilder.cs | GameObjectBuilderTest.cs | Completed (+13, 23 tests) | 2026-06-22 |
 | pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogActionExecutor.cs | DialogActionExecutorTest.cs | Completed (+3, 10 tests) | 2026-06-22 |
 | pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs | DialogManagerTest.cs | Completed (+7, 32 tests) | 2026-06-22 |
+| pabllopf-official_alis:1_Presentation/Extension/Network/src/HttpHelper.cs | HttpHelperTest.cs | Completed (+3, 21 tests) | 2026-06-22 |

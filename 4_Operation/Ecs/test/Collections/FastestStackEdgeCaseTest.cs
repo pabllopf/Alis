@@ -510,5 +510,159 @@ namespace Alis.Core.Ecs.Test.Collections
 
             Assert.False(stack.Contains(2));
         }
+
+        /// <summary>
+        /// Tests that typed copy to with null array throws argument null
+        /// </summary>
+        [Fact]
+        public void CopyToTyped_WithNullArray_ThrowsArgumentNull()
+        {
+            FastestStack<int> stack = new FastestStack<int>();
+            stack.Push(1);
+
+            Assert.Throws<ArgumentNullException>(() => stack.CopyTo(null, 0));
+        }
+
+        /// <summary>
+        /// Tests that typed copy to with negative index throws argument out of range
+        /// </summary>
+        [Fact]
+        public void CopyToTyped_WithNegativeIndex_ThrowsArgumentOutOfRange()
+        {
+            FastestStack<int> stack = new FastestStack<int>();
+            stack.Push(1);
+            int[] target = new int[5];
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => stack.CopyTo(target, -1));
+        }
+
+        /// <summary>
+        /// Tests that typed copy to with index beyond array length throws argument out of range
+        /// </summary>
+        [Fact]
+        public void CopyToTyped_WithIndexBeyondArrayLength_ThrowsArgumentOutOfRange()
+        {
+            FastestStack<int> stack = new FastestStack<int>();
+            stack.Push(1);
+            int[] target = new int[5];
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => stack.CopyTo(target, 10));
+        }
+
+        /// <summary>
+        /// Tests that typed copy to with insufficient space throws argument exception
+        /// </summary>
+        [Fact]
+        public void CopyToTyped_WithInsufficientSpace_ThrowsArgumentException()
+        {
+            FastestStack<int> stack = new FastestStack<int>();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+            int[] target = new int[2];
+
+            Assert.Throws<ArgumentException>(() => stack.CopyTo(target, 0));
+        }
+
+        /// <summary>
+        /// Tests that typed copy to with valid parameters copies in reverse order
+        /// </summary>
+        [Fact]
+        public void CopyToTyped_WithValidParameters_CopiesInReverseOrder()
+        {
+            FastestStack<int> stack = new FastestStack<int>();
+            stack.Push(10);
+            stack.Push(20);
+            stack.Push(30);
+            int[] target = new int[5];
+
+            stack.CopyTo(target, 1);
+
+            Assert.Equal(0, target[0]);
+            Assert.Equal(30, target[1]);
+            Assert.Equal(20, target[2]);
+            Assert.Equal(10, target[3]);
+            Assert.Equal(0, target[4]);
+        }
+
+        /// <summary>
+        /// Tests that typed copy to empty stack copies nothing
+        /// </summary>
+        [Fact]
+        public void CopyToTyped_EmptyStack_CopiesNothing()
+        {
+            FastestStack<int> stack = new FastestStack<int>();
+            int[] target = new int[5];
+
+            stack.CopyTo(target, 0);
+
+            Assert.All(target, v => Assert.Equal(0, v));
+        }
+
+        /// <summary>
+        /// Tests that typed copy to single element copies correctly
+        /// </summary>
+        [Fact]
+        public void CopyToTyped_SingleElement_CopiesCorrectly()
+        {
+            FastestStack<int> stack = new FastestStack<int>();
+            stack.Push(42);
+            int[] target = new int[3];
+
+            stack.CopyTo(target, 1);
+
+            Assert.Equal(0, target[0]);
+            Assert.Equal(42, target[1]);
+            Assert.Equal(0, target[2]);
+        }
+
+        /// <summary>
+        /// Tests that trim excess with high utilization does nothing
+        /// </summary>
+        [Fact]
+        public void TrimExcess_WithHighUtilization_DoesNothing()
+        {
+            FastestStack<int> stack = new FastestStack<int>(10);
+            for (int i = 0; i < 9; i++)
+            {
+                stack.Push(i);
+            }
+            int capacityBefore = stack.Capacity;
+
+            stack.TrimExcess();
+
+            Assert.Equal(capacityBefore, stack.Capacity);
+        }
+
+        /// <summary>
+        /// Tests that dispose resets the stack
+        /// </summary>
+        [Fact]
+        public void Dispose_ShouldResetStack()
+        {
+            FastestStack<int> stack = new FastestStack<int>();
+            stack.Push(1);
+            stack.Push(2);
+
+            stack.Dispose();
+
+            Assert.Equal(0, stack.Count);
+            Assert.False(stack.Any);
+        }
+
+        /// <summary>
+        /// Tests that push with default capacity triggers grow from empty array
+        /// </summary>
+        [Fact]
+        public void Push_WithDefaultCapacity_TriggersGrowFromEmpty()
+        {
+            FastestStack<int> stack = new FastestStack<int>();
+            Assert.Equal(0, stack.Capacity);
+
+            stack.Push(1);
+
+            Assert.True(stack.Capacity > 0);
+            Assert.Equal(1, stack.Count);
+        }
     }
 }

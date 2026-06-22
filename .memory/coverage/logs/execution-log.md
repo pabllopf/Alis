@@ -161,6 +161,14 @@
 - Production changes: None required
 - Remaining: DrawAnimation LoadTexture path requires GL context — not testable in unit tests
 
+### [09:15] Task: HttpHelper.cs
+- Target: 1_Presentation/Extension/Network/src/HttpHelper.cs (93.1%, 5 ul, 2 uc)
+- Existing tests: 18 tests in HttpHelperTest.cs
+- Tests added: 3 (ReadHttpHeaderAsync without terminator returns empty, GetSubProtocols oversized throws, IsWebSocketUpgradeRequest non-GET returns false)
+- All 21 tests pass (18 original + 3 new)
+- Production changes: None required
+- Commit: 000b8b194
+
 ### [08:50] Task: DialogManager.cs
 - Target: 1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs (93.6%, 4 ul, 9 uc)
 - Existing tests: 25 tests in DialogManagerTest.cs

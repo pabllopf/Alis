@@ -550,5 +550,68 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(output.Fraction > 0.5f);
             Assert.Equal(-1.0f, output.Normal.Y);
         }
+
+        /// <summary>
+        ///     Tests that ray cast with parallel x ray inside slab returns true
+        /// </summary>
+        [Fact]
+        public void RayCast_WithParallelXRayInsideSlab_ShouldReturnTrue()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(5.0f, -10.0f),
+                Point2 = new Vector2F(5.0f, 20.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
+            Assert.True(hit);
+            Assert.InRange(output.Fraction, 0.0f, 1.0f);
+        }
+
+        /// <summary>
+        ///     Tests that ray cast with parallel x ray outside slab returns false
+        /// </summary>
+        [Fact]
+        public void RayCast_WithParallelXRayOutsideSlab_ShouldReturnFalse()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(-5.0f, -10.0f),
+                Point2 = new Vector2F(-5.0f, 20.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out _, ref input);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        ///     Tests that test overlap returns true when only y overlaps
+        /// </summary>
+        [Fact]
+        public void TestOverlap_ShouldReturnTrue_WhenOnlyYOverlaps()
+        {
+            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(3.0f, 10.0f));
+            Aabb aabb2 = new Aabb(new Vector2F(5.0f, 2.0f), new Vector2F(8.0f, 8.0f));
+
+            Assert.True(Aabb.TestOverlap(ref aabb1, ref aabb2));
+        }
+
+        /// <summary>
+        ///     Tests that test overlap returns false when y does not overlap
+        /// </summary>
+        [Fact]
+        public void TestOverlap_ShouldReturnFalse_WhenYDoesNotOverlap()
+        {
+            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 3.0f));
+            Aabb aabb2 = new Aabb(new Vector2F(2.0f, 5.0f), new Vector2F(8.0f, 10.0f));
+
+            Assert.False(Aabb.TestOverlap(ref aabb1, ref aabb2));
+        }
     }
 }
