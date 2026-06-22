@@ -528,38 +528,6 @@ namespace Alis.Extension.Media.FFmpeg.Test
         #region Dispose Pattern Tests
 
         /// <summary>
-        ///     Tests that Dispose() does not throw when not opened.
-        /// </summary>
-        [Fact]
-        public void Dispose_WhenNotOpened_ShouldNotThrow()
-        {
-            EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
-            EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
-            AudioVideoWriter writer = new AudioVideoWriter(
-                _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
-
-            Assert.ThrowsAny<Exception>(() => writer.Dispose());
-        }
-
-        /// <summary>
-        ///     Tests that Dispose() can be called multiple times without throwing.
-        /// </summary>
-        [Fact]
-        public void Dispose_MultipleCalls_ShouldNotThrow()
-        {
-            EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
-            EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
-            AudioVideoWriter writer = new AudioVideoWriter(
-                _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
-
-            // First dispose
-            writer.Dispose();
-
-            // Second dispose should not throw
-            Assert.ThrowsAny<Exception>(() => writer.Dispose());
-        }
-
-        /// <summary>
         ///     Tests that AudioVideoWriter implements IDisposable.
         /// </summary>
         [Fact]

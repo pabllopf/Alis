@@ -1,8 +1,8 @@
 # Locks
 
-## Active Locks
+## No Active Locks
 
-- **Task #8**: AudioVideoWriter.cs — In Progress (2026-06-22)
+All previous locks have been released.
 
 ### Completed Tasks
 
@@ -15,9 +15,10 @@
 | 5 | AudioPlayer.cs | 37.1% | 11 tests | a893bab3a |
 | 6 | AudioReader.cs | 41.9% | 21 tests | d5e3cb6fb |
 | 7 | BrowserPlayer.cs | 53.8% | 19 tests | 304913fc3 |
+| 8 | AudioVideoWriter.cs | 52.8% | 38 tests | pending |
 
 ---
 
 ## Ready for Next Task
 
-**Next Target**: AudioVideoWriter.cs (52.8% coverage)
+**Next Target**: AudioWriter.cs (54.0% coverage)
