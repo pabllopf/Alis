@@ -32,7 +32,11 @@
         <PackageReference Include="Moq" Version="4.20.70"/>
     </ItemGroup>
 
-    
+    <ItemGroup>
+        <Content Include="$(SolutionDir).config/xunit.runner.json" LinkBase="." Pack="true" Visible="true" PackagePath=".">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 
      <PropertyGroup>
         <NoWarn>$(NoWarn);CS1685;NU1900</NoWarn> <!-- Error CS1685 : Warning As Error: Define on differente assemblys of alias gloabal -->
