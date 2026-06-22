@@ -32,11 +32,41 @@
 **Commit Hash**: 8fa202ec0
 **Status**: ✅ Committed
 
+### Execution #4 — AudioPlayerWindow.cs ✅ COMPLETED
+
+**Timestamp**: 2026-06-22
+**File**: `1_Presentation/Engine/src/Windows/AudioPlayerWindow.cs`
+**Coverage Before**: 35.6%
+**Methods/Properties Tested**: 11 public methods/fields
+**Test File**: `1_Presentation/Engine/test/AudioPlayerWindowTest.cs`
+**Commit Hash**: b17af10c3
+**Status**: ✅ Committed
+
+### Execution #5 — AudioPlayer.cs ✅ COMPLETED
+
+**Timestamp**: 2026-06-22
+**File**: `1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs`
+**Coverage Before**: 37.1%
+**Methods Tested**: 11 public constructors and methods
+**Test File**: `1_Presentation/Extension/Media/FFmpeg/test/AudioPlayerTest.cs`
+**Commit Hash**: a893bab3a
+**Status**: ✅ Committed
+
+### Execution #6 — AudioReader.cs ✅ COMPLETED
+
+**Timestamp**: 2026-06-22
+**File**: `1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs`
+**Coverage Before**: 41.9%
+**Methods/Properties Tested**: 21 public methods/properties/static methods
+**Test File**: `1_Presentation/Extension/Media/FFmpeg/test/AudioReaderTest.cs`
+**Commit Hash**: d5e3cb6fb
+**Status**: ✅ Committed
+
 ### Next Target
 
-- **AudioPlayerWindow.cs** (35.6% coverage)
-- **AudioPlayer.cs** (37.1% coverage)
-- **AudioReader.cs** (41.9% coverage)
+- **BrowserPlayer.cs** (53.8% coverage)
+- **AudioVideoWriter.cs** (52.8% coverage)
+- **AudioWriter.cs** (54.0% coverage)
 
 ---
 

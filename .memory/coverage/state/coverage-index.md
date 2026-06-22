@@ -91,25 +91,25 @@ These files typically contain only type definitions without executable logic:
 | 1 | BottomMenu.cs | 10.0% | 6 tests | ✅ Committed (7a6febaad) |
 | 2 | AssetsWindow.cs | 18.4% | 10 tests | ✅ Committed (49be1b849) |
 | 3 | BoxCollider.cs | 23.0% | 21 tests | ✅ Committed (8fa202ec0) |
+| 4 | AudioPlayerWindow.cs | 35.6% | 11 tests | ✅ Committed (b17af10c3) |
+| 5 | AudioPlayer.cs | 37.1% | 11 tests | ✅ Committed (a893bab3a) |
+| 6 | AudioReader.cs | 41.9% | 21 tests | ✅ Committed (d5e3cb6fb) |
 
 ### Remaining Low Coverage Targets
 
 | File | Coverage | Line | Branch | Priority |
 |------|----------|------|--------|----------|
-| AudioPlayerWindow.cs | 35.6% | 45.7% | 0.0% | MEDIUM |
-| AudioPlayer.cs | 37.1% | 38.8% | 33.3% | MEDIUM |
-| AudioReader.cs | 41.9% | 42.9% | 39.6% | MEDIUM |
 | BrowserPlayer.cs | 53.8% | 49.0% | 67.6% | LOW |
 | AudioVideoWriter.cs | 52.8% | 53.4% | 51.3% | LOW |
 | AudioWriter.cs | 54.0% | 53.3% | 55.6% | LOW |
 
-**Next Step:** Process AudioPlayerWindow.cs (35.6% coverage)
+**Next Step:** Process BrowserPlayer.cs (53.8% coverage)
 
 ### Progress Summary
 
-- **Files Processed**: 3 of ~1,558 files
-- **Public Methods/Properties Tested**: 37 methods/properties
-- **Coverage Tasks Completed**: 3
+- **Files Processed**: 6 of ~1,558 files
+- **Public Methods/Properties Tested**: 80 methods/properties
+- **Coverage Tasks Completed**: 6
 
 ### Files to Skip (Already 100% or Enums/Delegates)
 
