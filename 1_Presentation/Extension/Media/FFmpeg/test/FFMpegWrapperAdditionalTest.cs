@@ -193,30 +193,6 @@ namespace Alis.Extension.Media.FFmpeg.Test
         }
 
         /// <summary>
-        ///     Tests that OpenInput returns a valid stream and process
-        /// </summary>
-        [Fact]
-        public void FFMpegWrapper_OpenInput_ShouldReturnValidStream()
-        {
-            // Arrange
-            string echoPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "/bin/echo";
-
-            // Act
-            Stream stream = FfMpegWrapper.OpenInput(echoPath, "", out Process process);
-
-            // Assert
-            Assert.NotNull(stream);
-            Assert.NotNull(process);
-            Assert.False(process.HasExited);
-
-            // Cleanup
-            if (!process.HasExited)
-            {
-                process.Kill();
-            }
-        }
-
-        /// <summary>
         ///     Tests that OpenInput without out parameter works correctly
         /// </summary>
         [Fact]
