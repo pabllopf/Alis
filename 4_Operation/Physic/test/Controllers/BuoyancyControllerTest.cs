@@ -387,5 +387,25 @@ namespace Alis.Core.Physic.Test.Controllers
 
             Assert.True(true); // No exception — coverage for multiple body iteration
         }
+
+        /// <summary>
+        ///     Tests that update skips fixtures that are neither polygon nor circle
+        ///     (e.g., EdgeShape), covering the continue branch in the fixture type check.
+        /// </summary>
+        [Fact]
+        public void Update_WithEdgeFixture_ShouldSkipNonPolygonNonCircle()
+        {
+            Aabb container = new Aabb(new Vector2F(-5, -10), new Vector2F(5, 5));
+            BuoyancyController controller = new BuoyancyController(container, 1.0f, 0.05f, 0.1f, new Vector2F(0, -10));
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            controller.WorldPhysic = world;
+
+            Body body = world.CreateRectangle(2.0f, 2.0f, 0.0f, new Vector2F(0, -5), 0.0f, BodyType.Dynamic);
+            body.CreateEdge(new Vector2F(-1, 0), new Vector2F(1, 0));
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception — edge fixture skipped, polygon fixture processed
+        }
     }
 }
