@@ -67,5 +67,46 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.NotNull(result);
             Assert.True(result.Count >= 1);
         }
+
+        /// <summary>
+        ///     Tests that convex partition with quadrilateral returns triangles
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithQuadrilateral_ReturnsTriangles()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(1f, 1f),
+                new Vector2F(0f, 1f)
+            });
+
+            List<Vertices> result = CdtDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 2);
+        }
+
+        /// <summary>
+        ///     Tests that convex partition with pentagon returns triangles
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithPentagon_ReturnsTriangles()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(3f, 1f),
+                new Vector2F(1f, 3f),
+                new Vector2F(-1f, 1f)
+            });
+
+            List<Vertices> result = CdtDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 3);
+        }
     }
 }

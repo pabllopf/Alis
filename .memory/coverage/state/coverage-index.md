@@ -62,6 +62,7 @@
 | pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs | AudioSourceTest.cs | Completed (17 tests, 5 branch via IPlayer mock) | 2026-06-22 |
 | pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ControllerTransform.cs | ControllerTransformTest.cs | Completed (3 new tests) | 2026-06-22 |
 | pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/FlipcodeDecomposer.cs | FlipcodeDecomposerTest.cs | Completed (5 new tests) | 2026-06-22 |
+| pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDTDecomposer.cs | CdtDecomposerTest.cs | Completed (2 new tests) | 2026-06-22 |
 | pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogOption.cs | DialogOptionTest.cs | Completed (6 tests) | 2026-06-22 |
 | pabllopf-official_alis:4_Operation/Physic/src/Dynamics/FixtureCollection.cs | FixtureCollectionTest.cs | Completed (+1, 25 tests) | 2026-06-22 |
 | pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs | CircleShapeTest.cs | Completed (+2, 26 tests) | 2026-06-22 |
