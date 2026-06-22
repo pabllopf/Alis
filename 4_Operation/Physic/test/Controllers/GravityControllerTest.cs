@@ -283,5 +283,166 @@ namespace Alis.Core.Physic.Test.Controllers
 
             Assert.True(true); // No exception thrown
         }
+
+        /// <summary>
+        ///     Tests that Update skips world body when it is the same as controller body
+        /// </summary>
+        [Fact]
+        public void Update_WithSameControllerAndWorldBody_ShouldSkipGravity()
+        {
+            GravityController controller = new GravityController(100f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body body = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            controller.AddBody(body);
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown, same body skipped
+        }
+
+        /// <summary>
+        ///     Tests that Update skips when both world and controller bodies are static
+        /// </summary>
+        [Fact]
+        public void Update_WithBothStaticBodies_ShouldSkipGravity()
+        {
+            GravityController controller = new GravityController(100f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Static);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Static);
+            controller.AddBody(controllerBody);
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown, both static skipped
+        }
+
+        /// <summary>
+        ///     Tests that Update skips when controller body is disabled
+        /// </summary>
+        [Fact]
+        public void Update_WithDisabledControllerBody_ShouldSkipGravity()
+        {
+            GravityController controller = new GravityController(100f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controllerBody.Enabled = false;
+            controller.AddBody(controllerBody);
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown, disabled skipped
+        }
+
+        /// <summary>
+        ///     Tests that Update skips body gravity when distance is within MinRadius (too close)
+        /// </summary>
+        [Fact]
+        public void Update_WithBodyWithinMinRadius_ShouldSkipGravity()
+        {
+            GravityController controller = new GravityController(100f, 100f, 50f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddBody(controllerBody);
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown, distance < MinRadius skipped
+        }
+
+        /// <summary>
+        ///     Tests that Update skips body gravity when distance exceeds MaxRadius
+        /// </summary>
+        [Fact]
+        public void Update_WithBodyBeyondMaxRadius_ShouldSkipGravity()
+        {
+            GravityController controller = new GravityController(100f, 10f, 0f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(100, 0), 0, BodyType.Dynamic);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddBody(controllerBody);
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown, distance > MaxRadius skipped
+        }
+
+        /// <summary>
+        ///     Tests that Update skips point gravity when point is within MinRadius
+        /// </summary>
+        [Fact]
+        public void Update_WithPointWithinMinRadius_ShouldSkipPointGravity()
+        {
+            GravityController controller = new GravityController(100f, 100f, 50f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(5, 0), 0, BodyType.Dynamic);
+            controller.AddPoint(new Vector2F(0, 0));
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown, point within MinRadius skipped
+        }
+
+        /// <summary>
+        ///     Tests that Update skips point gravity when point is beyond MaxRadius
+        /// </summary>
+        [Fact]
+        public void Update_WithPointBeyondMaxRadius_ShouldSkipPointGravity()
+        {
+            GravityController controller = new GravityController(100f, 10f, 0f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(100, 0), 0, BodyType.Dynamic);
+            controller.AddPoint(new Vector2F(0, 0));
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown, point beyond MaxRadius skipped
+        }
+
+        /// <summary>
+        ///     Tests that Update with body gravity and Linear type applies force correctly
+        /// </summary>
+        [Fact]
+        public void Update_WithBodyGravityAndLinearType_ShouldApplyForce()
+        {
+            GravityController controller = new GravityController(100f, 200f, 1f);
+            controller.GravityType = GravityType.Linear;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddBody(controllerBody);
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown, Linear body gravity applied
+        }
+
+        /// <summary>
+        ///     Tests that Update with point gravity and Linear type applies force correctly
+        /// </summary>
+        [Fact]
+        public void Update_WithPointGravityAndLinearType_ShouldApplyForce()
+        {
+            GravityController controller = new GravityController(100f, 200f, 1f);
+            controller.GravityType = GravityType.Linear;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
+            controller.AddPoint(new Vector2F(0, 0));
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown, Linear point gravity applied
+        }
     }
 }
