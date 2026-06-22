@@ -51,6 +51,7 @@
 
 using System;
 using Alis.Core.Aspect.Logging;
+using Alis.Extension.Language.Dialogue.Core;
 using Xunit;
 
 namespace Alis.Extension.Language.Dialogue.Test
@@ -146,6 +147,106 @@ namespace Alis.Extension.Language.Dialogue.Test
 
             // Assert
             Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that AddCondition with a valid condition adds to the Conditions list
+        /// </summary>
+        [Fact]
+        public void DialogOption_AddCondition_WithValidCondition_AddsToList()
+        {
+            DialogOption option = new DialogOption("text", () => { });
+            IDialogCondition condition = new TestCondition();
+
+            option.AddCondition(condition);
+
+            Assert.Contains(condition, option.Conditions);
+        }
+
+        /// <summary>
+        ///     Tests that AddCondition with null does not add to the Conditions list
+        /// </summary>
+        [Fact]
+        public void DialogOption_AddCondition_WithNullCondition_DoesNotAdd()
+        {
+            DialogOption option = new DialogOption("text", () => { });
+
+            option.AddCondition(null!);
+
+            Assert.Empty(option.Conditions);
+        }
+
+        /// <summary>
+        ///     Tests that AddDialogAction with a valid action adds to the DialogActions list
+        /// </summary>
+        [Fact]
+        public void DialogOption_AddDialogAction_WithValidAction_AddsToList()
+        {
+            DialogOption option = new DialogOption("text", () => { });
+            IDialogAction action = new TestAction();
+
+            option.AddDialogAction(action);
+
+            Assert.Contains(action, option.DialogActions);
+        }
+
+        /// <summary>
+        ///     Tests that AddDialogAction with null does not add to the DialogActions list
+        /// </summary>
+        [Fact]
+        public void DialogOption_AddDialogAction_WithNullAction_DoesNotAdd()
+        {
+            DialogOption option = new DialogOption("text", () => { });
+
+            option.AddDialogAction(null!);
+
+            Assert.Empty(option.DialogActions);
+        }
+
+        /// <summary>
+        ///     Tests that constructor initializes the Conditions list
+        /// </summary>
+        [Fact]
+        public void DialogOption_Constructor_InitializesConditionsList()
+        {
+            DialogOption option = new DialogOption("text", () => { });
+
+            Assert.NotNull(option.Conditions);
+            Assert.Empty(option.Conditions);
+        }
+
+        /// <summary>
+        ///     Tests that constructor initializes the DialogActions list
+        /// </summary>
+        [Fact]
+        public void DialogOption_Constructor_InitializesDialogActionsList()
+        {
+            DialogOption option = new DialogOption("text", () => { });
+
+            Assert.NotNull(option.DialogActions);
+            Assert.Empty(option.DialogActions);
+        }
+
+        /// <summary>
+        ///     Test implementation of IDialogCondition
+        /// </summary>
+        private class TestCondition : IDialogCondition
+        {
+            public bool Evaluate(DialogContext context) => true;
+        }
+
+        /// <summary>
+        ///     Test implementation of IDialogAction
+        /// </summary>
+        private class TestAction : IDialogAction
+        {
+            public string Id => "test";
+
+            public void Execute(DialogContext context)
+            {
+            }
+
+            public bool IsValid(DialogContext context) => true;
         }
     }
 }
