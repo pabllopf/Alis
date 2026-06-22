@@ -10,6 +10,14 @@
 - Production changes: None required
 - Commit: 400dd3019
 
+### [15:00] Task: Dialog.cs
+- Target: 1_Presentation/Extension/Language/Dialogue/src/Dialog.cs (54.1% coverage, 11 uncovered lines)
+- Existing tests: 5 tests in DialogTest.cs
+- Tests added: 6 tests covering AddBranch valid/null/empty key, null dialog, GetBranch found/not found
+- All 11 tests pass (5 original + 6 new)
+- Production changes: None required
+- Commit: 6e4148069
+
 ### [09:05] Task: ControllerTransform.cs
 - Target: 4_Operation/Physic/src/Dynamics/ControllerTransform.cs (94.7% coverage, 3 uncovered lines)
 - Existing tests: 21 tests in ControllerTransformTest.cs
@@ -114,3 +122,19 @@
 - Target: 1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs (51.2% coverage)
 - Status: Already covered — 30 existing tests in AudioVideoWriterTest.cs
 - Reason: OpenWrite/CloseWrite/WriteFrame depend on external FFmpeg process
+
+### [10:30] Task: FixtureCollection.cs
+- Target: 4_Operation/Physic/src/Dynamics/FixtureCollection.cs (97.1%, 1 uncovered line/condition)
+- Existing tests: 24 tests in FixtureCollectionTest.cs
+- Tests added: 1 test covering `IEnumerator<Fixture>.Current` throw on modification (explicit interface)
+- All 25 tests pass
+- Production changes: None
+- Commit: 74f44fcd3
+
+### [10:40] Task: CircleShape.cs
+- Target: 4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs (96.0%, 2 uncovered conditions)
+- Existing tests: 24 tests in CircleShapeTest.cs
+- Tests added: 2 edge cases — zero-length ray (`rr < Epsilon`), ray pointing away from circle (`0.0f <= a` false)
+- All 26 tests pass (full suite: 2140 pass)
+- Production changes: None
+- Commit: pending

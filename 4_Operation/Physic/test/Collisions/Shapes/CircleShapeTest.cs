@@ -465,5 +465,53 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
 
             Assert.False(hit);
         }
+
+        /// <summary>
+        ///     Tests that ray cast returns false when ray has zero length (rr near zero)
+        /// </summary>
+        [Fact]
+        public void RayCast_WhenRayZeroLength_ReturnsFalse()
+        {
+            CircleShape circle = new CircleShape(5.0f, 1.0f);
+            ControllerTransform transform = new ControllerTransform
+            {
+                Position = new Vector2F(0.0f, 0.0f),
+                Rotation = Complex.One
+            };
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(0.0f, 0.0f),
+                Point2 = new Vector2F(0.0f, 0.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        ///     Tests that ray cast returns false when ray starts beyond circle and points away
+        /// </summary>
+        [Fact]
+        public void RayCast_WhenRayPointsAwayFromCircle_ReturnsFalse()
+        {
+            CircleShape circle = new CircleShape(5.0f, 1.0f);
+            ControllerTransform transform = new ControllerTransform
+            {
+                Position = new Vector2F(0.0f, 0.0f),
+                Rotation = Complex.One
+            };
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(10.0f, 0.0f),
+                Point2 = new Vector2F(20.0f, 0.0f),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.False(hit);
+        }
     }
 }

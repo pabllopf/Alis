@@ -33,7 +33,7 @@
 | pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs | AudioReaderTest.cs | Completed | 2026-06-21 |
 | pabllopf-official_alis:1_Presentation/Engine/src/Windows/AudioPlayerWindow.cs | AudioPlayerWindowTest.cs | Completed | 2026-06-21 |
 | pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs | AudioPlayerTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs | AnimatorTest.cs | Completed | 2026-06-21 |
+| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs | AnimatorTest.cs | Completed (+2 DrawAnimation tests) | 2026-06-22 |
 | pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs | AudioVideoWriterTest.cs | Completed | 2026-06-21 |
 | pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs | AudioWriterTest.cs | Completed | 2026-06-21 |
 | pabllopf-official_alis:4_Operation/Physic/src/Dynamics/FixtureCollection.cs | FixtureCollectionTest.cs | Completed | 2026-06-22 |
@@ -62,3 +62,5 @@
 | pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs | AudioSourceTest.cs | Completed (17 tests, 5 branch via IPlayer mock) | 2026-06-22 |
 | pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ControllerTransform.cs | ControllerTransformTest.cs | Completed (3 new tests) | 2026-06-22 |
 | pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogOption.cs | DialogOptionTest.cs | Completed (6 tests) | 2026-06-22 |
+| pabllopf-official_alis:4_Operation/Physic/src/Dynamics/FixtureCollection.cs | FixtureCollectionTest.cs | Completed (+1, 25 tests) | 2026-06-22 |
+| pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs | CircleShapeTest.cs | Completed (+2, 26 tests) | 2026-06-22 |
