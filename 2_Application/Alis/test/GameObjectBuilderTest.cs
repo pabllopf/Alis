@@ -28,8 +28,15 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Builder.Core.Ecs.Components.Audio;
+using Alis.Builder.Core.Ecs.Components.Collider;
+using Alis.Builder.Core.Ecs.Components.Render;
 using Alis.Builder.Core.Ecs.Entity;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Components.Audio;
+using Alis.Core.Ecs.Components.Collider;
+using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
@@ -166,6 +173,184 @@ namespace Alis.Test
             Scene scene = new Scene();
             GameObjectBuilder builder = new GameObjectBuilder(scene, context);
             GameObjectBuilder result = builder.Transform(t => t.Position(1, 2).Rotation(0).Scale(1, 1));
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that WithComponent with no args for Animator returns builder
+        /// </summary>
+        [Fact]
+        public void WithComponent_NoArgs_Animator_ReturnsBuilder()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            GameObjectBuilder result = builder.WithComponent<Animator>();
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that WithComponent with no args for BoxCollider returns builder
+        /// </summary>
+        [Fact]
+        public void WithComponent_NoArgs_BoxCollider_ReturnsBuilder()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            GameObjectBuilder result = builder.WithComponent<BoxCollider>();
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that WithComponent with no args for Info returns builder
+        /// </summary>
+        [Fact]
+        public void WithComponent_NoArgs_Info_ReturnsBuilder()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            GameObjectBuilder result = builder.WithComponent<Info>();
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that WithComponent with Animator instance returns builder
+        /// </summary>
+        [Fact]
+        public void WithComponent_WithAnimatorInstance_ReturnsBuilder()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            Animator animator = new Animator();
+            GameObjectBuilder result = builder.WithComponent(animator);
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that WithComponent with CameraConfig returns builder
+        /// </summary>
+        [Fact]
+        public void WithComponent_WithCameraConfig_ReturnsBuilder()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            CameraConfig<Camera> config = b => b.Position(100, 200).Resolution(800, 600);
+            GameObjectBuilder result = builder.WithComponent(config);
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that WithComponent with SpriteConfig returns builder
+        /// </summary>
+        [Fact]
+        public void WithComponent_WithSpriteConfig_ReturnsBuilder()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            SpriteConfig<Sprite> config = b => b.SetTexture("test.png").Depth(1);
+            GameObjectBuilder result = builder.WithComponent(config);
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that WithComponent with AudioSourceConfig returns builder
+        /// </summary>
+        [Fact]
+        public void WithComponent_WithAudioSourceConfig_ReturnsBuilder()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            AudioSourceConfig<AudioSource> config = b => b.File("sound.wav");
+            GameObjectBuilder result = builder.WithComponent(config);
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that WithComponent with BoxColliderConfig returns builder
+        /// </summary>
+        [Fact]
+        public void WithComponent_WithBoxColliderConfig_ReturnsBuilder()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            BoxColliderConfig<BoxCollider> config = b => b.Restitution(0.5f);
+            GameObjectBuilder result = builder.WithComponent(config);
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that WithComponent with Action config returns builder
+        /// </summary>
+        [Fact]
+        public void WithComponent_WithActionConfig_ReturnsBuilder()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            GameObjectBuilder result = builder.WithComponent<Info>(a => { });
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that Name after adding Info updates the name
+        /// </summary>
+        [Fact]
+        public void Name_AfterAddingInfo_UpdatesInfo()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            builder.WithComponent<Info>();
+            GameObjectBuilder result = builder.Name("UpdatedName");
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that Tag after adding Info updates the tag
+        /// </summary>
+        [Fact]
+        public void Tag_AfterAddingInfo_UpdatesTag()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            builder.WithComponent<Info>();
+            GameObjectBuilder result = builder.Tag("UpdatedTag");
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that IsActive after adding Info updates active
+        /// </summary>
+        [Fact]
+        public void IsActive_AfterAddingInfo_UpdatesActive()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            builder.WithComponent<Info>();
+            GameObjectBuilder result = builder.IsActive(true);
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that IsStatic after adding Info updates static
+        /// </summary>
+        [Fact]
+        public void IsStatic_AfterAddingInfo_UpdatesStatic()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            builder.WithComponent<Info>();
+            GameObjectBuilder result = builder.IsStatic(true);
             Assert.Same(builder, result);
         }
     }
