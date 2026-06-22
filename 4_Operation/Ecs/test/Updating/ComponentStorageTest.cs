@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs.Kernel.Events;
 using Alis.Core.Ecs.Updating.Runners;
 using Xunit;
 
@@ -171,6 +172,97 @@ namespace Alis.Core.Ecs.Test.Updating
             Span<int> span = storage.AsSpan();
 
             Assert.Equal(42, span[0]);
+        }
+
+        /// <summary>
+        ///     Tests that GetComponentStorageDataReference returns reference to first element
+        /// </summary>
+        [Fact]
+        public void ShouldReturnRefToFirstElementWhenGetComponentStorageDataReferenceCalled()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(4);
+            storage[0] = 99;
+
+            ref int ref0 = ref storage.GetComponentStorageDataReference();
+
+            Assert.Equal(99, ref0);
+        }
+
+        /// <summary>
+        ///     Tests that InvokeGenericActionWith IGenericAction overload invokes the action
+        /// </summary>
+        [Fact]
+        public void ShouldInvokeActionWhenInvokeGenericActionWithIGenericAction()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(4);
+            storage[0] = 42;
+            bool invoked = false;
+
+            TestAction action = new TestAction(() => invoked = true);
+            storage.InvokeGenericActionWith(action, 0);
+
+            Assert.True(invoked);
+        }
+
+        /// <summary>
+        ///     Tests that InvokeGenericActionWith generic event overload invokes the action
+        /// </summary>
+        [Fact]
+        public void ShouldInvokeActionWhenInvokeGenericActionWithGenericEvent()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(4);
+            storage[0] = 42;
+            bool invoked = false;
+
+            GenericEvent evt = new GenericEvent();
+            evt.Add(new TestGameObjectAction(() => invoked = true));
+            storage.InvokeGenericActionWith(evt, default, 0);
+
+            Assert.True(invoked);
+        }
+
+        /// <summary>
+        ///     Test helper implementing IGenericAction
+        /// </summary>
+        private sealed class TestAction : IGenericAction
+        {
+            private readonly Action _callback;
+            public TestAction(Action callback) => _callback = callback;
+            public void Invoke<T>(ref T type) => _callback();
+        }
+
+        /// <summary>
+        ///     Test helper implementing IGenericAction&lt;GameObject&gt;
+        /// </summary>
+        private sealed class TestGameObjectAction : IGenericAction<GameObject>
+        {
+            private readonly Action _callback;
+            public TestGameObjectAction(Action callback) => _callback = callback;
+            public void Invoke<T>(GameObject param, ref T type) => _callback();
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="ComponentStorage{TComponent}.InvokeGenericActionWith" />
+        ///     does not throw when a null <see cref="GenericEvent" /> is passed.
+        /// </summary>
+        [Fact]
+        public void InvokeGenericActionWith_NullGenericEvent_DoesNotThrow()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(4);
+
+            storage.InvokeGenericActionWith(null, default, 0);
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="ComponentStorage{TComponent}.InvokeGenericActionWith" />
+        ///     does not throw when a null <see cref="IGenericAction" /> is passed.
+        /// </summary>
+        [Fact]
+        public void InvokeGenericActionWith_NullIGenericAction_DoesNotThrow()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(4);
+
+            storage.InvokeGenericActionWith(null, 0);
         }
     }
 }
