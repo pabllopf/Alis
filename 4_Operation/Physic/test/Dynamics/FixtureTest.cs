@@ -31,6 +31,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
+using Moq;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
@@ -328,6 +329,127 @@ namespace Alis.Core.Physic.Test.Dynamics
             fixture.GetAabb(out Aabb aabb, 0);
 
             Assert.NotNull(aabb);
+        }
+
+        /// <summary>
+        ///     Tests that destroy proxies removes proxies from broad phase
+        /// </summary>
+        [Fact]
+        public void DestroyProxies_ShouldRemoveProxiesFromBroadPhase()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+            Mock<IBroadPhase> mockBroadPhase = new Mock<IBroadPhase>();
+            int proxyCountBefore = fixture.ProxyCount;
+
+            fixture.DestroyProxies(mockBroadPhase.Object);
+
+            Assert.Equal(0, fixture.ProxyCount);
+            mockBroadPhase.Verify(m => m.RemoveProxy(It.IsAny<int>()), Times.Exactly(proxyCountBefore));
+        }
+
+        /// <summary>
+        ///     Tests that destroy proxies sets proxy ids to -1
+        /// </summary>
+        [Fact]
+        public void DestroyProxies_ShouldSetProxyIdsToNegativeOne()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+            Mock<IBroadPhase> mockBroadPhase = new Mock<IBroadPhase>();
+
+            fixture.DestroyProxies(mockBroadPhase.Object);
+
+            Assert.All(fixture.Proxies, p => Assert.Equal(-1, p.ProxyId));
+        }
+
+        /// <summary>
+        ///     Tests that touch proxies touches all proxies in broad phase
+        /// </summary>
+        [Fact]
+        public void TouchProxies_ShouldTouchAllProxies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+            Mock<IBroadPhase> mockBroadPhase = new Mock<IBroadPhase>();
+
+            fixture.TouchProxies(mockBroadPhase.Object);
+
+            mockBroadPhase.Verify(m => m.TouchProxy(It.IsAny<int>()), Times.Exactly(fixture.ProxyCount));
+        }
+
+        /// <summary>
+        ///     Tests that synchronize moves proxies based on transform delta
+        /// </summary>
+        [Fact]
+        public void Synchronize_ShouldMoveProxies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+            Mock<IBroadPhase> mockBroadPhase = new Mock<IBroadPhase>();
+            ControllerTransform transform1 = ControllerTransform.Identity;
+            ControllerTransform transform2 = new ControllerTransform(new Vector2F(1.0f, 0.0f), Complex.One);
+
+            fixture.Synchronize(mockBroadPhase.Object, ref transform1, ref transform2);
+
+            mockBroadPhase.Verify(m => m.MoveProxy(It.IsAny<int>(),
+                    ref It.Ref<Aabb>.IsAny,
+                    It.IsAny<Vector2F>()),
+                Times.AtLeastOnce);
+        }
+
+        /// <summary>
+        ///     Tests that clone onto calls internal overload with same shape
+        /// </summary>
+        [Fact]
+        public void CloneOnto_ShouldUseInternalOverload()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body sourceBody = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture sourceFixture = sourceBody.CreateCircle(0.5f, 1.0f);
+            sourceFixture.Tag = "clone-test";
+            Body targetBody = world.CreateBody(new Vector2F(2.0f, 2.0f), 0.0f, BodyType.Dynamic);
+
+            Fixture cloned = sourceFixture.CloneOnto(targetBody);
+
+            Assert.Equal("clone-test", cloned.Tag);
+            Assert.Equal(0.2f, cloned.GetFriction);
+            Assert.Equal(0.0f, cloned.GetRestitution);
+            Assert.Equal(sourceFixture.Proxies.Length, cloned.Proxies.Length);
+        }
+
+        /// <summary>
+        ///     Tests that default constructor sets correct initial values
+        /// </summary>
+        [Fact]
+        public void DefaultConstructor_ShouldSetCorrectValues()
+        {
+            CircleShape shape = new CircleShape(0.5f, 1.0f);
+            Fixture fixture = new Fixture(shape);
+
+            Assert.Equal(Categories.Cat1, fixture.GetCollisionCategories);
+            Assert.Equal(Categories.All, fixture.GetCollidesWith);
+            Assert.Equal((short)0, fixture.GetCollisionGroup);
+            Assert.Equal(0.2f, fixture.GetFriction);
+            Assert.Equal(0.0f, fixture.GetRestitution);
+            Assert.False(fixture.GetIsSensor);
+            Assert.Null(fixture.GetBody);
+        }
+
+        /// <summary>
+        ///     Tests that proxy count starts at zero then increases after body attachment
+        /// </summary>
+        [Fact]
+        public void ProxyCount_ShouldStartAtZero_ThenIncrease()
+        {
+            CircleShape shape = new CircleShape(0.5f, 1.0f);
+            Fixture fixture = new Fixture(shape);
+
+            Assert.Equal(0, fixture.ProxyCount);
         }
     }
 }

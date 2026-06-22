@@ -161,6 +161,22 @@
 - Production changes: None required
 - Remaining: DrawAnimation LoadTexture path requires GL context — not testable in unit tests
 
+### [08:50] Task: DialogManager.cs
+- Target: 1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs (93.6%, 4 ul, 9 uc)
+- Existing tests: 25 tests in DialogManagerTest.cs
+- Tests added: 7 tests (StartDialog non-existent dialog returns, SelectOption non-existent dialog no throw, SelectOption negative index, SelectOption failing condition does not execute, GetAvailableOptions when dialog not in dict, ShowDialog invalid choice, ShowDialog choice exceeding options)
+- All 44 tests pass (25 original + 7 new + 10 from DialogActionExecutor + others)
+- Production changes: None required
+- Commit: aa8e1d90f
+
+### [08:30] Task: DialogActionExecutor.cs
+- Target: 1_Presentation/Extension/Language/Dialogue/src/Core/DialogActionExecutor.cs (90.6%, 2 ul, 1 uc)
+- Existing tests: 7 tests in DialogActionExecutorTest.cs
+- Tests added: 3 tests (ExecuteAction invalid returns false, ExecuteAction invalid does not execute, ExecuteActions mixed valid/invalid counts only valid)
+- All 10 tests pass (7 original + 3 new)
+- Production changes: None required
+- Commit: 6c9ab22ac
+
 ### [10:40] Task: CircleShape.cs
 - Target: 4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs (96.0%, 2 uncovered conditions)
 - Existing tests: 24 tests in CircleShapeTest.cs
