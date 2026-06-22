@@ -591,18 +591,6 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        ///     Tests that test overlap returns true when only y overlaps
-        /// </summary>
-        [Fact]
-        public void TestOverlap_ShouldReturnTrue_WhenOnlyYOverlaps()
-        {
-            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(3.0f, 10.0f));
-            Aabb aabb2 = new Aabb(new Vector2F(5.0f, 2.0f), new Vector2F(8.0f, 8.0f));
-
-            Assert.True(Aabb.TestOverlap(ref aabb1, ref aabb2));
-        }
-
-        /// <summary>
         ///     Tests that test overlap returns false when y does not overlap
         /// </summary>
         [Fact]
