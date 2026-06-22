@@ -33,6 +33,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Alis.Extension.Network.Exceptions;
 using Xunit;
 
 namespace Alis.Extension.Network.Test
@@ -347,6 +348,52 @@ namespace Alis.Extension.Network.Test
             // Assert
             Assert.NotNull(accept);
             Assert.NotEmpty(accept);
+        }
+
+        /// <summary>
+        /// Tests that ReadHttpHeaderAsync returns empty when stream ends without header terminator
+        /// </summary>
+        [Fact]
+        public async Task ReadHttpHeaderAsync_WithoutTerminator_ReturnsEmpty()
+        {
+            // Arrange
+            string incomplete = "GET /chat HTTP/1.1\nHost: example.com\n";
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(incomplete));
+
+            // Act
+            string result = await HttpHelper.ReadHttpHeaderAsync(stream, CancellationToken.None);
+
+            // Assert
+            Assert.Equal(string.Empty, result);
+        }
+
+        /// <summary>
+        /// Tests that GetSubProtocols with oversized protocol header throws EntityTooLargeException
+        /// </summary>
+        [Fact]
+        public void GetSubProtocols_WithOversizedProtocol_ThrowsEntityTooLargeException()
+        {
+            // Arrange
+            string oversized = "Sec-WebSocket-Protocol: " + new string('a', 3000) + "\r\n";
+
+            // Act & Assert
+            Assert.Throws<EntityTooLargeException>(() => HttpHelper.GetSubProtocols(oversized));
+        }
+
+        /// <summary>
+        /// Tests that IsWebSocketUpgradeRequest with non-GET method returns false
+        /// </summary>
+        [Fact]
+        public void IsWebSocketUpgradeRequest_WithNonGetMethod_ReturnsFalse()
+        {
+            // Arrange
+            string header = "POST /chat HTTP/1.1\r\nHost: example.com\r\n\r\n";
+
+            // Act
+            bool result = HttpHelper.IsWebSocketUpgradeRequest(header);
+
+            // Assert
+            Assert.False(result);
         }
     }
 }
