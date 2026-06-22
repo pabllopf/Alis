@@ -918,28 +918,6 @@
             <Platform Solution="Win|x86" Project="x86" />
         </Project>
     </Folder>
-    <Folder Name="/1_Presentation/Benchmark/">
-        <Project Path="1_Presentation/Benchmark/src/Alis.Benchmark.csproj">
-            <Platform Solution="Android|arm64" Project="arm64" />
-            <Platform Solution="Android|x64" Project="x64" />
-            <Platform Solution="Browser|wasm" Project="wasm" />
-            <Platform Solution="Debug|x64" Project="x64" />
-            <Platform Solution="Ios|arm64" Project="arm64" />
-            <Platform Solution="Ios|simulator_arm64" Project="simulator_arm64" />
-            <Platform Solution="Ios|simulator_x64" Project="simulator_x64" />
-            <Platform Solution="Ios|x64" Project="x64" />
-            <Platform Solution="Linux|arm" Project="arm" />
-            <Platform Solution="Linux|arm64" Project="arm64" />
-            <Platform Solution="Linux|x64" Project="x64" />
-            <Platform Solution="Linux|x86" Project="x86" />
-            <Platform Solution="Osx|arm64" Project="arm64" />
-            <Platform Solution="Osx|x64" Project="x64" />
-            <Platform Solution="Win|arm" Project="arm" />
-            <Platform Solution="Win|arm64" Project="arm64" />
-            <Platform Solution="Win|x64" Project="x64" />
-            <Platform Solution="Win|x86" Project="x86" />
-        </Project>
-    </Folder>
 
     <Folder Name="/1_Presentation/Engine/">
         <Project Path="1_Presentation/Engine/src/Alis.App.Engine.csproj">
