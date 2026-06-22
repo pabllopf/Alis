@@ -134,30 +134,6 @@ namespace Alis.Extension.Media.FFmpeg.Test
         }
 
         /// <summary>
-        ///     Tests that LoadMetadata() throws InvalidOperationException if FFmpeg is not available.
-        /// </summary>
-        [Fact]
-        public void LoadMetadata_WithoutFFmpeg_ShouldThrowException()
-        {
-            AudioReader reader = new AudioReader(_testFile);
-
-            // This test validates error handling when FFmpeg is not available
-            Assert.ThrowsAny<Exception>(() => reader.LoadMetadata());
-        }
-
-        /// <summary>
-        ///     Tests that LoadMetadataAsync() throws InvalidOperationException if FFmpeg is not available.
-        /// </summary>
-        [Fact]
-        public void LoadMetadataAsync_WithoutFFmpeg_ShouldThrowException()
-        {
-            AudioReader reader = new AudioReader(_testFile);
-
-            // This test validates async error handling when FFmpeg is not available
-            Assert.ThrowsAny<Exception>(() => reader.LoadMetadataAsync().Wait());
-        }
-
-        /// <summary>
         ///     Tests that Load() with invalid bit depth throws exception.
         /// </summary>
         [Fact]

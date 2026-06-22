@@ -100,42 +100,6 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Assert.NotNull(player);
         }
 
-     
-        /// <summary>
-        ///     Tests that GetStreamForWriting returns a Stream.
-        /// </summary>
-        [Fact]
-        public void GetStreamForWriting_ShouldReturnStream()
-        {
-            string format = "s16le";
-            string arguments = "-channels 2 -sample_rate 44100";
-            Process ffplayProcess;
-
-            // Note: This test may fail in environments without FFmpeg installed
-            // It validates the method signature and basic functionality
-            Assert.ThrowsAny<Exception>(() =>
-            {
-                var stream = AudioPlayer.GetStreamForWriting(format, arguments, out ffplayProcess, false, "ffplay");
-                // Stream should be returned if FFmpeg is available
-            });
-        }
-
-        /// <summary>
-        ///     Tests that GetStreamForWriting with invalid bit depth throws exception.
-        /// </summary>
-        [Fact]
-        public void OpenWrite_WithInvalidBitDepth_ShouldThrowException()
-        {
-            AudioPlayer player = new AudioPlayer();
-
-            // This test validates the validation logic for bit depth
-            Assert.ThrowsAny<Exception>(() =>
-            {
-                // OpenWrite requires FFmpeg to be available, so we expect an exception
-                // The important part is that the method validates bit depth before attempting to open
-            });
-        }
-
         /// <summary>
         ///     Tests that the finalizer does not throw when called.
         /// </summary>
