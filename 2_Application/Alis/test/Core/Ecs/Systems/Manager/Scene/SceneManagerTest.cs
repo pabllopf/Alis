@@ -28,12 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems.Manager.Scene;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Systems.Manager.Scene
+namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
 {
     /// <summary>
     ///     The scene manager test class
@@ -95,7 +94,7 @@ namespace Alis.Core.Ecs.Test.Systems.Manager.Scene
         [Fact]
         public void AddScene_ShouldAddSceneToList()
         {
-            Ecs.Scene scene = new Ecs.Scene();
+            Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
 
             _sceneManager.AddScene(scene);
 
@@ -108,9 +107,9 @@ namespace Alis.Core.Ecs.Test.Systems.Manager.Scene
         [Fact]
         public void AddScene_MultipleScenes_ShouldAddAll()
         {
-            Ecs.Scene scene1 = new Ecs.Scene();
-            Ecs.Scene scene2 = new Ecs.Scene();
-            Ecs.Scene scene3 = new Ecs.Scene();
+            Alis.Core.Ecs.Scene scene1 = new Alis.Core.Ecs.Scene();
+            Alis.Core.Ecs.Scene scene2 = new Alis.Core.Ecs.Scene();
+            Alis.Core.Ecs.Scene scene3 = new Alis.Core.Ecs.Scene();
 
             _sceneManager.AddScene(scene1);
             _sceneManager.AddScene(scene2);
@@ -125,8 +124,8 @@ namespace Alis.Core.Ecs.Test.Systems.Manager.Scene
         [Fact]
         public void Constructor_WithScenes_ShouldInitializeThem()
         {
-            Ecs.Scene scene1 = new Ecs.Scene();
-            Ecs.Scene scene2 = new Ecs.Scene();
+            Alis.Core.Ecs.Scene scene1 = new Alis.Core.Ecs.Scene();
+            Alis.Core.Ecs.Scene scene2 = new Alis.Core.Ecs.Scene();
 
             Context context = new Context();
             SceneManager manager = new SceneManager(context, scene1, scene2);
@@ -141,7 +140,7 @@ namespace Alis.Core.Ecs.Test.Systems.Manager.Scene
         [Fact]
         public void CurrentWorld_ShouldBeSettable()
         {
-            Ecs.Scene scene = new Ecs.Scene();
+            Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
 
             _sceneManager.CurrentWorld = scene;
 
@@ -154,9 +153,9 @@ namespace Alis.Core.Ecs.Test.Systems.Manager.Scene
         [Fact]
         public void LoadedScenes_CanBeSet()
         {
-            Ecs.Scene scene = new Ecs.Scene();
+            Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
 
-            _sceneManager.LoadedScenes = new System.Collections.Generic.List<Ecs.Scene> { scene };
+            _sceneManager.LoadedScenes = new System.Collections.Generic.List<Alis.Core.Ecs.Scene> { scene };
 
             Assert.Single(_sceneManager.LoadedScenes);
         }

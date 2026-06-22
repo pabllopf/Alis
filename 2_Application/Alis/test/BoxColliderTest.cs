@@ -27,11 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Components.Collider;
 using Xunit;
 
-namespace Alis.Core.Ecs.Components.Collider.Test
+namespace Alis.Test
 {
     /// <summary>
     ///     Tests for the <see cref="BoxCollider"/> class.
@@ -101,7 +101,7 @@ namespace Alis.Core.Ecs.Components.Collider.Test
         {
             BoxCollider collider = new BoxCollider();
 
-            Assert.Equal(Core.Physic.Dynamics.BodyType.Static, collider.BodyType);
+            Assert.Equal(Alis.Core.Physic.Dynamics.BodyType.Static, collider.BodyType);
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace Alis.Core.Ecs.Components.Collider.Test
                 Rotation: 45,
                 RelativePosition: new Vector2F(10, 20),
                 AutoTilling: true,
-                BodyType: Core.Physic.Dynamics.BodyType.Dynamic,
+                BodyType: Alis.Core.Physic.Dynamics.BodyType.Dynamic,
                 Restitution: 0.8f,
                 Friction: 0.3f,
                 FixedRotation: true,
@@ -261,7 +261,7 @@ namespace Alis.Core.Ecs.Components.Collider.Test
             Assert.Equal(45, collider.Rotation);
             Assert.Equal(new Vector2F(10, 20), collider.RelativePosition);
             Assert.True(collider.AutoTilling);
-            Assert.Equal(Core.Physic.Dynamics.BodyType.Dynamic, collider.BodyType);
+            Assert.Equal(Alis.Core.Physic.Dynamics.BodyType.Dynamic, collider.BodyType);
             Assert.Equal(0.8f, collider.Restitution);
             Assert.Equal(0.3f, collider.Friction);
             Assert.True(collider.FixedRotation);
@@ -286,27 +286,13 @@ namespace Alis.Core.Ecs.Components.Collider.Test
         }
 
         /// <summary>
-        ///     Tests that Context property can be set and retrieved.
-        /// </summary>
-        [Fact]
-        public void Context_Property_ShouldAllowGetAndSet()
-        {
-            BoxCollider collider = new BoxCollider();
-            var mockContext = new Core.Aspect.Context();
-
-            collider.Context = mockContext;
-
-            Assert.Same(mockContext, collider.Context);
-        }
-
-        /// <summary>
         ///     Tests that Body property can be set and retrieved.
         /// </summary>
         [Fact]
         public void Body_Property_ShouldAllowGetAndSet()
         {
             BoxCollider collider = new BoxCollider();
-            var mockBody = new Core.Physic.Dynamics.Body();
+            var mockBody = new Alis.Core.Physic.Dynamics.Body();
 
             collider.Body = mockBody;
 

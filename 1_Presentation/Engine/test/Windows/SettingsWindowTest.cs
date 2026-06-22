@@ -31,7 +31,7 @@ using Alis.App.Engine.Core;
 using Alis.App.Engine.Windows.Settings;
 using Xunit;
 
-namespace Alis.App.Engine.Test.Windows.Settings
+namespace Alis.App.Engine.Test.Windows
 {
     /// <summary>
     ///     The settings window test class

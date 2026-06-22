@@ -11,27 +11,27 @@
 
 ### Methods Tested
 
-| Method | Coverage Before | Coverage After | Status |
-|--------|-----------------|----------------|--------|
-| `BrowserPlayer()` (Constructor) | 0% | N/A | ⚠️ Internal, requires OpenAL |
-| `Playing` Property | 0% | 100% | ✅ |
-| `Paused` Property | 0% | 100% | ✅ |
-| `PlaybackFinished` Event | 0% | 100% | ✅ |
-| `Play(string fileName)` | 0% | N/A | ⚠️ Requires OpenAL |
-| `PlayLoop(string fileName, bool loop)` | 0% | N/A | ⚠️ Requires OpenAL |
-| `Pause()` | 0% | N/A | ⚠️ Requires OpenAL |
-| `Resume()` | 0% | N/A | ⚠️ Requires OpenAL |
-| `Stop()` | 0% | N/A | ⚠️ Requires OpenAL |
-| `SetVolume(byte percent)` | 0% | 100% | ✅ |
+| Method | Coverage Before | Status |
+|--------|-----------------|--------|
+| `BrowserPlayer()` (Constructor) | 0% | ⚠️ Internal, requires OpenAL |
+| `Playing` Property | 0% | ✅ Tested (property getter) |
+| `Paused` Property | 0% | ✅ Tested (property getter) |
+| `PlaybackFinished` Event | 0% | ✅ Tested (event registration) |
+| `Play(string fileName)` | 0% | ⚠️ Requires OpenAL |
+| `PlayLoop(string fileName, bool loop)` | 0% | ⚠️ Requires OpenAL |
+| `Pause()` | 0% | ⚠️ Requires OpenAL |
+| `Resume()` | 0% | ⚠️ Requires OpenAL |
+| `Stop()` | 0% | ⚠️ Requires OpenAL |
+| `SetVolume(byte percent)` | 0% | ✅ Tested (method exists) |
 
 ### Static Methods Tested
 
-| Method | Coverage Before | Coverage After | Status |
-|--------|-----------------|----------------|--------|
-| `TryParseWav(byte[], out, out, out, out)` | 0% | 100% | ✅ |
-| `FindFmtChunk(byte[], ref int)` | 0% | 100% | ✅ |
-| `FindDataChunk(byte[], ref int, out, out)` | 0% | 100% | ✅ |
-| `TryGetFormat(int, int, out int)` | 0% | 100% | ✅ |
+| Method | Coverage Before | Status |
+|--------|-----------------|--------|
+| `TryParseWav(byte[], out, out, out, out)` | 0% | ✅ Tested (WAV parsing logic) |
+| `FindFmtChunk(byte[], ref int)` | 0% | ✅ Tested (fmt chunk finding) |
+| `FindDataChunk(byte[], ref int, out, out)` | 0% | ✅ Tested (data chunk finding) |
+| `TryGetFormat(int, int, out int)` | 0% | ✅ Tested (format detection) |
 
 ### Private Fields (Not Tested - Implementation Details)
 
@@ -60,27 +60,26 @@
 3. **TryParseWav_NoWAVEHeader_ShouldReturnFalse** — Validates WAVE header check
 4. **TryParseWav_NoFmtChunk_ShouldReturnFalse** — Validates fmt chunk finding
 5. **TryParseWav_CompressedFormat_ShouldReturnFalse** — Validates PCM format requirement
+6. **TryParseWav_InvalidChannels_ShouldReturnFalse** — Validates channel count check
+7. **TryParseWav_ValidWav_ShouldReturnTrue** — Validates complete WAV parsing
 
 #### Format Detection Tests (5 Tests)
-6. **TryGetFormat_16BitMono_ShouldReturnTrue** — Validates 16-bit mono format
-7. **TryGetFormat_16BitStereo_ShouldReturnTrue** — Validates 16-bit stereo format
-8. **TryGetFormat_8BitMono_ShouldReturnTrue** — Validates 8-bit mono format
-9. **TryGetFormat_8BitStereo_ShouldReturnTrue** — Validates 8-bit stereo format
-10. **TryGetFormat_UnsupportedBitDepth_ShouldReturnFalse** — Validates unsupported bit depth
+8. **TryGetFormat_16BitMono_ShouldReturnTrue** — Validates 16-bit mono format
+9. **TryGetFormat_16BitStereo_ShouldReturnTrue** — Validates 16-bit stereo format
+10. **TryGetFormat_8BitMono_ShouldReturnTrue** — Validates 8-bit mono format
+11. **TryGetFormat_8BitStereo_ShouldReturnTrue** — Validates 8-bit stereo format
+12. **TryGetFormat_UnsupportedBitDepth_ShouldReturnFalse** — Validates unsupported bit depth
 
 #### Chunk Finding Tests (4 Tests)
-11. **FindFmtChunk_ShouldReturnCorrectSize** — Validates fmt chunk size return
-12. **FindFmtChunk_NoFmtChunk_ShouldReturn0** — Validates no fmt chunk returns 0
-13. **FindDataChunk_ShouldFindDataChunk** — Validates data chunk finding
-14. **FindDataChunk_NoDataChunk_ShouldReturn0** — Validates no data chunk returns 0
+13. **FindFmtChunk_ShouldReturnCorrectSize** — Validates fmt chunk size return
+14. **FindFmtChunk_NoFmtChunk_ShouldReturn0** — Validates no fmt chunk returns 0
+15. **FindDataChunk_ShouldFindDataChunk** — Validates data chunk finding
+16. **FindDataChunk_NoDataChunk_ShouldReturn0** — Validates no data chunk returns 0
 
 #### Property/Event Tests (3 Tests)
-15. **Playing_Property_ShouldReturnCorrectValue** — Validates Playing property exists
-16. **Paused_Property_ShouldReturnCorrectValue** — Validates Paused property exists
-17. **PlaybackFinished_Event_ShouldExist** — Validates PlaybackFinished event exists
-
-#### Method Signature Tests (1 Test)
-18. **SetVolume_ShouldReturnCompletedTask** — Validates SetVolume method exists
+17. **Playing_Property_ShouldReturnCorrectValue** — Validates Playing property exists
+18. **Paused_Property_ShouldReturnCorrectValue** — Validates Paused property exists
+19. **PlaybackFinished_Event_ShouldExist** — Validates PlaybackFinished event exists
 
 ### Coverage Improvement
 

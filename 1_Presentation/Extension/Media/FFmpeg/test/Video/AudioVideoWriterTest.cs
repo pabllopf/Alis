@@ -25,11 +25,10 @@
 using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
-using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
-namespace Alis.Extension.Media.FFmpeg.Video.Test
+namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
     /// <summary>
     ///     The audio video writer test class
