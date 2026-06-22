@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
-    public class BottomMenuTest
+    public partial class BottomMenuTest
     {
         private static SpaceWork CreateSpaceWork()
         {
@@ -14,7 +14,7 @@ namespace Alis.App.Engine.Test
         }
 
         [Fact]
-        public void Constructor_ShouldSetSpaceWork()
+        public void Constructor_ShouldSetSpaceWork_v2()
         {
             SpaceWork spaceWork = CreateSpaceWork();
             BottomMenu menu = new BottomMenu(spaceWork);
@@ -24,7 +24,7 @@ namespace Alis.App.Engine.Test
         }
 
         [Fact]
-        public void SpaceWork_Property_ShouldReturnSetValue()
+        public void SpaceWork_Property_ShouldReturnSetValue_v2()
         {
             SpaceWork spaceWork = CreateSpaceWork();
             BottomMenu menu = new BottomMenu(spaceWork);
@@ -34,7 +34,7 @@ namespace Alis.App.Engine.Test
         }
 
         [Fact]
-        public void Initialize_ShouldNotThrow()
+        public void Initialize_ShouldNotThrow_v2()
         {
             SpaceWork spaceWork = CreateSpaceWork();
             BottomMenu menu = new BottomMenu(spaceWork);
@@ -45,7 +45,7 @@ namespace Alis.App.Engine.Test
         }
 
         [Fact]
-        public void Update_ShouldNotThrow()
+        public void Update_ShouldNotThrow_v2()
         {
             SpaceWork spaceWork = CreateSpaceWork();
             BottomMenu menu = new BottomMenu(spaceWork);
@@ -56,7 +56,7 @@ namespace Alis.App.Engine.Test
         }
 
         [Fact]
-        public void Start_ShouldNotThrow()
+        public void Start_ShouldNotThrow_v2()
         {
             SpaceWork spaceWork = CreateSpaceWork();
             BottomMenu menu = new BottomMenu(spaceWork);

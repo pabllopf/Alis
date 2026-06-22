@@ -37,7 +37,7 @@ namespace Alis.App.Engine.Test
     /// <summary>
     ///     Tests for the <see cref="BottomMenu"/> class.
     /// </summary>
-    public class BottomMenuTest
+    public partial class BottomMenuTest
     {
         /// <summary>
         ///     Tests that the constructor sets the SpaceWork property correctly.
