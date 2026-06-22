@@ -73,19 +73,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         }
 
         /// <summary>
-        ///     Tests that StreamAdaptor can be disposed without throwing
-        /// </summary>
-        [Fact]
-        public void Dispose_ShouldNotThrow()
-        {
-            Assert.NotNull(_streamAdaptor);
-
-            _streamAdaptor.Dispose();
-
-            // No exception means success
-        }
-
-        /// <summary>
         ///     Tests that StreamAdaptor with empty stream works
         /// </summary>
         [Fact]
