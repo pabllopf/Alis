@@ -439,11 +439,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         [Fact]
         public void BoxColliderSettings_DifferentWidth_ShouldNotBeEqual()
         {
-            var settings1 = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settings1 = new BoxCollider.BoxColliderSettings(
                 false, 10f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
             );
 
-            var settings2 = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settings2 = new BoxCollider.BoxColliderSettings(
                 false, 20f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
             );
 
@@ -456,11 +456,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         [Fact]
         public void BoxColliderSettings_DifferentHeight_ShouldNotBeEqual()
         {
-            var settings1 = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settings1 = new BoxCollider.BoxColliderSettings(
                 false, 10f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
             );
 
-            var settings2 = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settings2 = new BoxCollider.BoxColliderSettings(
                 false, 10f, 20f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
             );
 
@@ -473,11 +473,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         [Fact]
         public void BoxColliderSettings_DifferentRotation_ShouldNotBeEqual()
         {
-            var settings1 = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settings1 = new BoxCollider.BoxColliderSettings(
                 false, 10f, 10f, 0f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
             );
 
-            var settings2 = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settings2 = new BoxCollider.BoxColliderSettings(
                 false, 10f, 10f, 90f, new Vector2F(0f, 0f), false, BodyType.Static, 0.5f, 0.5f, false, 1f, false, new Vector2F(0f, 0f), 0f
             );
 

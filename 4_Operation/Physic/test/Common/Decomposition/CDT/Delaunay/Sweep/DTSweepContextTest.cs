@@ -262,7 +262,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             TriangulationPoint p3 = new TriangulationPoint(0, 1);
             ctx.Triangles.Add(new DelaunayTriangle(p1, p2, p3));
             ctx.Triangles.Add(new DelaunayTriangle(p1, p3, p2));
-            var collector = new MockTriangulatable();
+            MockTriangulatable collector = new MockTriangulatable();
             ctx.Triangulatable = collector;
 
             ctx.FinalizeTriangulation();
@@ -278,7 +278,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void PrepareTriangulation_ShouldSetupHeadAndTail()
         {
             DtSweepContext ctx = new DtSweepContext();
-            var triangulatable = new MockTriangulatable();
+            MockTriangulatable triangulatable = new MockTriangulatable();
             ctx.Points.Add(new TriangulationPoint(10, 10));
             ctx.Points.Add(new TriangulationPoint(20, 20));
             ctx.Points.Add(new TriangulationPoint(15, 5));
@@ -297,7 +297,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void MeshClean_ShouldMarkTriangleInterior()
         {
             DtSweepContext ctx = new DtSweepContext();
-            var collector = new MockTriangulatable();
+            MockTriangulatable collector = new MockTriangulatable();
             ctx.Triangulatable = collector;
             TriangulationPoint p1 = new TriangulationPoint(0, 0);
             TriangulationPoint p2 = new TriangulationPoint(1, 0);
@@ -317,7 +317,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void MeshClean_WithNull_ShouldDoNothing()
         {
             DtSweepContext ctx = new DtSweepContext();
-            var collector = new MockTriangulatable();
+            MockTriangulatable collector = new MockTriangulatable();
             ctx.Triangulatable = collector;
 
             ctx.MeshClean(null);
@@ -332,7 +332,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void MeshClean_WithInteriorTriangle_ShouldSkip()
         {
             DtSweepContext ctx = new DtSweepContext();
-            var collector = new MockTriangulatable();
+            MockTriangulatable collector = new MockTriangulatable();
             ctx.Triangulatable = collector;
             TriangulationPoint p1 = new TriangulationPoint(0, 0);
             TriangulationPoint p2 = new TriangulationPoint(1, 0);
@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void MeshClean_ShouldRecurseThroughNeighbors()
         {
             DtSweepContext ctx = new DtSweepContext();
-            var collector = new MockTriangulatable();
+            MockTriangulatable collector = new MockTriangulatable();
             ctx.Triangulatable = collector;
             TriangulationPoint p1 = new TriangulationPoint(0, 0);
             TriangulationPoint p2 = new TriangulationPoint(1, 0);
@@ -380,7 +380,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void MeshClean_ShouldStopAtConstrainedEdge()
         {
             DtSweepContext ctx = new DtSweepContext();
-            var collector = new MockTriangulatable();
+            MockTriangulatable collector = new MockTriangulatable();
             ctx.Triangulatable = collector;
             TriangulationPoint p1 = new TriangulationPoint(0, 0);
             TriangulationPoint p2 = new TriangulationPoint(1, 0);

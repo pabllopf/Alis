@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
@@ -783,7 +784,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         {
             AotReflectionAnalyzer analyzer = new();
 
-            var diagnostics = analyzer.SupportedDiagnostics;
+            ImmutableArray<DiagnosticDescriptor> diagnostics = analyzer.SupportedDiagnostics;
 
             Assert.NotNull(diagnostics);
             Assert.Equal(10, diagnostics.Length);
@@ -797,7 +798,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         {
             AotReflectionAnalyzer analyzer = new();
 
-            var diagnostics = analyzer.SupportedDiagnostics;
+            ImmutableArray<DiagnosticDescriptor> diagnostics = analyzer.SupportedDiagnostics;
 
             Assert.NotEmpty(diagnostics);
         }
@@ -830,7 +831,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void DiagnosticIdConstants_AreAllUnique()
         {
-            var ids = new[]
+            string[] ids = new[]
             {
                 AotReflectionAnalyzer.IdReflectionApi,
                 AotReflectionAnalyzer.IdEmitApi,
@@ -844,7 +845,7 @@ namespace Alis.Core.Aspect.Fluent.Test
                 AotReflectionAnalyzer.IdUnknownReflection
             };
 
-            var distinct = ids.Distinct();
+            IEnumerable<string> distinct = ids.Distinct();
 
             Assert.Equal(ids.Length, distinct.Count());
         }
@@ -870,7 +871,7 @@ public class TestClass
     }
 }";
 
-            var diagnostics = RunAnalyzer(code);
+            ImmutableArray<Diagnostic> diagnostics = RunAnalyzer(code);
 
             Assert.Contains(diagnostics, d => d.Id == AotReflectionAnalyzer.IdReflectionApi);
         }
@@ -890,7 +891,7 @@ public class TestClass
     }
 }";
 
-            var diagnostics = RunAnalyzer(code);
+            ImmutableArray<Diagnostic> diagnostics = RunAnalyzer(code);
 
             Assert.Contains(diagnostics, d => d.Id == AotReflectionAnalyzer.IdTypeGetType);
         }
@@ -911,7 +912,7 @@ public class TestClass
     }
 }";
 
-            var diagnostics = RunAnalyzer(code);
+            ImmutableArray<Diagnostic> diagnostics = RunAnalyzer(code);
 
             Assert.DoesNotContain(diagnostics, d => d.Id.StartsWith("ALIS"));
         }
@@ -933,7 +934,7 @@ public class TestClass
     }
 }";
 
-            var diagnostics = RunAnalyzer(code);
+            ImmutableArray<Diagnostic> diagnostics = RunAnalyzer(code);
 
             Assert.Contains(diagnostics, d => d.Id == AotReflectionAnalyzer.IdReflectionApi);
         }
@@ -943,21 +944,21 @@ public class TestClass
         /// </summary>
         private static ImmutableArray<Diagnostic> RunAnalyzer(string sourceCode)
         {
-            var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
+            SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
 
-            var appDomainAssemblies = AppDomain.CurrentDomain.GetAssemblies()
+            PortableExecutableReference[] appDomainAssemblies = AppDomain.CurrentDomain.GetAssemblies()
                 .Where(a => !a.IsDynamic && !string.IsNullOrEmpty(a.Location))
                 .Select(a => MetadataReference.CreateFromFile(a.Location))
                 .ToArray();
 
-            var compilation = CSharpCompilation.Create(
+            CSharpCompilation compilation = CSharpCompilation.Create(
                 "TestAssembly",
                 new[] { syntaxTree },
                 appDomainAssemblies,
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
-            var analyzer = new AotReflectionAnalyzer();
-            var compilationWithAnalyzers = compilation.WithAnalyzers(ImmutableArray.Create<DiagnosticAnalyzer>(analyzer));
+            AotReflectionAnalyzer analyzer = new AotReflectionAnalyzer();
+            CompilationWithAnalyzers compilationWithAnalyzers = compilation.WithAnalyzers(ImmutableArray.Create<DiagnosticAnalyzer>(analyzer));
 
             return compilationWithAnalyzers.GetAllDiagnosticsAsync().GetAwaiter().GetResult();
         }

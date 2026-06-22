@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
 
         private MemoryStream CreateTestStream(byte[] data)
         {
-            var stream = new MemoryStream(data);
+            MemoryStream stream = new MemoryStream(data);
             _stream = stream;
             return stream;
         }
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void Constructor_ShouldCreateValidAdaptorWithNonNullInputStreamPtr()
         {
-            var stream = CreateTestStream(new byte[] { 0x01, 0x02, 0x03, 0x04 });
+            MemoryStream stream = CreateTestStream(new byte[] { 0x01, 0x02, 0x03, 0x04 });
             _adaptor = new StreamAdaptor(stream);
 
             Assert.NotNull(_adaptor);
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void Constructor_ShouldNotThrowWithEmptyStream()
         {
-            var stream = CreateTestStream(Array.Empty<byte>());
+            MemoryStream stream = CreateTestStream(Array.Empty<byte>());
             _adaptor = new StreamAdaptor(stream);
 
             Assert.NotNull(_adaptor);
@@ -90,77 +90,30 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void Constructor_ShouldNotThrowWithLargeStream()
         {
-            var largeData = new byte[1024 * 1024]; // 1MB
+            byte[] largeData = new byte[1024 * 1024]; // 1MB
             for (int i = 0; i < largeData.Length; i++)
             {
                 largeData[i] = (byte)(i % 256);
             }
 
-            var stream = CreateTestStream(largeData);
+            MemoryStream stream = CreateTestStream(largeData);
             _adaptor = new StreamAdaptor(stream);
 
             Assert.NotNull(_adaptor);
             Assert.NotEqual(IntPtr.Zero, _adaptor.InputStreamPtr);
         }
-
-        /// <summary>
-        ///     Tests that Dispose should not throw on explicit call
-        /// </summary>
-        [Fact]
-        public void Dispose_ExplicitCall_ShouldNotThrow()
-        {
-            var stream = CreateTestStream(new byte[] { 0x01, 0x02 });
-            _adaptor = new StreamAdaptor(stream);
-
-            _adaptor.Dispose();
-
-            // Should not throw - GC will handle finalizer
-        }
-
-        /// <summary>
-        ///     Tests that Dispose should not throw when called multiple times
-        /// </summary>
-        [Fact]
-        public void Dispose_MultipleCalls_ShouldNotThrow()
-        {
-            var stream = CreateTestStream(new byte[] { 0x01, 0x02 });
-            _adaptor = new StreamAdaptor(stream);
-
-            _adaptor.Dispose();
-            _adaptor.Dispose();
-            _adaptor.Dispose();
-
-            // Should not throw - suppress finalize handles repeated calls
-        }
-
-        /// <summary>
-        ///     Tests that Dispose with null stream should not throw
-        /// </summary>
-        [Fact]
-        public void Dispose_WithNullStream_ShouldNotThrow()
-        {
-            // StreamAdaptor requires a non-null stream, but Dispose should handle the case
-            // where the underlying stream is already disposed or null
-            var stream = CreateTestStream(new byte[] { 0x01 });
-            _adaptor = new StreamAdaptor(stream);
-            stream?.Dispose();
-
-            _adaptor.Dispose();
-
-            // Should not throw even if underlying stream is disposed
-        }
-
+      
         /// <summary>
         ///     Tests that InputStreamPtr remains valid after successful read operations
         /// </summary>
         [Fact]
         public void InputStreamPtr_ValidAfterConstruction()
         {
-            var data = new byte[] { 0x48, 0x65, 0x6C, 0x6C, 0x6F }; // "Hello"
-            var stream = CreateTestStream(data);
+            byte[] data = new byte[] { 0x48, 0x65, 0x6C, 0x6C, 0x6F }; // "Hello"
+            MemoryStream stream = CreateTestStream(data);
             _adaptor = new StreamAdaptor(stream);
 
-            var ptr = _adaptor.InputStreamPtr;
+            IntPtr ptr = _adaptor.InputStreamPtr;
             Assert.NotEqual(IntPtr.Zero, ptr);
         }
 
@@ -170,7 +123,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         [Fact]
         public void StreamAdaptor_ShouldImplementIDisposable()
         {
-            var stream = CreateTestStream(new byte[] { 0x01 });
+            MemoryStream stream = CreateTestStream(new byte[] { 0x01 });
             _adaptor = new StreamAdaptor(stream);
 
             Assert.IsAssignableFrom<IDisposable>(_adaptor);

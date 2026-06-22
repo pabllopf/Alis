@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
@@ -361,7 +362,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
             using (FileLogOutput output = new FileLogOutput(filePath))
             {
-                var field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                FieldInfo field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                 field.SetValue(output, new ThrowingStreamWriter());
 
                 output.Write(new LogEntry(LogLevel.Info, "Should be caught", "Logger"));
@@ -381,7 +382,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
             using (FileLogOutput output = new FileLogOutput(filePath))
             {
-                var field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                FieldInfo field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                 field.SetValue(output, new ThrowingStreamWriter());
 
                 output.Flush();
@@ -400,7 +401,7 @@ namespace Alis.Core.Aspect.Logging.Test
             Directory.CreateDirectory(_testDir);
 
             FileLogOutput output = new FileLogOutput(filePath);
-            var field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            FieldInfo field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             field.SetValue(output, new ThrowingStreamWriter());
 
             output.Dispose();
@@ -418,7 +419,7 @@ namespace Alis.Core.Aspect.Logging.Test
             Directory.CreateDirectory(_testDir);
 
             FileLogOutput output = new FileLogOutput(filePath);
-            var field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            FieldInfo field = typeof(FileLogOutput).GetField("_writer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             field.SetValue(output, null);
 
             output.Write(new LogEntry(LogLevel.Info, "Should not throw", "Logger"));

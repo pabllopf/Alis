@@ -73,9 +73,9 @@ namespace Alis.Core.Audio.Test
         public async void Play_WithNonExistentFile_ShouldThrowFileNotFoundException()
         {
             _player = CreatePlayer();
-            var nonExistentFile = Path.Combine(Path.GetTempPath(), $"nonexistent_{Guid.NewGuid()}.wav");
+            string nonExistentFile = Path.Combine(Path.GetTempPath(), $"nonexistent_{Guid.NewGuid()}.wav");
 
-            var exception = await Assert.ThrowsAsync<FileNotFoundException>(() => _player.Play(nonExistentFile));
+            FileNotFoundException exception = await Assert.ThrowsAsync<FileNotFoundException>(() => _player.Play(nonExistentFile));
 
             Assert.NotNull(exception);
             Assert.Contains("not found", exception.Message);
@@ -88,7 +88,7 @@ namespace Alis.Core.Audio.Test
         public async Task Play_WithExistingFile_ShouldNotThrowBeforeMciCall()
         {
             // Create a temporary file to test the path validation logic
-            var tempFile = Path.Combine(Path.GetTempPath(), $"test_{Guid.NewGuid()}.tmp");
+            string tempFile = Path.Combine(Path.GetTempPath(), $"test_{Guid.NewGuid()}.tmp");
             File.WriteAllText(tempFile, "test content");
 
             try
@@ -97,7 +97,7 @@ namespace Alis.Core.Audio.Test
 
                 // This will attempt MCI call which may fail on non-Windows,
                 // but the file existence check should pass
-                var task = _player.Play(tempFile);
+                Task task = _player.Play(tempFile);
 
                 // On non-Windows, MCI call will throw - but the key behavior is:
                 // - File exists check passes
@@ -121,9 +121,9 @@ namespace Alis.Core.Audio.Test
         public async Task PlayLoop_WithNonExistentFile_ShouldThrowFileNotFoundException()
         {
             _player = CreatePlayer();
-            var nonExistentFile = Path.Combine(Path.GetTempPath(), $"nonexistent_{Guid.NewGuid()}.wav");
+            string nonExistentFile = Path.Combine(Path.GetTempPath(), $"nonexistent_{Guid.NewGuid()}.wav");
 
-            var exception = await Assert.ThrowsAsync<FileNotFoundException>(() => _player.PlayLoop(nonExistentFile, false));
+            FileNotFoundException exception = await Assert.ThrowsAsync<FileNotFoundException>(() => _player.PlayLoop(nonExistentFile, false));
 
             Assert.NotNull(exception);
             Assert.Contains("not found", exception.Message);
@@ -136,7 +136,7 @@ namespace Alis.Core.Audio.Test
         public async Task PlayLoop_WithLoopTrue_ShouldSetUpRepeatCommand()
         {
             // Create a temporary file
-            var tempFile = Path.Combine(Path.GetTempPath(), $"test_{Guid.NewGuid()}.tmp");
+            string tempFile = Path.Combine(Path.GetTempPath(), $"test_{Guid.NewGuid()}.tmp");
             File.WriteAllText(tempFile, "test content");
 
             try
@@ -144,7 +144,7 @@ namespace Alis.Core.Audio.Test
                 _player = CreatePlayer();
                 // This will attempt MCI call - the key is that when loop=true,
                 // the command should include "Repeat"
-                var exception = await Assert.ThrowsAnyAsync<Exception>(() => _player.PlayLoop(tempFile, true));
+                Exception exception = await Assert.ThrowsAnyAsync<Exception>(() => _player.PlayLoop(tempFile, true));
 
                 // On non-Windows, this will throw from MCI call
                 // The test validates that the code path for loop=true is reached
@@ -167,7 +167,7 @@ namespace Alis.Core.Audio.Test
             _player = CreatePlayer();
 
             // When not playing, Pause should be a no-op (guarded by if (Playing && !Paused))
-            var task = _player.Pause();
+            Task task = _player.Pause();
 
             Assert.False(_player.Playing);
             Assert.False(_player.Paused);
@@ -182,7 +182,7 @@ namespace Alis.Core.Audio.Test
             _player = CreatePlayer();
 
             // When not paused, Resume should be a no-op (guarded by if (Playing && Paused))
-            var task = _player.Resume();
+            Task task = _player.Resume();
 
             Assert.False(_player.Playing);
             Assert.False(_player.Paused);
@@ -197,7 +197,7 @@ namespace Alis.Core.Audio.Test
             _player = CreatePlayer();
 
             // When not playing, Stop should be a no-op (guarded by if (Playing))
-            var task = _player.Stop();
+            Task task = _player.Stop();
 
             Assert.False(_player.Playing);
             Assert.False(_player.Paused);
@@ -212,9 +212,9 @@ namespace Alis.Core.Audio.Test
             _player = CreatePlayer();
 
             // Test various valid volume percentages
-            var task0 = _player.SetVolume(0);
-            var task50 = _player.SetVolume(50);
-            var task100 = _player.SetVolume(100);
+            Task task0 = _player.SetVolume(0);
+            Task task50 = _player.SetVolume(50);
+            Task task100 = _player.SetVolume(100);
 
             Assert.True(task0.IsCompleted);
             Assert.True(task50.IsCompleted);
@@ -229,8 +229,8 @@ namespace Alis.Core.Audio.Test
         {
             _player = CreatePlayer();
 
-            var taskMin = _player.SetVolume(byte.MinValue);
-            var taskMax = _player.SetVolume(byte.MaxValue);
+            Task taskMin = _player.SetVolume(byte.MinValue);
+            Task taskMax = _player.SetVolume(byte.MaxValue);
 
             Assert.True(taskMin.IsCompleted);
             Assert.True(taskMax.IsCompleted);

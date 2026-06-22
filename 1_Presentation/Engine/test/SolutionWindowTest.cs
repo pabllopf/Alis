@@ -76,9 +76,9 @@ namespace Alis.App.Engine.Test
         [Fact]
         public void NameWindow_StaticProperty_ShouldNotBeNullOrEmpty()
         {
-            var field = typeof(SolutionWindow).GetField("NameWindow", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            FieldInfo field = typeof(SolutionWindow).GetField("NameWindow", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
             Assert.NotNull(field);
-            var value = field.GetValue(null) as string;
+            string value = field.GetValue(null) as string;
             Assert.NotNull(value);
             Assert.NotEmpty(value);
         }

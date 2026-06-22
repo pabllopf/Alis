@@ -39,7 +39,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_DefaultConstructor_ShouldSetDefaultName()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
 
             // Assert
             Assert.Equal("DropBoxManager", manager.Name);
@@ -52,7 +52,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_DefaultConstructor_ShouldSetDefaultTag()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
 
             // Assert
             Assert.Equal("Cloud", manager.Tag);
@@ -65,7 +65,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_DefaultConstructor_ShouldHaveIsInitializedFalse()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
 
             // Assert
             Assert.False(manager.IsInitialized);
@@ -78,7 +78,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_FullConstructor_ShouldAcceptAllParameters()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager("test-id", "TestName", "TestTag", true, null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager("test-id", "TestName", "TestTag", true, null);
 
             // Assert - no exception means initialization succeeded
             Assert.NotNull(manager);
@@ -91,7 +91,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_FullConstructor_WithCustomName_ShouldSetCorrectly()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager("test-id", "MyCustomName", "TestTag", true, null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager("test-id", "MyCustomName", "TestTag", true, null);
 
             // Assert
             Assert.Equal("MyCustomName", manager.Name);
@@ -104,7 +104,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_FullConstructor_WithCustomTag_ShouldSetCorrectly()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager("test-id", "TestName", "MyCustomTag", true, null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager("test-id", "TestName", "MyCustomTag", true, null);
 
             // Assert
             Assert.Equal("MyCustomTag", manager.Tag);
@@ -117,7 +117,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_FullConstructor_WithCustomId_ShouldSetCorrectly()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager("my-custom-id", "TestName", "TestTag", true, null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager("my-custom-id", "TestName", "TestTag", true, null);
 
             // Assert - no exception means initialization succeeded
             Assert.NotNull(manager);
@@ -130,7 +130,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_NotInitialized_ShouldReturnFalse()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
 
             // Assert
             Assert.False(manager.IsInitialized);
@@ -143,7 +143,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_Dispose_ShouldNotThrowOnFreshInstance()
         {
             // Arrange
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
 
             // Act & Assert
             bool threw = false;
@@ -166,7 +166,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_MultipleDispose_ShouldNotThrow()
         {
             // Arrange
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
 
             // Act & Assert
             bool threw = false;
@@ -191,7 +191,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_DisposeDefaultConstructed_ShouldNotThrow()
         {
             // Arrange
-            var manager = new DropBoxCloudManager(null);
+            DropBoxCloudManager manager = new DropBoxCloudManager(null);
 
             // Act & Assert
             bool threw = false;
@@ -214,7 +214,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_OnDestroy_ShouldNotThrowOnFreshInstance()
         {
             // Arrange
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
 
             // Act & Assert
             bool threw = false;
@@ -237,7 +237,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_MultipleOnDestroy_ShouldNotThrow()
         {
             // Arrange
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
 
             // Act & Assert
             bool threw = false;
@@ -262,7 +262,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_Idisposable_Implementation_ShouldNotThrow()
         {
             // Arrange & Act
-            using (var manager = new DropBoxCloudManager(null))
+            using (DropBoxCloudManager manager = new DropBoxCloudManager(null))
             {
                 Assert.NotNull(manager);
             }
@@ -275,7 +275,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_ICloudManager_Implementation_ShouldNotThrow()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
 
             // Assert - no exception means implementation is correct
             Assert.NotNull(manager);
@@ -288,7 +288,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_AManager_Implementation_ShouldNotThrow()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
 
             // Assert - no exception means implementation is correct
             Assert.NotNull(manager);
@@ -301,7 +301,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_FullConstructor_WithEmptyName_ShouldSetCorrectly()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager("test-id", "", "TestTag", true, null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager("test-id", "", "TestTag", true, null);
 
             // Assert - no exception means initialization succeeded
             Assert.NotNull(manager);
@@ -314,7 +314,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_FullConstructor_WithEmptyTag_ShouldSetCorrectly()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager("test-id", "TestName", "", true, null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager("test-id", "TestName", "", true, null);
 
             // Assert - no exception means initialization succeeded
             Assert.NotNull(manager);
@@ -327,7 +327,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_FullConstructor_WithIsEnableFalse_ShouldSetCorrectly()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager("test-id", "TestName", "TestTag", false, null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager("test-id", "TestName", "TestTag", false, null);
 
             // Assert - no exception means initialization succeeded
             Assert.NotNull(manager);
@@ -340,7 +340,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_FullConstructor_WithIsEnableTrue_ShouldSetCorrectly()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager("test-id", "TestName", "TestTag", true, null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager("test-id", "TestName", "TestTag", true, null);
 
             // Assert - no exception means initialization succeeded
             Assert.NotNull(manager);
@@ -354,7 +354,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_CastToICloudManager_ShouldSucceed()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
             ICloudManager cloudManager = manager;
 
             // Assert
@@ -368,7 +368,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_CastToAManager_ShouldSucceed()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
             Alis.Core.Ecs.Systems.Manager.AManager aManager = manager;
 
             // Assert
@@ -382,7 +382,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void DropBoxCloudManager_CastToIDisposable_ShouldSucceed()
         {
             // Arrange & Act
-            using var manager = new DropBoxCloudManager(null);
+            using DropBoxCloudManager manager = new DropBoxCloudManager(null);
             IDisposable disposable = manager;
 
             // Assert
