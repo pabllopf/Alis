@@ -35,6 +35,14 @@
 
 ## 2026-06-22
 
+### [08:50] Task: GameObjectBuilder.cs
+- Target: 2_Application/Alis/src/Builder/Core/Ecs/Entity/GameObjectBuilder.cs (45.1% coverage)
+- Existing tests: 10 tests in GameObjectBuilderTest.cs
+- Tests added: 13 tests covering WithComponent overloads (no-args for Animator/BoxCollider/Info, Camera/Sprite/AudioSource/BoxCollider configs, Animator instance, Action config) and Info-branch paths (Name/Tag/IsActive/IsStatic after Add<Info>)
+- All 23 tests pass (10 original + 13 new)
+- Production changes: None required
+- Commit: 3e33bc380
+
 ### [10:00] Task: FixtureCollection.cs
 - Target: 4_Operation/Physic/src/Dynamics/FixtureCollection.cs (97.1% coverage, 1 uncovered line, 1 uncovered condition)
 - Existing tests: 24 tests in FixtureCollectionTest.cs
@@ -130,6 +138,14 @@
 - All 25 tests pass
 - Production changes: None
 - Commit: 74f44fcd3
+
+### [08:50] Task: Animator.cs (DrawAnimation coverage)
+- Target: 2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs (89.2%, 7 ul, 3 uc)
+- Existing tests: 33 tests in AnimatorTest.cs
+- Tests added: 2 DrawAnimation tests — matching names (no LoadTexture call) and different names (LoadTexture throws without GL)
+- All 35 tests pass (33 original + 2 new)
+- Production changes: None required
+- Remaining: DrawAnimation LoadTexture path requires GL context — not testable in unit tests
 
 ### [10:40] Task: CircleShape.cs
 - Target: 4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs (96.0%, 2 uncovered conditions)

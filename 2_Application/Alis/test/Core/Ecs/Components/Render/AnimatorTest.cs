@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Components.Render;
@@ -520,6 +521,60 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Animator animator = default;
 
             animator.OnUpdate(null!);
+        }
+
+        /// <summary>
+        ///     Tests that DrawAnimation does not call LoadTexture when sprite.NameFile matches current frame
+        /// </summary>
+        [Fact]
+        public void Animator_DrawAnimation_WithMatchingNameFile_ShouldNotThrow()
+        {
+            Animator animator = new Animator();
+            animator.Animations = new List<Animation>
+            {
+                new Animation
+                {
+                    Name = "TestAnim",
+                    Speed = 1f,
+                    Frames = new List<Frame>
+                    {
+                        new Frame { NameFile = "sprite.png" }
+                    }
+                }
+            };
+            animator.Play("TestAnim");
+
+            Context context = new Context();
+            Sprite sprite = new Sprite(context, "sprite.png", 0);
+
+            animator.DrawAnimation(ref sprite);
+        }
+
+        /// <summary>
+        ///     Tests that DrawAnimation calls LoadTexture when sprite.NameFile differs from current frame
+        /// </summary>
+        [Fact]
+        public void Animator_DrawAnimation_WithDifferentNameFile_ShouldThrow()
+        {
+            Animator animator = new Animator();
+            animator.Animations = new List<Animation>
+            {
+                new Animation
+                {
+                    Name = "TestAnim",
+                    Speed = 1f,
+                    Frames = new List<Frame>
+                    {
+                        new Frame { NameFile = "frame_texture.png" }
+                    }
+                }
+            };
+            animator.Play("TestAnim");
+
+            Context context = new Context();
+            Sprite sprite = new Sprite(context, "different_sprite.png", 0);
+
+            Assert.ThrowsAny<Exception>(() => animator.DrawAnimation(ref sprite));
         }
 
     }
