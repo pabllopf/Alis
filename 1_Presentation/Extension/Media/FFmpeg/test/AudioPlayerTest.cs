@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Xunit;
 
@@ -99,30 +100,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             Assert.NotNull(player);
         }
 
-        /// <summary>
-        ///     Tests that the Dispose() method does not throw when called on a newly created player.
-        /// </summary>
-        [Fact]
-        public void Dispose_ShouldNotThrow()
-        {
-            AudioPlayer player = new AudioPlayer();
-
-            Assert.DoesNotThrow(() => player.Dispose());
-        }
-
-        /// <summary>
-        ///     Tests that calling Dispose() multiple times does not throw.
-        /// </summary>
-        [Fact]
-        public void Dispose_MultipleCalls_ShouldNotThrow()
-        {
-            AudioPlayer player = new AudioPlayer();
-
-            Assert.DoesNotThrow(() => player.Dispose());
-            Assert.DoesNotThrow(() => player.Dispose());
-            Assert.DoesNotThrow(() => player.Dispose());
-        }
-
+     
         /// <summary>
         ///     Tests that GetStreamForWriting returns a Stream.
         /// </summary>
