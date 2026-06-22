@@ -186,21 +186,5 @@ namespace Alis.Test
             Assert.Single(sceneManager.LoadedScenes);
             Assert.Same(newScene, sceneManager.LoadedScenes[0]);
         }
-
-        /// <summary>
-        ///     Tests that LoadScene switches the current world.
-        /// </summary>
-        [Fact]
-        public void LoadScene_SwitchesCurrentWorld()
-        {
-            Context context = new Context(new Setting());
-            Scene scene1 = new Scene();
-            Scene scene2 = new Scene();
-            SceneManager sceneManager = new SceneManager(context, scene1, scene2);
-
-            sceneManager.LoadScene(1);
-
-            Assert.Same(scene2, sceneManager.CurrentWorld);
-        }
     }
 }

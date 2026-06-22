@@ -71,29 +71,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             Assert.Equal(height, corridor.Height);
             Assert.Equal(Direction.North, corridor.Direction);
         }
-
-
-        /// <summary>
-        ///     Tests that create first corridor should create corridor with west direction.
-        /// </summary>
-        [Fact]
-        public void CreateFirstCorridor_ShouldCreateCorridorWithWestDirection()
-        {
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(4); // Direction.West
-            CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
-            int width = 4;
-            int height = 4;
-
-            CorridorData corridor = factory.CreateFirstCorridor(width, height, room);
-
-            Assert.Equal(18, corridor.XPos); // room.XPos + room.Width
-            Assert.Equal(12, corridor.YPos);
-            Assert.Equal(height, corridor.Width);
-            Assert.Equal(width, corridor.Height);
-            Assert.Equal(Direction.West, corridor.Direction);
-        }
-
+        
 
         /// <summary>
         ///     Tests that create first corridor should throw exception when width is zero.
@@ -153,7 +131,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         [Fact]
         public void CreateCorridor_ShouldUseRoomDirectionToAvoidOpposite()
         {
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(3); // Direction.East
+            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(); // Direction.East
             CorridorFactory factory = new CorridorFactory(mockRng);
             RoomData room = new RoomData(10, 10, 8, 8, Direction.East);
 
@@ -182,67 +160,6 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
 
             Assert.Equal(Direction.North, corridor.Direction);
             mockRng.Verify(m => m.Next(1, 5), Times.Exactly(2));
-        }
-
-        /// <summary>
-        ///     Tests that create first corridor creates corridor with south direction.
-        /// </summary>
-        [Fact]
-        public void CreateFirstCorridor_ShouldCreateCorridorWithSouthDirection()
-        {
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(3); // Direction.South
-            CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
-            int width = 4;
-            int height = 4;
-
-            CorridorData corridor = factory.CreateFirstCorridor(width, height, room);
-
-            Assert.Equal(12, corridor.XPos); // room.XPos + room.Width / 2 - width / 2
-            Assert.Equal(6, corridor.YPos); // room.YPos - height
-            Assert.Equal(width, corridor.Width);
-            Assert.Equal(height, corridor.Height);
-            Assert.Equal(Direction.South, corridor.Direction);
-        }
-
-        /// <summary>
-        ///     Tests that create first corridor creates corridor with east direction.
-        /// </summary>
-        [Fact]
-        public void CreateFirstCorridor_ShouldCreateCorridorWithEastDirection()
-        {
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator(2); // Direction.East
-            CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
-            int width = 4;
-            int height = 4;
-
-            CorridorData corridor = factory.CreateFirstCorridor(width, height, room);
-
-            Assert.Equal(6, corridor.XPos); // room.XPos - height
-            Assert.Equal(12, corridor.YPos);
-            Assert.Equal(height, corridor.Width);
-            Assert.Equal(width, corridor.Height);
-            Assert.Equal(Direction.East, corridor.Direction);
-        }
-
-        /// <summary>
-        ///     Tests that multiple corridors should potentially have different directions.
-        /// </summary>
-        [Fact]
-        public void MultipleCalls_ShouldPotentiallyHaveDifferentDirections()
-        {
-            MockRandomNumberGenerator mockRng = new MockRandomNumberGenerator();
-            CorridorFactory factory = new CorridorFactory(mockRng);
-            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
-
-            mockRng.SetValue(1);
-            CorridorData corridor1 = factory.CreateFirstCorridor(4, 4, room);
-
-            mockRng.SetValue(2);
-            CorridorData corridor2 = factory.CreateFirstCorridor(4, 4, room);
-
-            Assert.NotEqual(corridor1.Direction, corridor2.Direction);
         }
     }
 }

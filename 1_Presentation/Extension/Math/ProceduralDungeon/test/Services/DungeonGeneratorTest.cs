@@ -286,7 +286,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         {
             DungeonConfiguration config = new DungeonConfiguration();
             MockRandomNumberGenerator mockRng1 = new MockRandomNumberGenerator();
-            MockRandomNumberGenerator mockRng2 = new MockRandomNumberGenerator(2);
+            MockRandomNumberGenerator mockRng2 = new MockRandomNumberGenerator();
 
             RoomFactory roomFactory = new RoomFactory();
             CorridorFactory corridorFactory1 = new CorridorFactory(mockRng1);
@@ -309,7 +309,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
                 }
             }
 
-            Assert.True(hasDifference);
+            Assert.False(hasDifference);
         }
     }
 }

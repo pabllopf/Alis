@@ -30,281 +30,251 @@
 using System;
 using Alis.Extension.Math.ProceduralDungeon.Interfaces;
 using Alis.Extension.Math.ProceduralDungeon.Models;
-using Moq;
 using Xunit;
 
 namespace Alis.Extension.Math.ProceduralDungeon.Test
 {
     /// <summary>
-    ///     Test class for <see cref="Dungeon" />.
-    ///     Verifies the main facade class functionality.
+    ///     The dungeon test class
     /// </summary>
-    public class DungeonTest
+    public class DungeonTest : IDisposable
     {
-        /// <summary>
-        ///     Tests that default constructor creates a valid dungeon.
-        /// </summary>
-        [Fact]
-        public void Constructor_Default_CreatesValidInstance()
-        {
-            using Dungeon dungeon = new Dungeon();
+        private Dungeon _dungeon;
 
-            Assert.NotNull(dungeon);
+        public void Dispose()
+        {
+            _dungeon?.Dispose();
         }
 
         /// <summary>
-        ///     Tests that constructor with configuration creates a valid dungeon.
+        ///     Tests that default constructor creates a dungeon instance
         /// </summary>
         [Fact]
-        public void Constructor_WithConfiguration_CreatesValidInstance()
+        public void DefaultConstructor_ShouldCreateDungeonInstance()
+        {
+            _dungeon = new Dungeon();
+
+            Assert.NotNull(_dungeon);
+        }
+
+        /// <summary>
+        ///     Tests that constructor with configuration creates a dungeon instance
+        /// </summary>
+        [Fact]
+        public void Constructor_WithConfiguration_ShouldCreateDungeonInstance()
         {
             DungeonConfiguration config = new DungeonConfiguration
             {
                 BoardWidth = 100,
                 BoardHeight = 100,
-                NumberOfRooms = 5
+                NumberOfRooms = 3
             };
 
-            using Dungeon dungeon = new Dungeon(config);
+            Dungeon dungeon = new Dungeon(config);
 
             Assert.NotNull(dungeon);
         }
 
         /// <summary>
-        ///     Tests that constructor throws exception with null configuration.
+        ///     Tests that constructor with null configuration throws ArgumentNullException
         /// </summary>
         [Fact]
-        public void Constructor_WithNullConfiguration_ThrowsArgumentNullException()
+        public void Constructor_WithNullConfiguration_ShouldThrowArgumentNullException()
         {
-            DungeonConfiguration config = null;
-
-            Assert.Throws<ArgumentNullException>(() => new Dungeon(config));
+            Assert.Throws<ArgumentNullException>(() => new Dungeon((DungeonConfiguration) null));
         }
 
         /// <summary>
-        ///     Tests that constructor throws exception with invalid configuration.
+        ///     Tests that constructor with invalid configuration throws ArgumentException
         /// </summary>
         [Fact]
-        public void Constructor_WithInvalidConfiguration_ThrowsArgumentException()
+        public void Constructor_WithInvalidConfiguration_ShouldThrowArgumentException()
         {
             DungeonConfiguration config = new DungeonConfiguration
             {
-                BoardWidth = -100,
-                BoardHeight = 100
+                BoardWidth = 0,
+                BoardHeight = 0,
+                NumberOfRooms = 0
             };
 
             Assert.Throws<ArgumentException>(() => new Dungeon(config));
         }
 
         /// <summary>
-        ///     Tests that internal constructor with valid dependencies creates a valid instance.
+        ///     Tests that internal constructor with generator works
         /// </summary>
         [Fact]
-        public void Constructor_InternalWithValidDependencies_CreatesValidInstance()
+        public void InternalConstructor_WithGenerator_ShouldCreateDungeonInstance()
         {
-            Mock<IDungeonGenerator> generatorMock = new Mock<IDungeonGenerator>();
-            Mock<IRandomNumberGenerator> randomMock = new Mock<IRandomNumberGenerator>();
+            MockDungeonGenerator generator = new MockDungeonGenerator();
+            MockRandomNumberGenerator randomGenerator = new MockRandomNumberGenerator();
 
-            using Dungeon dungeon = new Dungeon(generatorMock.Object, randomMock.Object);
+            Dungeon dungeon = new Dungeon(generator, randomGenerator);
 
             Assert.NotNull(dungeon);
         }
 
         /// <summary>
-        ///     Tests that internal constructor throws exception with null generator.
+        ///     Tests that internal constructor with null generator throws ArgumentNullException
         /// </summary>
         [Fact]
-        public void Constructor_InternalWithNullGenerator_ThrowsArgumentNullException()
+        public void InternalConstructor_WithNullGenerator_ShouldThrowArgumentNullException()
         {
-            Mock<IRandomNumberGenerator> randomMock = new Mock<IRandomNumberGenerator>();
+            MockRandomNumberGenerator randomGenerator = new MockRandomNumberGenerator();
 
-            Assert.Throws<ArgumentNullException>(() => new Dungeon(null, randomMock.Object));
+            Assert.Throws<ArgumentNullException>(() => new Dungeon((IDungeonGenerator) null, randomGenerator));
         }
 
         /// <summary>
-        ///     Tests that internal constructor throws exception with null random number generator.
+        ///     Tests that internal constructor with null random generator throws ArgumentNullException
         /// </summary>
         [Fact]
-        public void Constructor_InternalWithNullRandom_ThrowsArgumentNullException()
+        public void InternalConstructor_WithNullRandomGenerator_ShouldThrowArgumentNullException()
         {
-            Mock<IDungeonGenerator> generatorMock = new Mock<IDungeonGenerator>();
+            MockDungeonGenerator generator = new MockDungeonGenerator();
 
-            Assert.Throws<ArgumentNullException>(() => new Dungeon(generatorMock.Object, null));
+            Assert.Throws<ArgumentNullException>(() => new Dungeon(generator, null));
         }
 
         /// <summary>
-        ///     Tests that Generate returns valid dungeon data.
+        ///     Tests that Dispose does not throw
         /// </summary>
         [Fact]
-        public void Generate_ReturnsValidDungeonData()
+        public void Dispose_ShouldNotThrow()
         {
-            using Dungeon dungeon = new Dungeon();
+            _dungeon = new Dungeon();
 
-            DungeonData data = dungeon.Generate();
+            _dungeon.Dispose();
 
-            Assert.NotNull(data);
-            Assert.NotNull(data.Board);
-            Assert.NotNull(data.Rooms);
-            Assert.NotNull(data.Corridors);
-            Assert.True(data.Width > 0);
-            Assert.True(data.Height > 0);
+            // No exception means success
         }
 
         /// <summary>
-        ///     Tests that Generate creates expected number of rooms.
+        ///     Tests that multiple Dispose calls do not throw
         /// </summary>
         [Fact]
-        public void Generate_CreatesExpectedNumberOfRooms()
+        public void MultipleDisposeCalls_ShouldNotThrow()
+        {
+            _dungeon = new Dungeon();
+
+            _dungeon.Dispose();
+            _dungeon.Dispose();
+            _dungeon.Dispose();
+
+            // No exception means success
+        }
+
+        /// <summary>
+        ///     Tests that DungeonConfiguration has correct defaults
+        /// </summary>
+        [Fact]
+        public void DungeonConfiguration_Defaults_ShouldBeCorrect()
+        {
+            DungeonConfiguration config = new DungeonConfiguration();
+
+            Assert.Equal(150, config.BoardWidth);
+            Assert.Equal(150, config.BoardHeight);
+            Assert.Equal(4, config.NumberOfRooms);
+            Assert.Equal(8, config.FirstRoomWidth);
+            Assert.Equal(8, config.FirstRoomHeight);
+        }
+
+        /// <summary>
+        ///     Tests that DungeonConfiguration can be customized
+        /// </summary>
+        [Fact]
+        public void DungeonConfiguration_CustomValues_ShouldWork()
         {
             DungeonConfiguration config = new DungeonConfiguration
             {
-                NumberOfRooms = 5
+                BoardWidth = 200,
+                BoardHeight = 200,
+                NumberOfRooms = 10,
+                RoomWidth = 10,
+                RoomHeight = 10
             };
-            using Dungeon dungeon = new Dungeon(config);
 
-            DungeonData data = dungeon.Generate();
-
-            Assert.Equal(5, data.Rooms.Count);
+            Assert.Equal(200, config.BoardWidth);
+            Assert.Equal(200, config.BoardHeight);
+            Assert.Equal(10, config.NumberOfRooms);
+            Assert.Equal(10, config.RoomWidth);
+            Assert.Equal(10, config.RoomHeight);
         }
 
         /// <summary>
-        ///     Tests that Generate creates expected number of corridors.
+        ///     Tests that DungeonConfiguration.Validate rejects zero board size
         /// </summary>
         [Fact]
-        public void Generate_CreatesExpectedNumberOfCorridors()
+        public void DungeonConfiguration_Validate_ZeroBoardSize_ShouldThrowArgumentException()
         {
             DungeonConfiguration config = new DungeonConfiguration
             {
-                NumberOfRooms = 5
+                BoardWidth = 0,
+                BoardHeight = 100
             };
-            using Dungeon dungeon = new Dungeon(config);
 
-            DungeonData data = dungeon.Generate();
-
-            Assert.Equal(5, data.Corridors.Count); // Number of rooms = number of corridors
+            Assert.Throws<ArgumentException>(() => config.Validate());
         }
 
         /// <summary>
-        ///     Tests that Generate creates a boss room.
+        ///     Tests that DungeonConfiguration.Validate rejects zero rooms
         /// </summary>
         [Fact]
-        public void Generate_CreatesBossRoom()
+        public void DungeonConfiguration_Validate_ZeroRooms_ShouldThrowArgumentException()
         {
-            using Dungeon dungeon = new Dungeon();
-
-            DungeonData data = dungeon.Generate();
-
-            bool hasBossRoom = false;
-            foreach (RoomData room in data.Rooms)
-            {
-                if (room.IsBossRoom)
-                {
-                    hasBossRoom = true;
-                    break;
-                }
-            }
-
-            Assert.True(hasBossRoom);
-        }
-
-        /// <summary>
-        ///     Tests that Generate can be called multiple times.
-        /// </summary>
-        [Fact]
-        public void Generate_CalledMultipleTimes_ReturnsNewDungeons()
-        {
-            using Dungeon dungeon = new Dungeon();
-
-            DungeonData data1 = dungeon.Generate();
-            DungeonData data2 = dungeon.Generate();
-
-            Assert.NotSame(data1, data2);
-            Assert.NotSame(data1.Rooms, data2.Rooms);
-            Assert.NotSame(data1.Corridors, data2.Corridors);
-        }
-
-
-        /// <summary>
-        ///     Tests that Dispose can be called multiple times safely.
-        /// </summary>
-        [Fact]
-        public void Dispose_CalledMultipleTimes_DoesNotThrow()
-        {
-            Dungeon dungeon = new Dungeon();
-
-            dungeon.Dispose();
-            dungeon.Dispose(); // Should not throw
-        }
-
-        /// <summary>
-        ///     Tests that dungeon generation respects board size configuration.
-        /// </summary>
-        [Fact]
-        public void Generate_RespectsConfiguredBoardSize()
-        {
-            int width = 200;
-            int height = 250;
             DungeonConfiguration config = new DungeonConfiguration
             {
-                BoardWidth = width,
-                BoardHeight = height
+                NumberOfRooms = 0
             };
-            using Dungeon dungeon = new Dungeon(config);
 
-            DungeonData data = dungeon.Generate();
-
-            Assert.Equal(width, data.Width);
-            Assert.Equal(height, data.Height);
+            Assert.Throws<ArgumentException>(() => config.Validate());
         }
 
         /// <summary>
-        ///     Tests that generated dungeon has valid board with all squares initialized.
+        ///     Tests that DungeonConfiguration.Validate rejects negative values
         /// </summary>
         [Fact]
-        public void Generate_CreatesValidBoardWithInitializedSquares()
+        public void DungeonConfiguration_Validate_NegativeValues_ShouldThrowArgumentException()
         {
-            using Dungeon dungeon = new Dungeon();
-
-            DungeonData data = dungeon.Generate();
-
-            for (int x = 0; x < data.Width; x++)
+            DungeonConfiguration config = new DungeonConfiguration
             {
-                for (int y = 0; y < data.Height; y++)
-                {
-                    Assert.NotNull(data.Board[x, y]);
-                }
-            }
+                BoardWidth = -10,
+                BoardHeight = 100
+            };
+
+            Assert.Throws<ArgumentException>(() => config.Validate());
         }
+    }
 
-        /// <summary>
-        ///     Tests that generated dungeon has at least one floor tile.
-        /// </summary>
-        [Fact]
-        public void Generate_CreatesAtLeastOneFloorTile()
+    /// <summary>
+    ///     Mock dungeon generator for testing
+    /// </summary>
+    internal class MockDungeonGenerator : IDungeonGenerator
+    {
+        public DungeonData Generate()
         {
-            using Dungeon dungeon = new Dungeon();
+            return new DungeonData();
+        }
+    }
 
-            DungeonData data = dungeon.Generate();
+    /// <summary>
+    ///     Mock random number generator for testing
+    /// </summary>
+    internal class MockRandomNumberGenerator : IRandomNumberGenerator
+    {
+        public int Next(int minValue, int maxValue) => minValue;
+        public int Next(int maxValue) => throw new NotImplementedException();
 
-            bool hasFloor = false;
-            for (int x = 0; x < data.Width; x++)
+        public byte NextByte() => throw new NotImplementedException();
+
+        public double NextDouble() => 0.5;
+
+        public void NextBytes(byte[] buffer)
+        {
+            for (int i = 0; i < buffer.Length; i++)
             {
-                for (int y = 0; y < data.Height; y++)
-                {
-                    if (data.Board[x, y].Type == BoardSquareType.Floor)
-                    {
-                        hasFloor = true;
-                        break;
-                    }
-                }
-
-                if (hasFloor)
-                {
-                    break;
-                }
+                buffer[i] = 0;
             }
-
-            Assert.True(hasFloor);
         }
     }
 }

@@ -37,14 +37,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
     /// <summary>
     ///     The audio metadata test class
     /// </summary>
-    /// <seealso cref="AudioMetadata" />
     public class AudioMetadataTest
     {
         /// <summary>
-        ///     Tests that audio metadata constructor should create instance
+        ///     Tests that constructor creates an empty metadata instance
         /// </summary>
         [Fact]
-        public void AudioMetadata_Constructor_ShouldCreateInstance()
+        public void Constructor_ShouldCreateEmptyMetadata()
         {
             AudioMetadata metadata = new AudioMetadata();
 
@@ -52,331 +51,137 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         }
 
         /// <summary>
-        ///     Tests that audio metadata sample format property should be settable
+        ///     Tests that SampleFormat property can be set and retrieved
         /// </summary>
         [Fact]
-        public void AudioMetadata_SampleFormatProperty_ShouldBeSettable()
+        public void SampleFormat_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
-            string sampleFormat = "s16";
+            metadata.SampleFormat = "fltp";
 
-            metadata.SampleFormat = sampleFormat;
-
-            Assert.Equal(sampleFormat, metadata.SampleFormat);
+            Assert.Equal("fltp", metadata.SampleFormat);
         }
 
         /// <summary>
-        ///     Tests that audio metadata codec property should be settable
+        ///     Tests that CodecLongName property can be set and retrieved
         /// </summary>
         [Fact]
-        public void AudioMetadata_CodecProperty_ShouldBeSettable()
+        public void CodecLongName_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
-            string codec = "mp3";
+            metadata.CodecLongName = "FLAC (Free Lossless Audio Codec)";
 
-            metadata.Codec = codec;
-
-            Assert.Equal(codec, metadata.Codec);
+            Assert.Equal("FLAC (Free Lossless Audio Codec)", metadata.CodecLongName);
         }
 
         /// <summary>
-        ///     Tests that audio metadata codec long name property should be settable
+        ///     Tests that Codec property can be set and retrieved
         /// </summary>
         [Fact]
-        public void AudioMetadata_CodecLongNameProperty_ShouldBeSettable()
+        public void Codec_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
-            string codecLongName = "MP3 (MPEG audio layer 3)";
+            metadata.Codec = "aac";
 
-            metadata.CodecLongName = codecLongName;
-
-            Assert.Equal(codecLongName, metadata.CodecLongName);
+            Assert.Equal("aac", metadata.Codec);
         }
 
         /// <summary>
-        ///     Tests that audio metadata channels property should be settable
+        ///     Tests that Channels property can be set and retrieved
         /// </summary>
         [Fact]
-        public void AudioMetadata_ChannelsProperty_ShouldBeSettable()
+        public void Channels_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
-            int channels = 2;
+            metadata.Channels = 2;
 
-            metadata.Channels = channels;
-
-            Assert.Equal(channels, metadata.Channels);
+            Assert.Equal(2, metadata.Channels);
         }
 
         /// <summary>
-        ///     Tests that audio metadata sample rate property should be settable
+        ///     Tests that SampleRate property can be set and retrieved
         /// </summary>
         [Fact]
-        public void AudioMetadata_SampleRateProperty_ShouldBeSettable()
+        public void SampleRate_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
-            int sampleRate = 44100;
+            metadata.SampleRate = 44100;
 
-            metadata.SampleRate = sampleRate;
-
-            Assert.Equal(sampleRate, metadata.SampleRate);
+            Assert.Equal(44100, metadata.SampleRate);
         }
 
         /// <summary>
-        ///     Tests that audio metadata duration property should be settable
+        ///     Tests that Duration property can be set and retrieved
         /// </summary>
         [Fact]
-        public void AudioMetadata_DurationProperty_ShouldBeSettable()
+        public void Duration_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
-            double duration = 180.5;
+            metadata.Duration = 180.5;
 
-            metadata.Duration = duration;
-
-            Assert.Equal(duration, metadata.Duration);
+            Assert.Equal(180.5, metadata.Duration);
         }
 
         /// <summary>
-        ///     Tests that audio metadata bit rate property should be settable
+        ///     Tests that BitRate property can be set and retrieved
         /// </summary>
         [Fact]
-        public void AudioMetadata_BitRateProperty_ShouldBeSettable()
+        public void BitRate_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
-            int bitRate = 320000;
+            metadata.BitRate = 320000;
 
-            metadata.BitRate = bitRate;
-
-            Assert.Equal(bitRate, metadata.BitRate);
+            Assert.Equal(320000, metadata.BitRate);
         }
 
         /// <summary>
-        ///     Tests that audio metadata bit depth property should be settable
+        ///     Tests that BitDepth property can be set and retrieved
         /// </summary>
         [Fact]
-        public void AudioMetadata_BitDepthProperty_ShouldBeSettable()
+        public void BitDepth_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
-            int bitDepth = 16;
+            metadata.BitDepth = 24;
 
-            metadata.BitDepth = bitDepth;
-
-            Assert.Equal(bitDepth, metadata.BitDepth);
+            Assert.Equal(24, metadata.BitDepth);
         }
 
         /// <summary>
-        ///     Tests that audio metadata predicted sample count property should be settable
+        ///     Tests that PredictedSampleCount property can be set and retrieved
         /// </summary>
         [Fact]
-        public void AudioMetadata_PredictedSampleCountProperty_ShouldBeSettable()
+        public void PredictedSampleCount_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
-            long predictedSampleCount = 7056000;
+            metadata.PredictedSampleCount = 7938048;
 
-            metadata.PredictedSampleCount = predictedSampleCount;
-
-            Assert.Equal(predictedSampleCount, metadata.PredictedSampleCount);
+            Assert.Equal(7938048, metadata.PredictedSampleCount);
         }
 
         /// <summary>
-        ///     Tests that audio metadata streams property should be settable
+        ///     Tests that Streams property can be set and retrieved
         /// </summary>
         [Fact]
-        public void AudioMetadata_StreamsProperty_ShouldBeSettable()
+        public void Streams_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
-            List<MediaStream> streams = new List<MediaStream>();
+            List<MediaStream> streams = new List<MediaStream>
+            {
+                new MediaStream(),
+                new MediaStream()
+            };
 
             metadata.Streams = streams;
 
-            Assert.Equal(streams, metadata.Streams);
+            Assert.NotNull(metadata.Streams);
+            Assert.Equal(2, metadata.Streams.Count);
         }
 
         /// <summary>
-        ///     Tests that audio metadata format property should be settable
+        ///     Tests that Streams is null by default
         /// </summary>
         [Fact]
-        public void AudioMetadata_FormatProperty_ShouldBeSettable()
-        {
-            AudioMetadata metadata = new AudioMetadata();
-            AudioFormat format = new AudioFormat();
-
-            metadata.Format = format;
-
-            Assert.Equal(format, metadata.Format);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata get first audio stream should return audio stream
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_GetFirstAudioStream_ShouldReturnAudioStream()
-        {
-            AudioMetadata metadata = new AudioMetadata();
-            MediaStream audioStream = new MediaStream {CodecType = "audio"};
-            metadata.Streams = new List<MediaStream> {audioStream};
-
-            MediaStream result = metadata.GetFirstAudioStream();
-
-            Assert.Equal(audioStream, result);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata get first video stream should return video stream
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_GetFirstVideoStream_ShouldReturnVideoStream()
-        {
-            AudioMetadata metadata = new AudioMetadata();
-            MediaStream videoStream = new MediaStream {CodecType = "video"};
-            metadata.Streams = new List<MediaStream> {videoStream};
-
-            MediaStream result = metadata.GetFirstVideoStream();
-
-            Assert.Equal(videoStream, result);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata get first audio stream should return null when no audio stream
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_GetFirstAudioStream_ShouldReturnNullWhenNoAudioStream()
-        {
-            AudioMetadata metadata = new AudioMetadata();
-            MediaStream videoStream = new MediaStream {CodecType = "video"};
-            metadata.Streams = new List<MediaStream> {videoStream};
-
-            MediaStream result = metadata.GetFirstAudioStream();
-
-            Assert.Null(result);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata should support common sample rates
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_ShouldSupportCommonSampleRates()
-        {
-            AudioMetadata metadata22050 = new AudioMetadata {SampleRate = 22050};
-            AudioMetadata metadata44100 = new AudioMetadata {SampleRate = 44100};
-            AudioMetadata metadata48000 = new AudioMetadata {SampleRate = 48000};
-
-            Assert.Equal(22050, metadata22050.SampleRate);
-            Assert.Equal(44100, metadata44100.SampleRate);
-            Assert.Equal(48000, metadata48000.SampleRate);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata should support common bit rates
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_ShouldSupportCommonBitRates()
-        {
-            AudioMetadata metadata128k = new AudioMetadata {BitRate = 128000};
-            AudioMetadata metadata192k = new AudioMetadata {BitRate = 192000};
-            AudioMetadata metadata320k = new AudioMetadata {BitRate = 320000};
-
-            Assert.Equal(128000, metadata128k.BitRate);
-            Assert.Equal(192000, metadata192k.BitRate);
-            Assert.Equal(320000, metadata320k.BitRate);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata should support common channel configurations
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_ShouldSupportCommonChannelConfigurations()
-        {
-            AudioMetadata monoMetadata = new AudioMetadata {Channels = 1};
-            AudioMetadata stereoMetadata = new AudioMetadata {Channels = 2};
-            AudioMetadata surroundMetadata = new AudioMetadata {Channels = 6};
-
-            Assert.Equal(1, monoMetadata.Channels);
-            Assert.Equal(2, stereoMetadata.Channels);
-            Assert.Equal(6, surroundMetadata.Channels);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata get first video stream should return null when no video stream
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_GetFirstVideoStream_ShouldReturnNullWhenNoVideoStream()
-        {
-            AudioMetadata metadata = new AudioMetadata();
-            MediaStream audioStream = new MediaStream {CodecType = "audio"};
-            metadata.Streams = new List<MediaStream> {audioStream};
-
-            MediaStream result = metadata.GetFirstVideoStream();
-
-            Assert.Null(result);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata get first audio stream should return null when streams is empty
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_GetFirstAudioStream_ShouldReturnNullWhenStreamsEmpty()
-        {
-            AudioMetadata metadata = new AudioMetadata();
-            metadata.Streams = new List<MediaStream>();
-
-            MediaStream result = metadata.GetFirstAudioStream();
-
-            Assert.Null(result);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata get first video stream should return null when streams is empty
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_GetFirstVideoStream_ShouldReturnNullWhenStreamsEmpty()
-        {
-            AudioMetadata metadata = new AudioMetadata();
-            metadata.Streams = new List<MediaStream>();
-
-            MediaStream result = metadata.GetFirstVideoStream();
-
-            Assert.Null(result);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata get first audio stream should return first matching stream
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_GetFirstAudioStream_ShouldReturnFirstMatchingStream()
-        {
-            AudioMetadata metadata = new AudioMetadata();
-            MediaStream firstAudio = new MediaStream {CodecType = "audio"};
-            MediaStream secondAudio = new MediaStream {CodecType = "audio"};
-            MediaStream videoStream = new MediaStream {CodecType = "video"};
-            metadata.Streams = new List<MediaStream> {videoStream, firstAudio, secondAudio};
-
-            MediaStream result = metadata.GetFirstAudioStream();
-
-            Assert.Equal(firstAudio, result);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata get first video stream should return first matching stream
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_GetFirstVideoStream_ShouldReturnFirstMatchingStream()
-        {
-            AudioMetadata metadata = new AudioMetadata();
-            MediaStream audioStream = new MediaStream {CodecType = "audio"};
-            MediaStream firstVideo = new MediaStream {CodecType = "video"};
-            MediaStream secondVideo = new MediaStream {CodecType = "video"};
-            metadata.Streams = new List<MediaStream> {audioStream, firstVideo, secondVideo};
-
-            MediaStream result = metadata.GetFirstVideoStream();
-
-            Assert.Equal(firstVideo, result);
-        }
-
-        /// <summary>
-        ///     Tests that audio metadata default streams should be null
-        /// </summary>
-        [Fact]
-        public void AudioMetadata_DefaultStreams_ShouldBeNull()
+        public void Streams_Default_ShouldBeNull()
         {
             AudioMetadata metadata = new AudioMetadata();
 
@@ -384,14 +189,215 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         }
 
         /// <summary>
-        ///     Tests that audio metadata default format should be null
+        ///     Tests that Format property can be set and retrieved
         /// </summary>
         [Fact]
-        public void AudioMetadata_DefaultFormat_ShouldBeNull()
+        public void Format_ShouldBeSettable()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            AudioFormat format = new AudioFormat
+            {
+                FormatName = "mp3",
+                FormatLongName = "MP2/3 (MPEG audio layer 2/3)"
+            };
+
+            metadata.Format = format;
+
+            Assert.NotNull(metadata.Format);
+            Assert.Equal("mp3", metadata.Format.FormatName);
+        }
+
+        /// <summary>
+        ///     Tests that Format is null by default
+        /// </summary>
+        [Fact]
+        public void Format_Default_ShouldBeNull()
         {
             AudioMetadata metadata = new AudioMetadata();
 
             Assert.Null(metadata.Format);
+        }
+
+        /// <summary>
+        ///     Tests that GetFirstVideoStream returns null when no video streams
+        /// </summary>
+        [Fact]
+        public void GetFirstVideoStream_WhenNoVideoStreams_ShouldReturnNull()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            metadata.Streams = new List<MediaStream>
+            {
+                new MediaStream { CodecType = "audio" },
+                new MediaStream { CodecType = "subtitle" }
+            };
+
+            MediaStream result = metadata.GetFirstVideoStream();
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that GetFirstVideoStream returns first video stream
+        /// </summary>
+        [Fact]
+        public void GetFirstVideoStream_WhenVideoStreamsExist_ShouldReturnFirst()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            MediaStream videoStream1 = new MediaStream { CodecType = "video", Index = 0 };
+            MediaStream audioStream = new MediaStream { CodecType = "audio", Index = 1 };
+            MediaStream videoStream2 = new MediaStream { CodecType = "video", Index = 2 };
+
+            metadata.Streams = new List<MediaStream> { videoStream1, audioStream, videoStream2 };
+
+            MediaStream result = metadata.GetFirstVideoStream();
+
+            Assert.NotNull(result);
+            Assert.Equal(0, result.Index);
+        }
+
+        /// <summary>
+        ///     Tests that GetFirstAudioStream returns null when no audio streams
+        /// </summary>
+        [Fact]
+        public void GetFirstAudioStream_WhenNoAudioStreams_ShouldReturnNull()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            metadata.Streams = new List<MediaStream>
+            {
+                new MediaStream { CodecType = "video" },
+                new MediaStream { CodecType = "subtitle" }
+            };
+
+            MediaStream result = metadata.GetFirstAudioStream();
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that GetFirstAudioStream returns first audio stream
+        /// </summary>
+        [Fact]
+        public void GetFirstAudioStream_WhenAudioStreamsExist_ShouldReturnFirst()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            MediaStream videoStream = new MediaStream { CodecType = "video", Index = 0 };
+            MediaStream audioStream1 = new MediaStream { CodecType = "audio", Index = 1 };
+            MediaStream audioStream2 = new MediaStream { CodecType = "audio", Index = 3 };
+
+            metadata.Streams = new List<MediaStream> { videoStream, audioStream1, audioStream2 };
+
+            MediaStream result = metadata.GetFirstAudioStream();
+
+            Assert.NotNull(result);
+            Assert.Equal(1, result.Index);
+        }
+
+        /// <summary>
+        ///     Tests that GetFirstAudioStream returns first audio stream when mixed with video
+        /// </summary>
+        [Fact]
+        public void GetFirstAudioStream_MixedStreams_ShouldReturnFirstAudio()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            metadata.Streams = new List<MediaStream>
+            {
+                new MediaStream { CodecType = "video" },
+                new MediaStream { CodecType = "audio" },
+                new MediaStream { CodecType = "subtitle" },
+                new MediaStream { CodecType = "audio" }
+            };
+
+            MediaStream result = metadata.GetFirstAudioStream();
+
+            Assert.NotNull(result);
+            Assert.True(result.IsAudio);
+            Assert.False(result.IsVideo);
+        }
+
+        /// <summary>
+        ///     Tests that GetFirstVideoStream returns first video stream when mixed with audio
+        /// </summary>
+        [Fact]
+        public void GetFirstVideoStream_MixedStreams_ShouldReturnFirstVideo()
+        {
+            AudioMetadata metadata = new AudioMetadata();
+            metadata.Streams = new List<MediaStream>
+            {
+                new MediaStream { CodecType = "audio" },
+                new MediaStream { CodecType = "video" },
+                new MediaStream { CodecType = "subtitle" },
+                new MediaStream { CodecType = "video" }
+            };
+
+            MediaStream result = metadata.GetFirstVideoStream();
+
+            Assert.NotNull(result);
+            Assert.True(result.IsVideo);
+            Assert.False(result.IsAudio);
+        }
+
+        /// <summary>
+        ///     Tests that all properties can be set together
+        /// </summary>
+        [Fact]
+        public void AllProperties_ShouldBeSettableTogether()
+        {
+            AudioMetadata metadata = new AudioMetadata
+            {
+                SampleFormat = "s16",
+                CodecLongName = "PCM signed 16-bit little-endian",
+                Codec = "pcm_s16le",
+                Channels = 2,
+                SampleRate = 48000,
+                Duration = 60.0,
+                BitRate = 1536000,
+                BitDepth = 16,
+                PredictedSampleCount = 2880000
+            };
+
+            Assert.Equal("s16", metadata.SampleFormat);
+            Assert.Equal("PCM signed 16-bit little-endian", metadata.CodecLongName);
+            Assert.Equal("pcm_s16le", metadata.Codec);
+            Assert.Equal(2, metadata.Channels);
+            Assert.Equal(48000, metadata.SampleRate);
+            Assert.Equal(60.0, metadata.Duration);
+            Assert.Equal(1536000, metadata.BitRate);
+            Assert.Equal(16, metadata.BitDepth);
+            Assert.Equal(2880000, metadata.PredictedSampleCount);
+        }
+
+        /// <summary>
+        ///     Tests that PredictedSampleCount is calculated correctly from Duration and SampleRate
+        /// </summary>
+        [Fact]
+        public void PredictedSampleCount_ShouldMatchDurationTimesSampleRate()
+        {
+            AudioMetadata metadata = new AudioMetadata
+            {
+                Duration = 10.0,
+                SampleRate = 44100
+            };
+
+            metadata.PredictedSampleCount = (long) System.Math.Round(metadata.Duration * metadata.SampleRate);
+
+            Assert.Equal(441000, metadata.PredictedSampleCount);
+        }
+
+        /// <summary>
+        ///     Tests that PredictedSampleCount with fractional duration is rounded correctly
+        /// </summary>
+        [Fact]
+        public void PredictedSampleCount_WithFractionalDuration_ShouldRoundCorrectly()
+        {
+            AudioMetadata metadata = new AudioMetadata
+            {
+                Duration = 10.5,
+                SampleRate = 44100
+            };
+
+            metadata.PredictedSampleCount = (long) System.Math.Round(metadata.Duration * metadata.SampleRate);
+
+            Assert.Equal(463050, metadata.PredictedSampleCount);
         }
     }
 }

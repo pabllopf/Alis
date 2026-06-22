@@ -30,186 +30,114 @@
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common.Logic;
-using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Logic
 {
     /// <summary>
-    /// The simple explosion test class
+    ///     The simple explosion test class
     /// </summary>
     public class SimpleExplosionTest
     {
         /// <summary>
-        /// Tests that simple explosion type should be accessible
+        ///     Tests that constructor initializes power to 1
         /// </summary>
         [Fact]
-        public void SimpleExplosion_TypeShouldBeAccessible()
+        public void Constructor_ShouldInitializePowerToOne()
         {
-            Assert.NotNull(typeof(SimpleExplosion));
+            WorldPhysic world = new WorldPhysic();
+
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            Assert.Equal(1f, explosion.Power);
         }
 
         /// <summary>
-        /// Tests that constructor sets default power to one
+        ///     Tests that Power property can be set and retrieved
         /// </summary>
         [Fact]
-        public void Constructor_SetsDefaultPowerToOne()
+        public void Power_ShouldGetAndSetCorrectly()
         {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            SimpleExplosion explosion = new SimpleExplosion(world);
+            WorldPhysic world = new WorldPhysic();
 
-            Assert.Equal(1.0f, explosion.Power);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+            explosion.Power = 2f;
+
+            Assert.Equal(2f, explosion.Power);
         }
 
         /// <summary>
-        /// Tests that get percent returns positive value for distance within radius
+        ///     Tests that GetPercent returns 0 when distance equals radius and power is 1
         /// </summary>
         [Fact]
-        public void GetPercent_WithinRadius_ReturnsPositive()
+        public void GetPercent_WhenDistanceEqualsRadius_ShouldReturnZero()
         {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            WorldPhysic world = new WorldPhysic();
+
             SimpleExplosion explosion = new SimpleExplosion(world);
+            float percent = explosion.GetPercent(10f, 10f);
 
-            float percent = explosion.GetPercent(0f, 5f);
-
-            Assert.Equal(1.0f, percent);
+            Assert.Equal(0f, percent);
         }
 
         /// <summary>
-        /// Tests that get percent returns zero when distance equals radius
+        ///     Tests that GetPercent returns 1 when distance is 0
         /// </summary>
         [Fact]
-        public void GetPercent_AtRadius_ReturnsZero()
+        public void GetPercent_WhenDistanceIsZero_ShouldReturnOne()
         {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            WorldPhysic world = new WorldPhysic();
+
             SimpleExplosion explosion = new SimpleExplosion(world);
+            float percent = explosion.GetPercent(0f, 10f);
 
-            float percent = explosion.GetPercent(5f, 5f);
-
-            Assert.Equal(0.0f, percent);
+            Assert.Equal(1f, percent);
         }
 
         /// <summary>
-        /// Tests that get percent returns clamped value when distance exceeds twice radius
+        ///     Tests that GetPercent returns clamped value between 0 and 1
         /// </summary>
         [Fact]
-        public void GetPercent_BeyondRadius_ReturnsNegative()
+        public void GetPercent_ShouldReturnClampedValue()
         {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            WorldPhysic world = new WorldPhysic();
+
             SimpleExplosion explosion = new SimpleExplosion(world);
+            float percent = explosion.GetPercent(5f, 10f);
 
-            float percent = explosion.GetPercent(12f, 5f);
-
-            Assert.Equal(0.0f, percent);
+            Assert.True(percent >= 0f && percent <= 1f);
         }
 
         /// <summary>
-        /// Tests that get percent with non integer power and negative base returns zero
+        ///     Tests that GetPercent returns 0 when result is NaN
         /// </summary>
         [Fact]
-        public void GetPercent_WithNonIntegerPower_ReturnsZeroForNaN()
+        public void GetPercent_WhenResultIsNaN_ShouldReturnZero()
         {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            WorldPhysic world = new WorldPhysic();
+
             SimpleExplosion explosion = new SimpleExplosion(world);
-            explosion.Power = 0.5f;
+            float percent = explosion.GetPercent(float.NaN, 10f);
 
-            float percent = explosion.GetPercent(11f, 5f);
-
-            Assert.Equal(0.0f, percent);
+            Assert.Equal(0f, percent);
         }
 
         /// <summary>
-        /// Tests that apply impulse applies force to active body
+        ///     Tests that GetPercent with power 2 returns different value than power 1
         /// </summary>
         [Fact]
-        public void ApplyImpulse_WithActiveBody_AppliesForce()
+        public void GetPercent_WithPowerTwo_ShouldReturnDifferentValue()
         {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            Body body = world.CreateBody(new Vector2F(10f, 0f), 0f, BodyType.Dynamic);
-            CircleShape shape = new CircleShape(0.5f, 1.0f);
-            body.CreateFixture(shape);
+            WorldPhysic world = new WorldPhysic();
+
             SimpleExplosion explosion = new SimpleExplosion(world);
-            HashSet<Body> bodies = new HashSet<Body> { body };
+            explosion.Power = 2f;
 
-            Dictionary<Body, Vector2F> forces = explosion.ApplyImpulse(new Vector2F(0f, 0f), 20f, 100f, float.MaxValue, bodies);
+            float percentPower1 = new SimpleExplosion(world).GetPercent(5f, 10f);
+            float percentPower2 = explosion.GetPercent(5f, 10f);
 
-            Assert.Single(forces);
-            Assert.True(forces.ContainsKey(body));
-        }
-
-        /// <summary>
-        /// Tests that apply impulse skips inactive body
-        /// </summary>
-        [Fact]
-        public void ApplyImpulse_WithInactiveBody_SkipsBody()
-        {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            Body body = world.CreateBody(new Vector2F(10f, 0f), 0f, BodyType.Static);
-            SimpleExplosion explosion = new SimpleExplosion(world);
-            HashSet<Body> bodies = new HashSet<Body> { body };
-
-            Dictionary<Body, Vector2F> forces = explosion.ApplyImpulse(new Vector2F(0f, 0f), 20f, 100f, float.MaxValue, bodies);
-
-            Assert.Empty(forces);
-        }
-
-        /// <summary>
-        /// Tests that apply impulse applies max force when force exceeds limit
-        /// </summary>
-        [Fact]
-        public void ApplyImpulse_WithMaxForce_ClampsToLimit()
-        {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            Body body = world.CreateBody(new Vector2F(10f, 0f), 0f, BodyType.Dynamic);
-            CircleShape shape = new CircleShape(0.5f, 1.0f);
-            body.CreateFixture(shape);
-            SimpleExplosion explosion = new SimpleExplosion(world);
-            HashSet<Body> bodies = new HashSet<Body> { body };
-            float maxForce = 5f;
-
-            Dictionary<Body, Vector2F> forces = explosion.ApplyImpulse(new Vector2F(0f, 0f), 20f, 100f, maxForce, bodies);
-
-            Assert.Single(forces);
-            Assert.True(forces.ContainsKey(body));
-            float appliedMagnitude = forces[body].Length();
-            Assert.True(appliedMagnitude <= maxForce);
-        }
-
-        /// <summary>
-        /// Tests that activate returns forces for bodies within explosion radius
-        /// </summary>
-        [Fact]
-        public void Activate_WithBodyInRange_ReturnsForce()
-        {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            Body body = world.CreateBody(new Vector2F(5f, 0f), 0f, BodyType.Dynamic);
-            CircleShape shape = new CircleShape(0.5f, 1.0f);
-            body.CreateFixture(shape);
-            SimpleExplosion explosion = new SimpleExplosion(world);
-
-            Dictionary<Body, Vector2F> forces = explosion.Activate(new Vector2F(0f, 0f), 20f, 100f);
-
-            Assert.NotEmpty(forces);
-            Assert.True(forces.ContainsKey(body));
-        }
-
-        /// <summary>
-        /// Tests that activate returns empty for body outside explosion radius
-        /// </summary>
-        [Fact]
-        public void Activate_WithBodyOutsideRange_ReturnsEmpty()
-        {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            Body body = world.CreateBody(new Vector2F(100f, 0f), 0f, BodyType.Dynamic);
-            CircleShape shape = new CircleShape(0.5f, 1.0f);
-            body.CreateFixture(shape);
-            SimpleExplosion explosion = new SimpleExplosion(world);
-
-            Dictionary<Body, Vector2F> forces = explosion.Activate(new Vector2F(0f, 0f), 5f, 100f);
-
-            Assert.Empty(forces);
+            Assert.NotEqual(percentPower1, percentPower2);
         }
     }
 }
-

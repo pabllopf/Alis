@@ -29,6 +29,7 @@
 
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
@@ -36,147 +37,236 @@ namespace Alis.Core.Ecs.Test.Collections
     /// <summary>
     ///     The fast lookup test class
     /// </summary>
-    /// <remarks>
-    ///     Tests the <see cref="FastLookup" /> struct which provides fast
-    ///     archetype lookup for component and tag operations.
-    /// </remarks>
     public class FastLookupTest
     {
         /// <summary>
-        ///     Tests that fast lookup can be created
+        ///     Tests that GetKey combines archetype index and component id correctly
         /// </summary>
-        /// <remarks>
-        ///     Verifies that a FastLookup instance can be created.
-        /// </remarks>
         [Fact]
-        public void FastLookup_CanBeCreated()
+        public void GetKey_ShouldCombineArchetypeIndexAndComponentId()
         {
-            FastLookup lookup = new FastLookup();
+            ushort componentId = 5;
+            GameObjectType archetype = new GameObjectType(3);
 
-            Assert.NotNull(lookup.Archetypes);
+            uint key = FastLookup.GetKey(componentId, archetype);
+
+            Assert.Equal(archetype.RawIndex | ((uint) componentId << 16), key);
         }
 
         /// <summary>
-        ///     Tests that fast lookup get key combines id and archetype
+        ///     Tests that GetKey with zero archetype index uses only component id
         /// </summary>
-        /// <remarks>
-        ///     Validates that GetKey properly combines component/tag ID with archetype ID.
-        /// </remarks>
         [Fact]
-        public void FastLookup_GetKeyCombinesIdAndArchetype()
+        public void GetKey_WithZeroArchetype_ShouldUseComponentId()
         {
-            FastLookup lookup = new FastLookup();
-            ushort id = 5;
-            GameObjectType archetypeId = new GameObjectType(10);
+            ushort componentId = 10;
+            GameObjectType archetype = new GameObjectType(0);
 
-            uint key = FastLookup.GetKey(id, archetypeId);
+            uint key = FastLookup.GetKey(componentId, archetype);
 
-            Assert.NotEqual(0u, key);
-            Assert.Equal((uint) ((id << 16) | archetypeId.RawIndex), key);
+            Assert.Equal((uint) componentId << 16, key);
         }
 
         /// <summary>
-        ///     Tests that fast lookup get key with zero values
+        ///     Tests that GetKey with maximum component id works correctly
         /// </summary>
-        /// <remarks>
-        ///     Tests GetKey with zero ID and zero archetype ID.
-        /// </remarks>
         [Fact]
-        public void FastLookup_GetKeyWithZeroValues()
+        public void GetKey_WithMaxComponentId_ShouldWork()
         {
-            FastLookup lookup = new FastLookup();
-            ushort id = 0;
-            GameObjectType archetypeId = new GameObjectType(0);
+            ushort componentId = ushort.MaxValue;
+            GameObjectType archetype = new GameObjectType(1);
 
-            uint key = FastLookup.GetKey(id, archetypeId);
+            uint key = FastLookup.GetKey(componentId, archetype);
 
-            Assert.Equal(0u, key);
+            Assert.Equal(1 | ((uint) ushort.MaxValue << 16), key);
         }
 
         /// <summary>
-        ///     Tests that fast lookup get key with max values
+        ///     Tests that GetKey produces unique keys for different component ids
         /// </summary>
-        /// <remarks>
-        ///     Tests GetKey with maximum ID values.
-        /// </remarks>
         [Fact]
-        public void FastLookup_GetKeyWithMaxValues()
+        public void GetKey_DifferentComponentIds_ShouldProduceDifferentKeys()
         {
-            FastLookup lookup = new FastLookup();
-            ushort id = ushort.MaxValue;
-            GameObjectType archetypeId = new GameObjectType(ushort.MaxValue);
+            GameObjectType archetype = new GameObjectType(2);
 
-            uint key = FastLookup.GetKey(id, archetypeId);
+            uint key1 = FastLookup.GetKey(1, archetype);
+            uint key2 = FastLookup.GetKey(2, archetype);
 
-            Assert.NotEqual(0u, key);
+            Assert.NotEqual(key1, key2);
         }
 
         /// <summary>
-        ///     Tests that fast lookup lookup index returns not found for non existent key
+        ///     Tests that GetKey produces unique keys for different archetypes
         /// </summary>
-        /// <remarks>
-        ///     Verifies that LookupIndex returns 32 (not found) for non-existent keys.
-        /// </remarks>
         [Fact]
-        public void FastLookup_LookupIndexReturnsNotFoundForNonExistentKey()
+        public void GetKey_DifferentArchetypes_ShouldProduceDifferentKeys()
         {
-            FastLookup lookup = new FastLookup();
-            uint key = 999u;
+            ushort componentId = 5;
 
-            int result = lookup.LookupIndex(key);
+            uint key1 = FastLookup.GetKey(componentId, new GameObjectType(0));
+            uint key2 = FastLookup.GetKey(componentId, new GameObjectType(1));
+
+            Assert.NotEqual(key1, key2);
+        }
+
+        /// <summary>
+        ///     Tests that LookupIndex returns 0 for matching first entry
+        /// </summary>
+        [Fact]
+        public void LookupIndex_WhenFirstEntryMatches_ShouldReturnZero()
+        {
+            FastLookup fastLookup = new FastLookup();
+            fastLookup._data._0 = 42;
+
+            int result = fastLookup.LookupIndex(42);
+
+            Assert.Equal(0, result);
+        }
+
+        /// <summary>
+        ///     Tests that LookupIndex returns 32 for non-matching key
+        /// </summary>
+        [Fact]
+        public void LookupIndex_WhenNoEntryMatches_ShouldReturn32()
+        {
+            FastLookup fastLookup = new FastLookup();
+            fastLookup._data._0 = 42;
+            fastLookup._data._1 = 43;
+
+            int result = fastLookup.LookupIndex(99);
 
             Assert.Equal(32, result);
         }
 
         /// <summary>
-        ///     Tests that fast lookup archetypes array is initialized
+        ///     Tests that LookupIndex returns correct index for second entry
         /// </summary>
-        /// <remarks>
-        ///     Validates that the Archetypes array is properly initialized.
-        /// </remarks>
         [Fact]
-        public void FastLookup_ArchetypesArrayIsInitialized()
+        public void LookupIndex_WhenSecondEntryMatches_ShouldReturnOne()
         {
-            FastLookup lookup = new FastLookup();
+            FastLookup fastLookup = new FastLookup();
+            fastLookup._data._1 = 42;
 
-            Assert.NotNull(lookup.Archetypes);
-            Assert.Equal(8, lookup.Archetypes.Length);
+            int result = fastLookup.LookupIndex(42);
+
+            Assert.Equal(1, result);
         }
 
         /// <summary>
-        ///     Tests that fast lookup different keys produce different values
+        ///     Tests that LookupIndex returns correct index for third entry
         /// </summary>
-        /// <remarks>
-        ///     Verifies that different input combinations produce different keys.
-        /// </remarks>
         [Fact]
-        public void FastLookup_DifferentKeysProduceDifferentValues()
+        public void LookupIndex_WhenThirdEntryMatches_ShouldReturnTwo()
         {
-            FastLookup lookup = new FastLookup();
+            FastLookup fastLookup = new FastLookup();
+            fastLookup._data._2 = 42;
 
-            uint key1 = FastLookup.GetKey(1, new GameObjectType(1));
-            uint key2 = FastLookup.GetKey(2, new GameObjectType(2));
-            uint key3 = FastLookup.GetKey(1, new GameObjectType(2));
+            int result = fastLookup.LookupIndex(42);
 
-            Assert.NotEqual(key1, key2);
-            Assert.NotEqual(key1, key3);
-            Assert.NotEqual(key2, key3);
+            Assert.Equal(2, result);
         }
 
         /// <summary>
-        ///     Tests that fast lookup is value type
+        ///     Tests that LookupIndex returns correct index for fourth entry
         /// </summary>
-        /// <remarks>
-        ///     Confirms that FastLookup is a value type (struct).
-        /// </remarks>
         [Fact]
-        public void FastLookup_IsValueType()
+        public void LookupIndex_WhenFourthEntryMatches_ShouldReturnThree()
         {
-            FastLookup lookup1 = new FastLookup();
-            FastLookup lookup2 = lookup1;
-            lookup2.Archetypes[0] = null;
+            FastLookup fastLookup = new FastLookup();
+            fastLookup._data._3 = 42;
 
-            Assert.Null(lookup2.Archetypes[0]);
+            int result = fastLookup.LookupIndex(42);
+
+            Assert.Equal(3, result);
+        }
+
+        /// <summary>
+        ///     Tests that LookupIndex returns correct index for fifth entry
+        /// </summary>
+        [Fact]
+        public void LookupIndex_WhenFifthEntryMatches_ShouldReturnFour()
+        {
+            FastLookup fastLookup = new FastLookup();
+            fastLookup._data._4 = 42;
+
+            int result = fastLookup.LookupIndex(42);
+
+            Assert.Equal(4, result);
+        }
+
+        /// <summary>
+        ///     Tests that LookupIndex returns correct index for sixth entry
+        /// </summary>
+        [Fact]
+        public void LookupIndex_WhenSixthEntryMatches_ShouldReturnFive()
+        {
+            FastLookup fastLookup = new FastLookup();
+            fastLookup._data._5 = 42;
+
+            int result = fastLookup.LookupIndex(42);
+
+            Assert.Equal(5, result);
+        }
+
+        /// <summary>
+        ///     Tests that LookupIndex returns correct index for seventh entry
+        /// </summary>
+        [Fact]
+        public void LookupIndex_WhenSeventhEntryMatches_ShouldReturnSix()
+        {
+            FastLookup fastLookup = new FastLookup();
+            fastLookup._data._6 = 42;
+
+            int result = fastLookup.LookupIndex(42);
+
+            Assert.Equal(6, result);
+        }
+
+        /// <summary>
+        ///     Tests that LookupIndex returns correct index for eighth entry
+        /// </summary>
+        [Fact]
+        public void LookupIndex_WhenEighthEntryMatches_ShouldReturnSeven()
+        {
+            FastLookup fastLookup = new FastLookup();
+            fastLookup._data._7 = 42;
+
+            int result = fastLookup.LookupIndex(42);
+
+            Assert.Equal(7, result);
+        }
+
+        /// <summary>
+        ///     Tests that LookupIndex returns 32 when all entries are different
+        /// </summary>
+        [Fact]
+        public void LookupIndex_WhenAllEntriesDifferent_ShouldReturn32()
+        {
+            FastLookup fastLookup = new FastLookup();
+            fastLookup._data._0 = 1;
+            fastLookup._data._1 = 2;
+            fastLookup._data._2 = 3;
+            fastLookup._data._3 = 4;
+            fastLookup._data._4 = 5;
+            fastLookup._data._5 = 6;
+            fastLookup._data._6 = 7;
+            fastLookup._data._7 = 8;
+
+            int result = fastLookup.LookupIndex(99);
+
+            Assert.Equal(32, result);
+        }
+
+        /// <summary>
+        ///     Tests that the struct initializes with default values
+        /// </summary>
+        [Fact]
+        public void Constructor_ShouldInitializeWithDefaults()
+        {
+            FastLookup fastLookup = new FastLookup();
+
+            Assert.NotNull(fastLookup.Archetypes);
+            Assert.Equal(8, fastLookup.Archetypes.Length);
         }
     }
 }

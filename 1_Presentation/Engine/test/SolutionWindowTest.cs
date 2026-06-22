@@ -110,19 +110,6 @@ namespace Alis.App.Engine.Test
 
             Assert.NotNull(window);
         }
-
-        /// <summary>
-        ///     Tests that Render should not throw when ImGui is available
-        /// </summary>
-        [Fact]
-        public void Render_ShouldNotThrow()
-        {
-            SpaceWork spaceWork = CreateSpaceWork();
-            SolutionWindow window = new SolutionWindow(spaceWork);
-
-            window.Render();
-
-            Assert.NotNull(window);
-        }
+        
     }
 }

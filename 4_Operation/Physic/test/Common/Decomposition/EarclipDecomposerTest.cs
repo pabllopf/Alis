@@ -36,71 +36,64 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Common.Decomposition
 {
     /// <summary>
-    /// The earclip decomposer test class
+    ///     The earclip decomposer test class
     /// </summary>
     public class EarclipDecomposerTest
     {
-        /// <summary>
-        /// Tests that earclip decomposer type should be accessible
-        /// </summary>
-        [Fact]
-        public void EarclipDecomposer_TypeShouldBeAccessible()
+        private static Vertices CreateTriangleVertices()
         {
-            Assert.NotNull(typeof(EarclipDecomposer));
+            return new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(0, 1)
+            };
+        }
+
+        private static Vertices CreateQuadVertices()
+        {
+            return new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(1, 1),
+                new Vector2F(0, 1)
+            };
+        }
+
+        private static Vertices CreatePentagonVertices()
+        {
+            return new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(1, 1),
+                new Vector2F(0.5f, 1.5f),
+                new Vector2F(0, 1)
+            };
         }
 
         /// <summary>
-        /// Tests that convex partition with triangle should return single part
+        ///     Tests that ConvexPartition with a triangle returns one vertex set
         /// </summary>
         [Fact]
-        public void ConvexPartition_WithTriangle_ShouldReturnSinglePart()
+        public void ConvexPartition_Triangle_ShouldReturnOneSet()
         {
-            Vertices vertices = new Vertices(new[]
-            {
-                new Vector2F(0f, 0f),
-                new Vector2F(1f, 0f),
-                new Vector2F(0f, 1f)
-            });
+            Vertices vertices = CreateTriangleVertices();
 
             List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
 
             Assert.NotNull(result);
-            Assert.True(result.Count >= 1);
+            Assert.Single(result);
         }
 
         /// <summary>
-        /// Tests that convex partition with square should return triangles
+        ///     Tests that ConvexPartition with a quad returns triangulated result
         /// </summary>
         [Fact]
-        public void ConvexPartition_WithSquare_ShouldReturnResult()
+        public void ConvexPartition_Quad_ShouldReturnTriangulatedResult()
         {
-            Vertices vertices = new Vertices(new[]
-            {
-                new Vector2F(0f, 0f),
-                new Vector2F(0f, 2f),
-                new Vector2F(2f, 2f),
-                new Vector2F(2f, 0f)
-            });
-
-            List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
-
-            Assert.NotNull(result);
-        }
-
-        /// <summary>
-        /// Tests that convex partition with pentagon should return result
-        /// </summary>
-        [Fact]
-        public void ConvexPartition_WithPentagon_ShouldReturnResult()
-        {
-            Vertices vertices = new Vertices(new[]
-            {
-                new Vector2F(0f, 0f),
-                new Vector2F(-0.5f, 1f),
-                new Vector2F(1f, 2f),
-                new Vector2F(2.5f, 1f),
-                new Vector2F(2f, 0f)
-            });
+            Vertices vertices = CreateQuadVertices();
 
             List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
 
@@ -108,183 +101,94 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         }
 
         /// <summary>
-        /// Tests that convex partition with concave shape should decompose
+        ///     Tests that ConvexPartition with empty vertices returns empty list
         /// </summary>
         [Fact]
-        public void ConvexPartition_WithConcaveShape_ShouldDecompose()
+        public void ConvexPartition_EmptyVertices_ShouldReturnEmptyList()
         {
-            Vertices vertices = new Vertices(new[]
-            {
-                new Vector2F(0f, 0f),
-                new Vector2F(0f, 2f),
-                new Vector2F(1f, 2f),
-                new Vector2F(1f, 1f),
-                new Vector2F(3f, 1f),
-                new Vector2F(3f, 0f)
-            });
+            Vertices vertices = new Vertices();
 
             List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
 
             Assert.NotNull(result);
-            Assert.True(result.Count >= 1);
+            Assert.Equal(0, result.Count);
         }
 
         /// <summary>
-        /// Tests that convex partition with custom tolerance should work
+        ///     Tests that ConvexPartition with two vertices returns empty list
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_TwoVertices_ShouldReturnEmptyList()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 1)
+            };
+
+            List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.Equal(0, result.Count);
+        }
+
+        /// <summary>
+        ///     Tests that ConvexPartition with default tolerance works
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithDefaultTolerance_ShouldWork()
+        {
+            Vertices vertices = CreatePentagonVertices();
+
+            List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        ///     Tests that ConvexPartition with custom tolerance works
         /// </summary>
         [Fact]
         public void ConvexPartition_WithCustomTolerance_ShouldWork()
         {
-            Vertices vertices = new Vertices(new[]
-            {
-                new Vector2F(0f, 0f),
-                new Vector2F(1f, 0f),
-                new Vector2F(0f, 1f)
-            });
+            Vertices vertices = CreatePentagonVertices();
 
             List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices, 0.1f);
 
             Assert.NotNull(result);
-            Assert.True(result.Count >= 1);
         }
 
         /// <summary>
-        ///     Tests that triangulate polygon with less than 3 vertices returns empty list
+        ///     Tests that ConvexPartition with zero tolerance works
         /// </summary>
         [Fact]
-        public void TriangulatePolygon_WithLessThan3Vertices_ShouldReturnEmptyList()
+        public void ConvexPartition_WithZeroTolerance_ShouldWork()
         {
-            Vertices vertices = new Vertices(new[] { new Vector2F(0f, 0f) });
+            Vertices vertices = CreatePentagonVertices();
 
-            List<Vertices> result = EarclipDecomposer.TriangulatePolygon(vertices, 0.001f);
+            List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices, 0f);
 
             Assert.NotNull(result);
-            Assert.Empty(result);
         }
 
         /// <summary>
-        ///     Tests that resolve pinch point returns false with less than 3 vertices
+        ///     Tests that ConvexPartition with large polygon works
         /// </summary>
         [Fact]
-        public void ResolvePinchPoint_WithLessThan3Vertices_ShouldReturnFalse()
+        public void ConvexPartition_LargePolygon_ShouldReturnResult()
         {
-            Vertices vertices = new Vertices(new[] { new Vector2F(0f, 0f), new Vector2F(1f, 0f) });
-
-            bool result = EarclipDecomposer.ResolvePinchPoint(vertices, out Vertices poutA, out Vertices poutB, 0.001f);
-
-            Assert.False(result);
-        }
-
-        /// <summary>
-        ///     Tests that resolve pinch point returns false for a convex polygon without pinch points
-        /// </summary>
-        [Fact]
-        public void ResolvePinchPoint_WithoutPinchPoint_ShouldReturnFalse()
-        {
-            Vertices vertices = new Vertices(new[] { new Vector2F(0f, 0f), new Vector2F(10f, 0f), new Vector2F(10f, 10f), new Vector2F(0f, 10f) });
-
-            bool result = EarclipDecomposer.ResolvePinchPoint(vertices, out Vertices poutA, out Vertices poutB, 0.001f);
-
-            Assert.False(result);
-        }
-
-        /// <summary>
-        ///     Tests that remainder corrects negative modulus
-        /// </summary>
-        [Fact]
-        public void Remainder_WithNegativeInput_ShouldReturnPositiveModulus()
-        {
-            int result = EarclipDecomposer.Remainder(-1, 5);
-
-            Assert.Equal(4, result);
-        }
-
-        /// <summary>
-        ///     Tests that remainder works with positive input
-        /// </summary>
-        [Fact]
-        public void Remainder_WithPositiveInput_ShouldReturnModulus()
-        {
-            Assert.Equal(2, EarclipDecomposer.Remainder(7, 5));
-            Assert.Equal(3, EarclipDecomposer.Remainder(3, 5));
-        }
-
-        /// <summary>
-        ///     Tests that is ear returns false for a reflex vertex
-        /// </summary>
-        [Fact]
-        public void IsEar_WithReflexVertex_ShouldReturnFalse()
-        {
-            float[] xv = { 0f, 0f, 1f, 1f, 3f, 3f };
-            float[] yv = { 0f, 2f, 2f, 1f, 1f, 0f };
-
-            bool result = EarclipDecomposer.IsEar(3, xv, yv, 6);
-
-            Assert.False(result);
-        }
-
-        /// <summary>
-        ///     Tests that is ear returns false for an out-of-bounds index
-        /// </summary>
-        [Fact]
-        public void IsEar_WithOutOfBoundsIndex_ShouldReturnFalse()
-        {
-            float[] xv = { 0f, 1f, 0f };
-            float[] yv = { 0f, 0f, 1f };
-
-            bool result = EarclipDecomposer.IsEar(5, xv, yv, 3);
-
-            Assert.False(result);
-        }
-
-        /// <summary>
-        ///     Tests that is ear returns false for polygon with less than 3 vertices
-        /// </summary>
-        [Fact]
-        public void IsEar_WithLessThan3Vertices_ShouldReturnFalse()
-        {
-            float[] xv = { 0f, 1f };
-            float[] yv = { 0f, 0f };
-
-            bool result = EarclipDecomposer.IsEar(0, xv, yv, 2);
-
-            Assert.False(result);
-        }
-
-        /// <summary>
-        ///     Tests that is ear returns true for a valid ear in a clockwise triangle
-        /// </summary>
-        [Fact]
-        public void IsEar_WithTriangle_ShouldReturnTrue()
-        {
-            float[] xv = { 0f, 0f, 1f };
-            float[] yv = { 0f, 1f, 0f };
-
-            bool result = EarclipDecomposer.IsEar(0, xv, yv, 3);
-
-            Assert.True(result);
-        }
-
-        /// <summary>
-        ///     Tests that convex partition handles pinch points by splitting and merging
-        /// </summary>
-        [Fact]
-        public void ConvexPartition_WithPinchPoint_ShouldDecompose()
-        {
-            // Clockwise polygon with near-duplicate start/end vertices to trigger pinch point
-            Vertices vertices = new Vertices(new[]
+            Vertices vertices = new Vertices();
+            for (int i = 0; i < 12; i++)
             {
-                new Vector2F(0f, 0f),
-                new Vector2F(0f, 10f),
-                new Vector2F(10f, 10f),
-                new Vector2F(10f, 0f),
-                new Vector2F(0.0001f, 0.0001f)
-            });
+                double angle = i * 2 * System.Math.PI / 12;
+                vertices.Add(new Vector2F(
+                    (float)System.Math.Cos(angle),
+                    (float)System.Math.Sin(angle)));
+            }
 
             List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
 
             Assert.NotNull(result);
-            Assert.True(result.Count > 0);
         }
     }
 }

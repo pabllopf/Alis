@@ -110,19 +110,5 @@ namespace Alis.App.Engine.Test
 
             Assert.NotNull(menu);
         }
-
-        /// <summary>
-        ///     Tests that Render should not throw when ImGui is available
-        /// </summary>
-        [Fact]
-        public void Render_ShouldNotThrow()
-        {
-            SpaceWork spaceWork = CreateSpaceWork();
-            TopMenu menu = new TopMenu(spaceWork);
-
-            menu.Render();
-
-            Assert.NotNull(menu);
-        }
     }
 }

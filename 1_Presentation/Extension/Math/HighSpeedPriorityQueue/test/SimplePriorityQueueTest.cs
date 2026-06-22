@@ -1,502 +1,571 @@
 // --------------------------------------------------------------------------
-//
+// 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-//
+// 
 //  --------------------------------------------------------------------------
 //  File:SimplePriorityQueueTest.cs
-//
+// 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
-//
+// 
 //  Copyright (c) 2021 GNU General Public License v3.0
-//
+// 
 //  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
+// 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
-//
+// 
 //  You should have received a copy of the GNU General Public License
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
-//
+// 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Alis.Extension.Math.HighSpeedPriorityQueue;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
     /// <summary>
-    ///     Tests for the SimplePriorityQueue class
+    ///     The simple priority queue test class
     /// </summary>
     public class SimplePriorityQueueTest
     {
         /// <summary>
-        ///     Tests that default constructor should create an empty queue with Count=0
+        ///     Tests that default constructor creates an empty queue
         /// </summary>
         [Fact]
         public void DefaultConstructor_ShouldCreateEmptyQueue()
         {
-            var queue = new SimplePriorityQueue<string>();
-
-            Assert.Equal(0, queue.Count);
-            Assert.Empty(queue);
-        }
-
-        /// <summary>
-        ///     Tests that constructor with priorityComparer should create a valid queue
-        /// </summary>
-        [Fact]
-        public void Constructor_WithPriorityComparer_ShouldCreateValidQueue()
-        {
-            var comparer = Comparer<int>.Descending();
-            var queue = new SimplePriorityQueue<string, int>(comparer);
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
             Assert.Equal(0, queue.Count);
         }
 
         /// <summary>
-        ///     Tests that constructor with comparison function should create a valid queue
+        ///     Tests that constructor with priority comparer works
         /// </summary>
         [Fact]
-        public void Constructor_WithComparison_ShouldCreateValidQueue()
+        public void Constructor_WithPriorityComparer_ShouldCreateQueue()
         {
-            var queue = new SimplePriorityQueue<string, int>((x, y) => y.CompareTo(x));
+            IComparer<int> comparer = Comparer<int>.Default;
+
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>(comparer);
 
             Assert.Equal(0, queue.Count);
         }
 
         /// <summary>
-        ///     Tests that Enqueue and Dequeue should return items in priority order
+        ///     Tests that constructor with item equality works
         /// </summary>
         [Fact]
-        public void EnqueueAndDequeue_ShouldReturnItemsInPriorityOrder()
+        public void Constructor_WithItemEquality_ShouldCreateQueue()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            IEqualityComparer<string> equalityComparer = EqualityComparer<string>.Default;
 
-            queue.Enqueue("Low", 3);
-            queue.Enqueue("High", 1);
-            queue.Enqueue("Medium", 2);
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>(equalityComparer);
 
-            Assert.Equal(3, queue.Count);
-            Assert.Equal("High", queue.Dequeue());
-            Assert.Equal("Medium", queue.Dequeue());
-            Assert.Equal("Low", queue.Dequeue());
             Assert.Equal(0, queue.Count);
         }
 
         /// <summary>
-        ///     Tests that First should return the highest priority item without removing it
+        ///     Tests that Enqueue adds an item to the queue
         /// </summary>
         [Fact]
-        public void First_ShouldReturnHighestPriorityWithoutRemoving()
+        public void Enqueue_ShouldAddItemToQueue()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            queue.Enqueue("Item1", 5);
-            queue.Enqueue("Item2", 1);
-            queue.Enqueue("Item3", 3);
+            queue.Enqueue("item1", 1);
 
-            Assert.Equal(3, queue.Count);
-            Assert.Equal("Item2", queue.First);
-            Assert.Equal(3, queue.Count); // Count unchanged
+            Assert.Equal(1, queue.Count);
         }
 
         /// <summary>
-        ///     Tests that First should throw on empty queue
+        ///     Tests that Enqueue with higher priority puts item first
         /// </summary>
         [Fact]
-        public void First_OnEmptyQueue_ShouldThrowInvalidOperationException()
+        public void Enqueue_HigherPriority_ShouldBeFirst()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            Assert.Throws<InvalidOperationException>(() => { var _ = queue.First; });
+            queue.Enqueue("low", 10);
+            queue.Enqueue("high", 1);
+
+            Assert.Equal("high", queue.First);
         }
 
         /// <summary>
-        ///     Tests that Contains should return true for enqueued items
+        ///     Tests that Dequeue removes and returns the highest priority item
         /// </summary>
         [Fact]
-        public void Contains_ShouldReturnTrueForEnqueuedItems()
+        public void Dequeue_ShouldRemoveAndReturnHighestPriorityItem()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            queue.Enqueue("Exists", 1);
+            queue.Enqueue("low", 10);
+            queue.Enqueue("high", 1);
+            queue.Enqueue("medium", 5);
 
-            Assert.True(queue.Contains("Exists"));
-            Assert.False(queue.Contains("NotExists"));
+            string first = queue.Dequeue();
+            Assert.Equal("high", first);
+            Assert.Equal(2, queue.Count);
         }
 
         /// <summary>
-        ///     Tests that Contains should return false for removed items
-        /// </summary>
-        [Fact]
-        public void Contains_ShouldReturnFalseForRemovedItems()
-        {
-            var queue = new SimplePriorityQueue<string, int>();
-
-            queue.Enqueue("ToRemove", 1);
-            queue.Remove("ToRemove");
-
-            Assert.False(queue.Contains("ToRemove"));
-        }
-
-        /// <summary>
-        ///     Tests that Clear should remove all items
-        /// </summary>
-        [Fact]
-        public void Clear_ShouldRemoveAllItems()
-        {
-            var queue = new SimplePriorityQueue<string, int>();
-
-            queue.Enqueue("A", 1);
-            queue.Enqueue("B", 2);
-            queue.Enqueue("C", 3);
-
-            queue.Clear();
-
-            Assert.Equal(0, queue.Count);
-            Assert.Empty(queue);
-        }
-
-        /// <summary>
-        ///     Tests that Dequeue on empty queue should throw
+        ///     Tests that Dequeue on empty queue throws
         /// </summary>
         [Fact]
         public void Dequeue_OnEmptyQueue_ShouldThrowInvalidOperationException()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
             Assert.Throws<InvalidOperationException>(() => queue.Dequeue());
         }
 
         /// <summary>
-        ///     Tests that Remove should remove an item from the queue
+        ///     Tests that First on empty queue throws
+        /// </summary>
+        [Fact]
+        public void First_OnEmptyQueue_ShouldThrowInvalidOperationException()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            Assert.Throws<InvalidOperationException>(() => _ = queue.First);
+        }
+
+        /// <summary>
+        ///     Tests that Contains returns true for item in queue
+        /// </summary>
+        [Fact]
+        public void Contains_WhenItemInQueue_ShouldReturnTrue()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            queue.Enqueue("item1", 1);
+
+            Assert.True(queue.Contains("item1"));
+        }
+
+        /// <summary>
+        ///     Tests that Contains returns false for item not in queue
+        /// </summary>
+        [Fact]
+        public void Contains_WhenItemNotInQueue_ShouldReturnFalse()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            queue.Enqueue("item1", 1);
+
+            Assert.False(queue.Contains("item2"));
+        }
+
+        /// <summary>
+        ///     Tests that Remove removes an item from the queue
         /// </summary>
         [Fact]
         public void Remove_ShouldRemoveItemFromQueue()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            queue.Enqueue("Keep", 2);
-            queue.Enqueue("Remove", 1);
-            queue.Enqueue("AlsoKeep", 3);
+            queue.Enqueue("item1", 1);
+            queue.Enqueue("item2", 2);
 
-            queue.Remove("Remove");
+            queue.Remove("item1");
 
-            Assert.Equal(2, queue.Count);
-            Assert.False(queue.Contains("Remove"));
-            Assert.True(queue.Contains("Keep"));
-            Assert.True(queue.Contains("AlsoKeep"));
+            Assert.Equal(1, queue.Count);
+            Assert.False(queue.Contains("item1"));
         }
 
         /// <summary>
-        ///     Tests that Remove on non-existent item should throw
+        ///     Tests that Remove on item not in queue throws
         /// </summary>
         [Fact]
-        public void Remove_OnNonExistentItem_ShouldThrowInvalidOperationException()
+        public void Remove_WhenItemNotInQueue_ShouldThrowInvalidOperationException()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            Assert.Throws<InvalidOperationException>(() => queue.Remove("DoesNotExist"));
+            Assert.Throws<InvalidOperationException>(() => queue.Remove("item1"));
         }
 
         /// <summary>
-        ///     Tests that UpdatePriority should change the priority of an item
+        ///     Tests that UpdatePriority changes an item's priority
         /// </summary>
         [Fact]
-        public void UpdatePriority_ShouldChangePriorityOfItem()
+        public void UpdatePriority_ShouldChangeItemPriority()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            queue.Enqueue("Item", 5);
-            queue.UpdatePriority("Item", 1);
+            queue.Enqueue("item1", 5);
+            queue.Enqueue("item2", 1);
 
-            Assert.Equal(1, queue.GetPriority("Item"));
+            queue.UpdatePriority("item1", 0);
+
+            Assert.Equal("item1", queue.First);
         }
 
         /// <summary>
-        ///     Tests that UpdatePriority on non-existent item should throw
+        ///     Tests that UpdatePriority on item not in queue throws
         /// </summary>
         [Fact]
-        public void UpdatePriority_OnNonExistentItem_ShouldThrowInvalidOperationException()
+        public void UpdatePriority_WhenItemNotInQueue_ShouldThrowInvalidOperationException()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            Assert.Throws<InvalidOperationException>(() => queue.UpdatePriority("DoesNotExist", 1));
+            Assert.Throws<InvalidOperationException>(() => queue.UpdatePriority("item1", 1));
         }
 
         /// <summary>
-        ///     Tests that GetPriority should return the priority of an enqueued item
+        ///     Tests that Clear removes all items from the queue
         /// </summary>
         [Fact]
-        public void GetPriority_ShouldReturnPriorityOfEnqueuedItem()
+        public void Clear_ShouldRemoveAllItems()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            queue.Enqueue("Item", 42);
+            queue.Enqueue("item1", 1);
+            queue.Enqueue("item2", 2);
+            queue.Enqueue("item3", 3);
 
-            Assert.Equal(42, queue.GetPriority("Item"));
-        }
+            queue.Clear();
 
-        /// <summary>
-        ///     Tests that GetPriority on non-existent item should throw
-        /// </summary>
-        [Fact]
-        public void GetPriority_OnNonExistentItem_ShouldThrowInvalidOperationException()
-        {
-            var queue = new SimplePriorityQueue<string, int>();
-
-            Assert.Throws<InvalidOperationException>(() => queue.GetPriority("DoesNotExist"));
-        }
-
-        /// <summary>
-        ///     Tests that TryFirst returns false for empty queue and true for non-empty
-        /// </summary>
-        [Fact]
-        public void TryFirst_ReturnsCorrectValueForEmptyAndNonEmptyQueues()
-        {
-            var queue = new SimplePriorityQueue<string, int>();
-
-            Assert.False(queue.TryFirst(out _));
-
-            queue.Enqueue("Item", 1);
-            Assert.True(queue.TryFirst(out var first));
-            Assert.Equal("Item", first);
-        }
-
-        /// <summary>
-        ///     Tests that TryDequeue returns false for empty queue and true for non-empty
-        /// </summary>
-        [Fact]
-        public void TryDequeue_ReturnsCorrectValueForEmptyAndNonEmptyQueues()
-        {
-            var queue = new SimplePriorityQueue<string, int>();
-
-            Assert.False(queue.TryDequeue(out _));
-            Assert.Equal(0, queue.Count);
-
-            queue.Enqueue("Item", 1);
-            Assert.True(queue.TryDequeue(out var item));
-            Assert.Equal("Item", item);
             Assert.Equal(0, queue.Count);
         }
 
         /// <summary>
-        ///     Tests that TryRemove returns false for non-existent and true for existing items
+        ///     Tests that GetEnumerator returns all items
         /// </summary>
         [Fact]
-        public void TryRemove_ReturnsCorrectValueForExistingAndNonExistingItems()
+        public void GetEnumerator_ShouldReturnAllItems()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            Assert.False(queue.TryRemove("DoesNotExist"));
+            queue.Enqueue("item1", 1);
+            queue.Enqueue("item2", 2);
+            queue.Enqueue("item3", 3);
 
-            queue.Enqueue("Item", 1);
-            Assert.True(queue.TryRemove("Item"));
-            Assert.False(queue.Contains("Item"));
+            List<string> items = new List<string>(queue);
+
+            Assert.Equal(3, items.Count);
+            Assert.Contains("item1", items);
+            Assert.Contains("item2", items);
+            Assert.Contains("item3", items);
         }
 
         /// <summary>
-        ///     Tests that TryUpdatePriority returns false for non-existent and true for existing items
+        ///     Tests that EnqueueWithoutDuplicates returns true for new item
         /// </summary>
         [Fact]
-        public void TryUpdatePriority_ReturnsCorrectValueForExistingAndNonExistingItems()
+        public void EnqueueWithoutDuplicates_WhenNewItem_ShouldReturnTrue()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            Assert.False(queue.TryUpdatePriority("DoesNotExist", 1));
+            bool result = queue.EnqueueWithoutDuplicates("item1", 1);
 
-            queue.Enqueue("Item", 5);
-            Assert.True(queue.TryUpdatePriority("Item", 1));
-            Assert.Equal(1, queue.GetPriority("Item"));
+            Assert.True(result);
+            Assert.Equal(1, queue.Count);
         }
 
         /// <summary>
-        ///     Tests that TryGetPriority returns false for non-existent and true for existing items
+        ///     Tests that EnqueueWithoutDuplicates returns false for duplicate item
         /// </summary>
         [Fact]
-        public void TryGetPriority_ReturnsCorrectValueForExistingAndNonExistingItems()
+        public void EnqueueWithoutDuplicates_WhenDuplicate_ShouldReturnFalse()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            Assert.False(queue.TryGetPriority("DoesNotExist", out _));
+            queue.EnqueueWithoutDuplicates("item1", 1);
+            bool result = queue.EnqueueWithoutDuplicates("item1", 2);
 
-            queue.Enqueue("Item", 42);
-            Assert.True(queue.TryGetPriority("Item", out var priority));
+            Assert.False(result);
+            Assert.Equal(1, queue.Count);
+        }
+
+        /// <summary>
+        ///     Tests that GetPriority returns the priority of an item
+        /// </summary>
+        [Fact]
+        public void GetPriority_ShouldReturnCorrectPriority()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            queue.Enqueue("item1", 42);
+
+            int priority = queue.GetPriority("item1");
+
             Assert.Equal(42, priority);
         }
 
         /// <summary>
-        ///     Tests that EnqueueWithoutDuplicates returns true for new items and false for duplicates
+        ///     Tests that GetPriority on item not in queue throws
         /// </summary>
         [Fact]
-        public void EnqueueWithoutDuplicates_ReturnsTrueForNewAndFalseForDuplicates()
+        public void GetPriority_WhenItemNotInQueue_ShouldThrowInvalidOperationException()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            Assert.True(queue.EnqueueWithoutDuplicates("Item", 1));
-            Assert.False(queue.EnqueueWithoutDuplicates("Item", 2));
-            Assert.True(queue.EnqueueWithoutDuplicates("Other", 3));
-
-            Assert.Equal(2, queue.Count);
+            Assert.Throws<InvalidOperationException>(() => queue.GetPriority("item1"));
         }
 
         /// <summary>
-        ///     Tests that GetEnumerator should iterate over all items
+        ///     Tests that IsValidQueue returns true for valid queue
         /// </summary>
         [Fact]
-        public void GetEnumerator_ShouldIterateOverAllItems()
+        public void IsValidQueue_WhenValid_ShouldReturnTrue()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            queue.Enqueue("A", 1);
-            queue.Enqueue("B", 2);
-            queue.Enqueue("C", 3);
+            queue.Enqueue("item1", 1);
+            queue.Enqueue("item2", 2);
 
-            var items = queue.ToList();
+            bool result = queue.IsValidQueue();
 
-            Assert.Equal(3, items.Count);
-            Assert.Contains("A", items);
-            Assert.Contains("B", items);
-            Assert.Contains("C", items);
-        }
-
-        /// <summary>
-        ///     Tests that IsValidQueue returns true for a valid queue
-        /// </summary>
-        [Fact]
-        public void IsValidQueue_ReturnsTrueForValidQueue()
-        {
-            var queue = new SimplePriorityQueue<string, int>();
-
-            queue.Enqueue("A", 1);
-            queue.Enqueue("B", 2);
-            queue.Enqueue("C", 3);
-
-            Assert.True(queue.IsValidQueue());
+            Assert.True(result);
         }
 
         /// <summary>
         ///     Tests that IsValidQueue returns true for empty queue
         /// </summary>
         [Fact]
-        public void IsValidQueue_ReturnsTrueForEmptyQueue()
+        public void IsValidQueue_WhenEmpty_ShouldReturnTrue()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            Assert.True(queue.IsValidQueue());
+            bool result = queue.IsValidQueue();
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that TryFirst returns true when queue has items
+        /// </summary>
+        [Fact]
+        public void TryFirst_WhenQueueHasItems_ShouldReturnTrue()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            queue.Enqueue("item1", 1);
+
+            bool result = queue.TryFirst(out string first);
+
+            Assert.True(result);
+            Assert.Equal("item1", first);
+        }
+
+        /// <summary>
+        ///     Tests that TryFirst returns false when queue is empty
+        /// </summary>
+        [Fact]
+        public void TryFirst_WhenQueueEmpty_ShouldReturnFalse()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            bool result = queue.TryFirst(out string first);
+
+            Assert.False(result);
+            Assert.Null(first);
+        }
+
+        /// <summary>
+        ///     Tests that TryDequeue returns true when queue has items
+        /// </summary>
+        [Fact]
+        public void TryDequeue_WhenQueueHasItems_ShouldReturnTrue()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            queue.Enqueue("item1", 1);
+
+            bool result = queue.TryDequeue(out string first);
+
+            Assert.True(result);
+            Assert.Equal("item1", first);
+            Assert.Equal(0, queue.Count);
+        }
+
+        /// <summary>
+        ///     Tests that TryDequeue returns false when queue is empty
+        /// </summary>
+        [Fact]
+        public void TryDequeue_WhenQueueEmpty_ShouldReturnFalse()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            bool result = queue.TryDequeue(out string first);
+
+            Assert.False(result);
+            Assert.Null(first);
+        }
+
+        /// <summary>
+        ///     Tests that TryRemove returns true when item is in queue
+        /// </summary>
+        [Fact]
+        public void TryRemove_WhenItemInQueue_ShouldReturnTrue()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            queue.Enqueue("item1", 1);
+
+            bool result = queue.TryRemove("item1");
+
+            Assert.True(result);
+            Assert.Equal(0, queue.Count);
+        }
+
+        /// <summary>
+        ///     Tests that TryRemove returns false when item is not in queue
+        /// </summary>
+        [Fact]
+        public void TryRemove_WhenItemNotInQueue_ShouldReturnFalse()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            bool result = queue.TryRemove("item1");
+
+            Assert.False(result);
+            Assert.Equal(0, queue.Count);
+        }
+
+        /// <summary>
+        ///     Tests that TryUpdatePriority returns true when item is in queue
+        /// </summary>
+        [Fact]
+        public void TryUpdatePriority_WhenItemInQueue_ShouldReturnTrue()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            queue.Enqueue("item1", 5);
+
+            bool result = queue.TryUpdatePriority("item1", 1);
+
+            Assert.True(result);
+            Assert.Equal("item1", queue.First);
+        }
+
+        /// <summary>
+        ///     Tests that TryUpdatePriority returns false when item is not in queue
+        /// </summary>
+        [Fact]
+        public void TryUpdatePriority_WhenItemNotInQueue_ShouldReturnFalse()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            bool result = queue.TryUpdatePriority("item1", 1);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that TryGetPriority returns true when item is in queue
+        /// </summary>
+        [Fact]
+        public void TryGetPriority_WhenItemInQueue_ShouldReturnTrue()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            queue.Enqueue("item1", 42);
+
+            bool result = queue.TryGetPriority("item1", out int priority);
+
+            Assert.True(result);
+            Assert.Equal(42, priority);
+        }
+
+        /// <summary>
+        ///     Tests that TryGetPriority returns false when item is not in queue
+        /// </summary>
+        [Fact]
+        public void TryGetPriority_WhenItemNotInQueue_ShouldReturnFalse()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            bool result = queue.TryGetPriority("item1", out int priority);
+
+            Assert.False(result);
+            Assert.Equal(0, priority);
+        }
+
+        /// <summary>
+        ///     Tests that the non-generic version works with float priority
+        /// </summary>
+        [Fact]
+        public void NonGenericQueue_ShouldWorkWithFloatPriority()
+        {
+            SimplePriorityQueue<string> queue = new SimplePriorityQueue<string>();
+
+            queue.Enqueue("low", 10f);
+            queue.Enqueue("high", 1f);
+
+            Assert.Equal("high", queue.First);
+        }
+
+        /// <summary>
+        ///     Tests that FIFO order is maintained for equal priorities
+        /// </summary>
+        [Fact]
+        public void EnqueueEqualPriorities_ShouldMaintainFIFO()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+
+            queue.Enqueue("first", 1);
+            queue.Enqueue("second", 1);
+            queue.Enqueue("third", 1);
+
+            Assert.Equal("first", queue.Dequeue());
+            Assert.Equal("second", queue.Dequeue());
+            Assert.Equal("third", queue.Dequeue());
         }
 
         /// <summary>
         ///     Tests that null items are handled correctly
         /// </summary>
         [Fact]
-        public void NullItems_ShouldBeHandledCorrectly()
+        public void NullItem_ShouldBeHandledCorrectly()
         {
-            var queue = new SimplePriorityQueue<string?, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            queue.Enqueue(null!, 1);
-            queue.Enqueue("Item", 2);
+            queue.Enqueue(null, 1);
 
-            Assert.True(queue.Contains(null!));
-            Assert.Equal(2, queue.Count);
-
-            var dequeued = queue.Dequeue();
-            Assert.Null(dequeued);
+            Assert.True(queue.Contains(null));
+            Assert.Equal(1, queue.Count);
         }
 
         /// <summary>
-        ///     Tests that multiple enqueue of same item works correctly
+        ///     Tests that removing null item works
         /// </summary>
         [Fact]
-        public void MultipleEnqueueOfSameItem_ShouldWorkCorrectly()
+        public void RemoveNullItem_ShouldWork()
         {
-            var queue = new SimplePriorityQueue<string, int>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            queue.Enqueue("Item", 3);
-            queue.Enqueue("Item", 1);
-            queue.Enqueue("Item", 2);
+            queue.Enqueue(null, 1);
+            queue.Remove(null);
 
-            Assert.Equal(3, queue.Count);
-
-            // Dequeue all
-            var items = new List<string?>();
-            while (queue.TryDequeue(out var item))
-            {
-                items.Add(item);
-            }
-
-            Assert.Equal(3, items.Count);
-        }
-
-        /// <summary>
-        ///     Tests that the queue auto-resizes when exceeding initial capacity
-        /// </summary>
-        [Fact]
-        public void Queue_AutoResizesWhenExceedingInitialCapacity()
-        {
-            var queue = new SimplePriorityQueue<int, int>();
-
-            // Enqueue more than initial capacity (10)
-            for (int i = 0; i < 100; i++)
-            {
-                queue.Enqueue(i, i);
-            }
-
-            Assert.Equal(100, queue.Count);
-
-            // Verify all items can be dequeued in order
-            for (int i = 0; i < 100; i++)
-            {
-                Assert.Equal(i, queue.Dequeue());
-            }
-
+            Assert.False(queue.Contains(null));
             Assert.Equal(0, queue.Count);
         }
 
         /// <summary>
-        ///     Tests that the SimplePriorityQueue<TItem> (single type param) works as expected
+        ///     Tests that multiple enqueues of same item work
         /// </summary>
         [Fact]
-        public void SingleTypeParamQueue_ShouldWorkAsExpected()
+        public void MultipleEnqueuesOfSameItem_ShouldWork()
         {
-            var queue = new SimplePriorityQueue<string>();
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
 
-            queue.Enqueue("Low", 3);
-            queue.Enqueue("High", 1);
-            queue.Enqueue("Medium", 2);
-
-            Assert.Equal(3, queue.Count);
-            Assert.Equal("High", queue.Dequeue());
-            Assert.Equal("Medium", queue.Dequeue());
-            Assert.Equal("Low", queue.Dequeue());
-        }
-
-        /// <summary>
-        ///     Tests that the single-type queue with custom comparer works
-        /// </summary>
-        [Fact]
-        public void SingleTypeParamQueue_WithCustomComparer_ShouldWork()
-        {
-            var comparer = Comparer<float>.Descending();
-            var queue = new SimplePriorityQueue<string>(comparer);
-
-            queue.Enqueue("Low", 3.0f);
-            queue.Enqueue("High", 1.0f);
+            queue.Enqueue("item1", 1);
+            queue.Enqueue("item1", 2);
 
             Assert.Equal(2, queue.Count);
-            Assert.Equal("High", queue.Dequeue());
-            Assert.Equal("Low", queue.Dequeue());
         }
     }
 }

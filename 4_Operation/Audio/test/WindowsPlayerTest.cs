@@ -31,6 +31,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test
@@ -83,7 +84,7 @@ namespace Alis.Core.Audio.Test
         /// <summary>
         ///     Tests that Play with existing file should not throw (MCI call may fail on non-Windows but shouldn't throw before)
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task Play_WithExistingFile_ShouldNotThrowBeforeMciCall()
         {
             // Create a temporary file to test the path validation logic
@@ -205,7 +206,7 @@ namespace Alis.Core.Audio.Test
         /// <summary>
         ///     Tests that SetVolume should not throw with valid percent values
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task SetVolume_WithValidPercent_ShouldNotThrow()
         {
             _player = CreatePlayer();
@@ -223,7 +224,7 @@ namespace Alis.Core.Audio.Test
         /// <summary>
         ///     Tests that SetVolume should not throw with edge case values
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public async Task SetVolume_WithEdgeCases_ShouldNotThrow()
         {
             _player = CreatePlayer();

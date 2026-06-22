@@ -36,69 +36,252 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Sets
 {
     /// <summary>
-    /// The point set test class
+    ///     The point set test class
     /// </summary>
     public class PointSetTest
     {
         /// <summary>
-        /// Tests that point set type should be accessible
+        ///     Tests that constructor copies the points list
         /// </summary>
         [Fact]
-        public void PointSet_TypeShouldBeAccessible()
-        {
-            Assert.NotNull(typeof(PointSet));
-        }
-
-        /// <summary>
-        /// Tests that constructor with points should set points
-        /// </summary>
-        [Fact]
-        public void Constructor_WithPoints_ShouldSetPoints()
+        public void Constructor_ShouldCopyPointsList()
         {
             List<TriangulationPoint> points = new List<TriangulationPoint>
             {
-                new TriangulationPoint(0.0, 0.0),
-                new TriangulationPoint(1.0, 0.0),
-                new TriangulationPoint(0.0, 1.0)
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1)
             };
+
             PointSet pointSet = new PointSet(points);
 
             Assert.Equal(3, pointSet.GetPoints.Count);
         }
 
         /// <summary>
-        /// Tests that triangulation mode should be unconstrained
+        ///     Tests that GetPoints returns an immutable list
         /// </summary>
         [Fact]
-        public void TriangulationMode_ShouldBeUnconstrained()
+        public void GetPoints_ShouldReturnPoints()
         {
             List<TriangulationPoint> points = new List<TriangulationPoint>
             {
-                new TriangulationPoint(0.0, 0.0)
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0)
             };
+
+            PointSet pointSet = new PointSet(points);
+
+            Assert.NotNull(pointSet.GetPoints);
+            Assert.Equal(2, pointSet.GetPoints.Count);
+        }
+
+        /// <summary>
+        ///     Tests that TriangulationMode returns Unconstrained
+        /// </summary>
+        [Fact]
+        public void TriangulationMode_ShouldReturnUnconstrained()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1)
+            };
+
             PointSet pointSet = new PointSet(points);
 
             Assert.Equal(TriangulationMode.Unconstrained, pointSet.TriangulationMode);
         }
 
         /// <summary>
-        /// Tests that add triangle should add to triangles list
+        ///     Tests that AddTriangle creates the triangles list when null
         /// </summary>
         [Fact]
-        public void AddTriangle_ShouldAddToTriangles()
+        public void AddTriangle_ShouldCreateTrianglesListWhenNull()
         {
             List<TriangulationPoint> points = new List<TriangulationPoint>
             {
-                new TriangulationPoint(0.0, 0.0),
-                new TriangulationPoint(1.0, 0.0),
-                new TriangulationPoint(0.0, 1.0)
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1)
             };
+
             PointSet pointSet = new PointSet(points);
 
-            DelaunayTriangle triangle = new DelaunayTriangle(points[0], points[1], points[2]);
+            Assert.Null(pointSet.GetTriangles);
+
+            DelaunayTriangle triangle = new DelaunayTriangle(
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1));
+
             pointSet.AddTriangle(triangle);
 
-            Assert.Contains(triangle, pointSet.GetTriangles);
+            Assert.NotNull(pointSet.GetTriangles);
+            Assert.Single(pointSet.GetTriangles);
+        }
+
+        /// <summary>
+        ///     Tests that AddTriangle adds to existing triangles list
+        /// </summary>
+        [Fact]
+        public void AddTriangle_ShouldAddToExistingTrianglesList()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1)
+            };
+
+            PointSet pointSet = new PointSet(points);
+            DelaunayTriangle triangle1 = new DelaunayTriangle(
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1));
+
+            pointSet.AddTriangle(triangle1);
+            DelaunayTriangle triangle2 = new DelaunayTriangle(
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(1, 1),
+                new TriangulationPoint(0, 1));
+
+            pointSet.AddTriangle(triangle2);
+
+            Assert.Equal(2, pointSet.GetTriangles.Count);
+        }
+
+        /// <summary>
+        ///     Tests that AddTriangles creates the triangles list when null
+        /// </summary>
+        [Fact]
+        public void AddTriangles_ShouldCreateTrianglesListWhenNull()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1)
+            };
+
+            PointSet pointSet = new PointSet(points);
+
+            List<DelaunayTriangle> triangles = new List<DelaunayTriangle>
+            {
+                new DelaunayTriangle(
+                    new TriangulationPoint(0, 0),
+                    new TriangulationPoint(1, 0),
+                    new TriangulationPoint(0, 1))
+            };
+
+            pointSet.AddTriangles(triangles);
+
+            Assert.NotNull(pointSet.GetTriangles);
+            Assert.Single(pointSet.GetTriangles);
+        }
+
+        /// <summary>
+        ///     Tests that AddTriangles adds multiple triangles
+        /// </summary>
+        [Fact]
+        public void AddTriangles_ShouldAddMultipleTriangles()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1)
+            };
+
+            PointSet pointSet = new PointSet(points);
+
+            List<DelaunayTriangle> triangles = new List<DelaunayTriangle>
+            {
+                new DelaunayTriangle(
+                    new TriangulationPoint(0, 0),
+                    new TriangulationPoint(1, 0),
+                    new TriangulationPoint(0, 1)),
+                new DelaunayTriangle(
+                    new TriangulationPoint(1, 0),
+                    new TriangulationPoint(1, 1),
+                    new TriangulationPoint(0, 1)),
+                new DelaunayTriangle(
+                    new TriangulationPoint(0, 0),
+                    new TriangulationPoint(1, 1),
+                    new TriangulationPoint(0, 1))
+            };
+
+            pointSet.AddTriangles(triangles);
+
+            Assert.Equal(3, pointSet.GetTriangles.Count);
+        }
+
+        /// <summary>
+        ///     Tests that AddTriangles adds to existing triangles list
+        /// </summary>
+        [Fact]
+        public void AddTriangles_ShouldAddToExistingTrianglesList()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1)
+            };
+
+            PointSet pointSet = new PointSet(points);
+
+            DelaunayTriangle triangle1 = new DelaunayTriangle(
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1));
+
+            pointSet.AddTriangle(triangle1);
+
+            List<DelaunayTriangle> triangles = new List<DelaunayTriangle>
+            {
+                new DelaunayTriangle(
+                    new TriangulationPoint(1, 0),
+                    new TriangulationPoint(1, 1),
+                    new TriangulationPoint(0, 1))
+            };
+
+            pointSet.AddTriangles(triangles);
+
+            Assert.Equal(2, pointSet.GetTriangles.Count);
+        }
+
+        /// <summary>
+        ///     Tests that ClearTriangles clears the triangles list
+        /// </summary>
+        [Fact]
+        public void ClearTriangles_ShouldClearTrianglesList()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1)
+            };
+
+            PointSet pointSet = new PointSet(points);
+
+            DelaunayTriangle triangle1 = new DelaunayTriangle(
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1));
+
+            DelaunayTriangle triangle2 = new DelaunayTriangle(
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(1, 1),
+                new TriangulationPoint(0, 1));
+
+            pointSet.AddTriangle(triangle1);
+            pointSet.AddTriangle(triangle2);
+            pointSet.ClearTriangles();
+
+            Assert.Equal(0, pointSet.GetTriangles.Count);
         }
     }
 }
