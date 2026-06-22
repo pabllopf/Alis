@@ -108,5 +108,89 @@ namespace Alis.Extension.Language.Dialogue.Test
 
             Assert.Empty(dialog.Options);
         }
+
+        /// <summary>
+        ///     Tests that AddBranch with valid key and dialog adds branch and sets parent id
+        /// </summary>
+        [Fact]
+        public void AddBranch_WithValidKeyAndDialog_ShouldAddBranchAndSetParent()
+        {
+            Dialog parent = new Dialog("parent", "Parent dialog");
+            Dialog child = new Dialog("child", "Child dialog");
+
+            parent.AddBranch("branch1", child);
+
+            Assert.Single(parent.Branches);
+            Assert.True(parent.Branches.ContainsKey("branch1"));
+            Assert.Same(child, parent.Branches["branch1"]);
+            Assert.Equal("parent", child.ParentDialogId);
+        }
+
+        /// <summary>
+        ///     Tests that AddBranch with null key throws ArgumentNullException
+        /// </summary>
+        [Fact]
+        public void AddBranch_WithNullKey_ShouldThrowArgumentNullException()
+        {
+            Dialog parent = new Dialog("parent", "Parent dialog");
+            Dialog child = new Dialog("child", "Child dialog");
+
+            Assert.Throws<ArgumentNullException>(() => parent.AddBranch(null, child));
+        }
+
+        /// <summary>
+        ///     Tests that AddBranch with empty key throws ArgumentNullException
+        /// </summary>
+        [Fact]
+        public void AddBranch_WithEmptyKey_ShouldThrowArgumentNullException()
+        {
+            Dialog parent = new Dialog("parent", "Parent dialog");
+            Dialog child = new Dialog("child", "Child dialog");
+
+            Assert.Throws<ArgumentNullException>(() => parent.AddBranch("", child));
+        }
+
+        /// <summary>
+        ///     Tests that AddBranch with null dialog does not add to branches
+        /// </summary>
+        [Fact]
+        public void AddBranch_WithNullDialog_ShouldNotAddToBranches()
+        {
+            Dialog parent = new Dialog("parent", "Parent dialog");
+
+            parent.AddBranch("branch1", null);
+
+            Assert.Empty(parent.Branches);
+        }
+
+        /// <summary>
+        ///     Tests that GetBranch returns the correct dialog when key exists
+        /// </summary>
+        [Fact]
+        public void GetBranch_WithExistingKey_ShouldReturnDialog()
+        {
+            Dialog parent = new Dialog("parent", "Parent dialog");
+            Dialog child = new Dialog("child", "Child dialog");
+            parent.AddBranch("myKey", child);
+
+            Dialog result = parent.GetBranch("myKey");
+
+            Assert.Same(child, result);
+        }
+
+        /// <summary>
+        ///     Tests that GetBranch returns null when key does not exist
+        /// </summary>
+        [Fact]
+        public void GetBranch_WithNonExistingKey_ShouldReturnNull()
+        {
+            Dialog parent = new Dialog("parent", "Parent dialog");
+            Dialog child = new Dialog("child", "Child dialog");
+            parent.AddBranch("existing", child);
+
+            Dialog result = parent.GetBranch("nonexistent");
+
+            Assert.Null(result);
+        }
     }
 }
