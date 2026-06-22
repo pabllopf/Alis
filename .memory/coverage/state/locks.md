@@ -1,11 +1,19 @@
-# Distributed Locks
+# Locks
 
-| Target | Worker | Timestamp | Status |
-|--------|--------|-----------|--------|
-| 4_Operation/Physic/src/Dynamics/FixtureCollection.cs | coverage-agent-1 | 2026-06-22 | released (74f44fcd3) |
-| 4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs | coverage-agent-1 | 2026-06-22T10:30:00Z | released (e247f1cdb) |
-| 1_Presentation/Extension/Language/Dialogue/src/Core/DialogActionExecutor.cs | coverage-agent | 2026-06-22 | released (6c9ab22ac) |
-| 1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs | coverage-agent | 2026-06-22 | released (aa8e1d90f) |
-| 1_Presentation/Extension/Network/src/HttpHelper.cs | coverage-agent | 2026-06-22 | released (000b8b194) |
-| 4_Operation/Physic/src/Common/Decomposition/CDTDecomposer.cs | coverage-agent | 2026-06-22T09:25:00Z | completed |
-| 4_Operation/Physic/src/Common/Decomposition/FlipcodeDecomposer.cs | coverage-agent | 2026-06-22T09:15:00Z | completed |
+## No Active Locks
+
+All previous locks have been released.
+
+### Completed Tasks
+
+| Task ID | File | Coverage Before | Tests Added | Commit |
+|---------|------|-----------------|-------------|--------|
+| 1 | BottomMenu.cs | 10.0% | 6 tests | 7a6febaad |
+| 2 | AssetsWindow.cs | 18.4% | 10 tests | 49be1b849 |
+| 3 | BoxCollider.cs | 23.0% | 21 tests | 8fa202ec0 |
+
+---
+
+## Ready for Next Task
+
+**Next Target**: AudioPlayerWindow.cs (35.6% coverage)

@@ -1,72 +1,118 @@
 # Coverage Index
 
-## Project: Alis (pabllopf-official_alis)
+## Project: pabllopf-official_alis
+
 ## Branch: master
-## Updated Timestamp: 2026-06-22T08:45Z
 
-## Project Metrics (SonarCloud)
-| Metric | Value | Previous |
-|--------|-------|----------|
-| Coverage | 50.8% | 49.9% |
-| Line Coverage | 50.3% | 49.4% |
-| Branch Coverage | 53.7% | 52.4% |
+### Overall Coverage (Initial Sync)
 
-## Completed Tasks (from git history)
-| File Key | Test File | Status | Last Processed |
-|----------|-----------|--------|----------------|
-| pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/DistanceJoint.cs | DistanceJointTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/FrictionJoint.cs | FrictionJointTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/FixedMouseJoint.cs | FixedMouseJointTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:6_Ideation/Fluent/generator/AotReflectionAnalyzer.cs | AotReflectionAnalyzerTest.cs | Completed (380 tests) | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs | BayazitDecomposerTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/Sweep/AdvancingFront.cs | AdvancingFrontTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/EarclipDecomposer.cs | EarclipDecomposerTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/BreakableBody.cs | BreakableBodyTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Common/ConvexHull/ChainHull.cs | ChainHullTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Common/LineTools.cs | LineToolsTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Common/Path.cs | PathTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonTools.cs | PolygonToolsTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs | BrowserPlayerWavParsingTests.cs | Skipped (SonarQubeExclude) | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Engine/src/Menus/BottomMenu.cs | BottomMenuTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | BoxColliderTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Engine/src/Windows/AssetsWindow.cs | AssetsWindowTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs | AudioReaderTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Engine/src/Windows/AudioPlayerWindow.cs | AudioPlayerWindowTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs | AudioPlayerTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs | AnimatorTest.cs | Completed (+2 DrawAnimation tests) | 2026-06-22 |
-| pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs | AudioVideoWriterTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs | AudioWriterTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Dynamics/FixtureCollection.cs | FixtureCollectionTest.cs | Completed | 2026-06-22 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animation.cs | AnimationTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Components/Collider/BoxColliderBuilder.cs | BoxColliderBuilderTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Dynamics/RigidBody.cs | RigidBodyTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Dynamics/PhysicManager.cs | PhysicManagerTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs | BodyTest.cs | Completed (69 tests) | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Engine/src/Windows/ProjectWindow.cs | ProjectWindowTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Engine/src/Windows/SceneWindow.cs | SceneWindowTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Engine/src/Windows/SettingsWindow.cs | SettingsWindowTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Engine/src/Windows/ConsoleWindow.cs | ConsoleWindowTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Engine/src/Windows/InspectorWindow.cs | InspectorWindowTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Engine/src/Windows/SolutionWindow.cs | SolutionWindowTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Engine/src/Menus/TopMenuMac.cs | TopMenuMacTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Light/AreaLight.cs | AreaLightTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Light/DirectionalLight.cs | DirectionalLightTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Light/PointLight.cs | PointLightTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Light/SpotLight.cs | SpotLightTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Ui/Canvas.cs | CanvasTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Audio/AudioSetting.cs | AudioSettingTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Graphic/GraphicSetting.cs | GraphicSettingTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Input/InputSetting.cs | InputSettingTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Configuration/Physic/PhysicSetting.cs | PhysicSettingTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/RenderStates.cs | RenderStatesTest.cs | Completed | 2026-06-21 |
-| pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs | AudioSourceTest.cs | Completed (17 tests, 5 branch via IPlayer mock) | 2026-06-22 |
-| pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ControllerTransform.cs | ControllerTransformTest.cs | Completed (3 new tests) | 2026-06-22 |
-| pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/FlipcodeDecomposer.cs | FlipcodeDecomposerTest.cs | Completed (5 new tests) | 2026-06-22 |
-| pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDTDecomposer.cs | CdtDecomposerTest.cs | Completed (2 new tests) | 2026-06-22 |
-| pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogOption.cs | DialogOptionTest.cs | Completed (6 tests) | 2026-06-22 |
-| pabllopf-official_alis:4_Operation/Physic/src/Dynamics/FixtureCollection.cs | FixtureCollectionTest.cs | Completed (+1, 25 tests) | 2026-06-22 |
-| pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs | CircleShapeTest.cs | Completed (+2, 26 tests) | 2026-06-22 |
-| pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/GameObjectBuilder.cs | GameObjectBuilderTest.cs | Completed (+13, 23 tests) | 2026-06-22 |
-| pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/Core/DialogActionExecutor.cs | DialogActionExecutorTest.cs | Completed (+3, 10 tests) | 2026-06-22 |
-| pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs | DialogManagerTest.cs | Completed (+7, 32 tests) | 2026-06-22 |
-| pabllopf-official_alis:1_Presentation/Extension/Network/src/HttpHelper.cs | HttpHelperTest.cs | Completed (+3, 21 tests) | 2026-06-22 |
+- **Coverage**: 51.8%
+- **Line Coverage**: 51.1%
+- **Branch Coverage**: 54.9%
+
+### Progress Summary
+
+- **Files Processed**: 2 of ~1,558 files
+- **Public Methods Tested**: 16 methods/properties
+- **Coverage Tasks Completed**: 2
+
+### Low Coverage Files (<50%)
+
+| File | Coverage | Line | Branch | Priority |
+|------|----------|------|--------|----------|
+| BottomMenu.cs | 10.0% | 11.8% | 0.0% | **CRITICAL** |
+| AssetsWindow.cs | 18.4% | 22.8% | 0.0% | **HIGH** |
+| BoxCollider.cs | 23.0% | 26.6% | 2.1% | **HIGH** |
+| AudioPlayerWindow.cs | 35.6% | 45.7% | 0.0% | MEDIUM |
+| AudioPlayer.cs | 37.1% | 38.8% | 33.3% | MEDIUM |
+| AudioReader.cs | 41.9% | 42.9% | 39.6% | MEDIUM |
+| BrowserPlayer.cs | 53.8% | 49.0% | 67.6% | MEDIUM |
+| AudioVideoWriter.cs | 52.8% | 53.4% | 51.3% | LOW |
+| AudioWriter.cs | 54.0% | 53.3% | 55.6% | LOW |
+
+### Fully Covered Files (100%)
+
+- AABB.cs
+- AACEncoder.cs
+- AdConfiguration.cs
+- AddComponent.cs
+- AdRewardEventArgs.cs
+- AdvancingFront.cs
+- AdvancingFrontNode.cs
+- AManager.cs
+- AngleJoint.cs
+- Animation.cs
+- AnimationBuilder.cs
+- AnimatorBuilder.cs
+- AssetRegistry.cs (90.3%)
+- AsyncLogOutput.cs
+- AudioFormat.cs
+- AudioFrame.cs
+- AudioManager.cs
+- AudioMetadata.cs
+- AudioSetting.cs
+- AudioSettingBuilder.cs
+- AudioSourceBuilder.cs
+- AudioSpec.cs
+- AWindow.cs
+- BatchPartitioner.cs
+- BayazitDecomposer.cs (93.9%)
+- BoardBuilder.cs (99.5%)
+- BoardSquare.cs
+- BoardSquareTypeHelper.cs
+- Body.Factory.cs
+- BodyCollection.cs
+- BoxColliderBuilder.cs
+- BreakableBody.cs
+- BinaryReaderWriter.cs (96.6%)
+- BitOperations.cs
+- BlendMode.cs
+- BufferPool.cs
+
+### Files with No Coverage Data (Enums, Delegates, etc.)
+
+These files typically contain only type definitions without executable logic:
+
+- ActiveAttribType.cs
+- ActiveUniformType.cs
+- ActiveButton.cs (may need investigation)
+- AfterCollisionEventHandler.cs
+- ...
+
+### Delta Analysis
+
+**Previous state:** Initial sync (2026-06-22)
+**Current state:** Processing in progress
+
+### Completed Tasks
+
+| Task # | File | Coverage Before | Tests Added | Status |
+|--------|------|-----------------|-------------|--------|
+| 1 | BottomMenu.cs | 10.0% | 6 tests | ✅ Committed (7a6febaad) |
+| 2 | AssetsWindow.cs | 18.4% | 10 tests | ✅ Committed (49be1b849) |
+| 3 | BoxCollider.cs | 23.0% | 21 tests | ✅ Committed (8fa202ec0) |
+
+### Remaining Low Coverage Targets
+
+| File | Coverage | Line | Branch | Priority |
+|------|----------|------|--------|----------|
+| AudioPlayerWindow.cs | 35.6% | 45.7% | 0.0% | MEDIUM |
+| AudioPlayer.cs | 37.1% | 38.8% | 33.3% | MEDIUM |
+| AudioReader.cs | 41.9% | 42.9% | 39.6% | MEDIUM |
+| BrowserPlayer.cs | 53.8% | 49.0% | 67.6% | LOW |
+| AudioVideoWriter.cs | 52.8% | 53.4% | 51.3% | LOW |
+| AudioWriter.cs | 54.0% | 53.3% | 55.6% | LOW |
+
+**Next Step:** Process AudioPlayerWindow.cs (35.6% coverage)
+
+### Progress Summary
+
+- **Files Processed**: 3 of ~1,558 files
+- **Public Methods/Properties Tested**: 37 methods/properties
+- **Coverage Tasks Completed**: 3
+
+### Files to Skip (Already 100% or Enums/Delegates)
+
+- All files marked as 100% coverage
+- Files with no measures (enums, delegates, markers)
+- Files with <5% executable lines (pure type definitions)
