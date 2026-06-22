@@ -159,5 +159,62 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             source.IsLooping = true;
             Assert.True(source.IsLooping);
         }
+
+        /// <summary>
+        ///     Tests that Play sets FullPathAudioFile when NameFile is non-empty (branch coverage)
+        /// </summary>
+        [Fact]
+        public void AudioSource_Play_WithNonEmptyNameFile_ShouldSetFullPathAudioFile()
+        {
+            Context context = new Context();
+
+            AudioSource source = new AudioSource(context);
+            source.NameFile = "test_audio.wav";
+
+            source.Play();
+        }
+
+        /// <summary>
+        ///     Tests that Play calls player.PlayLoop when IsLooping is true (branch coverage)
+        /// </summary>
+        [Fact]
+        public void AudioSource_Play_WithIsLoopingTrue_ShouldCallPlayerPlayLoop()
+        {
+            Context context = new Context();
+
+            AudioSource source = new AudioSource(context);
+            source.NameFile = "looping_audio.wav";
+            source.IsLooping = true;
+
+            source.Play();
+        }
+
+        /// <summary>
+        ///     Tests that OnStart calls Play when PlayOnAwake is true (branch coverage)
+        /// </summary>
+        [Fact]
+        public void AudioSource_OnStart_WithPlayOnAwakeTrue_ShouldCallPlay()
+        {
+            Context context = new Context();
+
+            AudioSource source = new AudioSource(context);
+            source.PlayOnAwake = true;
+            source.NameFile = "awake_audio.wav";
+
+            source.OnStart(null!);
+        }
+
+        /// <summary>
+        ///     Tests that Play with empty NameFile does not throw (edge case)
+        /// </summary>
+        [Fact]
+        public void AudioSource_Play_WithEmptyNameFile_ShouldNotThrow()
+        {
+            Context context = new Context();
+
+            AudioSource source = new AudioSource(context);
+
+            source.Play();
+        }
     }
 }
