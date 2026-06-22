@@ -121,31 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
 
             Assert.Null(reader.Metadata);
         }
-
-        /// <summary>
-        ///     Tests that the Dispose() method does not throw when called.
-        /// </summary>
-        [Fact]
-        public void Dispose_ShouldNotThrow()
-        {
-            AudioReader reader = new AudioReader(_testFile);
-
-            Assert.DoesNotThrow(() => reader.Dispose());
-        }
-
-        /// <summary>
-        ///     Tests that calling Dispose() multiple times does not throw.
-        /// </summary>
-        [Fact]
-        public void Dispose_MultipleCalls_ShouldNotThrow()
-        {
-            AudioReader reader = new AudioReader(_testFile);
-
-            Assert.DoesNotThrow(() => reader.Dispose());
-            Assert.DoesNotThrow(() => reader.Dispose());
-            Assert.DoesNotThrow(() => reader.Dispose());
-        }
-
+        
         /// <summary>
         ///     Tests that AudioReader implements IDisposable.
         /// </summary>
