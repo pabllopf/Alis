@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
 using Alis.Core.Aspect.Logging.Outputs;
@@ -179,6 +180,37 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             LogEntry entry = new LogEntry(unknownLevel, "Unknown level message", "Logger");
 
             output.Write(entry);
+        }
+
+        /// <summary>
+        ///     Tests that write does not throw when Console.WriteLine throws
+        /// </summary>
+        [Fact]
+        public void Write_WhenConsoleThrows_DoesNotThrow()
+        {
+            TextWriter originalOut = Console.Out;
+            try
+            {
+                Console.SetOut(new ThrowingTextWriter());
+                ConsoleLogOutput output = new ConsoleLogOutput();
+                LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+
+                output.Write(entry);
+            }
+            finally
+            {
+                Console.SetOut(originalOut);
+            }
+        }
+
+        /// <summary>
+        ///     Helper TextWriter that throws on Write/WriteLine to trigger the catch blocks in ConsoleLogOutput
+        /// </summary>
+        private sealed class ThrowingTextWriter : TextWriter
+        {
+            public override void Write(char value) => throw new IOException("Test exception");
+            public override void WriteLine(string value) => throw new IOException("Test exception");
+            public override System.Text.Encoding Encoding => System.Text.Encoding.UTF8;
         }
     }
 }
