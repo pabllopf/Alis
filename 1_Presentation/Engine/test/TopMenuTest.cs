@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 //
 //  --------------------------------------------------------------------------
-//  File:SolutionWindowTest.cs
+//  File:TopMenuTest.cs
 //
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,17 +29,16 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using System.Reflection;
 using Alis.App.Engine.Core;
-using Alis.App.Engine.Windows;
+using Alis.App.Engine.Menus;
 using Xunit;
 
 namespace Alis.App.Engine.Test
 {
     /// <summary>
-    ///     Tests for the SolutionWindow class
+    ///     Tests for the TopMenu class
     /// </summary>
-    public class SolutionWindowTest
+    public class TopMenuTest
     {
         private static SpaceWork CreateSpaceWork() =>
             (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
@@ -51,10 +50,10 @@ namespace Alis.App.Engine.Test
         public void Constructor_ShouldSetSpaceWork()
         {
             SpaceWork spaceWork = CreateSpaceWork();
-            SolutionWindow window = new SolutionWindow(spaceWork);
+            TopMenu menu = new TopMenu(spaceWork);
 
-            Assert.NotNull(window);
-            Assert.Same(spaceWork, window.SpaceWork);
+            Assert.NotNull(menu);
+            Assert.Same(spaceWork, menu.SpaceWork);
         }
 
         /// <summary>
@@ -64,23 +63,10 @@ namespace Alis.App.Engine.Test
         public void SpaceWork_Property_ShouldReturnSetValue()
         {
             SpaceWork spaceWork = CreateSpaceWork();
-            SolutionWindow window = new SolutionWindow(spaceWork);
+            TopMenu menu = new TopMenu(spaceWork);
 
-            Assert.NotNull(window.SpaceWork);
-            Assert.Same(spaceWork, window.SpaceWork);
-        }
-
-        /// <summary>
-        ///     Tests that NameWindow static property is not null
-        /// </summary>
-        [Fact]
-        public void NameWindow_StaticProperty_ShouldNotBeNullOrEmpty()
-        {
-            var field = typeof(SolutionWindow).GetField("NameWindow", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            Assert.NotNull(field);
-            var value = field.GetValue(null) as string;
-            Assert.NotNull(value);
-            Assert.NotEmpty(value);
+            Assert.NotNull(menu.SpaceWork);
+            Assert.Same(spaceWork, menu.SpaceWork);
         }
 
         /// <summary>
@@ -90,11 +76,25 @@ namespace Alis.App.Engine.Test
         public void Initialize_ShouldNotThrow()
         {
             SpaceWork spaceWork = CreateSpaceWork();
-            SolutionWindow window = new SolutionWindow(spaceWork);
+            TopMenu menu = new TopMenu(spaceWork);
 
-            window.Initialize();
+            menu.Initialize();
 
-            Assert.NotNull(window);
+            Assert.NotNull(menu);
+        }
+
+        /// <summary>
+        ///     Tests that Update should not throw
+        /// </summary>
+        [Fact]
+        public void Update_ShouldNotThrow()
+        {
+            SpaceWork spaceWork = CreateSpaceWork();
+            TopMenu menu = new TopMenu(spaceWork);
+
+            menu.Update();
+
+            Assert.NotNull(menu);
         }
 
         /// <summary>
@@ -104,11 +104,11 @@ namespace Alis.App.Engine.Test
         public void Start_ShouldNotThrow()
         {
             SpaceWork spaceWork = CreateSpaceWork();
-            SolutionWindow window = new SolutionWindow(spaceWork);
+            TopMenu menu = new TopMenu(spaceWork);
 
-            window.Start();
+            menu.Start();
 
-            Assert.NotNull(window);
+            Assert.NotNull(menu);
         }
 
         /// <summary>
@@ -118,11 +118,11 @@ namespace Alis.App.Engine.Test
         public void Render_ShouldNotThrow()
         {
             SpaceWork spaceWork = CreateSpaceWork();
-            SolutionWindow window = new SolutionWindow(spaceWork);
+            TopMenu menu = new TopMenu(spaceWork);
 
-            window.Render();
+            menu.Render();
 
-            Assert.NotNull(window);
+            Assert.NotNull(menu);
         }
     }
 }

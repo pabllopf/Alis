@@ -1,0 +1,8 @@
+{
+  "file": "SimplePriorityQueue.cs",
+  "key": "pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/SimplePriorityQueue.cs",
+  "coverage": 77.9,
+  "line_coverage": 80.7,
+  "branch_coverage": 67.9,
+  "uncovered_lines": 54
+}
