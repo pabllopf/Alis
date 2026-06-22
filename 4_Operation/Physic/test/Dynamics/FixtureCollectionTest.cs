@@ -324,6 +324,22 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
+        ///     Tests that generic IEnumerator&lt;Fixture&gt;.Current throws when collection modified during enumeration
+        /// </summary>
+        [Fact]
+        public void EnumeratorGenericCurrent_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            Body body = new Body();
+            FixtureCollection collection = new FixtureCollection(body);
+            IEnumerator<Fixture> enumerator = ((IEnumerable<Fixture>)collection).GetEnumerator();
+
+            collection.List.Add(new Fixture(new CircleShape(0.3f, 1.0f)));
+            collection.GenerationStamp++;
+
+            Assert.Throws<InvalidOperationException>(() => enumerator.Current);
+        }
+
+        /// <summary>
         ///     Tests that non generic enumerator current throws when collection modified
         /// </summary>
         [Fact]
