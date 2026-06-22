@@ -584,6 +584,127 @@ namespace Alis.Extension.Language.Dialogue.Test
         }
 
         /// <summary>
+        ///     Tests that StartDialog returns early when dialog does not exist
+        /// </summary>
+        [Fact]
+        public void StartDialog_WithNonExistentDialog_ReturnsWithoutChangingState()
+        {
+            DialogManager manager = new DialogManager();
+
+            manager.StartDialog("nonExistentId");
+
+            Assert.Equal(DialogStateType.Idle, manager.CurrentState);
+        }
+
+        /// <summary>
+        ///     Tests that SelectOption with non-existent dialog context returns early
+        /// </summary>
+        [Fact]
+        public void SelectOption_WhenCurrentDialogNotInDictionary_DoesNotThrow()
+        {
+            DialogManager manager = new DialogManager();
+            Dialog dialog = new Dialog("testDialog", "Test Dialog");
+            manager.AddDialog(dialog);
+            manager.StartDialog("testDialog");
+            manager.EndDialog();
+
+            Exception exception = Record.Exception(() => manager.SelectOption(0));
+            Assert.Null(exception);
+        }
+
+        /// <summary>
+        ///     Tests that SelectOption with negative index does not throw
+        /// </summary>
+        [Fact]
+        public void SelectOption_WithNegativeIndex_DoesNotThrow()
+        {
+            DialogManager manager = new DialogManager();
+            Dialog dialog = new Dialog("testDialog", "Test Dialog");
+            dialog.AddOption(new DialogOption("Option", () => { }));
+            manager.AddDialog(dialog);
+            manager.StartDialog("testDialog");
+
+            Exception exception = Record.Exception(() => manager.SelectOption(-1));
+            Assert.Null(exception);
+        }
+
+        /// <summary>
+        ///     Tests that SelectOption with condition that fails returns early without executing
+        /// </summary>
+        [Fact]
+        public void SelectOption_WithFailingCondition_DoesNotExecuteAction()
+        {
+            DialogManager manager = new DialogManager();
+            bool actionExecuted = false;
+
+            Dialog dialog = new Dialog("testDialog", "Test Dialog");
+            DialogOption option = new DialogOption("Option", () => actionExecuted = true);
+            option.AddCondition(new LambdaDialogCondition(_ => false));
+            dialog.AddOption(option);
+            manager.AddDialog(dialog);
+            manager.StartDialog("testDialog");
+
+            manager.SelectOption(0);
+
+            Assert.False(actionExecuted);
+        }
+
+        /// <summary>
+        ///     Tests that GetAvailableOptions returns empty when current dialog is not in dictionary
+        /// </summary>
+        [Fact]
+        public void GetAvailableOptions_WhenCurrentDialogNotInDictionary_ReturnsEmpty()
+        {
+            DialogManager manager = new DialogManager();
+            Dialog dialog = new Dialog("testDialog", "Test Dialog");
+            manager.AddDialog(dialog);
+            manager.StartDialog("testDialog");
+            manager.EndDialog();
+
+            System.Collections.Generic.List<DialogOption> options = manager.GetAvailableOptions();
+
+            Assert.Empty(options);
+        }
+
+        /// <summary>
+        ///     Tests that ShowDialog with invalid choice does not invoke action
+        /// </summary>
+        [Fact]
+        public void ShowDialog_WithInvalidChoice_DoesNotInvokeAction()
+        {
+            DialogManager manager = new DialogManager();
+            bool actionInvoked = false;
+            Dialog dialog = new Dialog("testId", "Test Dialog");
+            dialog.AddOption(new DialogOption("Option 1", () => actionInvoked = true));
+            manager.AddDialog(dialog);
+
+            System.IO.StringReader reader = new System.IO.StringReader("0\n");
+            System.Console.SetIn(reader);
+            manager.ShowDialog("testId");
+
+            Assert.False(actionInvoked);
+        }
+
+        /// <summary>
+        ///     Tests that ShowDialog with valid choice invokes action
+        /// </summary>
+        [Fact]
+        public void ShowDialog_WithChoiceExceedingOptions_DoesNotInvokeAction()
+        {
+            DialogManager manager = new DialogManager();
+            bool actionInvoked = false;
+            Dialog dialog = new Dialog("testId", "Test Dialog");
+            dialog.AddOption(new DialogOption("Option 1", () => actionInvoked = true));
+            manager.AddDialog(dialog);
+
+            System.IO.StringReader reader = new System.IO.StringReader("5\n");
+            System.Console.SetIn(reader);
+            manager.ShowDialog("testId");
+
+            Assert.False(actionInvoked);
+        }
+
+        /// <summary>
         ///     Mock observer for testing
         /// </summary>
         private class MockDialogEventObserver : IDialogEventObserver
