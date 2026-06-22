@@ -336,5 +336,49 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(transform.Position, result.Position);
             Assert.Equal(transform.Rotation, result.Rotation);
         }
+
+        /// <summary>
+        ///     Tests that constructor with position angle and scale should initialize correctly
+        /// </summary>
+        [Fact]
+        public void Constructor_WithPositionAngleAndScale_ShouldInitializeCorrectly()
+        {
+            Vector2F position = new Vector2F(1.0f, 2.0f);
+            float angle = 0.5f;
+            Vector2F scale = new Vector2F(3.0f, 4.0f);
+
+            ControllerTransform transform = new ControllerTransform(position, angle, scale);
+
+            Assert.Equal(position, transform.Position);
+            Assert.Equal(scale, transform.Scale);
+        }
+
+        /// <summary>
+        ///     Tests that multiply ref vector by identity should return same vector
+        /// </summary>
+        [Fact]
+        public void Multiply_RefVectorByIdentity_ShouldReturnSameVector()
+        {
+            Vector2F vector = new Vector2F(3.0f, 4.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+
+            Vector2F result = ControllerTransform.Multiply(ref vector, ref transform);
+
+            Assert.Equal(vector, result);
+        }
+
+        /// <summary>
+        ///     Tests that divide ref vector by identity should return same vector
+        /// </summary>
+        [Fact]
+        public void Divide_RefVectorByIdentity_ShouldReturnSameVector()
+        {
+            Vector2F vector = new Vector2F(3.0f, 4.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+
+            Vector2F result = ControllerTransform.Divide(ref vector, ref transform);
+
+            Assert.Equal(vector, result);
+        }
     }
 }

@@ -2,13 +2,38 @@
 
 ## 2026-06-22
 
+### [08:52] Task: DialogOption.cs
+- Target: 1_Presentation/Extension/Language/Dialogue/src/DialogOption.cs (70.4% coverage, 6 uncovered lines/conditions)
+- Existing tests: 5 tests (constructor, dialog option add, dialog manager)
+- Tests added: 6 tests covering AddCondition null/valid, AddDialogAction null/valid, constructor list init for Conditions and DialogActions
+- All 11 tests pass (5 original + 6 new)
+- Production changes: None required
+- Commit: 400dd3019
+
+### [09:05] Task: ControllerTransform.cs
+- Target: 4_Operation/Physic/src/Dynamics/ControllerTransform.cs (94.7% coverage, 3 uncovered lines)
+- Existing tests: 21 tests in ControllerTransformTest.cs
+- Tests added: 3 (Constructor with angle+scale, ref Multiply, ref Divide)
+- All 24 tests pass (21 original + 3 new)
+- Production changes: None required
+
+### [14:35] Task: AudioSource.cs (Resumed)
+- Target: 2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs (63.5% coverage, 15 uncovered lines)
+- Existing tests: 12 tests (8 original + 4 branch tests from previous session)
+- Tests added: 5 new tests covering Stop/Resume branches via IPlayer mock injection
+- Production changes: Player field changed to IPlayer type, added internal PlayerForTest setter
+- All 17 tests pass (12 original + 5 new)
+- Commit: 9cddbe7df
+
+## 2026-06-22
+
 ### [10:00] Task: FixtureCollection.cs
 - Target: 4_Operation/Physic/src/Dynamics/FixtureCollection.cs (97.1% coverage, 1 uncovered line, 1 uncovered condition)
 - Existing tests: 24 tests in FixtureCollectionTest.cs
 - Tests added: 1 test covering IEnumerator<Fixture>.Current throw when collection modified during enumeration (explicit interface implementation)
 - All 25 tests pass (24 original + 1 new)
 - Production changes: None required
-- Commit: pending
+- Commit: 74f44fcd3
 
 ### [08:45] Task: AudioSource.cs
 - Target: 2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs (63.5% coverage, 15 uncovered lines, 8/16 conditions uncovered)
