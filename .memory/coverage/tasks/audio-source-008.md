@@ -1,5 +1,5 @@
 ---
-status: Done
+status: Completed
 ---
 
 # COVERAGE TASK
@@ -26,5 +26,10 @@ AudioSourceTest.cs (12 tests: 8 original + 4 new)
 ## Production Changes
 None required
 
+## Production Changes
+- Changed `private readonly Player player` → `private IPlayer player` (interface type)
+- Added `internal IPlayer PlayerForTest` setter for test injection
+- Added `using Alis.Core.Audio.Interfaces`
+
 ## Status
-Completed — 4 branch coverage tests added. Commit: e68fff4c3
+Completed — 5 branch coverage tests added (Stop Playing/NotPlaying, Resume Playing/NotPlaying, OnStart PlayOnAwake=false). Commit: 9cddbe7df
