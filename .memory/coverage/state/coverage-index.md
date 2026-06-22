@@ -65,3 +65,4 @@
 | pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogOption.cs | DialogOptionTest.cs | Completed (6 tests) | 2026-06-22 |
 | pabllopf-official_alis:4_Operation/Physic/src/Dynamics/FixtureCollection.cs | FixtureCollectionTest.cs | Completed (+1, 25 tests) | 2026-06-22 |
 | pabllopf-official_alis:4_Operation/Physic/src/Collisions/Shapes/CircleShape.cs | CircleShapeTest.cs | Completed (+2, 26 tests) | 2026-06-22 |
+| pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/GameObjectBuilder.cs | GameObjectBuilderTest.cs | Completed (+13, 23 tests) | 2026-06-22 |
