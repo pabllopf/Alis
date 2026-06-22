@@ -168,6 +168,57 @@ namespace Alis.Extension.Language.Dialogue.Test
         }
 
         /// <summary>
+        ///     Tests that get variable with null key throws exception
+        /// </summary>
+        [Fact]
+        public void GetVariable_WithNullKey_ThrowsException()
+        {
+            DialogContext context = new DialogContext("testDialog");
+            Assert.Throws<ArgumentNullException>(() => context.GetVariable(null));
+        }
+
+        /// <summary>
+        ///     Tests that get variable with empty key throws exception
+        /// </summary>
+        [Fact]
+        public void GetVariable_WithEmptyKey_ThrowsException()
+        {
+            DialogContext context = new DialogContext("testDialog");
+            Assert.Throws<ArgumentNullException>(() => context.GetVariable(""));
+        }
+
+        /// <summary>
+        ///     Tests that get variable returns value for existing key
+        /// </summary>
+        [Fact]
+        public void GetVariable_ReturnsValueForExistingKey()
+        {
+            DialogContext context = new DialogContext("testDialog");
+            context.SetVariable("key", "storedValue");
+            Assert.Equal("storedValue", context.GetVariable("key"));
+        }
+
+        /// <summary>
+        ///     Tests that has variable with null key throws exception
+        /// </summary>
+        [Fact]
+        public void HasVariable_WithNullKey_ThrowsException()
+        {
+            DialogContext context = new DialogContext("testDialog");
+            Assert.Throws<ArgumentNullException>(() => context.HasVariable(null));
+        }
+
+        /// <summary>
+        ///     Tests that record visit with null key throws exception
+        /// </summary>
+        [Fact]
+        public void RecordVisit_WithNullKey_ThrowsException()
+        {
+            DialogContext context = new DialogContext("testDialog");
+            Assert.Throws<ArgumentNullException>(() => context.RecordVisit(null));
+        }
+
+        /// <summary>
         ///     Tests that clear resets context
         /// </summary>
         [Fact]
