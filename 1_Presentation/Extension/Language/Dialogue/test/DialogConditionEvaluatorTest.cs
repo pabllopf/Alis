@@ -160,5 +160,79 @@ namespace Alis.Extension.Language.Dialogue.Test
 
             Assert.False(DialogConditionEvaluator.EvaluateAny(conditions, context));
         }
+
+        /// <summary>
+        ///     Tests that evaluate all with null conditions throws exception
+        /// </summary>
+        [Fact]
+        public void EvaluateAll_WithNullConditions_ThrowsException()
+        {
+            DialogContext context = new DialogContext("testDialog");
+
+            Assert.Throws<ArgumentNullException>(() => DialogConditionEvaluator.EvaluateAll(null, context));
+        }
+
+        /// <summary>
+        ///     Tests that evaluate all with null context throws exception
+        /// </summary>
+        [Fact]
+        public void EvaluateAll_WithNullContext_ThrowsException()
+        {
+            List<IDialogCondition> conditions = new List<IDialogCondition>
+            {
+                new LambdaDialogCondition(ctx => true)
+            };
+
+            Assert.Throws<ArgumentNullException>(() => DialogConditionEvaluator.EvaluateAll(conditions, null));
+        }
+
+        /// <summary>
+        ///     Tests that evaluate any with null conditions throws exception
+        /// </summary>
+        [Fact]
+        public void EvaluateAny_WithNullConditions_ThrowsException()
+        {
+            DialogContext context = new DialogContext("testDialog");
+
+            Assert.Throws<ArgumentNullException>(() => DialogConditionEvaluator.EvaluateAny(null, context));
+        }
+
+        /// <summary>
+        ///     Tests that evaluate any with null context throws exception
+        /// </summary>
+        [Fact]
+        public void EvaluateAny_WithNullContext_ThrowsException()
+        {
+            List<IDialogCondition> conditions = new List<IDialogCondition>
+            {
+                new LambdaDialogCondition(ctx => true)
+            };
+
+            Assert.Throws<ArgumentNullException>(() => DialogConditionEvaluator.EvaluateAny(conditions, null));
+        }
+
+        /// <summary>
+        ///     Tests that evaluate all with empty conditions returns true
+        /// </summary>
+        [Fact]
+        public void EvaluateAll_WithEmptyConditions_ReturnsTrue()
+        {
+            DialogContext context = new DialogContext("testDialog");
+            List<IDialogCondition> empty = new List<IDialogCondition>();
+
+            Assert.True(DialogConditionEvaluator.EvaluateAll(empty, context));
+        }
+
+        /// <summary>
+        ///     Tests that evaluate any with empty conditions returns false
+        /// </summary>
+        [Fact]
+        public void EvaluateAny_WithEmptyConditions_ReturnsFalse()
+        {
+            DialogContext context = new DialogContext("testDialog");
+            List<IDialogCondition> empty = new List<IDialogCondition>();
+
+            Assert.False(DialogConditionEvaluator.EvaluateAny(empty, context));
+        }
     }
 }
