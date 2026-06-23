@@ -72,5 +72,18 @@ namespace Alis.Test
                 .Graphic(g => g.Target("OpenGL").Resolution(800, 600)));
             Assert.Same(builder, result);
         }
+
+        /// <summary>
+        ///     Tests that World with config returns builder
+        /// </summary>
+        [Fact]
+        public void World_WithEmptyConfig_ShouldReturnBuilder()
+        {
+            VideoGameBuilder builder = new VideoGameBuilder();
+
+            VideoGameBuilder result = builder.World(sb => { });
+
+            Assert.Same(builder, result);
+        }
     }
 }
