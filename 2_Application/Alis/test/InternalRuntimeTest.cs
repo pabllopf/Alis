@@ -98,6 +98,46 @@ namespace Alis.Test
         /// </summary>
         public bool OnStopCalled { get; private set; }
             /// <summary>
+            /// Gets or sets the value of the on physic update called
+            /// </summary>
+            public bool OnPhysicUpdateCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on before fixed update called
+            /// </summary>
+            public bool OnBeforeFixedUpdateCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on fixed update called
+            /// </summary>
+            public bool OnFixedUpdateCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on after fixed update called
+            /// </summary>
+            public bool OnAfterFixedUpdateCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on dispatch events called
+            /// </summary>
+            public bool OnDispatchEventsCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on calculate called
+            /// </summary>
+            public bool OnCalculateCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on before draw called
+            /// </summary>
+            public bool OnBeforeDrawCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on after draw called
+            /// </summary>
+            public bool OnAfterDrawCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on render present called
+            /// </summary>
+            public bool OnRenderPresentCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on gui called
+            /// </summary>
+            public bool OnGuiCalled { get; private set; }
+            /// <summary>
             /// Gets or sets the value of the on before update called
             /// </summary>
             public bool OnBeforeUpdateCalled { get; private set; }

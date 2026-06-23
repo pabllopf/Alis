@@ -353,5 +353,60 @@ namespace Alis.Test
             GameObjectBuilder result = builder.IsStatic(true);
             Assert.Same(builder, result);
         }
+
+        /// <summary>
+        /// Tests that IsActive no args after adding Info enters true branch
+        /// </summary>
+        [Fact]
+        public void IsActive_AfterAddingInfo_NoArgs_UpdatesInfo()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            builder.WithComponent<Info>();
+            GameObjectBuilder result = builder.IsActive();
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that IsStatic no args after adding Info enters true branch
+        /// </summary>
+        [Fact]
+        public void IsStatic_AfterAddingInfo_NoArgs_UpdatesInfo()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            builder.WithComponent<Info>();
+            GameObjectBuilder result = builder.IsStatic();
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that WithComponent with Action config using IHasContext component sets context
+        /// </summary>
+        [Fact]
+        public void WithComponent_WithActionConfig_WithIHasContext_SetsContext()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            GameObjectBuilder result = builder.WithComponent((Action<Animator>)(a => { }));
+            Assert.Same(builder, result);
+        }
+
+        /// <summary>
+        /// Tests that WithComponent with AnimatorConfig returns builder
+        /// </summary>
+        [Fact]
+        public void WithComponent_WithAnimatorConfig_ReturnsBuilder()
+        {
+            Context context = new Context();
+            Scene scene = new Scene();
+            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
+            AnimatorConfig<Animator> config = b => b.AddAnimation(b2 => new Animation("idle", 0, 1f));
+            GameObjectBuilder result = builder.WithComponent(config);
+            Assert.Same(builder, result);
+        }
     }
 }
