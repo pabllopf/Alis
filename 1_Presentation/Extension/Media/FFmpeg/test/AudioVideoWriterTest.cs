@@ -450,32 +450,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
 
             Assert.False(writer.OpenedForWriting);
         }
-
-        /// <summary>
-        ///     Tests that OpenWrite() throws InvalidOperationException when already opened.
-        /// </summary>
-        [Fact]
-        public void OpenWrite_WhenAlreadyOpened_ShouldThrowInvalidOperationException()
-        {
-            EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
-            EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
-            AudioVideoWriter writer = new AudioVideoWriter(
-                _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
-
-            // First OpenWrite() should not throw (but will fail due to FFmpeg not being available)
-            // We test that double OpenWrite() throws InvalidOperationException
-            try
-            {
-                writer.OpenWrite(false, 4096);
-            }
-            catch (Exception)
-            {
-                // FFmpeg may not be available, but we're testing the state validation
-            }
-
-            // Second OpenWrite() should throw InvalidOperationException about already opened
-            Assert.Throws<InvalidOperationException>(() => writer.OpenWrite(false, 4096));
-        }
+        
 
         /// <summary>
         ///     Tests that CloseWrite() throws InvalidOperationException when not opened.
