@@ -93,5 +93,17 @@ namespace Alis.Test
             ContextHandler handler = new ContextHandler(context);
             handler.Save();
         }
+
+        /// <summary>
+        /// Tests that save with path does not throw
+        /// </summary>
+        [Fact]
+        public void Save_WithPath_DoesNotThrow()
+        {
+            Context context = new Context();
+            ContextHandler handler = new ContextHandler(context);
+            handler.Save("test_save_path");
+        }
+
     }
 }
