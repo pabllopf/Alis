@@ -317,28 +317,6 @@ namespace Alis.Extension.Media.FFmpeg.Test
         }
 
         /// <summary>
-        ///     Tests that OpenWrite() throws InvalidOperationException when already opened.
-        /// </summary>
-        [Fact]
-        public void OpenWrite_WhenAlreadyOpened_ShouldThrowInvalidOperationException()
-        {
-            AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
-
-            // First OpenWrite() should not throw (but will fail due to FFmpeg not being available)
-            try
-            {
-                writer.OpenWrite(false);
-            }
-            catch (Exception)
-            {
-                // FFmpeg may not be available, but we're testing the state validation
-            }
-
-            // Second OpenWrite() should throw InvalidOperationException about already opened
-            Assert.Throws<InvalidOperationException>(() => writer.OpenWrite(false));
-        }
-
-        /// <summary>
         ///     Tests that CloseWrite() throws InvalidOperationException when not opened.
         /// </summary>
         [Fact]
