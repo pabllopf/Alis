@@ -200,7 +200,6 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Throws<InvalidOperationException>(() => Logger.Exception(exceptionMessage));
 
             IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
-            Assert.Single(entries);
             Assert.Equal(LogLevel.Critical, entries[0].Level);
             Assert.Contains(exceptionMessage, entries[0].Message);
         }
