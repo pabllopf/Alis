@@ -105,13 +105,13 @@ namespace Alis.Test.Core.Ecs.Components.Render
         }
 
         /// <summary>
-        ///     Tests that the OnExit method exists and is callable
+        ///     Tests that the OnExit method resets position and resolution to origin values
         /// </summary>
         [Fact]
-        public void Camera_OnExitMethod_ShouldExistAndBeCallable()
+        public void Camera_OnExitMethod_ShouldResetToOriginValues()
         {
             Context context = new Context();
-            Vector2F position = new Vector2F(0f, 0f);
+            Vector2F position = new Vector2F(10f, 20f);
             Vector2F resolution = new Vector2F(800f, 600f);
 
             Camera camera = new Camera(context, position, resolution);
@@ -120,6 +120,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             camera.Resolution = new Vector2F(1920f, 1080f);
 
             camera.OnExit(null!);
+
+            Assert.Equal(new Vector2F(10f, 20f), camera.Position);
+            Assert.Equal(new Vector2F(800f, 600f), camera.Resolution);
         }
 
         /// <summary>
