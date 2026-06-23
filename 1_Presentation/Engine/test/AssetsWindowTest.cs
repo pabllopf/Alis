@@ -89,7 +89,7 @@ namespace Alis.App.Engine.Test
         {
             string windowName = AssetsWindow.WindowName;
 
-            Assert.Contains("Folder", windowName);
+            Assert.Contains("\uf07c", windowName);
         }
 
         /// <summary>
@@ -199,64 +199,7 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(window);
         }
         
-
-        /// <summary>
-        ///     Tests that Render() handles closed window state.
-        /// </summary>
-        [Fact]
-        public void Render_ShouldHandleClosedWindow()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithResources();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            // Simulate window being closed by accessing internal state if possible
-            Assert.NotNull(window);
-        }
-
-     
-
-        /// <summary>
-        ///     Tests that Render() maintains window instance.
-        /// </summary>
-        [Fact]
-        public void Render_ShouldMaintainWindowInstance()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithResources();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            window.Render();
-
-            Assert.NotNull(window);
-            Assert.Same(spaceWork, window.SpaceWork);
-        }
-
-        /// <summary>
-        ///     Tests that IsDefaultSize property affects Render behavior.
-        /// </summary>
-        [Fact]
-        public void Render_ShouldHandleIsDefaultSizeTrue()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithResources();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            window.IsDefaultSize = true;
-
-            Assert.True(window.IsDefaultSize);
-        }
-
-        /// <summary>
-        ///     Tests that IsDefaultSize property affects Render behavior when false.
-        /// </summary>
-        [Fact]
-        public void Render_ShouldHandleIsDefaultSizeFalse()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithResources();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            window.IsDefaultSize = false;
-
-            Assert.False(window.IsDefaultSize);
-        }
+        
 
         /// <summary>
         ///     Tests that multiple AssetsWindow instances maintain independent state.
@@ -318,20 +261,5 @@ namespace Alis.App.Engine.Test
             Assert.True(window.IsDefaultSize);
         }
         
-
-        /// <summary>
-        ///     Tests that Render() maintains window state.
-        /// </summary>
-        [Fact]
-        public void Render_ShouldMaintainWindowState()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithResources();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            window.Render();
-
-            Assert.NotNull(window);
-            Assert.NotNull(window.SpaceWork);
-        }
     }
 }

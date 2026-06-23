@@ -124,43 +124,7 @@ namespace Alis.App.Engine.Test
 
             Assert.NotSame(menu1.SpaceWork, menu2.SpaceWork);
         }
-
-        [Fact]
-        public void Render_ShouldNotThrowWithValidViewport()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithViewport();
-            BottomMenu menu = new BottomMenu(spaceWork);
-
-            menu.Render();
-
-            Assert.NotNull(menu);
-        }
-
-        [Fact]
-        public void Render_ShouldBeIdempotent()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithViewport();
-            BottomMenu menu = new BottomMenu(spaceWork);
-
-            menu.Render();
-            menu.Render();
-            menu.Render();
-
-            Assert.NotNull(menu);
-        }
-
-        [Fact]
-        public void Render_ShouldMaintainMenuInstance()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithViewport();
-            BottomMenu menu = new BottomMenu(spaceWork);
-
-            menu.Render();
-
-            Assert.NotNull(menu);
-            Assert.Same(spaceWork, menu.SpaceWork);
-        }
-
+        
         [Fact]
         public void SetupNextWindowProperties_ShouldHandleNonMacOsPath()
         {

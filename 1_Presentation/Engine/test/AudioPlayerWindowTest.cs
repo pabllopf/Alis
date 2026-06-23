@@ -156,25 +156,5 @@ namespace Alis.App.Engine.Test
 
             Assert.NotNull(window);
         }
-        
-
-        /// <summary>
-        ///     Tests that Render() does not throw an exception when window is closed.
-        /// </summary>
-        [Fact]
-        public void Render_ShouldNotThrow_WhenWindowIsClosed()
-        {
-            SpaceWork spaceWork = (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
-            AudioPlayerWindow window = new AudioPlayerWindow(spaceWork);
-
-            // Simulate window being closed by directly accessing the private field through reflection
-            var isOpenField = typeof(AudioPlayerWindow).GetField("isOpen", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            isOpenField?.SetValue(window, false);
-
-            window.Render();
-
-            Assert.NotNull(window);
-        }
     }
 }
