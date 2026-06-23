@@ -57,5 +57,19 @@ namespace Alis.Test.Core.Ecs.Components.Body
             RigidBody body = default;
             Assert.IsAssignableFrom<IOnUpdate>(body);
         }
+
+        /// <summary>
+        ///     Tests that OnUpdate does not throw when called
+        /// </summary>
+        [Fact]
+        public void RigidBody_OnUpdate_ShouldNotThrow()
+        {
+            RigidBody body = default;
+            
+            body.OnUpdate(null!);
+            
+            // Method is intentionally empty — verify it's callable without throwing
+            Assert.True(true);
+        }
     }
 }
