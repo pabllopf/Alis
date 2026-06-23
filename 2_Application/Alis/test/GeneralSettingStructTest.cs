@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Linq;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.Systems.Configuration.General;
 using Xunit;
 
@@ -77,6 +80,138 @@ namespace Alis.Test
         {
             GeneralSetting setting = new GeneralSetting();
             Assert.IsAssignableFrom<IGeneralSetting>(setting);
+        }
+
+        /// <summary>
+        /// Tests that GetSerializableProperties returns all 7 properties
+        /// </summary>
+        [Fact]
+        public void GetSerializableProperties_ShouldReturnAllProperties()
+        {
+            GeneralSetting setting = new GeneralSetting(true, "TestName", "TestDesc", "2.0", "TestAuthor", "MIT", "test.ico");
+            IJsonSerializable serializable = setting;
+
+            List<(string PropertyName, string Value)> properties = serializable.GetSerializableProperties().ToList();
+
+            Assert.Contains(properties, p => p.PropertyName == "Debug" && p.Value == "True");
+            Assert.Contains(properties, p => p.PropertyName == "Name" && p.Value == "TestName");
+            Assert.Contains(properties, p => p.PropertyName == "Description" && p.Value == "TestDesc");
+            Assert.Contains(properties, p => p.PropertyName == "Version" && p.Value == "2.0");
+            Assert.Contains(properties, p => p.PropertyName == "Author" && p.Value == "TestAuthor");
+            Assert.Contains(properties, p => p.PropertyName == "License" && p.Value == "MIT");
+            Assert.Contains(properties, p => p.PropertyName == "Icon" && p.Value == "test.ico");
+            Assert.Equal(7, properties.Count);
+        }
+
+        /// <summary>
+        /// Tests that GetSerializableProperties returns default values
+        /// </summary>
+        [Fact]
+        public void GetSerializableProperties_WithDefaults_ShouldReturnDefaultValues()
+        {
+            GeneralSetting setting = new GeneralSetting();
+            IJsonSerializable serializable = setting;
+
+            List<(string PropertyName, string Value)> properties = serializable.GetSerializableProperties().ToList();
+
+            Assert.Contains(properties, p => p.PropertyName == "Debug" && p.Value == "False");
+            Assert.Contains(properties, p => p.PropertyName == "Name" && p.Value == "Default Name");
+            Assert.Contains(properties, p => p.PropertyName == "Description" && p.Value == "Default Description");
+            Assert.Contains(properties, p => p.PropertyName == "Version" && p.Value == "0.0.0");
+            Assert.Contains(properties, p => p.PropertyName == "Author" && p.Value == "Pablo Perdomo Falcón");
+            Assert.Contains(properties, p => p.PropertyName == "License" && p.Value == "GPL-3.0 license");
+            Assert.Contains(properties, p => p.PropertyName == "Icon" && p.Value == "app.ico");
+            Assert.Equal(7, properties.Count);
+        }
+
+        /// <summary>
+        /// Tests that CreateFromProperties creates instance with all provided values
+        /// </summary>
+        [Fact]
+        public void CreateFromProperties_WithAllValues_ShouldCreatePopulatedInstance()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>
+            {
+                { "Debug", "true" },
+                { "Name", "CustomName" },
+                { "Description", "CustomDesc" },
+                { "Version", "3.0.0" },
+                { "Author", "CustomAuthor" },
+                { "License", "Apache-2.0" },
+                { "Icon", "custom.ico" }
+            };
+
+            IJsonDesSerializable<GeneralSetting> deserializable = new GeneralSetting();
+            GeneralSetting result = deserializable.CreateFromProperties(properties);
+
+            Assert.True(result.Debug);
+            Assert.Equal("CustomName", result.Name);
+            Assert.Equal("CustomDesc", result.Description);
+            Assert.Equal("3.0.0", result.Version);
+            Assert.Equal("CustomAuthor", result.Author);
+            Assert.Equal("Apache-2.0", result.License);
+            Assert.Equal("custom.ico", result.Icon);
+        }
+
+        /// <summary>
+        /// Tests that CreateFromProperties uses fallback defaults for missing values
+        /// </summary>
+        [Fact]
+        public void CreateFromProperties_WithMissingValues_ShouldUseDefaults()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>();
+
+            IJsonDesSerializable<GeneralSetting> deserializable = new GeneralSetting();
+            GeneralSetting result = deserializable.CreateFromProperties(properties);
+
+            Assert.False(result.Debug);
+            Assert.Equal("Default Name", result.Name);
+            Assert.Equal("Default Description", result.Description);
+            Assert.Equal("0.0.0", result.Version);
+            Assert.Equal("Pablo Perdomo Falcón", result.Author);
+            Assert.Equal("GPL-3.0 license", result.License);
+            Assert.Equal("app.jpeg", result.Icon);
+        }
+
+        /// <summary>
+        /// Tests that CreateFromProperties treats invalid Debug value as false
+        /// </summary>
+        [Fact]
+        public void CreateFromProperties_WithInvalidDebug_ShouldTreatAsFalse()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>
+            {
+                { "Debug", "not-a-bool" }
+            };
+
+            IJsonDesSerializable<GeneralSetting> deserializable = new GeneralSetting();
+            GeneralSetting result = deserializable.CreateFromProperties(properties);
+
+            Assert.False(result.Debug);
+        }
+
+        /// <summary>
+        /// Tests that CreateFromProperties with partial values uses fallbacks for missing
+        /// </summary>
+        [Fact]
+        public void CreateFromProperties_WithPartialValues_ShouldUseFallbacks()
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>
+            {
+                { "Name", "OnlyName" },
+                { "Version", "99.9.9" }
+            };
+
+            IJsonDesSerializable<GeneralSetting> deserializable = new GeneralSetting();
+            GeneralSetting result = deserializable.CreateFromProperties(properties);
+
+            Assert.False(result.Debug);
+            Assert.Equal("OnlyName", result.Name);
+            Assert.Equal("Default Description", result.Description);
+            Assert.Equal("99.9.9", result.Version);
+            Assert.Equal("Pablo Perdomo Falcón", result.Author);
+            Assert.Equal("GPL-3.0 license", result.License);
+            Assert.Equal("app.jpeg", result.Icon);
         }
     }
 }
