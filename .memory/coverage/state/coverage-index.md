@@ -41,7 +41,7 @@
 | 6 | AudioSource.cs | 9cddbe7df | 2026-06-23 |
 | 7 | SceneManagerBuilder.cs | e3e2cd74e | 2026-06-23 |
 | 8 | ContextHandler.cs | 4721fdde7 | 2026-06-23 |
-| 9 | Animator.cs | | 2026-06-23 |
+| 9 | Animator.cs | 828ebf078 | 2026-06-23 |
 
 ## Top Targets (by uncovered lines)
 
