@@ -2,7 +2,7 @@
 
 ## Status: RELEASED
 
-Lock released for BottomMenu.cs at 2026-06-23T11:05:00Z
+Lock released for AssetsWindow.cs at 2026-06-23T11:15:00Z
 
 ---
 
