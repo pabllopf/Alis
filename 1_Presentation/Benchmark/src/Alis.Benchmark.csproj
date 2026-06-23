@@ -9,8 +9,6 @@
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
         <WarningLevel>0</WarningLevel>
-        <Configurations>Debug;Release;Win;Osx;Linux;Browser;Android;Ios</Configurations>
-        <Platforms>AnyCPU;x64;x86;arm;arm64;wasm;simulator_x64;simulator_arm64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>
@@ -50,7 +48,7 @@
         </NoWarn> <!-- Errors -->
         <NoWarn>$(NoWarn);</NoWarn>
     </PropertyGroup>
-
+    
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Benchmark')) == true">
         <PackageReference Include="BenchmarkDotNet" Version="0.14.0"/>
 

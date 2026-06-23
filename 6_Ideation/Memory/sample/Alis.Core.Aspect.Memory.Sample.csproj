@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-      <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
         <LangVersion>13</LangVersion>
@@ -9,34 +9,7 @@
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
         <ApplicationIcon Condition="Exists('$(ProjectDir)Assets/app.ico')">Assets/app.ico</ApplicationIcon>
-        <Configurations>Debug;Release;Win;Osx;Linux;Browser;Android;Ios</Configurations>
-        <Platforms>AnyCPU;x64;x86;arm;arm64;wasm;simulator_x64;simulator_arm64</Platforms>
-        
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Win' AND '$(Platform)' == 'arm64'">win-arm64</RuntimeIdentifier>
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Win' AND '$(Platform)' == 'arm'">win-arm</RuntimeIdentifier>
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Win' AND '$(Platform)' == 'x64'">win-x64</RuntimeIdentifier>
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Win' AND '$(Platform)' == 'x86'">win-x86</RuntimeIdentifier>
-        
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Osx' AND '$(Platform)' == 'arm64'">osx-arm64</RuntimeIdentifier>
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Osx' AND '$(Platform)' == 'x64'">osx-x64</RuntimeIdentifier>
-        
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Linux' AND '$(Platform)' == 'arm'">linux-arm</RuntimeIdentifier>
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Linux' AND '$(Platform)' == 'arm64'">linux-arm64</RuntimeIdentifier>
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Linux' AND '$(Platform)' == 'x64'">linux-x64</RuntimeIdentifier>
-
-         <RuntimeIdentifier Condition="'$(Configuration)' == 'Browser' AND '$(Platform)' == 'wasm'">browser-wasm</RuntimeIdentifier>
-        
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'arm64'">ios-arm64</RuntimeIdentifier>
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'x64'">ios-x64</RuntimeIdentifier>
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'simulator_x64'">iossimulator-x64</RuntimeIdentifier>
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Ios' AND '$(Platform)' == 'simulator_arm64'">iossimulator-arm64</RuntimeIdentifier>
-        
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Android' AND '$(Platform)' == 'arm64'">android-arm64</RuntimeIdentifier>
-        <RuntimeIdentifier Condition="'$(Configuration)' == 'Android' AND '$(Platform)' == 'x64'">android-x64</RuntimeIdentifier>
-        
     </PropertyGroup>
-    
-    
 
      <PropertyGroup>
         <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
@@ -73,8 +46,8 @@
 
     </PropertyGroup>
 
-     <ItemGroup>
-        <AssemblyAttribute Condition="$(TargetFramework.Contains('net8'))" Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -85,7 +58,7 @@
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
 
-      <ItemGroup Condition="$(NameTest.StartsWith('Alis'))">
+     <ItemGroup>
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)../src/$(NameTest).csproj"/>
@@ -115,7 +88,7 @@
                           Include="$(SolutionDir)2_Application/Alis/src/Alis.csproj"/>
     </ItemGroup>
 
-       <!-- ========== PROPIEDADES DE ASSETS ========== -->
+           <!-- ========== PROPIEDADES DE ASSETS ========== -->
        <PropertyGroup>
            <!-- Carpeta de recursos -->
            <AssetsDir>$(ProjectDir)Assets</AssetsDir>
@@ -240,13 +213,14 @@
                             Visible="false" />
        </ItemGroup>
 
-   <ItemGroup>
+
+    <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
                           Include="
-          $(SolutionDir)3_Structuration/**/**/generator/**/Alis.*Generator.csproj;               
-          $(SolutionDir)4_Operation/**/**/generator/**/Alis.*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/Alis.*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/Alis.*Generator.csproj;"
+          $(SolutionDir)3_Structuration/**/**/generator/**/*Generator.csproj;               
+          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
@@ -257,9 +231,9 @@
 
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
                           Include="          
-          $(SolutionDir)4_Operation/**/**/generator/**/Alis.*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/Alis.*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/Alis.*Generator.csproj;"
+          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
@@ -270,8 +244,8 @@
 
         <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
                           Include="          
-          $(SolutionDir)5_Declaration/**/**/generator/**/Alis.*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/Alis.*Generator.csproj;"
+          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
@@ -282,7 +256,7 @@
 
         <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
                           Include="          
-          $(SolutionDir)6_Ideation/**/**/generator/**/Alis.*Generator.csproj;"
+          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
