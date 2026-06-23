@@ -1,61 +1,46 @@
-# Coverage Index
+# Coverage Index - master branch
 
-## Metadata
+## Project Key: pabllopf-official_alis
 
-- Created: 2026-06-23T08:30:00Z
-- Source: SonarCloud
-- Project: pabllopf-official_alis
-- Branch: master
+## Last Sync: 2026-06-23T11:10:00Z
 
-## Global Metrics
+### Status: SYNCHRONIZED
 
-| Metric | Value |
-|--------|-------|
-| Overall Coverage | 51.8% |
-| Line Coverage | 51.2% |
-| Branch Coverage | 55.0% |
-| Uncovered Lines | 31,079 |
-| Conditions to Cover | 12,902 |
-| Uncovered Conditions | 5,809 |
+**Project Coverage:** 51.9% | **Line Coverage:** 51.3% | **Branch Coverage:** 55.1%
 
-## File Coverage Summary
+---
 
-| Coverage | Files | Uncovered Lines |
-|----------|-------|-----------------|
-| 0% | 68 | 6,048 |
-| 0-20% | 65 | 8,942 |
-| 20-50% | 87 | 7,706 |
-| 50-80% | 98 | 6,804 |
-| 80-100% | 34 | 1,579 |
-| **Total** | **352** | **31,079** |
+## Completed Remediation Tasks
 
-## Completed Tasks
+| Task ID | File Path | Initial Coverage | Status | Commit |
+|---------|-----------|------------------|--------|--------|
+| bottom-menu-001 | 1_Presentation/Engine/src/Menus/BottomMenu.cs | 10.0% | ✅ COMPLETED | 95836d2d6 |
 
-| # | File | Commit | Date |
-|   |------|--------|-------|
-| 1 | GeneralSetting.cs | dbb55bb1e | 2026-06-23 |
-| 2 | Sprite.cs | 030f2e7bb / b3ce6ff70 | 2026-06-23 |
-| 3 | RigidBody.cs | 3302ecfb2 | 2026-06-23 |
-| 4 | Transform.cs | 92921c128 | 2026-06-23 |
-| 5 | Camera.cs | d8c63ce1c | 2026-06-23 |
-| 6 | AudioSource.cs | 9cddbe7df | 2026-06-23 |
-| 7 | SceneManagerBuilder.cs | e3e2cd74e | 2026-06-23 |
-| 8 | ContextHandler.cs | 4721fdde7 | 2026-06-23 |
-| 9 | Animator.cs | 828ebf078 | 2026-06-23 |
-| 10 | SceneBuilder.cs | d6f969187 | 2026-06-23 |
-| 11 | TimeManager.cs | 4ef051b2a | 2026-06-23 |
-| 12 | InputManager.cs | e1587514b | 2026-06-23 |
-| 13 | NetworkManager.cs | e1587514b | 2026-06-23 |
-| 14 | Info.cs | e1587514b | 2026-06-23 |
-| 15 | VideoGameBuilder.cs | a172c9ed6 | 2026-06-23 |
-| 16 | SceneManager.cs | ecd989025 | 2026-06-23 |
+---
 
-## Top Targets (by uncovered lines)
+## Low Coverage Files (<30%) - PRIORITY TARGETS
 
-| # | Coverage | Uncovered | Path |
-|---|----------|-----------|------|
-| 1 | 0.0% | 883 | 1_Presentation/Engine/src/Engine.cs |
-| 2 | 8.4% | 767 | 1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs |
-| 3 | 0.0% | 672 | 1_Presentation/Hub/src/HubEngine.cs |
-| 4 | 0.7% | 490 | 4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs |
-| 5 | 0.0% | 489 | 1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs |
+| File Path | Coverage % | Branch % | Line % | Status |
+|-----------|------------|----------|--------|--------|
+| 1_Presentation/Engine/src/Windows/AssetsWindow.cs | 18.4 | 0.0 | 22.8 | **PENDING** |
+| 2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | 23.0 | 2.1 | 26.6 | **PENDING** |
+| 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs | 31.4 | 26.2 | 33.7 | Medium |
+| 4_Operation/Audio/src/Players/BrowserPlayer.cs | 59.1 | 73.5 | 54.1 | Medium |
+
+---
+
+## Files with No Coverage Data (Enums, Structs, Delegates)
+
+These files typically contain only type definitions without executable code.
+
+---
+
+## Fully Covered Files (>95%)
+
+These files are already well-tested. **SKIP** unless delta shows regression.
+
+---
+
+*Processing low-coverage files first per Coverage Priority Rule.*
+*Next target: AssetsWindow.cs (18.4% coverage)*
+
