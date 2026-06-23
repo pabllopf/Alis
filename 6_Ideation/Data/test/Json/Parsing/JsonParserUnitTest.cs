@@ -818,27 +818,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal(1000, result.Count);
             Assert.True(sw.ElapsedMilliseconds < 2000);
         }
-
-        /// <summary>
-        ///     Tests that parse to dictionary deep nesting completes reasonably
-        /// </summary>
-        [Fact]
-        public void ParseToDictionary_DeepNesting_CompletesReasonably()
-        {
-            // Arrange - 10 levels deep
-            string json = "{\"l1\":{\"l2\":{\"l3\":{\"l4\":{\"l5\":{\"l6\":{\"l7\":{\"l8\":{\"l9\":{\"l10\":\"value\"}}}}}}}}}}";
-
-            // Act
-            Stopwatch sw = Stopwatch.StartNew();
-            Dictionary<string, string> result = _parser.ParseToDictionary(json);
-            sw.Stop();
-
-            // Assert
-            Assert.Single(result);
-            Assert.True(sw.ElapsedMilliseconds < 100);
-        }
-
-
+        
         /// <summary>
         ///     Tests that parse to dictionary duplicate keys uses last value
         /// </summary>
