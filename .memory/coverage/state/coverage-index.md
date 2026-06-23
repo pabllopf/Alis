@@ -48,6 +48,7 @@
 | 13 | NetworkManager.cs | e1587514b | 2026-06-23 |
 | 14 | Info.cs | e1587514b | 2026-06-23 |
 | 15 | VideoGameBuilder.cs | a172c9ed6 | 2026-06-23 |
+| 16 | SceneManager.cs | ecd989025 | 2026-06-23 |
 
 ## Top Targets (by uncovered lines)
 
