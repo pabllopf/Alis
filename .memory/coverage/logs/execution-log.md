@@ -95,3 +95,15 @@
 **Tests Added**: 2
 **Result**: All pass (555 total in assembly, 19 in AudioSourceTest)
 **Coverage Improvement**: Covers ternary false branches (FullPathAudioFile non-empty) in Play method for both non-looping and looping paths
+
+---
+
+## 2026-06-23T09:20:00Z
+
+### Task: Animator.cs — OnUpdate immediate call edge case coverage
+
+**File**: 2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs
+**Test File**: 2_Application/Alis/test/Core/Ecs/Components/Render/AnimatorTest.cs
+**Tests Added**: 1 (OnUpdate_ImmediatelyAfterOnStart_ShouldNotAdvanceFrame)
+**Result**: All pass (573/573)
+**Coverage Improvement**: Covers _elapsedTime >= frameDuration false branch with non-zero speed
