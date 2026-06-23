@@ -42,6 +42,12 @@
 | 7 | SceneManagerBuilder.cs | e3e2cd74e | 2026-06-23 |
 | 8 | ContextHandler.cs | 4721fdde7 | 2026-06-23 |
 | 9 | Animator.cs | 828ebf078 | 2026-06-23 |
+| 10 | SceneBuilder.cs | d6f969187 | 2026-06-23 |
+| 11 | TimeManager.cs | 4ef051b2a | 2026-06-23 |
+| 12 | InputManager.cs | e1587514b | 2026-06-23 |
+| 13 | NetworkManager.cs | e1587514b | 2026-06-23 |
+| 14 | Info.cs | e1587514b | 2026-06-23 |
+| 15 | VideoGameBuilder.cs | a172c9ed6 | 2026-06-23 |
 
 ## Top Targets (by uncovered lines)
 
