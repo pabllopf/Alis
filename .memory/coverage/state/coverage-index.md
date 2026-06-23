@@ -1,119 +1,47 @@
 # Coverage Index
 
-## Project: pabllopf-official_alis
+## Metadata
 
-## Branch: master
+- Created: 2026-06-23T08:30:00Z
+- Source: SonarCloud
+- Project: pabllopf-official_alis
+- Branch: master
 
-### Overall Coverage (Initial Sync)
+## Global Metrics
 
-- **Coverage**: 51.8%
-- **Line Coverage**: 51.1%
-- **Branch Coverage**: 54.9%
+| Metric | Value |
+|--------|-------|
+| Overall Coverage | 51.8% |
+| Line Coverage | 51.2% |
+| Branch Coverage | 55.0% |
+| Uncovered Lines | 31,079 |
+| Conditions to Cover | 12,902 |
+| Uncovered Conditions | 5,809 |
 
-### Progress Summary
+## File Coverage Summary
 
-- **Files Processed**: 10 of ~1,558 files
-- **Public Methods Tested**: 189 methods/properties
-- **Coverage Tasks Completed**: 10
+| Coverage | Files | Uncovered Lines |
+|----------|-------|-----------------|
+| 0% | 68 | 6,048 |
+| 0-20% | 65 | 8,942 |
+| 20-50% | 87 | 7,706 |
+| 50-80% | 98 | 6,804 |
+| 80-100% | 34 | 1,579 |
+| **Total** | **352** | **31,079** |
 
-### Low Coverage Files (<50%)
+## Completed Tasks
 
-| File | Coverage | Line | Branch | Priority |
-|------|----------|------|--------|----------|
-| BottomMenu.cs | 10.0% | 11.8% | 0.0% | **CRITICAL** |
-| AssetsWindow.cs | 18.4% | 22.8% | 0.0% | **HIGH** |
-| BoxCollider.cs | 23.0% | 26.6% | 2.1% | **HIGH** |
-| AudioPlayerWindow.cs | 35.6% | 45.7% | 0.0% | MEDIUM |
-| AudioPlayer.cs | 37.1% | 38.8% | 33.3% | MEDIUM |
-| AudioReader.cs | 41.9% | 42.9% | 39.6% | MEDIUM |
-| BrowserPlayer.cs | 53.8% | 49.0% | 67.6% | MEDIUM |
-| AudioVideoWriter.cs | 52.8% | 53.4% | 51.3% | LOW |
-| AudioWriter.cs | 54.0% | 53.3% | 55.6% | LOW |
+| # | File | Commit | Date |
+|---|------|--------|------|
+| 1 | GeneralSetting.cs | dbb55bb1e | 2026-06-23 |
+| 2 | Sprite.cs | 030f2e7bb | 2026-06-23 |
 
-### Fully Covered Files (100%)
+## Top Targets (by uncovered lines)
 
-- AABB.cs
-- AACEncoder.cs
-- AdConfiguration.cs
-- AddComponent.cs
-- AdRewardEventArgs.cs
-- AdvancingFront.cs
-- AdvancingFrontNode.cs
-- AManager.cs
-- AngleJoint.cs
-- Animation.cs
-- AnimationBuilder.cs
-- AnimatorBuilder.cs
-- AssetRegistry.cs (90.3%)
-- AsyncLogOutput.cs
-- AudioFormat.cs
-- AudioFrame.cs
-- AudioManager.cs
-- AudioMetadata.cs
-- AudioSetting.cs
-- AudioSettingBuilder.cs
-- AudioSourceBuilder.cs
-- AudioSpec.cs
-- AWindow.cs
-- BatchPartitioner.cs
-- BayazitDecomposer.cs (93.9%)
-- BoardBuilder.cs (99.5%)
-- BoardSquare.cs
-- BoardSquareTypeHelper.cs
-- Body.Factory.cs
-- BodyCollection.cs
-- BoxColliderBuilder.cs
-- BreakableBody.cs
-- BinaryReaderWriter.cs (96.6%)
-- BitOperations.cs
-- BlendMode.cs
-- BufferPool.cs
-
-### Files with No Coverage Data (Enums, Delegates, etc.)
-
-These files typically contain only type definitions without executable logic:
-
-- ActiveAttribType.cs
-- ActiveUniformType.cs
-- ActiveButton.cs (may need investigation)
-- AfterCollisionEventHandler.cs
-- ...
-
-### Delta Analysis
-
-**Previous state:** Initial sync (2026-06-22)
-**Current state:** Processing in progress
-
-### Completed Tasks
-
-| Task # | File | Coverage Before | Tests Added | Status |
-|--------|------|-----------------|-------------|--------|
-| 1 | BottomMenu.cs | 10.0% | 6 tests | ✅ Committed (7a6febaad) |
-| 2 | AssetsWindow.cs | 18.4% | 10 tests | ✅ Committed (49be1b849) |
-| 3 | BoxCollider.cs | 23.0% | 21 tests | ✅ Committed (8fa202ec0) |
-| 4 | AudioPlayerWindow.cs | 35.6% | 11 tests | ✅ Committed (b17af10c3) |
-| 5 | AudioPlayer.cs | 37.1% | 11 tests | ✅ Committed (a893bab3a) |
-| 6 | AudioReader.cs | 41.9% | 21 tests | ✅ Committed (d5e3cb6fb) |
-| 7 | BrowserPlayer.cs | 53.8% | 19 tests | ✅ Committed (304913fc3) |
-| 8 | AudioVideoWriter.cs | 52.8% | 38 tests | ✅ Committed (44a32cdc9) |
-| 9 | AudioWriter.cs | 54.0% | 28 tests | ✅ Committed (08e3ba40a) |
-| 10 | BrowserPlayerStaticMethods.cs | N/A | 24 tests | ✅ Committed (5deb43f6a) |
-| 11 | AdsManager.cs | 91.0% | Already covered | ✅ Reviewed
-
-### Remaining Low Coverage Targets
-
-| File | Coverage | Line | Branch | Priority |
-|------|----------|------|--------|----------|
-| [No low-coverage files identified below 60%]
-
-### Progress Summary
-
-- **Files Processed**: 9 of ~1,558 files
-- **Public Methods/Properties Tested**: 165 methods/properties
-- **Coverage Tasks Completed**: 9
-
-### Files to Skip (Already 100% or Enums/Delegates)
-
-- All files marked as 100% coverage
-- Files with no measures (enums, delegates, markers)
-- Files with <5% executable lines (pure type definitions)
+| # | Coverage | Uncovered | Path |
+|---|----------|-----------|------|
+| 1 | 0.0% | 883 | 1_Presentation/Engine/src/Engine.cs |
+| 2 | 8.4% | 767 | 1_Presentation/Extension/Graphic/Sdl2/src/Sdl.cs |
+| 3 | 0.0% | 672 | 1_Presentation/Hub/src/HubEngine.cs |
+| 4 | 0.7% | 490 | 4_Operation/Physic/src/Common/TextureTools/MarchingSquares.cs |
+| 5 | 0.0% | 489 | 1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs |

@@ -1,147 +1,26 @@
 # Execution Log
 
-## Status: Active — Processing Phase 1
+## 2026-06-23T08:35:00Z
 
-### Execution #1 — BottomMenu.cs ✅ COMPLETED
+### Task: GeneralSetting.cs — IJsonSerializable / IJsonDesSerializable coverage
 
-**Timestamp**: 2026-06-22
-**File**: `1_Presentation/Engine/src/Menus/BottomMenu.cs`
-**Coverage Before**: 10.0%
-**Methods Tested**: 6 public methods
-**Test File**: `1_Presentation/Engine/test/BottonMenuTest.cs`
-**Commit Hash**: 7a6febaad
-**Status**: ✅ Committed
-
-### Execution #2 — AssetsWindow.cs ✅ COMPLETED
-
-**Timestamp**: 2026-06-22
-**File**: `1_Presentation/Engine/src/Windows/AssetsWindow.cs`
-**Coverage Before**: 18.4%
-**Methods Tested**: 10 public methods/properties
-**Test File**: `1_Presentation/Engine/test/AssetsWindowTest.cs`
-**Commit Hash**: 49be1b849
-**Status**: ✅ Committed
-
-### Execution #3 — BoxCollider.cs ✅ COMPLETED
-
-**Timestamp**: 2026-06-22
-**File**: `3_Structuration/Core/src/Alis.Core.Ecs.csproj (BoxCollider.cs)`
-**Coverage Before**: 23.0%
-**Methods/Properties Tested**: 21 public methods/properties
-**Test File**: `3_Structuration/Core/test/BoxColliderTest.cs`
-**Commit Hash**: 8fa202ec0
-**Status**: ✅ Committed
-
-### Execution #4 — AudioPlayerWindow.cs ✅ COMPLETED
-
-**Timestamp**: 2026-06-22
-**File**: `1_Presentation/Engine/src/Windows/AudioPlayerWindow.cs`
-**Coverage Before**: 35.6%
-**Methods/Properties Tested**: 11 public methods/fields
-**Test File**: `1_Presentation/Engine/test/AudioPlayerWindowTest.cs`
-**Commit Hash**: b17af10c3
-**Status**: ✅ Committed
-
-### Execution #5 — AudioPlayer.cs ✅ COMPLETED
-
-**Timestamp**: 2026-06-22
-**File**: `1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs`
-**Coverage Before**: 37.1%
-**Methods Tested**: 11 public constructors and methods
-**Test File**: `1_Presentation/Extension/Media/FFmpeg/test/AudioPlayerTest.cs`
-**Commit Hash**: a893bab3a
-**Status**: ✅ Committed
-
-### Execution #6 — AudioReader.cs ✅ COMPLETED
-
-**Timestamp**: 2026-06-22
-**File**: `1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs`
-**Coverage Before**: 41.9%
-**Methods/Properties Tested**: 21 public methods/properties/static methods
-**Test File**: `1_Presentation/Extension/Media/FFmpeg/test/AudioReaderTest.cs`
-**Commit Hash**: d5e3cb6fb
-**Status**: ✅ Committed
-
-### Execution #7 — BrowserPlayer.cs ✅ COMPLETED
-
-**Timestamp**: 2026-06-22
-**File**: `4_Operation/Audio/src/Players/BrowserPlayer.cs`
-**Coverage Before**: 53.8%
-**Methods/Properties Tested**: 19 public methods/static methods/properties/events
-**Test File**: `4_Operation/Audio/test/BrowserPlayerTest.cs`
-**Commit Hash**: 304913fc3
-**Status**: ✅ Committed
-
-### Execution #8 — AudioVideoWriter.cs ✅ COMPLETED
-
-**Timestamp**: 2026-06-22
-**File**: `1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs`
-**Coverage Before**: 52.8%
-**Methods/Properties Tested**: 38 public methods/properties/constructors
-**Test File**: `1_Presentation/Extension/Media/FFmpeg/test/AudioVideoWriterTest.cs`
-**Commit Hash**: 44a32cdc9
-**Status**: ✅ Committed
-
-### Execution #9 — AudioWriter.cs ✅ COMPLETED
-
-**Timestamp**: 2026-06-22
-**File**: `1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs`
-**Coverage Before**: 54.0%
-**Methods/Properties Tested**: 28 public methods/properties/constructors
-**Test File**: `1_Presentation/Extension/Media/FFmpeg/test/AudioWriterTest.cs`
-**Commit Hash**: 08e3ba40a
-**Status**: ✅ Committed
-
-### Execution #10 — BrowserPlayerStaticMethods.cs ✅ COMPLETED
-
-**Timestamp**: 2026-06-22
-**File**: `4_Operation/Audio/src/Players/BrowserPlayer.cs (static methods)`
-**Coverage Before**: N/A
-**Methods/Properties Tested**: 24 static methods (TryParseWav, FindFmtChunk, FindDataChunk, TryGetFormat)
-**Test File**: `4_Operation/Audio/test/Players/BrowserPlayerStaticMethodsTest.cs`
-**Commit Hash**: 5deb43f6a
-**Status**: ✅ Committed
-
-### Execution #11 — AdsManager.cs ✅ REVIEWED (Already Well Tested)
-
-**Timestamp**: 2026-06-22
-**File**: `1_Presentation/Extension/Ads/GoogleAds/src/AdsManager.cs`
-**Coverage Before**: 91.0%
-**Existing Tests**: 34 tests already covering most code paths
-**Status**: ✅ Reviewed - No additional tests required
-
-### Coverage Remediation Summary
-
-**Total Files Processed**: 10 of ~1,558 files
-**Total Tests Generated**: 228 tests across 10 files
-
-| File | Coverage Before | Tests Added | Status |
-|------|-----------------|-------------|--------|
-| BottomMenu.cs | 10.0% | 6 tests | ✅ Completed |
-| AssetsWindow.cs | 18.4% | 10 tests | ✅ Completed |
-| BoxCollider.cs | 23.0% | 21 tests | ✅ Completed |
-| AudioPlayerWindow.cs | 35.6% | 11 tests | ✅ Completed |
-| AudioPlayer.cs | 37.1% | 11 tests | ✅ Completed |
-| AudioReader.cs | 41.9% | 21 tests | ✅ Completed |
-| BrowserPlayer.cs | 53.8% | 19 tests | ✅ Completed |
-| AudioVideoWriter.cs | 52.8% | 38 tests | ✅ Completed |
-| AudioWriter.cs | 54.0% | 28 tests | ✅ Completed |
-| BrowserPlayerStaticMethods.cs | N/A | 24 tests | ✅ Completed |
-
-### Next Steps
-
-1. Review SonarCloud for new uncovered files after commits are processed
-2. Continue with remaining files below 60% coverage
-3. Focus on files with critical/high priority
+**File**: 2_Application/Alis/src/Core/Ecs/Systems/Configuration/General/GeneralSetting.cs
+**Test File**: 2_Application/Alis/test/GeneralSettingStructTest.cs
+**Tests Added**: 6
+**Result**: All pass (9 total)
+**Coverage Improvement**: Methods GetSerializableProperties() and CreateFromProperties() now covered
+**Commit**: dbb55bb1e
 
 ---
 
-## Log End
+## 2026-06-23T08:40:00Z
 
----
+### Task: Sprite.cs — IsSpriteVisible method coverage
 
-
-
----
-
-## Log End
+**File**: 2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs
+**Test File**: 2_Application/Alis/test/Core/Ecs/Components/Render/SpriteIsSpriteVisibleTest.cs
+**Prod Change**: Changed `private static` → `internal static` for IsSpriteVisible (visibility adjustment)
+**Tests Added**: 9
+**Result**: All pass (9/9)
+**Coverage Improvement**: IsSpriteVisible() now covered — rotation/non-rotation branches, visible/invisible bounds
+**Commit**: 030f2e7bb
