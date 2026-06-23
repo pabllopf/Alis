@@ -92,10 +92,10 @@ namespace Alis.Test.Core.Ecs.Components
         }
 
         /// <summary>
-        ///     Tests that the OnExit method exists and is callable
+        ///     Tests that the OnExit method resets position, rotation, and scale to origin values
         /// </summary>
         [Fact]
-        public void Transform_OnExitMethod_ShouldExistAndBeCallable()
+        public void Transform_OnExitMethod_ShouldResetToOriginValues()
         {
             Transform transform = new Transform(new Vector2F(5f, 5f), 30f, new Vector2F(2f, 2f));
 
@@ -104,6 +104,10 @@ namespace Alis.Test.Core.Ecs.Components
             transform.Scale = new Vector2F(5f, 5f);
 
             transform.OnExit(null!);
+
+            Assert.Equal(new Vector2F(5f, 5f), transform.Position);
+            Assert.Equal(30f, transform.Rotation);
+            Assert.Equal(new Vector2F(2f, 2f), transform.Scale);
         }
 
         /// <summary>
@@ -147,7 +151,6 @@ namespace Alis.Test.Core.Ecs.Components
         /// <summary>
         ///     Tests that Rotation can be set to any float value
         /// </summary>
-        
         [InlineData(0f)]
         [InlineData(360f)]
         [InlineData(-360f)]
@@ -159,6 +162,44 @@ namespace Alis.Test.Core.Ecs.Components
 
             transform.Rotation = rotation;
             Assert.Equal(rotation, transform.Rotation);
+        }
+
+        /// <summary>
+        ///     Tests that OnExit resets to origin when constructed with two parameters
+        /// </summary>
+        [Fact]
+        public void Transform_OnExit_TwoParamConstructor_ShouldResetToOrigin()
+        {
+            Transform transform = new Transform(new Vector2F(10f, 20f), 45f);
+
+            transform.Position = new Vector2F(99f, 99f);
+            transform.Rotation = 180f;
+            transform.Scale = new Vector2F(10f, 10f);
+
+            transform.OnExit(null!);
+
+            Assert.Equal(new Vector2F(10f, 20f), transform.Position);
+            Assert.Equal(45f, transform.Rotation);
+            Assert.Equal(Vector2F.One, transform.Scale);
+        }
+
+        /// <summary>
+        ///     Tests that OnExit with default constructor resets to default values
+        /// </summary>
+        [Fact]
+        public void Transform_OnExit_DefaultConstructor_ShouldResetToDefaults()
+        {
+            Transform transform = new Transform();
+
+            transform.Position = new Vector2F(50f, 50f);
+            transform.Rotation = 90f;
+            transform.Scale = new Vector2F(5f, 5f);
+
+            transform.OnExit(null!);
+
+            Assert.Equal(new Vector2F(0f, 0f), transform.Position);
+            Assert.Equal(0f, transform.Rotation);
+            Assert.Equal(new Vector2F(0f, 0f), transform.Scale);
         }
     }
 }
