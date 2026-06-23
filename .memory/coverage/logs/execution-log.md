@@ -35,3 +35,16 @@
 **Result**: All pass (9/9)
 **Coverage Improvement**: IsSpriteVisible() now covered — rotation/non-rotation branches, visible/invisible bounds
 **Commit**: 030f2e7bb
+
+---
+
+## 2026-06-23T08:50:00Z
+
+### Task: AudioSource.cs — FullPathAudioFile ternary branches coverage
+
+**File**: 2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs
+**Test File**: 2_Application/Alis/test/Core/Ecs/Components/Audio/AudioSourceTest.cs
+**Prod Change**: Changed `private` → `internal` for FullPathAudioFile property (visibility adjustment)
+**Tests Added**: 2
+**Result**: All pass (555 total in assembly, 19 in AudioSourceTest)
+**Coverage Improvement**: Covers ternary false branches (FullPathAudioFile non-empty) in Play method for both non-looping and looping paths

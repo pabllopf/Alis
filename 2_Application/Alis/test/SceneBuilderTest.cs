@@ -87,5 +87,19 @@ namespace Alis.Test
             Scene second = builder.Build();
             Assert.Same(first, second);
         }
+
+        /// <summary>
+        ///     Tests that Add adds a game object and returns the builder
+        /// </summary>
+        [Fact]
+        public void Add_WithEmptyConfig_ShouldReturnBuilder()
+        {
+            Context context = new Context();
+            SceneBuilder builder = new SceneBuilder(context);
+
+            SceneBuilder result = builder.Add<GameObject>(gb => { });
+
+            Assert.Same(builder, result);
+        }
     }
 }
