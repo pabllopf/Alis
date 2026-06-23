@@ -577,5 +577,32 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.ThrowsAny<Exception>(() => animator.DrawAnimation(ref sprite));
         }
 
+        /// <summary>
+        ///     Tests that OnUpdate does not advance frame when called immediately after OnStart (elapsed time ~0)
+        /// </summary>
+        [Fact]
+        public void Animator_OnUpdate_ImmediatelyAfterOnStart_ShouldNotAdvanceFrame()
+        {
+            Animator animator = new Animator();
+            animator.Animations = new List<Animation>
+            {
+                new Animation
+                {
+                    Name = "TestAnim",
+                    Speed = 1f,
+                    Frames = new List<Frame>
+                    {
+                        new Frame { NameFile = "frame1" },
+                        new Frame { NameFile = "frame2" }
+                    }
+                }
+            };
+            animator.Play("TestAnim");
+            animator.OnStart(null!);
+
+            animator.OnUpdate(null!);
+
+            Assert.Equal(0, animator.CurrentFrameIndex);
+        }
     }
 }
