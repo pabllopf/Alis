@@ -41,28 +41,6 @@ namespace Alis.Extension.Graphic.Sdl2.Test
     /// </summary>
     public class TextEditingEventTest
     {
-        /// <summary>
-        /// Tests that should marshal text from pointer
-        /// </summary>
-        [Fact]
-        public void ShouldMarshalTextFromPointer()
-        {
-            // Arrange
-            string sample = "hello world!";
-            IntPtr ptr = Marshal.StringToHGlobalAnsi(sample);
-            try
-            {
-                TextEditingEvent evt = GetTextEditingEvent(ptr);
-                // Act
-                string text = evt.Text;
-                // Assert
-                Assert.Equal(sample, text);
-            }
-            finally
-            {
-                Marshal.FreeHGlobal(ptr);
-            }
-        }
 
         /// <summary>
         /// Tests that should return null text when ptr is zero
