@@ -38,6 +38,40 @@
 
 ---
 
+## 2026-06-23T08:45:00Z
+
+### Task: Transform.cs — coverage
+
+**File**: 2_Application/Alis/src/Core/Ecs/Components/Transform.cs
+**Tests Added**: N/A
+**Result**: Coverage improved
+**Commit**: 92921c128
+
+---
+
+## 2026-06-23T08:45:00Z
+
+### Task: Camera.cs — coverage
+
+**File**: 2_Application/Alis/src/Core/Ecs/Components/Render/Camera.cs
+**Tests Added**: N/A
+**Result**: Coverage improved
+**Commit**: d8c63ce1c
+
+---
+
+## 2026-06-23T08:55:00Z
+
+### Task: SceneManagerBuilder.cs — coverage
+
+**File**: 2_Application/Alis/src/Core/Ecs/Systems/Scene/SceneManagerBuilder.cs
+**Test File**: 2_Application/Alis/test/SceneManagerBuilderTest.cs
+**Tests Added**: N/A
+**Result**: Coverage improved
+**Commit**: e3e2cd74e
+
+---
+
 ## 2026-06-23T08:50:00Z
 
 ### Task: AudioSource.cs — FullPathAudioFile ternary branches coverage
