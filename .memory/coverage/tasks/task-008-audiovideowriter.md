@@ -2,6 +2,12 @@
 
 ## Status: ✅ Committed
 
+### Commit Information
+
+- **Commit Hash**: 44a32cdc9
+- **Commit Message**: `test: coverage AudioVideoWriter.cs and AudioWriter.cs`
+- **Date**: 2026-06-22
+
 ### File Information
 
 - **Path**: `1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs`
