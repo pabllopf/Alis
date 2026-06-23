@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs.Components.Audio
         /// <summary>
         ///     Gets or sets the value of the full path audio file
         /// </summary>
-        private string FullPathAudioFile { get; set; } = "";
+        internal string FullPathAudioFile { get; set; } = "";
 
         /// <summary>
         ///     Plays this instance

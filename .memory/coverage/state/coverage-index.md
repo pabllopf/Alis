@@ -32,9 +32,12 @@
 ## Completed Tasks
 
 | # | File | Commit | Date |
-|---|------|--------|------|
+|   |------|--------|-------|
 | 1 | GeneralSetting.cs | dbb55bb1e | 2026-06-23 |
+| 2 | RigidBody.cs | 3302ecfb2 | 2026-06-23 |
 | 2 | Sprite.cs | 030f2e7bb | 2026-06-23 |
+| 3 | Transform.cs | 92921c128 | 2026-06-23 |
+| 4 | Camera.cs | d8c63ce1c | 2026-06-23 |
 
 ## Top Targets (by uncovered lines)
 

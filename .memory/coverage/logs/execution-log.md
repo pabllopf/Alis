@@ -11,6 +11,17 @@
 **Coverage Improvement**: Methods GetSerializableProperties() and CreateFromProperties() now covered
 **Commit**: dbb55bb1e
 
+## 2026-06-23T08:55:00Z
+
+### Task: RigidBody.cs — OnUpdate coverage
+
+**File**: 2_Application/Alis/src/Core/Ecs/Components/Body/RigidBody.cs
+**Test File**: 2_Application/Alis/test/Core/Ecs/Components/Body/RigidBodyTest.cs
+**Tests Added**: 1
+**Result**: All pass (3 total)
+**Coverage Improvement**: OnUpdate() method now exercised
+**Commit**: 3302ecfb2
+
 ---
 
 ## 2026-06-23T08:40:00Z

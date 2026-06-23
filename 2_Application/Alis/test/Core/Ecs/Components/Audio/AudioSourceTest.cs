@@ -308,5 +308,34 @@ namespace Alis.Test.Core.Ecs.Components.Audio
 
             source.OnStart(null!);
         }
+
+        /// <summary>
+        ///     Tests that Play uses FullPathAudioFile when it is non-empty (non-looping)
+        /// </summary>
+        [Fact]
+        public void AudioSource_Play_WithFullPathAudioFileSet_ShouldUseFullPath()
+        {
+            Context context = new Context();
+            AudioSource source = new AudioSource(context);
+            source.NameFile = "name.wav";
+            source.FullPathAudioFile = "/full/path/file.wav";
+
+            source.Play();
+        }
+
+        /// <summary>
+        ///     Tests that Play uses FullPathAudioFile when it is non-empty and looping
+        /// </summary>
+        [Fact]
+        public void AudioSource_Play_WithFullPathAudioFileSetAndLooping_ShouldUseFullPath()
+        {
+            Context context = new Context();
+            AudioSource source = new AudioSource(context);
+            source.NameFile = "name.wav";
+            source.FullPathAudioFile = "/full/path/file.wav";
+            source.IsLooping = true;
+
+            source.Play();
+        }
     }
 }

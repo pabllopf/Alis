@@ -75,5 +75,20 @@ namespace Alis.Test
             SceneManager second = builder.Build();
             Assert.Same(first, second);
         }
+
+        /// <summary>
+        ///     Tests that Add adds a scene and returns the builder
+        /// </summary>
+        [Fact]
+        public void Add_WithEmptyConfig_ShouldAddScene()
+        {
+            Context context = new Context();
+            SceneManagerBuilder builder = new SceneManagerBuilder(context);
+
+            SceneManagerBuilder result = builder.Add<Alis.Core.Ecs.Scene>(sb => { });
+
+            Assert.Same(builder, result);
+            Assert.Single(result.Build().LoadedScenes);
+        }
     }
 }
