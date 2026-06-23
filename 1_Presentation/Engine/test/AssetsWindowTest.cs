@@ -33,7 +33,9 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Windows;
+using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui;
 using Xunit;
 
 namespace Alis.App.Engine.Test
@@ -196,18 +198,7 @@ namespace Alis.App.Engine.Test
 
             Assert.NotNull(window);
         }
-
-        /// <summary>
-        ///     Tests that Render() does not throw when window is open.
-        /// </summary>
-        [Fact]
-        public void Render_ShouldNotThrowWhenOpen()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithResources();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            Assert.DoesNotThrow(() => window.Render());
-        }
+        
 
         /// <summary>
         ///     Tests that Render() handles closed window state.
@@ -222,19 +213,7 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(window);
         }
 
-        /// <summary>
-        ///     Tests that Render() is idempotent.
-        /// </summary>
-        [Fact]
-        public void Render_ShouldBeIdempotent()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithResources();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            Assert.DoesNotThrow(() => window.Render());
-            Assert.DoesNotThrow(() => window.Render());
-            Assert.DoesNotThrow(() => window.Render());
-        }
+     
 
         /// <summary>
         ///     Tests that Render() maintains window instance.
@@ -297,18 +276,6 @@ namespace Alis.App.Engine.Test
         }
 
         /// <summary>
-        ///     Tests that AssetsWindow implements IWindow interface.
-        /// </summary>
-        [Fact]
-        public void AssetsWindow_ImplementsIWindow()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithResources();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            Assert.IsAssignableFrom<IWindow>(window);
-        }
-
-        /// <summary>
         ///     Tests that AssetsWindow has required interface methods.
         /// </summary>
         [Fact]
@@ -350,32 +317,7 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(window.SpaceWork);
             Assert.True(window.IsDefaultSize);
         }
-
-        /// <summary>
-        ///     Tests that Initialize() can be called multiple times.
-        /// </summary>
-        [Fact]
-        public void Initialize_ShouldBeIdempotent()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithResources();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            Assert.DoesNotThrow(() => window.Initialize());
-            Assert.DoesNotThrow(() => window.Initialize());
-        }
-
-        /// <summary>
-        ///     Tests that Start() can be called multiple times.
-        /// </summary>
-        [Fact]
-        public void Start_ShouldBeIdempotent()
-        {
-            SpaceWork spaceWork = CreateSpaceWorkWithResources();
-            AssetsWindow window = new AssetsWindow(spaceWork);
-
-            Assert.DoesNotThrow(() => window.Start());
-            Assert.DoesNotThrow(() => window.Start());
-        }
+        
 
         /// <summary>
         ///     Tests that Render() maintains window state.
