@@ -91,6 +91,7 @@ namespace Alis.App.Engine.Test
 
             Assert.Contains("\uf07c", windowName);
         }
+        
 
         /// <summary>
         ///     Tests that the constructor sets the SpaceWork property correctly.
