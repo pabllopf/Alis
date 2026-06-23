@@ -77,10 +77,26 @@ namespace Alis.Test
             /// Gets or sets the value of the on load called
             /// </summary>
             public bool OnLoadCalled { get; private set; }
-            /// <summary>
-            /// Gets or sets the value of the on stop called
-            /// </summary>
-            public bool OnStopCalled { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the on save path called
+        /// </summary>
+        public bool OnSavePathCalled { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the on load path called
+        /// </summary>
+        public bool OnLoadPathCalled { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the last save path
+        /// </summary>
+        public string LastSavePath { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the last load path
+        /// </summary>
+        public string LastLoadPath { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the on stop called
+        /// </summary>
+        public bool OnStopCalled { get; private set; }
             /// <summary>
             /// Gets or sets the value of the on before update called
             /// </summary>
@@ -168,6 +184,26 @@ namespace Alis.Test
             {
                 base.OnLoad();
                 OnLoadCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the save with path
+            /// </summary>
+            public override void OnSave(string path)
+            {
+                base.OnSave(path);
+                OnSavePathCalled = true;
+                LastSavePath = path;
+            }
+
+            /// <summary>
+            /// Ons the load with path
+            /// </summary>
+            public override void OnLoad(string path)
+            {
+                base.OnLoad(path);
+                OnLoadPathCalled = true;
+                LastLoadPath = path;
             }
 
             /// <summary>
@@ -403,7 +439,10 @@ namespace Alis.Test
 
             runtime.OnSave("/test/path");
 
-            Assert.NotNull(runtime);
+            Assert.True(runtime1.OnSavePathCalled);
+            Assert.True(runtime2.OnSavePathCalled);
+            Assert.Equal("/test/path", runtime1.LastSavePath);
+            Assert.Equal("/test/path", runtime2.LastSavePath);
         }
 
         /// <summary>
@@ -419,7 +458,10 @@ namespace Alis.Test
 
             runtime.OnLoad("/test/path");
 
-            Assert.NotNull(runtime);
+            Assert.True(runtime1.OnLoadPathCalled);
+            Assert.True(runtime2.OnLoadPathCalled);
+            Assert.Equal("/test/path", runtime1.LastLoadPath);
+            Assert.Equal("/test/path", runtime2.LastLoadPath);
         }
 
         /// <summary>
