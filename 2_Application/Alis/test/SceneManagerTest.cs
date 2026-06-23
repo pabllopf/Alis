@@ -186,5 +186,124 @@ namespace Alis.Test
             Assert.Single(sceneManager.LoadedScenes);
             Assert.Same(newScene, sceneManager.LoadedScenes[0]);
         }
+
+        /// <summary>
+        ///     Tests that OnSave does not throw when called.
+        /// </summary>
+        [Fact]
+        public void OnSave_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            SceneManager sceneManager = new SceneManager(context);
+
+            sceneManager.OnSave();
+
+            Assert.NotNull(sceneManager);
+        }
+
+        /// <summary>
+        ///     Tests that OnUpdate does not throw when CurrentWorld is null.
+        /// </summary>
+        [Fact]
+        public void OnUpdate_WithNullCurrentWorld_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            SceneManager sceneManager = new SceneManager(context);
+
+            sceneManager.OnUpdate();
+
+            Assert.NotNull(sceneManager);
+        }
+
+        /// <summary>
+        ///     Tests that OnUpdate does not throw when CurrentWorld is an empty scene.
+        /// </summary>
+        [Fact]
+        public void OnUpdate_WithEmptyScene_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            SceneManager sceneManager = new SceneManager(context);
+            sceneManager.CurrentWorld = new Scene();
+
+            sceneManager.OnUpdate();
+
+            Assert.NotNull(sceneManager);
+        }
+
+        /// <summary>
+        ///     Tests that OnInit does not throw when CurrentWorld is set to an empty scene.
+        /// </summary>
+        [Fact]
+        public void OnInit_WithEmptyScene_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            SceneManager sceneManager = new SceneManager(context);
+            sceneManager.CurrentWorld = new Scene();
+
+            sceneManager.OnInit();
+
+            Assert.NotNull(sceneManager);
+        }
+
+        /// <summary>
+        ///     Tests that OnAwake does not throw when CurrentWorld is set to an empty scene.
+        /// </summary>
+        [Fact]
+        public void OnAwake_WithEmptyScene_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            SceneManager sceneManager = new SceneManager(context);
+            sceneManager.CurrentWorld = new Scene();
+
+            sceneManager.OnAwake();
+
+            Assert.NotNull(sceneManager);
+        }
+
+        /// <summary>
+        ///     Tests that OnStart does not throw when CurrentWorld is set to an empty scene.
+        /// </summary>
+        [Fact]
+        public void OnStart_WithEmptyScene_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            SceneManager sceneManager = new SceneManager(context);
+            sceneManager.CurrentWorld = new Scene();
+
+            sceneManager.OnStart();
+
+            Assert.NotNull(sceneManager);
+        }
+
+        /// <summary>
+        ///     Tests that LoadScene with a non-numeric string does not throw.
+        /// </summary>
+        [Fact]
+        public void LoadScene_WithNonNumericString_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            SceneManager sceneManager = new SceneManager(context);
+            sceneManager.CurrentWorld = new Scene();
+
+            sceneManager.LoadScene("invalid-scene-name");
+
+            Assert.NotNull(sceneManager);
+        }
+
+        /// <summary>
+        ///     Tests that LoadScene with a numeric string loads the scene by index.
+        /// </summary>
+        [Fact]
+        public void LoadScene_WithNumericString_LoadsScene()
+        {
+            Context context = new Context(new Setting());
+            Scene scene = new Scene();
+            SceneManager sceneManager = new SceneManager(context, scene);
+            sceneManager.CurrentWorld = new Scene();
+
+            sceneManager.LoadScene("0");
+
+            Assert.Same(scene, sceneManager.CurrentWorld);
+        }
     }
 }
