@@ -226,7 +226,7 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that RealtimeSinceStartup returns clock elapsed
+        /// Tests that RealtimeSinceStartup returns clock elapsed
         /// </summary>
         [Fact]
         public void TimeManager_RealtimeSinceStartup_ShouldReturnClockElapsed()
@@ -239,5 +239,146 @@ namespace Alis.Test
             Assert.True(realtime >= 0);
             Assert.Equal((float) timeManager.Clock.Elapsed.TotalSeconds, realtime, 0.01f);
         }
+
+        /// <summary>
+        ///     Tests that RealtimeSinceStartupAsDouble returns clock elapsed as double
+        /// </summary>
+        [Fact]
+        public void TimeManager_RealtimeSinceStartupAsDouble_ShouldReturnClockElapsed()
+        {
+            Context context = new Context();
+            TimeManager timeManager = context.TimeManager;
+
+            double realtime = timeManager.RealtimeSinceStartupAsDouble;
+
+            Assert.True(realtime >= 0);
+            Assert.Equal(timeManager.Clock.Elapsed.TotalSeconds, realtime, 0.01);
+        }
+
+        /// <summary>
+        ///     Tests that FixedTime is settable
+        /// </summary>
+        [Fact]
+        public void TimeManager_FixedTime_ShouldBeSettable()
+        {
+            Context context = new Context();
+            TimeManager timeManager = context.TimeManager;
+
+            timeManager.FixedTime = 1.5f;
+
+            Assert.Equal(1.5f, timeManager.FixedTime);
+        }
+
+        /// <summary>
+        ///     Tests that FixedTimeAsDouble is settable
+        /// </summary>
+        [Fact]
+        public void TimeManager_FixedTimeAsDouble_ShouldBeSettable()
+        {
+            Context context = new Context();
+            TimeManager timeManager = context.TimeManager;
+
+            timeManager.FixedTimeAsDouble = 2.5;
+
+            Assert.Equal(2.5, timeManager.FixedTimeAsDouble);
+        }
+
+        /// <summary>
+        ///     Tests that FixedUnscaledDeltaTime is settable
+        /// </summary>
+        [Fact]
+        public void TimeManager_FixedUnscaledDeltaTime_ShouldBeSettable()
+        {
+            Context context = new Context();
+            TimeManager timeManager = context.TimeManager;
+
+            timeManager.FixedUnscaledDeltaTime = 0.02f;
+
+            Assert.Equal(0.02f, timeManager.FixedUnscaledDeltaTime);
+        }
+
+        /// <summary>
+        ///     Tests that FixedUnscaledTime is settable
+        /// </summary>
+        [Fact]
+        public void TimeManager_FixedUnscaledTime_ShouldBeSettable()
+        {
+            Context context = new Context();
+            TimeManager timeManager = context.TimeManager;
+
+            timeManager.FixedUnscaledTime = 3.0f;
+
+            Assert.Equal(3.0f, timeManager.FixedUnscaledTime);
+        }
+
+        /// <summary>
+        ///     Tests that FixedUnscaledTimeAsDouble is settable
+        /// </summary>
+        [Fact]
+        public void TimeManager_FixedUnscaledTimeAsDouble_ShouldBeSettable()
+        {
+            Context context = new Context();
+            TimeManager timeManager = context.TimeManager;
+
+            timeManager.FixedUnscaledTimeAsDouble = 4.0;
+
+            Assert.Equal(4.0, timeManager.FixedUnscaledTimeAsDouble);
+        }
+
+        /// <summary>
+        ///     Tests that TimeAsDouble is settable
+        /// </summary>
+        [Fact]
+        public void TimeManager_TimeAsDouble_ShouldBeSettable()
+        {
+            Context context = new Context();
+            TimeManager timeManager = context.TimeManager;
+
+            timeManager.TimeAsDouble = 6.0;
+
+            Assert.Equal(6.0, timeManager.TimeAsDouble);
+        }
+
+        /// <summary>
+        ///     Tests that UnscaledDeltaTime is settable
+        /// </summary>
+        [Fact]
+        public void TimeManager_UnscaledDeltaTime_ShouldBeSettable()
+        {
+            Context context = new Context();
+            TimeManager timeManager = context.TimeManager;
+
+            timeManager.UnscaledDeltaTime = 0.03f;
+
+            Assert.Equal(0.03f, timeManager.UnscaledDeltaTime);
+        }
+
+        /// <summary>
+        ///     Tests that UnscaledTime is settable
+        /// </summary>
+        [Fact]
+        public void TimeManager_UnscaledTime_ShouldBeSettable()
+        {
+            Context context = new Context();
+            TimeManager timeManager = context.TimeManager;
+
+            timeManager.UnscaledTime = 7.0f;
+
+            Assert.Equal(7.0f, timeManager.UnscaledTime);
+        }
+
+        /// <summary>
+        ///     Tests that UnscaledTimeAsDouble is settable
+        /// </summary>
+        [Fact]
+        public void TimeManager_UnscaledTimeAsDouble_ShouldBeSettable()
+        {
+            Context context = new Context();
+            TimeManager timeManager = context.TimeManager;
+
+            timeManager.UnscaledTimeAsDouble = 8.0;
+
+            Assert.Equal(8.0, timeManager.UnscaledTimeAsDouble);
+    }
     }
 }

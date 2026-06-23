@@ -38,6 +38,19 @@
 
 ---
 
+## 2026-06-23T09:10:00Z
+
+### Task: ContextHandler.cs — Save(string path) coverage
+
+**File**: 2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs
+**Test File**: 2_Application/Alis/test/ContextHandlerTest.cs
+**Tests Added**: 1 (Save_WithPath_DoesNotThrow)
+**Result**: All pass (7 total)
+**Coverage Improvement**: Save(string) method now exercised
+**Commit**: 4721fdde7
+
+---
+
 ## 2026-06-23T08:45:00Z
 
 ### Task: Transform.cs — coverage
