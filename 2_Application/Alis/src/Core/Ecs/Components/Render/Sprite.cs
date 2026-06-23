@@ -413,7 +413,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="cameraResolution">The camera resolution</param>
         /// <param name="pixelsPerMeter">The pixels per meter</param>
         /// <returns>The bool</returns>
-        private static bool IsSpriteVisible(Vector2F spriteWorldPosition, Vector2F spriteSizePixels, Vector2F spriteScale, float rotationDegrees, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
+        internal static bool IsSpriteVisible(Vector2F spriteWorldPosition, Vector2F spriteSizePixels, Vector2F spriteScale, float rotationDegrees, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
             float px = (spriteWorldPosition.X - cameraPosition.X) * pixelsPerMeter;
             float py = (spriteWorldPosition.Y - cameraPosition.Y) * pixelsPerMeter;
