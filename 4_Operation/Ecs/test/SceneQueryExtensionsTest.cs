@@ -249,6 +249,76 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
+        ///     Tests that Query&lt;T1, T2, T3&gt; caches the query instance across repeated calls.
+        /// </summary>
+        [Fact]
+        public void Query_3_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Health>, With<Velocity>>();
+            Query second = scene.Query<With<Position>, With<Health>, With<Velocity>>();
+
+            Assert.Same(first, second);
+        }
+
+        /// <summary>
+        ///     Tests that Query&lt;T1..T4&gt; caches the query instance across repeated calls.
+        /// </summary>
+        [Fact]
+        public void Query_4_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>>();
+            Query second = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>>();
+
+            Assert.Same(first, second);
+        }
+
+        /// <summary>
+        ///     Tests that Query&lt;T1..T5&gt; caches the query instance across repeated calls.
+        /// </summary>
+        [Fact]
+        public void Query_5_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>, With<Damage>>();
+            Query second = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>, With<Damage>>();
+
+            Assert.Same(first, second);
+        }
+
+        /// <summary>
+        ///     Tests that Query&lt;T1..T6&gt; caches the query instance across repeated calls.
+        /// </summary>
+        [Fact]
+        public void Query_6_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>, With<Damage>, With<EnemyTag>>();
+            Query second = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>, With<Damage>, With<EnemyTag>>();
+
+            Assert.Same(first, second);
+        }
+
+        /// <summary>
+        ///     Tests that Query&lt;T1..T7&gt; caches the query instance across repeated calls.
+        /// </summary>
+        [Fact]
+        public void Query_7_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>>();
+            Query second = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>>();
+
+            Assert.Same(first, second);
+        }
+
+        /// <summary>
         ///     Tests that Query&lt;T1..T8&gt; caches the query instance across repeated calls.
         /// </summary>
         [Fact]
