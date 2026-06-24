@@ -225,5 +225,38 @@ namespace Alis.Test
 
             Assert.Contains("body", ex.Message);
         }
+
+        /// <summary>
+        ///     Tests that the constructor with Context and timeStepPhysics creates a PhysicManager
+        ///     and assigns the values correctly.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithContextAndTimeStep_CreatesPhysicManager()
+        {
+            Context context = new Context(new Setting());
+            PhysicManager physicManager = new PhysicManager(context, 0.05f);
+
+            Assert.NotNull(physicManager);
+            Assert.NotNull(physicManager.WorldPhysic);
+            Assert.Same(context, physicManager.Context);
+        }
+
+        /// <summary>
+        ///     Tests that the constructor with all parameters creates a PhysicManager
+        ///     and assigns the values correctly.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithAllParameters_CreatesPhysicManager()
+        {
+            Context context = new Context(new Setting());
+            PhysicManager physicManager = new PhysicManager("test-id", "test-name", "test-tag", true, context, 0.05f);
+
+            Assert.NotNull(physicManager);
+            Assert.NotNull(physicManager.WorldPhysic);
+            Assert.Equal("test-id", physicManager.Id);
+            Assert.Equal("test-name", physicManager.Name);
+            Assert.Equal("test-tag", physicManager.Tag);
+            Assert.Same(context, physicManager.Context);
+        }
     }
 }
