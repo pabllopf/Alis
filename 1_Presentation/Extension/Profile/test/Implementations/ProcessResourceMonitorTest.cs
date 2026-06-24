@@ -577,5 +577,47 @@ namespace Alis.Extension.Profile.Test.Implementations
                 Assert.True(memorySnapshots[i] >= memorySnapshots[0]);
             }
         }
+
+        /// <summary>
+        ///     Tests that GetCpuUsage returns 0 when the process has exited
+        /// </summary>
+        [Fact]
+        public void GetCpuUsage_ReturnsZero_WhenProcessHasExited()
+        {
+            using Process exitedProcess = new Process();
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor(exitedProcess);
+
+            double cpuUsage = monitor.GetCpuUsage();
+
+            Assert.Equal(0, cpuUsage);
+        }
+
+        /// <summary>
+        ///     Tests that GetMemoryUsage returns 0 when the process has exited
+        /// </summary>
+        [Fact]
+        public void GetMemoryUsage_ReturnsZero_WhenProcessHasExited()
+        {
+            using Process exitedProcess = new Process();
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor(exitedProcess);
+
+            long memoryUsage = monitor.GetMemoryUsage();
+
+            Assert.Equal(0, memoryUsage);
+        }
+
+        /// <summary>
+        ///     Tests that GetThreadCount returns 0 when the process has exited
+        /// </summary>
+        [Fact]
+        public void GetThreadCount_ReturnsZero_WhenProcessHasExited()
+        {
+            using Process exitedProcess = new Process();
+            ProcessResourceMonitor monitor = new ProcessResourceMonitor(exitedProcess);
+
+            int threadCount = monitor.GetThreadCount();
+
+            Assert.Equal(0, threadCount);
+        }
     }
 }
