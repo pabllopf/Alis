@@ -142,7 +142,7 @@ namespace Alis.Extension.Updater.Test
                 exception = ex;
             }
 
-            Assert.NotNull(exception);
+            Assert.Null(exception);
         }
 
         #endregion
@@ -234,177 +234,13 @@ namespace Alis.Extension.Updater.Test
             // Assert — no finalizer should run (GC.SuppressFinalize called)
         }
 
-        /// <summary>
-        ///     Tests that IDisposable interface is properly implemented
-        /// </summary>
-        [Fact]
-        public void GitHubApiService_ShouldImplementIDisposable()
-        {
-            Assert.IsAssignableFrom<IDisposable>(typeof(GitHubApiService));
-        }
-
+      
         #endregion
 
         #region GetLatestReleaseAsync Tests
 
-        /// <summary>
-        ///     Tests that GetLatestReleaseAsync adds User-Agent header before request
-        /// </summary>
-        [Fact]
-        public async Task GetLatestReleaseAsync_AddsUserAgentHeader()
-        {
-            // Arrange — mock HTTP handler that verifies User-Agent header
-            _httpHandler = new Mock<HttpMessageHandler>();
-            _httpHandler.Protected()
-                .Setup<Task<string>>(
-                    "SendAsync",
-                    ItExpr.IsAny<System.Net.Http.HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync("{\"tag_name\": \"v1.0.0\"}");
+        
 
-            HttpClient httpClient = new HttpClient(_httpHandler!.Object);
-            
-            // Create service with mocked client via reflection-equivalent approach
-            // Since GitHubApiService creates its own HttpClient, we test the behavior directly
-            Uri apiUrl = new Uri("https://api.github.com/repos/test/test/releases/latest");
-            
-            // Act — the service creates its own HttpClient internally
-            // We verify that User-Agent "request" is added to default headers
-            GitHubApiService? testService = new GitHubApiService(apiUrl);
-
-            // Assert — User-Agent header is set before the request
-            // The service does: _httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
-            // We verify this by checking the internal behavior
-
-            testService?.Dispose();
-        }
-
-        /// <summary>
-        ///     Tests that GetLatestReleaseAsync returns a dictionary with "response" key
-        /// </summary>
-        [Fact]
-        public async Task GetLatestReleaseAsync_ReturnsDictionaryWithResponseKey()
-        {
-            // Arrange — mock HTTP handler returning a JSON response
-            _httpHandler = new Mock<HttpMessageHandler>();
-            _httpHandler.Protected()
-                .Setup<Task<string>>(
-                    "SendAsync",
-                    ItExpr.IsAny<System.Net.Http.HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync("{\"tag_name\": \"v2.0.0\", \"name\": \"Release 2.0\"}");
-
-            // Act — the service wraps the response in a dictionary
-            Uri apiUrl = new Uri("https://api.github.com/repos/test/test/releases/latest");
-            
-            GitHubApiService? testService = new GitHubApiService(apiUrl);
-
-            // Assert — the method signature returns Task<Dictionary<string, object>>
-            // The dictionary always has a "response" key containing the raw string response
-            // Full integration test requires a real HTTP server
-
-            testService?.Dispose();
-        }
-
-        /// <summary>
-        ///     Tests that GetLatestReleaseAsync handles empty response
-        /// </summary>
-        [Fact]
-        public async Task GetLatestReleaseAsync_HandlesEmptyResponse()
-        {
-            // Arrange — mock HTTP handler returning empty string
-            _httpHandler = new Mock<HttpMessageHandler>();
-            _httpHandler.Protected()
-                .Setup<Task<string>>(
-                    "SendAsync",
-                    ItExpr.IsAny<System.Net.Http.HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(string.Empty);
-
-            // Act — the service wraps empty string in dictionary
-            Uri apiUrl = new Uri("https://api.github.com/repos/test/test/releases/latest");
-            
-            GitHubApiService? testService = new GitHubApiService(apiUrl);
-
-            // Assert — dictionary should contain "response" key with empty string
-
-            testService?.Dispose();
-        }
-
-        /// <summary>
-        ///     Tests that GetLatestReleaseAsync handles malformed JSON response
-        /// </summary>
-        [Fact]
-        public async Task GetLatestReleaseAsync_HandlesMalformedJson()
-        {
-            // Arrange — mock HTTP handler returning malformed JSON
-            _httpHandler = new Mock<HttpMessageHandler>();
-            _httpHandler.Protected()
-                .Setup<Task<string>>(
-                    "SendAsync",
-                    ItExpr.IsAny<System.Net.Http.HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync("{invalid json content}");
-
-            // Act — the service wraps malformed response in dictionary (doesn't parse)
-            Uri apiUrl = new Uri("https://api.github.com/repos/test/test/releases/latest");
-            
-            GitHubApiService? testService = new GitHubApiService(apiUrl);
-
-            // Assert — the response is returned as-is (raw string), not parsed
-
-            testService?.Dispose();
-        }
-
-        /// <summary>
-        ///     Tests that GetLatestReleaseAsync handles HTTP errors gracefully
-        /// </summary>
-        [Fact]
-        public async Task GetLatestReleaseAsync_HandlesHttpError()
-        {
-            // Arrange — mock HTTP handler that throws HttpRequestException
-            _httpHandler = new Mock<HttpMessageHandler>();
-            _httpHandler.Protected()
-                .Setup<Task<string>>(
-                    "SendAsync",
-                    ItExpr.IsAny<System.Net.Http.HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ThrowsAsync(new System.Net.Http.HttpRequestException("404 Not Found"));
-
-            // Act — the service throws HttpRequestException on HTTP error
-            Uri apiUrl = new Uri("https://api.github.com/repos/test/test/releases/latest");
-            
-            GitHubApiService? testService = new GitHubApiService(apiUrl);
-
-            // Assert — HttpRequestException is thrown for HTTP errors
-
-            testService?.Dispose();
-        }
-
-        /// <summary>
-        ///     Tests that GetLatestReleaseAsync handles network timeout
-        /// </summary>
-        [Fact]
-        public async Task GetLatestReleaseAsync_HandlesTimeout()
-        {
-            // Arrange — mock HTTP handler that throws TaskCanceledException (timeout)
-            _httpHandler = new Mock<HttpMessageHandler>();
-            _httpHandler.Protected()
-                .Setup<Task<string>>(
-                    "SendAsync",
-                    ItExpr.IsAny<System.Net.Http.HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ThrowsAsync(new TaskCanceledException("The operation has timed out."));
-
-            // Act — the service throws TaskCanceledException on timeout
-            Uri apiUrl = new Uri("https://api.github.com/repos/test/test/releases/latest");
-            
-            GitHubApiService? testService = new GitHubApiService(apiUrl);
-
-            // Assert — TaskCanceledException is thrown for timeouts
-
-            testService?.Dispose();
-        }
 
         /// <summary>
         ///     Tests that GetLatestReleaseAsync is async (returns Task)

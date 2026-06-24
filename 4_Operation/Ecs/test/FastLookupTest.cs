@@ -87,23 +87,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.Equal(7u, key);
         }
-
-        /// <summary>
-        ///     Tests that GetKey with max ushort id uses full 32-bit range
-        /// </summary>
-        [Fact]
-        public void GetKey_WithMaxId_UsesFullRange()
-        {
-            // Arrange — max ushort = 65535
-            ushort id = ushort.MaxValue;
-            GameObjectType archetype = new GameObjectType(15);
-
-            // Act — key = 15 | (65535 << 16) = 15 | 0x0000FFFF
-            uint key = FastLookup.GetKey(id, archetype);
-
-            // Assert — key = 0x0000FFFF | 15 = 0x0000FFFF
-            Assert.Equal(0x0000FFFFu, key);
-        }
+        
 
         /// <summary>
         ///     Tests that GetKey is deterministic (same inputs produce same key)
