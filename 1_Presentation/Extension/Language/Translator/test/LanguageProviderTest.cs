@@ -201,5 +201,69 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.Contains(spanish, languages);
             Assert.Contains(french, languages);
         }
+
+        /// <summary>
+        ///     Tests that AddLanguage with a language that has a null code throws an exception
+        /// </summary>
+        [Fact]
+        public void AddLanguage_WithNullCode_ShouldThrowException()
+        {
+            LanguageProvider provider = new LanguageProvider();
+            Lang language = new Lang(null, "Test");
+
+            Assert.Throws<ArgumentException>(() => provider.AddLanguage(language));
+        }
+
+        /// <summary>
+        ///     Tests that RemoveLanguage with null code returns false
+        /// </summary>
+        [Fact]
+        public void RemoveLanguage_WithNullCode_ShouldReturnFalse()
+        {
+            LanguageProvider provider = new LanguageProvider();
+
+            bool result = provider.RemoveLanguage(null);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveLanguage with empty code returns false
+        /// </summary>
+        [Fact]
+        public void RemoveLanguage_WithEmptyCode_ShouldReturnFalse()
+        {
+            LanguageProvider provider = new LanguageProvider();
+
+            bool result = provider.RemoveLanguage(string.Empty);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that GetLanguageByCode with null code returns null
+        /// </summary>
+        [Fact]
+        public void GetLanguageByCode_WithNullCode_ShouldReturnNull()
+        {
+            LanguageProvider provider = new LanguageProvider();
+
+            ILanguage result = provider.GetLanguageByCode(null);
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that GetLanguageByCode with empty code returns null
+        /// </summary>
+        [Fact]
+        public void GetLanguageByCode_WithEmptyCode_ShouldReturnNull()
+        {
+            LanguageProvider provider = new LanguageProvider();
+
+            ILanguage result = provider.GetLanguageByCode(string.Empty);
+
+            Assert.Null(result);
+        }
     }
 }
