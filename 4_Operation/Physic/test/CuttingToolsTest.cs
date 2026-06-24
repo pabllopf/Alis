@@ -316,7 +316,8 @@ namespace Alis.Core.Physic.Test
         ///     Tests that SplitShape splits a polygon fixture into two parts
         ///     SKIPPED — requires real Fixture with PolygonShape and WorldPhysic
         /// </summary>
-        [Fact(Skip = "Requires real Fixture with PolygonShape and WorldPhysic")]\n        public void SplitShape_SplitsPolygonFixtureIntoTwoParts()
+        [Fact(Skip = "Requires real Fixture with PolygonShape and WorldPhysic"]
+        public void SplitShape_SplitsPolygonFixtureIntoTwoParts()
         {
             // Arrange — create a polygon fixture with vertices
             // Act — split using entry and exit points
@@ -327,7 +328,8 @@ namespace Alis.Core.Physic.Test
         ///     Tests that SplitShape returns empty vertices when shape is not PolygonShape
         ///     SKIPPED — requires real Fixture with non-polygon shape
         /// </summary>
-        [Fact(Skip = "Requires real Fixture with non-polygon shape")]\n        public void SplitShape_NonPolygonShape_ReturnsEmptyVertices()
+        [Fact(Skip = "Requires real Fixture with non-polygon shape"]
+        public void SplitShape_NonPolygonShape_ReturnsEmptyVertices()
         {
             // Arrange — fixture with CircleShape (not PolygonShape)
             // Act — split should return empty vertices for both outputs
@@ -338,7 +340,8 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut returns false when start or end point is inside a shape
         ///     SKIPPED — requires real WorldPhysic with TestPoint implementation
         /// </summary>
-        [Fact(Skip = "Requires real WorldPhysic with TestPoint implementation")]\n        public void Cut_ReturnsFalseWhenPointInsideShape()
+        [Fact(Skip = "Requires real WorldPhysic with TestPoint implementation"]
+        public void Cut_ReturnsFalseWhenPointInsideShape()
         {
             // Arrange — world with a body
             // Act — cut with start point inside the shape
@@ -349,7 +352,8 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut returns true when a valid cut is performed
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")]\n        public void Cut_ValidCut_ReturnsTrue()
+        [Fact(Skip = "Requires full physics engine integration"]
+        public void Cut_ValidCut_ReturnsTrue()
         {
             // Arrange — world with polygon bodies
             // Act — cut through a body
@@ -360,7 +364,8 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut skips non-polygon shapes
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")]\n        public void Cut_SkipsNonPolygonShapes()
+        [Fact(Skip = "Requires full physics engine integration"]
+        public void Cut_SkipsNonPolygonShapes()
         {
             // Arrange — world with mixed shape types (polygon + circle)
             // Act — cut through the world
@@ -371,7 +376,8 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut returns false when fewer than 2 intersections found
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")]\n        public void Cut_FewerThanTwoIntersections_ReturnsFalse()
+        [Fact(Skip = "Requires full physics engine integration"]
+        public void Cut_FewerThanTwoIntersections_ReturnsFalse()
         {
             // Arrange — world with a body that the cut line barely touches
             // Act — cut that intersects only once
@@ -382,7 +388,8 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut creates dynamic bodies from split polygons
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")]\n        public void Cut_CreatesDynamicBodiesFromSplit()
+        [Fact(Skip = "Requires full physics engine integration"]
+        public void Cut_CreatesDynamicBodiesFromSplit()
         {
             // Arrange — world with a static polygon body
             // Act — cut through the body
@@ -393,7 +400,8 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut preserves body properties (rotation, velocity) when splitting
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")]\n        public void Cut_PreservesBodyProperties()
+        [Fact(Skip = "Requires full physics engine integration"]
+        public void Cut_PreservesBodyProperties()
         {
             // Arrange — world with a static body that has rotation and velocity set
             // Act — cut through the body
@@ -404,7 +412,8 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut removes the original body after splitting
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")]\n        public void Cut_RemovesOriginalBodyAfterSplitting()
+        [Fact(Skip = "Requires full physics engine integration"]
+        public void Cut_RemovesOriginalBodyAfterSplitting()
         {
             // Arrange — world with one static body
             // Act — cut through the body
@@ -415,7 +424,8 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut handles multiple fixtures in the same cut line
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")]\n        public void Cut_HandlesMultipleFixtures()
+        [Fact(Skip = "Requires full physics engine integration"]
+        public void Cut_HandlesMultipleFixtures()
         {
             // Arrange — world with multiple polygon bodies intersected by the cut line
             // Act — cut through all of them
