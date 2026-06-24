@@ -49,9 +49,34 @@
 - **Build**: Pass
 - **Tests**: 13/13 passed
 
+#### Task 3: SceneQueryExtensions.cs coverage
+
+- **Commit**: `bce9f5b8c`
+- **Timestamp**: `2026-06-24T12:30:00Z`
+- **File**: `4_Operation/Ecs/src/SceneQueryExtensions.cs`
+- **Test file**: `4_Operation/Ecs/test/SceneQueryExtensionsTest.cs`
+- **Tests added**: 13
+  - `Query_1_ReturnsQueryThatEnumeratesEntities`
+  - `Query_2_ReturnsQueryThatEnumeratesEntities`
+  - `Query_3_ReturnsQueryThatEnumeratesEntities`
+  - `Query_4_ReturnsQueryThatEnumeratesEntities`
+  - `Query_5_ReturnsQueryThatEnumeratesEntities`
+  - `Query_6_ReturnsQueryThatEnumeratesEntities`
+  - `Query_7_ReturnsQueryThatEnumeratesEntities`
+  - `Query_8_ReturnsQueryThatEnumeratesEntities`
+  - `Query_1_CachesQueryInstance`
+  - `Query_2_CachesQueryInstance`
+  - `Query_8_CachesQueryInstance`
+  - `Query_DifferentTypeCombinations_AreCachedIndependently`
+  - `Query_ReturnsEmpty_WhenNoMatch`
+- **Estimated coverage improvement**: ~+10% (SceneQueryExtensions.cs only)
+- **Methods covered**: All 8 `Query<T1..TN>()` overloads — cache-miss and cache-hit paths
+- **Build**: Pass
+- **Tests**: 13/13 passed
+
 ## Summary
 
-- **Total tasks completed**: 2
-- **Total commits**: 2
-- **Files with new tests**: 2 (SceneTest.cs, GameObjectPropertiesTest.cs)
-- **Total tests added**: 21
+- **Total tasks completed**: 3
+- **Total commits**: 2 (1 pending)
+- **Files with new tests**: 3 (SceneTest.cs, GameObjectPropertiesTest.cs, SceneQueryExtensionsTest.cs)
+- **Total tests added**: 34
