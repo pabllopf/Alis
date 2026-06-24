@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Collections;
+using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -360,17 +361,200 @@ namespace Alis.Core.Ecs.Test
             Assert.NotEqual(typeBefore, gameObject.Type);
         }
 
-        /// <summary>
-        ///     Type throws for a dead (deleted) entity.
-        /// </summary>
-        [Fact]
-        public void Type_Throws_ForDeadEntity()
-        {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
-            gameObject.Delete();
+    /// <summary>
+    ///     Type throws for a dead (deleted) entity.
+    /// </summary>
+    [Fact]
+    public void Type_Throws_ForDeadEntity()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
+        gameObject.Delete();
 
-            Assert.Throws<InvalidOperationException>(() => { _ = gameObject.Type; });
-        }
+        Assert.Throws<InvalidOperationException>(() => { _ = gameObject.Type; });
     }
+
+    /// <summary>
+    ///     Has with type returns true when the component exists.
+    /// </summary>
+    [Fact]
+    public void Has_WithType_ReturnsTrue_WhenComponentExists()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+
+        Assert.True(gameObject.Has(typeof(Position)));
+    }
+
+    /// <summary>
+    ///     Has with type returns false when the component does not exist.
+    /// </summary>
+    [Fact]
+    public void Has_WithType_ReturnsFalse_WhenComponentDoesNotExist()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+
+        Assert.False(gameObject.Has(typeof(Velocity)));
+    }
+
+    /// <summary>
+    ///     TryHas returns true when the component exists.
+    /// </summary>
+    [Fact]
+    public void TryHas_ReturnsTrue_WhenComponentExists()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+
+        Assert.True(gameObject.TryHas<Position>());
+    }
+
+    /// <summary>
+    ///     TryHas returns false for a dead entity without throwing.
+    /// </summary>
+    [Fact]
+    public void TryHas_ReturnsFalse_ForDeadEntity()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+        gameObject.Delete();
+
+        Assert.False(gameObject.TryHas<Position>());
+    }
+
+    /// <summary>
+    ///     TryHas with type returns true when the component exists.
+    /// </summary>
+    [Fact]
+    public void TryHas_WithType_ReturnsTrue_WhenComponentExists()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+
+        Assert.True(gameObject.TryHas(typeof(Position)));
+    }
+
+    /// <summary>
+    ///     Get with component id returns a boxed component.
+    /// </summary>
+    [Fact]
+    public void Get_WithComponentId_ReturnsBoxedComponent()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 5, Y = 10});
+
+        object result = gameObject.Get(Component<Position>.Id);
+
+        Position pos = Assert.IsType<Position>(result);
+        Assert.Equal(5f, pos.X);
+        Assert.Equal(10f, pos.Y);
+    }
+
+    /// <summary>
+    ///     Get with type returns a boxed component.
+    /// </summary>
+    [Fact]
+    public void Get_WithType_ReturnsBoxedComponent()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 3, Y = 7});
+
+        object result = gameObject.Get(typeof(Position));
+
+        Position pos = Assert.IsType<Position>(result);
+        Assert.Equal(3f, pos.X);
+        Assert.Equal(7f, pos.Y);
+    }
+
+    /// <summary>
+    ///     Get with component id throws component not found exception when component does not exist.
+    /// </summary>
+    [Fact]
+    public void Get_WithComponentId_ThrowsComponentNotFoundException_WhenComponentDoesNotExist()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+
+        Assert.Throws<ComponentNotFoundException>(() => gameObject.Get(Component<Velocity>.Id));
+    }
+
+    /// <summary>
+    ///     Set with component id updates the component value.
+    /// </summary>
+    [Fact]
+    public void Set_WithComponentId_SetsComponentValue()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+
+        gameObject.Set(Component<Position>.Id, new Position {X = 10, Y = 20});
+
+        object result = gameObject.Get(Component<Position>.Id);
+        Position pos = Assert.IsType<Position>(result);
+        Assert.Equal(10f, pos.X);
+        Assert.Equal(20f, pos.Y);
+    }
+
+    /// <summary>
+    ///     Set with type updates the component value.
+    /// </summary>
+    [Fact]
+    public void Set_WithType_SetsComponentValue()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 5, Y = 5});
+
+        gameObject.Set(typeof(Position), new Position {X = 99, Y = 100});
+
+        ref Position pos = ref gameObject.Get<Position>();
+        Assert.Equal(99f, pos.X);
+        Assert.Equal(100f, pos.Y);
+    }
+
+    /// <summary>
+    ///     Try get returns true when the component exists.
+    /// </summary>
+    [Fact]
+    public void TryGet_ReturnsTrue_WhenComponentExists()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+
+        bool result = gameObject.TryGet<Position>(out Ref<Position> value);
+
+        Assert.True(result);
+        Assert.Equal(1f, value.Value.X);
+        Assert.Equal(2f, value.Value.Y);
+    }
+
+    /// <summary>
+    ///     Try get returns false when the component does not exist.
+    /// </summary>
+    [Fact]
+    public void TryGet_ReturnsFalse_WhenComponentDoesNotExist()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+
+        bool result = gameObject.TryGet<Velocity>(out Ref<Velocity> value);
+
+        Assert.False(result);
+    }
+
+    /// <summary>
+    ///     Try get returns false for a dead entity without throwing.
+    /// </summary>
+    [Fact]
+    public void TryGet_ReturnsFalse_ForDeadEntity()
+    {
+        using Scene scene = new Scene();
+        GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
+        gameObject.Delete();
+
+        bool result = gameObject.TryGet<Position>(out Ref<Position> value);
+
+        Assert.False(result);
+    }
+}
 }
