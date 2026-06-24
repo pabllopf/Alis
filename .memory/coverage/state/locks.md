@@ -1,6 +1,11 @@
-# Coverage Remediation Locks
+# Distributed Locks
 
-| Target | Worker | Timestamp | Status |
-|--------|--------|-----------|--------|
+## Active Locks
 
-> Locks older than 60 minutes may be reclaimed.
+*No active locks.*
+
+## Released Locks
+
+| Target | Worker | Timestamp | Duration |
+|--------|--------|-----------|----------|
+| `4_Operation/Ecs/src/Scene.cs` | `worker-1` | `2026-06-24T12:00:00Z` | ~5 min |

@@ -1,6 +1,22 @@
-# Coverage Index — pabllopf-official_alis (master)
+# Coverage Index
 
-| File | Coverage | Branch Coverage | Uncovered Lines | Last Updated | Status |
-|------|----------|-----------------|-----------------|--------------|--------|
+## Metadata
 
-> Updated after every commit. Status: new | processing | completed | skipped
+- **Project**: pabllopf-official_alis
+- **Branch**: master
+- **Last Sync**: 2026-06-24
+- **Status**: Active
+
+## Recent Tasks
+
+| # | File | Coverage Before | Tests Added | Commit | Status |
+|---|------|-----------------|-------------|--------|--------|
+| 1 | `4_Operation/Ecs/src/Scene.cs` | 86.5% | 8 | `2676db762` | Done |
+
+## Summary
+
+- **Total CS files**: 1471
+- **Files with uncovered lines**: 294
+- **Current project coverage**: 55.9%
+- **Uncovered lines**: 25,621
+- **Uncovered conditions**: 5,011
