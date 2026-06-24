@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -365,19 +367,157 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(entityCount, scene.EntityCount);
         }
 
-        /// <summary>
-        ///     Tests that scene world event flags starts as none
-        /// </summary>
-        /// <remarks>
-        ///     Validates that WorldEventFlags is initialized properly.
-        /// </remarks>
-        [Fact]
-        public void Scene_WorldEventFlagsStartsAsNone()
-        {
-            using Scene scene = new Scene();
+    /// <summary>
+    ///     Tests that scene world event flags starts as none
+    /// </summary>
+    /// <remarks>
+    ///     Validates that WorldEventFlags is initialized properly.
+    /// </remarks>
+    [Fact]
+    public void Scene_WorldEventFlagsStartsAsNone()
+    {
+        using Scene scene = new Scene();
 
-            Assert.True(scene.WorldEventFlags == GameObjectFlags.None ||
-                        scene.WorldEventFlags != (GameObjectFlags) (-1));
-        }
+        Assert.True(scene.WorldEventFlags == GameObjectFlags.None ||
+                    scene.WorldEventFlags != (GameObjectFlags) (-1));
     }
+
+    /// <summary>
+    ///     Tests that scene can create entity without components
+    /// </summary>
+    /// <remarks>
+    ///     Verifies that Create() with no arguments creates an entity in the default archetype.
+    /// </remarks>
+    [Fact]
+    public void Create_WithoutComponents_CreatesEntityInDefaultArchetype()
+    {
+        using Scene scene = new Scene();
+        GameObject entity = scene.Create();
+
+        Assert.Equal(1, scene.EntityCount);
+        Assert.False(entity.IsNull);
+        Assert.True(entity.IsAlive);
+    }
+
+    /// <summary>
+    ///     Tests that create entity without event does not invoke entity created
+    /// </summary>
+    /// <remarks>
+    ///     Verifies that CreateEntityWithoutEvent does not trigger the EntityCreated event.
+    /// </remarks>
+    [Fact]
+    public void CreateEntityWithoutEvent_DoesNotInvokeEntityCreated()
+    {
+        using Scene scene = new Scene();
+        bool eventInvoked = false;
+        scene.EntityCreated += _ => eventInvoked = true;
+
+        GameObject entity = scene.CreateEntityWithoutEvent();
+
+        Assert.False(eventInvoked);
+        Assert.False(entity.IsNull);
+        Assert.Equal(1, scene.EntityCount);
+    }
+
+    /// <summary>
+    ///     Tests that invoke entity created triggers event
+    /// </summary>
+    /// <remarks>
+    ///     Verifies that InvokeEntityCreated manually fires the EntityCreated event.
+    /// </remarks>
+    [Fact]
+    public void InvokeEntityCreated_TriggersEvent()
+    {
+        using Scene scene = new Scene();
+        bool eventInvoked = false;
+        scene.EntityCreated += _ => eventInvoked = true;
+
+        GameObject entity = scene.CreateEntityWithoutEvent();
+        scene.InvokeEntityCreated(entity);
+
+        Assert.True(eventInvoked);
+    }
+
+    /// <summary>
+    ///     Tests that create from objects with multiple components creates entity
+    /// </summary>
+    /// <remarks>
+    ///     Verifies that CreateFromObjects accepts a span of boxed components and creates an entity.
+    /// </remarks>
+    [Fact]
+    public void CreateFromObjects_WithMultipleComponents_CreatesEntity()
+    {
+        using Scene scene = new Scene();
+        ReadOnlySpan<object> components = [new TestComponent { Value = 42 }, new AnotherComponent { Name = "Test" }];
+
+        GameObject entity = scene.CreateFromObjects(components);
+
+        Assert.Equal(1, scene.EntityCount);
+        Assert.False(entity.IsNull);
+    }
+
+    /// <summary>
+    ///     Tests that create from objects with too many components throws argument exception
+    /// </summary>
+    /// <remarks>
+    ///     Verifies that CreateFromObjects throws ArgumentException when exceeding the maximum component count.
+    /// </remarks>
+    [Fact]
+    public void CreateFromObjects_WithTooManyComponents_ThrowsArgumentException()
+    {
+        using Scene scene = new Scene();
+        object[] manyComponents = new object[128];
+
+        for (int i = 0; i < manyComponents.Length; i++)
+        {
+            manyComponents[i] = new TestComponent();
+        }
+
+        Assert.Throws<ArgumentException>(() => scene.CreateFromObjects(manyComponents.AsSpan()));
+    }
+
+    /// <summary>
+    ///     Tests that ensure capacity with zero count does nothing
+    /// </summary>
+    /// <remarks>
+    ///     Verifies that EnsureCapacity returns early without throwing when count is less than 1.
+    /// </remarks>
+    [Fact]
+    public void EnsureCapacity_WithZeroCount_DoesNothing()
+    {
+        using Scene scene = new Scene();
+        GameObjectType entityType = default;
+
+        scene.EnsureCapacity(entityType, 0);
+    }
+
+    /// <summary>
+    ///     Tests that ensure capacity core with zero count throws argument out of range exception
+    /// </summary>
+    /// <remarks>
+    ///     Verifies that EnsureCapacityCore throws ArgumentOutOfRangeException when count is less than 1.
+    /// </remarks>
+    [Fact]
+    public void EnsureCapacityCore_WithZeroCount_ThrowsArgumentOutOfRangeException()
+    {
+        using Scene scene = new Scene();
+        Archetype archetype = scene.DefaultArchetype;
+
+        Assert.Throws<ArgumentOutOfRangeException>(() => scene.EnsureCapacityCore(archetype, 0));
+    }
+
+    /// <summary>
+    ///     Tests that update on empty scene does not throw
+    /// </summary>
+    /// <remarks>
+    ///     Verifies that calling Update() on a scene with no enabled archetypes completes without error.
+    /// </remarks>
+    [Fact]
+    public void Update_OnEmptyScene_DoesNotThrow()
+    {
+        using Scene scene = new Scene();
+
+        scene.Update();
+    }
+}
 }
