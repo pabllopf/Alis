@@ -41,7 +41,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          brew install sdl2 sdl2_image sdl2_ttf ffmpeg
+          brew install sdl2 sdl2_image sdl2_ttf ffmpeg sfml csfml
           brew link ffmpeg
           
       - name: SonarQube Scan
