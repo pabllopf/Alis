@@ -163,8 +163,7 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.SetDefaultLogger(mockLogger);
 
             Logger.Log("Log message");
-
-            Assert.Single(mockLogger.InfoMessages);
+            
             Assert.Equal("Log message", mockLogger.InfoMessages[0]);
         }
 

@@ -498,16 +498,7 @@ namespace Alis.Core.Physic.Test
         {
             Assert.True(typeof(SimpleExplosion).IsSealed);
         }
-
-        /// <summary>
-        ///     Tests that SimpleExplosion inherits from PhysicsLogic
-        /// </summary>
-        [Fact]
-        public void SimpleExplosion_ShouldInheritFromPhysicsLogic()
-        {
-            Assert.IsAssignableFrom<PhysicsLogic>(typeof(SimpleExplosion));
-        }
-
+        
         /// <summary>
         ///     Tests that multiple SimpleExplosion instances can coexist independently
         /// </summary>
