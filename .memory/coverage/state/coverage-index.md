@@ -14,6 +14,7 @@
 | 1 | `4_Operation/Ecs/src/Scene.cs` | 86.5% | 8 | `2676db762` | Done |
 | 2 | `4_Operation/Ecs/src/GameObject.cs` | 74.1% | 13 | `3f1019341` | Done |
 | 3 | `4_Operation/Ecs/src/SceneQueryExtensions.cs` | 77.4% | 13 | `bce9f5b8c` | Done |
+| 4 | `4_Operation/Ecs/src/Systems/GameObjectEnumerator.cs` | TBD | 6 | (pending) | Done |
 
 ## Summary
 

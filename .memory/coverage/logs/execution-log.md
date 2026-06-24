@@ -74,9 +74,27 @@
 - **Build**: Pass
 - **Tests**: 13/13 passed
 
+#### Task 4: GameObjectEnumerator.cs coverage
+
+- **Commit**: (pending)
+- **Timestamp**: `2026-06-24`
+- **File**: `4_Operation/Ecs/src/Systems/GameObjectEnumerator.cs`
+- **Test file**: `4_Operation/Ecs/test/Systems/GameObjectEnumeratorTest.cs`
+- **Tests added**: 6
+  - `Enumerate_SingleEntity_YieldsOneEntity`
+  - `Enumerate_MultipleEntities_YieldsExpectedCount`
+  - `Enumerate_Twice_ProducesSameIds`
+  - `Enumerate_AfterSettingSpanValues_ReturnsCorrectComponentData`
+  - `Current_AccessedBeforeMoveNext_Throws`
+  - `Enumerate_WithPreviousAndNewEntities_EnumeratesOnlyNewOnes`
+- **Estimated coverage improvement**: ~+30% (GameObjectEnumerator.cs only)
+- **Methods covered**: `MoveNext()`, `Current`, `GetEnumerator()`
+- **Build**: Pass
+- **Tests**: 6/6 passed
+
 ## Summary
 
-- **Total tasks completed**: 3
-- **Total commits**: 2 (1 pending)
-- **Files with new tests**: 3 (SceneTest.cs, GameObjectPropertiesTest.cs, SceneQueryExtensionsTest.cs)
-- **Total tests added**: 34
+- **Total tasks completed**: 4
+- **Total commits**: 2 (2 pending)
+- **Files with new tests**: 4 (SceneTest.cs, GameObjectPropertiesTest.cs, SceneQueryExtensionsTest.cs, GameObjectEnumeratorTest.cs)
+- **Total tests added**: 40
