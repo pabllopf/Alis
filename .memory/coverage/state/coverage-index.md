@@ -12,6 +12,7 @@
 | # | File | Coverage Before | Tests Added | Commit | Status |
 |---|------|-----------------|-------------|--------|--------|
 | 1 | `4_Operation/Ecs/src/Scene.cs` | 86.5% | 8 | `2676db762` | Done |
+| 2 | `4_Operation/Ecs/src/GameObject.cs` | 74.1% | 13 | `3f1019341` | Done |
 
 ## Summary
 
