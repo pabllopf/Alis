@@ -114,6 +114,10 @@ namespace Alis.Test
             /// </summary>
             public bool OnAfterFixedUpdateCalled { get; private set; }
             /// <summary>
+            /// Gets or sets the value of the on process pending changes called
+            /// </summary>
+            public bool OnProcessPendingChangesCalled { get; private set; }
+            /// <summary>
             /// Gets or sets the value of the on dispatch events called
             /// </summary>
             public bool OnDispatchEventsCalled { get; private set; }
@@ -271,6 +275,105 @@ namespace Alis.Test
             {
                 base.OnAfterUpdate();
                 OnAfterUpdateCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the physic update
+            /// </summary>
+            public override void OnPhysicUpdate()
+            {
+                base.OnPhysicUpdate();
+                OnPhysicUpdateCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the process pending changes
+            /// </summary>
+            public override void OnProcessPendingChanges()
+            {
+                base.OnProcessPendingChanges();
+                OnProcessPendingChangesCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the before fixed update
+            /// </summary>
+            public override void OnBeforeFixedUpdate()
+            {
+                base.OnBeforeFixedUpdate();
+                OnBeforeFixedUpdateCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the fixed update
+            /// </summary>
+            public override void OnFixedUpdate()
+            {
+                base.OnFixedUpdate();
+                OnFixedUpdateCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the after fixed update
+            /// </summary>
+            public override void OnAfterFixedUpdate()
+            {
+                base.OnAfterFixedUpdate();
+                OnAfterFixedUpdateCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the dispatch events
+            /// </summary>
+            public override void OnDispatchEvents()
+            {
+                base.OnDispatchEvents();
+                OnDispatchEventsCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the calculate
+            /// </summary>
+            public override void OnCalculate()
+            {
+                base.OnCalculate();
+                OnCalculateCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the before draw
+            /// </summary>
+            public override void OnBeforeDraw()
+            {
+                base.OnBeforeDraw();
+                OnBeforeDrawCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the after draw
+            /// </summary>
+            public override void OnAfterDraw()
+            {
+                base.OnAfterDraw();
+                OnAfterDrawCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the gui
+            /// </summary>
+            public override void OnGui()
+            {
+                base.OnGui();
+                OnGuiCalled = true;
+            }
+
+            /// <summary>
+            /// Ons the render present
+            /// </summary>
+            public override void OnRenderPresent()
+            {
+                base.OnRenderPresent();
+                OnRenderPresentCalled = true;
             }
         }
 
@@ -569,6 +672,193 @@ namespace Alis.Test
 
             Assert.True(runtime1.OnAfterUpdateCalled);
             Assert.True(runtime2.OnAfterUpdateCalled);
+        }
+
+        /// <summary>
+        ///     Tests that OnPhysicUpdate calls OnPhysicUpdate on all runtimes
+        /// </summary>
+        [Fact]
+        public void OnPhysicUpdate_CallsOnPhysicUpdateOnAllRuntimes()
+        {
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+
+            runtime.OnPhysicUpdate();
+
+            Assert.True(runtime1.OnPhysicUpdateCalled);
+            Assert.True(runtime2.OnPhysicUpdateCalled);
+        }
+
+        /// <summary>
+        ///     Tests that OnProcessPendingChanges calls OnProcessPendingChanges on all runtimes
+        /// </summary>
+        [Fact]
+        public void OnProcessPendingChanges_CallsOnProcessPendingChangesOnAllRuntimes()
+        {
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+
+            runtime.OnProcessPendingChanges();
+
+            Assert.True(runtime1.OnProcessPendingChangesCalled);
+            Assert.True(runtime2.OnProcessPendingChangesCalled);
+        }
+
+        /// <summary>
+        ///     Tests that OnBeforeFixedUpdate calls OnBeforeFixedUpdate on all runtimes
+        /// </summary>
+        [Fact]
+        public void OnBeforeFixedUpdate_CallsOnBeforeFixedUpdateOnAllRuntimes()
+        {
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+
+            runtime.OnBeforeFixedUpdate();
+
+            Assert.True(runtime1.OnBeforeFixedUpdateCalled);
+            Assert.True(runtime2.OnBeforeFixedUpdateCalled);
+        }
+
+        /// <summary>
+        ///     Tests that OnFixedUpdate calls OnFixedUpdate on all runtimes
+        /// </summary>
+        [Fact]
+        public void OnFixedUpdate_CallsOnFixedUpdateOnAllRuntimes()
+        {
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+
+            runtime.OnFixedUpdate();
+
+            Assert.True(runtime1.OnFixedUpdateCalled);
+            Assert.True(runtime2.OnFixedUpdateCalled);
+        }
+
+        /// <summary>
+        ///     Tests that OnAfterFixedUpdate calls OnAfterFixedUpdate on all runtimes
+        /// </summary>
+        [Fact]
+        public void OnAfterFixedUpdate_CallsOnAfterFixedUpdateOnAllRuntimes()
+        {
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+
+            runtime.OnAfterFixedUpdate();
+
+            Assert.True(runtime1.OnAfterFixedUpdateCalled);
+            Assert.True(runtime2.OnAfterFixedUpdateCalled);
+        }
+
+        /// <summary>
+        ///     Tests that OnDispatchEvents calls OnDispatchEvents on all runtimes
+        /// </summary>
+        [Fact]
+        public void OnDispatchEvents_CallsOnDispatchEventsOnAllRuntimes()
+        {
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+
+            runtime.OnDispatchEvents();
+
+            Assert.True(runtime1.OnDispatchEventsCalled);
+            Assert.True(runtime2.OnDispatchEventsCalled);
+        }
+
+        /// <summary>
+        ///     Tests that OnCalculate calls OnCalculate on all runtimes
+        /// </summary>
+        [Fact]
+        public void OnCalculate_CallsOnCalculateOnAllRuntimes()
+        {
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+
+            runtime.OnCalculate();
+
+            Assert.True(runtime1.OnCalculateCalled);
+            Assert.True(runtime2.OnCalculateCalled);
+        }
+
+        /// <summary>
+        ///     Tests that OnBeforeDraw calls OnBeforeDraw on all runtimes
+        /// </summary>
+        [Fact]
+        public void OnBeforeDraw_CallsOnBeforeDrawOnAllRuntimes()
+        {
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+
+            runtime.OnBeforeDraw();
+
+            Assert.True(runtime1.OnBeforeDrawCalled);
+            Assert.True(runtime2.OnBeforeDrawCalled);
+        }
+
+        /// <summary>
+        ///     Tests that OnAfterDraw calls OnAfterDraw on all runtimes
+        /// </summary>
+        [Fact]
+        public void OnAfterDraw_CallsOnAfterDrawOnAllRuntimes()
+        {
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+
+            runtime.OnAfterDraw();
+
+            Assert.True(runtime1.OnAfterDrawCalled);
+            Assert.True(runtime2.OnAfterDrawCalled);
+        }
+
+        /// <summary>
+        ///     Tests that OnGui calls OnGui on all runtimes
+        /// </summary>
+        [Fact]
+        public void OnGui_CallsOnGuiOnAllRuntimes()
+        {
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+
+            runtime.OnGui();
+
+            Assert.True(runtime1.OnGuiCalled);
+            Assert.True(runtime2.OnGuiCalled);
+        }
+
+        /// <summary>
+        ///     Tests that OnRenderPresent calls OnRenderPresent on all runtimes
+        /// </summary>
+        [Fact]
+        public void OnRenderPresent_CallsOnRenderPresentOnAllRuntimes()
+        {
+            Context context = new Context();
+            TestRuntime runtime1 = new TestRuntime(context);
+            TestRuntime runtime2 = new TestRuntime(context);
+            InternalRuntime<AManager> runtime = new InternalRuntime<AManager>(runtime1, runtime2);
+
+            runtime.OnRenderPresent();
+
+            Assert.True(runtime1.OnRenderPresentCalled);
+            Assert.True(runtime2.OnRenderPresentCalled);
         }
     }
 }
