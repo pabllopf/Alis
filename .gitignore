@@ -91,3 +91,4 @@ Debug/
 /.sonarqube
 
 *.txt
+/coverlet-results

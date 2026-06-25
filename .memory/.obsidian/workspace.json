@@ -204,6 +204,7 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "coverage/tests/001-constant.md",
     "coverage/tasks/001-constant.md",
     "coverage/logs/execution-log.md",
     "coverage/state/coverage-index.md",
@@ -233,7 +234,6 @@
     "coverage/tasks/ControllerTransform-StaticMethods.md",
     "coverage/tests/task-002-tests.md",
     "coverage/tasks/task-002-fast-priority-queue.md",
-    "coverage/tests/task-001-tests.md",
     "coverage/state/coverage-index.json",
     "coverage/decisions",
     "coverage/patterns",
