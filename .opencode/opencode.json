@@ -5,8 +5,8 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "slang/qwen/Qwen3.6-35B-A3B",
-  "small_model": "slang/qwen/Qwen3.6-35B-A3B",
+  "model": "omlx/mlx-community/Qwen3.6-35B-A3B-4bit",
+  "small_model": "omlx/mlx-community/Qwen3.6-35B-A3B-4bit",
 
   "provider": {
     "slang": {
@@ -109,10 +109,10 @@
           "attachment": false,
 
           "maxInputTokens": 262144,
-          "maxOutputTokens": 131072,
+          "maxOutputTokens": 262144,
           "limit": {
             "context": 262144,
-            "output": 131072
+            "output": 262144
           }
         },
         "Qwen3.6-35B-A3B-TurboQuant-MLX-4bit": {
