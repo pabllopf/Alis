@@ -1,7 +1,5 @@
 # Distributed Locks
 
-## Schema
-
-| Target | Worker | Timestamp | Status |
-|--------|--------|-----------|--------|
-| InternalRuntime.cs | alis-sonarcloud-worker | 2026-06-24T16:55:00Z | released |
+| file | worker | timestamp | status |
+|---|---|---|---|
+| 6_Ideation/Math/src/Util/Constant.cs | local | 2026-06-25T12:45:00 | locked |
