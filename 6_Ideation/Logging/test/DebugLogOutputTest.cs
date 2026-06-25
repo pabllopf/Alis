@@ -238,5 +238,29 @@ namespace Alis.Core.Aspect.Logging.Test
 
             output.Write(entry);
         }
+
+        /// <summary>
+        ///     Tests that write after dispose returns early without throwing
+        /// </summary>
+        [Fact]
+        public void DebugLogOutput_WriteAfterDispose_ReturnsEarly()
+        {
+            DebugLogOutput output = new DebugLogOutput();
+            output.Dispose();
+
+            output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
+        }
+
+        /// <summary>
+        ///     Tests that flush after dispose returns early without throwing
+        /// </summary>
+        [Fact]
+        public void DebugLogOutput_FlushAfterDispose_ReturnsEarly()
+        {
+            DebugLogOutput output = new DebugLogOutput();
+            output.Dispose();
+
+            output.Flush();
+        }
     }
 }
