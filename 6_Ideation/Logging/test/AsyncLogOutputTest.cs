@@ -203,6 +203,35 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
+        ///     Tests that write after dispose does not queue entries
+        /// </summary>
+        [Fact]
+        public void AsyncLogOutput_WriteAfterDispose_ShouldNotQueue()
+        {
+            MemoryLogOutput innerOutput = new MemoryLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
+
+            asyncOutput.Dispose();
+            asyncOutput.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
+            asyncOutput.Flush();
+
+            Assert.Empty(innerOutput.GetEntries());
+        }
+
+        /// <summary>
+        ///     Tests that repeated dispose does not throw
+        /// </summary>
+        [Fact]
+        public void AsyncLogOutput_RepeatedDispose_ShouldNotThrow()
+        {
+            MemoryLogOutput innerOutput = new MemoryLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
+
+            asyncOutput.Dispose();
+            asyncOutput.Dispose();
+        }
+
+        /// <summary>
         ///     Tests that async log output inner output exception should not propagate
         /// </summary>
         [Fact]
