@@ -1,50 +1,191 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:SimpleCombinerTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
+using System.Collections.Generic;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.PolygonManipulation;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.PolygonManipulation
 {
-    /// <summary>
-    /// The simple combiner test class
-    /// </summary>
     public class SimpleCombinerTest
     {
-        /// <summary>
-        /// Tests that simple combiner type should be accessible
-        /// </summary>
         [Fact]
-        public void SimpleCombiner_TypeShouldBeAccessible()
+        public void PolygonizeTriangles_EmptyList_ReturnsSame()
         {
-            Assert.NotNull(typeof(SimpleCombiner));
+            List<Vertices> empty = new List<Vertices>();
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(empty);
+
+            Assert.Same(empty, result);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_SingleValidTriangle_ReturnsOnePolygon()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Single(result);
+            Assert.Equal(3, result[0].Count);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_DegenerateTriangle_IsSkipped()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(0, 0), new Vector2F(1, 0) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_TwoAdjacentTriangles_Combines()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(1, 0), new Vector2F(0, 1), new Vector2F(1, 1) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Single(result);
+            Assert.True(result[0].Count >= 3);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_TwoAdjacentTrianglesWithSwap_Combines()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(0, 0), new Vector2F(0, 1), new Vector2F(-1, 1) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Single(result);
+            Assert.True(result[0].Count >= 3);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_NonAdjacentTriangles_StaysSeparate()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(5, 5), new Vector2F(6, 5), new Vector2F(5, 6) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_MaxPolysLimit_Respected()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(5, 5), new Vector2F(6, 5), new Vector2F(5, 6) },
+                new Vertices { new Vector2F(10, 10), new Vector2F(11, 10), new Vector2F(10, 11) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles, maxPolys: 2);
+
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_AllDegenerate_ReturnsEmpty()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(0, 0), new Vector2F(1, 0) },
+                new Vertices { new Vector2F(2, 2), new Vector2F(2, 2), new Vector2F(3, 2) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_AllDegenerateFlagsCovered_ReturnsEmpty()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(0, 0), new Vector2F(0, 0) },
+                new Vertices { new Vector2F(1, 1), new Vector2F(2, 2), new Vector2F(2, 2) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_FirstAndLastSame_IsDegenerate()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 0) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_CorruptPolygon_LogsAndSkips()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(0, 0), new Vector2F(0, 0), new Vector2F(0, 0) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Single(result);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_AdjacentWithDifferentTipIndex_Combines()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(1, -1), new Vector2F(0, 0), new Vector2F(1, 0) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Single(result);
+            Assert.True(result[0].Count >= 3);
+        }
+
+        [Fact]
+        public void PolygonizeTriangles_ThreeInRow_CombinesToOne()
+        {
+            List<Vertices> triangles = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) },
+                new Vertices { new Vector2F(1, 0), new Vector2F(0, 1), new Vector2F(1, 1) },
+                new Vertices { new Vector2F(0, 0), new Vector2F(0, 1), new Vector2F(-1, 1) }
+            };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Equal(2, result.Count);
         }
     }
 }
-
