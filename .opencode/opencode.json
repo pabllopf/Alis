@@ -5,10 +5,28 @@
   "share": "auto",
   "permission": "allow",
 
-  "model": "llmstudio/unsloth/qwen3.6-35b-a3b-mtp",
-  "small_model": "llmstudio/unsloth/qwen3.6-35b-a3b-mtp",
+  "model": "slang/qwen/Qwen3.6-35B-A3B",
+  "small_model": "slang/qwen/Qwen3.6-35B-A3B",
 
   "provider": {
+    "slang": {
+          "npm": "@ai-sdk/openai-compatible",
+          "name": "slang",
+          "options": {
+            "baseURL": "http://127.0.0.1:8000/v1",
+            "apiKey": "1234"
+          },
+          "models": {
+            "qwen/Qwen3.6-35B-A3B": {
+              "name": "qwen/Qwen3.6-35B-A3B",
+              "modalities": {
+                "input": ["text"],
+                "output": ["text"]
+              }
+            }
+          }
+        },
+
     "omlx": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "oMLX",
