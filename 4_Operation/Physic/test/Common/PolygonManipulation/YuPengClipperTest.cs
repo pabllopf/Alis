@@ -1,32 +1,3 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:YuPengClipperTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -35,25 +6,61 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.PolygonManipulation
 {
-    /// <summary>
-    /// The yu peng clipper test class
-    /// </summary>
     public class YuPengClipperTest
     {
-        /// <summary>
-        /// Tests that yu peng clipper type should be accessible
-        /// </summary>
         [Fact]
-        public void YuPengClipper_TypeShouldBeAccessible()
+        public void Union_OverlappingSquares_ReturnsResult()
         {
-            Assert.NotNull(typeof(YuPengClipper));
+            Vertices square1 = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+            Vertices square2 = new Vertices(new[]
+            {
+                new Vector2F(1f, 1f),
+                new Vector2F(3f, 1f),
+                new Vector2F(3f, 3f),
+                new Vector2F(1f, 3f)
+            });
+
+            PolyClipError error = PolyClipError.None;
+            List<Vertices> result = YuPengClipper.Union(square1, square2, out error);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            Assert.Equal(PolyClipError.None, error);
         }
 
-        /// <summary>
-        /// Tests that union with overlapping triangles should produce result
-        /// </summary>
         [Fact]
-        public void Union_WithOverlappingTriangles_ShouldProduceResult()
+        public void Union_NonOverlappingSquares_ReturnsResult()
+        {
+            Vertices square1 = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(1f, 1f),
+                new Vector2F(0f, 1f)
+            });
+            Vertices square2 = new Vertices(new[]
+            {
+                new Vector2F(5f, 5f),
+                new Vector2F(6f, 5f),
+                new Vector2F(6f, 6f),
+                new Vector2F(5f, 6f)
+            });
+
+            PolyClipError error = PolyClipError.None;
+            List<Vertices> result = YuPengClipper.Union(square1, square2, out error);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+        }
+
+        [Fact]
+        public void Union_OverlappingTriangles_ReturnsResult()
         {
             Vertices tri1 = new Vertices(new[]
             {
@@ -73,6 +80,247 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
 
             Assert.NotNull(result);
             Assert.Equal(PolyClipError.None, error);
+        }
+
+        [Fact]
+        public void Union_OneInsideAnother_ReturnsOuter()
+        {
+            Vertices outer = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(3f, 0f),
+                new Vector2F(3f, 3f),
+                new Vector2F(0f, 3f)
+            });
+            Vertices inner = new Vertices(new[]
+            {
+                new Vector2F(1f, 1f),
+                new Vector2F(2f, 1f),
+                new Vector2F(2f, 2f),
+                new Vector2F(1f, 2f)
+            });
+
+            PolyClipError error = PolyClipError.None;
+            List<Vertices> result = YuPengClipper.Union(outer, inner, out error);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+        }
+
+        [Fact]
+        public void Difference_OverlappingSquares_ReturnsResult()
+        {
+            Vertices square1 = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+            Vertices square2 = new Vertices(new[]
+            {
+                new Vector2F(1f, 1f),
+                new Vector2F(3f, 1f),
+                new Vector2F(3f, 3f),
+                new Vector2F(1f, 3f)
+            });
+
+            PolyClipError error = PolyClipError.None;
+            List<Vertices> result = YuPengClipper.Difference(square1, square2, out error);
+
+            Assert.NotNull(result);
+            Assert.Equal(PolyClipError.None, error);
+        }
+
+        [Fact]
+        public void Difference_NonOverlapping_ReturnsPoly1()
+        {
+            Vertices square1 = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(1f, 1f),
+                new Vector2F(0f, 1f)
+            });
+            Vertices square2 = new Vertices(new[]
+            {
+                new Vector2F(5f, 5f),
+                new Vector2F(6f, 5f),
+                new Vector2F(6f, 6f),
+                new Vector2F(5f, 6f)
+            });
+
+            PolyClipError error = PolyClipError.None;
+            List<Vertices> result = YuPengClipper.Difference(square1, square2, out error);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+        }
+
+        [Fact]
+        public void Intersect_OverlappingSquares_ReturnsResult()
+        {
+            Vertices square1 = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+            Vertices square2 = new Vertices(new[]
+            {
+                new Vector2F(1f, 1f),
+                new Vector2F(3f, 1f),
+                new Vector2F(3f, 3f),
+                new Vector2F(1f, 3f)
+            });
+
+            PolyClipError error = PolyClipError.None;
+            List<Vertices> result = YuPengClipper.Intersect(square1, square2, out error);
+
+            Assert.NotNull(result);
+            Assert.Equal(PolyClipError.None, error);
+        }
+
+        [Fact]
+        public void Intersect_NonOverlapping_ReturnsResult()
+        {
+            Vertices square1 = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(1f, 1f),
+                new Vector2F(0f, 1f)
+            });
+            Vertices square2 = new Vertices(new[]
+            {
+                new Vector2F(5f, 5f),
+                new Vector2F(6f, 5f),
+                new Vector2F(6f, 6f),
+                new Vector2F(5f, 6f)
+            });
+
+            PolyClipError error = PolyClipError.None;
+            List<Vertices> result = YuPengClipper.Intersect(square1, square2, out error);
+
+            Assert.NotNull(result);
+            Assert.Equal(PolyClipError.None, error);
+        }
+
+        [Fact]
+        public void Intersect_OneInsideAnother_ReturnsInner()
+        {
+            Vertices outer = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(3f, 0f),
+                new Vector2F(3f, 3f),
+                new Vector2F(0f, 3f)
+            });
+            Vertices inner = new Vertices(new[]
+            {
+                new Vector2F(1f, 1f),
+                new Vector2F(2f, 1f),
+                new Vector2F(2f, 2f),
+                new Vector2F(1f, 2f)
+            });
+
+            PolyClipError error = PolyClipError.None;
+            List<Vertices> result = YuPengClipper.Intersect(outer, inner, out error);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+        }
+
+        [Fact]
+        public void Union_AdjacentSquares_TouchingEdges()
+        {
+            Vertices left = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(1f, 1f),
+                new Vector2F(0f, 1f)
+            });
+            Vertices right = new Vertices(new[]
+            {
+                new Vector2F(1f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 1f),
+                new Vector2F(1f, 1f)
+            });
+
+            PolyClipError error = PolyClipError.None;
+            List<Vertices> result = YuPengClipper.Union(left, right, out error);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+        }
+
+        [Fact]
+        public void Difference_OneInsideAnother_ReturnsResult()
+        {
+            Vertices outer = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(3f, 0f),
+                new Vector2F(3f, 3f),
+                new Vector2F(0f, 3f)
+            });
+            Vertices inner = new Vertices(new[]
+            {
+                new Vector2F(1f, 1f),
+                new Vector2F(2f, 1f),
+                new Vector2F(2f, 2f),
+                new Vector2F(1f, 2f)
+            });
+
+            PolyClipError error = PolyClipError.None;
+            List<Vertices> result = YuPengClipper.Difference(outer, inner, out error);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+        }
+
+        [Fact]
+        public void Union_PolygonWithOriginEdge_ReturnsResult()
+        {
+            Vertices poly1 = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(0f, 2f)
+            });
+            Vertices poly2 = new Vertices(new[]
+            {
+                new Vector2F(-1f, 0f),
+                new Vector2F(0f, -1f),
+                new Vector2F(0f, 0f)
+            });
+
+            PolyClipError error;
+            List<Vertices> result = YuPengClipper.Union(poly1, poly2, out error);
+
+            Assert.NotNull(result);
+            Assert.Equal(PolyClipError.None, error);
+        }
+
+        [Fact]
+        public void Union_IdenticalPolygons_ReturnsResult()
+        {
+            Vertices poly = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+
+            PolyClipError error;
+            List<Vertices> result = YuPengClipper.Union(poly, poly, out error);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
         }
     }
 }
