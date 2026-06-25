@@ -4,4 +4,4 @@
 
 | Target | Worker | Timestamp | Status |
 |--------|--------|-----------|--------|
-| InternalRuntime.cs | alis-sonarcloud-worker | 2026-06-24T16:50:00Z | active |
+| InternalRuntime.cs | alis-sonarcloud-worker | 2026-06-24T16:55:00Z | released |
