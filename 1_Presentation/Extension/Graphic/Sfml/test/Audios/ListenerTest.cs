@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Extension.Graphic.Sfml.Audios;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
@@ -41,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Listener GlobalVolume getter returns a value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Listener_GlobalVolume_Getter_ShouldReturnNonZero()
         {
             float volume = Listener.GlobalVolume;
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Listener Position getter returns a vector.
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Listener_Position_Getter_ShouldReturnVector()
         {
             var position = Listener.Position;
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Listener Direction getter returns a vector.
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Listener_Direction_Getter_ShouldReturnVector()
         {
             var direction = Listener.Direction;
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Listener UpVector getter returns a vector.
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Listener_UpVector_Getter_ShouldReturnVector()
         {
             var upVector = Listener.UpVector;
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Listener GlobalVolume can be set.
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Listener_GlobalVolume_Setter_ShouldAcceptValue()
         {
             float originalVolume = Listener.GlobalVolume;
@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Listener Position can be set.
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Listener_Position_Setter_ShouldAcceptValue()
         {
             var originalPosition = Listener.Position;
@@ -111,7 +111,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Listener Direction can be set.
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Listener_Direction_Setter_ShouldAcceptValue()
         {
             var originalDirection = Listener.Direction;
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Listener UpVector can be set.
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Listener_UpVector_Setter_ShouldAcceptValue()
         {
             var originalUpVector = Listener.UpVector;

@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Attributes
 {
     public class RequireCSfmlAudioFactAttribute : FactAttribute
     {
-        public CsfmlAudioFactAttribute()
+        public RequireCSfmlAudioFactAttribute()
         {
             try
             {
