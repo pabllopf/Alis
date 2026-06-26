@@ -26,6 +26,11 @@
 | #007 | 4_Operation/Audio/src | SKIPPED | 0 (9468 existing) | WELL TESTED (55.1%, skip) |
 | #010 | JointFactory.cs | e84ef5094 | 12 (12 new) | COMPLETE — all factory methods covered |
 | #011 | Triangulate.cs | 625c76957 | 10 (10 new) | COMPLETE — all algorithm branches covered |
+| #012 | EdgeShape.cs | c920b1e22 | 11 (11 new) | COMPLETE — all branches covered (RayCast, AABB, SubmergedArea, CompareTo, Clone) |
+| #013 | ChainShape.cs | 068eae03d | 16 (16 new) | COMPLETE — GetChildEdge branches, RayCast, CompareTo, Clone, ComputeAabb, ComputeSubmergedArea |
+| #014 | VelocityLimitController.cs | 463101db9 | 5 (5 new) | COMPLETE — angular velocity clamp, IsActiveOn filter |
+| #015 | GravityController.cs | bfa3e8660 | 2 (2 new) | COMPLETE — DistanceSquared body/point gravity branches |
+| #016 | SimpleExplosion.cs | (pending) | 4 (4 new) | COMPLETE — ApplyImpulse with body in range, max force, controller filter, near edge |
 
 ## Remaining Target Files (Coverage < 80%)
 
@@ -52,14 +57,19 @@
 | After #005 | 759* | +20 Sfml Audios tests (pending native lib) |
 | After #010 | 2373 | +12 JointFactory tests |
 | After #011 | 2383 | +10 Triangulate tests |
+| After #012 | 2394 | +11 EdgeShape tests |
+| After #013 | 2410 | +16 ChainShape tests |
+| After #014 | 2415 | +5 VelocityLimitController tests |
+| After #015 | 2417 | +2 GravityController tests |
+| After #016 | 2421 | +4 SimpleExplosion tests |
 | Fix #005 | 2376 | -7 net tests (SoundTest instances crash → 5 type-level) |
 
 *Note: Sfml tests timed out during execution — requires SFML native library. SoundTest.cs fixed at 615be2661.
 
 ## Summary
 
-- **Tasks completed**: 7 (FFmpeg guard conditions + Sfml property guards + JointFactory + Triangulate)
+- **Tasks completed**: 8 (FFmpeg guard conditions + Sfml property guards + JointFactory + Triangulate + EdgeShape + ChainShape + VelocityLimitController + GravityController + SimpleExplosion)
 - **Tasks skipped**: 3 (BaseClasses, 4_Operation/Audio, Cloud — external deps)
 - **Remaining**: 2_Application/Alis/src (55.3%, 933 lines) — last priority; Physic joints, ECS module
-- **Total new tests added**: ~134 (across 7 tasks)
+- **Total new tests added**: ~138 (across 8 tasks)
 

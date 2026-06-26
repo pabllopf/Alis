@@ -139,5 +139,72 @@ namespace Alis.Core.Physic.Test.Common.Logic
 
             Assert.NotEqual(percentPower1, percentPower2);
         }
+
+        /// <summary>
+        ///     Tests that ApplyImpulse applies force to body in range
+        /// </summary>
+        [Fact]
+        public void ApplyImpulse_WithBodyInRange_ShouldApplyForce()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+            HashSet<Body> bodies = new HashSet<Body> { body };
+
+            Dictionary<Body, Vector2F> forces = explosion.ApplyImpulse(Vector2F.Zero, 10f, 100f, float.MaxValue, bodies);
+
+            Assert.Single(forces);
+            Assert.True(forces[body].Length() > 0);
+        }
+
+        /// <summary>
+        ///     Tests that ApplyImpulse limits force to maxForce
+        /// </summary>
+        [Fact]
+        public void ApplyImpulse_WithMaxForce_ShouldLimitForce()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+            HashSet<Body> bodies = new HashSet<Body> { body };
+
+            Dictionary<Body, Vector2F> forces = explosion.ApplyImpulse(new Vector2F(0, 0), 10f, 1000f, 5f, bodies);
+
+            Assert.True(forces[body].Length() <= 5f + 0.001f);
+        }
+
+        /// <summary>
+        ///     Tests that ApplyImpulse skips body when IsActiveOn returns false
+        /// </summary>
+        [Fact]
+        public void ApplyImpulse_WithFilteredBody_ShouldSkip()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(0, 0), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+            body.ControllerFilter.IgnoreController(explosion.ControllerCategories);
+            HashSet<Body> bodies = new HashSet<Body> { body };
+
+            Dictionary<Body, Vector2F> forces = explosion.ApplyImpulse(Vector2F.Zero, 10f, 100f, float.MaxValue, bodies);
+
+            Assert.Empty(forces);
+        }
+
+        /// <summary>
+        ///     Tests that ApplyImpulse with distance near radius applies small force
+        /// </summary>
+        [Fact]
+        public void ApplyImpulse_WithBodyNearEdge_ShouldApplySmallForce()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(9f, 0), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+            HashSet<Body> bodies = new HashSet<Body> { body };
+
+            Dictionary<Body, Vector2F> forces = explosion.ApplyImpulse(Vector2F.Zero, 10f, 100f, float.MaxValue, bodies);
+
+            Assert.Single(forces);
+            Assert.True(forces[body].Length() < 100f);
+        }
     }
 }

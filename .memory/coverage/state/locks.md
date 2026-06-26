@@ -13,6 +13,11 @@
 | 1_Presentation/Extension/Cloud | worker-1 | 2025-06-25T18:41:00Z | completed (requires cloud credentials, skip) |
 | JointFactory.cs | worker-1 | 2026-06-26T09:51:00Z | completed (e84ef5094) |
 | Triangulate.cs | worker-1 | 2026-06-26T09:59:00Z | completed (625c76957) |
+| EdgeShape.cs | worker-1 | 2026-06-26T10:00:00Z | completed (c920b1e22) |
+| ChainShape.cs | worker-1 | 2026-06-26T10:15:00Z | completed (068eae03d) |
+| VelocityLimitController.cs | worker-1 | 2026-06-26T10:30:00Z | completed (463101db9) |
+| GravityController.cs | worker-1 | 2026-06-26T10:35:00Z | completed (bfa3e8660) |
+| SimpleExplosion.cs | worker-1 | 2026-06-26T11:00:00Z | completed (pending) |
 
 ## Session Summary
 

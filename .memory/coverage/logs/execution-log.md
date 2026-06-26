@@ -207,3 +207,58 @@
 | Status | COMPLETE — all algorithm branches and edge cases covered |
 | New Tests | ConvexPartition_WithSmallPolygon_ReturnsGivenVertices, ConvexPartition_WithQuad_UsingBayazit_ShouldReturnParts, ConvexPartition_WithQuad_UsingFlipcode_ShouldReturnParts, ConvexPartition_WithQuad_UsingSeidel_ShouldReturnParts, ConvexPartition_WithQuad_UsingSeidelTrapezoids_ShouldReturnParts, ConvexPartition_WithQuad_UsingDelauny_ShouldReturnParts, ConvexPartition_WithInvalidAlgorithm_ThrowsArgumentOutOfRangeException, ConvexPartition_WithDiscardAndFixInvalidFalse_ShouldNotDiscard, ValidatePolygon_WithValidPolygon_ReturnsTrue, ValidatePolygon_WithInvalidPolygon_ReturnsFalse |
 
+## 2026-06-26T10:10:00Z — Task #012 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 012 |
+| File | EdgeShape.cs |
+| Commit | c920b1e22 |
+| Tests Added | 11 |
+| Coverage Area | RayCast (parallel, behind, beyond, outside segment, normal direction), ComputeAabb (horizontal, vertical, reversed), ComputeSubmergedArea, CompareTo (equal, different, HasVertex), Clone (copy, independence), VertexSetter centroid update |
+| Status | COMPLETE — all uncovered methods covered |
+
+## 2026-06-26T10:15:00Z — Task #013 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 013 |
+| File | ChainShape.cs |
+| Commit | 068eae03d |
+| Tests Added | 16 |
+| Coverage Area | GetChildEdge (middle index, prev/next vertex propagation), RayCast, ComputeAabb, ComputeSubmergedArea, CompareTo (identical, different count, different vertices, different prev/next), Clone (equivalence, independence), TestPoint |
+| Status | COMPLETE — all branches and uncovered methods covered |
+
+## 2026-06-26T10:30:00Z — Task #014 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 014 |
+| File | VelocityLimitController.cs |
+| Commit | 463101db9 |
+| Tests Added | 5 |
+| Coverage Area | Angular velocity clamping (exceeding, within limits, disabled), IsActiveOn body filter skip |
+| Status | COMPLETE — all velocity-limiting branches covered |
+
+## 2026-06-26T10:35:00Z — Task #015 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 015 |
+| File | GravityController.cs |
+| Commit | bfa3e8660 |
+| Tests Added | 2 |
+| Coverage Area | DistanceSquared branch for ApplyBodyGravity and ApplyPointGravity |
+| Status | COMPLETE — all gravity force type branches covered |
+
+## 2026-06-26T11:00:00Z — Task #016 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 016 |
+| File | SimpleExplosion.cs |
+| Commit | (pending) |
+| Tests Added | 4 |
+| Coverage Area | ApplyImpulse with body in range, max force limit, controller filter skip, body near edge |
+| Status | COMPLETE — all ApplyImpulse branches covered (IsActiveOn filter, force calculation, maxForce clamp) |
+
