@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Audios;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
@@ -37,13 +38,13 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
     /// </summary>
     public class SoundStatusTest
     {
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Stopped_HasValue0() => Assert.Equal(0, (int) SoundStatus.Stopped);
 
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Paused_HasValue1() => Assert.Equal(1, (int) SoundStatus.Paused);
 
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Playing_HasValue2() => Assert.Equal(2, (int) SoundStatus.Playing);
     }
 }
