@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Controllers;
 using Alis.Core.Physic.Dynamics;
@@ -247,6 +248,80 @@ namespace Alis.Core.Physic.Test.Controllers
             VelocityLimitController controller = new VelocityLimitController(0.0f, 100.0f);
             controller.WorldPhysic = world;
             controller.AddBody(body);
+
+            body.LinearVelocityInternal = new Vector2F(500f, 0f);
+            controller.Update(0.016f);
+
+            Assert.Equal(500f, body.LinearVelocityInternal.X);
+        }
+
+        /// <summary>
+        ///     Tests that Update clamps angular velocity when exceeding max
+        /// </summary>
+        [Fact]
+        public void Update_ShouldClampAngularVelocity_WhenExceedingMax()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 2.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            body.AngularVelocity = 100f;
+            controller.Update(0.016f);
+
+            float rotation = 0.016f * Math.Abs(body.AngularVelocity);
+            Assert.True(rotation <= 2.0f + 0.0001f);
+        }
+
+        /// <summary>
+        ///     Tests that Update does not clamp angular velocity when within limits
+        /// </summary>
+        [Fact]
+        public void Update_ShouldNotClampAngularVelocity_WhenWithinLimits()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            body.AngularVelocity = 5.0f;
+            controller.Update(0.016f);
+
+            Assert.Equal(5.0f, body.AngularVelocity);
+        }
+
+        /// <summary>
+        ///     Tests that Update with angular limit disabled does not clamp
+        /// </summary>
+        [Fact]
+        public void Update_WithAngularLimitDisabled_ShouldNotClamp()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 0.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            body.AngularVelocity = 500f;
+            controller.Update(0.016f);
+
+            Assert.Equal(500f, body.AngularVelocity);
+        }
+
+        /// <summary>
+        ///     Tests that Update skips body when IsActiveOn returns false
+        /// </summary>
+        [Fact]
+        public void Update_WithFilteredBody_ShouldNotClamp()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(5.0f, 5.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+            body.ControllerFilter.IgnoreController(controller.ControllerCategories);
 
             body.LinearVelocityInternal = new Vector2F(500f, 0f);
             controller.Update(0.016f);
