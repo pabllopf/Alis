@@ -306,3 +306,14 @@
 | Coverage Area | Constructors (3 variants), Width, Height, Center, Extents, Perimeter, Vertices, Q1-Q4 quadrants, IsValid (valid/invalid), Combine (2 overloads), Contains (AABB + point, edge inclusive), TestOverlap (overlapping/non/touching/identical/contained), RayCast (through center, miss, starting inside, from above, zero length, doInteriorCheck false, parallel X/Y) |
 | Status | COMPLETE — AABB fully covered (all public API) |
 
+## 2026-06-26T12:30:00Z — Task #021 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 021 |
+| File | Body.Factory.cs |
+| Commit | 9e0e27366 |
+| Tests Added | 19 |
+| Coverage Area | CreateFixture, CreateEdge, CreateChainShape, CreateLoopShape, CreateRectangle, CreateCircle (valid + zero/negative radius + offset), CreatePolygon (valid + edge cases), CreateEllipse (valid + zero X/Y radius), CreateCompoundPolygon, CreateLineArc (open + closed), CreateSolidArc |
+| Status | COMPLETE — all factory methods covered |
+
