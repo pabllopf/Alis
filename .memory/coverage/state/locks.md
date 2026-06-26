@@ -48,3 +48,5 @@ All remaining low-coverage targets require external dependencies (ffmpeg, SFML, 
 Current 58.3% project coverage is acceptable given the nature of the codebase.
 Physics module joints, ECS, Network, and other business-logic files are actionable without native deps.
 
+
+| Body.cs | worker-1 | 2026-06-26T13:00:00Z | completed (1ad0e19bb) |

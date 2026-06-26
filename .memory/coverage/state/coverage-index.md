@@ -83,3 +83,16 @@
 - **Remaining**: 2_Application/Alis/src (55.3%, 933 lines) — last priority; Physic joints, ECS module
 - **Total new tests added**: ~218 (across 13 tasks)
 
+
+## Completed Tasks (Continued)
+
+| Task ID | File | Commit | Tests Added | Status |
+|---------|------|--------|-------------|--------|
+| #022 | Body.cs | 1ad0e19bb | 79 (79 new) | COMPLETE — clone with explicit world, kinematic skip paths, torque generation, transform operations, fixture management, property guards |
+
+## Test Count Progress
+
+| Date | Total Tests | Notes |
+|------|-------------|-------|
+| After #021 | 2501 | Body.Factory tests |
+| After #022 | 2580 | +79 Body.cs edge case tests |
