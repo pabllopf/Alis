@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
@@ -133,6 +134,140 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.DampingRatio = 0.3f;
 
             Assert.Equal(0.3f, joint.DampingRatio);
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorA get returns valid vector
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Get_ShouldReturnValidVector()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+
+            Vector2F anchor = joint.WorldAnchorA;
+
+            Assert.False(float.IsNaN(anchor.X));
+            Assert.False(float.IsNaN(anchor.Y));
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorA set changes local anchor
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Set_ShouldChangeLocalAnchor()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+
+            joint.WorldAnchorA = new Vector2F(1, 0);
+
+            Assert.Equal(new Vector2F(1, 0), joint.WorldAnchorA);
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorB get returns valid vector
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_Get_ShouldReturnValidVector()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+
+            Vector2F anchor = joint.WorldAnchorB;
+
+            Assert.False(float.IsNaN(anchor.X));
+            Assert.False(float.IsNaN(anchor.Y));
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorB set changes local anchor
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_Set_ShouldChangeLocalAnchor()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+
+            joint.WorldAnchorB = new Vector2F(2, 1);
+
+            Assert.Equal(new Vector2F(2, 1), joint.WorldAnchorB);
+        }
+
+        /// <summary>
+        /// Tests that Axis set updates the axis and local X axis
+        /// </summary>
+        [Fact]
+        public void Axis_Set_ShouldUpdateAxis()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+
+            joint.Axis = new Vector2F(1.0f, 0.0f);
+
+            Assert.Equal(new Vector2F(1, 0), joint.Axis);
+        }
+
+        /// <summary>
+        /// Tests that LocalXAxis returns the local X axis after axis is set
+        /// </summary>
+        [Fact]
+        public void LocalXAxis_ShouldReturnLocalXAxis()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+
+            Vector2F localX = joint.LocalXAxis;
+
+            Assert.False(float.IsNaN(localX.X));
+            Assert.False(float.IsNaN(localX.Y));
+        }
+
+        /// <summary>
+        /// Tests that GetReactionForce returns zero for initial state
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_ShouldReturnZeroForInitialState()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+
+            Vector2F force = joint.GetReactionForce(1f);
+
+            Assert.Equal(0, force.X);
+            Assert.Equal(0, force.Y);
+        }
+
+        /// <summary>
+        /// Tests that MotorEnabled should round trip
+        /// </summary>
+        [Fact]
+        public void MotorEnabled_ShouldRoundTrip()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+
+            joint.MotorEnabled = true;
+            Assert.True(joint.MotorEnabled);
+
+            joint.MotorEnabled = false;
+            Assert.False(joint.MotorEnabled);
         }
     }
 }
