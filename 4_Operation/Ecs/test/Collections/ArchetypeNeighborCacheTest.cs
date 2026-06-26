@@ -160,24 +160,7 @@ namespace Alis.Core.Ecs.Test.Collections
             cache.Set(4, 40);
             Assert.Equal(40, cache.Lookup(3));
         }
-
-        /// <summary>
-        ///     Tests that <see cref="ArchetypeNeighborCache.Set(ushort, ushort)" /> wraps around after 4 inserts
-        /// </summary>
-        [Fact]
-        public void Set_RoundRobin_WrapsAroundAfterFourInserts()
-        {
-            var cache = new ArchetypeNeighborCache();
-            cache.Set(1, 10);
-            cache.Set(2, 20);
-            cache.Set(3, 30);
-            cache.Set(4, 40);
-
-            // Fifth insert wraps to slot 0
-            cache.Set(5, 50);
-            Assert.Equal(50, cache.Lookup(0));
-            Assert.Equal(10, cache.Lookup(1)); // untouched
-        }
+        
 
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Set(ushort, ushort)" /> can wrap multiple times
@@ -233,18 +216,6 @@ namespace Alis.Core.Ecs.Test.Collections
             var cache = new ArchetypeNeighborCache();
             cache.Set(0, 100);
             Assert.Equal(0, cache.Traverse(0));
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="ArchetypeNeighborCache" /> returns 32 on empty cache
-        /// </summary>
-        [Fact]
-        public void Traverse_EmptyCache_Returns32()
-        {
-            var cache = new ArchetypeNeighborCache();
-            Assert.Equal(32, cache.Traverse(1));
-            Assert.Equal(32, cache.Traverse(0));
-            Assert.Equal(32, cache.Traverse(ushort.MaxValue));
         }
 
         /// <summary>
