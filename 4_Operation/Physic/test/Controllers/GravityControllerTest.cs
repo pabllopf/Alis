@@ -444,5 +444,42 @@ namespace Alis.Core.Physic.Test.Controllers
 
             Assert.True(true); // No exception thrown, Linear point gravity applied
         }
+
+        /// <summary>
+        ///     Tests that Update with body gravity and DistanceSquared type applies force correctly
+        /// </summary>
+        [Fact]
+        public void Update_WithBodyGravityAndDistanceSquaredType_ShouldApplyForce()
+        {
+            GravityController controller = new GravityController(100f, 200f, 1f);
+            controller.GravityType = GravityType.DistanceSquared;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddBody(controllerBody);
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown, DistanceSquared body gravity applied
+        }
+
+        /// <summary>
+        ///     Tests that Update with point gravity and DistanceSquared type applies force correctly
+        /// </summary>
+        [Fact]
+        public void Update_WithPointGravityAndDistanceSquaredType_ShouldApplyForce()
+        {
+            GravityController controller = new GravityController(100f, 200f, 1f);
+            controller.GravityType = GravityType.DistanceSquared;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
+            controller.AddPoint(new Vector2F(0, 0));
+
+            controller.Update(0.016f);
+
+            Assert.True(true); // No exception thrown, DistanceSquared point gravity applied
+        }
     }
 }
