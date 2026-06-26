@@ -32,6 +32,7 @@
 | #015 | GravityController.cs | bfa3e8660 | 2 (2 new) | COMPLETE — DistanceSquared body/point gravity branches |
 | #016 | SimpleExplosion.cs | 8ab78c720 | 4 (4 new) | COMPLETE — ApplyImpulse with body in range, max force, controller filter, near edge |
 | #017 | GearJoint.cs | 9a65048f3 | 10 (10 new) | COMPLETE — constructor, custom ratio, Ratio get/set, WorldAnchorA/B, GetReactionForce, GetReactionTorque |
+| #018 | WheelJoint.cs | 71b359843 | 8 (8 new) | COMPLETE — WorldAnchorA/B get and set, Axis set, LocalXAxis get, GetReactionForce, MotorEnabled round trip |
 
 ## Remaining Target Files (Coverage < 80%)
 
@@ -64,14 +65,15 @@
 | After #015 | 2417 | +2 GravityController tests |
 | After #016 | 2421 | +4 SimpleExplosion tests |
 | After #017 | 2431 | +10 GearJoint tests |
+| After #018 | 2439 | +8 WheelJoint tests |
 | Fix #005 | 2376 | -7 net tests (SoundTest instances crash → 5 type-level) |
 
 *Note: Sfml tests timed out during execution — requires SFML native library. SoundTest.cs fixed at 615be2661.
 
 ## Summary
 
-- **Tasks completed**: 9 (FFmpeg guard conditions + Sfml property guards + JointFactory + Triangulate + EdgeShape + ChainShape + VelocityLimitController + GravityController + SimpleExplosion + GearJoint)
+- **Tasks completed**: 10 (FFmpeg guard conditions + Sfml property guards + JointFactory + Triangulate + EdgeShape + ChainShape + VelocityLimitController + GravityController + SimpleExplosion + GearJoint + WheelJoint)
 - **Tasks skipped**: 3 (BaseClasses, 4_Operation/Audio, Cloud — external deps)
 - **Remaining**: 2_Application/Alis/src (55.3%, 933 lines) — last priority; Physic joints, ECS module
-- **Total new tests added**: ~148 (across 9 tasks)
+- **Total new tests added**: ~156 (across 10 tasks)
 

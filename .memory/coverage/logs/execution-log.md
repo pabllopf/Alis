@@ -273,3 +273,14 @@
 | Coverage Area | Constructor with 2 revolute joints, custom ratio, Ratio get/set, WorldAnchorA/B get valid, WorldAnchorA/B set throws NotSupportedException, GetReactionForce zero, GetReactionTorque zero |
 | Status | COMPLETE — GearJoint basic API surface covered |
 
+## 2026-06-26T11:45:00Z — Task #018 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 018 |
+| File | WheelJoint.cs |
+| Commit | 71b359843 |
+| Tests Added | 8 |
+| Coverage Area | WorldAnchorA/B get and set, Axis set, LocalXAxis get, GetReactionForce zero, MotorEnabled round trip |
+| Status | COMPLETE — WheelJoint API surface expanded |
+
