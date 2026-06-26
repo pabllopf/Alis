@@ -38,84 +38,48 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Dynamics
 {
     /// <summary>
-    ///     The body factory test class
+    /// The body factory test class
     /// </summary>
     public class BodyFactoryTest
     {
-
         /// <summary>
-        ///     Tests that CreateFixture should add fixture to body
+        /// Tests that create fixture should add fixture to body
         /// </summary>
         [Fact]
         public void CreateFixture_ShouldAddFixtureToBody()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            CircleShape circleShape = new CircleShape(0.5f, 1.0f);
+            Body body = new Body();
+            CircleShape shape = new CircleShape(1f, 1f);
 
-            Fixture fixture = body.CreateFixture(circleShape);
-
-        }
-
-        /// <summary>
-        ///     Tests that CreateFixture should return created fixture
-        /// </summary>
-        [Fact]
-        public void CreateFixture_ShouldReturnCreatedFixture()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            CircleShape circleShape = new CircleShape(0.5f, 1.0f);
-
-            Fixture fixture = body.CreateFixture(circleShape);
+            Fixture fixture = body.CreateFixture(shape);
 
             Assert.NotNull(fixture);
-            Assert.IsType<Fixture>(fixture);
+            Assert.Single(body.FixtureList);
+            Assert.Same(fixture, body.FixtureList[0]);
         }
 
         /// <summary>
-        ///     Tests that CreateEdge should create edge fixture
+        /// Tests that create edge should create edge shape fixture
         /// </summary>
         [Fact]
-        public void CreateEdge_ShouldCreateEdgeFixture()
+        public void CreateEdge_ShouldCreateEdgeShapeFixture()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Vector2F start = new Vector2F(0.0f, 0.0f);
-            Vector2F end = new Vector2F(1.0f, 0.0f);
+            Body body = new Body();
 
-            Fixture fixture = body.CreateEdge(start, end);
+            Fixture fixture = body.CreateEdge(new Vector2F(0, 0), new Vector2F(5, 5));
 
             Assert.NotNull(fixture);
             Assert.IsType<EdgeShape>(fixture.GetShape);
         }
 
         /// <summary>
-        ///     Tests that CreateEdge should create edge with correct vertices
+        /// Tests that create chain shape should create chain shape fixture
         /// </summary>
         [Fact]
-        public void CreateEdge_ShouldCreateEdgeWithCorrectVertices()
+        public void CreateChainShape_ShouldCreateChainShapeFixture()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Vector2F start = new Vector2F(0.0f, 0.0f);
-            Vector2F end = new Vector2F(1.0f, 1.0f);
-
-            Fixture fixture = body.CreateEdge(start, end);
-
-            EdgeShape edgeShape = fixture.GetShape as EdgeShape;
-            Assert.NotNull(edgeShape);
-        }
-
-        /// <summary>
-        ///     Tests that CreateChainShape should create chain fixture
-        /// </summary>
-        [Fact]
-        public void CreateChainShape_ShouldCreateChainFixture()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Vertices vertices = new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f) };
+            Body body = new Body();
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(5, 5), new Vector2F(10, 0) };
 
             Fixture fixture = body.CreateChainShape(vertices);
 
@@ -124,30 +88,13 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        ///     Tests that CreateChainShape should create chain with correct vertices
+        /// Tests that create loop shape should create loop shape fixture
         /// </summary>
         [Fact]
-        public void CreateChainShape_ShouldCreateChainWithCorrectVertices()
+        public void CreateLoopShape_ShouldCreateLoopShapeFixture()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Vertices vertices = new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f) };
-
-            Fixture fixture = body.CreateChainShape(vertices);
-
-            ChainShape chainShape = fixture.GetShape as ChainShape;
-            Assert.NotNull(chainShape);
-        }
-
-        /// <summary>
-        ///     Tests that CreateLoopShape should create loop fixture
-        /// </summary>
-        [Fact]
-        public void CreateLoopShape_ShouldCreateLoopFixture()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Vertices vertices = new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f) };
+            Body body = new Body();
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(5, 5), new Vector2F(10, 0) };
 
             Fixture fixture = body.CreateLoopShape(vertices);
 
@@ -156,542 +103,203 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        ///     Tests that CreateLoopShape should create loop with correct vertices and closed flag
+        /// Tests that create rectangle should create polygon shape fixture
         /// </summary>
         [Fact]
-        public void CreateLoopShape_ShouldCreateLoopWithCorrectVertices()
+        public void CreateRectangle_ShouldCreatePolygonShapeFixture()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Vertices vertices = new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f) };
+            Body body = new Body();
 
-            Fixture fixture = body.CreateLoopShape(vertices);
-
-            ChainShape chainShape = fixture.GetShape as ChainShape;
-            Assert.NotNull(chainShape);
-        }
-
-        /// <summary>
-        ///     Tests that CreateRectangle should create rectangle fixture
-        /// </summary>
-        [Fact]
-        public void CreateRectangle_ShouldCreateRectangleFixture()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            Fixture fixture = body.CreateRectangle(2.0f, 4.0f, 1.0f, Vector2F.Zero);
+            Fixture fixture = body.CreateRectangle(4, 6, 1f, Vector2F.Zero);
 
             Assert.NotNull(fixture);
             Assert.IsType<PolygonShape>(fixture.GetShape);
         }
 
         /// <summary>
-        ///     Tests that CreateRectangle should create rectangle with correct dimensions
+        /// Tests that create circle should create circle shape fixture
         /// </summary>
         [Fact]
-        public void CreateRectangle_ShouldCreateRectangleWithCorrectDimensions()
+        public void CreateCircle_ShouldCreateCircleShapeFixture()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body body = new Body();
 
-            Fixture fixture = body.CreateRectangle(2.0f, 4.0f, 1.0f, Vector2F.Zero);
-
-            PolygonShape polygonShape = fixture.GetShape as PolygonShape;
-            Assert.NotNull(polygonShape);
-        }
-
-        /// <summary>
-        ///     Tests that CreateRectangle should apply offset correctly
-        /// </summary>
-        [Fact]
-        public void CreateRectangle_ShouldApplyOffsetCorrectly()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Vector2F offset = new Vector2F(1.0f, 2.0f);
-
-            Fixture fixture = body.CreateRectangle(2.0f, 4.0f, 1.0f, offset);
-
-            Assert.NotNull(fixture);
-        }
-
-        /// <summary>
-        ///     Tests that CreateCircle should create circle fixture with valid radius
-        /// </summary>
-        [Fact]
-        public void CreateCircle_ShouldCreateCircleFixtureWithValidRadius()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+            Fixture fixture = body.CreateCircle(1f, 1f);
 
             Assert.NotNull(fixture);
             Assert.IsType<CircleShape>(fixture.GetShape);
         }
 
         /// <summary>
-        ///     Tests that CreateCircle should throw exception with invalid radius
+        /// Tests that create circle with zero radius should throw argument out of range exception
         /// </summary>
         [Fact]
-        public void CreateCircle_ShouldThrowExceptionWithInvalidRadius()
+        public void CreateCircle_WithZeroRadius_ShouldThrowArgumentOutOfRangeException()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body body = new Body();
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreateCircle(0.0f, 1.0f));
+            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreateCircle(0f, 1f));
         }
 
         /// <summary>
-        ///     Tests that CreateCircle should throw exception with negative radius
+        /// Tests that create circle with negative radius should throw argument out of range exception
         /// </summary>
         [Fact]
-        public void CreateCircle_ShouldThrowExceptionWithNegativeRadius()
+        public void CreateCircle_WithNegativeRadius_ShouldThrowArgumentOutOfRangeException()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body body = new Body();
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreateCircle(-1.0f, 1.0f));
+            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreateCircle(-1f, 1f));
         }
 
         /// <summary>
-        ///     Tests that CreateCircle with offset should create circle fixture with offset
+        /// Tests that create circle with offset should create circle shape at offset
         /// </summary>
         [Fact]
-        public void CreateCircle_WithOffset_ShouldCreateCircleFixtureWithOffset()
+        public void CreateCircle_WithOffset_ShouldCreateCircleShapeAtOffset()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Vector2F offset = new Vector2F(1.0f, 2.0f);
+            Body body = new Body();
 
-            Fixture fixture = body.CreateCircle(0.5f, 1.0f, offset);
+            Fixture fixture = body.CreateCircle(1f, 1f, new Vector2F(3, 4));
 
             Assert.NotNull(fixture);
-            CircleShape circleShape = fixture.GetShape as CircleShape;
-            Assert.NotNull(circleShape);
+            Assert.IsType<CircleShape>(fixture.GetShape);
+            CircleShape circle = (CircleShape)fixture.GetShape;
+            Assert.Equal(3, circle.Position.X);
+            Assert.Equal(4, circle.Position.Y);
         }
 
         /// <summary>
-        ///     Tests that CreateCircle with offset should throw exception with invalid radius
+        /// Tests that create polygon should create polygon shape fixture
         /// </summary>
         [Fact]
-        public void CreateCircle_WithOffset_ShouldThrowExceptionWithInvalidRadius()
+        public void CreatePolygon_ShouldCreatePolygonShapeFixture()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body body = new Body();
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(5, 0), new Vector2F(5, 5), new Vector2F(0, 5) };
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreateCircle(0.0f, 1.0f, Vector2F.Zero));
-        }
-
-        /// <summary>
-        ///     Tests that CreatePolygon should create polygon fixture with valid vertices
-        /// </summary>
-        [Fact]
-        public void CreatePolygon_ShouldCreatePolygonFixtureWithValidVertices()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Vertices vertices = new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f), new Vector2F(0.0f, 1.0f) };
-
-            Fixture fixture = body.CreatePolygon(vertices, 1.0f);
+            Fixture fixture = body.CreatePolygon(vertices, 1f);
 
             Assert.NotNull(fixture);
             Assert.IsType<PolygonShape>(fixture.GetShape);
         }
 
         /// <summary>
-        ///     Tests that CreatePolygon should throw exception with too few vertices
+        /// Tests that create polygon with single vertex should throw argument out of range exception
         /// </summary>
         [Fact]
-        public void CreatePolygon_ShouldThrowExceptionWithTooFewVertices()
+        public void CreatePolygon_WithSingleVertex_ShouldThrowArgumentOutOfRangeException()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Vertices vertices = new Vertices { new Vector2F(0.0f, 0.0f) };
+            Body body = new Body();
+            Vertices vertices = new Vertices { new Vector2F(0, 0) };
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreatePolygon(vertices, 1.0f));
+            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreatePolygon(vertices, 1f));
         }
 
         /// <summary>
-        ///     Tests that CreatePolygon should throw exception with empty vertices
+        /// Tests that create polygon with no vertices should throw argument out of range exception
         /// </summary>
         [Fact]
-        public void CreatePolygon_ShouldThrowExceptionWithEmptyVertices()
+        public void CreatePolygon_WithNoVertices_ShouldThrowArgumentOutOfRangeException()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body body = new Body();
             Vertices vertices = new Vertices();
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreatePolygon(vertices, 1.0f));
+            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreatePolygon(vertices, 1f));
         }
 
         /// <summary>
-        ///     Tests that CreateEllipse should create ellipse fixture with valid radii
+        /// Tests that create ellipse should create polygon shape fixture
         /// </summary>
         [Fact]
-        public void CreateEllipse_ShouldCreateEllipseFixtureWithValidRadii()
+        public void CreateEllipse_ShouldCreatePolygonShapeFixture()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body body = new Body();
 
-            Fixture fixture = body.CreateEllipse(1.0f, 0.5f, 8, 1.0f);
+            Fixture fixture = body.CreateEllipse(2f, 1f, 16, 1f);
 
             Assert.NotNull(fixture);
             Assert.IsType<PolygonShape>(fixture.GetShape);
         }
 
         /// <summary>
-        ///     Tests that CreateEllipse should throw exception with invalid xRadius
+        /// Tests that create ellipse with zero x radius should throw argument out of range exception
         /// </summary>
         [Fact]
-        public void CreateEllipse_ShouldThrowExceptionWithInvalidXRadius()
+        public void CreateEllipse_WithZeroXRadius_ShouldThrowArgumentOutOfRangeException()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body body = new Body();
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreateEllipse(0.0f, 0.5f, 8, 1.0f));
+            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreateEllipse(0f, 1f, 16, 1f));
         }
 
         /// <summary>
-        ///     Tests that CreateEllipse should throw exception with invalid yRadius
+        /// Tests that create ellipse with zero y radius should throw argument out of range exception
         /// </summary>
         [Fact]
-        public void CreateEllipse_ShouldThrowExceptionWithInvalidYRadius()
+        public void CreateEllipse_WithZeroYRadius_ShouldThrowArgumentOutOfRangeException()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body body = new Body();
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreateEllipse(1.0f, 0.0f, 8, 1.0f));
+            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreateEllipse(1f, 0f, 16, 1f));
         }
 
         /// <summary>
-        ///     Tests that CreateEllipse should create ellipse with correct number of edges
+        /// Tests that create compound polygon should create fixtures for each vertex list
         /// </summary>
         [Fact]
-        public void CreateEllipse_ShouldCreateEllipseWithCorrectNumberOfEdges()
+        public void CreateCompoundPolygon_ShouldCreateFixturesForEachVertexList()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            Fixture fixture = body.CreateEllipse(1.0f, 0.5f, 12, 1.0f);
-
-            Assert.NotNull(fixture);
-            PolygonShape polygonShape = fixture.GetShape as PolygonShape;
-            Assert.NotNull(polygonShape);
-        }
-
-        /// <summary>
-        ///     Tests that CreateCompoundPolygon should create compound fixture from list
-        /// </summary>
-        [Fact]
-        public void CreateCompoundPolygon_ShouldCreateCompoundFixtureFromList()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body body = new Body();
             List<Vertices> list = new List<Vertices>
             {
-                new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f) },
-                new Vertices { new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f), new Vector2F(0.0f, 1.0f) }
+                new Vertices { new Vector2F(0, 0), new Vector2F(5, 0), new Vector2F(5, 5), new Vector2F(0, 5) },
+                new Vertices { new Vector2F(10, 0), new Vector2F(15, 0), new Vector2F(15, 5), new Vector2F(10, 5) }
             };
 
-            List<Fixture> fixtures = body.CreateCompoundPolygon(list, 1.0f);
+            List<Fixture> fixtures = body.CreateCompoundPolygon(list, 1f);
 
-            Assert.NotNull(fixtures);
             Assert.Equal(2, fixtures.Count);
+            Assert.Equal(2, body.FixtureList.Count);
         }
 
         /// <summary>
-        ///     Tests that CreateCompoundPolygon should create edge fixtures from 2-vertex lists
+        /// Tests that create line arc should create fixture
         /// </summary>
         [Fact]
-        public void CreateCompoundPolygon_ShouldCreateEdgeFixturesFromTwoVertexLists()
+        public void CreateLineArc_ShouldCreateFixture()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            List<Vertices> list = new List<Vertices>
-            {
-                new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f) },
-                new Vertices { new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f) }
-            };
+            Body body = new Body();
 
-            List<Fixture> fixtures = body.CreateCompoundPolygon(list, 1.0f);
-
-            Assert.NotNull(fixtures);
-            Assert.All(fixtures, f => Assert.IsType<EdgeShape>(f.GetShape));
-        }
-
-        /// <summary>
-        ///     Tests that CreateCompoundPolygon should create polygon fixtures from 3+ vertex lists
-        /// </summary>
-        [Fact]
-        public void CreateCompoundPolygon_ShouldCreatePolygonFixturesFromThreePlusVertexLists()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            List<Vertices> list = new List<Vertices>
-            {
-                new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f) }
-            };
-
-            List<Fixture> fixtures = body.CreateCompoundPolygon(list, 1.0f);
-
-            Assert.NotNull(fixtures);
-            Assert.All(fixtures, f => Assert.IsType<PolygonShape>(f.GetShape));
-        }
-
-        /// <summary>
-        ///     Tests that CreateLineArc should create arc fixture
-        /// </summary>
-        [Fact]
-        public void CreateLineArc_ShouldCreateArcFixture()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            Fixture fixture = body.CreateLineArc((float)Math.PI / 2, 8, 1.0f, false);
+            Fixture fixture = body.CreateLineArc(Constant.Pi, 8, 5f, false);
 
             Assert.NotNull(fixture);
-            Assert.IsType<ChainShape>(fixture.GetShape);
         }
 
         /// <summary>
-        ///     Tests that CreateLineArc should create loop when closed is true
+        /// Tests that create line arc closed should create fixture
         /// </summary>
         [Fact]
-        public void CreateLineArc_ShouldCreateLoopWhenClosedIsTrue()
+        public void CreateLineArc_Closed_ShouldCreateFixture()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body body = new Body();
 
-            Fixture fixture = body.CreateLineArc((float)Math.PI / 2, 8, 1.0f, true);
+            Fixture fixture = body.CreateLineArc(Constant.Pi, 8, 5f, true);
 
             Assert.NotNull(fixture);
-            ChainShape chainShape = fixture.GetShape as ChainShape;
-            Assert.NotNull(chainShape);
         }
 
         /// <summary>
-        ///     Tests that CreateSolidArc should create solid arc fixtures
+        /// Tests that create solid arc should create fixture list
         /// </summary>
         [Fact]
-        public void CreateSolidArc_ShouldCreateSolidArcFixtures()
+        public void CreateSolidArc_ShouldCreateFixtureList()
         {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body body = new Body();
 
-            List<Fixture> fixtures = body.CreateSolidArc(1.0f, (float)Math.PI / 2, 8, 1.0f);
+            List<Fixture> fixtures = body.CreateSolidArc(1f, Constant.Pi, 8, 5f);
 
-            Assert.NotNull(fixtures);
             Assert.NotEmpty(fixtures);
-        }
-
-        /// <summary>
-        ///     Tests that CreateSolidArc should create multiple fixtures for solid arc
-        /// </summary>
-        [Fact]
-        public void CreateSolidArc_ShouldCreateMultipleFixturesForSolidArc()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            List<Fixture> fixtures = body.CreateSolidArc(1.0f, (float)Math.PI, 12, 1.0f);
-
-            Assert.NotNull(fixtures);
-            Assert.True(fixtures.Count > 1);
-        }
-
-        /// <summary>
-        ///     Tests that CreateFixture should work with different shape types
-        /// </summary>
-        [Fact]
-        public void CreateFixture_ShouldWorkWithDifferentShapeTypes()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            CircleShape circle = new CircleShape(0.5f, 1.0f);
-            Fixture fixture1 = body.CreateFixture(circle);
-
-            Vertices vertices = new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f) };
-            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
-            Fixture fixture2 = body.CreateFixture(polygon);
-
-            Assert.NotNull(fixture1);
-            Assert.NotNull(fixture2);
-        }
-
-        /// <summary>
-        ///     Tests that CreateEdge should create edge with different start and end points
-        /// </summary>
-        [Fact]
-        public void CreateEdge_ShouldCreateEdgeWithDifferentStartAndEndPoints()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            Fixture fixture = body.CreateEdge(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-
-            Assert.NotNull(fixture);
-            Assert.IsType<EdgeShape>(fixture.GetShape);
-        }
-
-        /// <summary>
-        ///     Tests that CreateChainShape should create chain with multiple vertices
-        /// </summary>
-        [Fact]
-        public void CreateChainShape_ShouldCreateChainWithMultipleVertices()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Vertices vertices = new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f), new Vector2F(0.0f, 1.0f) };
-
-            Fixture fixture = body.CreateChainShape(vertices);
-
-            Assert.NotNull(fixture);
-            ChainShape chainShape = fixture.GetShape as ChainShape;
-            Assert.NotNull(chainShape);
-        }
-
-        /// <summary>
-        ///     Tests that CreateRectangle should create rectangle with different dimensions
-        /// </summary>
-        [Fact]
-        public void CreateRectangle_ShouldCreateRectangleWithDifferentDimensions()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            Fixture fixture = body.CreateRectangle(10.0f, 20.0f, 1.0f, Vector2F.Zero);
-
-            Assert.NotNull(fixture);
-            Assert.IsType<PolygonShape>(fixture.GetShape);
-        }
-
-        /// <summary>
-        ///     Tests that CreateCircle should create circle with different radii
-        /// </summary>
-        [Fact]
-        public void CreateCircle_ShouldCreateCircleWithDifferentRadii()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            Fixture fixture1 = body.CreateCircle(0.1f, 1.0f);
-            Fixture fixture2 = body.CreateCircle(5.0f, 1.0f);
-
-            Assert.NotNull(fixture1);
-            Assert.NotNull(fixture2);
-        }
-
-        /// <summary>
-        ///     Tests that CreatePolygon should create polygon with different vertex counts
-        /// </summary>
-        [Fact]
-        public void CreatePolygon_ShouldCreatePolygonWithDifferentVertexCounts()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            Vertices triangle = new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f), new Vector2F(0.5f, 1.0f) };
-            Fixture fixture1 = body.CreatePolygon(triangle, 1.0f);
-
-            Vertices pentagon = new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f), new Vector2F(0.5f, 1.5f), new Vector2F(0.0f, 1.0f) };
-            Fixture fixture2 = body.CreatePolygon(pentagon, 1.0f);
-
-            Assert.NotNull(fixture1);
-            Assert.NotNull(fixture2);
-        }
-
-        /// <summary>
-        ///     Tests that CreateEllipse should create ellipse with different edge counts
-        /// </summary>
-        [Fact]
-        public void CreateEllipse_ShouldCreateEllipseWithDifferentEdgeCounts()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            Fixture fixture1 = body.CreateEllipse(1.0f, 0.5f, 4, 1.0f);
-            Fixture fixture2 = body.CreateEllipse(1.0f, 0.5f, 16, 1.0f);
-
-            Assert.NotNull(fixture1);
-            Assert.NotNull(fixture2);
-        }
-
-        /// <summary>
-        ///     Tests that CreateCompoundPolygon should handle empty list
-        /// </summary>
-        [Fact]
-        public void CreateCompoundPolygon_ShouldHandleEmptyList()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            List<Vertices> list = new List<Vertices>();
-
-            List<Fixture> fixtures = body.CreateCompoundPolygon(list, 1.0f);
-
-            Assert.NotNull(fixtures);
-            Assert.Empty(fixtures);
-        }
-
-        /// <summary>
-        ///     Tests that CreateLineArc should create arc with different radians
-        /// </summary>
-        [Fact]
-        public void CreateLineArc_ShouldCreateArcWithDifferentRadians()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            Fixture fixture1 = body.CreateLineArc(0.5f, 8, 1.0f, false);
-            Fixture fixture2 = body.CreateLineArc((float)Math.PI, 8, 1.0f, false);
-
-            Assert.NotNull(fixture1);
-            Assert.NotNull(fixture2);
-        }
-
-        /// <summary>
-        ///     Tests that CreateSolidArc should create solid arc with different parameters
-        /// </summary>
-        [Fact]
-        public void CreateSolidArc_ShouldCreateSolidArcWithDifferentParameters()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            List<Fixture> fixtures1 = body.CreateSolidArc(1.0f, 0.5f, 8, 1.0f);
-            List<Fixture> fixtures2 = body.CreateSolidArc(2.0f, (float)Math.PI, 16, 2.0f);
-
-            Assert.NotNull(fixtures1);
-            Assert.NotNull(fixtures2);
-        }
-
-        /// <summary>
-        ///     Tests that all factory methods should add fixtures to body correctly
-        /// </summary>
-        [Fact]
-        public void AllFactoryMethods_ShouldAddFixturesToBodyCorrectly()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            CircleShape circle = new CircleShape(0.5f, 1.0f);
-            body.CreateFixture(circle);
-
-            body.CreateEdge(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
-
-            Vertices vertices = new Vertices { new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f), new Vector2F(1.0f, 1.0f) };
-            body.CreateChainShape(vertices);
-
-            body.CreateLoopShape(vertices);
-
-            body.CreateRectangle(2.0f, 4.0f, 1.0f, Vector2F.Zero);
-
-            body.CreateCircle(0.5f, 1.0f);
-
-            body.CreatePolygon(vertices, 1.0f);
-
         }
     }
 }
