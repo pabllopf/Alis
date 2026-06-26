@@ -262,3 +262,14 @@
 | Coverage Area | ApplyImpulse with body in range, max force limit, controller filter skip, body near edge |
 | Status | COMPLETE — all ApplyImpulse branches covered (IsActiveOn filter, force calculation, maxForce clamp) |
 
+## 2026-06-26T11:30:00Z — Task #017 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 017 |
+| File | GearJoint.cs |
+| Commit | 9a65048f3 |
+| Tests Added | 10 |
+| Coverage Area | Constructor with 2 revolute joints, custom ratio, Ratio get/set, WorldAnchorA/B get valid, WorldAnchorA/B set throws NotSupportedException, GetReactionForce zero, GetReactionTorque zero |
+| Status | COMPLETE — GearJoint basic API surface covered |
+

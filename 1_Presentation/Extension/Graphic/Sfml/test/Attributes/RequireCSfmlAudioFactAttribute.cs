@@ -27,16 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using System.Runtime.InteropServices;
 using Xunit;
 
-namespace Alis.Extension.Graphic.Sfml.Test.Audios
+namespace Alis.Extension.Graphic.Sfml.Test.Attributes
 {
-    public class CsfmlAudioFactAttribute : FactAttribute
+    public class RequireCSfmlAudioFactAttribute : FactAttribute
     {
         public CsfmlAudioFactAttribute()
         {
-            
+            try
+            {
+                NativeLibrary.Load("csfml-audio");
+            }
+            catch
+            {
+                Skip = "SFML native library (csfml-audio) not detected. Install SFML to run this test.";
+            }
         }
     }
 }

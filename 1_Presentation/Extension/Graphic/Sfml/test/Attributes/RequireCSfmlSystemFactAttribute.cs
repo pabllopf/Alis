@@ -36,13 +36,12 @@ namespace Alis.Extension.Graphic.Sfml.Test.Attributes
     /// The requires sfml fact attribute class
     /// </summary>
     /// <seealso cref="FactAttribute"/>
-    
-    public class RequiresSfmlFactAttribute : FactAttribute
+    public class RequireCSfmlSystemFactAttribute : FactAttribute
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RequiresSfmlFactAttribute"/> class
         /// </summary>
-        public RequiresSfmlFactAttribute()
+        public RequireCSfmlSystemFactAttribute()
         {
             try
             {
