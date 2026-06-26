@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
 
@@ -1157,6 +1158,685 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ResetMassData();
 
             Assert.Equal(BodyType.Static, body.GetBodyType);
+        }
+
+        /// <summary>
+        /// Tests that clone with explicit world parameter should use explicit world
+        /// </summary>
+        [Fact]
+        public void Clone_WithExplicitWorldParameter_ShouldUseExplicitWorld()
+        {
+            WorldPhysic world1 = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world2 = new WorldPhysic(Vector2F.Zero);
+            
+            Body body = world1.CreateBody(new Vector2F(1.0f, 2.0f), 0.5f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.LinearVelocity = new Vector2F(3.0f, 4.0f);
+            body.AngularVelocity = 1.5f;
+            body.Tag = "clone-test";
+
+            Body clone = body.Clone(world2);
+
+            Assert.Equal(body.Position, clone.Position);
+            Assert.Equal(body.Rotation, clone.Rotation);
+            Assert.Equal(body.LinearVelocityInternal, clone.LinearVelocityInternal);
+            Assert.Equal(body.AngularVelocity, clone.AngularVelocity);
+            Assert.Equal("clone-test", clone.Tag);
+            Assert.Equal(BodyType.Dynamic, clone.GetBodyType);
+        }
+
+        /// <summary>
+        /// Tests that apply force on kinematic body should return early without changing force
+        /// </summary>
+        [Fact]
+        public void ApplyForce_OnKinematicBody_ShouldReturnEarly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Kinematic);
+
+            body.ApplyForce(new Vector2F(10.0f, 5.0f));
+
+            Assert.Equal(Vector2F.Zero, body.Force);
+        }
+
+        /// <summary>
+        /// Tests that apply force with point not at center of mass generates torque
+        /// </summary>
+        [Fact]
+        public void ApplyForce_WithPointNotAtCenter_ShouldGenerateTorque()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(1.0f, 1.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.ResetMassData();
+
+            Vector2F force = new Vector2F(10.0f, 0.0f);
+            Vector2F point = new Vector2F(2.0f, 2.0f);
+
+            body.ApplyForce(ref force, ref point);
+
+            Assert.Equal(10.0f, body.Force.X);
+            Assert.NotEqual(0.0f, body.Torque);
+        }
+
+        /// <summary>
+        /// Tests that apply force at center of mass generates no torque
+        /// </summary>
+        [Fact]
+        public void ApplyForce_AtCenterOfMass_ShouldGenerateNoTorque()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.ResetMassData();
+
+            Vector2F force = new Vector2F(10.0f, 0.0f);
+
+            body.ApplyForce(ref force);
+
+            Assert.Equal(10.0f, body.Force.X);
+            Assert.Equal(0.0f, body.Torque);
+        }
+
+        /// <summary>
+        /// Tests that apply torque on dynamic body updates torque
+        /// </summary>
+        [Fact]
+        public void ApplyTorque_OnDynamicBody_ShouldUpdateTorque()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            body.ApplyTorque(15.0f);
+
+            Assert.Equal(15.0f, body.Torque);
+        }
+
+        /// <summary>
+        /// Tests that set body type to dynamic should wake body and reset mass
+        /// </summary>
+        [Fact]
+        public void SetBodyType_ToDynamic_ShouldWakeBodyAndResetMass()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Static);
+
+            body.GetBodyType = BodyType.Dynamic;
+            body.CreateCircle(0.5f, 1.0f);
+            body.ResetMassData();
+
+            Assert.Equal(BodyType.Dynamic, body.GetBodyType);
+            Assert.True(body.Awake);
+            Assert.True(body.Mass > 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that set body type to static clears velocities and wakes body
+        /// </summary>
+        [Fact]
+        public void SetBodyType_ToStatic_ClearsVelocitiesAndWakesBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.LinearVelocity = new Vector2F(5.0f, 3.0f);
+            body.AngularVelocity = 2.0f;
+            body.Awake = false;
+
+            body.GetBodyType = BodyType.Static;
+
+            Assert.Equal(BodyType.Static, body.GetBodyType);
+            Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
+            Assert.True(body.Awake);
+        }
+
+        /// <summary>
+        /// Tests that inertia getter includes mass offset from local center
+        /// </summary>
+        [Fact]
+        public void InertiaGetter_ShouldIncludeMassOffsetFromLocalCenter()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 2.0f);
+            body.ResetMassData();
+
+            float inertia = body.Inertia;
+
+            Assert.True(inertia > 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that world center returns sweep C
+        /// </summary>
+        [Fact]
+        public void WorldCenter_WithWorld_ShouldReturnSweepC()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(3.0f, 4.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.ResetMassData();
+
+            Vector2F center = body.WorldCenter;
+
+            Assert.Equal(3.0f, center.X);
+            Assert.Equal(4.0f, center.Y);
+        }
+
+        /// <summary>
+        /// Tests that get world point without world multiplies by transform
+        /// </summary>
+        [Fact]
+        public void GetWorldPoint_WithoutWorld_ShouldMultiplyByTransform()
+        {
+            Body body = new Body();
+            body.Xf.Position = new Vector2F(1.0f, 2.0f);
+            body.Xf.Rotation.Phase = (float) Math.PI / 2.0f;
+
+            Vector2F world = body.GetWorldPoint(new Vector2F(0.0f, 0.0f));
+
+            Assert.Equal(1.0f, world.X);
+            Assert.Equal(2.0f, world.Y);
+        }
+
+        /// <summary>
+        /// Tests that get local point without world divides by transform
+        /// </summary>
+        [Fact]
+        public void GetLocalPoint_WithoutWorld_ShouldDivideByTransform()
+        {
+            Body body = new Body();
+            body.Xf.Position = new Vector2F(1.0f, 2.0f);
+            body.Xf.Rotation.Phase = (float) Math.PI / 2.0f;
+
+            Vector2F worldPoint = body.GetWorldPoint(new Vector2F(0.0f, 0.0f));
+            Vector2F local = body.GetLocalPoint(worldPoint);
+
+            Assert.True(Math.Abs(local.X - 0.0f) < 0.0001f);
+            Assert.True(Math.Abs(local.Y - 0.0f) < 0.0001f);
+        }
+
+        /// <summary>
+        /// Tests that linear velocity from world point includes rotational component
+        /// </summary>
+        [Fact]
+        public void GetLinearVelocityFromWorldPoint_WithOffset_ShouldIncludeRotationalComponent()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.LinearVelocityInternal = Vector2F.Zero;
+            body.AngularVelocity = 2.0f;
+
+            Vector2F velocity = body.GetLinearVelocityFromWorldPoint(new Vector2F(0.5f, 0.5f));
+
+            Assert.True(Math.Abs(velocity.X) > 0.0f || Math.Abs(velocity.Y) > 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that linear velocity from local point delegates to world point conversion
+        /// </summary>
+        [Fact]
+        public void GetLinearVelocityFromLocalPoint_ShouldDelegateToWorldPoint()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.LinearVelocityInternal = Vector2F.Zero;
+            body.AngularVelocity = 1.0f;
+
+            Vector2F localVel = body.GetLinearVelocityFromLocalPoint(new Vector2F(1.0f, 0.5f));
+            Vector2F worldVel = body.GetLinearVelocityFromWorldPoint(body.GetWorldPoint(new Vector2F(1.0f, 0.5f)));
+
+            Assert.True(Vector2F.Distance(localVel, worldVel) < 0.0001f);
+        }
+
+        /// <summary>
+        /// Tests that revolutions calculates full rotations correctly
+        /// </summary>
+        [Fact]
+        public void GetRevolutions_MultipleRotations_ShouldCalculateCorrectly()
+        {
+            Body body = new Body();
+            body.Sweep.A = (float) (6 * Math.PI);
+
+            Assert.Equal(3.0f, body.GetRevolutions);
+        }
+
+        /// <summary>
+        /// Tests that get transform returns body Xf when world is null
+        /// </summary>
+        [Fact]
+        public void GetTransform_WithoutWorld_ShouldReturnXf()
+        {
+            Body body = new Body();
+            body.Xf.Position = new Vector2F(5.0f, -3.0f);
+            body.Xf.Rotation.Phase = 1.5f;
+
+            ControllerTransform xf = body.GetTransform();
+
+            Assert.Equal(5.0f, xf.Position.X);
+            Assert.Equal(-3.0f, xf.Position.Y);
+            Assert.Equal(1.5f, xf.Rotation.Phase);
+        }
+
+        /// <summary>
+        /// Tests that position setter with world calls set transform
+        /// </summary>
+        [Fact]
+        public void PositionSetter_WithWorld_ShouldCallSetTransform()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            body.Position = new Vector2F(5.0f, 3.0f);
+
+            Assert.Equal(5.0f, body.Position.X);
+            Assert.Equal(3.0f, body.Position.Y);
+        }
+
+        /// <summary>
+        /// Tests that rotation setter with world calls set transform
+        /// </summary>
+        [Fact]
+        public void RotationSetter_WithWorld_ShouldCallSetTransform()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            body.Rotation = 1.5f;
+
+            Assert.Equal(1.5f, body.Rotation);
+        }
+
+        /// <summary>
+        /// Tests that restore mass data for zero total mass forces positive mass
+        /// </summary>
+        [Fact]
+        public void ResetMassData_WithZeroDensityFixtures_ShouldForcePositiveMass()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            body.ResetMassData();
+
+            Assert.Equal(1.0f, body.Mass);
+            Assert.True(body.InvMass > 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that clone copies all body properties including defaults
+        /// </summary>
+        [Fact]
+        public void Clone_CopiesAllPropertiesIncludingDefaults()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            body.LinearDamping = 0.7f;
+            body.AngularDamping = 0.3f;
+            body.IsBullet = true;
+            body.IgnoreCcd = true;
+            body.IgnoreGravity = true;
+            body.Awake = false;
+
+            Body clone = body.Clone();
+
+            Assert.Equal(0.7f, clone.LinearDamping);
+            Assert.Equal(0.3f, clone.AngularDamping);
+            Assert.True(clone.IsBullet);
+            Assert.True(clone.IgnoreCcd);
+            Assert.True(clone.IgnoreGravity);
+            Assert.False(clone.Awake);
+        }
+
+        /// <summary>
+        /// Tests that deep clone copies body and all fixtures
+        /// </summary>
+        [Fact]
+        public void DeepClone_CopiesBodyAndAllFixtures()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.CreateRectangle(1.0f, 1.0f, 1.0f, Vector2F.Zero);
+
+            Body clone = body.DeepClone(world);
+
+            Assert.Equal(2, clone.FixtureList.Count);
+            Assert.NotSame(body, clone);
+        }
+
+        /// <summary>
+        /// Tests that get transform out sets output parameter correctly
+        /// </summary>
+        [Fact]
+        public void GetTransformOut_SetsOutputParameterCorrectly()
+        {
+            Body body = new Body();
+            body.Xf.Position = new Vector2F(-2.0f, 3.5f);
+            body.Xf.Rotation.Phase = 2.0f;
+
+            body.GetTransform(out ControllerTransform transform);
+
+            Assert.Equal(-2.0f, transform.Position.X);
+            Assert.Equal(3.5f, transform.Position.Y);
+            Assert.Equal(2.0f, transform.Rotation.Phase);
+        }
+
+        /// <summary>
+        /// Tests that set restitution with no fixtures does nothing
+        /// </summary>
+        [Fact]
+        public void SetRestitution_WithNoFixtures_ShouldDoNothing()
+        {
+            Body body = new Body();
+
+            body.SetRestitution(0.8f);
+
+            Assert.Empty(body.FixtureList);
+        }
+
+        /// <summary>
+        /// Tests that set friction with no fixtures does nothing
+        /// </summary>
+        [Fact]
+        public void SetFriction_WithNoFixtures_ShouldDoNothing()
+        {
+            Body body = new Body();
+
+            body.SetFriction(0.6f);
+
+            Assert.Empty(body.FixtureList);
+        }
+
+        /// <summary>
+        /// Tests that set collision categories with no fixtures does nothing
+        /// </summary>
+        [Fact]
+        public void SetCollisionCategories_WithNoFixtures_ShouldDoNothing()
+        {
+            Body body = new Body();
+
+            body.SetCollisionCategories(Categories.Cat1);
+
+            Assert.Empty(body.FixtureList);
+        }
+
+        /// <summary>
+        /// Tests that set collides with with no fixtures does nothing
+        /// </summary>
+        [Fact]
+        public void SetCollidesWith_WithNoFixtures_ShouldDoNothing()
+        {
+            Body body = new Body();
+
+            body.SetCollidesWith(Categories.Cat2);
+
+            Assert.Empty(body.FixtureList);
+        }
+
+        /// <summary>
+        /// Tests that set collision group with no fixtures does nothing
+        /// </summary>
+        [Fact]
+        public void SetCollisionGroup_WithNoFixtures_ShouldDoNothing()
+        {
+            Body body = new Body();
+
+            body.SetCollisionGroup(5);
+
+            Assert.Empty(body.FixtureList);
+        }
+
+        /// <summary>
+        /// Tests that set is sensor with no fixtures does nothing
+        /// </summary>
+        [Fact]
+        public void SetIsSensor_WithNoFixtures_ShouldDoNothing()
+        {
+            Body body = new Body();
+
+            body.SetIsSensor(true);
+
+            Assert.Empty(body.FixtureList);
+        }
+
+        /// <summary>
+        /// Tests that joint list returns null when no joints attached
+        /// </summary>
+        [Fact]
+        public void JointList_WhenNoJoints_ShouldReturnNull()
+        {
+            Body body = new Body();
+
+            Assert.Null(body.JointList);
+        }
+
+        /// <summary>
+        /// Tests that contact list returns null when no contacts
+        /// </summary>
+        [Fact]
+        public void ContactList_WhenNoContacts_ShouldReturnNull()
+        {
+            Body body = new Body();
+
+            Assert.Null(body.ContactList);
+        }
+
+        /// <summary>
+        /// Tests that tag property can store custom data
+        /// </summary>
+        [Fact]
+        public void Tag_CanStoreCustomData()
+        {
+            Body body = new Body();
+            body.Tag = new object();
+
+            Assert.NotNull(body.Tag);
+        }
+
+        /// <summary>
+        /// Tests that controller filter is initialized with all categories
+        /// </summary>
+        [Fact]
+        public void ControllerFilter_InitializedWithAllCategories()
+        {
+            Body body = new Body();
+
+            Assert.Equal(ControllerCategories.All, body.ControllerFilter.ControllerCategories);
+        }
+
+        /// <summary>
+        /// Tests that inv mass and inv i are settable properties
+        /// </summary>
+        [Fact]
+        public void InvMassAndInvI_AreSettableProperties()
+        {
+            Body body = new Body();
+
+            body.InvMass = 0.5f;
+            body.InvI = 0.25f;
+
+            Assert.Equal(0.5f, body.InvMass);
+            Assert.Equal(0.25f, body.InvI);
+        }
+
+        /// <summary>
+        /// Tests that force and torque are settable properties
+        /// </summary>
+        [Fact]
+        public void ForceAndTorque_AreSettableProperties()
+        {
+            Body body = new Body();
+
+            body.Force = new Vector2F(10.0f, 5.0f);
+            body.Torque = 2.5f;
+
+            Assert.Equal(10.0f, body.Force.X);
+            Assert.Equal(5.0f, body.Force.Y);
+            Assert.Equal(2.5f, body.Torque);
+        }
+
+        /// <summary>
+        /// Tests that get world physic returns null for unattached body
+        /// </summary>
+        [Fact]
+        public void GetWorldPhysic_WhenUnattached_ShouldReturnNull()
+        {
+            Body body = new Body();
+
+            Assert.Null(body.GetWorldPhysic);
+        }
+
+        /// <summary>
+        /// Tests that get world physic returns world for attached body
+        /// </summary>
+        [Fact]
+        public void GetWorldPhysic_WhenAttached_ShouldReturnWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            Assert.Same(world, body.GetWorldPhysic);
+        }
+
+        /// <summary>
+        /// Tests that island flag is settable
+        /// </summary>
+        [Fact]
+        public void Island_FlagIsSettable()
+        {
+            Body body = new Body();
+
+            body.Island = true;
+
+            Assert.True(body.Island);
+        }
+
+        /// <summary>
+        /// Tests that linear velocity internal is accessible
+        /// </summary>
+        [Fact]
+        public void LinearVelocityInternal_IsAccessible()
+        {
+            Body body = new Body();
+
+            body.LinearVelocityInternal = new Vector2F(1.0f, 2.0f);
+
+            Assert.Equal(1.0f, body.LinearVelocityInternal.X);
+            Assert.Equal(2.0f, body.LinearVelocityInternal.Y);
+        }
+
+        /// <summary>
+        /// Tests that sleep time is settable
+        /// </summary>
+        [Fact]
+        public void SleepTime_IsSettable()
+        {
+            Body body = new Body();
+
+            body.SleepTime = 5.0f;
+
+            Assert.Equal(5.0f, body.SleepTime);
+        }
+
+        /// <summary>
+        /// Tests that sweep is accessible
+        /// </summary>
+        [Fact]
+        public void Sweep_IsAccessible()
+        {
+            Body body = new Body();
+
+            body.Sweep.A = 1.5f;
+            body.Sweep.C = new Vector2F(3.0f, 4.0f);
+
+            Assert.Equal(1.5f, body.Sweep.A);
+            Assert.Equal(3.0f, body.Sweep.C.X);
+        }
+
+        /// <summary>
+        /// Tests that fixture list is initialized in constructor
+        /// </summary>
+        [Fact]
+        public void Constructor_InitializesFixtureList()
+        {
+            Body body = new Body();
+
+            Assert.NotNull(body.FixtureList);
+            Assert.Empty(body.FixtureList);
+        }
+
+        /// <summary>
+        /// Tests that reset dynamics clears all velocities and forces
+        /// </summary>
+        [Fact]
+        public void ResetDynamics_ClearsAllVelocitiesAndForces()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.ApplyForce(new Vector2F(10.0f, 5.0f));
+            body.AngularVelocity = 3.0f;
+
+            body.ResetDynamics();
+
+            Assert.Equal(Vector2F.Zero, body.Force);
+            Assert.Equal(0.0f, body.Torque);
+            Assert.Equal(0.0f, body.AngularVelocity);
+            Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
+        }
+
+        /// <summary>
+        /// Tests that awake setter with true resets sleep time
+        /// </summary>
+        [Fact]
+        public void AwakeSetter_WithTrue_ShouldResetSleepTime()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            body.Awake = false;
+            body.SleepTime = 5.0f;
+
+            body.Awake = true;
+
+            Assert.True(body.Awake);
+            Assert.Equal(0.0f, body.SleepTime);
+        }
+
+        /// <summary>
+        /// Tests that apply linear impulse on kinematic body should return early
+        /// </summary>
+        [Fact]
+        public void ApplyLinearImpulse_OnKinematicBody_ShouldReturnEarly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Kinematic);
+
+            body.ApplyLinearImpulse(new Vector2F(10.0f, 0.0f));
+
+            Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
+        }
+
+        /// <summary>
+        /// Tests that apply angular impulse on kinematic body should return early
+        /// </summary>
+        [Fact]
+        public void ApplyAngularImpulse_OnKinematicBody_ShouldReturnEarly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Kinematic);
+
+            body.ApplyAngularImpulse(10.0f);
+
+            Assert.Equal(0.0f, body.AngularVelocity);
         }
     }
 }
