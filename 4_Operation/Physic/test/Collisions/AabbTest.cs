@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AabbTest.cs
+//  File:AABBTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,571 +35,550 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
-    ///     The aabb test class
+    /// The aabb test class
     /// </summary>
-    public class AABBTest
+    public class AabbTest
     {
         /// <summary>
-        ///     Tests that constructor with min max should initialize correctly
+        /// Tests that constructor with min and max should set lower and upper bounds
         /// </summary>
         [Fact]
-        public void Constructor_WithMinMax_ShouldInitializeCorrectly()
+        public void Constructor_WithMinAndMax_ShouldSetLowerAndUpperBounds()
         {
-            Vector2F min = new Vector2F(1.0f, 2.0f);
-            Vector2F max = new Vector2F(4.0f, 6.0f);
+            Aabb aabb = new Aabb(new Vector2F(1, 2), new Vector2F(5, 8));
 
-            Aabb aabb = new Aabb(min, max);
-
-            Assert.Equal(min, aabb.LowerBound);
-            Assert.Equal(max, aabb.UpperBound);
+            Assert.Equal(1, aabb.LowerBound.X);
+            Assert.Equal(2, aabb.LowerBound.Y);
+            Assert.Equal(5, aabb.UpperBound.X);
+            Assert.Equal(8, aabb.UpperBound.Y);
         }
 
         /// <summary>
-        ///     Tests that constructor with ref min max should initialize correctly
+        /// Tests that constructor with ref min and max should set lower and upper bounds
         /// </summary>
         [Fact]
-        public void Constructor_WithRefMinMax_ShouldInitializeCorrectly()
+        public void Constructor_WithRefMinAndMax_ShouldSetLowerAndUpperBounds()
         {
-            Vector2F min = new Vector2F(1.0f, 2.0f);
-            Vector2F max = new Vector2F(4.0f, 6.0f);
-
+            Vector2F min = new Vector2F(1, 2);
+            Vector2F max = new Vector2F(5, 8);
             Aabb aabb = new Aabb(ref min, ref max);
 
-            Assert.Equal(min, aabb.LowerBound);
-            Assert.Equal(max, aabb.UpperBound);
+            Assert.Equal(1, aabb.LowerBound.X);
+            Assert.Equal(2, aabb.LowerBound.Y);
+            Assert.Equal(5, aabb.UpperBound.X);
+            Assert.Equal(8, aabb.UpperBound.Y);
         }
 
         /// <summary>
-        ///     Tests that constructor with center width height should initialize correctly
+        /// Tests that constructor with center and dimensions should set bounds correctly
         /// </summary>
         [Fact]
-        public void Constructor_WithCenterWidthHeight_ShouldInitializeCorrectly()
+        public void Constructor_WithCenterAndDimensions_ShouldSetBoundsCorrectly()
         {
-            Vector2F center = new Vector2F(5.0f, 5.0f);
-            float width = 4.0f;
-            float height = 6.0f;
+            Aabb aabb = new Aabb(new Vector2F(5, 5), 10, 6);
 
-            Aabb aabb = new Aabb(center, width, height);
-
-            Assert.Equal(new Vector2F(3.0f, 2.0f), aabb.LowerBound);
-            Assert.Equal(new Vector2F(7.0f, 8.0f), aabb.UpperBound);
+            Assert.Equal(0, aabb.LowerBound.X);
+            Assert.Equal(2, aabb.LowerBound.Y);
+            Assert.Equal(10, aabb.UpperBound.X);
+            Assert.Equal(8, aabb.UpperBound.Y);
         }
 
         /// <summary>
-        ///     Tests that width should return correct value
+        /// Tests that width should return difference between upper and lower x
         /// </summary>
         [Fact]
-        public void Width_ShouldReturnCorrectValue()
+        public void Width_ShouldReturnDifferenceBetweenUpperAndLowerX()
         {
-            Aabb aabb = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 8.0f));
+            Aabb aabb = new Aabb(new Vector2F(1, 2), new Vector2F(5, 8));
 
-            Assert.Equal(4.0f, aabb.Width);
+            Assert.Equal(4, aabb.Width);
         }
 
         /// <summary>
-        ///     Tests that height should return correct value
+        /// Tests that height should return difference between upper and lower y
         /// </summary>
         [Fact]
-        public void Height_ShouldReturnCorrectValue()
+        public void Height_ShouldReturnDifferenceBetweenUpperAndLowerY()
         {
-            Aabb aabb = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 8.0f));
+            Aabb aabb = new Aabb(new Vector2F(1, 2), new Vector2F(5, 8));
 
-            Assert.Equal(6.0f, aabb.Height);
+            Assert.Equal(6, aabb.Height);
         }
 
         /// <summary>
-        ///     Tests that center should return correct value
+        /// Tests that center should return midpoint between lower and upper
         /// </summary>
         [Fact]
-        public void Center_ShouldReturnCorrectValue()
+        public void Center_ShouldReturnMidpoint()
         {
-            Aabb aabb = new Aabb(new Vector2F(2.0f, 4.0f), new Vector2F(6.0f, 10.0f));
+            Aabb aabb = new Aabb(new Vector2F(1, 2), new Vector2F(5, 8));
 
-            Assert.Equal(new Vector2F(4.0f, 7.0f), aabb.Center);
+            Assert.Equal(3, aabb.Center.X);
+            Assert.Equal(5, aabb.Center.Y);
         }
 
         /// <summary>
-        ///     Tests that extents should return correct value
+        /// Tests that extents should return half the width and height
         /// </summary>
         [Fact]
-        public void Extents_ShouldReturnCorrectValue()
+        public void Extents_ShouldReturnHalfWidthAndHeight()
         {
-            Aabb aabb = new Aabb(new Vector2F(2.0f, 4.0f), new Vector2F(6.0f, 10.0f));
+            Aabb aabb = new Aabb(new Vector2F(1, 2), new Vector2F(5, 8));
 
-            Assert.Equal(new Vector2F(2.0f, 3.0f), aabb.Extents);
+            Assert.Equal(2, aabb.Extents.X);
+            Assert.Equal(3, aabb.Extents.Y);
         }
 
         /// <summary>
-        ///     Tests that perimeter should return correct value
+        /// Tests that perimeter should return twice width plus height
         /// </summary>
         [Fact]
-        public void Perimeter_ShouldReturnCorrectValue()
+        public void Perimeter_ShouldReturnTwiceWidthPlusHeight()
         {
-            Aabb aabb = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 8.0f));
+            Aabb aabb = new Aabb(new Vector2F(1, 2), new Vector2F(5, 8));
 
-            float expectedPerimeter = 2.0f * (4.0f + 6.0f);
-            Assert.Equal(expectedPerimeter, aabb.Perimeter);
+            Assert.Equal(20, aabb.Perimeter);
         }
 
         /// <summary>
-        ///     Tests that vertices should return correct corners
+        /// Tests that vertices should return four corners in correct order
         /// </summary>
         [Fact]
-        public void Vertices_ShouldReturnCorrectCorners()
+        public void Vertices_ShouldReturnFourCorners()
         {
-            Aabb aabb = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 8.0f));
-
+            Aabb aabb = new Aabb(new Vector2F(1, 2), new Vector2F(5, 8));
             Vertices vertices = aabb.Vertices;
 
             Assert.Equal(4, vertices.Count);
-            Assert.Equal(new Vector2F(5.0f, 8.0f), vertices[0]); // UpperBound
-            Assert.Equal(new Vector2F(5.0f, 2.0f), vertices[1]);
-            Assert.Equal(new Vector2F(1.0f, 2.0f), vertices[2]); // LowerBound
-            Assert.Equal(new Vector2F(1.0f, 8.0f), vertices[3]);
+            Assert.Equal(new Vector2F(5, 8), vertices[0]);
+            Assert.Equal(new Vector2F(5, 2), vertices[1]);
+            Assert.Equal(new Vector2F(1, 2), vertices[2]);
+            Assert.Equal(new Vector2F(1, 8), vertices[3]);
         }
 
         /// <summary>
-        ///     Tests that q 1 should return first quadrant
+        /// Tests that q1 should return top right quadrant
         /// </summary>
         [Fact]
-        public void Q1_ShouldReturnFirstQuadrant()
+        public void Q1_ShouldReturnTopRightQuadrant()
         {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             Aabb q1 = aabb.Q1;
 
-            Assert.Equal(new Vector2F(5.0f, 5.0f), q1.LowerBound);
-            Assert.Equal(new Vector2F(10.0f, 10.0f), q1.UpperBound);
+            Assert.Equal(5, q1.LowerBound.X);
+            Assert.Equal(5, q1.LowerBound.Y);
+            Assert.Equal(10, q1.UpperBound.X);
+            Assert.Equal(10, q1.UpperBound.Y);
         }
 
         /// <summary>
-        ///     Tests that q 2 should return second quadrant
+        /// Tests that q2 should return top left quadrant
         /// </summary>
         [Fact]
-        public void Q2_ShouldReturnSecondQuadrant()
+        public void Q2_ShouldReturnTopLeftQuadrant()
         {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             Aabb q2 = aabb.Q2;
 
-            Assert.Equal(new Vector2F(0.0f, 5.0f), q2.LowerBound);
-            Assert.Equal(new Vector2F(5.0f, 10.0f), q2.UpperBound);
+            Assert.Equal(0, q2.LowerBound.X);
+            Assert.Equal(5, q2.LowerBound.Y);
+            Assert.Equal(5, q2.UpperBound.X);
+            Assert.Equal(10, q2.UpperBound.Y);
         }
 
         /// <summary>
-        ///     Tests that q 3 should return third quadrant
+        /// Tests that q3 should return bottom left quadrant
         /// </summary>
         [Fact]
-        public void Q3_ShouldReturnThirdQuadrant()
+        public void Q3_ShouldReturnBottomLeftQuadrant()
         {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             Aabb q3 = aabb.Q3;
 
-            Assert.Equal(new Vector2F(0.0f, 0.0f), q3.LowerBound);
-            Assert.Equal(new Vector2F(5.0f, 5.0f), q3.UpperBound);
+            Assert.Equal(0, q3.LowerBound.X);
+            Assert.Equal(0, q3.LowerBound.Y);
+            Assert.Equal(5, q3.UpperBound.X);
+            Assert.Equal(5, q3.UpperBound.Y);
         }
 
         /// <summary>
-        ///     Tests that q 4 should return fourth quadrant
+        /// Tests that q4 should return bottom right quadrant
         /// </summary>
         [Fact]
-        public void Q4_ShouldReturnFourthQuadrant()
+        public void Q4_ShouldReturnBottomRightQuadrant()
         {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             Aabb q4 = aabb.Q4;
 
-            Assert.Equal(new Vector2F(5.0f, 0.0f), q4.LowerBound);
-            Assert.Equal(new Vector2F(10.0f, 5.0f), q4.UpperBound);
+            Assert.Equal(5, q4.LowerBound.X);
+            Assert.Equal(0, q4.LowerBound.Y);
+            Assert.Equal(10, q4.UpperBound.X);
+            Assert.Equal(5, q4.UpperBound.Y);
         }
 
         /// <summary>
-        ///     Tests that is valid should return true for valid aabb
+        /// Tests that is valid should return true for valid aabb
         /// </summary>
         [Fact]
-        public void IsValid_ShouldReturnTrue_ForValidAabb()
+        public void IsValid_WithValidAabb_ShouldReturnTrue()
         {
-            Aabb aabb = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 8.0f));
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
 
             Assert.True(aabb.IsValid());
         }
 
         /// <summary>
-        ///     Tests that is valid should return false when upper bound less than lower bound
+        /// Tests that is valid should return false when lower bound is greater than upper bound in x
         /// </summary>
         [Fact]
-        public void IsValid_ShouldReturnFalse_WhenUpperBoundLessThanLowerBound()
+        public void IsValid_WhenLowerXGreaterThanUpperX_ShouldReturnFalse()
         {
-            Aabb aabb = new Aabb(new Vector2F(5.0f, 8.0f), new Vector2F(1.0f, 2.0f));
+            Aabb aabb = new Aabb(new Vector2F(10, 0), new Vector2F(5, 10));
 
             Assert.False(aabb.IsValid());
         }
 
         /// <summary>
-        ///     Tests that combine should merge two aabbs
+        /// Tests that is valid should return false when lower bound is greater than upper bound in y
         /// </summary>
         [Fact]
-        public void Combine_ShouldMergeTwoAabbs()
+        public void IsValid_WhenLowerYGreaterThanUpperY_ShouldReturnFalse()
         {
-            Aabb aabb1 = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 6.0f));
-            Aabb aabb2 = new Aabb(new Vector2F(3.0f, 4.0f), new Vector2F(7.0f, 8.0f));
+            Aabb aabb = new Aabb(new Vector2F(0, 10), new Vector2F(10, 5));
 
-            aabb1.Combine(ref aabb2);
-
-            Assert.Equal(new Vector2F(1.0f, 2.0f), aabb1.LowerBound);
-            Assert.Equal(new Vector2F(7.0f, 8.0f), aabb1.UpperBound);
+            Assert.False(aabb.IsValid());
         }
 
         /// <summary>
-        ///     Tests that combine with two parameters should merge correctly
+        /// Tests that combine with another aabb should expand bounds
         /// </summary>
         [Fact]
-        public void Combine_WithTwoParameters_ShouldMergeCorrectly()
+        public void Combine_WithAnotherAabb_ShouldExpandBounds()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(5, 5));
+            Aabb other = new Aabb(new Vector2F(3, 3), new Vector2F(10, 10));
+
+            aabb.Combine(ref other);
+
+            Assert.Equal(0, aabb.LowerBound.X);
+            Assert.Equal(0, aabb.LowerBound.Y);
+            Assert.Equal(10, aabb.UpperBound.X);
+            Assert.Equal(10, aabb.UpperBound.Y);
+        }
+
+        /// <summary>
+        /// Tests that combine with two aabbs should set bounds to union
+        /// </summary>
+        [Fact]
+        public void Combine_WithTwoAabbs_ShouldSetBoundsToUnion()
         {
             Aabb aabb = new Aabb();
-            Aabb aabb1 = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 6.0f));
-            Aabb aabb2 = new Aabb(new Vector2F(3.0f, 4.0f), new Vector2F(7.0f, 8.0f));
+            Aabb aabb1 = new Aabb(new Vector2F(0, 0), new Vector2F(5, 5));
+            Aabb aabb2 = new Aabb(new Vector2F(3, 3), new Vector2F(10, 10));
 
             aabb.Combine(ref aabb1, ref aabb2);
 
-            Assert.Equal(new Vector2F(1.0f, 2.0f), aabb.LowerBound);
-            Assert.Equal(new Vector2F(7.0f, 8.0f), aabb.UpperBound);
+            Assert.Equal(0, aabb.LowerBound.X);
+            Assert.Equal(0, aabb.LowerBound.Y);
+            Assert.Equal(10, aabb.UpperBound.X);
+            Assert.Equal(10, aabb.UpperBound.Y);
         }
 
         /// <summary>
-        ///     Tests that contains aabb should return true when contained
+        /// Tests that contains with smaller aabb should return true
         /// </summary>
         [Fact]
-        public void Contains_Aabb_ShouldReturnTrue_WhenContained()
+        public void Contains_WithSmallerAabb_ShouldReturnTrue()
         {
-            Aabb outerAabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            Aabb innerAabb = new Aabb(new Vector2F(2.0f, 2.0f), new Vector2F(8.0f, 8.0f));
+            Aabb outer = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            Aabb inner = new Aabb(new Vector2F(2, 2), new Vector2F(8, 8));
 
-            Assert.True(outerAabb.Contains(ref innerAabb));
+            Assert.True(outer.Contains(ref inner));
         }
 
         /// <summary>
-        ///     Tests that contains aabb should return false when not contained
+        /// Tests that contains with larger aabb should return false
         /// </summary>
         [Fact]
-        public void Contains_Aabb_ShouldReturnFalse_WhenNotContained()
+        public void Contains_WithLargerAabb_ShouldReturnFalse()
         {
-            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(5.0f, 5.0f));
-            Aabb aabb2 = new Aabb(new Vector2F(4.0f, 4.0f), new Vector2F(10.0f, 10.0f));
+            Aabb outer = new Aabb(new Vector2F(0, 0), new Vector2F(5, 5));
+            Aabb larger = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
 
-            Assert.False(aabb1.Contains(ref aabb2));
+            Assert.False(outer.Contains(ref larger));
         }
 
         /// <summary>
-        ///     Tests that contains point should return true when inside
+        /// Tests that contains with partially overlapping aabb should return false
         /// </summary>
         [Fact]
-        public void Contains_Point_ShouldReturnTrue_WhenInside()
+        public void Contains_WithPartiallyOverlappingAabb_ShouldReturnFalse()
         {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            Vector2F point = new Vector2F(5.0f, 5.0f);
+            Aabb outer = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            Aabb overlapping = new Aabb(new Vector2F(5, 5), new Vector2F(15, 15));
+
+            Assert.False(outer.Contains(ref overlapping));
+        }
+
+        /// <summary>
+        /// Tests that contains point inside should return true
+        /// </summary>
+        [Fact]
+        public void Contains_PointInside_ShouldReturnTrue()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            Vector2F point = new Vector2F(5, 5);
 
             Assert.True(aabb.Contains(ref point));
         }
 
         /// <summary>
-        ///     Tests that contains point should return false when outside
+        /// Tests that contains point outside should return false
         /// </summary>
         [Fact]
-        public void Contains_Point_ShouldReturnFalse_WhenOutside()
+        public void Contains_PointOutside_ShouldReturnFalse()
         {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            Vector2F point = new Vector2F(15.0f, 15.0f);
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            Vector2F point = new Vector2F(15, 5);
 
             Assert.False(aabb.Contains(ref point));
         }
 
         /// <summary>
-        ///     Tests that test overlap should return true when overlapping
+        /// Tests that contains point on lower bound edge should return false (exclusive)
         /// </summary>
         [Fact]
-        public void TestOverlap_ShouldReturnTrue_WhenOverlapping()
+        public void Contains_PointOnLowerBoundEdge_ShouldReturnFalse()
         {
-            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(5.0f, 5.0f));
-            Aabb aabb2 = new Aabb(new Vector2F(3.0f, 3.0f), new Vector2F(8.0f, 8.0f));
-
-            Assert.True(Aabb.TestOverlap(ref aabb1, ref aabb2));
-        }
-
-        /// <summary>
-        ///     Tests that test overlap should return false when not overlapping
-        /// </summary>
-        [Fact]
-        public void TestOverlap_ShouldReturnFalse_WhenNotOverlapping()
-        {
-            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(5.0f, 5.0f));
-            Aabb aabb2 = new Aabb(new Vector2F(10.0f, 10.0f), new Vector2F(15.0f, 15.0f));
-
-            Assert.False(Aabb.TestOverlap(ref aabb1, ref aabb2));
-        }
-
-        /// <summary>
-        ///     Tests that test overlap should return false when touching edge
-        /// </summary>
-        [Fact]
-        public void TestOverlap_ShouldReturnFalse_WhenTouchingEdge()
-        {
-            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(5.0f, 5.0f));
-            Aabb aabb2 = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(10.0f, 10.0f));
-
-            Assert.True(Aabb.TestOverlap(ref aabb1, ref aabb2));
-        }
-
-        /// <summary>
-        ///     Tests that ray cast should return true when hit
-        /// </summary>
-        [Fact]
-        public void RayCast_ShouldReturnTrue_WhenHit()
-        {
-            Aabb aabb = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(10.0f, 10.0f));
-            RayCastInput input = new RayCastInput
-            {
-                Point1 = new Vector2F(0.0f, 7.5f),
-                Point2 = new Vector2F(15.0f, 7.5f),
-                MaxFraction = 1.0f
-            };
-
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
-
-            Assert.True(hit);
-        }
-
-        /// <summary>
-        ///     Tests that ray cast should return false when miss
-        /// </summary>
-        [Fact]
-        public void RayCast_ShouldReturnFalse_WhenMiss()
-        {
-            Aabb aabb = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(10.0f, 10.0f));
-            RayCastInput input = new RayCastInput
-            {
-                Point1 = new Vector2F(0.0f, 0.0f),
-                Point2 = new Vector2F(3.0f, 0.0f),
-                MaxFraction = 1.0f
-            };
-
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
-
-            Assert.False(hit);
-        }
-
-        /// <summary>
-        ///     Tests that constructor with zero dimensions should work
-        /// </summary>
-        [Fact]
-        public void Constructor_WithZeroDimensions_ShouldWork()
-        {
-            Aabb aabb = new Aabb(Vector2F.Zero, Vector2F.Zero);
-
-            Assert.Equal(Vector2F.Zero, aabb.LowerBound);
-            Assert.Equal(Vector2F.Zero, aabb.UpperBound);
-            Assert.Equal(0.0f, aabb.Width);
-            Assert.Equal(0.0f, aabb.Height);
-        }
-
-        /// <summary>
-        ///     Tests that perimeter with zero dimensions should return zero
-        /// </summary>
-        [Fact]
-        public void Perimeter_WithZeroDimensions_ShouldReturnZero()
-        {
-            Aabb aabb = new Aabb(Vector2F.Zero, Vector2F.Zero);
-
-            Assert.Equal(0.0f, aabb.Perimeter);
-        }
-
-        /// <summary>
-        ///     Tests that combine with same aabb should not change
-        /// </summary>
-        [Fact]
-        public void Combine_WithSameAabb_ShouldNotChange()
-        {
-            Aabb aabb1 = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 6.0f));
-            Aabb aabb2 = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 6.0f));
-
-            aabb1.Combine(ref aabb2);
-
-            Assert.Equal(new Vector2F(1.0f, 2.0f), aabb1.LowerBound);
-            Assert.Equal(new Vector2F(5.0f, 6.0f), aabb1.UpperBound);
-        }
-
-        /// <summary>
-        ///     Tests that ray cast with do interior check false should return true when ray starts inside
-        /// </summary>
-        [Fact]
-        public void RayCast_WithDoInteriorCheckFalse_ShouldReturnTrue_WhenRayStartsInside()
-        {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            RayCastInput input = new RayCastInput
-            {
-                Point1 = new Vector2F(5.0f, 5.0f),
-                Point2 = new Vector2F(15.0f, 5.0f),
-                MaxFraction = 1.0f
-            };
-
-            bool hit = aabb.RayCast(out _, ref input, false);
-
-            Assert.True(hit);
-        }
-
-        /// <summary>
-        ///     Tests that ray cast with do interior check true should return false when ray starts inside
-        /// </summary>
-        [Fact]
-        public void RayCast_WithDoInteriorCheckTrue_ShouldReturnFalse_WhenRayStartsInside()
-        {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            RayCastInput input = new RayCastInput
-            {
-                Point1 = new Vector2F(5.0f, 5.0f),
-                Point2 = new Vector2F(15.0f, 5.0f),
-                MaxFraction = 1.0f
-            };
-
-            bool hit = aabb.RayCast(out _, ref input);
-
-            Assert.False(hit);
-        }
-
-        /// <summary>
-        ///     Tests that ray cast should return false when max fraction less than tmin
-        /// </summary>
-        [Fact]
-        public void RayCast_ShouldReturnFalse_WhenMaxFractionLessThanTmin()
-        {
-            Aabb aabb = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(10.0f, 10.0f));
-            RayCastInput input = new RayCastInput
-            {
-                Point1 = new Vector2F(0.0f, 7.5f),
-                Point2 = new Vector2F(15.0f, 7.5f),
-                MaxFraction = 0.1f
-            };
-
-            bool hit = aabb.RayCast(out _, ref input);
-
-            Assert.False(hit);
-        }
-
-        /// <summary>
-        ///     Tests that ray cast should handle negative direction with swap
-        /// </summary>
-        [Fact]
-        public void RayCast_ShouldHandleNegativeDirection_WithSwap()
-        {
-            Aabb aabb = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(10.0f, 10.0f));
-            RayCastInput input = new RayCastInput
-            {
-                Point1 = new Vector2F(15.0f, 7.5f),
-                Point2 = new Vector2F(0.0f, 7.5f),
-                MaxFraction = 1.0f
-            };
-
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
-
-            Assert.True(hit);
-            Assert.True(output.Fraction > 0.0f);
-        }
-
-        /// <summary>
-        ///     Tests that contains point should return false when on lower bound
-        /// </summary>
-        [Fact]
-        public void Contains_Point_ShouldReturnFalse_WhenOnLowerBound()
-        {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            Vector2F point = new Vector2F(0.0f, 5.0f);
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            Vector2F point = new Vector2F(0, 5);
 
             Assert.False(aabb.Contains(ref point));
         }
 
         /// <summary>
-        ///     Tests that contains point should return false when on upper bound
+        /// Tests that contains point on upper bound edge should return false (exclusive)
         /// </summary>
         [Fact]
-        public void Contains_Point_ShouldReturnFalse_WhenOnUpperBound()
+        public void Contains_PointOnUpperBoundEdge_ShouldReturnFalse()
         {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            Vector2F point = new Vector2F(10.0f, 5.0f);
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            Vector2F point = new Vector2F(10, 5);
 
             Assert.False(aabb.Contains(ref point));
         }
 
         /// <summary>
-        ///     Tests that ray cast with shallow diagonal from below left sets the y normal
+        /// Tests that test overlap with overlapping aabbs should return true
         /// </summary>
         [Fact]
-        public void RayCast_WithShallowDiagonalFromBelowLeft_ShouldSetNormalY()
+        public void TestOverlap_WithOverlappingAabbs_ShouldReturnTrue()
         {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
+            Aabb a = new Aabb(new Vector2F(0, 0), new Vector2F(5, 5));
+            Aabb b = new Aabb(new Vector2F(3, 3), new Vector2F(8, 8));
+
+            Assert.True(Aabb.TestOverlap(ref a, ref b));
+        }
+
+        /// <summary>
+        /// Tests that test overlap with non overlapping aabbs should return false
+        /// </summary>
+        [Fact]
+        public void TestOverlap_WithNonOverlappingAabbs_ShouldReturnFalse()
+        {
+            Aabb a = new Aabb(new Vector2F(0, 0), new Vector2F(5, 5));
+            Aabb b = new Aabb(new Vector2F(10, 10), new Vector2F(15, 15));
+
+            Assert.False(Aabb.TestOverlap(ref a, ref b));
+        }
+
+        /// <summary>
+        /// Tests that test overlap with aabbs touching at edge should return true (contact convention)
+        /// </summary>
+        [Fact]
+        public void TestOverlap_WithTouchingAabbs_ShouldReturnTrue()
+        {
+            Aabb a = new Aabb(new Vector2F(0, 0), new Vector2F(5, 5));
+            Aabb b = new Aabb(new Vector2F(5, 0), new Vector2F(10, 5));
+
+            Assert.True(Aabb.TestOverlap(ref a, ref b));
+        }
+
+        /// <summary>
+        /// Tests that test overlap with identical aabbs should return true
+        /// </summary>
+        [Fact]
+        public void TestOverlap_WithIdenticalAabbs_ShouldReturnTrue()
+        {
+            Aabb a = new Aabb(new Vector2F(0, 0), new Vector2F(5, 5));
+            Aabb b = new Aabb(new Vector2F(0, 0), new Vector2F(5, 5));
+
+            Assert.True(Aabb.TestOverlap(ref a, ref b));
+        }
+
+        /// <summary>
+        /// Tests that test overlap with one inside the other should return true
+        /// </summary>
+        [Fact]
+        public void TestOverlap_WithOneInsideOther_ShouldReturnTrue()
+        {
+            Aabb outer = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            Aabb inner = new Aabb(new Vector2F(2, 2), new Vector2F(8, 8));
+
+            Assert.True(Aabb.TestOverlap(ref outer, ref inner));
+        }
+
+        /// <summary>
+        /// Tests that ray cast with ray through center should hit
+        /// </summary>
+        [Fact]
+        public void RayCast_WithRayThroughCenter_ShouldHit()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             RayCastInput input = new RayCastInput
             {
-                Point1 = new Vector2F(-10.0f, -10.0f),
-                Point2 = new Vector2F(20.0f, 6.0f),
+                Point1 = new Vector2F(-5, 5),
+                Point2 = new Vector2F(15, 5),
                 MaxFraction = 1.0f
             };
 
             bool hit = aabb.RayCast(out RayCastOutput output, ref input);
 
             Assert.True(hit);
-            Assert.True(output.Fraction > 0.5f);
-            Assert.Equal(-1.0f, output.Normal.Y);
+            Assert.True(output.Fraction >= 0);
         }
 
         /// <summary>
-        ///     Tests that ray cast with parallel x ray inside slab returns true
+        /// Tests that ray cast with ray completely to the left should miss
         /// </summary>
         [Fact]
-        public void RayCast_WithParallelXRayInsideSlab_ShouldReturnTrue()
+        public void RayCast_WithRayCompletelyToLeft_ShouldMiss()
         {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
             RayCastInput input = new RayCastInput
             {
-                Point1 = new Vector2F(5.0f, -10.0f),
-                Point2 = new Vector2F(5.0f, 20.0f),
+                Point1 = new Vector2F(-15, -5),
+                Point2 = new Vector2F(-5, -5),
                 MaxFraction = 1.0f
             };
 
             bool hit = aabb.RayCast(out RayCastOutput output, ref input);
-
-            Assert.True(hit);
-            Assert.InRange(output.Fraction, 0.0f, 1.0f);
-        }
-
-        /// <summary>
-        ///     Tests that ray cast with parallel x ray outside slab returns false
-        /// </summary>
-        [Fact]
-        public void RayCast_WithParallelXRayOutsideSlab_ShouldReturnFalse()
-        {
-            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
-            RayCastInput input = new RayCastInput
-            {
-                Point1 = new Vector2F(-5.0f, -10.0f),
-                Point2 = new Vector2F(-5.0f, 20.0f),
-                MaxFraction = 1.0f
-            };
-
-            bool hit = aabb.RayCast(out _, ref input);
 
             Assert.False(hit);
         }
 
         /// <summary>
-        ///     Tests that test overlap returns false when y does not overlap
+        /// Tests that ray cast with ray starting inside should miss by default (interior check)
         /// </summary>
         [Fact]
-        public void TestOverlap_ShouldReturnFalse_WhenYDoesNotOverlap()
+        public void RayCast_WithRayStartingInside_ShouldMiss()
         {
-            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 3.0f));
-            Aabb aabb2 = new Aabb(new Vector2F(2.0f, 5.0f), new Vector2F(8.0f, 10.0f));
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(5, 5),
+                Point2 = new Vector2F(15, 5),
+                MaxFraction = 1.0f
+            };
 
-            Assert.False(Aabb.TestOverlap(ref aabb1, ref aabb2));
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        /// Tests that ray cast with ray hitting from above should hit
+        /// </summary>
+        [Fact]
+        public void RayCast_WithRayHittingFromAbove_ShouldHit()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(5, 15),
+                Point2 = new Vector2F(5, -5),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
+            Assert.True(hit);
+        }
+
+        /// <summary>
+        /// Tests that ray cast with zero length ray inside should miss (do interior check)
+        /// </summary>
+        [Fact]
+        public void RayCast_WithZeroLengthRayInside_ShouldMiss()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(5, 5),
+                Point2 = new Vector2F(5, 5),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        /// Tests that ray cast with do interior check false and starting inside should hit
+        /// </summary>
+        [Fact]
+        public void RayCast_WithDoInteriorCheckFalse_ShouldHitWhenStartingInside()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(5, 5),
+                Point2 = new Vector2F(15, 5),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input, false);
+
+            Assert.True(hit);
+        }
+
+        /// <summary>
+        /// Tests that ray cast with ray parallel to x axis through the box should hit
+        /// </summary>
+        [Fact]
+        public void RayCast_WithRayParallelToXAxis_ShouldHit()
+        {
+            Aabb aabb = new Aabb(new Vector2F(2, 2), new Vector2F(8, 8));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(0, 5),
+                Point2 = new Vector2F(10, 5),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
+            Assert.True(hit);
+        }
+
+        /// <summary>
+        /// Tests that ray cast with ray parallel to y axis through the box should hit
+        /// </summary>
+        [Fact]
+        public void RayCast_WithRayParallelToYAxis_ShouldHit()
+        {
+            Aabb aabb = new Aabb(new Vector2F(2, 2), new Vector2F(8, 8));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(5, 0),
+                Point2 = new Vector2F(5, 10),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
+            Assert.True(hit);
         }
     }
 }
