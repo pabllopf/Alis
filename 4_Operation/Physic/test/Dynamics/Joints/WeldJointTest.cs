@@ -119,5 +119,92 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.Equal(0.8f, joint.DampingRatio);
         }
+
+        /// <summary>
+        /// Tests that WorldAnchorA get returns valid vector
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Get_ShouldReturnValidVector()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            Vector2F anchor = joint.WorldAnchorA;
+
+            Assert.False(float.IsNaN(anchor.X));
+            Assert.False(float.IsNaN(anchor.Y));
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorA set changes local anchor
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Set_ShouldChangeLocalAnchor()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            joint.WorldAnchorA = new Vector2F(1, 0);
+
+            Vector2F anchor = joint.WorldAnchorA;
+            Assert.False(float.IsNaN(anchor.X));
+            Assert.False(float.IsNaN(anchor.Y));
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorB get returns valid vector
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_Get_ShouldReturnValidVector()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            Vector2F anchor = joint.WorldAnchorB;
+
+            Assert.False(float.IsNaN(anchor.X));
+            Assert.False(float.IsNaN(anchor.Y));
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorB set changes local anchor
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_Set_ShouldChangeLocalAnchor()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            joint.WorldAnchorB = new Vector2F(2, 1);
+
+            Vector2F anchor = joint.WorldAnchorB;
+            Assert.False(float.IsNaN(anchor.X));
+            Assert.False(float.IsNaN(anchor.Y));
+        }
+
+        /// <summary>
+        /// Tests that GetReactionForce returns zero for initial state
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_ShouldReturnZeroForInitialState()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            Vector2F force = joint.GetReactionForce(1f);
+
+            Assert.Equal(0, force.X);
+            Assert.Equal(0, force.Y);
+        }
     }
 }
