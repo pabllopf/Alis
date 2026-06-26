@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Sfml.Audios;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Sound type is accessible.
         /// </summary>
-        [Fact]
+       [RequireCSfmlAudioFact]
         public void Sound_Type_ShouldBeAccessible()
         {
             Assert.NotNull(typeof(Sound));
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Sound implements IDisposable via type check.
         /// </summary>
-        [Fact]
+       [RequireCSfmlAudioFact]
         public void Sound_ShouldImplementIDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(Sound)));
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Sound inherits from ObjectBase.
         /// </summary>
-        [Fact]
+       [RequireCSfmlAudioFact]
         public void Sound_ShouldInheritFromObjectBase()
         {
             Assert.Equal("ObjectBase", typeof(Sound).BaseType.Name);
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that SoundStatus enum values are defined.
         /// </summary>
-        [Fact]
+       [RequireCSfmlAudioFact]
         public void SoundStatus_ShouldHaveDefinedValues()
         {
             Assert.True(Enum.IsDefined(typeof(SoundStatus), SoundStatus.Stopped));
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         ///     Tests that Sound namespace exposes Audio types.
         /// </summary>
-        [Fact]
+       [RequireCSfmlAudioFact]
         public void Sound_Namespace_ShouldContainSound()
         {
             Assert.Equal("Alis.Extension.Graphic.Sfml.Audios", typeof(Sound).Namespace);
