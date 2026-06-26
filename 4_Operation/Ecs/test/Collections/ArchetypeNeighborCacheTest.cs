@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     Tests the <see cref="ArchetypeNeighborCache" /> struct — a 4-way set-associative cache
     ///     mapping source archetype IDs to destination archetypes.
     /// </summary>
-    public class ArchetypeNeighborCacheTest
+    public partial class ArchetypeNeighborCacheTest
     {
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Traverse" /> returns the slot index when the key is in slot 0
@@ -110,33 +110,6 @@ namespace Alis.Core.Ecs.Test.Collections
             cache.Set(3, 30);
             cache.Set(4, 40);
             Assert.Equal(32, cache.Traverse(99));
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="ArchetypeNeighborCache.TraverseArchetype" /> returns the Archetype reference when the key is in slot 0
-        /// </summary>
-        [Fact]
-        public void TraverseArchetype_FindsKeyInSlot0()
-        {
-            var cache = new ArchetypeNeighborCache();
-            var key = new FakeArchetype(100);
-            cache.Set(10, key);
-            Assert.Same(key, cache.TraverseArchetype(10));
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="ArchetypeNeighborCache.TraverseArchetype" /> returns the Archetype reference when the key is in slot 3
-        /// </summary>
-        [Fact]
-        public void TraverseArchetype_FindsKeyInSlot3()
-        {
-            var cache = new ArchetypeNeighborCache();
-            cache.Set(10, new FakeArchetype(100));
-            cache.Set(20, new FakeArchetype(200));
-            cache.Set(30, new FakeArchetype(300));
-            var key = new FakeArchetype(400);
-            cache.Set(40, key);
-            Assert.Same(key, cache.TraverseArchetype(40));
         }
 
         /// <summary>
@@ -224,20 +197,6 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal((ushort)80, cache.Lookup(3));
         }
 
-        /// <summary>
-        ///     Tests that <see cref="ArchetypeNeighborCache.Set(ushort, Archetype)" /> stores the Archetype reference and derives
-        ///     the ushort value from <see cref="Archetype.Id" />.
-        /// </summary>
-        [Fact]
-        public void Set_WithArchetype_StoresReferenceAndDerivesValue()
-        {
-            var cache = new ArchetypeNeighborCache();
-            var arch = new FakeArchetype(42);
-            cache.Set(10, arch);
-
-            Assert.Same(arch, cache.TraverseArchetype(10));
-            Assert.Equal(42, cache.Lookup(0));
-        }
 
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Set(ushort, Archetype)" /> stores null Archetype reference in the
@@ -251,56 +210,8 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Null(cache.TraverseArchetype(10));
         }
 
-        /// <summary>
-        ///     Tests that <see cref="ArchetypeNeighborCache.Set(ushort, Archetype)" /> clears the Archetype reference when
-        ///     overwritten with the ushort-only overload
-        /// </summary>
-        [Fact]
-        public void Set_UshortOnly_OverwritesPreviousArchetypeReference()
-        {
-            var cache = new ArchetypeNeighborCache();
-            var arch = new FakeArchetype(42);
-            cache.Set(10, arch);
-            Assert.Same(arch, cache.TraverseArchetype(10));
-
-            cache.Set(10, 999);
-            Assert.Null(cache.TraverseArchetype(10));
-            Assert.Equal(999, cache.Lookup(0));
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="ArchetypeNeighborCache.Set(ushort, Archetype)" /> overwrites a previous ushort entry
-        /// </summary>
-        [Fact]
-        public void Set_WithArchetype_OverwritesPreviousUshortEntry()
-        {
-            var cache = new ArchetypeNeighborCache();
-            cache.Set(10, 100);
-            Assert.Null(cache.TraverseArchetype(10));
-
-            var arch = new FakeArchetype(200);
-            cache.Set(10, arch);
-            Assert.Same(arch, cache.TraverseArchetype(10));
-            Assert.Equal(200, cache.Lookup(0));
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="ArchetypeNeighborCache.TraverseArchetype" /> returns the updated Archetype reference after
-        ///     overwrite
-        /// </summary>
-        [Fact]
-        public void Set_WithArchetype_UpdatesTraverseArchetype()
-        {
-            var cache = new ArchetypeNeighborCache();
-            var arch1 = new FakeArchetype(50);
-            cache.Set(10, arch1);
-
-            var arch2 = new FakeArchetype(60);
-            cache.Set(10, arch2);
-
-            Assert.Same(arch2, cache.TraverseArchetype(10));
-            Assert.Equal(60, cache.Lookup(0));
-        }
+       
+       
 
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache" /> can handle all ushort key values

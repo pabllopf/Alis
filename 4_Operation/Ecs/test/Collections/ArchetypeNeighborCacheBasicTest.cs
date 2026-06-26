@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     neighboring archetypes to optimize archetype transitions in the ECS.
     ///     This is critical for performance when adding/removing components.
     /// </remarks>
-    public class ArchetypeNeighborCacheTest
+    public partial class ArchetypeNeighborCacheTest
     {
         /// <summary>
         ///     Tests that archetype neighbor cache can be created
