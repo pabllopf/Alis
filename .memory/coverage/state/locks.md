@@ -20,6 +20,7 @@
 | SimpleExplosion.cs | worker-1 | 2026-06-26T11:00:00Z | completed (8ab78c720) |
 | GearJoint.cs | worker-1 | 2026-06-26T11:30:00Z | completed (9a65048f3) |
 | WheelJoint.cs | worker-1 | 2026-06-26T11:45:00Z | completed (71b359843) |
+| WeldJoint.cs | worker-1 | 2026-06-26T12:00:00Z | completed (5881901b8) |
 
 ## Session Summary
 

@@ -284,3 +284,14 @@
 | Coverage Area | WorldAnchorA/B get and set, Axis set, LocalXAxis get, GetReactionForce zero, MotorEnabled round trip |
 | Status | COMPLETE — WheelJoint API surface expanded |
 
+## 2026-06-26T12:00:00Z — Task #019 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 019 |
+| File | WeldJoint.cs |
+| Commit | 5881901b8 |
+| Tests Added | 5 |
+| Coverage Area | WorldAnchorA/B get valid and set, GetReactionForce zero for initial state |
+| Status | COMPLETE — WeldJoint API surface expanded |
+
