@@ -28,8 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Common;
+using Alis.Core.Physic.Dynamics;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions.Shapes
@@ -258,6 +260,304 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             EdgeShape edge = chain.GetChildEdge(1);
 
             Assert.False(edge.HasVertex3);
+        }
+
+        /// <summary>
+        ///     Tests that GetChildEdge at middle index sets both HasVertex0 and HasVertex3
+        /// </summary>
+        [Fact]
+        public void GetChildEdge_AtMiddleIndex_ShouldSetBothHasVertexFlags()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(2, 0),
+                new Vector2F(3, 0)
+            };
+            ChainShape chain = new ChainShape(vertices);
+
+            EdgeShape edge = chain.GetChildEdge(1);
+
+            Assert.True(edge.HasVertex0);
+            Assert.True(edge.HasVertex3);
+            Assert.Equal(vertices[0], edge.Vertex0);
+            Assert.Equal(vertices[3], edge.Vertex3);
+        }
+
+        /// <summary>
+        ///     Tests that GetChildEdge at first index with PrevVertex set propagates it
+        /// </summary>
+        [Fact]
+        public void GetChildEdge_AtFirstIndexWithPrevVertex_ShouldPropagate()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(1, 0),
+                new Vector2F(2, 0),
+                new Vector2F(3, 0)
+            };
+            ChainShape chain = new ChainShape(vertices);
+            chain.PrevVertex = new Vector2F(0, 0);
+
+            EdgeShape edge = chain.GetChildEdge(0);
+
+            Assert.True(edge.HasVertex0);
+            Assert.Equal(new Vector2F(0, 0), edge.Vertex0);
+        }
+
+        /// <summary>
+        ///     Tests that GetChildEdge at last index with NextVertex set propagates it
+        /// </summary>
+        [Fact]
+        public void GetChildEdge_AtLastIndexWithNextVertex_ShouldPropagate()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(1, 0),
+                new Vector2F(2, 0),
+                new Vector2F(3, 0)
+            };
+            ChainShape chain = new ChainShape(vertices);
+            chain.NextVertex = new Vector2F(4, 0);
+
+            EdgeShape edge = chain.GetChildEdge(1);
+
+            Assert.True(edge.HasVertex3);
+            Assert.Equal(new Vector2F(4, 0), edge.Vertex3);
+        }
+
+        /// <summary>
+        ///     Tests that RayCast delegates to EdgeShape
+        /// </summary>
+        [Fact]
+        public void RayCast_ShouldDelegateToEdgeShape()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(10, 0),
+                new Vector2F(10, 10)
+            };
+            ChainShape chain = new ChainShape(vertices);
+            ControllerTransform transform = ControllerTransform.Identity;
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(5, -5),
+                Point2 = new Vector2F(5, 5),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = chain.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.True(hit);
+        }
+
+        /// <summary>
+        ///     Tests that ComputeAabb returns valid bounds
+        /// </summary>
+        [Fact]
+        public void ComputeAabb_ShouldReturnValidBounds()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(10, 0),
+                new Vector2F(10, 10)
+            };
+            ChainShape chain = new ChainShape(vertices);
+            ControllerTransform transform = ControllerTransform.Identity;
+
+            chain.ComputeAabb(out Aabb aabb, ref transform, 0);
+
+            Assert.Equal(0, aabb.LowerBound.X);
+            Assert.Equal(10, aabb.UpperBound.X);
+        }
+
+        /// <summary>
+        ///     Tests that ComputeSubmergedArea returns zero
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_ShouldReturnZero()
+        {
+            ChainShape chain = new ChainShape();
+            Vector2F normal = new Vector2F(0, 1);
+            ControllerTransform transform = ControllerTransform.Identity;
+
+            float area = chain.ComputeSubmergedArea(ref normal, 0, ref transform, out Vector2F sc);
+
+            Assert.Equal(0, area);
+            Assert.Equal(Vector2F.Zero, sc);
+        }
+
+        /// <summary>
+        ///     Tests that CompareTo returns true for identical chains
+        /// </summary>
+        [Fact]
+        public void CompareTo_WithIdenticalChains_ShouldReturnTrue()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(2, 0)
+            };
+            ChainShape chain1 = new ChainShape(vertices);
+            ChainShape chain2 = new ChainShape(vertices);
+
+            bool result = chain1.CompareTo(chain2);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that CompareTo returns false for different vertex counts
+        /// </summary>
+        [Fact]
+        public void CompareTo_WithDifferentVertexCount_ShouldReturnFalse()
+        {
+            Vertices vertices1 = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0)
+            };
+            Vertices vertices2 = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(2, 0)
+            };
+            ChainShape chain1 = new ChainShape(vertices1);
+            ChainShape chain2 = new ChainShape(vertices2);
+
+            bool result = chain1.CompareTo(chain2);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that CompareTo returns false for different vertices
+        /// </summary>
+        [Fact]
+        public void CompareTo_WithDifferentVertices_ShouldReturnFalse()
+        {
+            Vertices vertices1 = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0)
+            };
+            Vertices vertices2 = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(5, 0)
+            };
+            ChainShape chain1 = new ChainShape(vertices1);
+            ChainShape chain2 = new ChainShape(vertices2);
+
+            bool result = chain1.CompareTo(chain2);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that CompareTo returns false for different prev vertex
+        /// </summary>
+        [Fact]
+        public void CompareTo_WithDifferentPrevVertex_ShouldReturnFalse()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(2, 0)
+            };
+            ChainShape chain1 = new ChainShape(vertices);
+            ChainShape chain2 = new ChainShape(vertices);
+            chain1.PrevVertex = new Vector2F(-1, 0);
+
+            bool result = chain1.CompareTo(chain2);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that CompareTo returns false for different next vertex
+        /// </summary>
+        [Fact]
+        public void CompareTo_WithDifferentNextVertex_ShouldReturnFalse()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(2, 0)
+            };
+            ChainShape chain1 = new ChainShape(vertices);
+            ChainShape chain2 = new ChainShape(vertices);
+            chain1.NextVertex = new Vector2F(3, 0);
+
+            bool result = chain1.CompareTo(chain2);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that Clone creates an equivalent chain
+        /// </summary>
+        [Fact]
+        public void Clone_ShouldCreateEquivalentChain()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(2, 0)
+            };
+            ChainShape chain = new ChainShape(vertices);
+            ChainShape clone = (ChainShape)chain.Clone();
+
+            Assert.True(chain.CompareTo(clone));
+        }
+
+        /// <summary>
+        ///     Tests that Clone creates an independent copy
+        /// </summary>
+        [Fact]
+        public void Clone_ShouldCreateIndependentCopy()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(2, 0)
+            };
+            ChainShape chain = new ChainShape(vertices);
+            ChainShape clone = (ChainShape)chain.Clone();
+
+            clone.Vertices[0] = new Vector2F(99, 99);
+
+            Assert.NotEqual(chain.Vertices[0], clone.Vertices[0]);
+        }
+
+        /// <summary>
+        ///     Tests that TestPoint always returns false
+        /// </summary>
+        [Fact]
+        public void TestPoint_ShouldAlwaysReturnFalse()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(2, 0)
+            };
+            ChainShape chain = new ChainShape(vertices);
+            ControllerTransform transform = ControllerTransform.Identity;
+            Vector2F point = new Vector2F(0.5f, 0);
+
+            bool result = chain.TestPoint(ref transform, ref point);
+
+            Assert.False(result);
         }
     }
 }
