@@ -170,4 +170,17 @@
 - Cloud APIs require credentials — guard conditions covered instead
 - Well-tested directories (BaseClasses, 4_Operation/Audio) with 55% coverage are acceptable
 - Low coverage on directories requiring external dependencies is expected
+- Physics joints (MotorJoint, GearJoint, etc.) use complex internal state — testing factory creation is the primary actionable target
+
+## 2026-06-26T09:51:00Z — Task #010 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 010 |
+| File | JointFactory.cs |
+| Commit | e84ef5094 |
+| Tests Added | 12 |
+| Coverage Area | CreateMotorJoint, CreateRevoluteJoint(anchors), CreateRopeJoint, CreateWeldJoint, CreatePrismaticJoint, CreateWheelJoint(worldCoords), CreateAngleJoint, CreateDistanceJoint(anchors), CreateFrictionJoint(both overloads), CreateGearJoint, CreatePulleyJoint |
+| Status | COMPLETE — all 12 factory methods covered |
+| New Tests | CreateMotorJoint_ShouldAddJointToWorld, CreateRevoluteJoint_WithAnchors_ShouldReturnJoint, CreateRopeJoint_ShouldAddJointToWorld, CreateWeldJoint_ShouldAddJointToWorld, CreatePrismaticJoint_ShouldAddJointToWorld, CreateWheelJoint_WithWorldCoordinates_ShouldReturnJoint, CreateAngleJoint_ShouldAddJointToWorld, CreateDistanceJoint_WithAnchors_ShouldReturnJoint, CreateFrictionJoint_WithAnchor_ShouldReturnJoint, CreateFrictionJoint_Default_ShouldReturnJoint, CreateGearJoint_ShouldAddJointToWorld, CreatePulleyJoint_ShouldAddJointToWorld |
 

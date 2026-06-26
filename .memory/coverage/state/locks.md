@@ -11,6 +11,7 @@
 | 4_Operation/Audio/src | worker-1 | 2025-06-25T18:38:00Z | completed (well tested, skip) |
 | 2_Application/Alis/src | worker-1 | 2025-06-25T18:40:00Z | completed (72 test files, skip) |
 | 1_Presentation/Extension/Cloud | worker-1 | 2025-06-25T18:41:00Z | completed (requires cloud credentials, skip) |
+| JointFactory.cs | worker-1 | 2026-06-26T09:51:00Z | completed (e84ef5094) |
 
 ## Session Summary
 
@@ -34,4 +35,5 @@
 
 All remaining low-coverage targets require external dependencies (ffmpeg, SFML, audio hardware, cloud credentials). 
 Current 58.3% project coverage is acceptable given the nature of the codebase.
+Physics module joints, ECS, Network, and other business-logic files are actionable without native deps.
 

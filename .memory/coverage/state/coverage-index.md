@@ -24,6 +24,7 @@
 | #005 | Sfml Audios directory | 6bf4b5142 | 20 | PARTIALLY COMPLETE (SFML native library required) |
 | #006 | BaseClasses directory | SKIPPED | 0 (1081 existing) | WELL TESTED (51.6%, skip) |
 | #007 | 4_Operation/Audio/src | SKIPPED | 0 (9468 existing) | WELL TESTED (55.1%, skip) |
+| #010 | JointFactory.cs | e84ef5094 | 12 (12 new) | COMPLETE — all factory methods covered |
 
 ## Remaining Target Files (Coverage < 80%)
 
@@ -48,13 +49,14 @@
 | After #003 | 730 | +8 AudioVideoWriter tests |
 | After #004 | 739 | +9 AudioPlayer tests |
 | After #005 | 759* | +20 Sfml Audios tests (pending native lib) |
+| After #010 | 2373 | +12 JointFactory tests |
 
 *Note: Sfml tests timed out during execution — requires SFML native library.
 
 ## Summary
 
-- **Tasks completed**: 5 (FFmpeg guard conditions + Sfml property guards)
-- **Tasks skipped**: 2 (BaseClasses, 4_Operation/Audio — already extensively tested)
-- **Remaining**: 2_Application/Alis/src (55.3%, 933 lines) — last priority
-- **Total new tests added**: ~112 (across 5 tasks)
+- **Tasks completed**: 6 (FFmpeg guard conditions + Sfml property guards + JointFactory)
+- **Tasks skipped**: 3 (BaseClasses, 4_Operation/Audio, Cloud — external deps)
+- **Remaining**: 2_Application/Alis/src (55.3%, 933 lines) — last priority; Physic joints, ECS module
+- **Total new tests added**: ~124 (across 6 tasks)
 
