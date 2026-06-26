@@ -30,7 +30,7 @@
 | #013 | ChainShape.cs | 068eae03d | 16 (16 new) | COMPLETE — GetChildEdge branches, RayCast, CompareTo, Clone, ComputeAabb, ComputeSubmergedArea |
 | #014 | VelocityLimitController.cs | 463101db9 | 5 (5 new) | COMPLETE — angular velocity clamp, IsActiveOn filter |
 | #015 | GravityController.cs | bfa3e8660 | 2 (2 new) | COMPLETE — DistanceSquared body/point gravity branches |
-| #016 | SimpleExplosion.cs | (pending) | 4 (4 new) | COMPLETE — ApplyImpulse with body in range, max force, controller filter, near edge |
+| #016 | SimpleExplosion.cs | 8ab78c720 | 4 (4 new) | COMPLETE — ApplyImpulse with body in range, max force, controller filter, near edge |
 
 ## Remaining Target Files (Coverage < 80%)
 

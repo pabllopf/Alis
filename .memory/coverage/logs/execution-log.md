@@ -257,7 +257,7 @@
 |-------|-------|
 | Task ID | 016 |
 | File | SimpleExplosion.cs |
-| Commit | (pending) |
+| Commit | 8ab78c720 |
 | Tests Added | 4 |
 | Coverage Area | ApplyImpulse with body in range, max force limit, controller filter skip, body near edge |
 | Status | COMPLETE — all ApplyImpulse branches covered (IsActiveOn filter, force calculation, maxForce clamp) |

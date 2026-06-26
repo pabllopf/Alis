@@ -17,7 +17,7 @@
 | ChainShape.cs | worker-1 | 2026-06-26T10:15:00Z | completed (068eae03d) |
 | VelocityLimitController.cs | worker-1 | 2026-06-26T10:30:00Z | completed (463101db9) |
 | GravityController.cs | worker-1 | 2026-06-26T10:35:00Z | completed (bfa3e8660) |
-| SimpleExplosion.cs | worker-1 | 2026-06-26T11:00:00Z | completed (pending) |
+| SimpleExplosion.cs | worker-1 | 2026-06-26T11:00:00Z | completed (8ab78c720) |
 
 ## Session Summary
 
