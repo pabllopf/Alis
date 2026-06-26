@@ -67,5 +67,199 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.NotNull(result);
             Assert.True(result.Count >= 1);
         }
+
+        /// <summary>
+        /// Tests that convex partition with small polygon returns vertices as is
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithSmallPolygon_ReturnsGivenVertices()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0f, 1f)
+            });
+
+            List<Vertices> result = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Bayazit);
+
+            Assert.NotNull(result);
+            Assert.Single(result);
+            Assert.Equal(3, result[0].Count);
+        }
+
+        /// <summary>
+        /// Tests that convex partition using bayazit should return parts
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithQuad_UsingBayazit_ShouldReturnParts()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+
+            List<Vertices> result = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Bayazit);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+        }
+
+        /// <summary>
+        /// Tests that convex partition using flipcode should return parts
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithQuad_UsingFlipcode_ShouldReturnParts()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+
+            List<Vertices> result = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Flipcode);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+        }
+
+        /// <summary>
+        /// Tests that convex partition using seidel should return parts
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithQuad_UsingSeidel_ShouldReturnParts()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+
+            List<Vertices> result = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Seidel);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+        }
+
+        /// <summary>
+        /// Tests that convex partition using seidel trapezoids should return parts
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithQuad_UsingSeidelTrapezoids_ShouldReturnParts()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+
+            List<Vertices> result = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.SeidelTrapezoids);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+        }
+
+        /// <summary>
+        /// Tests that convex partition using delauny should return parts
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithQuad_UsingDelauny_ShouldReturnParts()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+
+            List<Vertices> result = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Delauny);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+        }
+
+        /// <summary>
+        /// Tests that convex partition with invalid algorithm throws
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithInvalidAlgorithm_ThrowsArgumentOutOfRangeException()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+
+            Assert.Throws<System.ArgumentOutOfRangeException>(() =>
+                Triangulate.ConvexPartition(vertices, (TriangulationAlgorithm)999));
+        }
+
+        /// <summary>
+        /// Tests that convex partition with discard and fix invalid false should not discard
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithDiscardAndFixInvalidFalse_ShouldNotDiscard()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+
+            List<Vertices> result = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Earclip, false);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+        }
+
+        /// <summary>
+        /// Tests that validate polygon returns true for valid polygon
+        /// </summary>
+        [Fact]
+        public void ValidatePolygon_WithValidPolygon_ReturnsTrue()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 2f)
+            });
+
+            bool result = Triangulate.ValidatePolygon(vertices);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        /// Tests that validate polygon returns false for null or empty polygon
+        /// </summary>
+        [Fact]
+        public void ValidatePolygon_WithInvalidPolygon_ReturnsFalse()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f)
+            });
+
+            bool result = Triangulate.ValidatePolygon(vertices);
+
+            Assert.False(result);
+        }
     }
 }
