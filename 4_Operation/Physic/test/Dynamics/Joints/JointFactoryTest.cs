@@ -104,6 +104,240 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(JointType.FixedMouse, joint.JointType);
             Assert.Single(world.JointList);
         }
+
+        /// <summary>
+        /// Tests that create motor joint should add joint to world
+        /// </summary>
+        [Fact]
+        public void CreateMotorJoint_ShouldAddJointToWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.4f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.4f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            MotorJoint joint = JointFactory.CreateMotorJoint(world, bodyA, bodyB);
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Motor, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+            Assert.Single(world.JointList);
+        }
+
+        /// <summary>
+        /// Tests that create revolute joint with anchor parameters should return joint
+        /// </summary>
+        [Fact]
+        public void CreateRevoluteJoint_WithAnchors_ShouldReturnJoint()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.4f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.4f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            RevoluteJoint joint = JointFactory.CreateRevoluteJoint(world, bodyA, bodyB, new Vector2F(0.0f, 1.0f), new Vector2F(0.0f, -1.0f));
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Revolute, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+            Assert.Single(world.JointList);
+        }
+
+        /// <summary>
+        /// Tests that create rope joint should add joint to world
+        /// </summary>
+        [Fact]
+        public void CreateRopeJoint_ShouldAddJointToWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.4f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.4f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            RopeJoint joint = JointFactory.CreateRopeJoint(world, bodyA, bodyB, new Vector2F(0.0f, 1.0f), new Vector2F(0.0f, -1.0f));
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Rope, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+            Assert.Single(world.JointList);
+        }
+
+        /// <summary>
+        /// Tests that create weld joint should add joint to world
+        /// </summary>
+        [Fact]
+        public void CreateWeldJoint_ShouldAddJointToWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.4f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.4f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            WeldJoint joint = JointFactory.CreateWeldJoint(world, bodyA, bodyB, new Vector2F(0.0f, 1.0f), new Vector2F(0.0f, -1.0f));
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Weld, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+            Assert.Single(world.JointList);
+        }
+
+        /// <summary>
+        /// Tests that create prismatic joint should add joint to world
+        /// </summary>
+        [Fact]
+        public void CreatePrismaticJoint_ShouldAddJointToWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.4f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.4f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            PrismaticJoint joint = JointFactory.CreatePrismaticJoint(world, bodyA, bodyB, new Vector2F(0.0f, 0.0f), new Vector2F(0.0f, 1.0f));
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Prismatic, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+            Assert.Single(world.JointList);
+        }
+
+        /// <summary>
+        /// Tests that create wheel joint with world coordinates should return joint
+        /// </summary>
+        [Fact]
+        public void CreateWheelJoint_WithWorldCoordinates_ShouldReturnJoint()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateRectangle(1.0f, 1.0f, 1.0f, new Vector2F(-1.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body bodyB = world.CreateRectangle(1.0f, 1.0f, 1.0f, new Vector2F(1.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            WheelJoint joint = JointFactory.CreateWheelJoint(world, bodyA, bodyB, new Vector2F(0.0f, 0.0f), new Vector2F(0.0f, 1.0f));
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Wheel, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+            Assert.Single(world.JointList);
+        }
+
+        /// <summary>
+        /// Tests that create angle joint should add joint to world
+        /// </summary>
+        [Fact]
+        public void CreateAngleJoint_ShouldAddJointToWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.4f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.4f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            AngleJoint joint = JointFactory.CreateAngleJoint(world, bodyA, bodyB);
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Angle, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+            Assert.Single(world.JointList);
+        }
+
+        /// <summary>
+        /// Tests that create distance joint with anchors should return joint
+        /// </summary>
+        [Fact]
+        public void CreateDistanceJoint_WithAnchors_ShouldReturnJoint()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.4f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.4f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            DistanceJoint joint = JointFactory.CreateDistanceJoint(world, bodyA, bodyB, new Vector2F(0.0f, 1.0f), new Vector2F(0.0f, -1.0f));
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Distance, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+            Assert.Single(world.JointList);
+        }
+
+        /// <summary>
+        /// Tests that create friction joint with anchor should return joint
+        /// </summary>
+        [Fact]
+        public void CreateFrictionJoint_WithAnchor_ShouldReturnJoint()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.4f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.4f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            FrictionJoint joint = JointFactory.CreateFrictionJoint(world, bodyA, bodyB, new Vector2F(0.0f, 0.0f));
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Friction, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+            Assert.Single(world.JointList);
+        }
+
+        /// <summary>
+        /// Tests that create friction joint default should return joint
+        /// </summary>
+        [Fact]
+        public void CreateFrictionJoint_Default_ShouldReturnJoint()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.4f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.4f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            FrictionJoint joint = JointFactory.CreateFrictionJoint(world, bodyA, bodyB);
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Friction, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+            Assert.Single(world.JointList);
+        }
+
+        /// <summary>
+        /// Tests that create gear joint should add joint to world
+        /// </summary>
+        [Fact]
+        public void CreateGearJoint_ShouldAddJointToWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.4f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.4f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyC = world.CreateCircle(0.4f, 1.0f, new Vector2F(0.0f, 2.0f), BodyType.Dynamic);
+            Body bodyD = world.CreateCircle(0.4f, 1.0f, new Vector2F(0.0f, -2.0f), BodyType.Dynamic);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyC, new Vector2F(0.0f, 1.0f), new Vector2F(0.0f, -1.0f));
+            world.Add(jointA);
+            RevoluteJoint jointB = new RevoluteJoint(bodyB, bodyD, new Vector2F(0.0f, 1.0f), new Vector2F(0.0f, -1.0f));
+            world.Add(jointB);
+
+            GearJoint joint = JointFactory.CreateGearJoint(world, bodyA, bodyB, jointA, jointB, 1.0f);
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Gear, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+        }
+
+        /// <summary>
+        /// Tests that create pulley joint should add joint to world
+        /// </summary>
+        [Fact]
+        public void CreatePulleyJoint_ShouldAddJointToWorld()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.4f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.4f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            PulleyJoint joint = JointFactory.CreatePulleyJoint(world, bodyA, bodyB, new Vector2F(0.0f, 1.0f), new Vector2F(0.0f, -1.0f), new Vector2F(0.0f, 2.0f), new Vector2F(0.0f, -2.0f), 1.0f);
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Pulley, joint.JointType);
+            Assert.Same(bodyA, joint.BodyA);
+            Assert.Same(bodyB, joint.BodyB);
+            Assert.Single(world.JointList);
+        }
     }
 }
 
