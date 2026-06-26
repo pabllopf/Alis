@@ -295,3 +295,14 @@
 | Coverage Area | WorldAnchorA/B get valid and set, GetReactionForce zero for initial state |
 | Status | COMPLETE — WeldJoint API surface expanded |
 
+## 2026-06-26T12:15:00Z — Task #020 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 020 |
+| File | AABB.cs |
+| Commit | d1f510171 |
+| Tests Added | 38 |
+| Coverage Area | Constructors (3 variants), Width, Height, Center, Extents, Perimeter, Vertices, Q1-Q4 quadrants, IsValid (valid/invalid), Combine (2 overloads), Contains (AABB + point, edge inclusive), TestOverlap (overlapping/non/touching/identical/contained), RayCast (through center, miss, starting inside, from above, zero length, doInteriorCheck false, parallel X/Y) |
+| Status | COMPLETE — AABB fully covered (all public API) |
+

@@ -34,6 +34,7 @@
 | #017 | GearJoint.cs | 9a65048f3 | 10 (10 new) | COMPLETE — constructor, custom ratio, Ratio get/set, WorldAnchorA/B, GetReactionForce, GetReactionTorque |
 | #018 | WheelJoint.cs | 71b359843 | 8 (8 new) | COMPLETE — WorldAnchorA/B get and set, Axis set, LocalXAxis get, GetReactionForce, MotorEnabled round trip |
 | #019 | WeldJoint.cs | 5881901b8 | 5 (5 new) | COMPLETE — WorldAnchorA/B get valid and set, GetReactionForce zero for initial state |
+| #020 | AABB.cs | d1f510171 | 38 (38 new) | COMPLETE — constructors, properties, quadrants, IsValid, Combine, Contains, TestOverlap, RayCast |
 
 ## Remaining Target Files (Coverage < 80%)
 
@@ -68,14 +69,15 @@
 | After #017 | 2431 | +10 GearJoint tests |
 | After #018 | 2439 | +8 WheelJoint tests |
 | After #019 | 2444 | +5 WeldJoint tests |
+| After #020 | 2482 | +38 AABB tests |
 | Fix #005 | 2376 | -7 net tests (SoundTest instances crash → 5 type-level) |
 
 *Note: Sfml tests timed out during execution — requires SFML native library. SoundTest.cs fixed at 615be2661.
 
 ## Summary
 
-- **Tasks completed**: 11 (FFmpeg guard conditions + Sfml property guards + JointFactory + Triangulate + EdgeShape + ChainShape + VelocityLimitController + GravityController + SimpleExplosion + GearJoint + WheelJoint + WeldJoint)
+- **Tasks completed**: 12 (FFmpeg guard conditions + Sfml property guards + JointFactory + Triangulate + EdgeShape + ChainShape + VelocityLimitController + GravityController + SimpleExplosion + GearJoint + WheelJoint + WeldJoint + AABB)
 - **Tasks skipped**: 3 (BaseClasses, 4_Operation/Audio, Cloud — external deps)
 - **Remaining**: 2_Application/Alis/src (55.3%, 933 lines) — last priority; Physic joints, ECS module
-- **Total new tests added**: ~161 (across 11 tasks)
+- **Total new tests added**: ~199 (across 12 tasks)
 
