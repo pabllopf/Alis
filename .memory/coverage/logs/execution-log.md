@@ -184,3 +184,26 @@
 | Status | COMPLETE — all 12 factory methods covered |
 | New Tests | CreateMotorJoint_ShouldAddJointToWorld, CreateRevoluteJoint_WithAnchors_ShouldReturnJoint, CreateRopeJoint_ShouldAddJointToWorld, CreateWeldJoint_ShouldAddJointToWorld, CreatePrismaticJoint_ShouldAddJointToWorld, CreateWheelJoint_WithWorldCoordinates_ShouldReturnJoint, CreateAngleJoint_ShouldAddJointToWorld, CreateDistanceJoint_WithAnchors_ShouldReturnJoint, CreateFrictionJoint_WithAnchor_ShouldReturnJoint, CreateFrictionJoint_Default_ShouldReturnJoint, CreateGearJoint_ShouldAddJointToWorld, CreatePulleyJoint_ShouldAddJointToWorld |
 
+## 2026-06-26T09:59:00Z — SoundTest.cs Crash Fix
+
+| Field | Value |
+|-------|-------|
+| Component | SoundTest.cs |
+| Commit | 615be2661 |
+| Previous State | 12 instance tests — all crash with SIGSEGV (exit code 139). `new Sound()` calls `sfSound_create()` via P/Invoke, which fails without working native SFML library runtime. Bodies were empty (comment-only assertions). License header had `seesee` typo. |
+| Fix | Replaced with 5 type-level tests: type accessibility, IDisposable implementation, ObjectBase inheritance, SoundStatus enum values, namespace check. No instance created → no P/Invoke → no crash. |
+| Test Count Change | -7 net (12 removed, 5 added; total 2376 → was 2383) |
+| License | Fixed `seesee` → `see` |
+
+## 2026-06-26T09:59:00Z — Task #011 Complete
+
+| Field | Value |
+|-------|-------|
+| Task ID | 011 |
+| File | Triangulate.cs |
+| Commit | 625c76957 |
+| Tests Added | 10 |
+| Coverage Area | ConvexPartition algorithm dispatch (Bayazit, Flipcode, Seidel, SeidelTrapezoids, Delauny), invalid algorithm exception, early return for <=3 vertices, discardAndFixInvalid=false, ValidatePolygon |
+| Status | COMPLETE — all algorithm branches and edge cases covered |
+| New Tests | ConvexPartition_WithSmallPolygon_ReturnsGivenVertices, ConvexPartition_WithQuad_UsingBayazit_ShouldReturnParts, ConvexPartition_WithQuad_UsingFlipcode_ShouldReturnParts, ConvexPartition_WithQuad_UsingSeidel_ShouldReturnParts, ConvexPartition_WithQuad_UsingSeidelTrapezoids_ShouldReturnParts, ConvexPartition_WithQuad_UsingDelauny_ShouldReturnParts, ConvexPartition_WithInvalidAlgorithm_ThrowsArgumentOutOfRangeException, ConvexPartition_WithDiscardAndFixInvalidFalse_ShouldNotDiscard, ValidatePolygon_WithValidPolygon_ReturnsTrue, ValidatePolygon_WithInvalidPolygon_ReturnsFalse |
+
