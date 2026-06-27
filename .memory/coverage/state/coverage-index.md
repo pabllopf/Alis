@@ -30,6 +30,15 @@
 - **Commit**: `b510da9ec3db36bb85bf5cb5e56a84920aef7dbf`
 - **Timestamp**: 2026-06-27 20:42 UTC
 
+### Task 4 — HttpHelper.cs
+- **File**: `1_Presentation/Extension/Network/src/HttpHelper.cs`
+- **Previous Coverage**: 97%
+- **Estimated New Coverage**: ~99% (EntityTooLargeException throw path covered)
+- **Uncovered Lines Previously**: 2
+- **Tests Added**: 1 (oversized header → EntityTooLargeException)
+- **Commit**: `5102efe18d19b811d2b34c19bb3b8d67c24d4bf3`
+- **Timestamp**: 2026-06-27 20:47 UTC
+
 ## Processed Tasks
 
 ### Task 1 — CorridorFactory.cs

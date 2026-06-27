@@ -21,3 +21,6 @@
 | 20:40 | Tests written | 8 tests for FilePickerValidator catch blocks, null paths, SelectFolder/SaveFile |
 | 20:41 | Tests passed | 29/29 — 21 existing + 8 new |
 | 20:42 | Commit | `b510da9e` — test: coverage FilePickerValidator.cs |
+| 20:45 | Tests written | 1 test for HttpHelper EntityTooLargeException path |
+| 20:46 | Tests passed | 22/22 — 21 existing + 1 new |
+| 20:47 | Commit | `5102efe1` — test: coverage HttpHelper.cs |
