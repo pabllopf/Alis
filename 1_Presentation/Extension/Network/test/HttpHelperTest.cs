@@ -395,5 +395,20 @@ namespace Alis.Extension.Network.Test
             // Assert
             Assert.False(result);
         }
+
+        /// <summary>
+        /// Tests that ReadHttpHeaderAsync with oversized header throws EntityTooLargeException
+        /// </summary>
+        [Fact]
+        public async Task ReadHttpHeaderAsync_WithOversizedHeader_ThrowsEntityTooLargeException()
+        {
+            // Arrange
+            string content = new string('A', 16385);
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
+
+            // Act & Assert
+            await Assert.ThrowsAsync<EntityTooLargeException>(() =>
+                HttpHelper.ReadHttpHeaderAsync(stream, CancellationToken.None));
+        }
     }
 }

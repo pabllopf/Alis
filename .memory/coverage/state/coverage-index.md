@@ -22,6 +22,14 @@
 - **Commit**: `fedf2ac4f5b642f0656f5ae0f84bcec1e9b1a3f9`
 - **Timestamp**: 2026-06-27 20:37 UTC
 
+### Task 3 — FilePickerValidator.cs
+- **File**: `1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs`
+- **Previous Coverage**: ~70%
+- **Estimated New Coverage**: ~85% (catch blocks, null path branches, SelectFolder/SaveFile paths)
+- **Tests Added**: 8 (catch blocks, null/empty filePath, no extension, null result, SelectFolder, SaveFile)
+- **Commit**: `b510da9ec3db36bb85bf5cb5e56a84920aef7dbf`
+- **Timestamp**: 2026-06-27 20:42 UTC
+
 ## Processed Tasks
 
 ### Task 1 — CorridorFactory.cs

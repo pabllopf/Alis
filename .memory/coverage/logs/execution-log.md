@@ -18,3 +18,6 @@
 | 20:35 | Tests written | 7 tests for FilePickerPathConverter edge cases |
 | 20:36 | Tests passed | 23/23 — 16 existing + 7 new |
 | 20:37 | Commit | `fedf2ac4` — test: coverage FilePickerPathConverter.cs |
+| 20:40 | Tests written | 8 tests for FilePickerValidator catch blocks, null paths, SelectFolder/SaveFile |
+| 20:41 | Tests passed | 29/29 — 21 existing + 8 new |
+| 20:42 | Commit | `b510da9e` — test: coverage FilePickerValidator.cs |
