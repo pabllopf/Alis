@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Threading;
 using Alis.Extension.Thread.Core;
 using Alis.Extension.Thread.Scheduling;
@@ -96,6 +97,115 @@ namespace Alis.Extension.Thread.Test
             {
                 Assert.Equal(i * 2, data[i]);
             }
+        }
+
+        /// <summary>
+        ///     Tests that constructor with null context throws argument null exception
+        /// </summary>
+        [Fact]
+        public void Constructor_WithNullContext_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => new ParallelExecutionScheduler(null));
+        }
+
+        /// <summary>
+        ///     Tests that execute range with null action throws argument null exception
+        /// </summary>
+        [Fact]
+        public void ExecuteRange_WithNullAction_ThrowsArgumentNullException()
+        {
+            ParallelExecutionContext context = new ParallelExecutionContext();
+            ParallelExecutionScheduler scheduler = new ParallelExecutionScheduler(context);
+
+            Assert.Throws<ArgumentNullException>(() => scheduler.ExecuteRange(0, 10, null));
+        }
+
+        /// <summary>
+        ///     Tests that execute range with zero count does nothing
+        /// </summary>
+        [Fact]
+        public void ExecuteRange_WithZeroCount_DoesNothing()
+        {
+            ParallelExecutionContext context = new ParallelExecutionContext();
+            ParallelExecutionScheduler scheduler = new ParallelExecutionScheduler(context);
+            bool actionCalled = false;
+
+            scheduler.ExecuteRange(0, 0, (start, length) => { actionCalled = true; });
+
+            Assert.False(actionCalled);
+        }
+
+        /// <summary>
+        ///     Tests that execute range with negative count does nothing
+        /// </summary>
+        [Fact]
+        public void ExecuteRange_WithNegativeCount_DoesNothing()
+        {
+            ParallelExecutionContext context = new ParallelExecutionContext();
+            ParallelExecutionScheduler scheduler = new ParallelExecutionScheduler(context);
+            bool actionCalled = false;
+
+            scheduler.ExecuteRange(0, -1, (start, length) => { actionCalled = true; });
+
+            Assert.False(actionCalled);
+        }
+
+        /// <summary>
+        ///     Tests that execute range with parallel context but single partition executes sequentially
+        /// </summary>
+        [Fact]
+        public void ExecuteRange_WithParallelButSinglePartition_ExecutesSequentially()
+        {
+            ParallelExecutionContext context = new ParallelExecutionContext
+            {
+                EnableParallelExecution = true,
+                MaxDegreeOfParallelism = 4,
+                MinBatchSizePerThread = 64
+            };
+            ParallelExecutionScheduler scheduler = new ParallelExecutionScheduler(context);
+
+            int callCount = 0;
+            int capturedStart = 0;
+            int capturedLength = 0;
+
+            scheduler.ExecuteRange(0, 100, (start, length) =>
+            {
+                Interlocked.Increment(ref callCount);
+                capturedStart = start;
+                capturedLength = length;
+            }, 10);
+
+            Assert.Equal(1, callCount);
+            Assert.Equal(0, capturedStart);
+            Assert.Equal(100, capturedLength);
+        }
+
+        /// <summary>
+        ///     Tests that execute range with non zero start index processes correct range
+        /// </summary>
+        [Fact]
+        public void ExecuteRange_WithOffsetStart_ProcessesCorrectRange()
+        {
+            ParallelExecutionContext context = new ParallelExecutionContext
+            {
+                EnableParallelExecution = true,
+                MaxDegreeOfParallelism = 4
+            };
+            ParallelExecutionScheduler scheduler = new ParallelExecutionScheduler(context);
+            int[] data = new int[500];
+
+            scheduler.ExecuteRange(50, 100, (start, length) =>
+            {
+                for (int i = start; i < start + length; i++)
+                {
+                    data[i] = i + 1;
+                }
+            }, 10);
+
+            Assert.Equal(0, data[49]);
+            Assert.Equal(51, data[50]);
+            Assert.Equal(150, data[149]);
+            Assert.Equal(0, data[150]);
         }
 
         /// <summary>
