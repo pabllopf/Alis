@@ -226,5 +226,86 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Single(result);
             Assert.Equal("/path/to/file.txt", result[0]);
         }
+
+        /// <summary>
+        ///     Tests that NormalizePath returns null for whitespace-only input.
+        /// </summary>
+        [Fact]
+        public void NormalizePath_WithOnlyWhitespace_ShouldReturnNull()
+        {
+            string result = FilePickerPathConverter.NormalizePath("   ");
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that SplitMultiplePaths handles multiple paths separated by newline.
+        /// </summary>
+        [Fact]
+        public void SplitMultiplePaths_WithMultiplePaths_ShouldReturnMultipleElements()
+        {
+            string paths = "/path/to/first.txt" + System.Environment.NewLine + "/path/to/second.txt";
+            string[] result = FilePickerPathConverter.SplitMultiplePaths(paths);
+
+            Assert.Equal(2, result.Length);
+            Assert.Equal("/path/to/first.txt", result[0]);
+            Assert.Equal("/path/to/second.txt", result[1]);
+        }
+
+        /// <summary>
+        ///     Tests that SplitMultiplePaths filters empty entries.
+        /// </summary>
+        [Fact]
+        public void SplitMultiplePaths_WithMixedContent_ShouldFilterEmpty()
+        {
+            string paths = "/path/to/first.txt" + System.Environment.NewLine + System.Environment.NewLine + "/path/to/second.txt";
+            string[] result = FilePickerPathConverter.SplitMultiplePaths(paths);
+
+            Assert.Equal(2, result.Length);
+        }
+
+        /// <summary>
+        ///     Tests that ConvertPathSeparators preserves whitespace-only input.
+        /// </summary>
+        [Fact]
+        public void ConvertPathSeparators_WithWhitespace_ShouldReturnOriginal()
+        {
+            string result = FilePickerPathConverter.ConvertPathSeparators("   ");
+
+            Assert.Equal("   ", result);
+        }
+
+        /// <summary>
+        ///     Tests that GetDirectoryName returns null for whitespace input.
+        /// </summary>
+        [Fact]
+        public void GetDirectoryName_WithWhitespace_ShouldReturnNull()
+        {
+            string result = FilePickerPathConverter.GetDirectoryName("   ");
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that GetFileName returns null for whitespace input.
+        /// </summary>
+        [Fact]
+        public void GetFileName_WithWhitespace_ShouldReturnNull()
+        {
+            string result = FilePickerPathConverter.GetFileName("   ");
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that IsValidPath returns false for whitespace input when not checking existence.
+        /// </summary>
+        [Fact]
+        public void IsValidPath_WithOnlyWhitespace_NotMustExist_ShouldReturnFalse()
+        {
+            bool result = FilePickerPathConverter.IsValidPath("   ", false);
+
+            Assert.False(result);
+        }
     }
 }
