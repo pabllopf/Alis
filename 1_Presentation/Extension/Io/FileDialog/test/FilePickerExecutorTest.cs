@@ -249,6 +249,32 @@ namespace Alis.Extension.Io.FileDialog.Test
 
         #endregion
 
+        #region ExecuteCommand - Exit Code Tests
+
+        /// <summary>
+        /// Tests that execute command with false command returns empty string
+        /// </summary>
+        [Fact]
+        public void ExecuteCommand_WithFalseCommand_ReturnsEmptyString()
+        {
+            string result = FilePickerExecutor.ExecuteCommand("false", string.Empty, 5000);
+            Assert.NotNull(result);
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        /// Tests that execute command with failing command returns empty string
+        /// </summary>
+        [OSXOnly]
+        public void ExecuteCommand_WithFailingCommand_ReturnsEmptyString()
+        {
+            string result = FilePickerExecutor.ExecuteCommand("ls", "/nonexistent_path_xyz_123", 5000);
+            Assert.NotNull(result);
+            Assert.Empty(result);
+        }
+
+        #endregion
+
         #region ExecuteCommand - Error Handling Tests
 
         /// <summary>
