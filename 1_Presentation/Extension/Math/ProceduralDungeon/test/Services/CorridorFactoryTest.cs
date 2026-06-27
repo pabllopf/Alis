@@ -161,5 +161,68 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             Assert.Equal(Direction.North, corridor.Direction);
             mockRng.Verify(m => m.Next(1, 5), Times.Exactly(2));
         }
+
+        /// <summary>
+        ///     Tests that create first corridor with south direction calculates correct position.
+        /// </summary>
+        [Fact]
+        public void CreateFirstCorridor_WithSouthDirection_ShouldCreateCorridorCorrectly()
+        {
+            Mocks.MockRandomNumberGenerator mockRng = new Mocks.MockRandomNumberGenerator((int)Direction.South);
+            CorridorFactory factory = new CorridorFactory(mockRng);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
+            int width = 2;
+            int height = 5;
+
+            CorridorData corridor = factory.CreateFirstCorridor(width, height, room);
+
+            Assert.Equal(13, corridor.XPos);
+            Assert.Equal(5, corridor.YPos);
+            Assert.Equal(width, corridor.Width);
+            Assert.Equal(height, corridor.Height);
+            Assert.Equal(Direction.South, corridor.Direction);
+        }
+
+        /// <summary>
+        ///     Tests that create first corridor with east direction calculates correct position and swaps width/height.
+        /// </summary>
+        [Fact]
+        public void CreateFirstCorridor_WithEastDirection_ShouldCreateCorridorCorrectly()
+        {
+            Mocks.MockRandomNumberGenerator mockRng = new Mocks.MockRandomNumberGenerator((int)Direction.East);
+            CorridorFactory factory = new CorridorFactory(mockRng);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
+            int width = 2;
+            int height = 5;
+
+            CorridorData corridor = factory.CreateFirstCorridor(width, height, room);
+
+            Assert.Equal(5, corridor.XPos);
+            Assert.Equal(12, corridor.YPos);
+            Assert.Equal(height, corridor.Width);
+            Assert.Equal(width, corridor.Height);
+            Assert.Equal(Direction.East, corridor.Direction);
+        }
+
+        /// <summary>
+        ///     Tests that create first corridor with west direction calculates correct position and swaps width/height.
+        /// </summary>
+        [Fact]
+        public void CreateFirstCorridor_WithWestDirection_ShouldCreateCorridorCorrectly()
+        {
+            Mocks.MockRandomNumberGenerator mockRng = new Mocks.MockRandomNumberGenerator((int)Direction.West);
+            CorridorFactory factory = new CorridorFactory(mockRng);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
+            int width = 2;
+            int height = 5;
+
+            CorridorData corridor = factory.CreateFirstCorridor(width, height, room);
+
+            Assert.Equal(18, corridor.XPos);
+            Assert.Equal(12, corridor.YPos);
+            Assert.Equal(height, corridor.Width);
+            Assert.Equal(width, corridor.Height);
+            Assert.Equal(Direction.West, corridor.Direction);
+        }
     }
 }

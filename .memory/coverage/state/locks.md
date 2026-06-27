@@ -1,8 +1,9 @@
-# Coverage Remediation Locks
+# Distributed Locks
 
-| Target | Worker | Acquired | Expires |
-|--------|--------|----------|---------|
+## Active Locks
+| Target | Worker | Timestamp | Status |
+|--------|--------|-----------|--------|
+| CorridorFactory.cs | engine-1 | 2026-06-27 20:20 UTC | acquired |
 
-## Rules
-- Locks older than 60 minutes may be reclaimed
-- Format: ISO 8601 timestamps
+## Reclaimed Locks
+<!-- Locks older than 60 minutes moved here -->
