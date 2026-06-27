@@ -302,5 +302,134 @@ namespace Alis.Extension.Io.FileDialog.Test
 
             Assert.False(isValid);
         }
+
+        /// <summary>
+        ///     Tests that IsValidFilePath catches exceptions and returns false.
+        /// </summary>
+        [Fact]
+        public void IsValidFilePath_WithNullCharInPath_ShouldReturnFalse()
+        {
+            bool result = FilePickerValidator.IsValidFilePath("test\0file.txt");
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that IsValidDirectoryPath catches exceptions and returns false.
+        /// </summary>
+        [Fact]
+        public void IsValidDirectoryPath_WithNullCharInPath_ShouldReturnFalse()
+        {
+            bool result = FilePickerValidator.IsValidDirectoryPath("test\0dir");
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that IsFileExtensionAllowed returns false for null path.
+        /// </summary>
+        [Fact]
+        public void IsFileExtensionAllowed_WithNullPath_ShouldReturnFalse()
+        {
+            FilePickerOptions options = new FilePickerOptions("Test");
+            options.WithFilter(new FilePickerFilter("Text Files", "txt"));
+
+            bool result = FilePickerValidator.IsFileExtensionAllowed(null, options);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that IsFileExtensionAllowed returns false when path has no extension.
+        /// </summary>
+        [Fact]
+        public void IsFileExtensionAllowed_WithNoExtension_ShouldReturnFalse()
+        {
+            FilePickerOptions options = new FilePickerOptions("Test");
+            options.WithFilter(new FilePickerFilter("Text Files", "txt"));
+
+            bool result = FilePickerValidator.IsFileExtensionAllowed("/path/README", options);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that IsResultValid returns false for null result.
+        /// </summary>
+        [Fact]
+        public void IsResultValid_WithNullResult_ShouldReturnFalse()
+        {
+            FilePickerOptions options = new FilePickerOptions("Test");
+
+            bool isValid = FilePickerValidator.IsResultValid(null, options);
+
+            Assert.False(isValid);
+        }
+
+        /// <summary>
+        ///     Tests that IsResultValid works for SelectFolder dialog type.
+        /// </summary>
+        [Fact]
+        public void IsResultValid_WithSelectFolderAndValidPath_ShouldReturnTrue()
+        {
+            FilePickerOptions options = new FilePickerOptions("Select", FileDialogType.SelectFolder);
+            string tempPath = Path.GetTempPath();
+            FilePickerResult result = new FilePickerResult(tempPath);
+
+            bool isValid = FilePickerValidator.IsResultValid(result, options);
+
+            Assert.True(isValid);
+        }
+
+        /// <summary>
+        ///     Tests that IsResultValid works for SaveFile dialog type.
+        /// </summary>
+        [Fact]
+        public void IsResultValid_WithSaveFileAndValidPath_ShouldReturnTrue()
+        {
+            FilePickerOptions options = new FilePickerOptions("Save", FileDialogType.SaveFile);
+            string tempFile = Path.GetTempFileName();
+
+            try
+            {
+                FilePickerResult result = new FilePickerResult(tempFile);
+
+                bool isValid = FilePickerValidator.IsResultValid(result, options);
+
+                Assert.True(isValid);
+            }
+            finally
+            {
+                File.Delete(tempFile);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that IsFileExtensionAllowed returns false for empty path.
+        /// </summary>
+        [Fact]
+        public void IsFileExtensionAllowed_WithEmptyPath_ShouldReturnFalse()
+        {
+            FilePickerOptions options = new FilePickerOptions("Test");
+            options.WithFilter(new FilePickerFilter("Text Files", "txt"));
+
+            bool result = FilePickerValidator.IsFileExtensionAllowed("", options);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that IsFileExtensionAllowed covers no-extension branch.
+        /// </summary>
+        [Fact]
+        public void IsFileExtensionAllowed_WithDotOnlyPath_ShouldReturnFalse()
+        {
+            FilePickerOptions options = new FilePickerOptions("Test");
+            options.WithFilter(new FilePickerFilter("Text Files", "txt"));
+
+            bool result = FilePickerValidator.IsFileExtensionAllowed("/path/file.", options);
+
+            Assert.False(result);
+        }
     }
 }

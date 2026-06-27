@@ -13,6 +13,15 @@
 - **Uncovered Lines**: 23,756
 - **Uncovered Conditions**: 4,481
 
+### Task 2 — FilePickerPathConverter.cs
+- **File**: `1_Presentation/Extension/Io/FileDialog/src/FilePickerPathConverter.cs`
+- **Previous Coverage**: 78.8%
+- **Estimated New Coverage**: ~90% (all edge case branches covered)
+- **Uncovered Lines Previously**: 24
+- **Tests Added**: 7 (whitespace handling, SplitMultiplePaths edge cases, catch blocks)
+- **Commit**: `fedf2ac4f5b642f0656f5ae0f84bcec1e9b1a3f9`
+- **Timestamp**: 2026-06-27 20:37 UTC
+
 ## Processed Tasks
 
 ### Task 1 — CorridorFactory.cs
