@@ -179,6 +179,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             else
             {
                 bool result = FilePickerPathConverter.IsValidPath("/path/with\0null/char", false);
+                Assert.False(result);
             }
         }
 
@@ -306,6 +307,45 @@ namespace Alis.Extension.Io.FileDialog.Test
             bool result = FilePickerPathConverter.IsValidPath("   ", false);
 
             Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that IsValidPath returns true for an existing file when mustExist is true.
+        /// </summary>
+        [Fact]
+        public void IsValidPath_WithExistingFile_MustExist_ShouldReturnTrue()
+        {
+            string tempFile = Path.GetTempFileName();
+            try
+            {
+                bool result = FilePickerPathConverter.IsValidPath(tempFile);
+
+                Assert.True(result);
+            }
+            finally
+            {
+                File.Delete(tempFile);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that IsValidPath returns true for an existing directory when mustExist is true.
+        /// </summary>
+        [Fact]
+        public void IsValidPath_WithExistingDirectory_MustExist_ShouldReturnTrue()
+        {
+            string tempDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+            Directory.CreateDirectory(tempDir);
+            try
+            {
+                bool result = FilePickerPathConverter.IsValidPath(tempDir);
+
+                Assert.True(result);
+            }
+            finally
+            {
+                Directory.Delete(tempDir);
+            }
         }
     }
 }
