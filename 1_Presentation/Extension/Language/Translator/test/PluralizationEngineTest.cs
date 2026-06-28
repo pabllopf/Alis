@@ -178,5 +178,65 @@ namespace Alis.Extension.Language.Translator.Test
 
             Assert.Throws<ArgumentException>(() => engine.GetPluralForm(null, 1));
         }
+        /// <summary>
+        ///     Tests that GetPluralForm uses fallback for unknown languages with quantity 1
+        /// </summary>
+        [Fact]
+        public void GetPluralForm_WithUnknownLanguage_ShouldUseFallbackSingular()
+        {
+            PluralizationEngine engine = new PluralizationEngine();
+
+            int form = engine.GetPluralForm("xx", 1);
+
+            Assert.Equal(0, form);
+        }
+
+        /// <summary>
+        ///     Tests that GetPluralForm uses fallback for unknown languages with other quantities
+        /// </summary>
+        [Fact]
+        public void GetPluralForm_WithUnknownLanguage_ShouldUseFallbackPlural()
+        {
+            PluralizationEngine engine = new PluralizationEngine();
+
+            int form = engine.GetPluralForm("xx", 5);
+
+            Assert.Equal(1, form);
+        }
+
+        /// <summary>
+        ///     Tests that RegisterPluralizationRule throws for null language code
+        /// </summary>
+        [Fact]
+        public void RegisterPluralizationRule_WithNullLanguageCode_ShouldThrowException()
+        {
+            PluralizationEngine engine = new PluralizationEngine();
+
+            Assert.Throws<ArgumentException>(() => engine.RegisterPluralizationRule(null, q => 0));
+        }
+
+        /// <summary>
+        ///     Tests that GetPluralFormCount throws for null language code
+        /// </summary>
+        [Fact]
+        public void GetPluralFormCount_WithNullLanguageCode_ShouldThrowException()
+        {
+            PluralizationEngine engine = new PluralizationEngine();
+
+            Assert.Throws<ArgumentException>(() => engine.GetPluralFormCount(null));
+        }
+
+        /// <summary>
+        ///     Tests that GetPluralFormCount returns default (2) for unknown language
+        /// </summary>
+        [Fact]
+        public void GetPluralFormCount_WithUnknownLanguage_ShouldReturnDefault()
+        {
+            PluralizationEngine engine = new PluralizationEngine();
+
+            int count = engine.GetPluralFormCount("xx");
+
+            Assert.Equal(2, count);
+        }
     }
 }
