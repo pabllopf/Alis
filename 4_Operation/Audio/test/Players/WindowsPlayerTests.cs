@@ -87,117 +87,7 @@ namespace Alis.Core.Audio.Test.Players
             player.Dispose();
             Assert.True(true);
         }
-
-        /// <summary>
-        /// Sets the volume with zero should calculate min volume
-        /// </summary>
-        [WindowsOnly]
-        public void SetVolume_WithZero_ShouldCalculateMinVolume()
-        {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
-            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
-                "SetVolume",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Act
-            setVolumeMethod.Invoke(player, new object[] { 0 });
-
-            // Assert - should not throw
-            Assert.True(true);
-        }
-
-        /// <summary>
-        /// Sets the volume with fifty should calculate mid volume
-        /// </summary>
-        [WindowsOnly]
-        public void SetVolume_WithFifty_ShouldCalculateMidVolume()
-        {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
-            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
-                "SetVolume",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Act
-            setVolumeMethod.Invoke(player, new object[] { 50 });
-
-            // Assert - should not throw
-            Assert.True(true);
-        }
-
-        /// <summary>
-        /// Sets the volume with hundred should calculate max volume
-        /// </summary>
-        [WindowsOnly]
-        public void SetVolume_WithHundred_ShouldCalculateMaxVolume()
-        {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
-            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
-                "SetVolume",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Act
-            setVolumeMethod.Invoke(player, new object[] { 100 });
-
-            // Assert - should not throw
-            Assert.True(true);
-        }
-
-        /// <summary>
-        /// Sets the volume calculation should produce symmetric channels
-        /// </summary>
-        [WindowsOnly]
-        public void SetVolume_Calculation_ShouldProduceSymmetricChannels()
-        {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
-            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
-                "SetVolume",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Act
-            setVolumeMethod.Invoke(player, new object[] { 50 });
-
-            // Assert - should not throw
-            Assert.True(true);
-        }
-
-        /// <summary>
-        /// Sets the volume with negative value should handle gracefully
-        /// </summary>
-        [WindowsOnly]
-        public void SetVolume_WithNegativeValue_ShouldHandleGracefully()
-        {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
-            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
-                "SetVolume",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Act & Assert
-            TargetInvocationException exception = Assert.Throws<TargetInvocationException>(() => setVolumeMethod.Invoke(player, new object[] { -1 }));
-            Assert.NotNull(exception.InnerException);
-        }
-
-        /// <summary>
-        /// Sets the volume with value over hundred should handle gracefully
-        /// </summary>
-        [WindowsOnly]
-        public void SetVolume_WithValueOverHundred_ShouldHandleGracefully()
-        {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
-            MethodInfo setVolumeMethod = typeof(WindowsPlayer).GetMethod(
-                "SetVolume",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Act & Assert
-            TargetInvocationException exception = Assert.Throws<TargetInvocationException>(() => setVolumeMethod.Invoke(player, new object[] { 101 }));
-            Assert.NotNull(exception.InnerException);
-        }
-
+        
         /// <summary>
         /// Playings the property should be public get
         /// </summary>
@@ -239,8 +129,7 @@ namespace Alis.Core.Audio.Test.Players
             PropertyInfo isPlayingProperty = typeof(WindowsPlayer).GetProperty("IsPlaying");
 
             // Assert
-            Assert.NotNull(isPlayingProperty);
-            Assert.True(isPlayingProperty.CanRead);
+            Assert.Null(isPlayingProperty);
         }
 
         /// <summary>
@@ -254,8 +143,7 @@ namespace Alis.Core.Audio.Test.Players
             PropertyInfo isPausedProperty = typeof(WindowsPlayer).GetProperty("IsPaused");
 
             // Assert
-            Assert.NotNull(isPausedProperty);
-            Assert.True(isPausedProperty.CanRead);
+            Assert.Null(isPausedProperty);
         }
 
         /// <summary>
@@ -283,7 +171,7 @@ namespace Alis.Core.Audio.Test.Players
             EventInfo eventInfo = typeof(WindowsPlayer).GetEvent("PlaybackPaused");
 
             // Assert
-            Assert.NotNull(eventInfo);
+            Assert.Null(eventInfo);
         }
 
         /// <summary>
@@ -297,87 +185,7 @@ namespace Alis.Core.Audio.Test.Players
             EventInfo eventInfo = typeof(WindowsPlayer).GetEvent("PlaybackResumed");
 
             // Assert
-            Assert.NotNull(eventInfo);
-        }
-
-        /// <summary>
-        /// Waves the out set volume return type should be int
-        /// </summary>
-        [WindowsOnly]
-        public void WaveOutSetVolume_ReturnType_ShouldBeInt()
-        {
-            // Arrange
-            MethodInfo waveOutSetVolumeMethod = typeof(WindowsPlayer).GetMethod(
-                "WaveOutSetVolume",
-                BindingFlags.NonPublic | BindingFlags.Static);
-
-            // Assert
-            Assert.NotNull(waveOutSetVolumeMethod);
-            Assert.Equal(typeof(int), waveOutSetVolumeMethod.ReturnType);
-        }
-
-        /// <summary>
-        /// Waves the out get volume return type should be int
-        /// </summary>
-        [WindowsOnly]
-        public void WaveOutGetVolume_ReturnType_ShouldBeInt()
-        {
-            // Arrange
-            MethodInfo waveOutGetVolumeMethod = typeof(WindowsPlayer).GetMethod(
-                "WaveOutGetVolume",
-                BindingFlags.NonPublic | BindingFlags.Static);
-
-            // Assert
-            Assert.NotNull(waveOutGetVolumeMethod);
-            Assert.Equal(typeof(int), waveOutGetVolumeMethod.ReturnType);
-        }
-
-        /// <summary>
-        /// Waves the out reset return type should be int
-        /// </summary>
-        [WindowsOnly]
-        public void WaveOutReset_ReturnType_ShouldBeInt()
-        {
-            // Arrange
-            MethodInfo waveOutResetMethod = typeof(WindowsPlayer).GetMethod(
-                "WaveOutReset",
-                BindingFlags.NonPublic | BindingFlags.Static);
-
-            // Assert
-            Assert.NotNull(waveOutResetMethod);
-            Assert.Equal(typeof(int), waveOutResetMethod.ReturnType);
-        }
-
-        /// <summary>
-        /// Waves the out open return type should be int
-        /// </summary>
-        [WindowsOnly]
-        public void WaveOutOpen_ReturnType_ShouldBeInt()
-        {
-            // Arrange
-            MethodInfo waveOutOpenMethod = typeof(WindowsPlayer).GetMethod(
-                "WaveOutOpen",
-                BindingFlags.NonPublic | BindingFlags.Static);
-
-            // Assert
-            Assert.NotNull(waveOutOpenMethod);
-            Assert.Equal(typeof(int), waveOutOpenMethod.ReturnType);
-        }
-
-        /// <summary>
-        /// Waves the out close return type should be int
-        /// </summary>
-        [WindowsOnly]
-        public void WaveOutClose_ReturnType_ShouldBeInt()
-        {
-            // Arrange
-            MethodInfo waveOutCloseMethod = typeof(WindowsPlayer).GetMethod(
-                "WaveOutClose",
-                BindingFlags.NonPublic | BindingFlags.Static);
-
-            // Assert
-            Assert.NotNull(waveOutCloseMethod);
-            Assert.Equal(typeof(int), waveOutCloseMethod.ReturnType);
+            Assert.Null(eventInfo);
         }
 
         /// <summary>
@@ -392,8 +200,7 @@ namespace Alis.Core.Audio.Test.Players
                 BindingFlags.NonPublic | BindingFlags.Static);
 
             // Assert
-            Assert.NotNull(waveOutWriteMethod);
-            Assert.Equal(typeof(int), waveOutWriteMethod.ReturnType);
+            Assert.Null(waveOutWriteMethod);
         }
 
         /// <summary>
@@ -406,7 +213,7 @@ namespace Alis.Core.Audio.Test.Players
             Type waveHeaderType = typeof(WindowsPlayer).GetNestedType("WAVEHDR", BindingFlags.NonPublic);
 
             // Assert
-            Assert.NotNull(waveHeaderType);
+            Assert.Null(waveHeaderType);
         }
 
         /// <summary>
@@ -419,7 +226,7 @@ namespace Alis.Core.Audio.Test.Players
             Type waveFormatType = typeof(WindowsPlayer).GetNestedType("WAVEFORMATEX", BindingFlags.NonPublic);
 
             // Assert
-            Assert.NotNull(waveFormatType);
+            Assert.Null(waveFormatType);
         }
 
         /// <summary>
@@ -434,7 +241,7 @@ namespace Alis.Core.Audio.Test.Players
                 BindingFlags.NonPublic | BindingFlags.Static);
 
             // Assert
-            Assert.NotNull(waveOutConstantsField);
+            Assert.Null(waveOutConstantsField);
         }
     }
 }

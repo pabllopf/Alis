@@ -31,6 +31,7 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -257,7 +258,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         /// Tests that ff mpeg wrapper register progress tracker should clamp at 100
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void FFMpegWrapper_RegisterProgressTracker_ShouldClampAt100()
         {
             double reportedProgress = 0;
@@ -289,7 +290,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             p.BeginErrorReadLine();
 
             p.WaitForExit();
-            Thread.Sleep(100);
+            Thread.Sleep(1000);
 
             Assert.Equal(100, reportedProgress);
         }

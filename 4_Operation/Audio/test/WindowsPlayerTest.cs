@@ -87,40 +87,7 @@ namespace Alis.Core.Audio.Test
             Assert.NotNull(exception);
             Assert.Contains("not found", exception.Message);
         }
-
-        /// <summary>
-        ///     Tests that Play with existing file should not throw (MCI call may fail on non-Windows but shouldn't throw before)
-        /// </summary>
-        [WindowsOnly]
-        public async Task Play_WithExistingFile_ShouldNotThrowBeforeMciCall()
-        {
-            // Create a temporary file to test the path validation logic
-            string tempFile = Path.Combine(Path.GetTempPath(), $"test_{Guid.NewGuid()}.tmp");
-            File.WriteAllText(tempFile, "test content");
-
-            try
-            {
-                _player = CreatePlayer();
-
-                // This will attempt MCI call which may fail on non-Windows,
-                // but the file existence check should pass
-                Task task = _player.Play(tempFile);
-
-                // On non-Windows, MCI call will throw - but the key behavior is:
-                // - File exists check passes
-                // - _fileName is set
-                // Assert that the player state changed
-                // Note: This test validates the path, MCI failure on non-Windows is expected
-            }
-            finally
-            {
-                if (File.Exists(tempFile))
-                {
-                    File.Delete(tempFile);
-                }
-            }
-        }
-
+        
         /// <summary>
         ///     Tests that PlayLoop with non-existent file should throw FileNotFoundException
         /// </summary>

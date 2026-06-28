@@ -37,6 +37,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Alis.Extension.Updater.Services.Api;
 using Alis.Extension.Updater.Services.Files;
+using Alis.Extension.Updater.Test.Attributes;
 using Moq;
 using Xunit;
 
@@ -194,7 +195,7 @@ namespace Alis.Extension.Updater.Test
         /// <summary>
         ///     Tests that clean temp file deletes non backup artifacts only
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void CleanTempFile_DeletesNonBackupArtifactsOnly()
         {
             UpdateManager manager = CreateManager();

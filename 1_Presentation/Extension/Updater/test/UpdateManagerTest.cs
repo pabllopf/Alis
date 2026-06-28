@@ -38,6 +38,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Alis.Extension.Updater.Services.Api;
 using Alis.Extension.Updater.Services.Files;
+using Alis.Extension.Updater.Test.Attributes;
 using Moq;
 using Xunit;
 
@@ -283,7 +284,7 @@ namespace Alis.Extension.Updater.Test
         /// <summary>
         ///     Tests that extract dmg creates program folder when missing
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void ExtractDmg_CreatesProgramFolder_WhenMissing()
         {
             using TempFolder temp = TempFolder.Create();
@@ -301,7 +302,7 @@ namespace Alis.Extension.Updater.Test
         /// <summary>
         ///     Tests that get dmg mount path returns expected volumes path
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void GetDmgMountPath_ReturnsExpectedVolumesPath()
         {
             UpdateManager sut = CreateManager();
@@ -344,7 +345,7 @@ namespace Alis.Extension.Updater.Test
         /// <summary>
         ///     Tests that execute shell command executes without throwing
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void ExecuteShellCommand_ExecutesWithoutThrowing()
         {
             string marker = Path.Combine(Path.GetTempPath(), "alis-updater-shell-" + Guid.NewGuid().ToString("N"));

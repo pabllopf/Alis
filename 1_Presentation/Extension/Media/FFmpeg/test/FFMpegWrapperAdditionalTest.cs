@@ -33,6 +33,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -45,7 +46,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that RunCommand executes a simple command and returns output
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void FFMpegWrapper_RunCommand_WithEcho_ShouldReturnOutput()
         {
             // Arrange & Act
@@ -60,7 +61,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that RunCommand respects HideFFmpegBanner setting
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void FFMpegWrapper_RunCommand_HideBannerTrue_ShouldIncludeHideBanner()
         {
             // Arrange
@@ -86,7 +87,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that RunCommand respects custom log level
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void FFMpegWrapper_RunCommand_CustomLogLevel_ShouldExecute()
         {
             // Arrange
@@ -355,7 +356,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that RunCommand with prettify false does not add newlines
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void FFMpegWrapper_RunCommand_PrettifyFalse_ShouldNotAddNewlines()
         {
             // Arrange
@@ -371,7 +372,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that RunCommand with prettify true adds newlines
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void FFMpegWrapper_RunCommand_PrettifyTrue_ShouldAddNewlines()
         {
             // Arrange

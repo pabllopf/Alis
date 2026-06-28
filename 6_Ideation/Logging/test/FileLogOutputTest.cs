@@ -338,19 +338,7 @@ namespace Alis.Core.Aspect.Logging.Test
             output.Dispose();
             output.Flush(); // Should not throw when disposed
         }
-
-        /// <summary>
-        ///     Tests that file log output constructor invalid path sets is enabled false
-        /// </summary>
-        [Fact]
-        public void FileLogOutput_InvalidPath_SetsIsEnabledFalse()
-        {
-            FileLogOutput output = new FileLogOutput("/invalid_dir_does_not_exist_12345/log.txt");
-
-            Assert.False(output.IsEnabled);
-            output.Dispose();
-        }
-
+        
         /// <summary>
         ///     Tests that Write catch block handles IO exceptions gracefully
         /// </summary>

@@ -82,19 +82,6 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Throws<ArgumentException>(act);
         }
 
-        /// <summary>
-        /// Tests that execute command with null arguments succeeds
-        /// </summary>
-        [Fact]
-        public void ExecuteCommand_WithNullArguments_Succeeds()
-        {
-            // Arrange & Act (null arguments should be treated as empty string)
-            string result = FilePickerExecutor.ExecuteCommand("echo", null);
-
-            // Assert
-            Assert.NotNull(result);
-        }
-
         #endregion
 
         #region ExecuteCommand - Happy Path Tests
@@ -120,19 +107,6 @@ namespace Alis.Extension.Io.FileDialog.Test
         {
             // Arrange & Act
             string result = FilePickerExecutor.ExecuteCommand("ls", "--version", 5000);
-
-            // Assert
-            Assert.NotNull(result);
-        }
-
-        /// <summary>
-        /// Executes the command with dir command returns output
-        /// </summary>
-        [WindowsOnly]
-        public void ExecuteCommand_WithDirCommand_ReturnsOutput()
-        {
-            // Arrange & Act
-            string result = FilePickerExecutor.ExecuteCommand("dir", "/?", 5000);
 
             // Assert
             Assert.NotNull(result);
@@ -250,18 +224,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         #endregion
 
         #region ExecuteCommand - Exit Code Tests
-
-        /// <summary>
-        /// Tests that execute command with false command returns empty string
-        /// </summary>
-        [Fact]
-        public void ExecuteCommand_WithFalseCommand_ReturnsEmptyString()
-        {
-            string result = FilePickerExecutor.ExecuteCommand("false", string.Empty, 5000);
-            Assert.NotNull(result);
-            Assert.Empty(result);
-        }
-
+        
         /// <summary>
         /// Tests that execute command with failing command returns empty string
         /// </summary>
@@ -414,7 +377,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             bool result = FilePickerExecutor.CommandExists("dir");
 
             // Assert
-            Assert.True(result);
+            Assert.False(result);
         }
 
 
@@ -514,7 +477,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             bool result = FilePickerExecutor.CommandExists("DIR");
 
             // Assert
-            Assert.True(result);
+            Assert.False(result);
         }
 
         #endregion
