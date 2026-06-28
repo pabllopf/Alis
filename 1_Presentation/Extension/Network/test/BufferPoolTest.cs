@@ -393,6 +393,34 @@ namespace Alis.Extension.Network.Test
 
         #endregion
 
+        /// <summary>
+        ///     Arrange: Get a buffer, return it to pool, then get another buffer
+        ///     Act: Verify the same underlying byte array is reused
+        ///     Assert: The array reference is the same (pool reuse path)
+        /// </summary>
+        [Fact]
+        public void BufferPool_ReusesReturnedBuffer()
+        {
+            // Arrange: Create a dedicated pool
+            BufferPool pool = new BufferPool(1024);
+
+            // Act: Get first buffer and capture its internal array
+            MemoryStream first = pool.GetBuffer();
+            byte[] firstArray = first.GetBuffer();
+            first.Dispose(); // Returns buffer to pool
+
+            // Get another buffer — should reuse the same array
+            using (MemoryStream second = pool.GetBuffer())
+            {
+                byte[] secondArray = second.GetBuffer();
+
+                // Assert: Same array reused (pool reused the returned buffer)
+                Assert.Same(firstArray, secondArray);
+            }
+
+            pool.Dispose();
+        }
+
         #region Edge Cases and Error Handling
 
 
