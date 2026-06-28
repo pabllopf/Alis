@@ -8,3 +8,4 @@
 | 2026-06-28 | 1_Presentation/Extension/Language/Translator/src/Pluralization/PluralizationEngine.cs | 90.4% | 6 lines, 6 conditions | 6 (PluralizationEngineTest.cs) | Committed |
 | 2026-06-28 | 1_Presentation/Extension/Language/Translator/src/Providers/MemoryTranslationProvider.cs | 70.4% | 21 lines, 13 conditions | 14 (MemoryTranslationProviderTest.cs) | Committed |
 | 2026-06-28 | 1_Presentation/Extension/Language/Translator/src/TranslationManager.cs | 73.6% | 58 lines, 32 conditions | 34 (TranslationManagerTest.cs) | Committed |
+| 2026-06-28 | 4_Operation/Ecs/src/Kernel/Events/ComponentEvent.cs | 71.4% | 0 lines, 2 conditions | 3 (ComponentEventExtendedTest.cs) | Committed |
