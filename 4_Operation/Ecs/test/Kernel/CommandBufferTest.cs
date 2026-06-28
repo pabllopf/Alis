@@ -404,5 +404,79 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.Throws<InvalidOperationException>(() => buffer.With(new TestComponent()));
         }
+
+        /// <summary>
+        ///     Tests that entity with end should add to buffer
+        /// </summary>
+        [Fact]
+        public void Entity_With_End_ShouldAddToBuffer()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+
+            buffer.Entity().With(new TestComponent { Value = 1 }).With(new AnotherComponent { Name = "Test" }).End();
+
+            Assert.True(buffer.HasBufferItems);
+        }
+
+        /// <summary>
+        ///     Tests that entity with end creates entity on playback
+        /// </summary>
+        [Fact]
+        public void Entity_With_End_CreatesEntityOnPlayback()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+            int initialCount = scene.EntityCount;
+
+            buffer.Entity().With(new TestComponent { Value = 42 }).End();
+            buffer.Playback();
+
+            Assert.Equal(initialCount + 1, scene.EntityCount);
+        }
+
+        /// <summary>
+        ///     Tests that entity called twice throws invalid operation exception
+        /// </summary>
+        [Fact]
+        public void Entity_CalledTwice_ThrowsInvalidOperationException()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+
+            buffer.Entity();
+
+            Assert.Throws<InvalidOperationException>(() => buffer.Entity());
+        }
+
+        /// <summary>
+        ///     Tests that add component with component id adds to buffer
+        /// </summary>
+        [Fact]
+        public void AddComponent_WithComponentId_AddsToBuffer()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+
+            buffer.AddComponent(entity, Component<AnotherComponent>.Id, new AnotherComponent { Name = "Test" });
+
+            Assert.True(buffer.HasBufferItems);
+        }
+
+        /// <summary>
+        ///     Tests that remove component with type adds to buffer
+        /// </summary>
+        [Fact]
+        public void RemoveComponent_WithType_AddsToBuffer()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+
+            buffer.RemoveComponent(entity, typeof(TestComponent));
+
+            Assert.True(buffer.HasBufferItems);
+        }
     }
 }
