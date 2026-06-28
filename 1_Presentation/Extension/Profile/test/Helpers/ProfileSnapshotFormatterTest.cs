@@ -160,5 +160,61 @@ namespace Alis.Extension.Profile.Test.Helpers
             Assert.Contains("Mem", result); // Memory delta
             Assert.Contains("GC", result); // GC count
         }
+
+        /// <summary>
+        ///     Tests that FormatBytes with kilobyte value returns KB suffix
+        /// </summary>
+        [Fact]
+        public void FormatBytes_WithKilobytes_ReturnsKbSuffix()
+        {
+            string result = ProfileSnapshotFormatter.FormatBytes(1536);
+
+            Assert.Contains("KB", result);
+        }
+
+        /// <summary>
+        ///     Tests that FormatBytes with megabyte value returns MB suffix
+        /// </summary>
+        [Fact]
+        public void FormatBytes_WithMegabytes_ReturnsMbSuffix()
+        {
+            string result = ProfileSnapshotFormatter.FormatBytes(1572864);
+
+            Assert.Contains("MB", result);
+        }
+
+        /// <summary>
+        ///     Tests that FormatBytes with gigabyte value returns GB suffix
+        /// </summary>
+        [Fact]
+        public void FormatBytes_WithGigabytes_ReturnsGbSuffix()
+        {
+            string result = ProfileSnapshotFormatter.FormatBytes(1610612736);
+
+            Assert.Contains("GB", result);
+        }
+
+        /// <summary>
+        ///     Tests that FormatBytes with terabyte value returns TB suffix
+        /// </summary>
+        [Fact]
+        public void FormatBytes_WithTerabytes_ReturnsTbSuffix()
+        {
+            string result = ProfileSnapshotFormatter.FormatBytes(1649267441664);
+
+            Assert.Contains("TB", result);
+        }
+
+        /// <summary>
+        ///     Tests that FormatBytes with negative value includes negative sign
+        /// </summary>
+        [Fact]
+        public void FormatBytes_WithNegativeValue_IncludesNegativeSign()
+        {
+            string result = ProfileSnapshotFormatter.FormatBytes(-2048);
+
+            Assert.Contains("-", result);
+            Assert.Contains("KB", result);
+        }
     }
 }
