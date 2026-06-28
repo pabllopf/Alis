@@ -179,5 +179,168 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.Equal("Hola", esValue);
             Assert.Equal("Bonjour", frValue);
         }
+        /// <summary>
+        ///     Tests that GetTranslationAsync returns null for null language code
+        /// </summary>
+        [Fact]
+        public async Task GetTranslationAsync_WithNullLanguageCode_ShouldReturnNull()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+            await provider.SetTranslationAsync("en", "greeting", "Hello");
+
+            string result = await provider.GetTranslationAsync(null, "greeting");
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that GetTranslationAsync returns null for null key
+        /// </summary>
+        [Fact]
+        public async Task GetTranslationAsync_WithNullKey_ShouldReturnNull()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+            await provider.SetTranslationAsync("en", "greeting", "Hello");
+
+            string result = await provider.GetTranslationAsync("en", null);
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that GetTranslationAsync returns null when language exists but key does not
+        /// </summary>
+        [Fact]
+        public async Task GetTranslationAsync_WithLanguageExistsButKeyNotFound_ShouldReturnNull()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+            await provider.SetTranslationAsync("en", "greeting", "Hello");
+
+            string result = await provider.GetTranslationAsync("en", "farewell");
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that SetTranslationAsync throws for null language code
+        /// </summary>
+        [Fact]
+        public async Task SetTranslationAsync_WithNullLanguageCode_ShouldThrowException()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+
+            await Assert.ThrowsAsync<ArgumentException>(async () =>
+                await provider.SetTranslationAsync(null, "key", "value"));
+        }
+
+        /// <summary>
+        ///     Tests that SetTranslationAsync throws for null key
+        /// </summary>
+        [Fact]
+        public async Task SetTranslationAsync_WithNullKey_ShouldThrowException()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+
+            await Assert.ThrowsAsync<ArgumentException>(async () =>
+                await provider.SetTranslationAsync("en", null, "value"));
+        }
+
+        /// <summary>
+        ///     Tests that SetTranslationAsync stores empty string for null value
+        /// </summary>
+        [Fact]
+        public async Task SetTranslationAsync_WithNullValue_ShouldStoreEmptyString()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+
+            await provider.SetTranslationAsync("en", "greeting", null);
+            string result = await provider.GetTranslationAsync("en", "greeting");
+
+            Assert.Equal(string.Empty, result);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveTranslationAsync does nothing for null language code
+        /// </summary>
+        [Fact]
+        public async Task RemoveTranslationAsync_WithNullLanguageCode_ShouldNotThrow()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+            await provider.SetTranslationAsync("en", "greeting", "Hello");
+
+            await provider.RemoveTranslationAsync(null, "greeting");
+            string result = await provider.GetTranslationAsync("en", "greeting");
+
+            Assert.Equal("Hello", result);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveTranslationAsync does nothing for null key
+        /// </summary>
+        [Fact]
+        public async Task RemoveTranslationAsync_WithNullKey_ShouldNotThrow()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+            await provider.SetTranslationAsync("en", "greeting", "Hello");
+
+            await provider.RemoveTranslationAsync("en", null);
+            string result = await provider.GetTranslationAsync("en", "greeting");
+
+            Assert.Equal("Hello", result);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveTranslationAsync does nothing for non-existing language
+        /// </summary>
+        [Fact]
+        public async Task RemoveTranslationAsync_WithNonExistingLanguage_ShouldNotThrow()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+
+            await provider.RemoveTranslationAsync("fr", "greeting");
+        }
+
+        /// <summary>
+        ///     Tests that GetKeysAsync returns empty for null language code
+        /// </summary>
+        [Fact]
+        public async Task GetKeysAsync_WithNullLanguageCode_ShouldReturnEmpty()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+            await provider.SetTranslationAsync("en", "greeting", "Hello");
+
+            IEnumerable<string> keys = await provider.GetKeysAsync(null);
+
+            Assert.Empty(keys);
+        }
+
+        /// <summary>
+        ///     Tests that LoadTranslationsAsync returns empty for empty provider
+        /// </summary>
+        [Fact]
+        public async Task LoadTranslationsAsync_WithNoTranslations_ShouldReturnEmpty()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+
+            Dictionary<string, Dictionary<string, string>> result = await provider.LoadTranslationsAsync();
+
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that SaveTranslationsAsync with null entries exercises all branches
+        /// </summary>
+        [Fact]
+        public async Task SaveTranslationsAsync_WithMixedEntries_ShouldNotThrow()
+        {
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+            Dictionary<string, Dictionary<string, string>> data = new Dictionary<string, Dictionary<string, string>>
+            {
+                { "en", new Dictionary<string, string> { { "greeting", "Hello" } } },
+                { "fr", null },
+            };
+
+            await provider.SaveTranslationsAsync(data);
+        }
     }
 }
