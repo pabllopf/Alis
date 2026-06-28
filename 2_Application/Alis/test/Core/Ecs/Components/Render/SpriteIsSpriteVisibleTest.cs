@@ -38,8 +38,17 @@ namespace Alis.Test.Core.Ecs.Components.Render
     /// </summary>
     public class SpriteIsSpriteVisibleTest
     {
+        /// <summary>
+        /// The pixels per meter
+        /// </summary>
         private const float PixelsPerMeter = 32f;
+        /// <summary>
+        /// The vector
+        /// </summary>
         private static readonly Vector2F CameraResolution = new Vector2F(800f, 600f);
+        /// <summary>
+        /// The vector
+        /// </summary>
         private static readonly Vector2F CameraPosition = new Vector2F(0f, 0f);
 
         /// <summary>

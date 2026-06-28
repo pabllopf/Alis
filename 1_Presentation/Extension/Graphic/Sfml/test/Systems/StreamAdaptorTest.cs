@@ -39,15 +39,27 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
     /// </summary>
     public class StreamAdaptorTest : IDisposable
     {
+        /// <summary>
+        /// The stream adaptor
+        /// </summary>
         private StreamAdaptor _streamAdaptor;
+        /// <summary>
+        /// The memory stream
+        /// </summary>
         private MemoryStream _memoryStream;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StreamAdaptorTest"/> class
+        /// </summary>
         public StreamAdaptorTest()
         {
             _memoryStream = new MemoryStream(new byte[] { 1, 2, 3, 4, 5 });
             _streamAdaptor = new StreamAdaptor(_memoryStream);
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _streamAdaptor?.Dispose();

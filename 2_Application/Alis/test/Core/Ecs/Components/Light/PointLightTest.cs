@@ -37,6 +37,9 @@ namespace Alis.Test.Core.Ecs.Components.Light
     /// </summary>
     public class PointLightTest
     {
+        /// <summary>
+        /// Tests that point light default constructor should create instance
+        /// </summary>
         [Fact]
         public void PointLight_DefaultConstructor_ShouldCreateInstance()
         {

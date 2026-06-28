@@ -39,7 +39,13 @@ namespace Alis.Extension.Graphic.Sfml.Test
     /// </summary>
     public class StreamAdaptorTest : IDisposable
     {
+        /// <summary>
+        /// The adaptor
+        /// </summary>
         private StreamAdaptor? _adaptor;
+        /// <summary>
+        /// The stream
+        /// </summary>
         private MemoryStream? _stream;
 
         /// <summary>
@@ -51,6 +57,11 @@ namespace Alis.Extension.Graphic.Sfml.Test
             _stream?.Dispose();
         }
 
+        /// <summary>
+        /// Creates the test stream using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The stream</returns>
         private MemoryStream CreateTestStream(byte[] data)
         {
             MemoryStream stream = new MemoryStream(data);

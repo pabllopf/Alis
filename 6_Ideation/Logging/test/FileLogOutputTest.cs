@@ -433,9 +433,23 @@ namespace Alis.Core.Aspect.Logging.Test
         /// </summary>
         private sealed class ThrowingStreamWriter : StreamWriter
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ThrowingStreamWriter"/> class
+            /// </summary>
             public ThrowingStreamWriter() : base(new MemoryStream()) { }
+            /// <summary>
+            /// Writes the line using the specified value
+            /// </summary>
+            /// <param name="value">The value</param>
             public override void WriteLine(string value) => throw new IOException("Test IO error");
+            /// <summary>
+            /// Flushes this instance
+            /// </summary>
             public override void Flush() => throw new IOException("Test IO error");
+            /// <summary>
+            /// Disposes the disposing
+            /// </summary>
+            /// <param name="disposing">The disposing</param>
             protected override void Dispose(bool disposing) => throw new IOException("Test IO error");
         }
 

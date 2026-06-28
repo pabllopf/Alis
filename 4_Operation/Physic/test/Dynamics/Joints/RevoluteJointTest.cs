@@ -6,14 +6,23 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
+    /// <summary>
+    /// The revolute joint test class
+    /// </summary>
     public class RevoluteJointTest
     {
+        /// <summary>
+        /// Tests that revolute joint type should be accessible
+        /// </summary>
         [Fact]
         public void RevoluteJoint_TypeShouldBeAccessible()
         {
             Assert.NotNull(typeof(RevoluteJoint));
         }
 
+        /// <summary>
+        /// Tests that constructor with bodies and anchor should set joint type to revolute
+        /// </summary>
         [Fact]
         public void Constructor_WithBodiesAndAnchor_ShouldSetJointTypeToRevolute()
         {
@@ -24,6 +33,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(JointType.Revolute, joint.JointType);
         }
 
+        /// <summary>
+        /// Tests that constructor with bodies and anchor should set body a and body b
+        /// </summary>
         [Fact]
         public void Constructor_WithBodiesAndAnchor_ShouldSetBodyAAndBodyB()
         {
@@ -35,6 +47,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Same(bodyB, joint.BodyB);
         }
 
+        /// <summary>
+        /// Tests that local anchor a should round trip
+        /// </summary>
         [Fact]
         public void LocalAnchorA_ShouldRoundTrip()
         {
@@ -48,6 +63,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(anchor, joint.LocalAnchorA);
         }
 
+        /// <summary>
+        /// Tests that local anchor b should round trip
+        /// </summary>
         [Fact]
         public void LocalAnchorB_ShouldRoundTrip()
         {
@@ -61,6 +79,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(anchor, joint.LocalAnchorB);
         }
 
+        /// <summary>
+        /// Tests that constructor with separate anchors sets correctly
+        /// </summary>
         [Fact]
         public void Constructor_WithSeparateAnchors_SetsCorrectly()
         {
@@ -75,6 +96,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(anchorB, joint.LocalAnchorB);
         }
 
+        /// <summary>
+        /// Tests that constructor with world coordinates sets anchors
+        /// </summary>
         [Fact]
         public void Constructor_WithWorldCoordinates_SetsAnchors()
         {
@@ -87,6 +111,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that constructor with local coordinates keeps anchors
+        /// </summary>
         [Fact]
         public void Constructor_WithLocalCoordinates_KeepsAnchors()
         {
@@ -100,6 +127,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(localAnchor, joint.LocalAnchorB);
         }
 
+        /// <summary>
+        /// Tests that constructor with single anchor applies to both
+        /// </summary>
         [Fact]
         public void Constructor_WithSingleAnchor_AppliesToBoth()
         {
@@ -113,6 +143,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(anchor, joint.LocalAnchorB);
         }
 
+        /// <summary>
+        /// Tests that world anchor a get returns world point
+        /// </summary>
         [Fact]
         public void WorldAnchorA_Get_ReturnsWorldPoint()
         {
@@ -124,6 +157,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(expected, joint.WorldAnchorA);
         }
 
+        /// <summary>
+        /// Tests that world anchor a set updates local anchor
+        /// </summary>
         [Fact]
         public void WorldAnchorA_Set_UpdatesLocalAnchor()
         {
@@ -138,6 +174,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(expected, joint.LocalAnchorA);
         }
 
+        /// <summary>
+        /// Tests that world anchor b get returns world point
+        /// </summary>
         [Fact]
         public void WorldAnchorB_Get_ReturnsWorldPoint()
         {
@@ -149,6 +188,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(expected, joint.WorldAnchorB);
         }
 
+        /// <summary>
+        /// Tests that world anchor b set updates local anchor
+        /// </summary>
         [Fact]
         public void WorldAnchorB_Set_UpdatesLocalAnchor()
         {
@@ -163,6 +205,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(expected, joint.LocalAnchorB);
         }
 
+        /// <summary>
+        /// Tests that reference angle should round trip
+        /// </summary>
         [Fact]
         public void ReferenceAngle_ShouldRoundTrip()
         {
@@ -176,6 +221,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(angle, joint.ReferenceAngle);
         }
 
+        /// <summary>
+        /// Tests that reference angle constructor sets from bodies
+        /// </summary>
         [Fact]
         public void ReferenceAngle_Constructor_SetsFromBodies()
         {
@@ -188,6 +236,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(0.3f, joint.ReferenceAngle);
         }
 
+        /// <summary>
+        /// Tests that joint angle computes correctly
+        /// </summary>
         [Fact]
         public void JointAngle_ComputesCorrectly()
         {
@@ -203,6 +254,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(expected, joint.JointAngle);
         }
 
+        /// <summary>
+        /// Tests that joint speed computes correctly
+        /// </summary>
         [Fact]
         public void JointSpeed_ComputesCorrectly()
         {
@@ -218,6 +272,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(2.5f, joint.JointSpeed);
         }
 
+        /// <summary>
+        /// Tests that limit enabled default is false
+        /// </summary>
         [Fact]
         public void LimitEnabled_Default_IsFalse()
         {
@@ -228,6 +285,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.False(joint.LimitEnabled);
         }
 
+        /// <summary>
+        /// Tests that limit enabled set true stores value
+        /// </summary>
         [Fact]
         public void LimitEnabled_SetTrue_StoresValue()
         {
@@ -240,6 +300,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True(joint.LimitEnabled);
         }
 
+        /// <summary>
+        /// Tests that lower limit should round trip
+        /// </summary>
         [Fact]
         public void LowerLimit_ShouldRoundTrip()
         {
@@ -252,6 +315,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(-1.0f, joint.LowerLimit);
         }
 
+        /// <summary>
+        /// Tests that lower limit with same value does not reset impulse
+        /// </summary>
         [Fact]
         public void LowerLimit_WithSameValue_DoesNotResetImpulse()
         {
@@ -266,6 +332,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(current, joint.LowerLimit);
         }
 
+        /// <summary>
+        /// Tests that upper limit should round trip
+        /// </summary>
         [Fact]
         public void UpperLimit_ShouldRoundTrip()
         {
@@ -278,6 +347,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(2.0f, joint.UpperLimit);
         }
 
+        /// <summary>
+        /// Tests that upper limit with same value does not reset impulse
+        /// </summary>
         [Fact]
         public void UpperLimit_WithSameValue_DoesNotResetImpulse()
         {
@@ -292,6 +364,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(current, joint.UpperLimit);
         }
 
+        /// <summary>
+        /// Tests that motor enabled default is false
+        /// </summary>
         [Fact]
         public void MotorEnabled_Default_IsFalse()
         {
@@ -302,6 +377,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.False(joint.MotorEnabled);
         }
 
+        /// <summary>
+        /// Tests that motor enabled set true stores value
+        /// </summary>
         [Fact]
         public void MotorEnabled_SetTrue_StoresValue()
         {
@@ -314,6 +392,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True(joint.MotorEnabled);
         }
 
+        /// <summary>
+        /// Tests that motor speed should round trip
+        /// </summary>
         [Fact]
         public void MotorSpeed_ShouldRoundTrip()
         {
@@ -326,6 +407,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(5.0f, joint.MotorSpeed);
         }
 
+        /// <summary>
+        /// Tests that max motor torque should round trip
+        /// </summary>
         [Fact]
         public void MaxMotorTorque_ShouldRoundTrip()
         {
@@ -338,6 +422,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(100.0f, joint.MaxMotorTorque);
         }
 
+        /// <summary>
+        /// Tests that motor impulse should round trip
+        /// </summary>
         [Fact]
         public void MotorImpulse_ShouldRoundTrip()
         {
@@ -350,6 +437,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(25.0f, joint.MotorImpulse);
         }
 
+        /// <summary>
+        /// Tests that set limits with different values changes both
+        /// </summary>
         [Fact]
         public void SetLimits_WithDifferentValues_ChangesBoth()
         {
@@ -363,6 +453,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(2.0f, joint.UpperLimit);
         }
 
+        /// <summary>
+        /// Tests that set limits with same values does not change
+        /// </summary>
         [Fact]
         public void SetLimits_WithSameValues_DoesNotChange()
         {
@@ -377,6 +470,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(1.0f, joint.UpperLimit);
         }
 
+        /// <summary>
+        /// Tests that get motor torque returns product
+        /// </summary>
         [Fact]
         public void GetMotorTorque_ReturnsProduct()
         {
@@ -390,6 +486,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(20.0f, result);
         }
 
+        /// <summary>
+        /// Tests that get reaction force with zero impulse returns zero
+        /// </summary>
         [Fact]
         public void GetReactionForce_WithZeroImpulse_ReturnsZero()
         {
@@ -402,6 +501,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(Vector2F.Zero, force);
         }
 
+        /// <summary>
+        /// Tests that get reaction force with impulse returns scaled
+        /// </summary>
         [Fact]
         public void GetReactionForce_WithImpulse_ReturnsScaled()
         {
@@ -414,6 +516,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(Vector2F.Zero, force);
         }
 
+        /// <summary>
+        /// Tests that get reaction torque with zero impulse returns zero
+        /// </summary>
         [Fact]
         public void GetReactionTorque_WithZeroImpulse_ReturnsZero()
         {
@@ -426,6 +531,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(0.0f, torque);
         }
 
+        /// <summary>
+        /// Tests that step with revolute joint updates velocities
+        /// </summary>
         [Fact]
         public void Step_WithRevoluteJoint_UpdatesVelocities()
         {
@@ -447,6 +555,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that step with motor enabled applies motor torque
+        /// </summary>
         [Fact]
         public void Step_WithMotorEnabled_AppliesMotorTorque()
         {
@@ -469,6 +580,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that step with limit enabled constrains motion
+        /// </summary>
         [Fact]
         public void Step_WithLimitEnabled_ConstrainsMotion()
         {
@@ -490,6 +604,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that step with equal limit locks angle
+        /// </summary>
         [Fact]
         public void Step_WithEqualLimit_LocksAngle()
         {
@@ -511,6 +628,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that step limit at lower triggers solve at lower
+        /// </summary>
         [Fact]
         public void Step_LimitAtLower_TriggersSolveAtLower()
         {
@@ -533,6 +653,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that step limit at upper triggers solve at upper
+        /// </summary>
         [Fact]
         public void Step_LimitAtUpper_TriggersSolveAtUpper()
         {
@@ -555,6 +678,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that constructor internal default sets joint type
+        /// </summary>
         [Fact]
         public void Constructor_InternalDefault_SetsJointType()
         {
@@ -562,6 +688,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(JointType.Revolute, joint.JointType);
         }
 
+        /// <summary>
+        /// Tests that step with fixed rotation bodies uses point to point constraint
+        /// </summary>
         [Fact]
         public void Step_WithFixedRotationBodies_UsesPointToPointConstraint()
         {
@@ -583,6 +712,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that step with limit and motor multiple steps
+        /// </summary>
         [Fact]
         public void Step_WithLimitAndMotor_MultipleSteps()
         {
@@ -608,6 +740,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that step limit at lower with reversed motor clamps negative impulse
+        /// </summary>
         [Fact]
         public void Step_LimitAtLower_WithReversedMotor_ClampsNegativeImpulse()
         {
@@ -633,6 +768,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that step limit at upper with reversed motor clamps positive impulse
+        /// </summary>
         [Fact]
         public void Step_LimitAtUpper_WithReversedMotor_ClampsPositiveImpulse()
         {
@@ -658,6 +796,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that step limit with gravity swings through limit
+        /// </summary>
         [Fact]
         public void Step_LimitWithGravity_SwingsThroughLimit()
         {
@@ -681,6 +822,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that step limit at lower with world anchor offset warmstarting
+        /// </summary>
         [Fact]
         public void Step_LimitAtLower_WithWorldAnchorOffset_Warmstarting()
         {
@@ -704,6 +848,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that step limit at upper with world anchor offset warmstarting
+        /// </summary>
         [Fact]
         public void Step_LimitAtUpper_WithWorldAnchorOffset_Warmstarting()
         {

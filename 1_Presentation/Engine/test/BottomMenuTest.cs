@@ -14,6 +14,10 @@ namespace Alis.App.Engine.Test
     /// </summary>
     public partial class BottomMenuTest
     {
+        /// <summary>
+        /// Creates the space work
+        /// </summary>
+        /// <returns>The space work</returns>
         private static SpaceWork CreateSpaceWork()
         {
             return (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
@@ -43,6 +47,9 @@ namespace Alis.App.Engine.Test
             return spaceWork;
         }
 
+        /// <summary>
+        /// Tests that constructor should set space work v 2
+        /// </summary>
         [Fact]
         public void Constructor_ShouldSetSpaceWork_v2()
         {
@@ -53,6 +60,9 @@ namespace Alis.App.Engine.Test
             Assert.Same(spaceWork, menu.SpaceWork);
         }
 
+        /// <summary>
+        /// Tests that space work property should return set value v 2
+        /// </summary>
         [Fact]
         public void SpaceWork_Property_ShouldReturnSetValue_v2()
         {
@@ -63,6 +73,9 @@ namespace Alis.App.Engine.Test
             Assert.Same(spaceWork, menu.SpaceWork);
         }
 
+        /// <summary>
+        /// Tests that initialize should not throw v 2
+        /// </summary>
         [Fact]
         public void Initialize_ShouldNotThrow_v2()
         {
@@ -74,6 +87,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menu);
         }
 
+        /// <summary>
+        /// Tests that update should not throw v 2
+        /// </summary>
         [Fact]
         public void Update_ShouldNotThrow_v2()
         {
@@ -85,6 +101,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menu);
         }
 
+        /// <summary>
+        /// Tests that start should not throw v 2
+        /// </summary>
         [Fact]
         public void Start_ShouldNotThrow_v2()
         {
@@ -96,6 +115,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menu);
         }
 
+        /// <summary>
+        /// Tests that space work property should be same reference
+        /// </summary>
         [Fact]
         public void SpaceWork_Property_ShouldBeSameReference()
         {
@@ -105,6 +127,9 @@ namespace Alis.App.Engine.Test
             Assert.Same(spaceWork, menu.SpaceWork);
         }
 
+        /// <summary>
+        /// Tests that space work property should not be null
+        /// </summary>
         [Fact]
         public void SpaceWork_Property_ShouldNotBeNull()
         {
@@ -114,6 +139,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menu.SpaceWork);
         }
 
+        /// <summary>
+        /// Tests that multiple instances should have different space work
+        /// </summary>
         [Fact]
         public void MultipleInstances_ShouldHaveDifferentSpaceWork()
         {
@@ -125,6 +153,9 @@ namespace Alis.App.Engine.Test
             Assert.NotSame(menu1.SpaceWork, menu2.SpaceWork);
         }
         
+        /// <summary>
+        /// Tests that setup next window properties should handle non mac os path
+        /// </summary>
         [Fact]
         public void SetupNextWindowProperties_ShouldHandleNonMacOsPath()
         {
@@ -136,6 +167,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menu);
         }
 
+        /// <summary>
+        /// Tests that setup next window properties should handle mac os path
+        /// </summary>
         [Fact]
         public void SetupNextWindowProperties_ShouldHandleMacOsPath()
         {
@@ -147,6 +181,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menu);
         }
 
+        /// <summary>
+        /// Tests that bottom menu has correct height
+        /// </summary>
         [Fact]
         public void BottomMenu_HasCorrectHeight()
         {
@@ -161,6 +198,9 @@ namespace Alis.App.Engine.Test
             Assert.Equal(10.0f, (float)field.GetValue(menu));
         }
 
+        /// <summary>
+        /// Tests that bottom menu should have space work property
+        /// </summary>
         [Fact]
         public void BottomMenu_ShouldHaveSpaceWorkProperty()
         {

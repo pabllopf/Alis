@@ -41,13 +41,22 @@ namespace Alis.Extension.Network.Test.Client
     /// </summary>
     public class NetworkClientManagerTest : IDisposable
     {
+        /// <summary>
+        /// The manager
+        /// </summary>
         private NetworkClientManager _manager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NetworkClientManagerTest"/> class
+        /// </summary>
         public NetworkClientManagerTest()
         {
             _manager = new NetworkClientManager();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _manager?.Dispose();
@@ -262,11 +271,41 @@ namespace Alis.Extension.Network.Test.Client
             // No exception means events work correctly
         }
 
+        /// <summary>
+        /// Ons the player joined using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void OnPlayerJoined(object sender, PlayerEventArgs e) { }
+        /// <summary>
+        /// Ons the player left using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void OnPlayerLeft(object sender, PlayerEventArgs e) { }
+        /// <summary>
+        /// Ons the connected using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void OnConnected(object sender, EventArgs e) { }
+        /// <summary>
+        /// Ons the disconnected using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void OnDisconnected(object sender, EventArgs e) { }
+        /// <summary>
+        /// Ons the error using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void OnError(object sender, NetworkErrorEventArgs e) { }
+        /// <summary>
+        /// Ons the server message received using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void OnServerMessageReceived(object sender, ServerMessageEventArgs e) { }
     }
 }

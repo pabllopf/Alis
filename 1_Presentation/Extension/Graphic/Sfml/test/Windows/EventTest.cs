@@ -37,6 +37,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
     /// </summary>
     public class EventTest
     {
+        /// <summary>
+        /// Tests that default type is none
+        /// </summary>
         [Fact]
         public void Default_TypeIsNone()
         {
@@ -44,6 +47,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(default(EventType), evt.Type);
         }
 
+        /// <summary>
+        /// Tests that type can be set
+        /// </summary>
         [Fact]
         public void Type_CanBeSet()
         {
@@ -52,6 +58,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(EventType.Closed, evt.Type);
         }
 
+        /// <summary>
+        /// Tests that type can be set to gained focus
+        /// </summary>
         [Fact]
         public void Type_CanBeSetToGainedFocus()
         {
@@ -60,6 +69,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(EventType.GainedFocus, evt.Type);
         }
 
+        /// <summary>
+        /// Tests that type and size field roundtrip
+        /// </summary>
         [Fact]
         public void TypeAndSizeField_Roundtrip()
         {
@@ -68,6 +80,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(EventType.Resized, evt.Type);
         }
 
+        /// <summary>
+        /// Tests that type and key field roundtrip
+        /// </summary>
         [Fact]
         public void TypeAndKeyField_Roundtrip()
         {
@@ -76,6 +91,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(EventType.KeyPressed, evt.Type);
         }
 
+        /// <summary>
+        /// Tests that type and mouse moved roundtrip
+        /// </summary>
         [Fact]
         public void TypeAndMouseMoved_Roundtrip()
         {

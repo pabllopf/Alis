@@ -38,12 +38,21 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
     /// </summary>
     public class SoundStatusTest
     {
+        /// <summary>
+        /// Stoppeds the has value 0
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Stopped_HasValue0() => Assert.Equal(0, (int) SoundStatus.Stopped);
 
+        /// <summary>
+        /// Pauseds the has value 1
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Paused_HasValue1() => Assert.Equal(1, (int) SoundStatus.Paused);
 
+        /// <summary>
+        /// Playings the has value 2
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Playing_HasValue2() => Assert.Equal(2, (int) SoundStatus.Playing);
     }

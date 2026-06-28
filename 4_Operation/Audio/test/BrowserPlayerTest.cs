@@ -39,8 +39,14 @@ namespace Alis.Core.Audio.Test
     /// </summary>
     public class BrowserPlayerTest : IDisposable
     {
+        /// <summary>
+        /// The test wav file
+        /// </summary>
         private readonly string _testWavFile;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BrowserPlayerTest"/> class
+        /// </summary>
         public BrowserPlayerTest()
         {
             // Create a minimal valid WAV file for tests
@@ -48,6 +54,9 @@ namespace Alis.Core.Audio.Test
             CreateMinimalWavFile(_testWavFile);
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!string.IsNullOrEmpty(_testWavFile) && File.Exists(_testWavFile))

@@ -37,15 +37,27 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
     /// </summary>
     public class CsfmlTest
     {
+        /// <summary>
+        /// Tests that audio returns csfml audio
+        /// </summary>
         [Fact]
         public void Audio_ReturnsCsfmlAudio() => Assert.Equal("csfml-audio", Csfml.Audio);
 
+        /// <summary>
+        /// Tests that graphics returns csfml graphics
+        /// </summary>
         [Fact]
         public void Graphics_ReturnsCsfmlGraphics() => Assert.Equal("csfml-graphics", Csfml.Graphics);
 
+        /// <summary>
+        /// Tests that system returns csfml system
+        /// </summary>
         [Fact]
         public void System_ReturnsCsfmlSystem() => Assert.Equal("csfml-system", Csfml.System);
 
+        /// <summary>
+        /// Tests that window returns csfml window
+        /// </summary>
         [Fact]
         public void Window_ReturnsCsfmlWindow() => Assert.Equal("csfml-window", Csfml.Window);
     }

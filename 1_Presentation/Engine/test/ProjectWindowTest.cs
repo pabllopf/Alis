@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The project window test class
+    /// </summary>
     public class ProjectWindowTest
     {
+        /// <summary>
+        /// Tests that constructor should set space work
+        /// </summary>
         [Fact]
         public void Constructor_ShouldSetSpaceWork()
         {
@@ -18,6 +24,9 @@ namespace Alis.App.Engine.Test
             Assert.Same(spaceWork, window.SpaceWork);
         }
 
+        /// <summary>
+        /// Tests that space work property should return set value
+        /// </summary>
         [Fact]
         public void SpaceWork_Property_ShouldReturnSetValue()
         {
@@ -28,6 +37,9 @@ namespace Alis.App.Engine.Test
             Assert.Same(spaceWork, window.SpaceWork);
         }
 
+        /// <summary>
+        /// Tests that constructor with null should set null space work
+        /// </summary>
         [Fact]
         public void Constructor_WithNull_ShouldSetNullSpaceWork()
         {
@@ -36,6 +48,9 @@ namespace Alis.App.Engine.Test
             Assert.Null(window.SpaceWork);
         }
 
+        /// <summary>
+        /// Tests that name window should not be null or empty
+        /// </summary>
         [Fact]
         public void NameWindow_ShouldNotBeNullOrEmpty()
         {
@@ -43,6 +58,9 @@ namespace Alis.App.Engine.Test
             Assert.NotEmpty(ProjectWindow.NameWindow);
         }
 
+        /// <summary>
+        /// Tests that initialize throws not implemented exception
+        /// </summary>
         [Fact]
         public void Initialize_ThrowsNotImplementedException()
         {
@@ -52,6 +70,9 @@ namespace Alis.App.Engine.Test
             Assert.Throws<NotImplementedException>(() => window.Initialize());
         }
 
+        /// <summary>
+        /// Tests that start throws not implemented exception
+        /// </summary>
         [Fact]
         public void Start_ThrowsNotImplementedException()
         {
@@ -61,6 +82,9 @@ namespace Alis.App.Engine.Test
             Assert.Throws<NotImplementedException>(() => window.Start());
         }
 
+        /// <summary>
+        /// Tests that name window should contain project
+        /// </summary>
         [Fact]
         public void NameWindow_ShouldContainProject()
         {

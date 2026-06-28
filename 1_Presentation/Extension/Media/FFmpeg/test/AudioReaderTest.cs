@@ -39,8 +39,14 @@ namespace Alis.Extension.Media.FFmpeg.Test
     /// </summary>
     public class AudioReaderTest : IDisposable
     {
+        /// <summary>
+        /// The test file
+        /// </summary>
         private readonly string _testFile;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioReaderTest"/> class
+        /// </summary>
         public AudioReaderTest()
         {
             // Create a temporary test file for tests that require file existence
@@ -48,6 +54,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
             File.WriteAllText(_testFile, "test audio data");
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!string.IsNullOrEmpty(_testFile) && File.Exists(_testFile))

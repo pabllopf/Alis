@@ -189,21 +189,41 @@ namespace Alis.Extension.Language.Dialogue.Test
         /// </summary>
         private sealed class InvalidDialogAction : IDialogAction
         {
+            /// <summary>
+            /// The callback
+            /// </summary>
             private readonly Action _callback;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="InvalidDialogAction"/> class
+            /// </summary>
+            /// <param name="id">The id</param>
+            /// <param name="callback">The callback</param>
             public InvalidDialogAction(string id, Action callback = null)
             {
                 Id = id;
                 _callback = callback;
             }
 
+            /// <summary>
+            /// Gets the value of the id
+            /// </summary>
             public string Id { get; }
 
+            /// <summary>
+            /// Executes the context
+            /// </summary>
+            /// <param name="context">The context</param>
             public void Execute(DialogContext context)
             {
                 _callback?.Invoke();
             }
 
+            /// <summary>
+            /// Ises the valid using the specified context
+            /// </summary>
+            /// <param name="context">The context</param>
+            /// <returns>The bool</returns>
             public bool IsValid(DialogContext context) => false;
         }
     }

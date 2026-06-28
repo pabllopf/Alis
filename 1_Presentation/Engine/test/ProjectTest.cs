@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The project test class
+    /// </summary>
     public class ProjectTest
     {
+        /// <summary>
+        /// Tests that constructor should set values
+        /// </summary>
         [Fact]
         public void Constructor_ShouldSetValues()
         {
@@ -17,6 +23,9 @@ namespace Alis.App.Engine.Test
             Assert.Equal("v1.0.0", project.EditorVersion);
         }
 
+        /// <summary>
+        /// Tests that default constructor should set default values
+        /// </summary>
         [Fact]
         public void DefaultConstructor_ShouldSetDefaultValues()
         {
@@ -31,6 +40,9 @@ namespace Alis.App.Engine.Test
             Assert.Null(project.LastModified);
         }
 
+        /// <summary>
+        /// Tests that properties should be gettable and settable
+        /// </summary>
         [Fact]
         public void Properties_ShouldBeGettableAndSettable()
         {
@@ -58,6 +70,9 @@ namespace Alis.App.Engine.Test
             Assert.Equal("Now", project.LastModified);
         }
 
+        /// <summary>
+        /// Tests that properties should be independent
+        /// </summary>
         [Fact]
         public void Properties_ShouldBeIndependent()
         {
@@ -77,6 +92,9 @@ namespace Alis.App.Engine.Test
             Assert.Equal("v2", project2.EditorVersion);
         }
 
+        /// <summary>
+        /// Tests that default values should be as expected
+        /// </summary>
         [Fact]
         public void DefaultValues_ShouldBeAsExpected()
         {

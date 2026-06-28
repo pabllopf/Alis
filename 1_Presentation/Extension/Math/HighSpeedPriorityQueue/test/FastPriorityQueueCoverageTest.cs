@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
+    /// <summary>
+    /// The fast priority queue coverage test class
+    /// </summary>
     public class FastPriorityQueueCoverageTest
     {
+        /// <summary>
+        /// Tests that clear with multiple nodes removes all
+        /// </summary>
         [Fact]
         public void Clear_WithMultipleNodes_RemovesAll()
         {
@@ -49,6 +55,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that resize to larger capacity preserves elements
+        /// </summary>
         [Fact]
         public void Resize_ToLargerCapacity_PreservesElements()
         {
@@ -69,6 +78,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that dequeue multiple levels cascades down correctly
+        /// </summary>
         [Fact]
         public void Dequeue_MultipleLevels_CascadesDownCorrectly()
         {
@@ -86,6 +98,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that get swap index only right child higher swaps with right
+        /// </summary>
         [Fact]
         public void GetSwapIndex_OnlyRightChildHigher_SwapsWithRight()
         {
@@ -107,6 +122,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that get swap index both children higher left wins swaps with left
+        /// </summary>
         [Fact]
         public void GetSwapIndex_BothChildrenHigherLeftWins_SwapsWithLeft()
         {
@@ -123,6 +141,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that get swap index both children higher right wins swaps with right
+        /// </summary>
         [Fact]
         public void GetSwapIndex_BothChildrenHigherRightWins_SwapsWithRight()
         {

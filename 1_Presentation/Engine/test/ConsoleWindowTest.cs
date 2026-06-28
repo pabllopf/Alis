@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The console window test class
+    /// </summary>
     public class ConsoleWindowTest
     {
+        /// <summary>
+        /// Tests that constructor should set space work
+        /// </summary>
         [Fact]
         public void Constructor_ShouldSetSpaceWork()
         {
@@ -18,6 +24,9 @@ namespace Alis.App.Engine.Test
             Assert.Same(spaceWork, window.SpaceWork);
         }
 
+        /// <summary>
+        /// Tests that space work property should return set value
+        /// </summary>
         [Fact]
         public void SpaceWork_Property_ShouldReturnSetValue()
         {
@@ -27,6 +36,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(window.SpaceWork);
         }
 
+        /// <summary>
+        /// Tests that name window should not be null or empty
+        /// </summary>
         [Fact]
         public void NameWindow_ShouldNotBeNullOrEmpty()
         {
@@ -34,6 +46,9 @@ namespace Alis.App.Engine.Test
             Assert.NotEmpty(ConsoleWindow.NameWindow);
         }
 
+        /// <summary>
+        /// Tests that initialize should not throw
+        /// </summary>
         [Fact]
         public void Initialize_ShouldNotThrow()
         {
@@ -45,6 +60,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(window);
         }
 
+        /// <summary>
+        /// Tests that start should not throw
+        /// </summary>
         [Fact]
         public void Start_ShouldNotThrow()
         {

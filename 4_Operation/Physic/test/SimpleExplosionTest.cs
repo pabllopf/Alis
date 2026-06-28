@@ -43,7 +43,13 @@ namespace Alis.Core.Physic.Test
     /// </summary>
     public class SimpleExplosionTest : IDisposable
     {
+        /// <summary>
+        /// The explosion
+        /// </summary>
         private SimpleExplosion? _explosion;
+        /// <summary>
+        /// The world
+        /// </summary>
         private WorldPhysic? _world;
 
         /// <summary>

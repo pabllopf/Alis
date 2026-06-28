@@ -207,6 +207,9 @@ namespace Alis.Core.Physic.Test.Collisions
         /// </summary>
         private class TestShape : Shape
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestShape"/> class
+            /// </summary>
             public TestShape() : base(0)
             {
                 ShapeType = (ShapeType)99;

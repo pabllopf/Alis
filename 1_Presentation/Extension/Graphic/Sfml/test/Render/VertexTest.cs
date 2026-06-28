@@ -38,6 +38,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
     /// </summary>
     public class VertexTest
     {
+        /// <summary>
+        /// Tests that constructor position only sets fields
+        /// </summary>
         [Fact]
         public void Constructor_PositionOnly_SetsFields()
         {
@@ -49,6 +52,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0, v.TexCoords.Y);
         }
 
+        /// <summary>
+        /// Tests that constructor position and color sets fields
+        /// </summary>
         [Fact]
         public void Constructor_PositionAndColor_SetsFields()
         {
@@ -60,6 +66,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0, v.TexCoords.Y);
         }
 
+        /// <summary>
+        /// Tests that constructor position and tex coords sets fields
+        /// </summary>
         [Fact]
         public void Constructor_PositionAndTexCoords_SetsFields()
         {
@@ -71,6 +80,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(8, v.TexCoords.Y);
         }
 
+        /// <summary>
+        /// Tests that constructor position color tex coords sets fields
+        /// </summary>
         [Fact]
         public void Constructor_PositionColorTexCoords_SetsFields()
         {
@@ -82,6 +94,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(12, v.TexCoords.Y);
         }
 
+        /// <summary>
+        /// Tests that fields are mutable
+        /// </summary>
         [Fact]
         public void Fields_AreMutable()
         {
@@ -96,6 +111,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(40, v.TexCoords.Y);
         }
 
+        /// <summary>
+        /// Tests that to string contains fields
+        /// </summary>
         [Fact]
         public void ToString_ContainsFields()
         {

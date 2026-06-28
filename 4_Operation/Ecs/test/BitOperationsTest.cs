@@ -42,10 +42,25 @@ namespace Alis.Core.Ecs.Test
     {
         // Reference to the project's BitOperations from Alis.Core.Ecs assembly
         // Note: .NET 8 has System.Numerics.BitOperations; this tests the project's replacement
+        /// <summary>
+        /// The assembly
+        /// </summary>
         private static readonly Assembly EcsAssembly = typeof(Scene).Assembly;
+        /// <summary>
+        /// The get type
+        /// </summary>
         private static readonly Type BitOpsType = EcsAssembly.GetType("System.Numerics.BitOperations")!;
+        /// <summary>
+        /// The get method
+        /// </summary>
         private static readonly MethodInfo Log2Method = BitOpsType.GetMethod("Log2")!;
+        /// <summary>
+        /// The get method
+        /// </summary>
         private static readonly MethodInfo RoundUpToPowerOf2Method = BitOpsType.GetMethod("RoundUpToPowerOf2")!;
+        /// <summary>
+        /// The get method
+        /// </summary>
         private static readonly MethodInfo RotateLeftMethod = BitOpsType.GetMethod("RotateLeft")!;
 
         /// <summary>

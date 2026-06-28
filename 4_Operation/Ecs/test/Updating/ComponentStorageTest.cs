@@ -226,8 +226,20 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         private sealed class TestAction : IGenericAction
         {
+            /// <summary>
+            /// The callback
+            /// </summary>
             private readonly Action _callback;
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestAction"/> class
+            /// </summary>
+            /// <param name="callback">The callback</param>
             public TestAction(Action callback) => _callback = callback;
+            /// <summary>
+            /// Invokes the type
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="type">The type</param>
             public void Invoke<T>(ref T type) => _callback();
         }
 
@@ -236,8 +248,21 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         private sealed class TestGameObjectAction : IGenericAction<GameObject>
         {
+            /// <summary>
+            /// The callback
+            /// </summary>
             private readonly Action _callback;
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestGameObjectAction"/> class
+            /// </summary>
+            /// <param name="callback">The callback</param>
             public TestGameObjectAction(Action callback) => _callback = callback;
+            /// <summary>
+            /// Invokes the param
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="param">The param</param>
+            /// <param name="type">The type</param>
             public void Invoke<T>(GameObject param, ref T type) => _callback();
         }
 

@@ -42,6 +42,9 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class FastLookupTest : IDisposable
     {
+        /// <summary>
+        /// The lookup
+        /// </summary>
         private FastLookup? _lookup;
 
         /// <summary>
@@ -369,10 +372,20 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         private sealed class TestTypeId : ITypeId
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestTypeId"/> class
+            /// </summary>
+            /// <param name="value">The value</param>
             public TestTypeId(ushort value) => Value = value;
 
+            /// <summary>
+            /// Gets the value of the type
+            /// </summary>
             public Type Type => typeof(byte);
 
+            /// <summary>
+            /// Gets the value of the value
+            /// </summary>
             public ushort Value { get; }
         }
 

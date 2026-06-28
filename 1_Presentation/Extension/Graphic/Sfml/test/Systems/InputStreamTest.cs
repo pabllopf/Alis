@@ -38,6 +38,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
     /// </summary>
     public class InputStreamTest
     {
+        /// <summary>
+        /// Tests that default fields are zero
+        /// </summary>
         [Fact]
         public void Default_FieldsAreZero()
         {
@@ -48,6 +51,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Null(stream.GetSize);
         }
 
+        /// <summary>
+        /// Tests that read delegate can be assigned
+        /// </summary>
         [Fact]
         public void ReadDelegate_CanBeAssigned()
         {
@@ -56,6 +62,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.NotNull(stream.Read);
         }
 
+        /// <summary>
+        /// Tests that seek delegate can be assigned
+        /// </summary>
         [Fact]
         public void SeekDelegate_CanBeAssigned()
         {
@@ -64,6 +73,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.NotNull(stream.Seek);
         }
 
+        /// <summary>
+        /// Tests that tell delegate can be assigned
+        /// </summary>
         [Fact]
         public void TellDelegate_CanBeAssigned()
         {
@@ -72,6 +84,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.NotNull(stream.Tell);
         }
 
+        /// <summary>
+        /// Tests that get size delegate can be assigned
+        /// </summary>
         [Fact]
         public void GetSizeDelegate_CanBeAssigned()
         {
@@ -80,6 +95,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.NotNull(stream.GetSize);
         }
 
+        /// <summary>
+        /// Tests that read delegate returns correct value
+        /// </summary>
         [Fact]
         public void ReadDelegate_ReturnsCorrectValue()
         {
@@ -88,6 +106,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(42, stream.Read(IntPtr.Zero, 10, IntPtr.Zero));
         }
 
+        /// <summary>
+        /// Tests that seek delegate returns correct value
+        /// </summary>
         [Fact]
         public void SeekDelegate_ReturnsCorrectValue()
         {
@@ -96,6 +117,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(100, stream.Seek(50, IntPtr.Zero));
         }
 
+        /// <summary>
+        /// Tests that all delegates work simultaneously
+        /// </summary>
         [Fact]
         public void AllDelegates_WorkSimultaneously()
         {

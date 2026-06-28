@@ -45,7 +45,13 @@ namespace Alis.Extension.Updater.Test
     /// </summary>
     public class GitHubApiServiceTest : IDisposable
     {
+        /// <summary>
+        /// The service
+        /// </summary>
         private GitHubApiService? _service;
+        /// <summary>
+        /// The http handler
+        /// </summary>
         private Mock<HttpMessageHandler>? _httpHandler;
 
         /// <summary>

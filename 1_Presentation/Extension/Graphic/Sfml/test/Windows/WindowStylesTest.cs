@@ -37,24 +37,45 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
     /// </summary>
     public class WindowStylesTest
     {
+        /// <summary>
+        /// Tests that none has value 0
+        /// </summary>
         [Fact]
         public void None_HasValue0() => Assert.Equal(0, (int) SfmlWindows.Styles.None);
 
+        /// <summary>
+        /// Tests that titlebar has value 1
+        /// </summary>
         [Fact]
         public void Titlebar_HasValue1() => Assert.Equal(1, (int) SfmlWindows.Styles.Titlebar);
 
+        /// <summary>
+        /// Tests that resize has value 2
+        /// </summary>
         [Fact]
         public void Resize_HasValue2() => Assert.Equal(2, (int) SfmlWindows.Styles.Resize);
 
+        /// <summary>
+        /// Tests that close has value 4
+        /// </summary>
         [Fact]
         public void Close_HasValue4() => Assert.Equal(4, (int) SfmlWindows.Styles.Close);
 
+        /// <summary>
+        /// Tests that fullscreen has value 8
+        /// </summary>
         [Fact]
         public void Fullscreen_HasValue8() => Assert.Equal(8, (int) SfmlWindows.Styles.Fullscreen);
 
+        /// <summary>
+        /// Tests that default has titlebar resize close
+        /// </summary>
         [Fact]
         public void Default_HasTitlebarResizeClose() => Assert.Equal(7, (int) SfmlWindows.Styles.Default);
 
+        /// <summary>
+        /// Tests that titlebar resize combined
+        /// </summary>
         [Fact]
         public void TitlebarResize_Combined() => Assert.Equal(3, (int) (SfmlWindows.Styles.Titlebar | SfmlWindows.Styles.Resize));
     }

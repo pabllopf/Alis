@@ -40,13 +40,22 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// </summary>
     public class AudioReaderTest : IDisposable
     {
+        /// <summary>
+        /// The temp file
+        /// </summary>
         private readonly string _tempFile;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioReaderTest"/> class
+        /// </summary>
         public AudioReaderTest()
         {
             _tempFile = Path.GetTempFileName();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (File.Exists(_tempFile))

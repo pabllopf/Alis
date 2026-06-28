@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Light
 {
+    /// <summary>
+    /// The area light test class
+    /// </summary>
     public class AreaLightTest
     {
+        /// <summary>
+        /// Tests that area light default constructor should create instance
+        /// </summary>
         [Fact]
         public void AreaLight_DefaultConstructor_ShouldCreateInstance()
         {

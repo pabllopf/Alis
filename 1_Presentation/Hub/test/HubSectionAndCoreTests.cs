@@ -42,26 +42,46 @@ namespace Alis.App.Hub.Test
     /// </summary>
     internal class TestASection : ASection
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestASection"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
         public TestASection(SpaceWork spaceWork) : base(spaceWork)
         {
         }
 
+        /// <summary>
+        /// Ons the init
+        /// </summary>
         public override void OnInit()
         {
         }
 
+        /// <summary>
+        /// Ons the start
+        /// </summary>
         public override void OnStart()
         {
         }
 
+        /// <summary>
+        /// Ons the update
+        /// </summary>
         public override void OnUpdate()
         {
         }
 
+        /// <summary>
+        /// Ons the render using the specified scale
+        /// </summary>
+        /// <param name="scale">The scale</param>
         public override void OnRender(float scale)
         {
         }
 
+        /// <summary>
+        /// Ons the destroy
+        /// </summary>
         public override void OnDestroy()
         {
         }

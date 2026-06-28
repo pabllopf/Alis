@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.TextureTools
 {
+    /// <summary>
+    /// The terrain test class
+    /// </summary>
     public class TerrainTest
     {
+        /// <summary>
+        /// Tests that constructor with aabb sets properties
+        /// </summary>
         [Fact]
         public void Constructor_WithAabb_SetsProperties()
         {
@@ -20,6 +26,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(new Vector2F(50, 50), terrain.Center);
         }
 
+        /// <summary>
+        /// Tests that constructor with position and size sets properties
+        /// </summary>
         [Fact]
         public void Constructor_WithPositionAndSize_SetsProperties()
         {
@@ -31,6 +40,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(new Vector2F(50, 50), terrain.Center);
         }
 
+        /// <summary>
+        /// Tests that initialize sets up internal structures
+        /// </summary>
         [Fact]
         public void Initialize_SetsUpInternalStructures()
         {
@@ -46,6 +58,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.NotNull(terrain._bodyMap);
         }
 
+        /// <summary>
+        /// Tests that apply data with in bounds data writes to terrain map
+        /// </summary>
         [Fact]
         public void ApplyData_WithInBoundsData_WritesToTerrainMap()
         {
@@ -70,6 +85,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(-1, terrain._terrainMap[5, 5]);
         }
 
+        /// <summary>
+        /// Tests that apply data with out of bounds offset does not write
+        /// </summary>
         [Fact]
         public void ApplyData_WithOutOfBoundsOffset_DoesNotWrite()
         {
@@ -95,6 +113,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(originalValue, terrain._terrainMap[0, 0]);
         }
 
+        /// <summary>
+        /// Tests that modify terrain with valid coordinates updates terrain and dirty area
+        /// </summary>
         [Fact]
         public void ModifyTerrain_WithValidCoordinates_UpdatesTerrainAndDirtyArea()
         {
@@ -111,6 +132,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(-1, terrain._terrainMap[2, 2]);
         }
 
+        /// <summary>
+        /// Tests that modify terrain with out of bounds coordinates does nothing
+        /// </summary>
         [Fact]
         public void ModifyTerrain_WithOutOfBoundsCoordinates_DoesNothing()
         {
@@ -128,6 +152,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(originalValue, terrain._terrainMap[0, 0]);
         }
 
+        /// <summary>
+        /// Tests that regenerate terrain resets dirty area
+        /// </summary>
         [Fact]
         public void RegenerateTerrain_ResetsDirtyArea()
         {
@@ -146,6 +173,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(float.MinValue, terrain._dirtyArea.UpperBound.X);
         }
 
+        /// <summary>
+        /// Tests that regenerate terrain clamps bounds to grid
+        /// </summary>
         [Fact]
         public void RegenerateTerrain_ClampsBoundsToGrid()
         {
@@ -166,6 +196,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(float.MinValue, terrain._dirtyArea.UpperBound.X);
         }
 
+        /// <summary>
+        /// Tests that remove old data with empty body map does not throw
+        /// </summary>
         [Fact]
         public void RemoveOldData_WithEmptyBodyMap_DoesNotThrow()
         {
@@ -179,6 +212,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             terrain.RemoveOldData(0, 1, 0, 1);
         }
 
+        /// <summary>
+        /// Tests that generate terrain with uniform map returns early
+        /// </summary>
         [Fact]
         public void GenerateTerrain_WithUniformMap_ReturnsEarly()
         {

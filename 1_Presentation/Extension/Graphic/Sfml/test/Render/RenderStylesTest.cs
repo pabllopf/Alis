@@ -37,24 +37,45 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
     /// </summary>
     public class RenderStylesTest
     {
+        /// <summary>
+        /// Tests that none has value 0
+        /// </summary>
         [Fact]
         public void None_HasValue0() => Assert.Equal(0, (int) SfmlRender.Styles.None);
 
+        /// <summary>
+        /// Tests that bold has value 1
+        /// </summary>
         [Fact]
         public void Bold_HasValue1() => Assert.Equal(1, (int) SfmlRender.Styles.Bold);
 
+        /// <summary>
+        /// Tests that italic has value 2
+        /// </summary>
         [Fact]
         public void Italic_HasValue2() => Assert.Equal(2, (int) SfmlRender.Styles.Italic);
 
+        /// <summary>
+        /// Tests that underlined has value 4
+        /// </summary>
         [Fact]
         public void Underlined_HasValue4() => Assert.Equal(4, (int) SfmlRender.Styles.Underlined);
 
+        /// <summary>
+        /// Tests that strike through has value 8
+        /// </summary>
         [Fact]
         public void StrikeThrough_HasValue8() => Assert.Equal(8, (int) SfmlRender.Styles.StrikeThrough);
 
+        /// <summary>
+        /// Tests that bold italic combined
+        /// </summary>
         [Fact]
         public void BoldItalic_Combined() => Assert.Equal(3, (int) (SfmlRender.Styles.Bold | SfmlRender.Styles.Italic));
 
+        /// <summary>
+        /// Tests that all combined
+        /// </summary>
         [Fact]
         public void All_Combined() => Assert.Equal(15, (int) (SfmlRender.Styles.Bold | SfmlRender.Styles.Italic | SfmlRender.Styles.Underlined | SfmlRender.Styles.StrikeThrough));
     }

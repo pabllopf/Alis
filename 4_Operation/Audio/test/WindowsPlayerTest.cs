@@ -41,6 +41,9 @@ namespace Alis.Core.Audio.Test
     /// </summary>
     public class WindowsPlayerTest : IDisposable
     {
+        /// <summary>
+        /// The player
+        /// </summary>
         private WindowsPlayer? _player;
 
         /// <summary>
@@ -51,6 +54,10 @@ namespace Alis.Core.Audio.Test
             _player?.Dispose();
         }
 
+        /// <summary>
+        /// Creates the player
+        /// </summary>
+        /// <returns>The windows player</returns>
         private WindowsPlayer CreatePlayer() => new WindowsPlayer();
 
         /// <summary>

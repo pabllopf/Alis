@@ -232,6 +232,11 @@ namespace Alis.Extension.Language.Dialogue.Test
         /// </summary>
         private class TestCondition : IDialogCondition
         {
+            /// <summary>
+            /// Evaluates the context
+            /// </summary>
+            /// <param name="context">The context</param>
+            /// <returns>The bool</returns>
             public bool Evaluate(DialogContext context) => true;
         }
 
@@ -240,12 +245,24 @@ namespace Alis.Extension.Language.Dialogue.Test
         /// </summary>
         private class TestAction : IDialogAction
         {
+            /// <summary>
+            /// Gets the value of the id
+            /// </summary>
             public string Id => "test";
 
+            /// <summary>
+            /// Executes the context
+            /// </summary>
+            /// <param name="context">The context</param>
             public void Execute(DialogContext context)
             {
             }
 
+            /// <summary>
+            /// Ises the valid using the specified context
+            /// </summary>
+            /// <param name="context">The context</param>
+            /// <returns>The bool</returns>
             public bool IsValid(DialogContext context) => true;
         }
     }

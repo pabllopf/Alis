@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Light
 {
+    /// <summary>
+    /// The spot light test class
+    /// </summary>
     public class SpotLightTest
     {
+        /// <summary>
+        /// Tests that spot light default constructor should create instance
+        /// </summary>
         [Fact]
         public void SpotLight_DefaultConstructor_ShouldCreateInstance()
         {

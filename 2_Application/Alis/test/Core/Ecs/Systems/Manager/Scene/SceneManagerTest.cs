@@ -39,14 +39,23 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
     /// </summary>
     public class SceneManagerTest : IDisposable
     {
+        /// <summary>
+        /// The scene manager
+        /// </summary>
         private SceneManager _sceneManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SceneManagerTest"/> class
+        /// </summary>
         public SceneManagerTest()
         {
             Context context = new Context();
             _sceneManager = new SceneManager(context);
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _sceneManager = null;

@@ -40,6 +40,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
     /// </summary>
     public class PolygonTest
     {
+        /// <summary>
+        /// Creates the triangle points
+        /// </summary>
+        /// <returns>A list of cdp polygon point</returns>
         private static List<CDP.PolygonPoint> CreateTrianglePoints()
         {
             return new List<CDP.PolygonPoint>

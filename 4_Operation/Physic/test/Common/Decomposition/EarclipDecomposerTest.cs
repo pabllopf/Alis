@@ -40,6 +40,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
     /// </summary>
     public class EarclipDecomposerTest
     {
+        /// <summary>
+        /// Creates the triangle vertices
+        /// </summary>
+        /// <returns>The vertices</returns>
         private static Vertices CreateTriangleVertices()
         {
             return new Vertices
@@ -50,6 +54,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             };
         }
 
+        /// <summary>
+        /// Creates the quad vertices
+        /// </summary>
+        /// <returns>The vertices</returns>
         private static Vertices CreateQuadVertices()
         {
             return new Vertices
@@ -61,6 +69,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             };
         }
 
+        /// <summary>
+        /// Creates the pentagon vertices
+        /// </summary>
+        /// <returns>The vertices</returns>
         private static Vertices CreatePentagonVertices()
         {
             return new Vertices

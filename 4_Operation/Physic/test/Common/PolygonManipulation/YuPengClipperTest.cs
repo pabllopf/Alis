@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.PolygonManipulation
 {
+    /// <summary>
+    /// The yu peng clipper test class
+    /// </summary>
     public class YuPengClipperTest
     {
+        /// <summary>
+        /// Tests that union overlapping squares returns result
+        /// </summary>
         [Fact]
         public void Union_OverlappingSquares_ReturnsResult()
         {
@@ -34,6 +40,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(PolyClipError.None, error);
         }
 
+        /// <summary>
+        /// Tests that union non overlapping squares returns result
+        /// </summary>
         [Fact]
         public void Union_NonOverlappingSquares_ReturnsResult()
         {
@@ -59,6 +68,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotEmpty(result);
         }
 
+        /// <summary>
+        /// Tests that union overlapping triangles returns result
+        /// </summary>
         [Fact]
         public void Union_OverlappingTriangles_ReturnsResult()
         {
@@ -82,6 +94,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(PolyClipError.None, error);
         }
 
+        /// <summary>
+        /// Tests that union one inside another returns outer
+        /// </summary>
         [Fact]
         public void Union_OneInsideAnother_ReturnsOuter()
         {
@@ -107,6 +122,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotEmpty(result);
         }
 
+        /// <summary>
+        /// Tests that difference overlapping squares returns result
+        /// </summary>
         [Fact]
         public void Difference_OverlappingSquares_ReturnsResult()
         {
@@ -132,6 +150,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(PolyClipError.None, error);
         }
 
+        /// <summary>
+        /// Tests that difference non overlapping returns poly 1
+        /// </summary>
         [Fact]
         public void Difference_NonOverlapping_ReturnsPoly1()
         {
@@ -157,6 +178,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotEmpty(result);
         }
 
+        /// <summary>
+        /// Tests that intersect overlapping squares returns result
+        /// </summary>
         [Fact]
         public void Intersect_OverlappingSquares_ReturnsResult()
         {
@@ -182,6 +206,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(PolyClipError.None, error);
         }
 
+        /// <summary>
+        /// Tests that intersect non overlapping returns result
+        /// </summary>
         [Fact]
         public void Intersect_NonOverlapping_ReturnsResult()
         {
@@ -207,6 +234,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(PolyClipError.None, error);
         }
 
+        /// <summary>
+        /// Tests that intersect one inside another returns inner
+        /// </summary>
         [Fact]
         public void Intersect_OneInsideAnother_ReturnsInner()
         {
@@ -232,6 +262,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotEmpty(result);
         }
 
+        /// <summary>
+        /// Tests that union adjacent squares touching edges
+        /// </summary>
         [Fact]
         public void Union_AdjacentSquares_TouchingEdges()
         {
@@ -257,6 +290,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotEmpty(result);
         }
 
+        /// <summary>
+        /// Tests that difference one inside another returns result
+        /// </summary>
         [Fact]
         public void Difference_OneInsideAnother_ReturnsResult()
         {
@@ -282,6 +318,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotEmpty(result);
         }
 
+        /// <summary>
+        /// Tests that union polygon with origin edge returns result
+        /// </summary>
         [Fact]
         public void Union_PolygonWithOriginEdge_ReturnsResult()
         {
@@ -305,6 +344,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(PolyClipError.None, error);
         }
 
+        /// <summary>
+        /// Tests that union identical polygons returns result
+        /// </summary>
         [Fact]
         public void Union_IdenticalPolygons_ReturnsResult()
         {

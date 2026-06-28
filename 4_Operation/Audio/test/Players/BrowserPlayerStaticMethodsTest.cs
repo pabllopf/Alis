@@ -382,6 +382,12 @@ namespace Alis.Core.Audio.Test.Players
 
         #region Helper Methods
 
+        /// <summary>
+        /// Creates the valid wav header using the specified bits
+        /// </summary>
+        /// <param name="bits">The bits</param>
+        /// <param name="channels">The channels</param>
+        /// <returns>The wav data</returns>
         private byte[] CreateValidWavHeader(int bits, int channels)
         {
             byte[] wavData = new byte[100];
@@ -404,6 +410,10 @@ namespace Alis.Core.Audio.Test.Players
             return wavData;
         }
 
+        /// <summary>
+        /// Creates the wav header without fmt chunk
+        /// </summary>
+        /// <returns>The wav data</returns>
         private byte[] CreateWavHeaderWithoutFmtChunk()
         {
             byte[] wavData = new byte[100];
@@ -416,6 +426,10 @@ namespace Alis.Core.Audio.Test.Players
             return wavData;
         }
 
+        /// <summary>
+        /// Creates the valid wav header with compressed format
+        /// </summary>
+        /// <returns>The wav data</returns>
         private byte[] CreateValidWavHeaderWithCompressedFormat()
         {
             byte[] wavData = new byte[100];
@@ -436,6 +450,10 @@ namespace Alis.Core.Audio.Test.Players
             return wavData;
         }
 
+        /// <summary>
+        /// Creates the wav with 4 channels
+        /// </summary>
+        /// <returns>The wav data</returns>
         private byte[] CreateWavWith4Channels()
         {
             byte[] wavData = new byte[100];
@@ -456,6 +474,10 @@ namespace Alis.Core.Audio.Test.Players
             return wavData;
         }
 
+        /// <summary>
+        /// Creates the wav with 24 bit depth
+        /// </summary>
+        /// <returns>The wav data</returns>
         private byte[] CreateWavWith24BitDepth()
         {
             byte[] wavData = new byte[100];
@@ -476,6 +498,11 @@ namespace Alis.Core.Audio.Test.Players
             return wavData;
         }
 
+        /// <summary>
+        /// Creates the wav with fmt chunk using the specified fmt size
+        /// </summary>
+        /// <param name="fmtSize">The fmt size</param>
+        /// <returns>The wav data</returns>
         private byte[] CreateWavWithFmtChunk(int fmtSize)
         {
             byte[] wavData = new byte[100];
@@ -493,6 +520,10 @@ namespace Alis.Core.Audio.Test.Players
             return wavData;
         }
 
+        /// <summary>
+        /// Creates the wav with multiple chunks
+        /// </summary>
+        /// <returns>The wav data</returns>
         private byte[] CreateWavWithMultipleChunks()
         {
             byte[] wavData = new byte[100];
@@ -511,6 +542,10 @@ namespace Alis.Core.Audio.Test.Players
             return wavData;
         }
 
+        /// <summary>
+        /// Creates the wav with data chunk
+        /// </summary>
+        /// <returns>The wav data</returns>
         private byte[] CreateWavWithDataChunk()
         {
             byte[] wavData = new byte[100];

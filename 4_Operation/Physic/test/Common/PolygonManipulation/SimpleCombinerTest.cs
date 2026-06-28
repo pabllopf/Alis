@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.PolygonManipulation
 {
+    /// <summary>
+    /// The simple combiner test class
+    /// </summary>
     public class SimpleCombinerTest
     {
+        /// <summary>
+        /// Tests that polygonize triangles empty list returns same
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_EmptyList_ReturnsSame()
         {
@@ -17,6 +23,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Same(empty, result);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles single valid triangle returns one polygon
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_SingleValidTriangle_ReturnsOnePolygon()
         {
@@ -31,6 +40,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(3, result[0].Count);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles degenerate triangle is skipped
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_DegenerateTriangle_IsSkipped()
         {
@@ -44,6 +56,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles two adjacent triangles combines
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_TwoAdjacentTriangles_Combines()
         {
@@ -59,6 +74,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result[0].Count >= 3);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles two adjacent triangles with swap combines
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_TwoAdjacentTrianglesWithSwap_Combines()
         {
@@ -74,6 +92,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result[0].Count >= 3);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles non adjacent triangles stays separate
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_NonAdjacentTriangles_StaysSeparate()
         {
@@ -88,6 +109,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, result.Count);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles max polys limit respected
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_MaxPolysLimit_Respected()
         {
@@ -103,6 +127,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, result.Count);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles all degenerate returns empty
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_AllDegenerate_ReturnsEmpty()
         {
@@ -117,6 +144,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles all degenerate flags covered returns empty
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_AllDegenerateFlagsCovered_ReturnsEmpty()
         {
@@ -131,6 +161,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles first and last same is degenerate
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_FirstAndLastSame_IsDegenerate()
         {
@@ -144,6 +177,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles corrupt polygon logs and skips
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_CorruptPolygon_LogsAndSkips()
         {
@@ -158,6 +194,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Single(result);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles adjacent with different tip index combines
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_AdjacentWithDifferentTipIndex_Combines()
         {
@@ -173,6 +212,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result[0].Count >= 3);
         }
 
+        /// <summary>
+        /// Tests that polygonize triangles three in row combines to one
+        /// </summary>
         [Fact]
         public void PolygonizeTriangles_ThreeInRow_CombinesToOne()
         {

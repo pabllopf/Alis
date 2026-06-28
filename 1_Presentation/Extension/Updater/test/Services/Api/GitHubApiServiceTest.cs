@@ -40,13 +40,22 @@ namespace Alis.Extension.Updater.Test.Services.Api
     /// </summary>
     public class GitHubApiServiceTest : IDisposable
     {
+        /// <summary>
+        /// The service
+        /// </summary>
         private GitHubApiService _service;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GitHubApiServiceTest"/> class
+        /// </summary>
         public GitHubApiServiceTest()
         {
             _service = new GitHubApiService(new Uri("https://api.github.com/repos/test/test/releases/latest"));
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _service?.Dispose();

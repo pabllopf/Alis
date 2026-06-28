@@ -208,8 +208,19 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// </summary>
         private sealed class ThrowingTextWriter : TextWriter
         {
+            /// <summary>
+            /// Writes the value
+            /// </summary>
+            /// <param name="value">The value</param>
             public override void Write(char value) => throw new IOException("Test exception");
+            /// <summary>
+            /// Writes the line using the specified value
+            /// </summary>
+            /// <param name="value">The value</param>
             public override void WriteLine(string value) => throw new IOException("Test exception");
+            /// <summary>
+            /// Gets the value of the encoding
+            /// </summary>
             public override System.Text.Encoding Encoding => System.Text.Encoding.UTF8;
         }
     }

@@ -40,6 +40,9 @@ namespace Alis.Core.Graphic.Test
     /// </summary>
     public class GlShaderTest : IDisposable
     {
+        /// <summary>
+        /// The shader
+        /// </summary>
         private GlShader? _shader;
 
         /// <summary>

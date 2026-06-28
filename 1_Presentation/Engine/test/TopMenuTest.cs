@@ -40,6 +40,10 @@ namespace Alis.App.Engine.Test
     /// </summary>
     public class TopMenuTest
     {
+        /// <summary>
+        /// Creates the space work
+        /// </summary>
+        /// <returns>The space work</returns>
         private static SpaceWork CreateSpaceWork() =>
             (SpaceWork)RuntimeHelpers.GetUninitializedObject(typeof(SpaceWork));
 

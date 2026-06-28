@@ -39,8 +39,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
     /// </summary>
     public class DungeonTest : IDisposable
     {
+        /// <summary>
+        /// The dungeon
+        /// </summary>
         private Dungeon _dungeon;
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _dungeon?.Dispose();
@@ -315,6 +321,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
     /// </summary>
     internal class MockDungeonGenerator : IDungeonGenerator
     {
+        /// <summary>
+        /// Generates this instance
+        /// </summary>
+        /// <returns>The dungeon data</returns>
         public DungeonData Generate()
         {
             return new DungeonData();
@@ -326,13 +336,36 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
     /// </summary>
     internal class MockRandomNumberGenerator : IRandomNumberGenerator
     {
+        /// <summary>
+        /// Nexts the min value
+        /// </summary>
+        /// <param name="minValue">The min value</param>
+        /// <param name="maxValue">The max value</param>
+        /// <returns>The int</returns>
         public int Next(int minValue, int maxValue) => minValue;
+        /// <summary>
+        /// Nexts the max value
+        /// </summary>
+        /// <param name="maxValue">The max value</param>
+        /// <returns>The int</returns>
         public int Next(int maxValue) => throw new NotImplementedException();
 
+        /// <summary>
+        /// Nexts the byte
+        /// </summary>
+        /// <returns>The byte</returns>
         public byte NextByte() => throw new NotImplementedException();
 
+        /// <summary>
+        /// Nexts the double
+        /// </summary>
+        /// <returns>The double</returns>
         public double NextDouble() => 0.5;
 
+        /// <summary>
+        /// Nexts the bytes using the specified buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
         public void NextBytes(byte[] buffer)
         {
             for (int i = 0; i < buffer.Length; i++)
@@ -347,15 +380,41 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
     /// </summary>
     internal class MockDisposableRandomNumberGenerator : IRandomNumberGenerator, IDisposable
     {
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
+        /// <summary>
+        /// Nexts the min value
+        /// </summary>
+        /// <param name="minValue">The min value</param>
+        /// <param name="maxValue">The max value</param>
+        /// <returns>The int</returns>
         public int Next(int minValue, int maxValue) => minValue;
+        /// <summary>
+        /// Nexts the max value
+        /// </summary>
+        /// <param name="maxValue">The max value</param>
+        /// <returns>The int</returns>
         public int Next(int maxValue) => throw new NotImplementedException();
 
+        /// <summary>
+        /// Nexts the byte
+        /// </summary>
+        /// <returns>The byte</returns>
         public byte NextByte() => throw new NotImplementedException();
 
+        /// <summary>
+        /// Nexts the double
+        /// </summary>
+        /// <returns>The double</returns>
         public double NextDouble() => 0.5;
 
+        /// <summary>
+        /// Nexts the bytes using the specified buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
         public void NextBytes(byte[] buffer)
         {
             for (int i = 0; i < buffer.Length; i++)
@@ -383,8 +442,15 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
     /// </summary>
     internal class MockDisposableDungeonGenerator : IDungeonGenerator, IDisposable
     {
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
+        /// <summary>
+        /// Generates this instance
+        /// </summary>
+        /// <returns>The dungeon data</returns>
         public DungeonData Generate() => new DungeonData();
 
         /// <summary>

@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Language.Translator.Test
 {
+    /// <summary>
+    /// The lang test class
+    /// </summary>
     public class LangTest
     {
+        /// <summary>
+        /// Tests that constructor default sets is default false
+        /// </summary>
         [Fact]
         public void Constructor_Default_SetsIsDefaultFalse()
         {
@@ -42,6 +48,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.False(lang.IsDefault);
         }
 
+        /// <summary>
+        /// Tests that constructor code and name sets properties
+        /// </summary>
         [Fact]
         public void Constructor_CodeAndName_SetsProperties()
         {
@@ -52,6 +61,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.False(lang.IsDefault);
         }
 
+        /// <summary>
+        /// Tests that constructor full sets all properties
+        /// </summary>
         [Fact]
         public void Constructor_Full_SetsAllProperties()
         {
@@ -64,6 +76,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.True(lang.IsDefault);
         }
 
+        /// <summary>
+        /// Tests that constructor full default false by default
+        /// </summary>
         [Fact]
         public void Constructor_Full_DefaultFalseByDefault()
         {
@@ -72,6 +87,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.False(lang.IsDefault);
         }
 
+        /// <summary>
+        /// Tests that properties can be set and read
+        /// </summary>
         [Fact]
         public void Properties_CanBeSetAndRead()
         {
@@ -90,6 +108,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.True(lang.IsDefault);
         }
 
+        /// <summary>
+        /// Tests that equals same values returns true
+        /// </summary>
         [Fact]
         public void Equals_SameValues_ReturnsTrue()
         {
@@ -99,6 +120,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.True(a.Equals(b));
         }
 
+        /// <summary>
+        /// Tests that equals different code returns false
+        /// </summary>
         [Fact]
         public void Equals_DifferentCode_ReturnsFalse()
         {
@@ -108,6 +132,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.False(a.Equals(b));
         }
 
+        /// <summary>
+        /// Tests that equals different name returns false
+        /// </summary>
         [Fact]
         public void Equals_DifferentName_ReturnsFalse()
         {
@@ -117,6 +144,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.False(a.Equals(b));
         }
 
+        /// <summary>
+        /// Tests that equals null returns false
+        /// </summary>
         [Fact]
         public void Equals_Null_ReturnsFalse()
         {
@@ -125,6 +155,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.False(lang.Equals(default(ILanguage)));
         }
 
+        /// <summary>
+        /// Tests that equals object same values returns true
+        /// </summary>
         [Fact]
         public void Equals_Object_SameValues_ReturnsTrue()
         {
@@ -134,6 +167,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.True(a.Equals(b));
         }
 
+        /// <summary>
+        /// Tests that equals object null returns false
+        /// </summary>
         [Fact]
         public void Equals_Object_Null_ReturnsFalse()
         {
@@ -142,6 +178,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.False(lang.Equals((object)null));
         }
 
+        /// <summary>
+        /// Tests that equals object wrong type returns false
+        /// </summary>
         [Fact]
         public void Equals_Object_WrongType_ReturnsFalse()
         {
@@ -150,6 +189,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.False(lang.Equals("not a lang"));
         }
 
+        /// <summary>
+        /// Tests that get hash code same values returns same
+        /// </summary>
         [Fact]
         public void GetHashCode_SameValues_ReturnsSame()
         {
@@ -159,6 +201,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.Equal(a.GetHashCode(), b.GetHashCode());
         }
 
+        /// <summary>
+        /// Tests that get hash code different values returns different
+        /// </summary>
         [Fact]
         public void GetHashCode_DifferentValues_ReturnsDifferent()
         {
@@ -168,6 +213,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.NotEqual(a.GetHashCode(), b.GetHashCode());
         }
 
+        /// <summary>
+        /// Tests that get hash code null code and name does not throw
+        /// </summary>
         [Fact]
         public void GetHashCode_NullCodeAndName_DoesNotThrow()
         {
@@ -178,6 +226,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.Equal(0, hash);
         }
 
+        /// <summary>
+        /// Tests that to string returns formatted
+        /// </summary>
         [Fact]
         public void ToString_ReturnsFormatted()
         {
@@ -188,6 +239,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.Equal("en - English", result);
         }
 
+        /// <summary>
+        /// Tests that equals same reference returns true
+        /// </summary>
         [Fact]
         public void Equals_SameReference_ReturnsTrue()
         {

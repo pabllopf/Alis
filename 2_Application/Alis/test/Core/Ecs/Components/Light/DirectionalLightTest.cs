@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Light
 {
+    /// <summary>
+    /// The directional light test class
+    /// </summary>
     public class DirectionalLightTest
     {
+        /// <summary>
+        /// Tests that directional light default constructor should create instance
+        /// </summary>
         [Fact]
         public void DirectionalLight_DefaultConstructor_ShouldCreateInstance()
         {

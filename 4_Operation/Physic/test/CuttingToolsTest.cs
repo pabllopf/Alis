@@ -44,6 +44,9 @@ namespace Alis.Core.Physic.Test
     /// </summary>
     public class CuttingToolsTest : IDisposable
     {
+        /// <summary>
+        /// The world
+        /// </summary>
         private WorldPhysic? _world;
 
         /// <summary>

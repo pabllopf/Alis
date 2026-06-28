@@ -32,8 +32,15 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Attributes
 {
+    /// <summary>
+    /// The require sfml audio fact attribute class
+    /// </summary>
+    /// <seealso cref="FactAttribute"/>
     public class RequireCSfmlAudioFactAttribute : FactAttribute
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequireCSfmlAudioFactAttribute"/> class
+        /// </summary>
         public RequireCSfmlAudioFactAttribute()
         {
             try

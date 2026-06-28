@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The top menu mac test class
+    /// </summary>
     public class TopMenuMacTest
     {
+        /// <summary>
+        /// Tests that constructor should set space work
+        /// </summary>
         [Fact]
         public void Constructor_ShouldSetSpaceWork()
         {
@@ -18,6 +24,9 @@ namespace Alis.App.Engine.Test
             Assert.Same(spaceWork, menu.SpaceWork);
         }
 
+        /// <summary>
+        /// Tests that space work property should return set value
+        /// </summary>
         [Fact]
         public void SpaceWork_Property_ShouldReturnSetValue()
         {
@@ -27,6 +36,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menu.SpaceWork);
         }
 
+        /// <summary>
+        /// Tests that initialize should not throw
+        /// </summary>
         [Fact]
         public void Initialize_ShouldNotThrow()
         {
@@ -38,6 +50,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menu);
         }
 
+        /// <summary>
+        /// Tests that start should not throw
+        /// </summary>
         [Fact]
         public void Start_ShouldNotThrow()
         {
@@ -49,6 +64,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menu);
         }
 
+        /// <summary>
+        /// Tests that update should not throw
+        /// </summary>
         [Fact]
         public void Update_ShouldNotThrow()
         {
@@ -60,6 +78,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(menu);
         }
 
+        /// <summary>
+        /// Tests that render should not throw
+        /// </summary>
         [Fact]
         public void Render_ShouldNotThrow()
         {
