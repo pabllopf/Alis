@@ -431,5 +431,58 @@ namespace Alis.Extension.Io.FileDialog.Test
 
             Assert.False(result);
         }
+
+        /// <summary>
+        ///     Tests that IsFileExtensionAllowed returns true when options is null (no filters).
+        /// </summary>
+        [Fact]
+        public void IsFileExtensionAllowed_WithNullOptions_ShouldReturnTrue()
+        {
+            bool result = FilePickerValidator.IsFileExtensionAllowed("file.txt", null);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that ValidateOptions throws when SaveFile dialog has AllowDirectories.
+        /// </summary>
+        [Fact]
+        public void ValidateOptions_WithSaveFileAndAllowDirectories_ShouldThrow()
+        {
+            FilePickerOptions options = new FilePickerOptions("Save", FileDialogType.SaveFile)
+            {
+                AllowDirectories = true
+            };
+
+            Assert.Throws<ArgumentException>(() => FilePickerValidator.ValidateOptions(options));
+        }
+
+        /// <summary>
+        ///     Tests that IsResultValid returns false for non-existent file path in OpenFile dialog.
+        /// </summary>
+        [Fact]
+        public void IsResultValid_WithNonExistentOpenFilePath_ShouldReturnFalse()
+        {
+            FilePickerOptions options = new FilePickerOptions("Open");
+            FilePickerResult result = new FilePickerResult("/nonexistent/test-file.txt");
+
+            bool isValid = FilePickerValidator.IsResultValid(result, options);
+
+            Assert.False(isValid);
+        }
+
+        /// <summary>
+        ///     Tests that IsResultValid returns false for non-existent folder in SelectFolder dialog.
+        /// </summary>
+        [Fact]
+        public void IsResultValid_WithNonExistentFolderPath_ShouldReturnFalse()
+        {
+            FilePickerOptions options = new FilePickerOptions("Select", FileDialogType.SelectFolder);
+            FilePickerResult result = new FilePickerResult("/nonexistent/folder");
+
+            bool isValid = FilePickerValidator.IsResultValid(result, options);
+
+            Assert.False(isValid);
+        }
     }
 }
