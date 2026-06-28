@@ -198,5 +198,40 @@ namespace Alis.Core.Ecs.Test.Collections
 
             instance.Return(array);
         }
+
+        /// <summary>
+        ///     Tests that rent reuses a previously returned array from the pool.
+        /// </summary>
+        [Fact]
+        public void FastestArrayPool_RentReusesPooledArray()
+        {
+            FastestArrayPool<int> instance = FastestArrayPool<int>.Instance;
+            int[] array1 = instance.Rent(16);
+            instance.Return(array1);
+
+            int[] array2 = instance.Rent(16);
+
+            Assert.Same(array1, array2);
+
+            instance.Return(array2);
+        }
+
+        /// <summary>
+        ///     Tests that return with clearArray clears reference type elements.
+        /// </summary>
+        [Fact]
+        public void FastestArrayPool_ReturnWithClearClearsReferenceType()
+        {
+            FastestArrayPool<string> instance = FastestArrayPool<string>.Instance;
+            string[] array = instance.Rent(16);
+            array[0] = "test";
+            instance.Return(array, clearArray: true);
+
+            string[] reused = instance.Rent(16);
+
+            Assert.Null(reused[0]);
+
+            instance.Return(reused);
+        }
     }
 }
