@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;
 using Xunit;
 
@@ -93,6 +94,57 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             ComponentEvent copy = original;
 
             Assert.False(copy.HasListeners);
+        }
+        /// <summary>
+        ///     Tests that HasListeners returns true when GenericEvent has listeners
+        /// </summary>
+        [Fact]
+        public void HasListeners_TrueWhenGenericEventHasListeners()
+        {
+            ComponentEvent evt = new ComponentEvent();
+            GenericEvent genericEvent = new GenericEvent();
+            genericEvent.Add(new NoOpGenericAction());
+            evt.GenericEvent = genericEvent;
+
+            Assert.True(evt.HasListeners);
+        }
+
+        /// <summary>
+        ///     Tests that HasListeners returns true when NormalEvent has listeners
+        /// </summary>
+        [Fact]
+        public void HasListeners_TrueWhenNormalEventHasListeners()
+        {
+            ComponentEvent evt = new ComponentEvent();
+            GenericEvent genericEvent = new GenericEvent();
+            evt.GenericEvent = genericEvent;
+            evt.NormalEvent.Add(OnEvent);
+
+            Assert.True(evt.HasListeners);
+        }
+
+        /// <summary>
+        ///     Called on event
+        /// </summary>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="componentId">The componentId</param>
+        private static void OnEvent(GameObject gameObject, ComponentId componentId)
+        {
+        }
+
+        /// <summary>
+        ///     A noop IGenericAction for testing
+        /// </summary>
+        private sealed class NoOpGenericAction : IGenericAction<GameObject>
+        {
+            /// <summary>
+            ///     Invokes the specified gameObject
+            /// </summary>
+            /// <param name="gameObject">The gameObject</param>
+            /// <param name="arg">The arg</param>
+            public void Invoke<T>(GameObject gameObject, ref T arg)
+            {
+            }
         }
     }
 }
