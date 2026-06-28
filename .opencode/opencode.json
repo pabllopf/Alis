@@ -193,6 +193,7 @@
     }
 
   },
+  
 
   "compaction": {
     "auto": true,
