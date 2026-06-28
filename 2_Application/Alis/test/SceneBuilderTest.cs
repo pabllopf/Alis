@@ -89,5 +89,18 @@ namespace Alis.Test
 
             Assert.Same(builder, result);
         }
+        /// <summary>
+        /// Tests that Name returns the builder instance
+        /// </summary>
+        [Fact]
+        public void Name_ReturnsBuilder()
+        {
+            Context context = new Context();
+            SceneBuilder builder = new SceneBuilder(context);
+
+            SceneBuilder result = builder.Name("TestScene");
+
+            Assert.Same(builder, result);
+        }
     }
 }
