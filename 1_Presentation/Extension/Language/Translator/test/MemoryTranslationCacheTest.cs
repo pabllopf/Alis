@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Language.Translator.Cache;
 using Xunit;
 
@@ -154,6 +155,227 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.Equal("Hola", esValue);
             Assert.True(frFound);
             Assert.Equal("Bonjour", frValue);
+        }
+        /// <summary>
+        ///     Tests that TryGetTranslation returns false for null language code
+        /// </summary>
+        [Fact]
+        public void TryGetTranslation_WithNullLanguageCode_ShouldReturnFalse()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+
+            bool found = cache.TryGetTranslation(null, "greeting", out string result);
+
+            Assert.False(found);
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that TryGetTranslation returns false for empty language code
+        /// </summary>
+        [Fact]
+        public void TryGetTranslation_WithEmptyLanguageCode_ShouldReturnFalse()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+
+            bool found = cache.TryGetTranslation(string.Empty, "greeting", out string result);
+
+            Assert.False(found);
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that TryGetTranslation returns false for whitespace language code
+        /// </summary>
+        [Fact]
+        public void TryGetTranslation_WithWhitespaceLanguageCode_ShouldReturnFalse()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+
+            bool found = cache.TryGetTranslation("   ", "greeting", out string result);
+
+            Assert.False(found);
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that TryGetTranslation returns false for null key
+        /// </summary>
+        [Fact]
+        public void TryGetTranslation_WithNullKey_ShouldReturnFalse()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+
+            bool found = cache.TryGetTranslation("en", null, out string result);
+
+            Assert.False(found);
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that TryGetTranslation returns false for empty key
+        /// </summary>
+        [Fact]
+        public void TryGetTranslation_WithEmptyKey_ShouldReturnFalse()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+
+            bool found = cache.TryGetTranslation("en", string.Empty, out string result);
+
+            Assert.False(found);
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that TryGetTranslation returns false when language exists but key does not
+        /// </summary>
+        [Fact]
+        public void TryGetTranslation_WithLanguageExistsButKeyNotFound_ShouldReturnFalse()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+
+            bool found = cache.TryGetTranslation("en", "farewell", out string result);
+
+            Assert.False(found);
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that Set throws when language code is null
+        /// </summary>
+        [Fact]
+        public void Set_WithNullLanguageCode_ShouldThrowArgumentExeption()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+
+            Assert.Throws<ArgumentException>(() => cache.Set(null, "key", "value"));
+        }
+
+        /// <summary>
+        ///     Tests that Set throws when key is null
+        /// </summary>
+        [Fact]
+        public void Set_WithNullKey_ShouldThrowArgumentExeption()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+
+            Assert.Throws<ArgumentException>(() => cache.Set("en", null, "value"));
+        }
+
+        /// <summary>
+        ///     Tests that Set stores empty string when value is null
+        /// </summary>
+        [Fact]
+        public void Set_WithNullValue_ShouldStoreEmptyString()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+
+            cache.Set("en", "greeting", null);
+            bool found = cache.TryGetTranslation("en", "greeting", out string result);
+
+            Assert.True(found);
+            Assert.Equal(string.Empty, result);
+        }
+
+        /// <summary>
+        ///     Tests that Remove returns false for null language code
+        /// </summary>
+        [Fact]
+        public void Remove_WithNullLanguageCode_ShouldReturnFalse()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+
+            bool removed = cache.Remove(null, "greeting");
+
+            Assert.False(removed);
+        }
+
+        /// <summary>
+        ///     Tests that Remove returns false for empty key
+        /// </summary>
+        [Fact]
+        public void Remove_WithEmptyKey_ShouldReturnFalse()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+
+            bool removed = cache.Remove("en", string.Empty);
+
+            Assert.False(removed);
+        }
+
+        /// <summary>
+        ///     Tests that InvalidateLanguage does nothing for null
+        /// </summary>
+        [Fact]
+        public void InvalidateLanguage_WithNull_ShouldNotThrow()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+
+            cache.InvalidateLanguage(null);
+            bool found = cache.TryGetTranslation("en", "greeting", out string result);
+
+            Assert.True(found);
+            Assert.Equal("Hello", result);
+        }
+
+        /// <summary>
+        ///     Tests that InvalidateLanguage does nothing for non-existent language
+        /// </summary>
+        [Fact]
+        public void InvalidateLanguage_WithNonExistentLanguage_ShouldNotThrow()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+
+            cache.InvalidateLanguage("fr");
+            bool found = cache.TryGetTranslation("en", "greeting", out string result);
+
+            Assert.True(found);
+            Assert.Equal("Hello", result);
+        }
+
+        /// <summary>
+        ///     Tests that Set updates existing key with new value
+        /// </summary>
+        [Fact]
+        public void Set_WithExistingKey_ShouldUpdateValue()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+            cache.Set("en", "greeting", "Hi");
+
+            bool found = cache.TryGetTranslation("en", "greeting", out string result);
+
+            Assert.True(found);
+            Assert.Equal("Hi", result);
+        }
+
+        /// <summary>
+        ///     Tests that Remove removes only the specified key within a language
+        /// </summary>
+        [Fact]
+        public void Remove_WithExistingTranslation_ShouldKeepOtherKeys()
+        {
+            MemoryTranslationCache cache = new MemoryTranslationCache();
+            cache.Set("en", "greeting", "Hello");
+            cache.Set("en", "farewell", "Goodbye");
+
+            cache.Remove("en", "greeting");
+            bool foundGreeting = cache.TryGetTranslation("en", "greeting", out _);
+            bool foundFarewell = cache.TryGetTranslation("en", "farewell", out string farewellValue);
+
+            Assert.False(foundGreeting);
+            Assert.True(foundFarewell);
+            Assert.Equal("Goodbye", farewellValue);
         }
     }
 }
