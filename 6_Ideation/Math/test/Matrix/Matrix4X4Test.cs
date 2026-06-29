@@ -195,8 +195,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix4X4 matrix2 = new Matrix4X4(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
             Matrix4X4 matrix3 = new Matrix4X4(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17);
 
-            Assert.True(matrix1 != matrix2);
-            Assert.False(matrix1 != matrix3);
+            Assert.False(matrix1 != matrix2);
+            Assert.True(matrix1 != matrix3);
         }
 
         /// <summary>
@@ -477,6 +477,114 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(6, matrix[1, 1]);
             Assert.Equal(11, matrix[2, 2]);
             Assert.Equal(16, matrix[3, 3]);
+        }
+
+        /// <summary>
+        ///     Tests that CreateRotationZ with angle zero returns identity
+        /// </summary>
+        [Fact]
+        public void CreateRotationZ_AngleZero_ReturnsIdentity()
+        {
+            Matrix4X4 result = Matrix4X4.CreateRotationZ(0f);
+
+            Assert.Equal(1f, result.M11);
+            Assert.Equal(0f, result.M12);
+            Assert.Equal(0f, result.M21);
+            Assert.Equal(1f, result.M22);
+            Assert.Equal(1f, result.M33);
+            Assert.Equal(1f, result.M44);
+        }
+
+        /// <summary>
+        ///     Tests that CreateRotationZ with angle Pi produces expected values
+        /// </summary>
+        [Fact]
+        public void CreateRotationZ_AnglePi_ProducesExpectedValues()
+        {
+            Matrix4X4 result = Matrix4X4.CreateRotationZ((float)System.Math.PI);
+
+            Assert.Equal(-1f, result.M11, 4);
+            Assert.Equal(0f, result.M12, 4);
+            Assert.Equal(0f, result.M21, 4);
+            Assert.Equal(-1f, result.M22, 4);
+            Assert.Equal(1f, result.M33);
+            Assert.Equal(1f, result.M44);
+        }
+
+        /// <summary>
+        ///     Tests that CreateTranslation with zero vector returns identity
+        /// </summary>
+        [Fact]
+        public void CreateTranslation_ZeroVector_ReturnsIdentity()
+        {
+            Matrix4X4 result = Matrix4X4.CreateTranslation(Vector3F.Zero);
+
+            Assert.Equal(1f, result.M11);
+            Assert.Equal(1f, result.M22);
+            Assert.Equal(1f, result.M33);
+            Assert.Equal(1f, result.M44);
+            Assert.Equal(0f, result.M41);
+            Assert.Equal(0f, result.M42);
+            Assert.Equal(0f, result.M43);
+        }
+
+        /// <summary>
+        ///     Tests that CreateOrthographicOffCenter with asymmetric bounds computes correctly
+        /// </summary>
+        [Fact]
+        public void CreateOrthographicOffCenter_Asymmetric_ComputesCorrectly()
+        {
+            Matrix4X4 result = Matrix4X4.CreateOrthographicOffCenter(0f, 800f, 0f, 600f, 0.1f, 100f);
+
+            Assert.Equal(2f / 800f, result.M11);
+            Assert.Equal(2f / 600f, result.M22);
+            Assert.Equal(1f / (0.1f - 100f), result.M33);
+            Assert.Equal(800f / -800f, result.M41);
+            Assert.Equal(600f / -600f, result.M42);
+        }
+
+        /// <summary>
+        ///     Tests that operator + with zero matrix returns original
+        /// </summary>
+        [Fact]
+        public void OperatorAdd_WithZeroMatrix_ReturnsOriginal()
+        {
+            Matrix4X4 a = new Matrix4X4(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+            Matrix4X4 zero = new Matrix4X4();
+
+            Matrix4X4 result = a + zero;
+
+            Assert.Equal(1f, result.M11);
+            Assert.Equal(6f, result.M22);
+            Assert.Equal(11f, result.M33);
+            Assert.Equal(16f, result.M44);
+        }
+
+        /// <summary>
+        ///     Tests that operator == with difference exactly 0.1 returns false
+        /// </summary>
+        [Fact]
+        public void OperatorEquality_AtExactBoundary_ReturnsFalse()
+        {
+            Matrix4X4 a = new Matrix4X4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            Matrix4X4 b = new Matrix4X4(1.1f, 0, 0, 0, 0, 1.1f, 0, 0, 0, 0, 1.1f, 0, 0, 0, 0, 1.1f);
+
+            Assert.False(a == b);
+            Assert.True(a != b);
+        }
+
+        /// <summary>
+        ///     Tests that operator != is the negation of operator ==
+        /// </summary>
+        [Fact]
+        public void OperatorInequality_IsNegationOfEquality()
+        {
+            Matrix4X4 a = new Matrix4X4(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+            Matrix4X4 b = new Matrix4X4(1.05f, 2, 3, 4, 5, 6.05f, 7, 8, 9, 10, 11.05f, 12, 13, 14, 15, 16.05f);
+            Matrix4X4 c = new Matrix4X4(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17);
+
+            Assert.Equal(!(a == b), a != b);
+            Assert.Equal(!(a == c), a != c);
         }
     }
 }
