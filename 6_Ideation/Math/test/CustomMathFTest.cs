@@ -398,5 +398,118 @@ namespace Alis.Core.Aspect.Math.Test
             Assert.Equal(0f, CustomMathF.Abs(0f));
         }
 
+        /// <summary>
+        ///     Tests that Cos with negative angle returns same value as Cos with positive angle
+        /// </summary>
+        [Fact]
+        public void Cos_WithNegativeAngle_ReturnsSameAsPositive()
+        {
+            float pos = CustomMathF.Cos(CustomMathF.Pi / 3f);
+            float neg = CustomMathF.Cos(-CustomMathF.Pi / 3f);
+
+            Assert.Equal(pos, neg, 4);
+        }
+
+        /// <summary>
+        ///     Tests that Cos with large angle reduces modulo and returns expected value
+        /// </summary>
+        [Fact]
+        public void Cos_WithLargeAngle_ReducesModulo()
+        {
+            float result = CustomMathF.Cos(5 * CustomMathF.Pi + CustomMathF.Pi / 2f);
+
+            Assert.Equal(0f, result, 2);
+        }
+
+        /// <summary>
+        ///     Tests that Sin with negative angle is negative of positive angle
+        /// </summary>
+        [Fact]
+        public void Sin_WithNegativeAngle_ReturnsNegativeOfPositive()
+        {
+            float pos = CustomMathF.Sin(CustomMathF.Pi / 4f);
+            float neg = CustomMathF.Sin(-CustomMathF.Pi / 4f);
+
+            Assert.Equal(-pos, neg, 3);
+        }
+
+        /// <summary>
+        ///     Tests that Tan with negative half Pi returns PositiveInfinity
+        /// </summary>
+        [Fact]
+        public void Tan_WithNegativeHalfPi_ReturnsPositiveInfinity()
+        {
+            float result = CustomMathF.Tan(-CustomMathF.Pi / 2f);
+
+            Assert.True(float.IsPositiveInfinity(result));
+        }
+
+        /// <summary>
+        ///     Tests that Sqrt with small value converges to a positive approximation
+        /// </summary>
+        [Fact]
+        public void Sqrt_WithSmallValue_ReturnsPositiveApproximation()
+        {
+            // The Newton tolerance (0.0001) limits precision for small inputs.
+            float result = CustomMathF.Sqrt(1e-4f);
+
+            Assert.True(result > 0f);
+            Assert.True(result < 1f);
+        }
+
+        /// <summary>
+        ///     Tests that Sqrt with denormalized value triggers early zero return
+        /// </summary>
+        [Fact]
+        public void Sqrt_WithDenormalizedValue_ReturnsZero()
+        {
+            float result = CustomMathF.Sqrt(float.Epsilon / 2f);
+
+            Assert.Equal(0f, result);
+        }
+
+        /// <summary>
+        ///     Tests that Clamp with equal min and max returns that value
+        /// </summary>
+        [Fact]
+        public void Clamp_WithEqualMinMax_ReturnsValue()
+        {
+            Assert.Equal(5f, CustomMathF.Clamp(3f, 5f, 5f));
+            Assert.Equal(5f, CustomMathF.Clamp(5f, 5f, 5f));
+            Assert.Equal(5f, CustomMathF.Clamp(7f, 5f, 5f));
+        }
+
+        /// <summary>
+        ///     Tests that Clamp with NaN input returns NaN
+        /// </summary>
+        [Fact]
+        public void Clamp_WithNaN_ReturnsNaN()
+        {
+            float result = CustomMathF.Clamp(float.NaN, 0f, 1f);
+
+            Assert.True(float.IsNaN(result));
+        }
+
+        /// <summary>
+        ///     Tests that Sin² + Cos² equals approximately 1 for multiple angles
+        /// </summary>
+        [Fact]
+        public void SinSquaredPlusCosSquared_IsApproximatelyOne()
+        {
+            float x = CustomMathF.Pi / 6f;
+            float sin = CustomMathF.Sin(x);
+            float cos = CustomMathF.Cos(x);
+            Assert.Equal(1f, sin * sin + cos * cos, 3);
+
+            x = CustomMathF.Pi / 3f;
+            sin = CustomMathF.Sin(x);
+            cos = CustomMathF.Cos(x);
+            Assert.Equal(1f, sin * sin + cos * cos, 3);
+
+            x = CustomMathF.Pi / 4f;
+            sin = CustomMathF.Sin(x);
+            cos = CustomMathF.Cos(x);
+            Assert.Equal(1f, sin * sin + cos * cos, 3);
+        }
     }
 }
