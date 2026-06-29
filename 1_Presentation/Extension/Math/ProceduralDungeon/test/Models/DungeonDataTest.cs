@@ -259,6 +259,52 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             Assert.Throws<ArgumentException>(() => data.Validate());
         }
 
+        /// <summary>
+        ///     Tests that Validate throws when board is null.
+        /// </summary>
+        [Fact]
+        public void Validate_WithNullBoard_ThrowsArgumentNullException()
+        {
+            DungeonData data = new DungeonData();
+            data.Rooms = new List<RoomData>();
+            data.Corridors = new List<CorridorData>();
 
+            System.Reflection.FieldInfo field = typeof(DungeonData).GetField("_board", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            field.SetValue(data, null);
+
+            Assert.Throws<ArgumentNullException>(() => data.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that Validate throws when rooms is null.
+        /// </summary>
+        [Fact]
+        public void Validate_WithNullRooms_ThrowsArgumentNullException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = new BoardSquare[10, 10];
+            data.Corridors = new List<CorridorData>();
+
+            System.Reflection.FieldInfo field = typeof(DungeonData).GetField("_rooms", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            field.SetValue(data, null);
+
+            Assert.Throws<ArgumentNullException>(() => data.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that Validate throws when corridors is null.
+        /// </summary>
+        [Fact]
+        public void Validate_WithNullCorridors_ThrowsArgumentNullException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = new BoardSquare[10, 10];
+            data.Rooms = new List<RoomData>();
+
+            System.Reflection.FieldInfo field = typeof(DungeonData).GetField("_corridors", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            field.SetValue(data, null);
+
+            Assert.Throws<ArgumentNullException>(() => data.Validate());
+        }
     }
 }

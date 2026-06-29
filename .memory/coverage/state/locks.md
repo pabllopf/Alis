@@ -1,4 +1,10 @@
 # Coverage Locks
 
-No active locks.
+## Format
+```text
+| Target | Worker | Timestamp | Status |
+```
 
+## Active Locks
+
+*No active locks.*
