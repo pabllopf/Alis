@@ -186,5 +186,164 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(0f, inverse.Ex.X);
             Assert.Equal(0f, inverse.Ex.Y);
         }
+
+        /// <summary>
+        ///     Tests that angle = 0 produces identity rotation with GetAngle = 0
+        /// </summary>
+        [Fact]
+        public void AngleConstructor_AngleZero_IsIdentityRotation()
+        {
+            Matrix2X2 matrix = new Matrix2X2(0f);
+
+            Assert.Equal(1f, matrix.Ex.X);
+            Assert.Equal(0f, matrix.Ex.Y);
+            Assert.Equal(0f, matrix.Ey.X);
+            Assert.Equal(1f, matrix.Ey.Y);
+            Assert.Equal(0f, matrix.GetAngle(), 4);
+        }
+
+        /// <summary>
+        ///     Tests that angle = Pi/2 produces Ex.Y = -1 and Ey.X = 1
+        /// </summary>
+        [Fact]
+        public void AngleConstructor_HalfPi_ExYIsMinusOne()
+        {
+            Matrix2X2 matrix = new Matrix2X2((float)(System.Math.PI / 2.0));
+
+            Assert.Equal(0f, matrix.Ex.X, 4);
+            Assert.Equal(-1f, matrix.Ex.Y, 4);
+            Assert.Equal(1f, matrix.Ey.X, 4);
+            Assert.Equal(0f, matrix.Ey.Y, 4);
+            Assert.Equal((float)(-System.Math.PI / 2.0), matrix.GetAngle(), 4);
+        }
+
+        /// <summary>
+        ///     Tests that angle = 2 * Pi produces identity rotation
+        /// </summary>
+        [Fact]
+        public void AngleConstructor_TwoPi_IsIdentityRotation()
+        {
+            Matrix2X2 matrix = new Matrix2X2((float)(System.Math.PI * 2.0));
+
+            Assert.Equal(1f, matrix.Ex.X, 4);
+            Assert.Equal(0f, matrix.Ex.Y, 4);
+            Assert.Equal(0f, matrix.Ey.X, 4);
+            Assert.Equal(1f, matrix.Ey.Y, 4);
+        }
+
+        /// <summary>
+        ///     Tests that GetAngle returns zero after SetIdentity
+        /// </summary>
+        [Fact]
+        public void GetAngle_AfterSetIdentity_ReturnsZero()
+        {
+            Matrix2X2 matrix = new Matrix2X2(1f, 2f, 3f, 4f);
+            matrix.SetIdentity();
+
+            Assert.Equal(0f, matrix.GetAngle(), 4);
+        }
+
+        /// <summary>
+        ///     Tests that GetInverse of identity matrix returns identity
+        /// </summary>
+        [Fact]
+        public void GetInverse_Identity_ReturnsIdentity()
+        {
+            Matrix2X2 identity = new Matrix2X2(1f, 0f, 0f, 1f);
+            Matrix2X2 result = identity.GetInverse();
+
+            Assert.Equal(1f, result.Ex.X, 4);
+            Assert.Equal(0f, result.Ex.Y, 4);
+            Assert.Equal(0f, result.Ey.X, 4);
+            Assert.Equal(1f, result.Ey.Y, 4);
+        }
+
+        /// <summary>
+        ///     Tests that GetInverse and Inverse produce the same result for a non-singular matrix
+        /// </summary>
+        [Fact]
+        public void GetInverse_AndInverseProperty_ProduceSameResult()
+        {
+            Matrix2X2 matrix = new Matrix2X2(5f, 3f, 3f, 5f);
+
+            Matrix2X2 fromMethod = matrix.GetInverse();
+            Matrix2X2 fromProperty = matrix.Inverse;
+
+            Assert.Equal(fromMethod.Ex.X, fromProperty.Ex.X, 4);
+            Assert.Equal(fromMethod.Ex.Y, fromProperty.Ex.Y, 4);
+            Assert.Equal(fromMethod.Ey.X, fromProperty.Ey.X, 4);
+            Assert.Equal(fromMethod.Ey.Y, fromProperty.Ey.Y, 4);
+        }
+
+        /// <summary>
+        ///     Tests that matrix times its GetInverse is identity
+        /// </summary>
+        [Fact]
+        public void GetInverse_MultipliedByOriginal_ReturnsIdentity()
+        {
+            Matrix2X2 a = new Matrix2X2(3f, 1f, 1f, 2f);
+            Matrix2X2 inv = a.GetInverse();
+
+            Matrix2X2 product = default;
+            product.Ex = a.Ex * inv.Ex.X + a.Ey * inv.Ex.Y;
+            product.Ey = a.Ex * inv.Ey.X + a.Ey * inv.Ey.Y;
+
+            Assert.Equal(1f, product.Ex.X, 4);
+            Assert.Equal(0f, product.Ex.Y, 4);
+            Assert.Equal(0f, product.Ey.X, 4);
+            Assert.Equal(1f, product.Ey.Y, 4);
+        }
+
+        /// <summary>
+        ///     Tests that matrix times its Inverse property is identity
+        /// </summary>
+        [Fact]
+        public void InverseProperty_MultipliedByOriginal_ReturnsIdentity()
+        {
+            Matrix2X2 a = new Matrix2X2(3f, 1f, 1f, 2f);
+            Matrix2X2 inv = a.Inverse;
+
+            Matrix2X2 product = default;
+            product.Ex = a.Ex * inv.Ex.X + a.Ey * inv.Ex.Y;
+            product.Ey = a.Ex * inv.Ey.X + a.Ey * inv.Ey.Y;
+
+            Assert.Equal(1f, product.Ex.X, 4);
+            Assert.Equal(0f, product.Ex.Y, 4);
+            Assert.Equal(0f, product.Ey.X, 4);
+            Assert.Equal(1f, product.Ey.Y, 4);
+        }
+
+        /// <summary>
+        ///     Tests that Solve with identity matrix returns the input vector
+        /// </summary>
+        [Fact]
+        public void Solve_WithIdentityMatrix_ReturnsInputVector()
+        {
+            Matrix2X2 identity = new Matrix2X2(1f, 0f, 0f, 1f);
+            Vector2F b = new Vector2F(5f, 7f);
+
+            Vector2F x = identity.Solve(b);
+
+            Assert.Equal(5f, x.X, 4);
+            Assert.Equal(7f, x.Y, 4);
+        }
+
+        /// <summary>
+        ///     Tests that Solve with a general matrix satisfies A * x = b
+        /// </summary>
+        [Fact]
+        public void Solve_WithGeneralMatrix_SatisfiesOriginalSystem()
+        {
+            Matrix2X2 a = new Matrix2X2(3f, 1f, 1f, 2f);
+            Vector2F b = new Vector2F(7f, 8f);
+
+            Vector2F x = a.Solve(b);
+
+            float resultX = a.Ex.X * x.X + a.Ey.X * x.Y;
+            float resultY = a.Ex.Y * x.X + a.Ey.Y * x.Y;
+
+            Assert.Equal(b.X, resultX, 4);
+            Assert.Equal(b.Y, resultY, 4);
+        }
     }
 }

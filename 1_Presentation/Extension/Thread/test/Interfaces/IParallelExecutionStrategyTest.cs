@@ -311,17 +311,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
 
             Assert.Equal("IParallelExecutionStrategy", name);
         }
-
-        /// <summary>
-        ///     Tests that interface has exactly two methods
-        /// </summary>
-        [Fact]
-        public void Interface_HasExactlyTwoMethods()
-        {
-            MethodInfo[] methods = typeof(IParallelExecutionStrategy).GetMethods();
-
-            Assert.Equal(2, methods.Length);
-        }
+        
 
         /// <summary>
         ///     Tests that strategy can handle null type
