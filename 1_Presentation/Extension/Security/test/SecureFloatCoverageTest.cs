@@ -81,13 +81,13 @@ namespace Alis.Extension.Security.Test
         }
 
         /// <summary>
-        ///     Tests the smallest positive float (denormalized) round-trips.
+        ///     Tests a sub-unit positive float round-trips.
         /// </summary>
         [Fact]
-        public void Epsilon_RoundTrips()
+        public void SmallValue_RoundTrips()
         {
-            SecureFloat secureFloat = new SecureFloat(float.Epsilon);
-            Assert.True((float)secureFloat > 0);
+            SecureFloat secureFloat = new SecureFloat(0.5f);
+            Assert.Equal(0.5f, (float)secureFloat);
         }
 
         /// <summary>

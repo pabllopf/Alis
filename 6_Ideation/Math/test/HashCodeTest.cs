@@ -403,5 +403,76 @@ namespace Alis.Core.Aspect.Math.Test
 
             Assert.IsType<int>(result);
         }
+
+        /// <summary>
+        ///     Tests that to hash code with exactly one element covers the length=1 path (position=1, length &lt; 4, MixEmptyState)
+        /// </summary>
+        [Fact]
+        public void ToHashCode_WithOneElement_CoversLengthOnePath()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(42);
+
+            int result = hash.ToHashCode();
+
+            HashCode same = new HashCode();
+            same.Add(42);
+
+            Assert.Equal(same.ToHashCode(), result);
+        }
+
+        /// <summary>
+        ///     Tests that to hash code with exactly two elements covers the length=2 path (position=2, length &lt; 4, MixEmptyState)
+        /// </summary>
+        [Fact]
+        public void ToHashCode_WithTwoElements_CoversLengthTwoPath()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(10);
+            hash.Add(20);
+
+            int result = hash.ToHashCode();
+
+            HashCode same = new HashCode();
+            same.Add(10);
+            same.Add(20);
+
+            Assert.Equal(same.ToHashCode(), result);
+        }
+
+        /// <summary>
+        ///     Tests that combine two with partial null covers one null and one non-null branch simultaneously
+        /// </summary>
+        [Fact]
+        public void Combine_TwoWithPartialNull_CoversPartialNullBranches()
+        {
+            int value = HashCode.Combine<string, int>(null, 42);
+
+            Assert.IsType<int>(value);
+        }
+
+        /// <summary>
+        ///     Tests that combine four with partial null covers mixed null and non-null through the Initialize path
+        /// </summary>
+        [Fact]
+        public void Combine_FourWithPartialNull_CoversPartialNullBranches()
+        {
+            int value = HashCode.Combine<string, int, string, int>(null, 1, null, 2);
+
+            Assert.IsType<int>(value);
+        }
+
+        /// <summary>
+        ///     Tests that rotate left with all ones and all zeros values handles edge bit patterns correctly
+        /// </summary>
+        [Fact]
+        public void RotateLeft_WithEdgeBitPatterns_ReturnsExpectedValue()
+        {
+            Assert.Equal(0xFFFFFFFFu, HashCode.RotateLeft(0xFFFFFFFFu, 0));
+            Assert.Equal(0xFFFFFFFFu, HashCode.RotateLeft(0xFFFFFFFFu, 1));
+            Assert.Equal(0xFFFFFFFFu, HashCode.RotateLeft(0xFFFFFFFFu, 31));
+            Assert.Equal(1u, HashCode.RotateLeft(0x80000000u, 1));
+            Assert.Equal(0x80000000u, HashCode.RotateLeft(1u, 31));
+        }
     }
 }
