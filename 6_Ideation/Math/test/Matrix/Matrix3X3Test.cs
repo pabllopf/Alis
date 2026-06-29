@@ -587,5 +587,148 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Equal(new Vector3F(0, 1, 0), result.Ey);
             Assert.Equal(new Vector3F(0, 0, 1), result.Ez);
         }
+
+        /// <summary>
+        ///     Tests that Solve33 with diagonal matrix returns correct result
+        /// </summary>
+        [Fact]
+        public void Solve33_WithDiagonalMatrix_ReturnsCorrectResult()
+        {
+            Matrix3X3 matrix = new Matrix3X3(
+                new Vector3F(2f, 0f, 0f),
+                new Vector3F(0f, 3f, 0f),
+                new Vector3F(0f, 0f, 4f)
+            );
+
+            Vector3F x = matrix.Solve33(new Vector3F(6f, 12f, 20f));
+
+            Assert.Equal(3f, x.X, 4);
+            Assert.Equal(4f, x.Y, 4);
+            Assert.Equal(5f, x.Z, 4);
+        }
+
+        /// <summary>
+        ///     Tests that Solve33 with general non-singular matrix satisfies A * x = b
+        /// </summary>
+        [Fact]
+        public void Solve33_WithGeneralMatrix_SatisfiesOriginalSystem()
+        {
+            Matrix3X3 matrix = new Matrix3X3(
+                new Vector3F(2f, 0f, 1f),
+                new Vector3F(1f, 3f, 0f),
+                new Vector3F(0f, 1f, 4f)
+            );
+            Vector3F b = new Vector3F(9f, 13f, 23f);
+            Vector3F x = matrix.Solve33(b);
+
+            float rx = matrix.Ex.X * x.X + matrix.Ey.X * x.Y + matrix.Ez.X * x.Z;
+            float ry = matrix.Ex.Y * x.X + matrix.Ey.Y * x.Y + matrix.Ez.Y * x.Z;
+            float rz = matrix.Ex.Z * x.X + matrix.Ey.Z * x.Y + matrix.Ez.Z * x.Z;
+
+            Assert.Equal(b.X, rx, 4);
+            Assert.Equal(b.Y, ry, 4);
+            Assert.Equal(b.Z, rz, 4);
+        }
+
+        /// <summary>
+        ///     Tests that Solve22 with diagonal 2x2 sub-matrix returns correct result
+        /// </summary>
+        [Fact]
+        public void Solve22_WithDiagonalSubMatrix_ReturnsCorrectResult()
+        {
+            Matrix3X3 matrix = new Matrix3X3(
+                new Vector3F(2f, 0f, 0f),
+                new Vector3F(0f, 3f, 0f),
+                new Vector3F(0f, 0f, 1f)
+            );
+
+            Vector2F x = matrix.Solve22(new Vector2F(6f, 12f));
+
+            Assert.Equal(3f, x.X, 4);
+            Assert.Equal(4f, x.Y, 4);
+        }
+
+        /// <summary>
+        ///     Tests that GetInverse22 with diagonal matrix returns correct inverse
+        /// </summary>
+        [Fact]
+        public void GetInverse22_WithDiagonalMatrix_ReturnsCorrectInverse()
+        {
+            Matrix3X3 matrix = new Matrix3X3(
+                new Vector3F(2f, 0f, 0f),
+                new Vector3F(0f, 3f, 0f),
+                new Vector3F(0f, 0f, 1f)
+            );
+
+            Matrix3X3 result = new Matrix3X3();
+            matrix.GetInverse22(ref result);
+
+            Assert.Equal(0.5f, result.Ex.X, 4);
+            Assert.Equal(0f, result.Ex.Y, 4);
+            Assert.Equal(0f, result.Ey.X, 4);
+            Assert.Equal(1f / 3f, result.Ey.Y, 4);
+        }
+
+        /// <summary>
+        ///     Tests that GetInverse22 with non-symmetric matrix satisfies A * inv(A) = I
+        /// </summary>
+        [Fact]
+        public void GetInverse22_WithNonSymmetricMatrix_SatisfiesInverseProperty()
+        {
+            Matrix3X3 a = new Matrix3X3(
+                new Vector3F(2f, 1f, 0f),
+                new Vector3F(3f, 4f, 0f),
+                new Vector3F(0f, 0f, 1f)
+            );
+
+            Matrix3X3 inv = new Matrix3X3();
+            a.GetInverse22(ref inv);
+
+            float p00 = a.Ex.X * inv.Ex.X + a.Ey.X * inv.Ex.Y;
+            float p01 = a.Ex.X * inv.Ey.X + a.Ey.X * inv.Ey.Y;
+            float p10 = a.Ex.Y * inv.Ex.X + a.Ey.Y * inv.Ex.Y;
+            float p11 = a.Ex.Y * inv.Ey.X + a.Ey.Y * inv.Ey.Y;
+
+            Assert.Equal(1f, p00, 4);
+            Assert.Equal(0f, p01, 4);
+            Assert.Equal(0f, p10, 4);
+            Assert.Equal(1f, p11, 4);
+        }
+
+        /// <summary>
+        ///     Tests that GetSymInverse33 with non-identity matrix satisfies A * inv(A) = I
+        /// </summary>
+        [Fact]
+        public void GetSymInverse33_WithGeneralMatrix_SatisfiesInverseProperty()
+        {
+            Matrix3X3 a = new Matrix3X3(
+                new Vector3F(2f, 0f, 1f),
+                new Vector3F(0f, 3f, 0f),
+                new Vector3F(1f, 0f, 4f)
+            );
+
+            Matrix3X3 inv = new Matrix3X3();
+            a.GetSymInverse33(ref inv);
+
+            float r00 = a.Ex.X * inv.Ex.X + a.Ey.X * inv.Ex.Y + a.Ez.X * inv.Ex.Z;
+            float r01 = a.Ex.X * inv.Ey.X + a.Ey.X * inv.Ey.Y + a.Ez.X * inv.Ey.Z;
+            float r02 = a.Ex.X * inv.Ez.X + a.Ey.X * inv.Ez.Y + a.Ez.X * inv.Ez.Z;
+            float r10 = a.Ex.Y * inv.Ex.X + a.Ey.Y * inv.Ex.Y + a.Ez.Y * inv.Ex.Z;
+            float r11 = a.Ex.Y * inv.Ey.X + a.Ey.Y * inv.Ey.Y + a.Ez.Y * inv.Ey.Z;
+            float r12 = a.Ex.Y * inv.Ez.X + a.Ey.Y * inv.Ez.Y + a.Ez.Y * inv.Ez.Z;
+            float r20 = a.Ex.Z * inv.Ex.X + a.Ey.Z * inv.Ex.Y + a.Ez.Z * inv.Ex.Z;
+            float r21 = a.Ex.Z * inv.Ey.X + a.Ey.Z * inv.Ey.Y + a.Ez.Z * inv.Ey.Z;
+            float r22 = a.Ex.Z * inv.Ez.X + a.Ey.Z * inv.Ez.Y + a.Ez.Z * inv.Ez.Z;
+
+            Assert.Equal(1f, r00, 4);
+            Assert.Equal(0f, r01, 4);
+            Assert.Equal(0f, r02, 4);
+            Assert.Equal(0f, r10, 4);
+            Assert.Equal(1f, r11, 4);
+            Assert.Equal(0f, r12, 4);
+            Assert.Equal(0f, r20, 4);
+            Assert.Equal(0f, r21, 4);
+            Assert.Equal(1f, r22, 4);
+        }
     }
 }
