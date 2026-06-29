@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
             m.Ex = new Vector3F(
                 det * d,
-                -det * b,
+                -det * c,
                 0.0f
             );
 
