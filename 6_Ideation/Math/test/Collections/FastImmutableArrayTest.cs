@@ -1544,5 +1544,89 @@ namespace Alis.Core.Aspect.Math.Test.Collections
 
             Assert.Equal(1, index);
         }
+
+        /// <summary>
+        ///     Tests that RemoveAt with middle index shifts elements via Array.Copy
+        /// </summary>
+        [Fact]
+        public void Builder_RemoveAt_MiddleIndex_ShiftsElements()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
+            builder.AddRange(1, 2, 3, 4);
+
+            builder.RemoveAt(1);
+
+            Assert.Equal(3, builder.Count);
+            Assert.Equal(1, builder[0]);
+            Assert.Equal(3, builder[1]);
+            Assert.Equal(4, builder[2]);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveAt with first index shifts remaining elements
+        /// </summary>
+        [Fact]
+        public void Builder_RemoveAt_FirstIndex_ShiftsElements()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
+            builder.AddRange(1, 2, 3);
+
+            builder.RemoveAt(0);
+
+            Assert.Equal(2, builder.Count);
+            Assert.Equal(2, builder[0]);
+            Assert.Equal(3, builder[1]);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveAt with index equal to Count silently decrements (no bounds check)
+        /// </summary>
+        [Fact]
+        public void Builder_RemoveAt_IndexEqualToCount_SilentlyDecrements()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
+            builder.AddRange(10, 20, 30);
+
+            builder.RemoveAt(3);
+
+            Assert.Equal(2, builder.Count);
+        }
+
+        /// <summary>
+        ///     Tests that Count setter with small shrink uses for-loop to clear elements
+        /// </summary>
+        [Fact]
+        public void Builder_Count_SetToShrinkFewerThan64Elements_UsesForLoop()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(10);
+            for (int i = 0; i < 8; i++)
+            {
+                builder.Add(i);
+            }
+
+            builder.Count = 3;
+
+            Assert.Equal(3, builder.Count);
+            Assert.Equal(0, builder[0]);
+            Assert.Equal(1, builder[1]);
+            Assert.Equal(2, builder[2]);
+        }
+
+        /// <summary>
+        ///     Tests that Insert at end appends element without Array.Copy
+        /// </summary>
+        [Fact]
+        public void Builder_Insert_AtEnd_AppendsElement()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
+            builder.AddRange(1, 2);
+
+            builder.Insert(2, 3);
+
+            Assert.Equal(3, builder.Count);
+            Assert.Equal(1, builder[0]);
+            Assert.Equal(2, builder[1]);
+            Assert.Equal(3, builder[2]);
+        }
     }
 }
