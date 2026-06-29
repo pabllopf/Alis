@@ -1,4 +1,4 @@
-# Locks
+# Coverage Locks
 
 No active locks.
 
