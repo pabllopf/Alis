@@ -305,10 +305,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="value1">The first matrix to compare.</param>
         /// <param name="value2">The second matrix to compare.</param>
         /// <returns><c>true</c> if the matrices are not equal; otherwise, <c>false</c>.</returns>
-        public static bool operator !=(Matrix4X4 value1, Matrix4X4 value2) => !(System.Math.Abs(value1.M11 - value2.M11) > 0.1F) && !(System.Math.Abs(value1.M12 - value2.M12) > 0.1F) && !(System.Math.Abs(value1.M13 - value2.M13) > 0.1F) && !(System.Math.Abs(value1.M14 - value2.M14) > 0.1F) &&
-                                                                              !(System.Math.Abs(value1.M21 - value2.M21) > 0.1F) && !(System.Math.Abs(value1.M22 - value2.M22) > 0.1F) && !(System.Math.Abs(value1.M23 - value2.M23) > 0.1F) && !(System.Math.Abs(value1.M24 - value2.M24) > 0.1F) &&
-                                                                              !(System.Math.Abs(value1.M31 - value2.M31) > 0.1F) && !(System.Math.Abs(value1.M32 - value2.M32) > 0.1F) && !(System.Math.Abs(value1.M33 - value2.M33) > 0.1F) && !(System.Math.Abs(value1.M34 - value2.M34) > 0.1F) &&
-                                                                              !(System.Math.Abs(value1.M41 - value2.M41) > 0.1F) && !(System.Math.Abs(value1.M42 - value2.M42) > 0.1F) && !(System.Math.Abs(value1.M43 - value2.M43) > 0.1F) && !(System.Math.Abs(value1.M44 - value2.M44) > 0.1F);
+        public static bool operator !=(Matrix4X4 value1, Matrix4X4 value2) => !(value1 == value2);
 
 
         /// <summary>Creates a matrix for rotating points around the Z axis.</summary>
