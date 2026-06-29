@@ -475,5 +475,187 @@ namespace Alis.Core.Aspect.Math.Test.Util
 
             Assert.Equal(5f, result);
         }
+
+        /// <summary>
+        ///     Tests that lerp with amount zero returns value one
+        /// </summary>
+        [Fact]
+        public void Lerp_WithAmountZero_ReturnsValue1()
+        {
+            float result = Helper.Lerp(10f, 20f, 0f);
+
+            Assert.Equal(10f, result);
+        }
+
+        /// <summary>
+        ///     Tests that lerp with amount one returns value two
+        /// </summary>
+        [Fact]
+        public void Lerp_WithAmountOne_ReturnsValue2()
+        {
+            float result = Helper.Lerp(10f, 20f, 1f);
+
+            Assert.Equal(20f, result);
+        }
+
+        /// <summary>
+        ///     Tests that lerp with amount greater than one extrapolates beyond value two
+        /// </summary>
+        [Fact]
+        public void Lerp_WithAmountGreaterThanOne_Extrapolates()
+        {
+            float result = Helper.Lerp(10f, 20f, 2f);
+
+            Assert.Equal(30f, result);
+        }
+
+        /// <summary>
+        ///     Tests that lerp with negative amount extrapolates below value one
+        /// </summary>
+        [Fact]
+        public void Lerp_WithNegativeAmount_Extrapolates()
+        {
+            float result = Helper.Lerp(10f, 20f, -1f);
+
+            Assert.Equal(0f, result);
+        }
+
+        /// <summary>
+        ///     Tests that smooth step with amount at boundaries clamps correctly
+        /// </summary>
+        [Fact]
+        public void SmoothStep_WithAmountAtBoundaries_ClampsCorrectly()
+        {
+            Assert.Equal(0f, Helper.SmoothStep(0f, 1f, 0f));
+            Assert.Equal(1f, Helper.SmoothStep(0f, 1f, 1f));
+            Assert.Equal(0f, Helper.SmoothStep(0f, 1f, -1f));
+            Assert.Equal(1f, Helper.SmoothStep(0f, 1f, 2f));
+        }
+
+        /// <summary>
+        ///     Tests that to degrees with zero returns zero
+        /// </summary>
+        [Fact]
+        public void ToDegrees_WithZero_ReturnsZero()
+        {
+            float result = Helper.ToDegrees(0f);
+
+            Assert.Equal(0f, result);
+        }
+
+        /// <summary>
+        ///     Tests that to degrees with canonical angles returns expected values
+        /// </summary>
+        [Fact]
+        public void ToDegrees_WithCanonicalAngles_ReturnsExpectedValues()
+        {
+            Assert.Equal(90f, Helper.ToDegrees(Constant.PiOver2), 3);
+            Assert.Equal(360f, Helper.ToDegrees(Constant.TwoPi), 3);
+            Assert.Equal(-180f, Helper.ToDegrees(-Constant.Pi), 3);
+        }
+
+        /// <summary>
+        ///     Tests that to radians with canonical angles returns expected values
+        /// </summary>
+        [Fact]
+        public void ToRadians_WithCanonicalAngles_ReturnsExpectedValues()
+        {
+            Assert.Equal(0f, Helper.ToRadians(0f), 3);
+            Assert.Equal(Constant.PiOver2, Helper.ToRadians(90f), 3);
+            Assert.Equal(Constant.Pi, Helper.ToRadians(180f), 3);
+            Assert.Equal(Constant.TwoPi, Helper.ToRadians(360f), 3);
+            Assert.Equal(-Constant.PiOver2, Helper.ToRadians(-90f), 3);
+        }
+
+        /// <summary>
+        ///     Tests that is power of two with edge values returns expected results
+        /// </summary>
+        [Fact]
+        public void IsPowerOfTwo_WithEdgeValues_ReturnsExpectedResults()
+        {
+            Assert.True(Helper.IsPowerOfTwo(1));
+            Assert.True(Helper.IsPowerOfTwo(2));
+            Assert.True(Helper.IsPowerOfTwo(1024));
+            Assert.True(Helper.IsPowerOfTwo(1073741824));
+            Assert.False(Helper.IsPowerOfTwo(-1));
+            Assert.False(Helper.IsPowerOfTwo(-1024));
+            Assert.False(Helper.IsPowerOfTwo(int.MinValue));
+            Assert.False(Helper.IsPowerOfTwo(int.MaxValue));
+        }
+
+        /// <summary>
+        ///     Tests that wrap angle with large multiples wraps correctly
+        /// </summary>
+        [Fact]
+        public void WrapAngle_WithLargeMultiples_WrapsCorrectly()
+        {
+            float result = Helper.WrapAngle(5f * Constant.Pi);
+            Assert.True(result > -Constant.Pi);
+            Assert.True(result <= Constant.Pi);
+        }
+
+        /// <summary>
+        ///     Tests that wrap angle with negative large multiples wraps correctly
+        /// </summary>
+        [Fact]
+        public void WrapAngle_WithNegativeLargeMultiples_WrapsCorrectly()
+        {
+            float result = Helper.WrapAngle(-5f * Constant.Pi);
+            Assert.True(result > -Constant.Pi);
+            Assert.True(result <= Constant.Pi);
+        }
+
+        /// <summary>
+        ///     Tests that wrap angle with three pi over two returns negative pi over two
+        /// </summary>
+        [Fact]
+        public void WrapAngle_WithThreePiOverTwo_ReturnsNegativePiOverTwo()
+        {
+            float result = Helper.WrapAngle(3f * Constant.PiOver2);
+
+            Assert.Equal(-Constant.PiOver2, result, 3);
+        }
+
+        /// <summary>
+        ///     Tests that clamp with NaN returns NaN
+        /// </summary>
+        [Fact]
+        public void Clamp_WithNaN_ReturnsNaN()
+        {
+            float result = Helper.Clamp(float.NaN, 0f, 1f);
+
+            Assert.True(float.IsNaN(result));
+        }
+
+        /// <summary>
+        ///     Tests that clamp with equal min and max returns that value
+        /// </summary>
+        [Fact]
+        public void Clamp_WithEqualMinAndMax_ReturnsThatValue()
+        {
+            float result = Helper.Clamp(5f, 3f, 3f);
+
+            Assert.Equal(3f, result);
+        }
+
+        /// <summary>
+        ///     Tests that distance with equal values returns zero
+        /// </summary>
+        [Fact]
+        public void Distance_WithEqualValues_ReturnsZero()
+        {
+            float result = Helper.Distance(5f, 5f);
+
+            Assert.Equal(0f, result);
+        }
+
+        /// <summary>
+        ///     Tests that distance is commutative
+        /// </summary>
+        [Fact]
+        public void Distance_IsCommutative()
+        {
+            Assert.Equal(Helper.Distance(3f, 7f), Helper.Distance(7f, 3f));
+        }
     }
 }
