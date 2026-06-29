@@ -261,5 +261,125 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.True(first == second);        // tolerance-based
             Assert.False(first.Equals(second));  // exact comparison
         }
+
+        /// <summary>
+        ///     Tests that GetDeterminant of identity matrix returns 1
+        /// </summary>
+        [Fact]
+        public void GetDeterminant_Identity_ReturnsOne()
+        {
+            Matrix3X2 identity = new Matrix3X2(1f, 0f, 0f, 1f, 0f, 0f);
+
+            float det = identity.GetDeterminant();
+
+            Assert.Equal(1f, det);
+        }
+
+        /// <summary>
+        ///     Tests that GetDeterminant of zero matrix returns 0
+        /// </summary>
+        [Fact]
+        public void GetDeterminant_ZeroMatrix_ReturnsZero()
+        {
+            Matrix3X2 zero = new Matrix3X2(0f, 0f, 0f, 0f, 0f, 0f);
+
+            float det = zero.GetDeterminant();
+
+            Assert.Equal(0f, det);
+        }
+
+        /// <summary>
+        ///     Tests that CreateScale with zero produces zero scaling
+        /// </summary>
+        [Fact]
+        public void CreateScale_Zero_ProducesZeroScaling()
+        {
+            Matrix3X2 result = Matrix3X2.CreateScale(0f, 0f);
+
+            Assert.Equal(0f, result.M11);
+            Assert.Equal(0f, result.M22);
+            Assert.Equal(0f, result.M12);
+            Assert.Equal(0f, result.M21);
+        }
+
+        /// <summary>
+        ///     Tests that CreateScale with negative values produces negative scaling
+        /// </summary>
+        [Fact]
+        public void CreateScale_Negative_ProducesNegativeScaling()
+        {
+            Matrix3X2 result = Matrix3X2.CreateScale(-2f, -3f);
+
+            Assert.Equal(-2f, result.M11);
+            Assert.Equal(-3f, result.M22);
+        }
+
+        /// <summary>
+        ///     Tests that operator * with identity returns the same matrix
+        /// </summary>
+        [Fact]
+        public void OperatorMultiply_WithIdentity_ReturnsSameMatrix()
+        {
+            Matrix3X2 a = new Matrix3X2(2f, 3f, 4f, 5f, 6f, 7f);
+            Matrix3X2 identity = new Matrix3X2(1f, 0f, 0f, 1f, 0f, 0f);
+
+            Matrix3X2 result = a * identity;
+
+            Assert.Equal(2f, result.M11);
+            Assert.Equal(3f, result.M12);
+            Assert.Equal(4f, result.M21);
+            Assert.Equal(5f, result.M22);
+            Assert.Equal(6f, result.M31);
+            Assert.Equal(7f, result.M32);
+        }
+
+        /// <summary>
+        ///     Tests that operator == with difference exactly 0.1 returns false
+        /// </summary>
+        [Fact]
+        public void OperatorEquality_AtExactBoundary_ReturnsFalse()
+        {
+            Matrix3X2 a = new Matrix3X2(1f, 2f, 3f, 4f, 5f, 6f);
+            Matrix3X2 b = new Matrix3X2(1.1f, 2.1f, 3.1f, 4.1f, 5.1f, 6.1f);
+
+            Assert.False(a == b);
+            Assert.True(a != b);
+        }
+
+        /// <summary>
+        ///     Tests that unary negation produces correctly negated matrix
+        /// </summary>
+        [Fact]
+        public void OperatorNegate_ReturnsNegatedValues()
+        {
+            Matrix3X2 a = new Matrix3X2(1f, -2f, 3f, -4f, 5f, -6f);
+            Matrix3X2 negated = -a;
+
+            Assert.Equal(-1f, negated.M11);
+            Assert.Equal(2f, negated.M12);
+            Assert.Equal(-3f, negated.M21);
+            Assert.Equal(4f, negated.M22);
+            Assert.Equal(-5f, negated.M31);
+            Assert.Equal(6f, negated.M32);
+        }
+
+        /// <summary>
+        ///     Tests that operator + with zero matrix returns original
+        /// </summary>
+        [Fact]
+        public void OperatorAdd_WithZeroMatrix_ReturnsOriginal()
+        {
+            Matrix3X2 a = new Matrix3X2(2f, 3f, 4f, 5f, 6f, 7f);
+            Matrix3X2 zero = new Matrix3X2(0f, 0f, 0f, 0f, 0f, 0f);
+
+            Matrix3X2 result = a + zero;
+
+            Assert.Equal(2f, result.M11);
+            Assert.Equal(3f, result.M12);
+            Assert.Equal(4f, result.M21);
+            Assert.Equal(5f, result.M22);
+            Assert.Equal(6f, result.M31);
+            Assert.Equal(7f, result.M32);
+        }
     }
 }
