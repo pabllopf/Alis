@@ -73,6 +73,30 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         }
 
         /// <summary>
+        /// Tests that xf setter should set x
+        /// </summary>
+        [Fact]
+        public void Xf_Setter_ShouldSetX()
+        {
+            TriangulationPoint point = new TriangulationPoint(0.0, 0.0);
+            point.Xf = 4.2f;
+
+            Assert.Equal(4.2, point.X, 5);
+        }
+
+        /// <summary>
+        /// Tests that yf setter should set y
+        /// </summary>
+        [Fact]
+        public void Yf_Setter_ShouldSetY()
+        {
+            TriangulationPoint point = new TriangulationPoint(0.0, 0.0);
+            point.Yf = 3.7f;
+
+            Assert.Equal(3.7, point.Y, 5);
+        }
+
+        /// <summary>
         /// Tests that has edges should be false initially
         /// </summary>
         [Fact]
