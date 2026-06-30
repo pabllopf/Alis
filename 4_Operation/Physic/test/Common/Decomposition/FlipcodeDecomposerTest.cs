@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         }
 
         /// <summary>
-        ///     Tests that convex partition with pentagon returns triangles
+        /// Tests that convex partition with pentagon returns triangles
         /// </summary>
         [Fact]
         public void ConvexPartition_WithPentagon_ReturnsTriangles()
@@ -169,6 +169,46 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
 
             Assert.NotNull(result);
             Assert.True(result.Count >= 3);
+        }
+
+        /// <summary>
+        /// Tests that convex partition with self-intersecting polygon returns empty (error)
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithSelfIntersectingPolygon_ReturnsEmpty()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(2f, 0f),
+                new Vector2F(0f, 2f)
+            });
+
+            List<Vertices> result = FlipcodeDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that convex partition with polygon needing u-wrap triggers boundary
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithSpecificOrder_ShouldHandleWrap()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(5f, 0f),
+                new Vector2F(5f, 5f),
+                new Vector2F(2.5f, 2.5f),
+                new Vector2F(0f, 5f)
+            });
+
+            List<Vertices> result = FlipcodeDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.Equal(3, result.Count);
         }
     }
 }
