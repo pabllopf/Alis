@@ -276,5 +276,29 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
 
             Assert.NotSame(mountain1, mountain2);
         }
+
+        /// <summary>
+        ///     Tests that triangulate should handle non-convex point becoming convex after ear removal
+        /// </summary>
+        [Fact]
+        public void Triangulate_ShouldAddPreviouslyNonConvexPoint_AfterEarRemoval()
+        {
+            MonotoneMountain mountain = new MonotoneMountain();
+
+            // Build an x-monotone chain where p3 (x=2) is NOT initially convex
+            // but becomes convex after p4 (x=3) is removed as an ear.
+            // p4 must be convex to be picked as an ear in Triangulate,
+            // and after its removal p3's angle flips because p3.Next changes from p4 to p5.
+            mountain.Add(new Point(0, 0)); // head
+            mountain.Add(new Point(1, -3));
+            mountain.Add(new Point(2, 0)); // a — becomes convex after ear removal
+            mountain.Add(new Point(3, 2.9f)); // ear — convex in Process
+            mountain.Add(new Point(3.1f, 3.4f));
+            mountain.Add(new Point(6, 0)); // tail
+
+            mountain.Process();
+
+            Assert.NotEmpty(mountain.Triangles);
+        }
     }
 }
