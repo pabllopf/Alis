@@ -184,6 +184,26 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         }
 
         /// <summary>
+        ///     Tests that ConvexPartition with diamond polygon covers triangle y-min early exit
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_DiamondPolygon_ShouldReturnResult()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(5, 0),
+                new Vector2F(0, 10),
+                new Vector2F(5, 20),
+                new Vector2F(10, 10)
+            };
+
+            List<Vertices> result = EarclipDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+        }
+
+        /// <summary>
         ///     Tests that ConvexPartition with large polygon works
         /// </summary>
         [Fact]
