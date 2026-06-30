@@ -389,6 +389,26 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         Assert.False(hit);
     }
 
+    /// <summary>
+    ///     Tests that RayCast returns false for a zero-length edge (degenerate)
+    /// </summary>
+    [Fact]
+    public void RayCast_ZeroLengthEdge_ReturnsFalse()
+    {
+        EdgeShape edge = new EdgeShape(new Vector2F(0, 0), new Vector2F(0.00001f, 0));
+        ControllerTransform transform = ControllerTransform.Identity;
+        RayCastInput input = new RayCastInput
+        {
+            Point1 = new Vector2F(0.5f, -1),
+            Point2 = new Vector2F(0.5f, 1),
+            MaxFraction = 1.0f
+        };
+
+        bool hit = edge.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+        Assert.False(hit);
+    }
+
     #endregion
 
     #region ComputeAabb Tests
