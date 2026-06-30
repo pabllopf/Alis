@@ -170,6 +170,17 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
+        /// Tests that create circle with offset and zero radius throws
+        /// </summary>
+        [Fact]
+        public void CreateCircle_WithOffsetAndZeroRadius_ShouldThrow()
+        {
+            Body body = new Body();
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => body.CreateCircle(0f, 1f, new Vector2F(0, 0)));
+        }
+
+        /// <summary>
         /// Tests that create polygon should create polygon shape fixture
         /// </summary>
         [Fact]
@@ -261,6 +272,24 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(2, fixtures.Count);
             Assert.Equal(2, body.FixtureList.Count);
+        }
+
+        /// <summary>
+        /// Tests that create compound polygon with edge vertices creates edge shapes
+        /// </summary>
+        [Fact]
+        public void CreateCompoundPolygon_WithEdgeVertices_ShouldCreateEdgeShapes()
+        {
+            Body body = new Body();
+            List<Vertices> list = new List<Vertices>
+            {
+                new Vertices { new Vector2F(0, 0), new Vector2F(5, 5) }
+            };
+
+            List<Fixture> fixtures = body.CreateCompoundPolygon(list, 1f);
+
+            Assert.Single(fixtures);
+            Assert.IsType<EdgeShape>(fixtures[0].GetShape);
         }
 
         /// <summary>
