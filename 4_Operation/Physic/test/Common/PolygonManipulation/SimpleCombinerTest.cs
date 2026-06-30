@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -224,6 +225,36 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
                 new Vertices { new Vector2F(1, 0), new Vector2F(0, 1), new Vector2F(1, 1) },
                 new Vertices { new Vector2F(0, 0), new Vector2F(0, 1), new Vector2F(-1, 1) }
             };
+
+            List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
+
+            Assert.Equal(2, result.Count);
+        }
+
+        /// <summary>
+        ///     Tests that combining triangles exceeding MaxPolygonVertices skips the triangle
+        /// </summary>
+        [Fact]
+        public void PolygonizeTriangles_ExceedsMaxVertexCount_SkipsTriangle()
+        {
+            // Create a regular convex 9-gon fan-triangulated from V0
+            // This produces 7 triangles (9 vertices → 7 triangles in a fan)
+            // The first 6 combine into an 8-vertex polygon (MaxPolygonVertices)
+            // The 7th would make 9 vertices and be skipped (> MaxPolygonVertices)
+            int n = 9;
+            float r = 5f;
+            Vector2F[] verts = new Vector2F[n];
+            for (int i = 0; i < n; i++)
+            {
+                double angle = 2.0 * Math.PI * i / n;
+                verts[i] = new Vector2F(r * (float)Math.Cos(angle), r * (float)Math.Sin(angle));
+            }
+
+            List<Vertices> triangles = new List<Vertices>(n - 2);
+            for (int i = 1; i < n - 1; i++)
+            {
+                triangles.Add(new Vertices { verts[0], verts[i], verts[i + 1] });
+            }
 
             List<Vertices> result = SimpleCombiner.PolygonizeTriangles(triangles);
 
