@@ -198,7 +198,44 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
 
         /// <summary>
-        ///     Tests that joint should be abstract class
+        /// Tests that validate returns immediately when joint is disabled
+        /// </summary>
+        [Fact]
+        public void Validate_ShouldReturn_WhenDisabled()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody();
+            Body bodyB = world.CreateBody();
+            TestJoint joint = new TestJoint(bodyA, bodyB);
+            joint.Enabled = false;
+
+            joint.Validate(1.0f);
+
+            Assert.False(joint.Enabled);
+        }
+
+        /// <summary>
+        /// Tests that validate disables joint and fires broke event when breakpoint exceeded
+        /// </summary>
+        [Fact]
+        public void Validate_ShouldDisableAndFireBroke_WhenBreakpointExceeded()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody();
+            Body bodyB = world.CreateBody();
+            BreakableJoint joint = new BreakableJoint(bodyA, bodyB);
+            joint.Breakpoint = 0.001f;
+            float raisedError = 0;
+            joint.Broke += (_, error) => raisedError = error;
+
+            joint.Validate(1.0f);
+
+            Assert.False(joint.Enabled);
+            Assert.True(raisedError > 0);
+        }
+
+        /// <summary>
+        /// Tests that joint should be abstract class
         /// </summary>
         [Fact]
         public void Joint_ShouldBeAbstractClass()
@@ -209,7 +246,27 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
 
         /// <summary>
-        ///     The test joint class
+        /// The breakable joint class used to test Validate
+        /// </summary>
+        /// <seealso cref="Joint" />
+        private class BreakableJoint : Joint
+        {
+            public BreakableJoint(Body bodyA, Body bodyB) : base(bodyA, bodyB) => JointType = JointType.Unknown;
+
+            public override Vector2F WorldAnchorA { get; set; }
+            public override Vector2F WorldAnchorB { get; set; }
+
+            public override Vector2F GetReactionForce(float invDt) => new Vector2F(100, 0);
+
+            public override float GetReactionTorque(float invDt) => 0.0f;
+
+            internal override void InitVelocityConstraints(ref SolverData data) { }
+            internal override void SolveVelocityConstraints(ref SolverData data) { }
+            internal override bool SolvePositionConstraints(ref SolverData data) => true;
+        }
+
+        /// <summary>
+        /// The test joint class
         /// </summary>
         /// <seealso cref="Joint" />
         private class TestJoint : Joint
