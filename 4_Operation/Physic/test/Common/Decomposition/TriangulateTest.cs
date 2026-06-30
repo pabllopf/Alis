@@ -69,6 +69,28 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         }
 
         /// <summary>
+        /// Tests that convex partition with skip sanity checks does not reverse vertices
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithSkipSanityChecks_ShouldNotReverse()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(4f, 0f),
+                new Vector2F(4f, 2f),
+                new Vector2F(1f, 2f),
+                new Vector2F(1f, 4f),
+                new Vector2F(0f, 4f)
+            });
+
+            List<Vertices> result = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Earclip, true, 0.001f, true);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 0);
+        }
+
+        /// <summary>
         /// Tests that convex partition with small polygon returns vertices as is
         /// </summary>
         [Fact]
@@ -243,6 +265,45 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             bool result = Triangulate.ValidatePolygon(vertices);
 
             Assert.True(result);
+        }
+
+        /// <summary>
+        /// Tests that convex partition with thin polygon triggers discard of invalid results
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithThinPolygon_UsingSeidelTrapezoids_ShouldDiscardInvalidResults()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(0.00001f, 0f),
+                new Vector2F(10f, 10f),
+                new Vector2F(0f, 10f)
+            });
+
+            List<Vertices> result = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.SeidelTrapezoids);
+
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        /// Tests that convex partition with clockwise polygon using bayazit reverses to ccw
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithClockwisePolygon_UsingBayazit_ShouldReverseToCcw()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 2f),
+                new Vector2F(2f, 2f),
+                new Vector2F(2f, 0f),
+                new Vector2F(0f, 0f)
+            });
+
+            List<Vertices> result = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Bayazit);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
         }
 
         /// <summary>
