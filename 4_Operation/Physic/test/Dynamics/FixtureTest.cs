@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
@@ -450,6 +451,57 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture fixture = new Fixture(shape);
 
             Assert.Equal(0, fixture.ProxyCount);
+        }
+
+        /// <summary>
+        ///     Tests that create proxies throws when already created
+        /// </summary>
+        [Fact]
+        public void CreateProxies_WhenAlreadyCreated_ShouldThrow()
+        {
+            Body body = new Body();
+            Fixture fixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            body.Add(fixture);
+            Mock<IBroadPhase> mockBroadPhase = new Mock<IBroadPhase>();
+            ControllerTransform xf = ControllerTransform.Identity;
+
+            fixture.CreateProxies(mockBroadPhase.Object, ref xf);
+
+            Assert.Throws<InvalidOperationException>(() => fixture.CreateProxies(mockBroadPhase.Object, ref xf));
+        }
+
+        /// <summary>
+        ///     Tests that collision group change refilters contacts
+        /// </summary>
+        [Fact]
+        public void CollisionGroup_WhenChangedOnBodyWithContacts_ShouldRefilterContacts()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body1 = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture1 = body1.CreateCircle(5.0f, 1.0f);
+            Body body2 = world.CreateBody(new Vector2F(2.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            body2.CreateCircle(5.0f, 1.0f);
+
+            world.Step(1.0f / 60.0f);
+
+            fixture1.GetCollisionGroup = -1;
+
+            Assert.Equal((short)-1, fixture1.GetCollisionGroup);
+        }
+
+        /// <summary>
+        ///     Tests that collision group change does not throw when body has no world
+        /// </summary>
+        [Fact]
+        public void CollisionGroup_WhenChangedOnBodyWithoutWorld_ShouldNotThrow()
+        {
+            Body body = new Body();
+            Fixture fixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            body.Add(fixture);
+
+            fixture.GetCollisionGroup = 5;
+
+            Assert.Equal((short)5, fixture.GetCollisionGroup);
         }
     }
 }
