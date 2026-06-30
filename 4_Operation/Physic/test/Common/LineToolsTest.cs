@@ -455,6 +455,38 @@ namespace Alis.Core.Physic.Test.Common
         }
 
         /// <summary>
+        ///     Tests that line intersect 2 should return false when denom is near zero
+        /// </summary>
+        [Fact]
+        public void LineIntersect2_ShouldReturnFalse_WhenDenomNearZero()
+        {
+            Vector2F a0 = new Vector2F(0, 0);
+            Vector2F a1 = new Vector2F(10, 1f);
+            Vector2F b0 = new Vector2F(0, 0.5f);
+            Vector2F b1 = new Vector2F(10, 1.5f);
+
+            bool intersects = LineTools.LineIntersect2(ref a0, ref a1, ref b0, ref b1, out _);
+
+            Assert.False(intersects);
+        }
+
+        /// <summary>
+        ///     Tests that line intersect should return false when intersection is at segment endpoint
+        /// </summary>
+        [Fact]
+        public void LineIntersect_WithSegments_ShouldReturnFalse_WhenCoincidentEndpoint()
+        {
+            Vector2F p1 = new Vector2F(0, 0);
+            Vector2F p2 = new Vector2F(10, 10);
+            Vector2F p3 = new Vector2F(0, 0);
+            Vector2F p4 = new Vector2F(10, 0);
+
+            bool intersects = LineTools.LineIntersect(ref p1, ref p2, ref p3, ref p4, true, true, out Vector2F _);
+
+            Assert.False(intersects);
+        }
+
+        /// <summary>
         ///     Tests that line intersect segments by value should detect intersection
         /// </summary>
         [Fact]
