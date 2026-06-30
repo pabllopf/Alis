@@ -372,6 +372,37 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Throws<InvalidOperationException>(() => enumerator.Current);
         }
+
+        /// <summary>
+        /// Tests that generic enumerator current throws when collection modified
+        /// </summary>
+        [Fact]
+        public void GenericEnumerator_Current_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            JointCollection collection = new JointCollection(new WorldPhysic(Vector2F.Zero));
+            IEnumerator<Joint> enumerator = ((IEnumerable<Joint>)collection).GetEnumerator();
+            enumerator.MoveNext();
+
+            collection.List.Add(new DistanceJoint());
+            collection.GenerationStamp++;
+
+            Assert.Throws<InvalidOperationException>(() => enumerator.Current);
+        }
+
+        /// <summary>
+        /// Tests that generic enumerator move next throws when collection modified
+        /// </summary>
+        [Fact]
+        public void GenericEnumerator_MoveNext_WhenCollectionModified_ThrowsInvalidOperation()
+        {
+            JointCollection collection = new JointCollection(new WorldPhysic(Vector2F.Zero));
+            IEnumerator<Joint> enumerator = ((IEnumerable<Joint>)collection).GetEnumerator();
+
+            collection.List.Add(new DistanceJoint());
+            collection.GenerationStamp++;
+
+            Assert.Throws<InvalidOperationException>(() => enumerator.MoveNext());
+        }
     }
 }
 
