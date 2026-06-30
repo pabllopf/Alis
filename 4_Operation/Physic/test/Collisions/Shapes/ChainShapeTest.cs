@@ -374,9 +374,68 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             Assert.Equal(10, aabb.UpperBound.X);
         }
 
-        /// <summary>
-        ///     Tests that ComputeSubmergedArea returns zero
-        /// </summary>
+    /// <summary>
+    ///     Tests that RayCast with last child index wraps edge
+    /// </summary>
+    [Fact]
+    public void RayCast_AtLastChildIndex_ShouldWrapEdge()
+    {
+        Vertices vertices = new Vertices
+        {
+            new Vector2F(0, 0),
+            new Vector2F(10, 0),
+            new Vector2F(10, 10)
+        };
+        ChainShape chain = new ChainShape(vertices);
+        ControllerTransform transform = ControllerTransform.Identity;
+        RayCastInput input = new RayCastInput
+        {
+            Point1 = new Vector2F(-5, 5),
+            Point2 = new Vector2F(-5, -5),
+            MaxFraction = 1.0f
+        };
+
+        bool hit = chain.RayCast(out RayCastOutput output, ref input, ref transform, 2);
+
+        Assert.False(hit);
+    }
+
+    /// <summary>
+    ///     Tests that ComputeAabb with last child index wraps edge
+    /// </summary>
+    [Fact]
+    public void ComputeAabb_AtLastChildIndex_ShouldWrapEdge()
+    {
+        Vertices vertices = new Vertices
+        {
+            new Vector2F(0, 0),
+            new Vector2F(10, 0),
+            new Vector2F(10, 10)
+        };
+        ChainShape chain = new ChainShape(vertices);
+        ControllerTransform transform = ControllerTransform.Identity;
+
+        chain.ComputeAabb(out Aabb aabb, ref transform, 2);
+
+        Assert.Equal(0, aabb.LowerBound.X);
+        Assert.Equal(0, aabb.LowerBound.Y);
+    }
+
+    /// <summary>
+    ///     Tests that ComputeProperties is callable (empty override)
+    /// </summary>
+    [Fact]
+    public void ComputeProperties_ShouldBeCallable()
+    {
+        ChainShape chain = new ChainShape();
+        chain.GetDensity = 2.0f;
+
+        Assert.Equal(2.0f, chain.GetDensity);
+    }
+
+    /// <summary>
+    ///     Tests that ComputeSubmergedArea returns zero
+    /// </summary>
         [Fact]
         public void ComputeSubmergedArea_ShouldReturnZero()
         {
