@@ -454,6 +454,23 @@ namespace Alis.Core.Physic.Test.Common
         }
 
         /// <summary>
+        ///     Tests that subdivide evenly with degenerate short path triggers t >= 1 guard
+        /// </summary>
+        [Fact]
+        public void SubdivideEvenly_WithDegenerateShortPath_ShouldReturnList()
+        {
+            Path path = new Path(new[]
+            {
+                new Vector2F(0, 0),
+                new Vector2F(0.0001f, 0)
+            });
+
+            List<Vector3F> subdivisions = path.SubdivideEvenly(4);
+
+            Assert.NotNull(subdivisions);
+        }
+
+        /// <summary>
         ///     Tests that subdivide evenly with large divisions returns list
         /// </summary>
         [Fact]
