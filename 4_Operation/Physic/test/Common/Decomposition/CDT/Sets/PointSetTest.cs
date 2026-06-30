@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
+using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
 using Alis.Core.Physic.Common.Decomposition.CDT.Sets;
 using Xunit;
 
@@ -253,7 +254,54 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Sets
         }
 
         /// <summary>
-        ///     Tests that ClearTriangles clears the triangles list
+        /// Tests that prepare triangulation initializes triangles when null
+        /// </summary>
+        [Fact]
+        public void PrepareTriangulation_ShouldInitializeTrianglesWhenNull()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1)
+            };
+
+            PointSet pointSet = new PointSet(points);
+            DtSweepContext tcx = new DtSweepContext();
+
+            pointSet.PrepareTriangulation(tcx);
+
+            Assert.NotNull(pointSet.GetTriangles);
+            Assert.Empty(pointSet.GetTriangles);
+            Assert.Contains(points[0], tcx.Points);
+        }
+
+        /// <summary>
+        /// Tests that prepare triangulation clears existing triangles
+        /// </summary>
+        [Fact]
+        public void PrepareTriangulation_ShouldClearExistingTriangles()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1)
+            };
+
+            PointSet pointSet = new PointSet(points);
+            DtSweepContext tcx1 = new DtSweepContext();
+            pointSet.PrepareTriangulation(tcx1);
+
+            DtSweepContext tcx2 = new DtSweepContext();
+            pointSet.PrepareTriangulation(tcx2);
+
+            Assert.NotNull(pointSet.GetTriangles);
+            Assert.Empty(pointSet.GetTriangles);
+        }
+
+        /// <summary>
+        /// Tests that ClearTriangles clears the triangles list
         /// </summary>
         [Fact]
         public void ClearTriangles_ShouldClearTrianglesList()
