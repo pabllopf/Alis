@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Physic.Common.Decomposition.CDT;
+using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
@@ -44,6 +45,31 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         public void TriangulationContext_TypeShouldBeAccessible()
         {
             Assert.NotNull(typeof(TriangulationContext));
+        }
+
+        /// <summary>
+        /// Tests that wait until notified returns false by default
+        /// </summary>
+        [Fact]
+        public void WaitUntilNotified_ShouldBeFalseByDefault()
+        {
+            DtSweepContext ctx = new DtSweepContext();
+
+            Assert.False(ctx.WaitUntilNotified);
+        }
+
+        /// <summary>
+        /// Tests that done increments step count
+        /// </summary>
+        [Fact]
+        public void Done_ShouldIncrementStepCount()
+        {
+            DtSweepContext ctx = new DtSweepContext();
+            int before = ctx.StepCount;
+
+            ctx.Done();
+
+            Assert.Equal(before + 1, ctx.StepCount);
         }
     }
 }
