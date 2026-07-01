@@ -403,5 +403,309 @@ namespace Alis.Core.Physic.Test.Common
 
             Assert.NotNull(vertices.Holes);
         }
+
+        /// <summary>
+        ///     Tests that IsSimple returns true for a simple triangle.
+        /// </summary>
+        [Fact]
+        public void IsSimple_Triangle_ReturnsTrue()
+        {
+            Vertices triangle = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(0, 1)
+            };
+
+            Assert.True(triangle.IsSimple());
+        }
+
+        /// <summary>
+        ///     Tests that IsSimple returns false for vertices with less than 3 points.
+        /// </summary>
+        [Fact]
+        public void IsSimple_FewerThanThreeVertices_ReturnsFalse()
+        {
+            Vertices line = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0)
+            };
+
+            Assert.False(line.IsSimple());
+        }
+
+        /// <summary>
+        ///     Tests that IsSimple returns false for a self-intersecting polygon.
+        /// </summary>
+        [Fact]
+        public void IsSimple_SelfIntersecting_ReturnsFalse()
+        {
+            Vertices bowtie = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 2),
+                new Vector2F(2, 0),
+                new Vector2F(0, 2)
+            };
+
+            Assert.False(bowtie.IsSimple());
+        }
+
+        /// <summary>
+        ///     Tests that ProjectToAxis returns correct min and max for a horizontal axis.
+        /// </summary>
+        [Fact]
+        public void ProjectToAxis_HorizontalAxis_ReturnsCorrectMinMax()
+        {
+            Vertices triangle = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(4, 0),
+                new Vector2F(2, 3)
+            };
+            Vector2F axis = new Vector2F(1, 0);
+
+            triangle.ProjectToAxis(ref axis, out float min, out float max);
+
+            Assert.Equal(0, min);
+            Assert.Equal(4, max);
+        }
+
+        /// <summary>
+        ///     Tests that ProjectToAxis returns correct min and max for a vertical axis.
+        /// </summary>
+        [Fact]
+        public void ProjectToAxis_VerticalAxis_ReturnsCorrectMinMax()
+        {
+            Vertices triangle = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(4, 0),
+                new Vector2F(2, 3)
+            };
+            Vector2F axis = new Vector2F(0, 1);
+
+            triangle.ProjectToAxis(ref axis, out float min, out float max);
+
+            Assert.Equal(0, min);
+            Assert.Equal(3, max);
+        }
+
+        /// <summary>
+        ///     Tests that ProjectToAxis works with a single vertex.
+        /// </summary>
+        [Fact]
+        public void ProjectToAxis_SingleVertex_ReturnsSameMinMax()
+        {
+            Vertices single = new Vertices
+            {
+                new Vector2F(5, 7)
+            };
+            Vector2F axis = new Vector2F(1, 0);
+
+            single.ProjectToAxis(ref axis, out float min, out float max);
+
+            Assert.Equal(5, min);
+            Assert.Equal(5, max);
+        }
+
+        /// <summary>
+        ///     Tests that PointInPolygon returns 1 for a point inside a square.
+        /// </summary>
+        [Fact]
+        public void PointInPolygon_InsideSquare_ReturnsOne()
+        {
+            Vertices square = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 0),
+                new Vector2F(2, 2),
+                new Vector2F(0, 2)
+            };
+            Vector2F inside = new Vector2F(1, 1);
+
+            int result = square.PointInPolygon(ref inside);
+
+            Assert.Equal(1, result);
+        }
+
+        /// <summary>
+        ///     Tests that PointInPolygon returns -1 for a point outside a square.
+        /// </summary>
+        [Fact]
+        public void PointInPolygon_OutsideSquare_ReturnsMinusOne()
+        {
+            Vertices square = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 0),
+                new Vector2F(2, 2),
+                new Vector2F(0, 2)
+            };
+            Vector2F outside = new Vector2F(5, 5);
+
+            int result = square.PointInPolygon(ref outside);
+
+            Assert.Equal(-1, result);
+        }
+
+        /// <summary>
+        ///     Tests that PointInPolygon returns 0 for a point on the edge of a polygon.
+        /// </summary>
+        [Fact]
+        public void PointInPolygon_OnEdge_ReturnsZero()
+        {
+            Vertices square = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 0),
+                new Vector2F(2, 2),
+                new Vector2F(0, 2)
+            };
+            Vector2F onEdge = new Vector2F(0, 1);
+
+            int result = square.PointInPolygon(ref onEdge);
+
+            Assert.Equal(0, result);
+        }
+
+        /// <summary>
+        ///     Tests that PointInPolygonAngle returns true for a point inside a square.
+        /// </summary>
+        [Fact]
+        public void PointInPolygonAngle_InsideSquare_ReturnsTrue()
+        {
+            Vertices square = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 0),
+                new Vector2F(2, 2),
+                new Vector2F(0, 2)
+            };
+            Vector2F inside = new Vector2F(1, 1);
+
+            Assert.True(square.PointInPolygonAngle(ref inside));
+        }
+
+        /// <summary>
+        ///     Tests that PointInPolygonAngle returns false for a point outside a square.
+        /// </summary>
+        [Fact]
+        public void PointInPolygonAngle_OutsideSquare_ReturnsFalse()
+        {
+            Vertices square = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 0),
+                new Vector2F(2, 2),
+                new Vector2F(0, 2)
+            };
+            Vector2F outside = new Vector2F(5, 5);
+
+            Assert.False(square.PointInPolygonAngle(ref outside));
+        }
+
+        /// <summary>
+        ///     Tests that CheckPolygon returns NoError for a valid triangle.
+        /// </summary>
+        [Fact]
+        public void CheckPolygon_ValidTriangle_ReturnsNoError()
+        {
+            Vertices triangle = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 0),
+                new Vector2F(0, 2)
+            };
+
+            PolygonError result = triangle.CheckPolygon();
+
+            Assert.Equal(PolygonError.NoError, result);
+        }
+
+        /// <summary>
+        ///     Tests that CheckPolygon returns InvalidAmountOfVertices for empty vertices.
+        /// </summary>
+        [Fact]
+        public void CheckPolygon_Empty_ReturnsInvalidAmountOfVertices()
+        {
+            Vertices empty = new Vertices();
+
+            PolygonError result = empty.CheckPolygon();
+
+            Assert.Equal(PolygonError.InvalidAmountOfVertices, result);
+        }
+
+        /// <summary>
+        ///     Tests that CheckPolygon returns AreaTooSmall for collinear points.
+        /// </summary>
+        [Fact]
+        public void CheckPolygon_CollinearPoints_ReturnsAreaTooSmall()
+        {
+            Vertices line = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(2, 0)
+            };
+
+            PolygonError result = line.CheckPolygon();
+
+            Assert.Equal(PolygonError.AreaTooSmall, result);
+        }
+
+        /// <summary>
+        ///     Tests that CheckPolygon returns NotConvex for a concave shape.
+        /// </summary>
+        [Fact]
+        public void CheckPolygon_ConcaveShape_ReturnsNotConvex()
+        {
+            Vertices concave = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(3, 0),
+                new Vector2F(3, 3),
+                new Vector2F(1, 1),
+                new Vector2F(0, 3)
+            };
+
+            PolygonError result = concave.CheckPolygon();
+
+            Assert.Equal(PolygonError.NotConvex, result);
+        }
+
+        /// <summary>
+        ///     Tests that ToString returns a space-separated representation of vertices.
+        /// </summary>
+        [Fact]
+        public void ToString_WithVertices_ReturnsFormattedString()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(1, 2),
+                new Vector2F(3, 4)
+            };
+
+            string result = vertices.ToString();
+
+            Assert.Contains("1", result);
+            Assert.Contains("2", result);
+            Assert.Contains("3", result);
+            Assert.Contains("4", result);
+        }
+
+        /// <summary>
+        ///     Tests that ToString on empty vertices returns empty string.
+        /// </summary>
+        [Fact]
+        public void ToString_Empty_ReturnsEmptyString()
+        {
+            Vertices empty = new Vertices();
+
+            string result = empty.ToString();
+
+            Assert.Equal(string.Empty, result);
+        }
     }
 }
