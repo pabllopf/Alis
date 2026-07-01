@@ -51,6 +51,7 @@ using SystemWithThreeComponents = Alis.Benchmark.EntityComponentSystem.SystemWit
 using SystemWithTwoComponents = Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents.SystemWithTwoComponents;
 using SystemWithTwoComponentsMultipleComposition = Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleComposition.SystemWithTwoComponentsMultipleComposition;
 
+
 namespace Alis.Benchmark
 {
     /// <summary>
