@@ -111,6 +111,98 @@ namespace Alis.Core.Physic.Test
         {
             Assert.True(SettingEnv.AutoClearForces);
         }
+
+        /// <summary>
+        /// Tests that MixFriction returns geometric mean of two values
+        /// </summary>
+        [Fact]
+        public void MixFriction_TwoEqualValues_ReturnsSameValue()
+        {
+            float result = SettingEnv.MixFriction(0.5f, 0.5f);
+            Assert.Equal(0.5f, result, 6);
+        }
+
+        /// <summary>
+        /// Tests that MixFriction with zero returns zero
+        /// </summary>
+        [Fact]
+        public void MixFriction_WithZero_ReturnsZero()
+        {
+            float result = SettingEnv.MixFriction(0.0f, 0.5f);
+            Assert.Equal(0.0f, result, 6);
+        }
+
+        /// <summary>
+        /// Tests that MixFriction with two different values returns geometric mean
+        /// </summary>
+        [Fact]
+        public void MixFriction_TwoDifferentValues_ReturnsGeometricMean()
+        {
+            float result = SettingEnv.MixFriction(0.25f, 0.36f);
+            float expected = (float)Math.Sqrt(0.25f * 0.36f);
+            Assert.Equal(expected, result, 6);
+        }
+
+        /// <summary>
+        /// Tests that MixFriction with max float returns max sqrt
+        /// </summary>
+        [Fact]
+        public void MixFriction_WithMaxFloat_ReturnsMaxSqrt()
+        {
+            float result = SettingEnv.MixFriction(SettingEnv.MaxFloat, SettingEnv.MaxFloat);
+            float expected = (float)Math.Sqrt(SettingEnv.MaxFloat * SettingEnv.MaxFloat);
+            Assert.Equal(expected, result, 6);
+        }
+
+        /// <summary>
+        /// Tests that MixRestitution returns the larger of two values
+        /// </summary>
+        [Fact]
+        public void MixRestitution_FirstLarger_ReturnsFirst()
+        {
+            float result = SettingEnv.MixRestitution(0.8f, 0.2f);
+            Assert.Equal(0.8f, result);
+        }
+
+        /// <summary>
+        /// Tests that MixRestitution returns the larger of two values when second is larger
+        /// </summary>
+        [Fact]
+        public void MixRestitution_SecondLarger_ReturnsSecond()
+        {
+            float result = SettingEnv.MixRestitution(0.2f, 0.8f);
+            Assert.Equal(0.8f, result);
+        }
+
+        /// <summary>
+        /// Tests that MixRestitution with equal values returns the same
+        /// </summary>
+        [Fact]
+        public void MixRestitution_EqualValues_ReturnsSame()
+        {
+            float result = SettingEnv.MixRestitution(0.5f, 0.5f);
+            Assert.Equal(0.5f, result);
+        }
+
+        /// <summary>
+        /// Tests that MixRestitution with zero and one returns one
+        /// </summary>
+        [Fact]
+        public void MixRestitution_WithZero_ReturnsLarger()
+        {
+            float result = SettingEnv.MixRestitution(0.0f, 1.0f);
+            Assert.Equal(1.0f, result);
+        }
+
+        /// <summary>
+        /// Tests that MixRestitution with negative values works correctly
+        /// </summary>
+        [Fact]
+        public void MixRestitution_NegativeValues_ReturnsLarger()
+        {
+            float result = SettingEnv.MixRestitution(-0.5f, -0.1f);
+            Assert.Equal(-0.1f, result);
+        }
     }
 }
 
