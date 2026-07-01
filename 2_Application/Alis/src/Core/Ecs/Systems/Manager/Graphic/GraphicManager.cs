@@ -282,7 +282,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <param name="newKeys">The new keys</param>
         /// <param name="currentKeys">The current keys</param>
         /// <returns>The pressed</returns>
-        private static HashSet<ConsoleKey> ComputePressedKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys)
+        internal static HashSet<ConsoleKey> ComputePressedKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys)
         {
             HashSet<ConsoleKey> pressed = new HashSet<ConsoleKey>(newKeys);
             pressed.ExceptWith(currentKeys);
@@ -295,7 +295,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <param name="newKeys">The new keys</param>
         /// <param name="currentKeys">The current keys</param>
         /// <returns>The held</returns>
-        private static HashSet<ConsoleKey> ComputeHeldKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys)
+        internal static HashSet<ConsoleKey> ComputeHeldKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys)
         {
             HashSet<ConsoleKey> held = new HashSet<ConsoleKey>(newKeys);
             held.IntersectWith(currentKeys);
@@ -308,7 +308,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <param name="currentKeys">The current keys</param>
         /// <param name="newKeys">The new keys</param>
         /// <returns>The released</returns>
-        private static HashSet<ConsoleKey> ComputeReleasedKeys(HashSet<ConsoleKey> currentKeys, HashSet<ConsoleKey> newKeys)
+        internal static HashSet<ConsoleKey> ComputeReleasedKeys(HashSet<ConsoleKey> currentKeys, HashSet<ConsoleKey> newKeys)
         {
             HashSet<ConsoleKey> released = new HashSet<ConsoleKey>(currentKeys);
             released.ExceptWith(newKeys);
