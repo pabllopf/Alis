@@ -33,6 +33,7 @@ using Moq;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
+using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
@@ -431,6 +432,49 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert - Equals method should exist
             Assert.NotNull(equalsMethod);
+        }
+
+        #endregion
+
+        #region OnUpdate Coverage Tests
+
+        /// <summary>
+        ///     Tests that OnUpdate does not throw when Has&lt;Transform&gt; returns false.
+        /// </summary>
+        [Fact]
+        public void BoxCollider_OnUpdate_WhenHasTransformIsFalse_ShouldNotThrow()
+        {
+            // Arrange
+            BoxCollider collider = new BoxCollider();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
+            mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
+
+            // Act
+            var exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
+
+            // Assert
+            Assert.Null(exception);
+        }
+
+        /// <summary>
+        ///     Tests that OnUpdate does not modify Body when Has&lt;Transform&gt; returns false.
+        /// </summary>
+        [Fact]
+        public void BoxCollider_OnUpdate_WhenHasTransformIsFalse_ShouldNotChangeBody()
+        {
+            // Arrange
+            BoxCollider collider = new BoxCollider();
+            Alis.Core.Physic.Dynamics.Body body = new Alis.Core.Physic.Dynamics.Body();
+            collider.Body = body;
+
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
+            mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
+
+            // Act
+            collider.OnUpdate(mockGameObject.Object);
+
+            // Assert - Body should remain unchanged
+            Assert.Same(body, collider.Body);
         }
 
         #endregion
