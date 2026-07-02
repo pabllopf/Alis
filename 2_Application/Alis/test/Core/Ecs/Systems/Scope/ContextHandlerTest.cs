@@ -89,5 +89,6 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
 
             Assert.Same(context, handler.Context);
         }
+
     }
 }

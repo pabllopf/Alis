@@ -164,5 +164,77 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
 
             Assert.Throws<InvalidCastException>(() => massData.Equals("not a MassData"));
         }
+
+        /// <summary>
+        ///     Tests that equality operator returns false for different values.
+        /// </summary>
+        [Fact]
+        public void EqualityOperator_WithDifferentValues_ShouldReturnFalse()
+        {
+            MassData first = new MassData { Area = 1f, Mass = 2f, Inertia = 3f, Centroid = new Vector2F(1f, 2f) };
+            MassData second = new MassData { Area = 1f, Mass = 2f, Inertia = 3f, Centroid = new Vector2F(1f, 2f) };
+
+            Assert.True(first == second);
+        }
+
+        /// <summary>
+        ///     Tests that inequality operator returns true for different values.
+        /// </summary>
+        [Fact]
+        public void InequalityOperator_WithDifferentValues_ShouldReturnTrue()
+        {
+            MassData first = default;
+            MassData second = new MassData { Area = 5f, Mass = 2f, Inertia = 3f, Centroid = new Vector2F(1f, 2f) };
+
+            Assert.True(first != second);
+        }
+
+        /// <summary>
+        ///     Tests that Equals returns true for instances with same values.
+        /// </summary>
+        [Fact]
+        public void Equals_WithSameNonDefaultValues_ShouldReturnTrue()
+        {
+            MassData first = new MassData { Area = 10f, Mass = 5f, Inertia = 2f, Centroid = new Vector2F(3f, 4f) };
+            MassData second = new MassData { Area = 10f, Mass = 5f, Inertia = 2f, Centroid = new Vector2F(3f, 4f) };
+
+            Assert.True(first.Equals(second));
+        }
+
+        /// <summary>
+        ///     Tests that Equals returns false for instances with different values.
+        /// </summary>
+        [Fact]
+        public void Equals_WithDifferentValues_ShouldReturnFalse()
+        {
+            MassData first = default;
+            MassData second = new MassData { Area = 10f, Mass = 5f, Inertia = 2f, Centroid = new Vector2F(3f, 4f) };
+
+            Assert.False(first.Equals(second));
+        }
+
+        /// <summary>
+        ///     Tests that Equals object returns true for boxed MassData with same values.
+        /// </summary>
+        [Fact]
+        public void Equals_Object_WithSameNonDefaultValues_ShouldReturnTrue()
+        {
+            MassData massData = new MassData { Area = 10f, Mass = 5f, Inertia = 2f, Centroid = new Vector2F(3f, 4f) };
+            object obj = new MassData { Area = 10f, Mass = 5f, Inertia = 2f, Centroid = new Vector2F(3f, 4f) };
+
+            Assert.True(massData.Equals(obj));
+        }
+
+        /// <summary>
+        ///     Tests that GetHashCode returns different values for different MassData.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_WithDifferentValues_ShouldDiffer()
+        {
+            MassData first = default;
+            MassData second = new MassData { Area = 10f, Mass = 5f, Inertia = 2f, Centroid = new Vector2F(3f, 4f) };
+
+            Assert.NotEqual(first.GetHashCode(), second.GetHashCode());
+        }
     }
 }
