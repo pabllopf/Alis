@@ -664,5 +664,85 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(stack.Capacity > 0);
             Assert.Equal(1, stack.Count);
         }
+
+        /// <summary>
+        /// Tests that constructor with negative capacity throws ArgumentOutOfRangeException
+        /// </summary>
+        [Fact]
+        public void Constructor_WithNegativeCapacity_ThrowsArgumentOutOfRange()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => new FastestStack<int>(-1));
+        }
+
+        /// <summary>
+        /// Tests that constructor with zero capacity uses empty array
+        /// </summary>
+        [Fact]
+        public void Constructor_WithZeroCapacity_UsesEmptyArray()
+        {
+            FastestStack<int> stack = new FastestStack<int>(0);
+
+            Assert.Equal(0, stack.Capacity);
+            Assert.Equal(0, stack.Count);
+        }
+
+        /// <summary>
+        /// Tests that Clear with reference type clears elements for GC
+        /// </summary>
+        [Fact]
+        public void Clear_WithReferenceType_ClearsElements()
+        {
+            FastestStack<string> stack = new FastestStack<string>(4);
+            string item = "hello";
+            stack.Push(item);
+
+            stack.Clear();
+
+            Assert.Equal(0, stack.Count);
+        }
+
+        /// <summary>
+        /// Tests that Pop with reference type clears the slot for GC
+        /// </summary>
+        [Fact]
+        public void Pop_WithReferenceType_ClearsSlot()
+        {
+            FastestStack<string> stack = new FastestStack<string>(4);
+            stack.Push("first");
+            stack.Push("second");
+
+            stack.Pop();
+
+            Assert.Equal(1, stack.Count);
+            Assert.Equal("first", stack.Peek());
+        }
+
+        /// <summary>
+        /// Tests that TrimExcess with low utilization resizes the array
+        /// </summary>
+        [Fact]
+        public void TrimExcess_WithLowUtilization_Resizes()
+        {
+            FastestStack<int> stack = new FastestStack<int>(100);
+            stack.Push(1);
+
+            stack.TrimExcess();
+
+            Assert.True(stack.Capacity < 100);
+            Assert.Equal(1, stack.Count);
+            Assert.Equal(1, stack.Peek());
+        }
+
+        /// <summary>
+        /// Tests that Create static factory method returns a valid stack
+        /// </summary>
+        [Fact]
+        public void Create_StaticMethod_ReturnsValidStack()
+        {
+            FastestStack<int> stack = FastestStack<int>.Create(10);
+
+            Assert.Equal(10, stack.Capacity);
+            Assert.Equal(0, stack.Count);
+        }
     }
 }
