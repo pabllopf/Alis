@@ -178,5 +178,40 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(30, color.B);
             Assert.Equal(255, color.A);
         }
+
+        /// <summary>
+        ///     Tests that Equals(object) returns true for matching boxed colors
+        /// </summary>
+        [Fact]
+        public void Equals_Object_ReturnsTrueForMatchingColor()
+        {
+            Color c1 = new Color(10, 20, 30, 40);
+            Color c2 = new Color(10, 20, 30, 40);
+
+            Assert.True(c1.Equals((object)c2));
+        }
+
+        /// <summary>
+        ///     Tests that Equals(object) returns false for non-Color object
+        /// </summary>
+        [Fact]
+        public void Equals_Object_ReturnsFalseForNonColor()
+        {
+            Color color = new Color(1, 2, 3, 4);
+
+            Assert.False(color.Equals("not a color"));
+        }
+
+        /// <summary>
+        ///     Tests that GetHashCode returns consistent values for equal colors
+        /// </summary>
+        [Fact]
+        public void GetHashCode_EqualColors_ReturnsSameValue()
+        {
+            Color c1 = new Color(10, 20, 30, 40);
+            Color c2 = new Color(10, 20, 30, 40);
+
+            Assert.Equal(c1.GetHashCode(), c2.GetHashCode());
+        }
     }
 }
