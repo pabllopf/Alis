@@ -165,5 +165,45 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(4, queue.Count);
             Assert.True(queue.IsValidQueue());
         }
+
+        /// <summary>
+        ///     Tests that Remove with the last node does not corrupt the queue.
+        ///     Covers the if (item.QueueIndex == _numNodes) early-return branch.
+        /// </summary>
+        [Fact]
+        public void Remove_LastNode_DoesNotCorruptQueue()
+        {
+            FastPriorityQueue<FastPriorityQueueNode> queue = new FastPriorityQueue<FastPriorityQueueNode>(10);
+            FastPriorityQueueNode node1 = new FastPriorityQueueNode();
+            FastPriorityQueueNode node2 = new FastPriorityQueueNode();
+            queue.Enqueue(node1, 1f);
+            queue.Enqueue(node2, 2f);
+
+            queue.Remove(node2);
+
+            Assert.Equal(1, queue.Count);
+            Assert.Same(node1, queue.First);
+            Assert.True(queue.IsValidQueue());
+        }
+
+        /// <summary>
+        ///     Tests that UpdatePriority lowering a node's priority triggers CascadeDown.
+        ///     Covers the else { CascadeDown(); } branch in OnNodeUpdated.
+        /// </summary>
+        [Fact]
+        public void UpdatePriority_LoweringPriority_TriggersCascadeDown()
+        {
+            FastPriorityQueue<FastPriorityQueueNode> queue = new FastPriorityQueue<FastPriorityQueueNode>(10);
+            FastPriorityQueueNode node1 = new FastPriorityQueueNode();
+            FastPriorityQueueNode node2 = new FastPriorityQueueNode();
+            queue.Enqueue(node1, 1f);
+            queue.Enqueue(node2, 2f);
+
+            queue.UpdatePriority(node2, 5f);
+
+            Assert.Same(node1, queue.First);
+            Assert.Equal(5f, node2.Priority);
+            Assert.True(queue.IsValidQueue());
+        }
     }
 }
