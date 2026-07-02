@@ -190,5 +190,191 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.Equal(0, result);
         }
+
+        /// <summary>
+        ///     Tests that Equals returns true when both proxy IDs match.
+        /// </summary>
+        [Fact]
+        public void Equals_WithMatchingProxyIds_ShouldReturnTrue()
+        {
+            Pair pair1 = new Pair { ProxyIdA = 5, ProxyIdB = 10 };
+            Pair pair2 = new Pair { ProxyIdA = 5, ProxyIdB = 10 };
+
+            Assert.True(pair1.Equals(pair2));
+        }
+
+        /// <summary>
+        ///     Tests that Equals returns false when proxy IDs differ.
+        /// </summary>
+        [Fact]
+        public void Equals_WithDifferentProxyIds_ShouldReturnFalse()
+        {
+            Pair pair1 = new Pair { ProxyIdA = 5, ProxyIdB = 10 };
+            Pair pair2 = new Pair { ProxyIdA = 8, ProxyIdB = 10 };
+
+            Assert.False(pair1.Equals(pair2));
+        }
+
+        /// <summary>
+        ///     Tests that Equals object returns true for boxed pair with matching IDs.
+        /// </summary>
+        [Fact]
+        public void Equals_Object_WithMatchingPair_ShouldReturnTrue()
+        {
+            Pair pair = new Pair { ProxyIdA = 3, ProxyIdB = 7 };
+            object obj = new Pair { ProxyIdA = 3, ProxyIdB = 7 };
+
+            Assert.True(pair.Equals(obj));
+        }
+
+        /// <summary>
+        ///     Tests that Equals object returns false for null.
+        /// </summary>
+        [Fact]
+        public void Equals_Object_WithNull_ShouldReturnFalse()
+        {
+            Pair pair = new Pair { ProxyIdA = 3, ProxyIdB = 7 };
+
+            Assert.False(pair.Equals(null));
+        }
+
+        /// <summary>
+        ///     Tests that Equals object returns false for non-Pair type.
+        /// </summary>
+        [Fact]
+        public void Equals_Object_WithNonPairType_ShouldReturnFalse()
+        {
+            Pair pair = new Pair { ProxyIdA = 3, ProxyIdB = 7 };
+
+            Assert.False(pair.Equals("not a Pair"));
+        }
+
+        /// <summary>
+        ///     Tests that GetHashCode returns consistent values for equal pairs.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_WithEqualPairs_ShouldBeEqual()
+        {
+            Pair pair1 = new Pair { ProxyIdA = 4, ProxyIdB = 9 };
+            Pair pair2 = new Pair { ProxyIdA = 4, ProxyIdB = 9 };
+
+            Assert.Equal(pair1.GetHashCode(), pair2.GetHashCode());
+        }
+
+        /// <summary>
+        ///     Tests that GetHashCode returns different values for different pairs.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_WithDifferentPairs_ShouldDiffer()
+        {
+            Pair pair1 = new Pair { ProxyIdA = 4, ProxyIdB = 9 };
+            Pair pair2 = new Pair { ProxyIdA = 4, ProxyIdB = 10 };
+
+            Assert.NotEqual(pair1.GetHashCode(), pair2.GetHashCode());
+        }
+
+        /// <summary>
+        ///     Tests that equality operator returns true for matching pairs.
+        /// </summary>
+        [Fact]
+        public void EqualityOperator_WithMatchingPairs_ShouldReturnTrue()
+        {
+            Pair pair1 = new Pair { ProxyIdA = 2, ProxyIdB = 6 };
+            Pair pair2 = new Pair { ProxyIdA = 2, ProxyIdB = 6 };
+
+            Assert.True(pair1 == pair2);
+        }
+
+        /// <summary>
+        ///     Tests that equality operator returns false for different pairs.
+        /// </summary>
+        [Fact]
+        public void EqualityOperator_WithDifferentPairs_ShouldReturnFalse()
+        {
+            Pair pair1 = new Pair { ProxyIdA = 2, ProxyIdB = 6 };
+            Pair pair2 = new Pair { ProxyIdA = 3, ProxyIdB = 6 };
+
+            Assert.False(pair1 == pair2);
+        }
+
+        /// <summary>
+        ///     Tests that inequality operator returns false for matching pairs.
+        /// </summary>
+        [Fact]
+        public void InequalityOperator_WithMatchingPairs_ShouldReturnFalse()
+        {
+            Pair pair1 = new Pair { ProxyIdA = 2, ProxyIdB = 6 };
+            Pair pair2 = new Pair { ProxyIdA = 2, ProxyIdB = 6 };
+
+            Assert.False(pair1 != pair2);
+        }
+
+        /// <summary>
+        ///     Tests that inequality operator returns true for different pairs.
+        /// </summary>
+        [Fact]
+        public void InequalityOperator_WithDifferentPairs_ShouldReturnTrue()
+        {
+            Pair pair1 = new Pair { ProxyIdA = 2, ProxyIdB = 6 };
+            Pair pair2 = new Pair { ProxyIdA = 3, ProxyIdB = 6 };
+
+            Assert.True(pair1 != pair2);
+        }
+
+        /// <summary>
+        ///     Tests that less than operator works correctly.
+        /// </summary>
+        [Fact]
+        public void LessThanOperator_ShouldCompareCorrectly()
+        {
+            Pair smaller = new Pair { ProxyIdA = 1, ProxyIdB = 5 };
+            Pair larger = new Pair { ProxyIdA = 1, ProxyIdB = 10 };
+
+            Assert.True(smaller < larger);
+            Assert.False(larger < smaller);
+        }
+
+        /// <summary>
+        ///     Tests that less than or equal operator works correctly.
+        /// </summary>
+        [Fact]
+        public void LessThanOrEqualOperator_ShouldCompareCorrectly()
+        {
+            Pair pair1 = new Pair { ProxyIdA = 1, ProxyIdB = 5 };
+            Pair pair2 = new Pair { ProxyIdA = 1, ProxyIdB = 5 };
+            Pair pair3 = new Pair { ProxyIdA = 1, ProxyIdB = 10 };
+
+            Assert.True(pair1 <= pair2);
+            Assert.True(pair1 <= pair3);
+            Assert.False(pair3 <= pair1);
+        }
+
+        /// <summary>
+        ///     Tests that greater than operator works correctly.
+        /// </summary>
+        [Fact]
+        public void GreaterThanOperator_ShouldCompareCorrectly()
+        {
+            Pair smaller = new Pair { ProxyIdA = 1, ProxyIdB = 5 };
+            Pair larger = new Pair { ProxyIdA = 1, ProxyIdB = 10 };
+
+            Assert.True(larger > smaller);
+            Assert.False(smaller > larger);
+        }
+
+        /// <summary>
+        ///     Tests that greater than or equal operator works correctly.
+        /// </summary>
+        [Fact]
+        public void GreaterThanOrEqualOperator_ShouldCompareCorrectly()
+        {
+            Pair pair1 = new Pair { ProxyIdA = 1, ProxyIdB = 5 };
+            Pair pair2 = new Pair { ProxyIdA = 1, ProxyIdB = 5 };
+            Pair pair3 = new Pair { ProxyIdA = 1, ProxyIdB = 10 };
+
+            Assert.True(pair1 >= pair2);
+            Assert.True(pair3 >= pair1);
+            Assert.False(pair1 >= pair3);
+        }
     }
 }
