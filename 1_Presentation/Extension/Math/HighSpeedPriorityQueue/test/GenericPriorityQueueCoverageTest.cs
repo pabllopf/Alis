@@ -125,5 +125,70 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 
             Assert.False(queue.IsValidQueue());
         }
+        /// <summary>
+        ///     Tests that UpdatePriority lowering a node's priority triggers OnNodeUpdated→CascadeDown.
+        ///     This covers the else { CascadeDown(); } branch in OnNodeUpdated.
+        /// </summary>
+        [Fact]
+        public void UpdatePriority_LoweringPriority_TriggersCascadeDown()
+        {
+            GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(10);
+            TestNode nodeA = new TestNode();
+            TestNode nodeB = new TestNode();
+            queue.Enqueue(nodeA, 1);
+            queue.Enqueue(nodeB, 2);
+
+            queue.UpdatePriority(nodeB, 5);
+
+            Assert.Same(nodeA, queue.First);
+            Assert.Equal(5, nodeB.Priority);
+            Assert.True(queue.IsValidQueue());
+        }
+
+        /// <summary>
+        ///     Tests that Remove where the replacement node has lower priority than the removed note's
+        ///     children triggers OnNodeUpdated→CascadeDown.
+        /// </summary>
+        [Fact]
+        public void Remove_WhereReplacementHasLowerPriority_TriggersCascadeDown()
+        {
+            GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(10);
+            TestNode a = new TestNode();
+            TestNode b = new TestNode();
+            TestNode c = new TestNode();
+            TestNode d = new TestNode();
+
+            queue.Enqueue(a, 1);  // root at 1
+            queue.Enqueue(b, 2);  // at 2
+            queue.Enqueue(c, 3);  // at 3
+            queue.Enqueue(d, 10); // at 4
+
+            queue.Remove(b);
+
+            Assert.Equal(3, queue.Count);
+            Assert.True(queue.IsValidQueue());
+        }
+
+        /// <summary>
+        ///     Tests that CascadeUp stops before reaching the root when a parent at a higher
+        ///     level already has higher priority. This covers the break in CascadeUp's while loop.
+        /// </summary>
+        [Fact]
+        public void CascadeUp_BubblesPartway_WhenGrandparentHasHigherPriority()
+        {
+            GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(10);
+            TestNode root = new TestNode();
+            TestNode mid = new TestNode();
+            TestNode leaf = new TestNode();
+
+            queue.Enqueue(root, 10);
+            queue.Enqueue(mid, 20);
+            queue.Enqueue(leaf, 30);
+
+            queue.UpdatePriority(leaf, 15);
+
+            Assert.Same(root, queue.First);
+            Assert.True(queue.IsValidQueue());
+        }
     }
 }
