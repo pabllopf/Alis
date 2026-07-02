@@ -1,6 +1,4 @@
 # Distributed Locks
 
-No active locks.
-
-| Target | Worker | Timestamp | Status |
-|--------|--------|-----------|--------|
+| Target | Worker | Locked At | Expires | Status |
+|--------|--------|-----------|---------|--------|
