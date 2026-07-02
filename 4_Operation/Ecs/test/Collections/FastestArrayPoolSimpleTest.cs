@@ -162,5 +162,49 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.NotNull(arr2);
             Assert.True(arr2.Length >= 256);
         }
+
+        /// <summary>
+        ///     Test that Return with clearArray=true for a struct type does not clear (no references to clear).
+        ///     Exercises the branch where IsReferenceOrContainsReferences returns false.
+        /// </summary>
+        [Fact]
+        public void Return_WithClearFlag_StructType_DoesNotClear()
+        {
+            FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
+            int[] array = pool.Rent(32);
+            array[0] = 42;
+
+            pool.Return(array, true);
+
+            Assert.Equal(42, array[0]);
+        }
+
+        /// <summary>
+        ///     Test that Rent with exact power-of-two at 2^4 boundary returns pooled bucket.
+        /// </summary>
+        [Fact]
+        public void Rent_ExactPowerOfTwo_AtBucketBoundary_ReturnsPooled()
+        {
+            FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
+            int[] array1 = pool.Rent(32);
+            pool.Return(array1);
+
+            int[] array2 = pool.Rent(32);
+
+            Assert.Same(array1, array2);
+            pool.Return(array2);
+        }
+
+        /// <summary>
+        ///     Test that Instance property is consistent across calls.
+        /// </summary>
+        [Fact]
+        public void Instance_SameReference_AcrossCalls()
+        {
+            FastestArrayPool<int> pool1 = FastestArrayPool<int>.Instance;
+            FastestArrayPool<int> pool2 = FastestArrayPool<int>.Instance;
+
+            Assert.Same(pool1, pool2);
+        }
     }
 }
