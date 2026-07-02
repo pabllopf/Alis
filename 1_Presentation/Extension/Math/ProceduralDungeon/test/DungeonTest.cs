@@ -235,6 +235,21 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         }
 
         /// <summary>
+        ///     Tests that Generate delegates to the generator and returns DungeonData
+        /// </summary>
+        [Fact]
+        public void Generate_ShouldReturnDungeonData()
+        {
+            MockDungeonGenerator generator = new MockDungeonGenerator();
+            MockRandomNumberGenerator randomGenerator = new MockRandomNumberGenerator();
+            Dungeon dungeon = new Dungeon(generator, randomGenerator);
+
+            DungeonData result = dungeon.Generate();
+
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
         ///     Tests that DungeonConfiguration has correct defaults
         /// </summary>
         [Fact]
