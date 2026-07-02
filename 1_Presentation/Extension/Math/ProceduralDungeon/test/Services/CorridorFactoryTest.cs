@@ -126,6 +126,19 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         }
 
         /// <summary>
+        ///     Tests that create first corridor throws ArgumentOutOfRangeException when random direction is invalid.
+        /// </summary>
+        [Fact]
+        public void CreateFirstCorridor_WhenRandomDirectionIsInvalid_ShouldThrowArgumentOutOfRange()
+        {
+            Mocks.MockRandomNumberGenerator mockRng = new Mocks.MockRandomNumberGenerator((int)Direction.None);
+            CorridorFactory factory = new CorridorFactory(mockRng);
+            RoomData room = new RoomData(10, 10, 8, 8, Direction.North);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => factory.CreateFirstCorridor(4, 4, room));
+        }
+
+        /// <summary>
         /// Tests that create corridor should use room direction to avoid opposite.
         /// </summary>
         [Fact]
