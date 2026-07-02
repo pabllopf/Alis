@@ -289,5 +289,75 @@ namespace Alis.Core.Ecs.Test.Updating
 
             storage.InvokeGenericActionWith(null, 0);
         }
+
+        /// <summary>
+        ///     Tests that <see cref="ComponentStorage{TComponent}.Trim" /> resizes the buffer
+        ///     to the next power of two.
+        /// </summary>
+        [Fact]
+        public void ShouldRoundUpToPowerOfTwoWhenTrimCalled()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(4);
+
+            storage.Trim(3);
+
+            Assert.Equal(4, storage.Buffer.Length);
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="ComponentStorage{TComponent}.Trim" /> preserves
+        ///     the buffer length when chunk index is already a power of two.
+        /// </summary>
+        [Fact]
+        public void ShouldPreserveLengthWhenTrimWithPowerOfTwo()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(4);
+
+            storage.Trim(4);
+
+            Assert.Equal(4, storage.Buffer.Length);
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="ComponentStorage{TComponent}.Trim" /> rounds up
+        ///     to a larger power of two.
+        /// </summary>
+        [Fact]
+        public void ShouldRoundUpToNextPowerOfTwoWhenTrimWithNonPowerOfTwo()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(4);
+
+            storage.Trim(5);
+
+            Assert.Equal(8, storage.Buffer.Length);
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="ComponentStorage{TComponent}.ResizeBuffer" /> resizes
+        ///     the underlying array to the specified size.
+        /// </summary>
+        [Fact]
+        public void ShouldResizeBufferWhenResizeBufferCalled()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(4);
+
+            storage.ResizeBuffer(8);
+
+            Assert.Equal(8, storage.Buffer.Length);
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="ComponentStorage{TComponent}.ResizeBuffer" />
+        ///     shrinks the buffer when a smaller size is given.
+        /// </summary>
+        [Fact]
+        public void ShouldShrinkBufferWhenResizeBufferWithSmallerSize()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(8);
+
+            storage.ResizeBuffer(4);
+
+            Assert.Equal(4, storage.Buffer.Length);
+        }
     }
 }
