@@ -204,6 +204,42 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         }
 
         /// <summary>
+        ///     Tests that write after dispose with null entry returns safely (both guards)
+        /// </summary>
+        [Fact]
+        public void Write_AfterDisposeWithNull_DoesNotThrow()
+        {
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            output.Dispose();
+
+            output.Write(null);
+        }
+
+        /// <summary>
+        ///     Tests that multiple flushes are safe
+        /// </summary>
+        [Fact]
+        public void Flush_MultipleCalls_DoesNotThrow()
+        {
+            ConsoleLogOutput output = new ConsoleLogOutput();
+
+            output.Flush();
+            output.Flush();
+            output.Flush();
+        }
+
+        /// <summary>
+        ///     Tests that dispose after flush is safe
+        /// </summary>
+        [Fact]
+        public void Dispose_AfterFlush_DoesNotThrow()
+        {
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            output.Flush();
+            output.Dispose();
+        }
+
+        /// <summary>
         ///     Helper TextWriter that throws on Write/WriteLine to trigger the catch blocks in ConsoleLogOutput
         /// </summary>
         private sealed class ThrowingTextWriter : TextWriter
