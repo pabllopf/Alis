@@ -604,5 +604,43 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
+
+        /// <summary>
+        ///     Tests that CurrentAnimation throws when Animator is default-initialized
+        /// </summary>
+        [Fact]
+        public void Animator_CurrentAnimation_WithDefaultStruct_ShouldThrowNullReference()
+        {
+            Animator animator = default;
+
+            Assert.Throws<NullReferenceException>(() => _ = animator.CurrentAnimation);
+        }
+
+        /// <summary>
+        ///     Tests that DrawAnimation with default frame (null NameFile) and non-default sprite triggers LoadTexture
+        /// </summary>
+        [Fact]
+        public void Animator_DrawAnimation_WithNullFrameTexture_ShouldThrow()
+        {
+            Animator animator = new Animator();
+            animator.Animations = new List<Animation>
+            {
+                new Animation
+                {
+                    Name = "TestAnim",
+                    Speed = 1f,
+                    Frames = new List<Frame>
+                    {
+                        new Frame()
+                    }
+                }
+            };
+            animator.Play("TestAnim");
+
+            Context context = new Context();
+            Sprite sprite = new Sprite(context, "sprite.png", 0);
+
+            Assert.ThrowsAny<Exception>(() => animator.DrawAnimation(ref sprite));
+        }
     }
 }
