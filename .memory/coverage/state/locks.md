@@ -1,4 +1,7 @@
 # Distributed Locks
 
-| Target | Worker | Locked At | Expires | Status |
-|--------|--------|-----------|---------|--------|
+> Format: | Target | Worker | Timestamp | Status |
+
+| Target | Worker | Timestamp | Status |
+|--------|--------|-----------|--------|
+| - | - | - | - |

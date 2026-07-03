@@ -245,7 +245,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <summary>
         ///     Renders the preview
         /// </summary>
-        private void RenderPreview()
+        internal void RenderPreview()
         {
             float pixelsPerMeter = PixelsPerMeter;
             Setting contextSetting = Context.Setting;
@@ -321,7 +321,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <param name="pressedKeys">The pressed keys</param>
         /// <param name="releasedKeys">The released keys</param>
         /// <param name="now">The now</param>
-        private void UpdateKeyTimestamps(HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
+        internal void UpdateKeyTimestamps(HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
         {
             foreach (ConsoleKey key in pressedKeys)
             {
@@ -341,7 +341,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <param name="heldKeys">The held keys</param>
         /// <param name="releasedKeys">The released keys</param>
         /// <param name="now">The now</param>
-        private void ProcessKeyEventComponents(HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> heldKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
+        internal void ProcessKeyEventComponents(HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> heldKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
         {
             foreach (GameObject gameObject in Context.SceneManager.CurrentWorld
                          .Query<With<Info>>()
@@ -364,7 +364,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <param name="heldKeys">The held keys</param>
         /// <param name="releasedKeys">The released keys</param>
         /// <param name="now">The now</param>
-        private void ProcessKeyEventForComponent(Type componentType, GameObject gameObject, HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> heldKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
+        internal void ProcessKeyEventForComponent(Type componentType, GameObject gameObject, HashSet<ConsoleKey> pressedKeys, HashSet<ConsoleKey> heldKeys, HashSet<ConsoleKey> releasedKeys, DateTime now)
         {
             if (typeof(IOnPressKey).IsAssignableFrom(componentType))
             {
@@ -403,7 +403,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <param name="physicSettings">The physic settings</param>
         /// <param name="camera">The camera</param>
         /// <param name="pixelsPerMeter">The pixels per meter</param>
-        private static void RenderBoxColliders(GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects, PhysicSetting physicSettings, RefTuple<Camera> camera, float pixelsPerMeter)
+        internal static void RenderBoxColliders(GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects, PhysicSetting physicSettings, RefTuple<Camera> camera, float pixelsPerMeter)
         {
             foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
             {
@@ -424,7 +424,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <param name="spriteGameObjects">The sprite game objects</param>
         /// <param name="camera">The camera</param>
         /// <param name="pixelsPerMeter">The pixels per meter</param>
-        private static void RenderSprites(GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects, RefTuple<Camera> camera, float pixelsPerMeter)
+        internal static void RenderSprites(GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects, RefTuple<Camera> camera, float pixelsPerMeter)
         {
             foreach (GameObject spriteGameobject in spriteGameObjects)
             {

@@ -29,7 +29,9 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Manager.Graphic;
+using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
@@ -195,6 +197,126 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
 
             Assert.Single(released);
             Assert.Contains(ConsoleKey.A, released);
+        }
+
+        /// <summary>
+        ///     Tests that UpdateKeyTimestamps does not throw with empty key sets.
+        /// </summary>
+        [Fact]
+        public void UpdateKeyTimestamps_EmptySets_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            GraphicManager manager = new GraphicManager(context);
+            HashSet<ConsoleKey> empty = new HashSet<ConsoleKey>();
+            DateTime now = DateTime.UtcNow;
+
+            Exception ex = Record.Exception(() => manager.UpdateKeyTimestamps(empty, empty, now));
+
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        ///     Tests that UpdateKeyTimestamps does not throw with pressed keys.
+        /// </summary>
+        [Fact]
+        public void UpdateKeyTimestamps_PressedKeys_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            GraphicManager manager = new GraphicManager(context);
+            HashSet<ConsoleKey> pressed = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
+            HashSet<ConsoleKey> released = new HashSet<ConsoleKey>();
+            DateTime now = DateTime.UtcNow;
+
+            Exception ex = Record.Exception(() => manager.UpdateKeyTimestamps(pressed, released, now));
+
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        ///     Tests that UpdateKeyTimestamps does not throw with released keys.
+        /// </summary>
+        [Fact]
+        public void UpdateKeyTimestamps_ReleasedKeys_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            GraphicManager manager = new GraphicManager(context);
+            HashSet<ConsoleKey> pressed = new HashSet<ConsoleKey>();
+            HashSet<ConsoleKey> released = new HashSet<ConsoleKey> { ConsoleKey.C, ConsoleKey.D };
+            DateTime now = DateTime.UtcNow;
+
+            Exception ex = Record.Exception(() => manager.UpdateKeyTimestamps(pressed, released, now));
+
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        ///     Tests that UpdateKeyTimestamps does not throw with both pressed and released keys.
+        /// </summary>
+        [Fact]
+        public void UpdateKeyTimestamps_PressedAndReleased_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            GraphicManager manager = new GraphicManager(context);
+            HashSet<ConsoleKey> pressed = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
+            HashSet<ConsoleKey> released = new HashSet<ConsoleKey> { ConsoleKey.C, ConsoleKey.D };
+            DateTime now = DateTime.UtcNow;
+
+            Exception ex = Record.Exception(() => manager.UpdateKeyTimestamps(pressed, released, now));
+
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        ///     Tests that ProcessKeyEventForComponent does not throw when the type does not implement any key interface.
+        /// </summary>
+        [Fact]
+        public void ProcessKeyEventForComponent_NoMatchingInterface_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            GraphicManager manager = new GraphicManager(context);
+            HashSet<ConsoleKey> empty = new HashSet<ConsoleKey>();
+            DateTime now = DateTime.UtcNow;
+
+            Exception ex = Record.Exception(() =>
+                manager.ProcessKeyEventForComponent(typeof(object), default, empty, empty, empty, now));
+
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        ///     Tests that ProcessKeyEventForComponent does not throw with empty key sets.
+        /// </summary>
+        [Fact]
+        public void ProcessKeyEventForComponent_EmptyKeys_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            GraphicManager manager = new GraphicManager(context);
+            HashSet<ConsoleKey> empty = new HashSet<ConsoleKey>();
+            DateTime now = DateTime.UtcNow;
+
+            Exception ex = Record.Exception(() =>
+                manager.ProcessKeyEventForComponent(typeof(object), default, empty, empty, empty, now));
+
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        ///     Tests that ProcessKeyEventForComponent does not throw with non-empty key sets but no matching interface.
+        /// </summary>
+        [Fact]
+        public void ProcessKeyEventForComponent_KeysProvidedNoInterface_DoesNotThrow()
+        {
+            Context context = new Context(new Setting());
+            GraphicManager manager = new GraphicManager(context);
+            HashSet<ConsoleKey> pressed = new HashSet<ConsoleKey> { ConsoleKey.A };
+            HashSet<ConsoleKey> held = new HashSet<ConsoleKey> { ConsoleKey.B };
+            HashSet<ConsoleKey> released = new HashSet<ConsoleKey> { ConsoleKey.C };
+            DateTime now = DateTime.UtcNow;
+
+            Exception ex = Record.Exception(() =>
+                manager.ProcessKeyEventForComponent(typeof(string), default, pressed, held, released, now));
+
+            Assert.Null(ex);
         }
     }
 }
