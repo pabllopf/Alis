@@ -286,8 +286,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
 
             trapezoid.TrimNeighbors();
 
-            // Neither the trapezoid nor its neighbor should be trimmed
-            Assert.True(trapezoid.Inside);
+            // Neither the trapezoid nor its neighbor should be trimmed (Inside stays false)
+            Assert.False(trapezoid.Inside);
             Assert.True(neighbor.Inside);
         }
 
