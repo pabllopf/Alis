@@ -139,5 +139,34 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             adaptor1.Dispose();
             adaptor2.Dispose();
         }
+
+        /// <summary>
+        ///     Tests that Dispose can be called multiple times without throwing.
+        /// </summary>
+        [Fact]
+        public void Dispose_MultipleCalls_ShouldNotThrow()
+        {
+            MemoryStream stream = new MemoryStream(new byte[] { 1, 2, 3 });
+            StreamAdaptor adaptor = new StreamAdaptor(stream);
+
+            adaptor.Dispose();
+            adaptor.Dispose();
+        }
+
+        /// <summary>
+        ///     Tests that StreamAdaptor with large stream works.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithLargeStream_ShouldCreateValidInstance()
+        {
+            byte[] data = new byte[65536];
+            MemoryStream stream = new MemoryStream(data);
+            StreamAdaptor adaptor = new StreamAdaptor(stream);
+
+            Assert.NotNull(adaptor);
+            Assert.NotEqual(IntPtr.Zero, adaptor.InputStreamPtr);
+
+            adaptor.Dispose();
+        }
     }
 }

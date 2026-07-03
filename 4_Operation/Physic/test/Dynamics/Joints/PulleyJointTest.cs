@@ -151,5 +151,118 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.Equal(4.0f, joint.LengthB);
         }
+
+        /// <summary>
+        /// Tests that world anchor a should round trip.
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            Vector2F expected = new Vector2F(5.0f, 10.0f);
+            PulleyJoint joint = new PulleyJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero, expected, new Vector2F(0.0f, -1.0f), 1.0f);
+
+            Assert.Equal(expected, joint.WorldAnchorA);
+        }
+
+        /// <summary>
+        /// Tests that world anchor b should round trip.
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            Vector2F expected = new Vector2F(5.0f, 10.0f);
+            PulleyJoint joint = new PulleyJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero, new Vector2F(0.0f, -1.0f), expected, 1.0f);
+
+            Assert.Equal(expected, joint.WorldAnchorB);
+        }
+
+        /// <summary>
+        /// Tests that get reaction torque returns zero.
+        /// </summary>
+        [Fact]
+        public void GetReactionTorque_ShouldReturnZero()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            PulleyJoint joint = new PulleyJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero, new Vector2F(0.0f, -1.0f), new Vector2F(0.0f, -1.0f), 1.0f);
+
+            Assert.Equal(0.0f, joint.GetReactionTorque(1.0f));
+        }
+
+        /// <summary>
+        /// Tests that get reaction force uses impulse.
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_ShouldReturnImpulseBasedForce()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            PulleyJoint joint = new PulleyJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero, new Vector2F(0.0f, -1.0f), new Vector2F(0.0f, -1.0f), 1.0f);
+
+            Vector2F force = joint.GetReactionForce(1.0f);
+
+            Assert.Equal(Vector2F.Zero, force);
+        }
+
+        /// <summary>
+        /// Tests that constructor with use world coordinates initializes lengths correctly.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithUseWorldCoordinates_ShouldComputeLengths()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            Vector2F localAnchor = new Vector2F(1.0f, 2.0f);
+            Vector2F worldAnchor = new Vector2F(4.0f, 6.0f);
+
+            PulleyJoint joint = new PulleyJoint(bodyA, bodyB, localAnchor, localAnchor, worldAnchor, worldAnchor, 2.0f, true);
+
+            Assert.Equal(JointType.Pulley, joint.JointType);
+            Assert.Equal(2.0f, joint.Ratio);
+            Assert.True(joint.LengthA > 0);
+            Assert.True(joint.LengthB > 0);
+        }
+
+        /// <summary>
+        /// Tests that constant is computed correctly as LengthA + ratio * LengthB.
+        /// </summary>
+        [Fact]
+        public void Constructor_ShouldComputeConstant()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+
+            PulleyJoint joint = new PulleyJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero, new Vector2F(0.0f, -1.0f), new Vector2F(0.0f, -1.0f), 2.0f);
+
+            float lengthA = joint.LengthA;
+            float lengthB = joint.LengthB;
+            float expectedConstant = lengthA + 2.0f * lengthB;
+
+            System.Reflection.FieldInfo constantField = typeof(PulleyJoint).GetField("Constant", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            float actualConstant = (float)constantField.GetValue(joint);
+
+            Assert.Equal(expectedConstant, actualConstant, 4);
+        }
+
+        /// <summary>
+        /// Tests that default constructor sets joint type to pulley.
+        /// </summary>
+        [Fact]
+        public void DefaultConstructor_ShouldSetPulleyType()
+        {
+            PulleyJoint joint = (PulleyJoint)System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(PulleyJoint));
+
+            System.Reflection.MethodInfo init = typeof(PulleyJoint).GetMethod("PulleyJoint", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic, null, System.Type.EmptyTypes, null);
+            if (init != null)
+            {
+                init.Invoke(joint, null);
+            }
+
+            Assert.Equal(JointType.Pulley, joint.JointType);
+        }
     }
 }

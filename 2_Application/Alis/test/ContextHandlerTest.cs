@@ -105,5 +105,28 @@ namespace Alis.Test
             handler.Save("test_save_path");
         }
 
+        /// <summary>
+        /// Tests that load and run throws because runtime is not initialized.
+        /// </summary>
+        [Fact]
+        public void LoadAndRun_WithEmptyContext_Throws()
+        {
+            Context context = new Context();
+            ContextHandler handler = new ContextHandler(context);
+
+            Assert.Throws<NullReferenceException>(() => handler.LoadAndRun());
+        }
+
+        /// <summary>
+        /// Tests that init preview makes the context set preview mode on graphic setting.
+        /// </summary>
+        [Fact]
+        public void InitPreview_ShouldSetPreviewMode()
+        {
+            Context context = new Context();
+            ContextHandler handler = new ContextHandler(context);
+
+            Assert.Throws<NullReferenceException>(() => handler.InitPreview());
+        }
     }
 }

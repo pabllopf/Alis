@@ -60,5 +60,479 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.NotNull(typeof(ImGui).GetMethod("NewFrame", BindingFlags.Public | BindingFlags.Static));
             Assert.NotNull(typeof(ImGui).GetMethod("NextColumn", BindingFlags.Public | BindingFlags.Static));
         }
+
+        /// <summary>
+        ///     Verifies NewLine method exists.
+        /// </summary>
+        [Fact]
+        public void NewLine_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("NewLine", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies MenuItem overloads exist.
+        /// </summary>
+        [Fact]
+        public void MenuItem_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "MenuItem").ToArray();
+            Assert.True(methods.Length >= 1);
+        }
+
+        /// <summary>
+        ///     Verifies PlotHistogram overloads exist.
+        /// </summary>
+        [Fact]
+        public void PlotHistogram_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PlotHistogram").ToArray();
+            Assert.True(methods.Length >= 7);
+        }
+
+        /// <summary>
+        ///     Verifies PlotLines overloads exist.
+        /// </summary>
+        [Fact]
+        public void PlotLines_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PlotLines").ToArray();
+            Assert.True(methods.Length >= 7);
+        }
+
+        /// <summary>
+        ///     Verifies Pop* methods exist.
+        /// </summary>
+        [Fact]
+        public void PopMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("PopAllowKeyboardFocus", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("PopButtonRepeat", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("PopClipRect", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("PopFont", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("PopId", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("PopItemWidth", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("PopTextWrapPos", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies PopStyleColor and PopStyleVar overloads exist.
+        /// </summary>
+        [Fact]
+        public void PopStyleMethods_ShouldExposeOverloads()
+        {
+            MethodInfo[] popStyleColor = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PopStyleColor").ToArray();
+            MethodInfo[] popStyleVar = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PopStyleVar").ToArray();
+
+            Assert.True(popStyleColor.Length >= 2);
+            Assert.True(popStyleVar.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies ProgressBar overloads exist.
+        /// </summary>
+        [Fact]
+        public void ProgressBar_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ProgressBar").ToArray();
+            Assert.True(methods.Length >= 3);
+        }
+
+        /// <summary>
+        ///     Verifies Push* methods exist.
+        /// </summary>
+        [Fact]
+        public void PushMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("PushAllowKeyboardFocus", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("PushButtonRepeat", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("PushClipRect", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("PushFont", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("PushItemWidth", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies PushId overloads exist.
+        /// </summary>
+        [Fact]
+        public void PushId_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PushId").ToArray();
+            Assert.True(methods.Length >= 3);
+        }
+
+        /// <summary>
+        ///     Verifies PushStyleColor and PushStyleVar overloads exist.
+        /// </summary>
+        [Fact]
+        public void PushStyleMethods_ShouldExposeOverloads()
+        {
+            MethodInfo[] pushStyleColor = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PushStyleColor").ToArray();
+            MethodInfo[] pushStyleVar = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PushStyleVar").ToArray();
+
+            Assert.True(pushStyleColor.Length >= 2);
+            Assert.True(pushStyleVar.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies PushTextWrapPos overloads exist.
+        /// </summary>
+        [Fact]
+        public void PushTextWrapPos_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PushTextWrapPos").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies RadioButton overloads exist.
+        /// </summary>
+        [Fact]
+        public void RadioButton_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "RadioButton").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies Render methods exist.
+        /// </summary>
+        [Fact]
+        public void RenderMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("Render", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies RenderPlatformWindowsDefault overloads exist.
+        /// </summary>
+        [Fact]
+        public void RenderPlatformWindowsDefault_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "RenderPlatformWindowsDefault").ToArray();
+            Assert.True(methods.Length >= 3);
+        }
+
+        /// <summary>
+        ///     Verifies ResetMouseDragDelta overloads exist.
+        /// </summary>
+        [Fact]
+        public void ResetMouseDragDelta_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ResetMouseDragDelta").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies SameLine overloads exist.
+        /// </summary>
+        [Fact]
+        public void SameLine_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SameLine").ToArray();
+            Assert.True(methods.Length >= 3);
+        }
+
+        /// <summary>
+        ///     Verifies SaveIniSettings methods exist.
+        /// </summary>
+        [Fact]
+        public void SaveIniSettingsMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SaveIniSettingsToDisk", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SaveIniSettingsToMemory overloads exist.
+        /// </summary>
+        [Fact]
+        public void SaveIniSettingsToMemory_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SaveIniSettingsToMemory").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies Selectable overloads exist.
+        /// </summary>
+        [Fact]
+        public void Selectable_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "Selectable").ToArray();
+            Assert.True(methods.Length >= 7);
+        }
+
+        /// <summary>
+        ///     Verifies Separator method exists.
+        /// </summary>
+        [Fact]
+        public void Separator_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("Separator", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetAllocatorFunctions overloads exist.
+        /// </summary>
+        [Fact]
+        public void SetAllocatorFunctions_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetAllocatorFunctions").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies SetClipboardText method exists.
+        /// </summary>
+        [Fact]
+        public void SetClipboardText_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetClipboardText", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetColorEditOptions method exists.
+        /// </summary>
+        [Fact]
+        public void SetColorEditOptions_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetColorEditOptions", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetColumn methods exist.
+        /// </summary>
+        [Fact]
+        public void SetColumnMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetColumnOffset", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetColumnWidth", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetCurrentContext method exists.
+        /// </summary>
+        [Fact]
+        public void SetCurrentContext_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetCurrentContext", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetCursorPos methods exist.
+        /// </summary>
+        [Fact]
+        public void SetCursorPosMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetCursorPos", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetCursorPosX", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetCursorPosY", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetCursorScreenPos", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetDragDropPayload overloads exist.
+        /// </summary>
+        [Fact]
+        public void SetDragDropPayload_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetDragDropPayload").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies SetItem methods exist.
+        /// </summary>
+        [Fact]
+        public void SetItemMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetItemAllowOverlap", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetItemDefaultFocus", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetKeyboardFocusHere overloads exist.
+        /// </summary>
+        [Fact]
+        public void SetKeyboardFocusHere_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetKeyboardFocusHere").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies SetMouseCursor method exists.
+        /// </summary>
+        [Fact]
+        public void SetMouseCursor_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetMouseCursor", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetNextFrameWantCapture methods exist.
+        /// </summary>
+        [Fact]
+        public void SetNextFrameWantCaptureMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetNextFrameWantCaptureKeyboard", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetNextFrameWantCaptureMouse", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetNextItem overloads exist.
+        /// </summary>
+        [Fact]
+        public void SetNextItemMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetNextItemWidth", BindingFlags.Public | BindingFlags.Static));
+            MethodInfo[] open = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetNextItemOpen").ToArray();
+            Assert.True(open.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies SetNextWindow methods exist.
+        /// </summary>
+        [Fact]
+        public void SetNextWindowMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetNextWindowBgAlpha", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetNextWindowClass", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetNextWindowContentSize", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetNextWindowFocus", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetNextWindowScroll", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetNextWindowViewport", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetNextWindowCollapsed and SetNextWindowDockId overloads exist.
+        /// </summary>
+        [Fact]
+        public void SetNextWindowCollapsedDock_ShouldExposeOverloads()
+        {
+            MethodInfo[] collapsed = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetNextWindowCollapsed").ToArray();
+            MethodInfo[] dockId = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetNextWindowDockId").ToArray();
+            MethodInfo[] size = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetNextWindowSize").ToArray();
+            MethodInfo[] constraints = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetNextWindowSizeConstraints").ToArray();
+            MethodInfo[] pos = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetNextWindowPos").ToArray();
+
+            Assert.True(collapsed.Length >= 2);
+            Assert.True(dockId.Length >= 2);
+            Assert.True(size.Length >= 2);
+            Assert.True(constraints.Length >= 3);
+            Assert.True(pos.Length >= 3);
+        }
+
+        /// <summary>
+        ///     Verifies SetScrollFromPos overloads exist.
+        /// </summary>
+        [Fact]
+        public void SetScrollFromPosMethods_ShouldExposeOverloads()
+        {
+            MethodInfo[] fromPosX = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetScrollFromPosX").ToArray();
+            MethodInfo[] fromPosY = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetScrollFromPosY").ToArray();
+
+            Assert.True(fromPosX.Length >= 2);
+            Assert.True(fromPosY.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies SetScrollHere overloads exist.
+        /// </summary>
+        [Fact]
+        public void SetScrollHereMethods_ShouldExposeOverloads()
+        {
+            MethodInfo[] hereX = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetScrollHereX").ToArray();
+            MethodInfo[] hereY = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetScrollHereY").ToArray();
+
+            Assert.True(hereX.Length >= 2);
+            Assert.True(hereY.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies SetScrollX and SetScrollY methods exist.
+        /// </summary>
+        [Fact]
+        public void SetScrollXYMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetScrollX", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ImGui).GetMethod("SetScrollY", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetStateStorage method exists.
+        /// </summary>
+        [Fact]
+        public void SetStateStorage_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetStateStorage", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetTabItemClosed method exists.
+        /// </summary>
+        [Fact]
+        public void SetTabItemClosed_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetTabItemClosed", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetTooltip method exists.
+        /// </summary>
+        [Fact]
+        public void SetTooltip_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetTooltip", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetWindow methods exist.
+        /// </summary>
+        [Fact]
+        public void SetWindowMethods_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("SetWindowFontScale", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies SetWindowCollapsed overloads exist.
+        /// </summary>
+        [Fact]
+        public void SetWindowCollapsed_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetWindowCollapsed").ToArray();
+            Assert.True(methods.Length >= 4);
+        }
+
+        /// <summary>
+        ///     Verifies SetWindowFocus overloads exist.
+        /// </summary>
+        [Fact]
+        public void SetWindowFocus_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetWindowFocus").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies SetWindowPos overloads exist.
+        /// </summary>
+        [Fact]
+        public void SetWindowPos_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetWindowPos").ToArray();
+            Assert.True(methods.Length >= 4);
+        }
+
+        /// <summary>
+        ///     Verifies SetWindowSize overloads exist.
+        /// </summary>
+        [Fact]
+        public void SetWindowSize_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetWindowSize").ToArray();
+            Assert.True(methods.Length >= 4);
+        }
     }
 }

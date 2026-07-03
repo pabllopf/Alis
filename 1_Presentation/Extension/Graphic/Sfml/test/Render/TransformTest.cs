@@ -54,5 +54,86 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(8, t.m21);
             Assert.Equal(9, t.m22);
         }
+
+        /// <summary>
+        ///     Tests that Identity returns identity matrix.
+        /// </summary>
+        [Fact]
+        public void Identity_ReturnsIdentityMatrix()
+        {
+            Transform t = Transform.Identity;
+
+            Assert.Equal(1, t.m00);
+            Assert.Equal(0, t.m01);
+            Assert.Equal(0, t.m02);
+            Assert.Equal(0, t.m10);
+            Assert.Equal(1, t.m11);
+            Assert.Equal(0, t.m12);
+            Assert.Equal(0, t.m20);
+            Assert.Equal(0, t.m21);
+            Assert.Equal(1, t.m22);
+        }
+
+        /// <summary>
+        ///     Tests that GetHashCode returns consistent value.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_ReturnsConsistentValue()
+        {
+            Transform t1 = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
+            Transform t2 = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+            Assert.Equal(t1.GetHashCode(), t2.GetHashCode());
+        }
+
+        /// <summary>
+        ///     Tests that GetHashCode differs for different transforms.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_DiffersForDifferentTransforms()
+        {
+            Transform t1 = new Transform(1, 0, 0, 0, 1, 0, 0, 0, 1);
+            Transform t2 = new Transform(2, 0, 0, 0, 2, 0, 0, 0, 2);
+
+            Assert.NotEqual(t1.GetHashCode(), t2.GetHashCode());
+        }
+
+        /// <summary>
+        ///     Tests that ToString returns formatted matrix.
+        /// </summary>
+        [Fact]
+        public void ToString_ReturnsFormattedMatrix()
+        {
+            Transform t = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
+            string str = t.ToString();
+
+            Assert.Contains("1", str);
+            Assert.Contains("5", str);
+            Assert.Contains("9", str);
+        }
+
+        /// <summary>
+        ///     Tests that Equals with null returns false.
+        /// </summary>
+        [Fact]
+        public void Equals_WithNull_ReturnsFalse()
+        {
+            Transform t = new Transform(1, 0, 0, 0, 1, 0, 0, 0, 1);
+
+            Assert.False(t.Equals(null));
+        }
+
+        /// <summary>
+        ///     Tests that Equals with non-Transform returns false.
+        /// </summary>
+        [Fact]
+        public void Equals_WithNonTransform_ReturnsFalse()
+        {
+            Transform t = new Transform(1, 0, 0, 0, 1, 0, 0, 0, 1);
+
+            Assert.False(t.Equals("not a transform"));
+        }
+
+
     }
 }

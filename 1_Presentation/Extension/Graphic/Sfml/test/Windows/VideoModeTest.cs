@@ -73,5 +73,46 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Contains("Height", str);
             Assert.Contains("BitsPerPixel", str);
         }
+
+        /// <summary>
+        /// Tests that constructor with zero values sets correctly.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithZeroValues_SetsCorrectly()
+        {
+            VideoMode vm = new VideoMode(0, 0, 0);
+            Assert.Equal(0u, vm.Width);
+            Assert.Equal(0u, vm.Height);
+            Assert.Equal(0u, vm.BitsPerPixel);
+        }
+
+        /// <summary>
+        /// Tests that fields can be set directly.
+        /// </summary>
+        [Fact]
+        public void Fields_CanBeSetDirectly()
+        {
+            VideoMode vm = new VideoMode(0, 0);
+            vm.Width = 1920;
+            vm.Height = 1080;
+            vm.BitsPerPixel = 24;
+
+            Assert.Equal(1920u, vm.Width);
+            Assert.Equal(1080u, vm.Height);
+            Assert.Equal(24u, vm.BitsPerPixel);
+        }
+
+        /// <summary>
+        /// Tests that ToString returns correct format.
+        /// </summary>
+        [Fact]
+        public void ToString_ReturnsCorrectFormat()
+        {
+            VideoMode vm = new VideoMode(640, 480, 16);
+            string str = vm.ToString();
+            Assert.Contains("640", str);
+            Assert.Contains("480", str);
+            Assert.Contains("16", str);
+        }
     }
 }
