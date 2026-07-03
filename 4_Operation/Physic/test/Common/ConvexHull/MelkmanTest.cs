@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.ConvexHull;
@@ -84,6 +85,81 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
 
             Assert.NotNull(hull);
             Assert.True(hull.Count >= 3);
+        }
+
+        /// <summary>
+        /// Tests that get convex hull with collinear first three points triggers
+        /// the InitCollinear code path, extending the line until a non-collinear point is found.
+        /// </summary>
+        [Fact]
+        public void GetConvexHull_WithCollinearStart_UsesInitCollinearPath()
+        {
+            // First 3 points are collinear on the x-axis (area = 0),
+            // triggering InitCollinear which extends the line segment
+            // until finding a non-collinear point.
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(3f, 0f),
+                new Vector2F(4f, 0f),
+                new Vector2F(2f, 3f),   // Non-collinear point breaks the line
+                new Vector2F(5f, 0f)
+            });
+
+            Vertices hull = Melkman.GetConvexHull(vertices);
+
+            Assert.NotNull(hull);
+            Assert.True(hull.Count >= 3);
+            // The hull should include the extreme collinear points and the non-collinear point
+        }
+
+        /// <summary>
+        /// Tests that get convex hull with clockwise-oriented first three points
+        /// triggers the k < 0 branch in InitNonCollinear, swapping deque[1] and deque[2].
+        /// </summary>
+        [Fact]
+        public void GetConvexHull_WithClockwiseOrientation_TriggersNegativeKBranch()
+        {
+            // First 3 points form a clockwise triangle (negative area),
+            // triggering the k < 0 branch that swaps deque ordering.
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(0f, 2f),   // Up (clockwise from first three)
+                new Vector2F(2f, 0f),
+                new Vector2F(3f, 3f),
+                new Vector2F(-1f, 1f)
+            });
+
+            Vertices hull = Melkman.GetConvexHull(vertices);
+
+            Assert.NotNull(hull);
+            Assert.True(hull.Count >= 3);
+        }
+
+        /// <summary>
+        /// Tests that get convex hull with many points on a circle triggers
+        /// BuildConvexHullResult with the wrap-around case (qb < qf).
+        /// </summary>
+        [Fact]
+        public void GetConvexHull_WithManyPoints_OnCircleProducesFullHull()
+        {
+            // Many points arranged on a circle ensure the deque wraps around,
+            // triggering the qb < qf branch in BuildConvexHullResult.
+            var circlePoints = new System.Collections.Generic.List<Vector2F>();
+            for (int i = 0; i < 20; i++)
+            {
+                double angle = 2.0 * Math.PI * i / 20;
+                circlePoints.Add(new Vector2F((float)Math.Cos(angle), (float)Math.Sin(angle)));
+            }
+
+            Vertices vertices = new Vertices(circlePoints.ToArray());
+            Vertices hull = Melkman.GetConvexHull(vertices);
+
+            // All points on a circle are on the convex hull
+            Assert.Equal(20, hull.Count);
         }
     }
 }
