@@ -536,5 +536,122 @@ namespace Alis.Core.Physic.Test.Common
 
             Assert.NotEmpty(intersections);
         }
+
+        /// <summary>
+        ///     Tests that line segment vertices intersect returns empty when vertices list is empty.
+        /// </summary>
+        [Fact]
+        public void LineSegmentVerticesIntersect_EmptyVertices_ReturnsEmpty()
+        {
+            Vector2F p1 = new Vector2F(0, 0);
+            Vector2F p2 = new Vector2F(10, 0);
+            Vertices empty = new Vertices();
+
+            Vertices result = LineTools.LineSegmentVerticesIntersect(ref p1, ref p2, empty);
+
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that line segment vertices intersect returns empty when line does not intersect the polygon.
+        /// </summary>
+        [Fact]
+        public void LineSegmentVerticesIntersect_NoIntersection_ReturnsEmpty()
+        {
+            Vector2F p1 = new Vector2F(10, 10);
+            Vector2F p2 = new Vector2F(20, 10);
+            Vertices triangle = new Vertices(new[]
+            {
+                new Vector2F(0, 0),
+                new Vector2F(5, 0),
+                new Vector2F(2, 5)
+            });
+
+            Vertices result = LineTools.LineSegmentVerticesIntersect(ref p1, ref p2, triangle);
+
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that line segment aabb intersect returns empty when line does not cross the AABB.
+        /// </summary>
+        [Fact]
+        public void LineSegmentAabbIntersect_NoIntersection_ReturnsEmpty()
+        {
+            Vector2F p1 = new Vector2F(-5, -5);
+            Vector2F p2 = new Vector2F(-3, -3);
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(2, 2));
+
+            Vertices intersections = LineTools.LineSegmentAabbIntersect(ref p1, ref p2, aabb);
+
+            Assert.Empty(intersections);
+        }
+
+        /// <summary>
+        ///     Tests that DistanceBetweenPointAndLineSegment returns correct distance
+        ///     when the closest point is a perpendicular projection onto the segment.
+        /// </summary>
+        [Fact]
+        public void DistanceBetweenPointAndLineSegment_PerpendicularProjection_ReturnsCorrectDistance()
+        {
+            Vector2F point = new Vector2F(5, 5);
+            Vector2F start = new Vector2F(0, 0);
+            Vector2F end = new Vector2F(10, 0);
+
+            float distance = LineTools.DistanceBetweenPointAndLineSegment(ref point, ref start, ref end);
+
+            Assert.Equal(5.0f, distance, 4);
+        }
+
+        /// <summary>
+        ///     Tests that LineIntersect2 returns false when ua is in range but ub is out of range.
+        /// </summary>
+        [Fact]
+        public void LineIntersect2_ShouldReturnFalse_WhenUaInRangeUbOutOfRange()
+        {
+            Vector2F a0 = new Vector2F(0, 0);
+            Vector2F a1 = new Vector2F(10, 0);
+            Vector2F b0 = new Vector2F(15, -1);
+            Vector2F b1 = new Vector2F(15, 1);
+
+            bool intersects = LineTools.LineIntersect2(ref a0, ref a1, ref b0, ref b1, out _);
+
+            Assert.False(intersects);
+        }
+
+        /// <summary>
+        ///     Tests that LineIntersect2 returns false when lines are colinear/overlapping (denom near zero).
+        /// </summary>
+        [Fact]
+        public void LineIntersect2_ColinearOverlapping_ReturnsFalse()
+        {
+            Vector2F a0 = new Vector2F(0, 0);
+            Vector2F a1 = new Vector2F(10, 10);
+            Vector2F b0 = new Vector2F(2, 2);
+            Vector2F b1 = new Vector2F(12, 12);
+
+            bool intersects = LineTools.LineIntersect2(ref a0, ref a1, ref b0, ref b1, out _);
+
+            Assert.False(intersects);
+        }
+
+        /// <summary>
+        ///     Tests that the value overload of LineIntersect without segment checks returns the intersection point
+        ///     when lines cross outside the segment bounds.
+        /// </summary>
+        [Fact]
+        public void LineIntersect_ByValueNoSegment_ReturnsIntersection_WhenLinesCross()
+        {
+            Vector2F p1 = new Vector2F(0, 0);
+            Vector2F p2 = new Vector2F(10, 0);
+            Vector2F q1 = new Vector2F(5, -1);
+            Vector2F q2 = new Vector2F(5, 1);
+
+            bool intersects = LineTools.LineIntersect(p1, p2, q1, q2, false, false, out Vector2F point);
+
+            Assert.True(intersects);
+            Assert.Equal(5f, point.X, 4);
+            Assert.Equal(0f, point.Y, 4);
+        }
     }
 }
