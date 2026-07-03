@@ -235,5 +235,55 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
             terrain.GenerateTerrain(0, 0);
         }
+
+        /// <summary>
+        /// Tests that generate terrain with mixed terrain map data executes the non-early-return
+        /// path, covering body map initialization, scaling, translation, simplification and triangulation.
+        /// </summary>
+        [Fact]
+        public void GenerateTerrain_WithMixedTerrainMap_CoversNonEarlyReturnPath()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
+            terrain.PointsPerUnit = 2;
+            terrain.CellSize = 10;
+            terrain.SubCellSize = 2;
+            terrain.Initialize();
+
+            // Apply a block of -1 data to create mixed boundary conditions in the terrain map.
+            // This creates both -1 and 1 cells adjacent to each other, which causes
+            // MarchingSquares.DetectSquares to return non-empty polygons with boundary lines.
+            sbyte[,] data = new sbyte[10, 10];
+            for (int x = 0; x < 10; x++)
+            {
+                for (int y = 0; y < 10; y++)
+                {
+                    data[x, y] = -1;
+                }
+            }
+
+            terrain.ApplyData(data, new Vector2F(5, 5));
+
+            // Explicitly null the body map to ensure GenerateTerrain creates new bodies
+            for (int x = 0; x < terrain._xnum; x++)
+            {
+                for (int y = 0; y < terrain._ynum; y++)
+                {
+                    terrain._bodyMap[x, y] = null;
+                }
+            }
+
+            // Call GenerateTerrain at cell (0, 1) — the Aabb (0,10)-(10,20) overlaps the
+            // -1 block at terrain map [5..14, 5..14], creating mixed boundary conditions
+            // that cause MarchingSquares.DetectSquares to return non-empty polygons.
+            // This covers lines: bodyMap assignment, scale creation, Scale, Translate,
+            // CollinearSimplify, and ConvexPartition.
+            terrain.GenerateTerrain(0, 1);
+
+            // Verify the non-early-return path was reached: bodyMap[0, 1] must have been
+            // assigned a List<Body> (even if empty after filtering), proving execution
+            // of the full non-early-return code path.
+            Assert.NotNull(terrain._bodyMap[0, 1]);
+        }
     }
 }
