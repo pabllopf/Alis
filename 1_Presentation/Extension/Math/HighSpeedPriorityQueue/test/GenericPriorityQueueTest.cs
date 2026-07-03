@@ -174,5 +174,147 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Dequeue();
             Assert.True(queue.IsValidQueue());
         }
+
+        /// <summary>
+        ///     Tests that dequeue with many nodes triggers CascadeDown with right-child swaps
+        ///     and multi-level sinking, covering the full CascadeDown while loop.
+        /// </summary>
+        [Fact]
+        public void Dequeue_WithManyNodes_TriggersCascadeDownWithRightChild()
+        {
+            GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(20);
+            var nodes = new TestNode[5];
+            for (int i = 0; i < 5; i++)
+            {
+                nodes[i] = new TestNode();
+                queue.Enqueue(nodes[i], i + 1);
+            }
+
+            // Dequeue all nodes — each dequeue (after the first) triggers CascadeDown
+            // which must compare both left and right children and potentially swap with the right child.
+            for (int i = 0; i < 5; i++)
+            {
+                TestNode removed = queue.Dequeue();
+                Assert.NotNull(removed);
+            }
+
+            Assert.Equal(0, queue.Count);
+        }
+
+        /// <summary>
+        ///     Tests that enqueue with decreasing priorities triggers multi-level CascadeUp.
+        ///     When a node with very high priority is enqueued, it bubbles up through
+        ///     multiple levels of the heap.
+        /// </summary>
+        [Fact]
+        public void Enqueue_WithDecreasingPriority_TriggersMultiLevelCascadeUp()
+        {
+            GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(20);
+
+            // Enqueue nodes with low priority first
+            TestNode n1 = new TestNode();
+            TestNode n2 = new TestNode();
+            TestNode n3 = new TestNode();
+            queue.Enqueue(n1, 10);
+            queue.Enqueue(n2, 20);
+            queue.Enqueue(n3, 30);
+
+            // Now enqueue a node with very high priority (low number) — should bubble to root
+            TestNode highPriority = new TestNode();
+            queue.Enqueue(highPriority, 1);
+
+            // The highest priority node should be at the root
+            Assert.Same(highPriority, queue.First);
+        }
+
+        /// <summary>
+        ///     Tests that reset node sets queue index to zero, allowing re-enqueue.
+        /// </summary>
+        [Fact]
+        public void ResetNode_SetsQueueIndexToZero()
+        {
+            GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(10);
+            TestNode node = new TestNode();
+            queue.Enqueue(node, 1);
+            Assert.NotEqual(0, node.QueueIndex);
+
+            queue.ResetNode(node);
+            Assert.Equal(0, node.QueueIndex);
+        }
+
+        /// <summary>
+        ///     Tests that enumerator iterates through all nodes in heap order.
+        /// </summary>
+        [Fact]
+        public void Enumerator_IteratesAllNodes()
+        {
+            GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(10);
+            var node1 = new TestNode();
+            var node2 = new TestNode();
+            var node3 = new TestNode();
+            queue.Enqueue(node1, 3);
+            queue.Enqueue(node3, 1);
+            queue.Enqueue(node2, 2);
+
+            var collected = new System.Collections.Generic.List<TestNode>();
+            foreach (TestNode node in queue)
+            {
+                collected.Add(node);
+            }
+
+            Assert.Equal(3, collected.Count);
+            // First element should be the highest priority (lowest number)
+            Assert.Same(node3, collected[0]);
+        }
+
+        /// <summary>
+        ///     Tests that update priority on root node does not trigger CascadeUp
+        ///     (parentIndex == 0, the if-guard prevents unnecessary work).
+        /// </summary>
+        [Fact]
+        public void UpdatePriority_OnRootNode_SkipsCascadeUp()
+        {
+            GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(10);
+            TestNode node = new TestNode();
+            queue.Enqueue(node, 1);
+
+            // Update root's priority to a lower value — should not break the heap
+            queue.UpdatePriority(node, 100);
+            Assert.Same(node, queue.First);
+        }
+
+        /// <summary>
+        ///     Tests that remove the last node (QueueIndex == _numNodes) takes the O(1) path.
+        /// </summary>
+        [Fact]
+        public void Remove_LastNode_TakesO1Path()
+        {
+            GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(10);
+            TestNode node1 = new TestNode();
+            TestNode node2 = new TestNode();
+            queue.Enqueue(node1, 1);
+            queue.Enqueue(node2, 2);
+
+            // node2 should be at QueueIndex == _numNodes (the last position)
+            queue.Remove(node2);
+            Assert.Equal(1, queue.Count);
+            Assert.Same(node1, queue.First);
+        }
+
+        /// <summary>
+        ///     Tests that has higher priority with equal priorities uses insertion order.
+        /// </summary>
+        [Fact]
+        public void Enqueue_SamePriority_RespectsInsertionOrder()
+        {
+            GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(10);
+            TestNode first = new TestNode();
+            TestNode second = new TestNode();
+            queue.Enqueue(first, 5);
+            queue.Enqueue(second, 5); // Same priority
+
+            // First enqueued should come out first (FIFO for equal priorities)
+            Assert.Same(first, queue.First);
+        }
     }
 }
