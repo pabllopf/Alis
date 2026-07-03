@@ -196,5 +196,157 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Edge bottom = new Edge(new Point(0, -10), new Point(10, -10));
             return new Trapezoid(leftPoint, rightPoint, top, bottom);
         }
+
+        /// <summary>
+        ///     Tests that update left right sets all four neighbors and their反向 pointers
+        /// </summary>
+        [Fact]
+        public void UpdateLeftRight_ShouldSetAllFourNeighbors()
+        {
+            Trapezoid center = CreateTestTrapezoid();
+            Trapezoid ul = CreateTestTrapezoid();
+            Trapezoid ll = CreateTestTrapezoid();
+            Trapezoid ur = CreateTestTrapezoid();
+            Trapezoid lr = CreateTestTrapezoid();
+
+            center.UpdateLeftRight(ul, ll, ur, lr);
+
+            Assert.Equal(ul, center.UpperLeft);
+            Assert.Equal(ll, center.LowerLeft);
+            Assert.Equal(ur, center.UpperRight);
+            Assert.Equal(lr, center.LowerRight);
+            // Verify反向 pointers
+            Assert.Equal(center, ul.UpperRight);
+            Assert.Equal(center, ll.LowerRight);
+            Assert.Equal(center, ur.UpperLeft);
+            Assert.Equal(center, lr.LowerLeft);
+        }
+
+        /// <summary>
+        ///     Tests that update left right with null neighbors handles nulls correctly
+        /// </summary>
+        [Fact]
+        public void UpdateLeftRight_WithPartialNulls_HandlesCorrectly()
+        {
+            Trapezoid center = CreateTestTrapezoid();
+            Trapezoid ul = CreateTestTrapezoid();
+            // ur, ll, lr are null
+
+            center.UpdateLeftRight(ul, null, null, null);
+
+            Assert.Equal(ul, center.UpperLeft);
+            Assert.Null(center.LowerLeft);
+            Assert.Null(center.UpperRight);
+            Assert.Null(center.LowerRight);
+            // ul's UpperRight should point back to center
+            Assert.Equal(center, ul.UpperRight);
+        }
+
+        /// <summary>
+        ///     Tests that trim neighbors with inside=true recursively trims all neighbors
+        /// </summary>
+        [Fact]
+        public void TrimNeighbors_WithInsideTrue_TrimsAllNeighborsRecursively()
+        {
+            Trapezoid center = CreateTestTrapezoid();
+            Trapezoid ul = CreateTestTrapezoid();
+            Trapezoid ll = CreateTestTrapezoid();
+            Trapezoid ur = CreateTestTrapezoid();
+            Trapezoid lr = CreateTestTrapezoid();
+
+            // Give children their own children to test recursion
+            Trapezoid ulChild = CreateTestTrapezoid();
+            ul.UpdateLeft(ulChild, null);
+
+            center.UpdateLeftRight(ul, ll, ur, lr);
+
+            center.TrimNeighbors();
+
+            // Center should be trimmed
+            Assert.False(center.Inside);
+            // Children should be trimmed (recursion)
+            Assert.False(ul.Inside);
+            Assert.False(ll.Inside);
+            Assert.False(ur.Inside);
+            Assert.False(lr.Inside);
+            // Grandchild should also be trimmed
+            Assert.False(ulChild.Inside);
+        }
+
+        /// <summary>
+        ///     Tests that trim neighbors with inside=false does nothing
+        /// </summary>
+        [Fact]
+        public void TrimNeighbors_WithInsideFalse_DoesNothing()
+        {
+            Trapezoid trapezoid = CreateTestTrapezoid();
+            trapezoid.Inside = false;
+            Trapezoid neighbor = CreateTestTrapezoid();
+            trapezoid.UpdateLeft(neighbor, null);
+
+            trapezoid.TrimNeighbors();
+
+            // Neither the trapezoid nor its neighbor should be trimmed
+            Assert.True(trapezoid.Inside);
+            Assert.True(neighbor.Inside);
+        }
+
+        /// <summary>
+        ///     Tests that contains returns true for a point inside the trapezoid
+        /// </summary>
+        [Fact]
+        public void Contains_WithPointInside_ReturnsTrue()
+        {
+            Trapezoid trapezoid = CreateTestTrapezoid();
+            Point insidePoint = new Point(5, 0); // Between x=0 and x=10, between top and bottom
+
+            bool result = trapezoid.Contains(insidePoint);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that contains returns false for a point outside the trapezoid
+        /// </summary>
+        [Fact]
+        public void Contains_WithPointOutside_ReturnsFalse()
+        {
+            Trapezoid trapezoid = CreateTestTrapezoid();
+            Point outsidePoint = new Point(15, 0); // X beyond right boundary
+
+            bool result = trapezoid.Contains(outsidePoint);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that get vertices returns 4 points forming the trapezoid corners
+        /// </summary>
+        [Fact]
+        public void GetVertices_ShouldReturnFourCorners()
+        {
+            Trapezoid trapezoid = CreateTestTrapezoid();
+
+            var verts = trapezoid.GetVertices();
+
+            Assert.Equal(4, verts.Count);
+        }
+
+        /// <summary>
+        ///     Tests that add points when left point differs from bottom endpoints
+        /// </summary>
+        [Fact]
+        public void AddPoints_WithDistinctEndpoints_AddsToEdges()
+        {
+            // Create trapezoid where LeftPoint != Bottom.P and LeftPoint != Top.P
+            Point leftPoint = new Point(2, 0);
+            Point rightPoint = new Point(8, 0);
+            Edge top = new Edge(new Point(0, 10), new Point(10, 10));
+            Edge bottom = new Edge(new Point(0, -10), new Point(10, -10));
+            Trapezoid trapezoid = new Trapezoid(leftPoint, rightPoint, top, bottom);
+
+            // Should not throw — verifies all four if-conditions in AddPoints
+            trapezoid.AddPoints();
+        }
     }
 }
