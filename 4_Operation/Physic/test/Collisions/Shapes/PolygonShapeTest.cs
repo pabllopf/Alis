@@ -397,5 +397,88 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
 
             Assert.Equal(0, area);
         }
+
+        /// <summary>
+        ///     Tests that compute submerged area returns full area when fully submerged
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_FullySubmerged_ReturnsFullArea()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(0, 2) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            // Normal pointing up, offset high above all vertices
+            Vector2F normal = new Vector2F(0, 1);
+
+            float area = polygon.ComputeSubmergedArea(ref normal, 10, ref transform, out Vector2F sc);
+
+            Assert.True(area > 0);
+        }
+
+        /// <summary>
+        ///     Tests that compute submerged area returns partial area when partially submerged with water entering from below
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_PartiallySubmerged_ReturnsPartialArea()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(0, 2) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            // Normal pointing up, water level cuts through the triangle
+            Vector2F normal = new Vector2F(0, 1);
+
+            float area = polygon.ComputeSubmergedArea(ref normal, 0.5f, ref transform, out Vector2F sc);
+
+            Assert.True(area > 0);
+            Assert.True(area < polygon.MassData.Mass / polygon.GetDensity);
+        }
+
+        /// <summary>
+        ///     Tests that compute submerged area returns non negative when partially submerged with inverted normal
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_PartiallySubmerged_InvertedNormal_ReturnsNonNegative()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(0, 2) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            Vector2F normal = new Vector2F(0, -1);
+
+            float area = polygon.ComputeSubmergedArea(ref normal, -0.5f, ref transform, out Vector2F sc);
+
+            Assert.True(area >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that compute submerged area returns non zero center when fully submerged
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_FullySubmerged_ReturnsNonZeroCenter()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(0, 2) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            Vector2F normal = new Vector2F(0, 1);
+
+            polygon.ComputeSubmergedArea(ref normal, 10, ref transform, out Vector2F sc);
+
+            Assert.NotEqual(Vector2F.Zero, sc);
+        }
+
+        /// <summary>
+        ///     Tests that compute submerged area with rotated transform returns valid area
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_WithRotatedTransform_ReturnsValidArea()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = new ControllerTransform(new Vector2F(1, 1), 0.5f);
+            Vector2F normal = new Vector2F(0, 1);
+
+            float area = polygon.ComputeSubmergedArea(ref normal, 10, ref transform, out Vector2F sc);
+
+            Assert.True(area > 0);
+        }
     }
 }
