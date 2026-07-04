@@ -29,6 +29,9 @@
 
 using System;
 using System.Reflection;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;
 
@@ -88,6 +91,146 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Type type = typeof(PositionSolverManifold);
             object[] attributes = type.GetCustomAttributes(false);
             Assert.NotNull(attributes);
+        }
+
+        /// <summary>
+        ///     Tests that initialize with circles manifold type computes contact data
+        /// </summary>
+        [Fact]
+        public void Initialize_WithCirclesType_ComputesContactData()
+        {
+            ContactPositionConstraint pc = new ContactPositionConstraint
+            {
+                Type = ManifoldType.Circles,
+                LocalPoint = new Vector2F(0, 0),
+                LocalPoints = { [0] = new Vector2F(1, 0) },
+                RadiusA = 0.5f,
+                RadiusB = 0.5f
+            };
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = ControllerTransform.Identity;
+
+            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float separation);
+
+            Assert.NotEqual(Vector2F.Zero, normal);
+            Assert.NotEqual(Vector2F.Zero, point);
+        }
+
+        /// <summary>
+        ///     Tests that initialize with circles type when points are identical handles zero normal
+        /// </summary>
+        [Fact]
+        public void Initialize_WithCirclesType_WhenPointsIdentical_HandlesZeroNormal()
+        {
+            ContactPositionConstraint pc = new ContactPositionConstraint
+            {
+                Type = ManifoldType.Circles,
+                LocalPoint = new Vector2F(0, 0),
+                LocalPoints = { [0] = new Vector2F(0, 0) },
+                RadiusA = 0.5f,
+                RadiusB = 0.5f
+            };
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = ControllerTransform.Identity;
+
+            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float separation);
+
+            Assert.Equal(Vector2F.Zero, normal);
+        }
+
+        /// <summary>
+        ///     Tests that initialize with face a type computes contact data
+        /// </summary>
+        [Fact]
+        public void Initialize_WithFaceAType_ComputesContactData()
+        {
+            ContactPositionConstraint pc = new ContactPositionConstraint
+            {
+                Type = ManifoldType.FaceA,
+                LocalNormal = new Vector2F(0, 1),
+                LocalPoint = new Vector2F(0, 0),
+                LocalPoints = { [0] = new Vector2F(1, 0) },
+                RadiusA = 0.1f,
+                RadiusB = 0.1f
+            };
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = ControllerTransform.Identity;
+
+            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float separation);
+
+            Assert.NotEqual(Vector2F.Zero, normal);
+            Assert.NotEqual(Vector2F.Zero, point);
+        }
+
+        /// <summary>
+        ///     Tests that initialize with face b type computes contact data with inverted normal
+        /// </summary>
+        [Fact]
+        public void Initialize_WithFaceBType_ComputesContactData()
+        {
+            ContactPositionConstraint pc = new ContactPositionConstraint
+            {
+                Type = ManifoldType.FaceB,
+                LocalNormal = new Vector2F(0, 1),
+                LocalPoint = new Vector2F(0, 0),
+                LocalPoints = { [0] = new Vector2F(0, 1) },
+                RadiusA = 0.1f,
+                RadiusB = 0.1f
+            };
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = ControllerTransform.Identity;
+
+            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float separation);
+
+            // FaceB normal should be negated (point from A to B)
+            Assert.True(normal.Y < 0);
+            Assert.NotEqual(Vector2F.Zero, point);
+        }
+
+        /// <summary>
+        ///     Tests that initialize with unknown manifold type returns zeros
+        /// </summary>
+        [Fact]
+        public void Initialize_WithUnknownType_ReturnsZeros()
+        {
+            ContactPositionConstraint pc = new ContactPositionConstraint
+            {
+                Type = (ManifoldType)99,
+                RadiusA = 0.5f,
+                RadiusB = 0.5f
+            };
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = ControllerTransform.Identity;
+
+            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float separation);
+
+            Assert.Equal(Vector2F.Zero, normal);
+            Assert.Equal(Vector2F.Zero, point);
+            Assert.Equal(0, separation);
+        }
+
+        /// <summary>
+        ///     Tests that initialize with circles type computes correct separation
+        /// </summary>
+        [Fact]
+        public void Initialize_WithCirclesType_ComputesCorrectSeparation()
+        {
+            ContactPositionConstraint pc = new ContactPositionConstraint
+            {
+                Type = ManifoldType.Circles,
+                LocalPoint = new Vector2F(0, 0),
+                LocalPoints = { [0] = new Vector2F(2, 0) },
+                RadiusA = 0.5f,
+                RadiusB = 0.5f
+            };
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = ControllerTransform.Identity;
+
+            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float separation);
+
+            // separation = dot(pointB - pointA, normal) - radiusA - radiusB
+            // = dot((2,0) - (0,0), (1,0)) - 1 = 2 - 1 = 1
+            Assert.Equal(1.0f, separation, 4);
         }
     }
 }
