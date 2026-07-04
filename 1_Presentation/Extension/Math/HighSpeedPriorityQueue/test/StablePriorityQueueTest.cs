@@ -158,5 +158,132 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Resize(20);
             Assert.Equal(20, queue.MaxSize);
         }
+
+        /// <summary>
+        ///     Tests that dequeue with many nodes triggers CascadeDown with right-child swaps.
+        /// </summary>
+        [Fact]
+        public void Dequeue_WithManyNodes_TriggersCascadeDownWithRightChild()
+        {
+            StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(20);
+            var nodes = new StablePriorityQueueNode[5];
+            for (int i = 0; i < 5; i++)
+            {
+                nodes[i] = new StablePriorityQueueNode();
+                queue.Enqueue(nodes[i], i + 1);
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                StablePriorityQueueNode removed = queue.Dequeue();
+                Assert.NotNull(removed);
+            }
+
+            Assert.Equal(0, queue.Count);
+        }
+
+        /// <summary>
+        ///     Tests that enqueue with decreasing priorities triggers multi-level CascadeUp.
+        /// </summary>
+        [Fact]
+        public void Enqueue_WithDecreasingPriority_TriggersMultiLevelCascadeUp()
+        {
+            StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(20);
+            var n1 = new StablePriorityQueueNode();
+            var n2 = new StablePriorityQueueNode();
+            var n3 = new StablePriorityQueueNode();
+            queue.Enqueue(n1, 10);
+            queue.Enqueue(n2, 20);
+            queue.Enqueue(n3, 30);
+
+            var highPriority = new StablePriorityQueueNode();
+            queue.Enqueue(highPriority, 1);
+
+            Assert.Same(highPriority, queue.First);
+        }
+
+        /// <summary>
+        ///     Tests that reset node sets queue index to zero.
+        /// </summary>
+        [Fact]
+        public void ResetNode_SetsQueueIndexToZero()
+        {
+            StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(10);
+            var node = new StablePriorityQueueNode();
+            queue.Enqueue(node, 1);
+            Assert.NotEqual(0, node.QueueIndex);
+
+            queue.ResetNode(node);
+            Assert.Equal(0, node.QueueIndex);
+        }
+
+        /// <summary>
+        ///     Tests that enumerator iterates through all nodes.
+        /// </summary>
+        [Fact]
+        public void Enumerator_IteratesAllNodes()
+        {
+            StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(10);
+            var node1 = new StablePriorityQueueNode();
+            var node2 = new StablePriorityQueueNode();
+            var node3 = new StablePriorityQueueNode();
+            queue.Enqueue(node1, 3);
+            queue.Enqueue(node3, 1);
+            queue.Enqueue(node2, 2);
+
+            var collected = new System.Collections.Generic.List<StablePriorityQueueNode>();
+            foreach (StablePriorityQueueNode node in queue)
+            {
+                collected.Add(node);
+            }
+
+            Assert.Equal(3, collected.Count);
+            Assert.Same(node3, collected[0]);
+        }
+
+        /// <summary>
+        ///     Tests that update priority on root node does not trigger CascadeUp.
+        /// </summary>
+        [Fact]
+        public void UpdatePriority_OnRootNode_SkipsCascadeUp()
+        {
+            StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(10);
+            var node = new StablePriorityQueueNode();
+            queue.Enqueue(node, 1);
+            queue.UpdatePriority(node, 100);
+            Assert.Same(node, queue.First);
+        }
+
+        /// <summary>
+        ///     Tests that remove the last node takes the O(1) path.
+        /// </summary>
+        [Fact]
+        public void Remove_LastNode_TakesO1Path()
+        {
+            StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(10);
+            var node1 = new StablePriorityQueueNode();
+            var node2 = new StablePriorityQueueNode();
+            queue.Enqueue(node1, 1);
+            queue.Enqueue(node2, 2);
+
+            queue.Remove(node2);
+            Assert.Equal(1, queue.Count);
+            Assert.Same(node1, queue.First);
+        }
+
+        /// <summary>
+        ///     Tests that same-priority nodes are dequeued in FIFO order (stability).
+        /// </summary>
+        [Fact]
+        public void Enqueue_SamePriority_RespectsInsertionOrder()
+        {
+            StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(10);
+            var first = new StablePriorityQueueNode();
+            var second = new StablePriorityQueueNode();
+            queue.Enqueue(first, 5);
+            queue.Enqueue(second, 5);
+
+            Assert.Same(first, queue.First);
+        }
     }
 }
