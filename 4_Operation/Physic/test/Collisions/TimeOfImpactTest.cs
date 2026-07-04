@@ -198,6 +198,127 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(output.T >= 0.0f);
             Assert.True(output.T <= 1.0f);
         }
+
+        /// <summary>
+        /// Tests that calculate time of impact should return overlapped when shapes fully intersect
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_ShouldReturnOverlapped_WhenShapesFullyIntersect()
+        {
+            CircleShape circleA = new CircleShape(1.0f, 1.0f);
+            CircleShape circleB = new CircleShape(1.0f, 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = Vector2F.Zero,
+                    C = Vector2F.Zero,
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = Vector2F.Zero,
+                    C = Vector2F.Zero,
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.Equal(ToiOutputState.Overlapped, output.State);
+            Assert.Equal(0.0f, output.T);
+        }
+
+        /// <summary>
+        /// Tests that calculate time of impact for overlapped updates diagnostics counters
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_ForOverlapped_ShouldUpdateDiagnosticsCounters()
+        {
+            CircleShape circleA = new CircleShape(1.0f, 1.0f);
+            CircleShape circleB = new CircleShape(1.0f, 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = Vector2F.Zero,
+                    C = Vector2F.Zero,
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = Vector2F.Zero,
+                    C = Vector2F.Zero,
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.Equal(ToiOutputState.Overlapped, output.State);
+            Assert.True(TimeOfImpact.ToiCalls >= 1);
+        }
+
+        /// <summary>
+        /// Tests that calculate time of impact for approaching updates iter diagnostics counters
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_ForApproaching_ShouldUpdateIterDiagnosticsCounters()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(-5.0f, 0.0f),
+                    C = new Vector2F(-4.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(5.0f, 0.0f),
+                    C = new Vector2F(4.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(TimeOfImpact.ToiCalls >= 1);
+            Assert.True(TimeOfImpact.ToiMaxIters >= 0);
+            Assert.True(TimeOfImpact.ToiMaxRootIters >= 0);
+        }
     }
 }
 
