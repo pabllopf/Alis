@@ -1,0 +1,39 @@
+{
+  "batch": "heuristic-mode-batch-1",
+  "mode": "heuristic (no SonarCloud API)",
+  "timestamp": "2026-07-03T19:30:00Z",
+  "filesProcessed": [
+    {
+      "source": "4_Operation/Physic/src/Common/TextureTools/Terrain.cs",
+      "newTests": 1,
+      "testFile": "4_Operation/Physic/test/Common/TextureTools/TerrainTest.cs",
+      "coverageGap": "GenerateTerrain non-early-return path (lines 323-333)"
+    },
+    {
+      "source": "4_Operation/Physic/src/Common/ConvexHull/Melkman.cs",
+      "newTests": 3,
+      "testFile": "4_Operation/Physic/test/Common/ConvexHull/MelkmanTest.cs",
+      "coverageGaps": ["InitCollinear path", "k<0 branch in InitNonCollinear", "BuildConvexHullResult wrap-around (qb<qf)"]
+    },
+    {
+      "source": "4_Operation/Physic/src/Common/Decomposition/Seidel/Trapezoid.cs",
+      "newTests": 8,
+      "testFile": "4_Operation/Physic/test/Common/Decomposition/Seidel/TrapezoidTest.cs",
+      "coverageGaps": ["UpdateLeftRight all 4 neighbors", "UpdateLeftRight partial nulls", "TrimNeighbors recursive", "TrimNeighbors skip (Inside=false)", "Contains point-in-trapezoid", "GetVertices", "AddPoints"]
+    },
+    {
+      "source": "1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/GenericPriorityQueue.cs",
+      "newTests": 7,
+      "testFile": "1_Presentation/Extension/Math/HighSpeedPriorityQueue/test/GenericPriorityQueueTest.cs",
+      "coverageGaps": ["CascadeDown right-child swap", "Multi-level CascadeUp", "ResetNode", "IEnumerator", "UpdatePriority on root", "Remove last node O(1)", "FIFO equal priority"]
+    },
+    {
+      "source": "1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/StablePriorityQueue.cs",
+      "newTests": 7,
+      "testFile": "1_Presentation/Extension/Math/HighSpeedPriorityQueue/test/StablePriorityQueueTest.cs",
+      "coverageGaps": ["CascadeDown right-child swap", "Multi-level CascadeUp", "ResetNode", "IEnumerator", "UpdatePriority on root", "Remove last node O(1)", "FIFO equal priority"]
+    }
+  ],
+  "totalNewTests": 26,
+  "allTestsPassing": true
+}
