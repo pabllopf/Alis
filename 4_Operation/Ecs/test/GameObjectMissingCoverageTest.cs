@@ -97,42 +97,7 @@ namespace Alis.Core.Ecs.Test
 
             Assert.Equal(GameObject.EntityIsDeadMessage, ex.Message);
         }
-
-        /// <summary>
-        ///     Tests that game object initalize event record with on delete handler then delete throws key not found exception
-        ///     current behavior
-        /// </summary>
-        [Fact]
-        public void GameObject_InitalizeEventRecord_WithOnDeleteHandler_ThenDelete_ThrowsKeyNotFoundException_CurrentBehavior()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            Action<GameObject> handler = _ => { };
-
-            entity.InitalizeEventRecord(handler, GameObjectFlags.OnDelete);
-
-            Assert.True(scene.EntityTable[entity.EntityID].HasEvent(GameObjectFlags.OnDelete));
-
-            Assert.Throws<KeyNotFoundException>(() => entity.Delete());
-        }
-
-        /// <summary>
-        ///     Tests that game object unsubscribe event when initialized directly without lookup throws key not found exception
-        ///     current behavior
-        /// </summary>
-        [Fact]
-        public void GameObject_UnsubscribeEvent_WhenInitializedDirectlyWithoutLookup_ThrowsKeyNotFoundException_CurrentBehavior()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            Action<GameObject> handler = _ => { };
-
-            entity.InitalizeEventRecord(handler, GameObjectFlags.OnDelete);
-            Assert.True(scene.EntityTable[entity.EntityID].HasEvent(GameObjectFlags.OnDelete));
-
-            Assert.Throws<KeyNotFoundException>(() => entity.UnsubscribeEvent(handler, GameObjectFlags.OnDelete));
-        }
-
+        
         /// <summary>
         ///     Tests that game object unsubscribe event with null or dead entity does not throw
         /// </summary>

@@ -231,6 +231,298 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             float torque = gearJoint.GetReactionTorque(1f);
             Assert.Equal(0, torque);
         }
+
+        /// <summary>
+        /// Tests that gear joint constructor with prismatic joint A initializes correctly
+        /// </summary>
+        [Fact]
+        public void Constructor_WithPrismaticJointA_ShouldInitialize()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            PrismaticJoint prismaticA = new PrismaticJoint(bodyA, bodyB, new Vector2F(1, 0), Vector2F.UnitX);
+            RevoluteJoint revoluteB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, prismaticA, revoluteB);
+
+            Assert.Equal(JointType.Gear, gearJoint.JointType);
+            Assert.NotNull(gearJoint.WorldAnchorA);
+            Assert.NotNull(gearJoint.WorldAnchorB);
+        }
+
+        /// <summary>
+        /// Tests that gear joint constructor with prismatic joint B initializes correctly
+        /// </summary>
+        [Fact]
+        public void Constructor_WithPrismaticJointB_ShouldInitialize()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            RevoluteJoint revoluteA = new RevoluteJoint(bodyA, bodyB, new Vector2F(1, 0));
+            PrismaticJoint prismaticB = new PrismaticJoint(bodyC, bodyD, new Vector2F(5, 0), Vector2F.UnitX);
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, revoluteA, prismaticB);
+
+            Assert.Equal(JointType.Gear, gearJoint.JointType);
+            Assert.NotNull(gearJoint.WorldAnchorA);
+            Assert.NotNull(gearJoint.WorldAnchorB);
+        }
+
+        /// <summary>
+        /// Tests that gear joint constructor with both prismatic joints initializes correctly
+        /// </summary>
+        [Fact]
+        public void Constructor_WithBothPrismaticJoints_ShouldInitialize()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            PrismaticJoint prismaticA = new PrismaticJoint(bodyA, bodyB, new Vector2F(1, 0), Vector2F.UnitX);
+            PrismaticJoint prismaticB = new PrismaticJoint(bodyC, bodyD, new Vector2F(5, 0), Vector2F.UnitX);
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, prismaticA, prismaticB);
+
+            Assert.Equal(JointType.Gear, gearJoint.JointType);
+        }
+
+        /// <summary>
+        /// Tests that negative ratio is supported
+        /// </summary>
+        [Fact]
+        public void Constructor_WithNegativeRatio_ShouldInitialize()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(1, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB, -2.5f);
+
+            Assert.Equal(-2.5f, gearJoint.Ratio);
+        }
+
+        /// <summary>
+        /// Tests that zero ratio is supported
+        /// </summary>
+        [Fact]
+        public void Constructor_WithZeroRatio_ShouldInitialize()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(1, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB, 0f);
+
+            Assert.Equal(0f, gearJoint.Ratio);
+        }
+
+        /// <summary>
+        /// Tests that very large ratio is supported
+        /// </summary>
+        [Fact]
+        public void Constructor_WithLargeRatio_ShouldInitialize()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(1, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB, 1000f);
+
+            Assert.Equal(1000f, gearJoint.Ratio);
+        }
+
+        /// <summary>
+        /// Tests that multiple gear joints can be created in the same world
+        /// </summary>
+        [Fact]
+        public void MultipleGearJoints_ShouldWorkIndependently()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            
+            // First gear joint
+            Body bodyA1 = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB1 = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC1 = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD1 = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+            RevoluteJoint jointA1 = new RevoluteJoint(bodyA1, bodyB1, new Vector2F(1, 0));
+            RevoluteJoint jointB1 = new RevoluteJoint(bodyC1, bodyD1, new Vector2F(5, 0));
+            GearJoint gearJoint1 = new GearJoint(bodyA1, bodyC1, jointA1, jointB1, 1.0f);
+
+            // Second gear joint with different ratio
+            Body bodyA2 = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            Body bodyB2 = world.CreateBody(new Vector2F(12, 0), 0, BodyType.Dynamic);
+            Body bodyC2 = world.CreateBody(new Vector2F(14, 0), 0, BodyType.Dynamic);
+            Body bodyD2 = world.CreateBody(new Vector2F(16, 0), 0, BodyType.Dynamic);
+            RevoluteJoint jointA2 = new RevoluteJoint(bodyA2, bodyB2, new Vector2F(11, 0));
+            RevoluteJoint jointB2 = new RevoluteJoint(bodyC2, bodyD2, new Vector2F(15, 0));
+            GearJoint gearJoint2 = new GearJoint(bodyA2, bodyC2, jointA2, jointB2, 2.0f);
+
+            Assert.Equal(1.0f, gearJoint1.Ratio);
+            Assert.Equal(2.0f, gearJoint2.Ratio);
+        }
+
+        /// <summary>
+        /// Tests that JointA and JointB properties are read-only
+        /// </summary>
+        [Fact]
+        public void JointA_JointB_ShouldBeReadOnly()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(1, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+
+            var jointAClass = gearJoint.JointA.GetType();
+            var jointBClass = gearJoint.JointB.GetType();
+
+            Assert.Equal(typeof(RevoluteJoint), jointAClass);
+            Assert.Equal(typeof(RevoluteJoint), jointBClass);
+        }
+
+        /// <summary>
+        /// Tests that BodyA and BodyB properties return correct bodies
+        /// </summary>
+        [Fact]
+        public void BodyA_BodyB_ShouldReturnCorrectBodies()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(1, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+
+            Assert.Same(bodyA, gearJoint.BodyA);
+            Assert.Same(bodyC, gearJoint.BodyB);
+        }
+
+        /// <summary>
+        /// Tests that GetReactionForce with different invDt values returns proportional results
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_DifferentInvDt_ShouldReturnProportionalResults()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(1, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+
+            Vector2F force1 = gearJoint.GetReactionForce(1f);
+            Vector2F force2 = gearJoint.GetReactionForce(2f);
+            Vector2F force3 = gearJoint.GetReactionForce(0.5f);
+
+            // All should be zero initially
+            Assert.Equal(0, force1.X);
+            Assert.Equal(0, force1.Y);
+            Assert.Equal(0, force2.X);
+            Assert.Equal(0, force2.Y);
+            Assert.Equal(0, force3.X);
+            Assert.Equal(0, force3.Y);
+        }
+
+        /// <summary>
+        /// Tests that GetReactionTorque with different invDt values returns proportional results
+        /// </summary>
+        [Fact]
+        public void GetReactionTorque_DifferentInvDt_ShouldReturnProportionalResults()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(1, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+
+            float torque1 = gearJoint.GetReactionTorque(1f);
+            float torque2 = gearJoint.GetReactionTorque(2f);
+            float torque3 = gearJoint.GetReactionTorque(0.5f);
+
+            // All should be zero initially
+            Assert.Equal(0, torque1);
+            Assert.Equal(0, torque2);
+            Assert.Equal(0, torque3);
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorA returns consistent values on repeated calls
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_ConsistentOnRepeatedCalls()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(1, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+
+            Vector2F anchor1 = gearJoint.WorldAnchorA;
+            Vector2F anchor2 = gearJoint.WorldAnchorA;
+
+            Assert.Equal(anchor1.X, anchor2.X);
+            Assert.Equal(anchor1.Y, anchor2.Y);
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorB returns consistent values on repeated calls
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_ConsistentOnRepeatedCalls()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(1, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+
+            Vector2F anchor1 = gearJoint.WorldAnchorB;
+            Vector2F anchor2 = gearJoint.WorldAnchorB;
+
+            Assert.Equal(anchor1.X, anchor2.X);
+            Assert.Equal(anchor1.Y, anchor2.Y);
+        }
     }
 }
 

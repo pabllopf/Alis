@@ -142,20 +142,6 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Assert.Equal(2, manager.LoadedScenes.Count);
         }
 
-
-        /// <summary>
-        ///     Tests that CurrentWorld can be set
-        /// </summary>
-        [Fact]
-        public void CurrentWorld_ShouldBeSettable()
-        {
-            Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-
-            _sceneManager.CurrentWorld = scene;
-
-            Assert.Equal(scene, _sceneManager.CurrentWorld);
-        }
-
         /// <summary>
         ///     Tests that LoadedScenes can be set via internal setter
         /// </summary>

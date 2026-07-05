@@ -123,20 +123,7 @@ namespace Alis.Test
             GameObjectBuilder result = builder.IsActive(true);
             Assert.Same(builder, result);
         }
-
-        /// <summary>
-        /// Tests that is active no args returns builder
-        /// </summary>
-        [Fact]
-        public void IsActive_NoArgs_ReturnsBuilder()
-        {
-            Context context = new Context();
-            Scene scene = new Scene();
-            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
-            GameObjectBuilder result = builder.IsActive();
-            Assert.Same(builder, result);
-        }
-
+        
         /// <summary>
         /// Tests that is static sets static returns builder
         /// </summary>

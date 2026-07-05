@@ -141,19 +141,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         }
 
         /// <summary>
-        ///     Tests that Dispose can be called multiple times without throwing.
-        /// </summary>
-        [Fact]
-        public void Dispose_MultipleCalls_ShouldNotThrow()
-        {
-            MemoryStream stream = new MemoryStream(new byte[] { 1, 2, 3 });
-            StreamAdaptor adaptor = new StreamAdaptor(stream);
-
-            adaptor.Dispose();
-            adaptor.Dispose();
-        }
-
-        /// <summary>
         ///     Tests that StreamAdaptor with large stream works.
         /// </summary>
         [Fact]

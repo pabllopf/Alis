@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Alis.Core.Ecs.Updating;
 using Xunit;
@@ -212,6 +213,32 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             scene.Update(typeof(SceneCoverageUpdateAttribute));
+        }
+
+        /// <summary>
+        ///     Tests that CreateMany fires EntityCreated event when listeners are registered.
+        /// </summary>
+        [Fact]
+        public void Scene_CreateMany_FiresEntityCreatedEvent()
+        {
+            using Scene scene = new Scene();
+            int callCount = 0;
+            scene.EntityCreated += _ => callCount++;
+
+            _ = scene.CreateMany<Position>(3);
+
+            Assert.Equal(3, callCount);
+        }
+
+        /// <summary>
+        ///     Tests that CreateMany without listeners does not throw.
+        /// </summary>
+        [Fact]
+        public void Scene_CreateMany_WithoutListeners_DoesNotThrow()
+        {
+            using Scene scene = new Scene();
+
+            _ = scene.CreateMany<Position>(2);
         }
     }
 

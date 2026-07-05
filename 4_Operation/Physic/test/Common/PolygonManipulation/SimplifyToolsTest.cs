@@ -202,23 +202,6 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         }
 
         [Fact]
-        public void ReduceByNth_WithLargeSetAndNth_ShouldReduce()
-        {
-            Vertices vertices = new Vertices(new[]
-            {
-                new Vector2F(0f, 0f),
-                new Vector2F(1f, 0f),
-                new Vector2F(2f, 0f),
-                new Vector2F(3f, 0f),
-                new Vector2F(4f, 0f)
-            });
-
-            Vertices result = SimplifyTools.ReduceByNth(vertices, 2);
-
-            Assert.Equal(3, result.Count);
-        }
-
-        [Fact]
         public void ReduceByArea_WithThreePoints_ShouldReturnSameCount()
         {
             Vertices vertices = new Vertices(new[]

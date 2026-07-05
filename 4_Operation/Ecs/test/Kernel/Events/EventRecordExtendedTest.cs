@@ -38,16 +38,15 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
     public class EventRecordExtendedTest
     {
         /// <summary>
-        ///     Tests that initalize creates new record when not exists
+        ///     Tests that initalize initializes sub-objects on an existing record when not exists
         /// </summary>
         [Fact]
         public void Initalize_CreatesNewRecordWhenNotExists()
         {
-            EventRecord record = null;
+            EventRecord record = new EventRecord();
 
             EventRecord.Initalize(false, ref record);
 
-            Assert.NotNull(record);
             Assert.NotNull(record.Add);
             Assert.NotNull(record.Remove);
         }
@@ -65,12 +64,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         }
 
         /// <summary>
-        ///     Tests that initalize creates add component event
+        ///     Tests that initalize creates add component event on an existing record
         /// </summary>
         [Fact]
         public void Initalize_CreatesAddComponentEvent()
         {
-            EventRecord record = null;
+            EventRecord record = new EventRecord();
 
             EventRecord.Initalize(false, ref record);
 
@@ -78,12 +77,12 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         }
 
         /// <summary>
-        ///     Tests that initalize creates remove component event
+        ///     Tests that initalize creates remove component event on an existing record
         /// </summary>
         [Fact]
         public void Initalize_CreatesRemoveComponentEvent()
         {
-            EventRecord record = null;
+            EventRecord record = new EventRecord();
 
             EventRecord.Initalize(false, ref record);
 

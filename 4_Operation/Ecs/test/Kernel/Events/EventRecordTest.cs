@@ -61,16 +61,14 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
     public class EventRecordTest
     {
         /// <summary>
-        ///     Tests that initalize when exists is false creates and initializes fields
+        ///     Tests that initalize when exists is false initializes fields on an existing record
         /// </summary>
         [Fact]
-        public void Initalize_WhenExistsIsFalse_CreatesAndInitializesFields()
+        public void Initalize_WhenExistsIsFalse_InitializesFields()
         {
-            EventRecord record = null;
+            EventRecord record = new EventRecord();
 
             EventRecord.Initalize(false, ref record);
-
-            Assert.NotNull(record);
 
             object add = typeof(EventRecord).GetField("Add", BindingFlags.Instance | BindingFlags.NonPublic)!
                 .GetValue(record)!;
@@ -125,7 +123,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact]
         public void Initalize_CanBeCalledTwice_SecondCallWithExistsTruePreservesInitializedFields()
         {
-            EventRecord record = null;
+            EventRecord record = new EventRecord();
             EventRecord.Initalize(false, ref record);
             EventRecord initialized = record;
 

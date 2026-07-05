@@ -344,5 +344,6 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.False(result);
         }
+        
     }
 }

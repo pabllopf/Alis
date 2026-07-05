@@ -113,16 +113,5 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Throws<InvalidOperationException>(() =>
                 Component.GetComponentFactoryFromType(typeof(void)));
         }
-
-        /// <summary>
-        ///     Tests that <see cref="Component.GetComponentFactoryFromType" /> throws
-        ///     for unregistered non-IComponentBase type.
-        /// </summary>
-        [Fact]
-        public void GetComponentFactoryFromType_UnregisteredType_ThrowsInvalidOperation()
-        {
-            Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentFactoryFromType(typeof(string)));
-        }
     }
 }

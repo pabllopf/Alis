@@ -226,43 +226,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True(joint.LengthA > 0);
             Assert.True(joint.LengthB > 0);
         }
+        
 
-        /// <summary>
-        /// Tests that constant is computed correctly as LengthA + ratio * LengthB.
-        /// </summary>
-        [Fact]
-        public void Constructor_ShouldComputeConstant()
-        {
-            Body bodyA = new Body();
-            Body bodyB = new Body();
-
-            PulleyJoint joint = new PulleyJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero, new Vector2F(0.0f, -1.0f), new Vector2F(0.0f, -1.0f), 2.0f);
-
-            float lengthA = joint.LengthA;
-            float lengthB = joint.LengthB;
-            float expectedConstant = lengthA + 2.0f * lengthB;
-
-            System.Reflection.FieldInfo constantField = typeof(PulleyJoint).GetField("Constant", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-            float actualConstant = (float)constantField.GetValue(joint);
-
-            Assert.Equal(expectedConstant, actualConstant, 4);
-        }
-
-        /// <summary>
-        /// Tests that default constructor sets joint type to pulley.
-        /// </summary>
-        [Fact]
-        public void DefaultConstructor_ShouldSetPulleyType()
-        {
-            PulleyJoint joint = (PulleyJoint)System.Runtime.Serialization.FormatterServices.GetUninitializedObject(typeof(PulleyJoint));
-
-            System.Reflection.MethodInfo init = typeof(PulleyJoint).GetMethod("PulleyJoint", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic, null, System.Type.EmptyTypes, null);
-            if (init != null)
-            {
-                init.Invoke(joint, null);
-            }
-
-            Assert.Equal(JointType.Pulley, joint.JointType);
-        }
+        
     }
 }

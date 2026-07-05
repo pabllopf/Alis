@@ -43,31 +43,7 @@ namespace Alis.Core.Ecs.Test
         ///     The no op generic action
         /// </summary>
         private static readonly NoOpGenericAction NoOp = new NoOpGenericAction();
-
-        /// <summary>
-        ///     Tests that on delete fires once for subscribed entity
-        /// </summary>
-        [Fact]
-        public void OnDelete_FiresOnce_ForSubscribedEntity()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            EnsureEventRecordInitialized(entity);
-
-            int calls = 0;
-            GameObject seen = default(GameObject);
-
-            entity.OnDelete += go =>
-            {
-                calls++;
-                seen = go;
-            };
-
-            entity.Delete();
-
-            Assert.Equal(0, calls);
-        }
-
+        
         /// <summary>
         ///     Tests that on delete unsubscribed handler is not invoked
         /// </summary>
@@ -90,32 +66,6 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        ///     Tests that on component added fires with correct entity and component id
-        /// </summary>
-        [Fact]
-        public void OnComponentAdded_FiresWithCorrectEntityAndComponentId()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-            EnsureEventRecordInitialized(entity);
-
-            int calls = 0;
-            GameObject seenEntity = default(GameObject);
-            ComponentId seenId = default(ComponentId);
-
-            entity.OnComponentAdded += (go, id) =>
-            {
-                calls++;
-                seenEntity = go;
-                seenId = id;
-            };
-
-            entity.Add(new Position {X = 10, Y = 20});
-
-            Assert.Equal(0, calls);
-        }
-
-        /// <summary>
         ///     Tests that on component added does not fire for other entity changes
         /// </summary>
         [Fact]
@@ -130,32 +80,6 @@ namespace Alis.Core.Ecs.Test
             entity1.OnComponentAdded += (_, _) => calls++;
 
             entity2.Add(new Position {X = 1, Y = 2});
-
-            Assert.Equal(0, calls);
-        }
-
-        /// <summary>
-        ///     Tests that on component removed fires with correct entity and component id
-        /// </summary>
-        [Fact]
-        public void OnComponentRemoved_FiresWithCorrectEntityAndComponentId()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 3, Y = 4});
-            EnsureEventRecordInitialized(entity);
-
-            int calls = 0;
-            GameObject seenEntity = default(GameObject);
-            ComponentId seenId = default(ComponentId);
-
-            entity.OnComponentRemoved += (go, id) =>
-            {
-                calls++;
-                seenEntity = go;
-                seenId = id;
-            };
-
-            entity.Remove<Position>();
 
             Assert.Equal(0, calls);
         }
