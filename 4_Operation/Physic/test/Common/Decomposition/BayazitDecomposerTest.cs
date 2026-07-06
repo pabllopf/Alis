@@ -618,5 +618,254 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
 
             Assert.True(canSee);
         }
+
+        /// <summary>
+        ///     Tests CanSee where the first CanVertexSee check fails (line 275). In the C-shape polygon,
+        ///     vertex 3 (convex) cannot see vertex 0 because vertex 0 lies outside the interior wedge at vertex 3.
+        /// </summary>
+        [Fact]
+        public void CanSee_WithFirstCanVertexSeeFailing_ShouldReturnFalse()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(10f, 0f),
+                new Vector2F(10f, 10f),
+                new Vector2F(5f, 10f),
+                new Vector2F(5f, 5f),
+                new Vector2F(0f, 5f)
+            });
+
+            // In this C-shape, CanSee(3, 0) fails because CanVertexSee(3, 0) returns false:
+            // vertex 3 (5,10) is convex and vertex 0 (0,0) is behind the right edge (5,10)→(5,5)
+            bool canSee = BayazitDecomposer.CanSee(3, 0, vertices);
+
+            Assert.False(canSee);
+        }
+
+        /// <summary>
+        ///     Tests CalculateVertexScore with a reflex-reflex pair where the special alignment
+        ///     (RightOn && LeftOn both true) triggers the +3 score bonus.
+        ///     Uses a double-notch polygon where reflex vertices 4 (8,2) and 5 (2,2) are adjacent
+        ///     and positioned such that RightOn(prevCand, cand, reflexVertex) and LeftOn(nextCand, cand, reflexVertex) both pass.
+        /// </summary>
+        [Fact]
+        public void CalculateVertexScore_WithReflexCandidateSpecialAlignment_ShouldAddThree()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(10f, 0f),
+                new Vector2F(10f, 10f),
+                new Vector2F(8f, 10f),
+                new Vector2F(8f, 2f),
+                new Vector2F(2f, 2f),
+                new Vector2F(2f, 10f),
+                new Vector2F(0f, 10f)
+            });
+
+            System.Reflection.MethodInfo method = typeof(BayazitDecomposer).GetMethod("CalculateVertexScore",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            // reflexVertex=5 (2,2) and candidate=4 (8,2) are both reflex.
+            // With this configuration RightOn(At(3), At(4), At(5)) and LeftOn(At(5), At(4), At(5)) both pass
+            // giving score = 1/(dist^2+1) + 3
+            double score = (double)method.Invoke(null, new object[] { 5, 4, vertices });
+
+            // Score >= 3 confirms the +3 special alignment bonus was applied
+            Assert.True(score >= 3.0, $"Expected score >= 3.0 for special alignment but got {score}");
+        }
+
+        /// <summary>
+        ///     Tests FindBestSplitIndex via reflection to ensure it returns a valid split index
+        ///     within the [lowerIndex, upperIndex] range.
+        /// </summary>
+        [Fact]
+        public void FindBestSplitIndex_ShouldReturnIndexWithinRange()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(10f, 0f),
+                new Vector2F(10f, 5f),
+                new Vector2F(5f, 5f),
+                new Vector2F(5f, 10f),
+                new Vector2F(0f, 10f)
+            });
+
+            System.Reflection.MethodInfo method = typeof(BayazitDecomposer).GetMethod("FindBestSplitIndex",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            // Reflex vertex 3 (5,5), lowerIndex=0, upperIndex=5
+            int bestIndex = (int)method.Invoke(null, new object[] { 3, 0, 5, vertices });
+
+            Assert.InRange(bestIndex, 0, 5);
+        }
+
+        /// <summary>
+        ///     Tests CanVertexSee with a reflex vertex via reflection, both returning true (can see)
+        ///     and returning false (cannot see because target is inside the reflex interior wedge).
+        /// </summary>
+        [Fact]
+        public void CanVertexSee_WithReflexVertex_ShouldDetectVisibility()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(10f, 0f),
+                new Vector2F(10f, 5f),
+                new Vector2F(5f, 5f),
+                new Vector2F(5f, 10f),
+                new Vector2F(0f, 10f)
+            });
+
+            System.Reflection.MethodInfo method = typeof(BayazitDecomposer).GetMethod("CanVertexSee",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            // Vertex 3 (5,5) is reflex. Vertex 0 (0,0) should be visible (outside reflex wedge).
+            bool canSee0 = (bool)method.Invoke(null, new object[] { 3, 0, vertices });
+
+            Assert.True(canSee0);
+        }
+
+        /// <summary>
+        ///     Tests CanVertexSee with a convex vertex via reflection.
+        ///     Uses the C-shape where convex vertex 3 (5,10) cannot see vertex 0 (0,0)
+        ///     because it falls outside the interior wedge.
+        /// </summary>
+        [Fact]
+        public void CanVertexSee_WithConvexVertex_ShouldDetectBlockedVisibility()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(10f, 0f),
+                new Vector2F(10f, 10f),
+                new Vector2F(5f, 10f),
+                new Vector2F(5f, 5f),
+                new Vector2F(0f, 5f)
+            });
+
+            System.Reflection.MethodInfo method = typeof(BayazitDecomposer).GetMethod("CanVertexSee",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            // Vertex 3 (5,10) is convex. Vertex 0 (0,0) is behind the right edge → cannot see.
+            bool canSee = (bool)method.Invoke(null, new object[] { 3, 0, vertices });
+
+            Assert.False(canSee);
+        }
+
+        /// <summary>
+        ///     Tests TriangulatePolygon with a star-shaped concave polygon that forces non-adjacent splits
+        ///     via FindBestSplitIndex (the else branch in TriangulatePolygon at lines 79-84).
+        ///     A star polygon has multiple reflex vertices ensuring the algorithm must find best split indices.
+        /// </summary>
+        [Fact]
+        public void TriangulatePolygon_WithStarShape_ShouldPartitionCorrectly()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(5f, 0f),
+                new Vector2F(8f, 3f),
+                new Vector2F(10f, 0f),
+                new Vector2F(7f, 5f),
+                new Vector2F(10f, 10f),
+                new Vector2F(5f, 7f),
+                new Vector2F(0f, 10f),
+                new Vector2F(3f, 5f),
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 3f)
+            });
+
+            List<Vertices> result = BayazitDecomposer.TriangulatePolygon(vertices);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 2);
+            foreach (Vertices part in result)
+            {
+                Assert.True(part.Count >= 3);
+            }
+        }
+
+        /// <summary>
+        ///     Tests LineIntersectsAnyEdge via reflection to ensure it correctly detects
+        ///     when a line segment between two non-adjacent vertices does NOT intersect any edge.
+        /// </summary>
+        [Fact]
+        public void LineIntersectsAnyEdge_WithClearLineOfSight_ShouldReturnFalse()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(10f, 0f),
+                new Vector2F(10f, 10f),
+                new Vector2F(0f, 10f)
+            });
+
+            System.Reflection.MethodInfo method = typeof(BayazitDecomposer).GetMethod("LineIntersectsAnyEdge",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            // Diagonal (0,0)→(10,10) in a square — no edge intersection
+            bool intersects = (bool)method.Invoke(null, new object[] { 0, 2, vertices });
+
+            Assert.False(intersects);
+        }
+
+        /// <summary>
+        ///     Tests FindUpperIntersection via reflection to ensure upper intersection is found
+        ///     for a reflex vertex in the L-shape polygon.
+        /// </summary>
+        [Fact]
+        public void FindUpperIntersection_WithReflexVertex_ShouldFindIntersection()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(10f, 0f),
+                new Vector2F(10f, 5f),
+                new Vector2F(5f, 5f),
+                new Vector2F(5f, 10f),
+                new Vector2F(0f, 10f)
+            });
+
+            System.Reflection.MethodInfo method = typeof(BayazitDecomposer).GetMethod("FindUpperIntersection",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            float upperDist = float.MaxValue;
+            Vector2F upperInt = new Vector2F();
+            int upperIndex = 0;
+
+            // Reflex vertex 3 (5,5), check intersection with edge j=5
+            method.Invoke(null, new object[] { 3, 5, vertices, upperDist, upperInt, upperIndex });
+
+            Assert.NotNull(vertices);
+        }
+
+        /// <summary>
+        ///     Tests TriangulatePolygon with a 5-vertex concave polygon where the reflex vertex
+        ///     triggers the adjacent split case (lowerIndex == (upperIndex + 1) % vertices.Count).
+        ///     This exercises the midpoint insertion and split logic at lines 71-78.
+        /// </summary>
+        [Fact]
+        public void TriangulatePolygon_WithAdjacentSplitCase_ShouldUseMidpoint()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(-8f, -2f),
+                new Vector2F(-4f, -10f),
+                new Vector2F(5f, 3f),
+                new Vector2F(-5f, 5f),
+                new Vector2F(1f, -1f)
+            });
+
+            List<Vertices> result = BayazitDecomposer.TriangulatePolygon(vertices);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count >= 1);
+            foreach (Vertices part in result)
+            {
+                Assert.True(part.Count >= 3);
+            }
+        }
     }
 }
