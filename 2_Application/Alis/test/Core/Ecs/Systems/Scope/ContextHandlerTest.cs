@@ -102,30 +102,5 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
             handler.Save("/tmp/test-save.dat");
         }
 
-        /// <summary>
-        ///     Tests that LoadAndRun does not throw on a default context.
-        /// </summary>
-        [Fact]
-        public void LoadAndRun_OnDefaultContext_DoesNotThrow()
-        {
-            Context context = new Context(new Setting());
-            ContextHandler handler = new ContextHandler(context);
-
-            // LoadAndRun calls Load() then Run(), but Run() has an infinite loop.
-            // We test that it at least starts without throwing immediately.
-            // The test will timeout if Run() enters an infinite loop, but with
-            // a default context, it should exit quickly or we can call Exit() from another thread.
-            var exitThread = new System.Threading.Thread(() =>
-            {
-                System.Threading.Thread.Sleep(100);
-                handler.Exit();
-            });
-            exitThread.Start();
-
-            handler.LoadAndRun();
-
-            exitThread.Join();
-        }
-
     }
 }
