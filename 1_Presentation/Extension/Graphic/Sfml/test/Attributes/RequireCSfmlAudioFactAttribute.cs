@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.IO;
 using System.Runtime.InteropServices;
 using Xunit;
 
@@ -43,14 +44,39 @@ namespace Alis.Extension.Graphic.Sfml.Test.Attributes
         /// </summary>
         public RequireCSfmlAudioFactAttribute()
         {
-            try
-            {
-                NativeLibrary.Load("csfml-audio");
-            }
-            catch
+            if (!TryLoadSfmlLibrary("csfml-audio"))
             {
                 Skip = "SFML native library (csfml-audio) not detected. Install SFML to run this test.";
             }
+        }
+
+        /// <summary>
+        ///     Attempts to load the specified SFML library by name, falling back to
+        ///     absolute path resolution from the test assembly output directory.
+        /// </summary>
+        private static bool TryLoadSfmlLibrary(string name)
+        {
+            if (NativeLibrary.TryLoad(name, out _))
+                return true;
+
+            var assemblyDir = Path.GetDirectoryName(typeof(RequireCSfmlAudioFactAttribute).Assembly.Location);
+            if (assemblyDir == null)
+                return false;
+
+            var candidates = new[]
+            {
+                Path.Combine(assemblyDir, name),
+                Path.Combine(assemblyDir, "lib" + name),
+                Path.Combine(assemblyDir, "lib" + name + ".dylib")
+            };
+
+            foreach (var candidate in candidates)
+            {
+                if (File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
+                    return true;
+            }
+
+            return false;
         }
     }
 }
