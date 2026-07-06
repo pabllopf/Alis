@@ -392,5 +392,46 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.True(true);
         }
+
+        /// <summary>
+        /// Tests that solve velocity constraints clamps the impulse when it exceeds
+        /// the maximum force limit.
+        /// </summary>
+        [Fact]
+        public void SolveVelocityConstraints_WithExcessImpulse_ShouldClampImpulse()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 1.0f, BodyType.Dynamic);
+            body.Inertia = 1.0f;
+            FixedMouseJoint joint = new FixedMouseJoint(body, new Vector2F(0.0f, 1.0f));
+
+            SolverData initData = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = true, DtRatio = 1.0f },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
+                Locks = new int[] { 0 }
+            };
+
+            System.Reflection.MethodInfo initMethod = typeof(FixedMouseJoint).GetMethod("InitVelocityConstraints", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { initData });
+
+            // High velocity at the contact point forces a large impulse correction
+            SolverData solveData = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = true, DtRatio = 1.0f },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = new Vector2F(1000.0f, 0.0f), W = 0.0f } },
+                Locks = new int[] { 0 }
+            };
+
+            System.Reflection.MethodInfo solveMethod = typeof(FixedMouseJoint).GetMethod("SolveVelocityConstraints", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            solveMethod.Invoke(joint, new object[] { solveData });
+
+            // After clamping, the reaction force should not exceed MaxForce
+            Vector2F reaction = joint.GetReactionForce(62.5f);
+            float maxForce = joint.MaxForce;
+            Assert.True(reaction.LengthSquared() <= maxForce * maxForce * 1.01f);
+        }
     }
 }
