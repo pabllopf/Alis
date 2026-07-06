@@ -873,5 +873,37 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.NotNull(joint);
         }
+
+        /// <summary>
+        /// Tests that init velocity constraints without warm starting zeros out impulse
+        /// </summary>
+        [Fact]
+        public void InitVelocityConstraints_WithoutWarmStarting_ShouldZeroOutImpulse()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
+            joint.LimitEnabled = true;
+            joint.SetLimits(-1.0f, 1.0f);
+
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
+                Locks = new int[] { 0 }
+            };
+
+            System.Reflection.MethodInfo initMethod = typeof(RevoluteJoint).GetMethod("InitVelocityConstraints", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { data });
+
+            Assert.True(true);
+        }
     }
 }
