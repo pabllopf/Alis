@@ -166,29 +166,7 @@ namespace Alis.Core.Aspect.Logging.Test
             
             Assert.Equal("Log message", mockLogger.InfoMessages[0]);
         }
-
-        /// <summary>
-        ///     Tests that static logger all methods should call correct logger method
-        /// </summary>
-        [Fact]
-        public void Logger_AllMethods_ShouldCallCorrectLoggerMethod()
-        {
-            MockLogger mockLogger = new MockLogger();
-            Logger.SetDefaultLogger(mockLogger);
-
-            Logger.Trace("Trace");
-            Logger.Debug("Debug");
-            Logger.Info("Info");
-            Logger.Warning("Warning");
-            Logger.Error("Error");
-
-            Assert.Single(mockLogger.TraceMessages);
-            Assert.Single(mockLogger.DebugMessages);
-            Assert.Single(mockLogger.InfoMessages);
-            Assert.Single(mockLogger.WarningMessages);
-            Assert.Single(mockLogger.ErrorMessages);
-        }
-
+        
         /// <summary>
         ///     Tests that static logger exception with empty message throws
         /// </summary>

@@ -76,8 +76,8 @@
             "state": {
               "type": "notebook-navigator",
               "state": {},
-              "icon": "notebook-navigator",
-              "title": "Navegador de Cuadernos"
+              "icon": "lucide-ghost",
+              "title": "notebook-navigator"
             }
           },
           {
@@ -86,8 +86,8 @@
             "state": {
               "type": "notebook-navigator",
               "state": {},
-              "icon": "notebook-navigator",
-              "title": "Navegador de Cuadernos"
+              "icon": "lucide-ghost",
+              "title": "notebook-navigator"
             }
           }
         ],
@@ -191,7 +191,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "notebook-navigator:Navegador de Cuadernos": false,
       "switcher:Abrir selector rápido": false,
       "graph:Abrir vista gráfica": false,
       "canvas:Crear nuevo lienzo": false,
