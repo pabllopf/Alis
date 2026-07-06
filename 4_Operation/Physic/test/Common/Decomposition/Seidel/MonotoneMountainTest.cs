@@ -278,6 +278,33 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         }
 
         /// <summary>
+        ///     Tests Triangulate when ear.Prev becomes convex after ear removal,
+        ///     exercising the true branch of Valid(a) (a != head, a != tail, IsConvex(a)).
+        ///     After p3 is removed as ear, p2's Next changes from p3 to tail,
+        ///     making its angle flat (π), which passes IsConvex because π ≥ 0
+        ///     and _positive = true, so Valid(p2) = true.
+        /// </summary>
+        [Fact]
+        public void Triangulate_WhenEarRemovalMakesPrevConvex_AddsToConvexPoints()
+        {
+            MonotoneMountain mountain = new MonotoneMountain();
+
+            // head=(0,0), p2=(1,0) on baseline (right turn, not convex),
+            // p3=(2,-1) below baseline (left turn, convex).
+            // After p3 is removed as ear, p2.Next becomes tail=(3,0),
+            // making Angle(p2) flat (π ≥ 0), so IsConvex(p2) = true.
+            mountain.Add(new Point(0, 0));  // head
+            mountain.Add(new Point(1, 0));  // p2 — not convex (right turn)
+            mountain.Add(new Point(2, -1)); // p3 — convex (left turn) → ear
+            mountain.Add(new Point(3, 0));  // tail
+
+            mountain.Process();
+
+            Assert.NotEmpty(mountain.Triangles);
+            Assert.Equal(2, mountain.Triangles.Count);
+        }
+
+        /// <summary>
         ///     Tests that triangulate should handle non-convex point becoming convex after ear removal
         /// </summary>
         [Fact]

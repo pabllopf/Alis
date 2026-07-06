@@ -490,6 +490,27 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
+        ///     Tests that collision group change on a fixture not in any contact skips filter on that contact
+        /// </summary>
+        [Fact]
+        public void CollisionGroup_WhenChangedOnNonContactFixture_ShouldSkipRefilterContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixtureA1 = bodyA.CreateCircle(5.0f, 1.0f);
+            Fixture fixtureA2 = bodyA.CreateCircle(0.1f, 1.0f);
+
+            Body bodyB = world.CreateBody(new Vector2F(3.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            bodyB.CreateCircle(5.0f, 1.0f);
+
+            world.Step(1.0f / 60.0f);
+
+            fixtureA2.GetCollisionGroup = -1;
+
+            Assert.Equal((short)-1, fixtureA2.GetCollisionGroup);
+        }
+
+        /// <summary>
         ///     Tests that collision group change does not throw when body has no world
         /// </summary>
         [Fact]

@@ -410,5 +410,16 @@ namespace Alis.Core.Physic.Test.Common
 
             Assert.NotEmpty(vertices);
         }
+
+        /// <summary>
+        ///     Tests that CreateRoundedRectangle throws when yRadius exceeds half height,
+        ///     exercising the true branch of the first condition at line 99.
+        /// </summary>
+        [Fact]
+        public void CreateRoundedRectangle_ShouldThrowException_WhenYRadiusTooLarge()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                PolygonTools.CreateRoundedRectangle(10.0f, 6.0f, 1.0f, 4.0f, 2));
+        }
     }
 }

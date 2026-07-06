@@ -25,7 +25,7 @@ Add internal Func<bool> property to make debugger check injectable from tests
 completed
 
 ### Commit
-pending
+7c4c0d7d7
 
 ### Estimated Coverage Improvement
 ~7 uncovered lines covered, ~1 uncovered condition covered
