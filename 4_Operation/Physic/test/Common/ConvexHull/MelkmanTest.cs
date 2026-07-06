@@ -146,8 +146,6 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
         [Fact]
         public void GetConvexHull_WithManyPoints_OnCircleProducesFullHull()
         {
-            // Many points arranged on a circle ensure the deque wraps around,
-            // triggering the qb < qf branch in BuildConvexHullResult.
             var circlePoints = new System.Collections.Generic.List<Vector2F>();
             for (int i = 0; i < 20; i++)
             {
@@ -158,8 +156,33 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             Vertices vertices = new Vertices(circlePoints.ToArray());
             Vertices hull = Melkman.GetConvexHull(vertices);
 
-            // All points on a circle are on the convex hull
             Assert.Equal(20, hull.Count);
+        }
+
+        /// <summary>
+        ///     Tests that a concave polygon with many points exercises
+        ///     the full ProcessDeque loop including front and back pops.
+        /// </summary>
+        [Fact]
+        public void GetConvexHull_ConcavePolygon_ExercisesFrontAndBackPops()
+        {
+            // A flower-shaped concave polygon with 80 points.
+            // The inward lobes cause front and back deque pops,
+            // exercising the full PopDequeFront and PopDequeBack paths.
+            var points = new System.Collections.Generic.List<Vector2F>();
+            int count = 80;
+            for (int i = 0; i < count; i++)
+            {
+                double angle = 2.0 * Math.PI * i / count;
+                float radius = 1.0f + 0.5f * (float)Math.Sin(5.0 * angle);
+                points.Add(new Vector2F(radius * (float)Math.Cos(angle), radius * (float)Math.Sin(angle)));
+            }
+
+            Vertices vertices = new Vertices(points.ToArray());
+            Vertices hull = Melkman.GetConvexHull(vertices);
+
+            Assert.NotNull(hull);
+            Assert.True(hull.Count >= 3);
         }
     }
 }

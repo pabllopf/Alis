@@ -150,7 +150,7 @@ namespace Alis.Core.Physic.Common.ConvexHull
         private static void ProcessDeque(Vertices vertices, Vector2F[] deque, ref int qf, ref int qb, int startIndex)
         {
             int qfm1 = qf - 1;
-            int qbm1 = qb == deque.Length - 1 ? 0 : qb + 1;
+            int qbm1 = qb + 1;
 
             for (int i = startIndex; i < vertices.Count; i++)
             {
@@ -206,8 +206,8 @@ namespace Alis.Core.Physic.Common.ConvexHull
         /// <param name="nextPt">The next pt</param>
         private static void PushDequeFront(Vector2F[] deque, ref int qf, ref int qfm1, Vector2F nextPt)
         {
-            qf = qf == deque.Length - 1 ? 0 : qf + 1;
-            qfm1 = qf == 0 ? deque.Length - 1 : qf - 1;
+            qf++;
+            qfm1 = qf - 1;
             deque[qf] = nextPt;
         }
 
