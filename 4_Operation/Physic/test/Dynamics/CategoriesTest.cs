@@ -273,5 +273,41 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(withoutCat2.HasFlag(Categories.Cat1));
             Assert.True(withoutCat2.HasFlag(Categories.Cat3));
         }
+
+        /// <summary>
+        ///     Tests that Cat6 enum value is correctly defined as 0x00000020.
+        /// </summary>
+        [Fact]
+        public void Cat6Value_ShouldBe0x00000020()
+        {
+            Assert.Equal(0x00000020, (int)Categories.Cat6);
+        }
+
+        /// <summary>
+        ///     Tests that Cat8 enum value is correctly defined as 0x00000080.
+        /// </summary>
+        [Fact]
+        public void Cat8Value_ShouldBe0x00000080()
+        {
+            Assert.Equal(0x00000080, (int)Categories.Cat8);
+        }
+
+        /// <summary>
+        ///     Tests that Cat12 enum value is correctly defined as 0x00000800.
+        /// </summary>
+        [Fact]
+        public void Cat12Value_ShouldBe0x00000800()
+        {
+            Assert.Equal(0x00000800, (int)Categories.Cat12);
+        }
+
+        /// <summary>
+        ///     Tests that Cat30 enum value is correctly defined as 0x20000000.
+        /// </summary>
+        [Fact]
+        public void Cat30Value_ShouldBe0x20000000()
+        {
+            Assert.Equal(0x20000000, (int)Categories.Cat30);
+        }
     }
 }
