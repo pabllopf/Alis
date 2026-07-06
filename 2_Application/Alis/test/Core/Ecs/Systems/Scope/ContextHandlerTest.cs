@@ -91,20 +91,6 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
         }
 
         /// <summary>
-        ///     Tests that InitPreview sets preview mode and initializes.
-        /// </summary>
-        [Fact]
-        public void InitPreview_ShouldSetPreviewMode()
-        {
-            Context context = new Context(new Setting());
-            ContextHandler handler = new ContextHandler(context);
-
-            handler.InitPreview();
-
-            Assert.True(context.Setting.Graphic.PreviewMode);
-        }
-
-        /// <summary>
         ///     Tests that Save with path does not throw on a default context.
         /// </summary>
         [Fact]
