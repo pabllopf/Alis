@@ -262,5 +262,118 @@ namespace Alis.Core.Aspect.Logging.Test
 
             output.Flush();
         }
+
+        /// <summary>
+        ///     Tests that write with simulated debugger attached exercises the full
+        ///     format-and-write path without throwing.
+        /// </summary>
+        [Fact]
+        public void DebugLogOutput_WriteWithSimulatedDebugger_ShouldNotThrow()
+        {
+            DebugLogOutput output = new DebugLogOutput();
+            output.SimulateDebuggerAttached = true;
+
+            LogEntry entry = new LogEntry(LogLevel.Info, "Debug test message", "TestLogger");
+
+            output.Write(entry);
+        }
+
+        /// <summary>
+        ///     Tests that write with simulated debugger attached and a custom formatter
+        ///     exercises the format path and uses the provided formatter.
+        /// </summary>
+        [Fact]
+        public void DebugLogOutput_WriteWithSimulatedDebuggerAndCustomFormatter_ShouldNotThrow()
+        {
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            DebugLogOutput output = new DebugLogOutput(formatter);
+            output.SimulateDebuggerAttached = true;
+
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+
+            output.Write(entry);
+        }
+
+        /// <summary>
+        ///     Tests that write with simulated debugger handles a formatter that throws
+        ///     by swallowing the exception (catch block coverage).
+        /// </summary>
+        [Fact]
+        public void DebugLogOutput_WriteWithSimulatedDebuggerAndThrowingFormatter_ShouldNotThrow()
+        {
+            DebugLogOutput output = new DebugLogOutput(new ThrowingFormatter());
+            output.SimulateDebuggerAttached = true;
+
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+
+            output.Write(entry);
+        }
+
+        /// <summary>
+        ///     Tests that write with all levels exercises the full format-and-write path
+        ///     for every log level when the debugger is simulated as attached.
+        /// </summary>
+        [Fact]
+        public void DebugLogOutput_AllLevelsWithSimulatedDebugger_ShouldNotThrow()
+        {
+            DebugLogOutput output = new DebugLogOutput();
+            output.SimulateDebuggerAttached = true;
+
+            LogLevel[] levels = new[] {LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical};
+
+            foreach (LogLevel level in levels)
+            {
+                LogEntry entry = new LogEntry(level, "Test", "Logger");
+                output.Write(entry);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that write with simulated debugger produces output when called
+        ///     with entry containing exception details.
+        /// </summary>
+        [Fact]
+        public void DebugLogOutput_WriteWithSimulatedDebuggerAndException_ShouldNotThrow()
+        {
+            DebugLogOutput output = new DebugLogOutput();
+            output.SimulateDebuggerAttached = true;
+
+            InvalidOperationException exception = new InvalidOperationException("Test exception");
+            LogEntry entry = new LogEntry(LogLevel.Error, "Error message", "Logger", exception);
+
+            output.Write(entry);
+        }
+
+        /// <summary>
+        ///     Tests that disposing the output resets the simulated debugger flag check
+        ///     and subsequent writes return early.
+        /// </summary>
+        [Fact]
+        public void DebugLogOutput_WriteAfterDisposeWithSimulatedDebugger_ReturnsEarly()
+        {
+            DebugLogOutput output = new DebugLogOutput();
+            output.SimulateDebuggerAttached = true;
+            output.Dispose();
+
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            output.Write(entry);
+        }
     }
+}
+
+/// <summary>
+///     A formatter that always throws when Format is called.
+///     Used to test the catch-and-swallow behavior in DebugLogOutput.Write.
+/// </summary>
+internal sealed class ThrowingFormatter : ILogFormatter
+{
+    /// <summary>
+    ///     Gets the formatter name
+    /// </summary>
+    public string Name => "Throwing";
+
+    /// <summary>
+    ///     Throws an InvalidOperationException when called.
+    /// </summary>
+    public string Format(ILogEntry entry) => throw new InvalidOperationException("Simulated format failure");
 }

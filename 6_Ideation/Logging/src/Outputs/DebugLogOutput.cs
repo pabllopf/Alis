@@ -27,9 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Formatters;
+
+
 
 namespace Alis.Core.Aspect.Logging.Outputs
 {
@@ -50,6 +53,12 @@ namespace Alis.Core.Aspect.Logging.Outputs
         ///     The disposed
         /// </summary>
         private bool _disposed;
+
+        /// <summary>
+        ///     For unit testing only. When true, simulates an attached debugger
+        ///     so that the Write method exercises the full format-and-write path.
+        /// </summary>
+        internal bool SimulateDebuggerAttached;
 
         /// <summary>
         ///     Initializes a new instance of the DebugLogOutput class.
@@ -77,7 +86,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
         
         public void Write(ILogEntry entry)
         {
-            if (entry == null || _disposed || !Debugger.IsAttached)
+            if (entry == null || _disposed || !(SimulateDebuggerAttached || Debugger.IsAttached))
             {
                 return;
             }
