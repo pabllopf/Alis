@@ -273,5 +273,32 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(withoutCat02.HasFlag(ControllerCategories.Cat01));
             Assert.True(withoutCat02.HasFlag(ControllerCategories.Cat03));
         }
+
+        /// <summary>
+        ///     Tests that Cat06 enum value is correctly defined as 0x00000020.
+        /// </summary>
+        [Fact]
+        public void Cat06Value_ShouldBe0x00000020()
+        {
+            Assert.Equal(0x00000020, (int)ControllerCategories.Cat06);
+        }
+
+        /// <summary>
+        ///     Tests that Cat08 enum value is correctly defined as 0x00000080.
+        /// </summary>
+        [Fact]
+        public void Cat08Value_ShouldBe0x00000080()
+        {
+            Assert.Equal(0x00000080, (int)ControllerCategories.Cat08);
+        }
+
+        /// <summary>
+        ///     Tests that Cat30 enum value is correctly defined as 0x20000000.
+        /// </summary>
+        [Fact]
+        public void Cat30Value_ShouldBe0x20000000()
+        {
+            Assert.Equal(0x20000000, (int)ControllerCategories.Cat30);
+        }
     }
 }
