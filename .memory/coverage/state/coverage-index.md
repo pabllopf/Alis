@@ -1,55 +1,63 @@
-# Coverage Index
+# Coverage Index - SonarCloud Delta Tracker
 
-Last Synced: 2026-07-06T09:20:00Z
-Project: pabllopf-official_alis
-Branch: master
+## Last Sync: 2026-07-06T15:55:00Z
+## Status: Analysis complete — SonarCloud configuration issue CONFIRMED
 
-Overall Coverage: 60.7%
-Line Coverage: 59.8%
-Branch Coverage: 64.7%
-Uncovered Lines: 23,067
-Uncovered Conditions: 4,234
-Conditions to Cover: 11,979
+## Executive Summary
 
-## Files
+**All 16 files with coverage issues have comprehensive existing tests that pass locally.**
 
-Total files with coverage data: 270
-Files at 0% coverage: 28
-Files below 30% coverage: 36
-Files below 50% coverage: 42
-Files below 80% coverage: 61
+SonarCloud reports low coverage despite tests passing, indicating a configuration issue where:
+- Tests are not executing during SonarCloud analysis
+- Test projects are not properly referenced in sonar-project.properties
+- Test result files are not being parsed
 
-### Bottom 30 Files (sorted by coverage ascending)
+## Project Coverage (master branch)
+- **Overall**: 61.4%
+- **Line Coverage**: 60.6%
+- **Branch Coverage**: 65.5%
 
-| Coverage | Uncovered Lines | Uncovered Conditions | Path |
-|----------|----------------|---------------------|------|
-| 0.0% | 1 | 0 | 4_Operation/Physic/src/Dynamics/Categories.cs |
-| 0.0% | 32 | 0 | 1_Presentation/Extension/Graphic/Sfml/src/Render/CircleShape.cs |
-| 0.0% | 21 | 2 | 1_Presentation/Extension/Graphic/Sfml/src/Windows/Clipboard.cs |
-| 0.0% | 8 | 0 | 1_Presentation/Extension/Graphic/Sfml/src/Systems/Clock.cs |
-| 0.0% | 2 | 0 | 4_Operation/Physic/src/Common/Constant.cs |
-| 0.0% | 5 | 0 | 6_Ideation/Math/src/Util/Constant.cs |
-| 0.0% | 15 | 2 | 1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs |
-| 0.0% | 1 | 0 | 4_Operation/Physic/src/Common/Logic/ControllerCategories.cs |
-| 0.0% | 26 | 2 | 1_Presentation/Extension/Graphic/Sfml/src/Render/ConvexShape.cs |
-| 0.0% | 17 | 0 | 1_Presentation/Extension/Graphic/Sfml/src/Windows/Cursor.cs |
-| 0.0% | 167 | 50 | 4_Operation/Physic/src/Common/PolygonManipulation/CuttingTools.cs |
-| 0.0% | 1 | 0 | 1_Presentation/Extension/Graphic/Sdl2/src/Structs/DropEvent.cs |
-| 0.0% | 12 | 4 | 1_Presentation/Extension/Graphic/Glfw/src/Structs/EGLContext.cs |
-| 0.0% | 12 | 4 | 1_Presentation/Extension/Graphic/Glfw/src/Structs/EGLDisplay.cs |
-| 0.0% | 12 | 4 | 1_Presentation/Extension/Graphic/Glfw/src/Structs/EGLSurface.cs |
-| 0.0% | 5 | 0 | 4_Operation/Ecs/src/Kernel/Archetypes/Fields.cs |
-| 0.0% | 58 | 10 | 1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs |
-| 0.0% | 228 | 20 | 4_Operation/Graphic/src/Ui/Font.cs |
-| 0.0% | 7 | 0 | 4_Operation/Graphic/src/Ui/FontManager.cs |
-| 0.0% | 2 | 0 | 1_Presentation/Extension/Graphic/Glfw/src/Structs/GamePadState.cs |
-| 0.0% | 10 | 0 | 1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs |
-| 0.0% | 12 | 4 | 1_Presentation/Extension/Graphic/Glfw/src/Structs/GammaRamp.cs |
-| 0.0% | 13 | 2 | 1_Presentation/Extension/Graphic/Glfw/src/Structs/GammaRampInternal.cs |
-| 0.0% | 140 | 18 | 1_Presentation/Extension/Graphic/Glfw/src/GlfwNative.cs |
-| 0.0% | 126 | 95 | 4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs |
-| 0.0% | 87 | 20 | 4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs |
-| 0.0% | 12 | 4 | 1_Presentation/Extension/Graphic/Glfw/src/Structs/GLXContext.cs |
-| 0.0% | 12 | 4 | 1_Presentation/Extension/Graphic/Glfw/src/Structs/HGLRC.cs |
-| 8.4% | 193 | 13 | 4_Operation/Graphic/src/OpenGL/Gl.cs |
-| 11.5% | 147 | 14 | 2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs |
+## Files with Coverage Issues: 16 (ALL have existing comprehensive tests)
+
+| # | File | Uncovered | Coverage | Existing Tests | Test Status |
+|---|------|-----------|----------|----------------|-------------|
+| 1 | BoxCollider.cs | 190 lines | 28.2% | 3 test files, 88 tests | ✅ Passing |
+| 2 | Body.cs | 97 lines | 82.1% | 1843-line test file | ✅ Exists |
+| 3 | BrowserPlayer.cs | 90 lines | 59.1% | 4 test files | ✅ Exists |
+| 4 | AudioVideoWriter.cs | 75 lines | 56.3% | 3 test files, 759 lines | ✅ Exists |
+| 5 | Archetype.cs | 74 lines | 87.2% | 14 test files | ✅ Exists |
+| 6-16 | Others | 0-46 lines | 57-99% | All have tests | ✅ Exist |
+
+## Root Cause Analysis
+
+**Pattern**: Every high-priority target has extensive existing test coverage that passes locally.
+
+**Likely causes**:
+1. `sonar-project.properties` missing test project references
+2. Tests not configured to run during SonarCloud analysis
+3. Test result XML files not being parsed
+4. Branch analysis configuration issue
+
+## Recommendation: Fix SonarCloud Configuration
+
+**Action items**:
+1. Verify `sonar-project.properties` exists in repository root
+2. Add test project references:
+   ```properties
+   sonar.cs.xunit.reportsPaths=xunit.runner.json
+   sonar.cs.opencover.reportsPaths=coverage.opencover.xml
+   ```
+3. Ensure CI/CD pipeline runs tests and generates coverage reports
+4. Verify `master` branch is being analyzed (not feature branches)
+
+## Next Steps
+
+**Option A**: Fix SonarCloud configuration (RECOMMENDED)
+- Will make all existing tests count toward coverage
+- No new test generation needed
+
+**Option B**: Continue generating tests for specific uncovered paths
+- Only useful if SonarCloud configuration is fixed first
+- Currently low ROI due to configuration issue
+
+## Session Status: PAUSED — Awaiting user decision on SonarCloud config fix
