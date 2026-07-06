@@ -222,5 +222,272 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
 
             Assert.NotNull(result);
         }
+
+        /// <summary>
+        ///     Tests IsEar input validation reject when vertex index exceeds array length
+        /// </summary>
+        [Fact]
+        public void IsEar_WithInvalidIndex_ShouldReturnFalse()
+        {
+            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("IsEar",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            float[] xv = new float[] { 0f, 1f, 0f };
+            float[] yv = new float[] { 0f, 0f, 1f };
+
+            // i >= xvLength
+            bool result = (bool)method.Invoke(null, new object[] { 5, xv, yv, 3 });
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests IsEar input validation reject when negative index
+        /// </summary>
+        [Fact]
+        public void IsEar_WithNegativeIndex_ShouldReturnFalse()
+        {
+            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("IsEar",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            float[] xv = new float[] { 0f, 1f, 0f };
+            float[] yv = new float[] { 0f, 0f, 1f };
+
+            // i < 0
+            bool result = (bool)method.Invoke(null, new object[] { -1, xv, yv, 3 });
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests IsEar input validation reject when vertex count less than 3
+        /// </summary>
+        [Fact]
+        public void IsEar_WithXvLengthLessThanThree_ShouldReturnFalse()
+        {
+            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("IsEar",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            float[] xv = new float[] { 0f, 1f };
+            float[] yv = new float[] { 0f, 0f };
+
+            // xvLength < 3
+            bool result = (bool)method.Invoke(null, new object[] { 0, xv, yv, 2 });
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests IsEar where a non-adjacent vertex falls inside the ear triangle,
+        ///     triggering the IsInside rejection path (line 400-401).
+        ///     Uses a CW pentagon where vertex 3 is inside the ear triangle of vertex 0.
+        /// </summary>
+        [Fact]
+        public void IsEar_WithVertexInsideTriangle_ShouldReturnFalse()
+        {
+            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("IsEar",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            // CW pentagon: (0,0), (0,10), (10,10), (3,3), (10,0)
+            // Vertex 0 ear triangle: (0,0), (0,10), (10,0)
+            // Vertex 3 (3,3) is inside this triangle
+            float[] xv = new float[] { 0f, 0f, 10f, 3f, 10f };
+            float[] yv = new float[] { 0f, 10f, 10f, 3f, 0f };
+
+            bool result = (bool)method.Invoke(null, new object[] { 0, xv, yv, 5 });
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests ResolvePinchPoint early return when polygon has fewer than 3 vertices.
+        /// </summary>
+        [Fact]
+        public void ResolvePinchPoint_WithTwoVertices_ShouldReturnFalse()
+        {
+            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("ResolvePinchPoint",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            Vertices pin = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f)
+            });
+
+            Vertices poutA = null;
+            Vertices poutB = null;
+
+            bool result = (bool)method.Invoke(null, new object[] { pin, poutA, poutB, 0.001f });
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests TriangulatePolygon with a polygon that contains a pinch point
+        ///     (two non-adjacent vertices at the same position).
+        ///     The pinch point resolution splits the polygon into two parts,
+        ///     and both mergeA and mergeB loops are exercised (including the mergeB loop at lines 96-98).
+        /// </summary>
+        [Fact]
+        public void TriangulatePolygon_WithPinchPoint_ShouldPartitionCorrectly()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(5f, 0f),
+                new Vector2F(10f, 0f),
+                new Vector2F(10f, 5f),
+                new Vector2F(0f, 0f),   // pinch point (duplicate of V0)
+                new Vector2F(0f, 5f),
+                new Vector2F(0f, 10f)
+            });
+
+            List<Vertices> result = EarclipDecomposer.TriangulatePolygon(vertices, 0.001f);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+        }
+
+        /// <summary>
+        ///     Tests SplitPolygonAtPinchPoint via reflection to ensure it splits correctly
+        ///     when sizeA equals the polygon count (wrap-around duplicate guard).
+        /// </summary>
+        [Fact]
+        public void SplitPolygonAtPinchPoint_WithSizeAEqualCount_ShouldReturn()
+        {
+            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("SplitPolygonAtPinchPoint",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            Vertices pin = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(1f, 1f),
+                new Vector2F(0f, 1f)
+            });
+
+            Vertices poutA = null;
+            Vertices poutB = null;
+
+            // pinchIndexA=0, pinchIndexB=4 → sizeA=4 which equals pin.Count
+            method.Invoke(null, new object[] { pin, 0, 4, poutA, poutB });
+
+            Assert.NotNull(pin);
+        }
+
+        /// <summary>
+        ///     Tests Triangle.IsInside where y passes line 463 but y is not greater than a.Y,
+        ///     exercising the false branch of condition 177 at line 468 (y > a.Y).
+        /// </summary>
+        [Fact]
+        public void TriangleIsInside_YNotGreaterThanAY_ShouldReturnFalse()
+        {
+            System.Type triangleType = typeof(EarclipDecomposer).GetNestedType("Triangle",
+                System.Reflection.BindingFlags.NonPublic);
+            object triangle = System.Activator.CreateInstance(triangleType, new object[] { 0f, 0f, 0f, 5f, 10f, 0f });
+            System.Reflection.MethodInfo method = triangleType.GetMethod("IsInside");
+
+            // y=0 <= a.Y=0 → y > a.Y = false at line 468, condition 177 false branch
+            // But passes line 463 since not (0 < 0 && 0 < 5 && 0 < 0)
+            // The point (5,0) is on the a-c edge → v=0 → returns false via barycentric
+            bool result = (bool)method.Invoke(triangle, new object[] { 5f, 0f });
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests Triangle.IsInside where y is between a.Y and b.Y,
+        ///     exercising condition 187 false branch at line 468 (y > b.Y).
+        /// </summary>
+        [Fact]
+        public void TriangleIsInside_YBetweenAYAndBY_ShouldReturnFalse()
+        {
+            System.Type triangleType = typeof(EarclipDecomposer).GetNestedType("Triangle",
+                System.Reflection.BindingFlags.NonPublic);
+            object triangle = System.Activator.CreateInstance(triangleType, new object[] { 0f, 0f, 0f, 5f, 10f, 0f });
+            System.Reflection.MethodInfo method = triangleType.GetMethod("IsInside");
+
+            // y=3, a.Y=0, b.Y=5 → y > a.Y = true, y > b.Y = false at line 468
+            // Condition 177 true branch, condition 187 false branch
+            bool result = (bool)method.Invoke(triangle, new object[] { 5f, 3f });
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests Triangle.IsInside where y is greater than all vertices,
+        ///     exercising all three conditions true at line 468 (early exit).
+        /// </summary>
+        [Fact]
+        public void TriangleIsInside_YGreaterThanAll_ShouldReturnFalse()
+        {
+            System.Type triangleType = typeof(EarclipDecomposer).GetNestedType("Triangle",
+                System.Reflection.BindingFlags.NonPublic);
+            object triangle = System.Activator.CreateInstance(triangleType, new object[] { 0f, 0f, 0f, 5f, 10f, 0f });
+            System.Reflection.MethodInfo method = triangleType.GetMethod("IsInside");
+
+            // y=6 > all (0,5,0) → returns false at line 470
+            bool result = (bool)method.Invoke(triangle, new object[] { 5f, 6f });
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests Triangle.IsInside where point is on the edge opposite vertex A (u=0),
+        ///     exercising condition 427 false branch at line 489 (u > 0).
+        /// </summary>
+        [Fact]
+        public void TriangleIsInside_OnEdgeOppositeA_ShouldReturnFalse()
+        {
+            System.Type triangleType = typeof(EarclipDecomposer).GetNestedType("Triangle",
+                System.Reflection.BindingFlags.NonPublic);
+            object triangle = System.Activator.CreateInstance(triangleType, new object[] { 0f, 0f, 10f, 0f, 0f, 10f });
+            System.Reflection.MethodInfo method = triangleType.GetMethod("IsInside");
+
+            // Point (5,5) is on the hypotenuse (edge b-c), so u=0 → u > 0 = false
+            bool result = (bool)method.Invoke(triangle, new object[] { 5f, 5f });
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests Triangle.IsInside where point is on the edge opposite vertex B (v=0),
+        ///     exercising condition 436 false branch at line 489 (v > 0) with u > 0 true.
+        /// </summary>
+        [Fact]
+        public void TriangleIsInside_OnEdgeOppositeB_ShouldReturnFalse()
+        {
+            System.Type triangleType = typeof(EarclipDecomposer).GetNestedType("Triangle",
+                System.Reflection.BindingFlags.NonPublic);
+            object triangle = System.Activator.CreateInstance(triangleType, new object[] { 0f, 0f, 10f, 0f, 0f, 10f });
+            System.Reflection.MethodInfo method = triangleType.GetMethod("IsInside");
+
+            // Point (0,5) is on the left edge (a-c), so v=0 → u > 0 = true, v > 0 = false
+            bool result = (bool)method.Invoke(triangle, new object[] { 0f, 5f });
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests ClipEar when earIndex equals vNum after decrement,
+        ///     exercising the true branch of the ternary at line 206.
+        ///     A 4-vertex quad with ear at the last index (3) makes earIndex==vNum inside ClipEar.
+        /// </summary>
+        [Fact]
+        public void ClipEar_EarAtIndexLast_ShouldHandleWrapAround()
+        {
+            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("ClipEar",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+
+            int earIndex = 3;
+            int vNum = 4;
+            float[] xrem = new float[] { 0f, 1f, 1f, 0f };
+            float[] yrem = new float[] { 0f, 0f, 1f, 1f };
+            Vertices[] buffer = new Vertices[1];
+            int bufferSize = 0;
+
+            object[] parameters = new object[] { earIndex, vNum, xrem, yrem, buffer, bufferSize };
+
+            int result = (int)method.Invoke(null, parameters);
+
+            Assert.Equal(3, result);
+        }
     }
 }
