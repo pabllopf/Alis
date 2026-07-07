@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NetworkSettingStructTest.cs
+//  File:TimeSettingTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,50 +27,48 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Systems.Configuration.Network;
+using Alis.Core.Ecs.Systems.Configuration.Time;
 using Xunit;
 
-namespace Alis.Test
+namespace Alis.Test.Core.Ecs.Systems.Configuration.Time
 {
     /// <summary>
-    /// The network setting struct test class
+    ///     Tests for the <see cref="TimeSetting" /> struct.
     /// </summary>
-    public class NetworkSettingStructTest
+    public class TimeSettingTest
     {
         /// <summary>
-        /// Tests that default values should be correct
+        ///     Tests that default values should be correct.
         /// </summary>
         [Fact]
         public void DefaultValues_ShouldBeCorrect()
         {
-            NetworkSetting setting = new NetworkSetting();
-            Assert.Equal(8080, setting.Port);
-            Assert.Equal("127.0.0.1", setting.Ip);
-            Assert.Equal("localhost", setting.Host);
-            Assert.Equal("http", setting.Protocol);
+            TimeSetting setting = new TimeSetting();
+            Assert.Equal(0.016f, setting.FixedTimeStep);
+            Assert.Equal(0.25f, setting.MaximumAllowedTimeStep);
+            Assert.Equal(1.0f, setting.TimeScale);
         }
 
         /// <summary>
-        /// Tests that custom constructor should store values
+        ///     Tests that custom constructor should store values.
         /// </summary>
         [Fact]
         public void CustomConstructor_ShouldStoreValues()
         {
-            NetworkSetting setting = new NetworkSetting(3000, "192.168.1.1", "myserver", "https");
-            Assert.Equal(3000, setting.Port);
-            Assert.Equal("192.168.1.1", setting.Ip);
-            Assert.Equal("myserver", setting.Host);
-            Assert.Equal("https", setting.Protocol);
+            TimeSetting setting = new TimeSetting(0.033f, 0.5f, 2.0f);
+            Assert.Equal(0.033f, setting.FixedTimeStep);
+            Assert.Equal(0.5f, setting.MaximumAllowedTimeStep);
+            Assert.Equal(2.0f, setting.TimeScale);
         }
 
         /// <summary>
-        /// Tests that should implement i network setting
+        ///     Tests that TimeSetting implements ITimeSetting.
         /// </summary>
         [Fact]
-        public void ShouldImplementINetworkSetting()
+        public void ShouldImplementITimeSetting()
         {
-            NetworkSetting setting = new NetworkSetting();
-            Assert.IsAssignableFrom<INetworkSetting>(setting);
+            TimeSetting setting = new TimeSetting();
+            Assert.IsAssignableFrom<ITimeSetting>(setting);
         }
     }
 }

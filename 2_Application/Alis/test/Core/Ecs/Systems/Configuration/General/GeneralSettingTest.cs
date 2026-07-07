@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GeneralSettingStructTest.cs
+//  File:GeneralSettingTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,15 +33,15 @@ using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.Systems.Configuration.General;
 using Xunit;
 
-namespace Alis.Test
+namespace Alis.Test.Core.Ecs.Systems.Configuration.General
 {
     /// <summary>
-    /// The general setting struct test class
+    ///     Tests for the <see cref="GeneralSetting" /> struct.
     /// </summary>
-    public class GeneralSettingStructTest
+    public class GeneralSettingTest
     {
         /// <summary>
-        /// Tests that default values should be correct
+        ///     Tests that default values should be correct.
         /// </summary>
         [Fact]
         public void DefaultValues_ShouldBeCorrect()
@@ -57,7 +57,7 @@ namespace Alis.Test
         }
 
         /// <summary>
-        /// Tests that custom constructor should store values
+        ///     Tests that custom constructor should store values.
         /// </summary>
         [Fact]
         public void CustomConstructor_ShouldStoreValues()
@@ -73,7 +73,7 @@ namespace Alis.Test
         }
 
         /// <summary>
-        /// Tests that should implement i general setting
+        ///     Tests that GeneralSetting implements IGeneralSetting.
         /// </summary>
         [Fact]
         public void ShouldImplementIGeneralSetting()
@@ -83,7 +83,7 @@ namespace Alis.Test
         }
 
         /// <summary>
-        /// Tests that GetSerializableProperties returns all 7 properties
+        ///     Tests that GetSerializableProperties returns all 7 properties.
         /// </summary>
         [Fact]
         public void GetSerializableProperties_ShouldReturnAllProperties()
@@ -104,7 +104,7 @@ namespace Alis.Test
         }
 
         /// <summary>
-        /// Tests that GetSerializableProperties returns default values
+        ///     Tests that GetSerializableProperties returns default values.
         /// </summary>
         [Fact]
         public void GetSerializableProperties_WithDefaults_ShouldReturnDefaultValues()
@@ -125,7 +125,7 @@ namespace Alis.Test
         }
 
         /// <summary>
-        /// Tests that CreateFromProperties creates instance with all provided values
+        ///     Tests that CreateFromProperties creates instance with all provided values.
         /// </summary>
         [Fact]
         public void CreateFromProperties_WithAllValues_ShouldCreatePopulatedInstance()
@@ -154,7 +154,7 @@ namespace Alis.Test
         }
 
         /// <summary>
-        /// Tests that CreateFromProperties uses fallback defaults for missing values
+        ///     Tests that CreateFromProperties uses fallback defaults for missing values.
         /// </summary>
         [Fact]
         public void CreateFromProperties_WithMissingValues_ShouldUseDefaults()
@@ -174,7 +174,7 @@ namespace Alis.Test
         }
 
         /// <summary>
-        /// Tests that CreateFromProperties treats invalid Debug value as false
+        ///     Tests that CreateFromProperties treats invalid Debug value as false.
         /// </summary>
         [Fact]
         public void CreateFromProperties_WithInvalidDebug_ShouldTreatAsFalse()
@@ -191,7 +191,7 @@ namespace Alis.Test
         }
 
         /// <summary>
-        /// Tests that CreateFromProperties with partial values uses fallbacks for missing
+        ///     Tests that CreateFromProperties with partial values uses fallbacks for missing.
         /// </summary>
         [Fact]
         public void CreateFromProperties_WithPartialValues_ShouldUseFallbacks()
