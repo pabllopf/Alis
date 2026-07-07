@@ -19,7 +19,7 @@ Last SonarCloud sync: 2026-07-07T08:19
 |----------|------|----------|-----------------|--------|
 | 1 | GravityController.cs | 34.8% | 40 | Tests added (53 total, all pass) |
 | 2 | DTSweep.cs | 48.9% | 333 | 5 new tests added (PointSet, ConstrainedPointSet, L-Shape) |
-| 3 | Collision.cs | 61.7% | 267 | Pending |
+| 3 | Collision.cs | 61.7% | 267 | 3 new tests (rotated polygons, vertex contact) |
 | 4 | Font.cs | 0.0% | 228 | Pending |
 | 5 | GameObject.cs | 74.4% | 213 | Pending |
 | 6 | CuttingTools.cs | 75.1% | 42 | 5 new edge-case tests added |
