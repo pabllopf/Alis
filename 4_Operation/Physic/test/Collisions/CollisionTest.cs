@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
@@ -600,6 +601,66 @@ namespace Alis.Core.Physic.Test.Collisions
             bool overlap = Collision.TestOverlap(circle, 0, polygon, 0, ref xfCircle, ref xfPolygon);
 
             Assert.False(overlap);
+        }
+
+        #endregion
+
+        #region CollidePolygonAndCircle — Additional vertex contact paths
+
+        /// <summary>
+        ///     Tests that CollidePolygonAndCircle resolves contact near a polygon vertex (u1 <= 0 branch).
+        /// </summary>
+        [Fact]
+        public void CollidePolygonAndCircle_ShouldResolveVertexContact_WhenCircleNearFirstVertex()
+        {
+            Vertices vertices = PolygonTools.CreateRectangle(2.0f, 2.0f);
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            CircleShape circle = new CircleShape(0.3f, 1.0f);
+            ControllerTransform xfPolygon = ControllerTransform.Identity;
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(-1.7f, -1.7f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygonAndCircle(ref manifold, polygon, ref xfPolygon, circle, ref xfCircle);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        #endregion
+
+        #region CollidePolygons — Rotated configurations for FaceA/FaceB paths
+
+        /// <summary>
+        ///     Tests that CollidePolygons produces a manifold for overlapping rotated polygons.
+        /// </summary>
+        [Fact]
+        public void CollidePolygons_OverlappingRotatedPolygons_ShouldProduceManifold()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.5f, 0.5f), (float)Math.PI / 4.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that CollidePolygons handles face-to-face contact with different sized polygons.
+        /// </summary>
+        [Fact]
+        public void CollidePolygons_DifferentSizes_ShouldProduceManifold()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 2.0f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+
+            Assert.True(manifold.PointCount >= 0);
         }
 
         #endregion

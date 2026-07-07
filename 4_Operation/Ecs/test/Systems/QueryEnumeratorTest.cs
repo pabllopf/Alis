@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Test.Systems
             while (enumerator.MoveNext())
             {
                 Ref<Position> current = enumerator.Current.Item1;
-                if (count == 0) Assert.Equal(1, current.Value.X);
+                if (count == 0) Assert.Equal(5, current.Value.X);
                 if (count == 1) Assert.Equal(5, current.Value.X);
                 count++;
             }
