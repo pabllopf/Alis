@@ -31,7 +31,10 @@ using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.Decomposition;
+using Alis.Core.Physic.Common.Decomposition.CDT;
+using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
+using Alis.Core.Physic.Common.Decomposition.CDT.Sets;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
@@ -67,6 +70,137 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             List<Vertices> triangles = CdtDecomposer.ConvexPartition(vertices);
 
             Assert.Equal(vertices.Count - 2, triangles.Count);
+            foreach (Vertices triangle in triangles)
+            {
+                Assert.Equal(3, triangle.Count);
+                Assert.True(triangle.GetArea() > 0.0f);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that Triangulate with a PointSet (Unconstrained mode) produces triangles via FinalizationConvexHull.
+        /// </summary>
+        [Fact]
+        public void Triangulate_WithPointSet_ShouldProduceTriangles()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(2.0, 0.0),
+                new TriangulationPoint(1.0, 1.0)
+            };
+
+            PointSet pointSet = new PointSet(points);
+            DtSweepContext tcx = new DtSweepContext();
+            tcx.PrepareTriangulation(pointSet);
+            DtSweep.Triangulate(tcx);
+
+            Assert.NotNull(pointSet.GetTriangles);
+            Assert.True(pointSet.GetTriangles.Count >= 1);
+        }
+
+        /// <summary>
+        ///     Tests that Triangulate with a PointSet of 5 points produces a convex hull triangulation.
+        /// </summary>
+        [Fact]
+        public void Triangulate_WithPointSet5Points_ShouldProduceConvexHullTriangulation()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(2.0, 0.0),
+                new TriangulationPoint(2.0, 1.0),
+                new TriangulationPoint(1.0, 1.5),
+                new TriangulationPoint(0.0, 1.0)
+            };
+
+            PointSet pointSet = new PointSet(points);
+            DtSweepContext tcx = new DtSweepContext();
+            tcx.PrepareTriangulation(pointSet);
+            DtSweep.Triangulate(tcx);
+
+            Assert.NotNull(pointSet.GetTriangles);
+            Assert.True(pointSet.GetTriangles.Count >= 3);
+        }
+
+        /// <summary>
+        ///     Tests that Triangulate with a ConstrainedPointSet produces triangles via the constrained edge path.
+        /// </summary>
+        [Fact]
+        public void Triangulate_WithConstrainedPointSet_ShouldProduceTriangles()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(2.0, 0.0),
+                new TriangulationPoint(1.0, 1.0)
+            };
+
+            List<TriangulationPoint> constraints = new List<TriangulationPoint>
+            {
+                points[0], points[1]
+            };
+
+            ConstrainedPointSet constrainedPS = new ConstrainedPointSet(points, constraints);
+            DtSweepContext tcx = new DtSweepContext();
+            tcx.PrepareTriangulation(constrainedPS);
+            DtSweep.Triangulate(tcx);
+
+            Assert.NotNull(constrainedPS.GetTriangles);
+            Assert.True(constrainedPS.GetTriangles.Count >= 1);
+        }
+
+        /// <summary>
+        ///     Tests that Triangulate with a 6-point constrained set hits edge event code.
+        /// </summary>
+        [Fact]
+        public void Triangulate_WithConstrainedPointSet6Points_ShouldTriangulateWithEdgeEvents()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(3.0, 0.0),
+                new TriangulationPoint(3.0, 2.0),
+                new TriangulationPoint(2.0, 1.0),
+                new TriangulationPoint(1.0, 2.0),
+                new TriangulationPoint(0.0, 2.0)
+            };
+
+            List<TriangulationPoint> constraints = new List<TriangulationPoint>
+            {
+                points[0], points[3],
+                points[1], points[4]
+            };
+
+            ConstrainedPointSet constrainedPS = new ConstrainedPointSet(points, constraints);
+            DtSweepContext tcx = new DtSweepContext();
+            tcx.PrepareTriangulation(constrainedPS);
+            DtSweep.Triangulate(tcx);
+
+            Assert.NotNull(constrainedPS.GetTriangles);
+            Assert.True(constrainedPS.GetTriangles.Count >= 4);
+        }
+
+        /// <summary>
+        ///     Tests that Triangulate with an L-shaped polygon via CdtDecomposer produces multiple triangles.
+        /// </summary>
+        [Fact]
+        public void DTSweep_TriangulatesLShape_ShouldProduceMultipleTriangles()
+        {
+            Vertices vertices = new Vertices
+            {
+                new Vector2F(0.0f, 0.0f),
+                new Vector2F(3.0f, 0.0f),
+                new Vector2F(3.0f, 1.0f),
+                new Vector2F(1.0f, 1.0f),
+                new Vector2F(1.0f, 2.0f),
+                new Vector2F(0.0f, 2.0f)
+            };
+
+            List<Vertices> triangles = CdtDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(triangles);
+            Assert.True(triangles.Count >= 2);
             foreach (Vertices triangle in triangles)
             {
                 Assert.Equal(3, triangle.Count);
