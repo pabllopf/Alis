@@ -16,3 +16,11 @@
 | 2026-07-07T13:25 | ANALYZED | AudioWriter.cs | INTENTIONALLY UNTESTABLE (FFmpeg) |
 | 2026-07-07T13:28 | ANALYZED | AudioReader.cs | INTENTIONALLY UNTESTABLE (FFmpeg) |
 | 2026-07-07T13:30 | ANALYZED | AudioPlayer.cs | INTENTIONALLY UNTESTABLE (FFplay) |
+| 2026-07-07T13:40 | TEST_CREATED | AssetRegistryPureLogicTest.cs | 8 tests created, all passing |
+| 2026-07-07T13:40 | BUILD | Alis.Core.Aspect.Memory.Test.csproj | Build successful |
+| 2026-07-07T13:40 | TEST_RUN | AssetRegistryPureLogicTest | 8/8 PASSED |
+| 2026-07-07T13:40 | COMMIT | AssetRegistryPureLogicTest.cs | 3b14ab34b - test: coverage AssetRegistry.cs |
+| 2026-07-07T13:45 | TEST_CREATED | AdsManagerEdgeCaseTests.cs | 20 tests created, all passing |
+| 2026-07-07T13:45 | BUILD | Alis.Extension.Ads.GoogleAds.Test.csproj | Build successful |
+| 2026-07-07T13:45 | TEST_RUN | AdsManagerEdgeCaseTests | 20/20 PASSED |
+| 2026-07-07T13:45 | COMMIT | AdsManagerEdgeCaseTests.cs | 56f4dfd68 - test: coverage AdsManager.cs |
