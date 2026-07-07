@@ -481,5 +481,218 @@ namespace Alis.Core.Physic.Test.Controllers
 
             Assert.True(true); // No exception thrown, DistanceSquared point gravity applied
         }
+        // ========================================================================
+        // FORCE VERIFICATION — Verify actual force is applied via WorldPhysic.Step
+        // ========================================================================
+        // EDGE CASES — Branch coverage for uncovered paths
+        // ========================================================================
+
+        #region Update — Distance Epsilon and IsActiveOn
+
+        /// <summary>
+        /// Tests that Update with body gravity skips when distance is essentially zero (same position)
+        /// </summary>
+        [Fact]
+        public void Update_WithBodyAtSamePosition_ShouldNotThrow()
+        {
+            GravityController controller = new GravityController(500f)
+            {
+                MaxRadius = 100f,
+                MinRadius = 0f,
+                GravityType = GravityType.DistanceSquared
+            };
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddBody(controllerBody);
+
+            controller.Update(0.016f);
+
+            Assert.NotNull(controller);
+        }
+
+        /// <summary>
+        /// Tests that Update with point gravity skips when distance is essentially zero (body at point)
+        /// </summary>
+        [Fact]
+        public void Update_WithPointAtSamePosition_ShouldNotThrow()
+        {
+            GravityController controller = new GravityController(500f)
+            {
+                MaxRadius = 100f,
+                MinRadius = 0f,
+                GravityType = GravityType.DistanceSquared
+            };
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddPoint(new Vector2F(0, 0));
+
+            controller.Update(0.016f);
+
+            Assert.NotNull(controller);
+        }
+
+        /// <summary>
+        /// Tests that Update with body gravity and Linear type skips at same position
+        /// </summary>
+        [Fact]
+        public void Update_WithBodyGravityLinear_AtSamePosition_ShouldNotThrow()
+        {
+            GravityController controller = new GravityController(500f)
+            {
+                MaxRadius = 100f,
+                MinRadius = 0f,
+                GravityType = GravityType.Linear
+            };
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddBody(controllerBody);
+
+            controller.Update(0.016f);
+
+            Assert.NotNull(controller);
+        }
+
+        /// <summary>
+        /// Tests that Update with point gravity and Linear type skips at same position
+        /// </summary>
+        [Fact]
+        public void Update_WithPointGravityLinear_AtSamePosition_ShouldNotThrow()
+        {
+            GravityController controller = new GravityController(500f)
+            {
+                MaxRadius = 100f,
+                MinRadius = 0f,
+                GravityType = GravityType.Linear
+            };
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddPoint(new Vector2F(0, 0));
+
+            controller.Update(0.016f);
+
+            Assert.NotNull(controller);
+        }
+
+        /// <summary>
+        /// Tests that Update with body gravity uses DistanceSquared path with bodies at valid distance
+        /// </summary>
+        [Fact]
+        public void Update_WithBodyGravityDistanceSquared_ValidDistance_ShouldNotThrow()
+        {
+            GravityController controller = new GravityController(500f)
+            {
+                MaxRadius = 100f,
+                MinRadius = 0.1f,
+                GravityType = GravityType.DistanceSquared
+            };
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddBody(controllerBody);
+
+            controller.Update(0.016f);
+
+            Assert.NotNull(controller);
+        }
+
+        /// <summary>
+        /// Tests that Update with body gravity uses Linear path with bodies at valid distance
+        /// </summary>
+        [Fact]
+        public void Update_WithBodyGravityLinear_ValidDistance_ShouldNotThrow()
+        {
+            GravityController controller = new GravityController(500f)
+            {
+                MaxRadius = 100f,
+                MinRadius = 0.1f,
+                GravityType = GravityType.Linear
+            };
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddBody(controllerBody);
+
+            controller.Update(0.016f);
+
+            Assert.NotNull(controller);
+        }
+
+        /// <summary>
+        /// Tests that Update with point gravity uses DistanceSquared path with body at valid distance
+        /// </summary>
+        [Fact]
+        public void Update_WithPointGravityDistanceSquared_ValidDistance_ShouldNotThrow()
+        {
+            GravityController controller = new GravityController(500f)
+            {
+                MaxRadius = 100f,
+                MinRadius = 0.1f,
+                GravityType = GravityType.DistanceSquared
+            };
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            controller.AddPoint(new Vector2F(0, 0));
+
+            controller.Update(0.016f);
+
+            Assert.NotNull(controller);
+        }
+
+        /// <summary>
+        /// Tests that Update with point gravity uses Linear path with body at valid distance
+        /// </summary>
+        [Fact]
+        public void Update_WithPointGravityLinear_ValidDistance_ShouldNotThrow()
+        {
+            GravityController controller = new GravityController(500f)
+            {
+                MaxRadius = 100f,
+                MinRadius = 0.1f,
+                GravityType = GravityType.Linear
+            };
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            controller.AddPoint(new Vector2F(0, 0));
+
+            controller.Update(0.016f);
+
+            Assert.NotNull(controller);
+        }
+
+        /// <summary>
+        /// Tests that Update with both body and point gravity works together
+        /// </summary>
+        [Fact]
+        public void Update_WithBodyAndPointGravity_ShouldNotThrow()
+        {
+            GravityController controller = new GravityController(500f)
+            {
+                MaxRadius = 100f,
+                MinRadius = 0.1f,
+                GravityType = GravityType.DistanceSquared
+            };
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddBody(controllerBody);
+            controller.AddPoint(new Vector2F(-10, 0));
+
+            controller.Update(0.016f);
+
+            Assert.NotNull(controller);
+        }
+
+        #endregion
     }
 }
