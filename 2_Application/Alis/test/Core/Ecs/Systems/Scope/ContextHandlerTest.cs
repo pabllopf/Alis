@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
@@ -102,5 +104,68 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
             handler.Save("/tmp/test-save.dat");
         }
 
+        /// <summary>
+        ///     Creates a <see cref="Context" /> with a default scene loaded so that
+        ///     lifecycle methods (Init, Awake, Start) do not throw.
+        /// </summary>
+        private static Context CreateContextWithScene()
+        {
+            Context context = new Context(new Setting());
+            Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
+            context.SceneManager.LoadedScenes.Add(scene);
+            context.SceneManager.CurrentWorld = scene;
+            return context;
+        }
+
+        /// <summary>
+        ///     Tests that InitPreview sets the preview mode on the graphic setting.
+        /// </summary>
+        [Fact]
+        public void InitPreview_WhenCalled_SetsPreviewMode()
+        {
+            Context context = CreateContextWithScene();
+            ContextHandler handler = new ContextHandler(context);
+
+            handler.InitPreview();
+
+            Assert.True(context.Setting.Graphic.PreviewMode);
+        }
+
+        /// <summary>
+        ///     Tests that Run exits immediately when IsRunning is false at entry.
+        ///     Sets preview mode to avoid GraphicManager attempting OpenGL initialization,
+        ///     which requires a native graphics context not available in unit tests.
+        /// </summary>
+        [Fact]
+        public void Run_WhenAlreadyStopped_ExitsImmediately()
+        {
+            Context context = CreateContextWithScene();
+            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
+            ContextHandler handler = new ContextHandler(context);
+
+            handler.Exit();
+
+            handler.Run();
+
+            Assert.False(context.IsRunning);
+        }
+
+        /// <summary>
+        ///     Tests that LoadAndRun exits immediately when IsRunning is false at entry.
+        ///     Sets preview mode to avoid GraphicManager attempting OpenGL initialization.
+        /// </summary>
+        [Fact]
+        public void LoadAndRun_WhenAlreadyStopped_ExitsImmediately()
+        {
+            Context context = CreateContextWithScene();
+            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
+            ContextHandler handler = new ContextHandler(context);
+
+            handler.Exit();
+
+            handler.LoadAndRun();
+
+            Assert.False(context.IsRunning);
+        }
     }
 }
