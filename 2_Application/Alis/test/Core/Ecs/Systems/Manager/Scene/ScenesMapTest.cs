@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ScenesMapExtendedTest.cs
+//  File:ScenesMapTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,23 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Systems.Manager.Scene;
 using Xunit;
 
-namespace Alis.Test
+namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
 {
     /// <summary>
-    ///     Extended tests for ScenesMap collection operations and persistence behavior
+    ///     Tests for <see cref="ScenesMap" /> collection operations and persistence behavior.
     /// </summary>
-    public class ScenesMapExtendedTest
+    public class ScenesMapTest
     {
         /// <summary>
-        ///     Tests that default constructor creates empty Scenes list
+        ///     Tests that default constructor creates empty Scenes list.
         /// </summary>
         [Fact]
-        public void ScenesMap_DefaultConstructor_ShouldCreateEmptyScenesList()
+        public void DefaultConstructor_ShouldCreateEmptyScenesList()
         {
             ScenesMap map = new ScenesMap();
 
@@ -52,10 +51,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that AddScene adds to list
+        ///     Tests that AddScene adds to list.
         /// </summary>
         [Fact]
-        public void ScenesMap_AddScene_ShouldAddToList()
+        public void AddScene_ShouldAddToList()
         {
             ScenesMap map = new ScenesMap();
 
@@ -66,10 +65,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that AddScene multiple adds all
+        ///     Tests that AddScene multiple adds all.
         /// </summary>
         [Fact]
-        public void ScenesMap_AddSceneMultiple_ShouldAddAllScenes()
+        public void AddSceneMultiple_ShouldAddAllScenes()
         {
             ScenesMap map = new ScenesMap();
 
@@ -82,10 +81,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that RemoveScene removes existing
+        ///     Tests that RemoveScene removes existing.
         /// </summary>
         [Fact]
-        public void ScenesMap_RemoveScene_ExistingScene_ShouldRemove()
+        public void RemoveScene_ExistingScene_ShouldRemove()
         {
             ScenesMap map = new ScenesMap();
             map.AddScene(1);
@@ -99,25 +98,25 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that RemoveScene non-existing doesn't throw
+        ///     Tests that RemoveScene non-existing doesn't throw.
         /// </summary>
         [Fact]
-        public void ScenesMap_RemoveScene_NonExisting_ShouldNotThrow()
+        public void RemoveScene_NonExisting_ShouldNotThrow()
         {
             ScenesMap map = new ScenesMap();
             map.AddScene(1);
 
-            Exception exception = Record.Exception(() => map.RemoveScene(99));
+            System.Exception exception = Record.Exception(() => map.RemoveScene(99));
 
             Assert.Null(exception);
             Assert.Single(map.Scenes);
         }
 
         /// <summary>
-        ///     Tests that Clear removes all
+        ///     Tests that Clear removes all.
         /// </summary>
         [Fact]
-        public void ScenesMap_Clear_ShouldRemoveAllScenes()
+        public void Clear_ShouldRemoveAllScenes()
         {
             ScenesMap map = new ScenesMap();
             map.AddScene(1);
@@ -130,10 +129,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that Load returns new instance
+        ///     Tests that Load returns a new instance.
         /// </summary>
         [Fact]
-        public void ScenesMap_Load_ShouldReturnNewInstance()
+        public void Load_ShouldReturnNewInstance()
         {
             ScenesMap map = new ScenesMap();
 
@@ -144,10 +143,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that Load returns empty scenes
+        ///     Tests that Load returns empty scenes.
         /// </summary>
         [Fact]
-        public void ScenesMap_Load_ShouldReturnEmptyScenes()
+        public void Load_ShouldReturnEmptyScenes()
         {
             ScenesMap loaded = ScenesMap.Load();
 
@@ -155,24 +154,24 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that Save doesn't throw
+        ///     Tests that Save doesn't throw.
         /// </summary>
         [Fact]
-        public void ScenesMap_Save_ShouldNotThrow()
+        public void Save_ShouldNotThrow()
         {
             ScenesMap map = new ScenesMap();
             map.AddScene(1);
 
-            Exception exception = Record.Exception(() => map.Save());
+            System.Exception exception = Record.Exception(() => map.Save());
 
             Assert.Null(exception);
         }
 
         /// <summary>
-        ///     Tests that Scenes list is mutable
+        ///     Tests that Scenes list is mutable.
         /// </summary>
         [Fact]
-        public void ScenesMap_ScenesList_ShouldBeMutable()
+        public void ScenesList_ShouldBeMutable()
         {
             ScenesMap map = new ScenesMap();
 

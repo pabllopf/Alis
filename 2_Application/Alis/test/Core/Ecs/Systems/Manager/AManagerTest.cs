@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AManagerExtendedTest.cs
+//  File:AManagerTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,18 +31,18 @@ using Alis.Core.Ecs.Systems.Manager;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
-namespace Alis.Test
+namespace Alis.Test.Core.Ecs.Systems.Manager
 {
     /// <summary>
-    ///     Extended tests for AManager base class properties and virtual lifecycle methods
+    ///     Tests for <see cref="AManager" /> base class properties and virtual lifecycle methods.
     /// </summary>
-    public class AManagerExtendedTest
+    public class AManagerTest
     {
         /// <summary>
-        ///     Tests that default constructor generates non-empty Id
+        ///     Tests that default constructor generates non-empty Id.
         /// </summary>
         [Fact]
-        public void AManager_DefaultConstructor_ShouldGenerateNonEmptyId()
+        public void DefaultConstructor_ShouldGenerateNonEmptyId()
         {
             TestManager manager = new TestManager(null);
 
@@ -50,10 +50,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that default constructor sets Name to "Manager"
+        ///     Tests that default constructor sets Name to "Manager".
         /// </summary>
         [Fact]
-        public void AManager_DefaultConstructor_ShouldSetNameToManager()
+        public void DefaultConstructor_ShouldSetNameToManager()
         {
             TestManager manager = new TestManager(null);
 
@@ -61,10 +61,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that default constructor sets Tag to "Untagged"
+        ///     Tests that default constructor sets Tag to "Untagged".
         /// </summary>
         [Fact]
-        public void AManager_DefaultConstructor_ShouldSetTagToUntagged()
+        public void DefaultConstructor_ShouldSetTagToUntagged()
         {
             TestManager manager = new TestManager(null);
 
@@ -72,10 +72,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that default constructor sets IsEnable to true
+        ///     Tests that default constructor sets IsEnable to true.
         /// </summary>
         [Fact]
-        public void AManager_DefaultConstructor_ShouldSetIsEnableToTrue()
+        public void DefaultConstructor_ShouldSetIsEnableToTrue()
         {
             TestManager manager = new TestManager(null);
 
@@ -83,10 +83,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that parameterized constructor uses provided values
+        ///     Tests that parameterized constructor uses provided values.
         /// </summary>
         [Fact]
-        public void AManager_ParameterizedConstructor_ShouldUseProvidedValues()
+        public void ParameterizedConstructor_ShouldUseProvidedValues()
         {
             TestManager manager = new TestManager("custom-id", "CustomName", "CustomTag", false, null);
 
@@ -97,10 +97,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that OnEnable is virtual and can be overridden
+        ///     Tests that OnEnable is virtual and can be overridden.
         /// </summary>
         [Fact]
-        public void AManager_OnEnable_ShouldBeOverridable()
+        public void OnEnable_ShouldBeOverridable()
         {
             OverrideTestManager manager = new OverrideTestManager(null);
 
@@ -110,10 +110,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that OnDisable is virtual and can be overridden
+        ///     Tests that OnDisable is virtual and can be overridden.
         /// </summary>
         [Fact]
-        public void AManager_OnDisable_ShouldBeOverridable()
+        public void OnDisable_ShouldBeOverridable()
         {
             OverrideTestManager manager = new OverrideTestManager(null);
 
@@ -123,10 +123,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that OnReset is virtual and can be overridden
+        ///     Tests that OnReset is virtual and can be overridden.
         /// </summary>
         [Fact]
-        public void AManager_OnReset_ShouldBeOverridable()
+        public void OnReset_ShouldBeOverridable()
         {
             OverrideTestManager manager = new OverrideTestManager(null);
 
@@ -136,10 +136,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that OnDestroy is virtual and can be overridden
+        ///     Tests that OnDestroy is virtual and can be overridden.
         /// </summary>
         [Fact]
-        public void AManager_OnDestroy_ShouldBeOverridable()
+        public void OnDestroy_ShouldBeOverridable()
         {
             OverrideTestManager manager = new OverrideTestManager(null);
 
@@ -149,10 +149,10 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that Context property returns provided context
+        ///     Tests that Context property returns provided context.
         /// </summary>
         [Fact]
-        public void AManager_ContextProperty_ShouldReturnProvidedContext()
+        public void ContextProperty_ShouldReturnProvidedContext()
         {
             Context context = new Context();
             TestManager manager = new TestManager(context);
@@ -161,27 +161,14 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     The test manager class
+        ///     Test helper that exposes AManager constructors.
         /// </summary>
-        /// <seealso cref="AManager"/>
         private sealed class TestManager : AManager
         {
-            /// <summary>
-            /// Initializes a new instance of the <see cref="TestManager"/> class
-            /// </summary>
-            /// <param name="context">The context</param>
             public TestManager(Context context) : base(context)
             {
             }
 
-            /// <summary>
-            /// Initializes a new instance of the <see cref="TestManager"/> class
-            /// </summary>
-            /// <param name="id">The id</param>
-            /// <param name="name">The name</param>
-            /// <param name="tag">The tag</param>
-            /// <param name="isEnable">The is enable</param>
-            /// <param name="context">The context</param>
             public TestManager(string id, string name, string tag, bool isEnable, Context context)
                 : base(id, name, tag, isEnable, context)
             {
@@ -189,70 +176,23 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     The override test manager class that tracks lifecycle method calls
+        ///     Test helper that tracks which lifecycle methods were called.
         /// </summary>
-        /// <seealso cref="AManager"/>
         private sealed class OverrideTestManager : AManager
         {
-            /// <summary>
-            /// Gets a value indicating whether OnEnable was called
-            /// </summary>
             public bool OnEnableCalled { get; private set; }
-
-            /// <summary>
-            /// Gets a value indicating whether OnDisable was called
-            /// </summary>
             public bool OnDisableCalled { get; private set; }
-
-            /// <summary>
-            /// Gets a value indicating whether OnReset was called
-            /// </summary>
             public bool OnResetCalled { get; private set; }
-
-            /// <summary>
-            /// Gets a value indicating whether OnDestroy was called
-            /// </summary>
             public bool OnDestroyCalled { get; private set; }
 
-            /// <summary>
-            /// Initializes a new instance of the <see cref="OverrideTestManager"/> class
-            /// </summary>
-            /// <param name="context">The context</param>
             public OverrideTestManager(Context context) : base(context)
             {
             }
 
-            /// <summary>
-            /// Ons the enable
-            /// </summary>
-            public override void OnEnable()
-            {
-                OnEnableCalled = true;
-            }
-
-            /// <summary>
-            /// Ons the disable
-            /// </summary>
-            public override void OnDisable()
-            {
-                OnDisableCalled = true;
-            }
-
-            /// <summary>
-            /// Resets this instance
-            /// </summary>
-            public override void OnReset()
-            {
-                OnResetCalled = true;
-            }
-
-            /// <summary>
-            /// Ons the destroy
-            /// </summary>
-            public override void OnDestroy()
-            {
-                OnDestroyCalled = true;
-            }
+            public override void OnEnable() => OnEnableCalled = true;
+            public override void OnDisable() => OnDisableCalled = true;
+            public override void OnReset() => OnResetCalled = true;
+            public override void OnDestroy() => OnDestroyCalled = true;
         }
     }
 }
