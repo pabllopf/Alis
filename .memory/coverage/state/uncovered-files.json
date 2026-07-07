@@ -1,0 +1,344 @@
+[
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Enums/ActiveAttribType.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Enums/ActiveUniformType.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Ads/GoogleAds/src/AdsManager.cs",
+    "coverage": "91.0",
+    "line_coverage": "91.0",
+    "branch_coverage": "90.9"
+  },
+  {
+    "path": "4_Operation/Physic/src/Dynamics/AfterCollisionEventHandler.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs",
+    "coverage": "97.8",
+    "line_coverage": "98.6",
+    "branch_coverage": "95.0"
+  },
+  {
+    "path": "2_Application/Alis/src/Builder/Core/Ecs/Entity/AnimatorConfig.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
+    "coverage": "87.2",
+    "line_coverage": "89.1",
+    "branch_coverage": "76.6"
+  },
+  {
+    "path": "4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeEdgeType.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "2_Application/Alis/src/Core/Ecs/Components/Light/AreaLight.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Graphic/Sdl2/src/Enums/ArrayOrder.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "6_Ideation/Memory/src/AssetRegistry.cs",
+    "coverage": "90.3",
+    "line_coverage": "91.2",
+    "branch_coverage": "87.8"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Delegates/AttachShader.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Graphic/Sdl2/src/Enums/Attr.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Graphic/Sdl2/src/Enums/AudioAllow.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Graphic/Sdl2/src/Structs/AudioDeviceEvent.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs",
+    "coverage": "79.3",
+    "line_coverage": "80.6",
+    "branch_coverage": "76.2"
+  },
+  {
+    "path": "1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs",
+    "coverage": "76.0",
+    "line_coverage": "76.5",
+    "branch_coverage": "75.0"
+  },
+  {
+    "path": "2_Application/Alis/src/Core/Ecs/Components/Audio/AudioSource.cs",
+    "coverage": "95.3",
+    "line_coverage": "93.8",
+    "branch_coverage": "100.0"
+  },
+  {
+    "path": "2_Application/Alis/src/Builder/Core/Ecs/Components/Audio/AudioSourceConfig.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Graphic/Sdl2/src/Enums/AudioStatus.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs",
+    "coverage": "56.3",
+    "line_coverage": "57.4",
+    "branch_coverage": "53.9"
+  },
+  {
+    "path": "1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs",
+    "coverage": "57.8",
+    "line_coverage": "57.0",
+    "branch_coverage": "59.3"
+  },
+  {
+    "path": "4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs",
+    "coverage": "99.6",
+    "line_coverage": "100.0",
+    "branch_coverage": "98.6"
+  },
+  {
+    "path": "4_Operation/Physic/src/Dynamics/BeforeCollisionEventHandler.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Delegates/Begin.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Physic/src/Dynamics/BeginContactDelegate.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Enums/BeginMode.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs",
+    "coverage": "96.6",
+    "line_coverage": "100.0",
+    "branch_coverage": "86.7"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Delegates/BindBuffer.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Delegates/BindSampler.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Delegates/BindTexture.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Delegates/BindVertexArray.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Graphic/Sdl2/src/Enums/BitmapOrder.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Delegates/BlendEquation.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Enums/BlendEquationMode.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Graphic/Sdl2/src/Enums/BlendFactor.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Delegates/BlendFunc.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Enums/BlendingFactorDest.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Enums/BlendingFactorSrc.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Graphic/Sdl2/src/Enums/BlendModes.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Graphic/Sdl2/src/Enums/BlendOperation.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Math/ProceduralDungeon/src/Services/BoardBuilder.cs",
+    "coverage": "99.5",
+    "line_coverage": "100.0",
+    "branch_coverage": "98.7"
+  },
+  {
+    "path": "1_Presentation/Extension/Math/ProceduralDungeon/src/BoardSquareType.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Physic/src/Dynamics/Body.cs",
+    "coverage": "82.1",
+    "line_coverage": "83.0",
+    "branch_coverage": "79.3"
+  },
+  {
+    "path": "4_Operation/Physic/src/Dynamics/BodyDelegate.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Physic/src/Dynamics/BodyType.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs",
+    "coverage": "28.8",
+    "line_coverage": "32.0",
+    "branch_coverage": "10.4"
+  },
+  {
+    "path": "2_Application/Alis/src/Builder/Core/Ecs/Components/Collider/BoxColliderConfig.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Physic/src/Common/Logic/BreakableBodyState.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Physic/src/Collisions/BroadphaseDelegate.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Physic/src/Collisions/BroadPhaseQueryCallback.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Physic/src/Collisions/BroadPhaseRayCastCallback.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Audio/src/Players/BrowserPlayer.cs",
+    "coverage": "59.1",
+    "line_coverage": "54.1",
+    "branch_coverage": "73.5"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Delegates/BufferData.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Enums/BufferTarget.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "4_Operation/Graphic/src/OpenGL/Enums/BufferUsageHint.cs",
+    "coverage": "N/A",
+    "line_coverage": "N/A",
+    "branch_coverage": "N/A"
+  },
+  {
+    "path": "1_Presentation/Extension/Language/Dialogue/src/Core/CallbackDialogAction.cs",
+    "coverage": "96.0",
+    "line_coverage": "100.0",
+    "branch_coverage": "83.3"
+  }
+]
