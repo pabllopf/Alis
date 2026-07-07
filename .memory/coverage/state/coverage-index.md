@@ -16,6 +16,7 @@ Project Key: pabllopf-official_alis
 | BoxCollider.cs | 28.8% | COMPLETED - documented limitations |
 | AudioVideoWriter.cs | 56.3% | COMPLETED - requires FFmpeg integration |
 | Archetype.cs | 87.2% | 19 NEW TESTS ADDED (all passing) |
+| Body.cs | 82.1% | 35 NEW TESTS ADDED (all passing) |
 
 ## Uncovered Files Summary
 - Total files: 100
