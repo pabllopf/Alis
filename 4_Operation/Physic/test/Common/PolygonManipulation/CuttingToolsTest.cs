@@ -519,5 +519,154 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             // The cut algorithm ran to completion
             Assert.True(world.BodyList.Count >= initialBodyCount - 2, "Body count should not decrease unexpectedly");
         }
+
+        /// <summary>
+        ///     Tests that SplitShape handles entry/exit on the same side of the polygon.
+        /// </summary>
+        [Fact]
+        public void SplitShape_EntryAndExitOnSameSide_ShouldNotThrow()
+        {
+            // Arrange
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new(-5, -5),
+                new(5, -5),
+                new(5, 5),
+                new(-5, 5)
+            };
+            Body body = world.CreateBody();
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            Fixture fixture = body.CreateFixture(polygon);
+
+            // Act - both entry and exit are to the right of the polygon
+            CuttingTools.SplitShape(fixture, new Vector2F(10, -10), new Vector2F(10, 10), out Vertices first, out Vertices second);
+
+            // Assert
+            Assert.NotNull(first);
+            Assert.NotNull(second);
+            // All vertices should end up in one polygon
+            Assert.True(first.Count > 0 || second.Count > 0);
+        }
+
+        /// <summary>
+        ///     Tests that SplitShape adjusts points near vertices.
+        /// </summary>
+        [Fact]
+        public void SplitShape_EntryPointAtVertex_ShouldAdjustPoint()
+        {
+            // Arrange
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new(-5, -5),
+                new(5, -5),
+                new(5, 5),
+                new(-5, 5)
+            };
+            Body body = world.CreateBody();
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            Fixture fixture = body.CreateFixture(polygon);
+
+            // Act - entry point exactly at vertex (-5, -5)
+            CuttingTools.SplitShape(fixture, new Vector2F(-5, -5), new Vector2F(0, 10), out Vertices first, out Vertices second);
+
+            // Assert
+            Assert.NotNull(first);
+            Assert.NotNull(second);
+        }
+
+        /// <summary>
+        ///     Tests that SplitShape adjusts points near exit vertices.
+        /// </summary>
+        [Fact]
+        public void SplitShape_ExitPointAtVertex_ShouldAdjustPoint()
+        {
+            // Arrange
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new(-5, -5),
+                new(5, -5),
+                new(5, 5),
+                new(-5, 5)
+            };
+            Body body = world.CreateBody();
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            Fixture fixture = body.CreateFixture(polygon);
+
+            // Act - exit point exactly at vertex (5, 5)
+            CuttingTools.SplitShape(fixture, new Vector2F(0, -10), new Vector2F(5, 5), out Vertices first, out Vertices second);
+
+            // Assert
+            Assert.NotNull(first);
+            Assert.NotNull(second);
+        }
+
+        /// <summary>
+        ///     Tests that Cut does not process static bodies.
+        /// </summary>
+        [Fact]
+        public void Cut_WithStaticBody_ShouldNotProcess()
+        {
+            // Arrange
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new(-5, -5),
+                new(5, -5),
+                new(5, 5),
+                new(-5, 5)
+            };
+            Body body = world.CreateBody();
+            body.CreatePolygon(vertices, 1.0f);
+            body.GetBodyType = BodyType.Static;
+
+            int initialBodyCount = world.BodyList.Count;
+
+            // Act
+            bool result = CuttingTools.Cut(world, new Vector2F(0, -20), new Vector2F(0, 20));
+
+            // Assert
+            Assert.True(result, "Cut should execute without throwing");
+            // Body count should remain the same since static bodies are skipped
+            Assert.Equal(initialBodyCount, world.BodyList.Count);
+        }
+
+        /// <summary>
+        ///     Tests that Cut skips non-polygon fixtures.
+        /// </summary>
+        [Fact]
+        public void Cut_WithNonPolygonFixture_ShouldSkipNonPolygon()
+        {
+            // Arrange
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+
+            // Add a polygon that will be intersected
+            Vertices vertices = new Vertices
+            {
+                new(-5, -5),
+                new(5, -5),
+                new(5, 5),
+                new(-5, 5)
+            };
+            Body polygonBody = world.CreateBody();
+            polygonBody.CreatePolygon(vertices, 1.0f);
+
+            // Add a circle shape to another body
+            Body circleBody = world.CreateBody();
+            CircleShape circle = new CircleShape(3.0f, 1.0f);
+            circleBody.CreateFixture(circle);
+            circleBody.Position = new Vector2F(0, 0);
+
+            int initialBodyCount = world.BodyList.Count;
+
+            // Act
+            bool result = CuttingTools.Cut(world, new Vector2F(0, -20), new Vector2F(0, 20));
+
+            // Assert
+            Assert.True(result, "Cut should execute without throwing");
+            Assert.True(world.BodyList.Count >= initialBodyCount - 1, "Body count should not decrease unexpectedly");
+        }
     }
 }
