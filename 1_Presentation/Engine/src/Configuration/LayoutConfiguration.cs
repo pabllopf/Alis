@@ -36,4 +36,5 @@ namespace Alis.App.Engine.Configuration
     public class LayoutConfiguration : IConfiguration
     {
     }
+    
 }
