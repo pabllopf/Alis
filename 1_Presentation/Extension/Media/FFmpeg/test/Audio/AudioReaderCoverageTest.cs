@@ -124,6 +124,27 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
         #endregion
 
+        /// <summary>
+        ///     Creates a temporary executable script for the current test run.
+        /// </summary>
+        /// <param name="contents">The script contents.</param>
+        /// <returns>The created script path.</returns>
+        private static string CreateExecutableScript(string contents)
+        {
+            string scriptPath = Path.GetTempFileName();
+            File.WriteAllText(scriptPath, contents);
+            File.SetUnixFileMode(
+                scriptPath,
+                UnixFileMode.UserRead |
+                UnixFileMode.UserWrite |
+                UnixFileMode.UserExecute |
+                UnixFileMode.GroupRead |
+                UnixFileMode.GroupExecute |
+                UnixFileMode.OtherRead |
+                UnixFileMode.OtherExecute);
+            return scriptPath;
+        }
+
         #region ResolveBitDepth Coverage Tests
 
         /// <summary>
@@ -609,12 +630,51 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             var metadata = new AudioMetadata { Channels = 2 };
             metadataProp.SetValue(reader, metadata);
 
-            // Act - Should not throw from CurrentSampleOffset update
-            var exception = Record.Exception(() => reader.NextFrame());
+            // Provide enough raw PCM bytes for one stereo 16-bit sample.
+            dataField.SetValue(reader, new MemoryStream(new byte[] { 1, 2, 3, 4 }));
 
-            // Assert - Should complete without exception from CurrentSampleOffset update
-            // The Success branch is taken and CurrentSampleOffset is updated
-            Assert.Null(exception);
+            // Act - Should load one sample and advance the offset.
+            AudioFrame frame = reader.NextFrame();
+
+            // Assert - The Success branch is taken and CurrentSampleOffset is updated.
+            Assert.NotNull(frame);
+            Assert.Equal(1, frame.LoadedSamples);
+            Assert.Equal(1, reader.CurrentSampleOffset);
+            Assert.Equal(4, frame.RawData.Length);
+        }
+
+        /// <summary>
+        ///     Tests that Load opens the reader when metadata is available and ffmpeg can be started.
+        /// </summary>
+        [Fact]
+        public void Load_WithLoadedMetadataAndFakeFfmpeg_ShouldOpenReader()
+        {
+            // Arrange
+            string ffmpegScript = CreateExecutableScript("#!/bin/sh\nexit 0\n");
+            AudioReader reader = new AudioReader(_testFile, ffmpegExecutable: ffmpegScript);
+
+            var metadataLoadedField = typeof(AudioReader).GetProperty("MetadataLoaded", BindingFlags.Public | BindingFlags.Instance);
+            metadataLoadedField.SetValue(reader, true);
+
+            var metadataField = typeof(AudioReader).GetProperty("Metadata", BindingFlags.Public | BindingFlags.Instance);
+            metadataField.SetValue(reader, new AudioMetadata { Channels = 2 });
+
+            try
+            {
+                // Act
+                reader.Load(24);
+
+                // Assert
+                Assert.True(reader.OpenedForReading);
+                Assert.NotNull(reader.DataStream);
+            }
+            finally
+            {
+                if (File.Exists(ffmpegScript))
+                {
+                    File.Delete(ffmpegScript);
+                }
+            }
         }
 
         #endregion
