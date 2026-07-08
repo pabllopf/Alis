@@ -6,6 +6,7 @@ Strictly follows: Project specification v1.0
 - Local Obsidian-style state management
 - Deterministic delta synchronization
 - Exact output formatting for coverage tasks
+- CLI & Interactive fallback mode
 """
 
 import os
@@ -13,14 +14,15 @@ import sys
 import json
 import re
 from pathlib import Path
+import argparse
 import requests
 from datetime import datetime, timezone
 
 # ─────────────────────────────────────────────────────────────
-# CONFIGURATION & CONSTANTS (NON-NEGOTIABLE)
+# CONFIGURATION & CONSTANTS (DEFAULTS, OVERWRITABLE VIA CLI)
 # ─────────────────────────────────────────────────────────────
-PROJECT_KEY = "pabllopf-official_alis"
-BRANCH = "master"
+DEFAULT_PROJECT_KEY = "pabllopf-official_alis"
+DEFAULT_BRANCH = "master"
 SONAR_URL = "https://sonarcloud.io/api"
 MEMORY_DIR = Path("./.memory/coverage")
 
@@ -35,11 +37,37 @@ REQUIRED_METRICS = ["coverage", "line_coverage", "branch_coverage",
                     "uncovered_lines", "conditions_to_cover", "uncovered_conditions"]
 
 # ─────────────────────────────────────────────────────────────
+# CLI ARGUMENT PARSER
+# ─────────────────────────────────────────────────────────────
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Extract SonarCloud coverage deltas and format as Obsidian-compatible tasks.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python extractor.py                          # Interactive mode (default)
+  python extractor.py --clean                  # Force clean memory & run
+  python extractor.py --no-clean               # Force resume mode & run
+  python extractor.py --project-key my_proj --branch develop
+  python extractor.py --output tasks.md        # Save output to file
+  python extractor.py --quiet                  # Suppress info logs
+"""
+    )
+    parser.add_argument("--clean", action="store_true", help="Force clean local coverage memory/cache")
+    parser.add_argument("--no-clean", action="store_true", help="Force resume mode (load existing state)")
+    parser.add_argument("--project-key", default=DEFAULT_PROJECT_KEY, help="SonarCloud project key")
+    parser.add_argument("--branch", default=DEFAULT_BRANCH, help="Target branch (default: master)")
+    parser.add_argument("--output", "-o", default=None, help="Output file path (defaults to stdout)")
+    parser.add_argument("--quiet", "-q", action="store_true", help="Suppress non-essential logs")
+    return parser.parse_args()
+
+# ─────────────────────────────────────────────────────────────
 # MEMORY MANAGEMENT (STATE MACHINE)
 # ─────────────────────────────────────────────────────────────
 
 def ask_clean_memory() -> bool:
-    """EXACT prompt as specified."""
+    """EXACT prompt as specified. Only called in interactive mode."""
     response = input("Do you want to clean the local coverage remediation memory/cache? (yes/no)\n").strip().lower()
     return response in ("yes", "y")
 
@@ -54,7 +82,6 @@ def clean_memory():
         if d.exists():
             import shutil
             shutil.rmtree(d)
-    # Also remove coverage tracking JSON files if any exist
     for json_file in MEMORY_DIR.rglob("*.json"):
         json_file.unlink()
     init_memory_structure()
@@ -71,10 +98,8 @@ def load_coverage_index() -> dict:
         return {}
     
     data = {}
-    current_file = None
     with open(index_file, "r", encoding="utf-8") as f:
         content = f.read()
-    # Simple markdown key-value parser
     file_match = re.findall(r"### File\s*\n(.*?)(?:\n|$)", content)
     cov_match = re.findall(r"### Coverage\s*\n(.*?)(?:\n|$)", content)
     method_match = re.findall(r"### Method\s*\n(.*?)(?:\n|$)", content)
@@ -99,19 +124,19 @@ def get_sonar_token() -> str:
         sys.exit(1)
     return token
 
-def fetch_sonarcloud_data() -> list[dict]:
+def fetch_sonarcloud_data(project_key: str, branch: str) -> list[dict]:
     """Fetch current coverage state from SonarCloud with pagination."""
     token = get_sonar_token()
     headers = {"Authorization": f"Bearer {token}"}
     url = f"{SONAR_URL}/measures/component_tree"
     
     params = {
-        "component": PROJECT_KEY,
+        "component": project_key,
         "metricKeys": ",".join(REQUIRED_METRICS),
-        "qualifiers": "FIL",  # Files only
-        "branch": BRANCH,
+        "qualifiers": "FIL",
+        "branch": branch,
         "p": 1,
-        "ps": 100  # Page size
+        "ps": 100
     }
     
     all_files = []
@@ -147,20 +172,16 @@ def compute_deltas(current_files: list[dict], previous_state: dict) -> list[dict
         key = comp.get("key", "")
         measures = comp.get("measures", [])
         
-        # Extract metrics
         cov_val = next((m.get("value") for m in measures if m.get("metric") == "coverage"), None)
         lines_val = next((m.get("value") for m in measures if m.get("metric") == "uncovered_lines"), None)
         branch_val = next((m.get("value") for m in measures if m.get("metric") == "branch_coverage"), None)
         
-        # Skip fully covered or irrelevant
         if cov_val is None or float(cov_val) >= 100.0:
             continue
             
-        # Find matching previous state
         prev = previous_state.get(key, {})
         prev_cov = float(prev.get("coverage", 0)) if prev.get("coverage") else 0.0
         
-        # Delta condition: new file, or coverage dropped, or uncovered lines increased
         is_new = key not in previous_state
         is_degraded = float(cov_val) < prev_cov
         
@@ -170,7 +191,7 @@ def compute_deltas(current_files: list[dict], previous_state: dict) -> list[dict
                 "coverage": cov_val,
                 "uncovered_lines": lines_val,
                 "branch_coverage": branch_val,
-                "method": key.split(".")[-1],  # Fallback method name
+                "method": key.split(".")[-1],
                 "is_new": is_new,
                 "is_degraded": is_degraded
             })
@@ -203,41 +224,64 @@ def format_coverage_task(delta: dict) -> str:
 ```"""
 
 # ─────────────────────────────────────────────────────────────
-# MAIN EXECUTION FLOW (STRICT ORDER)
+# MAIN EXECUTION FLOW (CLI + INTERACTIVE FALLBACK)
 # ─────────────────────────────────────────────────────────────
 
 def main():
-    print("=== SonarCloud Coverage Delta Extractor ===")
+    args = parse_args()
     
-    # 1. Ask user EXACTLY as specified
-    should_clean = ask_clean_memory()
+    # Use CLI values, fallback to defaults/spec constants
+    project_key = args.project_key
+    branch = args.branch
     
+    # Determine clean mode: CLI flag > interactive prompt
+    should_clean = None
+    if args.clean:
+        should_clean = True
+    elif args.no_clean:
+        should_clean = False
+    else:
+        # Interactive fallback (EXACT prompt as specified)
+        should_clean = ask_clean_memory()
+    
+    # 1. Handle memory state
     if should_clean:
         clean_memory()
     else:
-        # Ensure directories exist for resume mode
         init_memory_structure()
         
     # 2. Load previous state (if not cleaning)
     previous_state = {} if should_clean else load_coverage_index()
     
     # 3. Fetch current SonarCloud state
-    print("[INFO] Fetching current SonarCloud coverage state...")
-    current_files = fetch_sonarcloud_data()
+    if not args.quiet:
+        print("[INFO] Fetching current SonarCloud coverage state...")
+    current_files = fetch_sonarcloud_data(project_key, branch)
     
     # 4. Compute deltas
-    print("[INFO] Computing coverage deltas...")
+    if not args.quiet:
+        print("[INFO] Computing coverage deltas...")
     deltas = compute_deltas(current_files, previous_state)
     
     # 5. Output results
-    if not deltas:
-        print("[INFO] No coverage delta detected. STOP IMMEDIATELY (as specified).")
-        return
-        
-    print(f"\n[INFO] Found {len(deltas)} coverage targets. Outputting exactly formatted tasks:\n")
-    for delta in deltas:
-        print(format_coverage_task(delta))
-        print("-" * 40)
+    output_target = args.output or sys.stdout
+    
+    try:
+        with open(output_target, "w", encoding="utf-8") as out:
+            if not deltas:
+                if not args.quiet:
+                    print("[INFO] No coverage delta detected. STOP IMMEDIATELY (as specified).", file=out)
+                return
+                
+            if not args.quiet:
+                print(f"\n[INFO] Found {len(deltas)} coverage targets. Outputting exactly formatted tasks:\n", file=out)
+                
+            for delta in deltas:
+                out.write(format_coverage_task(delta))
+                out.write("\n" + "-" * 40 + "\n")
+    except Exception as e:
+        print(f"[ERROR] Failed to write output: {e}", file=sys.stderr)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
