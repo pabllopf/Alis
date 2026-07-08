@@ -835,5 +835,233 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         #endregion
+
+        #region Additional Uncovered Paths
+
+        /// <summary>
+        ///     Tests that setting GetBodyType to the same value is a no-op.
+        ///     Covers the early-return branch when _bodyType == value.
+        /// </summary>
+        [Fact]
+        public void GetBodyType_SetSameValue_DoesNotThrow()
+        {
+            Body body = new Body();
+            body.GetBodyType = BodyType.Static;
+
+            Assert.Equal(BodyType.Static, body.GetBodyType);
+        }
+
+        /// <summary>
+        ///     Tests that LocalCenter setter on a non-dynamic body returns early
+        ///     without changing Sweep.LocalCenter.
+        /// </summary>
+        [Fact]
+        public void LocalCenter_NonDynamic_DoesNotChange()
+        {
+            Body body = new Body();
+            Vector2F original = body.Sweep.LocalCenter;
+
+            body.LocalCenter = new Vector2F(0.5f, 0.5f);
+
+            Assert.Equal(original, body.Sweep.LocalCenter);
+        }
+
+        /// <summary>
+        ///     Tests that Inertia getter includes the mass * center^2 term
+        ///     when LocalCenter is non-zero.
+        /// </summary>
+        [Fact]
+        public void Inertia_WithNonZeroLocalCenter_IsGreater()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.ResetMassData();
+
+            float before = body.Inertia;
+            body.LocalCenter = new Vector2F(0.3f, 0.4f);
+
+            Assert.True(body.Inertia > before);
+        }
+
+        /// <summary>
+        ///     Tests that Body.Add throws when the same fixture is added twice.
+        /// </summary>
+        [Fact]
+        public void Add_SameFixtureTwice_Throws()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+
+            ArgumentException ex = Assert.Throws<ArgumentException>(() => body.Add(fixture));
+            Assert.Contains("same fixture", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that Body.Add throws when a fixture belongs to another body.
+        /// </summary>
+        [Fact]
+        public void Add_FixtureFromAnotherBody_Throws()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Fixture fixture = bodyA.CreateCircle(0.5f, 1.0f);
+
+            ArgumentException ex = Assert.Throws<ArgumentException>(() => bodyB.Add(fixture));
+            Assert.Contains("belongs to another body", ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that ApplyForce wakes a sleeping body.
+        /// </summary>
+        [Fact]
+        public void ApplyForce_WakesSleepingBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.Awake = false;
+
+            Assert.False(body.Awake);
+            body.ApplyForce(new Vector2F(10.0f, 0.0f));
+            Assert.True(body.Awake);
+        }
+
+        /// <summary>
+        ///     Tests that ApplyTorque wakes a sleeping body.
+        /// </summary>
+        [Fact]
+        public void ApplyTorque_WakesSleepingBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.Awake = false;
+
+            Assert.False(body.Awake);
+            body.ApplyTorque(5.0f);
+            Assert.True(body.Awake);
+        }
+
+        /// <summary>
+        ///     Tests that ApplyLinearImpulse wakes a sleeping body.
+        /// </summary>
+        [Fact]
+        public void ApplyLinearImpulse_WakesSleepingBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.Awake = false;
+
+            Assert.False(body.Awake);
+            body.ApplyLinearImpulse(new Vector2F(10.0f, 0.0f));
+            Assert.True(body.Awake);
+        }
+
+        /// <summary>
+        ///     Tests that ApplyAngularImpulse wakes a sleeping body.
+        /// </summary>
+        [Fact]
+        public void ApplyAngularImpulse_WakesSleepingBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.Awake = false;
+
+            Assert.False(body.Awake);
+            body.ApplyAngularImpulse(5.0f);
+            Assert.True(body.Awake);
+        }
+
+        /// <summary>
+        ///     Tests that GetWorldVector(ref) overload converts local to world.
+        /// </summary>
+        [Fact]
+        public void GetWorldVector_RefOverload_ConvertsCorrectly()
+        {
+            Body body = new Body();
+            body.Xf.Rotation.Phase = (float)Math.PI / 2.0f;
+
+            Vector2F local = new Vector2F(1.0f, 0.0f);
+            Vector2F world = body.GetWorldVector(ref local);
+
+            Assert.True(Math.Abs(world.X) < 0.0001f);
+            Assert.True(Math.Abs(world.Y - 1.0f) < 0.0001f);
+        }
+
+        /// <summary>
+        ///     Tests that GetLocalVector(ref) overload converts world to local.
+        /// </summary>
+        [Fact]
+        public void GetLocalVector_RefOverload_ConvertsCorrectly()
+        {
+            Body body = new Body();
+            body.Xf.Rotation.Phase = (float)Math.PI / 2.0f;
+
+            Vector2F world = new Vector2F(0.0f, 1.0f);
+            Vector2F local = body.GetLocalVector(ref world);
+
+            Assert.True(Math.Abs(local.X - 1.0f) < 0.0001f);
+            Assert.True(Math.Abs(local.Y) < 0.0001f);
+        }
+
+        /// <summary>
+        ///     Tests that GetLinearVelocityFromWorldPoint(ref) overload computes correctly.
+        /// </summary>
+        [Fact]
+        public void GetLinearVelocityFromWorldPoint_RefOverload_ComputesCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.AngularVelocity = 1.0f;
+
+            Vector2F wp = new Vector2F(1.0f, 0.0f);
+            Vector2F v = body.GetLinearVelocityFromWorldPoint(ref wp);
+
+            Assert.True(Math.Abs(v.X) < 0.0001f);
+            Assert.True(Math.Abs(v.Y - 1.0f) < 0.0001f);
+        }
+
+        /// <summary>
+        ///     Tests that GetLinearVelocityFromLocalPoint(ref) overload computes correctly.
+        /// </summary>
+        [Fact]
+        public void GetLinearVelocityFromLocalPoint_RefOverload_ComputesCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+            body.AngularVelocity = 1.0f;
+
+            Vector2F lp = new Vector2F(0.0f, 1.0f);
+            Vector2F v = body.GetLinearVelocityFromLocalPoint(ref lp);
+
+            Assert.True(Math.Abs(v.X + 1.0f) < 0.0001f);
+            Assert.True(Math.Abs(v.Y) < 0.0001f);
+        }
+
+        /// <summary>
+        ///     Tests that the ApplyLinearImpulse(ref, ref) overload on a static body
+        ///     does not change velocity.
+        /// </summary>
+        [Fact]
+        public void ApplyLinearImpulse_RefOverload_StaticBody_DoesNothing()
+        {
+            Body body = new Body();
+            Vector2F impulse = new Vector2F(10.0f, 0.0f);
+            Vector2F point = new Vector2F(0.0f, 0.0f);
+
+            body.ApplyLinearImpulse(ref impulse, ref point);
+
+            Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
+            Assert.Equal(0.0f, body.AngularVelocity);
+        }
+
+        #endregion
     }
 }
