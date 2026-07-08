@@ -1,6 +1,6 @@
 ---
 status: Active
-updated: 2026-07-08T09:00:00Z
+updated: 2026-07-08T09:15:00Z
 ---
 
 # Coverage Index
@@ -42,6 +42,7 @@ updated: 2026-07-08T09:00:00Z
 | ContactManager.cs (Evaluate/handlers) | 15 | 478 | c1ee01ea5 |
 | GraphicManager.cs (lifecycle) | 3 | 89 | 692039671 |
 | Body.cs (simulation paths) | 6 | 165 | afdda294d |
+| Body.cs (wake/sleep, exceptions, ref overloads) | 14 | 228 | b4b2cfbf0 |
 
 ## Notes
 
@@ -49,3 +50,4 @@ updated: 2026-07-08T09:00:00Z
 - **ContactManager/Contact**: 15 Step()-based tests cover Evaluate variants (Polygon, Edge, Chain), sensor fixtures, OnCollision/OnSeparation/BeginContact/EndContact/PreSolve delegates, and warm starting.
 - **AABB.cs**: Already has 38 tests (pre-existing AabbTest.cs). All public methods covered.
 - **Body.cs (simulation)**: 6 Step()-based tests cover FixedRotation, IgnoreGravity, Enabled=false, sleep/wake, CollideConnected joint, world-Rotation setter.
+- **Body.cs (uncovered paths)**: 14 additional tests cover GetBodyType same-value, LocalCenter non-dynamic, Inertia offset, duplicate fixture exceptions, Apply*/wake-from-sleep, ref overloads, static-body no-op.
