@@ -1,6 +1,6 @@
 ---
 status: Active
-updated: 2026-07-08T08:45:00Z
+updated: 2026-07-08T09:00:00Z
 ---
 
 # Coverage Index
@@ -41,8 +41,11 @@ updated: 2026-07-08T08:45:00Z
 | GravityController.cs | 9 | 213 | c6c7cde5d |
 | ContactManager.cs (Evaluate/handlers) | 15 | 478 | c1ee01ea5 |
 | GraphicManager.cs (lifecycle) | 3 | 89 | 692039671 |
+| Body.cs (simulation paths) | 6 | 165 | afdda294d |
 
 ## Notes
 
 - **GraphicManager/BoxCollider**: Remaining uncovered paths require OpenGL context or full ECS infrastructure. Integration tests with headless OpenGL or interface refactoring needed.
 - **ContactManager/Contact**: 15 Step()-based tests cover Evaluate variants (Polygon, Edge, Chain), sensor fixtures, OnCollision/OnSeparation/BeginContact/EndContact/PreSolve delegates, and warm starting.
+- **AABB.cs**: Already has 38 tests (pre-existing AabbTest.cs). All public methods covered.
+- **Body.cs (simulation)**: 6 Step()-based tests cover FixedRotation, IgnoreGravity, Enabled=false, sleep/wake, CollideConnected joint, world-Rotation setter.
