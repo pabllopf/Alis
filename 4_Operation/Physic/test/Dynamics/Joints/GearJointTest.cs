@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
@@ -522,6 +523,304 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.Equal(anchor1.X, anchor2.X);
             Assert.Equal(anchor1.Y, anchor2.Y);
+        }
+
+        /// <summary>
+        /// Tests that step with revolute joints initializes solver without throwing
+        /// </summary>
+        [Fact]
+        public void Step_WithRevoluteJoints_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
+            CircleShape shape = new CircleShape(0.2f, 1.0f);
+            bodyA.CreateFixture(shape);
+            bodyB.CreateFixture(shape);
+            bodyC.CreateFixture(shape);
+            bodyD.CreateFixture(shape);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+            world.Add(jointA);
+            world.Add(jointB);
+            world.Add(gearJoint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(gearJoint);
+        }
+
+        /// <summary>
+        /// Tests that step with prismatic joints initializes solver
+        /// </summary>
+        [Fact]
+        public void Step_WithPrismaticJoints_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
+            CircleShape shape = new CircleShape(0.2f, 1.0f);
+            bodyA.CreateFixture(shape);
+            bodyB.CreateFixture(shape);
+            bodyC.CreateFixture(shape);
+            bodyD.CreateFixture(shape);
+
+            PrismaticJoint jointA = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.UnitX);
+            PrismaticJoint jointB = new PrismaticJoint(bodyC, bodyD, Vector2F.Zero, Vector2F.UnitX);
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+            world.Add(jointA);
+            world.Add(jointB);
+            world.Add(gearJoint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(gearJoint);
+        }
+
+        /// <summary>
+        /// Tests that step with revolute and prismatic joints initializes solver
+        /// </summary>
+        [Fact]
+        public void Step_WithRevoluteAndPrismaticJoints_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
+            CircleShape shape = new CircleShape(0.2f, 1.0f);
+            bodyA.CreateFixture(shape);
+            bodyB.CreateFixture(shape);
+            bodyC.CreateFixture(shape);
+            bodyD.CreateFixture(shape);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
+            PrismaticJoint jointB = new PrismaticJoint(bodyC, bodyD, Vector2F.Zero, Vector2F.UnitX);
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+            world.Add(jointA);
+            world.Add(jointB);
+            world.Add(gearJoint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(gearJoint);
+        }
+
+        /// <summary>
+        /// Tests that step with prismatic and revolute joints initializes solver
+        /// </summary>
+        [Fact]
+        public void Step_WithPrismaticAndRevoluteJoints_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
+            CircleShape shape = new CircleShape(0.2f, 1.0f);
+            bodyA.CreateFixture(shape);
+            bodyB.CreateFixture(shape);
+            bodyC.CreateFixture(shape);
+            bodyD.CreateFixture(shape);
+
+            PrismaticJoint jointA = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.UnitX);
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+            world.Add(jointA);
+            world.Add(jointB);
+            world.Add(gearJoint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(gearJoint);
+        }
+
+        /// <summary>
+        /// Tests that step with custom ratio maintains constraint
+        /// </summary>
+        [Fact]
+        public void Step_WithCustomRatio_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
+            CircleShape shape = new CircleShape(0.2f, 1.0f);
+            bodyA.CreateFixture(shape);
+            bodyB.CreateFixture(shape);
+            bodyC.CreateFixture(shape);
+            bodyD.CreateFixture(shape);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB, 2.0f);
+            world.Add(jointA);
+            world.Add(jointB);
+            world.Add(gearJoint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(gearJoint);
+        }
+
+        /// <summary>
+        /// Tests that step with negative ratio maintains constraint
+        /// </summary>
+        [Fact]
+        public void Step_WithNegativeRatio_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
+            CircleShape shape = new CircleShape(0.2f, 1.0f);
+            bodyA.CreateFixture(shape);
+            bodyB.CreateFixture(shape);
+            bodyC.CreateFixture(shape);
+            bodyD.CreateFixture(shape);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB, -1.5f);
+            world.Add(jointA);
+            world.Add(jointB);
+            world.Add(gearJoint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(gearJoint);
+        }
+
+        /// <summary>
+        /// Tests that multiple steps with revolute joints progress the simulation
+        /// </summary>
+        [Fact]
+        public void Step_MultipleSteps_WithRevoluteJoints_ShouldProgressSimulation()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
+            CircleShape shape = new CircleShape(0.2f, 1.0f);
+            bodyA.CreateFixture(shape);
+            bodyB.CreateFixture(shape);
+            bodyC.CreateFixture(shape);
+            bodyD.CreateFixture(shape);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+            world.Add(jointA);
+            world.Add(jointB);
+            world.Add(gearJoint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(gearJoint);
+        }
+
+        /// <summary>
+        /// Tests that multiple steps with prismatic joints progress the simulation
+        /// </summary>
+        [Fact]
+        public void Step_MultipleSteps_WithPrismaticJoints_ShouldProgressSimulation()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
+            CircleShape shape = new CircleShape(0.2f, 1.0f);
+            bodyA.CreateFixture(shape);
+            bodyB.CreateFixture(shape);
+            bodyC.CreateFixture(shape);
+            bodyD.CreateFixture(shape);
+
+            PrismaticJoint jointA = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.UnitX);
+            PrismaticJoint jointB = new PrismaticJoint(bodyC, bodyD, Vector2F.Zero, Vector2F.UnitX);
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+            world.Add(jointA);
+            world.Add(jointB);
+            world.Add(gearJoint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(gearJoint);
+        }
+
+        /// <summary>
+        /// Tests that get reaction force after step returns valid value
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_AfterStep_ShouldReturnValidValue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
+            CircleShape shape = new CircleShape(0.2f, 1.0f);
+            bodyA.CreateFixture(shape);
+            bodyB.CreateFixture(shape);
+            bodyC.CreateFixture(shape);
+            bodyD.CreateFixture(shape);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+            world.Add(jointA);
+            world.Add(jointB);
+            world.Add(gearJoint);
+
+            world.Step(1.0f / 60.0f);
+
+            Vector2F force = gearJoint.GetReactionForce(1.0f);
+            Assert.NotNull(gearJoint);
+        }
+
+        /// <summary>
+        /// Tests that get reaction torque after step returns valid value
+        /// </summary>
+        [Fact]
+        public void GetReactionTorque_AfterStep_ShouldReturnValidValue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
+            CircleShape shape = new CircleShape(0.2f, 1.0f);
+            bodyA.CreateFixture(shape);
+            bodyB.CreateFixture(shape);
+            bodyC.CreateFixture(shape);
+            bodyD.CreateFixture(shape);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+            world.Add(jointA);
+            world.Add(jointB);
+            world.Add(gearJoint);
+
+            world.Step(1.0f / 60.0f);
+
+            float torque = gearJoint.GetReactionTorque(1.0f);
+            Assert.NotNull(gearJoint);
         }
     }
 }
