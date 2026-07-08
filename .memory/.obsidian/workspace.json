@@ -203,9 +203,12 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "coverage/tasks/task-boxcollider-001.md",
+    "coverage/state/uncovered-files.json",
+    "coverage/patterns/boxcollider-pattern.md",
+    "coverage/logs/execution-log.md",
     "coverage/tasks/task-002-debug-log-output.md",
     "coverage/tasks/task-001-component-registry.md",
-    "coverage/logs/execution-log.md",
     "coverage/state/locks.md",
     "coverage/state/coverage-index.md",
     "coverage/decisions",
@@ -233,12 +236,8 @@
     "coverage/logs/archive/ControllerCollection-NonGenericEnumerator.md",
     "coverage/logs/archive/BatchPartitioner-ExceptionPaths.md",
     "coverage/logs/archive/AudioManager-FullConstructor.md",
-    "coverage/logs/archive/AttributeBased-NullChecks.md",
-    "coverage/logs/archive/AngleJoint-InternalConstructor.md",
-    "coverage/logs/archive/AABB-RayCast-YNormal.md",
     "coverage/logs/archive",
     "coverage/state/coverage-index.json",
-    "coverage/state",
     "Sin título.canvas"
   ]
 }
