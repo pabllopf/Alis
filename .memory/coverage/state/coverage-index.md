@@ -1,6 +1,6 @@
 ---
 status: Active
-updated: 2026-07-08T08:15:00Z
+updated: 2026-07-08T08:45:00Z
 ---
 
 # Coverage Index
@@ -26,15 +26,23 @@ updated: 2026-07-08T08:15:00Z
 | 2 | 4_Operation/Physic/src/Dynamics/Joints/FrictionJoint.cs | 20.6% | 94 | 6 | Operation | ✅ |
 | 3 | 4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs | 28.1% | 198 | 14 | Operation | ✅ |
 | 4 | 4_Operation/Physic/src/Dynamics/ContactManager.cs | 56.8% | 141 | 67 | Operation | ✅ |
-| 5 | 4_Operation/Physic/src/Controllers/GravityController.cs | 34.8% | 40 | 33 | Operation | 🔄 In progress |
-| 6 | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs | 23.4% | 153 | 50 | Application | ⬜ Pending |
-| 7 | 2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | 39.3% | 158 | 40 | Application | ⬜ Pending |
+| 5 | 4_Operation/Physic/src/Controllers/GravityController.cs | 34.8% | 40 | 33 | Operation | ✅ |
+| 6 | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs | 23.4% | 153 | 50 | Application | ⬜ Blocked (OpenGL) |
+| 7 | 2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | 39.3% | 158 | 40 | Application | ⬜ Blocked (OpenGL + ECS) |
 
 ## Processed Files
 
 | File | Tests Added | Lines Added | Commit |
-|-----|------------|-------------|--------|
+|------|------------|-------------|--------|
 | DistanceJoint.cs | 13 | 282 | a4e02bafd |
 | FrictionJoint.cs | 13 | 199 | e547ea826 |
 | GearJoint.cs | 12 | 299 | d53583d51 |
 | ContactManager.cs | 8 | 258 | d5fefccb9 |
+| GravityController.cs | 9 | 213 | c6c7cde5d |
+| ContactManager.cs (Evaluate/handlers) | 15 | 478 | c1ee01ea5 |
+| GraphicManager.cs (lifecycle) | 3 | 89 | 692039671 |
+
+## Notes
+
+- **GraphicManager/BoxCollider**: Remaining uncovered paths require OpenGL context or full ECS infrastructure. Integration tests with headless OpenGL or interface refactoring needed.
+- **ContactManager/Contact**: 15 Step()-based tests cover Evaluate variants (Polygon, Edge, Chain), sensor fixtures, OnCollision/OnSeparation/BeginContact/EndContact/PreSolve delegates, and warm starting.
