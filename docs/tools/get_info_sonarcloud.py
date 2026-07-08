@@ -244,7 +244,7 @@ def format_coverage_task(delta: dict, fetch_source: bool = False) -> str:
             delta["file"]
         )
         
-    test_hint = delta["file"].replace("src/", "test/").replace(".cs", ".Tests.cs")
+    test_hint = delta["file"].replace("src/", "test/").replace(".cs", "Tests.cs")
     
     return f"""
     ## COVERAGE TASK
