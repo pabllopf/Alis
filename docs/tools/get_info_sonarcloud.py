@@ -180,66 +180,121 @@ def fetch_source_snippet(project_key: str, file_key: str, max_lines: int = 60) -
 # DELTA ENGINE & TASK FORMATTER (AI-ENRICHED)
 # ─────────────────────────────────────────────────────────────
 
-def compute_deltas(current_files: list[dict], previous_state: dict, limit: int = None, skip: int = 0) -> list[dict]:
-    """Identify new uncovered files, reduced coverage, and degraded methods. Apply priority & limit."""
+
+def compute_deltas(
+    current_files: list[dict],
+    previous_state: dict,
+    limit: int = None,
+    skip: int = 0
+) -> list[dict]:
+    """
+    Return files ordered by worst coverage first.
+
+    Priority order:
+        1. Lower coverage first
+        2. More uncovered lines first
+        3. Higher complexity first
+    """
+
     deltas = []
-    
+
     for comp in current_files:
         key = comp.get("key", "")
         measures = comp.get("measures", [])
-        
-        cov_val = next((m.get("value") for m in measures if m.get("metric") == "coverage"), None)
-        line_cov = next((m.get("value") for m in measures if m.get("metric") == "line_coverage"), None)
-        branch_cov = next((m.get("value") for m in measures if m.get("metric") == "branch_coverage"), None)
-        lines_val = next((m.get("value") for m in measures if m.get("metric") == "uncovered_lines"), None)
-        branches_val = next((m.get("value") for m in measures if m.get("metric") == "uncovered_conditions"), None)
-        complexity = next((m.get("value") for m in measures if m.get("metric") == "complexity"), None)
-        loc = next((m.get("value") for m in measures if m.get("metric") == "ncloc"), None)
-        lang = comp.get("language", "csharp")
-        
-        if cov_val is None or float(cov_val) >= 100.0:
+
+        cov_val = next(
+            (m.get("value") for m in measures if m.get("metric") == "coverage"),
+            None
+        )
+
+        if cov_val is None:
             continue
-            
+
+        coverage = float(cov_val)
+
+        if coverage >= 100.0:
+            continue
+
+        line_cov = next(
+            (m.get("value") for m in measures if m.get("metric") == "line_coverage"),
+            None
+        )
+
+        branch_cov = next(
+            (m.get("value") for m in measures if m.get("metric") == "branch_coverage"),
+            None
+        )
+
+        lines_val = next(
+            (m.get("value") for m in measures if m.get("metric") == "uncovered_lines"),
+            0
+        )
+
+        branches_val = next(
+            (m.get("value") for m in measures if m.get("metric") == "uncovered_conditions"),
+            0
+        )
+
+        complexity = next(
+            (m.get("value") for m in measures if m.get("metric") == "complexity"),
+            0
+        )
+
+        loc = next(
+            (m.get("value") for m in measures if m.get("metric") == "ncloc"),
+            0
+        )
+
+        lang = comp.get("language", "csharp")
+
         prev = previous_state.get(key, {})
-        prev_cov = float(prev.get("coverage", 0)) if prev.get("coverage") else 0.0
-        
+        prev_cov = float(prev.get("coverage", coverage))
+
         is_new = key not in previous_state
-        is_degraded = float(cov_val) < prev_cov
-        
-        if is_new or is_degraded:
+        is_degraded = coverage < prev_cov
+
+        if coverage < 20:
+            priority = "CRITICAL"
+        elif coverage < 50:
+            priority = "HIGH"
+        elif coverage < 80:
+            priority = "MEDIUM"
+        else:
             priority = "LOW"
-            if is_degraded or float(cov_val) < 60:
-                priority = "HIGH"
-            elif is_new or float(cov_val) < 80:
-                priority = "MEDIUM"
-                
-            deltas.append({
-                "file": key,
-                "language": lang,
-                "coverage": cov_val,
-                "line_coverage": line_cov,
-                "branch_coverage": branch_cov,
-                "uncovered_lines": lines_val,
-                "uncovered_branches": branches_val,
-                "complexity": complexity,
-                "loc": loc,
-                "method": key.split(".")[-1],
-                "is_new": is_new,
-                "is_degraded": is_degraded,
-                "priority": priority
-            })
-            
-    priority_order = {"HIGH": 0, "MEDIUM": 1, "LOW": 2}
-    deltas.sort(key=lambda x: (priority_order.get(x["priority"], 3), float(x["coverage"] or 100)))
-    
-    # Apply skip parameter to avoid returning always the same files
+
+        deltas.append({
+            "file": key,
+            "language": lang,
+            "coverage": coverage,
+            "line_coverage": line_cov,
+            "branch_coverage": branch_cov,
+            "uncovered_lines": int(lines_val or 0),
+            "uncovered_branches": int(branches_val or 0),
+            "complexity": int(complexity or 0),
+            "loc": int(loc or 0),
+            "method": Path(key).stem,
+            "is_new": is_new,
+            "is_degraded": is_degraded,
+            "priority": priority
+        })
+
+    deltas.sort(
+        key=lambda x: (
+            x["coverage"],
+            -x["uncovered_lines"],
+            -x["complexity"],
+            -x["loc"]
+        )
+    )
+
     if skip > 0:
         deltas = deltas[skip:]
-        
+
     if limit is not None:
         deltas = deltas[:limit]
-        
+
     return deltas
+
 
 def format_coverage_task(delta: dict, fetch_source: bool = False) -> str:
     """Format exactly as specified in REQUIRED INPUT FORMAT, enriched for AI consumption."""
