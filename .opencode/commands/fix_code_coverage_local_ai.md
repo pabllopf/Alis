@@ -14,17 +14,32 @@ STATE=".memory/system"
 
 | Path | Scope | Purpose |
 |------|-------|---------|
-| `$STATE/processed.json` | Shared | Completed files (all sessions) |
-| `$STATE/lock/` | Shared | Per-file lock dirs via `mkdir` |
+| `$STATE/processed.json` | Shared | Completed files |
+| `$STATE/sessions.json` | Shared | Claims registry (who processes what) |
 | `$STATE/summary.md` | Shared | Running log |
 | `$STATE/results/` | Shared | Per-file outputs |
 | `$STATE/cache/` | Shared | SonarCloud cache |
-| `$STATE/sessions/$SID/` | Per-session | Current task, scratch |
+
+## Session Registry (`sessions.json`)
+
+Format:
+```json
+{
+  "claims": {
+    "relative/file/path.cs": { "sid": "1", "since": "2024-07-09T10:00:00", "status": "processing" }
+  }
+}
+```
+
+If `sessions.json` doesn't exist, create it as `{"claims":{}}`.
 
 Rules:
-- Shared `processed.json` prevents duplicate work across sessions
-- Atomic `mkdir $STATE/lock/<filehash>` to grab a file; skip if exists
-- Always resume shared state; never lose progress
+- Read `sessions.json` before every extraction
+- Skip any file whose path appears as a key in `claims` with `status: "processing"`
+- Stale claims (older than 30 min) are considered dead; ignore them
+- After determining which file to process, immediately write your claim: `claims["<file_path>"] = {"sid": "$SID", "since": "<now>", "status": "processing"}`
+- On completion, remove the claim or set `status: "done"`
+- This prevents the race: both sessions see processed.json empty, but only the first to write to sessions.json gets the file
 
 ## Initial Cache
 
@@ -48,12 +63,18 @@ Priority: lowest coverage → highest uncovered lines → highest complexity →
 
 Terminate on: `NO_REMAINING_COVERAGE_TASKS`
 
-Before processing, acquire lock:
+## Claim Protocol
 
-```bash
-FILEHASH=$(md5 -qs "$(cat $STATE/sessions/$SID/current_task.md)")
-mkdir $STATE/lock/$FILEHASH 2>/dev/null || continue  # already taken
-```
+Before ANY work on the extracted file:
+
+1. Parse `current_task.md` → get the `File:` value (relative path)
+2. Read `sessions.json` → if the file is claimed by another session with `status: "processing"` and claim is < 30 min old → skip (goto extraction loop)
+3. Write your claim to `sessions.json`: `claims["<file_path>"] = {"sid": "$SID", "since": "<ISO-timestamp>", "status": "processing"}`
+4. Only then proceed to spawn worker
+
+After worker completes:
+5. Remove your claim from `sessions.json` (or set `status: "done"`)
+6. Continue loop
 
 ## Agent Policy
 
@@ -70,12 +91,13 @@ Maintain 1 active task. Never create todo files. Never commit task state.
 
 Repeat until `NO_REMAINING_COVERAGE_TASKS`:
 1. Populate cache if empty (`--cache`)
-2. Extract next task (`--cache-only`)
-3. `NO_REMAINING_COVERAGE_TASKS` → stop
-4. Acquire lock via `mkdir $STATE/lock/<filehash>`; if taken → goto 2
-5. Spawn worker agent
-6. Wait for completion
-7. Save result → append to summary → mark processed → continue
+2. Read `sessions.json`, filter out claimed files mentally
+3. Extract next unclaimed task (`--cache-only`)
+4. `NO_REMAINING_COVERAGE_TASKS` → stop
+5. Write claim to `sessions.json`
+6. Spawn worker agent
+7. Wait for completion
+8. Remove claim → save result → append to summary → mark processed → continue
 
 ## Worker Context
 
