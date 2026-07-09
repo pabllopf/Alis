@@ -72,7 +72,13 @@
 | 2026-07-10 03:43:00 | RectangleShape.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 | 2026-07-10 03:44:00 | ObjectBase.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 
+| 2026-07-10 04:00:00 | WheelJoint.cs | 15.4% | 100% | +84.6% | 9584afa87 | Completed |
+| 2026-07-10 04:05:00 | PulleyJoint.cs | 19.9% | 97.89% | +77.99% | 482473e00 | Completed |
+| 2026-07-10 04:10:00 | RopeJoint.cs | 11.2% | 91.4% | +80.2% | 5823c28ae | Completed |
 ## Test Files Created
+- `PulleyJointTest.cs` updated at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Dynamics/Joints/PulleyJointTest.cs`
+- `WheelJointTest.cs` updated at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Dynamics/Joints/WheelJointTest.cs`
+- `RopeJointTest.cs` updated at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Dynamics/Joints/RopeJointTest.cs`
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`
 - `AudioWriterRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Media/FFmpeg/test/Audio/AudioWriterRemainingCoverageTests.cs`
 - `AudioPlayerRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Media/FFmpeg/test/Audio/AudioPlayerRemainingCoverageTests.cs`
