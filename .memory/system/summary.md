@@ -19,6 +19,7 @@
 | 2026-07-09 23:00:00 | BayazitDecomposer.cs | 99.6% | ~99.8% | +0.2% | 907100b9c | Completed |
 | 2026-07-09 23:35:00 | ImGuiP7.cs | 0.0% | ~15-20% | +15-20% | 6ac4c60ae | Completed |
 | 2026-07-09 23:30:00 | ImPlot.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
+| 2026-07-09 23:35:00 | ImPlotP2.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 
 ## Test Files Created
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`
