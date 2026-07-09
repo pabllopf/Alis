@@ -5,25 +5,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs
+    pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs
 
     ### Language
     cs
 
     ### Coverage
-    91.5% (Line: 92.1%, Branch: 89.7%)
+    96.6% (Line: 100.0%, Branch: 86.7%)
 
     ### Uncovered Lines
-    45
+    0
 
     ### Uncovered Branches
-    19
+    4
 
     ### Method
-    Body
+    BinaryReaderWriter
 
     ### Complexity / LOC
-    192 / 730 lines
+    28 / 119 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Body.cs
+//  File:BinaryReaderWriter.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Collisions.Shapes;
-using Alis.Core.Physic.Common;
-using Alis.Core.Physic.Common.Logic;
-using Alis.Core.Physic.Dynamics.Contacts;
-using Alis.Core.Physic.Dynamics.Joints;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace Alis.Core.Physic.Dynamics
+namespace Alis.Extension.Network.Internal
 {
     /// <summary>
-    ///     The body class
+    ///     The binary reader writer class
     /// </summary>
-    public partial class Body
+    internal static class BinaryReaderWriter
     {
         /// <summary>
-        /// The world locked message
+        ///     Reads the exactly using the specified length
         /// </summary>
-        private const string WorldLockedMessage = "The World is locked.";
-
-        /// <summary>
-        ///     Gets all the fixtures attached to this body.
-        /// </summary>
-        /// <value>The fixture list.</value>
-        internal readonly FixtureCollection FixtureList;
-
-        /// <summary>
-        ///     The angular damping
-        /// </summary>
-
+        /// <param name="length">The length</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <exception cref="EndOfStreamException"></exception>
+        /// <exception cref="InternalBufferOverflowException">
+        ///     Unable to read {length} bytes into buffer (offset: {buffer.Offset}
+        ///     size: {buffer.Count}). Use a larger read buffer
+        /// </exception>
+        public static async Task ReadExactly(int length, Stream stream, ArraySegment<byte> buffer,
+            CancellationToken cancellationToken)
+        {
+            if (length == 0)
+            {
+                return;
+            }
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/BodyTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Network/test/Internal/BinaryReaderWriterTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Body.cs
+    Commit format: test: coverage BinaryReaderWriter.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
