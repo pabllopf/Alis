@@ -39,6 +39,7 @@
 | 2026-07-10 01:00:00 | ImGuiP1.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 | 2026-07-10 01:15:00 | Shader.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 | 2026-07-10 01:30:00 | KeyCodes.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE (enum, no testable logic) |
+| 2026-07-10 01:45:00 | ImPlotP22.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 
 ## Test Files Created
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`
