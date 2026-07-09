@@ -16,6 +16,8 @@
 | 2026-07-09 22:35:00 | AudioSource.cs | 98.4% | 100% | +1.6% | eec8f1ca0 | Completed |
 | 2026-07-09 22:40:00 | AdsManager.cs | 98.7% | 100% | +1.3% | 38b3a931f | Completed |
 
+| 2026-07-09 23:00:00 | BayazitDecomposer.cs | 99.6% | ~99.8% | +0.2% | 907100b9c | Completed |
+
 ## Test Files Created
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`
 - `AudioWriterRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Media/FFmpeg/test/Audio/AudioWriterRemainingCoverageTests.cs`
