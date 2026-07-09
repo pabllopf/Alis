@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui input text callback data clear selection should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiInputTextCallbackData_ClearSelection_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui input text callback data delete chars should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiInputTextCallbackData_DeleteChars_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui input text callback data has selection should return byte
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiInputTextCallbackData_HasSelection_ShouldReturnByte()
         {
             IntPtr self = new IntPtr(1);
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui input text callback data im gui input text callback data should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiInputTextCallbackData_ImGuiInputTextCallbackData_ShouldReturnIntPtr()
         {
         }
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui input text callback data insert chars should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiInputTextCallbackData_InsertChars_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui input text callback data select all should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiInputTextCallbackData_SelectAll_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io add focus event should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_AddFocusEvent_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io add input character should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_AddInputCharacter_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io add input characters utf 8 should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_AddInputCharactersUTF8_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io add input character utf 16 should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_AddInputCharacterUTF16_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io add key analog event should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_AddKeyAnalogEvent_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io add key event should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_AddKeyEvent_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -162,7 +163,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io add mouse button event should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_AddMouseButtonEvent_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io add mouse pos event should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_AddMousePosEvent_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io add mouse viewport event should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_AddMouseViewportEvent_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -194,7 +195,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io add mouse wheel event should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_AddMouseWheelEvent_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -205,7 +206,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io clear input characters should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_ClearInputCharacters_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -214,7 +215,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io clear input keys should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_ClearInputKeys_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -223,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io im gui io should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_ImGuiIO_ShouldReturnIntPtr()
         {
         }
@@ -231,7 +232,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io set app accepting events should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_SetAppAcceptingEvents_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -241,7 +242,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui io set key event native data should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiIO_SetKeyEventNativeData_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -254,7 +255,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui list clipper begin should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiListClipper_Begin_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -265,7 +266,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui list clipper end should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiListClipper_End_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -274,7 +275,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui list clipper force display range by indices should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiListClipper_ForceDisplayRangeByIndices_ShouldInvokeNativeMethod()
         {
             IntPtr self = new IntPtr(1);
@@ -285,7 +286,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui list clipper im gui list clipper should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiListClipper_ImGuiListClipper_ShouldReturnIntPtr()
         {
         }
@@ -293,7 +294,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui list clipper step should return byte
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiListClipper_Step_ShouldReturnByte()
         {
             IntPtr self = new IntPtr(1);
@@ -302,7 +303,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui once upon a frame im gui once upon a frame should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiOnceUponAFrame_ImGuiOnceUponAFrame_ShouldReturnIntPtr()
         {
         }
@@ -310,7 +311,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui payload clear should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiPayload_Clear_ShouldInvokeNativeMethod()
         {
             ImGuiPayload self = new ImGuiPayload();
@@ -319,7 +320,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui payload im gui payload should return im gui payload
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiPayload_ImGuiPayload_ShouldReturnImGuiPayload()
         {
         }
@@ -327,7 +328,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui payload is data type should return byte
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiPayload_IsDataType_ShouldReturnByte()
         {
             ImGuiPayload self = new ImGuiPayload();
@@ -337,7 +338,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui payload is delivery should return byte
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiPayload_IsDelivery_ShouldReturnByte()
         {
             ImGuiPayload self = new ImGuiPayload();
@@ -346,7 +347,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui payload is preview should return byte
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiPayload_IsPreview_ShouldReturnByte()
         {
             ImGuiPayload self = new ImGuiPayload();
@@ -355,7 +356,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui platform ime data im gui platform ime data should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiPlatformImeData_ImGuiPlatformImeData_ShouldReturnIntPtr()
         {
         }
@@ -364,7 +365,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui platform io im gui platform io should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiPlatformIO_ImGuiPlatformIO_ShouldReturnIntPtr()
         {
         }
@@ -372,7 +373,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui platform monitor im gui platform monitor should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiPlatformMonitor_ImGuiPlatformMonitor_ShouldReturnIntPtr()
         {
         }
@@ -380,7 +381,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage build sort by key should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_BuildSortByKey_ShouldInvokeNativeMethod()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -389,7 +390,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage clear should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_Clear_ShouldInvokeNativeMethod()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -398,7 +399,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage get bool should return byte
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_GetBool_ShouldReturnByte()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -409,7 +410,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage get bool ref should return byte array
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_GetBoolRef_ShouldReturnByteArray()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -421,7 +422,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage get float should return float
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_GetFloat_ShouldReturnFloat()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -432,7 +433,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage get float ref should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_GetFloatRef_ShouldReturnIntPtr()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -443,7 +444,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage get int should return int
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_GetInt_ShouldReturnInt()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -454,7 +455,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage get int ref should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_GetIntRef_ShouldReturnIntPtr()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -465,7 +466,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage get void ptr should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_GetVoidPtr_ShouldReturnIntPtr()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -475,7 +476,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage get void ptr ref should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_GetVoidPtrRef_ShouldReturnIntPtr()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -486,7 +487,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage set all int should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_SetAllInt_ShouldInvokeNativeMethod()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -496,7 +497,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage set bool should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_SetBool_ShouldInvokeNativeMethod()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -507,7 +508,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage set float should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_SetFloat_ShouldInvokeNativeMethod()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -518,7 +519,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage set int should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_SetInt_ShouldInvokeNativeMethod()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -529,7 +530,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage set void ptr should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStorage_SetVoidPtr_ShouldInvokeNativeMethod()
         {
             ImGuiStorage self = new ImGuiStorage();
@@ -540,7 +541,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage pair im gui storage pair int should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStoragePair_ImGuiStoragePair_Int_ShouldReturnIntPtr()
         {
             uint key = 1;
@@ -550,7 +551,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage pair im gui storage pair float should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStoragePair_ImGuiStoragePair_Float_ShouldReturnIntPtr()
         {
             uint key = 1;
@@ -560,7 +561,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui storage pair im gui storage pair ptr should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStoragePair_ImGuiStoragePair_Ptr_ShouldReturnIntPtr()
         {
             uint key = 1;
@@ -570,7 +571,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui style im gui style should return int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStyle_ImGuiStyle_ShouldReturnIntPtr()
         {
         }
@@ -578,11 +579,11 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui style scale all sizes should invoke native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiStyle_ScaleAllSizes_ShouldInvokeNativeMethod()
         {
             ImGuiStyle self = new ImGuiStyle();
-            float scaleFactor = 1.5f;
+            float scaleRequireCImguiSystemFactor = 1.5f;
         }
     }
 }
