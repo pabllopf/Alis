@@ -22,6 +22,7 @@
 | 2026-07-09 23:35:00 | ImPlotP2.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 | 2026-07-09 23:40:00 | ImGuiP3.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 | 2026-07-09 20:20:00 | ImGuiP5.cs | 0.0% | ~70-75% | +70-75% | 77c354b56 | Completed |
+| 2026-07-09 21:29:00 | ImGuiP6.cs | 0.0% | ~85% | +85% | 63d37f3f4 | Completed |
 
 ## Test Files Created
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`
@@ -35,3 +36,4 @@
 - `AdsManagerRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Ads/GoogleAds/test/AdsManagerRemainingCoverageTests.cs`
 - `ImGuiP7RemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImGuiP7RemainingCoverageTests.cs`
 - `ImGuiP5RemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImGuiP5RemainingCoverageTests.cs`
+- `ImGuiP6RemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImGuiP6RemainingCoverageTests.cs`
