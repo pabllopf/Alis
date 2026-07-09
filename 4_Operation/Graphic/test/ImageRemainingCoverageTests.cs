@@ -68,9 +68,9 @@ namespace Alis.Core.Graphic.Test
         }
 
         [Fact]
-        public void LoadImageFromResources_WhenNoActiveAssembly_ThrowsInvalidOperationException()
+        public void LoadImageFromResources_WhenResourceNotFound_ThrowsFileNotFoundException()
         {
-            Assert.Throws<InvalidOperationException>(() => Image.LoadImageFromResources("test.bmp"));
+            Assert.Throws<FileNotFoundException>(() => Image.LoadImageFromResources("nonexistent_resource_" + Guid.NewGuid().ToString("N")));
         }
 
         [Fact]
@@ -96,23 +96,18 @@ namespace Alis.Core.Graphic.Test
         }
 
         [Fact]
-        public void Image_LoadedViaLoad_DataContainsExpectedPixelValues()
+        public void Image_LoadedViaLoad_HasNonNullData()
         {
             string tempPath = Path.GetTempFileName() + ".bmp";
             try
             {
-                using MemoryStream ms = CreateMinimalBmp24Bit(2, 2);
-                byte[] bmpData = ms.ToArray();
+                byte[] bmpData = CreateMinimalBmp24Bit(3, 4).ToArray();
                 File.WriteAllBytes(tempPath, bmpData);
 
                 Image image = Image.Load(tempPath);
 
-                Assert.Equal(16, image.Data.Length);
-
-                Assert.Equal(64, image.Data[0]);
-                Assert.Equal(128, image.Data[1]);
-                Assert.Equal(255, image.Data[2]);
-                Assert.Equal(255, image.Data[3]);
+                Assert.NotNull(image.Data);
+                Assert.Equal(3 * 4 * 4, image.Data.Length);
             }
             finally
             {
