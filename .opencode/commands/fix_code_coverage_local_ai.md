@@ -9,23 +9,22 @@ Resolution: `{{input}}` → `$OPencode_SESSION_ID` → `default`
 
 ```bash
 SID="${input:-${OPencode_SESSION_ID:-default}}"
-SESSION_DIR=".memory/system/sessions/$SID"
+STATE=".memory/system"
 ```
 
-| File | Purpose |
-|------|---------|
-| `processed.json` | Completed files |
-| `summary.md` | Running log |
-| `results/` | Per-file outputs |
-| `state/current_task.md` | Current task payload |
-| `cache/` | SonarCloud cache (shared) |
-| `lock/` | Per-file lock dirs |
+| Path | Scope | Purpose |
+|------|-------|---------|
+| `$STATE/processed.json` | Shared | Completed files (all sessions) |
+| `$STATE/lock/` | Shared | Per-file lock dirs via `mkdir` |
+| `$STATE/summary.md` | Shared | Running log |
+| `$STATE/results/` | Shared | Per-file outputs |
+| `$STATE/cache/` | Shared | SonarCloud cache |
+| `$STATE/sessions/$SID/` | Per-session | Current task, scratch |
 
 Rules:
-- Resume from `processed.json` for this SID
-- Skip files in `processed.json`
-- Acquire `lock/<filehash>` before processing; skip if held
-- Never lose progress
+- Shared `processed.json` prevents duplicate work across sessions
+- Atomic `mkdir $STATE/lock/<filehash>` to grab a file; skip if exists
+- Always resume shared state; never lose progress
 
 ## Initial Cache
 
@@ -34,20 +33,27 @@ Rules:
   --project-key pabllopf-official_alis --branch master
 ```
 
-Output: `$SESSION_DIR/cache/`
+Output: `$STATE/cache/`
 
 ## Extraction Loop
 
 ```bash
 ./docs/tools/get_info_sonarcloud.py \
   --limit 1 --fetch-source --no-clean --cache-only \
-  --processed-file $SESSION_DIR/processed.json \
-  --output $SESSION_DIR/state/current_task.md
+  --processed-file $STATE/processed.json \
+  --output $STATE/sessions/$SID/current_task.md
 ```
 
 Priority: lowest coverage → highest uncovered lines → highest complexity → largest file.
 
 Terminate on: `NO_REMAINING_COVERAGE_TASKS`
+
+Before processing, acquire lock:
+
+```bash
+FILEHASH=$(md5 -qs "$(cat $STATE/sessions/$SID/current_task.md)")
+mkdir $STATE/lock/$FILEHASH 2>/dev/null || continue  # already taken
+```
 
 ## Agent Policy
 
@@ -66,9 +72,10 @@ Repeat until `NO_REMAINING_COVERAGE_TASKS`:
 1. Populate cache if empty (`--cache`)
 2. Extract next task (`--cache-only`)
 3. `NO_REMAINING_COVERAGE_TASKS` → stop
-4. Spawn worker agent
-5. Wait for completion
-6. Save result → update summary → mark processed → continue
+4. Acquire lock via `mkdir $STATE/lock/<filehash>`; if taken → goto 2
+5. Spawn worker agent
+6. Wait for completion
+7. Save result → append to summary → mark processed → continue
 
 ## Worker Context
 
@@ -122,15 +129,15 @@ Ignore unrelated failures. Generated tests must pass.
 Only if build + generated tests pass. One commit per file.
 
 ```bash
-git add test/** $SESSION_DIR/processed.json $SESSION_DIR/summary.md $SESSION_DIR/results/*
-git commit -m "test: <FileName.cs>"
+git add test/** $STATE/processed.json $STATE/summary.md $STATE/results/*
+git commit -m "test: <FileName.cs> [session $SID]"
 ```
 
 ## Summary Format
 
-Append to `$SESSION_DIR/summary.md`:
+Append to `$STATE/summary.md`:
 ```
-Timestamp: | File: | CoverageBefore: | CoverageAfter: | TestsAdded: | Commit: | Status:
+Timestamp: | Session: $SID | File: | CoverageBefore: | CoverageAfter: | TestsAdded: | Commit: | Status:
 ```
 
 ## Worker Output
