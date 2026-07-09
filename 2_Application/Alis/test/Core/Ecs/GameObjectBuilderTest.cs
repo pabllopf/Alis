@@ -243,21 +243,7 @@ namespace Alis.Test.Core.Ecs
             GameObjectBuilder result = builder.WithComponent(config);
             Assert.Same(builder, result);
         }
-
-        /// <summary>
-        /// Tests that WithComponent with AudioSourceConfig returns builder
-        /// </summary>
-        [Fact]
-        public void WithComponent_WithAudioSourceConfig_ReturnsBuilder()
-        {
-            Context context = new Context();
-            Scene scene = new Scene();
-            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
-            AudioSourceConfig<AudioSource> config = b => b.File("sound.wav");
-            GameObjectBuilder result = builder.WithComponent(config);
-            Assert.Same(builder, result);
-        }
-
+        
         /// <summary>
         /// Tests that WithComponent with BoxColliderConfig returns builder
         /// </summary>

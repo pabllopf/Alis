@@ -5,25 +5,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs
 
     ### Language
     cs
 
     ### Coverage
-    39.3% (Line: 43.2%, Branch: 16.7%)
+    63.4% (Line: 60.7%, Branch: 68.5%)
 
     ### Uncovered Lines
-    158
+    42
 
     ### Uncovered Branches
-    40
+    17
 
     ### Method
-    BoxCollider
+    AudioWriter
 
     ### Complexity / LOC
-    72 / 314 lines
+    41 / 138 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:BoxCollider.cs
+//  File:AudioWriter.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Systems.Scope;
-using Alis.Core.Graphic.OpenGL;
-using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Contacts;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
+using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Encoding.Builders;
 
-namespace Alis.Core.Ecs.Components.Collider
+namespace Alis.Extension.Media.FFmpeg.Audio
 {
     /// <summary>
-    ///     The box collider class
+    ///     The audio writer class
     /// </summary>
-    /// <seealso cref="IBoxCollider" />
-    /// <seealso cref="IOnInit" />
-    /// <seealso cref="IOnUpdate" />
-    public class BoxCollider : IBoxCollider
+    /// <seealso cref="MediaWriter{Frame}" />
+    /// <seealso cref="IDisposable" />
+    public class AudioWriter : MediaWriter<AudioFrame>, IDisposable
     {
         /// <summary>
-        ///     The vertices
+        ///     The ffmpeg
         /// </summary>
-        private static readonly float[] Vertices =
-        {
-            -0.5f, -0.5f,
-            0.5f, -0.5f,
-            0.0f, 0.5f
-        };
+        private readonly string ffmpeg;
 
+        /// <summary>
+        ///     The csc
+        /// </summary>
+        private CancellationTokenSource csc;
+
+        /// <summary>
+        ///     The ffmpegp
+        /// </summary>
+        internal Process Ffmpegp;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/Audio/AudioWriterTests.cs
 
     Priority
-    HIGH (NEW)
+    MEDIUM (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage BoxCollider.cs
+    Commit format: test: coverage AudioWriter.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

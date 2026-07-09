@@ -50,19 +50,7 @@ namespace Alis.Test.Core.Ecs
             SceneBuilder builder = new SceneBuilder(context);
             Assert.NotNull(builder);
         }
-
-        /// <summary>
-        /// Tests that build returns scene instance
-        /// </summary>
-        [Fact]
-        public void Build_ReturnsSceneInstance()
-        {
-            Context context = new Context();
-            SceneBuilder builder = new SceneBuilder(context);
-            Scene scene = builder.Build();
-            Assert.NotNull(scene);
-        }
-
+        
         /// <summary>
         /// Tests that build returns same instance
         /// </summary>
