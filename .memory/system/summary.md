@@ -24,6 +24,7 @@
 | 2026-07-09 20:20:00 | ImGuiP5.cs | 0.0% | ~70-75% | +70-75% | 77c354b56 | Completed |
 | 2026-07-09 21:29:00 | ImGuiP6.cs | 0.0% | ~85% | +85% | 63d37f3f4 | Completed |
 | 2026-07-09 21:50:00 | NativeWindow.cs | 0.0% | N/A | N/A | 8d74acf22 | Completed (tests skip on macOS via RequiresDisplayAttribute) |
+| 2026-07-09 22:10:00 | MacNativePlatform.cs | 0.0% | N/A | N/A | 99a0fd0e6 | Completed |
 
 ## Test Files Created
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`
@@ -39,3 +40,4 @@
 - `ImGuiP5RemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImGuiP5RemainingCoverageTests.cs`
 - `ImGuiP6RemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImGuiP6RemainingCoverageTests.cs`
 - `NativeWindowRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/NativeWindowRemainingCoverageTests.cs`
+- `MacNativePlatformRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/4_Operation/Graphic/test/Platforms/Osx/MacNativePlatformRemainingCoverageTests.cs`
