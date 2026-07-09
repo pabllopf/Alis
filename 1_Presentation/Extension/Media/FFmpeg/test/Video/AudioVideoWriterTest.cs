@@ -24,6 +24,7 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
@@ -698,5 +699,52 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 }
             }
         }
+
+        #region WriteFrame Happy Path (via Reflection Setup)
+
+        /// <summary>
+        ///     Tests that <see cref="AudioVideoWriter.WriteFrame(VideoFrame)" /> writes
+        ///     frame data to <see cref="AudioVideoWriter.InputDataStreamVideo" /> when the
+        ///     writer is opened. Uses reflection to set preconditions that would normally
+        ///     be set by <see cref="AudioVideoWriter.OpenWrite" /> (which requires ffmpeg).
+        /// </summary>
+        [Fact]
+        public void WriteFrame_Video_WhenOpened_WritesRawDataToInputDataStreamVideo()
+        {
+            // Arrange
+            using MemoryStream destStream = new();
+            AudioVideoWriter writer = new(destStream, 640, 480, 30.0, 2, 44100, 16, null, null);
+
+            try
+            {
+                FieldInfo openedField = typeof(AudioVideoWriter).GetField("<OpenedForWriting>k__BackingField",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                openedField.SetValue(writer, true);
+
+                FieldInfo inputVideoField = typeof(AudioVideoWriter).GetField("<InputDataStreamVideo>k__BackingField",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                using MemoryStream dataStream = new();
+                inputVideoField.SetValue(writer, dataStream);
+
+                using VideoFrame frame = new(2, 2);
+                byte[] expectedData = frame.RawData;
+
+                // Act
+                writer.WriteFrame(frame);
+
+                // Assert
+                Assert.Equal(expectedData.Length, dataStream.Length);
+                Assert.Equal(expectedData, dataStream.ToArray());
+            }
+            finally
+            {
+                FieldInfo resetField = typeof(AudioVideoWriter).GetField("<OpenedForWriting>k__BackingField",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                resetField.SetValue(writer, false);
+                writer.Dispose();
+            }
+        }
+
+        #endregion
     }
 }
