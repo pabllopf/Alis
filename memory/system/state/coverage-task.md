@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 1 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 2 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs
+    pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs
 
     ### Language
     cs
 
     ### Coverage
-    56.3% (Line: 57.4%, Branch: 53.9%)
+    59.1% (Line: 54.1%, Branch: 73.5%)
 
     ### Uncovered Lines
-    75
+    90
 
     ### Uncovered Branches
-    35
+    18
 
     ### Method
-    cs
+    BrowserPlayer
 
     ### Complexity / LOC
-    66 / 218 lines
+    47 / 248 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioVideoWriter.cs
+//  File:BrowserPlayer.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.IO;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading;
-using Alis.Extension.Media.FFmpeg.Audio;
-using Alis.Extension.Media.FFmpeg.Encoding;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using Alis.Core.Aspect.Memory;
+using Alis.Core.Audio.Interfaces;
 
-namespace Alis.Extension.Media.FFmpeg.Video
+namespace Alis.Core.Audio.Players
 {
     /// <summary>
-    ///     The audio video writer class
+    ///     The browser player class
     /// </summary>
-    /// <seealso cref="IDisposable" />
-    public class AudioVideoWriter : IDisposable
+    /// <seealso cref="IPlayer" />
+    internal class BrowserPlayer : IPlayer
     {
         /// <summary>
-        ///     The ffmpeg
+        ///     The buffer
         /// </summary>
-        private readonly string ffmpeg;
+        private readonly uint _buffer;
 
         /// <summary>
-        ///     The connected socket
+        ///     The source
         /// </summary>
-        private Socket connectedSocket;
+        private readonly uint _source;
 
         /// <summary>
-        ///     The csc
+        ///     The paused
         /// </summary>
-        private CancellationTokenSource csc;
+        private bool _paused;
+
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/Video/AudioVideoWriterTests.cs
+    pabllopf-official_alis:4_Operation/Audio/test/Players/BrowserPlayerTests.cs
 
     Priority
-    HIGH (NEW)
+    MEDIUM (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage AudioVideoWriter.cs
+    Commit format: test: coverage BrowserPlayer.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
