@@ -31,6 +31,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiNative.igDestroyContext(_ctx);
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetTooltip()
         {
             ImGui.NewFrame();
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushFont_And_PopFont()
         {
             ImGui.NewFrame();
@@ -75,7 +76,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushFont_WithNullFont_DoesNotThrow()
         {
             ImGui.NewFrame();
@@ -86,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopFont_AfterPush_DoesNotThrow()
         {
             ImGui.NewFrame();
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetAllocatorFunctions_TwoArgs_WithNull_DoesNotThrow()
         {
             ImGui.NewFrame();
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetAllocatorFunctions_ThreeArgs_WithNull_DoesNotThrow()
         {
             ImGui.NewFrame();
@@ -116,7 +117,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetDragDropPayload_DefaultCond()
         {
             ImGui.NewFrame();
@@ -125,7 +126,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetDragDropPayload_WithCond()
         {
             ImGui.NewFrame();
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetAllocatorFunctions_ShouldExposeTwoOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static)
@@ -142,7 +143,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(methods.Length >= 2);
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetDragDropPayload_ShouldExposeTwoOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static)
@@ -150,19 +151,19 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(methods.Length >= 2);
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetTooltip_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetTooltip", BindingFlags.Public | BindingFlags.Static));
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushFont_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("PushFont", BindingFlags.Public | BindingFlags.Static));
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopFont_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("PopFont", BindingFlags.Public | BindingFlags.Static));

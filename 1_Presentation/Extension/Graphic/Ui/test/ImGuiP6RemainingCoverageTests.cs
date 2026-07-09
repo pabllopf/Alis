@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -23,7 +24,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiNative.igDestroyContext(_ctx);
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputFloat4_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -35,7 +36,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputInt_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputInt2_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputInt4_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -73,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputScalar_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -96,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputScalarN_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InvisibleButton_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsAnyItemQueries_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -143,7 +144,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsItemStateQueries_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsItemClicked_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsItemHovered_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -185,7 +186,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsKeyMethods_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -198,7 +199,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsMouseMethods_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -212,7 +213,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsMouseDragging_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -223,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsMouseHoveringRect_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -236,7 +237,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsMousePosValid_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -248,7 +249,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsPopupOpen_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -259,7 +260,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsRectVisible_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -270,7 +271,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsWindowStateQueries_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -282,7 +283,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsWindowFocused_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -293,7 +294,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsWindowHovered_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -304,7 +305,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LabelText_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -314,14 +315,14 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LoadIniSettingsFromMemory_AllOverloads_ShouldExecute()
         {
             ImGui.LoadIniSettingsFromMemory("");
             ImGui.LoadIniSettingsFromMemory("", 0u);
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LogButtons_Finish_Text_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -333,7 +334,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.LogFinish();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LogToClipboard_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -346,7 +347,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LogToTty_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -359,7 +360,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MemAlloc_MemFree_ShouldExecute()
         {
             IntPtr ptr = ImGui.MemAlloc(100u);
@@ -367,7 +368,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.MemFree(ptr);
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MenuItem_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();

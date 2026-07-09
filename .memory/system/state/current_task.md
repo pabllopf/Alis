@@ -1,11 +1,11 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 20 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs
 
     ### Language
     cs
@@ -14,16 +14,16 @@
     0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    489
+    188
 
     ### Uncovered Branches
-    22
+    24
 
     ### Method
-    ImGuiP7
+    Shader
 
     ### Complexity / LOC
-    155 / 640 lines
+    54 / 349 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiP7.cs
+//  File:Shader.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Text;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Security;
+using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Windows;
+using LoadingFailedException = Alis.Extension.Graphic.Sfml.Windows.LoadingFailedException;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Extension.Graphic.Sfml.Render
 {
     /// <summary>
-    ///     The im gui class
+    ///     Wrapper for pixel shaders
     /// </summary>
-    public static partial class ImGui
+    public class Shader : ObjectBase
     {
         /// <summary>
-        ///     Describes whether menu item
+        ///     Special value that can be passed to SetParameter,
+        ///     and that represents the texture of the object being drawn
         /// </summary>
-        /// <param name="label">The label</param>
-        /// <param name="shortcut">The shortcut</param>
-        /// <param name="pSelected">The selected</param>
-        /// <param name="enabled">The enabled</param>
-        /// <returns>The bool</returns>
-        public static bool MenuItem(string label, string shortcut, ref bool pSelected, bool enabled)
-        {
-            byte ret = ImGuiNative.igMenuItem_BoolPtr(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), pSelected, enabled);
-            return ret != 0;
-        }
+        public static readonly CurrentTextureType CurrentTexture = null;
 
         /// <summary>
-        ///     News the frame
+        ///     The texture
         /// </summary>
-        public static void NewFrame()
-        {
-            ImGuiNative.igNewFrame();
+        private readonly Dictionary<string, Texture> myTextures = new Dictionary<string, Texture>();
+
+
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiP7Tests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/ShaderTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImGuiP7.cs
+    Commit format: test: coverage Shader.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

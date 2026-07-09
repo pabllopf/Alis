@@ -29,6 +29,7 @@
 
 using System.Linq;
 using System.Reflection;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies begin-family APIs expose overload sets.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginFamily_ShouldExposeOverloads()
         {
             MethodInfo[] begin = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "Begin").ToArray();
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies drag-drop payload acceptance overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AcceptDragDropPayload_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "AcceptDragDropPayload").ToArray();
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies BeginChildFrame overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginChildFrame_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "BeginChildFrame").ToArray();
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies BeginCombo overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginCombo_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "BeginCombo").ToArray();
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies BeginDisabled overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginDisabled_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "BeginDisabled").ToArray();
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies drag-drop source and target methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginDragDrop_ShouldExposeOverloads()
         {
             MethodInfo[] sourceMethods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "BeginDragDropSource").ToArray();
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies BeginListBox overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginListBox_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "BeginListBox").ToArray();
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies BeginMenu overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginMenu_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "BeginMenu").ToArray();
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies popup-family APIs expose expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginPopup_ShouldExposeOverloads()
         {
             MethodInfo[] popup = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "BeginPopup").ToArray();
@@ -152,7 +153,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies BeginTabBar overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginTabBar_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "BeginTabBar").ToArray();
@@ -163,7 +164,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies BeginTabItem overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginTabItem_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "BeginTabItem").ToArray();
@@ -174,7 +175,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies BeginTable overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginTable_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "BeginTable").ToArray();
@@ -185,7 +186,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Button overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Button_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "Button").ToArray();
@@ -196,7 +197,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Checkbox and CheckboxFlags overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Checkbox_ShouldExposeOverloads()
         {
             MethodInfo[] flagsMethods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "CheckboxFlags").ToArray();
@@ -208,7 +209,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies CollapsingHeader overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CollapsingHeader_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "CollapsingHeader").ToArray();
@@ -219,7 +220,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ColorButton overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorButton_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ColorButton").ToArray();
@@ -230,7 +231,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies color-conversion utility methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorConvert_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("ColorConvertFloat4ToU32"));
@@ -242,7 +243,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ColorEdit3 overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorEdit3_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ColorEdit3").ToArray();
@@ -253,7 +254,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ColorEdit4 overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorEdit4_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ColorEdit4").ToArray();
@@ -264,7 +265,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ColorPicker3 overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorPicker3_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ColorPicker3").ToArray();
@@ -275,7 +276,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ColorPicker4 overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorPicker4_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ColorPicker4").ToArray();
@@ -286,7 +287,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Columns overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Columns_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "Columns").ToArray();
@@ -297,7 +298,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Combo overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Combo_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "Combo").ToArray();
@@ -308,7 +309,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies basic singleton utility methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BasicSingletons_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("AlignTextToFramePadding"));

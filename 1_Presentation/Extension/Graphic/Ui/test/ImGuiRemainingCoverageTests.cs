@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -23,7 +24,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiNative.igDestroyContext(_ctx);
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -36,7 +37,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt2_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt3_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt4_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -75,7 +76,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SmallButton_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Spacing_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StyleColorsClassic_AllOverloads_ShouldExecute()
         {
             ImGui.StyleColorsClassic();
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.StyleColorsClassic(style);
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StyleColorsDark_AllOverloads_ShouldExecute()
         {
             ImGui.StyleColorsDark();
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.StyleColorsDark(style);
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StyleColorsLight_AllOverloads_ShouldExecute()
         {
             ImGui.StyleColorsLight();
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.StyleColorsLight(style);
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TabItemButton_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableGetColumnCount_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -147,7 +148,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableGetColumnFlags_WithIndex_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -166,7 +167,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableGetColumnIndex_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -181,7 +182,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableGetRowIndex_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -196,7 +197,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableGetSortSpecs_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -211,7 +212,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableHeader_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -229,7 +230,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableHeadersRow_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -245,7 +246,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableNextColumn_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -260,7 +261,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableNextRow_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -277,7 +278,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableSetBgColor_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -295,7 +296,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableSetColumnEnabled_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -312,7 +313,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableSetColumnIndex_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -330,7 +331,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableSetupColumn_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -345,7 +346,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MenuItem_WithEnabled_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -364,14 +365,14 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImFontConfig_ShouldExecute()
         {
             ImFontConfigPtr ptr = ImGui.ImFontConfig();
             _ = ptr;
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockBuilder_Basic_Chain_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -392,7 +393,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockBuilderSetNodeFlags_ShouldBlock()
         {
             ImGui.NewFrame();
