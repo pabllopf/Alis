@@ -124,6 +124,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result.Count >= 2);
         }
 
+        /// <summary>
+        /// Tests that douglas peucker simplify with three points should return same count
+        /// </summary>
         [Fact]
         public void DouglasPeuckerSimplify_WithThreePoints_ShouldReturnSameCount()
         {
@@ -139,6 +142,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(3, result.Count);
         }
 
+        /// <summary>
+        /// Tests that douglas peucker simplify with collinear points should reduce count
+        /// </summary>
         [Fact]
         public void DouglasPeuckerSimplify_WithCollinearPoints_ShouldReduceCount()
         {
@@ -155,6 +161,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result.Count <= 2);
         }
 
+        /// <summary>
+        /// Tests that merge parallel edges with three points should return same count
+        /// </summary>
         [Fact]
         public void MergeParallelEdges_WithThreePoints_ShouldReturnSameCount()
         {
@@ -170,6 +179,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that reduce by nth with three points should return same count
+        /// </summary>
         [Fact]
         public void ReduceByNth_WithThreePoints_ShouldReturnSameCount()
         {
@@ -185,6 +197,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(3, result.Count);
         }
 
+        /// <summary>
+        /// Tests that reduce by nth with zero nth should return original
+        /// </summary>
         [Fact]
         public void ReduceByNth_WithZeroNth_ShouldReturnOriginal()
         {
@@ -201,6 +216,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(4, result.Count);
         }
 
+        /// <summary>
+        /// Tests that reduce by area with three points should return same count
+        /// </summary>
         [Fact]
         public void ReduceByArea_WithThreePoints_ShouldReturnSameCount()
         {
@@ -216,6 +234,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(3, result.Count);
         }
 
+        /// <summary>
+        /// Tests that reduce by area with negative tolerance should throw
+        /// </summary>
         [Fact]
         public void ReduceByArea_WithNegativeTolerance_ShouldThrow()
         {
@@ -230,6 +251,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Throws<ArgumentOutOfRangeException>(() => SimplifyTools.ReduceByArea(vertices, -1f));
         }
 
+        /// <summary>
+        /// Tests that collinear simplify with empty vertices should return empty
+        /// </summary>
         [Fact]
         public void CollinearSimplify_WithEmptyVertices_ShouldReturnEmpty()
         {
@@ -238,6 +262,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that collinear simplify with collinear points should reduce
+        /// </summary>
         [Fact]
         public void CollinearSimplify_WithCollinearPoints_ShouldReduce()
         {
@@ -254,6 +281,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result.Count < vertices.Count);
         }
 
+        /// <summary>
+        /// Tests that merge identical points with all identical should return single
+        /// </summary>
         [Fact]
         public void MergeIdenticalPoints_WithAllIdentical_ShouldReturnSingle()
         {
@@ -269,6 +299,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Single(result);
         }
 
+        /// <summary>
+        /// Tests that reduce by distance with close points should reduce
+        /// </summary>
         [Fact]
         public void ReduceByDistance_WithClosePoints_ShouldReduce()
         {
@@ -285,6 +318,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result.Count < 4);
         }
 
+        /// <summary>
+        /// Tests that reduce by distance with three points should return same
+        /// </summary>
         [Fact]
         public void ReduceByDistance_WithThreePoints_ShouldReturnSame()
         {

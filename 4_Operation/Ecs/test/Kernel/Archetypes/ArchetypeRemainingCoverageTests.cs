@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 {
+    /// <summary>
+    /// The archetype remaining coverage tests class
+    /// </summary>
     public class ArchetypeRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that release arrays on archetype does not throw
+        /// </summary>
         [Fact]
         public void ReleaseArrays_OnArchetype_DoesNotThrow()
         {
@@ -53,6 +59,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             archetype.ReleaseArrays();
         }
 
+        /// <summary>
+        /// Tests that update empty archetype returns early
+        /// </summary>
         [Fact]
         public void Update_EmptyArchetype_ReturnsEarly()
         {
@@ -62,6 +71,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that update with range non empty archetype processes correct range
+        /// </summary>
         [Fact]
         public void UpdateWithRange_NonEmptyArchetype_ProcessesCorrectRange()
         {
@@ -74,6 +86,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that create deferred entity location non overflow multiple entities resolves correctly
+        /// </summary>
         [Fact]
         public void CreateDeferredEntityLocation_NonOverflowMultipleEntities_ResolvesCorrectly()
         {
@@ -97,6 +112,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(5, p3.X);
         }
 
+        /// <summary>
+        /// Tests that resolve deferred entity creations non overflow updates entity table
+        /// </summary>
         [Fact]
         public void ResolveDeferredEntityCreations_NonOverflow_UpdatesEntityTable()
         {
@@ -123,6 +141,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             }
         }
 
+        /// <summary>
+        /// Tests that modify component location table when not resizing sets component table
+        /// </summary>
         [Fact]
         public void ModifyComponentLocationTable_WhenNotResizing_SetsComponentTable()
         {
@@ -140,6 +161,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(e5.IsAlive);
         }
 
+        /// <summary>
+        /// Tests that get component index non generic overload with component id
+        /// </summary>
         [Fact]
         public void GetComponentIndex_NonGenericOverload_WithComponentId()
         {
@@ -151,6 +175,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.False(entity.Has<Health>());
         }
 
+        /// <summary>
+        /// Tests that data property get returns fields with map and components
+        /// </summary>
         [Fact]
         public void DataProperty_Get_ReturnsFieldsWithMapAndComponents()
         {
@@ -164,6 +191,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(data.Components.Length > 0);
         }
 
+        /// <summary>
+        /// Tests that archetype with 5 components creates and validates all components
+        /// </summary>
         [Fact]
         public void ArchetypeWith5Components_CreatesAndValidates_AllComponents()
         {
@@ -190,6 +220,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(25, armor.Value);
         }
 
+        /// <summary>
+        /// Tests that archetype with 6 components creates and validates all components
+        /// </summary>
         [Fact]
         public void ArchetypeWith6Components_CreatesAndValidates_AllComponents()
         {
@@ -212,6 +245,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(entity.Has<TagComponent>());
         }
 
+        /// <summary>
+        /// Tests that archetype with 7 components creates and validates all components
+        /// </summary>
         [Fact]
         public void ArchetypeWith7Components_CreatesAndValidates_AllComponents()
         {
@@ -240,6 +276,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal("test", ct.Name);
         }
 
+        /// <summary>
+        /// Tests that archetype with 8 components creates and validates all components
+        /// </summary>
         [Fact]
         public void ArchetypeWith8Components_CreatesAndValidates_AllComponents()
         {
@@ -272,6 +311,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(3.14f, ac.Data);
         }
 
+        /// <summary>
+        /// Tests that create entity location when array full resizes
+        /// </summary>
         [Fact]
         public void CreateEntityLocation_WhenArrayFull_Resizes()
         {
@@ -293,6 +335,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(100, count);
         }
 
+        /// <summary>
+        /// Tests that ensure capacity when already sufficient returns early
+        /// </summary>
         [Fact]
         public void EnsureCapacity_WhenAlreadySufficient_ReturnsEarly()
         {
@@ -314,6 +359,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(countBefore, scene.EntityCount);
         }
 
+        /// <summary>
+        /// Tests that create or get existing archetype when already exists returns existing
+        /// </summary>
         [Fact]
         public void CreateOrGetExistingArchetype_WhenAlreadyExists_ReturnsExisting()
         {
@@ -331,6 +379,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(3, p2.X);
         }
 
+        /// <summary>
+        /// Tests that get adjacent archetype cold with add and remove edge types
+        /// </summary>
         [Fact]
         public void GetAdjacentArchetypeCold_WithAddAndRemoveEdgeTypes()
         {
@@ -362,6 +413,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(entity.Has<Health>());
         }
 
+        /// <summary>
+        /// Tests that delete entity from storage swap and delete last entity moves to deleted slot
+        /// </summary>
         [Fact]
         public void DeleteEntityFromStorage_SwapAndDelete_LastEntityMovesToDeletedSlot()
         {
@@ -388,6 +442,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(100, p3.X);
         }
 
+        /// <summary>
+        /// Tests that resize when create entity location resizes correctly
+        /// </summary>
         [Fact]
         public void Resize_WhenCreateEntityLocation_ResizesCorrectly()
         {
@@ -411,6 +468,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(400, scene.EntityCount);
         }
 
+        /// <summary>
+        /// Tests that get hash with odd component count computes correct hash
+        /// </summary>
         [Fact]
         public void GetHash_WithOddComponentCount_ComputesCorrectHash()
         {
@@ -437,6 +497,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(5, p2.X);
         }
 
+        /// <summary>
+        /// Tests that get hash with even component count computes correct hash
+        /// </summary>
         [Fact]
         public void GetHash_WithEvenComponentCount_ComputesCorrectHash()
         {
@@ -458,6 +521,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(entity2.IsAlive);
         }
 
+        /// <summary>
+        /// Tests that create deferred entity location temp buffers when index exceeds length resizes
+        /// </summary>
         [Fact]
         public void CreateDeferredEntityLocationTempBuffers_WhenIndexExceedsLength_Resizes()
         {
@@ -482,6 +548,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(count, found);
         }
 
+        /// <summary>
+        /// Tests that resolve deferred entity creations with non overflow multiple batches
+        /// </summary>
         [Fact]
         public void ResolveDeferredEntityCreations_WithNonOverflow_MultipleBatches()
         {
@@ -508,6 +577,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(9, count);
         }
 
+        /// <summary>
+        /// Tests that archetype type array returns correct types
+        /// </summary>
         [Fact]
         public void ArchetypeTypeArray_ReturnsCorrectTypes()
         {
@@ -519,6 +591,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(types);
         }
 
+        /// <summary>
+        /// Tests that delete entity multiple entities all deleted cleanly
+        /// </summary>
         [Fact]
         public void DeleteEntity_MultipleEntities_AllDeletedCleanly()
         {
@@ -540,6 +615,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(0, scene.EntityCount);
         }
 
+        /// <summary>
+        /// Tests that delete entity from middle remaining entity data preserved
+        /// </summary>
         [Fact]
         public void DeleteEntity_FromMiddle_RemainingEntityDataPreserved()
         {
@@ -565,6 +643,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(1000, p4.X);
         }
 
+        /// <summary>
+        /// Tests that entity count after multiple create delete cycles accurate
+        /// </summary>
         [Fact]
         public void EntityCount_AfterMultipleCreateDeleteCycles_Accurate()
         {

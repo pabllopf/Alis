@@ -40,15 +40,27 @@ namespace Alis.Extension.Ads.GoogleAds.Test
     /// </summary>
     public class AdsManagerEdgeCaseTests : IDisposable
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private Context _context;
+        /// <summary>
+        /// The ads manager
+        /// </summary>
         private AdsManager _adsManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AdsManagerEdgeCaseTests"/> class
+        /// </summary>
         public AdsManagerEdgeCaseTests()
         {
             _context = new Context();
             _adsManager = new AdsManager(_context);
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _adsManager?.Dispose();

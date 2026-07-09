@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The animator remaining coverage tests class
+    /// </summary>
     public class AnimatorRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that get current frame with empty animation list returns default frame
+        /// </summary>
         [Fact]
         public void GetCurrentFrame_WithEmptyAnimationList_ReturnsDefaultFrame()
         {
@@ -16,6 +22,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Null(frame.NameFile);
         }
 
+        /// <summary>
+        /// Tests that on update with internal elapsed time advances frame
+        /// </summary>
         [Fact]
         public void OnUpdate_WithInternalElapsedTime_AdvancesFrame()
         {
@@ -44,6 +53,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(1, animator.CurrentFrameIndex);
         }
 
+        /// <summary>
+        /// Tests that on update with exact frame duration advances frame
+        /// </summary>
         [Fact]
         public void OnUpdate_WithExactFrameDuration_AdvancesFrame()
         {
@@ -72,6 +84,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(1, animator.CurrentFrameIndex);
         }
 
+        /// <summary>
+        /// Tests that on update advances multiple frames when elapsed time is large
+        /// </summary>
         [Fact]
         public void OnUpdate_AdvancesMultipleFrames_WhenElapsedTimeIsLarge()
         {
@@ -101,6 +116,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(1, animator.CurrentFrameIndex);
         }
 
+        /// <summary>
+        /// Tests that on update with empty animation list does not throw
+        /// </summary>
         [Fact]
         public void OnUpdate_WithEmptyAnimationList_DoesNotThrow()
         {
@@ -110,6 +128,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animator.OnUpdate(null!);
         }
 
+        /// <summary>
+        /// Tests that on update with zero speed and elapsed time does not advance
+        /// </summary>
         [Fact]
         public void OnUpdate_WithZeroSpeedAndElapsedTime_DoesNotAdvance()
         {

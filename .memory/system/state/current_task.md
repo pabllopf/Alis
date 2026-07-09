@@ -1,26 +1,29 @@
 
+[INFO] Found 1 coverage targets. (limited to 1 files) Outputting AI-ready tasks:
+
+
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs
 
     ### Language
     cs
 
     ### Coverage
-    97.8% (Line: 98.6%, Branch: 95.0%)
+    99.6% (Line: 100.0%, Branch: 98.6%)
 
     ### Uncovered Lines
-    1
+    0
 
     ### Uncovered Branches
     1
 
     ### Method
-    Animator
+    BayazitDecomposer
 
     ### Complexity / LOC
-    29 / 98 lines
+    55 / 205 lines
 
     ### Source Code
     ```csharp
@@ -31,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Animator.cs
+//  File:BayazitDecomposer.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -54,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Aspect.Time;
-using Alis.Core.Ecs.Systems.Scope;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Core.Ecs.Components.Render
+namespace Alis.Core.Physic.Common.Decomposition
 {
+    //From phed rev 36: http://code.google.com/p/phed/source/browse/trunk/Polygon.cpp
+
     /// <summary>
-    ///     The animator
+    ///     Convex decomposition algorithm created by Mark Bayazit (http://mnbayazit.com/)
+    ///     Properties:
+    ///     - Tries to decompose using polygons instead of triangles.
+    ///     - Tends to produce optimal results with low processing time.
+    ///     - Running time is O(nr), n = number of vertices, r = reflex vertices.
+    ///     - Does not support holes.
+    ///     For more information about this algorithm, see http://mnbayazit.com/406/bayazit
     /// </summary>
-    public struct Animator : IAnimator
+    internal static class BayazitDecomposer
     {
         /// <summary>
-        ///     Gets or sets the value of the animations
+        ///     Decompose the polygon into several smaller non-concave polygon.
+        ///     If the polygon is already convex, it will return the original polygon, unless it is over
+        ///     Settings.MaxPolygonVertices.
         /// </summary>
-        public List<Animation> Animations { get; set; }
+        public static List<Vertices> ConvexPartition(Vertices vertices) => TriangulatePolygon(vertices);
 
         /// <summary>
-        ///     Gets or sets the value of the current animation index
+        ///     Triangulates the polygon using the specified vertices
         /// </summary>
-        public int CurrentAnimationIndex { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the current frame index
-        /// </summary>
-        public int CurrentFrameIndex { get; set; }
-
-        /// <summary>
-        ///     The clock
-        /// </summary>
-        private readonly Clock _clock;
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The list</returns>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:2_Application/Alis/test/Core/Ecs/Components/Render/AnimatorTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Common/Decomposition/BayazitDecomposerTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Animator.cs
+    Commit format: test: coverage BayazitDecomposer.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

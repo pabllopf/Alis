@@ -82,6 +82,9 @@ namespace Alis.Extension.Network.Test.Internal
     /// </summary>
     internal class PartialReadStream : MemoryStream
     {
+        /// <summary>
+        /// The max chunk size
+        /// </summary>
         private readonly int _maxChunkSize;
 
         /// <summary>

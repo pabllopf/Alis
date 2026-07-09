@@ -6,18 +6,33 @@ using Xunit;
 
 namespace Alis.Extension.Ads.GoogleAds.Test
 {
+    /// <summary>
+    /// The ads manager remaining coverage tests class
+    /// </summary>
     public class AdsManagerRemainingCoverageTests
     {
+        /// <summary>
+        /// Creates the config
+        /// </summary>
+        /// <returns>The ad configuration</returns>
         private static AdConfiguration CreateConfig()
         {
             return new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
         }
 
+        /// <summary>
+        /// Creates the context
+        /// </summary>
+        /// <returns>A mock of context</returns>
         private static Mock<Context> CreateContext()
         {
             return new Mock<Context>();
         }
 
+        /// <summary>
+        /// Tests that load banner ad async when subscriber throws and failed to load has no subscribers should not throw
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Simulated banner load failure</exception>
         [Fact]
         public async Task LoadBannerAdAsync_WhenSubscriberThrowsAndFailedToLoadHasNoSubscribers_ShouldNotThrow()
         {
@@ -33,6 +48,10 @@ namespace Alis.Extension.Ads.GoogleAds.Test
             manager.Dispose();
         }
 
+        /// <summary>
+        /// Tests that load interstitial ad async when subscriber throws and failed to load has no subscribers should not throw
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Simulated interstitial load failure</exception>
         [Fact]
         public async Task LoadInterstitialAdAsync_WhenSubscriberThrowsAndFailedToLoadHasNoSubscribers_ShouldNotThrow()
         {
@@ -48,6 +67,10 @@ namespace Alis.Extension.Ads.GoogleAds.Test
             manager.Dispose();
         }
 
+        /// <summary>
+        /// Tests that load rewarded video ad async when subscriber throws and failed to load has no subscribers should not throw
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Simulated rewarded load failure</exception>
         [Fact]
         public async Task LoadRewardedVideoAdAsync_WhenSubscriberThrowsAndFailedToLoadHasNoSubscribers_ShouldNotThrow()
         {

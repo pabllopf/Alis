@@ -165,10 +165,22 @@ namespace Alis.Test.Core.Ecs.Systems.Manager
         /// </summary>
         private sealed class TestManager : AManager
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestManager"/> class
+            /// </summary>
+            /// <param name="context">The context</param>
             public TestManager(Context context) : base(context)
             {
             }
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestManager"/> class
+            /// </summary>
+            /// <param name="id">The id</param>
+            /// <param name="name">The name</param>
+            /// <param name="tag">The tag</param>
+            /// <param name="isEnable">The is enable</param>
+            /// <param name="context">The context</param>
             public TestManager(string id, string name, string tag, bool isEnable, Context context)
                 : base(id, name, tag, isEnable, context)
             {
@@ -180,18 +192,46 @@ namespace Alis.Test.Core.Ecs.Systems.Manager
         /// </summary>
         private sealed class OverrideTestManager : AManager
         {
+            /// <summary>
+            /// Gets or sets the value of the on enable called
+            /// </summary>
             public bool OnEnableCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on disable called
+            /// </summary>
             public bool OnDisableCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on reset called
+            /// </summary>
             public bool OnResetCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the on destroy called
+            /// </summary>
             public bool OnDestroyCalled { get; private set; }
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="OverrideTestManager"/> class
+            /// </summary>
+            /// <param name="context">The context</param>
             public OverrideTestManager(Context context) : base(context)
             {
             }
 
+            /// <summary>
+            /// Ons the enable
+            /// </summary>
             public override void OnEnable() => OnEnableCalled = true;
+            /// <summary>
+            /// Ons the disable
+            /// </summary>
             public override void OnDisable() => OnDisableCalled = true;
+            /// <summary>
+            /// Ons the reset
+            /// </summary>
             public override void OnReset() => OnResetCalled = true;
+            /// <summary>
+            /// Ons the destroy
+            /// </summary>
             public override void OnDestroy() => OnDestroyCalled = true;
         }
     }

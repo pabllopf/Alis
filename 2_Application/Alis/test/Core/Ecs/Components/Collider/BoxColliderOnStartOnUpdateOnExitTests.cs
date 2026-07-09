@@ -203,6 +203,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         /// </summary>
         internal sealed class MockGameObject : IGameObject
         {
+            /// <summary>
+            /// The transform
+            /// </summary>
             private Transform _transform;
 
             /// <summary>

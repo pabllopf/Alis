@@ -31,6 +31,9 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Memory.Test
 {
+    /// <summary>
+    /// The asset registry collection definition class
+    /// </summary>
     [CollectionDefinition("AssetRegistryCollection", DisableParallelization = true)]
     public class AssetRegistryCollectionDefinition
     {

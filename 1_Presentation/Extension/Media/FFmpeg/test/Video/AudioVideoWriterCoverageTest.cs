@@ -44,15 +44,27 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
     /// </summary>
     public class AudioVideoWriterCoverageTest : IDisposable
     {
+        /// <summary>
+        /// The test file
+        /// </summary>
         private readonly string _testFile;
+        /// <summary>
+        /// The test stream
+        /// </summary>
         private readonly MemoryStream _testStream;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioVideoWriterCoverageTest"/> class
+        /// </summary>
         public AudioVideoWriterCoverageTest()
         {
             _testFile = Path.GetTempFileName();
             _testStream = new MemoryStream();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!string.IsNullOrEmpty(_testFile) && File.Exists(_testFile))

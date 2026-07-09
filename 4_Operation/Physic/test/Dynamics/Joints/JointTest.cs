@@ -251,17 +251,51 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         /// <seealso cref="Joint" />
         internal class BreakableJoint : Joint
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="BreakableJoint"/> class
+            /// </summary>
+            /// <param name="bodyA">The body</param>
+            /// <param name="bodyB">The body</param>
             public BreakableJoint(Body bodyA, Body bodyB) : base(bodyA, bodyB) => JointType = JointType.Unknown;
 
+            /// <summary>
+            /// Gets or sets the value of the world anchor a
+            /// </summary>
             public override Vector2F WorldAnchorA { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the world anchor b
+            /// </summary>
             public override Vector2F WorldAnchorB { get; set; }
 
+            /// <summary>
+            /// Gets the reaction force using the specified inv dt
+            /// </summary>
+            /// <param name="invDt">The inv dt</param>
+            /// <returns>The vector</returns>
             public override Vector2F GetReactionForce(float invDt) => new Vector2F(100, 0);
 
+            /// <summary>
+            /// Gets the reaction torque using the specified inv dt
+            /// </summary>
+            /// <param name="invDt">The inv dt</param>
+            /// <returns>The float</returns>
             public override float GetReactionTorque(float invDt) => 0.0f;
 
+            /// <summary>
+            /// Inits the velocity constraints using the specified data
+            /// </summary>
+            /// <param name="data">The data</param>
             internal override void InitVelocityConstraints(ref SolverData data) { }
+            /// <summary>
+            /// Solves the velocity constraints using the specified data
+            /// </summary>
+            /// <param name="data">The data</param>
             internal override void SolveVelocityConstraints(ref SolverData data) { }
+            /// <summary>
+            /// Solves the position constraints using the specified data
+            /// </summary>
+            /// <param name="data">The data</param>
+            /// <returns>The bool</returns>
             internal override bool SolvePositionConstraints(ref SolverData data) => true;
         }
 

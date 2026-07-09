@@ -47,7 +47,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
     /// </summary>
     public class AudioVideoWriterRemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The test file
+        /// </summary>
         private readonly string _testFile;
+        /// <summary>
+        /// The test stream
+        /// </summary>
         private readonly MemoryStream _testStream;
 
         /// <summary>

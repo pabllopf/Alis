@@ -44,15 +44,27 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// </summary>
     public class AudioWriterCoverageTest : IDisposable
     {
+        /// <summary>
+        /// The test file
+        /// </summary>
         private readonly string _testFile;
+        /// <summary>
+        /// The test stream
+        /// </summary>
         private readonly MemoryStream _testStream;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioWriterCoverageTest"/> class
+        /// </summary>
         public AudioWriterCoverageTest()
         {
             _testFile = Path.GetTempFileName();
             _testStream = new MemoryStream();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!string.IsNullOrEmpty(_testFile) && File.Exists(_testFile))
@@ -808,18 +820,31 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// </summary>
         internal class MockProcess : IDisposable
         {
+            /// <summary>
+            /// Gets the value of the has exited
+            /// </summary>
             public bool HasExited => false;
 
+            /// <summary>
+            /// Kills this instance
+            /// </summary>
+            /// <exception cref="InvalidOperationException">Mock process kill exception</exception>
             public void Kill()
             {
                 throw new InvalidOperationException("Mock process kill exception");
             }
 
+            /// <summary>
+            /// Waits the for exit
+            /// </summary>
             public void WaitForExit()
             {
                 // Do nothing
             }
 
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose()
             {
                 // Do nothing

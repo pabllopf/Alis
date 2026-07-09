@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Audio
 {
+    /// <summary>
+    /// The audio source remaining coverage tests class
+    /// </summary>
     public class AudioSourceRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that is playing when player is playing should return true
+        /// </summary>
         [Fact]
         public void IsPlaying_WhenPlayerIsPlaying_ShouldReturnTrue()
         {
@@ -23,6 +29,9 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that is playing when player is not playing should return false
+        /// </summary>
         [Fact]
         public void IsPlaying_WhenPlayerIsNotPlaying_ShouldReturnFalse()
         {
@@ -38,6 +47,9 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that play with empty full path and non empty name should use name file with mock
+        /// </summary>
         [Fact]
         public void Play_WithEmptyFullPathAndNonEmptyName_ShouldUseNameFileWithMock()
         {
@@ -54,6 +66,9 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             mock.Verify(p => p.Play("test.wav"), Times.Once);
         }
 
+        /// <summary>
+        /// Tests that stop with real player should not throw
+        /// </summary>
         [Fact]
         public void Stop_WithRealPlayer_ShouldNotThrow()
         {
@@ -63,6 +78,9 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             source.Stop();
         }
 
+        /// <summary>
+        /// Tests that resume with real player should not throw
+        /// </summary>
         [Fact]
         public void Resume_WithRealPlayer_ShouldNotThrow()
         {
@@ -72,6 +90,9 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             source.Resume();
         }
 
+        /// <summary>
+        /// Tests that play on awake with real player should not throw
+        /// </summary>
         [Fact]
         public void PlayOnAwake_WithRealPlayer_ShouldNotThrow()
         {

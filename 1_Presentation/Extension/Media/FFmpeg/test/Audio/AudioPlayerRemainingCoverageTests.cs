@@ -43,6 +43,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// </summary>
     public class AudioPlayerRemainingCoverageTests
     {
+        /// <summary>
+        /// The fake ffplay
+        /// </summary>
         private const string FakeFfplay = "ffplay-not-exists";
 
         #region Play body
@@ -296,13 +299,26 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
     /// </summary>
     public class TestableAudioPlayer : AudioPlayer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestableAudioPlayer"/> class
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="ffplayExecutable">The ffplay executable</param>
         public TestableAudioPlayer(string input = null, string ffplayExecutable = "ffplay")
             : base(input, ffplayExecutable)
         {
         }
 
+        /// <summary>
+        /// Sets the opened for writing using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
         public void SetOpenedForWriting(bool value) => OpenedForWriting = value;
 
+        /// <summary>
+        /// Sets the input data stream using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
         public void SetInputDataStream(Stream stream) => InputDataStream = stream;
     }
 }
