@@ -84,7 +84,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing three parameter action.
         /// </summary>
-        private class ThreeParamAction : IAction<int, string, double>
+        internal class ThreeParamAction : IAction<int, string, double>
         {
             /// <summary>
             ///     Gets or sets the value of the int value

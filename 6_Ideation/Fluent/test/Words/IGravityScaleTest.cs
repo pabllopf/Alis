@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for gravity scale.
         /// </summary>
-        private class GravityScaleBuilder
+        internal class GravityScaleBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the gravity scale value
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IGravityScale.
         /// </summary>
-        private class GravityScaleBuilderImpl : IGravityScale<GravityScaleBuilder, float>
+        internal class GravityScaleBuilderImpl : IGravityScale<GravityScaleBuilder, float>
         {
             /// <summary>
             ///     The gravity scale builder

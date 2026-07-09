@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for angular velocity.
         /// </summary>
-        private class AngularVelocityBuilder
+        internal class AngularVelocityBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the angular velocity value
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IAngularVelocity.
         /// </summary>
-        private class AngularVelocityBuilderImpl : IAngularVelocity<AngularVelocityBuilder, float>
+        internal class AngularVelocityBuilderImpl : IAngularVelocity<AngularVelocityBuilder, float>
         {
             /// <summary>
             ///     The angular velocity builder

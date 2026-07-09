@@ -707,7 +707,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         /// <summary>
         ///     Mock observer for testing
         /// </summary>
-        private class MockDialogEventObserver : IDialogEventObserver
+        internal class MockDialogEventObserver : IDialogEventObserver
         {
             /// <summary>
             ///     Gets or sets the value of the events received

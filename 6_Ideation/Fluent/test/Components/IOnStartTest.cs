@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnStart.
         /// </summary>
-        private class StartHandler : IOnStart
+        internal class StartHandler : IOnStart
         {
             /// <summary>
             ///     Gets or sets the value of the was start called

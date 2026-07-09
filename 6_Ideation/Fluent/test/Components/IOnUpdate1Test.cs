@@ -93,7 +93,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnUpdate with one parameter.
         /// </summary>
-        private class Update1Handler : IOnUpdate<int>
+        internal class Update1Handler : IOnUpdate<int>
         {
             /// <summary>
             ///     Gets the value of the is component base
@@ -125,7 +125,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation with string parameter.
         /// </summary>
-        private class UpdateStringHandler : IOnUpdate<string>
+        internal class UpdateStringHandler : IOnUpdate<string>
         {
             /// <summary>
             ///     Gets or sets the value of the last value

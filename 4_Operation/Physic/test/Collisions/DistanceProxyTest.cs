@@ -205,7 +205,7 @@ namespace Alis.Core.Physic.Test.Collisions
         /// <summary>
         ///     Test shape for covering the default branch of DistanceProxy constructor
         /// </summary>
-        private class TestShape : Shape
+        internal class TestShape : Shape
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="TestShape"/> class

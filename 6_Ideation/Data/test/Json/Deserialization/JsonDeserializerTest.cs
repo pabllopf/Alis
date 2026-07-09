@@ -171,7 +171,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{SimpleTestObject}" />
-        private class SimpleTestObject : IJsonSerializable, IJsonDesSerializable<SimpleTestObject>
+        internal class SimpleTestObject : IJsonSerializable, IJsonDesSerializable<SimpleTestObject>
         {
             /// <summary>
             ///     Gets or sets the value of the name
@@ -218,7 +218,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// <summary>
         ///     The throwing test object class that throws from CreateFromProperties
         /// </summary>
-        private class ThrowingTestObject : IJsonSerializable, IJsonDesSerializable<ThrowingTestObject>
+        internal class ThrowingTestObject : IJsonSerializable, IJsonDesSerializable<ThrowingTestObject>
         {
             /// <summary>
             /// Creates the from properties using the specified properties
@@ -243,7 +243,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{EmptyObject}" />
-        private class EmptyObject : IJsonSerializable, IJsonDesSerializable<EmptyObject>
+        internal class EmptyObject : IJsonSerializable, IJsonDesSerializable<EmptyObject>
         {
             /// <summary>
             ///     Creates the from properties using the specified properties

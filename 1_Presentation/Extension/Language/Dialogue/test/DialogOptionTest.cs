@@ -230,7 +230,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         /// <summary>
         ///     Test implementation of IDialogCondition
         /// </summary>
-        private class TestCondition : IDialogCondition
+        internal class TestCondition : IDialogCondition
         {
             /// <summary>
             /// Evaluates the context
@@ -243,7 +243,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         /// <summary>
         ///     Test implementation of IDialogAction
         /// </summary>
-        private class TestAction : IDialogAction
+        internal class TestAction : IDialogAction
         {
             /// <summary>
             /// Gets the value of the id

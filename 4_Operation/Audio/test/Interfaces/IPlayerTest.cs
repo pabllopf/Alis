@@ -533,7 +533,7 @@ namespace Alis.Core.Audio.Test.Interfaces
         ///     The test player class
         /// </summary>
         /// <seealso cref="IPlayer" />
-        private class TestPlayer : IPlayer
+        internal class TestPlayer : IPlayer
         {
             /// <summary>
             ///     Gets or sets the value of the playing

@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class.
         /// </summary>
-        private class QueryBuilder
+        internal class QueryBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the condition
@@ -108,7 +108,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IWhere.
         /// </summary>
-        private class WhereBuilder : IWhere<QueryBuilder, string>
+        internal class WhereBuilder : IWhere<QueryBuilder, string>
         {
             /// <summary>
             ///     The query builder
@@ -130,7 +130,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder with integer.
         /// </summary>
-        private class IntQueryBuilder
+        internal class IntQueryBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the min value
@@ -141,7 +141,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation with integer condition.
         /// </summary>
-        private class IntWhereBuilder : IWhere<IntQueryBuilder, int>
+        internal class IntWhereBuilder : IWhere<IntQueryBuilder, int>
         {
             /// <summary>
             ///     The int query builder

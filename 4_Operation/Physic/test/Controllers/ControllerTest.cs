@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Test.Controllers
         ///     The test controller class
         /// </summary>
         /// <seealso cref="Controller" />
-        private class TestController : Controller
+        internal class TestController : Controller
         {
             /// <summary>
             ///     The update called

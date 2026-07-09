@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnFixedUpdate.
         /// </summary>
-        private class FixedUpdateHandler : IOnFixedUpdate
+        internal class FixedUpdateHandler : IOnFixedUpdate
         {
             /// <summary>
             ///     Gets or sets the value of the call count

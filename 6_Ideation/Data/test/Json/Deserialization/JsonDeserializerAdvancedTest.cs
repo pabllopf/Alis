@@ -291,7 +291,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestIntObject}" />
-        private class TestIntObject : IJsonSerializable, IJsonDesSerializable<TestIntObject>
+        internal class TestIntObject : IJsonSerializable, IJsonDesSerializable<TestIntObject>
         {
             /// <summary>
             ///     Gets or sets the value of the value
@@ -329,7 +329,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestBoolObject}" />
-        private class TestBoolObject : IJsonSerializable, IJsonDesSerializable<TestBoolObject>
+        internal class TestBoolObject : IJsonSerializable, IJsonDesSerializable<TestBoolObject>
         {
             /// <summary>
             ///     Gets or sets the value of the flag
@@ -367,7 +367,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestDoubleObject}" />
-        private class TestDoubleObject : IJsonSerializable, IJsonDesSerializable<TestDoubleObject>
+        internal class TestDoubleObject : IJsonSerializable, IJsonDesSerializable<TestDoubleObject>
         {
             /// <summary>
             ///     Gets or sets the value of the number
@@ -406,7 +406,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestStringObject}" />
-        private class TestStringObject : IJsonSerializable, IJsonDesSerializable<TestStringObject>
+        internal class TestStringObject : IJsonSerializable, IJsonDesSerializable<TestStringObject>
         {
             /// <summary>
             ///     Gets or sets the value of the text
@@ -444,7 +444,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestDateTimeObject}" />
-        private class TestDateTimeObject : IJsonSerializable, IJsonDesSerializable<TestDateTimeObject>
+        internal class TestDateTimeObject : IJsonSerializable, IJsonDesSerializable<TestDateTimeObject>
         {
             /// <summary>
             ///     Gets or sets the value of the timestamp
@@ -482,7 +482,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestGuidObject}" />
-        private class TestGuidObject : IJsonSerializable, IJsonDesSerializable<TestGuidObject>
+        internal class TestGuidObject : IJsonSerializable, IJsonDesSerializable<TestGuidObject>
         {
             /// <summary>
             ///     Gets or sets the value of the id
@@ -520,7 +520,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestMultiObject}" />
-        private class TestMultiObject : IJsonSerializable, IJsonDesSerializable<TestMultiObject>
+        internal class TestMultiObject : IJsonSerializable, IJsonDesSerializable<TestMultiObject>
         {
             /// <summary>
             ///     Gets or sets the value of the name
@@ -580,7 +580,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestDynamicObject}" />
-        private class TestDynamicObject : IJsonSerializable, IJsonDesSerializable<TestDynamicObject>
+        internal class TestDynamicObject : IJsonSerializable, IJsonDesSerializable<TestDynamicObject>
         {
             /// <summary>
             ///     The property count

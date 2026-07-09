@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnCollisionEnter.
         /// </summary>
-        private class CollisionEnterHandler : IOnCollisionEnter
+        internal class CollisionEnterHandler : IOnCollisionEnter
         {
             /// <summary>
             ///     Gets or sets the value of the collision count

@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for restitution.
         /// </summary>
-        private class RestitutionBuilder
+        internal class RestitutionBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the restitution value
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IRestitution.
         /// </summary>
-        private class RestitutionBuilderImpl : IRestitution<RestitutionBuilder, float>
+        internal class RestitutionBuilderImpl : IRestitution<RestitutionBuilder, float>
         {
             /// <summary>
             ///     The restitution builder

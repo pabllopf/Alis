@@ -444,7 +444,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         /// <summary>
         /// Mock implementation of ITriangulatable for testing
         /// </summary>
-        private class MockTriangulatable : ITriangulatable
+        internal class MockTriangulatable : ITriangulatable
         {
             /// <summary>
             /// The collected triangles

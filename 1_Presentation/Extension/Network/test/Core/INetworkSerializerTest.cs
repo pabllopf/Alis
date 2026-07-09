@@ -41,7 +41,7 @@ namespace Alis.Extension.Network.Test.Core
         /// The test network serializer class
         /// </summary>
         /// <seealso cref="INetworkSerializer"/>
-        private class TestNetworkSerializer : INetworkSerializer
+        internal class TestNetworkSerializer : INetworkSerializer
         {
             /// <summary>
             /// Serializes the envelope using the specified envelope

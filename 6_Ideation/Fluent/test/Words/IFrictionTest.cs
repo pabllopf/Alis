@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for friction.
         /// </summary>
-        private class FrictionBuilder
+        internal class FrictionBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the friction value
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IFriction.
         /// </summary>
-        private class FrictionBuilderImpl : IFriction<FrictionBuilder, float>
+        internal class FrictionBuilderImpl : IFriction<FrictionBuilder, float>
         {
             /// <summary>
             ///     The friction builder

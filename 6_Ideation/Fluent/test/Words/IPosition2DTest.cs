@@ -100,7 +100,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for position.
         /// </summary>
-        private class PositionBuilder
+        internal class PositionBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the x
@@ -116,7 +116,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IPosition2D.
         /// </summary>
-        private class Position2DBuilder : IPosition2D<PositionBuilder, float>
+        internal class Position2DBuilder : IPosition2D<PositionBuilder, float>
         {
             /// <summary>
             ///     The position builder

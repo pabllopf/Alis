@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnProcessPendingChanges.
         /// </summary>
-        private class ProcessChangesHandler : IOnProcessPendingChanges
+        internal class ProcessChangesHandler : IOnProcessPendingChanges
         {
             /// <summary>
             ///     Gets or sets the value of the process count

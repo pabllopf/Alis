@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The simple test object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class SimpleTestObject : IJsonSerializable
+        internal class SimpleTestObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets or sets the value of the name
@@ -193,7 +193,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The object with array class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class ObjectWithArray : IJsonSerializable
+        internal class ObjectWithArray : IJsonSerializable
         {
             /// <summary>
             ///     Gets the serializable properties
@@ -209,7 +209,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The object with null property class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class ObjectWithNullProperty : IJsonSerializable
+        internal class ObjectWithNullProperty : IJsonSerializable
         {
             /// <summary>
             ///     Gets the serializable properties
@@ -246,7 +246,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The empty object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class EmptyObject : IJsonSerializable
+        internal class EmptyObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets the serializable properties
@@ -261,7 +261,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         /// <summary>
         ///     The throwing property object class
         /// </summary>
-        private class ThrowingPropertyObject : IJsonSerializable
+        internal class ThrowingPropertyObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets the serializable properties
@@ -273,7 +273,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         /// <summary>
         ///     The throwing serialization exception object class
         /// </summary>
-        private class ThrowingSerializationExceptionObject : IJsonSerializable
+        internal class ThrowingSerializationExceptionObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets the serializable properties

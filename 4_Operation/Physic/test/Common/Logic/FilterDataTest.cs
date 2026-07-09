@@ -400,7 +400,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         ///     The test filter data class
         /// </summary>
         /// <seealso cref="FilterData" />
-        private class TestFilterData : FilterData
+        internal class TestFilterData : FilterData
         {
         }
     }

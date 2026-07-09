@@ -331,7 +331,7 @@ namespace Alis.Extension.Language.Translator.Test
         /// <summary>
         ///     Test helper class for observing translation events
         /// </summary>
-        private class TestTranslationObserver : ITranslationObserver
+        internal class TestTranslationObserver : ITranslationObserver
         {
             /// <summary>
             ///     Gets or sets the value of the language changed called

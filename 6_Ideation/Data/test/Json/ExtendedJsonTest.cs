@@ -402,7 +402,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestObject}" />
-        private class TestObject : IJsonSerializable, IJsonDesSerializable<TestObject>
+        internal class TestObject : IJsonSerializable, IJsonDesSerializable<TestObject>
         {
             /// <summary>
             ///     Gets or sets the value of the string value
@@ -475,7 +475,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{ComplexTestObject}" />
-        private class ComplexTestObject : IJsonSerializable, IJsonDesSerializable<ComplexTestObject>
+        internal class ComplexTestObject : IJsonSerializable, IJsonDesSerializable<ComplexTestObject>
         {
             /// <summary>
             ///     Gets or sets the value of the guid value

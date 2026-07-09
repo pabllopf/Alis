@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnDraw.
         /// </summary>
-        private class DrawHandler : IOnDraw
+        internal class DrawHandler : IOnDraw
         {
             /// <summary>
             ///     Gets or sets the value of the draw call count

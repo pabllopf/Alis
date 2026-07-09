@@ -82,7 +82,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing seven parameter action.
         /// </summary>
-        private class SevenParamAction : IAction<int, int, int, int, int, int, int>
+        internal class SevenParamAction : IAction<int, int, int, int, int, int, int>
         {
             /// <summary>
             ///     Gets the value of the values

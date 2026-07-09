@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnInit.
         /// </summary>
-        private class InitHandler : IOnInit
+        internal class InitHandler : IOnInit
         {
             /// <summary>
             ///     Gets or sets the value of the was initialized

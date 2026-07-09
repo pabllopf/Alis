@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnPhysicUpdate.
         /// </summary>
-        private class PhysicUpdateHandler : IOnPhysicUpdate
+        internal class PhysicUpdateHandler : IOnPhysicUpdate
         {
             /// <summary>
             ///     Gets or sets the value of the update count

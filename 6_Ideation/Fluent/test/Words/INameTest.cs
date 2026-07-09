@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for naming.
         /// </summary>
-        private class NamedBuilder
+        internal class NamedBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the name
@@ -108,7 +108,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IName.
         /// </summary>
-        private class NameBuilderImpl : IName<NamedBuilder, string>
+        internal class NameBuilderImpl : IName<NamedBuilder, string>
         {
             /// <summary>
             ///     The named builder

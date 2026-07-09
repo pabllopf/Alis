@@ -94,7 +94,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnDestroy.
         /// </summary>
-        private class DestroyHandler : IOnDestroy
+        internal class DestroyHandler : IOnDestroy
         {
             /// <summary>
             ///     Gets or sets the value of the was destroy called

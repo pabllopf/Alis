@@ -43,7 +43,7 @@ namespace Alis.Extension.Network.Test
         /// The test ping pong manager class
         /// </summary>
         /// <seealso cref="IPingPongManager"/>
-        private class TestPingPongManager : IPingPongManager
+        internal class TestPingPongManager : IPingPongManager
         {
             public event EventHandler<PongEventArgs> Pong;
             

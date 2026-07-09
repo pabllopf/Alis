@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnUpdate.
         /// </summary>
-        private class UpdateHandler : IOnUpdate
+        internal class UpdateHandler : IOnUpdate
         {
             /// <summary>
             ///     Gets or sets the value of the was update called

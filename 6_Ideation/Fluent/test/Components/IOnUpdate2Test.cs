@@ -104,7 +104,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing <see cref="IOnUpdate{TArg1,TArg2}" /> with int and string.
         /// </summary>
-        private class Update2Handler : IOnUpdate<int, string>
+        internal class Update2Handler : IOnUpdate<int, string>
         {
             /// <summary>
             ///     Gets the value of the is component base
@@ -143,7 +143,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation with double and bool parameter types.
         /// </summary>
-        private class UpdateDoubleBoolHandler : IOnUpdate<double, bool>
+        internal class UpdateDoubleBoolHandler : IOnUpdate<double, bool>
         {
             /// <summary>
             ///     Gets or sets the value of the last arg1

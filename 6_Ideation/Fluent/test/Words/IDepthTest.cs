@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for depth.
         /// </summary>
-        private class DepthBuilder
+        internal class DepthBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the depth value
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IDepth.
         /// </summary>
-        private class DepthBuilderImpl : IDepth<DepthBuilder, int>
+        internal class DepthBuilderImpl : IDepth<DepthBuilder, int>
         {
             /// <summary>
             ///     The depth builder

@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         ///     The test physics logic class
         /// </summary>
         /// <seealso cref="PhysicsLogic" />
-        private class TestPhysicsLogic : PhysicsLogic
+        internal class TestPhysicsLogic : PhysicsLogic
         {
             /// <summary>
             ///     Initializes a new instance of the <see cref="TestPhysicsLogic" /> class

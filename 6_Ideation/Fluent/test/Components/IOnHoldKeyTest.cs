@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnHoldKey.
         /// </summary>
-        private class HoldKeyHandler : IOnHoldKey
+        internal class HoldKeyHandler : IOnHoldKey
         {
             /// <summary>
             ///     Gets or sets the value of the hold count

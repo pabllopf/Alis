@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnPressKey.
         /// </summary>
-        private class PressKeyHandler : IOnPressKey
+        internal class PressKeyHandler : IOnPressKey
         {
             /// <summary>
             ///     Gets or sets the value of the press count

@@ -1552,7 +1552,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Spy output that tracks disposal and writes for testing
         /// </summary>
-        private class SpyLogOutput : ILogOutput
+        internal class SpyLogOutput : ILogOutput
         {
             /// <summary>
             /// The on dispose

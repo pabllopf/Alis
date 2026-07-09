@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing six parameter action.
         /// </summary>
-        private class SixParamAction : IAction<int, int, int, int, int, int>
+        internal class SixParamAction : IAction<int, int, int, int, int, int>
         {
             /// <summary>
             ///     Gets the value of the values

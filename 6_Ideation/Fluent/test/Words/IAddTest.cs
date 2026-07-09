@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     The dummy builder class
         /// </summary>
-        private class DummyBuilder
+        internal class DummyBuilder
         {
             /// <summary>
             ///     The value
@@ -65,7 +65,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         ///     The dummy add class
         /// </summary>
         /// <seealso cref="IAdd{DummyBuilder,}" />
-        private class DummyAdd : IAdd<DummyBuilder, int>
+        internal class DummyAdd : IAdd<DummyBuilder, int>
         {
             /// <summary>
             ///     Adds the value

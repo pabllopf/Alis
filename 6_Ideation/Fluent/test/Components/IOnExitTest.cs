@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnExit.
         /// </summary>
-        private class ExitHandler : IOnExit
+        internal class ExitHandler : IOnExit
         {
             /// <summary>
             ///     Gets or sets the value of the was exit called

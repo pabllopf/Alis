@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         ///     The test triangulatable class
         /// </summary>
         /// <seealso cref="ITriangulatable" />
-        private class TestTriangulatable : ITriangulatable
+        internal class TestTriangulatable : ITriangulatable
         {
             /// <summary>
             ///     The points

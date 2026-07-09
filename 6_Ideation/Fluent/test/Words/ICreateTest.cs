@@ -99,7 +99,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class.
         /// </summary>
-        private class TestBuilder
+        internal class TestBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the created value
@@ -110,7 +110,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of ICreate.
         /// </summary>
-        private class CreateBuilder : ICreate<TestBuilder, string>
+        internal class CreateBuilder : ICreate<TestBuilder, string>
         {
             /// <summary>
             ///     The test builder
@@ -132,7 +132,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder with integer.
         /// </summary>
-        private class IntTestBuilder
+        internal class IntTestBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the value
@@ -143,7 +143,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation with integer.
         /// </summary>
-        private class IntCreateBuilder : ICreate<IntTestBuilder, int>
+        internal class IntCreateBuilder : ICreate<IntTestBuilder, int>
         {
             /// <summary>
             ///     The int test builder

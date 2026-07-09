@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         ///     Mock implementation of IWindow for testing.
         /// </summary>
-        private class MockWindow : IWindow
+        internal class MockWindow : IWindow
         {
             /// <summary>
             ///     Gets or sets the background color.

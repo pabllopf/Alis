@@ -43,7 +43,7 @@ namespace Alis.Extension.Network.Test.Core
         /// The test network transport class
         /// </summary>
         /// <seealso cref="INetworkTransport"/>
-        private class TestNetworkTransport : INetworkTransport
+        internal class TestNetworkTransport : INetworkTransport
         {
             /// <summary>
             /// Gets the value of the state

@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class.
         /// </summary>
-        private class Builder
+        internal class Builder
         {
             /// <summary>
             ///     Gets or sets the value of the has property
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IHas.
         /// </summary>
-        private class HasBuilder : IHas<Builder, string>
+        internal class HasBuilder : IHas<Builder, string>
         {
             /// <summary>
             ///     The builder
@@ -120,7 +120,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder with object.
         /// </summary>
-        private class ObjectBuilder
+        internal class ObjectBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the has object
@@ -131,7 +131,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation with object.
         /// </summary>
-        private class ObjectHasBuilder : IHas<ObjectBuilder, object>
+        internal class ObjectHasBuilder : IHas<ObjectBuilder, object>
         {
             /// <summary>
             ///     The object builder

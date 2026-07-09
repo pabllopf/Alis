@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing five parameter action.
         /// </summary>
-        private class FiveParamAction : IAction<int, int, int, int, int>
+        internal class FiveParamAction : IAction<int, int, int, int, int>
         {
             /// <summary>
             ///     Gets the value of the values

@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// <summary>
         ///     Helper builder class for testing.
         /// </summary>
-        private class TestBuilder : IBuild<string>
+        internal class TestBuilder : IBuild<string>
         {
             /// <summary>
             ///     Builds this instance
@@ -108,7 +108,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// <summary>
         ///     Helper integer builder for testing.
         /// </summary>
-        private class IntBuilder : IBuild<int>
+        internal class IntBuilder : IBuild<int>
         {
             /// <summary>
             ///     Builds this instance
@@ -120,7 +120,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// <summary>
         ///     Helper object builder for testing.
         /// </summary>
-        private class ObjectBuilder : IBuild<object>
+        internal class ObjectBuilder : IBuild<object>
         {
             /// <summary>
             ///     Builds this instance

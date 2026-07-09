@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// The test drawable class
         /// </summary>
         /// <seealso cref="IDrawable"/>
-        private class TestDrawable : IDrawable
+        internal class TestDrawable : IDrawable
         {
             /// <summary>
             /// Gets or sets the value of the was drawn
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// The test render target class
         /// </summary>
         /// <seealso cref="IRenderTarget"/>
-        private class TestRenderTarget : IRenderTarget
+        internal class TestRenderTarget : IRenderTarget
         {
             /// <summary>
             /// Maps the coords to pixel using the specified point

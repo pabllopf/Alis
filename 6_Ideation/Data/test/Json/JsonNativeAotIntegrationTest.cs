@@ -167,7 +167,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{UserProfile}" />
-        private class UserProfile : IJsonSerializable, IJsonDesSerializable<UserProfile>
+        internal class UserProfile : IJsonSerializable, IJsonDesSerializable<UserProfile>
         {
             /// <summary>
             ///     Gets or sets the value of the username

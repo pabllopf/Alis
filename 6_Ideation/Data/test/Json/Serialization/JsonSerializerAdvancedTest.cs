@@ -316,7 +316,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The test int object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class TestIntObject : IJsonSerializable
+        internal class TestIntObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets or sets the value of the value
@@ -337,7 +337,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The test bool object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class TestBoolObject : IJsonSerializable
+        internal class TestBoolObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets or sets the value of the flag
@@ -358,7 +358,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The test double object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class TestDoubleObject : IJsonSerializable
+        internal class TestDoubleObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets or sets the value of the number
@@ -379,7 +379,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The test string object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class TestStringObject : IJsonSerializable
+        internal class TestStringObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets or sets the value of the text
@@ -400,7 +400,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The test date time object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class TestDateTimeObject : IJsonSerializable
+        internal class TestDateTimeObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets or sets the value of the timestamp
@@ -421,7 +421,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The test guid object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class TestGuidObject : IJsonSerializable
+        internal class TestGuidObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets or sets the value of the id
@@ -442,7 +442,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The test multi object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class TestMultiObject : IJsonSerializable
+        internal class TestMultiObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets or sets the value of the name
@@ -475,7 +475,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The test dynamic object class
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class TestDynamicObject : IJsonSerializable
+        internal class TestDynamicObject : IJsonSerializable
         {
             /// <summary>
             ///     The property count
@@ -505,7 +505,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The test exception object class - throws exception during serialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class TestExceptionObject : IJsonSerializable
+        internal class TestExceptionObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets the serializable properties
@@ -521,7 +521,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The test exception serialization object class - throws JsonSerializationException during serialization
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class TestExceptionSerializationObject : IJsonSerializable
+        internal class TestExceptionSerializationObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets the serializable properties
@@ -566,7 +566,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         ///     The test complex object class - returns complex JSON values
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
-        private class TestComplexObject : IJsonSerializable
+        internal class TestComplexObject : IJsonSerializable
         {
             /// <summary>
             ///     Gets the serializable properties

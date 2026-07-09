@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IRun.
         /// </summary>
-        private class TestRunner : IRun
+        internal class TestRunner : IRun
         {
             /// <summary>
             ///     Gets or sets the value of the has run

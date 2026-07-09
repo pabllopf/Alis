@@ -347,7 +347,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         /// <summary>
         ///     A JSON serializer that throws an exception
         /// </summary>
-        private class ThrowingJsonSerializer : IJsonSerializer
+        internal class ThrowingJsonSerializer : IJsonSerializer
         {
             /// <inheritdoc />
             public string Serialize<T>(T instance) where T : IJsonSerializable
@@ -359,7 +359,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         /// <summary>
         ///     A JSON deserializer that throws an exception
         /// </summary>
-        private class ThrowingJsonDeserializer : IJsonDeserializer
+        internal class ThrowingJsonDeserializer : IJsonDeserializer
         {
             /// <summary>
             /// The parser
@@ -414,7 +414,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestObject}" />
-        private class TestObject : IJsonSerializable, IJsonDesSerializable<TestObject>
+        internal class TestObject : IJsonSerializable, IJsonDesSerializable<TestObject>
         {
             /// <summary>
             ///     Gets or sets the value of the name

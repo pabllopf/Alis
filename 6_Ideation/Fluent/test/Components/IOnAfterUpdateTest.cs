@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnAfterUpdate.
         /// </summary>
-        private class AfterUpdateHandler : IOnAfterUpdate
+        internal class AfterUpdateHandler : IOnAfterUpdate
         {
             /// <summary>
             ///     Gets or sets the value of the call count

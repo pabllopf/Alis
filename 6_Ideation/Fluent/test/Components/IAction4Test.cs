@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing four parameter action.
         /// </summary>
-        private class FourParamAction : IAction<int, int, int, int>
+        internal class FourParamAction : IAction<int, int, int, int>
         {
             /// <summary>
             ///     Gets or sets the value of the arg 1

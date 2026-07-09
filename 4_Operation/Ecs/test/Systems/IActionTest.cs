@@ -339,7 +339,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Test implementation that counts calls
         /// </summary>
-        private class CountingAction : IAction<int>
+        internal class CountingAction : IAction<int>
         {
             /// <summary>
             ///     Gets or sets the value of the call count

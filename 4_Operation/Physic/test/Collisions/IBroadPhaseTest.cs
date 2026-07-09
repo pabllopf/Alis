@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Test.Collisions
         ///     The test broad phase class
         /// </summary>
         /// <seealso cref="IBroadPhase" />
-        private class TestBroadPhase : IBroadPhase
+        internal class TestBroadPhase : IBroadPhase
         {
             /// <summary>
             ///     Gets the value of the proxy count

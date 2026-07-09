@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnAfterDraw.
         /// </summary>
-        private class AfterDrawHandler : IOnAfterDraw
+        internal class AfterDrawHandler : IOnAfterDraw
         {
             /// <summary>
             ///     Gets or sets the value of the call count

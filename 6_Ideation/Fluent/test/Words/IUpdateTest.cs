@@ -92,7 +92,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IUpdate.
         /// </summary>
-        private class UpdateHandler : IUpdate<int, int>
+        internal class UpdateHandler : IUpdate<int, int>
         {
             /// <summary>
             ///     Gets or sets the value of the update count

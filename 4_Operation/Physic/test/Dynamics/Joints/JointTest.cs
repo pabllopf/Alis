@@ -249,7 +249,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         /// The breakable joint class used to test Validate
         /// </summary>
         /// <seealso cref="Joint" />
-        private class BreakableJoint : Joint
+        internal class BreakableJoint : Joint
         {
             public BreakableJoint(Body bodyA, Body bodyB) : base(bodyA, bodyB) => JointType = JointType.Unknown;
 
@@ -269,7 +269,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         /// The test joint class
         /// </summary>
         /// <seealso cref="Joint" />
-        private class TestJoint : Joint
+        internal class TestJoint : Joint
         {
             /// <summary>
             ///     Initializes a new instance of the <see cref="TestJoint" /> class

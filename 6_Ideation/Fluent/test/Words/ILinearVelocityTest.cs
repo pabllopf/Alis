@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for velocity.
         /// </summary>
-        private class VelocityBuilder
+        internal class VelocityBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the velocity x
@@ -104,7 +104,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of ILinearVelocity.
         /// </summary>
-        private class LinearVelocityBuilderImpl : ILinearVelocity<VelocityBuilder, float>
+        internal class LinearVelocityBuilderImpl : ILinearVelocity<VelocityBuilder, float>
         {
             /// <summary>
             ///     The velocity builder

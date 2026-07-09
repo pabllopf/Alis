@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for mass.
         /// </summary>
-        private class MassBuilder
+        internal class MassBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the mass value
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IMass.
         /// </summary>
-        private class MassBuilderImpl : IMass<MassBuilder, float>
+        internal class MassBuilderImpl : IMass<MassBuilder, float>
         {
             /// <summary>
             ///     The mass builder

@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for graphics.
         /// </summary>
-        private class GraphicBuilder
+        internal class GraphicBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the graphic type
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IGraphic.
         /// </summary>
-        private class GraphicBuilderImpl : IGraphic<GraphicBuilder, string>
+        internal class GraphicBuilderImpl : IGraphic<GraphicBuilder, string>
         {
             /// <summary>
             ///     The graphic builder

@@ -99,7 +99,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class.
         /// </summary>
-        private class Builder
+        internal class Builder
         {
             /// <summary>
             ///     Gets or sets the value of the is value
@@ -110,7 +110,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IIs.
         /// </summary>
-        private class IsBuilder : IIs<Builder, string>
+        internal class IsBuilder : IIs<Builder, string>
         {
             /// <summary>
             ///     The builder

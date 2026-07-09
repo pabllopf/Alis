@@ -664,7 +664,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <summary>
         ///     Helper test class for GetOrAddNew tests
         /// </summary>
-        private class TestClass
+        internal class TestClass
         {
             /// <summary>
         ///     Gets or sets the value of the value

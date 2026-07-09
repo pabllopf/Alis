@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for speed.
         /// </summary>
-        private class SpeedBuilder
+        internal class SpeedBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the speed value
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of ISpeed.
         /// </summary>
-        private class SpeedBuilderImpl : ISpeed<SpeedBuilder, float>
+        internal class SpeedBuilderImpl : ISpeed<SpeedBuilder, float>
         {
             /// <summary>
             ///     The speed builder

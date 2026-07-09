@@ -46,7 +46,7 @@ namespace Alis.Extension.Network.Test.Core
         /// The test network manager class
         /// </summary>
         /// <seealso cref="INetworkManager"/>
-        private class TestNetworkManager : INetworkManager
+        internal class TestNetworkManager : INetworkManager
         {
             /// <summary>
             /// Gets the value of the id

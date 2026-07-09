@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnCollisionExit.
         /// </summary>
-        private class CollisionExitHandler : IOnCollisionExit
+        internal class CollisionExitHandler : IOnCollisionExit
         {
             /// <summary>
             ///     Gets or sets the value of the exit count

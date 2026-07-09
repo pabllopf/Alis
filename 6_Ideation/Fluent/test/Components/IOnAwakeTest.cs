@@ -92,7 +92,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnAwake.
         /// </summary>
-        private class AwakeHandler : IOnAwake
+        internal class AwakeHandler : IOnAwake
         {
             /// <summary>
             ///     Gets or sets the value of the was awake called

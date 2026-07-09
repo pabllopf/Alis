@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing single parameter action.
         /// </summary>
-        private class SingleParamAction : IAction<int>
+        internal class SingleParamAction : IAction<int>
         {
             /// <summary>
             ///     Gets or sets the value of the last value
@@ -107,7 +107,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for string parameter.
         /// </summary>
-        private class StringParamAction : IAction<string>
+        internal class StringParamAction : IAction<string>
         {
             /// <summary>
             ///     Gets or sets the value of the last value

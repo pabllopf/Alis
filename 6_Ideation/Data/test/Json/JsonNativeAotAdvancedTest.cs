@@ -384,7 +384,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestInt}" />
-        private class TestInt : IJsonSerializable, IJsonDesSerializable<TestInt>
+        internal class TestInt : IJsonSerializable, IJsonDesSerializable<TestInt>
         {
             /// <summary>
             ///     Gets or sets the value of the value
@@ -422,7 +422,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestBool}" />
-        private class TestBool : IJsonSerializable, IJsonDesSerializable<TestBool>
+        internal class TestBool : IJsonSerializable, IJsonDesSerializable<TestBool>
         {
             /// <summary>
             ///     Gets or sets the value of the flag
@@ -460,7 +460,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestString}" />
-        private class TestString : IJsonSerializable, IJsonDesSerializable<TestString>
+        internal class TestString : IJsonSerializable, IJsonDesSerializable<TestString>
         {
             /// <summary>
             ///     Gets or sets the value of the text
@@ -498,7 +498,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestGuid}" />
-        private class TestGuid : IJsonSerializable, IJsonDesSerializable<TestGuid>
+        internal class TestGuid : IJsonSerializable, IJsonDesSerializable<TestGuid>
         {
             /// <summary>
             ///     Gets or sets the value of the id
@@ -536,7 +536,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         /// <seealso cref="IJsonSerializable" />
         /// <seealso cref="IJsonDesSerializable{TestDateTime}" />
-        private class TestDateTime : IJsonSerializable, IJsonDesSerializable<TestDateTime>
+        internal class TestDateTime : IJsonSerializable, IJsonDesSerializable<TestDateTime>
         {
             /// <summary>
             ///     Gets or sets the value of the timestamp

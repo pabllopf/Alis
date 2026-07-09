@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for physics.
         /// </summary>
-        private class PhysicBuilder
+        internal class PhysicBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the physics engine
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IPhysic.
         /// </summary>
-        private class PhysicBuilderImpl : IPhysic<PhysicBuilder, string>
+        internal class PhysicBuilderImpl : IPhysic<PhysicBuilder, string>
         {
             /// <summary>
             ///     The physic builder

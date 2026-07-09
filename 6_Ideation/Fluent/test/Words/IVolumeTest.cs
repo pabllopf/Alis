@@ -99,7 +99,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for volume.
         /// </summary>
-        private class VolumeBuilder
+        internal class VolumeBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the volume level
@@ -110,7 +110,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IVolume.
         /// </summary>
-        private class VolumeBuilderImpl : IVolume<VolumeBuilder, float>
+        internal class VolumeBuilderImpl : IVolume<VolumeBuilder, float>
         {
             /// <summary>
             ///     The volume builder

@@ -261,7 +261,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// <summary>
         ///     Test class with attribute applied
         /// </summary>
-        private class TestClassWithAttribute
+        internal class TestClassWithAttribute
         {
             /// <summary>
             ///     Gets or sets the value of the custom name property
@@ -273,7 +273,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// <summary>
         ///     Test class with multiple attributes
         /// </summary>
-        private class TestClassWithMultipleAttributes
+        internal class TestClassWithMultipleAttributes
         {
             /// <summary>
             ///     Gets or sets the value of the property 1

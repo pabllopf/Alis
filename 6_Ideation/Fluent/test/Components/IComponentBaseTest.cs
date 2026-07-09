@@ -51,7 +51,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Dummy implementation for testing purposes.
         /// </summary>
-        private class DummyComponent : IComponentBase
+        internal class DummyComponent : IComponentBase
         {
         }
     }

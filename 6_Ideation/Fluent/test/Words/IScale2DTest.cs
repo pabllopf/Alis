@@ -100,7 +100,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for scale.
         /// </summary>
-        private class ScaleBuilder
+        internal class ScaleBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the scale x
@@ -116,7 +116,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IScale2D.
         /// </summary>
-        private class Scale2DBuilder : IScale2D<ScaleBuilder, float>
+        internal class Scale2DBuilder : IScale2D<ScaleBuilder, float>
         {
             /// <summary>
             ///     The scale builder

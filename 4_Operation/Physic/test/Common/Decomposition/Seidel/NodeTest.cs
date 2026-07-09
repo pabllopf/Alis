@@ -166,7 +166,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         ///     The test node class
         /// </summary>
         /// <seealso cref="Node" />
-        private class TestNode : Node
+        internal class TestNode : Node
         {
             /// <summary>
             ///     Initializes a new instance of the <see cref="TestNode" /> class

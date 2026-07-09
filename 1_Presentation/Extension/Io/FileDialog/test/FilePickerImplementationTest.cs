@@ -276,7 +276,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         ///     Mock implementation of IFilePicker for testing purposes.
         ///     This prevents actual system dialogs from opening during tests.
         /// </summary>
-        private class MockFilePicker : IFilePicker
+        internal class MockFilePicker : IFilePicker
         {
             /// <summary>
             ///     The mock path

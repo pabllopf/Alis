@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for transform.
         /// </summary>
-        private class TransformBuilder
+        internal class TransformBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the transform operation
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of ITransform.
         /// </summary>
-        private class TransformBuilderImpl : ITransform<TransformBuilder, string>
+        internal class TransformBuilderImpl : ITransform<TransformBuilder, string>
         {
             /// <summary>
             ///     The transform builder

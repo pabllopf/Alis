@@ -94,7 +94,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing two parameter action.
         /// </summary>
-        private class TwoParamAction : IAction<int, string>
+        internal class TwoParamAction : IAction<int, string>
         {
             /// <summary>
             ///     Gets or sets the value of the last int value
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation with same parameter types.
         /// </summary>
-        private class SameTypeAction : IAction<int, int>
+        internal class SameTypeAction : IAction<int, int>
         {
             /// <summary>
             ///     Gets or sets the value of the first value

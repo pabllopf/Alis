@@ -1050,7 +1050,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         /// <summary>
         ///     A throwing escape sequence handler for testing exception wrapping
         /// </summary>
-        private class ThrowingEscapeSequenceHandler : IEscapeSequenceHandler
+        internal class ThrowingEscapeSequenceHandler : IEscapeSequenceHandler
         {
             /// <summary>
             /// Ises the escaped using the specified text

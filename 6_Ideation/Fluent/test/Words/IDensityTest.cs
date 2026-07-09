@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for density.
         /// </summary>
-        private class DensityBuilder
+        internal class DensityBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the density value
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IDensity.
         /// </summary>
-        private class DensityBuilderImpl : IDensity<DensityBuilder, float>
+        internal class DensityBuilderImpl : IDensity<DensityBuilder, float>
         {
             /// <summary>
             ///     The density builder

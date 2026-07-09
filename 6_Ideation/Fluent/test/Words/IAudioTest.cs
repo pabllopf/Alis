@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for audio.
         /// </summary>
-        private class AudioBuilder
+        internal class AudioBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the audio config
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IAudio.
         /// </summary>
-        private class AudioBuilderImpl : IAudio<AudioBuilder, string>
+        internal class AudioBuilderImpl : IAudio<AudioBuilder, string>
         {
             /// <summary>
             ///     The audio builder

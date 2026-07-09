@@ -806,7 +806,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Mock process that can throw when Kill() is called.
         /// </summary>
-        private class MockProcess : IDisposable
+        internal class MockProcess : IDisposable
         {
             public bool HasExited => false;
 

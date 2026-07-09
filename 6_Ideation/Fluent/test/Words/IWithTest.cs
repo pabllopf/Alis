@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class.
         /// </summary>
-        private class Builder
+        internal class Builder
         {
             /// <summary>
             ///     Gets or sets the value of the with value
@@ -108,7 +108,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IWith.
         /// </summary>
-        private class WithBuilder : IWith<Builder, string>
+        internal class WithBuilder : IWith<Builder, string>
         {
             /// <summary>
             ///     The builder
@@ -130,7 +130,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder with integer.
         /// </summary>
-        private class IntBuilder
+        internal class IntBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the value
@@ -141,7 +141,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation with integer.
         /// </summary>
-        private class IntWithBuilder : IWith<IntBuilder, int>
+        internal class IntWithBuilder : IWith<IntBuilder, int>
         {
             /// <summary>
             ///     The int builder

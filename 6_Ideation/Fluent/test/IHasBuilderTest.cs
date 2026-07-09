@@ -108,7 +108,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// <summary>
         ///     Helper implementation for testing.
         /// </summary>
-        private class TestBuilderImpl : IHasBuilder<string>
+        internal class TestBuilderImpl : IHasBuilder<string>
         {
             /// <summary>
             ///     Builders this instance
@@ -120,7 +120,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// <summary>
         ///     Helper integer builder implementation.
         /// </summary>
-        private class IntBuilderImpl : IHasBuilder<int>
+        internal class IntBuilderImpl : IHasBuilder<int>
         {
             /// <summary>
             ///     Builders this instance
@@ -132,7 +132,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// <summary>
         ///     Custom data type for testing.
         /// </summary>
-        private class TestData
+        internal class TestData
         {
             /// <summary>
             ///     Gets or sets the value of the value
@@ -143,7 +143,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// <summary>
         ///     Helper custom object builder implementation.
         /// </summary>
-        private class CustomBuilderImpl : IHasBuilder<TestData>
+        internal class CustomBuilderImpl : IHasBuilder<TestData>
         {
             /// <summary>
             ///     Builders this instance
@@ -155,7 +155,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         /// <summary>
         ///     Helper object builder for testing covariance.
         /// </summary>
-        private class ObjectBuilderImpl : IHasBuilder<object>
+        internal class ObjectBuilderImpl : IHasBuilder<object>
         {
             /// <summary>
             ///     Builders this instance

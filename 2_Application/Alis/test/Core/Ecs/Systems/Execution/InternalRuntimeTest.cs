@@ -43,7 +43,7 @@ namespace Alis.Test.Core.Ecs.Systems.Execution
         /// <summary>
         ///     Test double for IRuntime that tracks method calls
         /// </summary>
-        private class TestRuntime : AManager
+        internal class TestRuntime : AManager
         {
             /// <summary>
             /// Gets or sets the value of the on init called

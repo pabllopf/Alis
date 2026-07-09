@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class for rotation.
         /// </summary>
-        private class RotationBuilder
+        internal class RotationBuilder
         {
             /// <summary>
             ///     Gets or sets the value of the rotation value
@@ -108,7 +108,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of IRotation.
         /// </summary>
-        private class RotationBuilderImpl : IRotation<RotationBuilder, float>
+        internal class RotationBuilderImpl : IRotation<RotationBuilder, float>
         {
             /// <summary>
             ///     The rotation builder

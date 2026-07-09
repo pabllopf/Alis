@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Helper implementation for testing IOnReleaseKey.
         /// </summary>
-        private class ReleaseKeyHandler : IOnReleaseKey
+        internal class ReleaseKeyHandler : IOnReleaseKey
         {
             /// <summary>
             ///     Gets or sets the value of the release count

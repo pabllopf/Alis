@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper builder class.
         /// </summary>
-        private class Builder
+        internal class Builder
         {
             /// <summary>
             ///     Gets or sets the value of the set value
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         /// <summary>
         ///     Helper implementation of ISet.
         /// </summary>
-        private class SetBuilder : ISet<Builder, string>
+        internal class SetBuilder : ISet<Builder, string>
         {
             /// <summary>
             ///     The builder
