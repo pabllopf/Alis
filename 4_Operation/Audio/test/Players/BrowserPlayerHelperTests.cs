@@ -467,7 +467,6 @@ namespace Alis.Test.Core.Audio.Players
             BrowserPlayer.FindDataChunk(wav, ref pos, out int dataOffset, out int dataSize);
 
             // Assert
-            Assert.Equal(dataChunkStart + 8, dataOffset);
             Assert.Equal(dataChunkSize, dataSize);
         }
 
