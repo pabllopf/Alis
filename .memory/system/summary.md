@@ -37,6 +37,7 @@
 | 2026-07-10 00:30:00 | ImPlotP12.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 | 2026-07-10 00:45:00 | ImGui.cs | 0.0% | ~79.69% | +79.69% | bb4b3ae24 | Completed |
 | 2026-07-10 01:00:00 | ImGuiP1.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
+| 2026-07-10 01:15:00 | Shader.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 
 ## Test Files Created
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`
