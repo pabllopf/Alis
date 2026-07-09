@@ -61,6 +61,7 @@ Examples:
     parser.add_argument("--output", "-o", default=None, help="Output file path (defaults to stdout)")
     parser.add_argument("--quiet", "-q", action="store_true", help="Suppress non-essential logs")
     parser.add_argument("--fetch-source", action="store_true", help="Fetch source code via SonarCloud API (slower, AI-ready)")
+    parser.add_argument("--processed-file", default=None, help="JSON file containing already processed coverage tasks")
     return parser.parse_args()
 
 # ─────────────────────────────────────────────────────────────
@@ -351,6 +352,48 @@ def format_coverage_task(delta: dict, fetch_source: bool = False) -> str:
     Update ./.memory/coverage/state/coverage-index.md after completion
             """
 
+
+def load_processed_files(processed_file: str | None) -> set:
+    if not processed_file:
+        return set()
+
+    path = Path(processed_file)
+
+    if not path.exists():
+        return set()
+
+    try:
+        import json
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if isinstance(data, list):
+            return set(data)
+
+        if isinstance(data, dict):
+            return set(data.get("processed", []))
+
+    except Exception:
+        pass
+
+    return set()
+
+
+def save_processed_file(processed_file: str | None, processed: set):
+    if not processed_file:
+        return
+
+    path = Path(processed_file)
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(
+            {"processed": sorted(list(processed))},
+            f,
+            indent=2
+        )
+
+
 # ─────────────────────────────────────────────────────────────
 # MAIN EXECUTION FLOW (CLI + INTERACTIVE FALLBACK)
 # ─────────────────────────────────────────────────────────────
@@ -381,7 +424,11 @@ def main():
 
   if not args.quiet:
       print("[INFO] Computing coverage deltas...")
-  deltas = compute_deltas(current_files, previous_state, limit=args.limit, skip=args.skip)
+  processed = load_processed_files(args.processed_file)
+  deltas = compute_deltas(current_files, previous_state, limit=None, skip=0)
+  deltas = [d for d in deltas if d["file"] not in processed]
+  if args.limit is not None:
+      deltas = deltas[:args.limit]
 
   try:
       if args.output:
@@ -402,7 +449,7 @@ def main():
       else:
           if not deltas:
               if not args.quiet:
-                  print("[INFO] No coverage delta detected. STOP IMMEDIATELY (as specified).")
+                  print("NO_REMAINING_COVERAGE_TASKS")
               return
                   
           if not args.quiet:
