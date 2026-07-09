@@ -62,6 +62,24 @@ Examples:
     parser.add_argument("--quiet", "-q", action="store_true", help="Suppress non-essential logs")
     parser.add_argument("--fetch-source", action="store_true", help="Fetch source code via SonarCloud API (slower, AI-ready)")
     parser.add_argument("--processed-file", default=None, help="JSON file containing already processed coverage tasks")
+    parser.add_argument("--sort", choices=[
+        "coverage",
+        "uncovered-lines",
+        "uncovered-branches",
+        "complexity",
+        "loc",
+        "risk",
+        "mixed"
+    ], default="mixed", help="Sorting strategy")
+    parser.add_argument("--order", choices=["asc", "desc"], default="desc", help="Sort order")
+    parser.add_argument("--only-branches", action="store_true", help="Only files with uncovered branches")
+    parser.add_argument("--only-lines", action="store_true", help="Only files with uncovered lines")
+    parser.add_argument("--min-coverage", type=float, default=None)
+    parser.add_argument("--max-coverage", type=float, default=None)
+    parser.add_argument("--min-uncovered-lines", type=int, default=0)
+    parser.add_argument("--min-uncovered-branches", type=int, default=0)
+    parser.add_argument("--min-complexity", type=int, default=0)
+
     return parser.parse_args()
 
 # ─────────────────────────────────────────────────────────────
