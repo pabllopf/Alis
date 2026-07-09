@@ -517,10 +517,13 @@ def main():
   if not args.quiet:
       print("[INFO] Computing coverage deltas...")
   processed = load_processed_files(args.processed_file)
-  deltas = compute_deltas(current_files, previous_state, limit=None, skip=0)
-  deltas = [d for d in deltas if d["file"] not in processed]
+  all_deltas = compute_deltas(current_files, previous_state, limit=None, skip=0)
+  all_deltas = [d for d in all_deltas if d["file"] not in processed]
+  if args.skip > 0:
+      all_deltas = all_deltas[args.skip:]
   if args.limit is not None:
-      deltas = deltas[:args.limit]
+      all_deltas = all_deltas[:args.limit]
+  deltas = all_deltas
 
   try:
       if args.output:
