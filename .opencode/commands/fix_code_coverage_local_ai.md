@@ -8,6 +8,8 @@ Process every uncovered SonarCloud file exactly once and resume progress across 
 
 ## Persistent State
 
+the main directory is "./.memory/xxxx" the folder have "." to do secret folder on macos. Be careful with this name to do the tasks.
+
 Persist execution using:
 
 ```text
