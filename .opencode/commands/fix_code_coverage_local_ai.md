@@ -1,4 +1,4 @@
-# OpenCode Autonomous SonarCloud Coverage Orchestrator V3
+# OpenCode Autonomous SonarCloud Coverage Orchestrator V4
 
 Deterministic .NET coverage orchestrator optimized for minimal token usage.
 
