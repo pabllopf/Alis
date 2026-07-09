@@ -131,6 +131,7 @@ Requirements:
 * observable behavior only
 * real implementations preferred
 * Moq only for interfaces or external dependencies
+* All the projects have InternalsVisibleTo to permit see the internals vars properties, etc
 
 Forbidden:
 
