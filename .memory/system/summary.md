@@ -25,6 +25,7 @@
 | 2026-07-09 21:29:00 | ImGuiP6.cs | 0.0% | ~85% | +85% | 63d37f3f4 | Completed |
 | 2026-07-09 21:50:00 | NativeWindow.cs | 0.0% | N/A | N/A | 8d74acf22 | Completed (tests skip on macOS via RequiresDisplayAttribute) |
 | 2026-07-09 22:10:00 | MacNativePlatform.cs | 0.0% | N/A | N/A | 99a0fd0e6 | Completed |
+| 2026-07-09 22:30:00 | ImPlotP10.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 
 ## Test Files Created
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`
