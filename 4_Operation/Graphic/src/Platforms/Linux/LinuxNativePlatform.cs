@@ -310,7 +310,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// The visual info
         /// </summary>
         [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
-        private struct XVisualInfo
+        internal struct XVisualInfo
         {
             /// <summary>
             /// The visual
@@ -399,7 +399,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// The set window attributes
         /// </summary>
         [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
-        private struct XSetWindowAttributes
+        internal struct XSetWindowAttributes
         {
             /// <summary>
             /// The background pixmap
@@ -763,7 +763,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <summary>
         /// The visual selection result
         /// </summary>
-        private struct VisualSelectionResult
+        internal struct VisualSelectionResult
         {
             /// <summary>
             /// The visual ptr
@@ -1289,7 +1289,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// The xwm hints
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
-        private struct XWMHints
+        internal struct XWMHints
         {
             /// <summary>
             /// The flags

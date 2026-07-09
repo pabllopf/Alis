@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <summary>
         ///     The pure value struct
         /// </summary>
-        private struct PureValueStruct
+        internal struct PureValueStruct
         {
             /// <summary>
             ///     The
@@ -74,7 +74,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <summary>
         ///     The struct with reference
         /// </summary>
-        private struct StructWithReference
+        internal struct StructWithReference
         {
             /// <summary>
             ///     The value
@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <summary>
         ///     The nested struct with reference
         /// </summary>
-        private struct NestedStructWithReference
+        internal struct NestedStructWithReference
         {
             /// <summary>
             ///     The value
@@ -106,7 +106,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <summary>
         ///     The struct with array
         /// </summary>
-        private struct StructWithArray
+        internal struct StructWithArray
         {
             /// <summary>
             ///     The value
@@ -122,7 +122,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <summary>
         ///     The complex pure value struct
         /// </summary>
-        private struct ComplexPureValueStruct
+        internal struct ComplexPureValueStruct
         {
             /// <summary>
             ///     The
@@ -143,7 +143,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <summary>
         ///     The complex mixed struct
         /// </summary>
-        private struct ComplexMixedStruct
+        internal struct ComplexMixedStruct
         {
             /// <summary>
             ///     The

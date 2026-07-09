@@ -699,7 +699,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     The inline action
         /// </summary>
-        private struct InlineAction1 : Ecs.Systems.IAction<Position>
+        internal struct InlineAction1 : Ecs.Systems.IAction<Position>
         {
             /// <summary>
             ///     The calls
@@ -726,7 +726,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     The inline action
         /// </summary>
-        private struct InlineAction2 : IAction<Position, Velocity>
+        internal struct InlineAction2 : IAction<Position, Velocity>
         {
             /// <summary>
             ///     The calls
@@ -756,7 +756,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     The inline action
         /// </summary>
-        private struct InlineAction3 : IAction<Position, Velocity, Health>
+        internal struct InlineAction3 : IAction<Position, Velocity, Health>
         {
             /// <summary>
             ///     The calls
@@ -786,7 +786,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     The inline action
         /// </summary>
-        private struct InlineAction4 : IAction<Position, Velocity, Health, Armor>
+        internal struct InlineAction4 : IAction<Position, Velocity, Health, Armor>
         {
             /// <summary>
             ///     The calls
@@ -818,7 +818,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     The inline action
         /// </summary>
-        private struct InlineAction5 : IAction<Position, Velocity, Health, Armor, Damage>
+        internal struct InlineAction5 : IAction<Position, Velocity, Health, Armor, Damage>
         {
             /// <summary>
             ///     The calls
@@ -851,7 +851,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     The inline action
         /// </summary>
-        private struct InlineAction6 : IAction<Position, Velocity, Health, Armor, Damage, Transform>
+        internal struct InlineAction6 : IAction<Position, Velocity, Health, Armor, Damage, Transform>
         {
             /// <summary>
             ///     The calls
@@ -886,7 +886,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     The inline action
         /// </summary>
-        private struct InlineAction7 : IAction<Position, Velocity, Health, Armor, Damage, Transform, TestComponent>
+        internal struct InlineAction7 : IAction<Position, Velocity, Health, Armor, Damage, Transform, TestComponent>
         {
             /// <summary>
             ///     The calls
@@ -921,7 +921,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     The inline action
         /// </summary>
-        private struct InlineAction8 : IAction<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>
+        internal struct InlineAction8 : IAction<Position, Velocity, Health, Armor, Damage, Transform, TestComponent, AnotherComponent>
         {
             /// <summary>
             ///     The calls

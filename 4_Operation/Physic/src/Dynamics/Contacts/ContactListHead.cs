@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The contact enumerator
         /// </summary>
-        private struct ContactEnumerator : IEnumerator<Contact>
+        internal struct ContactEnumerator : IEnumerator<Contact>
         {
             /// <summary>
             ///     The head

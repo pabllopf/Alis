@@ -731,7 +731,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         private static extern bool TranslateMessage(ref Msg lpMsg);
 
         [StructLayout(LayoutKind.Sequential)]
-        private struct POINT
+        internal struct POINT
         {
             public int X;
             public int Y;

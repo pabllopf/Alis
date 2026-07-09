@@ -535,7 +535,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     The resettable enumerator
         /// </summary>
-        private struct ResettableEnumerator : IEnumerator
+        internal struct ResettableEnumerator : IEnumerator
         {
             /// <summary>
             ///     Gets or sets the value of the reset called

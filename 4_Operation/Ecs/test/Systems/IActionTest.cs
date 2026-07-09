@@ -283,7 +283,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Test implementation that increments an integer
         /// </summary>
-        private struct IntIncrementAction : IAction<int>
+        internal struct IntIncrementAction : IAction<int>
         {
             /// <summary>
             ///     Runs the arg
@@ -298,7 +298,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Test implementation that multiplies an integer
         /// </summary>
-        private struct IntMultiplyAction : IAction<int>
+        internal struct IntMultiplyAction : IAction<int>
         {
             /// <summary>
             ///     The multiplier
@@ -324,7 +324,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Test implementation that modifies a struct
         /// </summary>
-        private struct StructModifyAction : IAction<TestStruct>
+        internal struct StructModifyAction : IAction<TestStruct>
         {
             /// <summary>
             ///     Runs the arg
@@ -359,7 +359,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Test implementation for complex struct operations
         /// </summary>
-        private struct ComplexStructAction : IAction<ComplexStruct>
+        internal struct ComplexStructAction : IAction<ComplexStruct>
         {
             /// <summary>
             ///     Runs the arg
@@ -376,7 +376,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Test struct for IAction
         /// </summary>
-        private struct TestStruct
+        internal struct TestStruct
         {
             /// <summary>
             ///     The value
@@ -387,7 +387,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Complex test struct
         /// </summary>
-        private struct ComplexStruct
+        internal struct ComplexStruct
         {
             /// <summary>
             ///     The

@@ -352,7 +352,7 @@ namespace Alis.Core.Ecs.Test.Updating
 
         /// <summary>3-byte struct (not a power of two → must return -1).</summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        private struct ThreeByteStruct
+        internal struct ThreeByteStruct
         {
             /// <summary>
             ///     The
@@ -372,7 +372,7 @@ namespace Alis.Core.Ecs.Test.Updating
 
         /// <summary>12-byte struct (3 × int, not a power of two → must return -1).</summary>
         [StructLayout(LayoutKind.Sequential)]
-        private struct TwelveByteStruct
+        internal struct TwelveByteStruct
         {
             /// <summary>
             ///     The
@@ -392,7 +392,7 @@ namespace Alis.Core.Ecs.Test.Updating
 
         /// <summary>32-byte struct (2 × decimal, power of two but &gt; 16 → must return -1).</summary>
         [StructLayout(LayoutKind.Sequential)]
-        private struct TwoDecimalsStruct
+        internal struct TwoDecimalsStruct
         {
             /// <summary>
             ///     The
@@ -407,7 +407,7 @@ namespace Alis.Core.Ecs.Test.Updating
 
         /// <summary>Struct that contains a managed reference (string) → must return -1.</summary>
         [StructLayout(LayoutKind.Sequential)]
-        private struct StructContainingRef
+        internal struct StructContainingRef
         {
             /// <summary>
             ///     The text
@@ -417,7 +417,7 @@ namespace Alis.Core.Ecs.Test.Updating
 
         /// <summary>Custom 2-byte struct (should return 2).</summary>
         [StructLayout(LayoutKind.Sequential)]
-        private struct TwoByteStruct
+        internal struct TwoByteStruct
         {
             /// <summary>
             ///     The value
@@ -427,7 +427,7 @@ namespace Alis.Core.Ecs.Test.Updating
 
         /// <summary>Custom 4-byte struct (two shorts → should return 4).</summary>
         [StructLayout(LayoutKind.Sequential)]
-        private struct FourByteStruct
+        internal struct FourByteStruct
         {
             /// <summary>
             ///     The
@@ -442,7 +442,7 @@ namespace Alis.Core.Ecs.Test.Updating
 
         /// <summary>Custom 8-byte struct (two ints → should return 8).</summary>
         [StructLayout(LayoutKind.Sequential)]
-        private struct EightByteStruct
+        internal struct EightByteStruct
         {
             /// <summary>
             ///     The
@@ -457,7 +457,7 @@ namespace Alis.Core.Ecs.Test.Updating
 
         /// <summary>Custom 16-byte struct (four ints → should return 16).</summary>
         [StructLayout(LayoutKind.Sequential)]
-        private struct SixteenByteStruct
+        internal struct SixteenByteStruct
         {
             /// <summary>
             ///     The

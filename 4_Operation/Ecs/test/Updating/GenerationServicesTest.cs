@@ -158,7 +158,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     The generation services probe component
         /// </summary>
-        private struct GenerationServicesProbeComponent
+        internal struct GenerationServicesProbeComponent
         {
         }
 
