@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Physic.Dynamics;
@@ -475,6 +476,57 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert
             Assert.NotEqual(settingsA, settingsB);
+        }
+
+        #endregion
+
+        #region OnUpdate — Body Null with Transform
+
+        /// <summary>
+        ///     Verifies that <see cref="BoxCollider.OnUpdate" /> does not modify the Transform
+        ///     when the GameObject has a Transform component but Body is null.
+        ///     This covers the branch where <c>Body is not null</c> evaluates to false.
+        /// </summary>
+        [Fact]
+        public void OnUpdate_WhenTransformExistsAndBodyIsNull_DoesNotModifyTransform()
+        {
+            // Arrange
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Transform(new Vector2F(7f, 13f), 2.5f));
+            BoxCollider collider = new BoxCollider();
+
+            // Act
+            collider.OnUpdate(gameObject);
+
+            // Assert — Transform unchanged because Body is null
+            ref Transform transform = ref gameObject.Get<Transform>();
+            Assert.Equal(7f, transform.Position.X);
+            Assert.Equal(13f, transform.Position.Y);
+            Assert.Equal(2.5f, transform.Rotation);
+        }
+
+        /// <summary>
+        ///     Verifies that multiple calls to <see cref="BoxCollider.OnUpdate" /> when Body is null
+        ///     are idempotent and do not modify the Transform.
+        /// </summary>
+        [Fact]
+        public void OnUpdate_WhenTransformExistsAndBodyIsNull_MultipleCallsAreIdempotent()
+        {
+            // Arrange
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Transform(new Vector2F(5f, 5f), 1.0f));
+            BoxCollider collider = new BoxCollider();
+
+            // Act — multiple calls
+            collider.OnUpdate(gameObject);
+            collider.OnUpdate(gameObject);
+            collider.OnUpdate(gameObject);
+
+            // Assert — Transform unchanged
+            ref Transform transform = ref gameObject.Get<Transform>();
+            Assert.Equal(5f, transform.Position.X);
+            Assert.Equal(5f, transform.Position.Y);
+            Assert.Equal(1.0f, transform.Rotation);
         }
 
         #endregion
