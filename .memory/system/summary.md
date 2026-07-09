@@ -28,6 +28,7 @@
 | 2026-07-09 22:30:00 | ImPlotP10.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 | 2026-07-09 22:45:00 | RealExplosion.cs | 0.0% | ~18% | +18% | 70c1a1c59 | Completed |
 | 2026-07-09 23:00:00 | ImPlotP1.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
+| 2026-07-09 23:15:00 | Font.cs | 0.0% | ~3% | +3% | 74f034e73 | Completed |
 
 ## Test Files Created
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`
@@ -45,3 +46,4 @@
 - `NativeWindowRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Glfw/test/NativeWindowRemainingCoverageTests.cs`
 - `MacNativePlatformRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/4_Operation/Graphic/test/Platforms/Osx/MacNativePlatformRemainingCoverageTests.cs`
 - `RealExplosionRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Common/Logic/RealExplosionRemainingCoverageTests.cs`
+- `FontRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/4_Operation/Graphic/test/Ui/FontRemainingCoverageTests.cs`
