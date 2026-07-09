@@ -136,8 +136,13 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('osx')) AND '$(RuntimeIdentifier)' == '')  OR $(RuntimeIdentifier.Contains('osx'))">
-        <DefineConstants>$(DefineConstants);OSX</DefineConstants>
+        <DefineConstants>$(DefineConstants);OSX;osx</DefineConstants>
         <IsOSX>true</IsOSX>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' != '' AND $(RuntimeIdentifier.Contains('osx'))">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' == '' AND '$(NETCoreSdkRuntimeIdentifier)' != '' AND $(NETCoreSdkRuntimeIdentifier.Contains('osx'))">$(DefineConstants);$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
     </PropertyGroup>
 
     <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('windows')) AND '$(RuntimeIdentifier)' == '') OR $(RuntimeIdentifier.Contains('win'))">
