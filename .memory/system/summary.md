@@ -41,6 +41,11 @@
 | 2026-07-10 01:30:00 | KeyCodes.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE (enum, no testable logic) |
 | 2026-07-10 01:45:00 | ImPlotP22.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 | 2026-07-10 01:50:00 | ImPlotP19.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
+| 2026-07-10 02:00:00 | Image.cs | 0.0% | ~85% | +85% | 727636f5c | Completed |
+| 2026-07-10 02:05:00 | ImPlotP20.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
+| 2026-07-10 02:10:00 | GLShaderProgramParam.cs | 0.0% | ~26.43% | +26.43% | 19e9c47d5 | Completed |
+| 2026-07-10 02:15:00 | SfmlText.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
+| 2026-07-10 02:20:00 | Music.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 
 ## Test Files Created
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`
@@ -60,3 +65,5 @@
 - `RealExplosionRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Common/Logic/RealExplosionRemainingCoverageTests.cs`
 - `FontRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/4_Operation/Graphic/test/Ui/FontRemainingCoverageTests.cs`
 - `ImGuiRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImGuiRemainingCoverageTests.cs`
+- `ImageRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/4_Operation/Graphic/test/ImageRemainingCoverageTests.cs`
+- `GlShaderProgramParamRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/4_Operation/Graphic/test/Constructs/GlShaderProgramParamRemainingCoverageTests.cs`
