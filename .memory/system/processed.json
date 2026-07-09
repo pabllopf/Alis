@@ -8,5 +8,6 @@
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
     "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs",
     "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs"
 ]
