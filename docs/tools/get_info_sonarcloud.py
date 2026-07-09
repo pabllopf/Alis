@@ -20,6 +20,7 @@ DEFAULT_PROJECT_KEY = "pabllopf-official_alis"
 DEFAULT_BRANCH = "master"
 SONAR_URL = "https://sonarcloud.io/api"
 MEMORY_DIR = Path("./.memory/coverage")
+CACHE_DIR = Path("./.memory/system/cache")
 
 STATE_DIR = MEMORY_DIR / "state"
 TASKS_DIR = MEMORY_DIR / "tasks"
@@ -62,6 +63,9 @@ Examples:
     parser.add_argument("--quiet", "-q", action="store_true", help="Suppress non-essential logs")
     parser.add_argument("--fetch-source", action="store_true", help="Fetch source code via SonarCloud API (slower, AI-ready)")
     parser.add_argument("--processed-file", default=None, help="JSON file containing already processed coverage tasks")
+    parser.add_argument("--cache", action="store_true", help="Force full download + cache update to ./.memory/system/cache/")
+    parser.add_argument("--cache-only", action="store_true", help="Read from cache only (skip API call)")
+    parser.add_argument("--cache-update", action="store_true", help="Update existing cache with latest data")
     parser.add_argument("--sort", choices=[
         "coverage",
         "uncovered-lines",
@@ -134,6 +138,38 @@ def load_coverage_index() -> dict:
     return data
 
 # ─────────────────────────────────────────────────────────────
+# CACHE SYSTEM (LOCAL SNAPSHOT PERSISTENCE)
+# ─────────────────────────────────────────────────────────────
+
+def get_latest_cache_file() -> Path | None:
+    """Return the most recent cache JSON file by timestamp suffix."""
+    if not CACHE_DIR.exists():
+        return None
+    candidates = sorted(CACHE_DIR.glob("sonarcloud_cache_*.json"))
+    return candidates[-1] if candidates else None
+
+def load_cache(cache_path: Path | None = None) -> dict | None:
+    """Load cached SonarCloud data. Auto-picks latest if no path given."""
+    if not cache_path:
+        cache_path = get_latest_cache_file()
+    if not cache_path or not cache_path.exists():
+        return None
+    try:
+        with open(cache_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+def save_cache(data: dict):
+    """Save SonarCloud data to ./.memory/system/cache/ with timestamp."""
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    path = CACHE_DIR / f"sonarcloud_cache_{ts}.json"
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, default=str)
+    print(f"[INFO] Cache saved: {path} ({len(data.get('components', []))} files)")
+
+# ─────────────────────────────────────────────────────────────
 # SONARCLOUD API CLIENT (PAGINATION & SOURCE EXTRACTION)
 # ─────────────────────────────────────────────────────────────
 
@@ -144,8 +180,21 @@ def get_sonar_token() -> str:
         sys.exit(1)
     return token
 
-def fetch_sonarcloud_data(project_key: str, branch: str) -> list[dict]:
-    """Fetch current coverage state from SonarCloud with pagination."""
+def fetch_sonarcloud_data(project_key: str, branch: str, use_cache: bool = False, update_cache: bool = False) -> list[dict]:
+    """Fetch current coverage state from SonarCloud with pagination.
+    
+    If use_cache is True, attempts to load from local cache first.
+    If update_cache is True, forces API call and updates cache.
+    Always saves to cache if a full download completes.
+    """
+    # ── Try loading from cache first ──
+    if use_cache and not update_cache:
+        cached = load_cache()
+        if cached and cached.get("project_key") == project_key and cached.get("branch") == branch:
+            print(f"[INFO] Loaded {len(cached.get('components', []))} files from cache ({cached.get('cached_at')})")
+            return cached["components"]
+    
+    # ── Fetch from API ──
     token = get_sonar_token()
     headers = {"Authorization": f"Bearer {token}"}
     url = f"{SONAR_URL}/measures/component_tree"
@@ -156,7 +205,7 @@ def fetch_sonarcloud_data(project_key: str, branch: str) -> list[dict]:
         "qualifiers": "FIL",
         "branch": branch,
         "p": 1,
-        "ps": 100
+        "ps": 500
     }
     
     all_files = []
@@ -167,17 +216,31 @@ def fetch_sonarcloud_data(project_key: str, branch: str) -> list[dict]:
         if resp.status_code != 200:
             print(f"[ERROR] SonarCloud API failed: {resp.status_code} {resp.text}")
             sys.exit(1)
-            
+
         data = resp.json()
+        paging = data.get("paging", {})
+        total = paging.get("total", 0)
         components = data.get("components", [])
         if not components:
             break
-            
+
         all_files.extend(components)
-        if data.get("paging", {}).get("isLast", True):
+        fetched = page * params["ps"]
+        print(f"[INFO] Page {page}: fetched {len(components)} files (total so far: {len(all_files)} / {total})")
+        if fetched >= total:
             break
         page += 1
-        
+    
+    # ── Save to cache ──
+    print(f"[INFO] Full download complete: {len(all_files)} files total")
+    save_cache({
+        "project_key": project_key,
+        "branch": branch,
+        "cached_at": datetime.now(timezone.utc).isoformat(),
+        "total_files": len(all_files),
+        "components": all_files
+    })
+    
     return all_files
 
 def fetch_source_snippet(project_key: str, file_key: str, max_lines: int = 60) -> str:
@@ -436,9 +499,20 @@ def main():
       
   previous_state = {} if should_clean else load_coverage_index()
 
+  # ── Cache mode: just download and exit ──
+  if args.cache:
+      fetch_sonarcloud_data(project_key, branch)
+      print("[INFO] Cache download complete. Exiting.")
+      return
+
+  # ── Determine cache strategy ──
+  use_cache = args.cache_only or not (args.clean or args.cache_update)
+  update_cache = args.cache_update or args.clean
+
   if not args.quiet:
-      print("[INFO] Fetching current SonarCloud coverage state...")
-  current_files = fetch_sonarcloud_data(project_key, branch)
+      cache_hint = " (from cache)" if use_cache and not update_cache else ""
+      print(f"[INFO] Fetching current SonarCloud coverage state...{cache_hint}")
+  current_files = fetch_sonarcloud_data(project_key, branch, use_cache=use_cache, update_cache=update_cache)
 
   if not args.quiet:
       print("[INFO] Computing coverage deltas...")
