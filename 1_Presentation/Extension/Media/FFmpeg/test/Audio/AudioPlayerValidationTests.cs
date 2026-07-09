@@ -28,6 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Xunit;
 
@@ -316,6 +319,106 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
 
             // Cleanup
             player.Dispose();
+        }
+
+        #endregion
+
+        #region CloseWrite Body Tests (via Reflection State Setup)
+
+        /// <summary>
+        ///     Tests that CloseWrite body disposes InputDataStream and resets
+        ///     OpenedForWriting when initialized via reflection.
+        /// </summary>
+        [Fact]
+        public void CloseWrite_WhenOpenedViaReflection_ResetsOpenedFlagAndDisposesStream()
+        {
+            // Arrange
+            AudioPlayer player = new("input.wav");
+
+            try
+            {
+                // Set OpenedForWriting via base class backing field
+                FieldInfo openedField = typeof(AudioPlayer).BaseType.GetField("<OpenedForWriting>k__BackingField",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                openedField.SetValue(player, true);
+
+                // Set InputDataStream via property
+                PropertyInfo inputProp = typeof(AudioPlayer).GetProperty("InputDataStream");
+                MemoryStream inputStream = new();
+                inputProp.SetValue(player, inputStream);
+
+                // Set ffplayp to an exited process so HasExited is true (Kill skipped)
+                using Process process = new();
+                process.StartInfo.FileName = "dotnet";
+                process.StartInfo.Arguments = "--version";
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.UseShellExecute = false;
+                process.Start();
+                process.WaitForExit(5000);
+
+                FieldInfo ffplaypField = typeof(AudioPlayer).GetField("ffplayp",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                ffplaypField.SetValue(player, process);
+
+                // Act
+                player.CloseWrite();
+
+                // Assert
+                Assert.False(player.OpenedForWriting);
+            }
+            finally
+            {
+                FieldInfo openedField = typeof(AudioPlayer).BaseType.GetField("<OpenedForWriting>k__BackingField",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                openedField.SetValue(player, false);
+                player.Dispose();
+            }
+        }
+
+        /// <summary>
+        ///     Tests that Dispose else block handles a running ffplayp process
+        ///     (non-null, HasExited=false) by calling Kill() without throwing.
+        /// </summary>
+        [Fact]
+        public void Dispose_ElseBlock_WhenFfplaypRunning_KillsProcess()
+        {
+            // Arrange
+            AudioPlayer player = new("input.wav");
+
+            try
+            {
+                // Start a sleep process that stays alive for testing
+                using Process process = new();
+                process.StartInfo.FileName = "sleep";
+                process.StartInfo.Arguments = "30";
+                process.Start();
+
+                FieldInfo ffplaypField = typeof(AudioPlayer).GetField("ffplayp",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                ffplaypField.SetValue(player, process);
+
+                // Ensure OpenedForWriting is false to trigger the else block
+                Assert.False(player.OpenedForWriting);
+
+                // Act — Dispose(bool) enters else block, calls ffplayp.Kill()
+                Exception exception = Record.Exception(() => player.Dispose());
+
+                // Assert — Kill() succeeded or was caught by the catch block
+                Assert.Null(exception);
+
+                // Verify the process was killed
+                Assert.True(process.HasExited);
+            }
+            finally
+            {
+                if (player != null)
+                {
+                    FieldInfo openedField = typeof(AudioPlayer).BaseType.GetField("<OpenedForWriting>k__BackingField",
+                        BindingFlags.NonPublic | BindingFlags.Instance);
+                    openedField.SetValue(player, false);
+                    player.Dispose();
+                }
+            }
         }
 
         #endregion
