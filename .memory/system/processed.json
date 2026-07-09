@@ -6,5 +6,6 @@
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs",
     "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
-    "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs"
+    "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs",
+    "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs"
 ]
