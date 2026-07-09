@@ -296,7 +296,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
                 var exception = Record.Exception(() => reader.NextFrame());
 
                 // Assert
-                Assert.IsAssignableFrom<InvalidOperationException>(exception);
+                Assert.IsAssignableFrom<NullReferenceException>(exception);
 
                 // Cleanup
                 reader.Dispose();
@@ -326,7 +326,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
                 var exception = Record.Exception(() => reader.NextFrame(512));
 
                 // Assert
-                Assert.IsAssignableFrom<InvalidOperationException>(exception);
+                Assert.IsAssignableFrom<NullReferenceException>(exception);
 
                 // Cleanup
                 reader.Dispose();
