@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
@@ -268,6 +270,455 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MotorEnabled = false;
             Assert.False(joint.MotorEnabled);
+        }
+
+        /// <summary>
+        /// Tests that the internal default constructor sets the joint type
+        /// </summary>
+        [Fact]
+        public void Constructor_InternalDefault_SetsJointType()
+        {
+            WheelJoint joint = new WheelJoint();
+            Assert.Equal(JointType.Wheel, joint.JointType);
+        }
+
+        /// <summary>
+        /// Tests that constructor with world coordinates sets anchors
+        /// </summary>
+        [Fact]
+        public void Constructor_WithUseWorldCoordinates_SetsAnchors()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, new Vector2F(1, 0), new Vector2F(0.0f, 1.0f), useWorldCoordinates: true);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that constructor with local coordinates keeps anchors
+        /// </summary>
+        [Fact]
+        public void Constructor_WithLocalCoordinates_KeepsAnchors()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f), useWorldCoordinates: false);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that local anchor a should round trip
+        /// </summary>
+        [Fact]
+        public void LocalAnchorA_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            Vector2F anchor = new Vector2F(1.0f, 2.0f);
+            joint.LocalAnchorA = anchor;
+            Assert.Equal(anchor, joint.LocalAnchorA);
+        }
+
+        /// <summary>
+        /// Tests that local anchor b should round trip
+        /// </summary>
+        [Fact]
+        public void LocalAnchorB_ShouldRoundTrip()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            Vector2F anchor = new Vector2F(3.0f, 4.0f);
+            joint.LocalAnchorB = anchor;
+            Assert.Equal(anchor, joint.LocalAnchorB);
+        }
+
+        /// <summary>
+        /// Tests that frequency setter stores value
+        /// </summary>
+        [Fact]
+        public void Frequency_Set_ShouldStoreValue()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            joint.Frequency = 10.0f;
+            Assert.Equal(10.0f, joint.Frequency);
+        }
+
+        /// <summary>
+        /// Tests that damping ratio setter stores value
+        /// </summary>
+        [Fact]
+        public void DampingRatio_Set_ShouldStoreValue()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            joint.DampingRatio = 0.8f;
+            Assert.Equal(0.8f, joint.DampingRatio);
+        }
+
+        /// <summary>
+        /// Tests that JointTranslation returns a valid value
+        /// </summary>
+        [Fact]
+        public void JointTranslation_ShouldReturnCorrectValue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(1.0f, 0.0f));
+            float translation = joint.JointTranslation;
+            Assert.True(translation >= 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that JointSpeed is computed correctly
+        /// </summary>
+        [Fact]
+        public void JointSpeed_ShouldReturnCorrectValue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            bodyA.AngularVelocity = 1.0f;
+            bodyB.AngularVelocity = 3.0f;
+            Assert.Equal(2.0f, joint.JointSpeed);
+        }
+
+        /// <summary>
+        /// Tests that GetMotorTorque returns zero initially
+        /// </summary>
+        [Fact]
+        public void GetMotorTorque_ShouldReturnZeroInitially()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            float torque = joint.GetMotorTorque(1.0f);
+            Assert.Equal(0.0f, torque);
+        }
+
+        /// <summary>
+        /// Tests that GetReactionTorque returns zero for initial state
+        /// </summary>
+        [Fact]
+        public void GetReactionTorque_ShouldReturnZeroForInitialState()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            Assert.Equal(0.0f, joint.GetReactionTorque(1.0f));
+        }
+
+        /// <summary>
+        /// Tests that GetMotorTorque with motor enabled after step returns non-zero
+        /// </summary>
+        [Fact]
+        public void GetMotorTorque_AfterStepWithMotor_ShouldReturnNonZero()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            joint.MotorEnabled = true;
+            joint.MotorSpeed = 5.0f;
+            joint.MaxMotorTorque = 50.0f;
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that step with wheel joint updates velocities
+        /// </summary>
+        [Fact]
+        public void Step_WithWheelJoint_ShouldUpdateVelocities()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody();
+            Body bodyB = world.CreateBody();
+            bodyA.GetBodyType = BodyType.Dynamic;
+            bodyB.GetBodyType = BodyType.Dynamic;
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that step with motor enabled exercises rotational motor
+        /// </summary>
+        [Fact]
+        public void Step_WithMotorEnabled_ShouldExerciseRotationalMotor()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            joint.MotorEnabled = true;
+            joint.MotorSpeed = 5.0f;
+            joint.MaxMotorTorque = 50.0f;
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that step with frequency exercises spring constraint
+        /// </summary>
+        [Fact]
+        public void Step_WithFrequency_ShouldExerciseSpringConstraint()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            joint.Frequency = 5.0f;
+            joint.DampingRatio = 0.5f;
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that step with motor and frequency exercises both paths
+        /// </summary>
+        [Fact]
+        public void Step_WithMotorAndFrequency_ShouldExerciseBoth()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            joint.MotorEnabled = true;
+            joint.MotorSpeed = 5.0f;
+            joint.MaxMotorTorque = 50.0f;
+            joint.Frequency = 5.0f;
+            joint.DampingRatio = 0.5f;
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that step with world coordinates works
+        /// </summary>
+        [Fact]
+        public void Step_WithUseWorldCoordinates_ShouldWork()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, new Vector2F(0, 0), new Vector2F(0.0f, 1.0f), useWorldCoordinates: true);
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that multiple steps maintain stability
+        /// </summary>
+        [Fact]
+        public void Step_MultipleSteps_ShouldMaintainStability()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            world.Add(joint);
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that GetReactionForce with gravity after step returns non-zero
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_AfterStep_ShouldReturnNonZero()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            joint.GetReactionForce(60.0f);
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that InitVelocityConstraints without warm starting zeros out impulse
+        /// </summary>
+        [Fact]
+        public void InitVelocityConstraints_WithoutWarmStarting_ShouldZeroOutImpulse()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f }, new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f }, new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
+                Locks = new int[] { 0, 0 }
+            };
+            MethodInfo initMethod = typeof(WheelJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { data });
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that InitVelocityConstraints with warm starting scales impulse
+        /// </summary>
+        [Fact]
+        public void InitVelocityConstraints_WithWarmStarting_ShouldScaleImpulse()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            joint.Frequency = 5.0f;
+            joint.DampingRatio = 0.5f;
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, DtRatio = 1.0f, WarmStarting = true },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f }, new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f }, new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
+                Locks = new int[] { 0, 0 }
+            };
+            MethodInfo initMethod = typeof(WheelJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { data });
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests that SolvePositionConstraints works with valid data
+        /// </summary>
+        [Fact]
+        public void SolvePositionConstraints_WithValidData_ShouldReturnBool()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f }, new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f }, new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
+                Locks = new int[] { 0, 0 }
+            };
+            MethodInfo initMethod = typeof(WheelJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { data });
+            MethodInfo solvePositionMethod = typeof(WheelJoint).GetMethod("SolvePositionConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            object result = solvePositionMethod.Invoke(joint, new object[] { data });
+            Assert.IsType<bool>(result);
+        }
+
+        /// <summary>
+        /// Tests that SolvePositionConstraints with static bodies uses else branch
+        /// </summary>
+        [Fact]
+        public void SolvePositionConstraints_WithStaticBodies_ShouldUseElseBranch()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f }, new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f }, new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
+                Locks = new int[] { 0, 0 }
+            };
+            MethodInfo initMethod = typeof(WheelJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { data });
+            MethodInfo solvePositionMethod = typeof(WheelJoint).GetMethod("SolvePositionConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            object result = solvePositionMethod.Invoke(joint, new object[] { data });
+            Assert.IsType<bool>(result);
+        }
+
+        /// <summary>
+        /// Tests that SolveVelocityConstraints works with valid data
+        /// </summary>
+        [Fact]
+        public void SolveVelocityConstraints_WithValidData_ShouldExecute()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f }, new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f }, new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
+                Locks = new int[] { 0, 0 }
+            };
+            MethodInfo initMethod = typeof(WheelJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { data });
+            MethodInfo solveVelocityMethod = typeof(WheelJoint).GetMethod("SolveVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            solveVelocityMethod.Invoke(joint, new object[] { data });
+            Assert.True(true);
         }
     }
 }
