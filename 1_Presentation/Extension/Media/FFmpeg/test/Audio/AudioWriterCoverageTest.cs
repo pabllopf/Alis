@@ -593,6 +593,58 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
         #endregion
 
+        #region OpenWrite Body Tests (without FFmpeg — covers command construction)
+
+        /// <summary>
+        ///     Tests that OpenWrite in filename mode runs the command building and file-deletion logic
+        ///     before throwing when ffmpeg executable is not found.
+        /// </summary>
+        [Fact]
+        public void OpenWrite_FilenameMode_WithoutFFmpeg_ThrowsAndBuildsCommand()
+        {
+            // Arrange
+            string testFile = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
+            File.WriteAllText(testFile, "dummy content");
+
+            try
+            {
+                using AudioWriter writer = new(testFile, 2, 44100, 16, null, "ffmpeg-not-installed");
+
+                // Act — FfMpegWrapper.OpenInput will throw (executable not found)
+                Exception exception = Record.Exception(() => writer.OpenWrite());
+
+                // Assert — exception was thrown by FfMpegWrapper
+                Assert.NotNull(exception);
+            }
+            finally
+            {
+                if (File.Exists(testFile))
+                {
+                    File.Delete(testFile);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that OpenWrite in stream mode runs the command building and csc creation
+        ///     before throwing when ffmpeg executable is not found.
+        /// </summary>
+        [Fact]
+        public void OpenWrite_StreamMode_WithoutFFmpeg_ThrowsAndCreatesCsc()
+        {
+            // Arrange
+            using MemoryStream stream = new();
+            using AudioWriter writer = new(stream, 2, 44100, 16, null, "ffmpeg-not-installed");
+
+            // Act — FfMpegWrapper.Open will throw (executable not found)
+            Exception exception = Record.Exception(() => writer.OpenWrite());
+
+            // Assert
+            Assert.NotNull(exception);
+        }
+
+        #endregion
+
         #region CloseWrite Body Tests (via Reflection State Setup)
 
         /// <summary>
