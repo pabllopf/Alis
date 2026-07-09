@@ -54,9 +54,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void OnStart_WhenGameObjectLacksTransform_DoesNotCreateBody()
         {
             // Arrange
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
             mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
 
             // Act — OnStart without Transform
@@ -78,22 +78,22 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void OnUpdate_WhenGameObjectHasTransformAndBody_SyncsTransformFromBody()
         {
             // Arrange — create a collider with a real Body
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
 
-            var body = new Alis.Core.Physic.Dynamics.Body();
+            Alis.Core.Physic.Dynamics.Body body = new Alis.Core.Physic.Dynamics.Body();
             body.Position = new Vector2F(42f, 99f);
             body.Rotation = 1.57f;
             collider.Body = body;
 
             // Create a game object with a Transform component
-            var transform = new Transform(Vector2F.Zero, 0f);
-            var gameObject = new MockGameObject(transform);
+            Transform transform = new Transform(Vector2F.Zero, 0f);
+            MockGameObject gameObject = new MockGameObject(transform);
 
             // Act
             collider.OnUpdate(gameObject);
 
             // Assert — Read back the Transform from the MockGameObject (not the local struct copy)
-            var updatedTransform = gameObject.GetStoredTransform();
+            Transform updatedTransform = gameObject.GetStoredTransform();
             Assert.Equal(42f, updatedTransform.Position.X);
             Assert.Equal(99f, updatedTransform.Position.Y);
             Assert.Equal(1.57f, updatedTransform.Rotation);
@@ -107,12 +107,12 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void OnUpdate_WhenGameObjectLacksTransform_DoesNotThrow()
         {
             // Arrange
-            var collider = new BoxCollider();
-            var mockGameObject = new Mock<IGameObject>();
+            BoxCollider collider = new BoxCollider();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
             mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
 
             // Act — should not throw
-            var exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
 
             // Assert
             Assert.Null(exception);
@@ -126,16 +126,16 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void OnUpdate_WhenBodyIsNull_DoesNotModifyTransform()
         {
             // Arrange
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
 
-            var transform = new Transform(new Vector2F(7f, 13f), 2.5f);
-            var gameObject = new MockGameObject(transform);
+            Transform transform = new Transform(new Vector2F(7f, 13f), 2.5f);
+            MockGameObject gameObject = new MockGameObject(transform);
 
             // Act
             collider.OnUpdate(gameObject);
 
             // Assert — Transform unchanged because Body is null (the inner if-block is skipped)
-            var updatedTransform = gameObject.GetStoredTransform();
+            Transform updatedTransform = gameObject.GetStoredTransform();
             Assert.Equal(7f, updatedTransform.Position.X);
             Assert.Equal(13f, updatedTransform.Position.Y);
             Assert.Equal(2.5f, updatedTransform.Rotation);
@@ -152,14 +152,14 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void OnExit_WhenBodyIsNull_DoesNotThrow()
         {
             // Arrange
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
 
             // Body is null, Context is null — both guards should prevent any action.
 
             // Act
-            var exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
 
             // Assert
             Assert.Null(exception);
@@ -172,9 +172,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void OnExit_WhenBodyIsNotNullButContextIsNull_ThrowsNullReferenceException()
         {
             // Arrange
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
 
-            var mockBody = new Mock<Alis.Core.Physic.Dynamics.Body>();
+            Mock<Alis.Core.Physic.Dynamics.Body> mockBody = new Mock<Alis.Core.Physic.Dynamics.Body>();
             collider.Body = mockBody.Object;
 
             // Context is null — the OnExit method checks `Body != null` first,
@@ -182,10 +182,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             // and Context is null, the code will attempt `Context.PhysicManager.WorldPhysic.Remove(Body)`
             // which throws NullReferenceException.
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
 
             // Act
-            var exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
 
             // Assert — the implementation accesses Context.PhysicManager without null-check,
             // so it will throw NullReferenceException when Context is null.

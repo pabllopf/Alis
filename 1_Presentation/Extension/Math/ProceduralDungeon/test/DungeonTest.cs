@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Extension.Math.ProceduralDungeon.Interfaces;
 using Alis.Extension.Math.ProceduralDungeon.Models;
 using Xunit;
@@ -149,12 +150,12 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Dispose_WithDisposableRandomGenerator_ShouldCallDisposeMethod()
         {
             // Arrange
-            var disposables = new System.Collections.Generic.List<IDisposable>();
-            var mockGenerator = new MockDisposableDungeonGenerator();
-            var mockRandomNumberGenerator = new MockDisposableRandomNumberGenerator();
+            List<IDisposable> disposables = new System.Collections.Generic.List<IDisposable>();
+            MockDisposableDungeonGenerator mockGenerator = new MockDisposableDungeonGenerator();
+            MockDisposableRandomNumberGenerator mockRandomNumberGenerator = new MockDisposableRandomNumberGenerator();
 
             // Act
-            var dungeon = new Dungeon(mockGenerator, mockRandomNumberGenerator);
+            Dungeon dungeon = new Dungeon(mockGenerator, mockRandomNumberGenerator);
 
             // Arrange disposal tracking
             disposables.Add(mockRandomNumberGenerator);
@@ -173,11 +174,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void Dispose_WithNonDisposableRandomGenerator_ShouldNotThrow()
         {
             // Arrange
-            var mockGenerator = new MockDisposableDungeonGenerator();
-            var mockRandomNumberGenerator = new MockRandomNumberGenerator();
+            MockDisposableDungeonGenerator mockGenerator = new MockDisposableDungeonGenerator();
+            MockRandomNumberGenerator mockRandomNumberGenerator = new MockRandomNumberGenerator();
 
             // Act
-            var dungeon = new Dungeon(mockGenerator, mockRandomNumberGenerator);
+            Dungeon dungeon = new Dungeon(mockGenerator, mockRandomNumberGenerator);
             dungeon.Dispose();
 
             // Assert - No exception thrown

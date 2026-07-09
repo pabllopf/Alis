@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Traverse_FindsKeyInSlot0()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(10, 100);
             Assert.Equal(0, cache.Traverse(10));
         }
@@ -55,7 +55,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Traverse_FindsKeyInSlot1()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(10, 100);
             cache.Set(20, 200);
             Assert.Equal(1, cache.Traverse(20));
@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Traverse_FindsKeyInSlot2()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(10, 100);
             cache.Set(20, 200);
             cache.Set(30, 300);
@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Traverse_FindsKeyInSlot3()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(10, 100);
             cache.Set(20, 200);
             cache.Set(30, 300);
@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Traverse_Returns32_OnMiss()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             Assert.Equal(32, cache.Traverse(99));
         }
 
@@ -104,7 +104,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Traverse_Returns32_WhenKeyNotCached()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(1, 10);
             cache.Set(2, 20);
             cache.Set(3, 30);
@@ -118,7 +118,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void TraverseArchetype_ReturnsNull_OnMiss()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             Assert.Null(cache.TraverseArchetype(99));
         }
 
@@ -128,7 +128,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Lookup_ReturnsValue_ForEachSlot()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(1, 100);
             cache.Set(2, 200);
             cache.Set(3, 300);
@@ -146,7 +146,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Set_RoundRobin_StoresInSequentialSlots()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
             cache.Set(1, 10);
             Assert.Equal(10, cache.Lookup(0));
@@ -168,7 +168,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Set_RoundRobin_WrapsMultipleTimes()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             for (int i = 0; i < 8; i++)
             {
                 cache.Set((ushort)(i + 1), (ushort)((i + 1) * 10));
@@ -188,7 +188,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Set_UshortOnly_SetsNullArchetype()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(10, 100);
             Assert.Null(cache.TraverseArchetype(10));
         }
@@ -202,7 +202,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Traverse_WorksWithUshortMaxValueKey()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(ushort.MaxValue, 1);
             Assert.Equal(0, cache.Traverse(ushort.MaxValue));
         }
@@ -213,7 +213,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Traverse_WorksWithZeroKey()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(0, 100);
             Assert.Equal(0, cache.Traverse(0));
         }
@@ -225,7 +225,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact]
         public void Set_SameKey_UpdatesValueAndSlot()
         {
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(1, 100);
             Assert.Equal(100, cache.Lookup(0));
 

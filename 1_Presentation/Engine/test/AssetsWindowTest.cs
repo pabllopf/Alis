@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
@@ -228,9 +229,9 @@ namespace Alis.App.Engine.Test
             SpaceWork spaceWork = CreateSpaceWorkWithResources();
             AssetsWindow window = new AssetsWindow(spaceWork);
 
-            var initializeMethod = typeof(AssetsWindow).GetMethod("Initialize");
-            var renderMethod = typeof(AssetsWindow).GetMethod("Render");
-            var startMethod = typeof(AssetsWindow).GetMethod("Start");
+            MethodInfo initializeMethod = typeof(AssetsWindow).GetMethod("Initialize");
+            MethodInfo renderMethod = typeof(AssetsWindow).GetMethod("Render");
+            MethodInfo startMethod = typeof(AssetsWindow).GetMethod("Start");
 
             Assert.NotNull(initializeMethod);
             Assert.NotNull(renderMethod);

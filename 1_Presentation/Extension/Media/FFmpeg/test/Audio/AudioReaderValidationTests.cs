@@ -51,7 +51,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Constructor_WhenFileDoesNotExist_ThrowsFileNotFoundException()
         {
             // Act
-            var exception = Record.Exception(() => new AudioReader("/nonexistent/path/audio.wav"));
+            Exception exception = Record.Exception(() => new AudioReader("/nonexistent/path/audio.wav"));
 
             // Assert
             Assert.IsAssignableFrom<FileNotFoundException>(exception);
@@ -64,12 +64,12 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Constructor_WithValidFile_SetsProperties()
         {
             // Arrange — create a temporary file
-            var tempFile = Path.GetTempFileName();
+            string tempFile = Path.GetTempFileName();
 
             try
             {
                 // Act
-                var reader = new AudioReader(tempFile);
+                AudioReader reader = new AudioReader(tempFile);
 
                 // Assert
                 Assert.Equal(tempFile, reader.Filename);
@@ -93,12 +93,12 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Constructor_WithCustomExecutables_SetsExecutablePaths()
         {
             // Arrange — create a temporary file
-            var tempFile = Path.GetTempFileName();
+            string tempFile = Path.GetTempFileName();
 
             try
             {
                 // Act
-                var reader = new AudioReader(
+                AudioReader reader = new AudioReader(
                     tempFile,
                     ffmpegExecutable: "/usr/local/bin/ffmpeg-custom",
                     ffprobeExecutable: "/usr/local/bin/ffprobe-custom");
@@ -127,12 +127,12 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void PropertyAccessors_DefaultValuesAreCorrect()
         {
             // Arrange — create a temporary file
-            var tempFile = Path.GetTempFileName();
+            string tempFile = Path.GetTempFileName();
 
             try
             {
                 // Act
-                var reader = new AudioReader(tempFile);
+                AudioReader reader = new AudioReader(tempFile);
 
                 // Assert
                 Assert.Equal(tempFile, reader.Filename);
@@ -160,15 +160,15 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Dispose_WhenNeverUsed_NoException()
         {
             // Arrange — create a temporary file
-            var tempFile = Path.GetTempFileName();
+            string tempFile = Path.GetTempFileName();
 
             try
             {
                 // Act
-                var reader = new AudioReader(tempFile);
+                AudioReader reader = new AudioReader(tempFile);
 
                 // Dispose should not throw
-                var exception = Record.Exception(() => reader.Dispose());
+                Exception exception = Record.Exception(() => reader.Dispose());
 
                 // Assert
                 Assert.Null(exception);
@@ -186,16 +186,16 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Dispose_CalledMultipleTimes_NoException()
         {
             // Arrange — create a temporary file
-            var tempFile = Path.GetTempFileName();
+            string tempFile = Path.GetTempFileName();
 
             try
             {
                 // Act
-                var reader = new AudioReader(tempFile);
+                AudioReader reader = new AudioReader(tempFile);
 
                 reader.Dispose();
-                var exception1 = Record.Exception(() => reader.Dispose());
-                var exception2 = Record.Exception(() => reader.Dispose());
+                Exception exception1 = Record.Exception(() => reader.Dispose());
+                Exception exception2 = Record.Exception(() => reader.Dispose());
 
                 // Assert
                 Assert.Null(exception1);
@@ -219,16 +219,16 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Load_WhenBitDepthIsInvalid_ThrowsInvalidOperationException()
         {
             // Arrange — create a temporary file
-            var tempFile = Path.GetTempFileName();
+            string tempFile = Path.GetTempFileName();
 
             try
             {
                 // Act — 8-bit depth
-                var reader = new AudioReader(tempFile);
-                var exception8Bit = Record.Exception(() => reader.Load(8));
+                AudioReader reader = new AudioReader(tempFile);
+                Exception exception8Bit = Record.Exception(() => reader.Load(8));
 
                 // Act — 20-bit depth
-                var exception20Bit = Record.Exception(() => reader.Load(20));
+                Exception exception20Bit = Record.Exception(() => reader.Load(20));
 
                 // Assert
                 Assert.IsAssignableFrom<InvalidOperationException>(exception8Bit);
@@ -251,15 +251,15 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Load_WhenMetadataNotLoaded_ThrowsInvalidOperationException()
         {
             // Arrange — create a temporary file
-            var tempFile = Path.GetTempFileName();
+            string tempFile = Path.GetTempFileName();
 
             try
             {
                 // Act
-                var reader = new AudioReader(tempFile);
+                AudioReader reader = new AudioReader(tempFile);
 
                 // Metadata is not loaded yet, so Load should throw.
-                var exception = Record.Exception(() => reader.Load(16));
+                Exception exception = Record.Exception(() => reader.Load(16));
 
                 // Assert
                 Assert.IsAssignableFrom<InvalidOperationException>(exception);
@@ -285,15 +285,15 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void NextFrame_WhenAudioNotLoaded_ThrowsInvalidOperationException()
         {
             // Arrange — create a temporary file
-            var tempFile = Path.GetTempFileName();
+            string tempFile = Path.GetTempFileName();
 
             try
             {
                 // Act
-                var reader = new AudioReader(tempFile);
+                AudioReader reader = new AudioReader(tempFile);
 
                 // NextFrame should throw since audio was not loaded.
-                var exception = Record.Exception(() => reader.NextFrame());
+                Exception exception = Record.Exception(() => reader.NextFrame());
 
                 // Assert
                 Assert.IsAssignableFrom<NullReferenceException>(exception);
@@ -315,15 +315,15 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void NextFrame_WithSamples_WhenAudioNotLoaded_ThrowsInvalidOperationException()
         {
             // Arrange — create a temporary file
-            var tempFile = Path.GetTempFileName();
+            string tempFile = Path.GetTempFileName();
 
             try
             {
                 // Act
-                var reader = new AudioReader(tempFile);
+                AudioReader reader = new AudioReader(tempFile);
 
                 // NextFrame(512) should throw since audio was not loaded.
-                var exception = Record.Exception(() => reader.NextFrame(512));
+                Exception exception = Record.Exception(() => reader.NextFrame(512));
 
                 // Assert
                 Assert.IsAssignableFrom<NullReferenceException>(exception);

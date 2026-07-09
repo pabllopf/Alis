@@ -60,14 +60,14 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void OnStart_WhenContextIsNull_ThrowsNullReferenceException()
         {
             // Arrange
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
             // Context is null by default — no need to set it.
 
-            var transform = new Transform(new Vector2F(1f, 2f), 0.5f);
-            var gameObject = new MockGameObject(transform);
+            Transform transform = new Transform(new Vector2F(1f, 2f), 0.5f);
+            MockGameObject gameObject = new MockGameObject(transform);
 
             // Act — OnStart with null Context should throw when accessing Context.PhysicManager.
-            var exception = Record.Exception(() => collider.OnStart(gameObject));
+            Exception exception = Record.Exception(() => collider.OnStart(gameObject));
 
             // Assert
             Assert.IsAssignableFrom<NullReferenceException>(exception);
@@ -113,10 +113,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.NotNull(collider.Body);
 
             // Act — now call OnExit which should remove the body from the world.
-            var mockGameObject = new Mock<IGameObject>().Object;
+            IGameObject mockGameObject = new Mock<IGameObject>().Object;
 
             // OnExit checks `if (Body != null)` first, then accesses Context.PhysicManager.WorldPhysic.Remove(Body).
-            var exception = Record.Exception(() => collider.OnExit(mockGameObject));
+            Exception exception = Record.Exception(() => collider.OnExit(mockGameObject));
 
             // Assert — Body should be set to null after OnExit.
             Assert.Null(collider.Body);
@@ -149,14 +149,14 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             collider.OnStart(gameObject);
             Assert.NotNull(collider.Body);
 
-            var mockGameObject = new Mock<IGameObject>().Object;
+            IGameObject mockGameObject = new Mock<IGameObject>().Object;
 
             // Act — first OnExit removes the body.
-            var firstException = Record.Exception(() => collider.OnExit(mockGameObject));
+            Exception firstException = Record.Exception(() => collider.OnExit(mockGameObject));
             Assert.Null(firstException);
 
             // Second OnExit should be a no-op since Body is now null.
-            var secondException = Record.Exception(() => collider.OnExit(mockGameObject));
+            Exception secondException = Record.Exception(() => collider.OnExit(mockGameObject));
 
             // Assert — Body remains null and no exception on second call.
             Assert.Null(collider.Body);

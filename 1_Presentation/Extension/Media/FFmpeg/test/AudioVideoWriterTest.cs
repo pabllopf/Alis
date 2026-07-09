@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Video;
 using Alis.Extension.Media.FFmpeg.Encoding;
@@ -301,7 +303,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             AudioVideoWriter writer = new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
-            var process = writer.CurrentFFmpegProcess;
+            Process process = writer.CurrentFFmpegProcess;
             Assert.Null(process); // Should be null before OpenWrite()
         }
 
@@ -489,7 +491,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             AudioVideoWriter writer = new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
-            var frame = new AudioFrame(44100, 2, 16);
+            AudioFrame frame = new AudioFrame(44100, 2, 16);
 
             Assert.Throws<InvalidOperationException>(() => writer.WriteFrame(frame));
         }
@@ -505,7 +507,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             AudioVideoWriter writer = new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
-            var frame = new VideoFrame(640, 480);
+            VideoFrame frame = new VideoFrame(640, 480);
 
             Assert.Throws<InvalidOperationException>(() => writer.WriteFrame(frame));
         }
@@ -616,7 +618,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Use reflection to check the private csc field
-            var cscField = typeof(AudioVideoWriter).GetField("csc", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            FieldInfo cscField = typeof(AudioVideoWriter).GetField("csc", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             Assert.Null(cscField?.GetValue(writer));
         }
 
@@ -631,7 +633,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             AudioVideoWriter writer = new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
-            var socketField = typeof(AudioVideoWriter).GetField("socket", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            FieldInfo socketField = typeof(AudioVideoWriter).GetField("socket", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             Assert.Null(socketField?.GetValue(writer));
         }
 
@@ -646,7 +648,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             AudioVideoWriter writer = new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
-            var connectedSocketField = typeof(AudioVideoWriter).GetField("connectedSocket", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            FieldInfo connectedSocketField = typeof(AudioVideoWriter).GetField("connectedSocket", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             Assert.Null(connectedSocketField?.GetValue(writer));
         }
 

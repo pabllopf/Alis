@@ -28,8 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Video;
 using Alis.Extension.Media.FFmpeg.Encoding;
@@ -76,7 +78,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Should not throw
-            var exception = Record.Exception(() => writer.Dispose());
+            Exception exception = Record.Exception(() => writer.Dispose());
 
             // Assert - Should complete without exception
             Assert.Null(exception);
@@ -95,10 +97,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Call protected Dispose with disposing=false via reflection
-            var disposeMethod = typeof(AudioVideoWriter).GetMethod("Dispose", 
+            MethodInfo disposeMethod = typeof(AudioVideoWriter).GetMethod("Dispose", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
             
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 disposeMethod.Invoke(writer, new object[] { false }));
 
             // Assert - Should complete without exception
@@ -119,10 +121,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testStream, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Call protected Dispose with disposing=true via reflection
-            var disposeMethod = typeof(AudioVideoWriter).GetMethod("Dispose", 
+            MethodInfo disposeMethod = typeof(AudioVideoWriter).GetMethod("Dispose", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
             
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 disposeMethod.Invoke(writer, new object[] { true }));
 
             // Assert - Should complete without exception
@@ -142,16 +144,16 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testStream, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Setup csc field to test disposal
-            var cscField = typeof(AudioVideoWriter).GetField("csc", 
+            FieldInfo cscField = typeof(AudioVideoWriter).GetField("csc", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            var csc = new System.Threading.CancellationTokenSource();
+            CancellationTokenSource csc = new System.Threading.CancellationTokenSource();
             cscField.SetValue(writer, csc);
 
             // Act - Call protected Dispose with disposing=true via reflection
-            var disposeMethod = typeof(AudioVideoWriter).GetMethod("Dispose", 
+            MethodInfo disposeMethod = typeof(AudioVideoWriter).GetMethod("Dispose", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
             
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 disposeMethod.Invoke(writer, new object[] { true }));
 
             // Assert - Should complete without exception
@@ -175,12 +177,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Set OpenedForWriting to true via reflection to test the guard
-            var openedField = typeof(AudioVideoWriter).GetProperty("OpenedForWriting", 
+            PropertyInfo openedField = typeof(AudioVideoWriter).GetProperty("OpenedForWriting", 
                 BindingFlags.Public | BindingFlags.Instance);
             openedField.SetValue(writer, true);
 
             // Act - Should throw InvalidOperationException
-            var exception = Record.Exception(() => writer.OpenWrite());
+            Exception exception = Record.Exception(() => writer.OpenWrite());
 
             // Assert - Should throw the expected exception
             Assert.NotNull(exception);
@@ -205,7 +207,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Should throw InvalidOperationException
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert - Should throw the expected exception
             Assert.NotNull(exception);
@@ -226,7 +228,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Should throw but finally block should still execute
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert - OpenedForWriting should remain false
             Assert.NotNull(exception);
@@ -246,7 +248,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Should throw InvalidOperationException before entering try block
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert - Should throw InvalidOperationException with expected message
             // The check for OpenedForWriting happens before the try block
@@ -268,12 +270,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Setup Ffmpegp to be null to test the null check exists in code
-            var processField = typeof(AudioVideoWriter).GetField("Ffmpegp", 
+            FieldInfo processField = typeof(AudioVideoWriter).GetField("Ffmpegp", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
             processField.SetValue(writer, null);
 
             // Act - Should throw InvalidOperationException before reaching Ffmpegp checks
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert - Should throw InvalidOperationException with expected message
             // The OpenedForWriting check happens before any Ffmpegp processing
@@ -298,10 +300,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             AudioVideoWriter writer = new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
-            var frame = new AudioFrame(44100, 2, 16);
+            AudioFrame frame = new AudioFrame(44100, 2, 16);
 
             // Act - Should throw InvalidOperationException
-            var exception = Record.Exception(() => writer.WriteFrame(frame));
+            Exception exception = Record.Exception(() => writer.WriteFrame(frame));
 
             // Assert - Should throw the expected exception
             Assert.NotNull(exception);
@@ -321,10 +323,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             AudioVideoWriter writer = new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
-            var frame = new VideoFrame(640, 480);
+            VideoFrame frame = new VideoFrame(640, 480);
 
             // Act - Should throw InvalidOperationException
-            var exception = Record.Exception(() => writer.WriteFrame(frame));
+            Exception exception = Record.Exception(() => writer.WriteFrame(frame));
 
             // Assert - Should throw the expected exception
             Assert.NotNull(exception);
@@ -344,10 +346,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             AudioVideoWriter writer = new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
-            var frame = new AudioFrame(44100, 2, 16);
+            AudioFrame frame = new AudioFrame(44100, 2, 16);
 
             // Act - Should throw because not opened, but method exists
-            var exception = Record.Exception(() => writer.WriteFrame(frame));
+            Exception exception = Record.Exception(() => writer.WriteFrame(frame));
 
             // Assert - Method exists and extracts RawData
             // The exception is expected from not being opened, but the code path for extracting RawData exists
@@ -367,10 +369,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             AudioVideoWriter writer = new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
-            var frame = new VideoFrame(640, 480);
+            VideoFrame frame = new VideoFrame(640, 480);
 
             // Act - Should throw because not opened, but method exists
-            var exception = Record.Exception(() => writer.WriteFrame(frame));
+            Exception exception = Record.Exception(() => writer.WriteFrame(frame));
 
             // Assert - Method exists and extracts RawData
             Assert.NotNull(exception);
@@ -394,12 +396,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions, "custom-ffmpeg");
 
             // Act - Get the private ffmpeg field via reflection
-            var ffmpegField = typeof(AudioVideoWriter).GetField("ffmpeg", 
+            FieldInfo ffmpegField = typeof(AudioVideoWriter).GetField("ffmpeg", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Field should exist and contain the custom ffmpeg value
             Assert.NotNull(ffmpegField);
-            var value = (string)ffmpegField.GetValue(writer);
+            string value = (string)ffmpegField.GetValue(writer);
             Assert.Equal("custom-ffmpeg", value);
         }
 
@@ -416,7 +418,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Get the private socket field via reflection
-            var socketField = typeof(AudioVideoWriter).GetField("socket", 
+            FieldInfo socketField = typeof(AudioVideoWriter).GetField("socket", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Field should exist and be null
@@ -437,7 +439,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Get the private connectedSocket field via reflection
-            var connectedSocketField = typeof(AudioVideoWriter).GetField("connectedSocket", 
+            FieldInfo connectedSocketField = typeof(AudioVideoWriter).GetField("connectedSocket", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Field should exist and be null
@@ -458,7 +460,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Get the private csc field via reflection
-            var cscField = typeof(AudioVideoWriter).GetField("csc", 
+            FieldInfo cscField = typeof(AudioVideoWriter).GetField("csc", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Field should exist and be null
@@ -479,7 +481,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Get the property value
-            var inputField = typeof(AudioVideoWriter).GetProperty("InputDataStreamVideo", 
+            PropertyInfo inputField = typeof(AudioVideoWriter).GetProperty("InputDataStreamVideo", 
                 BindingFlags.Public | BindingFlags.Instance);
 
             // Assert - Property should exist and be null
@@ -500,7 +502,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Get the property value
-            var inputField = typeof(AudioVideoWriter).GetProperty("InputDataStreamAudio", 
+            PropertyInfo inputField = typeof(AudioVideoWriter).GetProperty("InputDataStreamAudio", 
                 BindingFlags.Public | BindingFlags.Instance);
 
             // Assert - Property should exist and be null
@@ -521,7 +523,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Get the property value
-            var outputField = typeof(AudioVideoWriter).GetProperty("OutputDataStream", 
+            PropertyInfo outputField = typeof(AudioVideoWriter).GetProperty("OutputDataStream", 
                 BindingFlags.Public | BindingFlags.Instance);
 
             // Assert - Property should exist and be null
@@ -548,7 +550,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testStream, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Assert - DestinationStream should be set
-            var destField = typeof(AudioVideoWriter).GetProperty("DestinationStream", 
+            PropertyInfo destField = typeof(AudioVideoWriter).GetProperty("DestinationStream", 
                 BindingFlags.Public | BindingFlags.Instance);
             Assert.Equal(_testStream, destField.GetValue(writer));
         }
@@ -586,7 +588,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Assert - DestinationStream should be null in filename mode
-            var destField = typeof(AudioVideoWriter).GetProperty("DestinationStream", 
+            PropertyInfo destField = typeof(AudioVideoWriter).GetProperty("DestinationStream", 
                 BindingFlags.Public | BindingFlags.Instance);
             Assert.Null(destField.GetValue(writer));
         }
@@ -602,7 +604,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         public void AudioEncoderOptions_EncoderName_ShouldBeAccessible()
         {
             // Arrange
-            var audioOptions = new EncoderOptions { Format = "aac", EncoderName = "libfdk_aac" };
+            EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "libfdk_aac" };
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
             AudioVideoWriter writer = new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
@@ -618,7 +620,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         public void AudioEncoderOptions_EncoderArguments_ShouldBeAccessible()
         {
             // Arrange
-            var audioOptions = new EncoderOptions 
+            EncoderOptions audioOptions = new EncoderOptions 
             { 
                 Format = "aac", 
                 EncoderName = "aac",
@@ -639,7 +641,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         public void VideoEncoderOptions_EncoderName_ShouldBeAccessible()
         {
             // Arrange
-            var videoOptions = new EncoderOptions 
+            EncoderOptions videoOptions = new EncoderOptions 
             { 
                 Format = "mp4", 
                 EncoderName = "libx264",
@@ -660,7 +662,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         public void VideoEncoderOptions_Format_ShouldBeAccessible()
         {
             // Arrange
-            var videoOptions = new EncoderOptions 
+            EncoderOptions videoOptions = new EncoderOptions 
             { 
                 Format = "matroska", 
                 EncoderName = "libx264"
@@ -688,7 +690,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
 
             // Act - Should not throw with valid bit depth 16
-            var exception = Record.Exception(() => new AudioVideoWriter(
+            Exception exception = Record.Exception(() => new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions));
 
             // Assert - Should not throw
@@ -706,7 +708,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
 
             // Act - Should not throw with valid bit depth 24
-            var exception = Record.Exception(() => new AudioVideoWriter(
+            Exception exception = Record.Exception(() => new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 24, videoOptions, audioOptions));
 
             // Assert - Should not throw
@@ -724,7 +726,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
 
             // Act - Should not throw with valid bit depth 32
-            var exception = Record.Exception(() => new AudioVideoWriter(
+            Exception exception = Record.Exception(() => new AudioVideoWriter(
                 _testFile, 640, 480, 30.0, 2, 44100, 32, videoOptions, audioOptions));
 
             // Assert - Should not throw
@@ -748,7 +750,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
 
             // Act - Get CurrentFFmpegProcess
-            var process = writer.CurrentFFmpegProcess;
+            Process process = writer.CurrentFFmpegProcess;
 
             // Assert - Should return Ffmpegp (null before OpenWrite)
             Assert.Null(process);

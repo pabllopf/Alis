@@ -55,7 +55,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void DefaultConstructor_SetsExpectedDefaultValues()
         {
             // Arrange & Act
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
 
             // Assert — Width / Height
             Assert.Equal(10f, collider.Width);
@@ -65,7 +65,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(0f, collider.Rotation);
 
             // Assert — RelativePosition (default constructor creates a zero vector)
-            var relativePos = collider.RelativePosition;
+            Vector2F relativePos = collider.RelativePosition;
             Assert.Equal(0f, relativePos.X);
             Assert.Equal(0f, relativePos.Y);
 
@@ -89,7 +89,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.False(collider.IgnoreGravity);
 
             // Assert — LinearVelocity (default constructor creates a zero vector)
-            var linVel = collider.LinearVelocity;
+            Vector2F linVel = collider.LinearVelocity;
             Assert.Equal(0f, linVel.X);
             Assert.Equal(0f, linVel.Y);
 
@@ -103,7 +103,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Null(collider.Body);
 
             // Assert — SizeOfTexture (default value for struct)
-            var size = collider.SizeOfTexture;
+            Vector2F size = collider.SizeOfTexture;
             Assert.Equal(0f, size.X);
             Assert.Equal(0f, size.Y);
         }
@@ -119,7 +119,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void SettingsConstructor_CopiesAllPropertiesFromSettings()
         {
             // Arrange — build a settings object with distinct values
-            var settings = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settings = new BoxCollider.BoxColliderSettings(
                 IsTrigger: true,
                 Width: 42f,
                 Height: 17f,
@@ -137,7 +137,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             );
 
             // Act
-            var collider = new BoxCollider(settings);
+            BoxCollider collider = new BoxCollider(settings);
 
             // Assert — scalar properties
             Assert.True(collider.IsTrigger);
@@ -146,7 +146,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(1.57f, collider.Rotation);
 
             // Assert — RelativePosition
-            var pos = collider.RelativePosition;
+            Vector2F pos = collider.RelativePosition;
             Assert.Equal(3.3f, pos.X);
             Assert.Equal(7.7f, pos.Y);
 
@@ -166,7 +166,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.True(collider.IgnoreGravity);
 
             // Assert — LinearVelocity
-            var linVel = collider.LinearVelocity;
+            Vector2F linVel = collider.LinearVelocity;
             Assert.Equal(1.1f, linVel.X);
             Assert.Equal(2.2f, linVel.Y);
 
@@ -177,7 +177,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Null(collider.Body);
 
             // Assert — SizeOfTexture (settings has no texture size)
-            var size = collider.SizeOfTexture;
+            Vector2F size = collider.SizeOfTexture;
             Assert.Equal(0f, size.X);
             Assert.Equal(0f, size.Y);
         }
@@ -189,7 +189,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void SettingsConstructor_WithZeroValues_SetsZeroValues()
         {
             // Arrange
-            var settings = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settings = new BoxCollider.BoxColliderSettings(
                 IsTrigger: false,
                 Width: 0f,
                 Height: 0f,
@@ -207,7 +207,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             );
 
             // Act
-            var collider = new BoxCollider(settings);
+            BoxCollider collider = new BoxCollider(settings);
 
             // Assert
             Assert.False(collider.IsTrigger);
@@ -234,7 +234,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void PropertyAccessors_AllScalarPropertiesCanBeGetAndSet()
         {
             // Arrange
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
 
             // Act — set each scalar property to a distinct value
             collider.IsTrigger = true;
@@ -273,7 +273,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void PropertyAccessors_VectorPropertiesCanBeGetAndSet()
         {
             // Arrange
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
 
             // Act — assign each vector property
             collider.RelativePosition = new Vector2F(10f, 20f);
@@ -281,15 +281,15 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             collider.SizeOfTexture = new Vector2F(2f, 4f);
 
             // Assert
-            var pos = collider.RelativePosition;
+            Vector2F pos = collider.RelativePosition;
             Assert.Equal(10f, pos.X);
             Assert.Equal(20f, pos.Y);
 
-            var linVel = collider.LinearVelocity;
+            Vector2F linVel = collider.LinearVelocity;
             Assert.Equal(5f, linVel.X);
             Assert.Equal(15f, linVel.Y);
 
-            var size = collider.SizeOfTexture;
+            Vector2F size = collider.SizeOfTexture;
             Assert.Equal(2f, size.X);
             Assert.Equal(4f, size.Y);
         }
@@ -301,11 +301,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BodyProperty_DefaultIsNull_AndCanBeAssigned()
         {
             // Arrange — fresh collider has null body by default
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
             Assert.Null(collider.Body);
 
             // Act — assign a mock body
-            var mockBody = new Mock<Alis.Core.Physic.Dynamics.Body>();
+            Mock<Alis.Core.Physic.Dynamics.Body> mockBody = new Mock<Alis.Core.Physic.Dynamics.Body>();
             collider.Body = mockBody.Object;
 
             // Assert
@@ -324,13 +324,13 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void OnUpdate_WhenGameObjectLacksTransform_DoesNotThrow()
         {
             // Arrange
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
             mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
 
             // Act — should not throw
-            var exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
 
             // Assert
             Assert.Null(exception);
@@ -347,14 +347,14 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void OnExit_WhenBodyIsNull_DoesNotThrow()
         {
             // Arrange
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
 
             // Body is null, Context is null — both guards should prevent any action.
 
             // Act
-            var exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
 
             // Assert
             Assert.Null(exception);
@@ -367,9 +367,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void OnExit_WhenBodyIsNotNullButContextIsNull_ThrowsNullReferenceException()
         {
             // Arrange
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
 
-            var mockBody = new Mock<Alis.Core.Physic.Dynamics.Body>();
+            Mock<Alis.Core.Physic.Dynamics.Body> mockBody = new Mock<Alis.Core.Physic.Dynamics.Body>();
             collider.Body = mockBody.Object;
 
             // Context is null — the OnExit method checks `Body != null` first,
@@ -377,10 +377,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             // and Context is null, the code will attempt `Context.PhysicManager.WorldPhysic.Remove(Body)`
             // which throws NullReferenceException.
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
 
             // Act
-            var exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
 
             // Assert — the implementation accesses Context.PhysicManager without null-check,
             // so it will throw NullReferenceException when Context is null.
@@ -398,7 +398,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxColliderSettings_Record_WithDistinctValues_ReturnsAllValues()
         {
             // Arrange
-            var settings = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settings = new BoxCollider.BoxColliderSettings(
                 IsTrigger: true,
                 Width: 7f,
                 Height: 11f,
@@ -439,13 +439,13 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxColliderSettings_Record_EqualValues_AreEqual()
         {
             // Arrange
-            var settingsA = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settingsA = new BoxCollider.BoxColliderSettings(
                 IsTrigger: false, Width: 1f, Height: 2f, Rotation: 0f,
                 RelativePosition: Vector2F.Zero, AutoTilling: false, BodyType: BodyType.Static,
                 Restitution: 0f, Friction: 0f, FixedRotation: false, Mass: 1f,
                 IgnoreGravity: false, LinearVelocity: Vector2F.Zero, AngularVelocity: 0f);
 
-            var settingsB = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settingsB = new BoxCollider.BoxColliderSettings(
                 IsTrigger: false, Width: 1f, Height: 2f, Rotation: 0f,
                 RelativePosition: Vector2F.Zero, AutoTilling: false, BodyType: BodyType.Static,
                 Restitution: 0f, Friction: 0f, FixedRotation: false, Mass: 1f,
@@ -462,13 +462,13 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxColliderSettings_Record_DifferentValues_AreNotEqual()
         {
             // Arrange
-            var settingsA = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settingsA = new BoxCollider.BoxColliderSettings(
                 IsTrigger: true, Width: 1f, Height: 2f, Rotation: 0f,
                 RelativePosition: Vector2F.Zero, AutoTilling: false, BodyType: BodyType.Static,
                 Restitution: 0f, Friction: 0f, FixedRotation: false, Mass: 1f,
                 IgnoreGravity: false, LinearVelocity: Vector2F.Zero, AngularVelocity: 0f);
 
-            var settingsB = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settingsB = new BoxCollider.BoxColliderSettings(
                 IsTrigger: false, Width: 1f, Height: 2f, Rotation: 0f,
                 RelativePosition: Vector2F.Zero, AutoTilling: false, BodyType: BodyType.Static,
                 Restitution: 0f, Friction: 0f, FixedRotation: false, Mass: 1f,

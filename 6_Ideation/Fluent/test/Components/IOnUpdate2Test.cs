@@ -44,7 +44,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnUpdate2_CanBeImplemented()
         {
-            var handler = new Update2Handler();
+            Update2Handler handler = new Update2Handler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnUpdate<int, string>>(handler);
         }
@@ -55,8 +55,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Update_ExecutesWithCorrectParameters()
         {
-            var handler = new Update2Handler();
-            var gameObject = new MockGameObject();
+            Update2Handler handler = new Update2Handler();
+            MockGameObject gameObject = new MockGameObject();
             int arg1 = 42;
             string arg2 = "hello";
 
@@ -72,8 +72,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Update_CountsMultipleInvocations()
         {
-            var handler = new Update2Handler();
-            var gameObject = new MockGameObject();
+            Update2Handler handler = new Update2Handler();
+            MockGameObject gameObject = new MockGameObject();
             int arg1 = 1;
             string arg2 = "x";
 
@@ -90,8 +90,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnUpdate2_WithDifferentTypeCombinations()
         {
-            var handler = new UpdateDoubleBoolHandler();
-            var gameObject = new MockGameObject();
+            UpdateDoubleBoolHandler handler = new UpdateDoubleBoolHandler();
+            MockGameObject gameObject = new MockGameObject();
             double arg1 = 3.14;
             bool arg2 = true;
 

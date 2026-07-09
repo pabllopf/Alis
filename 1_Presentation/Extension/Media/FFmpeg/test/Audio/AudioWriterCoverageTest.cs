@@ -75,7 +75,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Act - Should not throw when not opened and no FFmpeg process exists
-            var exception = Record.Exception(() => writer.Dispose());
+            Exception exception = Record.Exception(() => writer.Dispose());
 
             // Assert - Should complete without exception from Dispose pattern
             // When not opened and no FFmpeg process exists, Dispose should complete successfully
@@ -92,10 +92,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Act - Call protected Dispose with disposing=false via reflection
-            var disposeMethod = typeof(AudioWriter).GetMethod("Dispose", 
+            MethodInfo disposeMethod = typeof(AudioWriter).GetMethod("Dispose", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
             
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 disposeMethod.Invoke(writer, new object[] { false }));
 
             // Assert - Should complete without exception
@@ -113,10 +113,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testStream, 2, 44100);
 
             // Act - Call protected Dispose with disposing=true via reflection
-            var disposeMethod = typeof(AudioWriter).GetMethod("Dispose", 
+            MethodInfo disposeMethod = typeof(AudioWriter).GetMethod("Dispose", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
             
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 disposeMethod.Invoke(writer, new object[] { true }));
 
             // Assert - Should complete without exception from Dispose pattern
@@ -134,16 +134,16 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testStream, 2, 44100);
 
             // Setup csc field to test disposal
-            var cscField = typeof(AudioWriter).GetField("csc", 
+            FieldInfo cscField = typeof(AudioWriter).GetField("csc", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            var csc = new System.Threading.CancellationTokenSource();
+            CancellationTokenSource csc = new System.Threading.CancellationTokenSource();
             cscField.SetValue(writer, csc);
 
             // Act - Call protected Dispose with disposing=true via reflection
-            var disposeMethod = typeof(AudioWriter).GetMethod("Dispose", 
+            MethodInfo disposeMethod = typeof(AudioWriter).GetMethod("Dispose", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
             
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 disposeMethod.Invoke(writer, new object[] { true }));
 
             // Assert - Should complete without exception from Dispose pattern
@@ -160,15 +160,15 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Set OpenedForWriting to false via reflection
-            var openedField = typeof(AudioWriter).GetProperty("OpenedForWriting", 
+            PropertyInfo openedField = typeof(AudioWriter).GetProperty("OpenedForWriting", 
                 BindingFlags.Public | BindingFlags.Instance);
             openedField.SetValue(writer, false);
 
             // Act - Call protected Dispose with disposing=true via reflection
-            var disposeMethod = typeof(AudioWriter).GetMethod("Dispose", 
+            MethodInfo disposeMethod = typeof(AudioWriter).GetMethod("Dispose", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
             
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 disposeMethod.Invoke(writer, new object[] { true }));
 
             // Assert - Should complete without exception from Dispose pattern
@@ -190,12 +190,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Set OpenedForWriting to true via reflection to test the guard
-            var openedField = typeof(AudioWriter).GetProperty("OpenedForWriting", 
+            PropertyInfo openedField = typeof(AudioWriter).GetProperty("OpenedForWriting", 
                 BindingFlags.Public | BindingFlags.Instance);
             openedField.SetValue(writer, true);
 
             // Act - Should throw InvalidOperationException
-            var exception = Record.Exception(() => writer.OpenWrite());
+            Exception exception = Record.Exception(() => writer.OpenWrite());
 
             // Assert - Should throw the expected exception
             Assert.NotNull(exception);
@@ -217,7 +217,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Act - Should throw InvalidOperationException
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert - Should throw the expected exception
             Assert.NotNull(exception);
@@ -235,7 +235,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Act - Should throw but finally block should still execute
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert - OpenedForWriting should remain false
             Assert.NotNull(exception);
@@ -252,12 +252,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Setup Ffmpegp to be null to test the null check
-            var processField = typeof(AudioWriter).GetField("Ffmpegp", 
+            FieldInfo processField = typeof(AudioWriter).GetField("Ffmpegp", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
             processField.SetValue(writer, null);
 
             // Act - Should throw InvalidOperationException before reaching Ffmpegp checks
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert - Should throw InvalidOperationException with expected message
             // The OpenedForWriting check happens before any Ffmpegp processing
@@ -276,13 +276,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Setup csc field
-            var cscField = typeof(AudioWriter).GetField("csc", 
+            FieldInfo cscField = typeof(AudioWriter).GetField("csc", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            var csc = new System.Threading.CancellationTokenSource();
+            CancellationTokenSource csc = new System.Threading.CancellationTokenSource();
             cscField.SetValue(writer, csc);
 
             // Act - Should throw InvalidOperationException before reaching csc processing
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert - Should throw InvalidOperationException with expected message
             // The OpenedForWriting check happens before any csc processing
@@ -300,12 +300,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testStream, 2, 44100);
 
             // Setup OutputDataStream to be non-null
-            var outputField = typeof(AudioWriter).GetProperty("OutputDataStream", 
+            PropertyInfo outputField = typeof(AudioWriter).GetProperty("OutputDataStream", 
                 BindingFlags.Public | BindingFlags.Instance);
             outputField.SetValue(writer, new MemoryStream());
 
             // Act - Should throw InvalidOperationException before reaching OutputDataStream disposal
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert - Should throw InvalidOperationException with expected message
             // The OpenedForWriting check happens before any OutputStream disposal
@@ -324,7 +324,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             // Act - Should throw InvalidOperationException with expected message
             // The test documents that CloseWrite has try/catch block that handles exceptions
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert - Should throw InvalidOperationException with expected message
             // The try/catch block exists and swallows exceptions from Kill() call
@@ -348,12 +348,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100, 16, null, "custom-ffmpeg");
 
             // Act - Get the private ffmpeg field via reflection
-            var ffmpegField = typeof(AudioWriter).GetField("ffmpeg", 
+            FieldInfo ffmpegField = typeof(AudioWriter).GetField("ffmpeg", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Field should exist and contain the custom ffmpeg value
             Assert.NotNull(ffmpegField);
-            var value = (string)ffmpegField.GetValue(writer);
+            string value = (string)ffmpegField.GetValue(writer);
             Assert.Equal("custom-ffmpeg", value);
         }
 
@@ -367,7 +367,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Act - Get the private csc field via reflection
-            var cscField = typeof(AudioWriter).GetField("csc", 
+            FieldInfo cscField = typeof(AudioWriter).GetField("csc", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Field should exist and be null
@@ -385,7 +385,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Act - Get the internal Ffmpegp field via reflection
-            var processField = typeof(AudioWriter).GetField("Ffmpegp", 
+            FieldInfo processField = typeof(AudioWriter).GetField("Ffmpegp", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Field should exist and be null
@@ -403,7 +403,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Act - Get the property value
-            var inputField = typeof(AudioWriter).GetProperty("InputDataStream", 
+            PropertyInfo inputField = typeof(AudioWriter).GetProperty("InputDataStream", 
                 BindingFlags.Public | BindingFlags.Instance);
 
             // Assert - Property should exist and be null
@@ -421,7 +421,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Act - Get the property value
-            var outputField = typeof(AudioWriter).GetProperty("OutputDataStream", 
+            PropertyInfo outputField = typeof(AudioWriter).GetProperty("OutputDataStream", 
                 BindingFlags.Public | BindingFlags.Instance);
 
             // Assert - Property should exist and be null
@@ -498,7 +498,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void CustomEncoderOptions_ShouldBeUsed()
         {
             // Arrange
-            var customOptions = new EncoderOptions { Format = "ogg", EncoderName = "libvorbis" };
+            EncoderOptions customOptions = new EncoderOptions { Format = "ogg", EncoderName = "libvorbis" };
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100, 16, customOptions);
 
             // Act & Assert - Custom encoder should be used
@@ -513,7 +513,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void EncoderOptions_EncoderArguments_ShouldBeAccessible()
         {
             // Arrange
-            var customOptions = new EncoderOptions 
+            EncoderOptions customOptions = new EncoderOptions 
             { 
                 Format = "mp3", 
                 EncoderName = "libmp3lame",
@@ -537,7 +537,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         {
             // Arrange
             // Act - Should not throw with valid bit depth 16
-            var exception = Record.Exception(() => new AudioWriter(_testFile, 2, 44100, 16));
+            Exception exception = Record.Exception(() => new AudioWriter(_testFile, 2, 44100, 16));
 
             // Assert - Should not throw
             Assert.Null(exception);
@@ -551,7 +551,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         {
             // Arrange
             // Act - Should not throw with valid bit depth 24
-            var exception = Record.Exception(() => new AudioWriter(_testFile, 2, 44100, 24));
+            Exception exception = Record.Exception(() => new AudioWriter(_testFile, 2, 44100, 24));
 
             // Assert - Should not throw
             Assert.Null(exception);
@@ -565,7 +565,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         {
             // Arrange
             // Act - Should not throw with valid bit depth 32
-            var exception = Record.Exception(() => new AudioWriter(_testFile, 2, 44100, 32));
+            Exception exception = Record.Exception(() => new AudioWriter(_testFile, 2, 44100, 32));
 
             // Assert - Should not throw
             Assert.Null(exception);
@@ -585,7 +585,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
             // Act - Get CurrentFFmpegProcess
-            var process = writer.CurrentFFmpegProcess;
+            Process process = writer.CurrentFFmpegProcess;
 
             // Assert - Should return Ffmpegp (null before OpenWrite)
             Assert.Null(process);

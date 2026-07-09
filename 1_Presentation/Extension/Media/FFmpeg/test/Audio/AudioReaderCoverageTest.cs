@@ -69,7 +69,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Should not throw when disposing
-            var exception = Record.Exception(() => reader.Dispose());
+            Exception exception = Record.Exception(() => reader.Dispose());
 
             // Assert - Should complete without exception
             Assert.Null(exception);
@@ -85,10 +85,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Call protected Dispose with disposing=false via reflection
-            var disposeMethod = typeof(AudioReader).GetMethod("Dispose", 
+            MethodInfo disposeMethod = typeof(AudioReader).GetMethod("Dispose", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
             
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 disposeMethod.Invoke(reader, new object[] { false }));
 
             // Assert - Should complete without exception
@@ -106,15 +106,15 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Setup DataStream to be non-null
-            var dataField = typeof(AudioReader).GetProperty("DataStream", 
+            PropertyInfo dataField = typeof(AudioReader).GetProperty("DataStream", 
                 BindingFlags.Public | BindingFlags.Instance);
             dataField.SetValue(reader, new MemoryStream());
 
             // Act - Call protected Dispose with disposing=true via reflection
-            var disposeMethod = typeof(AudioReader).GetMethod("Dispose", 
+            MethodInfo disposeMethod = typeof(AudioReader).GetMethod("Dispose", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
             
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 disposeMethod.Invoke(reader, new object[] { true }));
 
             // Assert - Should complete without exception
@@ -154,17 +154,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void ResolveBitDepth_ShouldSet8BitFor8BitFormat()
         {
             // Arrange
-            var metadata = new AudioMetadata
+            AudioMetadata metadata = new AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = "u8"
             };
 
             // Act - Call the internal static ResolveBitDepth method via reflection
-            var resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
+            MethodInfo resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
                 BindingFlags.NonPublic | BindingFlags.Static);
             
-            var exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
+            Exception exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
 
             // Assert - Should complete without exception and set bit depth to 8
             Assert.Null(exception);
@@ -178,17 +178,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void ResolveBitDepth_ShouldSet16BitFor16BitFormat()
         {
             // Arrange
-            var metadata = new AudioMetadata
+            AudioMetadata metadata = new AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = "s16le"
             };
 
             // Act - Call the internal static ResolveBitDepth method via reflection
-            var resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
+            MethodInfo resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
                 BindingFlags.NonPublic | BindingFlags.Static);
             
-            var exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
+            Exception exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
 
             // Assert - Should complete without exception and set bit depth to 16
             Assert.Null(exception);
@@ -202,17 +202,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void ResolveBitDepth_ShouldSet24BitFor24BitFormat()
         {
             // Arrange
-            var metadata = new AudioMetadata
+            AudioMetadata metadata = new AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = "s24le"
             };
 
             // Act - Call the internal static ResolveBitDepth method via reflection
-            var resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
+            MethodInfo resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
                 BindingFlags.NonPublic | BindingFlags.Static);
             
-            var exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
+            Exception exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
 
             // Assert - Should complete without exception and set bit depth to 24
             Assert.Null(exception);
@@ -226,17 +226,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void ResolveBitDepth_ShouldSet32BitFor32BitFormat()
         {
             // Arrange
-            var metadata = new AudioMetadata
+            AudioMetadata metadata = new AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = "s32le"
             };
 
             // Act - Call the internal static ResolveBitDepth method via reflection
-            var resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
+            MethodInfo resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
                 BindingFlags.NonPublic | BindingFlags.Static);
             
-            var exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
+            Exception exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
 
             // Assert - Should complete without exception and set bit depth to 32
             Assert.Null(exception);
@@ -250,17 +250,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void ResolveBitDepth_ShouldSet64BitFor64BitFormat()
         {
             // Arrange
-            var metadata = new AudioMetadata
+            AudioMetadata metadata = new AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = "s64le"
             };
 
             // Act - Call the internal static ResolveBitDepth method via reflection
-            var resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
+            MethodInfo resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
                 BindingFlags.NonPublic | BindingFlags.Static);
             
-            var exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
+            Exception exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
 
             // Assert - Should complete without exception and set bit depth to 64
             Assert.Null(exception);
@@ -274,17 +274,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void ResolveBitDepth_ShouldHandleUnknownFormats()
         {
             // Arrange
-            var metadata = new AudioMetadata
+            AudioMetadata metadata = new AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = "unknown_format"
             };
 
             // Act - Call the internal static ResolveBitDepth method via reflection
-            var resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
+            MethodInfo resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
                 BindingFlags.NonPublic | BindingFlags.Static);
             
-            var exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
+            Exception exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
 
             // Assert - Should complete without exception and leave bit depth at 0
             Assert.Null(exception);
@@ -298,17 +298,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void ResolveBitDepth_ShouldNotModifyAlreadySetBitDepth()
         {
             // Arrange
-            var metadata = new AudioMetadata
+            AudioMetadata metadata = new AudioMetadata
             {
                 BitDepth = 24,
                 SampleFormat = "s16le"
             };
 
             // Act - Call the internal static ResolveBitDepth method via reflection
-            var resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
+            MethodInfo resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
                 BindingFlags.NonPublic | BindingFlags.Static);
             
-            var exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
+            Exception exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
 
             // Assert - Should complete without exception and keep bit depth at 24
             Assert.Null(exception);
@@ -322,17 +322,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void ResolveBitDepth_ShouldHandleNullSampleFormat()
         {
             // Arrange
-            var metadata = new AudioMetadata
+            AudioMetadata metadata = new AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = null
             };
 
             // Act - Call the internal static ResolveBitDepth method via reflection
-            var resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
+            MethodInfo resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
                 BindingFlags.NonPublic | BindingFlags.Static);
             
-            var exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
+            Exception exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
 
             // Assert - Should complete without exception and leave bit depth at 0
             Assert.Null(exception);
@@ -346,17 +346,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         public void ResolveBitDepth_ShouldHandleEmptySampleFormat()
         {
             // Arrange
-            var metadata = new AudioMetadata
+            AudioMetadata metadata = new AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = ""
             };
 
             // Act - Call the internal static ResolveBitDepth method via reflection
-            var resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
+            MethodInfo resolveMethod = typeof(AudioReader).GetMethod("ResolveBitDepth", 
                 BindingFlags.NonPublic | BindingFlags.Static);
             
-            var exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
+            Exception exception = Record.Exception(() => resolveMethod.Invoke(null, new object[] { metadata }));
 
             // Assert - Should complete without exception and leave bit depth at 0
             Assert.Null(exception);
@@ -377,12 +377,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Set MetadataLoaded to true via reflection to test the guard
-            var metadataLoadedField = typeof(AudioReader).GetProperty("MetadataLoaded", 
+            PropertyInfo metadataLoadedField = typeof(AudioReader).GetProperty("MetadataLoaded", 
                 BindingFlags.Public | BindingFlags.Instance);
             metadataLoadedField.SetValue(reader, true);
 
             // Act - Should throw InvalidOperationException when calling LoadMetadataAsync with MetadataLoaded=true
-            var exception = Record.Exception(() => reader.LoadMetadataAsync().Wait());
+            Exception exception = Record.Exception(() => reader.LoadMetadataAsync().Wait());
 
             // Assert - Should throw the expected exception or AggregateException from ffmpeg not installed
             // The guard clause exists and throws when MetadataLoaded is true
@@ -420,7 +420,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             // Act - Should not throw from stream parsing error when ignoreStreamErrors=true
             // Note: This test may throw if ffmpeg/ffprobe is not installed on the system.
             // The ignoreStreamErrors parameter allows catching stream parsing errors.
-            var exception = Record.Exception(() => reader.LoadMetadataAsync(ignoreStreamErrors: true).Wait());
+            Exception exception = Record.Exception(() => reader.LoadMetadataAsync(ignoreStreamErrors: true).Wait());
 
             // Assert - Should complete without exception from stream parsing error
             // The ignoreStreamErrors parameter allows catching stream parsing errors
@@ -449,7 +449,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Should throw InvalidOperationException when metadata is not loaded
-            var exception = Record.Exception(() => reader.Load(16));
+            Exception exception = Record.Exception(() => reader.Load(16));
 
             // Assert - Should throw the expected exception
             // The exception is thrown before the bit depth validation branch
@@ -468,7 +468,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Should throw InvalidOperationException when metadata is not loaded
-            var exception = Record.Exception(() => reader.Load(24));
+            Exception exception = Record.Exception(() => reader.Load(24));
 
             // Assert - Should throw the expected exception
             // The exception is thrown before the 24-bit branch validation
@@ -487,7 +487,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Should throw InvalidOperationException when metadata is not loaded
-            var exception = Record.Exception(() => reader.Load(32));
+            Exception exception = Record.Exception(() => reader.Load(32));
 
             // Assert - Should throw the expected exception
             // The exception is thrown before the 32-bit branch validation
@@ -506,12 +506,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Set OpenedForReading to true via reflection to test the guard
-            var openedField = typeof(AudioReader).GetProperty("OpenedForReading", 
+            PropertyInfo openedField = typeof(AudioReader).GetProperty("OpenedForReading", 
                 BindingFlags.Public | BindingFlags.Instance);
             openedField.SetValue(reader, true);
 
             // Act - Should throw InvalidOperationException
-            var exception = Record.Exception(() => reader.Load(16));
+            Exception exception = Record.Exception(() => reader.Load(16));
 
             // Assert - Should throw the expected exception
             Assert.NotNull(exception);
@@ -533,7 +533,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Should throw InvalidOperationException when calling NextFrame without loading audio
-            var exception = Record.Exception(() => reader.NextFrame());
+            Exception exception = Record.Exception(() => reader.NextFrame());
 
             // Assert - Should throw the expected exception or NullReferenceException from ffmpeg not installed
             // The guard clause exists and throws when OpenedForReading is false
@@ -561,7 +561,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Should throw InvalidOperationException when calling NextFrame(int) without loading audio
-            var exception = Record.Exception(() => reader.NextFrame(1024));
+            Exception exception = Record.Exception(() => reader.NextFrame(1024));
 
             // Assert - Should throw the expected exception or NullReferenceException from ffmpeg not installed
             // The guard clause exists and throws when OpenedForReading is false
@@ -589,8 +589,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Should throw InvalidOperationException when calling NextFrame(AudioFrame) without loading audio
-            var frame = new AudioFrame(2, 1024, 16);
-            var exception = Record.Exception(() => reader.NextFrame(frame));
+            AudioFrame frame = new AudioFrame(2, 1024, 16);
+            Exception exception = Record.Exception(() => reader.NextFrame(frame));
 
             // Assert - Should throw the expected exception or NullReferenceException from ffmpeg not installed
             // The guard clause exists and throws when OpenedForReading is false
@@ -615,19 +615,19 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Set OpenedForReading to true via reflection
-            var openedField = typeof(AudioReader).GetProperty("OpenedForReading", 
+            PropertyInfo openedField = typeof(AudioReader).GetProperty("OpenedForReading", 
                 BindingFlags.Public | BindingFlags.Instance);
             openedField.SetValue(reader, true);
 
             // Setup DataStream to be non-null
-            var dataField = typeof(AudioReader).GetProperty("DataStream", 
+            PropertyInfo dataField = typeof(AudioReader).GetProperty("DataStream", 
                 BindingFlags.Public | BindingFlags.Instance);
             dataField.SetValue(reader, new MemoryStream());
 
             // Setup Metadata with channels
-            var metadataProp = typeof(AudioReader).GetProperty("Metadata", 
+            PropertyInfo metadataProp = typeof(AudioReader).GetProperty("Metadata", 
                 BindingFlags.Public | BindingFlags.Instance);
-            var metadata = new AudioMetadata { Channels = 2 };
+            AudioMetadata metadata = new AudioMetadata { Channels = 2 };
             metadataProp.SetValue(reader, metadata);
 
             // Provide enough raw PCM bytes for one stereo 16-bit sample.
@@ -653,10 +653,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             string ffmpegScript = CreateExecutableScript("#!/bin/sh\nexit 0\n");
             AudioReader reader = new AudioReader(_testFile, ffmpegExecutable: ffmpegScript);
 
-            var metadataLoadedField = typeof(AudioReader).GetProperty("MetadataLoaded", BindingFlags.Public | BindingFlags.Instance);
+            PropertyInfo metadataLoadedField = typeof(AudioReader).GetProperty("MetadataLoaded", BindingFlags.Public | BindingFlags.Instance);
             metadataLoadedField.SetValue(reader, true);
 
-            var metadataField = typeof(AudioReader).GetProperty("Metadata", BindingFlags.Public | BindingFlags.Instance);
+            PropertyInfo metadataField = typeof(AudioReader).GetProperty("Metadata", BindingFlags.Public | BindingFlags.Instance);
             metadataField.SetValue(reader, new AudioMetadata { Channels = 2 });
 
             try
@@ -691,12 +691,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile, "custom_ffmpeg", "custom_ffprobe");
 
             // Act - Get the private ffmpeg field via reflection
-            var ffmpegField = typeof(AudioReader).GetField("ffmpeg", 
+            FieldInfo ffmpegField = typeof(AudioReader).GetField("ffmpeg", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Field should exist and contain the custom ffmpeg value
             Assert.NotNull(ffmpegField);
-            var value = (string)ffmpegField.GetValue(reader);
+            string value = (string)ffmpegField.GetValue(reader);
             Assert.Equal("custom_ffmpeg", value);
         }
 
@@ -710,12 +710,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile, "custom_ffmpeg", "custom_ffprobe");
 
             // Act - Get the private ffprobe field via reflection
-            var ffprobeField = typeof(AudioReader).GetField("ffprobe", 
+            FieldInfo ffprobeField = typeof(AudioReader).GetField("ffprobe", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Field should exist and contain the custom ffprobe value
             Assert.NotNull(ffprobeField);
-            var value = (string)ffprobeField.GetValue(reader);
+            string value = (string)ffprobeField.GetValue(reader);
             Assert.Equal("custom_ffprobe", value);
         }
 
@@ -729,12 +729,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Get the private loadedBitDepth field via reflection
-            var loadedBitDepthField = typeof(AudioReader).GetField("loadedBitDepth", 
+            FieldInfo loadedBitDepthField = typeof(AudioReader).GetField("loadedBitDepth", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Field should exist and default to 16
             Assert.NotNull(loadedBitDepthField);
-            var value = (int)loadedBitDepthField.GetValue(reader);
+            int value = (int)loadedBitDepthField.GetValue(reader);
             Assert.Equal(16, value);
         }
 
@@ -748,7 +748,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Get the property value
-            var dataField = typeof(AudioReader).GetProperty("DataStream", 
+            PropertyInfo dataField = typeof(AudioReader).GetProperty("DataStream", 
                 BindingFlags.Public | BindingFlags.Instance);
 
             // Assert - Property should exist and be null
@@ -766,7 +766,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Get the property value
-            var openedField = typeof(AudioReader).GetProperty("OpenedForReading", 
+            PropertyInfo openedField = typeof(AudioReader).GetProperty("OpenedForReading", 
                 BindingFlags.Public | BindingFlags.Instance);
 
             // Assert - Property should exist and be false
@@ -831,7 +831,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             AudioReader reader = new AudioReader(_testFile);
 
             // Act - Should not throw from LoadMetadata call
-            var exception = Record.Exception(() => reader.LoadMetadata());
+            Exception exception = Record.Exception(() => reader.LoadMetadata());
 
             // Assert - Should complete without exception from LoadMetadata call
             // The synchronous LoadMetadata method exists and calls LoadMetadataAsync

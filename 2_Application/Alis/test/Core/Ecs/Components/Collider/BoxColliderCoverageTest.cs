@@ -62,7 +62,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Body is not null but Context is null - OnExit will throw NullReferenceException
             // This test documents the null context branch
-            var exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
 
             // Assert - The exception would be from null Context, not logic errors
             // This test documents that the Context != null branch exists
@@ -82,7 +82,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             // Body is null by default
 
             // Act - Should not throw
-            var exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
 
             // Assert - Should complete without exception
             Assert.Null(exception);
@@ -101,10 +101,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             // Arrange
             BoxCollider collider = new BoxCollider();
-            var colliderType = typeof(BoxCollider);
+            Type colliderType = typeof(BoxCollider);
 
             // Act - Get the public OnStart method via reflection
-            var onStartMethod = colliderType.GetMethod("OnStart", 
+            MethodInfo onStartMethod = colliderType.GetMethod("OnStart", 
                 BindingFlags.Public | BindingFlags.Instance);
 
             // Assert - Method should exist
@@ -123,10 +123,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             // Arrange
             BoxCollider collider = new BoxCollider();
-            var colliderType = typeof(BoxCollider);
+            Type colliderType = typeof(BoxCollider);
 
             // Act - Get the private OnCollision method via reflection
-            var onCollisionMethod = colliderType.GetMethod("OnCollision", 
+            MethodInfo onCollisionMethod = colliderType.GetMethod("OnCollision", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Method should exist
@@ -141,10 +141,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             // Arrange
             BoxCollider collider = new BoxCollider();
-            var colliderType = typeof(BoxCollider);
+            Type colliderType = typeof(BoxCollider);
 
             // Act - Get the private OnSeparation method via reflection
-            var onSeparationMethod = colliderType.GetMethod("OnSeparation", 
+            MethodInfo onSeparationMethod = colliderType.GetMethod("OnSeparation", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Method should exist
@@ -159,10 +159,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             // Arrange
             BoxCollider collider = new BoxCollider();
-            var colliderType = typeof(BoxCollider);
+            Type colliderType = typeof(BoxCollider);
 
             // Act - Get the private InitializeShaders method via reflection
-            var initializeShadersMethod = colliderType.GetMethod("InitializeShaders", 
+            MethodInfo initializeShadersMethod = colliderType.GetMethod("InitializeShaders", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Method should exist
@@ -177,10 +177,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             // Arrange
             BoxCollider collider = new BoxCollider();
-            var colliderType = typeof(BoxCollider);
+            Type colliderType = typeof(BoxCollider);
 
             // Act - Get the private RenderBoxCollider method via reflection
-            var renderBoxColliderMethod = colliderType.GetMethod("RenderBoxCollider", 
+            MethodInfo renderBoxColliderMethod = colliderType.GetMethod("RenderBoxCollider", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Method should exist
@@ -226,14 +226,14 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             // Arrange
             BoxCollider collider = new BoxCollider();
             
-            var context = new Context();
+            Context context = new Context();
 
             // Act & Assert - Set and verify context
             collider.Context = context;
             Assert.Same(context, collider.Context);
 
             // Test that context can be changed
-            var newContext = new Context();
+            Context newContext = new Context();
             collider.Context = newContext;
             Assert.Same(newContext, collider.Context);
         }
@@ -248,7 +248,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             BoxCollider collider = new BoxCollider();
 
             // Test with various size values
-            var testSizes = new[]
+            Vector2F[] testSizes = new[]
             {
                 new Vector2F(0f, 0f),
                 new Vector2F(1f, 1f),
@@ -258,7 +258,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             };
 
             // Act & Assert - Each size should be set and retrieved correctly
-            foreach (var size in testSizes)
+            foreach (Vector2F size in testSizes)
             {
                 collider.SizeOfTexture = size;
                 Assert.Equal(size.X, collider.SizeOfTexture.X);
@@ -280,8 +280,8 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             BoxCollider collider = new BoxCollider();
 
             // Test with different Body instances
-            var body1 = new Alis.Core.Physic.Dynamics.Body();
-            var body2 = new Alis.Core.Physic.Dynamics.Body();
+            Alis.Core.Physic.Dynamics.Body body1 = new Alis.Core.Physic.Dynamics.Body();
+            Alis.Core.Physic.Dynamics.Body body2 = new Alis.Core.Physic.Dynamics.Body();
 
             // Act & Assert - Body can be set and retrieved
             collider.Body = body1;
@@ -307,17 +307,17 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             // Arrange
             BoxCollider collider = new BoxCollider();
-            var colliderType = typeof(BoxCollider);
+            Type colliderType = typeof(BoxCollider);
 
             // Act - Get the private IsInit property via reflection
-            var isInitProperty = colliderType.GetProperty("IsInit", 
+            PropertyInfo isInitProperty = colliderType.GetProperty("IsInit", 
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
             // Assert - Property should exist
             Assert.NotNull(isInitProperty);
 
             // Get the value (should be false by default)
-            var isInitValue = (bool)isInitProperty.GetValue(collider);
+            bool isInitValue = (bool)isInitProperty.GetValue(collider);
             Assert.False(isInitValue);
         }
 
@@ -333,12 +333,12 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             // Arrange
             BoxCollider collider = new BoxCollider();
-            var colliderType = typeof(BoxCollider);
+            Type colliderType = typeof(BoxCollider);
 
             // Act - Get the static Vertices array via reflection
-            var verticesField = colliderType.GetField("Vertices", 
+            FieldInfo verticesField = colliderType.GetField("Vertices", 
                 BindingFlags.Static | BindingFlags.NonPublic);
-            var vertices = (float[])verticesField.GetValue(null);
+            float[] vertices = (float[])verticesField.GetValue(null);
 
             // Assert - Vertices should have 6 values defining a triangle
             Assert.NotNull(vertices);
@@ -424,10 +424,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             // Arrange
             BoxCollider collider = new BoxCollider();
-            var colliderType = typeof(BoxCollider);
+            Type colliderType = typeof(BoxCollider);
 
             // Act - Get the Equals method via reflection
-            var equalsMethod = colliderType.GetMethod("Equals", 
+            MethodInfo equalsMethod = colliderType.GetMethod("Equals", 
                 BindingFlags.Public | BindingFlags.Instance);
 
             // Assert - Equals method should exist
@@ -450,7 +450,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
 
             // Act
-            var exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
 
             // Assert
             Assert.Null(exception);

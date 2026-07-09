@@ -55,14 +55,14 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             // Arrange
             BoxCollider collider = new BoxCollider();
-            var realBody = new Alis.Core.Physic.Dynamics.Body();
+            Alis.Core.Physic.Dynamics.Body realBody = new Alis.Core.Physic.Dynamics.Body();
             collider.Body = realBody;
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
             mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
 
             // Act - Should not throw even though Body is set but Transform is missing
-            var exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
 
             // Assert
             Assert.Null(exception);
@@ -78,11 +78,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             BoxCollider collider = new BoxCollider();
             // Body is null by default
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
             mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
 
             // Act - Should not throw
-            var exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
 
             // Assert
             Assert.Null(exception);
@@ -97,13 +97,13 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             // Arrange
             BoxCollider collider = new BoxCollider();
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
             mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
 
             // Act - Multiple calls should not throw
-            var firstException = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
-            var secondException = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
-            var thirdException = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
+            Exception firstException = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
+            Exception secondException = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
+            Exception thirdException = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
 
             // Assert
             Assert.Null(firstException);
@@ -125,11 +125,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             BoxCollider collider = new BoxCollider();
             collider.Context = new Context();
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
             mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
 
             // Act
-            var exception = Record.Exception(() => collider.OnStart(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnStart(mockGameObject.Object));
 
             // Assert - Body should remain null since Transform is not present
             Assert.Null(exception);
@@ -146,11 +146,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             BoxCollider collider = new BoxCollider();
             // Context is null by default
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
             mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
 
             // Act - Should not throw since Has&lt;Transform&gt; returns false
-            var exception = Record.Exception(() => collider.OnStart(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnStart(mockGameObject.Object));
 
             // Assert
             Assert.Null(exception);
@@ -166,11 +166,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             BoxCollider collider = new BoxCollider();
             collider.Context = new Context();
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
             mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
 
             // Act
-            var exception = Record.Exception(() => collider.OnStart(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnStart(mockGameObject.Object));
 
             // Assert - Body should remain null
             Assert.Null(exception);
@@ -195,11 +195,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             collider.Mass = 2.5f;
             collider.IgnoreGravity = true;
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
             mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
 
             // Act
-            var exception = Record.Exception(() => collider.OnStart(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnStart(mockGameObject.Object));
 
             // Assert - Should not throw
             Assert.Null(exception);
@@ -219,10 +219,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             BoxCollider collider = new BoxCollider();
             // Both Body and Context are null by default
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
 
             // Act - Should not throw
-            var exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
 
             // Assert
             Assert.Null(exception);
@@ -236,14 +236,14 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             // Arrange
             BoxCollider collider = new BoxCollider();
-            var realBody = new Alis.Core.Physic.Dynamics.Body();
+            Alis.Core.Physic.Dynamics.Body realBody = new Alis.Core.Physic.Dynamics.Body();
             collider.Body = realBody;
             // Context is null
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
 
             // Act - Body is not null, but Context is null; expects NullReferenceException
-            var exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
 
             // Assert - Should throw NullReferenceException due to null Context
             Assert.NotNull(exception);
@@ -261,10 +261,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             collider.Context = new Context();
             // Body is null by default
 
-            var mockGameObject = new Mock<IGameObject>();
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
 
             // Act - Body is null, so the if (Body != null) check should prevent execution
-            var exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
 
             // Assert - Should not throw since Body is null
             Assert.Null(exception);
@@ -282,17 +282,17 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxCollider_PropertySet_DifferentOrders_ShouldNotCauseIssues()
         {
             // Arrange - Test setting properties in different orders
-            var collider1 = new BoxCollider();
+            BoxCollider collider1 = new BoxCollider();
             collider1.Width = 20;
             collider1.Height = 30;
             collider1.Rotation = 45;
 
-            var collider2 = new BoxCollider();
+            BoxCollider collider2 = new BoxCollider();
             collider2.Rotation = 45;
             collider2.Height = 30;
             collider2.Width = 20;
 
-            var collider3 = new BoxCollider();
+            BoxCollider collider3 = new BoxCollider();
             collider3.Height = 30;
             collider3.Width = 20;
             collider3.Rotation = 45;
@@ -319,7 +319,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             // Arrange
             BoxCollider collider = new BoxCollider();
-            var realBody = new Alis.Core.Physic.Dynamics.Body();
+            Alis.Core.Physic.Dynamics.Body realBody = new Alis.Core.Physic.Dynamics.Body();
 
             // Act
             collider.Body = realBody;

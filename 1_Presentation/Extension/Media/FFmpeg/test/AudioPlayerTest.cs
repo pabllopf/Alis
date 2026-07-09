@@ -141,7 +141,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             AudioPlayer player = new TestableAudioPlayer("audio.wav");
 
             // Act + Assert
-            var exception = Record.Exception(() => player.Dispose());
+            Exception exception = Record.Exception(() => player.Dispose());
             Assert.Null(exception);
         }
 
@@ -159,7 +159,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             player.SetInputDataStream(new MemoryStream());
 
             // Act — CloseWrite will be called, which kills the (null) process and disposes the stream
-            var exception = Record.Exception(() => player.Dispose());
+            Exception exception = Record.Exception(() => player.Dispose());
 
             // Assert — the key behavior is that CloseWrite was called and OpenedForWriting is reset
             Assert.Null(exception);
@@ -176,7 +176,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             TestableAudioPlayer player = new TestableAudioPlayer("audio.wav");
 
             // Act + Assert — should not throw even with no process (null ffplayp)
-            var exception = Record.Exception(() => player.Dispose());
+            Exception exception = Record.Exception(() => player.Dispose());
             Assert.Null(exception);
         }
 
@@ -191,7 +191,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             player.SetOpenedForWriting(true);
 
             // Act + Assert
-            var exception = Assert.Throws<InvalidOperationException>(() => player.Play());
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => player.Play());
 
             // Assert
             Assert.Contains("already opened for writing", exception.Message);
@@ -207,7 +207,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             TestableAudioPlayer player = new TestableAudioPlayer();
 
             // Act + Assert
-            var exception = Assert.Throws<InvalidOperationException>(() => player.Play());
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => player.Play());
 
             // Assert
             Assert.Contains("No filename was specified", exception.Message);
@@ -223,7 +223,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             TestableAudioPlayer player = new TestableAudioPlayer("");
 
             // Act + Assert
-            var exception = Assert.Throws<InvalidOperationException>(() => player.Play());
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => player.Play());
 
             // Assert
             Assert.Contains("No filename was specified", exception.Message);
@@ -240,7 +240,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
 
             // Act + Assert — string.IsNullOrEmpty("   ") is false, so Play passes validation
             // but will throw from FfMpegWrapper when ffplay is not installed
-            var exception = Record.Exception(() => player.Play());
+            Exception exception = Record.Exception(() => player.Play());
 
             // Assert — it should NOT throw the validation exception
             if (exception is InvalidOperationException invEx)
@@ -260,7 +260,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             player.SetOpenedForWriting(true);
 
             // Act + Assert
-            var exception = Assert.Throws<InvalidOperationException>(() => player.PlayInBackground(runPureBackground: false));
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => player.PlayInBackground(runPureBackground: false));
 
             // Assert
             Assert.Contains("already opened for writing", exception.Message);
@@ -279,7 +279,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             // Act + Assert — should pass validation (opened for writing check is skipped for pure background)
             // but will throw when trying to call FfMpegWrapper.OpenInput since ffplay is not installed
             // The important thing: it does NOT throw "already opened for writing"
-            var exception = Record.Exception(() => player.PlayInBackground(runPureBackground: true));
+            Exception exception = Record.Exception(() => player.PlayInBackground(runPureBackground: true));
 
             // Assert — it may throw from FfMpegWrapper, but NOT from the "already opened" validation
             if (exception is InvalidOperationException invEx)
@@ -298,7 +298,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             TestableAudioPlayer player = new TestableAudioPlayer();
 
             // Act + Assert
-            var exception = Assert.Throws<InvalidOperationException>(() => player.PlayInBackground());
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => player.PlayInBackground());
 
             // Assert
             Assert.Contains("No filename was specified", exception.Message);
@@ -314,7 +314,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             TestableAudioPlayer player = new TestableAudioPlayer("audio.wav");
 
             // Act + Assert
-            var exception = Assert.Throws<InvalidOperationException>(() => player.OpenWrite(44100, 2, 8));
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => player.OpenWrite(44100, 2, 8));
 
             // Assert
             Assert.Contains("Acceptable bit depths are 16, 24 and 32", exception.Message);
@@ -330,7 +330,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             TestableAudioPlayer player = new TestableAudioPlayer("audio.wav");
 
             // Act + Assert
-            var exception = Assert.Throws<InvalidOperationException>(() => player.OpenWrite(44100, 2, 0));
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => player.OpenWrite(44100, 2, 0));
 
             // Assert
             Assert.Contains("Acceptable bit depths are 16, 24 and 32", exception.Message);
@@ -347,7 +347,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             player.SetOpenedForWriting(true);
 
             // Act + Assert
-            var exception = Assert.Throws<InvalidOperationException>(() => player.OpenWrite(44100, 2));
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => player.OpenWrite(44100, 2));
 
             // Assert
             Assert.Contains("already opened for writing", exception.Message);
@@ -364,7 +364,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             TestableAudioPlayer player = new TestableAudioPlayer("audio.wav");
 
             // Act + Assert — validation should pass (ffplay may not be installed, but validation succeeds)
-            var exception = Record.Exception(() => player.OpenWrite(44100, 2, 16));
+            Exception exception = Record.Exception(() => player.OpenWrite(44100, 2, 16));
 
             // If ffplay is not installed, we expect a Win32Exception or similar from Process.Start
             // The key assertion: it does NOT throw "Acceptable bit depths" or "already opened for writing"
@@ -385,7 +385,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             AudioPlayer player = new TestableAudioPlayer("audio.wav");
 
             // Act + Assert
-            var exception = Assert.Throws<InvalidOperationException>(() => player.CloseWrite());
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => player.CloseWrite());
 
             // Assert
             Assert.Contains("not opened for writing", exception.Message);
@@ -405,7 +405,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
 
             // Act + Assert — CloseWrite will fail because InputDataStream is null,
             // but we verify the validation passes (not "not opened for writing")
-            var exception = Record.Exception(() => player.CloseWrite());
+            Exception exception = Record.Exception(() => player.CloseWrite());
 
             // If it throws, it should NOT be the "not opened for writing" exception
             if (exception is InvalidOperationException invEx)
@@ -424,7 +424,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             // Arrange — this is a static method that calls FfMpegWrapper.OpenInput
 
             // Act + Assert — validation passes, but actual execution requires ffplay
-            var exception = Record.Exception(() => AudioPlayer.GetStreamForWriting("s16le", "-channels 2 -sample_rate 44100 -i -", out _));
+            Exception exception = Record.Exception(() => AudioPlayer.GetStreamForWriting("s16le", "-channels 2 -sample_rate 44100 -i -", out _));
 
             // The key: it does NOT throw any AudioPlayer-specific validation exception
             if (exception is InvalidOperationException invEx)

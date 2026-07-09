@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.CreateCircle(0.5f, 1.0f);
 
             // Act
-            var exception = Record.Exception(() => body.GetBodyType = BodyType.Static);
+            Exception exception = Record.Exception(() => body.GetBodyType = BodyType.Static);
 
             // Assert
             Assert.Null(exception);
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.CreateCircle(0.5f, 1.0f);
 
             // Act
-            var exception = Record.Exception(() => body.Enabled = true);
+            Exception exception = Record.Exception(() => body.Enabled = true);
 
             // Assert
             Assert.Null(exception);
@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(body.Enabled);
 
             // Act
-            var exception = Record.Exception(() => body.Enabled = false);
+            Exception exception = Record.Exception(() => body.Enabled = false);
 
             // Assert
             Assert.Null(exception);
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.CreateCircle(0.5f, 1.0f);
 
             // Act
-            var exception = Record.Exception(() => body.Enabled = false);
+            Exception exception = Record.Exception(() => body.Enabled = false);
 
             // Assert
             Assert.Null(exception);

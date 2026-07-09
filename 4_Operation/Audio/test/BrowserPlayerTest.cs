@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using Alis.Core.Audio.Players;
 using Xunit;
 
@@ -70,7 +71,7 @@ namespace Alis.Core.Audio.Test
         /// </summary>
         private static void CreateMinimalWavFile(string filePath)
         {
-            using (var stream = File.Create(filePath))
+            using (FileStream stream = File.Create(filePath))
             {
                 // RIFF header
                 stream.Write(System.Text.Encoding.ASCII.GetBytes("RIFF"), 0, 4);
@@ -383,8 +384,8 @@ namespace Alis.Core.Audio.Test
         {
             // BrowserPlayer is internal, so we can't instantiate it directly
             // This test validates the event exists on the type
-            var playerType = typeof(BrowserPlayer);
-            var eventInfo = playerType.GetEvent("PlaybackFinished");
+            Type playerType = typeof(BrowserPlayer);
+            EventInfo eventInfo = playerType.GetEvent("PlaybackFinished");
             Assert.NotNull(eventInfo);
         }
 
@@ -396,8 +397,8 @@ namespace Alis.Core.Audio.Test
         {
             // BrowserPlayer is internal and requires OpenAL to instantiate
             // This test validates the method signature exists
-            var playerType = typeof(BrowserPlayer);
-            var methodInfo = playerType.GetMethod("SetVolume");
+            Type playerType = typeof(BrowserPlayer);
+            MethodInfo methodInfo = playerType.GetMethod("SetVolume");
             Assert.NotNull(methodInfo);
         }
     }

@@ -397,8 +397,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
             GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
 
-            var jointAClass = gearJoint.JointA.GetType();
-            var jointBClass = gearJoint.JointB.GetType();
+            Type jointAClass = gearJoint.JointA.GetType();
+            Type jointBClass = gearJoint.JointB.GetType();
 
             Assert.Equal(typeof(RevoluteJoint), jointAClass);
             Assert.Equal(typeof(RevoluteJoint), jointBClass);

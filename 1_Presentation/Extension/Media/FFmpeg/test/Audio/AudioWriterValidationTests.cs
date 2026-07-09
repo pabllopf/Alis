@@ -52,7 +52,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void FilenameConstructor_WhenChannelsIsZero_ThrowsInvalidDataException()
         {
             // Act
-            var exception = Record.Exception(() => new AudioWriter(
+            Exception exception = Record.Exception(() => new AudioWriter(
                 "output.mp3",
                 channels: 0,
                 sampleRate: 44100));
@@ -68,7 +68,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void FilenameConstructor_WhenChannelsIsNegative_ThrowsInvalidDataException()
         {
             // Act
-            var exception = Record.Exception(() => new AudioWriter(
+            Exception exception = Record.Exception(() => new AudioWriter(
                 "output.mp3",
                 channels: -1,
                 sampleRate: 44100));
@@ -84,7 +84,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void FilenameConstructor_WhenSampleRateIsZero_ThrowsInvalidDataException()
         {
             // Act
-            var exception = Record.Exception(() => new AudioWriter(
+            Exception exception = Record.Exception(() => new AudioWriter(
                 "output.mp3",
                 channels: 2,
                 sampleRate: 0));
@@ -100,7 +100,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void FilenameConstructor_WhenSampleRateIsNegative_ThrowsInvalidDataException()
         {
             // Act
-            var exception = Record.Exception(() => new AudioWriter(
+            Exception exception = Record.Exception(() => new AudioWriter(
                 "output.mp3",
                 channels: 2,
                 sampleRate: -44100));
@@ -116,21 +116,21 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void FilenameConstructor_WhenBitDepthIsInvalid_ThrowsInvalidOperationException()
         {
             // Act — 8-bit depth
-            var exception8Bit = Record.Exception(() => new AudioWriter(
+            Exception exception8Bit = Record.Exception(() => new AudioWriter(
                 "output.mp3",
                 channels: 2,
                 sampleRate: 44100,
                 bitDepth: 8));
 
             // Act — 20-bit depth
-            var exception20Bit = Record.Exception(() => new AudioWriter(
+            Exception exception20Bit = Record.Exception(() => new AudioWriter(
                 "output.mp3",
                 channels: 2,
                 sampleRate: 44100,
                 bitDepth: 20));
 
             // Act — 80-bit depth
-            var exception80Bit = Record.Exception(() => new AudioWriter(
+            Exception exception80Bit = Record.Exception(() => new AudioWriter(
                 "output.mp3",
                 channels: 2,
                 sampleRate: 44100,
@@ -149,13 +149,13 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void FilenameConstructor_WhenFilenameIsNullOrEmpty_ThrowsArgumentException()
         {
             // Act — null filename
-            var exceptionNull = Record.Exception(() => new AudioWriter(
+            Exception exceptionNull = Record.Exception(() => new AudioWriter(
                 (string) null,
                 channels: 2,
                 sampleRate: 44100));
 
             // Act — empty filename
-            var exceptionEmpty = Record.Exception(() => new AudioWriter(
+            Exception exceptionEmpty = Record.Exception(() => new AudioWriter(
                 "",
                 channels: 2,
                 sampleRate: 44100));
@@ -172,13 +172,13 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void FilenameConstructor_WithValidBitDepths_Succeeds()
         {
             // Act — 16-bit (default)
-            var writer16 = new AudioWriter("output.mp3", 2, 44100);
+            AudioWriter writer16 = new AudioWriter("output.mp3", 2, 44100);
 
             // Act — 24-bit
-            var writer24 = new AudioWriter("output.wav", 1, 22050, 24);
+            AudioWriter writer24 = new AudioWriter("output.wav", 1, 22050, 24);
 
             // Act — 32-bit
-            var writer32 = new AudioWriter("output.raw", 4, 96000, 32);
+            AudioWriter writer32 = new AudioWriter("output.raw", 4, 96000, 32);
 
             // Assert
             Assert.NotNull(writer16);
@@ -219,7 +219,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void FilenameConstructor_WithCustomFfmpegPath_SetsFfmpegExecutable()
         {
             // Act
-            var writer = new AudioWriter(
+            AudioWriter writer = new AudioWriter(
                 "output.mp3", 2, 44100, 16, null,
                 ffmpegExecutable: "/usr/local/bin/ffmpeg-custom");
 
@@ -238,7 +238,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void FilenameConstructor_WithNullEncoderOptions_CreatesDefaultEncoderOptions()
         {
             // Act
-            var writer = new AudioWriter("output.mp3", 2, 44100);
+            AudioWriter writer = new AudioWriter("output.mp3", 2, 44100);
 
             // Assert — default encoder options are created via Mp3Encoder
             Assert.NotNull(writer.EncoderOptions);
@@ -254,7 +254,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void FilenameConstructor_WithCustomEncoderOptions_UsesProvidedOptions()
         {
             // Arrange
-            var customOptions = new EncoderOptions
+            EncoderOptions customOptions = new EncoderOptions
             {
                 Format = "flac",
                 EncoderName = "flac",
@@ -262,7 +262,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
             };
 
             // Act
-            var writer = new AudioWriter(
+            AudioWriter writer = new AudioWriter(
                 "output.flac", 2, 48000, 24,
                 encoderOptions: customOptions);
 
@@ -286,7 +286,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void StreamConstructor_WhenStreamIsNull_ThrowsArgumentNullException()
         {
             // Act
-            var exception = Record.Exception(() => new AudioWriter(
+            Exception exception = Record.Exception(() => new AudioWriter(
                 (Stream) null,
                 channels: 2,
                 sampleRate: 44100));
@@ -302,7 +302,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void StreamConstructor_WhenChannelsIsZero_ThrowsInvalidDataException()
         {
             // Act
-            var exception = Record.Exception(() => new AudioWriter(
+            Exception exception = Record.Exception(() => new AudioWriter(
                 new MemoryStream(),
                 channels: 0,
                 sampleRate: 44100));
@@ -318,7 +318,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void StreamConstructor_WhenSampleRateIsZero_ThrowsInvalidDataException()
         {
             // Act
-            var exception = Record.Exception(() => new AudioWriter(
+            Exception exception = Record.Exception(() => new AudioWriter(
                 new MemoryStream(),
                 channels: 2,
                 sampleRate: 0));
@@ -334,7 +334,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void StreamConstructor_WhenBitDepthIsInvalid_ThrowsInvalidOperationException()
         {
             // Act
-            var exception = Record.Exception(() => new AudioWriter(
+            Exception exception = Record.Exception(() => new AudioWriter(
                 new MemoryStream(),
                 channels: 2,
                 sampleRate: 44100,
@@ -351,7 +351,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void StreamConstructor_WithValidParameters_SetsUseFilenameFalse()
         {
             // Act
-            var writer = new AudioWriter(
+            AudioWriter writer = new AudioWriter(
                 new MemoryStream(), 2, 44100, 16);
 
             // Assert
@@ -373,7 +373,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void StreamConstructor_WithCustomEncoderOptions_UsesProvidedOptions()
         {
             // Arrange
-            var customOptions = new EncoderOptions
+            EncoderOptions customOptions = new EncoderOptions
             {
                 Format = "ogg",
                 EncoderName = "libvorbis",
@@ -381,7 +381,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
             };
 
             // Act
-            var writer = new AudioWriter(
+            AudioWriter writer = new AudioWriter(
                 new MemoryStream(), 1, 22050, 24,
                 encoderOptions: customOptions);
 
@@ -405,7 +405,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void PropertyAccessors_AllPropertiesReturnConstructorValues()
         {
             // Arrange
-            var customOptions = new EncoderOptions
+            EncoderOptions customOptions = new EncoderOptions
             {
                 Format = "mp3",
                 EncoderName = "libmp3lame",
@@ -413,11 +413,11 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
             };
 
             // Act — filename constructor
-            var fileWriter = new AudioWriter(
+            AudioWriter fileWriter = new AudioWriter(
                 "output.mp3", 2, 48000, 24, customOptions);
 
             // Act — stream constructor
-            var streamWriter = new AudioWriter(
+            AudioWriter streamWriter = new AudioWriter(
                 new MemoryStream(), 1, 96000, 32, customOptions);
 
             // Assert — file writer properties
@@ -458,10 +458,10 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void StreamConstructor_DestinationStreamProperty_ReturnsProvidedStream()
         {
             // Arrange
-            var expectedStream = new MemoryStream();
+            MemoryStream expectedStream = new MemoryStream();
 
             // Act
-            var writer = new AudioWriter(
+            AudioWriter writer = new AudioWriter(
                 expectedStream, 2, 44100);
 
             // Assert
@@ -482,8 +482,8 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void OpenedForWriting_DefaultValue_IsFalse()
         {
             // Arrange
-            var fileWriter = new AudioWriter("output.mp3", 2, 44100);
-            var streamWriter = new AudioWriter(new MemoryStream(), 2, 44100);
+            AudioWriter fileWriter = new AudioWriter("output.mp3", 2, 44100);
+            AudioWriter streamWriter = new AudioWriter(new MemoryStream(), 2, 44100);
 
             // Assert
             Assert.False(fileWriter.OpenedForWriting);
@@ -503,7 +503,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void OpenWrite_WhenNotOpenedForWriting_PropertStateIsFalse()
         {
             // Arrange
-            var writer = new AudioWriter("output.mp3", 2, 44100);
+            AudioWriter writer = new AudioWriter("output.mp3", 2, 44100);
 
             // Assert
             Assert.False(writer.OpenedForWriting);
@@ -526,10 +526,10 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void CloseWrite_WhenNotOpenedForWriting_ThrowsInvalidOperationException()
         {
             // Arrange
-            var writer = new AudioWriter("output.mp3", 2, 44100);
+            AudioWriter writer = new AudioWriter("output.mp3", 2, 44100);
 
             // Act
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert
             Assert.IsAssignableFrom<InvalidOperationException>(exception);
@@ -545,10 +545,10 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void CloseWrite_StreamBased_WhenNotOpenedForWriting_ThrowsInvalidOperationException()
         {
             // Arrange
-            var writer = new AudioWriter(new MemoryStream(), 2, 44100);
+            AudioWriter writer = new AudioWriter(new MemoryStream(), 2, 44100);
 
             // Act
-            var exception = Record.Exception(() => writer.CloseWrite());
+            Exception exception = Record.Exception(() => writer.CloseWrite());
 
             // Assert
             Assert.IsAssignableFrom<InvalidOperationException>(exception);
@@ -569,10 +569,10 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Dispose_WhenNeverOpened_NoException()
         {
             // Arrange
-            var writer = new AudioWriter("output.mp3", 2, 44100);
+            AudioWriter writer = new AudioWriter("output.mp3", 2, 44100);
 
             // Act — Dispose should not throw
-            var exception = Record.Exception(() => writer.Dispose());
+            Exception exception = Record.Exception(() => writer.Dispose());
 
             // Assert
             Assert.Null(exception);
@@ -585,10 +585,10 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Dispose_StreamBased_NoException()
         {
             // Arrange
-            var writer = new AudioWriter(new MemoryStream(), 2, 44100);
+            AudioWriter writer = new AudioWriter(new MemoryStream(), 2, 44100);
 
             // Act
-            var exception = Record.Exception(() => writer.Dispose());
+            Exception exception = Record.Exception(() => writer.Dispose());
 
             // Assert
             Assert.Null(exception);
@@ -601,12 +601,12 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Dispose_CalledMultipleTimes_NoException()
         {
             // Arrange
-            var writer = new AudioWriter("output.mp3", 2, 44100);
+            AudioWriter writer = new AudioWriter("output.mp3", 2, 44100);
 
             // Act — multiple disposals
             writer.Dispose();
-            var exception1 = Record.Exception(() => writer.Dispose());
-            var exception2 = Record.Exception(() => writer.Dispose());
+            Exception exception1 = Record.Exception(() => writer.Dispose());
+            Exception exception2 = Record.Exception(() => writer.Dispose());
 
             // Assert
             Assert.Null(exception1);
@@ -620,12 +620,12 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Dispose_StreamBased_MultipleCalls_NoException()
         {
             // Arrange
-            var writer = new AudioWriter(new MemoryStream(), 2, 44100);
+            AudioWriter writer = new AudioWriter(new MemoryStream(), 2, 44100);
 
             // Act — multiple disposals
             writer.Dispose();
-            var exception1 = Record.Exception(() => writer.Dispose());
-            var exception2 = Record.Exception(() => writer.Dispose());
+            Exception exception1 = Record.Exception(() => writer.Dispose());
+            Exception exception2 = Record.Exception(() => writer.Dispose());
 
             // Assert
             Assert.Null(exception1);

@@ -55,7 +55,7 @@ namespace Alis.Test.Core.Audio.Players
             byte[] wav = new byte[10];
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
+            bool result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
 
             // Assert
             Assert.False(result);
@@ -71,7 +71,7 @@ namespace Alis.Test.Core.Audio.Players
             byte[] wav = Array.Empty<byte>();
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
+            bool result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
 
             // Assert
             Assert.False(result);
@@ -87,7 +87,7 @@ namespace Alis.Test.Core.Audio.Players
             byte[] wav = new byte[43];
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
+            bool result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
 
             // Assert
             Assert.False(result);
@@ -108,7 +108,7 @@ namespace Alis.Test.Core.Audio.Players
             Encoding.ASCII.GetBytes("XXXX", 0, 4, wav, 0); // Not "RIFF"
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
+            bool result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
 
             // Assert
             Assert.False(result);
@@ -126,7 +126,7 @@ namespace Alis.Test.Core.Audio.Players
             Encoding.ASCII.GetBytes("XXXX", 0, 4, wav, 8); // Not "WAVE"
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
+            bool result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
 
             // Assert
             Assert.False(result);
@@ -149,7 +149,7 @@ namespace Alis.Test.Core.Audio.Players
             Encoding.ASCII.GetBytes("WAVE", 0, 4, wav, 8);
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
+            bool result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
 
             // Assert
             Assert.False(result);
@@ -169,7 +169,7 @@ namespace Alis.Test.Core.Audio.Players
             byte[] wav = BuildWavHeader(audioFormat: 6, channels: 1, sampleRate: 44100, bitsPerSample: 32);
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
+            bool result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
 
             // Assert
             Assert.False(result);
@@ -185,7 +185,7 @@ namespace Alis.Test.Core.Audio.Players
             byte[] wav = BuildWavHeader(audioFormat: 2, channels: 1, sampleRate: 44100, bitsPerSample: 16);
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
+            bool result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
 
             // Assert
             Assert.False(result);
@@ -205,7 +205,7 @@ namespace Alis.Test.Core.Audio.Players
             byte[] wav = BuildWavHeader(audioFormat: 1, channels: 1, sampleRate: 44100, bitsPerSample: 16);
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int freq, out int format);
+            bool result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int freq, out int format);
 
             // Assert
             Assert.True(result);
@@ -225,7 +225,7 @@ namespace Alis.Test.Core.Audio.Players
             byte[] wav = BuildWavHeader(audioFormat: 1, channels: 2, sampleRate: 48000, bitsPerSample: 16);
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int freq, out int format);
+            bool result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int freq, out int format);
 
             // Assert
             Assert.True(result);
@@ -245,7 +245,7 @@ namespace Alis.Test.Core.Audio.Players
             byte[] wav = BuildWavHeader(audioFormat: 1, channels: 1, sampleRate: 22050, bitsPerSample: 8);
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int freq, out int format);
+            bool result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int freq, out int format);
 
             // Assert
             Assert.True(result);
@@ -265,7 +265,7 @@ namespace Alis.Test.Core.Audio.Players
             byte[] wav = BuildWavHeader(audioFormat: 1, channels: 2, sampleRate: 16000, bitsPerSample: 8);
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int freq, out int format);
+            bool result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int freq, out int format);
 
             // Assert
             Assert.True(result);
@@ -285,7 +285,7 @@ namespace Alis.Test.Core.Audio.Players
             byte[] wav = BuildWavHeader(audioFormat: 1, channels: 8, sampleRate: 44100, bitsPerSample: 16);
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
+            bool result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
 
             // Assert
             Assert.False(result);
@@ -305,7 +305,7 @@ namespace Alis.Test.Core.Audio.Players
             byte[] wav = BuildWavHeader(audioFormat: 1, channels: 2, sampleRate: 44100, bitsPerSample: 24);
 
             // Act
-            var result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
+            bool result = BrowserPlayer.TryParseWav(wav, out _, out _, out _, out _);
 
             // Assert
             Assert.False(result);
@@ -332,7 +332,7 @@ namespace Alis.Test.Core.Audio.Players
 
             int pos = 12;
             // Act
-            var result = BrowserPlayer.FindFmtChunk(wav, ref pos);
+            int result = BrowserPlayer.FindFmtChunk(wav, ref pos);
 
             // Assert
             Assert.Equal(16, result);
@@ -362,7 +362,7 @@ namespace Alis.Test.Core.Audio.Players
 
             int pos = 12;
             // Act
-            var result = BrowserPlayer.FindFmtChunk(wav, ref pos);
+            int result = BrowserPlayer.FindFmtChunk(wav, ref pos);
 
             // Assert
             Assert.Equal(16, result);
@@ -382,7 +382,7 @@ namespace Alis.Test.Core.Audio.Players
 
             int pos = 12;
             // Act
-            var result = BrowserPlayer.FindFmtChunk(wav, ref pos);
+            int result = BrowserPlayer.FindFmtChunk(wav, ref pos);
 
             // Assert
             Assert.Equal(0, result);
@@ -401,7 +401,7 @@ namespace Alis.Test.Core.Audio.Players
 
             int pos = 12;
             // Act
-            var result = BrowserPlayer.FindFmtChunk(wav, ref pos);
+            int result = BrowserPlayer.FindFmtChunk(wav, ref pos);
 
             // Assert
             Assert.Equal(0, result);
@@ -500,7 +500,7 @@ namespace Alis.Test.Core.Audio.Players
         public void TryGetFormat_16BitMono_ReturnsMono16()
         {
             // Act
-            var result = BrowserPlayer.TryGetFormat(16, 1, out int format);
+            bool result = BrowserPlayer.TryGetFormat(16, 1, out int format);
 
             // Assert
             Assert.True(result);
@@ -514,7 +514,7 @@ namespace Alis.Test.Core.Audio.Players
         public void TryGetFormat_16BitStereo_ReturnsStereo16()
         {
             // Act
-            var result = BrowserPlayer.TryGetFormat(16, 2, out int format);
+            bool result = BrowserPlayer.TryGetFormat(16, 2, out int format);
 
             // Assert
             Assert.True(result);
@@ -528,7 +528,7 @@ namespace Alis.Test.Core.Audio.Players
         public void TryGetFormat_8BitMono_ReturnsMono8()
         {
             // Act
-            var result = BrowserPlayer.TryGetFormat(8, 1, out int format);
+            bool result = BrowserPlayer.TryGetFormat(8, 1, out int format);
 
             // Assert
             Assert.True(result);
@@ -542,7 +542,7 @@ namespace Alis.Test.Core.Audio.Players
         public void TryGetFormat_8BitStereo_ReturnsStereo8()
         {
             // Act
-            var result = BrowserPlayer.TryGetFormat(8, 2, out int format);
+            bool result = BrowserPlayer.TryGetFormat(8, 2, out int format);
 
             // Assert
             Assert.True(result);
@@ -556,9 +556,9 @@ namespace Alis.Test.Core.Audio.Players
         public void TryGetFormat_WhenUnsupportedChannelCount_ReturnsFalse()
         {
             // Act — 8-bit, 4 channels
-            var result8Bit = BrowserPlayer.TryGetFormat(8, 4, out int format8);
+            bool result8Bit = BrowserPlayer.TryGetFormat(8, 4, out int format8);
             // Act — 16-bit, 4 channels
-            var result16Bit = BrowserPlayer.TryGetFormat(16, 4, out int format16);
+            bool result16Bit = BrowserPlayer.TryGetFormat(16, 4, out int format16);
 
             // Assert
             Assert.False(result8Bit);
@@ -574,9 +574,9 @@ namespace Alis.Test.Core.Audio.Players
         public void TryGetFormat_WhenUnsupportedBitDepth_ReturnsFalse()
         {
             // Act — 24-bit mono
-            var result24Bit = BrowserPlayer.TryGetFormat(24, 1, out int format24);
+            bool result24Bit = BrowserPlayer.TryGetFormat(24, 1, out int format24);
             // Act — 32-bit stereo (not supported by BrowserPlayer)
-            var result32Bit = BrowserPlayer.TryGetFormat(32, 2, out int format32);
+            bool result32Bit = BrowserPlayer.TryGetFormat(32, 2, out int format32);
 
             // Assert
             Assert.False(result24Bit);

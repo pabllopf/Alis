@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
             {
                 count++;
             }
@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>, With<Health>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position, Health>())
+            foreach (GameObjectRefTuple<Position, Health> _ in query.EnumerateWithEntities<Position, Health>())
             {
                 count++;
             }
@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>, With<Health>, With<Velocity>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position, Health, Velocity>())
+            foreach (GameObjectRefTuple<Position, Health, Velocity> _ in query.EnumerateWithEntities<Position, Health, Velocity>())
             {
                 count++;
             }
@@ -110,7 +110,7 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position, Health, Velocity, Armor>())
+            foreach (GameObjectRefTuple<Position, Health, Velocity, Armor> _ in query.EnumerateWithEntities<Position, Health, Velocity, Armor>())
             {
                 count++;
             }
@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>, With<Damage>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position, Health, Velocity, Armor, Damage>())
+            foreach (GameObjectRefTuple<Position, Health, Velocity, Armor, Damage> _ in query.EnumerateWithEntities<Position, Health, Velocity, Armor, Damage>())
             {
                 count++;
             }
@@ -159,7 +159,7 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>, With<Damage>, With<EnemyTag>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position, Health, Velocity, Armor, Damage, EnemyTag>())
+            foreach (GameObjectRefTuple<Position, Health, Velocity, Armor, Damage, EnemyTag> _ in query.EnumerateWithEntities<Position, Health, Velocity, Armor, Damage, EnemyTag>())
             {
                 count++;
             }
@@ -185,7 +185,7 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position, Health, Velocity, Armor, Damage, EnemyTag, PlayerTag>())
+            foreach (GameObjectRefTuple<Position, Health, Velocity, Armor, Damage, EnemyTag, PlayerTag> _ in query.EnumerateWithEntities<Position, Health, Velocity, Armor, Damage, EnemyTag, PlayerTag>())
             {
                 count++;
             }
@@ -212,7 +212,7 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>, With<Health>, With<Velocity>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>, With<TagComponent>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position, Health, Velocity, Armor, Damage, EnemyTag, PlayerTag, TagComponent>())
+            foreach (GameObjectRefTuple<Position, Health, Velocity, Armor, Damage, EnemyTag, PlayerTag, TagComponent> _ in query.EnumerateWithEntities<Position, Health, Velocity, Armor, Damage, EnemyTag, PlayerTag, TagComponent>())
             {
                 count++;
             }

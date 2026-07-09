@@ -59,18 +59,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Attributes
             if (NativeLibrary.TryLoad(name, out _))
                 return true;
 
-            var assemblyDir = Path.GetDirectoryName(typeof(RequireCSfmlAudioFactAttribute).Assembly.Location);
+            string assemblyDir = Path.GetDirectoryName(typeof(RequireCSfmlAudioFactAttribute).Assembly.Location);
             if (assemblyDir == null)
                 return false;
 
-            var candidates = new[]
+            string[] candidates = new[]
             {
                 Path.Combine(assemblyDir, name),
                 Path.Combine(assemblyDir, "lib" + name),
                 Path.Combine(assemblyDir, "lib" + name + ".dylib")
             };
 
-            foreach (var candidate in candidates)
+            foreach (string candidate in candidates)
             {
                 if (File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
                     return true;

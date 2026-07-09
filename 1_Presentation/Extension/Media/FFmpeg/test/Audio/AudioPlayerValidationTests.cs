@@ -53,7 +53,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void DefaultConstructor_SetsDefaults()
         {
             // Act
-            var player = new AudioPlayer();
+            AudioPlayer player = new AudioPlayer();
 
             // Assert
             Assert.Null(player.Filename);
@@ -69,7 +69,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Constructor_WithInputFilename_SetsFilename()
         {
             // Act
-            var player = new AudioPlayer("input.wav");
+            AudioPlayer player = new AudioPlayer("input.wav");
 
             // Assert
             Assert.Equal("input.wav", player.Filename);
@@ -85,7 +85,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Constructor_WithCustomFfplayPath_SetsFfplayExecutable()
         {
             // Act
-            var player = new AudioPlayer("input.wav", "/usr/local/bin/ffplay-custom");
+            AudioPlayer player = new AudioPlayer("input.wav", "/usr/local/bin/ffplay-custom");
 
             // Assert
             Assert.Equal("input.wav", player.Filename);
@@ -106,10 +106,10 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Dispose_WhenProcessNeverStarted_NoException()
         {
             // Arrange
-            var player = new AudioPlayer("input.wav");
+            AudioPlayer player = new AudioPlayer("input.wav");
 
             // Act — Dispose should not throw
-            var exception = Record.Exception(() => player.Dispose());
+            Exception exception = Record.Exception(() => player.Dispose());
 
             // Assert
             Assert.Null(exception);
@@ -124,10 +124,10 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         {
             // Arrange — we can't easily simulate a running process without FFmpeg,
             // but we verify that Dispose handles the case where ffplayp is null.
-            var player = new AudioPlayer();
+            AudioPlayer player = new AudioPlayer();
 
             // Act
-            var exception = Record.Exception(() => player.Dispose());
+            Exception exception = Record.Exception(() => player.Dispose());
 
             // Assert
             Assert.Null(exception);
@@ -140,12 +140,12 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Dispose_CalledMultipleTimes_NoException()
         {
             // Arrange
-            var player = new AudioPlayer("input.wav");
+            AudioPlayer player = new AudioPlayer("input.wav");
 
             // Act — multiple disposals
             player.Dispose();
-            var exception1 = Record.Exception(() => player.Dispose());
-            var exception2 = Record.Exception(() => player.Dispose());
+            Exception exception1 = Record.Exception(() => player.Dispose());
+            Exception exception2 = Record.Exception(() => player.Dispose());
 
             // Assert
             Assert.Null(exception1);
@@ -164,10 +164,10 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Play_WhenNoFilenameSpecified_ThrowsInvalidOperationException()
         {
             // Arrange
-            var player = new AudioPlayer(); // no filename
+            AudioPlayer player = new AudioPlayer(); // no filename
 
             // Act
-            var exception = Record.Exception(() => player.Play());
+            Exception exception = Record.Exception(() => player.Play());
 
             // Assert
             Assert.IsAssignableFrom<InvalidOperationException>(exception);
@@ -185,7 +185,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         {
             // Arrange — we can't actually call OpenWrite without FFmpeg, but we verify that
             // a fresh player has OpenedForWriting = false and Filename set.
-            var player = new AudioPlayer("input.wav");
+            AudioPlayer player = new AudioPlayer("input.wav");
 
             // Assert — not opened yet
             Assert.False(player.OpenedForWriting);
@@ -202,7 +202,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void Play_AcceptsExtraParametersAndShowWindowFlag()
         {
             // Arrange
-            var player = new AudioPlayer("input.wav");
+            AudioPlayer player = new AudioPlayer("input.wav");
 
             // Assert — properties are set
             Assert.Equal("input.wav", player.Filename);
@@ -224,10 +224,10 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void PlayInBackground_WhenNoFilenameSpecified_ThrowsInvalidOperationException()
         {
             // Arrange
-            var player = new AudioPlayer(); // no filename
+            AudioPlayer player = new AudioPlayer(); // no filename
 
             // Act
-            var exception = Record.Exception(() => player.PlayInBackground());
+            Exception exception = Record.Exception(() => player.PlayInBackground());
 
             // Assert
             Assert.IsAssignableFrom<InvalidOperationException>(exception);
@@ -244,7 +244,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void PlayInBackground_WhenNotRunPureBackgroundAndAlreadyOpened_ThrowsInvalidOperationException()
         {
             // Arrange — we can't actually open without FFmpeg, but verify the state.
-            var player = new AudioPlayer("input.wav");
+            AudioPlayer player = new AudioPlayer("input.wav");
 
             // Assert
             Assert.False(player.OpenedForWriting);
@@ -265,12 +265,12 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void OpenWrite_WhenBitDepthIsInvalid_ThrowsInvalidOperationException()
         {
             // Arrange
-            var player = new AudioPlayer("input.wav");
+            AudioPlayer player = new AudioPlayer("input.wav");
 
             // Act — 8-bit depth
-            var exception8Bit = Record.Exception(() => player.OpenWrite(44100, 2, 8));
+            Exception exception8Bit = Record.Exception(() => player.OpenWrite(44100, 2, 8));
             // Act — 20-bit depth
-            var exception20Bit = Record.Exception(() => player.OpenWrite(44100, 2, 20));
+            Exception exception20Bit = Record.Exception(() => player.OpenWrite(44100, 2, 20));
 
             // Assert
             Assert.IsAssignableFrom<InvalidOperationException>(exception8Bit);
@@ -288,7 +288,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void OpenWrite_WhenAlreadyOpenedForWriting_ThrowsInvalidOperationException()
         {
             // Arrange — verify fresh player is not opened.
-            var player = new AudioPlayer("input.wav");
+            AudioPlayer player = new AudioPlayer("input.wav");
 
             // Assert
             Assert.False(player.OpenedForWriting);
@@ -309,10 +309,10 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         public void CloseWrite_WhenNotOpenedForWriting_ThrowsInvalidOperationException()
         {
             // Arrange
-            var player = new AudioPlayer("input.wav");
+            AudioPlayer player = new AudioPlayer("input.wav");
 
             // Act
-            var exception = Record.Exception(() => player.CloseWrite());
+            Exception exception = Record.Exception(() => player.CloseWrite());
 
             // Assert
             Assert.IsAssignableFrom<InvalidOperationException>(exception);

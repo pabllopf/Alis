@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.ConvexHull;
@@ -146,7 +147,7 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
         [Fact]
         public void GetConvexHull_WithManyPoints_OnCircleProducesFullHull()
         {
-            var circlePoints = new System.Collections.Generic.List<Vector2F>();
+            List<Vector2F> circlePoints = new System.Collections.Generic.List<Vector2F>();
             for (int i = 0; i < 20; i++)
             {
                 double angle = 2.0 * Math.PI * i / 20;
@@ -169,7 +170,7 @@ namespace Alis.Core.Physic.Test.Common.ConvexHull
             // A flower-shaped concave polygon with 80 points.
             // The inward lobes cause front and back deque pops,
             // exercising the full PopDequeFront and PopDequeBack paths.
-            var points = new System.Collections.Generic.List<Vector2F>();
+            List<Vector2F> points = new System.Collections.Generic.List<Vector2F>();
             int count = 80;
             for (int i = 0; i < count; i++)
             {

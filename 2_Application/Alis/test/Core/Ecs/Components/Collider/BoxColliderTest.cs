@@ -501,7 +501,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Body is null by default, so OnUpdate should check Body != null and return early
             // This test verifies the null body branch is covered
-            var exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
 
             // The method should handle null Body gracefully without throwing
             Assert.Null(exception);
@@ -533,7 +533,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             collider.Context = new Context();
 
             // Act - This will throw NullReferenceException from the mock's Get<Transform>() call
-            var exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
+            Exception exception = Record.Exception(() => collider.OnUpdate(mockGameObject.Object));
 
             // Assert - The exception is from the mock, not from BoxCollider's null check
             // This test documents that the Body != null branch exists but requires more complex mocking

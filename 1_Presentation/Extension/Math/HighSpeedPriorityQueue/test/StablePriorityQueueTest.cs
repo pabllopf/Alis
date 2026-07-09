@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
@@ -166,7 +167,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         public void Dequeue_WithManyNodes_TriggersCascadeDownWithRightChild()
         {
             StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(20);
-            var nodes = new StablePriorityQueueNode[5];
+            StablePriorityQueueNode[] nodes = new StablePriorityQueueNode[5];
             for (int i = 0; i < 5; i++)
             {
                 nodes[i] = new StablePriorityQueueNode();
@@ -189,14 +190,14 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         public void Enqueue_WithDecreasingPriority_TriggersMultiLevelCascadeUp()
         {
             StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(20);
-            var n1 = new StablePriorityQueueNode();
-            var n2 = new StablePriorityQueueNode();
-            var n3 = new StablePriorityQueueNode();
+            StablePriorityQueueNode n1 = new StablePriorityQueueNode();
+            StablePriorityQueueNode n2 = new StablePriorityQueueNode();
+            StablePriorityQueueNode n3 = new StablePriorityQueueNode();
             queue.Enqueue(n1, 10);
             queue.Enqueue(n2, 20);
             queue.Enqueue(n3, 30);
 
-            var highPriority = new StablePriorityQueueNode();
+            StablePriorityQueueNode highPriority = new StablePriorityQueueNode();
             queue.Enqueue(highPriority, 1);
 
             Assert.Same(highPriority, queue.First);
@@ -209,7 +210,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         public void ResetNode_SetsQueueIndexToZero()
         {
             StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(10);
-            var node = new StablePriorityQueueNode();
+            StablePriorityQueueNode node = new StablePriorityQueueNode();
             queue.Enqueue(node, 1);
             Assert.NotEqual(0, node.QueueIndex);
 
@@ -224,14 +225,14 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         public void Enumerator_IteratesAllNodes()
         {
             StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(10);
-            var node1 = new StablePriorityQueueNode();
-            var node2 = new StablePriorityQueueNode();
-            var node3 = new StablePriorityQueueNode();
+            StablePriorityQueueNode node1 = new StablePriorityQueueNode();
+            StablePriorityQueueNode node2 = new StablePriorityQueueNode();
+            StablePriorityQueueNode node3 = new StablePriorityQueueNode();
             queue.Enqueue(node1, 3);
             queue.Enqueue(node3, 1);
             queue.Enqueue(node2, 2);
 
-            var collected = new System.Collections.Generic.List<StablePriorityQueueNode>();
+            List<StablePriorityQueueNode> collected = new System.Collections.Generic.List<StablePriorityQueueNode>();
             foreach (StablePriorityQueueNode node in queue)
             {
                 collected.Add(node);
@@ -248,7 +249,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         public void UpdatePriority_OnRootNode_SkipsCascadeUp()
         {
             StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(10);
-            var node = new StablePriorityQueueNode();
+            StablePriorityQueueNode node = new StablePriorityQueueNode();
             queue.Enqueue(node, 1);
             queue.UpdatePriority(node, 100);
             Assert.Same(node, queue.First);
@@ -261,8 +262,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         public void Remove_LastNode_TakesO1Path()
         {
             StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(10);
-            var node1 = new StablePriorityQueueNode();
-            var node2 = new StablePriorityQueueNode();
+            StablePriorityQueueNode node1 = new StablePriorityQueueNode();
+            StablePriorityQueueNode node2 = new StablePriorityQueueNode();
             queue.Enqueue(node1, 1);
             queue.Enqueue(node2, 2);
 
@@ -278,8 +279,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         public void Enqueue_SamePriority_RespectsInsertionOrder()
         {
             StablePriorityQueue<StablePriorityQueueNode> queue = new StablePriorityQueue<StablePriorityQueueNode>(10);
-            var first = new StablePriorityQueueNode();
-            var second = new StablePriorityQueueNode();
+            StablePriorityQueueNode first = new StablePriorityQueueNode();
+            StablePriorityQueueNode second = new StablePriorityQueueNode();
             queue.Enqueue(first, 5);
             queue.Enqueue(second, 5);
 

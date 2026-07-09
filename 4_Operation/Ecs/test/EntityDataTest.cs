@@ -443,7 +443,7 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_CanBeUsedAsDictionaryKey()
         {
-            var lookup = new Dictionary<EntityData, string>();
+            Dictionary<EntityData, string> lookup = new Dictionary<EntityData, string>();
 
             EntityData key1 = new EntityData { EntityID = 1, EntityVersion = 1, WorldID = 1 };
             EntityData key2 = new EntityData { EntityID = 2, EntityVersion = 1, WorldID = 1 };
@@ -467,7 +467,7 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_CanBeUsedInHashSet()
         {
-            var set = new HashSet<EntityData>();
+            HashSet<EntityData> set = new HashSet<EntityData>();
 
             EntityData e1 = new EntityData { EntityID = 1, EntityVersion = 1, WorldID = 1 };
             EntityData e2 = new EntityData { EntityID = 2, EntityVersion = 1, WorldID = 1 };
@@ -519,7 +519,7 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void EntityData_WorksCorrectlyWithList()
         {
-            var list = new List<EntityData>();
+            List<EntityData> list = new List<EntityData>();
 
             for (int i = 0; i < 50; i++)
             {

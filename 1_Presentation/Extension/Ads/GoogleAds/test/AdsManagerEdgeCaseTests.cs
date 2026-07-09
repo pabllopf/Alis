@@ -63,7 +63,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void ShowBannerAd_WhenNotInitialized_ShouldNotThrow()
         {
             // Act
-            var exception = Record.Exception(() => _adsManager.ShowBannerAd());
+            Exception exception = Record.Exception(() => _adsManager.ShowBannerAd());
 
             // Assert
             Assert.Null(exception);
@@ -77,7 +77,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void HideBannerAd_WhenNotInitialized_ShouldNotThrow()
         {
             // Act
-            var exception = Record.Exception(() => _adsManager.HideBannerAd());
+            Exception exception = Record.Exception(() => _adsManager.HideBannerAd());
 
             // Assert
             Assert.Null(exception);
@@ -91,7 +91,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void ShowInterstitialAd_WhenNotInitialized_ShouldNotThrow()
         {
             // Act
-            var exception = Record.Exception(() => _adsManager.ShowInterstitialAd());
+            Exception exception = Record.Exception(() => _adsManager.ShowInterstitialAd());
 
             // Assert
             Assert.Null(exception);
@@ -105,7 +105,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void ShowRewardedVideoAd_WhenNotInitialized_ShouldNotThrow()
         {
             // Act
-            var exception = Record.Exception(() => _adsManager.ShowRewardedVideoAd());
+            Exception exception = Record.Exception(() => _adsManager.ShowRewardedVideoAd());
 
             // Assert
             Assert.Null(exception);
@@ -120,11 +120,11 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         {
             // Arrange
             // Simulate initialized state without loading banner ad
-            var config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
+            AdConfiguration config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
             _adsManager.InitializeAsync(config).Wait();
 
             // Act
-            var exception = Record.Exception(() => _adsManager.ShowBannerAd());
+            Exception exception = Record.Exception(() => _adsManager.ShowBannerAd());
 
             // Assert
             Assert.Null(exception);
@@ -138,11 +138,11 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void ShowInterstitialAd_WhenNotLoaded_ShouldNotThrow()
         {
             // Arrange
-            var config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
+            AdConfiguration config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
             _adsManager.InitializeAsync(config).Wait();
 
             // Act
-            var exception = Record.Exception(() => _adsManager.ShowInterstitialAd());
+            Exception exception = Record.Exception(() => _adsManager.ShowInterstitialAd());
 
             // Assert
             Assert.Null(exception);
@@ -156,11 +156,11 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void ShowRewardedVideoAd_WhenNotLoaded_ShouldNotThrow()
         {
             // Arrange
-            var config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
+            AdConfiguration config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
             _adsManager.InitializeAsync(config).Wait();
 
             // Act
-            var exception = Record.Exception(() => _adsManager.ShowRewardedVideoAd());
+            Exception exception = Record.Exception(() => _adsManager.ShowRewardedVideoAd());
 
             // Assert
             Assert.Null(exception);
@@ -174,7 +174,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async System.Threading.Tasks.Task InitializeAsync_WithNullConfiguration_ShouldThrowArgumentNullException()
         {
             // Act & Assert
-            var exception = await Record.ExceptionAsync(() => _adsManager.InitializeAsync(null));
+            Exception exception = await Record.ExceptionAsync(() => _adsManager.InitializeAsync(null));
             Assert.NotNull(exception);
             Assert.IsType<ArgumentNullException>(exception);
         }
@@ -187,10 +187,10 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async System.Threading.Tasks.Task InitializeAsync_WithEmptyAppId_ShouldThrowArgumentException()
         {
             // Arrange
-            var config = new AdConfiguration { AppId = string.Empty };
+            AdConfiguration config = new AdConfiguration { AppId = string.Empty };
 
             // Act & Assert
-            var exception = await Record.ExceptionAsync(() => _adsManager.InitializeAsync(config));
+            Exception exception = await Record.ExceptionAsync(() => _adsManager.InitializeAsync(config));
             Assert.NotNull(exception);
         }
 
@@ -202,10 +202,10 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async System.Threading.Tasks.Task InitializeAsync_WithNullAppId_ShouldThrowArgumentException()
         {
             // Arrange
-            var config = new AdConfiguration { AppId = null };
+            AdConfiguration config = new AdConfiguration { AppId = null };
 
             // Act & Assert
-            var exception = await Record.ExceptionAsync(() => _adsManager.InitializeAsync(config));
+            Exception exception = await Record.ExceptionAsync(() => _adsManager.InitializeAsync(config));
             Assert.NotNull(exception);
         }
 
@@ -261,7 +261,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void HideBannerAd_ShouldSetVisibilityToFalse()
         {
             // Arrange
-            var config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
+            AdConfiguration config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
             _adsManager.InitializeAsync(config).Wait();
 
             // Act
@@ -280,7 +280,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void ShowBannerAd_WhenAdLoaded_ShouldSetVisibilityToTrue()
         {
             // Arrange
-            var config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
+            AdConfiguration config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
             _adsManager.InitializeAsync(config).Wait();
 
             // Load banner ad
@@ -302,7 +302,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void ShowInterstitialAd_ShouldInvokeOnAdClicked()
         {
             // Arrange
-            var config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
+            AdConfiguration config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
             _adsManager.InitializeAsync(config).Wait();
 
             string clickedAdType = null;
@@ -326,7 +326,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void ShowRewardedVideoAd_ShouldInvokeEvents()
         {
             // Arrange
-            var config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
+            AdConfiguration config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
             _adsManager.InitializeAsync(config).Wait();
 
             string clickedAdType = null;
@@ -354,8 +354,8 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void Dispose_WhenInitialized_ShouldInvokeOnAdClosed()
         {
             // Arrange
-            var config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
-            var testManager = new AdsManager(_context);
+            AdConfiguration config = new AdConfiguration { AppId = "test_app_id", IsEnabled = true };
+            AdsManager testManager = new AdsManager(_context);
             testManager.InitializeAsync(config).Wait();
 
             string closedAdType = null;
@@ -376,7 +376,7 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public void Dispose_WhenNotInitialized_ShouldNotInvokeOnAdClosed()
         {
             // Arrange
-            var testManager = new AdsManager(_context);
+            AdsManager testManager = new AdsManager(_context);
 
             string closedAdType = null;
             testManager.OnAdClosed += adType => closedAdType = adType;

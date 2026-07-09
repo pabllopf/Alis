@@ -52,21 +52,21 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// </summary>
         static CircleShapeTest()
         {
-            var assemblyDir = Path.GetDirectoryName(typeof(CircleShapeTest).Assembly.Location) ?? string.Empty;
-            var libDir = Path.Combine(assemblyDir, "lib");
+            string assemblyDir = Path.GetDirectoryName(typeof(CircleShapeTest).Assembly.Location) ?? string.Empty;
+            string libDir = Path.Combine(assemblyDir, "lib");
 
             if (Directory.Exists(libDir))
             {
-                foreach (var libFile in Directory.GetFiles(libDir, "libcsfml-*.dylib"))
+                foreach (string libFile in Directory.GetFiles(libDir, "libcsfml-*.dylib"))
                 {
-                    var name = Path.GetFileNameWithoutExtension(Path.GetFileName(libFile));
+                    string name = Path.GetFileNameWithoutExtension(Path.GetFileName(libFile));
                     // Strip "lib" prefix for NativeLibrary.Load
                     if (name.StartsWith("lib", StringComparison.Ordinal))
                         name = name[3..];
                     NativeLibrary.Load(Path.Combine(libDir, Path.GetFileName(libFile)));
                 }
 
-                foreach (var libFile in Directory.GetFiles(libDir, "sfml-*.dylib"))
+                foreach (string libFile in Directory.GetFiles(libDir, "sfml-*.dylib"))
                 {
                     NativeLibrary.Load(Path.Combine(libDir, Path.GetFileName(libFile)));
                 }
@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Constructor_WithRadius_ShouldSetRadius()
         {
             // Arrange & Act
-            var shape = new CircleShape(50f);
+            CircleShape shape = new CircleShape(50f);
 
             // Assert
             Assert.Equal(50f, shape.Radius);
@@ -150,7 +150,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Constructor_WithRadius_ShouldUseDefaultPointCount()
         {
             // Arrange & Act
-            var shape = new CircleShape(50f);
+            CircleShape shape = new CircleShape(50f);
 
             // Assert
             Assert.Equal(30u, shape.GetPointCount());
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Constructor_WithRadiusAndPointCount_ShouldSetBothValues()
         {
             // Arrange & Act
-            var shape = new CircleShape(100f, 60u);
+            CircleShape shape = new CircleShape(100f, 60u);
 
             // Assert
             Assert.Equal(100f, shape.Radius);
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Constructor_WithCustomPointCount_ShouldReturnCorrectCount()
         {
             // Arrange & Act
-            var shape = new CircleShape(25f, 120u);
+            CircleShape shape = new CircleShape(25f, 120u);
 
             // Assert
             Assert.Equal(120u, shape.GetPointCount());
@@ -199,8 +199,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void CopyConstructor_ShouldCopyRadiusAndPointCount()
         {
             // Arrange
-            var original = new CircleShape(75f, 45u);
-            var copy = new CircleShape(original);
+            CircleShape original = new CircleShape(75f, 45u);
+            CircleShape copy = new CircleShape(original);
 
             // Assert
             Assert.Equal(original.Radius, copy.Radius);
@@ -218,8 +218,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void CopyConstructor_ModifyOriginal_ShouldNotAffectCopy()
         {
             // Arrange
-            var original = new CircleShape(75f, 45u);
-            var copy = new CircleShape(original);
+            CircleShape original = new CircleShape(75f, 45u);
+            CircleShape copy = new CircleShape(original);
             original.Radius = 100f;
             original.SetPointCount(60u);
 
@@ -269,7 +269,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void GetPoint_Index0_WithRadius50_ShouldBeApproximatelyRadiusZero()
         {
             // Arrange
-            var shape = new CircleShape(50f, 30u);
+            CircleShape shape = new CircleShape(50f, 30u);
 
             // Act
             Vector2F point = shape.GetPoint(0);
@@ -292,7 +292,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void GetPoint_IndexAtTop_ShouldBeApproximatelyRadiusDoubleY()
         {
             // Arrange - pointCount=30, index=15 is at angle π/2 (top)
-            var shape = new CircleShape(50f, 30u);
+            CircleShape shape = new CircleShape(50f, 30u);
 
             // Act
             Vector2F point = shape.GetPoint(15);
@@ -316,7 +316,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             // Arrange
             const float radius = 100f;
             const uint pointCount = 60u;
-            var shape = new CircleShape(radius, pointCount);
+            CircleShape shape = new CircleShape(radius, pointCount);
 
             // Act
             Vector2F point = shape.GetPoint(0);
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             // Arrange - pointCount=30, index=22 is near angle 29π/30 ≈ bottom-left area
             // For a cleaner test, use index that gives angle close to π (bottom)
             // angle = index * 2π/30 - π/2 = π → index = 45/2 = 22.5, so index 22 or 23
-            var shape = new CircleShape(50f, 30u);
+            CircleShape shape = new CircleShape(50f, 30u);
 
             // Act - index 23: angle = 23*2π/30 - π/2 = 46π/30 - 15π/30 = 31π/30
             Vector2F point = shape.GetPoint(23);
@@ -364,7 +364,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void GetPoint_Index7_WithRadius50_ShouldBeNearRightSide()
         {
             // Arrange
-            var shape = new CircleShape(50f, 30u);
+            CircleShape shape = new CircleShape(50f, 30u);
 
             // Act - index 7: angle = 7*2π/30 - π/2 = 14π/30 - 15π/30 = -π/30
             Vector2F point = shape.GetPoint(7);
@@ -415,9 +415,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void MultipleInstances_ShouldWorkIndependently()
         {
             // Arrange & Act
-            var shape1 = new CircleShape(50f, 30u);
-            var shape2 = new CircleShape(100f, 60u);
-            var shape3 = new CircleShape(25f, 15u);
+            CircleShape shape1 = new CircleShape(50f, 30u);
+            CircleShape shape2 = new CircleShape(100f, 60u);
+            CircleShape shape3 = new CircleShape(25f, 15u);
 
             // Assert
             Assert.Equal(50f, shape1.Radius);
@@ -440,7 +440,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Destroy_WithDisposingTrue_ShouldNotThrow()
         {
             // Arrange
-            var shape = new CircleShape(50f, 30u);
+            CircleShape shape = new CircleShape(50f, 30u);
 
             // Act & Assert
             Exception? exception = Record.Exception(() => shape.Destroy(true));
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Destroy_WithDisposingFalse_ShouldNotThrow()
         {
             // Arrange
-            var shape = new CircleShape(50f, 30u);
+            CircleShape shape = new CircleShape(50f, 30u);
 
             // Act & Assert
             Exception? exception = Record.Exception(() => shape.Destroy(false));
@@ -472,7 +472,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void FullLifecycle_ShouldWorkCorrectly()
         {
             // Arrange & Act - Create with initial values
-            var shape = new CircleShape(50f, 30u);
+            CircleShape shape = new CircleShape(50f, 30u);
 
             // Read initial state
             float initialRadius = shape.Radius;
@@ -510,7 +510,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void GetPoint_ZeroRadius_ShouldReturnZeroVector()
         {
             // Arrange
-            var shape = new CircleShape(0f, 30u);
+            CircleShape shape = new CircleShape(0f, 30u);
 
             // Act
             Vector2F point = shape.GetPoint(15);
@@ -530,7 +530,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void GetPoint_Deterministic_ShouldReturnSameResult()
         {
             // Arrange
-            var shape = new CircleShape(50f, 30u);
+            CircleShape shape = new CircleShape(50f, 30u);
 
             // Act
             Vector2F point1 = shape.GetPoint(10);

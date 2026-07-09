@@ -151,7 +151,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             int initialCount = scene.EntityCount;
 
             // Add components to some entities to trigger archetype transitions
-            var query = scene.Query<With<Position>>();
+            Query query = scene.Query<With<Position>>();
             int addedCount = 0;
             foreach (GameObject entity in query.EnumerateWithEntities())
             {
@@ -446,7 +446,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             }
 
             // Add components to trigger archetype transitions and potential buffer resizing
-            var query = scene.Query<With<Position>>();
+            Query query = scene.Query<With<Position>>();
             int addedCount = 0;
             foreach (GameObject entity in query.EnumerateWithEntities())
             {

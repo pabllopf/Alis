@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
+using Alis.Core.Physic.Dynamics;
 using Xunit;
 
 namespace Alis.Test
@@ -237,7 +238,7 @@ namespace Alis.Test
         [Fact]
         public void Constructor_WithSettings_ShouldInitializeAllProperties()
         {
-            var settings = new BoxCollider.BoxColliderSettings(
+            BoxCollider.BoxColliderSettings settings = new BoxCollider.BoxColliderSettings(
                 IsTrigger: true,
                 Width: 15,
                 Height: 25,
@@ -278,7 +279,7 @@ namespace Alis.Test
         public void SizeOfTexture_Property_ShouldAllowGetAndSet()
         {
             BoxCollider collider = new BoxCollider();
-            var testSize = new Vector2F(100, 100);
+            Vector2F testSize = new Vector2F(100, 100);
 
             collider.SizeOfTexture = testSize;
 
@@ -292,7 +293,7 @@ namespace Alis.Test
         public void Body_Property_ShouldAllowGetAndSet()
         {
             BoxCollider collider = new BoxCollider();
-            var mockBody = new Alis.Core.Physic.Dynamics.Body();
+            Body mockBody = new Alis.Core.Physic.Dynamics.Body();
 
             collider.Body = mockBody;
 

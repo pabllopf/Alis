@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Audio.Models;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -184,7 +185,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void ResolveBitDepth_ShouldSet16BitFor16BitFormat()
         {
-            var metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
+            AudioMetadata metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = "s16le"
@@ -201,7 +202,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void ResolveBitDepth_ShouldSet32BitFor32BitFormat()
         {
-            var metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
+            AudioMetadata metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = "s32le"
@@ -218,7 +219,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void ResolveBitDepth_ShouldSet64BitFor64BitFormat()
         {
-            var metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
+            AudioMetadata metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = "s64le"
@@ -235,7 +236,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void ResolveBitDepth_ShouldHandleUnknownFormats()
         {
-            var metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
+            AudioMetadata metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = "unknown_format"
@@ -253,7 +254,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void ResolveBitDepth_ShouldNotModifyAlreadySetBitDepth()
         {
-            var metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
+            AudioMetadata metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
             {
                 BitDepth = 24,
                 SampleFormat = "s16le"
@@ -271,7 +272,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void ResolveBitDepth_ShouldHandleNullSampleFormat()
         {
-            var metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
+            AudioMetadata metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = null
@@ -289,7 +290,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void ResolveBitDepth_ShouldHandleEmptySampleFormat()
         {
-            var metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
+            AudioMetadata metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
             {
                 BitDepth = 0,
                 SampleFormat = ""

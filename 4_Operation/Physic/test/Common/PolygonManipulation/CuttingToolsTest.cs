@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Common;
@@ -79,7 +80,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void SplitShape_MethodSignatureShouldBeCorrect()
         {
-            var method = typeof(CuttingTools).GetMethod("SplitShape");
+            MethodInfo method = typeof(CuttingTools).GetMethod("SplitShape");
             Assert.NotNull(method);
             Assert.True(method!.IsStatic);
             Assert.Equal(typeof(void), method.ReturnType);
@@ -91,7 +92,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Cut_MethodSignatureShouldBeCorrect()
         {
-            var method = typeof(CuttingTools).GetMethod("Cut");
+            MethodInfo method = typeof(CuttingTools).GetMethod("Cut");
             Assert.NotNull(method);
             Assert.True(method!.IsStatic);
             Assert.Equal(typeof(bool), method.ReturnType);
@@ -103,8 +104,8 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Cut_ParametersShouldBeCorrect()
         {
-            var method = typeof(CuttingTools).GetMethod("Cut")!;
-            var parameters = method.GetParameters();
+            MethodInfo method = typeof(CuttingTools).GetMethod("Cut")!;
+            ParameterInfo[] parameters = method.GetParameters();
 
             Assert.Equal(3, parameters.Length);
             Assert.Equal("worldPhysic", parameters[0].Name);
@@ -118,7 +119,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Vector2F_ShouldBeAccessible()
         {
-            var vector = new Vector2F(1.0f, 2.0f);
+            Vector2F vector = new Vector2F(1.0f, 2.0f);
             Assert.Equal(1.0f, vector.X);
             Assert.Equal(2.0f, vector.Y);
         }
@@ -129,14 +130,14 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Vector2F_OperationsShouldWork()
         {
-            var v1 = new Vector2F(3.0f, 4.0f);
-            var v2 = new Vector2F(1.0f, 2.0f);
+            Vector2F v1 = new Vector2F(3.0f, 4.0f);
+            Vector2F v2 = new Vector2F(1.0f, 2.0f);
 
-            var sum = v1 + v2;
+            Vector2F sum = v1 + v2;
             Assert.Equal(4.0f, sum.X);
             Assert.Equal(6.0f, sum.Y);
 
-            var diff = v1 - v2;
+            Vector2F diff = v1 - v2;
             Assert.Equal(2.0f, diff.X);
             Assert.Equal(2.0f, diff.Y);
         }
@@ -147,9 +148,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Vector2F_EqualityShouldWork()
         {
-            var v1 = new Vector2F(1.0f, 2.0f);
-            var v2 = new Vector2F(1.0f, 2.0f);
-            var v3 = new Vector2F(1.0f, 3.0f);
+            Vector2F v1 = new Vector2F(1.0f, 2.0f);
+            Vector2F v2 = new Vector2F(1.0f, 2.0f);
+            Vector2F v3 = new Vector2F(1.0f, 3.0f);
 
             Assert.True(v1.Equals(v2));
             Assert.False(v1.Equals(v3));
@@ -161,7 +162,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void PolygonShape_ShouldBeInstantiable()
         {
-            var vertices = new Vertices
+            Vertices vertices = new Vertices
             {
                 new(0, 0),
                 new(1, 0),
@@ -169,7 +170,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
                 new(0, 1)
             };
 
-            var shape = new PolygonShape(vertices, 1.0f);
+            PolygonShape shape = new PolygonShape(vertices, 1.0f);
             Assert.NotNull(shape);
         }
 
@@ -179,7 +180,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Vertices_CollectionShouldWork()
         {
-            var vertices = new Vertices();
+            Vertices vertices = new Vertices();
             Assert.NotNull(vertices);
             Assert.Equal(0, vertices.Count);
 
@@ -196,7 +197,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void WorldPhysic_ShouldBeCreateable()
         {
-            var world = new WorldPhysic(new Vector2F(0, -9.81f));
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -9.81f));
             Assert.NotNull(world);
         }
 
@@ -225,13 +226,13 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Vector2F_DotProductShouldWork()
         {
-            var v1 = new Vector2F(1, 0);
-            var v2 = new Vector2F(0, 1);
+            Vector2F v1 = new Vector2F(1, 0);
+            Vector2F v2 = new Vector2F(0, 1);
 
             float dot = Vector2F.Dot(v1, v2);
             Assert.Equal(0.0f, dot);
 
-            var v3 = new Vector2F(1, 1);
+            Vector2F v3 = new Vector2F(1, 1);
             dot = Vector2F.Dot(v3, v3);
             Assert.Equal(2.0f, dot);
         }
@@ -242,8 +243,8 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Vector2F_CrossProductShouldWork()
         {
-            var v1 = new Vector2F(1, 0);
-            var v2 = new Vector2F(0, 1);
+            Vector2F v1 = new Vector2F(1, 0);
+            Vector2F v2 = new Vector2F(0, 1);
 
             float cross = MathUtils.Cross(v1, v2);
             Assert.Equal(1.0f, cross);
@@ -258,7 +259,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Vector2F_NormalizeShouldWork()
         {
-            var v = new Vector2F(3, 4);
+            Vector2F v = new Vector2F(3, 4);
             v.Normalize();
 
             float magnitude = (float)Math.Sqrt(v.X * v.X + v.Y * v.Y);
@@ -271,10 +272,10 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Vector2F_IsValidShouldWork()
         {
-            var valid = new Vector2F(1, 2);
+            Vector2F valid = new Vector2F(1, 2);
             Assert.True(valid.IsValid());
 
-            var invalid = new Vector2F(float.NaN, float.NaN);
+            Vector2F invalid = new Vector2F(float.NaN, float.NaN);
             Assert.False(invalid.IsValid());
         }
 
@@ -284,7 +285,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void Vector2F_OneShouldBeAccessible()
         {
-            var one = Vector2F.One;
+            Vector2F one = Vector2F.One;
             Assert.Equal(1.0f, one.X);
             Assert.Equal(1.0f, one.Y);
         }

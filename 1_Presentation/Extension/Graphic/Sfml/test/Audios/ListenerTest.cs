@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Audios;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Listener_Position_Getter_ShouldReturnVector()
         {
-            var position = Listener.Position;
+            Vector3F position = Listener.Position;
 
             // Position is a static property — should return current listener position (default 0,0,0)
         }
@@ -66,7 +67,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Listener_Direction_Getter_ShouldReturnVector()
         {
-            var direction = Listener.Direction;
+            Vector3F direction = Listener.Direction;
 
             // Direction is a static property — should return current listener direction (default 0,0,-1)
         }
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Listener_UpVector_Getter_ShouldReturnVector()
         {
-            var upVector = Listener.UpVector;
+            Vector3F upVector = Listener.UpVector;
 
             // UpVector is a static property — should return current listener up vector (default 0,1,0)
         }
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Listener_Position_Setter_ShouldAcceptValue()
         {
-            var originalPosition = Listener.Position;
+            Vector3F originalPosition = Listener.Position;
 
             // Set and restore — should not throw
             Listener.Position = new Alis.Core.Aspect.Math.Vector.Vector3F(1, 2, 3);
@@ -114,7 +115,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Listener_Direction_Setter_ShouldAcceptValue()
         {
-            var originalDirection = Listener.Direction;
+            Vector3F originalDirection = Listener.Direction;
 
             // Set and restore — should not throw
             Listener.Direction = new Alis.Core.Aspect.Math.Vector.Vector3F(0, 0, -1);
@@ -127,7 +128,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Listener_UpVector_Setter_ShouldAcceptValue()
         {
-            var originalUpVector = Listener.UpVector;
+            Vector3F originalUpVector = Listener.UpVector;
 
             // Set and restore — should not throw
             Listener.UpVector = new Alis.Core.Aspect.Math.Vector.Vector3F(0, 1, 0);

@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         public void Constructor_ShouldCreateValidInstance()
         {
             // Arrange & Act
-            var clock = new Clock();
+            Clock clock = new Clock();
 
             // Assert
             Assert.NotNull(clock);
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         public void ElapsedSfmlTime_ShouldReturnValidTime()
         {
             // Arrange & Act
-            var clock = new Clock();
+            Clock clock = new Clock();
             SfmlTime elapsedTime = clock.ElapsedSfmlTime;
 
             // Assert
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         public void ElapsedSfmlTime_InitialState_ShouldBeZero()
         {
             // Arrange & Act
-            var clock = new Clock();
+            Clock clock = new Clock();
             SfmlTime elapsedTime = clock.ElapsedSfmlTime;
 
             // Assert
@@ -118,7 +118,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         public void MultipleRestarts_ShouldWorkCorrectly()
         {
             // Arrange & Act
-            var clock = new Clock();
+            Clock clock = new Clock();
 
             SfmlTime restart1 = clock.Restart();
             SfmlTime restart2 = clock.Restart();
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         public void Destroy_WithDisposingTrue_ShouldNotThrow()
         {
             // Arrange
-            var clock = new Clock();
+            Clock clock = new Clock();
 
             // Act & Assert
             Exception? exception = Record.Exception(() =>
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         public void Destroy_WithDisposingFalse_ShouldNotThrow()
         {
             // Arrange
-            var clock = new Clock();
+            Clock clock = new Clock();
 
             // Act & Assert
             Exception? exception = Record.Exception(() =>
@@ -178,9 +178,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         public void MultipleInstances_ShouldWorkIndependently()
         {
             // Arrange & Act
-            var clock1 = new Clock();
-            var clock2 = new Clock();
-            var clock3 = new Clock();
+            Clock clock1 = new Clock();
+            Clock clock2 = new Clock();
+            Clock clock3 = new Clock();
 
             SfmlTime time1 = clock1.ElapsedSfmlTime;
             SfmlTime time2 = clock2.ElapsedSfmlTime;
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         public void FullLifecycle_ShouldWorkCorrectly()
         {
             // Arrange & Act - Create
-            var clock = new Clock();
+            Clock clock = new Clock();
 
             // Read initial time
             SfmlTime initialTime = clock.ElapsedSfmlTime;

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
@@ -183,7 +184,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         public void Dequeue_WithManyNodes_TriggersCascadeDownWithRightChild()
         {
             GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(20);
-            var nodes = new TestNode[5];
+            TestNode[] nodes = new TestNode[5];
             for (int i = 0; i < 5; i++)
             {
                 nodes[i] = new TestNode();
@@ -249,14 +250,14 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         public void Enumerator_IteratesAllNodes()
         {
             GenericPriorityQueue<TestNode, int> queue = new GenericPriorityQueue<TestNode, int>(10);
-            var node1 = new TestNode();
-            var node2 = new TestNode();
-            var node3 = new TestNode();
+            TestNode node1 = new TestNode();
+            TestNode node2 = new TestNode();
+            TestNode node3 = new TestNode();
             queue.Enqueue(node1, 3);
             queue.Enqueue(node3, 1);
             queue.Enqueue(node2, 2);
 
-            var collected = new System.Collections.Generic.List<TestNode>();
+            List<TestNode> collected = new System.Collections.Generic.List<TestNode>();
             foreach (TestNode node in queue)
             {
                 collected.Add(node);

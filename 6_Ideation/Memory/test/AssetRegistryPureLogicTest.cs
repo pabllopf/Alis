@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
@@ -78,7 +79,7 @@ namespace Alis.Core.Aspect.Memory.Test
             AssetRegistry.RegisterAssembly(assemblyName, loader);
 
             // Act & Assert
-            var exception = Record.Exception(() => AssetRegistry.GetResourceMemoryStreamByName(null));
+            Exception exception = Record.Exception(() => AssetRegistry.GetResourceMemoryStreamByName(null));
             Assert.NotNull(exception);
             Assert.IsType<ArgumentException>(exception);
         }
@@ -97,7 +98,7 @@ namespace Alis.Core.Aspect.Memory.Test
             AssetRegistry.RegisterAssembly(assemblyName, loader);
 
             // Act & Assert
-            var exception = Record.Exception(() => AssetRegistry.GetResourceMemoryStreamByName(string.Empty));
+            Exception exception = Record.Exception(() => AssetRegistry.GetResourceMemoryStreamByName(string.Empty));
             Assert.NotNull(exception);
             Assert.IsType<ArgumentException>(exception);
         }
@@ -116,7 +117,7 @@ namespace Alis.Core.Aspect.Memory.Test
             AssetRegistry.RegisterAssembly(assemblyName, loader);
 
             // Act & Assert
-            var exception = Record.Exception(() => AssetRegistry.GetResourceMemoryStreamByName("   "));
+            Exception exception = Record.Exception(() => AssetRegistry.GetResourceMemoryStreamByName("   "));
             Assert.NotNull(exception);
             Assert.IsType<ArgumentException>(exception);
         }
@@ -135,7 +136,7 @@ namespace Alis.Core.Aspect.Memory.Test
             AssetRegistry.RegisterAssembly(assemblyName, loader);
 
             // Act & Assert
-            var exception = Record.Exception(() => AssetRegistry.GetResourceMemoryStreamByName("nonexistent.txt"));
+            Exception exception = Record.Exception(() => AssetRegistry.GetResourceMemoryStreamByName("nonexistent.txt"));
             Assert.NotNull(exception);
             Assert.IsType<FileNotFoundException>(exception);
         }
@@ -154,7 +155,7 @@ namespace Alis.Core.Aspect.Memory.Test
             AssetRegistry.RegisterAssembly(assemblyName, loader);
 
             // Act & Assert
-            var exception = Record.Exception(() => AssetRegistry.GetResourcePathByName(null));
+            Exception exception = Record.Exception(() => AssetRegistry.GetResourcePathByName(null));
             Assert.NotNull(exception);
             Assert.IsType<ArgumentException>(exception);
         }
@@ -173,7 +174,7 @@ namespace Alis.Core.Aspect.Memory.Test
             AssetRegistry.RegisterAssembly(assemblyName, loader);
 
             // Act & Assert
-            var exception = Record.Exception(() => AssetRegistry.GetResourcePathByName(string.Empty));
+            Exception exception = Record.Exception(() => AssetRegistry.GetResourcePathByName(string.Empty));
             Assert.NotNull(exception);
             Assert.IsType<ArgumentException>(exception);
         }
@@ -192,7 +193,7 @@ namespace Alis.Core.Aspect.Memory.Test
             AssetRegistry.RegisterAssembly(assemblyName, loader);
 
             // Act & Assert
-            var exception = Record.Exception(() => AssetRegistry.GetResourcePathByName("nonexistent.txt"));
+            Exception exception = Record.Exception(() => AssetRegistry.GetResourcePathByName("nonexistent.txt"));
             Assert.NotNull(exception);
             Assert.IsType<FileNotFoundException>(exception);
         }
@@ -205,7 +206,7 @@ namespace Alis.Core.Aspect.Memory.Test
             using MemoryStream ms = new MemoryStream();
             using (ZipArchive zip = new ZipArchive(ms, ZipArchiveMode.Create, true))
             {
-                foreach (var entry in entries)
+                foreach (KeyValuePair<string, string> entry in entries)
                 {
                     ZipArchiveEntry zipEntry = zip.CreateEntry(entry.Key);
                     using Stream entryStream = zipEntry.Open();

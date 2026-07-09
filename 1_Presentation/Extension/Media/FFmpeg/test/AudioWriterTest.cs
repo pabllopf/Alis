@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Encoding;
@@ -242,7 +243,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         {
             AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
 
-            var process = writer.CurrentFFmpegProcess;
+            Process process = writer.CurrentFFmpegProcess;
             Assert.Null(process); // Should be null before OpenWrite()
         }
 
@@ -296,7 +297,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         [Fact]
         public void EncoderOptions_ShouldReturnSetOptions()
         {
-            var customOptions = new EncoderOptions { Format = "ogg", EncoderName = "libvorbis" };
+            EncoderOptions customOptions = new EncoderOptions { Format = "ogg", EncoderName = "libvorbis" };
             AudioWriter writer = new AudioWriter(filename: _testFile, channels: 2, sampleRate: 44100, bitDepth: 16, encoderOptions: customOptions);
 
             Assert.Equal(customOptions, writer.EncoderOptions);

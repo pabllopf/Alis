@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.Seidel;
 using Xunit;
 
@@ -327,7 +328,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             Trapezoid trapezoid = CreateTestTrapezoid();
 
-            var verts = trapezoid.GetVertices();
+            List<Point> verts = trapezoid.GetVertices();
 
             Assert.Equal(4, verts.Count);
         }
