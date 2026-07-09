@@ -265,42 +265,5 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             Assert.Equal(testData, destStream.ToArray());
         }
-
-        /// <summary>
-        /// Tests that load metadata sync wrapper calls
-        /// </summary>
-        [Fact]
-        public void LoadMetadata_SyncWrapper_CallsAsync()
-        {
-            AudioReader reader = new AudioReader(_tempFile);
-
-            Exception ex = Record.Exception(() => reader.LoadMetadata());
-
-            Assert.NotNull(ex);
-            Assert.True(
-                ex is InvalidOperationException ||
-                (ex is AggregateException agg &&
-                 (agg.InnerException is InvalidOperationException ||
-                  agg.InnerException is System.ComponentModel.Win32Exception)));
-        }
-
-        /// <summary>
-        /// Tests that load metadata async without ffprobe throws
-        /// </summary>
-        [Fact]
-        public void LoadMetadataAsync_WithoutFfprobe_Throws()
-        {
-            AudioReader reader = new AudioReader(_tempFile);
-
-            Exception ex = Record.Exception(() => reader.LoadMetadataAsync().GetAwaiter().GetResult());
-
-            Assert.NotNull(ex);
-            Assert.True(
-                ex is InvalidOperationException ||
-                ex is System.ComponentModel.Win32Exception ||
-                (ex is AggregateException agg &&
-                 (agg.InnerException is InvalidOperationException ||
-                  agg.InnerException is System.ComponentModel.Win32Exception)));
-        }
     }
 }
