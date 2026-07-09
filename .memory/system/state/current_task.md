@@ -5,25 +5,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs
 
     ### Language
     cs
 
     ### Coverage
-    90.3% (Line: 91.2%, Branch: 87.8%)
+    91.5% (Line: 92.1%, Branch: 89.7%)
 
     ### Uncovered Lines
-    22
+    45
 
     ### Uncovered Branches
-    11
+    19
 
     ### Method
-    AssetRegistry
+    Body
 
     ### Complexity / LOC
-    60 / 316 lines
+    192 / 730 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:AssetRegistry.cs
+//  File:Body.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Buffers;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Common;
+using Alis.Core.Physic.Common.Logic;
+using Alis.Core.Physic.Dynamics.Contacts;
+using Alis.Core.Physic.Dynamics.Joints;
 
-namespace Alis.Core.Aspect.Memory
+namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     Provides static methods for registering assembly-level embedded asset packages
-    ///     (.pack / .zip) and resolving embedded resource paths or in-memory streams by
-    ///     resource name. Maintains thread-safe caches for zip indexes and extracted file
-    ///     paths to minimize redundant I/O across assemblies.
+    ///     The body class
     /// </summary>
-    public static class AssetRegistry
+    public partial class Body
     {
         /// <summary>
-        ///     Stores the registered asset loader delegates keyed by assembly name.
-        ///     Each delegate, when invoked, returns a <see cref="Stream" /> providing
-        ///     access to the assembly's embedded assets.pack content.
+        /// The world locked message
         /// </summary>
-        private static readonly Dictionary<string, Func<Stream>> RegisteredAssetLoaders = new();
+        private const string WorldLockedMessage = "The World is locked.";
 
         /// <summary>
-        ///     Per-assembly lock objects used to synchronize zip cache operations
-        ///     independently, reducing contention compared to a single global lock.
+        ///     Gets all the fixtures attached to this body.
         /// </summary>
+        /// <value>The fixture list.</value>
+        internal readonly FixtureCollection FixtureList;
+
+        /// <summary>
+        ///     The angular damping
+        /// </summary>
+
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:6_Ideation/Memory/test/AssetRegistryTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/BodyTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage AssetRegistry.cs
+    Commit format: test: coverage Body.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
