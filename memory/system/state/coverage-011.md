@@ -1,27 +1,22 @@
-# coverage-011: AdsManager.cs (1_Presentation/Extension/Ads/GoogleAds/src)
+# coverage-011 — AudioSource.cs (Complete)
 
-## Task
-Cover 15 previously uncovered lines and 6 branches in AdsManager.cs (91.0% → ~95-96%)
+## Summary
+Added 6 tests covering the remaining 3 uncovered lines in `AudioSource.cs`:
+- **OnUpdate**: empty method body now called explicitly
+- **Play with mock**: verifies `player.Play()` is invoked with correct path (non-looping)
+- **PlayLoop with mock**: verifies `player.PlayLoop(path, true)` is invoked (looping)
+- **FullPath + looping via mock**: verifies FullPathAudioFile takes priority over NameFile
+- **Empty name via mock**: verifies empty string passed to Play when no path is set
+- **FullPath test with mock**: verifies FullPathAudioFile is used when set
+
+## Files Changed
+- `2_Application/Alis/test/Core/Ecs/Components/Audio/AudioSourceCoverageTest.cs` (new, 152 lines) — 6 new xUnit tests
 
 ## Commit
-5c1546ebc9d9d88fad2763565a8e8a14ca8807c1
-
-## File Modified
-- `1_Presentation/Extension/Ads/GoogleAds/test/AdsManagerHappyPathTest.cs` (NEW - 42 tests)
-
-## Methods Covered
-1. `AdsManager(Context)` — sets Name, Tag, _isBannerAdVisible
-2. `AdsManager(string, string, string, bool, Context)` — sets Name, Tag, _isBannerAdVisible
-3. `Initialize` — null config check, empty AppId check, _configuration assignment, _isInitialized = true, Logger.Info
-4. `LoadBannerAd` — not initialized check, empty adUnitId check, disabled ads branch (Logger.Warning + OnBannerAdFailedToLoad), happy path (Logger.Info + _isBannerAdLoaded = true + OnBannerAdLoaded)
-5. `LoadInterstitialAd` — same happy/error paths
-6. `LoadRewardedVideoAd` — same happy/error paths
-7. `ShowBannerAd` — not initialized (Logger.Error), not loaded (Logger.Error), happy path (_isBannerAdVisible = true + Logger.Info)
-8. `HideBannerAd` — not initialized (Logger.Error), happy path (_isBannerAdVisible = false + Logger.Info)
-9. `ShowInterstitialAd` — not initialized (Logger.Error), not loaded (Logger.Error), happy path (Logger.Info + OnAdClicked + _isInterstitialAdLoaded = false)
-10. `ShowRewardedVideoAd` — not initialized (Logger.Error), not loaded (Logger.Error), happy path (Logger.Info + OnAdClicked + OnAdRewarded + _isRewardedVideoAdLoaded = false)
-11. `Dispose(bool)` — Logger.Info("AdsManager disposed"), if (_isInitialized) OnAdClosed
+- `3fb9404f4` — test: coverage AudioSource.cs
 
 ## Coverage Delta
-- 42 tests added covering ~15 lines and ~6 branches
-- Expected: 91.0% → ~95-96%
+- File: `AudioSource.cs` — was 95.3% (Line: 93.8%, Branch: 100.0%) with 3 ul / 0 branches
+
+## Next
+- Increment skip to 11 for next loop iteration
