@@ -29,15 +29,26 @@ Rules:
 * Never process files already present in `processed.json`.
 * Never lose progress between sessions.
 
-## Coverage Extraction
+## Initial Cache
 
-Execute:
+First run (once per session):
+
+```bash
+./docs/tools/get_info_sonarcloud.py --cache --project-key pabllopf-official_alis --branch master
+```
+
+This downloads all SonarCloud data into `./.memory/system/cache/` and exits.
+
+## Coverage Extraction Loop
+
+After cache is populated, loop:
 
 ```bash
 ./docs/tools/get_info_sonarcloud.py \
   --limit 1 \
   --fetch-source \
   --no-clean \
+  --cache-only \
   --processed-file ./.memory/system/processed.json \
   --output ./.memory/system/state/current_task.md
 ```
@@ -101,17 +112,19 @@ Never create todo files.
 
 Never commit task state.
 
-## Main Loop
+## Main Loop (Infinite)
 
-Repeat:
+Repeat until `NO_REMAINING_COVERAGE_TASKS`:
 
-1. Extract next coverage task.
-2. Spawn worker agent.
-3. Wait for completion.
-4. Save result.
-5. Update summary.
-6. Mark processed.
-7. Continue.
+1. Populate cache if empty (`--cache`).
+2. Extract next coverage task from local cache (`--cache-only`).
+3. If `NO_REMAINING_COVERAGE_TASKS` → stop.
+4. Spawn worker agent.
+5. Wait for completion.
+6. Save result.
+7. Update summary.
+8. Mark processed.
+9. Continue.
 
 ## Worker Context
 
