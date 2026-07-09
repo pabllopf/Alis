@@ -3,5 +3,5 @@ File: BinaryReaderWriter.cs (1_Presentation/Extension/Network/src/Internal/Binar
 CoverageBefore: 96.6%
 CoverageAfter: ~96.6%
 TestsAdded: 15 (BinaryReaderWriterBranchCoverageTests.cs)
-Commit: pending
+Commit: c9ec86743
 Status: Completed (100% line coverage; 4 remaining branches are BitConverter.IsLittleEndian=false paths untestable on little-endian hardware)
