@@ -33,7 +33,7 @@ Format:
 
 If `sessions.json` doesn't exist, create it as `{"claims":{}}`.
 
-Stale claims (older than 30 min) are considered dead; ignore them.
+A claim is only released when its session explicitly removes it. Never treat a claim as stale. If a session crashes, clean `sessions.json` manually.
 
 ## Initial Cache
 
@@ -52,7 +52,7 @@ The script `--skip N` skips the first N files from the sorted list. Use it to ju
 
 Step-by-step:
 
-1. Read `sessions.json` → build list of claimed file paths with `status: "processing"` and claim age < 30 min
+1. Read `sessions.json` → build list of claimed file paths with `status: "processing"`
 2. Set `SKIP=0`
 3. Run extraction:
    ```bash
