@@ -5,25 +5,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
 
     ### Language
     cs
 
     ### Coverage
-    99.6% (Line: 100.0%, Branch: 98.6%)
+    0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    0
+    489
 
     ### Uncovered Branches
-    1
+    22
 
     ### Method
-    BayazitDecomposer
+    ImGuiP7
 
     ### Complexity / LOC
-    55 / 205 lines
+    155 / 640 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:BayazitDecomposer.cs
+//  File:ImGuiP7.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
+using System.Text;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Core.Physic.Common.Decomposition
+namespace Alis.Extension.Graphic.Ui
 {
-    //From phed rev 36: http://code.google.com/p/phed/source/browse/trunk/Polygon.cpp
-
     /// <summary>
-    ///     Convex decomposition algorithm created by Mark Bayazit (http://mnbayazit.com/)
-    ///     Properties:
-    ///     - Tries to decompose using polygons instead of triangles.
-    ///     - Tends to produce optimal results with low processing time.
-    ///     - Running time is O(nr), n = number of vertices, r = reflex vertices.
-    ///     - Does not support holes.
-    ///     For more information about this algorithm, see http://mnbayazit.com/406/bayazit
+    ///     The im gui class
     /// </summary>
-    internal static class BayazitDecomposer
+    public static partial class ImGui
     {
         /// <summary>
-        ///     Decompose the polygon into several smaller non-concave polygon.
-        ///     If the polygon is already convex, it will return the original polygon, unless it is over
-        ///     Settings.MaxPolygonVertices.
+        ///     Describes whether menu item
         /// </summary>
-        public static List<Vertices> ConvexPartition(Vertices vertices) => TriangulatePolygon(vertices);
+        /// <param name="label">The label</param>
+        /// <param name="shortcut">The shortcut</param>
+        /// <param name="pSelected">The selected</param>
+        /// <param name="enabled">The enabled</param>
+        /// <returns>The bool</returns>
+        public static bool MenuItem(string label, string shortcut, ref bool pSelected, bool enabled)
+        {
+            byte ret = ImGuiNative.igMenuItem_BoolPtr(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), pSelected, enabled);
+            return ret != 0;
+        }
 
         /// <summary>
-        ///     Triangulates the polygon using the specified vertices
+        ///     News the frame
         /// </summary>
-        /// <param name="vertices">The vertices</param>
-        /// <returns>The list</returns>
+        public static void NewFrame()
+        {
+            ImGuiNative.igNewFrame();
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Common/Decomposition/BayazitDecomposerTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiP7Tests.cs
 
     Priority
-    LOW (NEW)
+    CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/BayazitDecomposer.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage BayazitDecomposer.cs
+    Commit format: test: coverage ImGuiP7.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

@@ -1,325 +1,141 @@
-# OpenCode Autonomous SonarCloud Coverage Orchestrator V4
+# OpenCode Coverage Orchestrator V5
 
-Deterministic .NET coverage orchestrator optimized for minimal token usage.
+Deterministic .NET coverage orchestrator. One file at a time, auto-resume, multi-session safe.
 
-## Goal
+## Session ID
 
-Process every uncovered SonarCloud file exactly once and resume automatically across sessions until no coverage tasks remain.
+Pass via command: `/fix_code_coverage_local_ai => <ID>`
+Resolution: `{{input}}` → `$OPencode_SESSION_ID` → `default`
 
-## Persistent State
-
-Memory directory:
-
-```text
-./.memory/system/
+```bash
+SID="${input:-${OPencode_SESSION_ID:-default}}"
+SESSION_DIR=".memory/system/sessions/$SID"
 ```
 
-Files:
-
-```text
-processed.json
-summary.md
-results/
-state/current_task.md
-```
+| File | Purpose |
+|------|---------|
+| `processed.json` | Completed files |
+| `summary.md` | Running log |
+| `results/` | Per-file outputs |
+| `state/current_task.md` | Current task payload |
+| `cache/` | SonarCloud cache (shared) |
+| `lock/` | Per-file lock dirs |
 
 Rules:
-
-* Always resume existing state.
-* Never process files already present in `processed.json`.
-* Never lose progress between sessions.
+- Resume from `processed.json` for this SID
+- Skip files in `processed.json`
+- Acquire `lock/<filehash>` before processing; skip if held
+- Never lose progress
 
 ## Initial Cache
 
-First run (once per session):
-
 ```bash
-./docs/tools/get_info_sonarcloud.py --cache --project-key pabllopf-official_alis --branch master
+./docs/tools/get_info_sonarcloud.py --cache \
+  --project-key pabllopf-official_alis --branch master
 ```
 
-This downloads all SonarCloud data into `./.memory/system/cache/` and exits.
+Output: `$SESSION_DIR/cache/`
 
-## Coverage Extraction Loop
-
-After cache is populated, loop:
+## Extraction Loop
 
 ```bash
 ./docs/tools/get_info_sonarcloud.py \
-  --limit 1 \
-  --fetch-source \
-  --no-clean \
-  --cache-only \
-  --processed-file ./.memory/system/processed.json \
-  --output ./.memory/system/state/current_task.md
+  --limit 1 --fetch-source --no-clean --cache-only \
+  --processed-file $SESSION_DIR/processed.json \
+  --output $SESSION_DIR/state/current_task.md
 ```
 
-Priority order:
+Priority: lowest coverage → highest uncovered lines → highest complexity → largest file.
 
-1. Lowest coverage
-2. Highest uncovered lines
-3. Highest complexity
-4. Largest file
-
-Terminate immediately if:
-
-```text
-NO_REMAINING_COVERAGE_TASKS
-```
+Terminate on: `NO_REMAINING_COVERAGE_TASKS`
 
 ## Agent Policy
 
-Exactly one worker agent is allowed per coverage file.
+Exactly 1 worker per file. Forbidden: explorer, planner, reviewer, validator, nested, chains, extra workers.
 
-Forbidden:
-
-* explorer agents
-* planner agents
-* reviewer agents
-* validator agents
-* nested agents
-* agent chains
-* additional worker agents
-
-The worker performs the entire lifecycle internally.
-
-Execution model:
-
-```text
-Orchestrator
-    -> Worker
-        -> Analyze
-        -> Implement
-        -> Validate
-        -> Commit
-    <- Result
+Worker owns full lifecycle internally:
+```
+Orchestrator → Worker → [Analyze → Implement → Validate → Commit] → Result
 ```
 
-## OpenCode Tasks
+Maintain 1 active task. Never create todo files. Never commit task state.
 
-Maintain only one active task.
-
-Example:
-
-```text
-[x] Extract task
-[x] Spawn worker
-[x] Save result
-[x] Update state
-[x] Commit
-```
-
-Never create todo files.
-
-Never commit task state.
-
-## Main Loop (Infinite)
+## Main Loop
 
 Repeat until `NO_REMAINING_COVERAGE_TASKS`:
-
-1. Populate cache if empty (`--cache`).
-2. Extract next coverage task from local cache (`--cache-only`).
-3. If `NO_REMAINING_COVERAGE_TASKS` → stop.
-4. Spawn worker agent.
-5. Wait for completion.
-6. Save result.
-7. Update summary.
-8. Mark processed.
-9. Continue.
+1. Populate cache if empty (`--cache`)
+2. Extract next task (`--cache-only`)
+3. `NO_REMAINING_COVERAGE_TASKS` → stop
+4. Spawn worker agent
+5. Wait for completion
+6. Save result → update summary → mark processed → continue
 
 ## Worker Context
 
-The orchestrator only keeps:
+Orchestrator passes: source path + coverage metadata + output path.
 
-* source file path
-* coverage metadata
-* worker output
+Worker loads only: target source, owning production csproj, test csproj, existing tests in namespace, direct compile deps.
 
-The worker loads only:
-
-* target source file
-* owning production csproj
-* associated test csproj
-* existing tests in same namespace
-* direct compile dependencies
-
-Never load:
-
-* repository root
-* solution file
-* unrelated projects
-* unrelated tests
-* full repository scans
+Never load: repo root, .sln, unrelated projects/tests, full scans.
 
 ## Worker Responsibilities
 
-Process exactly one source file.
-
-Steps:
-
-1. Analyze uncovered code.
-2. Generate missing tests.
-3. Build affected test project.
-4. Execute affected tests.
-5. Generate result.
-6. Create commit if successful.
+1. Analyze uncovered code
+2. Generate tests (xUnit, net8.0, netstandard2.0-compatible, AAA)
+3. `dotnet build <TestProject.csproj>`
+4. `dotnet test <TestProject.csproj> --filter FullyQualifiedName~<TargetClass>`
+5. Return result; commit if build + tests pass
 
 ## Testing Rules
 
-Requirements:
-
-* xUnit
-* net8.0 tests
-* compatible with netstandard2.0 production assemblies
-* Arrange Act Assert
-* observable behaviour only
-* real implementations preferred
-* Moq only for interfaces or external dependencies
-* InternalsVisibleTo already exists
-* You can't generate cobertura files (like cobertura.xml, .trx files, etc) 
-
-Forbidden:
-
-* reflection
-* private method testing
-* Thread.Sleep
-* randomness
-* network access
-* filesystem side effects
-* snapshot testing
-* production changes
+| Allow | Forbid |
+|-------|--------|
+| xUnit, net8.0 | Reflection |
+| AAA pattern | Private method testing |
+| Real impls preferred | `Thread.Sleep` |
+| Moq only for interfaces/externals | Randomness |
+| InternalsVisibleTo exists | Network / FS side effects |
+| Observable behaviour only | Snapshot testing |
+| | Production changes |
 
 ## Source Protection
 
-Readable:
+| Readable | Writable | Forbidden |
+|----------|----------|-----------|
+| `src/**` | `test/**` | Edit src, refactor, modify visibility/ctors/interfaces/biz logic/InternalsVisibleTo |
 
-```text
-src/**
-```
+If production change needed → `Status: BLOCKED_BY_PRODUCTION_CODE` → store result, continue.
 
-Writable:
+## Build & Test
 
-```text
-test/**
-```
+| Action | Command |
+|--------|---------|
+| Build | `dotnet build <TestProject.csproj>` |
+| Test | `dotnet test <TestProject.csproj> --filter FullyQualifiedName~<TargetClass>` |
+| Test (fallback) | `dotnet test <TestProject.csproj>` |
+| Forbidden | `dotnet build` / `dotnet test` (no args) or `*.sln` |
 
-Allowed:
-
-* tests
-* fixtures
-* builders
-* helpers
-* mocks
-
-Forbidden:
-
-* edit src
-* refactor src
-* modify visibility
-* modify constructors
-* modify interfaces
-* modify business logic
-* modify InternalsVisibleTo
-
-If production changes are required:
-
-```text
-Status: BLOCKED_BY_PRODUCTION_CODE
-```
-
-Store the result and continue with the next file.
-
-## Build Rules
-
-Allowed:
-
-```bash
-dotnet build <AffectedTestProject.csproj>
-```
-
-Forbidden:
-
-```bash
-dotnet build
-dotnet build *.sln
-```
-
-## Test Execution
-
-Preferred:
-
-```bash
-dotnet test <AffectedTestProject.csproj> \
-  --filter FullyQualifiedName~<TargetClass>
-```
-
-Fallback:
-
-```bash
-dotnet test <AffectedTestProject.csproj>
-```
-
-Forbidden:
-
-```bash
-dotnet test
-dotnet test *.sln
-```
-
-Ignore unrelated failures.
-
-Generated tests must pass.
+Ignore unrelated failures. Generated tests must pass.
 
 ## Commit Rules
 
-Commit only if:
+Only if build + generated tests pass. One commit per file.
 
-* build succeeds
-* generated tests pass
-
-Include:
-
-* generated tests
-* processed.json
-* summary.md
-* results/*
-
-Commit message:
-
-```text
-test: <FileName.cs>
+```bash
+git add test/** $SESSION_DIR/processed.json $SESSION_DIR/summary.md $SESSION_DIR/results/*
+git commit -m "test: <FileName.cs>"
 ```
-
-One commit per processed file.
 
 ## Summary Format
 
-Append to `summary.md`:
-
-```text
-Timestamp:
-File:
-CoverageBefore:
-CoverageAfter:
-TestsAdded:
-Commit:
-Status:
+Append to `$SESSION_DIR/summary.md`:
+```
+Timestamp: | File: | CoverageBefore: | CoverageAfter: | TestsAdded: | Commit: | Status:
 ```
 
 ## Worker Output
 
-Return only:
-
-```text
-File:
-CoverageBefore:
-CoverageAfter:
-TestsAdded:
-Commit:
-Status:
+Return only (no explanations/reasoning/commentary):
 ```
-
-No explanations.
-
-No reasoning.
-
-No commentary.
+File: | CoverageBefore: | CoverageAfter: | TestsAdded: | Commit: | Status:
+```
