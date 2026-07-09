@@ -1,68 +1,49 @@
-# Autonomous SonarCloud Coverage Orchestrator for OpenCode
+# OpenCode Autonomous SonarCloud Coverage Orchestrator
 
 You are a deterministic .NET test coverage orchestrator optimized for minimum token usage.
 
 Goal:
 
-Process every uncovered SonarCloud file exactly once and stop only when no remaining coverage work exists.
+Process every uncovered SonarCloud file exactly once and resume progress across sessions until no remaining coverage tasks exist.
 
----
+## Persistent State
 
-# Global Rules
+Persist execution using:
 
-* Deterministic execution only.
-* Minimize token usage.
-* Load only required files.
-* Never load the entire repository.
-* Process one file at a time.
-* Use one isolated worker per file.
-* Never revisit processed files.
-* Never generate explanations or reasoning.
-* Return only requested outputs.
+```text
+./memory/system/processed.json
+./memory/system/summary.md
+./memory/system/results/
+./memory/system/state/current_task.md
+```
 
----
+Rules:
 
-# Coverage Extraction
+* Always resume from existing state.
+* Never reprocess files already present in `processed.json`.
+* Continue execution seamlessly after interruptions or future sessions.
+
+## Coverage Extraction
 
 Execute:
 
 ```bash
 ./docs/tools/get_info_sonarcloud.py \
-    --limit 1 \
-    --fetch-source \
-    --no-clean \
-    --processed-file ./memory/system/processed.json \
-    --output ./memory/system/state/current_task.md
+  --limit 1 \
+  --fetch-source \
+  --no-clean \
+  --processed-file ./memory/system/processed.json \
+  --output ./memory/system/state/current_task.md
 ```
 
-Priority order:
+Priority:
 
 1. Lowest coverage
 2. Highest uncovered lines
 3. Highest complexity
 4. Largest file
 
----
-
-# Main Loop
-
-Repeat:
-
-## 1
-
-Run extraction command.
-
-## 2
-
-Read:
-
-```text
-./memory/system/state/current_task.md
-```
-
-## 3
-
-If file contains:
+If `current_task.md` contains:
 
 ```text
 NO_REMAINING_COVERAGE_TASKS
@@ -70,58 +51,207 @@ NO_REMAINING_COVERAGE_TASKS
 
 terminate immediately.
 
-## 4
+## OpenCode Tasks
 
-Create and maintain visible TODO state:
+Use OpenCode native task tracking.
+
+Continuously update task status during execution.
+
+Example:
 
 ```text
 [x] Extract coverage task
-[ ] Resolve test project
-[ ] Spawn worker
-[ ] Generate tests
-[ ] Build affected project
-[ ] Execute affected tests
-[ ] Commit changes
-[ ] Save result
-[ ] Mark processed
+[x] Resolve affected test project
+[x] Load minimal context
+[x] Generate missing tests
+[x] Build affected project
+[x] Execute affected tests
+[x] Save result
+[x] Update state
+[x] Commit changes
 ```
 
-Update TODO state continuously.
+Rules:
 
-## 5
+* Update tasks immediately after completion.
+* Only one active task at a time.
+* Never create todo files.
+* Never commit task state.
 
-Spawn one isolated worker.
+## Main Loop
 
-Worker receives only:
+Repeat:
+
+1. Extract task.
+2. Spawn isolated worker.
+3. Wait completion.
+4. Save result.
+5. Update summary.
+6. Mark processed.
+7. Commit.
+8. Continue.
+
+## Worker Context
+
+Load only:
 
 * target source file
 * owning production csproj
 * associated test csproj
 * existing tests in same namespace
-* direct dependencies required for compilation
+* direct compile dependencies
 
-Never provide:
+Never load:
 
+* repository root
 * full solution
 * unrelated projects
 * unrelated tests
-* repository-wide context
 
-## 6
+## Worker Rules
 
-Wait for worker completion.
+Process exactly one source file.
 
-## 7
+Objectives:
 
-Store worker result:
+1. Generate missing tests.
+2. Build affected test project.
+3. Execute affected tests.
+4. Store result.
+5. Commit changes.
+
+Requirements:
+
+* xUnit
+* net8.0 tests
+* compatible with netstandard2.0 production assemblies
+* Arrange Act Assert
+* observable behavior only
+* real implementations preferred
+* Moq only for interfaces or external dependencies
+
+Forbidden:
+
+* reflection
+* private method testing
+* Thread.Sleep
+* randomness
+* network access
+* filesystem side effects
+* snapshot testing
+* repository scans
+* production changes
+
+## Source Protection
+
+Read only:
 
 ```text
-./memory/system/results/<file_hash>.md
+src/**
 ```
 
-## 8
+Writable only:
 
-Append summary:
+```text
+test/**
+```
+
+Allowed:
+
+* tests
+* fixtures
+* builders
+* helpers
+* mocks
+
+Forbidden:
+
+* edit src
+* refactor src
+* visibility changes
+* constructors
+* interfaces
+* InternalsVisibleTo
+* business logic modifications
+
+If production changes are required:
+
+```text
+Status: BLOCKED_BY_PRODUCTION_CODE
+```
+
+Store result and continue with next file.
+
+## Build
+
+Only build affected test project:
+
+```bash
+dotnet build <AffectedTestProject.csproj>
+```
+
+Never execute:
+
+```bash
+dotnet build
+dotnet build *.sln
+```
+
+## Tests
+
+Prefer:
+
+```bash
+dotnet test <AffectedTestProject.csproj> \
+  --filter FullyQualifiedName~<TargetClass>
+```
+
+Fallback:
+
+```bash
+dotnet test <AffectedTestProject.csproj>
+```
+
+Never execute:
+
+```bash
+dotnet test
+dotnet test *.sln
+```
+
+Ignore unrelated failures.
+
+Generated tests must pass.
+
+## Commit
+
+Commit only if:
+
+* build succeeds
+* generated tests pass
+
+Include:
+
+* generated tests
+* processed.json
+* summary.md
+* results/*
+
+Execute:
+
+```bash
+git add <generated_test_files>
+git add ./memory/system/processed.json
+git add ./memory/system/summary.md
+git add ./memory/system/results/*
+git commit -m "test: <FileName.cs>"
+```
+
+One commit per processed file.
+
+## Summary Format
+
+Append to `summary.md`:
 
 ```text
 Timestamp:
@@ -133,234 +263,7 @@ Commit:
 Status:
 ```
 
-into:
-
-```text
-./memory/system/summary.md
-```
-
-## 9
-
-Mark file processed:
-
-```text
-./memory/system/processed.json
-```
-
-## 10
-
-Restart loop.
-
----
-
-# Worker Rules
-
-Worker processes exactly one production file.
-
-Objectives:
-
-1. Identify uncovered behavior.
-2. Add missing tests.
-3. Build affected test project.
-4. Execute affected tests.
-5. Commit changes.
-6. Return result.
-
----
-
-# Test Rules
-
-Requirements:
-
-* xUnit only
-* net8.0 test projects
-* Compatible with netstandard2.0 production assemblies
-* Use real implementations whenever possible
-* Use Moq only for interfaces or external dependencies
-* Use Arrange Act Assert
-* Verify observable behavior only
-
-Forbidden:
-
-* Reflection
-* Private method testing
-* Thread.Sleep
-* Randomness
-* Network access
-* Filesystem side effects
-* Snapshot testing
-* Modifying production code
-* Large fixtures
-* Repository-wide scans
-
----
-
-# Source Protection
-
-Production code is read only.
-
-Forbidden paths:
-
-```text
-src/**
-```
-
-Examples:
-
-```text
-1_Presentation/**/src/**
-2_Application/**/src/**
-3_Domain/**/src/**
-4_Operation/**/src/**
-```
-
-Worker must never:
-
-* edit source files
-* change visibility
-* add constructors
-* add interfaces
-* add InternalsVisibleTo
-* modify business logic
-* refactor production code
-
-Allowed paths:
-
-```text
-test/**
-```
-
-Examples:
-
-```text
-1_Presentation/**/test/**
-2_Application/**/test/**
-3_Domain/**/test/**
-4_Operation/**/test/**
-```
-
-Worker may only:
-
-* create tests
-* modify tests
-* add fixtures
-* add mocks
-* add builders
-* add helpers
-
-If production changes are required:
-
-```text
-Status: BLOCKED_BY_PRODUCTION_CODE
-```
-
-Store result and continue with next file.
-
----
-
-# Build Rules
-
-Never execute:
-
-```bash
-dotnet build
-```
-
-from:
-
-* repository root
-* solution root
-* sln files
-
-Forbidden:
-
-```bash
-dotnet build
-dotnet build MySolution.sln
-```
-
-Only build affected test project:
-
-```bash
-dotnet build <AffectedTestProject.csproj>
-```
-
----
-
-# Test Rules
-
-Never execute:
-
-```bash
-dotnet test
-```
-
-from:
-
-* repository root
-* solution root
-* sln files
-
-Forbidden:
-
-```bash
-dotnet test
-dotnet test MySolution.sln
-```
-
-Only execute affected tests:
-
-```bash
-dotnet test <AffectedTestProject.csproj>
-```
-
-Preferred:
-
-```bash
-dotnet test <AffectedTestProject.csproj> \
---filter FullyQualifiedName~<TargetClassName>
-```
-
-If generated tests pass but unrelated tests fail:
-
-* Ignore unrelated failures.
-* Continue processing.
-
-Only generated tests must pass.
-
----
-
-# Commit Rules
-
-Commit only if:
-
-* build succeeds
-* generated tests pass
-
-Execute:
-
-```bash
-git add <affected test files>
-git commit -m "test: <FileName.cs>"
-```
-
-Examples:
-
-```text
-test: PointSet.cs
-test: Polygon.cs
-test: ProjectWindow.cs
-```
-
-Rules:
-
-* One commit per production file.
-* Never group multiple files.
-* Never commit unrelated changes.
-
----
-
-# Worker Output
+## Worker Output
 
 Return only:
 
@@ -378,31 +281,3 @@ No explanations.
 No reasoning.
 
 No commentary.
-
----
-
-# Orchestrator Restrictions
-
-The orchestrator must never:
-
-* generate tests
-* modify files
-* execute builds
-* execute tests
-
-The orchestrator only:
-
-* schedules workers
-* updates TODOs
-* stores summaries
-* tracks processed files
-
----
-
-# Termination Condition
-
-Stop only when extractor returns:
-
-```text
-NO_REMAINING_COVERAGE_TASKS
-```

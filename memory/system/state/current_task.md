@@ -5,25 +5,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs
 
     ### Language
     cs
 
     ### Coverage
-    63.4% (Line: 60.7%, Branch: 68.5%)
+    81.4% (Line: 82.4%, Branch: 79.2%)
 
     ### Uncovered Lines
-    42
+    21
 
     ### Uncovered Branches
-    17
+    10
 
     ### Method
-    AudioWriter
+    AudioReader
 
     ### Complexity / LOC
-    41 / 138 lines
+    40 / 154 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioWriter.cs
+//  File:AudioReader.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
+using System.Globalization;
 using System.IO;
-using System.Threading;
+using System.Linq;
+using System.Threading.Tasks;
+using Alis.Core.Aspect.Data.Json;
+using Alis.Extension.Media.FFmpeg.Audio.Models;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
-using Alis.Extension.Media.FFmpeg.Encoding;
-using Alis.Extension.Media.FFmpeg.Encoding.Builders;
 
 namespace Alis.Extension.Media.FFmpeg.Audio
 {
     /// <summary>
-    ///     The audio writer class
+    ///     The audio reader class
     /// </summary>
-    /// <seealso cref="MediaWriter{Frame}" />
+    /// <seealso cref="MediaReader{Frame,Writer}" />
     /// <seealso cref="IDisposable" />
-    public class AudioWriter : MediaWriter<AudioFrame>, IDisposable
+    public class AudioReader : MediaReader<AudioFrame, AudioWriter>, IDisposable
     {
         /// <summary>
-        ///     The ffmpeg
+        ///     The ffprobe
         /// </summary>
         private readonly string ffmpeg;
 
         /// <summary>
-        ///     The csc
+        ///     The ffprobe
         /// </summary>
-        private CancellationTokenSource csc;
+        private readonly string ffprobe;
 
         /// <summary>
-        ///     The ffmpegp
+        ///     The loaded bit depth
         /// </summary>
-        internal Process Ffmpegp;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/Audio/AudioWriterTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/Audio/AudioReaderTests.cs
 
     Priority
-    MEDIUM (NEW)
+    LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage AudioWriter.cs
+    Commit format: test: coverage AudioReader.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
