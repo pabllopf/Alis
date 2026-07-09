@@ -1,29 +1,26 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) Outputting AI-ready tasks:
-
-
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs
+    pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs
 
     ### Language
     cs
 
     ### Coverage
-    96.6% (Line: 100.0%, Branch: 86.7%)
+    97.8% (Line: 98.6%, Branch: 95.0%)
 
     ### Uncovered Lines
-    0
+    1
 
     ### Uncovered Branches
-    4
+    1
 
     ### Method
-    BinaryReaderWriter
+    Animator
 
     ### Complexity / LOC
-    28 / 119 lines
+    29 / 98 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +31,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:BinaryReaderWriter.cs
+//  File:Animator.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +53,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Time;
+using Alis.Core.Ecs.Systems.Scope;
 
-namespace Alis.Extension.Network.Internal
+namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
-    ///     The binary reader writer class
+    ///     The animator
     /// </summary>
-    internal static class BinaryReaderWriter
+    public struct Animator : IAnimator
     {
         /// <summary>
-        ///     Reads the exactly using the specified length
+        ///     Gets or sets the value of the animations
         /// </summary>
-        /// <param name="length">The length</param>
-        /// <param name="stream">The stream</param>
-        /// <param name="buffer">The buffer</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <exception cref="EndOfStreamException"></exception>
-        /// <exception cref="InternalBufferOverflowException">
-        ///     Unable to read {length} bytes into buffer (offset: {buffer.Offset}
-        ///     size: {buffer.Count}). Use a larger read buffer
-        /// </exception>
-        public static async Task ReadExactly(int length, Stream stream, ArraySegment<byte> buffer,
-            CancellationToken cancellationToken)
-        {
-            if (length == 0)
-            {
-                return;
-            }
+        public List<Animation> Animations { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the current animation index
+        /// </summary>
+        public int CurrentAnimationIndex { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the current frame index
+        /// </summary>
+        public int CurrentFrameIndex { get; set; }
+
+        /// <summary>
+        ///     The clock
+        /// </summary>
+        private readonly Clock _clock;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Network/test/Internal/BinaryReaderWriterTests.cs
+    pabllopf-official_alis:2_Application/Alis/test/Core/Ecs/Components/Render/AnimatorTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs
+    Generate xUnit test targeting pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Animator.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage BinaryReaderWriter.cs
+    Commit format: test: coverage Animator.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
