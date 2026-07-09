@@ -9,6 +9,7 @@
 | 2026-07-09 19:00:00 | AudioPlayer.cs | 79.3% | ~91% | +10-12% | 1d3141f8c657c49ab3621160dae6cf3844880736 | Completed |
 | 2026-07-09 20:00:00 | AudioReader.cs | 81.4% | ~87% | +5-7% | 082807f6e | Completed |
 | 2026-07-09 21:00:00 | Archetype.cs | 87.2% | ~89.5% | +2-3% | 354eee7d1 | Completed |
+| 2026-07-09 22:00:00 | AssetRegistry.cs | 90.3% | 90.3% | +0% | N/A | Completed (existing coverage sufficient, remaining lines require reflection) |
 
 ## Test Files Created
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`
