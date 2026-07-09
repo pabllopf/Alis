@@ -46,6 +46,11 @@
 | 2026-07-10 02:10:00 | GLShaderProgramParam.cs | 0.0% | ~26.43% | +26.43% | 19e9c47d5 | Completed |
 | 2026-07-10 02:15:00 | SfmlText.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 | 2026-07-10 02:20:00 | Music.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
+| 2026-07-10 02:30:00 | Transformable.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
+| 2026-07-10 02:35:00 | SoundStream.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
+| 2026-07-10 02:40:00 | SoundBuffer.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
+| 2026-07-10 02:45:00 | Shape.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
+| 2026-07-10 02:50:00 | Font.cs (SFML) | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 
 ## Test Files Created
 - `BoxColliderRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderRemainingCoverageTests.cs`

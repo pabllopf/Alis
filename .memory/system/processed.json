@@ -65,5 +65,10 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP20.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/SfmlText.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Music.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/Music.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transformable.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundStream.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBuffer.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shape.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Font.cs"
 ]
