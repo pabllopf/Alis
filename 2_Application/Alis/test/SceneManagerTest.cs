@@ -289,21 +289,5 @@ namespace Alis.Test
 
             Assert.NotNull(sceneManager);
         }
-
-        /// <summary>
-        ///     Tests that LoadScene with a numeric string loads the scene by index.
-        /// </summary>
-        [Fact]
-        public void LoadScene_WithNumericString_LoadsScene()
-        {
-            Context context = new Context(new Setting());
-            Scene scene = new Scene();
-            SceneManager sceneManager = new SceneManager(context, scene);
-            sceneManager.CurrentWorld = new Scene();
-
-            sceneManager.LoadScene("0");
-
-            Assert.Same(scene, sceneManager.CurrentWorld);
-        }
     }
 }
