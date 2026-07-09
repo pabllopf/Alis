@@ -1,170 +1,325 @@
-# OpenCode Coverage Orchestrator V5
+# OpenCode Autonomous SonarCloud Coverage Orchestrator V4
 
-Deterministic .NET coverage orchestrator. One file at a time, auto-resume, multi-session safe.
+Deterministic .NET coverage orchestrator optimized for minimal token usage.
 
-## Session ID
+## Goal
 
-Pass via command: `/fix_code_coverage_local_ai => <ID>`
-Resolution: `{{input}}` → `$OPencode_SESSION_ID` → `default`
+Process every uncovered SonarCloud file exactly once and resume automatically across sessions until no coverage tasks remain.
 
-```bash
-SID="${input:-${OPencode_SESSION_ID:-default}}"
-STATE=".memory/system"
+## Persistent State
+
+Memory directory:
+
+```text
+./.memory/system/
 ```
 
-| Path | Scope | Purpose |
-|------|-------|---------|
-| `$STATE/processed.json` | Shared | Completed files |
-| `$STATE/sessions.json` | Shared | Claims registry (who processes what) |
-| `$STATE/summary.md` | Shared | Running log |
-| `$STATE/results/` | Shared | Per-file outputs |
-| `$STATE/cache/` | Shared | SonarCloud cache |
+Files:
 
-## Session Registry (`sessions.json`)
-
-Format:
-```json
-{
-  "claims": {
-    "relative/file/path.cs": { "sid": "1", "since": "2024-07-09T10:00:00", "status": "processing" }
-  }
-}
+```text
+processed.json
+summary.md
+results/
+state/current_task.md
 ```
 
-If `sessions.json` doesn't exist, create it as `{"claims":{}}`.
+Rules:
 
-A claim is only released when its session explicitly removes it. Never treat a claim as stale. If a session crashes, clean `sessions.json` manually.
+* Always resume existing state.
+* Never process files already present in `processed.json`.
+* Never lose progress between sessions.
 
 ## Initial Cache
 
+First run (once per session):
+
 ```bash
-./docs/tools/get_info_sonarcloud.py --cache \
-  --project-key pabllopf-official_alis --branch master
+./docs/tools/get_info_sonarcloud.py --cache --project-key pabllopf-official_alis --branch master
 ```
 
-Output: `$STATE/cache/`
+This downloads all SonarCloud data into `./.memory/system/cache/` and exits.
 
-## Extraction (Skip Claimed Files)
+## Coverage Extraction Loop
 
-BEFORE any analysis or code generation, you must skip files already claimed by other sessions.
+After cache is populated, loop:
 
-The script `--skip N` skips the first N files from the sorted list. Use it to jump past claimed files.
+```bash
+./docs/tools/get_info_sonarcloud.py \
+  --limit 1 \
+  --fetch-source \
+  --no-clean \
+  --cache-only \
+  --processed-file ./.memory/system/processed.json \
+  --output ./.memory/system/state/current_task.md
+```
 
-Step-by-step:
+Priority order:
 
-1. Read `sessions.json` → build list of claimed file paths with `status: "processing"`
-2. Set `SKIP=0`
-3. Run extraction:
-   ```bash
-   ./docs/tools/get_info_sonarcloud.py \
-     --limit 1 --fetch-source --no-clean --cache-only \
-     --processed-file $STATE/processed.json \
-     --skip $SKIP \
-     --output $STATE/sessions/$SID/current_task.md
-   ```
-4. If output contains `NO_REMAINING_COVERAGE_TASKS` → stop
-5. Parse `current_task.md` → get the `File:` value (relative path)
-6. If the file path is in the claimed list → increment `SKIP` by 1, go to step 3
-7. If the file is NOT claimed → write your claim to `sessions.json`: `claims["<file_path>"] = {"sid": "$SID", "since": "<ISO-timestamp>", "status": "processing"}`
-8. Only then proceed to spawn worker
+1. Lowest coverage
+2. Highest uncovered lines
+3. Highest complexity
+4. Largest file
 
-After worker completes:
-9. Remove your claim from `sessions.json` (or set `status: "done"`)
-10. Continue loop
+Terminate immediately if:
 
-Priority: lowest coverage → highest uncovered lines → highest complexity → largest file.
-
-Critical: you must NEVER skip verifying `sessions.json` before extraction. Always check first.
+```text
+NO_REMAINING_COVERAGE_TASKS
+```
 
 ## Agent Policy
 
-Exactly 1 worker per file. Forbidden: explorer, planner, reviewer, validator, nested, chains, extra workers.
+Exactly one worker agent is allowed per coverage file.
 
-Worker owns full lifecycle internally:
+Forbidden:
+
+* explorer agents
+* planner agents
+* reviewer agents
+* validator agents
+* nested agents
+* agent chains
+* additional worker agents
+
+The worker performs the entire lifecycle internally.
+
+Execution model:
+
+```text
+Orchestrator
+    -> Worker
+        -> Analyze
+        -> Implement
+        -> Validate
+        -> Commit
+    <- Result
 ```
-Orchestrator → Worker → [Analyze → Implement → Validate → Commit] → Result
+
+## OpenCode Tasks
+
+Maintain only one active task.
+
+Example:
+
+```text
+[x] Extract task
+[x] Spawn worker
+[x] Save result
+[x] Update state
+[x] Commit
 ```
 
-Maintain 1 active task. Never create todo files. Never commit task state.
+Never create todo files.
 
-## Main Loop
+Never commit task state.
+
+## Main Loop (Infinite)
 
 Repeat until `NO_REMAINING_COVERAGE_TASKS`:
-1. Populate cache if empty (`--cache`)
-2. Read `sessions.json`, build claimed file list
-3. Run extraction with `--skip N`, increment N for each claimed file encountered
-4. `NO_REMAINING_COVERAGE_TASKS` → stop
-5. Write claim to `sessions.json`
-6. Spawn worker agent
-7. Wait for completion
-8. Remove claim → save result → append to summary → mark processed → continue
+
+1. Populate cache if empty (`--cache`).
+2. Extract next coverage task from local cache (`--cache-only`).
+3. If `NO_REMAINING_COVERAGE_TASKS` → stop.
+4. Spawn worker agent.
+5. Wait for completion.
+6. Save result.
+7. Update summary.
+8. Mark processed.
+9. Continue.
 
 ## Worker Context
 
-Orchestrator passes: source path + coverage metadata + output path.
+The orchestrator only keeps:
 
-Worker loads only: target source, owning production csproj, test csproj, existing tests in namespace, direct compile deps.
+* source file path
+* coverage metadata
+* worker output
 
-Never load: repo root, .sln, unrelated projects/tests, full scans.
+The worker loads only:
+
+* target source file
+* owning production csproj
+* associated test csproj
+* existing tests in same namespace
+* direct compile dependencies
+
+Never load:
+
+* repository root
+* solution file
+* unrelated projects
+* unrelated tests
+* full repository scans
 
 ## Worker Responsibilities
 
-1. Analyze uncovered code
-2. Generate tests (xUnit, net8.0, netstandard2.0-compatible, AAA)
-3. `dotnet build <TestProject.csproj>`
-4. `dotnet test <TestProject.csproj> --filter FullyQualifiedName~<TargetClass>`
-5. Return result; commit if build + tests pass
+Process exactly one source file.
+
+Steps:
+
+1. Analyze uncovered code.
+2. Generate missing tests.
+3. Build affected test project.
+4. Execute affected tests.
+5. Generate result.
+6. Create commit if successful.
 
 ## Testing Rules
 
-| Allow | Forbid |
-|-------|--------|
-| xUnit, net8.0 | Reflection |
-| AAA pattern | Private method testing |
-| Real impls preferred | `Thread.Sleep` |
-| Moq only for interfaces/externals | Randomness |
-| InternalsVisibleTo exists | Network / FS side effects |
-| Observable behaviour only | Snapshot testing |
-| | Production changes |
+Requirements:
+
+* xUnit
+* net8.0 tests
+* compatible with netstandard2.0 production assemblies
+* Arrange Act Assert
+* observable behaviour only
+* real implementations preferred
+* Moq only for interfaces or external dependencies
+* InternalsVisibleTo already exists
+* You can't generate cobertura files (like cobertura.xml, .trx files, etc) 
+
+Forbidden:
+
+* reflection
+* private method testing
+* Thread.Sleep
+* randomness
+* network access
+* filesystem side effects
+* snapshot testing
+* production changes
 
 ## Source Protection
 
-| Readable | Writable | Forbidden |
-|----------|----------|-----------|
-| `src/**` | `test/**` | Edit src, refactor, modify visibility/ctors/interfaces/biz logic/InternalsVisibleTo |
+Readable:
 
-If production change needed → `Status: BLOCKED_BY_PRODUCTION_CODE` → store result, continue.
+```text
+src/**
+```
 
-## Build & Test
+Writable:
 
-| Action | Command |
-|--------|---------|
-| Build | `dotnet build <TestProject.csproj>` |
-| Test | `dotnet test <TestProject.csproj> --filter FullyQualifiedName~<TargetClass>` |
-| Test (fallback) | `dotnet test <TestProject.csproj>` |
-| Forbidden | `dotnet build` / `dotnet test` (no args) or `*.sln` |
+```text
+test/**
+```
 
-Ignore unrelated failures. Generated tests must pass.
+Allowed:
+
+* tests
+* fixtures
+* builders
+* helpers
+* mocks
+
+Forbidden:
+
+* edit src
+* refactor src
+* modify visibility
+* modify constructors
+* modify interfaces
+* modify business logic
+* modify InternalsVisibleTo
+
+If production changes are required:
+
+```text
+Status: BLOCKED_BY_PRODUCTION_CODE
+```
+
+Store the result and continue with the next file.
+
+## Build Rules
+
+Allowed:
+
+```bash
+dotnet build <AffectedTestProject.csproj>
+```
+
+Forbidden:
+
+```bash
+dotnet build
+dotnet build *.sln
+```
+
+## Test Execution
+
+Preferred:
+
+```bash
+dotnet test <AffectedTestProject.csproj> \
+  --filter FullyQualifiedName~<TargetClass>
+```
+
+Fallback:
+
+```bash
+dotnet test <AffectedTestProject.csproj>
+```
+
+Forbidden:
+
+```bash
+dotnet test
+dotnet test *.sln
+```
+
+Ignore unrelated failures.
+
+Generated tests must pass.
 
 ## Commit Rules
 
-Only if build + generated tests pass. One commit per file.
+Commit only if:
 
-```bash
-git add test/** $STATE/processed.json $STATE/summary.md $STATE/results/*
-git commit -m "test: <FileName.cs> [session $SID]"
+* build succeeds
+* generated tests pass
+
+Include:
+
+* generated tests
+* processed.json
+* summary.md
+* results/*
+
+Commit message:
+
+```text
+test: <FileName.cs>
 ```
+
+One commit per processed file.
 
 ## Summary Format
 
-Append to `$STATE/summary.md`:
-```
-Timestamp: | Session: $SID | File: | CoverageBefore: | CoverageAfter: | TestsAdded: | Commit: | Status:
+Append to `summary.md`:
+
+```text
+Timestamp:
+File:
+CoverageBefore:
+CoverageAfter:
+TestsAdded:
+Commit:
+Status:
 ```
 
 ## Worker Output
 
-Return only (no explanations/reasoning/commentary):
+Return only:
+
+```text
+File:
+CoverageBefore:
+CoverageAfter:
+TestsAdded:
+Commit:
+Status:
 ```
-File: | CoverageBefore: | CoverageAfter: | TestsAdded: | Commit: | Status:
-```
+
+No explanations.
+
+No reasoning.
+
+No commentary.
