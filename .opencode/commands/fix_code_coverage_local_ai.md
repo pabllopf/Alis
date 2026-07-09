@@ -1,4 +1,4 @@
-# OpenCode Autonomous SonarCloud Coverage Orchestrator V2
+# OpenCode Autonomous SonarCloud Coverage Orchestrator V3
 
 Deterministic .NET coverage orchestrator optimized for minimal token usage.
 
@@ -162,6 +162,7 @@ Requirements:
 * real implementations preferred
 * Moq only for interfaces or external dependencies
 * InternalsVisibleTo already exists
+* You can't generate cobertura files (like cobertura.xml, .trx files, etc) 
 
 Forbidden:
 
