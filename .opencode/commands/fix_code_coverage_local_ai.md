@@ -11,10 +11,10 @@ Process every uncovered SonarCloud file exactly once and resume progress across 
 Persist execution using:
 
 ```text
-./memory/system/processed.json
-./memory/system/summary.md
-./memory/system/results/
-./memory/system/state/current_task.md
+./.memory/system/processed.json
+./.memory/system/summary.md
+./.memory/system/results/
+./.memory/system/state/current_task.md
 ```
 
 Rules:
@@ -32,8 +32,8 @@ Execute:
   --limit 1 \
   --fetch-source \
   --no-clean \
-  --processed-file ./memory/system/processed.json \
-  --output ./memory/system/state/current_task.md
+  --processed-file ./.memory/system/processed.json \
+  --output ./.memory/system/state/current_task.md
 ```
 
 Priority:
@@ -241,9 +241,9 @@ Execute:
 
 ```bash
 git add <generated_test_files>
-git add ./memory/system/processed.json
-git add ./memory/system/summary.md
-git add ./memory/system/results/*
+git add ./.memory/system/processed.json
+git add ./.memory/system/summary.md
+git add ./.memory/system/results/*
 git commit -m "test: <FileName.cs>"
 ```
 

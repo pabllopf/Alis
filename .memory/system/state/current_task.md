@@ -5,25 +5,25 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs
+    pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs
 
     ### Language
     cs
 
     ### Coverage
-    81.4% (Line: 82.4%, Branch: 79.2%)
+    90.3% (Line: 91.2%, Branch: 87.8%)
 
     ### Uncovered Lines
-    21
+    22
 
     ### Uncovered Branches
-    10
+    11
 
     ### Method
-    AudioReader
+    AssetRegistry
 
     ### Complexity / LOC
-    40 / 154 lines
+    60 / 316 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioReader.cs
+//  File:AssetRegistry.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Globalization;
+using System.Buffers;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
-using System.Threading.Tasks;
-using Alis.Core.Aspect.Data.Json;
-using Alis.Extension.Media.FFmpeg.Audio.Models;
-using Alis.Extension.Media.FFmpeg.BaseClasses;
+using System.Security.Cryptography;
+using System.Text;
 
-namespace Alis.Extension.Media.FFmpeg.Audio
+namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    ///     The audio reader class
+    ///     Provides static methods for registering assembly-level embedded asset packages
+    ///     (.pack / .zip) and resolving embedded resource paths or in-memory streams by
+    ///     resource name. Maintains thread-safe caches for zip indexes and extracted file
+    ///     paths to minimize redundant I/O across assemblies.
     /// </summary>
-    /// <seealso cref="MediaReader{Frame,Writer}" />
-    /// <seealso cref="IDisposable" />
-    public class AudioReader : MediaReader<AudioFrame, AudioWriter>, IDisposable
+    public static class AssetRegistry
     {
         /// <summary>
-        ///     The ffprobe
+        ///     Stores the registered asset loader delegates keyed by assembly name.
+        ///     Each delegate, when invoked, returns a <see cref="Stream" /> providing
+        ///     access to the assembly's embedded assets.pack content.
         /// </summary>
-        private readonly string ffmpeg;
+        private static readonly Dictionary<string, Func<Stream>> RegisteredAssetLoaders = new();
 
         /// <summary>
-        ///     The ffprobe
-        /// </summary>
-        private readonly string ffprobe;
-
-        /// <summary>
-        ///     The loaded bit depth
+        ///     Per-assembly lock objects used to synchronize zip cache operations
+        ///     independently, reducing contention compared to a single global lock.
         /// </summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/Audio/AudioReaderTests.cs
+    pabllopf-official_alis:6_Ideation/Memory/test/AssetRegistryTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs
+    Generate xUnit test targeting pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage AudioReader.cs
+    Commit format: test: coverage AssetRegistry.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
