@@ -43,15 +43,24 @@ This downloads all SonarCloud data into `./.memory/system/cache/` and exits.
 
 After cache is populated, loop:
 
-```bash
-./docs/tools/get_info_sonarcloud.py \
-  --limit 1 \
-  --fetch-source \
-  --no-clean \
-  --cache-only \
-  --processed-file ./.memory/system/processed.json \
-  --output ./.memory/system/state/current_task.md
-```
+### Skip Logic
+
+1. Read `./.memory/system/processed.json` to obtain the set of already-processed file keys.
+2. Run `get_info_sonarcloud` with `--skip N` starting at `0`:
+   ```bash
+   ./docs/tools/get_info_sonarcloud.py \
+     --limit 1 \
+     --fetch-source \
+     --no-clean \
+     --cache-only \
+     --skip 0 \
+     --output ./.memory/system/state/current_task.md
+   ```
+3. Parse the output and extract the `### File` line.
+4. Compare that file key against the set from `processed.json`:
+   - If the file **is already in** `processed.json`, increment `--skip` by 1 and re-run (step 2).
+   - If the file **is not** in `processed.json`, proceed with that task.
+5. Repeat until an unprocessed file is found or `NO_REMAINING_COVERAGE_TASKS` is returned.
 
 Priority order:
 
