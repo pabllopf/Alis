@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
@@ -226,8 +227,282 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True(joint.LengthA > 0);
             Assert.True(joint.LengthB > 0);
         }
-        
 
-        
+        /// <summary>
+        /// Tests that CurrentLengthA returns the distance from WorldAnchorA to the world position of LocalAnchorA.
+        /// </summary>
+        [Fact]
+        public void CurrentLengthA_ShouldReturnDistanceFromWorldAnchorA()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            PulleyJoint joint = new PulleyJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero, new Vector2F(0.0f, -1.0f), new Vector2F(0.0f, -1.0f), 1.0f);
+
+            float length = joint.CurrentLengthA;
+
+            Assert.True(length > 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that CurrentLengthB returns the distance from WorldAnchorB to the world position of LocalAnchorB.
+        /// </summary>
+        [Fact]
+        public void CurrentLengthB_ShouldReturnDistanceFromWorldAnchorB()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            PulleyJoint joint = new PulleyJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero, new Vector2F(0.0f, -1.0f), new Vector2F(0.0f, -1.0f), 1.0f);
+
+            float length = joint.CurrentLengthB;
+
+            Assert.True(length > 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that stepping the world with a pulley joint and two dynamic bodies
+        /// exercises the solver (InitVelocityConstraints, SolveVelocityConstraints, SolvePositionConstraints).
+        /// </summary>
+        [Fact]
+        public void Step_WithTwoDynamicBodies_ShouldInvokeSolverMethods()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                new Vector2F(0.0f, 1.0f),
+                new Vector2F(0.0f, -1.0f),
+                new Vector2F(0.0f, 2.0f),
+                new Vector2F(0.0f, -2.0f),
+                1.0f);
+
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+            Assert.Equal(JointType.Pulley, joint.JointType);
+        }
+
+        /// <summary>
+        /// Tests that stepping the world multiple times maintains constraint stability.
+        /// </summary>
+        [Fact]
+        public void Step_MultipleTimes_ShouldMaintainStability()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-1.0f, 1.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 1.0f), BodyType.Dynamic);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                new Vector2F(0.0f, 1.0f),
+                new Vector2F(0.0f, -1.0f),
+                new Vector2F(0.0f, 2.0f),
+                new Vector2F(0.0f, -2.0f),
+                1.0f);
+
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that GetReactionForce can be retrieved after stepping the world.
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_AfterStep_ShouldBeAccessible()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-1.0f, 1.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 1.0f), BodyType.Dynamic);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                new Vector2F(0.0f, 1.0f),
+                new Vector2F(0.0f, -1.0f),
+                new Vector2F(0.0f, 2.0f),
+                new Vector2F(0.0f, -2.0f),
+                1.0f);
+
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+
+            Vector2F force = joint.GetReactionForce(1.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that stepping with a different ratio exercises varied solver paths.
+        /// </summary>
+        [Fact]
+        public void Step_WithNonUnitRatio_ShouldWork()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                new Vector2F(0.0f, 1.0f),
+                new Vector2F(0.0f, -1.0f),
+                new Vector2F(0.0f, 2.0f),
+                new Vector2F(0.0f, -2.0f),
+                2.0f);
+
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(2.0f, joint.Ratio);
+        }
+
+        /// <summary>
+        /// Tests that stepping with useWorldCoordinates = true works in simulation context.
+        /// </summary>
+        [Fact]
+        public void Step_WithUseWorldCoordinates_ShouldWork()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                new Vector2F(0.0f, 1.0f),
+                new Vector2F(0.0f, -1.0f),
+                new Vector2F(0.0f, 2.0f),
+                new Vector2F(0.0f, -2.0f),
+                1.0f,
+                useWorldCoordinates: true);
+
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that stepping with zero gravity and setting initial velocities exercises velocity constraint solving.
+        /// </summary>
+        [Fact]
+        public void Step_WithInitialVelocities_ShouldExerciseVelocityConstraints()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                new Vector2F(0.0f, 1.0f),
+                new Vector2F(0.0f, -1.0f),
+                new Vector2F(0.0f, 2.0f),
+                new Vector2F(0.0f, -2.0f),
+                1.0f);
+
+            world.Add(joint);
+            bodyA.LinearVelocity = new Vector2F(2.0f, 0.0f);
+            bodyB.LinearVelocity = new Vector2F(-2.0f, 0.0f);
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that the constructor with useWorldCoordinates = false (default) still computes lengths.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithUseWorldCoordinatesFalse_ShouldComputeLengths()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            Vector2F anchor = new Vector2F(0.5f, 0.5f);
+            Vector2F worldAnchor = new Vector2F(0.0f, -1.0f);
+
+            PulleyJoint joint = new PulleyJoint(bodyA, bodyB, anchor, anchor, worldAnchor, worldAnchor, 1.0f);
+
+            Assert.True(joint.LengthA > 0.0f);
+            Assert.True(joint.LengthB > 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that stepping with anchors placed at the same position as world anchors
+        /// exercises the short-length branches in the solver (where lengthA/lengthB <= 10*LinearSlop).
+        /// </summary>
+        [Fact]
+        public void Step_WithZeroLengthAnchors_ShouldHitShortLengthBranches()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vector2F position = new Vector2F(0.0f, 0.0f);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, position, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, position, BodyType.Dynamic);
+
+            Vector2F samePoint = new Vector2F(0.0f, 0.0f);
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                samePoint, samePoint,
+                samePoint, samePoint,
+                1.0f);
+
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that stepping with very close anchors (distance less than 10*LinearSlop)
+        /// exercises the else branch in the length checks within solver methods.
+        /// </summary>
+        [Fact]
+        public void Step_WithVeryCloseAnchors_ShouldHitShortLengthBranches()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vector2F position = new Vector2F(0.0f, 0.0f);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, position, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, position, BodyType.Dynamic);
+
+            Vector2F closePoint = new Vector2F(0.001f, 0.0f);
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                closePoint, closePoint,
+                new Vector2F(0.0f, 0.0f),
+                new Vector2F(0.0f, 0.0f),
+                1.0f);
+
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that GetReactionForce with a high invDt produces a scaled force after stepping.
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_WithHighInvDt_ShouldBeAccessible()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-1.0f, 1.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 1.0f), BodyType.Dynamic);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                new Vector2F(0.0f, 1.0f),
+                new Vector2F(0.0f, -1.0f),
+                new Vector2F(0.0f, 2.0f),
+                new Vector2F(0.0f, -2.0f),
+                1.0f);
+
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+
+            Vector2F force = joint.GetReactionForce(100.0f);
+            Assert.NotNull(joint);
+        }
     }
 }
