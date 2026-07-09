@@ -59,8 +59,9 @@ After cache is populated, loop:
 3. Parse the output and extract the `### File` line.
 4. Compare that file key against the set from `processed.json`:
    - If the file **is already in** `processed.json`, increment `--skip` by 1 and re-run (step 2).
-   - If the file **is not** in `processed.json`, proceed with that task.
-5. Repeat until an unprocessed file is found or `NO_REMAINING_COVERAGE_TASKS` is returned.
+   - If the file **is not** in `processed.json`, **add it to `processed.json` immediately** (append to array and save), then proceed with the task.
+5. This ensures other concurrent sessions skip it from the moment it is picked up.
+6. Repeat until an unprocessed file is found or `NO_REMAINING_COVERAGE_TASKS` is returned.
 
 Priority order:
 
@@ -126,13 +127,13 @@ Never commit task state.
 Repeat until `NO_REMAINING_COVERAGE_TASKS`:
 
 1. Populate cache if empty (`--cache`).
-2. Extract next coverage task from local cache (`--cache-only`).
+2. Extract next coverage task via Skip Logic above (file is added to `processed.json` immediately upon selection).
 3. If `NO_REMAINING_COVERAGE_TASKS` → stop.
 4. Spawn worker agent.
 5. Wait for completion.
 6. Save result.
 7. Update summary.
-8. Mark processed.
+8. Commit `processed.json` + results (file already in list from step 2).
 9. Continue.
 
 ## Worker Context
