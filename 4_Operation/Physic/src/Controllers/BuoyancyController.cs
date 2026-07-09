@@ -129,7 +129,7 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     The Y-coordinate offset representing the fluid surface level, derived from <see cref="Container"/>.UpperBound.Y.
         /// </summary>
-        private float _offset;
+        internal float _offset;
 
         /// <summary>
         ///     Simulates water current or flow velocity. Defaults to (0, 0).

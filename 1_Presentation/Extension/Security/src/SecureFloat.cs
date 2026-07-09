@@ -37,12 +37,12 @@ namespace Alis.Extension.Security
         /// <summary>
         ///     The random value
         /// </summary>
-        private float _randomValue;
+        internal float _randomValue;
 
         /// <summary>
         ///     The value
         /// </summary>
-        private float _value;
+        internal float _value;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SecureFloat" /> class
@@ -53,7 +53,7 @@ namespace Alis.Extension.Security
         /// <summary>
         ///     Gets or sets the value of the value
         /// </summary>
-        private float Value
+        internal float Value
         {
             get => _value - _randomValue;
 

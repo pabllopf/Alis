@@ -296,7 +296,7 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The index</returns>
-        private int WrapIndex(int index)
+        internal int WrapIndex(int index)
         {
             int max = _controlPoints.Count - 1;
             if (index < 0) return index + max;
@@ -309,7 +309,7 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The index</returns>
-        private int ClampIndex(int index)
+        internal int ClampIndex(int index)
         {
             int max = _controlPoints.Count - 1;
             if (index < 0) return 0;

@@ -66,7 +66,7 @@ namespace Alis.Core.Graphic.Platforms.Win
 
         /// <summary>
         /// </summary>
-        private int height;
+        internal int height;
 
         /// <summary>
         /// </summary>
@@ -90,11 +90,11 @@ namespace Alis.Core.Graphic.Platforms.Win
 
         /// <summary>
         /// </summary>
-        private string title;
+        internal string title;
 
         /// <summary>
         /// </summary>
-        private int width;
+        internal int width;
 
         /// <summary>
         /// </summary>
@@ -104,7 +104,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// </summary>
         private IntPtr wndProcPtr;
 
-        private string inputCharBuffer = null;
+        internal string inputCharBuffer = null;
 
 
         // ------------------------------------------------------------------
@@ -788,7 +788,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// </summary>
         /// <param name="errorCode">The error code</param>
         /// <returns>The string</returns>
-        private string GetWin32ErrorMeaning(int errorCode)
+        internal string GetWin32ErrorMeaning(int errorCode)
         {
             switch (errorCode)
             {

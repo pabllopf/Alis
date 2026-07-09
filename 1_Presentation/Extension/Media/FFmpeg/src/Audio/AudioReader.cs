@@ -58,7 +58,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     The loaded bit depth
         /// </summary>
-        private int loadedBitDepth = 16;
+        internal int loadedBitDepth = 16;
 
         /// <summary>
         ///     Used for reading metadata and frames from audio files.

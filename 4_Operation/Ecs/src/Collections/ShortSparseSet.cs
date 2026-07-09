@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     The next index
         /// </summary>
-        private int _nextIndex;
+        internal int _nextIndex;
 
         /// <summary>
         ///     The sparse

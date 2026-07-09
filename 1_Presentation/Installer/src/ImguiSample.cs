@@ -104,7 +104,7 @@ namespace Alis.App.Installer
         /// <summary>
         ///     The counter
         /// </summary>
-        private int _counter = 0;
+        internal int _counter = 0;
 
         /// <summary>
         ///     The ebo

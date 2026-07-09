@@ -62,17 +62,17 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     The free list
         /// </summary>
-        private int _freeList;
+        internal int _freeList;
 
         /// <summary>
         ///     The node capacity
         /// </summary>
-        private int _nodeCapacity;
+        internal int _nodeCapacity;
 
         /// <summary>
         ///     The node count
         /// </summary>
-        private int _nodeCount;
+        internal int _nodeCount;
 
         /// <summary>
         ///     The nodes
@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     The root
         /// </summary>
-        private int _root;
+        internal int _root;
 
         /// <summary>
         ///     Constructing the tree initializes the node pool.
@@ -454,7 +454,7 @@ namespace Alis.Core.Physic.Collisions
         ///     Allocates the node
         /// </summary>
         /// <returns>The node id</returns>
-        private int AllocateNode()
+        internal int AllocateNode()
         {
             // Expand the node pool as needed.
             if (_freeList == NullNode)
@@ -530,7 +530,7 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     Finds the best sibling for the leaf by traversing the tree.
         /// </summary>
-        private int FindBestSibling(Aabb leafAabb)
+        internal int FindBestSibling(Aabb leafAabb)
         {
             int index = _root;
             while (!_nodes[index].IsLeaf())
@@ -579,7 +579,7 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     Computes the cost of descending into a child node.
         /// </summary>
-        private float ComputeChildCost(int childIndex, Aabb leafAabb, float inheritanceCost)
+        internal float ComputeChildCost(int childIndex, Aabb leafAabb, float inheritanceCost)
         {
             Aabb combined = new Aabb();
             combined.Combine(ref leafAabb, ref _nodes[childIndex].Aabb);
@@ -722,7 +722,7 @@ namespace Alis.Core.Physic.Collisions
         /// </summary>
         /// <param name="iN"></param>
         /// <returns>the new root index.</returns>
-        private int Balance(int iN)
+        internal int Balance(int iN)
         {
             if (_nodes[iN].IsLeaf() || _nodes[iN].Height < 2)
             {

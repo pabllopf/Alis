@@ -73,7 +73,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <summary>
         ///     The num nodes
         /// </summary>
-        private int _numNodes;
+        internal int _numNodes;
 
         /// <summary>
         ///     The num nodes ever enqueued

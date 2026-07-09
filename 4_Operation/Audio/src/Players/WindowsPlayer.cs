@@ -49,7 +49,7 @@ namespace Alis.Core.Audio.Players
         /// <summary>
         ///     The file name
         /// </summary>
-        private string _fileName;
+        internal string _fileName;
 
         /// <summary>
         ///     The playback timer

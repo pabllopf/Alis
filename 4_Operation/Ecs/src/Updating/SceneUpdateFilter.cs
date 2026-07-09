@@ -74,12 +74,12 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     The last registered component id
         /// </summary>
-        private int _lastRegisteredComponentId;
+        internal int _lastRegisteredComponentId;
 
         /// <summary>
         ///     The next component storage index
         /// </summary>
-        private int _nextComponentStorageIndex;
+        internal int _nextComponentStorageIndex;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneUpdateFilter" /> class

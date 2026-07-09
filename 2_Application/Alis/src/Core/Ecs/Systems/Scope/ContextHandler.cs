@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// <summary>
         ///     The accumulator
         /// </summary>
-        private float accumulator;
+        internal float accumulator;
 
         /// <summary>
         ///     The current time
@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// <summary>
         ///     The last delta time
         /// </summary>
-        private float lastDeltaTime;
+        internal float lastDeltaTime;
 
         /// <summary>
         ///     The last time
@@ -70,12 +70,12 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// <summary>
         ///     The smooth delta time count
         /// </summary>
-        private int smoothDeltaTimeCount;
+        internal int smoothDeltaTimeCount;
 
         /// <summary>
         ///     The smooth delta time sum
         /// </summary>
-        private float smoothDeltaTimeSum;
+        internal float smoothDeltaTimeSum;
 
         /// <summary>
         ///     The target frame duration

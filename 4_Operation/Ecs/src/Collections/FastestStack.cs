@@ -52,12 +52,12 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     The size
         /// </summary>
-        private int _size;
+        internal int _size;
 
         /// <summary>
         ///     The version
         /// </summary>
-        private int _version;
+        internal int _version;
 
         /// <summary>
         ///     The default capacity
@@ -539,7 +539,7 @@ namespace Alis.Core.Ecs.Collections
             /// <summary>
             ///     The index
             /// </summary>
-            private int _index;
+            internal int _index;
 
 
             /// <summary>

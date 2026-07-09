@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The index
         /// </summary>
-        private int _index;
+        internal int _index;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObjectEnumerator" /> class

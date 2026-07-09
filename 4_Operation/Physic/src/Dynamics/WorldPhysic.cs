@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The inv dt
         /// </summary>
-        private float _invDt0;
+        internal float _invDt0;
 
         /// <summary>
         ///     The query delegate tmp
@@ -720,7 +720,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The float</returns>
-        private float CalculateContactAlpha(Contact c)
+        internal float CalculateContactAlpha(Contact c)
         {
             if (c.ToiFlag)
             {
@@ -1293,7 +1293,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rayCastInput">The ray cast input</param>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The float</returns>
-        private float RayCastCallback(ref RayCastInput rayCastInput, int proxyId)
+        internal float RayCastCallback(ref RayCastInput rayCastInput, int proxyId)
         {
             FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
             Fixture fixture = proxy.Fixture;

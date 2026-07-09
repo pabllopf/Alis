@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     The elapsed time
         /// </summary>
-        private float _elapsedTime;
+        internal float _elapsedTime;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animator" /> class

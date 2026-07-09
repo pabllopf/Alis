@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// <summary>
         ///     The time step physics
         /// </summary>
-        private float timeStepPhysics;
+        internal float timeStepPhysics;
 
         /// <summary>
         ///     Gets or sets the world physic

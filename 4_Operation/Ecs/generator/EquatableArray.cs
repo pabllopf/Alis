@@ -175,7 +175,7 @@ namespace Alis.Core.Ecs.Generator
             /// <summary>
             ///     The index
             /// </summary>
-            private int _index;
+            internal int _index;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="EquatableArrayEnumerator" /> class

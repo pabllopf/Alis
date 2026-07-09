@@ -62,17 +62,17 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <summary>
         /// 
         /// </summary>
-        private int width;
+        internal int width;
 
         /// <summary>
         /// 
         /// </summary>
-        private int height;
+        internal int height;
 
         /// <summary>
         /// 
         /// </summary>
-        private string title;
+        internal string title;
 
         /// <summary>
         /// The last mouse button state snapshot.
@@ -87,7 +87,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <summary>
         /// The accumulated vertical mouse wheel delta.
         /// </summary>
-        private float mouseWheelDelta;
+        internal float mouseWheelDelta;
 
         /// <summary>
         /// The WM_DELETE_WINDOW atom used to detect close requests.

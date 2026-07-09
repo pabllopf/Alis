@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     The my radius
         /// </summary>
-        private float myRadius;
+        internal float myRadius;
 
         /// <summary>
         ///     Default constructor

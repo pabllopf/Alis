@@ -57,10 +57,10 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// </summary>
         private ConsoleKey? lastKeyPressed;
 
-        private float mouseWheel;
+        internal float mouseWheel;
 
-        private int mouseX;
-        private int mouseY;
+        internal int mouseX;
+        internal int mouseY;
 
         /// <summary>
         /// </summary>

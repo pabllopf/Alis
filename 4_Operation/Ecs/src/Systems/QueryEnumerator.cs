@@ -42,12 +42,12 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     The component index
         /// </summary>
-        private int _componentIndex;
+        internal int _componentIndex;
 
         /// <summary>
         ///     The scene
@@ -147,12 +147,12 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     The component index
         /// </summary>
-        private int _componentIndex;
+        internal int _componentIndex;
 
         /// <summary>
         ///     The scene
@@ -259,12 +259,12 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     The component index
         /// </summary>
-        private int _componentIndex;
+        internal int _componentIndex;
 
         /// <summary>
         ///     The scene
@@ -378,12 +378,12 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     The component index
         /// </summary>
-        private int _componentIndex;
+        internal int _componentIndex;
 
         /// <summary>
         ///     The scene
@@ -504,12 +504,12 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     The component index
         /// </summary>
-        private int _componentIndex;
+        internal int _componentIndex;
 
         /// <summary>
         ///     The scene
@@ -637,12 +637,12 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     The component index
         /// </summary>
-        private int _componentIndex;
+        internal int _componentIndex;
 
         /// <summary>
         ///     The scene
@@ -777,12 +777,12 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     The component index
         /// </summary>
-        private int _componentIndex;
+        internal int _componentIndex;
 
         /// <summary>
         ///     The scene
@@ -930,12 +930,12 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     The component index
         /// </summary>
-        private int _componentIndex;
+        internal int _componentIndex;
 
         /// <summary>
         ///     The scene

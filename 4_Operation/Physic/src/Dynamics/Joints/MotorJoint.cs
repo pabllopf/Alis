@@ -43,42 +43,42 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The angular error
         /// </summary>
-        private float _angularError;
+        internal float _angularError;
 
         /// <summary>
         ///     The angular impulse
         /// </summary>
-        private float _angularImpulse;
+        internal float _angularImpulse;
 
         /// <summary>
         ///     The angular mass
         /// </summary>
-        private float _angularMass;
+        internal float _angularMass;
 
         /// <summary>
         ///     The angular offset
         /// </summary>
-        private float _angularOffset;
+        internal float _angularOffset;
 
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexA;
+        internal int _indexA;
 
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexB;
+        internal int _indexB;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        private float _invMassA;
+        internal float _invMassA;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        private float _invMassB;
+        internal float _invMassB;
 
         /// <summary>
         ///     The linear error
@@ -113,12 +113,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The inv ia
         /// </summary>
-        private float invIa;
+        internal float invIa;
 
         /// <summary>
         ///     The inv ib
         /// </summary>
-        private float invIb;
+        internal float invIb;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MotorJoint" /> class

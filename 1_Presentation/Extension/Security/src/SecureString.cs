@@ -42,7 +42,7 @@ namespace Alis.Extension.Security
         /// <summary>
         ///     The encrypted value
         /// </summary>
-        private string encryptedValue;
+        internal string encryptedValue;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SecureString" /> class

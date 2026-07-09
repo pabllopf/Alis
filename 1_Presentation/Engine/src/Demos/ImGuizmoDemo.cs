@@ -43,7 +43,7 @@ namespace Alis.App.Engine.Demos
         /// <summary>
         ///     The camera projection
         /// </summary>
-        private float[] cameraProjection = new float[16]
+        internal float[] cameraProjection = new float[16]
         {
             2.0f / 800.0f, 0.0f, 0.0f, 0.0f,
             0.0f, 2.0f / 600.0f, 0.0f, 0.0f,
@@ -54,7 +54,7 @@ namespace Alis.App.Engine.Demos
         /// <summary>
         ///     The camera view
         /// </summary>
-        private float[] cameraView = new float[16]
+        internal float[] cameraView = new float[16]
         {
             1.0f, 0.0f, 0.0f, 0.0f,
             0.0f, 1.0f, 0.0f, 0.0f,
@@ -65,7 +65,7 @@ namespace Alis.App.Engine.Demos
         /// <summary>
         ///     The identity matrix
         /// </summary>
-        private float[] identityMatrix = new float[16]
+        internal float[] identityMatrix = new float[16]
         {
             1.0f, 0.0f, 0.0f, 0.0f,
             0.0f, 1.0f, 0.0f, 0.0f,
@@ -81,7 +81,7 @@ namespace Alis.App.Engine.Demos
         /// <summary>
         ///     The matrix
         /// </summary>
-        private float[] matrix = new float[16]
+        internal float[] matrix = new float[16]
         {
             1.0f, 0.0f, 0.0f, 0.0f,
             0.0f, 1.0f, 0.0f, 0.0f,
@@ -92,17 +92,17 @@ namespace Alis.App.Engine.Demos
         /// <summary>
         ///     The matrix rotation
         /// </summary>
-        private float[] matrixRotation = new float[3];
+        internal float[] matrixRotation = new float[3];
 
         /// <summary>
         ///     The matrix scale
         /// </summary>
-        private float[] matrixScale = new float[3];
+        internal float[] matrixScale = new float[3];
 
         /// <summary>
         ///     The matrix translation
         /// </summary>
-        private float[] matrixTranslation = new float[3];
+        internal float[] matrixTranslation = new float[3];
 
         /// <summary>
         ///     The vector

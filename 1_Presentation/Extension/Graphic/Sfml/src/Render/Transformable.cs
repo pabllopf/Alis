@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     The my rotation
         /// </summary>
-        private float myRotation;
+        internal float myRotation;
 
         /// <summary>
         ///     The vector 2f

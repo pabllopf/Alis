@@ -76,7 +76,7 @@ namespace Alis.Core.Aspect.Logging.Core
         /// <summary>
         ///     The correlation id
         /// </summary>
-        private string _correlationId;
+        internal string _correlationId;
 
         /// <summary>
         ///     Initializes a new instance of the CoreLogger class.
@@ -301,7 +301,7 @@ namespace Alis.Core.Aspect.Logging.Core
         /// <summary>
         ///     Gets the current correlation ID (internal, thread-safe version).
         /// </summary>
-        private string GetCorrelationIdInternal()
+        internal string GetCorrelationIdInternal()
         {
             lock (_correlationLock)
             {

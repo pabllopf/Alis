@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private float _a1, _a2;
+        internal float _a1, _a2;
 
         /// <summary>
         ///     The perp
@@ -129,22 +129,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexA;
+        internal int _indexA;
 
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexB;
+        internal int _indexB;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        private float _invMassA;
+        internal float _invMassA;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        private float _invMassB;
+        internal float _invMassB;
 
         /// <summary>
         ///     The limit state
@@ -174,42 +174,42 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The lower translation
         /// </summary>
-        private float _lowerTranslation;
+        internal float _lowerTranslation;
 
         /// <summary>
         ///     The max motor force
         /// </summary>
-        private float _maxMotorForce;
+        internal float _maxMotorForce;
 
         /// <summary>
         ///     The motor mass
         /// </summary>
-        private float _motorMass;
+        internal float _motorMass;
 
         /// <summary>
         ///     The motor speed
         /// </summary>
-        private float _motorSpeed;
+        internal float _motorSpeed;
 
         /// <summary>
         ///     The
         /// </summary>
-        private float _s1, _s2;
+        internal float _s1, _s2;
 
         /// <summary>
         ///     The upper translation
         /// </summary>
-        private float _upperTranslation;
+        internal float _upperTranslation;
 
         /// <summary>
         ///     The inv ia
         /// </summary>
-        private float invIa;
+        internal float invIa;
 
         /// <summary>
         ///     The inv ib
         /// </summary>
-        private float invIb;
+        internal float invIb;
 
         /// <summary>
         ///     The

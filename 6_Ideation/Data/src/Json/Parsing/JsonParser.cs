@@ -177,7 +177,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         ///     Returns null if the position is at or past the end of the string.
         /// </returns>
         
-        private string ReadJsonValue(string json, ref int position)
+        internal string ReadJsonValue(string json, ref int position)
         {
             SkipWhitespace(json, ref position);
 
@@ -208,7 +208,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// <param name="position">The current position, expected to point at a '"' character. Advanced past the closing '"' on success.</param>
         /// <returns>The unescaped string content between the opening and closing quotes.</returns>
         /// <exception cref="JsonParsingException">Thrown if no opening quote is found at the current position, or if the string is unterminated (no closing quote before end of input).</exception>
-        private string ReadJsonString(string json, ref int position)
+        internal string ReadJsonString(string json, ref int position)
         {
             if (position >= json.Length || json[position] != '"')
             {
@@ -245,7 +245,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// <returns>The raw JSON substring from the opening to the matching closing delimiter, inclusive.</returns>
         /// <exception cref="JsonParsingException">Thrown if the JSON structure is unterminated (no matching closing delimiter found before end of input).</exception>
         
-        private string ReadRawJsonValue(string json, ref int position)
+        internal string ReadRawJsonValue(string json, ref int position)
         {
             char openChar = json[position];
             char closeChar = openChar == '{' ? '}' : ']';

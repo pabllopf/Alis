@@ -47,7 +47,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <summary>
         ///     The num nodes
         /// </summary>
-        private int _numNodes;
+        internal int _numNodes;
 
         /// <summary>
         ///     Instantiate a new Priority Queue
@@ -311,7 +311,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="childRight">The child right</param>
         /// <returns>The final queue index</returns>
         
-        private int GetSwapIndex(int finalQueueIndex, int childLeftIndex, int childRightIndex, T childLeft, T childRight)
+        internal int GetSwapIndex(int finalQueueIndex, int childLeftIndex, int childRightIndex, T childLeft, T childRight)
         {
             bool isLeftHigherPriority = HasHigherPriority(childLeft, _nodes[finalQueueIndex]);
             bool isRightHigherPriority = (childRight != null) && HasHigherPriority(childRight, _nodes[finalQueueIndex]);

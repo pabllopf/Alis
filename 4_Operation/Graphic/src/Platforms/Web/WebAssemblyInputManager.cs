@@ -55,7 +55,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The last mouse wheel delta
         /// </summary>
-        private float _lastMouseWheelDelta;
+        internal float _lastMouseWheelDelta;
         /// <summary>
         ///     Initializes a new instance of the WebAssemblyInputManager
         /// </summary>

@@ -200,7 +200,7 @@ namespace Alis.Core.Physic.Dynamics
             /// <summary>
             ///     The
             /// </summary>
-            private int i;
+            internal int i;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="JointEnumerator" /> class

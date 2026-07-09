@@ -46,7 +46,7 @@ namespace Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Audio
         /// <summary>
         ///     The volume
         /// </summary>
-        private int volume;
+        internal int volume;
 
         /// <summary>
         ///     Builds this instance

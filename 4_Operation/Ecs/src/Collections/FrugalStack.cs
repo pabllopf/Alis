@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     The next index
         /// </summary>
-        private int _nextIndex = 0;
+        internal int _nextIndex = 0;
 
         /// <summary>
         ///     Gets the value of the any

@@ -68,17 +68,17 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     The move buffer
         /// </summary>
-        private int[] _moveBuffer;
+        internal int[] _moveBuffer;
 
         /// <summary>
         ///     The move capacity
         /// </summary>
-        private int _moveCapacity;
+        internal int _moveCapacity;
 
         /// <summary>
         ///     The move count
         /// </summary>
-        private int _moveCount;
+        internal int _moveCount;
 
         /// <summary>
         ///     The pair buffer
@@ -88,17 +88,17 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     The pair capacity
         /// </summary>
-        private int _pairCapacity;
+        internal int _pairCapacity;
 
         /// <summary>
         ///     The pair count
         /// </summary>
-        private int _pairCount;
+        internal int _pairCount;
 
         /// <summary>
         ///     The query proxy id
         /// </summary>
-        private int _queryProxyId;
+        internal int _queryProxyId;
 
         /// <summary>
         ///     Constructs a new broad phase based on the dynamic tree implementation

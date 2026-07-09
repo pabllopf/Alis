@@ -52,7 +52,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <summary>
         ///     The one
         /// </summary>
-        private float rotation;
+        internal float rotation;
 
         /// <summary>
         ///     The vector

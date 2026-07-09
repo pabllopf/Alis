@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The gamma
         /// </summary>
-        private float _gamma;
+        internal float _gamma;
 
         // Solver shared
         /// <summary>
@@ -68,12 +68,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexA;
+        internal int _indexA;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        private float _invMassA;
+        internal float _invMassA;
 
         /// <summary>
         ///     The mass
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The inv ia
         /// </summary>
-        private float invIa;
+        internal float invIa;
 
         /// <summary>
         ///     This requires a world target point,

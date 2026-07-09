@@ -66,7 +66,7 @@ namespace Alis.Core.Ecs.Generator.Structures
         /// <summary>
         ///     The index
         /// </summary>
-        private int _index;
+        internal int _index;
 
         /// <summary>
         ///     Initializes a new instance of the  class

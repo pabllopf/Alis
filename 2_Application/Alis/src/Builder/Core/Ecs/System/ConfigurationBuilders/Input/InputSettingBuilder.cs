@@ -41,7 +41,7 @@ namespace Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Input
         /// <summary>
         ///     The sensitivity
         /// </summary>
-        private float sensitivity = 1.0f;
+        internal float sensitivity = 1.0f;
 
         /// <summary>
         ///     Builds this instance

@@ -46,11 +46,11 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The current width
         /// </summary>
-        private int _currentWidth;
+        internal int _currentWidth;
         /// <summary>
         /// The current height
         /// </summary>
-        private int _currentHeight;
+        internal int _currentHeight;
         /// <summary>
         /// The current orientation
         /// </summary>

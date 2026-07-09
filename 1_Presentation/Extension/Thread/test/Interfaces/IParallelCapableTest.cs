@@ -280,7 +280,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
         /// <returns>The int</returns>
-        private int ProcessParallelCapable<T>(T component) where T : struct, IParallelCapable
+        internal int ProcessParallelCapable<T>(T component) where T : struct, IParallelCapable
         {
             if (component is ComponentWithInterface comp)
             {

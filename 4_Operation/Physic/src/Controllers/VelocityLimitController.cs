@@ -78,22 +78,22 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     The max angular sqared
         /// </summary>
-        private float _maxAngularSqared;
+        internal float _maxAngularSqared;
 
         /// <summary>
         ///     The max angular velocity
         /// </summary>
-        private float _maxAngularVelocity;
+        internal float _maxAngularVelocity;
 
         /// <summary>
         ///     The max linear sqared
         /// </summary>
-        private float _maxLinearSqared;
+        internal float _maxLinearSqared;
 
         /// <summary>
         ///     The max linear velocity
         /// </summary>
-        private float _maxLinearVelocity;
+        internal float _maxLinearVelocity;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="VelocityLimitController" /> class.

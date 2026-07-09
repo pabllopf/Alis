@@ -75,9 +75,9 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     The selected menu item
         /// </summary>
-        private int selectedMenuItem;
+        internal int selectedMenuItem;
 
-        //private string searchQuery = " ";  // Variable para el buscador
+        //internal string searchQuery = " ";  // Variable para el buscador
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="HubWindow" /> class

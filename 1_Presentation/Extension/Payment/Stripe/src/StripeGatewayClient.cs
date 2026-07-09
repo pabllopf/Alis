@@ -44,7 +44,7 @@ namespace Alis.Extension.Payment.Stripe
         /// <summary>
         ///     The configured api key
         /// </summary>
-        private string _configuredApiKey;
+        internal string _configuredApiKey;
 
         /// <summary>
         ///     Configures the secret api key

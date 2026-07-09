@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The bias
         /// </summary>
-        private float _bias;
+        internal float _bias;
 
         /// <summary>
         ///     The enable motor
@@ -80,33 +80,33 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The gamma
         /// </summary>
-        private float _gamma;
+        internal float _gamma;
 
         /// <summary>
         ///     The impulse
         /// </summary>
-        private float _impulse;
+        internal float _impulse;
 
         // Solver temp
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexA;
+        internal int _indexA;
 
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexB;
+        internal int _indexB;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        private float _invMassA;
+        internal float _invMassA;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        private float _invMassB;
+        internal float _invMassB;
 
         /// <summary>
         ///     The local center
@@ -132,57 +132,57 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The mass
         /// </summary>
-        private float _mass;
+        internal float _mass;
 
         /// <summary>
         ///     The max motor torque
         /// </summary>
-        private float _maxMotorTorque;
+        internal float _maxMotorTorque;
 
         /// <summary>
         ///     The motor impulse
         /// </summary>
-        private float _motorImpulse;
+        internal float _motorImpulse;
 
         /// <summary>
         ///     The motor mass
         /// </summary>
-        private float _motorMass;
+        internal float _motorMass;
 
         /// <summary>
         ///     The motor speed
         /// </summary>
-        private float _motorSpeed;
+        internal float _motorSpeed;
 
         /// <summary>
         ///     The bx
         /// </summary>
-        private float _sAx, _sBx;
+        internal float _sAx, _sBx;
 
         /// <summary>
         ///     The by
         /// </summary>
-        private float _sAy, _sBy;
+        internal float _sAy, _sBy;
 
         /// <summary>
         ///     The spring impulse
         /// </summary>
-        private float _springImpulse;
+        internal float _springImpulse;
 
         /// <summary>
         ///     The spring mass
         /// </summary>
-        private float _springMass;
+        internal float _springMass;
 
         /// <summary>
         ///     The inv ia
         /// </summary>
-        private float invIa;
+        internal float invIa;
 
         /// <summary>
         ///     The inv ib
         /// </summary>
-        private float invIb;
+        internal float invIb;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="WheelJoint" /> class

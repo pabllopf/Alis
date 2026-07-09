@@ -126,7 +126,7 @@ namespace Alis.Extension.Network.Test.Samples
         /// </summary>
         /// <param name="requestedSubProtocols">The requested sub protocols</param>
         /// <returns>The string</returns>
-        private string GetSubProtocol(IList<string> requestedSubProtocols)
+        internal string GetSubProtocol(IList<string> requestedSubProtocols)
         {
             foreach (string subProtocol in requestedSubProtocols)
             {

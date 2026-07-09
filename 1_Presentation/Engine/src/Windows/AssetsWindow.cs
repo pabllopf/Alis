@@ -139,7 +139,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The directory separator char
         /// </summary>
-        private string currentPath = $"{Path.DirectorySeparatorChar}Assets";
+        internal string currentPath = $"{Path.DirectorySeparatorChar}Assets";
 
         /// <summary>
         ///     The is move directory
@@ -154,7 +154,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The search text
         /// </summary>
-        private string searchText = "";
+        internal string searchText = "";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AssetsWindow" /> class

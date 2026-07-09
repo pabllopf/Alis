@@ -59,12 +59,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The bias
         /// </summary>
-        private float _bias;
+        internal float _bias;
 
         /// <summary>
         ///     The gamma
         /// </summary>
-        private float _gamma;
+        internal float _gamma;
 
         /// <summary>
         ///     The impulse
@@ -74,22 +74,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexA;
+        internal int _indexA;
 
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexB;
+        internal int _indexB;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        private float _invMassA;
+        internal float _invMassA;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        private float _invMassB;
+        internal float _invMassB;
 
         /// <summary>
         ///     The local center
@@ -119,12 +119,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The inv ia
         /// </summary>
-        private float invIa;
+        internal float invIa;
 
         /// <summary>
         ///     The inv ib
         /// </summary>
-        private float invIb;
+        internal float invIb;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="WeldJoint" /> class

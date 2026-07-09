@@ -514,7 +514,7 @@ namespace Alis.Extension.Language.Translator
         /// <param name="key">The translation key</param>
         /// <returns>The translated string</returns>
         
-        private string TranslateForLanguage(string languageCode, string key)
+        internal string TranslateForLanguage(string languageCode, string key)
         {
             if (cache.TryGetTranslation(languageCode, key, out string cachedValue))
             {

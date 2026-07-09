@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The internal hash state used for computing the final hash.
         /// </summary>
-        private int _state = 12582917;
+        internal int _state = 12582917;
 
         /// <summary>
         ///     Creates a new empty <see cref="QueryHash"/> instance.

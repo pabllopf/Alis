@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The breakpoint
         /// </summary>
-        private float _breakpoint;
+        internal float _breakpoint;
 
         /// <summary>
         ///     The breakpoint squared

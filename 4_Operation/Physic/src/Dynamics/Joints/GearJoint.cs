@@ -114,17 +114,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private float _iA, _iB, _iC, _iD;
+        internal float _iA, _iB, _iC, _iD;
 
         /// <summary>
         ///     The impulse
         /// </summary>
-        private float _impulse;
+        internal float _impulse;
 
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexA, _indexB, _indexC, _indexD;
+        internal int _indexA, _indexB, _indexC, _indexD;
 
         /// <summary>
         ///     The lc
@@ -144,12 +144,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private float _mA, _mB, _mC, _mD;
+        internal float _mA, _mB, _mC, _mD;
 
         /// <summary>
         ///     The mass
         /// </summary>
-        private float _mass;
+        internal float _mass;
 
 
         /// <summary>
@@ -165,22 +165,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The jw
         /// </summary>
-        private float jwA;
+        internal float jwA;
 
         /// <summary>
         ///     The jw
         /// </summary>
-        private float jwB;
+        internal float jwB;
 
         /// <summary>
         ///     The jw
         /// </summary>
-        private float jwC;
+        internal float jwC;
 
         /// <summary>
         ///     The jw
         /// </summary>
-        private float jwD;
+        internal float jwD;
 
         /// <summary>
         ///     Requires two existing revolute or prismatic joints (any combination will work).

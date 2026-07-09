@@ -63,22 +63,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexA;
+        internal int _indexA;
 
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexB;
+        internal int _indexB;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        private float _invMassA;
+        internal float _invMassA;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        private float _invMassB;
+        internal float _invMassB;
 
         /// <summary>
         ///     The limit state
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The lower angle
         /// </summary>
-        private float _lowerAngle;
+        internal float _lowerAngle;
 
         /// <summary>
         ///     The mass
@@ -108,22 +108,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The max motor torque
         /// </summary>
-        private float _maxMotorTorque;
+        internal float _maxMotorTorque;
 
         /// <summary>
         ///     The motor impulse
         /// </summary>
-        private float _motorImpulse;
+        internal float _motorImpulse;
 
         /// <summary>
         ///     The motor mass
         /// </summary>
-        private float _motorMass; // effective mass for motor/limit angular constraint.
+        internal float _motorMass; // effective mass for motor/limit angular constraint.
 
         /// <summary>
         ///     The motor speed
         /// </summary>
-        private float _motorSpeed;
+        internal float _motorSpeed;
 
         /// <summary>
         ///     The
@@ -138,22 +138,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The reference angle
         /// </summary>
-        private float _referenceAngle;
+        internal float _referenceAngle;
 
         /// <summary>
         ///     The upper angle
         /// </summary>
-        private float _upperAngle;
+        internal float _upperAngle;
 
         /// <summary>
         ///     The inv ia
         /// </summary>
-        private float invIa;
+        internal float invIa;
 
         /// <summary>
         ///     The inv ib
         /// </summary>
-        private float invIb;
+        internal float invIb;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="RevoluteJoint" /> class

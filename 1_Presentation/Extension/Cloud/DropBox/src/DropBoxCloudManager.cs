@@ -61,7 +61,7 @@ namespace Alis.Extension.Cloud.DropBox
         /// <summary>
         ///     The access token
         /// </summary>
-        private string _accessToken;
+        internal string _accessToken;
 
         /// <summary>
         ///     The Dropbox client

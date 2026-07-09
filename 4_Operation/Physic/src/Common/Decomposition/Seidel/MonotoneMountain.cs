@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The size
         /// </summary>
-        private int _size;
+        internal int _size;
 
         /// <summary>
         ///     The tail

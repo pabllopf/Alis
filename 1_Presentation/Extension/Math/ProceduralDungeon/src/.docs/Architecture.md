@@ -464,7 +464,7 @@ var dungeon = new DungeonGenerator(customConfig, roomFactory, corridorFactory, b
 ```csharp
 public class MockRandomGenerator : IRandomNumberGenerator
 {
-    private int _value;
+    internal int _value;
     
     public int Next(int minValue, int maxValue) => _value;
     public int Next(int maxValue) => _value;

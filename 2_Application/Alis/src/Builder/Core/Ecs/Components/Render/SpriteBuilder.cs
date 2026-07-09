@@ -51,12 +51,12 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// <summary>
         ///     The depth
         /// </summary>
-        private int depth;
+        internal int depth;
 
         /// <summary>
         ///     The empty
         /// </summary>
-        private string nameFile = string.Empty;
+        internal string nameFile = string.Empty;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SpriteBuilder" /> class

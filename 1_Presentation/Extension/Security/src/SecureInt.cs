@@ -37,12 +37,12 @@ namespace Alis.Extension.Security
         /// <summary>
         ///     The random value
         /// </summary>
-        private int _randomValue;
+        internal int _randomValue;
 
         /// <summary>
         ///     The value
         /// </summary>
-        private int _value;
+        internal int _value;
 
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Alis.Extension.Security
         /// <summary>
         ///     Gets or sets the value of the value
         /// </summary>
-        private int Value
+        internal int Value
         {
             get
             {

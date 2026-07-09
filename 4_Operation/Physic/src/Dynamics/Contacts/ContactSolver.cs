@@ -81,12 +81,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The position constraints multithread threshold
         /// </summary>
-        private int _positionConstraintsMultithreadThreshold;
+        internal int _positionConstraintsMultithreadThreshold;
 
         /// <summary>
         ///     The velocity constraints multithread threshold
         /// </summary>
-        private int _velocityConstraintsMultithreadThreshold;
+        internal int _velocityConstraintsMultithreadThreshold;
 
         /// <summary>
         ///     The contacts
@@ -878,7 +878,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         /// <param name="pc">The pc</param>
         /// <returns>The min separation</returns>
-        private float SolveContactPositionConstraint(ContactPositionConstraint pc)
+        internal float SolveContactPositionConstraint(ContactPositionConstraint pc)
         {
             float minSeparation = 0.0f;
             int indexA = pc.IndexA;

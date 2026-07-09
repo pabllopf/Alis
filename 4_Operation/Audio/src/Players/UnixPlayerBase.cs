@@ -56,12 +56,12 @@ namespace Alis.Core.Audio.Players
         /// <summary>
         ///     The last extracted file
         /// </summary>
-        private string _lastExtractedFile;
+        internal string _lastExtractedFile;
 
         /// <summary>
         ///     The last played file
         /// </summary>
-        private string _lastPlayedFile;
+        internal string _lastPlayedFile;
 
         /// <summary>
         ///     The process

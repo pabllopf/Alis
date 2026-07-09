@@ -166,7 +166,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The frame counter
         /// </summary>
-        private int FrameCounter;
+        internal int FrameCounter;
 
         /// <summary>
         ///     The is first time
@@ -191,7 +191,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The scale factor
         /// </summary>
-        private float scaleFactor = 1.0f;
+        internal float scaleFactor = 1.0f;
 
         /// <summary>
         ///     Application entry point.

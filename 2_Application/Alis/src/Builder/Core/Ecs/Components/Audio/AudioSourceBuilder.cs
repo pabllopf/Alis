@@ -62,7 +62,7 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         /// <summary>
         ///     The empty
         /// </summary>
-        private string nameFile = string.Empty;
+        internal string nameFile = string.Empty;
 
         /// <summary>
         ///     The play on awake
@@ -72,7 +72,7 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         /// <summary>
         ///     The volume
         /// </summary>
-        private float volume = 100;
+        internal float volume = 100;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSourceBuilder" /> class

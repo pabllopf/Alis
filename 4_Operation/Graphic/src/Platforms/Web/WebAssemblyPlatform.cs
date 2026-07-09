@@ -45,11 +45,11 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The window width
         /// </summary>
-        private int _windowWidth;
+        internal int _windowWidth;
         /// <summary>
         /// The window height
         /// </summary>
-        private int _windowHeight;
+        internal int _windowHeight;
 
         /// <summary>
         /// The is window visible
@@ -90,11 +90,11 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The mouse
         /// </summary>
-        private int _mouseX;
+        internal int _mouseX;
         /// <summary>
         /// The mouse
         /// </summary>
-        private int _mouseY;
+        internal int _mouseY;
         /// <summary>
         /// The mouse buttons
         /// </summary>
@@ -102,7 +102,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The mouse wheel delta
         /// </summary>
-        private float _mouseWheelDelta;
+        internal float _mouseWheelDelta;
         /// <summary>
         /// The gamepad states
         /// </summary>

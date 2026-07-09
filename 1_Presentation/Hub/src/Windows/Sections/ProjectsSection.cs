@@ -87,7 +87,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     The selected project index
         /// </summary>
-        private int selectedProjectIndex = -1;
+        internal int selectedProjectIndex = -1;
 
         /// <summary>
         ///     The show create project popup
@@ -97,7 +97,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     The empty
         /// </summary>
-        private string searchQuery = string.Empty;
+        internal string searchQuery = string.Empty;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectsSection" /> class
@@ -320,17 +320,17 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     The empty
         /// </summary>
-        private string projectName = string.Empty;
+        internal string projectName = string.Empty;
 
         /// <summary>
         ///     The empty
         /// </summary>
-        private string projectPath = string.Empty;
+        internal string projectPath = string.Empty;
 
         /// <summary>
         ///     The empty
         /// </summary>
-        private string editorVersion = string.Empty;
+        internal string editorVersion = string.Empty;
 
         /// <summary>
         ///     Renders the create project popup

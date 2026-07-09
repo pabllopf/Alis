@@ -40,17 +40,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The bias
         /// </summary>
-        private float _bias;
+        internal float _bias;
 
         /// <summary>
         ///     The mass factor
         /// </summary>
-        private float _massFactor;
+        internal float _massFactor;
 
         /// <summary>
         ///     The target angle
         /// </summary>
-        private float _targetAngle;
+        internal float _targetAngle;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AngleJoint" /> class

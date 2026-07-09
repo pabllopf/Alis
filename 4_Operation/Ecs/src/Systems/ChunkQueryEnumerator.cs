@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     Initializes a new instance of the  class
@@ -169,7 +169,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     Initializes a new instance of the  class
@@ -263,7 +263,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     Initializes a new instance of the  class
@@ -354,7 +354,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     Initializes a new instance of the  class
@@ -447,7 +447,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     Initializes a new instance of the  class
@@ -536,7 +536,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     Initializes a new instance of the  class
@@ -630,7 +630,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     Initializes a new instance of the  class
@@ -733,7 +733,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The archetype index
         /// </summary>
-        private int _archetypeIndex;
+        internal int _archetypeIndex;
 
         /// <summary>
         ///     Initializes a new instance of the  class

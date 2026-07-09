@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     The next index
         /// </summary>
-        private int _nextIndex;
+        internal int _nextIndex;
 
         /// <summary>Returns the slot index (0-3) for <paramref name="value" />, or 32 on miss.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

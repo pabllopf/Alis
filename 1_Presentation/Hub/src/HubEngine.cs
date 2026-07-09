@@ -145,7 +145,7 @@ namespace Alis.App.Hub
         /// <summary>
         ///     The scale factor
         /// </summary>
-        private float scaleFactor;
+        internal float scaleFactor;
 
         /// <summary>
         ///     Application entry point.

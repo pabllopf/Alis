@@ -105,7 +105,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     normal
         ///     archetype.
         /// </remarks>
-        private int _nextComponentIndexOrDeferredEntityCount;
+        internal int _nextComponentIndexOrDeferredEntityCount;
 
 
         //information for tag existence & component index per id

@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The angular velocity
         /// </summary>
-        private float _angularVelocity;
+        internal float _angularVelocity;
 
         /// <summary>
         ///     The awake
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The inertia
         /// </summary>
-        private float _inertia;
+        internal float _inertia;
 
         /// <summary>
         ///     The linear damping
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The mass
         /// </summary>
-        private float _mass;
+        internal float _mass;
 
         /// <summary>
         ///     The sleeping allowed

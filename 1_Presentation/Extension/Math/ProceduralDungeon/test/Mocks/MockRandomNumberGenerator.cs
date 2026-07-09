@@ -40,7 +40,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Mocks
         /// <summary>
         ///     The value to return from random number generation methods.
         /// </summary>
-        private int _value;
+        internal int _value;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MockRandomNumberGenerator" /> class.

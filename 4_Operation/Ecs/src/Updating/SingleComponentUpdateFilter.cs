@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     The count
         /// </summary>
-        private int _count;
+        internal int _count;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SingleComponentUpdateFilter" /> class

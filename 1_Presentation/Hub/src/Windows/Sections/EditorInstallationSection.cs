@@ -67,12 +67,12 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     The selected version index
         /// </summary>
-        private int selectedVersionIndex;
+        internal int selectedVersionIndex;
 
         /// <summary>
         ///     The empty
         /// </summary>
-        private string[] versions = Array.Empty<string>();
+        internal string[] versions = Array.Empty<string>();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="EditorInstallationSection" /> class

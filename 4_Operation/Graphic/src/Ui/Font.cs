@@ -70,7 +70,7 @@ namespace Alis.Core.Graphic.Ui
         ///     Gets or sets the value of the path
         /// </summary>
 
-        private string Path { get; set; } = string.Empty;
+        internal string Path { get; set; } = string.Empty;
 
         /// <summary>
         ///     Gets or sets the value of the name file

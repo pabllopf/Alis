@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <summary>
         ///     The title
         /// </summary>
-        private string title;
+        internal string title;
 
 
         /// <summary>

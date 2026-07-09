@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             /// <summary>
             ///     The number of initialized elements in the array.
             /// </summary>
-            private int _count;
+            internal int _count;
 
             /// <summary>
             ///     The backing array for the builder.
@@ -1321,7 +1321,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             ///     -1 before the first call to <see cref="MoveNext" />.
             ///     >= this.array.Length after <see cref="MoveNext" /> returns false.
             /// </value>
-            private int _index;
+            internal int _index;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="Enumerator" /> struct.
@@ -1369,7 +1369,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             ///     -1 before the first call to <see cref="MoveNext" />.
             ///     this.array.Length - 1 after MoveNext returns false.
             /// </value>
-            private int _index;
+            internal int _index;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="Enumerator" /> class.
