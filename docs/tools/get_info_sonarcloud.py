@@ -46,6 +46,7 @@ Examples:
   python extractor.py --clean                  # Force clean memory & run
   python extractor.py --no-clean               # Force resume mode & run
   python extractor.py --limit 15               # Extract max 15 files
+  python extractor.py --skip 3                 # Skip first 3 files in list
   python extractor.py --project-key my_proj --branch develop
   python extractor.py --output tasks.md        # Save output to file
   python extractor.py --quiet                  # Suppress info logs
@@ -56,6 +57,7 @@ Examples:
     parser.add_argument("--project-key", default=DEFAULT_PROJECT_KEY, help="SonarCloud project key")
     parser.add_argument("--branch", default=DEFAULT_BRANCH, help="Target branch (default: master)")
     parser.add_argument("--limit", "-n", type=int, default=None, help="Max number of files to extract (default: no limit)")
+    parser.add_argument("--skip", type=int, default=0, help="Skip first N files from the extraction list")
     parser.add_argument("--output", "-o", default=None, help="Output file path (defaults to stdout)")
     parser.add_argument("--quiet", "-q", action="store_true", help="Suppress non-essential logs")
     parser.add_argument("--fetch-source", action="store_true", help="Fetch source code via SonarCloud API (slower, AI-ready)")
@@ -178,7 +180,7 @@ def fetch_source_snippet(project_key: str, file_key: str, max_lines: int = 60) -
 # DELTA ENGINE & TASK FORMATTER (AI-ENRICHED)
 # ─────────────────────────────────────────────────────────────
 
-def compute_deltas(current_files: list[dict], previous_state: dict, limit: int = None) -> list[dict]:
+def compute_deltas(current_files: list[dict], previous_state: dict, limit: int = None, skip: int = 0) -> list[dict]:
     """Identify new uncovered files, reduced coverage, and degraded methods. Apply priority & limit."""
     deltas = []
     
@@ -230,6 +232,10 @@ def compute_deltas(current_files: list[dict], previous_state: dict, limit: int =
     priority_order = {"HIGH": 0, "MEDIUM": 1, "LOW": 2}
     deltas.sort(key=lambda x: (priority_order.get(x["priority"], 3), float(x["coverage"] or 100)))
     
+    # Apply skip parameter to avoid returning always the same files
+    if skip > 0:
+        deltas = deltas[skip:]
+        
     if limit is not None:
         deltas = deltas[:limit]
         
@@ -320,7 +326,7 @@ def main():
 
   if not args.quiet:
       print("[INFO] Computing coverage deltas...")
-  deltas = compute_deltas(current_files, previous_state, limit=args.limit)
+  deltas = compute_deltas(current_files, previous_state, limit=args.limit, skip=args.skip)
 
   try:
       if args.output:
@@ -332,7 +338,8 @@ def main():
                   
               if not args.quiet:
                   limit_str = f" (limited to {args.limit} files)" if args.limit else ""
-                  print(f"\n[INFO] Found {len(deltas)} coverage targets.{limit_str} Outputting AI-ready tasks:\n", file=out)
+                  skip_str = f" (skipped first {args.skip} files)" if args.skip > 0 else ""
+                  print(f"\n[INFO] Found {len(deltas)} coverage targets.{limit_str}{skip_str} Outputting AI-ready tasks:\n", file=out)
                   
               for delta in deltas:
                   out.write(format_coverage_task(delta, fetch_source=args.fetch_source))
@@ -345,7 +352,8 @@ def main():
                   
           if not args.quiet:
               limit_str = f" (limited to {args.limit} files)" if args.limit else ""
-              print(f"\n[INFO] Found {len(deltas)} coverage targets.{limit_str} Outputting AI-ready tasks:\n")
+              skip_str = f" (skipped first {args.skip} files)" if args.skip > 0 else ""
+              print(f"\n[INFO] Found {len(deltas)} coverage targets.{limit_str}{skip_str} Outputting AI-ready tasks:\n")
               
           for delta in deltas:
               print(format_coverage_task(delta, fetch_source=args.fetch_source))
