@@ -33,13 +33,7 @@ Format:
 
 If `sessions.json` doesn't exist, create it as `{"claims":{}}`.
 
-Rules:
-- Read `sessions.json` before every extraction
-- Skip any file whose path appears as a key in `claims` with `status: "processing"`
-- Stale claims (older than 30 min) are considered dead; ignore them
-- After determining which file to process, immediately write your claim: `claims["<file_path>"] = {"sid": "$SID", "since": "<now>", "status": "processing"}`
-- On completion, remove the claim or set `status: "done"`
-- This prevents the race: both sessions see processed.json empty, but only the first to write to sessions.json gets the file
+Stale claims (older than 30 min) are considered dead; ignore them.
 
 ## Initial Cache
 
@@ -50,31 +44,37 @@ Rules:
 
 Output: `$STATE/cache/`
 
-## Extraction Loop
+## Extraction (Skip Claimed Files)
 
-```bash
-./docs/tools/get_info_sonarcloud.py \
-  --limit 1 --fetch-source --no-clean --cache-only \
-  --processed-file $STATE/processed.json \
-  --output $STATE/sessions/$SID/current_task.md
-```
+BEFORE any analysis or code generation, you must skip files already claimed by other sessions.
+
+The script `--skip N` skips the first N files from the sorted list. Use it to jump past claimed files.
+
+Step-by-step:
+
+1. Read `sessions.json` → build list of claimed file paths with `status: "processing"` and claim age < 30 min
+2. Set `SKIP=0`
+3. Run extraction:
+   ```bash
+   ./docs/tools/get_info_sonarcloud.py \
+     --limit 1 --fetch-source --no-clean --cache-only \
+     --processed-file $STATE/processed.json \
+     --skip $SKIP \
+     --output $STATE/sessions/$SID/current_task.md
+   ```
+4. If output contains `NO_REMAINING_COVERAGE_TASKS` → stop
+5. Parse `current_task.md` → get the `File:` value (relative path)
+6. If the file path is in the claimed list → increment `SKIP` by 1, go to step 3
+7. If the file is NOT claimed → write your claim to `sessions.json`: `claims["<file_path>"] = {"sid": "$SID", "since": "<ISO-timestamp>", "status": "processing"}`
+8. Only then proceed to spawn worker
+
+After worker completes:
+9. Remove your claim from `sessions.json` (or set `status: "done"`)
+10. Continue loop
 
 Priority: lowest coverage → highest uncovered lines → highest complexity → largest file.
 
-Terminate on: `NO_REMAINING_COVERAGE_TASKS`
-
-## Claim Protocol
-
-Before ANY work on the extracted file:
-
-1. Parse `current_task.md` → get the `File:` value (relative path)
-2. Read `sessions.json` → if the file is claimed by another session with `status: "processing"` and claim is < 30 min old → skip (goto extraction loop)
-3. Write your claim to `sessions.json`: `claims["<file_path>"] = {"sid": "$SID", "since": "<ISO-timestamp>", "status": "processing"}`
-4. Only then proceed to spawn worker
-
-After worker completes:
-5. Remove your claim from `sessions.json` (or set `status: "done"`)
-6. Continue loop
+Critical: you must NEVER skip verifying `sessions.json` before extraction. Always check first.
 
 ## Agent Policy
 
@@ -91,8 +91,8 @@ Maintain 1 active task. Never create todo files. Never commit task state.
 
 Repeat until `NO_REMAINING_COVERAGE_TASKS`:
 1. Populate cache if empty (`--cache`)
-2. Read `sessions.json`, filter out claimed files mentally
-3. Extract next unclaimed task (`--cache-only`)
+2. Read `sessions.json`, build claimed file list
+3. Run extraction with `--skip N`, increment N for each claimed file encountered
 4. `NO_REMAINING_COVERAGE_TASKS` → stop
 5. Write claim to `sessions.json`
 6. Spawn worker agent
