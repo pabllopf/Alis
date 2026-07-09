@@ -4,5 +4,6 @@
     "pabllopf-official_alis:4_Operation/Audio/src/Players/BrowserPlayer.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioWriter.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs",
+    "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs"
 ]
