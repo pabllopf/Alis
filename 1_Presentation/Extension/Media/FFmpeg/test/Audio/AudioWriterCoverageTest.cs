@@ -28,8 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
@@ -587,6 +589,162 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             // Assert - Should return Ffmpegp (null before OpenWrite)
             Assert.Null(process);
+        }
+
+        #endregion
+
+        #region CloseWrite Body Tests (via Reflection State Setup)
+
+        /// <summary>
+        ///     Tests that CloseWrite body runs to completion in filename mode,
+        ///     disposing InputDataStream and resetting OpenedForWriting.
+        /// </summary>
+        [Fact]
+        public void CloseWrite_WhenOpenedInFilenameMode_ShouldCompleteWriteCycle()
+        {
+            // Arrange
+            AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
+
+            try
+            {
+                // Simulate state that OpenWrite would have set
+                FieldInfo openedField = typeof(AudioWriter).BaseType.GetField("<OpenedForWriting>k__BackingField",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                openedField.SetValue(writer, true);
+
+                PropertyInfo inputProp = typeof(AudioWriter).GetProperty("InputDataStream");
+                MemoryStream inputStream = new();
+                inputProp.SetValue(writer, inputStream);
+
+                using Process process = new();
+                process.StartInfo.FileName = "dotnet";
+                process.StartInfo.Arguments = "--version";
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.UseShellExecute = false;
+                process.Start();
+                process.WaitForExit(5000);
+                Assert.True(process.HasExited);
+
+                FieldInfo processField = typeof(AudioWriter).GetField("Ffmpegp",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                processField.SetValue(writer, process);
+
+                using CancellationTokenSource csc = new();
+                FieldInfo cscField = typeof(AudioWriter).GetField("csc",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                cscField.SetValue(writer, csc);
+
+                // Act
+                writer.CloseWrite();
+
+                // Assert
+                Assert.False(writer.OpenedForWriting);
+                Assert.True(csc.IsCancellationRequested);
+            }
+            finally
+            {
+                FieldInfo openedField = typeof(AudioWriter).BaseType.GetField("<OpenedForWriting>k__BackingField",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                openedField.SetValue(writer, false);
+                writer.Dispose();
+            }
+        }
+
+        /// <summary>
+        ///     Tests that CloseWrite in stream mode (UseFilename=false) also disposes OutputDataStream.
+        /// </summary>
+        [Fact]
+        public void CloseWrite_WhenOpenedInStreamMode_ShouldDisposeOutputDataStream()
+        {
+            // Arrange
+            AudioWriter writer = new AudioWriter(_testStream, 2, 44100);
+
+            try
+            {
+                FieldInfo openedField = typeof(AudioWriter).BaseType.GetField("<OpenedForWriting>k__BackingField",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                openedField.SetValue(writer, true);
+
+                PropertyInfo inputProp = typeof(AudioWriter).GetProperty("InputDataStream");
+                MemoryStream inputStream = new();
+                inputProp.SetValue(writer, inputStream);
+
+                PropertyInfo outputProp = typeof(AudioWriter).GetProperty("OutputDataStream",
+                    BindingFlags.Public | BindingFlags.Instance);
+                MemoryStream outputStream = new();
+                outputProp.SetValue(writer, outputStream);
+
+                using Process process = new();
+                process.StartInfo.FileName = "dotnet";
+                process.StartInfo.Arguments = "--version";
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.UseShellExecute = false;
+                process.Start();
+                process.WaitForExit(5000);
+                Assert.True(process.HasExited);
+
+                FieldInfo processField = typeof(AudioWriter).GetField("Ffmpegp",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                processField.SetValue(writer, process);
+
+                using CancellationTokenSource csc = new();
+                FieldInfo cscField = typeof(AudioWriter).GetField("csc",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                cscField.SetValue(writer, csc);
+
+                // Act
+                writer.CloseWrite();
+
+                // Assert
+                Assert.False(writer.OpenedForWriting);
+                Assert.True(csc.IsCancellationRequested);
+                Assert.Throws<ObjectDisposedException>(() => outputStream.WriteByte(0));
+            }
+            finally
+            {
+                FieldInfo openedField = typeof(AudioWriter).BaseType.GetField("<OpenedForWriting>k__BackingField",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                openedField.SetValue(writer, false);
+                writer.Dispose();
+            }
+        }
+
+        /// <summary>
+        ///     Tests that WriteFrame writes frame data to InputDataStream when opened.
+        /// </summary>
+        [Fact]
+        public void WriteFrame_WhenOpenedForWriting_ShouldWriteToInputDataStream()
+        {
+            // Arrange
+            AudioWriter writer = new AudioWriter(_testFile, 2, 44100);
+
+            try
+            {
+                FieldInfo openedField = typeof(AudioWriter).BaseType.GetField("<OpenedForWriting>k__BackingField",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                openedField.SetValue(writer, true);
+
+                PropertyInfo inputProp = typeof(AudioWriter).GetProperty("InputDataStream");
+                MemoryStream inputStream = new();
+                inputProp.SetValue(writer, inputStream);
+
+                using AudioFrame frame = new(2, 1024, 16);
+                byte[] expectedData = frame.RawData;
+
+                // Act
+                writer.WriteFrame(frame);
+
+                // Assert
+                Assert.Equal(expectedData.Length, inputStream.Length);
+                Assert.Equal(expectedData, inputStream.ToArray());
+            }
+            finally
+            {
+                FieldInfo openedField = typeof(AudioWriter).BaseType.GetField("<OpenedForWriting>k__BackingField",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                openedField.SetValue(writer, false);
+                writer.Dispose();
+            }
         }
 
         #endregion
