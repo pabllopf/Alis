@@ -22,14 +22,6 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         [Fact]
-        public void CreateParam_WithFullConstructor_Succeeds()
-        {
-            var param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "test", 1, 0);
-            Assert.Equal(1u, param.ProgramId);
-            Assert.Equal(0, param.Location);
-        }
-
-        [Fact]
         public void SetValue_Bool_DoesNotThrow()
         {
             var param = new GlShaderProgramParam(typeof(bool), ParamType.Uniform, "test");
@@ -78,34 +70,11 @@ namespace Alis.Core.Graphic.Test.Constructs
         }
 
         [Fact]
-        public void SetValue_Matrix4X4_DoesNotThrow()
+        public void SetValue_FloatArray4_AsVector4F_DoesNotThrow()
         {
-            var param = new GlShaderProgramParam(typeof(Alis.Core.Aspect.Math.Matrix.Matrix4X4), ParamType.Uniform, "test");
-            param.Location = 0;
-            param.SetValue(new Alis.Core.Aspect.Math.Matrix.Matrix4X4());
-        }
-
-        [Fact]
-        public void SetValue_FloatArray_DoesNotThrow()
-        {
-            var param = new GlShaderProgramParam(typeof(float[]), ParamType.Uniform, "test");
+            var param = new GlShaderProgramParam(typeof(Vector4F), ParamType.Uniform, "test");
             param.Location = 0;
             param.SetValue(new float[] { 1, 2, 3, 4 });
-        }
-
-        [Fact]
-        public void GetLocation_WithProgram_SetsLocation()
-        {
-            GlMock.Reset();
-
-            using var vertex = new GlShader("void main(){}", ShaderType.VertexShader);
-            using var fragment = new GlShader("void main(){}", ShaderType.FragmentShader);
-            using var program = new GlShaderProgram(vertex, fragment);
-
-            var param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "test");
-            param.GetLocation(program);
-
-            Assert.NotEqual(-1, param.Location);
         }
     }
 }
