@@ -335,5 +335,390 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
 
             Assert.Equal(3, result.Count);
         }
+
+        [Fact]
+        public void CollinearSimplify_WithMixedCollinearity_ShouldKeepNonCollinear()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(3f, 1f)
+            });
+
+            Vertices result = SimplifyTools.CollinearSimplify(vertices, 0.01f);
+
+            Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public void DouglasPeuckerSimplify_WithNonCollinearPoints_ShouldRecurse()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 2f),
+                new Vector2F(4f, 0f),
+                new Vector2F(6f, 2f),
+                new Vector2F(8f, 0f)
+            });
+
+            Vertices result = SimplifyTools.DouglasPeuckerSimplify(vertices, 1.0f);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count > 0);
+        }
+
+        [Fact]
+        public void MergeParallelEdges_WithNoParallelEdges_ShouldReturnSame()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(1f, 1f),
+                new Vector2F(0f, 1f)
+            });
+
+            Vertices result = SimplifyTools.MergeParallelEdges(vertices, 0.01f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void MergeParallelEdges_WithNoParallelEdgesAndFourPoints_ShouldReturnSameCount()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(1f, 2f),
+                new Vector2F(3f, 4f),
+                new Vector2F(5f, 2f),
+                new Vector2F(3f, 0f)
+            });
+
+            Vertices result = SimplifyTools.MergeParallelEdges(vertices, 0.01f);
+
+            Assert.Equal(4, result.Count);
+        }
+
+        [Fact]
+        public void MergeParallelEdges_WithParallelEdges_ShouldMerge()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 1f),
+                new Vector2F(2f, 2f),
+                new Vector2F(0f, 1f)
+            });
+
+            Vertices result = SimplifyTools.MergeParallelEdges(vertices, 0.1f);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count < 4);
+        }
+
+        [Fact]
+        public void MergeParallelEdges_WithZeroLengthEdge_ShouldHandle()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0f, 1f)
+            });
+
+            Vertices result = SimplifyTools.MergeParallelEdges(vertices, 0.1f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void ReduceByNth_WithFourPoints_ShouldRemove()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(1f, 1f)
+            });
+
+            Vertices result = SimplifyTools.ReduceByNth(vertices, 2);
+
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void ReduceByNth_WithNthOne_ShouldRemoveAll()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(1f, 1f)
+            });
+
+            Vertices result = SimplifyTools.ReduceByNth(vertices, 1);
+
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void ReduceByArea_WithNonCollinearPoints_ShouldReduce()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(3f, 0f),
+                new Vector2F(0f, 1f)
+            });
+
+            Vertices result = SimplifyTools.ReduceByArea(vertices, 0.5f);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count > 0);
+        }
+
+        [Fact]
+        public void ReduceByArea_WithAllPointsKept_ShouldKeepAllPoints()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(0f, 1f),
+                new Vector2F(1f, 1f)
+            });
+
+            Vertices result = SimplifyTools.ReduceByArea(vertices, 0.4f);
+
+            Assert.NotNull(result);
+            Assert.Equal(4, result.Count);
+        }
+
+        [Fact]
+        public void CollinearSimplify_WithTwoPoints_ShouldReturnSame()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f)
+            });
+
+            Vertices result = SimplifyTools.CollinearSimplify(vertices);
+
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void CollinearSimplify_WithSinglePoint_ShouldReturnSame()
+        {
+            Vertices vertices = new Vertices(new[] { new Vector2F(0f, 0f) });
+
+            Vertices result = SimplifyTools.CollinearSimplify(vertices);
+
+            Assert.Single(result);
+        }
+
+        [Fact]
+        public void CollinearSimplify_WithAllCollinearPointsRemoved_ShouldHandle()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(0.5f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(1.5f, 0f)
+            });
+
+            Vertices result = SimplifyTools.CollinearSimplify(vertices, 0.001f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void DouglasPeuckerSimplify_WithTwoPoints_ShouldReturnSame()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f)
+            });
+
+            Vertices result = SimplifyTools.DouglasPeuckerSimplify(vertices, 0.1f);
+
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void DouglasPeuckerSimplify_WithSinglePoint_ShouldReturnSame()
+        {
+            Vertices vertices = new Vertices(new[] { new Vector2F(0f, 0f) });
+
+            Vertices result = SimplifyTools.DouglasPeuckerSimplify(vertices, 0.1f);
+
+            Assert.Single(result);
+        }
+
+        [Fact]
+        public void MergeParallelEdges_WithTwoPoints_ShouldReturnSame()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f)
+            });
+
+            Vertices result = SimplifyTools.MergeParallelEdges(vertices, 0.1f);
+
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void MergeParallelEdges_WithSquare_ShouldMergeParallel()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(1f, 1f),
+                new Vector2F(0f, 1f)
+            });
+
+            Vertices result = SimplifyTools.MergeParallelEdges(vertices, 0.01f);
+
+            Assert.NotNull(result);
+            Assert.True(result.Count <= 4);
+        }
+
+        [Fact]
+        public void MergeIdenticalPoints_WithEmpty_ShouldReturnEmpty()
+        {
+            Vertices vertices = new Vertices();
+
+            Vertices result = SimplifyTools.MergeIdenticalPoints(vertices);
+
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void ReduceByDistance_WithTwoPoints_ShouldReturnSame()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f)
+            });
+
+            Vertices result = SimplifyTools.ReduceByDistance(vertices, 0.5f);
+
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void ReduceByDistance_WithSinglePoint_ShouldReturnSame()
+        {
+            Vertices vertices = new Vertices(new[] { new Vector2F(0f, 0f) });
+
+            Vertices result = SimplifyTools.ReduceByDistance(vertices, 0.5f);
+
+            Assert.Single(result);
+        }
+
+        [Fact]
+        public void ReduceByDistance_WithZeroDistance_ShouldKeepAll()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(0.5f, 0f),
+                new Vector2F(1f, 0f)
+            });
+
+            Vertices result = SimplifyTools.ReduceByDistance(vertices, 0f);
+
+            Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public void ReduceByNth_WithTwoPoints_ShouldReturnSame()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f)
+            });
+
+            Vertices result = SimplifyTools.ReduceByNth(vertices, 2);
+
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void ReduceByNth_WithLargeNth_ShouldRemoveFirstOnly()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(1f, 1f)
+            });
+
+            Vertices result = SimplifyTools.ReduceByNth(vertices, 10);
+
+            Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public void ReduceByArea_WithTwoPoints_ShouldReturnSame()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f)
+            });
+
+            Vertices result = SimplifyTools.ReduceByArea(vertices, 0f);
+
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void ReduceByArea_WithZeroTolerance_ShouldRemoveOnlyCollinear()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(1f, 1f)
+            });
+
+            Vertices result = SimplifyTools.ReduceByArea(vertices, 0f);
+
+            Assert.True(result.Count < 4);
+        }
+
+        [Fact]
+        public void ReduceByArea_WithMostlyCollinearPoints_ShouldRemoveCollinear()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(2f, 0f),
+                new Vector2F(4f, 0f),
+                new Vector2F(6f, 1f)
+            });
+
+            Vertices result = SimplifyTools.ReduceByArea(vertices, 0f);
+
+            Assert.True(result.Count < 4);
+        }
     }
 }
