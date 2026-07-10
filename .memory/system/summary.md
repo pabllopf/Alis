@@ -86,6 +86,7 @@
 | 2026-07-10 08:58:00 | DropBoxCloudManager.cs | 33.3% | ~36% | +2.7% | 7ec6272ea | Completed |
 | 2026-07-10 09:04:00 | ImColor.cs | 33.3% | 100% | +66.7% | c782ef470 | Completed |
 | 2026-07-10 09:17:00 | StripeGatewayClient.cs | 35.0% | ~48% | +13% | 41c5d3042 | Completed |
+| 2026-07-10 09:40:00 | ImGuiStyle.cs | 35.8% | ~70-75% | +34-39% | c3eb7ab53 | Completed |
 ## Test Files Created
 - `PulleyJointTest.cs` updated at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Dynamics/Joints/PulleyJointTest.cs`
 - `WheelJointTest.cs` updated at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Dynamics/Joints/WheelJointTest.cs`
@@ -117,3 +118,4 @@
 - `DropBoxCloudManagerRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Cloud/DropBox/test/DropBoxCloudManagerRemainingCoverageTests.cs`
 - `ImColorTest.cs` updated at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImColorTest.cs`
 - `StripeGatewayClientRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Payment/Stripe/test/StripeGatewayClientRemainingCoverageTests.cs`
+- `ImGuiStyleRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImGuiStyleRemainingCoverageTests.cs`
