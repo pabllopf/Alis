@@ -114,3 +114,31 @@ All 32 tests pass
 
 ### Commit
 4a8083b7c
+
+---
+
+## Entry 006
+
+### Timestamp
+2026-07-10T19:00:00Z
+
+### Worker
+local-agent
+
+### Action
+Coverage task for GLShader.cs + GLShaderProgram.cs + GLShaderProgramParam.cs
+
+### Files Modified
+- GlMock.cs (new - delegate-based mock for Gl.cs)
+- GLShaderCoverageTest.cs (new - 7 tests)
+- GLShaderProgramCoverageTest.cs (new - 10 tests)
+- GLShaderProgramParamCoverageTest.cs (new - 2 tests)
+
+### Result
+All 19 OpenGL mock tests pass
+
+### Technique
+Used `Marshal.GetFunctionPointerForDelegate` to create native function pointers from managed delegates, then passed them via `Gl.Initialize()` to mock 25+ OpenGL functions without requiring a real GPU/context.
+
+### Commit
+pending

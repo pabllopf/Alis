@@ -118,5 +118,68 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             program.Dispose();
             program.Use();
         }
+
+        [Fact]
+        public void CreateProgram_FromStringSource_Succeeds()
+        {
+            GlMock.Reset();
+
+            const string vertexSource = @"
+                #version 330 core
+                layout(location = 0) in vec3 aPos;
+                void main() { gl_Position = vec4(aPos, 1.0); }";
+
+            const string fragmentSource = @"
+                #version 330 core
+                out vec4 FragColor;
+                void main() { FragColor = vec4(1.0); }";
+
+            using var program = new GlShaderProgram(vertexSource, fragmentSource);
+
+            Assert.NotEqual(0u, program.ProgramId);
+            Assert.NotNull(program.VertexShader);
+            Assert.NotNull(program.FragmentShader);
+        }
+
+        [Fact]
+        public void CreateProgram_FromStringSource_WithFailedShader_Throws()
+        {
+            GlMock.Reset();
+            GlMock.FailCompilation = true;
+
+            const string vertexSource = "bad vertex";
+            const string fragmentSource = "bad fragment";
+
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                using var program = new GlShaderProgram(vertexSource, fragmentSource);
+            });
+        }
+
+        [Fact]
+        public void ProgramLog_ReturnsString()
+        {
+            GlMock.Reset();
+
+            using var vertex = new GlShader("void main(){}", ShaderType.VertexShader);
+            using var fragment = new GlShader("void main(){}", ShaderType.FragmentShader);
+            using var program = new GlShaderProgram(vertex, fragment);
+
+            string log = program.ProgramLog;
+            Assert.NotNull(log);
+        }
+
+        [Fact]
+        public void Indexer_ReturnsNull_ForUnknownParam()
+        {
+            GlMock.Reset();
+
+            using var vertex = new GlShader("void main(){}", ShaderType.VertexShader);
+            using var fragment = new GlShader("void main(){}", ShaderType.FragmentShader);
+            using var program = new GlShaderProgram(vertex, fragment);
+
+            var result = program["nonexistent"];
+            Assert.Null(result);
+        }
     }
 }

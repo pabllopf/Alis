@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Graphic.OpenGL;
@@ -75,6 +76,19 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             Register("glViewport", Marshal.GetFunctionPointerForDelegate((Viewport)MockViewport));
 
             Gl.Initialize(GetProcAddress);
+        }
+
+        internal static void Shutdown()
+        {
+            if (!_initialized) return;
+            _initialized = false;
+            ProcTable.Clear();
+
+            FieldInfo field = typeof(Gl).GetField("_getProcAddress", BindingFlags.Static | BindingFlags.NonPublic);
+            if (field != null)
+            {
+                field.SetValue(null, null);
+            }
         }
 
         internal static void Reset()
